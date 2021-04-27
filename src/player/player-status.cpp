@@ -21,6 +21,7 @@
 #include "floor/floor-save.h"
 #include "floor/floor-util.h"
 #include "game-option/birth-options.h"
+#include "game-option/text-display-options.h"
 #include "grid/feature.h"
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
@@ -150,11 +151,11 @@ player_type p_body;
 player_type *p_ptr = &p_body;
 
 /*!
- * @brief クリーチャーの抽象的善悪アライメントの表記を返す。 / Return alignment title
+ * @brief クリーチャーの抽象的善悪アライメントの表記名のみを返す。 / Return only alignment title
  * @param creature_ptr 算出するクリーチャーの参照ポインタ。
- * @return アライメントの表記を返す。
+ * @return アライメントの表記名
  */
-concptr your_alignment(player_type *creature_ptr)
+concptr alignment_label(player_type *creature_ptr)
 {
     if (creature_ptr->align > 150)
         return _("大善", "Lawful");
@@ -170,6 +171,20 @@ concptr your_alignment(player_type *creature_ptr)
         return _("中悪", "Evil");
     else
         return _("大悪", "Chaotic");
+}
+
+/*!
+ * @brief クリーチャーの抽象的善悪アライメントの表記を返す。 / Return alignment title
+ * @param creature_ptr 算出するクリーチャーの参照ポインタ。
+ * @return アライメントの表記を返す。
+ */
+concptr your_alignment(player_type *creature_ptr, bool with_value)
+{
+    auto s = alignment_label(creature_ptr);
+    if (with_value || show_actual_value)
+        return format(_("%s(%ld)", "%s (%ld)"), s, static_cast<long>(creature_ptr->align));
+
+    return s;
 }
 
 /*!
@@ -375,6 +390,7 @@ static void update_bonuses(player_type *creature_ptr)
     creature_ptr->regenerate = has_regenerate(creature_ptr);
     update_curses(creature_ptr);
     creature_ptr->impact = has_impact(creature_ptr);
+    creature_ptr->earthquake = has_earthquake(creature_ptr);
     update_extra_blows(creature_ptr);
 
     creature_ptr->lite = has_lite(creature_ptr);
@@ -1290,6 +1306,8 @@ static ACTION_SKILL_POWER calc_device_ability(player_type *creature_ptr)
  * * 種族/職業/性格による加算
  * * 職業と性格とレベルによる追加加算
  * * 変異MUT3_MAGIC_RESによる加算(15 + レベル / 5)
+ * * 呪力耐性の装備による加算(30)
+ * * 祝福された装備による加算(5 + レベル / 10)
  * * 賢さによるadj_wis_savテーブル加算
  * * 狂戦士化による減算(-30)
  * * 反魔法持ちで大なり上書き(90+レベル未満ならその値に上書き)
@@ -1314,6 +1332,12 @@ static ACTION_SKILL_POWER calc_saving_throw(player_type *creature_ptr)
 
     if (creature_ptr->muta.has(MUTA::MAGIC_RES))
         pow += (15 + (creature_ptr->lev / 5));
+
+    if (has_resist_curse(creature_ptr))
+        pow += 30;
+
+    if (creature_ptr->blessed)
+        pow += 6 + (creature_ptr->lev - 1) / 10;
 
     pow += adj_wis_sav[creature_ptr->stat_index[A_WIS]];
 
@@ -1715,7 +1739,7 @@ static s16b calc_num_blow(player_type *creature_ptr, int i)
  * * 性格きれものなら減算(-3)
  * * 性格ちからじまんとがまんづよいなら加算(+1)
  * * 性格チャージマンなら加算(+5)
- * * 装備品にTRC_LOW_MAGICがあるなら加算(軽い呪いなら+3/重い呪いなら+10)
+ * * 装備品にTRC_HARD_SPELLがあるなら加算(軽い呪いなら+3/重い呪いなら+10)
  */
 static s16b calc_to_magic_chance(player_type *creature_ptr)
 {
@@ -1737,7 +1761,7 @@ static s16b calc_to_magic_chance(player_type *creature_ptr)
         if (!o_ptr->k_idx)
             continue;
         object_flags(creature_ptr, o_ptr, flgs);
-        if (any_bits(o_ptr->curse_flags, TRC_LOW_MAGIC)) {
+        if (any_bits(o_ptr->curse_flags, TRC_HARD_SPELL)) {
             if (any_bits(o_ptr->curse_flags, TRC_HEAVY_CURSE)) {
                 chance += 10;
             } else {
@@ -2910,7 +2934,7 @@ void wreck_the_pattern(player_type *creature_ptr)
     msg_print(_("何か恐ろしい事が起こった！", "Something terrible happens!"));
 
     if (!is_invuln(creature_ptr))
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 8), _("パターン損壊", "corrupting the Pattern"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 8), _("パターン損壊", "corrupting the Pattern"));
 
     int to_ruin = randint1(45) + 35;
     while (to_ruin--) {

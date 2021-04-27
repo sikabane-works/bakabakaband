@@ -20,7 +20,9 @@
 #include "util/angband-files.h"
 #include "util/buffer-shaper.h"
 #include "util/int-char-converter.h"
+#include "util/string-processor.h"
 #include "world/world.h"
+#include <string>
 
 /*
  * List virtues & status
@@ -32,7 +34,8 @@ void do_cmd_knowledge_virtues(player_type *creature_ptr)
     if (!open_temporary_file(&fff, file_name))
         return;
 
-    fprintf(fff, _("現在の属性 : %s\n\n", "Your alignment : %s\n\n"), your_alignment(creature_ptr));
+    std::string alg = your_alignment(creature_ptr);
+    fprintf(fff, _("現在の属性 : %s\n\n", "Your alignment : %s\n\n"), alg.c_str());
     dump_virtues(creature_ptr, fff);
     angband_fclose(fff);
     (void)show_file(creature_ptr, TRUE, file_name, _("八つの徳", "Virtues"), 0, 0);
@@ -88,7 +91,7 @@ static void dump_yourself(player_type *creature_ptr, FILE *fff)
     }
 
     fprintf(fff, "\n");
-    if (creature_ptr->realm1 && creature_ptr->pclass != CLASS_ELEMENTALIST) {
+    if (creature_ptr->realm1) {
         shape_buffer(realm_explanations[technic2magic(creature_ptr->realm1) - 1], 78, temp, sizeof(temp));
         fprintf(fff, _("魔法: %s\n", "Realm: %s\n"), realm_names[creature_ptr->realm1]);
 
@@ -118,6 +121,45 @@ static void dump_yourself(player_type *creature_ptr, FILE *fff)
     }
 }
 
+/*!
+ * @brief 勝利済みの職業をダンプする
+ * @param fff ファイルストリームのポインタ
+ * @return なし
+ */
+static void dump_winner_classes(FILE *fff)
+{
+    int n = current_world_ptr->sf_winner.count();
+    concptr ss = n > 1 ? _("", "s") : "";
+    fprintf(fff, _("*勝利*済みの職業%s : %d\n", "Class of *Winner%s* : %d\n"), ss, n);
+    if (n == 0)
+        return;
+
+    size_t max_len = 75;
+    std::string s = "";
+    std::string l = "";
+    for (int c = 0; c < MAX_CLASS; c++) {
+        if (current_world_ptr->sf_winner.has_not(static_cast<player_class_type>(c)))
+            continue;
+
+        auto &cl = class_info[c];
+        auto t = std::string(cl.title);
+
+        if (current_world_ptr->sf_retired.has_not(static_cast<player_class_type>(c)))
+            t = "(" + t + ")";
+
+        if (l.size() + t.size() + 2 > max_len) {
+            fprintf(fff, " %s\n", str_rtrim(l).c_str());
+            l = "";
+        }
+        if (l.size() > 0)
+            l += ", ";
+        l += t;
+    }
+
+    if (l.size() > 0)
+        fprintf(fff, " %s\n", str_rtrim(l).c_str());
+}
+
 /*
  * List virtues & status
  *
@@ -128,6 +170,13 @@ void do_cmd_knowledge_stat(player_type *creature_ptr)
     GAME_TEXT file_name[FILE_NAME_SIZE];
     if (!open_temporary_file(&fff, file_name))
         return;
+
+    update_playtime();
+    u32b play_time = current_world_ptr->play_time;
+    u32b all_time = current_world_ptr->sf_play_time + play_time;
+    fprintf(fff, _("現在のプレイ時間 : %d:%02d:%02d\n", "Current Play Time is %d:%02d:%02d\n"), play_time / (60 * 60), (play_time / 60) % 60, play_time % 60);
+    fprintf(fff, _("合計のプレイ時間 : %d:%02d:%02d\n", "  Total play Time is %d:%02d:%02d\n"), all_time / (60 * 60), (all_time / 60) % 60, all_time % 60);
+    fputs("\n", fff);
 
     int percent
         = (int)(((long)creature_ptr->player_hp[PY_MAX_LEVEL - 1] * 200L) / (2 * creature_ptr->hitdie + ((PY_MAX_LEVEL - 1 + 3) * (creature_ptr->hitdie + 1))));
@@ -146,7 +195,9 @@ void do_cmd_knowledge_stat(player_type *creature_ptr)
     }
 
     dump_yourself(creature_ptr, fff);
+    dump_winner_classes(fff);
     angband_fclose(fff);
+
     (void)show_file(creature_ptr, TRUE, file_name, _("自分に関する情報", "HP-rate & Max stat"), 0, 0);
     fd_kill(file_name);
 }

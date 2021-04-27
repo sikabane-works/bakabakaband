@@ -103,19 +103,6 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                 if (okay_flag)
                     break;
             }
-
-            switch (o_ptr->name2) {
-            case EGO_RESISTANCE:
-                if (one_in_(4))
-                    add_flag(o_ptr->art_flags, TR_RES_POIS);
-                break;
-            case EGO_DWARVEN:
-                o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-                o_ptr->ac = k_info[o_ptr->k_idx].ac + 5;
-                break;
-            default:
-                break;
-            }
         } else if (power < -1) {
             while (TRUE) {
                 bool okay_flag = TRUE;
@@ -123,41 +110,7 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
 
                 switch (o_ptr->name2) {
                 case EGO_A_DEMON:
-                    if (one_in_(3))
-                        o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-                    one_in_(3) ? add_flag(o_ptr->art_flags, TR_DRAIN_EXP)
-                               : one_in_(2) ? add_flag(o_ptr->art_flags, TR_DRAIN_HP) : add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
-
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_AGGRAVATE);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_ADD_L_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_ADD_H_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_HP);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_EXP);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_TY_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_CALL_DEMON);
-                    break;
                 case EGO_A_MORGUL:
-                    if (one_in_(3))
-                        o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-                    if (one_in_(9))
-                        add_flag(o_ptr->art_flags, TR_TY_CURSE);
-                    if (one_in_(4))
-                        add_flag(o_ptr->art_flags, TR_ADD_H_CURSE);
-                    if (one_in_(6))
-                        add_flag(o_ptr->art_flags, TR_AGGRAVATE);
-                    if (one_in_(9))
-                        add_flag(o_ptr->art_flags, TR_NO_MAGIC);
-                    if (one_in_(9))
-                        add_flag(o_ptr->art_flags, TR_NO_TELE);
                     break;
                 default:
                     msg_print(_("エラー：適した呪い鎧エゴがみつかりませんでした.", "Error:Suitable cursed armor ego not found."));
@@ -196,20 +149,11 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
             }
 
             switch (o_ptr->name2) {
-            case EGO_ENDURANCE:
-                if (!one_in_(3))
-                    one_high_resistance(o_ptr);
-                if (one_in_(4))
-                    add_flag(o_ptr->art_flags, TR_RES_POIS);
-                break;
             case EGO_REFLECTION:
                 if (o_ptr->sval == SV_MIRROR_SHIELD)
                     o_ptr->name2 = 0;
                 break;
-
-            case EGO_S_DWARVEN:
-                o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-                o_ptr->ac = k_info[o_ptr->k_idx].ac + 3;
+            default:
                 break;
             }
         }
@@ -252,14 +196,6 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
             }
 
             o_ptr->name2 = get_random_ego(INVEN_FEET, TRUE);
-            switch (o_ptr->name2) {
-            case EGO_SLOW_DESCENT:
-                if (one_in_(2)) {
-                    one_high_resistance(o_ptr);
-                }
-
-                break;
-            }
         } else if (power < -1) {
             o_ptr->name2 = get_random_ego(INVEN_FEET, FALSE);
         }
@@ -280,11 +216,6 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
 
                 switch (o_ptr->name2) {
                 case EGO_TELEPATHY:
-                    if (add_esp_strong(o_ptr))
-                        add_esp_weak(o_ptr, TRUE);
-                    else
-                        add_esp_weak(o_ptr, FALSE);
-                    break;
                 case EGO_MAGI:
                 case EGO_MIGHT:
                 case EGO_REGENERATION:
@@ -292,12 +223,8 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                 case EGO_BASILISK:
                     break;
                 case EGO_SEEING:
-                    if (one_in_(3)) {
-                        if (one_in_(2))
-                            add_esp_strong(o_ptr);
-                        else
-                            add_esp_weak(o_ptr, FALSE);
-                    }
+                    if (one_in_(3))
+                        add_low_telepathy(o_ptr);
                     break;
                 default:
                     /* not existing crown (wisdom,lite, etc...) */
@@ -318,19 +245,7 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                 case EGO_H_DEMON:
                     ok_flag = false;
                     break;
-                case EGO_ANCIENT_CURSE:
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_NO_MAGIC);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_NO_TELE);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_TY_CURSE);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_EXP);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_HP);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
+                default:
                     break;
                 }
 
@@ -360,24 +275,14 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                 o_ptr->name2 = get_random_ego(INVEN_HEAD, TRUE);
                 switch (o_ptr->name2) {
                 case EGO_BRILLIANCE:
-                case EGO_DARK:
+                case EGO_DARK:  
                 case EGO_INFRAVISION:
                 case EGO_H_PROTECTION:
+                case EGO_LITE:
                     break;
                 case EGO_SEEING:
-                    if (one_in_(7)) {
-                        if (one_in_(2))
-                            add_esp_strong(o_ptr);
-                        else
-                            add_esp_weak(o_ptr, FALSE);
-                    }
-
-                    break;
-                case EGO_LITE:
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_LITE_1);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_LITE_2);
+                    if (one_in_(7))
+                        add_low_telepathy(o_ptr);
                     break;
                 default:
                     /* not existing helm (Magi, Might, etc...)*/
@@ -395,31 +300,10 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                 o_ptr->name2 = get_random_ego(INVEN_HEAD, FALSE);
 
                 switch (o_ptr->name2) {
-                case EGO_H_DEMON:
-                    if (one_in_(3))
-                        o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-                    one_in_(3) ? add_flag(o_ptr->art_flags, TR_DRAIN_EXP)
-                               : one_in_(2) ? add_flag(o_ptr->art_flags, TR_DRAIN_HP) : add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
-
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_AGGRAVATE);
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_ADD_L_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_ADD_H_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_HP);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_DRAIN_EXP);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_TY_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_CALL_DEMON);
-                    break;
                 case EGO_ANCIENT_CURSE:
                     ok_flag = FALSE;
+                    break;
+                default:
                     break;
                 }
 
@@ -438,26 +322,6 @@ void apply_magic_armor(player_type *owner_ptr, object_type *o_ptr, DEPTH level, 
                 break;
             }
             o_ptr->name2 = get_random_ego(INVEN_OUTER, TRUE);
-
-            switch (o_ptr->name2) {
-            case EGO_BAT:
-                o_ptr->to_d -= 6;
-                o_ptr->to_h -= 6;
-                break;
-            case EGO_NAZGUL:
-                o_ptr->to_d -= 3;
-                o_ptr->to_h -= 3;
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_COWARDICE);
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_CALL_UNDEAD);
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_SLOW_REGEN);
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_DRAIN_EXP);
-                break;
-            }
-
         } else if (power < -1) {
             o_ptr->name2 = get_random_ego(INVEN_OUTER, FALSE);
         }

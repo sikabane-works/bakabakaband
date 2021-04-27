@@ -23,11 +23,9 @@
 #include "grid/grid.h"
 #include "monster-floor/monster-move.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags-ability1.h"
-#include "monster-race/race-flags-ability2.h"
+#include "monster-race/race-ability-mask.h"
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags3.h"
-#include "monster-race/race-flags4.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
@@ -39,7 +37,6 @@
 #include "mspell/improper-mspell-remover.h"
 #include "mspell/mspell-judgement.h"
 #include "mspell/mspell-learn-checker.h"
-#include "mspell/mspell-mask-definitions.h"
 #include "mspell/mspell-selector.h"
 #include "mspell/mspell-util.h"
 #include "object-enchant/object-curse.h"
@@ -187,7 +184,7 @@ bool clean_shot(player_type *target_ptr, POSITION y1, POSITION x1, POSITION y2, 
  * @param monspell モンスター魔法のID
  * @param target_type モンスターからモンスターへ撃つならMONSTER_TO_MONSTER、モンスターからプレイヤーならMONSTER_TO_PLAYER
  */
-ProjectResult bolt(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, EFFECT_ID typ, int dam_hp, int monspell, int target_type)
+ProjectResult bolt(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, EFFECT_ID typ, int dam_hp, int target_type)
 {
     BIT_FLAGS flg = 0;
     switch (target_type) {
@@ -202,7 +199,7 @@ ProjectResult bolt(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSIT
     if (typ != GF_ARROW)
         flg |= PROJECT_REFLECTABLE;
 
-    return project(target_ptr, m_idx, 0, y, x, dam_hp, typ, flg, monspell);
+    return project(target_ptr, m_idx, 0, y, x, dam_hp, typ, flg);
 }
 
 /*!
@@ -216,7 +213,7 @@ ProjectResult bolt(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSIT
  * @param monspell モンスター魔法のID
  * @param target_type モンスターからモンスターへ撃つならMONSTER_TO_MONSTER、モンスターからプレイヤーならMONSTER_TO_PLAYER
  */
-ProjectResult beam(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, EFFECT_ID typ, int dam_hp, int monspell, int target_type)
+ProjectResult beam(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, EFFECT_ID typ, int dam_hp, int target_type)
 {
     BIT_FLAGS flg = 0;
     switch (target_type) {
@@ -228,7 +225,7 @@ ProjectResult beam(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSIT
         break;
     }
 
-    return project(target_ptr, m_idx, 0, y, x, dam_hp, typ, flg, monspell);
+    return project(target_ptr, m_idx, 0, y, x, dam_hp, typ, flg);
 }
 
 /*!
@@ -246,7 +243,7 @@ ProjectResult beam(player_type *target_ptr, MONSTER_IDX m_idx, POSITION y, POSIT
  * @param target_type モンスターからモンスターへ撃つならMONSTER_TO_MONSTER、モンスターからプレイヤーならMONSTER_TO_PLAYER
  */
 ProjectResult breath(
-    player_type *target_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx, EFFECT_ID typ, int dam_hp, POSITION rad, bool breath, int monspell, int target_type)
+    player_type *target_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx, EFFECT_ID typ, int dam_hp, POSITION rad, bool breath, int target_type)
 {
     monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -282,7 +279,7 @@ ProjectResult breath(
         break;
     }
 
-    return project(target_ptr, m_idx, rad, y, x, dam_hp, typ, flg, monspell);
+    return project(target_ptr, m_idx, rad, y, x, dam_hp, typ, flg);
 }
 
 /*!
@@ -291,21 +288,7 @@ ProjectResult breath(
  * @param spell 判定対象のID
  * @return 非魔術的な特殊技能ならばTRUEを返す。
  */
-bool spell_is_inate(SPELL_IDX spell)
+bool spell_is_inate(RF_ABILITY spell)
 {
-    if (32 * 3 <= spell && spell < 32 * 4) /* Set RF4 */
-    {
-        return ((1UL << (spell - 32 * 3)) & RF4_NOMAGIC_MASK) != 0;
-    }
-    if (32 * 4 <= spell && spell < 32 * 5) /* Set RF5 */
-    {
-        return ((1UL << (spell - 32 * 4)) & RF5_NOMAGIC_MASK) != 0;
-    }
-    if (32 * 5 <= spell && spell < 32 * 6) /* Set RF6 */
-    {
-        return ((1UL << (spell - 32 * 5)) & RF6_NOMAGIC_MASK) != 0;
-    }
-
-    // 無効なモンスタースペルIDが渡されたら FALSE を返す。
-    return FALSE;
+    return RF_ABILITY_NOMAGIC_MASK.has(spell);
 }

@@ -21,7 +21,6 @@
 #include "player-info/avatar.h"
 #include "player/race-info-table.h"
 #include "store/home.h"
-#include "store/owner-insults.h"
 #include "store/pricing.h"
 #include "store/say-comments.h"
 #include "store/store-util.h"
@@ -31,75 +30,99 @@
 #include "view/display-messages.h"
 #include "view/display-store.h"
 #include "world/world.h"
-#include "io/input-key-acceptor.h"
+#include <optional>
 
-typedef struct haggle_type {
-    object_type *o_ptr;
-    s32b *price;
-    s32b cur_ask;
-    s32b final_ask;
-    int noneed;
-    bool final;
-    concptr pmt;
-    s32b min_per;
-    s32b max_per;
-    s32b last_offer;
-    s32b offer;
-    bool flag;
-    int annoyed;
-    bool cancel;
-} haggle_type;
+/*!
+ * @brief プレイヤーが購入する時の値切り処理メインルーチン /
+ * Haggling routine 				-RAK-
+ * @param player_ptr プレーヤーへの参照ポインタ
+ * @param o_ptr オブジェクトの構造体参照ポインタ
+ * @param price 最終価格を返す参照ポインタ
+ * @return プレイヤーの価格に対して店主が不服ならばTRUEを返す /
+ * Return TRUE if purchase is NOT successful
+ */
+static std::optional<PRICE> prompt_to_buy(player_type *player_ptr, object_type *o_ptr)
+{
+    auto price_ask = price_item(player_ptr, o_ptr, ot_ptr->inflate, FALSE);
+    auto is_low_price = price_ask < LOW_PRICE_THRESHOLD;
 
+    if (!is_low_price)
+        price_ask += price_ask / 10;
+
+    msg_print(_("すんなりとこの金額にまとまった。", "You quickly agree upon the price."));
+    msg_print(NULL);
+
+    price_ask *= o_ptr->number;
+    concptr s = format(_("買値 $%ld で買いますか？", "Do you buy for $%ld? "), static_cast<long>(price_ask));
+    if (get_check_strict(player_ptr, s, CHECK_DEFAULT_Y)) {
+        return price_ask;
+    }
+
+    return std::nullopt;
+}
+
+    /*!
+ * @brief 店舗から購入する際のアイテム選択プロンプト
+ * @param item 店舗インベントリ番号(アドレス渡し)
+ * @param i 店舗インベントリストック数
+ * @return 選択したらtrue、しなかったらfalse
+ * @details
+ * 選択したインベントリ番号はitemに返る。
+ * ブラックマーケットの時は別のメッセージ。
+ */
 static bool show_store_select_item(COMMAND_CODE *item, const int i)
 {
     char out_val[160];
-#ifdef JP
-    /* ブラックマーケットの時は別のメッセージ */
+
     switch (cur_store_num) {
-    case 7:
-        sprintf(out_val, "どのアイテムを取りますか? ");
+    case STORE_HOME:
+        sprintf(out_val, _("どのアイテムを取りますか? ", "Which item do you want to take? "));
         break;
-    case 6:
-        sprintf(out_val, "どれ? ");
+    case STORE_BLACK:
+        sprintf(out_val, _("どれ? ", "Which item, huh? "));
         break;
     default:
-        sprintf(out_val, "どの品物が欲しいんだい? ");
+        sprintf(out_val, _("どの品物が欲しいんだい? ", "Which item are you interested in? "));
         break;
     }
-#else
-    if (cur_store_num == STORE_HOME) {
-        sprintf(out_val, "Which item do you want to take? ");
-    } else {
-        sprintf(out_val, "Which item are you interested in? ");
-    }
-#endif
 
     return get_stock(item, out_val, 0, i - 1) != 0;
 }
 
-static bool process_purchase_result(player_type *player_ptr, object_type *o_ptr, object_type *j_ptr, COMMAND_CODE *item_new,const int amt, int *i, const COMMAND_CODE item)
+/*!
+ * @brief 家のアイテムを取得する
+ * @param player_ptr プレイヤー情報の参照ポインタ
+ * @param o_ptr 取得元オブジェクト
+ * @param j_ptr 取得先オブジェクト(指定数量分)
+ * @param item_new 取得先インベントリ番号(アドレス渡し)
+ * @param amt 数量
+ * @param i お店のストック数(アドレス渡し)
+ * @param 取得元インベントリ番号
+ * @return なし
+ */
+static void take_item_from_home(player_type *player_ptr, object_type *o_ptr, object_type *j_ptr, const COMMAND_CODE item)
 {
-    if (cur_store_num != STORE_HOME)
-        return FALSE;
-
-    bool combined_or_reordered;
+    const int amt = j_ptr->number;
     distribute_charges(o_ptr, j_ptr, amt);
-    *item_new = store_item_to_inventory(player_ptr, j_ptr);
+
     GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, &player_ptr->inventory_list[*item_new], 0);
+    auto item_new = store_item_to_inventory(player_ptr, j_ptr);
+    describe_flavor(player_ptr, o_name, &player_ptr->inventory_list[item_new], 0);
     handle_stuff(player_ptr);
-    msg_format(_("%s(%c)を取った。", "You have %s (%c)."), o_name, index_to_label(*item_new));
-    *i = st_ptr->stock_num;
+    msg_format(_("%s(%c)を取った。", "You have %s (%c)."), o_name, index_to_label(item_new));
+
+    auto i = st_ptr->stock_num;
     store_item_increase(item, -amt);
     store_item_optimize(item);
-    combined_or_reordered = combine_and_reorder_home(player_ptr, STORE_HOME);
-    if (*i == st_ptr->stock_num) {
+
+    auto combined_or_reordered = combine_and_reorder_home(player_ptr, STORE_HOME);
+
+    if (i == st_ptr->stock_num) {
         if (combined_or_reordered)
             display_store_inventory(player_ptr);
         else
             display_entry(player_ptr, item);
-
-        return TRUE;
+        return;
     }
 
     if (st_ptr->stock_num == 0)
@@ -109,7 +132,6 @@ static bool process_purchase_result(player_type *player_ptr, object_type *o_ptr,
 
     display_store_inventory(player_ptr);
     chg_virtue(player_ptr, V_SACRIFICE, 1);
-    return TRUE;
 }
 
 static void shuffle_store(player_type *player_ptr)
@@ -137,7 +159,7 @@ static void switch_store_stock(player_type *player_ptr, const int i, const COMMA
         display_store_inventory(player_ptr);
         return;
     }
-    
+
     if (st_ptr->stock_num != i) {
         if (store_top >= st_ptr->stock_num)
             store_top -= store_bottom;
@@ -181,10 +203,10 @@ void store_purchase(player_type *player_ptr)
     item = item + store_top;
     object_type *o_ptr;
     o_ptr = &st_ptr->stock[item];
+
     ITEM_NUMBER amt = 1;
     object_type forge;
-    object_type *j_ptr;
-    j_ptr = &forge;
+    object_type *j_ptr = &forge;
     object_copy(j_ptr, o_ptr);
 
     /*
@@ -198,7 +220,7 @@ void store_purchase(player_type *player_ptr)
         return;
     }
 
-    PRICE best = price_item(player_ptr, j_ptr, ot_ptr->min_inflate, FALSE);
+    PRICE best = price_item(player_ptr, j_ptr, ot_ptr->inflate, FALSE);
     if (o_ptr->number > 1) {
         if ((cur_store_num != STORE_HOME) && (o_ptr->ident & IDENT_FIXED)) {
             msg_format(_("一つにつき $%ldです。", "That costs %ld gold per item."), (long)(best));
@@ -229,18 +251,29 @@ void store_purchase(player_type *player_ptr)
         return;
     }
 
+    if (cur_store_num == STORE_HOME) {
+        take_item_from_home(player_ptr, o_ptr, j_ptr, item);
+        return;
+    }
+
     COMMAND_CODE item_new;
-    if (process_purchase_result(player_ptr, o_ptr, j_ptr, &item_new, amt, &i, item))
-        return;
-
-    int choice;
     PRICE price;
-    choice = 0;
-    char out_val[80];
-    price = (best * j_ptr->number);
+    if (o_ptr->ident & (IDENT_FIXED)) {
+        price = (best * j_ptr->number);
+    } else {
+        GAME_TEXT o_name[MAX_NLEN];
+        describe_flavor(player_ptr, o_name, j_ptr, 0);
+        msg_format(_("%s(%c)を購入する。", "Buying %s (%c)."), o_name, I2A(item));
+        msg_print(NULL);
 
-    if (choice != 0)
-        return;
+        auto res = prompt_to_buy(player_ptr, j_ptr);
+        if (st_ptr->store_open >= current_world_ptr->game_turn)
+            return;
+        if (!res)
+            return;
+
+        price = res.value();
+    }
 
     if (price == (best * j_ptr->number))
         o_ptr->ident |= (IDENT_FIXED);
@@ -250,33 +283,20 @@ void store_purchase(player_type *player_ptr)
         return;
     }
 
-    sprintf(out_val, _("購入総額: $%d [Enter/Escape]", "Purchase total price: $%d [Enter/Escape]"), price);
-    put_str(out_val, 0, 0);
-    while (TRUE) {
-        char k = inkey();
-        if (k == '\r') {
-            break;        
-        }
-        if (k == ESCAPE) {
-            put_str("                                                  ", 0, 0);
-            return;
-        }
-    }
-
+    store_owner_says_comment(player_ptr);
     if (cur_store_num == STORE_BLACK)
         chg_virtue(player_ptr, V_JUSTICE, -1);
     if ((o_ptr->tval == TV_BOTTLE) && (cur_store_num != STORE_HOME))
         chg_virtue(player_ptr, V_NATURE, -1);
 
     sound(SOUND_BUY);
-    decrease_insults();
     player_ptr->au -= price;
     store_prt_gold(player_ptr);
     object_aware(player_ptr, j_ptr);
     j_ptr->ident &= ~(IDENT_FIXED);
+
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, j_ptr, 0);
-
     msg_format(_("%sを $%ldで購入しました。", "You bought %s for %ld gold."), o_name, (long)price);
 
     strcpy(record_o_name, o_name);
@@ -284,6 +304,7 @@ void store_purchase(player_type *player_ptr)
 
     if (record_buy)
         exe_write_diary(player_ptr, DIARY_BUY, 0, o_name);
+
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
     if (record_rand_art && o_ptr->art_name)
         exe_write_diary(player_ptr, DIARY_ART, 0, o_name);

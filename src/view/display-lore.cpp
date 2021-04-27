@@ -10,17 +10,16 @@
 #include "lore/monster-lore.h"
 #include "monster-attack/monster-attack-types.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/race-ability-flags.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags3.h"
-#include "monster-race/race-flags4.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
-#include "mspell/mspell-type.h"
-#include "util/bit-flags-calculator.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
+#include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #ifdef JP
@@ -196,7 +195,7 @@ static void display_no_killed(lore_type *lore_ptr)
  * @brief 生存数制限のあるモンスターの最大生存数を表示する
  * @param lore_ptr モンスターの思い出構造体への参照ポインタ
  * @return なし
- * @detail
+ * @details
  * 一度も倒したことのないモンスターの情報は不明。
  */
 static void display_number_of_nazguls(lore_type *lore_ptr)
@@ -401,8 +400,14 @@ void display_monster_alignment(lore_type *lore_ptr)
     if (lore_ptr->flags3 & RF3_GOOD)
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
 
+    if (lore_ptr->flags8 & RF8_NINJA)
+        hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));
+
     if (lore_ptr->flags8 & RF8_YAKUZA)
         hook_c_roff(TERM_L_DARK, _("ヤクザな", " yakuza"));
+
+    if (lore_ptr->flags8 & RF8_SUMOU_WRESTLER)
+        hook_c_roff(TERM_YELLOW, _("スモトリの", " sumou wrestler"));
 
     if (lore_ptr->flags3 & RF3_UNDEAD)
         hook_c_roff(TERM_VIOLET, _("アンデッドの", " undead"));
@@ -571,13 +576,13 @@ void display_monster_collective(lore_type *lore_ptr)
  */
 void display_monster_launching(player_type *player_ptr, lore_type *lore_ptr)
 {
-    if (lore_ptr->flags4 & RF4_ROCKET) {
-        set_damage(player_ptr, lore_ptr, (MS_ROCKET), _("ロケット%sを発射する", "shoot a rocket%s"));
+    if (lore_ptr->ability_flags.has(RF_ABILITY::ROCKET)) {
+        set_damage(player_ptr, lore_ptr, RF_ABILITY::ROCKET, _("ロケット%sを発射する", "shoot a rocket%s"));
         lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
         lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
     }
 
-    if ((lore_ptr->flags4 & RF4_SHOOT) == 0)
+    if (lore_ptr->ability_flags.has_not(RF_ABILITY::SHOOT))
         return;
 
     int p = -1; /* Position of SHOOT */

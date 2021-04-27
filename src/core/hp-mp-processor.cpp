@@ -34,12 +34,12 @@
 
 /*!
  * @brief 地形によるダメージを与える / Deal damage from feature.
- * @params creature_ptr プレイヤー情報への参照ポインタ
- * @params g_ptr 現在の床の情報への参照ポインタ
- * @params msg_levitation 浮遊時にダメージを受けた場合に表示するメッセージ
- * @params msg_normal 通常時にダメージを受けた場合に表示するメッセージの述部
- * @params 耐性等によるダメージレートを計算する関数
- * @patams ダメージを受けた際の追加処理を行う関数
+ * @param creature_ptr プレイヤー情報への参照ポインタ
+ * @param g_ptr 現在の床の情報への参照ポインタ
+ * @param msg_levitation 浮遊時にダメージを受けた場合に表示するメッセージ
+ * @param msg_normal 通常時にダメージを受けた場合に表示するメッセージの述部
+ * @param 耐性等によるダメージレートを計算する関数
+ * @param ダメージを受けた際の追加処理を行う関数
  * @return ダメージを与えたらTRUE、なければFALSE
  * @details
  * ダメージを受けた場合、自然回復できない。
@@ -49,8 +49,14 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
 {
     feature_type *f_ptr = &f_info[g_ptr->feat];
     int damage = 0;
+    bool resist_levitation = (creature_ptr->levitation && !has_flag(f_ptr->flags, FF_CHAOS_TAINTED) && !has_flag(f_ptr->flags, FF_VOID));
 
-    if (has_flag(f_ptr->flags, FF_DEEP)) {
+
+    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+        damage = 12000 + randint0(8000);
+    } else if (has_flag(f_ptr->flags, FF_VOID)) {
+        damage = 18000 + randint0(12000);
+    } else if (has_flag(f_ptr->flags, FF_DEEP)) {
         damage = 6000 + randint0(4000);
     } else if (!creature_ptr->levitation) {
         damage = 3000 + randint0(2000);
@@ -58,7 +64,8 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
 
     damage *= damage_rate(creature_ptr);
     damage /= 100;
-    if (creature_ptr->levitation)
+
+    if (resist_levitation)
         damage /= 5;
 
     damage = damage / 100 + (randint0(100) < (damage % 100));
@@ -66,18 +73,17 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
     if (damage == 0)
         return FALSE;
 
-    if (creature_ptr->levitation) {
+    if (resist_levitation) {
         msg_print(msg_levitation);
 
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"),
-            f_info[get_feat_mimic(g_ptr)].name.c_str()), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"), f_info[get_feat_mimic(g_ptr)].name.c_str()));
 
         if (additional_effect != NULL)
             additional_effect(creature_ptr, damage);
     } else {
         concptr name = f_info[get_feat_mimic(&creature_ptr->current_floor_ptr->grid_array[creature_ptr->y][creature_ptr->x])].name.c_str();
         msg_format(_("%s%s！", "The %s %s!"), name, msg_normal);
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, name, -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, name);
 
         if (additional_effect != NULL)
             additional_effect(creature_ptr, damage);
@@ -99,7 +105,7 @@ void process_player_hp_mp(player_type *creature_ptr)
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
     if (creature_ptr->poisoned && !is_invuln(creature_ptr)) {
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"));
     }
 
     if (creature_ptr->cut && !is_invuln(creature_ptr)) {
@@ -120,14 +126,14 @@ void process_player_hp_mp(player_type *creature_ptr)
             dam = 1;
         }
 
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, dam, _("致命傷", "a fatal wound"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, dam, _("致命傷", "a fatal wound"));
     }
 
-    if (is_specific_player_race(creature_ptr, RACE_VAMPIRE) || (creature_ptr->mimic_form == MIMIC_VAMPIRE)) {
+    if (player_race_life(creature_ptr) == PlayerRaceLife::UNDEAD && player_race_has_flag(creature_ptr, TR_VUL_LITE)) {
         if (!is_in_dungeon(creature_ptr) && !has_resist_lite(creature_ptr) && !is_invuln(creature_ptr) && is_daytime()) {
             if ((creature_ptr->current_floor_ptr->grid_array[creature_ptr->y][creature_ptr->x].info & (CAVE_GLOW | CAVE_MNDK)) == CAVE_GLOW) {
                 msg_print(_("日光があなたのアンデッドの肉体を焼き焦がした！", "The sun's rays scorch your undead flesh!"));
-                take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, _("日光", "sunlight"), -1);
+                take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, _("日光", "sunlight"));
                 cave_no_regen = TRUE;
             }
         }
@@ -148,7 +154,7 @@ void process_player_hp_mp(player_type *creature_ptr)
             sprintf(ouch, _("%sを装備したダメージ", "wielding %s"), o_name);
 
             if (!is_invuln(creature_ptr))
-                take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, ouch, -1);
+                take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, ouch);
         }
     }
 
@@ -184,43 +190,55 @@ void process_player_hp_mp(player_type *creature_ptr)
         && !has_resist_water(creature_ptr)) {
         if (calc_inventory_weight(creature_ptr) > calc_weight_limit(creature_ptr)) {
             msg_print(_("溺れている！", "You are drowning!"));
-            take_hit(creature_ptr, DAMAGE_NOESCAPE, randint1(creature_ptr->lev), _("溺れ", "drowning"), -1);
+            take_hit(creature_ptr, DAMAGE_NOESCAPE, randint1(creature_ptr->lev), _("溺れ", "drowning"));
             cave_no_regen = TRUE;
         }
+    }
+
+    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+        cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("に汚染された!", "taints you!"),
+            _("に汚染された!", "taints you"), calc_chaos_damage_rate_rand, NULL);
+    }
+
+    if (has_flag(f_ptr->flags, FF_VOID)) {
+        cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
+            _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
 
     if (creature_ptr->riding) {
         HIT_POINT damage;
         if ((r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].flags2 & RF2_AURA_FIRE) && !has_immune_fire(creature_ptr)) {
             damage = r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].level / 2;
-            if (is_specific_player_race(creature_ptr, RACE_ENT))
+            if (player_race_has_flag(creature_ptr, TR_VUL_FIRE))
                 damage += damage / 3;
             if (has_resist_fire(creature_ptr))
                 damage = damage / 3;
             if (is_oppose_fire(creature_ptr))
                 damage = damage / 3;
             msg_print(_("熱い！", "It's hot!"));
-            take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, _("炎のオーラ", "Fire aura"), -1);
+            take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, _("炎のオーラ", "Fire aura"));
         }
         if ((r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].flags2 & RF2_AURA_ELEC) && !has_immune_elec(creature_ptr)) {
             damage = r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].level / 2;
-            if (is_specific_player_race(creature_ptr, RACE_ANDROID))
+            if (player_race_has_flag(creature_ptr, TR_VUL_ELEC))
                 damage += damage / 3;
             if (has_resist_elec(creature_ptr))
                 damage = damage / 3;
             if (is_oppose_elec(creature_ptr))
                 damage = damage / 3;
             msg_print(_("痛い！", "It hurts!"));
-            take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, _("電気のオーラ", "Elec aura"), -1);
+            take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, _("電気のオーラ", "Elec aura"));
         }
         if ((r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].flags3 & RF3_AURA_COLD) && !has_immune_cold(creature_ptr)) {
             damage = r_info[creature_ptr->current_floor_ptr->m_list[creature_ptr->riding].r_idx].level / 2;
+            if (player_race_has_flag(creature_ptr, TR_VUL_COLD))
+                damage += damage / 3;
             if (has_resist_cold(creature_ptr))
                 damage = damage / 3;
             if (is_oppose_cold(creature_ptr))
                 damage = damage / 3;
             msg_print(_("冷たい！", "It's cold!"));
-            take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, _("冷気のオーラ", "Cold aura"), -1);
+            take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, _("冷気のオーラ", "Cold aura"));
         }
     }
 
@@ -245,7 +263,7 @@ void process_player_hp_mp(player_type *creature_ptr)
                 dam_desc = _("硬い岩", "solid rock");
             }
 
-            take_hit(creature_ptr, DAMAGE_NOESCAPE, 1 + (creature_ptr->lev / 5), dam_desc, -1);
+            take_hit(creature_ptr, DAMAGE_NOESCAPE, 1 + (creature_ptr->lev / 5), dam_desc);
         }
     }
 

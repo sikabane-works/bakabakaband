@@ -75,6 +75,7 @@ enum monster_race_type {
     MON_SHADOWLORD = 774,
     MON_JABBERWOCK = 778,
     MON_SHAMBLER = 786,
+    MON_TIAMAT = 795,
     MON_BLACK_REAVER = 798,
     MON_NULL = 803,
     MON_UNMAKER = 815,
@@ -175,4 +176,9 @@ enum monster_race_type {
     MON_BIG_RAVEN = 1268,
     MON_MELKO = 1287,
     MON_STOLENMAN = 1288,
+    MON_YENDER_WIZARD_1 = 1360,
+    MON_YENDER_WIZARD_2 = 1361,
+    MON_DOPPIO = 1366,
+    MON_DIAVOLO = 1367,
+    MON_MANIMANI = 1368,
 };

@@ -293,27 +293,27 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
                 return TRUE;
         break;
     case SV_FOOD_WEAKNESS:
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(6, 6), _("毒入り食料", "poisonous food"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(6, 6), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_STR);
         return TRUE;
     case SV_FOOD_SICKNESS:
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(6, 6), _("毒入り食料", "poisonous food"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(6, 6), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_CON);
         return TRUE;
     case SV_FOOD_STUPIDITY:
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(8, 8), _("毒入り食料", "poisonous food"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(8, 8), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_INT);
         return TRUE;
     case SV_FOOD_NAIVETY:
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(8, 8), _("毒入り食料", "poisonous food"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(8, 8), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_WIS);
         return TRUE;
     case SV_FOOD_UNHEALTH:
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 10), _("毒入り食料", "poisonous food"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 10), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_CON);
         return TRUE;
     case SV_FOOD_DISEASE:
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 10), _("毒入り食料", "poisonous food"), -1);
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 10), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_STR);
         return TRUE;
     case SV_FOOD_CURE_POISON:
@@ -560,9 +560,7 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
 
         if (creature_ptr->food < PY_FOOD_ALERT) /* Hungry */
             msg_print(_("あなたの飢えは新鮮な血によってのみ満たされる！", "Your hunger can only be satisfied with fresh blood!"));
-    } else if (is_specific_player_race(creature_ptr, RACE_GOLEM) || is_specific_player_race(creature_ptr, RACE_ZOMBIE)
-        || is_specific_player_race(creature_ptr, RACE_ENT) || is_specific_player_race(creature_ptr, RACE_BALROG)
-        || is_specific_player_race(creature_ptr, RACE_ANDROID) || is_specific_player_race(creature_ptr, RACE_SPECTRE)
+    } else if (player_race_life(creature_ptr) != PlayerRaceLife::LIVING
         || (mimic_info[creature_ptr->mimic_form].MIMIC_FLAGS & MIMIC_IS_NONLIVING)) {
         msg_print(_("生者の食物はあなたにとってほとんど栄養にならない。", "The food of mortals is poor sustenance for you."));
         set_food(creature_ptr, creature_ptr->food + ((o_ptr->pval) / 20));

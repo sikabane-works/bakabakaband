@@ -121,7 +121,7 @@ static void send_waiting_record(player_type *player_ptr)
 
     /* 町名消失バグ対策(#38205)のためここで世界マップ情報を読み出す */
     parse_fixed_map(player_ptr, "w_info.txt", 0, 0, current_world_ptr->max_wild_y, current_world_ptr->max_wild_x);
-    bool success = send_world_score(player_ptr, TRUE, update_playtime, display_player);
+    bool success = send_world_score(player_ptr, TRUE, display_player);
     if (!success && !get_check_strict(player_ptr, _("スコア登録を諦めますか？", "Do you give up score registration? "), CHECK_NO_HISTORY)) {
         prt(_("引き続き待機します。", "standing by for future registration..."), 0, 0);
         (void)inkey();
@@ -150,7 +150,7 @@ static void init_random_seed(player_type *player_ptr, bool new_game)
         init_saved_floors(player_ptr, TRUE);
 
     if (!new_game)
-        process_player_name(player_ptr, FALSE);
+        process_player_name(player_ptr);
 
     if (init_random_seed)
         Rand_state_init();
@@ -167,7 +167,7 @@ static void init_world_floor_info(player_type *player_ptr)
     write_level = TRUE;
     current_world_ptr->seed_flavor = randint0(0x10000000);
     current_world_ptr->seed_town = randint0(0x10000000);
-    player_birth(player_ptr, process_autopick_file_command);
+    player_birth(player_ptr);
     counts_write(player_ptr, 2, 0);
     player_ptr->count = 0;
     load = FALSE;
@@ -414,7 +414,7 @@ static void process_game_turn(player_type *player_ptr)
 void play_game(player_type *player_ptr, bool new_game, bool browsing_movie)
 {
     if (browsing_movie) {
-        reset_visuals(player_ptr, process_autopick_file_command);
+        reset_visuals(player_ptr);
         browse_movie();
         return;
     }
@@ -434,13 +434,13 @@ void play_game(player_type *player_ptr, bool new_game, bool browsing_movie)
 
     generate_world(player_ptr, new_game);
     player_ptr->playing = TRUE;
-    reset_visuals(player_ptr, process_autopick_file_command);
+    reset_visuals(player_ptr);
     load_all_pref_files(player_ptr);
     if (new_game)
         player_outfit(player_ptr);
 
     init_io(player_ptr);
-    if (player_ptr->chp < 0)
+    if (player_ptr->chp < 0 && !cheat_immortal)
         player_ptr->is_dead = TRUE;
 
     if (player_ptr->prace == RACE_ANDROID)

@@ -2,4 +2,7 @@
 
 #include "system/angband.h"
 
-void remove_bad_spells(MONSTER_IDX m_idx, player_type *target_ptr, u32b *f4p, u32b *f5p, u32b *f6p);
+#include "monster-race/race-ability-flags.h"
+#include "util/flag-group.h"
+
+void remove_bad_spells(MONSTER_IDX m_idx, player_type *target_ptr, EnumClassFlagGroup<RF_ABILITY> &ability_flags);

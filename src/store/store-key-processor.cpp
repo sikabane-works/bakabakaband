@@ -1,4 +1,4 @@
-﻿#include "io/store-key-processor.h"
+﻿#include "store/store-key-processor.h"
 #include "autopick/autopick-pref-processor.h"
 #include "cmd-action/cmd-mind.h"
 #include "cmd-action/cmd-spell.h"
@@ -85,18 +85,14 @@ void store_process_command(player_type *client_ptr)
             msg_print(_("これで全部です。", "Entire inventory is shown."));
         } else {
             store_top += store_bottom;
+
             /*
              * 隠しオプション(powerup_home)がセットされていないときは
              * 我が家では 2 ページまでしか表示しない
              */
-            if ((cur_store_num == STORE_HOME) && (powerup_home == FALSE) && (st_ptr->stock_num >= STORE_INVEN_MAX)) {
-                if (store_top >= (STORE_INVEN_MAX - 1)) {
-                    store_top = 0;
-                }
-            } else {
-                if (store_top >= st_ptr->stock_num)
-                    store_top = 0;
-            }
+            auto inven_max = store_get_stock_max(STORE_HOME, powerup_home);
+            if (store_top >= st_ptr->stock_num || store_top >= inven_max)
+                store_top = 0;
 
             display_store_inventory(client_ptr);
         }
@@ -203,19 +199,19 @@ void store_process_command(player_type *client_ptr)
     }
     case '@': {
         client_ptr->town_num = old_town_num;
-        do_cmd_macros(client_ptr, process_autopick_file_command);
+        do_cmd_macros(client_ptr);
         client_ptr->town_num = inner_town_num;
         break;
     }
     case '%': {
         client_ptr->town_num = old_town_num;
-        do_cmd_visuals(client_ptr, process_autopick_file_command);
+        do_cmd_visuals(client_ptr);
         client_ptr->town_num = inner_town_num;
         break;
     }
     case '&': {
         client_ptr->town_num = old_town_num;
-        do_cmd_colors(client_ptr, process_autopick_file_command);
+        do_cmd_colors(client_ptr);
         client_ptr->town_num = inner_town_num;
         break;
     }
@@ -259,7 +255,7 @@ void store_process_command(player_type *client_ptr)
         break;
     }
     case ')': {
-        do_cmd_save_screen(client_ptr, process_autopick_file_command);
+        do_cmd_save_screen(client_ptr);
         break;
     }
     default: {
