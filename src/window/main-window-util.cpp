@@ -199,7 +199,7 @@ void display_map(player_type *player_ptr, int *cy, int *cx)
     hgt -= 2;
     wid -= 14;
     if (use_bigtile)
-        wid /= 2;
+        wid = (wid / 2) - 1;
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     yrat = (floor_ptr->height + hgt - 1) / hgt;
