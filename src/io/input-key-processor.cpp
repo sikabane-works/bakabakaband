@@ -20,7 +20,6 @@
 #include "cmd-action/cmd-travel.h"
 #include "cmd-action/cmd-tunnel.h"
 #include "cmd-building/cmd-building.h"
-#include "cmd-building/cmd-store.h"
 #include "cmd-io/cmd-autopick.h"
 #include "cmd-io/cmd-diary.h"
 #include "cmd-io/cmd-dump.h"
@@ -81,6 +80,7 @@
 #include "player/special-defense-types.h"
 #include "status/action-setter.h"
 #include "store/home.h"
+#include "store/cmd-store.h"
 #include "store/store-util.h"
 #include "system/floor-type-definition.h"
 #include "term/screen-processor.h"
@@ -429,7 +429,7 @@ void process_command(player_type *creature_ptr)
                 else if (creature_ptr->pclass == CLASS_SNIPER)
                     do_cmd_snipe(creature_ptr);
                 else
-                    do_cmd_cast(creature_ptr);
+                    (void)do_cmd_cast(creature_ptr);
             }
         }
 
@@ -545,16 +545,16 @@ void process_command(player_type *creature_ptr)
         break;
     }
     case '@': {
-        do_cmd_macros(creature_ptr, process_autopick_file_command);
+        do_cmd_macros(creature_ptr);
         break;
     }
     case '%': {
-        do_cmd_visuals(creature_ptr, process_autopick_file_command);
+        do_cmd_visuals(creature_ptr);
         do_cmd_redraw(creature_ptr);
         break;
     }
     case '&': {
-        do_cmd_colors(creature_ptr, process_autopick_file_command);
+        do_cmd_colors(creature_ptr);
         do_cmd_redraw(creature_ptr);
         break;
     }
@@ -623,7 +623,7 @@ void process_command(player_type *creature_ptr)
         break;
     }
     case ')': {
-        do_cmd_save_screen(creature_ptr, process_autopick_file_command);
+        do_cmd_save_screen(creature_ptr);
         break;
     }
     case ']': {

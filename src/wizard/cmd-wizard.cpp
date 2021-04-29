@@ -40,7 +40,7 @@
 
 /*!
  * @brief デバグコマンド一覧表
- * @detail
+ * @details
  * 空き: A,B,E,I,J,k,K,L,M,q,Q,R,T,U,V,W,y,Y
  */
 std::vector<std::vector<std::string>> debug_menu_table = {
@@ -57,6 +57,7 @@ std::vector<std::vector<std::string>> debug_menu_table = {
     { "G", _("ゲームの設定を変更", "Modify game configurations") },
     { "H", _("モンスターの群れ生成", "Summon monsters") },
     { "i", _("鑑定", "Idenfity") },
+    { "I", _("インベントリ全*鑑定*", "Idenfity all objects fully in inventory") },
     { "j", _("指定ダンジョン階にワープ", "Jump to floor depth of target dungeon") },
     { "l", _("指定アイテム番号まで一括鑑定", "Make objects idenfified to target object id") },
     { "m", _("魔法の地図", "Magic mapping") },
@@ -76,7 +77,7 @@ std::vector<std::vector<std::string>> debug_menu_table = {
     { "W", _("願い", "Wishing") },
     { "x", _("経験値を得る(指定可)", "Get experience") },
     { "X", _("所持品を初期状態に戻す", "Return inventory to initial") },
-    { "y", _("ダメージ100万・半径0の弱魔力のボールを放つ", "Cast missile ball had power a million") },
+    { "y", _("ダメージ100万・半径0の射撃のボールを放つ", "Cast missile ball had power a million") },
     { "z", _("近隣のモンスター消去", "Terminate near monsters") },
     { "Z", _("フロアの全モンスター消去", "Terminate all monsters in floor") },
     { "@", _("特殊スペルの発動", "Activate specified spells") },
@@ -176,6 +177,9 @@ bool exe_cmd_debug(player_type *creature_ptr, char cmd)
         break;
     case 'i':
         (void)ident_spell(creature_ptr, FALSE, TV_NONE);
+        break;
+    case 'I':
+        wiz_identify_full_inventory(creature_ptr);
         break;
     case 'j':
         wiz_jump_to_dungeon(creature_ptr);

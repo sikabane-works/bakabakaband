@@ -233,7 +233,7 @@ static bool http_post(concptr url, BUF *buf)
  * @param dumpbuf 伝送内容バッファ
  * @return エラーコード
  */
-static errr make_dump(player_type *creature_ptr, BUF *dumpbuf, void (*update_playtime)(void), display_player_pf display_player)
+static errr make_dump(player_type *creature_ptr, BUF *dumpbuf, display_player_pf display_player)
 {
     char buf[1024];
     FILE *fff;
@@ -252,7 +252,7 @@ static errr make_dump(player_type *creature_ptr, BUF *dumpbuf, void (*update_pla
     }
 
     /* 一旦一時ファイルを作る。通常のダンプ出力と共通化するため。 */
-    make_character_dump(creature_ptr, fff, update_playtime, display_player);
+    make_character_dump(creature_ptr, fff, display_player);
     angband_fclose(fff);
 
     /* Open for read */
@@ -272,7 +272,7 @@ static errr make_dump(player_type *creature_ptr, BUF *dumpbuf, void (*update_pla
  * @brief スクリーンダンプを作成する/ Make screen dump to buffer
  * @return 作成したスクリーンダンプの参照ポインタ
  */
-concptr make_screen_dump(player_type *creature_ptr, void (*process_autopick_file_command)(char *))
+concptr make_screen_dump(player_type *creature_ptr)
 {
     static concptr html_head[] = {
         "<html>\n<body text=\"#ffffff\" bgcolor=\"#000000\">\n",
@@ -300,7 +300,7 @@ concptr make_screen_dump(player_type *creature_ptr, void (*process_autopick_file
         msg_print(NULL);
 
         use_graphics = FALSE;
-        reset_visuals(creature_ptr, process_autopick_file_command);
+        reset_visuals(creature_ptr);
 
         creature_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIPPY);
         handle_stuff(creature_ptr);
@@ -389,7 +389,7 @@ concptr make_screen_dump(player_type *creature_ptr, void (*process_autopick_file
         return ret;
 
     use_graphics = TRUE;
-    reset_visuals(creature_ptr, process_autopick_file_command);
+    reset_visuals(creature_ptr);
 
     creature_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIPPY);
     handle_stuff(creature_ptr);
@@ -402,7 +402,7 @@ concptr make_screen_dump(player_type *creature_ptr, void (*process_autopick_file
  * @return 正常終了の時0、異常があったら1
  * @todo メッセージは言語選択の関数マクロで何とかならんか？
  */
-errr report_score(player_type *creature_ptr, void (*update_playtime)(void), display_player_pf display_player)
+errr report_score(player_type *creature_ptr, display_player_pf display_player)
 {
     BUF *score;
     score = buf_new();
@@ -418,7 +418,7 @@ errr report_score(player_type *creature_ptr, void (*update_playtime)(void), disp
 #endif
 
     if (creature_ptr->pclass == CLASS_ELEMENTALIST)
-        realm1_name = get_element_title(creature_ptr->realm1);
+        realm1_name = get_element_title(creature_ptr->element);
     else
         realm1_name = realm_names[creature_ptr->realm1];
 
@@ -440,7 +440,7 @@ errr report_score(player_type *creature_ptr, void (*update_playtime)(void), disp
     buf_sprintf(score, "killer: %s\n", creature_ptr->died_from);
     buf_sprintf(score, "-----charcter dump-----\n");
 
-    make_dump(creature_ptr, score, update_playtime, display_player);
+    make_dump(creature_ptr, score, display_player);
 
     if (screen_dump) {
         buf_sprintf(score, "-----screen shot-----\n");

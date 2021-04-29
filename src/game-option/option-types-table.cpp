@@ -50,7 +50,7 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
 
     { &easy_disarm, TRUE, OPT_PAGE_INPUT, 5, 8, "easy_disarm", _("自動的に罠を解除する", "Automatically disarm traps") },
 
-    { &easy_floor, FALSE, OPT_PAGE_INPUT, 5, 9, "easy_floor", _("床上で重なったアイテムをリストする", "Display floor stacks in a list") },
+    { &easy_floor, TRUE, OPT_PAGE_INPUT, 5, 9, "easy_floor", _("床上で重なったアイテムをリストする", "Display floor stacks in a list") },
 
     { &use_command, FALSE, OPT_PAGE_INPUT, 5, 10, "use_command", _("「使う(a)」コマンドでアイテムを何でも使える", "Allow unified use command") },
 
@@ -77,9 +77,11 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
 
     { &view_torch_grids, FALSE, OPT_PAGE_MAPSCREEN, 1, 7, "view_torch_grids", _("明かりで照らした場所はそのままにする", "Map remembers all torch-lit grids") },
 
-    { &view_unsafe_grids, FALSE, OPT_PAGE_MAPSCREEN, 1, 8, "view_unsafe_grids", _("トラップ感知済みでない場所を表示する", "Map marked by detect traps") },
+    { &view_unsafe_grids, TRUE, OPT_PAGE_MAPSCREEN, 1, 8, "view_unsafe_grids", _("トラップ感知済みでない場所を表示する", "Map marked by detect traps") },
 
-    { &view_hidden_walls, FALSE, OPT_PAGE_MAPSCREEN, 1, 2, "view_hidden_walls", _("壁の中に囲まれた壁を表示する", "Map walls hidden in other walls") },
+    { &view_hidden_walls, TRUE, OPT_PAGE_MAPSCREEN, 1, 2, "view_hidden_walls", _("壁の中に囲まれた壁を表示する", "Map walls hidden in other walls") },
+
+    { &view_unsafe_walls, FALSE, OPT_PAGE_MAPSCREEN, 1, 1, "view_unsafe_walls", _("トラップ未感知の壁の中に囲まれた壁を表示する", "Map hidden walls not marked by detect traps") },
 
     { &view_reduce_view, FALSE, OPT_PAGE_MAPSCREEN, 1, 17, "view_reduce_view", _("街では視野を狭くする", "Reduce view-radius in town") },
 
@@ -93,7 +95,7 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
 
     { &hilite_player, FALSE, OPT_PAGE_MAPSCREEN, 1, 27, "hilite_player", _("プレイヤーにカーソルを合わせる", "Highlight the player with the cursor") },
 
-    { &display_path, FALSE, OPT_PAGE_MAPSCREEN, 2, 8, "display_path", _("魔法や矢の軌跡を表示する", "Display actual path before shooting") },
+    { &display_path, TRUE, OPT_PAGE_MAPSCREEN, 2, 8, "display_path", _("魔法や矢の軌跡を表示する", "Display actual path before shooting") },
 
     /*** Text Display Options ***/
     { &plain_descriptions, TRUE, OPT_PAGE_TEXT, 5, 1, "plain_descriptions", _("アイテムの記述を簡略にする", "Plain object descriptions") },
@@ -119,7 +121,7 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
     { &abbrev_extra, FALSE, OPT_PAGE_TEXT, 2, 10, "abbrev_extra",
         _("アイテムに追加耐性/能力の略称を刻む", "Describe obj's extra resistances by abbreviation") },
 
-    { &abbrev_all, FALSE, OPT_PAGE_TEXT, 2, 11, "abbrev_all", _("アイテムに全ての耐性/能力の略称を刻む", "Describe obj's all resistances by abbreviation") },
+    { &abbrev_all, TRUE, OPT_PAGE_TEXT, 2, 11, "abbrev_all", _("アイテムに全ての耐性/能力の略称を刻む", "Describe obj's all resistances by abbreviation") },
 
     { &exp_need, FALSE, OPT_PAGE_TEXT, 2, 12, "exp_need", _("次のレベルに必要な経験値を表示する", "Show the experience needed for next level") },
 
@@ -132,7 +134,7 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
 
     { &show_ammo_crit_ratio, FALSE, OPT_PAGE_TEXT, 2, 16, "show_ammo_crit_ratio", _("矢弾の会心発生率を表示する", "Show critical ratio of ammo") },
 
-    { &show_actual_value, FALSE, OPT_PAGE_TEXT, 2, 17, "show_actual_vaule", _("各技能値に実値を表示する", "Show actual value of skill") },
+    { &show_actual_value, TRUE, OPT_PAGE_TEXT, 2, 17, "show_actual_value", _("技能値等に実値を並記する", "Show actual values of skills or etc.") },
 
     /*** Game-Play ***/
     { &stack_force_notes, TRUE, OPT_PAGE_GAMEPLAY, 0, 8, "stack_force_notes", _("異なる銘のアイテムをまとめる", "Merge inscriptions when stacking") },
@@ -148,7 +150,7 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
 
     { &empty_levels, TRUE, OPT_PAGE_GAMEPLAY, 0, 31, "empty_levels", _("空っぽの「アリーナ」レベルの生成を可能にする", "Allow empty 'arena' levels") },
 
-    { &bound_walls_perm, FALSE, OPT_PAGE_GAMEPLAY, 2, 1, "bound_walls_perm", _("ダンジョンの外壁を永久岩にする", "Boundary walls become 'permanent wall'") },
+    { &bound_walls_perm, TRUE, OPT_PAGE_GAMEPLAY, 2, 1, "bound_walls_perm", _("ダンジョンの外壁を永久岩にする", "Boundary walls become 'permanent wall'") },
 
     { &last_words, TRUE, OPT_PAGE_GAMEPLAY, 0, 28, "last_words", _("キャラクターが死んだ時遺言をのこす", "Leave last words when your character dies") },
 
@@ -200,11 +202,10 @@ const std::array<const option_type, MAX_OPTION_INFO> option_info = {{
     { &disturb_trap_detect, TRUE, OPT_PAGE_DISTURBANCE, 0, 27, "disturb_trap_detect",
         _("トラップ感知範囲外に出る直前に行動を中止する", "Disturb when leaving trap detected area") },
 
-    { &alert_trap_detect, FALSE, OPT_PAGE_DISTURBANCE, 0, 25, "alert_trap_detect",
+    { &alert_trap_detect, TRUE, OPT_PAGE_DISTURBANCE, 0, 25, "alert_trap_detect",
         _("トラップ感知範囲外に出る直前に警告する", "Alert when leaving trap detected area") },
 
     /*** Birth Options ***/
-
     { &easy_band, FALSE, OPT_PAGE_BIRTH, 6, 31, "easy_band", _("初心者用簡単モード(*)", "Easy Mode (*)") },
 
     { &smart_learn, TRUE, OPT_PAGE_BIRTH, 1, 14, "smart_learn", _("モンスターは失敗を学習する(*)", "Monsters learn from their mistakes (*)") },
@@ -318,7 +319,11 @@ const option_type cheat_info[MAX_CHEAT_OPTIONS]
 
           { &cheat_turn, FALSE, 255, 0x81, 0x00, "cheat_turn", _("ゲームメッセージにターン表示を行う", "Put turn in game messages.") },
 
-          { &cheat_sight, FALSE, 255, 0x82, 0x00, "cheat_sight", _("「見る」コマンドを拡張する。", "Expand \"L\"ook command.") } };
+          { &cheat_sight, FALSE, 255, 0x82, 0x00, "cheat_sight", _("「見る」コマンドを拡張する。", "Expand \"L\"ook command.") },
+
+          { &cheat_immortal, FALSE, 255, 0x83, 0x00, "cheat_immortal", _("完全な不滅状態になる。", "Completely immortal.") } };
+
+
 
 /*!
  * 自動セーブオプションテーブル

@@ -22,6 +22,7 @@ PERCENTAGE calc_dark_damage_rate(player_type *creature_ptr, rate_calc_type_mode 
 PERCENTAGE calc_shards_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_sound_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_conf_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
+PERCENTAGE calc_chaos_damage_rate_rand(player_type *creature_ptr);
 PERCENTAGE calc_chaos_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_nether_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_disenchant_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
@@ -33,5 +34,6 @@ PERCENTAGE calc_deathray_damage_rate(player_type *creature_ptr, rate_calc_type_m
 PERCENTAGE calc_holy_fire_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_hell_fire_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_gravity_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
+PERCENTAGE calc_void_damage_rate_rand(player_type *creature_ptr);
 PERCENTAGE calc_void_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_abyss_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);

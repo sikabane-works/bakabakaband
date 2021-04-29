@@ -181,12 +181,13 @@ void wr_lore(MONRACE_IDX r_idx)
     wr_u32b(r_ptr->r_flags1);
     wr_u32b(r_ptr->r_flags2);
     wr_u32b(r_ptr->r_flags3);
-    wr_u32b(r_ptr->r_flags4);
-    wr_u32b(r_ptr->r_flags5);
-    wr_u32b(r_ptr->r_flags6);
     wr_u32b(r_ptr->r_flagsr);
+    wr_FlagGroup(r_ptr->r_ability_flags, wr_byte);
 
     wr_byte((byte)r_ptr->max_num);
     wr_s16b(r_ptr->floor_id);
+
+    wr_s16b(r_ptr->defeat_level);
+    wr_u32b(r_ptr->defeat_time);
     wr_byte(0);
 }

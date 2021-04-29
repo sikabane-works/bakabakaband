@@ -15,6 +15,7 @@
 #include "sv-definition/sv-weapon-types.h"
 #include "system/floor-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "view/display-messages.h"
 
 /*!
  * @brief 武器系オブジェクトに生成ランクごとの強化を与えるサブルーチン
@@ -94,64 +95,10 @@ void apply_magic_weapon(player_type *owner_ptr, object_type *o_ptr, DEPTH level,
                     continue;
                 if (o_ptr->name2 == EGO_EARTHQUAKES && o_ptr->tval != TV_HAFTED)
                     continue;
-                if (o_ptr->name2 == EGO_WEIRD && o_ptr->tval != TV_SWORD)
-                    continue;
                 break;
             }
 
             switch (o_ptr->name2) {
-            case EGO_HA:
-                if (one_in_(4) && (level > 40))
-                    add_flag(o_ptr->art_flags, TR_BLOWS);
-                break;
-            case EGO_DF:
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_RES_POIS);
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_WARNING);
-                break;
-            case EGO_KILL_DRAGON:
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_RES_POIS);
-                break;
-            case EGO_WEST:
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_RES_FEAR);
-                break;
-            case EGO_SLAYING_WEAPON:
-                if (one_in_(3))
-                    o_ptr->dd *= 2;
-                else {
-                    do {
-                        o_ptr->dd++;
-                    } while (one_in_(o_ptr->dd));
-
-                    do {
-                        o_ptr->ds++;
-                    } while (one_in_(o_ptr->ds));
-                }
-
-                if (one_in_(5)) {
-                    add_flag(o_ptr->art_flags, TR_BRAND_POIS);
-                }
-                if (o_ptr->tval == TV_SWORD && one_in_(3)) {
-                    add_flag(o_ptr->art_flags, TR_VORPAL);
-                }
-                break;
-            case EGO_TRUMP:
-                if (one_in_(5))
-                    add_flag(o_ptr->art_flags, TR_SLAY_DEMON);
-                if (one_in_(7))
-                    one_ability(o_ptr);
-                break;
-            case EGO_PATTERN:
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_HOLD_EXP);
-                if (one_in_(3))
-                    add_flag(o_ptr->art_flags, TR_DEX);
-                if (one_in_(5))
-                    add_flag(o_ptr->art_flags, TR_RES_FEAR);
-                break;
             case EGO_SHARPNESS:
                 o_ptr->pval = (PARAMETER_VALUE)m_bonus(5, level) + 1;
                 break;
@@ -161,9 +108,7 @@ void apply_magic_weapon(player_type *owner_ptr, object_type *o_ptr, DEPTH level,
                 else
                     o_ptr->pval = (PARAMETER_VALUE)m_bonus(3, level);
                 break;
-            case EGO_VAMPIRIC:
-                if (one_in_(5))
-                    add_flag(o_ptr->art_flags, TR_SLAY_HUMAN);
+            default:
                 break;
             }
 
@@ -176,37 +121,21 @@ void apply_magic_weapon(player_type *owner_ptr, object_type *o_ptr, DEPTH level,
             }
         } else if (power < -1) {
             if (randint0(MAX_DEPTH) < level) {
+                int n = 0;
                 while (TRUE) {
                     o_ptr->name2 = get_random_ego(INVEN_MAIN_HAND, FALSE);
                     if (o_ptr->name2 == EGO_WEIRD && o_ptr->tval != TV_SWORD) {
                         continue;
                     }
 
-                    break;
-                }
-
-                switch (o_ptr->name2) {
-                case EGO_MORGUL:
-                    if (one_in_(6))
-                        add_flag(o_ptr->art_flags, TR_TY_CURSE);
-                    if (one_in_(3))
-                        o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-                    break;
-                case EGO_DEMON:
-
-                    if (one_in_(3))
-                        o_ptr->curse_flags |= (TRC_HEAVY_CURSE);
-                    one_in_(3) ? add_flag(o_ptr->art_flags, TR_DRAIN_EXP)
-                               : one_in_(2) ? add_flag(o_ptr->art_flags, TR_DRAIN_HP) : add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
-
-                    if (one_in_(3))
-                        add_flag(o_ptr->art_flags, TR_CHAOTIC);
-                    if (one_in_(4))
-                        add_flag(o_ptr->art_flags, TR_BLOWS);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_ADD_H_CURSE);
-                    if (one_in_(5))
-                        add_flag(o_ptr->art_flags, TR_CALL_DEMON);
+                    ego_item_type *e_ptr = &e_info[o_ptr->name2];
+                    if (o_ptr->tval == TV_SWORD && o_ptr->sval == SV_HAYABUSA && e_ptr->max_pval < 0) {
+                        if (++n > 1000) {
+                            msg_print(_("エラー:隼の剣に割り当てるエゴ無し", "Error: Cannot find for Hayabusa."));
+                            return;
+                        }
+                        continue;
+                    }
                     break;
                 }
             }
@@ -238,11 +167,6 @@ void apply_magic_weapon(player_type *owner_ptr, object_type *o_ptr, DEPTH level,
             }
 
             o_ptr->name2 = get_random_ego(INVEN_AMMO, TRUE);
-            switch (o_ptr->name2) {
-            case EGO_SLAYING_BOLT:
-                o_ptr->dd++;
-                break;
-            }
 
             while (one_in_(10L * o_ptr->dd * o_ptr->ds))
                 o_ptr->dd++;

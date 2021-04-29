@@ -1,10 +1,14 @@
 ﻿#pragma once
 
-#include "object-enchant/trg-types.h"
 #include "system/angband.h"
+
+#include "object-enchant/tr-types.h"
+#include "object-enchant/trg-types.h"
 #include "system/object-type-definition.h"
 #include "util/flag-group.h"
+
 #include <string>
+#include <vector>
 
 /* Body Armor */
 #define EGO_A_MORGUL            4
@@ -97,6 +101,10 @@
 #define EGO_CHAOTIC             77
 #define EGO_SHARPNESS           78
 #define EGO_EARTHQUAKES         79
+#define EGO_W_FAIRLY            83
+#define EGO_W_OMNIVOROUS        84
+#define EGO_W_DARK_REVENGER     85
+#define EGO_KILL_GOOD           86
 #define EGO_WEIRD               87
 #define EGO_KILL_ANIMAL         88
 #define EGO_KILL_EVIL           89
@@ -214,34 +222,47 @@
 #define EGO_AMU_NAIVETY         237
 // MAX 240
 
+struct ego_generate_type {
+    int mul{}; //<! 確率分子
+    int dev{}; //<! 確率分母
+    std::vector<tr_type> tr_flags{};
+    std::vector<TRG> trg_flags{};
+};
+
 /*
  * Information about "ego-items".
  */
-typedef struct ego_item_type {
-    std::string name; /* Name (offset) */
-    std::string text; /* Text (offset) */
+struct ego_item_type {
+    std::string name; //!< エゴの名前
+    std::string text; //!< フレーバーテキスト
 
-    INVENTORY_IDX slot{}; /*!< 装備部位 / Standard slot value */
-    PRICE rating{}; /*!< ベースアイテムからの価値加速 / Rating boost */
+    INVENTORY_IDX slot{}; //!< 装備部位 / Standard slot value
+    PRICE rating{}; //!< レーティングボーナス(雰囲気に影響) / Rating boost
 
-    DEPTH level{}; /* Minimum level */
-    RARITY rarity{}; /* Object rarity */
+    DEPTH level{}; //!< 生成レベル
+    RARITY rarity{}; //<! レアリティ
 
-    HIT_PROB max_to_h{}; /* Maximum to-hit bonus */
-    HIT_POINT max_to_d{}; /* Maximum to-dam bonus */
-    ARMOUR_CLASS max_to_a{}; /* Maximum to-ac bonus */
+    HIT_PROB base_to_h{}; //!< ベース命中修正
+    HIT_POINT base_to_d{}; //!< べ^スダメージ修正
+    ARMOUR_CLASS base_to_a{}; //!< ベースAC修正
 
-    PARAMETER_VALUE max_pval{}; /* Maximum pval */
+    HIT_PROB max_to_h{}; //!< 最大ボーナス命中修正
+    HIT_POINT max_to_d{}; //!< 最大ボーナスダメージ修正
+    ARMOUR_CLASS max_to_a{}; //!< 最大ボーナスAC修正
 
-    PRICE cost{}; /* Ego-item "cost" */
+    PARAMETER_VALUE max_pval{}; //!< 最大pval
 
-    BIT_FLAGS flags[TR_FLAG_SIZE]{}; /* Ego-Item Flags */
-    FlagGroup<TRG> gen_flags; /* flags for generate */
+    PRICE cost{}; //!< コスト
 
-    IDX act_idx{}; /* Activative ability index */
-} ego_item_type;
+    BIT_FLAGS flags[TR_FLAG_SIZE]{}; //!< 能力/耐性フラグ
+    EnumClassFlagGroup<TRG> gen_flags; //!< 生成時適用フラグ
+    std::vector<ego_generate_type> xtra_flags{}; //!< 追加能力/耐性フラグ
+
+    IDX act_idx{}; //!< 発動番号 / Activative ability index
+};
 
 extern EGO_IDX max_e_idx;
-extern ego_item_type *e_info;
+extern std::vector<ego_item_type> e_info;
 
 byte get_random_ego(byte slot, bool good);
+void apply_ego(player_type *player_ptr, object_type *o_ptr, DEPTH lev);

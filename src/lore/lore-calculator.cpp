@@ -1,6 +1,7 @@
 ﻿#include "lore/lore-calculator.h"
 #include "game-option/cheat-options.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/race-ability-flags.h"
 #include "monster-race/race-flags1.h"
 #include "mspell/mspell-damage-calculator.h"
 
@@ -109,7 +110,7 @@ bool know_damage(MONRACE_IDX r_idx, int i)
  * @param msg 表示する文字列
  * @return なし
  */
-void set_damage(player_type *player_ptr, lore_type *lore_ptr, monster_spell_type ms_type, concptr msg)
+void set_damage(player_type *player_ptr, lore_type *lore_ptr, RF_ABILITY ms_type, concptr msg)
 {
     MONRACE_IDX r_idx = lore_ptr->r_idx;
     int base_damage = monspell_race_damage(player_ptr, ms_type, r_idx, BASE_DAM);
@@ -146,9 +147,6 @@ void set_drop_flags(lore_type *lore_ptr)
     lore_ptr->flags1 = lore_ptr->r_ptr->flags1;
     lore_ptr->flags2 = lore_ptr->r_ptr->flags2;
     lore_ptr->flags3 = lore_ptr->r_ptr->flags3;
-    lore_ptr->flags4 = lore_ptr->r_ptr->flags4;
-    lore_ptr->flags8 = lore_ptr->r_ptr->flags8;
-    lore_ptr->a_ability_flags1 = lore_ptr->r_ptr->a_ability_flags1;
-    lore_ptr->a_ability_flags2 = lore_ptr->r_ptr->a_ability_flags2;
+    lore_ptr->ability_flags = lore_ptr->r_ptr->ability_flags;
     lore_ptr->flagsr = lore_ptr->r_ptr->flagsr;
 }

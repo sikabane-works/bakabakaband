@@ -106,7 +106,7 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは物を強く投げることを可能にする。", "It provides great strength when you throw an item.");
     }
 
-    if (has_flag(flgs, TR_LOW_MAGIC)) {
+    if (has_flag(flgs, TR_DOWN_SAVING)) {
         info[i++] = _("それは魔法抵抗力を下げる。", "It decreases your magic resistance.");
     }
 
@@ -255,16 +255,24 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それはカオス的な効果を及ぼす。", "It produces chaotic effects.");
     }
 
+    if (has_flag(flgs, TR_BRAND_MAGIC)) {
+        info[i++] = _("それは魔術的な効果を及ぼす。", "It produces magical effects.");
+    }
+
     if (has_flag(flgs, TR_VAMPIRIC)) {
         info[i++] = _("それは敵から生命力を吸収する。", "It drains life from your foes.");
     }
 
-    if (has_flag(flgs, TR_IMPACT)) {
+    if (has_flag(flgs, TR_EARTHQUAKE)) {
         info[i++] = _("それは地震を起こすことができる。", "It can cause earthquakes.");
     }
 
     if (has_flag(flgs, TR_VORPAL)) {
         info[i++] = _("それは非常に切れ味が鋭く敵を切断することができる。", "It is very sharp and can cut your foes.");
+    }
+
+    if (has_flag(flgs, TR_IMPACT)) {
+        info[i++] = _("それは非常に強く敵を攻撃することができる。", "It can hit your foes strongly.");
     }
 
     if (has_flag(flgs, TR_KILL_DRAGON)) {
@@ -319,6 +327,14 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは邪悪なる存在に対して聖なる力で攻撃する。", "It fights against evil with holy fury.");
     }
 
+    if (has_flag(flgs, TR_KILL_GOOD)) {
+        info[i++] = _("それは善良なる存在にとっての天敵である。", "It is a great bane of good monsters.");
+    }
+
+    if (has_flag(flgs, TR_SLAY_GOOD)) {
+        info[i++] = _("それは善良なる存在に対して邪悪なる力で攻撃する。", "It fights against good with evil fury.");
+    }
+
     if (has_flag(flgs, TR_KILL_ANIMAL)) {
         info[i++] = _("それは自然界の動物にとっての天敵である。", "It is a great bane of natural creatures.");
     }
@@ -367,21 +383,31 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それはあなたの魅力を維持する。", "It sustains your charisma.");
     }
 
-    if (has_flag(flgs, TR_IM_ACID)) {
+    if (has_flag(flgs, TR_IM_ACID))
         info[i++] = _("それは酸に対する完全な免疫を授ける。", "It provides immunity to acid.");
-    }
+    else if (has_flag(flgs, TR_VUL_ACID))
+        info[i++] = _("それは酸に対する弱点を授ける。", "It provides vulnerability to acid.");
 
-    if (has_flag(flgs, TR_IM_ELEC)) {
+    if (has_flag(flgs, TR_IM_ELEC))
         info[i++] = _("それは電撃に対する完全な免疫を授ける。", "It provides immunity to electricity.");
-    }
+    else if (has_flag(flgs, TR_VUL_ELEC))
+        info[i++] = _("それは電撃に対する弱点を授ける。", "It provides vulnerability to electricity.");
 
-    if (has_flag(flgs, TR_IM_FIRE)) {
+    if (has_flag(flgs, TR_IM_FIRE))
         info[i++] = _("それは火に対する完全な免疫を授ける。", "It provides immunity to fire.");
-    }
+    else if (has_flag(flgs, TR_VUL_FIRE))
+        info[i++] = _("それは火に対する弱点を授ける。", "It provides vulnerability to fire.");
 
-    if (has_flag(flgs, TR_IM_COLD)) {
+    if (has_flag(flgs, TR_IM_COLD))
         info[i++] = _("それは寒さに対する完全な免疫を授ける。", "It provides immunity to cold.");
-    }
+    else if (has_flag(flgs, TR_VUL_COLD))
+        info[i++] = _("それは寒さに対する弱点を授ける。", "It provides vulnerability to cold.");
+
+    if (has_flag(flgs, TR_IM_DARK))
+        info[i++] = _("それは暗黒に対する完全な免疫を授ける。", "It provides immunity to dark.");
+
+    if (has_flag(flgs, TR_VUL_LITE))
+        info[i++] = _("それは閃光に対する弱点を授ける。", "It provides vulnerability to cold.");
 
     if (has_flag(flgs, TR_THROW)) {
         info[i++] = _("それは敵に投げて大きなダメージを与えることができる。", "It is perfectly balanced for throwing.");
@@ -543,7 +569,12 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは矢の呪文を反射する。", "It reflects bolt spells.");
     }
 
-    if (has_flag(flgs, TR_SH_FIRE)) {
+    if (has_flag(flgs, TR_RES_CURSE)) {
+        info[i++] = _("それは呪いへの抵抗力を高める。", "It produces your high resisrance to curse.");
+    }
+
+    if (has_flag(flgs, TR_SH_FIRE))
+    {
         info[i++] = _("それは炎のバリアを張る。", "It produces a fiery sheath.");
     }
 
@@ -635,6 +666,9 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは恐怖感を引き起こす。", "It makes you subject to cowardice.");
     }
 
+    if (has_flag(flgs, TR_BERS_RAGE))
+        info[i++] = _("それは狂戦士化の発作を引き起こす。", "It makes you subject to berserker fits.");
+
     if ((has_flag(flgs, TR_TELEPORT)) || (o_ptr->curse_flags & TRC_TELEPORT)) {
         info[i++] = _("それはランダムなテレポートを引き起こす。", "It induces random teleportation.");
     }
@@ -647,7 +681,7 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは攻撃を受けやすい。", "It helps your enemies' blows.");
     }
 
-    if ((has_flag(flgs, TR_LOW_MAGIC)) || (o_ptr->curse_flags & TRC_LOW_MAGIC)) {
+    if ((has_flag(flgs, TR_HARD_SPELL)) || (o_ptr->curse_flags & TRC_HARD_SPELL)) {
         info[i++] = _("それは魔法を唱えにくくする。", "It encumbers you while spellcasting.");
     }
 

@@ -135,7 +135,7 @@ static bool acid_minus_ac(player_type *creature_ptr)
  * @return 修正HPダメージ量
  * @details 酸オーラは存在しないが関数ポインタのために引数だけは用意している
  */
-HIT_POINT acid_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)
+HIT_POINT acid_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2 : 3;
     bool double_resist = is_oppose_acid(creature_ptr);
@@ -151,7 +151,7 @@ HIT_POINT acid_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
             dam = (dam + 1) / 2;
     }
 
-    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str, monspell);
+    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_acid(creature_ptr)))
         inventory_damage(creature_ptr, set_acid_destroy, inv);
 
@@ -168,7 +168,7 @@ HIT_POINT acid_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
  * @param aura オーラよるダメージが原因ならばTRUE
  * @return 修正HPダメージ量
  */
-HIT_POINT elec_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)
+HIT_POINT elec_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2 : 3;
     bool double_resist = is_oppose_elec(creature_ptr);
@@ -183,7 +183,7 @@ HIT_POINT elec_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
             (void)do_dec_stat(creature_ptr, A_DEX);
     }
 
-    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str, monspell);
+    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_elec(creature_ptr)))
         inventory_damage(creature_ptr, set_elec_destroy, inv);
 
@@ -200,7 +200,7 @@ HIT_POINT elec_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
  * @param aura オーラよるダメージが原因ならばTRUE
  * @return 修正HPダメージ量
  */
-HIT_POINT fire_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)
+HIT_POINT fire_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2 : 3;
     bool double_resist = is_oppose_fire(creature_ptr);
@@ -215,7 +215,7 @@ HIT_POINT fire_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
             (void)do_dec_stat(creature_ptr, A_STR);
     }
 
-    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str, monspell);
+    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_fire(creature_ptr)))
         inventory_damage(creature_ptr, set_fire_destroy, inv);
 
@@ -232,7 +232,7 @@ HIT_POINT fire_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
  * @param aura オーラよるダメージが原因ならばTRUE
  * @return 修正HPダメージ量
  */
-HIT_POINT cold_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int monspell, bool aura)
+HIT_POINT cold_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2 : 3;
     bool double_resist = is_oppose_cold(creature_ptr);
@@ -245,7 +245,7 @@ HIT_POINT cold_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
             (void)do_dec_stat(creature_ptr, A_STR);
     }
 
-    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str, monspell);
+    HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_cold(creature_ptr)))
         inventory_damage(creature_ptr, set_cold_destroy, inv);
 
@@ -261,10 +261,8 @@ HIT_POINT cold_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, int
  * the game when he dies, since the "You die." message is shown before
  * setting the player to "dead".
  */
-int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concptr hit_from, int monspell)
+int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concptr hit_from)
 {
-    (void)monspell; // unused
-
     int old_chp = creature_ptr->chp;
 
     char death_message[1024];
@@ -327,6 +325,8 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
     }
 
     creature_ptr->chp -= damage;
+    if (creature_ptr->chp < -9999)
+        creature_ptr->chp = -9999;
     if (damage_type == DAMAGE_GENO && creature_ptr->chp < 0) {
         damage += creature_ptr->chp;
         creature_ptr->chp = 0;
@@ -340,7 +340,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
         chg_virtue(creature_ptr, V_CHANCE, 2);
     }
 
-    if (creature_ptr->chp < 0) {
+    if (creature_ptr->chp < 0 && !cheat_immortal) {
         bool android = (creature_ptr->prace == RACE_ANDROID ? TRUE : FALSE);
 
 #ifdef JP
@@ -353,7 +353,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
         chg_virtue(creature_ptr, V_SACRIFICE, 10);
         handle_stuff(creature_ptr);
         creature_ptr->leaving = TRUE;
-        creature_ptr->is_dead = TRUE;
+        if(!cheat_immortal) creature_ptr->is_dead = TRUE;
         if (creature_ptr->current_floor_ptr->inside_arena) {
             concptr m_name = r_info[arena_info[creature_ptr->arena_number].r_idx].name.c_str();
             msg_format(_("あなたは%sの前に敗れ去った。", "You are beaten by %s."), m_name);
@@ -368,7 +368,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
             play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_GAMEOVER);
 
 #ifdef WORLD_SCORE
-            screen_dump = make_screen_dump(creature_ptr, process_autopick_file_command);
+            screen_dump = make_screen_dump(creature_ptr);
 #endif
             if (seppuku) {
                 strcpy(creature_ptr->died_from, hit_from);
@@ -389,6 +389,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
 
             current_world_ptr->total_winner = FALSE;
             if (winning_seppuku) {
+                add_retired_class(creature_ptr->pclass);
                 exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
             } else {
                 char buf[20];
@@ -412,7 +413,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
 
             flush();
             if (get_check_strict(creature_ptr, _("画面を保存しますか？", "Dump the screen? "), CHECK_NO_HISTORY))
-                do_cmd_save_screen(creature_ptr, process_autopick_file_command);
+                do_cmd_save_screen(creature_ptr);
 
             flush();
             if (creature_ptr->last_message)
@@ -499,7 +500,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
                     term_putstr(w - 1, h - 1, 1, TERM_WHITE, " ");
                     flush();
 #ifdef WORLD_SCORE
-                    screen_dump = make_screen_dump(creature_ptr, process_autopick_file_command);
+                    screen_dump = make_screen_dump(creature_ptr);
 #endif
                     (void)inkey();
                 } else
@@ -551,7 +552,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
  * @return なし
  */
 static void process_aura_damage(monster_type *m_ptr, player_type *touched_ptr, bool immune, int flags_offset, int r_flags_offset, u32b aura_flag,
-    HIT_POINT (*dam_func)(player_type *creature_type, HIT_POINT dam, concptr kb_str, int monspell, bool aura), concptr message)
+    HIT_POINT (*dam_func)(player_type *creature_type, HIT_POINT dam, concptr kb_str, bool aura), concptr message)
 {
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
     if (!(atoffset(BIT_FLAGS, r_ptr, flags_offset) & aura_flag) || immune)
@@ -562,7 +563,7 @@ static void process_aura_damage(monster_type *m_ptr, player_type *touched_ptr, b
 
     monster_desc(touched_ptr, mon_name, m_ptr, MD_WRONGDOER_NAME);
     msg_print(message);
-    dam_func(touched_ptr, aura_damage, mon_name, -1, TRUE);
+    dam_func(touched_ptr, aura_damage, mon_name, TRUE);
 
     if (is_original_ap_and_seen(touched_ptr, m_ptr))
         atoffset(BIT_FLAGS, r_ptr, r_flags_offset) |= aura_flag;
