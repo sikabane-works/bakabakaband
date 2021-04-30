@@ -26637,6 +26637,18 @@ S:1_IN_4
 S:MISSILE | SHRIEK
 D:ん、どうした？そこには誰もいないぞ。
 
+N:1380:糞便ゴーレム
+E:Feces golem
+G:g:u
+I:110:12d8:12:25:10
+W:17:1:0:80:0:0
+B:HIT:DISEASE:1d8
+B:HIT:DISEASE:1d8
+F:EMPTY_MIND | BASH_DOOR | CAN_SWIM |
+F:IM_ELEC | IM_COLD | NASTY
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:何故こんなものを作る存在がいるのか、私には理解に苦しむね（ペチペチ）
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
