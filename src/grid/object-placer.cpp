@@ -3,10 +3,10 @@
 #include "floor/floor-object.h"
 #include "grid/grid.h"
 #include "object-hook/hook-enchant.h"
-#include "object/object-generator.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "world/world-object.h"
 
 /*!
@@ -27,13 +27,13 @@ void place_gold(player_type *player_ptr, POSITION y, POSITION x)
         return;
     if (!cave_drop_bold(floor_ptr, y, x))
         return;
-    if (g_ptr->o_idx)
+    if (!g_ptr->o_idx_list.empty())
         return;
 
     object_type forge;
     object_type *q_ptr;
     q_ptr = &forge;
-    object_wipe(q_ptr);
+    q_ptr->wipe();
     if (!make_gold(player_ptr, q_ptr))
         return;
 
@@ -43,13 +43,12 @@ void place_gold(player_type *player_ptr, POSITION y, POSITION x)
 
     object_type *o_ptr;
     o_ptr = &floor_ptr->o_list[o_idx];
-    object_copy(o_ptr, q_ptr);
+    o_ptr->copy_from(q_ptr);
 
     o_ptr->iy = y;
     o_ptr->ix = x;
-    o_ptr->next_o_idx = g_ptr->o_idx;
+    g_ptr->o_idx_list.push_front(o_idx);
 
-    g_ptr->o_idx = o_idx;
     note_spot(player_ptr, y, x);
     lite_spot(player_ptr, y, x);
 }
@@ -73,11 +72,11 @@ void place_object(player_type *owner_ptr, POSITION y, POSITION x, BIT_FLAGS mode
     grid_type *g_ptr = &floor_ptr->grid_array[y][x];
     object_type forge;
     object_type *q_ptr;
-    if (!in_bounds(floor_ptr, y, x) || !cave_drop_bold(floor_ptr, y, x) || (g_ptr->o_idx != 0))
+    if (!in_bounds(floor_ptr, y, x) || !cave_drop_bold(floor_ptr, y, x) || !g_ptr->o_idx_list.empty())
         return;
 
     q_ptr = &forge;
-    object_wipe(q_ptr);
+    q_ptr->wipe();
     if (!make_object(owner_ptr, q_ptr, mode))
         return;
 
@@ -92,13 +91,12 @@ void place_object(player_type *owner_ptr, POSITION y, POSITION x, BIT_FLAGS mode
 
     object_type *o_ptr;
     o_ptr = &floor_ptr->o_list[o_idx];
-    object_copy(o_ptr, q_ptr);
+    o_ptr->copy_from(q_ptr);
 
     o_ptr->iy = y;
     o_ptr->ix = x;
-    o_ptr->next_o_idx = g_ptr->o_idx;
+    g_ptr->o_idx_list.push_front(o_idx);
 
-    g_ptr->o_idx = o_idx;
     note_spot(owner_ptr, y, x);
     lite_spot(owner_ptr, y, x);
 }

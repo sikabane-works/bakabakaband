@@ -29,6 +29,7 @@
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/quarks.h"
 #include "util/string-processor.h"
@@ -443,9 +444,9 @@ PERCENTAGE calc_holy_fire_damage_rate(player_type *creature_ptr, rate_calc_type_
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
-    if (creature_ptr->align > 10)
+    if (creature_ptr->alignment > 10)
         per /= 2;
-    else if (creature_ptr->align < -10)
+    else if (creature_ptr->alignment < -10)
         per *= 2;
     return per;
 }
@@ -457,7 +458,7 @@ PERCENTAGE calc_hell_fire_damage_rate(player_type *creature_ptr, rate_calc_type_
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
-    if (creature_ptr->align > 10)
+    if (creature_ptr->alignment > 10)
         per *= 2;
     return per;
 }

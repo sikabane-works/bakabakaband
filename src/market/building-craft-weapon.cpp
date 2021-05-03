@@ -15,10 +15,11 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-flags.h"
-#include "object/object-generator.h"
 #include "realm/realm-hex-numbers.h"
 #include "spell-realm/spells-hex.h"
 #include "sv-definition/sv-weapon-types.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -92,7 +93,6 @@ static u32b calc_expect_dice(
  * \n
  * Only accurate for the current weapon, because it includes\n
  * the current +dam of the player.\n
- * @return なし
  */
 static void show_weapon_dmg(int r, int c, int mindice, int maxdice, int blows, int dam_bonus, concptr attr, byte color)
 {
@@ -114,7 +114,6 @@ static void show_weapon_dmg(int r, int c, int mindice, int maxdice, int blows, i
  * \n
  * Only accurate for the current weapon, because it includes\n
  * the current number of blows for the player.\n
- * @return なし
  */
 static void compare_weapon_aux(player_type *owner_ptr, object_type *o_ptr, int col, int r)
 {
@@ -305,7 +304,6 @@ static void compare_weapon_aux(player_type *owner_ptr, object_type *o_ptr, int c
  *
  * Only accurate for the current weapon, because it includes
  * various info about the player's +to_dam and number of blows.
- * @return なし
  */
 static void list_weapon(player_type *player_ptr, object_type *o_ptr, TERM_LEN row, TERM_LEN col)
 {
@@ -361,7 +359,7 @@ PRICE compare_weapons(player_type *customer_ptr, PRICE bcost)
     screen_save();
     clear_bldg(0, 22);
     i_ptr = &customer_ptr->inventory_list[INVEN_MAIN_HAND];
-    object_copy(&orig_weapon, i_ptr);
+    (&orig_weapon)->copy_from(i_ptr);
 
     item_tester_hook = item_tester_hook_orthodox_melee_weapons;
     concptr q = _("第一の武器は？", "What is your first weapon? ");
@@ -383,14 +381,14 @@ PRICE compare_weapons(player_type *customer_ptr, PRICE bcost)
         for (int i = 0; i < n; i++) {
             int col = (wid * i + mgn);
             if (o_ptr[i] != i_ptr)
-                object_copy(i_ptr, o_ptr[i]);
+                i_ptr->copy_from(o_ptr[i]);
 
             customer_ptr->update |= PU_BONUS;
             handle_stuff(customer_ptr);
 
             list_weapon(customer_ptr, o_ptr[i], row, col);
             compare_weapon_aux(customer_ptr, o_ptr[i], col, row + 8);
-            object_copy(i_ptr, &orig_weapon);
+            i_ptr->copy_from(&orig_weapon);
         }
 
         customer_ptr->update |= PU_BONUS;

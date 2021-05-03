@@ -25,18 +25,22 @@
 #include "object-hook/hook-weapon.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "object/object-generator.h"
 #include "object/object-info.h"
 #include "object/object-mark-types.h"
 #include "perception/object-perception.h"
 #include "player-info/avatar.h"
+#include "player-info/equipment-info.h"
+#include "player-status/player-energy.h"
+#include "player-status/player-hand-types.h"
 #include "player/attack-defense-types.h"
+#include "player/player-status.h"
 #include "player/special-defense-types.h"
 #include "racial/racial-android.h"
 #include "spell-kind/spells-perception.h"
 #include "status/action-setter.h"
 #include "status/shape-changer.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "util/int-char-converter.h"
 #include "view/display-inventory.h"
@@ -44,7 +48,6 @@
 
 /*!
  * @brief 装備一覧を表示するコマンドのメインルーチン / Display equipment
- * @return なし
  */
 void do_cmd_equip(player_type *creature_ptr)
 {
@@ -79,11 +82,9 @@ void do_cmd_equip(player_type *creature_ptr)
     command_gap = wid - 30;
 }
 
-
 /*!
  * @brief 装備するコマンドのメインルーチン / Wield or wear a single item from the pack or floor
  * @param creature_ptr プレーヤーへの参照ポインタ
- * @return なし
  */
 void do_cmd_wield(player_type *creature_ptr)
 {
@@ -212,9 +213,9 @@ void do_cmd_wield(player_type *creature_ptr)
         object_type *otmp_ptr = &object_tmp;
         GAME_TEXT switch_name[MAX_NLEN];
         describe_flavor(creature_ptr, switch_name, switch_o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-        object_copy(otmp_ptr, switch_o_ptr);
-        object_copy(switch_o_ptr, slot_o_ptr);
-        object_copy(slot_o_ptr, otmp_ptr);
+        otmp_ptr->copy_from(switch_o_ptr);
+        switch_o_ptr->copy_from(slot_o_ptr);
+        slot_o_ptr->copy_from(otmp_ptr);
         msg_format(_("%sを%sに構えなおした。", "You wield %s at %s hand."), switch_name,
             (slot == INVEN_MAIN_HAND) ? (left_hander ? _("左手", "left") : _("右手", "right")) : (left_hander ? _("右手", "right") : _("左手", "left")));
         slot = need_switch_wielding;
@@ -226,9 +227,9 @@ void do_cmd_wield(player_type *creature_ptr)
         autopick_alter_item(creature_ptr, item, FALSE);
     }
 
-    take_turn(creature_ptr, 100);
+    PlayerEnergy(creature_ptr).set_player_turn_energy(100);
     q_ptr = &forge;
-    object_copy(q_ptr, o_ptr);
+    q_ptr->copy_from(o_ptr);
     q_ptr->number = 1;
     if (item >= 0) {
         inven_item_increase(creature_ptr, item, -1);
@@ -242,7 +243,7 @@ void do_cmd_wield(player_type *creature_ptr)
     if (o_ptr->k_idx)
         (void)inven_takeoff(creature_ptr, slot, 255);
 
-    object_copy(o_ptr, q_ptr);
+    o_ptr->copy_from(q_ptr);
     o_ptr->marked |= OM_TOUCHED;
     creature_ptr->equip_cnt++;
 
@@ -295,7 +296,6 @@ void do_cmd_wield(player_type *creature_ptr)
 
 /*!
  * @brief 装備を外すコマンドのメインルーチン / Take off an item
- * @return なし
  */
 void do_cmd_takeoff(player_type *creature_ptr)
 {
@@ -310,7 +310,9 @@ void do_cmd_takeoff(player_type *creature_ptr)
     if (!o_ptr)
         return;
 
-    if (object_is_cursed(o_ptr)) {
+    PlayerEnergy energy(creature_ptr);
+    if (object_is_cursed(o_ptr))
+    {
         if ((o_ptr->curse_flags & TRC_PERMA_CURSE) || (creature_ptr->pclass != CLASS_BERSERKER)) {
             msg_print(_("ふーむ、どうやら呪われているようだ。", "Hmmm, it seems to be cursed."));
             return;
@@ -326,12 +328,12 @@ void do_cmd_takeoff(player_type *creature_ptr)
             msg_print(_("呪いを打ち破った。", "You break the curse."));
         } else {
             msg_print(_("装備を外せなかった。", "You couldn't remove the equipment."));
-            take_turn(creature_ptr, 50);
+            energy.set_player_turn_energy(50);
             return;
         }
     }
 
-    take_turn(creature_ptr, 50);
+    energy.set_player_turn_energy(50);
     (void)inven_takeoff(creature_ptr, item, 255);
     verify_equip_slot(creature_ptr, item);
     calc_android_exp(creature_ptr);

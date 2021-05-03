@@ -20,7 +20,6 @@
 #include "object-hook/hook-checker.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "object/object-generator.h"
 #include "object/object-info.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
@@ -31,9 +30,11 @@
 #include "store/pricing.h"
 #include "store/say-comments.h"
 #include "store/service-checker.h"
+#include "store/store-owners.h"
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -80,7 +81,6 @@ static std::optional<PRICE> prompt_to_sell(player_type *player_ptr, object_type 
  * @brief 店からの売却処理のメインルーチン /
  * Sell an item to the store (or home)
  * @param owner_ptr プレーヤーへの参照ポインタ
- * @return なし
  */
 void store_sell(player_type *owner_ptr)
 {
@@ -127,7 +127,7 @@ void store_sell(player_type *owner_ptr)
 
     object_type forge;
     object_type *q_ptr = &forge;
-    object_copy(q_ptr, o_ptr);
+    q_ptr->copy_from(o_ptr);
     q_ptr->number = amt;
 
     if ((o_ptr->tval == TV_ROD) || (o_ptr->tval == TV_WAND))
@@ -170,7 +170,7 @@ void store_sell(player_type *owner_ptr)
 
             identify_item(owner_ptr, o_ptr);
             q_ptr = &forge;
-            object_copy(q_ptr, o_ptr);
+            q_ptr->copy_from(o_ptr);
             q_ptr->number = amt;
             q_ptr->ident |= IDENT_STORE;
 

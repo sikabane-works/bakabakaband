@@ -10,10 +10,12 @@
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "effect/effect-characteristics.h"
+#include "effect/effect-monster-util.h"
 #include "effect/effect-monster-switcher.h"
 #include "floor/cave.h"
 #include "floor/floor-object.h"
 #include "game-option/play-record-options.h"
+#include "grid/grid.h"
 #include "io/write-diary.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
@@ -33,7 +35,6 @@
 #include "monster/monster-status.h"
 #include "monster/monster-update.h"
 #include "object-enchant/special-object-flags.h"
-#include "object/object-generator.h"
 #include "object/object-kind-hook.h"
 #include "player-info/avatar.h"
 #include "util/bit-flags-calculator.h"
@@ -44,7 +45,10 @@
 #include "spells-effect-util.h"
 #include "sv-definition/sv-other-types.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
 /*!
@@ -90,7 +94,6 @@ static process_result is_affective(player_type *caster_ptr, effect_monster_type 
  * @brief 魔法の効果やモンスター種別(MAKE/FEMALE/なし)に応じて表示するメッセージを変更する
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void make_description_of_affecred_monster(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -141,7 +144,6 @@ static process_result exe_affect_monster_by_effect(player_type *caster_ptr, effe
  * @brief ペットの死亡を処理する
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void effect_damage_killed_pet(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -167,7 +169,6 @@ static void effect_damage_killed_pet(player_type *caster_ptr, effect_monster_typ
  * @brief モンスターの睡眠を処理する
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void effect_damage_makes_sleep(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -271,7 +272,6 @@ static bool deal_effect_damage_from_player(player_type *caster_ptr, effect_monst
  * @brief モンスターに効果のダメージを与える / Deal effect damage to monster.
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  * @details
  * 以下のいずれかの処理を行う。
  * 1.モンスターによる効果ダメージの処理
@@ -302,7 +302,6 @@ static void deal_effect_damage_to_monster(player_type *caster_ptr, effect_monste
  * @brief プレイヤーが眠っている敵に効果を及ぼした場合の徳の変化
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void effect_makes_change_virtues(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -319,7 +318,6 @@ static void effect_makes_change_virtues(player_type *caster_ptr, effect_monster_
  * @brief 魔法効果に対する強制処理(変身の強制解除、死なない処理)
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void affected_monster_prevents_bad_status(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -336,7 +334,6 @@ static void affected_monster_prevents_bad_status(player_type *caster_ptr, effect
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
  * @param stun_damage 朦朧値
- * @return なし
  */
 static void effect_damage_piles_stun(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -364,7 +361,6 @@ static void effect_damage_piles_stun(player_type *caster_ptr, effect_monster_typ
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
  * @param stun_damage 混乱値
- * @return なし
  */
 static void effect_damage_piles_confusion(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -392,7 +388,6 @@ static void effect_damage_piles_confusion(player_type *caster_ptr, effect_monste
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
  * @param stun_damage 恐怖値
- * @return なし
  * @details
  * 打撃ダメージによる恐怖もあるため、メッセージは後で表示。
  */
@@ -408,7 +403,6 @@ static void effect_damage_piles_fear(player_type *caster_ptr, effect_monster_typ
 /*!
  * @brief モンスターを衰弱させる
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void effect_damage_makes_weak(effect_monster_type *em_ptr)
 {
@@ -435,7 +429,6 @@ static void effect_damage_makes_weak(effect_monster_type *em_ptr)
  * @brief モンスターを変身させる
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void effect_damage_makes_polymorph(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -458,7 +451,6 @@ static void effect_damage_makes_polymorph(player_type *caster_ptr, effect_monste
  * @brief モンスターをテレポートさせる
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void effect_damage_makes_teleport(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -485,7 +477,6 @@ static void effect_damage_makes_teleport(player_type *caster_ptr, effect_monster
  * @brief モンスターへのダメージに応じたメッセージを表示させ、異常状態を与える
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  * @details
  * 以下の判定と処理を行う。
  * 1.全耐性または無敵でダメージが通らなかった場合
@@ -515,7 +506,6 @@ static void effect_damage_gives_bad_status(player_type *caster_ptr, effect_monst
  * @brief 効果によるモンスターへのダメージと付随効果を処理する
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  * @details
  * 以下の処理を行う。
  * 1.奇襲による徳の変化
@@ -538,7 +528,6 @@ static void exe_affect_monster_by_damage(player_type *caster_ptr, effect_monster
  * @brief モンスター闘技場にいる場合の画面更新処理
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void update_phase_out_stat(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -554,7 +543,6 @@ static void update_phase_out_stat(player_type *caster_ptr, effect_monster_type *
  * @brief 魔法効果がペットに及んだ時の処理
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void postprocess_by_effected_pet(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -576,7 +564,6 @@ static void postprocess_by_effected_pet(player_type *caster_ptr, effect_monster_
  * @brief 魔法効果が騎乗モンスターに及んだ時の処理
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void postprocess_by_riding_pet_effected(player_type *caster_ptr, effect_monster_type *em_ptr)
 {
@@ -593,7 +580,6 @@ static void postprocess_by_riding_pet_effected(player_type *caster_ptr, effect_m
  * @brief 写真を撮った時の処理
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  * @details 写真のフラッシュは弱閃光属性
  */
 static void postprocess_by_taking_photo(player_type *caster_ptr, effect_monster_type *em_ptr)
@@ -604,7 +590,7 @@ static void postprocess_by_taking_photo(player_type *caster_ptr, effect_monster_
     object_type *q_ptr;
     object_type forge;
     q_ptr = &forge;
-    object_prep(caster_ptr, q_ptr, lookup_kind(TV_STATUE, SV_PHOTO));
+    q_ptr->prep(caster_ptr, lookup_kind(TV_STATUE, SV_PHOTO));
     q_ptr->pval = em_ptr->photo;
     q_ptr->ident |= (IDENT_FULL_KNOWN);
     (void)drop_near(caster_ptr, q_ptr, -1, caster_ptr->y, caster_ptr->x);
@@ -614,7 +600,6 @@ static void postprocess_by_taking_photo(player_type *caster_ptr, effect_monster_
  * @brief モンスター効果の後処理 (ペット関係、記念撮影、グローバル変数更新)
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param em_ptr モンスター効果構造体への参照ポインタ
- * @return なし
  */
 static void exe_affect_monster_postprocess(player_type *caster_ptr, effect_monster_type *em_ptr)
 {

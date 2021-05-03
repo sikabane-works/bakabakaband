@@ -10,9 +10,10 @@
 #include "grid/grid.h"
 #include "monster/monster-info.h"
 #include "object-enchant/item-apply-magic.h"
-#include "object/object-generator.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
 /*!
@@ -38,7 +39,6 @@ static MONSTER_NUMBER count_all_hostile_monsters(floor_type *floor_ptr)
  * Check for "Quest" completion when a quest monster is killed or charmed.
  * @param player_ptr プレーヤーへの参照ポインタ
  * @param m_ptr 撃破したモンスターの構造体参照ポインタ
- * @return なし
  */
 void check_quest_completion(player_type *player_ptr, monster_type *m_ptr)
 {
@@ -154,7 +154,7 @@ void check_quest_completion(player_type *player_ptr, monster_type *m_ptr)
 
     if (create_stairs) {
         POSITION ny, nx;
-        while (cave_has_flag_bold(floor_ptr, y, x, FF_PERMANENT) || floor_ptr->grid_array[y][x].o_idx || (floor_ptr->grid_array[y][x].info & CAVE_OBJECT)) {
+        while (cave_has_flag_bold(floor_ptr, y, x, FF_PERMANENT) || !floor_ptr->grid_array[y][x].o_idx_list.empty() || (floor_ptr->grid_array[y][x].info & CAVE_OBJECT)) {
             scatter(player_ptr, &ny, &nx, y, x, 1, PROJECT_NONE);
             y = ny;
             x = nx;
@@ -172,7 +172,7 @@ void check_quest_completion(player_type *player_ptr, monster_type *m_ptr)
     object_type *o_ptr;
     for (int i = 0; i < (floor_ptr->dun_level / 15) + 1; i++) {
         o_ptr = &forge;
-        object_wipe(o_ptr);
+        o_ptr->wipe();
         make_object(player_ptr, o_ptr, AM_GOOD | AM_GREAT);
         (void)drop_near(player_ptr, o_ptr, -1, y, x);
     }
