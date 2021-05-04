@@ -87,6 +87,18 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
     letter[index].cave_info = 0;
     letter[index].special = 0;
     letter[index].random = RANDOM_NONE;
+    letter[index].force_monster_place = true;
+
+    if (num >= 2) {
+        if (strcmp(zz[1], "FIXED_MONSTER_PLACE") == 0)
+        {
+            letter[index].monster = (MONSTER_IDX)atoi(zz[4]);
+            letter[index].cave_info = atoi(zz[3]);
+            letter[index].force_monster_place = false;
+            letter[index].feature = f_tag_to_index(zz[2]);
+            return PARSE_ERROR_NONE;
+        }
+    }
 
     switch (num) {
     case 9:
