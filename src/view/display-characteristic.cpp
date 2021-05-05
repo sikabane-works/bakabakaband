@@ -17,6 +17,8 @@
 #include "player/permanent-resistances.h"
 #include "player/race-resistances.h"
 #include "player/temporary-resistances.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -98,7 +100,6 @@ static std::array<tr_type, 6> lite_flags = {
  * @param f プレイヤーの特性情報への参照ポインタ
  * @param mode 参照モード(DP_WP)
  * @param char_stat その行の特性の状況(参照渡し)
- * @return なし
  * その行の表示色用の判定も行う
  */
 static void process_cursed_equipment_characteristics(player_type *creature_ptr, u16b mode, char_stat &char_stat)
@@ -148,7 +149,6 @@ static void process_cursed_equipment_characteristics(player_type *creature_ptr, 
  * @param f プレイヤーの特性情報への参照ポインタ
  * @param mode 参照モード(DP_WP)
  * @param char_stat その行の特性の状況(参照渡し)
- * @return なし
  * @details
  * その行の表示色用の判定も行う
  */
@@ -188,6 +188,8 @@ static void process_light_equipment_characteristics(player_type *creature_ptr, a
             return;
         }
     }
+
+    char_stat.syms.emplace_back(".");
 }
 
 /*!
@@ -197,7 +199,6 @@ static void process_light_equipment_characteristics(player_type *creature_ptr, a
  * @param f プレイヤーの特性情報への参照ポインタ
  * @param mode 参照モード(DP_WP)
  * @param char_stat その行の特性の状況(参照渡し)
- * @return なし
  * @details
  * その行の表示色用の判定も行う
  */
@@ -264,7 +265,6 @@ static void process_inventory_characteristic(player_type *creature_ptr, tr_type 
  * @param flag1 参照する特性ID
  * @param f プレイヤーの特性情報構造体
  * @param mode 表示オプション
- * @return なし
  */
 static void process_one_characteristic(player_type *creature_ptr, TERM_LEN row, TERM_LEN col, std::string_view header, tr_type flag, all_player_flags *f, u16b mode)
 {
@@ -319,7 +319,6 @@ static void process_one_characteristic(player_type *creature_ptr, TERM_LEN row, 
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_basic_resistance_info(
     player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
@@ -346,7 +345,6 @@ static void display_basic_resistance_info(
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_advanced_resistance_info(
     player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
@@ -372,7 +370,6 @@ static void display_advanced_resistance_info(
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_other_resistance_info(
     player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
@@ -417,7 +414,6 @@ static void display_other_resistance_info(
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * Special display, part 1
- * @return なし
  */
 void display_player_flag_info_1(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16))
 {
@@ -433,7 +429,6 @@ void display_player_flag_info_1(player_type *creature_ptr, void (*display_player
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_slay_info(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
 {
@@ -459,7 +454,6 @@ static void display_slay_info(player_type *creature_ptr, void (*display_player_e
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_brand_info(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
 {
@@ -488,7 +482,6 @@ static void display_brand_info(player_type *creature_ptr, void (*display_player_
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_tval_misc_info(
     player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
@@ -520,7 +513,6 @@ static void display_tval_misc_info(
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_esc_info(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
 {
@@ -549,7 +541,6 @@ static void display_esc_info(player_type *creature_ptr, void (*display_player_eq
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_stustain_aura_info(
     player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
@@ -577,7 +568,6 @@ static void display_stustain_aura_info(
  * @param creature_ptr プレーヤーへの参照ポインタ
  * @param display_player_equippy 表示へのコールバック
  * @param f 特性フラグへの参照ポインタ
- * @return なし
  */
 static void display_curse_info(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16), all_player_flags *f)
 {
@@ -608,7 +598,6 @@ static void display_curse_info(player_type *creature_ptr, void (*display_player_
  * @brief プレイヤーの特性フラグ一覧表示2
  * @param creature_ptr プレーヤーへの参照ポインタ
  * Special display, part 2
- * @return なし
  */
 void display_player_flag_info_2(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16))
 {
@@ -624,7 +613,6 @@ void display_player_flag_info_2(player_type *creature_ptr, void (*display_player
  * @brief プレイヤーの特性フラグ一覧表示3
  * @param creature_ptr プレーヤーへの参照ポインタ
  * Special display, part 3
- * @return なし
  */
 void display_player_flag_info_3(player_type *creature_ptr, void (*display_player_equippy)(player_type *, TERM_LEN, TERM_LEN, BIT_FLAGS16))
 {

@@ -3,8 +3,11 @@
 #include "dungeon/dungeon.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object/object-kind.h"
+#include "object/tval-types.h"
 #include "system/alloc-entries.h"
 #include "system/floor-type-definition.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/probability-table.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -70,7 +73,7 @@ OBJECT_IDX get_obj_num(player_type *owner_ptr, DEPTH level, BIT_FLAGS mode)
     if (level > MAX_DEPTH - 1)
         level = MAX_DEPTH - 1;
 
-    if ((level > 0) && !(d_info[owner_ptr->dungeon_idx].flags1 & DF1_BEGINNER)) {
+    if ((level > 0) && d_info[owner_ptr->dungeon_idx].flags.has_not(DF::BEGINNER)) {
         if (one_in_(GREAT_OBJ)) {
             level = 1 + (level * MAX_DEPTH / randint1(MAX_DEPTH));
         }

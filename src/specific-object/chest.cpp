@@ -8,7 +8,6 @@
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "object-enchant/item-apply-magic.h"
-#include "object/object-generator.h"
 #include "perception/object-perception.h"
 #include "player/player-class.h"
 #include "player/player-damage.h"
@@ -25,6 +24,7 @@
 #include "sv-definition/sv-other-types.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
 /*!< この値以降の小項目IDを持った箱は大型の箱としてドロップ数を増やす / Special "sval" limit -- first "large" chest */
@@ -89,7 +89,7 @@ void chest_death(player_type *owner_ptr, bool scatter, POSITION y, POSITION x, O
 	for (; number > 0; --number)
 	{
 		q_ptr = &forge;
-		object_wipe(q_ptr);
+        q_ptr->wipe();
 
 		/* Small chests often drop gold */
 		if (small && (randint0(100) < 25))

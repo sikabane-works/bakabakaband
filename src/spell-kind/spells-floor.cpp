@@ -19,10 +19,12 @@
 #include "floor/floor-object.h"
 #include "floor/floor-save.h"
 #include "floor/floor-util.h"
+#include "floor/geometry.h"
 #include "game-option/birth-options.h"
 #include "game-option/cheat-options.h"
 #include "game-option/map-screen-options.h"
 #include "game-option/play-record-options.h"
+#include "grid/feature.h"
 #include "grid/feature-flag-types.h"
 #include "grid/grid.h"
 #include "io/write-diary.h"
@@ -47,6 +49,9 @@
 #include "status/bad-status-setter.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -54,7 +59,6 @@
  * @brief 啓蒙/陽光召喚処理
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param ninja 忍者かどうか
- * @return なし
  */
 void wiz_lite(player_type *caster_ptr, bool ninja)
 {
@@ -92,7 +96,7 @@ void wiz_lite(player_type *caster_ptr, bool ninja)
                 f_ptr = &f_info[get_feat_mimic(g_ptr)];
 
                 /* Perma-lite the grid */
-                if (!(d_info[caster_ptr->dungeon_idx].flags1 & DF1_DARKNESS) && !ninja) {
+                if (d_info[caster_ptr->dungeon_idx].flags.has_not(DF::DARKNESS) && !ninja) {
                     g_ptr->info |= (CAVE_GLOW);
                 }
 
@@ -180,7 +184,7 @@ void wiz_dark(player_type *caster_ptr)
  */
 void map_area(player_type *caster_ptr, POSITION range)
 {
-    if (d_info[caster_ptr->dungeon_idx].flags1 & DF1_DARKNESS)
+    if (d_info[caster_ptr->dungeon_idx].flags.has(DF::DARKNESS))
         range /= 3;
 
     /* Scan that area */
@@ -325,13 +329,10 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
 
             /* During generation, destroyed artifacts are "preserved" */
             if (preserve_mode || in_generate) {
-                OBJECT_IDX this_o_idx, next_o_idx = 0;
-
                 /* Scan all objects in the grid */
-                for (this_o_idx = g_ptr->o_idx; this_o_idx; this_o_idx = next_o_idx) {
+                for (const auto this_o_idx : g_ptr->o_idx_list) {
                     object_type *o_ptr;
                     o_ptr = &floor_ptr->o_list[this_o_idx];
-                    next_o_idx = o_ptr->next_o_idx;
 
                     /* Hack -- Preserve unknown artifacts */
                     if (object_is_fixed_artifact(o_ptr) && (!object_is_known(o_ptr) || in_generate)) {
@@ -420,7 +421,7 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
                 continue;
             }
 
-            if ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS))
+            if (d_info[floor_ptr->dungeon_idx].flags.has(DF::DARKNESS))
                 continue;
 
             DIRECTION i;

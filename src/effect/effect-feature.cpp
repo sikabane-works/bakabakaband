@@ -5,6 +5,8 @@
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h" // 暫定、後で消す.
 #include "floor/cave.h"
+#include "floor/geometry.h"
+#include "grid/feature.h"
 #include "grid/grid.h"
 #include "grid/trap.h"
 #include "main/sound-definitions-table.h"
@@ -16,6 +18,7 @@
 #include "room/door-definition.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -314,7 +317,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
     }
     case GF_LITE_WEAK:
     case GF_LITE: {
-        if ((d_info[caster_ptr->dungeon_idx].flags1 & DF1_DARKNESS) != 0)
+        if (d_info[caster_ptr->dungeon_idx].flags.has(DF::DARKNESS))
             break;
 
         g_ptr->info |= (CAVE_GLOW);

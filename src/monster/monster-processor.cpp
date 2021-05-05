@@ -17,7 +17,7 @@
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "floor/cave.h"
-#include "floor/floor-object.h"
+#include "floor/geometry.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
@@ -50,7 +50,6 @@
 #include "monster/monster-util.h"
 #include "mspell/mspell-attack.h"
 #include "mspell/mspell-judgement.h"
-#include "object/object-generator.h"
 #include "object-enchant/trc-types.h"
 #include "object/object-kind-hook.h"
 #include "pet/pet-fall-off.h"
@@ -63,10 +62,13 @@
 #include "spell/summon-types.h"
 #include "system/object-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
 #include "sv-definition/sv-junk-types.h"
+#include "floor/floor-object.h"
 
 void decide_drop_from_monster(player_type *target_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
 bool process_stealth(player_type *target_ptr, MONSTER_IDX m_idx);
@@ -88,7 +90,6 @@ bool decide_process_continue(player_type *target_ptr, monster_type *m_ptr);
  * Process a monster
  * @param target_ptr プレーヤーへの参照ポインタ
  * @param m_idx 行動モンスターの参照ID
- * @return なし
  * @details
  * The monster is known to be within 100 grids of the player\n
  *\n
@@ -99,7 +100,7 @@ bool decide_process_continue(player_type *target_ptr, monster_type *m_ptr);
  * level.  This should prevent the level from being "swamped" by\n
  * reproducing monsters.  It also allows a large mass of mice to\n
  * prevent a louse from multiplying, but this is a small price to\n
- * pay for a simple multiplication method.\n
+ * pay for a simple ENERGY_MULTIPLICATION method.\n
  *\n
  * XXX Monster fear is slightly odd, in particular, monsters will\n
  * fixate on opening a door even if they cannot open it.  Actually,\n
@@ -216,7 +217,6 @@ bool process_stealth(player_type *target_ptr, MONSTER_IDX m_idx)
  * @param target_ptr プレーヤーへの参照ポインタ
  * @param m_idx モンスターID
  * @param is_riding_mon 騎乗中であればTRUE
- * @return なし
  */
 void decide_drop_from_monster(player_type *target_ptr, MONSTER_IDX m_idx, bool is_riding_mon)
 {
@@ -304,7 +304,6 @@ bool awake_monster(player_type *target_ptr, MONSTER_IDX m_idx)
  * @param target_ptr プレーヤーへの参照ポインタ
  * @param m_idx モンスターID
  * @param see_m モンスターが視界内にいたらTRUE
- * @return なし
  */
 void process_angar(player_type *target_ptr, MONSTER_IDX m_idx, bool see_m)
 {
@@ -325,9 +324,9 @@ void process_angar(player_type *target_ptr, MONSTER_IDX m_idx, bool see_m)
     GAME_TEXT m_name[MAX_NLEN];
     monster_desc(target_ptr, m_name, m_ptr, is_pet(m_ptr) ? MD_ASSUME_VISIBLE : 0);
 
-    /* When riding a hostile align pet */
+    /* When riding a hostile alignment pet */
     if (target_ptr->riding == m_idx) {
-        if (abs(target_ptr->align / 10) < randint0(target_ptr->skill_exp[GINOU_RIDING]))
+        if (abs(target_ptr->alignment / 10) < randint0(target_ptr->skill_exp[GINOU_RIDING]))
             return;
 
         msg_format(_("%^sが突然暴れだした！", "%^s suddenly begins unruly!"), m_name);
@@ -365,7 +364,6 @@ bool explode_grenade(player_type *target_ptr, MONSTER_IDX m_idx)
  * @brief モンスター依存の特別な行動を取らせる
  * @param target_ptr プレーヤーへの参照ポインタ
  * @param m_idx モンスターID
- * @return なし
  */
 void process_special(player_type *target_ptr, MONSTER_IDX m_idx)
 {
@@ -483,7 +481,7 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
-        object_prep(target_ptr, q_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        q_ptr->prep(target_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -491,7 +489,7 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
-        object_prep(target_ptr, q_ptr, lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
+        q_ptr->prep(target_ptr, lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -510,7 +508,6 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
 /*!
  * @brief 全モンスターのターン管理メインルーチン /
  * Process all the "live" monsters, once per game turn.
- * @return なし
  * @details
  * During each game current game turn, we scan through the list of all the "live" monsters,\n
  * (backwards, so we can excise any "freshly dead" monsters), energizing each\n

@@ -32,7 +32,6 @@
 #include "monster/monster-list.h"
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
-#include "object/object-generator.h"
 #include "object/object-kind-hook.h"
 #include "pet/pet-fall-off.h"
 #include "player/patron.h"
@@ -41,6 +40,9 @@
 #include "system/artifact-type-definition.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "system/system-variables.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -88,8 +90,8 @@ static void on_defeat_arena_monster(player_type *player_ptr, monster_death_type 
     if (arena_info[player_ptr->arena_number].tval) {
         object_type forge;
         object_type *q_ptr = &forge;
-        object_prep(player_ptr, q_ptr, lookup_kind(arena_info[player_ptr->arena_number].tval, arena_info[player_ptr->arena_number].sval));
-        apply_magic(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART);
+        q_ptr->prep(player_ptr, lookup_kind(arena_info[player_ptr->arena_number].tval, arena_info[player_ptr->arena_number].sval));
+        apply_magic_to_object(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART);
         (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     }
 
@@ -132,13 +134,14 @@ static void drop_corpse(player_type *player_ptr, monster_death_type *md_ptr)
 
     object_type forge;
     object_type *q_ptr = &forge;
-    object_prep(player_ptr, q_ptr, lookup_kind(TV_CORPSE, (corpse ? SV_CORPSE : SV_SKELETON)));
-    apply_magic(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART);
+    q_ptr->prep(player_ptr, lookup_kind(TV_CORPSE, (corpse ? SV_CORPSE : SV_SKELETON)));
+    apply_magic_to_object(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART);
     q_ptr->pval = md_ptr->m_ptr->r_idx;
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 
     if (one_in_(RF1_UNIQUE ? 1 : 4)) {
-        object_prep(player_ptr, q_ptr, lookup_kind(TV_CORPSE, SV_SOUL));
+
+        q_ptr->prep(player_ptr, lookup_kind(TV_CORPSE, SV_SOUL));
         q_ptr->pval = md_ptr->m_ptr->r_idx;
         (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);    
     }
@@ -219,8 +222,8 @@ static void drop_artifact(player_type *player_ptr, monster_death_type *md_ptr)
     if (k_idx != 0) {
         object_type forge;
         object_type *q_ptr = &forge;
-        object_prep(player_ptr, q_ptr, k_idx);
-        apply_magic(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | AM_GOOD);
+        q_ptr->prep(player_ptr, k_idx);
+        apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | AM_GOOD);
         (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     }
 
@@ -280,7 +283,7 @@ static void drop_items_golds(player_type *player_ptr, monster_death_type *md_ptr
     for (int i = 0; i < drop_numbers; i++) {
         object_type forge;
         object_type *q_ptr = &forge;
-        object_wipe(q_ptr);
+        q_ptr->wipe();
         if (md_ptr->do_gold && (!md_ptr->do_item || (randint0(100) < 50))) {
             if (!make_gold(player_ptr, q_ptr))
                 continue;
@@ -307,7 +310,6 @@ static void drop_items_golds(player_type *player_ptr, monster_death_type *md_ptr
 /*!
  * @brief 最終ボス(混沌のサーペント)を倒したときの処理
  * @param player_ptr プレイヤー情報への参照ポインタ
- * @return なし
  */
 static void on_defeat_last_boss(player_type *player_ptr)
 {

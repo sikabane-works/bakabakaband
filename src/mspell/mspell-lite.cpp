@@ -8,6 +8,7 @@
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
 #include "floor/cave.h"
+#include "floor/geometry.h"
 #include "floor/line-of-sight.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
@@ -20,7 +21,9 @@
 #include "mspell/mspell-judgement.h"
 #include "spell/range-calc.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "util/bit-flags-calculator.h"
 
@@ -184,7 +187,7 @@ void decide_lite_area(player_type *target_ptr, msa_type *msa_ptr)
     if ((msa_ptr->r_ptr->flags2 & RF2_STUPID) != 0)
         return;
 
-    if (d_info[target_ptr->dungeon_idx].flags1 & DF1_DARKNESS) {
+    if (d_info[target_ptr->dungeon_idx].flags.has(DF::DARKNESS)) {
         msa_ptr->ability_flags.reset(RF_ABILITY::DARKNESS);
         return;
     }

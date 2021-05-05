@@ -7,14 +7,14 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/trg-types.h"
 #include "object/item-tester-hooker.h" // 暫定、このファイルへ引っ越す.
-#include "object/object-generator.h"
 #include "object/object-kind.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 
 /*!
  * @brief オブジェクトを鑑定済にする /
  * Known is true when the "attributes" of an object are "known".
  * @param o_ptr 鑑定済にするオブジェクトの構造体参照ポインタ
- * @return なし
  * These include tohit, todam, toac, cost, and pval (charges).\n
  *\n
  * Note that "knowing" an object gives you everything that an "awareness"\n
@@ -41,7 +41,6 @@ void object_known(object_type *o_ptr)
  * The player is now aware of the effects of the given object.
  * @param owner_ptr プレーヤーへの参照ポインタ
  * @param o_ptr ＊鑑定＊済にするオブジェクトの構造体参照ポインタ
- * @return なし
  */
 void object_aware(player_type *owner_ptr, object_type *o_ptr)
 {
@@ -70,7 +69,7 @@ void object_aware(player_type *owner_ptr, object_type *o_ptr)
     GAME_TEXT o_name[MAX_NLEN];
 
     q_ptr = &forge;
-    object_copy(q_ptr, o_ptr);
+    q_ptr->copy_from(o_ptr);
 
     q_ptr->number = 1;
     describe_flavor(owner_ptr, o_name, q_ptr, OD_NAME_ONLY);
@@ -82,7 +81,6 @@ void object_aware(player_type *owner_ptr, object_type *o_ptr)
  * @brief オブジェクトを試行済にする /
  * Something has been "sampled"
  * @param o_ptr 試行済にするオブジェクトの構造体参照ポインタ
- * @return なし
  */
 void object_tried(object_type *o_ptr) { k_info[o_ptr->k_idx].tried = TRUE; }
 

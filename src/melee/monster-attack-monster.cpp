@@ -33,6 +33,9 @@
 #include "spell-realm/spells-hex.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
 static void heal_monster_by_melee(player_type *subject_ptr, mam_type *mam_ptr)
@@ -147,7 +150,7 @@ static bool check_same_monster(player_type *subject_ptr, mam_type *mam_ptr)
     if (r_ptr->flags1 & RF1_NEVER_BLOW)
         return FALSE;
 
-    if (d_info[subject_ptr->dungeon_idx].flags1 & DF1_NO_MELEE)
+    if (d_info[subject_ptr->dungeon_idx].flags.has(DF::NO_MELEE))
         return FALSE;
 
     return TRUE;
@@ -260,7 +263,6 @@ static void explode_monster_by_melee(player_type *subject_ptr, mam_type *mam_ptr
  * @brief r_infoで定義した攻撃回数の分だけ、モンスターからモンスターへの直接攻撃処理を繰り返す
  * @param subject_ptr プレーヤーへの参照ポインタ
  * @param mam_ptr モンスター乱闘構造体への参照ポインタ
- * @return なし
  */
 void repeat_melee(player_type *subject_ptr, mam_type *mam_ptr)
 {

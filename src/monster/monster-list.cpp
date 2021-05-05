@@ -16,6 +16,7 @@
 #include "dungeon/dungeon.h"
 #include "floor/cave.h"
 #include "floor/floor-object.h"
+#include "floor/geometry.h"
 #include "floor/wild.h"
 #include "game-option/birth-options.h"
 #include "game-option/cheat-options.h"
@@ -31,10 +32,13 @@
 #include "monster/monster-info.h"
 #include "monster/monster-update.h"
 #include "monster/monster-util.h"
-#include "object/object-generator.h"
 #include "pet/pet-fall-off.h"
+#include "player/player-status.h"
 #include "system/alloc-entries.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/probability-table.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -106,7 +110,7 @@ MONRACE_IDX get_mon_num(player_type *player_ptr, DEPTH min_level, DEPTH max_leve
     /* starts from 0, reaches +25lv after 75days from a max_level dependent base date */
     pls_max_level = MIN(NASTY_MON_PLUS_MAX, over_days / 3);
 
-    if (d_info[player_ptr->dungeon_idx].flags1 & DF1_MAZE) {
+    if (d_info[player_ptr->dungeon_idx].flags.has(DF::MAZE)) {
         pls_kakuritu = MIN(pls_kakuritu / 2, pls_kakuritu - 10);
         if (pls_kakuritu < 2)
             pls_kakuritu = 2;
@@ -115,7 +119,7 @@ MONRACE_IDX get_mon_num(player_type *player_ptr, DEPTH min_level, DEPTH max_leve
     }
 
     /* Boost the max_level */
-    if ((option & GMN_ARENA) || !(d_info[player_ptr->dungeon_idx].flags1 & DF1_BEGINNER)) {
+    if ((option & GMN_ARENA) || d_info[player_ptr->dungeon_idx].flags.has_not(DF::BEGINNER)) {
         /* Nightmare mode allows more out-of depth monsters */
         if (ironman_nightmare && !randint0(pls_kakuritu)) {
             /* What a bizarre calculation */
@@ -271,7 +275,6 @@ static bool monster_hook_chameleon(player_type *player_ptr, MONRACE_IDX r_idx)
  * @param m_idx 変身処理を受けるモンスター情報のID
  * @param born 生成時の初変身先指定ならばtrue
  * @param r_idx 旧モンスター種族のID
- * @return なし
  */
 void choose_new_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool born, MONRACE_IDX r_idx)
 {
@@ -305,7 +308,7 @@ void choose_new_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool born, M
         else
             level = floor_ptr->dun_level;
 
-        if (d_info[player_ptr->dungeon_idx].flags1 & DF1_CHAMELEON)
+        if (d_info[player_ptr->dungeon_idx].flags.has(DF::CHAMELEON))
             level += 2 + randint1(3);
 
         r_idx = get_mon_num(player_ptr, 0, level, 0);

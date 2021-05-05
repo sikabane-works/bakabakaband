@@ -7,8 +7,11 @@
 #include "dungeon/quest.h"
 #include "floor/cave.h"
 #include "floor/floor-object.h"
+#include "floor/geometry.h"
 #include "game-option/play-record-options.h"
 #include "game-option/text-display-options.h"
+#include "grid/feature-flag-types.h"
+#include "grid/feature.h"
 #include "grid/grid.h"
 #include "grid/stair.h"
 #include "io/write-diary.h"
@@ -29,6 +32,9 @@
 #include "player/special-defense-types.h"
 #include "status/bad-status-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -319,7 +325,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
                 continue;
             }
 
-            if ((d_info[caster_ptr->dungeon_idx].flags1 & DF1_DARKNESS))
+            if (d_info[caster_ptr->dungeon_idx].flags.has(DF::DARKNESS))
                 continue;
 
             grid_type *cc_ptr;

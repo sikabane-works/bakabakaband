@@ -7,6 +7,7 @@
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/cave.h"
+#include "floor/geometry.h"
 #include "game-option/input-options.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
@@ -32,6 +33,10 @@
 #include "spell/spell-types.h"
 #include "status/element-resistance.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -74,7 +79,6 @@ object_type *choose_warning_item(player_type *creature_ptr)
  * @param typ 効果属性のID
  * @param dam 基本ダメージ
  * @param max 算出した最大ダメージを返すポインタ
- * @return なし
  */
 static void spell_damcalc(player_type *target_ptr, monster_type *m_ptr, EFFECT_ID typ, HIT_POINT dam, int *max)
 {
@@ -246,7 +250,6 @@ static void spell_damcalc(player_type *target_ptr, monster_type *m_ptr, EFFECT_I
  * @param typ 効果属性のID
  * @param m_idx 魔法を行使するモンスターのID
  * @param max 算出した最大ダメージを返すポインタ
- * @return なし
  */
 static void spell_damcalc_by_spellnum(player_type *creature_ptr, RF_ABILITY ms_type, EFFECT_ID typ, MONSTER_IDX m_idx, int *max)
 {
@@ -374,7 +377,7 @@ bool process_warning(player_type *creature_ptr, POSITION xx, POSITION yy)
             if (projectable(creature_ptr, my, mx, yy, xx)) {
                 const auto flags = r_ptr->ability_flags;
 
-                if (!(d_info[creature_ptr->dungeon_idx].flags1 & DF1_NO_MAGIC)) {
+                if (d_info[creature_ptr->dungeon_idx].flags.has_not(DF::NO_MAGIC)) {
                     if (flags.has(RF_ABILITY::BA_CHAO))
                         spell_damcalc_by_spellnum(creature_ptr, RF_ABILITY::BA_CHAO, GF_CHAOS, g_ptr->m_idx, &dam_max0);
                     if (flags.has(RF_ABILITY::BA_MANA))
@@ -438,7 +441,7 @@ bool process_warning(player_type *creature_ptr, POSITION xx, POSITION yy)
             }
 
             /* Monster melee attacks */
-            if ((r_ptr->flags1 & RF1_NEVER_BLOW) || (d_info[creature_ptr->dungeon_idx].flags1 & DF1_NO_MELEE)) {
+            if ((r_ptr->flags1 & RF1_NEVER_BLOW) || d_info[creature_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
                 dam_max += dam_max0;
                 continue;
             }

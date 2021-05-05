@@ -1,13 +1,12 @@
 ﻿#pragma once
 
-#include "system/angband.h"
-
-#include "grid/feature.h"
-#include "monster-race/race-ability-flags.h"
-#include "util/flag-group.h"
-
 #include <string>
 #include <vector>
+
+#include "dungeon/dungeon-flag-types.h"
+#include "monster-race/race-ability-flags.h"
+#include "system/angband.h"
+#include "util/flag-group.h"
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -31,9 +30,13 @@
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
 
+typedef struct feat_prob {
+    FEAT_IDX feat{}; /* Feature tile */
+    PERCENTAGE percent{}; /* Chance of type */
+} feat_prob;
+
 /* A structure for the != dungeon types */
-typedef struct dungeon_type dungeon_type;
-struct dungeon_type {
+typedef struct dungeon_type {
 
 	std::string name; /* Name */
     std::string text; /* Description */
@@ -58,7 +61,7 @@ struct dungeon_type {
 	int min_m_alloc_level{};	/* Minimal number of monsters per level */
 	int max_m_alloc_chance{};	/* There is a 1/max_m_alloc_chance chance per round of creating a new monster */
 
-	BIT_FLAGS flags1{};		/* Flags 1 */
+	EnumClassFlagGroup<DF> flags{};	/* Dungeon Flags */
 
 	BIT_FLAGS mflags1{};		/* The monster flags that are allowed */
 	BIT_FLAGS mflags2{};
@@ -79,9 +82,11 @@ struct dungeon_type {
 	int tunnel_percent{};
 	int obj_great{};
 	int obj_good{};
-};
+} dungeon_type;
 
 extern DEPTH *max_dlv;
 extern std::vector<dungeon_type> d_info;
 
-extern DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x);
+typedef struct player_type player_type;
+DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x);
+bool is_in_dungeon(player_type *creature_ptr);

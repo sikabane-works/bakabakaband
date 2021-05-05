@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include "system/angband.h"
-
 #define ENTRY_BARE_HAND 0
 #define ENTRY_TWO_HANDS 1
 #define ENTRY_RIGHT_HAND1 2
@@ -53,5 +51,3 @@
 #define ENTRY_EXP_TO_ADV_ANDR 44
 
 #define ENTRY_DEATH_COUNT 46
-
-void display_player_various(player_type *creature_ptr);

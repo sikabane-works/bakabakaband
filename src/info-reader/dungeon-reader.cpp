@@ -1,5 +1,6 @@
 ﻿#include "info-reader/dungeon-reader.h"
 #include "dungeon/dungeon.h"
+#include "grid/feature.h"
 #include "info-reader/dungeon-info-tokens-table.h"
 #include "info-reader/feature-reader.h"
 #include "info-reader/parse-error-types.h"
@@ -19,7 +20,7 @@
  */
 static errr grab_one_dungeon_flag(dungeon_type *d_ptr, concptr what)
 {
-    if (grab_one_flag(&d_ptr->flags1, d_info_flags1, what) == 0)
+    if (EnumClassFlagGroup<DF>::grab_one_flag(d_ptr->flags, d_info_flags, what))
         return 0;
 
     msg_format(_("未知のダンジョン・フラグ '%s'。", "Unknown dungeon type flag '%s'."), what);

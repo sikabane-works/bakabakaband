@@ -4,10 +4,11 @@
 #include "object-enchant/trg-types.h"
 #include "object-hook/hook-enchant.h"
 #include "object-hook/hook-weapon.h"
-#include "object/object-generator.h"
 #include "object/object-kind.h"
 #include "object/object-value-calc.h"
 #include "object/object-value.h"
+#include "player-info/equipment-info.h"
+#include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell/spell-types.h"
 #include "sv-definition/sv-armor-types.h"
@@ -15,6 +16,7 @@
 #include "sv-definition/sv-weapon-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "view/display-messages.h"
 
@@ -71,8 +73,8 @@ void calc_android_exp(player_type *creature_ptr)
         if (!o_ptr->k_idx)
             continue;
 
-        object_wipe(q_ptr);
-        object_copy(q_ptr, o_ptr);
+        q_ptr->wipe();
+        q_ptr->copy_from(o_ptr);
         q_ptr->discount = 0;
         q_ptr->curse_flags = 0L;
 

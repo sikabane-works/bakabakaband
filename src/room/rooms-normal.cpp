@@ -1,6 +1,7 @@
 ﻿#include "room/rooms-normal.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
+#include "floor/geometry.h"
 #include "grid/door.h"
 #include "grid/grid.h"
 #include "grid/stair.h"
@@ -11,11 +12,11 @@
 #include "room/space-finder.h"
 #include "room/vault-builder.h"
 #include "system/floor-type-definition.h"
+#include "system/player-type-definition.h"
 
 /*!
  * @brief タイプ1の部屋…通常可変長方形の部屋を生成する / Type 1 -- normal rectangular rooms
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  */
 bool build_type1(player_type *player_ptr, dun_data_type *dd_ptr)
 {
@@ -27,7 +28,7 @@ bool build_type1(player_type *player_ptr, dun_data_type *dd_ptr)
     grid_type *g_ptr;
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    bool curtain = (d_info[floor_ptr->dungeon_idx].flags1 & DF1_CURTAIN) && one_in_((d_info[floor_ptr->dungeon_idx].flags1 & DF1_NO_CAVE) ? 48 : 512);
+    bool curtain = (d_info[floor_ptr->dungeon_idx].flags.has(DF::CURTAIN)) && one_in_(d_info[floor_ptr->dungeon_idx].flags.has(DF::NO_CAVE) ? 48 : 512);
 
     /* Pick a room size */
     y1 = randint1(11);
@@ -55,7 +56,7 @@ bool build_type1(player_type *player_ptr, dun_data_type *dd_ptr)
     }
 
     /* Choose lite or dark */
-    light = ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS));
+    light = ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS));
 
     /* Get corner values */
     y1 = yval - ysize / 2;
@@ -152,7 +153,7 @@ bool build_type1(player_type *player_ptr, dun_data_type *dd_ptr)
     }
     /* Hack -- Occasional divided room */
     else if (one_in_(50)) {
-        bool curtain2 = (d_info[floor_ptr->dungeon_idx].flags1 & DF1_CURTAIN) && one_in_((d_info[floor_ptr->dungeon_idx].flags1 & DF1_NO_CAVE) ? 2 : 128);
+        bool curtain2 = (d_info[floor_ptr->dungeon_idx].flags.has(DF::CURTAIN)) && one_in_(d_info[floor_ptr->dungeon_idx].flags.has(DF::NO_CAVE) ? 2 : 128);
 
         if (randint1(100) < 50) {
             /* Horizontal wall */
@@ -189,7 +190,6 @@ bool build_type1(player_type *player_ptr, dun_data_type *dd_ptr)
 /*!
  * @brief タイプ2の部屋…二重長方形の部屋を生成する / Type 2 -- Overlapping rectangular rooms
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  */
 bool build_type2(player_type *player_ptr, dun_data_type *dd_ptr)
 {
@@ -205,7 +205,7 @@ bool build_type2(player_type *player_ptr, dun_data_type *dd_ptr)
         return FALSE;
 
     /* Choose lite or dark */
-    light = ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS));
+    light = ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS));
 
     /* Determine extents of the first room */
     y1a = yval - randint1(11);
@@ -291,7 +291,6 @@ bool build_type2(player_type *player_ptr, dun_data_type *dd_ptr)
 /*!
  * @brief タイプ3の部屋…十字型の部屋を生成する / Type 3 -- Cross shaped rooms
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  * @details
  * Builds a room at a row, column coordinate\n
  *\n
@@ -317,7 +316,7 @@ bool build_type3(player_type *player_ptr, dun_data_type *dd_ptr)
         return FALSE;
 
     /* Choose lite or dark */
-    light = ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS));
+    light = ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS));
 
     /* For now, always 3x3 */
     wx = wy = 1;
@@ -490,9 +489,9 @@ bool build_type3(player_type *player_ptr, dun_data_type *dd_ptr)
             /* Sometimes shut using secret doors */
             if (one_in_(3)) {
                 int door_type
-                    = ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_CURTAIN) && one_in_((d_info[floor_ptr->dungeon_idx].flags1 & DF1_NO_CAVE) ? 16 : 256))
+                    = (d_info[floor_ptr->dungeon_idx].flags.has(DF::CURTAIN) && one_in_(d_info[floor_ptr->dungeon_idx].flags.has(DF::NO_CAVE) ? 16 : 256))
                     ? DOOR_CURTAIN
-                    : ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_GLASS_DOOR) ? DOOR_GLASS_DOOR : DOOR_DOOR);
+                    : (d_info[floor_ptr->dungeon_idx].flags.has(DF::GLASS_DOOR) ? DOOR_GLASS_DOOR : DOOR_DOOR);
 
                 place_secret_door(player_ptr, yval, x1a - 1, door_type);
                 place_secret_door(player_ptr, yval, x2a + 1, door_type);
@@ -531,7 +530,6 @@ bool build_type3(player_type *player_ptr, dun_data_type *dd_ptr)
 /*!
  * @brief タイプ4の部屋…固定サイズの二重構造部屋を生成する / Type 4 -- Large room with inner features
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  * @details
  * Possible sub-types:\n
  *	1 - Just an inner room with one door\n
@@ -553,7 +551,7 @@ bool build_type4(player_type *player_ptr, dun_data_type *dd_ptr)
         return FALSE;
 
     /* Choose lite or dark */
-    light = ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS));
+    light = ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS));
 
     /* Large room */
     y1 = yval - 4;
@@ -738,9 +736,9 @@ bool build_type4(player_type *player_ptr, dun_data_type *dd_ptr)
 
         /* Occasionally, some Inner rooms */
         if (one_in_(3)) {
-            int door_type = ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_CURTAIN) && one_in_((d_info[floor_ptr->dungeon_idx].flags1 & DF1_NO_CAVE) ? 16 : 256))
+            int door_type = (d_info[floor_ptr->dungeon_idx].flags.has(DF::CURTAIN) && one_in_(d_info[floor_ptr->dungeon_idx].flags.has(DF::NO_CAVE) ? 16 : 256))
                 ? DOOR_CURTAIN
-                : ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_GLASS_DOOR) ? DOOR_GLASS_DOOR : DOOR_DOOR);
+                : (d_info[floor_ptr->dungeon_idx].flags.has(DF::GLASS_DOOR) ? DOOR_GLASS_DOOR : DOOR_DOOR);
 
             /* Long horizontal walls */
             for (x = xval - 5; x <= xval + 5; x++) {
@@ -818,9 +816,9 @@ bool build_type4(player_type *player_ptr, dun_data_type *dd_ptr)
 
     /* Four small rooms. */
     case 5: {
-        int door_type = ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_CURTAIN) && one_in_((d_info[floor_ptr->dungeon_idx].flags1 & DF1_NO_CAVE) ? 16 : 256))
+        int door_type = (d_info[floor_ptr->dungeon_idx].flags.has(DF::CURTAIN) && one_in_(d_info[floor_ptr->dungeon_idx].flags.has(DF::NO_CAVE) ? 16 : 256))
             ? DOOR_CURTAIN
-            : ((d_info[floor_ptr->dungeon_idx].flags1 & DF1_GLASS_DOOR) ? DOOR_GLASS_DOOR : DOOR_DOOR);
+            : (d_info[floor_ptr->dungeon_idx].flags.has(DF::GLASS_DOOR) ? DOOR_GLASS_DOOR : DOOR_DOOR);
 
         /* Inner "cross" */
         for (y = y1; y <= y2; y++) {
@@ -866,7 +864,6 @@ bool build_type4(player_type *player_ptr, dun_data_type *dd_ptr)
 /*!
  * @brief タイプ11の部屋…円形部屋の生成 / Type 11 -- Build an vertical oval room.
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  * @details
  * For every grid in the possible square, check the distance.\n
  * If it's less than the radius, make it a room square.\n
@@ -880,7 +877,7 @@ bool build_type11(player_type *player_ptr, dun_data_type *dd_ptr)
 
     /* Occasional light */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if ((randint1(floor_ptr->dun_level) <= 15) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS))
+    if ((randint1(floor_ptr->dun_level) <= 15) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS))
         light = TRUE;
 
     rad = randint0(9);
@@ -911,7 +908,6 @@ bool build_type11(player_type *player_ptr, dun_data_type *dd_ptr)
 /*!
  * @brief タイプ12の部屋…ドーム型部屋の生成 / Type 12 -- Build crypt room.
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  * @details
  * For every grid in the possible square, check the (fake) distance.\n
  * If it's less than the radius, make it a room square.\n
@@ -933,7 +929,7 @@ bool build_type12(player_type *player_ptr, dun_data_type *dd_ptr)
 
     /* Occasional light */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if ((randint1(floor_ptr->dun_level) <= 5) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS))
+    if ((randint1(floor_ptr->dun_level) <= 5) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS))
         light = TRUE;
 
     rad = randint1(9);

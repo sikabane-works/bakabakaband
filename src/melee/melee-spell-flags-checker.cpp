@@ -3,6 +3,8 @@
 #include "dungeon/dungeon.h"
 #include "effect/effect-characteristics.h"
 #include "floor/line-of-sight.h"
+#include "floor/geometry.h"
+#include "grid/grid.h"
 #include "melee/melee-spell-util.h"
 #include "monster-floor/monster-move.h"
 #include "monster-race/monster-race.h"
@@ -20,6 +22,9 @@
 #include "spell-kind/spells-world.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 
 static void decide_melee_spell_target(player_type *target_ptr, melee_spell_type *ms_ptr)
@@ -97,7 +102,7 @@ static void check_darkness(player_type *target_ptr, melee_spell_type *ms_ptr)
     if ((ms_ptr->r_ptr->flags2 & RF2_STUPID) != 0)
         return;
 
-    if (d_info[target_ptr->dungeon_idx].flags1 & DF1_DARKNESS) {
+    if (d_info[target_ptr->dungeon_idx].flags.has(DF::DARKNESS)) {
         ms_ptr->ability_flags.reset(RF_ABILITY::DARKNESS);
         return;
     }

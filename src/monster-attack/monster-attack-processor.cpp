@@ -8,15 +8,20 @@
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
 #include "floor/cave.h"
+#include "grid/grid.h"
 #include "melee/monster-attack-monster.h"
 #include "monster-attack/monster-attack-player.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags2.h"
 #include "monster/monster-info.h"
+#include "monster/monster-processor-util.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 
 /*!
  * @brief モンスターが移動した結果、そこにプレーヤーがいたら直接攻撃を行う
@@ -25,7 +30,6 @@
  * @param m_idx モンスターID
  * @param ny 移動後の、モンスターのY座標
  * @param nx 移動後の、モンスターのX座標
- * @return なし
  * @details
  * 反攻撃の洞窟など、直接攻撃ができない場所では処理をスキップする
  */
@@ -43,7 +47,7 @@ void exe_monster_attack_to_player(player_type *target_ptr, turn_flags *turn_flag
         turn_flags_ptr->do_move = FALSE;
     }
 
-    if (turn_flags_ptr->do_move && ((d_info[target_ptr->dungeon_idx].flags1 & DF1_NO_MELEE) != 0) && !monster_confused_remaining(m_ptr)) {
+    if (turn_flags_ptr->do_move && d_info[target_ptr->dungeon_idx].flags.has(DF::NO_MELEE) && !monster_confused_remaining(m_ptr)) {
         if (!(r_ptr->flags2 & RF2_STUPID))
             turn_flags_ptr->do_move = FALSE;
         else if (is_original_ap_and_seen(target_ptr, m_ptr))
@@ -82,7 +86,7 @@ static bool exe_monster_attack_to_monster(player_type *target_ptr, MONSTER_IDX m
         return FALSE;
     if (monst_attack_monst(target_ptr, m_idx, g_ptr->m_idx))
         return TRUE;
-    if ((d_info[target_ptr->dungeon_idx].flags1 & DF1_NO_MELEE) == 0)
+    if (d_info[target_ptr->dungeon_idx].flags.has_not(DF::NO_MELEE))
         return FALSE;
     if (monster_confused_remaining(m_ptr))
         return TRUE;

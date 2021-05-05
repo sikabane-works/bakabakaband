@@ -13,7 +13,9 @@
 #include "monster/monster-status.h"
 #include "player/special-defense-types.h"
 #include "system/floor-type-definition.h"
+#include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/point-2d.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -133,7 +135,7 @@ void update_mon_lite(player_type *subject_ptr)
     std::vector<Pos2D> points;
 
     void (*add_mon_lite)(player_type *, std::vector<Pos2D> &, const POSITION, const POSITION, const monster_lite_type *);
-    int dis_lim = ((d_info[subject_ptr->dungeon_idx].flags1 & DF1_DARKNESS) && !subject_ptr->see_nocto) ? (MAX_SIGHT / 2 + 1) : (MAX_SIGHT + 3);
+    int dis_lim = (d_info[subject_ptr->dungeon_idx].flags.has(DF::DARKNESS) && !subject_ptr->see_nocto) ? (MAX_SIGHT / 2 + 1) : (MAX_SIGHT + 3);
     floor_type *floor_ptr = subject_ptr->current_floor_ptr;
     for (int i = 0; i < floor_ptr->mon_lite_n; i++) {
         grid_type *g_ptr;
@@ -173,7 +175,7 @@ void update_mon_lite(player_type *subject_ptr)
                     && (monster_csleep_remaining(m_ptr) || (!floor_ptr->dun_level && is_daytime()) || subject_ptr->phase_out))
                     continue;
 
-                if (d_info[subject_ptr->dungeon_idx].flags1 & DF1_DARKNESS)
+                if (d_info[subject_ptr->dungeon_idx].flags.has(DF::DARKNESS))
                     rad = 1;
 
                 add_mon_lite = update_monster_lite;
@@ -326,7 +328,6 @@ void update_mon_lite(player_type *subject_ptr)
 /*!
  * @brief 画面切り替え等でモンスターの灯りを消去する
  * @param floor_ptr 現在フロアへの参照ポインタ
- * @return なし
  */
 void clear_mon_lite(floor_type *floor_ptr)
 {

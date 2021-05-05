@@ -29,9 +29,10 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-flags.h" //!< @todo 相互参照している.
-#include "object/object-generator.h"
 #include "perception/object-perception.h"
-#include "player/player-status.h"
+#include "player-status/player-energy.h"
+#include "system/object-type-definition.h"
+#include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -195,7 +196,6 @@ static concptr const kaji_tips[5] = {
 
 /*!
  * @brief 所持しているエッセンス一覧を表示する
- * @return なし
  */
 static void display_essence(player_type *creature_ptr)
 {
@@ -221,7 +221,6 @@ static void display_essence(player_type *creature_ptr)
 /*!
  * @brief エッセンスの抽出処理
  * @param creature_ptr プレーヤーへの参照ポインタ
- * @return なし
  */
 static void drain_essence(player_type *creature_ptr)
 {
@@ -238,7 +237,6 @@ static void drain_essence(player_type *creature_ptr)
     POSITION iy, ix;
     byte marked;
     ITEM_NUMBER number;
-    OBJECT_IDX next_o_idx;
 
     for (i = 0; i < sizeof(drain_value) / sizeof(int); i++)
         drain_value[i] = 0;
@@ -259,7 +257,7 @@ static void drain_essence(player_type *creature_ptr)
             return;
     }
 
-    take_turn(creature_ptr, 100);
+    PlayerEnergy(creature_ptr).set_player_turn_energy(100);
 
     object_flags(creature_ptr, o_ptr, old_flgs);
     if (has_flag(old_flgs, TR_KILL_DRAGON))
@@ -331,15 +329,13 @@ static void drain_essence(player_type *creature_ptr)
 
     iy = o_ptr->iy;
     ix = o_ptr->ix;
-    next_o_idx = o_ptr->next_o_idx;
     marked = o_ptr->marked;
     number = o_ptr->number;
 
-    object_prep(creature_ptr, o_ptr, o_ptr->k_idx);
+    o_ptr->prep(creature_ptr, o_ptr->k_idx);
 
     o_ptr->iy = iy;
     o_ptr->ix = ix;
-    o_ptr->next_o_idx = next_o_idx;
     o_ptr->marked = marked;
     o_ptr->number = number;
     if (o_ptr->tval == TV_DRAG_ARMOR)
@@ -543,7 +539,6 @@ static COMMAND_CODE choose_essence(void)
 /*!
  * @brief エッセンスを実際に付加する
  * @param mode エッセンスの大別ID
- * @return なし
  */
 static void add_essence(player_type *creature_ptr, ESSENCE_IDX mode)
 {
@@ -902,10 +897,11 @@ static void add_essence(player_type *creature_ptr, ESSENCE_IDX mode)
             o_ptr->to_d += get_to_d;
         }
         creature_ptr->magic_num1[es_ptr->essence] -= use_essence;
+        PlayerEnergy energy(creature_ptr);
         if (es_ptr->add == ESSENCE_ATTACK) {
             if ((o_ptr->to_h >= creature_ptr->lev / 5 + 5) && (o_ptr->to_d >= creature_ptr->lev / 5 + 5)) {
                 msg_print(_("改良に失敗した。", "You failed to enchant."));
-                take_turn(creature_ptr, 100);
+                energy.set_player_turn_energy(100);
                 return;
             } else {
                 if (o_ptr->to_h < creature_ptr->lev / 5 + 5)
@@ -916,7 +912,7 @@ static void add_essence(player_type *creature_ptr, ESSENCE_IDX mode)
         } else if (es_ptr->add == ESSENCE_AC) {
             if (o_ptr->to_a >= creature_ptr->lev / 5 + 5) {
                 msg_print(_("改良に失敗した。", "You failed to enchant."));
-                take_turn(creature_ptr, 100);
+                energy.set_player_turn_energy(100);
                 return;
             } else {
                 if (o_ptr->to_a < creature_ptr->lev / 5 + 5)
@@ -980,7 +976,7 @@ static void add_essence(player_type *creature_ptr, ESSENCE_IDX mode)
         }
     }
 
-    take_turn(creature_ptr, 100);
+    PlayerEnergy(creature_ptr).set_player_turn_energy(100);
     _(msg_format("%sに%sの能力を付加しました。", o_name, es_ptr->add_name), msg_format("You have added ability of %s to %s.", es_ptr->add_name, o_name));
     creature_ptr->update |= (PU_COMBINE | PU_REORDER);
     creature_ptr->window_flags |= (PW_INVEN);
@@ -988,7 +984,6 @@ static void add_essence(player_type *creature_ptr, ESSENCE_IDX mode)
 
 /*!
  * @brief エッセンスを消去する
- * @return なし
  */
 static void erase_essence(player_type *creature_ptr)
 {
@@ -1011,7 +1006,7 @@ static void erase_essence(player_type *creature_ptr)
     if (!get_check(format(_("よろしいですか？ [%s]", "Are you sure? [%s]"), o_name)))
         return;
 
-    take_turn(creature_ptr, 100);
+    PlayerEnergy(creature_ptr).set_player_turn_energy(100);
 
     if (o_ptr->xtra3 == 1 + ESSENCE_SLAY_GLOVE) {
         o_ptr->to_h -= (o_ptr->xtra4 >> 8);
@@ -1034,7 +1029,6 @@ static void erase_essence(player_type *creature_ptr)
 /*!
  * @brief 鍛冶コマンドのメインルーチン
  * @param only_browse TRUEならばエッセンス一覧の表示のみを行う
- * @return なし
  */
 void do_cmd_kaji(player_type *creature_ptr, bool only_browse)
 {

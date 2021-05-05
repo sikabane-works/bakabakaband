@@ -1,10 +1,17 @@
 ﻿#pragma once
 
+/*
+ * @file object-type-definition.h
+ * @brief アイテム定義の構造体とエンティティ処理定義
+ * @author Hourier
+ * @date 2021/05/02
+ */
+
 #include "object/tval-types.h"
 #include "system/angband.h"
+#include "system/system-variables.h"
 
-#define TR_FLAG_SIZE 5
-
+struct player_type;
 typedef struct object_type {
     KIND_OBJECT_IDX k_idx; /* Kind index (zero if "dead") */
     POSITION iy; /* Y-position on map, or zero */
@@ -41,7 +48,10 @@ typedef struct object_type {
 
     BIT_FLAGS art_flags[TR_FLAG_SIZE]; /* Extra Flags for ego and artifacts */
     BIT_FLAGS curse_flags; /* Flags for curse */
-    OBJECT_IDX next_o_idx; /* Next object in stack (if any) */
     MONSTER_IDX held_m_idx; /*!< アイテムを所持しているモンスターID (いないなら 0) / Monster holding us (if any) */
     ARTIFACT_BIAS_IDX artifact_bias; /*!< ランダムアーティファクト生成時のバイアスID */
+
+    void wipe();
+    void copy_from(object_type *j_ptr);
+    void prep(player_type *player_ptr, KIND_OBJECT_IDX ko_idx);
 } object_type;

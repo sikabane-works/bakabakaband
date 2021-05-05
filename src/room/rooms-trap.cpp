@@ -1,17 +1,19 @@
-﻿#include "dungeon/dungeon-flag-types.h"
+﻿#include "room/rooms-trap.h"
+#include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
 #include "floor/floor-generator.h"
 #include "game-option/cheat-types.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
 #include "room/space-finder.h"
+#include "system/dungeon-data-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/player-type-definition.h"
 #include "wizard/wizard-messages.h"
 
 /*!
  * @brief タイプ14の部屋…特殊トラップ部屋の生成 / Type 14 -- trapped rooms
  * @param player_ptr プレーヤーへの参照ポインタ
- * @return なし
  * @details
  * A special trap is placed at center of the room
  */
@@ -40,7 +42,7 @@ bool build_type14(player_type *player_ptr, dun_data_type *dd_ptr)
 
     /* Choose lite or dark */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    light = ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS));
+    light = ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS));
 
     /* Get corner values */
     y1 = yval - ysize / 2;

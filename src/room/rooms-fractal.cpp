@@ -7,6 +7,7 @@
 #include "room/rooms-normal.h"
 #include "room/space-finder.h"
 #include "system/floor-type-definition.h"
+#include "system/player-type-definition.h"
 
 /*!
 * @brief タイプ9の部屋…フラクタルカーブによる洞窟生成 / Type 9 -- Driver routine to create fractal grid
@@ -45,7 +46,7 @@ bool build_type9(player_type *player_ptr, dun_data_type *dd_ptr)
 	light = done = FALSE;
 	room = TRUE;
 
-	if ((floor_ptr->dun_level <= randint1(25)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS)) light = TRUE;
+	if ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS)) light = TRUE;
 
 	while (!done)
 	{

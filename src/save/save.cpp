@@ -25,6 +25,7 @@
 #include "monster/monster-compaction.h"
 #include "monster/monster-status.h"
 #include "object/object-kind.h"
+#include "player/player-status.h"
 #include "save/floor-writer.h"
 #include "save/info-writer.h"
 #include "save/item-writer.h"
@@ -35,6 +36,7 @@
 #include "store/store-util.h"
 #include "system/angband-version.h"
 #include "system/artifact-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -99,7 +101,7 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
 
     wr_u32b(tmp32u);
     for (int i = tmp32u - 1; i >= 0; i--)
-        wr_string(message_str((s16b)i));
+        wr_string(message_str(i));
 
     u16b tmp16u = max_r_idx;
     wr_u16b(tmp16u);

@@ -16,10 +16,10 @@
 #define FAKE_VERSION_MINUS 10
 #define VIEW_VERSION_MINUS 20 /*! < 表記上のバージョンマイナス */
 
-#define FAKE_VER_MAJOR 20 /*!< ゲームのバージョン番号定義(メジャー番号 + 10) */
+#define FAKE_VER_MAJOR 20 /*!< ゲームのバージョン番号定義(メジャー番号 + 20) */
 #define FAKE_VER_MINOR 0 /*!< ゲームのバージョン番号定義(マイナー番号) */
 #define FAKE_VER_PATCH 0 /*!< ゲームのバージョン番号定義(パッチ番号) */
-#define FAKE_VER_EXTRA 4 /*!< ゲームのバージョン番号定義(エクストラ番号) */
+#define FAKE_VER_EXTRA 5 /*!< ゲームのバージョン番号定義(エクストラ番号) */
 
 /*!
  * @brief セーブファイルのバージョン(3.0.0から導入)

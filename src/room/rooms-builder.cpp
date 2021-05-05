@@ -40,10 +40,12 @@
 #include "dungeon/dungeon.h"
 #include "floor/cave.h"
 #include "grid/door.h"
+#include "grid/feature.h"
 #include "grid/grid.h"
 #include "room/cave-filler.h"
 #include "room/lake-types.h"
 #include "system/floor-type-definition.h"
+#include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
 /*!
@@ -97,7 +99,7 @@ void build_cavern(player_type *player_ptr)
     bool light = FALSE;
     bool done = FALSE;
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if ((floor_ptr->dun_level <= randint1(50)) && !(d_info[floor_ptr->dungeon_idx].flags1 & DF1_DARKNESS))
+    if ((floor_ptr->dun_level <= randint1(50)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS))
         light = TRUE;
 
     POSITION xsize = floor_ptr->width - 1;
