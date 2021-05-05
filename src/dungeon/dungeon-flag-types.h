@@ -36,7 +36,7 @@ enum dungeon_flag_type {
 };
 
 enum dungeon_flag_type2 {
-    DF2_XXXX_00 = 0x01,
+    DF2_DIFFICULT_RECALL = 0x01,
     DF2_XXXX_01 = 0x01 << 1,
     DF2_XXXX_02 = 0x01 << 2,
     DF2_XXXX_03 = 0x01 << 3,
