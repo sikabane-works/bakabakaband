@@ -40,7 +40,7 @@ concptr d_info_flags1[NUM_D_FLAGS] = {
 };
 
 concptr d_info_flags2[NUM_D_FLAGS] = {
-    "D_XXX_32",
+    "DIFFICULT_RECALL",
     "D_XXX_33",
     "D_XXX_34",
     "D_XXX_35",
