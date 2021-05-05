@@ -2,8 +2,9 @@
 
 #include "system/angband.h"
 
-#define NUM_D_FLAGS 32
+#include <string_view>
+#include <unordered_map>
 
-extern concptr d_info_flags1[NUM_D_FLAGS];
-extern concptr d_info_flags2[NUM_D_FLAGS];
-extern concptr d_info_flags3[NUM_D_FLAGS];
+enum class DF;
+
+extern const std::unordered_map<std::string_view, DF> d_info_flags;

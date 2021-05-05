@@ -20,13 +20,7 @@
  */
 static errr grab_one_dungeon_flag(dungeon_type *d_ptr, concptr what)
 {
-    if (grab_one_flag(&d_ptr->flags1, d_info_flags1, what) == 0)
-        return 0;
-
-    if (grab_one_flag(&d_ptr->flags2, d_info_flags2, what) == 0)
-        return 0;
-
-    if (grab_one_flag(&d_ptr->flags3, d_info_flags3, what) == 0)
+    if (EnumClassFlagGroup<DF>::grab_one_flag(d_ptr->flags, d_info_flags, what))
         return 0;
 
     msg_format(_("未知のダンジョン・フラグ '%s'。", "Unknown dungeon type flag '%s'."), what);

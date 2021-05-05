@@ -285,15 +285,15 @@ static bool level_gen(player_type *player_ptr, concptr *why)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     DUNGEON_IDX d_idx = floor_ptr->dungeon_idx;
-    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || (d_info[d_idx].flags1 & DF1_BEGINNER)
-            || (d_info[d_idx].flags1 & DF1_SMALLEST))
-        && !(d_info[d_idx].flags1 & DF1_BIG)) {
+    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || d_info[d_idx].flags.has(DF::BEGINNER)
+            || d_info[d_idx].flags.has(DF::SMALLEST))
+        && d_info[d_idx].flags.has_not(DF::BIG)) {
         int level_height;
         int level_width;
-        if (d_info[d_idx].flags1 & DF1_SMALLEST) {
+        if (d_info[d_idx].flags.has(DF::SMALLEST)) {
             level_height = MIN_HGT_MULTIPLE;
             level_width = MIN_WID_MULTIPLE;
-        } else if (d_info[d_idx].flags1 & DF1_BEGINNER) {
+        } else if (d_info[d_idx].flags.has(DF::BEGINNER)) {
             level_height = MIN_HGT_MULTIPLE * 2;
             level_width = MIN_WID_MULTIPLE * 2;
         } else {
