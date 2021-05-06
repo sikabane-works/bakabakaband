@@ -671,3 +671,27 @@ process_result effect_monster_abyss(player_type *caster_ptr, effect_monster_type
 
     return PROCESS_CONTINUE;
 }
+
+/*!
+ * @brief 汚物効果の耐性と効果の発動
+ * @param caster_ptr プレイヤー情報への参照ポインタ
+ * @em_ptr 魔法効果情報への参照ポインタ
+ * @return 効果処理を続けるかどうか
+ * @details
+ * 今のところは毒と同じ
+ */
+process_result effect_monster_dirt(player_type *caster_ptr, effect_monster_type *em_ptr)
+{
+    if (em_ptr->seen)
+        em_ptr->obvious = TRUE;
+
+    if ((em_ptr->r_ptr->flagsr & RFR_IM_POIS) == 0)
+        return PROCESS_CONTINUE;
+
+    em_ptr->note = _("にはかなり耐性がある！", " resists a lot.");
+    em_ptr->dam /= 9;
+    if (is_original_ap_and_seen(caster_ptr, em_ptr->m_ptr))
+        em_ptr->r_ptr->r_flagsr |= (RFR_IM_POIS);
+
+    return PROCESS_CONTINUE;
+}

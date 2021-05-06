@@ -186,7 +186,7 @@ void process_world_aux_mutation(player_type *creature_ptr)
         disturb(creature_ptr, FALSE, TRUE);
         msg_print(_("ブゥーーッ！おっと。", "BRRAAAP! Oops."));
         msg_print(NULL);
-        fire_ball(creature_ptr, GF_POIS, 0, creature_ptr->lev, 3);
+        fire_ball(creature_ptr, GF_DIRT, 0, creature_ptr->lev, 3);
     }
 
     if (creature_ptr->muta.has(MUTA::PROD_MANA) && !creature_ptr->anti_magic && one_in_(9000)) {
