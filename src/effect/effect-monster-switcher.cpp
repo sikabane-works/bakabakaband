@@ -466,6 +466,8 @@ process_result switch_effects_monster(player_type *caster_ptr, effect_monster_ty
         return effect_monster_void(caster_ptr, em_ptr);
     case GF_ABYSS:
         return effect_monster_abyss(caster_ptr, em_ptr);
+    case GF_DIRT:
+        return effect_monster_abyss(caster_ptr, em_ptr);
     default: {
         em_ptr->skipped = TRUE;
         em_ptr->dam = 0;

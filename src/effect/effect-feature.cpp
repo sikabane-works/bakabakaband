@@ -80,6 +80,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
         case GF_POIS:
         case GF_NUKE:
         case GF_DEATH_RAY:
+        case GF_DIRT:
             message = _("枯れた", "was blasted.");
             break;
         case GF_TIME:
@@ -160,7 +161,8 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
     case GF_CHAOS:
     case GF_MANA:
     case GF_SEEKER:
-    case GF_SUPER_RAY: {
+    case GF_SUPER_RAY:
+    case GF_DIRT: {
         break;
     }
     case GF_KILL_TRAP: {
