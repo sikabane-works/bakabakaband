@@ -1875,6 +1875,22 @@ G:^:s
 W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | REMEMBER | VOID | CAN_FLY |
 
+N:237:DEEP_DUNG_POOL
+J:深い糞溜め
+E:deep dung pool
+G:~:y
+W:2
+F:LOS | PROJECT | MOVE | PLACE | REMEMBER | DUNG_POOL | DEEP | CAN_FLY |
+F:TELEPORTABLE
+
+N:238:SHALLOW_DUNG_POOL
+J:浅い糞溜め
+E:shallow dung pool
+G:~:o
+W:2
+F:LOS | PROJECT | MOVE | PLACE | DROP | REMEMBER | DUNG_POOL | SHALLOW | CAN_FLY |
+F:TELEPORTABLE
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
