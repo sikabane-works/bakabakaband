@@ -26795,11 +26795,25 @@ N:1388:一撃絶命『鉄宝流空手最高指導者木村大観十段』
 E:Taikan Kimura, the One Fatal Fist Judan Supreme Professor of Teppou-ryu Karate
 G:p:o
 I:112:1d1:10:0:25
-W:25:1:0:200:0:0
+W:25:1:0:750:0:0
 B:PUNCH:HURT:20d20
 F:UNIQUE | FORCE_MAXHP | MALE
 F:DROP_1D2 | ONLY_ITEM | DROP_GREAT | CAN_SPEAK | DROP_CORPSE | DROP_SKELETON
 D:彼が『一撃絶命の拳』を持っていること自体は事実だ。気をつけろ！
+
+N:1389:灘神陽流の達人『黒田光秀』
+E:Mitsuhide Kuroda, the Expert of Nadashinyouryu
+G:p:w
+I:115:30d20:25:51:7
+W:28:1:0:1000:0:0
+B:HIT:SUPERHURT:7d2
+B:KICK:SUPERHURT:7d2
+B:KICK:SUPERHURT:7d4
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | FORCE_MAXHP | GOOD | UNIQUE
+F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | QUANTUM
+D:灘神影流と対を成す古武術流派、灘心陽流の若き達人だ。
+D:彼は十数年も姿を消したり突然現れたりするんだ。猿空間の住人だから仕方ないんだ。
 
 # N: serial number : monster name
 # G: symbol : color
