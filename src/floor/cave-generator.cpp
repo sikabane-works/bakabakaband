@@ -400,7 +400,7 @@ bool cave_gen(player_type *player_ptr, concptr *why)
 
     dd_ptr->cent_n = 0;
     dungeon_type *d_ptr = &d_info[floor_ptr->dungeon_idx];
-    if (ironman_empty_levels || (d_ptr->flags.has(DF::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
+    if (ironman_empty_levels || d_ptr->flags.has(DF::ALWAY_ARENA) || (d_ptr->flags.has(DF::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
         dd_ptr->empty_level = TRUE;
         msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("アリーナレベルを生成。", "Arena level."));
     }

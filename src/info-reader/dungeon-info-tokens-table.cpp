@@ -39,4 +39,5 @@ const std::unordered_map<std::string_view, DF> d_info_flags = {
     { "ACID_RIVER", DF::ACID_RIVER },
     { "POISONOUS_RIVER", DF::POISONOUS_RIVER },
     { "DIFFICULT_RECALL", DF::DIFFICULT_RECALL },
+    { "ALWAY_ARENA", DF::ALWAY_ARENA },
 };
