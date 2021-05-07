@@ -70,7 +70,8 @@ enum feature_flag_type : int {
     FF_TELEPORTABLE = 110, /*!< テレポート先の対象となる地形である */
     FF_CONVERT = 111, /*!< 地形生成処理中の疑似フラグ */
     FF_GLASS = 112, /*!< ガラス製の地形である */
-    FF_FLAG_MAX = 113
+    FF_DUNG_POOL = 113, /*!< 糞溜まりである */
+    FF_FLAG_MAX = 114
 };
 
 #define FF_FLAG_SIZE (1 + ((FF_FLAG_MAX - 1) / 32))

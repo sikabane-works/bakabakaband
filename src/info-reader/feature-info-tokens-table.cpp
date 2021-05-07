@@ -120,5 +120,6 @@ concptr f_info_flags[NUM_F_FLAGS] = {
     "UNPERM",
     "TELEPORTABLE",
     "CONVERT",
-    "GLASS",
+    "GLASS", 
+    "DUNG_POOL"
 };

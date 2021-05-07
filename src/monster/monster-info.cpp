@@ -113,6 +113,11 @@ bool monster_can_cross_terrain(player_type *player_ptr, FEAT_IDX feat, monster_r
             return FALSE;
     }
 
+    if (has_flag(f_ptr->flags, FF_DUNG_POOL)) {
+        if (!(r_ptr->flagsr & RFR_EFF_IM_POIS_MASK))
+            return FALSE;
+    }
+
     return TRUE;
 }
 
