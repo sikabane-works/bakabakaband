@@ -120,6 +120,11 @@ static bool check_can_throw(player_type *creature_ptr, it_type *it_ptr)
     if (!check_what_throw(creature_ptr, it_ptr))
         return FALSE;
 
+    if (!check_get_item(creature_ptr, it_ptr->o_ptr)) {
+        msg_print(_("それをこの場から動かすことはできない。", "You can't move it here."));
+        return FALSE;
+    }
+
     if (object_is_cursed(it_ptr->o_ptr) && (it_ptr->item >= INVEN_MAIN_HAND)) {
         msg_print(_("ふーむ、どうやら呪われているようだ。", "Hmmm, it seems to be cursed."));
         return FALSE;
