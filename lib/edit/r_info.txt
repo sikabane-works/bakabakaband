@@ -26825,6 +26825,19 @@ F:MALE | NASTY | HUMAN | HOMO_SEXUAL
 F:DROP_1D2 | ONLY_ITEM | DROP_CORPSE | DROP_SKELETON
 D:彼に通ずるっ込まれると大変なことになるぞ！気をつけろ！
 
+N:1391:迫真相撲部の新参『肉丸』
+E:Nikumaru, the Novice of Hakusin Sumou
+G:p:r
+I:108:11d8:10:30:250
+W:5:1:0:70:0:00
+B:HIT:HURT:4d5
+B:HIT:HURT:4d5
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:FORCE_MAXHP | NASTY | HOMO_SEXUAL | SUMOU_WRESTLER
+F:DROP_GOOD | DROP_1D2 | OPEN_DOOR | BASH_DOOR | CAN_SPEAK
+D:稽古さぼってホモビデオを見ているスモトリの屑だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
