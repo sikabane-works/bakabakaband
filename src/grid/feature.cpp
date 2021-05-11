@@ -95,6 +95,8 @@ FEAT_IDX feat_brake;
 FEAT_IDX feat_tree;
 FEAT_IDX feat_mountain;
 FEAT_IDX feat_swamp;
+FEAT_IDX feat_deep_dung_pool;
+FEAT_IDX feat_shallow_dung_pool;
 
 /* Unknown grid (not detected) */
 FEAT_IDX feat_undetected;

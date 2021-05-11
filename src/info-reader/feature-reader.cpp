@@ -380,6 +380,8 @@ errr init_feat_variables(void)
     feat_tree = f_tag_to_index_in_init("TREE");
     feat_mountain = f_tag_to_index_in_init("MOUNTAIN");
     feat_swamp = f_tag_to_index_in_init("SWAMP");
+    feat_deep_dung_pool = f_tag_to_index_in_init("DEEP_DUNG_POOL");
+    feat_shallow_dung_pool = f_tag_to_index_in_init("SHALLOW_DUNG_POOL");
 
     feat_undetected = f_tag_to_index_in_init("UNDETECTED");
 
