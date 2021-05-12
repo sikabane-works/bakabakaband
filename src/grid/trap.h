@@ -45,8 +45,12 @@ enum trap_type {
 	TRAP_OPEN = 18,
 	TRAP_ARMAGEDDON = 19,
 	TRAP_PIRANHA = 20,
+    TRAP_LAVA = 21,
+    TRAP_DUNG_POOL = 22,
+
+	TRAP_MAX = 23,
 };
-const int MAX_NORMAL_TRAPS = TRAP_ALARM + 1;
+const int MAX_NORMAL_TRAPS = 20;
 
 
 extern const int chest_traps[64];
