@@ -56,11 +56,16 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         trivial_info = i;
     }
 
-    if (has_flag(flgs, TR_ACTIVATE)) {
+    if (has_flag(flgs, TR_INVEN_ACTIVATE)) {
+        info[i++] = _("始動したときの効果...", "It can be activated for...");
+        info[i++] = activation_explanation(player_ptr, o_ptr);
+    }
+    else if (has_flag(flgs, TR_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
         info[i++] = activation_explanation(player_ptr, o_ptr);
         info[i++] = _("...ただし装備していなければならない。", "...if it is being worn.");
     }
+
 
     if (has_flag(flgs, TR_NASTY)) {
         info[i++] = _("それは例のアレだ。", "It is .. need I say anything more?");

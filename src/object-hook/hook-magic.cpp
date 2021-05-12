@@ -26,7 +26,7 @@ bool item_tester_hook_activate(player_type *player_ptr, object_type *o_ptr)
         return FALSE;
 
     object_flags(player_ptr, o_ptr, flags);
-    if (has_flag(flags, TR_ACTIVATE))
+    if (has_flag(flags, TR_ACTIVATE) || has_flag(flags, TR_INVEN_ACTIVATE))
         return TRUE;
 
     return FALSE;
