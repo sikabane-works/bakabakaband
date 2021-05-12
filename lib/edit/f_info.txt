@@ -1891,6 +1891,27 @@ W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | REMEMBER | DUNG_POOL | SHALLOW | CAN_FLY |
 F:TELEPORTABLE
 
+N:239:TRAP_LAVA
+J:溶岩トラップ
+E:lava trap
+G:^:g:LIT
+M:TRAP_LAVA
+W:2
+K:DESTROYED:*FLOOR*
+F:SUBTYPE_21 | POWER_5 | LOS | PROJECT | MOVE | PLACE | NOTICE | REMEMBER |
+F:DISARM | TRAP | HIT_TRAP | CAN_FLY | HURT_DISI | TELEPORTABLE
+
+N:240:TRAP_DUNG_POOL
+J:糞便トラップ
+E:trap
+G:^:g:LIT
+M:TRAP_DUNG_POOL
+W:2
+K:DESTROYED:*FLOOR*
+F:SUBTYPE_22 | POWER_5 | LOS | PROJECT | MOVE | PLACE | NOTICE | REMEMBER |
+F:DISARM | TRAP | HIT_TRAP | CAN_FLY | HURT_DISI | TELEPORTABLE
+
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
