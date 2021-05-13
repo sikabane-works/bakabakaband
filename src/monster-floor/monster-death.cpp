@@ -23,6 +23,7 @@
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-flags9.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
@@ -395,6 +396,7 @@ void monster_death(player_type *player_ptr, MONSTER_IDX m_idx, bool drop_item)
 concptr extract_note_dies(MONRACE_IDX r_idx)
 {
     monster_race *r_ptr = &r_info[r_idx];
+
     if (monster_living(r_idx))
         return _("は死んだ。", " dies.");
 
