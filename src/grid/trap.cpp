@@ -171,8 +171,7 @@ FEAT_IDX choose_random_trap(player_type *trapped_ptr)
     floor_type *floor_ptr = trapped_ptr->current_floor_ptr;
     while (TRUE) {
         /* Hack -- pick a trap */
-        //feat = normal_traps[randint0(TRAP_MAX)];        
-        feat = normal_traps[19];        
+        feat = normal_traps[randint0(TRAP_MAX)];        
 
         /* Accept non-trapdoors */
         if (!has_flag(f_info[feat].flags, FF_MORE))
