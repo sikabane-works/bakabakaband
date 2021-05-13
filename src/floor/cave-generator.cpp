@@ -312,12 +312,13 @@ static bool check_place_necessary_objects(player_type *player_ptr, dun_data_type
 static void decide_dungeon_data_allocation(player_type *player_ptr, dun_data_type *dd_ptr, dungeon_type *d_ptr)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    dd_ptr->alloc_object_num = floor_ptr->dun_level / 3;
-    if (dd_ptr->alloc_object_num > 10)
-        dd_ptr->alloc_object_num = 10;
+    dd_ptr->alloc_object_num = floor_ptr->dun_level / 3 + 5;
+    if (dd_ptr->alloc_object_num > 30)
+        dd_ptr->alloc_object_num = 30;
 
-    if (dd_ptr->alloc_object_num < 2)
-        dd_ptr->alloc_object_num = 2;
+    if (one_in_(12)) {
+        dd_ptr->alloc_object_num += randint1(50);
+    }
 
     dd_ptr->alloc_monster_num = d_ptr->min_m_alloc_level;
     if (floor_ptr->height >= MAX_HGT && floor_ptr->width >= MAX_WID)
@@ -341,9 +342,9 @@ static bool allocate_dungeon_data(player_type *player_ptr, dun_data_type *dd_ptr
     for (dd_ptr->alloc_monster_num = dd_ptr->alloc_monster_num + dd_ptr->alloc_object_num; dd_ptr->alloc_monster_num > 0; dd_ptr->alloc_monster_num--)
         (void)alloc_monster(player_ptr, 0, PM_ALLOW_SLEEP, summon_specific);
 
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num) + dd_ptr->alloc_object_num);
     if (d_ptr->flags.has_not(DF::NO_CAVE))
-        alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num));
+        alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num) + dd_ptr->alloc_object_num);
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (player_ptr->enter_dungeon && floor_ptr->dun_level > 1)
