@@ -38,9 +38,9 @@
 
 #define AAF_LIMIT       100     /*!< モンスターの限界感知範囲(マス) Limit of sensing radius */
 
-#define MIN_M_ALLOC_TD          4 /*!< 街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day */
-#define MIN_M_ALLOC_TN          8 /*!< 街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night */
-
+#define MIN_M_ALLOC_TD         15 /*!< 街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day */
+#define MIN_M_ALLOC_TN         30 /*!< 街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night */
+#define AMBUSH_ENEMY_NUM 100 /*!< 襲撃時の敵生成数 */
 
 #define DUNGEON_MONSTER_MULTIPLE 5 /*!< ランダムフロアのモンスター生成倍率 */
 
