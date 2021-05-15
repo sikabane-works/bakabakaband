@@ -5,7 +5,7 @@
 
 void switch_lose_mutation(player_type *creature_ptr, glm_type *glm_ptr)
 {
-    switch ((glm_ptr->choose_mut != 0) ? glm_ptr->choose_mut : randint1(193)) {
+    switch ((glm_ptr->choose_mut != 0) ? glm_ptr->choose_mut : randint1(197)) {
     case 1:
     case 2:
     case 3:
@@ -489,6 +489,13 @@ void switch_lose_mutation(player_type *creature_ptr, glm_type *glm_ptr)
 
         glm_ptr->muta_which = MUTA::GOOD_LUCK;
         glm_ptr->muta_desc = _("白いオーラは輝いて消えた。", "Your white aura shimmers and fades.");
+        break;
+    case 194:
+    case 195:
+    case 196:
+    case 197:
+        glm_ptr->muta_which = MUTA::DEFECATION;
+        glm_ptr->muta_desc = _("あなたは脱糞を制御できるようになった。", "You become to be able to controll your defecation.");
         break;
     default:
         glm_ptr->muta_which = MUTA::MAX;
