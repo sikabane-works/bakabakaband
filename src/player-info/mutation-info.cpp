@@ -307,4 +307,7 @@ void set_mutation_info(player_type *creature_ptr, self_info_type *self_ptr)
 
     if (creature_ptr->muta.has(MUTA::BAD_LUCK))
         self_ptr->info[self_ptr->line++] = _("あなたは黒いオーラにつつまれている。", "There is a black aura surrounding you.");
+
+    if (creature_ptr->muta.has(MUTA::DEFECATION))
+        self_ptr->info[self_ptr->line++] = _("あなたは脱糞を制御できない。", "You are subject to uncontrollable defecation.");
 }
