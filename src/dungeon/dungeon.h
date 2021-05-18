@@ -2,11 +2,13 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include "dungeon/dungeon-flag-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
+#include "room/room-types.h"
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -82,6 +84,9 @@ typedef struct dungeon_type {
 	int tunnel_percent{};
 	int obj_great{};
 	int obj_good{};
+
+	bool unique_room_rate;
+	int room_rate[ROOM_T_MAX]; /* ダンジョン独自の部屋生成率 */
 } dungeon_type;
 
 extern DEPTH *max_dlv;
