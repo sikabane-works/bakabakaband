@@ -295,6 +295,12 @@ errr parse_d_info(char *buf, angband_header *head)
 
             s = t;
         }
+    } else if (buf[0] == 'R') {
+        int r_type, r_rate;
+        if (2 != sscanf(buf + 2, "%d:%d", &r_type, &r_rate))
+            return 1;
+        d_ptr->unique_room_rate = true;
+        d_ptr->room_rate[r_type] = r_rate;
     } else {
         return 6;
     }
