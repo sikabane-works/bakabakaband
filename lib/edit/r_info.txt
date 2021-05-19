@@ -26873,7 +26873,7 @@ D:この老人は種もみを食糧難にあえぐ村のために持ち込もう
 D:殺してもいいかもしれないが、あなたに余計な死亡フラグが立つかもしれない。
 
 N:1394:世紀末の消毒者
-E:Decadent Antisepticizer
+E:Decadent antisepticizer
 G:p:r
 I:110:10d11:20:40:40
 W:21:3:0:50:0:0
@@ -26886,6 +26886,24 @@ F:EVIL
 S:1_IN_2 | BR_FIRE
 D:「汚物は消毒だ！」
 D:そう叫びながら彼らは今日も主君の先陣と威嚇に火炎放射器を振り回す。
+
+N:1395:現実を砕くもの
+E:Reality smasher
+G:H:W
+I:120:30d50:40:110:30
+W:40:3:0:8000:0:0
+B:CRUSH:SUPERHURT:8d8
+B:CRUSH:SUPERHURT:8d8
+B:CRUSH:SUPERHURT:8d8
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | ELDRAZI | POWERFUL | REGENERATE | RIDING |
+F:MOVE_BODY | CAN_SWIM | OPEN_DOOR | BASH_DOOR | KILL_WALL | KILL_BODY | KILL_ITEM
+F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_SKELETON | DROP_CORPSE |
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP
+D:$As easy to stop as it is to comprehend.(M:tG)
+D:あれを理解するのは、食い止めるのと同じくらいに困難である。(M:tG)
+
 
 # N: serial number : monster name
 # G: symbol : color
