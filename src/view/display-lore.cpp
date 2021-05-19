@@ -354,6 +354,9 @@ void display_monster_kind(lore_type *lore_ptr)
         return;
     }
 
+    if (lore_ptr->flags8 & RF8_ELDRAZI)
+        hook_c_roff(TERM_WHITE, _("エルドラージ", " eldrazi"));
+
     if (lore_ptr->flags3 & RF3_DRAGON)
         hook_c_roff(TERM_ORANGE, _("ドラゴン", " dragon"));
 

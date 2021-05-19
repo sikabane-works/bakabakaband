@@ -373,7 +373,7 @@ concptr r_info_flags8[NUM_R_FLAGS_8] = {
 	"XXX8X19",
 	"XXX8X20",
 	"XXX8X21",
-	"XXX8X22",
+	"ELDRAZI",
 	"KARATEKA",
     "NINJA",
 	"SUMOU_WRESTLER",
