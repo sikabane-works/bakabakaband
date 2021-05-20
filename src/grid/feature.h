@@ -105,6 +105,8 @@ extern FEAT_IDX feat_tree;
 extern FEAT_IDX feat_mountain;
 extern FEAT_IDX feat_swamp;
 extern FEAT_IDX feat_undetected;
+extern FEAT_IDX feat_deep_dung_pool;
+extern FEAT_IDX feat_shallow_dung_pool;
 
 extern FEAT_IDX feat_wall_outer;
 extern FEAT_IDX feat_wall_inner;

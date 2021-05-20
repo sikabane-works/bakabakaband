@@ -169,6 +169,6 @@ enum tr_type {
     TR_VUL_FIRE = 158, //!< 火炎弱点
     TR_VUL_LITE = 159, //!< 閃光弱点
     TR_IM_DARK = 160, //!< 暗黒免疫
-
-    TR_FLAG_MAX = 161,
+    TR_INVEN_ACTIVATE = 161, /*!< 所持品のまま始動可能 */
+    TR_FLAG_MAX = 162,
 };

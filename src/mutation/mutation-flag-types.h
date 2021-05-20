@@ -99,5 +99,6 @@ enum class MUTA {
     VULN_ELEM = 93, /*!< 突然変異: 元素攻撃弱点 */
     MOTION = 94, /*!< 突然変異: 正確で力強い動作 */
     GOOD_LUCK = 95, /*!< 突然変異: 白いオーラ(幸運) */
+    DEFECATION = 96, /*!< 突然変異: 脱糞癖 */
     MAX,
 };

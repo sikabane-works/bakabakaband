@@ -192,6 +192,14 @@ void process_player_hp_mp(player_type *creature_ptr)
             });
     }
 
+    if (has_flag(f_ptr->flags, FF_DUNG_POOL) && !is_invuln(creature_ptr)) {
+        cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
+            calc_acid_damage_rate, [](player_type *creature_ptr, int damage) {
+                if (!has_resist_pois(creature_ptr))
+                    (void)set_poisoned(creature_ptr, creature_ptr->poisoned + damage);
+            });
+    }
+
     if (has_flag(f_ptr->flags, FF_WATER) && has_flag(f_ptr->flags, FF_DEEP) && !creature_ptr->levitation && !creature_ptr->can_swim
         && !has_resist_water(creature_ptr)) {
         if (calc_inventory_weight(creature_ptr) > calc_weight_limit(creature_ptr)) {
@@ -292,7 +300,7 @@ void process_player_hp_mp(player_type *creature_ptr)
         if (creature_ptr->special_defense & (KAMAE_MASK | KATA_MASK)) {
             regen_amount /= 2;
         }
-        if (creature_ptr->cursed & TRC_SLOW_REGEN) {
+        if (creature_ptr->cursed.has(TRC::SLOW_REGEN)) {
             regen_amount /= 5;
         }
     }

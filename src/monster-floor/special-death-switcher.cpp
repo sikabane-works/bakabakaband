@@ -22,6 +22,7 @@
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
@@ -133,6 +134,18 @@ static void on_dead_raal(player_type *player_ptr, monster_death_type *md_ptr)
 static void on_dead_dawn(player_type *player_ptr, monster_death_type *md_ptr)
 {
     summon_self(player_ptr, md_ptr, SUMMON_DAWN, 7, 20, _("新たな戦士が現れた！", "A new warrior steps forth!"));
+}
+
+static void on_dead_ninja(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    if (is_seen(player_ptr, md_ptr->m_ptr)) {
+        GAME_TEXT m_name[MAX_NLEN];
+        msg_print(_("「サヨナラ！」", "Sayonara!"));
+        monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
+        msg_format(_("%sは哀れ爆発四散した！ショッギョ・ムッジョ！", "%s explodes pitifully! Shogyomujo!"), m_name);
+    }
+
+    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, GF_MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_unmaker(player_type *player_ptr, monster_death_type *md_ptr)
@@ -488,6 +501,12 @@ static void on_dead_mimics(player_type *player_ptr, monster_death_type *md_ptr)
 
 void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
 {
+    if (r_info[md_ptr->m_ptr->r_idx].flags8 & RF8_NINJA)
+    {
+        on_dead_ninja(player_ptr, md_ptr);
+        return;
+    }
+
     switch (md_ptr->m_ptr->r_idx) {
     case MON_PINK_HORROR:
         on_dead_pink_horror(player_ptr, md_ptr);

@@ -45,8 +45,10 @@
 #include "term/screen-processor.h"
 #include "util/quarks.h"
 #include "util/sort.h"
+#include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "inventory/inventory-slot-types.h"
 
 static void decide_activation_level(player_type *user_ptr, ae_type *ae_ptr)
 {
@@ -223,6 +225,11 @@ static bool activate_whistle(player_type *user_ptr, ae_type *ae_ptr)
  */
 void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
 {
+    if (item <= INVEN_PACK && !has_flag(k_info[user_ptr->inventory_list[item].k_idx].flags, TR_INVEN_ACTIVATE)) {
+        msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
+        return;
+    }
+
     PlayerEnergy(user_ptr).set_player_turn_energy(100);
     ae_type tmp_ae;
     ae_type *ae_ptr = initialize_ae_type(user_ptr, &tmp_ae, item);

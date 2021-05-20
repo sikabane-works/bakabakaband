@@ -34,5 +34,6 @@ enum class DF {
     ACID_RIVER,
     POISONOUS_RIVER,
     DIFFICULT_RECALL,
+    ALWAY_ARENA,
     MAX,
 };

@@ -543,6 +543,7 @@ hengband_SOURCES = \
 	object/item-tester-hooker.cpp object/item-tester-hooker.h \
 	object/object-broken.cpp object/object-broken.h \
 	object/object-flags.cpp object/object-flags.h \
+	object/object-index-list.cpp object/object-index-list.h \
 	object/object-info.cpp object/object-info.h \
 	object/object-kind.cpp object/object-kind.h \
 	object/object-kind-hook.cpp object/object-kind-hook.h \
@@ -937,7 +938,6 @@ EXTRA_hengband_SOURCES = \
 	main-win/main-win-sound.cpp main-win/main-win-sound.h \
 	main-win/main-win-tokenizer.cpp main-win/main-win-tokenizer.h \
 	main-win/main-win-utils.cpp main-win/main-win-utils.h \
-	main-win/main-win-windows.h \
 	wall.bmp \
 	stdafx.cpp stdafx.h
 

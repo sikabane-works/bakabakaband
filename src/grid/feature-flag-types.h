@@ -53,6 +53,7 @@ enum feature_flag_type : int {
     FF_CAN_PASS = 55, /*!< 通過可能な地形である */
     FF_CAN_DIG = 57, /*!< 掘削コマンドの対象となる地形である */
     FF_TREE = 83, /*!< 木の生えた地形である */
+    FF_PLANT = 88, //!< 植物の生えた地形である
     FF_SPECIAL = 96, /*!< クエストやダンジョンに関わる特別な地形である */
     FF_HURT_DISI = 97, /*!< 分解属性の対象となる地形である */
     FF_QUEST_ENTER = 98, /*!< クエストの入り口である */
@@ -70,7 +71,8 @@ enum feature_flag_type : int {
     FF_TELEPORTABLE = 110, /*!< テレポート先の対象となる地形である */
     FF_CONVERT = 111, /*!< 地形生成処理中の疑似フラグ */
     FF_GLASS = 112, /*!< ガラス製の地形である */
-    FF_FLAG_MAX = 113
+    FF_DUNG_POOL = 113, /*!< 糞溜まりである */
+    FF_FLAG_MAX = 114
 };
 
 #define FF_FLAG_SIZE (1 + ((FF_FLAG_MAX - 1) / 32))

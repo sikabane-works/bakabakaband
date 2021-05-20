@@ -9,7 +9,7 @@
 #include <windows.h>
 
 /*!
- * @brief マルチバイト文字列をワイド文字列へ変換するクラス
+ * @brief マルチバイト文字列(CP932)をワイド文字列へ変換するクラス
  */
 class to_wchar {
 public:
@@ -59,7 +59,7 @@ protected:
 
 
 /*!
- * @brief ワイド文字列をマルチバイト文字列へ変換するクラス
+ * @brief ワイド文字列をマルチバイト文字列(CP932)へ変換するクラス
  */
 class to_multibyte {
 public:
@@ -70,11 +70,11 @@ public:
         if (!src)
             return;
 
-        int size = ::WideCharToMultiByte(CP_ACP, 0, src, -1, buf, 0, NULL, NULL);
+        int size = ::WideCharToMultiByte(932, 0, src, -1, buf, 0, NULL, NULL);
         if (size > 0) {
             buf_size = size + 1;
             C_MAKE(buf, buf_size, char);
-            if (::WideCharToMultiByte(CP_ACP, 0, src, -1, buf, buf_size, NULL, NULL) == 0) {
+            if (::WideCharToMultiByte(932, 0, src, -1, buf, buf_size, NULL, NULL) == 0) {
                 // fail
                 kill();
             }
@@ -110,3 +110,4 @@ protected:
 bool is_already_running(void);
 void save_screen_as_html(HWND hWnd);
 void open_dir_in_explorer(char* filename);
+bool get_open_filename(OPENFILENAMEW *ofn, concptr dirname, char *filename, DWORD max_name_size);

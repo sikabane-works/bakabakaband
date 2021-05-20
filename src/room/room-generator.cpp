@@ -100,12 +100,19 @@ bool generate_rooms(player_type *player_ptr, dun_data_type *dd_ptr)
         dun_rooms /= randint1(4);
     else if (one_in_(4))
         dun_rooms *= randint1(4);
-    room_info_type *room_info_ptr = room_info_normal;
-    for (int i = 0; i < ROOM_T_MAX; i++) {
-        if (floor_ptr->dun_level < room_info_ptr[i].min_level)
-            prob_list[i] = 0;
-        else
-            prob_list[i] = room_info_ptr[i].prob[level_index];
+
+    if (d_info[floor_ptr->dungeon_idx].unique_room_rate) {
+        for (int i = 0; i < ROOM_T_MAX; i++) {
+            prob_list[i] = d_info[floor_ptr->dungeon_idx].room_rate[i];
+        }    
+    } else {
+        room_info_type *room_info_ptr = room_info_normal;
+        for (int i = 0; i < ROOM_T_MAX; i++) {
+            if (floor_ptr->dun_level < room_info_ptr[i].min_level)
+                prob_list[i] = 0;
+            else
+                prob_list[i] = room_info_ptr[i].prob[level_index];
+        }
     }
 
     /*!
