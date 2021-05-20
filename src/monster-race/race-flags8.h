@@ -20,5 +20,6 @@ enum race_flags8 : uint32_t {
     RF8_JOKE = 0x08000000,
     RF8_HOMO_SEXUAL = 0x10000000,
     RF8_NASTY = 0x20000000,
+    RF8_WILD_SWAMP = 0x40000000,
     RF8_WILD_ALL = 0x80000000,
 };
