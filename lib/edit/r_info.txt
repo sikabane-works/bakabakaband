@@ -27375,6 +27375,23 @@ R:638:10d2
 R:1271:3d2
 D:彼は史上もっとも強力かつ危険な闇の魔法使いだ。従者である死喰い人や、追放されていた闇の生物を率いて魔法界を支配しようとしている！
 
+N:1424:終末を招くもの
+E:Endbringer
+G:H:R
+I:125:50d30:60:100:10
+W:42:3:0:13000:0:0
+B:HIT:HURT:4d10
+B:HIT:HURT:4d10
+B:HIT:HURT:4d10
+B:HIT:HURT:4d10
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP
+F:ELDRAZI | KILL_BODY | DROP_CORPSE | ONLY_ITEM | DROP_4D2 |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP
+S:1_IN_3
+S:BO_MANA | S_KIN | BR_GRAV | HASTE | SLOW | 
+D:エルドラージ三柱の一つ、コジレックの眷属だ。多彩な術で定命の者を翻弄してくる。
+
 
 # N: serial number : monster name
 # G: symbol : color
