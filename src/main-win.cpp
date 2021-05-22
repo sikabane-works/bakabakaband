@@ -1392,7 +1392,7 @@ static void init_windows(void)
     td = &data[0];
     my_td = td;
     td->w = CreateWindowExW(
-        td->dwExStyle, AppName, _(L"変愚蛮怒", td->name), td->dwStyle, td->pos_x, td->pos_y, td->size_wid, td->size_hgt, HWND_DESKTOP, NULL, hInstance, NULL);
+        td->dwExStyle, AppName, _(L"馬鹿馬鹿蛮怒", td->name), td->dwStyle, td->pos_x, td->pos_y, td->size_wid, td->size_hgt, HWND_DESKTOP, NULL, hInstance, NULL);
     my_td = NULL;
 
     if (!td->w)
