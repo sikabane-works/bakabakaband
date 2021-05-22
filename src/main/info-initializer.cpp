@@ -1,6 +1,6 @@
 ﻿/*!
  * @file info-initializer.cpp
- * @brief 変愚蛮怒のゲームデータ解析処理定義
+ * @brief 馬鹿馬鹿蛮怒のゲームデータ解析処理定義
  */
 
 #include "main/info-initializer.h"

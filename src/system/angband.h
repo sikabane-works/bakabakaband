@@ -43,10 +43,10 @@
 
 /*!
  *
- * @mainpage 変愚蛮怒仕様書
+ * @mainpage 馬鹿馬鹿蛮怒仕様書
  *
  * @par
- * 変愚蛮怒の仕様をangband.hをソースにDoxygenで読めるようまとめておきます。<br>
+ * 馬鹿馬鹿蛮怒の仕様をangband.hをソースにDoxygenで読めるようまとめておきます。<br>
  *
  * @par
  * - @ref page_basic "基本方針"
