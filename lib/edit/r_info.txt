@@ -25607,7 +25607,7 @@ N:1298:催眠おじさん
 E:Hypnotic uncle
 G:p:r
 I:109:14d11:20:30:20
-W:20:2:0:50:0:0
+W:20:2:0:50:5000:1426
 B:CRAWL:HURT:4d10
 B:DROOL:HURT:4d10
 F:MALE | 
@@ -27407,6 +27407,23 @@ F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
 F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | WEIRD_MIND
 D:それはエルドラージの最も卑小な存在たちであり、より上位の個体の先触れとして現れる。
 
+N:1426:ちんちん亭催眠おじさん
+E:Hypnotic uncle of Chinchin-Tei
+G:p:R
+I:114:14d50:20:30:20
+W:39:2:0:50:0:0
+B:CRAWL:HURT:10d10
+B:DROOL:HURT:10d10
+F:MALE | 
+F:PREVENT_SUDDEN_MAGIC | DROP_2D2 | WILD_ALL | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | 
+F:EVIL | HAS_LITE_2 | NASTY
+S:1_IN_2 | 
+S:CONF | BLIND | HOLD | SLOW | CAUSE_4
+S:MIND_BLAST | BRAIN_SMASH | HASTE
+D:「オラッ！催眠！催眠解除！催眠！」
+D:この催眠おじさんは並の催眠おじさんとは違う。
+D:あらゆる女性を瞬時に肉便器に変えてしまう恐るべき次元の出身だ、気をつけろ！
 
 # N: serial number : monster name
 # G: symbol : color
