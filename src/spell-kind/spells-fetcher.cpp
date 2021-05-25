@@ -50,11 +50,6 @@ void fetch_item(player_type *caster_ptr, DIRECTION dir, WEIGHT wgt, bool require
         tx = target_col;
         ty = target_row;
 
-        if (!check_get_item(caster_ptr, o_ptr)) {
-            msg_print(_("それを動かすことはできない。", "You can't move it."));
-            return;
-        }
-
         if (distance(caster_ptr->y, caster_ptr->x, ty, tx) > get_max_range(caster_ptr)) {
             msg_print(_("そんなに遠くにある物は取れません！", "You can't fetch something that far away!"));
             return;
@@ -100,6 +95,11 @@ void fetch_item(player_type *caster_ptr, DIRECTION dir, WEIGHT wgt, bool require
     o_ptr = &caster_ptr->current_floor_ptr->o_list[g_ptr->o_idx_list.front()];
     if (o_ptr->weight > wgt) {
         msg_print(_("そのアイテムは重過ぎます。", "The object is too heavy."));
+        return;
+    }
+
+    if (!check_get_item(caster_ptr, o_ptr)) {
+        msg_print(_("それを動かすことはできない。", "You can't move it."));
         return;
     }
 

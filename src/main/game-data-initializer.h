@@ -1,7 +1,7 @@
 ﻿#pragma once
 /*!
  * @file game-data-initializer.h
- * @brief 変愚蛮怒のゲームデータ初期化ヘッダファイル
+ * @brief 馬鹿馬鹿蛮怒のゲームデータ初期化ヘッダファイル
  */
 
 #include "system/angband.h"

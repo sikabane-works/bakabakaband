@@ -147,7 +147,6 @@ void store_sell(player_type *owner_ptr)
 
     bool placed = false;
     if ((cur_store_num != STORE_HOME) && (cur_store_num != STORE_MUSEUM)) {
-        char out_val[80];
         msg_format(_("%s(%c)を売却する。", "Selling %s (%c)."), o_name, index_to_label(item));
         msg_print(NULL);
 

@@ -6591,6 +6591,7 @@ I:33:13:0
 W:40:0:20:500
 A:15/1
 P:0:1d1:0:0:0
+F:RES_BLIND
 D:日差しや強い照明から眼を守るために着用する保護眼鏡だ。物理的には頭部を守れない。
 
 N:690:永久岩の石碑『ウルトラマン拉致』
@@ -6663,6 +6664,16 @@ A:20/1
 P:2:1d1:0:0:0
 D:ヤーナムの悪夢に潜むメンシス学派の徒が頭部に被る檻だ。
 D:上位者たちの交信に用いるとも、己の獣の愚かさを克する誓いとも言われている。
+
+#JP#
+N:697:羊皮紙『冥王より'＠'の烙印者たちへ』
+E:parchment 'From Dark Lord to "@" Stigmatics'
+G:?:o
+I:69:3:0
+W:0:0:5:1
+A:0/3
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
+
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown

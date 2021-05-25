@@ -1,6 +1,6 @@
 ﻿/*!
  * @file game-data-initializer.cpp
- * @brief 変愚蛮怒のゲームデータ初期化定義
+ * @brief 馬鹿馬鹿蛮怒のゲームデータ初期化定義
  */
 
 #include "main/game-data-initializer.h"

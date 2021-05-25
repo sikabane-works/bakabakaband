@@ -25607,7 +25607,7 @@ N:1298:催眠おじさん
 E:Hypnotic uncle
 G:p:r
 I:109:14d11:20:30:20
-W:20:2:0:50:0:0
+W:20:2:0:50:5000:1426
 B:CRAWL:HURT:4d10
 B:DROOL:HURT:4d10
 F:MALE | 
@@ -26834,7 +26834,7 @@ W:5:1:0:70:0:00
 B:HIT:HURT:4d5
 B:HIT:HURT:4d5
 F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
-F:FORCE_MAXHP | NASTY | HOMO_SEXUAL | SUMOU_WRESTLER
+F:FORCE_MAXHP | NASTY | HOMO_SEXUAL | SUMOU_WRESTLER | UNIQUE
 F:DROP_GOOD | DROP_1D2 | OPEN_DOOR | BASH_DOOR | CAN_SPEAK
 D:稽古さぼってホモビデオを見ているスモトリの屑だ。
 
@@ -26898,7 +26898,7 @@ B:CRUSH:SUPERHURT:8d8
 B:CRUSH:SUPERHURT:8d8
 F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | ELDRAZI | POWERFUL | REGENERATE | RIDING |
 F:MOVE_BODY | CAN_SWIM | OPEN_DOOR | BASH_DOOR | KILL_WALL | KILL_BODY | KILL_ITEM
-F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_CORPSE |
+F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_CORPSE | WEIRD_MIND
 F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
 F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
 F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP
@@ -26912,7 +26912,7 @@ I:115:30d40:60:80:1
 W:35:3:0:7000:0:0
 B:CRUSH:CONFUSE:5d10
 B:CRUSH:CONFUSE:5d10
-F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | WEIRD_MIND
 F:ELDRAZI | KILL_BODY | DROP_CORPSE | ONLY_ITEM | DROP_4D2 |
 F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
 F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP
@@ -26962,8 +26962,8 @@ D:彼は術を能くし、仏法に触れて改心している。
 # 'nus' in Japanese pronunciation, 'nasu', means 'eggplant'.
 # Furthermore, 'eggplant' is translated to 'qiezi' in Chinese.
 # He is 李茄子. He is from China, never Finland!!
-N:1399:ソーシャルディスタンスの王者『リー・ナス』
-E:Lee Qiezi, the King of Social Distance and Fucking Fucker who Fucks
+N:1399:ハッカーファッカー『リー・ナス』
+E:Lee Qiezi, the Fucking Fucker who Fucks
 G:p:y
 I:120:80d60:10:100:1
 W:62:4:0:19000:0:0
@@ -27375,6 +27375,90 @@ R:638:10d2
 R:1271:3d2
 D:彼は史上もっとも強力かつ危険な闇の魔法使いだ。従者である死喰い人や、追放されていた闇の生物を率いて魔法界を支配しようとしている！
 
+N:1424:終末を招くもの
+E:Endbringer
+G:H:R
+I:125:50d30:60:100:10
+W:42:3:0:13000:0:0
+B:HIT:HURT:4d10
+B:HIT:HURT:4d10
+B:HIT:HURT:4d10
+B:HIT:HURT:4d10
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP
+F:ELDRAZI | KILL_BODY | DROP_CORPSE | ONLY_ITEM | DROP_4D2 |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | WEIRD_MIND
+S:1_IN_3
+S:BO_MANA | S_KIN | BR_GRAV | HASTE | SLOW | 
+D:エルドラージ三柱の一つ、コジレックの眷属だ。多彩な術で定命の者を翻弄してくる。
+
+N:1425:エルドラージの落し子
+E:Eldrazi spawn
+G:H:R
+I:110:6d5:30:20:10
+W:10:1:0:13000:0:0
+B:HIT:HURT:1d5
+B:HIT:HURT:1d5
+B:HIT:HURT:1d5
+B:HIT:HURT:1d5
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP
+F:ELDRAZI | DROP_CORPSE
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_PLAS | RES_WATE | RES_GRAV |
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | WEIRD_MIND
+D:それはエルドラージの最も卑小な存在たちであり、より上位の個体の先触れとして現れる。
+
+N:1426:ちんちん亭催眠おじさん
+E:Hypnotic uncle of Chinchin-Tei
+G:p:R
+I:114:14d50:20:30:20
+W:39:2:0:50:0:0
+B:CRAWL:HURT:10d10
+B:DROOL:HURT:10d10
+F:MALE | 
+F:PREVENT_SUDDEN_MAGIC | DROP_2D2 | WILD_ALL | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | 
+F:EVIL | HAS_LITE_2 | NASTY
+S:1_IN_2 | 
+S:CONF | BLIND | HOLD | SLOW | CAUSE_4
+S:MIND_BLAST | BRAIN_SMASH | HASTE
+D:「オラッ！催眠！催眠解除！催眠！」
+D:この催眠おじさんは並の催眠おじさんとは違う。
+D:あらゆる女性を瞬時に肉便器に変えてしまう恐るべき次元の出身だ、気をつけろ！
+
+N:1427:戊辰戦争兵器『サイクロップス先輩』
+E:The Cyclops Senior, the Weapon for Bosin-War
+G:g:W
+I:130:30d100:30:120:0
+W:47:3:0:16000:0:0
+B:PUNCH:HURT:7d10
+B:PUNCH:HURT:7d10
+B:KICK:SHATTER:12d10
+B:KICK:SHATTER:12d10
+F:UNIQUE | MALE | DROP_CORPSE | NASTY | HOMO_SEXUAL
+F:NONLIVING | NO_FEAR | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC |
+F:KILL_BODY | IM_FIRE | IM_COLD | IM_POIS |
+F:NO_STUN | REGENERATE | NO_CONF | NO_SLEEP | CAN_SWIM |
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
+D:Virtual Sex はイカせ隊によりイキ過ぎる行為であったが、
+D:精神のバランスを崩すという欠点があった。それは、
+D:戊辰戦争の兵器となるべく Virtual Sex した野獣先輩とて例外ではなかった。
+D:「表紙に登場のメタリックな彼、 雄臭いカラダを隅々まで責め立てられ大悶絶！」
+D:（SCOOOP!!!1 Virtual Sex イカせ隊見参!!!より）
+
+#JZ#
+N:1428:ヤーナムの自警団員
+E:Vigilante of Yarnam
+G:h:u
+I:110:8d8:30:40:20
+W:10:2:0:30:0:0
+B:HIT:HURT:3d5
+B:SHOOT:HURT:5d5
+F:DROP_90
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | |FRIENDS
+S:1_IN_9 | 
+S:SHOOT
+D:血の医療の街、ヤーナムにはびこる獣を狩ろうとする市民たちだ。
+D:だが当地の月の影響を受けたが故か、既に彼ら自身が半ば獣と化している。
 
 # N: serial number : monster name
 # G: symbol : color
