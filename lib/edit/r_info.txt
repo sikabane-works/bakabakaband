@@ -27460,6 +27460,22 @@ S:SHOOT
 D:血の医療の街、ヤーナムにはびこる獣を狩ろうとする市民たちだ。
 D:だが当地の月の影響を受けたが故か、既に彼ら自身が半ば獣と化している。
 
+N:1429:聖職者の獣
+E:Cleric Beast
+G:H:w
+I:120:50d40:30:80:10
+W:35:3:0:3000:0:0
+B:PUNCH:HURT:9d9
+B:PUNCH:HURT:9d9
+B:CLAW:HURT:9d9
+B:BITE:HURT:10d10
+F:ANIMAL | HUMAN | MALE
+F:NO_FEAR | CAN_FLY | DROP_CORPSE
+F:DROP_GOOD | DROP_3D2
+D:血の医療の街、ヤーナムにの末期に現れだした巨大な獣だ。
+D:彼らはかつて聖職者であり、聖職者こそが獣の病に陥った時より強大な獣になると言われている。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
