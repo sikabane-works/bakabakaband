@@ -31,4 +31,5 @@ enum sv_food_type {
     SV_FOOD_PINT_OF_ALE = 38,
     SV_FOOD_PINT_OF_WINE = 39,
     SV_FOOD_BROWNIW_OF_ALC = 40,
+    SV_FOOD_WELCOME_DRINK_OF_ARE = 41,
 };
