@@ -499,13 +499,11 @@ void chg_virtue(player_type *creature_ptr, int virtue_id, int amount)
  * @param virtue 徳のID
  * @param amount セットしたい値
  */
-void set_virtue(player_type *creature_ptr, int virtue_id, int amount)
+void set_virtue(player_type *creature_ptr, virtue_idx virtue_id, int amount)
 {
-    for (int i = 0; i < 8; i++)
-        if (creature_ptr->vir_types[i] == virtue_id) {
-            creature_ptr->virtues[i] = (s16b)amount;
-            return;
-        }
+    if (creature_ptr->virtues.contains(virtue_id)) {
+        creature_ptr->virtues[virtue_id] = (s16b)amount;    
+    }
 }
 
 /*!
