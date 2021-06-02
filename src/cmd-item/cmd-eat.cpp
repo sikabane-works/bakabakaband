@@ -381,8 +381,11 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
     case SV_FOOD_PINT_OF_WINE:
         msg_print(_("のどごし爽やかだ。", "That tastes good."));
         return TRUE;
+    case SV_FOOD_WELCOME_DRINK_OF_ARE:
+    case SV_FOOD_ABA_TEA:
+        msg_print("「非常に新鮮で……非常においしい……」");
+        return TRUE;
     }
-
     return FALSE;
 }
 
