@@ -166,6 +166,7 @@ static void build_battle(player_type *player_ptr, POSITION *y, POSITION *x)
     POSITION xval = SCREEN_WID / 2;
     POSITION y_height = yval - 10;
     POSITION y_depth = yval + 10;
+
     POSITION x_left = xval - 32;
     POSITION x_right = xval + 32;
 
