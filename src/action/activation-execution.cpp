@@ -34,6 +34,7 @@
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
+#include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/artifact-type-definition.h"
@@ -210,6 +211,20 @@ static bool activate_whistle(player_type *user_ptr, ae_type *ae_ptr)
     return TRUE;
 }
 
+static bool activate_firethrowing(player_type *user_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != TV_BOW && ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
+        return FALSE;
+
+    DIRECTION dir;
+    if (!get_aim_dir(user_ptr, &dir))
+        return FALSE;
+
+    msg_print(_("汚物は消毒だあ！", "The filth must be disinfected!"));
+    fire_breath(user_ptr, GF_FIRE, dir, 20 + user_ptr->lev * 5, 2);
+    return TRUE;
+}
+
 /*!
  * @brief 装備を発動するコマンドのサブルーチン /
  * Activate a wielded object.  Wielded objects never stack.
@@ -254,6 +269,9 @@ void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
         return;
 
     if (exe_monster_capture(user_ptr, ae_ptr))
+        return;
+
+    if (activate_firethrowing(user_ptr, ae_ptr))
         return;
 
     msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));

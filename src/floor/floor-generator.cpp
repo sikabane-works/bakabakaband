@@ -163,7 +163,6 @@ static void generate_challenge_arena(player_type *challanger_ptr)
  */
 static void build_battle(player_type *player_ptr, POSITION *y, POSITION *x)
 {
-
     POSITION yval = ARENA_WID / 2;
     POSITION xval = ARENA_HGT / 2;
     POSITION y_height = yval - 15;
