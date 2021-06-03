@@ -27587,8 +27587,8 @@ D:彼らはその中でも特定の主を持たず、金でその時その時の
 N:1437:悪魔の化身『デビルリバース』
 E:Devilreverse, the Avater of Devil
 G:P:r
-I:120:40d55:30:60:15
-W:40:1:0:8500:0:0
+I:120:50d55:30:60:15
+W:40:2:0:10000:0:0
 B:PUNCH:HURT:9d11
 B:PUNCH:HURT:9d11
 B:PUNCH:HURT:9d11
@@ -27599,6 +27599,23 @@ F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL | GIANT | HUMAN | MALE
 D:世紀末の核戦争後もなお、ピレニィプリズンに幽閉されていた人外の巨躯を持った男だ。
 D:北斗神拳より古い歴史を持つ、羅漢仁王拳の使い手でもある。
+
+N:1438:カサンドラの獄長『ウイグル』
+E:Uyghurs, the Governor of Cassandra Prison.
+G:P:o
+I:120:20d110:30:130:15
+W:42:2:0:11000:0:0
+B:CRUSH:SUPERHURT:15d12
+B:HIT:HURT:5d12
+B:HIT:HURT:5d12
+B:HIT:HURT:5d12
+F:UNIQUE | MALE | CAN_SPEAK |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | MOVE_BODY | DROP_CORPSE
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | KILL_BODY
+F:SMART | OPEN_DOOR | BASH_DOOR |
+F:EVIL | HUMAN | GIANT
+D:拳王に仕え、「鬼の哭く街」「不落の街」の異名を持つ
+D:カサンドラの伝説を体現する冷酷にして屈強な獄長だ。
 
 
 # N: serial number : monster name
