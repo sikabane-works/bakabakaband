@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <array>
 #include <stack>
+#include <cassert>
 
 #include "floor/floor-generator.h"
 #include "dungeon/dungeon-flag-types.h"
@@ -162,38 +163,41 @@ static void generate_challenge_arena(player_type *challanger_ptr)
  */
 static void build_battle(player_type *player_ptr, POSITION *y, POSITION *x)
 {
-    POSITION yval = SCREEN_HGT / 2;
-    POSITION xval = SCREEN_WID / 2;
-    POSITION y_height = yval - 10;
-    POSITION y_depth = yval + 10;
-
-    POSITION x_left = xval - 32;
-    POSITION x_right = xval + 32;
-
+    POSITION yval = ARENA_WID / 2;
+    POSITION xval = ARENA_HGT / 2;
+    POSITION y_height = yval - 15;
+    POSITION y_depth = yval + 15;
+    POSITION x_left = xval - 15;
+    POSITION x_right = xval + 15;
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    for (int i = y_height; i <= y_height + 5; i++)
-        for (int j = x_left; j <= x_right; j++) {
-            place_bold(player_ptr, i, j, GB_EXTRA_PERM);
-            floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
-        }
 
-    for (int i = y_depth; i >= y_depth - 3; i--)
-        for (int j = x_left; j <= x_right; j++) {
+    for (POSITION i = y_height; i <= y_height + 5; i++) {
+        for (POSITION j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
+    }
 
-    for (int j = x_left; j <= x_left + 17; j++)
-        for (int i = y_height; i <= y_depth; i++) {
+    for (POSITION i = y_depth; i >= y_depth - 5; i--) {
+        for (POSITION j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
+    }
 
-    for (int j = x_right; j >= x_right - 17; j--)
-        for (int i = y_height; i <= y_depth; i++) {
+    for (POSITION j = x_left; j <= x_left + 5; j++) {
+        for (POSITION i = y_height; i <= y_depth; i++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
+    }
+
+    for (POSITION j = x_right; j >= x_right - 5; j--) {
+        for (POSITION i = y_height; i <= y_depth; i++) {
+            place_bold(player_ptr, i, j, GB_EXTRA_PERM);
+            floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
+        }
+    }
 
     place_bold(player_ptr, y_height + 6, x_left + 18, GB_EXTRA_PERM);
     floor_ptr->grid_array[y_height + 6][x_left + 18].info |= CAVE_GLOW | CAVE_MARK;
@@ -206,6 +210,7 @@ static void build_battle(player_type *player_ptr, POSITION *y, POSITION *x)
 
     for (int i = y_height + 1; i <= y_height + 5; i++)
         for (int j = x_left + 20 + 2 * (y_height + 5 - i); j <= x_right - 20 - 2 * (y_height + 5 - i); j++) {
+            assert(j >= 0 && i >= 0);
             floor_ptr->grid_array[i][j].feat = feat_permanent_glass_wall;
         }
 
@@ -231,9 +236,8 @@ static void generate_gambling_arena(player_type *creature_ptr)
             place_bold(creature_ptr, y, x, GB_SOLID_PERM);
             floor_ptr->grid_array[y][x].info |= (CAVE_GLOW | CAVE_MARK);
         }
-
-    for (y = qy + 1; y < qy + SCREEN_HGT - 1; y++)
-        for (x = qx + 1; x < qx + SCREEN_WID - 1; x++)
+    for (y = qy + 1; y < qy + ARENA_HGT - 1; y++)
+        for (x = qx + 1; x < qx + ARENA_WID - 1; x++)
             floor_ptr->grid_array[y][x].feat = feat_floor;
 
     build_battle(creature_ptr, &y, &x);
