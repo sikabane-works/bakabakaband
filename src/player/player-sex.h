@@ -5,7 +5,9 @@
 enum player_sex {
     SEX_FEMALE = 0,
     SEX_MALE = 1,
-    MAX_SEXES = 2, /*!< 性別の定義最大数 / Maximum number of player "sex" types (see "table.c", etc) */
+    SEX_BISEXUAL = 2,
+    SEX_ASEXUAL = 3,
+    MAX_SEXES = 4, /*!< 性別の定義最大数 / Maximum number of player "sex" types (see "table.c", etc) */
 };
 
 typedef struct player_sex_type {
