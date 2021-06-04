@@ -1,6 +1,19 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include <string>
+
+/*!
+ * @brief パトロン情報の定義 
+ */
+class Patron {
+    std::string name; //!< パトロン名
+#ifdef JP
+    std::string ename; //!< PatronName
+#endif
+    int rewards[20]; //!< 報酬テーブル
+    int boost_stat; //!< 強化能力値傾向
+};
 
 #define MAX_PATRON 16 /*!< カオスパトロンの最大定義数 / The number of "patrons" available (for Chaos Warriors) */
 
