@@ -27566,7 +27566,7 @@ S:SHOOT
 D:何の意味もなさない虚無のような「そーなのかー」があなたの耳に響く。退屈でもう気が狂う！
 
 N:1436:古ウルクの傭兵
-E:mercenary of ancient uruk
+E:Mercenary of Ancient Uruk
 G:o:y
 I:120:30d30:20:90:10
 W:44:1:0:5000:0:0
@@ -27575,7 +27575,7 @@ B:SLASH:HURT:10d5
 B:SLASH:HURT:10d5
 B:SHOOT:HURT:10d10
 F:MALE | 
-F:DROP_1D2 | 
+F:DROP_1D2 | FORCE_MAXHP
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:IM_FIRE | RES_DARK | RES_LITE | FRIENDS
 F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | SELF_LITE_1
@@ -27616,6 +27616,27 @@ F:SMART | OPEN_DOOR | BASH_DOOR |
 F:EVIL | HUMAN | GIANT
 D:拳王に仕え、「鬼の哭く街」「不落の街」の異名を持つ
 D:カサンドラの伝説を体現する冷酷にして屈強な獄長だ。
+
+N:1439:古ウルクの士官
+E:Chief of Ancient Uruk
+G:o:y
+I:120:30d50:20:110:10
+W:49:1:0:7000:0:0
+B:SLASH:HURT:10d6
+B:SLASH:HURT:10d6
+B:SLASH:HURT:10d6
+B:SHOOT:HURT:10d15
+R:1436:5d5
+F:MALE | 
+F:DROP_2D2 | DROP_GOOD | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:IM_FIRE | RES_DARK | RES_LITE | IM_COLD | IM_ELEC
+F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | SELF_LITE_1
+S:1_IN_3
+S:SHOOT | BO_MANA | BR_FIRE | BR_COLD | BR_ELEC | HEAL
+D:古ウルクの中でも冥王やウトゥムノの諸神の直臣たる家系に生まれ、
+D:それを誇りとして育ち鍛え抜かれた戦士の長だ。
+D:数々の神秘の術を軍事に使うことに長けている。
 
 
 # N: serial number : monster name
