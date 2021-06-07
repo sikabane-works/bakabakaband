@@ -660,6 +660,8 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
         take_hit(trapped_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(trapped_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
         break;
     }
+    default:
+        break;
 
 
     }
