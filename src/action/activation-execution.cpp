@@ -213,7 +213,7 @@ static bool activate_whistle(player_type *user_ptr, ae_type *ae_ptr)
 
 static bool activate_firethrowing(player_type *user_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != TV_BOW && ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
+    if (ae_ptr->o_ptr->tval != TV_BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
         return FALSE;
 
     DIRECTION dir;
@@ -222,6 +222,19 @@ static bool activate_firethrowing(player_type *user_ptr, ae_type *ae_ptr)
 
     msg_print(_("汚物は消毒だあ！", "The filth must be disinfected!"));
     fire_breath(user_ptr, GF_FIRE, dir, 20 + user_ptr->lev * 5, 2);
+    return TRUE;
+}
+
+static bool activate_rosmarinus(player_type *user_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != TV_BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS)
+        return FALSE;
+
+    DIRECTION dir;
+    if (!get_aim_dir(user_ptr, &dir))
+        return FALSE;
+
+    fire_breath(user_ptr, GF_MISSILE, dir, 20 + user_ptr->lev * 5, 2);
     return TRUE;
 }
 
@@ -272,6 +285,9 @@ void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
         return;
 
     if (activate_firethrowing(user_ptr, ae_ptr))
+        return;
+
+    if (activate_rosmarinus(user_ptr, ae_ptr))
         return;
 
     msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
