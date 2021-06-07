@@ -271,7 +271,7 @@ void rd_item_old(player_type *player_ptr, object_type *o_ptr)
             else
                 o_ptr->xtra5 = damroll(r_info[o_ptr->pval].hdice, r_info[o_ptr->pval].hside);
             if (ironman_nightmare) {
-                o_ptr->xtra5 = (s16b)MIN(30000, o_ptr->xtra5 * 2L);
+                o_ptr->xtra5 = (s16b)MIN(MON_MAX_HP, o_ptr->xtra5 * 2L);
             }
             o_ptr->xtra4 = o_ptr->xtra5;
         }

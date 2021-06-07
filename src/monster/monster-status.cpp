@@ -566,7 +566,7 @@ void monster_gain_exp(player_type *target_ptr, MONSTER_IDX m_idx, MONRACE_IDX s_
     }
     if (ironman_nightmare) {
         HIT_POINT hp = m_ptr->max_maxhp * 2L;
-        m_ptr->max_maxhp = MIN(30000, hp);
+        m_ptr->max_maxhp = MIN(MON_MAX_HP, hp);
     }
 
     m_ptr->maxhp = m_ptr->max_maxhp;
