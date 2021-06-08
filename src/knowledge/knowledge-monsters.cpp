@@ -277,7 +277,9 @@ static void display_monster_list(int col, int row, int per_page, s16b mon_idx[],
             if (none_bits(r_ptr->flags1, RF1_UNIQUE))
                 put_str(format("%5d", r_ptr->r_pkills), row + i, 73);
             else
-                c_put_str((r_ptr->max_num == 0 ? TERM_L_DARK : TERM_WHITE), (r_ptr->max_num == 0 ? _("死亡", " dead") : _("生存", "alive")), row + i, 74);
+                c_put_str((r_ptr->max_num == 0 ? TERM_L_DARK : TERM_WHITE),
+                    (r_ptr->max_num == 0 ? _("死亡", " dead") : (r_ptr->r_akills > 0 ? _("復活", "revived") : _("生存", "alive"))),
+                    row + i, 74);
         }
     }
 
