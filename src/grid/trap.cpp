@@ -410,7 +410,7 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
     POSITION x = trapped_ptr->x, y = trapped_ptr->y;
     grid_type *g_ptr = &trapped_ptr->current_floor_ptr->grid_array[y][x];
     feature_type *f_ptr = &f_info[g_ptr->feat];
-    int trap_feat_type = has_flag(f_ptr->flags, FF_TRAP) ? f_ptr->subtype : NOT_TRAP;
+    trap_type trap_feat_type = has_flag(f_ptr->flags, FF_TRAP) ? (enum ::trap_type)f_ptr->subtype : NOT_TRAP;
     concptr name = _("トラップ", "a trap");
 
     disturb(trapped_ptr, FALSE, TRUE);
@@ -660,6 +660,8 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
         take_hit(trapped_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(trapped_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
         break;
     }
+    default:
+        break;
 
 
     }

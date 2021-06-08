@@ -304,10 +304,12 @@ void dump_mutations(player_type *creature_ptr, FILE *out_file)
         if (has_good_luck(creature_ptr))
             fprintf(out_file, _(" あなたは白いオーラにつつまれている。\n", " There is a white aura surrounding you.\n"));
 
-        if (creature_ptr->muta.has(MUTA::BAD_LUCK))
+        if (creature_ptr->muta.has(MUTA::BAD_LUCK)) {
             fprintf(out_file, _(" あなたは黒いオーラにつつまれている。\n", " There is a black aura surrounding you.\n"));
+        }
 
-	    if (creature_ptr->muta.has(MUTA::DEFECATION))
-            fprintf(out_file, _("あなたは脱糞を制御できない。", "You are subject to uncontrollable defecation."));
+	    if (creature_ptr->muta.has(MUTA::DEFECATION)) {
+            fprintf(out_file, _("あなたは脱糞を制御できない。", "You are subject to uncontrollable defecation."));        
+        }
     }
 }
