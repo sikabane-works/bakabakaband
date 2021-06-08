@@ -27672,6 +27672,22 @@ S:1_IN_10 |
 S:S_KIN
 D:蛮族、牙一族の族長であり、華山角抵戯という中国拳法の使い手だ。
 
+#オーラと類似の形で物理反撃効果をつけるか？
+N:1442:砕骨の巨人
+E:Bonecrusher giant
+G:P:r
+I:120:30d20:20:70:20
+W:28:1:0:300:0:0
+B:HIT:HURT:7d8
+B:HIT:HURT:7d8
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_1D2 | TAKE_ITEM | WILD_SHORE | WILD_MOUNTAIN |
+F:BASH_DOOR | OPEN_DOOR | MOVE_BODY | DROP_CORPSE | EAT_GIVE_STR |
+F:EVIL | IM_FIRE | IM_POIS | IM_ACID | GIANT
+D:この巨人は、傷つけられればさらに荒ぶり、執拗に反撃を止めようとしない。
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
