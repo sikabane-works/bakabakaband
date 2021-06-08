@@ -113,6 +113,7 @@ const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
 	{ "DROP_4D2", RF1_DROP_4D2 },
 	{ "DROP_GOOD", RF1_DROP_GOOD },
 	{ "DROP_GREAT", RF1_DROP_GREAT },
+    { "DROP_NASTY", RF1_DROP_NASTY },
 };
 
 /*!

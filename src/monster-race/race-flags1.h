@@ -31,6 +31,6 @@ enum race_flags1 {
     RF1_DROP_4D2 = 0x08000000, /*!< モンスター特性: 落とすアイテム数+4d2 / Drop 4d2 items/gold */
     RF1_DROP_GOOD = 0x10000000, /*!< モンスター特性: 必ず上質品をドロップする / Drop good items */
     RF1_DROP_GREAT = 0x20000000, /*!< モンスター特性: 必ず高級品をドロップする / Drop great items */
-    RF1_XXX2 = 0x40000000, /*!< モンスター特性: 未使用 / XXX */
+    RF1_DROP_NASTY = 0x40000000, /*!< モンスター特性: 必ず例のアレなものをドロップする / Drop nasty items */
     RF1_XXX3 = 0x80000000, /*!< モンスター特性: 未使用 / XXX */
 };
