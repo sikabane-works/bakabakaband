@@ -388,6 +388,9 @@ void display_monster_kind(lore_type *lore_ptr)
 
 void display_monster_alignment(lore_type *lore_ptr)
 {
+    if (lore_ptr->flags1 & RF1_MALE && lore_ptr->flags1 & RF1_FEMALE)
+        hook_c_roff(TERM_VIOLET, _("両性具有であり", " hermaphroditic"));
+
     if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR)
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
 
@@ -420,7 +423,6 @@ void display_monster_alignment(lore_type *lore_ptr)
 
     if (lore_ptr->flags3 & RF3_AMBERITE)
         hook_c_roff(TERM_VIOLET, _("アンバーの王族の", " Amberite"));
-
 }
 
 /*!
