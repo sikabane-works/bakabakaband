@@ -239,6 +239,9 @@ static void decide_drop_quality(monster_death_type *md_ptr)
 
     if (md_ptr->r_ptr->flags1 & RF1_DROP_GREAT)
         md_ptr->mo_mode |= (AM_GOOD | AM_GREAT);
+
+    if (md_ptr->r_ptr->flags1 & RF1_DROP_NASTY)
+        md_ptr->mo_mode |= AM_NASTY;
 }
 
 static int decide_drop_numbers(player_type *player_ptr, monster_death_type *md_ptr, const bool drop_item)

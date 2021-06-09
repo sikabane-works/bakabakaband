@@ -6,9 +6,11 @@
 
 #include "object/object-kind-hook.h"
 #include "object/object-kind.h"
+#include "object-enchant/tr-types.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "util/bit-flags-calculator.h"
 
 /*
  * Special "sval" limit -- first "good" magic/prayer book
@@ -116,6 +118,12 @@ bool kind_is_boots(KIND_OBJECT_IDX k_idx)
 bool kind_is_amulet(KIND_OBJECT_IDX k_idx)
 {
     return k_info[k_idx].tval == TV_AMULET;
+}
+
+bool kind_is_nasty(KIND_OBJECT_IDX k_idx)
+{
+    object_kind *k_ptr = &k_info[k_idx];
+    return has_flag(k_ptr->flags, TR_NASTY);
 }
 
 /*!

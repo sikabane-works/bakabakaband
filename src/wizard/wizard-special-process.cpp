@@ -652,7 +652,7 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
     if (!no_penalty) {
 
 
-        switch (randint0(3)) {
+        switch (randint0(4)) {
         
         case 0:
             blank_years = damroll(8, 10);
@@ -685,6 +685,13 @@ void cheat_death(player_type *creature_ptr, bool no_penalty)
             msg_print(_("あなたは偉大なるカッチャマの神なる御言葉で無事蘇生した！", "You revived by a holt word from great mom!"));
             break;
 
+
+        case 3:
+            msg_format(_("王大人『%s 死亡確認』", "\"Lord Wang confirmed that %s is dead.\""), creature_ptr->name);
+            break;
+
+        default:
+            break;
 
         }
 

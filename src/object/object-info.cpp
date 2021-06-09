@@ -23,6 +23,7 @@
 #include "object/object-kind.h"
 #include "player/player-realm.h"
 #include "realm/realm-names-table.h"
+#include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/floor-type-definition.h"
@@ -184,6 +185,14 @@ concptr activation_explanation(player_type *owner_ptr, object_type *o_ptr)
 
     if (o_ptr->tval == TV_CAPTURE) {
         return _("モンスターを捕える、又は解放する。", "captures or releases a monster.");
+    }
+
+    if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_FLAMETHROWER) {
+        return _("火炎放射", "Flame throwing");
+    }
+
+    if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_ROSMARINUS) {
+        return _("神秘の霧", "Sacred mist");
     }
 
     return _("何も起きない", "Nothing");

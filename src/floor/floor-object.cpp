@@ -102,7 +102,10 @@ bool make_object(player_type *owner_ptr, object_type *j_ptr, BIT_FLAGS mode)
     DEPTH base = ((mode & AM_GOOD) ? (floor_ptr->object_level + 10) : floor_ptr->object_level);
     if (!one_in_(prob) || !make_artifact_special(owner_ptr, j_ptr)) {
         KIND_OBJECT_IDX k_idx;
-        if ((mode & AM_GOOD) && !get_obj_num_hook) {
+        if ((mode & AM_NASTY) && !get_obj_num_hook) {
+            get_obj_num_hook = kind_is_nasty;
+        }
+        else if ((mode & AM_GOOD) && !get_obj_num_hook) {
             get_obj_num_hook = kind_is_good;
         }
 

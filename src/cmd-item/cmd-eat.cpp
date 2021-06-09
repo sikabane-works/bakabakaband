@@ -385,6 +385,8 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
     case SV_FOOD_ABA_TEA:
         msg_print("「非常に新鮮で……非常においしい……」");
         return TRUE;
+    case SV_FOOD_SEED_FEA:
+        msg_print("脱穀して炊いた方が良かったかもしれないが、多少空腹は収まった。");
     }
     return FALSE;
 }

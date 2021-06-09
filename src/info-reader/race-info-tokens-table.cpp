@@ -113,6 +113,7 @@ const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
 	{ "DROP_4D2", RF1_DROP_4D2 },
 	{ "DROP_GOOD", RF1_DROP_GOOD },
 	{ "DROP_GREAT", RF1_DROP_GREAT },
+    { "DROP_NASTY", RF1_DROP_NASTY },
 };
 
 /*!
@@ -323,7 +324,8 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
 	{ "WILD_VOLCANO", RF8_WILD_VOLCANO },
 	{ "WILD_MOUNTAIN", RF8_WILD_MOUNTAIN },
 	{ "WILD_GRASS", RF8_WILD_GRASS },
-	{ "ELDRAZI", RF8_ELDRAZI },
+    { "QUYLTHLUG", RF8_QUYLTHLUG },
+    { "ELDRAZI", RF8_ELDRAZI },
 	{ "KARATEKA", RF8_KARATEKA },
     { "NINJA", RF8_NINJA },
 	{ "SUMOU_WRESTLER", RF8_SUMOU_WRESTLER },
