@@ -27686,6 +27686,24 @@ F:BASH_DOOR | OPEN_DOOR | MOVE_BODY | DROP_CORPSE | EAT_GIVE_STR |
 F:EVIL | IM_FIRE | IM_POIS | IM_ACID | GIANT
 D:この巨人は、傷つけられればさらに荒ぶり、執拗に反撃を止めようとしない。
 
+#J0#
+N:1443:<ミ＝サクラ>の混沌の戦士
+E:Chaos Warrior of Mi'Sakra
+G:p:v
+I:120:56d10:20:50:10
+W:34:1:0:500:0:0
+B:HIT:HURT:5d7
+B:HIT:HURT:5d7
+B:HIT:HURT:5d7
+F:MALE | FEMALE | HUMAN | NASTY
+F:PREVENT_SUDDEN_MAGIC | DROP_2D2 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL
+S:1_IN_10 | 
+S:SCARE | HOLD | CAUSE_3 | BO_MANA
+D:<スラーネッシュ>神のアヴァターともアスペクトとも呼ばれる卑猥の神
+D:<ミ＝サクラ>に仕えるケイオス・ウォリアーだ。
+D:その冒涜的かつ卑猥な絶叫と罵声の数々にはもう気が狂いそうだ！
 
 
 # N: serial number : monster name
