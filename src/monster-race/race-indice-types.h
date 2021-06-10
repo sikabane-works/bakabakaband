@@ -192,4 +192,5 @@ enum monster_race_type {
     MON_FIGHTER = 1407,
     MON_HAWK = 1408,
     MON_LION = 1409,
+    MON_BOTTLE_GNOME = 1444,
 };
