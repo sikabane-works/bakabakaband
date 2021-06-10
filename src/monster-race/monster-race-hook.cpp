@@ -721,6 +721,46 @@ bool vault_aux_dark_elf(player_type *player_ptr, MONRACE_IDX r_idx)
 }
 
 /*!
+ * @brief モンスターがホモpitの生成必要条件を満たしているかを返す /
+ * @param r_idx 確認したいモンスター種族ID
+ * @return 生成必要条件を満たしているならTRUEを返す。
+ */
+bool vault_aux_gay(player_type *player_ptr, MONRACE_IDX r_idx)
+{
+    monster_race *r_ptr = &r_info[r_idx];
+    if (!vault_monster_okay(player_ptr, r_idx))
+        return FALSE;
+
+    if (!(r_ptr->flags1 & (RF1_MALE)))
+        return FALSE;
+
+    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL)))
+        return FALSE;
+
+    return TRUE;
+}
+
+/*!
+ * @brief モンスターがレズpitの生成必要条件を満たしているかを返す /
+ * @param r_idx 確認したいモンスター種族ID
+ * @return 生成必要条件を満たしているならTRUEを返す。
+ */
+bool vault_aux_les(player_type *player_ptr, MONRACE_IDX r_idx)
+{
+    monster_race *r_ptr = &r_info[r_idx];
+    if (!vault_monster_okay(player_ptr, r_idx))
+        return FALSE;
+
+    if (!(r_ptr->flags1 & (RF1_FEMALE)))
+        return FALSE;
+
+    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL)))
+        return FALSE;
+
+    return TRUE;
+}
+
+/*!
  * @brief モンスターが生命体かどうかを返す
  * Is the monster "alive"?
  * @param r_ptr 判定するモンスターの種族情報構造体参照ポインタ

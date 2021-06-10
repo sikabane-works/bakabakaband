@@ -394,6 +394,8 @@ std::vector<nest_pit_type> pit_types = {
     { _("ドラゴン", "dragon"), vault_aux_dragon, vault_prep_dragon, 70, 6 },
     { _("デーモン", "demon"), vault_aux_demon, NULL, 80, 6 },
     { _("ダークエルフ", "dark elf"), vault_aux_dark_elf, NULL, 45, 4 },
+    { _("ホモ", "gay"), vault_aux_gay, NULL, 5, 4 },
+    { _("レズ", "lez"), vault_aux_les, NULL, 5, 4 },
 };
 
 /*!
