@@ -27702,9 +27702,24 @@ F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL
 S:1_IN_10 | 
 S:SCARE | HOLD | CAUSE_3 | BO_MANA
-D:<スラーネッシュ>神のアヴァターともアスペクトとも呼ばれる卑猥の神
+D:<スラーネッシュ>神の従属神ともアスペクトとも呼ばれる卑猥の神
 D:<ミ＝サクラ>に仕えるケイオス・ウォリアーだ。
-D:その冒涜的かつ卑猥な絶叫と罵声の数々にはもう気が狂いそうだ！
+D:その冒涜的かつ猥褻極まりない絶叫と罵声の数々にもう気が狂いそうだ！
+
+#J0#
+N:1444:ボトルのノーム
+E:Bottle gnome
+G:g:b
+I:110:10d7:12:35:10
+W:13:2:0:100:0:0
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+F:COLD_BLOOD | EMPTY_MIND | BASH_DOOR | 
+F:IM_FIRE | IM_ACID | IM_ELEC | IM_POIS | 
+F:FRIENDS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:$Reinforcements...or refreshments?
+D:補強……それとも保養？
 
 
 # N: serial number : monster name

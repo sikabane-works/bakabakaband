@@ -33,6 +33,7 @@
 #include "object/object-kind-hook.h"
 #include "spell/spell-types.h"
 #include "spell/summon-types.h"
+#include "sv-definition/sv-potion-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
@@ -95,6 +96,15 @@ static void on_dead_pink_horror(player_type *player_ptr, monster_death_type *md_
 
     if (notice)
         msg_print(_("ピンク・ホラーは分裂した！", "The Pink horror divides!"));
+}
+
+static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(player_ptr, lookup_kind(TV_POTION, SV_POTION_CURE_CRITICAL));
+    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
 static void on_dead_misumi(player_type *player_ptr, monster_death_type *md_ptr)
@@ -518,6 +528,9 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
     }
 
     switch (md_ptr->m_ptr->r_idx) {
+    case MON_BOTTLE_GNOME:
+        on_dead_bottle_gnome(player_ptr, md_ptr);
+        return;
     case MON_MISUMI:
         on_dead_misumi(player_ptr, md_ptr);
         return;
