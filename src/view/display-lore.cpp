@@ -406,6 +406,24 @@ void display_monster_alignment(lore_type *lore_ptr)
     if (lore_ptr->flags3 & RF3_GOOD)
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
 
+    if (lore_ptr->flags8 & RF8_WARRIOR)
+        hook_c_roff(TERM_ORANGE, _("戦士の", " warrior"));
+
+    if (lore_ptr->flags8 & RF8_ROGUE)
+        hook_c_roff(TERM_L_DARK, _("盗賊の", " rogue"));
+
+    if (lore_ptr->flags8 & RF8_PRIEST)
+        hook_c_roff(TERM_WHITE, _("プリーストの", " priest"));
+
+    if (lore_ptr->flags8 & RF8_MAGE)
+        hook_c_roff(TERM_RED, _("メイジの", " mage"));
+
+    if (lore_ptr->flags8 & RF8_PALADIN)
+        hook_c_roff(TERM_YELLOW, _("パラディンの", " paladin"));
+
+    if (lore_ptr->flags8 & RF8_RANGER)
+        hook_c_roff(TERM_GREEN, _("レンジャーの", " ranger"));
+
     if (lore_ptr->flags8 & RF8_NINJA)
         hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));
 
