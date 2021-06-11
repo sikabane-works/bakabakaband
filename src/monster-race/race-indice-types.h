@@ -193,4 +193,5 @@ enum monster_race_type {
     MON_HAWK = 1408,
     MON_LION = 1409,
     MON_BOTTLE_GNOME = 1444,
+    MON_EARTH_DESTROYER = 1445,
 };
