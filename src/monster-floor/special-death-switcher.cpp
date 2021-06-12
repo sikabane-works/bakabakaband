@@ -168,6 +168,12 @@ static void on_dead_ninja(player_type *player_ptr, monster_death_type *md_ptr)
     (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, GF_MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
+static void on_dead_earth_destroyer(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    msg_print(_("ワーオ！22世紀の文明の叡知が今炸裂した！", "Wow! The wisdom of 22nd century civilization has now exploded!"));
+    (void)project(player_ptr, md_ptr->m_idx, 10, md_ptr->md_y, md_ptr->md_x, 10000, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+}
+
 static void on_dead_unmaker(player_type *player_ptr, monster_death_type *md_ptr)
 {
     if (is_seen(player_ptr, md_ptr->m_ptr)) {
@@ -528,6 +534,9 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
     }
 
     switch (md_ptr->m_ptr->r_idx) {
+    case MON_EARTH_DESTROYER:
+        on_dead_earth_destroyer(player_ptr, md_ptr);
+        break;
     case MON_BOTTLE_GNOME:
         on_dead_bottle_gnome(player_ptr, md_ptr);
         return;
