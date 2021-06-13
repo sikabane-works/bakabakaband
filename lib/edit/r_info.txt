@@ -27769,6 +27769,18 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL
 D:突っ込み処満載の世紀末救世主にまで突っ込まれた哀れな悪党だ。
 
+N:1448:虎眼流入門者
+E:Novice of Kogan-ryu
+G:p:U
+I:110:9d6:35:10:4
+W:3:3:0:12:0:0
+B:SLASH:HURT:1d20
+F:MALE | HAS_LITE_1 |
+F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+D:最盛期名古屋城下に構える道場に集う門弟は千人を超えたともされる虎眼流の入門者だ。
+D:未熟なりにその流派の性質は心得ている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
