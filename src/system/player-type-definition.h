@@ -3,12 +3,14 @@
 #include "mutation/mutation-flag-types.h"
 #include "object-enchant/trc-types.h"
 #include "player-ability/player-ability-types.h"
+#include "player-info/avatar.h"
 #include "player/player-race-types.h"
 #include "player/player-class-types.h"
 #include "player/player-personality-types.h"
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
+#include <map>
 
 #define MAX_SKILLS 10
 #define MAX_MANE 16
@@ -150,8 +152,7 @@ typedef struct player_type {
 
     EnumClassFlagGroup<MUTA> muta{}; /*!< 突然変異 / mutations */
 
-    s16b virtues[8]{};
-    s16b vir_types[8]{};
+    std::map<virtue_idx, s16b> virtues;
 
     TIME_EFFECT word_recall{}; /* Word of recall counter */
     TIME_EFFECT alter_reality{}; /* Alter reality counter */

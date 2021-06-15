@@ -35,5 +35,5 @@ int virtue_number(player_type *creature_ptr, int type);
 extern concptr virtue[MAX_VIRTUE];
 void get_virtues(player_type *creature_ptr);
 void chg_virtue(player_type *creature_ptr, int virtue, int amount);
-void set_virtue(player_type *creature_ptr, int virtue, int amount);
+void set_virtue(player_type *creature_ptr, virtue_idx virtue, int amount);
 void dump_virtues(player_type *creature_ptr, FILE *OutFile);
