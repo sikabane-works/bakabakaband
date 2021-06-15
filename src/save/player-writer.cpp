@@ -8,6 +8,7 @@
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "world/world.h"
+#include <map>
 
 /*!
  * @brief セーブデータに領域情報を書き込む / Write player realms
@@ -204,6 +205,13 @@ void wr_player(player_type *creature_ptr)
     for (int i = 0; i < 8; i++)
         wr_s16b(creature_ptr->vir_types[i]);
 
+    wr_s32b(s32b(creature_ptr->incident.size()));
+    std::map<s32b, s32b>::iterator it;
+    for (it = creature_ptr->incident.begin(); it != creature_ptr->incident.end(); it++) {
+        wr_s32b(it->first);
+        wr_s32b(it->second);
+    }
+
     wr_s16b(creature_ptr->ele_attack);
     wr_u32b(creature_ptr->special_attack);
     wr_s16b(creature_ptr->ele_immune);
@@ -246,4 +254,6 @@ void wr_player(player_type *creature_ptr)
     wr_u32b(current_world_ptr->play_time);
     wr_s32b(creature_ptr->visit);
     wr_u32b(creature_ptr->count);
+
+    
 }

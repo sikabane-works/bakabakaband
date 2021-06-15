@@ -9,6 +9,7 @@
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
+#include <map>
 
 #define MAX_SKILLS 10
 #define MAX_MANE 16
@@ -46,6 +47,8 @@ typedef struct player_type {
     s16b wt{}; /* Weight */
     s16b prestige{}; /* Prestige */
     s32b death_count{}; /* Death count */
+
+    std::map<s32b, s32b> incident{}; /*!< これまでに行った出来事カウント */
 
     PRICE au{}; /* Current Gold */
 
