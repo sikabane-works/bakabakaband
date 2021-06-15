@@ -27781,6 +27781,33 @@ F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
 D:最盛期名古屋城下に構える道場に集う門弟は千人を超えたともされる虎眼流の入門者だ。
 D:未熟なりにその流派の性質は心得ている。
 
+N:1449:連ちゃんパパ『日之本進』
+E:Susumu Hinomoto, the Jackpot Papa
+G:t:s
+I:110:30d10:40:10:3
+W:0:3:0:0:0:0
+B:BEG:FLAVOR
+B:TOUCH:EAT_GOLD
+B:HIT:HURT:1d2
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | EVIL | HUMAN
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:彼は凡庸なる屑の鑑だ。
+
+N:1450:連ちゃんママ『日之本雅子』
+E:Masako Hinomoto, the Jackpot Mama
+G:t:s
+I:110:28d10:40:15:3
+W:0:3:0:0:0:0
+B:BEG:FLAVOR
+B:TOUCH:EAT_GOLD
+B:HIT:HURT:1d2
+F:UNIQUE | FEMALE | DROP_CORPSE | FRIENDLY | EVIL | HUMAN
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:彼女もまた凡庸なる屑の鑑だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
