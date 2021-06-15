@@ -29,18 +29,18 @@
 bool item_tester_hook_eatable(player_type *player_ptr, object_type *o_ptr)
 {
     if (o_ptr->tval == TV_FOOD)
-        return TRUE;
+        return true;
 
     auto food_type = player_race_food(player_ptr);
     if (food_type == PlayerRaceFood::MANA) {
         if (o_ptr->tval == TV_STAFF || o_ptr->tval == TV_WAND)
-            return TRUE;
+            return true;
     } else if (food_type == PlayerRaceFood::CORPSE) {
         if (o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[o_ptr->pval].d_char))
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*!
@@ -52,12 +52,12 @@ bool item_tester_hook_eatable(player_type *player_ptr, object_type *o_ptr)
 bool item_tester_hook_quaff(player_type *player_ptr, object_type *o_ptr)
 {
     if (o_ptr->tval == TV_POTION)
-        return TRUE;
+        return true;
 
     if (player_race_food(player_ptr) == PlayerRaceFood::OIL && o_ptr->tval == TV_FLASK && o_ptr->sval == SV_FLASK_OIL)
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 /*!
@@ -72,9 +72,9 @@ bool item_tester_hook_readable(player_type *player_ptr, object_type *o_ptr)
     (void)player_ptr;
 
     if ((o_ptr->tval == TV_SCROLL) || (o_ptr->tval == TV_READING_MATTER) || (o_ptr->name1 == ART_GHB) || (o_ptr->name1 == ART_POWER))
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 /*!
@@ -89,9 +89,9 @@ bool item_tester_refill_lantern(player_type *player_ptr, object_type *o_ptr)
     (void)player_ptr;
 
     if ((o_ptr->tval == TV_FLASK) || ((o_ptr->tval == TV_LITE) && (o_ptr->sval == SV_LITE_LANTERN)))
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 /*!
@@ -106,9 +106,9 @@ bool object_can_refill_torch(player_type *player_ptr, object_type *o_ptr)
     (void)player_ptr;
 
     if ((o_ptr->tval == TV_LITE) && (o_ptr->sval == SV_LITE_TORCH))
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 /*!
@@ -123,12 +123,12 @@ bool can_player_destroy_object(player_type *player_ptr, object_type *o_ptr)
 
     object_flags(player_ptr, o_ptr, flgs);
     if (has_flag(flgs, TR_INDESTRUCTIBLE))
-        return FALSE;
+        return false;
 
 
     /* Artifacts cannot be destroyed */
     if (!object_is_artifact(o_ptr))
-        return TRUE;
+        return true;
 
 
 
@@ -141,10 +141,10 @@ bool can_player_destroy_object(player_type *player_ptr, object_type *o_ptr)
         o_ptr->ident |= IDENT_SENSE;
         player_ptr->update |= (PU_COMBINE);
         player_ptr->window_flags |= (PW_INVEN | PW_EQUIP);
-        return FALSE;
+        return false;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*!

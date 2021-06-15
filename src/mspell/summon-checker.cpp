@@ -24,7 +24,7 @@
 bool check_summon_specific(player_type *player_ptr, MONRACE_IDX summoner_idx, MONRACE_IDX r_idx)
 {
     monster_race *r_ptr = &r_info[r_idx];
-    bool is_match = FALSE;
+    bool is_match = false;
     switch (summon_specific_type) {
     case SUMMON_ANT:
         is_match = r_ptr->d_char == 'a';
@@ -138,13 +138,13 @@ bool check_summon_specific(player_type *player_ptr, MONRACE_IDX summoner_idx, MO
     case SUMMON_KAMIKAZE:
         for (int i = 0; i < 4; i++)
             if (r_ptr->blow[i].method == RBM_EXPLODE)
-                is_match = TRUE;
+                is_match = true;
 
         break;
     case SUMMON_KAMIKAZE_LIVING:
         for (int i = 0; i < 4; i++)
             if (r_ptr->blow[i].method == RBM_EXPLODE)
-                is_match = TRUE;
+                is_match = true;
 
         is_match &= monster_living(r_idx);
         break;
@@ -188,6 +188,7 @@ bool check_summon_specific(player_type *player_ptr, MONRACE_IDX summoner_idx, MO
         is_match |= one_in_(16) ? (r_ptr->d_char == 'l') : false;
         is_match |= (r_idx == MON_STAR_VAMPIRE) || (r_idx == MON_SWALLOW) || (r_idx == MON_HAWK);
         is_match |= (r_idx == MON_LION) || (r_idx == MON_BUFFALO) || (r_idx == MON_FIGHTER) || (r_idx == MON_GOLDEN_EAGLE);
+        is_match |= (r_idx == MON_SHALLOW_PUDDLE) || (r_idx == MON_DEEP_PUDDLE) || (r_idx == MON_SKY_WHALE);
         break;
     default:
         break;

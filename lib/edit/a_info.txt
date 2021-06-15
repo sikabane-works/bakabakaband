@@ -4461,10 +4461,30 @@ F:INSTA_ART | LITE_3 | FULL_NAME | CURSED | HEAVY_CURSE | TY_CURSE | NASTY
 D:それには偉大なる兄貴の怨念が籠っている。
 D:「この先の橋は、メガトンコインを持っていると、落っこちてしまいます。だから売りに戻る必要があったんですね」
 
+N:267:『ドラゴンころし』
+E:'Dragon slayer'
+I:23:25:0
+W:30:100:500:100000
+F:IMPACT
+P:0:8d8:0:15:10
+D:それは剣というにはあまりにも大きすぎた。
+D:大きく、分厚く、重く、そして大雑把すぎた。
+D:それはまさに鉄塊だった
+
+N:268:『アラララング』
+E:'Alalarang'
+I:23:20:-2
+W:30:1:50:3500
+P:0:8d4:-10:-10:-15
+F:DEX | HIDE_TYPE | BLOWS | HEAVY_SPELL | AGGRAVATE | IM_COLD
+F:SHOW_MODS | SPEED | CURSED | HEAVY_CURSE | TY_CURSE
+F:RANDOM_CURSE0 | RANDOM_CURSE2 | WARNING
+D:$Ala, ala, ala.
+D:あら～あらあら。
+
 # N: serial number : item name
 # I: tval : sval : pval
 # W: depth : rarity : weight : cost
 # P: base armor class : base damage : plus to-hit : plus to-dam : plus
 # to-ac
 # F: flag | flag |etc
-

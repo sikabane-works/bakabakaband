@@ -68,7 +68,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
     grid_type *g_ptr = &floor_ptr->grid_array[y][x];
     feature_type *f_ptr = &f_info[g_ptr->feat];
 
-    bool obvious = FALSE;
+    bool obvious = false;
     bool known = player_has_los_bold(caster_ptr, y, x);
 
     who = who ? who : 0;
@@ -125,7 +125,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
 
             /* Observe */
             if (g_ptr->info & (CAVE_MARK))
-                obvious = TRUE;
+                obvious = true;
         }
     }
 
@@ -169,14 +169,14 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
         if (is_hidden_door(caster_ptr, g_ptr)) {
             disclose_grid(caster_ptr, y, x);
             if (known) {
-                obvious = TRUE;
+                obvious = true;
             }
         }
 
         if (is_trap(caster_ptr, g_ptr->feat)) {
             if (known) {
                 msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
-                obvious = TRUE;
+                obvious = true;
             }
 
             cave_alter_feat(caster_ptr, y, x, FF_DISARM);
@@ -187,7 +187,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
             cave_alter_feat(caster_ptr, y, x, FF_DISARM);
             if (known && (old_feat != g_ptr->feat)) {
                 msg_print(_("カチッと音がした！", "Click!"));
-                obvious = TRUE;
+                obvious = true;
             }
         }
 
@@ -196,14 +196,14 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
 
         g_ptr->info &= ~(CAVE_UNSAFE);
         lite_spot(caster_ptr, y, x);
-        obvious = TRUE;
+        obvious = true;
         break;
     }
     case GF_KILL_DOOR: {
         if (is_trap(caster_ptr, g_ptr->feat) || has_flag(f_ptr->flags, FF_DOOR)) {
             if (known) {
                 msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
-                obvious = TRUE;
+                obvious = true;
             }
 
             cave_alter_feat(caster_ptr, y, x, FF_TUNNEL);
@@ -214,7 +214,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
 
         g_ptr->info &= ~(CAVE_UNSAFE);
         lite_spot(caster_ptr, y, x);
-        obvious = TRUE;
+        obvious = true;
         break;
     }
     case GF_JAM_DOOR: {
@@ -234,7 +234,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
             break;
 
         msg_format(_("%sに何かがつっかえて開かなくなった。", "The %s seems stuck."), mimic_f_ptr->name.c_str());
-        obvious = TRUE;
+        obvious = true;
         break;
     }
     case GF_KILL_WALL: {
@@ -243,7 +243,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
 
         if (known && (g_ptr->info & (CAVE_MARK))) {
             msg_format(_("%sが溶けて泥になった！", "The %s turns into mud!"), f_info[get_feat_mimic(g_ptr)].name.c_str());
-            obvious = TRUE;
+            obvious = true;
         }
 
         cave_alter_feat(caster_ptr, y, x, FF_HURT_ROCK);
@@ -257,7 +257,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
             break;
         cave_set_feat(caster_ptr, y, x, feat_door[DOOR_DOOR].closed);
         if (g_ptr->info & (CAVE_MARK))
-            obvious = TRUE;
+            obvious = true;
         break;
     }
     case GF_MAKE_TRAP: {
@@ -271,7 +271,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
             break;
         cave_set_feat(caster_ptr, y, x, feat_tree);
         if (g_ptr->info & (CAVE_MARK))
-            obvious = TRUE;
+            obvious = true;
         break;
     }
     case GF_MAKE_RUNE_PROTECTION: {
@@ -328,13 +328,13 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
         update_local_illumination(caster_ptr, y, x);
 
         if (player_can_see_bold(caster_ptr, y, x))
-            obvious = TRUE;
+            obvious = true;
         if (g_ptr->m_idx)
-            update_monster(caster_ptr, g_ptr->m_idx, FALSE);
+            update_monster(caster_ptr, g_ptr->m_idx, false);
 
         if (caster_ptr->special_defense & NINJA_S_STEALTH) {
             if (player_bold(caster_ptr, y, x))
-                set_superstealth(caster_ptr, FALSE);
+                set_superstealth(caster_ptr, false);
         }
 
         break;
@@ -356,7 +356,7 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
 
                 grid_type *cc_ptr = &floor_ptr->grid_array[by][bx];
                 if (has_flag(f_info[get_feat_mimic(cc_ptr)].flags, FF_GLOW)) {
-                    do_dark = FALSE;
+                    do_dark = false;
                     break;
                 }
             }
@@ -379,9 +379,9 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
         update_local_illumination(caster_ptr, y, x);
 
         if (player_can_see_bold(caster_ptr, y, x))
-            obvious = TRUE;
+            obvious = true;
         if (g_ptr->m_idx)
-            update_monster(caster_ptr, g_ptr->m_idx, FALSE);
+            update_monster(caster_ptr, g_ptr->m_idx, false);
 
         break;
     }

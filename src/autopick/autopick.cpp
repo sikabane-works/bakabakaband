@@ -110,7 +110,7 @@ void autopick_pickup_items(player_type *player_ptr, grid_type *g_ptr)
             continue;
         }
 
-        disturb(player_ptr, FALSE, FALSE);
+        disturb(player_ptr, false, false);
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, 0);
 
