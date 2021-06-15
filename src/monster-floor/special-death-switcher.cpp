@@ -103,7 +103,6 @@ static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md
     object_type forge;
     object_type *q_ptr = &forge;
     q_ptr->prep(player_ptr, lookup_kind(TV_POTION, SV_POTION_CURE_CRITICAL));
-    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -112,8 +111,18 @@ static void on_dead_misumi(player_type *player_ptr, monster_death_type *md_ptr)
     object_type forge;
     object_type *q_ptr = &forge;
     q_ptr->prep(player_ptr, lookup_kind(TV_FOOD, SV_FOOD_SEED_FEA));
-    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
+static void on_dead_doneld(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    for (int i = 0; i < 10; i++) {
+        q_ptr->prep(player_ptr, lookup_kind(TV_FOOD, SV_FOOR_HAMBURGER));
+        q_ptr->number = damroll(10, 10);
+        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+    }
 }
 
 static void on_dead_bloodletter(player_type *player_ptr, monster_death_type *md_ptr)
@@ -542,6 +551,9 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
         return;
     case MON_MISUMI:
         on_dead_misumi(player_ptr, md_ptr);
+        return;
+    case MON_DONELD:
+        on_dead_doneld(player_ptr, md_ptr);
         return;
     case MON_PINK_HORROR:
         on_dead_pink_horror(player_ptr, md_ptr);
