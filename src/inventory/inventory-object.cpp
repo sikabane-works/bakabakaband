@@ -154,12 +154,12 @@ void drop_from_inventory(player_type *owner_ptr, INVENTORY_IDX item, ITEM_NUMBER
  */
 void combine_pack(player_type *owner_ptr)
 {
-    bool flag = FALSE;
-    bool is_first_combination = TRUE;
-    bool combined = TRUE;
+    bool flag = false;
+    bool is_first_combination = true;
+    bool combined = true;
     while (is_first_combination || combined) {
-        is_first_combination = FALSE;
-        combined = FALSE;
+        is_first_combination = false;
+        combined = false;
 
         for (int i = INVEN_PACK; i > 0; i--) {
             object_type *o_ptr;
@@ -183,7 +183,7 @@ void combine_pack(player_type *owner_ptr)
                     continue;
 
                 if (o_ptr->number + j_ptr->number <= max_num) {
-                    flag = TRUE;
+                    flag = true;
                     object_absorb(j_ptr, o_ptr);
                     owner_ptr->inven_cnt--;
                     int k;
@@ -208,7 +208,7 @@ void combine_pack(player_type *owner_ptr)
                 }
 
                 owner_ptr->window_flags |= (PW_INVEN);
-                combined = TRUE;
+                combined = true;
                 break;
             }
         }
@@ -232,7 +232,7 @@ void reorder_pack(player_type *owner_ptr)
     object_type forge;
     object_type *q_ptr;
     object_type *o_ptr;
-    bool flag = FALSE;
+    bool flag = false;
 
     for (i = 0; i < INVEN_PACK; i++) {
         if ((i == INVEN_PACK) && (owner_ptr->inven_cnt == INVEN_PACK))
@@ -251,7 +251,7 @@ void reorder_pack(player_type *owner_ptr)
         if (j >= i)
             continue;
 
-        flag = TRUE;
+        flag = true;
         q_ptr = &forge;
         q_ptr->copy_from(&owner_ptr->inventory_list[i]);
         for (k = i; k > j; k--) {
@@ -369,7 +369,7 @@ bool check_store_item_to_inventory(player_type *player_ptr, object_type *o_ptr)
     (void)player_ptr;
 
     if (player_ptr->inven_cnt < INVEN_PACK)
-        return TRUE;
+        return true;
 
     for (int j = 0; j < INVEN_PACK; j++) {
         object_type *j_ptr = &player_ptr->inventory_list[j];
@@ -377,10 +377,10 @@ bool check_store_item_to_inventory(player_type *player_ptr, object_type *o_ptr)
             continue;
 
         if (object_similar(j_ptr, o_ptr))
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 /*!

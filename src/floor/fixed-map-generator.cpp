@@ -110,17 +110,17 @@ static void parse_qtw_D(player_type *player_ptr, qtwg_type *qtwg_ptr, char *s)
         if (random & RANDOM_MONSTER) {
             floor_ptr->monster_level = floor_ptr->base_level + monster_index;
 
-            place_monster(player_ptr, *qtwg_ptr->y, *qtwg_ptr->x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
+            place_monster(player_ptr, *qtwg_ptr->y, *qtwg_ptr->x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_NO_QUEST));
 
             floor_ptr->monster_level = floor_ptr->base_level;
         } else if (monster_index) {
             int old_cur_num, old_max_num;
-            bool clone = FALSE;
+            bool clone = false;
             BIT_FLAGS option = (PM_ALLOW_SLEEP | PM_NO_KAGE);
 
             if (monster_index < 0) {
                 monster_index = -monster_index;
-                clone = TRUE;
+                clone = true;
             }
 
             old_cur_num = r_info[monster_index].cur_num;
@@ -201,16 +201,16 @@ static void parse_qtw_D(player_type *player_ptr, qtwg_type *qtwg_ptr, char *s)
 static bool parse_qtw_QQ(quest_type *q_ptr, char **zz, int num)
 {
     if (zz[1][0] != 'Q')
-        return FALSE;
+        return false;
 
     if ((init_flags & INIT_ASSIGN) == 0)
-        return TRUE;
+        return true;
 
     monster_race *r_ptr;
     artifact_type *a_ptr;
 
     if (num < 9)
-        return TRUE;
+        return true;
 
     q_ptr->type = (QUEST_TYPE)atoi(zz[2]);
     q_ptr->num_mon = (MONSTER_NUMBER)atoi(zz[3]);
@@ -230,7 +230,7 @@ static bool parse_qtw_QQ(quest_type *q_ptr, char **zz, int num)
 
     a_ptr = &a_info[q_ptr->k_idx];
     a_ptr->gen_flags.set(TRG::QUESTITEM);
-    return TRUE;
+    return true;
 }
 
 /*!
@@ -239,10 +239,10 @@ static bool parse_qtw_QQ(quest_type *q_ptr, char **zz, int num)
 static bool parse_qtw_QR(quest_type *q_ptr, char **zz, int num)
 {
     if (zz[1][0] != 'R')
-        return FALSE;
+        return false;
 
     if ((init_flags & INIT_ASSIGN) == 0)
-        return TRUE;
+        return true;
 
     int count = 0;
     ARTIFACT_IDX idx, reward_idx = 0;
@@ -264,7 +264,7 @@ static bool parse_qtw_QR(quest_type *q_ptr, char **zz, int num)
         q_ptr->type = QUEST_TYPE_KILL_ALL;
     }
 
-    return TRUE;
+    return true;
 }
 
 /*!
@@ -321,13 +321,13 @@ static int parse_qtw_Q(qtwg_type *qtwg_ptr, char **zz)
 static bool parse_qtw_P(player_type *player_ptr, qtwg_type *qtwg_ptr, char **zz)
 {
     if (qtwg_ptr->buf[0] != 'P')
-        return FALSE;
+        return false;
 
     if ((init_flags & INIT_CREATE_DUNGEON) == 0)
-        return TRUE;
+        return true;
 
     if (tokenize(qtwg_ptr->buf + 2, 2, zz, 0) != 2)
-        return TRUE;
+        return true;
 
     int panels_y = (*qtwg_ptr->y / SCREEN_HGT);
     if (*qtwg_ptr->y % SCREEN_HGT)
@@ -348,7 +348,7 @@ static bool parse_qtw_P(player_type *player_ptr, qtwg_type *qtwg_ptr, char **zz)
         player_ptr->y = py;
         player_ptr->x = px;
         delete_monster(player_ptr, player_ptr->y, player_ptr->x);
-        return TRUE;
+        return true;
     }
 
     if (!player_ptr->oldpx && !player_ptr->oldpy) {
@@ -356,16 +356,16 @@ static bool parse_qtw_P(player_type *player_ptr, qtwg_type *qtwg_ptr, char **zz)
         player_ptr->oldpx = atoi(zz[1]);
     }
 
-    return TRUE;
+    return true;
 }
 
 static bool parse_qtw_M(qtwg_type *qtwg_ptr, char **zz)
 {
     if (qtwg_ptr->buf[0] != 'M')
-        return FALSE;
+        return false;
 
     if ((tokenize(qtwg_ptr->buf + 2, 2, zz, 0) == 2) == 0)
-        return TRUE;
+        return true;
 
     if (zz[0][0] == 'T') {
         max_towns = (TOWN_IDX)atoi(zz[1]);
@@ -397,7 +397,7 @@ static bool parse_qtw_M(qtwg_type *qtwg_ptr, char **zz)
             current_world_ptr->max_wild_y = (POSITION)atoi(zz[1]);
     }
 
-    return TRUE;
+    return true;
 }
 
 /*!

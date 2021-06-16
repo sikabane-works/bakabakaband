@@ -10,7 +10,7 @@ typedef struct tval_desc {
     concptr desc; /*!< 大項目名 */
 } tval_desc;
 
-#define MAX_TVAL_DESCRIPTIONS 52
+#define MAX_TVAL_DESCRIPTIONS 53
 #define MAX_DEBUG_COMMAND_SYMBOLS 63
 
 extern tval_desc tvals[MAX_TVAL_DESCRIPTIONS];

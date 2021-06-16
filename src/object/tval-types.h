@@ -69,6 +69,7 @@ enum tval_type {
     TV_MUSIC_BOOK = 105,
     TV_HISSATSU_BOOK = 106,
     TV_HEX_BOOK = 107,
+    TV_TRAP = 108,
     TV_GOLD = 127, /* Gold can only be picked up by players */
 };
 

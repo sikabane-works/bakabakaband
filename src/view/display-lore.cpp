@@ -131,7 +131,7 @@ void output_monster_spoiler(MONRACE_IDX r_idx, void (*roff_func)(TERM_COLOR attr
 static bool display_kill_unique(lore_type *lore_ptr)
 {
     if ((lore_ptr->flags1 & RF1_UNIQUE) == 0)
-        return FALSE;
+        return false;
 
     bool dead = (lore_ptr->r_ptr->max_num == 0);
     if (lore_ptr->r_ptr->r_deaths) {
@@ -155,7 +155,7 @@ static bool display_kill_unique(lore_type *lore_ptr)
         hooked_roff("\n");
     }
 
-    return TRUE;
+    return true;
 }
 
 static void display_killed(lore_type *lore_ptr)
@@ -244,10 +244,10 @@ void display_kill_numbers(lore_type *lore_ptr)
  */
 bool display_where_to_appear(lore_type *lore_ptr)
 {
-    lore_ptr->old = FALSE;
+    lore_ptr->old = false;
     if (lore_ptr->r_ptr->level == 0) {
         hooked_roff(format(_("%^sは町に住み", "%^s lives in the town"), Who::who(lore_ptr->msex)));
-        lore_ptr->old = TRUE;
+        lore_ptr->old = true;
     } else if (lore_ptr->r_ptr->r_tkills || lore_ptr->know_everything) {
         if (depth_in_feet) {
             hooked_roff(format(
@@ -256,22 +256,22 @@ bool display_where_to_appear(lore_type *lore_ptr)
             hooked_roff(format(_("%^sは通常地下 %d 階で出現し", "%^s is normally found on dungeon level %d"), Who::who(lore_ptr->msex), lore_ptr->r_ptr->level));
         }
 
-        lore_ptr->old = TRUE;
+        lore_ptr->old = true;
     }
 
     if (lore_ptr->r_idx == MON_CHAMELEON) {
         hooked_roff(_("、他のモンスターに化ける。", "and can take the shape of other monster."));
-        return FALSE;
+        return false;
     }
 
     if (lore_ptr->old) {
         hooked_roff(_("、", ", and "));
     } else {
         hooked_roff(format(_("%^sは", "%^s "), Who::who(lore_ptr->msex)));
-        lore_ptr->old = TRUE;
+        lore_ptr->old = true;
     }
 
-    return TRUE;
+    return true;
 }
 
 void display_monster_move(lore_type *lore_ptr)
@@ -340,7 +340,7 @@ void display_monster_never_move(lore_type *lore_ptr)
         hooked_roff(_("、しかし", ", but "));
     } else {
         hooked_roff(format(_("%^sは", "%^s "), Who::who(lore_ptr->msex)));
-        lore_ptr->old = TRUE;
+        lore_ptr->old = true;
     }
 
     hooked_roff(_("侵入者を追跡しない", "does not deign to chase intruders"));
@@ -405,6 +405,24 @@ void display_monster_alignment(lore_type *lore_ptr)
 
     if (lore_ptr->flags3 & RF3_GOOD)
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
+
+    if (lore_ptr->flags8 & RF8_WARRIOR)
+        hook_c_roff(TERM_ORANGE, _("戦士の", " warrior"));
+
+    if (lore_ptr->flags8 & RF8_ROGUE)
+        hook_c_roff(TERM_L_DARK, _("盗賊の", " rogue"));
+
+    if (lore_ptr->flags8 & RF8_PRIEST)
+        hook_c_roff(TERM_WHITE, _("プリーストの", " priest"));
+
+    if (lore_ptr->flags8 & RF8_MAGE)
+        hook_c_roff(TERM_RED, _("メイジの", " mage"));
+
+    if (lore_ptr->flags8 & RF8_PALADIN)
+        hook_c_roff(TERM_YELLOW, _("パラディンの", " paladin"));
+
+    if (lore_ptr->flags8 & RF8_RANGER)
+        hook_c_roff(TERM_GREEN, _("レンジャーの", " ranger"));
 
     if (lore_ptr->flags8 & RF8_NINJA)
         hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));

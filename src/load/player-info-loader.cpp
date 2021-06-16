@@ -16,6 +16,7 @@
 #include "player/attack-defense-types.h"
 #include "player/player-skill.h"
 #include "spell-realm/spells-song.h"
+#include "system/angband-version.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "world/world.h"
@@ -243,7 +244,7 @@ static void rd_phase_out(player_type *creature_ptr)
     creature_ptr->current_floor_ptr->inside_arena = (bool)tmp16s;
     rd_s16b(&creature_ptr->current_floor_ptr->inside_quest);
     if (h_older_than(0, 3, 5))
-        creature_ptr->phase_out = FALSE;
+        creature_ptr->phase_out = false;
     else {
         rd_s16b(&tmp16s);
         creature_ptr->phase_out = (bool)tmp16s;
@@ -493,6 +494,17 @@ static void rd_player_status(player_type *creature_ptr)
     rd_tsuyoshi(creature_ptr);
     rd_timed_effects(creature_ptr);
     creature_ptr->mutant_regenerate_mod = calc_mutant_regenerate_mod(creature_ptr);
+
+    if (!loading_savefile_version_is_older_than(6)) {
+        s32b num;
+        rd_s32b(&num);
+        for (s32b i = 0; i < num * 2; i += 2) {
+            s32b id, count;
+            rd_s32b(&id);
+            rd_s32b(&count);
+            creature_ptr->incident[id] = count; 
+        }
+    }
 }
 
 void rd_player_info(player_type *creature_ptr)

@@ -50,6 +50,8 @@ bool vault_aux_dragon(player_type *player_ptr, MONRACE_IDX r_idx);
 bool vault_aux_demon(player_type *player_ptr, MONRACE_IDX r_idx);
 bool vault_aux_cthulhu(player_type *player_ptr, MONRACE_IDX r_idx);
 bool vault_aux_dark_elf(player_type *player_ptr, MONRACE_IDX r_idx);
+bool vault_aux_gay(player_type *player_ptr, MONRACE_IDX r_idx);
+bool vault_aux_les(player_type *player_ptr, MONRACE_IDX r_idx);
 
 bool vault_monster_okay(player_type *player_ptr, MONRACE_IDX r_idx);
 

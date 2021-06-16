@@ -33,6 +33,7 @@
 #include "object/object-kind-hook.h"
 #include "spell/spell-types.h"
 #include "spell/summon-types.h"
+#include "sv-definition/sv-potion-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
@@ -82,7 +83,7 @@ static void on_dead_pink_horror(player_type *player_ptr, monster_death_type *md_
     if (player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out)
         return;
 
-    bool notice = FALSE;
+    bool notice = false;
     const int blue_horrors = 2;
     for (int i = 0; i < blue_horrors; i++) {
         POSITION wy = md_ptr->md_y;
@@ -90,11 +91,19 @@ static void on_dead_pink_horror(player_type *player_ptr, monster_death_type *md_
         bool pet = is_pet(md_ptr->m_ptr);
         BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
         if (summon_specific(player_ptr, (pet ? -1 : md_ptr->m_idx), wy, wx, 100, SUMMON_BLUE_HORROR, mode) && player_can_see_bold(player_ptr, wy, wx))
-            notice = TRUE;
+            notice = true;
     }
 
     if (notice)
         msg_print(_("ピンク・ホラーは分裂した！", "The Pink horror divides!"));
+}
+
+static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(player_ptr, lookup_kind(TV_POTION, SV_POTION_CURE_CRITICAL));
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
 static void on_dead_misumi(player_type *player_ptr, monster_death_type *md_ptr)
@@ -102,8 +111,18 @@ static void on_dead_misumi(player_type *player_ptr, monster_death_type *md_ptr)
     object_type forge;
     object_type *q_ptr = &forge;
     q_ptr->prep(player_ptr, lookup_kind(TV_FOOD, SV_FOOD_SEED_FEA));
-    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
+static void on_dead_doneld(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    for (int i = 0; i < 10; i++) {
+        q_ptr->prep(player_ptr, lookup_kind(TV_FOOD, SV_FOOR_HAMBURGER));
+        q_ptr->number = damroll(10, 10);
+        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+    }
 }
 
 static void on_dead_bloodletter(player_type *player_ptr, monster_death_type *md_ptr)
@@ -156,6 +175,12 @@ static void on_dead_ninja(player_type *player_ptr, monster_death_type *md_ptr)
     }
 
     (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, GF_MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+}
+
+static void on_dead_earth_destroyer(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    msg_print(_("ワーオ！22世紀の文明の叡知が今炸裂した！", "Wow! The wisdom of 22nd century civilization has now exploded!"));
+    (void)project(player_ptr, md_ptr->m_idx, 10, md_ptr->md_y, md_ptr->md_x, 10000, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_unmaker(player_type *player_ptr, monster_death_type *md_ptr)
@@ -265,7 +290,7 @@ static void on_dead_aqua_illusion(player_type *player_ptr, monster_death_type *m
     if (player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out)
         return;
 
-    bool notice = FALSE;
+    bool notice = false;
     const int popped_bubbles = 4;
     for (int i = 0; i < popped_bubbles; i++) {
         POSITION wy = md_ptr->md_y;
@@ -274,7 +299,7 @@ static void on_dead_aqua_illusion(player_type *player_ptr, monster_death_type *m
         BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
         MONSTER_IDX smaller_bubble = md_ptr->m_ptr->r_idx - 1;
         if (summon_named_creature(player_ptr, (pet ? -1 : md_ptr->m_idx), wy, wx, smaller_bubble, mode) && player_can_see_bold(player_ptr, wy, wx))
-            notice = TRUE;
+            notice = true;
     }
 
     if (notice) {
@@ -318,7 +343,7 @@ static void on_dead_dragon_centipede(player_type *player_ptr, monster_death_type
     if (player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out)
         return;
 
-    bool notice = FALSE;
+    bool notice = false;
     const int reproduced_centipede = 2;
     for (int i = 0; i < reproduced_centipede; i++) {
         POSITION wy = md_ptr->md_y;
@@ -327,7 +352,7 @@ static void on_dead_dragon_centipede(player_type *player_ptr, monster_death_type
         BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
         MONSTER_IDX smaller_centipede = md_ptr->m_ptr->r_idx - 1;
         if (summon_named_creature(player_ptr, (pet ? -1 : md_ptr->m_idx), wy, wx, smaller_centipede, mode) && player_can_see_bold(player_ptr, wy, wx))
-            notice = TRUE;
+            notice = true;
     }
 
     GAME_TEXT m_name[MAX_NLEN];
@@ -518,8 +543,17 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
     }
 
     switch (md_ptr->m_ptr->r_idx) {
+    case MON_EARTH_DESTROYER:
+        on_dead_earth_destroyer(player_ptr, md_ptr);
+        break;
+    case MON_BOTTLE_GNOME:
+        on_dead_bottle_gnome(player_ptr, md_ptr);
+        return;
     case MON_MISUMI:
         on_dead_misumi(player_ptr, md_ptr);
+        return;
+    case MON_DONELD:
+        on_dead_doneld(player_ptr, md_ptr);
         return;
     case MON_PINK_HORROR:
         on_dead_pink_horror(player_ptr, md_ptr);
@@ -582,8 +616,10 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
         on_dead_big_raven(player_ptr, md_ptr);
         return;
     case MON_YENDOR_WIZARD_1:
-    case MON_YENDOR_WIZARD_2:
         on_dead_random_artifact(player_ptr, md_ptr, kind_is_amulet);
+        return;
+    case MON_YENDOR_WIZARD_2:
+        drop_specific_item_on_dead(player_ptr, md_ptr, kind_is_amulet);
         return;
     case MON_MANIMANI:
         on_dead_manimani(player_ptr, md_ptr);
