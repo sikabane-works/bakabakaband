@@ -14,6 +14,10 @@
 #define MAX_SKILLS 10
 #define MAX_MANE 16
 
+enum class INCIDENT {
+    WALK = 0,
+};
+
 enum class RF_ABILITY;
 
 typedef struct floor_type floor_type;
@@ -48,7 +52,7 @@ typedef struct player_type {
     s16b prestige{}; /* Prestige */
     s32b death_count{}; /* Death count */
 
-    std::map<s32b, s32b> incident{}; /*!< これまでに行った出来事カウント */
+    std::map<INCIDENT, s32b> incident{}; /*!< これまでに行った出来事カウント */
 
     PRICE au{}; /* Current Gold */
 

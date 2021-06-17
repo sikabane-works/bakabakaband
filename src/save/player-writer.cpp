@@ -206,9 +206,9 @@ void wr_player(player_type *creature_ptr)
         wr_s16b(creature_ptr->vir_types[i]);
 
     wr_s32b(s32b(creature_ptr->incident.size()));
-    std::map<s32b, s32b>::iterator it;
+    std::map<INCIDENT, s32b>::iterator it;
     for (it = creature_ptr->incident.begin(); it != creature_ptr->incident.end(); it++) {
-        wr_s32b(it->first);
+        wr_s32b((s32b)it->first);
         wr_s32b(it->second);
     }
 
