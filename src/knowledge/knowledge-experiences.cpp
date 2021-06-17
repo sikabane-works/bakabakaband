@@ -154,7 +154,7 @@ void do_cmd_knowledge_spell_exp(player_type *creature_ptr)
 void do_cmd_knowledge_skill_exp(player_type *creature_ptr)
 {
     char skill_name[SKILL_MAX][20] = { _("マーシャルアーツ", "Martial Arts    "), _("二刀流          ", "Dual Wielding   "),
-        _("乗馬            ", "Riding          "), _("盾              ", "Shield          ") };
+        _("乗馬            ", "Riding          "), _("盾              ", "Shield          "), _("悪食            ", "Gross Eating    ") };
 
     FILE *fff = NULL;
     char file_name[FILE_NAME_SIZE];
