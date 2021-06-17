@@ -410,4 +410,9 @@ const std::unordered_map<std::string_view, race_flags_resistance> r_info_flagsr 
 	{ "RES_GRAV", RFR_RES_GRAV },
 	{ "RES_ALL", RFR_RES_ALL },
 	{ "RES_TELE", RFR_RES_TELE },
+    { "RES_ACID", RFR_RES_ACID },
+    { "RES_ELEC", RFR_RES_ELEC },
+    { "RES_FIRE", RFR_RES_FIRE },
+    { "RES_COLD", RFR_RES_COLD },
+    { "RES_POIS", RFR_RES_POIS },
 };

@@ -203,27 +203,27 @@ void display_monster_weakness(lore_type *lore_ptr)
 
 void display_monster_concrete_resistances(lore_type *lore_ptr)
 {
-    if (lore_ptr->flagsr & RFR_IM_ACID) {
+    if (lore_ptr->flagsr & RFR_RES_ACID || lore_ptr->flagsr & RFR_IM_ACID) {
         lore_ptr->vp[lore_ptr->vn] = _("酸", "acid");
         lore_ptr->color[lore_ptr->vn++] = TERM_GREEN;
     }
 
-    if (lore_ptr->flagsr & RFR_IM_ELEC) {
+    if (lore_ptr->flagsr & RFR_RES_ELEC || lore_ptr->flagsr & RFR_IM_ACID) {
         lore_ptr->vp[lore_ptr->vn] = _("稲妻", "lightning");
         lore_ptr->color[lore_ptr->vn++] = TERM_BLUE;
     }
 
-    if (lore_ptr->flagsr & RFR_IM_FIRE) {
+    if (lore_ptr->flagsr & RFR_RES_FIRE || lore_ptr->flagsr & RFR_IM_ACID) {
         lore_ptr->vp[lore_ptr->vn] = _("炎", "fire");
         lore_ptr->color[lore_ptr->vn++] = TERM_RED;
     }
 
-    if (lore_ptr->flagsr & RFR_IM_COLD) {
+    if (lore_ptr->flagsr & RFR_RES_COLD || lore_ptr->flagsr & RFR_IM_COLD) {
         lore_ptr->vp[lore_ptr->vn] = _("冷気", "cold");
         lore_ptr->color[lore_ptr->vn++] = TERM_L_WHITE;
     }
 
-    if (lore_ptr->flagsr & RFR_IM_POIS) {
+    if (lore_ptr->flagsr & RFR_RES_POIS || lore_ptr->flagsr & RFR_IM_POIS) {
         lore_ptr->vp[lore_ptr->vn] = _("毒", "poison");
         lore_ptr->color[lore_ptr->vn++] = TERM_L_GREEN;
     }
