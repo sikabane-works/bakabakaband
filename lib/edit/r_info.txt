@@ -27736,7 +27736,7 @@ N:1448:虎眼流入門者
 E:Novice of Kogan-ryu
 G:p:U
 I:110:9d6:35:10:4
-W:3:3:0:12:0:0
+W:3:3:0:12:1000:1456
 B:SLASH:HURT:1d20
 F:MALE | HAS_LITE_1 |
 F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
@@ -27856,4 +27856,18 @@ S:1_IN_5 | BLINK
 D:天使を名乗り、自身の力で身を隠しているらしいが、
 D:実はそう思い込んでいるただの精神異常者のホモだ。
 D:そして何故か糞尿レストランの店員でもある。これもう分かんねえな。
+
+N:1456:虎眼流門弟
+E:Disciple of Kogan-ryu
+G:p:U
+I:112:39d11:35:10:4
+W:26:4:0:400:0:0
+B:SLASH:SUPERHURT:3d20
+B:SLASH:HURT:4d6
+F:MALE | HAS_LITE_1 |
+F:DROP_1D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+D:虎眼流の常軌を逸した鍛錬と因習を受け入れ、
+D:その真髄を理解しつつある門弟だ。
+
 
