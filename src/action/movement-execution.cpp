@@ -344,5 +344,11 @@ void exe_movement(player_type *creature_ptr, DIRECTION dir, bool do_pickup, bool
     if (break_trap)
         mpe_mode |= MPE_BREAK_TRAP;
 
+    if (creature_ptr->incident.count(INCIDENT::WALK) == 0) {
+        creature_ptr->incident[INCIDENT::WALK] = 0;
+    }
+    creature_ptr->incident[INCIDENT::WALK]++;
+
+
     (void)move_player_effect(creature_ptr, y, x, mpe_mode);
 }
