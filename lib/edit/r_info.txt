@@ -27870,4 +27870,46 @@ F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
 D:虎眼流の常軌を逸した鍛錬と因習を受け入れ、
 D:その真髄を理解しつつある門弟だ。
 
+N:1457:古ウルクの賢者
+E:Savant of Ancient Uruk
+G:o:v
+I:120:30d48:30:90:10
+W:55:1:0:11000:0:0
+B:SLASH:HURT:8d6
+B:SLASH:HURT:8d6
+B:HIT:UN_BONUS:10d12
+B:TOUCH:UN_POWER
+R:1439:1d2
+R:1436:3d4
+F:MALE | 
+F:DROP_3D2 | DROP_GOOD | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:IM_FIRE | RES_DARK | RES_LITE | IM_COLD | IM_ELEC | IM_POIS | RES_PLAS | RES_CHAO
+F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | SELF_LITE_2
+S:1_IN_3
+S:BO_MANA | BA_DARK | BA_LITE | HEAL | HASTE | S_KIN | HOLD | SCARE | MIND_BLAST | BRAIN_SMASH | FORGET
+D:古ウルクの中でも冥王やウトゥムノの諸神から直に学び、
+D:アルダでエルダールが目覚めるより以前に闇の世界で古い文明を興した祭司にして学者たちだ。
+D:その史蹟は西側の物語には決して語られず「オーク」の生まれは
+D:常に惨めでおぞましいものとばかり説かれている。
 
+# N: serial number : monster name
+# G: symbol : color
+# I: speed : hit points : vision : armor class : alertness
+# W: depth : rarity : 0 : exp : next_exp : next_mon
+# B: attack method : attack effect : damage
+# S: spell frequency |
+# S: spell type | spell type | etc
+# F: flag | flag | etc
+# D: Description
+
+# 'N' indicates the beginning of an entry. The serial number must
+# increase for each new item. Entry 0 is used for the player.
+
+# 'G' is for graphics - symbol and color. There are 16 colors, as
+# follows:
+
+# D - Black        w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Brown
+# d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
+# R - Light Red    G - Light Green    B - Light Blue    U - Light Brown
