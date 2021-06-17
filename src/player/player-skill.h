@@ -9,7 +9,8 @@ enum skill_idx {
     SKILL_TWO_WEAPON = 1,
     SKILL_RIDING = 2,
     SKILL_SHIELD = 3,
-    SKILL_MAX = 4,
+    GINOU_GROSS_EATING = 4,
+    SKILL_MAX = 5,
 };
 
 /* Proficiency level */
