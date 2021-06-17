@@ -50,17 +50,18 @@
  */
 bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, MONSTER_IDX m_idx)
 {
+    const int earthquake_max = 80;
     floor_type *floor_ptr = caster_ptr->current_floor_ptr;
     if ((floor_ptr->inside_quest && is_fixed_quest_idx(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
         return false;
     }
+    
+    if (r > 75)
+        r = 75;
 
-    if (r > 12)
-        r = 12;
-
-    bool map[32][32];
-    for (POSITION y = 0; y < 32; y++) {
-        for (POSITION x = 0; x < 32; x++) {
+    bool map[earthquake_max * 2][earthquake_max * 2];
+    for (POSITION y = 0; y < earthquake_max * 2; y++) {
+        for (POSITION x = 0; x < earthquake_max * 2; x++) {
             map[y][x] = false;
         }
     }
@@ -88,7 +89,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
             if (randint0(100) < 85)
                 continue;
 
-            map[16 + yy - cy][16 + xx - cx] = true;
+            map[earthquake_max + yy - cy][earthquake_max + xx - cx] = true;
             if (player_bold(caster_ptr, yy, xx))
                 hurt = true;
         }
@@ -103,7 +104,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
             if (!is_cave_empty_bold(caster_ptr, y, x))
                 continue;
 
-            if (map[16 + y - cy][16 + x - cx])
+            if (map[earthquake_max + y - cy][earthquake_max + x - cx])
                 continue;
 
             if (floor_ptr->grid_array[y][x].m_idx)
@@ -159,7 +160,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
             (void)move_player_effect(caster_ptr, sy, sx, MPE_DONT_PICKUP);
         }
 
-        map[16 + caster_ptr->y - cy][16 + caster_ptr->x - cx] = false;
+        map[earthquake_max + caster_ptr->y - cy][earthquake_max + caster_ptr->x - cx] = false;
         if (damage) {
             concptr killer;
 
@@ -180,7 +181,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
         for (POSITION dx = -r; dx <= r; dx++) {
             POSITION yy = cy + dy;
             POSITION xx = cx + dx;
-            if (!map[16 + yy - cy][16 + xx - cx])
+            if (!map[earthquake_max + yy - cy][earthquake_max + xx - cx])
                 continue;
 
             grid_type *g_ptr;
@@ -219,7 +220,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
                     if (pattern_tile(floor_ptr, y, x))
                         continue;
 
-                    if (map[16 + y - cy][16 + x - cx])
+                    if (map[earthquake_max + y - cy][earthquake_max + x - cx])
                         continue;
 
                     if (floor_ptr->grid_array[y][x].m_idx)
@@ -281,7 +282,7 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
         for (POSITION dx = -r; dx <= r; dx++) {
             POSITION yy = cy + dy;
             POSITION xx = cx + dx;
-            if (!map[16 + yy - cy][16 + xx - cx])
+            if (!map[earthquake_max + yy - cy][earthquake_max + xx - cx])
                 continue;
 
             if (!cave_valid_bold(floor_ptr, yy, xx))
