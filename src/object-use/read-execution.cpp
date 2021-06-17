@@ -45,6 +45,7 @@
 #include "spell-kind/spells-sight.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-kind/spells-world.h"
+#include "spell-kind/earthquake.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
@@ -469,6 +470,11 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
         case SV_SCROLL_STAR_AMUSEMENT: {
             ident = true;
             amusement(creature_ptr, creature_ptr->y, creature_ptr->x, randint1(2) + 1, false);
+            break;
+        }
+        case SV_SCROLL_HUGE_EARTHQUAKE: {
+            ident = true;
+            earthquake(creature_ptr, creature_ptr->y, creature_ptr->x, randint1(20) + 50, 0);
             break;
         }
         }
