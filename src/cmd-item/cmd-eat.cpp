@@ -592,6 +592,11 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
         return;
     }
 
+    if (creature_ptr->incident.count(INCIDENT::EAT) == 0) {
+        creature_ptr->incident[INCIDENT::EAT] = 0;
+    }
+    creature_ptr->incident[INCIDENT::EAT]++;
+
     creature_ptr->update |= inventory_flags;
     vary_item(creature_ptr, item, -1);
 }

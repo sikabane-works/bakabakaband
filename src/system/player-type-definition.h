@@ -16,6 +16,7 @@
 
 enum class INCIDENT {
     WALK = 0,
+    EAT = 0,
 };
 
 enum class RF_ABILITY;
