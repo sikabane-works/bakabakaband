@@ -31,6 +31,7 @@
 #include "pet/pet-util.h"
 #include "player/player-status.h"
 #include "player/special-defense-types.h"
+#include "player-status/player-energy.h"
 #include "save/floor-writer.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -396,6 +397,32 @@ static void exe_leave_floor(player_type *creature_ptr, saved_floor_type *sf_ptr)
     prepare_change_floor_mode(creature_ptr, CFM_NO_RETURN);
     kill_saved_floor(creature_ptr, get_sf_ptr(creature_ptr->floor_id));
 }
+
+/*!
+ * @brief 任意のダンジョン及び階層に飛ぶ
+ * Go to any level
+ */
+void floor_warp(player_type *creature_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
+{
+    creature_ptr->dungeon_idx = dun_idx;
+    creature_ptr->current_floor_ptr->dun_level = depth;
+    prepare_change_floor_mode(creature_ptr, CFM_RAND_PLACE);
+    if (!is_in_dungeon(creature_ptr))
+        creature_ptr->dungeon_idx = 0;
+
+    creature_ptr->current_floor_ptr->inside_arena = false;
+    creature_ptr->wild_mode = false;
+    leave_quest_check(creature_ptr);
+    if (record_stair)
+        exe_write_diary(creature_ptr, DIARY_WIZ_TELE, 0, NULL);
+
+    creature_ptr->current_floor_ptr->inside_quest = 0;
+    PlayerEnergy(creature_ptr).reset_player_turn();
+    creature_ptr->energy_need = 0;
+    prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
+    creature_ptr->leaving = true;
+}
+
 
 /*!
  * @brief 現在のフロアを離れるに伴って行なわれる保存処理
