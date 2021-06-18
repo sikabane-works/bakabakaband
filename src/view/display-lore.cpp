@@ -128,36 +128,6 @@ void output_monster_spoiler(MONRACE_IDX r_idx, void (*roff_func)(TERM_COLOR attr
     process_monster_lore(&dummy, r_idx, MONSTER_LORE_DEBUG);
 }
 
-static bool display_kill_unique(lore_type *lore_ptr)
-{
-    if ((lore_ptr->flags1 & RF1_UNIQUE) == 0)
-        return false;
-
-    bool dead = (lore_ptr->r_ptr->max_num == 0);
-    if (lore_ptr->r_ptr->r_deaths) {
-        hooked_roff(format(_("%^sはあなたの先祖を %d 人葬っている", "%^s has slain %d of your ancestors"), Who::who(lore_ptr->msex), lore_ptr->r_ptr->r_deaths));
-
-        if (dead) {
-            hooked_roff(
-                _(format("が、すでに仇討ちは果たしている！"), format(", but you have avenged %s!  ", plural(lore_ptr->r_ptr->r_deaths, "him", "them"))));
-        } else {
-            hooked_roff(
-                _(format("のに、まだ仇討ちを果たしていない。"), format(", who %s unavenged.  ", plural(lore_ptr->r_ptr->r_deaths, "remains", "remain"))));
-        }
-
-        hooked_roff("\n");
-    } else {
-        if (dead)
-            hooked_roff(_("あなたはこの仇敵をすでに葬り去っている。", "You have slain this foe.  "));
-        else
-            hooked_roff(_("この仇敵はまだ生きている！", "This foe is still alive!  "));
-
-        hooked_roff("\n");
-    }
-
-    return true;
-}
-
 static void display_killed(lore_type *lore_ptr)
 {
     hooked_roff(_(format("このモンスターはあなたの先祖を %d 人葬っている", lore_ptr->r_ptr->r_deaths),
@@ -222,9 +192,6 @@ static void display_number_of_nazguls(lore_type *lore_ptr)
 void display_kill_numbers(lore_type *lore_ptr)
 {
     if ((lore_ptr->mode & 0x02) != 0)
-        return;
-
-    if (display_kill_unique(lore_ptr))
         return;
 
     if (lore_ptr->r_ptr->r_deaths == 0)
