@@ -26859,7 +26859,7 @@ N:1396:難題の予見者
 E:Thought-knot seer
 G:e:W
 I:115:30d40:60:80:1
-W:35:3:0:7000:0:0
+W:35:3:0:4000:0:0
 B:CRUSH:CONFUSE:5d10
 B:CRUSH:CONFUSE:5d10
 F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | WEIRD_MIND
@@ -27860,8 +27860,8 @@ D:そして何故か糞尿レストランの店員でもある。これもう分
 N:1456:虎眼流門弟
 E:Disciple of Kogan-ryu
 G:p:U
-I:112:39d11:35:10:4
-W:26:4:0:400:0:0
+I:112:39d11:35:50:4
+W:26:4:0:400:4000:1459
 B:SLASH:SUPERHURT:3d20
 B:SLASH:HURT:4d6
 F:MALE | HAS_LITE_1 |
@@ -27911,6 +27911,21 @@ S:BO_FIRE | BO_COLD | BO_ELEC | HOLD | MIND_BLAST | BRAIN_SMASH | FORGET
 D:「自然の理」について、多くの知見と真理を得る者たちは闇の子等の一統たる古きオログの側にもいた。
 D:彼らはしばしば古ウルクと友好と敵対を繰り返しながら確かに古くから歴史をなし、
 D:その血統は古ウルクともしばしば交じり合ったという。
+
+N:1459:虎眼流皆伝者
+E:Grand master of Kogan-ryu
+G:p:r
+I:112:39d40:35:90:4
+W:35:4:0:1200:0:0
+B:SLASH:SUPERHURT:11d4
+B:SLASH:SUPERHURT:11d4
+B:SLASH:HURT:9d6
+F:MALE | HAS_LITE_1 |
+F:DROP_2D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+D:「虎眼流を嘲笑うことなど不可能であった」
+D:虎眼流の真髄を体得することにより「術許し」を受け、
+D:道場の要職を得るまでに至った達人だ。
 
 # N: serial number : monster name
 # G: symbol : color
