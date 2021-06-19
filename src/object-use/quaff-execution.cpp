@@ -142,6 +142,11 @@ void exe_quaff_potion(player_type *creature_ptr, INVENTORY_IDX item)
     q_ptr->number = 1;
     vary_item(creature_ptr, item, -1);
     sound(SOUND_QUAFF);
+    if (creature_ptr->incident.count(INCIDENT::QUAFF) == 0) {
+        creature_ptr->incident[INCIDENT::QUAFF] = 0;
+    }
+    creature_ptr->incident[INCIDENT::QUAFF]++;
+
     bool ident = false;
     DEPTH lev = k_info[q_ptr->k_idx].level;
     if (q_ptr->tval == TV_POTION) {
