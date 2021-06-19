@@ -27893,6 +27893,25 @@ D:アルダでエルダールが目覚めるより以前に闇の世界で古い
 D:その史蹟は西側の物語には決して語られず「オーク」の生まれは
 D:常に惨めでおぞましいものとばかり説かれている。
 
+N:1458:古オログの牧者
+E:Pastor of Ancient Olog
+G:T:v
+I:120:40d120:30:130:15
+W:52:3:0:12500:0:0
+B:PUNCH:HURT:11d11
+B:PUNCH:HURT:11d11
+B:KICK:HURT:12d10
+B:KICK:HURT:12d10
+F:DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY | IM_FIRE | IM_COLD | IM_ELEC
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | RES_CHAO | POWERFUL
+F:GIANT | TROLL | MALE | RIDING
+S:1_IN_6
+S:BO_FIRE | BO_COLD | BO_ELEC | HOLD | MIND_BLAST | BRAIN_SMASH | FORGET
+D:「自然の理」について、多くの知見と真理を得る者たちは闇の子等の一統たる古きオログの側にもいた。
+D:彼らはしばしば古ウルクと友好と敵対を繰り返しながら確かに古くから歴史をなし、
+D:その血統は古ウルクともしばしば交じり合ったという。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
