@@ -42,6 +42,7 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "term/z-rand.h"
 
 static void check_riding_preservation(player_type *master_ptr)
 {
@@ -116,7 +117,7 @@ static void record_pet_diary(player_type *master_ptr)
  * @brief フロア移動時のペット保存処理 / Preserve_pets
  * @param master_ptr プレーヤーへの参照ポインタ
  */
-static void preserve_pet(player_type *master_ptr)
+void preserve_pet(player_type *master_ptr)
 {
     for (MONSTER_IDX party_monster_num = 0; party_monster_num < MAX_PARTY_MON; party_monster_num++)
         party_mon[party_monster_num].r_idx = 0;
@@ -143,7 +144,7 @@ static void preserve_pet(player_type *master_ptr)
  * @brief 新フロアに移動元フロアに繋がる階段を配置する / Virtually teleport onto the stairs that is connecting between two floors.
  * @param sf_ptr 移動元の保存フロア構造体参照ポインタ
  */
-static void locate_connected_stairs(player_type *creature_ptr, floor_type *floor_ptr, saved_floor_type *sf_ptr, BIT_FLAGS floor_mode)
+void locate_connected_stairs(player_type *creature_ptr, floor_type *floor_ptr, saved_floor_type *sf_ptr, BIT_FLAGS floor_mode)
 {
     POSITION sx = 0;
     POSITION sy = 0;

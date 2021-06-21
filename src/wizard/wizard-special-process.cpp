@@ -447,7 +447,7 @@ static bool select_debugging_dungeon(player_type *creature_ptr, DUNGEON_IDX *dun
 }
 
 /*!
- * @brief 任意のダンジョン及び階層に飛ぶtための選択処理
+ * @brief 任意のダンジョン及び階層に飛ぶための選択処理
  * Go to any level
  */
 void wiz_jump_to_dungeon(player_type *creature_ptr)
