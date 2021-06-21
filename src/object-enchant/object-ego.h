@@ -258,6 +258,7 @@ struct ego_item_type {
     std::vector<ego_generate_type> xtra_flags{}; //!< 追加能力/耐性フラグ
 
     IDX act_idx{}; //!< 発動番号 / Activative ability index
+    PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
 extern EGO_IDX max_e_idx;

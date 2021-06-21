@@ -168,6 +168,12 @@ errr parse_e_info(std::string_view buf, angband_header *head)
         }
 
         e_ptr->xtra_flags.push_back(std::move(xtra));
+
+    } else if (tokens[0] == "B") {
+        // B:activate broken rate
+        if (tokens.size() < 2 || tokens[1].size() == 0)
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        info_set_value(e_ptr->broken_rate, tokens[1]);
     } else
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
 
