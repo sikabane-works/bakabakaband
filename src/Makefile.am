@@ -322,6 +322,7 @@ hengband_SOURCES = \
 	knowledge/knowledge-autopick.cpp knowledge/knowledge-autopick.h \
 	knowledge/knowledge-experiences.cpp knowledge/knowledge-experiences.h \
 	knowledge/knowledge-features.cpp knowledge/knowledge-features.h \
+	knowledge/knowledge-incident.cpp knowledge/knowledge-incident.h \
 	knowledge/knowledge-inventory.cpp knowledge/knowledge-inventory.h \
 	knowledge/knowledge-items.cpp knowledge/knowledge-items.h \
 	knowledge/knowledge-monsters.cpp knowledge/knowledge-monsters.h \
