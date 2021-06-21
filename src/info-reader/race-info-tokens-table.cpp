@@ -332,6 +332,7 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
     { "MAGE", RF8_MAGE },
     { "PALADIN", RF8_PALADIN },
     { "RANGER", RF8_RANGER },
+    { "SAMURAI", RF8_SAMURAI },
     { "ELDRAZI", RF8_ELDRAZI },
 	{ "KARATEKA", RF8_KARATEKA },
     { "NINJA", RF8_NINJA },
