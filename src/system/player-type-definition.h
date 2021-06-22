@@ -20,6 +20,7 @@ enum class INCIDENT {
     QUAFF = 2,
     ATTACK_ACT_COUNT = 3,
     ATTACK_EXE_COUNT = 4,
+    SHOOT = 5,
     EAT_FECES = 100,
 };
 

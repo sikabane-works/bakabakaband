@@ -24,6 +24,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
         fprintf(fff, _("あなたはこれまで%d回攻撃動作を行い、%d回攻撃を実行した。\n", "You have prepared %d attack action and execute %d attacks. \n"),
             creature_ptr->incident[INCIDENT::ATTACK_ACT_COUNT], creature_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]);
     }
+    if (creature_ptr->incident.count(INCIDENT::SHOOT)) {
+        fprintf(fff, _("あなたはこれまで%d回射撃を行った。\n", "You have fired %d times. \n"), creature_ptr->incident[INCIDENT::SHOOT]);
+    }
     if (creature_ptr->incident.count(INCIDENT::EAT)) {
         fprintf(fff, _("あなたはこれまで%d回食事を摂った。\n", "You have eaten %d times.\n"), creature_ptr->incident[INCIDENT::EAT]);
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES)) {
