@@ -17,7 +17,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     if (!open_temporary_file(&fff, file_name))
         return;
 
-    fprintf(fff, _("貴方はこれまで%d歩進んだ。\n", "You walked %d steps\n"), creature_ptr->incident[INCIDENT::WALK]);
+    fprintf(fff, _("あなたはこれまで%d歩進んだ。\n", "You walked %d steps\n"), creature_ptr->incident[INCIDENT::WALK]);
+    fprintf(fff, _("あなたはこれまで%d回攻撃動作を行い、%d回攻撃を実行した。\n", "You have prepared %d attack action and execute %d attacks. \n"),
+        creature_ptr->incident[INCIDENT::ATTACK_ACT_COUNT], creature_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]);
     angband_fclose(fff);
     (void)show_file(creature_ptr, true, file_name, _("これまでの出来事", "Incidents"), 0, 0);
     fd_kill(file_name);

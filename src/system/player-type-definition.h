@@ -18,6 +18,8 @@ enum class INCIDENT {
     WALK = 0,
     EAT = 1,
     QUAFF = 2,
+    ATTACK_ACT_COUNT = 3,
+    ATTACK_EXE_COUNT = 4
 };
 
 enum class RF_ABILITY;
