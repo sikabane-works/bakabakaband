@@ -110,6 +110,11 @@ static void natural_attack(player_type *attacker_ptr, MONSTER_IDX m_idx, MUTA at
     int bonus = attacker_ptr->to_h_m + (attacker_ptr->lev * 6 / 5);
     int chance = (attacker_ptr->skill_thn + (bonus * BTH_PLUS_ADJ));
 
+    if (attacker_ptr->incident.count(INCIDENT::ATTACK_EXE_COUNT) == 0) {
+        attacker_ptr->incident[INCIDENT::ATTACK_EXE_COUNT] = 0;
+    }
+    attacker_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]++;
+
     bool is_hit = ((r_ptr->flags2 & RF2_QUANTUM) == 0) || !randint0(2);
     is_hit &= test_hit_norm(attacker_ptr, chance, r_ptr->ac, m_ptr->ml);
     if (!is_hit) {
@@ -286,6 +291,11 @@ bool do_cmd_attack(player_type *attacker_ptr, POSITION y, POSITION x, combat_opt
             attacker_ptr->update |= (PU_BONUS);
         }
     }
+
+    if (attacker_ptr->incident.count(INCIDENT::ATTACK_ACT_COUNT) == 0) {
+        attacker_ptr->incident[INCIDENT::ATTACK_ACT_COUNT] = 0;
+    }
+    attacker_ptr->incident[INCIDENT::ATTACK_ACT_COUNT]++;
 
     attacker_ptr->riding_t_m_idx = g_ptr->m_idx;
     bool fear = false;
