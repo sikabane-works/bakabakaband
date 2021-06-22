@@ -19,7 +19,8 @@ enum class INCIDENT {
     EAT = 1,
     QUAFF = 2,
     ATTACK_ACT_COUNT = 3,
-    ATTACK_EXE_COUNT = 4
+    ATTACK_EXE_COUNT = 4,
+    EAT_FECES = 100,
 };
 
 enum class RF_ABILITY;
