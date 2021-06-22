@@ -500,9 +500,16 @@ void exe_fire(player_type *shooter_ptr, INVENTORY_IDX item, object_type *j_ptr, 
     PlayerEnergy(shooter_ptr).div_player_turn_energy((ENERGY)thits);
     shooter_ptr->is_fired = true;
 
+    if (shooter_ptr->incident.count(INCIDENT::SHOOT) == 0) {
+        shooter_ptr->incident[INCIDENT::SHOOT] = 0;
+    }
+    shooter_ptr->incident[INCIDENT::SHOOT]++;
+
     /* Sniper - Difficult to shot twice at 1 turn */
-    if (snipe_type == SP_DOUBLE)
+    if (snipe_type == SP_DOUBLE) {
         shooter_ptr->concent = (shooter_ptr->concent + 1) / 2;
+        shooter_ptr->incident[INCIDENT::SHOOT]++;    
+    }
 
     /* Sniper - Repeat shooting when double shots */
     for (i = 0; i < ((snipe_type == SP_DOUBLE) ? 2 : 1); i++) {
