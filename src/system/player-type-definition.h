@@ -21,6 +21,7 @@ enum class INCIDENT {
     ATTACK_ACT_COUNT = 3,
     ATTACK_EXE_COUNT = 4,
     SHOOT = 5,
+    THROW = 6,
     EAT_FECES = 100,
 };
 
