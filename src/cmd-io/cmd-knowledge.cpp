@@ -13,6 +13,7 @@
 #include "knowledge/knowledge-quests.h"
 #include "knowledge/knowledge-self.h"
 #include "knowledge/knowledge-uniques.h"
+#include "knowledge/knowledge-incident.h"
 #include "main/sound-of-music.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -54,6 +55,7 @@ void do_cmd_knowledge(player_type *creature_ptr)
             prt(_("(h) 入ったダンジョン                     の一覧", "(h) Display dungeons"), 13, 5);
             prt(_("(i) 実行中のクエスト                     の一覧", "(i) Display current quests"), 14, 5);
             prt(_("(k) 現在の自動拾い/破壊設定              の一覧", "(k) Display auto pick/destroy"), 15, 5);
+            prt(_("(l) これまで行った行為                   の一覧", "(l) Display incident counter"), 16, 5);
         }
 
         prt(_("-続く-", "-more-"), 17, 8);
@@ -133,6 +135,9 @@ void do_cmd_knowledge(player_type *creature_ptr)
             break;
         case 'k': /* Autopick */
             do_cmd_knowledge_autopick(creature_ptr);
+            break;
+        case 'l': /* Incident */
+            do_cmd_knowledge_incident(creature_ptr);
             break;
         default: /* Unknown option */
             bell();

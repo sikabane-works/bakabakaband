@@ -18898,7 +18898,7 @@ F:CAN_SWIM | CAN_FLY | UNIQUE2 | WILD_SHORE |
 F:WILD_OCEAN | WILD_WASTE | WILD_WOOD | WILD_VOLCANO | WILD_MOUNTAIN |
 F:WILD_GRASS | WILD_ALL | SELF_LITE_1 | SELF_LITE_2 | HOMO_SEXUAL | YAKUZA | NASTY
 F:SUMOU_WRESTLER | NINJA | KARATEKA | ELDRAZI | QUYLTHLUG
-F:WARRIOR | PRIEST | MAGE | ROGUE | PALADIN | RANGER
+F:WARRIOR | PRIEST | MAGE | ROGUE | PALADIN | RANGER | SAMURAI
 S:1_IN_3 |
 S:SHRIEK | DISPEL | ROCKET | SHOOT | BR_ACID |
 S:BR_ELEC | BR_FIRE | BR_COLD | BR_POIS | BR_NETH | BR_LITE | BR_DARK | BR_CONF |
@@ -26859,7 +26859,7 @@ N:1396:難題の予見者
 E:Thought-knot seer
 G:e:W
 I:115:30d40:60:80:1
-W:35:3:0:7000:0:0
+W:35:3:0:4000:0:0
 B:CRUSH:CONFUSE:5d10
 B:CRUSH:CONFUSE:5d10
 F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | WEIRD_MIND
@@ -27736,7 +27736,7 @@ N:1448:虎眼流入門者
 E:Novice of Kogan-ryu
 G:p:U
 I:110:9d6:35:10:4
-W:3:3:0:12:0:0
+W:3:3:0:12:1000:1456
 B:SLASH:HURT:1d20
 F:MALE | HAS_LITE_1 |
 F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
@@ -27857,3 +27857,137 @@ D:天使を名乗り、自身の力で身を隠しているらしいが、
 D:実はそう思い込んでいるただの精神異常者のホモだ。
 D:そして何故か糞尿レストランの店員でもある。これもう分かんねえな。
 
+N:1456:虎眼流門弟
+E:Disciple of Kogan-ryu
+G:p:U
+I:112:39d11:35:50:4
+W:26:4:0:400:4000:1459
+B:SLASH:SUPERHURT:3d20
+B:SLASH:HURT:4d6
+F:MALE | HAS_LITE_1 |
+F:DROP_1D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+D:虎眼流の常軌を逸した鍛錬と因習を受け入れ、
+D:その真髄を理解しつつある門弟だ。
+
+N:1457:古ウルクの賢者
+E:Savant of Ancient Uruk
+G:o:v
+I:120:30d48:30:90:10
+W:55:1:0:11000:0:0
+B:SLASH:HURT:8d6
+B:SLASH:HURT:8d6
+B:HIT:UN_BONUS:10d12
+B:TOUCH:UN_POWER
+R:1439:1d2
+R:1436:3d4
+F:MALE | 
+F:DROP_3D2 | DROP_GOOD | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:IM_FIRE | RES_DARK | RES_LITE | IM_COLD | IM_ELEC | IM_POIS | RES_PLAS | RES_CHAO
+F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | SELF_LITE_2
+S:1_IN_3
+S:BO_MANA | BA_DARK | BA_LITE | HEAL | HASTE | S_KIN | HOLD | SCARE | MIND_BLAST | BRAIN_SMASH | FORGET
+D:古ウルクの中でも冥王やウトゥムノの諸神から直に学び、
+D:アルダでエルダールが目覚めるより以前に闇の世界で古い文明を興した祭司にして学者たちだ。
+D:その史蹟は西側の物語には決して語られず「オーク」の生まれは
+D:常に惨めでおぞましいものとばかり説かれている。
+
+N:1458:古オログの牧者
+E:Pastor of Ancient Olog
+G:T:v
+I:120:40d120:30:130:15
+W:52:3:0:12500:0:0
+B:PUNCH:HURT:11d11
+B:PUNCH:HURT:11d11
+B:KICK:HURT:12d10
+B:KICK:HURT:12d10
+F:DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY | IM_FIRE | IM_COLD | IM_ELEC
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | RES_CHAO | POWERFUL
+F:GIANT | TROLL | MALE | RIDING
+S:1_IN_6
+S:BO_FIRE | BO_COLD | BO_ELEC | HOLD | MIND_BLAST | BRAIN_SMASH | FORGET
+D:「自然の理」について、多くの知見と真理を得る者たちは闇の子等の一統たる古きオログの側にもいた。
+D:彼らはしばしば古ウルクと友好と敵対を繰り返しながら確かに古くから歴史をなし、
+D:その血統は古ウルクともしばしば交じり合ったという。
+
+N:1459:虎眼流皆伝者
+E:Grand master of Kogan-ryu
+G:p:r
+I:112:39d40:35:90:4
+W:35:4:0:1200:0:0
+B:SLASH:SUPERHURT:11d4
+B:SLASH:SUPERHURT:11d4
+B:SLASH:HURT:9d6
+F:MALE | HAS_LITE_1 |
+F:DROP_2D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+D:「虎眼流を嘲笑うことなど不可能であった」
+D:虎眼流の真髄を体得することにより「術許し」を受け、
+D:道場の要職を得るまでに至った達人だ。
+
+N:1460:『肉体派おじゃる丸』
+G:p:u
+E:Muscle Ojarumaru
+I:110:10d14:20:45:25
+W:11:1:0:400:0:0
+B:PUNCH:HURT:6d5
+B:PUNCH:HURT:6d5
+F:UNIQUE | FORCE_MAXHP | MALE | WARRIOR
+F:DROP_60 | DROP_90 | DROP_GOOD | NASTY | HOMO_SEXUAL
+D:胸囲120を超えて逞しく雅な男だ。
+
+N:1461:ボンテージマスター『TDNコスギ』
+E:Kosugi TDN, the Bontage Master
+G:p:s
+I:120:15d120:22:88:10
+W:40:2:0:6500:0:0
+B:PUNCH:HURT:10d5
+B:PUNCH:HURT:10d5
+B:PUNCH:HURT:10d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_COLD | IM_POIS | MALE | HUMAN |
+F:ONLY_ITEM | DROP_3D2 | DROP_2D2 | IM_FIRE | RES_NETH | RES_NEXU | RES_PLAS | UNIQUE
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | HOMO_SEXUAL
+S:1_IN_5 |
+S:BLIND | SCARE | CAUSE_3 | BA_NETH | BA_FIRE | S_MONSTERS
+D:DEEP☆DARK☆FANTASYを追求するエンターテイナーだ。
+
+N:1462:隠されし名将『糞藝爪覧』
+E:FenYiZhaolan, the Hidden Great General
+G:p:o
+I:110:38d17:20:98:20
+W:25:2:0:600:0:0
+B:HIT:HURT:3d15
+B:HIT:HURT:3d15
+B:HIT:HURT:3d15
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | NASTY
+F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ESCORT |
+F:OPEN_DOOR | BASH_DOOR
+S:1_IN_5 |
+S:S_KIN
+D:コー〇ー史観においても全能力値100に評価されながら、隠された中華の名将だ。
+D:おや？ちょっと待てよ？
+
+
+# N: serial number : monster name
+# G: symbol : color
+# I: speed : hit points : vision : armor class : alertness
+# W: depth : rarity : 0 : exp : next_exp : next_mon
+# B: attack method : attack effect : damage
+# S: spell frequency |
+# S: spell type | spell type | etc
+# F: flag | flag | etc
+# D: Description
+
+# 'N' indicates the beginning of an entry. The serial number must
+# increase for each new item. Entry 0 is used for the player.
+
+# 'G' is for graphics - symbol and color. There are 16 colors, as
+# follows:
+
+# D - Black        w - White          s - Gray          o - Orange
+# r - Red          g - Green          b - Blue          u - Brown
+# d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
+# R - Light Red    G - Light Green    B - Light Blue    U - Light Brown

@@ -502,7 +502,7 @@ static void rd_player_status(player_type *creature_ptr)
             s32b id, count;
             rd_s32b(&id);
             rd_s32b(&count);
-            creature_ptr->incident[id] = count; 
+            creature_ptr->incident[(INCIDENT)id] = count; 
         }
     }
 }

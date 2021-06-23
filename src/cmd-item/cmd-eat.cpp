@@ -73,6 +73,10 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
         if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
             set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10);
         }
+        if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_FECES] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_FECES]++;
         return true;
         break;
     case SV_JUNK_VOMITTING:
@@ -81,6 +85,10 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
         if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
             set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10);
         }
+        if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_FECES] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_FECES]++;
         return true;
         break;
     }
@@ -384,6 +392,10 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
     case SV_FOOD_WELCOME_DRINK_OF_ARE:
     case SV_FOOD_ABA_TEA:
         msg_print("「非常に新鮮で……非常においしい……」");
+        if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_FECES] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_FECES]++;
         return true;
     case SV_FOOD_SEED_FEA:
         msg_print("脱穀して炊いた方が良かったかもしれないが、多少空腹は収まった。");
@@ -591,6 +603,11 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
         msg_print("流石に食べるのを躊躇した。");
         return;
     }
+
+    if (creature_ptr->incident.count(INCIDENT::EAT) == 0) {
+        creature_ptr->incident[INCIDENT::EAT] = 0;
+    }
+    creature_ptr->incident[INCIDENT::EAT]++;
 
     creature_ptr->update |= inventory_flags;
     vary_item(creature_ptr, item, -1);

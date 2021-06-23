@@ -424,6 +424,9 @@ void display_monster_alignment(lore_type *lore_ptr)
     if (lore_ptr->flags8 & RF8_RANGER)
         hook_c_roff(TERM_GREEN, _("レンジャーの", " ranger"));
 
+    if (lore_ptr->flags8 & RF8_SAMURAI)
+        hook_c_roff(TERM_RED, _("サムライの", " ranger"));
+
     if (lore_ptr->flags8 & RF8_NINJA)
         hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));
 

@@ -346,6 +346,11 @@ static void attack_racial_power(player_type *creature_ptr, it_type *it_ptr)
 
 static void exe_throw(player_type *creature_ptr, it_type *it_ptr)
 {
+    if (creature_ptr->incident.count(INCIDENT::THROW) == 0) {
+        creature_ptr->incident[INCIDENT::THROW] = 0;
+    }
+    creature_ptr->incident[INCIDENT::THROW]++;
+
     it_ptr->cur_dis = 0;
     while (it_ptr->cur_dis <= it_ptr->tdis) {
         if ((it_ptr->y == it_ptr->ty) && (it_ptr->x == it_ptr->tx))
