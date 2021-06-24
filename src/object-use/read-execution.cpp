@@ -47,6 +47,7 @@
 #include "spell-kind/spells-world.h"
 #include "spell-kind/earthquake.h"
 #include "spell-realm/spells-hex.h"
+#include "spell-realm/spells-chaos.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
 #include "spell/spells-object.h"
@@ -476,6 +477,12 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             ident = true;
             earthquake(creature_ptr, creature_ptr->y, creature_ptr->x, randint1(20) + 50, 0);
             break;
+
+        case SV_SCROLL_CALL_THE_VOID: {
+            ident = true;
+            call_the_void(creature_ptr);
+        }
+
         }
         }
     } else if (o_ptr->name1 == ART_GHB) {

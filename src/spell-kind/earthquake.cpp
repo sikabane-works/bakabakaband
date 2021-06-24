@@ -354,3 +354,4 @@ bool earthquake(player_type *caster_ptr, POSITION cy, POSITION cx, POSITION r, M
 
     return true;
 }
+
