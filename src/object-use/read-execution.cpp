@@ -481,6 +481,7 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
         case SV_SCROLL_CALL_THE_VOID: {
             ident = true;
             call_the_void(creature_ptr);
+            break;
         }
         case SV_SCROLL_THUNDER: {
             fire_ball(creature_ptr, GF_ELEC, 0, 888, 4);
