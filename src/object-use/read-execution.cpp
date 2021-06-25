@@ -482,6 +482,13 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             ident = true;
             call_the_void(creature_ptr);
         }
+        case SV_SCROLL_THUNDER: {
+            fire_ball(creature_ptr, GF_ELEC, 0, 888, 4);
+            if (!(is_oppose_elec(creature_ptr) || has_resist_elec(creature_ptr) || has_immune_elec(creature_ptr)))
+                take_hit(creature_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("雷の巻物", "a Scroll of Thunder"));
+            ident = true;
+            break;
+        }
 
         }
         }
