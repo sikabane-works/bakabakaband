@@ -27999,6 +27999,18 @@ F:OPEN_DOOR | BASH_DOOR
 D:孤独が老いた隠者を狂気に追いやった。今、彼がつきあう相手といえば、この隠者に捕えられた者のみだ。
 D:$ Solitude drove the old hermit insane. Now he only keeps company with those he can catch.
 
+N:1465:百合の間に挟まる男
+E:Man sandwiching between lilies
+G:t:v
+I:110:1d8:10:20:100
+W:0:1:0:10:0:0
+B:MOAN:FLAVOR
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:RAND_50 | DROP_90 | WILD_GRASS | WILD_TOWN | WILD_WOOD
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | STUPID
+F:EVIL | NASTY
+D:大半の多元宇宙で彼らの生存は許されない。
+
 
 # N: serial number : monster name
 # G: symbol : color
