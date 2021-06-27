@@ -13,7 +13,6 @@
  *   "(FAKE_VER_MAJOR-10).(FAKE_VER_MINOR).(FAKE_VER_PATCH)".
  * </pre>
  */
-<<<<<<< HEAD
 #define FAKE_VERSION_MINUS 10
 #define VIEW_VERSION_MINUS 20 /*! < 表記上のバージョンマイナス */
 
@@ -21,12 +20,6 @@
 #define FAKE_VER_MINOR 0 /*!< ゲームのバージョン番号定義(マイナー番号) */
 #define FAKE_VER_PATCH 0 /*!< ゲームのバージョン番号定義(パッチ番号) */
 #define FAKE_VER_EXTRA 11 /*!< ゲームのバージョン番号定義(エクストラ番号) */
-=======
-#define H_VER_MAJOR  3 //!< ゲームのバージョン定義(メジャー番号)
-#define H_VER_MINOR  0 //!< ゲームのバージョン定義(マイナー番号)
-#define H_VER_PATCH  0 //!< ゲームのバージョン定義(パッチ番号)
-#define H_VER_EXTRA 28 //!< ゲームのバージョン定義(エクストラ番号)
->>>>>>> a3954909b8113e57a7708eed68dcf857bea3cc0a
 
 /*!
  * @brief セーブファイルのバージョン(3.0.0から導入)
