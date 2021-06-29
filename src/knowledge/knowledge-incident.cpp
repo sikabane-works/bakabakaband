@@ -20,6 +20,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     if (creature_ptr->incident.count(INCIDENT::WALK)) {
         fprintf(fff, _("あなたはこれまで%d歩進んだ。\n", "You walked %d steps\n"), creature_ptr->incident[INCIDENT::WALK]);
     }
+    if (creature_ptr->incident.count(INCIDENT::LEAVE_FLOOR)) {
+        fprintf(fff, _("あなたはこれまで%d回フロアを移動した。\n", "You moved %d floors\n"), creature_ptr->incident[INCIDENT::LEAVE_FLOOR]);
+    }
     if (creature_ptr->incident.count(INCIDENT::ATTACK_ACT_COUNT)) {
         fprintf(fff, _("あなたはこれまで%d回攻撃動作を行い、%d回攻撃を実行した。\n", "You have prepared %d attack action and execute %d attacks. \n"),
             creature_ptr->incident[INCIDENT::ATTACK_ACT_COUNT], creature_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]);

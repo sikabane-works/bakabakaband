@@ -373,6 +373,11 @@ static void update_upper_lower_or_floor_id(player_type *creature_ptr, saved_floo
 
 static void exe_leave_floor(player_type *creature_ptr, saved_floor_type *sf_ptr)
 {
+    if (creature_ptr->incident.count(INCIDENT::LEAVE_FLOOR) == 0) {
+        creature_ptr->incident[INCIDENT::LEAVE_FLOOR] = 0;
+    }
+    creature_ptr->incident[INCIDENT::LEAVE_FLOOR]++;
+
     grid_type *g_ptr = NULL;
     set_grid_by_leaving_floor(creature_ptr, &g_ptr);
     jump_floors(creature_ptr);
