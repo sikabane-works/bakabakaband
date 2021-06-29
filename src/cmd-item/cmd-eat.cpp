@@ -391,6 +391,7 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         return true;
     case SV_FOOD_WELCOME_DRINK_OF_ARE:
     case SV_FOOD_ABA_TEA:
+        (void)set_poisoned(creature_ptr, 10);
         msg_print("「非常に新鮮で……非常においしい……」");
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
             creature_ptr->incident[INCIDENT::EAT_FECES] = 0;
@@ -399,6 +400,18 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         return true;
     case SV_FOOD_SEED_FEA:
         msg_print("脱穀して炊いた方が良かったかもしれないが、多少空腹は収まった。");
+        return true;
+    case SV_FOOD_HIP:
+        (void)set_poisoned(creature_ptr, 10);
+        msg_print("ヴォエ！食ったら尻の肉だった！");
+        msg_print(NULL);
+        msg_print("「作者は広告で収入得てないけど、こんな卑猥なアイテム放置するなよ」");
+        msg_print(NULL);
+        if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_FECES] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_FECES]++;
+        return true;
     }
     return false;
 }
