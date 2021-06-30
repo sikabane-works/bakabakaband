@@ -27972,7 +27972,7 @@ D:おや？ちょっと待てよ？
 
 N:1463:竜血騎士
 E:Black Drakeblood Knight
-G:p:D
+G:p:s
 I:120:22d12:20:90:10
 W:30:3:0:390:0:0
 B:SLASH:HURT:7d6
@@ -28049,6 +28049,24 @@ F:NEVER_MOVE | NO_SLEEP | NO_FEAR | NO_CONF | CAN_FLY | NASTY | FRIENDS | NEVER_
 F:ONLY_ITEM | DROP_60 | NONLIVING
 D:その名の通り、涅槃寂静の境地に至った野獣先輩の御顔だ。もちろんただイって賢者モードになっているだけだ。
 
+N:1469:竜血の英雄『ヨア』
+E:Yorgh the Hero of Black Drakeblood
+G:p:g
+I:122:50d30:20:60:10
+W:40:3:0:6000:0:0
+B:SLASH:HURT:12d6
+B:SLASH:HURT:12d6
+B:HIT:HURT:10d6
+B:HIT:HURT:10d6
+R:1463:3d10
+F:MALE | HUMAN | FORCE_MAXHP | UNIQUE
+F:PREVENT_SUDDEN_MAGIC | DROP_3D2 | WARRIOR | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:NO_STUN | NO_SLEEP | NO_CONF
+F:EVIL
+D:聖壁の都サルヴァの最奥に居た深い底の王を打ち倒した後
+D:竜の血を求めたヨアは槍で眠り竜シンを貫いた。
+D:その結果シンの蓄えていた毒は都を滅ぼし、彼は姿を消したという。
 
 # N: serial number : monster name
 # G: symbol : color
