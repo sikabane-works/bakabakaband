@@ -34,5 +34,6 @@ enum sv_food_type {
     SV_FOOD_WELCOME_DRINK_OF_ARE = 41,
     SV_FOOD_ABA_TEA = 42,
     SV_FOOD_SEED_FEA = 43,
-    SV_FOOR_HAMBURGER = 44,
+    SV_FOOD_HAMBURGER = 44,
+    SV_FOOD_HIP = 45,
 };

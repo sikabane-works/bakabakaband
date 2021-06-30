@@ -10,6 +10,8 @@
 #include "core/window-redrawer.h"
 #include "effect/spells-effect-util.h"
 #include "floor/geometry.h"
+#include "flavor/flavor-describer.h"
+#include "flavor/object-flavor-types.h"
 #include "game-option/disturbance-options.h"
 #include "game-option/input-options.h"
 #include "main/sound-definitions-table.h"
@@ -34,6 +36,7 @@
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
+#include "spell/spells-object.h"
 #include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-ring-types.h"
@@ -51,10 +54,15 @@
 #include "world/world.h"
 #include "inventory/inventory-slot-types.h"
 
+/*!
+ * @brief アイテムの発動難度の設定 
+ * @todo ランダムアーティファクトに破損率を指定する実装をそのうちするかも知れない。当分は0に。
+ */
 static void decide_activation_level(player_type *user_ptr, ae_type *ae_ptr)
 {
     if (object_is_fixed_artifact(ae_ptr->o_ptr)) {
         ae_ptr->lev = a_info[ae_ptr->o_ptr->name1].level;
+        ae_ptr->broken = a_info[ae_ptr->o_ptr->name1].broken_rate;
         return;
     }
 
@@ -62,12 +70,14 @@ static void decide_activation_level(player_type *user_ptr, ae_type *ae_ptr)
         const activation_type *const act_ptr = find_activation_info(user_ptr, ae_ptr->o_ptr);
         if (act_ptr != NULL)
             ae_ptr->lev = act_ptr->level;
-
+        ae_ptr->broken = 0;
         return;
     }
 
-    if (((ae_ptr->o_ptr->tval == TV_RING) || (ae_ptr->o_ptr->tval == TV_AMULET)) && ae_ptr->o_ptr->name2)
+    if (((ae_ptr->o_ptr->tval == TV_RING) || (ae_ptr->o_ptr->tval == TV_AMULET)) && ae_ptr->o_ptr->name2) {
         ae_ptr->lev = e_info[ae_ptr->o_ptr->name2].level;
+        ae_ptr->broken = e_info[ae_ptr->o_ptr->name2].broken_rate;
+    }
 }
 
 static void decide_chance_fail(player_type *user_ptr, ae_type *ae_ptr)
@@ -253,14 +263,22 @@ static bool activate_rosmarinus(player_type *user_ptr, ae_type *ae_ptr)
  */
 void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
 {
+    bool activated = false;
     if (item <= INVEN_PACK && !has_flag(k_info[user_ptr->inventory_list[item].k_idx].flags, TR_INVEN_ACTIVATE)) {
         msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
         return;
     }
 
-    PlayerEnergy(user_ptr).set_player_turn_energy(100);
     ae_type tmp_ae;
     ae_type *ae_ptr = initialize_ae_type(user_ptr, &tmp_ae, item);
+
+    if (ae_ptr->o_ptr->name2 == EGO_SHATTERED || ae_ptr->o_ptr->name2 == EGO_BLASTED) {
+        msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
+        return;        
+    }
+
+    PlayerEnergy(user_ptr).set_player_turn_energy(100);
+
     decide_activation_level(user_ptr, ae_ptr);
     decide_chance_fail(user_ptr, ae_ptr);
     if (cmd_limit_time_walk(user_ptr))
@@ -275,20 +293,31 @@ void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
     if (activation_index(user_ptr, ae_ptr->o_ptr)) {
         (void)activate_artifact(user_ptr, ae_ptr->o_ptr);
         user_ptr->window_flags |= PW_INVEN | PW_EQUIP;
-        return;
+        activated = true;
     }
 
-    if (activate_whistle(user_ptr, ae_ptr))
-        return;
+    if (activate_whistle(user_ptr, ae_ptr)) {
+        activated = true;
+    }
+    else if (exe_monster_capture(user_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_firethrowing(user_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_rosmarinus(user_ptr, ae_ptr)) {
+        activated = true;
+    }
 
-    if (exe_monster_capture(user_ptr, ae_ptr))
-        return;
+    if (!activated) {
+        msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
+        return;    
+    }
 
-    if (activate_firethrowing(user_ptr, ae_ptr))
-        return;
+    if (randint1(100) <= ae_ptr->broken) {
+        char o_name[MAX_NLEN];
+        describe_flavor(user_ptr, o_name, ae_ptr->o_ptr, OD_OMIT_PREFIX);
 
-    if (activate_rosmarinus(user_ptr, ae_ptr))
-        return;
+        msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name);
+        curse_weapon_object(user_ptr, true, ae_ptr->o_ptr);
+    }
 
-    msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
 }

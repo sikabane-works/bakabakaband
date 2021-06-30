@@ -39,6 +39,7 @@ typedef struct artifact_type {
 	byte max_num{};		/*! (未使用)最大生成数 / Unused (should be "1") */
 	FLOOR_IDX floor_id{};      /*! アイテムを落としたフロアのID / Leaved on this location last time */
 	byte act_idx{};		/*! 発動能力ID / Activative ability index */
+    PERCENTAGE broken_rate; /*!< 発動破損率 */
 } artifact_type;
 
 extern std::vector<artifact_type> a_info;

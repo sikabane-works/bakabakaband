@@ -11,6 +11,7 @@ typedef struct ae_type {
     DEPTH lev;
     int chance;
     int fail;
+    PERCENTAGE broken;
 } ae_type;
 
 typedef struct player_type player_type;

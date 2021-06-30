@@ -47,6 +47,7 @@
 #include "spell-kind/spells-world.h"
 #include "spell-kind/earthquake.h"
 #include "spell-realm/spells-hex.h"
+#include "spell-realm/spells-chaos.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
 #include "spell/spells-object.h"
@@ -476,6 +477,20 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             ident = true;
             earthquake(creature_ptr, creature_ptr->y, creature_ptr->x, randint1(20) + 50, 0);
             break;
+
+        case SV_SCROLL_CALL_THE_VOID: {
+            ident = true;
+            call_the_void(creature_ptr);
+            break;
+        }
+        case SV_SCROLL_THUNDER: {
+            fire_ball(creature_ptr, GF_ELEC, 0, 888, 4);
+            if (!(is_oppose_elec(creature_ptr) || has_resist_elec(creature_ptr) || has_immune_elec(creature_ptr)))
+                take_hit(creature_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("雷の巻物", "a Scroll of Thunder"));
+            ident = true;
+            break;
+        }
+
         }
         }
     } else if (o_ptr->name1 == ART_GHB) {

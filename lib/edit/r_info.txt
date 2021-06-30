@@ -8344,7 +8344,7 @@ N:485:ニンジャ
 E:Ninja
 G:p:D
 I:120:13d12:20:60:10
-W:32:2:0:300:0:0
+W:32:2:0:300:3000:1466
 B:HIT:POISON:3d4
 B:HIT:LOSE_STR:3d4
 B:HIT:LOSE_STR:3d4
@@ -18897,7 +18897,7 @@ F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
 F:CAN_SWIM | CAN_FLY | UNIQUE2 | WILD_SHORE |
 F:WILD_OCEAN | WILD_WASTE | WILD_WOOD | WILD_VOLCANO | WILD_MOUNTAIN |
 F:WILD_GRASS | WILD_ALL | SELF_LITE_1 | SELF_LITE_2 | HOMO_SEXUAL | YAKUZA | NASTY
-F:SUMOU_WRESTLER | NINJA | KARATEKA | ELDRAZI | QUYLTHLUG
+F:SUMOU_WRESTLER | NINJA | KARATEKA | ELDRAZI | QUYLTHLUG | ELF | DWARF | HOBBIT
 F:WARRIOR | PRIEST | MAGE | ROGUE | PALADIN | RANGER | SAMURAI
 S:1_IN_3 |
 S:SHRIEK | DISPEL | ROCKET | SHOOT | BR_ACID |
@@ -27970,6 +27970,103 @@ S:S_KIN
 D:コー〇ー史観においても全能力値100に評価されながら、隠された中華の名将だ。
 D:おや？ちょっと待てよ？
 
+N:1463:竜血騎士
+E:Black Drakeblood Knight
+G:p:s
+I:120:22d12:20:90:10
+W:30:3:0:390:0:0
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+F:MALE | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | DROP_2D2 | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL | FRIENDS
+D:彼らはかつて不死を得られるという竜の血を求め、聖壁の都サルヴァを侵略した。
+D:その果てに起きた破滅を欺瞞の記録に残しながら、彼らは今もこうして異形あふれる
+D:異邦の地を彷徨い、竜の力を求めて止まない。
+
+N:1464:『イシュトヴァーンおじ』
+E:Uncle Istvan
+G:p:s
+I:113:15d10:20:144:20
+W:10:2:0:100:0:0
+B:HIT:HURT:2d10
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN |
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR
+D:孤独が老いた隠者を狂気に追いやった。今、彼がつきあう相手といえば、この隠者に捕えられた者のみだ。
+D:$ Solitude drove the old hermit insane. Now he only keeps company with those he can catch.
+
+N:1465:百合の間に挟まる男
+E:Man sandwiching between lilies
+G:t:v
+I:110:1d8:10:20:100
+W:0:1:0:10:0:0
+B:MOAN:FLAVOR
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:RAND_50 | DROP_90 | WILD_GRASS | WILD_TOWN | WILD_WOOD
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | STUPID
+F:EVIL | NASTY
+D:大半の多元宇宙で彼らの生存は許されない。
+
+N:1466:ニンジャマスター
+E:Master Ninja
+G:p:v
+I:135:90d12:80:130:10
+W:45:2:0:3000:0:0
+B:SLASH:POISON:12d4
+B:HIT:LOSE_STR:6d4
+B:SLASH:SUPERHURT:10d10
+B:SHOOT:HURT:10d10
+F:MALE | HUMAN |
+F:DROP_4D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA | POWERFUL
+F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS | SMART
+S:1_IN_3
+S:SHOOT | HOLD | BA_POIS | BO_FIRE | BO_ELEC
+D:忍術の多くを極めた達人だ。その闇からの一撃を恐れよ！
+
+N:1467:ターバンのガキ
+E:Turban kid
+G:t:r
+I:110:1d4:20:16:5
+W:12:10:0:50:0:0
+B:SLASH:HURT:1d30
+F:MALE | HAS_LITE_1 | WEIRD_MIND | QUANTUM | MULTIPLY
+F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR
+D:気をつけろ！この少年と思しき何者たちかは世界中を監視しながら増殖し続けており、
+D:いずれ世界と人類を駆逐してしまう！南斗の聖帝がそう確信しているのだ！
+
+N:1468:涅槃先輩
+E:Nirvana senior
+G:*:u
+I:105:3d8:10:15:5
+W:3:2:0:7:0:0
+F:NEVER_MOVE | NO_SLEEP | NO_FEAR | NO_CONF | CAN_FLY | NASTY | FRIENDS | NEVER_BLOW
+F:ONLY_ITEM | DROP_60 | NONLIVING
+D:その名の通り、涅槃寂静の境地に至った野獣先輩の御顔だ。もちろんただイって賢者モードになっているだけだ。
+
+N:1469:竜血の英雄『ヨア』
+E:Yorgh the Hero of Black Drakeblood
+G:p:g
+I:122:50d30:20:60:10
+W:40:3:0:6000:0:0
+B:SLASH:HURT:12d6
+B:SLASH:HURT:12d6
+B:HIT:HURT:10d6
+B:HIT:HURT:10d6
+R:1463:3d10
+F:MALE | HUMAN | FORCE_MAXHP | UNIQUE
+F:PREVENT_SUDDEN_MAGIC | DROP_3D2 | WARRIOR | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:NO_STUN | NO_SLEEP | NO_CONF
+F:EVIL
+D:聖壁の都サルヴァの最奥に居た深い底の王を打ち倒した後
+D:竜の血を求めたヨアは槍で眠り竜シンを貫いた。
+D:その結果シンの蓄えていた毒は都を滅ぼし、彼は姿を消したという。
 
 # N: serial number : monster name
 # G: symbol : color

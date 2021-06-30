@@ -8,5 +8,6 @@ ae_type *initialize_ae_type(player_type *user_ptr, ae_type *ae_ptr, const INVENT
 {
     ae_ptr->o_ptr = ref_item(user_ptr, item);
     ae_ptr->lev = k_info[ae_ptr->o_ptr->k_idx].level;
+    ae_ptr->broken = 0;
     return ae_ptr;
 }
