@@ -91,8 +91,7 @@ void execute_recall(player_type *creature_ptr)
      * Clear all saved floors
      * and create a first saved floor
      */
-    prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
-    creature_ptr->leaving = true;
+    move_floor(creature_ptr, CFM_FIRST_FLOOR);
 
     if (creature_ptr->dungeon_idx != DUNGEON_ANGBAND) {
         sound(SOUND_TPLEVEL);
@@ -140,8 +139,7 @@ void execute_floor_reset(player_type *creature_ptr)
          * Clear all saved floors
          * and create a first saved floor
          */
-        prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
-        creature_ptr->leaving = true;
+        move_floor(creature_ptr, CFM_FIRST_FLOOR);
     } else {
         msg_print(_("世界が少しの間変化したようだ。", "The world seems to change for a moment!"));
     }
