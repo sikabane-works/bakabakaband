@@ -18,3 +18,4 @@ enum cfm_type {
 
 typedef struct player_type player_type;
 void prepare_change_floor_mode(player_type *creature_ptr, BIT_FLAGS mode);
+void move_floor(player_type *creature_ptr, BIT_FLAGS mode);

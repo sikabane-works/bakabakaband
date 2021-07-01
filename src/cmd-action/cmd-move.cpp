@@ -132,10 +132,10 @@ void do_cmd_go_up(player_type *creature_ptr)
         up_num = 0;
     } else {
         if (has_flag(f_ptr->flags, FF_SHAFT)) {
-            prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_SHAFT);
+            move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_SHAFT);
             up_num = 2;
         } else {
-            prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_UP);
+            move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_UP);
             up_num = 1;
         }
 
@@ -155,7 +155,6 @@ void do_cmd_go_up(player_type *creature_ptr)
     else
         msg_print(_("階段を上って新たなる迷宮へと足を踏み入れた。", "You enter a maze of up staircases."));
 
-    creature_ptr->leaving = true;
 }
 
 /*!
@@ -235,7 +234,7 @@ void do_cmd_go_down(player_type *creature_ptr)
         creature_ptr->oldpx = creature_ptr->x;
         creature_ptr->oldpy = creature_ptr->y;
         creature_ptr->dungeon_idx = target_dungeon;
-        prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
+        move_floor(creature_ptr, CFM_FIRST_FLOOR);
     }
 
     PlayerEnergy(creature_ptr).set_player_turn_energy(100);
@@ -272,17 +271,15 @@ void do_cmd_go_down(player_type *creature_ptr)
         }
     }
 
-    creature_ptr->leaving = true;
-
     if (fall_trap) {
-        prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+        move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         return;
     }
 
     if (has_flag(f_ptr->flags, FF_SHAFT))
-        prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_SHAFT);
+        move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_SHAFT);
     else
-        prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN);
+        move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN);
 }
 
 /*!

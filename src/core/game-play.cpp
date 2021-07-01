@@ -334,7 +334,6 @@ static void init_riding_pet(player_type *player_ptr, bool new_game)
 
 static void decide_arena_death(player_type *player_ptr)
 {
-
     if (!player_ptr->playing || !player_ptr->is_dead)
         return;
 
@@ -371,7 +370,7 @@ static void decide_arena_death(player_type *player_ptr)
     player_ptr->chp_frac = 0;
     player_ptr->exit_bldg = true;
     reset_tim_flags(player_ptr);
-    prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_RAND_CONNECT);
+    move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_RAND_CONNECT);
     leave_floor(player_ptr);
 }
 

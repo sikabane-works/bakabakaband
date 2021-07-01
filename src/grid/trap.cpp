@@ -440,8 +440,7 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
                 do_cmd_save_game(trapped_ptr, true);
 
             exe_write_diary(trapped_ptr, DIARY_DESCRIPTION, 0, _("落とし戸に落ちた", "fell through a trap door!"));
-            prepare_change_floor_mode(trapped_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            trapped_ptr->leaving = true;
+            move_floor(trapped_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
         break;
     }

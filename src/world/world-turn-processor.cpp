@@ -124,10 +124,9 @@ void WorldTurnProcessor::process_downward()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     floor_ptr->dun_level = 0;
     this->player_ptr->dungeon_idx = 0;
-    prepare_change_floor_mode(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
+    move_floor(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
     floor_ptr->inside_arena = false;
     this->player_ptr->wild_mode = false;
-    this->player_ptr->leaving = true;
 }
 
 void WorldTurnProcessor::process_monster_arena()

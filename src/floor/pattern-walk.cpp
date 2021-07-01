@@ -88,8 +88,7 @@ static void pattern_teleport(player_type *creature_ptr)
      * Clear all saved floors
      * and create a first saved floor
      */
-    prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
-    creature_ptr->leaving = true;
+    move_floor(creature_ptr, CFM_FIRST_FLOOR);
 }
 
 /*!
