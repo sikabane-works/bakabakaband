@@ -100,6 +100,11 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
     if (hex_spelling_any(creature_ptr) && ((creature_ptr->lev < 35) || hex_spell_fully(creature_ptr)))
         stop_hex_spell_all(creature_ptr);
 
+    if (creature_ptr->incident.count(INCIDENT::READ_SCROLL) == 0) {
+        creature_ptr->incident[INCIDENT::READ_SCROLL] = 0;
+    }
+    creature_ptr->incident[INCIDENT::READ_SCROLL]++;
+
     ident = false;
     lev = k_info[o_ptr->k_idx].level;
     used_up = true;
