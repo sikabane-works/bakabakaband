@@ -417,6 +417,11 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
 
     cave_alter_feat(trapped_ptr, y, x, FF_HIT_TRAP);
 
+	if (trapped_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+        trapped_ptr->incident[INCIDENT::TRAPPED] = 0;
+    }
+    trapped_ptr->incident[INCIDENT::TRAPPED]++;
+
     /* Analyze */
     switch (trap_feat_type) {
     case TRAP_TRAPDOOR: {

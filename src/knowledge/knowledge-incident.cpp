@@ -23,6 +23,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     if (creature_ptr->incident.count(INCIDENT::LEAVE_FLOOR)) {
         fprintf(fff, _("あなたはこれまで%d回フロアを移動した。\n", "You moved %d floors\n"), creature_ptr->incident[INCIDENT::LEAVE_FLOOR]);
     }
+    if (creature_ptr->incident.count(INCIDENT::TRAPPED)) {
+        fprintf(fff, _("あなたはこれまで%d回罠にかかった。\n", "You have been trapped %d times.\n"), creature_ptr->incident[INCIDENT::TRAPPED]);
+    }
     if (creature_ptr->incident.count(INCIDENT::ATTACK_ACT_COUNT)) {
         fprintf(fff, _("あなたはこれまで%d回攻撃動作を行い、%d回攻撃を実行した。\n", "You have prepared %d attack action and execute %d attacks. \n"),
             creature_ptr->incident[INCIDENT::ATTACK_ACT_COUNT], creature_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]);
