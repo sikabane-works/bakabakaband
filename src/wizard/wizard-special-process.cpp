@@ -88,6 +88,7 @@
 #include "wizard/wizard-spells.h"
 #include "wizard/wizard-spoiler.h"
 #include "world/world.h"
+#include <vector>
 #define NUM_O_SET 8
 #define NUM_O_BIT 32
 
@@ -117,6 +118,8 @@ KIND_OBJECT_IDX wiz_create_itemtype(void)
     int num;
     TERM_LEN col, row;
     char ch;
+    std::vector<KIND_OBJECT_IDX> k_list;
+
     for (num = 0; (num < 80) && tvals[num].tval; num++) {
         row = 2 + (num % 20);
         col = 20 * (num / 20);
@@ -137,36 +140,53 @@ KIND_OBJECT_IDX wiz_create_itemtype(void)
 
     tval_type tval = static_cast<tval_type>(tvals[num].tval);
     concptr tval_desc = tvals[num].desc;
-    term_clear();
-    num = 0;
-    KIND_OBJECT_IDX choice[80];
-    char buf[160];
-    for (KIND_OBJECT_IDX i = 1; (num < 80) && (i < max_k_idx); i++) {
-        object_kind *k_ptr = &k_info[i];
-        if (k_ptr->tval != tval)
-            continue;
 
-        row = 2 + (num % 20);
-        col = 20 * (num / 20);
-        ch = listsym[num];
-        strcpy(buf, "                    ");
-        strip_name(buf, i);
-        prt(format("[%c] %s", ch, buf), row, col);
-        choice[num++] = i;
+    for (KIND_OBJECT_IDX i = 1; i < max_k_idx; i++) {
+        object_kind *k_ptr = &k_info[i];
+        if (k_ptr->tval == tval)
+            k_list.push_back(i);
     }
 
-    max_num = num;
-    if (!get_com(format("What Kind of %s? ", tval_desc), &ch, false))
-        return 0;
+    size_t page = 0;
+    const size_t page_list_num = 50;
 
-    for (num = 0; num < max_num; num++)
-        if (listsym[num] == ch)
-            break;
+    while (true) {
+        term_clear();
+        int i = 0;
+        size_t ci = 0;
+        KIND_OBJECT_IDX choice[80];
+        char buf[160];
+        for (i = 0, ci = page * page_list_num; ci < k_list.size() && ci < (page_list_num * (page + 1)); ci++, i++) {
+            row = 2 + (i % 20);
+            col = 20 * (i / 20);
+            ch = listsym[i];
+            strcpy(buf, "                    ");
+            strip_name(buf, k_list[ci]);
+            prt(format("[%c] %s", ch, buf), row, col);
+            choice[i] = k_list[ci];
+        }
 
-    if ((num < 0) || (num >= max_num))
-        return 0;
+        if (!get_com(format("What Kind of %s? (space to next page.)", tval_desc), &ch, false))
+            return 0;
 
-    return choice[num];
+
+        if (ch == ' ') {
+            page++;
+            if (page_list_num * page > k_list.size()) {
+                page = 0;
+            }
+            continue;
+        }
+
+        for (num = 0; num < max_num; num++)
+            if (listsym[num] == ch)
+                break;
+
+        if (num == max_num)
+            continue;
+
+        return choice[num];    
+    }
 }
 
 /*!
