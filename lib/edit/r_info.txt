@@ -28118,6 +28118,28 @@ F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL | HOMO_SEXUAL | PALADIN
 D:邪悪なるケツホルデス女王に従う騎士だ。捕虜に蝋燭を垂らす残虐な拷問もお手の物だ。
 
+N:1474:邪神『モッコス』
+E:M.O.C.C.O.S, the Evil Goddess
+G:H:w
+I:150:50d130:100:190:0
+W:81:2:0:40000:0:0
+B:CRUSH:SUPERHURT:8d12
+B:CRUSH:SUPERHURT:8d12
+B:CRUSH:SUPERHURT:8d12
+B:TOUCH:UN_POWER
+F:UNIQUE | FEMALE | CAN_FLY | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:KILL_WALL | NONLIVING
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | ELDRITCH_HORROR
+F:EVIL | DEMON | ANGEL | IM_FIRE | IM_COLD | IM_ELEC | NO_CONF | NO_SLEEP
+S:1_IN_6 | 
+S:CONF | SCARE | MIND_BLAST | BRAIN_SMASH | BR_DISI | S_CYBER
+D:恐れよ。称えよ。祈れよ。
+D:創造主の杜撰により、調和の宇宙の名と姿は醜く歪められてしまった。
+D:この狂える女神は破滅の車輪にまたがり、全ての物質を破砕し、
+D:全ての精神を狂わせるまで暴走を止めないだろう！
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
