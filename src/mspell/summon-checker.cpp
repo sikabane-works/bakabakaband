@@ -190,6 +190,9 @@ bool check_summon_specific(player_type *player_ptr, MONRACE_IDX summoner_idx, MO
         is_match |= (r_idx == MON_LION) || (r_idx == MON_BUFFALO) || (r_idx == MON_FIGHTER) || (r_idx == MON_GOLDEN_EAGLE);
         is_match |= (r_idx == MON_SHALLOW_PUDDLE) || (r_idx == MON_DEEP_PUDDLE) || (r_idx == MON_SKY_WHALE);
         break;
+    case SUMMON_POWERFUL_EYE_SENIOR:
+        is_match = r_idx == MON_POWERFUL_EYE_SENIOR;
+        break;
     default:
         break;
     }
