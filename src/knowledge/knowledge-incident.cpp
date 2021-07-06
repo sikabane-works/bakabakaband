@@ -39,6 +39,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     if (creature_ptr->incident.count(INCIDENT::READ_SCROLL)) {
         fprintf(fff, _("あなたはこれまで%d回巻物を読んだ。\n", "You have read scroll %d times. \n"), creature_ptr->incident[INCIDENT::READ_SCROLL]);
     }
+    if (creature_ptr->incident.count(INCIDENT::ZAP_STAFF)) {
+        fprintf(fff, _("あなたはこれまで%d回魔法の杖を振るった。\n", "You have zapped magic staff %d times. \n"), creature_ptr->incident[INCIDENT::ZAP_STAFF]);
+    }
     if (creature_ptr->incident.count(INCIDENT::EAT)) {
         fprintf(fff, _("あなたはこれまで%d回食事を摂った。\n", "You have eaten %d times.\n"), creature_ptr->incident[INCIDENT::EAT]);
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES)) {
