@@ -167,6 +167,11 @@ void chest_trap(player_type *target_ptr, POSITION y, POSITION x, OBJECT_IDX o_id
 	/* Obtain the traps */
 	trap = chest_traps[o_ptr->pval];
 
+	if (target_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+		target_ptr->incident[INCIDENT::TRAPPED] = 0;
+    }
+    target_ptr->incident[INCIDENT::TRAPPED]++;
+
 	/* Lose strength */
 	if (trap & (CHEST_LOSE_STR))
 	{

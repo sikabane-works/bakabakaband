@@ -23,6 +23,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     if (creature_ptr->incident.count(INCIDENT::LEAVE_FLOOR)) {
         fprintf(fff, _("あなたはこれまで%d回フロアを移動した。\n", "You moved %d floors\n"), creature_ptr->incident[INCIDENT::LEAVE_FLOOR]);
     }
+    if (creature_ptr->incident.count(INCIDENT::TRAPPED)) {
+        fprintf(fff, _("あなたはこれまで%d回罠にかかった。\n", "You have been trapped %d times.\n"), creature_ptr->incident[INCIDENT::TRAPPED]);
+    }
     if (creature_ptr->incident.count(INCIDENT::ATTACK_ACT_COUNT)) {
         fprintf(fff, _("あなたはこれまで%d回攻撃動作を行い、%d回攻撃を実行した。\n", "You have prepared %d attack action and execute %d attacks. \n"),
             creature_ptr->incident[INCIDENT::ATTACK_ACT_COUNT], creature_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]);
@@ -32,6 +35,18 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     }
     if (creature_ptr->incident.count(INCIDENT::THROW)) {
         fprintf(fff, _("あなたはこれまで%d回投擲を行った。\n", "You have thrown %d times. \n"), creature_ptr->incident[INCIDENT::THROW]);
+    }
+    if (creature_ptr->incident.count(INCIDENT::READ_SCROLL)) {
+        fprintf(fff, _("あなたはこれまで%d回巻物を読んだ。\n", "You have read scroll %d times. \n"), creature_ptr->incident[INCIDENT::READ_SCROLL]);
+    }
+    if (creature_ptr->incident.count(INCIDENT::ZAP_STAFF)) {
+        fprintf(fff, _("あなたはこれまで%d回魔法の杖を振るった。\n", "You have zapped magic staff %d times. \n"), creature_ptr->incident[INCIDENT::ZAP_STAFF]);
+    }
+    if (creature_ptr->incident.count(INCIDENT::ZAP_WAND)) {
+        fprintf(fff, _("あなたはこれまで%d回魔法棒を振るった。\n", "You have zapped magic wand %d times. \n"), creature_ptr->incident[INCIDENT::ZAP_WAND]);
+    }
+    if (creature_ptr->incident.count(INCIDENT::ZAP_ROD)) {
+        fprintf(fff, _("あなたはこれまで%d回ロッドを振るった。\n", "You have zapped magic rod %d times. \n"), creature_ptr->incident[INCIDENT::ZAP_ROD]);
     }
     if (creature_ptr->incident.count(INCIDENT::EAT)) {
         fprintf(fff, _("あなたはこれまで%d回食事を摂った。\n", "You have eaten %d times.\n"), creature_ptr->incident[INCIDENT::EAT]);

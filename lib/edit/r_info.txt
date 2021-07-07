@@ -26096,7 +26096,7 @@ B:TOUCH:FLAVOR
 B:TOUCH:FLAVOR
 B:TOUCH:FLAVOR
 B:DROOL:FLAVOR
-F:EVIL | NASTY | HOMO_SEXUAL | CAN_SPEAK | UNIQUE
+F:EVIL | NASTY | HOMO_SEXUAL | CAN_SPEAK | UNIQUE | NO_QUEST
 F:FORCE_MAXHP | DROP_CORPSE | RES_ALL | RAND_25 | RAND_50
 F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT
 S:1_IN_1 | 
@@ -28067,6 +28067,78 @@ F:EVIL
 D:聖壁の都サルヴァの最奥に居た深い底の王を打ち倒した後
 D:竜の血を求めたヨアは槍で眠り竜シンを貫いた。
 D:その結果シンの蓄えていた毒は都を滅ぼし、彼は姿を消したという。
+
+N:1470:巨大縦割れアナル
+E:Giant vertical crack anal
+G:>:U
+I:120:15d6:90:80:20
+W:14:5:0:125:0:0
+B:ENGULF:HURT:20d20
+F:COLD_BLOOD | EVIL | NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING |
+F:NASTY | FORCE_MAXHP | IM_FIRE | IM_ELEC | IM_POIS | IM_ACID | EMPTY_MIND |
+F:NEVER_MOVE
+D:$Often found in graveyards.
+D:それはただの下り坑道に見えるが、おや？ちょっと待てよ……
+
+N:1471:全裸騎士
+E:Knaked knight
+G:p:u
+I:103:14d10:20:10:10
+W:15:2:0:120:0:0
+B:HIT:HURT:5d5
+F:MALE | HUMAN | FRIENDS
+F:PREVENT_SUDDEN_MAGIC | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:GOOD | HOMO_SEXUAL | PALADIN
+D:邪悪なるケツホルデス女王の野望を挫くべく勇敢にも潜入を果たそうとした、
+D:逞しきほぼ全裸の騎士たちだ。その熾烈な剣劇を見よ！
+
+N:1472:空飛ぶ鮫
+E:Sky shark
+G:l:b
+I:112:20d10:20:35:30
+W:21:3:0:300:0:0
+B:BITE:HURT:3d15
+B:BITE:HURT:3d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY |
+F:DROP_CORPSE
+F:BASH_DOOR
+F:RES_WATE | RES_TELE | RIDING
+D:本来海の脅威であるはずの存在が、台風に乗って襲い来るぞ！チェンソーの用意はまだか！？
+
+N:1473:ケツホルデス騎士
+E:Ketholdeth knight
+G:p:s
+I:103:14d10:20:10:10
+W:15:2:0:120:0:0
+B:HIT:HURT:5d5
+F:MALE | HUMAN | FRIENDS
+F:PREVENT_SUDDEN_MAGIC | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL | HOMO_SEXUAL | PALADIN
+D:邪悪なるケツホルデス女王に従う騎士だ。捕虜に蝋燭を垂らす残虐な拷問もお手の物だ。
+
+N:1474:邪神『モッコス』
+E:M.O.C.C.O.S, the Evil Goddess
+G:H:w
+I:150:50d130:100:190:0
+W:81:2:0:40000:0:0
+B:CRUSH:SUPERHURT:8d12
+B:CRUSH:SUPERHURT:8d12
+B:CRUSH:SUPERHURT:8d12
+B:TOUCH:UN_POWER
+F:UNIQUE | FEMALE | CAN_FLY | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:KILL_WALL | NONLIVING
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | ELDRITCH_HORROR
+F:EVIL | DEMON | ANGEL | IM_FIRE | IM_COLD | IM_ELEC | NO_CONF | NO_SLEEP
+S:1_IN_6 | 
+S:CONF | SCARE | MIND_BLAST | BRAIN_SMASH | BR_DISI | S_CYBER
+D:恐れよ。称えよ。祈れよ。
+D:創造主の杜撰により、調和の宇宙の名と姿は醜く歪められてしまった。
+D:この狂える女神は破滅の車輪にまたがり、全ての物質を破砕し、
+D:全ての精神を狂わせるまで暴走を止めないだろう！
+
 
 # N: serial number : monster name
 # G: symbol : color

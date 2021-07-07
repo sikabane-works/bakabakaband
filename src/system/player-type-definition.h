@@ -23,6 +23,11 @@ enum class INCIDENT {
     SHOOT = 5,
     THROW = 6,
     LEAVE_FLOOR = 7,
+    TRAPPED = 8,
+    READ_SCROLL = 9,
+    ZAP_STAFF = 10,
+    ZAP_WAND = 11,
+    ZAP_ROD = 12,
     EAT_FECES = 100,
 };
 

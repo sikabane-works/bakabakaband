@@ -433,7 +433,6 @@ void floor_warp(player_type *creature_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
 {
     creature_ptr->dungeon_idx = dun_idx;
     creature_ptr->current_floor_ptr->dun_level = depth;
-    prepare_change_floor_mode(creature_ptr, CFM_RAND_PLACE);
     if (!is_in_dungeon(creature_ptr))
         creature_ptr->dungeon_idx = 0;
 
@@ -446,6 +445,5 @@ void floor_warp(player_type *creature_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
     creature_ptr->current_floor_ptr->inside_quest = 0;
     PlayerEnergy(creature_ptr).reset_player_turn();
     creature_ptr->energy_need = 0;
-    prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
-    creature_ptr->leaving = true;
+    move_floor(creature_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
 }
