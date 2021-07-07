@@ -60,6 +60,11 @@ int rod_effect(player_type *creature_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION d
     POSITION detect_rad = powerful ? DETECT_RAD_DEFAULT * 3 / 2 : DETECT_RAD_DEFAULT;
     POSITION rad = powerful ? 3 : 2;
 
+    if (creature_ptr->incident.count(INCIDENT::ZAP_ROD) == 0) {
+        creature_ptr->incident[INCIDENT::ZAP_ROD] = 0;
+    }
+    creature_ptr->incident[INCIDENT::ZAP_ROD]++;
+
     /* Unused */
     (void)magic;
 
