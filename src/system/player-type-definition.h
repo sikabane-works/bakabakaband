@@ -26,6 +26,7 @@ enum class INCIDENT {
     TRAPPED = 8,
     READ_SCROLL = 9,
     ZAP_STAFF = 10,
+    ZAP_WAND = 11,
     EAT_FECES = 100,
 };
 
