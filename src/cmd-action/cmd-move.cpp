@@ -155,6 +155,7 @@ void do_cmd_go_up(player_type *creature_ptr)
     else
         msg_print(_("階段を上って新たなる迷宮へと足を踏み入れた。", "You enter a maze of up staircases."));
 
+    move_floor(creature_ptr, 0);
 }
 
 /*!
