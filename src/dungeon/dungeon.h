@@ -93,6 +93,6 @@ typedef struct dungeon_type {
 extern DEPTH *max_dlv;
 extern std::vector<dungeon_type> d_info;
 
-typedef struct player_type player_type;
+class player_type;
 DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x);
 bool is_in_dungeon(player_type *creature_ptr);

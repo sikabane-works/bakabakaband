@@ -265,6 +265,6 @@ extern EGO_IDX max_e_idx;
 extern std::vector<ego_item_type> e_info;
 
 typedef struct object_type object_type;
-typedef struct player_type player_type;
+class player_type;
 byte get_random_ego(byte slot, bool good);
 void apply_ego(player_type *player_ptr, object_type *o_ptr, DEPTH lev);
