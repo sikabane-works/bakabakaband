@@ -157,7 +157,7 @@ typedef struct grid_template_type {
 
 // clang-format on
 typedef struct floor_type floor_type;
-typedef struct player_type player_type;
+class player_type;
 typedef struct monster_race monster_race;
 extern bool new_player_spot(player_type *creature_ptr);
 
