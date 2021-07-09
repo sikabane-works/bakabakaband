@@ -579,7 +579,28 @@ void exe_quaff_potion(player_type *creature_ptr, INVENTORY_IDX item)
                 } while (!ident || one_in_(2));
             }
             break;
+
+        case SV_POTION_ICHIZIKU_ENEMA:
+            msg_print(_("うぇ！思わず吐いてしまった。", "The potion makes you vomit!"));
+
+            switch (player_race_food(creature_ptr)) {
+            case PlayerRaceFood::RATION:
+            case PlayerRaceFood::WATER:
+            case PlayerRaceFood::BLOOD:
+                (void)set_food(creature_ptr, PY_FOOD_STARVE - 1);
+                break;
+            default:
+                break;
+            }
+
+            (void)set_poisoned(creature_ptr, 0);
+            (void)set_paralyzed(creature_ptr, creature_ptr->paralyzed + 4);
+            ident = true;
+            msg_print(_("この薬は直腸に注入するものらしい。", "The potion seems to be injected into the rectum"));
+            break;
+
         }
+
     }
 
     if (is_specific_player_race(creature_ptr, RACE_SKELETON)) {

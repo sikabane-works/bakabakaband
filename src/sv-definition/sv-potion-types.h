@@ -70,4 +70,5 @@ enum sv_potion_type {
     SV_POTION_TSUYOSHI = 65,
     SV_POTION_POLYMORPH = 66,
     SV_POTION_NEO_TSUYOSHI = 67,
+    SV_POTION_ICHIZIKU_ENEMA = 68
 };
