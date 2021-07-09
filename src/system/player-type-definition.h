@@ -28,6 +28,8 @@ enum class INCIDENT {
     ZAP_STAFF = 10,
     ZAP_WAND = 11,
     ZAP_ROD = 12,
+    STORE_BUY = 13,
+    STORE_SELL = 14,
     EAT_FECES = 100,
 };
 
