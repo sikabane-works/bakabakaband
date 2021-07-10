@@ -38,6 +38,8 @@
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spells-status.h"
+#include "spell/spell-types.h"
+#include "spell-kind/spells-launcher.h"
 #include "status/action-setter.h"
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
@@ -402,15 +404,21 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         msg_print("脱穀して炊いた方が良かったかもしれないが、多少空腹は収まった。");
         return true;
     case SV_FOOD_HIP:
-        (void)set_poisoned(creature_ptr, 10);
         msg_print("ヴォエ！食ったら尻の肉だった！");
         msg_print(NULL);
+        (void)set_poisoned(creature_ptr, 10);
         msg_print("「作者は広告で収入得てないけど、こんな卑猥なアイテム放置するなよ」");
         msg_print(NULL);
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
             creature_ptr->incident[INCIDENT::EAT_FECES] = 0;
         }
         creature_ptr->incident[INCIDENT::EAT_FECES]++;
+        return true;
+    case SV_FOOD_SURSTROMMING:
+        msg_print("悪臭が周囲を取り巻いた！");
+        msg_print(NULL);
+        fire_ball(creature_ptr, GF_POIS, 0, 30, 4);
+        (void)set_poisoned(creature_ptr, 10);
         return true;
     }
     return false;

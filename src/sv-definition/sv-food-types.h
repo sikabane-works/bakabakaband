@@ -36,4 +36,5 @@ enum sv_food_type {
     SV_FOOD_SEED_FEA = 43,
     SV_FOOD_HAMBURGER = 44,
     SV_FOOD_HIP = 45,
+    SV_FOOD_SURSTROMMING = 46,
 };
