@@ -28177,6 +28177,27 @@ F:OPEN_DOOR | BASH_DOOR |
 F:IM_ELEC | IM_POIS | HAS_LITE_1 |
 D:太陽の光の王グウィンの無き後、アノール・ロンドを守護する銀色の騎士だ。
 
+N:1478:古ウルクの修羅
+E:Asura of Ancient Uruk
+G:o:r
+I:135:60d50:20:140:10
+W:65:1:0:17000:0:0
+B:PUNCH:SUPERHURT:10d10
+B:PUNCH:SUPERHURT:10d10
+B:KICK:SUPERHURT:10d10
+B:KICK:SUPERHURT:10d10
+F:MALE | 
+F:DROP_4D2 | DROP_GOOD | FORCE_MAXHP | ONLY_ITEM
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:IM_FIRE | RES_DARK | RES_LITE | IM_COLD | IM_ELEC | RES_CHAO | RES_NETH | CAN_FLY
+F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | SELF_LITE_1
+S:1_IN_3
+S:HASTE | HEAL
+D:古ウルクの多くの文化圏には尚武の気風が培われているが、
+D:稀にその道に強く耽溺し、殺戮の技を極めた者は
+D:神々の末裔すら脅かすほどの達人にして怪物に成り果てる。
+D:徒手にて万物を砕こうとする彼らの狂気を恐れよ！
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
