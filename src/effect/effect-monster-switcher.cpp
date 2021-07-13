@@ -468,6 +468,8 @@ process_result switch_effects_monster(player_type *caster_ptr, effect_monster_ty
         return effect_monster_abyss(caster_ptr, em_ptr);
     case GF_DIRT:
         return effect_monster_abyss(caster_ptr, em_ptr);
+    case GF_STUNGUN:
+        return effect_monster_stungun(caster_ptr, em_ptr);
     default: {
         em_ptr->skipped = true;
         em_ptr->dam = 0;
