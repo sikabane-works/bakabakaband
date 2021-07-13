@@ -32,3 +32,4 @@ process_result effect_monster_icee_bolt(player_type *caster_ptr, effect_monster_
 process_result effect_monster_void(player_type *caster_ptr, effect_monster_type *em_ptr);
 process_result effect_monster_abyss(player_type *caster_ptr, effect_monster_type *em_ptr);
 process_result effect_monster_dirt(player_type *caster_ptr, effect_monster_type *em_ptr);
+process_result effect_monster_stungun(player_type *caster_ptr, effect_monster_type *em_ptr);

@@ -40,6 +40,7 @@
 #include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "sv-definition/sv-junk-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -248,6 +249,21 @@ static bool activate_rosmarinus(player_type *user_ptr, ae_type *ae_ptr)
     return true;
 }
 
+static bool activate_stungun(player_type *user_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != TV_JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN)
+        return false;
+
+    DIRECTION dir;
+    project_length = 1;
+    if (!get_aim_dir(user_ptr, &dir))
+        return false;
+
+    msg_print(_("『バチィ』", "'bzzt'"));
+    fire_ball(user_ptr, GF_STUNGUN, dir, user_ptr->lev, 0);
+    return true;
+}
+
 /*!
  * @brief 装備を発動するコマンドのサブルーチン /
  * Activate a wielded object.  Wielded objects never stack.
@@ -298,12 +314,13 @@ void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
 
     if (activate_whistle(user_ptr, ae_ptr)) {
         activated = true;
-    }
-    else if (exe_monster_capture(user_ptr, ae_ptr)) {
+    } else if (exe_monster_capture(user_ptr, ae_ptr)) {
         activated = true;
     } else if (activate_firethrowing(user_ptr, ae_ptr)) {
         activated = true;
     } else if (activate_rosmarinus(user_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_stungun(user_ptr, ae_ptr)) {
         activated = true;
     }
 

@@ -26,6 +26,7 @@
 #include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "sv-definition/sv-junk-types.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -172,7 +173,7 @@ concptr activation_explanation(player_type *owner_ptr, object_type *o_ptr)
 {
     BIT_FLAGS flgs[TR_FLAG_SIZE];
     object_flags(owner_ptr, o_ptr, flgs);
-    if (!(has_flag(flgs, TR_ACTIVATE)))
+    if (!(has_flag(flgs, TR_ACTIVATE)) && !(has_flag(flgs, TR_INVEN_ACTIVATE)))
         return (_("なし", "nothing"));
 
     if (activation_index(owner_ptr, o_ptr)) {
@@ -193,6 +194,10 @@ concptr activation_explanation(player_type *owner_ptr, object_type *o_ptr)
 
     if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_ROSMARINUS) {
         return _("神秘の霧", "Sacred mist");
+    }
+
+    if (o_ptr->tval == TV_JUNK && o_ptr->sval == SV_STUNGUN) {
+        return _("電気ショック", "Electorical shock");
     }
 
     return _("何も起きない", "Nothing");

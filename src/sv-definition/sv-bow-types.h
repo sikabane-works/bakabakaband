@@ -11,5 +11,6 @@ enum sv_bow_type {
     SV_HARP = 51, /* (x0) */
     SV_NAMAKE_BOW = 63, /* (x3) */
     SV_FLAMETHROWER = 52, /* (x0) */
-    SV_ROSMARINUS = 53 /* (x0) */
+    SV_ROSMARINUS = 53, /* (x0) */
+
 };
