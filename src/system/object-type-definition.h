@@ -13,7 +13,7 @@
 #include "system/system-variables.h"
 #include "util/flag-group.h"
 
-struct player_type;
+class player_type;
 typedef struct object_type {
     KIND_OBJECT_IDX k_idx{}; /*!< Kind index (zero if "dead") */
     POSITION iy{}; /*!< Y-position on map, or zero */
