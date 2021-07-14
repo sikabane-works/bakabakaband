@@ -452,6 +452,8 @@ bool affect_feature(player_type *caster_ptr, MONSTER_IDX who, POSITION r, POSITI
 
         break;
     }
+
+
     }
 
     lite_spot(caster_ptr, y, x);

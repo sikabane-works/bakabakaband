@@ -695,3 +695,21 @@ process_result effect_monster_dirt(player_type *caster_ptr, effect_monster_type 
 
     return PROCESS_CONTINUE;
 }
+
+process_result effect_monster_stungun(player_type *caster_ptr, effect_monster_type *em_ptr)
+{
+    if (em_ptr->seen)
+        em_ptr->obvious = true;
+
+    if ((em_ptr->r_ptr->flagsr & RFR_IM_ELEC) == 0) {
+        em_ptr->do_stun = (10 + randint1(15) + em_ptr->r) / (em_ptr->r + 1);    
+        return PROCESS_CONTINUE;
+    }
+
+    em_ptr->note = _("にはかなり耐性がある！", " resists a lot.");
+    em_ptr->dam /= 9;
+    if (is_original_ap_and_seen(caster_ptr, em_ptr->m_ptr))
+        em_ptr->r_ptr->r_flagsr |= (RFR_IM_ELEC);
+
+    return PROCESS_CONTINUE;
+}

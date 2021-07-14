@@ -198,6 +198,7 @@ void wr_player(player_type *creature_ptr)
 
     wr_s16b(creature_ptr->chaos_patron);
     wr_FlagGroup(creature_ptr->muta, wr_byte);
+    wr_FlagGroup(creature_ptr->trait, wr_byte);
 
     for (int i = 0; i < 8; i++)
         wr_s16b(creature_ptr->virtues[i]);

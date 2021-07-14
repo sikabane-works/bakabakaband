@@ -28139,6 +28139,100 @@ D:創造主の杜撰により、調和の宇宙の名と姿は醜く歪められ
 D:この狂える女神は破滅の車輪にまたがり、全ての物質を破砕し、
 D:全ての精神を狂わせるまで暴走を止めないだろう！
 
+N:1475:国民ホモサイレン
+E:National homo siren
+G:#:s
+I:120:11d10:4:100:0
+W:20:5:0:3:0:0
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | NEVER_BLOW | 
+F:NONLIVING | 
+F:IM_POIS | WILD_SWAMP | DROP_CORPSE |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | NASTY
+S:1_IN_1 | 
+S:SHRIEK
+D:常に野獣のイキ声を絶え間なく響かせている。うるせえ！
+
+N:1476:蠢くりんご
+E:Wriggle apple
+G:*:r
+I:113:1d1:10:15:5
+W:1:3:0:7:0:0
+F:NEVER_MOVE | NO_SLEEP | NO_FEAR | NO_CONF | CAN_FLY | NASTY | NEVER_BLOW
+F:NONLIVING | RAND_25 | RAND_50
+D:確かにそれはりんごに見える。だが、どこからともなく声が聞こえるのだ。
+D:「りんごは即刻中止せよ！繰り返す！りんごは即刻中止せよ！！」
+
+N:1477:グウィンの銀騎士
+E:Silver knight of Gwyn
+G:p:w
+I:115:30d30:25:90:10
+W:39:3:0:3000:2000:1091
+B:HIT:HURT:6d6
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
+B:HIT:HURT:10d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | RES_CHAO | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | NO_FEAR | NO_CONF
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_ELEC | IM_POIS | HAS_LITE_1 |
+D:太陽の光の王グウィンの無き後、アノール・ロンドを守護する銀色の騎士だ。
+
+N:1478:古ウルクの修羅
+E:Asura of Ancient Uruk
+G:o:r
+I:135:60d50:20:140:10
+W:65:1:0:17000:0:0
+B:PUNCH:SUPERHURT:10d10
+B:PUNCH:SUPERHURT:10d10
+B:KICK:SUPERHURT:10d10
+B:KICK:SUPERHURT:10d10
+F:MALE | 
+F:DROP_4D2 | DROP_GOOD | FORCE_MAXHP | ONLY_ITEM
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:IM_FIRE | RES_DARK | RES_LITE | IM_COLD | IM_ELEC | RES_CHAO | RES_NETH | CAN_FLY
+F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | SELF_LITE_1
+S:1_IN_3
+S:HASTE | HEAL
+D:古ウルクの多くの文化圏には尚武の気風が培われているが、
+D:稀にその道に強く耽溺し、殺戮の技を極めた者は
+D:神々の末裔すら脅かすほどの達人にして怪物に成り果てる。
+D:徒手にて万物を砕こうとする彼らの狂気を恐れよ！
+
+N:1479:葦名の足軽
+E:Ashigaru of Ashina
+G:p:U
+I:110:8d8:15:36:20
+W:8:2:0:30:0:0
+B:SLASH:HURT:3d5
+B:SLASH:HURT:3d5
+B:HIT:HURT:1d5
+F:MALE | HUMAN | WILD_ALL | HAS_LITE_2 |
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | FRIENDS
+D:葦名の水に培われ生まれ育った者は、
+D:天性の兵士としての素質を持ち、近隣にも精強と謡われる。
+D:それは半農の民兵とて例外ではない。
+
+N:1480:アラジン神『絶対許早苗』
+E:Absolute Yurusanae, The Alazin God
+G:p:G
+I:122:30d101:101:80:0
+W:50:3:0:20000:0:0
+B:PUNCH:TERRIFY:6d6
+B:PUNCH:TERRIFY:6d6
+B:PUNCH:TERRIFY:6d6
+B:PUNCH:TERRIFY:6d6
+F:UNIQUE | FEMALE | HAS_LITE_2 | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | RES_TELE |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:SMART | OPEN_DOOR | BASH_DOOR | CAN_FLY
+F:IM_FIRE | IM_COLD | IM_ACID | IM_POIS | NO_CONF | RES_NETH | RES_CHAO | RES_DISE |NO_SLEEP
+S:1_IN_3 | 
+S:HEAL | HASTE | TPORT | TELE_AWAY | BLIND | CONF | SCARE | 
+S:CAUSE_4 | BRAIN_SMASH | FORGET  | BO_MANA | PSY_SPEAR |
+S:S_ANGEL | S_DRAGON | S_KIN 
+D:東風谷早苗は今日も許さない。明日も許さない。
+D:そう、アラジン神である早苗さんは永遠に一切を許さないのだ。
 
 # N: serial number : monster name
 # G: symbol : color

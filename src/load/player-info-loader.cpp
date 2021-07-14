@@ -431,6 +431,10 @@ static void set_mutations(player_type *creature_ptr)
         }
     } else {
         rd_FlagGroup(creature_ptr->muta, rd_byte);
+
+        if (!loading_savefile_version_is_older_than(7)) {
+            rd_FlagGroup(creature_ptr->trait, rd_byte);
+        }
     }
 }
 

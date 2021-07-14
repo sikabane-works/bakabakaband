@@ -28,6 +28,8 @@ enum class INCIDENT {
     ZAP_STAFF = 10,
     ZAP_WAND = 11,
     ZAP_ROD = 12,
+    STORE_BUY = 13,
+    STORE_SELL = 14,
     EAT_FECES = 100,
 };
 
@@ -169,6 +171,7 @@ typedef struct player_type {
     PATRON_IDX chaos_patron{};
 
     EnumClassFlagGroup<MUTA> muta{}; /*!< 突然変異 / mutations */
+    EnumClassFlagGroup<MUTA> trait{}; /*!< 後天特性 / permanent trait */
 
     s16b virtues[8]{};
     s16b vir_types[8]{};

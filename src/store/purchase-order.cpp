@@ -307,6 +307,11 @@ void store_purchase(player_type *player_ptr)
     if (record_buy)
         exe_write_diary(player_ptr, DIARY_BUY, 0, o_name);
 
+    if (player_ptr->incident.count(INCIDENT::STORE_BUY) == 0) {
+        player_ptr->incident[INCIDENT::STORE_BUY] = 0;
+    }
+    player_ptr->incident[INCIDENT::STORE_BUY]++;
+
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
     if (record_rand_art && o_ptr->art_name)
         exe_write_diary(player_ptr, DIARY_ART, 0, o_name);
