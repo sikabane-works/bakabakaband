@@ -420,6 +420,10 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         fire_ball(creature_ptr, GF_POIS, 0, 30, 4);
         (void)set_poisoned(creature_ptr, 10);
         return true;
+    case SV_FOOD_HOMOTEA:
+        (void)set_stun(creature_ptr, 200);
+        msg_print("「お、大丈夫か？大丈夫か？……」");
+        return true;
     }
     return false;
 }
