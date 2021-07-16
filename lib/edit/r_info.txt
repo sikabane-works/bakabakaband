@@ -5885,7 +5885,7 @@ N:353:ミミック(箱)
 E:Chest mimic
 G:&:W
 I:110:10d14:30:40:0
-W:21:6:0:70:0:0
+W:21:6:0:70:250:965
 B:GAZE:CONFUSE:2d3
 B:CLAW:POISON:3d4
 B:CLAW:POISON:3d4
@@ -19543,7 +19543,7 @@ N:965:ミミック(ミミック(箱)の像)
 E:Statue of Chest mimic mimic
 G:`:W
 I:110:10d14:30:40:0
-W:21:6:0:70:0:0
+W:21:6:0:70:500:1482
 B:GAZE:CONFUSE:2d3
 B:CLAW:POISON:3d4
 B:CLAW:POISON:3d4
@@ -28250,6 +28250,78 @@ D:勇敢なサー・ロビンは無残な殺され方も恐れない。潰れて
 D:膝の皿が砕けても、頭蓋骨が砕け落ちて、脳味噌が吹き出て、心臓が抉り取られ、タマキンを潰されて、
 D:肛門が引き裂かれても恐れないだろう。
 D:是非、あなたの手で実際に試してみるといい。
+
+N:1482:ミミック(ミミック(ミミック(箱)の像)の像)
+E:Statu of Statue of Chest mimic mimic mimic
+G:`:W
+I:110:15d14:30:50:0
+W:25:6:0:70:1000:1483
+B:GAZE:CONFUSE:4d3
+B:CLAW:POISON:5d4
+B:CLAW:POISON:5d4
+B:SPIT:BLIND:4d3
+F:CHAR_MULTI | 
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
+F:EMPTY_MIND | COLD_BLOOD |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | CAUSE_3 | BA_POIS |
+S:S_MONSTER
+D:$This strange creature, transformed into an image of a strange creature
+D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$ to get close to its poisonous claws.
+D:$ Even so, its existence is really redundant.
+D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
+D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
+D:それにしてもその存在は実に冗長だ。
+
+N:1483:ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)
+E:Statu of Statu of Statue of Chest mimic mimic mimic mimic
+G:`:W
+I:110:20d14:30:60:0
+W:30:6:0:70:1000:1484
+B:GAZE:CONFUSE:6d3
+B:CLAW:POISON:7d4
+B:CLAW:POISON:7d4
+B:SPIT:BLIND:6d3
+F:CHAR_MULTI | 
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
+F:EMPTY_MIND | COLD_BLOOD |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | CAUSE_4 | BA_POIS |
+S:S_MONSTER
+D:$This strange creature, transformed into an image of a strange creature
+D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$ to get close to its poisonous claws.
+D:$ Even so, what a boring repetition.
+D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
+D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
+D:それにしてもなんてつまらない繰り返しだろうか。
+
+N:1484:ミミック(ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)の像)
+E:Statu of Statu of Statu of Statue of Chest mimic mimic mimic mimic mimic
+G:`:W
+I:110:20d14:30:70:0
+W:35:6:0:80:0:0
+B:GAZE:CONFUSE:8d3
+B:CLAW:POISON:9d4
+B:CLAW:POISON:11d4
+B:SPIT:BLIND:8d3
+F:CHAR_MULTI | 
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
+F:EMPTY_MIND | COLD_BLOOD |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | CAUSE_4 | BA_POIS |
+S:S_MONSTER
+D:$This strange creature, transformed into an image of a strange creature
+D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$ to get close to its poisonous claws.
+D:$ Are you tired of being sloppy?
+D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
+D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
+D:いい加減に飽きてこないか？
 
 # N: serial number : monster name
 # G: symbol : color
