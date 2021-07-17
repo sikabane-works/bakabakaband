@@ -2,6 +2,7 @@
 
 enum monster_race_type {
     MON_PLAYER = 0, // Dummy.
+    MON_MAGGOT = 8,
     MON_BEGGAR = 12,
     MON_LEPER = 13,
     MON_LION_HEART = 19,

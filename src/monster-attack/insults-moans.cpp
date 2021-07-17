@@ -21,3 +21,11 @@ concptr desc_moan[MAX_MOANS] = {
 	_("が縄張りから出て行けと言っている。", "tells you to get off his land."),
 	_("はキノコがどうとか呟いている。", "mumbles something about mushrooms."),
 };
+
+/*! 百合の間に挟まる男メッセージテーブル  */
+concptr desc_moan2[MAX_MOANS] = {
+    "「あー、美少女二人いっぺんに手に入れて両手に花してえ」",
+    "「百合カップルいいよなあ、間に挟まりてえ」",
+    "「百合好きなんて一部の声のでかいやつだけだろ？」",
+    "「子を成してこそだろ」",
+};
