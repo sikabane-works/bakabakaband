@@ -210,6 +210,12 @@ static bool stay_inn(player_type *customer_ptr)
 	charge_magic_eating_energy(customer_ptr);
 
 	display_stay_result(customer_ptr, prev_hour);
+
+    if (customer_ptr->incident.count(INCIDENT::STAY_INN) == 0) {
+		customer_ptr->incident[INCIDENT::STAY_INN] = 0;
+    }
+    customer_ptr->incident[INCIDENT::STAY_INN]++;
+
 	return true;
 }
 
