@@ -28324,7 +28324,7 @@ D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構え
 D:いい加減に飽きてこないか？
 
 N:1485:州民を滅ぼすもの
-E:Decimator of the Provinces
+E:Decimator of the provinces
 G:q:u
 I:125:60d60:30:125:50
 W:49:3:0:11000:0:0
@@ -28333,17 +28333,17 @@ B:CRUSH:SUPERHURT:10d10
 B:BITE:HURT:10d10
 B:BITE:HURT:10d10
 F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | ANIMAL | ELDRAZI | POWERFUL | REGENERATE | RIDING |
-F:MOVE_BODY | OPEN_DOOR | BASH_DOOR | KILL_WALL | KILL_BODY
+F:MOVE_BODY | OPEN_DOOR | BASH_DOOR | KILL_BODY
 F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_SKELETON | DROP_CORPSE |
 F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
 F:RES_SHAR | RES_SOUN | RES_DISE | RES_CHAO | RES_NETH
-F:REFLECTING | RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
+F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
 S:1_IN_4 | 
 S:SHRIEK
 D:エムラクールの影響を受け、おぞましき巨体を手に入れた猪だ。
 
 N:1486:昆虫の逸脱者
-E:Insectile Aberration
+E:Insectile aberration
 G:I:r
 I:120:12d9:20:40:10
 W:16:2:0:100:0:0
@@ -28360,6 +28360,25 @@ D:$—--Laboratory notes, final entry
 D:「残念ながら、私の実験動物はすべて死ぬか逃げるかしてしまった。
 D:ならば私が最後の実験台となろう。恐れは無い。重大な夜となるだろう」
 D:―研究記録、最後の書き込み
+
+N:1487:世界を壊すもの
+E:World breaker
+G:U:w
+I:115:30d60:20:130:50
+W:43:3:0:13000:0:0
+B:TOUCH:HURT:8d10
+B:TOUCH:HURT:8d10
+B:TOUCH:UN_POWER
+B:TOUCH:UN_BONUS:5d5
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | ELDRAZI | REGENERATE
+F:MOVE_BODY | OPEN_DOOR | BASH_DOOR | KILL_WALL | KILL_BODY
+F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_SKELETON | DROP_CORPSE |
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_CHAO | RES_NETH
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
+S:1_IN_10 | 
+S:BR_MANA | BR_DISE | BR_DISI
+D:ゼンディカーに姿を現したコジレックの大型の眷属だ。
 
 # N: serial number : monster name
 # G: symbol : color
