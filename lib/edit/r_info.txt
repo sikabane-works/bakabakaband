@@ -28394,6 +28394,23 @@ F:DROP_1D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
 F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
 D:葦名一心の元で戦国の剣術を学んだ素肌剣術の武者だ。
 
+N:1489:太郎兵
+E:Taro soldier
+G:P:u
+I:109:40d20:10:90:50
+W:26:3:0:300:0:0
+B:HIT:HURT:9d8
+B:HIT:HURT:9d8
+B:HIT:HURT:9d8
+B:HIT:HURT:9d8
+F:DROP_1D2
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:GIANT | HUMAN
+D:葦名の民の中にしばしば見られる、独特の顔つきをした
+D:巨漢の男が軍役についたものだ。頭の回らぬうすのろと小馬鹿にされているが、
+D:ひとたび暴れ出した彼らは、雑兵が束になったところで抑えられないだろう。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
