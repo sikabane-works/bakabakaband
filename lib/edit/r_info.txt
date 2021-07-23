@@ -28422,9 +28422,23 @@ B:KICK:HURT:12d12
 F:DROP_2D2
 F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
 F:GIANT | HUMAN | HURT_FIRE | NO_STUN | NO_SLEEP | NO_FEAR
-D:葦名の暗部で行われている「変若の淀み」と呼ばれる
+D:葦名の暗部で行われている研究の成果「変若の淀み」と呼ばれる
 D:力の産物で生まれたといわれる、鬼にも例えられる巨人だ。
 
+N:1491:『クラウストロフォビア』
+E:The Claustrophobia
+G:U:s
+I:115:30d40:40:100:30
+W:37:4:0:1500:0:0
+B:PUNCH:SHATTER:1d40
+B:PUNCH:SHATTER:1d40
+B:PUNCH:HURT:8d8
+B:TOUCH:PARALYZE:6d4
+F:DROP_2D2 | DROP_GOOD | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:GIANT | DEMON | FEMALE | HURT_ROCK | NO_STUN | NO_SLEEP | NO_FEAR
+D:人々の抱く「恐怖」の具現によって生まれるとされる人造の悪魔の一体だ。
+D:筋肉質な女性が4本の腕を持った姿をしている。
 
 # N: serial number : monster name
 # G: symbol : color
