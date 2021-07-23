@@ -38,7 +38,8 @@ enum class RF_ABILITY;
 
 typedef struct floor_type floor_type;
 typedef struct object_type object_type;
-typedef struct player_type {
+class player_type {
+public:
     int player_uid{};
     int player_euid{};
     int player_egid{};
@@ -444,6 +445,6 @@ typedef struct player_type {
     POSITION x{}; /*!< ダンジョンの現在X座標 / Player location in dungeon */
     GAME_TEXT name[32]{}; /*!< 現在のプレイヤー名 / Current player's character name */
     char base_name[32]{}; /*!< Stripped version of "player_name" */
-} player_type;
+};
 
 extern player_type *p_ptr;
