@@ -1,19 +1,30 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include "player-ability/player-ability-types.h"
 #include <string>
+#include <vector>
 
 /*!
  * @brief パトロン情報の定義 
  */
 class Patron {
-    std::string name; //!< パトロン名
+
+    public:
+    static void InitPatron();
+    std::string name = ""; //!< パトロン名
+    Patron(const char *_name, const char *_ename, const player_ability_type _boost_stat);
 #ifdef JP
-    std::string ename; //!< PatronName
+    std::string ename = ""; //!< PatronName
+    Patron(const char *name, const char *ename, const std::vector<int> reward_table, const player_ability_type boost_stat);
+#else
+    Patron(const char *name, const std::vector<int>, const player_ability_type boost_stat);
 #endif
-    int rewards[20]; //!< 報酬テーブル
-    int boost_stat; //!< 強化能力値傾向
+    std::vector<int> reward_table = {}; //!< 報酬テーブル
+    player_ability_type boost_stat = player_ability_type::A_STR; //!< 強化能力値傾向
 };
+
+extern std::vector<Patron> patron_list;
 
 #define MAX_PATRON 16 /*!< カオスパトロンの最大定義数 / The number of "patrons" available (for Chaos Warriors) */
 
