@@ -28461,6 +28461,26 @@ F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | NASTY | HOMO_SEXUAL
 D:「やっべえ、ホワイトマンじゃん」あの撮影から逃げ出してきたのだろうか？
 
+N:1493:怒り狂う島嶼『キャリクス』
+E:Charix, the Raging Isle
+G:K:B
+I:120:60d100:15:150:70
+W:59:2:0:30000:0:0
+B:CLAW:HURT:8d12
+B:CLAW:HURT:8d12
+B:CLAW:HURT:8d12
+B:BITE:HURT:10d14
+F:UNIQUE | DROP_CORPSE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_WALL |
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | 
+F:IM_ACID | IM_COLD | IM_POIS | RES_WATE | ANIMAL |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | AQUATIC
+S:1_IN_3 |
+S:BA_WATE
+D:ゼンディカーの地に近年は発見された、まさに島のごとき大きさを持った巨大な蟹だ。
+D:滅多なことで動かないようだが、このダンジョンにとあってはその怒りを鎮める要素は何一つなさそうだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
