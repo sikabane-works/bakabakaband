@@ -54,6 +54,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
     if (creature_ptr->incident.count(INCIDENT::STORE_SELL)) {
         fprintf(fff, _("あなたはこれまで%d回アイテムを売却した。\n", "You have sold item %d times. \n"), creature_ptr->incident[INCIDENT::STORE_SELL]);
     }
+    if (creature_ptr->incident.count(INCIDENT::STAY_INN)) {
+        fprintf(fff, _("あなたはこれまで%d回宿屋に宿泊した。\n", "You have stayed inn %d times. \n"), creature_ptr->incident[INCIDENT::STAY_INN]);
+    }
     if (creature_ptr->incident.count(INCIDENT::EAT)) {
         fprintf(fff, _("あなたはこれまで%d回食事を摂った。\n", "You have eaten %d times.\n"), creature_ptr->incident[INCIDENT::EAT]);
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES)) {

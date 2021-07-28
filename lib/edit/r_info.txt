@@ -2261,7 +2261,7 @@ F:EAT_GIVE_DEX | EAT_LOSE_WIS
 S:1_IN_5 | SHOOT | HEAL | TRAPS
 A:221:1:5
 V:75
-D:$The legendary archer steals from the rich (you qualify).
+D:$This legendary archer steals from the rich (you qualify).
 D:この伝説の射手は金持ち（あなたは合格）から金を盗む。
 
 #JZ#
@@ -5885,7 +5885,7 @@ N:353:ミミック(箱)
 E:Chest mimic
 G:&:W
 I:110:10d14:30:40:0
-W:21:6:0:70:0:0
+W:21:6:0:70:250:965
 B:GAZE:CONFUSE:2d3
 B:CLAW:POISON:3d4
 B:CLAW:POISON:3d4
@@ -18770,7 +18770,7 @@ F:DROP_CORPSE | ONLY_GOLD | DROP_2D2 | IM_ELEC | ANIMAL | AURA_ELEC
 F:SELF_LITE_1 | RAND_25 | RAND_50
 S:1_IN_6 | BR_ELEC | BO_ELEC
 D:$It's a cute mouse.
-D:$ However, static electricity is accumulated.
+D:$  However, it has accumulated some static electricity.
 D:可愛いネズミだ。しかし静電気が溜まっている。
 
 N:923:雪女
@@ -19435,7 +19435,7 @@ B:KICK:HURT:2d4
 F:WILD_WASTE | BASH_DOOR | RAND_25 |
 F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING
 D:$This creature is gentle and submissive until you try to ride it.  
-D:$Watch out for it's reckless kicking.
+D:$Watch out for its reckless kicking.
 D:馬は普段は従順で大人しい生き物であるが、
 D:一旦暴走しだすと手がつけられなくなる。
 
@@ -19543,7 +19543,7 @@ N:965:ミミック(ミミック(箱)の像)
 E:Statue of Chest mimic mimic
 G:`:W
 I:110:10d14:30:40:0
-W:21:6:0:70:0:0
+W:21:6:0:70:500:1482
 B:GAZE:CONFUSE:2d3
 B:CLAW:POISON:3d4
 B:CLAW:POISON:3d4
@@ -24492,7 +24492,7 @@ B:STING:HURT:4d10
 B:CRUSH:HURT:4d10
 F:EVIL | ANIMAL | DROP_CORPSE | BASH_DOOR | DROP_90 | DROP_1D2 | FRIENDS
 F:IM_POIS | RES_DARK
-D:$It is a Chaurus that keeps it's two front legs off the ground, ready to
+D:$It is a Chaurus that keeps its two front legs off the ground, ready to
 D:$ use as weapons.  It is often seen near the falmer.
 D:人間並みの身体に成長したシャウラスだ。
 D:ファルメルに飼われている姿をよく見かける。
@@ -26163,7 +26163,7 @@ F:EAT_GIVE_DEX | EAT_LOSE_WIS
 S:1_IN_5 | TRAPS
 A:221:1:5
 V:75
-D:$The legendary thief steals from the rich (you qualify).
+D:$This legendary thief steals from the rich (you qualify).
 D:この伝説の盗賊は金持ち（あなたは合格）から金を盗む
 
 N:1359:『火蜂』
@@ -26184,7 +26184,7 @@ S:1_IN_2 | INVULNER
 S:BO_MANA | BO_PLAS | ROCKET | PSY_SPEAR
 S:BA_FIRE | BA_LITE | BR_FIRE | BR_LITE | BR_SHAR | BR_PLAS
 D:$It is a flying object in the shape of a bee in flames.
-D:$  A great person sent you to kill you.
+D:$  A great person sent it to kill you.
 D:$  YOU SHALL DIE.
 D:炎に包まれた蜂の姿をした飛行物体だ。
 D:ある偉大な人物があなたを抹殺するために遣わした。
@@ -26305,7 +26305,7 @@ B:CRAWL:POISON:4d4
 F:FRIENDS | ANIMAL | CAN_SWIM | WEIRD_MIND | ELDRITCH_HORROR |
 F:IM_POIS | RES_DARK | NO_FEAR | RES_WATE
 S:1_IN_10 | BR_CHAO
-D:$It's a *illegally* dangerous creature.
+D:$It's an *illegally* dangerous creature.
 D:$  It grows octopus-like legs from a mice-like head.
 D:ネズミのような頭部から蛸のような足が生えている危険な生物だ。
 
@@ -26367,6 +26367,11 @@ F:UNIQUE | MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | CAN_SPEAK
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | KILL_BODY | EVIL | NO_CONF | REFLECTING
 S:1_IN_3 | INVULNER | WORLD | TELE_TO
+D:$He leads the gang organization, "Passione", which is mainly active in
+D:$ Italy.  He doesn't allow anyone, including the top executives in his
+D:$ gang, to explore his past or seek out information about himself.  With
+D:$ that obsession for secrecy, he gives all orders remotely or via multiple
+D:$ proxies so his true identity will not be revealed.
 D:イタリアを中心に活動するギャング組織「パッショーネ」のボス。
 D:何人たりとも自分の過去や情報を探ることを許さず、
 D:組織にも一切顔を出さないという臆病ともとれてしまうほどの用心深さから、
@@ -26386,6 +26391,9 @@ F:UNIQUE | MALE
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | CAN_SPEAK | ESCORTS | HUMAN
 F:OPEN_DOOR | BASH_DOOR | MOVE_BODY | EVIL | IM_POIS | NO_CONF | NO_SLEEP
 S:1_IN_2 | S_KIN
+D:$He leads the special forces of the Italian gang organization, "Passione",
+D:$ and is often used as a trump card by his boss.  He slaughtered Roman
+D:$ citizens with his stand, "Green Day", that sprays a flesh-eating mold.
 D:イタリアのギャング組織「パッショーネ」の特殊部隊
 D:「ボス親衛隊」の一人にして、ボスの切り札。
 D:食人カビを散布するスタンド「グリーン・ディ」によってローマ市民を虐殺した。
@@ -26470,11 +26478,10 @@ W:17:3:0:50:0:0
 B:BITE:HURT:3d4
 B:BITE:HURT:3d4
 F:BASH_DOOR | WILD_GRASS | ANIMAL | PASS_WALL
-D:$This terrifying tiger escapes from the folding screen
-D:$ in the mansion of a certain lord every night and eats people.
-D:$  So the lord asked the child priest to get rid of this tiger
-D:$ and kicked out the tiger from the folding screen,
-D:$ but the priest failed to catch it and ran away as it was.
+D:$This terrifying tiger used to escape nightly from the folding screen
+D:$ in a lord's mansion and eat people.  So the lord asked a child priest
+D:$ to get rid of the tiger.  The priest exorcised the tiger from the
+D:$ screen but did not catch it afterwards.  Now it roams as it wills.
 D:この恐るべき虎は、さる殿様の屋敷に飾ってある屏風から毎晩抜け出しては
 D:人を食い殺している。
 D:そこで殿様は坊主に退治を依頼して屏風からこの虎を出したが、
@@ -26494,9 +26501,9 @@ B:BITE:HURT:1d3
 B:CLAW:HURT:1d3
 F:RAND_25 | CAN_FLY | ANIMAL | PASS_WALL | WILD_GRASS | FRIENDS
 D:$A famous painter who stayed at a certain post station drew a sparrow
-D:$ on a folding screen due to lack of accommodation charges.
-D:$  It's frustrating because it doesn't enter a cage
-D:$ so it can't have a good rest.
+D:$ on a folding screen to help pay the bill for the room.  That incredibly
+D:$ lifelike bird is now frustrated that it doesn't have a cage where it
+D:$ can settle for a good rest.
 D:とある宿場に泊まった高名な絵師が宿代が足りなくて屏風へ描いた雀だ。
 D:駕籠がないのでゆっくり休めずイライラしている。
 
@@ -26675,8 +26682,8 @@ F:EVIL | GIANT | HUMAN | RES_DARK
 R:238:3d5
 S:1_IN_8 | TRAPS
 D:$A short and thin ogre.
-D:$  It has intelligence to execute trap learnt from ogre mage,
-D:$ and directs soldiers
+D:$  It is intelligent enough, directing soldiers and having learned the
+D:$ ogre mage's trick of placing traps.
 D:背が低く痩せたオーガだ。
 D:オーガメイジの罠を実行するだけの知能があり、雑兵に指図する。
 
@@ -26692,9 +26699,10 @@ B:HIT:HURT:3d8
 F:DROP_1D2
 F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
 F:EVIL | GIANT | HUMAN | RES_SHAR | KILL_WALL |
-D:$This majestic humanoid is hybrid of human and giant.
-D:$  Wall of dungeon pays respect to blood of one parent,
-D:$ incarnation of nature, and pave the way.
+D:$This majestic humanoid is a hybrid of human and giant.
+D:$  Paying homage to the blood of one parent, an
+D:$ incarnation of nature, the walls of the dungeon open up
+D:$ to grant it passage.
 D:この堂々たる体躯の人型生物は、人間と巨人の混血だ。
 D:自然の顕現である片親の血に敬意を払い、ダンジョンの壁が道を開ける。
 
@@ -26731,12 +26739,10 @@ B:CRUSH:HURT:4d8
 F:INVISIBLE | BASH_DOOR | DROP_90 | EVIL | DEMON | ELDRITCH_HORROR | CAN_SPEAK
 R:318:1d1
 R:1008:1d1
-D:$It is raised while being hidden from human society by mortal
-D:$ and near-mortal relatives.
-D:$  It is usually invisible, but it looks like a twisted rope,
-D:$ full of tentacles and eyeballs, resembling an octopus, a centipede,
-D:$ or a spider, and also has appearance of a mortal pedigree.
-D:$  It is raised hidden from human society by mortal and near-mortal relatives.
+D:$A mixed-race child of Yog-Sothoth and a mortal, it is usually invisible,
+D:$ but it looks like a twisted rope, full of tentacles and eyeballs,
+D:$ resembling an octopus, a centipede, or a spider.  It is raised, hidden
+D:$ from human society, by mortal and near-mortal relatives.
 D:ヨグ=ソトートと定命のものの混血児だ。
 D:それは通常は目に見えないが、綱をよじり合わせたような、触手と目玉だらけの姿で、
 D:タコかムカデかクモに似ており、そこに定命のほうの血統が現れた外見をしている。
@@ -26941,8 +26947,8 @@ I:110:3d6:20:10:20
 W:3:2:0:12:0:0
 B:CRUSH:HURT:3d6
 F:WILD_ONLY | FRIENDS | ANIMAL | EVIL | WILD_ALL
-D:$It is an annoying runaway tribe that interferes with traffic
-D:$ on a stolen motorcycle under the autumn full moon.
+D:$It is one of an annoying runaway tribe that interferes with traffic
+D:$ on stolen motorcycles under the autumn full moon.
 D:十五夜になると盗難バイクで往来の邪魔をする迷惑系暴走族だ。
 
 N:1401:気狂いピエロ『ドネルド・マクドネルド』
@@ -27009,7 +27015,7 @@ B:BUTT:HURT:8d4
 F:BASH_DOOR | RAND_25 | CAN_SWIM | NO_FEAR | FRIENDS | WILD_SWAMP
 F:ANIMAL | DROP_SKELETON | DROP_CORPSE | RIDING
 D:$Big water buffalo!
-D:$  This big horn may penetrate you.
+D:$  Its big horn may penetrate you.
 D:巨大な水牛だ。その角はあなたの肉体を貫くかもしれない。
 
 N:1405:イヌワシ
@@ -27068,7 +27074,7 @@ W:23:2:0:160:0:0
 B:CLAW:HURT:2d9
 B:BITE:HURT:2d9
 F:WILD_GRASS | WILD_WASTE | FRIENDS | ANIMAL | DROP_CORPSE | DROP_SKELETON
-D:$It is called as the king of beasts.
+D:$It is often called the king of beasts.
 D:百獣の王だ。
 
 N:1410:ピカチャウ
@@ -27098,7 +27104,7 @@ F:SELF_LITE_1 | RAND_25
 S:1_IN_5 | BR_ELEC | BO_ELEC
 D:$It is a character of a "Famous Key Monster" (Fakemon for short),
 D:$ a game that is very popular all over the world.
-D:$  It drinks secretly not only at home but also at work.
+D:$  It drinks secretly, not only at home but also at work.
 D:世界中で大人気のゲーム、パチパチモンスター略してパチモンのキャラだ。
 D:それは家だけでなく職場でもこっそり酒を飲んでいる。
 
@@ -27189,8 +27195,8 @@ F:IM_FIRE | IM_COLD | IM_ELEC | RES_LITE
 S:1_IN_7 | DISPEL
 R:293:4d2
 R:449:1d3
-D:$Bastral is the strongest berserker. He has never lost a single combat　 
-D:$since he got Windberg the legendary battle ax.
+D:$Bastral is the strongest berserker. He has never lost a single combat
+D:$ since he got Windberg, the legendary battle ax.
 D:最強の狂戦士バストラルは、伝説のバトル・アックス、
 D:ウィンドバーグを手にして以来、一度も一騎討ちに敗れたことはない。
 
@@ -27258,9 +27264,9 @@ B:BITE:HURT:1d12
 B:BITE:HURT:1d5
 F:UNIQUE | FORCE_MAXHP | ESCORT | BASH_DOOR
 F:ANIMAL | NO_FEAR | NO_SLEEP | WILD_WOOD | WILD_WASTE | DROP_CORPSE
-D:$It is the boss of the pack of man-eating wolves 
-D:$that plunged the city of Paris into the depths of fear.
-D:$It has reddish hair, a large body, and a short tail like a stump.
+D:$It is the boss of the pack of man-eating wolves
+D:$ that plunged the city of Paris into the depths of fear.
+D:$  It has reddish hair, a large body, and a short tail like a stump.
 D:パリの街を恐怖のどん底に陥れた、人喰い狼の群れのボスだ。
 D:赤みがかった体毛、大きな体、切り株のような短い尻尾を持つ。
 
@@ -27275,6 +27281,10 @@ B:BITE:SUPERHURT:5d4
 F:DROP_CORPSE | ANIMAL | HURT_FIRE | NEVER_MOVE
 F:| DROP_90 | IM_POIS | RES_WATE | CAN_SWIM | CAN_FLY
 S:1_IN_4 | SHOOT | BO_FIRE | BA_POIS
+D:$This ferocious carnivorous plant has a flower, lined with sharp fangs,
+D:$ more than capable of dispatching a person.  It is often found in clay
+D:$ pipes:  occasionally preying on humans who stupidly step too close.
+D:$  Some individuals spit out flames or poisonous gas.
 D:食虫植物が意思を持った凶暴な人喰い花で、鋭い牙を生やしている。
 D:おもに土管の中に潜んでおり、時々顔を出して愚かにも自分を踏もうとした人間を捕食する。
 D:口から炎や毒ガスやシューリンガンなどを吐き出して攻撃してくる個体もいる。
@@ -27816,11 +27826,11 @@ F:IM_ELEC | IM_FIRE | RES_PLAS
 F:WEIRD_MIND | BASH_DOOR | MOVE_BODY | HUMAN | NONLIVING | HAS_LITE_2
 F:NO_STUN | NO_SLEEP | NO_CONF | DROP_GOOD | DROP_4D2
 S:1_IN_4 | BR_PLAS | BO_PLAS | S_KIN
-D:$A professor who boasted that plasma can explain
+D:$He is a professor who boasted that plasma can explain
 D:$ all the paranormal phenomena in the world.
-D:$  The whole body has been remodeled with plasma,
+D:$  His whole body has been remodeled with plasma,
 D:$ making it hard to say that it is a human being.
-D:$  The Serpent of Chaos are also a type of plasma for him.
+D:$  The Serpent of Chaos is also a type of plasma for him.
 D:この世すべての超常現象はプラズマで説明できると豪語する教授だ。
 D:全身にプラズマ改造を施し、もはや人間とは言い難いものになっている。
 D:混沌のサーペントも彼にとってはプラズマの一種である。
@@ -27836,7 +27846,7 @@ B:CRUSH:HURT:3d6
 F:BASH_DOOR | KILL_BODY | NONLIVING | COLD_BLOOD | CAN_FLY | IM_FIRE | IM_POIS
 F:NO_CONF | NO_SLEEP | NO_STUN | EMPTY_MIND | RES_TELE
 D:$You got yourself a rogue Bludger.
-D:$That has been tampered with.
+D:$  That has been tampered with.
 D:なんてこった、チンピラブラッジャーのお出ましだ。
 D:誰かが細工してこちらに差し向けたのだろう。
 
@@ -28233,6 +28243,244 @@ S:CAUSE_4 | BRAIN_SMASH | FORGET  | BO_MANA | PSY_SPEAR |
 S:S_ANGEL | S_DRAGON | S_KIN 
 D:東風谷早苗は今日も許さない。明日も許さない。
 D:そう、アラジン神である早苗さんは永遠に一切を許さないのだ。
+
+N:1481:勇敢なるサー『ロビン』
+E:Sir Robin, the Brave
+G:p:w
+I:110:10d8:20:20:5
+W:6:1:0:50
+B:HIT:HURT:3d4
+B:HIT:HURT:3d4
+B:HIT:HURT:3d4
+F:MALE | PALADIN | HUMAN | FORCE_MAXHP | UNIQUE
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_90 | DROP_GREAT | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_WIS | EAT_LOSE_INT
+D:勇敢なサー・ロビンは無残な殺され方も恐れない。潰れて死ぬのも、目玉が飛び出て、手がもげても、
+D:膝の皿が砕けても、頭蓋骨が砕け落ちて、脳味噌が吹き出て、心臓が抉り取られ、タマキンを潰されて、
+D:肛門が引き裂かれても恐れないだろう。
+D:是非、あなたの手で実際に試してみるといい。
+
+N:1482:ミミック(ミミック(ミミック(箱)の像)の像)
+E:Statu of Statue of Chest mimic mimic mimic
+G:`:W
+I:110:15d14:30:50:0
+W:25:6:0:70:1000:1483
+B:GAZE:CONFUSE:4d3
+B:CLAW:POISON:5d4
+B:CLAW:POISON:5d4
+B:SPIT:BLIND:4d3
+F:CHAR_MULTI | 
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
+F:EMPTY_MIND | COLD_BLOOD |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | CAUSE_3 | BA_POIS |
+S:S_MONSTER
+D:$This strange creature, transformed into an image of a strange creature
+D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$ to get close to its poisonous claws.
+D:$ Even so, its existence is really redundant.
+D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
+D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
+D:それにしてもその存在は実に冗長だ。
+
+N:1483:ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)
+E:Statu of Statu of Statue of Chest mimic mimic mimic mimic
+G:`:W
+I:110:20d14:30:60:0
+W:30:6:0:70:1000:1484
+B:GAZE:CONFUSE:6d3
+B:CLAW:POISON:7d4
+B:CLAW:POISON:7d4
+B:SPIT:BLIND:6d3
+F:CHAR_MULTI | 
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
+F:EMPTY_MIND | COLD_BLOOD |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | CAUSE_4 | BA_POIS |
+S:S_MONSTER
+D:$This strange creature, transformed into an image of a strange creature
+D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$ to get close to its poisonous claws.
+D:$ Even so, what a boring repetition.
+D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
+D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
+D:それにしてもなんてつまらない繰り返しだろうか。
+
+N:1484:ミミック(ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)の像)
+E:Statu of Statu of Statu of Statue of Chest mimic mimic mimic mimic mimic
+G:`:W
+I:110:20d14:30:70:0
+W:35:6:0:80:0:0
+B:GAZE:CONFUSE:8d3
+B:CLAW:POISON:9d4
+B:CLAW:POISON:11d4
+B:SPIT:BLIND:8d3
+F:CHAR_MULTI | 
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
+F:EMPTY_MIND | COLD_BLOOD |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | CAUSE_4 | BA_POIS |
+S:S_MONSTER
+D:$This strange creature, transformed into an image of a strange creature
+D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$ to get close to its poisonous claws.
+D:$ Are you tired of being sloppy?
+D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
+D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
+D:いい加減に飽きてこないか？
+
+N:1485:州民を滅ぼすもの
+E:Decimator of the provinces
+G:q:u
+I:125:60d60:30:125:50
+W:49:3:0:11000:0:0
+B:CRUSH:SUPERHURT:10d10
+B:CRUSH:SUPERHURT:10d10
+B:BITE:HURT:10d10
+B:BITE:HURT:10d10
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | ANIMAL | ELDRAZI | POWERFUL | REGENERATE | RIDING |
+F:MOVE_BODY | OPEN_DOOR | BASH_DOOR | KILL_BODY
+F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_SKELETON | DROP_CORPSE |
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_CHAO | RES_NETH
+F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
+S:1_IN_4 | 
+S:SHRIEK
+D:エムラクールの影響を受け、おぞましき巨体を手に入れた猪だ。
+
+N:1486:昆虫の逸脱者
+E:Insectile aberration
+G:I:r
+I:120:12d9:20:40:10
+W:16:2:0:100:0:0
+B:STING:HURT:3d4
+B:STING:HURT:3d4
+B:STING:HURT:3d4
+F:IM_POIS | IM_COLD | COLD_BLOOD | ANIMAL | HUMAN | EVIL | 
+F:NO_SLEEP | NO_CONF | CAN_FLY | DROP_SKELETON
+S:1_IN_6
+S:MISSILE
+D:$"Unfortunately, all my test animals have died or escaped,
+D:$ so I shall be the final subject. I feel no fear. This is a momentous night."
+D:$—--Laboratory notes, final entry
+D:「残念ながら、私の実験動物はすべて死ぬか逃げるかしてしまった。
+D:ならば私が最後の実験台となろう。恐れは無い。重大な夜となるだろう」
+D:―研究記録、最後の書き込み
+
+N:1487:世界を壊すもの
+E:World breaker
+G:U:w
+I:115:30d60:20:130:50
+W:43:3:0:13000:0:0
+B:TOUCH:HURT:8d10
+B:TOUCH:HURT:8d10
+B:TOUCH:UN_POWER
+B:TOUCH:UN_BONUS:5d5
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | ELDRAZI | REGENERATE
+F:MOVE_BODY | OPEN_DOOR | BASH_DOOR | KILL_WALL | KILL_BODY
+F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_SKELETON | DROP_CORPSE |
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_CHAO | RES_NETH
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
+S:1_IN_10 | 
+S:BR_MANA | BR_DISE | BR_DISI
+D:ゼンディカーに姿を現したコジレックの大型の眷属だ。
+
+N:1488:葦名流門弟
+E:Disciple of Ashina-ryu
+G:p:U
+I:110:20d11:35:70:4
+W:17:4:0:300:0:0
+B:SLASH:HURT:4d6
+B:SLASH:HURT:4d6
+B:SLASH:HURT:4d6
+B:SLASH:HURT:4d6
+F:MALE | HAS_LITE_1 |
+F:DROP_1D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+D:葦名一心の元で戦国の剣術を学んだ素肌剣術の武者だ。
+
+N:1489:太郎兵
+E:Taro soldier
+G:P:u
+I:109:40d20:10:90:50
+W:26:3:0:300:0:0
+B:HIT:HURT:9d8
+B:HIT:HURT:9d8
+B:HIT:HURT:9d8
+B:HIT:HURT:9d8
+F:DROP_1D2
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:GIANT | HUMAN
+D:葦名の民の中にしばしば見られる、独特の顔つきをした
+D:巨漢の男が軍役についたものだ。頭の回らぬうすのろと小馬鹿にされているが、
+D:ひとたび暴れ出した彼らは、雑兵が束になったところで抑えられないだろう。
+
+N:1490:葦名の赤鬼
+E:Chained Ogre of Ashina
+G:P:u
+I:112:40d30:20:120:30
+W:31:4:0:800:0:0
+B:HIT:HURT:8d10
+B:HIT:HURT:8d12
+B:HIT:HURT:8d8
+B:KICK:HURT:12d12
+F:DROP_2D2
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:GIANT | HUMAN | HURT_FIRE | NO_STUN | NO_SLEEP | NO_FEAR
+D:葦名の暗部で行われている研究の成果「変若の淀み」と呼ばれる
+D:力の産物で生まれたといわれる、鬼にも例えられる巨人だ。
+
+N:1491:『クラウストロフォビア』
+E:The Claustrophobia
+G:U:s
+I:115:30d40:40:100:30
+W:37:4:0:1500:0:0
+B:PUNCH:SHATTER:1d40
+B:PUNCH:SHATTER:1d40
+B:PUNCH:HURT:8d8
+B:TOUCH:PARALYZE:6d4
+F:DROP_2D2 | DROP_GOOD | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:GIANT | DEMON | FEMALE | HURT_ROCK | NO_STUN | NO_SLEEP | NO_FEAR
+D:人々の抱く「恐怖」の具現によって生まれるとされる人造の悪魔の一体だ。
+D:筋肉質な女性が4本の腕を持った姿をしている。
+
+N:1492:『ホワイトマン』
+E:The White Man
+G:p:w
+I:110:1d3:40:0:3
+W:0:10:0:0:0:0
+B:HIT:HURT:1d2
+F:UNIQUE | MALE | DROP_CORPSE
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | NASTY | HOMO_SEXUAL
+D:「やっべえ、ホワイトマンじゃん」あの撮影から逃げ出してきたのだろうか？
+
+N:1493:怒り狂う島嶼『キャリクス』
+E:Charix, the Raging Isle
+G:K:B
+I:120:60d100:15:150:70
+W:59:2:0:30000:0:0
+B:CLAW:HURT:8d12
+B:CLAW:HURT:8d12
+B:CLAW:HURT:8d12
+B:BITE:HURT:10d14
+F:UNIQUE | DROP_CORPSE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_WALL |
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | 
+F:IM_ACID | IM_COLD | IM_POIS | RES_WATE | ANIMAL |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | AQUATIC
+S:1_IN_3 |
+S:BA_WATE
+D:ゼンディカーの地に近年は発見された、まさに島のごとき大きさを持った巨大な蟹だ。
+D:滅多なことで動かないようだが、このダンジョンにとあってはその怒りを鎮める要素は何一つなさそうだ。
+
 
 # N: serial number : monster name
 # G: symbol : color

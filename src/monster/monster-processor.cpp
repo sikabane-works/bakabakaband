@@ -417,7 +417,7 @@ bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, P
     if (multiply_barrier(target_ptr, m_idx))
         k = 8;
 
-    if ((k < 4) && (!k || !randint0(k * MON_MULT_ADJ))) {
+    if ((k < 5) && (!k || !randint0(k * MON_MULT_ADJ))) {
         if (multiply_monster(target_ptr, m_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
             if (target_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(target_ptr, m_ptr))
                 r_ptr->r_flags2 |= RF2_MULTIPLY;

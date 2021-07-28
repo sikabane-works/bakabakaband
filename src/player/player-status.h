@@ -8,7 +8,7 @@
 #include "system/angband.h"
 
 typedef struct object_type object_type;
-typedef struct player_type player_type;
+class player_type;
 int weapon_exp_level(int weapon_exp);
 int riding_exp_level(int riding_exp);
 int spell_exp_level(int spell_exp);
@@ -38,5 +38,6 @@ bool is_invuln(player_type *creature_ptr);
 bool is_hero(player_type *creature_ptr);
 bool is_shero(player_type *creature_ptr);
 bool is_echizen(player_type *creature_ptr);
+bool is_chargeman(player_type *creature_ptr);
 
 void stop_mouth(player_type *caster_ptr);

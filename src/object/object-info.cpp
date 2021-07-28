@@ -200,6 +200,10 @@ concptr activation_explanation(player_type *owner_ptr, object_type *o_ptr)
         return _("電気ショック", "Electorical shock");
     }
 
+    if (o_ptr->tval == TV_BOW && o_ptr->sval == SV_RAYGUN) {
+        return _("はかいこうせん", "Blaster");
+    }
+
     return _("何も起きない", "Nothing");
 }
 

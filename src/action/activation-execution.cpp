@@ -261,6 +261,21 @@ static bool activate_stungun(player_type *user_ptr, ae_type *ae_ptr)
 
     msg_print(_("『バチィ』", "'bzzt'"));
     fire_ball(user_ptr, GF_STUNGUN, dir, user_ptr->lev, 0);
+    project_length = 0;
+    return true;
+}
+
+static bool activate_raygun(player_type *user_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != TV_BOW || ae_ptr->o_ptr->sval != SV_RAYGUN)
+        return false;
+
+    DIRECTION dir;
+    if (!get_aim_dir(user_ptr, &dir))
+        return false;
+
+    msg_print(_("『ビィーム！』", "'ZAP! ZAP!'"));
+    fire_bolt(user_ptr, GF_MISSILE, dir, 10 + user_ptr->lev * 2);
     return true;
 }
 
@@ -321,6 +336,8 @@ void exe_activate(player_type *user_ptr, INVENTORY_IDX item)
     } else if (activate_rosmarinus(user_ptr, ae_ptr)) {
         activated = true;
     } else if (activate_stungun(user_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_raygun(user_ptr, ae_ptr)) {
         activated = true;
     }
 

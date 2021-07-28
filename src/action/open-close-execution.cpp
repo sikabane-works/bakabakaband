@@ -27,6 +27,8 @@
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "object/object-kind-hook.h"
+#include "floor/floor-object.h"
 
 /*!
  * @brief 「開ける」動作コマンドのサブルーチン /
@@ -260,10 +262,18 @@ bool exe_disarm(player_type *creature_ptr, POSITION y, POSITION x, DIRECTION dir
         j = 2;
 
     if (randint0(100) < j) {
+        object_type forge;
+        object_type *q_ptr = &forge;
+        q_ptr->prep(creature_ptr, lookup_kind(TV_TRAP, 0));
+        q_ptr->pval = g_ptr->feat;
+
         msg_format(_("%sを解除した。", "You have disarmed the %s."), name);
         gain_exp(creature_ptr, power);
         cave_alter_feat(creature_ptr, y, x, FF_DISARM);
         exe_movement(creature_ptr, dir, easy_disarm, false);
+
+        (void)drop_near(creature_ptr, q_ptr, -1, y, x);
+
     } else if ((i > 5) && (randint1(i) > 5)) {
         if (flush_failure)
             flush();
