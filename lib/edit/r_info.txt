@@ -28481,6 +28481,22 @@ S:BA_WATE
 D:ゼンディカーの地に近年は発見された、まさに島のごとき大きさを持った巨大な蟹だ。
 D:滅多なことで動かないようだが、このダンジョンにとあってはその怒りを鎮める要素は何一つなさそうだ。
 
+#JZ#
+N:1494:『たると』
+E:Taruto
+G:t:W
+I:110:1d11:25:0:25
+W:0:10:0:50:0:0
+B:GAZE:BLIND:1d1
+B:TOUCH:EAT_ITEM
+F:ONLY_ITEM | DROP_90 | DROP_GREAT | DROP_CORPSE | UNIQUE
+F:CHAR_MULTI | CHAR_CLEAR | ATTR_CLEAR | INVISIBLE
+F:RAND_25 | HUMAN | HOMO_SEXUAL
+F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON | NASTY
+S:1_IN_10
+S:SHRIEK
+D:彼は視聴できません。
+
 
 # N: serial number : monster name
 # G: symbol : color
