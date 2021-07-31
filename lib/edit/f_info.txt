@@ -2030,6 +2030,16 @@ K:DESTROYED:GRASS
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | REMEMBER | CAN_FLY | PLANT |
 F:HURT_DISI | TELEPORTABLE
 
+N:255:SPIDER SILK NET
+J:蜘蛛糸の網
+E:Spider silk net
+G:':w:LIT
+W:2
+W:2
+K:DESTROYED:*FLOOR*
+F:POWER_10 | REMEMBER | TUNNEL | HAS_ITEM | HURT_ROCK | CAN_PASS | CAN_DIG |
+F:HURT_DISI
+
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
