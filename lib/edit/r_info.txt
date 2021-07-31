@@ -28510,6 +28510,17 @@ F:ONLY_GOLD | DROP_60 | FRIENDS
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:奇妙な信仰の下、外部の者を容赦なく襲う生気の感じられない村民たちだ。
 
+N:1496:『ニコニコ本社』
+E:Niconico main office
+G:#:w
+I:110:10d10:40:45:20
+W:19:1:0:750:0:0
+B:EXPLODE:SHATTER:50d2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE | NEVER_MOVE
+F:EMPTY_MIND | STUPID | NASTY | COLD_BLOOD | DROP_90 | DROP_GREAT
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_TELE
+D:それは勝手に自滅する。今も自滅し続けている。KIRIN自販機くんやパルコくんは見逃して差し上げろ。
+
 
 # N: serial number : monster name
 # G: symbol : color
