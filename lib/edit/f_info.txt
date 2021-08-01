@@ -2040,6 +2040,14 @@ K:DESTROYED:*FLOOR*
 F:POWER_10 | REMEMBER | TUNNEL | HAS_ITEM | HURT_ROCK | CAN_PASS | CAN_DIG |
 F:HURT_DISI
 
+N:256:PARK_BENCH
+J:公園のベンチ
+E:Park Bench
+G:::w:LIT
+W:2
+K:DESTROYED:GRASS
+F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | REMEMBER | CAN_FLY
+F:HURT_DISI | TELEPORTABLE
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
