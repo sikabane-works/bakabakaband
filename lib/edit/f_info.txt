@@ -2076,6 +2076,22 @@ K:DESTROYED:GRASS
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | REMEMBER | CAN_FLY
 F:HURT_DISI | TELEPORTABLE
 
+N:260:DEEP_SEWAGE_PUDDLE
+J:深い下水溜まり
+E:Deep sewage puddle
+G:~:s:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | REMEMBER | WATER | DEEP | CAN_FLY | CAN_SWIM |
+F:TELEPORTABLE
+
+N:261:SHALLOW_SEWAGE_PUDDLE
+J:浅い下水溜まり
+E:Shallow sewage puddle
+G:~:W:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | REMEMBER | WATER | SHALLOW |
+F:CAN_FLY | CAN_SWIM | TELEPORTABLE
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
