@@ -183,6 +183,7 @@ bool trans_sex(player_type *caster_ptr)
     caster_ptr->window_flags |= PW_PLAYER;
     caster_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
     caster_ptr->redraw |= PR_BASIC | PR_HP | PR_MANA | PR_STATS;
+    sp_ptr = &sex_info[caster_ptr->psex];
     handle_stuff(caster_ptr);
     return true;
 }
