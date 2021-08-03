@@ -18,6 +18,16 @@
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-checker.h"
+#include "io/input-key-acceptor.h"
+#include "io/input-key-processor.h"
+#include "term/screen-processor.h"
+#include "player/player-sex.h"
+#include "util/int-char-converter.h"
+#include "util/bit-flags-calculator.h"
+#include "market/building-util.h"
+#include "core/player-update-types.h"
+#include "core/player-redraw-types.h"
+#include "core/window-redrawer.h"
 
 /*!
  * @brief 変身処理向けにモンスターの近隣レベル帯モンスターを返す /
@@ -126,4 +136,53 @@ bool polymorph_monster(player_type *caster_ptr, POSITION y, POSITION x)
     if (health_tracked)
         health_track(caster_ptr, hack_m_idx_ii);
     return polymorphed;
+}
+
+/*!
+ * @brief 性転換処理
+ * @param caster_ptr プレーヤーへの参照ポインタ
+ * @return テレポート処理を決定したか否か
+ */
+bool trans_sex(player_type *caster_ptr)
+{
+    screen_save();
+    clear_bldg(4, 10);
+
+    int i;
+    int num = 0;
+    for (i = 0; i < MAX_SEXES; i++) {
+        char buf[80];
+
+        if (i == caster_ptr->psex)
+            continue;
+
+        sprintf(buf, "%c) %-20s", I2A(i), sex_info[i].title);
+        prt(buf, 5 + i, 5);
+        num++;
+    }
+
+    prt(_("どの性別に変わりますか:", "Which sex do you chenge: "), 0, 0);
+    while (true) {
+        i = inkey();
+
+        if (i == ESCAPE) {
+            screen_load();
+            return false;
+        }
+
+        else if ((i < 'a') || (i > ('a' + MAX_SEXES - 1)))
+            continue;
+        else if (i - 'a' == caster_ptr->psex)
+            continue;
+        break;
+    }
+
+    caster_ptr->psex = i - 'a';
+
+    screen_load();
+    caster_ptr->window_flags |= PW_PLAYER;
+    caster_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
+    caster_ptr->redraw |= PR_BASIC | PR_HP | PR_MANA | PR_STATS;
+    handle_stuff(caster_ptr);
+    return true;
 }
