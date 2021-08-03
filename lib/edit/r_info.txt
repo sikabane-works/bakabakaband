@@ -20313,7 +20313,7 @@ W:40:3:0:500:0:0
 B:SHOOT:HURT:9d6
 B:HIT:HURT:10d8
 B:HIT:HURT:10d8
-F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR |
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
 F:ONLY_ITEM | DROP_1D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
 F:IM_ACID | IM_COLD | RES_WATE | RES_NETH |
 S:1_IN_2 |
@@ -28553,6 +28553,22 @@ F:EVIL | GIANT | MALE | RIDING
 D:このエントの縁戚と思われる存在は、反出生主義に目覚めたのか。
 D:森とその同族たちを憎み、斬りつけ続けることを止めようとしない。
 
+N:1499:エルフの賎民
+E:Elven lowly people
+G:h:g
+I:110:10d30:20:30:20
+W:28:3:0:500:0:0
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
+F:ONLY_ITEM | DROP_90 | DROP_SKELETON | DROP_CORPSE |
+F:IM_ACID | IM_COLD | RES_WATE | RES_NETH | WILD_TOWN |
+D:結局のところ、全てのクイヴィエーネンの湖に起源をもつエルフの血筋が美しく尊いとは限らない。
+D:メルコールを崇める古ウルクや古オログに早々に隷属を強いられた者、その混血に生まれた者。
+D:至福の地への逃亡の中でもいがみ合い、脱落した者、たどり着いた後も卑賎な役目を負わされた者。
+D:その寿命を持て余し怠惰なままに日々を過ごし、マンドスの館にも迎え入れられぬ者。
+D:彼らが美辞麗句に満ちた詩文の中に残ることはない。
 
 
 # N: serial number : monster name
