@@ -28591,6 +28591,23 @@ S:TELE_AWAY | TPORT | CAUSE_4 | BRAIN_SMASH | DRAIN_MANA
 S:BR_NUKE | BR_POIS | BR_CHAO | BR_NEXU | ANIM_DEAD
 D:それは奇形、忌むべきすべての、究極の源であるらしい、おやちょっと待てよ？
 
+N:1501:『バットマン(淫夢)』
+E:Batman(INM)
+G:p:s
+I:130:20d100:70:90:4
+W:39:4:0:8000:0:0
+B:HIT:HURT:8d10
+B:HIT:HURT:8d10
+B:HIT:HURT:8d10
+F:UNIQUE | MALE | FORCE_MAXHP | HUMAN | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:REGENERATE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | RES_TELE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | NASTY | HOMO_SEXUAL
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
+S:1_IN_6 | BLIND | HEAL | HASTE | CONF |
+D:「あっ（察し）ふーん（侮蔑）」このダークヒーローの偽物のホモは
+D:野獣先輩のみならず、多くのホモを侮蔑している。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
