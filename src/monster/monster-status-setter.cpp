@@ -19,6 +19,7 @@
 #include "monster/monster-util.h"
 #include "monster/smart-learn-types.h"
 #include "player-info/avatar.h"
+#include "player/player-status-flags.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -379,6 +380,11 @@ bool set_monster_timewalk(player_type *target_ptr, int num, MONRACE_IDX who, boo
 
         msg_format(mes, m_name);
         msg_print(NULL);
+    }
+
+    if (has_resist_time(target_ptr)) {
+        msg_print(_("しかし、あなたは時を止める力を打ち消した！", "But, you have countered power of time stop!"));
+        return false;
     }
 
     current_world_ptr->timewalk_m_idx = hack_m_idx;
