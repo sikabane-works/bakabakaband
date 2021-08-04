@@ -28570,6 +28570,26 @@ D:至福の地への逃亡の中でもいがみ合い、脱落した者、たど
 D:その寿命を持て余し怠惰なままに日々を過ごし、マンドスの館にも迎え入れられぬ者。
 D:彼らが美辞麗句に満ちた詩文の中に残ることはない。
 
+N:1500:誤解の源『ゴムホース』
+E:Gomhoth, Source of Misunderstand
+G:J:G
+I:130:20d60:50:100:0
+W:65:20:0:20000:0:0
+B:TOUCH:ACID:6d11
+B:TOUCH:DISEASE:6d11
+B:TOUCH:ACID:6d11
+B:TOUCH:POISON:6d11
+F:ONLY_ITEM | DROP_1D2 | CAN_SWIM |
+F:DROP_GOOD | DROP_GREAT |
+F:CAN_SPEAK | EVIL | UNIQUE | NEVER_MOVE | FORCE_MAXHP | 
+F:IM_ACID | IM_POIS | IM_COLD | IM_ELEC | RES_NETH | RES_WATE | RES_NEXU 
+F:NO_FEAR | NO_CONF | NO_SLEEP | DEMON | SMART | ELDRITCH_HORROR | RES_CHAO |
+F:COLD_BLOOD | RES_DISE | NO_STUN
+S:1_IN_6 |
+S:S_MONSTERS | S_DEMON | S_HI_DRAGON | S_HI_UNDEAD | HEAL |
+S:TELE_AWAY | TPORT | CAUSE_4 | BRAIN_SMASH | DRAIN_MANA
+S:BR_NUKE | BR_POIS | BR_CHAO | BR_NEXU | ANIM_DEAD
+D:それは奇形、忌むべきすべての、究極の源であるらしい、おやちょっと待てよ？
 
 # N: serial number : monster name
 # G: symbol : color
