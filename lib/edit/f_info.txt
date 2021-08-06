@@ -2110,6 +2110,14 @@ K:DESTROYED:FLOOR
 F:POWER_10 | MOVE | PLACE | DROP | REMEMBER | TUNNEL | AVOID_RUN | CAN_FLY |
 F:HURT_DISI
 
+N:264:STEEL_COLUMN
+J:鉄骨柱
+E:Steel column
+G:#:y:LIT
+W:2
+K:DESTROYED:*FLOOR*
+F:POWER_80 | REMEMBER | TUNNEL | WALL | HURT_ROCK | CAN_PASS | HURT_DISI
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
