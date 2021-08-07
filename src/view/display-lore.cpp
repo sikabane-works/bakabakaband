@@ -349,7 +349,7 @@ void display_monster_never_move(lore_type *lore_ptr)
 void display_monster_kind(lore_type *lore_ptr)
 {
     if ((((lore_ptr->flags3 & (RF3_DRAGON | RF3_DEMON | RF3_GIANT | RF3_TROLL | RF3_ORC | RF3_ANGEL)) == 0) &&
-        ((lore_ptr->flags8 & (RF8_ELDRAZI | RF8_QUYLTHLUG | RF8_ELF | RF8_DWARF | RF8_HOBBIT)) == 0) &&
+        ((lore_ptr->flags8 & (RF8_ELDRAZI | RF8_QUYLTHLUG | RF8_ELF | RF8_DWARF | RF8_HOBBIT | RF8_SPIDER)) == 0) &&
         ((lore_ptr->flags2 & (RF2_QUANTUM | RF2_HUMAN)) == 0))) {
         hooked_roff(_("モンスター", " creature"));
         return;
@@ -369,6 +369,9 @@ void display_monster_kind(lore_type *lore_ptr)
 
     if (lore_ptr->flags8 & RF8_QUYLTHLUG)
         hook_c_roff(TERM_RED, _("クイルスルグ", " quylthlug"));
+
+    if (lore_ptr->flags8 & RF8_SPIDER)
+        hook_c_roff(TERM_SLATE, _("蜘蛛", " spider"));
 
     if (lore_ptr->flags3 & RF3_DRAGON)
         hook_c_roff(TERM_ORANGE, _("ドラゴン", " dragon"));
