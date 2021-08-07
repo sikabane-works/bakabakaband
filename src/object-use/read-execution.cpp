@@ -502,6 +502,10 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             ident = true;
             break;
         }
+        case SV_SCROLL_TREE_CREATION: {
+            tree_creation(creature_ptr, creature_ptr->y, creature_ptr->x);
+            break;
+        }
         }
         }
     } else if (o_ptr->name1 == ART_GHB) {
