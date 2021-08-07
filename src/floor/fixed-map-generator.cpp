@@ -436,6 +436,9 @@ parse_error_type generate_fixed_map_floor(player_type *player_ptr, qtwg_type *qt
     if (qtwg_ptr->buf[0] == 'F')
         return parse_line_feature(player_ptr->current_floor_ptr, qtwg_ptr->buf);
 
+    //if (qtwg_ptr->buf[0] == 'S') // TODO
+    //    return parse_line_start_point(player_ptr->current_floor_ptr, qtwg_ptr->buf);
+
     if (qtwg_ptr->buf[0] == 'D') {
         char *s = qtwg_ptr->buf + 2;
         if (init_flags & INIT_ONLY_BUILDINGS)

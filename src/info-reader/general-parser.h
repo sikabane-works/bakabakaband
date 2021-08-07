@@ -22,7 +22,9 @@ extern dungeon_grid letter[255];
 
 struct angband_header;
 struct floor_type;
+struct town_type;
 
 errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr(std::string_view, angband_header *)> parse_info_txt_line);
+parse_error_type parse_line_start_point(town_type *town_ptr, char *buf);
 parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf);
 parse_error_type parse_line_building(char *buf);
