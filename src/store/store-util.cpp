@@ -5,6 +5,7 @@
  */
 
 #include "store/store-util.h"
+#include "store/store-owners.h"
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object-enchant/item-feeling.h"
@@ -130,6 +131,8 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
 void store_create(
     player_type *player_ptr, KIND_OBJECT_IDX fix_k_idx, black_market_crap_pf black_market_crap, store_will_buy_pf store_will_buy, mass_produce_pf mass_produce)
 {
+    const owner_type *ow_ptr = &owners[cur_store_num][st_ptr->owner];
+
     if (st_ptr->stock_num >= st_ptr->stock_size)
         return;
 
@@ -137,16 +140,16 @@ void store_create(
         KIND_OBJECT_IDX k_idx;
         DEPTH level;
         if (cur_store_num == STORE_BLACK) {
-            level = 25 + randint0(25);
+            level = ow_ptr->level + 20 + randint0(25);
             k_idx = get_obj_num(player_ptr, level, 0x00000000);
             if (k_idx == 0)
                 continue;
         } else if (fix_k_idx > 0) {
             k_idx = fix_k_idx;
-            level = rand_range(1, STORE_OBJ_LEVEL);
+            level = rand_range(1, ow_ptr->level);
         } else {
             k_idx = st_ptr->table[randint0(st_ptr->table.size())];
-            level = rand_range(1, STORE_OBJ_LEVEL);
+            level = rand_range(1, ow_ptr->level);
         }
 
         object_type forge;

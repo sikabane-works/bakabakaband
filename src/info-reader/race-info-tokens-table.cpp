@@ -346,6 +346,7 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
 	{ "NASTY", RF8_NASTY },
 	{ "WILD_SWAMP", RF8_WILD_SWAMP },
 	{ "WILD_ALL", RF8_WILD_ALL },
+    { "SPIDER", RF8_SPIDER },
 };
 
 /*!

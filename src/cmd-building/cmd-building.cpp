@@ -59,6 +59,7 @@
 #include "player/player-personality-types.h"
 #include "spell-kind/spells-perception.h"
 #include "spell-kind/spells-world.h"
+#include "spell-kind/spells-polymorph.h"
 #include "spell/spells-status.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -290,6 +291,12 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         paid = true;
         bcost = repair_broken_weapon(player_ptr, bcost);
         break;
+
+    case BACT_TRANS_SEX:
+        paid = true;
+        trans_sex(player_ptr);
+        break;
+
     }
 
     if (paid)

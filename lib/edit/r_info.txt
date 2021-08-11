@@ -214,6 +214,8 @@ F:RAND_25 | FRIENDS | HUMAN |
 F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
 D:$He looks squalid and thoroughly revolting.
 D:彼は汚らしくて本当に頭に来る奴だ。
+S:1_IN_1 | 
+S:WORLD
 
 #J0#
 N:2:やせこけた猫
@@ -18890,7 +18892,7 @@ F:EMPTY_MIND | WEIRD_MIND | REGENERATE | SHAPECHANGER | ATTR_ANY | POWERFUL |
 F:AURA_FIRE | AURA_ELEC | OPEN_DOOR | BASH_DOOR | PASS_WALL | KILL_WALL |
 F:TAKE_ITEM | KILL_ITEM | ORC | TROLL | GIANT | DRAGON | DEMON | UNDEAD |
 F:EVIL | ANIMAL | GOOD | AURA_COLD | NONLIVING | HURT_ROCK |
-F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | HUMAN | ANGEL
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | HUMAN | ANGEL | SPIDER
 F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
 F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
 F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP |
@@ -20313,7 +20315,7 @@ W:40:3:0:500:0:0
 B:SHOOT:HURT:9d6
 B:HIT:HURT:10d8
 B:HIT:HURT:10d8
-F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR |
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
 F:ONLY_ITEM | DROP_1D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
 F:IM_ACID | IM_COLD | RES_WATE | RES_NETH |
 S:1_IN_2 |
@@ -28439,14 +28441,14 @@ N:1491:『クラウストロフォビア』
 E:The Claustrophobia
 G:U:s
 I:115:30d40:40:100:30
-W:37:4:0:1500:0:0
+W:37:4:0:2000:0:0
 B:PUNCH:SHATTER:1d40
 B:PUNCH:SHATTER:1d40
 B:PUNCH:HURT:8d8
 B:TOUCH:PARALYZE:6d4
 F:DROP_2D2 | DROP_GOOD | FORCE_MAXHP
-F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
-F:GIANT | DEMON | FEMALE | HURT_ROCK | NO_STUN | NO_SLEEP | NO_FEAR
+F:OPEN_DOOR | BASH_DOOR | UNIQUE
+F:DEMON | FEMALE | HURT_ROCK | NO_STUN | NO_SLEEP | NO_FEAR
 D:人々の抱く「恐怖」の具現によって生まれるとされる人造の悪魔の一体だ。
 D:筋肉質な女性が4本の腕を持った姿をしている。
 
@@ -28480,6 +28482,213 @@ S:1_IN_3 |
 S:BA_WATE
 D:ゼンディカーの地に近年は発見された、まさに島のごとき大きさを持った巨大な蟹だ。
 D:滅多なことで動かないようだが、このダンジョンにとあってはその怒りを鎮める要素は何一つなさそうだ。
+
+#JZ#
+N:1494:『たると』
+E:Taruto
+G:t:W
+I:110:1d11:25:0:25
+W:0:10:0:50:0:0
+B:GAZE:BLIND:1d1
+B:TOUCH:EAT_ITEM
+F:ONLY_ITEM | DROP_90 | DROP_GREAT | DROP_CORPSE | UNIQUE
+F:CHAR_MULTI | CHAR_CLEAR | ATTR_CLEAR | INVISIBLE
+F:RAND_25 | HUMAN | HOMO_SEXUAL
+F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON | NASTY
+S:1_IN_10
+S:SHRIEK
+D:彼は視聴できません。
+
+N:1495:水生の村民
+E:Mibu villager
+G:t:g
+I:110:3d4:10:1:10
+W:0:10:0:0:0:0
+B:HIT:HURT:1d4
+B:HIT:HURT:1d4
+F:MALE | WILD_ONLY | WILD_WOOD | HUMAN |
+F:RAND_25 | DROP_SKELETON | DROP_CORPSE |
+F:ONLY_GOLD | DROP_60 | FRIENDS
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+D:奇妙な信仰の下、外部の者を容赦なく襲う生気の感じられない村民たちだ。
+
+N:1496:『ニコニコ本社』
+E:Niconico main office
+G:#:w
+I:110:10d10:40:45:20
+W:19:1:0:750:0:0
+B:EXPLODE:SHATTER:50d2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE | NEVER_MOVE
+F:EMPTY_MIND | STUPID | NASTY | COLD_BLOOD | DROP_90 | DROP_GREAT
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_TELE
+D:それは勝手に自滅する。今も自滅し続けている。KIRIN自販機くんやパルコくんは見逃して差し上げろ。
+
+N:1497:『森を憎むもの』
+E:The Forest Hater
+G:#:g
+I:118:30d120:30:140:15
+W:43:3:0:15500:0:0
+B:SLASH:HURT:10d11
+B:SLASH:HURT:10d11
+B:SLASH:HURT:10d11
+B:SLASH:HURT:10d11
+F:DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HURT_FIRE |
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | MOVE_BODY | UNIQUE
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:EVIL | GIANT | MALE | RIDING
+D:このエントの縁戚と思われる存在は、反出生主義に目覚めたのか。
+D:森とその同族たちを憎み、斬りつけ続けることを止めようとしない。
+
+N:1498:『木を殺すもの』
+E:The Tree Killer
+G:#:G
+I:120:10d100:30:110:15
+W:43:3:0:13500:0:0
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+F:DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HURT_FIRE |
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | MOVE_BODY | UNIQUE
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:EVIL | GIANT | MALE | RIDING
+D:このエントの縁戚と思われる存在は、反出生主義に目覚めたのか。
+D:森とその同族たちを憎み、斬りつけ続けることを止めようとしない。
+
+N:1499:エルフの賎民
+E:Elven lowly people
+G:h:g
+I:110:10d30:20:30:20
+W:28:3:0:500:0:0
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
+F:ONLY_ITEM | DROP_90 | DROP_SKELETON | DROP_CORPSE |
+F:IM_ACID | IM_COLD | RES_WATE | RES_NETH | WILD_TOWN |
+D:結局のところ、全てのクイヴィエーネンの湖に起源をもつエルフの血筋が美しく尊いとは限らない。
+D:メルコールを崇める古ウルクや古オログに早々に隷属を強いられた者、その混血に生まれた者。
+D:至福の地への逃亡の中でもいがみ合い、脱落した者、たどり着いた後も卑賎な役目を負わされた者。
+D:その寿命を持て余し怠惰なままに日々を過ごし、マンドスの館にも迎え入れられぬ者。
+D:彼らが美辞麗句に満ちた詩文の中に残ることはない。
+
+N:1500:誤解の源『ゴムホース』
+E:Gomhoth, Source of Misunderstand
+G:J:G
+I:130:20d60:50:100:0
+W:65:20:0:20000:0:0
+B:TOUCH:ACID:6d11
+B:TOUCH:DISEASE:6d11
+B:TOUCH:ACID:6d11
+B:TOUCH:POISON:6d11
+F:ONLY_ITEM | DROP_1D2 | CAN_SWIM |
+F:DROP_GOOD | DROP_GREAT |
+F:CAN_SPEAK | EVIL | UNIQUE | NEVER_MOVE | FORCE_MAXHP | 
+F:IM_ACID | IM_POIS | IM_COLD | IM_ELEC | RES_NETH | RES_WATE | RES_NEXU 
+F:NO_FEAR | NO_CONF | NO_SLEEP | DEMON | SMART | ELDRITCH_HORROR | RES_CHAO |
+F:COLD_BLOOD | RES_DISE | NO_STUN
+S:1_IN_6 |
+S:S_MONSTERS | S_DEMON | S_HI_DRAGON | S_HI_UNDEAD | HEAL |
+S:TELE_AWAY | TPORT | CAUSE_4 | BRAIN_SMASH | DRAIN_MANA
+S:BR_NUKE | BR_POIS | BR_CHAO | BR_NEXU | ANIM_DEAD
+D:それは奇形、忌むべきすべての、究極の源であるらしい、おやちょっと待てよ？
+
+N:1501:『バットマン(淫夢)』
+E:Batman(INM)
+G:p:s
+I:130:20d100:70:90:4
+W:39:4:0:8000:0:0
+B:HIT:HURT:8d10
+B:HIT:HURT:8d10
+B:HIT:HURT:8d10
+F:UNIQUE | MALE | FORCE_MAXHP | HUMAN | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:REGENERATE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | RES_TELE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | NASTY | HOMO_SEXUAL
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
+S:1_IN_6 | BLIND | HEAL | HASTE | CONF |
+D:「あっ（察し）ふーん（侮蔑）」このダークヒーローの偽物のホモは
+D:野獣先輩のみならず、多くのホモを侮蔑している。
+
+N:1502:『NKTIDKSG』
+G:p:u
+E:NKTIDKSG
+I:110:8d14:20:35:25
+W:9:1:0:300:0:0
+B:PUNCH:HURT:4d5
+B:PUNCH:HURT:4d5
+F:UNIQUE | FORCE_MAXHP | MALE
+F:DROP_60 | DROP_90 | DROP_GOOD | NASTY | HOMO_SEXUAL
+D:胸囲100ぴったり、痩せましたね、ええ、痩せました。
+
+N:1503:『スコトフォビア』
+E:The Scotophobia
+G:U:s
+I:110:20d50:40:90:30
+W:33:4:0:1700:0:0
+B:ENGULF:BLIND:5d5
+B:ENGULF:BLIND:5d5
+B:ENGULF:BLIND:5d5
+B:ENGULF:BLIND:5d5
+F:DROP_2D2 | DROP_GOOD | FORCE_MAXHP | UNIQUE
+F:OPEN_DOOR | BASH_DOOR | SELF_DARK_2 | SELF_DARK_1
+F:DEMON | MALE | NO_STUN | NO_SLEEP | NO_FEAR
+S:1_IN_3 | BLIND | BR_DARK
+D:人々の抱く「恐怖」の具現によって生まれるとされる人造の悪魔の一体だ。
+D:暗黒の球体から翼と角の生えた男性の姿をしている。
+
+N:1504:鉄十字キラー『スパイダーマッ』
+E:Spidermma the Killer of Iron Cross Army
+G:p:R
+I:140:30d100:100:150:0
+W:65:2:0:20000:0:0
+B:KICK:HURT:7d10
+B:HIT:SUPERHURT:7d8
+B:KICK:HURT:7d10
+B:HIT:SUPERHURT:7d8
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | SPIDER
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GREAT |
+F:OPEN_DOOR | POWERFUL | MOVE_BODY | CAN_SWIM |
+F:GOOD | IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | 
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
+F:RES_TELE | NO_CONF | NO_SLEEP | NO_STUN |
+S:1_IN_2 | 
+S:HASTE | HEAL | BLINK | INVULNER
+D:彼は情け無用の男であり、地獄から来た使者であり、鉄十字キラーであり、
+D:キノコ狩りの男であり、親の愛に泣く男であり、復讐に燃える男であり、約束に命を懸ける男であり、
+D:犬笛にむせび泣く男であり、冷血動物マシーンベム殺しであり、母と子の愛の絆を守る男であり、
+D:モンスター退治の専門家であり、愛のために血を流す男であり、家なき子供達の為に涙を流す男であり、
+D:少年の友達であり、悪のからくりを粉砕する男であり、物言わぬ動物の愛に泣く男であり、
+D:親の心、子の心、大切な心を守る男であり、爆弾魔を退治しに来た男であり、
+D:亡き兄に復讐を誓う姉弟に心打たれる男であり、大東京の停電を阻止する男であり、
+D:野生の少女に味方する男であり、曇りなき瞳を信じる男であり、少年の勇気に希望を見た男であり、
+D:孤独な少年の為に戦う男であり、100メートル先に落ちた針の音をも聴き取る男であり、
+D:少年探偵団の友情を信じる男であり、格闘技世界チャンピオンにして不死身の男だ。
+
+N:1505:ベルゼバブの四天王の残り『ゴクアーク＆キョウアーク＆レツアーク』
+E:Gokaak, Kyouaak and Retsuaak, others Big Four of Beelzebub
+G:h:u
+I:110:1d1:10:0:25
+W:2:1:0:35:0:0
+B:HIT:HURT:2d4
+F:UNIQUE | FORCE_MAXHP | DROP_CORPSE | MALE | DEMON
+F:DROP_3D2 | ONLY_GOLD | CAN_SPEAK | EVIL | DROP_SKELETON
+D:サイアークを侮蔑するからには彼以上の実力を持っているはずに違いない！気をつけろ！
+
+N:1506:ガーゴイルKMR
+E:Gargoyle KMR
+G:u:s
+I:110:18d12:10:30:15
+W:25:2:0:110:0:0
+B:CLAW:HURT:3d6
+B:CLAW:HURT:3d6
+F:DROP_60 | ONLY_GOLD | EVIL | HUMAN | DEMON | HOMO_SEXUAL | NASTY
+F:WILD_MOUNTAIN | WILD_WASTE |
+F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | HURT_ROCK | NONLIVING 
+S:1_IN_4
+S:BA_POIS | BR_POIS
+D:便器に鎮座するクッソ汚い守護者だ。
 
 
 # N: serial number : monster name

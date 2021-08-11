@@ -3,7 +3,7 @@
 #include "system/angband.h"
 #include <vector>
 
-#define STORE_OBJ_LEVEL 5 //!< 通常店舗の階層レベル / Magic Level for normal stores
+#define STORE_OBJ_STD_LEVEL 5 //!< 通常店舗の標準階層レベル / Magic Level for normal stores
 
 enum STORE_TYPE_IDX {
     STORE_GENERAL   = 0, //!< 店舗の種類: 雑貨屋

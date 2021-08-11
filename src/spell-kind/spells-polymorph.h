@@ -4,3 +4,4 @@
 
 class player_type;
 bool polymorph_monster(player_type *caster_ptr, POSITION y, POSITION x);
+bool trans_sex(player_type *caster_ptr);
