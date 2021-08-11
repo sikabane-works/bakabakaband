@@ -28674,9 +28674,21 @@ W:2:1:0:35:0:0
 B:HIT:HURT:2d4
 F:UNIQUE | FORCE_MAXHP | DROP_CORPSE | MALE | DEMON
 F:DROP_3D2 | ONLY_GOLD | CAN_SPEAK | EVIL | DROP_SKELETON
-D:$He is the weakest man among the big four,
-D:$ and is a mess of the demons.
-D:サイアークを侮蔑するからには彼以上の実力を持っているはずだ。
+D:サイアークを侮蔑するからには彼以上の実力を持っているはずに違いない！気をつけろ！
+
+N:1506:ガーゴイルKMR
+E:Gargoyle KMR
+G:u:s
+I:110:18d12:10:30:15
+W:25:2:0:110:0:0
+B:CLAW:HURT:3d6
+B:CLAW:HURT:3d6
+F:DROP_60 | ONLY_GOLD | EVIL | HUMAN | DEMON | HOMO_SEXUAL | NASTY
+F:WILD_MOUNTAIN | WILD_WASTE |
+F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | HURT_ROCK | NONLIVING 
+S:1_IN_4
+S:BA_POIS | BR_POIS
+D:便器に鎮座するクッソ汚い守護者だ。
 
 
 # N: serial number : monster name
