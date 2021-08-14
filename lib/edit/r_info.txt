@@ -28706,6 +28706,25 @@ S:BO_MANA | BR_FIRE | BR_PLAS
 D:この強大な怪物を倒すには、汚い忍者のアワレな空蝉は当てにできない。
 D:黄金の鉄の塊でできたナイトきてーはやくきてー。
 
+N:1508:打ち切られし悪の化身『ベルゼバブ』
+E:Beelzebul, the Censored Evil Avatar
+G:U:u
+I:130:100d100:10:200:25
+W:70:20:0:150000:0:0
+B:PUNCH:FLAVOR
+B:KICK:FLAVOR
+B:CRUSH:FLAVOR
+F:EVIL | IM_ACID | IM_ELEC | IM_FIRE | IM_POIS | IM_COLD | UNIQUE | QUANTUM
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
+F:KILL_WALL | FORCE_MAXHP | CAN_SWIM
+F:UNIQUE | FORCE_MAXHP | DROP_CORPSE | MALE | DEMON
+F:DROP_4D2 | ONLY_ITEM | DROP_GREAT | CAN_SPEAK | EVIL
+S:1_IN_1 |
+S:TPORT | BLINK | TELE_AWAY
+D:「さあ来い！ヤマト！」「ご愛読ありがとうございました！」そこから先は存在していない。
+D:あらゆる何かが結末に至ろうとするあなたを阻止しようとしている！
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
