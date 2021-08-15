@@ -28725,6 +28725,29 @@ S:TPORT | BLINK | TELE_AWAY
 D:「さあ来い！ヤマト！」「ご愛読ありがとうございました！」そこから先は存在していない。
 D:あらゆる何かが結末に至ろうとするあなたを阻止しようとしている！
 
+N:1509:悪夢の声『ブリセラ』
+E:Brisela, Voice of Nightmares
+G:A:W
+I:130:63d100:40:140:10
+W:72:3:0:37000:0:0
+B:TOUCH:EXP_VAMP:10d10
+B:TOUCH:EXP_VAMP:10d10
+B:TOUCH:EXP_VAMP:10d10
+B:ENGULF:EXP_VAMP:10d10
+F:UNIQUE | FEMALE | RES_NETH | NO_FEAR | GOOD | EVIL | ATTR_MULTI | ATTR_ANY
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | REFLECTING
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD | CAN_FLY |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | RES_DARK | RES_TELE
+F:NO_CONF | NO_SLEEP | ANGEL
+S:1_IN_3
+S:BO_MANA | BA_LITE | BA_DARK | HASTE
+S:BR_NETH | PSY_SPEAR | S_MONSTERS | HEAL |
+S:S_ANGEL | BR_MANA | INVULNER
+D:かつてイニストラードに存在した偉大なる守護天使たちの二柱がエムラクールに導かれた成れの果てだ。
+D:今や彼女にはエムラクールの呟きしか聞こえず、エムラクールの理想しか見えていない。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
