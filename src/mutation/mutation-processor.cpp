@@ -112,6 +112,16 @@ static bool get_hack_dir(player_type *creature_ptr, DIRECTION *dp)
     return true;
 }
 
+void process_world_aux_sudden_attack(player_type *creature_ptr)
+{
+    if (randint1(10000) == 1919) {
+        if (summon_specific(creature_ptr, 0, creature_ptr->y, creature_ptr->x, creature_ptr->current_floor_ptr->dun_level, SUMMON_TURBAN_KID, 0)) {
+            msg_print(_("突如ダーバンのガキがあなたを刺しにかかってきた！", "Suddenly a Durban kid stabbed you!"));
+            disturb(creature_ptr, false, true);
+        }
+    }
+}
+
 /*!
  * @brief 10ゲームターンが進行するごとに突然変異の発動判定を行う処理
  * / Handle mutation effects once every 10 game turns
