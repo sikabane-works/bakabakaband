@@ -68,8 +68,6 @@ enum patron_reward {
     REW_SER_MONS = 36, /*!< カオスパトロンからの報酬: モンスターの下僕下賜 */
 };
 
-extern const concptr chaos_patrons[MAX_PATRON];
-
 class player_type;
 void gain_level_reward(player_type *creature_ptr, int chosen_reward);
 void admire_from_patron(player_type *creature_ptr);

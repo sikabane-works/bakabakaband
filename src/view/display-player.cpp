@@ -313,7 +313,7 @@ void display_player(player_type *creature_ptr, int mode)
     display_magic_realms(creature_ptr);
 
     if ((creature_ptr->pclass == CLASS_CHAOS_WARRIOR) || (creature_ptr->muta.has(MUTA::CHAOS_GIFT)))
-        display_player_one_line(ENTRY_PATRON, chaos_patrons[creature_ptr->chaos_patron], TERM_L_BLUE);
+        display_player_one_line(ENTRY_PATRON, patron_list[creature_ptr->chaos_patron].name.c_str(), TERM_L_BLUE);
 
     display_phisique(creature_ptr);
     display_player_stats(creature_ptr);
