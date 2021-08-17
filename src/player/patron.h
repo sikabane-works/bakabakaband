@@ -5,27 +5,6 @@
 #include <string>
 #include <vector>
 
-/*!
- * @brief パトロン情報の定義 
- */
-class Patron {
-
-    public:
-    static void InitPatron();
-    std::string name = ""; //!< パトロン名
-    Patron(const char *_name, const char *_ename, const player_ability_type _boost_stat);
-#ifdef JP
-    std::string ename = ""; //!< PatronName
-    Patron(const char *name, const char *ename, const std::vector<int> reward_table, const player_ability_type boost_stat);
-#else
-    Patron(const char *name, const std::vector<int>, const player_ability_type boost_stat);
-#endif
-    std::vector<int> reward_table = {}; //!< 報酬テーブル
-    player_ability_type boost_stat = player_ability_type::A_STR; //!< 強化能力値傾向
-};
-
-extern std::vector<Patron> patron_list;
-
 #define MAX_PATRON 16 /*!< カオスパトロンの最大定義数 / The number of "patrons" available (for Chaos Warriors) */
 
 /* カオスパトロンからの報酬種別定義 / Chaos Warrior: Reward types: */
@@ -67,6 +46,27 @@ enum patron_reward {
     REW_SER_DEMO = 35, /*!< カオスパトロンからの報酬: 悪魔の下僕下賜 */
     REW_SER_MONS = 36, /*!< カオスパトロンからの報酬: モンスターの下僕下賜 */
 };
+
+/*!
+ * @brief パトロン情報の定義
+ */
+class Patron {
+
+public:
+    static void InitPatron();
+    std::string name = ""; //!< パトロン名
+    Patron(const char *_name, const char *_ename, const player_ability_type _boost_stat);
+#ifdef JP
+    std::string ename = ""; //!< PatronName
+    Patron(const char *name, const char *ename, const std::vector<patron_reward> reward_table, const player_ability_type boost_stat);
+#else
+    Patron(const char *name, const std::vector<patron_reward>, const player_ability_type boost_stat);
+#endif
+    std::vector<patron_reward> reward_table = {}; //!< 報酬テーブル
+    player_ability_type boost_stat = player_ability_type::A_STR; //!< 強化能力値傾向
+};
+
+extern std::vector<Patron> patron_list;
 
 class player_type;
 void gain_level_reward(player_type *creature_ptr, int chosen_reward);

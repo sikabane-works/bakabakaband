@@ -126,9 +126,9 @@ std::vector<Patron> patron_list = {
 };
 
 #ifdef JP
-Patron::Patron(const char *_name, const char *_ename, const std::vector<int> _reward_table, const player_ability_type _boost_stat)
+Patron::Patron(const char *_name, const char *_ename, const std::vector<patron_reward> _reward_table, const player_ability_type _boost_stat)
 #else
-Patron::Patron(const char *_name, const char *_reward_table, player_ability_type _boost_stat)
+Patron::Patron(const char *_name, std::vector<patron_reward> _reward_table, player_ability_type _boost_stat)
 #endif
 {
     name = _name;
@@ -143,7 +143,8 @@ void gain_level_reward(player_type *creature_ptr, int chosen_reward)
 {
     char wrath_reason[32] = "";
     int nasty_chance = 6;
-    int type, effect;
+    int type;
+    patron_reward effect;
     concptr reward = NULL;
     GAME_TEXT o_name[MAX_NLEN];
 
