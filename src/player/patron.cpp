@@ -96,7 +96,7 @@ std::vector<Patron> patron_list = {
     Patron(N("バロ", "Balo"),
         { REW_WRATH, REW_SER_DEMO, REW_CURSE_WP, REW_CURSE_AR, REW_LOSE_EXP, REW_GAIN_ABL, REW_LOSE_ABL, REW_POLY_WND, REW_POLY_SLF, REW_IGNORE, REW_DESTRUCT,
             REW_MASS_GEN, REW_CHAOS_WP, REW_GREA_OBJ, REW_HURT_LOT, REW_AUGM_ABL, REW_RUIN_ABL, REW_H_SUMMON, REW_GREA_OBS, REW_AUGM_ABL },
-        A_INT),
+        A_RANDOM),
 
     Patron(N("コーン", "Khorne"),
         { REW_WRATH, REW_HURT_LOT, REW_HURT_LOT, REW_H_SUMMON, REW_H_SUMMON, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_SER_MONS, REW_SER_DEMO, REW_POLY_SLF,
@@ -310,7 +310,7 @@ void gain_level_reward(player_type *creature_ptr, int chosen_reward)
             msg_format(_("%sの声が鳴り響いた:", "The voice of %s rings out:"), patron_ptr->name.c_str());
             msg_print(_("「留まるのだ、下僕よ。余が汝の肉体を鍛えん。」", "'Stay, mortal, and let me mold thee.'"));
 
-            if (one_in_(3) && !(patron_ptr->boost_stat < 0))
+            if (one_in_(3) && !(patron_ptr->boost_stat != A_RANDOM))
                 do_inc_stat(creature_ptr, patron_ptr->boost_stat);
             else
                 do_inc_stat(creature_ptr, randint0(6));
@@ -321,7 +321,7 @@ void gain_level_reward(player_type *creature_ptr, int chosen_reward)
             msg_format(_("%sの声が響き渡った:", "The voice of %s booms out:"), patron_ptr->name.c_str());
             msg_print(_("「下僕よ、余は汝に飽みたり。」", "'I grow tired of thee, mortal.'"));
 
-            if (one_in_(3) && !(patron_ptr->boost_stat < 0))
+            if (one_in_(3) && !(patron_ptr->boost_stat != A_RANDOM))
                 do_dec_stat(creature_ptr, patron_ptr->boost_stat);
             else
                 (void)do_dec_stat(creature_ptr, randint0(6));
