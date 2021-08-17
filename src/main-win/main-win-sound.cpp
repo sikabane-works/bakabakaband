@@ -121,8 +121,8 @@ static bool add_sound_queue(const WAVEFORMATEX *wf, BYTE *buf, DWORD bufsize)
     }
 
     while (sound_queue.size() >= 16) {
-        auto res = sound_queue.front();
-        delete res;
+        auto res_aux = sound_queue.front();
+        delete res_aux;
         sound_queue.pop();
     }
 
