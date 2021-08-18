@@ -28776,6 +28776,19 @@ A:146:1:4
 D:彼の冒険は古代の神秘の追求が目的であり、金目当ての宝探しを忌避している。
 D:その英国紳士キックの威力を恐れよ！
 
+N:1512:『スペランカー』
+E:the Spelunker
+G:p:u
+I:110:1d1:20:0:25
+W:1:10:0:10:0:0
+B:SHOOT:HURT:1d4
+F:UNIQUE | FORCE_MAXHP | DROP_CORPSE | MALE | HUMAN
+F:DROP_1D2 | ONLY_ITEM | GOOD | DROP_SKELETON | FRIENDLY
+S:1_IN_10 |
+S:SHOOT | HASTE
+D:彼は気軽な探検と気軽な死を楽しみ続ける。つまるところ＊あなた＊の同類だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
