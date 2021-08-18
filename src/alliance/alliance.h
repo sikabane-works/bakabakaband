@@ -4,7 +4,16 @@
 #include <string>
 #include <vector>
 
-typedef int ALLIANCE_ID;
+typedef s32b ALLIANCE_ID;
+struct player_type;
+
+enum class alliance_types {
+    AMBER = 0,          //!< アンバー
+    COURT_OF_CHAOS = 1, //!< 混沌の宮廷
+    VALINOR = 2,        //!< ヴァリノール
+    UTUMNO = 3,         //!< ウトゥムノ
+    MAX,
+};
 
 enum alliance_flags
 {
@@ -13,11 +22,45 @@ enum alliance_flags
     MAX,
 };
 
-class alliance {
+class Alliance {
 public:
     std::string name; //!< 陣営名
-    // = FlagGroup<FlagType, FlagType::MAX>;
+    Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    virtual int calcImplessionPoint(player_type *creature_ptr);
+    virtual ~Alliance();
 };
 
-std::vector<alliance> alliance_list;
+class AllianceAmber : public Alliance {
+public:
+    std::string name = _("アンバー", "Amber"); //!< 陣営名
+    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr) override;
+};
+
+class AllianceCourtOfChaos : public Alliance {
+public:
+    std::string name = _("混沌の宮廷", "Court of Chaos"); //!< 陣営名
+    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr);
+};
+
+class AllianceValinor : public Alliance {
+public:
+    std::string name = _("ヴァリノール", "Valinor"); //!< 陣営名
+    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr);
+};
+
+class AllianceUtumno : public Alliance {
+public:
+    std::string name = _("ウトゥムノ", "Utumno"); //!< 陣営名
+    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr);
+};
+
+std::vector<Alliance> alliance_list;
