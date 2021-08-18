@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include "player-ability/player-ability-types.h"
 
 /*! オートローラの年齢、身長、体重、威信の要求水準 */
 typedef struct {
@@ -10,7 +11,7 @@ typedef struct {
     s16b scmin, scmax;
 } chara_limit_type;
 
-extern s16b stat_limit[6];
+extern s16b stat_limit[A_MAX];
 extern s32b auto_round;
 extern s32b auto_upper_round;
 extern s32b autoroll_chance;

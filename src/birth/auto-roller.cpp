@@ -16,7 +16,7 @@
 #include "util/int-char-converter.h"
 
 /*! オートローラの能力値的要求水準 / Autoroll limit */
-s16b stat_limit[6];
+s16b stat_limit[A_MAX];
 
 /*! オートローラの試行回数 / Autoroll round */
 s32b auto_round;
@@ -34,8 +34,8 @@ static s32b get_autoroller_prob(int *minval)
     /* 1 percent of the valid random space (60^6 && 72<sum<87) */
     s32b tot_rand_1p = 320669745;
     int i, j, tmp;
-    int ii[6];
-    int tval[6];
+    int ii[A_MAX];
+    int tval[A_MAX];
     int tot = 0;
 
     /* success count */
@@ -48,7 +48,7 @@ static s32b get_autoroller_prob(int *minval)
     };
 
     /* Copy */
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < A_MAX; i++) {
         tval[i] = MAX(8, minval[i]);
         tot += tval[i];
     }
