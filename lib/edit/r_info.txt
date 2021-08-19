@@ -28788,6 +28788,19 @@ S:1_IN_10 |
 S:SHOOT | HASTE
 D:彼は気軽な探検と気軽な死を楽しみ続ける。つまるところ＊あなた＊の同類だ。
 
+N:1513:バル・ベルデ兵
+E:Soldier of Val Verde
+G:p:r
+I:110:4d10:25:30:10
+W:22:3:0:240:0:0
+B:SHOOT:HURT:10d10
+B:HIT:HURT:2d10
+F:BASH_DOOR | OPEN_DOOR | FRIENDS | DROP_90 |
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF
+F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON
+S:1_IN_2 |
+S:SHOOT
+D:常に政情不安定な母国で傭兵、ゲリラを繰り返している彼らだ。
 
 # N: serial number : monster name
 # G: symbol : color
