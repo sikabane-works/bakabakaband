@@ -22,6 +22,7 @@
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-chaos.h"
+#include "spell-realm/spells-sorcery.h"
 #include "spell/spells-status.h"
 #include "spell/summon-types.h"
 #include "system/floor-type-definition.h"
@@ -36,6 +37,7 @@ debug_spell_command debug_spell_commands_list[SPELL_MAX] = {
     { 2, "vanish dungeon", { .spell2 = { vanish_dungeon } } },
     { 3, "true healing", { .spell3 = { true_healing } } },
     { 2, "drop weapons", { .spell2 = { drop_weapons } } },
+    { 2, "alchemy", { .spell2 = { alchemy } } },
 };
 
 /*!
