@@ -28819,6 +28819,18 @@ S:BA_WATE | BR_ACID
 D:ルクレチアの地底湖に長年住み続けて巨大になり、高い霊性をも持つようになった怪魚だ。
 D:関西弁を話し、黄金のちょんまげを求めている。
 
+# 3/2エルドラージ・ホラートークン
+N:1515:エルドラージへの変容者
+E:Transformer to Eldrazi
+G:H:w
+I:110:20d8:10:30:10
+W:10:1:0:20:0:0
+B:TOUCH:HURT:8d4
+B:TOUCH:HURT:8d4
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
+F:HAS_LITE_1 | EVIL | MALE | HUMAN | ELDRAZI
+D:エムラクールの影響を受けて、異形と成り果てたイニストラードの住人だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
