@@ -17,7 +17,7 @@ hengband_SOURCES = \
 	action/tunnel-execution.cpp action/tunnel-execution.h \
 	action/weapon-shield.cpp action/weapon-shield.h \
 	\
-	alliance/alliance.cpp alliance/alliance.h
+	alliance/alliance.cpp alliance/alliance.h \
 	\
 	artifact/artifact-info.cpp artifact/artifact-info.h \
 	artifact/fixed-art-generator.cpp artifact/fixed-art-generator.h \
