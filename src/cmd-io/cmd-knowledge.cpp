@@ -30,7 +30,7 @@ void do_cmd_knowledge(player_type *creature_ptr)
     screen_save();
     while (true) {
         term_clear();
-        prt(format(_("%d/2 ページ", "page %d/2"), (p + 1)), 2, 65);
+        prt(format(_("%d/3 ページ", "page %d/3"), (p + 1)), 2, 65);
         prt(_("現在の知識を確認する", "Display current knowledge"), 3, 0);
         if (p == 0) {
             prt(_("(1) 既知の伝説のアイテム                 の一覧", "(1) Display known artifacts"), 6, 5);
@@ -44,7 +44,7 @@ void do_cmd_knowledge(player_type *creature_ptr)
             prt(_("(8) 現在のペット                         の一覧", "(8) Display current pets"), 13, 5);
             prt(_("(9) 我が家のアイテム                     の一覧", "(9) Display home inventory"), 14, 5);
             prt(_("(0) *鑑定*済み装備の耐性                 の一覧", "(0) Display *identified* equip."), 15, 5);
-        } else {
+        } else if (p == 1){
             prt(_("(a) 地形の表示文字/タイル                の一覧", "(a) Display terrain symbols"), 6, 5);
             prt(_("(b) 自分に関する情報                     の一覧", "(b) Display about yourself"), 7, 5);
             prt(_("(c) 突然変異                             の一覧", "(c) Display mutations"), 8, 5);
@@ -55,7 +55,8 @@ void do_cmd_knowledge(player_type *creature_ptr)
             prt(_("(h) 入ったダンジョン                     の一覧", "(h) Display dungeons"), 13, 5);
             prt(_("(i) 実行中のクエスト                     の一覧", "(i) Display current quests"), 14, 5);
             prt(_("(k) 現在の自動拾い/破壊設定              の一覧", "(k) Display auto pick/destroy"), 15, 5);
-            prt(_("(l) これまで行った行為                   の一覧", "(l) Display incident counter"), 16, 5);
+        } else {
+            prt(_("(l) これまで行った行為                   の一覧", "(l) Display incident counter"), 6, 5);
         }
 
         prt(_("-続く-", "-more-"), 17, 8);
@@ -69,7 +70,7 @@ void do_cmd_knowledge(player_type *creature_ptr)
         switch (i) {
         case ' ': /* Page change */
         case '-':
-            p = 1 - p;
+            p = (p >= 2) ? 0 : p + 1;
             break;
         case '1': /* Artifacts */
             do_cmd_knowledge_artifacts(creature_ptr);
