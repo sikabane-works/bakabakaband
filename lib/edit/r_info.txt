@@ -28831,6 +28831,24 @@ F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
 F:HAS_LITE_1 | EVIL | MALE | HUMAN | ELDRAZI
 D:エムラクールの影響を受けて、異形と成り果てたイニストラードの住人だ。
 
+N:1516:ウッド・エレメンタル
+E:Wood Elemental
+G:#:G
+I:108:5d10:40:15:20
+W:9:1:0:75:0:0
+B:CRUSH:HURT:1d6
+B:CRUSH:HURT:1d6
+B:CRUSH:HURT:1d6
+B:CRUSH:HURT:1d6
+F:DROP_CORPSE |
+F:DROP_60 | NO_SLEEP | NO_CONF | ANIMAL | WEIRD_MIND
+F:RES_WATE | IM_COLD | HURT_FIRE | WILD_ONLY | WILD_WOOD |
+D:それは不毛かつ空しいことに、僅かな力を持った自らの誕生のため
+D:無数の森を犠牲にしなければならない。
+
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
