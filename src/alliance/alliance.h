@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-typedef s32b ALLIANCE_ID;
-struct player_type;
+typedef int ALLIANCE_ID;
+class player_type;
 
 enum class alliance_types {
     AMBER = 0,          //!< アンバー
@@ -27,8 +27,8 @@ public:
     std::string name; //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    virtual int calcImplessionPoint(player_type *creature_ptr);
-    virtual ~Alliance();
+    virtual int calcImplessionPoint(player_type *creature_ptr) const = 0;
+    virtual ~Alliance(){};
 };
 
 class AllianceAmber : public Alliance {
@@ -36,7 +36,7 @@ public:
     std::string name = _("アンバー", "Amber"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(player_type *creature_ptr) override;
+    int calcImplessionPoint(player_type *creature_ptr) const override;
 };
 
 class AllianceCourtOfChaos : public Alliance {
@@ -44,7 +44,7 @@ public:
     std::string name = _("混沌の宮廷", "Court of Chaos"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(player_type *creature_ptr);
+    int calcImplessionPoint(player_type *creature_ptr) const override;
 };
 
 class AllianceValinor : public Alliance {
@@ -52,7 +52,7 @@ public:
     std::string name = _("ヴァリノール", "Valinor"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(player_type *creature_ptr);
+    int calcImplessionPoint(player_type *creature_ptr) const override;
 };
 
 class AllianceUtumno : public Alliance {
@@ -60,7 +60,7 @@ public:
     std::string name = _("ウトゥムノ", "Utumno"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(player_type *creature_ptr);
+    int calcImplessionPoint(player_type *creature_ptr) const override;
 };
 
 std::vector<Alliance> alliance_list;
