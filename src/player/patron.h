@@ -53,7 +53,6 @@ enum patron_reward {
 class Patron {
 
 public:
-    static void InitPatron();
     std::string name = ""; //!< パトロン名
     Patron(const char *_name, const char *_ename, const player_ability_type _boost_stat);
 #ifdef JP
