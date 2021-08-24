@@ -6,6 +6,7 @@
 #include "player/player-race-types.h"
 #include "player/player-class-types.h"
 #include "player/player-personality-types.h"
+#include "player/sexual-preference.h"
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
@@ -93,6 +94,8 @@ public:
     HIT_POINT chp{}; /* Cur hit pts */
     u32b chp_frac{}; /* Cur hit frac (times 2^16) */
     PERCENTAGE mutant_regenerate_mod{};
+
+    EnumClassFlagGroup<sexual_preference> sexPre; //!< 性的嗜好フラグ
 
     MANA_POINT msp{}; /* Max mana pts */
     MANA_POINT csp{}; /* Cur mana pts */
