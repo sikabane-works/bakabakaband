@@ -204,4 +204,7 @@ enum monster_race_type {
     MON_EARTH_DESTROYER = 1445,
     MON_OOTSUKI = 1453,
     MON_TURBAN_KID = 1467,
+    MON_INARIMAN_1 = 1518,
+    MON_INARIMAN_2 = 1519,
+    MON_INARIMAN_3 = 1520,
 };
