@@ -3,7 +3,7 @@
 #include "system/angband.h"
 #include "spell/spell-types.h"
 
-#define SPELL_MAX 3
+#define SPELL_MAX 4
 
 typedef struct floor_type floor_type;
 class player_type;

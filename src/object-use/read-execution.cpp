@@ -496,7 +496,7 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             break;
         }
         case SV_SCROLL_POWERFUL_EYE_SENIOR: {
-            for (int k = 0; k < 20; k++) {
+            for (k = 0; k < 20; k++) {
                 summon_specific(creature_ptr, -1, creature_ptr->y, creature_ptr->x, 50, SUMMON_POWERFUL_EYE_SENIOR, 0);
             }
             ident = true;

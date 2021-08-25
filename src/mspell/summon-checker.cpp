@@ -193,6 +193,9 @@ bool check_summon_specific(player_type *player_ptr, MONRACE_IDX summoner_idx, MO
     case SUMMON_POWERFUL_EYE_SENIOR:
         is_match = r_idx == MON_POWERFUL_EYE_SENIOR;
         break;
+    case SUMMON_TURBAN_KID:
+        is_match = r_idx == MON_TURBAN_KID;
+        break;
     default:
         break;
     }

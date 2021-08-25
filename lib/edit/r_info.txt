@@ -27343,7 +27343,6 @@ S:BLINK | TPORT | TELE_TO | TELE_AWAY | TELE_LEVEL |
 S:DARKNESS | FORGET | S_KIN | S_UNDEAD | S_HI_UNDEAD |
 R:638:10d2
 R:1271:3d2
-D:彼は史上もっとも強力かつ危険な闇の魔法使いだ。従者である死喰い人や、追放されていた闇の生物を率いて魔法界を支配しようとしている！
 D:$He is the most powerful and dangerous dark wizard in history.
 D:$  He is trying to rule the magical world with his followers,
 D:$ the Death Eaters and the exiled dark creatures!
@@ -28689,6 +28688,212 @@ F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | HURT_ROCK | NONLIVING
 S:1_IN_4
 S:BA_POIS | BR_POIS
 D:便器に鎮座するクッソ汚い守護者だ。
+
+N:1507:キング・ベヒんモス
+E:King Behinmoth
+G:H:G
+I:125:70d100:25:160:30
+W:69:12:0:30000:0:0
+B:BUTT:HURT:10d15
+B:BUTT:HURT:10d15
+B:CRUSH:SUPERHURT:8d15
+B:CRUSH:SUPERHURT:8d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM | ANIMAL
+F:IM_FIRE | IM_ACID | IM_COLD | IM_POIS | DROP_CORPSE | DROP_GOOD | DROP_4D2 | DROP_2D2
+F:NO_CONF | NO_SLEEP | NO_FEAR | RIDING
+S:1_IN_5
+S:BO_MANA | BR_FIRE | BR_PLAS
+D:この強大な怪物を倒すには、汚い忍者のアワレな空蝉は当てにできない。
+D:黄金の鉄の塊でできたナイトきてーはやくきてー。
+
+N:1508:打ち切られし悪の化身『ベルゼバブ』
+E:Beelzebul, the Censored Evil Avatar
+G:U:u
+I:130:100d100:10:200:25
+W:70:20:0:150000:0:0
+B:PUNCH:FLAVOR
+B:KICK:FLAVOR
+B:CRUSH:FLAVOR
+F:EVIL | IM_ACID | IM_ELEC | IM_FIRE | IM_POIS | IM_COLD | UNIQUE | QUANTUM
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
+F:KILL_WALL | FORCE_MAXHP | CAN_SWIM
+F:UNIQUE | FORCE_MAXHP | DROP_CORPSE | MALE | DEMON
+F:DROP_4D2 | ONLY_ITEM | DROP_GREAT | CAN_SPEAK | EVIL
+S:1_IN_1 |
+S:TPORT | BLINK | TELE_AWAY
+D:「さあ来い！ヤマト！」「ご愛読ありがとうございました！」そこから先は存在していない。
+D:あらゆる何かが結末に至ろうとするあなたを阻止しようとしている！
+
+N:1509:悪夢の声『ブリセラ』
+E:Brisela, Voice of Nightmares
+G:A:W
+I:130:63d100:40:140:10
+W:72:3:0:37000:0:0
+B:TOUCH:EXP_VAMP:10d10
+B:TOUCH:EXP_VAMP:10d10
+B:TOUCH:EXP_VAMP:10d10
+B:ENGULF:EXP_VAMP:10d10
+F:UNIQUE | FEMALE | RES_NETH | NO_FEAR | GOOD | EVIL | ATTR_MULTI | ATTR_ANY
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | REFLECTING
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD | CAN_FLY |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | RES_DARK | RES_TELE
+F:NO_CONF | NO_SLEEP | ANGEL | ELDRAZI
+S:1_IN_3
+S:BO_MANA | BA_LITE | BA_DARK | HASTE
+S:BR_NETH | PSY_SPEAR | S_MONSTERS | HEAL |
+S:S_ANGEL | BR_MANA | INVULNER
+D:かつてイニストラードに存在した偉大なる守護天使たちの二柱がエムラクールに導かれた成れの果てだ。
+D:今や彼女にはエムラクールの呟きしか聞こえず、エムラクールの理想しか見えていない。
+
+N:1510:デビルひで
+E:Devil Hide
+G:u:v
+I:115:20d20:30:90:10
+W:24:2:0:250:0:0
+B:CLAW:HURT:2d6
+B:CLAW:HURT:2d6
+F:OPEN_DOOR | DEMON | NONLIVING | NASTY | HOMO_SEXUAL
+F:EVIL | RAND_25 | IM_COLD | IM_FIRE | IM_POIS | CAN_SWIM |
+S:1_IN_6 |
+S:SHRIEK
+D:クッソ憎たらしく汚いホモ悪魔だ。生かして返すな。
+
+N:1511:ノットトレジャーハンター『ジェームズ・アークライト』
+E:James Arkwright, the Not Treasure Hunter
+G:p:b
+I:110:20d12:30:15:20
+W:11:5:0:120:0:0
+B:KICK:HURT:2d13
+B:KICK:HURT:2d13
+B:KICK:HURT:2d13
+B:KICK:HURT:2d13
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | GOOD
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:DROP_1D2 | DROP_GREAT | OPEN_DOOR | BASH_DOOR
+A:146:1:4
+D:彼の冒険は古代の神秘の追求が目的であり、金目当ての宝探しを忌避している。
+D:その英国紳士キックの威力を恐れよ！
+
+N:1512:『スペランカー』
+E:the Spelunker
+G:p:u
+I:110:1d1:20:0:25
+W:1:10:0:10:0:0
+B:SHOOT:HURT:1d4
+F:UNIQUE | FORCE_MAXHP | DROP_CORPSE | MALE | HUMAN
+F:DROP_1D2 | ONLY_ITEM | GOOD | DROP_SKELETON | FRIENDLY
+S:1_IN_10 |
+S:SHOOT | HASTE
+D:彼は気軽な探検と気軽な死を楽しみ続ける。つまるところ＊あなた＊の同類だ。
+
+N:1513:バル・ベルデ兵
+E:Soldier of Val Verde
+G:p:r
+I:110:4d10:25:30:10
+W:22:3:0:240:0:0
+B:SHOOT:HURT:10d10
+B:HIT:HURT:2d10
+F:BASH_DOOR | OPEN_DOOR | FRIENDS | DROP_90 |
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF
+F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON
+S:1_IN_2 |
+S:SHOOT
+D:常に政情不安定な母国で傭兵、ゲリラを繰り返している彼らだ。
+
+N:1514:ルクレチアの古きもの『アムルクレチア』
+E:Amlucretia, the Elder One of Lucretia
+G:l:w
+I:123:64d100:40:140:30
+W:70:3:0:35000:0:0
+B:CRUSH:HURT:10d12
+B:CRUSH:HURT:10d12
+B:CRUSH:HURT:10d12
+B:CRUSH:HURT:10d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | AQUATIC | WILD_OCEAN | ANIMAL | MALE
+F:IM_FIRE | IM_ACID | IM_COLD | IM_POIS | RES_WATE | RES_DARK |
+F:NO_CONF | NO_SLEEP | NO_FEAR | DROP_CORPSE | RIDING | DROP_GOOD | DROP_4D2 | DROP_3D2
+S:1_IN_4
+S:BA_WATE | BR_ACID
+D:ルクレチアの地底湖に長年住み続けて巨大になり、高い霊性をも持つようになった怪魚だ。
+D:関西弁を話し、黄金のちょんまげを求めている。
+
+# 3/2エルドラージ・ホラートークン
+N:1515:エルドラージへの変容者
+E:Transformer to Eldrazi
+G:H:w
+I:110:20d8:10:30:10
+W:10:1:0:20:0:0
+B:TOUCH:HURT:8d4
+B:TOUCH:HURT:8d4
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
+F:HAS_LITE_1 | EVIL | MALE | HUMAN | ELDRAZI
+D:エムラクールの影響を受けて、異形と成り果てたイニストラードの住人だ。
+
+N:1516:ウッド・エレメンタル
+E:Wood Elemental
+G:#:G
+I:108:5d10:40:15:20
+W:9:1:0:75:0:0
+B:CRUSH:HURT:1d6
+B:CRUSH:HURT:1d6
+B:CRUSH:HURT:1d6
+B:CRUSH:HURT:1d6
+F:DROP_CORPSE |
+F:DROP_60 | NO_SLEEP | NO_CONF | ANIMAL | WEIRD_MIND
+F:RES_WATE | IM_COLD | HURT_FIRE | WILD_ONLY | WILD_WOOD |
+D:それは不毛かつ空しいことに、僅かな力を持った自らの誕生のため
+D:無数の森を犠牲にしなければならない。
+
+N:1517:トゥメルの末裔
+E:Pthumerian descendant
+G:h:r
+I:119:40d40:20:100:20
+W:38:4:0:1000:0:0
+B:SLASH:HURT:12d8
+B:SLASH:HURT:12d8
+B:SLASH:HURT:12d8
+F:MALE | OPEN_DOOR | BASH_DOOR | HUMAN
+F:ONLY_ITEM | DROP_2D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
+F:IM_ACID | IM_COLD | RES_CHAO | RES_NETH | RES_NEXU |
+D:古代ヤーナムの時代、上位者と交わり、血の神秘を得たというトゥメル人の血統の持ち主だ。
+D:並の人類を超える背丈に幽霊のような白い肌をしている。
+
+N:1518:『第一のいなり男』
+E:The First Inari Man
+G:t:w
+I:110:35d10:40:10:3
+W:0:3:0:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | HUMAN | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_60
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:彼は店の手違いと、狂った客に襲われた犠牲者だ。
+
+N:1519:『第二のいなり男』
+E:The Second Inari Man
+G:t:w
+I:110:35d10:40:10:3
+W:0:3:0:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | HUMAN | HOMO_SEXUAL | NASTY
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_60
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:彼は客の品に手を付けるという迂闊さで掘られた。自業自得と言えなくもない。
+
+N:1520:『第三のいなり男』
+E:The Second Inari Man
+G:t:w
+I:110:35d10:40:10:3
+W:0:3:0:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | HUMAN | HOMO_SEXUAL | NASTY
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_60
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:彼は客の品のほとんどと食い尽くした挙句、残りを客に押し付けた人間の屑だ。
+
+
 
 
 # N: serial number : monster name
