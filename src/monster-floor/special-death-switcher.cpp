@@ -137,6 +137,24 @@ static void on_dead_bloodletter(player_type *player_ptr, monster_death_type *md_
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
+static void on_dead_inariman1_2(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(player_ptr, lookup_kind(TV_FOOD, SV_FOOD_SUSHI2));
+    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
+static void on_dead_inariman3(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(player_ptr, lookup_kind(TV_FOOD, SV_FOOD_SUSHI3));
+    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
 static void on_dead_raal(player_type *player_ptr, monster_death_type *md_ptr)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
@@ -626,6 +644,13 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
         return;
     case MON_LOSTRINGIL:
         on_dead_random_artifact(player_ptr, md_ptr, kind_is_sword);
+        return;
+    case MON_INARIMAN_1:
+    case MON_INARIMAN_2:
+        on_dead_inariman1_2(player_ptr, md_ptr);
+        return;
+    case MON_INARIMAN_3:
+        on_dead_inariman3(player_ptr, md_ptr);
         return;
     default:
         on_dead_mimics(player_ptr, md_ptr);
