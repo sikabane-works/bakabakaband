@@ -28893,7 +28893,24 @@ F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_60
 F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:彼は客の品のほとんどと食い尽くした挙句、残りを客に押し付けた人間の屑だ。
 
-
+N:1521:『鬼怒沼の機織姫』
+E:The Weaving Maiden of Kinu Bog
+G:h:w
+I:125:20d120:30:90:20
+W:35:2:0:3000:0:0
+B:SLASH:HURT:9d5
+B:SLASH:HURT:9d5
+B:SLASH:HURT:9d5
+B:SHOOT:HURT:15d5
+F:UNIQUE | FEMALE | DROP_1D2 | DROP_2D2 | ONLY_ITEM | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE |
+F:KILL_ITEM | KILL_BODY | BASH_DOOR | POWERFUL |
+F:IM_COLD | IM_POIS | WILD_SHORE | WILD_SWAMP |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_4 |
+S:HOLD | SHOOT
+D:彼の地で機織りを黙々と続ける彼女を邪魔してはならない。
+D:ましてやお触りなどもってのほかだ。
 
 
 # N: serial number : monster name
