@@ -168,9 +168,12 @@ bool make_gold(player_type *player_ptr, object_type *j_ptr)
         i = MAX_GOLD - 1;
     j_ptr->prep(player_ptr, OBJ_GOLD_LIST + i);
 
+    int boost = floor_ptr->object_level > 20 ? ((floor_ptr->object_level - 10) * (floor_ptr->object_level - 10) / 100) : 1;
     s32b base = k_info[OBJ_GOLD_LIST + i].cost;
-    j_ptr->pval = (base + (8L * randint1(base)) + randint1(8));
-
+    int price = (base + (8L * randint1(base)) + randint1(8)) * boost;
+    if (price > 30000)
+        price = 30000;
+    j_ptr->pval = price;
     return true;
 }
 
