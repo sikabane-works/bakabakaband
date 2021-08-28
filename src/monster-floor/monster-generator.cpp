@@ -125,24 +125,25 @@ bool mon_scatter(player_type *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSIT
  * @brief モンスターを増殖生成する / Let the given monster attempt to reproduce.
  * @param player_ptr プレーヤーへの参照ポインタ
  * @param m_idx 増殖するモンスター情報ID
+ * @param r_idx 増殖させたいモンスターID
  * @param clone クローン・モンスター処理ならばtrue
  * @param mode 生成オプション
  * @return 生成できたらtrueを返す
  * @details
  * Note that "reproduction" REQUIRES empty space.
  */
-bool multiply_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool clone, BIT_FLAGS mode)
+bool multiply_monster(player_type *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_idx, bool clone, BIT_FLAGS mode)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     monster_type *m_ptr = &floor_ptr->m_list[m_idx];
     POSITION y, x;
-    if (!mon_scatter(player_ptr, m_ptr->r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1))
+    if (!mon_scatter(player_ptr, r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1))
         return false;
 
     if (m_ptr->mflag2.has(MFLAG2::NOPET))
         mode |= PM_NO_PET;
 
-    if (!place_monster_aux(player_ptr, m_idx, y, x, m_ptr->r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY)))
+    if (!place_monster_aux(player_ptr, m_idx, y, x, r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY)))
         return false;
 
     if (clone || m_ptr->mflag2.has(MFLAG2::CLONED)) {

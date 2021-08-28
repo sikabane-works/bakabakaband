@@ -6,6 +6,7 @@
 #include "util/flag-group.h"
 #include "system/angband.h"
 #include <string>
+#include <tuple>
 
 /*! モンスターが1ターンに攻撃する最大回数 (射撃を含む) / The maximum number of times a monster can attack in a turn (including SHOOT) */
 #define MAX_NUM_BLOWS 4
@@ -72,6 +73,7 @@ struct monster_race {
     monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
     MONRACE_IDX reinforce_id[6]{}; //!< 指定護衛モンスター種族ID(6種まで)
     DICE_NUMBER reinforce_dd[6]{}; //!< 指定護衛数ダイス数
+    std::vector<std::tuple<int, MONRACE_IDX>> spawns; //!< 落とし子生成率
     DICE_SID reinforce_ds[6]{}; //!< 指定護衛数ダイス面
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
