@@ -231,6 +231,8 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 continue;
 
             const auto &s_tokens = str_split(f, '_', false, 3);
+
+            // 特殊行動確率
             if (s_tokens.size() == 3 && s_tokens[1] == "IN") {
                 if (s_tokens[0] != "1")
                     return PARSE_ERROR_GENERIC;
@@ -238,6 +240,18 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 info_set_value(i, s_tokens[2]);
                 r_ptr->freq_spell = 100 / i;
                 continue;
+            }
+
+            // 落とし子自動生成率
+            if (s_tokens.size() == 4 && s_tokens[0] == "SPAWN") {
+                if (s_tokens[1] == "CREATURE") {
+                    int freq;
+                    MONRACE_IDX mon_idx;
+                    info_set_value(freq, s_tokens[2]);
+                    info_set_value(mon_idx, s_tokens[3]);
+                    r_ptr->spawns.push_back({ freq, mon_idx });
+                    continue;
+                }
             }
 
             if (!grab_one_spell_flag(r_ptr, f))

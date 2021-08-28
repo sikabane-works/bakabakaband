@@ -77,6 +77,7 @@ bool awake_monster(player_type *target_ptr, MONSTER_IDX m_idx);
 void process_angar(player_type *target_ptr, MONSTER_IDX m_idx, bool see_m);
 bool explode_grenade(player_type *target_ptr, MONSTER_IDX m_idx);
 bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+bool process_monster_spawn(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
 void process_special(player_type *target_ptr, MONSTER_IDX m_idx);
 bool cast_spell(player_type *target_ptr, MONSTER_IDX m_idx, bool aware);
 
@@ -144,6 +145,9 @@ void process_monster(player_type *target_ptr, MONSTER_IDX m_idx)
     POSITION oy = m_ptr->fy;
     POSITION ox = m_ptr->fx;
     if (decide_monster_multiplication(target_ptr, m_idx, oy, ox))
+        return;
+
+    if (process_monster_spawn(target_ptr, m_idx, oy, ox))
         return;
 
     process_special(target_ptr, m_idx);
@@ -418,12 +422,59 @@ bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, P
         k = 8;
 
     if ((k < 5) && (!k || !randint0(k * MON_MULT_ADJ))) {
-        if (multiply_monster(target_ptr, m_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+        if (multiply_monster(target_ptr, m_idx, m_ptr->r_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
             if (target_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(target_ptr, m_ptr))
                 r_ptr->r_flags2 |= RF2_MULTIPLY;
 
             return true;
         }
+    }
+
+    return false;
+}
+
+/*!
+ * @brief モンスターの落とし子生成処理
+ * @param target_ptr プレーヤーへの参照ポインタ
+ * @param m_idx モンスターID
+ * @param oy 分裂元モンスターのY座標
+ * @param ox 分裂元モンスターのX座標
+ * @return 実際に分裂したらTRUEを返す
+ */
+bool process_monster_spawn(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
+{
+    monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if ((r_ptr->spawns.size() == 0) || (target_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
+        return false;
+
+    int k = 0;
+
+    for(const auto &spawn_info : r_ptr->spawns) {
+
+        for (POSITION y = oy - 1; y <= oy + 1; y++) {
+            for (POSITION x = ox - 1; x <= ox + 1; x++) {
+                if (!in_bounds2(target_ptr->current_floor_ptr, y, x))
+                    continue;
+
+                if (target_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                    k++;
+            }
+        }
+
+        if (multiply_barrier(target_ptr, m_idx))
+            k = 8;
+
+        int freq = std::get<0>(spawn_info);
+        MONRACE_IDX idx = std::get<1>(spawn_info);
+        if (one_in_(freq)) {
+            if (multiply_monster(target_ptr, m_idx, idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+                if (target_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(target_ptr, m_ptr))
+                    r_ptr->r_flags2 |= RF2_MULTIPLY;
+
+                return true;
+            }
+        }    
     }
 
     return false;
