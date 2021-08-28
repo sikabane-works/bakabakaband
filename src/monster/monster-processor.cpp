@@ -77,6 +77,7 @@ bool awake_monster(player_type *target_ptr, MONSTER_IDX m_idx);
 void process_angar(player_type *target_ptr, MONSTER_IDX m_idx, bool see_m);
 bool explode_grenade(player_type *target_ptr, MONSTER_IDX m_idx);
 bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx);
 bool process_monster_spawn(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
 void process_special(player_type *target_ptr, MONSTER_IDX m_idx);
 bool cast_spell(player_type *target_ptr, MONSTER_IDX m_idx, bool aware);
@@ -150,6 +151,7 @@ void process_monster(player_type *target_ptr, MONSTER_IDX m_idx)
     if (process_monster_spawn(target_ptr, m_idx, oy, ox))
         return;
 
+    process_monster_change_feat(target_ptr, m_idx);
     process_special(target_ptr, m_idx);
     process_speak_sound(target_ptr, m_idx, oy, ox, turn_flags_ptr->aware);
     if (cast_spell(target_ptr, m_idx, turn_flags_ptr->aware))
@@ -431,6 +433,23 @@ bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, P
     }
 
     return false;
+}
+
+/*!
+ * @brief モンスターによる地形変化処理
+ */
+void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    for (const auto &spawn_info : r_ptr->change_feats) {
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        auto feat = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            cave_set_feat(target_ptr, m_ptr->fy, m_ptr->fx, feat);
+        }
+    }
 }
 
 /*!
