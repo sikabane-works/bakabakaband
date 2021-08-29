@@ -59,7 +59,7 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
     bool resist_levitation = (creature_ptr->levitation && !has_flag(f_ptr->flags, FF_CHAOS_TAINTED) && !has_flag(f_ptr->flags, FF_VOID));
 
 
-    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED) || has_flag(f_ptr->flags, FF_PLASMA)) {
         damage = 12000 + randint0(8000);
     } else if (has_flag(f_ptr->flags, FF_VOID)) {
         damage = 18000 + randint0(12000);
@@ -207,6 +207,11 @@ void process_player_hp_mp(player_type *creature_ptr)
             take_hit(creature_ptr, DAMAGE_NOESCAPE, randint1(creature_ptr->lev), _("溺れ", "drowning"));
             cave_no_regen = true;
         }
+    }
+
+    if (has_flag(f_ptr->flags, FF_PLASMA)) {
+        cave_no_regen
+            = deal_damege_by_feat(creature_ptr, g_ptr, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);
     }
 
     if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {

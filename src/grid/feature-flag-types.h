@@ -72,7 +72,8 @@ enum feature_flag_type : int {
     FF_CONVERT = 111, /*!< 地形生成処理中の疑似フラグ */
     FF_GLASS = 112, /*!< ガラス製の地形である */
     FF_DUNG_POOL = 113, /*!< 糞溜まりである */
-    FF_FLAG_MAX = 114
+    FF_PLASMA = 114, /*!< プラズマに覆われている */
+    FF_FLAG_MAX = 115
 };
 
 #define FF_FLAG_SIZE (1 + ((FF_FLAG_MAX - 1) / 32))
