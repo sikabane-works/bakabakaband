@@ -146,6 +146,14 @@ PERCENTAGE calc_fire_damage_rate(player_type *creature_ptr)
 }
 
 /*!
+ * @brief プラズマ地形攻撃に対するダメージ倍率計算
+ */
+PERCENTAGE calc_plasma_damage_rate(player_type *creature_ptr)
+{
+    return MIN(calc_fire_damage_rate(creature_ptr), calc_elec_damage_rate(creature_ptr));
+}
+
+/*!
  * @brief 冷気属性攻撃に対するダメージ倍率計算
  */
 PERCENTAGE calc_cold_damage_rate(player_type *creature_ptr)

@@ -122,5 +122,7 @@ const std::unordered_map<std::string_view, feature_flag_type> f_info_flags = {
     { "TELEPORTABLE", FF_TELEPORTABLE },
     { "CONVERT", FF_CONVERT },
     { "GLASS", FF_GLASS },
-    { "DUNG_POOL", FF_DUNG_POOL }
+    { "DUNG_POOL", FF_DUNG_POOL },
+    { "PLASMA", FF_PLASMA },
+
 };
