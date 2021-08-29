@@ -424,6 +424,9 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         (void)set_stun(creature_ptr, 200);
         msg_print("「お、大丈夫か？大丈夫か？……」");
         return true;
+    case SV_FOOD_GOLDEN_EGG:
+        (void)do_inc_stat(creature_ptr, randint0(6));
+        return true;
     default:
         return true;
     }
