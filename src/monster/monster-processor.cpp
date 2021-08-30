@@ -78,7 +78,7 @@ void process_angar(player_type *target_ptr, MONSTER_IDX m_idx, bool see_m);
 bool explode_grenade(player_type *target_ptr, MONSTER_IDX m_idx);
 bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
 void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx);
-bool process_monster_spawn(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+bool process_monster_spawn_monster(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
 void process_monster_spawn_item(player_type *target_ptr, MONSTER_IDX m_idx);
 void process_special(player_type *target_ptr, MONSTER_IDX m_idx);
 bool cast_spell(player_type *target_ptr, MONSTER_IDX m_idx, bool aware);
@@ -149,7 +149,7 @@ void process_monster(player_type *target_ptr, MONSTER_IDX m_idx)
     if (decide_monster_multiplication(target_ptr, m_idx, oy, ox))
         return;
 
-    if (process_monster_spawn(target_ptr, m_idx, oy, ox))
+    if (process_monster_spawn_monster(target_ptr, m_idx, oy, ox))
         return;
 
     process_monster_spawn_item(target_ptr, m_idx);
@@ -483,16 +483,16 @@ void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx)
  * @param ox 分裂元モンスターのX座標
  * @return 実際に分裂したらTRUEを返す
  */
-bool process_monster_spawn(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
+bool process_monster_spawn_monster(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
 {
     monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
-    if ((r_ptr->spawns.size() == 0) || (target_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
+    if ((r_ptr->spawn_monsters.size() == 0) || (target_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
         return false;
 
     int k = 0;
 
-    for(const auto &spawn_info : r_ptr->spawns) {
+    for (const auto &spawn_info : r_ptr->spawn_monsters) {
 
         for (POSITION y = oy - 1; y <= oy + 1; y++) {
             for (POSITION x = ox - 1; x <= ox + 1; x++) {
@@ -507,9 +507,10 @@ bool process_monster_spawn(player_type *target_ptr, MONSTER_IDX m_idx, POSITION 
         if (multiply_barrier(target_ptr, m_idx))
             k = 8;
 
-        int freq = std::get<0>(spawn_info);
-        MONRACE_IDX idx = std::get<1>(spawn_info);
-        if (one_in_(freq)) {
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        MONRACE_IDX idx = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
             if (multiply_monster(target_ptr, m_idx, idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
                 if (target_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(target_ptr, m_ptr))
                     r_ptr->r_flags2 |= RF2_MULTIPLY;
