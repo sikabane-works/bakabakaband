@@ -73,7 +73,7 @@ struct monster_race {
     monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
     MONRACE_IDX reinforce_id[6]{}; //!< 指定護衛モンスター種族ID(6種まで)
     DICE_NUMBER reinforce_dd[6]{}; //!< 指定護衛数ダイス数
-    std::vector<std::tuple<int, MONRACE_IDX>> spawns; //!< 落とし子生成率
+    std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
     DICE_SID reinforce_ds[6]{}; //!< 指定護衛数ダイス面
