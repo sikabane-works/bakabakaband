@@ -75,6 +75,7 @@ struct monster_race {
     DICE_NUMBER reinforce_dd[6]{}; //!< 指定護衛数ダイス数
     std::vector<std::tuple<int, MONRACE_IDX>> spawns; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
+    std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
     DICE_SID reinforce_ds[6]{}; //!< 指定護衛数ダイス面
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度

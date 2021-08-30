@@ -267,6 +267,18 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                     r_ptr->change_feats.push_back({ num, deno, feat_idx });
                     continue;
                 }
+
+                // アイテム自然ドロップ率
+                if (s_tokens[1] == "ITEM") {
+                    int num;
+                    int deno;
+                    KIND_OBJECT_IDX kind_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[3]);
+                    info_set_value(kind_idx, s_tokens[4]);
+                    r_ptr->spawn_items.push_back({ num, deno, kind_idx });
+                    continue;
+                }
             }
 
 
