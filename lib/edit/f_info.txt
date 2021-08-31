@@ -2221,7 +2221,7 @@ F:TELEPORTABLE
 
 N:277:BED
 J:寝台
-E:ベッド
+E:bed
 G:::y:LIT
 W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE
@@ -2267,6 +2267,13 @@ G:;:v
 W:35
 F:LOS | PROJECT | MOVE | PLACE | NOTICE | REMEMBER | STAIRS | MORE |
 F:PERMANENT | CAN_FLY | SPECIAL | ENTRANCE | TELEPORTABLE
+
+N:283:TENT
+J:テント
+E:TENT
+G:#:W:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
