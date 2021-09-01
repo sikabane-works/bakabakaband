@@ -71,12 +71,10 @@ struct monster_race {
     BIT_FLAGS flagsr{}; //!< 耐性フラグ / Flags R (resistances info)
     EnumClassFlagGroup<RF_ABILITY> ability_flags; //!< 能力フラグ(魔法/ブレス) / Ability Flags
     monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
-    MONRACE_IDX reinforce_id[6]{}; //!< 指定護衛モンスター種族ID(6種まで)
-    DICE_NUMBER reinforce_dd[6]{}; //!< 指定護衛数ダイス数
+    std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces; 
     std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
-    DICE_SID reinforce_ds[6]{}; //!< 指定護衛数ダイス面
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
     PERCENTAGE artifact_percent[4]{}; //!< 特定アーティファクトドロップ率

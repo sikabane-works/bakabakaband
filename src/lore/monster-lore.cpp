@@ -122,9 +122,8 @@ void process_monster_lore(player_type *player_ptr, MONRACE_IDX r_idx, monster_lo
 {
     lore_type tmp_lore;
     lore_type *lore_ptr = initialize_lore_type(&tmp_lore, r_idx, mode);
-    for (int n = 0; n < A_MAX; n++) {
-        if (lore_ptr->r_ptr->reinforce_id[n] > 0)
-            lore_ptr->reinforce = true;
+    if(lore_ptr->r_ptr->reinforces.size() > 0) {
+        lore_ptr->reinforce = true;
     }
 
     if (cheat_know || (mode == MONSTER_LORE_RESEARCH) || (mode == MONSTER_LORE_DEBUG))
