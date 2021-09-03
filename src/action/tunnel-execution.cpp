@@ -4,16 +4,17 @@
  */
 
 #include "action/tunnel-execution.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "floor/cave.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
 #include "player/player-move.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -28,12 +29,12 @@
 static bool do_cmd_tunnel_test(floor_type *floor_ptr, POSITION y, POSITION x)
 {
     grid_type *g_ptr = &floor_ptr->grid_array[y][x];
-    if (!(g_ptr->info & CAVE_MARK)) {
+    if (!g_ptr->is_mark()) {
         msg_print(_("そこには何も見当たらない。", "You see nothing there."));
         return false;
     }
 
-    if (!cave_has_flag_grid(g_ptr, FF_TUNNEL)) {
+    if (!g_ptr->cave_has_flag(FF::TUNNEL)) {
         msg_print(_("そこには掘るものが見当たらない。", "You see nothing there to tunnel."));
         return false;
     }
@@ -66,25 +67,25 @@ bool exe_tunnel(player_type *creature_ptr, POSITION y, POSITION x)
     g_ptr = &creature_ptr->current_floor_ptr->grid_array[y][x];
     f_ptr = &f_info[g_ptr->feat];
     power = f_ptr->power;
-    mimic_f_ptr = &f_info[get_feat_mimic(g_ptr)];
+    mimic_f_ptr = &f_info[g_ptr->get_feat_mimic()];
     name = mimic_f_ptr->name.c_str();
     sound(SOUND_DIG);
-    if (has_flag(f_ptr->flags, FF_PERMANENT)) {
-        if (has_flag(mimic_f_ptr->flags, FF_PERMANENT))
+    if (f_ptr->flags.has(FF::PERMANENT)) {
+        if (mimic_f_ptr->flags.has(FF::PERMANENT))
             msg_print(_("この岩は硬すぎて掘れないようだ。", "This seems to be permanent rock."));
         else
             msg_print(_("そこは掘れない!", "You can't tunnel through that!"));
-    } else if (has_flag(f_ptr->flags, FF_CAN_DIG)) {
+    } else if (f_ptr->flags.has(FF::CAN_DIG)) {
         if (creature_ptr->skill_dig > randint0(20 * power)) {
             msg_format(_("%sをくずした。", "You have removed the %s."), name);
-            cave_alter_feat(creature_ptr, y, x, FF_TUNNEL);
+            cave_alter_feat(creature_ptr, y, x, FF::TUNNEL);
             creature_ptr->update |= PU_FLOW;
         } else {
             msg_format(_("%sをくずしている。", "You dig into the %s."), name);
             more = true;
         }
     } else {
-        bool tree = has_flag(mimic_f_ptr->flags, FF_TREE);
+        bool tree = mimic_f_ptr->flags.has(FF::TREE);
         if (creature_ptr->skill_dig > power + randint0(40 * power)) {
             if (tree)
                 msg_format(_("%sを切り払った。", "You have cleared away the %s."), name);
@@ -93,10 +94,10 @@ bool exe_tunnel(player_type *creature_ptr, POSITION y, POSITION x)
                 creature_ptr->update |= (PU_FLOW);
             }
 
-            if (has_flag(f_ptr->flags, FF_GLASS))
+            if (f_ptr->flags.has(FF::GLASS))
                 sound(SOUND_GLASS);
 
-            cave_alter_feat(creature_ptr, y, x, FF_TUNNEL);
+            cave_alter_feat(creature_ptr, y, x, FF::TUNNEL);
             chg_virtue(creature_ptr, V_DILIGENCE, 1);
             chg_virtue(creature_ptr, V_NATURE, -1);
         } else {

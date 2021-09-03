@@ -29,14 +29,14 @@ static void kind_info(player_type *player_ptr, char *buf, char *dam, char *wgt, 
 {
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(player_ptr, k);
+    q_ptr->prep(k);
     q_ptr->ident |= IDENT_KNOWN;
     q_ptr->pval = 0;
     q_ptr->to_a = 0;
     q_ptr->to_h = 0;
     q_ptr->to_d = 0;
     *lev = k_info[q_ptr->k_idx].level;
-    *val = object_value(player_ptr, q_ptr);
+    *val = object_value(q_ptr);
     if (!buf || !dam || !chance || !wgt)
         return;
 
@@ -122,7 +122,7 @@ spoiler_output_status spoil_obj_desc(concptr fname)
                         kind_info(&dummy, NULL, NULL, NULL, NULL, &e2, &t2, who[i2]);
 
                         if ((t1 > t2) || ((t1 == t2) && (e1 > e2))) {
-                            u16b tmp = who[i1];
+                            uint16_t tmp = who[i1];
                             who[i1] = who[i2];
                             who[i2] = tmp;
                         }
@@ -154,7 +154,7 @@ spoiler_output_status spoil_obj_desc(concptr fname)
             if ((k_ptr->tval != group_item[i].tval) || k_ptr->gen_flags.has(TRG::INSTA_ART))
                 continue;
 
-            who[n++] = (u16b)k;
+            who[n++] = (uint16_t)k;
         }
     }
 

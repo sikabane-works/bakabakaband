@@ -1,4 +1,5 @@
 ﻿#include "birth/birth-wizard.h"
+#include "avatar/avatar.h"
 #include "birth/auto-roller.h"
 #include "birth/birth-body-spec.h"
 #include "birth/birth-explanations-table.h"
@@ -20,19 +21,19 @@
 #include "io/input-key-acceptor.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
-#include "player-info/avatar.h"
 #include "player/patron.h"
 #include "player/player-class.h"
 #include "player/player-race.h"
 #include "player/player-sex.h"
-#include "player/process-name.h"
 #include "player/player-status-table.h"
 #include "player/player-status.h"
+#include "player/process-name.h"
 #include "system/game-option-types.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/buffer-shaper.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "view/display-birth.h" // 暫定。後で消す予定。
 #include "view/display-player.h" // 暫定。後で消す.
@@ -149,7 +150,7 @@ static bool get_player_sex(player_type *creature_ptr, char *buf)
         display_help_on_sex_select(creature_ptr, c);
     }
 
-    creature_ptr->psex = (byte)k;
+    creature_ptr->psex = static_cast<player_sex>(k);
     sp_ptr = &sex_info[creature_ptr->psex];
     c_put_str(TERM_L_BLUE, sp_ptr->title, 3, 15);
     return true;
@@ -158,14 +159,14 @@ static bool get_player_sex(player_type *creature_ptr, char *buf)
 static bool let_player_select_race(player_type *creature_ptr)
 {
     clear_from(10);
-    creature_ptr->prace = RACE_HUMAN;
+    creature_ptr->prace = player_race_type::HUMAN;
     while (true) {
         char temp[80 * 10];
         if (!get_player_race(creature_ptr))
             return false;
 
         clear_from(10);
-        shape_buffer(race_explanations[creature_ptr->prace], 74, temp, sizeof(temp));
+        shape_buffer(race_explanations[enum2i(creature_ptr->prace)], 74, temp, sizeof(temp));
         concptr t = temp;
         for (int i = 0; i < 10; i++) {
             if (t[0] == 0)
@@ -268,8 +269,8 @@ static bool let_player_build_character(player_type *creature_ptr)
 
 static void display_initial_options(player_type *creature_ptr)
 {
-    u16b expfact = get_expfact(creature_ptr) - 100;
-    s16b adj[A_MAX];
+    uint16_t expfact = get_expfact(creature_ptr) - 100;
+    int16_t adj[A_MAX];
     for (int i = 0; i < A_MAX; i++) {
         adj[i] = rp_ptr->r_adj[i] + cp_ptr->c_adj[i] + ap_ptr->a_adj[i];
     }
@@ -320,10 +321,7 @@ static void display_auto_roller_success_rate(const int col)
         sprintf(buf, _("確率 :     1/10000以上", "Prob :     >1/10000"));
     put_str(buf, 11, col + 10);
 
-    put_str(_(
-        "注意 : 体格等のオートローラを併用時は、上記確率より困難です。",
-        "Note : Prob may be lower when you use the 'autochara' option."
-        ), 22, 5);
+    put_str(_("注意 : 体格等のオートローラを併用時は、上記確率より困難です。", "Note : Prob may be lower when you use the 'autochara' option."), 22, 5);
 
     for (int i = 0; i < A_MAX; i++) {
         put_str(stat_names[i], 3 + i, col + 8);
@@ -505,7 +503,7 @@ static bool display_auto_roller(player_type *creature_ptr, chara_limit_type char
 
         get_extra(creature_ptr, true);
         get_money(creature_ptr);
-        creature_ptr->chaos_patron = (s16b)randint0(MAX_PATRON);
+        creature_ptr->chaos_patron = (int16_t)randint0(MAX_PATRON);
 
         char c;
         if (!display_auto_roller_result(creature_ptr, prev, &c))
@@ -534,7 +532,7 @@ static void set_name_history(player_type *creature_ptr)
     process_player_name(creature_ptr, current_world_ptr->creating_savefile);
     edit_history(creature_ptr);
     get_max_stats(creature_ptr);
-    get_virtues(creature_ptr);
+    initialize_virtues(creature_ptr);
     prt(_("[ 'Q' 中断, 'S' 初めから, Enter ゲーム開始 ]", "['Q'uit, 'S'tart over, or Enter to continue]"), 23, _(14, 10));
 }
 

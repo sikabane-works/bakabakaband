@@ -12,6 +12,7 @@
  */
 
 #include "cmd-building/cmd-building.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "cmd-building/cmd-inn.h"
 #include "cmd-io/cmd-dump.h"
@@ -28,7 +29,6 @@
 #include "floor/floor-mode-changer.h"
 #include "floor/wild.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "io/input-key-acceptor.h"
 #include "io/input-key-requester.h"
 #include "main/music-definitions-table.h"
@@ -54,7 +54,6 @@
 #include "object-hook/hook-bow.h"
 #include "object-hook/hook-weapon.h"
 #include "object/item-tester-hooker.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
 #include "player/player-personality-types.h"
 #include "spell-kind/spells-perception.h"
@@ -63,6 +62,7 @@
 #include "spell/spells-status.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -70,7 +70,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 
-u32b mon_odds[4];
+uint32_t mon_odds[4];
 int battle_odds;
 PRICE kakekin;
 int sel_monster;
@@ -111,7 +111,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         return;
     }
 
-    BACT_IDX bact = bldg->actions[i];
+    auto bact = bldg->actions[i];
     if ((bact != BACT_RECHARGE)
         && (((bldg->member_costs[i] > player_ptr->au) && is_owner(player_ptr, bldg))
             || ((bldg->other_costs[i] > player_ptr->au) && !is_owner(player_ptr, bldg)))) {
@@ -125,7 +125,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         /* Do nothing */
         break;
     case BACT_RESEARCH_ITEM:
-        paid = identify_fully(player_ptr, false, TV_NONE);
+        paid = identify_fully(player_ptr, false);
         break;
     case BACT_TOWN_HISTORY:
         town_history(player_ptr);
@@ -167,12 +167,10 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         bcost = compare_weapons(player_ptr, bcost);
         break;
     case BACT_ENCHANT_WEAPON:
-        item_tester_hook = object_allow_enchant_melee_weapon;
-        enchant_item(player_ptr, bcost, 1, 1, 0, TV_NONE);
+        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(object_allow_enchant_melee_weapon));
         break;
     case BACT_ENCHANT_ARMOR:
-        item_tester_hook = object_is_armour;
-        enchant_item(player_ptr, bcost, 0, 0, 1, TV_NONE);
+        enchant_item(player_ptr, bcost, 0, 0, 1, FuncItemTester(object_is_armour));
         break;
     case BACT_RECHARGE:
         building_recharge(player_ptr);
@@ -188,7 +186,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         paid = true;
         break;
     case BACT_IDENT_ONE:
-        paid = ident_spell(player_ptr, false, TV_NONE);
+        paid = ident_spell(player_ptr, false);
         break;
     case BACT_LEARN:
         do_cmd_study(player_ptr);
@@ -200,11 +198,10 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         paid = restore_all_status(player_ptr);
         break;
     case BACT_ENCHANT_ARROWS:
-        item_tester_hook = item_tester_hook_ammo;
-        enchant_item(player_ptr, bcost, 1, 1, 0, TV_NONE);
+        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(object_is_ammo));
         break;
     case BACT_ENCHANT_BOW:
-        enchant_item(player_ptr, bcost, 1, 1, 0, TV_BOW);
+        enchant_item(player_ptr, bcost, 1, 1, 0, TvalItemTester(TV_BOW));
         break;
 
     case BACT_RECALL:
@@ -275,7 +272,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         set_virtue(player_ptr, V_DILIGENCE, 0);
         set_virtue(player_ptr, V_VALOUR, 0);
         set_virtue(player_ptr, V_INDIVIDUALISM, 0);
-        get_virtues(player_ptr);
+        initialize_virtues(player_ptr);
         paid = true;
         break;
 
@@ -315,7 +312,7 @@ void do_cmd_building(player_type *player_ptr)
     PlayerEnergy energy(player_ptr);
     energy.set_player_turn_energy(100);
 
-    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, player_ptr->y, player_ptr->x, FF_BLDG)) {
+    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, player_ptr->y, player_ptr->x, FF::BLDG)) {
         msg_print(_("ここには建物はない。", "You see no building here."));
         return;
     }

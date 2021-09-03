@@ -35,14 +35,14 @@
  */
 bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
 {
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    TrFlags flgs;
     char temp[70 * 20];
     concptr info[128];
     GAME_TEXT o_name[MAX_NLEN];
     char desc[256];
 
     int trivial_info = 0;
-    object_flags(player_ptr, o_ptr, flgs);
+    object_flags(o_ptr, flgs);
 
     shape_buffer(o_ptr->name1 ? a_info[o_ptr->name1].text.c_str() : k_info[o_ptr->k_idx].text.c_str(), 77 - 15, temp, sizeof(temp));
 
@@ -58,11 +58,11 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
 
     if (has_flag(flgs, TR_INVEN_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
-        info[i++] = activation_explanation(player_ptr, o_ptr);
+        info[i++] = activation_explanation(o_ptr);
     }
     else if (has_flag(flgs, TR_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
-        info[i++] = activation_explanation(player_ptr, o_ptr);
+        info[i++] = activation_explanation(o_ptr);
         info[i++] = _("...ただし装備していなければならない。", "...if it is being worn.");
     }
 
@@ -173,9 +173,9 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
     }
 
     if (has_flag(flgs, TR_RIDING)) {
-        if ((o_ptr->tval == TV_POLEARM) && ((o_ptr->sval == SV_LANCE) || (o_ptr->sval == SV_HEAVY_LANCE)))
+        if (o_ptr->is_lance()) {
             info[i++] = _("それは乗馬中は非常に使いやすい。", "It is made for use while riding.");
-        else {
+        } else {
             info[i++] = _("それは乗馬中でも使いやすい。", "It is suitable for use while riding.");
             trivial_info++;
         }
@@ -576,7 +576,7 @@ bool screen_object(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
     }
 
     if (has_flag(flgs, TR_RES_CURSE)) {
-        info[i++] = _("それは呪いへの抵抗力を高める。", "It produces your high resisrance to curse.");
+        info[i++] = _("それは呪いへの抵抗力を高める。", "It increases your resistance to curses.");
     }
 
     if (has_flag(flgs, TR_SH_FIRE))

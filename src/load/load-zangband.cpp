@@ -1,4 +1,5 @@
 ﻿#include "load/load-zangband.h"
+#include "avatar/avatar.h"
 #include "cmd-building/cmd-building.h"
 #include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
@@ -10,7 +11,6 @@
 #include "monster-race/monster-race.h"
 #include "pet/pet-util.h"
 #include "player/attack-defense-types.h"
-#include "player-info/avatar.h"
 #include "player/patron.h"
 #include "player/player-class.h"
 #include "player/player-personality.h"
@@ -72,7 +72,7 @@ void load_zangband_options(void)
         option_flag[5] |= (0x00000001U << 3);
 }
 
-void set_zangband_realm(player_type* creature_ptr)
+void set_zangband_realm(player_type *creature_ptr)
 {
     if (creature_ptr->realm1 == 9)
         creature_ptr->realm1 = REALM_MUSIC;
@@ -95,7 +95,7 @@ void set_zangband_skill(player_type *creature_ptr)
     creature_ptr->skill_exp[SKILL_RIDING] = MIN(creature_ptr->skill_exp[SKILL_RIDING], s_info[creature_ptr->pclass].s_max[SKILL_RIDING]);
 }
 
-void set_zangband_spells(player_type* creature_ptr)
+void set_zangband_spells(player_type *creature_ptr)
 {
     for (int i = 0; i < MAX_SPELLS; i++)
         creature_ptr->magic_num1[i] = 0;
@@ -145,7 +145,7 @@ void set_zangband_reflection(player_type *creature_ptr)
 
 void rd_zangband_dungeon()
 {
-    s16b tmp16s;
+    int16_t tmp16s;
     rd_s16b(&tmp16s);
     max_dlv[DUNGEON_ANGBAND] = tmp16s;
 }
@@ -160,7 +160,7 @@ void set_zangband_game_turns(player_type *creature_ptr)
 
 void set_zangband_gambling_monsters(int i)
 {
-    s16b tmp16s;
+    int16_t tmp16s;
     rd_s16b(&tmp16s);
     mon_odds[i] = tmp16s;
 }
@@ -191,7 +191,7 @@ void set_zangband_action(player_type *creature_ptr)
 
 void set_zangband_visited_towns(player_type *creature_ptr)
 {
-    s32b tmp32s;
+    int32_t tmp32s;
     rd_s32b(&tmp32s);
     creature_ptr->visit = 1L;
 }

@@ -14,7 +14,6 @@
 #include "game-option/birth-options.h"
 #include "game-option/play-record-options.h"
 #include "game-option/special-options.h"
-#include "grid/grid.h"
 #include "io/input-key-acceptor.h"
 #include "io/write-diary.h"
 #include "main/sound-definitions-table.h"
@@ -29,6 +28,7 @@
 #include "monster/monster-info.h"
 #include "player/player-status.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -205,7 +205,8 @@ void teleport_level(player_type *creature_ptr, MONSTER_IDX m_idx)
     }
 
     delete_monster_idx(creature_ptr, m_idx);
-    sound(SOUND_TPLEVEL);
+    if (see_m)
+        sound(SOUND_TPLEVEL);
 }
 
 bool teleport_level_other(player_type *caster_ptr)

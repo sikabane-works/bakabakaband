@@ -1,7 +1,6 @@
 ﻿#include "spell-kind/blood-curse.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
-#include "grid/grid.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "spell-kind/earthquake.h"
@@ -13,6 +12,7 @@
 #include "status/base-status.h"
 #include "status/experience.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
@@ -117,13 +117,13 @@ void blood_curse_to_enemy(player_type *caster_ptr, MONSTER_IDX m_idx)
             /* Fall through */
         case 26:
         case 27:
-        case 28: {
+        case 28:
+        default: {
             if (one_in_(13)) {
                 for (int i = 0; i < A_MAX; i++) {
-                    bool is_first_dec_stat = true;
-                    while (is_first_dec_stat || one_in_(2)) {
+                    do {
                         (void)do_dec_stat(caster_ptr, i);
-                    }
+                    } while(one_in_(2));
                 }
             } else {
                 (void)do_dec_stat(caster_ptr, randint0(6));

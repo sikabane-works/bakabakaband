@@ -102,12 +102,12 @@ static void describe_chest(flavor_type *flavor_ptr)
     describe_chest_trap(flavor_ptr);
 }
 
-static void decide_tval_show(player_type *player_ptr, flavor_type *flavor_ptr)
+static void decide_tval_show(flavor_type *flavor_ptr)
 {
     if (has_flag(flavor_ptr->tr_flags, TR_SHOW_MODS))
         flavor_ptr->show_weapon = true;
 
-    if (object_is_smith(player_ptr, flavor_ptr->o_ptr) && (flavor_ptr->o_ptr->xtra3 == 1 + ESSENCE_SLAY_GLOVE))
+    if (object_is_smith(flavor_ptr->o_ptr) && (flavor_ptr->o_ptr->xtra3 == 1 + ESSENCE_SLAY_GLOVE))
         flavor_ptr->show_weapon = true;
 
     if (flavor_ptr->o_ptr->to_h && flavor_ptr->o_ptr->to_d)
@@ -124,11 +124,9 @@ static void describe_weapon_dice(player_type *player_ptr, flavor_type *flavor_pt
 
     flavor_ptr->t = object_desc_chr(flavor_ptr->t, ' ');
     flavor_ptr->t = object_desc_chr(flavor_ptr->t, flavor_ptr->p1);
-    if (player_ptr->riding && (flavor_ptr->o_ptr->tval == TV_POLEARM) && ((flavor_ptr->o_ptr->sval == SV_LANCE) || (flavor_ptr->o_ptr->sval == SV_HEAVY_LANCE))) {
-        flavor_ptr->t = object_desc_num(flavor_ptr->t, flavor_ptr->o_ptr->dd + 2);
-    } else {
-        flavor_ptr->t = object_desc_num(flavor_ptr->t, flavor_ptr->o_ptr->dd);    
-    }
+    auto is_bonus = (player_ptr->riding > 0) && flavor_ptr->o_ptr->is_lance();
+    auto bonus = is_bonus ? 2 : 0;
+    flavor_ptr->t = object_desc_num(flavor_ptr->t, flavor_ptr->o_ptr->dd + bonus);
     flavor_ptr->t = object_desc_chr(flavor_ptr->t, 'd');
     flavor_ptr->t = object_desc_num(flavor_ptr->t, flavor_ptr->o_ptr->ds);
     flavor_ptr->t = object_desc_chr(flavor_ptr->t, flavor_ptr->p2);
@@ -150,8 +148,8 @@ static void describe_bow(player_type *player_ptr, flavor_type *flavor_ptr)
     if (!(flavor_ptr->mode & OD_DEBUG)) {
         num_fire = calc_num_fire(player_ptr, flavor_ptr->o_ptr);
     } else {
-        BIT_FLAGS flgs[TR_FLAG_SIZE];
-        object_flags(player_ptr, flavor_ptr->o_ptr, flgs);
+        TrFlags flgs;
+        object_flags(flavor_ptr->o_ptr, flgs);
         if (has_flag(flgs, TR_XTRA_SHOTS))
             num_fire += 100;
     }
@@ -286,7 +284,7 @@ static void describe_bow_power(player_type *player_ptr, flavor_type *flavor_ptr)
 static void describe_spike_power(player_type *player_ptr, flavor_type *flavor_ptr)
 {
     int avgdam = player_ptr->mighty_throw ? (1 + 3) : 1;
-    s16b energy_fire = 100 - player_ptr->lev;
+    int16_t energy_fire = 100 - player_ptr->lev;
     avgdam += ((player_ptr->lev + 30) * (player_ptr->lev + 30) - 900) / 55;
     flavor_ptr->t = object_desc_chr(flavor_ptr->t, ' ');
     flavor_ptr->t = object_desc_chr(flavor_ptr->t, flavor_ptr->p1);
@@ -507,7 +505,7 @@ void describe_flavor(player_type *player_ptr, char *buf, object_type *o_ptr, BIT
     }
 
     describe_chest(flavor_ptr);
-    decide_tval_show(player_ptr, flavor_ptr);
+    decide_tval_show(flavor_ptr);
     describe_tval(player_ptr, flavor_ptr);
     describe_named_item_tval(flavor_ptr);
     if (!(mode & OD_DEBUG)) {
@@ -530,7 +528,7 @@ void describe_flavor(player_type *player_ptr, char *buf, object_type *o_ptr, BIT
         return;
     }
 
-    display_short_flavors(player_ptr, flavor_ptr);
+    display_short_flavors(flavor_ptr);
     decide_item_feeling(flavor_ptr);
     display_item_discount(flavor_ptr);
     display_item_fake_inscription(flavor_ptr);

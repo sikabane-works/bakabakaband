@@ -7,6 +7,7 @@
 #include "mspell/assign-monster-spell.h"
 #include "blue-magic/blue-magic-checker.h"
 #include "monster-race/race-ability-flags.h"
+#include "monster-race/race-flags8.h"
 #include "mspell/mspell-ball.h"
 #include "mspell/mspell-bolt.h"
 #include "mspell/mspell-breath.h"
@@ -21,21 +22,13 @@
 #include "mspell/mspell-util.h"
 #include "mspell/mspell.h"
 #include "spell/spell-types.h"
+#include "system/monster-type-definition.h"
+#include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "monster-race/monster-race.h"
-#include "monster-race/race-flags8.h"
 #include "util/bit-flags-calculator.h"
-
-/*!
- * @brief SPELL_IDX を monster_spell_type に変換する。
- */
-static int spell_idx_to_monster_spell_type(const RF_ABILITY idx)
-{
-    return static_cast<int>(idx);
-}
+#include "util/enum-converter.h"
 
 static MonsterSpellResult monspell_to_player_impl(player_type *target_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
@@ -333,7 +326,7 @@ MonsterSpellResult monspell_to_player(player_type *target_ptr, RF_ABILITY ms_typ
 
     // 条件を満たしていればラーニングを試みる。
     if (res.valid && res.learnable) {
-        const auto monspell = spell_idx_to_monster_spell_type(ms_type);
+        const auto monspell = enum2i(ms_type);
         learn_spell(target_ptr, monspell);
     }
 
@@ -363,7 +356,7 @@ MonsterSpellResult monspell_to_monster(
 
     // 条件を満たしていればラーニングを試みる。
     if (res.valid && res.learnable) {
-        const auto monspell = spell_idx_to_monster_spell_type(ms_type);
+        const auto monspell = enum2i(ms_type);
         learn_spell(target_ptr, monspell);
     }
 

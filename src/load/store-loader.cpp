@@ -1,11 +1,11 @@
 ﻿#include "load/store-loader.h"
+#include "avatar/avatar.h"
 #include "floor/floor-town.h"
 #include "load/angband-version-comparer.h"
 #include "load/item-loader.h"
 #include "load/load-util.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
-#include "player-info/avatar.h"
 #include "store/store.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -39,7 +39,7 @@ static void home_carry_load(player_type *player_ptr, store_type *store_ptr, obje
     if (store_ptr->stock_num >= store_get_stock_max(STORE_HOME))
         return;
 
-    s32b value = object_value(player_ptr, o_ptr);
+    int32_t value = object_value(o_ptr);
     int slot;
     for (slot = 0; slot < store_ptr->stock_num; slot++) {
         if (object_sort_comp(player_ptr, o_ptr, value, &store_ptr->stock[slot]))
@@ -76,7 +76,7 @@ static errr rd_store(player_type *player_ptr, int town_number, int store_number)
 
     byte owner_idx;
     byte tmp8u;
-    s16b inven_num;
+    int16_t inven_num;
     rd_s32b(&store_ptr->store_open);
     rd_s16b(&store_ptr->insult_cur);
     rd_byte(&owner_idx);
@@ -99,7 +99,7 @@ static errr rd_store(player_type *player_ptr, int town_number, int store_number)
         q_ptr = &forge;
         q_ptr->wipe();
 
-        rd_item(player_ptr, q_ptr);
+        rd_item(q_ptr);
 
         auto stock_max = store_get_stock_max(static_cast<STORE_TYPE_IDX>(store_number));
         if (store_ptr->stock_num >= stock_max)
@@ -125,7 +125,7 @@ errr load_store(player_type *creature_ptr)
 {
     (void)creature_ptr;
 
-    u16b tmp16u;
+    uint16_t tmp16u;
     rd_u16b(&tmp16u);
     auto town_count = (int)tmp16u;
 

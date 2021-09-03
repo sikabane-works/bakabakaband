@@ -36,6 +36,7 @@
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -76,12 +77,12 @@ void night_falls(player_type *subject_ptr)
         for (POSITION y = 0; y < floor_ptr->height; y++) {
             for (POSITION x = 0; x < floor_ptr->width; x++) {
                 grid_type *g_ptr = &floor_ptr->grid_array[y][x];
-                feature_type *f_ptr = &f_info[get_feat_mimic(g_ptr)];
-                if (is_mirror_grid(g_ptr) || has_flag(f_ptr->flags, FF_QUEST_ENTER) || has_flag(f_ptr->flags, FF_ENTRANCE))
+                feature_type *f_ptr = &f_info[g_ptr->get_feat_mimic()];
+                if (g_ptr->is_mirror() || f_ptr->flags.has(FF::QUEST_ENTER) || f_ptr->flags.has(FF::ENTRANCE))
                     continue;
 
                 g_ptr->info &= ~(CAVE_GLOW);
-                if (!has_flag(f_ptr->flags, FF_REMEMBER)) {
+                if (f_ptr->flags.has_not(FF::REMEMBER)) {
                     g_ptr->info &= ~(CAVE_MARK);
                     note_spot(subject_ptr, y, x);
                 }
@@ -153,7 +154,7 @@ static byte get_dungeon_feeling(player_type *subject_ptr)
         }
 
         if (object_is_artifact(o_ptr)) {
-            PRICE cost = object_value_real(subject_ptr, o_ptr);
+            PRICE cost = object_value_real(o_ptr);
             delta += 10 * base;
             if (cost > 10000L)
                 delta += 10 * base;
@@ -273,7 +274,7 @@ void glow_deep_lava_and_bldg(player_type *subject_ptr)
         for (POSITION x = 0; x < floor_ptr->width; x++) {
             grid_type *g_ptr;
             g_ptr = &floor_ptr->grid_array[y][x];
-            if (!has_flag(f_info[get_feat_mimic(g_ptr)].flags, FF_GLOW))
+            if (f_info[g_ptr->get_feat_mimic()].flags.has_not(FF::GLOW))
                 continue;
 
             for (DIRECTION i = 0; i < 9; i++) {

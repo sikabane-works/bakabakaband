@@ -64,14 +64,14 @@ static bool is_specific_curse(TRC flag)
     }
 }
 
-static void choise_cursed_item(player_type *creature_ptr, TRC flag, object_type *o_ptr, int *choices, int *number, int item_num)
+static void choise_cursed_item(TRC flag, object_type *o_ptr, int *choices, int *number, int item_num)
 {
     if (!is_specific_curse(flag))
         return;
 
     tr_type cf = TR_STR;
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    object_flags(creature_ptr, o_ptr, flgs);
+    TrFlags flgs;
+    object_flags(o_ptr, flgs);
     switch (flag) {
     case TRC::ADD_L_CURSE:
         cf = TR_ADD_L_CURSE;
@@ -150,7 +150,7 @@ object_type *choose_cursed_obj_name(player_type *creature_ptr, TRC flag)
             continue;
         }
 
-        choise_cursed_item(creature_ptr, flag, o_ptr, choices, &number, i);
+        choise_cursed_item(flag, o_ptr, choices, &number, i);
     }
 
     return &creature_ptr->inventory_list[choices[randint0(number)]];
@@ -169,12 +169,12 @@ static void curse_teleport(player_type *creature_ptr)
     object_type *o_ptr;
     int i_keep = 0, count = 0;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
-        BIT_FLAGS flgs[TR_FLAG_SIZE];
+        TrFlags flgs;
         o_ptr = &creature_ptr->inventory_list[i];
         if (!o_ptr->k_idx)
             continue;
 
-        object_flags(creature_ptr, o_ptr, flgs);
+        object_flags(o_ptr, flgs);
 
         if (!has_flag(flgs, TR_TELEPORT))
             continue;
@@ -215,7 +215,7 @@ static void occur_chainsword_effect(player_type *creature_ptr)
 
 static void curse_drain_exp(player_type *creature_ptr)
 {
-    if ((creature_ptr->prace == RACE_ANDROID) || (creature_ptr->cursed.has_not(TRC::DRAIN_EXP)) || !one_in_(4))
+    if ((creature_ptr->prace == player_race_type::ANDROID) || (creature_ptr->cursed.has_not(TRC::DRAIN_EXP)) || !one_in_(4))
         return;
 
     creature_ptr->exp -= (creature_ptr->lev + 1) / 2;
@@ -236,7 +236,7 @@ static void multiply_low_curse(player_type *creature_ptr)
 
     object_type *o_ptr;
     o_ptr = choose_cursed_obj_name(creature_ptr, TRC::ADD_L_CURSE);
-    auto new_curse = get_curse(creature_ptr, 0, o_ptr);
+    auto new_curse = get_curse(0, o_ptr);
     if (o_ptr->curse_flags.has(new_curse))
         return;
 
@@ -255,7 +255,7 @@ static void multiply_high_curse(player_type *creature_ptr)
 
     object_type *o_ptr;
     o_ptr = choose_cursed_obj_name(creature_ptr, TRC::ADD_H_CURSE);
-    auto new_curse = get_curse(creature_ptr, 1, o_ptr);
+    auto new_curse = get_curse(1, o_ptr);
     if (o_ptr->curse_flags.has(new_curse))
         return;
 

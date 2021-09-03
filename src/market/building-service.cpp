@@ -5,6 +5,7 @@
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
+#include "util/enum-converter.h"
 
 /*!
  * @brief 施設毎に設定された種族、職業、魔法領域フラグがプレイヤーと一致するかを判定する。
@@ -20,12 +21,12 @@ bool is_owner(player_type *player_ptr, building_type *bldg)
         return true;
     }
 
-    if (bldg->member_race[player_ptr->prace] == BUILDING_OWNER) {
+    if (enum2i(bldg->member_race[enum2i(player_ptr->prace)]) == BUILDING_OWNER) {
         return true;
     }
 
-    REALM_IDX realm1 = player_ptr->realm1;
-    REALM_IDX realm2 = player_ptr->realm2;
+    int16_t realm1 = player_ptr->realm1;
+    int16_t realm2 = player_ptr->realm2;
     if ((is_magic(realm1) && (bldg->member_realm[realm1] == BUILDING_OWNER)) || (is_magic(realm2) && (bldg->member_realm[realm2] == BUILDING_OWNER))) {
         return true;
     }
@@ -49,12 +50,12 @@ bool is_member(player_type *player_ptr, building_type *bldg)
         return true;
     }
 
-    if (bldg->member_race[player_ptr->prace]) {
+    if (static_cast<bool>(bldg->member_race[enum2i(player_ptr->prace)])) {
         return true;
     }
 
-    REALM_IDX realm1 = player_ptr->realm1;
-    REALM_IDX realm2 = player_ptr->realm2;
+    int16_t realm1 = player_ptr->realm1;
+    int16_t realm2 = player_ptr->realm2;
     if ((is_magic(realm1) && bldg->member_realm[realm1]) || (is_magic(realm2) && bldg->member_realm[realm2])) {
         return true;
     }

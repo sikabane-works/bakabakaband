@@ -5,7 +5,6 @@
 #include "floor/wild.h"
 #include "game-option/cheat-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-mask.h"
@@ -17,6 +16,7 @@
 #include "spell/summon-types.h"
 #include "system/alloc-entries.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -277,10 +277,10 @@ monsterrace_hook_type get_monster_hook(player_type *player_ptr)
 monsterrace_hook_type get_monster_hook2(player_type *player_ptr, POSITION y, POSITION x)
 {
     feature_type *f_ptr = &f_info[player_ptr->current_floor_ptr->grid_array[y][x].feat];
-    if (has_flag(f_ptr->flags, FF_WATER))
-        return has_flag(f_ptr->flags, FF_DEEP) ? (monsterrace_hook_type)mon_hook_deep_water : (monsterrace_hook_type)mon_hook_shallow_water;
+    if (f_ptr->flags.has(FF::WATER))
+        return f_ptr->flags.has(FF::DEEP) ? (monsterrace_hook_type)mon_hook_deep_water : (monsterrace_hook_type)mon_hook_shallow_water;
 
-    if (has_flag(f_ptr->flags, FF_LAVA))
+    if (f_ptr->flags.has(FF::LAVA))
         return (monsterrace_hook_type)mon_hook_lava;
 
     return (monsterrace_hook_type)mon_hook_floor;

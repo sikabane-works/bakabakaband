@@ -40,10 +40,12 @@
 #include "sv-definition/sv-lite-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "util/enum-converter.h"
 #include "util/quarks.h"
 #include "world/world-object.h"
 #include "world/world.h"
@@ -59,7 +61,7 @@ const int QUEST_ROYAL_CRYPT = 28; // 王家の墓.
  * @brief アイテムオブジェクト1件を読み込む / Read an object
  * @param o_ptr アイテムオブジェクト読み取り先ポインタ
  */
-void rd_item_old(player_type *player_ptr, object_type *o_ptr)
+void rd_item_old(object_type *o_ptr)
 {
     rd_s16b(&o_ptr->k_idx);
 
@@ -89,7 +91,7 @@ void rd_item_old(player_type *player_ptr, object_type *o_ptr)
     rd_byte(&tmp8u);
     o_ptr->number = (ITEM_NUMBER)tmp8u;
 
-    s16b tmp16s;
+    int16_t tmp16s;
     rd_s16b(&tmp16s);
     o_ptr->weight = tmp16s;
 
@@ -151,7 +153,7 @@ void rd_item_old(player_type *player_ptr, object_type *o_ptr)
         }
         o_ptr->art_flags[2] &= (0x1FFFFFFFL);
     } else {
-        u32b tmp32u;
+        uint32_t tmp32u;
         rd_u32b(&tmp32u);
         std::bitset<32> rd_bits_cursed_flags(tmp32u);
         for (size_t i = 0; i < std::min(o_ptr->curse_flags.size(), rd_bits_cursed_flags.size()); i++) {
@@ -271,14 +273,14 @@ void rd_item_old(player_type *player_ptr, object_type *o_ptr)
             else
                 o_ptr->xtra5 = damroll(r_info[o_ptr->pval].hdice, r_info[o_ptr->pval].hside);
             if (ironman_nightmare) {
-                o_ptr->xtra5 = (s16b)MIN(MON_MAX_HP, o_ptr->xtra5 * 2L);
+                o_ptr->xtra5 = (int16_t)MIN(MON_MAX_HP, o_ptr->xtra5 * 2L);
             }
             o_ptr->xtra4 = o_ptr->xtra5;
         }
     } else {
         rd_byte(&o_ptr->xtra3);
         if (h_older_than(1, 3, 0, 1)) {
-            if (object_is_smith(player_ptr, o_ptr) && o_ptr->xtra3 >= 1 + 96)
+            if (object_is_smith(o_ptr) && o_ptr->xtra3 >= 1 + 96)
                 o_ptr->xtra3 += -96 + MIN_SPECIAL_ESSENCE;
         }
 
@@ -305,7 +307,7 @@ void rd_item_old(player_type *player_ptr, object_type *o_ptr)
     if (buf[0])
         o_ptr->art_name = quark_add(buf);
     {
-        s32b tmp32s;
+        int32_t tmp32s;
 
         rd_s32b(&tmp32s);
         strip_bytes(tmp32s);
@@ -314,8 +316,8 @@ void rd_item_old(player_type *player_ptr, object_type *o_ptr)
     if ((o_ptr->k_idx >= 445) && (o_ptr->k_idx <= 479))
         return;
 
-    if (h_older_than(0, 4, 10) && (o_ptr->name2 == EGO_YOIYAMI))
-        o_ptr->k_idx = lookup_kind(TV_SOFT_ARMOR, SV_YOIYAMI_ROBE);
+    if (h_older_than(0, 4, 10) && (o_ptr->name2 == EGO_TWILIGHT))
+        o_ptr->k_idx = lookup_kind(TV_SOFT_ARMOR, SV_TWILIGHT_ROBE);
 
     if (h_older_than(0, 4, 9)) {
         if (has_flag(o_ptr->art_flags, TR_MAGIC_MASTERY)) {
@@ -371,7 +373,7 @@ void rd_monster_old(player_type *player_ptr, monster_type *m_ptr)
     m_ptr->fx = (POSITION)tmp8u;
     m_ptr->current_floor_ptr = player_ptr->current_floor_ptr;
 
-    s16b tmp16s;
+    int16_t tmp16s;
     rd_s16b(&tmp16s);
     m_ptr->hp = tmp16s;
     rd_s16b(&tmp16s);
@@ -395,7 +397,7 @@ void rd_monster_old(player_type *player_ptr, monster_type *m_ptr)
 
     if (h_older_than(0, 4, 2)) {
         rd_byte(&tmp8u);
-        m_ptr->energy_need = (s16b)tmp8u;
+        m_ptr->energy_need = (int16_t)tmp8u;
     } else
         rd_s16b(&m_ptr->energy_need);
 
@@ -407,17 +409,17 @@ void rd_monster_old(player_type *player_ptr, monster_type *m_ptr)
         m_ptr->mtimed[MTIMED_SLOW] = 0;
     } else {
         rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_FAST] = (s16b)tmp8u;
+        m_ptr->mtimed[MTIMED_FAST] = (int16_t)tmp8u;
         rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_SLOW] = (s16b)tmp8u;
+        m_ptr->mtimed[MTIMED_SLOW] = (int16_t)tmp8u;
     }
 
     rd_byte(&tmp8u);
-    m_ptr->mtimed[MTIMED_STUNNED] = (s16b)tmp8u;
+    m_ptr->mtimed[MTIMED_STUNNED] = (int16_t)tmp8u;
     rd_byte(&tmp8u);
-    m_ptr->mtimed[MTIMED_CONFUSED] = (s16b)tmp8u;
+    m_ptr->mtimed[MTIMED_CONFUSED] = (int16_t)tmp8u;
     rd_byte(&tmp8u);
-    m_ptr->mtimed[MTIMED_MONFEAR] = (s16b)tmp8u;
+    m_ptr->mtimed[MTIMED_MONFEAR] = (int16_t)tmp8u;
 
     if (h_older_than(0, 0, 10)) {
         reset_target(m_ptr);
@@ -432,9 +434,9 @@ void rd_monster_old(player_type *player_ptr, monster_type *m_ptr)
     }
 
     rd_byte(&tmp8u);
-    m_ptr->mtimed[MTIMED_INVULNER] = (s16b)tmp8u;
+    m_ptr->mtimed[MTIMED_INVULNER] = (int16_t)tmp8u;
 
-    u32b tmp32u;
+    uint32_t tmp32u;
     rd_u32b(&tmp32u);
     std::bitset<32> rd_bits_smart(tmp32u);
     for (size_t i = 0; i < std::min(m_ptr->smart.size(), rd_bits_smart.size()); i++) {
@@ -463,7 +465,7 @@ void rd_monster_old(player_type *player_ptr, monster_type *m_ptr)
         }
     } else {
         rd_byte(&tmp8u);
-        constexpr auto base = static_cast<int>(MFLAG2::KAGE);
+        constexpr auto base = enum2i(MFLAG2::KAGE);
         std::bitset<7> rd_bits_mflag2(tmp8u);
         for (size_t i = 0; i < std::min(m_ptr->mflag2.size(), rd_bits_mflag2.size()); ++i) {
             auto f = static_cast<MFLAG2>(base + i);
@@ -553,7 +555,7 @@ void set_old_lore(monster_race *r_ptr, BIT_FLAGS f4, const MONRACE_IDX r_idx)
  */
 errr rd_dungeon_old(player_type *player_ptr)
 {
-    s16b tmp16s;
+    int16_t tmp16s;
     rd_s16b(&tmp16s);
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->dun_level = (DEPTH)tmp16s;
@@ -590,13 +592,13 @@ errr rd_dungeon_old(player_type *player_ptr)
     int xmax = floor_ptr->width;
 
     for (int x = 0, y = 0; y < ymax;) {
-        u16b info;
+        uint16_t info;
         byte count;
         rd_byte(&count);
         if (h_older_than(0, 3, 6)) {
             byte tmp8u;
             rd_byte(&tmp8u);
-            info = (u16b)tmp8u;
+            info = (uint16_t)tmp8u;
         } else {
             rd_u16b(&info);
             info &= ~(CAVE_LITE | CAVE_VIEW | CAVE_MNLT | CAVE_MNDK);
@@ -622,7 +624,7 @@ errr rd_dungeon_old(player_type *player_ptr)
         for (int i = count; i > 0; i--) {
             grid_type *g_ptr;
             g_ptr = &floor_ptr->grid_array[y][x];
-            g_ptr->feat = (s16b)tmp8u;
+            g_ptr->feat = (int16_t)tmp8u;
             if (++x >= xmax) {
                 x = 0;
                 if (++y >= ymax)
@@ -639,7 +641,7 @@ errr rd_dungeon_old(player_type *player_ptr)
         for (int i = count; i > 0; i--) {
             grid_type *g_ptr;
             g_ptr = &floor_ptr->grid_array[y][x];
-            g_ptr->mimic = (s16b)tmp8u;
+            g_ptr->mimic = (int16_t)tmp8u;
             if (++x >= xmax) {
                 x = 0;
                 if (++y >= ymax)
@@ -740,7 +742,7 @@ errr rd_dungeon_old(player_type *player_ptr)
         }
     }
 
-    u16b limit;
+    uint16_t limit;
     rd_u16b(&limit);
     if (limit > current_world_ptr->max_o_idx) {
         load_note(format(_("アイテムの配列が大きすぎる(%d)！", "Too many (%d) object entries!"), limit));
@@ -756,7 +758,7 @@ errr rd_dungeon_old(player_type *player_ptr)
 
         object_type *o_ptr;
         o_ptr = &floor_ptr->o_list[o_idx];
-        rd_item(player_ptr, o_ptr);
+        rd_item(o_ptr);
 
         auto &list = get_o_idx_list_contains(floor_ptr, o_idx);
         list.add(floor_ptr, o_idx);

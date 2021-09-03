@@ -11,7 +11,6 @@
 #include "flavor/object-flavor-types.h"
 #include "flavor/object-flavor.h"
 #include "game-option/special-options.h"
-#include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "io-dump/dump-util.h"
 #include "io/input-key-acceptor.h"
@@ -24,6 +23,7 @@
 #include "perception/object-perception.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
@@ -95,7 +95,7 @@ void do_cmd_knowledge_artifacts(player_type *player_ptr)
             who[n++] = k;
     }
 
-    u16b why = 3;
+    uint16_t why = 3;
     ang_sort(player_ptr, who, &why, n, ang_sort_art_comp, ang_sort_art_swap);
     for (ARTIFACT_IDX k = 0; k < n; k++) {
         artifact_type *a_ptr = &a_info[who[k]];
@@ -106,7 +106,7 @@ void do_cmd_knowledge_artifacts(player_type *player_ptr)
             object_type forge;
             object_type *q_ptr;
             q_ptr = &forge;
-            q_ptr->prep(player_ptr, z);
+            q_ptr->prep(z);
             q_ptr->name1 = who[k];
             q_ptr->ident |= IDENT_STORE;
             describe_flavor(player_ptr, base_name, q_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -228,7 +228,7 @@ static void desc_obj_fake(player_type *creature_ptr, KIND_OBJECT_IDX k_idx)
     object_type object_type_body;
     o_ptr = &object_type_body;
     o_ptr->wipe();
-    o_ptr->prep(creature_ptr, k_idx);
+    o_ptr->prep(k_idx);
 
     o_ptr->ident |= IDENT_KNOWN;
     handle_stuff(creature_ptr);

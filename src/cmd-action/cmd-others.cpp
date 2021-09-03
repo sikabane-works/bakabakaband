@@ -31,6 +31,7 @@
 #include "player/special-defense-types.h"
 #include "status/action-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
@@ -66,7 +67,7 @@ static bool exe_alter(player_type *creature_ptr)
     POSITION x = creature_ptr->x + ddx[dir];
     grid_type *g_ptr;
     g_ptr = &creature_ptr->current_floor_ptr->grid_array[y][x];
-    FEAT_IDX feat = get_feat_mimic(g_ptr);
+    FEAT_IDX feat = g_ptr->get_feat_mimic();
     feature_type *f_ptr;
     f_ptr = &f_info[feat];
     PlayerEnergy(creature_ptr).set_player_turn_energy(100);
@@ -75,19 +76,19 @@ static bool exe_alter(player_type *creature_ptr)
         return false;
     }
     
-    if (has_flag(f_ptr->flags, FF_OPEN))
+    if (f_ptr->flags.has(FF::OPEN))
         return exe_open(creature_ptr, y, x);
     
-    if (has_flag(f_ptr->flags, FF_BASH))
+    if (f_ptr->flags.has(FF::BASH))
         return exe_bash(creature_ptr, y, x, dir);
     
-    if (has_flag(f_ptr->flags, FF_TUNNEL))
+    if (f_ptr->flags.has(FF::TUNNEL))
         return exe_tunnel(creature_ptr, y, x);
     
-    if (has_flag(f_ptr->flags, FF_CLOSE))
+    if (f_ptr->flags.has(FF::CLOSE))
         return exe_close(creature_ptr, y, x);
     
-    if (has_flag(f_ptr->flags, FF_DISARM))
+    if (f_ptr->flags.has(FF::DISARM))
         return exe_disarm(creature_ptr, y, x, dir);
 
     msg_print(_("何もない空中を攻撃した。", "You attack the empty air."));

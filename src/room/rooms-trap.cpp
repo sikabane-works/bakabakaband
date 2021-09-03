@@ -8,6 +8,7 @@
 #include "room/space-finder.h"
 #include "system/dungeon-data-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "wizard/wizard-messages.h"
 
@@ -25,7 +26,7 @@ bool build_type14(player_type *player_ptr, dun_data_type *dd_ptr)
     bool light;
 
     grid_type *g_ptr;
-    s16b trap;
+    int16_t trap;
 
     /* Pick a room size */
     y1 = randint1(4);

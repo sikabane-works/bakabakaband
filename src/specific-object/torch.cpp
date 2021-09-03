@@ -1,5 +1,4 @@
-﻿#include <vector>
-
+﻿#include "specific-object/torch.h"
 #include "core/player-update-types.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
@@ -11,13 +10,14 @@
 #include "object-enchant/tr-types.h"
 #include "object/object-flags.h"
 #include "player/special-defense-types.h"
-#include "specific-object/torch.h"
 #include "sv-definition/sv-lite-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/point-2d.h"
+#include <vector>
 
 /*!
  * @brief 投擲時たいまつに投げやすい/焼棄/アンデッドスレイの特別効果を返す。
@@ -25,7 +25,7 @@
  * @param o_ptr 投擲するオブジェクトの構造体参照ポインタ
  * @param flgs 特別に追加するフラグを返す参照ポインタ
  */
-void torch_flags(object_type *o_ptr, BIT_FLAGS *flgs)
+void torch_flags(object_type *o_ptr, TrFlags &flgs)
 {
     if ((o_ptr->tval != TV_LITE) || (o_ptr->sval != SV_LITE_TORCH) || (o_ptr->xtra4 <= 0))
         return;
@@ -77,8 +77,8 @@ void update_lite_radius(player_type *creature_ptr)
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         object_type *o_ptr;
         o_ptr = &creature_ptr->inventory_list[i];
-        BIT_FLAGS flgs[TR_FLAG_SIZE];
-        object_flags(creature_ptr, o_ptr, flgs);
+        TrFlags flgs;
+        object_flags(o_ptr, flgs);
 
         if (!o_ptr->k_idx)
             continue;
@@ -279,7 +279,7 @@ void update_lite(player_type *subject_ptr)
         if (g_ptr->info & CAVE_TEMP)
             continue;
 
-        cave_note_and_redraw_later(floor_ptr, g_ptr, y, x);
+        cave_note_and_redraw_later(floor_ptr, y, x);
     }
 
     // 前回照らされていた座標たちのうち、状態が変わったものについて再描画フラグを立てる。
@@ -289,7 +289,7 @@ void update_lite(player_type *subject_ptr)
         if (g_ptr->info & CAVE_LITE)
             continue;
 
-        cave_redraw_later(floor_ptr, g_ptr, y, x);
+        cave_redraw_later(floor_ptr, y, x);
     }
 
     subject_ptr->update |= PU_DELAY_VIS;
