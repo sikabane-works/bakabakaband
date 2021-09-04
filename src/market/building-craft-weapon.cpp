@@ -69,8 +69,8 @@ static HIT_POINT calc_slaydam(HIT_POINT dam, int mult, int div, bool force)
  * @param vorpal_div 切れ味倍率（割り算部分）
  * @return ダメージ期待値
  */
-static u32b calc_expect_dice(
-    player_type *owner_ptr, u32b dam, int mult, int div, bool force, WEIGHT weight, int plus, s16b meichuu, bool dokubari, bool impact, int vorpal_mult, int vorpal_div)
+static uint32_t calc_expect_dice(
+    player_type *owner_ptr, uint32_t dam, int mult, int div, bool force, WEIGHT weight, int plus, int16_t meichuu, bool dokubari, bool impact, int vorpal_mult, int vorpal_div)
 {
     dam = calc_slaydam(dam, mult, div, force);
     dam = calc_expect_crit(owner_ptr, weight, plus, dam, meichuu, dokubari, impact);
@@ -118,7 +118,7 @@ static void show_weapon_dmg(int r, int c, int mindice, int maxdice, int blows, i
  */
 static void compare_weapon_aux(player_type *owner_ptr, object_type *o_ptr, int col, int r)
 {
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    TrFlags flgs;
     int blow = owner_ptr->num_blow[0];
     bool force = false;
     bool dokubari = false;
@@ -134,7 +134,7 @@ static void compare_weapon_aux(player_type *owner_ptr, object_type *o_ptr, int c
     int vorpal_div = 1;
     int dmg_bonus = o_ptr->to_d + owner_ptr->to_d[0];
 
-    object_flags(owner_ptr, o_ptr, flgs);
+    object_flags(o_ptr, flgs);
     if ((o_ptr->tval == TV_SWORD) && (o_ptr->sval == SV_POISON_NEEDLE))
         dokubari = true;
 
@@ -314,7 +314,7 @@ static void list_weapon(player_type *player_ptr, object_type *o_ptr, TERM_LEN ro
 
     DICE_NUMBER eff_dd = o_ptr->dd + player_ptr->to_dd[0];
     DICE_SID eff_ds = o_ptr->ds + player_ptr->to_ds[0];
-    HIT_RELIABILITY reli = player_ptr->skill_thn + (player_ptr->to_h[0] + o_ptr->to_h) * BTH_PLUS_ADJ;
+    auto hit_reliability = player_ptr->skill_thn + (player_ptr->to_h[0] + o_ptr->to_h) * BTH_PLUS_ADJ;
 
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
     c_put_str(TERM_YELLOW, o_name, row, col);
@@ -323,8 +323,8 @@ static void list_weapon(player_type *player_ptr, object_type *o_ptr, TERM_LEN ro
 
     sprintf(tmp_str, _("命中率:  0  50 100 150 200 (敵のAC)", "To Hit:  0  50 100 150 200 (AC)"));
     put_str(tmp_str, row + 2, col);
-    sprintf(tmp_str, "        %2d  %2d  %2d  %2d  %2d (%%)", (int)hit_chance(player_ptr, reli, 0), (int)hit_chance(player_ptr, reli, 50),
-        (int)hit_chance(player_ptr, reli, 100), (int)hit_chance(player_ptr, reli, 150), (int)hit_chance(player_ptr, reli, 200));
+    sprintf(tmp_str, "        %2d  %2d  %2d  %2d  %2d (%%)", (int)hit_chance(player_ptr, hit_reliability, 0), (int)hit_chance(player_ptr, hit_reliability, 50),
+        (int)hit_chance(player_ptr, hit_reliability, 100), (int)hit_chance(player_ptr, hit_reliability, 150), (int)hit_chance(player_ptr, hit_reliability, 200));
     put_str(tmp_str, row + 3, col);
     c_put_str(TERM_YELLOW, _("可能なダメージ:", "Possible Damage:"), row + 5, col);
 
@@ -363,12 +363,11 @@ PRICE compare_weapons(player_type *customer_ptr, PRICE bcost)
     i_ptr = &customer_ptr->inventory_list[INVEN_MAIN_HAND];
     (&orig_weapon)->copy_from(i_ptr);
 
-    item_tester_hook = item_tester_hook_orthodox_melee_weapons;
     concptr q = _("第一の武器は？", "What is your first weapon? ");
     concptr s = _("比べるものがありません。", "You have nothing to compare.");
 
     OBJECT_IDX item;
-    o_ptr[0] = choose_object(customer_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), TV_NONE);
+    o_ptr[0] = choose_object(customer_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(object_is_orthodox_melee_weapons));
     if (!o_ptr[0]) {
         screen_load();
         return 0;
@@ -418,11 +417,10 @@ PRICE compare_weapons(player_type *customer_ptr, PRICE bcost)
             continue;
         }
 
-        item_tester_hook = item_tester_hook_orthodox_melee_weapons;
         q = _("第二の武器は？", "What is your second weapon? ");
         s = _("比べるものがありません。", "You have nothing to compare.");
         OBJECT_IDX item2;
-        object_type *i2_ptr = choose_object(customer_ptr, &item2, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), TV_NONE);
+        object_type *i2_ptr = choose_object(customer_ptr, &item2, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(object_is_orthodox_melee_weapons));
         if (!i2_ptr)
             continue;
 

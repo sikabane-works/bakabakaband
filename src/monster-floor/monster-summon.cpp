@@ -1,6 +1,7 @@
 ﻿#include "monster-floor/monster-summon.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
+#include "floor/geometry.h"
 #include "floor/wild.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
@@ -147,7 +148,25 @@ bool summon_specific(player_type *player_ptr, MONSTER_IDX who, POSITION y1, POSI
     }
 
     summon_specific_type = SUMMON_NONE;
-    sound(SOUND_SUMMON);
+
+    bool notice = false;
+    if (who <= 0) {
+        notice = true;
+    } else {
+        monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[who];
+        if (is_pet(m_ptr)) {
+            notice = true;
+        } else if (is_seen(player_ptr, m_ptr)) {
+            notice = true;
+        } else if (player_can_see_bold(player_ptr, y, x)) {
+            notice = true;
+        }
+    }
+
+    if (notice) {
+        sound(SOUND_SUMMON);
+    }
+
     return true;
 }
 
@@ -163,12 +182,14 @@ bool summon_specific(player_type *player_ptr, MONSTER_IDX who, POSITION y1, POSI
  */
 bool summon_named_creature(player_type *player_ptr, MONSTER_IDX who, POSITION oy, POSITION ox, MONRACE_IDX r_idx, BIT_FLAGS mode)
 {
-    if (r_idx >= max_r_idx)
+    if ((r_idx <= 0) || (r_idx >= max_r_idx)) {
         return false;
-
+    }
+    
     POSITION x, y;
-    if (player_ptr->current_floor_ptr->inside_arena || !mon_scatter(player_ptr, r_idx, &y, &x, oy, ox, 2))
+    if (player_ptr->current_floor_ptr->inside_arena || !mon_scatter(player_ptr, r_idx, &y, &x, oy, ox, 2)) {
         return false;
-
+    }
+    
     return place_monster_aux(player_ptr, who, y, x, r_idx, (mode | PM_NO_KAGE));
 }

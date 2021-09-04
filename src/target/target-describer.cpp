@@ -5,9 +5,9 @@
 #include "dungeon/quest.h"
 #include "flavor/flavor-describer.h"
 #include "floor/cave.h"
-#include "floor/geometry.h"
 #include "floor/floor-object.h"
 #include "floor/floor-town.h"
+#include "floor/geometry.h"
 #include "floor/object-scanner.h"
 #include "game-option/input-options.h"
 #include "grid/feature.h"
@@ -21,10 +21,12 @@
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-flag-types.h"
+#include "object/item-tester-hooker.h"
 #include "object/object-mark-types.h"
 #include "player/player-status-table.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -44,7 +46,7 @@
 #include "locale/english.h"
 #endif
 
-static const s16b CONTINUOUS_DESCRIPTION = 256;
+static const int16_t CONTINUOUS_DESCRIPTION = 256;
 
 bool show_gold_on_floor = false;
 
@@ -98,7 +100,7 @@ static eg_type *initialize_eg_type(player_type *subject_ptr, eg_type *eg_ptr, PO
 static void evaluate_monster_exp(player_type *creature_ptr, char *buf, monster_type *m_ptr)
 {
     monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
-    if ((creature_ptr->lev >= PY_MAX_LEVEL) || (creature_ptr->prace == RACE_ANDROID)) {
+    if ((creature_ptr->lev >= PY_MAX_LEVEL) || (creature_ptr->prace == player_race_type::ANDROID)) {
         sprintf(buf, "**");
         return;
     }
@@ -110,12 +112,12 @@ static void evaluate_monster_exp(player_type *creature_ptr, char *buf, monster_t
         }
     }
 
-    s32b exp_mon = ap_r_ptr->mexp * ap_r_ptr->level;
-    u32b exp_mon_frac = 0;
+    int32_t exp_mon = ap_r_ptr->mexp * ap_r_ptr->level;
+    uint32_t exp_mon_frac = 0;
     s64b_div(&exp_mon, &exp_mon_frac, 0, (creature_ptr->max_plv + 2));
 
-    s32b exp_adv = player_exp[creature_ptr->lev - 1] * creature_ptr->expfact;
-    u32b exp_adv_frac = 0;
+    int32_t exp_adv = player_exp[creature_ptr->lev - 1] * creature_ptr->expfact;
+    uint32_t exp_adv_frac = 0;
     s64b_div(&exp_adv, &exp_adv_frac, 0, 100);
 
     s64b_sub(&exp_adv, &exp_adv_frac, creature_ptr->exp, creature_ptr->exp_frac);
@@ -125,7 +127,7 @@ static void evaluate_monster_exp(player_type *creature_ptr, char *buf, monster_t
 
     s64b_div(&exp_adv, &exp_adv_frac, exp_mon, exp_mon_frac);
 
-    u32b num = MIN(999, exp_adv_frac);
+    uint32_t num = MIN(999, exp_adv_frac);
     sprintf(buf, "%03ld", (long int)num);
 }
 
@@ -134,7 +136,7 @@ static void describe_scan_result(player_type *subject_ptr, eg_type *eg_ptr)
     if (!easy_floor)
         return;
 
-    eg_ptr->floor_num = scan_floor_items(subject_ptr, eg_ptr->floor_list, eg_ptr->y, eg_ptr->x, SCAN_FLOOR_ONLY_MARKED, TV_NONE);
+    eg_ptr->floor_num = scan_floor_items(subject_ptr, eg_ptr->floor_list, eg_ptr->y, eg_ptr->x, SCAN_FLOOR_ONLY_MARKED, AllMatchItemTester());
     if (eg_ptr->floor_num > 0)
         eg_ptr->x_info = _("x物 ", "x,");
 }
@@ -236,7 +238,7 @@ static void describe_monster_person(eg_type *eg_ptr)
 #endif
 }
 
-static u16b describe_monster_item(player_type *subject_ptr, eg_type *eg_ptr)
+static uint16_t describe_monster_item(player_type *subject_ptr, eg_type *eg_ptr)
 {
     for (const auto this_o_idx : eg_ptr->m_ptr->hold_o_idx_list) {
         GAME_TEXT o_name[MAX_NLEN];
@@ -263,9 +265,12 @@ static u16b describe_monster_item(player_type *subject_ptr, eg_type *eg_ptr)
     return CONTINUOUS_DESCRIPTION;
 }
 
-static bool within_char_util(s16b input) { return (input > -127) && (input < 128); }
+static bool within_char_util(int16_t input)
+{
+    return (input > -127) && (input < 128);
+}
 
-static s16b describe_grid(player_type *subject_ptr, eg_type *eg_ptr)
+static int16_t describe_grid(player_type *subject_ptr, eg_type *eg_ptr)
 {
     if ((eg_ptr->g_ptr->m_idx == 0) || !subject_ptr->current_floor_ptr->m_list[eg_ptr->g_ptr->m_idx].ml)
         return CONTINUOUS_DESCRIPTION;
@@ -282,7 +287,7 @@ static s16b describe_grid(player_type *subject_ptr, eg_type *eg_ptr)
         return eg_ptr->query;
 
     describe_monster_person(eg_ptr);
-    u16b monster_item_description = describe_monster_item(subject_ptr, eg_ptr);
+    uint16_t monster_item_description = describe_monster_item(subject_ptr, eg_ptr);
     if (within_char_util(monster_item_description))
         return (char)monster_item_description;
 
@@ -295,7 +300,7 @@ static s16b describe_grid(player_type *subject_ptr, eg_type *eg_ptr)
     return CONTINUOUS_DESCRIPTION;
 }
 
-static s16b describe_footing(player_type *subject_ptr, eg_type *eg_ptr)
+static int16_t describe_footing(player_type *subject_ptr, eg_type *eg_ptr)
 {
     if (eg_ptr->floor_num != 1)
         return CONTINUOUS_DESCRIPTION;
@@ -315,7 +320,7 @@ static s16b describe_footing(player_type *subject_ptr, eg_type *eg_ptr)
     return eg_ptr->query;
 }
 
-static s16b describe_footing_items(eg_type *eg_ptr)
+static int16_t describe_footing_items(eg_type *eg_ptr)
 {
     if (!eg_ptr->boring)
         return CONTINUOUS_DESCRIPTION;
@@ -339,7 +344,7 @@ static char describe_footing_many_items(player_type *subject_ptr, eg_type *eg_pt
     while (true) {
         screen_save();
         show_gold_on_floor = true;
-        (void)show_floor_items(subject_ptr, 0, eg_ptr->y, eg_ptr->x, min_width, TV_NONE);
+        (void)show_floor_items(subject_ptr, 0, eg_ptr->y, eg_ptr->x, min_width, AllMatchItemTester());
         show_gold_on_floor = false;
 #ifdef JP
         sprintf(eg_ptr->out_val, "%s %d個のアイテム%s%s [Enterで次へ, %s]", eg_ptr->s1, (int)eg_ptr->floor_num, eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
@@ -362,18 +367,18 @@ static char describe_footing_many_items(player_type *subject_ptr, eg_type *eg_pt
     }
 }
 
-static s16b loop_describing_grid(player_type *subject_ptr, eg_type *eg_ptr)
+static int16_t loop_describing_grid(player_type *subject_ptr, eg_type *eg_ptr)
 {
     if (eg_ptr->floor_num == 0)
         return CONTINUOUS_DESCRIPTION;
 
     int min_width = 0;
     while (true) {
-        s16b footing_description = describe_footing(subject_ptr, eg_ptr);
+        int16_t footing_description = describe_footing(subject_ptr, eg_ptr);
         if (within_char_util(footing_description))
             return (char)footing_description;
 
-        s16b footing_descriptions = describe_footing_items(eg_ptr);
+        int16_t footing_descriptions = describe_footing_items(eg_ptr);
         if (within_char_util(footing_descriptions))
             return (char)footing_descriptions;
 
@@ -381,7 +386,7 @@ static s16b loop_describing_grid(player_type *subject_ptr, eg_type *eg_ptr)
     }
 }
 
-static s16b describe_footing_sight(player_type *subject_ptr, eg_type *eg_ptr, object_type *o_ptr)
+static int16_t describe_footing_sight(player_type *subject_ptr, eg_type *eg_ptr, object_type *o_ptr)
 {
     if ((o_ptr->marked & OM_FOUND) == 0)
         return CONTINUOUS_DESCRIPTION;
@@ -416,12 +421,12 @@ static s16b describe_footing_sight(player_type *subject_ptr, eg_type *eg_ptr, ob
     return CONTINUOUS_DESCRIPTION;
 }
 
-static s16b sweep_footing_items(player_type *subject_ptr, eg_type *eg_ptr)
+static int16_t sweep_footing_items(player_type *subject_ptr, eg_type *eg_ptr)
 {
     for (const auto this_o_idx : eg_ptr->g_ptr->o_idx_list) {
         object_type *o_ptr;
         o_ptr = &subject_ptr->current_floor_ptr->o_list[this_o_idx];
-        s16b ret = describe_footing_sight(subject_ptr, eg_ptr, o_ptr);
+        int16_t ret = describe_footing_sight(subject_ptr, eg_ptr, o_ptr);
         if (within_char_util(ret))
             return (char)ret;
     }
@@ -431,7 +436,7 @@ static s16b sweep_footing_items(player_type *subject_ptr, eg_type *eg_ptr)
 
 static concptr decide_target_floor(player_type *subject_ptr, eg_type *eg_ptr)
 {
-    if (has_flag(eg_ptr->f_ptr->flags, FF_QUEST_ENTER)) {
+    if (eg_ptr->f_ptr->flags.has(FF::QUEST_ENTER)) {
         QUEST_IDX old_quest = subject_ptr->current_floor_ptr->inside_quest;
         for (int j = 0; j < 10; j++)
             quest_text[j][0] = '\0';
@@ -445,13 +450,13 @@ static concptr decide_target_floor(player_type *subject_ptr, eg_type *eg_ptr)
             _("クエスト「%s」(%d階相当)", "the entrance to the quest '%s'(level %d)"), quest[eg_ptr->g_ptr->special].name, quest[eg_ptr->g_ptr->special].level);
     }
 
-    if (has_flag(eg_ptr->f_ptr->flags, FF_BLDG) && !subject_ptr->current_floor_ptr->inside_arena)
+    if (eg_ptr->f_ptr->flags.has(FF::BLDG) && !subject_ptr->current_floor_ptr->inside_arena)
         return building[eg_ptr->f_ptr->subtype].name;
 
-    if (has_flag(eg_ptr->f_ptr->flags, FF_ENTRANCE))
+    if (eg_ptr->f_ptr->flags.has(FF::ENTRANCE))
         return format(_("%s(%d階相当)", "%s(level %d)"), d_info[eg_ptr->g_ptr->special].text.c_str(), d_info[eg_ptr->g_ptr->special].mindepth);
 
-    if (has_flag(eg_ptr->f_ptr->flags, FF_TOWN))
+    if (eg_ptr->f_ptr->flags.has(FF::TOWN))
         return town_info[eg_ptr->g_ptr->special].name;
 
     if (subject_ptr->wild_mode && (eg_ptr->feat == feat_floor))
@@ -479,7 +484,7 @@ static void describe_grid_monster_all(eg_type *eg_ptr)
 
 #ifdef JP
     sprintf(eg_ptr->out_val, "%s%s%s%s[%s] %x %s %d %d %d (%d,%d) %d", eg_ptr->s1, eg_ptr->name, eg_ptr->s2, eg_ptr->s3, eg_ptr->info,
-        (unsigned int)eg_ptr->g_ptr->info, f_idx_str, eg_ptr->g_ptr->dists[FLOW_NORMAL], eg_ptr->g_ptr->costs[FLOW_NORMAL], eg_ptr->g_ptr->when, (int)eg_ptr->y,
+        (uint)eg_ptr->g_ptr->info, f_idx_str, eg_ptr->g_ptr->dists[FLOW_NORMAL], eg_ptr->g_ptr->costs[FLOW_NORMAL], eg_ptr->g_ptr->when, (int)eg_ptr->y,
         (int)eg_ptr->x, travel.cost[eg_ptr->y][eg_ptr->x]);
 #else
     sprintf(eg_ptr->out_val, "%s%s%s%s [%s] %x %s %d %d %d (%d,%d)", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, eg_ptr->name, eg_ptr->info, eg_ptr->g_ptr->info,
@@ -513,24 +518,24 @@ char examine_grid(player_type *subject_ptr, const POSITION y, const POSITION x, 
         break;
     }
 
-    s16b description_grid = describe_grid(subject_ptr, eg_ptr);
+    int16_t description_grid = describe_grid(subject_ptr, eg_ptr);
     if (within_char_util(description_grid))
         return (char)description_grid;
 
-    s16b loop_description = loop_describing_grid(subject_ptr, eg_ptr);
+    int16_t loop_description = loop_describing_grid(subject_ptr, eg_ptr);
     if (within_char_util(loop_description))
         return (char)loop_description;
 
-    s16b footing_items_description = sweep_footing_items(subject_ptr, eg_ptr);
+    int16_t footing_items_description = sweep_footing_items(subject_ptr, eg_ptr);
     if (within_char_util(footing_items_description))
         return (char)footing_items_description;
 
-    eg_ptr->feat = get_feat_mimic(eg_ptr->g_ptr);
-    if (!(eg_ptr->g_ptr->info & CAVE_MARK) && !player_can_see_bold(subject_ptr, y, x))
+    eg_ptr->feat = eg_ptr->g_ptr->get_feat_mimic();
+    if (!eg_ptr->g_ptr->is_mark() && !player_can_see_bold(subject_ptr, y, x))
         eg_ptr->feat = feat_none;
 
     eg_ptr->f_ptr = &f_info[eg_ptr->feat];
-    if (!eg_ptr->boring && !has_flag(eg_ptr->f_ptr->flags, FF_REMEMBER))
+    if (!eg_ptr->boring && eg_ptr->f_ptr->flags.has_not(FF::REMEMBER))
         return (eg_ptr->query != '\r') && (eg_ptr->query != '\n') ? eg_ptr->query : 0;
 
     /*
@@ -539,18 +544,18 @@ char examine_grid(player_type *subject_ptr, const POSITION y, const POSITION x, 
      */
     eg_ptr->name = decide_target_floor(subject_ptr, eg_ptr);
     if (*eg_ptr->s2
-        && ((!has_flag(eg_ptr->f_ptr->flags, FF_MOVE) && !has_flag(eg_ptr->f_ptr->flags, FF_CAN_FLY))
-            || (!has_flag(eg_ptr->f_ptr->flags, FF_LOS) && !has_flag(eg_ptr->f_ptr->flags, FF_TREE)) || has_flag(eg_ptr->f_ptr->flags, FF_TOWN))) {
+        && (eg_ptr->f_ptr->flags.has_none_of({FF::MOVE, FF::CAN_FLY})
+            || eg_ptr->f_ptr->flags.has_none_of({FF::LOS, FF::TREE}) || eg_ptr->f_ptr->flags.has(FF::TOWN))) {
         eg_ptr->s2 = _("の中", "in ");
     }
 
-    if (has_flag(eg_ptr->f_ptr->flags, FF_STORE) || has_flag(eg_ptr->f_ptr->flags, FF_QUEST_ENTER)
-        || (has_flag(eg_ptr->f_ptr->flags, FF_BLDG) && !subject_ptr->current_floor_ptr->inside_arena) || has_flag(eg_ptr->f_ptr->flags, FF_ENTRANCE))
+    if (eg_ptr->f_ptr->flags.has(FF::STORE) || eg_ptr->f_ptr->flags.has(FF::QUEST_ENTER)
+        || (eg_ptr->f_ptr->flags.has(FF::BLDG) && !subject_ptr->current_floor_ptr->inside_arena) || eg_ptr->f_ptr->flags.has(FF::ENTRANCE))
         eg_ptr->s2 = _("の入口", "");
 #ifdef JP
 #else
-    else if (has_flag(eg_ptr->f_ptr->flags, FF_FLOOR) || has_flag(eg_ptr->f_ptr->flags, FF_TOWN) || has_flag(eg_ptr->f_ptr->flags, FF_SHALLOW)
-        || has_flag(eg_ptr->f_ptr->flags, FF_DEEP))
+    else if (eg_ptr->f_ptr->flags.has(FF::FLOOR) || eg_ptr->f_ptr->flags.has(FF::TOWN) || eg_ptr->f_ptr->flags.has(FF::SHALLOW)
+        || eg_ptr->f_ptr->flags.has(FF::DEEP))
         eg_ptr->s3 = "";
     else
         eg_ptr->s3 = (is_a_vowel(eg_ptr->name[0])) ? "an " : "a ";

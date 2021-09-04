@@ -1,5 +1,6 @@
 ﻿#include "cmd-item/cmd-zaprod.h"
 #include "action/action-limited.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -7,13 +8,13 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "object-enchant/special-object-flags.h"
+#include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player/attack-defense-types.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
+#include "player/attack-defense-types.h"
 #include "player/player-class.h"
 #include "player/special-defense-types.h"
 #include "spell-kind/spells-beam.h"
@@ -86,10 +87,10 @@ int rod_effect(player_type *creature_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION d
 
     case SV_ROD_IDENTIFY: {
         if (powerful) {
-            if (!identify_fully(creature_ptr, false, TV_NONE))
+            if (!identify_fully(creature_ptr, false))
                 *use_charge = false;
         } else {
-            if (!ident_spell(creature_ptr, false, TV_NONE))
+            if (!ident_spell(creature_ptr, false))
                 *use_charge = false;
         }
         ident = true;
@@ -433,7 +434,7 @@ void do_cmd_zap_rod(player_type *creature_ptr)
     q = _("どのロッドを振りますか? ", "Zap which rod? ");
     s = _("使えるロッドがない。", "You have no rod to zap.");
 
-    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TV_ROD))
+    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TvalItemTester(TV_ROD)))
         return;
 
     /* Zap the rod */

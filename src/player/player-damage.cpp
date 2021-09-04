@@ -1,5 +1,6 @@
 ﻿#include "player/player-damage.h"
 #include "autopick/autopick-pref-processor.h"
+#include "avatar/avatar.h"
 #include "blue-magic/blue-magic-checker.h"
 #include "cmd-io/cmd-process-screen.h"
 #include "core/asking-player.h"
@@ -42,7 +43,6 @@
 #include "object/item-tester-hooker.h"
 #include "object/object-broken.h"
 #include "object/object-flags.h"
-#include "player-info/avatar.h"
 #include "player/player-class.h"
 #include "player/player-personality-types.h"
 #include "player/player-race-types.h"
@@ -105,13 +105,13 @@ static bool acid_minus_ac(player_type *creature_ptr)
         break;
     }
 
-    if ((o_ptr == NULL) || (o_ptr->k_idx == 0) || !object_is_armour(creature_ptr, o_ptr))
+    if ((o_ptr == NULL) || (o_ptr->k_idx == 0) || !object_is_armour(o_ptr))
         return false;
 
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(creature_ptr, o_name, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    object_flags(creature_ptr, o_ptr, flgs);
+    TrFlags flgs;
+    object_flags(o_ptr, flgs);
     if (o_ptr->ac + o_ptr->to_a <= 0) {
         msg_format(_("%sは既にボロボロだ！", "Your %s is already fully corroded!"), o_name);
         return false;
@@ -159,7 +159,7 @@ HIT_POINT acid_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, boo
 
     HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_acid(creature_ptr)))
-        inventory_damage(creature_ptr, set_acid_destroy, inv);
+        inventory_damage(creature_ptr, BreakerAcid(), inv);
 
     return get_damage;
 }
@@ -191,7 +191,7 @@ HIT_POINT elec_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, boo
 
     HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_elec(creature_ptr)))
-        inventory_damage(creature_ptr, set_elec_destroy, inv);
+        inventory_damage(creature_ptr, BreakerElec(), inv);
 
     return get_damage;
 }
@@ -223,7 +223,7 @@ HIT_POINT fire_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, boo
 
     HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_fire(creature_ptr)))
-        inventory_damage(creature_ptr, set_fire_destroy, inv);
+        inventory_damage(creature_ptr, BreakerFire(), inv);
 
     return get_damage;
 }
@@ -253,7 +253,7 @@ HIT_POINT cold_dam(player_type *creature_ptr, HIT_POINT dam, concptr kb_str, boo
 
     HIT_POINT get_damage = take_hit(creature_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_cold(creature_ptr)))
-        inventory_damage(creature_ptr, set_cold_destroy, inv);
+        inventory_damage(creature_ptr, BreakerCold(), inv);
 
     return get_damage;
 }
@@ -347,7 +347,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
     }
 
     if (creature_ptr->chp < 0 && !cheat_immortal) {
-        bool android = (creature_ptr->prace == RACE_ANDROID ? true : false);
+        bool android = (creature_ptr->prace == player_race_type::ANDROID ? true : false);
 
         /* 死んだ時に強制終了して死を回避できなくしてみた by Habu */
         if (!cheat_save && !save_player(creature_ptr, SAVE_TYPE_CLOSE_GAME))
@@ -357,7 +357,8 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
         chg_virtue(creature_ptr, V_SACRIFICE, 10);
         handle_stuff(creature_ptr);
         creature_ptr->leaving = true;
-        if(!cheat_immortal) creature_ptr->is_dead = true;
+        if (!cheat_immortal)
+            creature_ptr->is_dead = true;
         if (creature_ptr->current_floor_ptr->inside_arena) {
             concptr m_name = r_info[arena_info[creature_ptr->arena_number].r_idx].name.c_str();
             msg_format(_("あなたは%sの前に敗れ去った。", "You are beaten by %s."), m_name);
@@ -383,7 +384,10 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
             } else {
                 char dummy[1024];
 #ifdef JP
-                sprintf(dummy, "%s%s%s", !creature_ptr->paralyzed ? "" : creature_ptr->free_act ? "彫像状態で" : "麻痺状態で",
+                sprintf(dummy, "%s%s%s",
+                    !creature_ptr->paralyzed     ? ""
+                        : creature_ptr->free_act ? "彫像状態で"
+                                                 : "麻痺状態で",
                     creature_ptr->image ? "幻覚に歪んだ" : "", hit_from);
 #else
                 sprintf(dummy, "%s%s", hit_from, !creature_ptr->paralyzed ? "" : " while helpless");
@@ -554,7 +558,7 @@ int take_hit(player_type *creature_ptr, int damage_type, HIT_POINT damage, concp
  * @param dam_func ダメージ処理を行う関数の参照ポインタ
  * @param message オーラダメージを受けた際のメッセージ
  */
-static void process_aura_damage(monster_type *m_ptr, player_type *touched_ptr, bool immune, int flags_offset, int r_flags_offset, u32b aura_flag,
+static void process_aura_damage(monster_type *m_ptr, player_type *touched_ptr, bool immune, int flags_offset, int r_flags_offset, uint32_t aura_flag,
     HIT_POINT (*dam_func)(player_type *creature_type, HIT_POINT dam, concptr kb_str, bool aura), concptr message)
 {
     monster_race *r_ptr = &r_info[m_ptr->r_idx];

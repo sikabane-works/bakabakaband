@@ -16,7 +16,6 @@
 #include "game-option/input-options.h"
 #include "game-option/play-record-options.h"
 #include "game-option/text-display-options.h"
-#include "grid/grid.h"
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
 #include "main/sound-definitions-table.h"
@@ -28,6 +27,7 @@
 #include "player/player-move.h"
 #include "spell-kind/spells-perception.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-checker.h"
@@ -44,14 +44,14 @@
  * @return アイテムを拾えるならばTRUEを返す。
  * @details assuming mode = (USE_EQUIP | USE_INVEN | USE_FLOOR).
  */
-bool can_get_item(player_type *owner_ptr, tval_type tval)
+bool can_get_item(player_type *owner_ptr, const ItemTester& item_tester)
 {
     for (int j = 0; j < INVEN_TOTAL; j++)
-        if (item_tester_okay(owner_ptr, &owner_ptr->inventory_list[j], tval))
+        if (item_tester.okay(&owner_ptr->inventory_list[j]))
             return true;
 
     OBJECT_IDX floor_list[23];
-    ITEM_NUMBER floor_num = scan_floor_items(owner_ptr, floor_list, owner_ptr->y, owner_ptr->x, SCAN_FLOOR_ITEM_TESTER | SCAN_FLOOR_ONLY_MARKED, tval);
+    ITEM_NUMBER floor_num = scan_floor_items(owner_ptr, floor_list, owner_ptr->y, owner_ptr->x, SCAN_FLOOR_ITEM_TESTER | SCAN_FLOOR_ONLY_MARKED, item_tester);
     return floor_num != 0;
 }
 
@@ -63,10 +63,9 @@ static bool py_pickup_floor_aux(player_type *owner_ptr)
 {
     OBJECT_IDX this_o_idx;
     OBJECT_IDX item;
-    item_tester_hook = check_store_item_to_inventory;
     concptr q = _("どれを拾いますか？", "Get which item? ");
     concptr s = _("もうザックには床にあるどのアイテムも入らない。", "You no longer have any room for the objects on the floor.");
-    if (choose_object(owner_ptr, &item, q, s, (USE_FLOOR), TV_NONE))
+    if (choose_object(owner_ptr, &item, q, s, (USE_FLOOR), FuncItemTester(check_store_item_to_inventory, owner_ptr)))
         this_o_idx = 0 - item;
     else
         return false;
@@ -107,7 +106,7 @@ void py_pickup_floor(player_type *owner_ptr, bool pickup)
             continue;
         }
 
-        if (check_store_item_to_inventory(owner_ptr, o_ptr) && check_get_item(owner_ptr, o_ptr))
+        if (check_store_item_to_inventory(owner_ptr, o_ptr) && check_get_item(o_ptr))
             can_pickup++;
 
         floor_num++;
@@ -132,7 +131,7 @@ void py_pickup_floor(player_type *owner_ptr, bool pickup)
         if (floor_num == 1) {
             o_ptr = &owner_ptr->current_floor_ptr->o_list[floor_o_idx];
             describe_flavor(owner_ptr, o_name, o_ptr, 0);
-            if (!check_get_item(owner_ptr, o_ptr)) {
+            if (!check_get_item(o_ptr)) {
                 msg_format(_("%sを動かすことはできない", "You can't carry %s."), o_name);
             } else {
                 msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
@@ -282,7 +281,7 @@ void carry(player_type *creature_ptr, bool pickup)
             continue;
         }
 
-        if (!check_get_item(creature_ptr, o_ptr)) {
+        if (!check_get_item(o_ptr)) {
             msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), o_name);
             continue;
         }

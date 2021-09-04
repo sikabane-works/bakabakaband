@@ -13,6 +13,7 @@
  */
 
 #include "monster/monster-processor.h"
+#include "avatar/avatar.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
@@ -20,7 +21,6 @@
 #include "floor/geometry.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "io/write-diary.h"
 #include "melee/melee-postprocess.h"
 #include "melee/melee-spell.h"
@@ -53,7 +53,6 @@
 #include "object-enchant/trc-types.h"
 #include "object/object-kind-hook.h"
 #include "pet/pet-fall-off.h"
-#include "player-info/avatar.h"
 #include "player/player-move.h"
 #include "player/player-skill.h"
 #include "player/player-status-flags.h"
@@ -62,6 +61,7 @@
 #include "spell/summon-types.h"
 #include "system/object-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -451,7 +451,7 @@ void process_monster_spawn_item(player_type *target_ptr, MONSTER_IDX m_idx)
         if (randint1(deno) <= num) {
             object_type forge;
             object_type *q_ptr = &forge;
-            q_ptr->prep(target_ptr, kind);
+            q_ptr->prep(kind);
             q_ptr->number = 1;
             (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
         }
@@ -575,7 +575,7 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
-        q_ptr->prep(target_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        q_ptr->prep(lookup_kind(TV_JUNK, SV_JUNK_FECES));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -583,7 +583,7 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
-        q_ptr->prep(target_ptr, lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
+        q_ptr->prep(lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 

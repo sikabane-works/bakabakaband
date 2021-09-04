@@ -10,7 +10,6 @@
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "floor/cave.h"
-#include "grid/grid.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "melee/melee-postprocess.h"
@@ -32,6 +31,7 @@
 #include "spell-realm/spells-crusade.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -159,6 +159,10 @@ static MonsterSpellResult spell_RF6_SPECIAL_B(player_type *target_ptr, POSITION 
         return MonsterSpellResult::make_valid();
     }
 
+    if (direct) {
+        sound(SOUND_FALL);
+    }
+
     simple_monspell_message(target_ptr, m_idx, t_idx, _("%^sがあなたを掴んで空中から投げ落とした。", "%^s snatches you, soars into the sky, and drops you."),
         _("%^sが%sを掴んで空中から投げ落とした。", "%^s snatches %s, soars into the sky, and releases its grip."), TARGET_TYPE);
 
@@ -169,8 +173,6 @@ static MonsterSpellResult spell_RF6_SPECIAL_B(player_type *target_ptr, POSITION 
         teleport_player_to(target_ptr, m_ptr->fy, m_ptr->fx, static_cast<teleport_flags>(TELEPORT_NONMAGICAL | TELEPORT_PASSIVE));
     else
         teleport_monster_to(target_ptr, t_idx, m_ptr->fy, m_ptr->fx, 100, static_cast<teleport_flags>(TELEPORT_NONMAGICAL | TELEPORT_PASSIVE));
-
-    sound(SOUND_FALL);
 
     if ((monster_to_player && target_ptr->levitation) || (monster_to_monster && (tr_ptr->flags7 & RF7_CAN_FLY))) {
         simple_monspell_message(target_ptr, m_idx, t_idx, _("あなたは静かに着地した。", "You float gently down to the ground."),

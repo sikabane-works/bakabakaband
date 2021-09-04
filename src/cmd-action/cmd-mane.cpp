@@ -9,6 +9,7 @@
  * 2014 Deskull rearranged comment for Doxygen.\n
  */
 
+#include "cmd-action/cmd-mane.h"
 #include "action/action-limited.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-action/cmd-spell.h"
@@ -20,7 +21,6 @@
 #include "floor/floor-object.h"
 #include "game-option/disturbance-options.h"
 #include "game-option/text-display-options.h"
-#include "grid/grid.h"
 #include "hpmp/hp-mp-processor.h"
 #include "inventory/inventory-slot-types.h"
 #include "main/sound-definitions-table.h"
@@ -53,6 +53,7 @@
 #include "status/body-improvement.h"
 #include "status/buff-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -63,6 +64,7 @@
 #include "target/target-setter.h"
 #include "target/target-types.h"
 #include "term/screen-processor.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
 
@@ -80,7 +82,7 @@ static void mane_info(player_type *caster_ptr, char *p, RF_ABILITY power, HIT_PO
 
     strcpy(p, "");
 
-    const auto power_int = static_cast<int>(power);
+    const auto power_int = enum2i(power);
 
     if ((power_int > 2 && power_int < 41) || (power_int > 41 && power_int < 59) || (power == RF_ABILITY::PSY_SPEAR))
         sprintf(p, " %s%d", KWD_DAM, (int)dam);
@@ -183,7 +185,7 @@ static int get_mane_power(player_type *caster_ptr, int *sn, bool baigaesi)
                 /* Dump the spells */
                 for (i = 0; i < num; i++) {
                     /* Access the spell */
-                    spell = monster_powers[static_cast<size_t>(caster_ptr->mane_spell[i])];
+                    spell = monster_powers[enum2i(caster_ptr->mane_spell[i])];
 
                     chance = spell.manefail;
 
@@ -260,7 +262,7 @@ static int get_mane_power(player_type *caster_ptr, int *sn, bool baigaesi)
         }
 
         /* Save the spell index */
-        spell = monster_powers[static_cast<int>(caster_ptr->mane_spell[i])];
+        spell = monster_powers[enum2i(caster_ptr->mane_spell[i])];
 
         /* Verify it */
         if (ask) {
@@ -1090,7 +1092,7 @@ bool do_cmd_mane(player_type *creature_ptr, bool baigaesi)
     if (!get_mane_power(creature_ptr, &n, baigaesi))
         return false;
 
-    spell = monster_powers[static_cast<int>(creature_ptr->mane_spell[n])];
+    spell = monster_powers[enum2i(creature_ptr->mane_spell[n])];
 
     /* Spell failure chance */
     chance = spell.manefail;

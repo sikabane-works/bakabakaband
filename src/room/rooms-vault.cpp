@@ -22,6 +22,7 @@
 #include "monster-floor/place-monster-types.h"
 #include "object-enchant/item-apply-magic.h"
 #include "room/cave-filler.h"
+#include "room/door-definition.h"
 #include "room/lake-types.h"
 #include "room/rooms-builder.h"
 #include "room/rooms-maze-vault.h"
@@ -31,6 +32,7 @@
 #include "store/store.h"
 #include "system/dungeon-data-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "wizard/wizard-messages.h"
 
@@ -42,7 +44,7 @@ std::vector<vault_type> v_info;
 /*
  * Maximum number of vaults in v_info.txt
  */
-VAULT_IDX max_v_idx;
+int16_t max_v_idx;
 
 /*
  * This function creates a random vault that looks like a collection of bubbles.
@@ -64,7 +66,7 @@ static void build_bubble_vault(player_type *player_ptr, POSITION x0, POSITION y0
 
     int i, j;
     POSITION x = 0, y = 0;
-    u16b min1, min2, temp;
+    uint16_t min1, min2, temp;
     bool done;
 
     /* Offset from center to top left hand corner */
@@ -124,8 +126,8 @@ static void build_bubble_vault(player_type *player_ptr, POSITION x0, POSITION y0
         for (y = 1; y < ysize - 1; y++) {
             /* Get distances to two closest centers */
 
-            min1 = (u16b)distance(x, y, center[0].x, center[0].y);
-            min2 = (u16b)distance(x, y, center[1].x, center[1].y);
+            min1 = (uint16_t)distance(x, y, center[0].x, center[0].y);
+            min2 = (uint16_t)distance(x, y, center[1].x, center[1].y);
 
             if (min1 > min2) {
                 /* swap if in wrong order */
@@ -136,7 +138,7 @@ static void build_bubble_vault(player_type *player_ptr, POSITION x0, POSITION y0
 
             /* Scan the rest */
             for (i = 2; i < BUBBLENUM; i++) {
-                temp = (u16b)distance(x, y, center[i].x, center[i].y);
+                temp = (uint16_t)distance(x, y, center[i].x, center[i].y);
 
                 if (temp < min1) {
                     /* smallest */
@@ -1014,7 +1016,7 @@ static void build_mini_c_vault(player_type *player_ptr, POSITION x0, POSITION y0
         for (y = y1; y <= y2; y++) {
             total = x - x1 + y - y1;
             /* If total is odd- and is a floor then make a wall */
-            if ((total % 2 == 1) && is_floor_bold(floor_ptr, y, x)) {
+            if ((total % 2 == 1) && floor_ptr->grid_array[y][x].is_floor()) {
                 place_bold(player_ptr, y, x, GB_INNER);
             }
         }

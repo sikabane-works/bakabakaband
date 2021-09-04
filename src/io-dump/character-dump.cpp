@@ -1,6 +1,7 @@
 ﻿#include <string>
 
 #include "artifact/fixed-art-types.h"
+#include "avatar/avatar.h"
 #include "cmd-building/cmd-building.h"
 #include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
@@ -27,7 +28,6 @@
 #include "object/object-info.h"
 #include "pet/pet-util.h"
 #include "player-info/alignment.h"
-#include "player-info/avatar.h"
 #include "player/player-status-flags.h"
 #include "player/player-status-table.h"
 #include "player/race-info-table.h"
@@ -41,6 +41,7 @@
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "util/sort.h"
 #include "view/display-messages.h"
@@ -139,7 +140,7 @@ static void dump_aux_last_message(player_type *creature_ptr, FILE *fff)
     if (!current_world_ptr->total_winner) {
         fprintf(fff, _("\n  [死ぬ直前のメッセージ]\n\n", "\n  [Last Messages]\n\n"));
         for (int i = MIN(message_num(), 30); i >= 0; i--) {
-            fprintf(fff, "> %s\n", message_str((s16b)i));
+            fprintf(fff, "> %s\n", message_str((int16_t)i));
         }
 
         fputc('\n', fff);
@@ -288,7 +289,7 @@ static void dump_aux_monsters(player_type *creature_ptr, FILE *fff)
 
     /* Allocate the "who" array */
     MONRACE_IDX *who;
-    u16b why = 2;
+    uint16_t why = 2;
     C_MAKE(who, max_r_idx, MONRACE_IDX);
 
     /* Count monster kills */
@@ -320,7 +321,7 @@ static void dump_aux_monsters(player_type *creature_ptr, FILE *fff)
     /* No monsters is defeated */
     if (norm_total < 1) {
         fprintf(fff, _("まだ敵を倒していません。\n", "You have defeated no enemies yet.\n"));
-        C_KILL(who, max_r_idx, s16b);
+        C_KILL(who, max_r_idx, int16_t);
         return;
     }
 
@@ -331,7 +332,7 @@ static void dump_aux_monsters(player_type *creature_ptr, FILE *fff)
 #else
         fprintf(fff, "You have defeated %ld %s.\n", norm_total, norm_total == 1 ? "enemy" : "enemies");
 #endif
-        C_KILL(who, max_r_idx, s16b);
+        C_KILL(who, max_r_idx, int16_t);
         return;
     }
 
@@ -359,7 +360,7 @@ static void dump_aux_monsters(player_type *creature_ptr, FILE *fff)
         fprintf(fff, _("  %-40s (レベル%3d)%s\n", "  %-40s (level %3d)%s\n"), r_ptr->name.c_str(), (int)r_ptr->level, buf);
     }
 
-    C_KILL(who, max_r_idx, s16b);
+    C_KILL(who, max_r_idx, int16_t);
 }
 
 /*!
@@ -372,9 +373,9 @@ static void dump_aux_race_history(player_type *creature_ptr, FILE *fff)
     if (!creature_ptr->old_race1 && !creature_ptr->old_race2)
         return;
 
-    fprintf(fff, _("\n\n あなたは%sとして生まれた。", "\n\n You were born as %s."), race_info[creature_ptr->start_race].title);
+    fprintf(fff, _("\n\n あなたは%sとして生まれた。", "\n\n You were born as %s."), race_info[enum2i(creature_ptr->start_race)].title);
     for (int i = 0; i < MAX_RACES; i++) {
-        if (creature_ptr->start_race == i)
+        if (enum2i(creature_ptr->start_race) == i)
             continue;
         if (i < 32) {
             if (!(creature_ptr->old_race1 & 1UL << i))

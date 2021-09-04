@@ -1,4 +1,5 @@
 ﻿#include "spell-realm/spells-craft.h"
+#include "avatar/avatar.h"
 #include "core/disturbance.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
@@ -14,7 +15,6 @@
 #include "object-hook/hook-enchant.h"
 #include "object/item-use-flags.h"
 #include "object/object-flags.h"
-#include "player-info/avatar.h"
 #include "player-info/equipment-info.h"
 #include "player/attack-defense-types.h"
 #include "player/special-defense-types.h"
@@ -33,7 +33,7 @@
  * @param v 継続時間
  * @return ステータスに影響を及ぼす変化があった場合TRUEを返す。
  */
-bool set_ele_attack(player_type *creature_ptr, u32b attack_type, TIME_EFFECT v)
+bool set_ele_attack(player_type *creature_ptr, uint32_t attack_type, TIME_EFFECT v)
 {
     v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
 
@@ -101,7 +101,7 @@ bool set_ele_attack(player_type *creature_ptr, u32b attack_type, TIME_EFFECT v)
  * @param v 継続時間
  * @return ステータスに影響を及ぼす変化があった場合TRUEを返す。
  */
-bool set_ele_immune(player_type *creature_ptr, u32b immune_type, TIME_EFFECT v)
+bool set_ele_immune(player_type *creature_ptr, uint32_t immune_type, TIME_EFFECT v)
 {
     v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
 
@@ -267,14 +267,14 @@ bool pulish_shield(player_type *caster_ptr)
     concptr s = _("磨く盾がありません。", "You have no shield to polish.");
 
     OBJECT_IDX item;
-    object_type *o_ptr = choose_object(caster_ptr, &item, q, s, USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT, TV_SHIELD);
+    object_type *o_ptr = choose_object(caster_ptr, &item, q, s, USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT, TvalItemTester(TV_SHIELD));
     if (o_ptr == NULL)
         return false;
 
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(caster_ptr, o_name, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    object_flags(caster_ptr, o_ptr, flgs);
+    TrFlags flgs;
+    object_flags(o_ptr, flgs);
 
     bool is_pulish_successful = o_ptr->k_idx && !object_is_artifact(o_ptr) && !object_is_ego(o_ptr);
     is_pulish_successful &= !object_is_cursed(o_ptr);

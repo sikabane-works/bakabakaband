@@ -10,6 +10,7 @@
 #include "grid/grid.h"
 #include "grid/stair.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -134,11 +135,11 @@ void stair_creation(player_type *caster_ptr)
     dest_sf_ptr = get_sf_ptr(dest_floor_id);
     if (up) {
         cave_set_feat(caster_ptr, caster_ptr->y, caster_ptr->x,
-            (dest_sf_ptr->last_visit && (dest_sf_ptr->dun_level <= floor_ptr->dun_level - 2)) ? feat_state(caster_ptr->current_floor_ptr, feat_up_stair, FF_SHAFT)
+            (dest_sf_ptr->last_visit && (dest_sf_ptr->dun_level <= floor_ptr->dun_level - 2)) ? feat_state(caster_ptr->current_floor_ptr, feat_up_stair, FF::SHAFT)
                                                                                               : feat_up_stair);
     } else {
         cave_set_feat(caster_ptr, caster_ptr->y, caster_ptr->x,
-            (dest_sf_ptr->last_visit && (dest_sf_ptr->dun_level >= floor_ptr->dun_level + 2)) ? feat_state(caster_ptr->current_floor_ptr, feat_down_stair, FF_SHAFT)
+            (dest_sf_ptr->last_visit && (dest_sf_ptr->dun_level >= floor_ptr->dun_level + 2)) ? feat_state(caster_ptr->current_floor_ptr, feat_down_stair, FF::SHAFT)
                                                                                               : feat_down_stair);
     }
 

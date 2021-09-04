@@ -1,8 +1,8 @@
 ﻿#include "realm/realm-sorcery.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "core/asking-player.h"
 #include "player-info/self-info.h"
-#include "player-info/avatar.h"
 #include "spell-kind/magic-item-recharger.h"
 #include "spell-kind/spells-charm.h"
 #include "spell-kind/spells-detection.h"
@@ -224,7 +224,7 @@ concptr do_sorcery_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mo
 
         {
             if (cast) {
-                if (!ident_spell(caster_ptr, false, TV_NONE))
+                if (!ident_spell(caster_ptr, false))
                     return NULL;
             }
         }
@@ -336,7 +336,7 @@ concptr do_sorcery_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mo
 
         {
             if (cast) {
-                if (!identify_fully(caster_ptr, false, TV_NONE))
+                if (!identify_fully(caster_ptr, false))
                     return NULL;
             }
         }

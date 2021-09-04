@@ -4,6 +4,7 @@
 
 #include "mind-elementalist.h"
 #include "action/action-limited.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-mind.h"
 #include "cmd-action/cmd-spell.h"
 #include "cmd-io/cmd-gameoption.h"
@@ -36,7 +37,6 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
-#include "player-info/avatar.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
 #include "player-status/player-status-base.h"
@@ -57,6 +57,7 @@
 #include "status/base-status.h"
 #include "system/floor-type-definition.h"
 #include "system/game-option-types.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -66,6 +67,7 @@
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
 #include "util/buffer-shaper.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
 #include <array>
@@ -573,7 +575,7 @@ static bool cast_element_spell(player_type *caster_ptr, SPELL_IDX spell_idx)
             int attempts = 1000;
             while (attempts--) {
                 scatter(caster_ptr, &y, &x, caster_ptr->y, caster_ptr->x, 4, PROJECT_NONE);
-                if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF_PROJECT))
+                if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF::PROJECT))
                     continue;
                 if (!player_bold(caster_ptr, y, x))
                     break;
@@ -639,10 +641,10 @@ static PERCENTAGE decide_element_chance(player_type *caster_ptr, mind_type spell
     if (heavy_armor(caster_ptr))
         chance += 5;
 
-    if (caster_ptr->icky_wield[0])
+    if (caster_ptr->is_icky_wield[0])
         chance += 5;
 
-    if (caster_ptr->icky_wield[1])
+    if (caster_ptr->is_icky_wield[1])
         chance += 5;
 
     if (chance > 95)
@@ -749,7 +751,7 @@ bool get_element_power(player_type *caster_ptr, SPELL_IDX *sn, bool only_browse)
                 menu_line -= num;
         }
 
-        int spell_max = static_cast<int>(ElementSpells::MAX);
+        int spell_max = enum2i(ElementSpells::MAX);
         if ((choice == ' ') || (choice == '*') || (choice == '?') || (use_menu && ask)) {
             if (!redraw || use_menu) {
                 char desc[80];
@@ -1197,7 +1199,7 @@ byte select_element_realm(player_type *creature_ptr)
 {
     clear_from(10);
 
-    int realm_max = static_cast<int>(ElementRealm::MAX);
+    int realm_max = enum2i(ElementRealm::MAX);
     int realm_idx = 1;
     int row = 16;
     while (1) {
@@ -1440,7 +1442,7 @@ static bool door_to_darkness(player_type *caster_ptr, POSITION dist)
             continue;
         }
 
-        if (!is_cave_empty_bold(caster_ptr, y, x) || f_ptr->grid_array[y][x].info & CAVE_ICKY) {
+        if (!is_cave_empty_bold(caster_ptr, y, x) || f_ptr->grid_array[y][x].is_icky()) {
             msg_print(_("そこには移動できない。", "Can not teleport to there."));
             continue;
         }

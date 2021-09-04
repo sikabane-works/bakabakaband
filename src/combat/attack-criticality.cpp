@@ -48,7 +48,7 @@ std::tuple<HIT_POINT, concptr, sound_type> apply_critical_norm_damage(int k, HIT
  * @param mode オプションフラグ
  * @return クリティカル修正が入ったダメージ値
  */
-HIT_POINT critical_norm(player_type *attacker_ptr, WEIGHT weight, int plus, HIT_POINT dam, s16b meichuu, combat_options mode, bool impact)
+HIT_POINT critical_norm(player_type *attacker_ptr, WEIGHT weight, int plus, HIT_POINT dam, int16_t meichuu, combat_options mode, bool impact)
 {
     /* Extract "blow" power */
     int i = (weight + (meichuu * 3 + plus * 5) + attacker_ptr->skill_thn);
@@ -175,7 +175,7 @@ void critical_attack(player_type *attacker_ptr, player_attack_type *pa_ptr)
     }
 
     bool is_ninja_hit = (attacker_ptr->pclass == CLASS_NINJA) && has_melee_weapon(attacker_ptr, INVEN_MAIN_HAND + pa_ptr->hand)
-        && !attacker_ptr->icky_wield[pa_ptr->hand] && ((attacker_ptr->cur_lite <= 0) || one_in_(7));
+        && !attacker_ptr->is_icky_wield[pa_ptr->hand] && ((attacker_ptr->cur_lite <= 0) || one_in_(7));
     if (is_ninja_hit)
         ninja_critical(attacker_ptr, pa_ptr);
 }

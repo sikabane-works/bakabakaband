@@ -19,11 +19,10 @@
  */
 bool import_magic_device(player_type *user_ptr)
 {
-    item_tester_hook = item_tester_hook_recharge;
     concptr q = _("どのアイテムの魔力を取り込みますか? ", "Gain power of which item? ");
     concptr s = _("魔力を取り込めるアイテムがない。", "There's nothing with power to absorb.");
     OBJECT_IDX item;
-    object_type *o_ptr = choose_object(user_ptr, &item, q, s, USE_INVEN | USE_FLOOR, TV_NONE);
+    object_type *o_ptr = choose_object(user_ptr, &item, q, s, USE_INVEN | USE_FLOOR, FuncItemTester(object_is_rechargeable));
     if (!o_ptr)
         return false;
 
@@ -50,7 +49,7 @@ bool import_magic_device(player_type *user_ptr)
         ext = 36;
 
     if (o_ptr->tval == TV_ROD) {
-        user_ptr->magic_num2[o_ptr->sval + ext] += (MAGIC_NUM2)o_ptr->number;
+        user_ptr->magic_num2[o_ptr->sval + ext] += (byte)o_ptr->number;
         if (user_ptr->magic_num2[o_ptr->sval + ext] > 99)
             user_ptr->magic_num2[o_ptr->sval + ext] = 99;
     } else {
@@ -65,7 +64,7 @@ bool import_magic_device(player_type *user_ptr)
                 if (gain_num < 1)
                     gain_num = 1;
             }
-            user_ptr->magic_num2[o_ptr->sval + ext] += (MAGIC_NUM2)gain_num;
+            user_ptr->magic_num2[o_ptr->sval + ext] += (byte)gain_num;
             if (user_ptr->magic_num2[o_ptr->sval + ext] > 99)
                 user_ptr->magic_num2[o_ptr->sval + ext] = 99;
             user_ptr->magic_num1[o_ptr->sval + ext] += pval * 0x10000;

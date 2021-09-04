@@ -4,15 +4,15 @@
  * @author Hourier
  */
 
+#include "knowledge-self.h"
+#include "avatar/avatar.h"
 #include "birth/birth-explanations-table.h"
 #include "core/show-file.h"
 #include "flavor/flavor-describer.h"
 #include "floor/floor-town.h"
 #include "info-reader/fixed-map-parser.h"
 #include "io-dump/dump-util.h"
-#include "knowledge-self.h"
 #include "player-info/alignment.h"
-#include "player-info/avatar.h"
 #include "player/player-class.h"
 #include "player/player-status-table.h"
 #include "player/race-info-table.h"
@@ -21,6 +21,7 @@
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "util/buffer-shaper.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "util/string-processor.h"
 #include "world/world.h"
@@ -55,9 +56,9 @@ static void dump_yourself(player_type *creature_ptr, FILE *fff)
         return;
 
     char temp[80 * 10];
-    shape_buffer(race_explanations[creature_ptr->prace], 78, temp, sizeof(temp));
+    shape_buffer(race_explanations[enum2i(creature_ptr->prace)], 78, temp, sizeof(temp));
     fprintf(fff, "\n\n");
-    fprintf(fff, _("種族: %s\n", "Race: %s\n"), race_info[creature_ptr->prace].title);
+    fprintf(fff, _("種族: %s\n", "Race: %s\n"), race_info[enum2i(creature_ptr->prace)].title);
     concptr t = temp;
 
     for (int i = 0; i < 10; i++) {
@@ -172,8 +173,8 @@ void do_cmd_knowledge_stat(player_type *creature_ptr)
         return;
 
     update_playtime();
-    u32b play_time = current_world_ptr->play_time;
-    u32b all_time = current_world_ptr->sf_play_time + play_time;
+    uint32_t play_time = current_world_ptr->play_time;
+    uint32_t all_time = current_world_ptr->sf_play_time + play_time;
     fprintf(fff, _("現在のプレイ時間 : %d:%02d:%02d\n", "Current Play Time is %d:%02d:%02d\n"), play_time / (60 * 60), (play_time / 60) % 60, play_time % 60);
     fprintf(fff, _("合計のプレイ時間 : %d:%02d:%02d\n", "  Total play Time is %d:%02d:%02d\n"), all_time / (60 * 60), (all_time / 60) % 60, all_time % 60);
     fputs("\n", fff);

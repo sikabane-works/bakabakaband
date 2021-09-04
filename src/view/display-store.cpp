@@ -16,6 +16,7 @@
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 
 /*!
@@ -171,7 +172,7 @@ void display_store(player_type *player_ptr)
     }
 
     concptr owner_name = (ot_ptr->owner_name);
-    concptr race_name = race_info[ot_ptr->owner_race].title;
+    concptr race_name = race_info[enum2i(ot_ptr->owner_race)].title;
     char buf[80];
     sprintf(buf, "%s (%s)", owner_name, race_name);
     put_str(buf, 3, 10);

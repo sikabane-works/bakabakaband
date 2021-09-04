@@ -1,5 +1,4 @@
-﻿#include <vector>
-
+﻿#include "monster-floor/monster-lite.h"
 #include "core/player-update-types.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
@@ -7,18 +6,19 @@
 #include "grid/feature-flag-types.h"
 #include "grid/grid.h"
 #include "monster-floor/monster-lite-util.h"
-#include "monster-floor/monster-lite.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags7.h"
 #include "monster/monster-status.h"
 #include "player/special-defense-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/point-2d.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <vector>
 
 /*!
  * @brief モンスターによる光量状態更新 / Add a square to the changes array
@@ -37,7 +37,7 @@ static void update_monster_lite(
     if ((g_ptr->info & (CAVE_MNLT | CAVE_VIEW)) != CAVE_VIEW)
         return;
 
-    if (!cave_los_grid(g_ptr)) {
+    if (!feat_supports_los(g_ptr->feat)) {
         if (((y < subject_ptr->y) && (y > ml_ptr->mon_fy)) || ((y > subject_ptr->y) && (y < ml_ptr->mon_fy))) {
             dpf = subject_ptr->y - ml_ptr->mon_fy;
             d = y - ml_ptr->mon_fy;
@@ -88,16 +88,16 @@ static void update_monster_dark(
     if ((g_ptr->info & (CAVE_LITE | CAVE_MNLT | CAVE_MNDK | CAVE_VIEW)) != CAVE_VIEW)
         return;
 
-    if (!cave_los_grid(g_ptr) && !cave_has_flag_grid(g_ptr, FF_PROJECT)) {
+    if (!feat_supports_los(g_ptr->feat) && !g_ptr->cave_has_flag(FF::PROJECT)) {
         if (((y < subject_ptr->y) && (y > ml_ptr->mon_fy)) || ((y > subject_ptr->y) && (y < ml_ptr->mon_fy))) {
             dpf = subject_ptr->y - ml_ptr->mon_fy;
             d = y - ml_ptr->mon_fy;
             midpoint = ml_ptr->mon_fx + ((subject_ptr->x - ml_ptr->mon_fx) * ABS(d)) / ABS(dpf);
             if (x < midpoint) {
-                if (!cave_los_bold(subject_ptr->current_floor_ptr, y, x + 1) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y, x + 1, FF_PROJECT))
+                if (!cave_los_bold(subject_ptr->current_floor_ptr, y, x + 1) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y, x + 1, FF::PROJECT))
                     return;
             } else if (x > midpoint) {
-                if (!cave_los_bold(subject_ptr->current_floor_ptr, y, x - 1) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y, x - 1, FF_PROJECT))
+                if (!cave_los_bold(subject_ptr->current_floor_ptr, y, x - 1) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y, x - 1, FF::PROJECT))
                     return;
             } else if (ml_ptr->mon_invis)
                 return;
@@ -108,10 +108,10 @@ static void update_monster_dark(
             d = x - ml_ptr->mon_fx;
             midpoint = ml_ptr->mon_fy + ((subject_ptr->y - ml_ptr->mon_fy) * ABS(d)) / ABS(dpf);
             if (y < midpoint) {
-                if (!cave_los_bold(subject_ptr->current_floor_ptr, y + 1, x) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y + 1, x, FF_PROJECT))
+                if (!cave_los_bold(subject_ptr->current_floor_ptr, y + 1, x) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y + 1, x, FF::PROJECT))
                     return;
             } else if (y > midpoint) {
-                if (!cave_los_bold(subject_ptr->current_floor_ptr, y - 1, x) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y - 1, x, FF_PROJECT))
+                if (!cave_los_bold(subject_ptr->current_floor_ptr, y - 1, x) && !cave_has_flag_bold(subject_ptr->current_floor_ptr, y - 1, x, FF::PROJECT))
                     return;
             } else if (ml_ptr->mon_invis)
                 return;
@@ -169,7 +169,7 @@ void update_mon_lite(player_type *subject_ptr)
             if (!rad)
                 continue;
 
-            feature_flag_type f_flag;
+            FF f_flag;
             if (rad > 0) {
                 if (!(r_ptr->flags7 & (RF7_SELF_LITE_1 | RF7_SELF_LITE_2))
                     && (monster_csleep_remaining(m_ptr) || (!floor_ptr->dun_level && is_daytime()) || subject_ptr->phase_out))
@@ -179,18 +179,18 @@ void update_mon_lite(player_type *subject_ptr)
                     rad = 1;
 
                 add_mon_lite = update_monster_lite;
-                f_flag = FF_LOS;
+                f_flag = FF::LOS;
             } else {
                 if (!(r_ptr->flags7 & (RF7_SELF_DARK_1 | RF7_SELF_DARK_2)) && (monster_csleep_remaining(m_ptr) || (!floor_ptr->dun_level && !is_daytime())))
                     continue;
 
                 add_mon_lite = update_monster_dark;
-                f_flag = FF_PROJECT;
+                f_flag = FF::PROJECT;
                 rad = -rad;
             }
 
             monster_lite_type tmp_ml;
-            monster_lite_type *ml_ptr = initialize_monster_lite_type(floor_ptr, &tmp_ml, m_ptr);
+            monster_lite_type *ml_ptr = initialize_monster_lite_type(floor_ptr->grid_array[m_ptr->fy][m_ptr->fx].info, &tmp_ml, m_ptr);
             add_mon_lite(subject_ptr, points, ml_ptr->mon_fy, ml_ptr->mon_fx, ml_ptr);
             add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 1, ml_ptr->mon_fx, ml_ptr);
             add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 1, ml_ptr->mon_fx, ml_ptr);
@@ -209,7 +209,7 @@ void update_mon_lite(player_type *subject_ptr)
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 2, ml_ptr->mon_fx, ml_ptr);
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 2, ml_ptr->mon_fx - 1, ml_ptr);
                 g_ptr = &floor_ptr->grid_array[ml_ptr->mon_fy + 2][ml_ptr->mon_fx];
-                if ((rad == 3) && cave_has_flag_grid(g_ptr, f_flag)) {
+                if ((rad == 3) && g_ptr->cave_has_flag(f_flag)) {
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 3, ml_ptr->mon_fx + 1, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 3, ml_ptr->mon_fx, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 3, ml_ptr->mon_fx - 1, ml_ptr);
@@ -221,7 +221,7 @@ void update_mon_lite(player_type *subject_ptr)
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 2, ml_ptr->mon_fx, ml_ptr);
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 2, ml_ptr->mon_fx - 1, ml_ptr);
                 g_ptr = &floor_ptr->grid_array[ml_ptr->mon_fy - 2][ml_ptr->mon_fx];
-                if ((rad == 3) && cave_has_flag_grid(g_ptr, f_flag)) {
+                if ((rad == 3) && g_ptr->cave_has_flag(f_flag)) {
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 3, ml_ptr->mon_fx + 1, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 3, ml_ptr->mon_fx, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 3, ml_ptr->mon_fx - 1, ml_ptr);
@@ -233,7 +233,7 @@ void update_mon_lite(player_type *subject_ptr)
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy, ml_ptr->mon_fx + 2, ml_ptr);
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 1, ml_ptr->mon_fx + 2, ml_ptr);
                 g_ptr = &floor_ptr->grid_array[ml_ptr->mon_fy][ml_ptr->mon_fx + 2];
-                if ((rad == 3) && cave_has_flag_grid(g_ptr, f_flag)) {
+                if ((rad == 3) && g_ptr->cave_has_flag(f_flag)) {
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 1, ml_ptr->mon_fx + 3, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy, ml_ptr->mon_fx + 3, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 1, ml_ptr->mon_fx + 3, ml_ptr);
@@ -245,7 +245,7 @@ void update_mon_lite(player_type *subject_ptr)
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy, ml_ptr->mon_fx - 2, ml_ptr);
                 add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 1, ml_ptr->mon_fx - 2, ml_ptr);
                 g_ptr = &floor_ptr->grid_array[ml_ptr->mon_fy][ml_ptr->mon_fx - 2];
-                if ((rad == 3) && cave_has_flag_grid(g_ptr, f_flag)) {
+                if ((rad == 3) && g_ptr->cave_has_flag(f_flag)) {
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy + 1, ml_ptr->mon_fx - 3, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy, ml_ptr->mon_fx - 3, ml_ptr);
                     add_mon_lite(subject_ptr, points, ml_ptr->mon_fy - 1, ml_ptr->mon_fx - 3, ml_ptr);
@@ -277,9 +277,9 @@ void update_mon_lite(player_type *subject_ptr)
         g_ptr = &floor_ptr->grid_array[fy][fx];
         if (g_ptr->info & CAVE_TEMP) {
             if ((g_ptr->info & (CAVE_VIEW | CAVE_MNLT)) == CAVE_VIEW)
-                cave_note_and_redraw_later(floor_ptr, g_ptr, fy, fx);
+                cave_note_and_redraw_later(floor_ptr, fy, fx);
         } else if ((g_ptr->info & (CAVE_VIEW | CAVE_MNDK)) == CAVE_VIEW)
-            cave_note_and_redraw_later(floor_ptr, g_ptr, fy, fx);
+            cave_note_and_redraw_later(floor_ptr, fy, fx);
 
         points.emplace_back(fy, fx);
     }
@@ -291,9 +291,9 @@ void update_mon_lite(player_type *subject_ptr)
         grid_type *const g_ptr = &floor_ptr->grid_array[fy][fx];
         if (g_ptr->info & CAVE_MNLT) {
             if ((g_ptr->info & (CAVE_VIEW | CAVE_TEMP)) == CAVE_VIEW)
-                cave_note_and_redraw_later(floor_ptr, g_ptr, fy, fx);
+                cave_note_and_redraw_later(floor_ptr, fy, fx);
         } else if ((g_ptr->info & (CAVE_VIEW | CAVE_XTRA)) == CAVE_VIEW)
-            cave_note_and_redraw_later(floor_ptr, g_ptr, fy, fx);
+            cave_note_and_redraw_later(floor_ptr, fy, fx);
 
         floor_ptr->mon_lite_x[floor_ptr->mon_lite_n] = fx;
         floor_ptr->mon_lite_y[floor_ptr->mon_lite_n] = fy;

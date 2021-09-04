@@ -157,8 +157,8 @@ void get_random_name(object_type *o_ptr, char *return_name, bool armour, int pow
 /*対邪平均ダメージの計算処理*/
 static HIT_POINT calc_arm_avgdamage(player_type *player_ptr, object_type *o_ptr)
 {
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    object_flags(player_ptr, o_ptr, flgs);
+    TrFlags flgs;
+    object_flags(o_ptr, flgs);
     HIT_POINT base, forced, vorpal;
     HIT_POINT s_evil = forced = vorpal = 0;
     HIT_POINT dam = base = (o_ptr->dd * o_ptr->ds + o_ptr->dd) / 2;
@@ -186,8 +186,8 @@ static HIT_POINT calc_arm_avgdamage(player_type *player_ptr, object_type *o_ptr)
 
 bool has_extreme_damage_rate(player_type *player_ptr, object_type *o_ptr)
 {
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    object_flags(player_ptr, o_ptr, flgs);
+    TrFlags flgs;
+    object_flags(o_ptr, flgs);
     if (has_flag(flgs, TR_VAMPIRIC)) {
         if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 1) && (calc_arm_avgdamage(player_ptr, o_ptr) > 52)) {
             return true;

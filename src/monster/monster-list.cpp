@@ -36,6 +36,7 @@
 #include "player/player-status.h"
 #include "system/alloc-entries.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -329,7 +330,7 @@ void choose_new_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool born, M
     }
 
     if (ironman_nightmare) {
-        u32b hp = m_ptr->max_maxhp * 2L;
+        uint32_t hp = m_ptr->max_maxhp * 2L;
         m_ptr->max_maxhp = (HIT_POINT)MIN(MON_MAX_HP, hp);
     }
 

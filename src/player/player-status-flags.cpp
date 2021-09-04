@@ -1,6 +1,5 @@
 ﻿#include "player/player-status-flags.h"
 #include "artifact/fixed-art-types.h"
-#include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "mind/mind-elementalist.h"
 #include "monster-race/monster-race.h"
@@ -36,6 +35,7 @@
 #include "spell-realm/spells-song.h"
 #include "sv-definition/sv-weapon-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -86,14 +86,14 @@ BIT_FLAGS convert_inventory_slot_type_to_flag_cause(inventory_slot_type inventor
 BIT_FLAGS check_equipment_flags(player_type *creature_ptr, tr_type tr_flag)
 {
     object_type *o_ptr;
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    TrFlags flgs;
     BIT_FLAGS result = 0L;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         o_ptr = &creature_ptr->inventory_list[i];
         if (!o_ptr->k_idx)
             continue;
 
-        object_flags(creature_ptr, o_ptr, flgs);
+        object_flags(o_ptr, flgs);
 
         if (has_flag(flgs, tr_flag))
             set_bits(result, convert_inventory_slot_type_to_flag_cause(static_cast<inventory_slot_type>(i)));
@@ -466,7 +466,7 @@ bool has_pass_wall(player_type *creature_ptr)
 {
     bool pow = false;
 
-    if (creature_ptr->wraith_form || creature_ptr->tim_pass_wall || (!creature_ptr->mimic_form && creature_ptr->prace == RACE_SPECTRE)) {
+    if (creature_ptr->wraith_form || creature_ptr->tim_pass_wall || (!creature_ptr->mimic_form && creature_ptr->prace == player_race_type::SPECTRE)) {
         pow = true;
     }
 
@@ -767,14 +767,14 @@ BIT_FLAGS has_warning(player_type *creature_ptr)
 {
     BIT_FLAGS result = 0L;
     object_type *o_ptr;
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    TrFlags flgs;
 
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         o_ptr = &creature_ptr->inventory_list[i];
         if (!o_ptr->k_idx)
             continue;
 
-        object_flags(creature_ptr, o_ptr, flgs);
+        object_flags(o_ptr, flgs);
 
         if (has_flag(flgs, TR_WARNING)) {
             if (!o_ptr->inscription || !(angband_strchr(quark_str(o_ptr->inscription), '$')))
@@ -1190,7 +1190,7 @@ BIT_FLAGS has_regenerate(player_type *creature_ptr)
 void update_curses(player_type *creature_ptr)
 {
     object_type *o_ptr;
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    TrFlags flgs;
     creature_ptr->cursed.clear();
     creature_ptr->cursed_special.clear();
 
@@ -1201,7 +1201,7 @@ void update_curses(player_type *creature_ptr)
         o_ptr = &creature_ptr->inventory_list[i];
         if (!o_ptr->k_idx)
             continue;
-        object_flags(creature_ptr, o_ptr, flgs);
+        object_flags(o_ptr, flgs);
         if (has_flag(flgs, TR_AGGRAVATE))
             creature_ptr->cursed.set(TRC::AGGRAVATE);
         if (has_flag(flgs, TR_DRAIN_EXP))
@@ -1277,7 +1277,7 @@ BIT_FLAGS has_earthquake(player_type *creature_ptr)
 void update_extra_blows(player_type *creature_ptr)
 {
     object_type *o_ptr;
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
+    TrFlags flgs;
     creature_ptr->extra_blows[0] = creature_ptr->extra_blows[1] = 0;
 
     const melee_type melee_type = player_melee_type(creature_ptr);
@@ -1288,7 +1288,7 @@ void update_extra_blows(player_type *creature_ptr)
         if (!o_ptr->k_idx)
             continue;
 
-        object_flags(creature_ptr, o_ptr, flgs);
+        object_flags(o_ptr, flgs);
         if (has_flag(flgs, TR_BLOWS)) {
             if ((i == INVEN_MAIN_HAND || i == INVEN_MAIN_RING) && !two_handed)
                 creature_ptr->extra_blows[0] += o_ptr->pval;
@@ -2035,42 +2035,41 @@ bool has_disable_two_handed_bonus(player_type *creature_ptr, int i)
  * @brief ふさわしくない武器を持っているかどうかを返す。
  * @todo 相応しい時にFALSEで相応しくない時にTRUEという負論理は良くない、後で修正する
  */
-bool has_icky_wield_weapon(player_type *creature_ptr, int i)
+bool is_wielding_icky_weapon(player_type *creature_ptr, int i)
 {
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    object_type *o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
-    object_flags(creature_ptr, o_ptr, flgs);
+    TrFlags flgs;
+    auto *o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
+    object_flags(o_ptr, flgs);
 
-    bool has_no_weapon = (o_ptr->tval == TV_NONE) || (o_ptr->tval == TV_SHIELD);
+    auto has_no_weapon = (o_ptr->tval == TV_NONE) || (o_ptr->tval == TV_SHIELD);
     if (creature_ptr->pclass == CLASS_PRIEST) {
-        bool is_suitable_weapon = has_flag(flgs, TR_BLESSED);
+        auto is_suitable_weapon = has_flag(flgs, TR_BLESSED);
         is_suitable_weapon |= (o_ptr->tval != TV_SWORD) && (o_ptr->tval != TV_POLEARM);
         return !has_no_weapon && !is_suitable_weapon;
     }
 
     if (creature_ptr->pclass == CLASS_SORCERER) {
-        bool is_suitable_weapon = o_ptr->tval == TV_HAFTED;
+        auto is_suitable_weapon = o_ptr->tval == TV_HAFTED;
         is_suitable_weapon &= (o_ptr->sval == SV_WIZSTAFF) || (o_ptr->sval == SV_NAMAKE_HAMMER);
         return !has_no_weapon && !is_suitable_weapon;
     }
 
-    if (has_not_monk_weapon(creature_ptr, i) || has_not_ninja_weapon(creature_ptr, i))
-        return true;
-
-    return false;
+    return has_not_monk_weapon(creature_ptr, i) || has_not_ninja_weapon(creature_ptr, i);
 }
 
-bool has_riding_wield_weapon(player_type *creature_ptr, int i)
+/*!
+ * @brief 乗馬にふさわしくない武器を持って乗馬しているかどうかを返す.
+ * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param i 武器を持っている手。0ならば利き手、1ならば反対の手
+ */
+bool is_wielding_icky_riding_weapon(player_type *creature_ptr, int i)
 {
-    object_type *o_ptr;
-    BIT_FLAGS flgs[TR_FLAG_SIZE];
-    o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
-    object_flags(creature_ptr, o_ptr, flgs);
-    if (creature_ptr->riding != 0 && !(o_ptr->tval == TV_POLEARM) && ((o_ptr->sval == SV_LANCE) || (o_ptr->sval == SV_HEAVY_LANCE))
-        && !has_flag(flgs, TR_RIDING)) {
-        return true;
-    }
-    return false;
+    auto *o_ptr = &creature_ptr->inventory_list[INVEN_MAIN_HAND + i];
+    TrFlags flgs;
+    object_flags(o_ptr, flgs);
+    auto has_no_weapon = (o_ptr->tval == TV_NONE) || (o_ptr->tval == TV_SHIELD);
+    auto is_suitable = o_ptr->is_lance() || has_flag(flgs, TR_RIDING);
+    return (creature_ptr->riding > 0) && !has_no_weapon && !is_suitable;
 }
 
 bool has_not_ninja_weapon(player_type *creature_ptr, int i)
@@ -2102,7 +2101,7 @@ bool has_good_luck(player_type *creature_ptr)
 BIT_FLAGS player_aggravate_state(player_type *creature_ptr)
 {
     if (creature_ptr->cursed.has(TRC::AGGRAVATE)) {
-        if ((is_specific_player_race(creature_ptr, RACE_S_FAIRY)) && (creature_ptr->pseikaku != PERSONALITY_SEXY)) {
+        if ((is_specific_player_race(creature_ptr, player_race_type::S_FAIRY)) && (creature_ptr->pseikaku != PERSONALITY_SEXY)) {
             return AGGRAVATE_S_FAIRY;
         }
         return AGGRAVATE_NORMAL;

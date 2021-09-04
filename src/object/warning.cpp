@@ -10,7 +10,6 @@
 #include "floor/geometry.h"
 #include "game-option/input-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-types.h"
@@ -33,6 +32,7 @@
 #include "spell/spell-types.h"
 #include "status/element-resistance.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -58,10 +58,10 @@ object_type *choose_warning_item(player_type *creature_ptr)
     /* Search Inventory */
     int number = 0;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
-        BIT_FLAGS flgs[TR_FLAG_SIZE];
+        TrFlags flgs;
         object_type *o_ptr = &creature_ptr->inventory_list[i];
 
-        object_flags(creature_ptr, o_ptr, flgs);
+        object_flags(o_ptr, flgs);
         if (has_flag(flgs, TR_WARNING)) {
             choices[number] = i;
             number++;
@@ -160,7 +160,7 @@ static void spell_damcalc(player_type *target_ptr, monster_type *m_ptr, EFFECT_I
 
     case GF_NETHER:
         dam = dam * calc_nether_damage_rate(target_ptr, CALC_MAX) / 100;
-        if (is_specific_player_race(target_ptr, RACE_SPECTRE)) {
+        if (is_specific_player_race(target_ptr, player_race_type::SPECTRE)) {
             ignore_wraith_form = true;
             dam = 0;
         }

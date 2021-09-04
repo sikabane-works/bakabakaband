@@ -2,6 +2,7 @@
 #include "action/action-limited.h"
 #include "action/movement-execution.h"
 #include "action/run-execution.h"
+#include "avatar/avatar.h"
 #include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
@@ -15,16 +16,14 @@
 #include "floor/wild.h"
 #include "game-option/birth-options.h"
 #include "game-option/input-options.h"
+#include "game-option/map-screen-options.h"
 #include "game-option/play-record-options.h"
 #include "game-option/special-options.h"
-#include "game-option/map-screen-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "info-reader/fixed-map-parser.h"
 #include "io/input-key-requester.h"
 #include "io/write-diary.h"
 #include "mind/mind-ninja.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
 #include "player/player-move.h"
@@ -34,6 +33,7 @@
 #include "spell-realm/spells-song.h"
 #include "status/action-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "util/bit-flags-calculator.h"
@@ -70,12 +70,12 @@ void do_cmd_go_up(player_type *creature_ptr)
     if (creature_ptr->special_defense & KATA_MUSOU)
         set_action(creature_ptr, ACTION_NONE);
 
-    if (!has_flag(f_ptr->flags, FF_LESS)) {
+    if (f_ptr->flags.has_not(FF::LESS)) {
         msg_print(_("ここには上り階段が見当たらない。", "I see no up staircase here."));
         return;
     }
 
-    if (has_flag(f_ptr->flags, FF_QUEST)) {
+    if (f_ptr->flags.has(FF::QUEST)) {
         if (!confirm_leave_level(creature_ptr, false))
             return;
 
@@ -131,9 +131,8 @@ void do_cmd_go_up(player_type *creature_ptr)
         creature_ptr->current_floor_ptr->dun_level = 0;
         up_num = 0;
     } else {
-        if (has_flag(f_ptr->flags, FF_SHAFT)) {
+        if (f_ptr->flags.has(FF::SHAFT)) {
             move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_SHAFT);
-            up_num = 2;
         } else {
             move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_UP);
             up_num = 1;
@@ -152,8 +151,7 @@ void do_cmd_go_up(player_type *creature_ptr)
         else
             msg_print(_("地上に戻った。", "You go back to the surface."));
         creature_ptr->word_recall = 0;
-    }
-    else {
+    } else {
         if (is_echizen(creature_ptr))
             msg_print(_("なんだこの階段は！", "What's this STAIRWAY!"));
         else
@@ -176,20 +174,20 @@ void do_cmd_go_down(player_type *creature_ptr)
 
     grid_type *g_ptr = &creature_ptr->current_floor_ptr->grid_array[creature_ptr->y][creature_ptr->x];
     feature_type *f_ptr = &f_info[g_ptr->feat];
-    if (!has_flag(f_ptr->flags, FF_MORE)) {
+    if (f_ptr->flags.has_not(FF::MORE)) {
         msg_print(_("ここには下り階段が見当たらない。", "I see no down staircase here."));
         return;
     }
 
-    if (has_flag(f_ptr->flags, FF_TRAP))
+    if (f_ptr->flags.has(FF::TRAP))
         fall_trap = true;
 
-    if (has_flag(f_ptr->flags, FF_QUEST_ENTER)) {
+    if (f_ptr->flags.has(FF::QUEST_ENTER)) {
         do_cmd_quest(creature_ptr);
         return;
     }
 
-    if (has_flag(f_ptr->flags, FF_QUEST)) {
+    if (f_ptr->flags.has(FF::QUEST)) {
         if (!confirm_leave_level(creature_ptr, true))
             return;
 
@@ -224,7 +222,7 @@ void do_cmd_go_down(player_type *creature_ptr)
 
     DUNGEON_IDX target_dungeon = 0;
     if (!is_in_dungeon(creature_ptr)) {
-        target_dungeon = has_flag(f_ptr->flags, FF_ENTRANCE) ? g_ptr->special : DUNGEON_ANGBAND;
+        target_dungeon = f_ptr->flags.has(FF::ENTRANCE) ? g_ptr->special : DUNGEON_ANGBAND;
         if (ironman_downward && (target_dungeon != DUNGEON_ANGBAND)) {
             msg_print(_("ダンジョンの入口は塞がれている！", "The entrance of this dungeon is closed!"));
             return;
@@ -247,7 +245,7 @@ void do_cmd_go_down(player_type *creature_ptr)
     if (autosave_l)
         do_cmd_save_game(creature_ptr, true);
 
-    if (has_flag(f_ptr->flags, FF_SHAFT))
+    if (f_ptr->flags.has(FF::SHAFT))
         down_num += 2;
     else
         down_num += 1;
@@ -282,7 +280,7 @@ void do_cmd_go_down(player_type *creature_ptr)
         return;
     }
 
-    if (has_flag(f_ptr->flags, FF_SHAFT))
+    if (f_ptr->flags.has(FF::SHAFT))
         move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_SHAFT);
     else
         move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN);
@@ -323,7 +321,7 @@ void do_cmd_walk(player_type *creature_ptr, bool pickup)
         more = true;
     }
 
-    if (creature_ptr->wild_mode && !cave_has_flag_bold(creature_ptr->current_floor_ptr, creature_ptr->y, creature_ptr->x, FF_TOWN)) {
+    if (creature_ptr->wild_mode && !cave_has_flag_bold(creature_ptr->current_floor_ptr, creature_ptr->y, creature_ptr->x, FF::TOWN)) {
         int tmp = 120 + creature_ptr->lev * 10 - wilderness[creature_ptr->y][creature_ptr->x].level + 5;
         if (tmp < 1)
             tmp = 1;
@@ -370,7 +368,7 @@ void do_cmd_run(player_type *creature_ptr)
  */
 void do_cmd_stay(player_type *creature_ptr, bool pickup)
 {
-    u32b mpe_mode = MPE_STAYING | MPE_ENERGY_USE;
+    uint32_t mpe_mode = MPE_STAYING | MPE_ENERGY_USE;
     if (command_arg) {
         command_rep = command_arg - 1;
         creature_ptr->redraw |= (PR_STATE);
@@ -392,7 +390,7 @@ void do_cmd_stay(player_type *creature_ptr, bool pickup)
 void do_cmd_rest(player_type *creature_ptr)
 {
     set_action(creature_ptr, ACTION_NONE);
-    if ((creature_ptr->pclass == CLASS_BARD) && ((get_singing_song_effect(creature_ptr) != 0)|| (get_interrupting_song_effect(creature_ptr) != 0)))
+    if ((creature_ptr->pclass == CLASS_BARD) && ((get_singing_song_effect(creature_ptr) != 0) || (get_interrupting_song_effect(creature_ptr) != 0)))
         stop_singing(creature_ptr);
 
     if (hex_spelling_any(creature_ptr))

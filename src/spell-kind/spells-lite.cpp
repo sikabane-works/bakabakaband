@@ -1,6 +1,4 @@
-﻿#include <vector>
-
-#include "dungeon/dungeon-flag-types.h"
+﻿#include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -22,6 +20,7 @@
 #include "spell-kind/spells-lite.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -30,6 +29,7 @@
 #include "util/point-2d.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <vector>
 
 using PassBoldFunc = bool (*)(floor_type *, POSITION, POSITION);
 
@@ -107,7 +107,7 @@ static void cave_temp_room_unlite(player_type *caster_ptr, const std::vector<Pos
         const POSITION x = point.x;
 
         grid_type *g_ptr = &caster_ptr->current_floor_ptr->grid_array[y][x];
-        bool do_dark = !is_mirror_grid(g_ptr);
+        bool do_dark = !g_ptr->is_mirror();
         g_ptr->info &= ~(CAVE_TEMP);
         if (!do_dark)
             continue;
@@ -120,7 +120,7 @@ static void cave_temp_room_unlite(player_type *caster_ptr, const std::vector<Pos
                 if (in_bounds2(caster_ptr->current_floor_ptr, by, bx)) {
                     grid_type *cc_ptr = &caster_ptr->current_floor_ptr->grid_array[by][bx];
 
-                    if (has_flag(f_info[get_feat_mimic(cc_ptr)].flags, FF_GLOW)) {
+                    if (f_info[cc_ptr->get_feat_mimic()].flags.has(FF::GLOW)) {
                         do_dark = false;
                         break;
                     }
@@ -132,7 +132,7 @@ static void cave_temp_room_unlite(player_type *caster_ptr, const std::vector<Pos
         }
 
         g_ptr->info &= ~(CAVE_GLOW);
-        if (!has_flag(f_info[get_feat_mimic(g_ptr)].flags, FF_REMEMBER)) {
+        if (f_info[g_ptr->get_feat_mimic()].flags.has_not(FF::REMEMBER)) {
             if (!view_torch_grids)
                 g_ptr->info &= ~(CAVE_MARK);
             note_spot(caster_ptr, y, x);
@@ -264,7 +264,7 @@ static void cave_temp_lite_room_aux(player_type *caster_ptr, std::vector<Pos2D> 
  * @param x 指定X座標
  * @return 射線を通すならばtrueを返す。
  */
-static bool cave_pass_dark_bold(floor_type *floor_ptr, POSITION y, POSITION x) { return cave_has_flag_bold(floor_ptr, y, x, FF_PROJECT); }
+static bool cave_pass_dark_bold(floor_type *floor_ptr, POSITION y, POSITION x) { return cave_has_flag_bold(floor_ptr, y, x, FF::PROJECT); }
 
 /*!
  * @brief (y,x) が暗くすべきマスなら points に加える
@@ -383,7 +383,7 @@ bool starlight(player_type *caster_ptr, bool magic)
 
         while (attempts--) {
             scatter(caster_ptr, &y, &x, caster_ptr->y, caster_ptr->x, 4, PROJECT_LOS);
-            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF_PROJECT))
+            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF::PROJECT))
                 continue;
             if (!player_bold(caster_ptr, y, x))
                 break;

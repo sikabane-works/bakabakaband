@@ -54,7 +54,7 @@ void rd_version_info(void)
  */
 void rd_randomizer(void)
 {
-    u16b tmp16u;
+    uint16_t tmp16u;
     rd_u16b(&tmp16u);
     rd_u16b(&Rand_place);
     for (int i = 0; i < RAND_DEG; i++)
@@ -67,7 +67,7 @@ void rd_randomizer(void)
 void rd_messages(void)
 {
     if (h_older_than(2, 2, 0, 75)) {
-        u16b num;
+        uint16_t num;
         rd_u16b(&num);
         int message_max;
         message_max = (int)num;
@@ -79,7 +79,7 @@ void rd_messages(void)
         }
     }
 
-    u32b num;
+    uint32_t num;
     rd_u32b(&num);
     int message_max = (int)num;
     for (int i = 0; i < message_max; i++) {

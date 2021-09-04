@@ -8,6 +8,6 @@ extern concptr screen_dump;
 #include "io/files-util.h"
 
 class player_type;
-errr report_score(player_type *creature_ptr, display_player_pf display_player);
+bool report_score(player_type *creature_ptr, display_player_pf display_player);
 concptr make_screen_dump(player_type *creature_ptr);
 #endif

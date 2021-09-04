@@ -32,6 +32,7 @@
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/angband-files.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
@@ -157,9 +158,9 @@ bool send_world_score(player_type *current_player_ptr, bool do_send, display_pla
     prt(_("送信中．．", "Sending..."), 0, 0);
     term_fresh();
     screen_save();
-    auto err = report_score(current_player_ptr, display_player);
+    auto successful_send = report_score(current_player_ptr, display_player);
     screen_load();
-    if (err) {
+    if (!successful_send) {
         return false;
     }
 
@@ -214,7 +215,7 @@ errr top_twenty(player_type *current_player_ptr)
     /* Save the player info */
     sprintf(the_score.uid, "%7u", current_player_ptr->player_uid);
     sprintf(the_score.sex, "%c", (current_player_ptr->psex ? 'm' : 'f'));
-    snprintf(buf, sizeof(buf), "%2d", MIN(current_player_ptr->prace, MAX_RACES));
+    snprintf(buf, sizeof(buf), "%2d", MIN(enum2i(current_player_ptr->prace), MAX_RACES));
     memcpy(the_score.p_r, buf, 3);
     snprintf(buf, sizeof(buf), "%2d", MIN(current_player_ptr->pclass, MAX_CLASS));
     memcpy(the_score.p_c, buf, 3);
@@ -222,9 +223,9 @@ errr top_twenty(player_type *current_player_ptr)
     memcpy(the_score.p_a, buf, 3);
 
     /* Save the level and such */
-    sprintf(the_score.cur_lev, "%3d", MIN((u16b)current_player_ptr->lev, 999));
+    sprintf(the_score.cur_lev, "%3d", MIN((uint16_t)current_player_ptr->lev, 999));
     sprintf(the_score.cur_dun, "%3d", (int)current_player_ptr->current_floor_ptr->dun_level);
-    sprintf(the_score.max_lev, "%3d", MIN((u16b)current_player_ptr->max_plv, 999));
+    sprintf(the_score.max_lev, "%3d", MIN((uint16_t)current_player_ptr->max_plv, 999));
     sprintf(the_score.max_dun, "%3d", (int)max_dlv[current_player_ptr->dungeon_idx]);
 
     /* Save the cause of death (31 chars) */
@@ -317,7 +318,7 @@ errr predict_score(player_type *current_player_ptr)
     /* Save the player info */
     sprintf(the_score.uid, "%7u", current_player_ptr->player_uid);
     sprintf(the_score.sex, "%c", (current_player_ptr->psex ? 'm' : 'f'));
-    snprintf(buf, sizeof(buf), "%2d", MIN(current_player_ptr->prace, MAX_RACES));
+    snprintf(buf, sizeof(buf), "%2d", MIN(enum2i(current_player_ptr->prace), MAX_RACES));
     memcpy(the_score.p_r, buf, 3);
     snprintf(buf, sizeof(buf), "%2d", MIN(current_player_ptr->pclass, MAX_CLASS));
     memcpy(the_score.p_c, buf, 3);
@@ -325,9 +326,9 @@ errr predict_score(player_type *current_player_ptr)
     memcpy(the_score.p_a, buf, 3);
 
     /* Save the level and such */
-    sprintf(the_score.cur_lev, "%3d", MIN((u16b)current_player_ptr->lev, 999));
+    sprintf(the_score.cur_lev, "%3d", MIN((uint16_t)current_player_ptr->lev, 999));
     sprintf(the_score.cur_dun, "%3d", (int)current_player_ptr->current_floor_ptr->dun_level);
-    sprintf(the_score.max_lev, "%3d", MIN((u16b)current_player_ptr->max_plv, 999));
+    sprintf(the_score.max_lev, "%3d", MIN((uint16_t)current_player_ptr->max_plv, 999));
     sprintf(the_score.max_dun, "%3d", (int)max_dlv[current_player_ptr->dungeon_idx]);
 
     /* Hack -- no cause of death */
@@ -398,9 +399,9 @@ void show_highclass(player_type *current_player_ptr)
     }
 
 #ifdef JP
-    sprintf(out_val, "あなた) %sの%s (レベル %2d)", race_info[current_player_ptr->prace].title, current_player_ptr->name, current_player_ptr->lev);
+    sprintf(out_val, "あなた) %sの%s (レベル %2d)", race_info[enum2i(current_player_ptr->prace)].title, current_player_ptr->name, current_player_ptr->lev);
 #else
-    sprintf(out_val, "You) %s the %s (Level %2d)", current_player_ptr->name, race_info[current_player_ptr->prace].title, current_player_ptr->lev);
+    sprintf(out_val, "You) %s the %s (Level %2d)", current_player_ptr->name, race_info[enum2i(current_player_ptr->prace)].title, current_player_ptr->lev);
 #endif
 
     prt(out_val, (m + 8), 0);
@@ -478,11 +479,11 @@ void race_score(player_type *current_player_ptr, int race_num)
     }
 
     /* add player if qualified */
-    if ((current_player_ptr->prace == race_num) && (current_player_ptr->lev >= lastlev)) {
+    if ((enum2i(current_player_ptr->prace) == race_num) && (current_player_ptr->lev >= lastlev)) {
 #ifdef JP
-        sprintf(out_val, "あなた) %sの%s (レベル %2d)", race_info[current_player_ptr->prace].title, current_player_ptr->name, current_player_ptr->lev);
+        sprintf(out_val, "あなた) %sの%s (レベル %2d)", race_info[enum2i(current_player_ptr->prace)].title, current_player_ptr->name, current_player_ptr->lev);
 #else
-        sprintf(out_val, "You) %s the %s (Level %3d)", current_player_ptr->name, race_info[current_player_ptr->prace].title, current_player_ptr->lev);
+        sprintf(out_val, "You) %s the %s (Level %3d)", current_player_ptr->name, race_info[enum2i(current_player_ptr->prace)].title, current_player_ptr->lev);
 #endif
 
         prt(out_val, (m + 8), 0);

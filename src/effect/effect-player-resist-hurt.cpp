@@ -84,7 +84,7 @@ void effect_player_nuke(player_type *target_ptr, effect_player_type *ep_ptr)
     }
 
     if (one_in_(6))
-        inventory_damage(target_ptr, set_acid_destroy, 2);
+        inventory_damage(target_ptr, BreakerAcid(), 2);
 }
 
 void effect_player_missile(player_type *target_ptr, effect_player_type *ep_ptr)
@@ -146,7 +146,7 @@ void effect_player_plasma(player_type *target_ptr, effect_player_type *ep_ptr)
     }
 
     if (!(has_resist_fire(target_ptr) || is_oppose_fire(target_ptr) || has_immune_fire(target_ptr)))
-        inventory_damage(target_ptr, set_acid_destroy, 3);
+        inventory_damage(target_ptr, BreakerAcid(), 3);
 }
 
 /*!
@@ -164,7 +164,7 @@ void effect_player_nether(player_type *target_ptr, effect_player_type *ep_ptr)
 
     bool evaded = check_multishadow(target_ptr);
 
-    if (is_specific_player_race(target_ptr, RACE_SPECTRE)) {
+    if (is_specific_player_race(target_ptr, player_race_type::SPECTRE)) {
         if (!evaded) {
             msg_print(_("気分がよくなった。", "You feel invigorated!"));
             hp_player(target_ptr, ep_ptr->dam / 4);
@@ -210,7 +210,7 @@ void effect_player_water(player_type *target_ptr, effect_player_type *ep_ptr)
         }
 
         if (one_in_(5) && !has_res_water) {
-            inventory_damage(target_ptr, set_cold_destroy, 3);
+            inventory_damage(target_ptr, BreakerCold(), 3);
         }
     }
 
@@ -244,8 +244,8 @@ void effect_player_chaos(player_type *target_ptr, effect_player_type *ep_ptr)
     }
 
     if (!has_resist_chaos(target_ptr) || one_in_(9)) {
-        inventory_damage(target_ptr, set_elec_destroy, 2);
-        inventory_damage(target_ptr, set_fire_destroy, 2);
+        inventory_damage(target_ptr, BreakerElec(), 2);
+        inventory_damage(target_ptr, BreakerFire(), 2);
     }
 
     ep_ptr->get_damage = take_hit(target_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
@@ -263,7 +263,7 @@ void effect_player_shards(player_type *target_ptr, effect_player_type *ep_ptr)
     }
 
     if (!has_resist_shard(target_ptr) || one_in_(13))
-        inventory_damage(target_ptr, set_cold_destroy, 2);
+        inventory_damage(target_ptr, BreakerCold(), 2);
 
     ep_ptr->get_damage = take_hit(target_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
 }
@@ -281,7 +281,7 @@ void effect_player_sound(player_type *target_ptr, effect_player_type *ep_ptr)
     }
 
     if (!has_resist_sound(target_ptr) || one_in_(13))
-        inventory_damage(target_ptr, set_cold_destroy, 2);
+        inventory_damage(target_ptr, BreakerCold(), 2);
 
     ep_ptr->get_damage = take_hit(target_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
 }
@@ -354,7 +354,7 @@ void effect_player_rocket(player_type *target_ptr, effect_player_type *ep_ptr)
     }
 
     if (!has_resist_shard(target_ptr) || one_in_(12)) {
-        inventory_damage(target_ptr, set_cold_destroy, 3);
+        inventory_damage(target_ptr, BreakerCold(), 3);
     }
 
     ep_ptr->get_damage = take_hit(target_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
@@ -471,7 +471,7 @@ static void effect_player_time_addition(player_type *target_ptr)
     case 3:
     case 4:
     case 5: {
-        if (target_ptr->prace == RACE_ANDROID)
+        if (target_ptr->prace == player_race_type::ANDROID)
             break;
 
         msg_print(_("人生が逆戻りした気がする。", "You feel like a chunk of the past has been ripped away."));
@@ -532,7 +532,7 @@ void effect_player_gravity(player_type *target_ptr, effect_player_type *ep_ptr)
     ep_ptr->dam = ep_ptr->dam * calc_gravity_damage_rate(target_ptr, CALC_RAND) / 100;
 
     if (!target_ptr->levitation || one_in_(13)) {
-        inventory_damage(target_ptr, set_cold_destroy, 2);
+        inventory_damage(target_ptr, BreakerCold(), 2);
     }
 
     ep_ptr->get_damage = take_hit(target_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
@@ -579,8 +579,8 @@ void effect_player_meteor(player_type *target_ptr, effect_player_type *ep_ptr)
     ep_ptr->get_damage = take_hit(target_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
     if (!has_resist_shard(target_ptr) || one_in_(13)) {
         if (!has_immune_fire(target_ptr))
-            inventory_damage(target_ptr, set_fire_destroy, 2);
-        inventory_damage(target_ptr, set_cold_destroy, 2);
+            inventory_damage(target_ptr, BreakerFire(), 2);
+        inventory_damage(target_ptr, BreakerCold(), 2);
     }
 }
 
@@ -603,7 +603,7 @@ void effect_player_icee(player_type *target_ptr, effect_player_type *ep_ptr)
 
     if ((!(has_resist_cold(target_ptr) || is_oppose_cold(target_ptr))) || one_in_(12)) {
         if (!has_immune_cold(target_ptr))
-            inventory_damage(target_ptr, set_cold_destroy, 3);
+            inventory_damage(target_ptr, BreakerCold(), 3);
     }
 }
 
@@ -639,7 +639,7 @@ void effect_player_void(player_type *target_ptr, effect_player_type *ep_ptr)
     ep_ptr->dam = ep_ptr->dam * calc_void_damage_rate(target_ptr, CALC_RAND) / 100;
 
     if (!target_ptr->levitation || one_in_(13)) {
-        inventory_damage(target_ptr, set_cold_destroy, 2);
+        inventory_damage(target_ptr, BreakerCold(), 2);
     }
 }
 

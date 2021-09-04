@@ -5,13 +5,13 @@
  */
 
 #include "spell-kind/spells-random.h"
+#include "avatar/avatar.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "hpmp/hp-mp-processor.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "mutation/mutation-investor-remover.h"
-#include "player-info/avatar.h"
 #include "player/player-damage.h"
 #include "spell-kind/earthquake.h"
 #include "spell-kind/spells-equipment.h"
@@ -219,11 +219,9 @@ bool activate_ty_curse(player_type *target_ptr, bool stop_ty, int *count)
             /* Fall through */
         default:
             for (int i = 0; i < A_MAX; i++) {
-                bool is_first_dec_stat = true;
-                while (is_first_dec_stat || one_in_(2)) {
-                    is_first_dec_stat = false;
+                do {
                     (void)do_dec_stat(target_ptr, i);
-                }
+                } while(one_in_(2));
             }
         }
     }

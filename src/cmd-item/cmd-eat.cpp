@@ -5,6 +5,7 @@
  */
 
 #include "cmd-item/cmd-eat.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
@@ -25,7 +26,6 @@
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-status/player-energy.h"
-#include "player-info/avatar.h"
 #include "player/attack-defense-types.h"
 #include "player/digestion-processor.h"
 #include "player/eldritch-horror.h"
@@ -108,7 +108,7 @@ static bool exe_eat_soul(player_type *creature_ptr, object_type *o_ptr)
     if (!(o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_SOUL))
         return false;
 
-    if (creature_ptr->prace == RACE_ANDROID)
+    if (creature_ptr->prace == player_race_type::ANDROID)
         return false;
 
     monster_race *r_ptr = &r_info[o_ptr->pval];
@@ -585,12 +585,13 @@ void exe_eat_food(player_type *creature_ptr, INVENTORY_IDX item)
     }
 
     if (o_ptr->tval == TV_FOOD) {
-        if (is_specific_player_race(creature_ptr, RACE_SKELETON)) {
+        if (is_specific_player_race(creature_ptr, player_race_type::SKELETON)) {
             if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
                 object_type forge;
                 object_type *q_ptr = &forge;
+
                 msg_print(_("食べ物がアゴを素通りして落ちた！", "The food falls through your jaws!"));
-                q_ptr->prep(creature_ptr, lookup_kind(o_ptr->tval, o_ptr->sval));
+                q_ptr->prep(lookup_kind(o_ptr->tval, o_ptr->sval));
 
                 /* Drop the object from heaven */
                 (void)drop_near(creature_ptr, q_ptr, -1, creature_ptr->y, creature_ptr->x);
@@ -656,13 +657,10 @@ void do_cmd_eat_food(player_type *creature_ptr)
         set_action(creature_ptr, ACTION_NONE);
     }
 
-    // TODO: オプションで切り替え可能   item_tester_hook = item_tester_hook_eatable;
-    item_tester_hook = NULL;
-
     q = _("どれを食べますか? ", "Eat which item? ");
     s = _("食べ物がない。", "You have nothing to eat.");
 
-    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TV_NONE))
+    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(item_tester_hook_eatable, creature_ptr)))
         return;
 
     exe_eat_food(creature_ptr, item);

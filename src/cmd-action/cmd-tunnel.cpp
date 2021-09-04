@@ -12,6 +12,7 @@
 #include "player/special-defense-types.h"
 #include "status/action-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "util/bit-flags-calculator.h"
@@ -53,10 +54,10 @@ void do_cmd_tunnel(player_type *creature_ptr)
     POSITION x = creature_ptr->x + ddx[dir];
     grid_type *g_ptr;
     g_ptr = &creature_ptr->current_floor_ptr->grid_array[y][x];
-    FEAT_IDX feat = get_feat_mimic(g_ptr);
-    if (has_flag(f_info[feat].flags, FF_DOOR))
+    FEAT_IDX feat = g_ptr->get_feat_mimic();
+    if (f_info[feat].flags.has(FF::DOOR))
         msg_print(_("ドアは掘れない。", "You cannot tunnel through doors."));
-    else if (!has_flag(f_info[feat].flags, FF_TUNNEL))
+    else if (f_info[feat].flags.has_not(FF::TUNNEL))
         msg_print(_("そこは掘れない。", "You can't tunnel through that."));
     else if (g_ptr->m_idx) {
         PlayerEnergy(creature_ptr).set_player_turn_energy(100);

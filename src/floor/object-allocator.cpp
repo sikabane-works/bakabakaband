@@ -2,9 +2,9 @@
 #include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
+#include "floor/dungeon-tunnel-util.h"
 #include "floor/floor-allocation-types.h"
 #include "floor/floor-generator-util.h"
-#include "floor/dungeon-tunnel-util.h"
 #include "game-option/birth-options.h"
 #include "game-option/cheat-types.h"
 #include "grid/feature.h"
@@ -14,6 +14,7 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -30,16 +31,16 @@
 static int next_to_walls(floor_type *floor_ptr, POSITION y, POSITION x)
 {
     int k = 0;
-    if (in_bounds(floor_ptr, y + 1, x) && is_extra_bold(floor_ptr, y + 1, x))
+    if (in_bounds(floor_ptr, y + 1, x) && floor_ptr->grid_array[y + 1][x].is_extra())
         k++;
 
-    if (in_bounds(floor_ptr, y - 1, x) && is_extra_bold(floor_ptr, y - 1, x))
+    if (in_bounds(floor_ptr, y - 1, x) && floor_ptr->grid_array[y - 1][x].is_extra())
         k++;
 
-    if (in_bounds(floor_ptr, y, x + 1) && is_extra_bold(floor_ptr, y, x + 1))
+    if (in_bounds(floor_ptr, y, x + 1) && floor_ptr->grid_array[y][x + 1].is_extra())
         k++;
 
-    if (in_bounds(floor_ptr, y, x - 1) && is_extra_bold(floor_ptr, y, x - 1))
+    if (in_bounds(floor_ptr, y, x - 1) && floor_ptr->grid_array[y][x - 1].is_extra())
         k++;
 
     return k;
@@ -57,7 +58,7 @@ static bool alloc_stairs_aux(player_type *player_ptr, POSITION y, POSITION x, in
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     grid_type *g_ptr = &floor_ptr->grid_array[y][x];
-    if (!is_floor_grid(g_ptr) || pattern_tile(floor_ptr, y, x) || !g_ptr->o_idx_list.empty() || (g_ptr->m_idx != 0) || next_to_walls(floor_ptr, y, x) < walls)
+    if (!g_ptr->is_floor() || pattern_tile(floor_ptr, y, x) || !g_ptr->o_idx_list.empty() || (g_ptr->m_idx != 0) || next_to_walls(floor_ptr, y, x) < walls)
         return false;
 
     return true;
@@ -76,13 +77,13 @@ bool alloc_stairs(player_type *owner_ptr, FEAT_IDX feat, int num, int walls)
     int shaft_num = 0;
     feature_type *f_ptr = &f_info[feat];
     floor_type *floor_ptr = owner_ptr->current_floor_ptr;
-    if (has_flag(f_ptr->flags, FF_LESS)) {
+    if (f_ptr->flags.has(FF::LESS)) {
         if (ironman_downward || !floor_ptr->dun_level)
             return true;
 
         if (floor_ptr->dun_level > d_info[floor_ptr->dungeon_idx].mindepth)
             shaft_num = (randint1(num + 1)) / 2;
-    } else if (has_flag(f_ptr->flags, FF_MORE)) {
+    } else if (f_ptr->flags.has(FF::MORE)) {
         QUEST_IDX q_idx = quest_number(owner_ptr, floor_ptr->dun_level);
         if (floor_ptr->dun_level > 1 && q_idx) {
             monster_race *r_ptr = &r_info[quest[q_idx].r_idx];
@@ -134,13 +135,23 @@ bool alloc_stairs(player_type *owner_ptr, FEAT_IDX feat, int num, int walls)
 
             g_ptr = &floor_ptr->grid_array[y][x];
             g_ptr->mimic = 0;
-            g_ptr->feat = (i < shaft_num) ? feat_state(owner_ptr->current_floor_ptr, feat, FF_SHAFT) : feat;
+            g_ptr->feat = (i < shaft_num) ? feat_state(owner_ptr->current_floor_ptr, feat, FF::SHAFT) : feat;
             g_ptr->info &= ~(CAVE_FLOOR);
             break;
         }
     }
 
     return true;
+}
+
+/*!
+ * @brief 指定座標に瓦礫を配置する
+ * @param Y 指定Y座標
+ * @param X 指定X座標
+ */
+static void place_rubble(floor_type *floor_ptr, POSITION y, POSITION x)
+{
+    set_cave_feat(floor_ptr, y, x, feat_rubble);
 }
 
 /*!
@@ -164,14 +175,14 @@ void alloc_object(player_type *owner_ptr, dap_type set, EFFECT_ID typ, int num)
             y = randint0(floor_ptr->height);
             x = randint0(floor_ptr->width);
             g_ptr = &floor_ptr->grid_array[y][x];
-            if (!is_floor_grid(g_ptr) || !g_ptr->o_idx_list.empty() || g_ptr->m_idx)
+            if (!g_ptr->is_floor() || !g_ptr->o_idx_list.empty() || g_ptr->m_idx)
                 continue;
 
             if (player_bold(owner_ptr, y, x))
                 continue;
 
-            bool room = (floor_ptr->grid_array[y][x].info & CAVE_ROOM) ? true : false;
-            if (((set == ALLOC_SET_CORR) && room) || ((set == ALLOC_SET_ROOM) && !room))
+            auto is_room = floor_ptr->grid_array[y][x].is_room();
+            if (((set == ALLOC_SET_CORR) && is_room) || ((set == ALLOC_SET_ROOM) && !is_room))
                 continue;
 
             break;

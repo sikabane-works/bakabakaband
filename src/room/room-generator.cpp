@@ -3,7 +3,6 @@
 #include "dungeon/dungeon.h"
 #include "game-option/birth-options.h"
 #include "game-option/cheat-types.h"
-#include "grid/grid.h"
 #include "room/door-definition.h"
 #include "room/room-info-table.h"
 #include "room/room-types.h"
@@ -16,6 +15,7 @@
 #include "room/rooms-vault.h"
 #include "system/dungeon-data-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/probability-table.h"
 #include "wizard/wizard-messages.h"
@@ -94,7 +94,7 @@ bool generate_rooms(player_type *player_ptr, dun_data_type *dd_ptr)
     int rooms_built = 0;
     int area_size = 100 * (floor_ptr->height * floor_ptr->width) / (MAX_HGT * MAX_WID);
     int level_index = MIN(10, div_round(floor_ptr->dun_level, 10));
-    s16b room_num[ROOM_T_MAX];
+    int16_t room_num[ROOM_T_MAX];
     int dun_rooms = DUN_ROOMS_MAX * area_size * damroll(10, 20) / 12000;
     if (one_in_(5))
         dun_rooms /= randint1(4);

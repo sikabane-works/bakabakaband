@@ -2,6 +2,7 @@
 #include "action/weapon-shield.h"
 #include "artifact/fixed-art-types.h"
 #include "autopick/autopick.h"
+#include "avatar/avatar.h"
 #include "core/asking-player.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
@@ -30,7 +31,6 @@
 #include "object/object-info.h"
 #include "object/object-mark-types.h"
 #include "perception/object-perception.h"
-#include "player-info/avatar.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
 #include "player-status/player-hand-types.h"
@@ -59,7 +59,7 @@ void do_cmd_equip(player_type *creature_ptr)
         command_wrk = USE_EQUIP;
 
     screen_save();
-    (void)show_equipment(creature_ptr, 0, USE_FULL, TV_NONE);
+    (void)show_equipment(creature_ptr, 0, USE_FULL, AllMatchItemTester());
     WEIGHT weight = calc_inventory_weight(creature_ptr);
     WEIGHT weight_lim = calc_weight_limit(creature_ptr);
 #ifdef JP
@@ -100,10 +100,9 @@ void do_cmd_wield(player_type *creature_ptr)
     if (creature_ptr->special_defense & KATA_MUSOU)
         set_action(creature_ptr, ACTION_NONE);
 
-    item_tester_hook = item_tester_hook_wear;
     concptr q = _("どれを装備しますか? ", "Wear/Wield which item? ");
     concptr s = _("装備可能なアイテムがない。", "You have nothing you can wear or wield.");
-    o_ptr = choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TV_NONE);
+    o_ptr = choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(item_tester_hook_wear, creature_ptr));
     if (!o_ptr)
         return;
 
@@ -114,10 +113,9 @@ void do_cmd_wield(player_type *creature_ptr)
     case TV_SHIELD:
     case TV_CARD:
         if (has_melee_weapon(creature_ptr, INVEN_MAIN_HAND) && has_melee_weapon(creature_ptr, INVEN_SUB_HAND)) {
-            item_tester_hook = item_tester_hook_melee_weapon;
             q = _("どちらの武器と取り替えますか?", "Replace which weapon? ");
             s = _("おっと。", "Oops.");
-            if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP | IGNORE_BOTHHAND_SLOT), TV_NONE))
+            if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP | IGNORE_BOTHHAND_SLOT), FuncItemTester(object_is_melee_weapon)))
                 return;
 
             if (slot == INVEN_MAIN_HAND)
@@ -126,10 +124,9 @@ void do_cmd_wield(player_type *creature_ptr)
             slot = INVEN_MAIN_HAND;
         else if (creature_ptr->inventory_list[INVEN_MAIN_HAND].k_idx && !object_is_melee_weapon(&creature_ptr->inventory_list[INVEN_MAIN_HAND])
             && creature_ptr->inventory_list[INVEN_SUB_HAND].k_idx && !object_is_melee_weapon(&creature_ptr->inventory_list[INVEN_SUB_HAND])) {
-            item_tester_hook = item_tester_hook_mochikae;
             q = _("どちらの手に装備しますか?", "Equip which hand? ");
             s = _("おっと。", "Oops.");
-            if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP), TV_NONE))
+            if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP), FuncItemTester(object_is_mochikae)))
                 return;
         }
 
@@ -145,10 +142,9 @@ void do_cmd_wield(player_type *creature_ptr)
             if (!get_check(_("二刀流で戦いますか？", "Dual wielding? ")))
                 slot = INVEN_SUB_HAND;
         } else if (creature_ptr->inventory_list[INVEN_SUB_HAND].k_idx && creature_ptr->inventory_list[INVEN_MAIN_HAND].k_idx) {
-            item_tester_hook = item_tester_hook_mochikae;
             q = _("どちらの手に装備しますか?", "Equip which hand? ");
             s = _("おっと。", "Oops.");
-            if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP), TV_NONE))
+            if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP), FuncItemTester(object_is_mochikae)))
                 return;
 
             if ((slot == INVEN_SUB_HAND) && !has_melee_weapon(creature_ptr, INVEN_MAIN_HAND))
@@ -164,7 +160,7 @@ void do_cmd_wield(player_type *creature_ptr)
 
         s = _("おっと。", "Oops.");
         creature_ptr->select_ring_slot = true;
-        if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP | IGNORE_BOTHHAND_SLOT), TV_NONE)) {
+        if (!choose_object(creature_ptr, &slot, q, s, (USE_EQUIP | IGNORE_BOTHHAND_SLOT))) {
             creature_ptr->select_ring_slot = false;
             return;
         }
@@ -197,7 +193,7 @@ void do_cmd_wield(player_type *creature_ptr)
             return;
     }
 
-    if ((o_ptr->name1 == ART_STONEMASK) && object_is_known(o_ptr) && (creature_ptr->prace != RACE_VAMPIRE) && (creature_ptr->prace != RACE_ANDROID)) {
+    if ((o_ptr->name1 == ART_STONEMASK) && object_is_known(o_ptr) && (creature_ptr->prace != player_race_type::VAMPIRE) && (creature_ptr->prace != player_race_type::ANDROID)) {
         char dummy[MAX_NLEN + 100];
         describe_flavor(creature_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         sprintf(dummy,
@@ -288,8 +284,8 @@ void do_cmd_wield(player_type *creature_ptr)
         o_ptr->ident |= (IDENT_SENSE);
     }
 
-    if ((o_ptr->name1 == ART_STONEMASK) && (creature_ptr->prace != RACE_VAMPIRE) && (creature_ptr->prace != RACE_ANDROID))
-        change_race(creature_ptr, RACE_VAMPIRE, "");
+    if ((o_ptr->name1 == ART_STONEMASK) && (creature_ptr->prace != player_race_type::VAMPIRE) && (creature_ptr->prace != player_race_type::ANDROID))
+        change_race(creature_ptr, player_race_type::VAMPIRE, "");
 
     calc_android_exp(creature_ptr);
     creature_ptr->update |= PU_BONUS | PU_TORCH | PU_MANA;
@@ -309,13 +305,12 @@ void do_cmd_takeoff(player_type *creature_ptr)
 
     concptr q = _("どれを装備からはずしますか? ", "Take off which item? ");
     concptr s = _("はずせる装備がない。", "You are not wearing anything to take off.");
-    o_ptr = choose_object(creature_ptr, &item, q, s, (USE_EQUIP | IGNORE_BOTHHAND_SLOT), TV_NONE);
+    o_ptr = choose_object(creature_ptr, &item, q, s, (USE_EQUIP | IGNORE_BOTHHAND_SLOT));
     if (!o_ptr)
         return;
 
     PlayerEnergy energy(creature_ptr);
-    if (object_is_cursed(o_ptr))
-    {
+    if (object_is_cursed(o_ptr)) {
         if (o_ptr->curse_flags.has(TRC::PERMA_CURSE) || (creature_ptr->pclass != CLASS_BERSERKER)) {
             msg_print(_("ふーむ、どうやら呪われているようだ。", "Hmmm, it seems to be cursed."));
             return;
