@@ -28959,14 +28959,14 @@ N:1525:鉄葉のチャンピオン
 E:Steel leaf champion
 G:h:g
 I:115:50d20:10:50:12
-W:24:2:0:250:0:0
+W:24:2:0:300:0:0
 B:CRUSH:HURT:3d8
 B:CRUSH:HURT:3d8
 B:CRUSH:HURT:3d8
 B:CRUSH:SUPERHURT:3d8
 F:PREVENT_SUDDEN_MAGIC
 F:ELF | BASH_DOOR | IM_COLD | IM_ELEC
-F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_SHAR
+F:NO_FEAR | NO_CONF | NO_SLEEP | RES_SHAR
 D:カヴーに騎乗した精鋭なるラノワールのエルフの戦士だ。
 
 N:1526:メメクラゲ
@@ -29183,6 +29183,21 @@ F:OPEN_DOOR | BASH_DOOR
 S:1_IN_12 | 
 S:MISSILE
 D:邪神の意図せぬ力によって、己が超越者になったと思い込んでいる魔術の初心者だ。
+
+N:1536:ラノワールの使者『ロフェロス』
+E:Rofellos, Llanowar Emissary
+G:h:G
+I:115:30d20:10:90:12
+W:28:3:0:650:0:0
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+R:1523:3d8
+R:1525:3d5
+F:PREVENT_SUDDEN_MAGIC
+F:ELF | BASH_DOOR | IM_FIRE | IM_COLD | IM_ELEC | FORCE_MAXHP
+F:NO_FEAR | NO_CONF | NO_SLEEP | DROP_GOOD | DROP_3D2
+S:1_IN_2 | S_KIN
+D:彼は常に無数の同胞を率いて呼び出すことができる。気をつけろ！
 
 
 # N: serial number : monster name
