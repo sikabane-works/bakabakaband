@@ -349,7 +349,7 @@ int16_t store_item_to_inventory(player_type *owner_ptr, object_type *o_ptr)
 /*!
  * @brief アイテムが拾えるものかどうか返す。 
  */
-bool check_get_item(player_type *player_ptr, object_type *o_ptr) {
+bool check_get_item(object_type *o_ptr) {
     BIT_FLAGS flgs[TR_FLAG_SIZE];
     object_flags(o_ptr, flgs);
     return !has_flag(flgs, TR_NEVER_MOVE);

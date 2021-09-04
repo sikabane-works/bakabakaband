@@ -81,25 +81,6 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 }
 
-static void decide_chance_fail(player_type *user_ptr, ae_type *ae_ptr)
-{
-    ae_ptr->chance = user_ptr->skill_dev;
-    if (user_ptr->confused)
-        ae_ptr->chance = ae_ptr->chance / 2;
-
-    ae_ptr->fail = ae_ptr->lev + 5;
-    if (ae_ptr->chance > ae_ptr->fail)
-        ae_ptr->fail -= (ae_ptr->chance - ae_ptr->fail) * 2;
-    else
-        ae_ptr->chance -= (ae_ptr->fail - ae_ptr->chance) * 2;
-
-    if (ae_ptr->fail < USE_DEVICE)
-        ae_ptr->fail = USE_DEVICE;
-
-    if (ae_ptr->chance < USE_DEVICE)
-        ae_ptr->chance = USE_DEVICE;
-}
-
 static void decide_activation_success(player_type *user_ptr, ae_type *ae_ptr)
 {
     if (user_ptr->pclass == CLASS_BERSERKER) {

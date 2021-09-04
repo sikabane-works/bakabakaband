@@ -99,7 +99,7 @@ void fetch_item(player_type *caster_ptr, DIRECTION dir, WEIGHT wgt, bool require
         return;
     }
 
-    if (!check_get_item(caster_ptr, o_ptr)) {
+    if (!check_get_item(o_ptr)) {
         msg_print(_("それを動かすことはできない。", "You can't move it."));
         return;
     }

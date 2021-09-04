@@ -113,7 +113,7 @@ void autopick_pickup_items(player_type *player_ptr, grid_type *g_ptr)
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, 0);
 
-        if (!check_get_item(player_ptr, o_ptr)) {
+        if (!check_get_item(o_ptr)) {
             msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), o_name);
             o_ptr->marked |= OM_NOMSG;
             continue;            
