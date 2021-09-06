@@ -47,6 +47,8 @@ enum patron_reward {
     REW_SER_MONS = 36, /*!< カオスパトロンからの報酬: モンスターの下僕下賜 */
 };
 
+class player_type;
+
 /*!
  * @brief パトロン情報の定義
  */
@@ -63,10 +65,8 @@ public:
 #endif
     std::vector<patron_reward> reward_table = {}; //!< 報酬テーブル
     player_ability_type boost_stat = player_ability_type::A_STR; //!< 強化能力値傾向
+    void GainLevelReward(player_type *creature_ptr, int chosen_reward);
+    void AdmireFromPatron(player_type *creature_ptr);
 };
 
 extern std::vector<Patron> patron_list;
-
-class player_type;
-void gain_level_reward(player_type *creature_ptr, int chosen_reward);
-void admire_from_patron(player_type *creature_ptr);

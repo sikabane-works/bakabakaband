@@ -182,7 +182,7 @@ bool exe_cmd_debug(player_type *creature_ptr, char cmd)
         map_area(creature_ptr, DETECT_RAD_ALL * 3);
         break;
     case 'r':
-        gain_level_reward(creature_ptr, command_arg);
+        patron_list[creature_ptr->chaos_patron].GainLevelReward(creature_ptr, 0);
         break;
     case 'N':
         wiz_summon_pet(creature_ptr, command_arg);

@@ -2805,7 +2805,7 @@ void check_experience(player_type *creature_ptr)
          * 呼ばれるので順番を最後にする。
          */
         if (level_reward) {
-            gain_level_reward(creature_ptr, 0);
+            patron_list[creature_ptr->chaos_patron].GainLevelReward(creature_ptr, 0);
             level_reward = false;
         }
 
