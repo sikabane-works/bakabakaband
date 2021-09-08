@@ -3,13 +3,13 @@
 #include "floor/floor-generator-util.h"
 #include "floor/geometry.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "monster-floor/monster-generator.h"
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster/monster-info.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -51,7 +51,7 @@ bool place_quest_monsters(player_type *creature_ptr)
                     x = randint0(floor_ptr->width);
                     g_ptr = &floor_ptr->grid_array[y][x];
                     f_ptr = &f_info[g_ptr->feat];
-                    if (!has_flag(f_ptr->flags, FF_MOVE) && !has_flag(f_ptr->flags, FF_CAN_FLY))
+                    if (f_ptr->flags.has_none_of({FF::MOVE, FF::CAN_FLY}))
                         continue;
 
                     if (!monster_can_enter(creature_ptr, y, x, r_ptr, 0))
@@ -60,7 +60,7 @@ bool place_quest_monsters(player_type *creature_ptr)
                     if (distance(y, x, creature_ptr->y, creature_ptr->x) < 10)
                         continue;
 
-                    if (g_ptr->info & CAVE_ICKY)
+                    if (g_ptr->is_icky())
                         continue;
                     else
                         break;

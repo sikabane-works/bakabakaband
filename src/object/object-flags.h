@@ -5,5 +5,5 @@
 
 typedef struct object_type object_type;
 class player_type;
-void object_flags(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS flgs[TR_FLAG_SIZE]);
-void object_flags_known(player_type *player_ptr, object_type *o_ptr, BIT_FLAGS flgs[TR_FLAG_SIZE]);
+void object_flags(const object_type *o_ptr, TrFlags &flgs);
+void object_flags_known(const object_type *o_ptr, TrFlags &flgs);

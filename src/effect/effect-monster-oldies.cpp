@@ -1,7 +1,7 @@
 ﻿#include "effect/effect-monster-oldies.h"
+#include "avatar/avatar.h"
 #include "core/player-redraw-types.h"
 #include "effect/effect-monster-util.h"
-#include "grid/grid.h"
 #include "monster-floor/monster-generator.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
@@ -11,8 +11,8 @@
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
-#include "player-info/avatar.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -49,7 +49,7 @@ process_result effect_monster_old_clone(player_type *caster_ptr, effect_monster_
     }
 
     em_ptr->m_ptr->hp = em_ptr->m_ptr->maxhp;
-    if (multiply_monster(caster_ptr, em_ptr->g_ptr->m_idx, true, 0L))
+    if (multiply_monster(caster_ptr, em_ptr->g_ptr->m_idx, em_ptr->m_ptr->r_idx, true, 0L))
         em_ptr->note = _("が分裂した！", " spawns!");
 
     em_ptr->dam = 0;

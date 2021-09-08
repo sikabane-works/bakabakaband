@@ -32,8 +32,8 @@
 static char kanji_colon[] = "：";
 #endif
 
-/*
- * A function to create new entry
+/*!
+ * @brief A function to create new entry
  */
 bool autopick_new_entry(autopick_type *entry, concptr str, bool allow_default)
 {
@@ -284,8 +284,8 @@ bool autopick_new_entry(autopick_type *entry, concptr str, bool allow_default)
     return true;
 }
 
-/*
- * Get auto-picker entry from o_ptr.
+/*!
+ * @brief Get auto-picker entry from o_ptr.
  */
 void autopick_entry_from_object(player_type *player_ptr, autopick_type *entry, object_type *o_ptr)
 {
@@ -341,7 +341,7 @@ void autopick_entry_from_object(player_type *player_ptr, autopick_type *entry, o
         }
     } else {
         if (object_is_ego(o_ptr)) {
-            if (object_is_weapon_armour_ammo(player_ptr, o_ptr)) {
+            if (object_is_weapon_armour_ammo(o_ptr)) {
                 /*
                  * Base name of ego weapons and armors
                  * are almost meaningless.
@@ -469,8 +469,8 @@ void autopick_entry_from_object(player_type *player_ptr, autopick_type *entry, o
     entry->name = string_make(name_str);
 }
 
-/*
- * Reconstruct preference line from entry
+/*!
+ * @brief Reconstruct preference line from entry
  */
 concptr autopick_line_from_entry(autopick_type *entry)
 {
@@ -631,8 +631,8 @@ concptr autopick_line_from_entry(autopick_type *entry)
     return string_make(buf);
 }
 
-/*
- * Reconstruct preference line from entry and kill entry
+/*!
+ * @brief Reconstruct preference line from entry and kill entry
  */
 concptr autopick_line_from_entry_kill(autopick_type *entry)
 {
@@ -641,15 +641,15 @@ concptr autopick_line_from_entry_kill(autopick_type *entry)
     return ptr;
 }
 
-/*
- * Choose an item and get auto-picker entry from it.
+/*!
+ * @brief Choose an item and get auto-picker entry from it.
  */
 bool entry_from_choosed_object(player_type *player_ptr, autopick_type *entry)
 {
     concptr q = _("どのアイテムを登録しますか? ", "Enter which item? ");
     concptr s = _("アイテムを持っていない。", "You have nothing to enter.");
     object_type *o_ptr;
-    o_ptr = choose_object(player_ptr, NULL, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP, TV_NONE);
+    o_ptr = choose_object(player_ptr, NULL, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP);
     if (!o_ptr)
         return false;
 

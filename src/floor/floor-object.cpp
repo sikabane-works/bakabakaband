@@ -34,6 +34,7 @@
 #include "system/alloc-entries.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -41,6 +42,7 @@
 #include "target/projection-path-calculator.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "window/display-sub-windows.h"
 #include "wizard/wizard-messages.h"
 #include "world/world-object.h"
 #include "world/world.h"
@@ -121,7 +123,7 @@ bool make_object(player_type *owner_ptr, object_type *j_ptr, BIT_FLAGS mode)
         if (!k_idx)
             return false;
 
-        j_ptr->prep(owner_ptr, k_idx);
+        j_ptr->prep(k_idx);
     }
 
     apply_magic_to_object(owner_ptr, j_ptr, floor_ptr->object_level, mode);
@@ -166,11 +168,14 @@ bool make_gold(player_type *player_ptr, object_type *j_ptr)
         i = coin_type;
     if (i >= MAX_GOLD)
         i = MAX_GOLD - 1;
-    j_ptr->prep(player_ptr, OBJ_GOLD_LIST + i);
+    j_ptr->prep(OBJ_GOLD_LIST + i);
 
-    s32b base = k_info[OBJ_GOLD_LIST + i].cost;
-    j_ptr->pval = (base + (8L * randint1(base)) + randint1(8));
-
+    int boost = floor_ptr->object_level > 20 ? ((floor_ptr->object_level - 10) * (floor_ptr->object_level - 10) / 100) : 1;
+    int32_t base = k_info[OBJ_GOLD_LIST + i].cost;
+    int price = (base + (8L * randint1(base)) + randint1(8)) * boost;
+    if (price > 30000)
+        price = 30000;
+    j_ptr->pval = price;
     return true;
 }
 
@@ -587,14 +592,16 @@ void floor_item_describe(player_type *owner_ptr, INVENTORY_IDX item)
 /*
  * Choose an item and get auto-picker entry from it.
  */
-object_type *choose_object(player_type *owner_ptr, OBJECT_IDX *idx, concptr q, concptr s, BIT_FLAGS option, tval_type tval)
+object_type *choose_object(player_type *owner_ptr, OBJECT_IDX *idx, concptr q, concptr s, BIT_FLAGS option, const ItemTester& item_tester)
 {
     OBJECT_IDX item;
 
     if (idx)
         *idx = INVEN_NONE;
 
-    if (!get_item(owner_ptr, &item, q, s, option, tval))
+    FixItemTesterSetter setter(item_tester);
+
+    if (!get_item(owner_ptr, &item, q, s, option, item_tester))
         return NULL;
 
     if (idx)

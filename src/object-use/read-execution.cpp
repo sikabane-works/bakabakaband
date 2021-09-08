@@ -8,6 +8,7 @@
 #include "object-use/read-execution.h"
 #include "action/action-limited.h"
 #include "artifact/fixed-art-types.h"
+#include "avatar/avatar.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
 #include "core/show-file.h"
@@ -24,7 +25,6 @@
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player-info/avatar.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
@@ -207,14 +207,14 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             break;
         }
         case SV_SCROLL_IDENTIFY: {
-            if (!ident_spell(creature_ptr, false, TV_NONE))
+            if (!ident_spell(creature_ptr, false))
                 used_up = false;
 
             ident = true;
             break;
         }
         case SV_SCROLL_STAR_IDENTIFY: {
-            if (!identify_fully(creature_ptr, false, TV_NONE))
+            if (!identify_fully(creature_ptr, false))
                 used_up = false;
 
             ident = true;

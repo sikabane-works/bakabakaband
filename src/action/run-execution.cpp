@@ -19,6 +19,7 @@
 #include "player/player-status-flags.h"
 #include "player/player-status.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -64,19 +65,19 @@ static bool see_wall(player_type *creature_ptr, DIRECTION dir, POSITION y, POSIT
 
     grid_type *g_ptr;
     g_ptr = &floor_ptr->grid_array[y][x];
-    if (!(g_ptr->info & CAVE_MARK))
+    if (!g_ptr->is_mark())
         return false;
 
-    s16b feat = get_feat_mimic(g_ptr);
+    int16_t feat = g_ptr->get_feat_mimic();
     feature_type *f_ptr = &f_info[feat];
     if (!player_can_enter(creature_ptr, feat, 0))
-        return !has_flag(f_ptr->flags, FF_DOOR);
+        return f_ptr->flags.has_not(FF::DOOR);
 
-    if (has_flag(f_ptr->flags, FF_AVOID_RUN) && !ignore_avoid_run)
+    if (f_ptr->flags.has(FF::AVOID_RUN) && !ignore_avoid_run)
         return true;
 
-    if (!has_flag(f_ptr->flags, FF_MOVE) && !has_flag(f_ptr->flags, FF_CAN_FLY))
-        return !has_flag(f_ptr->flags, FF_DOOR);
+    if (f_ptr->flags.has_none_of({FF::MOVE, FF::CAN_FLY}))
+        return f_ptr->flags.has_not(FF::DOOR);
 
     return false;
 }
@@ -112,7 +113,7 @@ static void run_init(player_type *creature_ptr, DIRECTION dir)
     creature_ptr->run_px = creature_ptr->x;
     int row = creature_ptr->y + ddy[dir];
     int col = creature_ptr->x + ddx[dir];
-    ignore_avoid_run = cave_has_flag_bold(creature_ptr->current_floor_ptr, row, col, FF_AVOID_RUN);
+    ignore_avoid_run = cave_has_flag_bold(creature_ptr->current_floor_ptr, row, col, FF::AVOID_RUN);
     int i = chome[dir];
     if (see_wall(creature_ptr, cycle[i + 1], creature_ptr->y, creature_ptr->x)) {
         find_breakleft = true;
@@ -172,7 +173,7 @@ static bool see_nothing(player_type *creature_ptr, DIRECTION dir, POSITION y, PO
     if (!in_bounds2(floor_ptr, y, x))
         return true;
 
-    if (floor_ptr->grid_array[y][x].info & (CAVE_MARK))
+    if (floor_ptr->grid_array[y][x].is_mark())
         return false;
 
     if (player_can_see_bold(creature_ptr, y, x))
@@ -216,7 +217,7 @@ static bool run_test(player_type *creature_ptr)
         int col = creature_ptr->x + ddx[new_dir];
         grid_type *g_ptr;
         g_ptr = &floor_ptr->grid_array[row][col];
-        FEAT_IDX feat = get_feat_mimic(g_ptr);
+        FEAT_IDX feat = g_ptr->get_feat_mimic();
         feature_type *f_ptr;
         f_ptr = &f_info[feat];
         if (g_ptr->m_idx) {
@@ -233,16 +234,16 @@ static bool run_test(player_type *creature_ptr)
         }
 
         bool inv = true;
-        if (g_ptr->info & (CAVE_MARK)) {
-            bool notice = has_flag(f_ptr->flags, FF_NOTICE);
-            if (notice && has_flag(f_ptr->flags, FF_MOVE)) {
-                if (find_ignore_doors && has_flag(f_ptr->flags, FF_DOOR) && has_flag(f_ptr->flags, FF_CLOSE)) {
+        if (g_ptr->is_mark()) {
+            bool notice = f_ptr->flags.has(FF::NOTICE);
+            if (notice && f_ptr->flags.has(FF::MOVE)) {
+                if (find_ignore_doors && f_ptr->flags.has_all_of({FF::DOOR, FF::CLOSE})) {
                     notice = false;
-                } else if (find_ignore_stairs && has_flag(f_ptr->flags, FF_STAIRS)) {
+                } else if (find_ignore_stairs && f_ptr->flags.has(FF::STAIRS)) {
                     notice = false;
-                } else if (has_flag(f_ptr->flags, FF_LAVA) && (has_immune_fire(creature_ptr) || is_invuln(creature_ptr))) {
+                } else if (f_ptr->flags.has(FF::LAVA) && (has_immune_fire(creature_ptr) || is_invuln(creature_ptr))) {
                     notice = false;
-                } else if (has_flag(f_ptr->flags, FF_WATER) && has_flag(f_ptr->flags, FF_DEEP)
+                } else if (f_ptr->flags.has_all_of({FF::WATER, FF::DEEP})
                     && (creature_ptr->levitation || creature_ptr->can_swim || (calc_inventory_weight(creature_ptr) <= calc_weight_limit(creature_ptr)))) {
                     notice = false;
                 }

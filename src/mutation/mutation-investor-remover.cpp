@@ -1,4 +1,5 @@
 ﻿#include "mutation/mutation-investor-remover.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "mutation/gain-mutation-switcher.h"
@@ -6,7 +7,6 @@
 #include "mutation/mutation-calculator.h" //!< @todo calc_mutant_regenerate_mod() が相互依存している、後で消す.
 #include "mutation/mutation-flag-types.h"
 #include "mutation/mutation-util.h"
-#include "player-info/avatar.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -32,31 +32,31 @@ static void race_dependent_mutation(player_type *creature_ptr, glm_type *gm_ptr)
     if (gm_ptr->choose_mut != 0)
         return;
 
-    if (creature_ptr->prace == RACE_VAMPIRE && creature_ptr->muta.has_not(MUTA::HYPN_GAZE) && (randint1(10) < 7)) {
+    if (creature_ptr->prace == player_race_type::VAMPIRE && creature_ptr->muta.has_not(MUTA::HYPN_GAZE) && (randint1(10) < 7)) {
         gm_ptr->muta_which = MUTA::HYPN_GAZE;
         gm_ptr->muta_desc = _("眼が幻惑的になった...", "Your eyes look mesmerizing...");
         return;
     }
 
-    if (creature_ptr->prace == RACE_IMP && creature_ptr->muta.has_not(MUTA::HORNS) && (randint1(10) < 7)) {
+    if (creature_ptr->prace == player_race_type::IMP && creature_ptr->muta.has_not(MUTA::HORNS) && (randint1(10) < 7)) {
         gm_ptr->muta_which = MUTA::HORNS;
         gm_ptr->muta_desc = _("角が額から生えてきた！", "Horns pop forth into your forehead!");
         return;
     }
 
-    if (creature_ptr->prace == RACE_YEEK && creature_ptr->muta.has_not(MUTA::SHRIEK) && (randint1(10) < 7)) {
+    if (creature_ptr->prace == player_race_type::YEEK && creature_ptr->muta.has_not(MUTA::SHRIEK) && (randint1(10) < 7)) {
         gm_ptr->muta_which = MUTA::SHRIEK;
         gm_ptr->muta_desc = _("声質がかなり強くなった。", "Your vocal cords get much tougher.");
         return;
     }
 
-    if (creature_ptr->prace == RACE_BEASTMAN && creature_ptr->muta.has_not(MUTA::POLYMORPH) && (randint1(10) < 2)) {
+    if (creature_ptr->prace == player_race_type::BEASTMAN && creature_ptr->muta.has_not(MUTA::POLYMORPH) && (randint1(10) < 2)) {
         gm_ptr->muta_which = MUTA::POLYMORPH;
         gm_ptr->muta_desc = _("あなたの肉体は変化できるようになった、", "Your body seems mutable.");
         return;
     }
 
-    if (creature_ptr->prace == RACE_MIND_FLAYER && creature_ptr->muta.has_not(MUTA::TENTACLES) && (randint1(10) < 7)) {
+    if (creature_ptr->prace == player_race_type::MIND_FLAYER && creature_ptr->muta.has_not(MUTA::TENTACLES) && (randint1(10) < 7)) {
         gm_ptr->muta_which = MUTA::TENTACLES;
         gm_ptr->muta_desc = _("邪悪な触手が口の周りに生えた。", "Evil-looking tentacles sprout from your mouth.");
     }

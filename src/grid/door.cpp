@@ -6,6 +6,7 @@
 #include "grid/grid.h"
 #include "room/door-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
@@ -18,7 +19,7 @@
 void add_door(player_type *player_ptr, POSITION x, POSITION y)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (!is_outer_bold(floor_ptr, y, x))
+    if (!floor_ptr->grid_array[y][x].is_outer())
         return;
 
     /* look at:
@@ -30,8 +31,8 @@ void add_door(player_type *player_ptr, POSITION x, POSITION y)
      *  .=floor, #=wall
      */
 
-    if (is_floor_bold(floor_ptr, y - 1, x) && is_floor_bold(floor_ptr, y + 1, x)
-        && (is_outer_bold(floor_ptr, y, x - 1) && is_outer_bold(floor_ptr, y, x + 1))) {
+    if (floor_ptr->grid_array[y - 1][x].is_floor() && floor_ptr->grid_array[y + 1][x].is_floor() && floor_ptr->grid_array[y][x - 1].is_outer()
+        && floor_ptr->grid_array[y][x + 1].is_outer()) {
         place_secret_door(player_ptr, y, x, DOOR_DEFAULT);
         place_bold(player_ptr, y, x - 1, GB_SOLID);
         place_bold(player_ptr, y, x + 1, GB_SOLID);
@@ -45,7 +46,8 @@ void add_door(player_type *player_ptr, POSITION x, POSITION y)
      *  where x = don't care
      *  .=floor, #=wall
      */
-    if (is_outer_bold(floor_ptr, y - 1, x) && is_outer_bold(floor_ptr, y + 1, x) && is_floor_bold(floor_ptr, y, x - 1) && is_floor_bold(floor_ptr, y, x + 1)) {
+    if (floor_ptr->grid_array[y - 1][x].is_outer() && floor_ptr->grid_array[y + 1][x].is_outer() && floor_ptr->grid_array[y][x - 1].is_floor()
+        && floor_ptr->grid_array[y][x + 1].is_floor()) {
         place_secret_door(player_ptr, y, x, DOOR_DEFAULT);
         place_bold(player_ptr, y - 1, x, GB_SOLID);
         place_bold(player_ptr, y + 1, x, GB_SOLID);
@@ -78,7 +80,7 @@ void place_secret_door(player_type *player_ptr, POSITION y, POSITION x, int type
     if (type != DOOR_CURTAIN) {
         g_ptr->mimic = feat_wall_inner;
         if (feat_supports_los(g_ptr->mimic) && !feat_supports_los(g_ptr->feat)) {
-            if (has_flag(f_info[g_ptr->mimic].flags, FF_MOVE) || has_flag(f_info[g_ptr->mimic].flags, FF_CAN_FLY)) {
+            if (f_info[g_ptr->mimic].flags.has(FF::MOVE) || f_info[g_ptr->mimic].flags.has(FF::CAN_FLY)) {
                 g_ptr->feat = one_in_(2) ? g_ptr->mimic : feat_ground_type[randint0(100)];
             }
 
@@ -143,7 +145,7 @@ void place_random_door(player_type *player_ptr, POSITION y, POSITION x, bool roo
         if (type != DOOR_CURTAIN) {
             g_ptr->mimic = room ? feat_wall_outer : feat_wall_type[randint0(100)];
             if (feat_supports_los(g_ptr->mimic) && !feat_supports_los(g_ptr->feat)) {
-                if (has_flag(f_info[g_ptr->mimic].flags, FF_MOVE) || has_flag(f_info[g_ptr->mimic].flags, FF_CAN_FLY)) {
+                if (f_info[g_ptr->mimic].flags.has(FF::MOVE) || f_info[g_ptr->mimic].flags.has(FF::CAN_FLY)) {
                     g_ptr->feat = one_in_(2) ? g_ptr->mimic : feat_ground_type[randint0(100)];
                 }
                 g_ptr->mimic = 0;

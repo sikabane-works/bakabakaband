@@ -155,25 +155,20 @@ errr parse_r_info(std::string_view buf, angband_header *head)
         info_set_value(r_ptr->next_exp, tokens[5]);
         info_set_value(r_ptr->next_r_idx, tokens[6]);
     } else if (tokens[0] == "R") {
-        // R:reinforcer_idx:number_dice
-        size_t i = 0;
-        for (; i < A_MAX; i++) {
-            if (r_ptr->reinforce_id[i] == 0)
-                break;
-        }
-
-        if (i >= 6)
-            return PARSE_ERROR_GENERIC;
+        MONSTER_IDX mon_idx;
+        DICE_NUMBER dn;
+        DICE_SID ds;
 
         if (tokens.size() < 3)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         if (tokens[1].size() == 0 || tokens[2].size() == 0)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
 
+        info_set_value(mon_idx, tokens[1]);
         const auto &dice = str_split(tokens[2], 'd', false, 2);
-        info_set_value(r_ptr->reinforce_id[i], tokens[1]);
-        info_set_value(r_ptr->reinforce_dd[i], dice[0]);
-        info_set_value(r_ptr->reinforce_ds[i], dice[1]);
+        info_set_value(dn, dice[0]);
+        info_set_value(ds, dice[1]);
+        r_ptr->reinforces.push_back({ mon_idx, dn, ds });
     } else if (tokens[0] == "B") {
         // B:blow_type:blow_effect:dice
         size_t i = 0;
@@ -231,6 +226,8 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 continue;
 
             const auto &s_tokens = str_split(f, '_', false, 3);
+
+            // 特殊行動確率
             if (s_tokens.size() == 3 && s_tokens[1] == "IN") {
                 if (s_tokens[0] != "1")
                     return PARSE_ERROR_GENERIC;
@@ -239,6 +236,45 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 r_ptr->freq_spell = 100 / i;
                 continue;
             }
+
+            if (s_tokens.size() == 5 && s_tokens[0] == "SPAWN") {
+                // 落とし子自動生成率
+                if (s_tokens[1] == "CREATURE") {
+                    int num;
+                    int deno;
+                    MONRACE_IDX mon_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[3]);
+                    info_set_value(mon_idx, s_tokens[4]);
+                    r_ptr->spawn_monsters.push_back({ num, deno, mon_idx });
+                    continue;
+                }
+
+                // 地形変化率
+                if (s_tokens[1] == "FEATURE") {
+                    int num;
+                    int deno;
+                    FEAT_IDX feat_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[3]);
+                    info_set_value(feat_idx, s_tokens[4]);
+                    r_ptr->change_feats.push_back({ num, deno, feat_idx });
+                    continue;
+                }
+
+                // アイテム自然ドロップ率
+                if (s_tokens[1] == "ITEM") {
+                    int num;
+                    int deno;
+                    KIND_OBJECT_IDX kind_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[3]);
+                    info_set_value(kind_idx, s_tokens[4]);
+                    r_ptr->spawn_items.push_back({ num, deno, kind_idx });
+                    continue;
+                }
+            }
+
 
             if (!grab_one_spell_flag(r_ptr, f))
                 return PARSE_ERROR_INVALID_FLAG;

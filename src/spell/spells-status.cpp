@@ -5,6 +5,7 @@
  */
 
 #include "spell/spells-status.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "cmd-item/cmd-magiceat.h"
 #include "core/player-redraw-types.h"
@@ -18,7 +19,6 @@
 #include "floor/floor-object.h"
 #include "floor/geometry.h"
 #include "grid/feature-flag-types.h"
-#include "grid/grid.h"
 #include "hpmp/hp-mp-processor.h"
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
@@ -28,7 +28,6 @@
 #include "monster/monster-describer.h"
 #include "object/object-kind-hook.h"
 #include "object/object-kind.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
 #include "player/player-class.h"
@@ -45,6 +44,7 @@
 #include "status/shape-changer.h"
 #include "status/sight-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -244,6 +244,8 @@ void roll_hitdice(player_type *creature_ptr, spell_operation options)
             break;
     }
 
+    creature_ptr->knowledge &= ~(KNOW_HPRATE);
+
     PERCENTAGE percent
         = (int)(((long)creature_ptr->player_hp[PY_MAX_LEVEL - 1] * 200L) / (2 * creature_ptr->hitdie + ((PY_MAX_LEVEL - 1 + 3) * (creature_ptr->hitdie + 1))));
 
@@ -265,7 +267,6 @@ void roll_hitdice(player_type *creature_ptr, spell_operation options)
     }
 
     msg_print(_("体力ランクが変わった。", "Life rate has changed."));
-    creature_ptr->knowledge &= ~(KNOW_HPRATE);
 }
 
 bool life_stream(player_type *creature_ptr, bool message, bool virtue_change)
@@ -450,7 +451,7 @@ bool fishing(player_type *creature_ptr)
     POSITION y = creature_ptr->y + ddy[dir];
     POSITION x = creature_ptr->x + ddx[dir];
     creature_ptr->fishing_dir = dir;
-    if (!cave_has_flag_bold(creature_ptr->current_floor_ptr, y, x, FF_WATER)) {
+    if (!cave_has_flag_bold(creature_ptr->current_floor_ptr, y, x, FF::WATER)) {
         msg_print(_("そこは水辺ではない。", "You can't fish here."));
         return false;
     }

@@ -13,6 +13,7 @@
  */
 
 #include "monster/monster-processor.h"
+#include "avatar/avatar.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
@@ -20,7 +21,6 @@
 #include "floor/geometry.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "io/write-diary.h"
 #include "melee/melee-postprocess.h"
 #include "melee/melee-spell.h"
@@ -53,7 +53,6 @@
 #include "object-enchant/trc-types.h"
 #include "object/object-kind-hook.h"
 #include "pet/pet-fall-off.h"
-#include "player-info/avatar.h"
 #include "player/player-move.h"
 #include "player/player-skill.h"
 #include "player/player-status-flags.h"
@@ -62,6 +61,7 @@
 #include "spell/summon-types.h"
 #include "system/object-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -77,6 +77,9 @@ bool awake_monster(player_type *target_ptr, MONSTER_IDX m_idx);
 void process_angar(player_type *target_ptr, MONSTER_IDX m_idx, bool see_m);
 bool explode_grenade(player_type *target_ptr, MONSTER_IDX m_idx);
 bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx);
+bool process_monster_spawn_monster(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_spawn_item(player_type *target_ptr, MONSTER_IDX m_idx);
 void process_special(player_type *target_ptr, MONSTER_IDX m_idx);
 bool cast_spell(player_type *target_ptr, MONSTER_IDX m_idx, bool aware);
 
@@ -146,6 +149,11 @@ void process_monster(player_type *target_ptr, MONSTER_IDX m_idx)
     if (decide_monster_multiplication(target_ptr, m_idx, oy, ox))
         return;
 
+    if (process_monster_spawn_monster(target_ptr, m_idx, oy, ox))
+        return;
+
+    process_monster_spawn_item(target_ptr, m_idx);
+    process_monster_change_feat(target_ptr, m_idx);
     process_special(target_ptr, m_idx);
     process_speak_sound(target_ptr, m_idx, oy, ox, turn_flags_ptr->aware);
     if (cast_spell(target_ptr, m_idx, turn_flags_ptr->aware))
@@ -418,12 +426,98 @@ bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, P
         k = 8;
 
     if ((k < 5) && (!k || !randint0(k * MON_MULT_ADJ))) {
-        if (multiply_monster(target_ptr, m_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+        if (multiply_monster(target_ptr, m_idx, m_ptr->r_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
             if (target_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(target_ptr, m_ptr))
                 r_ptr->r_flags2 |= RF2_MULTIPLY;
 
             return true;
         }
+    }
+
+    return false;
+}
+
+/*!
+ * @brief モンスターのアイテム自然生成処理
+ */
+void process_monster_spawn_item(player_type *target_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    for (const auto &spawn_info : r_ptr->spawn_items) {
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        auto kind = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            object_type forge;
+            object_type *q_ptr = &forge;
+            q_ptr->prep(kind);
+            q_ptr->number = 1;
+            (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+        }
+    }
+}
+
+/*!
+ * @brief モンスターによる地形変化処理
+ */
+void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    for (const auto &spawn_info : r_ptr->change_feats) {
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        auto feat = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            cave_set_feat(target_ptr, m_ptr->fy, m_ptr->fx, feat);
+        }
+    }
+}
+
+/*!
+ * @brief モンスターの落とし子生成処理
+ * @param target_ptr プレーヤーへの参照ポインタ
+ * @param m_idx モンスターID
+ * @param oy 分裂元モンスターのY座標
+ * @param ox 分裂元モンスターのX座標
+ * @return 実際に分裂したらTRUEを返す
+ */
+bool process_monster_spawn_monster(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
+{
+    monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if ((r_ptr->spawn_monsters.size() == 0) || (target_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
+        return false;
+
+    int k = 0;
+
+    for (const auto &spawn_info : r_ptr->spawn_monsters) {
+
+        for (POSITION y = oy - 1; y <= oy + 1; y++) {
+            for (POSITION x = ox - 1; x <= ox + 1; x++) {
+                if (!in_bounds2(target_ptr->current_floor_ptr, y, x))
+                    continue;
+
+                if (target_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                    k++;
+            }
+        }
+
+        if (multiply_barrier(target_ptr, m_idx))
+            k = 8;
+
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        MONRACE_IDX idx = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            if (multiply_monster(target_ptr, m_idx, idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+                if (target_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(target_ptr, m_ptr))
+                    r_ptr->r_flags2 |= RF2_MULTIPLY;
+
+                return true;
+            }
+        }    
     }
 
     return false;
@@ -481,7 +575,7 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
-        q_ptr->prep(target_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        q_ptr->prep(lookup_kind(TV_JUNK, SV_JUNK_FECES));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -489,7 +583,7 @@ bool process_monster_fear(player_type *target_ptr, turn_flags *turn_flags_ptr, M
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
-        q_ptr->prep(target_ptr, lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
+        q_ptr->prep(lookup_kind(TV_JUNK, SV_JUNK_VOMITTING));
         (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 

@@ -1,5 +1,6 @@
 ﻿#include "spell-kind/spells-enchant.h"
 #include "artifact/random-art-generator.h"
+#include "avatar/avatar.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/floor-object.h"
@@ -12,12 +13,13 @@
 #include "object-hook/hook-weapon.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "player-info/avatar.h"
 #include "racial/racial-android.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
+
+#include <memory>
 
 /*!
  * @brief アーティファクト生成の巻物処理 /
@@ -26,13 +28,11 @@
  */
 bool artifact_scroll(player_type *caster_ptr)
 {
-    item_tester_hook = item_tester_hook_nameless_weapon_armour;
-
     concptr q = _("どのアイテムを強化しますか? ", "Enchant which item? ");
     concptr s = _("強化できるアイテムがない。", "You have nothing to enchant.");
     object_type *o_ptr;
     OBJECT_IDX item;
-    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), TV_NONE);
+    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), FuncItemTester(object_is_nameless_weapon_armour));
     if (!o_ptr)
         return false;
 
@@ -121,15 +121,16 @@ bool artifact_scroll(player_type *caster_ptr)
  */
 bool mundane_spell(player_type *owner_ptr, bool only_equip)
 {
+    std::unique_ptr<ItemTester> item_tester = std::make_unique<AllMatchItemTester>();
     if (only_equip)
-        item_tester_hook = object_is_weapon_armour_ammo;
+        item_tester = std::make_unique<FuncItemTester>(object_is_weapon_armour_ammo);
 
     OBJECT_IDX item;
     object_type *o_ptr;
     concptr q = _("どのアイテムを凡庸化しますか？", "Mundanify which item? ");
     concptr s = _("凡庸化できるアイテムがない。", "You have nothing to mundanify.");
 
-    o_ptr = choose_object(owner_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), TV_NONE);
+    o_ptr = choose_object(owner_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), *item_tester);
     if (!o_ptr)
         return false;
 
@@ -137,9 +138,9 @@ bool mundane_spell(player_type *owner_ptr, bool only_equip)
     POSITION iy = o_ptr->iy;
     POSITION ix = o_ptr->ix;
     byte marked = o_ptr->marked;
-    u16b inscription = o_ptr->inscription;
+    uint16_t inscription = o_ptr->inscription;
 
-    o_ptr->prep(owner_ptr, o_ptr->k_idx);
+    o_ptr->prep(o_ptr->k_idx);
 
     o_ptr->iy = iy;
     o_ptr->ix = ix;

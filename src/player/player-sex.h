@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-enum player_sex {
+enum player_sex : byte {
     SEX_FEMALE = 0,
     SEX_MALE = 1,
     SEX_BISEXUAL = 2,

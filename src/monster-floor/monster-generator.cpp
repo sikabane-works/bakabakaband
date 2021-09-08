@@ -12,7 +12,6 @@
 #include "floor/floor-util.h"
 #include "floor/geometry.h"
 #include "game-option/cheat-options.h"
-#include "grid/grid.h"
 #include "monster-floor/one-monster-placer.h"
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
@@ -29,6 +28,7 @@
 #include "mspell/summon-checker.h"
 #include "spell/summon-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -125,24 +125,25 @@ bool mon_scatter(player_type *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSIT
  * @brief モンスターを増殖生成する / Let the given monster attempt to reproduce.
  * @param player_ptr プレーヤーへの参照ポインタ
  * @param m_idx 増殖するモンスター情報ID
+ * @param r_idx 増殖させたいモンスターID
  * @param clone クローン・モンスター処理ならばtrue
  * @param mode 生成オプション
  * @return 生成できたらtrueを返す
  * @details
  * Note that "reproduction" REQUIRES empty space.
  */
-bool multiply_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool clone, BIT_FLAGS mode)
+bool multiply_monster(player_type *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_idx, bool clone, BIT_FLAGS mode)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     monster_type *m_ptr = &floor_ptr->m_list[m_idx];
     POSITION y, x;
-    if (!mon_scatter(player_ptr, m_ptr->r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1))
+    if (!mon_scatter(player_ptr, r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1))
         return false;
 
     if (m_ptr->mflag2.has(MFLAG2::NOPET))
         mode |= PM_NO_PET;
 
-    if (!place_monster_aux(player_ptr, m_idx, y, x, m_ptr->r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY)))
+    if (!place_monster_aux(player_ptr, m_idx, y, x, r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY)))
         return false;
 
     if (clone || m_ptr->mflag2.has(MFLAG2::CLONED)) {
@@ -277,17 +278,20 @@ bool place_monster_aux(player_type *player_ptr, MONSTER_IDX who, POSITION y, POS
     place_monster_m_idx = hack_m_idx_ii;
 
     /* Reinforcement */
-    for (int i = 0; i < 6; i++) {
-        if (!r_ptr->reinforce_id[i])
+    for (auto reinforce : r_ptr->reinforces) {
+        auto mon_idx = std::get<0>(reinforce);
+        auto dn = std::get<1>(reinforce);
+        auto ds = std::get<2>(reinforce);
+        if (!mon_idx)
             break;
-        int n = damroll(r_ptr->reinforce_dd[i], r_ptr->reinforce_ds[i]);
+        int n = damroll(dn, ds);
         for (int j = 0; j < n; j++) {
             POSITION nx, ny, d;
             const POSITION scatter_min = 7;
             const POSITION scatter_max = 40;
             for (d = scatter_min; d <= scatter_max; d++) {
                 scatter(player_ptr, &ny, &nx, y, x, d, PROJECT_NONE);
-                if (place_monster_one(player_ptr, place_monster_m_idx, ny, nx, r_ptr->reinforce_id[i], mode)) {
+                if (place_monster_one(player_ptr, place_monster_m_idx, ny, nx, mon_idx, mode)) {
                     break;
                 }
             }

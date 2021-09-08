@@ -9,7 +9,6 @@
 #include "birth/inventory-initializer.h"
 #include "cmd-io/cmd-help.h"
 #include "core/asking-player.h"
-#include "grid/grid.h"
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/input-key-requester.h"
@@ -23,6 +22,7 @@
 #include "spell/spells-status.h"
 #include "status/experience.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -155,7 +155,7 @@ bool exe_cmd_debug(player_type *creature_ptr, char cmd)
 
         break;
     case 'f':
-        identify_fully(creature_ptr, false, TV_NONE);
+        identify_fully(creature_ptr, false);
         break;
     case 'F':
         wiz_create_feature(creature_ptr);
@@ -167,7 +167,7 @@ bool exe_cmd_debug(player_type *creature_ptr, char cmd)
         wiz_summon_horde(creature_ptr);
         break;
     case 'i':
-        (void)ident_spell(creature_ptr, false, TV_NONE);
+        (void)ident_spell(creature_ptr, false);
         break;
     case 'I':
         wizard_item_modifier(creature_ptr);
@@ -182,7 +182,7 @@ bool exe_cmd_debug(player_type *creature_ptr, char cmd)
         map_area(creature_ptr, DETECT_RAD_ALL * 3);
         break;
     case 'r':
-        gain_level_reward(creature_ptr, command_arg);
+        patron_list[creature_ptr->chaos_patron].GainLevelReward(creature_ptr, 0);
         break;
     case 'N':
         wiz_summon_pet(creature_ptr, command_arg);

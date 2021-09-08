@@ -155,7 +155,7 @@ void store_create(
         object_type forge;
         object_type *q_ptr;
         q_ptr = &forge;
-        q_ptr->prep(player_ptr, k_idx);
+        q_ptr->prep(k_idx);
         apply_magic_to_object(player_ptr, q_ptr, level, AM_NO_FIXED_ART);
         if (!(*store_will_buy)(player_ptr, q_ptr))
             continue;
@@ -180,15 +180,15 @@ void store_create(
             continue;
 
         if (cur_store_num == STORE_BLACK) {
-            if (black_market_crap(player_ptr, q_ptr) || (object_value(player_ptr, q_ptr) < 10))
+            if (black_market_crap(player_ptr, q_ptr) || (object_value(q_ptr) < 10))
                 continue;
         } else {
-            if (object_value(player_ptr, q_ptr) <= 0)
+            if (object_value(q_ptr) <= 0)
                 continue;
         }
 
         mass_produce(player_ptr, q_ptr);
-        (void)store_carry(player_ptr, q_ptr);
+        (void)store_carry(q_ptr);
         break;
     }
 }
@@ -298,9 +298,9 @@ static void store_object_absorb(object_type *o_ptr, object_type *j_ptr)
  * known, the player may have to pick stuff up and drop it again.
  * </pre>
  */
-int store_carry(player_type *player_ptr, object_type *o_ptr)
+int store_carry(object_type *o_ptr)
 {
-    PRICE value = object_value(player_ptr, o_ptr);
+    PRICE value = object_value(o_ptr);
     if (value <= 0)
         return -1;
 
@@ -338,7 +338,7 @@ int store_carry(player_type *player_ptr, object_type *o_ptr)
                 continue;
         }
 
-        PRICE j_value = object_value(player_ptr, j_ptr);
+        PRICE j_value = object_value(j_ptr);
         if (value > j_value)
             break;
         if (value < j_value)

@@ -43,6 +43,7 @@
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -208,7 +209,7 @@ void process_world_aux_mutation(player_type *creature_ptr)
         disturb(creature_ptr, false, true);
         msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
         msg_print(NULL);
-        q_ptr->prep(creature_ptr, lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        q_ptr->prep(lookup_kind(TV_JUNK, SV_JUNK_FECES));
         (void)drop_near(creature_ptr, q_ptr, -1, creature_ptr->y, creature_ptr->x);
     }
 

@@ -36,6 +36,7 @@
 #include "player/player-status.h"
 #include "system/alloc-entries.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -91,45 +92,15 @@ MONRACE_IDX get_mon_num(player_type *player_ptr, DEPTH min_level, DEPTH max_leve
     monster_race *r_ptr;
     alloc_entry *table = alloc_race_table;
 
-    int pls_kakuritu, pls_max_level, over_days;
-    int delay = mysqrt(max_level * 10000L) + (max_level * 5);
-
-    /* town max_level : same delay as 10F, no nasty mons till day18 */
-    if (!max_level)
-        delay = 360;
-
     if (max_level > MAX_DEPTH - 1)
         max_level = MAX_DEPTH - 1;
-
-    /* +1 per day after the base date */
-    /* base dates : day5(1F), day18(10F,0F), day34(30F), day53(60F), day69(90F) */
-    over_days = MAX(0, current_world_ptr->dungeon_turn / (TURNS_PER_TICK * 10000L) - delay / 20);
-
-    /* starts from 1/25, reaches 1/3 after 44days from a max_level dependent base date */
-    pls_kakuritu = MAX(NASTY_MON_MAX, NASTY_MON_BASE - over_days / 2);
-    /* starts from 0, reaches +25lv after 75days from a max_level dependent base date */
-    pls_max_level = MIN(NASTY_MON_PLUS_MAX, over_days / 3);
-
-    if (d_info[player_ptr->dungeon_idx].flags.has(DF::MAZE)) {
-        pls_kakuritu = MIN(pls_kakuritu / 2, pls_kakuritu - 10);
-        if (pls_kakuritu < 2)
-            pls_kakuritu = 2;
-        pls_max_level += 2;
-        max_level += 3;
-    }
 
     /* Boost the max_level */
     if ((option & GMN_ARENA) || d_info[player_ptr->dungeon_idx].flags.has_not(DF::BEGINNER)) {
         /* Nightmare mode allows more out-of depth monsters */
-        if (ironman_nightmare && !randint0(pls_kakuritu)) {
+        if (ironman_nightmare) {
             /* What a bizarre calculation */
             max_level = 1 + (max_level * MAX_DEPTH / randint1(MAX_DEPTH));
-        } else {
-            /* Occasional "nasty" monster */
-            if (!randint0(pls_kakuritu)) {
-                /* Pick a max_level bonus */
-                max_level += pls_max_level;
-            }
         }
     }
 
@@ -359,7 +330,7 @@ void choose_new_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool born, M
     }
 
     if (ironman_nightmare) {
-        u32b hp = m_ptr->max_maxhp * 2L;
+        uint32_t hp = m_ptr->max_maxhp * 2L;
         m_ptr->max_maxhp = (HIT_POINT)MIN(MON_MAX_HP, hp);
     }
 

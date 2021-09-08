@@ -8,6 +8,7 @@
 #include "player/player-move.h"
 #include "player/player-status-flags.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/grid-selector.h"
 #include "util/bit-flags-calculator.h"
@@ -25,14 +26,15 @@
 static int travel_flow_cost(player_type *creature_ptr, POSITION y, POSITION x)
 {
     int cost = 1;
-    feature_type *f_ptr = &f_info[creature_ptr->current_floor_ptr->grid_array[y][x].feat];
-    if (has_flag(f_ptr->flags, FF_AVOID_RUN))
+    auto *g_ptr = &creature_ptr->current_floor_ptr->grid_array[y][x];
+    feature_type *f_ptr = &f_info[g_ptr->feat];
+    if (f_ptr->flags.has(FF::AVOID_RUN))
         cost += 1;
 
-    if (has_flag(f_ptr->flags, FF_WATER) && has_flag(f_ptr->flags, FF_DEEP) && !creature_ptr->levitation)
+    if (f_ptr->flags.has_all_of({FF::WATER, FF::DEEP}) && !creature_ptr->levitation)
         cost += 5;
 
-    if (has_flag(f_ptr->flags, FF_LAVA)) {
+    if (f_ptr->flags.has(FF::LAVA)) {
         int lava = 2;
         if (!has_resist_fire(creature_ptr))
             lava *= 2;
@@ -40,17 +42,17 @@ static int travel_flow_cost(player_type *creature_ptr, POSITION y, POSITION x)
         if (!creature_ptr->levitation)
             lava *= 2;
 
-        if (has_flag(f_ptr->flags, FF_DEEP))
+        if (f_ptr->flags.has(FF::DEEP))
             lava *= 2;
 
         cost += lava;
     }
 
-    if (creature_ptr->current_floor_ptr->grid_array[y][x].info & (CAVE_MARK)) {
-        if (has_flag(f_ptr->flags, FF_DOOR))
+    if (g_ptr->is_mark()) {
+        if (f_ptr->flags.has(FF::DOOR))
             cost += 1;
 
-        if (has_flag(f_ptr->flags, FF_TRAP))
+        if (f_ptr->flags.has(FF::TRAP))
             cost += 10;
     }
 
@@ -78,8 +80,8 @@ static void travel_flow_aux(player_type *creature_ptr, POSITION y, POSITION x, i
 
     int add_cost = 1;
     int from_wall = (n / TRAVEL_UNABLE);
-    if (has_flag(f_ptr->flags, FF_WALL) || has_flag(f_ptr->flags, FF_CAN_DIG) || (has_flag(f_ptr->flags, FF_DOOR) && floor_ptr->grid_array[y][x].mimic)
-        || (!has_flag(f_ptr->flags, FF_MOVE) && has_flag(f_ptr->flags, FF_CAN_FLY) && !creature_ptr->levitation)) {
+    if (f_ptr->flags.has(FF::WALL) || f_ptr->flags.has(FF::CAN_DIG) || (f_ptr->flags.has(FF::DOOR) && floor_ptr->grid_array[y][x].mimic)
+        || (f_ptr->flags.has_not(FF::MOVE) && f_ptr->flags.has(FF::CAN_FLY) && !creature_ptr->levitation)) {
         if (!wall || !from_wall)
             return;
 
@@ -114,7 +116,7 @@ static void travel_flow(player_type *creature_ptr, POSITION ty, POSITION tx)
     flow_head = flow_tail = 0;
     bool wall = false;
     feature_type *f_ptr = &f_info[creature_ptr->current_floor_ptr->grid_array[creature_ptr->y][creature_ptr->x].feat];
-    if (!has_flag(f_ptr->flags, FF_MOVE))
+    if (f_ptr->flags.has_not(FF::MOVE))
         wall = true;
 
     travel_flow_aux(creature_ptr, ty, tx, 0, wall);
@@ -154,7 +156,7 @@ void do_cmd_travel(player_type *creature_ptr)
     feature_type *f_ptr;
     f_ptr = &f_info[floor_ptr->grid_array[y][x].feat];
     if ((floor_ptr->grid_array[y][x].info & CAVE_MARK)
-        && (has_flag(f_ptr->flags, FF_WALL) || has_flag(f_ptr->flags, FF_CAN_DIG) || (has_flag(f_ptr->flags, FF_DOOR) && floor_ptr->grid_array[y][x].mimic))) {
+        && (f_ptr->flags.has(FF::WALL) || f_ptr->flags.has(FF::CAN_DIG) || (f_ptr->flags.has(FF::DOOR) && floor_ptr->grid_array[y][x].mimic))) {
         msg_print(_("そこには行くことができません！", "You cannot travel there!"));
         return;
     }

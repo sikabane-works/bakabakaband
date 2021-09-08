@@ -65,7 +65,7 @@ void apply_magic_others(player_type *owner_ptr, object_type *o_ptr, int power)
             o_ptr->pval = 0;
         }
 
-        /* power > 2 is debug only */
+        /* power > 2はデバッグ専用. */
         if (power > 2) {
             become_random_artifact(owner_ptr, o_ptr, false);
         } else if ((power == 2) || ((power == 1) && one_in_(3))) {
@@ -155,7 +155,7 @@ void apply_magic_others(player_type *owner_ptr, object_type *o_ptr, int power)
     case TV_CORPSE: {
         PARAMETER_VALUE i = 1;
         int check;
-        u32b match = 0;
+        uint32_t match = 0;
         monster_race *r_ptr;
         if (o_ptr->sval == SV_SKELETON) {
             match = RF9_DROP_SKELETON;

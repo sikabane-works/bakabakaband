@@ -27,7 +27,6 @@
 #include "floor/cave.h"
 #include "floor/floor-object.h"
 #include "floor/geometry.h"
-#include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/input-key-requester.h"
 #include "monster-race/monster-race.h"
@@ -57,6 +56,7 @@
 #include "spell/technic-info-table.h"
 #include "status/action-setter.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/grid-selector.h"
@@ -76,7 +76,7 @@
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @return 呪縛可能な武器ならばTRUEを返す
  */
-static bool item_tester_hook_weapon_except_bow(player_type *player_ptr, object_type *o_ptr)
+static bool item_tester_hook_weapon_except_bow(player_type *player_ptr, const object_type *o_ptr)
 {
     /* Unused */
     (void)player_ptr;
@@ -195,18 +195,17 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
             concptr q, s;
             GAME_TEXT o_name[MAX_NLEN];
             object_type *o_ptr;
-            u32b f[TR_FLAG_SIZE];
+            TrFlags f;
 
-            item_tester_hook = item_tester_hook_weapon_except_bow;
             q = _("どれを呪いますか？", "Which weapon do you curse?");
             s = _("武器を装備していない。", "You're not wielding a weapon.");
 
-            o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP), TV_NONE);
+            o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP), FuncItemTester(item_tester_hook_weapon_except_bow, caster_ptr));
             if (!o_ptr)
                 return "";
 
             describe_flavor(caster_ptr, o_name, o_ptr, OD_NAME_ONLY);
-            object_flags(caster_ptr, o_ptr, f);
+            object_flags(o_ptr, f);
 
             if (!get_check(format(_("本当に %s を呪いますか？", "Do you curse %s, really？"), o_name)))
                 return "";
@@ -253,7 +252,7 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
                     }
                 }
 
-                o_ptr->curse_flags.set(get_curse(caster_ptr, curse_rank, o_ptr));
+                o_ptr->curse_flags.set(get_curse(curse_rank, o_ptr));
             }
 
             caster_ptr->update |= (PU_BONUS);
@@ -284,7 +283,7 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
             return info_damage(0, 0, power);
         if (cast) {
             int a = 3 - (caster_ptr->pspeed - 100) / 10;
-            MAGIC_NUM2 r = 3 + randint1(3) + MAX(0, MIN(3, a));
+            byte r = 3 + randint1(3) + MAX(0, MIN(3, a));
 
             if (hex_revenge_turn(caster_ptr) > 0) {
                 msg_print(_("すでに我慢をしている。", "You are already biding your time for vengeance."));
@@ -502,19 +501,18 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
             concptr q, s;
             GAME_TEXT o_name[MAX_NLEN];
             object_type *o_ptr;
-            u32b f[TR_FLAG_SIZE];
+            TrFlags f;
 
-            item_tester_hook = object_is_armour;
             q = _("どれを呪いますか？", "Which piece of armour do you curse?");
             s = _("防具を装備していない。", "You're not wearing any armor.");
 
-            o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP), TV_NONE);
+            o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP), FuncItemTester(object_is_armour));
             if (!o_ptr)
                 return "";
 
             o_ptr = &caster_ptr->inventory_list[item];
             describe_flavor(caster_ptr, o_name, o_ptr, OD_NAME_ONLY);
-            object_flags(caster_ptr, o_ptr, f);
+            object_flags(o_ptr, f);
 
             if (!get_check(format(_("本当に %s を呪いますか？", "Do you curse %s, really？"), o_name)))
                 return "";
@@ -562,7 +560,7 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
                     }
                 }
 
-                o_ptr->curse_flags.set(get_curse(caster_ptr, curse_rank, o_ptr));
+                o_ptr->curse_flags.set(get_curse(curse_rank, o_ptr));
             }
 
             caster_ptr->update |= (PU_BONUS);
@@ -702,18 +700,17 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
         if (cast) {
             OBJECT_IDX item;
             concptr s, q;
-            u32b f[TR_FLAG_SIZE];
+            TrFlags f;
             object_type *o_ptr;
 
-            item_tester_hook = item_tester_hook_cursed;
             q = _("どの装備品から吸収しますか？", "Which cursed equipment do you drain mana from?");
             s = _("呪われたアイテムを装備していない。", "You have no cursed equipment.");
 
-            o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP), TV_NONE);
+            o_ptr = choose_object(caster_ptr, &item, q, s, (USE_EQUIP), FuncItemTester(object_is_cursed));
             if (!o_ptr)
                 return "";
 
-            object_flags(caster_ptr, o_ptr, f);
+            object_flags(o_ptr, f);
 
             caster_ptr->csp += (caster_ptr->lev / 5) + randint1(caster_ptr->lev / 5);
             if (has_flag(f, TR_TY_CURSE) || o_ptr->curse_flags.has(TRC::TY_CURSE))
@@ -799,7 +796,7 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
                         flag = true;
                 }
 
-                if (!is_cave_empty_bold(caster_ptr, y, x) || (caster_ptr->current_floor_ptr->grid_array[y][x].info & CAVE_ICKY)
+                if (!is_cave_empty_bold(caster_ptr, y, x) || caster_ptr->current_floor_ptr->grid_array[y][x].is_icky()
                     || (distance(y, x, caster_ptr->y, caster_ptr->x) > plev + 2)) {
                     msg_print(_("そこには移動できない。", "Can not teleport to there."));
                     continue;
@@ -841,7 +838,7 @@ concptr do_hex_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
         if (info)
             return info_damage(0, 0, power);
         if (cast) {
-            MAGIC_NUM2 r;
+            byte r;
             int a = 3 - (caster_ptr->pspeed - 100) / 10;
             r = 1 + randint1(2) + MAX(0, MIN(3, a));
 
