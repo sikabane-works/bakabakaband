@@ -29229,7 +29229,18 @@ F:OPEN_DOOR | BASH_DOOR
 D:彼はブリーフの舞を踊ることにより大気中のブリフィッシュエネルギーを吸収し、
 D:よりエレガントな男に変身することができるのだ。
 
-
+N:1539:デビルレイク『バーマ』
+E:Barma of The Devil lake
+G:h:g
+I:105:10d25:40:60:0
+W:8:2:0:60:0:0
+B:HIT:HURT:2d16
+B:HIT:HURT:2d16
+B:TOUCH:TERRIFY
+F:UNIQUE | DROP_CORPSE | AQUATIC |  
+F:BASH_DOOR | FORCE_MAXHP | NO_CONF | NO_SLEEP |
+F:IM_COLD | IM_ACID | RES_WATE | NO_FEAR
+D:ケツホルデス城の池に飼われる半魚人だ。その重厚な歩みを恐れよ！
 
 # N: serial number : monster name
 # G: symbol : color
