@@ -427,6 +427,32 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
     case SV_FOOD_GOLDEN_EGG:
         (void)do_inc_stat(creature_ptr, randint0(6));
         return true;
+    case SV_FOOD_ABESHI:
+        gain_exp(creature_ptr, creature_ptr->lev * 50);
+        (void)set_hero(creature_ptr, randint1(10) + 10, false);
+        if (one_in_(300)) {
+            (void)do_inc_stat(creature_ptr, A_STR);
+        }
+        if (one_in_(300)) {
+            (void)do_inc_stat(creature_ptr, A_DEX);
+        }
+        if (one_in_(300)) {
+            (void)do_inc_stat(creature_ptr, A_CON);
+        }
+        return true;
+    case SV_FOOD_HIDEBU:
+        gain_exp(creature_ptr, creature_ptr->lev * 100);
+        (void)set_hero(creature_ptr, randint1(25) + 25, false);
+        if (one_in_(100)) {
+            (void)do_inc_stat(creature_ptr, A_STR);
+        }
+        if (one_in_(100)) {
+            (void)do_inc_stat(creature_ptr, A_DEX);
+        }
+        if (one_in_(100)) {
+            (void)do_inc_stat(creature_ptr, A_CON);
+        }
+        return true;
     default:
         return true;
     }
