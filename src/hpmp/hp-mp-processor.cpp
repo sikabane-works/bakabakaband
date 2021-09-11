@@ -112,6 +112,11 @@ void process_player_hp_mp(player_type *creature_ptr)
     bool cave_no_regen = false;
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
+
+    if (f_ptr->flags.has(FF::RUNE_HEALING)) {
+        hp_player(creature_ptr, 2 + creature_ptr->lev / 6);
+    }
+
     if (creature_ptr->poisoned && !is_invuln(creature_ptr)) {
         take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"));
     }
