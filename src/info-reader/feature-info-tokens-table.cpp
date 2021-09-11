@@ -124,5 +124,6 @@ const std::unordered_map<std::string_view, FF> f_info_flags = {
     { "GLASS", FF::GLASS },
     { "DUNG_POOL", FF::DUNG_POOL },
     { "PLASMA", FF::PLASMA },
+    { "RUNE_HEALING", FF::RUNE_HEALING },
 
 };
