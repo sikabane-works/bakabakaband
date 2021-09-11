@@ -56,19 +56,24 @@ void PlayerSpeed::set_locals()
 int16_t PlayerSpeed::race_value()
 {
     int16_t result = 0;
+    floor_type *floor_ptr = this->owner_ptr->current_floor_ptr;
+    feature_type *f_ptr = &f_info[floor_ptr->grid_array[this->owner_ptr->y][this->owner_ptr->x].feat];
 
     if (is_specific_player_race(this->owner_ptr, player_race_type::KLACKON) || is_specific_player_race(this->owner_ptr, player_race_type::SPRITE))
         result += (this->owner_ptr->lev) / 10;
 
     if (is_specific_player_race(this->owner_ptr, player_race_type::MERFOLK)) {
-        floor_type *floor_ptr = this->owner_ptr->current_floor_ptr;
-        feature_type *f_ptr = &f_info[floor_ptr->grid_array[this->owner_ptr->y][this->owner_ptr->x].feat];
         if (f_ptr->flags.has(FF::WATER)) {
             result += (2 + this->owner_ptr->lev / 10);
         } else if (!this->owner_ptr->levitation) {
             result -= 2;
         }
     }
+
+    if (f_ptr->flags.has(FF::SLOW)) {
+        result -= 5;
+    }
+
 
     if (this->owner_ptr->mimic_form) {
         switch (this->owner_ptr->mimic_form) {

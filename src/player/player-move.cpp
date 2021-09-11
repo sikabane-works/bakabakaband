@@ -189,6 +189,11 @@ bool move_player_effect(player_type *creature_ptr, POSITION ny, POSITION nx, BIT
                 update_creature(creature_ptr);
             }
         }
+
+        if (f_ptr->flags.has(FF::SLOW) ^ of_ptr->flags.has(FF::SLOW)) {
+            creature_ptr->update |= PU_BONUS;
+            update_creature(creature_ptr);        
+        }
     }
 
     if (mpe_mode & MPE_ENERGY_USE) {
