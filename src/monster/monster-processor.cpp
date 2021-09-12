@@ -80,6 +80,7 @@ bool decide_monster_multiplication(player_type *target_ptr, MONSTER_IDX m_idx, P
 void process_monster_change_feat(player_type *target_ptr, MONSTER_IDX m_idx);
 bool process_monster_spawn_monster(player_type *target_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
 void process_monster_spawn_item(player_type *target_ptr, MONSTER_IDX m_idx);
+void process_monster_spawn_zanki(player_type *target_ptr, MONSTER_IDX m_idx);
 void process_special(player_type *target_ptr, MONSTER_IDX m_idx);
 bool cast_spell(player_type *target_ptr, MONSTER_IDX m_idx, bool aware);
 
@@ -153,6 +154,7 @@ void process_monster(player_type *target_ptr, MONSTER_IDX m_idx)
         return;
 
     process_monster_spawn_item(target_ptr, m_idx);
+    process_monster_spawn_zanki(target_ptr, m_idx);
     process_monster_change_feat(target_ptr, m_idx);
     process_special(target_ptr, m_idx);
     process_speak_sound(target_ptr, m_idx, oy, ox, turn_flags_ptr->aware);
@@ -456,6 +458,28 @@ void process_monster_spawn_item(player_type *target_ptr, MONSTER_IDX m_idx)
             (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
         }
     }
+}
+
+/*!
+ * @brief モンスターの残気自然生成処理
+ */
+void process_monster_spawn_zanki(player_type *target_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &target_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if (r_ptr->level < 30 || !(r_ptr->flags1 & RF1_UNIQUE) || r_ptr->flags2 & RF2_EMPTY_MIND) {
+        return;
+    }
+
+    if (randint1(53) < 10000) {
+        return;
+    }
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(684);
+    q_ptr->number = 1;
+    q_ptr->pval = m_ptr->ap_r_idx;
+    (void)drop_near(target_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
 }
 
 /*!
