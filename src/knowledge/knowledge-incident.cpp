@@ -62,6 +62,9 @@ void do_cmd_knowledge_incident(player_type *creature_ptr)
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES)) {
             fprintf(fff, _("    うち%d回は糞便や汚物を食った。\n", "    of which %d times ate feces and dirts\n"), creature_ptr->incident[INCIDENT::EAT_FECES]);
         }
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON)) {
+            fprintf(fff, _("    うち%d回中毒症状を起こした。\n", "    of which %d times had addiction symptoms\n"), creature_ptr->incident[INCIDENT::EAT_POISON]);
+        }
     }
     if (creature_ptr->incident.count(INCIDENT::QUAFF)) {
         fprintf(fff, _("あなたはこれまで薬を%d回服用した。\n", "You have taken the drug %d times.\n"), creature_ptr->incident[INCIDENT::QUAFF]);

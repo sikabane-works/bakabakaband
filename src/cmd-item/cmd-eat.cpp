@@ -276,56 +276,116 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
 
     switch (o_ptr->sval) {
     case SV_FOOD_POISON:
-        if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr)))
-            if (set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10))
+        if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
+            if (set_poisoned(creature_ptr, creature_ptr->poisoned + randint0(10) + 10)) {
+                if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+                    creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+                }
+                creature_ptr->incident[INCIDENT::EAT_POISON]++;
                 return true;
+            }
+        }
         break;
     case SV_FOOD_BLINDNESS:
-        if (!has_resist_blind(creature_ptr))
-            if (set_blind(creature_ptr, creature_ptr->blind + randint0(200) + 200))
+        if (!has_resist_blind(creature_ptr)) {
+            if (set_blind(creature_ptr, creature_ptr->blind + randint0(200) + 200)) {
+                if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+                    creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+                }
+                creature_ptr->incident[INCIDENT::EAT_POISON]++;
                 return true;
+            }
+        }
         break;
     case SV_FOOD_PARANOIA:
-        if (!has_resist_fear(creature_ptr))
-            if (set_afraid(creature_ptr, creature_ptr->afraid + randint0(10) + 10))
+        if (!has_resist_fear(creature_ptr)) {
+            if (set_afraid(creature_ptr, creature_ptr->afraid + randint0(10) + 10)) {
+                if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+                    creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+                }
+                creature_ptr->incident[INCIDENT::EAT_POISON]++;
                 return true;
+            }
+        }
         break;
     case SV_FOOD_CONFUSION:
-        if (!has_resist_conf(creature_ptr))
-            if (set_confused(creature_ptr, creature_ptr->confused + randint0(10) + 10))
-                return true;
+        if (!has_resist_conf(creature_ptr)) {
+            if (set_confused(creature_ptr, creature_ptr->confused + randint0(10) + 10)) {
+                if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+                    creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+                }
+                creature_ptr->incident[INCIDENT::EAT_POISON]++;
+                return true;        
+            }
+        }
         break;
     case SV_FOOD_HALLUCINATION:
-        if (!has_resist_chaos(creature_ptr))
-            if (set_image(creature_ptr, creature_ptr->image + randint0(250) + 250))
+        if (!has_resist_chaos(creature_ptr)) {
+            if (set_image(creature_ptr, creature_ptr->image + randint0(250) + 250)) {
+                if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+                    creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+                }
+                creature_ptr->incident[INCIDENT::EAT_POISON]++;
                 return true;
+            }
+        }
         break;
     case SV_FOOD_PARALYSIS:
-        if (!creature_ptr->free_act)
-            if (set_paralyzed(creature_ptr, creature_ptr->paralyzed + randint0(10) + 10))
+        if (!creature_ptr->free_act) {
+            if (set_paralyzed(creature_ptr, creature_ptr->paralyzed + randint0(10) + 10)) {
+                if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+                    creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+                }
+                creature_ptr->incident[INCIDENT::EAT_POISON]++;
                 return true;
+            }        
+        }
         break;
     case SV_FOOD_WEAKNESS:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(6, 6), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_STR);
         return true;
     case SV_FOOD_SICKNESS:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(6, 6), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_CON);
         return true;
     case SV_FOOD_STUPIDITY:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(8, 8), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_INT);
         return true;
     case SV_FOOD_NAIVETY:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(8, 8), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_WIS);
         return true;
     case SV_FOOD_UNHEALTH:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 10), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_CON);
         return true;
     case SV_FOOD_DISEASE:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(10, 10), _("毒入り食料", "poisonous food"));
         (void)do_dec_stat(creature_ptr, A_STR);
         return true;
@@ -393,6 +453,10 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         return true;
     case SV_FOOD_WELCOME_DRINK_OF_ARE:
     case SV_FOOD_ABA_TEA:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         (void)set_poisoned(creature_ptr, 10);
         msg_print("「非常に新鮮で……非常においしい……」");
         if (creature_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
@@ -404,6 +468,10 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
         msg_print("脱穀して炊いた方が良かったかもしれないが、多少空腹は収まった。");
         return true;
     case SV_FOOD_HIP:
+        if (creature_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
+            creature_ptr->incident[INCIDENT::EAT_POISON] = 0;
+        }
+        creature_ptr->incident[INCIDENT::EAT_POISON]++;
         msg_print("ヴォエ！食ったら尻の肉だった！");
         msg_print(NULL);
         (void)set_poisoned(creature_ptr, 10);

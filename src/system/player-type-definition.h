@@ -34,6 +34,7 @@ enum class INCIDENT {
     STORE_SELL = 14,
     STAY_INN = 15,
     EAT_FECES = 100,
+    EAT_POISON = 101,
 };
 
 enum class RF_ABILITY;
