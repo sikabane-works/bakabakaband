@@ -29267,6 +29267,26 @@ D:ナンセンスな動機で歴史を乱す所業を行った狂人だ。
 D:その罪で「時の団地」に収容されさらに狂ってしまったようだが、
 D:杜撰な管理下に置かれているためか、時空をまれに徘徊するようだ。
 
+N:1542:サマルトリアの王子『トンヌラ』
+E:Tonnelat, the Prince of Sumaltria
+G:p:G
+I:115:15d100:30:96:5
+W:35:10:3:0:5000:0:0
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+F:UNIQUE | MALE | HUMAN
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | MOVE_BODY | DROP_CORPSE
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD |
+F:SMART | OPEN_DOOR | BASH_DOOR |
+F:GOOD | EVIL | IM_ACID | IM_FIRE | IM_POIS | IM_COLD
+A:189:1:100
+S:1_IN_3 |
+S:BLIND | BO_FIRE | BA_FIRE
+D:同胞からも無能の烙印を押された世界線の彼は、
+D:その世界の欠陥から見出した忌まわしい武器を振り回している。気をつけろ！
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
