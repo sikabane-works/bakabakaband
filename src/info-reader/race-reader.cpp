@@ -212,31 +212,7 @@ errr parse_r_info(std::string_view buf, angband_header *head)
             if (f.size() == 0)
                 continue;
 
-            if (!grab_one_basic_flag(r_ptr, f))
-                return PARSE_ERROR_INVALID_FLAG;
-        }
-    } else if (tokens[0] == "S") {
-        // S:flags
-        if (tokens.size() < 2 || tokens[1].size() == 0)
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-
-        const auto &flags = str_split(tokens[1], '|', true, 10);
-        for (const auto &f : flags) {
-            if (f.size() == 0)
-                continue;
-
             const auto &s_tokens = str_split(f, '_', false, 3);
-
-            // 特殊行動確率
-            if (s_tokens.size() == 3 && s_tokens[1] == "IN") {
-                if (s_tokens[0] != "1")
-                    return PARSE_ERROR_GENERIC;
-                RARITY i;
-                info_set_value(i, s_tokens[2]);
-                r_ptr->freq_spell = 100 / i;
-                continue;
-            }
-
             if (s_tokens.size() == 5 && s_tokens[0] == "SPAWN") {
                 // 落とし子自動生成率
                 if (s_tokens[1] == "CREATURE") {
@@ -273,6 +249,32 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                     r_ptr->spawn_items.push_back({ num, deno, kind_idx });
                     continue;
                 }
+            }
+
+            if (!grab_one_basic_flag(r_ptr, f))
+                return PARSE_ERROR_INVALID_FLAG;
+        }
+
+    } else if (tokens[0] == "S") {
+        // S:flags
+        if (tokens.size() < 2 || tokens[1].size() == 0)
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+
+        const auto &flags = str_split(tokens[1], '|', true, 10);
+        for (const auto &f : flags) {
+            if (f.size() == 0)
+                continue;
+
+            const auto &s_tokens = str_split(f, '_', false, 3);
+
+            // 特殊行動確率
+            if (s_tokens.size() == 3 && s_tokens[1] == "IN") {
+                if (s_tokens[0] != "1")
+                    return PARSE_ERROR_GENERIC;
+                RARITY i;
+                info_set_value(i, s_tokens[2]);
+                r_ptr->freq_spell = 100 / i;
+                continue;
             }
 
 
