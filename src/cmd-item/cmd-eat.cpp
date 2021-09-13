@@ -420,6 +420,7 @@ bool exe_eat_food_type_object(player_type *creature_ptr, object_type *o_ptr)
 #ifdef JP
     /* それぞれの食べ物の感想をオリジナルより細かく表現 */
     case SV_FOOD_BISCUIT:
+    case SV_FOOD_COOKIE:
         msg_print("甘くてサクサクしてとてもおいしい。");
         return true;
     case SV_FOOD_JERKY:

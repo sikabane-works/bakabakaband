@@ -43,4 +43,5 @@ enum sv_food_type {
     SV_FOOD_GOLDEN_EGG = 52,
     SV_FOOD_ABESHI = 56,
     SV_FOOD_HIDEBU = 57,
+    SV_FOOD_COOKIE = 58,
 };
