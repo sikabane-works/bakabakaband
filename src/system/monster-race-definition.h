@@ -75,6 +75,7 @@ struct monster_race {
     std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
+    std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
     PERCENTAGE artifact_percent[4]{}; //!< 特定アーティファクトドロップ率
