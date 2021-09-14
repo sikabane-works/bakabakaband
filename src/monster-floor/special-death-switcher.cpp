@@ -30,6 +30,7 @@
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object-hook/hook-checker.h"
+#include "object-hook/hook-enchant.h"
 #include "object/object-kind-hook.h"
 #include "spell/spell-types.h"
 #include "spell/summon-types.h"
@@ -100,7 +101,62 @@ static void on_dead_pink_horror(player_type *player_ptr, monster_death_type *md_
     }
 }
 
-static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
+static void on_dead_drop_item(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    for (auto kind : md_ptr->r_ptr->drop_kinds) {
+        object_type forge;
+        object_type *q_ptr = &forge;
+        int num = std::get<0>(kind);
+        int deno = std::get<1>(kind);
+        if (randint1(deno) > num) {
+            continue;
+        }
+        int kind_idx = std::get<2>(kind);
+        int grade = std::get<3>(kind);
+        int dn = std::get<4>(kind);
+        int ds = std::get<5>(kind);
+        int drop_nums = damroll(dn, ds);
+
+        for (int i = 0; i < drop_nums; i++)
+        {
+            q_ptr->prep(kind_idx);
+            switch (grade) {
+            /* Apply bad magic, but first clear object */
+            case -2:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_GREAT | AM_CURSED);
+                break;
+            /* Apply bad magic, but first clear object */
+            case -1:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_CURSED);
+                break;
+            /* Apply normal magic, but first clear object */
+            case 0:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART);
+                break;
+            /* Apply good magic, but first clear object */
+            case 1:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD);
+                break;
+            /* Apply great magic, but first clear object */
+            case 2:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_GREAT);
+                break;
+            /* Apply special magic, but first clear object */
+            case 3:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_GOOD | AM_GREAT | AM_SPECIAL);
+                if (!object_is_artifact(q_ptr)) {
+                    become_random_artifact(player_ptr, q_ptr, false);
+                }
+                break;
+            default:
+                break;
+            }
+            (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+        }
+    }
+}
+
+    static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
 {
     object_type forge;
     object_type *q_ptr = &forge;
@@ -606,6 +662,7 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
         on_dead_ninja(player_ptr, md_ptr);
         return;
     }
+    on_dead_drop_item(player_ptr, md_ptr);
 
     switch (md_ptr->m_ptr->r_idx) {
     case MON_EARTH_DESTROYER:
