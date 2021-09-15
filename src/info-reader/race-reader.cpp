@@ -251,7 +251,7 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 }
             }
 
-            if (s_tokens.size() == 7 && s_tokens[0] == "DROP" && s_tokens[1] == "KIND") {
+            if (s_tokens.size() == 8 && s_tokens[0] == "DROP" && s_tokens[1] == "KIND" && s_tokens[3] == "IN") {
                 int num;
                 int deno;
                 int dn;
@@ -259,10 +259,10 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 int grade;
                 KIND_OBJECT_IDX kind_idx;
                 info_set_value(num, s_tokens[2]);
-                info_set_value(deno, s_tokens[3]);
-                info_set_value(kind_idx, s_tokens[4]);
-                info_set_value(grade, s_tokens[5]);
-                const auto &dices = str_split(s_tokens[6], 'd', true, 10);
+                info_set_value(deno, s_tokens[4]);
+                info_set_value(kind_idx, s_tokens[5]);
+                info_set_value(grade, s_tokens[6]);
+                const auto &dices = str_split(s_tokens[7], 'd', true, 10);
                 if (dices.size() != 2) {
                     return PARSE_ERROR_INVALID_FLAG;
                 }
