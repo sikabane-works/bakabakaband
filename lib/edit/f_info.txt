@@ -2316,10 +2316,18 @@ F:HURT_DISI
 
 N:289:RAIL
 J:レール
-E:rai;
+E:rail
 G:::s:LIT
 W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE
+
+N:290:LONGMAI
+J:龍脈
+E:longmai
+G:*:Y:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE | RUNE_HEALING
+
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
