@@ -306,22 +306,23 @@ static void coord_trans(POSITION *x, POSITION *y, POSITION xoffset, POSITION yof
 
 /*!
  * @brief Vaultをフロアに配置する / Hack -- fill in "vault" rooms
+ * @param v_ptr Vault情報への参照ポインタ
  * @param player_ptr プレーヤーへの参照ポインタ
  * @param yval 生成基準Y座標
  * @param xval 生成基準X座標
- * @param ymax VaultのYサイズ
- * @param xmax VaultのXサイズ
- * @param data Vaultのデータ文字列
  * @param xoffset 変換基準X座標
  * @param yoffset 変換基準Y座標
  * @param transno 変換ID
  */
 static void build_vault(
-    player_type *player_ptr, POSITION yval, POSITION xval, POSITION ymax, POSITION xmax, concptr data, POSITION xoffset, POSITION yoffset, int transno)
+    vault_type *v_ptr, player_type *player_ptr, POSITION yval, POSITION xval, POSITION xoffset, POSITION yoffset, int transno)
 {
     POSITION dx, dy, x, y, i, j;
     concptr t;
     grid_type *g_ptr;
+    POSITION ymax = v_ptr->hgt;
+    POSITION xmax = v_ptr->wid;
+    concptr data = v_ptr->text.c_str();
 
     /* Place dungeon features and objects */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
@@ -358,6 +359,10 @@ static void build_vault(
             /* Part of a vault */
             g_ptr->info |= (CAVE_ROOM | CAVE_ICKY);
 
+            if (v_ptr->feature_list.count(*t) != 0) {
+                set_cave_feat(floor_ptr, y, x, v_ptr->feature_list[*t]);
+                continue;
+            }
             /* Analyze the grid */
             switch (*t) {
                 /* Granite wall (outer) */
@@ -666,7 +671,7 @@ bool build_type7(player_type *player_ptr, dun_data_type *dd_ptr)
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("小型Vault(%s)を生成しました。", "Lesser vault (%s)."), v_ptr->name.c_str());
 
     /* Hack -- Build the vault */
-    build_vault(player_ptr, yval, xval, v_ptr->hgt, v_ptr->wid, v_ptr->text.c_str(), xoffset, yoffset, transno);
+    build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
 
     return true;
 }
@@ -740,7 +745,7 @@ bool build_type8(player_type *player_ptr, dun_data_type *dd_ptr)
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("大型固定Vault(%s)を生成しました。", "Greater vault (%s)."), v_ptr->name.c_str());
 
     /* Hack -- Build the vault */
-    build_vault(player_ptr, yval, xval, v_ptr->hgt, v_ptr->wid, v_ptr->text.c_str(), xoffset, yoffset, transno);
+    build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
 
     return true;
 }
@@ -1207,7 +1212,7 @@ bool build_type17(player_type *player_ptr, dun_data_type *dd_ptr)
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
 
     /* Hack -- Build the vault */
-    build_vault(player_ptr, yval, xval, v_ptr->hgt, v_ptr->wid, v_ptr->text.c_str(), xoffset, yoffset, transno);
+    build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
 
     return true;
 }
