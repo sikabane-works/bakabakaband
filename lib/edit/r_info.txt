@@ -29343,6 +29343,17 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:HUMAN | IM_FIRE | IM_POIS
 D:『しっとの心は父心！押せば命の泉沸く！』
 
+N:1547:三次元のツンデレ女
+E:3D tundere woman
+G:t:D
+I:110:1d4:4:1:40
+W:0:9:0:0:0:0
+B:BEG:FLAVOR
+B:TOUCH:EAT_GOLD
+F:FEMALE | EVIL | WILD_TOWN | WILD_ONLY
+F:RAND_25 | HUMAN |
+F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
+D:架空の世界でなければ害悪というものが確かにあるのだ。
 
 # N: serial number : monster name
 # G: symbol : color
