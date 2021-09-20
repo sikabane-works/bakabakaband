@@ -35,6 +35,7 @@ typedef struct lore_type {
     BIT_FLAGS flags8;
     BIT_FLAGS flagsr;
     bool reinforce;
+    bool spawn_monster;
     bool know_everything;
     BIT_FLAGS mode;
     monster_sex msex;
