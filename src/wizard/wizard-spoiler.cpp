@@ -259,7 +259,7 @@ static spoiler_output_status spoil_player_spell(concptr fname)
         if (magic_ptr->spell_book != 0) {
             object_type book;
             auto o_ptr = &book;
-            o_ptr->prep(&dummy_p, lookup_kind(magic_ptr->spell_book, 0));
+            o_ptr->prep(lookup_kind(magic_ptr->spell_book, 0));
             describe_flavor(&dummy_p, title, o_ptr, OD_NAME_ONLY);
             book_name = title;
             char *s = angband_strchr(book_name, '[');
@@ -274,7 +274,7 @@ static spoiler_output_status spoil_player_spell(concptr fname)
             continue;
         }
 
-        for (REALM_IDX r = 1; r < MAX_MAGIC; r++) {
+        for (int16_t r = 1; r < MAX_MAGIC; r++) {
             sprintf(buf, "[Realm: %s]\n", realm_names[r]);
             spoil_out(buf);
             spoil_out("Name                     Lv Cst Dif Exp\n");

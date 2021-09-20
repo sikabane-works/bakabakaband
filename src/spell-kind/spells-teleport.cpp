@@ -5,6 +5,7 @@
  */
 
 #include "spell-kind/spells-teleport.h"
+#include "avatar/avatar.h"
 #include "core/asking-player.h"
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
@@ -28,12 +29,12 @@
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-checker.h"
 #include "object/object-flags.h"
-#include "player-info/avatar.h"
 #include "player/player-move.h"
 #include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -73,7 +74,7 @@ bool teleport_swap(player_type *caster_ptr, DIRECTION dir)
         return false;
     }
 
-    if ((g_ptr->info & CAVE_ICKY) || (distance(ty, tx, caster_ptr->y, caster_ptr->x) > caster_ptr->lev * 3 / 2 + 10)) {
+    if ((g_ptr->is_icky()) || (distance(ty, tx, caster_ptr->y, caster_ptr->x) > caster_ptr->lev * 3 / 2 + 10)) {
         msg_print(_("失敗した。", "Failed to swap."));
         return false;
     }
@@ -157,7 +158,7 @@ bool teleport_away(player_type *caster_ptr, MONSTER_IDX m_idx, POSITION dis, tel
             if (!cave_monster_teleportable_bold(caster_ptr, m_idx, ny, nx, mode))
                 continue;
             if (!(caster_ptr->current_floor_ptr->inside_quest || caster_ptr->current_floor_ptr->inside_arena))
-                if (caster_ptr->current_floor_ptr->grid_array[ny][nx].info & CAVE_ICKY)
+                if (caster_ptr->current_floor_ptr->grid_array[ny][nx].is_icky())
                     continue;
 
             look = false;
@@ -408,6 +409,9 @@ void teleport_player(player_type *creature_ptr, POSITION dis, BIT_FLAGS mode)
  */
 void teleport_player_away(MONSTER_IDX m_idx, player_type *target_ptr, POSITION dis, bool is_quantum_effect)
 {
+    if (target_ptr->phase_out)
+        return;
+
     const POSITION oy = target_ptr->y;
     const POSITION ox = target_ptr->x;
 
@@ -511,14 +515,14 @@ void teleport_away_followable(player_type *tracer_ptr, MONSTER_IDX m_idx)
     if (tracer_ptr->muta.has(MUTA::VTELEPORT) || (tracer_ptr->pclass == CLASS_IMITATOR))
         follow = true;
     else {
-        BIT_FLAGS flgs[TR_FLAG_SIZE];
+        TrFlags flgs;
         object_type *o_ptr;
         INVENTORY_IDX i;
 
         for (i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
             o_ptr = &tracer_ptr->inventory_list[i];
             if (o_ptr->k_idx && !object_is_cursed(o_ptr)) {
-                object_flags(tracer_ptr, o_ptr, flgs);
+                object_flags(o_ptr, flgs);
                 if (has_flag(flgs, TR_TELEPORT)) {
                     follow = true;
                     break;
@@ -554,11 +558,11 @@ bool exe_dimension_door(player_type *caster_ptr, POSITION x, POSITION y)
 {
     PLAYER_LEVEL plev = caster_ptr->lev;
 
-    caster_ptr->energy_need += (s16b)((s32b)(60 - plev) * ENERGY_NEED() / 100L);
+    caster_ptr->energy_need += (int16_t)((int32_t)(60 - plev) * ENERGY_NEED() / 100L);
 
     if (!cave_player_teleportable_bold(caster_ptr, y, x, TELEPORT_SPONTANEOUS) || (distance(y, x, caster_ptr->y, caster_ptr->x) > plev / 2 + 10)
         || (!randint0(plev / 10 + 10))) {
-        caster_ptr->energy_need += (s16b)((s32b)(60 - plev) * ENERGY_NEED() / 100L);
+        caster_ptr->energy_need += (int16_t)((int32_t)(60 - plev) * ENERGY_NEED() / 100L);
         teleport_player(caster_ptr, (plev + 2) * 2, TELEPORT_PASSIVE);
         return false;
     }

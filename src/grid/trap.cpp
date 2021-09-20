@@ -37,6 +37,7 @@
 #include "status/base-status.h"
 #include "status/element-resistance.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
@@ -45,7 +46,7 @@
 #include "world/world.h"
 #include "player/player-status-resist.h"
 
-static s16b normal_traps[MAX_NORMAL_TRAPS];
+static int16_t normal_traps[MAX_NORMAL_TRAPS];
 
 /*!
  * @brief 箱のトラップテーブル
@@ -178,7 +179,7 @@ FEAT_IDX choose_random_trap(player_type *trapped_ptr)
         feat = normal_traps[randint0(MAX_NORMAL_TRAPS)];
 
         /* Accept non-trapdoors */
-        if (!has_flag(f_info[feat].flags, FF_MORE))
+        if (f_info[feat].flags.has_not(FF::MORE))
             break;
 
         /* Hack -- no trap doors on special levels */
@@ -206,9 +207,9 @@ void disclose_grid(player_type *trapped_ptr, POSITION y, POSITION x)
 {
     grid_type *g_ptr = &trapped_ptr->current_floor_ptr->grid_array[y][x];
 
-    if (cave_has_flag_grid(g_ptr, FF_SECRET)) {
+    if (g_ptr->cave_has_flag(FF::SECRET)) {
         /* No longer hidden */
-        cave_alter_feat(trapped_ptr, y, x, FF_SECRET);
+        cave_alter_feat(trapped_ptr, y, x, FF::SECRET);
     } else if (g_ptr->mimic) {
         /* No longer hidden */
         g_ptr->mimic = 0;
@@ -410,12 +411,17 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
     POSITION x = trapped_ptr->x, y = trapped_ptr->y;
     grid_type *g_ptr = &trapped_ptr->current_floor_ptr->grid_array[y][x];
     feature_type *f_ptr = &f_info[g_ptr->feat];
-    enum trap_type trap_feat_type = has_flag(f_ptr->flags, FF_TRAP) ? (enum ::trap_type)f_ptr->subtype : NOT_TRAP;
+    enum trap_type trap_feat_type = f_ptr->flags.has(FF::TRAP) ? (enum trap_type)f_ptr->subtype : NOT_TRAP;
     concptr name = _("トラップ", "a trap");
 
     disturb(trapped_ptr, false, true);
 
-    cave_alter_feat(trapped_ptr, y, x, FF_HIT_TRAP);
+    cave_alter_feat(trapped_ptr, y, x, FF::HIT_TRAP);
+
+	if (trapped_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+        trapped_ptr->incident[INCIDENT::TRAPPED] = 0;
+    }
+    trapped_ptr->incident[INCIDENT::TRAPPED]++;
 
     /* Analyze */
     switch (trap_feat_type) {
@@ -426,7 +432,7 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
             msg_print(_("落とし戸に落ちた！", "You have fallen through a trap door!"));
             if (is_echizen(trapped_ptr))
                 msg_print(_("くっそ～！", ""));
-            else if (trapped_ptr->pseikaku == PERSONALITY_CHARGEMAN)
+            else if (is_chargeman(trapped_ptr))
                 msg_print(_("ジュラル星人の仕業に違いない！", ""));
 
             sound(SOUND_FALL);
@@ -440,8 +446,7 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
                 do_cmd_save_game(trapped_ptr, true);
 
             exe_write_diary(trapped_ptr, DIARY_DESCRIPTION, 0, _("落とし戸に落ちた", "fell through a trap door!"));
-            prepare_change_floor_mode(trapped_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            trapped_ptr->leaving = true;
+            move_floor(trapped_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
         break;
     }
@@ -667,7 +672,7 @@ void hit_trap(player_type *trapped_ptr, bool break_trap)
     }
 
     if (break_trap && is_trap(trapped_ptr, g_ptr->feat)) {
-        cave_alter_feat(trapped_ptr, y, x, FF_DISARM);
+        cave_alter_feat(trapped_ptr, y, x, FF::DISARM);
         msg_print(_("トラップを粉砕した。", "You destroyed the trap."));
     }
 }

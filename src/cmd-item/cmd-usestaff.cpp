@@ -1,5 +1,6 @@
 ﻿#include "cmd-item/cmd-usestaff.h"
 #include "action/action-limited.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -11,13 +12,13 @@
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "object-enchant/special-object-flags.h"
+#include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player/attack-defense-types.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
+#include "player/attack-defense-types.h"
 #include "player/player-class.h"
 #include "player/player-race-types.h"
 #include "player/player-race.h"
@@ -48,8 +49,8 @@
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
-#include "util/bit-flags-calculator.h"
 #include "term/screen-processor.h"
+#include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
 
@@ -69,6 +70,11 @@ int staff_effect(player_type *creature_ptr, OBJECT_SUBTYPE_VALUE sval, bool *use
     bool ident = false;
     PLAYER_LEVEL lev = powerful ? creature_ptr->lev * 2 : creature_ptr->lev;
     POSITION detect_rad = powerful ? DETECT_RAD_DEFAULT * 3 / 2 : DETECT_RAD_DEFAULT;
+
+    if (creature_ptr->incident.count(INCIDENT::ZAP_STAFF) == 0) {
+        creature_ptr->incident[INCIDENT::ZAP_STAFF] = 0;
+    }
+    creature_ptr->incident[INCIDENT::ZAP_STAFF]++;
 
     /* Analyze the staff */
     switch (sval) {
@@ -113,10 +119,10 @@ int staff_effect(player_type *creature_ptr, OBJECT_SUBTYPE_VALUE sval, bool *use
 
     case SV_STAFF_IDENTIFY: {
         if (powerful) {
-            if (!identify_fully(creature_ptr, false, TV_NONE))
+            if (!identify_fully(creature_ptr, false))
                 *use_charge = false;
         } else {
-            if (!ident_spell(creature_ptr, false, TV_NONE))
+            if (!ident_spell(creature_ptr, false))
                 *use_charge = false;
         }
         ident = true;
@@ -449,7 +455,7 @@ void do_cmd_use_staff(player_type *creature_ptr)
 
     q = _("どの杖を使いますか? ", "Use which staff? ");
     s = _("使える杖がない。", "You have no staff to use.");
-    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TV_STAFF))
+    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TvalItemTester(TV_STAFF)))
         return;
 
     exe_use_staff(creature_ptr, item);

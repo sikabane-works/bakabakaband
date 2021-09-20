@@ -4,7 +4,6 @@
 #include "effect/effect-characteristics.h"
 #include "floor/line-of-sight.h"
 #include "floor/geometry.h"
-#include "grid/grid.h"
 #include "melee/melee-spell-util.h"
 #include "monster-floor/monster-move.h"
 #include "monster-race/monster-race.h"
@@ -22,6 +21,7 @@
 #include "spell-kind/spells-world.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -133,7 +133,7 @@ static void check_melee_spell_distance(player_type *target_ptr, melee_spell_type
 {
     auto ball_mask_except_rocket = RF_ABILITY_BALL_MASK;
     ball_mask_except_rocket.reset(RF_ABILITY::ROCKET);
-    if (ms_ptr->ability_flags.has_any_of(ball_mask_except_rocket))
+    if (ms_ptr->ability_flags.has_none_of(ball_mask_except_rocket))
         return;
 
     POSITION real_y = ms_ptr->y;

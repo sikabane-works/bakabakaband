@@ -8,6 +8,7 @@
 #include "object-use/read-execution.h"
 #include "action/action-limited.h"
 #include "artifact/fixed-art-types.h"
+#include "avatar/avatar.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
 #include "core/show-file.h"
@@ -24,7 +25,6 @@
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player-info/avatar.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
@@ -99,6 +99,11 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
 
     if (hex_spelling_any(creature_ptr) && ((creature_ptr->lev < 35) || hex_spell_fully(creature_ptr)))
         stop_hex_spell_all(creature_ptr);
+
+    if (creature_ptr->incident.count(INCIDENT::READ_SCROLL) == 0) {
+        creature_ptr->incident[INCIDENT::READ_SCROLL] = 0;
+    }
+    creature_ptr->incident[INCIDENT::READ_SCROLL]++;
 
     ident = false;
     lev = k_info[o_ptr->k_idx].level;
@@ -202,14 +207,14 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
             break;
         }
         case SV_SCROLL_IDENTIFY: {
-            if (!ident_spell(creature_ptr, false, TV_NONE))
+            if (!ident_spell(creature_ptr, false))
                 used_up = false;
 
             ident = true;
             break;
         }
         case SV_SCROLL_STAR_IDENTIFY: {
-            if (!identify_fully(creature_ptr, false, TV_NONE))
+            if (!identify_fully(creature_ptr, false))
                 used_up = false;
 
             ident = true;
@@ -481,8 +486,26 @@ void exe_read(player_type *creature_ptr, INVENTORY_IDX item, bool known)
         case SV_SCROLL_CALL_THE_VOID: {
             ident = true;
             call_the_void(creature_ptr);
+            break;
         }
-
+        case SV_SCROLL_THUNDER: {
+            fire_ball(creature_ptr, GF_ELEC, 0, 888, 4);
+            if (!(is_oppose_elec(creature_ptr) || has_resist_elec(creature_ptr) || has_immune_elec(creature_ptr)))
+                take_hit(creature_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("雷の巻物", "a Scroll of Thunder"));
+            ident = true;
+            break;
+        }
+        case SV_SCROLL_POWERFUL_EYE_SENIOR: {
+            for (k = 0; k < 20; k++) {
+                summon_specific(creature_ptr, -1, creature_ptr->y, creature_ptr->x, 50, SUMMON_POWERFUL_EYE_SENIOR, 0);
+            }
+            ident = true;
+            break;
+        }
+        case SV_SCROLL_TREE_CREATION: {
+            tree_creation(creature_ptr, creature_ptr->y, creature_ptr->x);
+            break;
+        }
         }
         }
     } else if (o_ptr->name1 == ART_GHB) {

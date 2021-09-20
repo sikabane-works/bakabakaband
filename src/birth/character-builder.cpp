@@ -33,6 +33,7 @@
 #include "store/store-owners.h"
 #include "store/store.h"
 #include "system/player-type-definition.h"
+#include "util/enum-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 
@@ -55,7 +56,7 @@ static void write_birth_diary(player_type *creature_ptr)
     char buf[80];
     sprintf(buf, _("%s性別に%sを選択した。", "%schose %s gender."), indent, sex_info[creature_ptr->psex].title);
     exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, buf);
-    sprintf(buf, _("%s種族に%sを選択した。", "%schose %s race."), indent, race_info[creature_ptr->prace].title);
+    sprintf(buf, _("%s種族に%sを選択した。", "%schose %s race."), indent, race_info[enum2i(creature_ptr->prace)].title);
     exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, buf);
     sprintf(buf, _("%s職業に%sを選択した。", "%schose %s class."), indent, class_info[creature_ptr->pclass].title);
     exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, buf);
@@ -71,7 +72,7 @@ static void write_birth_diary(player_type *creature_ptr)
     sprintf(buf, _("%s性格に%sを選択した。", "%schose %s personality."), indent, personality_info[creature_ptr->pseikaku].title);
     exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, buf);
     if (creature_ptr->pclass == CLASS_CHAOS_WARRIOR) {
-        sprintf(buf, _("%s守護神%sと契約を交わした。", "%smade a contract with patron %s."), indent, chaos_patrons[creature_ptr->chaos_patron]);
+        sprintf(buf, _("%s守護神%sと契約を交わした。", "%smade a contract with patron %s."), indent, patron_list[creature_ptr->chaos_patron].name.c_str());
         exe_write_diary(creature_ptr, DIARY_DESCRIPTION, 1, buf);
     }
 }
@@ -105,7 +106,7 @@ void player_birth(player_type *creature_ptr)
     }
 
     seed_wilderness();
-    if (creature_ptr->prace == RACE_BEASTMAN)
+    if (creature_ptr->prace == player_race_type::BEASTMAN)
         creature_ptr->hack_mutation = true;
     else
         creature_ptr->hack_mutation = false;

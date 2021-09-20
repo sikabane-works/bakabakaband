@@ -11,7 +11,6 @@
 #include "floor/geometry.h"
 #include "floor/line-of-sight.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-mask.h"
 #include "monster-race/race-flags2.h"
@@ -21,6 +20,7 @@
 #include "mspell/mspell-judgement.h"
 #include "spell/range-calc.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -37,7 +37,7 @@
  * @param path_check 射線を判定するための関数ポインタ
  * @return 有効な座標があった場合TRUEを返す
  */
-bool adjacent_grid_check(player_type *target_ptr, monster_type *m_ptr, POSITION *yp, POSITION *xp, int f_flag, path_check_pf path_check)
+bool adjacent_grid_check(player_type *target_ptr, monster_type *m_ptr, POSITION *yp, POSITION *xp, FF f_flag, path_check_pf path_check)
 {
     static int tonari_y[4][8] = { { -1, -1, -1, 0, 0, 1, 1, 1 }, { -1, -1, -1, 0, 0, 1, 1, 1 }, { 1, 1, 1, 0, 0, -1, -1, -1 }, { 1, 1, 1, 0, 0, -1, -1, -1 } };
     static int tonari_x[4][8] = { { -1, 0, 1, -1, 1, -1, 0, 1 }, { 1, 0, -1, 1, -1, 1, 0, -1 }, { -1, 0, 1, -1, 1, -1, 0, 1 }, { 1, 0, -1, 1, -1, 1, 0, -1 } };
@@ -57,7 +57,7 @@ bool adjacent_grid_check(player_type *target_ptr, monster_type *m_ptr, POSITION 
         int next_y = *yp + tonari_y[next][i];
         grid_type *g_ptr;
         g_ptr = &target_ptr->current_floor_ptr->grid_array[next_y][next_x];
-        if (!cave_has_flag_grid(g_ptr, f_flag))
+        if (!g_ptr->cave_has_flag(f_flag))
             continue;
 
         if (path_check(target_ptr, m_ptr->fy, m_ptr->fx, next_y, next_x)) {
@@ -79,9 +79,9 @@ void decide_lite_range(player_type *target_ptr, msa_type *msa_ptr)
     msa_ptr->x_br_lite = msa_ptr->x;
     if (los(target_ptr, msa_ptr->m_ptr->fy, msa_ptr->m_ptr->fx, msa_ptr->y_br_lite, msa_ptr->x_br_lite)) {
         feature_type *f_ptr = &f_info[target_ptr->current_floor_ptr->grid_array[msa_ptr->y_br_lite][msa_ptr->x_br_lite].feat];
-        if (!has_flag(f_ptr->flags, FF_LOS) && has_flag(f_ptr->flags, FF_PROJECT) && one_in_(2))
+        if (f_ptr->flags.has_not(FF::LOS) && f_ptr->flags.has(FF::PROJECT) && one_in_(2))
             msa_ptr->ability_flags.reset(RF_ABILITY::BR_LITE);
-    } else if (!adjacent_grid_check(target_ptr, msa_ptr->m_ptr, &msa_ptr->y_br_lite, &msa_ptr->x_br_lite, FF_LOS, los))
+    } else if (!adjacent_grid_check(target_ptr, msa_ptr->m_ptr, &msa_ptr->y_br_lite, &msa_ptr->x_br_lite, FF::LOS, los))
         msa_ptr->ability_flags.reset(RF_ABILITY::BR_LITE);
 
     if (msa_ptr->ability_flags.has(RF_ABILITY::BR_LITE))
@@ -94,15 +94,15 @@ void decide_lite_range(player_type *target_ptr, msa_type *msa_ptr)
 static void feature_projection(floor_type *floor_ptr, msa_type *msa_ptr)
 {
     feature_type *f_ptr = &f_info[floor_ptr->grid_array[msa_ptr->y][msa_ptr->x].feat];
-    if (has_flag(f_ptr->flags, FF_PROJECT))
+    if (f_ptr->flags.has(FF::PROJECT))
         return;
 
-    if (msa_ptr->ability_flags.has(RF_ABILITY::BR_DISI) && has_flag(f_ptr->flags, FF_HURT_DISI) && one_in_(2)) {
+    if (msa_ptr->ability_flags.has(RF_ABILITY::BR_DISI) && f_ptr->flags.has(FF::HURT_DISI) && one_in_(2)) {
         msa_ptr->do_spell = DO_SPELL_BR_DISI;
         return;
     }
 
-    if (msa_ptr->ability_flags.has(RF_ABILITY::BR_LITE) && has_flag(f_ptr->flags, FF_LOS) && one_in_(2))
+    if (msa_ptr->ability_flags.has(RF_ABILITY::BR_LITE) && f_ptr->flags.has(FF::LOS) && one_in_(2))
         msa_ptr->do_spell = DO_SPELL_BR_LITE;
 }
 
@@ -170,7 +170,7 @@ bool decide_lite_projection(player_type *target_ptr, msa_type *msa_ptr)
     msa_ptr->success = false;
     check_lite_area_by_mspell(target_ptr, msa_ptr);
     if (!msa_ptr->success)
-        msa_ptr->success = adjacent_grid_check(target_ptr, msa_ptr->m_ptr, &msa_ptr->y, &msa_ptr->x, FF_PROJECT, projectable);
+        msa_ptr->success = adjacent_grid_check(target_ptr, msa_ptr->m_ptr, &msa_ptr->y, &msa_ptr->x, FF::PROJECT, projectable);
 
     decide_lite_breath(target_ptr, msa_ptr);
     return msa_ptr->success;

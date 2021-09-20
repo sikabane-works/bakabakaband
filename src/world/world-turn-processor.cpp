@@ -12,7 +12,6 @@
 #include "game-option/special-options.h"
 #include "game-option/text-display-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "hpmp/hp-mp-processor.h"
 #include "hpmp/hp-mp-regenerator.h"
 #include "inventory/inventory-curse.h"
@@ -33,6 +32,7 @@
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -55,8 +55,8 @@ WorldTurnProcessor::WorldTurnProcessor(player_type *player_ptr)
  */
 void WorldTurnProcessor::process_world()
 {
-    const s32b a_day = TURNS_PER_TICK * TOWN_DAWN;
-    s32b prev_turn_in_today = ((current_world_ptr->game_turn - TURNS_PER_TICK) % a_day + a_day / 4) % a_day;
+    const int32_t a_day = TURNS_PER_TICK * TOWN_DAWN;
+    int32_t prev_turn_in_today = ((current_world_ptr->game_turn - TURNS_PER_TICK) % a_day + a_day / 4) % a_day;
     int prev_min = (1440 * prev_turn_in_today / a_day) % 60;
 
     int dummy_day;
@@ -89,6 +89,7 @@ void WorldTurnProcessor::process_world()
     reduce_magic_effects_timeout(this->player_ptr);
     reduce_lite_life(this->player_ptr);
     process_world_aux_mutation(this->player_ptr);
+    process_world_aux_sudden_attack(this->player_ptr);
     execute_cursed_items_effect(this->player_ptr);
     recharge_magic_items(this->player_ptr);
     sense_inventory1(this->player_ptr);
@@ -124,10 +125,9 @@ void WorldTurnProcessor::process_downward()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     floor_ptr->dun_level = 0;
     this->player_ptr->dungeon_idx = 0;
-    prepare_change_floor_mode(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
+    move_floor(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
     floor_ptr->inside_arena = false;
     this->player_ptr->wild_mode = false;
-    this->player_ptr->leaving = true;
 }
 
 void WorldTurnProcessor::process_monster_arena()
@@ -208,7 +208,7 @@ void WorldTurnProcessor::decide_auto_save()
 
     auto should_save = autosave_t;
     should_save &= !this->player_ptr->phase_out;
-    should_save &= current_world_ptr->game_turn % ((s32b)autosave_freq * TURNS_PER_TICK) == 0;
+    should_save &= current_world_ptr->game_turn % ((int32_t)autosave_freq * TURNS_PER_TICK) == 0;
     if (should_save) {
         do_cmd_save_game(this->player_ptr, true);
     }
@@ -282,7 +282,7 @@ void WorldTurnProcessor::shuffle_shopkeeper()
 
     for (auto i = 1; i < max_f_idx; i++) {
         auto *f_ptr = &f_info[i];
-        if (f_ptr->name.empty() || !has_flag(f_ptr->flags, FF_STORE))
+        if (f_ptr->name.empty() || f_ptr->flags.has_not(FF::STORE))
             continue;
 
         if (f_ptr->subtype != n) {

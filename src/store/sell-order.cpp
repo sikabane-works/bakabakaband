@@ -1,6 +1,7 @@
 ﻿#include "store/sell-order.h"
 #include "action/weapon-shield.h"
 #include "autopick/autopick.h"
+#include "avatar/avatar.h"
 #include "core/asking-player.h"
 #include "core/player-update-types.h"
 #include "core/stuff-handler.h"
@@ -23,7 +24,6 @@
 #include "object/object-info.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
-#include "player-info/avatar.h"
 #include "racial/racial-android.h"
 #include "spell-kind/spells-perception.h"
 #include "store/home.h"
@@ -52,22 +52,8 @@
 static std::optional<PRICE> prompt_to_sell(player_type *player_ptr, object_type *o_ptr)
 {
     auto price_ask = price_item(player_ptr, o_ptr, ot_ptr->inflate, true);
-    auto is_low_price = price_ask < LOW_PRICE_THRESHOLD;
 
-    if (!is_low_price)
-        price_ask -= price_ask / 10;
-
-    auto max_price = (PRICE)ot_ptr->max_cost;
-
-    if (price_ask > max_price) {
-        msg_print(_("即座にこの金額にまとまった。", "You instantly agree upon the price."));
-        msg_print(NULL);
-        price_ask = max_price;
-    } else {
-        msg_print(_("すんなりとこの金額にまとまった。", "You quickly agree upon the price."));
-        msg_print(NULL);
-    }
-
+    price_ask = std::min(price_ask, ot_ptr->max_cost);
     price_ask *= o_ptr->number;
     concptr s = format(_("売値 $%ld で売りますか？", "Do you sell for $%ld? "), static_cast<long>(price_ask));
     if (get_check_strict(player_ptr, s, CHECK_DEFAULT_Y)) {
@@ -105,11 +91,9 @@ void store_sell(player_type *owner_ptr)
         break;
     }
 
-    item_tester_hook = store_will_buy;
-
     OBJECT_IDX item;
     object_type *o_ptr;
-    o_ptr = choose_object(owner_ptr, &item, q, s_none, USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT, TV_NONE);
+    o_ptr = choose_object(owner_ptr, &item, q, s_none, USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT, FuncItemTester(store_will_buy, owner_ptr));
     if (!o_ptr)
         return;
 
@@ -165,7 +149,7 @@ void store_sell(player_type *owner_ptr)
 
             owner_ptr->au += price;
             store_prt_gold(owner_ptr);
-            PRICE dummy = object_value(owner_ptr, q_ptr) * q_ptr->number;
+            PRICE dummy = object_value(q_ptr) * q_ptr->number;
 
             identify_item(owner_ptr, o_ptr);
             q_ptr = &forge;
@@ -176,12 +160,17 @@ void store_sell(player_type *owner_ptr)
             if ((o_ptr->tval == TV_ROD) || (o_ptr->tval == TV_WAND))
                 q_ptr->pval = o_ptr->pval * amt / o_ptr->number;
 
-            PRICE value = object_value(owner_ptr, q_ptr) * q_ptr->number;
+            PRICE value = object_value(q_ptr) * q_ptr->number;
             describe_flavor(owner_ptr, o_name, q_ptr, 0);
             msg_format(_("%sを $%ldで売却しました。", "You sold %s for %ld gold."), o_name, static_cast<long>(price));
 
             if (record_sell)
                 exe_write_diary(owner_ptr, DIARY_SELL, 0, o_name);
+
+            if (owner_ptr->incident.count(INCIDENT::STORE_SELL) == 0) {
+                owner_ptr->incident[INCIDENT::STORE_SELL] = 0;
+            }
+            owner_ptr->incident[INCIDENT::STORE_SELL]++;
 
             if (!((o_ptr->tval == TV_FIGURINE) && (value > 0)))
                 purchase_analyze(owner_ptr, price, value, dummy);
@@ -194,7 +183,7 @@ void store_sell(player_type *owner_ptr)
                 autopick_alter_item(owner_ptr, item, false);
 
             inven_item_optimize(owner_ptr, item);
-            int item_pos = store_carry(owner_ptr, q_ptr);
+            int item_pos = store_carry(q_ptr);
             if (item_pos >= 0) {
                 store_top = (item_pos / store_bottom) * store_bottom;
                 display_store_inventory(owner_ptr);

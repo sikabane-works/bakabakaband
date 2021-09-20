@@ -4057,8 +4057,8 @@ N:382:[自然の脅威]
 E:[Nature's Wrath]
 G:?:g
 I:92:3:0
-W:80:0:30:100000
-A:80/2
+W:90:0:30:100000
+A:90/3
 P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
@@ -4095,8 +4095,8 @@ N:386:[ハルマゲドン大全]
 E:[Armageddon Tome]
 G:?:r
 I:93:3:0
-W:100:0:30:100000
-A:100/3
+W:90:0:30:100000
+A:90/3
 P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
@@ -5931,7 +5931,7 @@ E:Sexy Swimsuit
 G:(:v
 I:36:50:0
 W:30:0:2:78000
-A:30/64
+A:30/20:50/8
 P:0:0d0:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | AGGRAVATE
 
@@ -6300,8 +6300,8 @@ N:657:[天神怒罰]
 E:[Wrath of God]
 G:?:w
 I:99:3:0
-W:95:0:30:100000
-A:95/3
+W:90:0:30:100000
+A:90/3
 P:0:1d1:0:0:0
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
@@ -6815,6 +6815,7 @@ I:3:11:0
 W:25:0:5:15
 A:30/3
 P:0:4d3:0:0:0
+B:0
 
 N:714:大地震:於芭 維斗賭
 E:Huge Earthquake:baba yahkal
@@ -6835,7 +6836,7 @@ F:INSTA_ART
 N:716:の血
 E:& blood of #
 G:!:r
-I:10:2:0
+I:10:3:0
 W:10:100:500:0
 A:5/100
 P:0:1d1:0:0:0
@@ -6848,6 +6849,304 @@ W:80:0:5:100
 A:80/2:90/1
 D:それは読むと途轍もない虚無の力が引き起こされる。
 
+N:718:雷:弥邊 甫賄吐 萬邪
+E:Thunder:yah bwhit mam
+G:?:w
+I:70:50:0
+W:75:0:5:6000
+A:75/6
+F:IGNORE_COLD
+D:$It produces a huge electric ball (damage of core: 888) centered on you when you 
+D:$read it. If you don't have resistance to electricity, you take 100+d100 damage.
+D:それは読むと中心部ダメージ888の巨大な電撃の球を自分を中心として発生する。
+D:電撃耐性がなければ自分も100+d100のダメージを受ける。
+
+N:719:クソデカ枕
+E:& Huge size pillow~
+G:&:W
+I:3:12:0
+W:1:0:5:5
+A:1/5
+P:0:1d6:0:0:0
+D:枕がデカすぎる。訴訟（きそ）
+F:NASTY
+
+N:720:桃かな？
+E:& peach?~
+G:,:R
+I:80:45:3
+A:5/5
+W:5:5:2:2
+F:NASTY
+D:うーん、それはおいしそうだ！
+
+N:721:植木鉢くんの断片
+E:& Fragment of flowerpot~
+G:~:u
+I:3:14:0
+W:1:0:5:5
+A:1/5
+P:0:1d1:0:0:0
+D:それは３カメを通じて捕らえられた悲劇のケツ末そのものだ。悲しいなあ！
+F:NASTY
+
+N:722:の脳
+E:& brain of #
+G:*:r
+I:10:4:0
+W:10:100:500:0
+A:5/100
+P:0:1d1:0:0:0
+
+N:723:目力先輩招来:位意余 枯尹四
+E:Summon powerfuleye senior:younaam tdkr
+G:?:w
+I:70:60:0
+W:1:0:5:0
+A:1/1
+D:$It summons powerfuleye seinors as enemies when you read it.
+D:それは読むと複数の目力先輩を敵として召喚する。
+
+N:724:テニスボール
+E:& Tennis ball~
+G:*:y
+I:3:16:5
+W:1:0:3:5
+A:1/5
+P:0:1d4:0:0:0
+D:いいか？リア充御用達の球技にだけ使えよ。絶対にだ。
+F:NASTY
+
+N:725:イチジク浣腸:どどめ色の
+E:Ichijiku-enema:Mulberry colored
+G:!:u
+I:75:68:0
+W:1:0:4:10
+A:1/4
+P:0:1d1:0:0:0
+D:それは直腸注入すると糞がドバーっと出る。
+F:NASTY
+
+N:726:シュールストレミング
+E:& surstromming~
+G:,:o
+I:80:46:3
+A:5/5
+W:5:5:2:2
+D:その缶詰をうかつに開けると大変なことになるぞ。
+
+N:727:メンポ
+E:& Menpo~
+G:]:s
+I:32:12:0
+W:30:0:20:30
+A:40/2
+P:1:1d1:0:0:0
+F:RES_DARK
+D:ニンジャが本能的に頭部にまとうことを好む覆いだ。
+
+N:728:スタンガン
+E:& Stun gun~
+G:}:w
+I:3:17:0
+W:15:0:90:600
+F:INVEN_ACTIVATE
+D:この安価な現代兵器はとあるアラジン神を恥辱と絶望に追いやった。
+
+N:729:ホモの紅茶
+E:& Homo tea~
+G:,:o
+I:80:47:3
+A:5/5
+W:5:5:2:2
+D:それを飲むと昏睡し、野獣と化した先輩に襲われるという。
+
+N:730:の生き肝
+E:& Living Liver of #
+G:~:r
+I:10:5:0
+W:10:100:500:0
+A:5/100
+P:0:1d1:0:0:0
+
+N:731:光線銃
+E:& Ray gun~
+G:}:B
+I:19:54:0
+W:15:0:90:100
+F:SHOW_MODS
+F:ACTIVATE
+D:ロマン溢れる100万発入りのドリル型だ。
+
+N:732:ダークマター
+E:& Dark matter~
+G:~:s
+I:3:11:0
+W:30:2:3:10000
+A:90/1
+P:0:1d1:0:0:0
+D:希少素材の一つだ。
+
+N:733:アンナタールのモノリス
+E:Monolith of Annatar
+G:`:s
+I:69:4:0
+W:50:0:800:1
+A:50/3
+P:0:2d4:0:0:0
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | NEVER_MOVE | INDESTRUCTIBLE
+
+N:734:能面
+E:& Noh mask~
+G:]:r
+I:32:13:0
+W:20:0:75:75
+A:20/5
+P:1:1d3:0:0:0
+D:東方の国の舞踊に使われる面だ。元より防具としては適さない。
+
+N:735:グルメスパイザー
+E:& Gourmet spyzer~
+G:]:r
+I:3:12:0
+W:0:0:3:10
+A:0/10
+P:0:1d1:0:0:0
+D:それは誰が得をするのか分からない拳のような玩具だ。
+
+N:736:カツラ
+E:& Wig~
+G:]:s
+I:32:14:0
+W:20:0:75:75
+A:25/5
+P:1:1d3:0:0:0
+D:それは毛根滅びた者にとって救いであり、虚無でもある。
+
+N:737:森林生成:故婆 半簿琥
+E:Tree creation:Korn Zse Ikals
+G:?:w
+I:70:61:0
+W:40:0:5:0
+A:40/3
+D:$It creatures trees around you.
+D:それは読むと周辺に森林を生成する
+
+N:738:石棺
+E:& Sarcophagus~
+G:&:W
+I:7:51:0
+W:1:0:800:50
+A:1/10
+F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | NEVER_MOVE | INDESTRUCTIBLE
+D:死者の寝床だ。迂闊に開けるべきではないだろう。
+
+N:739:コーラのビン
+E:& Coke bottle~
+G:!:w
+I:3:18:0
+W:10:0:90:3
+A:10/20
+D:それを地の果てに返すため、若者が遠く旅立つこともあるらしい。
+
+N:740:スシの詰め合わせ
+E:& Pack~ of assorted sushi
+G:,:o
+I:80:49:5000
+A:5/5
+W:5:5:2:5
+D:う～んそれは美味しいそうだ！
+
+N:741:スシの詰め合わせ(いなり抜き)
+E:& Pack~ of assorted sushi(No inari)
+G:,:o
+I:80:50:3000
+A:5/5
+W:5:5:2:4
+D:う～んそれは美味しそう…いなりが入ってないやん！
+
+N:742:ほぼ食い尽くされたスシの詰め合わせ
+E:& Almost exhausted Pack~ of assorted sushi
+G:,:o
+I:80:51:300
+A:5/5
+W:5:5:2:2
+D:寿司がほとんど残ってないやん！
+
+N:743:金の卵
+E:& Golden Egg~
+G:,:o
+I:80:52:3000
+A:40/5
+W:40:5:2:30000
+D:類稀なる金のガチョウが生み落とした卵だ。食えば精力が増す。
+
+N:744:パン屑
+E:& bread crumb~
+G:,:o
+I:80:53:3
+A:5/5
+W:5:5:2:2
+D:食ってもただただ、空しいだけだ。
+
+N:745:ガンダリウム合金製プレート・メイル
+E:Gundarium Alloy Plate Mail~
+G:[:W
+I:37:31:0
+W:75:0:380:50000
+A:45/8
+P:80:2d4:-2:0:0
+D:ルナ・チタニウム合金とも呼ばれる、
+D:人類が宇宙に新たな開拓を求めた時代に生み出された技術の精髄だ。
+D:本来は機械仕掛けの巨人の装甲に用いられるらしい。
+
+N:746:ソイレント・レーション
+E:& Ration~ of Soylent
+G:,:o
+I:80:54:5000
+A:5/5
+W:5:5:2:5
+D:それは生存に必要な栄養素がすべて含まれ、従来の食事が不要となる
+D:素晴らしい未来の完全食だ。おや、ちょっと待てよ……
+
+N:747:カツブシ石
+E:& Katsubushi Stone~
+G:,:w
+I:80:55:5000
+A:5/5
+W:5:5:2:5
+D:辺境の惑星クロッカスに豊富に存在する鉱物にして完全食だ。
+
+N:748:「あべし」
+E:& "Abeshi"~
+G:?:w
+I:80:56:0
+A:10/255
+W:10:5:2:5
+D:それは世紀末の悪党たちが残した無様な断末魔だ。取り込むと力がみなぎる。
+
+N:749:「ひでぶ」
+E:& "Hidebu"~
+G:?:w
+I:80:57:0
+A:10/255
+W:10:5:2:5
+D:それは世紀末の悪党たちが残した無様な断末魔だ。取り込むと力がみなぎる。
+
+N:750:クッキー
+E:& Hard Biscuit~
+G:,:U
+I:80:58:500
+W:0:0:2:1
+D:「☆」はついていない、ごくごく普通の菓子だ。
+
+N:751:石炭
+E:& Coal~
+G:*:s
+I:3:19:0
+W:10:0:90:3
+A:10/20
+D:固形燃料としては優れものだ。
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown

@@ -1,4 +1,5 @@
 ﻿#include "status/bad-status-setter.h"
+#include "avatar/avatar.h"
 #include "core/disturbance.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
@@ -7,9 +8,9 @@
 #include "game-option/disturbance-options.h"
 #include "mind/mind-sniper.h"
 #include "player/attack-defense-types.h"
-#include "player-info/avatar.h"
 #include "player/player-race.h"
 #include "player/player-status-flags.h"
+#include "player/player-status.h"
 #include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
 #include "status/base-status.h"
@@ -37,7 +38,7 @@ bool set_blind(player_type *creature_ptr, TIME_EFFECT v)
 
     if (v) {
         if (!creature_ptr->blind) {
-            if (creature_ptr->prace == RACE_ANDROID) {
+            if (creature_ptr->prace == player_race_type::ANDROID) {
                 msg_print(_("センサーをやられた！", "The sensor broke!"));
             } else {
                 msg_print(_("目が見えなくなってしまった！", "You are blind!"));
@@ -50,7 +51,7 @@ bool set_blind(player_type *creature_ptr, TIME_EFFECT v)
 
     else {
         if (creature_ptr->blind) {
-            if (creature_ptr->prace == RACE_ANDROID) {
+            if (creature_ptr->prace == player_race_type::ANDROID) {
                 msg_print(_("センサーが復旧した。", "The sensor has been restored."));
             } else {
                 msg_print(_("やっと目が見えるようになった。", "You can see again."));
@@ -289,7 +290,7 @@ bool set_image(player_type *creature_ptr, TIME_EFFECT v)
 
     if (creature_ptr->is_dead)
         return false;
-    if (creature_ptr->pseikaku == PERSONALITY_CHARGEMAN)
+    if (is_chargeman(creature_ptr))
         v = 0;
 
     if (v) {
@@ -381,7 +382,7 @@ bool set_stun(player_type *creature_ptr, TIME_EFFECT v)
     v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
     if (creature_ptr->is_dead)
         return false;
-    if (is_specific_player_race(creature_ptr, RACE_GOLEM) || ((creature_ptr->pclass == CLASS_BERSERKER) && (creature_ptr->lev > 34)))
+    if (is_specific_player_race(creature_ptr, player_race_type::GOLEM) || ((creature_ptr->pclass == CLASS_BERSERKER) && (creature_ptr->lev > 34)))
         v = 0;
 
     if (creature_ptr->stun > 100) {
@@ -488,8 +489,8 @@ bool set_cut(player_type *creature_ptr, TIME_EFFECT v)
     if (creature_ptr->is_dead)
         return false;
 
-    if ((creature_ptr->prace == RACE_GOLEM || creature_ptr->prace == RACE_SKELETON || creature_ptr->prace == RACE_SPECTRE
-            || (creature_ptr->prace == RACE_ZOMBIE && creature_ptr->lev > 11))
+    if ((creature_ptr->prace == player_race_type::GOLEM || creature_ptr->prace == player_race_type::SKELETON || creature_ptr->prace == player_race_type::SPECTRE
+            || (creature_ptr->prace == player_race_type::ZOMBIE && creature_ptr->lev > 11))
         && !creature_ptr->mimic_form)
         v = 0;
 
@@ -563,7 +564,8 @@ bool set_cut(player_type *creature_ptr, TIME_EFFECT v)
         }
     } else if (new_aux < old_aux) {
         if (new_aux == 0) {
-            msg_format(_("やっと%s。", "You are no longer %s."), creature_ptr->prace == RACE_ANDROID ? _("怪我が直った", "leaking fluid") : _("出血が止まった", "bleeding"));
+            msg_format(_("やっと%s。", "You are no longer %s."),
+                creature_ptr->prace == player_race_type::ANDROID ? _("怪我が直った", "leaking fluid") : _("出血が止まった", "bleeding"));
             if (disturb_state)
                 disturb(creature_ptr, false, false);
         }

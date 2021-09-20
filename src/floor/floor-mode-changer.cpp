@@ -7,3 +7,7 @@
  * @param mode 追加したい所持フラグ
  */
 void prepare_change_floor_mode(player_type *creature_ptr, BIT_FLAGS mode) { creature_ptr->change_floor_mode |= mode; }
+void move_floor(player_type* creature_ptr, BIT_FLAGS mode) {
+    prepare_change_floor_mode(creature_ptr, mode);
+    creature_ptr->leaving = true;
+}

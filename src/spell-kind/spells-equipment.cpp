@@ -1,4 +1,5 @@
 ﻿#include "spell-kind/spells-equipment.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
@@ -7,7 +8,6 @@
 #include "object-hook/hook-enchant.h"
 #include "object-hook/hook-weapon.h"
 #include "object/object-info.h"
-#include "player-info/avatar.h"
 #include "racial/racial-android.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -56,7 +56,7 @@ bool apply_disenchant(player_type *target_ptr, BIT_FLAGS mode)
     if (!o_ptr->k_idx)
         return false;
 
-    if (!object_is_weapon_armour_ammo(target_ptr, o_ptr))
+    if (!object_is_weapon_armour_ammo(o_ptr))
         return false;
 
     if ((o_ptr->to_h <= 0) && (o_ptr->to_d <= 0) && (o_ptr->to_a <= 0) && (o_ptr->pval <= 1)) {

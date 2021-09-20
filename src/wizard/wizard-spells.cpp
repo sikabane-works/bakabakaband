@@ -13,6 +13,7 @@
 #include "effect/effect-processor.h"
 #include "floor/cave.h"
 #include "floor/floor-util.h"
+#include "floor/pattern-walk.h"
 #include "mind/mind-blue-mage.h"
 #include "monster-floor/monster-generator.h"
 #include "monster-floor/monster-summon.h"
@@ -21,7 +22,9 @@
 #include "mutation/mutation-processor.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-teleport.h"
+#include "spell-kind/spells-random.h"
 #include "spell-realm/spells-chaos.h"
+#include "spell-realm/spells-sorcery.h"
 #include "spell/spells-status.h"
 #include "spell/summon-types.h"
 #include "system/floor-type-definition.h"
@@ -29,6 +32,7 @@
 #include "target/grid-selector.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
+#include "util/enum-converter.h"
 #include "util/flag-group.h"
 #include "view/display-messages.h"
 
@@ -36,6 +40,9 @@ debug_spell_command debug_spell_commands_list[SPELL_MAX] = {
     { 2, "vanish dungeon", { .spell2 = { vanish_dungeon } } },
     { 3, "true healing", { .spell3 = { true_healing } } },
     { 2, "drop weapons", { .spell2 = { drop_weapons } } },
+    { 2, "alchemy", { .spell2 = { alchemy } } },
+    { 4, "ty curse", { .spell4 = { activate_ty_curse } } },
+    { 5, "pattern teleport", { .spell5 = { pattern_teleport } } },
 };
 
 /*!
@@ -65,6 +72,14 @@ bool wiz_debug_spell(player_type *creature_ptr)
                 return false;
             tmp_int = atoi(tmp_val);
             (*(debug_spell_commands_list[i].command_function.spell3.spell_function))(creature_ptr, tmp_int);
+            return true;
+            break;
+        case 4:
+            (*(debug_spell_commands_list[i].command_function.spell4.spell_function))(creature_ptr, true, &tmp_int);
+            return true;
+            break;
+        case 5:
+            (*(debug_spell_commands_list[i].command_function.spell5.spell_function))(creature_ptr);
             return true;
             break;
         default:
@@ -131,7 +146,7 @@ void wiz_learn_blue_magic_all(player_type *caster_ptr)
         std::vector<RF_ABILITY> spells;
         EnumClassFlagGroup<RF_ABILITY>::get_flags(ability_flags, std::back_inserter(spells));
         for (auto spell : spells) {
-            caster_ptr->magic_num2[static_cast<int>(spell)] = 1;
+            caster_ptr->magic_num2[enum2i(spell)] = 1;
         }
     }
 }
@@ -149,9 +164,9 @@ void wiz_summon_random_enemy(player_type *caster_ptr, int num)
 }
 
 /*!
- * @brief モンスターを種族IDを指定して敵対的に召喚する /
+ * @brief モンスターを種族IDを指定して自然生成と同じように召喚する /
  * Summon a creature of the specified type
- * @param r_idx モンスター種族ID
+ * @param r_idx モンスター種族ID（回数指定コマンド'0'で指定した回数がIDになる）
  * @details
  * This function is rather dangerous
  */
@@ -163,7 +178,7 @@ void wiz_summon_specific_enemy(player_type *summoner_ptr, MONRACE_IDX r_idx)
 /*!
  * @brief モンスターを種族IDを指定してペット召喚する /
  * Summon a creature of the specified type
- * @param r_idx モンスター種族ID
+ * @param r_idx モンスター種族ID（回数指定コマンド'0'で指定した回数がIDになる）
  * @details
  * This function is rather dangerous
  */

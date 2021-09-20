@@ -11,7 +11,7 @@ extern concptr KWD_MANA; //!< 効果文字列: MP回復 / heal SP
 extern concptr KWD_POWER; //!< 効果文字列: 効力 / power
 extern concptr KWD_RANDOM; //!< 効果文字列: ランダム / random
 
-extern const u32b fake_spell_flags[4];
+extern const uint32_t fake_spell_flags[4];
 
 concptr info_string_dice(concptr str, DICE_NUMBER dice, DICE_SID sides, int base);
 concptr info_damage(DICE_NUMBER dice, DICE_SID sides, int base);
@@ -26,7 +26,7 @@ concptr info_power_dice(DICE_NUMBER dice, DICE_SID sides);
 concptr info_radius(POSITION rad);
 concptr info_weight(WEIGHT weight);
 
-typedef struct player_type player_type;
+class player_type;
 void do_cmd_browse(player_type *caster_ptr);
 void do_cmd_study(player_type *caster_ptr);
 bool do_cmd_cast(player_type *caster_ptr);

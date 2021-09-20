@@ -9,7 +9,7 @@ enum rate_calc_type_mode {
     CALC_MAX = 3,
 };
 
-typedef struct player_type player_type;
+class player_type;
 PERCENTAGE calc_acid_damage_rate(player_type *creature_ptr);
 PERCENTAGE calc_elec_damage_rate(player_type *creature_ptr);
 PERCENTAGE calc_fire_damage_rate(player_type *creature_ptr);
@@ -36,3 +36,4 @@ PERCENTAGE calc_gravity_damage_rate(player_type *creature_ptr, rate_calc_type_mo
 PERCENTAGE calc_void_damage_rate_rand(player_type *creature_ptr);
 PERCENTAGE calc_void_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
 PERCENTAGE calc_abyss_damage_rate(player_type *creature_ptr, rate_calc_type_mode mode);
+PERCENTAGE calc_plasma_damage_rate(player_type *creature_ptr);

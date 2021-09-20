@@ -11,6 +11,7 @@
 #include "object-enchant/trc-types.h"
 #include "object-enchant/trg-types.h"
 #include "object/object-kind.h"
+#include "sv-definition/sv-weapon-types.h"
 #include "system/player-type-definition.h"
 
 /*!
@@ -38,10 +39,12 @@ void object_type::copy_from(object_type *j_ptr)
  * @param player_ptr プレーヤーへの参照ポインタ
  * @param k_idx 新たに作成したいベースアイテム情報のID
  */
-void object_type::prep(player_type *player_ptr, KIND_OBJECT_IDX ko_idx)
+void object_type::prep(KIND_OBJECT_IDX ko_idx)
 {
     object_kind *k_ptr = &k_info[ko_idx];
+    auto old_stack_idx = this->stack_idx;
     wipe();
+    this->stack_idx = old_stack_idx;
     this->k_idx = ko_idx;
     this->tval = k_ptr->tval;
     this->sval = k_ptr->sval;
@@ -67,9 +70,16 @@ void object_type::prep(player_type *player_ptr, KIND_OBJECT_IDX ko_idx)
     if (k_ptr->gen_flags.has(TRG::PERMA_CURSE))
         this->curse_flags.set(TRC::PERMA_CURSE);
     if (k_ptr->gen_flags.has(TRG::RANDOM_CURSE0))
-        this->curse_flags.set(get_curse(player_ptr, 0, this));
+        this->curse_flags.set(get_curse(0, this));
     if (k_ptr->gen_flags.has(TRG::RANDOM_CURSE1))
-        this->curse_flags.set(get_curse(player_ptr, 1, this));
+        this->curse_flags.set(get_curse(1, this));
     if (k_ptr->gen_flags.has(TRG::RANDOM_CURSE2))
-        this->curse_flags.set(get_curse(player_ptr, 2, this));
+        this->curse_flags.set(get_curse(2, this));
+}
+
+bool object_type::is_lance() const
+{
+    auto is_lance = this->tval == TV_POLEARM;
+    is_lance &= (this->sval == SV_LANCE) || (this->sval == SV_HEAVY_LANCE);
+    return is_lance;
 }

@@ -5,6 +5,7 @@
  */
 
 #include "store/store-util.h"
+#include "store/store-owners.h"
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object-enchant/item-feeling.h"
@@ -130,6 +131,8 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
 void store_create(
     player_type *player_ptr, KIND_OBJECT_IDX fix_k_idx, black_market_crap_pf black_market_crap, store_will_buy_pf store_will_buy, mass_produce_pf mass_produce)
 {
+    const owner_type *ow_ptr = &owners[cur_store_num][st_ptr->owner];
+
     if (st_ptr->stock_num >= st_ptr->stock_size)
         return;
 
@@ -137,22 +140,22 @@ void store_create(
         KIND_OBJECT_IDX k_idx;
         DEPTH level;
         if (cur_store_num == STORE_BLACK) {
-            level = 25 + randint0(25);
+            level = ow_ptr->level + 20 + randint0(25);
             k_idx = get_obj_num(player_ptr, level, 0x00000000);
             if (k_idx == 0)
                 continue;
         } else if (fix_k_idx > 0) {
             k_idx = fix_k_idx;
-            level = rand_range(1, STORE_OBJ_LEVEL);
+            level = rand_range(1, ow_ptr->level);
         } else {
             k_idx = st_ptr->table[randint0(st_ptr->table.size())];
-            level = rand_range(1, STORE_OBJ_LEVEL);
+            level = rand_range(1, ow_ptr->level);
         }
 
         object_type forge;
         object_type *q_ptr;
         q_ptr = &forge;
-        q_ptr->prep(player_ptr, k_idx);
+        q_ptr->prep(k_idx);
         apply_magic_to_object(player_ptr, q_ptr, level, AM_NO_FIXED_ART);
         if (!(*store_will_buy)(player_ptr, q_ptr))
             continue;
@@ -177,15 +180,15 @@ void store_create(
             continue;
 
         if (cur_store_num == STORE_BLACK) {
-            if (black_market_crap(player_ptr, q_ptr) || (object_value(player_ptr, q_ptr) < 10))
+            if (black_market_crap(player_ptr, q_ptr) || (object_value(q_ptr) < 10))
                 continue;
         } else {
-            if (object_value(player_ptr, q_ptr) <= 0)
+            if (object_value(q_ptr) <= 0)
                 continue;
         }
 
         mass_produce(player_ptr, q_ptr);
-        (void)store_carry(player_ptr, q_ptr);
+        (void)store_carry(q_ptr);
         break;
     }
 }
@@ -295,9 +298,9 @@ static void store_object_absorb(object_type *o_ptr, object_type *j_ptr)
  * known, the player may have to pick stuff up and drop it again.
  * </pre>
  */
-int store_carry(player_type *player_ptr, object_type *o_ptr)
+int store_carry(object_type *o_ptr)
 {
-    PRICE value = object_value(player_ptr, o_ptr);
+    PRICE value = object_value(o_ptr);
     if (value <= 0)
         return -1;
 
@@ -335,7 +338,7 @@ int store_carry(player_type *player_ptr, object_type *o_ptr)
                 continue;
         }
 
-        PRICE j_value = object_value(player_ptr, j_ptr);
+        PRICE j_value = object_value(j_ptr);
         if (value > j_value)
             break;
         if (value < j_value)

@@ -2,6 +2,7 @@
 
 enum monster_race_type {
     MON_PLAYER = 0, // Dummy.
+    MON_MAGGOT = 8,
     MON_BEGGAR = 12,
     MON_LEPER = 13,
     MON_LION_HEART = 19,
@@ -120,6 +121,7 @@ enum monster_race_type {
     MON_HORSE = 956,
     MON_BOTEI = 963,
     MON_KAGE = 964,
+    MON_CHEST_MIMIC_02 = 965,
     MON_LUIGI = 966,
     MON_JAIAN = 967,
     MON_FENGHUANG = 988,
@@ -188,6 +190,7 @@ enum monster_race_type {
     MON_DIAVOLO = 1367,
     MON_MANIMANI = 1368,
     MON_LOSTRINGIL = 1383,
+    MON_POWERFUL_EYE_SENIOR = 1338,
     MON_MISUMI = 1393,
     MON_LEE_QIEZI = 1399,
     MON_DONELD = 1401,
@@ -201,4 +204,12 @@ enum monster_race_type {
     MON_BOTTLE_GNOME = 1444,
     MON_EARTH_DESTROYER = 1445,
     MON_OOTSUKI = 1453,
+    MON_TURBAN_KID = 1467,
+    MON_INARIMAN_1 = 1518,
+    MON_INARIMAN_2 = 1519,
+    MON_INARIMAN_3 = 1520,
+
+    MON_CHEST_MIMIC_03 = 1529,
+    MON_CHEST_MIMIC_04 = 1530,
+    MON_CHEST_MIMIC_11 = 1531,
 };

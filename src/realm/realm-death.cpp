@@ -1,9 +1,9 @@
 ﻿#include "realm/realm-death.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "hpmp/hp-mp-processor.h"
-#include "player-info/avatar.h"
 #include "player/digestion-processor.h"
 #include "player/player-damage.h"
 #include "player/player-race.h"
@@ -613,10 +613,10 @@ concptr do_death_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
         {
             if (cast) {
                 if (randint1(50) > plev) {
-                    if (!ident_spell(caster_ptr, false, TV_NONE))
+                    if (!ident_spell(caster_ptr, false))
                         return NULL;
                 } else {
-                    if (!identify_fully(caster_ptr, false, TV_NONE))
+                    if (!identify_fully(caster_ptr, false))
                         return NULL;
                 }
             }

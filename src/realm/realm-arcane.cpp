@@ -1,9 +1,9 @@
 ﻿#include "realm/realm-arcane.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "core/asking-player.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
-#include "player-info/avatar.h"
 #include "player/digestion-processor.h"
 #include "spell-kind/spells-beam.h"
 #include "spell-kind/spells-detection.h"
@@ -408,7 +408,7 @@ concptr do_arcane_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mod
 
         {
             if (cast) {
-                if (!ident_spell(caster_ptr, false, TV_NONE))
+                if (!ident_spell(caster_ptr, false))
                     return NULL;
             }
         }

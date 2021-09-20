@@ -3,7 +3,7 @@
 #include "system/angband.h"
 #include <vector>
 
-#define STORE_OBJ_LEVEL 5 //!< 通常店舗の階層レベル / Magic Level for normal stores
+#define STORE_OBJ_STD_LEVEL 5 //!< 通常店舗の標準階層レベル / Magic Level for normal stores
 
 enum STORE_TYPE_IDX {
     STORE_GENERAL   = 0, //!< 店舗の種類: 雑貨屋
@@ -29,28 +29,28 @@ struct store_type {
     byte type{};           //!< Store type
     byte owner{};          //!< Owner index
     byte extra{};          //!< Unused for now
-    s16b insult_cur{};     //!< Insult counter
-    s16b good_buy{};       //!< Number of "good" buys (3.0.0で廃止)
-    s16b bad_buy{};        //!< Number of "bad" buys (3.0.0で廃止)
-    s32b store_open{};     //!< Closed until this turn
-    s32b last_visit{};     //!< Last visited on this turn
+    int16_t insult_cur{};     //!< Insult counter
+    int16_t good_buy{};       //!< Number of "good" buys (3.0.0で廃止)
+    int16_t bad_buy{};        //!< Number of "bad" buys (3.0.0で廃止)
+    int32_t store_open{};     //!< Closed until this turn
+    int32_t last_visit{};     //!< Last visited on this turn
     store_k_idx regular{}; //!< Table -- Legal regular item kinds
     store_k_idx table{};   //!< Table -- Legal item kinds
-    s16b stock_num{};      //!< Stock -- Number of entries
-    s16b stock_size{};     //!< Stock -- Total Size of Array
+    int16_t stock_num{};      //!< Stock -- Number of entries
+    int16_t stock_size{};     //!< Stock -- Total Size of Array
     object_type *stock{};  //!< Stock -- Actual stock items
 };
 
 extern int cur_store_num;
 extern store_type *st_ptr;
 
-typedef struct player_type player_type;
+class player_type;
 typedef bool (*black_market_crap_pf)(player_type *, object_type *);
-typedef bool (*store_will_buy_pf)(player_type *, object_type *);
+typedef bool (*store_will_buy_pf)(player_type *, const object_type *);
 typedef void (*mass_produce_pf)(player_type *, object_type *);
 void store_delete(void);
 void store_create(player_type *player_ptr, KIND_OBJECT_IDX k_idx, black_market_crap_pf black_market_crap, store_will_buy_pf store_will_buy, mass_produce_pf mass_produce);
 void store_item_increase(INVENTORY_IDX item, ITEM_NUMBER num);
 void store_item_optimize(INVENTORY_IDX item);
-int store_carry(player_type *player_ptr, object_type *o_ptr);
+int store_carry(object_type *o_ptr);
 bool store_object_similar(object_type *o_ptr, object_type *j_ptr);

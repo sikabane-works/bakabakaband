@@ -9,7 +9,6 @@
 #include "game-option/play-record-options.h"
 #include "game-option/special-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "io/input-key-requester.h"
 #include "io/write-diary.h"
 #include "player-status/player-energy.h"
@@ -23,16 +22,18 @@
 #include "status/bad-status-setter.h"
 #include "status/experience.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-movement-processor.h"
 
 /*!
  * @brief パターン終点到達時のテレポート処理を行う
  * @param creature_ptr プレーヤーへの参照ポインタ
  */
-static void pattern_teleport(player_type *creature_ptr)
+void pattern_teleport(player_type *creature_ptr)
 {
     DEPTH min_level = 0;
     DEPTH max_level = 99;
@@ -88,8 +89,7 @@ static void pattern_teleport(player_type *creature_ptr)
      * Clear all saved floors
      * and create a first saved floor
      */
-    prepare_change_floor_mode(creature_ptr, CFM_FIRST_FLOOR);
-    creature_ptr->leaving = true;
+    move_floor(creature_ptr, CFM_FIRST_FLOOR);
 }
 
 /*!
@@ -102,7 +102,7 @@ bool pattern_effect(player_type *creature_ptr)
     if (!pattern_tile(floor_ptr, creature_ptr->y, creature_ptr->x))
         return false;
 
-    if ((is_specific_player_race(creature_ptr, RACE_AMBERITE)) && (creature_ptr->cut > 0) && one_in_(10)) {
+    if ((is_specific_player_race(creature_ptr, player_race_type::AMBERITE)) && (creature_ptr->cut > 0) && one_in_(10)) {
         wreck_the_pattern(creature_ptr);
     }
 
@@ -139,7 +139,7 @@ bool pattern_effect(player_type *creature_ptr)
         break;
 
     default:
-        if (is_specific_player_race(creature_ptr, RACE_AMBERITE) && !one_in_(2))
+        if (is_specific_player_race(creature_ptr, player_race_type::AMBERITE) && !one_in_(2))
             return true;
         else if (!is_invuln(creature_ptr))
             take_hit(creature_ptr, DAMAGE_NOESCAPE, damroll(1, 3), _("「パターン」を歩いたダメージ", "walking the Pattern"));
@@ -162,8 +162,8 @@ bool pattern_seq(player_type *creature_ptr, POSITION c_y, POSITION c_x, POSITION
 {
     feature_type *cur_f_ptr = &f_info[creature_ptr->current_floor_ptr->grid_array[c_y][c_x].feat];
     feature_type *new_f_ptr = &f_info[creature_ptr->current_floor_ptr->grid_array[n_y][n_x].feat];
-    bool is_pattern_tile_cur = has_flag(cur_f_ptr->flags, FF_PATTERN);
-    bool is_pattern_tile_new = has_flag(new_f_ptr->flags, FF_PATTERN);
+    bool is_pattern_tile_cur = cur_f_ptr->flags.has(FF::PATTERN);
+    bool is_pattern_tile_new = new_f_ptr->flags.has(FF::PATTERN);
     if (!is_pattern_tile_cur && !is_pattern_tile_new)
         return true;
 

@@ -1,12 +1,12 @@
 ﻿#include "player-info/alignment.h"
 #include "artifact/fixed-art-types.h"
+#include "avatar/avatar.h"
 #include "game-option/text-display-options.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags3.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
-#include "player-info/avatar.h"
 #include "player-info/equipment-info.h"
 #include "player/player-race.h"
 #include "system/floor-type-definition.h"
@@ -72,10 +72,10 @@ void PlayerAlignment::update_alignment()
         }
     } else {
         switch (creature_ptr->prace) {
-        case RACE_ARCHON:
+        case player_race_type::ARCHON:
             this->bias_good_alignment(200);
             break;
-        case RACE_BALROG:
+        case player_race_type::BALROG:
             this->bias_evil_alignment(200);
             break;
 

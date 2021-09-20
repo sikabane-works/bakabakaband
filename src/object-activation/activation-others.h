@@ -3,7 +3,7 @@
 #include "system/angband.h"
 
 typedef struct object_type object_type;
-typedef struct player_type player_type;
+class player_type;
 bool activate_sunlight(player_type *user_ptr);
 bool activate_confusion(player_type *user_ptr);
 bool activate_banish_evil(player_type *user_ptr);
@@ -42,3 +42,4 @@ bool activate_light(player_type *user_ptr, concptr name);
 bool activate_recall(player_type *user_ptr);
 bool activate_tree_creation(player_type *user_ptr, object_type *o_ptr, concptr name);
 bool activate_animate_dead(player_type *user_ptr, object_type *o_ptr);
+bool activate_detect_treasure(player_type *user_ptr);

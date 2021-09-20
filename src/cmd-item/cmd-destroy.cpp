@@ -1,6 +1,7 @@
 ﻿#include "cmd-item/cmd-destroy.h"
 #include "autopick/autopick-registry.h"
 #include "autopick/autopick.h"
+#include "avatar/avatar.h"
 #include "core/asking-player.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
@@ -19,7 +20,6 @@
 #include "object/item-use-flags.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
 #include "player/special-defense-types.h"
@@ -54,7 +54,7 @@ static destroy_type *initialize_destroy_type(destroy_type *destroy_ptr, object_t
 
 static bool check_destory_item(player_type *creature_ptr, destroy_type *destroy_ptr)
 {
-    if (destroy_ptr->force || (!confirm_destroy && (object_value(creature_ptr, destroy_ptr->o_ptr) <= 0)))
+    if (destroy_ptr->force || (!confirm_destroy && (object_value(destroy_ptr->o_ptr) <= 0)))
         return true;
 
     describe_flavor(creature_ptr, destroy_ptr->o_name, destroy_ptr->o_ptr, OD_OMIT_PREFIX);
@@ -87,7 +87,7 @@ static bool select_destroying_item(player_type *creature_ptr, destroy_type *dest
 {
     concptr q = _("どのアイテムを壊しますか? ", "Destroy which item? ");
     concptr s = _("壊せるアイテムを持っていない。", "You have nothing to destroy.");
-    destroy_ptr->o_ptr = choose_object(creature_ptr, &destroy_ptr->item, q, s, USE_INVEN | USE_FLOOR, TV_NONE);
+    destroy_ptr->o_ptr = choose_object(creature_ptr, &destroy_ptr->item, q, s, USE_INVEN | USE_FLOOR);
     if (destroy_ptr->o_ptr == NULL)
         return false;
 
@@ -109,7 +109,7 @@ static bool select_destroying_item(player_type *creature_ptr, destroy_type *dest
  */
 static bool decide_magic_book_exp(player_type *creature_ptr, destroy_type *destroy_ptr)
 {
-    if (creature_ptr->prace == RACE_ANDROID)
+    if (creature_ptr->prace == player_race_type::ANDROID)
         return false;
 
     if ((creature_ptr->pclass == CLASS_WARRIOR) || (creature_ptr->pclass == CLASS_BERSERKER))
@@ -136,7 +136,7 @@ static void gain_exp_by_destroying_magic_book(player_type *creature_ptr, destroy
     if (!gain_expr || (creature_ptr->exp >= PY_MAX_EXP))
         return;
 
-    s32b tester_exp = creature_ptr->max_exp / 20;
+    int32_t tester_exp = creature_ptr->max_exp / 20;
     if (tester_exp > 10000)
         tester_exp = 10000;
 
@@ -167,9 +167,9 @@ static void process_destroy_magic_book(player_type *creature_ptr, destroy_type *
     if ((destroy_ptr->q_ptr->to_a != 0) || (destroy_ptr->q_ptr->to_h != 0) || (destroy_ptr->q_ptr->to_d != 0))
         chg_virtue(creature_ptr, V_ENCHANT, -1);
 
-    if (object_value_real(creature_ptr, destroy_ptr->q_ptr) > 30000)
+    if (object_value_real(destroy_ptr->q_ptr) > 30000)
         chg_virtue(creature_ptr, V_SACRIFICE, 2);
-    else if (object_value_real(creature_ptr, destroy_ptr->q_ptr) > 10000)
+    else if (object_value_real(destroy_ptr->q_ptr) > 10000)
         chg_virtue(creature_ptr, V_SACRIFICE, 1);
 }
 

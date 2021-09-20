@@ -50,6 +50,15 @@ errr parse_v_info(std::string_view buf, angband_header *head)
         info_set_value(v_ptr->rat, tokens[2]);
         info_set_value(v_ptr->hgt, tokens[3]);
         info_set_value(v_ptr->wid, tokens[4]);
+    } else if (tokens[0] == "F") {
+        if (tokens.size() < 3) {
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
+        char c;
+        FEAT_IDX feat_idx;
+        c = tokens[1].c_str()[1];
+        info_set_value(feat_idx, tokens[2]);
+        v_ptr->feature_list[c] = feat_idx;
     } else
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
 

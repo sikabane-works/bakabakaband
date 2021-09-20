@@ -15,11 +15,11 @@
 #include "floor/geometry.h"
 #include "game-option/disturbance-options.h"
 #include "grid/feature-flag-types.h"
-#include "grid/grid.h"
 #include "spell-realm/spells-crusade.h"
 #include "spell/range-calc.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-checker.h"
@@ -59,7 +59,7 @@ bool cast_wrath_of_the_god(player_type *caster_ptr, HIT_POINT dam, POSITION rad)
         mmove2(&ny, &nx, caster_ptr->y, caster_ptr->x, ty, tx);
         if (get_max_range(caster_ptr) <= distance(caster_ptr->y, caster_ptr->x, ny, nx))
             break;
-        if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, ny, nx, FF_PROJECT))
+        if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, ny, nx, FF::PROJECT))
             break;
         if ((dir != 5) && caster_ptr->current_floor_ptr->grid_array[ny][nx].m_idx != 0)
             break;

@@ -12,9 +12,20 @@
 #include "player/special-defense-types.h"
 #include "room/door-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h" // @todo 相互依存している. 後で何とかする.
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "world/world.h"
+
+enum conversion_type {
+    CONVERT_TYPE_FLOOR = 0,
+    CONVERT_TYPE_WALL = 1,
+    CONVERT_TYPE_INNER = 2,
+    CONVERT_TYPE_OUTER = 3,
+    CONVERT_TYPE_SOLID = 4,
+    CONVERT_TYPE_STREAM1 = 5,
+    CONVERT_TYPE_STREAM2 = 6,
+};
 
 /*** Terrain feature variables ***/
 
@@ -120,7 +131,7 @@ bool is_trap(player_type *player_ptr, FEAT_IDX feat)
 {
 	/* 関数ポインタの都合 */
 	(void)player_ptr;
-	return has_flag(f_info[feat].flags, FF_TRAP);
+	return f_info[feat].flags.has(FF::TRAP);
 }
 
 /*!
@@ -134,8 +145,8 @@ bool is_closed_door(player_type *player_ptr, FEAT_IDX feat)
 	(void)player_ptr;
 	feature_type *f_ptr = &f_info[feat];
 
-	return (has_flag(f_ptr->flags, FF_OPEN) || has_flag(f_ptr->flags, FF_BASH)) &&
-		!has_flag(f_ptr->flags, FF_MOVE);
+	return (f_ptr->flags.has(FF::OPEN) || f_ptr->flags.has(FF::BASH)) &&
+		f_ptr->flags.has_not(FF::MOVE);
 }
 
 /*!
@@ -170,7 +181,7 @@ bool is_ascii_graphics(char x) { return (x & 0x80) == 0; }
 /*
  * Determine if a "feature" is "permanent wall"
  */
-bool permanent_wall(feature_type *f_ptr) { return has_flag(f_ptr->flags, FF_WALL) && has_flag(f_ptr->flags, FF_PERMANENT); }
+bool permanent_wall(feature_type *f_ptr) { return f_ptr->flags.has_all_of({FF::WALL, FF::PERMANENT}); }
 
 FEAT_IDX feat_locked_door_random(int door_type)
 {
@@ -199,7 +210,7 @@ void cave_set_feat(player_type *player_ptr, POSITION y, POSITION x, FEAT_IDX fea
     if (!current_world_ptr->character_dungeon) {
         g_ptr->mimic = 0;
         g_ptr->feat = feat;
-        if (has_flag(f_ptr->flags, FF_GLOW) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS)) {
+        if (f_ptr->flags.has(FF::GLOW) && d_info[floor_ptr->dungeon_idx].flags.has_not(DF::DARKNESS)) {
             for (DIRECTION i = 0; i < 9; i++) {
                 POSITION yy = y + ddy_ddd[i];
                 POSITION xx = x + ddx_ddd[i];
@@ -213,8 +224,8 @@ void cave_set_feat(player_type *player_ptr, POSITION y, POSITION x, FEAT_IDX fea
         return;
     }
 
-    bool old_los = cave_has_flag_bold(floor_ptr, y, x, FF_LOS);
-    bool old_mirror = is_mirror_grid(g_ptr);
+    bool old_los = cave_has_flag_bold(floor_ptr, y, x, FF::LOS);
+    bool old_mirror = g_ptr->is_mirror();
 
     g_ptr->mimic = 0;
     g_ptr->feat = feat;
@@ -227,17 +238,17 @@ void cave_set_feat(player_type *player_ptr, POSITION y, POSITION x, FEAT_IDX fea
         update_local_illumination(player_ptr, y, x);
     }
 
-    if (!has_flag(f_ptr->flags, FF_REMEMBER))
+    if (f_ptr->flags.has_not(FF::REMEMBER))
         g_ptr->info &= ~(CAVE_MARK);
     if (g_ptr->m_idx)
         update_monster(player_ptr, g_ptr->m_idx, false);
 
     note_spot(player_ptr, y, x);
     lite_spot(player_ptr, y, x);
-    if (old_los ^ has_flag(f_ptr->flags, FF_LOS))
+    if (old_los ^ f_ptr->flags.has(FF::LOS))
         player_ptr->update |= PU_VIEW | PU_LITE | PU_MON_LITE | PU_MONSTERS;
 
-    if (!has_flag(f_ptr->flags, FF_GLOW) || d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS))
+    if (f_ptr->flags.has_not(FF::GLOW) || d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS))
         return;
 
     for (DIRECTION i = 0; i < 9; i++) {
@@ -269,7 +280,7 @@ void cave_set_feat(player_type *player_ptr, POSITION y, POSITION x, FEAT_IDX fea
 FEAT_IDX conv_dungeon_feat(floor_type *floor_ptr, FEAT_IDX newfeat)
 {
     feature_type *f_ptr = &f_info[newfeat];
-    if (!has_flag(f_ptr->flags, FF_CONVERT))
+    if (f_ptr->flags.has_not(FF::CONVERT))
         return newfeat;
 
     switch (f_ptr->subtype) {

@@ -3,7 +3,7 @@
 #include "system/angband.h"
 
 typedef struct effect_monster_type effect_monster_type;
-typedef struct player_type player_type;
+class player_type;
 process_result effect_monster_nothing(effect_monster_type *em_ptr);
 process_result effect_monster_acid(player_type *caster_ptr, effect_monster_type *em_ptr);
 process_result effect_monster_elec(player_type *caster_ptr, effect_monster_type *em_ptr);
@@ -32,3 +32,4 @@ process_result effect_monster_icee_bolt(player_type *caster_ptr, effect_monster_
 process_result effect_monster_void(player_type *caster_ptr, effect_monster_type *em_ptr);
 process_result effect_monster_abyss(player_type *caster_ptr, effect_monster_type *em_ptr);
 process_result effect_monster_dirt(player_type *caster_ptr, effect_monster_type *em_ptr);
+process_result effect_monster_stungun(player_type *caster_ptr, effect_monster_type *em_ptr);

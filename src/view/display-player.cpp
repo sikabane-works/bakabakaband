@@ -25,6 +25,7 @@
 #include "player/player-sex.h"
 #include "player/player-status-table.h"
 #include "player/player-status.h"
+#include "player/player-status-flags.h"
 #include "realm/realm-names-table.h"
 #include "status-first-page.h"
 #include "system/floor-type-definition.h"
@@ -299,7 +300,7 @@ static void display_current_floor(char *statmsg)
  */
 void display_player(player_type *creature_ptr, int mode)
 {
-    if (creature_ptr->muta.any() && display_mutations)
+    if ((creature_ptr->muta.any() || has_good_luck(creature_ptr)) && display_mutations)
         mode = (mode % 6);
     else
         mode = (mode % 5);
@@ -312,7 +313,7 @@ void display_player(player_type *creature_ptr, int mode)
     display_magic_realms(creature_ptr);
 
     if ((creature_ptr->pclass == CLASS_CHAOS_WARRIOR) || (creature_ptr->muta.has(MUTA::CHAOS_GIFT)))
-        display_player_one_line(ENTRY_PATRON, chaos_patrons[creature_ptr->chaos_patron], TERM_L_BLUE);
+        display_player_one_line(ENTRY_PATRON, patron_list[creature_ptr->chaos_patron].name.c_str(), TERM_L_BLUE);
 
     display_phisique(creature_ptr);
     display_player_stats(creature_ptr);

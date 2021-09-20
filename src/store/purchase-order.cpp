@@ -2,6 +2,7 @@
 #include "autopick/autopick-finder.h"
 #include "autopick/autopick-util.h"
 #include "autopick/autopick.h"
+#include "avatar/avatar.h"
 #include "core/asking-player.h"
 #include "core/stuff-handler.h"
 #include "flavor/flavor-describer.h"
@@ -19,7 +20,6 @@
 #include "object/object-stack.h"
 #include "object/object-value.h"
 #include "perception/object-perception.h"
-#include "player-info/avatar.h"
 #include "player/race-info-table.h"
 #include "store/home.h"
 #include "store/pricing.h"
@@ -30,6 +30,7 @@
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
+#include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
 #include "view/display-store.h"
@@ -48,13 +49,6 @@
 static std::optional<PRICE> prompt_to_buy(player_type *player_ptr, object_type *o_ptr)
 {
     auto price_ask = price_item(player_ptr, o_ptr, ot_ptr->inflate, false);
-    auto is_low_price = price_ask < LOW_PRICE_THRESHOLD;
-
-    if (!is_low_price)
-        price_ask += price_ask / 10;
-
-    msg_print(_("すんなりとこの金額にまとまった。", "You quickly agree upon the price."));
-    msg_print(NULL);
 
     price_ask *= o_ptr->number;
     concptr s = format(_("買値 $%ld で買いますか？", "Do you buy for $%ld? "), static_cast<long>(price_ask));
@@ -65,7 +59,7 @@ static std::optional<PRICE> prompt_to_buy(player_type *player_ptr, object_type *
     return std::nullopt;
 }
 
-    /*!
+/*!
  * @brief 店舗から購入する際のアイテム選択プロンプト
  * @param item 店舗インベントリ番号(アドレス渡し)
  * @param i 店舗インベントリストック数
@@ -148,7 +142,7 @@ static void shuffle_store(player_type *player_ptr)
     msg_print(_("店主は引退した。", "The shopkeeper retires."));
     store_shuffle(player_ptr, cur_store_num);
     prt("", 3, 0);
-    sprintf(buf, "%s (%s)", ot_ptr->owner_name, race_info[ot_ptr->owner_race].title);
+    sprintf(buf, "%s (%s)", ot_ptr->owner_name, race_info[enum2i(ot_ptr->owner_race)].title);
     put_str(buf, 3, 10);
 }
 
@@ -224,7 +218,7 @@ void store_purchase(player_type *player_ptr)
 
     PRICE best = price_item(player_ptr, j_ptr, ot_ptr->inflate, false);
     if (o_ptr->number > 1) {
-        if ((cur_store_num != STORE_HOME) && (o_ptr->ident & IDENT_FIXED)) {
+        if (cur_store_num != STORE_HOME) {
             msg_format(_("一つにつき $%ldです。", "That costs %ld gold per item."), (long)(best));
         }
 
@@ -243,7 +237,7 @@ void store_purchase(player_type *player_ptr)
     reduce_charges(j_ptr, o_ptr->number - amt);
     j_ptr->number = amt;
 
-    if (!check_get_item(player_ptr, j_ptr)) {
+    if (!check_get_item(j_ptr)) {
         msg_print(_("それを持ち運ぶことはできない。", "You can't carry it."));
         return;
     }
@@ -260,25 +254,18 @@ void store_purchase(player_type *player_ptr)
 
     COMMAND_CODE item_new;
     PRICE price;
-    if (o_ptr->ident & (IDENT_FIXED)) {
-        price = (best * j_ptr->number);
-    } else {
-        GAME_TEXT o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, j_ptr, 0);
-        msg_format(_("%s(%c)を購入する。", "Buying %s (%c)."), o_name, I2A(item));
-        msg_print(NULL);
+    GAME_TEXT o_name[MAX_NLEN];
+    describe_flavor(player_ptr, o_name, j_ptr, 0);
+    msg_format(_("%s(%c)を購入する。", "Buying %s (%c)."), o_name, I2A(item));
+    msg_print(NULL);
 
-        auto res = prompt_to_buy(player_ptr, j_ptr);
-        if (st_ptr->store_open >= current_world_ptr->game_turn)
-            return;
-        if (!res)
-            return;
+    auto res = prompt_to_buy(player_ptr, j_ptr);
+    if (st_ptr->store_open >= current_world_ptr->game_turn)
+        return;
+    if (!res)
+        return;
 
-        price = res.value();
-    }
-
-    if (price == (best * j_ptr->number))
-        o_ptr->ident |= (IDENT_FIXED);
+    price = res.value();
 
     if (player_ptr->au < price) {
         msg_print(_("お金が足りません。", "You do not have enough gold."));
@@ -295,9 +282,7 @@ void store_purchase(player_type *player_ptr)
     player_ptr->au -= price;
     store_prt_gold(player_ptr);
     object_aware(player_ptr, j_ptr);
-    j_ptr->ident &= ~(IDENT_FIXED);
 
-    GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, j_ptr, 0);
     msg_format(_("%sを $%ldで購入しました。", "You bought %s for %ld gold."), o_name, (long)price);
 
@@ -306,6 +291,11 @@ void store_purchase(player_type *player_ptr)
 
     if (record_buy)
         exe_write_diary(player_ptr, DIARY_BUY, 0, o_name);
+
+    if (player_ptr->incident.count(INCIDENT::STORE_BUY) == 0) {
+        player_ptr->incident[INCIDENT::STORE_BUY] = 0;
+    }
+    player_ptr->incident[INCIDENT::STORE_BUY]++;
 
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
     if (record_rand_art && o_ptr->art_name)

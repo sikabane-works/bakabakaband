@@ -1,5 +1,6 @@
 ﻿#include "cmd-item/cmd-zapwand.h"
 #include "action/action-limited.h"
+#include "avatar/avatar.h"
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -9,13 +10,13 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "object-enchant/special-object-flags.h"
+#include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player/attack-defense-types.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
+#include "player/attack-defense-types.h"
 #include "player/player-class.h"
 #include "player/special-defense-types.h"
 #include "spell-kind/spells-beam.h"
@@ -52,6 +53,12 @@ bool wand_effect(player_type *creature_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION
     bool ident = false;
     PLAYER_LEVEL lev = powerful ? creature_ptr->lev * 2 : creature_ptr->lev;
     POSITION rad = powerful ? 3 : 2;
+
+    if (creature_ptr->incident.count(INCIDENT::ZAP_WAND) == 0) {
+        creature_ptr->incident[INCIDENT::ZAP_WAND] = 0;
+    }
+    creature_ptr->incident[INCIDENT::ZAP_WAND]++;
+
 
     /* XXX Hack -- Wand of wonder can do anything before it */
     if (sval == SV_WAND_WONDER) {
@@ -461,7 +468,7 @@ void do_cmd_aim_wand(player_type *creature_ptr)
 
     q = _("どの魔法棒で狙いますか? ", "Aim which wand? ");
     s = _("使える魔法棒がない。", "You have no wand to aim.");
-    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TV_WAND))
+    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TvalItemTester(TV_WAND)))
         return;
 
     exe_aim_wand(creature_ptr, item);

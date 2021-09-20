@@ -27,14 +27,14 @@
 #include <unordered_map>
 
 struct all_player_flags {
-    BIT_FLAGS player_flags[TR_FLAG_SIZE]{};
-    BIT_FLAGS tim_player_flags[TR_FLAG_SIZE]{};
-    BIT_FLAGS player_imm[TR_FLAG_SIZE]{};
-    BIT_FLAGS tim_player_imm[TR_FLAG_SIZE]{};
-    BIT_FLAGS player_vuln[TR_FLAG_SIZE]{};
-    BIT_FLAGS known_obj_imm[TR_FLAG_SIZE]{};
-    BIT_FLAGS riding_flags[TR_FLAG_SIZE]{};
-    BIT_FLAGS riding_negative_flags[TR_FLAG_SIZE]{};
+    TrFlags player_flags{};
+    TrFlags tim_player_flags{};
+    TrFlags player_imm{};
+    TrFlags tim_player_imm{};
+    TrFlags player_vuln{};
+    TrFlags known_obj_imm{};
+    TrFlags riding_flags{};
+    TrFlags riding_negative_flags{};
 };
 
 /*!
@@ -102,15 +102,15 @@ static std::array<tr_type, 6> lite_flags = {
  * @param char_stat その行の特性の状況(参照渡し)
  * その行の表示色用の判定も行う
  */
-static void process_cursed_equipment_characteristics(player_type *creature_ptr, u16b mode, char_stat &char_stat)
+static void process_cursed_equipment_characteristics(player_type *creature_ptr, uint16_t mode, char_stat &char_stat)
 {
     int max_i = (mode & DP_WP) ? INVEN_BOW + 1 : INVEN_TOTAL;
     for (int i = INVEN_MAIN_HAND; i < max_i; i++) {
-        BIT_FLAGS flags[TR_FLAG_SIZE];
+        TrFlags flags;
         auto *o_ptr = &creature_ptr->inventory_list[i];
         auto is_known = object_is_known(o_ptr);
         auto is_sensed = is_known || o_ptr->ident & IDENT_SENSE;
-        object_flags_known(creature_ptr, o_ptr, flags);
+        object_flags_known(o_ptr, flags);
 
         if (has_flag(flags, TR_ADD_L_CURSE) || has_flag(flags, TR_ADD_H_CURSE)) {
             if (is_known) {
@@ -152,13 +152,13 @@ static void process_cursed_equipment_characteristics(player_type *creature_ptr, 
  * @details
  * その行の表示色用の判定も行う
  */
-static void process_light_equipment_characteristics(player_type *creature_ptr, all_player_flags *f, u16b mode, char_stat &char_stat)
+static void process_light_equipment_characteristics(player_type *creature_ptr, all_player_flags *f, uint16_t mode, char_stat &char_stat)
 {
     int max_i = (mode & DP_WP) ? INVEN_BOW + 1 : INVEN_TOTAL;
     for (int i = INVEN_MAIN_HAND; i < max_i; i++) {
-        BIT_FLAGS flags[TR_FLAG_SIZE];
+        TrFlags flags;
         auto *o_ptr = &creature_ptr->inventory_list[i];
-        object_flags_known(creature_ptr, o_ptr, flags);
+        object_flags_known(o_ptr, flags);
 
         auto b = false;
         for (auto flg : lite_flags) {
@@ -202,13 +202,13 @@ static void process_light_equipment_characteristics(player_type *creature_ptr, a
  * @details
  * その行の表示色用の判定も行う
  */
-static void process_inventory_characteristic(player_type *creature_ptr, tr_type flag, all_player_flags *f, u16b mode, char_stat &char_stat)
+static void process_inventory_characteristic(player_type *creature_ptr, tr_type flag, all_player_flags *f, uint16_t mode, char_stat &char_stat)
 {
     int max_i = (mode & DP_WP) ? INVEN_BOW + 1 : INVEN_TOTAL;
     for (int i = INVEN_MAIN_HAND; i < max_i; i++) {
-        BIT_FLAGS flags[TR_FLAG_SIZE];
+        TrFlags flags;
         auto *o_ptr = &creature_ptr->inventory_list[i];
-        object_flags_known(creature_ptr, o_ptr, flags);
+        object_flags_known(o_ptr, flags);
 
         auto f_imm = flag_to_greater_flag.find(flag);
         if (f_imm != flag_to_greater_flag.end()) {
@@ -266,7 +266,7 @@ static void process_inventory_characteristic(player_type *creature_ptr, tr_type 
  * @param f プレイヤーの特性情報構造体
  * @param mode 表示オプション
  */
-static void process_one_characteristic(player_type *creature_ptr, TERM_LEN row, TERM_LEN col, std::string_view header, tr_type flag, all_player_flags *f, u16b mode)
+static void process_one_characteristic(player_type *creature_ptr, TERM_LEN row, TERM_LEN col, std::string_view header, tr_type flag, all_player_flags *f, uint16_t mode)
 {
     char_stat char_stat;
 
@@ -503,7 +503,7 @@ static void display_tval_misc_info(
     process_one_characteristic(creature_ptr, row++, col, _("祝福        :", "Blessed     :"), TR_BLESSED, f, 0);
     process_one_characteristic(creature_ptr, row++, col, _("永遠光源    :", "Perm Lite   :"), TR_LITE_1, f, DP_LITE);
     process_one_characteristic(creature_ptr, row++, col, _("消費魔力減少:", "Econom. Mana:"), TR_DEC_MANA, f, 0);
-    process_one_characteristic(creature_ptr, row++, col, _("呪文難度減少:", "Easy Spell  :"), TR_EASY_SPELL, f, 0);
+    process_one_characteristic(creature_ptr, row++, col, _("魔法難度減少:", "Easy Spell  :"), TR_EASY_SPELL, f, 0);
     process_one_characteristic(creature_ptr, row++, col, _("発動        :", "Activate    :"), TR_ACTIVATE, f, 0);
     process_one_characteristic(creature_ptr, row++, col, _("反魔法      :", "Anti Magic  :"), TR_NO_MAGIC, f, 0);
 }

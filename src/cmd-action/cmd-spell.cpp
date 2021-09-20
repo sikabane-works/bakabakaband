@@ -8,6 +8,7 @@
 #include "cmd-action/cmd-spell.h"
 #include "action/action-limited.h"
 #include "autopick/autopick-reader-writer.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-mind.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/asking-player.h"
@@ -30,7 +31,7 @@
 #include "object-hook/hook-magic.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "player-info/avatar.h"
+#include "object/object-info.h"
 #include "player-info/self-info.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
@@ -83,7 +84,7 @@ concptr KWD_RANDOM = _("ランダム", "random");
  * Zangband uses this array instead of the spell flags table, as there
  * are 5 realms of magic, each with 4 spellbooks and 8 spells per book -- TY
  */
-const u32b fake_spell_flags[4] = { 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 };
+const uint32_t fake_spell_flags[4] = { 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000 };
 
 /*!
  * @brief
@@ -116,7 +117,10 @@ concptr info_string_dice(concptr str, DICE_NUMBER dice, DICE_SID sides, int base
  * @param base 固定値
  * @return フォーマットに従い整形された文字列
  */
-concptr info_damage(DICE_NUMBER dice, DICE_SID sides, int base) { return info_string_dice(_("損傷:", "dam "), dice, sides, base); }
+concptr info_damage(DICE_NUMBER dice, DICE_SID sides, int base)
+{
+    return info_string_dice(_("損傷:", "dam "), dice, sides, base);
+}
 
 /*!
  * @brief 魔法の効果時間を出力する / Generate duration info string such as "dur 20+1d20"
@@ -124,14 +128,20 @@ concptr info_damage(DICE_NUMBER dice, DICE_SID sides, int base) { return info_st
  * @param sides ダイス目
  * @return フォーマットに従い整形された文字列
  */
-concptr info_duration(int base, DICE_SID sides) { return format(_("期間:%d+1d%d", "dur %d+1d%d"), base, sides); }
+concptr info_duration(int base, DICE_SID sides)
+{
+    return format(_("期間:%d+1d%d", "dur %d+1d%d"), base, sides);
+}
 
 /*!
  * @brief 魔法の効果範囲を出力する / Generate range info string such as "range 5"
  * @param range 効果範囲
  * @return フォーマットに従い整形された文字列
  */
-concptr info_range(POSITION range) { return format(_("範囲:%d", "range %d"), range); }
+concptr info_range(POSITION range)
+{
+    return format(_("範囲:%d", "range %d"), range);
+}
 
 /*!
  * @brief 魔法による回復量を出力する / Generate heal info string such as "heal 2d8"
@@ -140,7 +150,10 @@ concptr info_range(POSITION range) { return format(_("範囲:%d", "range %d"), r
  * @param base 固定値
  * @return フォーマットに従い整形された文字列
  */
-concptr info_heal(DICE_NUMBER dice, DICE_SID sides, int base) { return info_string_dice(_("回復:", "heal "), dice, sides, base); }
+concptr info_heal(DICE_NUMBER dice, DICE_SID sides, int base)
+{
+    return info_string_dice(_("回復:", "heal "), dice, sides, base);
+}
 
 /*!
  * @brief 魔法効果発動までの遅延ターンを出力する / Generate delay info string such as "delay 15+1d15"
@@ -148,14 +161,20 @@ concptr info_heal(DICE_NUMBER dice, DICE_SID sides, int base) { return info_stri
  * @param sides ダイス目
  * @return フォーマットに従い整形された文字列
  */
-concptr info_delay(int base, DICE_SID sides) { return format(_("遅延:%d+1d%d", "delay %d+1d%d"), base, sides); }
+concptr info_delay(int base, DICE_SID sides)
+{
+    return format(_("遅延:%d+1d%d", "delay %d+1d%d"), base, sides);
+}
 
 /*!
  * @brief 魔法によるダメージを出力する(固定値＆複数回処理) / Generate multiple-damage info string such as "dam 25 each"
  * @param dam 固定値
  * @return フォーマットに従い整形された文字列
  */
-concptr info_multi_damage(HIT_POINT dam) { return format(_("損傷:各%d", "dam %d each"), dam); }
+concptr info_multi_damage(HIT_POINT dam)
+{
+    return format(_("損傷:各%d", "dam %d each"), dam);
+}
 
 /*!
  * @brief 魔法によるダメージを出力する(ダイスのみ＆複数回処理) / Generate multiple-damage-dice info string such as "dam 5d2 each"
@@ -163,14 +182,20 @@ concptr info_multi_damage(HIT_POINT dam) { return format(_("損傷:各%d", "dam 
  * @param sides ダイス目
  * @return フォーマットに従い整形された文字列
  */
-concptr info_multi_damage_dice(DICE_NUMBER dice, DICE_SID sides) { return format(_("損傷:各%dd%d", "dam %dd%d each"), dice, sides); }
+concptr info_multi_damage_dice(DICE_NUMBER dice, DICE_SID sides)
+{
+    return format(_("損傷:各%dd%d", "dam %dd%d each"), dice, sides);
+}
 
 /*!
  * @brief 魔法による一般的な効力値を出力する（固定値） / Generate power info string such as "power 100"
  * @param power 固定値
  * @return フォーマットに従い整形された文字列
  */
-concptr info_power(int power) { return format(_("効力:%d", "power %d"), power); }
+concptr info_power(int power)
+{
+    return format(_("効力:%d", "power %d"), power);
+}
 
 /*!
  * @brief 魔法による一般的な効力値を出力する（ダイス値） / Generate power info string such as "power 100"
@@ -181,14 +206,20 @@ concptr info_power(int power) { return format(_("効力:%d", "power %d"), power)
 /*
  * Generate power info string such as "power 1d100"
  */
-concptr info_power_dice(DICE_NUMBER dice, DICE_SID sides) { return format(_("効力:%dd%d", "power %dd%d"), dice, sides); }
+concptr info_power_dice(DICE_NUMBER dice, DICE_SID sides)
+{
+    return format(_("効力:%dd%d", "power %dd%d"), dice, sides);
+}
 
 /*!
  * @brief 魔法の効果半径を出力する / Generate radius info string such as "rad 100"
  * @param rad 効果半径
  * @return フォーマットに従い整形された文字列
  */
-concptr info_radius(POSITION rad) { return format(_("半径:%d", "rad %d"), rad); }
+concptr info_radius(POSITION rad)
+{
+    return format(_("半径:%d", "rad %d"), rad);
+}
 
 /*!
  * @brief 魔法効果の限界重量を出力する / Generate weight info string such as "max wgt 15"
@@ -268,7 +299,7 @@ static bool spell_okay(player_type *caster_ptr, int spell, bool learned, bool st
  * The "known" should be TRUE for cast/pray, false for study
  * </pre>
  */
-static int get_spell(player_type *caster_ptr, SPELL_IDX *sn, concptr prompt, OBJECT_SUBTYPE_VALUE sval, bool learned, REALM_IDX use_realm)
+static int get_spell(player_type *caster_ptr, SPELL_IDX *sn, concptr prompt, OBJECT_SUBTYPE_VALUE sval, bool learned, int16_t use_realm)
 {
     int i;
     SPELL_IDX spell = -1;
@@ -546,6 +577,20 @@ static void confirm_use_force(player_type *caster_ptr, bool browse_only)
     }
 }
 
+static FuncItemTester get_castable_spellbook_tester(player_type *caster_ptr)
+{
+    return FuncItemTester([](auto p_ptr, auto o_ptr) { return check_book_realm(p_ptr, o_ptr->tval, o_ptr->sval); }, caster_ptr);
+}
+
+static FuncItemTester get_learnable_spellbook_tester(player_type *caster_ptr)
+{
+    if (caster_ptr->realm2 == REALM_NONE) {
+        return get_castable_spellbook_tester(caster_ptr);
+    } else {
+        return FuncItemTester(item_tester_learn_spell, caster_ptr);
+    }
+}
+
 /*!
  * @brief プレイヤーの魔法と技能を閲覧するコマンドのメインルーチン /
  * Peruse the spells/prayers in a book
@@ -561,7 +606,7 @@ void do_cmd_browse(player_type *caster_ptr)
 {
     OBJECT_IDX item;
     OBJECT_SUBTYPE_VALUE sval;
-    REALM_IDX use_realm = 0;
+    int16_t use_realm = 0;
     int j, line;
     SPELL_IDX spell = -1;
     int num = 0;
@@ -572,7 +617,6 @@ void do_cmd_browse(player_type *caster_ptr)
     object_type *o_ptr;
 
     concptr q, s;
-    tval_type tval = TV_NONE;
 
     /* Warriors are illiterate */
     if (!(caster_ptr->realm1 || caster_ptr->realm2) && (caster_ptr->pclass != CLASS_SORCERER) && (caster_ptr->pclass != CLASS_RED_MAGE)) {
@@ -592,17 +636,13 @@ void do_cmd_browse(player_type *caster_ptr)
     }
 
     /* Restrict choices to "useful" books */
-    if (caster_ptr->realm2 == REALM_NONE)
-        tval = mp_ptr->spell_book;
-    else
-        item_tester_hook = item_tester_learn_spell;
+    auto item_tester = get_learnable_spellbook_tester(caster_ptr);
 
     q = _("どの本を読みますか? ", "Browse which book? ");
     s = _("読める本がない。", "You have no books that you can read.");
 
-    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | (caster_ptr->pclass == CLASS_FORCETRAINER ? USE_FORCE : 0)), tval);
+    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | (caster_ptr->pclass == CLASS_FORCETRAINER ? USE_FORCE : 0)), item_tester);
 
-    item_tester_hook = NULL;
     if (!o_ptr) {
         if (item == INVEN_FORCE) /* the_force */
         {
@@ -677,7 +717,7 @@ void do_cmd_browse(player_type *caster_ptr)
  * @param caster_ptr プレーヤーへの参照ポインタ
  * @param next_realm 変更先の魔法領域ID
  */
-static void change_realm2(player_type *caster_ptr, REALM_IDX next_realm)
+static void change_realm2(player_type *caster_ptr, int16_t next_realm)
 {
     int i, j = 0;
     char tmp[80];
@@ -727,7 +767,6 @@ void do_cmd_study(player_type *caster_ptr)
     concptr p = spell_category_name(mp_ptr->spell_book);
     object_type *o_ptr;
     concptr q, s;
-    tval_type tval = TV_NONE;
 
     if (!caster_ptr->realm1) {
         msg_print(_("本を読むことができない！", "You cannot read books!"));
@@ -761,15 +800,12 @@ void do_cmd_study(player_type *caster_ptr)
     msg_print(NULL);
 
     /* Restrict choices to "useful" books */
-    if (caster_ptr->realm2 == REALM_NONE)
-        tval = mp_ptr->spell_book;
-    else
-        item_tester_hook = item_tester_learn_spell;
+    auto item_tester = get_learnable_spellbook_tester(caster_ptr);
 
     q = _("どの本から学びますか? ", "Study which book? ");
     s = _("読める本がない。", "You have no books that you can read.");
 
-    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), tval);
+    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), item_tester);
 
     if (!o_ptr)
         return;
@@ -946,10 +982,10 @@ bool do_cmd_cast(player_type *caster_ptr)
     OBJECT_IDX item;
     OBJECT_SUBTYPE_VALUE sval;
     SPELL_IDX spell;
-    REALM_IDX realm;
+    int16_t realm;
     int chance;
     int increment = 0;
-    REALM_IDX use_realm;
+    int16_t use_realm;
     MANA_POINT need_mana;
 
     concptr prayer;
@@ -1002,7 +1038,10 @@ bool do_cmd_cast(player_type *caster_ptr)
     q = _("どの呪文書を使いますか? ", "Use which book? ");
     s = _("呪文書がない！", "You have no spell books!");
 
-    o_ptr = choose_object(caster_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | (caster_ptr->pclass == CLASS_FORCETRAINER ? USE_FORCE : 0)), mp_ptr->spell_book);
+    auto item_tester = get_castable_spellbook_tester(caster_ptr);
+
+    o_ptr = choose_object(
+        caster_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | (caster_ptr->pclass == CLASS_FORCETRAINER ? USE_FORCE : 0)), item_tester);
     if (!o_ptr) {
         if (item == INVEN_FORCE) /* the_force */
         {
@@ -1031,8 +1070,11 @@ bool do_cmd_cast(player_type *caster_ptr)
 
         /* Ask for a spell */
 #ifdef JP
-    if (!get_spell(caster_ptr, &spell, ((mp_ptr->spell_book == TV_LIFE_BOOK) ? "詠唱する" : (mp_ptr->spell_book == TV_MUSIC_BOOK) ? "歌う" : "唱える"), sval,
-            true, realm)) {
+    if (!get_spell(caster_ptr, &spell,
+            ((mp_ptr->spell_book == TV_LIFE_BOOK)           ? "詠唱する"
+                    : (mp_ptr->spell_book == TV_MUSIC_BOOK) ? "歌う"
+                                                            : "唱える"),
+            sval, true, realm)) {
         if (spell == -2)
             msg_format("その本には知っている%sがない。", prayer);
         return false;
@@ -1070,7 +1112,9 @@ bool do_cmd_cast(player_type *caster_ptr)
             /* Warning */
 #ifdef JP
         msg_format("その%sを%sのに十分なマジックポイントがない。", prayer,
-            ((mp_ptr->spell_book == TV_LIFE_BOOK) ? "詠唱する" : (mp_ptr->spell_book == TV_LIFE_BOOK) ? "歌う" : "唱える"));
+            ((mp_ptr->spell_book == TV_LIFE_BOOK)          ? "詠唱する"
+                    : (mp_ptr->spell_book == TV_LIFE_BOOK) ? "歌う"
+                                                           : "唱える"));
 #else
         msg_format("You do not have enough mana to %s this %s.", ((mp_ptr->spell_book == TV_LIFE_BOOK) ? "recite" : "cast"), prayer);
 #endif
@@ -1280,8 +1324,8 @@ bool do_cmd_cast(player_type *caster_ptr)
             break;
         }
         if (any_bits(mp_ptr->spell_xtra, extra_magic_gain_exp)) {
-            s16b cur_exp = caster_ptr->spell_exp[(increment ? 32 : 0) + spell];
-            s16b exp_gain = 0;
+            int16_t cur_exp = caster_ptr->spell_exp[(increment ? 32 : 0) + spell];
+            int16_t exp_gain = 0;
 
             if (cur_exp < SPELL_EXP_BEGINNER)
                 exp_gain += 60;

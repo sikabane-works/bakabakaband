@@ -1,4 +1,5 @@
 ﻿#include "hpmp/hp-mp-processor.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-pet.h"
 #include "core/player-redraw-types.h"
 #include "core/window-redrawer.h"
@@ -18,19 +19,19 @@
 #include "object-enchant/trc-types.h"
 #include "object/object-flags.h"
 #include "pet/pet-util.h"
-#include "player-info/avatar.h"
 #include "player/attack-defense-types.h"
 #include "player/digestion-processor.h"
 #include "player/player-damage.h"
 #include "player/player-race-types.h"
 #include "player/player-race.h"
 #include "player/player-status-flags.h"
-#include "player/player-status.h"
 #include "player/player-status-resist.h"
+#include "player/player-status.h"
 #include "player/special-defense-types.h"
 #include "status/bad-status-setter.h"
 #include "status/element-resistance.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -38,6 +39,7 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <functional>
 
 /*!
  * @brief 地形によるダメージを与える / Deal damage from feature.
@@ -56,14 +58,14 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
 {
     feature_type *f_ptr = &f_info[g_ptr->feat];
     int damage = 0;
-    bool resist_levitation = (creature_ptr->levitation && !has_flag(f_ptr->flags, FF_CHAOS_TAINTED) && !has_flag(f_ptr->flags, FF_VOID));
+    bool resist_levitation = (creature_ptr->levitation && !f_ptr->flags.has(FF::CHAOS_TAINTED) && !f_ptr->flags.has(FF::VOID));
 
 
-    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+    if (f_ptr->flags.has(FF::CHAOS_TAINTED) || f_ptr->flags.has(FF::PLASMA)) {
         damage = 12000 + randint0(8000);
-    } else if (has_flag(f_ptr->flags, FF_VOID)) {
+    } else if (f_ptr->flags.has(FF::VOID)) {
         damage = 18000 + randint0(12000);
-    } else if (has_flag(f_ptr->flags, FF_DEEP)) {
+    } else if (f_ptr->flags.has(FF::DEEP)) {
         damage = 6000 + randint0(4000);
     } else if (!creature_ptr->levitation) {
         damage = 3000 + randint0(2000);
@@ -83,12 +85,12 @@ static bool deal_damege_by_feat(player_type *creature_ptr, grid_type *g_ptr, con
     if (resist_levitation) {
         msg_print(msg_levitation);
 
-        take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"), f_info[get_feat_mimic(g_ptr)].name.c_str()));
+        take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"), f_info[g_ptr->get_feat_mimic()].name.c_str()));
 
         if (additional_effect != NULL)
             additional_effect(creature_ptr, damage);
     } else {
-        concptr name = f_info[get_feat_mimic(&creature_ptr->current_floor_ptr->grid_array[creature_ptr->y][creature_ptr->x])].name.c_str();
+        concptr name = f_info[creature_ptr->current_floor_ptr->grid_array[creature_ptr->y][creature_ptr->x].get_feat_mimic()].name.c_str();
         msg_format(_("%s%s！", "The %s %s!"), name, msg_normal);
         take_hit(creature_ptr, DAMAGE_NOESCAPE, damage, name);
 
@@ -110,6 +112,11 @@ void process_player_hp_mp(player_type *creature_ptr)
     bool cave_no_regen = false;
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
+
+    if (f_ptr->flags.has(FF::RUNE_HEALING)) {
+        hp_player(creature_ptr, 2 + creature_ptr->lev / 6);
+    }
+
     if (creature_ptr->poisoned && !is_invuln(creature_ptr)) {
         take_hit(creature_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"));
     }
@@ -146,8 +153,8 @@ void process_player_hp_mp(player_type *creature_ptr)
 
         object_type *o_ptr;
         o_ptr = &creature_ptr->inventory_list[INVEN_LITE];
-        BIT_FLAGS flgs[TR_FLAG_SIZE];
-        object_flags(creature_ptr, o_ptr, flgs);
+        TrFlags flgs;
+        object_flags(o_ptr, flgs);
 
         if (creature_ptr->inventory_list[INVEN_LITE].tval && !has_flag(flgs, TR_DARK_SOURCE) && !has_resist_lite(creature_ptr)) {
             GAME_TEXT o_name[MAX_NLEN];
@@ -164,27 +171,27 @@ void process_player_hp_mp(player_type *creature_ptr)
         }
     }
 
-    if (has_flag(f_ptr->flags, FF_LAVA) && !is_invuln(creature_ptr) && !has_immune_fire(creature_ptr)) {
+    if (f_ptr->flags.has(FF::LAVA) && !is_invuln(creature_ptr) && !has_immune_fire(creature_ptr)) {
         cave_no_regen = deal_damege_by_feat(
             creature_ptr, g_ptr, _("熱で火傷した！", "The heat burns you!"), _("で火傷した！", "burns you!"), calc_fire_damage_rate, NULL);
     }
 
-    if (has_flag(f_ptr->flags, FF_COLD_PUDDLE) && !is_invuln(creature_ptr) && !has_immune_cold(creature_ptr)) {
+    if (f_ptr->flags.has(FF::COLD_PUDDLE) && !is_invuln(creature_ptr) && !has_immune_cold(creature_ptr)) {
         cave_no_regen = deal_damege_by_feat(
             creature_ptr, g_ptr, _("冷気に覆われた！", "The cold engulfs you!"), _("に凍えた！", "frostbites you!"), calc_cold_damage_rate, NULL);
     }
 
-    if (has_flag(f_ptr->flags, FF_ELEC_PUDDLE) && !is_invuln(creature_ptr) && !has_immune_elec(creature_ptr)) {
+    if (f_ptr->flags.has(FF::ELEC_PUDDLE) && !is_invuln(creature_ptr) && !has_immune_elec(creature_ptr)) {
         cave_no_regen = deal_damege_by_feat(
             creature_ptr, g_ptr, _("電撃を受けた！", "The electricity shocks you!"), _("に感電した！", "shocks you!"), calc_elec_damage_rate, NULL);
     }
 
-    if (has_flag(f_ptr->flags, FF_ACID_PUDDLE) && !is_invuln(creature_ptr) && !has_immune_acid(creature_ptr)) {
+    if (f_ptr->flags.has(FF::ACID_PUDDLE) && !is_invuln(creature_ptr) && !has_immune_acid(creature_ptr)) {
         cave_no_regen = deal_damege_by_feat(
             creature_ptr, g_ptr, _("酸が飛び散った！", "The acid melts you!"), _("に溶かされた！", "melts you!"), calc_acid_damage_rate, NULL);
     }
 
-    if (has_flag(f_ptr->flags, FF_POISON_PUDDLE) && !is_invuln(creature_ptr)) {
+    if (f_ptr->flags.has(FF::POISON_PUDDLE) && !is_invuln(creature_ptr)) {
         cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("毒気を吸い込んだ！", "The gas poisons you!"), _("に毒された！", "poisons you!"),
             calc_acid_damage_rate, [](player_type *creature_ptr, int damage) {
                 if (!has_resist_pois(creature_ptr))
@@ -192,7 +199,7 @@ void process_player_hp_mp(player_type *creature_ptr)
             });
     }
 
-    if (has_flag(f_ptr->flags, FF_DUNG_POOL) && !is_invuln(creature_ptr)) {
+    if (f_ptr->flags.has(FF::DUNG_POOL) && !is_invuln(creature_ptr)) {
         cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
             calc_acid_damage_rate, [](player_type *creature_ptr, int damage) {
                 if (!has_resist_pois(creature_ptr))
@@ -200,7 +207,7 @@ void process_player_hp_mp(player_type *creature_ptr)
             });
     }
 
-    if (has_flag(f_ptr->flags, FF_WATER) && has_flag(f_ptr->flags, FF_DEEP) && !creature_ptr->levitation && !creature_ptr->can_swim
+    if (f_ptr->flags.has_all_of({FF::WATER, FF::DEEP}) && !creature_ptr->levitation && !creature_ptr->can_swim
         && !has_resist_water(creature_ptr)) {
         if (calc_inventory_weight(creature_ptr) > calc_weight_limit(creature_ptr)) {
             msg_print(_("溺れている！", "You are drowning!"));
@@ -209,12 +216,17 @@ void process_player_hp_mp(player_type *creature_ptr)
         }
     }
 
-    if (has_flag(f_ptr->flags, FF_CHAOS_TAINTED)) {
+    if (f_ptr->flags.has(FF::PLASMA)) {
+        cave_no_regen
+            = deal_damege_by_feat(creature_ptr, g_ptr, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);
+    }
+
+    if (f_ptr->flags.has(FF::CHAOS_TAINTED)) {
         cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("に汚染された!", "taints you!"),
             _("に汚染された!", "taints you"), calc_chaos_damage_rate_rand, NULL);
     }
 
-    if (has_flag(f_ptr->flags, FF_VOID)) {
+    if (f_ptr->flags.has(FF::VOID)) {
         cave_no_regen = deal_damege_by_feat(creature_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
             _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
@@ -263,7 +275,7 @@ void process_player_hp_mp(player_type *creature_ptr)
      * reduced below 0 hp by being inside a stone wall; others
      * WILL BE!
      */
-    if (!has_flag(f_ptr->flags, FF_MOVE) && !has_flag(f_ptr->flags, FF_CAN_FLY)) {
+    if (f_ptr->flags.has_none_of({FF::MOVE, FF::CAN_FLY})) {
         if (!is_invuln(creature_ptr) && !creature_ptr->wraith_form && !creature_ptr->tim_pass_wall
             && ((creature_ptr->chp > (creature_ptr->lev / 5)) || !has_pass_wall(creature_ptr))) {
             concptr dam_desc;

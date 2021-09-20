@@ -9,7 +9,6 @@
 #include "floor/floor-object.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "io/write-diary.h"
 #include "locale/english.h"
 #include "main/music-definitions-table.h"
@@ -30,6 +29,7 @@
 #include "player/player-status.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -105,7 +105,7 @@ void determine_random_questor(player_type *player_ptr, quest_type *q_ptr)
  * @param q_ptr クエスト情報への参照ポインタ
  * @param stat ステータス(成功or失敗)
  */
-void record_quest_final_status(quest_type *q_ptr, PLAYER_LEVEL lev, QUEST_STATUS stat)
+void record_quest_final_status(quest_type *q_ptr, PLAYER_LEVEL lev, int16_t stat)
 {
     q_ptr->status = stat;
     q_ptr->complev = lev;
@@ -312,6 +312,18 @@ void leave_tower_check(player_type *player_ptr)
     quest[QUEST_TOWER1].comptime = current_world_ptr->play_time;
 }
 
+/*! 
+ * @brief Player enters a new quest
+ */
+void exe_enter_quest(player_type *player_ptr, QUEST_IDX quest_idx)
+{
+    if (quest[quest_idx].type != QUEST_TYPE_RANDOM)
+        player_ptr->current_floor_ptr->dun_level = 1;
+    player_ptr->current_floor_ptr->inside_quest = quest_idx;
+
+    player_ptr->leaving = true;
+}
+
 /*!
  * @brief クエスト入り口にプレイヤーが乗った際の処理 / Do building commands
  * @param player_ptr プレーヤーへの参照ポインタ
@@ -323,7 +335,7 @@ void do_cmd_quest(player_type *player_ptr)
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
 
-    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, player_ptr->y, player_ptr->x, FF_QUEST_ENTER)) {
+    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, player_ptr->y, player_ptr->x, FF::QUEST_ENTER)) {
         msg_print(_("ここにはクエストの入口はない。", "You see no quest level here."));
         return;
     }
@@ -333,18 +345,12 @@ void do_cmd_quest(player_type *player_ptr)
         return;
     if (is_echizen(player_ptr))
         msg_print(_("『とにかく入ってみようぜぇ。』", "\"Let's go in anyway.\""));
-    else if (player_ptr->pseikaku == PERSONALITY_CHARGEMAN)
+    else if (is_chargeman(player_ptr))
         msg_print(_("『全滅してやるぞ！』", "\"I'll annihilate THEM!\""));
 
-    /* Player enters a new quest */
     player_ptr->oldpy = 0;
     player_ptr->oldpx = 0;
-
     leave_quest_check(player_ptr);
 
-    if (quest[player_ptr->current_floor_ptr->inside_quest].type != QUEST_TYPE_RANDOM)
-        player_ptr->current_floor_ptr->dun_level = 1;
-    player_ptr->current_floor_ptr->inside_quest = player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].special;
-
-    player_ptr->leaving = true;
+    exe_enter_quest(player_ptr, player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].special);
 }

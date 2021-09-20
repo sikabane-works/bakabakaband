@@ -1,4 +1,5 @@
 ﻿#include "realm/realm-nature.h"
+#include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -9,7 +10,6 @@
 #include "monster-floor/place-monster-types.h"
 #include "object/object-kind-hook.h"
 #include "player-attack/player-attack.h"
-#include "player-info/avatar.h"
 #include "player/player-damage.h"
 #include "player/player-race-types.h"
 #include "player/player-race.h"
@@ -133,7 +133,7 @@ concptr do_nature_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mod
                 msg_print(_("食料を生成した。", "A food ration is produced."));
 
                 /* Create the food ration */
-                q_ptr->prep(caster_ptr, lookup_kind(TV_FOOD, SV_FOOD_RATION));
+                q_ptr->prep(lookup_kind(TV_FOOD, SV_FOOD_RATION));
 
                 /* Drop the object from heaven */
                 (void)drop_near(caster_ptr, q_ptr, -1, caster_ptr->y, caster_ptr->x);
@@ -477,7 +477,7 @@ concptr do_nature_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mod
 
         {
             if (cast) {
-                if (!identify_fully(caster_ptr, false, TV_NONE))
+                if (!identify_fully(caster_ptr, false))
                     return NULL;
             }
         }

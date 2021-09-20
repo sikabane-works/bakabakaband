@@ -6,7 +6,6 @@
 #include "game-option/special-options.h"
 #include "game-option/text-display-options.h"
 #include "grid/feature.h"
-#include "grid/grid.h"
 #include "inventory/inventory-describer.h"
 #include "inventory/inventory-slot-types.h"
 #include "inventory/inventory-util.h"
@@ -24,6 +23,7 @@
 #include "player/player-status.h"
 #include "spell-kind/magic-item-recharger.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -48,11 +48,24 @@
 #include <sstream>
 #include <string>
 
+/*! サブウィンドウ表示用の ItemTester オブジェクト */
+static std::unique_ptr<ItemTester> fix_item_tester = std::make_unique<AllMatchItemTester>();
+
+FixItemTesterSetter::FixItemTesterSetter(const ItemTester& item_tester)
+{
+    fix_item_tester = item_tester.clone();
+}
+
+FixItemTesterSetter::~FixItemTesterSetter()
+{
+    fix_item_tester = std::make_unique<AllMatchItemTester>();
+}
+
 /*!
  * @brief サブウィンドウに所持品一覧を表示する / Hack -- display inventory in sub-windows
  * @param player_ptr プレーヤーへの参照ポインタ
  */
-void fix_inventory(player_type *player_ptr, tval_type item_tester_tval)
+void fix_inventory(player_type *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = Term;
@@ -63,7 +76,7 @@ void fix_inventory(player_type *player_ptr, tval_type item_tester_tval)
             continue;
 
         term_activate(angband_term[j]);
-        display_inventory(player_ptr, item_tester_tval);
+        display_inventory(player_ptr, *fix_item_tester);
         term_fresh();
         term_activate(old);
     }
@@ -217,7 +230,7 @@ void fix_monster_list(player_type *player_ptr)
  * @brief 装備アイテム一覧を表示する /
  * Choice window "shadow" of the "show_equip()" function
  */
-static void display_equipment(player_type *owner_ptr, tval_type tval)
+static void display_equipment(player_type *owner_ptr, const ItemTester& item_tester)
 {
     if (!owner_ptr || !owner_ptr->inventory_list)
         return;
@@ -234,7 +247,7 @@ static void display_equipment(player_type *owner_ptr, tval_type tval)
             break;
 
         auto o_ptr = &owner_ptr->inventory_list[i];
-        auto do_disp = owner_ptr->select_ring_slot ? is_ring_slot(i) : item_tester_okay(owner_ptr, o_ptr, tval);
+        auto do_disp = owner_ptr->select_ring_slot ? is_ring_slot(i) : item_tester.okay(o_ptr);
         strcpy(tmp_val, "   ");
 
         if (do_disp) {
@@ -291,7 +304,7 @@ static void display_equipment(player_type *owner_ptr, tval_type tval)
  * Hack -- display equipment in sub-windows
  * @param player_ptr プレーヤーへの参照ポインタ
  */
-void fix_equip(player_type *player_ptr, tval_type item_tester_tval)
+void fix_equip(player_type *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = Term;
@@ -301,7 +314,7 @@ void fix_equip(player_type *player_ptr, tval_type item_tester_tval)
             continue;
 
         term_activate(angband_term[j]);
-        display_equipment(player_ptr, item_tester_tval);
+        display_equipment(player_ptr, *fix_item_tester);
         term_fresh();
         term_activate(old);
     }
@@ -349,7 +362,7 @@ void fix_message(void)
         TERM_LEN w, h;
         term_get_size(&w, &h);
         for (int i = 0; i < h; i++) {
-            term_putstr(0, (h - 1) - i, -1, (byte)((i < now_message) ? TERM_WHITE : TERM_SLATE), message_str((s16b)i));
+            term_putstr(0, (h - 1) - i, -1, (byte)((i < now_message) ? TERM_WHITE : TERM_SLATE), message_str((int16_t)i));
             TERM_LEN x, y;
             term_locate(&x, &y);
             term_erase(x, y, 255);
@@ -556,9 +569,9 @@ static void display_floor_item_list(player_type *player_ptr, const int y, const 
         concptr fn = f_ptr->name.c_str();
         char buf[512];
 
-        if (has_flag(f_ptr->flags, FF_STORE) || (has_flag(f_ptr->flags, FF_BLDG) && !floor_ptr->inside_arena))
+        if (f_ptr->flags.has(FF::STORE) || (f_ptr->flags.has(FF::BLDG) && !floor_ptr->inside_arena))
             sprintf(buf, _("%sの入口", "on the entrance of %s"), fn);
-        else if (has_flag(f_ptr->flags, FF_WALL))
+        else if (f_ptr->flags.has(FF::WALL))
             sprintf(buf, _("%sの中", "in %s"), fn);
         else
             sprintf(buf, _("%s", "on %s"), fn);

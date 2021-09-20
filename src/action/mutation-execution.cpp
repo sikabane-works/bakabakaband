@@ -9,7 +9,6 @@
 #include "effect/spells-effect-util.h"
 #include "floor/geometry.h"
 #include "game-option/play-record-options.h"
-#include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/write-diary.h"
 #include "mind/mind-mage.h"
@@ -49,6 +48,7 @@
 #include "status/element-resistance.h"
 #include "status/shape-changer.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -283,8 +283,9 @@ bool exe_mutation_power(player_type *creature_ptr, MUTA power)
         fire_bolt(creature_ptr, GF_COLD, dir, 2 * lvl);
         return true;
     }
-    case MUTA::LAUNCHER:
-        return do_cmd_throw(creature_ptr, 2 + lvl / 40, false, -1);
+    case MUTA::LAUNCHER: {
+        return ThrowCommand(creature_ptr).do_cmd_throw(2 + lvl / 40, false, -1);
+    }
     default:
         PlayerEnergy(creature_ptr).reset_player_turn();
         msg_format(_("能力 %s は実装されていません。", "Power %s not implemented. Oops."), power);

@@ -14,7 +14,6 @@
 #include "game-option/birth-options.h"
 #include "game-option/play-record-options.h"
 #include "game-option/special-options.h"
-#include "grid/grid.h"
 #include "io/input-key-acceptor.h"
 #include "io/write-diary.h"
 #include "main/sound-definitions-table.h"
@@ -29,6 +28,7 @@
 #include "monster/monster-info.h"
 #include "player/player-status.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -125,12 +125,11 @@ void teleport_level(player_type *creature_ptr, MONSTER_IDX m_idx)
 
             if (!is_in_dungeon(creature_ptr)) {
                 creature_ptr->current_floor_ptr->dun_level = d_info[creature_ptr->dungeon_idx].mindepth;
-                prepare_change_floor_mode(creature_ptr, CFM_RAND_PLACE);
+                move_floor(creature_ptr, CFM_RAND_PLACE);
             } else {
-                prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+                move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
             }
 
-            creature_ptr->leaving = true;
         }
     } else if (quest_number(creature_ptr, creature_ptr->current_floor_ptr->dun_level)
         || (creature_ptr->current_floor_ptr->dun_level >= d_info[creature_ptr->dungeon_idx].maxdepth)) {
@@ -149,11 +148,10 @@ void teleport_level(player_type *creature_ptr, MONSTER_IDX m_idx)
             if (autosave_l)
                 do_cmd_save_game(creature_ptr, true);
 
-            prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+            move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
 
             leave_quest_check(creature_ptr);
             creature_ptr->current_floor_ptr->inside_quest = 0;
-            creature_ptr->leaving = true;
         }
     } else if (go_up) {
 #ifdef JP
@@ -171,8 +169,7 @@ void teleport_level(player_type *creature_ptr, MONSTER_IDX m_idx)
             if (autosave_l)
                 do_cmd_save_game(creature_ptr, true);
 
-            prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            creature_ptr->leaving = true;
+            move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
     } else {
 #ifdef JP
@@ -189,8 +186,7 @@ void teleport_level(player_type *creature_ptr, MONSTER_IDX m_idx)
             if (autosave_l)
                 do_cmd_save_game(creature_ptr, true);
 
-            prepare_change_floor_mode(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            creature_ptr->leaving = true;
+            move_floor(creature_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
     }
 
@@ -209,7 +205,8 @@ void teleport_level(player_type *creature_ptr, MONSTER_IDX m_idx)
     }
 
     delete_monster_idx(creature_ptr, m_idx);
-    sound(SOUND_TPLEVEL);
+    if (see_m)
+        sound(SOUND_TPLEVEL);
 }
 
 bool teleport_level_other(player_type *caster_ptr)

@@ -14,6 +14,7 @@
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "util/enum-converter.h"
 #include "view/display-messages.h"
 
 namespace {
@@ -27,12 +28,12 @@ const EnumClassFlagGroup<TRC> TRC_HEAVY_MASK({TRC::TY_CURSE, TRC::AGGRAVATE, TRC
  * @param o_ptr 呪いをかけられる装備オブジェクトの構造体参照ポインタ
  * @return 与える呪いのID
  */
-TRC get_curse(player_type *owner_ptr, int power, object_type *o_ptr)
+TRC get_curse(int power, object_type *o_ptr)
 {
     TRC new_curse;
 
     while (true) {
-        new_curse = static_cast<TRC>(rand_range(static_cast<int>(TRC::TY_CURSE), static_cast<int>(TRC::MAX) - 1));
+        new_curse = static_cast<TRC>(rand_range(enum2i(TRC::TY_CURSE), enum2i(TRC::MAX) - 1));
         if (power == 2) {
             if (TRC_HEAVY_MASK.has_not(new_curse))
                 continue;
@@ -44,9 +45,9 @@ TRC get_curse(player_type *owner_ptr, int power, object_type *o_ptr)
                 continue;
         }
 
-        if (new_curse == TRC::LOW_MELEE && !object_is_weapon(owner_ptr, o_ptr))
+        if (new_curse == TRC::LOW_MELEE && !object_is_weapon(o_ptr))
             continue;
-        if (new_curse == TRC::LOW_AC && !object_is_armour(owner_ptr, o_ptr))
+        if (new_curse == TRC::LOW_AC && !object_is_armour(o_ptr))
             continue;
         break;
     }
@@ -68,8 +69,8 @@ void curse_equipment(player_type *owner_ptr, PERCENTAGE chance, PERCENTAGE heavy
     object_type *o_ptr = &owner_ptr->inventory_list[INVEN_MAIN_HAND + randint0(12)];
     if (!o_ptr->k_idx)
         return;
-    BIT_FLAGS oflgs[TR_FLAG_SIZE];
-    object_flags(owner_ptr, o_ptr, oflgs);
+    TrFlags oflgs;
+    object_flags(o_ptr, oflgs);
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(owner_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
 
@@ -101,7 +102,7 @@ void curse_equipment(player_type *owner_ptr, PERCENTAGE chance, PERCENTAGE heavy
     if (heavy_chance >= 50)
         curse_power++;
 
-    auto new_curse = get_curse(owner_ptr, curse_power, o_ptr);
+    auto new_curse = get_curse(curse_power, o_ptr);
     if (o_ptr->curse_flags.has_not(new_curse)) {
         changed = true;
         o_ptr->curse_flags.set(new_curse);

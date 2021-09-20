@@ -16,10 +16,10 @@
 
 extern bool reinit_wilderness;
 
-extern u32b mon_odds[4];
+extern uint32_t mon_odds[4];
 extern int battle_odds;
 extern PRICE kakekin;
 extern int sel_monster;
 
-typedef struct player_type player_type;
+class player_type;
 void do_cmd_building(player_type *player_ptr);

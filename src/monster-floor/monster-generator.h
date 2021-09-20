@@ -3,11 +3,11 @@
 #include "system/angband.h"
 
 enum summon_type : int;
-typedef struct player_type player_type;
+class player_type;
 typedef bool (*summon_specific_pf)(player_type *, MONSTER_IDX, POSITION, POSITION, DEPTH, summon_type, BIT_FLAGS);
 
 bool mon_scatter(player_type *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSITION *xp, POSITION y, POSITION x, POSITION max_dist);
-bool multiply_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool clone, BIT_FLAGS mode);
+bool multiply_monster(player_type *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_idx, bool clone, BIT_FLAGS mode);
 bool place_monster_aux(player_type *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, MONRACE_IDX r_idx, BIT_FLAGS mode);
 bool place_monster(player_type *player_ptr, POSITION y, POSITION x, BIT_FLAGS mode);
 bool alloc_horde(player_type *player_ptr, POSITION y, POSITION x, summon_specific_pf summon_specific);

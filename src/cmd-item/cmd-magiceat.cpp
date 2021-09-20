@@ -53,6 +53,7 @@
 
 #include "cmd-item/cmd-magiceat.h"
 #include "action/action-limited.h"
+#include "avatar/avatar.h"
 #include "cmd-item/cmd-usestaff.h"
 #include "cmd-item/cmd-zaprod.h"
 #include "cmd-item/cmd-zapwand.h"
@@ -66,7 +67,6 @@
 #include "main/sound-of-music.h"
 #include "object/object-kind-hook.h"
 #include "object/object-kind.h"
-#include "player-info/avatar.h"
 #include "player-status/player-energy.h"
 #include "player/player-class.h"
 #include "player/player-status-table.h"
@@ -302,7 +302,7 @@ static OBJECT_SUBTYPE_VALUE select_magic_eater(player_type *creature_ptr, bool o
                             col = TERM_RED;
                     } else {
                         strcat(dummy,
-                            format(" %-22.22s    %2d/%2d %3d%%", k_info[k_idx].name.c_str(), (s16b)(creature_ptr->magic_num1[ctr + ext] / EATER_CHARGE),
+                            format(" %-22.22s    %2d/%2d %3d%%", k_info[k_idx].name.c_str(), (int16_t)(creature_ptr->magic_num1[ctr + ext] / EATER_CHARGE),
                                 creature_ptr->magic_num2[ctr + ext], chance));
                         if (creature_ptr->magic_num1[ctr + ext] < EATER_CHARGE)
                             col = TERM_RED;
@@ -521,7 +521,7 @@ bool do_cmd_magic_eater(player_type *creature_ptr, bool only_browse, bool powerf
         tval = TV_STAFF;
         sval = item;
     }
-    
+
     auto k_idx = lookup_kind(tval, sval);
     auto level = (tval == TV_ROD ? k_info[k_idx].level * 5 / 6 - 5 : k_info[k_idx].level);
     auto chance = level * 4 / 5 + 20;

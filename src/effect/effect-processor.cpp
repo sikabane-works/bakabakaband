@@ -28,6 +28,7 @@
 #include "spell/range-calc.h"
 #include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
+#include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -50,7 +51,7 @@ static void next_mirror(player_type *creature_ptr, POSITION *next_y, POSITION *n
     int mirror_num = 0; /* 鏡の数 */
     for (POSITION x = 0; x < creature_ptr->current_floor_ptr->width; x++) {
         for (POSITION y = 0; y < creature_ptr->current_floor_ptr->height; y++) {
-            if (is_mirror_grid(&creature_ptr->current_floor_ptr->grid_array[y][x])) {
+            if (creature_ptr->current_floor_ptr->grid_array[y][x].is_mirror()) {
                 mirror_y[mirror_num] = y;
                 mirror_x[mirror_num] = x;
                 mirror_num++;
@@ -103,7 +104,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
     bool blind = caster_ptr->blind != 0;
     bool old_hide = false;
     int path_n = 0;
-    u16b path_g[512];
+    uint16_t path_g[512];
     int grids = 0;
     POSITION gx[1024];
     POSITION gy[1024];
@@ -205,7 +206,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
             if (msec > 0) {
                 if (!blind && !(flag & (PROJECT_HIDE))) {
                     if (panel_contains(y, x) && player_has_los_bold(caster_ptr, y, x)) {
-                        u16b p = bolt_pict(oy, ox, y, x, typ);
+                        uint16_t p = bolt_pict(oy, ox, y, x, typ);
                         TERM_COLOR a = PICT_A(p);
                         SYMBOL_CODE c = PICT_C(p);
                         print_rel(caster_ptr, c, a, y, x);
@@ -230,7 +231,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
 
             if (affect_item(caster_ptr, 0, 0, y, x, dam, GF_SEEKER))
                 res.notice = true;
-            if (!is_mirror_grid(&caster_ptr->current_floor_ptr->grid_array[y][x]))
+            if (!caster_ptr->current_floor_ptr->grid_array[y][x].is_mirror())
                 continue;
 
             monster_target_y = y;
@@ -299,7 +300,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
             {
                 if (msec > 0) {
                     if (panel_contains(y, x) && player_has_los_bold(caster_ptr, y, x)) {
-                        u16b p;
+                        uint16_t p;
                         TERM_COLOR a;
                         SYMBOL_CODE c;
                         p = bolt_pict(oy, ox, y, x, typ);
@@ -327,13 +328,13 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
 
             if (affect_item(caster_ptr, 0, 0, y, x, dam, GF_SUPER_RAY))
                 res.notice = true;
-            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF_PROJECT)) {
+            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF::PROJECT)) {
                 if (second_step)
                     continue;
                 break;
             }
 
-            if (is_mirror_grid(&caster_ptr->current_floor_ptr->grid_array[y][x]) && !second_step) {
+            if (caster_ptr->current_floor_ptr->grid_array[y][x].is_mirror() && !second_step) {
                 monster_target_y = y;
                 monster_target_x = x;
                 remove_mirror(caster_ptr, y, x);
@@ -399,7 +400,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
             if (!cave_los_bold(caster_ptr->current_floor_ptr, ny, nx) && (rad > 0))
                 break;
         } else {
-            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, ny, nx, FF_PROJECT) && (rad > 0))
+            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, ny, nx, FF::PROJECT) && (rad > 0))
                 break;
         }
 
@@ -414,7 +415,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
         if (msec > 0) {
             if (!blind && !(flag & (PROJECT_HIDE | PROJECT_FAST))) {
                 if (panel_contains(y, x) && player_has_los_bold(caster_ptr, y, x)) {
-                    u16b p;
+                    uint16_t p;
                     TERM_COLOR a;
                     SYMBOL_CODE c;
                     p = bolt_pict(oy, ox, y, x, typ);
@@ -520,7 +521,7 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
                 y = gy[i];
                 x = gx[i];
                 if (panel_contains(y, x) && player_has_los_bold(caster_ptr, y, x)) {
-                    u16b p;
+                    uint16_t p;
                     TERM_COLOR a;
                     SYMBOL_CODE c;
                     drawn = true;
@@ -628,14 +629,16 @@ ProjectResult project(player_type *caster_ptr, const MONSTER_IDX who, POSITION r
                         t_x = x_saver;
                     }
 
-                    sound(SOUND_REFLECT);
                     if (is_seen(caster_ptr, m_ptr)) {
+                        sound(SOUND_REFLECT);
                         if ((m_ptr->r_idx == MON_KENSHIROU) || (m_ptr->r_idx == MON_RAOU))
                             msg_print(_("「北斗神拳奥義・二指真空把！」", "The attack bounces!"));
                         else if (m_ptr->r_idx == MON_DIO)
                             msg_print(_("ディオ・ブランドーは指一本で攻撃を弾き返した！", "The attack bounces!"));
                         else
                             msg_print(_("攻撃は跳ね返った！", "The attack bounces!"));
+                    } else if (who <= 0) {
+                        sound(SOUND_REFLECT);
                     }
 
                     if (is_original_ap_and_seen(caster_ptr, m_ptr))

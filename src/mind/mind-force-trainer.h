@@ -2,9 +2,9 @@
 
 #include "system/angband.h"
 
-typedef struct player_type player_type;
-MAGIC_NUM1 get_current_ki(player_type *caster_ptr);
-void set_current_ki(player_type *caster_ptr, bool is_reset, MAGIC_NUM1 ki);
+class player_type;
+int32_t get_current_ki(player_type *caster_ptr);
+void set_current_ki(player_type *caster_ptr, bool is_reset, int32_t ki);
 bool clear_mind(player_type *creature_ptr);
 void set_lightspeed(player_type *creature_ptr, TIME_EFFECT v, bool do_dec);
 bool set_tim_sh_force(player_type *creature_ptr, TIME_EFFECT v, bool do_dec);

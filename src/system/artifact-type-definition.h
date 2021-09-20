@@ -31,7 +31,7 @@ typedef struct artifact_type {
 	DICE_SID ds{};	/*!< ダイス値 / Damage when hits */
 	WEIGHT weight{};		/*!< 重量 / Weight */
 	PRICE cost{};			/*!< 基本価格 / Artifact "cost" */
-	BIT_FLAGS flags[TR_FLAG_SIZE]{};       /*! アイテムフラグ / Artifact Flags */
+	TrFlags flags{};       /*! アイテムフラグ / Artifact Flags */
 	EnumClassFlagGroup<TRG> gen_flags;	/*! アイテム生成フラグ / flags for generate */
 	DEPTH level{};		/*! 基本生成階 / Artifact level */
 	RARITY rarity{};		/*! レアリティ / Artifact rarity */
@@ -39,6 +39,7 @@ typedef struct artifact_type {
 	byte max_num{};		/*! (未使用)最大生成数 / Unused (should be "1") */
 	FLOOR_IDX floor_id{};      /*! アイテムを落としたフロアのID / Leaved on this location last time */
 	byte act_idx{};		/*! 発動能力ID / Activative ability index */
+    PERCENTAGE broken_rate; /*!< 発動破損率 */
 } artifact_type;
 
 extern std::vector<artifact_type> a_info;

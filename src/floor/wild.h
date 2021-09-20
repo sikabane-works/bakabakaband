@@ -29,16 +29,16 @@ enum wt_type {
  */
 typedef struct wilderness_type {
 	wt_type terrain;
-	TOWN_IDX town;
+	int16_t town;
 	int road;
-	u32b seed;
+	uint32_t seed;
 	DEPTH level;
 	byte entrance;
 } wilderness_type;
 
 extern wilderness_type **wilderness;
 
-typedef struct player_type player_type;
+class player_type;
 void set_floor_and_wall(DUNGEON_IDX type);
 void wilderness_gen(player_type *creature_ptr);
 void wilderness_gen_small(player_type *creature_ptr);

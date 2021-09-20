@@ -119,7 +119,7 @@ static void send_waiting_record(player_type *player_ptr)
     player_ptr->update |= (PU_BONUS | PU_HP | PU_MANA | PU_SPELLS);
     update_creature(player_ptr);
     player_ptr->is_dead = true;
-    current_world_ptr->start_time = (u32b)time(NULL);
+    current_world_ptr->start_time = (uint32_t)time(NULL);
     signals_ignore_tstp();
     current_world_ptr->character_icky_depth = 1;
     path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
@@ -280,7 +280,7 @@ static void generate_world(player_type *player_ptr, bool new_game)
     if (player_ptr->pclass != CLASS_SORCERER) {
         if (player_ptr->pseikaku == PERSONALITY_SEXY)
             s_info[player_ptr->pclass].w_max[TV_HAFTED - TV_WEAPON_BEGIN][SV_WHIP] = WEAPON_EXP_MASTER;
-        if (player_ptr->prace == RACE_MERFOLK) {
+        if (player_ptr->prace == player_race_type::MERFOLK) {
             s_info[player_ptr->pclass].w_max[TV_POLEARM - TV_WEAPON_BEGIN][SV_TRIDENT] = WEAPON_EXP_MASTER;
             s_info[player_ptr->pclass].w_max[TV_POLEARM - TV_WEAPON_BEGIN][SV_TRIFURCATE_SPEAR] = WEAPON_EXP_MASTER;
         }
@@ -334,7 +334,6 @@ static void init_riding_pet(player_type *player_ptr, bool new_game)
 
 static void decide_arena_death(player_type *player_ptr)
 {
-
     if (!player_ptr->playing || !player_ptr->is_dead)
         return;
 
@@ -371,7 +370,7 @@ static void decide_arena_death(player_type *player_ptr)
     player_ptr->chp_frac = 0;
     player_ptr->exit_bldg = true;
     reset_tim_flags(player_ptr);
-    prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_RAND_CONNECT);
+    move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_RAND_CONNECT);
     leave_floor(player_ptr);
 }
 
@@ -448,7 +447,7 @@ void play_game(player_type *player_ptr, bool new_game, bool browsing_movie)
     if (player_ptr->chp < 0 && !cheat_immortal)
         player_ptr->is_dead = true;
 
-    if (player_ptr->prace == RACE_ANDROID)
+    if (player_ptr->prace == player_race_type::ANDROID)
         calc_android_exp(player_ptr);
 
     init_riding_pet(player_ptr, new_game);
