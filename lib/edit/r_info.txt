@@ -29383,6 +29383,21 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL | DROP_SKELETON | DROP_CORPSE | WILD_TOWN | WILD_ONLY
 D:彼はあなたの股間とアイテムをねっとりと見つめている。
 
+N:1550:おしりガム『前田』
+E:Maeda, the Hip Gum
+G:t:w
+I:107:9d8:20:32:10
+W:0:5:0:10:0:0
+B:TOUCH:HURT:1d3
+B:TOUCH:HURT:1d3
+B:TOUCH:HURT:1d3
+B:CRAWL:HURT:1d10
+F:MALE | HUMAN | UNIQUE
+F:DROP_1D2 | HOMO_SEXUAL | NASTY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | DROP_SKELETON | DROP_CORPSE | WILD_TOWN | WILD_ONLY
+D:「動くな、俺はホモだ」
+
 
 # N: serial number : monster name
 # G: symbol : color
