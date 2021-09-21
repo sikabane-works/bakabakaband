@@ -56,7 +56,7 @@ errr parse_v_info(std::string_view buf, angband_header *head)
         }
         char c;
         FEAT_IDX feat_idx;
-        c = tokens[1].c_str()[1];
+        c = tokens[1].c_str()[0];
         info_set_value(feat_idx, tokens[2]);
         v_ptr->feature_list[c] = feat_idx;
     } else
