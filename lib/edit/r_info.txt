@@ -29398,6 +29398,22 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 F:EVIL | DROP_SKELETON | DROP_CORPSE | WILD_TOWN | WILD_ONLY
 D:「動くな、俺はホモだ」
 
+N:1551:下級惑星戦士
+E:Novice planet soldier
+G:h:o
+I:120:7d12:20:30:20
+W:14:1:0:80:0:0
+B:PUNCH:HURT:2d6
+B:PUNCH:HURT:2d6
+B:KICK:HURT:3d6
+F:MALE | PREVENT_SUDDEN_MAGIC | HUMAN
+F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | CAN_FLY | WARRIOR
+F:EVIL
+S:1_IN_3 | 
+S:MISSILE
+D:フリーザ一族に従い、惑星そのものの略奪や取引を行う「地上げ屋組織」の一員だ。
+D:様々な星の生まれのならず者がその一団に加わると言う。
 
 # N: serial number : monster name
 # G: symbol : color
