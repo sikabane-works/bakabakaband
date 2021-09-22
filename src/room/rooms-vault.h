@@ -3,6 +3,7 @@
 #include "system/angband.h"
 #include <string>
 #include <vector>
+#include <map>
 
 typedef struct vault_type {
     std::string name; /* Name (offset) */
@@ -12,6 +13,7 @@ typedef struct vault_type {
     PROB rat{}; /* Vault rating (unused) */
     POSITION hgt{}; /* Vault height */
     POSITION wid{}; /* Vault width */
+    std::map<char, FEAT_IDX> feature_list;
 } vault_type;
 
 extern std::vector<vault_type> v_info;

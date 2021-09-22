@@ -212,9 +212,70 @@ errr parse_r_info(std::string_view buf, angband_header *head)
             if (f.size() == 0)
                 continue;
 
+            const auto &s_tokens = str_split(f, '_', false, 3);
+            if (s_tokens.size() == 6 && s_tokens[0] == "SPAWN") {
+                // 落とし子自動生成率
+                if (s_tokens[1] == "CREATURE" && s_tokens[3] == "IN") {
+                    int num;
+                    int deno;
+                    MONRACE_IDX mon_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[4]);
+                    info_set_value(mon_idx, s_tokens[5]);
+                    r_ptr->spawn_monsters.push_back({ num, deno, mon_idx });
+                    continue;
+                }
+
+                // 地形変化率
+                if (s_tokens[1] == "FEATURE" && s_tokens[3] == "IN") {
+                    int num;
+                    int deno;
+                    FEAT_IDX feat_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[4]);
+                    info_set_value(feat_idx, s_tokens[5]);
+                    r_ptr->change_feats.push_back({ num, deno, feat_idx });
+                    continue;
+                }
+
+                // アイテム自然ドロップ率
+                if (s_tokens[1] == "ITEM" && s_tokens[3] == "IN") {
+                    int num;
+                    int deno;
+                    KIND_OBJECT_IDX kind_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[4]);
+                    info_set_value(kind_idx, s_tokens[5]);
+                    r_ptr->spawn_items.push_back({ num, deno, kind_idx });
+                    continue;
+                }
+            }
+
+            if (s_tokens.size() == 8 && s_tokens[0] == "DROP" && s_tokens[1] == "KIND" && s_tokens[3] == "IN") {
+                int num;
+                int deno;
+                int dn;
+                int ds;
+                int grade;
+                KIND_OBJECT_IDX kind_idx;
+                info_set_value(num, s_tokens[2]);
+                info_set_value(deno, s_tokens[4]);
+                info_set_value(kind_idx, s_tokens[5]);
+                info_set_value(grade, s_tokens[6]);
+                const auto &dices = str_split(s_tokens[7], 'd', true, 10);
+                if (dices.size() != 2) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                info_set_value(dn, dices[0]);
+                info_set_value(ds, dices[1]);
+                r_ptr->drop_kinds.push_back({ num, deno, kind_idx, grade, ds, dn });
+                continue;
+            }
+
             if (!grab_one_basic_flag(r_ptr, f))
                 return PARSE_ERROR_INVALID_FLAG;
         }
+
     } else if (tokens[0] == "S") {
         // S:flags
         if (tokens.size() < 2 || tokens[1].size() == 0)
@@ -235,44 +296,6 @@ errr parse_r_info(std::string_view buf, angband_header *head)
                 info_set_value(i, s_tokens[2]);
                 r_ptr->freq_spell = 100 / i;
                 continue;
-            }
-
-            if (s_tokens.size() == 5 && s_tokens[0] == "SPAWN") {
-                // 落とし子自動生成率
-                if (s_tokens[1] == "CREATURE") {
-                    int num;
-                    int deno;
-                    MONRACE_IDX mon_idx;
-                    info_set_value(num, s_tokens[2]);
-                    info_set_value(deno, s_tokens[3]);
-                    info_set_value(mon_idx, s_tokens[4]);
-                    r_ptr->spawn_monsters.push_back({ num, deno, mon_idx });
-                    continue;
-                }
-
-                // 地形変化率
-                if (s_tokens[1] == "FEATURE") {
-                    int num;
-                    int deno;
-                    FEAT_IDX feat_idx;
-                    info_set_value(num, s_tokens[2]);
-                    info_set_value(deno, s_tokens[3]);
-                    info_set_value(feat_idx, s_tokens[4]);
-                    r_ptr->change_feats.push_back({ num, deno, feat_idx });
-                    continue;
-                }
-
-                // アイテム自然ドロップ率
-                if (s_tokens[1] == "ITEM") {
-                    int num;
-                    int deno;
-                    KIND_OBJECT_IDX kind_idx;
-                    info_set_value(num, s_tokens[2]);
-                    info_set_value(deno, s_tokens[3]);
-                    info_set_value(kind_idx, s_tokens[4]);
-                    r_ptr->spawn_items.push_back({ num, deno, kind_idx });
-                    continue;
-                }
             }
 
 
