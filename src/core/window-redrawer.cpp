@@ -91,6 +91,7 @@ void redraw_stuff(player_type *creature_ptr)
         creature_ptr->redraw &= ~(PR_DEPTH | PR_HEALTH | PR_UHEALTH);
         print_frame_basic(creature_ptr);
         WorldTurnProcessor(creature_ptr).print_time();
+        WorldTurnProcessor(creature_ptr).print_world_collapse();
         print_dungeon(creature_ptr);
     }
 
