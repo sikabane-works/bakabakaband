@@ -70,6 +70,7 @@ static bool exe_eat_junk_type_object(player_type *creature_ptr, object_type *o_p
 
     switch (o_ptr->sval) {
     case SV_JUNK_FECES:
+    case SV_KMR_CURRY:
         msg_print("ワーォ！貴方は糞を喰った！");
         msg_print("『涙が出るほどうめぇ……』");
         if (!(has_resist_pois(creature_ptr) || is_oppose_pois(creature_ptr))) {
