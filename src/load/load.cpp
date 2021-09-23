@@ -87,6 +87,20 @@ static void rd_total_play_time()
         return;
 
     rd_u32b(&current_world_ptr->sf_play_time);
+
+}
+
+/*!
+ * @brief 世界状況をロードする
+ */
+static void rd_world_info()
+{
+    if (loading_savefile_version_is_older_than(9)) {
+        current_world_ptr->collapse_degree = 0;
+        return;
+    }
+
+    rd_u32b(&current_world_ptr->collapse_degree);
 }
 
 /*!
@@ -104,6 +118,7 @@ static void rd_winner_class()
 static void load_player_world(player_type *creature_ptr)
 {
     rd_total_play_time();
+    rd_world_info();
     rd_winner_class();
     rd_base_info(creature_ptr);
     rd_player_info(creature_ptr);

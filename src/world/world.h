@@ -65,6 +65,8 @@ struct world_type {
     MONSTER_IDX max_m_idx{}; /*!< Maximum number of monsters in the level */
 
     DUNGEON_IDX max_d_idx{};
+
+    uint32_t collapse_degree{}; /*!< 時空崩壊度 */
 };
 
 extern world_type *current_world_ptr;
