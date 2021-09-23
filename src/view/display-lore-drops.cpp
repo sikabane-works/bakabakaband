@@ -33,7 +33,7 @@ void display_monster_drop_quality(lore_type* lore_ptr)
         lore_ptr->sin = false;
 #endif
     } else {
-        lore_ptr->drop_quality = NULL;
+        lore_ptr->drop_quality = nullptr;
     }
 }
 
@@ -50,7 +50,7 @@ void display_monster_drop_items(lore_type *lore_ptr)
     lore_ptr->sin = false;
 #endif
 
-    if (lore_ptr->drop_quality != NULL)
+    if (lore_ptr->drop_quality != nullptr)
         hooked_roff(lore_ptr->drop_quality);
 
     hooked_roff(_("アイテム", " object"));
@@ -73,7 +73,7 @@ void display_monster_drop_golds(lore_type *lore_ptr)
 
 #ifdef JP
 #else
-    if (lore_ptr->drop_quality == NULL)
+    if (lore_ptr->drop_quality == nullptr)
         lore_ptr->sin = false;
 
     if (lore_ptr->sin)
@@ -82,7 +82,7 @@ void display_monster_drop_golds(lore_type *lore_ptr)
     lore_ptr->sin = false;
 #endif
 
-    if (lore_ptr->drop_quality != NULL)
+    if (lore_ptr->drop_quality != nullptr)
         hooked_roff(lore_ptr->drop_quality);
 
     hooked_roff(_("財宝", " treasure"));

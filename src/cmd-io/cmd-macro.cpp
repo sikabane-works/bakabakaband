@@ -146,7 +146,7 @@ static errr keymap_dump(concptr fname)
  * Could use some helpful instructions on this page.
  * </pre>
  */
-void do_cmd_macros(player_type *creature_ptr)
+void do_cmd_macros(player_type *player_ptr)
 {
     char tmp[1024];
     char buf[1024];
@@ -181,11 +181,11 @@ void do_cmd_macros(player_type *creature_ptr)
         if (key == '1') {
             prt(_("コマンド: ユーザー設定ファイルのロード", "Command: Load a user pref file"), 16, 0);
             prt(_("ファイル: ", "File: "), 18, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 80))
                 continue;
 
-            errr err = process_pref_file(creature_ptr, tmp, true);
+            errr err = process_pref_file(player_ptr, tmp, true);
             if (-2 == err)
                 msg_format(_("標準の設定ファイル'%s'を読み込みました。", "Loaded default '%s'."), tmp);
             else if (err)
@@ -195,7 +195,7 @@ void do_cmd_macros(player_type *creature_ptr)
         } else if (key == '2') {
             prt(_("コマンド: マクロをファイルに追加する", "Command: Append macros to a file"), 16, 0);
             prt(_("ファイル: ", "File: "), 18, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 80))
                 continue;
 
@@ -245,7 +245,7 @@ void do_cmd_macros(player_type *creature_ptr)
         } else if (key == '6') {
             prt(_("コマンド: キー配置をファイルに追加する", "Command: Append keymaps to a file"), 16, 0);
             prt(_("ファイル: ", "File: "), 18, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 80))
                 continue;
 
@@ -292,7 +292,7 @@ void do_cmd_macros(player_type *creature_ptr)
             prt(_("押すキー: ", "Keypress: "), 18, 0);
             do_cmd_macro_aux_keymap(buf);
             string_free(keymap_act[mode][(byte)(buf[0])]);
-            keymap_act[mode][(byte)(buf[0])] = NULL;
+            keymap_act[mode][(byte)(buf[0])] = nullptr;
             msg_print(_("キー配置を削除しました。", "Removed a keymap."));
         } else if (key == '0') {
             prt(_("コマンド: マクロ行動の入力", "Command: Enter a new action"), 16, 0);

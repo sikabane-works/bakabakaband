@@ -34,7 +34,7 @@
 static concptr *spoiler_flag_aux(const TrFlags &art_flags, const flag_desc *flag_ptr, concptr *desc_ptr, const int n_elmnts)
 {
     for (int i = 0; i < n_elmnts; ++i)
-        if (has_flag(art_flags, flag_ptr[i].flag))
+        if (art_flags.has(flag_ptr[i].flag))
             *desc_ptr++ = flag_ptr[i].desc;
 
     return desc_ptr;
@@ -60,26 +60,25 @@ static void analyze_general(player_type *player_ptr, object_type *o_ptr, char *d
  */
 static void analyze_pval(object_type *o_ptr, pval_info_type *pi_ptr)
 {
-    TrFlags flgs;
     concptr *affects_list;
     if (!o_ptr->pval) {
         pi_ptr->pval_desc[0] = '\0';
         return;
     }
 
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     affects_list = pi_ptr->pval_affects;
     sprintf(pi_ptr->pval_desc, "%s%d", o_ptr->pval >= 0 ? "+" : "", o_ptr->pval);
-    if (has_flag(flgs, TR_STR) && has_flag(flgs, TR_INT) && has_flag(flgs, TR_WIS) && has_flag(flgs, TR_DEX) && has_flag(flgs, TR_CON)
-        && has_flag(flgs, TR_CHR)) {
+    if (flgs.has(TR_STR) && flgs.has(TR_INT) && flgs.has(TR_WIS) && flgs.has(TR_DEX) && flgs.has(TR_CON)
+        && flgs.has(TR_CHR)) {
         *affects_list++ = _("全能力", "All stats");
-    } else if (has_flag(flgs, TR_STR) || has_flag(flgs, TR_INT) || has_flag(flgs, TR_WIS) || has_flag(flgs, TR_DEX) || has_flag(flgs, TR_CON)
-        || has_flag(flgs, TR_CHR)) {
+    } else if (flgs.has(TR_STR) || flgs.has(TR_INT) || flgs.has(TR_WIS) || flgs.has(TR_DEX) || flgs.has(TR_CON)
+        || flgs.has(TR_CHR)) {
         affects_list = spoiler_flag_aux(flgs, stat_flags_desc, affects_list, N_ELEMENTS(stat_flags_desc));
     }
 
     affects_list = spoiler_flag_aux(flgs, pval_flags1_desc, affects_list, N_ELEMENTS(pval_flags1_desc));
-    *affects_list = NULL;
+    *affects_list = nullptr;
 }
 
 /*!
@@ -90,10 +89,9 @@ static void analyze_pval(object_type *o_ptr, pval_info_type *pi_ptr)
  */
 static void analyze_slay(object_type *o_ptr, concptr *slay_list)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     slay_list = spoiler_flag_aux(flgs, slay_flags_desc, slay_list, N_ELEMENTS(slay_flags_desc));
-    *slay_list = NULL;
+    *slay_list = nullptr;
 }
 
 /*!
@@ -104,10 +102,9 @@ static void analyze_slay(object_type *o_ptr, concptr *slay_list)
  */
 static void analyze_brand(object_type *o_ptr, concptr *brand_list)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     brand_list = spoiler_flag_aux(flgs, brand_flags_desc, brand_list, N_ELEMENTS(brand_flags_desc));
-    *brand_list = NULL;
+    *brand_list = nullptr;
 }
 
 /*!
@@ -118,10 +115,9 @@ static void analyze_brand(object_type *o_ptr, concptr *brand_list)
  */
 static void analyze_resist(object_type *o_ptr, concptr *resist_list)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     resist_list = spoiler_flag_aux(flgs, resist_flags_desc, resist_list, N_ELEMENTS(resist_flags_desc));
-    *resist_list = NULL;
+    *resist_list = nullptr;
 }
 
 /*!
@@ -132,10 +128,9 @@ static void analyze_resist(object_type *o_ptr, concptr *resist_list)
  */
 static void analyze_immune(object_type *o_ptr, concptr *immune_list)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     immune_list = spoiler_flag_aux(flgs, immune_flags_desc, immune_list, N_ELEMENTS(immune_flags_desc));
-    *immune_list = NULL;
+    *immune_list = nullptr;
 }
 
 /*!
@@ -146,17 +141,16 @@ static void analyze_immune(object_type *o_ptr, concptr *immune_list)
  */
 static void analyze_sustains(object_type *o_ptr, concptr *sustain_list)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
-    if (has_flag(flgs, TR_SUST_STR) && has_flag(flgs, TR_SUST_INT) && has_flag(flgs, TR_SUST_WIS) && has_flag(flgs, TR_SUST_DEX)
-        && has_flag(flgs, TR_SUST_CON) && has_flag(flgs, TR_SUST_CHR)) {
+    auto flgs = object_flags(o_ptr);
+    if (flgs.has(TR_SUST_STR) && flgs.has(TR_SUST_INT) && flgs.has(TR_SUST_WIS) && flgs.has(TR_SUST_DEX)
+        && flgs.has(TR_SUST_CON) && flgs.has(TR_SUST_CHR)) {
         *sustain_list++ = _("全能力", "All stats");
-    } else if (has_flag(flgs, TR_SUST_STR) || has_flag(flgs, TR_SUST_INT) || has_flag(flgs, TR_SUST_WIS) || has_flag(flgs, TR_SUST_DEX)
-        || has_flag(flgs, TR_SUST_CON) || has_flag(flgs, TR_SUST_CHR)) {
+    } else if (flgs.has(TR_SUST_STR) || flgs.has(TR_SUST_INT) || flgs.has(TR_SUST_WIS) || flgs.has(TR_SUST_DEX)
+        || flgs.has(TR_SUST_CON) || flgs.has(TR_SUST_CHR)) {
         sustain_list = spoiler_flag_aux(flgs, sustain_flags_desc, sustain_list, N_ELEMENTS(sustain_flags_desc));
     }
 
-    *sustain_list = NULL;
+    *sustain_list = nullptr;
 }
 
 /*!
@@ -168,35 +162,34 @@ static void analyze_sustains(object_type *o_ptr, concptr *sustain_list)
  */
 static void analyze_misc_magic(object_type *o_ptr, concptr *misc_list)
 {
-    TrFlags flgs;
     char desc[256];
 
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     misc_list = spoiler_flag_aux(flgs, misc_flags2_desc, misc_list, N_ELEMENTS(misc_flags2_desc));
     misc_list = spoiler_flag_aux(flgs, misc_flags3_desc, misc_list, N_ELEMENTS(misc_flags3_desc));
     POSITION rad = 0;
-    if (has_flag(flgs, TR_LITE_1))
+    if (flgs.has(TR_LITE_1))
         rad += 1;
 
-    if (has_flag(flgs, TR_LITE_2))
+    if (flgs.has(TR_LITE_2))
         rad += 2;
 
-    if (has_flag(flgs, TR_LITE_3))
+    if (flgs.has(TR_LITE_3))
         rad += 3;
 
-    if (has_flag(flgs, TR_LITE_M1))
+    if (flgs.has(TR_LITE_M1))
         rad -= 1;
 
-    if (has_flag(flgs, TR_LITE_M2))
+    if (flgs.has(TR_LITE_M2))
         rad -= 2;
 
-    if (has_flag(flgs, TR_LITE_M3))
+    if (flgs.has(TR_LITE_M3))
         rad -= 3;
 
     if (o_ptr->name2 == EGO_LITE_SHINE)
         rad++;
 
-    if (has_flag(flgs, TR_LITE_FUEL)) {
+    if (flgs.has(TR_LITE_FUEL)) {
         if (rad > 0)
             sprintf(desc, _("それは燃料補給によって明かり(半径 %d)を授ける。", "It provides light (radius %d) when fueled."), (int)rad);
     } else {
@@ -210,7 +203,7 @@ static void analyze_misc_magic(object_type *o_ptr, concptr *misc_list)
     if (rad != 0)
         *misc_list++ = quark_str(quark_add(desc));
 
-    if (has_flag(flgs, TR_TY_CURSE))
+    if (flgs.has(TR_TY_CURSE))
         *misc_list++ = _("太古の怨念", "Ancient Curse");
 
     if (o_ptr->curse_flags.has(TRC::PERMA_CURSE))
@@ -220,13 +213,13 @@ static void analyze_misc_magic(object_type *o_ptr, concptr *misc_list)
     else if (o_ptr->curse_flags.has(TRC::CURSED))
         *misc_list++ = _("呪い", "Cursed");
 
-    if (has_flag(flgs, TR_ADD_L_CURSE))
+    if (flgs.has(TR_ADD_L_CURSE))
         *misc_list++ = _("呪いを増やす", "Cursing");
 
-    if (has_flag(flgs, TR_ADD_H_CURSE))
+    if (flgs.has(TR_ADD_H_CURSE))
         *misc_list++ = _("強力な呪いを増やす", "Heavily Cursing");
 
-    *misc_list = NULL;
+    *misc_list = nullptr;
 }
 
 /*!
@@ -278,7 +271,7 @@ static void analyze_misc(object_type *o_ptr, char *misc_desc)
  * @brief アーティファクトの情報全体を構造体に収める /
  * Fill in an object description structure for a given object
  * and its value in gold pieces
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param desc_ptr 全アーティファクト情報を収める文字列参照ポインタ
  */
@@ -300,7 +293,7 @@ void object_analyze(player_type *player_ptr, object_type *o_ptr, obj_desc_list *
 /*!
  * @brief ランダムアーティファクト１件を解析する /
  * Fill in an object description structure for a given object
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr ランダムアーティファクトのオブジェクト構造体参照ポインタ
  * @param desc_ptr 記述内容を収める構造体参照ポインタ
  */

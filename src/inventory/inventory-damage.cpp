@@ -4,7 +4,6 @@
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
 #include "mind/mind-mirror-master.h"
-#include "object-hook/hook-enchant.h"
 #include "object-hook/hook-expendable.h"
 #include "object/object-broken.h"
 #include "object/object-info.h"
@@ -18,7 +17,7 @@
 /*!
  * @brief 手持ちのアイテムを指定確率で破損させる /
  * Destroys a type of item on a given percent chance
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param typ 破損判定関数ポインタ
  * @param perc 基本確率
  * @details
@@ -43,7 +42,7 @@ void inventory_damage(player_type *player_ptr, const ObjectBreaker& breaker, int
             continue;
 
         /* Hack -- for now, skip artifacts */
-        if (object_is_artifact(o_ptr))
+        if (o_ptr->is_artifact())
             continue;
 
         /* Give this item slot a shot at death */
@@ -82,7 +81,7 @@ void inventory_damage(player_type *player_ptr, const ObjectBreaker& breaker, int
 #endif
 
         /* Potions smash open */
-        if (object_is_potion(o_ptr)) {
+        if (o_ptr->is_potion()) {
             (void)potion_smash_effect(player_ptr, 0, player_ptr->y, player_ptr->x, o_ptr->k_idx);
         }
 

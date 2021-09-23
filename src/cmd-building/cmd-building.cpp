@@ -51,7 +51,6 @@
 #include "mutation/mutation-flag-types.h"
 #include "mutation/mutation-investor-remover.h"
 #include "object-hook/hook-armor.h"
-#include "object-hook/hook-bow.h"
 #include "object-hook/hook-weapon.h"
 #include "object/item-tester-hooker.h"
 #include "player-status/player-energy.h"
@@ -63,6 +62,7 @@
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -79,18 +79,18 @@ bool reinit_wilderness = false;
 
 /*!
  * @brief 町に関するヘルプを表示する / Display town history
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
 static void town_history(player_type *player_ptr)
 {
     screen_save();
-    (void)show_file(player_ptr, true, _("jbldg.txt", "bldg.txt"), NULL, 0, 0);
+    (void)show_file(player_ptr, true, _("jbldg.txt", "bldg.txt"), nullptr, 0, 0);
     screen_load();
 }
 
 /*!
  * @brief 施設の処理実行メインルーチン / Execute a building command
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param bldg 施設構造体の参照ポインタ
  * @param i 実行したい施設のサービステーブルの添字
  */
@@ -167,10 +167,10 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         bcost = compare_weapons(player_ptr, bcost);
         break;
     case BACT_ENCHANT_WEAPON:
-        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(object_allow_enchant_melee_weapon));
+        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(&object_type::allow_enchant_melee_weapon));
         break;
     case BACT_ENCHANT_ARMOR:
-        enchant_item(player_ptr, bcost, 0, 0, 1, FuncItemTester(object_is_armour));
+        enchant_item(player_ptr, bcost, 0, 0, 1, FuncItemTester(&object_type::is_armour));
         break;
     case BACT_RECHARGE:
         building_recharge(player_ptr);
@@ -198,7 +198,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         paid = restore_all_status(player_ptr);
         break;
     case BACT_ENCHANT_ARROWS:
-        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(object_is_ammo));
+        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(&object_type::is_ammo));
         break;
     case BACT_ENCHANT_BOW:
         enchant_item(player_ptr, bcost, 1, 1, 0, TvalItemTester(TV_BOW));
@@ -228,7 +228,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         }
 
         msg_print(_("治すべき突然変異が無い。", "You have no mutations."));
-        msg_print(NULL);
+        msg_print(nullptr);
         break;
     }
 
@@ -302,7 +302,7 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
 
 /*!
  * @brief 施設入り口にプレイヤーが乗った際の処理 / Do building commands
- * @param プレーヤーへの参照ポインタ
+ * @param プレイヤーへの参照ポインタ
  */
 void do_cmd_building(player_type *player_ptr)
 {
@@ -351,7 +351,7 @@ void do_cmd_building(player_type *player_ptr)
 
     forget_lite(player_ptr->current_floor_ptr);
     forget_view(player_ptr->current_floor_ptr);
-    current_world_ptr->character_icky_depth++;
+    w_ptr->character_icky_depth++;
 
     command_arg = 0;
     command_rep = 0;
@@ -399,7 +399,7 @@ void do_cmd_building(player_type *player_ptr)
     if (reinit_wilderness)
         player_ptr->leaving = true;
 
-    current_world_ptr->character_icky_depth--;
+    w_ptr->character_icky_depth--;
     term_clear();
 
     player_ptr->update |= (PU_VIEW | PU_MONSTERS | PU_BONUS | PU_LITE | PU_MON_LITE);

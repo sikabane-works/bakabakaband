@@ -613,7 +613,7 @@ static void build_vault(
  */
 bool build_type7(player_type *player_ptr, dun_data_type *dd_ptr)
 {
-    vault_type *v_ptr = NULL;
+    vault_type *v_ptr = nullptr;
     int dummy;
     POSITION x, y;
     POSITION xval, yval;
@@ -1088,7 +1088,7 @@ static void build_castle_vault(player_type *player_ptr, POSITION x0, POSITION y0
 
 /*!
  * @brief タイプ10の部屋…ランダム生成vault / Type 10 -- Random vaults
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
 bool build_type10(player_type *player_ptr, dun_data_type *dd_ptr)
 {
@@ -1154,7 +1154,7 @@ bool build_type10(player_type *player_ptr, dun_data_type *dd_ptr)
  */
 bool build_type17(player_type *player_ptr, dun_data_type *dd_ptr)
 {
-    vault_type *v_ptr = NULL;
+    vault_type *v_ptr = nullptr;
     int dummy;
     POSITION x, y;
     POSITION xval, yval;

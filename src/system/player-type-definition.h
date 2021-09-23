@@ -4,9 +4,9 @@
 #include "object-enchant/trc-types.h"
 #include "object/tval-types.h"
 #include "player-ability/player-ability-types.h"
-#include "player/player-class-types.h"
+#include "player-info/class-types.h"
+#include "player-info/race-types.h"
 #include "player/player-personality-types.h"
-#include "player/player-race-types.h"
 #include "player/player-sex.h"
 #include "system/angband.h"
 #include "system/system-variables.h"
@@ -39,11 +39,12 @@ enum class INCIDENT {
 
 enum class RF_ABILITY;
 
-typedef struct floor_type floor_type;
-typedef struct object_type object_type;
-
+struct floor_type;
+struct object_type;
+class TimedEffects;
 class player_type {
 public:
+    player_type();
     int player_uid{};
     int player_euid{};
     int player_egid{};
@@ -63,9 +64,9 @@ public:
 
     DICE_SID hitdie{}; /* Hit dice (sides) */
     uint16_t expfact{}; /* Experience factor
-                     * Note: was byte, causing overflow for Amberite
-                     * characters (such as Amberite Paladins)
-                     */
+                         * Note: was byte, causing overflow for Amberite
+                         * characters (such as Amberite Paladins)
+                         */
 
     int16_t age{}; /* Characters age */
     int16_t ht{}; /* Height */
@@ -122,8 +123,7 @@ public:
     TIME_EFFECT image{}; /* Timed -- Hallucination */
     TIME_EFFECT poisoned{}; /* Timed -- Poisoned */
     TIME_EFFECT cut{}; /* Timed -- Cut */
-    TIME_EFFECT stun{}; /* Timed -- Stun */
-
+    
     TIME_EFFECT protevil{}; /* Timed -- Protection */
     TIME_EFFECT invuln{}; /* Timed -- Invulnerable */
     TIME_EFFECT ult_res{}; /* Timed -- Ultimate Resistance */
@@ -157,7 +157,7 @@ public:
     TIME_EFFECT magicdef{};
     TIME_EFFECT tim_res_nether{}; /* Timed -- Nether resistance */
     TIME_EFFECT tim_res_time{}; /* Timed -- Time resistance */
-    int16_t mimic_form{};
+    int16_t mimic_form{}; // @todo 後でplayer_race_typeに差し替える.
     TIME_EFFECT tim_mimic{};
     TIME_EFFECT tim_sh_fire{};
     TIME_EFFECT tim_sh_holy{};
@@ -215,6 +215,7 @@ public:
     SUB_EXP weapon_exp[5][64]{}; /* Proficiency of weapons */
     SUB_EXP skill_exp[MAX_SKILLS]{}; /* Proficiency of misc. skill */
 
+    // @todo uint32_tで定義したいが可能か？
     int32_t magic_num1[MAX_SPELLS]{}; /*!< Array for non-spellbook type magic */
     byte magic_num2[MAX_SPELLS]{}; /*!< 魔道具術師の取り込み済魔道具使用回数 / Flags for non-spellbook type magics */
 
@@ -449,6 +450,11 @@ public:
     POSITION x{}; /*!< ダンジョンの現在X座標 / Player location in dungeon */
     GAME_TEXT name[32]{}; /*!< 現在のプレイヤー名 / Current player's character name */
     char base_name[32]{}; /*!< Stripped version of "player_name" */
+
+    std::shared_ptr<TimedEffects> effects() const;
+
+private:
+    std::shared_ptr<TimedEffects> timed_effects;
 };
 
 extern player_type *p_ptr;

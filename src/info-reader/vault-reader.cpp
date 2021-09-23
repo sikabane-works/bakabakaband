@@ -14,7 +14,7 @@
  */
 errr parse_v_info(std::string_view buf, angband_header *head)
 {
-    static vault_type *v_ptr = NULL;
+    static vault_type *v_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 5);
 
     if (tokens[0] == "N") {
@@ -32,6 +32,7 @@ errr parse_v_info(std::string_view buf, angband_header *head)
 
         error_idx = i;
         v_ptr = &v_info[i];
+        v_ptr->idx = i;
         v_ptr->name = std::string(tokens[2]);
     } else if (!v_ptr)
         return PARSE_ERROR_MISSING_RECORD_HEADER;

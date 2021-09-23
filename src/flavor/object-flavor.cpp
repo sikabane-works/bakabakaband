@@ -10,7 +10,6 @@
  */
 
 #include "flavor/object-flavor.h"
-#include "cmd-item/cmd-smith.h"
 #include "combat/shoot.h"
 #include "flavor/flag-inscriptions-table.h"
 #include "flavor/flavor-util.h"
@@ -27,14 +26,12 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trg-types.h"
-#include "object-hook/hook-checker.h"
-#include "object-hook/hook-enchant.h"
 #include "object-hook/hook-quest.h"
 #include "object/object-flags.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player/player-class.h"
+#include "player-info/class-info.h"
 #include "player/player-status.h"
 #include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-lite-types.h"
@@ -203,7 +200,7 @@ static void shuffle_flavors(tval_type tval)
         if (!k_ptr->flavor)
             continue;
 
-        if (has_flag(k_ptr->flags, TR_FIXED_FLAVOR))
+        if (k_ptr->flags.has(TR_FIXED_FLAVOR))
             continue;
 
         k_idx_list[k_idx_list_num] = i;
@@ -229,7 +226,7 @@ void flavor_init(void)
 {
     uint32_t state_backup[4];
     Rand_state_backup(state_backup);
-    Rand_state_set(current_world_ptr->seed_flavor);
+    Rand_state_set(w_ptr->seed_flavor);
     for (KIND_OBJECT_IDX i = 0; i < max_k_idx; i++) {
         object_kind *k_ptr = &k_info[i];
         if (k_ptr->flavor_name.empty())

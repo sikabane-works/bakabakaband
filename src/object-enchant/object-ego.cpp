@@ -11,7 +11,6 @@
 #include "object-enchant/object-curse.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/trc-types.h"
-#include "object-hook/hook-checker.h"
 #include "object-hook/hook-weapon.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
@@ -155,7 +154,7 @@ static void ego_interpret_extra_abilities(object_type *o_ptr, ego_item_type *e_p
             auto f = xtra.tr_flags[randint0(n)];
             auto except = (f == TR_VORPAL && o_ptr->tval != TV_SWORD);
             if (!except)
-                add_flag(o_ptr->art_flags, f);
+                o_ptr->art_flags.set(f);
         }
 
         for (auto f : xtra.trg_flags)
@@ -188,9 +187,9 @@ static int randint1_signed(const int n)
  */
 static bool ego_has_flag(object_type *o_ptr, ego_item_type *e_ptr, tr_type flag)
 {
-    if (has_flag(o_ptr->art_flags, flag))
+    if (o_ptr->art_flags.has(flag))
         return true;
-    if (has_flag(e_ptr->flags, flag))
+    if (e_ptr->flags.has(flag))
         return true;
     return false;
 }
@@ -204,7 +203,7 @@ static bool ego_has_flag(object_type *o_ptr, ego_item_type *e_ptr, tr_type flag)
  */
 void ego_invest_extra_attack(object_type *o_ptr, ego_item_type *e_ptr, DEPTH lev)
 {
-    if (!object_is_weapon(o_ptr)) {
+    if (!o_ptr->is_weapon()) {
         o_ptr->pval = e_ptr->max_pval >= 0 ? 1 : randint1_signed(e_ptr->max_pval);
         return;
     }
@@ -260,7 +259,7 @@ void apply_ego(object_type *o_ptr, DEPTH lev)
     o_ptr->to_a += (ARMOUR_CLASS)e_ptr->base_to_a;
 
     auto is_powerful = e_ptr->gen_flags.has(TRG::POWERFUL);
-    auto is_cursed = (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) && !is_powerful;
+    auto is_cursed = (o_ptr->is_cursed() || o_ptr->is_broken()) && !is_powerful;
     if (is_cursed) {
         if (e_ptr->max_to_h)
             o_ptr->to_h -= randint1(e_ptr->max_to_h);

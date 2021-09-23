@@ -2,7 +2,6 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags3.h"
 #include "object-enchant/tr-types.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-flags.h"
 #include "object/object-value.h"
 #include "store/store-util.h"
@@ -23,9 +22,8 @@
  */
 static bool is_blessed_item(const object_type *o_ptr)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
-    return has_flag(flgs, TR_BLESSED);
+    auto flgs = object_flags(o_ptr);
+    return flgs.has(TR_BLESSED);
 }
 
 static bool check_store_general(const object_type *o_ptr)
@@ -106,7 +104,7 @@ static bool check_store_temple(const object_type *o_ptr)
     case TV_STATUE: {
         monster_race *r_ptr = &r_info[o_ptr->pval];
         if (!(r_ptr->flags3 & RF3_EVIL))
-            if (((r_ptr->flags3 & RF3_GOOD) != 0) || ((r_ptr->flags3 & RF3_ANIMAL) != 0) || (angband_strchr("?!", r_ptr->d_char) != NULL))
+            if (((r_ptr->flags3 & RF3_GOOD) != 0) || ((r_ptr->flags3 & RF3_ANIMAL) != 0) || (angband_strchr("?!", r_ptr->d_char) != nullptr))
                 return true;
     }
         /* Fall through */
@@ -271,7 +269,7 @@ static int mass_book_produce(const PRICE cost)
 static int mass_equipment_produce(object_type *o_ptr, const PRICE cost)
 {
     int size = 1;
-    if (object_is_artifact(o_ptr) || object_is_ego(o_ptr))
+    if (o_ptr->is_artifact() || o_ptr->is_ego())
         return size;
 
     if (cost <= 10L)
@@ -382,7 +380,7 @@ static int switch_mass_production(object_type *o_ptr, const PRICE cost)
     }
 }
 
-static DISCOUNT_RATE decide_discount_rate(const PRICE cost)
+static byte decide_discount_rate(const PRICE cost)
 {
     if (cost < 5)
         return 0;
@@ -415,7 +413,7 @@ void mass_produce(player_type *, object_type *o_ptr)
 {
     const PRICE cost = object_value(o_ptr);
     int size = switch_mass_production(o_ptr, cost);
-    DISCOUNT_RATE discount = decide_discount_rate(cost);
+    auto discount = decide_discount_rate(cost);
     if (o_ptr->art_name)
         discount = 0;
 

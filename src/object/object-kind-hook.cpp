@@ -123,7 +123,7 @@ bool kind_is_amulet(KIND_OBJECT_IDX k_idx)
 bool kind_is_nasty(KIND_OBJECT_IDX k_idx)
 {
     object_kind *k_ptr = &k_info[k_idx];
-    return has_flag(k_ptr->flags, TR_NASTY);
+    return k_ptr->flags.has(TR_NASTY);
 }
 
 /*!

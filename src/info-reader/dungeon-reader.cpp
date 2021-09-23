@@ -86,7 +86,7 @@ static bool grab_one_spell_monster_flag(dungeon_type *d_ptr, std::string_view wh
  */
 errr parse_d_info(std::string_view buf, angband_header *head)
 {
-    static dungeon_type *d_ptr = NULL;
+    static dungeon_type *d_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false);
 
     if (tokens[0] == "N") {
@@ -102,6 +102,7 @@ errr parse_d_info(std::string_view buf, angband_header *head)
 
         error_idx = i;
         d_ptr = &d_info[i];
+        d_ptr->idx = i;
 #ifdef JP
         d_ptr->name = tokens[2];
 #endif

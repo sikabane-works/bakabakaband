@@ -168,7 +168,7 @@ void wr_saved_floor(player_type *player_ptr, saved_floor_type *sf_ptr)
 /*!
  * @brief 現在フロアの書き込み /
  * Write the current dungeon (new method)
- * @player_ptr プレーヤーへの参照ポインタ
+ * @player_ptr プレイヤーへの参照ポインタ
  * @return 保存に成功したらTRUE
  */
 bool wr_dungeon(player_type *player_ptr)
@@ -183,7 +183,7 @@ bool wr_dungeon(player_type *player_ptr)
     if (!player_ptr->floor_id) {
         /* No array elements */
         wr_byte(0);
-        wr_saved_floor(player_ptr, NULL);
+        wr_saved_floor(player_ptr, nullptr);
         return true;
     }
 
@@ -223,7 +223,7 @@ bool wr_dungeon(player_type *player_ptr)
 
 /*!
  * @brief ゲームプレイ中のフロア一時保存出力処理サブルーチン / Actually write a temporary saved floor file
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param sf_ptr 保存フロア参照ポインタ
  */
 static bool save_floor_aux(player_type *player_ptr, saved_floor_type *sf_ptr)
@@ -247,13 +247,13 @@ static bool save_floor_aux(player_type *player_ptr, saved_floor_type *sf_ptr)
 }
 /*!
  * @brief ゲームプレイ中のフロア一時保存出力処理メインルーチン / Attempt to save the temporarily saved-floor data
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param sf_ptr 保存フロア参照ポインタ
  * @param mode 保存オプション
  */
 bool save_floor(player_type *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mode)
 {
-    FILE *old_fff = NULL;
+    FILE *old_fff = nullptr;
     byte old_xor_byte = 0;
     uint32_t old_v_stamp = 0;
     uint32_t old_x_stamp = 0;
@@ -270,7 +270,7 @@ bool save_floor(player_type *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mod
     safe_setuid_grab(player_ptr);
     fd_kill(floor_savefile);
     safe_setuid_drop();
-    saving_savefile = NULL;
+    saving_savefile = nullptr;
     safe_setuid_grab(player_ptr);
 
     int fd = fd_make(floor_savefile, 0644);

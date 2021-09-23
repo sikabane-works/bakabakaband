@@ -18,7 +18,7 @@ typedef struct travel_type {
 
 extern travel_type travel;
 
-typedef struct floor_type floor_type;
+struct floor_type;
 class player_type;
-void travel_step(player_type *creature_ptr);
+void travel_step(player_type *player_ptr);
 void forget_travel_flow(floor_type *floor_ptr);

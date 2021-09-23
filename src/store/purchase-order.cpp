@@ -40,7 +40,7 @@
 /*!
  * @brief プレイヤーが購入する時の値切り処理メインルーチン /
  * Haggling routine 				-RAK-
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr オブジェクトの構造体参照ポインタ
  * @param price 最終価格を返す参照ポインタ
  * @return プレイヤーの価格に対して店主が不服ならばTRUEを返す /
@@ -171,7 +171,7 @@ static void switch_store_stock(player_type *player_ptr, const int i, const COMMA
 /*!
  * @brief 店からの購入処理のメインルーチン /
  * Buy an item from a store 			-RAK-
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
 void store_purchase(player_type *player_ptr)
 {
@@ -222,7 +222,7 @@ void store_purchase(player_type *player_ptr)
             msg_format(_("一つにつき $%ldです。", "That costs %ld gold per item."), (long)(best));
         }
 
-        amt = get_quantity(NULL, o_ptr->number);
+        amt = get_quantity(nullptr, o_ptr->number);
         if (amt <= 0)
             return;
     }
@@ -257,10 +257,10 @@ void store_purchase(player_type *player_ptr)
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, j_ptr, 0);
     msg_format(_("%s(%c)を購入する。", "Buying %s (%c)."), o_name, I2A(item));
-    msg_print(NULL);
+    msg_print(nullptr);
 
     auto res = prompt_to_buy(player_ptr, j_ptr);
-    if (st_ptr->store_open >= current_world_ptr->game_turn)
+    if (st_ptr->store_open >= w_ptr->game_turn)
         return;
     if (!res)
         return;
@@ -287,7 +287,7 @@ void store_purchase(player_type *player_ptr)
     msg_format(_("%sを $%ldで購入しました。", "You bought %s for %ld gold."), o_name, (long)price);
 
     strcpy(record_o_name, o_name);
-    record_turn = current_world_ptr->game_turn;
+    record_turn = w_ptr->game_turn;
 
     if (record_buy)
         exe_write_diary(player_ptr, DIARY_BUY, 0, o_name);

@@ -18,7 +18,7 @@
  */
 static bool grab_one_ego_item_flag(ego_item_type *e_ptr, std::string_view what)
 {
-    if (info_grab_one_flag(e_ptr->flags, k_info_flags, what))
+    if (TrFlags::grab_one_flag(e_ptr->flags, k_info_flags, what))
         return true;
 
     if (EnumClassFlagGroup<TRG>::grab_one_flag(e_ptr->gen_flags, k_info_gen_flags, what))
@@ -59,7 +59,7 @@ static bool grab_ego_generate_flags(ego_generate_type &xtra, std::string_view wh
  */
 errr parse_e_info(std::string_view buf, angband_header *head)
 {
-    static ego_item_type *e_ptr = NULL;
+    static ego_item_type *e_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 10);
 
     error_idx = 0; //!< @note 順不同で登録しているため
@@ -77,6 +77,7 @@ errr parse_e_info(std::string_view buf, angband_header *head)
 
         error_idx = i;
         e_ptr = &e_info[i];
+        e_ptr->idx = i;
 #ifdef JP
         e_ptr->name = tokens[2];
 #endif
