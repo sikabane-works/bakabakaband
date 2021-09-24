@@ -25,7 +25,8 @@ using store_k_idx = std::vector<KIND_OBJECT_IDX>;
  * @brief 店舗の情報構造体
  */
 typedef struct object_type object_type;
-struct store_type {
+class store_type {
+    public:
     byte type{};           //!< Store type
     byte owner{};          //!< Owner index
     byte extra{};          //!< Unused for now
