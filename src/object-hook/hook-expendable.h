@@ -2,7 +2,6 @@
 
 typedef struct object_type object_type;
 class player_type;
-bool item_tester_hook_eatable(player_type *player_ptr, const object_type *o_ptr);
 bool item_tester_hook_quaff(player_type *player_ptr, const object_type *o_ptr);
 bool object_is_readable(const object_type *o_ptr);
 bool object_is_refill_lantern(const object_type *o_ptr);
