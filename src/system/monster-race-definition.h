@@ -70,7 +70,7 @@ struct monster_race {
     BIT_FLAGS flags9{}; //!< Flags 9 (drops info)
     BIT_FLAGS flagsr{}; //!< 耐性フラグ / Flags R (resistances info)
     EnumClassFlagGroup<RF_ABILITY> ability_flags; //!< 能力フラグ(魔法/ブレス) / Ability Flags
-    monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
+    std::vector<monster_blow> blow; //!< 打撃能力定義 / Up to four blows per round
     std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces; 
     std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率

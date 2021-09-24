@@ -391,15 +391,16 @@ static void increase_blow_type_seen(player_type *target_ptr, monap_type *monap_p
 static bool process_monster_blows(player_type *target_ptr, monap_type *monap_ptr)
 {
     monster_race *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-
-    for (int ap_cnt = 0; ap_cnt < MAX_NUM_BLOWS; ap_cnt++) {
+    int ap_cnt = -1;
+    for (auto blow : r_ptr->blow) {
+        ap_cnt++;
         monap_ptr->obvious = false;
         monap_ptr->damage = 0;
         monap_ptr->act = NULL;
-        monap_ptr->effect = r_ptr->blow[ap_cnt].effect;
-        monap_ptr->method = r_ptr->blow[ap_cnt].method;
-        monap_ptr->d_dice = r_ptr->blow[ap_cnt].d_dice;
-        monap_ptr->d_side = r_ptr->blow[ap_cnt].d_side;
+        monap_ptr->effect = blow.effect;
+        monap_ptr->method = blow.method;
+        monap_ptr->d_dice = blow.d_dice;
+        monap_ptr->d_side = blow.d_side;
 
         if (!check_monster_continuous_attack(target_ptr, monap_ptr))
             break;
