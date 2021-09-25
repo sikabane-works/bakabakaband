@@ -129,15 +129,17 @@ void process_player(player_type *player_ptr)
             update_monster(player_ptr, m_idx, false);
         }
 
-        WorldTurnProcessor(player_ptr).print_time();        
-    } else if (!(load && player_ptr->energy_need <= 0)) {
-        player_ptr->energy_need -= SPEED_TO_ENERGY(player_ptr->pspeed);
+        WorldTurnProcessor(creature_ptr).print_time();
+        WorldTurnProcessor(creature_ptr).print_world_collapse();
+    } else if (!(load && creature_ptr->energy_need <= 0)) {
+        creature_ptr->energy_need -= SPEED_TO_ENERGY(creature_ptr->pspeed);
     }
 
     if (player_ptr->energy_need > 0)
         return;
     if (!command_rep) {
-        WorldTurnProcessor(player_ptr).print_time();
+        WorldTurnProcessor(creature_ptr).print_time();
+        WorldTurnProcessor(creature_ptr).print_world_collapse();
     }
 
     if (fresh_once && (continuous_action_running(player_ptr) || !command_rep)) {

@@ -19,28 +19,6 @@
 #include "util/string-processor.h"
 #include "util/bit-flags-calculator.h"
 
-/*!
- * @brief オブジェクトをプレイヤーが食べることができるかを判定する /
- * Hook to determine if an object is eatable
- * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
- * @return 食べることが可能ならばTRUEを返す
- */
-bool item_tester_hook_eatable(player_type *player_ptr, const object_type *o_ptr)
-{
-    if (o_ptr->tval == TV_FOOD)
-        return true;
-
-    auto food_type = player_race_food(player_ptr);
-    if (food_type == PlayerRaceFood::MANA) {
-        if (o_ptr->tval == TV_STAFF || o_ptr->tval == TV_WAND)
-            return true;
-    } else if (food_type == PlayerRaceFood::CORPSE) {
-        if (o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[o_ptr->pval].d_char))
-            return true;
-    }
-
-    return false;
-}
 
 /*!
  * @brief オブジェクトをプレイヤーが飲むことができるかを判定する /

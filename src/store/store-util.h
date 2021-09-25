@@ -26,6 +26,7 @@ using store_k_idx = std::vector<KIND_OBJECT_IDX>;
  */
 struct object_type;
 struct store_type {
+    public:
     byte type{};           //!< Store type
     byte owner{};          //!< Owner index
     byte extra{};          //!< Unused for now

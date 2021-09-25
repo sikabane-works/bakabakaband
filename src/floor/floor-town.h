@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-typedef struct store_type store_type;
+class store_type;
 
 /*
  * A structure describing a town with

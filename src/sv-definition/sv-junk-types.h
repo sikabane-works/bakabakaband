@@ -7,5 +7,6 @@ typedef enum sv_junk_type {
     SV_JUNK_FECES = 7,
     SV_JUNK_VOMITTING = 8,
     SV_JUNK_THING_LIVING_TILL = 9,
-    SV_STUNGUN = 17
+    SV_STUNGUN = 17,
+    SV_KMR_CURRY = 20,
 } sv_junk_type;

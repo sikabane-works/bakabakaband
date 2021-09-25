@@ -155,19 +155,11 @@ static void on_dead_drop_item(player_type *player_ptr, monster_death_type *md_pt
     }
 }
 
-    static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
+static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
 {
     object_type forge;
     object_type *q_ptr = &forge;
     q_ptr->prep(lookup_kind(TV_POTION, SV_POTION_CURE_CRITICAL));
-    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
-}
-
-static void on_dead_misumi(player_type *player_ptr, monster_death_type *md_ptr)
-{
-    object_type forge;
-    object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_FOOD, SV_FOOD_SEED_FEA));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -669,9 +661,6 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
         break;
     case MON_BOTTLE_GNOME:
         on_dead_bottle_gnome(player_ptr, md_ptr);
-        return;
-    case MON_MISUMI:
-        on_dead_misumi(player_ptr, md_ptr);
         return;
     case MON_DONELD:
         on_dead_doneld(player_ptr, md_ptr);

@@ -70,6 +70,7 @@ static bool exe_eat_junk_type_object(player_type *player_ptr, object_type *o_ptr
 
     switch (o_ptr->sval) {
     case SV_JUNK_FECES:
+    case SV_KMR_CURRY:
         msg_print("ワーォ！貴方は糞を喰った！");
         msg_print("『涙が出るほどうめぇ……』");
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
@@ -757,7 +758,7 @@ void do_cmd_eat_food(player_type *player_ptr)
     q = _("どれを食べますか? ", "Eat which item? ");
     s = _("食べ物がない。", "You have nothing to eat.");
 
-    if (!choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(item_tester_hook_eatable, player_ptr)))
+    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR)))
         return;
 
     exe_eat_food(player_ptr, item);

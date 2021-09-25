@@ -115,6 +115,17 @@ void WorldTurnProcessor::print_time()
     c_put_str(TERM_WHITE, format("%2d:%02d", this->hour, this->min), ROW_DAY, COL_DAY + 7);
 }
 
+/*!
+ * @brief 時空崩壊度を表示する /
+ */
+void WorldTurnProcessor::print_world_collapse()
+{
+    c_put_str(TERM_WHITE, "             ", ROW_COLLAPSE, COL_COLLAPSE);
+    c_put_str(TERM_WHITE,
+        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), current_world_ptr->collapse_degree / 100, current_world_ptr->collapse_degree % 100), ROW_COLLAPSE,
+        COL_COLLAPSE);
+}
+
 void WorldTurnProcessor::process_downward()
 {
     /* 帰還無しモード時のレベルテレポバグ対策 / Fix for level teleport bugs on ironman_downward.*/
