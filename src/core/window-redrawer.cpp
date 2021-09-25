@@ -83,16 +83,16 @@ void redraw_stuff(player_type *player_ptr)
         print_map(player_ptr);
     }
 
-    if (creature_ptr->redraw & (PR_BASIC)) {
-        creature_ptr->redraw &= ~(PR_BASIC);
-        creature_ptr->redraw &= ~(PR_MISC | PR_TITLE | PR_STATS);
-        creature_ptr->redraw &= ~(PR_LEV | PR_EXP | PR_GOLD);
-        creature_ptr->redraw &= ~(PR_ARMOR | PR_HP | PR_MANA);
-        creature_ptr->redraw &= ~(PR_DEPTH | PR_HEALTH | PR_UHEALTH);
-        print_frame_basic(creature_ptr);
-        WorldTurnProcessor(creature_ptr).print_time();
-        WorldTurnProcessor(creature_ptr).print_world_collapse();
-        print_dungeon(creature_ptr);
+    if (player_ptr->redraw & (PR_BASIC)) {
+        player_ptr->redraw &= ~(PR_BASIC);
+        player_ptr->redraw &= ~(PR_MISC | PR_TITLE | PR_STATS);
+        player_ptr->redraw &= ~(PR_LEV | PR_EXP | PR_GOLD);
+        player_ptr->redraw &= ~(PR_ARMOR | PR_HP | PR_MANA);
+        player_ptr->redraw &= ~(PR_DEPTH | PR_HEALTH | PR_UHEALTH);
+        print_frame_basic(player_ptr);
+        WorldTurnProcessor(player_ptr).print_time();
+        WorldTurnProcessor(player_ptr).print_world_collapse();
+        print_dungeon(player_ptr);
     }
 
     if (player_ptr->redraw & (PR_EQUIPPY)) {

@@ -122,7 +122,7 @@ void WorldTurnProcessor::print_world_collapse()
 {
     c_put_str(TERM_WHITE, "             ", ROW_COLLAPSE, COL_COLLAPSE);
     c_put_str(TERM_WHITE,
-        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), current_world_ptr->collapse_degree / 100, current_world_ptr->collapse_degree % 100), ROW_COLLAPSE,
+        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), w_ptr->collapse_degree / 100, w_ptr->collapse_degree % 100), ROW_COLLAPSE,
         COL_COLLAPSE);
 }
 

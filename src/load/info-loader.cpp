@@ -16,7 +16,7 @@
  */
 void rd_version_info(void)
 {
-    byte fake_major, view_mejor;
+    byte fake_major, view_major;
     rd_byte(&fake_major);
 
     strip_bytes(3);
@@ -38,14 +38,14 @@ void rd_version_info(void)
     rd_u32b(&loading_savefile_version);
 
     /* 馬鹿馬鹿特有のバージョン計算 */
-    view_mejor = w_ptr->h_ver_major - FAKE_VERSION_MINUS;
+    view_major = w_ptr->h_ver_major - FAKE_VERSION_MINUS;
 
     /* h_ver_majorがfake_ver_majorと同じだったころへの対策 */
     if (fake_major - w_ptr->h_ver_major < FAKE_VER_PLUS)
         w_ptr->h_ver_major -= FAKE_VER_PLUS;
 
     load_note(format(_("バージョン %d.%d.%d のセーブデータ(SAVE%lu形式)をロード中...", "Loading a Verison %d.%d.%d savefile (SAVE%lu format)..."),
-        w_ptr->h_ver_major, w_ptr->h_ver_minor, w_ptr->h_ver_patch,
+        view_major, w_ptr->h_ver_minor, w_ptr->h_ver_patch,
         loading_savefile_version));
 }
 
