@@ -5,20 +5,22 @@
 #include "load/birth-loader.h"
 #include "load/dummy-loader.h"
 #include "load/load-util.h"
-#include "load/load-v1-3-0.h"
 #include "load/load-v1-7-0.h"
 #include "load/load-zangband.h"
 #include "load/player-attack-loader.h"
+#include "load/player-class-specific-data-loader.h"
 #include "load/world-loader.h"
 #include "market/arena.h"
-#include "mutation/mutation-calculator.h"
 #include "monster-race/race-ability-flags.h"
+#include "mutation/mutation-calculator.h"
+#include "player-base/player-class.h"
 #include "player/attack-defense-types.h"
 #include "player/player-skill.h"
 #include "spell-realm/spells-song.h"
 #include "system/angband-version.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
+#include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
@@ -123,27 +125,13 @@ void rd_experience(player_type *player_ptr)
         rd_s16b(&player_ptr->skill_exp[i]);
 }
 
-static void set_spells(player_type *player_ptr)
-{
-    for (int i = 0; i < MAX_SPELLS; i++)
-        rd_s32b(&player_ptr->magic_num1[i]);
-
-    for (int i = 0; i < MAX_SPELLS; i++)
-        rd_byte(&player_ptr->magic_num2[i]);
-
-    if (h_older_than(1, 3, 0, 1))
-        set_spells_old(player_ptr);
-}
-
 void rd_skills(player_type *player_ptr)
 {
     if (h_older_than(0, 4, 1))
         set_zangband_skill(player_ptr);
 
-    if (h_older_than(0, 3, 14))
-        set_zangband_spells(player_ptr);
-    else
-        set_spells(player_ptr);
+    PlayerClass(player_ptr).init_specific_data();
+    std::visit(PlayerClassSpecificDataLoader(), player_ptr->class_specific_data);
 
     if (music_singing_any(player_ptr))
         player_ptr->action = ACTION_SING;
@@ -348,14 +336,16 @@ static void rd_energy(player_type *player_ptr)
  */
 static void rd_status(player_type *player_ptr)
 {
+    int16_t tmp16s;
     rd_s16b(&player_ptr->fast);
     rd_s16b(&player_ptr->slow);
     rd_s16b(&player_ptr->afraid);
-    rd_s16b(&player_ptr->cut);
-    int16_t tmp16s = player_ptr->effects()->stun()->current();
     rd_s16b(&tmp16s);
+    player_ptr->effects()->cut()->set(tmp16s);
+    rd_s16b(&tmp16s);
+    player_ptr->effects()->stun()->set(tmp16s);
     rd_s16b(&player_ptr->poisoned);
-    rd_s16b(&player_ptr->image);
+    rd_s16b(&player_ptr->hallucinated);
     rd_s16b(&player_ptr->protevil);
     rd_s16b(&player_ptr->invuln);
     if (h_older_than(0, 0, 0))

@@ -51,6 +51,7 @@
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -154,9 +155,10 @@ void process_player(player_type *player_ptr)
         } else if (player_ptr->resting == COMMAND_ARG_REST_UNTIL_DONE) {
             auto effects = player_ptr->effects();
             auto is_stunned = effects->stun()->is_stunned();
+            auto is_cut = effects->cut()->is_cut();
             if ((player_ptr->chp == player_ptr->mhp) && (player_ptr->csp >= player_ptr->msp) && !player_ptr->blind && !player_ptr->confused
-                && !player_ptr->poisoned && !player_ptr->afraid && !is_stunned && !player_ptr->cut && !player_ptr->slow
-                && !player_ptr->paralyzed && !player_ptr->image && !player_ptr->word_recall && !player_ptr->alter_reality) {
+                && !player_ptr->poisoned && !player_ptr->afraid && !is_stunned && !is_cut && !player_ptr->slow
+                && !player_ptr->paralyzed && !player_ptr->hallucinated && !player_ptr->word_recall && !player_ptr->alter_reality) {
                 set_action(player_ptr, ACTION_NONE);
             }
         }
@@ -323,7 +325,7 @@ void process_player(player_type *player_ptr)
                 player_ptr->energy_need += (int16_t)((int32_t)player_ptr->energy_use * ENERGY_NEED() / 100L);
             }
 
-            if (player_ptr->image)
+            if (player_ptr->hallucinated)
                 player_ptr->redraw |= (PR_MAP);
 
             for (MONSTER_IDX m_idx = 1; m_idx < player_ptr->current_floor_ptr->m_max; m_idx++) {

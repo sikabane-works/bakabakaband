@@ -38,6 +38,8 @@
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "timed-effect/player-cut.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -122,26 +124,11 @@ void process_player_hp_mp(player_type *player_ptr)
     if (player_ptr->poisoned && !is_invuln(player_ptr)) {
         take_hit(player_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"));
     }
-
-    if (player_ptr->cut && !is_invuln(player_ptr)) {
-        HIT_POINT dam;
-        if (player_ptr->cut > 1000) {
-            dam = 200;
-        } else if (player_ptr->cut > 200) {
-            dam = 80;
-        } else if (player_ptr->cut > 100) {
-            dam = 32;
-        } else if (player_ptr->cut > 50) {
-            dam = 16;
-        } else if (player_ptr->cut > 25) {
-            dam = 7;
-        } else if (player_ptr->cut > 10) {
-            dam = 3;
-        } else {
-            dam = 1;
-        }
-
-        if (take_hit(player_ptr, DAMAGE_NOESCAPE, dam, _("致命傷", "a fatal wound")) > 0) {
+    
+    auto player_cut = player_ptr->effects()->cut();
+    if (player_cut->is_cut() && !is_invuln(player_ptr)) {
+        auto dam = player_cut->get_damage();
+        if (take_hit(player_ptr, DAMAGE_NOESCAPE, dam, _("致命傷", "a mortal wound")) > 0) {
             sound(SOUND_DAMAGE_OVER_TIME);
         }
     }
@@ -210,7 +197,7 @@ void process_player_hp_mp(player_type *player_ptr)
         if (deal_damege_by_feat(player_ptr, g_ptr, _("毒気を吸い込んだ！", "The gas poisons you!"), _("に毒された！", "poisons you!"), calc_acid_damage_rate,
                 [](player_type *player_ptr, int damage) {
                     if (!has_resist_pois(player_ptr))
-                        (void)set_poisoned(player_ptr, player_ptr->poisoned + damage);
+                        (void)BadStatusSetter(player_ptr).mod_poison(static_cast<TIME_EFFECT>(damage));
                 })) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
@@ -221,7 +208,7 @@ void process_player_hp_mp(player_type *player_ptr)
         cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
             calc_acid_damage_rate, [](player_type *player_ptr, int damage) {
                 if (!has_resist_pois(player_ptr))
-                    (void)set_poisoned(player_ptr, player_ptr->poisoned + damage);
+                    (void)BadStatusSetter(player_ptr).mod_poison(damage);
             });
     }
 
@@ -365,7 +352,7 @@ void process_player_hp_mp(player_type *player_ptr)
 
     if (player_ptr->poisoned)
         regen_amount = 0;
-    if (player_ptr->cut)
+    if (player_cut->is_cut())
         regen_amount = 0;
     if (cave_no_regen)
         regen_amount = 0;

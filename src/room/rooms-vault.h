@@ -19,7 +19,6 @@ typedef struct vault_type {
 } vault_type;
 
 extern std::vector<vault_type> v_info;
-extern int16_t max_v_idx;
 
 struct dun_data_type;
 class player_type;

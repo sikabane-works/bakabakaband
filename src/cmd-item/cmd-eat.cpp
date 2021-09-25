@@ -74,7 +74,7 @@ static bool exe_eat_junk_type_object(player_type *player_ptr, object_type *o_ptr
         msg_print("ワーォ！貴方は糞を喰った！");
         msg_print("『涙が出るほどうめぇ……』");
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
-            set_poisoned(player_ptr, player_ptr->poisoned + randint0(10) + 10);
+            (void)BadStatusSetter(player_ptr).mod_poison(10 + randint1(10));
         }
         if (player_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
             player_ptr->incident[INCIDENT::EAT_FECES] = 0;
@@ -86,7 +86,7 @@ static bool exe_eat_junk_type_object(player_type *player_ptr, object_type *o_ptr
         msg_print("ワーォ！貴方はゲロを喰った！");
         msg_print("『涙が出るほどうめぇ……』");
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
-            set_poisoned(player_ptr, player_ptr->poisoned + randint0(10) + 10);
+            (void)BadStatusSetter(player_ptr).mod_poison(10 + randint1(10));
         }
         if (player_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
             player_ptr->incident[INCIDENT::EAT_FECES] = 0;
@@ -140,11 +140,11 @@ static bool exe_eat_corpse_type_object(player_type *player_ptr, object_type *o_p
     monster_race *r_ptr = &r_info[o_ptr->pval];
 
     if (r_ptr->flags9 & RF9_EAT_BLIND) {
-        set_blind(player_ptr, player_ptr->blind + 200 + randint1(200));
+        BadStatusSetter(player_ptr).mod_blindness(200 + randint1(200));
     }
 
     if (r_ptr->flags9 & RF9_EAT_CONF) {
-        set_confused(player_ptr, player_ptr->confused + 200 + randint1(200));
+        BadStatusSetter(player_ptr).mod_confusion(200 + randint1(200));
     }
 
     if (r_ptr->flags9 & RF9_EAT_MANA) {
@@ -157,7 +157,7 @@ static bool exe_eat_corpse_type_object(player_type *player_ptr, object_type *o_p
 
     if (r_ptr->flags9 & RF9_EAT_SLEEP) {
         if (!player_ptr->free_act)
-            set_paralyzed(player_ptr, player_ptr->paralyzed + randint0(10) + 10);
+            BadStatusSetter(player_ptr).paralysis(10 + randint1(10));
     }
 
     if (r_ptr->flags9 & RF9_EAT_BERSERKER) {
@@ -200,7 +200,7 @@ static bool exe_eat_corpse_type_object(player_type *player_ptr, object_type *o_p
 
     if (r_ptr->flags9 & RF9_EAT_POISONOUS) {
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
-            set_poisoned(player_ptr, player_ptr->poisoned + randint0(15) + 10);
+            (void)BadStatusSetter(player_ptr).mod_poison(10 + randint1(15));
         }
     }
 
@@ -275,10 +275,11 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
     if (o_ptr->tval != TV_FOOD)
         return false;
 
+    BadStatusSetter bss(player_ptr);
     switch (o_ptr->sval) {
     case SV_FOOD_POISON:
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
-            if (set_poisoned(player_ptr, player_ptr->poisoned + randint0(10) + 10)) {
+            if (bss.mod_poison(randint0(10) + 10)) {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
@@ -289,7 +290,7 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         break;
     case SV_FOOD_BLINDNESS:
         if (!has_resist_blind(player_ptr)) {
-            if (set_blind(player_ptr, player_ptr->blind + randint0(200) + 200)) {
+            if (bss.mod_blindness(randint0(200) + 200)) {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
@@ -300,7 +301,7 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         break;
     case SV_FOOD_PARANOIA:
         if (!has_resist_fear(player_ptr)) {
-            if (set_afraid(player_ptr, player_ptr->afraid + randint0(10) + 10)) {
+            if (bss.mod_afraidness(randint0(10) + 10)) {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
@@ -311,7 +312,7 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         break;
     case SV_FOOD_CONFUSION:
         if (!has_resist_conf(player_ptr)) {
-            if (set_confused(player_ptr, player_ptr->confused + randint0(10) + 10)) {
+            if (bss.mod_confusion(randint0(10) + 10)) {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
@@ -322,7 +323,7 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         break;
     case SV_FOOD_HALLUCINATION:
         if (!has_resist_chaos(player_ptr)) {
-            if (set_image(player_ptr, player_ptr->image + randint0(250) + 250)) {
+            if (bss.mod_hallucination(randint0(250) + 250)) {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
@@ -333,7 +334,8 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         break;
     case SV_FOOD_PARALYSIS:
         if (!player_ptr->free_act) {
-            if (set_paralyzed(player_ptr, player_ptr->paralyzed + randint0(10) + 10)) {
+            if (bss.paralysis(10 + randint1(10)))
+                {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
@@ -391,67 +393,44 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         (void)do_dec_stat(player_ptr, A_STR);
         return true;
     case SV_FOOD_CURE_POISON:
-        if (set_poisoned(player_ptr, 0))
-            return true;
-        break;
+        return bss.poison(0);
     case SV_FOOD_CURE_BLINDNESS:
-        if (set_blind(player_ptr, 0))
-            return true;
-        break;
+        return bss.blindness(0);
     case SV_FOOD_CURE_PARANOIA:
-        if (set_afraid(player_ptr, 0))
-            return true;
-        break;
+        return bss.afraidness(0);
     case SV_FOOD_CURE_CONFUSION:
-        if (set_confused(player_ptr, 0))
-            return true;
-        break;
+        return bss.confusion(0);
     case SV_FOOD_CURE_SERIOUS:
         return cure_serious_wounds(player_ptr, 4, 8);
     case SV_FOOD_RESTORE_STR:
-        if (do_res_stat(player_ptr, A_STR))
-            return true;
-        break;
+        return do_res_stat(player_ptr, A_STR);
     case SV_FOOD_RESTORE_CON:
-        if (do_res_stat(player_ptr, A_CON))
-            return true;
-        break;
+        return do_res_stat(player_ptr, A_CON);
     case SV_FOOD_RESTORING:
         return restore_all_status(player_ptr);
-#ifdef JP
-    /* それぞれの食べ物の感想をオリジナルより細かく表現 */
     case SV_FOOD_BISCUIT:
-    case SV_FOOD_COOKIE:
-        msg_print("甘くてサクサクしてとてもおいしい。");
+        msg_print(_("甘くてサクサクしてとてもおいしい。", "That is sweetly and shortly delicious."));
         return true;
     case SV_FOOD_JERKY:
-        msg_print("歯ごたえがあっておいしい。");
+        msg_print(_("歯ごたえがあっておいしい。", "That is chewy and delicious."));
         return true;
     case SV_FOOD_SLIME_MOLD:
-        msg_print("これはなんとも形容しがたい味だ。");
+        msg_print(_("これはなんとも形容しがたい味だ。", "That is an indescribable taste."));
         return true;
     case SV_FOOD_BROWNIW_OF_ALC:
         msg_print("実際に美味で「しっとりとしていて、それでいてべたつかないスッキリとした甘さ」ではあった。");
         return true;
     case SV_FOOD_RATION:
-        msg_print("これはおいしい。");
+        msg_print(_("これはおいしい。", "That tastes good."));
         return true;
-#else
-    case SV_FOOD_RATION:
-    case SV_FOOD_BISCUIT:
-    case SV_FOOD_JERKY:
-    case SV_FOOD_SLIME_MOLD:
-        msg_print("That tastes good.");
-        return true;
-#endif
     case SV_FOOD_WAYBREAD:
-        msg_print(_("これはひじょうに美味だ。", "That tastes good."));
-        (void)set_poisoned(player_ptr, 0);
+        msg_print(_("これはひじょうに美味だ。", "That tastes very good."));
+        (void)bss.poison(0);
         (void)hp_player(player_ptr, damroll(4, 8));
         return true;
     case SV_FOOD_PINT_OF_ALE:
     case SV_FOOD_PINT_OF_WINE:
-        msg_print(_("のどごし爽やかだ。", "That tastes good."));
+        msg_print(_("のどごし爽やかだ。", "That is refreshing through the throat."));
         return true;
     case SV_FOOD_WELCOME_DRINK_OF_ARE:
     case SV_FOOD_ABA_TEA:
@@ -459,7 +438,7 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
             player_ptr->incident[INCIDENT::EAT_POISON] = 0;
         }
         player_ptr->incident[INCIDENT::EAT_POISON]++;
-        (void)set_poisoned(player_ptr, 10);
+        (void)BadStatusSetter(player_ptr).mod_poison(10);
         msg_print("「非常に新鮮で……非常においしい……」");
         if (player_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
             player_ptr->incident[INCIDENT::EAT_FECES] = 0;
@@ -476,7 +455,7 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         player_ptr->incident[INCIDENT::EAT_POISON]++;
         msg_print("ヴォエ！食ったら尻の肉だった！");
         msg_print(NULL);
-        (void)set_poisoned(player_ptr, 10);
+        (void)BadStatusSetter(player_ptr).mod_poison(10);
         msg_print("「作者は広告で収入得てないけど、こんな卑猥なアイテム放置するなよ」");
         msg_print(NULL);
         if (player_ptr->incident.count(INCIDENT::EAT_FECES) == 0) {
@@ -488,10 +467,10 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
         msg_print("悪臭が周囲を取り巻いた！");
         msg_print(NULL);
         fire_ball(player_ptr, GF_POIS, 0, 30, 4);
-        (void)set_poisoned(player_ptr, 10);
+        (void)BadStatusSetter(player_ptr).mod_poison(10);
         return true;
     case SV_FOOD_HOMOTEA:
-        (void)set_stun(player_ptr, 200);
+        (void)BadStatusSetter(player_ptr).mod_stun(200);
         msg_print("「お、大丈夫か？大丈夫か？……」");
         return true;
     case SV_FOOD_GOLDEN_EGG:

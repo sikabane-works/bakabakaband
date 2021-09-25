@@ -71,8 +71,7 @@ MonsterDamageProcessor::MonsterDamageProcessor(player_type *player_ptr, MONSTER_
 bool MonsterDamageProcessor::mon_take_hit(concptr note)
 {
     auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[this->m_idx];
-    monster_type exp_mon;
-    (void)COPY(&exp_mon, m_ptr, monster_type);
+    auto exp_mon = *m_ptr;
 
     auto exp_dam = (m_ptr->hp > this->dam) ? this->dam : m_ptr->hp;
 
@@ -281,7 +280,7 @@ void MonsterDamageProcessor::increase_kill_numbers()
 {
     auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[this->m_idx];
     auto *r_ptr = &r_info[m_ptr->r_idx];
-    if (((m_ptr->ml == 0) || this->player_ptr->image) && none_bits(r_ptr->flags1, RF1_UNIQUE)) {
+    if (((m_ptr->ml == 0) || this->player_ptr->hallucinated) && none_bits(r_ptr->flags1, RF1_UNIQUE)) {
         return;
     }
 

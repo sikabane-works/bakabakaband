@@ -1,6 +1,8 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+
+#include <memory>
 #include <vector>
 
 #define STORE_OBJ_STD_LEVEL 5 //!< 通常店舗の標準階層レベル / Magic Level for normal stores
@@ -39,7 +41,11 @@ class store_type {
     store_k_idx table{};   //!< Table -- Legal item kinds
     int16_t stock_num{};      //!< Stock -- Number of entries
     int16_t stock_size{};     //!< Stock -- Total Size of Array
-    object_type *stock{};  //!< Stock -- Actual stock items
+    std::unique_ptr<object_type[]> stock{}; //!< Stock -- Actual stock items
+
+    store_type() = default;
+    store_type(const store_type &) = delete;
+    store_type &operator=(const store_type &) = delete;
 };
 
 extern int cur_store_num;

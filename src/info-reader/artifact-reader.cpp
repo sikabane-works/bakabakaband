@@ -35,7 +35,7 @@ static bool grab_one_artifact_flag(artifact_type *a_ptr, std::string_view what)
  * @param head ヘッダ構造体
  * @return エラーコード
  */
-errr parse_a_info(std::string_view buf, angband_header *head)
+errr parse_a_info(std::string_view buf, angband_header *)
 {
     static artifact_type *a_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 10);
@@ -48,12 +48,13 @@ errr parse_a_info(std::string_view buf, angband_header *head)
         auto i = std::stoi(tokens[1]);
         if (i < error_idx)
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        if (i >= head->info_num)
-            return PARSE_ERROR_OUT_OF_BOUNDS;
+        if (i >= static_cast<int>(a_info.size())) {
+            a_info.resize(i + 1);
+        }
 
         error_idx = i;
         a_ptr = &a_info[i];
-        a_ptr->idx = i;
+        a_ptr->idx = static_cast<ARTIFACT_IDX>(i);
         a_ptr->flags.set(TR_IGNORE_ACID);
         a_ptr->flags.set(TR_IGNORE_ELEC);
         a_ptr->flags.set(TR_IGNORE_FIRE);

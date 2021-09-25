@@ -50,7 +50,7 @@
 
 #define MAX_FEAT_IN_TERRAIN 18
 
-wilderness_type **wilderness;
+std::vector<std::vector<wilderness_type>> wilderness;
 bool generate_encounter;
 
 typedef struct border_type {
@@ -726,12 +726,12 @@ parse_error_type parse_line_wilderness(player_type *player_ptr, char *buf, int x
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
     }
 
-    for (int i = 1; i < w_ptr->max_d_idx; i++) {
-        if (!d_info[i].maxdepth)
+    for (const auto &d_ref : d_info) {
+        if (d_ref.idx == 0 || !d_ref.maxdepth)
             continue;
-        wilderness[d_info[i].dy][d_info[i].dx].entrance = (byte)i;
-        if (!wilderness[d_info[i].dy][d_info[i].dx].town) {
-            wilderness[d_info[i].dy][d_info[i].dx].level = d_info[i].mindepth;
+        wilderness[d_ref.dy][d_ref.dx].entrance = static_cast<byte>(d_ref.idx);
+        if (!wilderness[d_ref.dy][d_ref.dx].town) {
+            wilderness[d_ref.dy][d_ref.dx].level = d_ref.mindepth;
         }
     }
 
@@ -761,10 +761,7 @@ typedef wilderness_type *wilderness_type_ptr;
  */
 errr init_wilderness(void)
 {
-    C_MAKE(wilderness, w_ptr->max_wild_y, wilderness_type_ptr);
-    C_MAKE(wilderness[0], w_ptr->max_wild_x * w_ptr->max_wild_y, wilderness_type);
-    for (int i = 1; i < w_ptr->max_wild_y; i++)
-        wilderness[i] = wilderness[0] + i * w_ptr->max_wild_x;
+    wilderness.assign(w_ptr->max_wild_y, std::vector<wilderness_type>(w_ptr->max_wild_x));
 
     generate_encounter = false;
     return 0;

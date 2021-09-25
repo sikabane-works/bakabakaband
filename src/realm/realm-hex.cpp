@@ -3,15 +3,6 @@
  * @date 2014/01/14
  * @author
  * 2014 Deskull rearranged comment for Doxygen.\n
- * @details
- * magic_num1\n
- * 0: Flag bits of spelling spells\n
- * 1: Flag bits of despelled spells\n
- * 2: Revange damage\n
- * magic_num2\n
- * 0: Number of spelling spells\n
- * 1: Type of revenge\n
- * 2: Turn count for revenge\n
  */
 
 #include "realm/realm-hex.h"
@@ -46,7 +37,6 @@
 #include "spell-kind/spells-sight.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-hex.h"
-#include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
 #include "spell/spells-execution.h"
 #include "spell/spells-status.h"
@@ -588,7 +578,7 @@ concptr do_hex_spell(player_type *player_ptr, spell_hex_type spell, spell_type m
                 exe_spell(player_ptr, REALM_HEX, spell, SPELL_STOP);
                 SpellHex spell_hex(player_ptr);
                 spell_hex.reset_casting_flag(spell);
-                if (get_singing_song_id(player_ptr) == 0)
+                if (!spell_hex.is_spelling_any())
                     set_action(player_ptr, ACTION_NONE);
             }
         }
@@ -880,6 +870,8 @@ concptr do_hex_spell(player_type *player_ptr, spell_hex_type spell, spell_type m
 
         break;
     }
+    case HEX_MAX:
+        break;
     }
 
     if (cast && should_continue) {
