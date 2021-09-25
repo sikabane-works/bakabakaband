@@ -127,7 +127,7 @@ void apply_magic_others(player_type *player_ptr, object_type *o_ptr, int power)
         int check;
         monster_race *r_ptr;
         while (true) {
-            i = randint1(max_r_idx - 1);
+            i = randint1(r_info.size() - 1);
 
             if (!item_monster_okay(player_ptr, i))
                 continue;
@@ -189,7 +189,7 @@ void apply_magic_others(player_type *player_ptr, object_type *o_ptr, int power)
         PARAMETER_VALUE i = 1;
         monster_race *r_ptr;
         while (true) {
-            i = randint1(max_r_idx - 1);
+            i = randint1(r_info.size() - 1);
             r_ptr = &r_info[i];
             if (!r_ptr->rarity)
                 continue;

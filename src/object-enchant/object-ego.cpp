@@ -23,11 +23,6 @@
  */
 std::vector<ego_item_type> e_info;
 
-/*
- * Maximum number of ego-items in e_info.txt
- */
-EGO_IDX max_e_idx;
-
 /*!
  * @brief アイテムのエゴをレア度の重みに合わせてランダムに選択する
  * Choose random ego type
@@ -38,15 +33,14 @@ EGO_IDX max_e_idx;
 byte get_random_ego(byte slot, bool good)
 {
     ProbabilityTable<EGO_IDX> prob_table;
-    for (EGO_IDX i = 1; i < max_e_idx; i++) {
-        ego_item_type *e_ptr = &e_info[i];
-        if (e_ptr->slot != slot || e_ptr->rarity <= 0)
+    for (const auto &e_ref : e_info) {
+        if (e_ref.idx == 0 || e_ref.slot != slot || e_ref.rarity <= 0)
             continue;
 
-        bool worthless = e_ptr->rating == 0 || e_ptr->gen_flags.has_any_of({ TRG::CURSED, TRG::HEAVY_CURSE, TRG::PERMA_CURSE });
+        bool worthless = e_ref.rating == 0 || e_ref.gen_flags.has_any_of({ TRG::CURSED, TRG::HEAVY_CURSE, TRG::PERMA_CURSE });
 
         if (good != worthless) {
-            prob_table.entry_item(i, (255 / e_ptr->rarity));
+            prob_table.entry_item(e_ref.idx, (255 / e_ref.rarity));
         }
     }
 

@@ -91,7 +91,7 @@ typedef struct dungeon_type {
 	int room_rate[ROOM_T_MAX]; /* ダンジョン独自の部屋生成率 */
 } dungeon_type;
 
-extern DEPTH *max_dlv;
+extern std::vector<DEPTH> max_dlv;
 extern std::vector<dungeon_type> d_info;
 
 class player_type;

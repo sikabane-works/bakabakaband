@@ -56,12 +56,11 @@
  */
 static errr get_obj_num_prep(void)
 {
-    alloc_entry *table = alloc_kind_table;
-    for (OBJECT_IDX i = 0; i < alloc_kind_size; i++) {
-        if (!get_obj_num_hook || (*get_obj_num_hook)(table[i].index)) {
-            table[i].prob2 = table[i].prob1;
+    for (auto &entry : alloc_kind_table) {
+        if (!get_obj_num_hook || (*get_obj_num_hook)(entry.index)) {
+            entry.prob2 = entry.prob1;
         } else {
-            table[i].prob2 = 0;
+            entry.prob2 = 0;
         }
     }
 
@@ -213,7 +212,7 @@ void delete_all_items_from_floor(player_type *player_ptr, POSITION y, POSITION x
  */
 void floor_item_increase(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
 {
-    const floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
 
     object_type *o_ptr = &floor_ptr->o_list[item];
     num += o_ptr->number;

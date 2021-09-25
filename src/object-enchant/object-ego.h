@@ -264,7 +264,6 @@ struct ego_item_type {
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern EGO_IDX max_e_idx;
 extern std::vector<ego_item_type> e_info;
 
 struct object_type;

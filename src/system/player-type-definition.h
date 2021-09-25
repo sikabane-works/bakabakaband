@@ -4,6 +4,7 @@
 #include "object-enchant/trc-types.h"
 #include "object/tval-types.h"
 #include "player-ability/player-ability-types.h"
+#include "player-info/class-specific-data.h"
 #include "player-info/class-types.h"
 #include "player-info/race-types.h"
 #include "player/player-personality-types.h"
@@ -120,10 +121,9 @@ public:
     TIME_EFFECT paralyzed{}; /* Timed -- Paralysis */
     TIME_EFFECT confused{}; /* Timed -- Confusion */
     TIME_EFFECT afraid{}; /* Timed -- Fear */
-    TIME_EFFECT image{}; /* Timed -- Hallucination */
+    TIME_EFFECT hallucinated{}; /* Timed -- Hallucination */
     TIME_EFFECT poisoned{}; /* Timed -- Poisoned */
-    TIME_EFFECT cut{}; /* Timed -- Cut */
-    
+
     TIME_EFFECT protevil{}; /* Timed -- Protection */
     TIME_EFFECT invuln{}; /* Timed -- Invulnerable */
     TIME_EFFECT ult_res{}; /* Timed -- Ultimate Resistance */
@@ -215,9 +215,7 @@ public:
     SUB_EXP weapon_exp[5][64]{}; /* Proficiency of weapons */
     SUB_EXP skill_exp[MAX_SKILLS]{}; /* Proficiency of misc. skill */
 
-    // @todo uint32_tで定義したいが可能か？
-    int32_t magic_num1[MAX_SPELLS]{}; /*!< Array for non-spellbook type magic */
-    byte magic_num2[MAX_SPELLS]{}; /*!< 魔道具術師の取り込み済魔道具使用回数 / Flags for non-spellbook type magics */
+    ClassSpecificData class_specific_data;
 
     RF_ABILITY mane_spell[MAX_MANE]{};
     HIT_POINT mane_dam[MAX_MANE]{};
@@ -268,7 +266,7 @@ public:
     byte feeling{}; /* Most recent dungeon feeling */
     int32_t feeling_turn{}; /* The turn of the last dungeon feeling */
 
-    object_type *inventory_list{}; /* The player's inventory */
+    std::shared_ptr<object_type[]> inventory_list{}; /* The player's inventory */
     int16_t inven_cnt{}; /* Number of items in inventory */
     int16_t equip_cnt{}; /* Number of items in equipment */
 

@@ -24,6 +24,8 @@
 #include "io/input-key-requester.h"
 #include "io/write-diary.h"
 #include "mind/mind-ninja.h"
+#include "main/sound-definitions-table.h"
+#include "main/sound-of-music.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
 #include "player/player-move.h"
@@ -36,6 +38,7 @@
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
+#include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -85,6 +88,8 @@ void do_cmd_go_up(player_type *player_ptr)
             msg_print(_("なんだこの階段は！", "What's this STAIRWAY!"));
         else
             msg_print(_("上の階に登った。", "You enter the up staircase."));
+
+        sound(SOUND_STAIRWAY);
 
         leave_quest_check(player_ptr);
         player_ptr->current_floor_ptr->inside_quest = g_ptr->special;
@@ -162,6 +167,7 @@ void do_cmd_go_up(player_type *player_ptr)
     }
 
     move_floor(player_ptr, 0);
+    sound(SOUND_STAIRWAY);
 }
 
 /*!
@@ -198,6 +204,8 @@ void do_cmd_go_down(player_type *player_ptr)
             msg_print(_("なんだこの階段は！", "What's this STAIRWAY!"));
         else
             msg_print(_("下の階に降りた。", "You enter the down staircase."));
+
+        sound(SOUND_STAIRWAY);
 
         leave_quest_check(player_ptr);
         leave_tower_check(player_ptr);
@@ -276,6 +284,8 @@ void do_cmd_go_down(player_type *player_ptr)
             else
                 msg_print(_("階段を下りて新たなる迷宮へと足を踏み入れた。", "You enter a maze of down staircases."));
         }
+
+        sound(SOUND_STAIRWAY);
     }
 
     player_ptr->leaving = true;
@@ -433,9 +443,10 @@ void do_cmd_rest(player_type *player_ptr)
 
     auto effects = player_ptr->effects();
     auto is_stunned = effects->stun()->is_stunned();
+    auto is_cut = effects->cut()->is_cut();
     if ((player_ptr->chp == player_ptr->mhp) && (player_ptr->csp == player_ptr->msp) && !player_ptr->blind && !player_ptr->confused
-        && !player_ptr->poisoned && !player_ptr->afraid && !is_stunned && !player_ptr->cut && !player_ptr->slow && !player_ptr->paralyzed
-        && !player_ptr->image && !player_ptr->word_recall && !player_ptr->alter_reality)
+        && !player_ptr->poisoned && !player_ptr->afraid && !is_stunned && !is_cut && !player_ptr->slow && !player_ptr->paralyzed
+        && !player_ptr->hallucinated && !player_ptr->word_recall && !player_ptr->alter_reality)
         chg_virtue(player_ptr, V_DILIGENCE, -1);
 
     player_ptr->resting = command_arg;
