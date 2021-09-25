@@ -4,7 +4,7 @@
 
 #include <vector>
 
-typedef struct floor_type floor_type;
+struct floor_type;
 class player_type;
 class ItemTester;
 void fix_inventory(player_type *player_ptr);
@@ -18,7 +18,7 @@ void fix_dungeon(player_type *player_ptr);
 void fix_monster(player_type *player_ptr);
 void fix_object(player_type *player_ptr);
 void fix_floor_item_list(player_type *player_ptr, const int y, const int x);
-void toggle_inventory_equipment(player_type *owner_ptr);
+void toggle_inventory_equipment(player_type *player_ptr);
 
 /*!
  * @brief サブウィンドウ表示用の ItemTester オブジェクトを設定するクラス

@@ -133,12 +133,12 @@ bool ang_sort_comp_importance(player_type *player_ptr, vptr u, vptr v, int a, in
     if (ca_ptr->m_idx && ma_ptr->ml)
         ap_ra_ptr = &r_info[ma_ptr->ap_r_idx];
     else
-        ap_ra_ptr = NULL;
+        ap_ra_ptr = nullptr;
 
     if (cb_ptr->m_idx && mb_ptr->ml)
         ap_rb_ptr = &r_info[mb_ptr->ap_r_idx];
     else
-        ap_rb_ptr = NULL;
+        ap_rb_ptr = nullptr;
 
     if (ap_ra_ptr && !ap_rb_ptr)
         return true;
@@ -619,74 +619,4 @@ void ang_sort_swap_cave_temp(player_type *player_ptr, vptr u, vptr v, int a, int
     holder = who[a];
     who[a] = who[b];
     who[b] = holder;
-}
-
-/*!
- * @brief 進化ツリーをソートするためモンスター種族の判定関数 /
- * Sorting hook -- Comp function
- * @param u 進化木構造データ
- * @param v 未使用
- * @param a 比較したいモンスター種族ID1
- * @param b 比較したいモンスター種族ID2
- * @return 2が大きければTRUEを返す
- */
-bool ang_sort_comp_evol_tree(player_type *player_ptr, vptr u, vptr v, int a, int b)
-{
-    /* Unused */
-    (void)player_ptr;
-    (void)v;
-
-    int **evol_tree = (int **)u;
-
-    int w1 = evol_tree[a][0];
-    int w2 = evol_tree[b][0];
-    monster_race *r1_ptr = &r_info[w1];
-    monster_race *r2_ptr = &r_info[w2];
-
-    /* Used tree first */
-    if (w1 && !w2)
-        return true;
-
-    if (!w1 && w2)
-        return false;
-
-    /* Sort by monster level */
-    if (r1_ptr->level < r2_ptr->level)
-        return true;
-
-    if (r1_ptr->level > r2_ptr->level)
-        return false;
-
-    /* Sort by monster experience */
-    if (r1_ptr->mexp < r2_ptr->mexp)
-        return true;
-
-    if (r1_ptr->mexp > r2_ptr->mexp)
-        return false;
-
-    /* Compare indexes */
-    return w1 <= w2;
-}
-
-/*!
- * @brief 進化ツリーをソートするため木構造のスワップ関数 /
- * Sorting hook -- Swap function
- * @param u 進化木構造データ
- * @param v 未使用
- * @param a スワップしたい木構造1
- * @param b スワップしたい木構造2
- * @return 2が大きければTRUEを返す
- */
-void ang_sort_swap_evol_tree(player_type *player_ptr, vptr u, vptr v, int a, int b)
-{
-    /* Unused */
-    (void)player_ptr;
-    (void)v;
-
-    int **evol_tree = (int **)u;
-    int *holder;
-
-    holder = evol_tree[a];
-    evol_tree[a] = evol_tree[b];
-    evol_tree[b] = holder;
 }

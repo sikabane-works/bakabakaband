@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "player/player-class-types.h"
+#include "player-info/class-types.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
 
@@ -69,7 +69,7 @@ struct world_type {
     uint32_t collapse_degree{}; /*!< 時空崩壊度 */
 };
 
-extern world_type *current_world_ptr;
+extern world_type *w_ptr;
 
 class player_type;
 bool is_daytime(void);

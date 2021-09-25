@@ -4,8 +4,6 @@
 #include "floor/floor-object.h"
 #include "floor/geometry.h"
 #include "grid/grid.h"
-#include "object-hook/hook-checker.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-kind.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -40,7 +38,7 @@ static void compact_objects_aux(floor_type *floor_ptr, OBJECT_IDX i1, OBJECT_IDX
 /*!
  * @brief グローバルオブジェクト配列から優先度の低いものを削除し、データを圧縮する。 /
  * Compact and Reorder the object list.
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param size 最低でも減らしたいオブジェクト数の水準
  * @details
  * （危険なので使用には注意すること）
@@ -69,11 +67,11 @@ void compact_objects(player_type *player_ptr, int size)
         for (OBJECT_IDX i = 1; i < floor_ptr->o_max; i++) {
             o_ptr = &floor_ptr->o_list[i];
 
-            if (!object_is_valid(o_ptr) || (k_info[o_ptr->k_idx].level > cur_lev))
+            if (!o_ptr->is_valid() || (k_info[o_ptr->k_idx].level > cur_lev))
                 continue;
 
             POSITION y, x;
-            if (object_is_held_monster(o_ptr)) {
+            if (o_ptr->is_held_by_monster()) {
                 monster_type *m_ptr;
                 m_ptr = &floor_ptr->m_list[o_ptr->held_m_idx];
                 y = m_ptr->fy;
@@ -90,7 +88,7 @@ void compact_objects(player_type *player_ptr, int size)
                 continue;
 
             int chance = 90;
-            if ((object_is_fixed_artifact(o_ptr) || o_ptr->art_name) && (cnt < 1000))
+            if ((o_ptr->is_fixed_artifact() || o_ptr->art_name) && (cnt < 1000))
                 chance = 100;
 
             if (randint0(100) < chance)

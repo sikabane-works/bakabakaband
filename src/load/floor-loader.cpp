@@ -16,7 +16,6 @@
 #include "monster-race/monster-race.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
-#include "object-hook/hook-checker.h"
 #include "save/floor-writer.h"
 #include "system/angband-version.h"
 #include "system/floor-type-definition.h"
@@ -30,7 +29,7 @@
 
 /*!
  * @brief 保存されたフロアを読み込む / Read the saved floor
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param sf_ptr 最後に保存されたフロアへの参照ポインタ
  * @return info読み込みエラーコード
  * @details
@@ -183,7 +182,7 @@ errr rd_saved_floor(player_type *player_ptr, saved_floor_type *sf_ptr)
 
     C_KILL(templates, limit, grid_template_type);
     rd_u16b(&limit);
-    if (limit > current_world_ptr->max_o_idx)
+    if (limit > w_ptr->max_o_idx)
         return 151;
     for (int i = 1; i < limit; i++) {
         OBJECT_IDX o_idx;
@@ -200,7 +199,7 @@ errr rd_saved_floor(player_type *player_ptr, saved_floor_type *sf_ptr)
     }
 
     rd_u16b(&limit);
-    if (limit > current_world_ptr->max_m_idx)
+    if (limit > w_ptr->max_m_idx)
         return 161;
 
     for (int i = 1; i < limit; i++) {
@@ -223,7 +222,7 @@ errr rd_saved_floor(player_type *player_ptr, saved_floor_type *sf_ptr)
 
 /*!
  * @brief 保存フロア読み込みのサブ関数 / Actually load and verify a floor save data
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param sf_ptr 保存フロア読み込み先
  * @return 成功したらtrue
  */
@@ -239,10 +238,10 @@ static bool load_floor_aux(player_type *player_ptr, saved_floor_type *sf_ptr)
     v_check = 0L;
     x_check = 0L;
 
-    current_world_ptr->h_ver_extra = H_VER_EXTRA;
-    current_world_ptr->h_ver_patch = H_VER_PATCH;
-    current_world_ptr->h_ver_minor = H_VER_MINOR;
-    current_world_ptr->h_ver_major = H_VER_MAJOR;
+    w_ptr->h_ver_extra = H_VER_EXTRA;
+    w_ptr->h_ver_patch = H_VER_PATCH;
+    w_ptr->h_ver_minor = H_VER_MINOR;
+    w_ptr->h_ver_major = H_VER_MAJOR;
     loading_savefile_version = SAVEFILE_VERSION;
 
     uint32_t tmp32u;
@@ -269,7 +268,7 @@ static bool load_floor_aux(player_type *player_ptr, saved_floor_type *sf_ptr)
 
 /*!
  * @brief 一時保存フロア情報を読み込む / Attempt to load the temporarily saved-floor data
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param sf_ptr 保存フロア読み込み先
  * @param mode オプション
  * @return 成功したらtrue
@@ -291,7 +290,7 @@ bool load_floor(player_type *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mod
     kanji_code = 1;
 #endif
 
-    FILE *old_fff = NULL;
+    FILE *old_fff = nullptr;
     byte old_xor_byte = 0;
     uint32_t old_v_check = 0;
     uint32_t old_x_check = 0;
@@ -305,10 +304,10 @@ bool load_floor(player_type *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mod
         old_xor_byte = load_xor_byte;
         old_v_check = v_check;
         old_x_check = x_check;
-        old_h_ver_major = current_world_ptr->h_ver_major;
-        old_h_ver_minor = current_world_ptr->h_ver_minor;
-        old_h_ver_patch = current_world_ptr->h_ver_patch;
-        old_h_ver_extra = current_world_ptr->h_ver_extra;
+        old_h_ver_major = w_ptr->h_ver_major;
+        old_h_ver_minor = w_ptr->h_ver_minor;
+        old_h_ver_patch = w_ptr->h_ver_patch;
+        old_h_ver_extra = w_ptr->h_ver_extra;
         old_loading_savefile_version = loading_savefile_version;
     }
 
@@ -341,10 +340,10 @@ bool load_floor(player_type *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mod
         load_xor_byte = old_xor_byte;
         v_check = old_v_check;
         x_check = old_x_check;
-        current_world_ptr->h_ver_major = old_h_ver_major;
-        current_world_ptr->h_ver_minor = old_h_ver_minor;
-        current_world_ptr->h_ver_patch = old_h_ver_patch;
-        current_world_ptr->h_ver_extra = old_h_ver_extra;
+        w_ptr->h_ver_major = old_h_ver_major;
+        w_ptr->h_ver_minor = old_h_ver_minor;
+        w_ptr->h_ver_patch = old_h_ver_patch;
+        w_ptr->h_ver_extra = old_h_ver_extra;
         loading_savefile_version = old_loading_savefile_version;
     }
 

@@ -65,8 +65,8 @@ public:
 #endif
     std::vector<patron_reward> reward_table = {}; //!< 報酬テーブル
     player_ability_type boost_stat = player_ability_type::A_STR; //!< 強化能力値傾向
-    void GainLevelReward(player_type *creature_ptr, int chosen_reward);
-    void AdmireFromPatron(player_type *creature_ptr);
+    void GainLevelReward(player_type *player_ptr, int chosen_reward);
+    void AdmireFromPatron(player_type *player_ptr);
 };
 
 extern std::vector<Patron> patron_list;

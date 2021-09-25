@@ -16,7 +16,7 @@
 /*!
  * @brief ベースアイテムの各情報を文字列化する /
  * Describe the kind
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param buf 名称を返すバッファ参照ポインタ
  * @param dam ダメージダイス記述を返すバッファ参照ポインタ
  * @param wgt 重量記述を返すバッファ参照ポインタ
@@ -118,8 +118,8 @@ spoiler_output_status spoil_obj_desc(concptr fname)
                         PRICE t1;
                         PRICE t2;
 
-                        kind_info(&dummy, NULL, NULL, NULL, NULL, &e1, &t1, who[i1]);
-                        kind_info(&dummy, NULL, NULL, NULL, NULL, &e2, &t2, who[i2]);
+                        kind_info(&dummy, nullptr, nullptr, nullptr, nullptr, &e1, &t1, who[i1]);
+                        kind_info(&dummy, nullptr, nullptr, nullptr, nullptr, &e2, &t2, who[i2]);
 
                         if ((t1 > t2) || ((t1 == t2) && (e1 > e2))) {
                             uint16_t tmp = who[i1];

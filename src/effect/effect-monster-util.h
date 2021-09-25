@@ -2,13 +2,13 @@
 
 #include "system/angband.h"
 
-typedef struct grid_type grid_type;
-typedef struct monster_type monster_type;
-typedef struct monster_race monster_race;
+struct grid_type;;
+struct monster_type;
+struct monster_race;
 typedef struct effect_monster_type {
     grid_type *g_ptr;
     monster_type *m_ptr;
-    monster_type *m_caster_ptr;
+    monster_type *m_player_ptr;
     monster_race *r_ptr;
     char killer[MAX_MONSTER_NAME];
     bool seen;
@@ -44,5 +44,5 @@ typedef struct effect_monster_type {
 } effect_monster_type;
 
 class player_type;
-effect_monster_type *initialize_effect_monster(player_type *caster_ptr, effect_monster_type *em_ptr, MONSTER_IDX who, POSITION r, POSITION y, POSITION x,
+effect_monster_type *initialize_effect_monster(player_type *player_ptr, effect_monster_type *em_ptr, MONSTER_IDX who, POSITION r, POSITION y, POSITION x,
     HIT_POINT dam, EFFECT_ID effect_type, BIT_FLAGS flag, bool see_s_msg);

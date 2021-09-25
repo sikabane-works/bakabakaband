@@ -69,7 +69,7 @@ static bool grab_one_spell_flag(monster_race *r_ptr, std::string_view what)
  */
 errr parse_r_info(std::string_view buf, angband_header *head)
 {
-    static monster_race *r_ptr = NULL;
+    static monster_race *r_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', true, 10);
 
     if (tokens[0] == "N") {
@@ -85,6 +85,7 @@ errr parse_r_info(std::string_view buf, angband_header *head)
 
         error_idx = i;
         r_ptr = &r_info[i];
+        r_ptr->idx = i;
 #ifdef JP
         r_ptr->name = tokens[2];
 #endif

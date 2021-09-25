@@ -23,4 +23,4 @@
 extern concptr essence_name[];
 
 class player_type;
-void do_cmd_kaji(player_type *creature_ptr, bool only_browse);
+void do_cmd_kaji(player_type *player_ptr, bool only_browse);

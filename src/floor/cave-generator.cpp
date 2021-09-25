@@ -402,7 +402,7 @@ static void decide_grid_glowing(floor_type *floor_ptr, dun_data_type *dd_ptr, du
 /*!
  * @brief ダンジョン生成のメインルーチン / Generate a new dungeon level
  * @details Note that "dun_body" adds about 4000 bytes of memory to the stack.
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param why エラー原因メッセージを返す
  * @return ダンジョン生成が全て無事に成功したらTRUEを返す。
  */
@@ -411,7 +411,7 @@ bool cave_gen(player_type *player_ptr, concptr *why)
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     reset_lite_area(floor_ptr);
     set_floor_and_wall(floor_ptr->dungeon_idx);
-    get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), NULL);
+    get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), nullptr);
 
     dun_data_type tmp_dd;
     dun_data_type *dd_ptr = initialize_dun_data_type(&tmp_dd, why);

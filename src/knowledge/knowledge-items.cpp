@@ -16,7 +16,6 @@
 #include "io/input-key-acceptor.h"
 #include "knowledge/object-group-table.h"
 #include "object-enchant/special-object-flags.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-kind-hook.h"
 #include "object/object-kind.h"
 #include "perception/identification.h"
@@ -35,12 +34,12 @@
 
 /*! 
  * @brief Check the status of "artifacts"
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @todo okay = 既知のアーティファクト？ と思われるが確証がない分かりやすい変数名へ変更求む＆万が一未知である旨の配列なら負論理なのでゴソッと差し替えるべき
  */
 void do_cmd_knowledge_artifacts(player_type *player_ptr)
 {
-    FILE *fff = NULL;
+    FILE *fff = nullptr;
     GAME_TEXT file_name[FILE_NAME_SIZE];
     if (!open_temporary_file(&fff, file_name))
         return;
@@ -67,9 +66,9 @@ void do_cmd_knowledge_artifacts(player_type *player_ptr)
             for (const auto this_o_idx : g_ptr->o_idx_list) {
                 object_type *o_ptr;
                 o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
-                if (!object_is_fixed_artifact(o_ptr))
+                if (!o_ptr->is_fixed_artifact())
                     continue;
-                if (object_is_known(o_ptr))
+                if (o_ptr->is_known())
                     continue;
 
                 okay[o_ptr->name1] = false;
@@ -81,9 +80,9 @@ void do_cmd_knowledge_artifacts(player_type *player_ptr)
         object_type *o_ptr = &player_ptr->inventory_list[i];
         if (!o_ptr->k_idx)
             continue;
-        if (!object_is_fixed_artifact(o_ptr))
+        if (!o_ptr->is_fixed_artifact())
             continue;
-        if (object_is_known(o_ptr))
+        if (o_ptr->is_known())
             continue;
 
         okay[o_ptr->name1] = false;
@@ -139,7 +138,7 @@ static KIND_OBJECT_IDX collect_objects(int grp_cur, KIND_OBJECT_IDX object_idx[]
             continue;
 
         if (!(mode & 0x02)) {
-            if (!current_world_ptr->wizard) {
+            if (!w_ptr->wizard) {
                 if (!k_ptr->flavor)
                     continue;
                 if (!k_ptr->aware)
@@ -201,10 +200,10 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
 
         c_prt(attr, o_name, row + i, col);
         if (per_page == 1) {
-            c_prt(attr, format("%02x/%02x", flavor_k_ptr->x_attr, flavor_k_ptr->x_char), row + i, (current_world_ptr->wizard || visual_only) ? 64 : 68);
+            c_prt(attr, format("%02x/%02x", flavor_k_ptr->x_attr, flavor_k_ptr->x_char), row + i, (w_ptr->wizard || visual_only) ? 64 : 68);
         }
 
-        if (current_world_ptr->wizard || visual_only) {
+        if (w_ptr->wizard || visual_only) {
             c_prt(attr, format("%d", k_idx), row + i, 70);
         }
 
@@ -222,7 +221,7 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
 /*
  * Describe fake object
  */
-static void desc_obj_fake(player_type *creature_ptr, KIND_OBJECT_IDX k_idx)
+static void desc_obj_fake(player_type *player_ptr, KIND_OBJECT_IDX k_idx)
 {
     object_type *o_ptr;
     object_type object_type_body;
@@ -231,19 +230,19 @@ static void desc_obj_fake(player_type *creature_ptr, KIND_OBJECT_IDX k_idx)
     o_ptr->prep(k_idx);
 
     o_ptr->ident |= IDENT_KNOWN;
-    handle_stuff(creature_ptr);
+    handle_stuff(player_ptr);
 
-    if (screen_object(creature_ptr, o_ptr, SCROBJ_FAKE_OBJECT | SCROBJ_FORCE_DETAIL))
+    if (screen_object(player_ptr, o_ptr, SCROBJ_FAKE_OBJECT | SCROBJ_FORCE_DETAIL))
         return;
 
     msg_print(_("特に変わったところはないようだ。", "You see nothing special."));
-    msg_print(NULL);
+    msg_print(nullptr);
 }
 
 /**
  * @brief Display known objects
  */
-void do_cmd_knowledge_objects(player_type *creature_ptr, bool *need_redraw, bool visual_only, KIND_OBJECT_IDX direct_k_idx)
+void do_cmd_knowledge_objects(player_type *player_ptr, bool *need_redraw, bool visual_only, KIND_OBJECT_IDX direct_k_idx)
 {
     KIND_OBJECT_IDX object_old, object_top;
     KIND_OBJECT_IDX grp_idx[100];
@@ -266,7 +265,7 @@ void do_cmd_knowledge_objects(player_type *creature_ptr, bool *need_redraw, bool
     int grp_cnt = 0;
     if (direct_k_idx < 0) {
         mode = visual_only ? 0x03 : 0x01;
-        for (IDX i = 0; object_group_text[i] != NULL; i++) {
+        for (IDX i = 0; object_group_text[i] != nullptr; i++) {
             len = strlen(object_group_text[i]);
             if (len > max)
                 max = len;
@@ -316,7 +315,7 @@ void do_cmd_knowledge_objects(player_type *creature_ptr, bool *need_redraw, bool
             if (direct_k_idx < 0)
                 prt("グループ", 4, 0);
             prt("名前", 4, max + 3);
-            if (current_world_ptr->wizard || visual_only)
+            if (w_ptr->wizard || visual_only)
                 prt("Idx", 4, 70);
             prt("文字", 4, 74);
 #else
@@ -324,7 +323,7 @@ void do_cmd_knowledge_objects(player_type *creature_ptr, bool *need_redraw, bool
             if (direct_k_idx < 0)
                 prt("Group", 4, 0);
             prt("Name", 4, max + 3);
-            if (current_world_ptr->wizard || visual_only)
+            if (w_ptr->wizard || visual_only)
                 prt("Idx", 4, 70);
             prt("Sym", 4, 75);
 #endif
@@ -388,10 +387,10 @@ void do_cmd_knowledge_objects(player_type *creature_ptr, bool *need_redraw, bool
 
         if (!visual_only) {
             if (object_cnt)
-                object_kind_track(creature_ptr, object_idx[object_cur]);
+                object_kind_track(player_ptr, object_idx[object_cur]);
 
             if (object_old != object_idx[object_cur]) {
-                handle_stuff(creature_ptr);
+                handle_stuff(player_ptr);
                 object_old = object_idx[object_cur];
             }
         }
@@ -428,7 +427,7 @@ void do_cmd_knowledge_objects(player_type *creature_ptr, bool *need_redraw, bool
         case 'R':
         case 'r': {
             if (!visual_list && !visual_only && (grp_cnt > 0)) {
-                desc_obj_fake(creature_ptr, object_idx[object_cur]);
+                desc_obj_fake(player_ptr, object_idx[object_cur]);
                 redraw = true;
             }
 
