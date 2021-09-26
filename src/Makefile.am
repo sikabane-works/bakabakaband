@@ -660,6 +660,7 @@ hengband_SOURCES = \
 	player-base/player-race.cpp player-base/player-race.h \
 	\
 	player-info/alignment.cpp player-info/alignment.h \
+	player-info/bard-data-type.h \
 	player-info/base-status-info.cpp player-info/base-status-info.h \
 	player-info/bluemage-data-type.h \
 	player-info/body-improvement-info.cpp player-info/body-improvement-info.h \
@@ -670,6 +671,7 @@ hengband_SOURCES = \
 	player-info/equipment-info.cpp player-info/equipment-info.h \
 	player-info/force-trainer-data-type.h \
 	player-info/magic-eater-data-type.cpp player-info/magic-eater-data-type.h \
+	player-info/mane-data-type.h \
 	player-info/mimic-info-table.cpp player-info/mimic-info-table.h \
 	player-info/mutation-info.cpp player-info/mutation-info.h \
 	player-info/race-ability-info.cpp player-info/race-ability-info.h \
@@ -755,6 +757,7 @@ hengband_SOURCES = \
 	specific-object/monster-ball.cpp specific-object/monster-ball.h \
 	specific-object/muramasa.cpp specific-object/muramasa.h \
 	specific-object/ring-of-power.cpp specific-object/ring-of-power.h \
+	specific-object/stone-of-lore.cpp specific-object/stone-of-lore.h \
 	specific-object/toragoroshi.cpp specific-object/toragoroshi.h \
 	specific-object/torch.cpp specific-object/torch.h \
 	\
