@@ -28,7 +28,7 @@ public:
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     virtual int calcImplessionPoint(player_type *creature_ptr) const = 0;
-    virtual ~Alliance(){};
+    virtual ~Alliance() = default;
 };
 
 class AllianceAmber : public Alliance {
@@ -37,6 +37,7 @@ public:
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceAmber() = default;
 };
 
 class AllianceCourtOfChaos : public Alliance {
@@ -45,6 +46,7 @@ public:
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceCourtOfChaos() = default;
 };
 
 class AllianceValinor : public Alliance {
@@ -53,6 +55,7 @@ public:
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceValinor() = default;
 };
 
 class AllianceUtumno : public Alliance {
@@ -61,6 +64,7 @@ public:
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceUtumno() = default;
 };
 
-std::vector<Alliance> alliance_list;
+const std::vector<Alliance> alliance_list;
