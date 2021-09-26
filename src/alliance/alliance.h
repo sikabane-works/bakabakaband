@@ -24,6 +24,8 @@ enum alliance_flags
 
 class Alliance {
 public:
+    int id; //!< ID
+    std::string tag; //!< タグ
     std::string name; //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
@@ -33,6 +35,8 @@ public:
 
 class AllianceAmber : public Alliance {
 public:
+    int id = 1; //!< ID
+    std::string tag = "AMBER"; //!< タグ
     std::string name = _("アンバー", "Amber"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
@@ -42,6 +46,8 @@ public:
 
 class AllianceCourtOfChaos : public Alliance {
 public:
+    int id = 2; //!< ID
+    std::string tag = "COCHAOS"; //!< タグ
     std::string name = _("混沌の宮廷", "Court of Chaos"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
@@ -51,6 +57,8 @@ public:
 
 class AllianceValinor : public Alliance {
 public:
+    int id = 3; //!< ID
+    std::string tag = "VALINOR"; //!< タグ
     std::string name = _("ヴァリノール", "Valinor"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
@@ -60,6 +68,8 @@ public:
 
 class AllianceUtumno : public Alliance {
 public:
+    int id = 4; //!< ID
+    std::string tag = "UTUMNO"; //!< タグ
     std::string name = _("ウトゥムノ", "Utumno"); //!< 陣営名
     Alliance *suzerain = nullptr; //!< 宗主アライアンス
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
