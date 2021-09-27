@@ -15,6 +15,7 @@
 #include "mutation/mutation-calculator.h"
 #include "player-base/player-class.h"
 #include "player-info/mane-data-type.h"
+#include "player-info/sniper-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/player-skill.h"
 #include "spell-realm/spells-song.h"
@@ -74,7 +75,7 @@ void rd_base_info(player_type *player_ptr)
     player_ptr->pclass = (player_class_type)tmp8u;
 
     rd_byte(&tmp8u);
-    player_ptr->pseikaku = (player_personality_type)tmp8u;
+    player_ptr->ppersonality = (player_personality_type)tmp8u;
 
     rd_byte(&tmp8u);
     player_ptr->psex = i2enum<player_sex>(tmp8u);
@@ -206,7 +207,7 @@ static void set_imitation(player_type *player_ptr)
         return;
     }
 
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto mane_data = PlayerClass(player_ptr).get_specific_data<mane_data_type>();
         if (!mane_data) {
             // ものまね師でない場合に読み捨てるためのダミーデータ領域
@@ -461,7 +462,16 @@ static void rd_player_status(player_type *player_ptr)
     rd_dungeons(player_ptr);
     strip_bytes(8);
     rd_s16b(&player_ptr->prestige);
-    rd_s16b(&player_ptr->concent);
+    if (loading_savefile_version_is_older_than(11)) {
+        auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+        if (sniper_data) {
+            rd_s16b(&sniper_data->concent);
+        } else {
+            // 職業がスナイパーではないので読み捨てる
+            int16_t tmp16s;
+            rd_s16b(&tmp16s);
+        }
+    }
     rd_bad_status(player_ptr);
     rd_energy(player_ptr);
     rd_status(player_ptr);

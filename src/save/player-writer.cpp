@@ -45,7 +45,7 @@ void wr_player(player_type *player_ptr)
 
     wr_byte((byte)player_ptr->prace);
     wr_byte((byte)player_ptr->pclass);
-    wr_byte((byte)player_ptr->pseikaku);
+    wr_byte((byte)player_ptr->ppersonality);
     wr_byte((byte)player_ptr->psex);
     wr_relams(player_ptr);
     wr_byte(0);
@@ -133,7 +133,6 @@ void wr_player(player_type *player_ptr)
     wr_s16b(0);
     wr_s16b(0);
     wr_s16b(player_ptr->prestige);
-    wr_s16b(player_ptr->concent);
 
     auto effects = player_ptr->effects();
     wr_s16b(0); /* old "rest" */

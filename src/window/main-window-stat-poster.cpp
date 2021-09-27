@@ -1,10 +1,12 @@
 ﻿#include "window/main-window-stat-poster.h"
+#include "game-option/game-play-options.h"
 #include "io/input-key-requester.h"
 #include "mind/stances-table.h"
 #include "monster/monster-status.h"
 #include "player-base/player-class.h"
 #include "player-info/bluemage-data-type.h"
 #include "player-info/mane-data-type.h"
+#include "player-info/sniper-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/digestion-processor.h"
 #include "player/player-status-table.h"
@@ -23,7 +25,6 @@
 #include "timed-effect/timed-effects.h"
 #include "window/main-window-row-column.h"
 #include "view/status-bars-table.h"
-#include "world/world.h"
 
 /*!
  * @brief 32ビット変数配列の指定位置のビットフラグを1にする。
@@ -103,7 +104,7 @@ void print_stun(player_type *player_ptr)
  */
 void print_hunger(player_type *player_ptr)
 {
-    if (w_ptr->wizard && player_ptr->current_floor_ptr->inside_arena)
+    if (allow_debug_options && player_ptr->current_floor_ptr->inside_arena)
         return;
 
     if (player_ptr->food < PY_FOOD_FAINT) {
@@ -464,8 +465,8 @@ void print_status(player_type *player_ptr)
     if (player_ptr->tim_invis)
         ADD_BAR_FLAG(BAR_SENSEUNSEEN);
 
-    if (player_ptr->concent >= CONCENT_RADAR_THRESHOLD)
-    {
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    if (sniper_data && (sniper_data->concent >= CONCENT_RADAR_THRESHOLD)) {
         ADD_BAR_FLAG(BAR_SENSEUNSEEN);
         ADD_BAR_FLAG(BAR_NIGHTSIGHT);
     }

@@ -46,7 +46,9 @@
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "object/object-mark-types.h"
+#include "player-base/player-class.h"
 #include "player-info/class-info.h"
+#include "player-info/sniper-data-type.h"
 #include "player-status/player-energy.h"
 #include "player/player-personality-types.h"
 #include "player/player-skill.h"
@@ -446,13 +448,13 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
     tdam_base *= tmul;
     tdam_base /= 100;
 
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    auto sniper_concent = sniper_data ? sniper_data->concent : 0;
+
     /* Base range */
     tdis = 13 + tmul / 80;
     if ((j_ptr->sval == SV_LIGHT_XBOW) || (j_ptr->sval == SV_HEAVY_XBOW)) {
-        if (player_ptr->concent)
-            tdis -= (5 - (player_ptr->concent + 1) / 2);
-        else
-            tdis -= 5;
+        tdis -= (5 - (sniper_concent + 1) / 2);
     }
 
     project_length = tdis + 1;
@@ -507,7 +509,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
 
     /* Sniper - Difficult to shot twice at 1 turn */
     if (snipe_type == SP_DOUBLE) {
-        player_ptr->concent = (player_ptr->concent + 1) / 2;
+        sniper_concent = (sniper_concent + 1) / 2;
         player_ptr->incident[INCIDENT::SHOOT]++;    
     }
 
@@ -677,8 +679,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                     auto base_dam = tdam; //!< @note 補正前の与えるダメージ(無傷、全ての耐性など)
 
                     /* Get extra damage from concentration */
-                    if (player_ptr->concent)
-                        tdam = boost_concentration_damage(player_ptr, tdam);
+                    tdam = boost_concentration_damage(player_ptr, tdam);
 
                     /* Handle unseen monster */
                     if (!visible) {
@@ -703,7 +704,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                     }
 
                     if (snipe_type == SP_NEEDLE) {
-                        if ((randint1(randint1(r_ptr->level / (3 + player_ptr->concent)) + (8 - player_ptr->concent)) == 1)
+                        if ((randint1(randint1(r_ptr->level / (3 + sniper_concent)) + (8 - sniper_concent)) == 1)
                             && none_bits(r_ptr->flags1, RF1_UNIQUE) && none_bits(r_ptr->flags7, RF7_UNIQUE2)) {
                             GAME_TEXT m_name[MAX_NLEN];
 
@@ -739,7 +740,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                         uint16_t flg = (PROJECT_STOP | PROJECT_JUMP | PROJECT_KILL | PROJECT_GRID);
 
                         sound(SOUND_EXPLODE); /* No explode sound - use breath fire instead */
-                        project(player_ptr, 0, ((player_ptr->concent + 1) / 2 + 1), ny, nx, base_dam, GF_MISSILE, flg);
+                        project(player_ptr, 0, ((sniper_concent + 1) / 2 + 1), ny, nx, base_dam, GF_MISSILE, flg);
                         break;
                     }
 
@@ -759,7 +760,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                     /* No death */
                     else {
                         /* STICK TO */
-                        if (q_ptr->is_fixed_artifact() && (player_ptr->pclass != CLASS_SNIPER || player_ptr->concent == 0)) {
+                        if (q_ptr->is_fixed_artifact() && (sniper_concent == 0)) {
                             GAME_TEXT m_name[MAX_NLEN];
 
                             monster_desc(player_ptr, m_name, m_ptr, 0);
@@ -835,10 +836,8 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                 }
 
                 /* Sniper */
-                if (snipe_type == SP_PIERCE) {
-                    if (player_ptr->concent < 1)
-                        break;
-                    player_ptr->concent--;
+                if (snipe_type == SP_PIERCE && sniper_concent > 0) {
+                    sniper_concent--;
                     continue;
                 }
 
@@ -889,8 +888,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
     }
 
     /* Sniper - Loose his/her concentration after any shot */
-    if (player_ptr->concent)
-        reset_concentration(player_ptr, false);
+    reset_concentration(player_ptr, false);
 }
 
 /*!
@@ -912,8 +910,11 @@ bool test_hit_fire(player_type *player_ptr, int chance, monster_type *m_ptr, int
     /* Percentile dice */
     k = randint1(100);
 
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    auto sniper_concent = sniper_data ? sniper_data->concent : 0;
+
     /* Snipers with high-concentration reduce instant miss percentage.*/
-    k += player_ptr->concent;
+    k += sniper_concent;
 
     /* Hack -- Instant miss or hit */
     if (k <= 5)
@@ -921,7 +922,7 @@ bool test_hit_fire(player_type *player_ptr, int chance, monster_type *m_ptr, int
     if (k > 95)
         return true;
 
-    if (player_ptr->pseikaku == PERSONALITY_LAZY)
+    if (player_ptr->ppersonality == PERSONALITY_LAZY)
         if (one_in_(20))
             return false;
 
@@ -930,10 +931,7 @@ bool test_hit_fire(player_type *player_ptr, int chance, monster_type *m_ptr, int
         return false;
 
     ac = r_ptr->ac;
-    if (player_ptr->concent) {
-        ac *= (8 - player_ptr->concent);
-        ac /= 8;
-    }
+    ac = ac * (8 - sniper_concent) / 8;
 
     if (m_ptr->r_idx == MON_GOEMON && !monster_csleep_remaining(m_ptr))
         ac *= 3;
@@ -978,14 +976,16 @@ HIT_POINT critical_shot(player_type *player_ptr, WEIGHT weight, int plus_ammo, i
     else
         i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[0][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
 
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    auto sniper_concent = sniper_data ? sniper_data->concent : 0;
+
     /* Snipers can shot more critically with crossbows */
-    if (player_ptr->concent)
-        i += ((i * player_ptr->concent) / 5);
+    i += ((i * sniper_concent) / 5);
     if ((player_ptr->pclass == CLASS_SNIPER) && (player_ptr->tval_ammo == TV_BOLT))
         i *= 2;
 
     /* Good bow makes more critical */
-    i += plus_bow * 8 * (player_ptr->concent ? player_ptr->concent + 5 : 5);
+    i += plus_bow * 8 * (sniper_concent + 5);
 
     /* Critical hit */
     if (randint1(10000) <= i) {
@@ -1127,14 +1127,16 @@ HIT_POINT calc_crit_ratio_shot(player_type *player_ptr, HIT_POINT plus_ammo, HIT
     else
         i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[0][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
 
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    auto sniper_concent = sniper_data ? sniper_data->concent : 0;
+
     /* Snipers can shot more critically with crossbows */
-    if (player_ptr->concent)
-        i += ((i * player_ptr->concent) / 5);
+    i += ((i * sniper_concent) / 5);
     if ((player_ptr->pclass == CLASS_SNIPER) && (player_ptr->tval_ammo == TV_BOLT))
         i *= 2;
 
     /* Good bow makes more critical */
-    i += plus_bow * 8 * (player_ptr->concent ? player_ptr->concent + 5 : 5);
+    i += plus_bow * 8 * (sniper_concent + 5);
 
     if (i < 0)
         i = 0;
