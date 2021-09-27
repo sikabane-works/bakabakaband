@@ -9,6 +9,7 @@
 #include "effect/effect-processor.h"
 #include "floor/floor-object.h"
 #include "game-option/birth-options.h"
+#include "game-option/game-play-options.h"
 #include "game-option/play-record-options.h"
 #include "io/write-diary.h"
 #include "lore/lore-store.h"
@@ -164,8 +165,13 @@ static ARTIFACT_IDX drop_artifact_index(player_type *player_ptr, monster_death_t
 
         a_idx = md_ptr->r_ptr->artifact_id[i];
         chance = md_ptr->r_ptr->artifact_percent[i];
-        if ((randint0(100) >= chance) && !w_ptr->wizard)
+        if (allow_debug_options) {
+            // continue process.
+            // @todo ここより下の処理は関数分割で何とかしたい.
+            // 処理を送るだけのif文は気持ち悪い.
+        } else if (randint0(100) >= chance) {
             continue;
+        }
 
         artifact_type *a_ptr = &a_info[a_idx];
         if (a_ptr->cur_num == 1)
@@ -322,8 +328,7 @@ static void on_defeat_last_boss(player_type *player_ptr)
     player_ptr->redraw |= PR_TITLE;
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_FINAL_QUEST_CLEAR);
     exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
-    patron_list[player_ptr->chaos_patron].AdmireFromPatron(player_ptr);
-    msg_print(_("*** おめでとう ***", "*** CONGRATULATIONS ***"));
+    patron_list[player_ptr->chaos_patron].admire();
     msg_print(_("あなたはゲームをコンプリートしました。", "You have won the game!"));
     msg_print(_("準備が整ったら引退(自殺コマンド)しても結構です。", "You may retire (commit suicide) when you are ready."));
 }
