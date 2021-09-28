@@ -2,6 +2,8 @@
 
 #include "system/angband.h"
 
+#include <vector>
+
 /*
  * Quest constants
  */
@@ -80,13 +82,13 @@ typedef struct quest_type {
 	REAL_TIME comptime;          /*!< クリア時ゲーム時間 /  quest clear time*/
 } quest_type;
 
-extern quest_type *quest;
+extern std::vector<quest_type> quest;
 extern QUEST_IDX max_q_idx;
 extern char quest_text[10][80];
 extern int quest_text_line;
 extern int leaving_quest;
 
-typedef struct object_type object_type;
+struct object_type;
 class player_type;
 void determine_random_questor(player_type *player_ptr, quest_type *q_ptr);
 void record_quest_final_status(quest_type *q_ptr, PLAYER_LEVEL lev, int16_t stat);

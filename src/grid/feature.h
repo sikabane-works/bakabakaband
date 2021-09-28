@@ -34,6 +34,7 @@ typedef struct feature_state {
  * @brief 地形情報の構造体 / Information about terrain "features"
  */
 typedef struct feature_type {
+    FEAT_IDX idx{};
     std::string name; /*!< 地形名参照のためのネームバッファオフセット値 / Name (offset) */
     std::string text; /*!< 地形説明参照のためのネームバッファオフセット値 /  Text (offset) */
     std::string tag; /*!< 地形特性タグ参照のためのネームバッファオフセット値 /  Tag (offset) */
@@ -42,7 +43,7 @@ typedef struct feature_type {
     FEAT_IDX mimic{}; /*!< 未確定時の外形地形ID / Feature to mimic */
     FEAT_IDX destroyed{}; /*!< *破壊*に巻き込まれた時の地形移行先(未実装？) / Default destroyed state */
     EnumClassFlagGroup<FF> flags{}; /*!< 地形の基本特性ビット配列 / Flags */
-    FEAT_PRIORITY priority{}; /*!< 縮小表示で省略する際の表示優先度 / Map priority */
+    int16_t priority{}; /*!< 縮小表示で省略する際の表示優先度 / Map priority */
     feature_state state[MAX_FEAT_STATES]{}; /*!< feature_state テーブル */
     FEAT_SUBTYPE subtype{}; /*!< 副特性値 */
     FEAT_POWER power{}; /*!< 地形強度 */
@@ -52,7 +53,6 @@ typedef struct feature_type {
     SYMBOL_CODE x_char[F_LIT_MAX]{}; /*!< 設定変更後の地形シンボルアルファベット / Desired feature character */
 } feature_type;
 
-extern FEAT_IDX max_f_idx;
 extern std::vector<feature_type> f_info;
 
 /*** Terrain feature variables ***/
@@ -115,7 +115,7 @@ extern FEAT_IDX feat_wall_solid;
 extern FEAT_IDX feat_ground_type[100];
 extern FEAT_IDX feat_wall_type[100];
 
-typedef struct floor_type floor_type;
+struct floor_type;
 class player_type;
 bool is_closed_door(player_type *player_ptr, FEAT_IDX feat);
 bool is_trap(player_type *player_ptr, FEAT_IDX feat);

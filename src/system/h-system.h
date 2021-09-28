@@ -16,57 +16,34 @@
  * because VMS does not use the "ASCII" character set.
  */
 
-#ifndef INCLUDED_H_SYSTEM_H
-#define INCLUDED_H_SYSTEM_H
-
-#include <stdio.h>
-#include <ctype.h>
-#include <wctype.h>
-#include <errno.h>
-#include <stddef.h>
-# include <stdlib.h>
-
-#ifdef SET_UID
-
-# include <sys/types.h>
-
-# if defined(Pyramid) || defined(NCR3K) || defined(ibm032) || \
-     defined(__osf__) || defined(ISC) || defined(linux)
-#  include <sys/time.h>
-# endif
-
-#  include <sys/timeb.h>
-
-#endif /* SET_UID */
-
-#include <time.h>
-
-#if defined(WINDOWS)
-# include <io.h>
-#endif
-
-#if !defined(VM)
-# if defined(__TURBOC__) || defined(__WATCOMC__)
-#  include <mem.h>
-# else
-#  include <memory.h>
-# endif
-#endif
+#pragma once
 
 #include <fcntl.h>
-
-#ifdef SET_UID
-
-#include <sys/param.h>
-#include <sys/file.h>
-#include <pwd.h>
-#include <unistd.h>
-#include <sys/stat.h>
-
-#endif /* SET_UID */
-
-#include <string.h>
-
 #include <stdarg.h>
+#include <wctype.h>
 
-#endif /* INCLUDED_H_SYSTEM_H */
+// clang-format off
+
+#ifdef WINDOWS
+  #include <io.h>
+#else
+  #include <ctype.h>
+  #include <errno.h>
+  #include <memory.h>
+  #include <stddef.h>
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+  #include <time.h>
+  #ifdef SET_UID
+    #include <pwd.h>
+    #include <sys/file.h>
+    #include <sys/param.h>
+    #include <sys/stat.h>
+    #include <sys/timeb.h>
+    #include <sys/types.h>
+    #include <unistd.h>
+  #endif
+#endif
+
+// clang-format on

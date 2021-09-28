@@ -18,7 +18,7 @@
  */
 static bool grab_one_ego_item_flag(ego_item_type *e_ptr, std::string_view what)
 {
-    if (info_grab_one_flag(e_ptr->flags, k_info_flags, what))
+    if (TrFlags::grab_one_flag(e_ptr->flags, k_info_flags, what))
         return true;
 
     if (EnumClassFlagGroup<TRG>::grab_one_flag(e_ptr->gen_flags, k_info_gen_flags, what))
@@ -57,9 +57,9 @@ static bool grab_ego_generate_flags(ego_generate_type &xtra, std::string_view wh
  * @param head ヘッダ構造体
  * @return エラーコード
  */
-errr parse_e_info(std::string_view buf, angband_header *head)
+errr parse_e_info(std::string_view buf, angband_header *)
 {
-    static ego_item_type *e_ptr = NULL;
+    static ego_item_type *e_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 10);
 
     error_idx = 0; //!< @note 順不同で登録しているため
@@ -72,11 +72,13 @@ errr parse_e_info(std::string_view buf, angband_header *head)
         auto i = std::stoi(tokens[1]);
         if (i < error_idx)
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        if (i >= head->info_num)
-            return PARSE_ERROR_OUT_OF_BOUNDS;
+        if (i >= static_cast<int>(e_info.size())) {
+            e_info.resize(i + 1);
+        }
 
         error_idx = i;
         e_ptr = &e_info[i];
+        e_ptr->idx = static_cast<EGO_IDX>(i);
 #ifdef JP
         e_ptr->name = tokens[2];
 #endif

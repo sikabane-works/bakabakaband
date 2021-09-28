@@ -5,7 +5,6 @@
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "inventory/inventory-slot-types.h"
-#include "object-hook/hook-enchant.h"
 #include "object-hook/hook-weapon.h"
 #include "object/object-info.h"
 #include "racial/racial-android.h"
@@ -16,12 +15,12 @@
 /*!
  * @brief プレイヤーの装備劣化処理 /
  * Apply disenchantment to the player's stuff
- * @param target_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param mode 最下位ビットが1ならば劣化処理が若干低減される
  * @return 劣化処理に関するメッセージが発せられた場合はTRUEを返す /
  * Return "TRUE" if the player notices anything
  */
-bool apply_disenchant(player_type *target_ptr, BIT_FLAGS mode)
+bool apply_disenchant(player_type *player_ptr, BIT_FLAGS mode)
 {
     int t = 0;
     switch (randint1(8)) {
@@ -52,11 +51,11 @@ bool apply_disenchant(player_type *target_ptr, BIT_FLAGS mode)
     }
 
     object_type *o_ptr;
-    o_ptr = &target_ptr->inventory_list[t];
+    o_ptr = &player_ptr->inventory_list[t];
     if (!o_ptr->k_idx)
         return false;
 
-    if (!object_is_weapon_armour_ammo(o_ptr))
+    if (!o_ptr->is_weapon_armour_ammo())
         return false;
 
     if ((o_ptr->to_h <= 0) && (o_ptr->to_d <= 0) && (o_ptr->to_a <= 0) && (o_ptr->pval <= 1)) {
@@ -64,8 +63,8 @@ bool apply_disenchant(player_type *target_ptr, BIT_FLAGS mode)
     }
 
     GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(target_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-    if (object_is_artifact(o_ptr) && (randint0(100) < 71)) {
+    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+    if (o_ptr->is_artifact() && (randint0(100) < 71)) {
 #ifdef JP
         msg_format("%s(%c)は劣化を跳ね返した！", o_name, index_to_label(t));
 #else
@@ -109,11 +108,11 @@ bool apply_disenchant(player_type *target_ptr, BIT_FLAGS mode)
 #else
     msg_format("Your %s (%c) %s disenchanted!", o_name, index_to_label(t), ((o_ptr->number != 1) ? "were" : "was"));
 #endif
-    chg_virtue(target_ptr, V_HARMONY, 1);
-    chg_virtue(target_ptr, V_ENCHANT, -2);
-    target_ptr->update |= (PU_BONUS);
-    target_ptr->window_flags |= (PW_EQUIP | PW_PLAYER);
+    chg_virtue(player_ptr, V_HARMONY, 1);
+    chg_virtue(player_ptr, V_ENCHANT, -2);
+    player_ptr->update |= (PU_BONUS);
+    player_ptr->window_flags |= (PW_EQUIP | PW_PLAYER);
 
-    calc_android_exp(target_ptr);
+    calc_android_exp(player_ptr);
     return true;
 }

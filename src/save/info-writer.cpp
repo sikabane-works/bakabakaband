@@ -55,9 +55,6 @@ void wr_options(save_type type)
 
     /*** Cheating options ***/
     uint16_t c = 0;
-    if (current_world_ptr->wizard)
-        c |= 0x0002;
-
     if (cheat_sight)
         c |= 0x0040;
 
@@ -143,7 +140,7 @@ void save_quick_start(void)
     wr_byte(previous_char.psex);
     wr_byte((byte)previous_char.prace);
     wr_byte((byte)previous_char.pclass);
-    wr_byte((byte)previous_char.pseikaku);
+    wr_byte((byte)previous_char.ppersonality);
     wr_byte((byte)previous_char.realm1);
     wr_byte((byte)previous_char.realm2);
 
@@ -172,7 +169,7 @@ void save_quick_start(void)
 
     /* UNUSED : Was number of random quests */
     wr_byte(0);
-    if (current_world_ptr->noscore)
+    if (w_ptr->noscore)
         previous_char.quick_ok = false;
 
     wr_byte((byte)previous_char.quick_ok);

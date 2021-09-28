@@ -43,7 +43,7 @@ void set_friendly(monster_type *m_ptr) { m_ptr->mflag2.set(MFLAG2::FRIENDLY); }
 /*!
  * @brief モンスターが地形を踏破できるかどうかを返す
  * Check if monster can cross terrain
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param feat 地形ID
  * @param r_ptr モンスター種族構造体の参照ポインタ
  * @param mode オプション
@@ -124,7 +124,7 @@ bool monster_can_cross_terrain(player_type *player_ptr, FEAT_IDX feat, monster_r
 /*!
  * @brief 指定された座標の地形をモンスターが踏破できるかどうかを返す
  * Strictly check if monster can enter the grid
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param y 地形のY座標
  * @param x 地形のX座標
  * @param r_ptr モンスター種族構造体の参照ポインタ
@@ -197,14 +197,14 @@ bool are_enemies(player_type *player_ptr, monster_type *m_ptr, monster_type *n_p
 /*!
  * @brief モンスターがプレイヤーに対して敵意を抱くかどうかを返す
  * Check if this monster race has "hostile" alignment
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param m_ptr モンスター情報構造体の参照ポインタ
  * @param pa_good プレイヤーの善傾向値
  * @param pa_evil プレイヤーの悪傾向値
  * @param r_ptr モンスター種族情報の構造体参照ポインタ
  * @return プレイヤーに敵意を持つならばTRUEを返す
  * @details
- * If user is player, m_ptr == NULL.
+ * If user is player, m_ptr == nullptr.
  */
 bool monster_has_hostile_align(player_type *player_ptr, monster_type *m_ptr, int pa_good, int pa_evil, monster_race *r_ptr)
 {
@@ -234,7 +234,7 @@ bool monster_has_hostile_align(player_type *player_ptr, monster_type *m_ptr, int
     return false;
 }
 
-bool is_original_ap_and_seen(player_type *player_ptr, monster_type *m_ptr) { return m_ptr->ml && !player_ptr->image && (m_ptr->ap_r_idx == m_ptr->r_idx); }
+bool is_original_ap_and_seen(player_type *player_ptr, monster_type *m_ptr) { return m_ptr->ml && !player_ptr->hallucinated && (m_ptr->ap_r_idx == m_ptr->r_idx); }
 
 /*  Determine monster race appearance index is same as race index */
 bool is_original_ap(monster_type *m_ptr) { return m_ptr->ap_r_idx == m_ptr->r_idx; }
@@ -266,7 +266,7 @@ bool is_mimicry(monster_type *m_ptr)
 
     monster_race *r_ptr = &r_info[m_ptr->ap_r_idx];
 
-    if (angband_strchr("/|\\()[]=$,.!?&`#%<>+~", r_ptr->d_char) == NULL)
+    if (angband_strchr("/|\\()[]=$,.!?&`#%<>+~", r_ptr->d_char) == nullptr)
         return false;
 
     if (none_bits(r_ptr->flags1, RF1_NEVER_MOVE) && !monster_csleep_remaining(m_ptr)) {
@@ -298,7 +298,7 @@ MONRACE_IDX real_r_idx(monster_type *m_ptr)
 
 /*!
  * @brief モンスターIDを取り、モンスター名をm_nameに代入する /
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param m_idx モンスターID
  * @param m_name モンスター名を入力する配列
  */

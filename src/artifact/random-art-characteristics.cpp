@@ -14,6 +14,8 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "wizard/wizard-messages.h"
+#include <sstream>
+#include <string_view>
 
 static void pval_subtraction(object_type *o_ptr)
 {
@@ -36,30 +38,30 @@ static void add_negative_flags(object_type *o_ptr)
         o_ptr->curse_flags.set(TRC::PERMA_CURSE);
 
     if (one_in_(3))
-        add_flag(o_ptr->art_flags, TR_TY_CURSE);
+        o_ptr->art_flags.set(TR_TY_CURSE);
 
     if (one_in_(2))
-        add_flag(o_ptr->art_flags, TR_AGGRAVATE);
+        o_ptr->art_flags.set(TR_AGGRAVATE);
 
     if (one_in_(3))
-        add_flag(o_ptr->art_flags, TR_DRAIN_EXP);
+        o_ptr->art_flags.set(TR_DRAIN_EXP);
 
     if (one_in_(6))
-        add_flag(o_ptr->art_flags, TR_ADD_L_CURSE);
+        o_ptr->art_flags.set(TR_ADD_L_CURSE);
 
     if (one_in_(9))
-        add_flag(o_ptr->art_flags, TR_ADD_H_CURSE);
+        o_ptr->art_flags.set(TR_ADD_H_CURSE);
 
     if (one_in_(9))
-        add_flag(o_ptr->art_flags, TR_DRAIN_HP);
+        o_ptr->art_flags.set(TR_DRAIN_HP);
 
     if (one_in_(9))
-        add_flag(o_ptr->art_flags, TR_DRAIN_MANA);
+        o_ptr->art_flags.set(TR_DRAIN_MANA);
 
     if (one_in_(2))
-        add_flag(o_ptr->art_flags, TR_TELEPORT);
+        o_ptr->art_flags.set(TR_TELEPORT);
     else if (one_in_(3))
-        add_flag(o_ptr->art_flags, TR_NO_TELE);
+        o_ptr->art_flags.set(TR_NO_TELE);
 }
 
 /*!
@@ -68,18 +70,18 @@ static void add_negative_flags(object_type *o_ptr)
  * 祝福を無効。確率に応じて、永遠の呪い、太古の怨念、経験値吸収、弱い呪いの継続的付加、強い呪いの継続的付加、HP吸収の呪い、
  * MP吸収の呪い、乱テレポート、反テレポート、反魔法をつける。
  * @attention プレイヤーの職業依存処理あり。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  */
 void curse_artifact(player_type *player_ptr, object_type *o_ptr)
 {
     pval_subtraction(o_ptr);
     o_ptr->curse_flags.set({ TRC::HEAVY_CURSE, TRC::CURSED });
-    remove_flag(o_ptr->art_flags, TR_BLESSED);
+    o_ptr->art_flags.reset(TR_BLESSED);
     add_negative_flags(o_ptr);
     if ((player_ptr->pclass != CLASS_WARRIOR) && (player_ptr->pclass != CLASS_ARCHER) && (player_ptr->pclass != CLASS_CAVALRY)
         && (player_ptr->pclass != CLASS_BERSERKER) && (player_ptr->pclass != CLASS_SMITH) && one_in_(3))
-        add_flag(o_ptr->art_flags, TR_NO_MAGIC);
+        o_ptr->art_flags.set(TR_NO_MAGIC);
 }
 
 /*!
@@ -87,42 +89,29 @@ void curse_artifact(player_type *player_ptr, object_type *o_ptr)
  * @param armour 防具かどうか
  * @param power 生成パワー
  * @return ファイル名
- * @details 二重switch文だが短いので執行猶予とする
  */
-static concptr get_random_art_filename(const bool armour, const int power)
+static std::string get_random_art_filename(const bool armour, const int power)
 {
-    concptr filename;
-    if (armour) {
-        switch (power) {
-        case 0:
-            filename = _("a_cursed_j.txt", "a_cursed.txt");
-            break;
-        case 1:
-            filename = _("a_low_j.txt", "a_low.txt");
-            break;
-        case 2:
-            filename = _("a_med_j.txt", "a_med.txt");
-            break;
-        default:
-            filename = _("a_high_j.txt", "a_high.txt");
-        }
-    } else {
-        switch (power) {
-        case 0:
-            filename = _("w_cursed_j.txt", "w_cursed.txt");
-            break;
-        case 1:
-            filename = _("w_low_j.txt", "w_low.txt");
-            break;
-        case 2:
-            filename = _("w_med_j.txt", "w_med.txt");
-            break;
-        default:
-            filename = _("w_high_j.txt", "w_high.txt");
-        }
+    const std::string_view prefix(armour ? "a_" : "w_");
+    constexpr std::string_view suffix(_("_j.txt", ".txt"));
+    std::string_view grade;
+    switch (power) {
+    case 0:
+        grade = "cursed";
+        break;
+    case 1:
+        grade = "low";
+        break;
+    case 2:
+        grade = "med";
+        break;
+    default:
+        grade = "high";
     }
 
-    return filename;
+    std::stringstream ss;
+    ss << prefix << grade << suffix;
+    return ss.str();
 }
 
 /*!
@@ -146,8 +135,8 @@ void get_random_name(object_type *o_ptr, char *return_name, bool armour, int pow
         return;
     }
 
-    concptr filename = get_random_art_filename(armour, power);
-    (void)get_rnd_line(filename, o_ptr->artifact_bias, return_name);
+    auto filename = get_random_art_filename(armour, power);
+    (void)get_rnd_line(filename.c_str(), o_ptr->artifact_bias, return_name);
 #ifdef JP
     if (return_name[0] == 0)
         get_table_name(return_name);
@@ -157,24 +146,23 @@ void get_random_name(object_type *o_ptr, char *return_name, bool armour, int pow
 /*対邪平均ダメージの計算処理*/
 static HIT_POINT calc_arm_avgdamage(player_type *player_ptr, object_type *o_ptr)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     HIT_POINT base, forced, vorpal;
     HIT_POINT s_evil = forced = vorpal = 0;
     HIT_POINT dam = base = (o_ptr->dd * o_ptr->ds + o_ptr->dd) / 2;
-    if (has_flag(flgs, TR_KILL_EVIL)) {
+    if (flgs.has(TR_KILL_EVIL)) {
         dam = s_evil = dam * 7 / 2;
-    } else if (!has_flag(flgs, TR_KILL_EVIL) && has_flag(flgs, TR_SLAY_EVIL)) {
+    } else if (flgs.has_not(TR_KILL_EVIL) && flgs.has(TR_SLAY_EVIL)) {
         dam = s_evil = dam * 2;
     } else
         s_evil = dam;
 
-    if (has_flag(flgs, TR_FORCE_WEAPON)) {
+    if (flgs.has(TR_FORCE_WEAPON)) {
         dam = forced = dam * 3 / 2 + (o_ptr->dd * o_ptr->ds + o_ptr->dd);
     } else
         forced = dam;
 
-    if (has_flag(flgs, TR_VORPAL)) {
+    if (flgs.has(TR_VORPAL)) {
         dam = vorpal = dam * 11 / 9;
     } else
         vorpal = dam;
@@ -186,18 +174,17 @@ static HIT_POINT calc_arm_avgdamage(player_type *player_ptr, object_type *o_ptr)
 
 bool has_extreme_damage_rate(player_type *player_ptr, object_type *o_ptr)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
-    if (has_flag(flgs, TR_VAMPIRIC)) {
-        if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 1) && (calc_arm_avgdamage(player_ptr, o_ptr) > 52)) {
+    auto flgs = object_flags(o_ptr);
+    if (flgs.has(TR_VAMPIRIC)) {
+        if (flgs.has(TR_BLOWS) && (o_ptr->pval == 1) && (calc_arm_avgdamage(player_ptr, o_ptr) > 52)) {
             return true;
         }
 
-        if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 2) && (calc_arm_avgdamage(player_ptr, o_ptr) > 43)) {
+        if (flgs.has(TR_BLOWS) && (o_ptr->pval == 2) && (calc_arm_avgdamage(player_ptr, o_ptr) > 43)) {
             return true;
         }
 
-        if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 3) && (calc_arm_avgdamage(player_ptr, o_ptr) > 33)) {
+        if (flgs.has(TR_BLOWS) && (o_ptr->pval == 3) && (calc_arm_avgdamage(player_ptr, o_ptr) > 33)) {
             return true;
         }
 
@@ -208,15 +195,15 @@ bool has_extreme_damage_rate(player_type *player_ptr, object_type *o_ptr)
         return false;
     }
 
-    if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 1) && (calc_arm_avgdamage(player_ptr, o_ptr) > 65)) {
+    if (flgs.has(TR_BLOWS) && (o_ptr->pval == 1) && (calc_arm_avgdamage(player_ptr, o_ptr) > 65)) {
         return true;
     }
 
-    if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 2) && (calc_arm_avgdamage(player_ptr, o_ptr) > 52)) {
+    if (flgs.has(TR_BLOWS) && (o_ptr->pval == 2) && (calc_arm_avgdamage(player_ptr, o_ptr) > 52)) {
         return true;
     }
 
-    if (has_flag(flgs, TR_BLOWS) && (o_ptr->pval == 3) && (calc_arm_avgdamage(player_ptr, o_ptr) > 40)) {
+    if (flgs.has(TR_BLOWS) && (o_ptr->pval == 3) && (calc_arm_avgdamage(player_ptr, o_ptr) > 40)) {
         return true;
     }
 

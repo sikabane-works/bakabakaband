@@ -1,6 +1,5 @@
 ﻿#include "object-hook/hook-armor.h"
 #include "inventory/inventory-slot-types.h"
-#include "object-hook/hook-checker.h"
 #include "object/object-info.h"
 #include "player/player-sex.h"
 #include "sv-definition/sv-armor-types.h"
@@ -20,19 +19,6 @@ bool item_tester_hook_wear(player_type *player_ptr, const object_type *o_ptr)
 
     /* Check for a usable slot */
     if (wield_slot(player_ptr, o_ptr) >= INVEN_MAIN_HAND)
-        return true;
-
-    return false;
-}
-
-/*!
- * @brief オブジェクトが防具として装備できるかどうかを返す / Check if an object is armour
- * @param o_ptr 対象のオブジェクト構造体ポインタ
- * @return 矢弾として使えるならばTRUEを返す
- */
-bool object_is_armour(const object_type *o_ptr)
-{
-    if (TV_ARMOR_BEGIN <= o_ptr->tval && o_ptr->tval <= TV_ARMOR_END)
         return true;
 
     return false;

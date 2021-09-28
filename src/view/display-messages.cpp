@@ -238,7 +238,7 @@ static void msg_flush(player_type *player_ptr, int x)
 
 void msg_erase(void)
 {
-    msg_print(NULL);
+    msg_print(nullptr);
 }
 
 /*!
@@ -259,11 +259,11 @@ void msg_erase(void)
  *
  * Note that we must be very careful about using the
  * "msg_print()" functions without explicitly calling the special
- * "msg_print(NULL)" function, since this may result in the loss
+ * "msg_print(nullptr)" function, since this may result in the loss
  * of information if the screen is cleared, or if anything is
  * displayed on the top line.
  *
- * Note that "msg_print(NULL)" will clear the top line
+ * Note that "msg_print(nullptr)" will clear the top line
  * even if no messages are pending.  This is probably a hack.
  * @todo ここのp_ptrを削除するのは破滅的に作業が増えるので保留
  */
@@ -273,7 +273,7 @@ void msg_print(concptr msg)
     char *t;
     char buf[1024];
 
-    if (current_world_ptr->timewalk_m_idx)
+    if (w_ptr->timewalk_m_idx)
         return;
 
     if (!msg_flag) {
@@ -296,11 +296,11 @@ void msg_print(concptr msg)
     if (!cheat_turn) {
         strcpy(buf, msg);
     } else {
-        sprintf(buf, ("T:%d - %s"), (int)current_world_ptr->game_turn, msg);
+        sprintf(buf, ("T:%d - %s"), (int)w_ptr->game_turn, msg);
     }
 
     n = strlen(buf);
-    if (current_world_ptr->character_generated)
+    if (w_ptr->character_generated)
         message_add(buf);
 
     t = buf;

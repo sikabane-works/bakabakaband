@@ -48,7 +48,7 @@ summon_type summon_specific_type = SUMMON_NONE;
 
 /*!
  * @brief 指定されたモンスター種族がダンジョンの制限にかかるかどうかをチェックする / Some dungeon types restrict the possible monsters.
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param r_idx チェックするモンスター種族ID
  * @return 召喚条件が一致するならtrue / Return TRUE is the monster is OK and FALSE otherwise
  */
@@ -237,7 +237,7 @@ static bool restrict_monster_to_dungeon(player_type *player_ptr, MONRACE_IDX r_i
 
 /*!
  * @brief プレイヤーの現在の広域マップ座標から得た地勢を元にモンスターの生成条件関数を返す
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @return 地勢にあったモンスターの生成条件関数
  */
 monsterrace_hook_type get_monster_hook(player_type *player_ptr)
@@ -289,8 +289,8 @@ monsterrace_hook_type get_monster_hook2(player_type *player_ptr, POSITION y, POS
 /*!
  * @brief モンスター生成テーブルの重みを指定条件に従って変更する。
  * @param player_ptr
- * @param hook1 生成制約関数1 (NULL の場合、制約なし)
- * @param hook2 生成制約関数2 (NULL の場合、制約なし)
+ * @param hook1 生成制約関数1 (nullptr の場合、制約なし)
+ * @param hook2 生成制約関数2 (nullptr の場合、制約なし)
  * @param restrict_to_dungeon 現在プレイヤーのいるダンジョンの制約を適用するか
  * @return 常に 0
  *
@@ -308,7 +308,7 @@ static errr do_get_mon_num_prep(player_type *player_ptr, const monsterrace_hook_
     int prob2_total = 0; // 重みの総和
 
     // モンスター生成テーブルの各要素について重みを修正する。
-    for (int i = 0; i < alloc_race_size; i++) {
+    for (auto i = 0U; i < alloc_race_table.size(); i++) {
         alloc_entry *const entry = &alloc_race_table[i];
         const monster_race *const r_ptr = &r_info[entry->index];
 
@@ -393,8 +393,8 @@ static errr do_get_mon_num_prep(player_type *player_ptr, const monsterrace_hook_
 /*!
  * @brief モンスター生成テーブルの重み修正
  * @param player_ptr
- * @param hook1 生成制約関数1 (NULL の場合、制約なし)
- * @param hook2 生成制約関数2 (NULL の場合、制約なし)
+ * @param hook1 生成制約関数1 (nullptr の場合、制約なし)
+ * @param hook2 生成制約関数2 (nullptr の場合、制約なし)
  * @return 常に 0
  *
  * get_mon_num() を呼ぶ前に get_mon_num_prep() 系関数のいずれかを呼ぶこと。
@@ -412,5 +412,5 @@ errr get_mon_num_prep(player_type *player_ptr, const monsterrace_hook_type hook1
  */
 errr get_mon_num_prep_bounty(player_type *player_ptr)
 {
-    return do_get_mon_num_prep(player_ptr, NULL, NULL, false);
+    return do_get_mon_num_prep(player_ptr, nullptr, nullptr, false);
 }

@@ -64,7 +64,7 @@
  * <p>
  * The various "warning" messages assume the existance of the "screen.w"
  * window, I think, and only a few calls actually check for its existance,
- * this may be okay since "NULL" means "on top of all windows". (?)  The
+ * this may be okay since "nullptr" means "on top of all windows". (?)  The
  * user must never be allowed to "hide" the main window, or the "menubar"
  * will disappear.
  * </p>
@@ -132,6 +132,7 @@
 #include <cstdlib>
 #include <locale>
 #include <string>
+#include <vector>
 
 #include <commdlg.h>
 #include <direct.h>
@@ -199,7 +200,7 @@ static bool keep_subwindows = true;
 /*
  * Full path to ANGBAND.INI
  */
-static concptr ini_file = NULL;
+static concptr ini_file = nullptr;
 
 /*
  * Name of application
@@ -1296,7 +1297,7 @@ static void init_windows(void)
 {
     term_data *td;
     td = &data[0];
-    WIPE(td, term_data);
+    *td = {};
     td->name = win_term_name[0];
 
     td->rows = 24;
@@ -1312,7 +1313,7 @@ static void init_windows(void)
 
     for (int i = 1; i < MAX_TERM_DATA; i++) {
         td = &data[i];
-        WIPE(td, term_data);
+        *td = {};
         td->name = win_term_name[i];
         td->rows = 24;
         td->cols = 80;
@@ -1430,7 +1431,7 @@ static void setup_menus(void)
 {
     HMENU hm = GetMenu(data[0].w);
 
-    if (current_world_ptr->character_generated) {
+    if (w_ptr->character_generated) {
         EnableMenuItem(hm, IDM_FILE_NEW, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
         EnableMenuItem(hm, IDM_FILE_OPEN, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
         EnableMenuItem(hm, IDM_FILE_SAVE, MF_BYCOMMAND | MF_ENABLED);
@@ -1568,7 +1569,7 @@ static void process_menus(player_type *player_ptr, WORD wCmd)
         break;
     }
     case IDM_FILE_SAVE: {
-        if (game_in_progress && current_world_ptr->character_generated) {
+        if (game_in_progress && w_ptr->character_generated) {
             if (!can_save) {
                 plog(_("今はセーブすることは出来ません。", "You may not do that right now."));
                 break;
@@ -1583,7 +1584,7 @@ static void process_menus(player_type *player_ptr, WORD wCmd)
         break;
     }
     case IDM_FILE_EXIT: {
-        if (game_in_progress && current_world_ptr->character_generated) {
+        if (game_in_progress && w_ptr->character_generated) {
             if (!can_save) {
                 plog(_("今は終了できません。", "You may not do that right now."));
                 break;
@@ -1598,7 +1599,7 @@ static void process_menus(player_type *player_ptr, WORD wCmd)
             break;
         }
 
-        quit(NULL);
+        quit(nullptr);
         break;
     }
     case IDM_FILE_SCORE: {
@@ -1610,7 +1611,7 @@ static void process_menus(player_type *player_ptr, WORD wCmd)
         } else {
             screen_save();
             term_clear();
-            display_scores(0, MAX_HISCORES, -1, NULL);
+            display_scores(0, MAX_HISCORES, -1, nullptr);
             (void)fd_close(highscore_fd);
             highscore_fd = -1;
             screen_load();
@@ -1877,7 +1878,7 @@ static void process_menus(player_type *player_ptr, WORD wCmd)
         ofn.lpstrTitle = _(L"壁紙を選んでね。", L"Choose wall paper.");
         ofn.Flags = OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
 
-        if (get_open_filename(&ofn, NULL, wallpaper_file, MAIN_WIN_MAX_PATH)) {
+        if (get_open_filename(&ofn, nullptr, wallpaper_file, MAIN_WIN_MAX_PATH)) {
             change_bg_mode(bg_mode::BG_ONE, true, true);
         }
         break;
@@ -2235,11 +2236,10 @@ LRESULT PASCAL AngbandWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 
         for (int i = 0; i < dy; i++) {
 #ifdef JP
-            char *s;
             const auto &scr = data[0].t.scr->c;
 
-            C_MAKE(s, (dx + 1), char);
-            strncpy(s, &scr[oy + i][ox], dx);
+            std::vector<char> s(dx + 1);
+            strncpy(s.data(), &scr[oy + i][ox], dx);
 
             if (ox > 0) {
                 if (iskanji(scr[oy + i][ox - 1]))
@@ -2313,8 +2313,8 @@ LRESULT PASCAL AngbandWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
         return 0;
     }
     case WM_CLOSE: {
-        if (!game_in_progress || !current_world_ptr->character_generated) {
-            quit(NULL);
+        if (!game_in_progress || !w_ptr->character_generated) {
+            quit(nullptr);
             return 0;
         }
 
@@ -2331,8 +2331,8 @@ LRESULT PASCAL AngbandWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
         return 0;
     }
     case WM_QUERYENDSESSION: {
-        if (!game_in_progress || !current_world_ptr->character_generated) {
-            quit(NULL);
+        if (!game_in_progress || !w_ptr->character_generated) {
+            quit(nullptr);
             return 0;
         }
 
@@ -2345,11 +2345,11 @@ LRESULT PASCAL AngbandWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
         signals_ignore_tstp();
         (void)strcpy(p_ptr->died_from, _("(緊急セーブ)", "(panic save)"));
         (void)save_player(p_ptr, SAVE_TYPE_CLOSE_GAME);
-        quit(NULL);
+        quit(nullptr);
         return 0;
     }
     case WM_QUIT: {
-        quit(NULL);
+        quit(nullptr);
         return 0;
     }
     case WM_COMMAND: {
@@ -2607,7 +2607,7 @@ void create_debug_spoiler(void)
         break;
     }
 
-    quit(NULL);
+    quit(nullptr);
 }
 
 /*!
@@ -2728,7 +2728,7 @@ int WINAPI WinMain(
         play_game(p_ptr, false, false);
     }
 
-    quit(NULL);
+    quit(nullptr);
     return 0;
 }
 #endif /* WINDOWS */

@@ -2,6 +2,7 @@
 
 #include "combat/combat-options-type.h"
 #include "combat/martial-arts-table.h"
+#include "object-enchant/tr-flags.h"
 #include "system/angband.h"
 #include "system/system-variables.h"
 
@@ -25,9 +26,9 @@ enum class MagicalBrandEffect { NONE = 0, EXTRA = 1, STUN = 2, SCARE = 3, DISPEL
 /*!
  * @brief プレイヤーの打撃に関する情報
  */
-typedef struct grid_type grid_type;
-typedef struct monster_race monster_race;
-typedef struct monster_type monster_type;
+struct grid_type;;
+struct monster_race;
+struct monster_type;
 typedef struct player_attack_type {
     int16_t hand{}; //!< 武器の持ち手
     grid_type *g_ptr; //!< ターゲットのいる地形情報

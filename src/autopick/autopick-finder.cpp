@@ -26,7 +26,7 @@
 
 /*!
  * @brief 与えられたアイテムが自動拾いのリストに登録されているかどうかを検索する
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @o_ptr アイテムへの参照ポインタ
  * @return 自動拾いのリストに登録されていたらその登録番号、なかったら-1
  * @details
@@ -41,7 +41,7 @@ int find_autopick_list(player_type *player_ptr, object_type *o_ptr)
 
     describe_flavor(player_ptr, o_name, o_ptr, (OD_NO_FLAVOR | OD_OMIT_PREFIX | OD_NO_PLURAL));
     str_tolower(o_name);
-    for (int i = 0; i < max_autopick; i++) {
+    for (auto i = 0U; i < autopick_list.size(); i++) {
         autopick_type *entry = &autopick_list[i];
         if (is_autopick_match(player_ptr, o_ptr, entry, o_name))
             return i;
@@ -58,7 +58,7 @@ bool get_object_for_search(player_type *player_ptr, object_type **o_handle, conc
     concptr q = _("どのアイテムを検索しますか? ", "Enter which item? ");
     concptr s = _("アイテムを持っていない。", "You have nothing to enter.");
     object_type *o_ptr;
-    o_ptr = choose_object(player_ptr, NULL, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP);
+    o_ptr = choose_object(player_ptr, nullptr, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP);
     if (!o_ptr)
         return false;
 
@@ -172,7 +172,7 @@ byte get_string_for_search(player_type *player_ptr, object_type **o_handle, conc
                 return (back ? -1 : 1);
             string_free(*search_strp);
             *search_strp = string_make(buf);
-            *o_handle = NULL;
+            *o_handle = nullptr;
             return (back ? -1 : 1);
 
         case KTRL('i'):
@@ -233,9 +233,9 @@ byte get_string_for_search(player_type *player_ptr, object_type **o_handle, conc
             c = (char)skey;
             if (color != TERM_WHITE) {
                 if (color == TERM_L_GREEN) {
-                    *o_handle = NULL;
+                    *o_handle = nullptr;
                     string_free(*search_strp);
-                    *search_strp = NULL;
+                    *search_strp = nullptr;
                 }
 
                 buf[0] = '\0';
@@ -275,13 +275,13 @@ byte get_string_for_search(player_type *player_ptr, object_type **o_handle, conc
         }
         }
 
-        if (*o_handle == NULL || color == TERM_L_GREEN)
+        if (*o_handle == nullptr || color == TERM_L_GREEN)
             continue;
 
-        *o_handle = NULL;
+        *o_handle = nullptr;
         buf[0] = '\0';
         string_free(*search_strp);
-        *search_strp = NULL;
+        *search_strp = nullptr;
     }
 }
 
@@ -311,7 +311,6 @@ void search_for_object(player_type *player_ptr, text_body_type *tb, object_type 
             continue;
 
         match = is_autopick_match(player_ptr, o_ptr, entry, o_name);
-        autopick_free_entry(entry);
         if (!match)
             continue;
 

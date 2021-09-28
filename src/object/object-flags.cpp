@@ -1,9 +1,8 @@
 ﻿#include "object/object-flags.h"
-#include "cmd-item/cmd-smith.h" //!< @todo 相互参照している.
 #include "mind/mind-weaponsmith.h"
 #include "object-enchant/object-ego.h"
+#include "object-enchant/object-smith.h"
 #include "object-enchant/tr-types.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "sv-definition/sv-lite-types.h"
@@ -18,77 +17,43 @@
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flgs フラグ情報を受け取る配列
  */
-void object_flags(const object_type *o_ptr, TrFlags &flgs)
+TrFlags object_flags(const object_type *o_ptr)
 {
     object_kind *k_ptr = &k_info[o_ptr->k_idx];
 
     /* Base object */
-    for (int i = 0; i < TR_FLAG_SIZE; i++) {
-        flgs[i] = k_ptr->flags[i];
+    auto flgs = k_ptr->flags;
+
+    if (o_ptr->is_fixed_artifact()) {
+        flgs = a_info[o_ptr->name1].flags;
     }
 
-    if (object_is_fixed_artifact(o_ptr)) {
-        artifact_type *a_ptr = &a_info[o_ptr->name1];
-        for (int i = 0; i < TR_FLAG_SIZE; i++) {
-            flgs[i] = a_ptr->flags[i];
-        }
-    }
-
-    if (object_is_ego(o_ptr)) {
+    if (o_ptr->is_ego()) {
         ego_item_type *e_ptr = &e_info[o_ptr->name2];
-        for (int i = 0; i < TR_FLAG_SIZE; i++) {
-            flgs[i] |= e_ptr->flags[i];
-        }
+        flgs.set(e_ptr->flags);
 
         if ((o_ptr->name2 == EGO_LITE_AURA_FIRE) && !o_ptr->xtra4 && (o_ptr->sval <= SV_LITE_LANTERN)) {
-            remove_flag(flgs, TR_SH_FIRE);
+            flgs.reset(TR_SH_FIRE);
         } else if ((o_ptr->name2 == EGO_LITE_INFRA) && !o_ptr->xtra4 && (o_ptr->sval <= SV_LITE_LANTERN)) {
-            remove_flag(flgs, TR_INFRA);
+            flgs.reset(TR_INFRA);
         } else if ((o_ptr->name2 == EGO_LITE_EYE) && !o_ptr->xtra4 && (o_ptr->sval <= SV_LITE_LANTERN)) {
-            remove_flag(flgs, TR_RES_BLIND);
-            remove_flag(flgs, TR_SEE_INVIS);
+            flgs.reset(TR_RES_BLIND);
+            flgs.reset(TR_SEE_INVIS);
         }
     }
 
     /* Random artifact ! */
-    for (int i = 0; i < TR_FLAG_SIZE; i++) {
-        flgs[i] |= o_ptr->art_flags[i];
+    flgs.set(o_ptr->art_flags);
+
+    if (auto effect = Smith::object_effect(o_ptr); effect.has_value()) {
+        auto tr_flags = Smith::get_effect_tr_flags(effect.value());
+        flgs.set(tr_flags);
+    }
+    if (Smith::object_activation(o_ptr).has_value()) {
+        flgs.set(TR_ACTIVATE);
     }
 
-    if (object_is_smith(o_ptr)) {
-        int add = o_ptr->xtra3 - 1;
-        if (add < TR_FLAG_MAX) {
-            add_flag(flgs, add);
-        } else if (add == ESSENCE_TMP_RES_ACID) {
-            add_flag(flgs, TR_RES_ACID);
-            add_flag(flgs, TR_ACTIVATE);
-        } else if (add == ESSENCE_TMP_RES_ELEC) {
-            add_flag(flgs, TR_RES_ELEC);
-            add_flag(flgs, TR_ACTIVATE);
-        } else if (add == ESSENCE_TMP_RES_FIRE) {
-            add_flag(flgs, TR_RES_FIRE);
-            add_flag(flgs, TR_ACTIVATE);
-        } else if (add == ESSENCE_TMP_RES_COLD) {
-            add_flag(flgs, TR_RES_COLD);
-            add_flag(flgs, TR_ACTIVATE);
-        } else if (add == ESSENCE_SH_FIRE) {
-            add_flag(flgs, TR_RES_FIRE);
-            add_flag(flgs, TR_SH_FIRE);
-        } else if (add == ESSENCE_SH_ELEC) {
-            add_flag(flgs, TR_RES_ELEC);
-            add_flag(flgs, TR_SH_ELEC);
-        } else if (add == ESSENCE_SH_COLD) {
-            add_flag(flgs, TR_RES_COLD);
-            add_flag(flgs, TR_SH_COLD);
-        } else if (add == ESSENCE_RESISTANCE) {
-            add_flag(flgs, TR_RES_ACID);
-            add_flag(flgs, TR_RES_ELEC);
-            add_flag(flgs, TR_RES_FIRE);
-            add_flag(flgs, TR_RES_COLD);
-        } else if (add == TR_EARTHQUAKE) {
-            add_flag(flgs, TR_ACTIVATE);
-        }
-    }
+    return flgs;
 }
 
 /*!
@@ -97,83 +62,48 @@ void object_flags(const object_type *o_ptr, TrFlags &flgs)
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flgs フラグ情報を受け取る配列
  */
-void object_flags_known(const object_type *o_ptr, TrFlags &flgs)
+TrFlags object_flags_known(const object_type *o_ptr)
 {
     bool spoil = false;
     object_kind *k_ptr = &k_info[o_ptr->k_idx];
-    for (int i = 0; i < TR_FLAG_SIZE; i++) {
-        flgs[i] = 0;
-    }
+    TrFlags flgs{};
 
-    if (!object_is_aware(o_ptr))
-        return;
+    if (!o_ptr->is_aware())
+        return flgs;
 
     /* Base object */
-    for (int i = 0; i < TR_FLAG_SIZE; i++) {
-        flgs[i] = k_ptr->flags[i];
-    }
+    flgs = k_ptr->flags;
 
-    if (!object_is_known(o_ptr))
-        return;
+    if (!o_ptr->is_known())
+        return flgs;
 
-    if (object_is_ego(o_ptr)) {
+    if (o_ptr->is_ego()) {
         ego_item_type *e_ptr = &e_info[o_ptr->name2];
-        for (int i = 0; i < TR_FLAG_SIZE; i++) {
-            flgs[i] |= e_ptr->flags[i];
-        }
+        flgs.set(e_ptr->flags);
 
         if ((o_ptr->name2 == EGO_LITE_AURA_FIRE) && !o_ptr->xtra4 && (o_ptr->sval <= SV_LITE_LANTERN)) {
-            remove_flag(flgs, TR_SH_FIRE);
+            flgs.reset(TR_SH_FIRE);
         } else if ((o_ptr->name2 == EGO_LITE_INFRA) && !o_ptr->xtra4 && (o_ptr->sval <= SV_LITE_LANTERN)) {
-            remove_flag(flgs, TR_INFRA);
+            flgs.reset(TR_INFRA);
         } else if ((o_ptr->name2 == EGO_LITE_EYE) && !o_ptr->xtra4 && (o_ptr->sval <= SV_LITE_LANTERN)) {
-            remove_flag(flgs, TR_RES_BLIND);
-            remove_flag(flgs, TR_SEE_INVIS);
+            flgs.reset(TR_RES_BLIND);
+            flgs.reset(TR_SEE_INVIS);
         }
     }
 
-    if (spoil || object_is_fully_known(o_ptr)) {
-        if (object_is_fixed_artifact(o_ptr)) {
-            artifact_type *a_ptr = &a_info[o_ptr->name1];
-
-            for (int i = 0; i < TR_FLAG_SIZE; i++) {
-                flgs[i] = a_ptr->flags[i];
-            }
+    if (spoil || o_ptr->is_fully_known()) {
+        if (o_ptr->is_fixed_artifact()) {
+            flgs = a_info[o_ptr->name1].flags;
         }
 
         /* Random artifact ! */
-        for (int i = 0; i < TR_FLAG_SIZE; i++) {
-            flgs[i] |= o_ptr->art_flags[i];
-        }
+        flgs.set(o_ptr->art_flags);
     }
 
-    if (!object_is_smith(o_ptr))
-        return;
-
-    int add = o_ptr->xtra3 - 1;
-    if (add < TR_FLAG_MAX) {
-        add_flag(flgs, add);
-    } else if (add == ESSENCE_TMP_RES_ACID) {
-        add_flag(flgs, TR_RES_ACID);
-    } else if (add == ESSENCE_TMP_RES_ELEC) {
-        add_flag(flgs, TR_RES_ELEC);
-    } else if (add == ESSENCE_TMP_RES_FIRE) {
-        add_flag(flgs, TR_RES_FIRE);
-    } else if (add == ESSENCE_TMP_RES_COLD) {
-        add_flag(flgs, TR_RES_COLD);
-    } else if (add == ESSENCE_SH_FIRE) {
-        add_flag(flgs, TR_RES_FIRE);
-        add_flag(flgs, TR_SH_FIRE);
-    } else if (add == ESSENCE_SH_ELEC) {
-        add_flag(flgs, TR_RES_ELEC);
-        add_flag(flgs, TR_SH_ELEC);
-    } else if (add == ESSENCE_SH_COLD) {
-        add_flag(flgs, TR_RES_COLD);
-        add_flag(flgs, TR_SH_COLD);
-    } else if (add == ESSENCE_RESISTANCE) {
-        add_flag(flgs, TR_RES_ACID);
-        add_flag(flgs, TR_RES_ELEC);
-        add_flag(flgs, TR_RES_FIRE);
-        add_flag(flgs, TR_RES_COLD);
+    if (auto effect = Smith::object_effect(o_ptr); effect.has_value()) {
+        auto tr_flags = Smith::get_effect_tr_flags(effect.value());
+        flgs.set(tr_flags);
     }
+
+    return flgs;
 }

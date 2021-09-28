@@ -22,13 +22,12 @@
 void rd_unique_info(void)
 {
     const int MAX_TRIES = 100;
-    for (int i = 0; i < max_r_idx; i++) {
-        monster_race *r_ptr = &r_info[i];
-        r_ptr->max_num = MAX_TRIES;
-        if (r_ptr->flags1 & RF1_UNIQUE)
-            r_ptr->max_num = 1;
-        else if (r_ptr->flags7 & RF7_NAZGUL)
-            r_ptr->max_num = MAX_NAZGUL_NUM;
+    for (auto &r_ref : r_info) {
+        r_ref.max_num = MAX_TRIES;
+        if (r_ref.flags1 & RF1_UNIQUE)
+            r_ref.max_num = 1;
+        else if (r_ref.flags7 & RF7_NAZGUL)
+            r_ref.max_num = MAX_NAZGUL_NUM;
     }
 }
 
@@ -89,7 +88,7 @@ static void load_quest_completion(quest_type *q_ptr)
         rd_u32b(&q_ptr->comptime);
 }
 
-static void load_quest_details(player_type *creature_ptr, quest_type *q_ptr, int loading_quest_index)
+static void load_quest_details(player_type *player_ptr, quest_type *q_ptr, int loading_quest_index)
 {
     int16_t tmp16s;
     rd_s16b(&tmp16s);
@@ -100,7 +99,7 @@ static void load_quest_details(player_type *creature_ptr, quest_type *q_ptr, int
 
     rd_s16b(&q_ptr->r_idx);
     if ((q_ptr->type == QUEST_TYPE_RANDOM) && (!q_ptr->r_idx))
-        determine_random_questor(creature_ptr, &quest[loading_quest_index]);
+        determine_random_questor(player_ptr, &quest[loading_quest_index]);
 
     rd_s16b(&q_ptr->k_idx);
     if (q_ptr->k_idx)
@@ -111,9 +110,9 @@ static void load_quest_details(player_type *creature_ptr, quest_type *q_ptr, int
     q_ptr->flags = tmp8u;
 }
 
-void analyze_quests(player_type *creature_ptr, const uint16_t max_quests_load, const byte max_rquests_load)
+void analyze_quests(player_type *player_ptr, const uint16_t max_quests_load, const byte max_rquests_load)
 {
-    QUEST_IDX old_inside_quest = creature_ptr->current_floor_ptr->inside_quest;
+    QUEST_IDX old_inside_quest = player_ptr->current_floor_ptr->inside_quest;
     for (int i = 0; i < max_quests_load; i++) {
         if (check_quest_index(i))
             continue;
@@ -126,9 +125,9 @@ void analyze_quests(player_type *creature_ptr, const uint16_t max_quests_load, c
         if (!is_quest_running)
             continue;
 
-        load_quest_details(creature_ptr, q_ptr, i);
+        load_quest_details(player_ptr, q_ptr, i);
         if (h_older_than(0, 3, 11))
-            set_zangband_quest(creature_ptr, q_ptr, i, old_inside_quest);
+            set_zangband_quest(player_ptr, q_ptr, i, old_inside_quest);
         else {
             byte tmp8u;
             rd_byte(&tmp8u);

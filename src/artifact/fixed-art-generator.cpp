@@ -32,7 +32,7 @@
 
 /*!
  * @brief 恐怖の仮面への特殊処理
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体への参照ポインタ
  * @return 追加能力/耐性がもらえるならtrue、もらえないならfalse
  * @details
@@ -51,8 +51,8 @@ static bool invest_terror_mask(player_type *player_ptr, object_type *o_ptr)
     case CLASS_BERSERKER:
         return true;
     default:
-        add_flag(o_ptr->art_flags, TR_AGGRAVATE);
-        add_flag(o_ptr->art_flags, TR_TY_CURSE);
+        o_ptr->art_flags.set(TR_AGGRAVATE);
+        o_ptr->art_flags.set(TR_TY_CURSE);
         o_ptr->curse_flags.set({ TRC::CURSED, TRC::HEAVY_CURSE });
         o_ptr->curse_flags.set(get_curse(2, o_ptr));
         return false;
@@ -61,28 +61,28 @@ static bool invest_terror_mask(player_type *player_ptr, object_type *o_ptr)
 
 /*!
  * @brief 戦乙女ミリムの危ない水着への特殊処理 (セクシーギャルのみpval追加)
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体への参照ポインタ
  */
 static void milim_swimsuit(player_type *player_ptr, object_type *o_ptr)
 {
-    if ((o_ptr->name1 != ART_MILIM) || (player_ptr->pseikaku != PERSONALITY_SEXY))
+    if ((o_ptr->name1 != ART_MILIM) || (player_ptr->ppersonality != PERSONALITY_SEXY))
         return;
 
     o_ptr->pval = 3;
-    add_flag(o_ptr->art_flags, TR_STR);
-    add_flag(o_ptr->art_flags, TR_INT);
-    add_flag(o_ptr->art_flags, TR_WIS);
-    add_flag(o_ptr->art_flags, TR_DEX);
-    add_flag(o_ptr->art_flags, TR_CON);
-    add_flag(o_ptr->art_flags, TR_CHR);
+    o_ptr->art_flags.set(TR_STR);
+    o_ptr->art_flags.set(TR_INT);
+    o_ptr->art_flags.set(TR_WIS);
+    o_ptr->art_flags.set(TR_DEX);
+    o_ptr->art_flags.set(TR_CON);
+    o_ptr->art_flags.set(TR_CHR);
 }
 
 /*!
  * @brief 特定の固定アーティファクトの条件付き追加能力/耐性を付加する
  * @attention プレイヤーの各種ステータスに依存した処理がある。
  * @todo 折を見て関数名を変更すること。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @param a_ptr 生成する固定アーティファクト構造体ポインタ
  * @details
@@ -93,24 +93,24 @@ static void invest_special_artifact_abilities(player_type *player_ptr, object_ty
     switch (o_ptr->name1) {
     case ART_MURAMASA:
         if (player_ptr->pclass != CLASS_SAMURAI) {
-            add_flag(o_ptr->art_flags, TR_NO_MAGIC);
+            o_ptr->art_flags.set(TR_NO_MAGIC);
             o_ptr->curse_flags.set(TRC::HEAVY_CURSE);
         }
         return;
     case ART_ROBINTON:
         if (player_ptr->pclass == CLASS_BARD)
-            add_flag(o_ptr->art_flags, TR_DEC_MANA);
+            o_ptr->art_flags.set(TR_DEC_MANA);
         return;
     case ART_XIAOLONG:
         if (player_ptr->pclass == CLASS_MONK)
-            add_flag(o_ptr->art_flags, TR_BLOWS);
+            o_ptr->art_flags.set(TR_BLOWS);
         return;
     case ART_BLOOD:
         get_bloody_moon_flags(o_ptr);
         return;
     case ART_HEAVENLY_MAIDEN:
         if (player_ptr->psex != SEX_FEMALE)
-            add_flag(o_ptr->art_flags, TR_AGGRAVATE);
+            o_ptr->art_flags.set(TR_AGGRAVATE);
         return;
     case ART_MILIM:
         milim_swimsuit(player_ptr, o_ptr);
@@ -199,7 +199,7 @@ static void invest_curse_to_fixed_artifact(artifact_type *a_ptr, object_type *o_
 
 /*!
  * @brief オブジェクトに指定した固定アーティファクトをオブジェクトに割り当てる。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 生成に割り当てたいオブジェクトの構造体参照ポインタ
  * @return 適用したアーティファクト情報への参照ポインタ
  */
@@ -225,7 +225,7 @@ artifact_type *apply_artifact(player_type *player_ptr, object_type *o_ptr)
 /*!
  * @brief フロアの指定された位置に固定アーティファクトを生成する。 / Create the artifact of the specified number
  * @details 固定アーティファクト構造体から基本ステータスをコピーした後、所定の座標でdrop_item()で落とす。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param a_idx 生成する固定アーティファクト構造体のID
  * @param y アイテムを落とす地点のy座標
  * @param x アイテムを落とす地点のx座標
@@ -257,7 +257,7 @@ bool create_named_art(player_type *player_ptr, ARTIFACT_IDX a_idx, POSITION y, P
 /*!
  * @brief 非INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。
  * Mega-Hack -- Attempt to create one of the "Special Objects"
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 生成に割り当てたいオブジェクトの構造体参照ポインタ
  * @return 生成に成功したらTRUEを返す。
  * @details
@@ -274,37 +274,35 @@ bool make_artifact(player_type *player_ptr, object_type *o_ptr)
     if (o_ptr->number != 1)
         return false;
 
-    for (ARTIFACT_IDX i = 0; i < max_a_idx; i++) {
-        auto a_ptr = &a_info[i];
-
-        if (a_ptr->name.empty())
+    for (const auto &a_ref : a_info) {
+        if (a_ref.name.empty())
             continue;
 
-        if (a_ptr->cur_num)
+        if (a_ref.cur_num)
             continue;
 
-        if (a_ptr->gen_flags.has(TRG::QUESTITEM))
+        if (a_ref.gen_flags.has(TRG::QUESTITEM))
             continue;
 
-        if (a_ptr->gen_flags.has(TRG::INSTA_ART))
+        if (a_ref.gen_flags.has(TRG::INSTA_ART))
             continue;
 
-        if (a_ptr->tval != o_ptr->tval)
+        if (a_ref.tval != o_ptr->tval)
             continue;
 
-        if (a_ptr->sval != o_ptr->sval)
+        if (a_ref.sval != o_ptr->sval)
             continue;
 
-        if (a_ptr->level > floor_ptr->dun_level) {
-            int d = (a_ptr->level - floor_ptr->dun_level) * 2;
+        if (a_ref.level > floor_ptr->dun_level) {
+            int d = (a_ref.level - floor_ptr->dun_level) * 2;
             if (!one_in_(d))
                 continue;
         }
 
-        if (!one_in_(a_ptr->rarity))
+        if (!one_in_(a_ref.rarity))
             continue;
 
-        o_ptr->name1 = i;
+        o_ptr->name1 = a_ref.idx;
         return true;
     }
 
@@ -314,7 +312,7 @@ bool make_artifact(player_type *player_ptr, object_type *o_ptr)
 /*!
  * @brief INSTA_ART型の固定アーティファクトの生成を確率に応じて試行する。
  * Mega-Hack -- Attempt to create one of the "Special Objects"
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 生成に割り当てたいオブジェクトの構造体参照ポインタ
  * @return 生成に成功したらTRUEを返す。
  * @details
@@ -337,38 +335,36 @@ bool make_artifact_special(player_type *player_ptr, object_type *o_ptr)
         return false;
 
     /*! @note 全固定アーティファクト中からIDの若い順に生成対象とその確率を走査する / Check the artifact list (just the "specials") */
-    for (ARTIFACT_IDX i = 0; i < max_a_idx; i++) {
-        auto a_ptr = &a_info[i];
-
+    for (const auto &a_ref : a_info) {
         /*! @note アーティファクト名が空の不正なデータは除外する / Skip "empty" artifacts */
-        if (a_ptr->name.empty())
+        if (a_ref.name.empty())
             continue;
 
         /*! @note 既に生成回数がカウントされたアーティファクト、QUESTITEMと非INSTA_ARTは除外 / Cannot make an artifact twice */
-        if (a_ptr->cur_num)
+        if (a_ref.cur_num)
             continue;
-        if (a_ptr->gen_flags.has(TRG::QUESTITEM))
+        if (a_ref.gen_flags.has(TRG::QUESTITEM))
             continue;
-        if (!(a_ptr->gen_flags.has(TRG::INSTA_ART)))
+        if (!(a_ref.gen_flags.has(TRG::INSTA_ART)))
             continue;
 
         /*! @note アーティファクト生成階が現在に対して足りない場合は高確率で1/(不足階層*2)を満たさないと生成リストに加えられない /
          *  XXX XXX Enforce minimum "depth" (loosely) */
-        if (a_ptr->level > floor_ptr->object_level) {
+        if (a_ref.level > floor_ptr->object_level) {
             /* @note  / Acquire the "out-of-depth factor". Roll for out-of-depth creation. */
-            int d = (a_ptr->level - floor_ptr->object_level) * 2;
+            int d = (a_ref.level - floor_ptr->object_level) * 2;
             if (!one_in_(d))
                 continue;
         }
 
         /*! @note 1/(レア度)の確率を満たさないと除外される / Artifact "rarity roll" */
-        if (!one_in_(a_ptr->rarity))
+        if (!one_in_(a_ref.rarity))
             continue;
 
         /*! @note INSTA_ART型固定アーティファクトのベースアイテムもチェック対象とする。ベースアイテムの生成階層が足りない場合1/(不足階層*5)
          * を満たさないと除外される。 / Find the base object. XXX XXX Enforce minimum "object" level (loosely). Acquire the "out-of-depth factor". Roll for
          * out-of-depth creation. */
-        k_idx = lookup_kind(a_ptr->tval, a_ptr->sval);
+        k_idx = lookup_kind(a_ref.tval, a_ref.sval);
         if (k_info[k_idx].level > floor_ptr->object_level) {
             int d = (k_info[k_idx].level - floor_ptr->object_level) * 5;
             if (!one_in_(d))
@@ -379,7 +375,7 @@ bool make_artifact_special(player_type *player_ptr, object_type *o_ptr)
          * Assign the template. Mega-Hack -- mark the item as an artifact. Hack: Some artifacts get random extra powers. Success. */
         o_ptr->prep(k_idx);
 
-        o_ptr->name1 = i;
+        o_ptr->name1 = a_ref.idx;
         return true;
     }
 

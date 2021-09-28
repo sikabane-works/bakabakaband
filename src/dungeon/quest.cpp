@@ -36,7 +36,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 
-quest_type *quest; /*!< Quest info */
+std::vector<quest_type> quest; /*!< Quest info */
 QUEST_IDX max_q_idx; /*!< Maximum number of quests */
 char quest_text[10][80]; /*!< Quest text */
 int quest_text_line; /*!< Current line of the quest text */
@@ -59,7 +59,7 @@ static concptr find_quest[] = {
  */
 void determine_random_questor(player_type *player_ptr, quest_type *q_ptr)
 {
-    get_mon_num_prep(player_ptr, mon_hook_quest, NULL);
+    get_mon_num_prep(player_ptr, mon_hook_quest, nullptr);
 
     MONRACE_IDX r_idx;
     while (true) {
@@ -110,12 +110,12 @@ void record_quest_final_status(quest_type *q_ptr, PLAYER_LEVEL lev, int16_t stat
     q_ptr->status = stat;
     q_ptr->complev = lev;
     update_playtime();
-    q_ptr->comptime = current_world_ptr->play_time;
+    q_ptr->comptime = w_ptr->play_time;
 }
 
 /*!
  * @brief クエストを達成状態にする /
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param quest_num 達成状態にしたいクエストのID
  */
 void complete_quest(player_type *player_ptr, QUEST_IDX quest_num)
@@ -125,11 +125,11 @@ void complete_quest(player_type *player_ptr, QUEST_IDX quest_num)
     switch (q_ptr->type) {
     case QUEST_TYPE_RANDOM:
         if (record_rand_quest)
-            exe_write_diary(player_ptr, DIARY_RAND_QUEST_C, quest_num, NULL);
+            exe_write_diary(player_ptr, DIARY_RAND_QUEST_C, quest_num, nullptr);
         break;
     default:
         if (record_fix_quest)
-            exe_write_diary(player_ptr, DIARY_FIX_QUEST_C, quest_num, NULL);
+            exe_write_diary(player_ptr, DIARY_FIX_QUEST_C, quest_num, nullptr);
         break;
     }
 
@@ -143,13 +143,13 @@ void complete_quest(player_type *player_ptr, QUEST_IDX quest_num)
 
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_QUEST_CLEAR);
     msg_print(_("クエストを達成した！", "You just completed your quest!"));
-    msg_print(NULL);
+    msg_print(nullptr);
 }
 
 /*!
  * @brief 特定のアーティファクトを入手した際のクエスト達成処理 /
  * Check for "Quest" completion when a quest monster is killed or charmed.
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 入手したオブジェクトの構造体参照ポインタ
  */
 void check_find_art_quest_completion(player_type *player_ptr, object_type *o_ptr)
@@ -179,7 +179,7 @@ void quest_discovery(QUEST_IDX q_idx)
     strcpy(name, (r_ptr->name.c_str()));
 
     msg_print(find_quest[rand_range(0, 4)]);
-    msg_print(NULL);
+    msg_print(nullptr);
 
     if (q_num != 1) {
 #ifdef JP
@@ -204,7 +204,7 @@ void quest_discovery(QUEST_IDX q_idx)
 /*!
  * @brief 新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。
  * / Hack -- Check if a level is a "quest" level
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param level 検索対象になる階
  * @return クエストIDを返す。該当がない場合0を返す。
  */
@@ -228,7 +228,7 @@ QUEST_IDX quest_number(player_type *player_ptr, DEPTH level)
 
 /*!
  * @brief 新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param level 検索対象になる階
  * @return クエストIDを返す。該当がない場合0を返す。
  */
@@ -249,7 +249,7 @@ QUEST_IDX random_quest_number(player_type *player_ptr, DEPTH level)
 
 /*!
  * @brief クエスト階層から離脱する際の処理
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
 void leave_quest_check(player_type *player_ptr)
 {
@@ -284,12 +284,12 @@ void leave_quest_check(player_type *player_ptr)
     /* Record finishing a quest */
     if (q_ptr->type == QUEST_TYPE_RANDOM) {
         if (record_rand_quest)
-            exe_write_diary(player_ptr, DIARY_RAND_QUEST_F, leaving_quest, NULL);
+            exe_write_diary(player_ptr, DIARY_RAND_QUEST_F, leaving_quest, nullptr);
         return;
     }
 
     if (record_fix_quest)
-        exe_write_diary(player_ptr, DIARY_FIX_QUEST_F, leaving_quest, NULL);
+        exe_write_diary(player_ptr, DIARY_FIX_QUEST_F, leaving_quest, nullptr);
 }
 
 /*!
@@ -309,7 +309,7 @@ void leave_tower_check(player_type *player_ptr)
     quest[QUEST_TOWER1].status = QUEST_STATUS_FAILED;
     quest[QUEST_TOWER1].complev = player_ptr->lev;
     update_playtime();
-    quest[QUEST_TOWER1].comptime = current_world_ptr->play_time;
+    quest[QUEST_TOWER1].comptime = w_ptr->play_time;
 }
 
 /*! 
@@ -326,7 +326,7 @@ void exe_enter_quest(player_type *player_ptr, QUEST_IDX quest_idx)
 
 /*!
  * @brief クエスト入り口にプレイヤーが乗った際の処理 / Do building commands
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
 void do_cmd_quest(player_type *player_ptr)
 {

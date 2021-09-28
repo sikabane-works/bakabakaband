@@ -25,7 +25,7 @@
 #include "monster-race/monster-race.h"
 #include "object-enchant/object-ego.h"
 #include "object/object-kind.h"
-#include "player/player-class.h"
+#include "player-info/class-info.h"
 #include "player/player-skill.h"
 #include "room/rooms-vault.h"
 #include "system/angband-version.h"
@@ -44,10 +44,13 @@
 /*!
  * @brief 基本情報読み込みのメインルーチン /
  * Initialize misc. values
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @return エラーコード
  */
-errr init_misc(player_type *player_ptr) { return parse_fixed_map(player_ptr, "misc.txt", 0, 0, 0, 0); }
+errr init_misc(player_type *player_ptr)
+{
+    return parse_fixed_map(player_ptr, "misc.txt", 0, 0, 0, 0);
+}
 
 /*!
  * @brief ヘッダ構造体の更新
@@ -57,7 +60,7 @@ errr init_misc(player_type *player_ptr) { return parse_fixed_map(player_ptr, "mi
  * @param len データの長さ
  * @return エラーコード
  */
-static void init_header(angband_header *head, IDX num)
+static void init_header(angband_header *head, IDX num = 0)
 {
     head->checksum = 0;
     head->info_num = (IDX)num;
@@ -100,9 +103,12 @@ static errr init_info(concptr filename, angband_header &head, std::vector<InfoTy
 #endif
         msg_format(_("レコード %d は '%s' エラーがあります。", "Record %d contains a '%s' error."), error_idx, oops);
         msg_format(_("構文 '%s'。", "Parsing '%s'."), buf);
-        msg_print(NULL);
+        msg_print(nullptr);
         quit(format(_("'%s.txt'ファイルにエラー", "Error in '%s.txt' file."), filename));
     }
+
+    info.shrink_to_fit();
+    head.info_num = static_cast<uint16_t>(info.size());
 
     if (retouch)
         (*retouch)(&head);
@@ -117,7 +123,7 @@ static errr init_info(concptr filename, angband_header &head, std::vector<InfoTy
  */
 errr init_f_info()
 {
-    init_header(&f_head, max_f_idx);
+    init_header(&f_head);
     return init_info("f_info", f_head, f_info, parse_f_info, retouch_f_info);
 }
 
@@ -128,8 +134,8 @@ errr init_f_info()
  */
 errr init_k_info()
 {
-    init_header(&k_head, max_k_idx);
-    return init_info("k_info", k_head, k_info, parse_k_info, NULL);
+    init_header(&k_head);
+    return init_info("k_info", k_head, k_info, parse_k_info, nullptr);
 }
 
 /*!
@@ -139,8 +145,8 @@ errr init_k_info()
  */
 errr init_a_info()
 {
-    init_header(&a_head, max_a_idx);
-    return init_info("a_info", a_head, a_info, parse_a_info, NULL);
+    init_header(&a_head);
+    return init_info("a_info", a_head, a_info, parse_a_info, nullptr);
 }
 
 /*!
@@ -150,8 +156,8 @@ errr init_a_info()
  */
 errr init_e_info()
 {
-    init_header(&e_head, max_e_idx);
-    return init_info("e_info", e_head, e_info, parse_e_info, NULL);
+    init_header(&e_head);
+    return init_info("e_info", e_head, e_info, parse_e_info, nullptr);
 }
 
 /*!
@@ -161,8 +167,8 @@ errr init_e_info()
  */
 errr init_r_info()
 {
-    init_header(&r_head, max_r_idx);
-    return init_info("r_info", r_head, r_info, parse_r_info, NULL);
+    init_header(&r_head);
+    return init_info("r_info", r_head, r_info, parse_r_info, nullptr);
 }
 
 /*!
@@ -172,8 +178,8 @@ errr init_r_info()
  */
 errr init_d_info()
 {
-    init_header(&d_head, current_world_ptr->max_d_idx);
-    return init_info("d_info", d_head, d_info, parse_d_info, NULL);
+    init_header(&d_head);
+    return init_info("d_info", d_head, d_info, parse_d_info, nullptr);
 }
 
 /*!
@@ -186,8 +192,8 @@ errr init_d_info()
  */
 errr init_v_info()
 {
-    init_header(&v_head, max_v_idx);
-    return init_info("v_info", v_head, v_info, parse_v_info, NULL);
+    init_header(&v_head);
+    return init_info("v_info", v_head, v_info, parse_v_info, nullptr);
 }
 
 /*!
@@ -198,7 +204,7 @@ errr init_v_info()
 errr init_s_info()
 {
     init_header(&s_head, MAX_CLASS);
-    return init_info("s_info", s_head, s_info, parse_s_info, NULL);
+    return init_info("s_info", s_head, s_info, parse_s_info, nullptr);
 }
 
 /*!
@@ -209,5 +215,5 @@ errr init_s_info()
 errr init_m_info()
 {
     init_header(&m_head, MAX_CLASS);
-    return init_info("m_info", m_head, m_info, parse_m_info, NULL);
+    return init_info("m_info", m_head, m_info, parse_m_info, nullptr);
 }

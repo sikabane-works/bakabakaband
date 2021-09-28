@@ -2,6 +2,7 @@
 
 #include "system/angband.h"
 
+#include "object-enchant/tr-flags.h"
 #include "object-enchant/trg-types.h"
 #include "system/object-type-definition.h"
 #include "util/flag-group.h"
@@ -18,7 +19,9 @@
  * "max_num" is always "1" (if that artifact "exists")
  */
 typedef struct artifact_type {
-	std::string name;			/*!< アーティファクト名(headerオフセット参照) / Name (offset) */
+    ARTIFACT_IDX idx{};
+
+    std::string name; /*!< アーティファクト名(headerオフセット参照) / Name (offset) */
     std::string text; /*!< アーティファクト解説(headerオフセット参照) / Text (offset) */
 	tval_type tval{};		/*!< ベースアイテム大項目ID / Artifact type */
 	OBJECT_SUBTYPE_VALUE sval{};	/*!< ベースアイテム小項目ID / Artifact sub type */
@@ -43,4 +46,3 @@ typedef struct artifact_type {
 } artifact_type;
 
 extern std::vector<artifact_type> a_info;
-extern ARTIFACT_IDX max_a_idx;

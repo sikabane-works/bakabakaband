@@ -1,6 +1,5 @@
 ﻿#include "store/black-market.h"
 #include "floor/floor-town.h"
-#include "object-hook/hook-enchant.h"
 #include "store/store-owners.h"
 #include "store/store-util.h"
 #include "system/object-type-definition.h"
@@ -9,7 +8,7 @@
 /*!
  * @brief ブラックマーケット用の無価値品の排除判定 /
  * This function will keep 'crap' out of the black market.
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
  * @return ブラックマーケットにとって無価値な品ならばTRUEを返す
  * @details
@@ -20,7 +19,7 @@
  */
 bool black_market_crap(player_type *player_ptr, object_type *o_ptr)
 {
-    if (object_is_ego(o_ptr))
+    if (o_ptr->is_ego())
         return false;
 
     if (o_ptr->to_a > 0)

@@ -5,6 +5,8 @@
 #include "mind/snipe-types.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
+#include "player-base/player-class.h"
+#include "player-info/sniper-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/special-defense-types.h"
 #include "spell-kind/spells-teleport.h"
@@ -18,19 +20,18 @@
 
 /*!
  * @brief 射撃処理のメインルーチン
- * @param creature_ptr プレーヤーへの参照ポインタ
- * @param snipe_type ？？？
- * @todo Doxygenの加筆求む
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param snipe_type スナイパーの射撃術の種類
  */
-void do_cmd_fire(player_type *creature_ptr, SPELL_IDX snipe_type)
+void do_cmd_fire(player_type *player_ptr, SPELL_IDX snipe_type)
 {
     OBJECT_IDX item;
     object_type *j_ptr, *ammo_ptr;
-    if (creature_ptr->wild_mode)
+    if (player_ptr->wild_mode)
         return;
 
-    creature_ptr->is_fired = false;
-    j_ptr = &creature_ptr->inventory_list[INVEN_BOW];
+    player_ptr->is_fired = false;
+    j_ptr = &player_ptr->inventory_list[INVEN_BOW];
     if (!j_ptr->tval) {
         msg_print(_("射撃用の武器を持っていない。", "You have nothing to fire with."));
         flush();
@@ -49,27 +50,31 @@ void do_cmd_fire(player_type *creature_ptr, SPELL_IDX snipe_type)
         return;
     }
 
-    if (creature_ptr->special_defense & KATA_MUSOU)
-        set_action(creature_ptr, ACTION_NONE);
+    if (player_ptr->special_defense & KATA_MUSOU)
+        set_action(player_ptr, ACTION_NONE);
 
     concptr q = _("どれを撃ちますか? ", "Fire which item? ");
     concptr s = _("発射されるアイテムがありません。", "You have nothing to fire.");
-    ammo_ptr = choose_object(creature_ptr, &item, q, s, USE_INVEN | USE_FLOOR, TvalItemTester(creature_ptr->tval_ammo));
+    ammo_ptr = choose_object(player_ptr, &item, q, s, USE_INVEN | USE_FLOOR, TvalItemTester(player_ptr->tval_ammo));
     if (!ammo_ptr) {
         flush();
         return;
     }
 
-    exe_fire(creature_ptr, item, j_ptr, snipe_type);
-    if (!creature_ptr->is_fired || creature_ptr->pclass != CLASS_SNIPER)
+    exe_fire(player_ptr, item, j_ptr, snipe_type);
+    if (!player_ptr->is_fired || player_ptr->pclass != CLASS_SNIPER)
         return;
 
-    if (snipe_type == SP_AWAY)
-        teleport_player(creature_ptr, 10 + (creature_ptr->concent * 2), TELEPORT_SPONTANEOUS);
+    if (snipe_type == SP_AWAY) {
+        auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+        teleport_player(player_ptr, 10 + (sniper_data->concent * 2), TELEPORT_SPONTANEOUS);
+    }
 
+    auto effects = player_ptr->effects();
     if (snipe_type == SP_FINAL) {
         msg_print(_("射撃の反動が体を襲った。", "The weapon's recoil stuns you. "));
-        (void)set_slow(creature_ptr, creature_ptr->slow + randint0(7) + 7, false);
-        (void)set_stun(creature_ptr, creature_ptr->stun + randint1(25));
+        BadStatusSetter bss(player_ptr);
+        (void)bss.mod_slowness(randint0(7) + 7, false);
+        (void)bss.mod_stun(randint1(25));
     }
 }

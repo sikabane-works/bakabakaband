@@ -17,35 +17,36 @@
 
 /*!
  * @brief 自動拾い設定ファイルをロードするコマンドのメインルーチン /
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
-void do_cmd_reload_autopick(player_type *creature_ptr)
+void do_cmd_reload_autopick(player_type *player_ptr)
 {
     if (!get_check(_("自動拾い設定ファイルをロードしますか? ", "Reload auto-pick preference file? ")))
         return;
 
-    autopick_load_pref(creature_ptr, true);
+    autopick_load_pref(player_ptr, true);
 }
 
 /*
  * Check the status of "autopick"
  */
-void do_cmd_knowledge_autopick(player_type *creature_ptr)
+void do_cmd_knowledge_autopick(player_type *player_ptr)
 {
-    FILE *fff = NULL;
+    FILE *fff = nullptr;
     GAME_TEXT file_name[FILE_NAME_SIZE];
     if (!open_temporary_file(&fff, file_name))
         return;
 
-    if (!max_autopick) {
+    if (autopick_list.empty()) {
         fprintf(fff, _("自動破壊/拾いには何も登録されていません。", "No preference for auto picker/destroyer."));
     } else {
-        fprintf(fff, _("   自動拾い/破壊には現在 %d行登録されています。\n\n", "   There are %d registered lines for auto picker/destroyer.\n\n"), max_autopick);
+        fprintf(fff, _("   自動拾い/破壊には現在 %d行登録されています。\n\n", "   There are %d registered lines for auto picker/destroyer.\n\n"),
+            static_cast<int>(autopick_list.size()));
     }
 
-    for (int k = 0; k < max_autopick; k++) {
+    for (auto &item : autopick_list) {
         concptr tmp;
-        byte act = autopick_list[k].action;
+        byte act = item.action;
         if (act & DONT_AUTOPICK) {
             tmp = _("放置", "Leave");
         } else if (act & DO_AUTODESTROY) {
@@ -61,7 +62,7 @@ void do_cmd_knowledge_autopick(player_type *creature_ptr)
         else
             fprintf(fff, "%11s", format("(%s)", tmp));
 
-        tmp = autopick_line_from_entry(&autopick_list[k]);
+        tmp = autopick_line_from_entry(&item);
         fprintf(fff, " %s", tmp);
         string_free(tmp);
         fprintf(fff, "\n");
@@ -69,6 +70,6 @@ void do_cmd_knowledge_autopick(player_type *creature_ptr)
 
     angband_fclose(fff);
 
-    (void)show_file(creature_ptr, true, file_name, _("自動拾い/破壊 設定リスト", "Auto-picker/Destroyer"), 0, 0);
+    (void)show_file(player_ptr, true, file_name, _("自動拾い/破壊 設定リスト", "Auto-picker/Destroyer"), 0, 0);
     fd_kill(file_name);
 }

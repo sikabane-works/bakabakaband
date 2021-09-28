@@ -4,4 +4,4 @@
 #include "system/angband.h"
 
 class player_type;
-bool do_cmd_attack(player_type *attacker_ptr, POSITION y, POSITION x, combat_options mode);
+bool do_cmd_attack(player_type *player_ptr, POSITION y, POSITION x, combat_options mode);

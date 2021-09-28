@@ -48,13 +48,13 @@ std::tuple<HIT_POINT, concptr, sound_type> apply_critical_norm_damage(int k, HIT
  * @param mode オプションフラグ
  * @return クリティカル修正が入ったダメージ値
  */
-HIT_POINT critical_norm(player_type *attacker_ptr, WEIGHT weight, int plus, HIT_POINT dam, int16_t meichuu, combat_options mode, bool impact)
+HIT_POINT critical_norm(player_type *player_ptr, WEIGHT weight, int plus, HIT_POINT dam, int16_t meichuu, combat_options mode, bool impact)
 {
     /* Extract "blow" power */
-    int i = (weight + (meichuu * 3 + plus * 5) + attacker_ptr->skill_thn);
+    int i = (weight + (meichuu * 3 + plus * 5) + player_ptr->skill_thn);
 
     /* Chance */
-    auto pow = (attacker_ptr->pclass == CLASS_NINJA) ? 4444 : 5000;
+    auto pow = (player_ptr->pclass == CLASS_NINJA) ? 4444 : 5000;
     if (impact)
         pow /= 2;
 
@@ -75,59 +75,14 @@ HIT_POINT critical_norm(player_type *attacker_ptr, WEIGHT weight, int plus, HIT_
 }
 
 /*!
- * @brief モンスター打撃のクリティカルランクを返す /
- * Critical blow. All hits that do 95% of total possible damage,
- * @param dice モンスター打撃のダイス数
- * @param sides モンスター打撃の最大ダイス目
- * @param dam プレイヤーに与えたダメージ
- * @details
- * and which also do at least 20 damage, or, sometimes, N damage.
- * This is used only to determine "cuts" and "stuns".
- */
-int calc_monster_critical(DICE_NUMBER dice, DICE_SID sides, HIT_POINT dam)
-{
-    int total = dice * sides;
-    if (dam < total * 19 / 20)
-        return 0;
-
-    if ((dam < 20) && (randint0(100) >= dam))
-        return 0;
-
-    int max = 0;
-    if ((dam >= total) && (dam >= 40))
-        max++;
-
-    if (dam >= 20)
-        while (randint0(100) < 2)
-            max++;
-
-    if (dam > 45)
-        return (6 + max);
-
-    if (dam > 33)
-        return (5 + max);
-
-    if (dam > 25)
-        return (4 + max);
-
-    if (dam > 18)
-        return (3 + max);
-
-    if (dam > 11)
-        return (2 + max);
-
-    return (1 + max);
-}
-
-/*!
  * @brief 忍者ヒットで急所を突く
- * @param attacker_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param pa_ptr 直接攻撃構造体への参照ポインタ
  * @details 闇討ち＆追討ちを実施した後に致命傷チェックを行う
  * チェックを通ったら、ユニークならば2倍ダメージ、それ以外は一撃死
  * @todo 3つの処理をdetailsに書くよりは関数自体を分割すべきだが、一旦後回しにする。他の項目と一緒に処理する
  */
-static void ninja_critical(player_type *attacker_ptr, player_attack_type *pa_ptr)
+static void ninja_critical(player_type *player_ptr, player_attack_type *pa_ptr)
 {
     monster_race *r_ptr = &r_info[pa_ptr->m_ptr->r_idx];
     int maxhp = pa_ptr->m_ptr->maxhp;
@@ -140,7 +95,7 @@ static void ninja_critical(player_type *attacker_ptr, player_attack_type *pa_ptr
 
     bool is_weaken = pa_ptr->m_ptr->hp < maxhp / 2;
     bool is_unique = ((r_ptr->flags1 & RF1_UNIQUE) != 0) || ((r_ptr->flags7 & RF7_UNIQUE2) != 0);
-    bool is_critical = (is_weaken && one_in_((attacker_ptr->num_blow[0] + attacker_ptr->num_blow[1] + 1) * 10))
+    bool is_critical = (is_weaken && one_in_((player_ptr->num_blow[0] + player_ptr->num_blow[1] + 1) * 10))
         || ((one_in_(666) || ((pa_ptr->backstab || pa_ptr->surprise_attack) && one_in_(11))) && !is_unique);
     if (!is_critical)
         return;
@@ -157,12 +112,12 @@ static void ninja_critical(player_type *attacker_ptr, player_attack_type *pa_ptr
 
 /*!
  * @brief 急所を突く
- * @param attacker_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param pa_ptr 直接攻撃構造体への参照ポインタ
  */
-void critical_attack(player_type *attacker_ptr, player_attack_type *pa_ptr)
+void critical_attack(player_type *player_ptr, player_attack_type *pa_ptr)
 {
-    object_type *o_ptr = &attacker_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand];
+    object_type *o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand];
     monster_race *r_ptr = &r_info[pa_ptr->m_ptr->r_idx];
     if (((o_ptr->tval == TV_SWORD) && (o_ptr->sval == SV_POISON_NEEDLE)) || (pa_ptr->mode == HISSATSU_KYUSHO)) {
         if ((randint1(randint1(r_ptr->level / 7) + 5) == 1) && !(r_ptr->flags1 & RF1_UNIQUE) && !(r_ptr->flags7 & RF7_UNIQUE2)) {
@@ -174,8 +129,8 @@ void critical_attack(player_type *attacker_ptr, player_attack_type *pa_ptr)
         return;
     }
 
-    bool is_ninja_hit = (attacker_ptr->pclass == CLASS_NINJA) && has_melee_weapon(attacker_ptr, INVEN_MAIN_HAND + pa_ptr->hand)
-        && !attacker_ptr->is_icky_wield[pa_ptr->hand] && ((attacker_ptr->cur_lite <= 0) || one_in_(7));
+    bool is_ninja_hit = (player_ptr->pclass == CLASS_NINJA) && has_melee_weapon(player_ptr, INVEN_MAIN_HAND + pa_ptr->hand)
+        && !player_ptr->is_icky_wield[pa_ptr->hand] && ((player_ptr->cur_lite <= 0) || one_in_(7));
     if (is_ninja_hit)
-        ninja_critical(attacker_ptr, pa_ptr);
+        ninja_critical(player_ptr, pa_ptr);
 }

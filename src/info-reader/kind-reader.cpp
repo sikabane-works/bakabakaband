@@ -19,7 +19,7 @@
  */
 static bool grab_one_kind_flag(object_kind *k_ptr, std::string_view what)
 {
-    if (info_grab_one_flag(k_ptr->flags, k_info_flags, what))
+    if (TrFlags::grab_one_flag(k_ptr->flags, k_info_flags, what))
         return true;
 
     if (EnumClassFlagGroup<TRG>::grab_one_flag(k_ptr->gen_flags, k_info_gen_flags, what))
@@ -36,9 +36,9 @@ static bool grab_one_kind_flag(object_kind *k_ptr, std::string_view what)
  * @param head ヘッダ構造体
  * @return エラーコード
  */
-errr parse_k_info(std::string_view buf, angband_header *head)
+errr parse_k_info(std::string_view buf, angband_header *)
 {
-    static object_kind *k_ptr = NULL;
+    static object_kind *k_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 10);
 
     if (tokens[0] == "N") {
@@ -49,11 +49,13 @@ errr parse_k_info(std::string_view buf, angband_header *head)
         auto i = std::stoi(tokens[1]);
         if (i < error_idx)
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        if (i >= head->info_num)
-            return PARSE_ERROR_OUT_OF_BOUNDS;
+        if (i >= static_cast<int>(k_info.size())) {
+            k_info.resize(i + 1);
+        }
 
         error_idx = i;
         k_ptr = &k_info[i];
+        k_ptr->idx = static_cast<KIND_OBJECT_IDX>(i);
 #ifdef JP
         k_ptr->name = tokens[2];
 #endif

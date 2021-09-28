@@ -21,14 +21,16 @@
 #include "io/files-util.h"
 #include "io/interpret-pref-file.h"
 #include "io/pref-file-expressor.h"
-#include "player/player-class.h"
-#include "player/player-race.h"
+#include "player-info/class-info.h"
+#include "player-info/race-info.h"
 #include "realm/realm-names-table.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "util/buffer-shaper.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+
+#include <string>
 
 //!< @todo コールバック関数に変更するので、いずれ消す.
 #define PREF_TYPE_NORMAL 0
@@ -46,13 +48,13 @@ static int auto_dump_line_num;
 /*!
  * @brief process_pref_fileのサブルーチン /
  * Open the "user pref file" and parse it.
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param name 読み込むファイル名
  * @param preftype prefファイルのタイプ
  * @return エラーコード
  * @todo 関数名を変更する
  */
-static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int preftype)
+static errr process_pref_file_aux(player_type *player_ptr, concptr name, int preftype)
 {
     FILE *fp;
     fp = angband_fopen(name, "r");
@@ -62,7 +64,9 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
     int line = -1;
     errr err = 0;
     bool bypass = false;
-    while (angband_fgets(fp, file_read__buf, FILE_READ_BUFF_SIZE) == 0) {
+    std::vector<char> file_read__buf(FILE_READ_BUFF_SIZE);
+    std::string error_line;
+    while (angband_fgets(fp, file_read__buf.data(), file_read__buf.size()) == 0) {
         line++;
         if (!file_read__buf[0])
             continue;
@@ -75,14 +79,14 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
 
         if (file_read__buf[0] == '#')
             continue;
-        strcpy(file_read__swp, file_read__buf);
+        error_line = file_read__buf.data();
 
         /* Process "?:<expr>" */
         if ((file_read__buf[0] == '?') && (file_read__buf[1] == ':')) {
             char f;
             char *s;
-            s = file_read__buf + 2;
-            concptr v = process_pref_file_expr(creature_ptr, &s, &f);
+            s = file_read__buf.data() + 2;
+            concptr v = process_pref_file_expr(player_ptr, &s, &f);
             bypass = streq(v, "0");
             continue;
         }
@@ -99,13 +103,13 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
             depth_count++;
             switch (preftype) {
             case PREF_TYPE_AUTOPICK:
-                (void)process_autopick_file(creature_ptr, file_read__buf + 2);
+                (void)process_autopick_file(player_ptr, file_read__buf.data() + 2);
                 break;
             case PREF_TYPE_HISTPREF:
-                (void)process_histpref_file(creature_ptr, file_read__buf + 2);
+                (void)process_histpref_file(player_ptr, file_read__buf.data() + 2);
                 break;
             default:
-                (void)process_pref_file(creature_ptr, file_read__buf + 2);
+                (void)process_pref_file(player_ptr, file_read__buf.data() + 2);
                 break;
             }
 
@@ -113,12 +117,12 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
             continue;
         }
 
-        err = interpret_pref_file(creature_ptr, file_read__buf);
+        err = interpret_pref_file(player_ptr, file_read__buf.data());
         if (err != 0) {
             if (preftype != PREF_TYPE_AUTOPICK)
                 break;
 
-            process_autopick_file_command(file_read__buf);
+            process_autopick_file_command(file_read__buf.data());
             err = 0;
         }
     }
@@ -127,8 +131,8 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
         /* Print error message */
         /* ToDo: Add better error messages */
         msg_format(_("ファイル'%s'の%d行でエラー番号%dのエラー。", "Error %d in line %d of file '%s'."), _(name, err), line, _(err, name));
-        msg_format(_("('%s'を解析中)", "Parsing '%s'"), file_read__swp);
-        msg_print(NULL);
+        msg_format(_("('%s'を解析中)", "Parsing '%s'"), error_line.c_str());
+        msg_print(nullptr);
     }
 
     angband_fclose(fp);
@@ -138,7 +142,7 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
 /*!
  * @brief pref設定ファイルを読み込み設定を反映させる /
  * Process the "user pref file" with the given name
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param name 読み込むファイル名
  * @param only_user_dir trueを指定するとANGBAND_DIR_USERからの読み込みのみ行う
  * @return エラーコード
@@ -149,20 +153,20 @@ static errr process_pref_file_aux(player_type *creature_ptr, concptr name, int p
  * allow conditional evaluation and filename inclusion.
  * </pre>
  */
-errr process_pref_file(player_type *creature_ptr, concptr name, bool only_user_dir)
+errr process_pref_file(player_type *player_ptr, concptr name, bool only_user_dir)
 {
     char buf[1024];
     errr err1 = 0;
     if (!only_user_dir) {
         path_build(buf, sizeof(buf), ANGBAND_DIR_PREF, name);
 
-        err1 = process_pref_file_aux(creature_ptr, buf, PREF_TYPE_NORMAL);
+        err1 = process_pref_file_aux(player_ptr, buf, PREF_TYPE_NORMAL);
         if (err1 > 0)
             return err1;
     }
 
     path_build(buf, sizeof(buf), ANGBAND_DIR_USER, name);
-    errr err2 = process_pref_file_aux(creature_ptr, buf, PREF_TYPE_NORMAL);
+    errr err2 = process_pref_file_aux(player_ptr, buf, PREF_TYPE_NORMAL);
     if (err2 < 0 && !err1)
         return -2;
 
@@ -171,36 +175,36 @@ errr process_pref_file(player_type *creature_ptr, concptr name, bool only_user_d
 
 /*!
  * @brief 自動拾いファイルを読み込む /
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param name ファイル名
  * @details
  */
-errr process_autopick_file(player_type *creature_ptr, concptr name)
+errr process_autopick_file(player_type *player_ptr, concptr name)
 {
     char buf[1024];
     path_build(buf, sizeof(buf), ANGBAND_DIR_USER, name);
-    errr err = process_pref_file_aux(creature_ptr, buf, PREF_TYPE_AUTOPICK);
+    errr err = process_pref_file_aux(player_ptr, buf, PREF_TYPE_AUTOPICK);
     return err;
 }
 
 /*!
  * @brief プレイヤーの生い立ちファイルを読み込む /
  * Process file for player's history editor.
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param name ファイル名
  * @return エラーコード
  * @details
  */
-errr process_histpref_file(player_type *creature_ptr, concptr name)
+errr process_histpref_file(player_type *player_ptr, concptr name)
 {
-    bool old_character_xtra = current_world_ptr->character_xtra;
+    bool old_character_xtra = w_ptr->character_xtra;
     char buf[1024];
     path_build(buf, sizeof(buf), ANGBAND_DIR_USER, name);
 
     /* Hack -- prevent modification birth options in this file */
-    current_world_ptr->character_xtra = true;
-    errr err = process_pref_file_aux(creature_ptr, buf, PREF_TYPE_HISTPREF);
-    current_world_ptr->character_xtra = old_character_xtra;
+    w_ptr->character_xtra = true;
+    errr err = process_pref_file_aux(player_ptr, buf, PREF_TYPE_HISTPREF);
+    w_ptr->character_xtra = old_character_xtra;
     return err;
 }
 
@@ -240,7 +244,7 @@ bool open_auto_dump(FILE **fpp, concptr buf, concptr mark)
     *fpp = angband_fopen(buf, "a");
     if (!fpp) {
         msg_format(_("%s を開くことができませんでした。", "Failed to open %s."), buf);
-        msg_print(NULL);
+        msg_print(nullptr);
         return false;
     }
 
@@ -269,7 +273,7 @@ void close_auto_dump(FILE **fpp, concptr auto_dump_mark)
 
 /*!
  * @brief 全ユーザプロファイルをロードする / Load some "user pref files"
- * @paaram player_ptr プレーヤーへの参照ポインタ
+ * @paaram player_ptr プレイヤーへの参照ポインタ
  * @note
  * Modified by Arcum Dagsson to support
  * separate macro files for different realms.
@@ -303,7 +307,7 @@ void load_all_pref_files(player_type *player_ptr)
 /*!
  * @brief 生い立ちメッセージをファイルからロードする。
  */
-bool read_histpref(player_type *creature_ptr)
+bool read_histpref(player_type *player_ptr)
 {
     char buf[80];
     errr err;
@@ -318,28 +322,28 @@ bool read_histpref(player_type *creature_ptr)
     histbuf[0] = '\0';
     histpref_buf = histbuf;
 
-    sprintf(buf, _("histedit-%s.prf", "histpref-%s.prf"), creature_ptr->base_name);
-    err = process_histpref_file(creature_ptr, buf);
+    sprintf(buf, _("histedit-%s.prf", "histpref-%s.prf"), player_ptr->base_name);
+    err = process_histpref_file(player_ptr, buf);
 
     if (0 > err) {
         strcpy(buf, _("histedit.prf", "histpref.prf"));
-        err = process_histpref_file(creature_ptr, buf);
+        err = process_histpref_file(player_ptr, buf);
     }
 
     if (err) {
         msg_print(_("生い立ち設定ファイルの読み込みに失敗しました。", "Failed to load background history preference."));
-        msg_print(NULL);
-        histpref_buf = NULL;
+        msg_print(nullptr);
+        histpref_buf = nullptr;
         return false;
     } else if (!histpref_buf[0]) {
         msg_print(_("有効な生い立ち設定はこのファイルにありません。", "There does not exist valid background history preference."));
-        msg_print(NULL);
-        histpref_buf = NULL;
+        msg_print(nullptr);
+        histpref_buf = nullptr;
         return false;
     }
 
     for (i = 0; i < 4; i++)
-        creature_ptr->history[i][0] = '\0';
+        player_ptr->history[i][0] = '\0';
 
     /* loop */
     for (s = histpref_buf; *s == ' '; s++)
@@ -355,21 +359,21 @@ bool read_histpref(player_type *creature_ptr)
         if (t[0] == 0)
             break;
         else {
-            strcpy(creature_ptr->history[i], t);
+            strcpy(player_ptr->history[i], t);
             t += strlen(t) + 1;
         }
     }
 
     for (i = 0; i < 4; i++) {
         /* loop */
-        for (j = 0; creature_ptr->history[i][j]; j++)
+        for (j = 0; player_ptr->history[i][j]; j++)
             ;
 
         for (; j < 59; j++)
-            creature_ptr->history[i][j] = ' ';
-        creature_ptr->history[i][59] = '\0';
+            player_ptr->history[i][j] = ' ';
+        player_ptr->history[i][59] = '\0';
     }
 
-    histpref_buf = NULL;
+    histpref_buf = nullptr;
     return true;
 }

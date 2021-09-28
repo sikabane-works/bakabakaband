@@ -20,7 +20,7 @@
 
 /*!
  * @brief モンスター情報を配列内移動する / Move an object from index i1 to index i2 in the object list
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param i1 配列移動元添字
  * @param i2 配列移動先添字
  */
@@ -68,8 +68,8 @@ static void compact_monsters_aux(player_type *player_ptr, MONSTER_IDX i1, MONSTE
         }
     }
 
-    (void)COPY(&floor_ptr->m_list[i2], &floor_ptr->m_list[i1], monster_type);
-    (void)WIPE(&floor_ptr->m_list[i1], monster_type);
+    floor_ptr->m_list[i2] = floor_ptr->m_list[i1];
+    floor_ptr->m_list[i1] = {};
 
     for (int i = 0; i < MAX_MTIMED; i++) {
         int mproc_idx = get_mproc_idx(floor_ptr, i1, i);
@@ -80,7 +80,7 @@ static void compact_monsters_aux(player_type *player_ptr, MONSTER_IDX i1, MONSTE
 
 /*!
  * @brief モンスター情報配列を圧縮する / Compact and Reorder the monster list
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param size 圧縮後のモンスター件数目標
  * @details
  * This function can be very dangerous, use with caution!

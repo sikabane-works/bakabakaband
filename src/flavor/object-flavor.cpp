@@ -10,7 +10,6 @@
  */
 
 #include "flavor/object-flavor.h"
-#include "cmd-item/cmd-smith.h"
 #include "combat/shoot.h"
 #include "flavor/flag-inscriptions-table.h"
 #include "flavor/flavor-util.h"
@@ -27,14 +26,12 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trg-types.h"
-#include "object-hook/hook-checker.h"
-#include "object-hook/hook-enchant.h"
 #include "object-hook/hook-quest.h"
 #include "object/object-flags.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
-#include "player/player-class.h"
+#include "player-info/class-info.h"
 #include "player/player-status.h"
 #include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-lite-types.h"
@@ -47,6 +44,8 @@
 #else
 #include "locale/english.h"
 #endif
+
+#include <utility>
 
 /*!
  * @brief 最初から簡易な名称が明らかになるベースアイテムの判定。 /  Certain items, if aware, are known instantly
@@ -192,33 +191,25 @@ void get_table_sindarin(char *out_string)
  */
 static void shuffle_flavors(tval_type tval)
 {
-    KIND_OBJECT_IDX *k_idx_list;
-    KIND_OBJECT_IDX k_idx_list_num = 0;
-    C_MAKE(k_idx_list, max_k_idx, KIND_OBJECT_IDX);
-    for (KIND_OBJECT_IDX i = 0; i < max_k_idx; i++) {
-        object_kind *k_ptr = &k_info[i];
-        if (k_ptr->tval != tval)
+    std::vector<KIND_OBJECT_IDX> k_idx_list;
+    for (const auto &k_ref : k_info) {
+        if (k_ref.tval != tval)
             continue;
 
-        if (!k_ptr->flavor)
+        if (!k_ref.flavor)
             continue;
 
-        if (has_flag(k_ptr->flags, TR_FIXED_FLAVOR))
+        if (k_ref.flags.has(TR_FIXED_FLAVOR))
             continue;
 
-        k_idx_list[k_idx_list_num] = i;
-        k_idx_list_num++;
+        k_idx_list.push_back(k_ref.idx);
     }
 
-    for (KIND_OBJECT_IDX i = 0; i < k_idx_list_num; i++) {
-        object_kind *k1_ptr = &k_info[k_idx_list[i]];
-        object_kind *k2_ptr = &k_info[k_idx_list[randint0(k_idx_list_num)]];
-        int16_t tmp = k1_ptr->flavor;
-        k1_ptr->flavor = k2_ptr->flavor;
-        k2_ptr->flavor = tmp;
+    for (auto k_idx : k_idx_list) {
+        object_kind *k1_ptr = &k_info[k_idx];
+        object_kind *k2_ptr = &k_info[k_idx_list[randint0(k_idx_list.size())]];
+        std::swap(k1_ptr->flavor, k2_ptr->flavor);
     }
-
-    C_KILL(k_idx_list, max_k_idx, int16_t);
 }
 
 /*!
@@ -229,13 +220,12 @@ void flavor_init(void)
 {
     uint32_t state_backup[4];
     Rand_state_backup(state_backup);
-    Rand_state_set(current_world_ptr->seed_flavor);
-    for (KIND_OBJECT_IDX i = 0; i < max_k_idx; i++) {
-        object_kind *k_ptr = &k_info[i];
-        if (k_ptr->flavor_name.empty())
+    Rand_state_set(w_ptr->seed_flavor);
+    for (auto &k_ref : k_info) {
+        if (k_ref.flavor_name.empty())
             continue;
 
-        k_ptr->flavor = i;
+        k_ref.flavor = k_ref.idx;
     }
 
     shuffle_flavors(TV_RING);
@@ -247,15 +237,14 @@ void flavor_init(void)
     shuffle_flavors(TV_POTION);
     shuffle_flavors(TV_SCROLL);
     Rand_state_restore(state_backup);
-    for (KIND_OBJECT_IDX i = 1; i < max_k_idx; i++) {
-        object_kind *k_ptr = &k_info[i];
-        if (k_ptr->name.empty())
+    for (auto &k_ref : k_info) {
+        if (k_ref.idx == 0 || k_ref.name.empty())
             continue;
 
-        if (!k_ptr->flavor)
-            k_ptr->aware = true;
+        if (!k_ref.flavor)
+            k_ref.aware = true;
 
-        k_ptr->easy_know = object_easy_know(i);
+        k_ref.easy_know = object_easy_know(k_ref.idx);
     }
 }
 

@@ -41,13 +41,13 @@ inline static bool is_unknown_monster(monster_race *ap_r_ptr)
 
 void clear_scene_target_monster()
 {
-    scene_target_monster.ap_r_ptr = NULL;
+    scene_target_monster.ap_r_ptr = nullptr;
 }
 
 static GAME_TURN get_game_turn()
 {
-    GAME_TURN ret = current_world_ptr->game_turn;
-    if (ret == current_world_ptr->game_turn_limit) {
+    GAME_TURN ret = w_ptr->game_turn;
+    if (ret == w_ptr->game_turn_limit) {
         ret = 0;
     }
     return ret;
@@ -60,7 +60,7 @@ static GAME_TURN get_game_turn()
  */
 void set_temp_mute_scene_monster(int sec)
 {
-    scene_target_monster.mute_until = (uint32_t)time(NULL) + sec;
+    scene_target_monster.mute_until = (uint32_t)time(nullptr) + sec;
 }
 
 /*!
@@ -70,13 +70,13 @@ void set_temp_mute_scene_monster(int sec)
  */
 inline static bool can_mute_scene_monster()
 {
-    return (scene_target_monster.mute_until > time(NULL));
+    return (scene_target_monster.mute_until > time(nullptr));
 }
 
 /*!
  * @brief モンスターの優先判定
  * @details ユニーク、あやしい影、未知のモンスター、レベルの高さ、モンスターIDで優先を付ける。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param m_idx1 モンスターA（新参）
  * @param m_idx2 モンスターB（現対象）
  * @retval true モンスターAが優先
@@ -116,7 +116,7 @@ static bool is_high_rate(player_type *player_ptr, MONSTER_IDX m_idx1, MONSTER_ID
  * @details 現在の対象と対象候補が同一モンスターの場合、最後に見たゲームターン情報を更新する。
  * 対象候補が現在の対象よりも上位であれば対象を入れ替える。
  * ユニーク、あやしい影、未知のモンスター、レベルの高さ、モンスターIDで優先を付ける。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param m_idx BGM対象候補のモンスター
  */
 static void update_target_monster(player_type *player_ptr, MONSTER_IDX m_idx)
@@ -221,7 +221,7 @@ int get_scene_monster_count()
  * @details リストのfrom_indexの位置から、get_scene_monster_count()で得られる個数分設定する。
  * 視界内モンスターリスト先頭のモンスターを記憶し、以前のモンスターと比較してより上位のモンスターをBGM選曲の対象とする。
  * 記憶したモンスターが視界内に存在しない場合、一定のゲームターン経過で忘れる。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param monster_list 視界内モンスターリスト
  * @param list BGM選曲リスト
  * @param from_index リストの更新開始位置
