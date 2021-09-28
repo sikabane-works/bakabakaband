@@ -29514,6 +29514,23 @@ F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:彼は森の平和を守るペンギンだ。例え魚臭くとも彼を愛さずにはいられない。
 
+N:1557:『ハガー市長』(淫夢)
+E:Mayor Haggar (INM)
+G:p:v
+I:120:16d100:22:90:11
+W:30:4:0:1200:0:0
+B:PUNCH:HURT:7d6
+B:PUNCH:HURT:7d6
+B:KICK:HURT:9d8
+B:KICK:HURT:9d8
+F:UNIQUE | MALE | HUMAN | HOMO_SEXUAL
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_STUN
+D:是非もなし。威風堂々とした体格の下北沢の市長だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
