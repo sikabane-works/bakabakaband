@@ -10,6 +10,7 @@
 #include "object/object-kind.h"
 #include "object/object-flags.h"
 #include "perception/object-perception.h"
+#include "player-base/player-race.h"
 #include "player-info/mimic-info-table.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-other-types.h"
@@ -31,7 +32,7 @@ bool item_tester_hook_quaff(player_type *player_ptr, const object_type *o_ptr)
     if (o_ptr->tval == TV_POTION)
         return true;
 
-    if (player_race_food(player_ptr) == PlayerRaceFood::OIL && o_ptr->tval == TV_FLASK && o_ptr->sval == SV_FLASK_OIL)
+    if (PlayerRace(player_ptr).food() == PlayerRaceFood::OIL && o_ptr->tval == TV_FLASK && o_ptr->sval == SV_FLASK_OIL)
         return true;
 
     return false;
