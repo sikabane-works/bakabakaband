@@ -55,7 +55,7 @@ BIT_FLAGS common_cause_flags(player_type *player_ptr, tr_type tr_flag)
 {
     BIT_FLAGS result = check_equipment_flags(player_ptr, tr_flag);
 
-    if (player_race_has_flag(player_ptr, tr_flag)) {
+    if (PlayerRace(player_ptr).tr_flags().has(tr_flag)) {
         set_bits(result, FLAG_CAUSE_RACE);
     }
 
@@ -1512,9 +1512,11 @@ BIT_FLAGS has_resist_time(player_type *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_RES_TIME);
 
-    //! @todo 究極の耐性と無双の型で耐性を得られるようにすべき？
+    if (player_ptr->special_defense & KATA_MUSOU) {
+        result |= FLAG_CAUSE_BATTLE_FORM;
+    }
 
-    if (player_ptr->tim_res_time) {
+    if (player_ptr->ult_res || player_ptr->tim_res_time) {
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
@@ -1525,7 +1527,14 @@ BIT_FLAGS has_resist_water(player_type *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_RES_WATER);
 
-    //! @todo 究極の耐性と無双の型で耐性を得られるようにすべき？
+    if (player_ptr->special_defense & KATA_MUSOU) {
+        result |= FLAG_CAUSE_BATTLE_FORM;
+    }
+
+    if (player_ptr->ult_res) {
+        result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
+    }
+
 
     return result;
 }
@@ -1539,7 +1548,13 @@ BIT_FLAGS has_resist_curse(player_type *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_RES_CURSE);
 
-    //! @todo 究極の耐性と無双の型で耐性を得られるようにすべき？
+    if (player_ptr->special_defense & KATA_MUSOU) {
+        result |= FLAG_CAUSE_BATTLE_FORM;
+    }
+
+    if (player_ptr->ult_res) {
+        result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
+    }
 
     return result;
 }
@@ -1702,7 +1717,7 @@ BIT_FLAGS has_lite(player_type *player_ptr)
         result |= FLAG_CAUSE_PERSONALITY;
     }
 
-    if (player_race_has_flag(player_ptr, TR_LITE_1))
+    if (PlayerRace(player_ptr).tr_flags().has(TR_LITE_1))
         result |= FLAG_CAUSE_RACE;
 
     if (player_ptr->ult_res) {
