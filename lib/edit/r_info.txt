@@ -29540,7 +29540,20 @@ B:TOUCH:HURT:1d1
 F:FORCE_MAXHP
 F:UNIQUE | WEIRD_MIND | STUPID | WILD_TOWN |
 F:OPEN_DOOR | BASH_DOOR | RES_TELE | JOKE
-D:この世界の彼には、彼そのものであった肩書きも、彼を守っていた一切も存在しない。
+D:この世界には、彼そのものであった肩書きも、彼を守っていた一切も存在しない。
+
+N:1559:ドワーフの守護者
+E:Dwarven defender
+G:h:u
+I:110:25d11:20:80:40
+W:28:1:0:60:0:0
+B:SLASH:HURT:5d5
+B:SLASH:SUPERHURT:6d5
+F:MALE | HAS_LITE_2 | DWARF |
+F:DROP_1D2 | 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:ドワーフの誇りと血統を守り抜く堅牢なる戦士だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
