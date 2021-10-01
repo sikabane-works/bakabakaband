@@ -2,6 +2,7 @@
 #include "player-info/race-types.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "term/z-util.h"
 #include <ctime>
 
 world_type world;
@@ -97,4 +98,12 @@ bool is_retired_class(player_class_type c)
     if (c == MAX_CLASS)
         return false;
     return w_ptr->sf_retired.has(c);
+}
+
+/*!
+ * @brief 時空崩壊度自然進行度計算
+ */
+int32_t calc_world_collapse_plus(world_type *w_ptr)
+{
+    return std::min(1, mysqrt(w_ptr->game_turn / 2000));
 }
