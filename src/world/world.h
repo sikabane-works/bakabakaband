@@ -61,7 +61,7 @@ struct world_type {
 
     OBJECT_IDX max_o_idx{}; /*!< Maximum number of objects in the level */
     MONSTER_IDX max_m_idx{}; /*!< Maximum number of monsters in the level */
-    uint32_t collapse_degree{}; /*!< 時空崩壊度 */
+    int32_t collapse_degree{}; /*!< 時空崩壊度 */
 };
 
 extern world_type *w_ptr;
@@ -74,3 +74,4 @@ void add_winner_class(player_class_type c);
 void add_retired_class(player_class_type c);
 bool is_winner_class(player_class_type c);
 bool is_retired_class(player_class_type c);
+int32_t calc_world_collapse_plus(world_type *w_ptr);

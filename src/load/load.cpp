@@ -99,7 +99,7 @@ static void rd_world_info()
         return;
     }
 
-    rd_u32b(&w_ptr->collapse_degree);
+    rd_s32b(&w_ptr->collapse_degree);
 }
 
 /*!
