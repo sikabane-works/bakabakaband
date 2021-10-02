@@ -622,14 +622,7 @@ void process_command(player_type *player_ptr)
     default: {
         if (flush_failure)
             flush();
-        if (one_in_(2)) {
-            char error_m[1024];
-            sound(SOUND_ILLEGAL);
-            if (!get_rnd_line(_("error_j.txt", "error.txt"), 0, error_m))
-                msg_print(error_m);
-        } else {
-            prt(_(" '?' でヘルプが表示されます。", "Type '?' for help."), 0, 0);
-        }
+        prt(_("存在しないコマンドです。'?' でヘルプが表示されます。", "Command not found. Type '?' for help."), 0, 0);
 
         break;
     }
