@@ -9,6 +9,8 @@
 #include "main-win/main-win-define.h"
 #include "system/angband-version.h"
 
+#include <string>
+
 /*!
  * @brief (Windows固有)馬鹿馬鹿蛮怒が起動済かどうかのチェック
  * @details
