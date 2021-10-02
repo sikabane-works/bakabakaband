@@ -8,10 +8,11 @@ typedef int ALLIANCE_ID;
 class player_type;
 
 enum class alliance_types {
-    AMBER = 0,          //!< アンバー
-    COURT_OF_CHAOS = 1, //!< 混沌の宮廷
-    VALINOR = 2,        //!< ヴァリノール
-    UTUMNO = 3,         //!< ウトゥムノ
+    NONE = 0, //!< 無所属 
+    AMBER = 1, //!< アンバー
+    COURT_OF_CHAOS = 2, //!< 混沌の宮廷
+    VALINOR = 3,        //!< ヴァリノール
+    UTUMNO = 4,         //!< ウトゥムノ
     MAX,
 };
 
@@ -28,18 +29,23 @@ public:
     int id; //!< ID
     std::string tag; //!< タグ
     std::string name; //!< 陣営名
-    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    Alliance(int id, std::string tag, std::string name);
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     virtual int calcImplessionPoint(player_type *creature_ptr) const = 0;
     virtual ~Alliance() = default;
 };
 
+class AllianceNone : public Alliance {
+public:
+    using Alliance::Alliance;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint([[maybe_unused]] player_type *creature_ptr) const override;
+    virtual ~AllianceNone() = default;
+};
+
 class AllianceAmber : public Alliance {
 public:
-    const int id = 1; //!< ID
-    const std::string tag = "AMBER"; //!< タグ
-    const std::string name = _("アンバー", "Amber"); //!< 陣営名
-    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    using Alliance::Alliance;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceAmber() = default;
@@ -47,10 +53,7 @@ public:
 
 class AllianceCourtOfChaos : public Alliance {
 public:
-    const int id = 2; //!< ID
-    const std::string tag = "COCHAOS"; //!< タグ
-    const std::string name = _("混沌の宮廷", "Court of Chaos"); //!< 陣営名
-    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    using Alliance::Alliance;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceCourtOfChaos() = default;
@@ -58,10 +61,7 @@ public:
 
 class AllianceValinor : public Alliance {
 public:
-    int id = 3; //!< ID
-    const std::string tag = "VALINOR"; //!< タグ
-    const std::string name = _("ヴァリノール", "Valinor"); //!< 陣営名
-    const Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    using Alliance::Alliance;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceValinor() = default;
@@ -69,10 +69,7 @@ public:
 
 class AllianceUtumno : public Alliance {
 public:
-    int id = 4; //!< ID
-    std::string tag = "UTUMNO"; //!< タグ
-    std::string name = _("ウトゥムノ", "Utumno"); //!< 陣営名
-    Alliance *suzerain = nullptr; //!< 宗主アライアンス
+    using Alliance::Alliance;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceUtumno() = default;

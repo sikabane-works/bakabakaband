@@ -555,12 +555,6 @@ void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)
         hooked_roff("belonging to ");
         hooked_roff(alliance_list[lore_ptr->r_ptr->alliance_idx]->name.c_str());
 #endif
-        
-        if (lore_ptr->flags1 & RF1_UNIQUE) {
-            hooked_roff("Killing this");
-        } else {
-            hooked_roff("A kill of this");
-        }
     }
 
     display_monster_alignment(lore_ptr);
