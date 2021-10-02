@@ -112,4 +112,5 @@ struct monster_race {
     EnumClassFlagGroup<RF_ABILITY> r_ability_flags; //!< 見た能力フラグ(魔法/ブレス) / Observed racial ability flags
     PLAYER_LEVEL defeat_level{}; //!< 倒したレベル(ユニーク用) / player level at which defeated this race
     REAL_TIME defeat_time{}; //!< 倒した時間(ユニーク用) / time at which defeated this race
+    int alliance_idx;
 };

@@ -4,6 +4,7 @@
  * @author Hourier
  */
 
+#include "alliance/alliance.h"
 #include "view/display-lore.h"
 #include "game-option/cheat-options.h"
 #include "game-option/text-display-options.h"
@@ -545,6 +546,16 @@ void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)
         hooked_roff("A kill of this");
     }
 #endif
+
+    if (lore_ptr->r_ptr->alliance_idx) {
+#ifdef JP
+        hooked_roff(alliance_list[lore_ptr->r_ptr->alliance_idx]->name.c_str());
+        hooked_roff("に所属している");
+#else
+        hooked_roff("belonging to ");
+        hooked_roff(alliance_list[lore_ptr->r_ptr->alliance_idx]->name.c_str());
+#endif
+    }
 
     display_monster_alignment(lore_ptr);
     display_monster_kind(lore_ptr);
