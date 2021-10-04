@@ -38,6 +38,8 @@
 #include "object-hook/hook-armor.h"
 #include "object/item-tester-hooker.h"
 #include "pet/pet-fall-off.h"
+#include "player-base/player-class.h"
+#include "player-info/samurai-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/player-damage.h"
 #include "player/player-skill.h"
@@ -436,10 +438,10 @@ static bool process_monster_blows(player_type *player_ptr, monap_type *monap_ptr
 
             // 撃退失敗時は落馬処理、変わり身のテレポート処理を行う。
             check_fall_off_horse(player_ptr, monap_ptr);
-            if (player_ptr->special_defense & NINJA_KAWARIMI) {
-                // 変わり身のテレポートが成功したら攻撃を打ち切り、プレイヤーが離脱した旨を返す。
-                if (kawarimi(player_ptr, false))
-                    return true;
+
+            // 変わり身のテレポートが成功したら攻撃を打ち切り、プレイヤーが離脱した旨を返す。
+            if (kawarimi(player_ptr, false)) {
+                return true;
             }
         } else {
             // 命中しなかった。回避時の処理、思い出処理を行う。
@@ -469,9 +471,7 @@ static void postprocess_monster_blows(player_type *player_ptr, monap_type *monap
         msg_format(_("%^sは恐怖で逃げ出した！", "%^s flees in terror!"), monap_ptr->m_name);
     }
 
-    if (player_ptr->special_defense & KATA_IAI) {
-        set_action(player_ptr, ACTION_NONE);
-    }
+    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStance::IAI });
 }
 
 /*!
@@ -491,16 +491,15 @@ bool make_attack_normal(player_type *player_ptr, MONSTER_IDX m_idx)
     monap_ptr->rlev = ((r_ptr->level >= 1) ? r_ptr->level : 1);
     monster_desc(player_ptr, monap_ptr->m_name, monap_ptr->m_ptr, 0);
     monster_desc(player_ptr, monap_ptr->ddesc, monap_ptr->m_ptr, MD_WRONGDOER_NAME);
-    if (any_bits(player_ptr->special_defense, KATA_IAI)) {
+    if (PlayerClass(player_ptr).samurai_stance_is(SamuraiStance::IAI)) {
         msg_format(_("相手が襲いかかる前に素早く武器を振るった。", "You took sen, drew and cut in one motion before %s moved."), monap_ptr->m_name);
         if (do_cmd_attack(player_ptr, monap_ptr->m_ptr->fy, monap_ptr->m_ptr->fx, HISSATSU_IAI)) {
             return true;
         }
     }
 
-    auto is_kawarimi = any_bits(player_ptr->special_defense, NINJA_KAWARIMI);
     auto can_activate_kawarimi = randint0(55) < (player_ptr->lev * 3 / 5 + 20);
-    if (is_kawarimi && can_activate_kawarimi && kawarimi(player_ptr, true)) {
+    if (can_activate_kawarimi && kawarimi(player_ptr, true)) {
         return true;
     }
 

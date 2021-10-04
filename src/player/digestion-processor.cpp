@@ -10,6 +10,9 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "object-enchant/trc-types.h"
+#include "player-base/player-class.h"
+#include "player-info/monk-data-type.h"
+#include "player-info/samurai-data-type.h"
 #include "player/player-damage.h"
 #include "player/player-status.h"
 #include "player/special-defense-types.h"
@@ -33,7 +36,8 @@ void starve_player(player_type *player_ptr)
         int digestion = SPEED_TO_ENERGY(player_ptr->pspeed);
         if (player_ptr->regenerate)
             digestion += 20;
-        if (player_ptr->special_defense & (KAMAE_MASK | KATA_MASK))
+        PlayerClass pc(player_ptr);
+        if (!pc.monk_stance_is(MonkStance::NONE) || !pc.samurai_stance_is(SamuraiStance::NONE))
             digestion += 20;
         if (player_ptr->cursed.has(TRC::FAST_DIGEST))
             digestion += 30;

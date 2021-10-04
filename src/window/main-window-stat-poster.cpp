@@ -6,6 +6,9 @@
 #include "player-base/player-class.h"
 #include "player-info/bluemage-data-type.h"
 #include "player-info/mane-data-type.h"
+#include "player-info/monk-data-type.h"
+#include "player-info/ninja-data-type.h"
+#include "player-info/samurai-data-type.h"
 #include "player-info/sniper-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/digestion-processor.h"
@@ -23,8 +26,8 @@
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
-#include "window/main-window-row-column.h"
 #include "view/status-bars-table.h"
+#include "window/main-window-row-column.h"
 
 /*!
  * @brief 32ビット変数配列の指定位置のビットフラグを1にする。
@@ -186,36 +189,34 @@ void print_state(player_type *player_ptr)
         strcpy(text, _("釣り", "fish"));
         break;
     }
-    case ACTION_KAMAE: {
-        int i;
-        for (i = 0; i < MAX_KAMAE; i++)
-            if (player_ptr->special_defense & (KAMAE_GENBU << i))
+    case ACTION_MONK_STANCE: {
+        if (auto stance = PlayerClass(player_ptr).get_monk_stance();
+            stance != MonkStance::NONE) {
+            switch (stance) {
+            case MonkStance::GENBU:
+                attr = TERM_GREEN;
                 break;
-        switch (i) {
-        case 0:
-            attr = TERM_GREEN;
-            break;
-        case 1:
-            attr = TERM_WHITE;
-            break;
-        case 2:
-            attr = TERM_L_BLUE;
-            break;
-        case 3:
-            attr = TERM_L_RED;
-            break;
+            case MonkStance::BYAKKO:
+                attr = TERM_WHITE;
+                break;
+            case MonkStance::SEIRYU:
+                attr = TERM_L_BLUE;
+                break;
+            case MonkStance::SUZAKU:
+                attr = TERM_L_RED;
+                break;
+            default:
+                break;
+            }
+            strcpy(text, monk_stances[enum2i(stance) - 1].desc);
         }
-
-        strcpy(text, monk_stances[i].desc);
         break;
     }
-    case ACTION_KATA: {
-        int i;
-        for (i = 0; i < MAX_KATA; i++)
-            if (player_ptr->special_defense & (KATA_IAI << i))
-                break;
-
-        strcpy(text, samurai_stances[i].desc);
+    case ACTION_SAMURAI_STANCE: {
+        if (auto stance = PlayerClass(player_ptr).get_samurai_stance();
+            stance != SamuraiStance::NONE) {
+            strcpy(text, samurai_stances[enum2i(stance) - 1].desc);
+        }
         break;
     }
     case ACTION_SING: {
@@ -513,7 +514,8 @@ void print_status(player_type *player_ptr)
     if (player_ptr->shield)
         ADD_BAR_FLAG(BAR_STONESKIN);
 
-    if (player_ptr->special_defense & NINJA_KAWARIMI)
+    auto ninja_data = PlayerClass(player_ptr).get_specific_data<ninja_data_type>();
+    if (ninja_data && ninja_data->kawarimi)
         ADD_BAR_FLAG(BAR_KAWARIMI);
 
     if (player_ptr->special_defense & DEFENSE_ACID)
@@ -582,7 +584,7 @@ void print_status(player_type *player_ptr)
         ADD_BAR_FLAG(BAR_ATTKACID);
     if (player_ptr->special_attack & ATTACK_POIS)
         ADD_BAR_FLAG(BAR_ATTKPOIS);
-    if (player_ptr->special_defense & NINJA_S_STEALTH)
+    if (ninja_data && ninja_data->s_stealth)
         ADD_BAR_FLAG(BAR_SUPERSTEALTH);
 
     if (player_ptr->tim_sh_fire)

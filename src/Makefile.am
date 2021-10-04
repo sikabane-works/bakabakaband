@@ -679,11 +679,14 @@ hengband_SOURCES = \
 	player-info/magic-eater-data-type.cpp player-info/magic-eater-data-type.h \
 	player-info/mane-data-type.h \
 	player-info/mimic-info-table.cpp player-info/mimic-info-table.h \
+	player-info/monk-data-type.h \
 	player-info/mutation-info.cpp player-info/mutation-info.h \
+	player-info/ninja-data-type.h \
 	player-info/race-ability-info.cpp player-info/race-ability-info.h \
 	player-info/race-info.cpp player-info/race-info.h \
 	player-info/race-types.h \
 	player-info/resistance-info.cpp player-info/resistance-info.h \
+	player-info/samurai-data-type.h \
 	player-info/self-info.cpp player-info/self-info.h \
 	player-info/self-info-util.cpp player-info/self-info-util.h \
         player-info/smith-data-type.h \
@@ -856,7 +859,6 @@ hengband_SOURCES = \
 	sv-definition/sv-junk-types.h sv-definition/sv-other-types.h \
 	\
 	system/alloc-entries.cpp system/alloc-entries.h \
-	system/alloc-entry-definition.h \
 	system/angband.h \
 	system/angband-version.cpp system/angband-version.h \
 	system/artifact-type-definition.cpp system/artifact-type-definition.h \

@@ -11,7 +11,8 @@
 #include <string>
 #include <vector>
 
-typedef struct object_kind {
+enum class RandomArtActType : short;
+struct object_kind {
     KIND_OBJECT_IDX idx{};
 
     std::string name; /*!< ベースアイテム名参照のためのネームバッファオフセット値 / Name (offset) */
@@ -57,10 +58,9 @@ typedef struct object_kind {
     bool aware{}; /*!< ベースアイテムが鑑定済かどうか /  The player is "aware" of the item's effects */
     bool tried{}; /*!< ベースアイテムを未鑑定のまま試したことがあるか /  The player has "tried" one of the items */
 
-    int16_t act_idx{}; /*!< 発動能力のID /  Activative ability index */
+    RandomArtActType act_idx{}; /*!< 発動能力のID /  Activative ability index */
     PERCENTAGE broken_rate; /*!< 発動破損率 */
-
-} object_kind;
+};
 
 extern std::vector<object_kind> k_info;
 

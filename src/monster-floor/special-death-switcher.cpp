@@ -218,7 +218,7 @@ static void on_dead_raal(player_type *player_ptr, monster_death_type *md_ptr)
     else
         get_obj_num_hook = kind_is_book;
 
-    make_object(player_ptr, q_ptr, md_ptr->mo_mode);
+    (void)make_object(player_ptr, q_ptr, md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
