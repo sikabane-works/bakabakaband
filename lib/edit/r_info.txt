@@ -29580,6 +29580,18 @@ F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | QUANTUM
 F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 D:兄弟そろってシンナーでラリッて平然と人を刺す狂人兄弟の片割れだ。
 
+N:1562:しっと団団員
+E:Sitto-Dan combatant
+G:p:w
+I:110:9d8:10:15:10
+W:12:1:0:20:0:0
+B:PUNCH:HURT:3d4
+B:PUNCH:HURT:3d4
+B:PUNCH:HURT:3d4
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE | DROP_NASTY
+F:WILD_WOOD | HAS_LITE_1 | EVIL | MALE | NASTY | CAN_SPEAK
+D:しっとマスク共に嫉妬に駆られて、日々アベックを襲撃する異常者集団だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
