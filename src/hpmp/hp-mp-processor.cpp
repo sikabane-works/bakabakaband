@@ -21,9 +21,12 @@
 #include "object-enchant/trc-types.h"
 #include "object/object-flags.h"
 #include "pet/pet-util.h"
+#include "player-base/player-class.h"
 #include "player-base/player-race.h"
+#include "player-info/monk-data-type.h"
 #include "player-info/race-info.h"
 #include "player-info/race-types.h"
+#include "player-info/samurai-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/digestion-processor.h"
 #include "player/player-damage.h"
@@ -317,7 +320,7 @@ void process_player_hp_mp(player_type *player_ptr)
         if (player_ptr->regenerate) {
             regen_amount = regen_amount * 2;
         }
-        if (player_ptr->special_defense & (KAMAE_MASK | KATA_MASK)) {
+        if (!PlayerClass(player_ptr).monk_stance_is(MonkStance::NONE) || !PlayerClass(player_ptr).samurai_stance_is(SamuraiStance::NONE)) {
             regen_amount /= 2;
         }
         if (player_ptr->cursed.has(TRC::SLOW_REGEN)) {
@@ -330,7 +333,7 @@ void process_player_hp_mp(player_type *player_ptr)
     }
 
     upkeep_factor = calculate_upkeep(player_ptr);
-    if ((player_ptr->action == ACTION_LEARN) || (player_ptr->action == ACTION_HAYAGAKE) || (player_ptr->special_defense & KATA_KOUKIJIN)) {
+    if ((player_ptr->action == ACTION_LEARN) || (player_ptr->action == ACTION_HAYAGAKE) || PlayerClass(player_ptr).samurai_stance_is(SamuraiStance::KOUKIJIN)) {
         upkeep_factor += 100;
     }
 

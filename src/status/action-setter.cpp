@@ -16,6 +16,8 @@
 #include "core/player-update-types.h"
 #include "player-base/player-class.h"
 #include "player-info/bluemage-data-type.h"
+#include "player-info/monk-data-type.h"
+#include "player-info/samurai-data-type.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
 #include "player/special-defense-types.h"
@@ -27,7 +29,7 @@
 /*!
  * @brief プレイヤーの継続行動を設定する。
  * @param typ 継続行動のID\n
- * #ACTION_NONE / #ACTION_SEARCH / #ACTION_REST / #ACTION_LEARN / #ACTION_FISH / #ACTION_KAMAE / #ACTION_KATA / #ACTION_SING / #ACTION_HAYAGAKE / #ACTION_SPELL
+ * #ACTION_NONE / #ACTION_SEARCH / #ACTION_REST / #ACTION_LEARN / #ACTION_FISH / #ACTION_MONK_STANCE / #ACTION_SAMURAI_STANCE / #ACTION_SING / #ACTION_HAYAGAKE / #ACTION_SPELL
  * から選択。
  */
 void set_action(player_type *player_ptr, uint8_t typ)
@@ -53,14 +55,14 @@ void set_action(player_type *player_ptr, uint8_t typ)
         bluemage_data->new_magic_learned = false;
         break;
     }
-    case ACTION_KAMAE: {
+    case ACTION_MONK_STANCE: {
         msg_print(_("構えをといた。", "You stop assuming the special stance."));
-        player_ptr->special_defense &= ~(KAMAE_MASK);
+        PlayerClass(player_ptr).set_monk_stance(MonkStance::NONE);
         break;
     }
-    case ACTION_KATA: {
+    case ACTION_SAMURAI_STANCE: {
         msg_print(_("型を崩した。", "You stop assuming the special stance."));
-        player_ptr->special_defense &= ~(KATA_MASK);
+        PlayerClass(player_ptr).set_samurai_stance(SamuraiStance::NONE);
         player_ptr->update |= (PU_MONSTERS);
         player_ptr->redraw |= (PR_STATUS);
         break;
@@ -87,7 +89,10 @@ void set_action(player_type *player_ptr, uint8_t typ)
         stop_singing(player_ptr);
 
     if (prev_typ == ACTION_SPELL) {
-        (void)SpellHex(player_ptr).stop_spells_with_selection();
+        SpellHex spell_hex(player_ptr);
+        if (spell_hex.is_spelling_any()) {
+            spell_hex.stop_all_spells();
+        }
     }
 
     switch (player_ptr->action) {

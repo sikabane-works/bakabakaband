@@ -75,8 +75,8 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     health_track(player_ptr, 0);
 
     disturb(player_ptr, true, true);
-    int quest_num = quest_number(player_ptr, floor_ptr->dun_level);
-    if (quest_num) {
+    auto quest_num = quest_number(player_ptr, floor_ptr->dun_level);
+    if (quest_num > 0) {
         r_info[quest[quest_num].r_idx].flags1 |= RF1_QUESTOR;
     }
 
@@ -107,13 +107,11 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     handle_stuff(player_ptr);
     term_fresh();
 
-    if (quest_num
-        && (is_fixed_quest_idx(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
+    if ((quest_num > 0)
+        && (quest_type::is_fixed(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
         do_cmd_feeling(player_ptr);
-
     if (player_ptr->phase_out) {
         if (load_game) {
-            player_ptr->energy_need = 0;
             update_gambling_monsters(player_ptr);
         } else {
             msg_print(_("試合開始！", "Ready..Fight!"));
@@ -142,7 +140,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
 #endif
     }
 
-    if (!load_game && (player_ptr->special_defense & NINJA_S_STEALTH))
+    if (!load_game)
         set_superstealth(player_ptr, false);
 
     floor_ptr->monster_level = floor_ptr->base_level;
@@ -216,7 +214,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
             wild_regen--;
     }
 
-    if (quest_num && !(r_info[quest[quest_num].r_idx].flags1 & RF1_UNIQUE)) {
+    if ((quest_num > 0) && !(r_info[quest[quest_num].r_idx].flags1 & RF1_UNIQUE)) {
         r_info[quest[quest_num].r_idx].flags1 &= ~RF1_QUESTOR;
     }
 

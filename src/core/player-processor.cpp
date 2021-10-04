@@ -40,6 +40,7 @@
 #include "player-base/player-class.h"
 #include "player-info/bluemage-data-type.h"
 #include "player-info/mane-data-type.h"
+#include "player-info/samurai-data-type.h"
 #include "player-info/sniper-data-type.h"
 #include "player-status/player-energy.h"
 #include "player/attack-defense-types.h"
@@ -249,14 +250,12 @@ void process_player(player_type *player_ptr)
         player_ptr->redraw |= PR_MANA;
     }
 
-    if (player_ptr->special_defense & KATA_MASK) {
-        if (player_ptr->special_defense & KATA_MUSOU) {
-            if (player_ptr->csp < 3) {
-                set_action(player_ptr, ACTION_NONE);
-            } else {
-                player_ptr->csp -= 2;
-                player_ptr->redraw |= (PR_MANA);
-            }
+    if (PlayerClass(player_ptr).samurai_stance_is(SamuraiStance::MUSOU)) {
+        if (player_ptr->csp < 3) {
+            set_action(player_ptr, ACTION_NONE);
+        } else {
+            player_ptr->csp -= 2;
+            player_ptr->redraw |= (PR_MANA);
         }
     }
 

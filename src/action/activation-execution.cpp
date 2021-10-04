@@ -67,10 +67,11 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (ae_ptr->o_ptr->is_random_artifact()) {
-        const activation_type *const act_ptr = find_activation_info(ae_ptr->o_ptr);
-        if (act_ptr != nullptr)
-            ae_ptr->lev = act_ptr->level;
-        ae_ptr->broken = 0;
+        auto act_ptr = find_activation_info(ae_ptr->o_ptr);
+        if (act_ptr.has_value()) {
+            ae_ptr->lev = act_ptr.value()->level;
+        }
+
         return;
     }
 
@@ -136,14 +137,16 @@ static bool check_activation_conditions(player_type *player_ptr, ae_type *ae_ptr
 static bool activate_artifact(player_type *player_ptr, object_type *o_ptr)
 {
     concptr name = k_info[o_ptr->k_idx].name.c_str();
-    const activation_type *const act_ptr = find_activation_info(o_ptr);
-    if (!act_ptr) {
+    auto tmp_act_ptr = find_activation_info(o_ptr);
+    if (!tmp_act_ptr.has_value()) {
         msg_print("Activation information is not found.");
         return false;
     }
 
-    if (!switch_activation(player_ptr, &o_ptr, act_ptr, name))
+    auto *act_ptr = tmp_act_ptr.value();
+    if (!switch_activation(player_ptr, &o_ptr, act_ptr, name)) {
         return false;
+    }
 
     if (act_ptr->timeout.constant >= 0) {
         o_ptr->timeout = (int16_t)act_ptr->timeout.constant;
@@ -154,16 +157,16 @@ static bool activate_artifact(player_type *player_ptr, object_type *o_ptr)
     }
 
     switch (act_ptr->index) {
-    case ACT_BR_FIRE:
+    case RandomArtActType::BR_FIRE:
         o_ptr->timeout = ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_FLAMES)) ? 200 : 250;
         return true;
-    case ACT_BR_COLD:
+    case RandomArtActType::BR_COLD:
         o_ptr->timeout = ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_ICE)) ? 200 : 250;
         return true;
-    case ACT_TERROR:
+    case RandomArtActType::TERROR:
         o_ptr->timeout = 3 * (player_ptr->lev + 10);
         return true;
-    case ACT_MURAMASA:
+    case RandomArtActType::MURAMASA:
         return true;
     default:
         msg_format("Special timeout is not implemented: %d.", act_ptr->index);
@@ -296,7 +299,7 @@ void exe_activate(player_type *player_ptr, INVENTORY_IDX item)
 
     msg_print(_("始動させた...", "You activate it..."));
     sound(SOUND_ZAP);
-    if (activation_index(ae_ptr->o_ptr)) {
+    if (activation_index(ae_ptr->o_ptr) > RandomArtActType::NONE) {
         (void)activate_artifact(player_ptr, ae_ptr->o_ptr);
         player_ptr->window_flags |= PW_INVEN | PW_EQUIP;
         activated = true;

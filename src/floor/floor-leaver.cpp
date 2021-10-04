@@ -249,7 +249,7 @@ static void preserve_info(player_type *player_ptr)
 {
     MONRACE_IDX quest_r_idx = 0;
     for (DUNGEON_IDX i = 0; i < max_q_idx; i++) {
-        if ((quest[i].status == QUEST_STATUS_TAKEN) && ((quest[i].type == QUEST_TYPE_KILL_LEVEL) || (quest[i].type == QUEST_TYPE_RANDOM))
+        if ((quest[i].status == QuestStatusType::TAKEN) && ((quest[i].type == QuestKindType::KILL_LEVEL) || (quest[i].type == QuestKindType::RANDOM))
             && (quest[i].level == player_ptr->current_floor_ptr->dun_level) && (player_ptr->dungeon_idx == quest[i].dungeon)
             && !(quest[i].flags & QUEST_FLAG_PRESET)) {
             quest_r_idx = quest[i].r_idx;
@@ -416,8 +416,7 @@ void leave_floor(player_type *player_ptr)
 {
     preserve_pet(player_ptr);
     remove_all_mirrors(player_ptr, false);
-    if (player_ptr->special_defense & NINJA_S_STEALTH)
-        set_superstealth(player_ptr, false);
+    set_superstealth(player_ptr, false);
 
     new_floor_id = 0;
 
