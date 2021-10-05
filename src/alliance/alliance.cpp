@@ -1,12 +1,12 @@
 ﻿#include "alliance/alliance.h"
 #include "system/player-type-definition.h"
 
-const std::vector<std::shared_ptr<Alliance>> alliance_list = {
-    std::make_unique<AllianceNone>(0, "NONE", _("無所属", "None")),
-    std::make_unique<AllianceAmber>(1, "AMBER", _("アンバー", "Amber")),
-    std::make_unique<AllianceCourtOfChaos>(2, "COCHAOS", _("混沌の宮廷", "Court of Chaos")),
-    std::make_unique<AllianceValinor>(3, "VARINOR", _("ヴァリノール", "Valinor")),
-    std::make_unique<AllianceCourtOfChaos>(4, "UTUMNO", _("ウトゥムノ", "Utumno"))
+const std::map<int, std::shared_ptr<Alliance>> alliance_list = {
+    { 0, std::make_unique<AllianceNone>(0, "NONE", _("無所属", "None")) },
+    { 1, std::make_unique<AllianceAmber>(1, "AMBER", _("アンバー", "Amber")) },
+    { 2, std::make_unique<AllianceCourtOfChaos>(2, "COCHAOS", _("混沌の宮廷", "Court of Chaos")) },
+    { 3, std::make_unique<AllianceValinor>(3, "VARINOR", _("ヴァリノール", "Valinor")) },
+    { 4, std::make_unique<AllianceCourtOfChaos>(4, "UTUMNO", _("ウトゥムノ", "Utumno")) }
 };
 
 Alliance::Alliance(int id, std::string tag, std::string name)
