@@ -16,6 +16,10 @@ typedef struct vault_type {
     POSITION hgt{}; /* Vault height */
     POSITION wid{}; /* Vault width */
     std::map<char, FEAT_IDX> feature_list;
+
+    int min_depth = 0;
+    int max_depth = 999;
+    int rarity = 1;
 } vault_type;
 
 extern std::vector<vault_type> v_info;
