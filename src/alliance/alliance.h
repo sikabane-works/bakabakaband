@@ -2,7 +2,7 @@
 #include "system/angband.h"
 #include "util/flag-group.h"
 #include <string>
-#include <vector>
+#include <map>
 
 typedef int ALLIANCE_ID;
 class player_type;
@@ -75,4 +75,4 @@ public:
     virtual ~AllianceUtumno() = default;
 };
 
-extern const std::vector<std::shared_ptr<Alliance>> alliance_list;
+extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;

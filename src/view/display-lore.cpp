@@ -549,11 +549,11 @@ void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)
 
     if (lore_ptr->r_ptr->alliance_idx) {
 #ifdef JP
-        hooked_roff(alliance_list[lore_ptr->r_ptr->alliance_idx]->name.c_str());
+        hooked_roff(alliance_list.at(lore_ptr->r_ptr->alliance_idx)->name.c_str());
         hooked_roff("に所属している");
 #else
         hooked_roff("belonging to ");
-        hooked_roff(alliance_list[lore_ptr->r_ptr->alliance_idx]->name.c_str());
+        hooked_roff(alliance_list.at(lore_ptr->r_ptr->alliance_idx)->name.c_str());
 #endif
     }
 
