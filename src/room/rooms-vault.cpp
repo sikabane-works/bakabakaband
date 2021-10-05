@@ -620,6 +620,9 @@ bool build_type7(player_type *player_ptr, dun_data_type *dd_ptr)
         /* Access a random vault record */
         v_ptr = &v_info[randint0(v_info.size())];
 
+        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
+            continue;
+
         /* Accept the first lesser vault */
         if (v_ptr->typ == 7)
             break;
@@ -687,6 +690,9 @@ bool build_type8(player_type *player_ptr, dun_data_type *dd_ptr)
     for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
         /* Access a random vault record */
         v_ptr = &v_info[randint0(v_info.size())];
+
+        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
+            continue;
 
         /* Accept the first greater vault */
         if (v_ptr->typ == 8)
@@ -1157,6 +1163,9 @@ bool build_type17(player_type *player_ptr, dun_data_type *dd_ptr)
     for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
         /* Access a random vault record */
         v_ptr = &v_info[randint0(v_info.size())];
+
+        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
+            continue;
 
         /* Accept the special fix room. */
         if (v_ptr->typ == 17)
