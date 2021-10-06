@@ -3,6 +3,7 @@
 #include "game-option/birth-options.h"
 #include "grid/feature.h"
 #include "io/input-key-acceptor.h"
+#include "knowledge/knowledge-alliance.h"
 #include "knowledge/knowledge-autopick.h"
 #include "knowledge/knowledge-experiences.h"
 #include "knowledge/knowledge-features.h"
@@ -57,6 +58,7 @@ void do_cmd_knowledge(player_type *player_ptr)
             prt(_("(k) 現在の自動拾い/破壊設定              の一覧", "(k) Display auto pick/destroy"), 15, 5);
         } else {
             prt(_("(l) これまで行った行為                   の一覧", "(l) Display incident counter"), 6, 5);
+            prt(_("(m) アライアンスと印象値                 の一覧", "(l) Display alliance and their impression"), 7, 5);
         }
 
         prt(_("-続く-", "-more-"), 17, 8);
@@ -139,6 +141,9 @@ void do_cmd_knowledge(player_type *player_ptr)
             break;
         case 'l': /* Incident */
             do_cmd_knowledge_incident(player_ptr);
+            break;
+        case 'm': /* Alliance */
+            do_cmd_knowledge_alliance(player_ptr);
             break;
         default: /* Unknown option */
             bell();
