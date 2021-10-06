@@ -13,6 +13,7 @@
 #include "term/z-form.h"
 #include "term/z-util.h"
 #include "term/z-virt.h"
+#include <vector>
 
 /*
  * Here is some information about the routines in this file.
@@ -107,7 +108,7 @@
  * Format("%s", concptr s)
  *   Append the string "s".
  *   Do not use the "+" or "0" flags.
- *   Note that a "NULL" value of "s" is converted to the empty string.
+ *   Note that a "nullptr" value of "s" is converted to the empty string.
  *
  * Format("%V", vptr v)
  *   Note -- possibly significant mode flag
@@ -121,7 +122,7 @@
  *
  *
  * For examples below, assume "int n = 0; int m = 100; char buf[100];",
- * plus "char *s = NULL;", and unknown values "char *txt; int i;".
+ * plus "char *s = nullptr;", and unknown values "char *txt; int i;".
  *
  * For example: "n = strnfmt(buf, -1, "(Max %d)", i);" will have a
  * similar effect as "sprintf(buf, "(Max %d)", i); n = strlen(buf);".
@@ -554,7 +555,7 @@ uint vstrnfmt(char *buf, uint max, concptr fmt, va_list vp)
             /* Access next argument */
             arg = va_arg(vp, concptr);
 
-            /* Hack -- convert NULL to EMPTY */
+            /* Hack -- convert nullptr to EMPTY */
             if (!arg)
                 arg = "";
 
@@ -648,38 +649,30 @@ uint vstrnfmt(char *buf, uint max, concptr fmt, va_list vp)
  */
 char *vformat(concptr fmt, va_list vp)
 {
-    static char *format_buf = NULL;
-    static ulong format_len = 0;
-
     /* Initial allocation */
-    if (!format_buf) {
-        format_len = 1024;
-        C_MAKE(format_buf, format_len, char);
-    }
+    static std::vector<char> format_buf(1024);
 
     /* Null format yields last result */
     if (!fmt)
-        return (format_buf);
+        return format_buf.data();
 
     /* Keep going until successful */
     while (true) {
         uint len;
 
         /* Build the string */
-        len = vstrnfmt(format_buf, format_len, fmt, vp);
+        len = vstrnfmt(format_buf.data(), format_buf.size(), fmt, vp);
 
         /* Success */
-        if (len < format_len - 1)
+        if (len < format_buf.size() - 1)
             break;
 
         /* Grow the buffer */
-        C_KILL(format_buf, format_len, char);
-        format_len = format_len * 2;
-        C_MAKE(format_buf, format_len, char);
+        format_buf.resize(format_buf.size() * 2);
     }
 
     /* Return the new buffer */
-    return (format_buf);
+    return format_buf.data();
 }
 
 /*

@@ -39,12 +39,12 @@ void object_known(object_type *o_ptr)
 /*!
  * @brief オブジェクトを＊鑑定＊済にする /
  * The player is now aware of the effects of the given object.
- * @param owner_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr ＊鑑定＊済にするオブジェクトの構造体参照ポインタ
  */
-void object_aware(player_type *owner_ptr, object_type *o_ptr)
+void object_aware(player_type *player_ptr, object_type *o_ptr)
 {
-    const bool is_already_awared = object_is_aware(o_ptr);
+    const bool is_already_awared = o_ptr->is_aware();
 
     k_info[o_ptr->k_idx].aware = true;
 
@@ -52,7 +52,7 @@ void object_aware(player_type *owner_ptr, object_type *o_ptr)
     if (!record_ident)
         return;
 
-    if (is_already_awared || owner_ptr->is_dead)
+    if (is_already_awared || player_ptr->is_dead)
         return;
 
     // アーティファクト専用ベースアイテムは記録しない
@@ -72,9 +72,9 @@ void object_aware(player_type *owner_ptr, object_type *o_ptr)
     q_ptr->copy_from(o_ptr);
 
     q_ptr->number = 1;
-    describe_flavor(owner_ptr, o_name, q_ptr, OD_NAME_ONLY);
+    describe_flavor(player_ptr, o_name, q_ptr, OD_NAME_ONLY);
 
-    exe_write_diary(owner_ptr, DIARY_FOUND, 0, o_name);
+    exe_write_diary(player_ptr, DIARY_FOUND, 0, o_name);
 }
 
 /*!
@@ -83,36 +83,3 @@ void object_aware(player_type *owner_ptr, object_type *o_ptr)
  * @param o_ptr 試行済にするオブジェクトの構造体参照ポインタ
  */
 void object_tried(object_type *o_ptr) { k_info[o_ptr->k_idx].tried = true; }
-
-/*
- * @brief 与えられたオブジェクトのベースアイテムが鑑定済かを返す / Determine if a given inventory item is "aware"
- * @param o_ptr オブジェクトへの参照ポインタ
- * @return 鑑定済ならTRUE
- */
-bool object_is_aware(const object_type *o_ptr)
-{
-    return k_info[(o_ptr)->k_idx].aware;
-}
-
-/*
- * Determine if a given inventory item is "tried"
- */
-bool object_is_tried(const object_type *o_ptr)
-{
-    return k_info[(o_ptr)->k_idx].tried;
-}
-
-/*
- * Determine if a given inventory item is "known"
- * Test One -- Check for special "known" tag
- * Test Two -- Check for "Easy Know" + "Aware"
- */
-bool object_is_known(const object_type *o_ptr)
-{
-    return ((o_ptr->ident & IDENT_KNOWN) != 0) || (k_info[(o_ptr)->k_idx].easy_know && k_info[(o_ptr)->k_idx].aware);
-}
-
-bool object_is_fully_known(const object_type *o_ptr)
-{
-    return (o_ptr->ident & IDENT_FULL_KNOWN) != 0;
-}

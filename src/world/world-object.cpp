@@ -24,7 +24,7 @@
  */
 OBJECT_IDX o_pop(floor_type *floor_ptr)
 {
-    if (floor_ptr->o_max < current_world_ptr->max_o_idx) {
+    if (floor_ptr->o_max < w_ptr->max_o_idx) {
         OBJECT_IDX i = floor_ptr->o_max;
         floor_ptr->o_max++;
         floor_ptr->o_cnt++;
@@ -41,7 +41,7 @@ OBJECT_IDX o_pop(floor_type *floor_ptr)
         return i;
     }
 
-    if (current_world_ptr->character_dungeon)
+    if (w_ptr->character_dungeon)
         msg_print(_("アイテムが多すぎる！", "Too many objects!"));
 
     return 0;
@@ -50,7 +50,7 @@ OBJECT_IDX o_pop(floor_type *floor_ptr)
 /*!
  * @brief オブジェクト生成テーブルからアイテムを取得する /
  * Choose an object kind that seems "appropriate" to the given level
- * @param owner_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param level 生成階
  * @return 選ばれたオブジェクトベースID
  * @details
@@ -66,14 +66,12 @@ OBJECT_IDX o_pop(floor_type *floor_ptr)
  * Note that if no objects are "appropriate", then this function will\n
  * fail, and return zero, but this should *almost* never happen.\n
  */
-OBJECT_IDX get_obj_num(player_type *owner_ptr, DEPTH level, BIT_FLAGS mode)
+OBJECT_IDX get_obj_num(player_type *player_ptr, DEPTH level, BIT_FLAGS mode)
 {
-    alloc_entry *table = alloc_kind_table;
-
     if (level > MAX_DEPTH - 1)
         level = MAX_DEPTH - 1;
 
-    if ((level > 0) && d_info[owner_ptr->dungeon_idx].flags.has_not(DF::BEGINNER)) {
+    if ((level > 0) && d_info[player_ptr->dungeon_idx].flags.has_not(DF::BEGINNER)) {
         if (one_in_(GREAT_OBJ)) {
             level = 1 + (level * MAX_DEPTH / randint1(MAX_DEPTH));
         }
@@ -81,17 +79,18 @@ OBJECT_IDX get_obj_num(player_type *owner_ptr, DEPTH level, BIT_FLAGS mode)
 
     // 候補の確率テーブル生成
     ProbabilityTable<int> prob_table;
-    for (int i = 0; i < alloc_kind_size; i++) {
-        if (table[i].level > level)
+    for (auto i = 0U; i < alloc_kind_table.size(); i++) {
+        const auto &entry = alloc_kind_table[i];
+        if (entry.level > level)
             break;
 
-        KIND_OBJECT_IDX k_idx = table[i].index;
+        KIND_OBJECT_IDX k_idx = entry.index;
         object_kind *k_ptr = &k_info[k_idx];
 
         if ((mode & AM_FORBID_CHEST) && (k_ptr->tval == TV_CHEST))
             continue;
 
-        prob_table.entry_item(i, table[i].prob2);
+        prob_table.entry_item(i, entry.prob2);
     }
 
     // 候補なし
@@ -110,7 +109,7 @@ OBJECT_IDX get_obj_num(player_type *owner_ptr, DEPTH level, BIT_FLAGS mode)
     std::vector<int> result;
     ProbabilityTable<int>::lottery(std::back_inserter(result), prob_table, n);
 
-    auto it = std::max_element(result.begin(), result.end(), [table](int a, int b) { return table[a].level < table[b].level; });
+    auto it = std::max_element(result.begin(), result.end(), [](int a, int b) { return alloc_kind_table[a].level < alloc_kind_table[b].level; });
 
-    return table[*it].index;
+    return alloc_kind_table[*it].index;
 }

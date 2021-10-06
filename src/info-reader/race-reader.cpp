@@ -1,4 +1,5 @@
-﻿#include "info-reader/race-reader.h"
+﻿#include "alliance/alliance.h"
+#include "info-reader/race-reader.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/parse-error-types.h"
 #include "info-reader/race-info-tokens-table.h"
@@ -67,9 +68,9 @@ static bool grab_one_spell_flag(monster_race *r_ptr, std::string_view what)
  * @param head ヘッダ構造体
  * @return エラーコード
  */
-errr parse_r_info(std::string_view buf, angband_header *head)
+errr parse_r_info(std::string_view buf, angband_header *)
 {
-    static monster_race *r_ptr = NULL;
+    static monster_race *r_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', true, 10);
 
     if (tokens[0] == "N") {
@@ -80,11 +81,13 @@ errr parse_r_info(std::string_view buf, angband_header *head)
         auto i = std::stoi(tokens[1]);
         if (i < error_idx)
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        if (i >= head->info_num)
-            return PARSE_ERROR_OUT_OF_BOUNDS;
+        if (i >= static_cast<int>(r_info.size())) {
+            r_info.resize(i + 1);
+        }
 
         error_idx = i;
         r_ptr = &r_info[i];
+        r_ptr->idx = static_cast<MONRACE_IDX>(i);
 #ifdef JP
         r_ptr->name = tokens[2];
 #endif
@@ -212,7 +215,17 @@ errr parse_r_info(std::string_view buf, angband_header *head)
             if (f.size() == 0)
                 continue;
 
-            const auto &s_tokens = str_split(f, '_', false, 3);
+            const auto &s_tokens = str_split(f, '_', false);
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "ALLIANCE") {
+                for (auto a : alliance_list) {
+                    if (a.second->tag == s_tokens[1]) {
+                        r_ptr->alliance_idx = a.second->id;
+                    }
+                }
+                continue;
+            }
+
             if (s_tokens.size() == 6 && s_tokens[0] == "SPAWN") {
                 // 落とし子自動生成率
                 if (s_tokens[1] == "CREATURE" && s_tokens[3] == "IN") {

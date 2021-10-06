@@ -36,15 +36,17 @@
 #include "store/store-util.h"
 #include "system/angband-version.h"
 #include "system/artifact-type-definition.h"
+#include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <ctime>
 
 /*!
  * @brief セーブデータの書き込み /
  * Actually write a save-file
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @return 成功すればtrue
  */
 static bool wr_savefile_new(player_type *player_ptr, save_type type)
@@ -53,9 +55,9 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
     compact_monsters(player_ptr, 0);
 
     uint32_t now = (uint32_t)time((time_t *)0);
-    current_world_ptr->sf_system = 0L;
-    current_world_ptr->sf_when = now;
-    current_world_ptr->sf_saves++;
+    w_ptr->sf_system = 0L;
+    w_ptr->sf_when = now;
+    w_ptr->sf_saves++;
     save_xor_byte = 0;
     wr_byte(FAKE_VER_MAJOR);
     save_xor_byte = 0;
@@ -73,10 +75,10 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
     wr_byte(H_VER_PATCH);
     wr_byte(H_VER_MINOR);
     wr_byte(H_VER_MAJOR);
-    wr_u32b(current_world_ptr->sf_system);
-    wr_u32b(current_world_ptr->sf_when);
-    wr_u16b(current_world_ptr->sf_lives);
-    wr_u16b(current_world_ptr->sf_saves);
+    wr_u32b(w_ptr->sf_system);
+    wr_u32b(w_ptr->sf_when);
+    wr_u16b(w_ptr->sf_lives);
+    wr_u16b(w_ptr->sf_saves);
 
     wr_u32b(SAVEFILE_VERSION);
     wr_u16b(0);
@@ -103,12 +105,12 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
     for (int i = tmp32u - 1; i >= 0; i--)
         wr_string(message_str(i));
 
-    uint16_t tmp16u = max_r_idx;
+    uint16_t tmp16u = static_cast<uint16_t>(r_info.size());
     wr_u16b(tmp16u);
     for (MONRACE_IDX r_idx = 0; r_idx < tmp16u; r_idx++)
         wr_lore(r_idx);
 
-    tmp16u = max_k_idx;
+    tmp16u = static_cast<uint16_t>(k_info.size());
     wr_u16b(tmp16u);
     for (KIND_OBJECT_IDX k_idx = 0; k_idx < tmp16u; k_idx++)
         wr_perception(k_idx);
@@ -122,22 +124,22 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
     tmp8u = MAX_RANDOM_QUEST - MIN_RANDOM_QUEST;
     wr_byte(tmp8u);
 
-    for (int i = 0; i < max_q_idx; i++) {
-        quest_type *const q_ptr = &quest[i];
-        wr_s16b(q_ptr->status);
+    for (short i = 0; i < max_q_idx; i++) {
+        auto *const q_ptr = &quest[i];
+        wr_s16b(enum2i(q_ptr->status));
         wr_s16b((int16_t)q_ptr->level);
         wr_byte((byte)q_ptr->complev);
         wr_u32b(q_ptr->comptime);
 
-        bool is_quest_running = q_ptr->status == QUEST_STATUS_TAKEN;
-        is_quest_running |= q_ptr->status == QUEST_STATUS_COMPLETED;
-        is_quest_running |= !is_fixed_quest_idx(i);
+        bool is_quest_running = q_ptr->status == QuestStatusType::TAKEN;
+        is_quest_running |= q_ptr->status == QuestStatusType::COMPLETED;
+        is_quest_running |= !quest_type::is_fixed(i);
         if (!is_quest_running)
             continue;
 
         wr_s16b((int16_t)q_ptr->cur_num);
         wr_s16b((int16_t)q_ptr->max_num);
-        wr_s16b(q_ptr->type);
+        wr_s16b(enum2i(q_ptr->type));
         wr_s16b(q_ptr->r_idx);
         wr_s16b(q_ptr->k_idx);
         wr_byte((byte)q_ptr->flags);
@@ -148,13 +150,13 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
     wr_s32b(player_ptr->wilderness_y);
     wr_byte(player_ptr->wild_mode);
     wr_byte(player_ptr->ambush_flag);
-    wr_s32b(current_world_ptr->max_wild_x);
-    wr_s32b(current_world_ptr->max_wild_y);
-    for (int i = 0; i < current_world_ptr->max_wild_x; i++)
-        for (int j = 0; j < current_world_ptr->max_wild_y; j++)
+    wr_s32b(w_ptr->max_wild_x);
+    wr_s32b(w_ptr->max_wild_y);
+    for (int i = 0; i < w_ptr->max_wild_x; i++)
+        for (int j = 0; j < w_ptr->max_wild_y; j++)
             wr_u32b(wilderness[j][i].seed);
 
-    tmp16u = max_a_idx;
+    tmp16u = static_cast<uint16_t>(a_info.size());
     wr_u16b(tmp16u);
     for (int i = 0; i < tmp16u; i++) {
         artifact_type *a_ptr = &a_info[i];
@@ -162,9 +164,10 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
         wr_s16b(a_ptr->floor_id);
     }
 
-    wr_u32b(current_world_ptr->sf_play_time);
-    wr_FlagGroup(current_world_ptr->sf_winner, wr_byte);
-    wr_FlagGroup(current_world_ptr->sf_retired, wr_byte);
+    wr_u32b(w_ptr->sf_play_time);
+    wr_s32b(w_ptr->collapse_degree);
+    wr_FlagGroup(w_ptr->sf_winner, wr_byte);
+    wr_FlagGroup(w_ptr->sf_retired, wr_byte);
 
     wr_player(player_ptr);
     tmp16u = PY_MAX_LEVEL;
@@ -225,7 +228,7 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
 /*!
  * @brief セーブデータ書き込みのサブルーチン /
  * Medium level player saver
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @return 成功すればtrue
  * @details
  * Angband 2.8.0 will use "fd" instead of "fff" if possible
@@ -238,7 +241,7 @@ static bool save_player_aux(player_type *player_ptr, char *name, save_type type)
     safe_setuid_drop();
 
     bool is_save_successful = false;
-    saving_savefile = NULL;
+    saving_savefile = nullptr;
     if (fd >= 0) {
         (void)fd_close(fd);
         safe_setuid_grab(player_ptr);
@@ -262,15 +265,15 @@ static bool save_player_aux(player_type *player_ptr, char *name, save_type type)
     if (!is_save_successful)
         return false;
 
-    counts_write(player_ptr, 0, current_world_ptr->play_time);
-    current_world_ptr->character_saved = true;
+    counts_write(player_ptr, 0, w_ptr->play_time);
+    w_ptr->character_saved = true;
     return true;
 }
 
 /*!
  * @brief セーブデータ書き込みのメインルーチン /
  * Attempt to save the player in a savefile
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @return 成功すればtrue
  */
 bool save_player(player_type *player_ptr, save_type type)
@@ -300,15 +303,15 @@ bool save_player(player_type *player_ptr, save_type type)
         fd_move(safe, filename);
         fd_kill(temp);
         safe_setuid_drop();
-        current_world_ptr->character_loaded = true;
+        w_ptr->character_loaded = true;
         result = true;
     }
 
     if (type != SAVE_TYPE_CLOSE_GAME) {
-        current_world_ptr->is_loading_now = false;
+        w_ptr->is_loading_now = false;
         update_creature(player_ptr);
         mproc_init(player_ptr->current_floor_ptr);
-        current_world_ptr->is_loading_now = true;
+        w_ptr->is_loading_now = true;
     }
 
     return result;

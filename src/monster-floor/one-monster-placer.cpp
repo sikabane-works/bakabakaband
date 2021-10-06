@@ -75,7 +75,7 @@ static bool monster_hook_tanuki(player_type *player_ptr, MONRACE_IDX r_idx)
 }
 
 /*!
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @brief モンスターの表層IDを設定する / Set initial racial appearance of a monster
  * @param r_idx モンスター種族ID
  * @return モンスター種族の表層ID
@@ -89,7 +89,7 @@ static MONRACE_IDX initial_r_appearance(player_type *player_ptr, MONRACE_IDX r_i
     if (none_bits(r_info[r_idx].flags7, RF7_TANUKI))
         return r_idx;
 
-    get_mon_num_prep(player_ptr, monster_hook_tanuki, NULL);
+    get_mon_num_prep(player_ptr, monster_hook_tanuki, nullptr);
     int attempts = 1000;
     DEPTH min = MIN(floor_ptr->base_level - 5, 50);
     while (--attempts) {
@@ -103,7 +103,7 @@ static MONRACE_IDX initial_r_appearance(player_type *player_ptr, MONRACE_IDX r_i
 
 /*!
  * @brief ユニークが生成可能か評価する
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param r_idx 生成モンスター種族
  * @return ユニークの生成が不可能な条件ならFALSE、それ以外はTRUE
  */
@@ -138,7 +138,7 @@ static bool check_unique_placeable(player_type *player_ptr, MONRACE_IDX r_idx)
 
 /*!
  * @brief クエスト内に生成可能か評価する
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param r_idx 生成モンスター種族
  * @return 生成が可能ならTRUE、不可能ならFALSE
  */
@@ -149,7 +149,7 @@ static bool check_quest_placeable(player_type *player_ptr, MONRACE_IDX r_idx)
         return true;
 
     int hoge = quest_number(player_ptr, floor_ptr->dun_level);
-    if ((quest[hoge].type != QUEST_TYPE_KILL_LEVEL) && (quest[hoge].type != QUEST_TYPE_RANDOM))
+    if ((quest[hoge].type != QuestKindType::KILL_LEVEL) && (quest[hoge].type != QuestKindType::RANDOM))
         return true;
 
     if (r_idx != quest[hoge].r_idx)
@@ -169,7 +169,7 @@ static bool check_quest_placeable(player_type *player_ptr, MONRACE_IDX r_idx)
 
 /*!
  * @brief 守りのルーン上にモンスターの配置を試みる
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param r_idx 生成モンスター種族
  * @param y 生成位置y座標
  * @param x 生成位置x座標
@@ -197,7 +197,7 @@ static bool check_procection_rune(player_type *player_ptr, MONRACE_IDX r_idx, PO
 
 static void warn_unique_generation(player_type *player_ptr, MONRACE_IDX r_idx)
 {
-    if (!player_ptr->warning || !current_world_ptr->character_dungeon)
+    if (!player_ptr->warning || !w_ptr->character_dungeon)
         return;
 
     monster_race *r_ptr = &r_info[r_idx];
@@ -221,7 +221,7 @@ static void warn_unique_generation(player_type *player_ptr, MONRACE_IDX r_idx)
         color = _("白く", "white");
 
     o_ptr = choose_warning_item(player_ptr);
-    if (o_ptr != NULL) {
+    if (o_ptr != nullptr) {
         describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         msg_format(_("%sは%s光った。", "%s glows %s."), o_name, color);
     } else {
@@ -231,7 +231,7 @@ static void warn_unique_generation(player_type *player_ptr, MONRACE_IDX r_idx)
 
 /*!
  * @brief モンスターを一体生成する / Attempt to place a monster of the given race at the given location.
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param who 召喚を行ったモンスターID
  * @param y 生成位置y座標
  * @param x 生成位置x座標
@@ -324,7 +324,7 @@ bool place_monster_one(player_type *player_ptr, MONSTER_IDX who, POSITION y, POS
     if (any_bits(mode, PM_FORCE_PET)) {
         set_pet(player_ptr, m_ptr);
     } else if (((who == 0) && any_bits(r_ptr->flags7, RF7_FRIENDLY)) || is_friendly_idx(player_ptr, who) || any_bits(mode, PM_FORCE_FRIENDLY)) {
-        if (!monster_has_hostile_align(player_ptr, NULL, 0, -1, r_ptr) && !player_ptr->current_floor_ptr->inside_arena)
+        if (!monster_has_hostile_align(player_ptr, nullptr, 0, -1, r_ptr) && !player_ptr->current_floor_ptr->inside_arena)
             set_friendly(m_ptr);
     }
 
@@ -385,7 +385,7 @@ bool place_monster_one(player_type *player_ptr, MONSTER_IDX who, POSITION y, POS
      * Memorize location of the unique monster in saved floors.
      * A unique monster move from old saved floor.
      */
-    if (current_world_ptr->character_dungeon && (any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)))
+    if (w_ptr->character_dungeon && (any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)))
         real_r_ptr(m_ptr)->floor_id = player_ptr->floor_id;
 
     if (any_bits(r_ptr->flags2, RF2_MULTIPLY))

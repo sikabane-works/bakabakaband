@@ -6,6 +6,7 @@
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "util/enum-converter.h"
 
 /*!
  * @brief 上質以上のオブジェクトに与えるための各種ボーナスを正規乱数も加えて算出する。
@@ -100,22 +101,22 @@ void one_sustain(object_type *o_ptr)
 {
     switch (randint0(A_MAX)) {
     case 0:
-        add_flag(o_ptr->art_flags, TR_SUST_STR);
+        o_ptr->art_flags.set(TR_SUST_STR);
         break;
     case 1:
-        add_flag(o_ptr->art_flags, TR_SUST_INT);
+        o_ptr->art_flags.set(TR_SUST_INT);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_SUST_WIS);
+        o_ptr->art_flags.set(TR_SUST_WIS);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_SUST_DEX);
+        o_ptr->art_flags.set(TR_SUST_DEX);
         break;
     case 4:
-        add_flag(o_ptr->art_flags, TR_SUST_CON);
+        o_ptr->art_flags.set(TR_SUST_CON);
         break;
     case 5:
-        add_flag(o_ptr->art_flags, TR_SUST_CHR);
+        o_ptr->art_flags.set(TR_SUST_CHR);
         break;
     }
 }
@@ -131,13 +132,13 @@ bool add_esp_strong(object_type *o_ptr)
 
     switch (randint1(3)) {
     case 1:
-        add_flag(o_ptr->art_flags, TR_ESP_EVIL);
+        o_ptr->art_flags.set(TR_ESP_EVIL);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_TELEPATHY);
+        o_ptr->art_flags.set(TR_TELEPATHY);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_ESP_NONLIVING);
+        o_ptr->art_flags.set(TR_ESP_NONLIVING);
         nonliv = true;
         break;
     }
@@ -153,7 +154,7 @@ bool add_esp_strong(object_type *o_ptr)
 void add_esp_weak(object_type *o_ptr, bool extra)
 {
     int i;
-    uint32_t weak_esp_list[] = {
+    tr_type weak_esp_list[] = {
         TR_ESP_ANIMAL,
         TR_ESP_UNDEAD,
         TR_ESP_DEMON,
@@ -172,7 +173,7 @@ void add_esp_weak(object_type *o_ptr, bool extra)
     for (i = 0; i < add_count; ++i) {
         int choice = rand_range(i, MAX_ESP_WEAK - 1);
 
-        add_flag(o_ptr->art_flags, weak_esp_list[choice]);
+        o_ptr->art_flags.set(weak_esp_list[choice]);
         weak_esp_list[choice] = weak_esp_list[i];
     }
 }
@@ -217,16 +218,16 @@ void one_ele_resistance(object_type *o_ptr)
 {
     switch (randint0(4)) {
     case 0:
-        add_flag(o_ptr->art_flags, TR_RES_ACID);
+        o_ptr->art_flags.set(TR_RES_ACID);
         break;
     case 1:
-        add_flag(o_ptr->art_flags, TR_RES_ELEC);
+        o_ptr->art_flags.set(TR_RES_ELEC);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_RES_COLD);
+        o_ptr->art_flags.set(TR_RES_COLD);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_RES_FIRE);
+        o_ptr->art_flags.set(TR_RES_FIRE);
         break;
     }
 }
@@ -239,7 +240,7 @@ void one_ele_resistance(object_type *o_ptr)
 void one_dragon_ele_resistance(object_type *o_ptr)
 {
     if (one_in_(7)) {
-        add_flag(o_ptr->art_flags, TR_RES_POIS);
+        o_ptr->art_flags.set(TR_RES_POIS);
     } else {
         one_ele_resistance(o_ptr);
     }
@@ -247,47 +248,56 @@ void one_dragon_ele_resistance(object_type *o_ptr)
 
 /*!
  * @brief 対象のオブジェクトにランダムな上位耐性を一つ付加する。/ Choose one random high resistance
- * @details 重複の抑止はない。候補は毒、閃光、暗黒、破片、盲目、混乱、地獄、因果混乱、カオス、劣化、恐怖のいずれか。
+ * @details 重複の抑止はない。候補は毒、閃光、暗黒、破片、盲目、混乱、地獄、因果混乱、カオス、劣化、恐怖、時間逆転、水、呪力のいずれか。
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  */
 void one_high_resistance(object_type *o_ptr)
 {
-    switch (randint0(12)) {
+    switch (randint0(15)) {
     case 0:
-        add_flag(o_ptr->art_flags, TR_RES_POIS);
+        o_ptr->art_flags.set(TR_RES_POIS);
         break;
     case 1:
-        add_flag(o_ptr->art_flags, TR_RES_LITE);
+        o_ptr->art_flags.set(TR_RES_LITE);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_RES_DARK);
+        o_ptr->art_flags.set(TR_RES_DARK);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_RES_SHARDS);
+        o_ptr->art_flags.set(TR_RES_SHARDS);
         break;
     case 4:
-        add_flag(o_ptr->art_flags, TR_RES_BLIND);
+        o_ptr->art_flags.set(TR_RES_BLIND);
         break;
     case 5:
-        add_flag(o_ptr->art_flags, TR_RES_CONF);
+        o_ptr->art_flags.set(TR_RES_CONF);
         break;
     case 6:
-        add_flag(o_ptr->art_flags, TR_RES_SOUND);
+        o_ptr->art_flags.set(TR_RES_SOUND);
         break;
     case 7:
-        add_flag(o_ptr->art_flags, TR_RES_NETHER);
+        o_ptr->art_flags.set(TR_RES_NETHER);
         break;
     case 8:
-        add_flag(o_ptr->art_flags, TR_RES_NEXUS);
+        o_ptr->art_flags.set(TR_RES_NEXUS);
         break;
     case 9:
-        add_flag(o_ptr->art_flags, TR_RES_CHAOS);
+        o_ptr->art_flags.set(TR_RES_CHAOS);
         break;
     case 10:
-        add_flag(o_ptr->art_flags, TR_RES_DISEN);
+        o_ptr->art_flags.set(TR_RES_DISEN);
         break;
     case 11:
-        add_flag(o_ptr->art_flags, TR_RES_FEAR);
+        o_ptr->art_flags.set(TR_RES_FEAR);
+        break;
+    case 12:
+        o_ptr->art_flags.set(TR_RES_TIME);
+        break;
+    case 13:
+        o_ptr->art_flags.set(TR_RES_WATER);
+        break;
+    case 14:
+        o_ptr->art_flags.set(TR_RES_CURSE);
         break;
     }
 }
@@ -331,28 +341,28 @@ void one_ability(object_type *o_ptr)
 {
     switch (randint0(10)) {
     case 0:
-        add_flag(o_ptr->art_flags, TR_LEVITATION);
+        o_ptr->art_flags.set(TR_LEVITATION);
         break;
     case 1:
-        add_flag(o_ptr->art_flags, TR_LITE_1);
+        o_ptr->art_flags.set(TR_LITE_1);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_SEE_INVIS);
+        o_ptr->art_flags.set(TR_SEE_INVIS);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_WARNING);
+        o_ptr->art_flags.set(TR_WARNING);
         break;
     case 4:
-        add_flag(o_ptr->art_flags, TR_SLOW_DIGEST);
+        o_ptr->art_flags.set(TR_SLOW_DIGEST);
         break;
     case 5:
-        add_flag(o_ptr->art_flags, TR_REGEN);
+        o_ptr->art_flags.set(TR_REGEN);
         break;
     case 6:
-        add_flag(o_ptr->art_flags, TR_FREE_ACT);
+        o_ptr->art_flags.set(TR_FREE_ACT);
         break;
     case 7:
-        add_flag(o_ptr->art_flags, TR_HOLD_EXP);
+        o_ptr->art_flags.set(TR_HOLD_EXP);
         break;
     case 8:
     case 9:
@@ -371,34 +381,34 @@ void one_low_esp(object_type *o_ptr)
 {
     switch (randint1(10)) {
     case 1:
-        add_flag(o_ptr->art_flags, TR_ESP_ANIMAL);
+        o_ptr->art_flags.set(TR_ESP_ANIMAL);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_ESP_UNDEAD);
+        o_ptr->art_flags.set(TR_ESP_UNDEAD);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_ESP_DEMON);
+        o_ptr->art_flags.set(TR_ESP_DEMON);
         break;
     case 4:
-        add_flag(o_ptr->art_flags, TR_ESP_ORC);
+        o_ptr->art_flags.set(TR_ESP_ORC);
         break;
     case 5:
-        add_flag(o_ptr->art_flags, TR_ESP_TROLL);
+        o_ptr->art_flags.set(TR_ESP_TROLL);
         break;
     case 6:
-        add_flag(o_ptr->art_flags, TR_ESP_GIANT);
+        o_ptr->art_flags.set(TR_ESP_GIANT);
         break;
     case 7:
-        add_flag(o_ptr->art_flags, TR_ESP_DRAGON);
+        o_ptr->art_flags.set(TR_ESP_DRAGON);
         break;
     case 8:
-        add_flag(o_ptr->art_flags, TR_ESP_HUMAN);
+        o_ptr->art_flags.set(TR_ESP_HUMAN);
         break;
     case 9:
-        add_flag(o_ptr->art_flags, TR_ESP_GOOD);
+        o_ptr->art_flags.set(TR_ESP_GOOD);
         break;
     case 10:
-        add_flag(o_ptr->art_flags, TR_ESP_UNIQUE);
+        o_ptr->art_flags.set(TR_ESP_UNIQUE);
         break;
     }
 }
@@ -411,104 +421,104 @@ void one_low_esp(object_type *o_ptr)
  */
 void one_activation(object_type *o_ptr)
 {
-    int type = 0;
+    RandomArtActType type =RandomArtActType::NONE;
     PERCENTAGE chance = 0;
     while (randint1(100) >= chance) {
-        type = randint1(ACT_MAX);
+        type = i2enum<RandomArtActType>(randint1(enum2i(RandomArtActType::MAX) - 1));
         switch (type) {
-        case ACT_SUNLIGHT:
-        case ACT_BO_MISS_1:
-        case ACT_BA_POIS_1:
-        case ACT_BO_ELEC_1:
-        case ACT_BO_ACID_1:
-        case ACT_BO_COLD_1:
-        case ACT_BO_FIRE_1:
-        case ACT_CONFUSE:
-        case ACT_SLEEP:
-        case ACT_QUAKE:
-        case ACT_CURE_LW:
-        case ACT_CURE_MW:
-        case ACT_CURE_POISON:
-        case ACT_BERSERK:
-        case ACT_LIGHT:
-        case ACT_MAP_LIGHT:
-        case ACT_DEST_DOOR:
-        case ACT_STONE_MUD:
-        case ACT_TELEPORT:
+        case RandomArtActType::SUNLIGHT:
+        case RandomArtActType::BO_MISS_1:
+        case RandomArtActType::BA_POIS_1:
+        case RandomArtActType::BO_ELEC_1:
+        case RandomArtActType::BO_ACID_1:
+        case RandomArtActType::BO_COLD_1:
+        case RandomArtActType::BO_FIRE_1:
+        case RandomArtActType::CONFUSE:
+        case RandomArtActType::SLEEP:
+        case RandomArtActType::QUAKE:
+        case RandomArtActType::CURE_LW:
+        case RandomArtActType::CURE_MW:
+        case RandomArtActType::CURE_POISON:
+        case RandomArtActType::BERSERK:
+        case RandomArtActType::LIGHT:
+        case RandomArtActType::MAP_LIGHT:
+        case RandomArtActType::DEST_DOOR:
+        case RandomArtActType::STONE_MUD:
+        case RandomArtActType::TELEPORT:
             chance = 101;
             break;
-        case ACT_BA_COLD_1:
-        case ACT_BA_FIRE_1:
-        case ACT_HYPODYNAMIA_1:
-        case ACT_TELE_AWAY:
-        case ACT_ESP:
-        case ACT_RESIST_ALL:
-        case ACT_DETECT_ALL:
-        case ACT_RECALL:
-        case ACT_SATIATE:
-        case ACT_RECHARGE:
+        case RandomArtActType::BA_COLD_1:
+        case RandomArtActType::BA_FIRE_1:
+        case RandomArtActType::HYPODYNAMIA_1:
+        case RandomArtActType::TELE_AWAY:
+        case RandomArtActType::ESP:
+        case RandomArtActType::RESIST_ALL:
+        case RandomArtActType::DETECT_ALL:
+        case RandomArtActType::RECALL:
+        case RandomArtActType::SATIATE:
+        case RandomArtActType::RECHARGE:
             chance = 85;
             break;
-        case ACT_TERROR:
-        case ACT_PROT_EVIL:
-        case ACT_ID_PLAIN:
+        case RandomArtActType::TERROR:
+        case RandomArtActType::PROT_EVIL:
+        case RandomArtActType::ID_PLAIN:
             chance = 75;
             break;
-        case ACT_HYPODYNAMIA_2:
-        case ACT_DRAIN_1:
-        case ACT_BO_MISS_2:
-        case ACT_BA_FIRE_2:
-        case ACT_REST_EXP:
+        case RandomArtActType::HYPODYNAMIA_2:
+        case RandomArtActType::DRAIN_1:
+        case RandomArtActType::BO_MISS_2:
+        case RandomArtActType::BA_FIRE_2:
+        case RandomArtActType::REST_EXP:
             chance = 66;
             break;
-        case ACT_BA_FIRE_3:
-        case ACT_BA_COLD_3:
-        case ACT_BA_ELEC_3:
-        case ACT_WHIRLWIND:
-        case ACT_DRAIN_2:
-        case ACT_CHARM_ANIMAL:
+        case RandomArtActType::BA_FIRE_3:
+        case RandomArtActType::BA_COLD_3:
+        case RandomArtActType::BA_ELEC_3:
+        case RandomArtActType::WHIRLWIND:
+        case RandomArtActType::DRAIN_2:
+        case RandomArtActType::CHARM_ANIMAL:
             chance = 50;
             break;
-        case ACT_SUMMON_ANIMAL:
-        case ACT_ANIM_DEAD:
+        case RandomArtActType::SUMMON_ANIMAL:
+        case RandomArtActType::ANIM_DEAD:
             chance = 40;
             break;
-        case ACT_DISP_EVIL:
-        case ACT_BA_MISS_3:
-        case ACT_DISP_GOOD:
-        case ACT_BANISH_EVIL:
-        case ACT_GENOCIDE:
-        case ACT_MASS_GENO:
-        case ACT_CHARM_UNDEAD:
-        case ACT_CHARM_OTHER:
-        case ACT_SUMMON_PHANTOM:
-        case ACT_REST_ALL:
-        case ACT_RUNE_EXPLO:
+        case RandomArtActType::DISP_EVIL:
+        case RandomArtActType::BA_MISS_3:
+        case RandomArtActType::DISP_GOOD:
+        case RandomArtActType::BANISH_EVIL:
+        case RandomArtActType::GENOCIDE:
+        case RandomArtActType::MASS_GENO:
+        case RandomArtActType::CHARM_UNDEAD:
+        case RandomArtActType::CHARM_OTHER:
+        case RandomArtActType::SUMMON_PHANTOM:
+        case RandomArtActType::REST_ALL:
+        case RandomArtActType::RUNE_EXPLO:
             chance = 33;
             break;
-        case ACT_CALL_CHAOS:
-        case ACT_ROCKET:
-        case ACT_CHARM_ANIMALS:
-        case ACT_CHARM_OTHERS:
-        case ACT_SUMMON_ELEMENTAL:
-        case ACT_CURE_700:
-        case ACT_SPEED:
-        case ACT_ID_FULL:
-        case ACT_RUNE_PROT:
+        case RandomArtActType::CALL_CHAOS:
+        case RandomArtActType::ROCKET:
+        case RandomArtActType::CHARM_ANIMALS:
+        case RandomArtActType::CHARM_OTHERS:
+        case RandomArtActType::SUMMON_ELEMENTAL:
+        case RandomArtActType::CURE_700:
+        case RandomArtActType::SPEED:
+        case RandomArtActType::ID_FULL:
+        case RandomArtActType::RUNE_PROT:
             chance = 25;
             break;
-        case ACT_CURE_1000:
-        case ACT_XTRA_SPEED:
-        case ACT_DETECT_XTRA:
-        case ACT_DIM_DOOR:
+        case RandomArtActType::CURE_1000:
+        case RandomArtActType::XTRA_SPEED:
+        case RandomArtActType::DETECT_XTRA:
+        case RandomArtActType::DIM_DOOR:
             chance = 10;
             break;
-        case ACT_TREE_CREATION:
-        case ACT_SUMMON_DEMON:
-        case ACT_SUMMON_UNDEAD:
-        case ACT_WRAITH:
-        case ACT_INVULN:
-        case ACT_ALCHEMY:
+        case RandomArtActType::TREE_CREATION:
+        case RandomArtActType::SUMMON_DEMON:
+        case RandomArtActType::SUMMON_UNDEAD:
+        case RandomArtActType::WRAITH:
+        case RandomArtActType::INVULN:
+        case RandomArtActType::ALCHEMY:
             chance = 5;
             break;
         default:
@@ -516,56 +526,59 @@ void one_activation(object_type *o_ptr)
         }
     }
 
-    o_ptr->xtra2 = (byte)type;
-    add_flag(o_ptr->art_flags, TR_ACTIVATE);
+    o_ptr->activation_id = type;
+    o_ptr->art_flags.set(TR_ACTIVATE);
     o_ptr->timeout = 0;
 }
 
 /*!
  * @brief 対象のオブジェクトに王者の指輪向けの上位耐性を一つ付加する。/ Choose one random high resistance
- * @details 候補は閃光、暗黒、破片、盲目、混乱、地獄、因果混乱、カオス、恐怖であり
+ * @details 候補は閃光、暗黒、破片、盲目、混乱、地獄、因果混乱、カオス、恐怖、時間逆転、水、呪力であり
  * 王者の指輪にあらかじめついている耐性をone_high_resistance()から除外したものである。
  * ランダム付加そのものに重複の抑止はない。
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  */
 void one_lordly_high_resistance(object_type *o_ptr)
 {
-    switch (randint0(12)) {
+    switch (randint0(13)) {
     case 0:
-        add_flag(o_ptr->art_flags, TR_RES_LITE);
+        o_ptr->art_flags.set(TR_RES_LITE);
         break;
     case 1:
-        add_flag(o_ptr->art_flags, TR_RES_DARK);
+        o_ptr->art_flags.set(TR_RES_DARK);
         break;
     case 2:
-        add_flag(o_ptr->art_flags, TR_RES_SHARDS);
+        o_ptr->art_flags.set(TR_RES_SHARDS);
         break;
     case 3:
-        add_flag(o_ptr->art_flags, TR_RES_BLIND);
+        o_ptr->art_flags.set(TR_RES_BLIND);
         break;
     case 4:
-        add_flag(o_ptr->art_flags, TR_RES_CONF);
+        o_ptr->art_flags.set(TR_RES_CONF);
         break;
     case 5:
-        add_flag(o_ptr->art_flags, TR_RES_SOUND);
+        o_ptr->art_flags.set(TR_RES_SOUND);
         break;
     case 6:
-        add_flag(o_ptr->art_flags, TR_RES_NETHER);
+        o_ptr->art_flags.set(TR_RES_NETHER);
         break;
     case 7:
-        add_flag(o_ptr->art_flags, TR_RES_NEXUS);
+        o_ptr->art_flags.set(TR_RES_NEXUS);
         break;
     case 8:
-        add_flag(o_ptr->art_flags, TR_RES_CHAOS);
+        o_ptr->art_flags.set(TR_RES_CHAOS);
         break;
     case 9:
-        add_flag(o_ptr->art_flags, TR_RES_FEAR);
+        o_ptr->art_flags.set(TR_RES_FEAR);
         break;
     case 10:
-        add_flag(o_ptr->art_flags, TR_RES_TIME);
+        o_ptr->art_flags.set(TR_RES_TIME);
         break;
     case 11:
-        add_flag(o_ptr->art_flags, TR_RES_WATER);
+        o_ptr->art_flags.set(TR_RES_WATER);
+        break;
+    case 12:
+        o_ptr->art_flags.set(TR_RES_CURSE);
         break;
     }
 }

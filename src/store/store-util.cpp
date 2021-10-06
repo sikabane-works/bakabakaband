@@ -10,7 +10,6 @@
 #include "object-enchant/item-apply-magic.h"
 #include "object-enchant/item-feeling.h"
 #include "object-enchant/special-object-flags.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-kind.h"
 #include "object/object-value.h"
 #include "perception/object-perception.h"
@@ -20,7 +19,7 @@
 #include "world/world-object.h"
 
 int cur_store_num = 0;
-store_type *st_ptr = NULL;
+store_type *st_ptr = nullptr;
 
 /*!
  * @brief 店舗のオブジェクト数を増やす /
@@ -86,7 +85,7 @@ void store_delete(void)
 
     if ((st_ptr->stock[what].tval == TV_ROD) || (st_ptr->stock[what].tval == TV_WAND))
         st_ptr->stock[what].pval -= num * st_ptr->stock[what].pval / st_ptr->stock[what].number;
-    
+
     store_item_increase(what, -num);
     store_item_optimize(what);
 }
@@ -117,7 +116,7 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
 /*!
  * @brief 店舗の品揃え変化のためにアイテムを追加する /
  * Creates a random item and gives it to a store
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @details
  * <pre>
  * This algorithm needs to be rethought.  A lot.
@@ -227,12 +226,11 @@ bool store_object_similar(object_type *o_ptr, object_type *j_ptr)
     if (o_ptr->name2 != j_ptr->name2)
         return false;
 
-    if (object_is_artifact(o_ptr) || object_is_artifact(j_ptr))
+    if (o_ptr->is_artifact() || j_ptr->is_artifact())
         return false;
 
-    for (int i = 0; i < TR_FLAG_SIZE; i++)
-        if (o_ptr->art_flags[i] != j_ptr->art_flags[i])
-            return false;
+    if (o_ptr->art_flags != j_ptr->art_flags)
+        return false;
 
     if (o_ptr->xtra1 || j_ptr->xtra1)
         return false;

@@ -6,4 +6,4 @@
 
 enum class MUTA;
 class player_type;
-bool exe_mutation_power(player_type *creature_ptr, MUTA power);
+bool exe_mutation_power(player_type *player_ptr, MUTA power);

@@ -11,6 +11,8 @@
 #include "object-use/quaff-execution.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
+#include "player-base/player-class.h"
+#include "player-info/samurai-data-type.h"
 #include "player/attack-defense-types.h"
 #include "player/special-defense-types.h"
 #include "realm/realm-hex-numbers.h"
@@ -22,23 +24,22 @@
  * @brief 薬を飲むコマンドのメインルーチン /
  * Quaff some potion (from the pack or floor)
  */
-void do_cmd_quaff_potion(player_type *creature_ptr)
+void do_cmd_quaff_potion(player_type *player_ptr)
 {
-    if (creature_ptr->wild_mode)
+    if (player_ptr->wild_mode)
         return;
 
-    if (!hex_spelling(creature_ptr, HEX_INHAIL) && cmd_limit_arena(creature_ptr))
+    if (!SpellHex(player_ptr).is_spelling_specific(HEX_INHALE) && cmd_limit_arena(player_ptr))
         return;
 
-    if (creature_ptr->special_defense & (KATA_MUSOU | KATA_KOUKIJIN))
-        set_action(creature_ptr, ACTION_NONE);
+    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStance::MUSOU, SamuraiStance::KOUKIJIN });
 
     concptr q = _("どの薬を飲みますか? ", "Quaff which potion? ");
     concptr s = _("飲める薬がない。", "You have no potions to quaff.");
 
     OBJECT_IDX item;
-    if (!choose_object(creature_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(item_tester_hook_quaff, creature_ptr)))
+    if (!choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(item_tester_hook_quaff, player_ptr)))
         return;
 
-    exe_quaff_potion(creature_ptr, item);
+    ObjectQuaffEntity(player_ptr).execute(item);
 }

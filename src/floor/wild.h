@@ -2,6 +2,8 @@
 
 #include "system/angband.h"
 
+#include <vector>
+
 #define NO_TOWN 6
 #define SECRET_TOWN 5
 
@@ -36,14 +38,14 @@ typedef struct wilderness_type {
 	byte entrance;
 } wilderness_type;
 
-extern wilderness_type **wilderness;
+extern std::vector<std::vector<wilderness_type>> wilderness;
 
 class player_type;
 void set_floor_and_wall(DUNGEON_IDX type);
-void wilderness_gen(player_type *creature_ptr);
-void wilderness_gen_small(player_type *creature_ptr);
+void wilderness_gen(player_type *player_ptr);
+void wilderness_gen_small(player_type *player_ptr);
 errr init_wilderness(void);
 void init_wilderness_terrains(void);
 void seed_wilderness(void);
-parse_error_type parse_line_wilderness(player_type *creature_ptr, char *buf, int xmin, int xmax, int *y, int *x);
-bool change_wild_mode(player_type *creature_ptr, bool encount);
+parse_error_type parse_line_wilderness(player_type *player_ptr, char *buf, int xmin, int xmax, int *y, int *x);
+bool change_wild_mode(player_type *player_ptr, bool encount);

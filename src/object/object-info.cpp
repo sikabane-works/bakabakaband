@@ -43,14 +43,13 @@
 static concptr item_activation_dragon_breath(object_type *o_ptr)
 {
     static char desc[256];
-    TrFlags flgs; /* for resistance flags */
     int n = 0;
 
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
     strcpy(desc, _("", "breathe "));
 
     for (int i = 0; dragonbreath_info[i].flag != 0; i++) {
-        if (has_flag(flgs, dragonbreath_info[i].flag)) {
+        if (flgs.has(dragonbreath_info[i].flag)) {
             if (n > 0)
                 strcat(desc, _("、", ", "));
 
@@ -72,57 +71,62 @@ static concptr item_activation_aux(object_type *o_ptr)
 {
     static char activation_detail[512];
     char timeout[64];
-    const activation_type *const act_ptr = find_activation_info(o_ptr);
-
-    if (!act_ptr)
+    auto tmp_act_ptr = find_activation_info(o_ptr);
+    if (!tmp_act_ptr.has_value()) {
         return _("未定義", "something undefined");
+    }
 
+    auto *act_ptr = tmp_act_ptr.value();
     concptr desc = act_ptr->desc;
     switch (act_ptr->index) {
-    case ACT_BR_FIRE:
+    case RandomArtActType::NONE:
+        break;
+    case RandomArtActType::BR_FIRE:
         if ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_FLAMES))
             desc = _("火炎のブレス (200) と火への耐性", "breathe fire (200) and resist fire");
         break;
-    case ACT_BR_COLD:
+    case RandomArtActType::BR_COLD:
         if ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_ICE))
             desc = _("冷気のブレス (200) と冷気への耐性", "breathe cold (200) and resist cold");
         break;
-    case ACT_BR_DRAGON:
+    case RandomArtActType::BR_DRAGON:
         desc = item_activation_dragon_breath(o_ptr);
         break;
-    case ACT_AGGRAVATE:
+    case RandomArtActType::AGGRAVATE:
         if (o_ptr->name1 == ART_HYOUSIGI)
             desc = _("拍子木を打ちならす", "beat wooden clappers");
         break;
-    case ACT_ACID_BALL_AND_RESISTANCE:
+    case RandomArtActType::ACID_BALL_AND_RESISTANCE:
         desc = _("アシッド・ボール (100) と酸への耐性", "ball of acid (100) and resist acid");
         break;
-    case ACT_FIRE_BALL_AND_RESISTANCE:
+    case RandomArtActType::FIRE_BALL_AND_RESISTANCE:
         desc = _("ファイア・ボール (100) と火への耐性", "ball of fire (100) and resist fire");
         break;
-    case ACT_COLD_BALL_AND_RESISTANCE:
+    case RandomArtActType::COLD_BALL_AND_RESISTANCE:
         desc = _("アイス・ボール (100) と冷気への耐性", "ball of cold (100) and resist cold");
         break;
-    case ACT_ELEC_BALL_AND_RESISTANCE:
+    case RandomArtActType::ELEC_BALL_AND_RESISTANCE:
         desc = _("サンダー・ボール (100) と電撃への耐性", "ball of elec (100) and resist elec");
         break;
-    case ACT_POIS_BALL_AND_RESISTANCE:
+    case RandomArtActType::POIS_BALL_AND_RESISTANCE:
         desc = _("ポイズン・ボール (100) と毒への耐性", "ball of poison (100) and resist elec");
         break;
-    case ACT_RESIST_ACID:
+    case RandomArtActType::RESIST_ACID:
         desc = _("一時的な酸への耐性", "temporary resist acid");
         break;
-    case ACT_RESIST_FIRE:
+    case RandomArtActType::RESIST_FIRE:
         desc = _("一時的な火への耐性", "temporary resist fire");
         break;
-    case ACT_RESIST_COLD:
+    case RandomArtActType::RESIST_COLD:
         desc = _("一時的な冷気への耐性", "temporary resist cold");
         break;
-    case ACT_RESIST_ELEC:
+    case RandomArtActType::RESIST_ELEC:
         desc = _("一時的な電撃への耐性", "temporary resist elec");
         break;
-    case ACT_RESIST_POIS:
+    case RandomArtActType::RESIST_POIS:
         desc = _("一時的な毒への耐性", "temporary resist elec");
+        break;
+    default:
         break;
     }
 
@@ -135,16 +139,16 @@ static concptr item_activation_aux(object_type *o_ptr)
     } else if (constant < 0) {
         /* Activations that have special timeout */
         switch (act_ptr->index) {
-        case ACT_BR_FIRE:
+        case RandomArtActType::BR_FIRE:
             sprintf(timeout, _("%d ターン毎", "every %d turns"), ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_FLAMES)) ? 200 : 250);
             break;
-        case ACT_BR_COLD:
+        case RandomArtActType::BR_COLD:
             sprintf(timeout, _("%d ターン毎", "every %d turns"), ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_ICE)) ? 200 : 250);
             break;
-        case ACT_TERROR:
+        case RandomArtActType::TERROR:
             strcpy(timeout, _("3*(レベル+10) ターン毎", "every 3 * (level+10) turns"));
             break;
-        case ACT_MURAMASA:
+        case RandomArtActType::MURAMASA:
             strcpy(timeout, _("確率50%で壊れる", "(destroyed 50%)"));
             break;
         default:
@@ -165,18 +169,17 @@ static concptr item_activation_aux(object_type *o_ptr)
 
 /*!
  * @brief オブジェクトの発動効果名称を返す（メインルーチン） /
- * Determine the "Activation" (if any) for an artifact Return a string, or NULL for "no activation"
+ * Determine the "Activation" (if any) for an artifact Return a string, or nullptr for "no activation"
  * @param o_ptr 名称を取得する元のオブジェクト構造体参照ポインタ
  * @return concptr 発動名称を返す文字列ポインタ
  */
 concptr activation_explanation(object_type *o_ptr)
 {
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
-    if (!(has_flag(flgs, TR_ACTIVATE)) && !(has_flag(flgs, TR_INVEN_ACTIVATE)))
+    auto flgs = object_flags(o_ptr);
+    if (!(flgs.has(TR_ACTIVATE)) && !(flgs.has(TR_INVEN_ACTIVATE)))
         return (_("なし", "nothing"));
 
-    if (activation_index(o_ptr)) {
+    if (activation_index(o_ptr) > RandomArtActType::NONE) {
         return item_activation_aux(o_ptr);
     }
 
@@ -222,25 +225,25 @@ char index_to_label(int i) { return (i < INVEN_MAIN_HAND) ? (I2A(i)) : (I2A(i - 
  * @param o_ptr 名称を取得する元のオブジェクト構造体参照ポインタ
  * @return 対応する装備部位ID
  */
-int16_t wield_slot(player_type *owner_ptr, const object_type *o_ptr)
+int16_t wield_slot(player_type *player_ptr, const object_type *o_ptr)
 {
     switch (o_ptr->tval) {
     case TV_DIGGING:
     case TV_HAFTED:
     case TV_POLEARM:
     case TV_SWORD: {
-        if (!owner_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
+        if (!player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
             return (INVEN_MAIN_HAND);
-        if (owner_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
+        if (player_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
             return (INVEN_MAIN_HAND);
         return (INVEN_SUB_HAND);
     }
     case TV_CAPTURE:
     case TV_CARD:
     case TV_SHIELD: {
-        if (!owner_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
+        if (!player_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
             return (INVEN_SUB_HAND);
-        if (owner_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
+        if (player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
             return (INVEN_SUB_HAND);
         return (INVEN_MAIN_HAND);
     }
@@ -248,7 +251,7 @@ int16_t wield_slot(player_type *owner_ptr, const object_type *o_ptr)
         return (INVEN_BOW);
     }
     case TV_RING: {
-        if (!owner_ptr->inventory_list[INVEN_MAIN_RING].k_idx)
+        if (!player_ptr->inventory_list[INVEN_MAIN_RING].k_idx)
             return (INVEN_MAIN_RING);
 
         return (INVEN_SUB_RING);
@@ -293,24 +296,24 @@ int16_t wield_slot(player_type *owner_ptr, const object_type *o_ptr)
  * @param book_sval ベースアイテムのsval
  * @return 使用可能な魔法書ならばTRUEを返す。
  */
-bool check_book_realm(player_type *owner_ptr, const tval_type book_tval, const OBJECT_SUBTYPE_VALUE book_sval)
+bool check_book_realm(player_type *player_ptr, const tval_type book_tval, const OBJECT_SUBTYPE_VALUE book_sval)
 {
     if (book_tval < TV_LIFE_BOOK)
         return false;
-    if (owner_ptr->pclass == CLASS_SORCERER) {
+    if (player_ptr->pclass == CLASS_SORCERER) {
         return is_magic(tval2realm(book_tval));
-    } else if (owner_ptr->pclass == CLASS_RED_MAGE) {
+    } else if (player_ptr->pclass == CLASS_RED_MAGE) {
         if (is_magic(tval2realm(book_tval)))
             return ((book_tval == TV_ARCANE_BOOK) || (book_sval < 2));
     }
 
-    return (get_realm1_book(owner_ptr) == book_tval || get_realm2_book(owner_ptr) == book_tval);
+    return (get_realm1_book(player_ptr) == book_tval || get_realm2_book(player_ptr) == book_tval);
 }
 
-object_type *ref_item(player_type *owner_ptr, INVENTORY_IDX item)
+object_type *ref_item(player_type *player_ptr, INVENTORY_IDX item)
 {
-    floor_type *floor_ptr = owner_ptr->current_floor_ptr;
-    return item >= 0 ? &owner_ptr->inventory_list[item] : &(floor_ptr->o_list[0 - item]);
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    return item >= 0 ? &player_ptr->inventory_list[item] : &(floor_ptr->o_list[0 - item]);
 }
 
 /*

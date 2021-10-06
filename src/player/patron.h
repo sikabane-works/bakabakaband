@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "system/angband.h"
-#include "player-ability/player-ability-types.h"
 #include <string>
 #include <vector>
 
@@ -48,25 +47,26 @@ enum patron_reward {
 };
 
 class player_type;
+enum player_ability_type : int;
 
 /*!
  * @brief パトロン情報の定義
  */
 class Patron {
-
 public:
-    std::string name = ""; //!< パトロン名
-    Patron(const char *_name, const char *_ename, const player_ability_type _boost_stat);
+    std::string name; //!< パトロン名
 #ifdef JP
-    std::string ename = ""; //!< PatronName
-    Patron(const char *name, const char *ename, const std::vector<patron_reward> reward_table, const player_ability_type boost_stat);
+    std::string ename; //!< PatronName
+    Patron(const char *name, const char *ename, std::vector<patron_reward> reward_table, const player_ability_type boost_stat, player_type *player_ptr);
 #else
-    Patron(const char *name, const std::vector<patron_reward>, const player_ability_type boost_stat);
+    Patron(const char *name, std::vector<patron_reward> reward_table, const player_ability_type boost_stat, player_type *player_ptr);
 #endif
-    std::vector<patron_reward> reward_table = {}; //!< 報酬テーブル
-    player_ability_type boost_stat = player_ability_type::A_STR; //!< 強化能力値傾向
-    void GainLevelReward(player_type *creature_ptr, int chosen_reward);
-    void AdmireFromPatron(player_type *creature_ptr);
+    std::vector<patron_reward> reward_table; //!< 報酬テーブル
+    player_ability_type boost_stat; //!< 強化能力値傾向
+    player_type *player_ptr; //!< プレイヤー参照ポインタ
+    void gain_level_reward(int chosen_reward) const;
+    void admire() const;
+    virtual ~Patron() = default;
 };
 
-extern std::vector<Patron> patron_list;
+extern const std::vector<Patron> patron_list;

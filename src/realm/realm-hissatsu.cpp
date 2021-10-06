@@ -52,25 +52,27 @@
 #include "target/projection-path-calculator.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-cut.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 
 /*!
  * @brief 剣術の各処理を行う
- * @param caster_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param spell 剣術ID
  * @param mode 処理内容 (SPELL_NAME / SPELL_DESC / SPELL_CAST)
- * @return SPELL_NAME / SPELL_DESC 時には文字列ポインタを返す。SPELL_CAST時はNULL文字列を返す。
+ * @return SPELL_NAME / SPELL_DESC 時には文字列ポインタを返す。SPELL_CAST時はnullptr文字列を返す。
  */
-concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
+concptr do_hissatsu_spell(player_type *player_ptr, SPELL_IDX spell, spell_type mode)
 {
-    bool name = (mode == SPELL_NAME) ? true : false;
-    bool desc = (mode == SPELL_DESC) ? true : false;
-    bool cast = (mode == SPELL_CAST) ? true : false;
+    bool name = mode == SPELL_NAME;
+    bool desc = mode == SPELL_DESCRIPTION;
+    bool cast = mode == SPELL_CAST;
 
     DIRECTION dir;
-    PLAYER_LEVEL plev = caster_ptr->lev;
+    PLAYER_LEVEL plev = player_ptr->lev;
 
     switch (spell) {
     case 0:
@@ -81,10 +83,10 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
         if (cast) {
             project_length = 2;
-            if (!get_aim_dir(caster_ptr, &dir))
-                return NULL;
+            if (!get_aim_dir(player_ptr, &dir))
+                return nullptr;
 
-            project_hook(caster_ptr, GF_ATTACK, dir, HISSATSU_2, PROJECT_STOP | PROJECT_KILL);
+            project_hook(player_ptr, GF_ATTACK, dir, HISSATSU_2, PROJECT_STOP | PROJECT_KILL);
         }
         break;
 
@@ -98,10 +100,10 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
             DIRECTION cdir;
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
             for (cdir = 0; cdir < 8; cdir++) {
                 if (cdd[cdir] == dir)
@@ -109,26 +111,26 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
             }
 
             if (cdir == 8)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy_cdd[cdir];
-            x = caster_ptr->x + ddx_cdd[cdir];
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
+            y = player_ptr->y + ddy_cdd[cdir];
+            x = player_ptr->x + ddx_cdd[cdir];
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
             else
                 msg_print(_("攻撃は空を切った。", "You attack the empty air."));
 
-            y = caster_ptr->y + ddy_cdd[(cdir + 7) % 8];
-            x = caster_ptr->x + ddx_cdd[(cdir + 7) % 8];
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
+            y = player_ptr->y + ddy_cdd[(cdir + 7) % 8];
+            x = player_ptr->x + ddx_cdd[(cdir + 7) % 8];
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
             else
                 msg_print(_("攻撃は空を切った。", "You attack the empty air."));
 
-            y = caster_ptr->y + ddy_cdd[(cdir + 1) % 8];
-            x = caster_ptr->x + ddx_cdd[(cdir + 1) % 8];
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
+            y = player_ptr->y + ddy_cdd[(cdir + 1) % 8];
+            x = player_ptr->x + ddx_cdd[(cdir + 1) % 8];
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
             else
                 msg_print(_("攻撃は空を切った。", "You attack the empty air."));
         }
@@ -142,8 +144,8 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
                 "武器を手元に戻ってくるように投げる。戻ってこないこともある。", "Throws current weapon. It'll return to your hand unless the action failed.");
 
         if (cast) {
-            if (!ThrowCommand(caster_ptr).do_cmd_throw(1, true, -1))
-                return NULL;
+            if (!ThrowCommand(player_ptr).do_cmd_throw(1, true, -1))
+                return nullptr;
         }
         break;
 
@@ -156,19 +158,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_FIRE);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_FIRE);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -180,7 +182,7 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
             return _("近くの思考することができるモンスターを感知する。", "Detects all monsters except the mindless in your vicinity.");
 
         if (cast) {
-            detect_monsters_mind(caster_ptr, DETECT_RAD_DEFAULT);
+            detect_monsters_mind(player_ptr, DETECT_RAD_DEFAULT);
         }
         break;
 
@@ -193,19 +195,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_MINEUCHI);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_MINEUCHI);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -218,12 +220,12 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
                 "Prepares to counterattack. When attacked by a monster, strikes back using SP each time.");
 
         if (cast) {
-            if (caster_ptr->riding) {
+            if (player_ptr->riding) {
                 msg_print(_("乗馬中には無理だ。", "You cannot do it when riding."));
-                return NULL;
+                return nullptr;
             }
             msg_print(_("相手の攻撃に対して身構えた。", "You prepare to counterattack."));
-            caster_ptr->counter = true;
+            player_ptr->counter = true;
         }
         break;
 
@@ -237,37 +239,37 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (caster_ptr->riding) {
+            if (player_ptr->riding) {
                 msg_print(_("乗馬中には無理だ。", "You cannot do it when riding."));
-                return NULL;
+                return nullptr;
             }
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
 
             if (dir == 5)
-                return NULL;
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+                return nullptr;
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (!caster_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+            if (!player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
 
-            do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
+            do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
 
-            if (!player_can_enter(caster_ptr, caster_ptr->current_floor_ptr->grid_array[y][x].feat, 0)
-                || is_trap(caster_ptr, caster_ptr->current_floor_ptr->grid_array[y][x].feat))
+            if (!player_can_enter(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat, 0)
+                || is_trap(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat))
                 break;
 
             y += ddy[dir];
             x += ddx[dir];
 
-            if (player_can_enter(caster_ptr, caster_ptr->current_floor_ptr->grid_array[y][x].feat, 0)
-                && !is_trap(caster_ptr, caster_ptr->current_floor_ptr->grid_array[y][x].feat) && !caster_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
-                msg_print(NULL);
-                (void)move_player_effect(caster_ptr, y, x, MPE_FORGET_FLOW | MPE_HANDLE_STUFF | MPE_DONT_PICKUP);
+            if (player_can_enter(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat, 0)
+                && !is_trap(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat) && !player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+                msg_print(nullptr);
+                (void)move_player_effect(player_ptr, y, x, MPE_FORGET_FLOW | MPE_HANDLE_STUFF | MPE_DONT_PICKUP);
             }
         }
         break;
@@ -281,19 +283,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_POISON);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_POISON);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -308,19 +310,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_ZANMA);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_ZANMA);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -334,37 +336,37 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
-            if (d_info[caster_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
+            if (d_info[player_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
                 return "";
             }
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
                 int i;
                 POSITION ty = y, tx = x;
                 POSITION oy = y, ox = x;
-                MONSTER_IDX m_idx = caster_ptr->current_floor_ptr->grid_array[y][x].m_idx;
-                monster_type *m_ptr = &caster_ptr->current_floor_ptr->m_list[m_idx];
+                MONSTER_IDX m_idx = player_ptr->current_floor_ptr->grid_array[y][x].m_idx;
+                monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
                 GAME_TEXT m_name[MAX_NLEN];
 
-                monster_desc(caster_ptr, m_name, m_ptr, 0);
+                monster_desc(player_ptr, m_name, m_ptr, 0);
 
                 for (i = 0; i < 5; i++) {
                     y += ddy[dir];
                     x += ddx[dir];
-                    if (is_cave_empty_bold(caster_ptr, y, x)) {
+                    if (is_cave_empty_bold(player_ptr, y, x)) {
                         ty = y;
                         tx = x;
                     } else
@@ -372,17 +374,17 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
                 }
                 if ((ty != oy) || (tx != ox)) {
                     msg_format(_("%sを吹き飛ばした！", "You blow %s away!"), m_name);
-                    caster_ptr->current_floor_ptr->grid_array[oy][ox].m_idx = 0;
-                    caster_ptr->current_floor_ptr->grid_array[ty][tx].m_idx = m_idx;
+                    player_ptr->current_floor_ptr->grid_array[oy][ox].m_idx = 0;
+                    player_ptr->current_floor_ptr->grid_array[ty][tx].m_idx = m_idx;
                     m_ptr->fy = ty;
                     m_ptr->fx = tx;
 
-                    update_monster(caster_ptr, m_idx, true);
-                    lite_spot(caster_ptr, oy, ox);
-                    lite_spot(caster_ptr, ty, tx);
+                    update_monster(player_ptr, m_idx, true);
+                    lite_spot(player_ptr, oy, ox);
+                    lite_spot(player_ptr, ty, tx);
 
                     if (r_info[m_ptr->r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK))
-                        caster_ptr->update |= (PU_MON_LITE);
+                        player_ptr->update |= (PU_MON_LITE);
                 }
             }
         }
@@ -397,11 +399,11 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
         if (cast) {
             if (plev > 44) {
-                if (!identify_fully(caster_ptr, true))
-                    return NULL;
+                if (!identify_fully(player_ptr, true))
+                    return nullptr;
             } else {
-                if (!ident_spell(caster_ptr, true))
-                    return NULL;
+                if (!ident_spell(player_ptr, true))
+                    return nullptr;
             }
         }
         break;
@@ -415,23 +417,23 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_HAGAN);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_HAGAN);
 
-            if (!cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF::HURT_ROCK))
+            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FF::HURT_ROCK))
                 break;
 
             /* Destroy the feature */
-            cave_alter_feat(caster_ptr, y, x, FF::HURT_ROCK);
-            caster_ptr->update |= (PU_FLOW);
+            cave_alter_feat(player_ptr, y, x, FF::HURT_ROCK);
+            player_ptr->update |= (PU_FLOW);
         }
         break;
 
@@ -445,19 +447,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_COLD);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_COLD);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -472,19 +474,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_KYUSHO);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_KYUSHO);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -498,19 +500,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_MAJIN);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_MAJIN);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -525,21 +527,21 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_SUTEMI);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_SUTEMI);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
-            caster_ptr->sutemi = true;
+            player_ptr->sutemi = true;
         }
         break;
 
@@ -552,19 +554,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_ELEC);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_ELEC);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -576,49 +578,47 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
             return _("素早く相手に近寄り攻撃する。", "Steps close to a monster and attacks at the same time.");
 
         if (cast) {
-            if (!rush_attack(caster_ptr, NULL))
-                return NULL;
+            if (!rush_attack(player_ptr, nullptr))
+                return nullptr;
         }
         break;
 
     case 19:
-        if (name)
+        if (name) {
             return _("赤流渦", "Bloody Maelstrom");
-        if (desc)
+        }
+
+        if (desc) {
             return _("自分自身も傷を作りつつ、その傷が深いほど大きい威力で全方向の敵を攻撃できる。生きていないモンスターには効果がない。",
                 "Attacks all adjacent monsters with power corresponding to your cuts. Then increases your cuts. Has no effect on unliving monsters.");
+        }
 
         if (cast) {
             POSITION y = 0, x = 0;
-
-            grid_type *g_ptr;
-            monster_type *m_ptr;
-
-            if (caster_ptr->cut < 300)
-                set_cut(caster_ptr, caster_ptr->cut + 300);
-            else
-                set_cut(caster_ptr, caster_ptr->cut * 2);
-
+            auto current_cut = player_ptr->effects()->cut()->current();
+            short new_cut = current_cut < 300 ? current_cut + 300 : current_cut * 2;
+            (void)BadStatusSetter(player_ptr).cut(new_cut);
             for (dir = 0; dir < 8; dir++) {
-                y = caster_ptr->y + ddy_ddd[dir];
-                x = caster_ptr->x + ddx_ddd[dir];
-                g_ptr = &caster_ptr->current_floor_ptr->grid_array[y][x];
-                m_ptr = &caster_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
-
-                /* Hack -- attack monsters */
-                if (g_ptr->m_idx && (m_ptr->ml || cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF::PROJECT))) {
-                    if (!monster_living(m_ptr->r_idx)) {
-                        GAME_TEXT m_name[MAX_NLEN];
-
-                        monster_desc(caster_ptr, m_name, m_ptr, 0);
-                        msg_format(_("%sには効果がない！", "%s is unharmed!"), m_name);
-                    } else
-                        do_cmd_attack(caster_ptr, y, x, HISSATSU_SEKIRYUKA);
+                y = player_ptr->y + ddy_ddd[dir];
+                x = player_ptr->x + ddx_ddd[dir];
+                auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+                auto *m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
+                if ((g_ptr->m_idx == 0) || (!m_ptr->ml && !cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FF::PROJECT))) {
+                    continue;
                 }
+
+                if (monster_living(m_ptr->r_idx)) {
+                    do_cmd_attack(player_ptr, y, x, HISSATSU_SEKIRYUKA);
+                    continue;
+                }
+                    
+                GAME_TEXT m_name[MAX_NLEN];
+                monster_desc(player_ptr, m_name, m_ptr, 0);
+                msg_format(_("%sには効果がない！", "%s is unharmed!"), m_name);
             }
         }
-        break;
 
+        break;
     case 20:
         if (name)
             return _("激震撃", "Earthquake Blow");
@@ -628,18 +628,18 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_QUAKE);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_QUAKE);
             else
-                earthquake(caster_ptr, caster_ptr->y, caster_ptr->x, 10, 0);
+                earthquake(player_ptr, player_ptr->y, player_ptr->x, 10, 0);
         }
         break;
 
@@ -651,36 +651,35 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
         if (cast) {
             int total_damage = 0, basedam, i;
-            TrFlags flgs;
             object_type *o_ptr;
-            if (!get_aim_dir(caster_ptr, &dir))
-                return NULL;
+            if (!get_aim_dir(player_ptr, &dir))
+                return nullptr;
             msg_print(_("武器を大きく振り下ろした。", "You swing your weapon downward."));
             for (i = 0; i < 2; i++) {
                 int damage;
 
-                if (!has_melee_weapon(caster_ptr, INVEN_MAIN_HAND + i))
+                if (!has_melee_weapon(player_ptr, INVEN_MAIN_HAND + i))
                     break;
-                o_ptr = &caster_ptr->inventory_list[INVEN_MAIN_HAND + i];
+                o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + i];
                 basedam = (o_ptr->dd * (o_ptr->ds + 1)) * 50;
                 damage = o_ptr->to_d * 100;
-                object_flags(o_ptr, flgs);
+                auto flgs = object_flags(o_ptr);
                 if ((o_ptr->name1 == ART_VORPAL_BLADE) || (o_ptr->name1 == ART_CHAINSWORD)) {
                     /* vorpal blade */
                     basedam *= 5;
                     basedam /= 3;
-                } else if (has_flag(flgs, TR_VORPAL)) {
+                } else if (flgs.has(TR_VORPAL)) {
                     /* vorpal flag only */
                     basedam *= 11;
                     basedam /= 9;
                 }
                 damage += basedam;
-                damage *= caster_ptr->num_blow[i];
+                damage *= player_ptr->num_blow[i];
                 total_damage += damage / 200;
                 if (i)
                     total_damage = total_damage * 7 / 10;
             }
-            fire_beam(caster_ptr, GF_FORCE, dir, total_damage);
+            fire_beam(player_ptr, GF_FORCE, dir, total_damage);
         }
         break;
 
@@ -693,8 +692,8 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
         if (cast) {
             msg_print(_("雄叫びをあげた！", "You roar!"));
-            project_all_los(caster_ptr, GF_SOUND, randint1(plev * 3));
-            aggravate_monsters(caster_ptr, 0);
+            project_all_los(player_ptr, GF_SOUND, randint1(plev * 3));
+            aggravate_monsters(player_ptr, 0);
         }
         break;
 
@@ -707,10 +706,10 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             int i;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
             for (i = 0; i < 3; i++) {
                 POSITION y, x;
@@ -719,18 +718,18 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
                 grid_type *g_ptr;
                 monster_type *m_ptr;
 
-                y = caster_ptr->y + ddy[dir];
-                x = caster_ptr->x + ddx[dir];
-                g_ptr = &caster_ptr->current_floor_ptr->grid_array[y][x];
+                y = player_ptr->y + ddy[dir];
+                x = player_ptr->x + ddx[dir];
+                g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
                 if (g_ptr->m_idx)
-                    do_cmd_attack(caster_ptr, y, x, HISSATSU_3DAN);
+                    do_cmd_attack(player_ptr, y, x, HISSATSU_3DAN);
                 else {
                     msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                    return NULL;
+                    return nullptr;
                 }
 
-                if (d_info[caster_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
+                if (d_info[player_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
                     return "";
                 }
 
@@ -741,32 +740,32 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
                 ny = y + ddy[dir];
                 nx = x + ddx[dir];
                 m_idx = g_ptr->m_idx;
-                m_ptr = &caster_ptr->current_floor_ptr->m_list[m_idx];
+                m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
 
                 /* Monster cannot move back? */
-                if (!monster_can_enter(caster_ptr, ny, nx, &r_info[m_ptr->r_idx], 0)) {
+                if (!monster_can_enter(player_ptr, ny, nx, &r_info[m_ptr->r_idx], 0)) {
                     /* -more- */
                     if (i < 2)
-                        msg_print(NULL);
+                        msg_print(nullptr);
                     continue;
                 }
 
                 g_ptr->m_idx = 0;
-                caster_ptr->current_floor_ptr->grid_array[ny][nx].m_idx = m_idx;
+                player_ptr->current_floor_ptr->grid_array[ny][nx].m_idx = m_idx;
                 m_ptr->fy = ny;
                 m_ptr->fx = nx;
 
-                update_monster(caster_ptr, m_idx, true);
+                update_monster(player_ptr, m_idx, true);
 
                 /* Redraw the old spot */
-                lite_spot(caster_ptr, y, x);
+                lite_spot(player_ptr, y, x);
 
                 /* Redraw the new spot */
-                lite_spot(caster_ptr, ny, nx);
+                lite_spot(player_ptr, ny, nx);
 
                 /* Player can move forward? */
-                if (player_can_enter(caster_ptr, g_ptr->feat, 0)) {
-                    if (!move_player_effect(caster_ptr, y, x, MPE_FORGET_FLOW | MPE_HANDLE_STUFF | MPE_DONT_PICKUP))
+                if (player_can_enter(player_ptr, g_ptr->feat, 0)) {
+                    if (!move_player_effect(player_ptr, y, x, MPE_FORGET_FLOW | MPE_HANDLE_STUFF | MPE_DONT_PICKUP))
                         break;
                 } else {
                     break;
@@ -774,7 +773,7 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
                 /* -more- */
                 if (i < 2)
-                    msg_print(NULL);
+                    msg_print(nullptr);
             }
         }
         break;
@@ -789,19 +788,19 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_DRAIN);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_DRAIN);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -814,7 +813,7 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
 
         if (cast) {
             msg_print(_("武器を不規則に揺らした．．．", "You irregularly wave your weapon..."));
-            project_all_los(caster_ptr, GF_ENGETSU, plev * 4);
+            project_all_los(player_ptr, GF_ENGETSU, plev * 4);
         }
         break;
 
@@ -831,28 +830,28 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
             bool mdeath;
 
             do {
-                if (!rush_attack(caster_ptr, &mdeath))
+                if (!rush_attack(player_ptr, &mdeath))
                     break;
                 if (is_new) {
                     /* Reserve needed mana point */
-                    caster_ptr->csp -= technic_info[REALM_HISSATSU - MIN_TECHNIC][26].smana;
+                    player_ptr->csp -= technic_info[REALM_HISSATSU - MIN_TECHNIC][26].smana;
                     is_new = false;
                 } else
-                    caster_ptr->csp -= mana_cost_per_monster;
+                    player_ptr->csp -= mana_cost_per_monster;
 
                 if (!mdeath)
                     break;
                 command_dir = 0;
 
-                caster_ptr->redraw |= PR_MANA;
-                handle_stuff(caster_ptr);
-            } while (caster_ptr->csp > mana_cost_per_monster);
+                player_ptr->redraw |= PR_MANA;
+                handle_stuff(player_ptr);
+            } while (player_ptr->csp > mana_cost_per_monster);
 
             if (is_new)
-                return NULL;
+                return nullptr;
 
             /* Restore reserved mana */
-            caster_ptr->csp += technic_info[REALM_HISSATSU - MIN_TECHNIC][26].smana;
+            player_ptr->csp += technic_info[REALM_HISSATSU - MIN_TECHNIC][26].smana;
         }
         break;
 
@@ -866,20 +865,20 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!tgt_pt(caster_ptr, &x, &y))
-                return NULL;
+            if (!tgt_pt(player_ptr, &x, &y))
+                return nullptr;
 
-            if (!cave_player_teleportable_bold(caster_ptr, y, x, TELEPORT_SPONTANEOUS) || (distance(y, x, caster_ptr->y, caster_ptr->x) > MAX_SIGHT / 2)
-                || !projectable(caster_ptr, caster_ptr->y, caster_ptr->x, y, x)) {
+            if (!cave_player_teleportable_bold(player_ptr, y, x, TELEPORT_SPONTANEOUS) || (distance(y, x, player_ptr->y, player_ptr->x) > MAX_SIGHT / 2)
+                || !projectable(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
                 msg_print(_("失敗！", "You cannot move to that place!"));
                 break;
             }
-            if (caster_ptr->anti_tele) {
+            if (player_ptr->anti_tele) {
                 msg_print(_("不思議な力がテレポートを防いだ！", "A mysterious force prevents you from teleporting!"));
                 break;
             }
-            project(caster_ptr, 0, 0, y, x, HISSATSU_ISSEN, GF_ATTACK, PROJECT_BEAM | PROJECT_KILL);
-            teleport_player_to(caster_ptr, y, x, TELEPORT_SPONTANEOUS);
+            project(player_ptr, 0, 0, y, x, HISSATSU_ISSEN, GF_ATTACK, PROJECT_BEAM | PROJECT_KILL);
+            teleport_player_to(player_ptr, y, x, TELEPORT_SPONTANEOUS);
         }
         break;
 
@@ -892,21 +891,21 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION x, y;
 
-            if (!get_rep_dir(caster_ptr, &dir, false))
-                return NULL;
+            if (!get_rep_dir(player_ptr, &dir, false))
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
-                if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
-                    handle_stuff(caster_ptr);
-                    do_cmd_attack(caster_ptr, y, x, HISSATSU_NONE);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+                do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
+                if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+                    handle_stuff(player_ptr);
+                    do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
                 }
             } else {
                 msg_print(_("その方向にはモンスターはいません。", "You don't see any monster in this direction"));
-                return NULL;
+                return nullptr;
             }
         }
         break;
@@ -920,45 +919,44 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             int total_damage = 0, basedam, i;
             POSITION y, x;
-            TrFlags flgs;
             object_type *o_ptr;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (d_info[caster_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
+            if (d_info[player_ptr->dungeon_idx].flags.has(DF::NO_MELEE)) {
                 msg_print(_("なぜか攻撃することができない。", "Something prevents you from attacking."));
                 return "";
             }
             msg_print(_("武器を大きく振り下ろした。", "You swing your weapon downward."));
             for (i = 0; i < 2; i++) {
                 int damage;
-                if (!has_melee_weapon(caster_ptr, INVEN_MAIN_HAND + i))
+                if (!has_melee_weapon(player_ptr, INVEN_MAIN_HAND + i))
                     break;
-                o_ptr = &caster_ptr->inventory_list[INVEN_MAIN_HAND + i];
+                o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + i];
                 basedam = (o_ptr->dd * (o_ptr->ds + 1)) * 50;
                 damage = o_ptr->to_d * 100;
-                object_flags(o_ptr, flgs);
+                auto flgs = object_flags(o_ptr);
                 if ((o_ptr->name1 == ART_VORPAL_BLADE) || (o_ptr->name1 == ART_CHAINSWORD)) {
                     /* vorpal blade */
                     basedam *= 5;
                     basedam /= 3;
-                } else if (has_flag(flgs, TR_VORPAL)) {
+                } else if (flgs.has(TR_VORPAL)) {
                     /* vorpal flag only */
                     basedam *= 11;
                     basedam /= 9;
                 }
                 damage += basedam;
-                damage += caster_ptr->to_d[i] * 100;
-                damage *= caster_ptr->num_blow[i];
+                damage += player_ptr->to_d[i] * 100;
+                damage *= player_ptr->num_blow[i];
                 total_damage += (damage / 100);
             }
-            project(caster_ptr, 0, (cave_has_flag_bold(caster_ptr->current_floor_ptr, y, x, FF::PROJECT) ? 5 : 0), y, x, total_damage * 3 / 2, GF_METEOR,
+            project(player_ptr, 0, (cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FF::PROJECT) ? 5 : 0), y, x, total_damage * 3 / 2, GF_METEOR,
                 PROJECT_KILL | PROJECT_JUMP | PROJECT_ITEM);
         }
         break;
@@ -973,21 +971,21 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             POSITION y, x;
 
-            if (!get_direction(caster_ptr, &dir, false, false))
-                return NULL;
+            if (!get_direction(player_ptr, &dir, false, false))
+                return nullptr;
             if (dir == 5)
-                return NULL;
+                return nullptr;
 
-            y = caster_ptr->y + ddy[dir];
-            x = caster_ptr->x + ddx[dir];
+            y = player_ptr->y + ddy[dir];
+            x = player_ptr->x + ddx[dir];
 
-            if (caster_ptr->current_floor_ptr->grid_array[y][x].m_idx)
-                do_cmd_attack(caster_ptr, y, x, HISSATSU_UNDEAD);
+            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                do_cmd_attack(player_ptr, y, x, HISSATSU_UNDEAD);
             else {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
-                return NULL;
+                return nullptr;
             }
-            take_hit(caster_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("慶雲鬼忍剣を使った衝撃", "exhaustion on using Keiun-Kininken"));
+            take_hit(player_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("慶雲鬼忍剣を使った衝撃", "exhaustion on using Keiun-Kininken"));
         }
         break;
 
@@ -1000,7 +998,7 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
         if (cast) {
             int i;
             if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? ")))
-                return NULL;
+                return nullptr;
             /* Special Verification for suicide */
             prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
 
@@ -1008,13 +1006,13 @@ concptr do_hissatsu_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type m
             i = inkey();
             prt("", 0, 0);
             if (i != '@')
-                return NULL;
-            if (current_world_ptr->total_winner) {
-                take_hit(caster_ptr, DAMAGE_FORCE, 9999, "Seppuku");
-                current_world_ptr->total_winner = true;
+                return nullptr;
+            if (w_ptr->total_winner) {
+                take_hit(player_ptr, DAMAGE_FORCE, 9999, "Seppuku");
+                w_ptr->total_winner = true;
             } else {
                 msg_print(_("武士道とは、死ぬことと見つけたり。", "The meaning of bushido is found in death."));
-                take_hit(caster_ptr, DAMAGE_FORCE, 9999, "Seppuku");
+                take_hit(player_ptr, DAMAGE_FORCE, 9999, "Seppuku");
             }
         }
         break;

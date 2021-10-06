@@ -51,12 +51,12 @@ WorldTurnProcessor::WorldTurnProcessor(player_type *player_ptr)
 /*!
  * @brief 10ゲームターンが進行する毎にゲーム世界全体の処理を行う。
  * / Handle certain things once every 10 game turns
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
 void WorldTurnProcessor::process_world()
 {
     const int32_t a_day = TURNS_PER_TICK * TOWN_DAWN;
-    int32_t prev_turn_in_today = ((current_world_ptr->game_turn - TURNS_PER_TICK) % a_day + a_day / 4) % a_day;
+    int32_t prev_turn_in_today = ((w_ptr->game_turn - TURNS_PER_TICK) % a_day + a_day / 4) % a_day;
     int prev_min = (1440 * prev_turn_in_today / a_day) % 60;
 
     int dummy_day;
@@ -64,7 +64,7 @@ void WorldTurnProcessor::process_world()
     update_dungeon_feeling(this->player_ptr);
     process_downward();
     process_monster_arena();
-    if (current_world_ptr->game_turn % TURNS_PER_TICK) {
+    if (w_ptr->game_turn % TURNS_PER_TICK) {
         return;
     }
 
@@ -78,7 +78,7 @@ void WorldTurnProcessor::process_world()
     process_world_monsters();
     if (!this->hour && !this->min) {
         if (this->min != prev_min) {
-            exe_write_diary(this->player_ptr, DIARY_DIALY, 0, NULL);
+            exe_write_diary(this->player_ptr, DIARY_DIALY, 0, nullptr);
             determine_daily_bounty(this->player_ptr, false);
         }
     }
@@ -96,6 +96,7 @@ void WorldTurnProcessor::process_world()
     sense_inventory2(this->player_ptr);
     execute_recall(this->player_ptr);
     execute_floor_reset(this->player_ptr);
+    w_ptr->collapse_degree += calc_world_collapse_plus(w_ptr);
 }
 
 /*!
@@ -113,6 +114,17 @@ void WorldTurnProcessor::print_time()
         c_put_str(TERM_WHITE, _("***日目", "Day***"), ROW_DAY, COL_DAY);
 
     c_put_str(TERM_WHITE, format("%2d:%02d", this->hour, this->min), ROW_DAY, COL_DAY + 7);
+}
+
+/*!
+ * @brief 時空崩壊度を表示する /
+ */
+void WorldTurnProcessor::print_world_collapse()
+{
+    c_put_str(TERM_WHITE, "             ", ROW_COLLAPSE, COL_COLLAPSE);
+    c_put_str(TERM_WHITE,
+        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), w_ptr->collapse_degree / 1000000, (w_ptr->collapse_degree / 10000) % 100), ROW_COLLAPSE,
+        COL_COLLAPSE);
 }
 
 void WorldTurnProcessor::process_downward()
@@ -151,7 +163,7 @@ void WorldTurnProcessor::process_monster_arena()
 
     if (number_mon == 0) {
         msg_print(_("相打ちに終わりました。", "Nothing survived."));
-        msg_print(NULL);
+        msg_print(nullptr);
         this->player_ptr->energy_need = 0;
         update_gambling_monsters(this->player_ptr);
         return;
@@ -171,7 +183,7 @@ void WorldTurnProcessor::process_monster_arena_winner(int win_m_idx)
     auto *wm_ptr = &this->player_ptr->current_floor_ptr->m_list[win_m_idx];
     monster_desc(this->player_ptr, m_name, wm_ptr, 0);
     msg_format(_("%sが勝利した！", "%s won!"), m_name);
-    msg_print(NULL);
+    msg_print(nullptr);
 
     if (win_m_idx == (sel_monster + 1)) {
         msg_print(_("おめでとうございます。", "Congratulations."));
@@ -181,7 +193,7 @@ void WorldTurnProcessor::process_monster_arena_winner(int win_m_idx)
         msg_print(_("残念でした。", "You lost gold."));
     }
 
-    msg_print(NULL);
+    msg_print(nullptr);
     this->player_ptr->energy_need = 0;
     update_gambling_monsters(this->player_ptr);
 }
@@ -189,13 +201,13 @@ void WorldTurnProcessor::process_monster_arena_winner(int win_m_idx)
 void WorldTurnProcessor::process_monster_arena_draw()
 {
     auto turn = this->player_ptr->current_floor_ptr->generated_turn;
-    if (current_world_ptr->game_turn - turn != 150 * TURNS_PER_TICK) {
+    if (w_ptr->game_turn - turn != 150 * TURNS_PER_TICK) {
         return;
     }
 
     msg_print(_("申し訳ありませんが、この勝負は引き分けとさせていただきます。", "Sorry, but this battle ended in a draw."));
     this->player_ptr->au += kakekin;
-    msg_print(NULL);
+    msg_print(nullptr);
     this->player_ptr->energy_need = 0;
     update_gambling_monsters(this->player_ptr);
 }
@@ -208,7 +220,7 @@ void WorldTurnProcessor::decide_auto_save()
 
     auto should_save = autosave_t;
     should_save &= !this->player_ptr->phase_out;
-    should_save &= current_world_ptr->game_turn % ((int32_t)autosave_freq * TURNS_PER_TICK) == 0;
+    should_save &= w_ptr->game_turn % ((int32_t)autosave_freq * TURNS_PER_TICK) == 0;
     if (should_save) {
         do_cmd_save_game(this->player_ptr, true);
     }
@@ -218,8 +230,8 @@ void WorldTurnProcessor::process_change_daytime_night()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     if (!floor_ptr->dun_level && !floor_ptr->inside_quest && !this->player_ptr->phase_out && !floor_ptr->inside_arena) {
-        if (!(current_world_ptr->game_turn % ((TURNS_PER_TICK * TOWN_DAWN) / 2))) {
-            auto dawn = current_world_ptr->game_turn % (TURNS_PER_TICK * TOWN_DAWN) == 0;
+        if (!(w_ptr->game_turn % ((TURNS_PER_TICK * TOWN_DAWN) / 2))) {
+            auto dawn = w_ptr->game_turn % (TURNS_PER_TICK * TOWN_DAWN) == 0;
             if (dawn) {
                 day_break(this->player_ptr);
             } else {
@@ -237,7 +249,7 @@ void WorldTurnProcessor::process_change_daytime_night()
         return;
     }
 
-    if ((current_world_ptr->game_turn % (TURNS_PER_TICK * STORE_TICKS)) != 0) {
+    if ((w_ptr->game_turn % (TURNS_PER_TICK * STORE_TICKS)) != 0) {
         return;
     }
 
@@ -247,11 +259,11 @@ void WorldTurnProcessor::process_change_daytime_night()
 void WorldTurnProcessor::process_world_monsters()
 {
     decide_alloc_monster();
-    if (!(current_world_ptr->game_turn % (TURNS_PER_TICK * 10)) && !this->player_ptr->phase_out) {
+    if (!(w_ptr->game_turn % (TURNS_PER_TICK * 10)) && !this->player_ptr->phase_out) {
         regenerate_monsters(this->player_ptr);
     }
 
-    if (!(current_world_ptr->game_turn % (TURNS_PER_TICK * 3))) {
+    if (!(w_ptr->game_turn % (TURNS_PER_TICK * 3))) {
         regenerate_captured_monsters(this->player_ptr);
     }
 
@@ -280,17 +292,16 @@ void WorldTurnProcessor::shuffle_shopkeeper()
         }
     } while (true);
 
-    for (auto i = 1; i < max_f_idx; i++) {
-        auto *f_ptr = &f_info[i];
-        if (f_ptr->name.empty() || f_ptr->flags.has_not(FF::STORE))
+    for (const auto &f_ref : f_info) {
+        if (f_ref.name.empty() || f_ref.flags.has_not(FF::STORE))
             continue;
 
-        if (f_ptr->subtype != n) {
+        if (f_ref.subtype != n) {
             continue;
         }
 
         if (cheat_xtra) {
-            msg_format(_("%sの店主をシャッフルします。", "Shuffle a Shopkeeper of %s."), f_ptr->name.c_str());
+            msg_format(_("%sの店主をシャッフルします。", "Shuffle a Shopkeeper of %s."), f_ref.name.c_str());
         }
 
         store_shuffle(this->player_ptr, n);

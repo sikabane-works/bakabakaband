@@ -1,16 +1,14 @@
 ﻿/*!
- * @file artifact-info.cpp 
+ * @file artifact-info.cpp
  * @brief アーティファクトの発動効果取得関数定義
  */
 
 #include "artifact/artifact-info.h"
 #include "artifact/random-art-effects.h"
-#include "cmd-item/cmd-smith.h"
-#include "mind/mind-weaponsmith.h"
 #include "object-enchant/activation-info-table.h"
 #include "object-enchant/object-ego.h"
+#include "object-enchant/object-smith.h"
 #include "object-enchant/tr-types.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-kind.h"
 #include "system/artifact-type-definition.h"
 #include "system/object-type-definition.h"
@@ -23,33 +21,22 @@
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return 発動効果のIDを返す
  */
-int activation_index(const object_type *o_ptr)
+RandomArtActType activation_index(const object_type *o_ptr)
 {
-    if (object_is_smith(o_ptr)) {
-        switch (o_ptr->xtra3 - 1) {
-        case ESSENCE_TMP_RES_ACID:
-            return ACT_RESIST_ACID;
-        case ESSENCE_TMP_RES_ELEC:
-            return ACT_RESIST_ELEC;
-        case ESSENCE_TMP_RES_FIRE:
-            return ACT_RESIST_FIRE;
-        case ESSENCE_TMP_RES_COLD:
-            return ACT_RESIST_COLD;
-        case TR_EARTHQUAKE:
-            return ACT_QUAKE;
-        }
+    if (auto act_idx = Smith::object_activation(o_ptr); act_idx.has_value()) {
+        return act_idx.value();
     }
 
-    if (object_is_fixed_artifact(o_ptr) && has_flag(a_info[o_ptr->name1].flags, TR_ACTIVATE))
+    if (o_ptr->is_fixed_artifact() && a_info[o_ptr->name1].flags.has(TR_ACTIVATE))
         return a_info[o_ptr->name1].act_idx;
 
-    if (object_is_ego(o_ptr) && has_flag(e_info[o_ptr->name2].flags, TR_ACTIVATE))
+    if (o_ptr->is_ego() && e_info[o_ptr->name2].flags.has(TR_ACTIVATE))
         return e_info[o_ptr->name2].act_idx;
 
-    if (!object_is_random_artifact(o_ptr) && has_flag(k_info[o_ptr->k_idx].flags, TR_ACTIVATE))
+    if (!o_ptr->is_random_artifact() && k_info[o_ptr->k_idx].flags.has(TR_ACTIVATE))
         return k_info[o_ptr->k_idx].act_idx;
 
-    return o_ptr->xtra2;
+    return o_ptr->activation_id;
 }
 
 /*!
@@ -58,13 +45,14 @@ int activation_index(const object_type *o_ptr)
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return 発動効果構造体のポインタを返す
  */
-const activation_type *find_activation_info(const object_type *o_ptr)
+std::optional<const activation_type *> find_activation_info(const object_type *o_ptr)
 {
-    const int index = activation_index(o_ptr);
-    const activation_type *p;
-    for (p = activation_info; p->flag != NULL; ++p)
-        if (p->index == index)
-            return p;
+    const auto index = activation_index(o_ptr);
+    for (const auto &p : activation_info) {
+        if (p.index == index) {
+            return &p;
+        }
+    }
 
-    return NULL;
+    return std::nullopt;
 }

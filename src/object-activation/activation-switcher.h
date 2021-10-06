@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-typedef struct activation_type activation_type;
-typedef struct object_type object_type;
+struct activation_type;
+struct object_type;
 class player_type;
-bool switch_activation(player_type *user_ptr, object_type **o_ptr_ptr, const activation_type *const act_ptr, concptr name);
+bool switch_activation(player_type *player_ptr, object_type **o_ptr_ptr, const activation_type *const act_ptr, concptr name);

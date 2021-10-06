@@ -40,8 +40,9 @@ typedef struct feat_prob {
 
 /* A structure for the != dungeon types */
 typedef struct dungeon_type {
+    DUNGEON_IDX idx{};
 
-	std::string name; /* Name */
+    std::string name; /* Name */
     std::string text; /* Description */
 
 	POSITION dy{};
@@ -90,9 +91,9 @@ typedef struct dungeon_type {
 	int room_rate[ROOM_T_MAX]; /* ダンジョン独自の部屋生成率 */
 } dungeon_type;
 
-extern DEPTH *max_dlv;
+extern std::vector<DEPTH> max_dlv;
 extern std::vector<dungeon_type> d_info;
 
 class player_type;
 DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x);
-bool is_in_dungeon(player_type *creature_ptr);
+bool is_in_dungeon(player_type *player_ptr);

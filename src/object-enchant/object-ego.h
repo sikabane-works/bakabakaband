@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+#include "object-enchant/tr-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trg-types.h"
 #include "system/angband.h"
@@ -231,7 +232,10 @@ struct ego_generate_type {
 /*
  * Information about "ego-items".
  */
+enum class RandomArtActType : short;
 struct ego_item_type {
+    EGO_IDX idx{};
+
     std::string name; //!< エゴの名前
     std::string text; //!< フレーバーテキスト
 
@@ -257,14 +261,13 @@ struct ego_item_type {
     EnumClassFlagGroup<TRG> gen_flags; //!< 生成時適用フラグ
     std::vector<ego_generate_type> xtra_flags{}; //!< 追加能力/耐性フラグ
 
-    IDX act_idx{}; //!< 発動番号 / Activative ability index
+    RandomArtActType act_idx{}; //!< 発動番号 / Activative ability index
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern EGO_IDX max_e_idx;
 extern std::vector<ego_item_type> e_info;
 
-typedef struct object_type object_type;
+struct object_type;
 class player_type;
 byte get_random_ego(byte slot, bool good);
 void apply_ego(object_type *o_ptr, DEPTH lev);

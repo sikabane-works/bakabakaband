@@ -40,7 +40,7 @@ static bool cmd_visuals_aux(int i, IDX *num, IDX max)
         if (!get_string(format("Input new number(0-%d): ", max - 1), str, 4))
             return false;
 
-        IDX tmp = (IDX)strtol(str, NULL, 0);
+        IDX tmp = (IDX)strtol(str, nullptr, 0);
         if (tmp >= 0 && tmp < max)
             *num = tmp;
     } else if (isupper(i))
@@ -75,7 +75,7 @@ static void print_visuals_menu(concptr choice_msg)
 /*
  * Interact with "visuals"
  */
-void do_cmd_visuals(player_type *creature_ptr)
+void do_cmd_visuals(player_type *player_ptr)
 {
     FILE *auto_dump_stream;
     char tmp[160];
@@ -88,7 +88,7 @@ void do_cmd_visuals(player_type *creature_ptr)
     screen_save();
     while (true) {
         term_clear();
-        print_visuals_menu(NULL);
+        print_visuals_menu(nullptr);
         int i = inkey();
         if (i == ESCAPE)
             break;
@@ -97,11 +97,11 @@ void do_cmd_visuals(player_type *creature_ptr)
         case '0': {
             prt(_("コマンド: ユーザー設定ファイルのロード", "Command: Load a user pref file"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 70))
                 continue;
 
-            (void)process_pref_file(creature_ptr, tmp, true);
+            (void)process_pref_file(player_ptr, tmp, true);
             need_redraw = true;
             break;
         }
@@ -109,7 +109,7 @@ void do_cmd_visuals(player_type *creature_ptr)
             static concptr mark = "Monster attr/chars";
             prt(_("コマンド: モンスターの[色/文字]をファイルに書き出します", "Command: Dump monster attr/chars"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 70))
                 continue;
 
@@ -118,13 +118,12 @@ void do_cmd_visuals(player_type *creature_ptr)
                 continue;
 
             auto_dump_printf(auto_dump_stream, _("\n# モンスターの[色/文字]の設定\n\n", "\n# Monster attr/char definitions\n\n"));
-            for (i = 0; i < max_r_idx; i++) {
-                monster_race *r_ptr = &r_info[i];
-                if (r_ptr->name.empty())
+            for (const auto& r_ref : r_info) {
+                if (r_ref.name.empty())
                     continue;
 
-                auto_dump_printf(auto_dump_stream, "# %s\n", r_ptr->name.c_str());
-                auto_dump_printf(auto_dump_stream, "R:%d:0x%02X/0x%02X\n\n", i, (byte)(r_ptr->x_attr), (byte)(r_ptr->x_char));
+                auto_dump_printf(auto_dump_stream, "# %s\n", r_ref.name.c_str());
+                auto_dump_printf(auto_dump_stream, "R:%d:0x%02X/0x%02X\n\n", i, (byte)(r_ref.x_attr), (byte)(r_ref.x_char));
             }
 
             close_auto_dump(&auto_dump_stream, mark);
@@ -135,7 +134,7 @@ void do_cmd_visuals(player_type *creature_ptr)
             static concptr mark = "Object attr/chars";
             prt(_("コマンド: アイテムの[色/文字]をファイルに書き出します", "Command: Dump object attr/chars"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 70))
                 continue;
 
@@ -144,22 +143,21 @@ void do_cmd_visuals(player_type *creature_ptr)
                 continue;
 
             auto_dump_printf(auto_dump_stream, _("\n# アイテムの[色/文字]の設定\n\n", "\n# Object attr/char definitions\n\n"));
-            for (KIND_OBJECT_IDX k_idx = 0; k_idx < max_k_idx; k_idx++) {
+            for (const auto &k_ref : k_info) {
                 GAME_TEXT o_name[MAX_NLEN];
-                object_kind *k_ptr = &k_info[k_idx];
-                if (k_ptr->name.empty())
+                if (k_ref.name.empty())
                     continue;
 
-                if (!k_ptr->flavor) {
-                    strip_name(o_name, k_idx);
+                if (!k_ref.flavor) {
+                    strip_name(o_name, k_ref.idx);
                 } else {
                     object_type dummy;
-                    dummy.prep(k_idx);
-                    describe_flavor(creature_ptr, o_name, &dummy, OD_FORCE_FLAVOR);
+                    dummy.prep(k_ref.idx);
+                    describe_flavor(player_ptr, o_name, &dummy, OD_FORCE_FLAVOR);
                 }
 
                 auto_dump_printf(auto_dump_stream, "# %s\n", o_name);
-                auto_dump_printf(auto_dump_stream, "K:%d:0x%02X/0x%02X\n\n", (int)k_idx, (byte)(k_ptr->x_attr), (byte)(k_ptr->x_char));
+                auto_dump_printf(auto_dump_stream, "K:%d:0x%02X/0x%02X\n\n", (int)k_ref.idx, (byte)(k_ref.x_attr), (byte)(k_ref.x_char));
             }
 
             close_auto_dump(&auto_dump_stream, mark);
@@ -170,7 +168,7 @@ void do_cmd_visuals(player_type *creature_ptr)
             static concptr mark = "Feature attr/chars";
             prt(_("コマンド: 地形の[色/文字]をファイルに書き出します", "Command: Dump feature attr/chars"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
-            sprintf(tmp, "%s.prf", creature_ptr->base_name);
+            sprintf(tmp, "%s.prf", player_ptr->base_name);
             if (!askfor(tmp, 70))
                 continue;
 
@@ -179,17 +177,16 @@ void do_cmd_visuals(player_type *creature_ptr)
                 continue;
 
             auto_dump_printf(auto_dump_stream, _("\n# 地形の[色/文字]の設定\n\n", "\n# Feature attr/char definitions\n\n"));
-            for (i = 0; i < max_f_idx; i++) {
-                feature_type *f_ptr = &f_info[i];
-                if (f_ptr->name.empty())
+            for (const auto &f_ref : f_info) {
+                if (f_ref.name.empty())
                     continue;
-                if (f_ptr->mimic != i)
+                if (f_ref.mimic != f_ref.idx)
                     continue;
 
-                auto_dump_printf(auto_dump_stream, "# %s\n", (f_ptr->name.c_str()));
-                auto_dump_printf(auto_dump_stream, "F:%d:0x%02X/0x%02X:0x%02X/0x%02X:0x%02X/0x%02X\n\n", i, (byte)(f_ptr->x_attr[F_LIT_STANDARD]),
-                    (byte)(f_ptr->x_char[F_LIT_STANDARD]), (byte)(f_ptr->x_attr[F_LIT_LITE]), (byte)(f_ptr->x_char[F_LIT_LITE]),
-                    (byte)(f_ptr->x_attr[F_LIT_DARK]), (byte)(f_ptr->x_char[F_LIT_DARK]));
+                auto_dump_printf(auto_dump_stream, "# %s\n", (f_ref.name.c_str()));
+                auto_dump_printf(auto_dump_stream, "F:%d:0x%02X/0x%02X:0x%02X/0x%02X:0x%02X/0x%02X\n\n", f_ref.idx, (byte)(f_ref.x_attr[F_LIT_STANDARD]),
+                    (byte)(f_ref.x_char[F_LIT_STANDARD]), (byte)(f_ref.x_attr[F_LIT_LITE]), (byte)(f_ref.x_char[F_LIT_LITE]),
+                    (byte)(f_ref.x_attr[F_LIT_DARK]), (byte)(f_ref.x_char[F_LIT_DARK]));
             }
 
             close_auto_dump(&auto_dump_stream, mark);
@@ -233,7 +230,7 @@ void do_cmd_visuals(player_type *creature_ptr)
                 case 'n': {
                     IDX prev_r = r;
                     do {
-                        if (!cmd_visuals_aux(i, &r, max_r_idx)) {
+                        if (!cmd_visuals_aux(i, &r, static_cast<IDX>(r_info.size()))) {
                             r = prev_r;
                             break;
                         }
@@ -254,7 +251,7 @@ void do_cmd_visuals(player_type *creature_ptr)
                     need_redraw = true;
                     break;
                 case 'v':
-                    do_cmd_knowledge_monsters(creature_ptr, &need_redraw, true, r);
+                    do_cmd_knowledge_monsters(player_ptr, &need_redraw, true, r);
                     term_clear();
                     print_visuals_menu(choice_msg);
                     break;
@@ -303,7 +300,7 @@ void do_cmd_visuals(player_type *creature_ptr)
                 case 'n': {
                     IDX prev_k = k;
                     do {
-                        if (!cmd_visuals_aux(i, &k, max_k_idx)) {
+                        if (!cmd_visuals_aux(i, &k, static_cast<IDX>(k_info.size()))) {
                             k = prev_k;
                             break;
                         }
@@ -324,7 +321,7 @@ void do_cmd_visuals(player_type *creature_ptr)
                     need_redraw = true;
                     break;
                 case 'v':
-                    do_cmd_knowledge_objects(creature_ptr, &need_redraw, true, k);
+                    do_cmd_knowledge_objects(player_ptr, &need_redraw, true, k);
                     term_clear();
                     print_visuals_menu(choice_msg);
                     break;
@@ -376,7 +373,7 @@ void do_cmd_visuals(player_type *creature_ptr)
                 case 'n': {
                     IDX prev_f = f;
                     do {
-                        if (!cmd_visuals_aux(i, &f, max_f_idx)) {
+                        if (!cmd_visuals_aux(i, &f, static_cast<IDX>(f_info.size()))) {
                             f = prev_f;
                             break;
                         }
@@ -414,10 +411,10 @@ void do_cmd_visuals(player_type *creature_ptr)
             break;
         }
         case '7':
-            do_cmd_knowledge_monsters(creature_ptr, &need_redraw, true, -1);
+            do_cmd_knowledge_monsters(player_ptr, &need_redraw, true, -1);
             break;
         case '8':
-            do_cmd_knowledge_objects(creature_ptr, &need_redraw, true, -1);
+            do_cmd_knowledge_objects(player_ptr, &need_redraw, true, -1);
             break;
         case '9': {
             IDX lighting_level = F_LIT_STANDARD;
@@ -426,7 +423,7 @@ void do_cmd_visuals(player_type *creature_ptr)
         }
         case 'R':
         case 'r':
-            reset_visuals(creature_ptr);
+            reset_visuals(player_ptr);
             msg_print(_("画面上の[色/文字]を初期値にリセットしました。", "Visual attr/char tables reset."));
             need_redraw = true;
             break;
@@ -440,5 +437,5 @@ void do_cmd_visuals(player_type *creature_ptr)
 
     screen_load();
     if (need_redraw)
-        do_cmd_redraw(creature_ptr);
+        do_cmd_redraw(player_ptr);
 }

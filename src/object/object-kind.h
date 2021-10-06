@@ -2,15 +2,19 @@
 
 #include "system/angband.h"
 
+#include "object-enchant/tr-flags.h"
 #include "object-enchant/trg-types.h"
 #include "object/tval-types.h"
-#include "util/flag-group.h"
 #include "system/system-variables.h"
+#include "util/flag-group.h"
 
 #include <string>
 #include <vector>
 
-typedef struct object_kind {
+enum class RandomArtActType : short;
+struct object_kind {
+    KIND_OBJECT_IDX idx{};
+
     std::string name; /*!< ベースアイテム名参照のためのネームバッファオフセット値 / Name (offset) */
     std::string text; /*!< 解説テキスト参照のためのネームバッファオフセット値 / Text (offset) */
     std::string flavor_name; /*!< 未確定名参照のためのネームバッファオフセット値 / Flavor name (offset) */
@@ -54,13 +58,11 @@ typedef struct object_kind {
     bool aware{}; /*!< ベースアイテムが鑑定済かどうか /  The player is "aware" of the item's effects */
     bool tried{}; /*!< ベースアイテムを未鑑定のまま試したことがあるか /  The player has "tried" one of the items */
 
-    int16_t act_idx{}; /*!< 発動能力のID /  Activative ability index */
+    RandomArtActType act_idx{}; /*!< 発動能力のID /  Activative ability index */
     PERCENTAGE broken_rate; /*!< 発動破損率 */
-
-} object_kind;
+};
 
 extern std::vector<object_kind> k_info;
-extern KIND_OBJECT_IDX max_k_idx;
 
-typedef struct object_type object_type;
+struct object_type;
 SYMBOL_CODE object_char(object_type *o_ptr);

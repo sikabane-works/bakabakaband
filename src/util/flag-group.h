@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <bitset>
+#include <optional>
 
 /**
  * @brief フラグ集合を扱う、FlagGroupクラス
@@ -15,6 +16,8 @@ private:
     static constexpr auto FLAG_TYPE_MAX = static_cast<size_t>(MAX);
 
 public:
+    using flag_type = FlagType;
+
     /**
      * @brief フラグ集合に含まれるフラグの種類数を返す
      *
@@ -192,6 +195,10 @@ public:
      */
     [[nodiscard]] bool has(FlagType f) const
     {
+        if (f == MAX) {
+            // どのフラグにも該当しないFlagTypeの型としてMAXを指定する事があるため、MAXが指定された時はfalseを返すようにする
+            return false;
+        }
         return bs_.test(static_cast<size_t>(f));
     }
 
@@ -362,6 +369,22 @@ public:
     [[nodiscard]] size_t count() const noexcept
     {
         return bs_.count();
+    }
+
+    /**
+     * @brief フラグ集合のONになっているフラグのうち最初のフラグを返す
+     *
+     * @return フラグ集合のONになっているフラグのうち最初のフラグ。但し一つもONになっているフラグがなければ std::nullopt
+     */
+    [[nodiscard]] std::optional<FlagType> first() const noexcept
+    {
+        for (size_t i = 0; i < bs_.size(); i++) {
+            if (bs_.test(i)) {
+                return static_cast<FlagType>(i);
+            }
+        }
+
+        return std::nullopt;
     }
 
     /**

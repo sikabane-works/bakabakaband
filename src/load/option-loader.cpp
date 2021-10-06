@@ -7,6 +7,7 @@
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "system/angband.h"
+#include "util/bit-flags-calculator.h"
 #include "world/world.h"
 
 /*!
@@ -26,8 +27,13 @@ void rd_options(void)
     strip_bytes(16);
 
     byte b;
-    rd_byte(&b);
-    delay_factor = b;
+
+    if (loading_savefile_version_is_older_than(12)) {
+        rd_byte(&b);
+        delay_factor = b * b * b;
+    } else {
+        rd_s32b(&delay_factor);
+    }
 
     rd_byte(&b);
     hitpoint_warn = b;
@@ -42,20 +48,17 @@ void rd_options(void)
     uint16_t c;
     rd_u16b(&c);
 
-    if (c & 0x0002)
-        current_world_ptr->wizard = true;
-
-    cheat_peek = (c & 0x0100) ? true : false;
-    cheat_hear = (c & 0x0200) ? true : false;
-    cheat_room = (c & 0x0400) ? true : false;
-    cheat_xtra = (c & 0x0800) ? true : false;
-    cheat_know = (c & 0x1000) ? true : false;
-    cheat_live = (c & 0x2000) ? true : false;
-    cheat_save = (c & 0x4000) ? true : false;
-    cheat_diary_output = (c & 0x8000) ? true : false;
-    cheat_turn = (c & 0x0080) ? true : false;
-    cheat_sight = (c & 0x0040) ? true : false;
-    cheat_immortal = (c & 0x0020) ? true : false;
+    cheat_peek = any_bits(c, 0x0100);
+    cheat_hear = any_bits(c, 0x0200);
+    cheat_room = any_bits(c, 0x0400);
+    cheat_xtra = any_bits(c, 0x0800);
+    cheat_know = any_bits(c, 0x1000);
+    cheat_live = any_bits(c, 0x2000);
+    cheat_save = any_bits(c, 0x4000);
+    cheat_diary_output = any_bits(c, 0x8000);
+    cheat_turn = any_bits(c, 0x0080);
+    cheat_sight = any_bits(c, 0x0040);
+    cheat_immortal = any_bits(c, 0x0020);
 
     rd_byte((byte *)&autosave_l);
     rd_byte((byte *)&autosave_t);
@@ -69,12 +72,11 @@ void rd_options(void)
     for (int n = 0; n < 8; n++)
         rd_u32b(&mask[n]);
 
-    for (int n = 0; n < 8; n++) {
-        for (int i = 0; i < 32; i++) {
-            if (!(mask[n] & (1UL << i)))
+    for (auto n = 0; n < 8; n++) {
+        for (auto i = 0; i < 32; i++) {
+            if (none_bits(mask[n], 1U << i) || none_bits(option_mask[n], 1U << i)) {
                 continue;
-            if (!(option_mask[n] & (1UL << i)))
-                continue;
+            }
 
             if (flag[n] & (1UL << i)) {
                 option_flag[n] |= (1UL << i);

@@ -14,6 +14,7 @@
 #include "main/sound-definitions-table.h"
 
 #include <memory>
+#include <queue>
 
 #include <mmsystem.h>
 
@@ -67,7 +68,7 @@ struct sound_res {
             ::waveOutUnprepareHeader(hwo, &wh, sizeof(WAVEHDR));
             ::waveOutClose(hwo);
             hwo = NULL;
-            wh.lpData = nullptr;
+            wh.lpData = NULL;
         }
     }
 };
@@ -147,7 +148,7 @@ static bool play_sound_impl(char *filename)
     auto wf = reader.get_waveformat();
 
     auto data_buffer = reader.read_data();
-    if (data_buffer == nullptr)
+    if (data_buffer == NULL)
         return false;
 
     return add_sound_queue(wf, data_buffer, reader.get_data_chunk()->cksize);
@@ -164,7 +165,7 @@ static concptr sound_key_at(int index, char *buf)
     (void)buf;
 
     if (index >= SOUND_MAX)
-        return NULL;
+        return nullptr;
 
     return angband_sound_name[index];
 }

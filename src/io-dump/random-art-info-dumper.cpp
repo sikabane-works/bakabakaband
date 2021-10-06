@@ -24,7 +24,7 @@ static void spoiler_print_randart(object_type *o_ptr, obj_desc_list *art_ptr)
     pval_info_type *pval_ptr = &art_ptr->pval_info;
     char buf[80];
     fprintf(spoiler_file, "%s\n", art_ptr->description);
-    if (!object_is_fully_known(o_ptr)) {
+    if (!o_ptr->is_fully_known()) {
         fprintf(spoiler_file, _("%s不明\n", "%sUnknown\n"), spoiler_indent);
     } else {
         if (pval_ptr->pval_desc[0]) {
@@ -48,14 +48,14 @@ static void spoiler_print_randart(object_type *o_ptr, obj_desc_list *art_ptr)
 
 /*!
  * @brief ランダムアーティファクト内容をスポイラー出力するサブルーチン /
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr ランダムアーティファクトのオブジェクト構造体参照ポインタ
- * @param i 出力したい記録ランダムアーティファクトID
+ * @param tval 出力したいランダムアーティファクトの種類
  */
-static void spoil_random_artifact_aux(player_type *player_ptr, object_type *o_ptr, int i)
+static void spoil_random_artifact_aux(player_type *player_ptr, object_type *o_ptr, tval_type tval)
 {
     obj_desc_list artifact;
-    if (!object_is_known(o_ptr) || !o_ptr->art_name || o_ptr->tval != group_artifact[i].tval)
+    if (!o_ptr->is_known() || !o_ptr->art_name || o_ptr->tval != tval)
         return;
 
     random_artifact_analyze(player_ptr, o_ptr, &artifact);
@@ -67,7 +67,7 @@ static void spoil_random_artifact_aux(player_type *player_ptr, object_type *o_pt
  * Create a list file for random artifacts
  * @param fname 出力ファイル名
  */
-void spoil_random_artifact(player_type *creature_ptr, concptr fname)
+void spoil_random_artifact(player_type *player_ptr, concptr fname)
 {
     store_type *store_ptr;
     object_type *q_ptr;
@@ -81,27 +81,29 @@ void spoil_random_artifact(player_type *creature_ptr, concptr fname)
 
     sprintf(buf, "Random artifacts list.\r");
     spoiler_underline(buf);
-    for (int j = 0; group_artifact[j].tval; j++) {
-        for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
-            q_ptr = &creature_ptr->inventory_list[i];
-            spoil_random_artifact_aux(creature_ptr, q_ptr, j);
-        }
+    for (const auto &[tval_list, name] : group_artifact_list) {
+        for (auto tval : tval_list) {
+            for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
+                q_ptr = &player_ptr->inventory_list[i];
+                spoil_random_artifact_aux(player_ptr, q_ptr, tval);
+            }
 
-        for (int i = 0; i < INVEN_PACK; i++) {
-            q_ptr = &creature_ptr->inventory_list[i];
-            spoil_random_artifact_aux(creature_ptr, q_ptr, j);
-        }
+            for (int i = 0; i < INVEN_PACK; i++) {
+                q_ptr = &player_ptr->inventory_list[i];
+                spoil_random_artifact_aux(player_ptr, q_ptr, tval);
+            }
 
-        store_ptr = &town_info[1].store[STORE_HOME];
-        for (int i = 0; i < store_ptr->stock_num; i++) {
-            q_ptr = &store_ptr->stock[i];
-            spoil_random_artifact_aux(creature_ptr, q_ptr, j);
-        }
+            store_ptr = &town_info[1].store[STORE_HOME];
+            for (int i = 0; i < store_ptr->stock_num; i++) {
+                q_ptr = &store_ptr->stock[i];
+                spoil_random_artifact_aux(player_ptr, q_ptr, tval);
+            }
 
-        store_ptr = &town_info[1].store[STORE_MUSEUM];
-        for (int i = 0; i < store_ptr->stock_num; i++) {
-            q_ptr = &store_ptr->stock[i];
-            spoil_random_artifact_aux(creature_ptr, q_ptr, j);
+            store_ptr = &town_info[1].store[STORE_MUSEUM];
+            for (int i = 0; i < store_ptr->stock_num; i++) {
+                q_ptr = &store_ptr->stock[i];
+                spoil_random_artifact_aux(player_ptr, q_ptr, tval);
+            }
         }
     }
 

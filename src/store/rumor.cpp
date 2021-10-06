@@ -60,13 +60,13 @@ void display_rumor(player_type *player_ptr, bool ex)
         return;
     }
 
-    concptr rumor_eff_format = NULL;
+    concptr rumor_eff_format = nullptr;
     char fullname[1024] = "";
     if (strcmp(zz[0], "ARTIFACT") == 0) {
         ARTIFACT_IDX a_idx;
         artifact_type *a_ptr;
         while (true) {
-            a_idx = rumor_num(zz[1], max_a_idx);
+            a_idx = rumor_num(zz[1], static_cast<IDX>(a_info.size()));
 
             a_ptr = &a_info[a_idx];
             if (!a_ptr->name.empty())
@@ -83,7 +83,7 @@ void display_rumor(player_type *player_ptr, bool ex)
     } else if (strcmp(zz[0], "MONSTER") == 0) {
         monster_race *r_ptr;
         while (true) {
-            MONRACE_IDX r_idx = rumor_num(zz[1], max_r_idx);
+            MONRACE_IDX r_idx = rumor_num(zz[1], static_cast<IDX>(r_info.size()));
             r_ptr = &r_info[r_idx];
             if (!r_ptr->name.empty())
                 break;
@@ -98,7 +98,7 @@ void display_rumor(player_type *player_ptr, bool ex)
         DUNGEON_IDX d_idx;
         dungeon_type *d_ptr;
         while (true) {
-            d_idx = rumor_num(zz[1], current_world_ptr->max_d_idx);
+            d_idx = rumor_num(zz[1], static_cast<IDX>(d_info.size()));
             d_ptr = &d_info[d_idx];
             if (!d_ptr->name.empty())
                 break;
@@ -130,7 +130,7 @@ void display_rumor(player_type *player_ptr, bool ex)
     concptr rumor_msg = rumor_bind_name(zz[2], fullname);
     msg_print(rumor_msg);
     if (rumor_eff_format) {
-        msg_print(NULL);
+        msg_print(nullptr);
         msg_format(rumor_eff_format, fullname);
     }
 }

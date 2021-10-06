@@ -3,7 +3,7 @@
 #include "object-enchant/tr-types.h"
 #include "object/object-flags.h"
 #include "perception/object-perception.h"
-#include "player/player-class.h"
+#include "player-info/class-info.h"
 #include "player/player-realm.h"
 #include "realm/realm-names-table.h"
 #include "system/object-type-definition.h"
@@ -19,13 +19,15 @@
  */
 bool object_is_activatable(const object_type *o_ptr)
 {
-    TrFlags flags;
-    if (!object_is_known(o_ptr))
+    if (!o_ptr->is_known())
         return false;
 
-    object_flags(o_ptr, flags);
-    if (has_flag(flags, TR_ACTIVATE) || has_flag(flags, TR_INVEN_ACTIVATE))
+    auto flags = object_flags(o_ptr);
+    if (flags.has(TR_ACTIVATE) || flags.has(TR_INVEN_ACTIVATE))
+    {
         return true;
+    }
+        
 
     return false;
 }
@@ -38,7 +40,6 @@ bool object_is_activatable(const object_type *o_ptr)
  */
 bool item_tester_hook_use(player_type *player_ptr, const object_type *o_ptr)
 {
-    TrFlags flags;
     if (o_ptr->tval == player_ptr->tval_ammo)
         return true;
 
@@ -56,12 +57,12 @@ bool item_tester_hook_use(player_type *player_ptr, const object_type *o_ptr)
     default: {
         int i;
 
-        if (!object_is_known(o_ptr))
+        if (!o_ptr->is_known())
             return false;
         for (i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
             if (&player_ptr->inventory_list[i] == o_ptr) {
-                object_flags(o_ptr, flags);
-                if (has_flag(flags, TR_ACTIVATE))
+                auto flags = object_flags(o_ptr);
+                if (flags.has(TR_ACTIVATE))
                     return true;
             }
         }
@@ -69,17 +70,6 @@ bool item_tester_hook_use(player_type *player_ptr, const object_type *o_ptr)
     }
 
     return false;
-}
-
-/*!
- * @brief 魔力充填が可能なアイテムかどうか判定する /
- * Hook for "get_item()".  Determine if something is rechargable.
- * @param o_ptr 判定するアイテムの情報参照ポインタ
- * @return 魔力充填が可能ならばTRUEを返す
- */
-bool object_is_rechargeable(const object_type *o_ptr)
-{
-    return (o_ptr->tval == TV_STAFF) || (o_ptr->tval == TV_WAND) || (o_ptr->tval == TV_ROD);
 }
 
 /*!
@@ -106,7 +96,8 @@ bool item_tester_learn_spell(player_type *player_ptr, const object_type *o_ptr)
     else if (!is_magic(tval2realm(o_ptr->tval)))
         return false;
 
-    return (get_realm1_book(player_ptr) == o_ptr->tval) || (get_realm2_book(player_ptr) == o_ptr->tval) || (choices & (0x0001U << (tval2realm(o_ptr->tval) - 1)));
+    return (get_realm1_book(player_ptr) == o_ptr->tval) || (get_realm2_book(player_ptr) == o_ptr->tval)
+        || (choices & (0x0001U << (tval2realm(o_ptr->tval) - 1)));
 }
 
 /*!

@@ -23,7 +23,7 @@ int num_more = 0;
  * trigger any macros, and cannot be bypassed by the Borg.  It is used
  * in Angband to handle "keymaps".
  */
-concptr inkey_next = NULL;
+concptr inkey_next = nullptr;
 
 /* Save macro trigger string for use in inkey_special() */
 static char inkey_macro_trigger_string[1024];
@@ -157,7 +157,7 @@ static char inkey_aux(void)
         return (ch);
     }
 
-    concptr pat = macro__pat[k];
+    concptr pat = macro__pat[k].c_str();
     n = strlen(pat);
     while (p > n) {
         if (term_key_push(buf[--p]))
@@ -168,7 +168,7 @@ static char inkey_aux(void)
     if (term_key_push(30))
         return 0;
 
-    concptr act = macro__act[k];
+    concptr act = macro__act[k].c_str();
 
     n = strlen(act);
     while (n > 0) {
@@ -196,7 +196,7 @@ char inkey(bool do_all_term_refresh)
         return (ch);
     }
 
-    inkey_next = NULL;
+    inkey_next = nullptr;
     if (inkey_xtra) {
         parse_macro = false;
         parse_under = false;
@@ -207,7 +207,7 @@ char inkey(bool do_all_term_refresh)
     (void)term_get_cursor(&v);
 
     /* Show the cursor if waiting, except sometimes in "command" mode */
-    if (!inkey_scan && (!inkey_flag || hilite_player || current_world_ptr->character_icky_depth > 0)) {
+    if (!inkey_scan && (!inkey_flag || hilite_player || w_ptr->character_icky_depth > 0)) {
         (void)term_set_cursor(1);
     }
 
@@ -226,7 +226,7 @@ char inkey(bool do_all_term_refresh)
                 all_term_fresh(x, y);
             else
                 term_fresh();
-            current_world_ptr->character_saved = false;
+            w_ptr->character_saved = false;
 
             signal_count = 0;
             done = true;
@@ -299,7 +299,7 @@ int inkey_special(bool numpad_cursor)
     } modifier_key_list[] = {
         { "shift-", SKEY_MOD_SHIFT },
         { "control-", SKEY_MOD_CONTROL },
-        { NULL, 0 },
+        { nullptr, 0 },
     };
 
     static const struct {
@@ -331,7 +331,7 @@ int inkey_special(bool numpad_cursor)
         { true, "KP_3]", SKEY_PGDOWN },
         { true, "KP_7]", SKEY_TOP },
         { true, "KP_1]", SKEY_BOTTOM },
-        { false, NULL, 0 },
+        { false, nullptr, 0 },
     };
 
     static const struct {
@@ -346,7 +346,7 @@ int inkey_special(bool numpad_cursor)
         { "4~", SKEY_BOTTOM },
         { "5~", SKEY_PGUP },
         { "6~", SKEY_PGDOWN },
-        { NULL, 0 },
+        { nullptr, 0 },
     };
 
     char buf[1024];

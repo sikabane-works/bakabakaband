@@ -4,6 +4,7 @@
  */
 
 #include "main-win/main-win-music.h"
+#include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "floor/floor-town.h"
 #include "main-win/main-win-define.h"
@@ -15,6 +16,7 @@
 #include "main/scene-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
 #include "term/z-term.h"
 #include "util/angband-files.h"
 #include "world/world.h"
@@ -48,14 +50,14 @@ static concptr basic_key_at(int index, char *buf)
     (void)buf;
 
     if (index >= MUSIC_BASIC_MAX)
-        return NULL;
+        return nullptr;
 
     return angband_music_basic_name[index];
 }
 
 static inline DUNGEON_IDX get_dungeon_count()
 {
-    return current_world_ptr->max_d_idx;
+    return static_cast<DUNGEON_IDX>(d_info.size());
 }
 
 /*!
@@ -67,7 +69,7 @@ static inline DUNGEON_IDX get_dungeon_count()
 static concptr dungeon_key_at(int index, char *buf)
 {
     if (index >= get_dungeon_count())
-        return NULL;
+        return nullptr;
 
     sprintf(buf, "dungeon%03d", index);
     return buf;
@@ -87,7 +89,7 @@ static inline QUEST_IDX get_quest_count()
 static concptr quest_key_at(int index, char *buf)
 {
     if (index >= get_quest_count())
-        return NULL;
+        return nullptr;
 
     sprintf(buf, "quest%03d", index);
     return buf;
@@ -107,7 +109,7 @@ static inline int16_t get_town_count()
 static concptr town_key_at(int index, char *buf)
 {
     if (index >= get_town_count())
-        return NULL;
+        return nullptr;
 
     sprintf(buf, "town%03d", index);
     return buf;
@@ -115,7 +117,7 @@ static concptr town_key_at(int index, char *buf)
 
 static inline MONRACE_IDX get_monster_count()
 {
-    return max_r_idx;
+    return static_cast<MONRACE_IDX>(r_info.size());
 }
 
 /*!
@@ -127,7 +129,7 @@ static inline MONRACE_IDX get_monster_count()
 static concptr monster_key_at(int index, char *buf)
 {
     if (index >= get_monster_count())
-        return NULL;
+        return nullptr;
 
     sprintf(buf, "monster%04d", index);
     return buf;

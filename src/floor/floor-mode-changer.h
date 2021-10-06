@@ -19,5 +19,5 @@ enum cfm_type {
 };
 
 class player_type;
-void prepare_change_floor_mode(player_type *creature_ptr, BIT_FLAGS mode);
-void move_floor(player_type *creature_ptr, BIT_FLAGS mode);
+void prepare_change_floor_mode(player_type *player_ptr, BIT_FLAGS mode);
+void move_floor(player_type *player_ptr, BIT_FLAGS mode);

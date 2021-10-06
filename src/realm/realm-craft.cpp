@@ -24,16 +24,16 @@
  * @brief 匠領域魔法の各処理を行う
  * @param spell 魔法ID
  * @param mode 処理内容 (SPELL_NAME / SPELL_DESC / SPELL_INFO / SPELL_CAST)
- * @return SPELL_NAME / SPELL_DESC / SPELL_INFO 時には文字列ポインタを返す。SPELL_CAST時はNULL文字列を返す。
+ * @return SPELL_NAME / SPELL_DESC / SPELL_INFO 時には文字列ポインタを返す。SPELL_CAST時はnullptr文字列を返す。
  */
-concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode)
+concptr do_craft_spell(player_type *player_ptr, SPELL_IDX spell, spell_type mode)
 {
-    bool name = (mode == SPELL_NAME) ? true : false;
-    bool desc = (mode == SPELL_DESC) ? true : false;
-    bool info = (mode == SPELL_INFO) ? true : false;
-    bool cast = (mode == SPELL_CAST) ? true : false;
+    bool name = mode == SPELL_NAME;
+    bool desc = mode == SPELL_DESCRIPTION;
+    bool info = mode == SPELL_INFO;
+    bool cast = mode == SPELL_CAST;
 
-    PLAYER_LEVEL plev = caster_ptr->lev;
+    PLAYER_LEVEL plev = player_ptr->lev;
 
     switch (spell) {
     case 0:
@@ -49,7 +49,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_tim_infra(caster_ptr, base + randint1(base), false);
+                set_tim_infra(player_ptr, base + randint1(base), false);
             }
         }
         break;
@@ -67,7 +67,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_tim_regen(caster_ptr, base + randint1(base), false);
+                set_tim_regen(player_ptr, base + randint1(base), false);
             }
         }
         break;
@@ -80,7 +80,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                set_food(caster_ptr, PY_FOOD_MAX - 1);
+                set_food(player_ptr, PY_FOOD_MAX - 1);
             }
         }
         break;
@@ -99,7 +99,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_oppose_cold(caster_ptr, randint1(base) + base, false);
+                set_oppose_cold(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -118,7 +118,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_oppose_fire(caster_ptr, randint1(base) + base, false);
+                set_oppose_fire(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -136,7 +136,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                (void)heroism(caster_ptr, base);
+                (void)heroism(player_ptr, base);
             }
         }
         break;
@@ -155,7 +155,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_oppose_elec(caster_ptr, randint1(base) + base, false);
+                set_oppose_elec(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -174,7 +174,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_oppose_acid(caster_ptr, randint1(base) + base, false);
+                set_oppose_acid(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -192,7 +192,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_tim_invis(caster_ptr, randint1(base) + base, false);
+                set_tim_invis(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -205,7 +205,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast)
-                (void)remove_curse(caster_ptr);
+                (void)remove_curse(player_ptr);
         }
         break;
 
@@ -223,7 +223,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_oppose_pois(caster_ptr, randint1(base) + base, false);
+                set_oppose_pois(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -241,7 +241,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                (void)berserk(caster_ptr, base + randint1(base));
+                (void)berserk(player_ptr, base + randint1(base));
             }
         }
         break;
@@ -255,7 +255,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                self_knowledge(caster_ptr);
+                self_knowledge(player_ptr);
             }
         }
         break;
@@ -274,7 +274,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, sides);
 
             if (cast) {
-                set_protevil(caster_ptr, randint1(sides) + base, false);
+                set_protevil(player_ptr, randint1(sides) + base, false);
             }
         }
         break;
@@ -287,7 +287,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                (void)true_healing(caster_ptr, 0);
+                (void)true_healing(player_ptr, 0);
             }
         }
         break;
@@ -307,8 +307,8 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                if (!choose_ele_attack(caster_ptr))
-                    return NULL;
+                if (!choose_ele_attack(player_ptr))
+                    return nullptr;
             }
         }
         break;
@@ -327,7 +327,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, sides);
 
             if (cast) {
-                set_tim_esp(caster_ptr, randint1(sides) + base, false);
+                set_tim_esp(player_ptr, randint1(sides) + base, false);
             }
         }
         break;
@@ -346,7 +346,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, sides);
 
             if (cast) {
-                set_shield(caster_ptr, randint1(sides) + base, false);
+                set_shield(player_ptr, randint1(sides) + base, false);
             }
         }
         break;
@@ -366,11 +366,11 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_oppose_acid(caster_ptr, randint1(base) + base, false);
-                set_oppose_elec(caster_ptr, randint1(base) + base, false);
-                set_oppose_fire(caster_ptr, randint1(base) + base, false);
-                set_oppose_cold(caster_ptr, randint1(base) + base, false);
-                set_oppose_pois(caster_ptr, randint1(base) + base, false);
+                set_oppose_acid(player_ptr, randint1(base) + base, false);
+                set_oppose_elec(player_ptr, randint1(base) + base, false);
+                set_oppose_fire(player_ptr, randint1(base) + base, false);
+                set_oppose_cold(player_ptr, randint1(base) + base, false);
+                set_oppose_pois(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -389,7 +389,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, sides);
 
             if (cast) {
-                set_fast(caster_ptr, randint1(sides) + base, false);
+                set_fast(player_ptr, randint1(sides) + base, false);
             }
         }
         break;
@@ -407,7 +407,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_pass_wall(caster_ptr, randint1(base) + base, false);
+                set_pass_wall(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -420,7 +420,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                pulish_shield(caster_ptr);
+                pulish_shield(player_ptr);
             }
         }
         break;
@@ -433,7 +433,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                if (summon_specific(caster_ptr, -1, caster_ptr->y, caster_ptr->x, plev, SUMMON_GOLEM, PM_FORCE_PET)) {
+                if (summon_specific(player_ptr, -1, player_ptr->y, player_ptr->x, plev, SUMMON_GOLEM, PM_FORCE_PET)) {
                     msg_print(_("ゴーレムを作った。", "You make a golem."));
                 } else {
                     msg_print(_("うまくゴーレムを作れなかった。", "You couldn't make a golem."));
@@ -456,7 +456,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                set_magicdef(caster_ptr, randint1(base) + base, false);
+                set_magicdef(player_ptr, randint1(base) + base, false);
             }
         }
         break;
@@ -469,8 +469,8 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                if (!mundane_spell(caster_ptr, true))
-                    return NULL;
+                if (!mundane_spell(player_ptr, true))
+                    return nullptr;
             }
         }
         break;
@@ -483,7 +483,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast)
-                (void)remove_all_curse(caster_ptr);
+                (void)remove_all_curse(player_ptr);
         }
         break;
 
@@ -495,8 +495,8 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                if (!identify_fully(caster_ptr, false))
-                    return NULL;
+                if (!identify_fully(player_ptr, false))
+                    return nullptr;
             }
         }
         break;
@@ -509,8 +509,8 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                if (!enchant_spell(caster_ptr, randint0(4) + 1, randint0(4) + 1, 0))
-                    return NULL;
+                if (!enchant_spell(player_ptr, randint0(4) + 1, randint0(4) + 1, 0))
+                    return nullptr;
             }
         }
         break;
@@ -523,8 +523,8 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                if (!enchant_spell(caster_ptr, 0, 0, randint0(3) + 2))
-                    return NULL;
+                if (!enchant_spell(player_ptr, 0, 0, randint0(3) + 2))
+                    return nullptr;
             }
         }
         break;
@@ -537,7 +537,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
 
         {
             if (cast) {
-                brand_weapon(caster_ptr, randint0(18));
+                brand_weapon(player_ptr, randint0(18));
             }
         }
         break;
@@ -549,7 +549,7 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
             return _("ランダムにテレポートする突然変異か、自分の意思でテレポートする突然変異が身につく。",
                 "Gives mutation which makes you teleport randomly or makes you able to teleport at will.");
         if (cast)
-            become_living_trump(caster_ptr);
+            become_living_trump(player_ptr);
         break;
 
     case 31:
@@ -565,8 +565,8 @@ concptr do_craft_spell(player_type *caster_ptr, SPELL_IDX spell, spell_type mode
                 return info_duration(base, base);
 
             if (cast) {
-                if (!choose_ele_immune(caster_ptr, base + randint1(base)))
-                    return NULL;
+                if (!choose_ele_immune(player_ptr, base + randint1(base)))
+                    return nullptr;
             }
         }
         break;

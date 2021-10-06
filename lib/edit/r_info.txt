@@ -279,7 +279,7 @@ B:HIT:HURT:1d6
 B:HIT:HURT:1d6
 F:MALE | WILD_ONLY | WILD_WOOD | HUMAN |
 F:RAND_25 | DROP_SKELETON | DROP_CORPSE |
-F:ONLY_GOLD | DROP_60 |
+F:ONLY_GOLD | DROP_60 | RANGER
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:$He has an axe with a sharp and strong edge.
 D:鋭く頑丈な斧を持っている。
@@ -439,7 +439,7 @@ F:ONLY_GOLD | DROP_60 | DROP_SKELETON | DROP_CORPSE
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | WILD_TOWN | WILD_ONLY
 D:$The typical ponce around town, with purse jingling, and looking for more 
 D:$amulets of adornment to buy.
-D:町をふらつく典型的なクズで、財布をじゃらじゃらさせて、魅力のアミュレット
+D:町をふらつく典型的なクズで、財布をじゃらじゃらさせて、装飾のアミュレット
 D:を買おうと町を探し回っている。
 
 #J0#
@@ -451,7 +451,7 @@ W:0:1:0:0:8:43
 B:HIT:HURT:1d10
 F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
 F:RAND_50 | DROP_90 | WILD_GRASS | WILD_TOWN | WILD_WOOD | WILD_ONLY
-F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | WARRIOR
 F:EVIL
 D:$No job is too low for him.
 D:仕事が見つからないことが彼をいっそう貧しくしている。
@@ -468,7 +468,7 @@ W:0:1:0:0:8:43
 B:HIT:HURT:2d6
 F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
 F:RAND_50 | DROP_90 | WILD_TOWN | WILD_ONLY
-F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | WARRIOR
 D:$He doesn't take to strangers kindly.
 D:彼は見知らぬ人に優しく接したりはしない。
 
@@ -624,7 +624,7 @@ I:110:2d7:20:16:10
 W:1:1:0:10:8:30
 B:HIT:HURT:1d9
 F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE
-F:OPEN_DOOR | BASH_DOOR | EAT_POISONOUS
+F:OPEN_DOOR | BASH_DOOR | EAT_POISONOUS | WARRIOR
 F:EVIL | IM_POIS
 D:$It is a squat and ugly humanoid figure.
 D:それは地に潜む、醜い人間型のモンスターだ。
@@ -639,7 +639,7 @@ B:HIT:HURT:1d8
 B:HIT:HURT:1d8
 F:DROP_60 | WILD_ALL |
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
-F:EVIL | IM_POIS | EAT_POISONOUS
+F:EVIL | IM_POIS | EAT_POISONOUS | WARRIOR
 D:$It is a small, dog-headed humanoid.
 D:それは犬のような頭をした、小さな人間型のモンスターだ。
 
@@ -822,7 +822,7 @@ B:SLASH:HURT:1d8
 B:SLASH:HURT:1d7
 F:MALE | HAS_LITE_1 |
 F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
-F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS | WARRIOR
 D:$He looks inexperienced but tough.
 D:彼はまだまだ経験は浅いようだが、手強い相手だ。
 
@@ -838,7 +838,7 @@ B:TOUCH:EAT_GOLD
 F:MALE | HUMAN |
 F:DROP_60 | DROP_SKELETON | DROP_CORPSE
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | WILD_ALL |
-F:EVIL | EAT_GIVE_DEX | EAT_LOSE_WIS | EAT_LOSE_CHR
+F:EVIL | EAT_GIVE_DEX | EAT_LOSE_WIS | EAT_LOSE_CHR | ROGUE
 D:$A rather shifty individual.
 D:彼は多少は策略をめぐらす。
 
@@ -851,7 +851,7 @@ W:2:1:0:9:100:225
 B:HIT:HURT:1d9
 F:MALE | HAS_LITE_1 | HUMAN |
 F:PREVENT_SUDDEN_MAGIC | GOOD | WILD_ALL | DROP_SKELETON | DROP_CORPSE
-F:DROP_60 | EAT_GIVE_WIS | EAT_LOSE_INT | EAT_LOSE_CON
+F:DROP_60 | EAT_GIVE_WIS | EAT_LOSE_INT | EAT_LOSE_CON | PRIEST
 F:OPEN_DOOR | BASH_DOOR
 S:1_IN_12 | 
 S:HEAL | SCARE | CAUSE_1
@@ -868,7 +868,7 @@ B:HIT:HURT:1d8
 F:MALE | HAS_LITE_1 | HUMAN |
 F:PREVENT_SUDDEN_MAGIC | WILD_ALL | DROP_SKELETON | DROP_CORPSE
 F:DROP_60 | EAT_GIVE_INT | EAT_LOSE_STR | EAT_LOSE_CON
-F:OPEN_DOOR | BASH_DOOR
+F:OPEN_DOOR | BASH_DOOR | MAGE
 S:1_IN_12 | 
 S:BLINK | BLIND | CONF | MISSILE
 D:$He is leaving behind a trail of dropped spell components.
@@ -1114,7 +1114,7 @@ I:130:20d20:20:12:5
 W:3:2:0:18:0:0
 B:TOUCH:EAT_GOLD
 F:UNIQUE | MALE | EVIL | CAN_SWIM | DROP_SKELETON | DROP_CORPSE
-F:FORCE_MAXHP | CAN_SPEAK | SMART | 
+F:FORCE_MAXHP | CAN_SPEAK | SMART | HOBBIT
 F:RAND_50 | RAND_25 | WILD_ALL | EAT_LOSE_STR | EAT_LOSE_INT
 F:ONLY_ITEM | DROP_90 | DROP_GREAT
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | INVISIBLE
@@ -1247,7 +1247,7 @@ B:CRUSH:HURT:2d6
 F:FEMALE | 
 F:RAND_25 | DROP_60 | DROP_CORPSE
 F:BASH_DOOR | CAN_SWIM | EAT_POISONOUS | EAT_GIVE_DEX | EAT_ACIDIC
-F:EVIL
+F:EVIL | WARRIOR
 D:$A large black serpent's body with a female torso.
 D:女性の上半身を持った大きな黒いヘビだ。
 
@@ -1292,7 +1292,7 @@ W:3:1:0:5:5000:539
 B:HIT:HURT:1d7
 B:TOUCH:EAT_GOLD
 F:MALE | HAS_LITE_1 |
-F:DROP_60 | 
+F:DROP_60 | HOBBIT
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL
 D:$A short little guy, in bedraggled clothes.  He appears to be looking 
@@ -1416,7 +1416,7 @@ B:HIT:HURT:1d7
 F:MALE | HAS_LITE_1 | HUMAN |
 F:PREVENT_SUDDEN_MAGIC | DROP_SKELETON | DROP_CORPSE
 F:DROP_60 | EAT_LOSE_STR | EAT_LOSE_WIS | EAT_GIVE_CON |
-F:OPEN_DOOR | BASH_DOOR | WILD_WOOD |
+F:OPEN_DOOR | BASH_DOOR | WILD_WOOD | RANGER
 S:1_IN_9 | 
 S:SHOOT | MISSILE
 D:$An agile hunter, ready and relaxed.
@@ -1474,7 +1474,7 @@ W:4:1:0:15:30:118
 B:HIT:HURT:1d9
 F:MALE | 
 F:FRIENDS | DROP_60 | RAND_50 | DROP_SKELETON | DROP_CORPSE |
-F:OPEN_DOOR | BASH_DOOR | WILD_WOOD | EAT_POISONOUS | RES_DARK |
+F:OPEN_DOOR | BASH_DOOR | WILD_WOOD | EAT_POISONOUS | RES_DARK | WARRIOR
 F:EVIL | ORC | HURT_LITE | EAT_GIVE_DEX | EAT_LOSE_STR | EAT_LOSE_CHR
 D:$A pathetic breed of tiny snaga-like creatures. They are running 
 D:$wild and screaming all the time!
@@ -1546,7 +1546,7 @@ B:SHOOT:HURT:2d5
 B:HIT:HURT:2d4
 B:HIT:HURT:2d4
 F:DROP_60 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE |
-F:WILD_WOOD | HAS_LITE_1 |
+F:WILD_WOOD | HAS_LITE_1 | RANGER
 S:1_IN_8
 S:SHOOT
 D:$A cute, furry little animal, full of merchandising potential. 
@@ -1562,7 +1562,7 @@ B:HIT:HURT:1d8
 F:MALE | HAS_LITE_2 | HUMAN |
 F:PREVENT_SUDDEN_MAGIC | 
 F:FRIENDS | DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE
-F:OPEN_DOOR | BASH_DOOR |
+F:OPEN_DOOR | BASH_DOOR | MAGE
 S:1_IN_12 | 
 S:BLINK | BLIND | CONF | MISSILE
 D:$He is leaving behind a trail of dropped spell components.
@@ -1579,7 +1579,7 @@ B:SPIT:ACID:2d8
 F:FEMALE | 
 F:RAND_25 | TAKE_ITEM | DROP_60 | DROP_CORPSE
 F:BASH_DOOR | CAN_SWIM | WILD_SHORE |
-F:EVIL | IM_ACID | EAT_ACIDIC
+F:EVIL | IM_ACID | EAT_ACIDIC | WARRIOR
 D:$A large green serpent with a female's torso.  Her green skin glistens with 
 D:$acid.
 D:女性の上半身を持った大きなヘビだ。その緑の肌は酸に満ちている。
@@ -1621,7 +1621,7 @@ B:HIT:HURT:2d4
 F:MALE | GOOD | HAS_LITE_1 | HUMAN |
 F:PREVENT_SUDDEN_MAGIC | 
 F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
-F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_WIS | EAT_LOSE_INT
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_WIS | EAT_LOSE_INT | PALADIN
 S:1_IN_9 | 
 S:SCARE | CAUSE_1
 D:$An adventurer both devoutly religious and skillful in combat. 
@@ -9429,7 +9429,7 @@ W:35:1:0:330:0:0
 B:SHOOT:HURT:6d6
 B:HIT:HURT:2d6
 B:HIT:HURT:2d6
-F:FORCE_MAXHP | OPEN_DOOR | FRIENDS | DROP_90 |
+F:FORCE_MAXHP | OPEN_DOOR | FRIENDS | DROP_90 | HOBBIT
 F:SMART | EVIL | IM_POIS | IM_COLD | MALE | DROP_SKELETON | DROP_CORPSE
 S:1_IN_3
 S:SHOOT
@@ -12161,8 +12161,8 @@ W:42:3:0:4000:20000:1180
 B:BUTT:COLD:3d6
 B:BUTT:FIRE:3d6
 B:BUTT:ELEC:3d6
-F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | COLD_BLOOD | BASH_DOOR | CAN_FLY
-F:EVIL | UNDEAD | SMART | ONLY_ITEM | DROP_60 | DROP_GOOD
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | COLD_BLOOD | BASH_DOOR
+F:EVIL | UNDEAD | SMART | DROP_60 | DROP_90 | DROP_1D2 | DROP_GOOD | CAN_FLY
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH | RES_TELE
 F:NO_CONF | NO_SLEEP
 S:1_IN_4 |
@@ -13508,8 +13508,9 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | AURA_FIRE | CAN_FLY | SELF_LITE_1 |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | NONLIVING |
 F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | SMART | 
 F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP | KILL_WALL |
+F:ALLIANCE_UTUMNO
 S:1_IN_4 | 
-S:BLIND | CONF | BRAIN_SMASH | 
+S:BLIND | CONF | BRAIN_SMASH |
 S:BR_FIRE | BO_PLAS | BA_NETH | S_HI_UNDEAD | S_UNDEAD |
 S:S_DEMON
 D:$It is a massive humanoid demon wreathed in flames.
@@ -18609,7 +18610,7 @@ W:5:3:0:90:0:0
 B:HIT:HURT:2d6
 B:TOUCH:EAT_ITEM
 B:TOUCH:EAT_GOLD
-F:UNIQUE | MALE | HAS_LITE_1 |
+F:UNIQUE | MALE | HAS_LITE_1 | HOBBIT
 F:FORCE_MAXHP | DROP_CORPSE | DROP_SKELETON |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
 F:OPEN_DOOR | BASH_DOOR | 
@@ -21036,7 +21037,7 @@ N:1047:黄衣の修行僧
 E:Topaz monk
 G:p:y
 I:115:59d11:30:46:10
-W:35:2:0:800:2200:1175
+W:35:2:0:800:2200:1174
 B:KICK:SUPERHURT:8d1
 B:HIT:SUPERHURT:8d1
 B:KICK:SUPERHURT:8d4
@@ -23106,7 +23107,7 @@ G:g:s
 I:120:10d10:10:50:10
 W:34:50:0:250:0:0
 B:CRUSH:HURT:8d8
-F:HURT_ROCK | IM_ELEC | RES_PLAS | RES_GRAV
+F:HURT_ROCK | IM_ELEC | RES_PLAS | RES_GRAV | PREVENT_SUDDEN_MAGIC
 F:DROP_60 | DROP_1D2 | ONLY_GOLD
 F:NONLIVING | NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR
 S:1_IN_2 | BR_ELEC | BR_PLAS
@@ -23455,8 +23456,8 @@ W:47:3:0:14000:35000:1181
 B:BUTT:COLD:4d6
 B:BUTT:FIRE:4d6
 B:BUTT:ELEC:4d6
-F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | COLD_BLOOD | BASH_DOOR | CAN_FLY
-F:EVIL | UNDEAD | SMART | ONLY_ITEM | DROP_60 | DROP_90 | DROP_GOOD
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | COLD_BLOOD | BASH_DOOR
+F:EVIL | UNDEAD | SMART | DROP_60 | DROP_90 | DROP_2D2 | DROP_GOOD | CAN_FLY
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH | RES_TELE
 F:NO_CONF | NO_SLEEP
 S:1_IN_3
@@ -23476,8 +23477,8 @@ W:52:3:0:19000:0:0
 B:BUTT:COLD:5d6
 B:BUTT:FIRE:5d6
 B:BUTT:ELEC:5d6
-F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | COLD_BLOOD | BASH_DOOR | CAN_FLY
-F:EVIL | UNDEAD | SMART | ONLY_ITEM | DROP_2D2 | DROP_GOOD
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | REFLECTING | COLD_BLOOD | BASH_DOOR
+F:EVIL | UNDEAD | SMART | DROP_60 | DROP_90 | DROP_3D2 | DROP_GOOD | CAN_FLY
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH | RES_TELE
 F:NO_CONF | NO_SLEEP
 S:1_IN_2
@@ -24352,7 +24353,7 @@ N:1227:ファルメル・ウォーモンガー
 E:Falmer warmonger
 G:h:R
 I:120:100d49:10:120:50
-W:60:3:0:18000:0:1232
+W:60:3:0:18000:200000:1232
 B:SHOOT:HURT:21d10
 B:SLASH:POISON:17d16
 B:SLASH:POISON:17d11
@@ -24447,7 +24448,7 @@ N:1233:シャウラス
 E:Chaurus
 G:c:D
 I:115:15d13:40:50:15
-W:18:1:0:100:450:1235
+W:18:2:0:100:450:1235
 B:BITE:HURT:1d13
 B:STING:HURT:1d13
 F:EVIL | ANIMAL | DROP_CORPSE | BASH_DOOR | DROP_60 | FRIENDS
@@ -24458,11 +24459,11 @@ D:それは人ほどの大きさを誇り、甲殻に覆われている。
 N:1234:シャウラス・リーパー
 E:Chaurus reaper
 G:c:s
-I:120:30d25:40:80:15
-W:33:1:0:500:0:0
+I:115:30d25:40:80:15
+W:33:2:0:500:0:0
 B:BITE:HURT:3d13
 B:STING:HURT:3d13
-F:EVIL | ANIMAL | DROP_CORPSE | BASH_DOOR | DROP_90 | FRIENDS
+F:EVIL | ANIMAL | DROP_CORPSE | BASH_DOOR | DROP_60 | FRIENDS
 F:IM_POIS | RES_DARK
 D:$It is much larger than a human
 D:$ and has an extremely hard shell made of chitin.
@@ -26827,6 +26828,7 @@ B:HIT:HURT:1d2
 F:UNIQUE | MALE | CAN_SPEAK | DROP_CORPSE | FRIENDLY
 F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+F:DROP_KIND_1_IN_1_708_0_1d1
 D:「今日より明日なんじゃ！」
 D:この老人は種もみを食糧難にあえぐ村のために持ち込もうと旅している途中だ。
 D:殺してもいいかもしれないが、あなたに余計な死亡フラグが立つかもしれない。
@@ -26954,7 +26956,7 @@ D:$ on stolen motorcycles under the autumn full moon.
 D:十五夜になると盗難バイクで往来の邪魔をする迷惑系暴走族だ。
 
 N:1401:気狂いピエロ『ドネルド・マクドネルド』
-E:Doneld McDoneld, the Mad Pierrot
+E:Roneld McDoneld, the Mad Pierrot
 G:h:v
 I:120:50d30:20:80:20
 W:36:3:0:3000:0:0
@@ -27294,7 +27296,7 @@ D:口から炎や毒ガスやシューリンガンなどを吐き出して攻撃
 N:1421:ピカチャウ (ルルイエのすがた)
 E:Pikachau (R'lyehian Form)
 G:r:G
-I:130:80d30:30:90:0
+I:130:80d30:30:90:90
 W:80:3:0:5500:0:0
 B:CLAW:ACID:1d20
 B:CLAW:ELEC:1d20
@@ -28689,6 +28691,8 @@ F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | HURT_ROCK | NONLIVING
 S:1_IN_4
 S:BA_POIS | BR_POIS
 D:便器に鎮座するクッソ汚い守護者だ。
+F:SPAWN_ITEM_13_IN_180_752
+F:DROP_KIND_1_IN_2_752_0_1d1
 
 N:1507:キング・ベヒんモス
 E:King Behinmoth
@@ -29037,7 +29041,7 @@ D:$This strange creature, transformed into an image of a strange creature
 D:$ that is transformed into an abandoned box, waits for a stupid adventurer
 D:$ to get close to its poisonous claws.
 D:放置された箱に化けている奇妙な生物の像に化けている
-D:奇妙な生物に化けている奇妙な生物で、
+D:奇妙な生物の像に化けている奇妙な生物で、
 D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
 
 N:1530:ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)
@@ -29056,10 +29060,10 @@ D:$This strange creature, transformed into an image of a strange creature
 D:$ that is transformed into an abandoned box, waits for a stupid adventurer
 D:$ to get close to its poisonous claws.
 D:放置された箱に化けている奇妙な生物の像に化けている
-D:奇妙な生物に化けている奇妙な生物に化けている奇妙な生物で、
+D:奇妙な生物の像に化けている奇妙な生物の像に化けている奇妙な生物で、
 D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
 
-N:1531:ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)の像)の像)の像)の像)の像)の像)の像)の像)
+N:1531:ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)の像)の像)の像)の像)の像)の像)の像)
 E:Statue of Chest mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic mimic
 G:`:W
 I:110:60d14:30:40:0
@@ -29075,9 +29079,9 @@ D:$This strange creature, transformed into an image of a strange creature
 D:$ that is transformed into an abandoned box, waits for a stupid adventurer
 D:$ to get close to its poisonous claws.
 D:放置された箱に化けている奇妙な生物の像に化けている
-D:奇妙な生物に化けている奇妙な生物に化けている奇妙な生物に
-D:化けている奇妙な生物に化けている奇妙な生物に化けている奇妙な生物に
-D:化けている奇妙な生物に化けている奇妙な生物に化けている奇妙な生物に
+D:奇妙な生物の像に化けている奇妙な生物の像に化けている奇妙な生物の像に
+D:化けている奇妙な生物の像に化けている奇妙な生物の像に化けている奇妙な生物の像に
+D:化けている奇妙な生物の像に化けている奇妙な生物の像に化けている奇妙な生物の像に
 D:化けている奇妙な生物で、
 D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
 
@@ -29414,6 +29418,209 @@ S:1_IN_3 |
 S:MISSILE
 D:フリーザ一族に従い、惑星そのものの略奪や取引を行う「地上げ屋組織」の一員だ。
 D:様々な星の生まれのならず者がその一団に加わると言う。
+
+N:1552:77歳元暗殺者の親爺『市川玉藻グラジオ』
+E:Grazio Tamamo Ichikawa, Former Assassin 77 Years Old
+G:p:s
+I:130:90d12:80:100:10
+W:40:4:0:9000:0:0
+B:HIT:POISON:12d4
+B:HIT:SUPERHURT:10d8
+B:HIT:SUPERHURT:10d8
+B:SHOOT:HURT:10d10
+F:MALE | HUMAN | FORCE_MAXHP | UNIQUE | HOMO_SEXUAL | NASTY
+F:DROP_4D2 | DROP_GOOD | KILL_BODY | RAND_25
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | POWERFUL
+F:EVIL | NO_CONF | NO_SLEEP | EAT_POISONOUS | STUPID | WEIRD_MIND
+S:1_IN_3
+S:SHOOT
+D:一見ただのボケ老人に見えるこの男は、ターゲットをパパと呼び、
+D:狂った愛着と共に周囲の人間共々殺戮を繰り返す。
+
+N:1553:『鈴木土下座ェ門』
+E:SUZUKI Dogezaemon
+G:e:g
+I:120:16d100:30:80:10
+W:38:4:0:8000:0:0
+B:GAZE:EXP_20:2d4
+B:GAZE:PARALYZE:2d4
+B:GAZE:LOSE_INT:2d6
+B:GAZE:DR_MANA:2d12
+F:UNIQUE | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | CAN_FLY | BASH_DOOR
+F:EVIL | DROP_CORPSE | IM_POIS | RES_TELE | NO_CONF | NO_SLEEP
+F:DROP_90 | DROP_GREAT
+S:1_IN_2 | BLIND | SLOW | CONF | SCARE | DRAIN_MANA | MIND_BLAST | FORGET
+S:DARKNESS | BO_ACID | BO_FIRE | BO_COLD
+D:$A disembodied eye, surrounded by twelve smaller eyes on stalks.
+D:触手の先に付いた１２個の小さな目玉に囲まれている、
+D:体を持たない目玉に手足が付いている。
+
+N:1554:巨大戦艦『グレート・シング』
+E:GREAT THING, the Huge Battle Ship
+G:l:b
+I:130:110d100:14:120:20
+W:70:3:0:42000:0:0
+B:CRUSH:SHATTER:15d10
+B:CRUSH:SHATTER:15d10
+F:UNIQUE | FORCE_MAXHP | DROP_4D2 | DROP_GOOD | EMPTY_MIND | NONLIVING
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV
+F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP
+F:CAN_FLY | CAN_SPEAK | POWERFUL | BASH_DOOR
+S:1_IN_2 | BO_MANA | BO_PLAS | BO_ELEC | ROCKET | PSY_SPEAR | BA_FIRE | MISSILE
+D:$A large flagship similar in shape to a sperm whale.
+D:$  It is a flagship stationed on the enemy mother planet
+D:$ and commanding the entire fleet.
+D:$  It literally functions as the center of the enemy,
+D:$ and has become a representative of Berser
+D:$ because of its overwhelming firepower and durability.
+D:マッコウクジラに形状の似た大型旗艦。
+D:敵母星に駐留しており、全艦隊を指揮する旗艦である。
+D:文字通り敵の中枢として機能し、その圧倒的な火力、
+D:耐久力からベルサーを代表する存在となっている。
+D:(ダライアスバースト タイトー)
+
+N:1555:地獄の論客『カイム』
+E:Caim, the disputant of hell
+G:B:D
+I:120:24d100:40:120:20
+W:48:4:0:18000:0:0
+B:INSULT:CONFUSE:2d4
+B:CLAW:HURT:3d8
+B:BITE:HURT:4d7
+B:SLASH:LOSE_INT:4d12
+F:UNIQUE | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | 
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD | 
+F:SMART | CAN_SPEAK | AURA_FIRE | OPEN_DOOR | MOVE_BODY | TAKE_ITEM | 
+F:EVIL | DEMON | NO_CONF | NO_SLEEP | CAN_FLY | 
+F:IM_FIRE | RES_NETH | RES_TELE
+S:1_IN_4 | 
+S:SHRIEK | BR_CONF | BA_FIRE | MIND_BLAST | BRAIN_SMASH | BO_NETH |
+S:CONF | SLOW | HASTE | PSY_SPEAR | S_KIN | S_DEMON
+D:$The giant bird with two arms branched from its wings
+D:$ carries a magical sabre.
+D:$ This chairman of hell cleverly confuses people by speech. 
+D:翼から生えた二本の腕を持つ、巨大な鳥が、魔法のサーベルを携えている。
+D:この地獄の大議長は、弁舌巧みに人心を惑わす。
+
+N:1556:森の『安藤』
+E:Andou of Forest
+G:t:s
+I:110:35d12:40:20:3
+W:0:8:0:0:0:0
+B:HIT:HURT:1d5
+B:CRUSH:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:彼は森の平和を守るペンギンだ。例え魚臭くとも彼を愛さずにはいられない。
+
+N:1557:『ハガー市長』(淫夢)
+E:Mayor Haggar (INM)
+G:p:v
+I:120:16d100:22:90:11
+W:30:4:0:1200:0:0
+B:PUNCH:HURT:7d6
+B:PUNCH:HURT:7d6
+B:KICK:HURT:9d8
+B:KICK:HURT:9d8
+F:UNIQUE | MALE | HUMAN | HOMO_SEXUAL
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_STUN
+D:是非もなし。威風堂々とした体格の下北沢の市長だ。
+
+N:1558:『島絞作』
+E:Kousaku Sima
+G:t:s
+I:110:10d8:10:10:12
+W:0:5:0:300:0:0
+B:TOUCH:HURT:1d1
+F:FORCE_MAXHP
+F:UNIQUE | WEIRD_MIND | STUPID | WILD_TOWN |
+F:OPEN_DOOR | BASH_DOOR | RES_TELE | JOKE
+D:この世界には、彼そのものであった肩書きも、彼を守っていた一切も存在しない。
+
+N:1559:ドワーフの守護者
+E:Dwarven defender
+G:h:u
+I:110:25d11:20:80:40
+W:28:1:0:60:0:0
+B:SLASH:HURT:5d5
+B:SLASH:SUPERHURT:6d5
+F:MALE | HAS_LITE_2 | DWARF |
+F:DROP_1D2 | 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:ドワーフの誇りと血統を守り抜く堅牢なる戦士だ。
+
+
+N:1560:オソメ・ブラザーズ『狂一』
+E:Kyoichi, the Osome Brothers
+G:p:o
+I:110:18d10:20:20:15
+W:9:2:0:100:0:0
+B:SLASH:HURT:1d12
+B:SLASH:HURT:1d12
+F:UNIQUE | MALE | EVIL | HAS_LITE_1 | HUMAN |
+F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | QUANTUM
+F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:兄弟そろってシンナーでラリッて平然と人を刺す狂人兄弟の片割れだ。
+
+N:1561:オソメ・ブラザーズ『狂二』
+E:Kyozi, the Osome Brothers
+G:p:o
+I:110:18d10:20:20:15
+W:9:2:0:100:0:0
+B:SLASH:HURT:1d12
+B:SLASH:HURT:1d12
+F:UNIQUE | MALE | EVIL | HAS_LITE_1 | HUMAN |
+F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | QUANTUM
+F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:兄弟そろってシンナーでラリッて平然と人を刺す狂人兄弟の片割れだ。
+
+N:1562:しっと団団員
+E:Sitto-Dan combatant
+G:p:w
+I:110:9d8:10:15:10
+W:12:1:0:20:0:0
+B:PUNCH:HURT:3d4
+B:PUNCH:HURT:3d4
+B:PUNCH:HURT:3d4
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE | DROP_NASTY
+F:WILD_WOOD | HAS_LITE_1 | EVIL | MALE | NASTY | CAN_SPEAK
+D:しっとマスク共に嫉妬に駆られて、日々アベックを襲撃する異常者集団だ。
+
+N:1563:ホビットの民兵
+E:Hobbit militia
+G:h:w
+I:110:3d6:16:12:10
+W:5:1:0:5:0:0
+B:HIT:HURT:1d5
+B:HIT:HURT:1d5
+F:MALE | HAS_LITE_1 |
+F:DROP_60 | HOBBIT
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:GOOD
+D:己の村を守るため外敵を取り除かんとするホビットの住民だ。
+
+N:1564:教育実習生？『人見広介』
+E:Hirosuke Hitomi, the Principal?
+G:t:U
+I:109:10d4:10:1:40
+W:0:1:0:0:0:0
+B:PUNCH:HURT:1d1
+F:DROP_KIND_1_IN_1_754_0_1d1
+F:DROP_KIND_1_IN_1_755_0_1d1
+F:DROP_KIND_1_IN_1_756_0_1d1
+F:DROP_KIND_1_IN_1_757_0_1d1
+F:DROP_KIND_1_IN_1_758_0_1d1
+F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | RAND_50 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | UNIQUE | STUPID | WEIRD_MIND
+D:$'Where should we go?' You just can't help feeling sorry for him.
+D:「∴さて‥‥どこへ行こうか？」彼を見ると、どうしても哀れだという思いを禁じ得ない。
 
 # N: serial number : monster name
 # G: symbol : color

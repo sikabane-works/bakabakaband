@@ -16,9 +16,9 @@
  */
 errr init_towns(void)
 {
-    C_MAKE(town_info, max_towns, town_type);
+    town_info = std::vector<town_type>(max_towns);
     for (int i = 1; i < max_towns; i++) {
-        C_MAKE(town_info[i].store, MAX_STORES, store_type);
+        town_info[i].store = std::vector<store_type>(MAX_STORES);
         for (int j = 0; j < MAX_STORES; j++) {
             store_type *store_ptr = &town_info[i].store[j];
             if ((i > 1) && (j == STORE_MUSEUM || j == STORE_HOME))
@@ -28,9 +28,9 @@ errr init_towns(void)
              * 我が家が 20 ページまで使える隠し機能のための準備。
              * オプションが有効でもそうでなくても一応スペースを作っておく。
              */
-            store_ptr->stock_size = store_get_stock_max(static_cast<STORE_TYPE_IDX>(j));
+            store_ptr->stock_size = store_get_stock_max(i2enum<STORE_TYPE_IDX>(j));
 
-            C_MAKE(store_ptr->stock, store_ptr->stock_size, object_type);
+            store_ptr->stock = std::make_unique<object_type[]>(store_ptr->stock_size);
             if ((j == STORE_BLACK) || (j == STORE_HOME) || (j == STORE_MUSEUM))
                 continue;
 
@@ -40,7 +40,7 @@ errr init_towns(void)
                 if (tv == 0)
                     break;
 
-                KIND_OBJECT_IDX k_idx = lookup_kind(static_cast<tval_type>(tv), sv);
+                KIND_OBJECT_IDX k_idx = lookup_kind(i2enum<tval_type>(tv), sv);
 
                 if (k_idx == 0)
                     continue;
@@ -54,7 +54,7 @@ errr init_towns(void)
                 if (tv == 0)
                     break;
 
-                KIND_OBJECT_IDX k_idx = lookup_kind(static_cast<tval_type>(tv), sv);
+                KIND_OBJECT_IDX k_idx = lookup_kind(i2enum<tval_type>(tv), sv);
 
                 if (k_idx == 0)
                     continue;

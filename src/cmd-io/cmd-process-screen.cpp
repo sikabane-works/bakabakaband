@@ -70,7 +70,7 @@ static void screen_dump_one_line(int wid, int y, FILE *fff)
 	char c = ' ';
 	for (TERM_LEN x = 0; x < wid - 1; x++)
 	{
-		concptr cc = NULL;
+		concptr cc = nullptr;
 		(void)(term_what(x, y, &a, &c));
 		switch (c)
 		{
@@ -132,7 +132,7 @@ static bool check_screen_html_can_open(FILE *fff, char *filename, int message)
 	if (message == 0) return false;
 
 	msg_format(_("ファイル %s を開けませんでした。", "Failed to open file %s."), filename);
-	msg_print(NULL);
+	msg_print(nullptr);
 	return false;
 }
 
@@ -204,7 +204,7 @@ void do_cmd_save_screen_html_aux(char *filename, int message)
 	if (message)
 	{
 		msg_print(_("画面(記念撮影)をファイルに書き出しました。", "Screen dump saved."));
-		msg_print(NULL);
+		msg_print(nullptr);
 	}
 
 	if (message)
@@ -224,7 +224,7 @@ static void do_cmd_save_screen_html(void)
 		return;
 	path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
 
-	msg_print(NULL);
+	msg_print(nullptr);
 
 	do_cmd_save_screen_html_aux(buf, 1);
 }
@@ -272,7 +272,7 @@ static bool check_screen_text_can_open(FILE *fff, char buf[])
 	if (fff) return true;
 
 	msg_format(_("ファイル %s を開けませんでした。", "Failed to open file %s."), buf);
-	msg_print(NULL);
+	msg_print(nullptr);
 	return false;
 }
 
@@ -325,7 +325,7 @@ static bool do_cmd_save_screen_text(int wid, int hgt)
 	fprintf(fff, "\n");
 	angband_fclose(fff);
 	msg_print(_("画面(記念撮影)をファイルに書き出しました。", "Screen dump saved."));
-	msg_print(NULL);
+	msg_print(nullptr);
 	screen_load();
 	return true;
 }
@@ -333,26 +333,26 @@ static bool do_cmd_save_screen_text(int wid, int hgt)
 
 /*!
  * @brief 記念撮影のためにグラフィック使用をOFFにする
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @return 記念撮影直前のグラフィックオプション
  */
-static bool update_use_graphics(player_type *creature_ptr)
+static bool update_use_graphics(player_type *player_ptr)
 {
 	if (!use_graphics) return true;
 
 	use_graphics = false;
-	reset_visuals(creature_ptr);
-	creature_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIPPY);
-	handle_stuff(creature_ptr);
+	reset_visuals(player_ptr);
+	player_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIPPY);
+	handle_stuff(player_ptr);
 	return false;
 }
 
 
 /*
  * Save a screen dump to a file
- * @param creature_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
-void do_cmd_save_screen(player_type *creature_ptr)
+void do_cmd_save_screen(player_type *player_ptr)
 {
 	prt(_("記念撮影しますか？ [(y)es/(h)tml/(n)o] ", "Save screen dump? [(y)es/(h)tml/(n)o] "), 0, 0);
 	bool html_dump;
@@ -361,12 +361,12 @@ void do_cmd_save_screen(player_type *creature_ptr)
 	int wid, hgt;
 	term_get_size(&wid, &hgt);
 
-	bool old_use_graphics = update_use_graphics(creature_ptr);
+	bool old_use_graphics = update_use_graphics(player_ptr);
 
 	if (html_dump)
 	{
 		do_cmd_save_screen_html();
-		do_cmd_redraw(creature_ptr);
+		do_cmd_redraw(player_ptr);
 	}
 	else if (!do_cmd_save_screen_text(wid, hgt))
 	{
@@ -376,9 +376,9 @@ void do_cmd_save_screen(player_type *creature_ptr)
 	if (old_use_graphics) return;
 
 	use_graphics = true;
-	reset_visuals(creature_ptr);
-	creature_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIPPY);
-	handle_stuff(creature_ptr);
+	reset_visuals(player_ptr);
+	player_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_MAP | PR_EQUIPPY);
+	handle_stuff(player_ptr);
 }
 
 
@@ -464,7 +464,7 @@ void do_cmd_load_screen(void)
 	if (!fff)
 	{
 		msg_format(_("%s を開くことができませんでした。", "Failed to open %s."), buf);
-		msg_print(NULL);
+		msg_print(nullptr);
 		return;
 	}
 

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "player/player-class-types.h"
+#include "player-info/class-types.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
 
@@ -59,15 +59,12 @@ struct world_type {
 
     bool creating_savefile{}; /* New savefile is currently created */
 
-    bool wizard{}; /* This world under wizard mode */
-
     OBJECT_IDX max_o_idx{}; /*!< Maximum number of objects in the level */
     MONSTER_IDX max_m_idx{}; /*!< Maximum number of monsters in the level */
-
-    DUNGEON_IDX max_d_idx{};
+    int32_t collapse_degree{}; /*!< 時空崩壊度 */
 };
 
-extern world_type *current_world_ptr;
+extern world_type *w_ptr;
 
 class player_type;
 bool is_daytime(void);
@@ -77,3 +74,4 @@ void add_winner_class(player_class_type c);
 void add_retired_class(player_class_type c);
 bool is_winner_class(player_class_type c);
 bool is_retired_class(player_class_type c);
+int32_t calc_world_collapse_plus(world_type *w_ptr);

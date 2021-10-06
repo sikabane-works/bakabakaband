@@ -38,8 +38,6 @@
 #include "monster/monster-status.h"
 #include "monster/smart-learn-types.h"
 #include "object-enchant/special-object-flags.h"
-#include "object-hook/hook-checker.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-mark-types.h"
 #include "perception/object-perception.h"
 #include "player/player-status-flags.h"
@@ -58,26 +56,26 @@
 
 /*
  * @brief 啓蒙/陽光召喚処理
- * @param caster_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param ninja 忍者かどうか
  */
-void wiz_lite(player_type *caster_ptr, bool ninja)
+void wiz_lite(player_type *player_ptr, bool ninja)
 {
     /* Memorize objects */
-    for (OBJECT_IDX i = 1; i < caster_ptr->current_floor_ptr->o_max; i++) {
-        object_type *o_ptr = &caster_ptr->current_floor_ptr->o_list[i];
-        if (!object_is_valid(o_ptr))
+    for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
+        object_type *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
+        if (!o_ptr->is_valid())
             continue;
-        if (object_is_held_monster(o_ptr))
+        if (o_ptr->is_held_by_monster())
             continue;
         o_ptr->marked |= OM_FOUND;
     }
 
     /* Scan all normal grids */
-    for (POSITION y = 1; y < caster_ptr->current_floor_ptr->height - 1; y++) {
+    for (POSITION y = 1; y < player_ptr->current_floor_ptr->height - 1; y++) {
         /* Scan all normal grids */
-        for (POSITION x = 1; x < caster_ptr->current_floor_ptr->width - 1; x++) {
-            grid_type *g_ptr = &caster_ptr->current_floor_ptr->grid_array[y][x];
+        for (POSITION x = 1; x < player_ptr->current_floor_ptr->width - 1; x++) {
+            grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
             /* Memorize terrain of the grid */
             g_ptr->info |= (CAVE_KNOWN);
@@ -91,13 +89,13 @@ void wiz_lite(player_type *caster_ptr, bool ninja)
             for (OBJECT_IDX i = 0; i < 9; i++) {
                 POSITION yy = y + ddy_ddd[i];
                 POSITION xx = x + ddx_ddd[i];
-                g_ptr = &caster_ptr->current_floor_ptr->grid_array[yy][xx];
+                g_ptr = &player_ptr->current_floor_ptr->grid_array[yy][xx];
 
                 /* Feature code (applying "mimic" field) */
                 f_ptr = &f_info[g_ptr->get_feat_mimic()];
 
                 /* Perma-lite the grid */
-                if (d_info[caster_ptr->dungeon_idx].flags.has_not(DF::DARKNESS) && !ninja) {
+                if (d_info[player_ptr->dungeon_idx].flags.has_not(DF::DARKNESS) && !ninja) {
                     g_ptr->info |= (CAVE_GLOW);
                 }
 
@@ -119,25 +117,24 @@ void wiz_lite(player_type *caster_ptr, bool ninja)
         }
     }
 
-    caster_ptr->update |= (PU_MONSTERS);
-    caster_ptr->redraw |= (PR_MAP);
-    caster_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
+    player_ptr->update |= (PU_MONSTERS);
+    player_ptr->redraw |= (PR_MAP);
+    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 
-    if (caster_ptr->special_defense & NINJA_S_STEALTH) {
-        if (caster_ptr->current_floor_ptr->grid_array[caster_ptr->y][caster_ptr->x].info & CAVE_GLOW)
-            set_superstealth(caster_ptr, false);
+    if (player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) {
+        set_superstealth(player_ptr, false);
     }
 }
 
 /*
  * Forget the dungeon map (ala "Thinking of Maud...").
  */
-void wiz_dark(player_type *caster_ptr)
+void wiz_dark(player_type *player_ptr)
 {
     /* Forget every grid */
-    for (POSITION y = 1; y < caster_ptr->current_floor_ptr->height - 1; y++) {
-        for (POSITION x = 1; x < caster_ptr->current_floor_ptr->width - 1; x++) {
-            grid_type *g_ptr = &caster_ptr->current_floor_ptr->grid_array[y][x];
+    for (POSITION y = 1; y < player_ptr->current_floor_ptr->height - 1; y++) {
+        for (POSITION x = 1; x < player_ptr->current_floor_ptr->width - 1; x++) {
+            grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
             /* Process the grid */
             g_ptr->info &= ~(CAVE_MARK | CAVE_IN_DETECT | CAVE_KNOWN);
@@ -146,24 +143,24 @@ void wiz_dark(player_type *caster_ptr)
     }
 
     /* Forget every grid on horizontal edge */
-    for (POSITION x = 0; x < caster_ptr->current_floor_ptr->width; x++) {
-        caster_ptr->current_floor_ptr->grid_array[0][x].info &= ~(CAVE_MARK);
-        caster_ptr->current_floor_ptr->grid_array[caster_ptr->current_floor_ptr->height - 1][x].info &= ~(CAVE_MARK);
+    for (POSITION x = 0; x < player_ptr->current_floor_ptr->width; x++) {
+        player_ptr->current_floor_ptr->grid_array[0][x].info &= ~(CAVE_MARK);
+        player_ptr->current_floor_ptr->grid_array[player_ptr->current_floor_ptr->height - 1][x].info &= ~(CAVE_MARK);
     }
 
     /* Forget every grid on vertical edge */
-    for (POSITION y = 1; y < (caster_ptr->current_floor_ptr->height - 1); y++) {
-        caster_ptr->current_floor_ptr->grid_array[y][0].info &= ~(CAVE_MARK);
-        caster_ptr->current_floor_ptr->grid_array[y][caster_ptr->current_floor_ptr->width - 1].info &= ~(CAVE_MARK);
+    for (POSITION y = 1; y < (player_ptr->current_floor_ptr->height - 1); y++) {
+        player_ptr->current_floor_ptr->grid_array[y][0].info &= ~(CAVE_MARK);
+        player_ptr->current_floor_ptr->grid_array[y][player_ptr->current_floor_ptr->width - 1].info &= ~(CAVE_MARK);
     }
 
     /* Forget all objects */
-    for (OBJECT_IDX i = 1; i < caster_ptr->current_floor_ptr->o_max; i++) {
-        object_type *o_ptr = &caster_ptr->current_floor_ptr->o_list[i];
+    for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
+        object_type *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
 
-        if (!object_is_valid(o_ptr))
+        if (!o_ptr->is_valid())
             continue;
-        if (object_is_held_monster(o_ptr))
+        if (o_ptr->is_held_by_monster())
             continue;
 
         /* Forget the object */
@@ -171,31 +168,31 @@ void wiz_dark(player_type *caster_ptr)
     }
 
     /* Forget travel route when we have forgotten map */
-    forget_travel_flow(caster_ptr->current_floor_ptr);
+    forget_travel_flow(player_ptr->current_floor_ptr);
 
-    caster_ptr->update |= (PU_UN_VIEW | PU_UN_LITE);
-    caster_ptr->update |= (PU_VIEW | PU_LITE | PU_MON_LITE);
-    caster_ptr->update |= (PU_MONSTERS);
-    caster_ptr->redraw |= (PR_MAP);
-    caster_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
+    player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE);
+    player_ptr->update |= (PU_VIEW | PU_LITE | PU_MON_LITE);
+    player_ptr->update |= (PU_MONSTERS);
+    player_ptr->redraw |= (PR_MAP);
+    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 }
 
 /*
  * Hack -- map the current panel (plus some) ala "magic mapping"
  */
-void map_area(player_type *caster_ptr, POSITION range)
+void map_area(player_type *player_ptr, POSITION range)
 {
-    if (d_info[caster_ptr->dungeon_idx].flags.has(DF::DARKNESS))
+    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS))
         range /= 3;
 
     /* Scan that area */
-    for (POSITION y = 1; y < caster_ptr->current_floor_ptr->height - 1; y++) {
-        for (POSITION x = 1; x < caster_ptr->current_floor_ptr->width - 1; x++) {
-            if (distance(caster_ptr->y, caster_ptr->x, y, x) > range)
+    for (POSITION y = 1; y < player_ptr->current_floor_ptr->height - 1; y++) {
+        for (POSITION x = 1; x < player_ptr->current_floor_ptr->width - 1; x++) {
+            if (distance(player_ptr->y, player_ptr->x, y, x) > range)
                 continue;
 
             grid_type *g_ptr;
-            g_ptr = &caster_ptr->current_floor_ptr->grid_array[y][x];
+            g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
             /* Memorize terrain of the grid */
             g_ptr->info |= (CAVE_KNOWN);
@@ -213,7 +210,7 @@ void map_area(player_type *caster_ptr, POSITION range)
 
             /* Memorize known walls */
             for (int i = 0; i < 8; i++) {
-                g_ptr = &caster_ptr->current_floor_ptr->grid_array[y + ddy_ddd[i]][x + ddx_ddd[i]];
+                g_ptr = &player_ptr->current_floor_ptr->grid_array[y + ddy_ddd[i]][x + ddx_ddd[i]];
 
                 /* Feature code (applying "mimic" field) */
                 feat = g_ptr->get_feat_mimic();
@@ -228,8 +225,8 @@ void map_area(player_type *caster_ptr, POSITION range)
         }
     }
 
-    caster_ptr->redraw |= (PR_MAP);
-    caster_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
+    player_ptr->redraw |= (PR_MAP);
+    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 }
 
 /*!
@@ -247,11 +244,11 @@ void map_area(player_type *caster_ptr, POSITION range)
  * "earthquake" by using the "full" to select "destruction".
  * </pre>
  */
-bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r, bool in_generate)
+bool destroy_area(player_type *player_ptr, POSITION y1, POSITION x1, POSITION r, bool in_generate)
 {
     /* Prevent destruction of quest levels and town */
-    floor_type *floor_ptr = caster_ptr->current_floor_ptr;
-    if ((floor_ptr->inside_quest && is_fixed_quest_idx(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    if ((floor_ptr->inside_quest && quest_type::is_fixed(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
         return false;
     }
 
@@ -287,7 +284,7 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
                 g_ptr->info &= ~(CAVE_UNSAFE);
 
                 /* Hack -- Notice player affect */
-                if (player_bold(caster_ptr, y, x)) {
+                if (player_bold(player_ptr, y, x)) {
                     /* Hurt the player later */
                     flag = true;
 
@@ -307,24 +304,24 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
                 if (in_generate) /* In generation */
                 {
                     /* Delete the monster (if any) */
-                    delete_monster(caster_ptr, y, x);
+                    delete_monster(player_ptr, y, x);
                 } else if (r_ptr->flags1 & RF1_QUESTOR) {
                     /* Heal the monster */
                     m_ptr->hp = m_ptr->maxhp;
 
                     /* Try to teleport away quest monsters */
-                    if (!teleport_away(caster_ptr, g_ptr->m_idx, (r * 2) + 1, TELEPORT_DEC_VALOUR))
+                    if (!teleport_away(player_ptr, g_ptr->m_idx, (r * 2) + 1, TELEPORT_DEC_VALOUR))
                         continue;
                 } else {
                     if (record_named_pet && is_pet(m_ptr) && m_ptr->nickname) {
                         GAME_TEXT m_name[MAX_NLEN];
 
-                        monster_desc(caster_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-                        exe_write_diary(caster_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_DESTROY, m_name);
+                        monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
+                        exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_DESTROY, m_name);
                     }
 
                     /* Delete the monster (if any) */
-                    delete_monster(caster_ptr, y, x);
+                    delete_monster(player_ptr, y, x);
                 }
             }
 
@@ -336,13 +333,13 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
                     o_ptr = &floor_ptr->o_list[this_o_idx];
 
                     /* Hack -- Preserve unknown artifacts */
-                    if (object_is_fixed_artifact(o_ptr) && (!object_is_known(o_ptr) || in_generate)) {
+                    if (o_ptr->is_fixed_artifact() && (!o_ptr->is_known() || in_generate)) {
                         /* Mega-Hack -- Preserve the artifact */
                         a_info[o_ptr->name1].cur_num = 0;
 
                         if (in_generate && cheat_peek) {
                             GAME_TEXT o_name[MAX_NLEN];
-                            describe_flavor(caster_ptr, o_name, o_ptr, (OD_NAME_ONLY | OD_STORE));
+                            describe_flavor(player_ptr, o_name, o_ptr, (OD_NAME_ONLY | OD_STORE));
                             msg_format(_("伝説のアイテム (%s) は生成中に*破壊*された。", "Artifact (%s) was *destroyed* during generation."), o_name);
                         }
                     } else if (in_generate && cheat_peek && o_ptr->art_name) {
@@ -352,7 +349,7 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
                 }
             }
 
-            delete_all_items_from_floor(caster_ptr, y, x);
+            delete_all_items_from_floor(player_ptr, y, x);
 
             /* Destroy "non-permanent" grids */
             if (g_ptr->cave_has_flag(FF::PERMANENT))
@@ -365,16 +362,16 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
             {
                 if (t < 20) {
                     /* Create granite wall */
-                    cave_set_feat(caster_ptr, y, x, feat_granite);
+                    cave_set_feat(player_ptr, y, x, feat_granite);
                 } else if (t < 70) {
                     /* Create quartz vein */
-                    cave_set_feat(caster_ptr, y, x, feat_quartz_vein);
+                    cave_set_feat(player_ptr, y, x, feat_quartz_vein);
                 } else if (t < 100) {
                     /* Create magma vein */
-                    cave_set_feat(caster_ptr, y, x, feat_magma_vein);
+                    cave_set_feat(player_ptr, y, x, feat_magma_vein);
                 } else {
                     /* Create floor */
-                    cave_set_feat(caster_ptr, y, x, feat_ground_type[randint0(100)]);
+                    cave_set_feat(player_ptr, y, x, feat_ground_type[randint0(100)]);
                 }
 
                 continue;
@@ -382,7 +379,7 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
 
             if (t < 20) {
                 /* Create granite wall */
-                place_grid(caster_ptr, g_ptr, GB_EXTRA);
+                place_grid(player_ptr, g_ptr, GB_EXTRA);
             } else if (t < 70) {
                 /* Create quartz vein */
                 g_ptr->feat = feat_quartz_vein;
@@ -391,7 +388,7 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
                 g_ptr->feat = feat_magma_vein;
             } else {
                 /* Create floor */
-                place_grid(caster_ptr, g_ptr, GB_FLOOR);
+                place_grid(player_ptr, g_ptr, GB_FLOOR);
             }
 
             /* Clear garbage of hidden trap or door */
@@ -443,27 +440,22 @@ bool destroy_area(player_type *caster_ptr, POSITION y1, POSITION x1, POSITION r,
         }
     }
 
-    /* Hack -- Affect player */
     if (flag) {
         msg_print(_("燃えるような閃光が発生した！", "There is a searing blast of light!"));
-
-        /* Blind the player */
-        if (!has_resist_blind(caster_ptr) && !has_resist_lite(caster_ptr)) {
-            /* Become blind */
-            (void)set_blind(caster_ptr, caster_ptr->blind + 10 + randint1(10));
+        if (!has_resist_blind(player_ptr) && !has_resist_lite(player_ptr)) {
+            (void)BadStatusSetter(player_ptr).mod_blindness(10 + randint1(10));
         }
     }
 
     forget_flow(floor_ptr);
 
     /* Mega-Hack -- Forget the view and lite */
-    caster_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
-    caster_ptr->redraw |= (PR_MAP);
-    caster_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
+    player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
+    player_ptr->redraw |= (PR_MAP);
+    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 
-    if (caster_ptr->special_defense & NINJA_S_STEALTH) {
-        if (floor_ptr->grid_array[caster_ptr->y][caster_ptr->x].info & CAVE_GLOW)
-            set_superstealth(caster_ptr, false);
+    if (floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) {
+        set_superstealth(player_ptr, false);
     }
 
     return true;

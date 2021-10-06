@@ -25,8 +25,6 @@
 #include "monster/monster-status.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/special-object-flags.h"
-#include "object-hook/hook-checker.h"
-#include "object-hook/hook-enchant.h"
 #include "object/object-kind.h"
 #include "object/object-mark-types.h"
 #include "object/object-value.h"
@@ -45,11 +43,11 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 
-void day_break(player_type *subject_ptr)
+void day_break(player_type *player_ptr)
 {
     msg_print(_("夜が明けた。", "The sun has risen."));
-    floor_type *floor_ptr = subject_ptr->current_floor_ptr;
-    if (!subject_ptr->wild_mode) {
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    if (!player_ptr->wild_mode) {
         for (POSITION y = 0; y < floor_ptr->height; y++) {
             for (POSITION x = 0; x < floor_ptr->width; x++) {
                 grid_type *g_ptr = &floor_ptr->grid_array[y][x];
@@ -57,23 +55,23 @@ void day_break(player_type *subject_ptr)
                 if (view_perma_grids)
                     g_ptr->info |= CAVE_MARK;
 
-                note_spot(subject_ptr, y, x);
+                note_spot(player_ptr, y, x);
             }
         }
     }
 
-    subject_ptr->update |= PU_MONSTERS | PU_MON_LITE;
-    subject_ptr->redraw |= PR_MAP;
-    subject_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
-    if (((subject_ptr->special_defense & NINJA_S_STEALTH) != 0) && ((floor_ptr->grid_array[subject_ptr->y][subject_ptr->x].info & CAVE_GLOW) != 0))
-        set_superstealth(subject_ptr, false);
+    player_ptr->update |= PU_MONSTERS | PU_MON_LITE;
+    player_ptr->redraw |= PR_MAP;
+    player_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
+    if ((floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) != 0)
+        set_superstealth(player_ptr, false);
 }
 
-void night_falls(player_type *subject_ptr)
+void night_falls(player_type *player_ptr)
 {
     msg_print(_("日が沈んだ。", "The sun has fallen."));
-    floor_type *floor_ptr = subject_ptr->current_floor_ptr;
-    if (!subject_ptr->wild_mode) {
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    if (!player_ptr->wild_mode) {
         for (POSITION y = 0; y < floor_ptr->height; y++) {
             for (POSITION x = 0; x < floor_ptr->width; x++) {
                 grid_type *g_ptr = &floor_ptr->grid_array[y][x];
@@ -84,20 +82,20 @@ void night_falls(player_type *subject_ptr)
                 g_ptr->info &= ~(CAVE_GLOW);
                 if (f_ptr->flags.has_not(FF::REMEMBER)) {
                     g_ptr->info &= ~(CAVE_MARK);
-                    note_spot(subject_ptr, y, x);
+                    note_spot(player_ptr, y, x);
                 }
             }
 
-            glow_deep_lava_and_bldg(subject_ptr);
+            glow_deep_lava_and_bldg(player_ptr);
         }
     }
 
-    subject_ptr->update |= PU_MONSTERS | PU_MON_LITE;
-    subject_ptr->redraw |= PR_MAP;
-    subject_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
+    player_ptr->update |= PU_MONSTERS | PU_MON_LITE;
+    player_ptr->redraw |= PR_MAP;
+    player_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
 
-    if (((subject_ptr->special_defense & NINJA_S_STEALTH) != 0) && ((floor_ptr->grid_array[subject_ptr->y][subject_ptr->x].info & CAVE_GLOW) != 0))
-        set_superstealth(subject_ptr, false);
+    if ((floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) != 0)
+        set_superstealth(player_ptr, false);
 }
 
 /*!
@@ -110,9 +108,9 @@ static int rating_boost(int delta) { return delta * delta + 50 * delta; }
  * / Examine all monsters and unidentified objects, and get the feeling of current dungeon floor
  * @return 算出されたダンジョンの雰囲気ランク
  */
-static byte get_dungeon_feeling(player_type *subject_ptr)
+static byte get_dungeon_feeling(player_type *player_ptr)
 {
-    floor_type *floor_ptr = subject_ptr->current_floor_ptr;
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->dun_level)
         return 0;
 
@@ -145,15 +143,15 @@ static byte get_dungeon_feeling(player_type *subject_ptr)
         object_type *o_ptr = &floor_ptr->o_list[i];
         object_kind *k_ptr = &k_info[o_ptr->k_idx];
         int delta = 0;
-        if (!object_is_valid(o_ptr) || (object_is_known(o_ptr) && ((o_ptr->marked & OM_TOUCHED) != 0)) || ((o_ptr->ident & IDENT_SENSE) != 0))
+        if (!o_ptr->is_valid() || (o_ptr->is_known() && ((o_ptr->marked & OM_TOUCHED) != 0)) || ((o_ptr->ident & IDENT_SENSE) != 0))
             continue;
 
-        if (object_is_ego(o_ptr)) {
+        if (o_ptr->is_ego()) {
             ego_item_type *e_ptr = &e_info[o_ptr->name2];
             delta += e_ptr->rating * base;
         }
 
-        if (object_is_artifact(o_ptr)) {
+        if (o_ptr->is_artifact()) {
             PRICE cost = object_value_real(o_ptr);
             delta += 10 * base;
             if (cost > 10000L)
@@ -184,16 +182,16 @@ static byte get_dungeon_feeling(player_type *subject_ptr)
         if (o_ptr->tval == TV_HELM && o_ptr->sval == SV_DRAGON_HELM)
             delta += 5 * base;
 
-        if (o_ptr->tval == TV_RING && o_ptr->sval == SV_RING_SPEED && !object_is_cursed(o_ptr))
+        if (o_ptr->tval == TV_RING && o_ptr->sval == SV_RING_SPEED && !o_ptr->is_cursed())
             delta += 25 * base;
 
-        if (o_ptr->tval == TV_RING && o_ptr->sval == SV_RING_LORDLY && !object_is_cursed(o_ptr))
+        if (o_ptr->tval == TV_RING && o_ptr->sval == SV_RING_LORDLY && !o_ptr->is_cursed())
             delta += 15 * base;
 
-        if (o_ptr->tval == TV_AMULET && o_ptr->sval == SV_AMULET_THE_MAGI && !object_is_cursed(o_ptr))
+        if (o_ptr->tval == TV_AMULET && o_ptr->sval == SV_AMULET_THE_MAGI && !o_ptr->is_cursed())
             delta += 15 * base;
 
-        if (!object_is_cursed(o_ptr) && !object_is_broken(o_ptr) && k_ptr->level > floor_ptr->dun_level)
+        if (!o_ptr->is_cursed() && !o_ptr->is_broken() && k_ptr->level > floor_ptr->dun_level)
             delta += (k_ptr->level - floor_ptr->dun_level) * base;
 
         rating += rating_boost(delta);
@@ -230,46 +228,46 @@ static byte get_dungeon_feeling(player_type *subject_ptr)
  * @brief ダンジョンの雰囲気を更新し、変化があった場合メッセージを表示する
  * / Update dungeon feeling, and announce it if changed
  */
-void update_dungeon_feeling(player_type *subject_ptr)
+void update_dungeon_feeling(player_type *player_ptr)
 {
-    floor_type *floor_ptr = subject_ptr->current_floor_ptr;
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->dun_level)
         return;
 
-    if (subject_ptr->phase_out)
+    if (player_ptr->phase_out)
         return;
 
-    int delay = MAX(10, 150 - subject_ptr->skill_fos) * (150 - floor_ptr->dun_level) * TURNS_PER_TICK / 100;
-    if (current_world_ptr->game_turn < subject_ptr->feeling_turn + delay && !cheat_xtra)
+    int delay = MAX(10, 150 - player_ptr->skill_fos) * (150 - floor_ptr->dun_level) * TURNS_PER_TICK / 100;
+    if (w_ptr->game_turn < player_ptr->feeling_turn + delay && !cheat_xtra)
         return;
 
-    int quest_num = quest_number(subject_ptr, floor_ptr->dun_level);
-    if (quest_num
-        && (is_fixed_quest_idx(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
+    auto quest_num = quest_number(player_ptr, floor_ptr->dun_level);
+    if ((quest_num > 0)
+        && (quest_type::is_fixed(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
         return;
 
-    byte new_feeling = get_dungeon_feeling(subject_ptr);
-    subject_ptr->feeling_turn = current_world_ptr->game_turn;
-    if (subject_ptr->feeling == new_feeling)
+    byte new_feeling = get_dungeon_feeling(player_ptr);
+    player_ptr->feeling_turn = w_ptr->game_turn;
+    if (player_ptr->feeling == new_feeling)
         return;
 
-    subject_ptr->feeling = new_feeling;
-    do_cmd_feeling(subject_ptr);
-    select_floor_music(subject_ptr);
-    subject_ptr->redraw |= PR_DEPTH;
+    player_ptr->feeling = new_feeling;
+    do_cmd_feeling(player_ptr);
+    select_floor_music(player_ptr);
+    player_ptr->redraw |= PR_DEPTH;
     if (disturb_minor)
-        disturb(subject_ptr, false, false);
+        disturb(player_ptr, false, false);
 }
 
 /*
  * Glow deep lava and building entrances in the floor
  */
-void glow_deep_lava_and_bldg(player_type *subject_ptr)
+void glow_deep_lava_and_bldg(player_type *player_ptr)
 {
-    if (d_info[subject_ptr->dungeon_idx].flags.has(DF::DARKNESS))
+    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS))
         return;
 
-    floor_type *floor_ptr = subject_ptr->current_floor_ptr;
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
     for (POSITION y = 0; y < floor_ptr->height; y++) {
         for (POSITION x = 0; x < floor_ptr->width; x++) {
             grid_type *g_ptr;
@@ -288,8 +286,8 @@ void glow_deep_lava_and_bldg(player_type *subject_ptr)
         }
     }
 
-    subject_ptr->update |= PU_VIEW | PU_LITE | PU_MON_LITE;
-    subject_ptr->redraw |= PR_MAP;
+    player_ptr->update |= PU_VIEW | PU_LITE | PU_MON_LITE;
+    player_ptr->redraw |= PR_MAP;
 }
 
 /*

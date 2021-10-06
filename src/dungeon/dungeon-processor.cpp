@@ -60,7 +60,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->base_level = floor_ptr->dun_level;
-    current_world_ptr->is_loading_now = false;
+    w_ptr->is_loading_now = false;
     player_ptr->leaving = false;
 
     command_cmd = 0;
@@ -75,8 +75,8 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     health_track(player_ptr, 0);
 
     disturb(player_ptr, true, true);
-    int quest_num = quest_number(player_ptr, floor_ptr->dun_level);
-    if (quest_num) {
+    auto quest_num = quest_number(player_ptr, floor_ptr->dun_level);
+    if (quest_num > 0) {
         r_info[quest[quest_num].r_idx].flags1 |= RF1_QUESTOR;
     }
 
@@ -87,7 +87,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     if ((max_dlv[player_ptr->dungeon_idx] < floor_ptr->dun_level) && !floor_ptr->inside_quest) {
         max_dlv[player_ptr->dungeon_idx] = floor_ptr->dun_level;
         if (record_maxdepth)
-            exe_write_diary(player_ptr, DIARY_MAXDEAPTH, floor_ptr->dun_level, NULL);
+            exe_write_diary(player_ptr, DIARY_MAXDEAPTH, floor_ptr->dun_level, nullptr);
     }
 
     (void)calculate_upkeep(player_ptr);
@@ -95,29 +95,27 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     verify_panel(player_ptr);
     msg_erase();
 
-    current_world_ptr->character_xtra = true;
+    w_ptr->character_xtra = true;
     player_ptr->window_flags |= (PW_INVEN | PW_EQUIP | PW_SPELL | PW_PLAYER | PW_MONSTER | PW_OVERHEAD | PW_DUNGEON);
     player_ptr->redraw |= (PR_WIPE | PR_BASIC | PR_EXTRA | PR_EQUIPPY | PR_MAP);
     player_ptr->update |= (PU_BONUS | PU_HP | PU_MANA | PU_SPELLS | PU_VIEW | PU_LITE | PU_MON_LITE | PU_TORCH | PU_MONSTERS | PU_DISTANCE | PU_FLOW);
     handle_stuff(player_ptr);
 
-    current_world_ptr->character_xtra = false;
+    w_ptr->character_xtra = false;
     player_ptr->update |= (PU_BONUS | PU_HP | PU_MANA | PU_SPELLS);
     player_ptr->update |= (PU_COMBINE | PU_REORDER);
     handle_stuff(player_ptr);
     term_fresh();
 
-    if (quest_num
-        && (is_fixed_quest_idx(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
+    if ((quest_num > 0)
+        && (quest_type::is_fixed(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
         do_cmd_feeling(player_ptr);
-
     if (player_ptr->phase_out) {
         if (load_game) {
-            player_ptr->energy_need = 0;
             update_gambling_monsters(player_ptr);
         } else {
             msg_print(_("試合開始！", "Ready..Fight!"));
-            msg_print(NULL);
+            msg_print(nullptr);
         }
     }
 
@@ -142,12 +140,12 @@ void process_dungeon(player_type *player_ptr, bool load_game)
 #endif
     }
 
-    if (!load_game && (player_ptr->special_defense & NINJA_S_STEALTH))
+    if (!load_game)
         set_superstealth(player_ptr, false);
 
     floor_ptr->monster_level = floor_ptr->base_level;
     floor_ptr->object_level = floor_ptr->base_level;
-    current_world_ptr->is_loading_now = true;
+    w_ptr->is_loading_now = true;
     if (player_ptr->energy_need > 0 && !player_ptr->phase_out && (floor_ptr->dun_level || player_ptr->leaving_dungeon || floor_ptr->inside_arena))
         player_ptr->energy_need = 0;
 
@@ -155,13 +153,13 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     mproc_init(floor_ptr);
 
     while (true) {
-        if ((floor_ptr->m_cnt + 32 > current_world_ptr->max_m_idx) && !player_ptr->phase_out)
+        if ((floor_ptr->m_cnt + 32 > w_ptr->max_m_idx) && !player_ptr->phase_out)
             compact_monsters(player_ptr, 64);
 
         if ((floor_ptr->m_cnt + 32 < floor_ptr->m_max) && !player_ptr->phase_out)
             compact_monsters(player_ptr, 0);
 
-        if (floor_ptr->o_cnt + 32 > current_world_ptr->max_o_idx)
+        if (floor_ptr->o_cnt + 32 > w_ptr->max_o_idx)
             compact_objects(player_ptr, 64);
 
         if (floor_ptr->o_cnt + 32 < floor_ptr->o_max)
@@ -199,12 +197,12 @@ void process_dungeon(player_type *player_ptr, bool load_game)
         if (!player_ptr->playing || player_ptr->is_dead)
             break;
 
-        current_world_ptr->game_turn++;
-        if (current_world_ptr->dungeon_turn < current_world_ptr->dungeon_turn_limit) {
+        w_ptr->game_turn++;
+        if (w_ptr->dungeon_turn < w_ptr->dungeon_turn_limit) {
             if (!player_ptr->wild_mode || wild_regen)
-                current_world_ptr->dungeon_turn++;
-            else if (player_ptr->wild_mode && !(current_world_ptr->game_turn % ((MAX_HGT + MAX_WID) / 2)))
-                current_world_ptr->dungeon_turn++;
+                w_ptr->dungeon_turn++;
+            else if (player_ptr->wild_mode && !(w_ptr->game_turn % ((MAX_HGT + MAX_WID) / 2)))
+                w_ptr->dungeon_turn++;
         }
 
         prevent_turn_overflow(player_ptr);
@@ -216,7 +214,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
             wild_regen--;
     }
 
-    if (quest_num && !(r_info[quest[quest_num].r_idx].flags1 & RF1_UNIQUE)) {
+    if ((quest_num > 0) && !(r_info[quest[quest_num].r_idx].flags1 & RF1_UNIQUE)) {
         r_info[quest[quest_num].r_idx].flags1 &= ~RF1_QUESTOR;
     }
 

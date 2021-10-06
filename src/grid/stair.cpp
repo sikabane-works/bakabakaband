@@ -5,7 +5,6 @@
 #include "floor/cave.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
-#include "object-hook/hook-enchant.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
@@ -13,7 +12,7 @@
 
 /*!
  * @brief 所定の位置に上り階段か下り階段を配置する / Place an up/down staircase at given location
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param y 配置を試みたいマスのY座標
  * @param x 配置を試みたいマスのX座標
  */
@@ -54,7 +53,7 @@ void place_random_stairs(player_type *player_ptr, POSITION y, POSITION x)
 
 /*!
  * @brief 指定された座標が地震や階段生成の対象となるマスかを返す。 / Determine if a given location may be "destroyed"
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param y y座標
  * @param x x座標
  * @return 各種の変更が可能ならTRUEを返す。
@@ -70,7 +69,7 @@ bool cave_valid_bold(floor_type *floor_ptr, POSITION y, POSITION x)
     for (const auto this_o_idx : g_ptr->o_idx_list) {
         object_type *o_ptr;
         o_ptr = &floor_ptr->o_list[this_o_idx];
-        if (object_is_artifact(o_ptr))
+        if (o_ptr->is_artifact())
             return false;
     }
 

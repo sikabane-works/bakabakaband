@@ -9,6 +9,7 @@
 #include "artifact/random-art-activation.h"
 #include "artifact/random-art-bias-types.h"
 #include "artifact/random-art-characteristics.h"
+#include "artifact/random-art-effects.h"
 #include "artifact/random-art-misc.h"
 #include "artifact/random-art-pval-investor.h"
 #include "artifact/random-art-resistance.h"
@@ -18,10 +19,10 @@
 #include "core/window-redrawer.h"
 #include "flavor/object-flavor.h"
 #include "game-option/cheat-types.h"
+#include "game-option/game-play-options.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-armor.h"
-#include "object-hook/hook-checker.h"
 #include "object-hook/hook-weapon.h"
 #include "object/object-flags.h"
 #include "object/object-kind-hook.h"
@@ -37,18 +38,16 @@
 #include "view/display-messages.h"
 #include "wizard/artifact-bias-table.h"
 #include "wizard/wizard-messages.h"
-#include "world/world.h"
 
 static bool weakening_artifact(object_type *o_ptr)
 {
     KIND_OBJECT_IDX k_idx = lookup_kind(o_ptr->tval, o_ptr->sval);
     object_kind *k_ptr = &k_info[k_idx];
-    TrFlags flgs;
-    object_flags(o_ptr, flgs);
+    auto flgs = object_flags(o_ptr);
 
-    if (has_flag(flgs, TR_KILL_EVIL)) {
-        remove_flag(o_ptr->art_flags, TR_KILL_EVIL);
-        add_flag(o_ptr->art_flags, TR_SLAY_EVIL);
+    if (flgs.has(TR_KILL_EVIL)) {
+        o_ptr->art_flags.reset(TR_KILL_EVIL);
+        o_ptr->art_flags.set(TR_SLAY_EVIL);
         return true;
     }
 
@@ -169,7 +168,7 @@ static bool decide_random_art_cursed(const bool a_scroll, object_type *o_ptr)
     if (!a_scroll && one_in_(A_CURSED))
         return true;
 
-    if (((o_ptr->tval == TV_AMULET) || (o_ptr->tval == TV_RING)) && object_is_cursed(o_ptr))
+    if (((o_ptr->tval == TV_AMULET) || (o_ptr->tval == TV_RING)) && o_ptr->is_cursed())
         return true;
 
     return false;
@@ -192,7 +191,7 @@ static int decide_random_art_power(const bool a_cursed)
 
 static void invest_powers(player_type *player_ptr, object_type *o_ptr, int *powers, bool *has_pval, const bool a_cursed)
 {
-    int max_type = object_is_weapon_ammo(o_ptr) ? 7 : 5;
+    int max_type = o_ptr->is_weapon_ammo() ? 7 : 5;
     while ((*powers)--) {
         switch (randint1(max_type)) {
         case 1:
@@ -202,7 +201,7 @@ static void invest_powers(player_type *player_ptr, object_type *o_ptr, int *powe
             break;
         case 3:
         case 4:
-            if (one_in_(2) && object_is_weapon_ammo(o_ptr) && (o_ptr->tval != TV_BOW)) {
+            if (one_in_(2) && o_ptr->is_weapon_ammo() && (o_ptr->tval != TV_BOW)) {
                 if (a_cursed && !one_in_(13))
                     break;
                 if (one_in_(13)) {
@@ -224,7 +223,7 @@ static void invest_powers(player_type *player_ptr, object_type *o_ptr, int *powe
             random_slay(o_ptr);
             break;
         default:
-            if (current_world_ptr->wizard)
+            if (allow_debug_options)
                 msg_print("Switch error in become_random_artifact!");
 
             (*powers)++;
@@ -234,7 +233,7 @@ static void invest_powers(player_type *player_ptr, object_type *o_ptr, int *powe
 
 static void strengthen_pval(object_type *o_ptr)
 {
-    if (has_flag(o_ptr->art_flags, TR_BLOWS)) {
+    if (o_ptr->art_flags.has(TR_BLOWS)) {
         o_ptr->pval = randint1(2);
         if ((o_ptr->tval == TV_SWORD) && (o_ptr->sval == SV_HAYABUSA))
             o_ptr->pval++;
@@ -250,33 +249,33 @@ static void strengthen_pval(object_type *o_ptr)
 
 /*!
  * @brief 防具ならばAC修正、武具なら殺戮修正を付与する
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr ランダムアーティファクトを示すアイテムへの参照ポインタ
  */
 static void invest_positive_modified_value(object_type *o_ptr)
 {
-    if (object_is_armour(o_ptr)) {
+    if (o_ptr->is_armour()) {
         o_ptr->to_a += randint1(o_ptr->to_a > 19 ? 1 : 20 - o_ptr->to_a);
         return;
     }
 
-    if (!object_is_weapon_ammo(o_ptr))
+    if (!o_ptr->is_weapon_ammo())
         return;
 
     o_ptr->to_h += randint1(o_ptr->to_h > 19 ? 1 : 20 - o_ptr->to_h);
     o_ptr->to_d += randint1(o_ptr->to_d > 19 ? 1 : 20 - o_ptr->to_d);
-    if ((has_flag(o_ptr->art_flags, TR_WIS)) && (o_ptr->pval > 0))
-        add_flag(o_ptr->art_flags, TR_BLESSED);
+    if ((o_ptr->art_flags.has(TR_WIS)) && (o_ptr->pval > 0))
+        o_ptr->art_flags.set(TR_BLESSED);
 }
 
 /*!
  * @brief 防具のAC修正が高すぎた場合に弱化させる
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr ランダムアーティファクトを示すアイテムへの参照ポインタ
  */
 static void invest_negative_modified_value(object_type *o_ptr)
 {
-    if (!object_is_armour(o_ptr))
+    if (!o_ptr->is_armour())
         return;
 
     while ((o_ptr->to_d + o_ptr->to_h) > 20) {
@@ -303,29 +302,29 @@ static void reset_flags_poison_needle(object_type *o_ptr)
 
     o_ptr->to_h = 0;
     o_ptr->to_d = 0;
-    remove_flag(o_ptr->art_flags, TR_BLOWS);
-    remove_flag(o_ptr->art_flags, TR_FORCE_WEAPON);
-    remove_flag(o_ptr->art_flags, TR_SLAY_ANIMAL);
-    remove_flag(o_ptr->art_flags, TR_SLAY_EVIL);
-    remove_flag(o_ptr->art_flags, TR_SLAY_UNDEAD);
-    remove_flag(o_ptr->art_flags, TR_SLAY_DEMON);
-    remove_flag(o_ptr->art_flags, TR_SLAY_ORC);
-    remove_flag(o_ptr->art_flags, TR_SLAY_TROLL);
-    remove_flag(o_ptr->art_flags, TR_SLAY_GIANT);
-    remove_flag(o_ptr->art_flags, TR_SLAY_DRAGON);
-    remove_flag(o_ptr->art_flags, TR_KILL_DRAGON);
-    remove_flag(o_ptr->art_flags, TR_SLAY_HUMAN);
-    remove_flag(o_ptr->art_flags, TR_VORPAL);
-    remove_flag(o_ptr->art_flags, TR_BRAND_POIS);
-    remove_flag(o_ptr->art_flags, TR_BRAND_ACID);
-    remove_flag(o_ptr->art_flags, TR_BRAND_ELEC);
-    remove_flag(o_ptr->art_flags, TR_BRAND_FIRE);
-    remove_flag(o_ptr->art_flags, TR_BRAND_COLD);
+    o_ptr->art_flags.reset(TR_BLOWS);
+    o_ptr->art_flags.reset(TR_FORCE_WEAPON);
+    o_ptr->art_flags.reset(TR_SLAY_ANIMAL);
+    o_ptr->art_flags.reset(TR_SLAY_EVIL);
+    o_ptr->art_flags.reset(TR_SLAY_UNDEAD);
+    o_ptr->art_flags.reset(TR_SLAY_DEMON);
+    o_ptr->art_flags.reset(TR_SLAY_ORC);
+    o_ptr->art_flags.reset(TR_SLAY_TROLL);
+    o_ptr->art_flags.reset(TR_SLAY_GIANT);
+    o_ptr->art_flags.reset(TR_SLAY_DRAGON);
+    o_ptr->art_flags.reset(TR_KILL_DRAGON);
+    o_ptr->art_flags.reset(TR_SLAY_HUMAN);
+    o_ptr->art_flags.reset(TR_VORPAL);
+    o_ptr->art_flags.reset(TR_BRAND_POIS);
+    o_ptr->art_flags.reset(TR_BRAND_ACID);
+    o_ptr->art_flags.reset(TR_BRAND_ELEC);
+    o_ptr->art_flags.reset(TR_BRAND_FIRE);
+    o_ptr->art_flags.reset(TR_BRAND_COLD);
 }
 
 static int decide_random_art_power_level(object_type *o_ptr, const bool a_cursed, const int total_flags)
 {
-    if (object_is_weapon_ammo(o_ptr)) {
+    if (o_ptr->is_weapon_ammo()) {
         if (a_cursed)
             return 0;
 
@@ -353,7 +352,7 @@ static int decide_random_art_power_level(object_type *o_ptr, const bool a_cursed
 static void name_unnatural_random_artifact(player_type *player_ptr, object_type *o_ptr, const bool a_scroll, const int power_level, GAME_TEXT *new_name)
 {
     if (!a_scroll) {
-        get_random_name(o_ptr, new_name, object_is_armour(o_ptr), power_level);
+        get_random_name(o_ptr, new_name, o_ptr->is_armour(), power_level);
         return;
     }
 
@@ -393,7 +392,7 @@ static void generate_unnatural_random_artifact(
 /*!
  * @brief ランダムアーティファクト生成のメインルーチン
  * @details 既に生成が済んでいるオブジェクトの構造体を、アーティファクトとして強化する。
- * @param player_ptr プレーヤーへの参照ポインタ
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @param a_scroll アーティファクト生成の巻物上の処理。呪いのアーティファクトが生成対象外となる。
  * @return 常にTRUE(1)を返す
@@ -403,8 +402,7 @@ bool become_random_artifact(player_type *player_ptr, object_type *o_ptr, bool a_
     o_ptr->artifact_bias = 0;
     o_ptr->name1 = 0;
     o_ptr->name2 = 0;
-    for (int i = 0; i < TR_FLAG_SIZE; i++)
-        o_ptr->art_flags[i] |= k_info[o_ptr->k_idx].flags[i];
+    o_ptr->art_flags |= k_info[o_ptr->k_idx].flags;
 
     bool has_pval = o_ptr->pval != 0;
     decide_warrior_bias(player_ptr, o_ptr, a_scroll);
@@ -417,23 +415,23 @@ bool become_random_artifact(player_type *player_ptr, object_type *o_ptr, bool a_
         strengthen_pval(o_ptr);
 
     invest_positive_modified_value(o_ptr);
-    add_flag(o_ptr->art_flags, TR_IGNORE_ACID);
-    add_flag(o_ptr->art_flags, TR_IGNORE_ELEC);
-    add_flag(o_ptr->art_flags, TR_IGNORE_FIRE);
-    add_flag(o_ptr->art_flags, TR_IGNORE_COLD);
+    o_ptr->art_flags.set(TR_IGNORE_ACID);
+    o_ptr->art_flags.set(TR_IGNORE_ELEC);
+    o_ptr->art_flags.set(TR_IGNORE_FIRE);
+    o_ptr->art_flags.set(TR_IGNORE_COLD);
 
     int32_t total_flags = flag_cost(o_ptr, o_ptr->pval);
     if (a_cursed)
         curse_artifact(player_ptr, o_ptr);
 
-    if (!a_cursed && one_in_(object_is_armour(o_ptr) ? ACTIVATION_CHANCE * 2 : ACTIVATION_CHANCE)) {
-        o_ptr->xtra2 = 0;
+    if (!a_cursed && one_in_(o_ptr->is_armour() ? ACTIVATION_CHANCE * 2 : ACTIVATION_CHANCE)) {
+        o_ptr->activation_id = RandomArtActType::NONE;
         give_activation_power(o_ptr);
     }
 
     invest_negative_modified_value(o_ptr);
     if (((o_ptr->artifact_bias == BIAS_MAGE) || (o_ptr->artifact_bias == BIAS_INT)) && (o_ptr->tval == TV_GLOVES))
-        add_flag(o_ptr->art_flags, TR_FREE_ACT);
+        o_ptr->art_flags.set(TR_FREE_ACT);
 
     reset_flags_poison_needle(o_ptr);
     int power_level = decide_random_art_power_level(o_ptr, a_cursed, total_flags);

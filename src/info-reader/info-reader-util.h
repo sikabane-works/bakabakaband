@@ -12,9 +12,8 @@
 extern int error_idx; //!< エラーが発生したinfo ID
 extern int error_line; //!< エラーが発生した行
 
-byte grab_one_activation_flag(concptr what);
-
-using sview = std::string_view;
+enum class RandomArtActType : short;
+RandomArtActType grab_one_activation_flag(concptr what);
 
 /*!
  * @brief infoフラグ文字列をフラグビットに変換する
@@ -24,27 +23,10 @@ using sview = std::string_view;
  * @return 見つけたらtrue
  */
 template <typename T>
-bool info_grab_one_flag(uint32_t &flags, const std::unordered_map<sview, T> &names, sview what)
+bool info_grab_one_flag(uint32_t &flags, const std::unordered_map<std::string_view, T> &names, std::string_view what)
 {
     if (auto it = names.find(what); it != names.end()) {
         set_bits(flags, it->second);
-        return true;
-    }
-    return false;
-}
-
-/*!
- * @brief infoフラグ文字列をフラグビットに変換する
- * @param flags ビットフラグ配列
- * @param names フラグ文字列変換表
- * @param what フラグ文字列
- * @return 見つけたらtrue
- */
-template <typename T>
-bool info_grab_one_flag(uint32_t *flags, const std::unordered_map<sview, T> &names, sview what)
-{
-    if (auto it = names.find(what); it != names.end()) {
-        add_flag(flags, it->second);
         return true;
     }
     return false;

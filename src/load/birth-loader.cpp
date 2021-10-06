@@ -18,13 +18,13 @@ void load_quick_start(void)
 
     byte tmp8u;
     rd_byte(&tmp8u);
-    previous_char.psex = static_cast<player_sex>(tmp8u);
+    previous_char.psex = i2enum<player_sex>(tmp8u);
     rd_byte(&tmp8u);
     previous_char.prace = (player_race_type)tmp8u;
     rd_byte(&tmp8u);
     previous_char.pclass = (player_class_type)tmp8u;
     rd_byte(&tmp8u);
-    previous_char.pseikaku = (player_personality_type)tmp8u;
+    previous_char.ppersonality = (player_personality_type)tmp8u;
     rd_byte(&tmp8u);
     previous_char.realm1 = (int16_t)tmp8u;
     rd_byte(&tmp8u);

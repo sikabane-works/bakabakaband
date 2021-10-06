@@ -12,9 +12,9 @@
  * @param head ヘッダ構造体
  * @return エラーコード
  */
-errr parse_v_info(std::string_view buf, angband_header *head)
+errr parse_v_info(std::string_view buf, angband_header *)
 {
-    static vault_type *v_ptr = NULL;
+    static vault_type *v_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 5);
 
     if (tokens[0] == "N") {
@@ -27,11 +27,13 @@ errr parse_v_info(std::string_view buf, angband_header *head)
         auto i = std::stoi(tokens[1]);
         if (i < error_idx)
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        if (i >= head->info_num)
-            return PARSE_ERROR_OUT_OF_BOUNDS;
+        if (i >= static_cast<int>(v_info.size())) {
+            v_info.resize(i + 1);
+        }
 
         error_idx = i;
         v_ptr = &v_info[i];
+        v_ptr->idx = static_cast<int16_t>(i);
         v_ptr->name = std::string(tokens[2]);
     } else if (!v_ptr)
         return PARSE_ERROR_MISSING_RECORD_HEADER;
@@ -59,6 +61,35 @@ errr parse_v_info(std::string_view buf, angband_header *head)
         c = tokens[1].c_str()[0];
         info_set_value(feat_idx, tokens[2]);
         v_ptr->feature_list[c] = feat_idx;
+    } else if (tokens[0] == "T") {
+        // T:traits
+        if (tokens.size() < 2 || tokens[1].size() == 0)
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+
+        const auto &flags = str_split(tokens[1], '|', true, 10);
+        for (const auto &f : flags) {
+            if (f.size() == 0)
+                continue;
+
+            const auto &s_tokens = str_split(f, '_', false);
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "MAXDEPTH") {
+                info_set_value(v_ptr->max_depth, s_tokens[1]);
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "MINDEPTH") {
+                info_set_value(v_ptr->min_depth, s_tokens[1]);
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "RARITY") {
+                info_set_value(v_ptr->rarity, s_tokens[1]);
+                continue;
+            }
+
+            return PARSE_ERROR_INVALID_FLAG;
+        } 
     } else
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
 
