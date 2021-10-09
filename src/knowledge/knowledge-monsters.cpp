@@ -160,7 +160,7 @@ void do_cmd_knowledge_kill_count(player_type *player_ptr)
     int32_t total = 0;
     for (const auto &r_ref : r_info) {
         if (any_bits(r_ref.flags1, RF1_UNIQUE)) {
-            bool dead = (r_ref.max_num == 0);
+            bool dead = (r_ref.mob_num == 0);
 
             if (dead) {
                 total++;
@@ -194,7 +194,7 @@ void do_cmd_knowledge_kill_count(player_type *player_ptr)
     for (auto r_idx : who) {
         monster_race *r_ptr = &r_info[r_idx];
         if (any_bits(r_ptr->flags1, RF1_UNIQUE)) {
-            bool dead = (r_ptr->max_num == 0);
+            bool dead = (r_ptr->mob_num == 0);
             if (dead) {
                 if (r_ptr->defeat_level && r_ptr->defeat_time)
                     sprintf(buf, _(" - レベル%2d - %d:%02d:%02d", " - level %2d - %d:%02d:%02d"), r_ptr->defeat_level, r_ptr->defeat_time / (60 * 60),
@@ -267,12 +267,11 @@ static void display_monster_list(int col, int row, int per_page, int16_t mon_idx
         term_queue_bigchar(use_bigtile ? 69 : 70, row + i, r_ptr->x_attr, r_ptr->x_char, 0, 0);
         if (!visual_only) {
             if (none_bits(r_ptr->flags1, RF1_UNIQUE) && r_ptr->max_num > 0)
-                put_str(format("%4d/%4d", r_ptr->r_pkills, r_ptr->max_num), row + i, 73);
+                put_str(format("%4d(%4d)", r_ptr->r_pkills, r_ptr->mob_num), row + i, 73);
             else if (none_bits(r_ptr->flags1, RF1_UNIQUE))
-                put_str(format("%4d/****", r_ptr->r_pkills, r_ptr->max_num), row + i, 73);
-//            put_str(format("%4d/****", r_ptr->r_pkills), row + i, 73);
+                put_str(format("%4d(****)", r_ptr->r_pkills, r_ptr->mob_num), row + i, 73);
             else
-                c_put_str((r_ptr->max_num == 0 ? TERM_L_DARK : TERM_WHITE), (r_ptr->max_num == 0 ? _("死亡", " dead") : _("生存", "alive")), row + i, 74);
+                c_put_str((r_ptr->mob_num == 0 ? TERM_L_DARK : TERM_WHITE), (r_ptr->mob_num == 0 ? _("死亡", " dead") : _("生存", "alive")), row + i, 74);
         }
     }
 
@@ -348,7 +347,7 @@ void do_cmd_knowledge_monsters(player_type *player_ptr, bool *need_redraw, bool 
                 prt("Idx", 4, 62);
             prt(_("文字", "Sym"), 4, 67);
             if (!visual_only)
-                prt(_("殺害/残存数", "Kills/Alives"), 4, 72);
+                prt(_("殺害/残存数", "Kills(Alives)"), 4, 72);
 
             for (IDX i = 0; i < 78; i++) {
                 term_putch(i, 5, TERM_WHITE, '=');

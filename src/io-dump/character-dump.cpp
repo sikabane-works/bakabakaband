@@ -167,7 +167,7 @@ static void dump_aux_recall(FILE *fff)
         if (!max_dlv[d_ref.idx])
             continue;
         if (d_ref.final_guardian) {
-            if (!r_info[d_ref.final_guardian].max_num)
+            if (!r_info[d_ref.final_guardian].mob_num)
                 seiha = true;
         } else if (max_dlv[d_ref.idx] == d_ref.maxdepth)
             seiha = true;
@@ -297,7 +297,7 @@ static void dump_aux_monsters(player_type *player_ptr, FILE *fff)
             continue;
 
         if (r_ref.flags1 & RF1_UNIQUE) {
-            bool dead = (r_ref.max_num == 0);
+            bool dead = (r_ref.mob_num == 0);
             if (dead) {
                 norm_total++;
 

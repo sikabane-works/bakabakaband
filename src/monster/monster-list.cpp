@@ -115,7 +115,7 @@ MONRACE_IDX get_mon_num(player_type *player_ptr, DEPTH min_level, DEPTH max_leve
         r_idx = entry.index;
         r_ptr = &r_info[r_idx];
         if (!(option & GMN_ARENA) && !chameleon_change_m_idx) {
-            if (((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->max_num)) {
+            if (((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->mob_num)) {
                 continue;
             }
 

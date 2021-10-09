@@ -113,7 +113,7 @@ static bool check_unique_placeable(player_type *player_ptr, MONRACE_IDX r_idx)
         return true;
 
     monster_race *r_ptr = &r_info[r_idx];
-    if ((any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->max_num)) {
+    if ((any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->mob_num)) {
         return false;
     }
 

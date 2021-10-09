@@ -64,10 +64,10 @@ static bool sweep_uniques(monster_race *r_ptr, bool is_alive)
         return false;
 
     if (is_alive) {
-        if (r_ptr->max_num == 0)
+        if (r_ptr->mob_num == 0)
             return false;
     } else {
-        if (r_ptr->max_num > 0)
+        if (r_ptr->mob_num > 0)
             return false;
     }
 

@@ -31,7 +31,7 @@ bool place_quest_monsters(player_type *player_ptr)
         }
 
         r_ptr = &r_info[quest[i].r_idx];
-        if ((r_ptr->flags1 & RF1_UNIQUE) && (r_ptr->cur_num >= r_ptr->max_num))
+        if ((r_ptr->flags1 & RF1_UNIQUE) && (r_ptr->cur_num >= r_ptr->mob_num))
             continue;
 
         mode = PM_NO_KAGE | PM_NO_PET;

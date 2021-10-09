@@ -228,6 +228,7 @@ errr parse_r_info(std::string_view buf, angband_header *)
 
             if (s_tokens.size() == 2 && s_tokens[0] == "MOB") {
                 info_set_value(r_ptr->max_num, s_tokens[1]);
+                r_ptr->mob_num = r_ptr->max_num;
                 continue;
             }
 

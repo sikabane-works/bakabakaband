@@ -134,7 +134,7 @@ static bool display_kill_unique(lore_type *lore_ptr)
     if ((lore_ptr->flags1 & RF1_UNIQUE) == 0)
         return false;
 
-    bool dead = (lore_ptr->r_ptr->max_num == 0);
+    bool dead = (lore_ptr->r_ptr->mob_num == 0);
     if (lore_ptr->r_ptr->r_deaths) {
         hooked_roff(format(_("%^sはあなたの先祖を %d 人葬っている", "%^s has slain %d of your ancestors"), Who::who(lore_ptr->msex), lore_ptr->r_ptr->r_deaths));
 
@@ -200,7 +200,7 @@ static void display_number_of_nazguls(lore_type *lore_ptr)
     if (lore_ptr->mode != MONSTER_LORE_DEBUG && lore_ptr->r_ptr->r_tkills == 0)
         return;
 
-    int remain = lore_ptr->r_ptr->max_num;
+    int remain = lore_ptr->r_ptr->mob_num;
     int killed = lore_ptr->r_ptr->r_akills;
     if (remain == 0) {
 #ifdef JP
@@ -703,7 +703,7 @@ void display_monster_guardian(lore_type *lore_ptr)
 {
     bool is_kingpin = (lore_ptr->flags1 & RF1_QUESTOR) != 0;
     is_kingpin &= lore_ptr->r_ptr->r_sights > 0;
-    is_kingpin &= lore_ptr->r_ptr->max_num > 0;
+    is_kingpin &= lore_ptr->r_ptr->mob_num > 0;
     is_kingpin &= (lore_ptr->r_idx == MON_OBERON) || (lore_ptr->r_idx == MON_SERPENT);
     if (is_kingpin) {
         hook_c_roff(TERM_VIOLET, _("あなたはこのモンスターを殺したいという強い欲望を感じている...", "You feel an intense desire to kill this monster...  "));

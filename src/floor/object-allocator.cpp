@@ -87,7 +87,7 @@ bool alloc_stairs(player_type *player_ptr, FEAT_IDX feat, int num, int walls)
         QUEST_IDX q_idx = quest_number(player_ptr, floor_ptr->dun_level);
         if (floor_ptr->dun_level > 1 && q_idx) {
             monster_race *r_ptr = &r_info[quest[q_idx].r_idx];
-            if (!(r_ptr->flags1 & RF1_UNIQUE) || 0 < r_ptr->max_num)
+            if (!(r_ptr->flags1 & RF1_UNIQUE) || 0 < r_ptr->mob_num)
                 return true;
         }
 
