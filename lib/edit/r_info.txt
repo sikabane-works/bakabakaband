@@ -29623,6 +29623,22 @@ F:TAKE_ITEM | OPEN_DOOR | UNIQUE | STUPID | WEIRD_MIND
 D:$'Where should we go?' You just can't help feeling sorry for him.
 D:「∴さて‥‥どこへ行こうか？」彼を見ると、どうしても哀れだという思いを禁じ得ない。
 
+N:1565:ケンカ柔道『加納剛次』
+E:Gouzi Kanou, the Kenka Judo
+G:p:u
+I:115:30d80:25:80:7
+W:26:1:0:1000:0:0
+B:HIT:SUPERHURT:1d21
+B:HIT:SUPERHURT:1d14
+B:HIT:SUPERHURT:1d14
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | UNIQUE
+F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | QUANTUM | KARATEKA
+D:表面的にはオリンピック選手として品行方正を努めるがその実には、
+D:暴君的なまでの強さへの追及を抱く柔道の使い手だ。
+D:彼はスポーツではなく純粋なる格闘技としての柔道を求めている。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
