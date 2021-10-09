@@ -111,7 +111,7 @@ static bool exe_eat_soul(player_type *player_ptr, object_type *o_ptr)
     if (!(o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_SOUL))
         return false;
 
-    if (player_ptr->prace == player_race_type::ANDROID)
+    if (player_ptr->prace == PlayerRaceType::ANDROID)
         return false;
 
     monster_race *r_ptr = &r_info[o_ptr->pval];
@@ -664,7 +664,7 @@ void exe_eat_food(player_type *player_ptr, INVENTORY_IDX item)
     }
 
     if (o_ptr->tval == TV_FOOD) {
-        if (PlayerRace(player_ptr).equals(player_race_type::SKELETON)) {
+        if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
             if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
                 object_type forge;
                 object_type *q_ptr = &forge;
