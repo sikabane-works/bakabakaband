@@ -429,7 +429,7 @@ bool alloc_guardian(player_type *player_ptr, bool def_val)
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     bool is_guardian_applicable = guardian > 0;
     is_guardian_applicable &= d_info[player_ptr->dungeon_idx].maxdepth == floor_ptr->dun_level;
-    is_guardian_applicable &= r_info[guardian].cur_num < r_info[guardian].max_num;
+    is_guardian_applicable &= r_info[guardian].cur_num < r_info[guardian].mob_num;
     if (!is_guardian_applicable)
         return def_val;
 

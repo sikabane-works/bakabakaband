@@ -201,7 +201,7 @@ void quest_discovery(QUEST_IDX q_idx)
     }
 
     bool is_random_quest_skipped = (r_ptr->flags1 & RF1_UNIQUE) != 0;
-    is_random_quest_skipped &= r_ptr->max_num == 0;
+    is_random_quest_skipped &= r_ptr->mob_num == 0;
     if (!is_random_quest_skipped) {
         msg_format(_("注意せよ！この階は%sによって守られている！", "Beware, this level is protected by %s!"), name);
         return;

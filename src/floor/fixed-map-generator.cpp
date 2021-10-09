@@ -125,15 +125,15 @@ static void parse_qtw_D(player_type *player_ptr, qtwg_type *qtwg_ptr, char *s)
             }
 
             old_cur_num = r_info[monster_index].cur_num;
-            old_max_num = r_info[monster_index].max_num;
+            old_max_num = r_info[monster_index].mob_num;
 
             if (letter[idx].force_monster_place) {
                 if (r_info[monster_index].flags1 & RF1_UNIQUE) {
                     r_info[monster_index].cur_num = 0;
-                    r_info[monster_index].max_num = 1;
+                    r_info[monster_index].mob_num = 1;
                 } else if (r_info[monster_index].flags7 & RF7_NAZGUL) {
-                    if (r_info[monster_index].cur_num == r_info[monster_index].max_num) {
-                        r_info[monster_index].max_num++;
+                    if (r_info[monster_index].cur_num == r_info[monster_index].mob_num) {
+                        r_info[monster_index].mob_num++;
                     }
                 }
             }
@@ -147,7 +147,7 @@ static void parse_qtw_D(player_type *player_ptr, qtwg_type *qtwg_ptr, char *s)
             if (clone) {
                 floor_ptr->m_list[hack_m_idx_ii].mflag2.set(MFLAG2::CLONED);
                 r_info[monster_index].cur_num = old_cur_num;
-                r_info[monster_index].max_num = old_max_num;
+                r_info[monster_index].mob_num = old_max_num;
             }
         }
 

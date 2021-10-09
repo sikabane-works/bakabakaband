@@ -657,7 +657,7 @@ MonsterSpellResult spell_RF6_S_HI_UNDEAD(player_type *player_ptr, POSITION y, PO
     bool mon_to_mon = (TARGET_TYPE == MONSTER_TO_MONSTER);
     int count = 0;
     if (((m_ptr->r_idx == MON_MORGOTH) || (m_ptr->r_idx == MON_SAURON) || (m_ptr->r_idx == MON_ANGMAR))
-        && ((r_info[MON_NAZGUL].cur_num + 2) < r_info[MON_NAZGUL].max_num) && mon_to_player) {
+        && ((r_info[MON_NAZGUL].cur_num + 2) < r_info[MON_NAZGUL].mob_num) && mon_to_player) {
         count += summon_NAZGUL(player_ptr, y, x, m_idx);
     } else {
         monspell_message(player_ptr, m_idx, t_idx, _("%^sが何かをつぶやいた。", "%^s mumbles."),

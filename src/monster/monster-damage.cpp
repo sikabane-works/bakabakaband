@@ -177,8 +177,8 @@ void MonsterDamageProcessor::death_special_flag_monster()
         return;
     }
 
-    if (any_bits(r_ptr->flags7, RF7_NAZGUL)) {
-        r_ptr->max_num--;
+    if (r_ptr->max_num > 0) { // 無限生成可能でないモンスターの動員数減少
+        r_ptr->mob_num--;
         return;
     }
 
@@ -195,7 +195,7 @@ void MonsterDamageProcessor::death_special_flag_monster()
  */
 void MonsterDamageProcessor::death_unique_monster(monster_race_type r_idx)
 {
-    r_info[r_idx].max_num = 0;
+    r_info[r_idx].mob_num = 0;
     std::vector<monster_race_type> combined_unique_vec;
     if (!check_combined_unique(r_idx, &combined_unique_vec)) {
         return;
@@ -245,7 +245,7 @@ void MonsterDamageProcessor::death_combined_uniques(const monster_race_type r_id
         auto split2 = (monster_race_type)0;
         std::tie(united, split1, split2) = unique;
         if ((r_idx == split1) || (r_idx == split2)) {
-            r_info[united].max_num = 0;
+            r_info[united].mob_num = 0;
             r_info[united].r_pkills++;
             r_info[united].r_akills++;
             if (r_info[united].r_tkills < MAX_SHORT) {
@@ -259,14 +259,14 @@ void MonsterDamageProcessor::death_combined_uniques(const monster_race_type r_id
             continue;
         }
 
-        r_info[split1].max_num = 0;
+        r_info[split1].mob_num = 0;
         r_info[split1].r_pkills++;
         r_info[split1].r_akills++;
         if (r_info[split1].r_tkills < MAX_SHORT) {
             r_info[split1].r_tkills++;
         }
 
-        r_info[split2].max_num = 0;
+        r_info[split2].mob_num = 0;
         r_info[split2].r_pkills++;
         r_info[split2].r_akills++;
         if (r_info[split2].r_tkills < MAX_SHORT) {

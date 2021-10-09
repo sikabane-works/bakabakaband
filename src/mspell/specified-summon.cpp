@@ -73,7 +73,7 @@ MONSTER_NUMBER summon_guardian(player_type *player_ptr, POSITION y, POSITION x, 
     bool mon_to_mon = (TARGET_TYPE == MONSTER_TO_MONSTER);
     bool mon_to_player = (TARGET_TYPE == MONSTER_TO_PLAYER);
 
-    if (r_info[MON_JORMUNGAND].cur_num < r_info[MON_JORMUNGAND].max_num && one_in_(6)) {
+    if (r_info[MON_JORMUNGAND].cur_num < r_info[MON_JORMUNGAND].mob_num && one_in_(6)) {
         simple_monspell_message(player_ptr, m_idx, t_idx, _("地面から水が吹き出した！", "Water blew off from the ground!"),
             _("地面から水が吹き出した！", "Water blew off from the ground!"), TARGET_TYPE);
 
@@ -142,7 +142,7 @@ MONSTER_NUMBER summon_MOAI(player_type *player_ptr, POSITION y, POSITION x, int 
 MONSTER_NUMBER summon_DEMON_SLAYER(player_type *player_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     monster_race *r_ptr = &r_info[MON_DEMON_SLAYER_MEMBER];
-    if (r_ptr->max_num == 0) {
+    if (r_ptr->mob_num == 0) {
         msg_print(_("しかし、隊士は全滅していた…。", "However, all demon slayer members were murdered..."));
         return 0;
     }
@@ -289,7 +289,7 @@ MONSTER_NUMBER summon_THUNDERS(player_type *player_ptr, POSITION y, POSITION x, 
 MONSTER_NUMBER summon_YENDER_WIZARD(player_type *player_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     auto *r_ptr = &r_info[MON_YENDOR_WIZARD_2];
-    if (r_ptr->max_num == 0) {
+    if (r_ptr->mob_num == 0) {
         msg_print(_("しかし、誰も来なかった…。", "However, no kin was appeared..."));
         return 0;
     }
