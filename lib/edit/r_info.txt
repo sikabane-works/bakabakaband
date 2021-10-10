@@ -20304,8 +20304,8 @@ D:(J.H.ブレナン、真崎義博訳 暗黒城の魔術師)
 D:作物を枯らす、豚を盗む、用水路を干上がらす、王妃を誘拐する、と
 D:悪の限りを尽くす魔術師だ。
 
-N:1006:ハイ=エルフ・レンジャー
-E:High-elven ranger
+N:1006:テレリ族のレンジャー
+E:Telerin ranger
 G:h:G
 I:115:50d30:20:70:20
 W:40:3:0:500:0:0
@@ -20314,11 +20314,11 @@ B:HIT:HURT:10d8
 B:HIT:HURT:10d8
 F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
 F:ONLY_ITEM | DROP_1D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
-F:IM_ACID | IM_COLD | RES_WATE | RES_NETH |
-S:1_IN_2 |
+F:IM_ACID | IM_COLD | RES_WATE | RES_NETH | MOB_300 | ALLIANCE_VALINOR
+S:1_IN_2
 S:SHOOT
 D:$An elf cloaked in green wielding a longbow.
-D:緑のクロークをまとい、長弓を使うエルフだ。
+D:緑のクロークをまとい、長弓を使うテレリ族のエルフだ。
 
 N:1007:巨大ゴキブリ
 E:Giant cockroach
@@ -29638,6 +29638,22 @@ D:表面的にはオリンピック選手として品行方正を努めるがそ
 D:暴君的なまでの強さへの追及を抱く柔道の使い手だ。
 D:彼はスポーツではなく純粋なる格闘技としての柔道を求めている。
 
+N:1566:アヴァリ族のレンジャー
+E:Avarin ranger
+G:h:G
+I:115:50d32:20:70:20
+W:42:3:0:550:0:0
+B:SHOOT:HURT:8d6
+B:HIT:HURT:12d8
+B:HIT:HURT:12d8
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
+F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SMART |
+F:IM_POIS | IM_COLD | RES_WATE | RES_NETH | MOB_350
+S:1_IN_3
+S:SHOOT
+D:アルダの古の時代にヴァリノールからの招聘を懐疑し、古ウルク族との相克、
+D:時には協調をも選んだエルフの末裔だ。そのほとんどは様々な種族と混血し
+D:より屈強かつ狡猾に生き延びてきた。
 
 # N: serial number : monster name
 # G: symbol : color
