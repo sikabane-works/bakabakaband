@@ -135,6 +135,7 @@ static void display_phisique(player_type *player_ptr)
 #endif
     std::string alg = PlayerAlignment(player_ptr).get_alignment_description();
     display_player_one_line(ENTRY_ALIGN, format("%s", alg.c_str()), TERM_L_BLUE);
+    display_player_one_line(ENTRY_DEATH_COUNT, format("%d  ", (int)player_ptr->death_count), TERM_L_BLUE);
 }
 
 /*!

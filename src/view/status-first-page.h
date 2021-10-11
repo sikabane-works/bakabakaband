@@ -51,5 +51,7 @@
 #define ENTRY_EXP_TO_ADV_ANDR 44
 
 #define ENTRY_DEATH_COUNT 46
+#define ENTRY_WORLD_COLLAPSE 47
+
 class player_type;
 void display_player_various(player_type *player_ptr);

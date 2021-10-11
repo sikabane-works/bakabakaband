@@ -92,6 +92,7 @@ struct monster_race {
     MONSTER_NUMBER max_num{}; //!< 動員基本最大数
     MONSTER_NUMBER mob_num{}; //!< 動員可能数
     MONSTER_NUMBER cur_num{}; //!< 階に現在いる数 / Monster population on current level
+    int32_t plus_collapse{}; //!< 死亡時の時空崩壊度進行値
     FLOOR_IDX floor_id{}; //!< 存在している保存階ID /  Location of unique monster
     MONSTER_NUMBER r_sights{}; //!< 見えている数 / Count sightings of this monster
     MONSTER_NUMBER r_deaths{}; //!< このモンスターに殺された人数 / Count deaths from this monster
