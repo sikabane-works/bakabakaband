@@ -33,6 +33,7 @@
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "sv-definition/sv-armor-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -180,6 +181,9 @@ static byte get_dungeon_feeling(player_type *player_ptr)
             delta += 5 * base;
 
         if (o_ptr->tval == TV_HELM && o_ptr->sval == SV_DRAGON_HELM)
+            delta += 5 * base;
+
+        if (o_ptr->tval == TV_SOFT_ARMOR && o_ptr->sval == SV_DRAGON_BIKINI)
             delta += 5 * base;
 
         if (o_ptr->tval == TV_RING && o_ptr->sval == SV_RING_SPEED && !o_ptr->is_cursed())
