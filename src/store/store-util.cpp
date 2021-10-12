@@ -18,7 +18,7 @@
 #include "system/object-type-definition.h"
 #include "world/world-object.h"
 
-int cur_store_num = 0;
+StoreSaleType cur_store_num = StoreSaleType::GENERAL;
 store_type *st_ptr = nullptr;
 
 /*!
@@ -130,7 +130,7 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
 void store_create(
     player_type *player_ptr, KIND_OBJECT_IDX fix_k_idx, black_market_crap_pf black_market_crap, store_will_buy_pf store_will_buy, mass_produce_pf mass_produce)
 {
-    const owner_type *ow_ptr = &owners[cur_store_num][st_ptr->owner];
+    const owner_type *ow_ptr = &owners[enum2i(cur_store_num)][st_ptr->owner];
 
     if (st_ptr->stock_num >= st_ptr->stock_size)
         return;
@@ -138,8 +138,8 @@ void store_create(
     for (int tries = 0; tries < 4; tries++) {
         KIND_OBJECT_IDX k_idx;
         DEPTH level;
-        if (cur_store_num == STORE_BLACK) {
-            level = ow_ptr->level + 20 + randint0(25);
+        if (cur_store_num == StoreSaleType::BLACK) {
+            level = ow_ptr->level + 25 + randint0(25);
             k_idx = get_obj_num(player_ptr, level, 0x00000000);
             if (k_idx == 0)
                 continue;
@@ -178,7 +178,7 @@ void store_create(
         if (q_ptr->tval == TV_CHEST)
             continue;
 
-        if (cur_store_num == STORE_BLACK) {
+        if (cur_store_num == StoreSaleType::BLACK) {
             if (black_market_crap(player_ptr, q_ptr) || (object_value(q_ptr) < 10))
                 continue;
         } else {
