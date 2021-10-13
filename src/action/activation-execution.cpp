@@ -75,7 +75,8 @@ static void decide_activation_level(ae_type *ae_ptr)
         return;
     }
 
-    if (((ae_ptr->o_ptr->tval == TV_RING) || (ae_ptr->o_ptr->tval == TV_AMULET)) && ae_ptr->o_ptr->name2) {
+    if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->name2)
+    {
         ae_ptr->lev = e_info[ae_ptr->o_ptr->name2].level;
         ae_ptr->broken = e_info[ae_ptr->o_ptr->name2].broken_rate;
     }
@@ -119,7 +120,7 @@ static bool check_activation_conditions(player_type *player_ptr, ae_type *ae_ptr
         return false;
     }
 
-    if (!ae_ptr->o_ptr->xtra4 && (ae_ptr->o_ptr->tval == TV_FLASK) && ((ae_ptr->o_ptr->sval == SV_LITE_TORCH) || (ae_ptr->o_ptr->sval == SV_LITE_LANTERN))) {
+    if (!ae_ptr->o_ptr->xtra4 && (ae_ptr->o_ptr->tval == ItemKindType::FLASK) && ((ae_ptr->o_ptr->sval == SV_LITE_TORCH) || (ae_ptr->o_ptr->sval == SV_LITE_LANTERN))) {
         msg_print(_("燃料がない。", "It has no fuel."));
         PlayerEnergy(player_ptr).reset_player_turn();
         return false;
@@ -158,10 +159,10 @@ static bool activate_artifact(player_type *player_ptr, object_type *o_ptr)
 
     switch (act_ptr->index) {
     case RandomArtActType::BR_FIRE:
-        o_ptr->timeout = ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_FLAMES)) ? 200 : 250;
+        o_ptr->timeout = ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_FLAMES)) ? 200 : 250;
         return true;
     case RandomArtActType::BR_COLD:
-        o_ptr->timeout = ((o_ptr->tval == TV_RING) && (o_ptr->sval == SV_RING_ICE)) ? 200 : 250;
+        o_ptr->timeout = ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_ICE)) ? 200 : 250;
         return true;
     case RandomArtActType::TERROR:
         o_ptr->timeout = 3 * (player_ptr->lev + 10);
@@ -176,7 +177,7 @@ static bool activate_artifact(player_type *player_ptr, object_type *o_ptr)
 
 static bool activate_whistle(player_type *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != TV_WHISTLE)
+    if (ae_ptr->o_ptr->tval != ItemKindType::WHISTLE)
         return false;
 
     if (music_singing_any(player_ptr))
@@ -203,7 +204,7 @@ static bool activate_whistle(player_type *player_ptr, ae_type *ae_ptr)
 
 static bool activate_firethrowing(player_type *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != TV_BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
         return false;
 
     DIRECTION dir;
@@ -217,7 +218,7 @@ static bool activate_firethrowing(player_type *player_ptr, ae_type *ae_ptr)
 
 static bool activate_rosmarinus(player_type *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != TV_BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS)
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS)
         return false;
 
     DIRECTION dir;
@@ -230,7 +231,7 @@ static bool activate_rosmarinus(player_type *player_ptr, ae_type *ae_ptr)
 
 static bool activate_stungun(player_type *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != TV_JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN)
+    if (ae_ptr->o_ptr->tval != ItemKindType::JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN)
         return false;
 
     DIRECTION dir;
@@ -246,7 +247,7 @@ static bool activate_stungun(player_type *player_ptr, ae_type *ae_ptr)
 
 static bool activate_raygun(player_type *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != TV_BOW || ae_ptr->o_ptr->sval != SV_RAYGUN)
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_RAYGUN)
         return false;
 
     DIRECTION dir;

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-/* The "sval" codes for TV_FOOD */
+/* The "sval" codes for ItemKindType::FOOD */
 enum sv_food_type {
     SV_FOOD_POISON = 0,
     SV_FOOD_BLINDNESS = 1,

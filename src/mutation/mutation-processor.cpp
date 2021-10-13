@@ -209,7 +209,7 @@ void process_world_aux_mutation(player_type *player_ptr)
         disturb(player_ptr, false, true);
         msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
         msg_print(NULL);
-        q_ptr->prep(lookup_kind(TV_JUNK, SV_JUNK_FECES));
+        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
         (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
     }
 
@@ -290,7 +290,7 @@ void process_world_aux_mutation(player_type *player_ptr)
 
         o_ptr = &player_ptr->inventory_list[INVEN_LITE];
 
-        if (o_ptr->tval == TV_LITE) {
+        if (o_ptr->tval == ItemKindType::LITE) {
             if (!o_ptr->is_fixed_artifact() && (o_ptr->xtra4 > 0)) {
                 hp_player(player_ptr, o_ptr->xtra4 / 20);
                 o_ptr->xtra4 /= 2;

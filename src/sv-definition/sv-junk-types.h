@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-/* The "sval" codes for TV_JUNK */
+/* The "sval" codes for ItemKindType::JUNK */
 typedef enum sv_junk_type {
     SV_JUNK_SHARD_OF_POTTERY = 0,
     SV_JUNK_BROKEN_STICK  = 1,
