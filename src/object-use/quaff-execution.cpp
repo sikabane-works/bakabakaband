@@ -95,7 +95,7 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
     player_ptr->incident[INCIDENT::QUAFF]++;
 
     auto ident = false;
-    if (q_ptr->tval == TV_POTION) {
+    if (q_ptr->tval == ItemKindType::POTION) {
         switch (q_ptr->sval) {
         case SV_POTION_WATER:
             msg_print(_("口の中がさっぱりした。", "That was refreshing."));
@@ -580,7 +580,7 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
         set_food(this->player_ptr, MIN(this->player_ptr->food + q_ptr->pval + MAX(0, q_ptr->pval * 10) + 2000, PY_FOOD_MAX - 1));
         break;
     case PlayerRaceFood::OIL:
-        if (q_ptr->tval == TV_FLASK) {
+        if (q_ptr->tval == ItemKindType::FLASK) {
             msg_print(_("オイルを補給した。", "You replenish yourself with the oil."));
             set_food(this->player_ptr, this->player_ptr->food + 5000);
         } else {

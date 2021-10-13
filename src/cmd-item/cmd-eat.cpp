@@ -67,7 +67,7 @@
  */
 static bool exe_eat_junk_type_object(player_type *player_ptr, object_type *o_ptr)
 {
-    if (o_ptr->tval != TV_JUNK)
+    if (o_ptr->tval != ItemKindType::JUNK)
         return false;
 
     switch (o_ptr->sval) {
@@ -108,7 +108,7 @@ static bool exe_eat_junk_type_object(player_type *player_ptr, object_type *o_ptr
  */
 static bool exe_eat_soul(player_type *player_ptr, object_type *o_ptr)
 {
-    if (!(o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_SOUL))
+    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_SOUL))
         return false;
 
     if (player_ptr->prace == PlayerRaceType::ANDROID)
@@ -136,7 +136,7 @@ static bool exe_eat_soul(player_type *player_ptr, object_type *o_ptr)
  */
 static bool exe_eat_corpse_type_object(player_type *player_ptr, object_type *o_ptr)
 {
-    if (!(o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_CORPSE))
+    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE))
         return false;
 
     monster_race *r_ptr = &r_info[o_ptr->pval];
@@ -273,8 +273,7 @@ static bool exe_eat_corpse_type_object(player_type *player_ptr, object_type *o_p
  */
 bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
 {
-
-    if (o_ptr->tval != TV_FOOD)
+    if (o_ptr->tval != ItemKindType::FOOD)
         return false;
 
     BadStatusSetter bss(player_ptr);
@@ -519,18 +518,18 @@ bool exe_eat_food_type_object(player_type *player_ptr, object_type *o_ptr)
  */
 bool exe_eat_charge_of_magic_device(player_type *player_ptr, object_type *o_ptr, INVENTORY_IDX item)
 {
-    if (o_ptr->tval != TV_STAFF && o_ptr->tval != TV_WAND)
+    if (o_ptr->tval != ItemKindType::STAFF && o_ptr->tval != ItemKindType::WAND)
         return false;
 
     if (PlayerRace(player_ptr).food() == PlayerRaceFood::MANA) {
         concptr staff;
 
-        if (o_ptr->tval == TV_STAFF && (item < 0) && (o_ptr->number > 1)) {
+        if (o_ptr->tval == ItemKindType::STAFF && (item < 0) && (o_ptr->number > 1)) {
             msg_print(_("まずは杖を拾わなければ。", "You must first pick up the staffs."));
             return true;
         }
 
-        staff = (o_ptr->tval == TV_STAFF) ? _("杖", "staff") : _("魔法棒", "wand");
+        staff = (o_ptr->tval == ItemKindType::STAFF) ? _("杖", "staff") : _("魔法棒", "wand");
 
         /* "Eat" charges */
         if (o_ptr->pval == 0) {
@@ -549,7 +548,7 @@ bool exe_eat_charge_of_magic_device(player_type *player_ptr, object_type *o_ptr,
         set_food(player_ptr, player_ptr->food + 5000);
 
         /* XXX Hack -- unstack if necessary */
-        if (o_ptr->tval == TV_STAFF && (item >= 0) && (o_ptr->number > 1)) {
+        if (o_ptr->tval == ItemKindType::STAFF && (item >= 0) && (o_ptr->number > 1)) {
             object_type forge;
             object_type *q_ptr;
             q_ptr = &forge;
@@ -632,7 +631,7 @@ void exe_eat_food(player_type *player_ptr, INVENTORY_IDX item)
     }
 
     /* We have tried it */
-    if (o_ptr->tval == TV_FOOD)
+    if (o_ptr->tval == ItemKindType::FOOD)
         object_tried(o_ptr);
 
     /* The player is now aware of the object */
@@ -652,7 +651,7 @@ void exe_eat_food(player_type *player_ptr, INVENTORY_IDX item)
     auto food_type = PlayerRace(player_ptr).food();
 
     /* Balrogs change humanoid corpses to energy */
-    if (food_type == PlayerRaceFood::CORPSE && (o_ptr->tval == TV_CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[o_ptr->pval].d_char))) {
+    if (food_type == PlayerRaceFood::CORPSE && (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[o_ptr->pval].d_char))) {
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%^s is burnt to ashes.  You absorb its vitality!"), o_name);
@@ -663,7 +662,7 @@ void exe_eat_food(player_type *player_ptr, INVENTORY_IDX item)
         return;
     }
 
-    if (o_ptr->tval == TV_FOOD) {
+    if (o_ptr->tval == ItemKindType::FOOD) {
         if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
             if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
                 object_type forge;
@@ -698,7 +697,7 @@ void exe_eat_food(player_type *player_ptr, INVENTORY_IDX item)
             set_food(player_ptr, player_ptr->food + ((o_ptr->pval) / 20));
             ate = true;
         } else {
-            if (o_ptr->tval == TV_FOOD && o_ptr->sval == SV_FOOD_WAYBREAD) {
+            if (o_ptr->tval == ItemKindType::FOOD && o_ptr->sval == SV_FOOD_WAYBREAD) {
                 /* Waybread is always fully satisfying. */
                 set_food(player_ptr, MAX(player_ptr->food, PY_FOOD_MAX - 1));
             } else {

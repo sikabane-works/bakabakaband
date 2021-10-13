@@ -159,7 +159,7 @@ static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md
 {
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_POTION, SV_POTION_CURE_CRITICAL));
+    q_ptr->prep(lookup_kind(ItemKindType::POTION, SV_POTION_CURE_CRITICAL));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -168,7 +168,7 @@ static void on_dead_doneld(player_type *player_ptr, monster_death_type *md_ptr)
     object_type forge;
     object_type *q_ptr = &forge;
     for (int i = 0; i < 10; i++) {
-        q_ptr->prep(lookup_kind(TV_FOOD, SV_FOOD_HAMBURGER));
+        q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_HAMBURGER));
         q_ptr->number = damroll(10, 10);
         (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     }
@@ -181,7 +181,7 @@ static void on_dead_bloodletter(player_type *player_ptr, monster_death_type *md_
 
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_SWORD, SV_BLADE_OF_CHAOS));
+    q_ptr->prep(lookup_kind(ItemKindType::SWORD, SV_BLADE_OF_CHAOS));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -190,7 +190,7 @@ static void on_dead_inariman1_2(player_type *player_ptr, monster_death_type *md_
 {
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_FOOD, SV_FOOD_SUSHI2));
+    q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI2));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -199,7 +199,7 @@ static void on_dead_inariman3(player_type *player_ptr, monster_death_type *md_pt
 {
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_FOOD, SV_FOOD_SUSHI3));
+    q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI3));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -303,12 +303,12 @@ static void on_dead_serpent(player_type *player_ptr, monster_death_type *md_ptr)
 
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_HAFTED, SV_GROND));
+    q_ptr->prep(lookup_kind(ItemKindType::HAFTED, SV_GROND));
     q_ptr->name1 = ART_GROND;
     apply_magic_to_object(player_ptr, q_ptr, -1, AM_GOOD | AM_GREAT);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_CROWN, SV_CHAOS));
+    q_ptr->prep(lookup_kind(ItemKindType::CROWN, SV_CHAOS));
     q_ptr->name1 = ART_CHAOS;
     apply_magic_to_object(player_ptr, q_ptr, -1, AM_GOOD | AM_GREAT);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
@@ -321,7 +321,7 @@ static void on_dead_death_sword(player_type *player_ptr, monster_death_type *md_
 
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_SWORD, randint1(2)));
+    q_ptr->prep(lookup_kind(ItemKindType::SWORD, randint1(2)));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -336,7 +336,7 @@ static void on_dead_can_angel(player_type *player_ptr, monster_death_type *md_pt
 
     object_type forge;
     object_type *q_ptr = &forge;
-    q_ptr->prep(lookup_kind(TV_CHEST, SV_CHEST_KANDUME));
+    q_ptr->prep(lookup_kind(ItemKindType::CHEST, SV_CHEST_KANDUME));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -463,23 +463,23 @@ static bool make_equipment(player_type *player_ptr, object_type *q_ptr, const BI
 
     auto tval = q_ptr->tval;
     switch (tval) {
-    case TV_BOW:
-    case TV_DIGGING:
-    case TV_HAFTED:
-    case TV_POLEARM:
-    case TV_SWORD:
-    case TV_BOOTS:
-    case TV_GLOVES:
-    case TV_HELM:
-    case TV_CROWN:
-    case TV_SHIELD:
-    case TV_CLOAK:
-    case TV_SOFT_ARMOR:
-    case TV_HARD_ARMOR:
-    case TV_DRAG_ARMOR:
-    case TV_LITE:
-    case TV_AMULET:
-    case TV_RING:
+    case ItemKindType::BOW:
+    case ItemKindType::DIGGING:
+    case ItemKindType::HAFTED:
+    case ItemKindType::POLEARM:
+    case ItemKindType::SWORD:
+    case ItemKindType::BOOTS:
+    case ItemKindType::GLOVES:
+    case ItemKindType::HELM:
+    case ItemKindType::CROWN:
+    case ItemKindType::SHIELD:
+    case ItemKindType::CLOAK:
+    case ItemKindType::SOFT_ARMOR:
+    case ItemKindType::HARD_ARMOR:
+    case ItemKindType::DRAG_ARMOR:
+    case ItemKindType::LITE:
+    case ItemKindType::AMULET:
+    case ItemKindType::RING:
         return true;
     default:
         return false;
