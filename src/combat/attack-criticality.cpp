@@ -54,7 +54,7 @@ HIT_POINT critical_norm(player_type *player_ptr, WEIGHT weight, int plus, HIT_PO
     int i = (weight + (meichuu * 3 + plus * 5) + player_ptr->skill_thn);
 
     /* Chance */
-    auto pow = (player_ptr->pclass == CLASS_NINJA) ? 4444 : 5000;
+    auto pow = (player_ptr->pclass == PlayerClassType::NINJA) ? 4444 : 5000;
     if (impact)
         pow /= 2;
 
@@ -101,7 +101,7 @@ static void ninja_critical(player_type *player_ptr, player_attack_type *pa_ptr)
         return;
 
     if (is_unique || !is_weaken) {
-        pa_ptr->attack_damage = MAX(pa_ptr->attack_damage * 5, pa_ptr->m_ptr->hp / 2);
+        pa_ptr->attack_damage = std::max(pa_ptr->attack_damage * 5, pa_ptr->m_ptr->hp / 2);
         pa_ptr->drain_result *= 2;
         msg_format(_("%sに致命傷を負わせた！", "You fatally injured %s!"), pa_ptr->m_name);
     } else {
@@ -129,7 +129,7 @@ void critical_attack(player_type *player_ptr, player_attack_type *pa_ptr)
         return;
     }
 
-    bool is_ninja_hit = (player_ptr->pclass == CLASS_NINJA) && has_melee_weapon(player_ptr, INVEN_MAIN_HAND + pa_ptr->hand)
+    bool is_ninja_hit = (player_ptr->pclass == PlayerClassType::NINJA) && has_melee_weapon(player_ptr, INVEN_MAIN_HAND + pa_ptr->hand)
         && !player_ptr->is_icky_wield[pa_ptr->hand] && ((player_ptr->cur_lite <= 0) || one_in_(7));
     if (is_ninja_hit)
         ninja_critical(player_ptr, pa_ptr);

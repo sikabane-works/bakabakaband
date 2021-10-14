@@ -68,7 +68,7 @@ static void display_sub_hand(player_type *player_ptr)
         return;
     }
 
-    if ((player_ptr->pclass != CLASS_MONK) || ((empty_hands(player_ptr, true) & EMPTY_HAND_MAIN) == 0))
+    if ((player_ptr->pclass != PlayerClassType::MONK) || ((empty_hands(player_ptr, true) & EMPTY_HAND_MAIN) == 0))
         return;
 
     PlayerClass pc(player_ptr);
@@ -99,9 +99,9 @@ static void display_hit_damage(player_type *player_ptr)
         show_todam += o_ptr->to_d;
 
     if ((o_ptr->sval == SV_LIGHT_XBOW) || (o_ptr->sval == SV_HEAVY_XBOW))
-        show_tohit += player_ptr->weapon_exp[0][o_ptr->sval] / 400;
+        show_tohit += player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] / 400;
     else
-        show_tohit += (player_ptr->weapon_exp[0][o_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200;
+        show_tohit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200;
 
     show_tohit += player_ptr->skill_thb / BTH_PLUS_ADJ;
 

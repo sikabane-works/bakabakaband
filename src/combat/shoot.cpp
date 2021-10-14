@@ -429,9 +429,9 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
     /* Actually "fire" the object */
     bonus = (player_ptr->to_h_b + o_ptr->to_h + j_ptr->to_h);
     if ((j_ptr->sval == SV_LIGHT_XBOW) || (j_ptr->sval == SV_HEAVY_XBOW))
-        chance = (player_ptr->skill_thb + (player_ptr->weapon_exp[0][j_ptr->sval] / 400 + bonus) * BTH_PLUS_ADJ);
+        chance = (player_ptr->skill_thb + (player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] / 400 + bonus) * BTH_PLUS_ADJ);
     else
-        chance = (player_ptr->skill_thb + ((player_ptr->weapon_exp[0][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + bonus) * BTH_PLUS_ADJ);
+        chance = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + bonus) * BTH_PLUS_ADJ);
 
     PlayerEnergy(player_ptr).set_player_turn_energy(bow_energy(j_ptr->sval));
     tmul = bow_tmul(j_ptr->sval);
@@ -644,8 +644,8 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                 }
 
                 if ((r_ptr->level + 10) > player_ptr->lev) {
-                    int now_exp = player_ptr->weapon_exp[0][j_ptr->sval];
-                    if (now_exp < s_info[player_ptr->pclass].w_max[0][j_ptr->sval]) {
+                    auto &now_exp = player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval];
+                    if (now_exp < s_info[enum2i(player_ptr->pclass)].w_max[j_ptr->tval][j_ptr->sval]) {
                         SUB_EXP amount = 0;
                         if (now_exp < WEAPON_EXP_BEGINNER)
                             amount = 80;
@@ -655,13 +655,13 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                             amount = 10;
                         else if (player_ptr->lev > 34)
                             amount = 2;
-                        player_ptr->weapon_exp[0][j_ptr->sval] += amount;
+                        now_exp += amount;
                         set_bits(player_ptr->update, PU_BONUS);
                     }
                 }
 
                 if (player_ptr->riding) {
-                    if ((player_ptr->skill_exp[SKILL_RIDING] < s_info[player_ptr->pclass].s_max[SKILL_RIDING])
+                    if ((player_ptr->skill_exp[SKILL_RIDING] < s_info[enum2i(player_ptr->pclass)].s_max[SKILL_RIDING])
                         && ((player_ptr->skill_exp[SKILL_RIDING] - (RIDING_EXP_BEGINNER * 2)) / 200
                             < r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level)
                         && one_in_(2)) {
@@ -845,7 +845,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
         }
 
         /* Chance of breakage (during attacks) */
-        j = (hit_body ? breakage_chance(player_ptr, q_ptr, player_ptr->pclass == CLASS_ARCHER, snipe_type) : 0);
+        j = (hit_body ? breakage_chance(player_ptr, q_ptr, player_ptr->pclass == PlayerClassType::ARCHER, snipe_type) : 0);
 
         if (stick_to) {
             MONSTER_IDX m_idx = player_ptr->current_floor_ptr->grid_array[y][x].m_idx;
@@ -970,16 +970,16 @@ HIT_POINT critical_shot(player_type *player_ptr, WEIGHT weight, int plus_ammo, i
     i = player_ptr->to_h_b + plus_ammo;
 
     if (player_ptr->tval_ammo == ItemKindType::BOLT)
-        i = (player_ptr->skill_thb + (player_ptr->weapon_exp[0][j_ptr->sval] / 400 + i) * BTH_PLUS_ADJ);
+        i = (player_ptr->skill_thb + (player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] / 400 + i) * BTH_PLUS_ADJ);
     else
-        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[0][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
+        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
 
     auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
     auto sniper_concent = sniper_data ? sniper_data->concent : 0;
 
     /* Snipers can shot more critically with crossbows */
     i += ((i * sniper_concent) / 5);
-    if ((player_ptr->pclass == CLASS_SNIPER) && (player_ptr->tval_ammo == ItemKindType::BOLT))
+    if ((player_ptr->pclass == PlayerClassType::SNIPER) && (player_ptr->tval_ammo == ItemKindType::BOLT))
         i *= 2;
 
     /* Good bow makes more critical */
@@ -1121,16 +1121,16 @@ HIT_POINT calc_crit_ratio_shot(player_type *player_ptr, HIT_POINT plus_ammo, HIT
     i = player_ptr->to_h_b + plus_ammo;
 
     if (player_ptr->tval_ammo == ItemKindType::BOLT)
-        i = (player_ptr->skill_thb + (player_ptr->weapon_exp[0][j_ptr->sval] / 400 + i) * BTH_PLUS_ADJ);
+        i = (player_ptr->skill_thb + (player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] / 400 + i) * BTH_PLUS_ADJ);
     else
-        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[0][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
+        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
 
     auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
     auto sniper_concent = sniper_data ? sniper_data->concent : 0;
 
     /* Snipers can shot more critically with crossbows */
     i += ((i * sniper_concent) / 5);
-    if ((player_ptr->pclass == CLASS_SNIPER) && (player_ptr->tval_ammo == ItemKindType::BOLT))
+    if ((player_ptr->pclass == PlayerClassType::SNIPER) && (player_ptr->tval_ammo == ItemKindType::BOLT))
         i *= 2;
 
     /* Good bow makes more critical */
@@ -1223,7 +1223,7 @@ HIT_POINT calc_expect_crit(player_type *player_ptr, WEIGHT weight, int plus, HIT
         num += calc_weight_expect_dam(dam, weight);
     }
 
-    int pow = (player_ptr->pclass == CLASS_NINJA) ? 4444 : 5000;
+    int pow = (player_ptr->pclass == PlayerClassType::NINJA) ? 4444 : 5000;
     if (impact)
         pow /= 2;
 

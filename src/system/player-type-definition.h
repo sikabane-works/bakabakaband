@@ -2,7 +2,6 @@
 
 #include "mutation/mutation-flag-types.h"
 #include "object-enchant/trc-types.h"
-#include "object/tval-types.h"
 #include "player-ability/player-ability-types.h"
 #include "player-info/class-specific-data.h"
 #include "player-info/class-types.h"
@@ -14,7 +13,8 @@
 #include "util/flag-group.h"
 #include <map>
 
-#define MAX_SKILLS 10
+#include <array>
+#include <map>
 
 enum class INCIDENT {
     WALK = 0,
@@ -37,6 +37,7 @@ enum class INCIDENT {
     EAT_POISON = 101,
 };
 
+enum class ItemKindType : short;
 enum class RF_ABILITY;
 
 struct floor_type;
@@ -55,12 +56,12 @@ public:
 
     player_sex psex{}; /* Sex index */
     PlayerRaceType prace{}; /* Race index */
-    player_class_type pclass{}; /* Class index */
+    PlayerClassType pclass{}; /* Class index */
     player_personality_type ppersonality{}; /* Personality index */
     int16_t realm1{}; /* First magic realm */
     int16_t realm2{}; /* Second magic realm */
     int16_t element{}; //!< 元素使い領域番号 / Elementalist system index
-    
+
     DICE_SID hitdie{}; /* Hit dice (sides) */
     uint16_t expfact{}; /* Experience factor
                          * Note: was byte, causing overflow for Amberite
@@ -210,7 +211,7 @@ public:
     SPELL_IDX spell_order[64]{}; /* order spells learned/remembered/forgotten */
 
     SUB_EXP spell_exp[64]{}; /* Proficiency of spells */
-    SUB_EXP weapon_exp[5][64]{}; /* Proficiency of weapons */
+    std::map<ItemKindType, std::array<SUB_EXP, 64>> weapon_exp{}; /* Proficiency of weapons */
     SUB_EXP skill_exp[MAX_SKILLS]{}; /* Proficiency of misc. skill */
 
     ClassSpecificData class_specific_data;

@@ -390,7 +390,7 @@ static void describe_specific_pval(flavor_type *flavor_ptr)
         flavor_ptr->t = object_desc_str(flavor_ptr->t, _("攻撃", " attack"));
 #ifdef JP
 #else
-        if (ABS(flavor_ptr->o_ptr->pval) != 1)
+        if (std::abs(flavor_ptr->o_ptr->pval) != 1)
             flavor_ptr->t = object_desc_chr(flavor_ptr->t, 's');
 #endif
 
@@ -517,7 +517,7 @@ void describe_flavor(player_type *player_ptr, char *buf, object_type *o_ptr, BIT
         flavor_ptr->bow_ptr = &player_ptr->inventory_list[INVEN_BOW];
         if ((flavor_ptr->bow_ptr->k_idx != 0) && (flavor_ptr->o_ptr->tval == bow_tval_ammo(flavor_ptr->bow_ptr)))
             describe_bow_power(player_ptr, flavor_ptr);
-        else if ((player_ptr->pclass == CLASS_NINJA) && (flavor_ptr->o_ptr->tval == ItemKindType::SPIKE))
+        else if ((player_ptr->pclass == PlayerClassType::NINJA) && (flavor_ptr->o_ptr->tval == ItemKindType::SPIKE))
             describe_spike_power(player_ptr, flavor_ptr);
     }
 
