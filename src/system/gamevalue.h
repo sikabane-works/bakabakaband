@@ -33,6 +33,8 @@
 
 #define DUNGEON_MONSTER_MULTIPLE 5 /*!< ランダムフロアのモンスター生成倍率 */
 
+#define MAX_SKILLS 10
+
 /*!
 * @brief モンスター増殖の最大数
 * @details

@@ -31,17 +31,17 @@ void do_cmd_knowledge_weapon_exp(player_type *player_ptr)
     if (!open_temporary_file(&fff, file_name))
         return;
 
-    for (int i = 0; i < 5; i++) {
+    for (auto tval : {ItemKindType::SWORD, ItemKindType::POLEARM, ItemKindType::HAFTED, ItemKindType::DIGGING, ItemKindType::BOW}) {
         for (int num = 0; num < 64; num++) {
             char tmp[30];
             for (const auto &k_ref : k_info) {
-                if ((enum2i(k_ref.tval) != enum2i(ItemKindType::SWORD) - i) || (k_ref.sval != num))
+                if ((k_ref.tval != tval) || (k_ref.sval != num))
                     continue;
                 if ((k_ref.tval == ItemKindType::BOW) && (k_ref.sval == SV_CRIMSON || k_ref.sval == SV_HARP))
                     continue;
 
-                SUB_EXP weapon_exp = player_ptr->weapon_exp[4 - i][num];
-                SUB_EXP weapon_max = s_info[player_ptr->pclass].w_max[4 - i][num];
+                SUB_EXP weapon_exp = player_ptr->weapon_exp[tval][num];
+                SUB_EXP weapon_max = s_info[enum2i(player_ptr->pclass)].w_max[tval][num];
                 strip_name(tmp, k_ref.idx);
                 fprintf(fff, "%-25s ", tmp);
                 if (show_actual_value)
@@ -160,7 +160,7 @@ void do_cmd_knowledge_skill_exp(player_type *player_ptr)
 
     for (int i = 0; i < SKILL_MAX; i++) {
         SUB_EXP skill_exp = player_ptr->skill_exp[i];
-        SUB_EXP skill_max = s_info[player_ptr->pclass].s_max[i];
+        SUB_EXP skill_max = s_info[enum2i(player_ptr->pclass)].s_max[i];
         fprintf(fff, "%-20s ", skill_name[i]);
         if (show_actual_value)
             fprintf(fff, "%4d/%4d ", MIN(skill_exp, skill_max), skill_max);

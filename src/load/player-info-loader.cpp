@@ -36,7 +36,7 @@ static void rd_realms(player_type *player_ptr)
     byte tmp8u;
 
     rd_byte(&tmp8u);
-    if (player_ptr->pclass == CLASS_ELEMENTALIST)
+    if (player_ptr->pclass == PlayerClassType::ELEMENTALIST)
         player_ptr->element = (int16_t)tmp8u;
     else
         player_ptr->realm1 = (int16_t)tmp8u;
@@ -72,7 +72,7 @@ void rd_base_info(player_type *player_ptr)
     player_ptr->prace = (PlayerRaceType)tmp8u;
 
     rd_byte(&tmp8u);
-    player_ptr->pclass = (player_class_type)tmp8u;
+    player_ptr->pclass = (PlayerClassType)tmp8u;
 
     rd_byte(&tmp8u);
     player_ptr->ppersonality = (player_personality_type)tmp8u;
@@ -114,14 +114,14 @@ void rd_experience(player_type *player_ptr)
     for (int i = 0; i < 64; i++)
         rd_s16b(&player_ptr->spell_exp[i]);
 
-    if ((player_ptr->pclass == CLASS_SORCERER) && h_older_than(0, 4, 2))
+    if ((player_ptr->pclass == PlayerClassType::SORCERER) && h_older_than(0, 4, 2))
         for (int i = 0; i < 64; i++)
             player_ptr->spell_exp[i] = SPELL_EXP_MASTER;
 
     const int max_weapon_exp_size = h_older_than(0, 3, 6) ? 60 : 64;
-    for (int i = 0; i < 5; i++)
+    for (auto tval : TV_WEAPON_RANGE)
         for (int j = 0; j < max_weapon_exp_size; j++)
-            rd_s16b(&player_ptr->weapon_exp[i][j]);
+            rd_s16b(&player_ptr->weapon_exp[tval][j]);
 
     for (int i = 0; i < MAX_SKILLS; i++)
         rd_s16b(&player_ptr->skill_exp[i]);
