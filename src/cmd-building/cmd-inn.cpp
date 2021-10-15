@@ -90,6 +90,8 @@ static void pass_game_turn_by_stay(void)
     if (w_ptr->dungeon_turn >= w_ptr->dungeon_turn_limit)
         return;
 
+    w_ptr->collapse_degree += calc_world_collapse_plus(w_ptr) * (w_ptr->game_turn - oldturn) * 20;
+
     w_ptr->dungeon_turn += MIN((w_ptr->game_turn - oldturn), TURNS_PER_TICK * 250) * INN_DUNGEON_TURN_ADJ;
     if (w_ptr->dungeon_turn > w_ptr->dungeon_turn_limit)
         w_ptr->dungeon_turn = w_ptr->dungeon_turn_limit;
