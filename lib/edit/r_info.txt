@@ -22125,11 +22125,11 @@ N:1104:おじゃまぷよ
 E:Hindrance puyo
 G:j:B
 I:108:30d6:15:60:50
-W:30:10:0:50:0:0
+W:30:10:0:50:500:1571
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK | NEVER_BLOW
 F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY |
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
-D:$A mysterious clear jelly thing.  It looks ready to explode.
+D:$A mysterious clear jelly thing.
 D:透明でぷよぷよした謎の生物だ。
 
 N:1105:汗血馬
@@ -29713,6 +29713,18 @@ F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | ATTR_ANY |
 F:RES_CHAO | NO_CONF | NO_SLEEP | HOMO_SEXUAL | NASTY
 D:存在を口にするだけで頭がおかしいと思われても仕方のない
 D:このクッソ汚いホモの妖精は、しかし確かに実在していたのだ（絶望）
+
+N:1571:固ぷよ
+E:Hard puyo
+G:#:B
+I:107:30d20:15:120:50
+W:35:10:0:50:0:0
+F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK | NEVER_BLOW
+F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY |
+F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
+D:$A mysterious clear and hard cube thing.
+D:透明で硬い立方体状の謎の生物だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
