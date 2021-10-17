@@ -38,6 +38,7 @@ public:
 class AllianceNone : public Alliance {
 public:
     using Alliance::Alliance;
+    AllianceNone() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint([[maybe_unused]] player_type *creature_ptr) const override;
     virtual ~AllianceNone() = default;
@@ -46,6 +47,7 @@ public:
 class AllianceAmber : public Alliance {
 public:
     using Alliance::Alliance;
+    AllianceAmber() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceAmber() = default;
@@ -54,6 +56,7 @@ public:
 class AllianceCourtOfChaos : public Alliance {
 public:
     using Alliance::Alliance;
+    AllianceCourtOfChaos() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceCourtOfChaos() = default;
@@ -62,6 +65,7 @@ public:
 class AllianceValinor : public Alliance {
 public:
     using Alliance::Alliance;
+    AllianceValinor() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceValinor() = default;
@@ -70,6 +74,7 @@ public:
 class AllianceUtumno : public Alliance {
 public:
     using Alliance::Alliance;
+    AllianceUtumno() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceUtumno() = default;
