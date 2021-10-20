@@ -34,6 +34,7 @@
 #include "wizard/wizard-special-process.h"
 #include "wizard/wizard-spells.h"
 #include "wizard/wizard-spoiler.h"
+#include "world/world.h"
 #include <sstream>
 #include <string>
 #include <tuple>
@@ -72,6 +73,7 @@ constexpr std::array debug_menu_table = {
     std::make_tuple('s', _("フロア相当のモンスター召喚", "Summon monster which be in target depth")),
     std::make_tuple('t', _("テレポート", "Teleport self")),
     std::make_tuple('u', _("啓蒙(忍者以外)", "Wiz-lite all floor except Ninja")),
+    std::make_tuple('v', _("時空崩壊度設定", "Set world collapsion degree")),
     std::make_tuple('w', _("啓蒙(忍者配慮)", "Wiz-lite all floor")),
     std::make_tuple('x', _("経験値を得る(指定可)", "Get experience")),
     std::make_tuple('X', _("所持品を初期状態に戻す", "Return inventory to initial")),
@@ -226,6 +228,9 @@ bool exe_cmd_debug(player_type *player_ptr, char cmd)
                 player_ptr->current_floor_ptr->grid_array[y][x].info |= CAVE_GLOW | CAVE_MARK;
 
         wiz_lite(player_ptr, false);
+        break;
+    case 'v':
+        get_value("時空崩壊度(0.000001%単位)", 0, 100000000, &(w_ptr->collapse_degree));
         break;
     case 'w':
         wiz_lite(player_ptr, (bool)(player_ptr->pclass == PlayerClassType::NINJA));
