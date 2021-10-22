@@ -164,9 +164,9 @@ static void display_stay_result(player_type *player_ptr, int prev_hour)
 {
     if ((prev_hour >= 6) && (prev_hour < 18)) {
 #if JP
-        std::stringstream ss;
-        ss << "あなたはリフレッシュして目覚め、" << (is_player_undead(player_ptr) ? "夜" : "夕方") << "を迎えた。";
-        msg_print(ss.str().c_str());
+        char refresh_message_jp[50];
+        sprintf(refresh_message_jp, "%s%s%s", "あなたはリフレッシュして目覚め、", is_player_undead(player_ptr) ? "夜" : "夕方", "を迎えた。");
+        msg_print(refresh_message_jp);
 #else
         msg_print("You awake refreshed for the evening.");
 #endif
