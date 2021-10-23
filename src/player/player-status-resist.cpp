@@ -144,6 +144,14 @@ PERCENTAGE calc_fire_damage_rate(player_type *player_ptr)
 }
 
 /*!
+ * @brief プラズマ地形攻撃に対するダメージ倍率計算
+ */
+PERCENTAGE calc_plasma_damage_rate(player_type *player_ptr)
+{
+    return MIN(calc_fire_damage_rate(player_ptr), calc_elec_damage_rate(player_ptr));
+}
+
+/*!
  * @brief 冷気属性攻撃に対するダメージ倍率計算
  */
 PERCENTAGE calc_cold_damage_rate(player_type *player_ptr)
@@ -321,6 +329,14 @@ PERCENTAGE calc_conf_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 }
 
 /*!
+ * @brief 混沌属性攻撃に対するダメージ倍率計算(乱数固定)
+ */
+PERCENTAGE calc_chaos_damage_rate_rand(player_type *player_ptr)
+{
+    return calc_chaos_damage_rate(player_ptr, CALC_RAND);
+}
+
+/*!
  * @brief 混沌属性攻撃に対するダメージ倍率計算
  */
 PERCENTAGE calc_chaos_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
@@ -466,6 +482,14 @@ PERCENTAGE calc_gravity_damage_rate(player_type *player_ptr, rate_calc_type_mode
         per = (per * 2) / 3;
     }
     return per;
+}
+
+/*!
+ * @brief 虚無攻撃に対するダメージ倍率計算(乱数固定)
+ */
+PERCENTAGE calc_void_damage_rate_rand(player_type *player_ptr)
+{
+    return calc_void_damage_rate(player_ptr, CALC_RAND);
 }
 
 /*!

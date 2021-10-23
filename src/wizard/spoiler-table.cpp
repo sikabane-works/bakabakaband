@@ -42,7 +42,7 @@ const std::vector<grouper> group_item_list = {
     { { ItemKindType::STATUE }, _("像", "Statues") },
     { { ItemKindType::CORPSE }, _("死体", "Corpses") },
 
-    { { ItemKindType::SKELETON, ItemKindType::BOTTLE, ItemKindType::JUNK, ItemKindType::SPIKE, ItemKindType::FLASK, ItemKindType::PARCHMENT }, _("その他", "Misc") },
+    { { ItemKindType::SKELETON, ItemKindType::BOTTLE, ItemKindType::JUNK, ItemKindType::SPIKE, ItemKindType::FLASK, ItemKindType::READING_MATTER }, _("その他", "Misc") },
 };
 
 /* The artifacts categorized by type */
@@ -198,4 +198,5 @@ const flag_desc misc_flags3_desc[MAX_MISC3_FLAGS_DESCRIPTION] = {
     { TR_SUPPORTIVE, _("攻撃補助", "Support Attack") },
     { TR_RIDING, _("乗馬適正", "Riding") },
     { TR_INVULN_ARROW, _("射撃無効", "Immune Arrow") },
+    { TR_NASTY, _("クッソ汚い", "Nasty") },
 };

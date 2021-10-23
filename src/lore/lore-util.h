@@ -32,8 +32,10 @@ typedef struct lore_type {
     EnumClassFlagGroup<RF_ABILITY> ability_flags;
 
     BIT_FLAGS flags7;
+    BIT_FLAGS flags8;
     BIT_FLAGS flagsr;
     bool reinforce;
+    bool spawn_monster;
     bool know_everything;
     BIT_FLAGS mode;
     monster_sex msex;

@@ -561,6 +561,13 @@ void exe_player_attack_to_monster(player_type *player_ptr, POSITION y, POSITION 
     /* Attack once for each legal blow */
     int num = 0;
     while ((num++ < pa_ptr->num_blow) && !player_ptr->is_dead) {
+
+        if (player_ptr->incident.count(INCIDENT::ATTACK_EXE_COUNT) == 0) {
+            player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT] = 0;
+        }
+        player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]++;
+
+
         if (!process_attack_hit(player_ptr, pa_ptr, chance))
             continue;
 

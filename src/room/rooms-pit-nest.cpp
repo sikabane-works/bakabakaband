@@ -402,8 +402,10 @@ std::vector<nest_pit_type> pit_types = {
     { _("シンボル(悪)", "symbol evil"), vault_aux_symbol_e, vault_prep_symbol, 70, 1 },
     { _("教会", "chapel"), vault_aux_chapel_g, nullptr, 65, 2 },
     { _("ドラゴン", "dragon"), vault_aux_dragon, vault_prep_dragon, 70, 6 },
-    { _("デーモン", "demon"), vault_aux_demon, nullptr, 80, 6 },
-    { _("ダークエルフ", "dark elf"), vault_aux_dark_elf, nullptr, 45, 4 },
+    { _("デーモン", "demon"), vault_aux_demon, NULL, 80, 6 },
+    { _("ダークエルフ", "dark elf"), vault_aux_dark_elf, NULL, 45, 4 },
+    { _("ホモ", "gay"), vault_aux_gay, NULL, 5, 4 },
+    { _("レズ", "lez"), vault_aux_les, NULL, 5, 4 },
 };
 
 /*!

@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-struct player_type;
+class player_type;
 void wiz_cure_all(player_type *player_ptr);
 void wiz_create_item(player_type *player_ptr);
 void wiz_create_named_art(player_type *player_ptr);
@@ -17,4 +17,4 @@ void wiz_dump_options(void);
 void set_gametime(void);
 void wiz_zap_surrounding_monsters(player_type *player_ptr);
 void wiz_zap_floor_monsters(player_type *player_ptr);
-extern void cheat_death(player_type *player_ptr);
+extern void cheat_death(player_type *player_ptr, bool no_penalty);

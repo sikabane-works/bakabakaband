@@ -18,6 +18,7 @@
 #include "object/tval-types.h"
 #include "perception/object-perception.h"
 #include "store/store-util.h"
+#include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
@@ -68,6 +69,7 @@ static bool determine_spcial_item_type(object_type *o_ptr, ItemKindType tval)
     bool is_special_item_type = (o_ptr->is_wearable() && o_ptr->is_ego()) || ((tval == ItemKindType::AMULET) && (o_ptr->sval == SV_AMULET_RESISTANCE))
         || ((tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_LORDLY)) || ((tval == ItemKindType::SHIELD) && (o_ptr->sval == SV_DRAGON_SHIELD))
         || ((tval == ItemKindType::HELM) && (o_ptr->sval == SV_DRAGON_HELM)) || ((tval == ItemKindType::GLOVES) && (o_ptr->sval == SV_SET_OF_DRAGON_GLOVES))
+        || ((tval == ItemKindType::SOFT_ARMOR) && (o_ptr->sval == SV_DRAGON_BIKINI))
         || ((tval == ItemKindType::BOOTS) && (o_ptr->sval == SV_PAIR_OF_DRAGON_GREAVE)) || o_ptr->is_artifact();
 
     return is_special_item_type;

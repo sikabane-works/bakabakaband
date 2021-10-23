@@ -61,7 +61,7 @@ static bool boundary_floor(grid_type *g_ptr, feature_type *f_ptr, feature_type *
 {
     bool is_boundary_floor = g_ptr->mimic > 0;
     is_boundary_floor &= permanent_wall(f_ptr);
-    is_boundary_floor &= mimic_f_ptr->flags.has_any_of({ FF::MOVE, FF::CAN_FLY });
+    is_boundary_floor &= mimic_f_ptr->flags.has_any_of({FF::MOVE, FF::CAN_FLY});
     is_boundary_floor &= mimic_f_ptr->flags.has(FF::PROJECT);
     is_boundary_floor &= mimic_f_ptr->flags.has_not(FF::OPEN);
     return is_boundary_floor;
@@ -354,6 +354,12 @@ void exe_movement(player_type *player_ptr, DIRECTION dir, bool do_pickup, bool b
 
     if (break_trap)
         mpe_mode |= MPE_BREAK_TRAP;
+
+    if (player_ptr->incident.count(INCIDENT::WALK) == 0) {
+        player_ptr->incident[INCIDENT::WALK] = 0;
+    }
+    player_ptr->incident[INCIDENT::WALK]++;
+
 
     (void)move_player_effect(player_ptr, y, x, mpe_mode);
 }

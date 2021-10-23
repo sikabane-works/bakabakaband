@@ -10,9 +10,10 @@
 #define SV_ANY 255
 #define SV_PHOTO 50
 
-/* The "sval" codes for TV_CORPSE */
+/* The "sval" codes for ItemKindType::CORPSE */
 #define SV_SKELETON 0
 #define SV_CORPSE 1
+#define SV_SOUL 2
 
 /* The "sval" codes for TV_SHOT/TV_ARROW/TV_BOLT */
 #define SV_AMMO_LIGHT 0 /* pebbles */

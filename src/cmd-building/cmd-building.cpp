@@ -57,6 +57,7 @@
 #include "player/player-personality-types.h"
 #include "spell-kind/spells-perception.h"
 #include "spell-kind/spells-world.h"
+#include "spell-kind/spells-polymorph.h"
 #include "spell/spells-status.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -287,6 +288,12 @@ static void bldg_process_command(player_type *player_ptr, building_type *bldg, i
         paid = true;
         bcost = repair_broken_weapon(player_ptr, bcost);
         break;
+
+    case BACT_TRANS_SEX:
+        paid = true;
+        trans_sex(player_ptr);
+        break;
+
     }
 
     if (paid)
@@ -324,17 +331,15 @@ void do_cmd_building(player_type *player_ptr)
         if (!player_ptr->exit_bldg && player_ptr->current_floor_ptr->m_cnt > 0) {
             prt(_("ゲートは閉まっている。モンスターがあなたを待っている！", "The gates are closed.  The monster awaits!"), 0, 0);
         } else {
-            prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
+            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
             player_ptr->current_floor_ptr->inside_arena = false;
-            player_ptr->leaving = true;
             command_new = SPECIAL_KEY_BUILDING;
             energy.reset_player_turn();
         }
 
         return;
     } else if (player_ptr->phase_out) {
-        prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
-        player_ptr->leaving = true;
+        move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
         player_ptr->phase_out = false;
         command_new = SPECIAL_KEY_BUILDING;
         energy.reset_player_turn();

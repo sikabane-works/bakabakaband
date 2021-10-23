@@ -90,6 +90,8 @@ static void pass_game_turn_by_stay(void)
     if (w_ptr->dungeon_turn >= w_ptr->dungeon_turn_limit)
         return;
 
+    w_ptr->collapse_degree += calc_world_collapse_plus(w_ptr) * (w_ptr->game_turn - oldturn) * 20;
+
     w_ptr->dungeon_turn += MIN((w_ptr->game_turn - oldturn), TURNS_PER_TICK * 250) * INN_DUNGEON_TURN_ADJ;
     if (w_ptr->dungeon_turn > w_ptr->dungeon_turn_limit)
         w_ptr->dungeon_turn = w_ptr->dungeon_turn_limit;
@@ -207,8 +209,14 @@ static bool stay_inn(player_type *player_ptr)
     back_to_health(player_ptr);
     charge_magic_eating_energy(player_ptr);
 
-    display_stay_result(player_ptr, prev_hour);
-    return true;
+	display_stay_result(player_ptr, prev_hour);
+
+    if (player_ptr->incident.count(INCIDENT::STAY_INN) == 0) {
+		player_ptr->incident[INCIDENT::STAY_INN] = 0;
+    }
+    player_ptr->incident[INCIDENT::STAY_INN]++;
+
+	return true;
 }
 
 /*!

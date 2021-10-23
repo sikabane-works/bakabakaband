@@ -86,10 +86,10 @@ static int get_history_chart(player_type *player_ptr)
 }
 
 /*!
- * @brief 生い立ちを画面に表示しつつ、種族から社会的地位を決定する
- * @param player_ptr プレイヤーへの参照ポインタ
+ * @brief 生い立ちを画面に表示しつつ、種族から威信を決定する
+ * @param player_ptr プレーヤーへの参照ポインタ
  * @param buf 生い立ち情報のバッファ
- * @details 画面表示と社会的地位の決定が密結合していて分離できない
+ * @details 画面表示と威信の決定が密結合していて分離できない
  */
 static void decide_social_class(player_type *player_ptr, char *buf)
 {
@@ -112,11 +112,11 @@ static void decide_social_class(player_type *player_ptr, char *buf)
     else if (social_class < 1)
         social_class = 1;
 
-    player_ptr->sc = (int16_t)social_class;
+    player_ptr->prestige = (int16_t)social_class;
 }
 
 /*!
- * @brief プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and social class, using the "history charts".
+ * @brief プレイヤーの生い立ちの自動生成を行う。 / Get the racial history, and prestige, using the "history charts".
  */
 void get_history(player_type *player_ptr)
 {

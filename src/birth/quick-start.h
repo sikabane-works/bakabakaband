@@ -18,10 +18,11 @@ struct birther {
     int16_t realm1{}; /* First magic realm */
     int16_t realm2{}; /* Second magic realm */
 
+    int32_t death_count{};
     int16_t age{};
     int16_t ht{};
     int16_t wt{};
-    int16_t sc{};
+    int16_t prestige{};
 
     PRICE au{}; /*!< 初期の所持金 */
 
@@ -40,7 +41,7 @@ struct birther {
 
 extern birther previous_char;
 
-struct player_type;
+class player_type;
 bool ask_quick_start(player_type *player_ptr);
 void save_prev_data(player_type *player_ptr, birther *birther_ptr);
 void load_prev_data(player_type *player_ptr, bool swap);

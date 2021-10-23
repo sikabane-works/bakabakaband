@@ -72,7 +72,7 @@ void display_scores(int from, int to, int note, high_score *score)
 
     for (auto k = from, place = k + 1; k < num_scores; k += per_screen) {
         term_clear();
-        put_str(_("                変愚蛮怒: 勇者の殿堂", "                Hengband Hall of Fame"), 0, 0);
+        put_str(_("                馬鹿馬鹿蛮怒: 勇者の殿堂", "                Hengband Hall of Fame"), 0, 0);
         GAME_TEXT tmp_val[160];
         if (k > 0) {
             sprintf(tmp_val, _("( %d 位以下 )", "(from position %d)"), k + 1);

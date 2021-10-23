@@ -59,6 +59,7 @@ struct object_kind {
     bool tried{}; /*!< ベースアイテムを未鑑定のまま試したことがあるか /  The player has "tried" one of the items */
 
     RandomArtActType act_idx{}; /*!< 発動能力のID /  Activative ability index */
+    PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
 extern std::vector<object_kind> k_info;

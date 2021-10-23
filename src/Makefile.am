@@ -17,6 +17,8 @@ hengband_SOURCES = \
 	action/tunnel-execution.cpp action/tunnel-execution.h \
 	action/weapon-shield.cpp action/weapon-shield.h \
 	\
+	alliance/alliance.cpp alliance/alliance.h \
+	\
 	artifact/artifact-info.cpp artifact/artifact-info.h \
 	artifact/fixed-art-generator.cpp artifact/fixed-art-generator.h \
 	artifact/fixed-art-types.h \
@@ -321,9 +323,11 @@ hengband_SOURCES = \
 	io-dump/random-art-info-dumper.cpp io-dump/random-art-info-dumper.h \
 	io-dump/special-class-dump.cpp io-dump/special-class-dump.h \
 	\
+	knowledge/knowledge-alliance.cpp knowledge/knowledge-alliance.h \
 	knowledge/knowledge-autopick.cpp knowledge/knowledge-autopick.h \
 	knowledge/knowledge-experiences.cpp knowledge/knowledge-experiences.h \
 	knowledge/knowledge-features.cpp knowledge/knowledge-features.h \
+	knowledge/knowledge-incident.cpp knowledge/knowledge-incident.h \
 	knowledge/knowledge-inventory.cpp knowledge/knowledge-inventory.h \
 	knowledge/knowledge-items.cpp knowledge/knowledge-items.h \
 	knowledge/knowledge-monsters.cpp knowledge/knowledge-monsters.h \
@@ -853,7 +857,7 @@ hengband_SOURCES = \
 	sv-definition/sv-ring-types.h sv-definition/sv-rod-types.h \
 	sv-definition/sv-scroll-types.h sv-definition/sv-staff-types.h \
 	sv-definition/sv-wand-types.h sv-definition/sv-weapon-types.h \
-	sv-definition/sv-other-types.h \
+	sv-definition/sv-junk-types.h sv-definition/sv-other-types.h \
 	\
 	system/alloc-entries.cpp system/alloc-entries.h \
 	system/angband.h \

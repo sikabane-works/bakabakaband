@@ -2,11 +2,13 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include "dungeon/dungeon-flag-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
+#include "room/room-types.h"
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -29,7 +31,7 @@
 #define DUNGEON_NO_MELEE 17
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
-#define DUNGEON_MAX 19
+#define DUNGEON_MAX 25
 
 typedef struct feat_prob {
     FEAT_IDX feat{}; /* Feature tile */
@@ -84,11 +86,14 @@ typedef struct dungeon_type {
 	int tunnel_percent{};
 	int obj_great{};
 	int obj_good{};
+
+	bool unique_room_rate;
+	int room_rate[ROOM_T_MAX]; /* ダンジョン独自の部屋生成率 */
 } dungeon_type;
 
 extern std::vector<DEPTH> max_dlv;
 extern std::vector<dungeon_type> d_info;
 
-struct player_type;
+class player_type;
 DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x);
 bool is_in_dungeon(player_type *player_ptr);

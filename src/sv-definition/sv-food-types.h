@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-/* The "sval" codes for TV_FOOD */
+/* The "sval" codes for ItemKindType::FOOD */
 enum sv_food_type {
     SV_FOOD_POISON = 0,
     SV_FOOD_BLINDNESS = 1,
@@ -30,4 +30,18 @@ enum sv_food_type {
     SV_FOOD_WAYBREAD = 37,
     SV_FOOD_PINT_OF_ALE = 38,
     SV_FOOD_PINT_OF_WINE = 39,
+    SV_FOOD_BROWNIW_OF_ALC = 40,
+    SV_FOOD_WELCOME_DRINK_OF_ARE = 41,
+    SV_FOOD_ABA_TEA = 42,
+    SV_FOOD_SEED_FEA = 43,
+    SV_FOOD_HAMBURGER = 44,
+    SV_FOOD_HIP = 45,
+    SV_FOOD_SURSTROMMING = 46,
+    SV_FOOD_HOMOTEA = 47,
+    SV_FOOD_SUSHI2 = 50,
+    SV_FOOD_SUSHI3 = 51,
+    SV_FOOD_GOLDEN_EGG = 52,
+    SV_FOOD_ABESHI = 56,
+    SV_FOOD_HIDEBU = 57,
+    SV_FOOD_COOKIE = 58,
 };

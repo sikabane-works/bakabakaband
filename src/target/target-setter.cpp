@@ -171,9 +171,9 @@ static void describe_projectablity(player_type *player_ptr, ts_type *ts_ptr)
     if (!cheat_sight)
         return;
 
-    char cheatinfo[30];
-    sprintf(cheatinfo, " X:%d Y:%d LOS:%d LOP:%d", ts_ptr->x, ts_ptr->y, los(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x),
-        projectable(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x));
+    char cheatinfo[50];
+    sprintf(cheatinfo, " X:%d Y:%d LOS:%d LOP:%d ID:%d SID:%d", ts_ptr->x, ts_ptr->y, los(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x),
+        projectable(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x), ts_ptr->g_ptr->feat, ts_ptr->g_ptr->mimic);
     strcat(ts_ptr->info, cheatinfo);
 }
 
@@ -391,8 +391,8 @@ static void describe_grid_wizard(player_type *player_ptr, ts_type *ts_ptr)
         return;
 
     char cheatinfo[100];
-    sprintf(cheatinfo, " X:%d Y:%d LOS:%d LOP:%d SPECIAL:%d", ts_ptr->x, ts_ptr->y, los(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x),
-        projectable(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x), ts_ptr->g_ptr->special);
+    sprintf(cheatinfo, " X:%d Y:%d LOS:%d LOP:%d SPECIAL:%d ID:%d SID:%d", ts_ptr->x, ts_ptr->y, los(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x),
+        projectable(player_ptr, player_ptr->y, player_ptr->x, ts_ptr->y, ts_ptr->x), ts_ptr->g_ptr->special, ts_ptr->g_ptr->feat, ts_ptr->g_ptr->mimic);
     strcat(ts_ptr->info, cheatinfo);
 }
 

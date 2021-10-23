@@ -18,6 +18,7 @@
 #include "util/angband-files.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <ctime>
 
 bool write_level; //!< @todo *抹殺* したい…
 
@@ -83,7 +84,7 @@ static QUEST_IDX write_floor(player_type *player_ptr, concptr *note_level, char 
         *note_level = _("アリーナ:", "Arena:");
     else if (!floor_ptr->dun_level)
         *note_level = _("地上:", "Surface:");
-    else if (q_idx && quest_type::is_fixed(q_idx) && !((q_idx == QUEST_OBERON) || (q_idx == QUEST_SERPENT)))
+    else if (q_idx && quest_type::is_fixed(q_idx) && !(q_idx == QUEST_MELKO))
         *note_level = _("クエスト:", "Quest:");
     else {
 #ifdef JP

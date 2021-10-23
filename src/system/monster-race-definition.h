@@ -6,6 +6,7 @@
 #include "util/flag-group.h"
 #include "system/angband.h"
 #include <string>
+#include <tuple>
 
 /*! モンスターが1ターンに攻撃する最大回数 (射撃を含む) / The maximum number of times a monster can attack in a turn (including SHOOT) */
 #define MAX_NUM_BLOWS 4
@@ -71,9 +72,11 @@ struct monster_race {
     BIT_FLAGS flagsr{}; //!< 耐性フラグ / Flags R (resistances info)
     EnumClassFlagGroup<RF_ABILITY> ability_flags; //!< 能力フラグ(魔法/ブレス) / Ability Flags
     monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
-    MONRACE_IDX reinforce_id[6]{}; //!< 指定護衛モンスター種族ID(6種まで)
-    DICE_NUMBER reinforce_dd[6]{}; //!< 指定護衛数ダイス数
-    DICE_SID reinforce_ds[6]{}; //!< 指定護衛数ダイス面
+    std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces; 
+    std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
+    std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
+    std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
+    std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
     PERCENTAGE artifact_percent[4]{}; //!< 特定アーティファクトドロップ率
@@ -86,8 +89,10 @@ struct monster_race {
     SYMBOL_CODE d_char{}; //!< デフォルトの表示文字 / Default monster character
     TERM_COLOR x_attr{}; //!< 設定した表示色(またはタイル位置Y) / Desired monster attribute
     SYMBOL_CODE x_char{}; //!< 設定した表示文字(またはタイル位置X) / Desired monster character
-    MONSTER_NUMBER max_num{}; //!< 階に最大存在できる数 / Maximum population allowed per level
+    MONSTER_NUMBER max_num{}; //!< 動員基本最大数
+    MONSTER_NUMBER mob_num{}; //!< 動員可能数
     MONSTER_NUMBER cur_num{}; //!< 階に現在いる数 / Monster population on current level
+    int32_t plus_collapse{}; //!< 死亡時の時空崩壊度進行値
     FLOOR_IDX floor_id{}; //!< 存在している保存階ID /  Location of unique monster
     MONSTER_NUMBER r_sights{}; //!< 見えている数 / Count sightings of this monster
     MONSTER_NUMBER r_deaths{}; //!< このモンスターに殺された人数 / Count deaths from this monster
@@ -109,4 +114,5 @@ struct monster_race {
     EnumClassFlagGroup<RF_ABILITY> r_ability_flags; //!< 見た能力フラグ(魔法/ブレス) / Observed racial ability flags
     PLAYER_LEVEL defeat_level{}; //!< 倒したレベル(ユニーク用) / player level at which defeated this race
     REAL_TIME defeat_time{}; //!< 倒した時間(ユニーク用) / time at which defeated this race
+    int alliance_idx;
 };

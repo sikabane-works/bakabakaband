@@ -55,7 +55,7 @@
  * If there are no legal choices, returns FALSE, and sets '*sn' to -2\n
  *\n
  * The "prompt" should be "cast", "recite", or "study"\n
- * The "known" should be TRUE for cast/pray, FALSE for study\n
+ * The "known" should be TRUE for cast/pray, false for study\n
  *\n
  * nb: This function has a (trivial) display bug which will be obvious\n
  * when you run it. It's probably easy to fix but I haven't tried,\n

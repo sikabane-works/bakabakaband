@@ -1,12 +1,12 @@
 ﻿#pragma once
 /*!
  * @file info-initializer.h
- * @brief 変愚蛮怒のゲームデータ解析処理ヘッダ
+ * @brief 馬鹿馬鹿蛮怒のゲームデータ解析処理ヘッダ
  */
 
 #include "system/angband.h"
 
-struct player_type;
+class player_type;
 errr init_misc(player_type *player_ptr);
 errr init_f_info();
 errr init_k_info();

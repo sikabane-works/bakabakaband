@@ -37,10 +37,10 @@ struct world_type {
 
     bool is_loading_now{}; /*!< ロード処理中フラグ...ロード直後にcalc_bonus()時の徳変化、及びsanity_blast()による異常を抑止する */
 
-    byte h_ver_major{}; //!< 変愚蛮怒バージョン(メジャー番号) / Hengband version (major ver.)
-    byte h_ver_minor{}; //!< 変愚蛮怒バージョン(マイナー番号) / Hengband version (minor ver.)
-    byte h_ver_patch{}; //!< 変愚蛮怒バージョン(パッチ番号) / Hengband version (patch ver.)
-    byte h_ver_extra{}; //!< 変愚蛮怒バージョン(エクストラ番号) / Hengband version (extra ver.)
+    byte h_ver_major{}; //!< 馬鹿馬鹿蛮怒バージョン(メジャー番号) / Hengband version (major ver.)
+    byte h_ver_minor{}; //!< 馬鹿馬鹿蛮怒バージョン(マイナー番号) / Hengband version (minor ver.)
+    byte h_ver_patch{}; //!< 馬鹿馬鹿蛮怒バージョン(パッチ番号) / Hengband version (patch ver.)
+    byte h_ver_extra{}; //!< 馬鹿馬鹿蛮怒バージョン(エクストラ番号) / Hengband version (extra ver.)
 
     byte sf_extra{}; //!< セーブファイルエンコードキー(XOR)
 
@@ -64,11 +64,12 @@ struct world_type {
 
     OBJECT_IDX max_o_idx{}; /*!< Maximum number of objects in the level */
     MONSTER_IDX max_m_idx{}; /*!< Maximum number of monsters in the level */
+    int32_t collapse_degree{}; /*!< 時空崩壊度 */
 };
 
 extern world_type *w_ptr;
 
-struct player_type;
+class player_type;
 bool is_daytime(void);
 void extract_day_hour_min(player_type *player_ptr, int *day, int *hour, int *min);
 void update_playtime(void);
@@ -76,3 +77,4 @@ void add_winner_class(PlayerClassType c);
 void add_retired_class(PlayerClassType c);
 bool is_winner_class(PlayerClassType c);
 bool is_retired_class(PlayerClassType c);
+int32_t calc_world_collapse_plus(world_type *w_ptr);

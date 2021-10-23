@@ -11,6 +11,7 @@
 #include "object/object-kind.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
+#include "grid/feature.h"
 #ifdef JP
 #else
 #include "locale/english.h"
@@ -70,6 +71,17 @@ static void describe_corpse(flavor_type *flavor_ptr)
         flavor_ptr->basenm = "& % of #";
     else
         flavor_ptr->basenm = "& # %";
+#endif
+}
+
+static void describe_trap(flavor_type *flavor_ptr)
+{
+    feature_type *f_ptr = &f_info[flavor_ptr->o_ptr->pval];
+    flavor_ptr->modstr = f_ptr->name.c_str();
+#ifdef JP
+    flavor_ptr->basenm = "#%";
+#else
+    flavor_ptr->basenm = "& # %";
 #endif
 }
 
@@ -378,8 +390,9 @@ void switch_tval_description(flavor_type *flavor_ptr)
     case ItemKindType::FOOD:
         describe_food(flavor_ptr);
         break;
-    case ItemKindType::PARCHMENT:
-        flavor_ptr->basenm = _("羊皮紙 - %", "& Parchment~ - %");
+    case ItemKindType::READING_MATTER:
+        describe_food(flavor_ptr);
+        flavor_ptr->basenm = _("%", "& %");
         break;
     case ItemKindType::LIFE_BOOK:
         describe_book_life(flavor_ptr);
@@ -422,6 +435,9 @@ void switch_tval_description(flavor_type *flavor_ptr)
         break;
     case ItemKindType::GOLD:
         strcpy(flavor_ptr->buf, flavor_ptr->basenm);
+        return;
+    case ItemKindType::TRAP:
+        describe_trap(flavor_ptr);
         return;
     default:
         strcpy(flavor_ptr->buf, _("(なし)", "(nothing)"));

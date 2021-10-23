@@ -404,7 +404,7 @@ int take_hit(player_type *player_ptr, int damage_type, HIT_POINT damage, concptr
                     strcpy(buf, _("アリーナ", "in the Arena"));
                 else if (!is_in_dungeon(player_ptr))
                     strcpy(buf, _("地上", "on the surface"));
-                else if (q_idx && (quest_type::is_fixed(q_idx) && !((q_idx == QUEST_OBERON) || (q_idx == QUEST_SERPENT))))
+                else if (q_idx && (quest_type::is_fixed(q_idx) && !(q_idx == QUEST_MELKO)))
                     strcpy(buf, _("クエスト", "in a quest"));
                 else
                     sprintf(buf, _("%d階", "level %d"), (int)player_ptr->current_floor_ptr->dun_level);
@@ -415,6 +415,8 @@ int take_hit(player_type *player_ptr, int damage_type, HIT_POINT damage, concptr
 
             exe_write_diary(player_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
             exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
+            player_ptr->death_count++;
+
             flush();
             if (get_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), CHECK_NO_HISTORY))
                 do_cmd_save_screen(player_ptr);

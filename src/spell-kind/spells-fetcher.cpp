@@ -8,6 +8,7 @@
 #include "floor/geometry.h"
 #include "grid/feature-flag-types.h"
 #include "grid/grid.h"
+#include "inventory/inventory-object.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
@@ -95,6 +96,11 @@ void fetch_item(player_type *player_ptr, DIRECTION dir, WEIGHT wgt, bool require
     o_ptr = &player_ptr->current_floor_ptr->o_list[g_ptr->o_idx_list.front()];
     if (o_ptr->weight > wgt) {
         msg_print(_("そのアイテムは重過ぎます。", "The object is too heavy."));
+        return;
+    }
+
+    if (!check_get_item(o_ptr)) {
+        msg_print(_("それを動かすことはできない。", "You can't move it."));
         return;
     }
 

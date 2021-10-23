@@ -2,7 +2,7 @@
 #include "world/world.h"
 
 /*!
- * @brief 変愚蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is older than version
+ * @brief 馬鹿馬鹿蛮怒のバージョン比較処理 / This function determines if the version of the savefile currently being read is older than version
  * "major.minor.patch.extra".
  * @param major メジャーバージョン値
  * @param minor マイナーバージョン値
@@ -36,7 +36,7 @@ bool h_older_than(byte major, byte minor, byte patch, byte extra)
 }
 
 /*!
- * @brief [互換性用/新規仕様禁止]変愚蛮怒のバージョン比較処理 / The above function, adapted for Hengband
+ * @brief [互換性用/新規仕様禁止]馬鹿馬鹿蛮怒のバージョン比較処理 / The above function, adapted for Hengband
  * @param major メジャーバージョン値
  * @param minor マイナーバージョン値
  * @param patch パッチバージョン値

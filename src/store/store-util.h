@@ -7,7 +7,7 @@
 #include <memory>
 #include <vector>
 
-#define STORE_OBJ_LEVEL 5 //!< 通常店舗の階層レベル / Magic Level for normal stores
+#define STORE_OBJ_STD_LEVEL 5 //!< 通常店舗の標準階層レベル / Magic Level for normal stores
 
 enum class StoreSaleType {
     GENERAL   = 0, //!< 店舗の種類: 雑貨屋
@@ -30,8 +30,9 @@ using store_k_idx = std::vector<KIND_OBJECT_IDX>;
 /*!
  * @brief 店舗の情報構造体
  */
-struct object_type;;
-struct store_type {
+struct object_type;
+class store_type {
+    public:
     byte type{};           //!< Store type
     byte owner{};          //!< Owner index
     byte extra{};          //!< Unused for now
@@ -54,7 +55,7 @@ struct store_type {
 extern StoreSaleType cur_store_num;
 extern store_type *st_ptr;
 
-struct player_type;
+class player_type;
 typedef bool (*black_market_crap_pf)(player_type *, object_type *);
 typedef bool (*store_will_buy_pf)(player_type *, const object_type *);
 typedef void (*mass_produce_pf)(player_type *, object_type *);

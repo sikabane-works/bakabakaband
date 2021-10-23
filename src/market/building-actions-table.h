@@ -52,5 +52,6 @@ enum ba_actions {
     BACT_RECHARGE_ALL = 45,
     BACT_EVAL_AC = 46,
     BACT_BROKEN_WEAPON = 47,
-    MAX_BACT = 48,
+    BACT_TRANS_SEX = 48,
+    MAX_BACT = 49,
 };

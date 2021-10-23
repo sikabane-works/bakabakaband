@@ -11,6 +11,7 @@
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "spell/summon-types.h"
 #include "system/alloc-entries.h"
@@ -344,6 +345,12 @@ static errr do_get_mon_num_prep(player_type *player_ptr, const monsterrace_hook_
 
         // 生成を許可するものは基本重みをそのまま引き継ぐ。
         entry->prob2 = entry->prob1;
+
+        // クッソ汚い奴なら生成率が跳ねあがる。
+        if (r_ptr->flags8 & RF8_NASTY) {
+            entry->prob2 *= NASTY_GENERATE_RATE;
+        }
+
 
         // 引数で指定されていればさらにダンジョンによる制約を試みる。
         if (restrict_to_dungeon) {

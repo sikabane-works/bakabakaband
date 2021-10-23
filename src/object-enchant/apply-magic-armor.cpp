@@ -8,6 +8,7 @@
 #include "artifact/random-art-generator.h"
 #include "inventory/inventory-slot-types.h"
 #include "object-enchant/object-ego.h"
+#include "object-enchant/object-boost.h"
 #include "object/object-kind-hook.h"
 #include "sv-definition/sv-armor-types.h"
 #include "system/object-type-definition.h"
@@ -56,6 +57,13 @@ void ArmorEnchanter::apply_magic()
     case ItemKindType::SOFT_ARMOR: {
         if (this->o_ptr->sval == SV_KUROSHOUZOKU) {
             this->o_ptr->pval = randint1(4);
+        }
+
+        if (this->o_ptr->sval == SV_DRAGON_BIKINI) {
+            dragon_resist(this->o_ptr);
+            if (!one_in_(3)) {
+                return;
+            }
         }
 
         if (this->power > 1) {

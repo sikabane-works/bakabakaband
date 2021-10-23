@@ -90,11 +90,7 @@ void pattern_teleport(player_type *player_ptr)
      * Clear all saved floors
      * and create a first saved floor
      */
-    prepare_change_floor_mode(player_ptr, CFM_FIRST_FLOOR);
-
-    check_random_quest_auto_failure(player_ptr);
-
-    player_ptr->leaving = true;
+    move_floor(player_ptr, CFM_FIRST_FLOOR);
 }
 
 /*!

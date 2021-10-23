@@ -377,7 +377,12 @@ static void update_upper_lower_or_floor_id(player_type *player_ptr, saved_floor_
 
 static void exe_leave_floor(player_type *player_ptr, saved_floor_type *sf_ptr)
 {
-    grid_type *g_ptr = nullptr;
+    if (player_ptr->incident.count(INCIDENT::LEAVE_FLOOR) == 0) {
+        player_ptr->incident[INCIDENT::LEAVE_FLOOR] = 0;
+    }
+    player_ptr->incident[INCIDENT::LEAVE_FLOOR]++;
+
+    grid_type *g_ptr = NULL;
     set_grid_by_leaving_floor(player_ptr, &g_ptr);
     jump_floors(player_ptr);
     exit_to_wilderness(player_ptr);
@@ -431,7 +436,6 @@ void jump_floor(player_type *player_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
 {
     player_ptr->dungeon_idx = dun_idx;
     player_ptr->current_floor_ptr->dun_level = depth;
-    prepare_change_floor_mode(player_ptr, CFM_RAND_PLACE);
     if (!is_in_dungeon(player_ptr))
         player_ptr->dungeon_idx = 0;
 
@@ -444,6 +448,5 @@ void jump_floor(player_type *player_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
     player_ptr->current_floor_ptr->inside_quest = 0;
     PlayerEnergy(player_ptr).reset_player_turn();
     player_ptr->energy_need = 0;
-    prepare_change_floor_mode(player_ptr, CFM_FIRST_FLOOR);
-    player_ptr->leaving = true;
+    move_floor(player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
 }

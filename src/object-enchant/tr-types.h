@@ -164,14 +164,17 @@ enum tr_type : int32_t {
     TR_BERS_RAGE = 149, //!< 狂戦士化の発作
     TR_BRAND_MAGIC = 150, //!< 魔術属性
     TR_IMPACT = 151, //!< クリティカル率アップ / Increase critical hit ratio
-    TR_VUL_ACID = 152, //!< 酸弱点
-    TR_VUL_COLD = 153, //!< 冷気弱点
-    TR_VUL_ELEC = 154, //!< 電撃弱点
-    TR_VUL_FIRE = 155, //!< 火炎弱点
-    TR_VUL_LITE = 156, //!< 閃光弱点
-    TR_IM_DARK = 157, //!< 暗黒免疫
-
-    TR_FLAG_MAX = 158,
+    TR_NASTY = 152,
+    TR_INDESTRUCTIBLE = 153,
+    TR_NEVER_MOVE = 154,
+    TR_VUL_ACID = 155, //!< 酸弱点
+    TR_VUL_COLD = 156, //!< 冷気弱点
+    TR_VUL_ELEC = 157, //!< 電撃弱点
+    TR_VUL_FIRE = 158, //!< 火炎弱点
+    TR_VUL_LITE = 159, //!< 閃光弱点
+    TR_IM_DARK = 160, //!< 暗黒免疫
+    TR_INVEN_ACTIVATE = 161, /*!< 所持品のまま始動可能 */
+    TR_FLAG_MAX = 162,
 };
 
 /** 能力値(STR,INT,WIS,DEX,CON,CHR)のpvalを増減させるフラグのリスト */

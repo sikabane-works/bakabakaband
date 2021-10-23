@@ -51,6 +51,9 @@
 #include "target/target-types.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
+#include "sv-definition/sv-junk-types.h"
+#include "floor/floor-object.h"
+#include "object/object-kind-hook.h"
 
 static bool get_hack_dir(player_type *player_ptr, DIRECTION *dp)
 {
@@ -106,6 +109,16 @@ static bool get_hack_dir(player_type *player_ptr, DIRECTION *dp)
 
     *dp = dir;
     return true;
+}
+
+void process_world_aux_sudden_attack(player_type *player_ptr)
+{
+    if (randint1(10000) == 1919) {
+        if (summon_specific(player_ptr, 0, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_TURBAN_KID, 0)) {
+            msg_print(_("突如ダーバンのガキがあなたを刺しにかかってきた！", "Suddenly a Durban kid stabbed you!"));
+            disturb(player_ptr, false, true);
+        }
+    }
 }
 
 /*!
@@ -186,8 +199,18 @@ void process_world_aux_mutation(player_type *player_ptr)
     if (player_ptr->muta.has(MUTA::FLATULENT) && (randint1(3000) == 13)) {
         disturb(player_ptr, false, true);
         msg_print(_("ブゥーーッ！おっと。", "BRRAAAP! Oops."));
-        msg_print(nullptr);
-        fire_ball(player_ptr, GF_POIS, 0, player_ptr->lev, 3);
+        msg_print(NULL);
+        fire_ball(player_ptr, GF_DIRT, 0, player_ptr->lev, 3);
+    }
+
+    if (player_ptr->muta.has(MUTA::DEFECATION) && (randint1(1500) == 13)) {
+        object_type forge;
+        object_type *q_ptr = &forge;
+        disturb(player_ptr, false, true);
+        msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
+        msg_print(NULL);
+        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
+        (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
     }
 
     if (player_ptr->muta.has(MUTA::PROD_MANA) && !player_ptr->anti_magic && one_in_(9000)) {

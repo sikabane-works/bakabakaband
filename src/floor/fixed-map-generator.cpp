@@ -117,6 +117,7 @@ static void parse_qtw_D(player_type *player_ptr, qtwg_type *qtwg_ptr, char *s)
         } else if (monster_index) {
             int old_cur_num, old_max_num;
             bool clone = false;
+            BIT_FLAGS option = (PM_ALLOW_SLEEP | PM_NO_KAGE);
 
             if (monster_index < 0) {
                 monster_index = -monster_index;
@@ -124,22 +125,29 @@ static void parse_qtw_D(player_type *player_ptr, qtwg_type *qtwg_ptr, char *s)
             }
 
             old_cur_num = r_info[monster_index].cur_num;
-            old_max_num = r_info[monster_index].max_num;
+            old_max_num = r_info[monster_index].mob_num;
 
-            if (r_info[monster_index].flags1 & RF1_UNIQUE) {
-                r_info[monster_index].cur_num = 0;
-                r_info[monster_index].max_num = 1;
-            } else if (r_info[monster_index].flags7 & RF7_NAZGUL) {
-                if (r_info[monster_index].cur_num == r_info[monster_index].max_num) {
-                    r_info[monster_index].max_num++;
+            if (letter[idx].force_monster_place) {
+                if (r_info[monster_index].flags1 & RF1_UNIQUE) {
+                    r_info[monster_index].cur_num = 0;
+                    r_info[monster_index].mob_num = 1;
+                } else if (r_info[monster_index].flags7 & RF7_NAZGUL) {
+                    if (r_info[monster_index].cur_num == r_info[monster_index].mob_num) {
+                        r_info[monster_index].mob_num++;
+                    }
                 }
             }
+            else {
+                option |= PM_ALLOW_GROUP;
+            }
 
-            place_monster_aux(player_ptr, 0, *qtwg_ptr->y, *qtwg_ptr->x, monster_index, (PM_ALLOW_SLEEP | PM_NO_KAGE));
+
+            place_monster_aux(player_ptr, 0, *qtwg_ptr->y, *qtwg_ptr->x, monster_index, option);
+
             if (clone) {
                 floor_ptr->m_list[hack_m_idx_ii].mflag2.set(MFLAG2::CLONED);
                 r_info[monster_index].cur_num = old_cur_num;
-                r_info[monster_index].max_num = old_max_num;
+                r_info[monster_index].mob_num = old_max_num;
             }
         }
 

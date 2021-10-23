@@ -23,6 +23,8 @@
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object-enchant/special-object-flags.h"
+#include "object-enchant/tr-types.h"
+#include "object-hook/hook-enchant.h"
 #include "object/object-info.h"
 #include "object/object-kind-hook.h"
 #include "object/object-kind.h"
@@ -124,7 +126,10 @@ bool make_object(player_type *player_ptr, object_type *j_ptr, BIT_FLAGS mode, st
     auto prob = any_bits(mode, AM_GOOD) ? 10 : 1000;
     auto base = get_base_floor(floor_ptr, mode, rq_mon_level);
     if (!one_in_(prob) || !make_artifact_special(player_ptr, j_ptr)) {
-        if (any_bits(mode, AM_GOOD) && !get_obj_num_hook) {
+        if (any_bits(mode, AM_NASTY) && !get_obj_num_hook) {
+            get_obj_num_hook = kind_is_nasty;
+        }
+        else if (any_bits(mode, AM_GOOD) && !get_obj_num_hook) {
             get_obj_num_hook = kind_is_good;
         }
 
@@ -177,9 +182,12 @@ bool make_gold(player_type *player_ptr, object_type *j_ptr)
         i = MAX_GOLD - 1;
     j_ptr->prep(OBJ_GOLD_LIST + i);
 
+    int boost = floor_ptr->object_level > 20 ? ((floor_ptr->object_level - 10) * (floor_ptr->object_level - 10) / 100) : 1;
     int32_t base = k_info[OBJ_GOLD_LIST + i].cost;
-    j_ptr->pval = (base + (8L * randint1(base)) + randint1(8));
-
+    int price = (base + (8L * randint1(base)) + randint1(8)) * boost;
+    if (price > 30000)
+        price = 30000;
+    j_ptr->pval = price;
     return true;
 }
 

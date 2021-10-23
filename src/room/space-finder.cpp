@@ -171,7 +171,7 @@ static bool find_space_aux(dun_data_type *dd_ptr, POSITION blocks_high, POSITION
  * Be careful to include the edges of the room in height and width!\n
  *\n
  * Return TRUE and values for the center of the room if all went well.\n
- * Otherwise, return FALSE.\n
+ * Otherwise, return false.\n
  */
 bool find_space(player_type *player_ptr, dun_data_type *dd_ptr, POSITION *y, POSITION *x, POSITION height, POSITION width)
 {

@@ -379,7 +379,7 @@ static bool decide_body_spec(player_type *player_ptr, chara_limit_type chara_lim
             *accept = false;
         if ((player_ptr->wt < chara_limit.wtmin) || (player_ptr->wt > chara_limit.wtmax))
             *accept = false;
-        if ((player_ptr->sc < chara_limit.scmin) || (player_ptr->sc > chara_limit.scmax))
+        if ((player_ptr->prestige < chara_limit.scmin) || (player_ptr->prestige > chara_limit.scmax))
             *accept = false;
     }
 

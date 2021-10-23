@@ -115,8 +115,8 @@ static void display_magic_realms(player_type *player_ptr)
 }
 
 /*!
- * @ brief 年齢、身長、体重、社会的地位を表示する
- * @param player_ptr プレイヤーへの参照ポインタ
+ * @ brief 年齢、身長、体重、威信を表示する
+ * @param player_ptr プレーヤーへの参照ポインタ
  * @details
  * 日本語版では、身長はcmに、体重はkgに変更してある
  */
@@ -126,15 +126,16 @@ static void display_phisique(player_type *player_ptr)
     display_player_one_line(ENTRY_AGE, format("%d才", (int)player_ptr->age), TERM_L_BLUE);
     display_player_one_line(ENTRY_HEIGHT, format("%dcm", (int)((player_ptr->ht * 254) / 100)), TERM_L_BLUE);
     display_player_one_line(ENTRY_WEIGHT, format("%dkg", (int)((player_ptr->wt * 4536) / 10000)), TERM_L_BLUE);
-    display_player_one_line(ENTRY_SOCIAL, format("%d  ", (int)player_ptr->sc), TERM_L_BLUE);
+    display_player_one_line(ENTRY_SOCIAL, format("%d  ", (int)player_ptr->prestige), TERM_L_BLUE);
 #else
     display_player_one_line(ENTRY_AGE, format("%d", (int)player_ptr->age), TERM_L_BLUE);
     display_player_one_line(ENTRY_HEIGHT, format("%d", (int)player_ptr->ht), TERM_L_BLUE);
     display_player_one_line(ENTRY_WEIGHT, format("%d", (int)player_ptr->wt), TERM_L_BLUE);
-    display_player_one_line(ENTRY_SOCIAL, format("%d", (int)player_ptr->sc), TERM_L_BLUE);
+    display_player_one_line(ENTRY_SOCIAL, format("%d", (int)player_ptr->prestige), TERM_L_BLUE);
 #endif
     std::string alg = PlayerAlignment(player_ptr).get_alignment_description();
     display_player_one_line(ENTRY_ALIGN, format("%s", alg.c_str()), TERM_L_BLUE);
+    display_player_one_line(ENTRY_DEATH_COUNT, format("%d  ", (int)player_ptr->death_count), TERM_L_BLUE);
 }
 
 /*!
@@ -185,9 +186,9 @@ static bool search_death_cause(player_type *player_ptr, char *statmsg)
 
     if (!floor_ptr->dun_level) {
 #ifdef JP
-        sprintf(statmsg, "…あなたは%sで%sに殺された。", map_name(player_ptr), player_ptr->died_from);
+		sprintf(statmsg, "…あなたは%sで%sに殺されて飽きた", map_name(player_ptr), player_ptr->died_from);
 #else
-        sprintf(statmsg, "...You were killed by %s in %s.", player_ptr->died_from, map_name(player_ptr));
+		sprintf(statmsg, "...You were killed by %s in %s and got tired.", player_ptr->died_from, map_name(player_ptr));
 #endif
         return true;
     }
@@ -198,17 +199,17 @@ static bool search_death_cause(player_type *player_ptr, char *statmsg)
         init_flags = INIT_NAME_ONLY;
         parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
 #ifdef JP
-        sprintf(statmsg, "…あなたは、クエスト「%s」で%sに殺された。", quest[floor_ptr->inside_quest].name, player_ptr->died_from);
+		sprintf(statmsg, "…あなたは、クエスト「%s」で%sに殺されて飽きた。", quest[floor_ptr->inside_quest].name, player_ptr->died_from);
 #else
-        sprintf(statmsg, "...You were killed by %s in the quest '%s'.", player_ptr->died_from, quest[floor_ptr->inside_quest].name);
+		sprintf(statmsg, "...You were killed by %s in the quest '%s' and got tired.", player_ptr->died_from, quest[floor_ptr->inside_quest].name);
 #endif
         return true;
     }
 
 #ifdef JP
-    sprintf(statmsg, "…あなたは、%sの%d階で%sに殺された。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from);
+    sprintf(statmsg, "…あなたは、%sの%d階で%sに殺されて飽きた。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from);
 #else
-    sprintf(statmsg, "...You were killed by %s on level %d of %s.", player_ptr->died_from, floor_ptr->dun_level, map_name(player_ptr));
+	sprintf(statmsg, "...You were killed by %s on level %d of %s and got tired.", player_ptr->died_from, floor_ptr->dun_level, map_name(player_ptr));
 #endif
 
     return true;

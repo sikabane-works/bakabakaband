@@ -12,6 +12,7 @@
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
+#include <map>
 
 #include <variant>
 
@@ -52,6 +53,7 @@ void wr_player(player_type *player_ptr)
     wr_byte((byte)player_ptr->hitdie);
     wr_u16b(player_ptr->expfact);
 
+    wr_s32b(player_ptr->death_count);
     wr_s16b(player_ptr->age);
     wr_s16b(player_ptr->ht);
     wr_s16b(player_ptr->wt);
@@ -130,7 +132,7 @@ void wr_player(player_type *player_ptr)
     wr_s16b(0);
     wr_s16b(0);
     wr_s16b(0);
-    wr_s16b(player_ptr->sc);
+    wr_s16b(player_ptr->prestige);
 
     auto effects = player_ptr->effects();
     wr_s16b(0); /* old "rest" */
@@ -193,12 +195,20 @@ void wr_player(player_type *player_ptr)
 
     wr_s16b(player_ptr->chaos_patron);
     wr_FlagGroup(player_ptr->muta, wr_byte);
+    wr_FlagGroup(player_ptr->trait, wr_byte);
 
     for (int i = 0; i < 8; i++)
         wr_s16b(player_ptr->virtues[i]);
 
     for (int i = 0; i < 8; i++)
         wr_s16b(player_ptr->vir_types[i]);
+
+    wr_s32b(int32_t(player_ptr->incident.size()));
+    std::map<INCIDENT, int32_t>::iterator it;
+    for (it = player_ptr->incident.begin(); it != player_ptr->incident.end(); it++) {
+        wr_s32b((int32_t)it->first);
+        wr_s32b(it->second);
+    }
 
     wr_s16b(player_ptr->ele_attack);
     wr_u32b(player_ptr->special_attack);

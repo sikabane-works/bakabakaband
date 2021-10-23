@@ -212,7 +212,7 @@ bool askfor(char *buf, int len) { return askfor_aux(buf, len, true); }
  * Note that the initial contents of the string is used as
  * the default response, so be sure to "clear" it if needed.
  *
- * We clear the input, and return FALSE, on "ESCAPE".
+ * We clear the input, and return false, on "ESCAPE".
  */
 bool get_string(concptr prompt, char *buf, int len)
 {
@@ -422,7 +422,8 @@ bool get_value(const char *text, int min, int max, int *value)
 {
     std::stringstream st;
     int val;
-    char tmp_val[10] = "";
+    char tmp_val[10];
+    sprintf(tmp_val, "%d", *value);
     st << text << "(" << min << "-" << max << "): ";
     int digit = std::max(std::to_string(min).length(), std::to_string(max).length());
     while (true) {

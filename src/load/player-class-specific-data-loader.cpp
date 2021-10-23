@@ -26,7 +26,7 @@ std::tuple<std::vector<int32_t>, std::vector<byte>> load_old_savfile_magic_num()
     std::vector<int32_t> magic_num1(OLD_SAVEFILE_MAX_SPELLS);
     std::vector<byte> magic_num2(OLD_SAVEFILE_MAX_SPELLS);
 
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(10)) {
         for (auto &item : magic_num1) {
             rd_s32b(&item);
         }
@@ -42,7 +42,7 @@ std::tuple<std::vector<int32_t>, std::vector<byte>> load_old_savfile_magic_num()
 
 void PlayerClassSpecificDataLoader::operator()(no_class_specific_data &) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(10)) {
         // マイグレーションすべきデータは無いので読み捨てる
         load_old_savfile_magic_num();
     }
@@ -72,7 +72,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<smith_data_type> 
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<force_trainer_data_type> &force_trainer_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto [magic_num1, magic_num2] = load_old_savfile_magic_num();
         force_trainer_data->ki = magic_num1[0];
     } else {
@@ -82,7 +82,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<force_trainer_dat
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<bluemage_data_type> &bluemage_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto [magic_num1, magic_num2] = load_old_savfile_magic_num();
         for (int i = 0, count = std::min(enum2i(RF_ABILITY::MAX), OLD_SAVEFILE_MAX_SPELLS); i < count; ++i) {
             bluemage_data->learnt_blue_magics.set(i2enum<RF_ABILITY>(i), magic_num2[i] != 0);
@@ -94,7 +94,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<bluemage_data_typ
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<magic_eater_data_type> &magic_eater_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto [magic_num1, magic_num2] = load_old_savfile_magic_num();
         auto load_old_item_group = [magic_num1 = std::move(magic_num1), magic_num2 = std::move(magic_num2)](auto &item_group, int index) {
             constexpr size_t old_item_group_size = 36;
@@ -130,7 +130,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<magic_eater_data_
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<bard_data_type> &bird_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto [magic_num1, magic_num2] = load_old_savfile_magic_num();
         bird_data->singing_song = i2enum<realm_song_type>(magic_num1[0]);
         bird_data->interrputing_song = i2enum<realm_song_type>(magic_num1[1]);
@@ -149,7 +149,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<bard_data_type> &
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<mane_data_type> &mane_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         // 古いセーブファイルのものまね師のデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
@@ -166,7 +166,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<mane_data_type> &
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<sniper_data_type> &sniper_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         // 古いセーブファイルのスナイパーのデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
@@ -176,7 +176,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<sniper_data_type>
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<samurai_data_type> &samurai_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(12)) {
         // 古いセーブファイルの剣術家のデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
@@ -188,7 +188,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<samurai_data_type
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<monk_data_type> &monk_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(12)) {
         // 古いセーブファイルの修行僧のデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
@@ -200,7 +200,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<monk_data_type> &
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<ninja_data_type> &ninja_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(12)) {
         // 古いセーブファイルの忍者のデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
@@ -214,7 +214,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<ninja_data_type> 
 
 void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<spell_hex_data_type> &spell_hex_data) const
 {
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto [magic_num1, magic_num2] = load_old_savfile_magic_num();
         migrate_bitflag_to_flaggroup(spell_hex_data->casting_spells, magic_num1[0]);
         spell_hex_data->revenge_power = magic_num1[2];

@@ -3,6 +3,7 @@
 #include "core/asking-player.h"
 #include "core/player-redraw-types.h"
 #include "dungeon/dungeon.h"
+#include "dungeon/dungeon-flag-types.h"
 #include "dungeon/quest-completion-checker.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
@@ -125,12 +126,11 @@ void teleport_level(player_type *player_ptr, MONSTER_IDX m_idx)
 
             if (!is_in_dungeon(player_ptr)) {
                 player_ptr->current_floor_ptr->dun_level = d_info[player_ptr->dungeon_idx].mindepth;
-                prepare_change_floor_mode(player_ptr, CFM_RAND_PLACE);
+                move_floor(player_ptr, CFM_RAND_PLACE);
             } else {
-                prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+                move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
             }
 
-            player_ptr->leaving = true;
         }
     } else if (quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level)
         || (player_ptr->current_floor_ptr->dun_level >= d_info[player_ptr->dungeon_idx].maxdepth)) {
@@ -149,11 +149,10 @@ void teleport_level(player_type *player_ptr, MONSTER_IDX m_idx)
             if (autosave_l)
                 do_cmd_save_game(player_ptr, true);
 
-            prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
 
             leave_quest_check(player_ptr);
             player_ptr->current_floor_ptr->inside_quest = 0;
-            player_ptr->leaving = true;
         }
     } else if (go_up) {
 #ifdef JP
@@ -171,8 +170,7 @@ void teleport_level(player_type *player_ptr, MONSTER_IDX m_idx)
             if (autosave_l)
                 do_cmd_save_game(player_ptr, true);
 
-            prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            player_ptr->leaving = true;
+            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
     } else {
 #ifdef JP
@@ -189,8 +187,7 @@ void teleport_level(player_type *player_ptr, MONSTER_IDX m_idx)
             if (autosave_l)
                 do_cmd_save_game(player_ptr, true);
 
-            prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            player_ptr->leaving = true;
+            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
     }
 
@@ -344,7 +341,7 @@ void reserve_alter_reality(player_type *player_ptr, TIME_EFFECT turns)
  * Recall the player to town or dungeon
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param turns 発動までのターン数
- * @return 常にTRUEを返す
+ * @return TRUEならばダンジョンから地上へ、FALSEなら地上からダンジョンへ。
  */
 bool recall_player(player_type *player_ptr, TIME_EFFECT turns)
 {
@@ -374,6 +371,12 @@ bool recall_player(player_type *player_ptr, TIME_EFFECT turns)
         msg_print(_("張りつめた大気が流れ去った...", "A tension leaves the air around you..."));
         player_ptr->redraw |= (PR_STATUS);
         return true;
+    }
+
+    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DIFFICULT_RECALL)) {
+        msg_print(_("ここはダンジョンに抵抗されるために、帰還に極めて時間がかかるようだ...",
+                "It will take a long time because the dungeon is resisting to recall power..."));
+        turns *= 100;
     }
 
     if (!is_in_dungeon(player_ptr)) {

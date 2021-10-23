@@ -50,7 +50,7 @@ void check_fall_off_horse(player_type *player_ptr, monap_type *monap_ptr)
  * @param dam 落馬判定を発した際に受けたダメージ量
  * @param force TRUEならば強制的に落馬する
  * @param 乗馬中のモンスターのレベル
- * @return FALSEなら落馬しないことで確定、TRUEなら処理続行
+ * @return falseなら落馬しないことで確定、TRUEなら処理続行
  * @details レベルの低い乗馬からは落馬しにくい
  */
 static bool calc_fall_off_possibility(player_type *player_ptr, const HIT_POINT dam, const bool force, monster_race *r_ptr)

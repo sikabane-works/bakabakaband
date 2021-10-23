@@ -87,10 +87,11 @@ void save_prev_data(player_type *player_ptr, birther *birther_ptr)
         birther_ptr->realm1 = player_ptr->realm1;
 
     birther_ptr->realm2 = player_ptr->realm2;
+    birther_ptr->death_count = player_ptr->death_count;
     birther_ptr->age = player_ptr->age;
     birther_ptr->ht = player_ptr->ht;
     birther_ptr->wt = player_ptr->wt;
-    birther_ptr->sc = player_ptr->sc;
+    birther_ptr->prestige = player_ptr->prestige;
     birther_ptr->au = player_ptr->au;
 
     for (int i = 0; i < A_MAX; i++) {
@@ -134,10 +135,11 @@ void load_prev_data(player_type *player_ptr, bool swap)
         player_ptr->realm1 = previous_char.realm1;
 
     player_ptr->realm2 = previous_char.realm2;
+    player_ptr->death_count = previous_char.death_count;
     player_ptr->age = previous_char.age;
     player_ptr->ht = previous_char.ht;
     player_ptr->wt = previous_char.wt;
-    player_ptr->sc = previous_char.sc;
+    player_ptr->prestige = previous_char.prestige;
     player_ptr->au = previous_char.au;
 
     for (int i = 0; i < A_MAX; i++) {

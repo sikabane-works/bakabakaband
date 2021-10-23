@@ -1,5 +1,5 @@
 ﻿/*!
- * @brief 変愚蛮怒 v1.5.0以前の旧いセーブデータを読み込む処理
+ * @brief 馬鹿馬鹿蛮怒 v1.5.0以前の旧いセーブデータを読み込む処理
  * @date 2020/07/04
  * @author Hourier
  * @details 互換性を最大限に確保するため、基本的に関数分割は行わないものとする.
@@ -266,7 +266,7 @@ void rd_item_old(object_type *o_ptr)
             else
                 o_ptr->xtra5 = damroll(r_info[o_ptr->pval].hdice, r_info[o_ptr->pval].hside);
             if (ironman_nightmare) {
-                o_ptr->xtra5 = (int16_t)MIN(30000, o_ptr->xtra5 * 2L);
+                o_ptr->xtra5 = (int16_t)MIN(MON_MAX_HP, o_ptr->xtra5 * 2L);
             }
             o_ptr->xtra4 = o_ptr->xtra5;
         }

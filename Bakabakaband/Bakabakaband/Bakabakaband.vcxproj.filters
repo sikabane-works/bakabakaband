@@ -2271,6 +2271,9 @@
     <ClCompile Include="..\..\src\main-win\wav-reader.cpp">
       <Filter>main-win</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp">
+      <Filter>knowledge</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\object-enchant\abstract-protector-enchanter.cpp">
       <Filter>object-enchant</Filter>
     </ClCompile>
@@ -2360,6 +2363,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\object-use\zapwand-execution.cpp">
       <Filter>object-use</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\alliance\alliance.cpp">
+      <Filter>alliance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\knowledge\knowledge-alliance.cpp">
+      <Filter>knowledge</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\util\rng-xoshiro.cpp">
       <Filter>util</Filter>
@@ -4808,6 +4817,9 @@
     <ClInclude Include="..\..\src\locale\utf-8.h">
       <Filter>locale</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\sv-definition\sv-junk-types.h">
+      <Filter>sv-definition</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\wizard\wizard-game-modifier.h">
       <Filter>wizard</Filter>
     </ClInclude>
@@ -4971,6 +4983,9 @@
     <ClInclude Include="..\..\src\main-win\wav-reader.h">
       <Filter>main-win</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\knowledge\knowledge-incident.h">
+      <Filter>knowledge</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\object-enchant\abstract-protector-enchanter.h">
       <Filter>object-enchant</Filter>
     </ClInclude>
@@ -5103,6 +5118,9 @@
     <ClInclude Include="..\..\src\object-use\zapwand-execution.h">
       <Filter>object-use</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\alliance\alliance.h">
+      <Filter>alliance</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\player-info\samurai-data-type.h">
       <Filter>player-info</Filter>
     </ClInclude>
@@ -5111,6 +5129,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\player-info\ninja-data-type.h">
       <Filter>player-info</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\knowledge\knowledge-alliance.h">
+      <Filter>knowledge</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\util\rng-xoshiro.h">
       <Filter>util</Filter>
@@ -5336,6 +5357,9 @@
     </Filter>
     <Filter Include="timed-effect">
       <UniqueIdentifier>{b9e618e1-f780-4f5f-9413-d0270ac53660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="alliance">
+      <UniqueIdentifier>{324cd00c-0323-4b06-9a4d-80f461d1b499}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

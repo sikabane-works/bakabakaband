@@ -3,10 +3,10 @@
 #include "system/angband.h"
 #include "spell/spell-types.h"
 
-#define SPELL_MAX 5
+#define SPELL_MAX 6
 
 struct floor_type;
-struct player_type;
+class player_type;
 typedef union spell_functions {
     struct debug_spell_type1 {
         bool (*spell_function)(player_type *, floor_type *);

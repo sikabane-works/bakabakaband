@@ -159,14 +159,17 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
 
     object_type *o_ptr = &this->player_ptr->current_floor_ptr->o_list[o_idx];
 
-    int mon_level = o_ptr->xtra3;
+	int mon_level = o_ptr->xtra3;
 
-    /* Ignore disarmed chests */
-    if (o_ptr->pval <= 0)
-        return;
+	/* Ignore disarmed chests */
+	if (o_ptr->pval <= 0) return;
 
     /* Obtain the traps */
     auto trap = chest_traps[o_ptr->pval];
+	if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+		player_ptr->incident[INCIDENT::TRAPPED] = 0;
+    }
+    player_ptr->incident[INCIDENT::TRAPPED]++;
 
     /* Lose strength */
     if (trap.has(ChestTrapType::LOSE_STR)) {
@@ -334,4 +337,6 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
         this->chest_death(true, y, x, o_idx);
         o_ptr->pval = 0;
     }
+
+
 }

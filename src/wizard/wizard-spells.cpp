@@ -27,6 +27,7 @@
 #include "spell-kind/spells-random.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-chaos.h"
+#include "spell-realm/spells-sorcery.h"
 #include "spell/spells-status.h"
 #include "spell/summon-types.h"
 #include "system/floor-type-definition.h"
@@ -45,6 +46,7 @@ debug_spell_command debug_spell_commands_list[SPELL_MAX] = {
     { 2, "vanish dungeon", { .spell2 = { vanish_dungeon } } },
     { 3, "true healing", { .spell3 = { true_healing } } },
     { 2, "drop weapons", { .spell2 = { drop_weapons } } },
+    { 2, "alchemy", { .spell2 = { alchemy } } },
     { 4, "ty curse", { .spell4 = { activate_ty_curse } } },
     { 5, "pattern teleport", { .spell5 = { pattern_teleport } } },
 };
@@ -192,7 +194,7 @@ void wiz_summon_random_enemy(player_type *player_ptr, int num)
 void wiz_summon_specific_enemy(player_type *player_ptr, MONRACE_IDX r_idx)
 {
     if (r_idx <= 0) {
-        int val;
+        int val = 0;
         if(!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
             return;
         }
@@ -211,7 +213,7 @@ void wiz_summon_specific_enemy(player_type *player_ptr, MONRACE_IDX r_idx)
 void wiz_summon_pet(player_type *player_ptr, MONRACE_IDX r_idx)
 {
     if (r_idx <= 0) {
-        int val;
+        int val = 0;
         if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
             return;
         }

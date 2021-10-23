@@ -109,5 +109,6 @@ const named_num gf_desc[MAX_NAMED_NUM] =
 	{"GF_E_GENOCIDE",           GF_E_GENOCIDE       },
 	{"GF_VOID",                 GF_VOID             },
 	{"GF_ABYSS",                GF_ABYSS            },
+	{"GF_DIRT", 				GF_DIRT				},
     {"GF_HUNGRY",               GF_HUNGRY           },
 };

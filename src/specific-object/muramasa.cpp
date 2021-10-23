@@ -17,10 +17,6 @@ bool activate_muramasa(player_type *player_ptr, object_type *o_ptr)
 
     msg_print(_("村正が震えた．．．", "The Muramasa pulsates..."));
     do_inc_stat(player_ptr, A_STR);
-    if (one_in_(2)) {
-        msg_print(_("村正は壊れた！", "The Muramasa is destroyed!"));
-        curse_weapon_object(player_ptr, true, o_ptr);
-    }
 
     return true;
 }

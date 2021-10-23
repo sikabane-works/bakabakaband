@@ -56,7 +56,7 @@ DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x)
         if (!max_dlv[d_ref.idx])
             continue;
         if (d_ref.final_guardian) {
-            if (!r_info[d_ref.final_guardian].max_num)
+            if (!r_info[d_ref.final_guardian].mob_num)
                 seiha = true;
         } else if (max_dlv[d_ref.idx] == d_ref.maxdepth)
             seiha = true;

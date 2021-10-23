@@ -18,6 +18,9 @@
 #define ROW_DUNGEON 22
 #define COL_DUNGEON 0 /* dungeon */
 
+#define ROW_COLLAPSE 24
+#define COL_COLLAPSE 0 /* world collapse */
+
 #define ROW_LEVEL 3
 #define COL_LEVEL 0 /* "LEVEL xxxxxx" */
 

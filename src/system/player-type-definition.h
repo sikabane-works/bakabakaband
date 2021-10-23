@@ -11,9 +11,31 @@
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
+#include <map>
 
 #include <array>
 #include <map>
+
+enum class INCIDENT {
+    WALK = 0,
+    EAT = 1,
+    QUAFF = 2,
+    ATTACK_ACT_COUNT = 3,
+    ATTACK_EXE_COUNT = 4,
+    SHOOT = 5,
+    THROW = 6,
+    LEAVE_FLOOR = 7,
+    TRAPPED = 8,
+    READ_SCROLL = 9,
+    ZAP_STAFF = 10,
+    ZAP_WAND = 11,
+    ZAP_ROD = 12,
+    STORE_BUY = 13,
+    STORE_SELL = 14,
+    STAY_INN = 15,
+    EAT_FECES = 100,
+    EAT_POISON = 101,
+};
 
 enum class ItemKindType : short;
 enum class RF_ABILITY;
@@ -21,7 +43,7 @@ enum class RF_ABILITY;
 struct floor_type;
 struct object_type;
 class TimedEffects;
-struct player_type {
+class player_type {
 public:
     player_type();
     int player_uid{};
@@ -49,7 +71,10 @@ public:
     int16_t age{}; /* Characters age */
     int16_t ht{}; /* Height */
     int16_t wt{}; /* Weight */
-    int16_t sc{}; /* Social Class */
+    int16_t prestige{}; /* Prestige */
+    int32_t death_count{}; /* Death count */
+
+    std::map<INCIDENT, int32_t> incident{}; /*!< これまでに行った出来事カウント */
 
     PRICE au{}; /* Current Gold */
 
@@ -151,6 +176,7 @@ public:
     int16_t chaos_patron{};
 
     EnumClassFlagGroup<MUTA> muta{}; /*!< 突然変異 / mutations */
+    EnumClassFlagGroup<MUTA> trait{}; /*!< 後天特性 / permanent trait */
 
     int16_t virtues[8]{};
     int16_t vir_types[8]{};

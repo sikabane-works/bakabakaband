@@ -28,6 +28,8 @@
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "object/object-kind-hook.h"
+#include "floor/floor-object.h"
 
 /*!
  * @brief 「開ける」動作コマンドのサブルーチン /
@@ -124,7 +126,7 @@ bool exe_close(player_type *player_ptr, POSITION y, POSITION x)
  * <pre>
  *	If there is a jammed/closed/locked door at the given location,
  *	then attempt to unlock/open it. Return TRUE if an attempt was
- *	made (successful or not), otherwise return FALSE.
+ *	made (successful or not), otherwise return false.
  *
  *	The code here should be nearly identical to that in
  *	do_cmd_open_test() and exe_open().
@@ -262,10 +264,18 @@ bool exe_disarm(player_type *player_ptr, POSITION y, POSITION x, DIRECTION dir)
         j = 2;
 
     if (randint0(100) < j) {
+        object_type forge;
+        object_type *q_ptr = &forge;
+        q_ptr->prep(lookup_kind(ItemKindType::TRAP, 0));
+        q_ptr->pval = g_ptr->feat;
+
         msg_format(_("%sを解除した。", "You have disarmed the %s."), name);
         gain_exp(player_ptr, power);
         cave_alter_feat(player_ptr, y, x, FF::DISARM);
         exe_movement(player_ptr, dir, easy_disarm, false);
+
+        (void)drop_near(player_ptr, q_ptr, -1, y, x);
+
     } else if ((i > 5) && (randint1(i) > 5)) {
         if (flush_failure)
             flush();

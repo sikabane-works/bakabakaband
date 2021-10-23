@@ -1,10 +1,10 @@
 ﻿/*!
  * @file h-config.h
- * @brief OSごとの差異を吸収してコンパイルするためのプリプロ群
- * The most basic "include" file.
- * This file simply includes other low level header files.
- * @date 2021/08/26
- * @author Hourier
+ * @brief 主に変愚/Zang時追加された基本事項のヘッダーファイル /
+ * The most basic "include" file. This file simply includes other low level header files.
+ * @date 2014/08/15
+ * @author
+ * 不明(馬鹿馬鹿蛮怒スタッフ？)
  * @details
  * Copyright (c) 1997 Ben Harrison, James E. Wilson, Robert A. Koeneke
  */

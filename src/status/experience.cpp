@@ -59,7 +59,7 @@ bool restore_level(player_type *player_ptr)
 
 /*
  * Drain experience
- * If resisted to draining, return FALSE
+ * If resisted to draining, return false
  */
 bool drain_exp(player_type *player_ptr, int32_t drain, int32_t slip, int hold_exp_prob)
 {

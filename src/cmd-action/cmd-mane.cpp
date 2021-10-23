@@ -133,7 +133,7 @@ static void mane_info(player_type *player_ptr, char *p, RF_ABILITY power, HIT_PO
  * If there are no legal choices, returns FALSE, and sets '*sn' to -2
  *
  * The "prompt" should be "cast", "recite", or "study"
- * The "known" should be TRUE for cast/pray, FALSE for study
+ * The "known" should be TRUE for cast/pray, false for study
  *
  * nb: This function has a (trivial) display bug which will be obvious
  * when you run it. It's probably easy to fix but I haven't tried,
@@ -1073,7 +1073,7 @@ static bool use_mane(player_type *player_ptr, RF_ABILITY spell)
  * If there are no legal choices, returns FALSE, and sets '*sn' to -2
  *
  * The "prompt" should be "cast", "recite", or "study"
- * The "known" should be TRUE for cast/pray, FALSE for study
+ * The "known" should be TRUE for cast/pray, false for study
  *
  * nb: This function has a (trivial) display bug which will be obvious
  * when you run it. It's probably easy to fix but I haven't tried,

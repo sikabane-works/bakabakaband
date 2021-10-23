@@ -207,13 +207,15 @@ void do_cmd_feeling(player_type *player_ptr)
 {
     if (player_ptr->wild_mode)
         return;
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    int grids_rate = floor_ptr->width * floor_ptr->height * 100 / (MAX_WID * MAX_HGT);
 
-    if (player_ptr->current_floor_ptr->inside_quest && !random_quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level)) {
+    if (floor_ptr->inside_quest && !random_quest_number(player_ptr, floor_ptr->dun_level)) {
         msg_print(_("典型的なクエストのダンジョンのようだ。", "Looks like a typical quest level."));
         return;
     }
 
-    if (player_ptr->town_num && !player_ptr->current_floor_ptr->dun_level) {
+    if (player_ptr->town_num && !floor_ptr->dun_level) {
         if (!strcmp(town_info[player_ptr->town_num].name, _("荒野", "wilderness"))) {
             msg_print(_("何かありそうな荒野のようだ。", "Looks like a strange wilderness."));
             return;
@@ -226,6 +228,24 @@ void do_cmd_feeling(player_type *player_ptr)
     if (!is_in_dungeon(player_ptr)) {
         msg_print(_("典型的な荒野のようだ。", "Looks like a typical wilderness."));
         return;
+    }
+
+    if (grids_rate > 80) {
+        msg_print("途方に暮れる程に広そうなフロアだ。");    
+    } else if (grids_rate > 60) {
+        msg_print("極めて広そうなフロアだ。");
+    } else if (grids_rate > 50) {
+        msg_print("非常にに広そうなフロアだ。");
+    } else if (grids_rate > 30) {
+        msg_print("そこそこに広そうなフロアだ。");
+    } else if (grids_rate > 20) {
+        msg_print("少し広そうなフロアだ。");
+    } else if (grids_rate > 10) {
+        msg_print("普通の大きさのフロアのようだ。");
+    } else if (grids_rate > 5) {
+        msg_print("少し狭そうなフロアだ。");
+    } else {
+        msg_print("狭そうなフロアだ。");
     }
 
     if (has_good_luck(player_ptr))

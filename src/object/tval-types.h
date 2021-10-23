@@ -53,7 +53,7 @@ enum class ItemKindType : short {
     STAFF = 55,
     WAND = 65,
     ROD = 66,
-    PARCHMENT = 69,
+    READING_MATTER = 69,
     SCROLL = 70,
     POTION = 75,
     FLASK = 77,
@@ -71,6 +71,7 @@ enum class ItemKindType : short {
     MUSIC_BOOK = 105,
     HISSATSU_BOOK = 106,
     HEX_BOOK = 107,
+    TRAP = 108,
     GOLD = 127, /* Gold can only be picked up by players */
 };
 

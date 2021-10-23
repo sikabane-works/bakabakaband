@@ -298,7 +298,7 @@ static bool spell_okay(player_type *player_ptr, int spell, bool learned, bool st
  * If the user hits escape, returns FALSE, and set '*sn' to -1
  * If there are no legal choices, returns FALSE, and sets '*sn' to -2
  * The "prompt" should be "cast", "recite", or "study"
- * The "known" should be TRUE for cast/pray, FALSE for study
+ * The "known" should be TRUE for cast/pray, false for study
  * </pre>
  */
 static int get_spell(player_type *player_ptr, SPELL_IDX *sn, concptr prompt, OBJECT_SUBTYPE_VALUE sval, bool learned, int16_t use_realm)

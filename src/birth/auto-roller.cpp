@@ -16,7 +16,7 @@
 #include "util/int-char-converter.h"
 
 /*! オートローラの能力値的要求水準 / Autoroll limit */
-int16_t stat_limit[6];
+int16_t stat_limit[A_MAX];
 
 /*! オートローラの試行回数 / Autoroll round */
 int32_t auto_round;
@@ -34,8 +34,8 @@ static int32_t get_autoroller_prob(int *minval)
     /* 1 percent of the valid random space (60^6 && 72<sum<87) */
     int32_t tot_rand_1p = 320669745;
     int i, j, tmp;
-    int ii[6];
-    int tval[6];
+    int ii[A_MAX];
+    int tval[A_MAX];
     int tot = 0;
 
     /* success count */
@@ -48,7 +48,7 @@ static int32_t get_autoroller_prob(int *minval)
     };
 
     /* Copy */
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < A_MAX; i++) {
         tval[i] = std::max(8, minval[i]);
         tot += tval[i];
     }
@@ -348,7 +348,7 @@ bool get_chara_limits(player_type *player_ptr, chara_limit_type *chara_limit_ptr
 #define MAXITEMS 8
 
     char buf[80], cur[80];
-    concptr itemname[] = { _("年齢", "age"), _("身長(インチ)", "height"), _("体重(ポンド)", "weight"), _("社会的地位", "social class") };
+    concptr itemname[] = { _("年齢", "age"), _("身長(インチ)", "height"), _("体重(ポンド)", "weight"), _("威信", "prestige") };
 
     clear_from(10);
     put_str(_("2/4/6/8で項目選択、+/-で値の増減、Enterで次へ", "2/4/6/8 for Select, +/- for Change value, Enter for Goto next"), 11, 10);
@@ -402,10 +402,10 @@ bool get_chara_limits(player_type *player_ptr, chara_limit_type *chara_limit_ptr
             else
                 m = (rp_ptr->f_b_wt * max_percent / 100) + (rp_ptr->f_m_wt * max_percent / 75) - 1;
             break;
-        case 6: /* Minimum social class */
+        case 6: /* Minimum prestige */
             m = 1;
             break;
-        case 7: /* Maximum social class */
+        case 7: /* Maximum prestige */
             m = 100;
             break;
         default:

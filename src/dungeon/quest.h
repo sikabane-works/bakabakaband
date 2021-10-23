@@ -16,6 +16,7 @@ constexpr short QUEST_TOWER2     = 6;  /*<! 塔クエスト(第2階層)に割り
 constexpr short QUEST_TOWER3     = 7;  /*<! 塔クエスト(第3階層)に割り振るクエストID */
 constexpr short QUEST_OBERON     = 8;  /*<! オベロン打倒クエストに割り振るクエストID */
 constexpr short QUEST_SERPENT    = 9;  /*<! サーペント打倒クエストに割り振るクエストID */
+constexpr short QUEST_MELKO      = 35;  /*<! メル子打倒クエストに割り振るクエストID */
 
 constexpr uint QUEST_FLAG_SILENT = 0x01; /*!< クエストフラグ: クエスト進行に関する情報表示を抑止する / no messages from completion */
 constexpr uint QUEST_FLAG_PRESET = 0x02; /*!< クエストフラグ: クエストがダンジョン外で発生する / quest is outside the main dungeon */
@@ -84,7 +85,7 @@ extern int quest_text_line;
 extern int leaving_quest;
 
 struct object_type;
-struct player_type;
+class player_type;
 void determine_random_questor(player_type *player_ptr, quest_type *q_ptr);
 void record_quest_final_status(quest_type *q_ptr, PLAYER_LEVEL lev, QuestStatusType stat);
 void complete_quest(player_type *player_ptr, QUEST_IDX quest_num);

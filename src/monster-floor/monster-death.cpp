@@ -24,6 +24,7 @@
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-flags9.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
@@ -139,6 +140,13 @@ static void drop_corpse(player_type *player_ptr, monster_death_type *md_ptr)
     apply_magic_to_object(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART);
     q_ptr->pval = md_ptr->m_ptr->r_idx;
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+
+    if (one_in_(RF1_UNIQUE ? 1 : 4)) {
+
+        q_ptr->prep(lookup_kind(ItemKindType::CORPSE, SV_SOUL));
+        q_ptr->pval = md_ptr->m_ptr->r_idx;
+        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);    
+    }
 }
 
 /*!
@@ -236,6 +244,9 @@ static void decide_drop_quality(monster_death_type *md_ptr)
 
     if (md_ptr->r_ptr->flags1 & RF1_DROP_GREAT)
         md_ptr->mo_mode |= (AM_GOOD | AM_GREAT);
+
+    if (md_ptr->r_ptr->flags1 & RF1_DROP_NASTY)
+        md_ptr->mo_mode |= AM_NASTY;
 }
 
 static int decide_drop_numbers(player_type *player_ptr, monster_death_type *md_ptr, const bool drop_item)
@@ -315,7 +326,7 @@ static void on_defeat_last_boss(player_type *player_ptr)
     add_winner_class(player_ptr->pclass);
     player_ptr->redraw |= PR_TITLE;
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_FINAL_QUEST_CLEAR);
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に変愚蛮怒の勝利者となった！", "finally became *WINNER* of Hengband!"));
+    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
     patron_list[player_ptr->chaos_patron].admire(player_ptr);
     msg_print(_("*** おめでとう ***", "*** CONGRATULATIONS ***"));
     msg_print(_("あなたはゲームをコンプリートしました。", "You have won the game!"));
@@ -378,7 +389,7 @@ void monster_death(player_type *player_ptr, MONSTER_IDX m_idx, bool drop_item)
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->object_level = (floor_ptr->dun_level + md_ptr->r_ptr->level) / 2;
     drop_items_golds(player_ptr, md_ptr, drop_numbers);
-    if (((md_ptr->r_ptr->flags1 & RF1_QUESTOR) == 0) || player_ptr->phase_out || (md_ptr->m_ptr->r_idx != MON_SERPENT) || md_ptr->cloned)
+    if (((md_ptr->r_ptr->flags1 & RF1_QUESTOR) == 0) || player_ptr->phase_out || (md_ptr->m_ptr->r_idx != MON_MELKO) || md_ptr->cloned)
         return;
 
     on_defeat_last_boss(player_ptr);
@@ -393,6 +404,7 @@ void monster_death(player_type *player_ptr, MONSTER_IDX m_idx, bool drop_item)
 concptr extract_note_dies(MONRACE_IDX r_idx)
 {
     monster_race *r_ptr = &r_info[r_idx];
+
     if (monster_living(r_idx))
         return _("は死んだ。", " dies.");
 

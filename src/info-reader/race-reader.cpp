@@ -1,4 +1,5 @@
-﻿#include "info-reader/race-reader.h"
+﻿#include "alliance/alliance.h"
+#include "info-reader/race-reader.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/parse-error-types.h"
 #include "info-reader/race-info-tokens-table.h"
@@ -157,25 +158,20 @@ errr parse_r_info(std::string_view buf, angband_header *)
         info_set_value(r_ptr->next_exp, tokens[5]);
         info_set_value(r_ptr->next_r_idx, tokens[6]);
     } else if (tokens[0] == "R") {
-        // R:reinforcer_idx:number_dice
-        size_t i = 0;
-        for (; i < A_MAX; i++) {
-            if (r_ptr->reinforce_id[i] == 0)
-                break;
-        }
-
-        if (i >= 6)
-            return PARSE_ERROR_GENERIC;
+        MONSTER_IDX mon_idx;
+        DICE_NUMBER dn;
+        DICE_SID ds;
 
         if (tokens.size() < 3)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         if (tokens[1].size() == 0 || tokens[2].size() == 0)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
 
+        info_set_value(mon_idx, tokens[1]);
         const auto &dice = str_split(tokens[2], 'd', false, 2);
-        info_set_value(r_ptr->reinforce_id[i], tokens[1]);
-        info_set_value(r_ptr->reinforce_dd[i], dice[0]);
-        info_set_value(r_ptr->reinforce_ds[i], dice[1]);
+        info_set_value(dn, dice[0]);
+        info_set_value(ds, dice[1]);
+        r_ptr->reinforces.push_back({ mon_idx, dn, ds });
     } else if (tokens[0] == "B") {
         // B:blow_type:blow_effect:dice
         size_t i = 0;
@@ -219,9 +215,91 @@ errr parse_r_info(std::string_view buf, angband_header *)
             if (f.size() == 0)
                 continue;
 
+            const auto &s_tokens = str_split(f, '_', false);
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "ALLIANCE") {
+                for (auto a : alliance_list) {
+                    if (a.second->tag == s_tokens[1]) {
+                        r_ptr->alliance_idx = a.second->id;
+                    }
+                }
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "MOB") {
+                info_set_value(r_ptr->max_num, s_tokens[1]);
+                r_ptr->mob_num = r_ptr->max_num;
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "COLLAPSE") {
+                info_set_value(r_ptr->plus_collapse, s_tokens[1]);
+                continue;
+            }
+
+            if (s_tokens.size() == 6 && s_tokens[0] == "SPAWN") {
+                // 落とし子自動生成率
+                if (s_tokens[1] == "CREATURE" && s_tokens[3] == "IN") {
+                    int num;
+                    int deno;
+                    MONRACE_IDX mon_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[4]);
+                    info_set_value(mon_idx, s_tokens[5]);
+                    r_ptr->spawn_monsters.push_back({ num, deno, mon_idx });
+                    continue;
+                }
+
+                // 地形変化率
+                if (s_tokens[1] == "FEATURE" && s_tokens[3] == "IN") {
+                    int num;
+                    int deno;
+                    FEAT_IDX feat_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[4]);
+                    info_set_value(feat_idx, s_tokens[5]);
+                    r_ptr->change_feats.push_back({ num, deno, feat_idx });
+                    continue;
+                }
+
+                // アイテム自然ドロップ率
+                if (s_tokens[1] == "ITEM" && s_tokens[3] == "IN") {
+                    int num;
+                    int deno;
+                    KIND_OBJECT_IDX kind_idx;
+                    info_set_value(num, s_tokens[2]);
+                    info_set_value(deno, s_tokens[4]);
+                    info_set_value(kind_idx, s_tokens[5]);
+                    r_ptr->spawn_items.push_back({ num, deno, kind_idx });
+                    continue;
+                }
+            }
+
+            if (s_tokens.size() == 8 && s_tokens[0] == "DROP" && s_tokens[1] == "KIND" && s_tokens[3] == "IN") {
+                int num;
+                int deno;
+                int dn;
+                int ds;
+                int grade;
+                KIND_OBJECT_IDX kind_idx;
+                info_set_value(num, s_tokens[2]);
+                info_set_value(deno, s_tokens[4]);
+                info_set_value(kind_idx, s_tokens[5]);
+                info_set_value(grade, s_tokens[6]);
+                const auto &dices = str_split(s_tokens[7], 'd', true, 10);
+                if (dices.size() != 2) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                info_set_value(dn, dices[0]);
+                info_set_value(ds, dices[1]);
+                r_ptr->drop_kinds.push_back({ num, deno, kind_idx, grade, ds, dn });
+                continue;
+            }
+
             if (!grab_one_basic_flag(r_ptr, f))
                 return PARSE_ERROR_INVALID_FLAG;
         }
+
     } else if (tokens[0] == "S") {
         // S:flags
         if (tokens.size() < 2 || tokens[1].size() == 0)
@@ -233,6 +311,8 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 continue;
 
             const auto &s_tokens = str_split(f, '_', false, 3);
+
+            // 特殊行動確率
             if (s_tokens.size() == 3 && s_tokens[1] == "IN") {
                 if (s_tokens[0] != "1")
                     return PARSE_ERROR_GENERIC;
@@ -241,6 +321,7 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 r_ptr->freq_spell = 100 / i;
                 continue;
             }
+
 
             if (!grab_one_spell_flag(r_ptr, f))
                 return PARSE_ERROR_INVALID_FLAG;

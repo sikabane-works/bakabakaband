@@ -140,7 +140,7 @@ bool raise_possible(player_type *player_ptr, monster_type *m_ptr)
  * between the attacker and target.\n
  *\n
  * This is exactly like "projectable", but it will\n
- * return FALSE if a monster is in the way.\n
+ * return false if a monster is in the way.\n
  * no equally friendly monster is\n
  * between the attacker and target.\n
  */

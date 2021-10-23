@@ -82,10 +82,9 @@ static bool battle_metal_babble(player_type *player_ptr)
     reset_tim_flags(player_ptr);
 
     /* Save the surface floor as saved floor */
-    prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS);
+    move_floor(player_ptr, CFM_SAVE_FLOORS);
 
     player_ptr->current_floor_ptr->inside_arena = true;
-    player_ptr->leaving = true;
     player_ptr->leave_bldg = true;
     return true;
 }
@@ -106,10 +105,9 @@ static void go_to_arena(player_type *player_ptr)
 
     player_ptr->exit_bldg = false;
     reset_tim_flags(player_ptr);
-    prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS);
+    move_floor(player_ptr, CFM_SAVE_FLOORS);
 
     player_ptr->current_floor_ptr->inside_arena = true;
-    player_ptr->leaving = true;
     player_ptr->leave_bldg = true;
 }
 
@@ -375,10 +373,9 @@ bool monster_arena_comm(player_type *player_ptr)
     player_ptr->au -= wager;
     reset_tim_flags(player_ptr);
 
-    prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS);
+    move_floor(player_ptr, CFM_SAVE_FLOORS);
 
     player_ptr->phase_out = true;
-    player_ptr->leaving = true;
     player_ptr->leave_bldg = true;
 
     screen_load();

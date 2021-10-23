@@ -36,8 +36,8 @@ void rd_dummy2(void)
 }
 
 /*!
- * @brief 変愚蛮怒 v1.5.0より大きなバージョンにおいて、ダミーでモンスターを読み込む
- * @param player_ptr プレイヤーへの参照ポインタ
+ * @brief 馬鹿馬鹿蛮怒 v1.5.0より大きなバージョンにおいて、ダミーでモンスターを読み込む
+ * @param player_ptr プレーヤーへの参照ポインタ
  * @details もはや何に使われていたのか不明
  */
 void rd_dummy_monsters(player_type *player_ptr)

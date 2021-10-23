@@ -493,6 +493,13 @@ void switch_gain_mutation(player_type *player_ptr, glm_type *glm_ptr)
         glm_ptr->muta_which = MUTA::GOOD_LUCK;
         glm_ptr->muta_desc = _("慈悲深い白いオーラがあなたをとりまいた...", "There is a benevolent white aura surrounding you...");
         break;
+    case 194:
+    case 195:
+    case 196:
+    case 197:
+        glm_ptr->muta_which = MUTA::DEFECATION;
+        glm_ptr->muta_desc = _("あなたは脱糞を制御できなくなった。", "You become subject to uncontrollable defecation.");
+        break;
     default:
         glm_ptr->muta_which = MUTA::MAX;
         break;

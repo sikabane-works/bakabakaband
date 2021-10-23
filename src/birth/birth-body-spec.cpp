@@ -42,7 +42,7 @@ void get_ahw(player_type *player_ptr)
  */
 void get_money(player_type *player_ptr)
 {
-    int gold = (player_ptr->sc * 6) + randint1(100) + 300;
+    int gold = (player_ptr->prestige * 6) + randint1(100) + 300;
     if (player_ptr->pclass == PlayerClassType::TOURIST)
         gold += 2000;
 

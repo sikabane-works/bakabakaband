@@ -4,6 +4,7 @@
  * @author Hourier
  */
 
+#include "alliance/alliance.h"
 #include "view/display-lore.h"
 #include "game-option/cheat-options.h"
 #include "game-option/text-display-options.h"
@@ -17,6 +18,7 @@
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
@@ -132,7 +134,7 @@ static bool display_kill_unique(lore_type *lore_ptr)
     if ((lore_ptr->flags1 & RF1_UNIQUE) == 0)
         return false;
 
-    bool dead = (lore_ptr->r_ptr->max_num == 0);
+    bool dead = (lore_ptr->r_ptr->mob_num == 0);
     if (lore_ptr->r_ptr->r_deaths) {
         hooked_roff(format(_("%^sはあなたの先祖を %d 人葬っている", "%^s has slain %d of your ancestors"), Who::who(lore_ptr->msex), lore_ptr->r_ptr->r_deaths));
 
@@ -197,10 +199,8 @@ static void display_number_of_nazguls(lore_type *lore_ptr)
 {
     if (lore_ptr->mode != MONSTER_LORE_DEBUG && lore_ptr->r_ptr->r_tkills == 0)
         return;
-    if (!any_bits(lore_ptr->r_ptr->flags7, RF7_NAZGUL))
-        return;
 
-    int remain = lore_ptr->r_ptr->max_num;
+    int remain = lore_ptr->r_ptr->mob_num;
     int killed = lore_ptr->r_ptr->r_akills;
     if (remain == 0) {
 #ifdef JP
@@ -347,11 +347,30 @@ void display_monster_never_move(lore_type *lore_ptr)
 
 void display_monster_kind(lore_type *lore_ptr)
 {
-    if (((lore_ptr->flags3 & (RF3_DRAGON | RF3_DEMON | RF3_GIANT | RF3_TROLL | RF3_ORC | RF3_ANGEL)) == 0)
-        && ((lore_ptr->flags2 & (RF2_QUANTUM | RF2_HUMAN)) == 0)) {
+    if ((((lore_ptr->flags3 & (RF3_DRAGON | RF3_DEMON | RF3_GIANT | RF3_TROLL | RF3_ORC | RF3_ANGEL)) == 0) &&
+        ((lore_ptr->flags8 & (RF8_ELDRAZI | RF8_QUYLTHLUG | RF8_ELF | RF8_DWARF | RF8_HOBBIT | RF8_SPIDER)) == 0) &&
+        ((lore_ptr->flags2 & (RF2_QUANTUM | RF2_HUMAN)) == 0))) {
         hooked_roff(_("モンスター", " creature"));
         return;
     }
+
+    if (lore_ptr->flags8 & RF8_ELDRAZI)
+        hook_c_roff(TERM_WHITE, _("エルドラージ", " eldrazi"));
+
+    if (lore_ptr->flags8 & RF8_ELF)
+        hook_c_roff(TERM_GREEN, _("エルフ", " elf"));
+
+    if (lore_ptr->flags8 & RF8_DWARF)
+        hook_c_roff(TERM_ORANGE, _("ドワーフ", " dwarf"));
+
+    if (lore_ptr->flags8 & RF8_HOBBIT)
+        hook_c_roff(TERM_WHITE, _("ホビット", " hobbit"));
+
+    if (lore_ptr->flags8 & RF8_QUYLTHLUG)
+        hook_c_roff(TERM_RED, _("クイルスルグ", " quylthlug"));
+
+    if (lore_ptr->flags8 & RF8_SPIDER)
+        hook_c_roff(TERM_SLATE, _("蜘蛛", " spider"));
 
     if (lore_ptr->flags3 & RF3_DRAGON)
         hook_c_roff(TERM_ORANGE, _("ドラゴン", " dragon"));
@@ -380,8 +399,14 @@ void display_monster_kind(lore_type *lore_ptr)
 
 void display_monster_alignment(lore_type *lore_ptr)
 {
+    if (lore_ptr->flags1 & RF1_MALE && lore_ptr->flags1 & RF1_FEMALE)
+        hook_c_roff(TERM_VIOLET, _("両性具有であり", " hermaphroditic"));
+
     if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR)
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
+
+    if (lore_ptr->flags8 & RF8_NASTY)
+        hook_c_roff(TERM_L_DARK, _("クッソ汚い", " nasty"));
 
     if (lore_ptr->flags3 & RF3_ANIMAL)
         hook_c_roff(TERM_L_GREEN, _("自然界の", " natural"));
@@ -391,6 +416,39 @@ void display_monster_alignment(lore_type *lore_ptr)
 
     if (lore_ptr->flags3 & RF3_GOOD)
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
+
+    if (lore_ptr->flags8 & RF8_WARRIOR)
+        hook_c_roff(TERM_ORANGE, _("戦士の", " warrior"));
+
+    if (lore_ptr->flags8 & RF8_ROGUE)
+        hook_c_roff(TERM_L_DARK, _("盗賊の", " rogue"));
+
+    if (lore_ptr->flags8 & RF8_PRIEST)
+        hook_c_roff(TERM_WHITE, _("プリーストの", " priest"));
+
+    if (lore_ptr->flags8 & RF8_MAGE)
+        hook_c_roff(TERM_RED, _("メイジの", " mage"));
+
+    if (lore_ptr->flags8 & RF8_PALADIN)
+        hook_c_roff(TERM_YELLOW, _("パラディンの", " paladin"));
+
+    if (lore_ptr->flags8 & RF8_RANGER)
+        hook_c_roff(TERM_GREEN, _("レンジャーの", " ranger"));
+
+    if (lore_ptr->flags8 & RF8_SAMURAI)
+        hook_c_roff(TERM_RED, _("サムライの", " ranger"));
+
+    if (lore_ptr->flags8 & RF8_NINJA)
+        hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));
+
+    if (lore_ptr->flags8 & RF8_KARATEKA)
+        hook_c_roff(TERM_ORANGE, _("カラテカの", " karateka"));
+
+    if (lore_ptr->flags8 & RF8_YAKUZA)
+        hook_c_roff(TERM_L_DARK, _("ヤクザな", " yakuza"));
+
+    if (lore_ptr->flags8 & RF8_SUMOU_WRESTLER)
+        hook_c_roff(TERM_YELLOW, _("スモトリの", " sumou wrestler"));
 
     if (lore_ptr->flags3 & RF3_UNDEAD)
         hook_c_roff(TERM_VIOLET, _("アンデッドの", " undead"));
@@ -487,6 +545,16 @@ void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)
     }
 #endif
 
+    if (lore_ptr->r_ptr->alliance_idx) {
+#ifdef JP
+        hooked_roff(alliance_list.at(lore_ptr->r_ptr->alliance_idx)->name.c_str());
+        hooked_roff("に所属している");
+#else
+        hooked_roff("belonging to ");
+        hooked_roff(alliance_list.at(lore_ptr->r_ptr->alliance_idx)->name.c_str());
+#endif
+    }
+
     display_monster_alignment(lore_ptr);
     display_monster_kind(lore_ptr);
     display_monster_exp(player_ptr, lore_ptr);
@@ -507,28 +575,31 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
     hooked_roff(" contain ");
 #endif
 
-    for (int n = 0; n < A_MAX; n++) {
-        bool is_reinforced = lore_ptr->r_ptr->reinforce_id[n] > 0;
-        is_reinforced &= lore_ptr->r_ptr->reinforce_dd[n] > 0;
-        is_reinforced &= lore_ptr->r_ptr->reinforce_ds[n] > 0;
+    for (auto reinforce : lore_ptr->r_ptr->reinforces) {
+        auto mon_idx = std::get<0>(reinforce);
+        auto dn = std::get<1>(reinforce);
+        auto ds = std::get<2>(reinforce);
+        bool is_reinforced = mon_idx > 0;
+        is_reinforced &= dn > 0;
+        is_reinforced &= ds > 0;
         if (!is_reinforced)
             continue;
 
-        monster_race *rf_ptr = &r_info[lore_ptr->r_ptr->reinforce_id[n]];
+        monster_race *rf_ptr = &r_info[mon_idx];
         if (rf_ptr->flags1 & RF1_UNIQUE) {
             hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
             continue;
         }
 
 #ifdef JP
-        hooked_roff(format("、 %dd%d 体の%s", lore_ptr->r_ptr->reinforce_dd[n], lore_ptr->r_ptr->reinforce_ds[n], rf_ptr->name.c_str()));
+        hooked_roff(format("、 %dd%d 体の%s", dn, ds, rf_ptr->name.c_str()));
 #else
-        bool plural = (lore_ptr->r_ptr->reinforce_dd[n] * lore_ptr->r_ptr->reinforce_ds[n] > 1);
+        bool plural = (dn * ds > 1);
         GAME_TEXT name[MAX_NLEN];
         strcpy(name, rf_ptr->name.c_str());
         if (plural)
             plural_aux(name);
-        hooked_roff(format(",%dd%d %s", lore_ptr->r_ptr->reinforce_dd[n], lore_ptr->r_ptr->reinforce_ds[n], name));
+        hooked_roff(format(",%dd%d %s", dn, ds, name));
 #endif
     }
 
@@ -632,7 +703,7 @@ void display_monster_guardian(lore_type *lore_ptr)
 {
     bool is_kingpin = (lore_ptr->flags1 & RF1_QUESTOR) != 0;
     is_kingpin &= lore_ptr->r_ptr->r_sights > 0;
-    is_kingpin &= lore_ptr->r_ptr->max_num > 0;
+    is_kingpin &= lore_ptr->r_ptr->mob_num > 0;
     is_kingpin &= (lore_ptr->r_idx == MON_OBERON) || (lore_ptr->r_idx == MON_SERPENT);
     if (is_kingpin) {
         hook_c_roff(TERM_VIOLET, _("あなたはこのモンスターを殺したいという強い欲望を感じている...", "You feel an intense desire to kill this monster...  "));

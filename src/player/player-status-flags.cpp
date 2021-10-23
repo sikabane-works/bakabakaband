@@ -450,6 +450,11 @@ BIT_FLAGS get_player_flags(player_type *player_ptr, tr_type tr_flag)
         return has_vuln_lite(player_ptr);
     case TR_IM_DARK:
         return has_immune_dark(player_ptr);
+    case TR_NASTY:
+    case TR_INDESTRUCTIBLE:
+    case TR_NEVER_MOVE:
+    case TR_INVEN_ACTIVATE:
+        return 0;
 
     case TR_FLAG_MAX:
         break;

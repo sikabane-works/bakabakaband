@@ -84,9 +84,18 @@ static void place_cave_contents(player_type *player_ptr, dun_data_type *dd_ptr, 
     if (dd_ptr->destroyed)
         destroy_level(player_ptr);
 
-    if (has_river_flag(d_ptr) && one_in_(3) && (randint1(floor_ptr->dun_level) > 5))
+    if (has_river_flag(d_ptr) && one_in_(3) && (randint1(floor_ptr->dun_level) > 5)) {
         add_river(floor_ptr, dd_ptr);
 
+        //追加でさらに川を増やす。
+        if(one_in_(4)) {
+            while(!one_in_(3)) {
+                add_river(floor_ptr, dd_ptr);
+            }
+        
+        }
+    }
+ 
     for (int i = 0; i < dd_ptr->cent_n; i++) {
         POSITION ty, tx;
         int pick = rand_range(0, i);
@@ -206,13 +215,27 @@ static bool make_one_floor(player_type *player_ptr, dun_data_type *dd_ptr, dunge
     if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
         return false;
 
+    dt_ptr = initialize_dt_type(&tmp_dt);
+    if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+        return false;
+
+    // 通路の過剰生成処理
+    if (one_in_(2)) {
+        int num = randint1(100);
+        for (int i = 0; i < num; i++) {
+            dt_ptr = initialize_dt_type(&tmp_dt);
+            if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+                return false;
+        }
+    }
+
     make_doors(player_ptr, dd_ptr, dt_ptr);
-    if (!alloc_stairs(player_ptr, feat_down_stair, rand_range(3, 4), 3)) {
+    if (!alloc_stairs(player_ptr, feat_down_stair, damroll(std::max(floor_ptr->width * floor_ptr->height / SCREEN_WID / SCREEN_HGT / 20, 1), 3), 3)) {
         *dd_ptr->why = _("下り階段生成に失敗", "Failed to generate down stairs.");
         return false;
     }
 
-    if (!alloc_stairs(player_ptr, feat_up_stair, rand_range(1, 2), 3)) {
+    if (!alloc_stairs(player_ptr, feat_up_stair, damroll(std::max(floor_ptr->width * floor_ptr->height / SCREEN_WID / SCREEN_HGT / 20, 1), 3), 3)) {
         *dd_ptr->why = _("上り階段生成に失敗", "Failed to generate up stairs.");
         return false;
     }
@@ -311,12 +334,13 @@ static bool check_place_necessary_objects(player_type *player_ptr, dun_data_type
 static void decide_dungeon_data_allocation(player_type *player_ptr, dun_data_type *dd_ptr, dungeon_type *d_ptr)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    dd_ptr->alloc_object_num = floor_ptr->dun_level / 3;
-    if (dd_ptr->alloc_object_num > 10)
-        dd_ptr->alloc_object_num = 10;
+    dd_ptr->alloc_object_num = floor_ptr->dun_level / 3 + 5;
+    if (dd_ptr->alloc_object_num > 30)
+        dd_ptr->alloc_object_num = 30;
 
-    if (dd_ptr->alloc_object_num < 2)
-        dd_ptr->alloc_object_num = 2;
+    if (one_in_(12)) {
+        dd_ptr->alloc_object_num += randint1(50);
+    }
 
     dd_ptr->alloc_monster_num = d_ptr->min_m_alloc_level;
     if (floor_ptr->height >= MAX_HGT && floor_ptr->width >= MAX_WID)
@@ -325,6 +349,7 @@ static void decide_dungeon_data_allocation(player_type *player_ptr, dun_data_typ
     int small_tester = dd_ptr->alloc_monster_num;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->height) / MAX_HGT;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->width) / MAX_WID;
+    dd_ptr->alloc_monster_num *= DUNGEON_MONSTER_MULTIPLE;
     dd_ptr->alloc_monster_num += 1;
     if (dd_ptr->alloc_monster_num > small_tester)
         dd_ptr->alloc_monster_num = small_tester;
@@ -339,17 +364,20 @@ static bool allocate_dungeon_data(player_type *player_ptr, dun_data_type *dd_ptr
     for (dd_ptr->alloc_monster_num = dd_ptr->alloc_monster_num + dd_ptr->alloc_object_num; dd_ptr->alloc_monster_num > 0; dd_ptr->alloc_monster_num--)
         (void)alloc_monster(player_ptr, 0, PM_ALLOW_SLEEP, summon_specific);
 
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num) + dd_ptr->alloc_object_num);
     if (d_ptr->flags.has_not(DF::NO_CAVE))
-        alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num));
+        alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num) + dd_ptr->alloc_object_num);
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (player_ptr->enter_dungeon && floor_ptr->dun_level > 1)
         floor_ptr->object_level = 1;
 
-    alloc_object(player_ptr, ALLOC_SET_ROOM, ALLOC_TYP_OBJECT, randnor(DUN_AMT_ROOM, 3));
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_OBJECT, randnor(DUN_AMT_ITEM, 3));
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_GOLD, randnor(DUN_AMT_GOLD, 3));
+ 
+    alloc_object(player_ptr, ALLOC_SET_ROOM, ALLOC_TYP_OBJECT, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE * DUN_AMT_ROOM, 3));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_OBJECT, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE * DUN_AMT_ITEM, 3));
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_GOLD, randnor(DUNGEON_ITEM_FLOOR_DROP_RATE* DUN_AMT_GOLD, 3));
+
+
     floor_ptr->object_level = floor_ptr->base_level;
     if (alloc_guardian(player_ptr, true))
         return true;
@@ -395,7 +423,7 @@ bool cave_gen(player_type *player_ptr, concptr *why)
 
     dd_ptr->cent_n = 0;
     dungeon_type *d_ptr = &d_info[floor_ptr->dungeon_idx];
-    if (ironman_empty_levels || (d_ptr->flags.has(DF::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
+    if (ironman_empty_levels || d_ptr->flags.has(DF::ALWAY_ARENA) || (d_ptr->flags.has(DF::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
         dd_ptr->empty_level = true;
         msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("アリーナレベルを生成。", "Arena level."));
     }

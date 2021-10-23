@@ -106,6 +106,8 @@ extern FEAT_IDX feat_tree;
 extern FEAT_IDX feat_mountain;
 extern FEAT_IDX feat_swamp;
 extern FEAT_IDX feat_undetected;
+extern FEAT_IDX feat_deep_dung_pool;
+extern FEAT_IDX feat_shallow_dung_pool;
 
 extern FEAT_IDX feat_wall_outer;
 extern FEAT_IDX feat_wall_inner;
@@ -114,7 +116,7 @@ extern FEAT_IDX feat_ground_type[100];
 extern FEAT_IDX feat_wall_type[100];
 
 struct floor_type;
-struct player_type;
+class player_type;
 bool is_closed_door(player_type *player_ptr, FEAT_IDX feat);
 bool is_trap(player_type *player_ptr, FEAT_IDX feat);
 void apply_default_feat_lighting(TERM_COLOR *f_attr, SYMBOL_CODE *f_char);

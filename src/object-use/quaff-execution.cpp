@@ -89,6 +89,11 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
     q_ptr->number = 1;
     vary_item(this->player_ptr, item, -1);
     sound(SOUND_QUAFF);
+    if (player_ptr->incident.count(INCIDENT::QUAFF) == 0) {
+        player_ptr->incident[INCIDENT::QUAFF] = 0;
+    }
+    player_ptr->incident[INCIDENT::QUAFF]++;
+
     auto ident = false;
     if (q_ptr->tval == ItemKindType::POTION) {
         switch (q_ptr->sval) {
@@ -478,7 +483,7 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
             ident = true;
             break;
 
-        case SV_POTION_NEO_TSUYOSHI:
+        case SV_POSTION_MASARU_CHINISE_DYNAMIC:
             (void)BadStatusSetter(this->player_ptr).hallucination(0);
             (void)set_tsuyoshi(this->player_ptr, this->player_ptr->tsuyoshi + randint1(100) + 100, false);
             ident = true;
@@ -491,6 +496,17 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
             (void)set_tsuyoshi(this->player_ptr, 0, true);
             if (!has_resist_chaos(this->player_ptr)) {
                 (void)BadStatusSetter(this->player_ptr).hallucination(50 + randint1(50));
+            }
+            ident = true;
+            break;
+
+        case SV_POTION_NEO_TSUYOSHI:
+            msg_print(_("「新・オクレ兄さん！」", "NEW Brother OKURE!"));
+            msg_print(NULL);
+            player_ptr->tsuyoshi = 1;
+            (void)set_tsuyoshi(player_ptr, 0, true);
+            if (!has_resist_chaos(player_ptr)) {
+                (void)BadStatusSetter(player_ptr).mod_hallucination(50 + randint1(100));
             }
             ident = true;
             break;
@@ -508,7 +524,28 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
                 } while (!ident || one_in_(2));
             }
             break;
+
+        case SV_POTION_ICHIZIKU_ENEMA:
+            msg_print(_("うぇ！思わず吐いてしまった。", "The potion makes you vomit!"));
+
+            switch (PlayerRace(this->player_ptr).food()) {
+            case PlayerRaceFood::RATION:
+            case PlayerRaceFood::WATER:
+            case PlayerRaceFood::BLOOD:
+                (void)set_food(player_ptr, PY_FOOD_STARVE - 1);
+                break;
+            default:
+                break;
+            }
+
+            (void)BadStatusSetter(player_ptr).poison(0);
+            BadStatusSetter(player_ptr).mod_paralysis(4);
+            ident = true;
+            msg_print(_("この薬は直腸に注入するものらしい。", "The potion seems to be injected into the rectum"));
+            break;
+
         }
+
     }
 
     if (PlayerRace(this->player_ptr).equals(PlayerRaceType::SKELETON)) {

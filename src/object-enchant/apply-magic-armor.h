@@ -4,8 +4,7 @@
 #include "object-enchant/abstract-protector-enchanter.h"
 #include "system/angband.h"
 
-struct object_type;
-struct player_type;
+class player_type;
 class ArmorEnchanter : AbstractProtectorEnchanter {
 public:
     ArmorEnchanter(player_type *player_ptr, object_type *o_ptr, DEPTH level, int power);

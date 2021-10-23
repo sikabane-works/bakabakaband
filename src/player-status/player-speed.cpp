@@ -59,6 +59,8 @@ void PlayerSpeed::set_locals()
 int16_t PlayerSpeed::race_value()
 {
     int16_t result = 0;
+    floor_type *floor_ptr = this->player_ptr->current_floor_ptr;
+    feature_type *f_ptr = &f_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
 
     if (PlayerRace(this->player_ptr).equals(PlayerRaceType::KLACKON) || PlayerRace(this->player_ptr).equals(PlayerRaceType::SPRITE))
         result += (this->player_ptr->lev) / 10;
@@ -72,6 +74,11 @@ int16_t PlayerSpeed::race_value()
             result -= 2;
         }
     }
+
+    if (f_ptr->flags.has(FF::SLOW)) {
+        result -= 5;
+    }
+
 
     if (this->player_ptr->mimic_form) {
         switch (this->player_ptr->mimic_form) {

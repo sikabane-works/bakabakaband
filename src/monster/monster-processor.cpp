@@ -51,6 +51,7 @@
 #include "mspell/mspell-attack.h"
 #include "mspell/mspell-judgement.h"
 #include "object-enchant/trc-types.h"
+#include "object/object-kind-hook.h"
 #include "pet/pet-fall-off.h"
 #include "player-base/player-class.h"
 #include "player-info/ninja-data-type.h"
@@ -60,6 +61,7 @@
 #include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
 #include "spell/summon-types.h"
+#include "system/object-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -67,6 +69,8 @@
 #include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
+#include "sv-definition/sv-junk-types.h"
+#include "floor/floor-object.h"
 
 void decide_drop_from_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
 bool process_stealth(player_type *player_ptr, MONSTER_IDX m_idx);
@@ -75,6 +79,10 @@ bool awake_monster(player_type *player_ptr, MONSTER_IDX m_idx);
 void process_angar(player_type *player_ptr, MONSTER_IDX m_idx, bool see_m);
 bool explode_grenade(player_type *player_ptr, MONSTER_IDX m_idx);
 bool decide_monster_multiplication(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_change_feat(player_type *player_ptr, MONSTER_IDX m_idx);
+bool process_monster_spawn_monster(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_spawn_item(player_type *player_ptr, MONSTER_IDX m_idx);
+void process_monster_spawn_zanki(player_type *player_ptr, MONSTER_IDX m_idx);
 void process_special(player_type *player_ptr, MONSTER_IDX m_idx);
 bool cast_spell(player_type *player_ptr, MONSTER_IDX m_idx, bool aware);
 
@@ -144,6 +152,12 @@ void process_monster(player_type *player_ptr, MONSTER_IDX m_idx)
     if (decide_monster_multiplication(player_ptr, m_idx, oy, ox))
         return;
 
+    if (process_monster_spawn_monster(player_ptr, m_idx, oy, ox))
+        return;
+
+    process_monster_spawn_item(player_ptr, m_idx);
+    process_monster_spawn_zanki(player_ptr, m_idx);
+    process_monster_change_feat(player_ptr, m_idx);
     process_special(player_ptr, m_idx);
     process_speak_sound(player_ptr, m_idx, oy, ox, turn_flags_ptr->aware);
     if (cast_spell(player_ptr, m_idx, turn_flags_ptr->aware))
@@ -416,13 +430,121 @@ bool decide_monster_multiplication(player_type *player_ptr, MONSTER_IDX m_idx, P
     if (SpellHex(player_ptr).check_hex_barrier(m_idx, HEX_ANTI_MULTI))
         k = 8;
 
-    if ((k < 4) && (!k || !randint0(k * MON_MULT_ADJ))) {
-        if (multiply_monster(player_ptr, m_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+    if ((k < 5) && (!k || !randint0(k * MON_MULT_ADJ))) {
+        if (multiply_monster(player_ptr, m_idx, m_ptr->r_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
             if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr))
                 r_ptr->r_flags2 |= RF2_MULTIPLY;
 
             return true;
         }
+    }
+
+    return false;
+}
+
+/*!
+ * @brief モンスターのアイテム自然生成処理
+ */
+void process_monster_spawn_item(player_type *player_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    for (const auto &spawn_info : r_ptr->spawn_items) {
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        auto kind = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            object_type forge;
+            object_type *q_ptr = &forge;
+            q_ptr->prep(kind);
+            q_ptr->number = 1;
+            (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+        }
+    }
+}
+
+/*!
+ * @brief モンスターの残気自然生成処理
+ */
+void process_monster_spawn_zanki(player_type *player_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if (r_ptr->level < 30 || !(r_ptr->flags1 & RF1_UNIQUE) || r_ptr->flags2 & RF2_EMPTY_MIND) {
+        return;
+    }
+
+    if (randint1(53) < 10000) {
+        return;
+    }
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(684);
+    q_ptr->number = 1;
+    q_ptr->pval = m_ptr->ap_r_idx;
+    (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+}
+
+/*!
+ * @brief モンスターによる地形変化処理
+ */
+void process_monster_change_feat(player_type *player_ptr, MONSTER_IDX m_idx)
+{
+    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    for (const auto &spawn_info : r_ptr->change_feats) {
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        auto feat = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            cave_set_feat(player_ptr, m_ptr->fy, m_ptr->fx, feat);
+        }
+    }
+}
+
+/*!
+ * @brief モンスターの落とし子生成処理
+ * @param player_ptr プレーヤーへの参照ポインタ
+ * @param m_idx モンスターID
+ * @param oy 分裂元モンスターのY座標
+ * @param ox 分裂元モンスターのX座標
+ * @return 実際に分裂したらTRUEを返す
+ */
+bool process_monster_spawn_monster(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
+{
+    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if ((r_ptr->spawn_monsters.size() == 0) || (player_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
+        return false;
+
+    int k = 0;
+
+    for (const auto &spawn_info : r_ptr->spawn_monsters) {
+
+        for (POSITION y = oy - 1; y <= oy + 1; y++) {
+            for (POSITION x = ox - 1; x <= ox + 1; x++) {
+                if (!in_bounds2(player_ptr->current_floor_ptr, y, x))
+                    continue;
+
+                if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                    k++;
+            }
+        }
+
+        if (SpellHex(player_ptr).check_hex_barrier(m_idx, HEX_ANTI_MULTI))
+            k = 8;
+
+        auto num = std::get<0>(spawn_info);
+        auto deno = std::get<1>(spawn_info);
+        MONRACE_IDX idx = std::get<2>(spawn_info);
+        if (randint1(deno) <= num) {
+            if (multiply_monster(player_ptr, m_idx, idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+                if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr))
+                    r_ptr->r_flags2 |= RF2_MULTIPLY;
+
+                return true;
+            }
+        }    
     }
 
     return false;
@@ -473,6 +595,25 @@ bool cast_spell(player_type *player_ptr, MONSTER_IDX m_idx, bool aware)
 bool process_monster_fear(player_type *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    GAME_TEXT m_name[MAX_NLEN];
+    monster_desc(player_ptr, m_name, m_ptr, 0);
+
+    if(monster_fear_remaining(m_ptr) && one_in_(20)) {
+        msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
+        object_type forge;
+        object_type *q_ptr = &forge;
+        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
+        (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+    }
+
+    if (monster_fear_remaining(m_ptr) && one_in_(20)) {
+        msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
+        object_type forge;
+        object_type *q_ptr = &forge;
+        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_VOMITTING));
+        (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
+    }
+
     bool is_battle_determined = !turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && monster_fear_remaining(m_ptr) && turn_flags_ptr->aware;
     if (!is_battle_determined)
         return false;
@@ -481,8 +622,6 @@ bool process_monster_fear(player_type *player_ptr, turn_flags *turn_flags_ptr, M
     if (!turn_flags_ptr->see_m)
         return true;
 
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, m_ptr, 0);
     msg_format(_("%^sは戦いを決意した！", "%^s turns to fight!"), m_name);
     return true;
 }

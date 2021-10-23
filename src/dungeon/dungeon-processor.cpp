@@ -108,12 +108,10 @@ void process_dungeon(player_type *player_ptr, bool load_game)
     term_fresh();
 
     if ((quest_num > 0)
-        && (quest_type::is_fixed(quest_num) && !((quest_num == QUEST_OBERON) || (quest_num == QUEST_SERPENT) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
+        && (quest_type::is_fixed(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
         do_cmd_feeling(player_ptr);
-
     if (player_ptr->phase_out) {
         if (load_game) {
-            player_ptr->energy_need = 0;
             update_gambling_monsters(player_ptr);
         } else {
             msg_print(_("試合開始！", "Ready..Fight!"));
@@ -132,7 +130,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
         floor_ptr->inside_quest = random_quest_number(player_ptr, floor_ptr->dun_level);
     }
     if ((floor_ptr->dun_level == d_info[player_ptr->dungeon_idx].maxdepth) && d_info[player_ptr->dungeon_idx].final_guardian) {
-        if (r_info[d_info[player_ptr->dungeon_idx].final_guardian].max_num)
+        if (r_info[d_info[player_ptr->dungeon_idx].final_guardian].mob_num)
 #ifdef JP
             msg_format("この階には%sの主である%sが棲んでいる。", d_info[player_ptr->dungeon_idx].name.c_str(),
                 r_info[d_info[player_ptr->dungeon_idx].final_guardian].name.c_str());

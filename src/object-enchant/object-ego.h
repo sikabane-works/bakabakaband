@@ -262,11 +262,12 @@ struct ego_item_type {
     std::vector<ego_generate_type> xtra_flags{}; //!< 追加能力/耐性フラグ
 
     RandomArtActType act_idx{}; //!< 発動番号 / Activative ability index
+    PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
 extern std::vector<ego_item_type> e_info;
 
-struct object_type;;
-struct player_type;
+struct object_type;
+class player_type;
 byte get_random_ego(byte slot, bool good);
 void apply_ego(object_type *o_ptr, DEPTH lev);

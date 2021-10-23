@@ -38,14 +38,14 @@ process_result effect_monster_drain_mana(player_type *player_ptr, effect_monster
         return PROCESS_CONTINUE;
     }
 
-    if (em_ptr->m_caster_ptr->hp >= em_ptr->m_caster_ptr->maxhp) {
+    if (em_ptr->m_player_ptr->hp >= em_ptr->m_player_ptr->maxhp) {
         em_ptr->dam = 0;
         return PROCESS_CONTINUE;
     }
 
-    em_ptr->m_caster_ptr->hp += em_ptr->dam;
-    if (em_ptr->m_caster_ptr->hp > em_ptr->m_caster_ptr->maxhp)
-        em_ptr->m_caster_ptr->hp = em_ptr->m_caster_ptr->maxhp;
+    em_ptr->m_player_ptr->hp += em_ptr->dam;
+    if (em_ptr->m_player_ptr->hp > em_ptr->m_player_ptr->maxhp)
+        em_ptr->m_player_ptr->hp = em_ptr->m_player_ptr->maxhp;
 
     if (player_ptr->health_who == em_ptr->who)
         player_ptr->redraw |= (PR_HEALTH);
@@ -54,7 +54,7 @@ process_result effect_monster_drain_mana(player_type *player_ptr, effect_monster
         player_ptr->redraw |= (PR_UHEALTH);
 
     if (em_ptr->see_s_msg) {
-        monster_desc(player_ptr, em_ptr->killer, em_ptr->m_caster_ptr, 0);
+        monster_desc(player_ptr, em_ptr->killer, em_ptr->m_player_ptr, 0);
         msg_format(_("%^sは気分が良さそうだ。", "%^s appears healthier."), em_ptr->killer);
     }
 

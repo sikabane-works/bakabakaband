@@ -139,7 +139,6 @@ const std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "LITE_M2", TR_LITE_M2 },
     { "LITE_M3", TR_LITE_M3 },
     { "LITE_FUEL", TR_LITE_FUEL },
-
     { "CALL_ANIMAL", TR_CALL_ANIMAL },
     { "CALL_DEMON", TR_CALL_DEMON },
     { "CALL_DRAGON", TR_CALL_DRAGON },
@@ -164,12 +163,16 @@ const std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "BERS_RAGE", TR_BERS_RAGE },
     { "BRAND_MAGIC", TR_BRAND_MAGIC },
     { "IMPACT", TR_IMPACT },
+    { "NASTY", TR_NASTY },
+    { "INDESTRUCTIBLE", TR_INDESTRUCTIBLE },
+    { "NEVER_MOVE", TR_NEVER_MOVE },
     { "VUL_ACID", TR_VUL_ACID },
     { "VUL_COLD", TR_VUL_COLD },
     { "VUL_ELEC", TR_VUL_ELEC },
     { "VUL_FIRE", TR_VUL_FIRE },
     { "VUL_LITE", TR_VUL_LITE },
     { "IM_DARK", TR_IM_DARK },
+    { "INVEN_ACTIVATE", TR_INVEN_ACTIVATE },
 };
 
 /*!

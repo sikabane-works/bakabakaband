@@ -81,6 +81,7 @@ bool affect_feature(player_type *player_ptr, MONSTER_IDX who, POSITION r, POSITI
         case GF_POIS:
         case GF_NUKE:
         case GF_DEATH_RAY:
+        case GF_DIRT:
             message = _("枯れた", "was blasted.");
             break;
         case GF_TIME:
@@ -161,7 +162,8 @@ bool affect_feature(player_type *player_ptr, MONSTER_IDX who, POSITION r, POSITI
     case GF_CHAOS:
     case GF_MANA:
     case GF_SEEKER:
-    case GF_SUPER_RAY: {
+    case GF_SUPER_RAY:
+    {
         break;
     }
     case GF_KILL_TRAP: {
@@ -437,6 +439,21 @@ bool affect_feature(player_type *player_ptr, MONSTER_IDX who, POSITION r, POSITI
         player_ptr->update |= (PU_FLOW);
         break;
     }
+    case GF_DIRT: {
+        if (f_ptr->flags.has(FF::PERMANENT))
+            break;
+        if (dam == 1) {
+            if (!f_ptr->flags.has(FF::FLOOR))
+                break;
+            cave_set_feat(player_ptr, y, x, feat_shallow_dung_pool);
+        } else if (dam) {
+            cave_set_feat(player_ptr, y, x, feat_deep_dung_pool);
+        }
+
+        break;
+    }
+
+
     }
 
     lite_spot(player_ptr, y, x);

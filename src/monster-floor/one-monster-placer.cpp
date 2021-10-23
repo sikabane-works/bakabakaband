@@ -113,7 +113,7 @@ static bool check_unique_placeable(player_type *player_ptr, MONRACE_IDX r_idx)
         return true;
 
     monster_race *r_ptr = &r_info[r_idx];
-    if ((any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->max_num)) {
+    if ((any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->mob_num)) {
         return false;
     }
 
@@ -343,7 +343,7 @@ bool place_monster_one(player_type *player_ptr, MONSTER_IDX who, POSITION y, POS
     if (ironman_nightmare) {
         uint32_t hp = m_ptr->max_maxhp * 2L;
 
-        m_ptr->max_maxhp = (HIT_POINT)MIN(30000, hp);
+        m_ptr->max_maxhp = (HIT_POINT)MIN(MON_MAX_HP, hp);
     }
 
     m_ptr->maxhp = m_ptr->max_maxhp;

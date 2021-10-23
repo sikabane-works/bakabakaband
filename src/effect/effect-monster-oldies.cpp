@@ -49,7 +49,7 @@ process_result effect_monster_old_clone(player_type *player_ptr, effect_monster_
     }
 
     em_ptr->m_ptr->hp = em_ptr->m_ptr->maxhp;
-    if (multiply_monster(player_ptr, em_ptr->g_ptr->m_idx, true, 0L))
+    if (multiply_monster(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->m_ptr->r_idx, true, 0L))
         em_ptr->note = _("が分裂した！", " spawns!");
 
     em_ptr->dam = 0;
@@ -129,9 +129,6 @@ static void effect_monster_old_heal_recovery(player_type *player_ptr, effect_mon
     }
 }
 
-/*!
- * @todo サーペントのHPがマジックナンバー扱いになっている
- */
 process_result effect_monster_old_heal(player_type *player_ptr, effect_monster_type *em_ptr)
 {
     if (em_ptr->seen)
@@ -140,7 +137,7 @@ process_result effect_monster_old_heal(player_type *player_ptr, effect_monster_t
     /* Wake up */
     (void)set_monster_csleep(player_ptr, em_ptr->g_ptr->m_idx, 0);
     effect_monster_old_heal_recovery(player_ptr, em_ptr);
-    if (em_ptr->m_ptr->hp < 30000)
+    if (em_ptr->m_ptr->hp < MON_MAX_HP)
         em_ptr->m_ptr->hp += em_ptr->dam;
     if (em_ptr->m_ptr->hp > em_ptr->m_ptr->maxhp)
         em_ptr->m_ptr->hp = em_ptr->m_ptr->maxhp;

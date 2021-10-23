@@ -171,15 +171,11 @@ void display_store(player_type *player_ptr)
         return;
     }
 
-    concptr store_name = f_info[cur_store_feat].name.c_str();
     concptr owner_name = (ot_ptr->owner_name);
     concptr race_name = race_info[enum2i(ot_ptr->owner_race)].title;
     char buf[80];
     sprintf(buf, "%s (%s)", owner_name, race_name);
     put_str(buf, 3, 10);
-
-    sprintf(buf, "%s (%ld)", store_name, (long)(ot_ptr->max_cost));
-    prt(buf, 3, 50);
 
     put_str(_("商品の一覧", "Item Description"), 5, 5);
     if (show_weights)

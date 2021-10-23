@@ -57,6 +57,12 @@ bool wand_effect(player_type *player_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION d
     PLAYER_LEVEL lev = powerful ? player_ptr->lev * 2 : player_ptr->lev;
     POSITION rad = powerful ? 3 : 2;
 
+    if (player_ptr->incident.count(INCIDENT::ZAP_WAND) == 0) {
+        player_ptr->incident[INCIDENT::ZAP_WAND] = 0;
+    }
+    player_ptr->incident[INCIDENT::ZAP_WAND]++;
+
+
     /* XXX Hack -- Wand of wonder can do anything before it */
     if (sval == SV_WAND_WONDER) {
         int vir = virtue_number(player_ptr, V_CHANCE);

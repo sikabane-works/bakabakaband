@@ -15,6 +15,7 @@
 #endif
 
 #include "term/z-rand.h"
+#include <ctime>
 #include "util/rng-xoshiro.h"
 #include "world/world.h"
 

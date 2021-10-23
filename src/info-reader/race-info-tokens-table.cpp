@@ -114,6 +114,7 @@ const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
 	{ "DROP_4D2", RF1_DROP_4D2 },
 	{ "DROP_GOOD", RF1_DROP_GOOD },
 	{ "DROP_GREAT", RF1_DROP_GREAT },
+    { "DROP_NASTY", RF1_DROP_NASTY },
 };
 
 /*!
@@ -325,8 +326,28 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
 	{ "WILD_VOLCANO", RF8_WILD_VOLCANO },
 	{ "WILD_MOUNTAIN", RF8_WILD_MOUNTAIN },
 	{ "WILD_GRASS", RF8_WILD_GRASS },
+    { "QUYLTHLUG", RF8_QUYLTHLUG },
+    { "WARRIOR", RF8_WARRIOR },
+    { "ROGUE", RF8_ROGUE },
+    { "PRIEST", RF8_PRIEST },
+    { "MAGE", RF8_MAGE },
+    { "PALADIN", RF8_PALADIN },
+    { "RANGER", RF8_RANGER },
+    { "ELF", RF8_ELF },
+    { "DWARF", RF8_DWARF },
+    { "HOBBIT", RF8_HOBBIT },
+    { "SAMURAI", RF8_SAMURAI },
+    { "ELDRAZI", RF8_ELDRAZI },
+	{ "KARATEKA", RF8_KARATEKA },
+    { "NINJA", RF8_NINJA },
+	{ "SUMOU_WRESTLER", RF8_SUMOU_WRESTLER },
+	{ "YAKUZA", RF8_YAKUZA },
+	{ "HOMO_SEXUAL", RF8_HOMO_SEXUAL },
+	{ "JOKE", RF8_JOKE },
+	{ "NASTY", RF8_NASTY },
 	{ "WILD_SWAMP", RF8_WILD_SWAMP },
 	{ "WILD_ALL", RF8_WILD_ALL },
+    { "SPIDER", RF8_SPIDER },
 };
 
 /*!

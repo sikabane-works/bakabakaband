@@ -45,6 +45,7 @@
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "player/player-status-resist.h"
 
 static int16_t normal_traps[MAX_NORMAL_TRAPS];
 
@@ -151,6 +152,11 @@ void init_normal_traps(void)
     normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_SLEEP");
     normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_TRAPS");
     normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_ALARM");
+    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_LAVA");
+    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_DUNG_POOL");
+    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_FIRE_STORM");
+    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_ICE_STORM");
+    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_CHAOS_STORM");
 }
 
 /*!
@@ -400,6 +406,11 @@ void hit_trap(player_type *player_ptr, bool break_trap)
 
     cave_alter_feat(player_ptr, y, x, FF::HIT_TRAP);
 
+	if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+        player_ptr->incident[INCIDENT::TRAPPED] = 0;
+    }
+    player_ptr->incident[INCIDENT::TRAPPED]++;
+
     /* Analyze */
     switch (trap_feat_type) {
     case TRAP_TRAPDOOR: {
@@ -423,8 +434,7 @@ void hit_trap(player_type *player_ptr, bool break_trap)
                 do_cmd_save_game(player_ptr, true);
 
             exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("落とし戸に落ちた", "fell through a trap door!"));
-            prepare_change_floor_mode(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-            player_ptr->leaving = true;
+            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
         }
         break;
     }
@@ -619,8 +629,41 @@ void hit_trap(player_type *player_ptr, bool break_trap)
         break;
     }
 
+    case TRAP_LAVA: {
+        msg_print(_("突然溶岩が溢れだした！", "Suddenly, the room is filled with lava!"));
+        fire_ball_hide(player_ptr, GF_LAVA_FLOW, 0, 1, 10);
+        break;
+    }
+
+    case TRAP_DUNG_POOL: {
+        msg_print(_("突然糞便が溢れだした！ああ＾～たまらねえぜ！", "Suddenly, the room is filled with dung! Ahh^- how marvelous!"));
+        fire_ball_hide(player_ptr, GF_DIRT, 0, 1, 10);
+        break;
+    }
+
+    case TRAP_FIRE_STORM: {
+        msg_print(_("火炎の嵐に包まれた！", "You ware filled with huge fire storm!"));
+        fire_ball(player_ptr, GF_FIRE, 0, 600, 4);
+        take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_fire_damage_rate(player_ptr) / 100, _("火炎嵐の罠", "a Hige Fire Trap"));
+
+        break;
+    }
+    case TRAP_ICE_STORM: {
+        msg_print(_("冷気の嵐に包まれた！", "You ware filled with huge ice storm!"));
+        fire_ball(player_ptr, GF_ICE, 0, 600, 4);
+        take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_cold_damage_rate(player_ptr) / 100, _("極寒嵐の罠", "a Hige Ice Trap"));
+        break;
+    }
+    case TRAP_CHAOS_STORM: {
+        msg_print(_("混沌の嵐に包まれた！", "You ware filled with huge chaos storm!"));
+        fire_ball(player_ptr, GF_CHAOS, 0, 600, 4);
+        take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(player_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
+        break;
+    }
     default:
         break;
+
+
     }
 
     if (break_trap && is_trap(player_ptr, g_ptr->feat)) {

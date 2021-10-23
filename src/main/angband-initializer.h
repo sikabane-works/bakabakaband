@@ -1,7 +1,7 @@
 ﻿#pragma once
 /*!
  * @file angband-initializer.h
- * @brief 変愚蛮怒のシステム初期化処理ヘッダファイル
+ * @brief 馬鹿馬鹿蛮怒のシステム初期化処理ヘッダファイル
  * @date 2015/01/02
  * @author
  * Copyright (c) 2000 Robert Ruehlmann
@@ -11,6 +11,6 @@
  * are included in all such copies.
  */
 
-struct player_type;
+class player_type;
 void init_angband(player_type *player_ptr, bool no_term);
 void init_file_paths(char *path, char *varpath);

@@ -1,7 +1,7 @@
 ﻿#pragma once
 /*!
  * @file angband.h
- * @brief Angband(変愚蛮怒)メインヘッダファイル
+ * @brief Angband(馬鹿馬鹿蛮怒)メインヘッダファイル
  * Main "Angband" header file
  * @date 2014/08/08
  * @author
@@ -43,10 +43,10 @@
 
 /*!
  *
- * @mainpage 変愚蛮怒仕様書
+ * @mainpage 馬鹿馬鹿蛮怒仕様書
  *
  * @par
- * 変愚蛮怒の仕様をangband.hをソースにDoxygenで読めるようまとめておきます。<br>
+ * 馬鹿馬鹿蛮怒の仕様をangband.hをソースにDoxygenで読めるようまとめておきます。<br>
  *
  * @par
  * - @ref page_basic "基本方針"

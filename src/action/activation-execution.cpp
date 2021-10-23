@@ -10,6 +10,8 @@
 #include "core/window-redrawer.h"
 #include "effect/spells-effect-util.h"
 #include "floor/geometry.h"
+#include "flavor/flavor-describer.h"
+#include "flavor/object-flavor-types.h"
 #include "game-option/disturbance-options.h"
 #include "game-option/input-options.h"
 #include "main/sound-definitions-table.h"
@@ -33,8 +35,11 @@
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
+#include "spell/spells-object.h"
+#include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "sv-definition/sv-junk-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -44,13 +49,20 @@
 #include "term/screen-processor.h"
 #include "util/quarks.h"
 #include "util/sort.h"
+#include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "inventory/inventory-slot-types.h"
 
+/*!
+ * @brief アイテムの発動難度の設定 
+ * @todo ランダムアーティファクトに破損率を指定する実装をそのうちするかも知れない。当分は0に。
+ */
 static void decide_activation_level(ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->is_fixed_artifact()) {
         ae_ptr->lev = a_info[ae_ptr->o_ptr->name1].level;
+        ae_ptr->broken = a_info[ae_ptr->o_ptr->name1].broken_rate;
         return;
     }
 
@@ -64,7 +76,10 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->name2)
+    {
         ae_ptr->lev = e_info[ae_ptr->o_ptr->name2].level;
+        ae_ptr->broken = e_info[ae_ptr->o_ptr->name2].broken_rate;
+    }
 }
 
 static void decide_chance_fail(player_type *player_ptr, ae_type *ae_ptr)
@@ -206,6 +221,63 @@ static bool activate_whistle(player_type *player_ptr, ae_type *ae_ptr)
     return true;
 }
 
+static bool activate_firethrowing(player_type *player_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
+        return false;
+
+    DIRECTION dir;
+    if (!get_aim_dir(player_ptr, &dir))
+        return false;
+
+    msg_print(_("汚物は消毒だあ！", "The filth must be disinfected!"));
+    fire_breath(player_ptr, GF_FIRE, dir, 20 + player_ptr->lev * 5, 2);
+    return true;
+}
+
+static bool activate_rosmarinus(player_type *player_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS)
+        return false;
+
+    DIRECTION dir;
+    if (!get_aim_dir(player_ptr, &dir))
+        return false;
+
+    fire_breath(player_ptr, GF_MISSILE, dir, 20 + player_ptr->lev * 5, 2);
+    return true;
+}
+
+static bool activate_stungun(player_type *player_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != ItemKindType::JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN)
+        return false;
+
+    DIRECTION dir;
+    project_length = 1;
+    if (!get_aim_dir(player_ptr, &dir))
+        return false;
+
+    msg_print(_("『バチィ』", "'bzzt'"));
+    fire_ball(player_ptr, GF_STUNGUN, dir, player_ptr->lev, 0);
+    project_length = 0;
+    return true;
+}
+
+static bool activate_raygun(player_type *player_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_RAYGUN)
+        return false;
+
+    DIRECTION dir;
+    if (!get_aim_dir(player_ptr, &dir))
+        return false;
+
+    msg_print(_("『ビィーム！』", "'ZAP! ZAP!'"));
+    fire_bolt(player_ptr, GF_MISSILE, dir, 10 + player_ptr->lev * 2);
+    return true;
+}
+
 /*!
  * @brief 装備を発動するコマンドのサブルーチン /
  * Activate a wielded object.  Wielded objects never stack.
@@ -221,9 +293,21 @@ static bool activate_whistle(player_type *player_ptr, ae_type *ae_ptr)
  */
 void exe_activate(player_type *player_ptr, INVENTORY_IDX item)
 {
-    PlayerEnergy(player_ptr).set_player_turn_energy(100);
+    bool activated = false;
+    if (item <= INVEN_PACK && k_info[player_ptr->inventory_list[item].k_idx].flags.has_not(TR_INVEN_ACTIVATE)) {
+        msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
+        return;
+    }
+
     ae_type tmp_ae;
     ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, item);
+
+    if (ae_ptr->o_ptr->name2 == EGO_SHATTERED || ae_ptr->o_ptr->name2 == EGO_BLASTED) {
+        msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
+        return;        
+    }
+
+    PlayerEnergy(player_ptr).set_player_turn_energy(100);
     decide_activation_level(ae_ptr);
     decide_chance_fail(player_ptr, ae_ptr);
     if (cmd_limit_time_walk(player_ptr))
@@ -238,14 +322,34 @@ void exe_activate(player_type *player_ptr, INVENTORY_IDX item)
     if (activation_index(ae_ptr->o_ptr) > RandomArtActType::NONE) {
         (void)activate_artifact(player_ptr, ae_ptr->o_ptr);
         player_ptr->window_flags |= PW_INVEN | PW_EQUIP;
-        return;
+        activated = true;
     }
 
-    if (activate_whistle(player_ptr, ae_ptr))
-        return;
+    if (activate_whistle(player_ptr, ae_ptr)) {
+        activated = true;
+    } else if (exe_monster_capture(player_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_firethrowing(player_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_rosmarinus(player_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_stungun(player_ptr, ae_ptr)) {
+        activated = true;
+    } else if (activate_raygun(player_ptr, ae_ptr)) {
+        activated = true;
+    }
 
-    if (exe_monster_capture(player_ptr, ae_ptr))
-        return;
+    if (!activated) {
+        msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
+        return;    
+    }
 
-    msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
+    if (randint1(100) <= ae_ptr->broken) {
+        char o_name[MAX_NLEN];
+        describe_flavor(player_ptr, o_name, ae_ptr->o_ptr, OD_OMIT_PREFIX);
+
+        msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name);
+        curse_weapon_object(player_ptr, true, ae_ptr->o_ptr);
+    }
+
 }

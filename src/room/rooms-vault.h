@@ -3,6 +3,7 @@
 #include "system/angband.h"
 #include <string>
 #include <vector>
+#include <map>
 
 typedef struct vault_type {
     int16_t idx;
@@ -14,12 +15,17 @@ typedef struct vault_type {
     PROB rat{}; /* Vault rating (unused) */
     POSITION hgt{}; /* Vault height */
     POSITION wid{}; /* Vault width */
+    std::map<char, FEAT_IDX> feature_list;
+
+    int min_depth = 0;
+    int max_depth = 999;
+    int rarity = 1;
 } vault_type;
 
 extern std::vector<vault_type> v_info;
 
 struct dun_data_type;
-struct player_type;
+class player_type;
 bool build_type7(player_type *player_ptr, dun_data_type *dd_ptr);
 bool build_type8(player_type *player_ptr, dun_data_type *dd_ptr);
 bool build_type10(player_type *player_ptr, dun_data_type *dd_ptr);

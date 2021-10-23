@@ -7,6 +7,7 @@
 #include "mspell/assign-monster-spell.h"
 #include "blue-magic/blue-magic-checker.h"
 #include "monster-race/race-ability-flags.h"
+#include "monster-race/race-flags8.h"
 #include "mspell/mspell-ball.h"
 #include "mspell/mspell-bolt.h"
 #include "mspell/mspell-breath.h"
@@ -21,11 +22,48 @@
 #include "mspell/mspell-util.h"
 #include "mspell/mspell.h"
 #include "spell/spell-types.h"
+#include "system/monster-type-definition.h"
+#include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
+#include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
+#include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
 static MonsterSpellResult monspell_to_player_impl(player_type *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
+    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+ 
+    // クイルスルグは自身を中心に召喚する
+    if(any_bits(r_ptr->flags8, RF8_QUYLTHLUG)) {
+        switch (ms_type) {
+
+        case RF_ABILITY::S_KIN:
+        case RF_ABILITY::S_CYBER:
+        case RF_ABILITY::S_MONSTER:
+        case RF_ABILITY::S_MONSTERS:
+        case RF_ABILITY::S_ANT:
+        case RF_ABILITY::S_SPIDER:
+        case RF_ABILITY::S_HOUND:
+        case RF_ABILITY::S_HYDRA:
+        case RF_ABILITY::S_ANGEL:
+        case RF_ABILITY::S_DEMON:
+        case RF_ABILITY::S_UNDEAD:
+        case RF_ABILITY::S_DRAGON:
+        case RF_ABILITY::S_HI_UNDEAD:
+        case RF_ABILITY::S_HI_DRAGON:
+        case RF_ABILITY::S_AMBERITES:
+        case RF_ABILITY::S_UNIQUE:
+            x = m_ptr->fx;
+            y = m_ptr->fy;
+            break;
+        default:
+            break;
+        }
+
+    }
+
     // clang-format off
     switch (ms_type) {
     case RF_ABILITY::SHRIEK: return spell_RF4_SHRIEK(m_idx, player_ptr, 0, MONSTER_TO_PLAYER); /* RF4_SHRIEK */
@@ -134,6 +172,37 @@ static MonsterSpellResult monspell_to_player_impl(player_type *player_ptr, RF_AB
 static MonsterSpellResult monspell_to_monster_impl(
     player_type *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)
 {
+
+    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+
+    // クイルスルグは自身を中心に召喚する
+    if (any_bits(r_ptr->flags8, RF8_QUYLTHLUG)) {
+        switch (ms_type) {
+
+        case RF_ABILITY::S_KIN:
+        case RF_ABILITY::S_CYBER:
+        case RF_ABILITY::S_MONSTER:
+        case RF_ABILITY::S_MONSTERS:
+        case RF_ABILITY::S_ANT:
+        case RF_ABILITY::S_SPIDER:
+        case RF_ABILITY::S_HOUND:
+        case RF_ABILITY::S_HYDRA:
+        case RF_ABILITY::S_ANGEL:
+        case RF_ABILITY::S_DEMON:
+        case RF_ABILITY::S_UNDEAD:
+        case RF_ABILITY::S_DRAGON:
+        case RF_ABILITY::S_HI_UNDEAD:
+        case RF_ABILITY::S_HI_DRAGON:
+        case RF_ABILITY::S_AMBERITES:
+        case RF_ABILITY::S_UNIQUE:
+            x = m_ptr->fx;
+            y = m_ptr->fy;
+            break;
+        default:
+            break;
+        }
+    }
     // clang-format off
     switch (ms_type) {
     case RF_ABILITY::SHRIEK: return spell_RF4_SHRIEK(m_idx, player_ptr, t_idx, MONSTER_TO_MONSTER); /* RF4_SHRIEK */

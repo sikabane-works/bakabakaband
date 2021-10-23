@@ -28,6 +28,7 @@ typedef struct monster_type {
 
 	POSITION fy{};		/*!< 所在グリッドY座標 / Y location on map */
 	POSITION fx{};		/*!< 所在グリッドX座標 / X location on map */
+	#define MON_MAX_HP 30000 //!< モンスターの最大HP
 	HIT_POINT hp{};		/*!< 現在のHP / Current Hit points */
 	HIT_POINT maxhp{};		/*!< 現在の最大HP(衰弱効果などにより低下したものの反映) / Max Hit points */
 	HIT_POINT max_maxhp{};		/*!< 生成時の初期最大HP / Max Max Hit points */

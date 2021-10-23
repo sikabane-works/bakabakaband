@@ -66,8 +66,14 @@ static bool deal_damege_by_feat(player_type *player_ptr, grid_type *g_ptr, concp
 {
     feature_type *f_ptr = &f_info[g_ptr->feat];
     int damage = 0;
+    bool resist_levitation = (player_ptr->levitation && !f_ptr->flags.has(FF::CHAOS_TAINTED) && !f_ptr->flags.has(FF::VOID));
 
-    if (f_ptr->flags.has(FF::DEEP)) {
+
+    if (f_ptr->flags.has(FF::CHAOS_TAINTED) || f_ptr->flags.has(FF::PLASMA)) {
+        damage = 12000 + randint0(8000);
+    } else if (f_ptr->flags.has(FF::VOID)) {
+        damage = 18000 + randint0(12000);
+    } else if (f_ptr->flags.has(FF::DEEP)) {
         damage = 6000 + randint0(4000);
     } else if (!player_ptr->levitation) {
         damage = 3000 + randint0(2000);
@@ -75,7 +81,8 @@ static bool deal_damege_by_feat(player_type *player_ptr, grid_type *g_ptr, concp
 
     damage *= damage_rate(player_ptr);
     damage /= 100;
-    if (player_ptr->levitation)
+
+    if (resist_levitation)
         damage /= 5;
 
     damage = damage / 100 + (randint0(100) < (damage % 100));
@@ -83,7 +90,7 @@ static bool deal_damege_by_feat(player_type *player_ptr, grid_type *g_ptr, concp
     if (damage == 0)
         return false;
 
-    if (player_ptr->levitation) {
+    if (resist_levitation) {
         msg_print(msg_levitation);
 
         take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"), f_info[g_ptr->get_feat_mimic()].name.c_str()));
@@ -113,10 +120,13 @@ void process_player_hp_mp(player_type *player_ptr)
     bool cave_no_regen = false;
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
+
+    if (f_ptr->flags.has(FF::RUNE_HEALING)) {
+        hp_player(player_ptr, 2 + player_ptr->lev / 6);
+    }
+
     if (player_ptr->poisoned && !is_invuln(player_ptr)) {
-        if (take_hit(player_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison")) > 0) {
-            sound(SOUND_DAMAGE_OVER_TIME);
-        }
+        take_hit(player_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"));
     }
     
     auto player_cut = player_ptr->effects()->cut();
@@ -199,13 +209,37 @@ void process_player_hp_mp(player_type *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has_all_of({ FF::WATER, FF::DEEP }) && !player_ptr->levitation && !player_ptr->can_swim && !has_resist_water(player_ptr)) {
+    if (f_ptr->flags.has(FF::DUNG_POOL) && !is_invuln(player_ptr)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
+            calc_acid_damage_rate, [](player_type *player_ptr, int damage) {
+                if (!has_resist_pois(player_ptr))
+                    (void)BadStatusSetter(player_ptr).mod_poison(damage);
+            });
+    }
+
+    if (f_ptr->flags.has_all_of({FF::WATER, FF::DEEP}) && !player_ptr->levitation && !player_ptr->can_swim
+        && !has_resist_water(player_ptr)) {
         if (calc_inventory_weight(player_ptr) > calc_weight_limit(player_ptr)) {
             msg_print(_("溺れている！", "You are drowning!"));
             take_hit(player_ptr, DAMAGE_NOESCAPE, randint1(player_ptr->lev), _("溺れ", "drowning"));
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
+    }
+
+    if (f_ptr->flags.has(FF::PLASMA)) {
+        cave_no_regen
+            = deal_damege_by_feat(player_ptr, g_ptr, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);
+    }
+
+    if (f_ptr->flags.has(FF::CHAOS_TAINTED)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に汚染された!", "taints you!"),
+            _("に汚染された!", "taints you"), calc_chaos_damage_rate_rand, NULL);
+    }
+
+    if (f_ptr->flags.has(FF::VOID)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
+            _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
 
     if (player_ptr->riding) {

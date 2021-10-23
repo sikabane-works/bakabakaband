@@ -26,6 +26,7 @@
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "player/player-status-flags.h"
 
 /*!
  * @brief モンスターをペットにする
@@ -379,6 +380,11 @@ bool set_monster_timewalk(player_type *player_ptr, int num, MONRACE_IDX who, boo
 
         msg_format(mes, m_name);
         msg_print(nullptr);
+    }
+
+    if (has_resist_time(player_ptr)) {
+        msg_print(_("しかし、あなたは時を止める力を打ち消した！", "But, you have countered power of time stop!"));
+        return false;
     }
 
     w_ptr->timewalk_m_idx = hack_m_idx;

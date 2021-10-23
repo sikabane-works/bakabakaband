@@ -280,6 +280,14 @@ errr parse_d_info(std::string_view buf, angband_header *)
             if (!grab_one_spell_monster_flag(d_ptr, f))
                 return PARSE_ERROR_INVALID_FLAG;
         }
+    } else if (tokens[0] == "R") {
+        int r_type, r_rate;
+        if (tokens.size() < 2)
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        info_set_value(r_type, tokens[1]);
+        info_set_value(r_rate, tokens[2]);
+        d_ptr->unique_room_rate = true;
+        d_ptr->room_rate[r_type] = r_rate;
     }
     else
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;

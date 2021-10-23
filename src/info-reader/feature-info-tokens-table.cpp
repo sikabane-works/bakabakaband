@@ -32,6 +32,8 @@ const std::unordered_map<std::string_view, FF> f_info_flags = {
     { "FLOOR", FF::FLOOR },
     { "WALL", FF::WALL },
     { "PERMANENT", FF::PERMANENT },
+    { "CHAOS_TAINTED", FF::CHAOS_TAINTED },
+    { "VOID", FF::VOID },
     // { "XXX00", FF::XXX00 },
     // { "XXX01", FF::XXX01 },
     // { "XXX02", FF::XXX02 },
@@ -120,4 +122,9 @@ const std::unordered_map<std::string_view, FF> f_info_flags = {
     { "TELEPORTABLE", FF::TELEPORTABLE },
     { "CONVERT", FF::CONVERT },
     { "GLASS", FF::GLASS },
+    { "DUNG_POOL", FF::DUNG_POOL },
+    { "PLASMA", FF::PLASMA },
+    { "RUNE_HEALING", FF::RUNE_HEALING },
+    { "SLOW", FF::SLOW },
+
 };

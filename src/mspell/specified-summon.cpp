@@ -144,7 +144,7 @@ MONSTER_NUMBER summon_MOAI(player_type *player_ptr, POSITION y, POSITION x, int 
 MONSTER_NUMBER summon_DEMON_SLAYER(player_type *player_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     monster_race *r_ptr = &r_info[MON_DEMON_SLAYER_MEMBER];
-    if (r_ptr->max_num == 0) {
+    if (r_ptr->mob_num == 0) {
         msg_print(_("しかし、隊士は全滅していた…。", "However, all demon slayer members were murdered..."));
         return 0;
     }
@@ -291,7 +291,7 @@ MONSTER_NUMBER summon_THUNDERS(player_type *player_ptr, POSITION y, POSITION x, 
 MONSTER_NUMBER summon_YENDER_WIZARD(player_type *player_ptr, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     auto *r_ptr = &r_info[MON_YENDOR_WIZARD_2];
-    if (r_ptr->max_num == 0) {
+    if (r_ptr->mob_num == 0) {
         msg_print(_("しかし、誰も来なかった…。", "However, no kin was appeared..."));
         return 0;
     }

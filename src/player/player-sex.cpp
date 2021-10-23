@@ -32,6 +32,23 @@ const player_sex_type sex_info[MAX_SEXES] =
 #endif
 		"Male",
 		"King"
+	},
+	{
+#ifdef JP
+		"両性",
+		"ロード",
+#endif
+		"Bisexual",
+		"Lord"
+	},
+	{
+#ifdef JP
+		"無性",
+		"ロード",
+#endif
+		"Asexual",
+		"Lord"
 	}
+
 };
 

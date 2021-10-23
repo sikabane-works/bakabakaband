@@ -46,7 +46,9 @@
 #include "spell-kind/spells-sight.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-kind/spells-world.h"
+#include "spell-kind/earthquake.h"
 #include "spell-realm/spells-hex.h"
+#include "spell-realm/spells-chaos.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spell-types.h"
 #include "spell/spells-object.h"
@@ -97,6 +99,11 @@ void ObjectReadEntity::execute(bool known)
     if (spell_hex.is_spelling_any() && ((this->player_ptr->lev < 35) || spell_hex.is_casting_full_capacity())) {
         (void)SpellHex(this->player_ptr).stop_all_spells();
     }
+
+    if (player_ptr->incident.count(INCIDENT::READ_SCROLL) == 0) {
+        player_ptr->incident[INCIDENT::READ_SCROLL] = 0;
+    }
+    player_ptr->incident[INCIDENT::READ_SCROLL]++;
 
     auto ident = false;
     auto lev = k_info[o_ptr->k_idx].level;
@@ -471,6 +478,35 @@ void ObjectReadEntity::execute(bool known)
             amusement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, randint1(2) + 1, false);
             break;
         }
+        case SV_SCROLL_HUGE_EARTHQUAKE: {
+            ident = true;
+            earthquake(player_ptr, player_ptr->y, player_ptr->x, randint1(20) + 50, 0);
+            break;
+
+        case SV_SCROLL_CALL_THE_VOID: {
+            ident = true;
+            call_the_void(player_ptr);
+            break;
+        }
+        case SV_SCROLL_THUNDER: {
+            fire_ball(player_ptr, GF_ELEC, 0, 888, 4);
+            if (!(is_oppose_elec(player_ptr) || has_resist_elec(player_ptr) || has_immune_elec(player_ptr)))
+                take_hit(player_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("雷の巻物", "a Scroll of Thunder"));
+            ident = true;
+            break;
+        }
+        case SV_SCROLL_POWERFUL_EYE_SENIOR: {
+            for (int k = 0; k < 20; k++) {
+                summon_specific(player_ptr, -1, player_ptr->y, player_ptr->x, 50, SUMMON_POWERFUL_EYE_SENIOR, 0);
+            }
+            ident = true;
+            break;
+        }
+        case SV_SCROLL_TREE_CREATION: {
+            tree_creation(player_ptr, player_ptr->y, player_ptr->x);
+            break;
+        }
+        }
         }
     } else if (o_ptr->name1 == ART_GHB) {
         msg_print(_("私は苦労して『グレーター・ヘル=ビースト』を倒した。", "I had a very hard time to kill the Greater hell-beast, "));
@@ -485,7 +521,7 @@ void ObjectReadEntity::execute(bool known)
         msg_print(nullptr);
         msg_print(_("暗闇の中に繋ぎとめる。」", "and in the darkness bind them.'"));
         used_up = false;
-    } else if (o_ptr->tval == ItemKindType::PARCHMENT) {
+    } else if (o_ptr->tval == ItemKindType::READING_MATTER) {
         GAME_TEXT o_name[MAX_NLEN];
         char buf[1024];
         screen_save();

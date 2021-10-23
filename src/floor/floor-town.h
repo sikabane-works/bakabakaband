@@ -4,7 +4,7 @@
 
 #include <vector>
 
-struct store_type;
+class store_type;
 
 /*
  * A structure describing a town with

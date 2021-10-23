@@ -166,6 +166,11 @@ void store_sell(player_type *player_ptr)
             if (record_sell)
                 exe_write_diary(player_ptr, DIARY_SELL, 0, o_name);
 
+            if (player_ptr->incident.count(INCIDENT::STORE_SELL) == 0) {
+                player_ptr->incident[INCIDENT::STORE_SELL] = 0;
+            }
+            player_ptr->incident[INCIDENT::STORE_SELL]++;
+
             if (!((o_ptr->tval == ItemKindType::FIGURINE) && (value > 0)))
                 purchase_analyze(player_ptr, price, value, dummy);
 

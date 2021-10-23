@@ -28,7 +28,7 @@ void rd_options(void)
 
     byte b;
 
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(12)) {
         rd_byte(&b);
         delay_factor = b * b * b;
     } else {

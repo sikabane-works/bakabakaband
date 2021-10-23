@@ -113,6 +113,8 @@ void lore_treasure(player_type *player_ptr, MONSTER_IDX m_idx, ITEM_NUMBER num_i
         r_ptr->r_flags1 |= (RF1_DROP_GOOD);
     if (r_ptr->flags1 & (RF1_DROP_GREAT))
         r_ptr->r_flags1 |= (RF1_DROP_GREAT);
+    if (r_ptr->flags1 & (RF1_DROP_NASTY))
+        r_ptr->r_flags1 |= (RF1_DROP_NASTY);
     if (player_ptr->monster_race_idx == m_ptr->r_idx)
         player_ptr->window_flags |= (PW_MONSTER);
 }

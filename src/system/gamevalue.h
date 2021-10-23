@@ -6,18 +6,9 @@
 * during the creation of an object (see "get_obj_num()" in "object.c").
 * Lower values yield better objects more often.
 */
-#define GREAT_OBJ       10
+#define GREAT_OBJ       8
 
-/*!
-* @brief 深層モンスターが生成される(NASTY生成)の基本確率(1/x)
-* @details
-* There is a 1/25 (4%) chance of inflating the requested monster_level
-* during the creation of a monsters (see "get_mon_num()" in "monster.c").
-* Lower values yield harder monsters more often.
-*/
-#define NASTY_MON_BASE     25
-#define NASTY_MON_MAX      3	/*!< 深層モンスターが1フロアに生成される最大数  */
-#define NASTY_MON_PLUS_MAX 25	/*!< 深層モンスターの階層加算最大量 */
+#define NASTY_GENERATE_RATE 10 /*!< クッソ汚いものが生成される倍率  */
 
 #define PENETRATE_INVULNERABILITY 13 /*!< 無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable! */
 
@@ -36,8 +27,11 @@
 
 #define AAF_LIMIT       100     /*!< モンスターの限界感知範囲(マス) Limit of sensing radius */
 
-#define MIN_M_ALLOC_TD          4 /*!< 街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day */
-#define MIN_M_ALLOC_TN          8 /*!< 街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night */
+#define MIN_M_ALLOC_TD         15 /*!< 街(昼間)の最低住人配置数 / The town starts out with 4 residents during the day */
+#define MIN_M_ALLOC_TN         30 /*!< 街(夜間)の最低住人配置数 / The town starts out with 8 residents during the night */
+#define AMBUSH_ENEMY_NUM 100 /*!< 襲撃時の敵生成数 */
+
+#define DUNGEON_MONSTER_MULTIPLE 5 /*!< ランダムフロアのモンスター生成倍率 */
 
 #define MAX_SKILLS 10
 
@@ -52,6 +46,8 @@
 #define MAX_REPRO       100
 
 #define MAX_VAMPIRIC_DRAIN 50 /*!< 吸血処理の最大回復HP */
+
+#define DUNGEON_ITEM_FLOOR_DROP_RATE 5 /*!< 床に落ちているアイテム数倍率 */
 
 /*
 * Dungeon generation values

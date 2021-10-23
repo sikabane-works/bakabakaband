@@ -9,6 +9,7 @@
 #include "object/object-mark-types.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
+#include "object/object-flags.h"
 #include "player-info/equipment-info.h"
 #include "spell-realm/spells-craft.h"
 #include "system/object-type-definition.h"
@@ -16,6 +17,9 @@
 #include "util/object-sort.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
+#include "object-enchant/tr-types.h"
+#include "system/object-type-definition.h"
+#include "util/bit-flags-calculator.h"
 
 void vary_item(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
 {
@@ -340,6 +344,16 @@ int16_t store_item_to_inventory(player_type *player_ptr, object_type *o_ptr)
 
     return i;
 }
+
+
+/*!
+ * @brief アイテムが拾えるものかどうか返す。 
+ */
+bool check_get_item(object_type *o_ptr) {
+    auto flgs = object_flags(o_ptr);
+    return !flgs.has(TR_NEVER_MOVE);
+}
+
 
 /*!
  * @brief アイテムを拾う際にザックから溢れずに済むかを判定する /

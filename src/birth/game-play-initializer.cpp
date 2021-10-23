@@ -85,11 +85,12 @@ void player_wipe_without_name(player_type *player_ptr)
             continue;
         }
         r_ref.cur_num = 0;
-        r_ref.max_num = 100;
-        if (r_ref.flags1 & RF1_UNIQUE)
-            r_ref.max_num = 1;
-        else if (r_ref.flags7 & RF7_NAZGUL)
-            r_ref.max_num = MAX_NAZGUL_NUM;
+        if (r_ref.flags1 & RF1_UNIQUE) {
+            r_ref.mob_num = r_ref.max_num = 1;        
+        }
+        else if (r_ref.flags7 & RF7_NAZGUL) {
+            r_ref.mob_num = r_ref.max_num = MAX_NAZGUL_NUM;
+        }
 
         r_ref.r_pkills = 0;
         r_ref.r_akills = 0;
@@ -189,13 +190,9 @@ void init_dungeon_quests(player_type *player_ptr)
     }
 
     init_flags = INIT_ASSIGN;
-    floor_ptr->inside_quest = QUEST_OBERON;
+    floor_ptr->inside_quest = QUEST_MELKO;
     parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
-    quest[QUEST_OBERON].status = QuestStatusType::TAKEN;
-
-    floor_ptr->inside_quest = QUEST_SERPENT;
-    parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
-    quest[QUEST_SERPENT].status = QuestStatusType::TAKEN;
+    quest[QUEST_MELKO].status = QuestStatusType::TAKEN;
     floor_ptr->inside_quest = 0;
 }
 

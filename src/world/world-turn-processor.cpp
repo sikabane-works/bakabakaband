@@ -89,12 +89,14 @@ void WorldTurnProcessor::process_world()
     reduce_magic_effects_timeout(this->player_ptr);
     reduce_lite_life(this->player_ptr);
     process_world_aux_mutation(this->player_ptr);
+    process_world_aux_sudden_attack(this->player_ptr);
     execute_cursed_items_effect(this->player_ptr);
     recharge_magic_items(this->player_ptr);
     sense_inventory1(this->player_ptr);
     sense_inventory2(this->player_ptr);
     execute_recall(this->player_ptr);
     execute_floor_reset(this->player_ptr);
+    w_ptr->collapse_degree += calc_world_collapse_plus(w_ptr);
 }
 
 /*!
@@ -114,6 +116,17 @@ void WorldTurnProcessor::print_time()
     c_put_str(TERM_WHITE, format("%2d:%02d", this->hour, this->min), ROW_DAY, COL_DAY + 7);
 }
 
+/*!
+ * @brief 時空崩壊度を表示する /
+ */
+void WorldTurnProcessor::print_world_collapse()
+{
+    c_put_str(TERM_WHITE, "             ", ROW_COLLAPSE, COL_COLLAPSE);
+    c_put_str(TERM_WHITE,
+        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), w_ptr->collapse_degree / 1000000, (w_ptr->collapse_degree / 10000) % 100), ROW_COLLAPSE,
+        COL_COLLAPSE);
+}
+
 void WorldTurnProcessor::process_downward()
 {
     /* 帰還無しモード時のレベルテレポバグ対策 / Fix for level teleport bugs on ironman_downward.*/
@@ -124,10 +137,9 @@ void WorldTurnProcessor::process_downward()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     floor_ptr->dun_level = 0;
     this->player_ptr->dungeon_idx = 0;
-    prepare_change_floor_mode(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
+    move_floor(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
     floor_ptr->inside_arena = false;
     this->player_ptr->wild_mode = false;
-    this->player_ptr->leaving = true;
 }
 
 void WorldTurnProcessor::process_monster_arena()

@@ -7,8 +7,8 @@
 
 #include "system/angband.h"
 
-struct object_type;;
-struct player_type;
+struct object_type;
+class player_type;
 int weapon_exp_level(int weapon_exp);
 int riding_exp_level(int riding_exp);
 int spell_exp_level(int spell_exp);

@@ -19,6 +19,7 @@
 #include "player/attack-defense-types.h"
 #include "player/player-skill.h"
 #include "spell-realm/spells-song.h"
+#include "system/angband-version.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "timed-effect/player-cut.h"
@@ -89,6 +90,7 @@ void rd_base_info(player_type *player_ptr)
     player_ptr->hitdie = (DICE_SID)tmp8u;
     rd_u16b(&player_ptr->expfact);
 
+    rd_s32b(&player_ptr->death_count);
     rd_s16b(&player_ptr->age);
     rd_s16b(&player_ptr->ht);
     rd_s16b(&player_ptr->wt);
@@ -205,7 +207,7 @@ static void set_imitation(player_type *player_ptr)
         return;
     }
 
-    if (loading_savefile_version_is_older_than(9)) {
+    if (loading_savefile_version_is_older_than(11)) {
         auto mane_data = PlayerClass(player_ptr).get_specific_data<mane_data_type>();
         if (!mane_data) {
             // ものまね師でない場合に読み捨てるためのダミーデータ領域
@@ -414,6 +416,10 @@ static void set_mutations(player_type *player_ptr)
         }
     } else {
         rd_FlagGroup(player_ptr->muta, rd_byte);
+
+        if (!loading_savefile_version_is_older_than(7)) {
+            rd_FlagGroup(player_ptr->trait, rd_byte);
+        }
     }
 }
 
@@ -455,8 +461,8 @@ static void rd_player_status(player_type *player_ptr)
     rd_s16b(&player_ptr->max_plv);
     rd_dungeons(player_ptr);
     strip_bytes(8);
-    rd_s16b(&player_ptr->sc);
-    if (loading_savefile_version_is_older_than(9)) {
+    rd_s16b(&player_ptr->prestige);
+    if (loading_savefile_version_is_older_than(11)) {
         auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
         if (sniper_data) {
             rd_s16b(&sniper_data->concent);
@@ -486,6 +492,17 @@ static void rd_player_status(player_type *player_ptr)
     rd_tsuyoshi(player_ptr);
     rd_timed_effects(player_ptr);
     player_ptr->mutant_regenerate_mod = calc_mutant_regenerate_mod(player_ptr);
+
+    if (!loading_savefile_version_is_older_than(6)) {
+        int32_t num;
+        rd_s32b(&num);
+        for (int32_t i = 0; i < num * 2; i += 2) {
+            int32_t id, count;
+            rd_s32b(&id);
+            rd_s32b(&count);
+            player_ptr->incident[(INCIDENT)id] = count; 
+        }
+    }
 }
 
 void rd_player_info(player_type *player_ptr)

@@ -22,18 +22,22 @@
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-info.h"
 #include "object-enchant/apply-magic.h"
 #include "object-enchant/item-apply-magic.h"
+#include "object-hook/hook-enchant.h"
 #include "object/object-kind-hook.h"
 #include "spell/spell-types.h"
 #include "spell/summon-types.h"
+#include "sv-definition/sv-potion-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
+#include "sv-definition/sv-food-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -96,6 +100,80 @@ static void on_dead_pink_horror(player_type *player_ptr, monster_death_type *md_
     }
 }
 
+static void on_dead_drop_item(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    for (auto kind : md_ptr->r_ptr->drop_kinds) {
+        object_type forge;
+        object_type *q_ptr = &forge;
+        int num = std::get<0>(kind);
+        int deno = std::get<1>(kind);
+        if (randint1(deno) > num) {
+            continue;
+        }
+        int kind_idx = std::get<2>(kind);
+        int grade = std::get<3>(kind);
+        int dn = std::get<4>(kind);
+        int ds = std::get<5>(kind);
+        int drop_nums = damroll(dn, ds);
+
+        for (int i = 0; i < drop_nums; i++)
+        {
+            q_ptr->prep(kind_idx);
+            switch (grade) {
+            /* Apply bad magic, but first clear object */
+            case -2:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_GREAT | AM_CURSED);
+                break;
+            /* Apply bad magic, but first clear object */
+            case -1:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_CURSED);
+                break;
+            /* Apply normal magic, but first clear object */
+            case 0:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART);
+                break;
+            /* Apply good magic, but first clear object */
+            case 1:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD);
+                break;
+            /* Apply great magic, but first clear object */
+            case 2:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_GREAT);
+                break;
+            /* Apply special magic, but first clear object */
+            case 3:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_GOOD | AM_GREAT | AM_SPECIAL);
+                if (!q_ptr->is_fixed_artifact()) {
+                    become_random_artifact(player_ptr, q_ptr, false);
+                }
+                break;
+            default:
+                break;
+            }
+            (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+        }
+    }
+}
+
+static void on_dead_bottle_gnome(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(lookup_kind(ItemKindType::POTION, SV_POTION_CURE_CRITICAL));
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
+static void on_dead_doneld(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    for (int i = 0; i < 10; i++) {
+        q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_HAMBURGER));
+        q_ptr->number = damroll(10, 10);
+        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+    }
+}
+
 static void on_dead_bloodletter(player_type *player_ptr, monster_death_type *md_ptr)
 {
     if (!md_ptr->drop_chosen_item || (randint1(100) >= 15))
@@ -104,6 +182,24 @@ static void on_dead_bloodletter(player_type *player_ptr, monster_death_type *md_
     object_type forge;
     object_type *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::SWORD, SV_BLADE_OF_CHAOS));
+    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
+static void on_dead_inariman1_2(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI2));
+    apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
+    (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+}
+
+static void on_dead_inariman3(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI3));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -134,6 +230,24 @@ static void on_dead_raal(player_type *player_ptr, monster_death_type *md_ptr)
 static void on_dead_dawn(player_type *player_ptr, monster_death_type *md_ptr)
 {
     summon_self(player_ptr, md_ptr, SUMMON_DAWN, 7, 20, _("新たな戦士が現れた！", "A new warrior steps forth!"));
+}
+
+static void on_dead_ninja(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    if (is_seen(player_ptr, md_ptr->m_ptr)) {
+        GAME_TEXT m_name[MAX_NLEN];
+        msg_print(_("「サヨナラ！」", "Sayonara!"));
+        monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
+        msg_format(_("%sは哀れ爆発四散した！ショッギョ・ムッジョ！", "%s explodes pitifully! Shogyomujo!"), m_name);
+    }
+
+    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, GF_MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+}
+
+static void on_dead_earth_destroyer(player_type *player_ptr, monster_death_type *md_ptr)
+{
+    msg_print(_("ワーオ！22世紀の文明の叡知が今炸裂した！", "Wow! The wisdom of 22nd century civilization has now exploded!"));
+    (void)project(player_ptr, md_ptr->m_idx, 10, md_ptr->md_y, md_ptr->md_x, 10000, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_unmaker(player_type *player_ptr, monster_death_type *md_ptr)
@@ -534,7 +648,23 @@ static void on_dead_mimics(player_type *player_ptr, monster_death_type *md_ptr)
 
 void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
 {
+    if (r_info[md_ptr->m_ptr->r_idx].flags8 & RF8_NINJA)
+    {
+        on_dead_ninja(player_ptr, md_ptr);
+        return;
+    }
+    on_dead_drop_item(player_ptr, md_ptr);
+
     switch (md_ptr->m_ptr->r_idx) {
+    case MON_EARTH_DESTROYER:
+        on_dead_earth_destroyer(player_ptr, md_ptr);
+        break;
+    case MON_BOTTLE_GNOME:
+        on_dead_bottle_gnome(player_ptr, md_ptr);
+        return;
+    case MON_DONELD:
+        on_dead_doneld(player_ptr, md_ptr);
+        return;
     case MON_PINK_HORROR:
         on_dead_pink_horror(player_ptr, md_ptr);
         return;
@@ -606,6 +736,13 @@ void switch_special_death(player_type *player_ptr, monster_death_type *md_ptr)
         return;
     case MON_LOSTRINGIL:
         on_dead_random_artifact(player_ptr, md_ptr, kind_is_sword);
+        return;
+    case MON_INARIMAN_1:
+    case MON_INARIMAN_2:
+        on_dead_inariman1_2(player_ptr, md_ptr);
+        return;
+    case MON_INARIMAN_3:
+        on_dead_inariman3(player_ptr, md_ptr);
         return;
     case MON_CHEST_MIMIC_03:
     case MON_CHEST_MIMIC_04:

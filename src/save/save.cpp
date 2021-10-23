@@ -41,6 +41,7 @@
 #include "util/angband-files.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <ctime>
 
 /*!
  * @brief セーブデータの書き込み /
@@ -164,6 +165,7 @@ static bool wr_savefile_new(player_type *player_ptr, save_type type)
     }
 
     wr_u32b(w_ptr->sf_play_time);
+    wr_s32b(w_ptr->collapse_degree);
     wr_FlagGroup(w_ptr->sf_winner, wr_byte);
     wr_FlagGroup(w_ptr->sf_retired, wr_byte);
 

@@ -301,6 +301,8 @@ static void generate_area(player_type *player_ptr, POSITION y, POSITION x, bool 
             init_flags = INIT_CREATE_DUNGEON;
 
         parse_fixed_map(player_ptr, "t_info.txt", 0, 0, MAX_HGT, MAX_WID);
+        floor_ptr->width = MAX_WID;
+        floor_ptr->height = MAX_HGT;
         if (!corner && !border)
             player_ptr->visit |= (1UL << (player_ptr->town_num - 1));
     } else {
@@ -525,7 +527,7 @@ void wilderness_gen(player_type *player_ptr)
     }
 
     player_place(player_ptr, player_ptr->oldpy, player_ptr->oldpx);
-    int lim = generate_encounter ? 40 : MIN_M_ALLOC_TN;
+    int lim = (generate_encounter == true) ? AMBUSH_ENEMY_NUM : MIN_M_ALLOC_TN;
     for (int i = 0; i < lim; i++) {
         BIT_FLAGS mode = 0;
         if (!(generate_encounter || (one_in_(2) && (!player_ptr->town_num))))

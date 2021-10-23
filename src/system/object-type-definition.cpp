@@ -467,7 +467,7 @@ bool object_type::is_potion() const
  */
 bool object_type::is_readable() const
 {
-    return (this->tval == ItemKindType::SCROLL) || (this->tval == ItemKindType::PARCHMENT) || (this->name1 == ART_GHB) || (this->name1 == ART_POWER);
+    return (this->tval == ItemKindType::SCROLL) || (this->tval == ItemKindType::READING_MATTER) || (this->name1 == ART_GHB) || (this->name1 == ART_POWER);
 }
 
 /*!

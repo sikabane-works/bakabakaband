@@ -49,7 +49,11 @@ int rod_effect(player_type *player_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION dir
     POSITION detect_rad = powerful ? DETECT_RAD_DEFAULT * 3 / 2 : DETECT_RAD_DEFAULT;
     POSITION rad = powerful ? 3 : 2;
 
-    /* Analyze the rod */
+    if (player_ptr->incident.count(INCIDENT::ZAP_ROD) == 0) {
+        player_ptr->incident[INCIDENT::ZAP_ROD] = 0;
+    }
+    player_ptr->incident[INCIDENT::ZAP_ROD]++;
+
     switch (sval) {
     case SV_ROD_DETECT_TRAP: {
         if (detect_traps(player_ptr, detect_rad, dir == 0))
