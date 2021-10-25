@@ -148,7 +148,7 @@ PERCENTAGE calc_fire_damage_rate(player_type *player_ptr)
  */
 PERCENTAGE calc_plasma_damage_rate(player_type *player_ptr)
 {
-    return MIN(calc_fire_damage_rate(player_ptr), calc_elec_damage_rate(player_ptr));
+    return std::min(calc_fire_damage_rate(player_ptr), calc_elec_damage_rate(player_ptr));
 }
 
 /*!

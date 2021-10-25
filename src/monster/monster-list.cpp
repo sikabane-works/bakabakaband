@@ -330,8 +330,8 @@ void choose_new_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool born, M
     }
 
     if (ironman_nightmare) {
-        uint32_t hp = m_ptr->max_maxhp * 2L;
-        m_ptr->max_maxhp = (HIT_POINT)MIN(MON_MAX_HP, hp);
+        auto hp = m_ptr->max_maxhp * 2;
+        m_ptr->max_maxhp = std::min(MON_MAX_HP, hp);
     }
 
     m_ptr->maxhp = (long)(m_ptr->maxhp * m_ptr->max_maxhp) / oldmaxhp;
