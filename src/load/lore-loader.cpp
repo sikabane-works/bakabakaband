@@ -66,11 +66,10 @@ void rd_lore(monster_race *r_ptr, MONRACE_IDX r_idx)
         rd_FlagGroup(r_ptr->r_ability_flags, rd_byte);
     }
 
+    auto tmp8u = rd_byte();
     if (!loading_savefile_version_is_older_than(13)) {
-        auto tmp8u = rd_byte();
         r_ptr->mob_num = (MONSTER_NUMBER)tmp8u;
     }
-    r_ptr->max_num = rd_byte();
 
     r_ptr->floor_id = rd_s16b();
 
