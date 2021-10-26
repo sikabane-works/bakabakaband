@@ -29898,6 +29898,25 @@ D:アイゼンガルド改めアンガルタに産業革命を起こしたその
 D:火薬と蒸気の力を振るう重装備を身にまとった巨躯の半オークたちは、
 D:上古エルフの精鋭とも渡り合える兵卒となった。
 
+N:1583:『ジュラルモンス』
+E:Juralmons
+G:g:W
+I:110:20d12:12:80:10
+W:22:2:0:490:0:0
+B:HIT:HURT:2d12
+B:HIT:HURT:2d12
+B:HIT:HURT:2d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS | 
+F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR | NONLIVING
+F:DROP_1D2 | ONLY_ITEM | DROP_GOOD | CAN_SWIM
+S:1_IN_3 | 
+S:MISSILE
+D:ジュラル星人の500年先の科学力が生み出した巨大な機械怪獣だ。
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
