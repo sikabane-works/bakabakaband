@@ -29915,7 +29915,34 @@ S:1_IN_3 |
 S:MISSILE
 D:ジュラル星人の500年先の科学力が生み出した巨大な機械怪獣だ。
 
+N:1584:機動兵器ダインスレイヴ
+E:Mobile weapon Dainsleif
+G:}:y
+I:115:50d20:25:100:10
+W:64:3:0:8000:0:0
+B:SHOOT:HURT:22d12
+B:HIT:HURT:2d10
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS | FRIENDS | JOKE
+F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR | NONLIVING
+F:DROP_2D2 | ONLY_ITEM | DROP_GOOD | CAN_SWIM
+S:1_IN_3 |
+S:SHOOT
+D:これらがあれば人型機動兵器は全く意味をなさない。
 
+N:1585:鉄血のヒットマン
+E:Iron-blooded hitman
+G:p:s
+I:110:5d10:25:40:10
+W:15:3:0:150:0:0
+B:SHOOT:HURT:5d10
+B:HIT:HURT:2d10
+F:BASH_DOOR | OPEN_DOOR | FRIENDS | DROP_90 |
+F:NO_CONF | JOKE
+F:MALE | DROP_CORPSE | DROP_SKELETON
+S:1_IN_3 |
+S:SHOOT
+D:知性と論理が崩壊した哀れな未来人類の真の主役たちだ。
 
 # N: serial number : monster name
 # G: symbol : color
