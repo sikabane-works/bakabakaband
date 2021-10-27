@@ -408,6 +408,9 @@ void display_monster_alignment(lore_type *lore_ptr)
     if (lore_ptr->flags8 & RF8_NASTY)
         hook_c_roff(TERM_L_DARK, _("クッソ汚い", " nasty"));
 
+    if (lore_ptr->flags8 & RF8_JOKE)
+        hook_c_roff(TERM_L_DARK, _("ふざけた", " jokeful"));
+
     if (lore_ptr->flags3 & RF3_ANIMAL)
         hook_c_roff(TERM_L_GREEN, _("自然界の", " natural"));
 
