@@ -114,7 +114,7 @@ errr parse_r_info(std::string_view buf, angband_header *)
 #else
         if (tokens[1][0] != '$')
             return PARSE_ERROR_NONE;
-        r_ptr->text.append(buf.substr(3));
+        append_english_text(r_ptr->text, buf.substr(3));
 #endif
     } else if (tokens[0] == "G") {
         // G:color:symbol
@@ -223,6 +223,17 @@ errr parse_r_info(std::string_view buf, angband_header *)
                         r_ptr->alliance_idx = a.second->id;
                     }
                 }
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "MOB") {
+                info_set_value(r_ptr->max_num, s_tokens[1]);
+                r_ptr->mob_num = r_ptr->max_num;
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "COLLAPSE") {
+                info_set_value(r_ptr->plus_collapse, s_tokens[1]);
                 continue;
             }
 

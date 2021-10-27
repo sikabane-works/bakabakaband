@@ -115,7 +115,7 @@ MONRACE_IDX get_mon_num(player_type *player_ptr, DEPTH min_level, DEPTH max_leve
         r_idx = entry.index;
         r_ptr = &r_info[r_idx];
         if (!(option & GMN_ARENA) && !chameleon_change_m_idx) {
-            if (((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->max_num)) {
+            if (((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->mob_num)) {
                 continue;
             }
 
@@ -177,7 +177,7 @@ static bool monster_hook_chameleon_lord(player_type *player_ptr, MONRACE_IDX r_i
     if (r_ptr->flags7 & (RF7_FRIENDLY | RF7_CHAMELEON))
         return false;
 
-    if (ABS(r_ptr->level - r_info[MON_CHAMELEON_K].level) > 5)
+    if (std::abs(r_ptr->level - r_info[MON_CHAMELEON_K].level) > 5)
         return false;
 
     if ((r_ptr->blow[0].method == RBM_EXPLODE) || (r_ptr->blow[1].method == RBM_EXPLODE) || (r_ptr->blow[2].method == RBM_EXPLODE)
@@ -330,8 +330,8 @@ void choose_new_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool born, M
     }
 
     if (ironman_nightmare) {
-        uint32_t hp = m_ptr->max_maxhp * 2L;
-        m_ptr->max_maxhp = (HIT_POINT)MIN(MON_MAX_HP, hp);
+        auto hp = m_ptr->max_maxhp * 2;
+        m_ptr->max_maxhp = std::min(MON_MAX_HP, hp);
     }
 
     m_ptr->maxhp = (long)(m_ptr->maxhp * m_ptr->max_maxhp) / oldmaxhp;

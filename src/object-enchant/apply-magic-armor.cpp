@@ -8,6 +8,7 @@
 #include "artifact/random-art-generator.h"
 #include "inventory/inventory-slot-types.h"
 #include "object-enchant/object-ego.h"
+#include "object-enchant/object-boost.h"
 #include "object/object-kind-hook.h"
 #include "sv-definition/sv-armor-types.h"
 #include "system/object-type-definition.h"
@@ -36,13 +37,13 @@ void ArmorEnchanter::apply_magic()
     }
 
     switch (this->o_ptr->tval) {
-    case TV_DRAG_ARMOR:
+    case ItemKindType::DRAG_ARMOR:
         if (one_in_(50) || (this->power > 2)) {
             become_random_artifact(this->player_ptr, this->o_ptr, false);
         }
 
         break;
-    case TV_HARD_ARMOR:
+    case ItemKindType::HARD_ARMOR:
         if (this->power > 1) {
             this->give_ego_index();
             return;
@@ -53,9 +54,16 @@ void ArmorEnchanter::apply_magic()
         }
 
         return;
-    case TV_SOFT_ARMOR: {
+    case ItemKindType::SOFT_ARMOR: {
         if (this->o_ptr->sval == SV_KUROSHOUZOKU) {
             this->o_ptr->pval = randint1(4);
+        }
+
+        if (this->o_ptr->sval == SV_DRAGON_BIKINI) {
+            dragon_resist(this->o_ptr);
+            if (!one_in_(3)) {
+                return;
+            }
         }
 
         if (this->power > 1) {
@@ -94,13 +102,13 @@ void ArmorEnchanter::give_ego_index()
         this->o_ptr->name2 = get_random_ego(INVEN_BODY, true);
         switch (this->o_ptr->name2) {
         case EGO_DWARVEN:
-            if (this->o_ptr->tval != TV_HARD_ARMOR) {
+            if (this->o_ptr->tval != ItemKindType::HARD_ARMOR) {
                 valid = false;
             }
 
             break;
         case EGO_DRUID:
-            if (this->o_ptr->tval != TV_SOFT_ARMOR) {
+            if (this->o_ptr->tval != ItemKindType::SOFT_ARMOR) {
                 valid = false;
             }
 
@@ -133,7 +141,7 @@ void ArmorEnchanter::give_high_ego_index()
         return;
     }
 
-    this->o_ptr->k_idx = lookup_kind(TV_SOFT_ARMOR, SV_TWILIGHT_ROBE);
+    this->o_ptr->k_idx = lookup_kind(ItemKindType::SOFT_ARMOR, SV_TWILIGHT_ROBE);
     this->o_ptr->sval = SV_TWILIGHT_ROBE;
     this->o_ptr->ac = 0;
     this->o_ptr->to_a = 0;

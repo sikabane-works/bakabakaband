@@ -11,10 +11,10 @@
  * @brief 店主データ構造体
  */
 struct owner_type {
-	concptr owner_name;	//!< 名前 / Name
-	PRICE max_cost; //!< 買取上限 / Purse limit
-	byte inflate; //!< 価格上乗せ率 / Inflation
-	player_race_type owner_race; //!< 店主種族 / Owner race
+    concptr owner_name; //!< 名前 / Name
+    PRICE max_cost; //!< 買取上限 / Purse limit
+    byte inflate; //!< 価格上乗せ率 / Inflation
+    PlayerRaceType owner_race; //!< 店主種族 / Owner race
     DEPTH level{}; //!< Production Level
 };
 

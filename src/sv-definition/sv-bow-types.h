@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-/* The "sval" codes for TV_BOW (note information in "sval") */
+/* The "sval" codes for ItemKindType::BOW (note information in "sval") */
 enum sv_bow_type {
 	SV_SLING = 2, /* (x2) */
     SV_SHORT_BOW = 12, /* (x2) */

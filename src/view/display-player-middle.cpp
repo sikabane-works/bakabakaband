@@ -68,7 +68,7 @@ static void display_sub_hand(player_type *player_ptr)
         return;
     }
 
-    if ((player_ptr->pclass != CLASS_MONK) || ((empty_hands(player_ptr, true) & EMPTY_HAND_MAIN) == 0))
+    if ((player_ptr->pclass != PlayerClassType::MONK) || ((empty_hands(player_ptr, true) & EMPTY_HAND_MAIN) == 0))
         return;
 
     PlayerClass pc(player_ptr);
@@ -99,9 +99,9 @@ static void display_hit_damage(player_type *player_ptr)
         show_todam += o_ptr->to_d;
 
     if ((o_ptr->sval == SV_LIGHT_XBOW) || (o_ptr->sval == SV_HEAVY_XBOW))
-        show_tohit += player_ptr->weapon_exp[0][o_ptr->sval] / 400;
+        show_tohit += player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] / 400;
     else
-        show_tohit += (player_ptr->weapon_exp[0][o_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200;
+        show_tohit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200;
 
     show_tohit += player_ptr->skill_thb / BTH_PLUS_ADJ;
 
@@ -220,20 +220,20 @@ static void display_player_speed(player_type *player_ptr, TERM_COLOR attr, int b
  */
 static void display_player_exp(player_type *player_ptr)
 {
-    int e = (player_ptr->prace == player_race_type::ANDROID) ? ENTRY_EXP_ANDR : ENTRY_CUR_EXP;
+    int e = (player_ptr->prace == PlayerRaceType::ANDROID) ? ENTRY_EXP_ANDR : ENTRY_CUR_EXP;
     if (player_ptr->exp >= player_ptr->max_exp)
         display_player_one_line(e, format("%ld", player_ptr->exp), TERM_L_GREEN);
     else
         display_player_one_line(e, format("%ld", player_ptr->exp), TERM_YELLOW);
 
-    if (player_ptr->prace != player_race_type::ANDROID)
+    if (player_ptr->prace != PlayerRaceType::ANDROID)
         display_player_one_line(ENTRY_MAX_EXP, format("%ld", player_ptr->max_exp), TERM_L_GREEN);
 
-    e = (player_ptr->prace == player_race_type::ANDROID) ? ENTRY_EXP_TO_ADV_ANDR : ENTRY_EXP_TO_ADV;
+    e = (player_ptr->prace == PlayerRaceType::ANDROID) ? ENTRY_EXP_TO_ADV_ANDR : ENTRY_EXP_TO_ADV;
 
     if (player_ptr->lev >= PY_MAX_LEVEL)
         display_player_one_line(e, "*****", TERM_L_GREEN);
-    else if (player_ptr->prace == player_race_type::ANDROID)
+    else if (player_ptr->prace == PlayerRaceType::ANDROID)
         display_player_one_line(e, format("%ld", (int32_t)(player_exp_a[player_ptr->lev - 1] * player_ptr->expfact / 100L)), TERM_L_GREEN);
     else
         display_player_one_line(e, format("%ld", (int32_t)(player_exp[player_ptr->lev - 1] * player_ptr->expfact / 100L)), TERM_L_GREEN);
@@ -255,6 +255,8 @@ static void display_playtime_in_game(player_type *player_ptr)
         sprintf(buf, _("*****日目 %2d:%02d", "Day ***** %2d:%02d"), hour, min);
 
     display_player_one_line(ENTRY_DAY, buf, TERM_L_GREEN);
+
+    display_player_one_line(ENTRY_WORLD_COLLAPSE, format("%3d.%06d%%", w_ptr->collapse_degree / 1000000, w_ptr->collapse_degree % 1000000), TERM_L_GREEN);
 
     if (player_ptr->chp >= player_ptr->mhp)
         display_player_one_line(ENTRY_HP, format("%4d/%4d", player_ptr->chp, player_ptr->mhp), TERM_L_GREEN);

@@ -330,7 +330,7 @@ RF_ABILITY choose_attack_spell(player_type *player_ptr, msa_type *msa_ptr)
         switch (m_ptr->r_idx) {
         case MON_BANOR:
         case MON_LUPART:
-            if ((m_ptr->hp < m_ptr->maxhp / 2) && r_info[MON_BANOR].max_num && r_info[MON_LUPART].max_num)
+            if ((m_ptr->hp < m_ptr->maxhp / 2) && r_info[MON_BANOR].mob_num && r_info[MON_LUPART].mob_num)
                 success = true;
             break;
         default:

@@ -37,7 +37,7 @@ PRICE price_item(player_type *player_ptr, object_type *o_ptr, int greed, bool fl
     if (price <= 0)
         return 0L;
 
-    int factor = rgold_adj[enum2i(ot_ptr->owner_race)][enum2i(player_ptr->prace)] - MIN(player_ptr->prestige / 10, 30);
+    int factor = rgold_adj[enum2i(ot_ptr->owner_race)][enum2i(player_ptr->prace)] - std::min(player_ptr->prestige / 10, 30);
     factor += adj_chr_gold[player_ptr->stat_index[A_CHR]];
     int adjust;
     if (flip) {
@@ -45,7 +45,7 @@ PRICE price_item(player_type *player_ptr, object_type *o_ptr, int greed, bool fl
         if (adjust > 100)
             adjust = 100;
 
-        if (cur_store_num == STORE_BLACK)
+        if (cur_store_num == StoreSaleType::BLACK)
             price = price / 2;
 
         price = (price * adjust + 50L) / 100L;
@@ -54,7 +54,7 @@ PRICE price_item(player_type *player_ptr, object_type *o_ptr, int greed, bool fl
         if (adjust < 100)
             adjust = 100;
 
-        if (cur_store_num == STORE_BLACK)
+        if (cur_store_num == StoreSaleType::BLACK)
             price = price * 2;
 
         price = (int32_t)(((uint32_t)price * (uint32_t)adjust + 50UL) / 100UL);

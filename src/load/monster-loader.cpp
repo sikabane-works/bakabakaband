@@ -5,6 +5,7 @@
 #include "load/savedata-flag-types.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
+#include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 #include "util/quarks.h"
 
@@ -20,104 +21,86 @@ void rd_monster(player_type *player_ptr, monster_type *m_ptr)
         return;
     }
 
-    BIT_FLAGS flags;
-    rd_u32b(&flags);
-    rd_s16b(&m_ptr->r_idx);
-    byte tmp8u;
-    rd_byte(&tmp8u);
-    m_ptr->fy = (POSITION)tmp8u;
-    rd_byte(&tmp8u);
-    m_ptr->fx = (POSITION)tmp8u;
+    auto flags = rd_u32b();
+    m_ptr->r_idx = rd_s16b();
+    m_ptr->fy = rd_byte();
+    m_ptr->fx = rd_byte();
 
-    int16_t tmp16s;
-    rd_s16b(&tmp16s);
-    m_ptr->hp = (HIT_POINT)tmp16s;
-    rd_s16b(&tmp16s);
-    m_ptr->maxhp = (HIT_POINT)tmp16s;
-    rd_s16b(&tmp16s);
-    m_ptr->max_maxhp = (HIT_POINT)tmp16s;
+    m_ptr->hp = rd_s16b();
+    m_ptr->maxhp = rd_s16b();
+    m_ptr->max_maxhp = rd_s16b();
 
     if (h_older_than(2, 1, 2, 1)) {
         m_ptr->dealt_damage = 0;
     } else {
-        rd_s32b(&m_ptr->dealt_damage);
+        m_ptr->dealt_damage = rd_s32b();
     }
 
-    if (flags & SAVE_MON_AP_R_IDX)
-        rd_s16b(&m_ptr->ap_r_idx);
+    if (any_bits(flags, SaveDataMonsterFlagType::AP_R_IDX))
+        m_ptr->ap_r_idx = rd_s16b();
     else
         m_ptr->ap_r_idx = m_ptr->r_idx;
 
-    if (flags & SAVE_MON_SUB_ALIGN)
-        rd_byte(&m_ptr->sub_align);
+    if (any_bits(flags, SaveDataMonsterFlagType::SUB_ALIGN))
+        m_ptr->sub_align = rd_byte();
     else
         m_ptr->sub_align = 0;
 
-    if (flags & SAVE_MON_CSLEEP)
-        rd_s16b(&m_ptr->mtimed[MTIMED_CSLEEP]);
+    if (any_bits(flags, SaveDataMonsterFlagType::CSLEEP))
+        m_ptr->mtimed[MTIMED_CSLEEP] = rd_s16b();
     else
         m_ptr->mtimed[MTIMED_CSLEEP] = 0;
 
-    rd_byte(&tmp8u);
-    m_ptr->mspeed = tmp8u;
+    m_ptr->mspeed = rd_byte();
 
-    rd_s16b(&m_ptr->energy_need);
+    m_ptr->energy_need = rd_s16b();
 
-    if (flags & SAVE_MON_FAST) {
-        rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_FAST] = (int16_t)tmp8u;
+    if (any_bits(flags, SaveDataMonsterFlagType::FAST)) {
+        m_ptr->mtimed[MTIMED_FAST] = rd_byte();
     } else
         m_ptr->mtimed[MTIMED_FAST] = 0;
 
-    if (flags & SAVE_MON_SLOW) {
-        rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_SLOW] = (int16_t)tmp8u;
+    if (any_bits(flags, SaveDataMonsterFlagType::SLOW)) {
+        m_ptr->mtimed[MTIMED_SLOW] = rd_byte();
     } else
         m_ptr->mtimed[MTIMED_SLOW] = 0;
 
-    if (flags & SAVE_MON_STUNNED) {
-        rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_STUNNED] = (int16_t)tmp8u;
+    if (any_bits(flags, SaveDataMonsterFlagType::STUNNED)) {
+        m_ptr->mtimed[MTIMED_STUNNED] = rd_byte();
     } else
         m_ptr->mtimed[MTIMED_STUNNED] = 0;
 
-    if (flags & SAVE_MON_CONFUSED) {
-        rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_CONFUSED] = (int16_t)tmp8u;
+    if (any_bits(flags, SaveDataMonsterFlagType::CONFUSED)) {
+        m_ptr->mtimed[MTIMED_CONFUSED] = rd_byte();
     } else
         m_ptr->mtimed[MTIMED_CONFUSED] = 0;
 
-    if (flags & SAVE_MON_MONFEAR) {
-        rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_MONFEAR] = (int16_t)tmp8u;
+    if (any_bits(flags, SaveDataMonsterFlagType::MONFEAR)) {
+        m_ptr->mtimed[MTIMED_MONFEAR] = rd_byte();
     } else
         m_ptr->mtimed[MTIMED_MONFEAR] = 0;
 
-    if (flags & SAVE_MON_TARGET_Y) {
-        rd_s16b(&tmp16s);
-        m_ptr->target_y = (POSITION)tmp16s;
+    if (any_bits(flags, SaveDataMonsterFlagType::TARGET_Y)) {
+        m_ptr->target_y = rd_s16b();
     } else
         m_ptr->target_y = 0;
 
-    if (flags & SAVE_MON_TARGET_X) {
-        rd_s16b(&tmp16s);
-        m_ptr->target_x = (POSITION)tmp16s;
+    if (any_bits(flags, SaveDataMonsterFlagType::TARGET_X)) {
+        m_ptr->target_x = rd_s16b();
     } else
         m_ptr->target_x = 0;
 
-    if (flags & SAVE_MON_INVULNER) {
-        rd_byte(&tmp8u);
-        m_ptr->mtimed[MTIMED_INVULNER] = (int16_t)tmp8u;
+    if (any_bits(flags, SaveDataMonsterFlagType::INVULNER)) {
+        m_ptr->mtimed[MTIMED_INVULNER] = rd_byte();
     } else
         m_ptr->mtimed[MTIMED_INVULNER] = 0;
 
     m_ptr->mflag.clear();
     m_ptr->mflag2.clear();
 
-    if (flags & SAVE_MON_SMART) {
+    if (any_bits(flags, SaveDataMonsterFlagType::SMART)) {
         if (loading_savefile_version_is_older_than(2)) {
-            uint32_t tmp32u;
-            rd_u32b(&tmp32u);
+            auto tmp32u = rd_u32b();
             migrate_bitflag_to_flaggroup(m_ptr->smart, tmp32u);
 
             // 3.0.0Alpha10以前のSM_CLONED(ビット位置22)、SM_PET(23)、SM_FRIEDLY(28)をMFLAG2に移行する
@@ -134,16 +117,14 @@ void rd_monster(player_type *player_ptr, monster_type *m_ptr)
         m_ptr->smart.clear();
     }
 
-    if (flags & SAVE_MON_EXP) {
-        uint32_t tmp32u;
-        rd_u32b(&tmp32u);
-        m_ptr->exp = (EXP)tmp32u;
+    if (any_bits(flags, SaveDataMonsterFlagType::EXP)) {
+        m_ptr->exp = rd_u32b();
     } else
         m_ptr->exp = 0;
 
-    if (flags & SAVE_MON_MFLAG2) {
+    if (any_bits(flags, SaveDataMonsterFlagType::MFLAG2)) {
         if (loading_savefile_version_is_older_than(2)) {
-            rd_byte(&tmp8u);
+            auto tmp8u = rd_byte();
             constexpr auto base = enum2i(MFLAG2::KAGE);
             migrate_bitflag_to_flaggroup(m_ptr->mflag2, tmp8u, base, 7);
         } else {
@@ -151,15 +132,15 @@ void rd_monster(player_type *player_ptr, monster_type *m_ptr)
         }
     }
 
-    if (flags & SAVE_MON_NICKNAME) {
+    if (any_bits(flags, SaveDataMonsterFlagType::NICKNAME)) {
         char buf[128];
         rd_string(buf, sizeof(buf));
         m_ptr->nickname = quark_add(buf);
     } else
         m_ptr->nickname = 0;
 
-    if (flags & SAVE_MON_PARENT)
-        rd_s16b(&m_ptr->parent_m_idx);
+    if (any_bits(flags, SaveDataMonsterFlagType::PARENT))
+        m_ptr->parent_m_idx = rd_s16b();
     else
         m_ptr->parent_m_idx = 0;
 }

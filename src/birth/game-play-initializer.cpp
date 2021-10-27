@@ -85,18 +85,19 @@ void player_wipe_without_name(player_type *player_ptr)
             continue;
         }
         r_ref.cur_num = 0;
-        r_ref.max_num = 100;
-        if (r_ref.flags1 & RF1_UNIQUE)
-            r_ref.max_num = 1;
-        else if (r_ref.flags7 & RF7_NAZGUL)
-            r_ref.max_num = MAX_NAZGUL_NUM;
+        if (r_ref.flags1 & RF1_UNIQUE) {
+            r_ref.mob_num = r_ref.max_num = 1;        
+        }
+        else if (r_ref.flags7 & RF7_NAZGUL) {
+            r_ref.mob_num = r_ref.max_num = MAX_NAZGUL_NUM;
+        }
 
         r_ref.r_pkills = 0;
         r_ref.r_akills = 0;
     }
 
     player_ptr->food = PY_FOOD_FULL - 1;
-    if (player_ptr->pclass == CLASS_SORCERER) {
+    if (player_ptr->pclass == PlayerClassType::SORCERER) {
         player_ptr->spell_learned1 = player_ptr->spell_learned2 = 0xffffffffL;
         player_ptr->spell_worked1 = player_ptr->spell_worked2 = 0xffffffffL;
     } else {

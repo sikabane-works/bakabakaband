@@ -18,7 +18,7 @@
 #include "system/object-type-definition.h"
 #include "world/world-object.h"
 
-int cur_store_num = 0;
+StoreSaleType cur_store_num = StoreSaleType::GENERAL;
 store_type *st_ptr = nullptr;
 
 /*!
@@ -83,7 +83,7 @@ void store_delete(void)
     if (randint0(100) < 50)
         num = 1;
 
-    if ((st_ptr->stock[what].tval == TV_ROD) || (st_ptr->stock[what].tval == TV_WAND))
+    if ((st_ptr->stock[what].tval == ItemKindType::ROD) || (st_ptr->stock[what].tval == ItemKindType::WAND))
         st_ptr->stock[what].pval -= num * st_ptr->stock[what].pval / st_ptr->stock[what].number;
 
     store_item_increase(what, -num);
@@ -106,7 +106,7 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
             continue;
         if (o_ptr->k_idx != j_ptr->k_idx)
             continue;
-        if (o_ptr->tval != TV_STAFF && o_ptr->tval != TV_WAND)
+        if (o_ptr->tval != ItemKindType::STAFF && o_ptr->tval != ItemKindType::WAND)
             continue;
         list.push_back(o_ptr->pval);
     }
@@ -130,7 +130,7 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
 void store_create(
     player_type *player_ptr, KIND_OBJECT_IDX fix_k_idx, black_market_crap_pf black_market_crap, store_will_buy_pf store_will_buy, mass_produce_pf mass_produce)
 {
-    const owner_type *ow_ptr = &owners[cur_store_num][st_ptr->owner];
+    const owner_type *ow_ptr = &owners[enum2i(cur_store_num)][st_ptr->owner];
 
     if (st_ptr->stock_num >= st_ptr->stock_size)
         return;
@@ -138,8 +138,8 @@ void store_create(
     for (int tries = 0; tries < 4; tries++) {
         KIND_OBJECT_IDX k_idx;
         DEPTH level;
-        if (cur_store_num == STORE_BLACK) {
-            level = ow_ptr->level + 20 + randint0(25);
+        if (cur_store_num == StoreSaleType::BLACK) {
+            level = ow_ptr->level + 25 + randint0(25);
             k_idx = get_obj_num(player_ptr, level, 0x00000000);
             if (k_idx == 0)
                 continue;
@@ -165,7 +165,7 @@ void store_create(
             q_ptr->pval = pval;
         }
 
-        if (q_ptr->tval == TV_LITE) {
+        if (q_ptr->tval == ItemKindType::LITE) {
             if (q_ptr->sval == SV_LITE_TORCH)
                 q_ptr->xtra4 = FUEL_TORCH / 2;
 
@@ -175,10 +175,10 @@ void store_create(
 
         object_known(q_ptr);
         q_ptr->ident |= IDENT_STORE;
-        if (q_ptr->tval == TV_CHEST)
+        if (q_ptr->tval == ItemKindType::CHEST)
             continue;
 
-        if (cur_store_num == STORE_BLACK) {
+        if (cur_store_num == StoreSaleType::BLACK) {
             if (black_market_crap(player_ptr, q_ptr) || (object_value(q_ptr) < 10))
                 continue;
         } else {
@@ -211,7 +211,7 @@ bool store_object_similar(object_type *o_ptr, object_type *j_ptr)
     if (o_ptr->k_idx != j_ptr->k_idx)
         return false;
 
-    if ((o_ptr->pval != j_ptr->pval) && (o_ptr->tval != TV_WAND) && (o_ptr->tval != TV_ROD))
+    if ((o_ptr->pval != j_ptr->pval) && (o_ptr->tval != ItemKindType::WAND) && (o_ptr->tval != ItemKindType::ROD))
         return false;
 
     if (o_ptr->to_h != j_ptr->to_h)
@@ -247,13 +247,13 @@ bool store_object_similar(object_type *o_ptr, object_type *j_ptr)
     if (o_ptr->ds != j_ptr->ds)
         return false;
 
-    if (o_ptr->tval == TV_CHEST)
+    if (o_ptr->tval == ItemKindType::CHEST)
         return false;
 
-    if (o_ptr->tval == TV_STATUE)
+    if (o_ptr->tval == ItemKindType::STATUE)
         return false;
 
-    if (o_ptr->tval == TV_CAPTURE)
+    if (o_ptr->tval == ItemKindType::CAPTURE)
         return false;
 
     if (o_ptr->discount != j_ptr->discount)
@@ -275,11 +275,11 @@ bool store_object_similar(object_type *o_ptr, object_type *j_ptr)
  */
 static void store_object_absorb(object_type *o_ptr, object_type *j_ptr)
 {
-    int max_num = (o_ptr->tval == TV_ROD) ? MIN(99, MAX_SHORT / k_info[o_ptr->k_idx].pval) : 99;
+    int max_num = (o_ptr->tval == ItemKindType::ROD) ? std::min(99, MAX_SHORT / k_info[o_ptr->k_idx].pval) : 99;
     int total = o_ptr->number + j_ptr->number;
     int diff = (total > max_num) ? total - max_num : 0;
     o_ptr->number = (total > max_num) ? max_num : total;
-    if ((o_ptr->tval == TV_ROD) || (o_ptr->tval == TV_WAND))
+    if ((o_ptr->tval == ItemKindType::ROD) || (o_ptr->tval == ItemKindType::WAND))
         o_ptr->pval += j_ptr->pval * (j_ptr->number - diff) / j_ptr->number;
 }
 
@@ -329,7 +329,7 @@ int store_carry(object_type *o_ptr)
             break;
         if (o_ptr->sval > j_ptr->sval)
             continue;
-        if (o_ptr->tval == TV_ROD) {
+        if (o_ptr->tval == ItemKindType::ROD) {
             if (o_ptr->pval < j_ptr->pval)
                 break;
             if (o_ptr->pval > j_ptr->pval)

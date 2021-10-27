@@ -79,7 +79,7 @@ static void discover_hidden_things(player_type *player_ptr, POSITION y, POSITION
     for (const auto this_o_idx : g_ptr->o_idx_list) {
         object_type *o_ptr;
         o_ptr = &floor_ptr->o_list[this_o_idx];
-        if (o_ptr->tval != TV_CHEST)
+        if (o_ptr->tval != ItemKindType::CHEST)
             continue;
         if (chest_traps[o_ptr->pval].none())
             continue;
@@ -170,7 +170,7 @@ bool move_player_effect(player_type *player_ptr, POSITION ny, POSITION nx, BIT_F
         if (mpe_mode & MPE_HANDLE_STUFF)
             handle_stuff(player_ptr);
 
-        if (player_ptr->pclass == CLASS_NINJA) {
+        if (player_ptr->pclass == PlayerClassType::NINJA) {
             if (g_ptr->info & (CAVE_GLOW))
                 set_superstealth(player_ptr, false);
             else if (player_ptr->cur_lite <= 0)
@@ -183,7 +183,7 @@ bool move_player_effect(player_type *player_ptr, POSITION ny, POSITION nx, BIT_F
             set_action(player_ptr, ACTION_NONE);
         }
 
-        if (player_ptr->prace == player_race_type::MERFOLK) {
+        if (player_ptr->prace == PlayerRaceType::MERFOLK) {
             if (f_ptr->flags.has(FF::WATER) ^ of_ptr->flags.has(FF::WATER)) {
                 player_ptr->update |= PU_BONUS;
                 update_creature(player_ptr);

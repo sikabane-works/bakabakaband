@@ -901,12 +901,14 @@ hengband_SOURCES = \
 	util/buffer-shaper.cpp util/buffer-shaper.h \
 	util/bit-flags-calculator.h \
 	util/enum-converter.h \
+	util/enum-range.h \
 	util/flag-group.h \
 	util/int-char-converter.h \
 	util/object-sort.cpp util/object-sort.h \
 	util/point-2d.h \
 	util/probability-table.h \
 	util/quarks.cpp util/quarks.h \
+	util/rng-xoshiro.cpp util/rng-xoshiro.h \
 	util/sort.cpp util/sort.h \
 	util/string-processor.cpp util/string-processor.h \
 	util/tag-sorter.cpp util/tag-sorter.h \

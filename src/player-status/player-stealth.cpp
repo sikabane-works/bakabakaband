@@ -54,7 +54,7 @@ int16_t PlayerStealth::personality_value()
  */
 int16_t PlayerStealth::class_base_value()
 {
-    const player_class_info *c_ptr = &class_info[this->player_ptr->pclass];
+    const player_class_info *c_ptr = &class_info[enum2i(this->player_ptr->pclass)];
     return c_ptr->c_stl + (c_ptr->x_stl * this->player_ptr->lev / 10);
 }
 
@@ -69,7 +69,7 @@ int16_t PlayerStealth::class_value()
 {
     ACTION_SKILL_POWER result = 0;
 
-    if (this->player_ptr->pclass == CLASS_NINJA) {
+    if (this->player_ptr->pclass == PlayerClassType::NINJA) {
         if (heavy_armor(this->player_ptr)) {
             result -= (this->player_ptr->lev) / 10;
         } else if ((!this->player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx || can_attack_with_main_hand(this->player_ptr))
@@ -144,7 +144,7 @@ bool PlayerStealth::is_aggravated_s_fairy()
 int16_t PlayerStealth::set_exception_value(int16_t value)
 {
     if (this->is_aggravated_s_fairy()) {
-        value = MIN(value - 3, (value + 2) / 2);
+        value = std::min<int16_t>(value - 3, (value + 2) / 2);
     }
     return value;
 }

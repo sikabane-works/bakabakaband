@@ -345,7 +345,7 @@ int take_hit(player_type *player_ptr, int damage_type, HIT_POINT damage, concptr
     }
 
     if (player_ptr->chp < 0 && !cheat_immortal) {
-        bool android = player_ptr->prace == player_race_type::ANDROID;
+        bool android = player_ptr->prace == PlayerRaceType::ANDROID;
 
         /* 死んだ時に強制終了して死を回避できなくしてみた by Habu */
         if (!cheat_save && !save_player(player_ptr, SAVE_TYPE_CLOSE_GAME))
@@ -540,7 +540,7 @@ int take_hit(player_type *player_ptr, int damage_type, HIT_POINT damage, concptr
         flush();
     }
 
-    if (player_ptr->wild_mode && !player_ptr->leaving && (player_ptr->chp < MAX(warning, player_ptr->mhp / 5)))
+    if (player_ptr->wild_mode && !player_ptr->leaving && (player_ptr->chp < std::max(warning, player_ptr->mhp / 5)))
         change_wild_mode(player_ptr, false);
 
     return damage;

@@ -101,7 +101,7 @@ static eg_type *initialize_eg_type(player_type *player_ptr, eg_type *eg_ptr, POS
 static void evaluate_monster_exp(player_type *player_ptr, char *buf, monster_type *m_ptr)
 {
     monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
-    if ((player_ptr->lev >= PY_MAX_LEVEL) || (player_ptr->prace == player_race_type::ANDROID)) {
+    if ((player_ptr->lev >= PY_MAX_LEVEL) || (player_ptr->prace == PlayerRaceType::ANDROID)) {
         sprintf(buf, "**");
         return;
     }
@@ -128,7 +128,7 @@ static void evaluate_monster_exp(player_type *player_ptr, char *buf, monster_typ
 
     s64b_div(&exp_adv, &exp_adv_frac, exp_mon, exp_mon_frac);
 
-    uint32_t num = MIN(999, exp_adv_frac);
+    auto num = std::min<uint>(999, exp_adv_frac);
     sprintf(buf, "%03ld", (long int)num);
 }
 

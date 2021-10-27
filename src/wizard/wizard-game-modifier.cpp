@@ -175,7 +175,7 @@ void wiz_restore_monster_max_num()
         return;
     }
 
-    r_ptr->max_num = n;
+    r_ptr->mob_num = n;
     r_ptr->r_pkills = 0;
     r_ptr->r_akills = 0;
 

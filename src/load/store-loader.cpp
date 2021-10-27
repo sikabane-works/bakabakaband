@@ -36,7 +36,7 @@ static void home_carry_load(player_type *player_ptr, store_type *store_ptr, obje
         return;
     }
 
-    if (store_ptr->stock_num >= store_get_stock_max(STORE_HOME))
+    if (store_ptr->stock_num >= store_get_stock_max(StoreSaleType::HOME))
         return;
 
     int32_t value = object_value(o_ptr);
@@ -66,7 +66,7 @@ static errr rd_store(player_type *player_ptr, int town_number, int store_number)
 {
     store_type *store_ptr;
     bool sort = false;
-    if (h_older_than(0, 3, 3) && (store_number == STORE_HOME)) {
+    if (h_older_than(0, 3, 3) && (i2enum<StoreSaleType>(store_number) == StoreSaleType::HOME)) {
         store_ptr = &town_info[1].store[store_number];
         if (store_ptr->stock_num)
             sort = true;
@@ -74,24 +74,20 @@ static errr rd_store(player_type *player_ptr, int town_number, int store_number)
         store_ptr = &town_info[town_number].store[store_number];
     }
 
-    byte owner_idx;
-    byte tmp8u;
     int16_t inven_num;
-    rd_s32b(&store_ptr->store_open);
-    rd_s16b(&store_ptr->insult_cur);
-    rd_byte(&owner_idx);
+    store_ptr->store_open = rd_s32b();
+    store_ptr->insult_cur = rd_s16b();
+    store_ptr->owner = rd_byte();
     if (h_older_than(1, 0, 4)) {
-        rd_byte(&tmp8u);
-        inven_num = tmp8u;
+        inven_num = rd_byte();
     } else {
-        rd_s16b(&inven_num);
+        inven_num = rd_s16b();
     }
 
-    rd_s16b(&store_ptr->good_buy);
-    rd_s16b(&store_ptr->bad_buy);
+    store_ptr->good_buy = rd_s16b();
+    store_ptr->bad_buy = rd_s16b();
 
-    rd_s32b(&store_ptr->last_visit);
-    store_ptr->owner = owner_idx;
+    store_ptr->last_visit = rd_s32b();
 
     for (int j = 0; j < inven_num; j++) {
         object_type forge;
@@ -101,7 +97,7 @@ static errr rd_store(player_type *player_ptr, int town_number, int store_number)
 
         rd_item(q_ptr);
 
-        auto stock_max = store_get_stock_max(i2enum<STORE_TYPE_IDX>(store_number));
+        auto stock_max = store_get_stock_max(i2enum<StoreSaleType>(store_number));
         if (store_ptr->stock_num >= stock_max)
             continue;
 
@@ -125,12 +121,8 @@ errr load_store(player_type *player_ptr)
 {
     (void)player_ptr;
 
-    uint16_t tmp16u;
-    rd_u16b(&tmp16u);
-    auto town_count = (int)tmp16u;
-
-    rd_u16b(&tmp16u);
-    auto store_count = (int)tmp16u;
+    int town_count = rd_u16b();
+    int store_count = rd_u16b();
 
     for (int town_idx = 1; town_idx < town_count; town_idx++)
         for (int store_idx = 0; store_idx < store_count; store_idx++)

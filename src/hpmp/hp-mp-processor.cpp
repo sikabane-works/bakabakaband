@@ -151,7 +151,7 @@ void process_player_hp_mp(player_type *player_ptr)
         o_ptr = &player_ptr->inventory_list[INVEN_LITE];
         auto flgs = object_flags(o_ptr);
 
-        if (player_ptr->inventory_list[INVEN_LITE].tval && flgs.has_not(TR_DARK_SOURCE) && !has_resist_lite(player_ptr)) {
+        if ((player_ptr->inventory_list[INVEN_LITE].tval != ItemKindType::NONE) && flgs.has_not(TR_DARK_SOURCE) && !has_resist_lite(player_ptr)) {
             GAME_TEXT o_name[MAX_NLEN];
             char ouch[MAX_NLEN + 40];
             describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -338,7 +338,7 @@ void process_player_hp_mp(player_type *player_ptr)
     }
 
     regenmana(player_ptr, upkeep_factor, regen_amount);
-    if (player_ptr->pclass == CLASS_MAGIC_EATER) {
+    if (player_ptr->pclass == PlayerClassType::MAGIC_EATER) {
         regenmagic(player_ptr, regen_amount);
     }
 

@@ -17181,6 +17181,7 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RAND_25 |
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | AURA_FIRE |
 F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | 
 F:ANIMAL | EVIL | IM_FIRE | IM_POIS | NO_CONF | NO_SLEEP
+F:ALLIANCE_UTUMNO
 S:1_IN_4 | 
 S:HEAL | SCARE | BRAIN_SMASH | 
 S:BR_FIRE | 
@@ -17370,6 +17371,7 @@ S:1_IN_3 |
 S:BLIND | CONF | SCARE | 
 S:BR_FIRE | S_KIN |
 S:S_DEMON | S_HI_UNDEAD | S_CYBER
+F:ALLIANCE_UTUMNO
 A:212:1:33
 D:$Gothmog is the Chief Balrog in Morgoth's personal guard.  He is renowned 
 D:$for slaying Ecthelion the Warder of the Gates and he has never been 
@@ -17575,6 +17577,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_4D2
 F:DROP_GREAT | SMART | KILL_WALL | MOVE_BODY | AURA_COLD
 F:REGENERATE | POWERFUL | NO_CONF | NO_SLEEP | NO_FEAR
 F:EVIL | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_DARK
+F:ALLIANCE_UTUMNO
 S:1_IN_3 | 
 S:BRAIN_SMASH | DISPEL |
 S:BA_MANA | BO_MANA | BA_NETH | ANIM_DEAD 
@@ -19153,6 +19156,7 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SELF_LITE_1 |
 F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | 
 F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | 
 F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP
+F:ALLIANCE_UTUMNO
 S:1_IN_4 | 
 S:BLIND | CONF | 
 S:BR_FIRE | 
@@ -20304,8 +20308,8 @@ D:(J.H.ブレナン、真崎義博訳 暗黒城の魔術師)
 D:作物を枯らす、豚を盗む、用水路を干上がらす、王妃を誘拐する、と
 D:悪の限りを尽くす魔術師だ。
 
-N:1006:ハイ=エルフ・レンジャー
-E:High-elven ranger
+N:1006:テレリ族のレンジャー
+E:Telerin ranger
 G:h:G
 I:115:50d30:20:70:20
 W:40:3:0:500:0:0
@@ -20314,11 +20318,11 @@ B:HIT:HURT:10d8
 B:HIT:HURT:10d8
 F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
 F:ONLY_ITEM | DROP_1D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
-F:IM_ACID | IM_COLD | RES_WATE | RES_NETH |
-S:1_IN_2 |
+F:IM_ACID | IM_COLD | RES_WATE | RES_NETH | MOB_300 | ALLIANCE_VALINOR
+S:1_IN_2
 S:SHOOT
 D:$An elf cloaked in green wielding a longbow.
-D:緑のクロークをまとい、長弓を使うエルフだ。
+D:緑のクロークをまとい、長弓を使うテレリ族のエルフだ。
 
 N:1007:巨大ゴキブリ
 E:Giant cockroach
@@ -22125,11 +22129,11 @@ N:1104:おじゃまぷよ
 E:Hindrance puyo
 G:j:B
 I:108:30d6:15:60:50
-W:30:10:0:50:0:0
+W:30:10:0:50:500:1571
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK | NEVER_BLOW
 F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY |
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
-D:$A mysterious clear jelly thing.  It looks ready to explode.
+D:$A mysterious clear jelly thing.
 D:透明でぷよぷよした謎の生物だ。
 
 N:1105:汗血馬
@@ -27724,6 +27728,7 @@ F:DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD | ONLY_ITEM | RES_TELE | WARRIOR
 F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NONLIVING
 F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN | POWERFUL | SMART
 F:RES_CHAO | RES_NEXU | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+F:ALLIANCE_UTUMNO
 S:1_IN_4 |
 S:SHOOT | HASTE | BO_MANA 
 D:「赤表紙本」にも子細な記述の乏しい、メルコール率いるウトゥムノの一統にあった「バルログ」の古名。
@@ -28691,8 +28696,8 @@ F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | HURT_ROCK | NONLIVING
 S:1_IN_4
 S:BA_POIS | BR_POIS
 D:便器に鎮座するクッソ汚い守護者だ。
-F:SPAWN_ITEM_13_IN_180_752
-F:DROP_KIND_1_IN_2_752_0_1d1
+F:SPAWN_ITEM_13_IN_180_753
+F:DROP_KIND_1_IN_2_753_0_1d1
 
 N:1507:キング・ベヒんモス
 E:King Behinmoth
@@ -29342,6 +29347,7 @@ W:35:3:0:2000:0:0
 B:CRUSH:SUPERHURT:5d5
 B:PUNCH:HURT:4d10
 B:PUNCH:HURT:4d10
+R:1562:4d5
 F:UNIQUE | MALE | FORCE_MAXHP
 F:DROP_1D2 | DROP_GOOD | WILD_WOOD | REGENERATE
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
@@ -29589,7 +29595,7 @@ B:PUNCH:HURT:3d4
 B:PUNCH:HURT:3d4
 B:PUNCH:HURT:3d4
 F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE | DROP_NASTY
-F:WILD_WOOD | HAS_LITE_1 | EVIL | MALE | NASTY | CAN_SPEAK
+F:WILD_WOOD | HAS_LITE_1 | EVIL | MALE | NASTY | CAN_SPEAK | MOB_45
 D:しっとマスク共に嫉妬に駆られて、日々アベックを襲撃する異常者集団だ。
 
 N:1563:ホビットの民兵
@@ -29603,6 +29609,7 @@ F:MALE | HAS_LITE_1 |
 F:DROP_60 | HOBBIT
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:GOOD
+F:MOB_145
 D:己の村を守るため外敵を取り除かんとするホビットの住民だ。
 
 N:1564:教育実習生？『人見広介』
@@ -29621,6 +29628,321 @@ F:RAND_25 | RAND_50 | WILD_TOWN | WILD_ONLY
 F:TAKE_ITEM | OPEN_DOOR | UNIQUE | STUPID | WEIRD_MIND
 D:$'Where should we go?' You just can't help feeling sorry for him.
 D:「∴さて‥‥どこへ行こうか？」彼を見ると、どうしても哀れだという思いを禁じ得ない。
+
+N:1565:ケンカ柔道『加納剛次』
+E:Gouzi Kanou, the Kenka Judo
+G:p:u
+I:115:30d80:25:80:7
+W:26:1:0:1000:0:0
+B:HIT:SUPERHURT:1d21
+B:HIT:SUPERHURT:1d14
+B:HIT:SUPERHURT:1d14
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | UNIQUE
+F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | QUANTUM | KARATEKA
+D:表面的にはオリンピック選手として品行方正を努めるがその実には、
+D:暴君的なまでの強さへの追及を抱く柔道の使い手だ。
+D:彼はスポーツではなく純粋なる格闘技としての柔道を求めている。
+
+N:1566:アヴァリ族のレンジャー
+E:Avarin ranger
+G:h:G
+I:115:50d32:20:70:20
+W:42:3:0:550:0:0
+B:SHOOT:HURT:8d6
+B:HIT:HURT:12d8
+B:HIT:HURT:12d8
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
+F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SMART |
+F:IM_POIS | IM_COLD | RES_WATE | RES_NETH | MOB_350
+S:1_IN_3
+S:SHOOT
+D:アルダの古の時代にヴァリノールからの招聘を懐疑し、古ウルク族との相克、
+D:時には協調をも選んだエルフの末裔だ。そのほとんどは様々な種族と混血し
+D:より屈強かつ狡猾に生き延びてきた。
+
+N:1567:『精神病院院長』
+E:the Director of Mental Hospital
+G:p:o
+I:110:17d10:20:25:20
+W:8:5:0:100:0:0
+B:HIT:HURT:1d13
+B:HIT:HURT:1d13
+B:SHOOT:HURT:1d15
+R:1082:2d3
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | JOKE
+F:FORCE_MAXHP | CAN_SPEAK | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
+S:1_IN_4
+S:SHOOT
+D:およそ未来社会どころか現代の医療コンプライアンスにも反した精神病院を経営している院長だ。
+D:しかしその暴挙は必然でのことで、彼はジュラル星人と結託して世界征服を目論見、
+D:病院の最奥でヨーロッパの半分が消滅するほどのミサイルを作っていた本当の狂人である。
+
+N:1568:ケツ妹子
+E:Ketsu imoko
+G:H:u
+I:110:22d9:30:20:20
+W:7:5:0:30:0:0
+B:BITE:HURT:7d1
+B:KICK:HURT:7d1
+B:KICK:HURT:7d1
+F:RAND_50 | STUPID | WEIRD_MIND | DROP_CORPSE | FRIENDS | NASTY
+D:ある常人ならざる偉人が夢の中に見た狂気の産物だ。
+
+N:1569:跳刃地背拳の使い手『フォックス』
+E:Fox, the Camouflaged Death and Jumping Attack Arts
+G:~:W
+I:130:20d6:20:40:0
+W:15:5:0:30:0:0
+B:SLASH:HURT:9d5
+B:SLASH:HURT:9d5
+B:SLASH:HURT:9d5
+B:SLASH:HURT:9d5
+F:NEVER_MOVE | HUMAN | NO_FEAR |
+F:STUPID | NO_CONF | NO_SLEEP |
+F:EVIL | FORCE_MAXHP
+D:ただの悪党の死体にしか見えないが……
+
+N:1570:猥褻男子寮の『妖精さん』
+E:Mr.Fairy of Obscene Men's Dormitory
+G:I:G
+I:120:60d10:40:180:10
+W:30:2:0:1400:0:0
+B:TOUCH:HURT:4d7
+B:TOUCH:HURT:4d7
+B:TOUCH:UN_BONUS:9d5
+F:PREVENT_SUDDEN_MAGIC | MALE
+F:CAN_FLY | UNIQUE | FORCE_MAXHP
+F:WEIRD_MIND | BASH_DOOR | ATTR_MULTI | ATTR_ANY |
+F:RES_CHAO | NO_CONF | NO_SLEEP | HOMO_SEXUAL | NASTY
+D:存在を口にするだけで頭がおかしいと思われても仕方のない
+D:このクッソ汚いホモの妖精は、しかし確かに実在していたのだ（絶望）
+
+N:1571:固ぷよ
+E:Hard puyo
+G:#:B
+I:107:30d20:15:120:50
+W:35:10:0:50:0:0
+F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK | NEVER_BLOW
+F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY |
+F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
+D:$A mysterious clear and hard cube thing.
+D:透明で硬い立方体状の謎の生物だ。
+
+N:1572:理不尽にも吹き飛ぶおっさん
+E:Unreasonably blown away man
+G:t:w
+I:109:3d10:10:1-0:12
+W:7:10:0:200:0:0
+B:EXPLODE:SHATTER:15d10
+F:GOOD | DROP_90 | FRIENDS | HUMAN
+F:EMPTY_MIND | WILD_TOWN | CAN_SPEAK | MALE | JOKE
+F:OPEN_DOOR | BASH_DOOR | RES_TELE
+D:永遠に続くかに思われた文明を謳歌しながら、
+D:ある時理不尽に吹き飛ばされたという前史の人類だ。
+D:なぜ吹き飛んだのかは永遠の謎だ。
+
+N:1573:パーティ・パロット
+E:Party Parrot
+G:B:g
+I:120:1d10:10:0:0
+W:0:4:0:100:0:0
+F:DROP_CORPSE | ANIMAL | NEVER_BLOW | NO_FEAR | RAND_25 | ATTR_MULTI
+F:WILD_GRASS | WILD_TOWN | FRIENDS | FRIENDLY
+D:$PARTY OR DIE.
+D:この愛すべき鳥類は、『パーティか死か』を常に迫られている。
+
+# レールフラグの実装後はレールに乗せてあげてください。
+N:1574:軌道砲塔「ラハブ」
+E:Rail Cannon Rahab
+G:g:o
+I:120:200d1:50:50:3
+W:50:4:0:8000:0:0
+F:NONLIVING | NEVER_BLOW | SMART | POWERFUL | NO_STUN | NO_FEAR
+F:NO_CONF | NO_SLEEP | HURT_FIRE | RES_LITE | RES_PLAS | RES_WALL
+F:NEVER_MOVE | WEIRD_MIND
+S:1_IN_1
+S:BA_LITE | BO_MANA
+D:$  Model: SG-RA4
+D:$  A defensive mobile battery built on the deck of a fortress.
+D:$  It has two armaments, an anti-ship beam cannon and an anti-mobility beam cannon.
+D:$  It moves on rails built into the fortress deck for defense. It can be said to be an armament of the fortress itself rather than a weapon.
+D:型式：SG-RA4
+D:　要塞の甲板につくられた防衛用の移動砲台
+D:　対艦ビーム砲と対機動ビーム砲の2つの武装をもっている
+D:　要塞甲板に作られたレール上を移動して防衛にあたります。兵器というよりは要塞自体の武装といえる
+D:　（アースライト,1992）
+
+N:1575:フェラチオザウルス
+E:Fellatiosaurus
+G:R:v
+I:115:1500d1:50:100:4
+W:35:2:0:2500:0:0
+B:ENGULF:EXP_VAMP:10d2
+B:ENGULF:EXP_VAMP:10d2
+B:ENGULF:DR_MANA:10d3
+F:DROP_2D2 | DROP_GOOD | ELDRITCH_HORROR | ANIMAL | RIDING | NO_FEAR
+F:NO_CONF | HURT_COLD | IM_ACID | IM_FIRE | RES_NEXU | RES_DISE
+F:RES_INER | RES_GRAV | KILL_BODY | NASTY
+D:$Fellatiosaurus (scientific name: Fellatiosaurus) is a carnivorous lecherous dragon that has been sexually active all over the Earth from the 1st century B.C. to the present (the end of the Mesozoic Era).
+D:$It is a very famous lecherous dragon, and has been depicted as a symbol of foreplay in various pornographic films with a penis theme, such as Deep Throat.
+D:フェラチオザウルス(学名:Fellatiosaurus)は、
+D:紀元前1世紀(諸説あり)～現在(中生代白濁紀末期マスカカズシテモラウ)の地球全土に性交渉している肉食淫竜。
+D:非常に有名な淫竜で、『ディープ・スロート』等の陰茎をテーマにした各種のポルノ作品においては、前戯の象徴として描（後略）
+
+N:1576:オレンジ色の水晶像
+E:Orange crystal statue
+G:g:o
+I:120:800d1:50:100:5
+W:80:4:0:12000:0:0
+F:EVIL | NONLIVING | NEVER_BLOW | SMART | NO_STUN | NO_FEAR
+F:NO_CONF | NO_SLEEP | HURT_ROCK | IM_ELEC | IM_FIRE | IM_COLD
+F:IM_POIS | RES_NETH | RES_CHAO | RES_DISE | RES_GRAV | RES_TELE
+F:NEVER_MOVE | COLD_BLOOD | EMPTY_MIND
+S:1_IN_2
+S:DRAIN_MANA | BRAIN_SMASH | CONF | S_MONSTERS
+D:$An intricately carved idol of some nameless godling, hewn of translucent orange crystal.
+D:$Its lifeless eyes seem to glitter uncannily with a wicked intelligence.
+D:$It is capable of unleashing a powerful psychic assault upon the minds of any who approach it.
+D:半透明のオレンジ色の水晶で精巧に彫られた名もなき小神の彫像だ。
+D:その生命のない目は邪悪な知性で不思議なことに煌めいて見える。
+D:それは近づく者の心に強力な精神攻撃を解き放つだろう。（Dungeon Crawl)
+
+N:1577:算数教師『バルディ先生』
+E:Mr.Baldi, the Arithmetic Teacher
+G:p:o
+I:110:20d20:100:30:25
+W:33:3:0:1500:0:0
+B:HIT:HURT:15d15
+F:UNIQUE | FORCE_MAXHP | MALE | HUMAN | EVIL
+F:DROP_3D2 | ONLY_ITEM | DROP_GOOD | DROP_CORPSE | DROP_SKELETON
+F:RES_TELE | NO_STUN | NO_CONF
+S:1_IN_2
+S:HASTE | SLOW
+D:彼は一度でも回答を間違えた生徒を決して許さない。
+
+N:1578:縄跳び少女『プレイタイム』
+E:Playtime
+G:p:r
+I:125:250d1:5:50:1
+W:33:1:0:500:0:0
+B:CRUSH:INERTIA:1d5
+B:CRUSH:INERTIA:1d5
+B:CRUSH:INERTIA:1d5
+B:CRUSH:PARALYZE:1d5
+F:UNIQUE | DROP_1D2 | ONLY_ITEM | DROP_CORPSE | EVIL | HUMAN
+F:FEMALE | STUPID | NO_FEAR | NO_CONF | RES_INER | RES_TIME
+F:RES_TELE | MOVE_BODY
+S:1_IN_2
+S:SHRIEK | SLOW
+D:$Despite her poor eyesight and short memory, she's always looking for a playmate!
+D:$"Let's play!"
+D:この愚かな少女は純粋に遊びたがっているだけだ。相手のことを一切考えないというだけで。
+D:彼女の記憶は長く持たず、またその目はあまり良く見えないにもかかわらず、いつも遊び相手を探している。
+D:「遊ぼうよ！」(Baldi's Basics,2018)
+
+N:1579:クッキーおばあちゃん
+E:Cookie grandma
+G:p:w
+I:110:3d3:10:30:10
+W:3:1:0:5:0:0
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+F:FEMALE | HUMAN | EVIL
+F:RAND_25 | DROP_SKELETON | DROP_CORPSE |
+F:OPEN_DOOR | BASH_DOOR
+F:SPAWN_ITEM_11_IN_1000_750
+F:DROP_KIND_1_IN_1_750_0_1d5
+D:クッキーを作ることが全てである時空から、クッキーを作る目的のためだけに
+D:この世界に来訪したおばあちゃんだ。あなたもクッキーの材料になるだろうと目論んでいる。
+
+N:1580:『しんのゆうしゃ』
+E:the Truly Brave Knight
+G:p:u
+I:110:3d6:20:0:25
+W:10:10:0:10:0:0
+B:HIT:HURT:2d5
+F:UNIQUE | DROP_CORPSE | MALE | HUMAN | STUPID
+F:DROP_SKELETON
+F:DROP_KIND_1_IN_1_42_0_1d1
+F:DROP_KIND_1_IN_1_346_0_1d2
+D:「わたしこそ　しんの　ゆうしゃだ！」
+
+N:1581:『ノルウェイアンブルー・パロット』
+E:Norwegian Blue Parrot
+G:~:B
+I:110:1d1:0:0:0
+W:0:1:0:0:0:0
+F:UNIQUE | DROP_CORPSE | ANIMAL | UNDEAD | NEVER_BLOW | NEVER_MOVE
+F:WILD_TOWN
+D:$This parrot, which does not exist in reality, is already dead.
+D:現実に存在しないこのオウムはすでに死んでいる。(Monty Python,1969)
+
+N:1582:アンガルタ装甲歩兵
+E:Armored infantry of Angalta
+G:o:B
+I:110:12d30:40:120:60
+W:39:2:0:2000:0:0
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | SMART
+F:DROP_CORPSE | DROP_SKELETON | HUMAN | ORC | FRIENDS
+S:1_IN_3 |
+S:ROCKET
+D:万色の賢者、サルマンが西方で化外として迫害されてきた
+D:人間とオークの混血部族たちを保護した後、数百年近くの指導の果てに
+D:アイゼンガルド改めアンガルタに産業革命を起こしたその成果だ。
+D:火薬と蒸気の力を振るう重装備を身にまとった巨躯の半オークたちは、
+D:上古エルフの精鋭とも渡り合える兵卒となった。
+
+N:1583:『ジュラルモンス』
+E:Juralmons
+G:g:W
+I:110:20d12:12:80:10
+W:22:2:0:490:0:0
+B:HIT:HURT:2d12
+B:HIT:HURT:2d12
+B:HIT:HURT:2d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS | 
+F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR | NONLIVING
+F:DROP_1D2 | ONLY_ITEM | DROP_GOOD | CAN_SWIM
+S:1_IN_3 | 
+S:MISSILE
+D:ジュラル星人の500年先の科学力が生み出した巨大な機械怪獣だ。
+
+N:1584:機動兵器ダインスレイヴ
+E:Mobile weapon Dainsleif
+G:}:y
+I:115:50d20:25:100:10
+W:64:3:0:8000:0:0
+B:SHOOT:HURT:22d12
+B:HIT:HURT:2d10
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS | FRIENDS | JOKE
+F:NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR | NONLIVING
+F:DROP_2D2 | ONLY_ITEM | DROP_GOOD | CAN_SWIM
+S:1_IN_3 |
+S:SHOOT
+D:これらがあれば人型機動兵器は全く意味をなさない。
+
+N:1585:鉄血のヒットマン
+E:Iron-blooded hitman
+G:p:s
+I:110:5d10:25:40:10
+W:15:3:0:150:0:0
+B:SHOOT:HURT:5d10
+B:HIT:HURT:2d10
+F:BASH_DOOR | OPEN_DOOR | FRIENDS | DROP_90 |
+F:NO_CONF | JOKE
+F:MALE | DROP_CORPSE | DROP_SKELETON
+S:1_IN_3 |
+S:SHOOT
+D:知性と論理が崩壊した哀れな未来人類の真の主役たちだ。
 
 # N: serial number : monster name
 # G: symbol : color
