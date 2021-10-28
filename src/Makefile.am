@@ -964,6 +964,7 @@ hengband_SOURCES = \
 	wizard/wizard-special-process.cpp wizard/wizard-special-process.h \
 	\
 	world/world.cpp world/world.h \
+	world/world-collapsion.cpp world/world-collapsion.h \
 	world/world-object.cpp world/world-object.h \
 	world/world-movement-processor.cpp world/world-movement-processor.h \
 	world/world-turn-processor.cpp world/world-turn-processor.h
