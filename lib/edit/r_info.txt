@@ -29889,7 +29889,7 @@ B:HIT:HURT:8d4
 B:HIT:HURT:8d4
 B:HIT:HURT:8d4
 F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | SMART
-F:DROP_CORPSE | DROP_SKELETON | HUMAN | ORC | FRIENDS
+F:DROP_CORPSE | DROP_SKELETON | HUMAN | ORC | FRIENDS | MOB_200
 S:1_IN_3 |
 S:ROCKET
 D:万色の賢者、サルマンが西方で化外として迫害されてきた
@@ -29943,6 +29943,24 @@ F:MALE | DROP_CORPSE | DROP_SKELETON
 S:1_IN_3 |
 S:SHOOT
 D:知性と論理が崩壊した哀れな未来人類の真の主役たちだ。
+
+N:1586:ヌメノール装甲歩兵
+E:Armored infantry of Numenor
+G:p:o
+I:113:13d28:40:120:20
+W:41:2:0:2100:0:0
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+B:SHOOT:HURT:20d6
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | SMART
+F:DROP_CORPSE | DROP_SKELETON | HUMAN | FRIENDS | MOB_1200
+S:1_IN_6 |
+S:BO_MANA
+D:ヌメノールがかつてウルクやエルフをしのぐ栄光を四海に広げた礎と言える士族階級の正規兵だ。
+D:彼らは真に軍事に優れた魔法的な金属は純ミスリルではなく種々の合金と知り、規格化し武装を量産した。
+D:その武装は魔術と金属工学を精細に知りようのない異邦の民からはしばしば単にアダマンと呼ばれていた。
+
 
 # N: serial number : monster name
 # G: symbol : color
