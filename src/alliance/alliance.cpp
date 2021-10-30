@@ -2,19 +2,25 @@
 #include "system/player-type-definition.h"
 
 const std::map<int, std::shared_ptr<Alliance>> alliance_list = {
-    { 0, std::make_unique<AllianceNone>(0, "NONE", _("無所属", "None")) },
-    { 1, std::make_unique<AllianceAmber>(1, "AMBER", _("アンバー", "Amber")) },
-    { 2, std::make_unique<AllianceCourtOfChaos>(2, "COCHAOS", _("混沌の宮廷", "Court of Chaos")) },
-    { 3, std::make_unique<AllianceValinor>(3, "VARINOR", _("ヴァリノール", "Valinor")) },
-    { 4, std::make_unique<AllianceCourtOfChaos>(4, "UTUMNO", _("ウトゥムノ", "Utumno")) }
+    { 0, std::make_unique<AllianceNone>(0, "NONE", _("無所属", "None"), 0) },
+    { 1, std::make_unique<AllianceAmber>(1, "AMBER", _("アンバー", "Amber"), 350000000L) },
+    { 2, std::make_unique<AllianceCourtOfChaos>(2, "COCHAOS", _("混沌の宮廷", "Court of Chaos"), 200000000L) },
+    { 3, std::make_unique<AllianceValinor>(3, "VARINOR", _("ヴァリノール", "Valinor"), 4000000L) },
+    { 4, std::make_unique<AllianceCourtOfChaos>(4, "UTUMNO", _("ウトゥムノ", "Utumno"), 3000000L) }
 };
 
-Alliance::Alliance(int id, std::string tag, std::string name)
+Alliance::Alliance(int id, std::string tag, std::string name, int64_t base_power)
     : id(id)
     , tag(tag)
     , name(name)
+    , base_power(base_power)
 {
 
+}
+
+int64_t Alliance::calcCurrentPower()
+{
+    return this->base_power;
 }
 
 int AllianceNone::calcImplessionPoint([[maybe_unused]] player_type *creature_ptr) const
