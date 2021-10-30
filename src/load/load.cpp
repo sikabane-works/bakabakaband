@@ -45,6 +45,7 @@
 #include "util/enum-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief 変愚蛮怒 v2.1.3で追加された街とクエストについて読み込む
@@ -95,11 +96,11 @@ static void rd_total_play_time()
 static void rd_world_info()
 {
     if (loading_savefile_version_is_older_than(9)) {
-        w_ptr->collapse_degree = 0;
+        wc_ptr->collapse_degree = 0;
         return;
     }
 
-    w_ptr->collapse_degree = rd_u32b();
+    wc_ptr->collapse_degree = rd_u32b();
 }
 
 /*!

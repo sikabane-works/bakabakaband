@@ -20,6 +20,7 @@
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief 宿屋で食事を摂る
@@ -90,7 +91,7 @@ static void pass_game_turn_by_stay(void)
     if (w_ptr->dungeon_turn >= w_ptr->dungeon_turn_limit)
         return;
 
-    w_ptr->collapse_degree += calc_world_collapse_plus(w_ptr) * (w_ptr->game_turn - oldturn) * 20;
+    wc_ptr->collapse_degree += calc_world_collapse_plus(w_ptr) * (w_ptr->game_turn - oldturn) * 20;
 
     w_ptr->dungeon_turn += std::min<int>((w_ptr->game_turn - oldturn), TURNS_PER_TICK * 250) * INN_DUNGEON_TURN_ADJ;
     if (w_ptr->dungeon_turn > w_ptr->dungeon_turn_limit)
