@@ -76,4 +76,3 @@ void add_winner_class(PlayerClassType c);
 void add_retired_class(PlayerClassType c);
 bool is_winner_class(PlayerClassType c);
 bool is_retired_class(PlayerClassType c);
-int32_t calc_world_collapse_plus(world_type *w_ptr);

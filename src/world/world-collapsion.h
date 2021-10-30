@@ -1,9 +1,13 @@
 ﻿#pragma once
 #include <cstdint>
 
+struct world_type;
+
 class WorldCollapsion {
 public:
     WorldCollapsion();
+    void plus_timed_world_collapsion(world_type *w_ptr, int multi);
+
     int32_t collapse_degree{}; /*!< 時空崩壊度 */
 };
 
