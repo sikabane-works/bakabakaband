@@ -13,6 +13,7 @@ enum class alliance_types {
     COURT_OF_CHAOS = 2, //!< 混沌の宮廷
     VALINOR = 3,        //!< ヴァリノール
     UTUMNO = 4,         //!< ウトゥムノ
+    JURAL = 5,         //!< ジュラル星人
     MAX,
 };
 
@@ -80,6 +81,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(player_type *creature_ptr) const override;
     virtual ~AllianceUtumno() = default;
+};
+
+class AllianceJural : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceJural() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceJural() = default;
 };
 
 extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;
