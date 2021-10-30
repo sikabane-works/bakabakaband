@@ -58,7 +58,7 @@ void do_cmd_knowledge(player_type *player_ptr)
             prt(_("(k) 現在の自動拾い/破壊設定              の一覧", "(k) Display auto pick/destroy"), 15, 5);
         } else {
             prt(_("(l) これまで行った行為                   の一覧", "(l) Display incident counter"), 6, 5);
-            prt(_("(m) アライアンスと印象値                 の一覧", "(l) Display alliance and their impression"), 7, 5);
+            prt(_("(m) アライアンス                         の一覧", "(m) Display alliance information"), 7, 5);
         }
 
         prt(_("-続く-", "-more-"), 17, 8);

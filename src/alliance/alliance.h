@@ -29,8 +29,10 @@ public:
     int id; //!< ID
     std::string tag; //!< タグ
     std::string name; //!< 陣営名
-    Alliance(int id, std::string tag, std::string name);
+    int64_t base_power; //!< 基本勢力指数
+    Alliance(int id, std::string tag, std::string name, int64_t base_power);
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int64_t calcCurrentPower();
     virtual int calcImplessionPoint(player_type *creature_ptr) const = 0;
     virtual ~Alliance() = default;
 };

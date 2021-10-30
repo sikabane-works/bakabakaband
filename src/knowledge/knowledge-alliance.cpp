@@ -20,11 +20,13 @@ void do_cmd_knowledge_alliance(player_type *player_ptr)
     
     for(auto a : alliance_list) {
         if(a.second->id == 0) continue;
-        fprintf(fff, "%-30s: %+5d\n", a.second->name.c_str(), a.second->calcImplessionPoint(player_ptr));
+        fprintf(fff, _("%-30s/ あなたへの印象値: %+5d \n", "%-30s/ Implession to you: %+5d \n"), a.second->name.c_str(), a.second->calcImplessionPoint(player_ptr));
+        fprintf(fff, _("  勢力指数: %12ld \n", "  Power Value: %12ld \n"), a.second->calcCurrentPower());
+        fprintf(fff, "\n\n");
     }
 
     angband_fclose(fff);
-    (void)show_file(player_ptr, true, file_name, _("各アライアンスからの印象値", "Impression degree from each alliances"), 0, 0);
+    (void)show_file(player_ptr, true, file_name, _("各アライアンス情報", "Information of all alliances"), 0, 0);
     fd_kill(file_name);
 
 }
