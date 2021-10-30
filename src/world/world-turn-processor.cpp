@@ -42,6 +42,7 @@
 #include "window/main-window-row-column.h"
 #include "world/world-movement-processor.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 WorldTurnProcessor::WorldTurnProcessor(player_type *player_ptr)
     : player_ptr(player_ptr)
@@ -96,7 +97,7 @@ void WorldTurnProcessor::process_world()
     sense_inventory2(this->player_ptr);
     execute_recall(this->player_ptr);
     execute_floor_reset(this->player_ptr);
-    w_ptr->collapse_degree += calc_world_collapse_plus(w_ptr);
+    wc_ptr->plus_timed_world_collapsion(w_ptr, 1);
 }
 
 /*!
@@ -123,7 +124,7 @@ void WorldTurnProcessor::print_world_collapse()
 {
     c_put_str(TERM_WHITE, "             ", ROW_COLLAPSE, COL_COLLAPSE);
     c_put_str(TERM_WHITE,
-        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), w_ptr->collapse_degree / 1000000, (w_ptr->collapse_degree / 10000) % 100), ROW_COLLAPSE,
+        format(_("時壊:%3d.%02d%%", "W.Col:%3d.%02d%%"), wc_ptr->collapse_degree / 1000000, (wc_ptr->collapse_degree / 10000) % 100), ROW_COLLAPSE,
         COL_COLLAPSE);
 }
 

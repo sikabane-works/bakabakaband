@@ -26,6 +26,7 @@
 #include "view/display-util.h"
 #include "view/status-first-page.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief プレイヤーの打撃能力修正を表示する
@@ -256,7 +257,7 @@ static void display_playtime_in_game(player_type *player_ptr)
 
     display_player_one_line(ENTRY_DAY, buf, TERM_L_GREEN);
 
-    display_player_one_line(ENTRY_WORLD_COLLAPSE, format("%3d.%06d%%", w_ptr->collapse_degree / 1000000, w_ptr->collapse_degree % 1000000), TERM_L_GREEN);
+    display_player_one_line(ENTRY_WORLD_COLLAPSE, format("%3d.%06d%%", wc_ptr->collapse_degree / 1000000, wc_ptr->collapse_degree % 1000000), TERM_L_GREEN);
 
     if (player_ptr->chp >= player_ptr->mhp)
         display_player_one_line(ENTRY_HP, format("%4d/%4d", player_ptr->chp, player_ptr->mhp), TERM_L_GREEN);

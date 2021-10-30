@@ -35,6 +35,8 @@
 #include "wizard/wizard-spells.h"
 #include "wizard/wizard-spoiler.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
+
 #include <sstream>
 #include <string>
 #include <tuple>
@@ -230,7 +232,7 @@ bool exe_cmd_debug(player_type *player_ptr, char cmd)
         wiz_lite(player_ptr, false);
         break;
     case 'v':
-        get_value("時空崩壊度(0.000001%単位)", 0, 100000000, &(w_ptr->collapse_degree));
+        get_value("時空崩壊度(0.000001%単位)", 0, 100000000, &(wc_ptr->collapse_degree));
         break;
     case 'w':
         wiz_lite(player_ptr, (bool)(player_ptr->pclass == PlayerClassType::NINJA));
