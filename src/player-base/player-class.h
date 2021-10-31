@@ -14,14 +14,13 @@ enum class MonkStance : uint8_t;
 
 class PlayerClass {
 public:
-    PlayerClass() = delete;
     PlayerClass(player_type *player_ptr);
     virtual ~PlayerClass() = default;
 
     TrFlags tr_flags() const;
     TrFlags form_tr_flags() const;
 
-    bool can_resist_stun() const;
+    bool has_stun_immunity() const;
     bool is_wizard() const;
 
     bool lose_balance();
