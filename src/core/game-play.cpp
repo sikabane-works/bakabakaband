@@ -93,6 +93,7 @@
 #include "window/main-window-util.h"
 #include "wizard/wizard-special-process.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 #include <ctime>
 
 static void restore_windows(player_type *player_ptr)
@@ -379,7 +380,7 @@ static void process_game_turn(player_type *player_ptr)
         msg_print(nullptr);
         load_game = false;
         decide_arena_death(player_ptr);
-        if (player_ptr->is_dead)
+        if (player_ptr->is_dead || wc_ptr->is_blown_away())
             break;
 
         change_floor(player_ptr);

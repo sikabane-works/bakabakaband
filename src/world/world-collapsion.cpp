@@ -9,6 +9,11 @@ WorldCollapsion::WorldCollapsion()
     this->collapse_degree = 0;
 }
 
+bool WorldCollapsion::is_blown_away()
+{
+    return this->collapse_degree >= 100000000;
+}
+
 
 /*!
  * @brief 時空崩壊度自然進行度計算

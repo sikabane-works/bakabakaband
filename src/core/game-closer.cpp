@@ -31,6 +31,7 @@
 #include "view/display-player.h"
 #include "view/display-scores.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 static void clear_floor(player_type *player_ptr)
 {
@@ -56,13 +57,13 @@ static void send_world_score_on_closing(player_type *player_ptr, bool do_send)
 }
 
 /*!
- * @brief ゲームクローズ時、プレイヤーが死亡しているかのチェックを行い死亡していないならば、確認キー入力とスコア表示、現フロアの初期化を行う。
+ * @brief ゲームクローズ時、プレイヤーが死亡か世界崩壊しているかのしているかのチェックを行いそうならば確認キー入力とスコア表示、現フロアの初期化を行う。
  * @param player_ptr プレイヤー構造体参照ポインタ。
  * @return 死亡していればTRUE, まだ生きているならば各処理を済ませた上ででFALSE。
  */
 static bool check_death(player_type *player_ptr)
 {
-    if (player_ptr->is_dead)
+    if (player_ptr->is_dead || wc_ptr->is_blown_away() )
         return true;
 
     do_cmd_save_game(player_ptr, false);
