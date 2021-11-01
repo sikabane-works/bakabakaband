@@ -28101,7 +28101,7 @@ D:それはただの下り坑道に見えるが、おや？ちょっと待てよ
 N:1471:全裸騎士
 E:Knaked knight
 G:p:u
-I:103:14d10:20:10:10
+I:107:14d10:20:10:10
 W:15:2:0:120:0:0
 B:HIT:HURT:5d5
 F:MALE | HUMAN | FRIENDS
@@ -28127,7 +28127,7 @@ D:本来海の脅威であるはずの存在が、台風に乗って襲い来る
 N:1473:ケツホルデス騎士
 E:Ketholdeth knight
 G:p:s
-I:103:14d10:20:10:10
+I:107:14d10:20:10:10
 W:15:2:0:120:0:0
 B:HIT:HURT:5d5
 F:MALE | HUMAN | FRIENDS
@@ -29244,7 +29244,7 @@ D:よりエレガントな男に変身することができるのだ。
 N:1539:デビルレイク『バーマ』
 E:Barma of The Devil lake
 G:h:g
-I:105:10d25:40:60:0
+I:108:10d25:40:60:0
 W:8:2:0:60:0:0
 B:HIT:HURT:2d16
 B:HIT:HURT:2d16
@@ -30011,6 +30011,17 @@ F:DROP_KIND_1_IN_1_40_1_1d1
 F:DROP_KIND_1_IN_8_748_0_1d1
 F:DROP_KIND_1_IN_8_749_0_1d1
 D:首長処刑刀術を使う残忍な戦士だ。
+
+N:1590:『プリンセス＊ケツホルデス』
+E:Princess Ketholdeth
+G:p:r
+I:110:14d12:18:20:10
+W:16:2:0:120:0:0
+B:PUNCH:HURT:7d5
+F:FEMALE | HUMAN | UNIQUE | FORCE_MAXHP
+F:PREVENT_SUDDEN_MAGIC | DROP_2D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:全裸騎士団の仇たる邪悪な女王だ。
 
 
 # N: serial number : monster name
