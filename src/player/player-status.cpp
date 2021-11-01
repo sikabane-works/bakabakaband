@@ -150,44 +150,6 @@ static player_hand main_attack_hand(player_type *player_ptr);
 /*** Player information ***/
 
 /*!
- * @brief 武器や各種スキル（騎乗以外）の抽象的表現ランクを返す。 /  Return proficiency level of weapons and misc. skills (except riding)
- * @param weapon_exp 経験値
- * @return ランク値
- */
-int weapon_exp_level(int weapon_exp)
-{
-    if (weapon_exp < WEAPON_EXP_BEGINNER)
-        return EXP_LEVEL_UNSKILLED;
-    else if (weapon_exp < WEAPON_EXP_SKILLED)
-        return EXP_LEVEL_BEGINNER;
-    else if (weapon_exp < WEAPON_EXP_EXPERT)
-        return EXP_LEVEL_SKILLED;
-    else if (weapon_exp < WEAPON_EXP_MASTER)
-        return EXP_LEVEL_EXPERT;
-    else
-        return EXP_LEVEL_MASTER;
-}
-
-/*!
- * @brief 騎乗スキルの抽象的ランクを返す。 / Return proficiency level of riding
- * @param weapon_exp 経験値
- * @return ランク値
- */
-int riding_exp_level(int riding_exp)
-{
-    if (riding_exp < RIDING_EXP_BEGINNER)
-        return EXP_LEVEL_UNSKILLED;
-    else if (riding_exp < RIDING_EXP_SKILLED)
-        return EXP_LEVEL_BEGINNER;
-    else if (riding_exp < RIDING_EXP_EXPERT)
-        return EXP_LEVEL_SKILLED;
-    else if (riding_exp < RIDING_EXP_MASTER)
-        return EXP_LEVEL_EXPERT;
-    else
-        return EXP_LEVEL_MASTER;
-}
-
-/*!
  * @brief プレイヤーの呪文レベルの抽象的ランクを返す。 / Return proficiency level of spells
  * @param spell_exp 経験値
  * @return ランク値
@@ -264,6 +226,29 @@ WEIGHT calc_inventory_weight(player_type *player_ptr)
     }
     return weight;
 }
+
+static void update_ability_scores(player_type *player_ptr)
+{
+    PlayerStrength player_str(player_ptr);
+    PlayerIntelligence player_int(player_ptr);
+    PlayerWisdom player_wis(player_ptr);
+    PlayerDexterity player_dex(player_ptr);
+    PlayerConstitution player_con(player_ptr);
+    PlayerCharisma player_chr(player_ptr);
+    player_ptr->stat_add[A_STR] = player_str.modification_value();
+    player_ptr->stat_add[A_INT] = player_str.modification_value();
+    player_ptr->stat_add[A_WIS] = player_wis.modification_value();
+    player_ptr->stat_add[A_DEX] = player_dex.modification_value();
+    player_ptr->stat_add[A_CON] = player_con.modification_value();
+    player_ptr->stat_add[A_CHR] = player_chr.modification_value();
+    player_str.update_value();
+    player_int.update_value();
+    player_wis.update_value();
+    player_dex.update_value();
+    player_con.update_value();
+    player_chr.update_value();
+}
+
 /*!
  * @brief プレイヤーの全ステータスを更新する /
  * Calculate the players current "state", taking into account
@@ -360,20 +345,7 @@ static void update_bonuses(player_type *player_ptr)
         }
     }
 
-    player_ptr->stat_add[A_STR] = PlayerStrength(player_ptr).modification_value();
-    player_ptr->stat_add[A_INT] = PlayerIntelligence(player_ptr).modification_value();
-    player_ptr->stat_add[A_WIS] = PlayerWisdom(player_ptr).modification_value();
-    player_ptr->stat_add[A_DEX] = PlayerDexterity(player_ptr).modification_value();
-    player_ptr->stat_add[A_CON] = PlayerConstitution(player_ptr).modification_value();
-    player_ptr->stat_add[A_CHR] = PlayerCharisma(player_ptr).modification_value();
-
-    PlayerStrength(player_ptr).update_value();
-    PlayerIntelligence(player_ptr).update_value();
-    PlayerWisdom(player_ptr).update_value();
-    PlayerDexterity(player_ptr).update_value();
-    PlayerConstitution(player_ptr).update_value();
-    PlayerCharisma(player_ptr).update_value();
-
+    update_ability_scores(player_ptr);
     o_ptr = &player_ptr->inventory_list[INVEN_BOW];
     if (o_ptr->k_idx) {
         player_ptr->tval_ammo = bow_tval_ammo(o_ptr);
@@ -2142,7 +2114,7 @@ static short calc_to_hit(player_type *player_ptr, INVENTORY_IDX slot, bool is_re
                 break;
             /* fall through */
         case MELEE_TYPE_BAREHAND_TWO:
-            hit += (player_ptr->skill_exp[SKILL_MARTIAL_ARTS] - WEAPON_EXP_BEGINNER) / 200;
+            hit += (player_ptr->skill_exp[SKILL_MARTIAL_ARTS] - PlayerSkill::weapon_exp_at(EXP_LEVEL_BEGINNER)) / 200;
             break;
 
         default:
@@ -2163,7 +2135,7 @@ static short calc_to_hit(player_type *player_ptr, INVENTORY_IDX slot, bool is_re
         auto flgs = object_flags(o_ptr);
 
         /* Traind bonuses */
-        hit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - WEAPON_EXP_BEGINNER) / 200;
+        hit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - PlayerSkill::weapon_exp_at(EXP_LEVEL_BEGINNER)) / 200;
 
         /* Weight penalty */
         if (calc_weapon_weight_limit(player_ptr) < o_ptr->weight / 10) {

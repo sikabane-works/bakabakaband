@@ -1,4 +1,5 @@
 ﻿#include "view/display-lore-status.h"
+#include "locale/japanese.h"
 #include "lore/lore-calculator.h"
 #include "lore/lore-util.h"
 #include "monster-race/monster-race.h"
@@ -10,9 +11,6 @@
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "term/term-color-types.h"
-#ifdef JP
-#include "locale/japanese.h"
-#endif
 
 void display_monster_hp_ac(lore_type *lore_ptr)
 {
@@ -333,7 +331,7 @@ void display_monster_resistances(lore_type *lore_ptr)
     hooked_roff(_("の耐性を持っている。", ".  "));
 }
 
-void display_monster_evolution(lore_type* lore_ptr)
+void display_monster_evolution(lore_type *lore_ptr)
 {
     if (!lore_ptr->r_ptr->r_can_evolve && !lore_ptr->know_everything)
         return;
