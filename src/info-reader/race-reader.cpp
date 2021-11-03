@@ -107,6 +107,10 @@ errr parse_r_info(std::string_view buf, angband_header *)
 #else
         r_ptr->name = tokens[1];
 #endif
+    } else if (tokens[0] == "T") {
+        if (tokens.size() < 2 || tokens[1].size() == 0)
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        r_ptr->tag = tokens[1];
     } else if (tokens[0] == "D") {
         // D:text_ja
         // D:$text_en
