@@ -67,7 +67,7 @@ SpellHex::SpellHex(player_type *player_ptr, monap_type *monap_ptr)
 void SpellHex::stop_all_spells()
 {
     for (auto spell : this->casting_spells) {
-        exe_spell(this->player_ptr, REALM_HEX, spell, SPELL_STOP);
+        exe_spell(this->player_ptr, REALM_HEX, spell, SpellProcessType::STOP);
     }
 
     this->spell_hex_data->casting_spells.clear();
@@ -108,7 +108,7 @@ bool SpellHex::stop_spells_with_selection()
     screen_load();
     if (is_selected) {
         auto n = this->casting_spells[A2I(choice)];
-        exe_spell(this->player_ptr, REALM_HEX, n, SPELL_STOP);
+        exe_spell(this->player_ptr, REALM_HEX, n, SpellProcessType::STOP);
         this->reset_casting_flag(i2enum<spell_hex_type>(n));
     }
 
@@ -161,7 +161,7 @@ void SpellHex::display_casting_spells_list()
     prt(_("     名前", "     Name"), y, x + 5);
     for (auto spell : this->casting_spells) {
         term_erase(x, y + n + 1, 255);
-        auto spell_result = exe_spell(this->player_ptr, REALM_HEX, spell, SPELL_NAME);
+        auto spell_result = exe_spell(this->player_ptr, REALM_HEX, spell, SpellProcessType::NAME);
         put_str(format("%c)  %s", I2A(n), spell_result), y + n + 1, x + 2);
         n++;
     }
@@ -192,7 +192,7 @@ void SpellHex::decrease_mana()
 
     this->gain_exp();
     for (auto spell : this->casting_spells) {
-        exe_spell(this->player_ptr, REALM_HEX, spell, SPELL_CONTNUATION);
+        exe_spell(this->player_ptr, REALM_HEX, spell, SpellProcessType::CONTNUATION);
     }
 }
 
@@ -254,76 +254,13 @@ int SpellHex::calc_need_mana()
 
 void SpellHex::gain_exp()
 {
+    PlayerSkill ps(player_ptr);
     for (auto spell : this->casting_spells) {
         if (!this->is_spelling_specific(spell)) {
             continue;
         }
 
-        if (this->player_ptr->spell_exp[spell] < SPELL_EXP_BEGINNER) {
-            this->player_ptr->spell_exp[spell] += 5;
-            continue;
-        }
-
-        if (this->gain_exp_skilled(spell)) {
-            continue;
-        }
-
-        if (this->gain_exp_expert(spell)) {
-            continue;
-        }
-
-        this->gain_exp_master(spell);
-    }
-}
-
-bool SpellHex::gain_exp_skilled(const int spell)
-{
-    if (this->player_ptr->spell_exp[spell] >= SPELL_EXP_SKILLED) {
-        return false;
-    }
-
-    auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto gain_condition = one_in_(2);
-    gain_condition &= floor_ptr->dun_level > 4;
-    gain_condition &= (floor_ptr->dun_level + 10) > this->player_ptr->lev;
-    if (gain_condition) {
-        this->player_ptr->spell_exp[spell]++;
-    }
-
-    return true;
-}
-
-bool SpellHex::gain_exp_expert(const int spell)
-{
-    if (this->player_ptr->spell_exp[spell] >= SPELL_EXP_EXPERT) {
-        return false;
-    }
-
-    const auto *s_ptr = &technic_info[REALM_HEX - MIN_TECHNIC][spell];
-    auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto gain_condition = one_in_(5);
-    gain_condition &= (floor_ptr->dun_level + 5) > this->player_ptr->lev;
-    gain_condition &= (floor_ptr->dun_level + 5) > s_ptr->slevel;
-    if (gain_condition) {
-        this->player_ptr->spell_exp[spell]++;
-    }
-
-    return true;
-}
-
-void SpellHex::gain_exp_master(const int spell)
-{
-    if (this->player_ptr->spell_exp[spell] >= SPELL_EXP_MASTER) {
-        return;
-    }
-
-    const auto *s_ptr = &technic_info[REALM_HEX - MIN_TECHNIC][spell];
-    auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto gain_condition = one_in_(5);
-    gain_condition &= (floor_ptr->dun_level + 5) > this->player_ptr->lev;
-    gain_condition &= floor_ptr->dun_level > s_ptr->slevel;
-    if (gain_condition) {
-        this->player_ptr->spell_exp[spell]++;
+        ps.gain_continuous_spell_skill_exp(REALM_HEX, spell);
     }
 }
 
@@ -349,10 +286,10 @@ void SpellHex::continue_revenge()
 
     switch (this->get_revenge_type()) {
     case SpellHexRevengeType::PATIENCE:
-        exe_spell(this->player_ptr, REALM_HEX, HEX_PATIENCE, SPELL_CONTNUATION);
+        exe_spell(this->player_ptr, REALM_HEX, HEX_PATIENCE, SpellProcessType::CONTNUATION);
         return;
     case SpellHexRevengeType::REVENGE:
-        exe_spell(this->player_ptr, REALM_HEX, HEX_REVENGE, SPELL_CONTNUATION);
+        exe_spell(this->player_ptr, REALM_HEX, HEX_REVENGE, SpellProcessType::CONTNUATION);
         return;
     default:
         return;

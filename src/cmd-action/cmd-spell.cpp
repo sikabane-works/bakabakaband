@@ -502,10 +502,10 @@ static int get_spell(player_type *player_ptr, SPELL_IDX *sn, concptr prompt, OBJ
 #ifdef JP
             jverb(prompt, jverb_buf, JVERB_AND);
             /* 英日切り替え機能に対応 */
-            (void)strnfmt(tmp_val, 78, "%s(MP%d, 失敗率%d%%)を%sますか? ", exe_spell(player_ptr, use_realm, spell, SPELL_NAME), need_mana,
+            (void)strnfmt(tmp_val, 78, "%s(MP%d, 失敗率%d%%)を%sますか? ", exe_spell(player_ptr, use_realm, spell, SpellProcessType::NAME), need_mana,
                 spell_chance(player_ptr, spell, use_realm), jverb_buf);
 #else
-            (void)strnfmt(tmp_val, 78, "%^s %s (%d mana, %d%% fail)? ", prompt, exe_spell(player_ptr, use_realm, spell, SPELL_NAME), need_mana,
+            (void)strnfmt(tmp_val, 78, "%^s %s (%d mana, %d%% fail)? ", prompt, exe_spell(player_ptr, use_realm, spell, SpellProcessType::NAME), need_mana,
                 spell_chance(player_ptr, spell, use_realm));
 #endif
 
@@ -699,7 +699,7 @@ void do_cmd_browse(player_type *player_ptr)
         term_erase(14, 12, 255);
         term_erase(14, 11, 255);
 
-        shape_buffer(exe_spell(player_ptr, use_realm, spell, SPELL_DESCRIPTION), 62, temp, sizeof(temp));
+        shape_buffer(exe_spell(player_ptr, use_realm, spell, SpellProcessType::DESCRIPTION), 62, temp, sizeof(temp));
 
         for (j = 0, line = 11; temp[j]; j += 1 + strlen(&temp[j])) {
             prt(&temp[j], line, 15);
@@ -728,7 +728,7 @@ static void change_realm2(player_type *player_ptr, int16_t next_realm)
         player_ptr->spell_order[j] = 99;
 
     for (i = 32; i < 64; i++) {
-        player_ptr->spell_exp[i] = SPELL_EXP_UNSKILLED;
+        player_ptr->spell_exp[i] = PlayerSkill::spell_exp_at(PlayerSkillRank::UNSKILLED);
     }
     player_ptr->spell_learned2 = 0L;
     player_ptr->spell_worked2 = 0L;
@@ -879,10 +879,9 @@ void do_cmd_study(player_type *player_ptr)
     }
 
     if (learned) {
-        int max_exp = (spell < 32) ? SPELL_EXP_MASTER : SPELL_EXP_EXPERT;
+        auto max_exp = PlayerSkill::spell_exp_at((spell < 32) ? PlayerSkillRank::MASTER : PlayerSkillRank::EXPERT);
         int old_exp = player_ptr->spell_exp[spell];
-        int new_rank = EXP_LEVEL_UNSKILLED;
-        concptr name = exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SPELL_NAME);
+        concptr name = exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SpellProcessType::NAME);
 
         if (old_exp >= max_exp) {
             msg_format(_("その%sは完全に使いこなせるので学ぶ必要はない。", "You don't need to study this %s anymore."), p);
@@ -895,23 +894,11 @@ void do_cmd_study(player_type *player_ptr)
 #endif
         {
             return;
-        } else if (old_exp >= SPELL_EXP_EXPERT) {
-            player_ptr->spell_exp[spell] = SPELL_EXP_MASTER;
-            new_rank = EXP_LEVEL_MASTER;
-        } else if (old_exp >= SPELL_EXP_SKILLED) {
-            if (spell >= 32)
-                player_ptr->spell_exp[spell] = SPELL_EXP_EXPERT;
-            else
-                player_ptr->spell_exp[spell] += SPELL_EXP_EXPERT - SPELL_EXP_SKILLED;
-            new_rank = EXP_LEVEL_EXPERT;
-        } else if (old_exp >= SPELL_EXP_BEGINNER) {
-            player_ptr->spell_exp[spell] = SPELL_EXP_SKILLED + (old_exp - SPELL_EXP_BEGINNER) * 2 / 3;
-            new_rank = EXP_LEVEL_SKILLED;
-        } else {
-            player_ptr->spell_exp[spell] = SPELL_EXP_BEGINNER + old_exp / 3;
-            new_rank = EXP_LEVEL_BEGINNER;
         }
-        msg_format(_("%sの熟練度が%sに上がった。", "Your proficiency of %s is now %s rank."), name, exp_level_str[new_rank]);
+
+        auto new_rank = PlayerSkill(player_ptr).gain_spell_skill_exp_over_learning(spell);
+        auto new_rank_str = PlayerSkill::skill_rank_str(new_rank);
+        msg_format(_("%sの熟練度が%sに上がった。", "Your proficiency of %s is now %s rank."), name, new_rank_str);
     } else {
         /* Find the next open entry in "player_ptr->spell_order[]" */
         for (i = 0; i < 64; i++) {
@@ -927,12 +914,12 @@ void do_cmd_study(player_type *player_ptr)
 #ifdef JP
         /* 英日切り替え機能に対応 */
         if (mp_ptr->spell_book == ItemKindType::MUSIC_BOOK) {
-            msg_format("%sを学んだ。", exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SPELL_NAME));
+            msg_format("%sを学んだ。", exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SpellProcessType::NAME));
         } else {
-            msg_format("%sの%sを学んだ。", exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SPELL_NAME), p);
+            msg_format("%sの%sを学んだ。", exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SpellProcessType::NAME), p);
         }
 #else
-        msg_format("You have learned the %s of %s.", p, exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SPELL_NAME));
+        msg_format("You have learned the %s of %s.", p, exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SpellProcessType::NAME));
 #endif
     }
 
@@ -1167,7 +1154,7 @@ bool do_cmd_cast(player_type *player_ptr)
         }
 
         /* Failure casting may activate some side effect */
-        exe_spell(player_ptr, realm, spell, SPELL_FAIL);
+        exe_spell(player_ptr, realm, spell, SpellProcessType::FAIL);
 
         if ((o_ptr->tval == ItemKindType::CHAOS_BOOK) && (randint1(100) < spell)) {
             msg_print(_("カオス的な効果を発生した！", "You produce a chaotic effect!"));
@@ -1193,7 +1180,7 @@ bool do_cmd_cast(player_type *player_ptr)
     /* Process spell */
     else {
         /* Canceled spells cost neither a turn nor mana */
-        if (!exe_spell(player_ptr, realm, spell, SPELL_CAST))
+        if (!exe_spell(player_ptr, realm, spell, SpellProcessType::CAST))
             return false;
 
         if (randint1(100) < chance)
@@ -1312,22 +1299,7 @@ bool do_cmd_cast(player_type *player_ptr)
             break;
         }
         if (any_bits(mp_ptr->spell_xtra, extra_magic_gain_exp)) {
-            int16_t cur_exp = player_ptr->spell_exp[(increment ? 32 : 0) + spell];
-            int16_t exp_gain = 0;
-
-            if (cur_exp < SPELL_EXP_BEGINNER)
-                exp_gain += 60;
-            else if (cur_exp < SPELL_EXP_SKILLED) {
-                if ((player_ptr->current_floor_ptr->dun_level > 4) && ((player_ptr->current_floor_ptr->dun_level + 10) > player_ptr->lev))
-                    exp_gain = 8;
-            } else if (cur_exp < SPELL_EXP_EXPERT) {
-                if (((player_ptr->current_floor_ptr->dun_level + 5) > player_ptr->lev) && ((player_ptr->current_floor_ptr->dun_level + 5) > s_ptr->slevel))
-                    exp_gain = 2;
-            } else if ((cur_exp < SPELL_EXP_MASTER) && !increment) {
-                if (((player_ptr->current_floor_ptr->dun_level + 5) > player_ptr->lev) && (player_ptr->current_floor_ptr->dun_level > s_ptr->slevel))
-                    exp_gain = 1;
-            }
-            player_ptr->spell_exp[(increment ? 32 : 0) + spell] += exp_gain;
+            PlayerSkill(player_ptr).gain_spell_skill_exp(realm, spell);
         }
     }
 
