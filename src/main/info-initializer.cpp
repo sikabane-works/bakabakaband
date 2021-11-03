@@ -16,6 +16,7 @@
 #include "info-reader/kind-reader.h"
 #include "info-reader/magic-reader.h"
 #include "info-reader/race-reader.h"
+#include "info-reader/party-reader.h"
 #include "info-reader/skill-reader.h"
 #include "info-reader/vault-reader.h"
 #include "io/files-util.h"
@@ -23,6 +24,7 @@
 #include "main/angband-headers.h"
 #include "main/init-error-messages-table.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/monster-party.h"
 #include "object-enchant/object-ego.h"
 #include "object/object-kind.h"
 #include "player-info/class-info.h"
@@ -169,6 +171,17 @@ errr init_r_info()
 {
     init_header(&r_head);
     return init_info("r_info", r_head, r_info, parse_r_info, nullptr);
+}
+
+/*!
+ * @brief モンスターパーティ情報読み込みのメインルーチン /
+ * Initialize the "party_info" array
+ * @return エラーコード
+ */
+errr init_party_info()
+{
+    init_header(&party_head);
+    return init_info("party_info", party_head, party_info, parse_party_info, nullptr);
 }
 
 /*!

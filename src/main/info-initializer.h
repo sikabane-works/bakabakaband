@@ -13,6 +13,7 @@ errr init_k_info();
 errr init_a_info();
 errr init_e_info();
 errr init_r_info();
+errr init_party_info();
 errr init_d_info();
 errr init_v_info();
 errr init_s_info();

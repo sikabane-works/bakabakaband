@@ -23,6 +23,7 @@
 #include "main/info-initializer.h"
 #include "market/building-initializer.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/monster-party.h"
 #include "monster-race/race-flags7.h"
 #include "system/angband-version.h"
 #include "system/monster-race-definition.h"
@@ -285,6 +286,10 @@ void init_angband(PlayerType *player_ptr, bool no_term)
     init_note(_("[データの初期化中... (モンスター)]", "[Initializing arrays... (monsters)]"));
     if (init_r_info())
         quit(_("モンスター初期化不能", "Cannot initialize monsters"));
+
+    init_note(_("[データの初期化中... (モンスターパーティ)]", "[Initializing arrays... (monster parties)]"));
+    if (init_party_info())
+        quit(_("モンスターパーティ初期化不能", "Cannot initialize monster party"));
 
     init_note(_("[データの初期化中... (ダンジョン)]", "[Initializing arrays... (dungeon)]"));
     if (init_d_info())
