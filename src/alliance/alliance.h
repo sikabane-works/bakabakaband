@@ -92,4 +92,13 @@ public:
     virtual ~AllianceJural() = default;
 };
 
+class AllianceChinChinTei : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceChinChinTei() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceChinChinTei() = default;
+};
+
 extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;
