@@ -46,6 +46,7 @@ struct monster_race {
 #ifdef JP
     std::string E_name; //!< 名前データのオフセット(英語) /  Name offset(English)
 #endif
+    std::string tag; //!< 定義用タグ
     std::string text; //!< 思い出テキストのオフセット / Lore text offset
     DICE_NUMBER hdice{}; //!< HPのダイス数 / Creatures hit dice count
     DICE_SID hside{}; //!< HPのダイス面数 / Creatures hit dice sides
