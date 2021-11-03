@@ -305,9 +305,9 @@ errr counts_write(player_type *player_ptr, int where, uint32_t count)
  * @param buf テンプレへのバッファ
  * @param buf_size バッファの長さ
  */
-void read_dead_file(char *buf, size_t buf_size)
+void read_dead_file(char *buf, size_t buf_size, bool world_end)
 {
-    path_build(buf, buf_size, ANGBAND_DIR_FILE, _("dead_j.txt", "dead.txt"));
+    path_build(buf, buf_size, ANGBAND_DIR_FILE, world_end ? _("blownaway_j.txt", "blownaway.txt") : _("dead_j.txt", "dead.txt"));
 
     FILE *fp;
     fp = angband_fopen(buf, "r");

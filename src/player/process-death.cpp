@@ -32,6 +32,7 @@
 #include "view/display-inventory.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 #include <ctime>
 
 #define GRAVE_LINE_WIDTH 31
@@ -127,6 +128,11 @@ static void show_dead_place(player_type *player_ptr, char *buf, char *tomb_messa
     if (streq(player_ptr->died_from, "ripe") || streq(player_ptr->died_from, "Seppuku"))
         return;
 
+    if (wc_ptr->is_blown_away())
+    {
+        return;
+    }
+
     if (player_ptr->current_floor_ptr->dun_level == 0) {
         concptr field_name = player_ptr->town_num ? "街" : "荒野";
         if (streq(player_ptr->died_from, "途中終了")) {
@@ -155,7 +161,9 @@ static void show_tomb_detail(player_type *player_ptr, char *buf)
 {
     char tomb_message[160];
     int extra_line = 0;
-    if (streq(player_ptr->died_from, "途中終了")) {
+    if (wc_ptr->is_blown_away()) {
+        strcpy(tomb_message, "");    
+    } else if (streq(player_ptr->died_from, "途中終了")) {
         strcpy(tomb_message, "<自殺>");
     } else if (streq(player_ptr->died_from, "ripe")) {
         strcpy(tomb_message, "引退後に天寿を全う");
@@ -215,7 +223,8 @@ void print_tomb(player_type *player_ptr)
 {
     term_clear();
     char buf[1024];
-    read_dead_file(buf, sizeof(buf));
+    read_dead_file(buf, sizeof(buf), wc_ptr->is_blown_away());
+
     concptr p = (w_ptr->total_winner || (player_ptr->lev > PY_MAX_LEVEL)) ? _("偉大なる者", "Magnificent")
                                                                           : player_titles[enum2i(player_ptr->pclass)][(player_ptr->lev - 1) / 5].data();
 
@@ -242,7 +251,11 @@ void print_tomb(player_type *player_ptr)
     (void)sprintf(current_time, "%-.24s", ctime(&ct));
     center_string(buf, current_time);
     put_str(buf, 17, 11);
-    msg_format(_("さようなら、%s!", "Goodbye, %s!"), player_ptr->name);
+    if (wc_ptr->is_blown_away()) {
+        msg_format(_("世 界 こ わ れ る", "The world had *b*r*o*k*e*n*."));    
+    } else {
+        msg_format(_("さようなら、%s!", "Goodbye, %s!"), player_ptr->name);
+    }
 }
 
 /*!
