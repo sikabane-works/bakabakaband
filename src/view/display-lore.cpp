@@ -468,6 +468,15 @@ void display_monster_exp(player_type *player_ptr, lore_type *lore_ptr)
     hooked_roff("を倒すことは");
 #endif
 
+    if (lore_ptr->r_ptr->plus_collapse) {
+#ifdef JP
+        hooked_roff(format("時空崩壊度に %s%d.%06d%% の変動を与え、", lore_ptr->r_ptr->plus_collapse > 0 ? "+" : "-", std::abs(lore_ptr->r_ptr->plus_collapse / 1000000), std::abs(lore_ptr->r_ptr->plus_collapse % 1000000)));
+#else
+        hooked_roff(format(" gives %s%d.%06d%% collapse degree to world and ", lore_ptr->r_ptr->plus_collapse > 0 ? "+" : "-", std::abs(lore_ptr->r_ptr->plus_collapse / 1000000), std::abs(lore_ptr->r_ptr->plus_collapse % 1000000)));
+
+#endif
+    }
+
     int64_t base_exp = lore_ptr->r_ptr->mexp * lore_ptr->r_ptr->level * 3 / 2;
     int64_t player_factor = (int64_t)player_ptr->max_plv + 2;
 

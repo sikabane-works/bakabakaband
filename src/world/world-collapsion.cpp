@@ -22,3 +22,11 @@ void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, int multi)
 {
     this->collapse_degree += (std::min(1, mysqrt(w_ptr->game_turn / 2000)) * multi);
 }
+
+/*!
+ * @brief 時空崩壊度単純増減
+ */
+void WorldCollapsion::plus_collapsion(int value)
+{
+    this->collapse_degree += value;
+}
