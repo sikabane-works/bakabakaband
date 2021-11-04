@@ -250,11 +250,12 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 if (p_tokens[1].size() > 6) {
                     return PARSE_ERROR_INVALID_FLAG;                
                 }
+                int mul = 6 - static_cast<int>(p_tokens[1].size());
                 int deci, fraq;
                 bool is_plus = p_tokens[0][0] != '-';
                 info_set_value(deci, p_tokens[0]);
                 info_set_value(fraq, p_tokens[1]);
-                for(int i = 0; i < (6 - p_tokens[1].size()); i++) {
+                for(int i = 0; i < mul; i++) {
                     fraq *= 10;
                 }
                 r_ptr->plus_collapse = is_plus ? deci * 1000000 + fraq : deci * 1000000 - fraq;
