@@ -49,6 +49,7 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 static void write_pet_death(player_type *player_ptr, monster_death_type *md_ptr)
 {
@@ -379,6 +380,7 @@ void monster_death(player_type *player_ptr, MONSTER_IDX m_idx, bool drop_item)
     if (m_idx == player_ptr->riding && process_fall_off_horse(player_ptr, -1, false))
         msg_print(_("地面に落とされた。", "You have fallen from the pet you were riding."));
 
+    wc_ptr->plus_collapsion(md_ptr->r_ptr->plus_collapse);
     drop_corpse(player_ptr, md_ptr);
     monster_drop_carried_objects(player_ptr, md_ptr->m_ptr);
     decide_drop_quality(md_ptr);
