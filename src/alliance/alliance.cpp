@@ -8,7 +8,8 @@ const std::map<int, std::shared_ptr<Alliance>> alliance_list = {
     { 3, std::make_unique<AllianceValinor>(3, "VARINOR", _("ヴァリノール", "Valinor"), 4000000L) },
     { 4, std::make_unique<AllianceCourtOfChaos>(4, "UTUMNO", _("ウトゥムノ", "Utumno"), 3000000L) },
     { 5, std::make_unique<AllianceJural>(5, "JURAL", _("ジュラル星人", "Jural"), 5500L) },
-    { 6, std::make_unique<AllianceChinChinTei>(6, "CHINCHINTEI", _("ちんちん亭", "Chin-Chin-Tei"), 191919L) }
+    { 6, std::make_unique<AllianceChinChinTei>(6, "CHINCHINTEI", _("ちんちん亭", "Chin-Chin-Tei"), 191919L) },
+    { 7, std::make_unique<AllianceOdio>(7, "ODIO", _("オディオ", "Odio"), 300000L) }
 };
 
 Alliance::Alliance(int id, std::string tag, std::string name, int64_t base_power)
@@ -56,6 +57,11 @@ int AllianceJural::calcImplessionPoint(player_type *creature_ptr) const
 }
 
 int AllianceChinChinTei::calcImplessionPoint(player_type *creature_ptr) const
+{
+    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+}
+
+int AllianceOdio::calcImplessionPoint(player_type *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
