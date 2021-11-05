@@ -167,6 +167,7 @@ static void init_random_seed(player_type *player_ptr, bool new_game)
 static void init_world_floor_info(player_type *player_ptr)
 {
     w_ptr->character_dungeon = false;
+    wc_ptr->collapse_degree = 0;
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->dun_level = 0;
     floor_ptr->inside_quest = 0;
