@@ -110,4 +110,13 @@ public:
     virtual ~AllianceOdio() = default;
 };
 
+class AllianceKenohgun : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceKenohgun() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceKenohgun() = default;
+};
+
 extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;
