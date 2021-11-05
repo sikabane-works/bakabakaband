@@ -392,7 +392,7 @@ bool load_savedata(player_type *player_ptr, bool *new_game)
         player_ptr->wait_report_score = false;
     }
 
-    if (player_ptr->is_dead) {
+    if (player_ptr->is_dead || wc_ptr->is_blown_away()) {
         *new_game = true;
         player_ptr->is_dead = false;
         w_ptr->sf_lives++;
