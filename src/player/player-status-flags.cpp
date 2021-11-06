@@ -63,8 +63,8 @@ BIT_FLAGS common_cause_flags(player_type *player_ptr, tr_type tr_flag)
         set_bits(result, FLAG_CAUSE_CLASS);
     }
 
-    if (PlayerClass(player_ptr).form_tr_flags().has(tr_flag)) {
-        set_bits(result, FLAG_CAUSE_BATTLE_FORM);
+    if (PlayerClass(player_ptr).stance_tr_flags().has(tr_flag)) {
+        set_bits(result, FLAG_CAUSE_STANCE);
     }
 
     return result;
@@ -455,6 +455,10 @@ BIT_FLAGS get_player_flags(player_type *player_ptr, tr_type tr_flag)
     case TR_NEVER_MOVE:
     case TR_INVEN_ACTIVATE:
         return 0;
+    case TR_SELF_FIRE:
+    case TR_SELF_COLD:
+    case TR_SELF_ELEC:
+        return check_equipment_flags(player_ptr, tr_flag);
 
     case TR_FLAG_MAX:
         break;

@@ -173,6 +173,9 @@ const std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "VUL_LITE", TR_VUL_LITE },
     { "IM_DARK", TR_IM_DARK },
     { "INVEN_ACTIVATE", TR_INVEN_ACTIVATE },
+    { "SELF_FIRE", TR_SELF_FIRE },
+    { "SELF_COLD", TR_SELF_COLD },
+    { "SELF_ELEC", TR_SELF_ELEC },
 };
 
 /*!
