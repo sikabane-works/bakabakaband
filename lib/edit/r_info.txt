@@ -30114,6 +30114,24 @@ D:下手な肉食獣では歯が立たない、巨大な角を持った大鹿だ
 D:とある次元に混乱を引き起こした畜生にも劣るプレインズウォーカーが
 D:あらゆるものをこれに変化させる異常性癖を発露している。
 
+# DODのクッソキモい「赤さん」(DSKL)
+N:1596:「敵」の赤子
+E:Baby of the enemy
+G:A:w
+I:120:60d30:30:90:255
+W:50:6:0:9000:0:0
+B:BITE:HURT:12d8
+B:BITE:HURT:12d8
+B:BITE:HURT:12d8
+F:PREVENT_SUDDEN_MAGIC | SELF_LITE_2 |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | EVIL
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | FRIENDS
+F:NO_CONF | NO_SLEEP | NO_FEAR | CAN_FLY | ANGEL
+S:1_IN_6
+S:BO_MANA
+D:「天使の教会」が、彼ら自身すらその存在の意味を知らぬまま封印していた全く謎の存在だ。
+D:ふわりと浮く真っ白で巨大な赤子が歯を剥き出しにして、あなたに襲い来る！
 
 # N: serial number : monster name
 # G: symbol : color
