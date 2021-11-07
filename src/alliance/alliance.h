@@ -34,6 +34,7 @@ public:
     Alliance(int id, std::string tag, std::string name, int64_t base_power);
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int64_t calcCurrentPower();
+    bool isAnnihilated();
     virtual int calcImplessionPoint(player_type *creature_ptr) const = 0;
     virtual ~Alliance() = default;
 };

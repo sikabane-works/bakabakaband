@@ -22,6 +22,7 @@ void do_cmd_knowledge_alliance(player_type *player_ptr)
         if(a.second->id == 0) continue;
         fprintf(fff, _("%-30s/ あなたへの印象値: %+5d \n", "%-30s/ Implession to you: %+5d \n"), a.second->name.c_str(), a.second->calcImplessionPoint(player_ptr));
         fprintf(fff, _("  勢力指数: %12ld \n", "  Power Value: %12ld \n"), a.second->calcCurrentPower());
+        fprintf(fff, _("  (%s) \n", "  (%s) \n"), (a.second->isAnnihilated() ? _("壊滅", "Annihilated") : _("健在", "Alive")));
         fprintf(fff, "\n\n");
     }
 
