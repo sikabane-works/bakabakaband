@@ -29,6 +29,11 @@ int64_t Alliance::calcCurrentPower()
     return this->base_power;
 }
 
+bool Alliance::isAnnihilated()
+{
+    return false;
+}
+
 int AllianceNone::calcImplessionPoint([[maybe_unused]] player_type *creature_ptr) const
 {
     return 0;
