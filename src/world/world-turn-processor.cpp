@@ -97,7 +97,7 @@ void WorldTurnProcessor::process_world()
     sense_inventory2(this->player_ptr);
     execute_recall(this->player_ptr);
     execute_floor_reset(this->player_ptr);
-    wc_ptr->plus_timed_world_collapsion(w_ptr, 1);
+    wc_ptr->plus_timed_world_collapsion(w_ptr, this->player_ptr, 1);
 }
 
 /*!

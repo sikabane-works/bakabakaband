@@ -91,7 +91,7 @@ static void pass_game_turn_by_stay(void)
     if (w_ptr->dungeon_turn >= w_ptr->dungeon_turn_limit)
         return;
 
-    wc_ptr->plus_timed_world_collapsion(w_ptr, (w_ptr->game_turn - oldturn) * 20);
+    wc_ptr->plus_timed_world_collapsion(w_ptr, p_ptr, (w_ptr->game_turn - oldturn) * 20);
 
     w_ptr->dungeon_turn += std::min<int>((w_ptr->game_turn - oldturn), TURNS_PER_TICK * 250) * INN_DUNGEON_TURN_ADJ;
     if (w_ptr->dungeon_turn > w_ptr->dungeon_turn_limit)

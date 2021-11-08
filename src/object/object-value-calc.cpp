@@ -424,6 +424,8 @@ PRICE flag_cost(const object_type *o_ptr, int plusses)
         else
             total += 250;
     }
+    if (flgs.has(TR_WORLD_END))
+        total -= 10000;
 
     if (flgs.has(TR_AGGRAVATE))
         total -= 10000;

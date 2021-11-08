@@ -2,11 +2,12 @@
 #include <cstdint>
 
 struct world_type;
+class player_type;
 
 class WorldCollapsion {
 public:
     WorldCollapsion();
-    void plus_timed_world_collapsion(world_type *w_ptr, int multi);
+    void plus_timed_world_collapsion(world_type *w_ptr, player_type *player_ptr, int multi);
     void plus_collapsion(int value);
     bool is_blown_away();
 
