@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "util/flag-group.h"
 
 enum spells_type
 {
@@ -109,5 +110,10 @@ enum spells_type
     GF_STUNGUN = 121, /*!< 魔法効果: スタンガン */
     GF_HUNGRY = 122,            /*!< 魔法効果: 空腹>*/
     GF_PLAYER_SHOOT = 123,		/*!< 属性取得用: プレイヤーの射撃/投擲>*/
-	MAX_GF = 124,		        /*!< 欠番を無視した最大サイズ (直上の値+1) */
+	GF_PLAYER_MELEE = 124,		 /*!< 属性取得用: プレイヤーの近接攻撃>*/
+	MAX_GF = 125,		        /*!< 欠番を無視した最大サイズ (直上の値+1) */
 };
+
+
+/*! 属性フラグspell_typesの集合を表すクラス */
+using EffectFlags = FlagGroup<spells_type, MAX_GF>;
