@@ -562,6 +562,7 @@ static void display_stustain_aura_info(
     process_one_characteristic(player_ptr, row++, col, _("自傷火炎  :", "Self Fire :"), TR_SELF_FIRE, f, 0);
     process_one_characteristic(player_ptr, row++, col, _("自傷電気  :", "Self Elec :"), TR_SELF_ELEC, f, 0);
     process_one_characteristic(player_ptr, row++, col, _("自傷冷気  :", "Self Cold :"), TR_SELF_COLD, f, 0);
+    process_one_characteristic(player_ptr, row++, col, _("時空壊加速:", "Acce WC   :"), TR_WORLD_END, f, 0);
 }
 
 /*!

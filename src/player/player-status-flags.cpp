@@ -458,6 +458,7 @@ BIT_FLAGS get_player_flags(player_type *player_ptr, tr_type tr_flag)
     case TR_SELF_FIRE:
     case TR_SELF_COLD:
     case TR_SELF_ELEC:
+    case TR_WORLD_END:
         return check_equipment_flags(player_ptr, tr_flag);
 
     case TR_FLAG_MAX:
