@@ -138,4 +138,13 @@ public:
     virtual ~AllianceKoganRyu() = default;
 };
 
+class AllianceEldrazi : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceEldrazi() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type *creature_ptr) const override;
+    virtual ~AllianceEldrazi() = default;
+};
+
 extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;
