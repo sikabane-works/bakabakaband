@@ -147,4 +147,13 @@ public:
     virtual ~AllianceEldrazi() = default;
 };
 
+class AllianceUngoliant : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceUngoliant() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(player_type* creature_ptr) const override;
+    virtual ~AllianceUngoliant() = default;
+};
+
 extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;
