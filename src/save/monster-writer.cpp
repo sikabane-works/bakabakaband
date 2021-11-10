@@ -1,5 +1,5 @@
 ﻿#include "save/monster-writer.h"
-#include "load/savedata-flag-types.h"
+#include "load/old/monster-flag-types-savefile10.h"
 #include "monster-race/monster-race.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
@@ -183,6 +183,7 @@ void wr_lore(MONRACE_IDX r_idx)
     wr_u32b(r_ptr->r_flags3);
     wr_u32b(r_ptr->r_flagsr);
     wr_FlagGroup(r_ptr->r_ability_flags, wr_byte);
+    wr_FlagGroup(r_ptr->r_aura_flags, wr_byte);
 
     wr_byte((byte)r_ptr->mob_num);
     wr_s16b(r_ptr->floor_id);

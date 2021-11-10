@@ -116,20 +116,10 @@ static void attack_classify(player_type *player_ptr, player_attack_type *pa_ptr)
 static void get_bare_knuckle_exp(player_type *player_ptr, player_attack_type *pa_ptr)
 {
     monster_race *r_ptr = &r_info[pa_ptr->m_ptr->r_idx];
-    if ((r_ptr->level + 10) <= player_ptr->lev || (player_ptr->skill_exp[SKILL_MARTIAL_ARTS] >= s_info[enum2i(player_ptr->pclass)].s_max[SKILL_MARTIAL_ARTS]))
+    if ((r_ptr->level + 10) <= player_ptr->lev)
         return;
 
-    if (player_ptr->skill_exp[SKILL_MARTIAL_ARTS] < WEAPON_EXP_BEGINNER)
-        player_ptr->skill_exp[SKILL_MARTIAL_ARTS] += 40;
-    else if ((player_ptr->skill_exp[SKILL_MARTIAL_ARTS] < WEAPON_EXP_SKILLED))
-        player_ptr->skill_exp[SKILL_MARTIAL_ARTS] += 5;
-    else if ((player_ptr->skill_exp[SKILL_MARTIAL_ARTS] < WEAPON_EXP_EXPERT) && (player_ptr->lev > 19))
-        player_ptr->skill_exp[SKILL_MARTIAL_ARTS] += 1;
-    else if ((player_ptr->lev > 34))
-        if (one_in_(3))
-            player_ptr->skill_exp[SKILL_MARTIAL_ARTS] += 1;
-
-    player_ptr->update |= (PU_BONUS);
+    PlayerSkill(player_ptr).gain_martial_arts_skill_exp();
 }
 
 /*!
@@ -139,24 +129,9 @@ static void get_bare_knuckle_exp(player_type *player_ptr, player_attack_type *pa
  */
 static void get_weapon_exp(player_type *player_ptr, player_attack_type *pa_ptr)
 {
-    auto tval = player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand].tval;
-    auto sval = player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand].sval;
-    int now_exp = player_ptr->weapon_exp[tval][sval];
-    if (now_exp >= s_info[enum2i(player_ptr->pclass)].w_max[tval][sval])
-        return;
+    auto *o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand];
 
-    SUB_EXP amount = 0;
-    if (now_exp < WEAPON_EXP_BEGINNER)
-        amount = 80;
-    else if (now_exp < WEAPON_EXP_SKILLED)
-        amount = 10;
-    else if ((now_exp < WEAPON_EXP_EXPERT) && (player_ptr->lev > 19))
-        amount = 1;
-    else if ((player_ptr->lev > 34) && one_in_(2))
-        amount = 1;
-
-    player_ptr->weapon_exp[tval][sval] += amount;
-    player_ptr->update |= (PU_BONUS);
+    PlayerSkill(player_ptr).gain_melee_weapon_exp(o_ptr);
 }
 
 /*!
@@ -439,7 +414,7 @@ static void apply_damage_negative_effect(player_attack_type *pa_ptr, bool is_zan
  */
 static bool check_fear_death(player_type *player_ptr, player_attack_type *pa_ptr, const int num, const bool is_lowlevel)
 {
-    MonsterDamageProcessor mdp(player_ptr, pa_ptr->m_idx, pa_ptr->attack_damage, pa_ptr->fear);
+    MonsterDamageProcessor mdp(player_ptr, pa_ptr->m_idx, pa_ptr->attack_damage, pa_ptr->fear, pa_ptr->effect_flags);
     if (!mdp.mon_take_hit(nullptr))
         return false;
 
@@ -571,6 +546,7 @@ void exe_player_attack_to_monster(player_type *player_ptr, POSITION y, POSITION 
         if (!process_attack_hit(player_ptr, pa_ptr, chance))
             continue;
 
+        pa_ptr->effect_flags = melee_effect_type(player_ptr, o_ptr, pa_ptr->mode);
         apply_actual_attack(player_ptr, pa_ptr, &do_quake, is_zantetsu_nullified, is_ej_nullified);
         calc_drain(pa_ptr);
         if (check_fear_death(player_ptr, pa_ptr, num, is_lowlevel))

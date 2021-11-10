@@ -5,7 +5,7 @@
  * @details 互換性を最大限に確保するため、基本的に関数分割は行わないものとする.
  */
 
-#include "load/load-v1-5-0.h"
+#include "load/old/load-v1-5-0.h"
 #include "dungeon/dungeon.h"
 #include "floor/floor-object.h"
 #include "game-option/birth-options.h"
@@ -13,10 +13,13 @@
 #include "grid/grid.h"
 #include "grid/trap.h"
 #include "load/angband-version-comparer.h"
-#include "load/item-loader.h"
+#include "load/item/item-loader-factory.h"
+#include "load/item/item-loader-version-types.h"
 #include "load/load-util.h"
-#include "load/monster-loader.h"
+#include "load/monster/monster-loader-factory.h"
 #include "load/old-feature-types.h"
+#include "load/old/item-loader-savefile10.h"
+#include "load/old/monster-loader-savefile10.h"
 #include "mind/mind-weaponsmith.h"
 #include "monster-floor/monster-move.h"
 #include "monster-race/monster-race.h"
@@ -70,7 +73,7 @@ void rd_item_old(object_type *o_ptr)
     o_ptr->sval = rd_byte();
 
     if (h_older_than(0, 4, 4)) {
-        if (o_ptr->tval == i2enum <ItemKindType>(100))
+        if (o_ptr->tval == i2enum<ItemKindType>(100))
             o_ptr->tval = ItemKindType::GOLD;
         if (o_ptr->tval == i2enum<ItemKindType>(98))
             o_ptr->tval = ItemKindType::MUSIC_BOOK;
@@ -250,7 +253,7 @@ void rd_item_old(object_type *o_ptr)
             else
                 o_ptr->xtra5 = damroll(r_info[o_ptr->pval].hdice, r_info[o_ptr->pval].hside);
             if (ironman_nightmare) {
-                o_ptr->xtra5 = std::min<short>(MON_MAX_HP, o_ptr->xtra5 * 2L);
+                o_ptr->xtra5 = std::min<short>(MONSTER_MAXHP, o_ptr->xtra5 * 2L);
             }
             o_ptr->xtra4 = o_ptr->xtra5;
         }
@@ -265,8 +268,7 @@ void rd_item_old(object_type *o_ptr)
         o_ptr->xtra5 = rd_s16b();
     }
 
-    if (h_older_than(1, 0, 5)
-        && (((o_ptr->tval == ItemKindType::LITE) && ((o_ptr->sval == SV_LITE_TORCH) || (o_ptr->sval == SV_LITE_LANTERN))) || (o_ptr->tval == ItemKindType::FLASK))) {
+    if (h_older_than(1, 0, 5) && (((o_ptr->tval == ItemKindType::LITE) && ((o_ptr->sval == SV_LITE_TORCH) || (o_ptr->sval == SV_LITE_LANTERN))) || (o_ptr->tval == ItemKindType::FLASK))) {
         o_ptr->xtra4 = o_ptr->pval;
         o_ptr->pval = 0;
     }
@@ -583,7 +585,7 @@ errr rd_dungeon_old(player_type *player_ptr)
     }
 
     for (int x = 0, y = 0; y < ymax;) {
-        auto count =  rd_byte();
+        auto count = rd_byte();
         auto tmp16s = rd_s16b();
         for (int i = count; i > 0; i--) {
             grid_type *g_ptr;
@@ -680,6 +682,7 @@ errr rd_dungeon_old(player_type *player_ptr)
         return (151);
     }
 
+    auto item_loader = ItemLoaderFactory::create_loader();
     for (int i = 1; i < limit; i++) {
         OBJECT_IDX o_idx = o_pop(floor_ptr);
         if (i != o_idx) {
@@ -687,10 +690,8 @@ errr rd_dungeon_old(player_type *player_ptr)
             return (152);
         }
 
-        object_type *o_ptr;
-        o_ptr = &floor_ptr->o_list[o_idx];
-        rd_item(o_ptr);
-
+        auto &item = floor_ptr->o_list[o_idx];
+        item_loader->rd_item(&item);
         auto &list = get_o_idx_list_contains(floor_ptr, o_idx);
         list.add(floor_ptr, o_idx);
     }
@@ -701,19 +702,17 @@ errr rd_dungeon_old(player_type *player_ptr)
         return (161);
     }
 
+    auto monster_loader = MonsterLoaderFactory::create_loader(player_ptr);
     for (int i = 1; i < limit; i++) {
-        MONSTER_IDX m_idx;
-        monster_type *m_ptr;
-        m_idx = m_pop(floor_ptr);
+        auto m_idx = m_pop(floor_ptr);
         if (i != m_idx) {
             load_note(format(_("モンスター配置エラー (%d <> %d)", "Monster allocation error (%d <> %d)"), i, m_idx));
             return (162);
         }
 
-        m_ptr = &floor_ptr->m_list[m_idx];
-        rd_monster(player_ptr, m_ptr);
-        grid_type *g_ptr;
-        g_ptr = &floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
+        auto m_ptr = &floor_ptr->m_list[m_idx];
+        monster_loader->rd_monster(m_ptr);
+        auto *g_ptr = &floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
         g_ptr->m_idx = m_idx;
         real_r_ptr(m_ptr)->cur_num++;
     }

@@ -174,7 +174,14 @@ enum tr_type : int32_t {
     TR_VUL_LITE = 159, //!< 閃光弱点
     TR_IM_DARK = 160, //!< 暗黒免疫
     TR_INVEN_ACTIVATE = 161, /*!< 所持品のまま始動可能 */
-    TR_FLAG_MAX = 162,
+
+    TR_SELF_FIRE = 162, //!< マイナスフラグ - 持続火炎ダメージ
+    TR_SELF_ELEC = 163, //!< マイナスフラグ - 持続電撃ダメージ
+    TR_SELF_COLD = 164, //!< マイナスフラグ - 持続冷気ダメージ
+
+    TR_WORLD_END = 165, //!< 時空崩壊度を早める
+
+    TR_FLAG_MAX = 166,
 };
 
 /** 能力値(STR,INT,WIS,DEX,CON,CHR)のpvalを増減させるフラグのリスト */

@@ -116,22 +116,22 @@ void get_extra(player_type *player_ptr, bool roll_hitdie)
 
     for (int i = 0; i < 64; i++) {
         if (player_ptr->pclass == PlayerClassType::SORCERER)
-            player_ptr->spell_exp[i] = SPELL_EXP_MASTER;
+            player_ptr->spell_exp[i] = PlayerSkill::spell_exp_at(PlayerSkillRank::MASTER);
         else if (player_ptr->pclass == PlayerClassType::RED_MAGE)
-            player_ptr->spell_exp[i] = SPELL_EXP_SKILLED;
+            player_ptr->spell_exp[i] = PlayerSkill::spell_exp_at(PlayerSkillRank::SKILLED);
         else
-            player_ptr->spell_exp[i] = SPELL_EXP_UNSKILLED;
+            player_ptr->spell_exp[i] = PlayerSkill::spell_exp_at(PlayerSkillRank::UNSKILLED);
     }
 
     auto pclass = enum2i(player_ptr->pclass);
     player_ptr->weapon_exp = s_info[pclass].w_start;
 
-    auto &whip_exp = player_ptr->weapon_exp[ItemKindType::HAFTED][SV_WHIP];
-    if ((player_ptr->ppersonality == PERSONALITY_SEXY) && (whip_exp < WEAPON_EXP_BEGINNER)) {
-        whip_exp = WEAPON_EXP_BEGINNER;
+    if (player_ptr->ppersonality == PERSONALITY_SEXY) {
+        auto &whip_exp = player_ptr->weapon_exp[ItemKindType::HAFTED][SV_WHIP];
+        whip_exp = std::max(whip_exp, PlayerSkill::weapon_exp_at(PlayerSkillRank::BEGINNER));
     }
 
-    for (int i = 0; i < MAX_SKILLS; i++)
+    for (auto i : PLAYER_SKILL_KIND_TYPE_RANGE)
         player_ptr->skill_exp[i] = s_info[pclass].s_start[i];
 
     if (player_ptr->pclass == PlayerClassType::SORCERER)

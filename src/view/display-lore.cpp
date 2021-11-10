@@ -8,6 +8,8 @@
 #include "view/display-lore.h"
 #include "game-option/cheat-options.h"
 #include "game-option/text-display-options.h"
+#include "locale/english.h"
+#include "locale/japanese.h"
 #include "lore/lore-calculator.h"
 #include "lore/lore-util.h"
 #include "lore/monster-lore.h"
@@ -27,11 +29,6 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-#ifdef JP
-#include "locale/japanese.h"
-#else
-#include "locale/english.h"
-#endif
 
 /*!
  * 英語の複数系記述用マクロ / Pluralizer.  Args(count, singular, plural)
@@ -471,6 +468,15 @@ void display_monster_exp(player_type *player_ptr, lore_type *lore_ptr)
     hooked_roff("を倒すことは");
 #endif
 
+    if (lore_ptr->r_ptr->plus_collapse) {
+#ifdef JP
+        hooked_roff(format("時空崩壊度に %s%d.%06d%% の変動を与え、", lore_ptr->r_ptr->plus_collapse > 0 ? "+" : "-", std::abs(lore_ptr->r_ptr->plus_collapse / 1000000), std::abs(lore_ptr->r_ptr->plus_collapse % 1000000)));
+#else
+        hooked_roff(format(" gives %s%d.%06d%% collapse degree to world and ", lore_ptr->r_ptr->plus_collapse > 0 ? "+" : "-", std::abs(lore_ptr->r_ptr->plus_collapse / 1000000), std::abs(lore_ptr->r_ptr->plus_collapse % 1000000)));
+
+#endif
+    }
+
     int64_t base_exp = lore_ptr->r_ptr->mexp * lore_ptr->r_ptr->level * 3 / 2;
     int64_t player_factor = (int64_t)player_ptr->max_plv + 2;
 
@@ -516,20 +522,23 @@ void display_monster_exp(player_type *player_ptr, lore_type *lore_ptr)
 
 void display_monster_aura(lore_type *lore_ptr)
 {
-    if ((lore_ptr->flags2 & RF2_AURA_FIRE) && (lore_ptr->flags2 & RF2_AURA_ELEC) && (lore_ptr->flags3 & RF3_AURA_COLD))
+    auto has_fire_aura = lore_ptr->aura_flags.has(MonsterAuraType::FIRE);
+    auto has_elec_aura = lore_ptr->aura_flags.has(MonsterAuraType::ELEC);
+    auto has_cold_aura = lore_ptr->aura_flags.has(MonsterAuraType::COLD);
+    if (has_fire_aura && has_elec_aura && has_cold_aura)
         hook_c_roff(
             TERM_VIOLET, format(_("%^sは炎と氷とスパークに包まれている。", "%^s is surrounded by flames, ice and electricity.  "), Who::who(lore_ptr->msex)));
-    else if ((lore_ptr->flags2 & RF2_AURA_FIRE) && (lore_ptr->flags2 & RF2_AURA_ELEC))
+    else if (has_fire_aura && has_elec_aura)
         hook_c_roff(TERM_L_RED, format(_("%^sは炎とスパークに包まれている。", "%^s is surrounded by flames and electricity.  "), Who::who(lore_ptr->msex)));
-    else if ((lore_ptr->flags2 & RF2_AURA_FIRE) && (lore_ptr->flags3 & RF3_AURA_COLD))
+    else if (has_fire_aura && has_cold_aura)
         hook_c_roff(TERM_BLUE, format(_("%^sは炎と氷に包まれている。", "%^s is surrounded by flames and ice.  "), Who::who(lore_ptr->msex)));
-    else if ((lore_ptr->flags3 & RF3_AURA_COLD) && (lore_ptr->flags2 & RF2_AURA_ELEC))
+    else if (has_cold_aura && has_elec_aura)
         hook_c_roff(TERM_L_GREEN, format(_("%^sは氷とスパークに包まれている。", "%^s is surrounded by ice and electricity.  "), Who::who(lore_ptr->msex)));
-    else if (lore_ptr->flags2 & RF2_AURA_FIRE)
+    else if (has_fire_aura)
         hook_c_roff(TERM_RED, format(_("%^sは炎に包まれている。", "%^s is surrounded by flames.  "), Who::who(lore_ptr->msex)));
-    else if (lore_ptr->flags3 & RF3_AURA_COLD)
+    else if (has_cold_aura)
         hook_c_roff(TERM_BLUE, format(_("%^sは氷に包まれている。", "%^s is surrounded by ice.  "), Who::who(lore_ptr->msex)));
-    else if (lore_ptr->flags2 & RF2_AURA_ELEC)
+    else if (has_elec_aura)
         hook_c_roff(TERM_L_BLUE, format(_("%^sはスパークに包まれている。", "%^s is surrounded by electricity.  "), Who::who(lore_ptr->msex)));
 }
 

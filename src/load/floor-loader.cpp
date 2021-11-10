@@ -8,11 +8,13 @@
 #include "io/files-util.h"
 #include "io/uid-checker.h"
 #include "load/angband-version-comparer.h"
-#include "load/item-loader.h"
+#include "load/item/item-loader-factory.h"
 #include "load/load-util.h"
-#include "load/load-v1-5-0.h"
-#include "load/monster-loader.h"
 #include "load/old-feature-types.h"
+#include "load/monster/monster-loader-factory.h"
+#include "load/old/item-loader-savefile10.h"
+#include "load/old/load-v1-5-0.h"
+#include "load/old/monster-loader-savefile10.h"
 #include "monster-race/monster-race.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
@@ -154,35 +156,34 @@ errr rd_saved_floor(player_type *player_ptr, saved_floor_type *sf_ptr)
     limit = rd_u16b();
     if (limit > w_ptr->max_o_idx)
         return 151;
+
+    auto item_loader = ItemLoaderFactory::create_loader();
     for (int i = 1; i < limit; i++) {
-        OBJECT_IDX o_idx;
-        object_type *o_ptr;
-        o_idx = o_pop(floor_ptr);
-        if (i != o_idx)
+        auto o_idx = o_pop(floor_ptr);
+        if (i != o_idx) {
             return 152;
+        }
 
-        o_ptr = &floor_ptr->o_list[o_idx];
-        rd_item(o_ptr);
-
+        auto &item = floor_ptr->o_list[o_idx];
+        item_loader->rd_item(&item);
         auto &list = get_o_idx_list_contains(floor_ptr, o_idx);
-        list.add(floor_ptr, o_idx, o_ptr->stack_idx);
+        list.add(floor_ptr, o_idx, item.stack_idx);
     }
 
     limit = rd_u16b();
     if (limit > w_ptr->max_m_idx)
         return 161;
 
-    for (int i = 1; i < limit; i++) {
-        grid_type *g_ptr;
-        MONSTER_IDX m_idx;
-        monster_type *m_ptr;
-        m_idx = m_pop(floor_ptr);
-        if (i != m_idx)
+    auto monster_loader = MonsterLoaderFactory::create_loader(player_ptr);
+    for (auto i = 1; i < limit; i++) {
+        auto m_idx = m_pop(floor_ptr);
+        if (i != m_idx) {
             return 162;
+        }
 
-        m_ptr = &floor_ptr->m_list[m_idx];
-        rd_monster(player_ptr, m_ptr);
-        g_ptr = &floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
+        auto *m_ptr = &floor_ptr->m_list[m_idx];
+        monster_loader->rd_monster(m_ptr);
+        auto *g_ptr = &floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
         g_ptr->m_idx = m_idx;
         real_r_ptr(m_ptr)->cur_num++;
     }

@@ -12,6 +12,11 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
+PlayerWisdom::PlayerWisdom(player_type *player_ptr)
+    : PlayerBasicStatistics(player_ptr)
+{
+}
+
 void PlayerWisdom::set_locals()
 {
     this->max_value = +99;
@@ -30,7 +35,7 @@ void PlayerWisdom::set_locals()
  * * 玄武の構えで減算(-1)
  * * 朱雀の構えで加算(+1)
  */
-int16_t PlayerWisdom::battleform_value()
+int16_t PlayerWisdom::stance_value()
 {
     int16_t result = 0;
 

@@ -41,6 +41,10 @@ static bool grab_one_basic_flag(monster_race *r_ptr, std::string_view what)
     if (info_grab_one_flag(r_ptr->flagsr, r_info_flagsr, what))
         return true;
 
+    if (EnumClassFlagGroup<MonsterAuraType>::grab_one_flag(r_ptr->aura_flags, r_info_aura_flags, what)) {
+        return true;
+    }
+
     msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
     return false;
 }
@@ -54,8 +58,9 @@ static bool grab_one_basic_flag(monster_race *r_ptr, std::string_view what)
  */
 static bool grab_one_spell_flag(monster_race *r_ptr, std::string_view what)
 {
-    if (EnumClassFlagGroup<RF_ABILITY>::grab_one_flag(r_ptr->ability_flags, r_info_ability_flags, what))
+    if (EnumClassFlagGroup<RF_ABILITY>::grab_one_flag(r_ptr->ability_flags, r_info_ability_flags, what)) {
         return true;
+    }
 
     msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
     return false;
@@ -102,6 +107,10 @@ errr parse_r_info(std::string_view buf, angband_header *)
 #else
         r_ptr->name = tokens[1];
 #endif
+    } else if (tokens[0] == "T") {
+        if (tokens.size() < 2 || tokens[1].size() == 0)
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        r_ptr->tag = tokens[1];
     } else if (tokens[0] == "D") {
         // D:text_ja
         // D:$text_en
@@ -212,10 +221,17 @@ errr parse_r_info(std::string_view buf, angband_header *)
 
         const auto &flags = str_split(tokens[1], '|', true, 10);
         for (const auto &f : flags) {
-            if (f.size() == 0)
+
+            if (f.size() == 0) {
                 continue;
+            }
 
             const auto &s_tokens = str_split(f, '_', false);
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "PERHP") {
+                info_set_value(r_ptr->cur_hp_per, s_tokens[1]);
+                continue;
+            }
 
             if (s_tokens.size() == 2 && s_tokens[0] == "ALLIANCE") {
                 for (auto a : alliance_list) {
@@ -233,7 +249,22 @@ errr parse_r_info(std::string_view buf, angband_header *)
             }
 
             if (s_tokens.size() == 2 && s_tokens[0] == "COLLAPSE") {
-                info_set_value(r_ptr->plus_collapse, s_tokens[1]);
+                const auto &p_tokens = str_split(s_tokens[1], '.', false);
+                if (p_tokens.size() != 2) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                if (p_tokens[1].size() > 6) {
+                    return PARSE_ERROR_INVALID_FLAG;                
+                }
+                int mul = 6 - static_cast<int>(p_tokens[1].size());
+                int deci, fraq;
+                bool is_plus = p_tokens[0][0] != '-';
+                info_set_value(deci, p_tokens[0]);
+                info_set_value(fraq, p_tokens[1]);
+                for(int i = 0; i < mul; i++) {
+                    fraq *= 10;
+                }
+                r_ptr->plus_collapse = is_plus ? deci * 1000000 + fraq : deci * 1000000 - fraq;
                 continue;
             }
 

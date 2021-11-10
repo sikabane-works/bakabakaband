@@ -13,6 +13,11 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
+PlayerCharisma::PlayerCharisma(player_type *player_ptr)
+    : PlayerBasicStatistics(player_ptr)
+{
+}
+
 void PlayerCharisma::set_locals()
 {
     this->max_value = +99;
@@ -29,7 +34,7 @@ void PlayerCharisma::set_locals()
  * * 型による魅力修正値
  * * 降鬼陣で加算(+5)
  */
-int16_t PlayerCharisma::battleform_value()
+int16_t PlayerCharisma::stance_value()
 {
     int16_t result = 0;
 

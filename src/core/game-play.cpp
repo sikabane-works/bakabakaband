@@ -93,6 +93,7 @@
 #include "window/main-window-util.h"
 #include "wizard/wizard-special-process.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 #include <ctime>
 
 static void restore_windows(player_type *player_ptr)
@@ -166,6 +167,7 @@ static void init_random_seed(player_type *player_ptr, bool new_game)
 static void init_world_floor_info(player_type *player_ptr)
 {
     w_ptr->character_dungeon = false;
+    wc_ptr->collapse_degree = 0;
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->dun_level = 0;
     floor_ptr->inside_quest = 0;
@@ -261,10 +263,10 @@ static void generate_world(player_type *player_ptr, bool new_game)
     if (player_ptr->pclass != PlayerClassType::SORCERER) {
         auto pclass = enum2i(player_ptr->pclass);
         if (player_ptr->ppersonality == PERSONALITY_SEXY)
-            s_info[pclass].w_max[ItemKindType::HAFTED][SV_WHIP] = WEAPON_EXP_MASTER;
+            s_info[pclass].w_max[ItemKindType::HAFTED][SV_WHIP] = PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER);
         if (player_ptr->prace == PlayerRaceType::MERFOLK) {
-            s_info[pclass].w_max[ItemKindType::POLEARM][SV_TRIDENT] = WEAPON_EXP_MASTER;
-            s_info[pclass].w_max[ItemKindType::POLEARM][SV_TRIFURCATE_SPEAR] = WEAPON_EXP_MASTER;
+            s_info[pclass].w_max[ItemKindType::POLEARM][SV_TRIDENT] = PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER);
+            s_info[pclass].w_max[ItemKindType::POLEARM][SV_TRIFURCATE_SPEAR] = PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER);
         }
     }
 
@@ -379,7 +381,7 @@ static void process_game_turn(player_type *player_ptr)
         msg_print(nullptr);
         load_game = false;
         decide_arena_death(player_ptr);
-        if (player_ptr->is_dead)
+        if (player_ptr->is_dead || wc_ptr->is_blown_away())
             break;
 
         change_floor(player_ptr);

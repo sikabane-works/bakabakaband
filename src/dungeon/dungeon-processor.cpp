@@ -41,6 +41,7 @@
 #include "view/display-messages.h"
 #include "world/world-turn-processor.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 /*!
  * process_player()、process_world() をcore.c から移設するのが先.
@@ -194,7 +195,7 @@ void process_dungeon(player_type *player_ptr, bool load_game)
             term_fresh_force();
         }
 
-        if (!player_ptr->playing || player_ptr->is_dead)
+        if (!player_ptr->playing || player_ptr->is_dead || wc_ptr->is_blown_away())
             break;
 
         w_ptr->game_turn++;

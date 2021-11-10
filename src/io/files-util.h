@@ -27,7 +27,7 @@ typedef void(*update_playtime_pf)(void);
 
 extern errr file_character(player_type *player_ptr, concptr name, display_player_pf display_player);
 extern errr get_rnd_line(concptr file_name, int entry, char *output);
-void read_dead_file(char* buf, size_t buf_size);
+void read_dead_file(char* buf, size_t buf_size, bool world_end);
 
 #ifdef JP
 extern errr get_rnd_line_jonly(concptr file_name, int entry, char *output, int count);

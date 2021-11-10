@@ -26,6 +26,7 @@
 #include "view/display-util.h"
 #include "view/status-first-page.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief プレイヤーの打撃能力修正を表示する
@@ -101,7 +102,7 @@ static void display_hit_damage(player_type *player_ptr)
     if ((o_ptr->sval == SV_LIGHT_XBOW) || (o_ptr->sval == SV_HEAVY_XBOW))
         show_tohit += player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] / 400;
     else
-        show_tohit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200;
+        show_tohit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - (PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER) / 2)) / 200;
 
     show_tohit += player_ptr->skill_thb / BTH_PLUS_ADJ;
 
@@ -256,7 +257,7 @@ static void display_playtime_in_game(player_type *player_ptr)
 
     display_player_one_line(ENTRY_DAY, buf, TERM_L_GREEN);
 
-    display_player_one_line(ENTRY_WORLD_COLLAPSE, format("%3d.%06d%%", w_ptr->collapse_degree / 1000000, w_ptr->collapse_degree % 1000000), TERM_L_GREEN);
+    display_player_one_line(ENTRY_WORLD_COLLAPSE, format("%3d.%06d%%", wc_ptr->collapse_degree / 1000000, wc_ptr->collapse_degree % 1000000), TERM_L_GREEN);
 
     if (player_ptr->chp >= player_ptr->mhp)
         display_player_one_line(ENTRY_HP, format("%4d/%4d", player_ptr->chp, player_ptr->mhp), TERM_L_GREEN);

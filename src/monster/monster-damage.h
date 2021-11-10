@@ -2,6 +2,8 @@
 
 #include "monster-race/race-indice-types.h"
 #include "system/angband.h"
+#include "spell/spell-types.h"
+#include "util/flag-group.h"
 #include <tuple>
 #include <vector>
 
@@ -11,8 +13,8 @@ class player_type;
 typedef std::vector<std::tuple<monster_race_type, monster_race_type, monster_race_type>> combined_uniques;
 class MonsterDamageProcessor {
 public:
-    MonsterDamageProcessor(player_type *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear);
-    MonsterDamageProcessor() = delete;
+    MonsterDamageProcessor(player_type *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EFFECT_ID effect_type);
+    MonsterDamageProcessor(player_type *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EffectFlags effect_flags);
     virtual ~MonsterDamageProcessor() = default;
     bool mon_take_hit(concptr note);
 
@@ -21,6 +23,7 @@ private:
     MONSTER_IDX m_idx;
     HIT_POINT dam;
     bool *fear;
+    EffectFlags effect_flags{};
     void get_exp_from_mon(monster_type *m_ptr, HIT_POINT exp_dam);
     bool genocide_chaos_patron();
     bool process_dead_exp_virtue(concptr note, monster_type *exp_mon);

@@ -128,7 +128,7 @@ void process_player_hp_mp(player_type *player_ptr)
     if (player_ptr->poisoned && !is_invuln(player_ptr)) {
         take_hit(player_ptr, DAMAGE_NOESCAPE, 1, _("毒", "poison"));
     }
-    
+
     auto player_cut = player_ptr->effects()->cut();
     if (player_cut->is_cut() && !is_invuln(player_ptr)) {
         auto dam = player_cut->get_damage();
@@ -241,10 +241,56 @@ void process_player_hp_mp(player_type *player_ptr)
         cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
             _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
+    
+    if (get_player_flags(player_ptr, TR_SELF_FIRE) && !has_immune_fire(player_ptr)) {
+        HIT_POINT damage;
+        damage = player_ptr->lev;
+        if (race.tr_flags().has(TR_VUL_FIRE))
+            damage += damage / 3;
+        if (has_resist_fire(player_ptr))
+            damage = damage / 3;
+        if (is_oppose_fire(player_ptr))
+            damage = damage / 3;
+
+        damage = std::max(damage, 1);
+        msg_print(_("熱い！", "It's hot!"));
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("炎のオーラ", "Fire aura"));
+    }
+
+    if (get_player_flags(player_ptr, TR_SELF_ELEC) && !has_immune_elec(player_ptr)) {
+        HIT_POINT damage;
+        damage = player_ptr->lev;
+        if (race.tr_flags().has(TR_VUL_ELEC))
+            damage += damage / 3;
+        if (has_resist_elec(player_ptr))
+            damage = damage / 3;
+        if (is_oppose_elec(player_ptr))
+            damage = damage / 3;
+
+        damage = std::max(damage, 1);
+        msg_print(_("痛い！", "It hurts!"));
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("電気のオーラ", "Elec aura"));
+    }
+
+    if (get_player_flags(player_ptr, TR_SELF_COLD) && !has_immune_cold(player_ptr)) {
+        HIT_POINT damage;
+        damage = player_ptr->lev;
+        if (race.tr_flags().has(TR_VUL_COLD))
+            damage += damage / 3;
+        if (has_resist_cold(player_ptr))
+            damage = damage / 3;
+        if (is_oppose_cold(player_ptr))
+            damage = damage / 3;
+
+        damage = std::max(damage, 1);
+        msg_print(_("冷たい！", "It's cold!"));
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("冷気のオーラ", "Cold aura"));
+    }
 
     if (player_ptr->riding) {
         HIT_POINT damage;
-        if ((r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].flags2 & RF2_AURA_FIRE) && !has_immune_fire(player_ptr)) {
+        auto auras = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].aura_flags;
+        if (auras.has(MonsterAuraType::FIRE) && !has_immune_fire(player_ptr)) {
             damage = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level / 2;
             if (race.tr_flags().has(TR_VUL_FIRE))
                 damage += damage / 3;
@@ -252,10 +298,13 @@ void process_player_hp_mp(player_type *player_ptr)
                 damage = damage / 3;
             if (is_oppose_fire(player_ptr))
                 damage = damage / 3;
+
+            damage = std::max(damage, 1);
             msg_print(_("熱い！", "It's hot!"));
             take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("炎のオーラ", "Fire aura"));
         }
-        if ((r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].flags2 & RF2_AURA_ELEC) && !has_immune_elec(player_ptr)) {
+
+        if (auras.has(MonsterAuraType::ELEC) && !has_immune_elec(player_ptr)) {
             damage = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level / 2;
             if (race.tr_flags().has(TR_VUL_ELEC))
                 damage += damage / 3;
@@ -263,10 +312,13 @@ void process_player_hp_mp(player_type *player_ptr)
                 damage = damage / 3;
             if (is_oppose_elec(player_ptr))
                 damage = damage / 3;
+
+            damage = std::max(damage, 1);
             msg_print(_("痛い！", "It hurts!"));
             take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("電気のオーラ", "Elec aura"));
         }
-        if ((r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].flags3 & RF3_AURA_COLD) && !has_immune_cold(player_ptr)) {
+
+        if (auras.has(MonsterAuraType::COLD) && !has_immune_cold(player_ptr)) {
             damage = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level / 2;
             if (race.tr_flags().has(TR_VUL_COLD))
                 damage += damage / 3;
@@ -274,6 +326,8 @@ void process_player_hp_mp(player_type *player_ptr)
                 damage = damage / 3;
             if (is_oppose_cold(player_ptr))
                 damage = damage / 3;
+
+            damage = std::max(damage, 1);
             msg_print(_("冷たい！", "It's cold!"));
             take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("冷気のオーラ", "Cold aura"));
         }
@@ -287,8 +341,7 @@ void process_player_hp_mp(player_type *player_ptr)
      * WILL BE!
      */
     if (f_ptr->flags.has_none_of({ FF::MOVE, FF::CAN_FLY })) {
-        if (!is_invuln(player_ptr) && !player_ptr->wraith_form && !player_ptr->tim_pass_wall
-            && ((player_ptr->chp > (player_ptr->lev / 5)) || !has_pass_wall(player_ptr))) {
+        if (!is_invuln(player_ptr) && !player_ptr->wraith_form && !player_ptr->tim_pass_wall && ((player_ptr->chp > (player_ptr->lev / 5)) || !has_pass_wall(player_ptr))) {
             concptr dam_desc;
             cave_no_regen = true;
 

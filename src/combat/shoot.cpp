@@ -70,6 +70,73 @@
 #include "world/world-object.h"
 
 /*!
+ * @brief 矢弾の属性を定義する
+ * @param bow_ptr 弓のオブジェクト構造体参照ポインタ
+ * @param arrow_ptr 矢弾のオブジェクト構造体参照ポインタ
+ * @return スナイパーの射撃属性、弓矢の属性を考慮する。デフォルトはGF_PLAYER_SHOOT。
+ */
+EffectFlags shot_effect_type(player_type *player_ptr, object_type *bow_ptr, object_type *arrow_ptr, SPELL_IDX snipe_type)
+{
+    EffectFlags effect_flags{};
+    effect_flags.set(GF_PLAYER_SHOOT);
+
+    TrFlags flags{};
+    auto arrow_flags = object_flags(arrow_ptr);
+    auto bow_flags = object_flags(bow_ptr);
+
+    flags = bow_flags | arrow_flags;
+
+    static const struct snipe_convert_table_t {
+        SPELL_IDX snipe_type;
+        spells_type effect_type;
+    } snipe_convert_table[] = {
+        { SP_LITE,      GF_LITE },
+        { SP_FIRE,      GF_FIRE },
+        { SP_COLD,      GF_COLD },
+        { SP_ELEC,      GF_ELEC },
+        { SP_KILL_WALL, GF_KILL_WALL },
+        { SP_EVILNESS,  GF_HELL_FIRE },
+        { SP_HOLYNESS,  GF_HOLY_FIRE },
+        { SP_FINAL,     GF_MANA },
+    };
+
+    static const struct brand_convert_table_t {
+        tr_type brand_type;
+        spells_type effect_type;
+    } brand_convert_table[] = {
+        { TR_BRAND_ACID,    GF_ACID },
+        { TR_BRAND_FIRE,    GF_FIRE },
+        { TR_BRAND_ELEC,    GF_ELEC },
+        { TR_BRAND_COLD,    GF_COLD },
+        { TR_BRAND_POIS,    GF_POIS },
+        { TR_SLAY_GOOD,     GF_HELL_FIRE },
+        { TR_KILL_GOOD,     GF_HELL_FIRE },
+        { TR_SLAY_EVIL,     GF_HOLY_FIRE },
+        { TR_KILL_EVIL,     GF_HOLY_FIRE },
+    };
+
+    for (size_t i = 0; i < sizeof(snipe_convert_table) / sizeof(snipe_convert_table[0]); ++i) {
+        const struct snipe_convert_table_t *p = &snipe_convert_table[i];
+
+        if (snipe_type == p->snipe_type)
+            effect_flags.set(p->effect_type);
+    }
+
+    for (size_t i = 0; i < sizeof(brand_convert_table) / sizeof(brand_convert_table[0]); ++i) {
+        const struct brand_convert_table_t *p = &brand_convert_table[i];
+
+        if (flags.has(p->brand_type))
+            effect_flags.set(p->effect_type);
+    }
+
+    if ((flags.has(TR_FORCE_WEAPON)) && (player_ptr->csp > (player_ptr->msp / 30))) {
+        effect_flags.set(GF_MANA);
+    }
+
+    return effect_flags;
+}
+
+/*!
  * @brief 矢弾を射撃した際のスレイ倍率をかけた結果を返す /
  * Determines the odds of an object breaking when thrown at a monster
  * @param bow_ptr 弓のオブジェクト構造体参照ポインタ
@@ -392,8 +459,10 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
 
     object_type forge;
     object_type *q_ptr;
-
     object_type *o_ptr;
+
+    EffectFlags effect_flags{};
+    effect_flags.set(GF_PLAYER_SHOOT);
 
     bool hit_body = false;
 
@@ -431,7 +500,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
     if ((j_ptr->sval == SV_LIGHT_XBOW) || (j_ptr->sval == SV_HEAVY_XBOW))
         chance = (player_ptr->skill_thb + (player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] / 400 + bonus) * BTH_PLUS_ADJ);
     else
-        chance = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + bonus) * BTH_PLUS_ADJ);
+        chance = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER) / 2)) / 200 + bonus) * BTH_PLUS_ADJ);
 
     PlayerEnergy(player_ptr).set_player_turn_energy(bow_energy(j_ptr->sval));
     tmul = bow_tmul(j_ptr->sval);
@@ -644,30 +713,11 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                 }
 
                 if ((r_ptr->level + 10) > player_ptr->lev) {
-                    auto &now_exp = player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval];
-                    if (now_exp < s_info[enum2i(player_ptr->pclass)].w_max[j_ptr->tval][j_ptr->sval]) {
-                        SUB_EXP amount = 0;
-                        if (now_exp < WEAPON_EXP_BEGINNER)
-                            amount = 80;
-                        else if (now_exp < WEAPON_EXP_SKILLED)
-                            amount = 25;
-                        else if ((now_exp < WEAPON_EXP_EXPERT) && (player_ptr->lev > 19))
-                            amount = 10;
-                        else if (player_ptr->lev > 34)
-                            amount = 2;
-                        now_exp += amount;
-                        set_bits(player_ptr->update, PU_BONUS);
-                    }
+                    PlayerSkill(player_ptr).gain_range_weapon_exp(j_ptr);
                 }
 
                 if (player_ptr->riding) {
-                    if ((player_ptr->skill_exp[SKILL_RIDING] < s_info[enum2i(player_ptr->pclass)].s_max[SKILL_RIDING])
-                        && ((player_ptr->skill_exp[SKILL_RIDING] - (RIDING_EXP_BEGINNER * 2)) / 200
-                            < r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level)
-                        && one_in_(2)) {
-                        player_ptr->skill_exp[SKILL_RIDING] += 1;
-                        set_bits(player_ptr->update, PU_BONUS);
-                    }
+                    PlayerSkill(player_ptr).gain_riding_skill_exp_on_range_attack();
                 }
 
                 /* Did we hit it (penalize range) */
@@ -717,6 +767,8 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                             base_dam = tdam;
                         }
                     } else {
+
+                        effect_flags = shot_effect_type(player_ptr, j_ptr, q_ptr, snipe_type);
                         /* Apply special damage */
                         tdam = calc_shot_damage_with_slay(player_ptr, j_ptr, q_ptr, tdam, m_ptr, snipe_type);
                         tdam = critical_shot(player_ptr, q_ptr->weight, q_ptr->to_h, j_ptr->to_h, tdam);
@@ -750,7 +802,7 @@ void exe_fire(player_type *player_ptr, INVENTORY_IDX item, object_type *j_ptr, S
                     }
 
                     /* Hit the monster, check for death */
-                    MonsterDamageProcessor mdp(player_ptr, c_mon_ptr->m_idx, tdam, &fear);
+                    MonsterDamageProcessor mdp(player_ptr, c_mon_ptr->m_idx, tdam, &fear, effect_flags);
                     if (mdp.mon_take_hit(extract_note_dies(real_r_idx(m_ptr)))) {
                         /* Dead monster */
                     }
@@ -972,7 +1024,7 @@ HIT_POINT critical_shot(player_type *player_ptr, WEIGHT weight, int plus_ammo, i
     if (player_ptr->tval_ammo == ItemKindType::BOLT)
         i = (player_ptr->skill_thb + (player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] / 400 + i) * BTH_PLUS_ADJ);
     else
-        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
+        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER) / 2)) / 200 + i) * BTH_PLUS_ADJ);
 
     auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
     auto sniper_concent = sniper_data ? sniper_data->concent : 0;
@@ -1123,7 +1175,7 @@ HIT_POINT calc_crit_ratio_shot(player_type *player_ptr, HIT_POINT plus_ammo, HIT
     if (player_ptr->tval_ammo == ItemKindType::BOLT)
         i = (player_ptr->skill_thb + (player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] / 400 + i) * BTH_PLUS_ADJ);
     else
-        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (WEAPON_EXP_MASTER / 2)) / 200 + i) * BTH_PLUS_ADJ);
+        i = (player_ptr->skill_thb + ((player_ptr->weapon_exp[j_ptr->tval][j_ptr->sval] - (PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER) / 2)) / 200 + i) * BTH_PLUS_ADJ);
 
     auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
     auto sniper_concent = sniper_data ? sniper_data->concent : 0;

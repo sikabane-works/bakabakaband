@@ -1,10 +1,16 @@
 ﻿#include "player-status/player-infravision.h"
 #include "mutation/mutation-flag-types.h"
+#include "player-base/player-race.h"
 #include "player-info/mimic-info-table.h"
 #include "player-info/race-types.h"
 #include "player/race-info-table.h"
 #include "system/player-type-definition.h"
 #include "util/enum-converter.h"
+
+PlayerInfravision::PlayerInfravision(player_type *player_ptr)
+    : PlayerStatusBase(player_ptr)
+{
+}
 
 /*
  * @brief 赤外線視力 - 初期値、下限、上限
@@ -26,14 +32,7 @@ void PlayerInfravision::set_locals()
  */
 int16_t PlayerInfravision::race_value()
 {
-    const player_race_info *tmp_rp_ptr;
-
-    if (this->player_ptr->mimic_form)
-        tmp_rp_ptr = &mimic_info[this->player_ptr->mimic_form];
-    else
-        tmp_rp_ptr = &race_info[enum2i(this->player_ptr->prace)];
-
-    return tmp_rp_ptr->infra;
+    return PlayerRace(this->player_ptr).get_info()->infra;
 }
 
 /*!

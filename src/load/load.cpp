@@ -22,12 +22,13 @@
 #include "load/extra-loader.h"
 #include "load/info-loader.h"
 #include "load/inventory-loader.h"
-#include "load/item-loader.h"
+#include "load/item/item-loader-factory.h"
 #include "load/load-util.h"
-#include "load/load-v1-5-0.h"
-#include "load/load-v1-7-0.h"
 #include "load/load-zangband.h"
 #include "load/lore-loader.h"
+#include "load/old/item-loader-savefile10.h"
+#include "load/old/load-v1-5-0.h"
+#include "load/old/load-v1-7-0.h"
 #include "load/option-loader.h"
 #include "load/player-info-loader.h"
 #include "load/quest-loader.h"
@@ -45,6 +46,7 @@
 #include "util/enum-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief 変愚蛮怒 v2.1.3で追加された街とクエストについて読み込む
@@ -95,11 +97,11 @@ static void rd_total_play_time()
 static void rd_world_info()
 {
     if (loading_savefile_version_is_older_than(9)) {
-        w_ptr->collapse_degree = 0;
+        wc_ptr->collapse_degree = 0;
         return;
     }
 
-    w_ptr->collapse_degree = rd_u32b();
+    wc_ptr->collapse_degree = rd_u32b();
 }
 
 /*!
@@ -197,23 +199,15 @@ static errr exe_reading_savefile(player_type *player_ptr)
     rd_version_info();
     rd_dummy3();
     rd_system_info();
-    errr load_lore_result = load_lore();
-    if (load_lore_result != 0)
-        return load_lore_result;
-
-    errr load_item_result = load_item();
-    if (load_item_result != 0)
-        return load_item_result;
-
+    load_lore();
+    auto item_loader = ItemLoaderFactory::create_loader();
+    item_loader->load_item();
     errr load_town_quest_result = load_town_quest(player_ptr);
     if (load_town_quest_result != 0)
         return load_town_quest_result;
 
     load_note(_("クエスト情報をロードしました", "Loaded Quests"));
-    errr load_artifact_result = load_artifact();
-    if (load_artifact_result != 0)
-        return load_artifact_result;
-
+    item_loader->load_artifact();
     load_player_world(player_ptr);
     errr load_hp_result = load_hp(player_ptr);
     if (load_hp_result != 0)
@@ -236,10 +230,7 @@ static errr exe_reading_savefile(player_type *player_ptr)
     if (load_inventory_result != 0)
         return load_inventory_result;
 
-    errr load_store_result = load_store(player_ptr);
-    if (load_store_result != 0)
-        return load_store_result;
-
+    load_store(player_ptr);
     player_ptr->pet_follow_distance = rd_s16b();
     if (h_older_than(0, 4, 10))
         set_zangband_pet(player_ptr);
@@ -401,7 +392,7 @@ bool load_savedata(player_type *player_ptr, bool *new_game)
         player_ptr->wait_report_score = false;
     }
 
-    if (player_ptr->is_dead) {
+    if (player_ptr->is_dead || wc_ptr->is_blown_away()) {
         *new_game = true;
         player_ptr->is_dead = false;
         w_ptr->sf_lives++;

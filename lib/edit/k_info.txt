@@ -5904,6 +5904,7 @@ I:35:5:0
 W:50:0:0:2500
 A:25/8:50/4
 P:0:0d0:0:0:10
+F:LEVITATION
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD 
 D:$This unearthly, completely transparent body mantle folds and drapes in 
 D:$iridescent patterns around you.  It weighs absolutely nothing.
@@ -6522,7 +6523,7 @@ I:36:15:0
 W:10:0:80:200
 A:10/2
 P:1:1d1:0:0:0
-F:NASTY
+F:NASTY | WORLD_END
 D:ピンク色のＯバックとかどう評しろというのか。
 
 N:683:伸縮性のあるボクサー型のパンツ
@@ -7152,7 +7153,7 @@ N:752:秩序:飴細工の
 E:Law:candy
 G:=:D
 I:45:56:1
-W:65:0:4:25000
+W:65:0:2:25000
 A:65/4
 P:0:0d0:5:0:5
 F:INT | WIS | SUST_INT | SUST_WIS
@@ -7214,6 +7215,23 @@ A:40/5:60/5
 P:0:1d3:0:0:5
 F:IGNORE_ACID | IGNORE_FIRE | IGNORE_ELEC | IGNORE_COLD
 
+N:760:シンダ ライオン
+E:& DEAD LION
+G:~:u
+I:3:26:0
+W:800:0:90:3
+A:10/20
+D:それはとある万能の大悪魔が「星」を手に入れるために残した、
+D:哲学的存在だ。
+
+N:761:#の蝋人形
+E:& Wax doll~ of #
+G:`:w
+I:9:15:0
+W:10:0:500:0
+A:5/3
+P:0:1d1:0:0:0
+D:偉大なるデーモン閣下の裁きを受けた成れの果てと言われている。
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown

@@ -176,7 +176,7 @@ TrFlags PlayerClass::tr_flags() const
     return flags;
 }
 
-TrFlags PlayerClass::form_tr_flags() const
+TrFlags PlayerClass::stance_tr_flags() const
 {
     TrFlags flags;
 
@@ -221,7 +221,7 @@ TrFlags PlayerClass::form_tr_flags() const
     return flags;
 }
 
-bool PlayerClass::can_resist_stun() const
+bool PlayerClass::has_stun_immunity() const
 {
     return (this->player_ptr->pclass == PlayerClassType::BERSERKER) && (this->player_ptr->lev > 34);
 }

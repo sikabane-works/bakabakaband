@@ -1,4 +1,5 @@
 ﻿#include "view/display-lore-status.h"
+#include "locale/japanese.h"
 #include "lore/lore-calculator.h"
 #include "lore/lore-util.h"
 #include "monster-race/monster-race.h"
@@ -10,9 +11,6 @@
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "term/term-color-types.h"
-#ifdef JP
-#include "locale/japanese.h"
-#endif
 
 void display_monster_hp_ac(lore_type *lore_ptr)
 {
@@ -22,7 +20,7 @@ void display_monster_hp_ac(lore_type *lore_ptr)
     hooked_roff(format(_("%^sは AC%d の防御力と", "%^s has an armor rating of %d"), Who::who(lore_ptr->msex), lore_ptr->r_ptr->ac));
     if ((lore_ptr->flags1 & RF1_FORCE_MAXHP) || (lore_ptr->r_ptr->hside == 1)) {
         auto hp = lore_ptr->r_ptr->hdice * (lore_ptr->nightmare ? 2 : 1) * lore_ptr->r_ptr->hside;
-        hooked_roff(format(_(" %d の体力がある。", " and a life rating of %d.  "), std::min(MON_MAX_HP, hp)));
+        hooked_roff(format(_(" %d の体力がある。", " and a life rating of %d.  "), std::min(MONSTER_MAXHP, hp)));
     } else {
         hooked_roff(format(
             _(" %dd%d の体力がある。", " and a life rating of %dd%d.  "), lore_ptr->r_ptr->hdice * (lore_ptr->nightmare ? 2 : 1), lore_ptr->r_ptr->hside));
@@ -333,7 +331,7 @@ void display_monster_resistances(lore_type *lore_ptr)
     hooked_roff(_("の耐性を持っている。", ".  "));
 }
 
-void display_monster_evolution(lore_type* lore_ptr)
+void display_monster_evolution(lore_type *lore_ptr)
 {
     if (!lore_ptr->r_ptr->r_can_evolve && !lore_ptr->know_everything)
         return;

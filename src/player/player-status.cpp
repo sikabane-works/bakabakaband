@@ -150,63 +150,6 @@ static player_hand main_attack_hand(player_type *player_ptr);
 /*** Player information ***/
 
 /*!
- * @brief 武器や各種スキル（騎乗以外）の抽象的表現ランクを返す。 /  Return proficiency level of weapons and misc. skills (except riding)
- * @param weapon_exp 経験値
- * @return ランク値
- */
-int weapon_exp_level(int weapon_exp)
-{
-    if (weapon_exp < WEAPON_EXP_BEGINNER)
-        return EXP_LEVEL_UNSKILLED;
-    else if (weapon_exp < WEAPON_EXP_SKILLED)
-        return EXP_LEVEL_BEGINNER;
-    else if (weapon_exp < WEAPON_EXP_EXPERT)
-        return EXP_LEVEL_SKILLED;
-    else if (weapon_exp < WEAPON_EXP_MASTER)
-        return EXP_LEVEL_EXPERT;
-    else
-        return EXP_LEVEL_MASTER;
-}
-
-/*!
- * @brief 騎乗スキルの抽象的ランクを返す。 / Return proficiency level of riding
- * @param weapon_exp 経験値
- * @return ランク値
- */
-int riding_exp_level(int riding_exp)
-{
-    if (riding_exp < RIDING_EXP_BEGINNER)
-        return EXP_LEVEL_UNSKILLED;
-    else if (riding_exp < RIDING_EXP_SKILLED)
-        return EXP_LEVEL_BEGINNER;
-    else if (riding_exp < RIDING_EXP_EXPERT)
-        return EXP_LEVEL_SKILLED;
-    else if (riding_exp < RIDING_EXP_MASTER)
-        return EXP_LEVEL_EXPERT;
-    else
-        return EXP_LEVEL_MASTER;
-}
-
-/*!
- * @brief プレイヤーの呪文レベルの抽象的ランクを返す。 / Return proficiency level of spells
- * @param spell_exp 経験値
- * @return ランク値
- */
-int spell_exp_level(int spell_exp)
-{
-    if (spell_exp < SPELL_EXP_BEGINNER)
-        return EXP_LEVEL_UNSKILLED;
-    else if (spell_exp < SPELL_EXP_SKILLED)
-        return EXP_LEVEL_BEGINNER;
-    else if (spell_exp < SPELL_EXP_EXPERT)
-        return EXP_LEVEL_SKILLED;
-    else if (spell_exp < SPELL_EXP_MASTER)
-        return EXP_LEVEL_EXPERT;
-    else
-        return EXP_LEVEL_MASTER;
-}
-
-/*!
  * @brief 遅延描画更新 / Delayed visual update
  * @details update_view(), update_lite(), update_mon_lite() においてのみ更新すること / Only used if update_view(), update_lite() or update_mon_lite() was called
  * @param player_ptr 主観となるプレイヤー構造体参照ポインタ
@@ -264,6 +207,22 @@ WEIGHT calc_inventory_weight(player_type *player_ptr)
     }
     return weight;
 }
+
+static void update_ability_scores(player_type *player_ptr)
+{
+    PlayerStrength player_str(player_ptr);
+    PlayerIntelligence player_int(player_ptr);
+    PlayerWisdom player_wis(player_ptr);
+    PlayerDexterity player_dex(player_ptr);
+    PlayerConstitution player_con(player_ptr);
+    PlayerCharisma player_chr(player_ptr);
+    PlayerBasicStatistics *player_stats[] = { &player_str, &player_int, &player_wis, &player_dex, &player_con, &player_chr };
+    for (auto i = 0; i < A_MAX; ++i) {
+        player_ptr->stat_add[i] = player_stats[i]->modification_value();
+        player_stats[i]->update_value();
+    }
+}
+
 /*!
  * @brief プレイヤーの全ステータスを更新する /
  * Calculate the players current "state", taking into account
@@ -360,20 +319,7 @@ static void update_bonuses(player_type *player_ptr)
         }
     }
 
-    player_ptr->stat_add[A_STR] = PlayerStrength(player_ptr).modification_value();
-    player_ptr->stat_add[A_INT] = PlayerIntelligence(player_ptr).modification_value();
-    player_ptr->stat_add[A_WIS] = PlayerWisdom(player_ptr).modification_value();
-    player_ptr->stat_add[A_DEX] = PlayerDexterity(player_ptr).modification_value();
-    player_ptr->stat_add[A_CON] = PlayerConstitution(player_ptr).modification_value();
-    player_ptr->stat_add[A_CHR] = PlayerCharisma(player_ptr).modification_value();
-
-    PlayerStrength(player_ptr).update_value();
-    PlayerIntelligence(player_ptr).update_value();
-    PlayerWisdom(player_ptr).update_value();
-    PlayerDexterity(player_ptr).update_value();
-    PlayerConstitution(player_ptr).update_value();
-    PlayerCharisma(player_ptr).update_value();
-
+    update_ability_scores(player_ptr);
     o_ptr = &player_ptr->inventory_list[INVEN_BOW];
     if (o_ptr->k_idx) {
         player_ptr->tval_ammo = bow_tval_ammo(o_ptr);
@@ -618,9 +564,9 @@ static void update_num_of_spells(player_type *player_ptr)
         }
 
 #ifdef JP
-        msg_format("%sの%sを忘れてしまった。", exe_spell(player_ptr, which, j % 32, SPELL_NAME), p);
+        msg_format("%sの%sを忘れてしまった。", exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME), p);
 #else
-        msg_format("You have forgotten the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SPELL_NAME));
+        msg_format("You have forgotten the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME));
 #endif
         player_ptr->new_spells++;
     }
@@ -658,9 +604,9 @@ static void update_num_of_spells(player_type *player_ptr)
         }
 
 #ifdef JP
-        msg_format("%sの%sを忘れてしまった。", exe_spell(player_ptr, which, j % 32, SPELL_NAME), p);
+        msg_format("%sの%sを忘れてしまった。", exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME), p);
 #else
-        msg_format("You have forgotten the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SPELL_NAME));
+        msg_format("You have forgotten the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME));
 #endif
         player_ptr->new_spells++;
     }
@@ -711,9 +657,9 @@ static void update_num_of_spells(player_type *player_ptr)
         }
 
 #ifdef JP
-        msg_format("%sの%sを思い出した。", exe_spell(player_ptr, which, j % 32, SPELL_NAME), p);
+        msg_format("%sの%sを思い出した。", exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME), p);
 #else
-        msg_format("You have remembered the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SPELL_NAME));
+        msg_format("You have remembered the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME));
 #endif
         player_ptr->new_spells--;
     }
@@ -1609,7 +1555,7 @@ static ARMOUR_CLASS calc_base_ac(player_type *player_ptr)
     const auto o_ptr_mh = &player_ptr->inventory_list[INVEN_MAIN_HAND];
     const auto o_ptr_sh = &player_ptr->inventory_list[INVEN_SUB_HAND];
     if (o_ptr_mh->is_armour() || o_ptr_sh->is_armour()) {
-        ac += player_ptr->skill_exp[SKILL_SHIELD] * (1 + player_ptr->lev / 22) / 2000;
+        ac += player_ptr->skill_exp[PlayerSkillKindType::SHIELD] * (1 + player_ptr->lev / 22) / 2000;
     }
 
     return ac;
@@ -1794,7 +1740,7 @@ int16_t calc_double_weapon_penalty(player_type *player_ptr, INVENTORY_IDX slot)
     if (has_melee_weapon(player_ptr, INVEN_MAIN_HAND) && has_melee_weapon(player_ptr, INVEN_SUB_HAND)) {
         auto flags = object_flags(&player_ptr->inventory_list[INVEN_SUB_HAND]);
 
-        penalty = ((100 - player_ptr->skill_exp[SKILL_TWO_WEAPON] / 160) - (130 - player_ptr->inventory_list[slot].weight) / 8);
+        penalty = ((100 - player_ptr->skill_exp[PlayerSkillKindType::TWO_WEAPON] / 160) - (130 - player_ptr->inventory_list[slot].weight) / 8);
         if (((player_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN) && (player_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN))
             || ((player_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH)
                 && (player_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE))) {
@@ -1856,7 +1802,7 @@ static int16_t calc_riding_bow_penalty(player_type *player_ptr)
         if (player_ptr->tval_ammo != ItemKindType::ARROW)
             penalty = 5;
     } else {
-        penalty = r_info[floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[SKILL_RIDING] / 80;
+        penalty = r_info[floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 80;
         penalty += 30;
         if (penalty < 30)
             penalty = 30;
@@ -2142,7 +2088,7 @@ static short calc_to_hit(player_type *player_ptr, INVENTORY_IDX slot, bool is_re
                 break;
             /* fall through */
         case MELEE_TYPE_BAREHAND_TWO:
-            hit += (player_ptr->skill_exp[SKILL_MARTIAL_ARTS] - WEAPON_EXP_BEGINNER) / 200;
+            hit += (player_ptr->skill_exp[PlayerSkillKindType::MARTIAL_ARTS] - PlayerSkill::weapon_exp_at(PlayerSkillRank::BEGINNER)) / 200;
             break;
 
         default:
@@ -2163,7 +2109,7 @@ static short calc_to_hit(player_type *player_ptr, INVENTORY_IDX slot, bool is_re
         auto flgs = object_flags(o_ptr);
 
         /* Traind bonuses */
-        hit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - WEAPON_EXP_BEGINNER) / 200;
+        hit += (player_ptr->weapon_exp[o_ptr->tval][o_ptr->sval] - PlayerSkill::weapon_exp_at(PlayerSkillRank::BEGINNER)) / 200;
 
         /* Weight penalty */
         if (calc_weapon_weight_limit(player_ptr) < o_ptr->weight / 10) {
@@ -2188,7 +2134,7 @@ static short calc_to_hit(player_type *player_ptr, INVENTORY_IDX slot, bool is_re
                 if ((player_ptr->pclass == PlayerClassType::BEASTMASTER) || (player_ptr->pclass == PlayerClassType::CAVALRY)) {
                     penalty = 5;
                 } else {
-                    penalty = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[SKILL_RIDING] / 80;
+                    penalty = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 80;
                     penalty += 30;
                     if (penalty < 30) {
                         penalty = 30;

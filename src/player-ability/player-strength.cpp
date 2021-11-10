@@ -14,6 +14,11 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
+PlayerStrength::PlayerStrength(player_type *player_ptr)
+    : PlayerBasicStatistics(player_ptr)
+{
+}
+
 void PlayerStrength::set_locals()
 {
     this->max_value = +99;
@@ -26,22 +31,12 @@ void PlayerStrength::set_locals()
 /*!
  * @brief 腕力補正計算 - 種族
  * @return 腕力補正値
- * @details
- * * 種族による腕力修正値。
- * * エントは別途レベル26,41,46到達ごとに加算(+1)
  */
 int16_t PlayerStrength::race_value()
 {
     int16_t result = PlayerBasicStatistics::race_value();
 
-    if (PlayerRace(this->player_ptr).equals(PlayerRaceType::ENT)) {
-        if (this->player_ptr->lev > 25)
-            result++;
-        if (this->player_ptr->lev > 40)
-            result++;
-        if (this->player_ptr->lev > 45)
-            result++;
-    }
+    result += PlayerRace(this->player_ptr).additional_strength();
 
     return result;
 }
@@ -85,7 +80,7 @@ int16_t PlayerStrength::time_effect_value()
  * * 白虎の構えで加算(+2)
  * * 朱雀の構えで減算(-2)
  */
-int16_t PlayerStrength::battleform_value()
+int16_t PlayerStrength::stance_value()
 {
     int16_t result = 0;
 
