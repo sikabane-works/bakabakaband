@@ -26,7 +26,7 @@ void print_title(player_type *player_ptr)
 {
     GAME_TEXT str[14];
     concptr p = "";
-    if (w_ptr->total_winner || (player_ptr->lev > PY_MAX_LEVEL)) {
+    if (w_ptr->total_winner || (player_ptr->lev > PY_MAX_LEVEL)) { // TODO: プレイヤーレベルが上限超えるのも勝利条件になっているのは謎
         if (player_ptr->arena_number > MAX_ARENA_MONS + 2) {
             p = _("*真・勝利者*", "*TRUEWINNER*");
         } else {
