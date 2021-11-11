@@ -2,6 +2,8 @@
 #include "world/world.h"
 #include "object-enchant/tr-flags.h"
 #include "player/player-status-flags.h"
+#include "system/player-type-definition.h"
+#include "market/arena-info-table.h"
 
 WorldCollapsion world_collapsion;
 WorldCollapsion *wc_ptr = &world_collapsion;
@@ -22,10 +24,9 @@ bool WorldCollapsion::is_blown_away()
  */
 void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, player_type *player_ptr, int multi)
 {
-    if (get_player_flags(player_ptr, TR_WORLD_END))
-    {
-        multi *= 2;
-    }
+    if (w_ptr->total_winner && player_ptr->arena_number > MAX_ARENA_MONS + 2) return;
+    if (get_player_flags(player_ptr, TR_WORLD_END)) multi *= 2;
+    if (w_ptr->total_winner) multi /= 3;
     this->collapse_degree += (std::min(1, mysqrt(w_ptr->game_turn / 2000)) * multi);
 }
 
