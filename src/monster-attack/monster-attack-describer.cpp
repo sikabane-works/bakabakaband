@@ -236,6 +236,8 @@ void describe_monster_attack_method(monap_type *monap_ptr)
 #endif
         if (monap_ptr->m_ptr->ap_r_idx == MON_MAGGOT)
             monap_ptr->act = desc_moan[randint0(4)];
+        else if (monap_ptr->m_ptr->ap_r_idx == MON_MISUMI)
+            monap_ptr->act = desc_moan3[randint0(4)];
         else
             monap_ptr->act = desc_moan2[randint0(4)];
 
