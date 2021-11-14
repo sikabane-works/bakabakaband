@@ -180,7 +180,7 @@ FEAT_IDX choose_random_trap(PlayerType *player_ptr)
         feat = normal_traps[randint0(MAX_NORMAL_TRAPS)];
 
         /* Accept non-trapdoors */
-        if (f_info[feat].flags.has_not(FF::MORE))
+        if (f_info[feat].flags.has_not(FloorFeatureType::MORE))
             break;
 
         /* Hack -- no trap doors on special levels */
@@ -208,9 +208,9 @@ void disclose_grid(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
-    if (g_ptr->cave_has_flag(FF::SECRET)) {
+    if (g_ptr->cave_has_flag(FloorFeatureType::SECRET)) {
         /* No longer hidden */
-        cave_alter_feat(player_ptr, y, x, FF::SECRET);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::SECRET);
     } else if (g_ptr->mimic) {
         /* No longer hidden */
         g_ptr->mimic = 0;
@@ -399,12 +399,12 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     POSITION x = player_ptr->x, y = player_ptr->y;
     grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
     feature_type *f_ptr = &f_info[g_ptr->feat];
-    enum trap_type trap_feat_type = f_ptr->flags.has(FF::TRAP) ? (enum trap_type)f_ptr->subtype : NOT_TRAP;
+    enum trap_type trap_feat_type = f_ptr->flags.has(FloorFeatureType::TRAP) ? (enum trap_type)f_ptr->subtype : NOT_TRAP;
     concptr name = _("トラップ", "a trap");
 
     disturb(player_ptr, false, true);
 
-    cave_alter_feat(player_ptr, y, x, FF::HIT_TRAP);
+    cave_alter_feat(player_ptr, y, x, FloorFeatureType::HIT_TRAP);
 
 	if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
         player_ptr->incident[INCIDENT::TRAPPED] = 0;
@@ -667,7 +667,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     }
 
     if (break_trap && is_trap(player_ptr, g_ptr->feat)) {
-        cave_alter_feat(player_ptr, y, x, FF::DISARM);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::DISARM);
         msg_print(_("トラップを粉砕した。", "You destroyed the trap."));
     }
 }

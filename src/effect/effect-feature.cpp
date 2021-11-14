@@ -75,7 +75,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
     who = who ? who : 0;
     dam = (dam + r) / (r + 1);
 
-    if (f_ptr->flags.has(FF::TREE)) {
+    if (f_ptr->flags.has(FloorFeatureType::TREE)) {
         concptr message;
         switch (typ) {
         case GF_POIS:
@@ -180,12 +180,12 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
                 obvious = true;
             }
 
-            cave_alter_feat(player_ptr, y, x, FF::DISARM);
+            cave_alter_feat(player_ptr, y, x, FloorFeatureType::DISARM);
         }
 
-        if (is_closed_door(player_ptr, g_ptr->feat) && f_ptr->power && f_ptr->flags.has(FF::OPEN)) {
+        if (is_closed_door(player_ptr, g_ptr->feat) && f_ptr->power && f_ptr->flags.has(FloorFeatureType::OPEN)) {
             FEAT_IDX old_feat = g_ptr->feat;
-            cave_alter_feat(player_ptr, y, x, FF::DISARM);
+            cave_alter_feat(player_ptr, y, x, FloorFeatureType::DISARM);
             if (known && (old_feat != g_ptr->feat)) {
                 msg_print(_("カチッと音がした！", "Click!"));
                 obvious = true;
@@ -201,13 +201,13 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         break;
     }
     case GF_KILL_DOOR: {
-        if (is_trap(player_ptr, g_ptr->feat) || f_ptr->flags.has(FF::DOOR)) {
+        if (is_trap(player_ptr, g_ptr->feat) || f_ptr->flags.has(FloorFeatureType::DOOR)) {
             if (known) {
                 msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
                 obvious = true;
             }
 
-            cave_alter_feat(player_ptr, y, x, FF::TUNNEL);
+            cave_alter_feat(player_ptr, y, x, FloorFeatureType::TUNNEL);
         }
 
         if (player_ptr->blind || !player_has_los_bold(player_ptr, y, x))
@@ -219,19 +219,19 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         break;
     }
     case GF_JAM_DOOR: {
-        if (f_ptr->flags.has_not(FF::SPIKE))
+        if (f_ptr->flags.has_not(FloorFeatureType::SPIKE))
             break;
 
         int16_t old_mimic = g_ptr->mimic;
         feature_type *mimic_f_ptr = &f_info[g_ptr->get_feat_mimic()];
 
-        cave_alter_feat(player_ptr, y, x, FF::SPIKE);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::SPIKE);
         g_ptr->mimic = old_mimic;
 
         note_spot(player_ptr, y, x);
         lite_spot(player_ptr, y, x);
 
-        if (!known || mimic_f_ptr->flags.has_not(FF::OPEN))
+        if (!known || mimic_f_ptr->flags.has_not(FloorFeatureType::OPEN))
             break;
 
         msg_format(_("%sに何かがつっかえて開かなくなった。", "The %s seems stuck."), mimic_f_ptr->name.c_str());
@@ -239,7 +239,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         break;
     }
     case GF_KILL_WALL: {
-        if (f_ptr->flags.has_not(FF::HURT_ROCK))
+        if (f_ptr->flags.has_not(FloorFeatureType::HURT_ROCK))
             break;
 
         if (known && g_ptr->is_mark()) {
@@ -247,7 +247,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
             obvious = true;
         }
 
-        cave_alter_feat(player_ptr, y, x, FF::HURT_ROCK);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::HURT_ROCK);
         player_ptr->update |= (PU_FLOW);
         break;
     }
@@ -293,10 +293,10 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         break;
     }
     case GF_LAVA_FLOW: {
-        if (f_ptr->flags.has(FF::PERMANENT))
+        if (f_ptr->flags.has(FloorFeatureType::PERMANENT))
             break;
         if (dam == 1) {
-            if (f_ptr->flags.has_not(FF::FLOOR))
+            if (f_ptr->flags.has_not(FloorFeatureType::FLOOR))
                 break;
             cave_set_feat(player_ptr, y, x, feat_shallow_lava);
         } else if (dam) {
@@ -306,10 +306,10 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         break;
     }
     case GF_WATER_FLOW: {
-        if (f_ptr->flags.has(FF::PERMANENT))
+        if (f_ptr->flags.has(FloorFeatureType::PERMANENT))
             break;
         if (dam == 1) {
-            if (f_ptr->flags.has_not(FF::FLOOR))
+            if (f_ptr->flags.has_not(FloorFeatureType::FLOOR))
                 break;
             cave_set_feat(player_ptr, y, x, feat_shallow_water);
         } else if (dam) {
@@ -355,7 +355,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
                     continue;
 
                 grid_type *cc_ptr = &floor_ptr->grid_array[by][bx];
-                if (f_info[cc_ptr->get_feat_mimic()].flags.has(FF::GLOW)) {
+                if (f_info[cc_ptr->get_feat_mimic()].flags.has(FloorFeatureType::GLOW)) {
                     do_dark = false;
                     break;
                 }
@@ -368,7 +368,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         g_ptr->info &= ~(CAVE_GLOW);
 
         /* Hack -- Forget "boring" grids */
-        if (f_ptr->flags.has_not(FF::REMEMBER) || has_element_resist(player_ptr, ElementRealm::DARKNESS, 1)) {
+        if (f_ptr->flags.has_not(FloorFeatureType::REMEMBER) || has_element_resist(player_ptr, ElementRealm::DARKNESS, 1)) {
             /* Forget */
             g_ptr->info &= ~(CAVE_MARK);
             note_spot(player_ptr, y, x);
@@ -395,7 +395,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
                 (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP | PROJECT_NO_HANGEKI));
         }
 
-        if (f_ptr->flags.has_not(FF::GLASS) || f_ptr->flags.has(FF::PERMANENT) || (dam < 50))
+        if (f_ptr->flags.has_not(FloorFeatureType::GLASS) || f_ptr->flags.has(FloorFeatureType::PERMANENT) || (dam < 50))
             break;
 
         if (known && (g_ptr->is_mark())) {
@@ -403,7 +403,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
             sound(SOUND_GLASS);
         }
 
-        cave_alter_feat(player_ptr, y, x, FF::HURT_ROCK);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::HURT_ROCK);
         player_ptr->update |= (PU_FLOW);
         break;
     }
@@ -416,7 +416,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
                 (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_JUMP | PROJECT_NO_HANGEKI));
         }
 
-        if (f_ptr->flags.has_not(FF::GLASS) || f_ptr->flags.has(FF::PERMANENT) || (dam < 200))
+        if (f_ptr->flags.has_not(FloorFeatureType::GLASS) || f_ptr->flags.has(FloorFeatureType::PERMANENT) || (dam < 200))
             break;
 
         if (known && (g_ptr->is_mark())) {
@@ -424,7 +424,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
             sound(SOUND_GLASS);
         }
 
-        cave_alter_feat(player_ptr, y, x, FF::HURT_ROCK);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::HURT_ROCK);
         player_ptr->update |= (PU_FLOW);
         break;
     }
@@ -432,18 +432,18 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         if (g_ptr->is_mirror() || g_ptr->is_rune_protection() || g_ptr->is_rune_explosion())
             remove_mirror(player_ptr, y, x);
 
-        if (f_ptr->flags.has_not(FF::HURT_DISI) || f_ptr->flags.has(FF::PERMANENT))
+        if (f_ptr->flags.has_not(FloorFeatureType::HURT_DISI) || f_ptr->flags.has(FloorFeatureType::PERMANENT))
             break;
 
-        cave_alter_feat(player_ptr, y, x, FF::HURT_DISI);
+        cave_alter_feat(player_ptr, y, x, FloorFeatureType::HURT_DISI);
         player_ptr->update |= (PU_FLOW);
         break;
     }
     case GF_DIRT: {
-        if (f_ptr->flags.has(FF::PERMANENT))
+        if (f_ptr->flags.has(FloorFeatureType::PERMANENT))
             break;
         if (dam == 1) {
-            if (!f_ptr->flags.has(FF::FLOOR))
+            if (!f_ptr->flags.has(FloorFeatureType::FLOOR))
                 break;
             cave_set_feat(player_ptr, y, x, feat_shallow_dung_pool);
         } else if (dam) {

@@ -79,4 +79,4 @@ enum class FF {
     MAX,
 };
 
-constexpr auto FF_FLAG_MAX = enum2i(FF::MAX);
+constexpr auto FF_FLAG_MAX = enum2i(FloorFeatureType::MAX);

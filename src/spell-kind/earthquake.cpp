@@ -292,7 +292,7 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
                 continue;
 
             delete_all_items_from_floor(player_ptr, yy, xx);
-            int t = cave_has_flag_bold(floor_ptr, yy, xx, FF::PROJECT) ? randint0(100) : 200;
+            int t = cave_has_flag_bold(floor_ptr, yy, xx, FloorFeatureType::PROJECT) ? randint0(100) : 200;
             if (t < 20) {
                 cave_set_feat(player_ptr, yy, xx, feat_granite);
                 continue;
@@ -338,7 +338,7 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
                 if (!in_bounds2(floor_ptr, yyy, xxx))
                     continue;
                 cc_ptr = &floor_ptr->grid_array[yyy][xxx];
-                if (f_info[cc_ptr->get_feat_mimic()].flags.has(FF::GLOW)) {
+                if (f_info[cc_ptr->get_feat_mimic()].flags.has(FloorFeatureType::GLOW)) {
                     g_ptr->info |= CAVE_GLOW;
                     break;
                 }

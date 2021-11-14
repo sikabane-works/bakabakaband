@@ -178,19 +178,19 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
         }
 
         if ((player_ptr->action == ACTION_HAYAGAKE)
-            && (f_ptr->flags.has_not(FF::PROJECT) || (!player_ptr->levitation && f_ptr->flags.has(FF::DEEP)))) {
+            && (f_ptr->flags.has_not(FloorFeatureType::PROJECT) || (!player_ptr->levitation && f_ptr->flags.has(FloorFeatureType::DEEP)))) {
             msg_print(_("ここでは素早く動けない。", "You cannot run in here."));
             set_action(player_ptr, ACTION_NONE);
         }
 
         if (player_ptr->prace == PlayerRaceType::MERFOLK) {
-            if (f_ptr->flags.has(FF::WATER) ^ of_ptr->flags.has(FF::WATER)) {
+            if (f_ptr->flags.has(FloorFeatureType::WATER) ^ of_ptr->flags.has(FloorFeatureType::WATER)) {
                 player_ptr->update |= PU_BONUS;
                 update_creature(player_ptr);
             }
         }
 
-        if (f_ptr->flags.has(FF::SLOW) ^ of_ptr->flags.has(FF::SLOW)) {
+        if (f_ptr->flags.has(FloorFeatureType::SLOW) ^ of_ptr->flags.has(FloorFeatureType::SLOW)) {
             player_ptr->update |= PU_BONUS;
             update_creature(player_ptr);        
         }
@@ -220,19 +220,19 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
     }
 
     PlayerEnergy energy(player_ptr);
-    if (f_ptr->flags.has(FF::STORE)) {
+    if (f_ptr->flags.has(FloorFeatureType::STORE)) {
         disturb(player_ptr, false, true);
         energy.reset_player_turn();
         command_new = SPECIAL_KEY_STORE;
-    } else if (f_ptr->flags.has(FF::BLDG)) {
+    } else if (f_ptr->flags.has(FloorFeatureType::BLDG)) {
         disturb(player_ptr, false, true);
         energy.reset_player_turn();
         command_new = SPECIAL_KEY_BUILDING;
-    } else if (f_ptr->flags.has(FF::QUEST_ENTER)) {
+    } else if (f_ptr->flags.has(FloorFeatureType::QUEST_ENTER)) {
         disturb(player_ptr, false, true);
         energy.reset_player_turn();
         command_new = SPECIAL_KEY_QUEST;
-    } else if (f_ptr->flags.has(FF::QUEST_EXIT)) {
+    } else if (f_ptr->flags.has(FloorFeatureType::QUEST_EXIT)) {
         if (quest[floor_ptr->inside_quest].type == QuestKindType::FIND_EXIT)
             complete_quest(player_ptr, floor_ptr->inside_quest);
 
@@ -244,9 +244,9 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
         player_ptr->oldpx = 0;
         player_ptr->oldpy = 0;
         player_ptr->leaving = true;
-    } else if (f_ptr->flags.has(FF::HIT_TRAP) && !(mpe_mode & MPE_STAYING)) {
+    } else if (f_ptr->flags.has(FloorFeatureType::HIT_TRAP) && !(mpe_mode & MPE_STAYING)) {
         disturb(player_ptr, false, true);
-        if (g_ptr->mimic || f_ptr->flags.has(FF::SECRET)) {
+        if (g_ptr->mimic || f_ptr->flags.has(FloorFeatureType::SECRET)) {
             msg_print(_("トラップだ！", "You found a trap!"));
             disclose_grid(player_ptr, player_ptr->y, player_ptr->x);
         }
@@ -279,7 +279,7 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
 bool trap_can_be_ignored(PlayerType *player_ptr, FEAT_IDX feat)
 {
     feature_type *f_ptr = &f_info[feat];
-    if (f_ptr->flags.has_not(FF::TRAP))
+    if (f_ptr->flags.has_not(FloorFeatureType::TRAP))
         return true;
 
     switch (f_ptr->subtype) {

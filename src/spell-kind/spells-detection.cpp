@@ -50,7 +50,7 @@ static bool detect_feat_flag(PlayerType *player_ptr, POSITION range, FF flag, bo
             if (dist > range)
                 continue;
             g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-            if (flag == FF::TRAP) {
+            if (flag == FloorFeatureType::TRAP) {
                 /* Mark as detected */
                 if (dist <= range && known) {
                     if (dist <= range - 1)
@@ -85,9 +85,9 @@ static bool detect_feat_flag(PlayerType *player_ptr, POSITION range, FF flag, bo
  */
 bool detect_traps(PlayerType *player_ptr, POSITION range, bool known)
 {
-    bool detect = detect_feat_flag(player_ptr, range, FF::TRAP, known);
+    bool detect = detect_feat_flag(player_ptr, range, FloorFeatureType::TRAP, known);
     if (!known && detect)
-        detect_feat_flag(player_ptr, range, FF::TRAP, true);
+        detect_feat_flag(player_ptr, range, FloorFeatureType::TRAP, true);
 
     if (known || detect)
         player_ptr->dtrap = true;
@@ -109,7 +109,7 @@ bool detect_traps(PlayerType *player_ptr, POSITION range, bool known)
  */
 bool detect_doors(PlayerType *player_ptr, POSITION range)
 {
-    bool detect = detect_feat_flag(player_ptr, range, FF::DOOR, true);
+    bool detect = detect_feat_flag(player_ptr, range, FloorFeatureType::DOOR, true);
 
     if (music_singing(player_ptr, MUSIC_DETECT) && get_singing_count(player_ptr) > 0)
         detect = false;
@@ -128,7 +128,7 @@ bool detect_doors(PlayerType *player_ptr, POSITION range)
  */
 bool detect_stairs(PlayerType *player_ptr, POSITION range)
 {
-    bool detect = detect_feat_flag(player_ptr, range, FF::STAIRS, true);
+    bool detect = detect_feat_flag(player_ptr, range, FloorFeatureType::STAIRS, true);
 
     if (music_singing(player_ptr, MUSIC_DETECT) && get_singing_count(player_ptr) > 0)
         detect = false;
@@ -147,7 +147,7 @@ bool detect_stairs(PlayerType *player_ptr, POSITION range)
  */
 bool detect_treasure(PlayerType *player_ptr, POSITION range)
 {
-    bool detect = detect_feat_flag(player_ptr, range, FF::HAS_GOLD, true);
+    bool detect = detect_feat_flag(player_ptr, range, FloorFeatureType::HAS_GOLD, true);
 
     if (music_singing(player_ptr, MUSIC_DETECT) && get_singing_count(player_ptr) > 6)
         detect = false;

@@ -327,7 +327,7 @@ ProjectResult project(PlayerType *player_ptr, const MONSTER_IDX who, POSITION ra
 
             if (affect_item(player_ptr, 0, 0, y, x, dam, GF_SUPER_RAY))
                 res.notice = true;
-            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FF::PROJECT)) {
+            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FloorFeatureType::PROJECT)) {
                 if (second_step)
                     continue;
                 break;
@@ -399,7 +399,7 @@ ProjectResult project(PlayerType *player_ptr, const MONSTER_IDX who, POSITION ra
             if (!cave_los_bold(player_ptr->current_floor_ptr, ny, nx) && (rad > 0))
                 break;
         } else {
-            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, FF::PROJECT) && (rad > 0))
+            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, FloorFeatureType::PROJECT) && (rad > 0))
                 break;
         }
 

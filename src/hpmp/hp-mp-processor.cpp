@@ -66,14 +66,14 @@ static bool deal_damege_by_feat(PlayerType *player_ptr, grid_type *g_ptr, concpt
 {
     feature_type *f_ptr = &f_info[g_ptr->feat];
     int damage = 0;
-    bool resist_levitation = (player_ptr->levitation && !f_ptr->flags.has(FF::CHAOS_TAINTED) && !f_ptr->flags.has(FF::VOID));
+    bool resist_levitation = (player_ptr->levitation && !f_ptr->flags.has(FloorFeatureType::CHAOS_TAINTED) && !f_ptr->flags.has(FloorFeatureType::VOID));
 
 
-    if (f_ptr->flags.has(FF::CHAOS_TAINTED) || f_ptr->flags.has(FF::PLASMA)) {
+    if (f_ptr->flags.has(FloorFeatureType::CHAOS_TAINTED) || f_ptr->flags.has(FloorFeatureType::PLASMA)) {
         damage = 12000 + randint0(8000);
-    } else if (f_ptr->flags.has(FF::VOID)) {
+    } else if (f_ptr->flags.has(FloorFeatureType::VOID)) {
         damage = 18000 + randint0(12000);
-    } else if (f_ptr->flags.has(FF::DEEP)) {
+    } else if (f_ptr->flags.has(FloorFeatureType::DEEP)) {
         damage = 6000 + randint0(4000);
     } else if (!player_ptr->levitation) {
         damage = 3000 + randint0(2000);
@@ -121,7 +121,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
 
-    if (f_ptr->flags.has(FF::RUNE_HEALING)) {
+    if (f_ptr->flags.has(FloorFeatureType::RUNE_HEALING)) {
         hp_player(player_ptr, 2 + player_ptr->lev / 6);
     }
 
@@ -166,7 +166,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::LAVA) && !is_invuln(player_ptr) && !has_immune_fire(player_ptr)) {
+    if (f_ptr->flags.has(FloorFeatureType::LAVA) && !is_invuln(player_ptr) && !has_immune_fire(player_ptr)) {
         if (deal_damege_by_feat(
                 player_ptr, g_ptr, _("熱で火傷した！", "The heat burns you!"), _("で火傷した！", "burns you!"), calc_fire_damage_rate, nullptr)) {
             cave_no_regen = true;
@@ -174,7 +174,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::COLD_PUDDLE) && !is_invuln(player_ptr) && !has_immune_cold(player_ptr)) {
+    if (f_ptr->flags.has(FloorFeatureType::COLD_PUDDLE) && !is_invuln(player_ptr) && !has_immune_cold(player_ptr)) {
         if (deal_damege_by_feat(
                 player_ptr, g_ptr, _("冷気に覆われた！", "The cold engulfs you!"), _("に凍えた！", "frostbites you!"), calc_cold_damage_rate, nullptr)) {
             cave_no_regen = true;
@@ -182,7 +182,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::ELEC_PUDDLE) && !is_invuln(player_ptr) && !has_immune_elec(player_ptr)) {
+    if (f_ptr->flags.has(FloorFeatureType::ELEC_PUDDLE) && !is_invuln(player_ptr) && !has_immune_elec(player_ptr)) {
         if (deal_damege_by_feat(
                 player_ptr, g_ptr, _("電撃を受けた！", "The electricity shocks you!"), _("に感電した！", "shocks you!"), calc_elec_damage_rate, nullptr)) {
             cave_no_regen = true;
@@ -190,7 +190,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::ACID_PUDDLE) && !is_invuln(player_ptr) && !has_immune_acid(player_ptr)) {
+    if (f_ptr->flags.has(FloorFeatureType::ACID_PUDDLE) && !is_invuln(player_ptr) && !has_immune_acid(player_ptr)) {
         if (deal_damege_by_feat(
                 player_ptr, g_ptr, _("酸が飛び散った！", "The acid melts you!"), _("に溶かされた！", "melts you!"), calc_acid_damage_rate, nullptr)) {
             cave_no_regen = true;
@@ -198,7 +198,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::POISON_PUDDLE) && !is_invuln(player_ptr)) {
+    if (f_ptr->flags.has(FloorFeatureType::POISON_PUDDLE) && !is_invuln(player_ptr)) {
         if (deal_damege_by_feat(player_ptr, g_ptr, _("毒気を吸い込んだ！", "The gas poisons you!"), _("に毒された！", "poisons you!"), calc_acid_damage_rate,
                 [](PlayerType *player_ptr, int damage) {
                     if (!has_resist_pois(player_ptr))
@@ -209,7 +209,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::DUNG_POOL) && !is_invuln(player_ptr)) {
+    if (f_ptr->flags.has(FloorFeatureType::DUNG_POOL) && !is_invuln(player_ptr)) {
         cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
             calc_acid_damage_rate, [](PlayerType *player_ptr, int damage) {
                 if (!has_resist_pois(player_ptr))
@@ -217,7 +217,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
             });
     }
 
-    if (f_ptr->flags.has_all_of({FF::WATER, FF::DEEP}) && !player_ptr->levitation && !player_ptr->can_swim
+    if (f_ptr->flags.has_all_of({FloorFeatureType::WATER, FloorFeatureType::DEEP}) && !player_ptr->levitation && !player_ptr->can_swim
         && !has_resist_water(player_ptr)) {
         if (calc_inventory_weight(player_ptr) > calc_weight_limit(player_ptr)) {
             msg_print(_("溺れている！", "You are drowning!"));
@@ -227,17 +227,17 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(FF::PLASMA)) {
+    if (f_ptr->flags.has(FloorFeatureType::PLASMA)) {
         cave_no_regen
             = deal_damege_by_feat(player_ptr, g_ptr, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);
     }
 
-    if (f_ptr->flags.has(FF::CHAOS_TAINTED)) {
+    if (f_ptr->flags.has(FloorFeatureType::CHAOS_TAINTED)) {
         cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に汚染された!", "taints you!"),
             _("に汚染された!", "taints you"), calc_chaos_damage_rate_rand, NULL);
     }
 
-    if (f_ptr->flags.has(FF::VOID)) {
+    if (f_ptr->flags.has(FloorFeatureType::VOID)) {
         cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
             _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
@@ -340,7 +340,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
      * reduced below 0 hp by being inside a stone wall; others
      * WILL BE!
      */
-    if (f_ptr->flags.has_none_of({ FF::MOVE, FF::CAN_FLY })) {
+    if (f_ptr->flags.has_none_of({ FloorFeatureType::MOVE, FloorFeatureType::CAN_FLY })) {
         if (!is_invuln(player_ptr) && !player_ptr->wraith_form && !player_ptr->tim_pass_wall && ((player_ptr->chp > (player_ptr->lev / 5)) || !has_pass_wall(player_ptr))) {
             concptr dam_desc;
             cave_no_regen = true;
