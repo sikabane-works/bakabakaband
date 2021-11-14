@@ -78,7 +78,7 @@ MonsterSpellResult spell_RF5_CAUSE_1(PlayerType *player_ptr, POSITION y, POSITIO
     concptr msg2 = _("%^sがあなたを指さして呪った。", "%^s points at you and curses.");
     concptr msg3 = _("%^sは%sを指さして呪いをかけた。", "%^s points at %s and curses.");
 
-    const auto dam = monspell_damage(player_ptr, RF_ABILITY::CAUSE_1, m_idx, DAM_ROLL);
+    const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_1, m_idx, DAM_ROLL);
 
     return spell_RF5_CAUSE(player_ptr, GF_CAUSE_1, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }
@@ -100,7 +100,7 @@ MonsterSpellResult spell_RF5_CAUSE_2(PlayerType *player_ptr, POSITION y, POSITIO
     concptr msg2 = _("%^sがあなたを指さして恐ろしげに呪った。", "%^s points at you and curses horribly.");
     concptr msg3 = _("%^sは%sを指さして恐ろしげに呪いをかけた。", "%^s points at %s and curses horribly.");
 
-    const auto dam = monspell_damage(player_ptr, RF_ABILITY::CAUSE_2, m_idx, DAM_ROLL);
+    const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_2, m_idx, DAM_ROLL);
 
     return spell_RF5_CAUSE(player_ptr, GF_CAUSE_2, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }
@@ -122,7 +122,7 @@ MonsterSpellResult spell_RF5_CAUSE_3(PlayerType *player_ptr, POSITION y, POSITIO
     concptr msg2 = _("%^sがあなたを指さして恐ろしげに呪文を唱えた！", "%^s points at you, incanting terribly!");
     concptr msg3 = _("%^sは%sを指さし、恐ろしげに呪文を唱えた！", "%^s points at %s, incanting terribly!");
 
-    const auto dam = monspell_damage(player_ptr, RF_ABILITY::CAUSE_3, m_idx, DAM_ROLL);
+    const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_3, m_idx, DAM_ROLL);
 
     return spell_RF5_CAUSE(player_ptr, GF_CAUSE_3, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }
@@ -144,7 +144,7 @@ MonsterSpellResult spell_RF5_CAUSE_4(PlayerType *player_ptr, POSITION y, POSITIO
     concptr msg2 = _("%^sがあなたの秘孔を突いて「お前は既に死んでいる」と叫んだ。", "%^s points at you, screaming the word DIE!");
     concptr msg3 = _("%^sが%sの秘孔を突いて、「お前は既に死んでいる」と叫んだ。", "%^s points at %s, screaming the word, 'DIE!'");
 
-    const auto dam = monspell_damage(player_ptr, RF_ABILITY::CAUSE_4, m_idx, DAM_ROLL);
+    const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_4, m_idx, DAM_ROLL);
 
     return spell_RF5_CAUSE(player_ptr, GF_CAUSE_4, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }

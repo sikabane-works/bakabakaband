@@ -9,10 +9,10 @@
 struct monster_race;
 typedef struct msr_type {
     monster_race *r_ptr;
-    EnumClassFlagGroup<RF_ABILITY> ability_flags;
+    EnumClassFlagGroup<MonsterAbilityType> ability_flags;
     EnumClassFlagGroup<SM> smart;
 } msr_type;
 
 class PlayerType;
-msr_type *initialize_msr_type(PlayerType *player_ptr, msr_type *msr_ptr, MONSTER_IDX m_idx, const EnumClassFlagGroup<RF_ABILITY> &ability_flags);
+msr_type *initialize_msr_type(PlayerType *player_ptr, msr_type *msr_ptr, MONSTER_IDX m_idx, const EnumClassFlagGroup<MonsterAbilityType> &ability_flags);
 bool int_outof(monster_race *r_ptr, PERCENTAGE prob);

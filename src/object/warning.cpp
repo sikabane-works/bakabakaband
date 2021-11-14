@@ -248,7 +248,7 @@ static void spell_damcalc(PlayerType *player_ptr, monster_type *m_ptr, EFFECT_ID
  * @param m_idx 魔法を行使するモンスターのID
  * @param max 算出した最大ダメージを返すポインタ
  */
-static void spell_damcalc_by_spellnum(PlayerType *player_ptr, RF_ABILITY ms_type, EFFECT_ID typ, MONSTER_IDX m_idx, int *max)
+static void spell_damcalc_by_spellnum(PlayerType *player_ptr, MonsterAbilityType ms_type, EFFECT_ID typ, MONSTER_IDX m_idx, int *max)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     HIT_POINT dam = monspell_damage(player_ptr, ms_type, m_idx, DAM_MAX);
@@ -375,66 +375,66 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
                 const auto flags = r_ptr->ability_flags;
 
                 if (d_info[player_ptr->dungeon_idx].flags.has_not(DF::NO_MAGIC)) {
-                    if (flags.has(RF_ABILITY::BA_CHAO))
-                        spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BA_CHAO, GF_CHAOS, g_ptr->m_idx, &dam_max0);
-                    if (flags.has(RF_ABILITY::BA_MANA))
-                        spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BA_MANA, GF_MANA, g_ptr->m_idx, &dam_max0);
-                    if (flags.has(RF_ABILITY::BA_DARK))
-                        spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BA_DARK, GF_DARK, g_ptr->m_idx, &dam_max0);
-                    if (flags.has(RF_ABILITY::BA_LITE))
-                        spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BA_LITE, GF_LITE, g_ptr->m_idx, &dam_max0);
-                    if (flags.has(RF_ABILITY::HAND_DOOM))
-                        spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::HAND_DOOM, GF_HAND_DOOM, g_ptr->m_idx, &dam_max0);
-                    if (flags.has(RF_ABILITY::PSY_SPEAR))
-                        spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::PSY_SPEAR, GF_PSY_SPEAR, g_ptr->m_idx, &dam_max0);
+                    if (flags.has(MonsterAbilityType::BA_CHAO))
+                        spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BA_CHAO, GF_CHAOS, g_ptr->m_idx, &dam_max0);
+                    if (flags.has(MonsterAbilityType::BA_MANA))
+                        spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BA_MANA, GF_MANA, g_ptr->m_idx, &dam_max0);
+                    if (flags.has(MonsterAbilityType::BA_DARK))
+                        spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BA_DARK, GF_DARK, g_ptr->m_idx, &dam_max0);
+                    if (flags.has(MonsterAbilityType::BA_LITE))
+                        spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BA_LITE, GF_LITE, g_ptr->m_idx, &dam_max0);
+                    if (flags.has(MonsterAbilityType::HAND_DOOM))
+                        spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::HAND_DOOM, GF_HAND_DOOM, g_ptr->m_idx, &dam_max0);
+                    if (flags.has(MonsterAbilityType::PSY_SPEAR))
+                        spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::PSY_SPEAR, GF_PSY_SPEAR, g_ptr->m_idx, &dam_max0);
                 }
 
-                if (flags.has(RF_ABILITY::ROCKET))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::ROCKET, GF_ROCKET, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_ACID))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_ACID, GF_ACID, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_ELEC))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_ELEC, GF_ELEC, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_FIRE))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_FIRE, GF_FIRE, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_COLD))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_COLD, GF_COLD, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_POIS))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_POIS, GF_POIS, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_NETH))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_NETH, GF_NETHER, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_LITE))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_LITE, GF_LITE, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_DARK))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_DARK, GF_DARK, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_CONF))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_CONF, GF_CONFUSION, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_SOUN))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_SOUN, GF_SOUND, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_CHAO))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_CHAO, GF_CHAOS, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_DISE))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_DISE, GF_DISENCHANT, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_NEXU))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_NEXU, GF_NEXUS, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_TIME))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_TIME, GF_TIME, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_INER))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_INER, GF_INERTIAL, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_GRAV))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_GRAV, GF_GRAVITY, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_SHAR))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_SHAR, GF_SHARDS, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_PLAS))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_PLAS, GF_PLASMA, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_FORC))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_FORC, GF_FORCE, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_MANA))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_MANA, GF_MANA, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_NUKE))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_NUKE, GF_NUKE, g_ptr->m_idx, &dam_max0);
-                if (flags.has(RF_ABILITY::BR_DISI))
-                    spell_damcalc_by_spellnum(player_ptr, RF_ABILITY::BR_DISI, GF_DISINTEGRATE, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::ROCKET))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::ROCKET, GF_ROCKET, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_ACID))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_ACID, GF_ACID, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_ELEC))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_ELEC, GF_ELEC, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_FIRE))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_FIRE, GF_FIRE, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_COLD))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_COLD, GF_COLD, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_POIS))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_POIS, GF_POIS, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_NETH))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_NETH, GF_NETHER, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_LITE))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_LITE, GF_LITE, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_DARK))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_DARK, GF_DARK, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_CONF))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_CONF, GF_CONFUSION, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_SOUN))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_SOUN, GF_SOUND, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_CHAO))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_CHAO, GF_CHAOS, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_DISE))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_DISE, GF_DISENCHANT, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_NEXU))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_NEXU, GF_NEXUS, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_TIME))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_TIME, GF_TIME, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_INER))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_INER, GF_INERTIAL, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_GRAV))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_GRAV, GF_GRAVITY, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_SHAR))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_SHAR, GF_SHARDS, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_PLAS))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_PLAS, GF_PLASMA, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_FORC))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_FORC, GF_FORCE, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_MANA))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_MANA, GF_MANA, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_NUKE))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_NUKE, GF_NUKE, g_ptr->m_idx, &dam_max0);
+                if (flags.has(MonsterAbilityType::BR_DISI))
+                    spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BR_DISI, GF_DISINTEGRATE, g_ptr->m_idx, &dam_max0);
             }
 
             /* Monster melee attacks */

@@ -59,7 +59,7 @@ static void process_special_melee_spell(PlayerType *player_ptr, melee_spell_type
     is_special_magic &= w_ptr->timewalk_m_idx == 0;
     is_special_magic &= !player_ptr->blind;
     is_special_magic &= player_ptr->pclass == PlayerClassType::IMITATOR;
-    is_special_magic &= ms_ptr->thrown_spell != RF_ABILITY::SPECIAL;
+    is_special_magic &= ms_ptr->thrown_spell != MonsterAbilityType::SPECIAL;
     if (!is_special_magic)
         return;
 

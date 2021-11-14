@@ -7,7 +7,7 @@
 
 extern int vault_aux_race;
 extern char vault_aux_char;
-extern EnumClassFlagGroup<RF_ABILITY> vault_aux_dragon_mask4;
+extern EnumClassFlagGroup<MonsterAbilityType> vault_aux_dragon_mask4;
 
 class PlayerType;
 bool mon_hook_quest(PlayerType *player_ptr, MONRACE_IDX r_idx);

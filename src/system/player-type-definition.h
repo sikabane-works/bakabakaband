@@ -39,7 +39,7 @@ enum class INCIDENT {
 
 enum class ItemKindType : short;
 enum class PlayerSkillKindType;
-enum class RF_ABILITY;
+enum class MonsterAbilityType;
 
 struct floor_type;
 struct object_type;
