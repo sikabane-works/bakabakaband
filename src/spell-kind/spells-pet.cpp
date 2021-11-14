@@ -59,7 +59,7 @@ void discharge_minion(PlayerType *player_ptr)
             dam = (dam - 400) / 2 + 400;
         if (dam > 800)
             dam = 800;
-        project(player_ptr, i, 2 + (r_ptr->level / 20), m_ptr->fy, m_ptr->fx, dam, GF_PLASMA, PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+        project(player_ptr, i, 2 + (r_ptr->level / 20), m_ptr->fy, m_ptr->fx, dam, AttributeType::PLASMA, PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 
         if (record_named_pet && m_ptr->nickname) {
             GAME_TEXT m_name[MAX_NLEN];

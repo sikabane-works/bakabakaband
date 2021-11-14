@@ -96,7 +96,7 @@ bool cast_wrath_of_the_god(PlayerType *player_ptr, HIT_POINT dam, POSITION rad)
             || !in_disintegration_range(player_ptr->current_floor_ptr, ty, tx, y, x))
             continue;
 
-        project(player_ptr, 0, rad, y, x, dam, GF_DISINTEGRATE, PROJECT_JUMP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+        project(player_ptr, 0, rad, y, x, dam, AttributeType::DISINTEGRATE, PROJECT_JUMP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
     }
 
     return true;

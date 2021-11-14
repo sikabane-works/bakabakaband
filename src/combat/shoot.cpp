@@ -73,12 +73,12 @@
  * @brief 矢弾の属性を定義する
  * @param bow_ptr 弓のオブジェクト構造体参照ポインタ
  * @param arrow_ptr 矢弾のオブジェクト構造体参照ポインタ
- * @return スナイパーの射撃属性、弓矢の属性を考慮する。デフォルトはGF_PLAYER_SHOOT。
+ * @return スナイパーの射撃属性、弓矢の属性を考慮する。デフォルトはAttributeType::PLAYER_SHOOT。
  */
 EffectFlags shot_effect_type(PlayerType *player_ptr, object_type *bow_ptr, object_type *arrow_ptr, SPELL_IDX snipe_type)
 {
     EffectFlags effect_flags{};
-    effect_flags.set(GF_PLAYER_SHOOT);
+    effect_flags.set(AttributeType::PLAYER_SHOOT);
 
     TrFlags flags{};
     auto arrow_flags = object_flags(arrow_ptr);
@@ -90,29 +90,29 @@ EffectFlags shot_effect_type(PlayerType *player_ptr, object_type *bow_ptr, objec
         SPELL_IDX snipe_type;
         spells_type effect_type;
     } snipe_convert_table[] = {
-        { SP_LITE,      GF_LITE },
-        { SP_FIRE,      GF_FIRE },
-        { SP_COLD,      GF_COLD },
-        { SP_ELEC,      GF_ELEC },
-        { SP_KILL_WALL, GF_KILL_WALL },
-        { SP_EVILNESS,  GF_HELL_FIRE },
-        { SP_HOLYNESS,  GF_HOLY_FIRE },
-        { SP_FINAL,     GF_MANA },
+        { SP_LITE,      AttributeType::LITE },
+        { SP_FIRE,      AttributeType::FIRE },
+        { SP_COLD,      AttributeType::COLD },
+        { SP_ELEC,      AttributeType::ELEC },
+        { SP_KILL_WALL, AttributeType::KILL_WALL },
+        { SP_EVILNESS,  AttributeType::HELL_FIRE },
+        { SP_HOLYNESS,  AttributeType::HOLY_FIRE },
+        { SP_FINAL,     AttributeType::MANA },
     };
 
     static const struct brand_convert_table_t {
         tr_type brand_type;
         spells_type effect_type;
     } brand_convert_table[] = {
-        { TR_BRAND_ACID,    GF_ACID },
-        { TR_BRAND_FIRE,    GF_FIRE },
-        { TR_BRAND_ELEC,    GF_ELEC },
-        { TR_BRAND_COLD,    GF_COLD },
-        { TR_BRAND_POIS,    GF_POIS },
-        { TR_SLAY_GOOD,     GF_HELL_FIRE },
-        { TR_KILL_GOOD,     GF_HELL_FIRE },
-        { TR_SLAY_EVIL,     GF_HOLY_FIRE },
-        { TR_KILL_EVIL,     GF_HOLY_FIRE },
+        { TR_BRAND_ACID,    AttributeType::ACID },
+        { TR_BRAND_FIRE,    AttributeType::FIRE },
+        { TR_BRAND_ELEC,    AttributeType::ELEC },
+        { TR_BRAND_COLD,    AttributeType::COLD },
+        { TR_BRAND_POIS,    AttributeType::POIS },
+        { TR_SLAY_GOOD,     AttributeType::HELL_FIRE },
+        { TR_KILL_GOOD,     AttributeType::HELL_FIRE },
+        { TR_SLAY_EVIL,     AttributeType::HOLY_FIRE },
+        { TR_KILL_EVIL,     AttributeType::HOLY_FIRE },
     };
 
     for (size_t i = 0; i < sizeof(snipe_convert_table) / sizeof(snipe_convert_table[0]); ++i) {
@@ -130,7 +130,7 @@ EffectFlags shot_effect_type(PlayerType *player_ptr, object_type *bow_ptr, objec
     }
 
     if ((flags.has(TR_FORCE_WEAPON)) && (player_ptr->csp > (player_ptr->msp / 30))) {
-        effect_flags.set(GF_MANA);
+        effect_flags.set(AttributeType::MANA);
     }
 
     return effect_flags;
@@ -462,7 +462,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, object_type *j_ptr, SP
     object_type *o_ptr;
 
     EffectFlags effect_flags{};
-    effect_flags.set(GF_PLAYER_SHOOT);
+    effect_flags.set(AttributeType::PLAYER_SHOOT);
 
     bool hit_body = false;
 
@@ -674,7 +674,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, object_type *j_ptr, SP
 
             /* Sniper */
             if (snipe_type == SP_KILL_TRAP) {
-                project(player_ptr, 0, 0, ny, nx, 0, GF_KILL_TRAP, (PROJECT_JUMP | PROJECT_HIDE | PROJECT_GRID | PROJECT_ITEM));
+                project(player_ptr, 0, 0, ny, nx, 0, AttributeType::KILL_TRAP, (PROJECT_JUMP | PROJECT_HIDE | PROJECT_GRID | PROJECT_ITEM));
             }
 
             /* Sniper */
@@ -790,7 +790,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, object_type *j_ptr, SP
                         uint16_t flg = (PROJECT_STOP | PROJECT_JUMP | PROJECT_KILL | PROJECT_GRID);
 
                         sound(SOUND_EXPLODE); /* No explode sound - use breath fire instead */
-                        project(player_ptr, 0, ((sniper_concent + 1) / 2 + 1), ny, nx, base_dam, GF_MISSILE, flg);
+                        project(player_ptr, 0, ((sniper_concent + 1) / 2 + 1), ny, nx, base_dam, AttributeType::MISSILE, flg);
                         break;
                     }
 

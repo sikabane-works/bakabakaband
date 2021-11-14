@@ -146,7 +146,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, MUTA attac
 
     switch (attack) {
     case MUTA::SCOR_TAIL:
-        project(player_ptr, 0, 0, m_ptr->fy, m_ptr->fx, k, GF_POIS, PROJECT_KILL);
+        project(player_ptr, 0, 0, m_ptr->fy, m_ptr->fx, k, AttributeType::POIS, PROJECT_KILL);
         *mdeath = (m_ptr->r_idx == 0);
         break;
     case MUTA::HORNS:
@@ -154,7 +154,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, MUTA attac
     case MUTA::TRUNK:
     case MUTA::TENTACLES:
     default: {
-        MonsterDamageProcessor mdp(player_ptr, m_idx, k, fear, GF_ATTACK);
+        MonsterDamageProcessor mdp(player_ptr, m_idx, k, fear, AttributeType::ATTACK);
         *mdeath = mdp.mon_take_hit(nullptr);
         break;
     }

@@ -467,7 +467,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, object_type *o_ptr)
     case SV_FOOD_SURSTROMMING:
         msg_print("悪臭が周囲を取り巻いた！");
         msg_print(NULL);
-        fire_ball(player_ptr, GF_POIS, 0, 30, 4);
+        fire_ball(player_ptr, AttributeType::POIS, 0, 30, 4);
         (void)BadStatusSetter(player_ptr).mod_poison(10);
         return true;
     case SV_FOOD_HOMOTEA:

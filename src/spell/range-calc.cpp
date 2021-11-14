@@ -251,12 +251,12 @@ void breath_shape(PlayerType *player_ptr, uint16_t *path_g, int dist, int *pgrid
 
 					switch (typ)
 					{
-					case GF_LITE:
-					case GF_LITE_WEAK:
+					case AttributeType::LITE:
+					case AttributeType::LITE_WEAK:
 						/* Lights are stopped by opaque terrains */
 						if (!los(player_ptr, by, bx, y, x)) continue;
 						break;
-					case GF_DISINTEGRATE:
+					case AttributeType::DISINTEGRATE:
 						/* Disintegration are stopped only by perma-walls */
 						if (!in_disintegration_range(floor_ptr, by, bx, y, x)) continue;
 						break;

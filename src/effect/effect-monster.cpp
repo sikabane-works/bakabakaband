@@ -73,17 +73,17 @@ static process_result is_affective(PlayerType *player_ptr, effect_monster_type *
         return PROCESS_TRUE;
 
     switch (em_ptr->effect_type) {
-    case GF_OLD_HEAL:
-    case GF_OLD_SPEED:
-    case GF_STAR_HEAL:
+    case AttributeType::OLD_HEAL:
+    case AttributeType::OLD_SPEED:
+    case AttributeType::STAR_HEAL:
         return PROCESS_TRUE;
-    case GF_OLD_SLOW:
-    case GF_OLD_SLEEP:
-    case GF_OLD_CLONE:
-    case GF_OLD_CONF:
-    case GF_OLD_POLY:
-    case GF_GENOCIDE:
-    case GF_E_GENOCIDE:
+    case AttributeType::OLD_SLOW:
+    case AttributeType::OLD_SLEEP:
+    case AttributeType::OLD_CLONE:
+    case AttributeType::OLD_CONF:
+    case AttributeType::OLD_POLY:
+    case AttributeType::GENOCIDE:
+    case AttributeType::E_GENOCIDE:
         return PROCESS_CONTINUE;
     default:
         break;
@@ -124,11 +124,11 @@ static process_result exe_affect_monster_by_effect(PlayerType *player_ptr, effec
         return result;
     }
 
-    if (none_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) || em_ptr->effect_type == GF_OLD_CLONE || em_ptr->effect_type == GF_STAR_HEAL
-        || em_ptr->effect_type == GF_OLD_HEAL || em_ptr->effect_type == GF_OLD_SPEED || em_ptr->effect_type == GF_CAPTURE || em_ptr->effect_type == GF_PHOTO)
+    if (none_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) || em_ptr->effect_type == AttributeType::OLD_CLONE || em_ptr->effect_type == AttributeType::STAR_HEAL
+        || em_ptr->effect_type == AttributeType::OLD_HEAL || em_ptr->effect_type == AttributeType::OLD_SPEED || em_ptr->effect_type == AttributeType::CAPTURE || em_ptr->effect_type == AttributeType::PHOTO)
         return switch_effects_monster(player_ptr, em_ptr);
 
-    if (any_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) && (em_ptr->effect_type == GF_ARROW))
+    if (any_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) && (em_ptr->effect_type == AttributeType::ARROW))
         return switch_effects_monster(player_ptr, em_ptr);
 
     em_ptr->note = _("には完全な耐性がある！", " is immune.");
@@ -136,7 +136,7 @@ static process_result exe_affect_monster_by_effect(PlayerType *player_ptr, effec
     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr))
         em_ptr->r_ptr->r_flagsr |= (RFR_RES_ALL);
 
-    if (em_ptr->effect_type == GF_LITE_WEAK || em_ptr->effect_type == GF_KILL_WALL)
+    if (em_ptr->effect_type == AttributeType::LITE_WEAK || em_ptr->effect_type == AttributeType::KILL_WALL)
         em_ptr->skipped = true;
 
     return PROCESS_CONTINUE;
@@ -284,7 +284,7 @@ static bool deal_effect_damage_from_player(PlayerType *player_ptr, effect_monste
  */
 static void deal_effect_damage_to_monster(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    if (em_ptr->effect_type == GF_DRAIN_MANA)
+    if (em_ptr->effect_type == AttributeType::DRAIN_MANA)
         return;
 
     // モンスターによる効果
@@ -489,7 +489,7 @@ static void effect_damage_makes_teleport(PlayerType *player_ptr, effect_monster_
 static void effect_damage_gives_bad_status(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
     int tmp_damage = em_ptr->dam;
-    em_ptr->dam = mon_damage_mod(player_ptr, em_ptr->m_ptr, em_ptr->dam, (bool)(em_ptr->effect_type == GF_PSY_SPEAR));
+    em_ptr->dam = mon_damage_mod(player_ptr, em_ptr->m_ptr, em_ptr->dam, (bool)(em_ptr->effect_type == AttributeType::PSY_SPEAR));
     if ((tmp_damage > 0) && (em_ptr->dam == 0) && em_ptr->seen)
         em_ptr->note = _("はダメージを受けていない。", " is unharmed.");
 
@@ -523,7 +523,7 @@ static void exe_affect_monster_by_damage(PlayerType *player_ptr, effect_monster_
     affected_monster_prevents_bad_status(player_ptr, em_ptr);
     effect_damage_gives_bad_status(player_ptr, em_ptr);
     deal_effect_damage_to_monster(player_ptr, em_ptr);
-    if ((em_ptr->effect_type == GF_BLOOD_CURSE) && one_in_(4))
+    if ((em_ptr->effect_type == AttributeType::BLOOD_CURSE) && one_in_(4))
         blood_curse_to_enemy(player_ptr, em_ptr->who);
 }
 

@@ -242,13 +242,13 @@ static void on_dead_ninja(PlayerType *player_ptr, monster_death_type *md_ptr)
         msg_format(_("%sは哀れ爆発四散した！ショッギョ・ムッジョ！", "%s explodes pitifully! Shogyomujo!"), m_name);
     }
 
-    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, GF_MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, AttributeType::MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_earth_destroyer(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     msg_print(_("ワーオ！22世紀の文明の叡知が今炸裂した！", "Wow! The wisdom of 22nd century civilization has now exploded!"));
-    (void)project(player_ptr, md_ptr->m_idx, 10, md_ptr->md_y, md_ptr->md_x, 10000, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+    (void)project(player_ptr, md_ptr->m_idx, 10, md_ptr->md_y, md_ptr->md_x, 10000, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_unmaker(PlayerType *player_ptr, monster_death_type *md_ptr)
@@ -259,7 +259,7 @@ static void on_dead_unmaker(PlayerType *player_ptr, monster_death_type *md_ptr)
         msg_format(_("%sは辺りにログルスの残り香を撒き散らした！", "%^s sprinkled the remaining incense from Logrus!"), m_name);
     }
 
-    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 100, GF_CHAOS, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 100, AttributeType::CHAOS, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_sacred_treasures(PlayerType *player_ptr, monster_death_type *md_ptr)
@@ -350,7 +350,7 @@ static void on_dead_rolento(PlayerType *player_ptr, monster_death_type *md_ptr)
         msg_format(_("%sは手榴弾を抱えて自爆した！", "%^s blew himself up with grenades!"), m_name);
     }
 
-    (void)project(player_ptr, md_ptr->m_idx, 3, md_ptr->md_y, md_ptr->md_x, damroll(20, 10), GF_FIRE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+    (void)project(player_ptr, md_ptr->m_idx, 3, md_ptr->md_y, md_ptr->md_x, damroll(20, 10), AttributeType::FIRE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_aqua_illusion(PlayerType *player_ptr, monster_death_type *md_ptr)
@@ -649,7 +649,7 @@ static void on_dead_mimics(PlayerType *player_ptr, monster_death_type *md_ptr)
 
 static void on_dead_swordfish(PlayerType *player_ptr, monster_death_type *md_ptr, EffectFlags effect_flags)
 {
-    if (effect_flags.has_not(GF_COLD) || !md_ptr->drop_chosen_item || (randint1(100) >= 10))
+    if (effect_flags.has_not(AttributeType::COLD) || !md_ptr->drop_chosen_item || (randint1(100) >= 10))
         return;
 
     drop_single_artifact(player_ptr, md_ptr, ART_FROZEN_SWORDFISH);

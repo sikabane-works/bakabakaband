@@ -226,7 +226,7 @@ void wiz_summon_pet(PlayerType *player_ptr, MONRACE_IDX r_idx)
  * @brief ターゲットを指定して指定ダメージ・指定属性・半径0のボールを放つ
  * @param dam ダメージ量
  * @param effect_idx 属性ID
- * @details デフォルトは100万・GF_ARROW(射撃)。RES_ALL持ちも一撃で殺せる。
+ * @details デフォルトは100万・AttributeType::ARROW(射撃)。RES_ALL持ちも一撃で殺せる。
  */
 void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx)
 {
@@ -240,7 +240,7 @@ void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_
         dam = (HIT_POINT)atoi(tmp_val);
     }
 
-    if (effect_idx <= GF_NONE) {
+    if (effect_idx <= AttributeType::NONE) {
         char tmp[80] = "";
         sprintf(tmp, "Effect ID (1-%d): ", MAX_GF - 1);
         char tmp_val[10] = "";
@@ -250,7 +250,7 @@ void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_
         effect_idx = (AttributeType)atoi(tmp_val);
     }
 
-    if (effect_idx <= GF_NONE || effect_idx >= MAX_GF) {
+    if (effect_idx <= AttributeType::NONE || effect_idx >= MAX_GF) {
         msg_format(_("番号は1から%dの間で指定して下さい。", "ID must be between 1 to %d."), MAX_GF - 1);
         return;
     }
@@ -280,7 +280,7 @@ void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx
         dam = (HIT_POINT)atoi(tmp_val);
     }
 
-    if (effect_idx <= GF_NONE) {
+    if (effect_idx <= AttributeType::NONE) {
         char tmp[80] = "";
         sprintf(tmp, "Effect ID (1-%d): ", MAX_GF - 1);
         char tmp_val[10] = "1";
@@ -290,7 +290,7 @@ void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx
         effect_idx = (AttributeType)atoi(tmp_val);
     }
 
-    if (effect_idx <= GF_NONE || effect_idx >= MAX_GF) {
+    if (effect_idx <= AttributeType::NONE || effect_idx >= MAX_GF) {
         msg_format(_("番号は1から%dの間で指定して下さい。", "ID must be between 1 to %d."), MAX_GF - 1);
         return;
     }

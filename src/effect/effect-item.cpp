@@ -68,7 +68,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
         auto flags = object_flags(o_ptr);
         bool is_artifact = o_ptr->is_artifact();
         switch (typ) {
-        case GF_ACID: {
+        case AttributeType::ACID: {
             if (BreakerAcid().hates(o_ptr)) {
                 do_kill = true;
                 note_kill = _("融けてしまった！", (plural ? " melt!" : " melts!"));
@@ -78,7 +78,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_ELEC: {
+        case AttributeType::ELEC: {
             if (BreakerElec().hates(o_ptr)) {
                 do_kill = true;
                 note_kill = _("壊れてしまった！", (plural ? " are destroyed!" : " is destroyed!"));
@@ -88,7 +88,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_FIRE: {
+        case AttributeType::FIRE: {
             if (BreakerFire().hates(o_ptr)) {
                 do_kill = true;
                 note_kill = _("燃えてしまった！", (plural ? " burn up!" : " burns up!"));
@@ -98,7 +98,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_COLD: {
+        case AttributeType::COLD: {
             if (BreakerCold().hates(o_ptr)) {
                 note_kill = _("砕け散ってしまった！", (plural ? " shatter!" : " shatters!"));
                 do_kill = true;
@@ -108,7 +108,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_PLASMA: {
+        case AttributeType::PLASMA: {
             if (BreakerFire().hates(o_ptr)) {
                 do_kill = true;
                 note_kill = _("燃えてしまった！", (plural ? " burn up!" : " burns up!"));
@@ -126,7 +126,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_METEOR: {
+        case AttributeType::METEOR: {
             if (BreakerFire().hates(o_ptr)) {
                 do_kill = true;
                 note_kill = _("燃えてしまった！", (plural ? " burn up!" : " burns up!"));
@@ -144,10 +144,10 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_ICE:
-        case GF_SHARDS:
-        case GF_FORCE:
-        case GF_SOUND: {
+        case AttributeType::ICE:
+        case AttributeType::SHARDS:
+        case AttributeType::FORCE:
+        case AttributeType::SOUND: {
             if (BreakerCold().hates(o_ptr)) {
                 note_kill = _("砕け散ってしまった！", (plural ? " shatter!" : " shatters!"));
                 do_kill = true;
@@ -155,19 +155,19 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_MANA:
-        case GF_SEEKER:
-        case GF_SUPER_RAY: {
+        case AttributeType::MANA:
+        case AttributeType::SEEKER:
+        case AttributeType::SUPER_RAY: {
             do_kill = true;
             note_kill = _("壊れてしまった！", (plural ? " are destroyed!" : " is destroyed!"));
             break;
         }
-        case GF_DISINTEGRATE: {
+        case AttributeType::DISINTEGRATE: {
             do_kill = true;
             note_kill = _("蒸発してしまった！", (plural ? " evaporate!" : " evaporates!"));
             break;
         }
-        case GF_CHAOS: {
+        case AttributeType::CHAOS: {
             do_kill = true;
             note_kill = _("壊れてしまった！", (plural ? " are destroyed!" : " is destroyed!"));
             if (flags.has(TR_RES_CHAOS))
@@ -176,8 +176,8 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
                 ignore = true;
             break;
         }
-        case GF_HOLY_FIRE:
-        case GF_HELL_FIRE: {
+        case AttributeType::HOLY_FIRE:
+        case AttributeType::HELL_FIRE: {
             if (o_ptr->is_cursed()) {
                 do_kill = true;
                 note_kill = _("壊れてしまった！", (plural ? " are destroyed!" : " is destroyed!"));
@@ -185,18 +185,18 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_VOID: {
+        case AttributeType::VOID: {
             do_kill = true;
             note_kill = _("消滅してしまった！", (plural ? " vanish!" : " vanishes!"));
             break;
         }
-        case GF_IDENTIFY: {
+        case AttributeType::IDENTIFY: {
             identify_item(player_ptr, o_ptr);
             autopick_alter_item(player_ptr, (-this_o_idx), false);
             break;
         }
-        case GF_KILL_TRAP:
-        case GF_KILL_DOOR: {
+        case AttributeType::KILL_TRAP:
+        case AttributeType::KILL_DOOR: {
             if (o_ptr->tval != ItemKindType::CHEST)
                 break;
             if (o_ptr->pval <= 0)
@@ -211,7 +211,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case GF_ANIM_DEAD: {
+        case AttributeType::ANIM_DEAD: {
             if (o_ptr->tval != ItemKindType::CORPSE)
                 break;
 

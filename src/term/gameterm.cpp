@@ -423,61 +423,61 @@ static TERM_COLOR spell_color(AttributeType type)
 		/* Analyze */
 		switch (type)
 		{
-		case GF_PSY_SPEAR:		return (0x06);
-		case GF_MISSILE:		return (0x0F);
-		case GF_ACID:			return (0x04);
-		case GF_ELEC:			return (0x02);
-		case GF_FIRE:			return (0x00);
-		case GF_COLD:			return (0x01);
-		case GF_POIS:			return (0x03);
-		case GF_HOLY_FIRE:		return (0x00);
-		case GF_HELL_FIRE:		return (0x00);
-		case GF_MANA:			return (0x0E);
+		case AttributeType::PSY_SPEAR:		return (0x06);
+		case AttributeType::MISSILE:		return (0x0F);
+		case AttributeType::ACID:			return (0x04);
+		case AttributeType::ELEC:			return (0x02);
+		case AttributeType::FIRE:			return (0x00);
+		case AttributeType::COLD:			return (0x01);
+		case AttributeType::POIS:			return (0x03);
+		case AttributeType::HOLY_FIRE:		return (0x00);
+		case AttributeType::HELL_FIRE:		return (0x00);
+		case AttributeType::MANA:			return (0x0E);
 			/* by henkma */
-		case GF_SEEKER:			return (0x0E);
-		case GF_SUPER_RAY:		return (0x0E);
+		case AttributeType::SEEKER:			return (0x0E);
+		case AttributeType::SUPER_RAY:		return (0x0E);
 
-		case GF_ARROW:			return (0x0F);
-		case GF_WATER:			return (0x04);
-		case GF_NETHER:			return (0x07);
-		case GF_CHAOS:			return (mh_attr(15));
-		case GF_DISENCHANT:		return (0x05);
-		case GF_NEXUS:			return (0x0C);
-		case GF_CONFUSION:		return (mh_attr(4));
-		case GF_SOUND:			return (0x09);
-		case GF_SHARDS:			return (0x08);
-		case GF_FORCE:			return (0x09);
-		case GF_INERTIAL:		return (0x09);
-		case GF_GRAVITY:		return (0x09);
-		case GF_TIME:			return (0x09);
-		case GF_LITE_WEAK:		return (0x06);
-		case GF_LITE:			return (0x06);
-		case GF_DARK_WEAK:		return (0x07);
-		case GF_DARK:			return (0x07);
-		case GF_PLASMA:			return (0x0B);
-		case GF_METEOR:			return (0x00);
-		case GF_ICE:			return (0x01);
-		case GF_ROCKET:			return (0x0F);
-		case GF_DEATH_RAY:		return (0x07);
-		case GF_NUKE:			return (mh_attr(2));
-		case GF_DISINTEGRATE:	return (0x05);
-		case GF_PSI:
-		case GF_PSI_DRAIN:
-		case GF_TELEKINESIS:
-		case GF_DOMINATION:
-		case GF_DRAIN_MANA:
-		case GF_MIND_BLAST:
-		case GF_BRAIN_SMASH:
+		case AttributeType::ARROW:			return (0x0F);
+		case AttributeType::WATER:			return (0x04);
+		case AttributeType::NETHER:			return (0x07);
+		case AttributeType::CHAOS:			return (mh_attr(15));
+		case AttributeType::DISENCHANT:		return (0x05);
+		case AttributeType::NEXUS:			return (0x0C);
+		case AttributeType::CONFUSION:		return (mh_attr(4));
+		case AttributeType::SOUND:			return (0x09);
+		case AttributeType::SHARDS:			return (0x08);
+		case AttributeType::FORCE:			return (0x09);
+		case AttributeType::INERTIAL:		return (0x09);
+		case AttributeType::GRAVITY:		return (0x09);
+		case AttributeType::TIME:			return (0x09);
+		case AttributeType::LITE_WEAK:		return (0x06);
+		case AttributeType::LITE:			return (0x06);
+		case AttributeType::DARK_WEAK:		return (0x07);
+		case AttributeType::DARK:			return (0x07);
+		case AttributeType::PLASMA:			return (0x0B);
+		case AttributeType::METEOR:			return (0x00);
+		case AttributeType::ICE:			return (0x01);
+		case AttributeType::ROCKET:			return (0x0F);
+		case AttributeType::DEATH_RAY:		return (0x07);
+		case AttributeType::NUKE:			return (mh_attr(2));
+		case AttributeType::DISINTEGRATE:	return (0x05);
+		case AttributeType::PSI:
+		case AttributeType::PSI_DRAIN:
+		case AttributeType::TELEKINESIS:
+		case AttributeType::DOMINATION:
+		case AttributeType::DRAIN_MANA:
+		case AttributeType::MIND_BLAST:
+		case AttributeType::BRAIN_SMASH:
 			return (0x09);
-		case GF_CAUSE_1:
-		case GF_CAUSE_2:
-		case GF_CAUSE_3:
-		case GF_CAUSE_4:		return (0x0E);
-		case GF_HAND_DOOM:		return (0x07);
-		case GF_CAPTURE:		return (0x0E);
-		case GF_IDENTIFY:		return (0x01);
-		case GF_ATTACK:			return (0x0F);
-		case GF_PHOTO:		return (0x06);
+		case AttributeType::CAUSE_1:
+		case AttributeType::CAUSE_2:
+		case AttributeType::CAUSE_3:
+		case AttributeType::CAUSE_4:		return (0x0E);
+		case AttributeType::HAND_DOOM:		return (0x07);
+		case AttributeType::CAPTURE:		return (0x0E);
+		case AttributeType::IDENTIFY:		return (0x01);
+		case AttributeType::ATTACK:			return (0x0F);
+		case AttributeType::PHOTO:		return (0x06);
 		}
 	}
 	/* Normal tiles or ASCII */

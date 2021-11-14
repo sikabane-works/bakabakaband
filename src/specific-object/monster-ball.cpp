@@ -71,7 +71,7 @@ static bool set_activation_target(PlayerType *player_ptr, ae_type *ae_ptr)
     }
 
     target_pet = old_target_pet;
-    if (!fire_ball(player_ptr, GF_CAPTURE, ae_ptr->dir, 0, 0))
+    if (!fire_ball(player_ptr, AttributeType::CAPTURE, ae_ptr->dir, 0, 0))
         return true;
 
     ae_ptr->o_ptr->pval = (PARAMETER_VALUE)cap_mon;

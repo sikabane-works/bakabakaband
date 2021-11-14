@@ -45,7 +45,7 @@ static bool fire_crimson(PlayerType *player_ptr)
 
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
     for (int i = 0; i < num; i++)
-        (void)project(player_ptr, 0, player_ptr->lev / 20 + 1, ty, tx, player_ptr->lev * player_ptr->lev * 6 / 50, GF_ROCKET, flg);
+        (void)project(player_ptr, 0, player_ptr->lev / 20 + 1, ty, tx, player_ptr->lev * player_ptr->lev * 6 / 50, AttributeType::ROCKET, flg);
 
     return true;
 }

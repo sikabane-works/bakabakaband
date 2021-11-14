@@ -16,7 +16,7 @@
 /*!
  * @brief RF5_CAUSE_* の処理関数
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param GF_TYPE 攻撃に使用する属性
+ * @param AttributeType::TYPE 攻撃に使用する属性
  * @param dam 攻撃に使用するダメージ量
  * @param y 対象の地点のy座標
  * @param x 対象の地点のx座標
@@ -28,7 +28,7 @@
  * @param MS_TYPE 呪文の番号
  * @param TARGET_TYPE プレイヤーを対象とする場合MONSTER_TO_PLAYER、モンスターを対象とする場合MONSTER_TO_MONSTER
  */
-static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int GF_TYPE, HIT_POINT dam, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx,
+static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int AttributeType::TYPE, HIT_POINT dam, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx,
     concptr msg1, concptr msg2, concptr msg3, int TARGET_TYPE)
 {
     auto res = MonsterSpellResult::make_valid(dam);
@@ -44,7 +44,7 @@ static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int GF_TYPE, H
             msg_format(msg1, m_name);
         else
             msg_format(msg2, m_name);
-        breath(player_ptr, y, x, m_idx, GF_TYPE, dam, 0, false, TARGET_TYPE);
+        breath(player_ptr, y, x, m_idx, AttributeType::TYPE, dam, 0, false, TARGET_TYPE);
         return res;
     }
 
@@ -56,7 +56,7 @@ static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int GF_TYPE, H
         }
     }
 
-    breath(player_ptr, y, x, m_idx, GF_TYPE, dam, 0, false, TARGET_TYPE);
+    breath(player_ptr, y, x, m_idx, AttributeType::TYPE, dam, 0, false, TARGET_TYPE);
 
     return res;
 }
@@ -80,7 +80,7 @@ MonsterSpellResult spell_RF5_CAUSE_1(PlayerType *player_ptr, POSITION y, POSITIO
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_1, m_idx, DAM_ROLL);
 
-    return spell_RF5_CAUSE(player_ptr, GF_CAUSE_1, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
+    return spell_RF5_CAUSE(player_ptr, AttributeType::CAUSE_1, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }
 
 /*!
@@ -102,7 +102,7 @@ MonsterSpellResult spell_RF5_CAUSE_2(PlayerType *player_ptr, POSITION y, POSITIO
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_2, m_idx, DAM_ROLL);
 
-    return spell_RF5_CAUSE(player_ptr, GF_CAUSE_2, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
+    return spell_RF5_CAUSE(player_ptr, AttributeType::CAUSE_2, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }
 
 /*!
@@ -124,7 +124,7 @@ MonsterSpellResult spell_RF5_CAUSE_3(PlayerType *player_ptr, POSITION y, POSITIO
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_3, m_idx, DAM_ROLL);
 
-    return spell_RF5_CAUSE(player_ptr, GF_CAUSE_3, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
+    return spell_RF5_CAUSE(player_ptr, AttributeType::CAUSE_3, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }
 
 /*!
@@ -146,5 +146,5 @@ MonsterSpellResult spell_RF5_CAUSE_4(PlayerType *player_ptr, POSITION y, POSITIO
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::CAUSE_4, m_idx, DAM_ROLL);
 
-    return spell_RF5_CAUSE(player_ptr, GF_CAUSE_4, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
+    return spell_RF5_CAUSE(player_ptr, AttributeType::CAUSE_4, dam, y, x, m_idx, t_idx, msg1, msg2, msg3, TARGET_TYPE);
 }

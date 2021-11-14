@@ -60,7 +60,7 @@ concptr do_arcane_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessTyp
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
 
-                fire_bolt_or_beam(player_ptr, beam_chance(player_ptr) - 10, GF_ELEC, dir, damroll(dice, sides));
+                fire_bolt_or_beam(player_ptr, beam_chance(player_ptr) - 10, AttributeType::ELEC, dir, damroll(dice, sides));
             }
         }
         break;
@@ -538,7 +538,7 @@ concptr do_arcane_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessTyp
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
 
-                fire_beam(player_ptr, GF_AWAY_ALL, dir, power);
+                fire_beam(player_ptr, AttributeType::AWAY_ALL, dir, power);
             }
         }
         break;
@@ -564,16 +564,16 @@ concptr do_arcane_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessTyp
 
                 switch (randint1(4)) {
                 case 1:
-                    type = GF_FIRE;
+                    type = AttributeType::FIRE;
                     break;
                 case 2:
-                    type = GF_ELEC;
+                    type = AttributeType::ELEC;
                     break;
                 case 3:
-                    type = GF_COLD;
+                    type = AttributeType::COLD;
                     break;
                 default:
-                    type = GF_ACID;
+                    type = AttributeType::ACID;
                     break;
                 }
 

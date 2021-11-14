@@ -94,11 +94,11 @@ bool breath_direct(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2
 {
     BIT_FLAGS flg;
     switch (typ) {
-    case GF_LITE:
-    case GF_LITE_WEAK:
+    case AttributeType::LITE:
+    case AttributeType::LITE_WEAK:
         flg = PROJECT_LOS;
         break;
-    case GF_DISINTEGRATE:
+    case AttributeType::DISINTEGRATE:
         flg = PROJECT_DISI;
         break;
     default:

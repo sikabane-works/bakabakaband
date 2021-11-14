@@ -199,7 +199,7 @@ ProjectResult bolt(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION y, POSITI
         break;
     }
 
-    if (typ != GF_ARROW)
+    if (typ != AttributeType::ARROW)
         flg |= PROJECT_REFLECTABLE;
 
     return project(player_ptr, m_idx, 0, y, x, dam_hp, typ, flg);
@@ -266,17 +266,17 @@ ProjectResult breath(PlayerType *player_ptr, POSITION y, POSITION x, MONSTER_IDX
         rad = 0 - rad;
 
     switch (typ) {
-    case GF_ROCKET:
+    case AttributeType::ROCKET:
         flg |= PROJECT_STOP;
         break;
-    case GF_DRAIN_MANA:
-    case GF_MIND_BLAST:
-    case GF_BRAIN_SMASH:
-    case GF_CAUSE_1:
-    case GF_CAUSE_2:
-    case GF_CAUSE_3:
-    case GF_CAUSE_4:
-    case GF_HAND_DOOM:
+    case AttributeType::DRAIN_MANA:
+    case AttributeType::MIND_BLAST:
+    case AttributeType::BRAIN_SMASH:
+    case AttributeType::CAUSE_1:
+    case AttributeType::CAUSE_2:
+    case AttributeType::CAUSE_3:
+    case AttributeType::CAUSE_4:
+    case AttributeType::HAND_DOOM:
         flg |= (PROJECT_HIDE | PROJECT_AIMED);
         break;
     }

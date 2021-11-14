@@ -436,9 +436,9 @@ void ObjectThrowEntity::attack_racial_power()
 
     auto fear = false;
     EffectFlags effect_flags{};
-    effect_flags.set(GF_PLAYER_SHOOT);
+    effect_flags.set(AttributeType::PLAYER_SHOOT);
     if (is_active_torch(this->o_ptr))
-        effect_flags.set(GF_FIRE);
+        effect_flags.set(AttributeType::FIRE);
 
     MonsterDamageProcessor mdp(this->player_ptr, this->g_ptr->m_idx, this->tdam, &fear, effect_flags);
     if (mdp.mon_take_hit(extract_note_dies(real_r_idx(this->m_ptr)))) {

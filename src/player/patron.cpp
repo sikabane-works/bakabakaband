@@ -369,7 +369,7 @@ void Patron::gain_level_reward(PlayerType *player_ptr_, int chosen_reward)
             msg_format(_("%sの声が響き渡った:", "The voice of %s booms out:"), this->name.c_str());
             msg_print(_("「苦しむがよい、無能な愚か者よ！」", "'Suffer, pathetic fool!'"));
 
-            fire_ball(player_ptr, GF_DISINTEGRATE, 0, this->player_ptr->lev * 4, 4);
+            fire_ball(player_ptr, AttributeType::DISINTEGRATE, 0, this->player_ptr->lev * 4, 4);
             take_hit(player_ptr, DAMAGE_NOESCAPE, this->player_ptr->lev * 4, wrath_reason);
             reward = _("分解の球が発生した。", "generating disintegration ball");
             break;

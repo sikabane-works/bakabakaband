@@ -88,7 +88,7 @@ concptr do_life_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessType 
             if (cast) {
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
-                fire_ball_hide(player_ptr, GF_WOUNDS, dir, damroll(dice, sides), 0);
+                fire_ball_hide(player_ptr, AttributeType::WOUNDS, dir, damroll(dice, sides), 0);
             }
         }
         break;
@@ -200,7 +200,7 @@ concptr do_life_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessType 
             if (cast) {
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
-                fire_ball_hide(player_ptr, GF_WOUNDS, dir, damroll(dice, sides), 0);
+                fire_ball_hide(player_ptr, AttributeType::WOUNDS, dir, damroll(dice, sides), 0);
             }
         }
         break;
@@ -379,7 +379,7 @@ concptr do_life_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessType 
             if (cast) {
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
-                fire_ball_hide(player_ptr, GF_WOUNDS, dir, damroll(dice, sides), 0);
+                fire_ball_hide(player_ptr, AttributeType::WOUNDS, dir, damroll(dice, sides), 0);
             }
         }
         break;

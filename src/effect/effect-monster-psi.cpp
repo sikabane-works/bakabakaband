@@ -185,7 +185,7 @@ static void effect_monster_psi_extra_effect(effect_monster_type *em_ptr)
 }
 
 /*!
- * @brief モンスターへのPsi攻撃(GF_PSI)の効果を発動する
+ * @brief モンスターへのPsi攻撃(AttributeType::PSI)の効果を発動する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param em_ptr モンスター効果への参照ポインタ
  * @return PROICESS_CONTINUE
@@ -212,7 +212,7 @@ process_result effect_monster_psi(PlayerType *player_ptr, effect_monster_type *e
 }
 
 /*!
- * @brief モンスターのPsi攻撃(GF_PSI_DRAIN)に対する耐性を発動する
+ * @brief モンスターのPsi攻撃(AttributeType::PSI_DRAIN)に対する耐性を発動する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param em_ptr モンスター効果への参照ポインタ
  * @details
@@ -253,7 +253,7 @@ static void effect_monster_psi_drain_resist(PlayerType *player_ptr, effect_monst
 }
 
 /*!
- * @brief モンスターへのPsi攻撃(GF_PSI_DRAIN)のダメージをMPに変換する
+ * @brief モンスターへのPsi攻撃(AttributeType::PSI_DRAIN)のダメージをMPに変換する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param em_ptr モンスター効果への参照ポインタ
  */
@@ -271,7 +271,7 @@ static void effect_monster_psi_drain_change_power(PlayerType *player_ptr, effect
 }
 
 /*!
- * @brief モンスターへのPsi攻撃(GF_PSI_DRAIN)の効果を発動する
+ * @brief モンスターへのPsi攻撃(AttributeType::PSI_DRAIN)の効果を発動する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param em_ptr モンスター効果への参照ポインタ
  * @return PROICESS_CONTINUE
@@ -292,7 +292,7 @@ process_result effect_monster_psi_drain(PlayerType *player_ptr, effect_monster_t
 }
 
 /*!
- * @brief モンスターへのテレキネシス(GF_TELEKINESIS)の効果を発動する
+ * @brief モンスターへのテレキネシス(AttributeType::TELEKINESIS)の効果を発動する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param em_ptr モンスター効果への参照ポインタ
  * @return PROICESS_CONTINUE

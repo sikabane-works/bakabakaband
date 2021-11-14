@@ -285,7 +285,7 @@ concptr do_sorcery_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessTy
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
 
-                fire_beam(player_ptr, GF_AWAY_ALL, dir, power);
+                fire_beam(player_ptr, AttributeType::AWAY_ALL, dir, power);
             }
         }
         break;

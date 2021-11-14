@@ -24,7 +24,7 @@
 bool fire_ball(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, HIT_POINT dam, POSITION rad)
 {
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
-    if (typ == GF_CHARM_LIVING)
+    if (typ == AttributeType::CHARM_LIVING)
         flg |= PROJECT_HIDE;
 
     POSITION tx = player_ptr->x + 99 * ddx[dir];
@@ -205,7 +205,7 @@ bool fire_blast(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, DICE_N
 bool fire_bolt(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, HIT_POINT dam)
 {
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_KILL | PROJECT_GRID;
-    if (typ != GF_ARROW)
+    if (typ != AttributeType::ARROW)
         flg |= PROJECT_REFLECTABLE;
     return (project_hook(player_ptr, typ, dir, dam, flg));
 }

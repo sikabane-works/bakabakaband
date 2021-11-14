@@ -17,7 +17,7 @@ bool activate_teleport_away(PlayerType *player_ptr)
     if (!get_aim_dir(player_ptr, &dir))
         return false;
 
-    (void)fire_beam(player_ptr, GF_AWAY_ALL, dir, player_ptr->lev);
+    (void)fire_beam(player_ptr, AttributeType::AWAY_ALL, dir, player_ptr->lev);
     return true;
 }
 

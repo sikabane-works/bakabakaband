@@ -231,7 +231,7 @@ static bool activate_firethrowing(PlayerType *player_ptr, ae_type *ae_ptr)
         return false;
 
     msg_print(_("汚物は消毒だあ！", "The filth must be disinfected!"));
-    fire_breath(player_ptr, GF_FIRE, dir, 20 + player_ptr->lev * 5, 2);
+    fire_breath(player_ptr, AttributeType::FIRE, dir, 20 + player_ptr->lev * 5, 2);
     return true;
 }
 
@@ -244,7 +244,7 @@ static bool activate_rosmarinus(PlayerType *player_ptr, ae_type *ae_ptr)
     if (!get_aim_dir(player_ptr, &dir))
         return false;
 
-    fire_breath(player_ptr, GF_MISSILE, dir, 20 + player_ptr->lev * 5, 2);
+    fire_breath(player_ptr, AttributeType::MISSILE, dir, 20 + player_ptr->lev * 5, 2);
     return true;
 }
 
@@ -259,7 +259,7 @@ static bool activate_stungun(PlayerType *player_ptr, ae_type *ae_ptr)
         return false;
 
     msg_print(_("『バチィ』", "'bzzt'"));
-    fire_ball(player_ptr, GF_STUNGUN, dir, player_ptr->lev, 0);
+    fire_ball(player_ptr, AttributeType::STUNGUN, dir, player_ptr->lev, 0);
     project_length = 0;
     return true;
 }
@@ -274,7 +274,7 @@ static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
         return false;
 
     msg_print(_("『ビィーム！』", "'ZAP! ZAP!'"));
-    fire_bolt(player_ptr, GF_MISSILE, dir, 10 + player_ptr->lev * 2);
+    fire_bolt(player_ptr, AttributeType::MISSILE, dir, 10 + player_ptr->lev * 2);
     return true;
 }
 

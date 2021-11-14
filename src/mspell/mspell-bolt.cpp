@@ -38,7 +38,7 @@ MonsterSpellResult spell_RF4_SHOOT(PlayerType *player_ptr, POSITION y, POSITION 
     }
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::SHOOT, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_ARROW, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::ARROW, dam, TARGET_TYPE);
 
     auto res = MonsterSpellResult::make_valid(dam);
     res.learnable = proj_res.affected_player;
@@ -66,7 +66,7 @@ MonsterSpellResult spell_RF5_BO_ACID(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_ACID, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_ACID, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::ACID, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_ACID);
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
@@ -98,7 +98,7 @@ MonsterSpellResult spell_RF5_BO_ELEC(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_ELEC, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_ELEC, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::ELEC, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_ELEC);
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
@@ -130,7 +130,7 @@ MonsterSpellResult spell_RF5_BO_FIRE(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_FIRE, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_FIRE, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::FIRE, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_FIRE);
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
@@ -162,7 +162,7 @@ MonsterSpellResult spell_RF5_BO_COLD(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_COLD, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_COLD, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::COLD, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_COLD);
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
@@ -193,7 +193,7 @@ MonsterSpellResult spell_RF5_BO_NETH(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_NETH, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_NETHER, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::NETHER, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_NETH);
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
@@ -225,7 +225,7 @@ MonsterSpellResult spell_RF5_BO_WATE(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_WATE, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_WATER, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::WATER, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
     }
@@ -255,7 +255,7 @@ MonsterSpellResult spell_RF5_BO_MANA(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_MANA, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_MANA, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::MANA, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
     }
@@ -286,7 +286,7 @@ MonsterSpellResult spell_RF5_BO_PLAS(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_PLAS, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_PLASMA, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::PLASMA, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
     }
@@ -316,7 +316,7 @@ MonsterSpellResult spell_RF5_BO_ICEE(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::BO_ICEE, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_ICE, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::ICE, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_COLD);
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
@@ -348,7 +348,7 @@ MonsterSpellResult spell_RF5_MISSILE(PlayerType *player_ptr, POSITION y, POSITIO
     monspell_message(player_ptr, m_idx, t_idx, msg, TARGET_TYPE);
 
     const auto dam = monspell_damage(player_ptr, MonsterAbilityType::MISSILE, m_idx, DAM_ROLL);
-    const auto proj_res = bolt(player_ptr, m_idx, y, x, GF_MISSILE, dam, TARGET_TYPE);
+    const auto proj_res = bolt(player_ptr, m_idx, y, x, AttributeType::MISSILE, dam, TARGET_TYPE);
     if (TARGET_TYPE == MONSTER_TO_PLAYER) {
         update_smart_learn(player_ptr, m_idx, DRS_REFLECT);
     }

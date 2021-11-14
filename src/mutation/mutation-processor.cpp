@@ -200,7 +200,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         disturb(player_ptr, false, true);
         msg_print(_("ブゥーーッ！おっと。", "BRRAAAP! Oops."));
         msg_print(NULL);
-        fire_ball(player_ptr, GF_DIRT, 0, player_ptr->lev, 3);
+        fire_ball(player_ptr, AttributeType::DIRT, 0, player_ptr->lev, 3);
     }
 
     if (player_ptr->muta.has(MUTA::DEFECATION) && (randint1(1500) == 13)) {
@@ -222,7 +222,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         flush();
         msg_print(nullptr);
         (void)get_hack_dir(player_ptr, &dire);
-        fire_ball(player_ptr, GF_MANA, dire, player_ptr->lev * 2, 3);
+        fire_ball(player_ptr, AttributeType::MANA, dire, player_ptr->lev * 2, 3);
     }
 
     if (player_ptr->muta.has(MUTA::ATT_DEMON) && !player_ptr->anti_magic && (randint1(6666) == 666)) {
@@ -325,7 +325,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         disturb(player_ptr, false, true);
         msg_print(_("周りの空間が歪んでいる気がする！", "You feel the world warping around you!"));
         msg_print(nullptr);
-        fire_ball(player_ptr, GF_CHAOS, 0, player_ptr->lev, 8);
+        fire_ball(player_ptr, AttributeType::CHAOS, 0, player_ptr->lev, 8);
     }
 
     if (player_ptr->muta.has(MUTA::NORMALITY) && one_in_(5000)) {

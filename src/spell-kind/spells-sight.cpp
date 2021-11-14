@@ -84,7 +84,7 @@ bool project_all_los(PlayerType *player_ptr, AttributeType typ, HIT_POINT dam)
  */
 bool speed_monsters(PlayerType *player_ptr)
 {
-    return (project_all_los(player_ptr, GF_OLD_SPEED, player_ptr->lev));
+    return (project_all_los(player_ptr, AttributeType::OLD_SPEED, player_ptr->lev));
 }
 
 /*!
@@ -94,7 +94,7 @@ bool speed_monsters(PlayerType *player_ptr)
  */
 bool slow_monsters(PlayerType *player_ptr, int power)
 {
-    return (project_all_los(player_ptr, GF_OLD_SLOW, power));
+    return (project_all_los(player_ptr, AttributeType::OLD_SLOW, power));
 }
 
 /*!
@@ -104,7 +104,7 @@ bool slow_monsters(PlayerType *player_ptr, int power)
  */
 bool sleep_monsters(PlayerType *player_ptr, int power)
 {
-    return (project_all_los(player_ptr, GF_OLD_SLEEP, power));
+    return (project_all_los(player_ptr, AttributeType::OLD_SLEEP, power));
 }
 
 /*!
@@ -114,7 +114,7 @@ bool sleep_monsters(PlayerType *player_ptr, int power)
  */
 bool banish_evil(PlayerType *player_ptr, int dist)
 {
-    return (project_all_los(player_ptr, GF_AWAY_EVIL, dist));
+    return (project_all_los(player_ptr, AttributeType::AWAY_EVIL, dist));
 }
 
 /*!
@@ -123,7 +123,7 @@ bool banish_evil(PlayerType *player_ptr, int dist)
  */
 bool turn_undead(PlayerType *player_ptr)
 {
-    bool tester = (project_all_los(player_ptr, GF_TURN_UNDEAD, player_ptr->lev));
+    bool tester = (project_all_los(player_ptr, AttributeType::TURN_UNDEAD, player_ptr->lev));
     if (tester)
         chg_virtue(player_ptr, V_UNLIFE, -1);
     return tester;
@@ -136,7 +136,7 @@ bool turn_undead(PlayerType *player_ptr)
  */
 bool dispel_undead(PlayerType *player_ptr, HIT_POINT dam)
 {
-    bool tester = (project_all_los(player_ptr, GF_DISP_UNDEAD, dam));
+    bool tester = (project_all_los(player_ptr, AttributeType::DISP_UNDEAD, dam));
     if (tester)
         chg_virtue(player_ptr, V_UNLIFE, -2);
     return tester;
@@ -149,7 +149,7 @@ bool dispel_undead(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_evil(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_DISP_EVIL, dam));
+    return (project_all_los(player_ptr, AttributeType::DISP_EVIL, dam));
 }
 
 /*!
@@ -159,7 +159,7 @@ bool dispel_evil(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_good(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_DISP_GOOD, dam));
+    return (project_all_los(player_ptr, AttributeType::DISP_GOOD, dam));
 }
 
 /*!
@@ -169,7 +169,7 @@ bool dispel_good(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_DISP_ALL, dam));
+    return (project_all_los(player_ptr, AttributeType::DISP_ALL, dam));
 }
 
 /*!
@@ -179,7 +179,7 @@ bool dispel_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_living(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_DISP_LIVING, dam));
+    return (project_all_los(player_ptr, AttributeType::DISP_LIVING, dam));
 }
 
 /*!
@@ -189,7 +189,7 @@ bool dispel_living(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_demons(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_DISP_DEMON, dam));
+    return (project_all_los(player_ptr, AttributeType::DISP_DEMON, dam));
 }
 
 /*!
@@ -199,7 +199,7 @@ bool dispel_demons(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool crusade(PlayerType *player_ptr)
 {
-    return (project_all_los(player_ptr, GF_CRUSADE, player_ptr->lev * 4));
+    return (project_all_los(player_ptr, AttributeType::CRUSADE, player_ptr->lev * 4));
 }
 
 /*!
@@ -252,7 +252,7 @@ void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
  */
 bool confuse_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_OLD_CONF, dam));
+    return (project_all_los(player_ptr, AttributeType::OLD_CONF, dam));
 }
 
 /*!
@@ -263,7 +263,7 @@ bool confuse_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool charm_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_CHARM, dam));
+    return (project_all_los(player_ptr, AttributeType::CHARM, dam));
 }
 
 /*!
@@ -274,7 +274,7 @@ bool charm_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool charm_animals(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_CONTROL_ANIMAL, dam));
+    return (project_all_los(player_ptr, AttributeType::CONTROL_ANIMAL, dam));
 }
 
 /*!
@@ -285,7 +285,7 @@ bool charm_animals(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool stun_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_STUN, dam));
+    return (project_all_los(player_ptr, AttributeType::STUN, dam));
 }
 
 /*!
@@ -296,7 +296,7 @@ bool stun_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool stasis_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_STASIS, dam));
+    return (project_all_los(player_ptr, AttributeType::STASIS, dam));
 }
 
 /*!
@@ -307,7 +307,7 @@ bool stasis_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool mindblast_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_PSI, dam));
+    return (project_all_los(player_ptr, AttributeType::PSI, dam));
 }
 
 /*!
@@ -318,7 +318,7 @@ bool mindblast_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool banish_monsters(PlayerType *player_ptr, int dist)
 {
-    return (project_all_los(player_ptr, GF_AWAY_ALL, dist));
+    return (project_all_los(player_ptr, AttributeType::AWAY_ALL, dist));
 }
 
 /*!
@@ -329,7 +329,7 @@ bool banish_monsters(PlayerType *player_ptr, int dist)
  */
 bool turn_evil(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_TURN_EVIL, dam));
+    return (project_all_los(player_ptr, AttributeType::TURN_EVIL, dam));
 }
 
 /*!
@@ -340,7 +340,7 @@ bool turn_evil(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool turn_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, GF_TURN_ALL, dam));
+    return (project_all_los(player_ptr, AttributeType::TURN_ALL, dam));
 }
 
 /*!
@@ -350,7 +350,7 @@ bool turn_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool deathray_monsters(PlayerType *player_ptr)
 {
-    return (project_all_los(player_ptr, GF_DEATH_RAY, player_ptr->lev * 200));
+    return (project_all_los(player_ptr, AttributeType::DEATH_RAY, player_ptr->lev * 200));
 }
 
 /*!

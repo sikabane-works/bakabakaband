@@ -549,7 +549,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     case TRAP_TRAPS: {
         msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
         /* Make some new traps */
-        project(player_ptr, 0, 1, y, x, 0, GF_MAKE_TRAP, PROJECT_HIDE | PROJECT_JUMP | PROJECT_GRID);
+        project(player_ptr, 0, 1, y, x, 0, AttributeType::MAKE_TRAP, PROJECT_HIDE | PROJECT_JUMP | PROJECT_GRID);
 
         break;
     }
@@ -564,9 +564,9 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
 
     case TRAP_OPEN: {
         msg_print(_("大音響と共にまわりの壁が崩れた！", "Suddenly, surrounding walls are opened!"));
-        (void)project(player_ptr, 0, 3, y, x, 0, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
-        (void)project(player_ptr, 0, 3, y, x - 4, 0, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
-        (void)project(player_ptr, 0, 3, y, x + 4, 0, GF_DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
+        (void)project(player_ptr, 0, 3, y, x, 0, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
+        (void)project(player_ptr, 0, 3, y, x - 4, 0, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
+        (void)project(player_ptr, 0, 3, y, x + 4, 0, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
         aggravate_monsters(player_ptr, 0);
 
         break;
@@ -619,7 +619,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         msg_print(_("突然壁から水が溢れ出した！ピラニアがいる！", "Suddenly, the room is filled with water with piranhas!"));
 
         /* Water fills room */
-        fire_ball_hide(player_ptr, GF_WATER_FLOW, 0, 1, 10);
+        fire_ball_hide(player_ptr, AttributeType::WATER_FLOW, 0, 1, 10);
 
         /* Summon Piranhas */
         num = 1 + player_ptr->current_floor_ptr->dun_level / 20;
@@ -631,32 +631,32 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
 
     case TRAP_LAVA: {
         msg_print(_("突然溶岩が溢れだした！", "Suddenly, the room is filled with lava!"));
-        fire_ball_hide(player_ptr, GF_LAVA_FLOW, 0, 1, 10);
+        fire_ball_hide(player_ptr, AttributeType::LAVA_FLOW, 0, 1, 10);
         break;
     }
 
     case TRAP_DUNG_POOL: {
         msg_print(_("突然糞便が溢れだした！ああ＾～たまらねえぜ！", "Suddenly, the room is filled with dung! Ahh^- how marvelous!"));
-        fire_ball_hide(player_ptr, GF_DIRT, 0, 1, 10);
+        fire_ball_hide(player_ptr, AttributeType::DIRT, 0, 1, 10);
         break;
     }
 
     case TRAP_FIRE_STORM: {
         msg_print(_("火炎の嵐に包まれた！", "You ware filled with huge fire storm!"));
-        fire_ball(player_ptr, GF_FIRE, 0, 600, 4);
+        fire_ball(player_ptr, AttributeType::FIRE, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_fire_damage_rate(player_ptr) / 100, _("火炎嵐の罠", "a Hige Fire Trap"));
 
         break;
     }
     case TRAP_ICE_STORM: {
         msg_print(_("冷気の嵐に包まれた！", "You ware filled with huge ice storm!"));
-        fire_ball(player_ptr, GF_ICE, 0, 600, 4);
+        fire_ball(player_ptr, AttributeType::ICE, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_cold_damage_rate(player_ptr) / 100, _("極寒嵐の罠", "a Hige Ice Trap"));
         break;
     }
     case TRAP_CHAOS_STORM: {
         msg_print(_("混沌の嵐に包まれた！", "You ware filled with huge chaos storm!"));
-        fire_ball(player_ptr, GF_CHAOS, 0, 600, 4);
+        fire_ball(player_ptr, AttributeType::CHAOS, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(player_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
         break;
     }
