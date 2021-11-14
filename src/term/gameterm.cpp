@@ -415,7 +415,7 @@ static TERM_COLOR mh_attr(int max)
  * @param type 魔法属性
  * @return 対応する色ID
  */
-static TERM_COLOR spell_color(EFFECT_ID type)
+static TERM_COLOR spell_color(AttributeType type)
 {
 	/* Check if A.B.'s new graphics should be used (rr9) */
 	if (streq(ANGBAND_GRAF, "new") || streq(ANGBAND_GRAF, "ne2"))
@@ -525,7 +525,7 @@ static TERM_COLOR spell_color(EFFECT_ID type)
  * If the distance is not "one", we (may) return "*".
  * </pre>
  */
-uint16_t bolt_pict(POSITION y, POSITION x, POSITION ny, POSITION nx, EFFECT_ID typ)
+uint16_t bolt_pict(POSITION y, POSITION x, POSITION ny, POSITION nx, AttributeType typ)
 {
 	int base;
 

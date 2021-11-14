@@ -228,7 +228,7 @@ void wiz_summon_pet(PlayerType *player_ptr, MONRACE_IDX r_idx)
  * @param effect_idx 属性ID
  * @details デフォルトは100万・GF_ARROW(射撃)。RES_ALL持ちも一撃で殺せる。
  */
-void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, EFFECT_ID effect_idx)
+void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx)
 {
     if (dam <= 0) {
         char tmp[80] = "";
@@ -247,7 +247,7 @@ void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, EFFECT_ID effect_idx)
         if (!get_string(tmp, tmp_val, 3))
             return;
 
-        effect_idx = (EFFECT_ID)atoi(tmp_val);
+        effect_idx = (AttributeType)atoi(tmp_val);
     }
 
     if (effect_idx <= GF_NONE || effect_idx >= MAX_GF) {
@@ -268,7 +268,7 @@ void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, EFFECT_ID effect_idx)
  * @param dam ダメージ量
  * @param effect_idx 属性ID
  */
-void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, EFFECT_ID effect_idx)
+void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx)
 {
     if (dam <= 0) {
         char tmp[80] = "";
@@ -287,7 +287,7 @@ void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, EFFECT_ID effect_idx)
         if (!get_string(tmp, tmp_val, 3))
             return;
 
-        effect_idx = (EFFECT_ID)atoi(tmp_val);
+        effect_idx = (AttributeType)atoi(tmp_val);
     }
 
     if (effect_idx <= GF_NONE || effect_idx >= MAX_GF) {

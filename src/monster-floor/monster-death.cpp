@@ -69,7 +69,7 @@ static void on_dead_explosion(PlayerType *player_ptr, monster_death_type *md_ptr
             continue;
 
         BIT_FLAGS flg = PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
-        EFFECT_ID typ = mbe_info[enum2i(md_ptr->r_ptr->blow[i].effect)].explode_type;
+        AttributeType typ = mbe_info[enum2i(md_ptr->r_ptr->blow[i].effect)].explode_type;
         DICE_NUMBER d_dice = md_ptr->r_ptr->blow[i].d_dice;
         DICE_SID d_side = md_ptr->r_ptr->blow[i].d_side;
         HIT_POINT damage = damroll(d_dice, d_side);
@@ -357,7 +357,7 @@ static void on_defeat_last_boss(PlayerType *player_ptr)
  * @param drop_item TRUEならばモンスターのドロップ処理を行う
  * @param effect_type ラストアタックの属性 (単一属性)
  */
-void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, EFFECT_ID effect_type)
+void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, AttributeType effect_type)
 {
     EffectFlags flags;
     flags.clear();

@@ -46,7 +46,7 @@
  * @param monspell 効果元のモンスター魔法ID
  * @return 初期化後の構造体ポインタ
  */
-static effect_player_type *initialize_effect_player(effect_player_type *ep_ptr, MONSTER_IDX who, HIT_POINT dam, EFFECT_ID effect_type, BIT_FLAGS flag)
+static effect_player_type *initialize_effect_player(effect_player_type *ep_ptr, MONSTER_IDX who, HIT_POINT dam, AttributeType effect_type, BIT_FLAGS flag)
 {
     ep_ptr->rlev = 0;
     ep_ptr->m_ptr = nullptr;
@@ -188,7 +188,7 @@ static void describe_effect_source(PlayerType *player_ptr, effect_player_type *e
  * @param monspell 効果元のモンスター魔法ID
  * @return 何か一つでも効力があればTRUEを返す / TRUE if any "effects" of the projection were observed, else FALSE
  */
-bool affect_player(MONSTER_IDX who, PlayerType *player_ptr, concptr who_name, int r, POSITION y, POSITION x, HIT_POINT dam, EFFECT_ID effect_type,
+bool affect_player(MONSTER_IDX who, PlayerType *player_ptr, concptr who_name, int r, POSITION y, POSITION x, HIT_POINT dam, AttributeType effect_type,
     BIT_FLAGS flag, project_func project)
 {
     effect_player_type tmp_effect;

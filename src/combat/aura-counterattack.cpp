@@ -209,7 +209,7 @@ static void aura_shadow_by_monster_attack(PlayerType *player_ptr, monap_type *mo
     }
 
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
-    EFFECT_ID typ[4][2] = { { INVEN_HEAD, GF_OLD_CONF }, { INVEN_SUB_HAND, GF_OLD_SLEEP }, { INVEN_ARMS, GF_TURN_ALL }, { INVEN_FEET, GF_OLD_SLOW } };
+    AttributeType typ[4][2] = { { INVEN_HEAD, GF_OLD_CONF }, { INVEN_SUB_HAND, GF_OLD_SLEEP }, { INVEN_ARMS, GF_TURN_ALL }, { INVEN_FEET, GF_OLD_SLOW } };
 
     /* Some cursed armours gives an extra effect */
     for (int j = 0; j < 4; j++) {

@@ -13,7 +13,7 @@ class PlayerType;
 typedef std::vector<std::tuple<monster_race_type, monster_race_type, monster_race_type>> combined_uniques;
 class MonsterDamageProcessor {
 public:
-    MonsterDamageProcessor(PlayerType *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EFFECT_ID effect_type);
+    MonsterDamageProcessor(PlayerType *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, AttributeType effect_type);
     MonsterDamageProcessor(PlayerType *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EffectFlags effect_flags);
     virtual ~MonsterDamageProcessor() = default;
     bool mon_take_hit(concptr note);

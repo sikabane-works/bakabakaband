@@ -77,7 +77,7 @@ object_type *choose_warning_item(PlayerType *player_ptr)
  * @param dam 基本ダメージ
  * @param max 算出した最大ダメージを返すポインタ
  */
-static void spell_damcalc(PlayerType *player_ptr, monster_type *m_ptr, EFFECT_ID typ, HIT_POINT dam, int *max)
+static void spell_damcalc(PlayerType *player_ptr, monster_type *m_ptr, AttributeType typ, HIT_POINT dam, int *max)
 {
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
     int rlev = r_ptr->level;
@@ -248,7 +248,7 @@ static void spell_damcalc(PlayerType *player_ptr, monster_type *m_ptr, EFFECT_ID
  * @param m_idx 魔法を行使するモンスターのID
  * @param max 算出した最大ダメージを返すポインタ
  */
-static void spell_damcalc_by_spellnum(PlayerType *player_ptr, MonsterAbilityType ms_type, EFFECT_ID typ, MONSTER_IDX m_idx, int *max)
+static void spell_damcalc_by_spellnum(PlayerType *player_ptr, MonsterAbilityType ms_type, AttributeType typ, MONSTER_IDX m_idx, int *max)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     HIT_POINT dam = monspell_damage(player_ptr, ms_type, m_idx, DAM_MAX);

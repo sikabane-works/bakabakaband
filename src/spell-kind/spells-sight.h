@@ -5,7 +5,7 @@
 struct monster_race;
 struct monster_type;
 class PlayerType;
-bool project_all_los(PlayerType *player_ptr, EFFECT_ID typ, HIT_POINT dam);
+bool project_all_los(PlayerType *player_ptr, AttributeType typ, HIT_POINT dam);
 bool speed_monsters(PlayerType *player_ptr);
 bool slow_monsters(PlayerType *player_ptr, int power);
 bool sleep_monsters(PlayerType *player_ptr, int power);

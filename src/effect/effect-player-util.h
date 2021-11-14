@@ -12,6 +12,6 @@ typedef struct effect_player_type {
 
     MONSTER_IDX who;
     HIT_POINT dam;
-    EFFECT_ID effect_type;
+    AttributeType effect_type;
     BIT_FLAGS flag;
 } effect_player_type;

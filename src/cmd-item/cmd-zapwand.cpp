@@ -259,7 +259,7 @@ bool wand_effect(PlayerType *player_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION di
 
     case SV_WAND_DRAGON_BREATH: {
         HIT_POINT dam;
-        EFFECT_ID typ;
+        AttributeType typ;
 
         switch (randint1(5)) {
         case 1:

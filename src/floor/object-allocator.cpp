@@ -161,7 +161,7 @@ static void place_rubble(floor_type *floor_ptr, POSITION y, POSITION x)
  * @param num 配置したい数
  * @return 規定数通りに生成に成功したらTRUEを返す。
  */
-void alloc_object(PlayerType *player_ptr, dap_type set, EFFECT_ID typ, int num)
+void alloc_object(PlayerType *player_ptr, dap_type set, AttributeType typ, int num)
 {
     POSITION y = 0;
     POSITION x = 0;

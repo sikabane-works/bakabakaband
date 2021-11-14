@@ -39,11 +39,11 @@ typedef struct effect_monster_type {
     POSITION y;
     POSITION x;
     HIT_POINT dam;
-    EFFECT_ID effect_type;
+    AttributeType effect_type;
     BIT_FLAGS flag;
     bool see_s_msg;
 } effect_monster_type;
 
 class PlayerType;
 effect_monster_type *initialize_effect_monster(PlayerType *player_ptr, effect_monster_type *em_ptr, MONSTER_IDX who, POSITION r, POSITION y, POSITION x,
-    HIT_POINT dam, EFFECT_ID effect_type, BIT_FLAGS flag, bool see_s_msg);
+    HIT_POINT dam, AttributeType effect_type, BIT_FLAGS flag, bool see_s_msg);
