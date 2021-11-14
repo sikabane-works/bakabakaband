@@ -134,7 +134,7 @@ static int highscore_add(high_score *score)
  * @param do_send 実際に転送ア処置を行うか否か
  * @return 転送が成功したらTRUEを返す
  */
-bool send_world_score(player_type *current_player_ptr, bool do_send, display_player_pf display_player)
+bool send_world_score(PlayerType *current_player_ptr, bool do_send, display_player_pf display_player)
 {
 #ifdef WORLD_SCORE
     if (!send_score || !do_send) {
@@ -176,7 +176,7 @@ bool send_world_score(player_type *current_player_ptr, bool do_send, display_pla
  * @details
  * Assumes "signals_ignore_tstp()" has been called.
  */
-errr top_twenty(player_type *current_player_ptr)
+errr top_twenty(PlayerType *current_player_ptr)
 {
     high_score the_score = {};
     char buf[32];
@@ -277,7 +277,7 @@ errr top_twenty(player_type *current_player_ptr)
  * Predict the players location, and display it.
  * @return エラーコード
  */
-errr predict_score(player_type *current_player_ptr)
+errr predict_score(PlayerType *current_player_ptr)
 {
     high_score the_score;
     char buf[32];
@@ -344,7 +344,7 @@ errr predict_score(player_type *current_player_ptr)
  * @brief スコアランキングの簡易表示 /
  * show_highclass - selectively list highscores based on class -KMW-
  */
-void show_highclass(player_type *current_player_ptr)
+void show_highclass(PlayerType *current_player_ptr)
 {
     screen_save();
     char buf[1024], out_val[256];
@@ -413,7 +413,7 @@ void show_highclass(player_type *current_player_ptr)
  * Race Legends -KMW-
  * @param race_num 種族ID
  */
-void race_score(player_type *current_player_ptr, int race_num)
+void race_score(PlayerType *current_player_ptr, int race_num)
 {
     int i = 0, j, m = 0;
     int pr, clev, lastlev;
@@ -488,7 +488,7 @@ void race_score(player_type *current_player_ptr, int race_num)
  * @brief スコアランキングの簡易表示(種族毎)メインルーチン /
  * Race Legends -KMW-
  */
-void race_legends(player_type *current_player_ptr)
+void race_legends(PlayerType *current_player_ptr)
 {
     for (int i = 0; i < MAX_RACES; i++) {
         race_score(current_player_ptr, i);
@@ -503,7 +503,7 @@ void race_legends(player_type *current_player_ptr)
  * @brief スコアファイル出力
  * Display some character info
  */
-bool check_score(player_type *current_player_ptr)
+bool check_score(PlayerType *current_player_ptr)
 {
     term_clear();
 

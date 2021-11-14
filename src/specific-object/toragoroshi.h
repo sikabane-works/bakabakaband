@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-bool activate_toragoroshi(player_type *player_ptr);
+class PlayerType;
+bool activate_toragoroshi(PlayerType *player_ptr);

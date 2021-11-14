@@ -1,5 +1,5 @@
 ﻿#pragma once
 
-class player_type;
-void process_player_name(player_type *player_ptr, bool is_new_savefile = false);
-void get_name(player_type *player_ptr);
+class PlayerType;
+void process_player_name(PlayerType *player_ptr, bool is_new_savefile = false);
+void get_name(PlayerType *player_ptr);

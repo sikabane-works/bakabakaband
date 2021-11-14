@@ -8,8 +8,8 @@
 
 struct monster_type;
 struct object_type;
-class player_type;
-MULTIPLY mult_slaying(player_type *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr);
-MULTIPLY mult_brand(player_type *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr);
-HIT_POINT calc_attack_damage_with_slay(player_type *player_ptr, object_type *o_ptr, HIT_POINT tdam, monster_type *m_ptr, combat_options mode, bool thrown);
-EffectFlags melee_effect_type(player_type *player_ptr, object_type *o_ptr, combat_options mode);
+class PlayerType;
+MULTIPLY mult_slaying(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr);
+MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr);
+HIT_POINT calc_attack_damage_with_slay(PlayerType *player_ptr, object_type *o_ptr, HIT_POINT tdam, monster_type *m_ptr, combat_options mode, bool thrown);
+EffectFlags melee_effect_type(PlayerType *player_ptr, object_type *o_ptr, combat_options mode);

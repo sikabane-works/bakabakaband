@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-bool create_ration(player_type *player_ptr);
+class PlayerType;
+bool create_ration(PlayerType *player_ptr);

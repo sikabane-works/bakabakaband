@@ -38,7 +38,7 @@
  * @details
  * Note that this function is one of the more "dangerous" ones...
  */
-static MONRACE_IDX poly_r_idx(player_type *player_ptr, MONRACE_IDX r_idx)
+static MONRACE_IDX poly_r_idx(PlayerType *player_ptr, MONRACE_IDX r_idx)
 {
     monster_race *r_ptr = &r_info[r_idx];
     if ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags1 & RF1_QUESTOR))
@@ -73,7 +73,7 @@ static MONRACE_IDX poly_r_idx(player_type *player_ptr, MONRACE_IDX r_idx)
  * @param x 指定のX座標
  * @return 実際に変身したらTRUEを返す
  */
-bool polymorph_monster(player_type *player_ptr, POSITION y, POSITION x)
+bool polymorph_monster(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     grid_type *g_ptr = &floor_ptr->grid_array[y][x];
@@ -143,7 +143,7 @@ bool polymorph_monster(player_type *player_ptr, POSITION y, POSITION x)
  * @param player_ptr プレーヤーへの参照ポインタ
  * @return テレポート処理を決定したか否か
  */
-bool trans_sex(player_type *player_ptr)
+bool trans_sex(PlayerType *player_ptr)
 {
     screen_save();
     clear_bldg(4, 10);

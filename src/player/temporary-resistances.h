@@ -4,5 +4,5 @@
 
 #include "object-enchant/tr-flags.h"
 
-class player_type;
-void tim_player_flags(player_type *player_ptr, TrFlags &flags);
+class PlayerType;
+void tim_player_flags(PlayerType *player_ptr, TrFlags &flags);

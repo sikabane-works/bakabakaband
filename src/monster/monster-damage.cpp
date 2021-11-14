@@ -58,7 +58,7 @@
  * @param effect_type 与えたダメージの種類 (単一属性)
  * @param note モンスターが倒された際の特別なメッセージ述語
  */
-MonsterDamageProcessor::MonsterDamageProcessor(player_type *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EFFECT_ID effect_type)
+MonsterDamageProcessor::MonsterDamageProcessor(PlayerType *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EFFECT_ID effect_type)
     : player_ptr(player_ptr)
     , m_idx(m_idx)
     , dam(dam)
@@ -77,7 +77,7 @@ MonsterDamageProcessor::MonsterDamageProcessor(player_type *player_ptr, MONSTER_
  * @param effect_flags 与えたダメージの種類 (複数属性)
  * @param note モンスターが倒された際の特別なメッセージ述語
  */
-MonsterDamageProcessor::MonsterDamageProcessor(player_type *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EffectFlags effect_flags)
+MonsterDamageProcessor::MonsterDamageProcessor(PlayerType *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam, bool *fear, EffectFlags effect_flags)
     : player_ptr(player_ptr)
     , m_idx(m_idx)
     , dam(dam)

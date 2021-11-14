@@ -44,7 +44,7 @@
 #include "world/world.h"
 #include "world/world-collapsion.h"
 
-WorldTurnProcessor::WorldTurnProcessor(player_type *player_ptr)
+WorldTurnProcessor::WorldTurnProcessor(PlayerType *player_ptr)
     : player_ptr(player_ptr)
 {
 }

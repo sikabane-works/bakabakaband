@@ -10,7 +10,7 @@
 #include "util/angband-files.h"
 #include <string>
 
-void do_cmd_knowledge_incident(player_type *player_ptr)
+void do_cmd_knowledge_incident(PlayerType *player_ptr)
 {
     FILE *fff = NULL;
     GAME_TEXT file_name[FILE_NAME_SIZE];

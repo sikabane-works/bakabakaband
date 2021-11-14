@@ -30,7 +30,7 @@
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
-static MonsterSpellResult monspell_to_player_impl(player_type *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
+static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -170,7 +170,7 @@ static MonsterSpellResult monspell_to_player_impl(player_type *player_ptr, RF_AB
 }
 
 static MonsterSpellResult monspell_to_monster_impl(
-    player_type *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)
+    PlayerType *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)
 {
 
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
@@ -315,7 +315,7 @@ static MonsterSpellResult monspell_to_monster_impl(
  * @param x 対象の地点のx座標
  * @param m_idx 呪文を唱えるモンスターID
  */
-MonsterSpellResult monspell_to_player(player_type *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
+MonsterSpellResult monspell_to_player(PlayerType *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     // 特技使用前の時点でプレイヤーがモンスターを視認できているかチェック(ラーニングの必要条件)。
     const bool player_could_see_monster = spell_learnable(player_ptr, m_idx);
@@ -344,7 +344,7 @@ MonsterSpellResult monspell_to_player(player_type *player_ptr, RF_ABILITY ms_typ
  * @todo モンスターからモンスターへの呪文なのにplayer_typeが引数になり得るのは間違っている……
  */
 MonsterSpellResult monspell_to_monster(
-    player_type *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)
+    PlayerType *player_ptr, RF_ABILITY ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)
 {
     // 特技使用前の時点でプレイヤーがモンスターを視認できているかチェック(ラーニングの必要条件)。
     const bool player_could_see_monster = spell_learnable(player_ptr, m_idx);

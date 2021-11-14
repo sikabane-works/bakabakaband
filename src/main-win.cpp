@@ -792,7 +792,7 @@ static void rebuild_term(term_data *td, bool resize_window = true)
 /*!
  * @brief React to global changes
  */
-static errr term_xtra_win_react(player_type *player_ptr)
+static errr term_xtra_win_react(PlayerType *player_ptr)
 {
     refresh_color_table();
 
@@ -1528,7 +1528,7 @@ static void check_for_save_file(const std::string &savefile_option)
 /*!
  * @brief Process a menu command
  */
-static void process_menus(player_type *player_ptr, WORD wCmd)
+static void process_menus(PlayerType *player_ptr, WORD wCmd)
 {
     if (!initialized) {
         plog(_("まだ初期化中です...", "You cannot do that yet..."));
