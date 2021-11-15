@@ -11,7 +11,7 @@
 #include "alliance/alliance.h"
 #include <string>
 
-void do_cmd_knowledge_alliance(player_type *player_ptr)
+void do_cmd_knowledge_alliance(PlayerType *player_ptr)
 {
     FILE *fff = NULL;
     GAME_TEXT file_name[FILE_NAME_SIZE];

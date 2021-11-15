@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-void disturb(player_type *player_ptr, bool stop_search, bool flush_output);
+class PlayerType;
+void disturb(PlayerType *player_ptr, bool stop_search, bool flush_output);

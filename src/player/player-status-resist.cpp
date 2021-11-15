@@ -59,7 +59,7 @@ PERCENTAGE randrate(int dice, int fix, rate_calc_type_mode mode)
 /*!
  * @brief 酸属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_acid_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_acid_damage_rate(PlayerType *player_ptr)
 {
     PERCENTAGE per = 100;
 
@@ -90,7 +90,7 @@ PERCENTAGE calc_acid_damage_rate(player_type *player_ptr)
 /*!
  * @brief 電撃属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_elec_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_elec_damage_rate(PlayerType *player_ptr)
 {
     PERCENTAGE per = 100;
 
@@ -120,7 +120,7 @@ PERCENTAGE calc_elec_damage_rate(player_type *player_ptr)
 /*!
  * @brief 火炎属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_fire_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_fire_damage_rate(PlayerType *player_ptr)
 {
     PERCENTAGE per = 100;
     BIT_FLAGS flgs = has_vuln_fire(player_ptr);
@@ -146,7 +146,7 @@ PERCENTAGE calc_fire_damage_rate(player_type *player_ptr)
 /*!
  * @brief プラズマ地形攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_plasma_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_plasma_damage_rate(PlayerType *player_ptr)
 {
     return std::min(calc_fire_damage_rate(player_ptr), calc_elec_damage_rate(player_ptr));
 }
@@ -154,7 +154,7 @@ PERCENTAGE calc_plasma_damage_rate(player_type *player_ptr)
 /*!
  * @brief 冷気属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_cold_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_cold_damage_rate(PlayerType *player_ptr)
 {
     PERCENTAGE per = 100;
     BIT_FLAGS flgs = has_vuln_cold(player_ptr);
@@ -179,7 +179,7 @@ PERCENTAGE calc_cold_damage_rate(player_type *player_ptr)
 /*!
  * @brief 毒属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_pois_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_pois_damage_rate(PlayerType *player_ptr)
 {
     PERCENTAGE per = 100;
     if (has_resist_pois(player_ptr))
@@ -193,7 +193,7 @@ PERCENTAGE calc_pois_damage_rate(player_type *player_ptr)
 /*!
  * @brief 放射性廃棄物攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_nuke_damage_rate(player_type *player_ptr)
+PERCENTAGE calc_nuke_damage_rate(PlayerType *player_ptr)
 {
 
     PERCENTAGE per = 100;
@@ -208,7 +208,7 @@ PERCENTAGE calc_nuke_damage_rate(player_type *player_ptr)
 /*!
  * @brief 死の光線に対するダメージ倍率計算
  */
-PERCENTAGE calc_deathray_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_deathray_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     if (player_ptr->mimic_form) {
@@ -237,7 +237,7 @@ PERCENTAGE calc_deathray_damage_rate(player_type *player_ptr, rate_calc_type_mod
 /*!
  * @brief 閃光属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_lite_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_lite_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -245,7 +245,7 @@ PERCENTAGE calc_lite_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 
     if (race.tr_flags().has(TR_VUL_LITE)) {
         switch (race.life()) {
-        case PlayerRaceLife::UNDEAD:
+        case PlayerRaceLifeType::UNDEAD:
             per *= 2;
             break;
         default:
@@ -268,7 +268,7 @@ PERCENTAGE calc_lite_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 /*!
  * @brief 暗黒属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_dark_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_dark_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -286,7 +286,7 @@ PERCENTAGE calc_dark_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 /*!
  * @brief 破片属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_shards_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_shards_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -301,7 +301,7 @@ PERCENTAGE calc_shards_damage_rate(player_type *player_ptr, rate_calc_type_mode 
 /*!
  * @brief 轟音属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_sound_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_sound_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -316,7 +316,7 @@ PERCENTAGE calc_sound_damage_rate(player_type *player_ptr, rate_calc_type_mode m
 /*!
  * @brief 混乱属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_conf_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_conf_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -331,7 +331,7 @@ PERCENTAGE calc_conf_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 /*!
  * @brief 混沌属性攻撃に対するダメージ倍率計算(乱数固定)
  */
-PERCENTAGE calc_chaos_damage_rate_rand(player_type *player_ptr)
+PERCENTAGE calc_chaos_damage_rate_rand(PlayerType *player_ptr)
 {
     return calc_chaos_damage_rate(player_ptr, CALC_RAND);
 }
@@ -339,7 +339,7 @@ PERCENTAGE calc_chaos_damage_rate_rand(player_type *player_ptr)
 /*!
  * @brief 混沌属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_chaos_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_chaos_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -354,7 +354,7 @@ PERCENTAGE calc_chaos_damage_rate(player_type *player_ptr, rate_calc_type_mode m
 /*!
  * @brief 劣化属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_disenchant_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_disenchant_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -369,7 +369,7 @@ PERCENTAGE calc_disenchant_damage_rate(player_type *player_ptr, rate_calc_type_m
 /*!
  * @brief 因果混乱属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_nexus_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_nexus_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -384,7 +384,7 @@ PERCENTAGE calc_nexus_damage_rate(player_type *player_ptr, rate_calc_type_mode m
 /*!
  * @brief ロケット属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_rocket_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_rocket_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -399,7 +399,7 @@ PERCENTAGE calc_rocket_damage_rate(player_type *player_ptr, rate_calc_type_mode 
 /*!
  * @brief 地獄属性攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_nether_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_nether_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     PERCENTAGE per = 100;
 
@@ -416,7 +416,7 @@ PERCENTAGE calc_nether_damage_rate(player_type *player_ptr, rate_calc_type_mode 
 /*!
  * @brief 時間逆転攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_time_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_time_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -432,7 +432,7 @@ PERCENTAGE calc_time_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 /*!
  * @brief 水流攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_water_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_water_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -448,7 +448,7 @@ PERCENTAGE calc_water_damage_rate(player_type *player_ptr, rate_calc_type_mode m
 /*!
  * @brief 聖なる火炎攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_holy_fire_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_holy_fire_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -462,7 +462,7 @@ PERCENTAGE calc_holy_fire_damage_rate(player_type *player_ptr, rate_calc_type_mo
 /*!
  * @brief 地獄の火炎攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_hell_fire_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_hell_fire_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -474,7 +474,7 @@ PERCENTAGE calc_hell_fire_damage_rate(player_type *player_ptr, rate_calc_type_mo
 /*!
  * @brief 重力攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_gravity_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_gravity_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -487,7 +487,7 @@ PERCENTAGE calc_gravity_damage_rate(player_type *player_ptr, rate_calc_type_mode
 /*!
  * @brief 虚無攻撃に対するダメージ倍率計算(乱数固定)
  */
-PERCENTAGE calc_void_damage_rate_rand(player_type *player_ptr)
+PERCENTAGE calc_void_damage_rate_rand(PlayerType *player_ptr)
 {
     return calc_void_damage_rate(player_ptr, CALC_RAND);
 }
@@ -495,7 +495,7 @@ PERCENTAGE calc_void_damage_rate_rand(player_type *player_ptr)
 /*!
  * @brief 虚無攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_void_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_void_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;
@@ -513,7 +513,7 @@ PERCENTAGE calc_void_damage_rate(player_type *player_ptr, rate_calc_type_mode mo
 /*!
  * @brief 深淵攻撃に対するダメージ倍率計算
  */
-PERCENTAGE calc_abyss_damage_rate(player_type *player_ptr, rate_calc_type_mode mode)
+PERCENTAGE calc_abyss_damage_rate(PlayerType *player_ptr, rate_calc_type_mode mode)
 {
     (void)mode; // unused
     PERCENTAGE per = 100;

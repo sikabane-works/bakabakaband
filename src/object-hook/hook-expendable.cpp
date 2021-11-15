@@ -27,12 +27,12 @@
  * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
  * @return 飲むことが可能ならばTRUEを返す
  */
-bool item_tester_hook_quaff(player_type *player_ptr, const object_type *o_ptr)
+bool item_tester_hook_quaff(PlayerType *player_ptr, const object_type *o_ptr)
 {
     if (o_ptr->tval == ItemKindType::POTION)
         return true;
 
-    if (PlayerRace(player_ptr).food() == PlayerRaceFood::OIL && o_ptr->tval == ItemKindType::FLASK && o_ptr->sval == SV_FLASK_OIL)
+    if (PlayerRace(player_ptr).food() == PlayerRaceFoodType::OIL && o_ptr->tval == ItemKindType::FLASK && o_ptr->sval == SV_FLASK_OIL)
         return true;
 
     return false;
@@ -44,7 +44,7 @@ bool item_tester_hook_quaff(player_type *player_ptr, const object_type *o_ptr)
  * @param o_ptr 破壊可能かを確認したいオブジェクトの構造体参照ポインタ
  * @return オブジェクトが破壊可能ならばTRUEを返す
  */
-bool can_player_destroy_object(player_type *player_ptr, object_type *o_ptr)
+bool can_player_destroy_object(PlayerType *player_ptr, object_type *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
     if (flgs.has(TR_INDESTRUCTIBLE))

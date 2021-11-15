@@ -1,5 +1,5 @@
 ﻿#pragma once
 
-class player_type;
+class PlayerType;
 void clear_bldg(int min_row, int max_row);
-void building_prt_gold(player_type *player_ptr);
+void building_prt_gold(PlayerType *player_ptr);

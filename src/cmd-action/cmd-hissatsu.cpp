@@ -61,7 +61,7 @@
  * when you run it. It's probably easy to fix but I haven't tried,\n
  * sorry.\n
  */
-static int get_hissatsu_power(player_type *player_ptr, SPELL_IDX *sn)
+static int get_hissatsu_power(PlayerType *player_ptr, SPELL_IDX *sn)
 {
     SPELL_IDX i;
     int j = 0;
@@ -308,7 +308,7 @@ static int get_hissatsu_power(player_type *player_ptr, SPELL_IDX *sn)
 /*!
  * @brief 剣術コマンドのメインルーチン
  */
-void do_cmd_hissatsu(player_type *player_ptr)
+void do_cmd_hissatsu(PlayerType *player_ptr)
 {
     SPELL_IDX n = 0;
     magic_type spell;
@@ -326,7 +326,7 @@ void do_cmd_hissatsu(player_type *player_ptr)
         return;
     }
 
-    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStance::MUSOU, SamuraiStance::IAI, SamuraiStance::FUUJIN, SamuraiStance::KOUKIJIN });
+    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU, SamuraiStanceType::IAI, SamuraiStanceType::FUUJIN, SamuraiStanceType::KOUKIJIN });
 
     if (!get_hissatsu_power(player_ptr, &n))
         return;
@@ -363,7 +363,7 @@ void do_cmd_hissatsu(player_type *player_ptr)
 /*!
  * @brief 剣術コマンドの学習
  */
-void do_cmd_gain_hissatsu(player_type *player_ptr)
+void do_cmd_gain_hissatsu(PlayerType *player_ptr)
 {
     OBJECT_IDX item;
     int i, j;
@@ -373,7 +373,7 @@ void do_cmd_gain_hissatsu(player_type *player_ptr)
 
     bool gain = false;
 
-    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStance::MUSOU, SamuraiStance::KOUKIJIN });
+    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU, SamuraiStanceType::KOUKIJIN });
 
     if (cmd_limit_blind(player_ptr))
         return;

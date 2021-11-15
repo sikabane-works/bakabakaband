@@ -81,7 +81,7 @@ void torch_lost_fuel(object_type *o_ptr)
  * @details
  * SWD: Experimental modification: multiple light sources have additive effect.
  */
-void update_lite_radius(player_type *player_ptr)
+void update_lite_radius(PlayerType *player_ptr)
 {
     player_ptr->cur_lite = 0;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
@@ -127,7 +127,7 @@ void update_lite_radius(player_type *player_ptr)
         player_ptr->cur_lite += rad;
     }
 
-    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS) && player_ptr->cur_lite > 1)
+    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS) && player_ptr->cur_lite > 1)
         player_ptr->cur_lite = 1;
 
     if (player_ptr->cur_lite <= 0 && player_ptr->lite)
@@ -174,7 +174,7 @@ void update_lite_radius(player_type *player_ptr)
  *                 ***         *****
  *                              ***
  */
-void update_lite(player_type *player_ptr)
+void update_lite(PlayerType *player_ptr)
 {
     // 前回照らされていた座標たちを格納する配列。
     std::vector<Pos2D> points;

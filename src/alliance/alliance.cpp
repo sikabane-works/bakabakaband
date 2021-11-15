@@ -37,72 +37,72 @@ bool Alliance::isAnnihilated()
     return false;
 }
 
-int AllianceNone::calcImplessionPoint([[maybe_unused]] player_type *creature_ptr) const
+int AllianceNone::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceAmber::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceAmber::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment;
 }
 
-int AllianceCourtOfChaos::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceCourtOfChaos::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceValinor::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceValinor::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment : creature_ptr->alignment * 3;
 }
 
-int AllianceUtumno::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceUtumno::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceJural::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceJural::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceChinChinTei::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceChinChinTei::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceOdio::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceOdio::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceKenohgun::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceKenohgun::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceFangFamily::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceFangFamily::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceKoganRyu::calcImplessionPoint(player_type *creature_ptr) const
+int AllianceKoganRyu::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceEldrazi::calcImplessionPoint([[maybe_unused]] player_type *creature_ptr) const
+int AllianceEldrazi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceUngoliant::calcImplessionPoint(player_type* creature_ptr) const
+int AllianceUngoliant::calcImplessionPoint(PlayerType* creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] player_type* creature_ptr) const
+int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
 {
     return 0;
 }
