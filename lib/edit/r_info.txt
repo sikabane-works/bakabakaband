@@ -30267,6 +30267,24 @@ F:OPEN_DOOR | BASH_DOOR | REGENERATE | RES_NETH |
 F:GOOD | UNDEAD | IM_COLD | IM_POIS | RES_DARK | NO_CONF | NO_SLEEP
 D:かつてイニストラードの人間を守り抜いた英雄の破滅。その果ての有様だ。
 
+N:1605:拳王軍兵士
+E:Soldier of Kenohgun
+G:p:s
+I:110:10d12:20:45:40
+W:19:2:0:50:0:0
+B:PUNCH:HURT:3d5
+B:PUNCH:SUPERHURT:2d5
+B:PUNCH:HURT:3d5
+F:MALE | HAS_LITE_2 | HUMAN | ALLIANCE_KENOHGUN
+F:DROP_90 | FRIENDS | MOB_300
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL
+F:DROP_KIND_1_IN_8_748_0_1d1
+F:DROP_KIND_1_IN_8_749_0_1d1
+S:1_IN_4 | SHOOT
+D:ラオウが掲げる「恐怖による支配」を実現すべく組織された軍隊の一員だ。
+>>>>>>> 4480063c0... [Add] 拳王軍兵士 / Soldier of Kenohgun
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
