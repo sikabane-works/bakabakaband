@@ -232,7 +232,7 @@ void wiz_create_item(PlayerType *player_ptr)
     if (!k_idx)
         return;
 
-    if (k_info[k_idx].gen_flags.has(TRG::INSTA_ART)) {
+    if (k_info[k_idx].gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
         for (const auto &a_ref : a_info) {
             if ((a_ref.idx == 0) || (a_ref.tval != k_info[k_idx].tval) || (a_ref.sval != k_info[k_idx].sval))
                 continue;

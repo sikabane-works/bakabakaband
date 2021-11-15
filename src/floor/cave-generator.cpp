@@ -150,7 +150,7 @@ static void make_walls(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeon_ty
         g_ptr = &player_ptr->current_floor_ptr->grid_array[dd_ptr->tunnel_y][dd_ptr->tunnel_x];
         g_ptr->mimic = 0;
         place_grid(player_ptr, g_ptr, GB_FLOOR);
-        if ((randint0(100) < dt_ptr->dun_tun_pen) && d_ptr->flags.has_not(DF::NO_DOORS))
+        if ((randint0(100) < dt_ptr->dun_tun_pen) && d_ptr->flags.has_not(DungeonFeatureType::NO_DOORS))
             place_random_door(player_ptr, dd_ptr->tunnel_y, dd_ptr->tunnel_x, true);
     }
 }
@@ -200,7 +200,7 @@ static bool make_one_floor(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeo
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
 
-    if (d_info[floor_ptr->dungeon_idx].flags.has(DF::NO_ROOM)) {
+    if (d_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_ROOM)) {
         make_only_tunnel_points(floor_ptr, dd_ptr);
     } else {
         if (!generate_rooms(player_ptr, dd_ptr)) {
@@ -245,7 +245,7 @@ static bool make_one_floor(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeo
 
 static bool switch_making_floor(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeon_type *d_ptr)
 {
-    if (d_ptr->flags.has(DF::MAZE)) {
+    if (d_ptr->flags.has(DungeonFeatureType::MAZE)) {
         floor_type *floor_ptr = player_ptr->current_floor_ptr;
         build_maze_vault(player_ptr, floor_ptr->width / 2 - 1, floor_ptr->height / 2 - 1, floor_ptr->width - 4, floor_ptr->height - 4, false);
         if (!alloc_stairs(player_ptr, feat_down_stair, rand_range(2, 3), 3)) {
@@ -364,9 +364,9 @@ static bool allocate_dungeon_data(PlayerType *player_ptr, dun_data_type *dd_ptr,
     for (dd_ptr->alloc_monster_num = dd_ptr->alloc_monster_num + dd_ptr->alloc_object_num; dd_ptr->alloc_monster_num > 0; dd_ptr->alloc_monster_num--)
         (void)alloc_monster(player_ptr, 0, PM_ALLOW_SLEEP, summon_specific);
 
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num) + dd_ptr->alloc_object_num);
-    if (d_ptr->flags.has_not(DF::NO_CAVE))
-        alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num) + dd_ptr->alloc_object_num);
+    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num));
+    if (d_ptr->flags.has_not(DungeonFeatureType::NO_CAVE))
+        alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num));
 
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if (player_ptr->enter_dungeon && floor_ptr->dun_level > 1)
@@ -390,7 +390,7 @@ static void decide_grid_glowing(floor_type *floor_ptr, dun_data_type *dd_ptr, du
 {
     bool is_empty_or_dark = dd_ptr->empty_level;
     is_empty_or_dark &= !one_in_(DARK_EMPTY) || (randint1(100) > floor_ptr->dun_level);
-    is_empty_or_dark &= d_ptr->flags.has_not(DF::DARKNESS);
+    is_empty_or_dark &= d_ptr->flags.has_not(DungeonFeatureType::DARKNESS);
     if (!is_empty_or_dark)
         return;
 
@@ -423,7 +423,7 @@ bool cave_gen(PlayerType *player_ptr, concptr *why)
 
     dd_ptr->cent_n = 0;
     dungeon_type *d_ptr = &d_info[floor_ptr->dungeon_idx];
-    if (ironman_empty_levels || d_ptr->flags.has(DF::ALWAY_ARENA) || (d_ptr->flags.has(DF::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
+    if (ironman_empty_levels || (d_ptr->flags.has(DungeonFeatureType::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
         dd_ptr->empty_level = true;
         msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("アリーナレベルを生成。", "Arena level."));
     }

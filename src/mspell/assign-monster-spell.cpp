@@ -21,12 +21,12 @@
 #include "mspell/mspell-summon.h"
 #include "mspell/mspell-util.h"
 #include "mspell/mspell.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/monster-type-definition.h"
-#include "monster-race/monster-race.h"
 #include "system/monster-race-definition.h"
-#include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/floor-type-definition.h"
+#include "monster-race/monster-race.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
@@ -341,7 +341,7 @@ MonsterSpellResult monspell_to_player(PlayerType *player_ptr, MonsterAbilityType
  * @param m_idx 呪文を唱えるモンスターID
  * @param t_idx 呪文を受けるモンスターID。プレイヤーの場合はdummyで0とする。
  * @param is_special_spell 特殊な行動である時TRUE
- * @todo モンスターからモンスターへの呪文なのにplayer_typeが引数になり得るのは間違っている……
+ * @todo モンスターからモンスターへの呪文なのにPlayerTypeが引数になり得るのは間違っている……
  */
 MonsterSpellResult monspell_to_monster(
     PlayerType *player_ptr, MonsterAbilityType ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)

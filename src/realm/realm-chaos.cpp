@@ -15,7 +15,7 @@
 #include "spell-kind/spells-teleport.h"
 #include "spell-kind/spells-world.h"
 #include "spell-realm/spells-chaos.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/spells-diceroll.h"
 #include "spell/spells-object.h"
 #include "spell/spells-status.h"
@@ -147,7 +147,7 @@ concptr do_chaos_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessType
                 fire_ball(player_ptr, AttributeType::MISSILE, dir, damroll(dice, sides) + base, rad);
 
                 /*
-                 * Shouldn't actually use AttributeType::MANA, as
+                 * Shouldn't actually use MANA, as
                  * it will destroy all items on the
                  * floor
                  */

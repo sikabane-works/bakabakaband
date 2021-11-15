@@ -4,6 +4,6 @@
  * @brief プレイヤーの変異能力実行ヘッダ
  */
 
-enum class MUTA;
+enum class PlayerMutationType;
 class PlayerType;
-bool exe_mutation_power(PlayerType *player_ptr, MUTA power);
+bool exe_mutation_power(PlayerType *player_ptr, PlayerMutationType power);

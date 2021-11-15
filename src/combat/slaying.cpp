@@ -14,7 +14,7 @@
 #include "realm/realm-hex-numbers.h"
 #include "specific-object/torch.h"
 #include "spell-realm/spells-hex.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -208,28 +208,28 @@ HIT_POINT calc_attack_damage_with_slay(PlayerType *player_ptr, object_type *o_pt
     return (tdam * mult / 10);
 }
 
-EffectFlags melee_effect_type(PlayerType *player_ptr, object_type *o_ptr, combat_options mode)
+AttributeFlags melee_attribute(PlayerType *player_ptr, object_type *o_ptr, combat_options mode)
 {
-    EffectFlags effect_flags{};
-    effect_flags.set(AttributeType::PLAYER_MELEE);
+    AttributeFlags attribute_flags{};
+    attribute_flags.set(AttributeType::PLAYER_MELEE);
 
     if (player_ptr->pclass == PlayerClassType::SAMURAI) {
         static const struct samurai_convert_table_t {
             combat_options hissatsu_type;
-            spells_type effect_type;
+            AttributeType attribute;
         } samurai_convert_table[] = {
-            { HISSATSU_FIRE,    AttributeType::FIRE },
-            { HISSATSU_COLD,    AttributeType::COLD },
-            { HISSATSU_ELEC,    AttributeType::ELEC },
-            { HISSATSU_POISON,  AttributeType::POIS },
-            { HISSATSU_HAGAN,   AttributeType::KILL_WALL },
+            { HISSATSU_FIRE, AttributeType::FIRE },
+            { HISSATSU_COLD, AttributeType::COLD },
+            { HISSATSU_ELEC, AttributeType::ELEC },
+            { HISSATSU_POISON, AttributeType::POIS },
+            { HISSATSU_HAGAN, AttributeType::KILL_WALL },
         };
 
         for (size_t i = 0; i < sizeof(samurai_convert_table) / sizeof(samurai_convert_table[0]); ++i) {
             const struct samurai_convert_table_t *p = &samurai_convert_table[i];
 
             if (mode == p->hissatsu_type)
-                effect_flags.set(p->effect_type);
+                attribute_flags.set(p->attribute);
         }
     }
 
@@ -251,7 +251,7 @@ EffectFlags melee_effect_type(PlayerType *player_ptr, object_type *o_ptr, combat
     
     static const struct brand_convert_table_t {
         tr_type brand_type;
-        spells_type effect_type;
+        AttributeType attribute;
     } brand_convert_table[] = {
         { TR_BRAND_ACID, AttributeType::ACID },
         { TR_BRAND_FIRE, AttributeType::FIRE },
@@ -268,13 +268,13 @@ EffectFlags melee_effect_type(PlayerType *player_ptr, object_type *o_ptr, combat
         const struct brand_convert_table_t *p = &brand_convert_table[i];
 
         if (flgs.has(p->brand_type))
-            effect_flags.set(p->effect_type);
+            attribute_flags.set(p->attribute);
     }
 
     
     if ((flgs.has(TR_FORCE_WEAPON)) && (player_ptr->csp > (o_ptr->dd * o_ptr->ds / 5))) {
-        effect_flags.set(AttributeType::MANA);
+        attribute_flags.set(AttributeType::MANA);
     }
 
-    return effect_flags;
+    return attribute_flags;
 }

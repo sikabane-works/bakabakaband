@@ -7,7 +7,7 @@
 #include "hpmp/hp-mp-processor.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-specific-bolt.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "view/display-messages.h"

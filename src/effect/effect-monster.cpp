@@ -41,7 +41,7 @@
 #include "spell-kind/blood-curse.h"
 #include "spell-kind/spells-polymorph.h"
 #include "spell-kind/spells-teleport.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spells-effect-util.h"
 #include "sv-definition/sv-other-types.h"
 #include "system/floor-type-definition.h"
@@ -72,7 +72,7 @@ static process_result is_affective(PlayerType *player_ptr, effect_monster_type *
     if (em_ptr->who || em_ptr->g_ptr->m_idx != player_ptr->riding)
         return PROCESS_TRUE;
 
-    switch (em_ptr->effect_type) {
+    switch (em_ptr->attribute) {
     case AttributeType::OLD_HEAL:
     case AttributeType::OLD_SPEED:
     case AttributeType::STAR_HEAL:
@@ -124,11 +124,12 @@ static process_result exe_affect_monster_by_effect(PlayerType *player_ptr, effec
         return result;
     }
 
-    if (none_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) || em_ptr->effect_type == AttributeType::OLD_CLONE || em_ptr->effect_type == AttributeType::STAR_HEAL
-        || em_ptr->effect_type == AttributeType::OLD_HEAL || em_ptr->effect_type == AttributeType::OLD_SPEED || em_ptr->effect_type == AttributeType::CAPTURE || em_ptr->effect_type == AttributeType::PHOTO)
+    if (none_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) || em_ptr->attribute == AttributeType::OLD_CLONE 
+        || em_ptr->attribute == AttributeType::STAR_HEAL || em_ptr->attribute == AttributeType::OLD_HEAL || em_ptr->attribute == AttributeType::OLD_SPEED 
+        || em_ptr->attribute == AttributeType::CAPTURE || em_ptr->attribute == AttributeType::PHOTO)
         return switch_effects_monster(player_ptr, em_ptr);
 
-    if (any_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) && (em_ptr->effect_type == AttributeType::ARROW))
+    if (any_bits(em_ptr->r_ptr->flagsr, RFR_RES_ALL) && (em_ptr->attribute == AttributeType::ARROW))
         return switch_effects_monster(player_ptr, em_ptr);
 
     em_ptr->note = _("には完全な耐性がある！", " is immune.");
@@ -136,7 +137,7 @@ static process_result exe_affect_monster_by_effect(PlayerType *player_ptr, effec
     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr))
         em_ptr->r_ptr->r_flagsr |= (RFR_RES_ALL);
 
-    if (em_ptr->effect_type == AttributeType::LITE_WEAK || em_ptr->effect_type == AttributeType::KILL_WALL)
+    if (em_ptr->attribute == AttributeType::LITE_WEAK || em_ptr->attribute == AttributeType::KILL_WALL)
         em_ptr->skipped = true;
 
     return PROCESS_CONTINUE;
@@ -161,7 +162,7 @@ static void effect_damage_killed_pet(PlayerType *player_ptr, effect_monster_type
     if (em_ptr->who > 0)
         monster_gain_exp(player_ptr, em_ptr->who, em_ptr->m_ptr->r_idx);
 
-    monster_death(player_ptr, em_ptr->g_ptr->m_idx, false, em_ptr->effect_type);
+    monster_death(player_ptr, em_ptr->g_ptr->m_idx, false, em_ptr->attribute);
     delete_monster_idx(player_ptr, em_ptr->g_ptr->m_idx);
     if (sad)
         msg_print(_("少し悲しい気分がした。", "You feel sad for a moment."));
@@ -248,7 +249,7 @@ static bool heal_leaper(PlayerType *player_ptr, effect_monster_type *em_ptr)
 static bool deal_effect_damage_from_player(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
     bool fear = false;
-    MonsterDamageProcessor mdp(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, &fear, em_ptr->effect_type);
+    MonsterDamageProcessor mdp(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, &fear, em_ptr->attribute);
     if (mdp.mon_take_hit(em_ptr->note_dies))
         return true;
 
@@ -284,7 +285,7 @@ static bool deal_effect_damage_from_player(PlayerType *player_ptr, effect_monste
  */
 static void deal_effect_damage_to_monster(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    if (em_ptr->effect_type == AttributeType::DRAIN_MANA)
+    if (em_ptr->attribute == AttributeType::DRAIN_MANA)
         return;
 
     // モンスターによる効果
@@ -327,8 +328,7 @@ static void affected_monster_prevents_bad_status(PlayerType *player_ptr, effect_
     if ((em_ptr->r_ptr->flags1 & RF1_UNIQUE) || (em_ptr->r_ptr->flags1 & RF1_QUESTOR) || (player_ptr->riding && (em_ptr->g_ptr->m_idx == player_ptr->riding)))
         em_ptr->do_polymorph = false;
 
-    if (((em_ptr->r_ptr->flags1 & (RF1_UNIQUE | RF1_QUESTOR)) || (em_ptr->r_ptr->flags7 & RF7_NAZGUL)) && !player_ptr->phase_out && (em_ptr->who > 0)
-        && (em_ptr->dam > em_ptr->m_ptr->hp))
+    if (((em_ptr->r_ptr->flags1 & (RF1_UNIQUE | RF1_QUESTOR)) || (em_ptr->r_ptr->flags7 & RF7_NAZGUL)) && !player_ptr->phase_out && (em_ptr->who > 0) && (em_ptr->dam > em_ptr->m_ptr->hp))
         em_ptr->dam = em_ptr->m_ptr->hp;
 }
 
@@ -489,7 +489,7 @@ static void effect_damage_makes_teleport(PlayerType *player_ptr, effect_monster_
 static void effect_damage_gives_bad_status(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
     int tmp_damage = em_ptr->dam;
-    em_ptr->dam = mon_damage_mod(player_ptr, em_ptr->m_ptr, em_ptr->dam, (bool)(em_ptr->effect_type == AttributeType::PSY_SPEAR));
+    em_ptr->dam = mon_damage_mod(player_ptr, em_ptr->m_ptr, em_ptr->dam, (bool)(em_ptr->attribute == AttributeType::PSY_SPEAR));
     if ((tmp_damage > 0) && (em_ptr->dam == 0) && em_ptr->seen)
         em_ptr->note = _("はダメージを受けていない。", " is unharmed.");
 
@@ -523,7 +523,7 @@ static void exe_affect_monster_by_damage(PlayerType *player_ptr, effect_monster_
     affected_monster_prevents_bad_status(player_ptr, em_ptr);
     effect_damage_gives_bad_status(player_ptr, em_ptr);
     deal_effect_damage_to_monster(player_ptr, em_ptr);
-    if ((em_ptr->effect_type == AttributeType::BLOOD_CURSE) && one_in_(4))
+    if ((em_ptr->attribute == AttributeType::BLOOD_CURSE) && one_in_(4))
         blood_curse_to_enemy(player_ptr, em_ptr->who);
 }
 
@@ -622,7 +622,7 @@ static void exe_affect_monster_postprocess(PlayerType *player_ptr, effect_monste
  * @param y 目標y座標 / Target y location (or location to travel "towards")
  * @param x 目標x座標 / Target x location (or location to travel "towards")
  * @param dam 基本威力 / Base damage roll to apply to affected monsters (or player)
- * @param effect_type 効果属性 / Type of damage to apply to monsters (and objects)
+ * @param attribute 効果属性 / Type of damage to apply to monsters (and objects)
  * @param flag 効果フラグ
  * @param see_s_msg TRUEならばメッセージを表示する
  * @return 何か一つでも効力があればTRUEを返す / TRUE if any "effects" of the projection were observed, else FALSE
@@ -633,10 +633,10 @@ static void exe_affect_monster_postprocess(PlayerType *player_ptr, effect_monste
  * 3.ペット及び撮影による事後効果
  */
 bool affect_monster(
-    PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y, POSITION x, HIT_POINT dam, AttributeType effect_type, BIT_FLAGS flag, bool see_s_msg)
+    PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y, POSITION x, HIT_POINT dam, AttributeType attribute, BIT_FLAGS flag, bool see_s_msg)
 {
     effect_monster_type tmp_effect;
-    effect_monster_type *em_ptr = initialize_effect_monster(player_ptr, &tmp_effect, who, r, y, x, dam, effect_type, flag, see_s_msg);
+    effect_monster_type *em_ptr = initialize_effect_monster(player_ptr, &tmp_effect, who, r, y, x, dam, attribute, flag, see_s_msg);
 
     make_description_of_affecred_monster(player_ptr, em_ptr);
 

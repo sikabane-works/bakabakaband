@@ -2,6 +2,7 @@
 #include "core/player-update-types.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
+#include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h" // 暫定、後で消す.
 #include "floor/cave.h"
@@ -16,7 +17,6 @@
 #include "monster/monster-update.h"
 #include "player/special-defense-types.h"
 #include "room/door-definition.h"
-#include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
@@ -112,7 +112,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         case AttributeType::GRAVITY:
             message = _("粉砕された", "was crushed.");
             break;
-        case AttributeType::VOID:
+        case AttributeType::VOID_MAGIC:
             message = _("消滅した", "vanished.");
             break;
         default:
@@ -162,8 +162,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
     case AttributeType::CHAOS:
     case AttributeType::MANA:
     case AttributeType::SEEKER:
-    case AttributeType::SUPER_RAY:
-    {
+    case AttributeType::SUPER_RAY: {
         break;
     }
     case AttributeType::KILL_TRAP: {
@@ -320,7 +319,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
     }
     case AttributeType::LITE_WEAK:
     case AttributeType::LITE: {
-        if (d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS))
+        if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS))
             break;
 
         g_ptr->info |= (CAVE_GLOW);
@@ -368,7 +367,7 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         g_ptr->info &= ~(CAVE_GLOW);
 
         /* Hack -- Forget "boring" grids */
-        if (f_ptr->flags.has_not(FloorFeatureType::REMEMBER) || has_element_resist(player_ptr, ElementRealm::DARKNESS, 1)) {
+        if (f_ptr->flags.has_not(FloorFeatureType::REMEMBER) || has_element_resist(player_ptr, ElementRealmType::DARKNESS, 1)) {
             /* Forget */
             g_ptr->info &= ~(CAVE_MARK);
             note_spot(player_ptr, y, x);

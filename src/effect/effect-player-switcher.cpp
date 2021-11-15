@@ -5,7 +5,7 @@
 #include "effect/effect-player-spirit.h"
 #include "effect/effect-player-util.h"
 #include "player/player-damage.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/player-type-definition.h"
 
 /*!
@@ -16,7 +16,7 @@
  */
 void switch_effects_player(PlayerType *player_ptr, effect_player_type *ep_ptr)
 {
-    switch (ep_ptr->effect_type) {
+    switch (ep_ptr->attribute) {
     case AttributeType::ACID:
         effect_player_elements(player_ptr, ep_ptr, _("酸で攻撃された！", "You are hit by acid!"), acid_dam);
         return;

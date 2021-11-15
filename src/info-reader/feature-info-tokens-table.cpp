@@ -3,7 +3,7 @@
 /*!
  * @brief 地形属性トークンの定義 / Feature info flags
  */
-const std::unordered_map<std::string_view, FF> f_info_flags = {
+const std::unordered_map<std::string_view, FloorFeatureType> f_info_flags = {
     { "LOS", FloorFeatureType::LOS },
     { "PROJECT", FloorFeatureType::PROJECT },
     { "MOVE", FloorFeatureType::MOVE },

@@ -36,7 +36,7 @@
 #include "realm/realm-song-numbers.h"
 #include "spell-kind/spells-floor.h"
 #include "spell-realm/spells-song.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "status/action-setter.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -164,7 +164,7 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
         if ((!player_ptr->blind && !no_lite(player_ptr)) || !is_trap(player_ptr, g_ptr->feat))
             g_ptr->info &= ~(CAVE_UNSAFE);
 
-        if (floor_ptr->dun_level && d_info[player_ptr->dungeon_idx].flags.has(DF::FORGET))
+        if (floor_ptr->dun_level && d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::FORGET))
             wiz_dark(player_ptr);
 
         if (mpe_mode & MPE_HANDLE_STUFF)

@@ -1,5 +1,6 @@
 ﻿#include "effect/effect-item.h"
 #include "autopick/autopick.h"
+#include "effect/attribute-types.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/cave.h"
@@ -15,7 +16,6 @@
 #include "object/object-mark-types.h"
 #include "perception/object-perception.h"
 #include "spell-kind/spells-perception.h"
-#include "spell/spell-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-scroll-types.h"
 #include "system/floor-type-definition.h"
@@ -185,7 +185,7 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
 
             break;
         }
-        case AttributeType::VOID: {
+        case AttributeType::VOID_MAGIC: {
             do_kill = true;
             note_kill = _("消滅してしまった！", (plural ? " vanish!" : " vanishes!"));
             break;
@@ -237,6 +237,8 @@ bool affect_item(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y
             is_item_affected = true;
             break;
         }
+        default:
+            break;
         }
 
         if (!do_kill)

@@ -2,7 +2,7 @@
 
 #include "system/angband.h"
 
-typedef struct player_attack_type player_attack_type;
+struct player_attack_type;
 class PlayerType;
 bool test_hit_norm(PlayerType *player_ptr, int chance, ARMOUR_CLASS ac, bool visible);
 PERCENTAGE hit_chance(PlayerType *player_ptr, int chance, ARMOUR_CLASS ac);

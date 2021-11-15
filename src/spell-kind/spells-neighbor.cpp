@@ -8,7 +8,7 @@
 #include "grid/feature-flag-types.h"
 #include "grid/grid.h"
 #include "spell-kind/earthquake.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 

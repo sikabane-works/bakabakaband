@@ -21,7 +21,7 @@
 #include "realm/realm-hex-numbers.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-hex.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -209,13 +209,14 @@ static void aura_shadow_by_monster_attack(PlayerType *player_ptr, monap_type *mo
     }
 
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
-    AttributeType typ[4][2] = { { INVEN_HEAD, AttributeType::OLD_CONF }, { INVEN_SUB_HAND, AttributeType::OLD_SLEEP }, { INVEN_ARMS, AttributeType::TURN_ALL }, { INVEN_FEET, AttributeType::OLD_SLOW } };
+    EFFECT_ID typ[4][2] = { { INVEN_HEAD, (EFFECT_ID)AttributeType::OLD_CONF }, { INVEN_SUB_HAND, (EFFECT_ID)AttributeType::OLD_SLEEP }, 
+                            { INVEN_ARMS, (EFFECT_ID)AttributeType::TURN_ALL }, { INVEN_FEET, (EFFECT_ID)AttributeType::OLD_SLOW } };
 
     /* Some cursed armours gives an extra effect */
     for (int j = 0; j < 4; j++) {
         o_armed_ptr = &player_ptr->inventory_list[typ[j][0]];
         if ((o_armed_ptr->k_idx) && o_armed_ptr->is_cursed() && o_armed_ptr->is_armour())
-            project(player_ptr, 0, 0, monap_ptr->m_ptr->fy, monap_ptr->m_ptr->fx, (player_ptr->lev * 2), typ[j][1], flg);
+            project(player_ptr, 0, 0, monap_ptr->m_ptr->fy, monap_ptr->m_ptr->fx, (player_ptr->lev * 2), (AttributeType)typ[j][1], flg);
     }
 }
 

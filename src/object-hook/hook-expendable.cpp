@@ -32,7 +32,7 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const object_type *o_ptr)
     if (o_ptr->tval == ItemKindType::POTION)
         return true;
 
-    if (PlayerRace(player_ptr).food() == PlayerRaceFood::OIL && o_ptr->tval == ItemKindType::FLASK && o_ptr->sval == SV_FLASK_OIL)
+    if (PlayerRace(player_ptr).food() == PlayerRaceFoodType::OIL && o_ptr->tval == ItemKindType::FLASK && o_ptr->sval == SV_FLASK_OIL)
         return true;
 
     return false;

@@ -12,7 +12,7 @@
 #include "spell-kind/spells-pet.h"
 #include "spell-kind/spells-sight.h"
 #include "spell-realm/spells-demon.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/spells-diceroll.h"
 #include "spell/spells-object.h"
 #include "spell/spells-status.h"

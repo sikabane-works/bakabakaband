@@ -54,7 +54,7 @@ static void set_no_magic_mask(msa_type *msa_ptr)
 static void check_mspell_stupid(PlayerType *player_ptr, msa_type *msa_ptr)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    msa_ptr->in_no_magic_dungeon = d_info[player_ptr->dungeon_idx].flags.has(DF::NO_MAGIC) && floor_ptr->dun_level
+    msa_ptr->in_no_magic_dungeon = d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_MAGIC) && floor_ptr->dun_level
         && (!floor_ptr->inside_quest || quest_type::is_fixed(floor_ptr->inside_quest));
     if (!msa_ptr->in_no_magic_dungeon || ((msa_ptr->r_ptr->flags2 & RF2_STUPID) != 0))
         return;
@@ -263,7 +263,7 @@ static void check_mspell_imitation(PlayerType *player_ptr, msa_type *msa_ptr)
     if (!seen || !can_imitate || (w_ptr->timewalk_m_idx != 0) || (player_ptr->pclass != PlayerClassType::IMITATOR))
         return;
 
-    /* Not MonsterAbilityType::SPECIAL */
+    /* Not RF_ABILITY::SPECIAL */
     if (msa_ptr->thrown_spell == MonsterAbilityType::SPECIAL)
         return;
 
@@ -304,7 +304,7 @@ bool make_attack_spell(PlayerType *player_ptr, MONSTER_IDX m_idx)
         return false;
     }
 
-    if (msa_ptr->m_ptr->mflag.has(MFLAG::PREVENT_MAGIC) || !is_hostile(msa_ptr->m_ptr)
+    if (msa_ptr->m_ptr->mflag.has(MonsterTemporaryFlagType::PREVENT_MAGIC) || !is_hostile(msa_ptr->m_ptr)
         || ((msa_ptr->m_ptr->cdis > get_max_range(player_ptr)) && !msa_ptr->m_ptr->target_y))
         return false;
 

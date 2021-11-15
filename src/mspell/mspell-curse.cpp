@@ -8,7 +8,6 @@
 #include "mspell/mspell-damage-calculator.h"
 #include "mspell/mspell-util.h"
 #include "mspell/mspell.h"
-#include "spell/spell-types.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
@@ -16,7 +15,7 @@
 /*!
  * @brief RF5_CAUSE_* の処理関数
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param AttributeType::TYPE 攻撃に使用する属性
+ * @param GF_TYPE 攻撃に使用する属性
  * @param dam 攻撃に使用するダメージ量
  * @param y 対象の地点のy座標
  * @param x 対象の地点のx座標
@@ -28,7 +27,7 @@
  * @param MS_TYPE 呪文の番号
  * @param TARGET_TYPE プレイヤーを対象とする場合MONSTER_TO_PLAYER、モンスターを対象とする場合MONSTER_TO_MONSTER
  */
-static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int AttributeType::TYPE, HIT_POINT dam, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx,
+static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, AttributeType GF_TYPE, HIT_POINT dam, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx,
     concptr msg1, concptr msg2, concptr msg3, int TARGET_TYPE)
 {
     auto res = MonsterSpellResult::make_valid(dam);
@@ -44,7 +43,7 @@ static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int AttributeT
             msg_format(msg1, m_name);
         else
             msg_format(msg2, m_name);
-        breath(player_ptr, y, x, m_idx, AttributeType::TYPE, dam, 0, false, TARGET_TYPE);
+        breath(player_ptr, y, x, m_idx, GF_TYPE, dam, 0, false, TARGET_TYPE);
         return res;
     }
 
@@ -56,7 +55,7 @@ static MonsterSpellResult spell_RF5_CAUSE(PlayerType *player_ptr, int AttributeT
         }
     }
 
-    breath(player_ptr, y, x, m_idx, AttributeType::TYPE, dam, 0, false, TARGET_TYPE);
+    breath(player_ptr, y, x, m_idx, GF_TYPE, dam, 0, false, TARGET_TYPE);
 
     return res;
 }

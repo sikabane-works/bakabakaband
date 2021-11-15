@@ -31,7 +31,7 @@
 #include "monster/monster-status.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-hex.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -61,13 +61,14 @@ static void heal_monster_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
 static void process_blow_effect(PlayerType *player_ptr, mam_type *mam_ptr)
 {
     monster_race *r_ptr = &r_info[mam_ptr->m_ptr->r_idx];
-    switch (mam_ptr->effect_type) {
+    switch (mam_ptr->attribute) {
     case BLOW_EFFECT_TYPE_FEAR:
-        project(player_ptr, mam_ptr->m_idx, 0, mam_ptr->t_ptr->fy, mam_ptr->t_ptr->fx, mam_ptr->damage, AttributeType::TURN_ALL,
-            PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
+        project(player_ptr, mam_ptr->m_idx, 0, mam_ptr->t_ptr->fy, mam_ptr->t_ptr->fx, mam_ptr->damage,
+            AttributeType::TURN_ALL, PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
         break;
     case BLOW_EFFECT_TYPE_SLEEP:
-        project(player_ptr, mam_ptr->m_idx, 0, mam_ptr->t_ptr->fy, mam_ptr->t_ptr->fx, r_ptr->level, AttributeType::OLD_SLEEP, PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
+        project(player_ptr, mam_ptr->m_idx, 0, mam_ptr->t_ptr->fy, mam_ptr->t_ptr->fx, r_ptr->level, 
+            AttributeType::OLD_SLEEP, PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
         break;
     case BLOW_EFFECT_TYPE_HEAL:
         heal_monster_by_melee(player_ptr, mam_ptr);
@@ -150,7 +151,7 @@ static bool check_same_monster(PlayerType *player_ptr, mam_type *mam_ptr)
     if (r_ptr->flags1 & RF1_NEVER_BLOW)
         return false;
 
-    if (d_info[player_ptr->dungeon_idx].flags.has(DF::NO_MELEE))
+    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_MELEE))
         return false;
 
     return true;
@@ -222,7 +223,7 @@ static void process_melee(PlayerType *player_ptr, mam_type *mam_ptr)
     describe_silly_melee(mam_ptr);
     mam_ptr->obvious = true;
     mam_ptr->damage = damroll(mam_ptr->d_dice, mam_ptr->d_side);
-    mam_ptr->effect_type = BLOW_EFFECT_TYPE_NONE;
+    mam_ptr->attribute = BLOW_EFFECT_TYPE_NONE;
     mam_ptr->pt = AttributeType::MISSILE;
     decide_monster_attack_effect(player_ptr, mam_ptr);
     process_monster_attack_effect(player_ptr, mam_ptr);

@@ -80,7 +80,7 @@ const player_race_info *PlayerRace::get_info() const
  * @param player_ptr プレイヤー情報への参照ポインタ
  * @return 生命形態
  */
-PlayerRaceLife PlayerRace::life() const
+PlayerRaceLifeType PlayerRace::life() const
 {
     return this->get_info()->life;
 }
@@ -91,7 +91,7 @@ PlayerRaceLife PlayerRace::life() const
  * @param base_race ミミック中も元種族の情報を返すならtrue
  * @return 食料形態
  */
-PlayerRaceFood PlayerRace::food() const
+PlayerRaceFoodType PlayerRace::food() const
 {
     return this->get_info()->food;
 }

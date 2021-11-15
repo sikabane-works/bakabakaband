@@ -30,7 +30,7 @@
 #include "monster/monster-status.h"
 #include "player/player-damage.h"
 #include "spell-kind/spells-genocide.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -296,7 +296,7 @@ process_result effect_monster_wounds(effect_monster_type *em_ptr)
  */
 process_result switch_effects_monster(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    switch (em_ptr->effect_type) {
+    switch (em_ptr->attribute) {
     case AttributeType::PSY_SPEAR:
     case AttributeType::MISSILE:
     case AttributeType::ARROW:
@@ -462,7 +462,7 @@ process_result switch_effects_monster(PlayerType *player_ptr, effect_monster_typ
         return effect_monster_wounds(em_ptr);
     case AttributeType::E_GENOCIDE:
         return effect_monster_elemental_genocide(player_ptr, em_ptr);
-    case AttributeType::VOID:
+    case AttributeType::VOID_MAGIC:
         return effect_monster_void(player_ptr, em_ptr);
     case AttributeType::ABYSS:
         return effect_monster_abyss(player_ptr, em_ptr);

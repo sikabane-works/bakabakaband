@@ -4,7 +4,7 @@
 #include "hpmp/hp-mp-processor.h"
 #include "player/player-damage.h"
 #include "spell-kind/spells-sight.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "status/bad-status-setter.h"
 #include "status/body-improvement.h"
 #include "system/player-type-definition.h"

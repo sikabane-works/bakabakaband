@@ -62,7 +62,7 @@ bool is_cave_empty_bold2(PlayerType *player_ptr, POSITION y, POSITION x)
     return is_empty_grid;
 }
 
-bool cave_has_flag_bold(floor_type *floor_ptr, POSITION y, POSITION x, FF f_idx)
+bool cave_has_flag_bold(floor_type *floor_ptr, POSITION y, POSITION x, FloorFeatureType f_idx)
 {
     return f_info[floor_ptr->grid_array[y][x].feat].flags.has(f_idx);
 }

@@ -1,6 +1,6 @@
 ﻿#include "monster-attack/monster-attack-types.h"
 #include "monster-attack/monster-attack-effect.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 
 /*!
  * @brief モンスターの打撃効力テーブル /
@@ -9,7 +9,7 @@
 const mbe_info_type mbe_info[static_cast<int>(RaceBlowEffectType::MAX)] = {
     {
         0,
-        0,
+        AttributeType::NONE,
     }, /* None      */
 
     {

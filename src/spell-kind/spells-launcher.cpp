@@ -2,7 +2,6 @@
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "floor/geometry.h"
-#include "spell/spell-types.h"
 #include "system/player-type-definition.h"
 #include "target/target-checker.h"
 

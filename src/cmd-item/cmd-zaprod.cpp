@@ -22,7 +22,7 @@
 #include "spell-kind/spells-specific-bolt.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-kind/spells-world.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/spells-status.h"
 #include "status/action-setter.h"
 #include "status/buff-setter.h"
@@ -277,7 +277,7 @@ void do_cmd_zap_rod(PlayerType *player_ptr)
         return;
     }
 
-    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStance::MUSOU, SamuraiStance::KOUKIJIN });
+    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU, SamuraiStanceType::KOUKIJIN });
 
     auto q = _("どのロッドを振りますか? ", "Zap which rod? ");
     auto s = _("使えるロッドがない。", "You have no rod to zap.");

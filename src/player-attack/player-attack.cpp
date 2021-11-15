@@ -209,27 +209,27 @@ static chaotic_effect select_chaotic_effect(PlayerType *player_ptr, player_attac
  * @param pa_ptr プレイヤー攻撃情報への参照ポインタ
  * @return 魔術属性効果
  */
-static MagicalBrandEffect select_magical_brand_effect(PlayerType *player_ptr, player_attack_type *pa_ptr)
+static MagicalBrandEffectType select_magical_brand_effect(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
     if (pa_ptr->flags.has_not(TR_BRAND_MAGIC))
-        return MagicalBrandEffect::NONE;
+        return MagicalBrandEffectType::NONE;
 
     if (one_in_(10))
         chg_virtue(player_ptr, V_CHANCE, 1);
 
     if (one_in_(5))
-        return MagicalBrandEffect::STUN;
+        return MagicalBrandEffectType::STUN;
 
     if (one_in_(5))
-        return MagicalBrandEffect::SCARE;
+        return MagicalBrandEffectType::SCARE;
 
     if (one_in_(10))
-        return MagicalBrandEffect::DISPELL;
+        return MagicalBrandEffectType::DISPELL;
 
     if (one_in_(16))
-        return MagicalBrandEffect::PROBE;
+        return MagicalBrandEffectType::PROBE;
 
-    return MagicalBrandEffect::EXTRA;
+    return MagicalBrandEffectType::EXTRA;
 }
 
 /*!
@@ -240,9 +240,9 @@ static MagicalBrandEffect select_magical_brand_effect(PlayerType *player_ptr, pl
 static DICE_NUMBER magical_brand_extra_dice(player_attack_type *pa_ptr)
 {
     switch (pa_ptr->magical_effect) {
-    case MagicalBrandEffect::NONE:
+    case MagicalBrandEffectType::NONE:
         return 0;
-    case MagicalBrandEffect::EXTRA:
+    case MagicalBrandEffectType::EXTRA:
         return 1;
     default:
         return 2;
@@ -414,7 +414,7 @@ static void apply_damage_negative_effect(player_attack_type *pa_ptr, bool is_zan
  */
 static bool check_fear_death(PlayerType *player_ptr, player_attack_type *pa_ptr, const int num, const bool is_lowlevel)
 {
-    MonsterDamageProcessor mdp(player_ptr, pa_ptr->m_idx, pa_ptr->attack_damage, pa_ptr->fear, pa_ptr->effect_flags);
+    MonsterDamageProcessor mdp(player_ptr, pa_ptr->m_idx, pa_ptr->attack_damage, pa_ptr->fear, pa_ptr->attribute_flags);
     if (!mdp.mon_take_hit(nullptr))
         return false;
 
@@ -546,7 +546,7 @@ void exe_player_attack_to_monster(PlayerType *player_ptr, POSITION y, POSITION x
         if (!process_attack_hit(player_ptr, pa_ptr, chance))
             continue;
 
-        pa_ptr->effect_flags = melee_effect_type(player_ptr, o_ptr, pa_ptr->mode);
+        pa_ptr->attribute_flags = melee_attribute(player_ptr, o_ptr, pa_ptr->mode);
         apply_actual_attack(player_ptr, pa_ptr, &do_quake, is_zantetsu_nullified, is_ej_nullified);
         calc_drain(pa_ptr);
         if (check_fear_death(player_ptr, pa_ptr, num, is_lowlevel))

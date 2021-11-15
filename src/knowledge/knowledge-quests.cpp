@@ -40,7 +40,7 @@ void do_cmd_checkquest(PlayerType *player_ptr)
 /*!
  * @brief Print all active quests
  * @param player_ptr プレイヤーへの参照ポインタ
- * @todo player_typeではなくQUEST_IDXを引数にすべきかもしれない
+ * @todo PlayerTypeではなくQUEST_IDXを引数にすべきかもしれない
  */
 static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
 {

@@ -251,7 +251,7 @@ static void generate_gambling_arena(PlayerType *player_ptr)
         if (!monster_is_valid(m_ptr))
             continue;
 
-        m_ptr->mflag2.set({ MFLAG2::MARK, MFLAG2::SHOW });
+        m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
         update_monster(player_ptr, i, false);
     }
 }
@@ -289,15 +289,15 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     DUNGEON_IDX d_idx = floor_ptr->dungeon_idx;
-    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || d_info[d_idx].flags.has(DF::BEGINNER)
-            || d_info[d_idx].flags.has(DF::SMALLEST))
-        && d_info[d_idx].flags.has_not(DF::BIG)) {
+    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)
+            || d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST))
+        && d_info[d_idx].flags.has_not(DungeonFeatureType::BIG)) {
         int level_height;
         int level_width;
-        if (d_info[d_idx].flags.has(DF::SMALLEST)) {
+        if (d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
             level_height = MIN_HGT_MULTIPLE;
             level_width = MIN_WID_MULTIPLE;
-        } else if (d_info[d_idx].flags.has(DF::BEGINNER)) {
+        } else if (d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {
             level_height = MIN_HGT_MULTIPLE * 2;
             level_width = MIN_WID_MULTIPLE * 2;
         } else {

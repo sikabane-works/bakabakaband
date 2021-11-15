@@ -355,13 +355,13 @@ static void on_defeat_last_boss(PlayerType *player_ptr)
  * Handle the "death" of a monster.
  * @param m_idx 死亡したモンスターのID
  * @param drop_item TRUEならばモンスターのドロップ処理を行う
- * @param effect_type ラストアタックの属性 (単一属性)
+ * @param type ラストアタックの属性 (単一属性)
  */
-void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, AttributeType effect_type)
+void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, AttributeType type)
 {
-    EffectFlags flags;
+    AttributeFlags flags;
     flags.clear();
-    flags.set((spells_type)effect_type);
+    flags.set(type);
     monster_death(player_ptr, m_idx, drop_item, flags);
 }
 
@@ -370,7 +370,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
  * Handle the "death" of a monster.
  * @param m_idx 死亡したモンスターのID
  * @param drop_item TRUEならばモンスターのドロップ処理を行う
- * @param effect_flags ラストアタックの属性 (複数属性)
+ * @param attribute_flags ラストアタックの属性 (複数属性)
  * @details
  * <pre>
  * Disperse treasures centered at the monster location based on the
@@ -382,7 +382,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
  * it drops all of its objects, which may disappear in crowded rooms.
  * </pre>
  */
-void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, EffectFlags effect_flags)
+void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, AttributeFlags attribute_flags)
 {
     monster_death_type tmp_md;
     monster_death_type *md_ptr = initialize_monster_death_type(player_ptr, &tmp_md, m_idx, drop_item);
@@ -390,7 +390,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, Ef
         w_ptr->timewalk_m_idx = 0;
 
     // プレイヤーしかユニークを倒せないのでここで時間を記録
-    if (any_bits(md_ptr->r_ptr->flags1, RF1_UNIQUE) && md_ptr->m_ptr->mflag2.has_not(MFLAG2::CLONED)) {
+    if (any_bits(md_ptr->r_ptr->flags1, RF1_UNIQUE) && md_ptr->m_ptr->mflag2.has_not(MonsterConstantFlagType::CLONED)) {
         update_playtime();
         md_ptr->r_ptr->defeat_time = w_ptr->play_time;
         md_ptr->r_ptr->defeat_level = player_ptr->lev;
@@ -401,7 +401,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, Ef
 
     write_pet_death(player_ptr, md_ptr);
     on_dead_explosion(player_ptr, md_ptr);
-    if (md_ptr->m_ptr->mflag2.has(MFLAG2::CHAMELEON)) {
+    if (md_ptr->m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON)) {
         choose_new_monster(player_ptr, m_idx, true, MON_CHAMELEON);
         md_ptr->r_ptr = &r_info[md_ptr->m_ptr->r_idx];
     }
@@ -415,7 +415,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, Ef
     drop_corpse(player_ptr, md_ptr);
     monster_drop_carried_objects(player_ptr, md_ptr->m_ptr);
     decide_drop_quality(md_ptr);
-    switch_special_death(player_ptr, md_ptr, effect_flags);
+    switch_special_death(player_ptr, md_ptr, attribute_flags);
     drop_artifact(player_ptr, md_ptr);
     int drop_numbers = decide_drop_numbers(player_ptr, md_ptr, drop_item);
     coin_type = md_ptr->force_coin;

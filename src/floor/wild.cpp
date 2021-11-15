@@ -352,7 +352,7 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
 
     bool is_winner = wilderness[y][x].entrance > 0;
     is_winner &= (wilderness[y][x].town == 0);
-    bool is_wild_winner = d_info[wilderness[y][x].entrance].flags.has_not(DF::WINNER);
+    bool is_wild_winner = d_info[wilderness[y][x].entrance].flags.has_not(DungeonFeatureType::WINNER);
     is_winner &= ((w_ptr->total_winner != 0) || is_wild_winner);
     if (!is_winner)
         return;
@@ -372,7 +372,7 @@ static border_type border;
 /*!
  * @brief 広域マップの生成 /
  * Build the wilderness area outside of the town.
- * @todo 広域マップは恒常生成にする予定、player_typeによる処理分岐は最終的に排除する。
+ * @todo 広域マップは恒常生成にする予定、PlayerTypeによる処理分岐は最終的に排除する。
  * @param player_ptr プレイヤーへの参照ポインタ
  */
 void wilderness_gen(PlayerType *player_ptr)
@@ -575,7 +575,7 @@ void wilderness_gen_small(PlayerType *player_ptr)
                 continue;
             }
 
-            if (wilderness[j][i].entrance && (w_ptr->total_winner || d_info[wilderness[j][i].entrance].flags.has_not(DF::WINNER))) {
+            if (wilderness[j][i].entrance && (w_ptr->total_winner || d_info[wilderness[j][i].entrance].flags.has_not(DungeonFeatureType::WINNER))) {
                 floor_ptr->grid_array[j][i].feat = feat_entrance;
                 floor_ptr->grid_array[j][i].special = (byte)wilderness[j][i].entrance;
                 floor_ptr->grid_array[j][i].info |= (CAVE_GLOW | CAVE_MARK);

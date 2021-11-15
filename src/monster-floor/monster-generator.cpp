@@ -27,6 +27,7 @@
 #include "monster/smart-learn-types.h"
 #include "mspell/summon-checker.h"
 #include "spell/summon-types.h"
+#include "system/h-type.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -140,14 +141,14 @@ bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_i
     if (!mon_scatter(player_ptr, r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1))
         return false;
 
-    if (m_ptr->mflag2.has(MFLAG2::NOPET))
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::NOPET))
         mode |= PM_NO_PET;
 
     if (!place_monster_aux(player_ptr, m_idx, y, x, r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY)))
         return false;
 
-    if (clone || m_ptr->mflag2.has(MFLAG2::CLONED)) {
-        floor_ptr->m_list[hack_m_idx_ii].mflag2.set({MFLAG2::CLONED, MFLAG2::NOPET});
+    if (clone || m_ptr->mflag2.has(MonsterConstantFlagType::CLONED)) {
+        floor_ptr->m_list[hack_m_idx_ii].mflag2.set({MonsterConstantFlagType::CLONED, MonsterConstantFlagType::NOPET});
     }
 
     return true;
@@ -400,7 +401,7 @@ bool alloc_horde(PlayerType *player_ptr, POSITION y, POSITION x, summon_specific
         return false;
 
     MONSTER_IDX m_idx = floor_ptr->grid_array[y][x].m_idx;
-    if (floor_ptr->m_list[m_idx].mflag2.has(MFLAG2::CHAMELEON))
+    if (floor_ptr->m_list[m_idx].mflag2.has(MonsterConstantFlagType::CHAMELEON))
         r_ptr = &r_info[floor_ptr->m_list[m_idx].r_idx];
 
     POSITION cy = y;

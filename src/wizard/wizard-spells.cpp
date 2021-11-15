@@ -239,10 +239,12 @@ void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_
 
         dam = (HIT_POINT)atoi(tmp_val);
     }
+    int max = (int)AttributeType::MAX;
+    int idx = (int)effect_idx;
 
-    if (effect_idx <= AttributeType::NONE) {
+    if (idx <= 0) {
         char tmp[80] = "";
-        sprintf(tmp, "Effect ID (1-%d): ", MAX_GF - 1);
+        sprintf(tmp, "Effect ID (1-%d): ", max - 1);
         char tmp_val[10] = "";
         if (!get_string(tmp, tmp_val, 3))
             return;
@@ -250,8 +252,8 @@ void wiz_kill_enemy(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_
         effect_idx = (AttributeType)atoi(tmp_val);
     }
 
-    if (effect_idx <= AttributeType::NONE || effect_idx >= MAX_GF) {
-        msg_format(_("番号は1から%dの間で指定して下さい。", "ID must be between 1 to %d."), MAX_GF - 1);
+    if (idx <= 0 || idx >= max) {
+        msg_format(_("番号は1から%dの間で指定して下さい。", "ID must be between 1 to %d."), max - 1);
         return;
     }
 
@@ -279,10 +281,12 @@ void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx
 
         dam = (HIT_POINT)atoi(tmp_val);
     }
+    int max = (int)AttributeType::MAX;
+    int idx = (int)effect_idx;
 
-    if (effect_idx <= AttributeType::NONE) {
+    if (idx <= 0) {
         char tmp[80] = "";
-        sprintf(tmp, "Effect ID (1-%d): ", MAX_GF - 1);
+        sprintf(tmp, "Effect ID (1-%d): ", max - 1);
         char tmp_val[10] = "1";
         if (!get_string(tmp, tmp_val, 3))
             return;
@@ -290,8 +294,8 @@ void wiz_kill_me(PlayerType *player_ptr, HIT_POINT dam, AttributeType effect_idx
         effect_idx = (AttributeType)atoi(tmp_val);
     }
 
-    if (effect_idx <= AttributeType::NONE || effect_idx >= MAX_GF) {
-        msg_format(_("番号は1から%dの間で指定して下さい。", "ID must be between 1 to %d."), MAX_GF - 1);
+    if (idx <= 0 || idx >= max) {
+        msg_format(_("番号は1から%dの間で指定して下さい。", "ID must be between 1 to %d."), max - 1);
         return;
     }
 

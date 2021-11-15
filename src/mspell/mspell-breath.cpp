@@ -12,7 +12,7 @@
 #include "mspell/mspell-damage-calculator.h"
 #include "mspell/mspell-util.h"
 #include "mspell/mspell.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -21,20 +21,20 @@
 /*!
  * @brief ブレスを吐くときにモンスター固有のセリフを表示する
  * @param r_idx モンスター種族番号
- * @param AttributeType::TYPE 魔法効果
+ * @param GF_TYPE 魔法効果
  * @return 表示したらTRUE、しなかったらFALSE
  */
-static bool spell_RF4_BREATH_special_message(MONSTER_IDX r_idx, int AttributeType::TYPE, concptr m_name)
+static bool spell_RF4_BREATH_special_message(MONSTER_IDX r_idx, AttributeType GF_TYPE, concptr m_name)
 {
-    if (r_idx == MON_JAIAN && AttributeType::TYPE == AttributeType::SOUND) {
+    if (r_idx == MON_JAIAN && GF_TYPE == AttributeType::SOUND) {
         msg_format(_("%^s「ボォエ～～～～～～」", "%^s sings, 'Booooeeeeee'"), m_name);
         return true;
     }
-    if (r_idx == MON_BOTEI && AttributeType::TYPE == AttributeType::SHARDS) {
+    if (r_idx == MON_BOTEI && GF_TYPE == AttributeType::SHARDS) {
         msg_format(_("%^s「ボ帝ビルカッター！！！」", "%^s shouts, 'Boty-Build cutter!!!'"), m_name);
         return true;
     }
-    if (r_idx == MON_RAOU &&AttributeType::TYPE == AttributeType::FORCE) {
+    if (r_idx == MON_RAOU && GF_TYPE == AttributeType::FORCE) {
         if (one_in_(2))
             msg_format(_("%^s「北斗剛掌波！！」", "%^s says, 'Hokuto Goh-Sho-Ha!!'"), m_name);
         else
@@ -47,7 +47,7 @@ static bool spell_RF4_BREATH_special_message(MONSTER_IDX r_idx, int AttributeTyp
 /*!
  * @brief RF4_BR_*の処理。各種ブレス。 /
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param AttributeType::TYPE ブレスの属性
+ * @param GF_TYPE ブレスの属性
  * @param y 対象の地点のy座標
  * @param x 対象の地点のx座標
  * @param m_idx 呪文を唱えるモンスターID
@@ -56,7 +56,7 @@ static bool spell_RF4_BREATH_special_message(MONSTER_IDX r_idx, int AttributeTyp
  *
  * プレイヤーに当たったらラーニング可。
  */
-MonsterSpellResult spell_RF4_BREATH(PlayerType *player_ptr, int AttributeType::TYPE, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)
+MonsterSpellResult spell_RF4_BREATH(PlayerType *player_ptr, AttributeType GF_TYPE, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, int TARGET_TYPE)
 {
     HIT_POINT dam, drs_type = 0;
     concptr type_s;
@@ -71,7 +71,7 @@ MonsterSpellResult spell_RF4_BREATH(PlayerType *player_ptr, int AttributeType::T
     monster_name(player_ptr, m_idx, m_name);
     monster_name(player_ptr, t_idx, t_name);
 
-    switch (AttributeType::TYPE) {
+    switch (GF_TYPE) {
     case AttributeType::ACID:
         dam = monspell_damage(player_ptr, MonsterAbilityType::BR_ACID, m_idx, DAM_ROLL);
         type_s = _("酸", "acid");
@@ -193,7 +193,7 @@ MonsterSpellResult spell_RF4_BREATH(PlayerType *player_ptr, int AttributeType::T
     if (mon_to_player || (mon_to_mon && known && see_either))
         disturb(player_ptr, true, true);
 
-    if (!spell_RF4_BREATH_special_message(m_ptr->r_idx, AttributeType::TYPE, m_name)) {
+    if (!spell_RF4_BREATH_special_message(m_ptr->r_idx, GF_TYPE, m_name)) {
         if (player_ptr->blind) {
             if (mon_to_player || (mon_to_mon && known && see_either))
                 msg_format(_("%^sが何かのブレスを吐いた。", "%^s breathes."), m_name);
@@ -212,7 +212,7 @@ MonsterSpellResult spell_RF4_BREATH(PlayerType *player_ptr, int AttributeType::T
     if (known || see_either)
         sound(SOUND_BREATH);
 
-    const auto proj_res = breath(player_ptr, y, x, m_idx, AttributeType::TYPE, dam, 0, true, TARGET_TYPE);
+    const auto proj_res = breath(player_ptr, y, x, m_idx, GF_TYPE, dam, 0, true, TARGET_TYPE);
     if (smart_learn_aux && mon_to_player)
         update_smart_learn(player_ptr, m_idx, drs_type);
 

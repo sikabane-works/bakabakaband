@@ -14,7 +14,7 @@
 #include "spell-kind/spells-teleport.h"
 #include "spell-kind/spells-world.h"
 #include "spell-realm/spells-arcane.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/spells-diceroll.h"
 #include "spell/spells-status.h"
 #include "spell/summon-types.h"
@@ -557,7 +557,7 @@ concptr do_arcane_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessTyp
                 return info_damage(0, 0, dam);
 
             if (cast) {
-                int type;
+                AttributeType type;
 
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;

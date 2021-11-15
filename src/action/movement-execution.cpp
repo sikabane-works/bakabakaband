@@ -58,7 +58,7 @@ static bool boundary_floor(grid_type *g_ptr, feature_type *f_ptr, feature_type *
 {
     bool is_boundary_floor = g_ptr->mimic > 0;
     is_boundary_floor &= permanent_wall(f_ptr);
-    is_boundary_floor &= mimic_f_ptr->flags.has_any_of({FloorFeatureType::MOVE, FloorFeatureType::CAN_FLY});
+    is_boundary_floor &= mimic_f_ptr->flags.has_any_of({ FloorFeatureType::MOVE, FloorFeatureType::CAN_FLY });
     is_boundary_floor &= mimic_f_ptr->flags.has(FloorFeatureType::PROJECT);
     is_boundary_floor &= mimic_f_ptr->flags.has_not(FloorFeatureType::OPEN);
     return is_boundary_floor;
@@ -160,7 +160,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         monster_race *r_ptr = &r_info[m_ptr->r_idx];
         auto effects = player_ptr->effects();
         auto is_stunned = effects->stun()->is_stunned();
-        if (!is_hostile(m_ptr) && !(player_ptr->confused || player_ptr->hallucinated || !m_ptr->ml || is_stunned || (player_ptr->muta.has(MUTA::BERS_RAGE) && is_shero(player_ptr))) && pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x) && (p_can_enter || p_can_kill_walls)) {
+        if (!is_hostile(m_ptr) && !(player_ptr->confused || player_ptr->hallucinated || !m_ptr->ml || is_stunned || (player_ptr->muta.has(PlayerMutationType::BERS_RAGE) && is_shero(player_ptr))) && pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x) && (p_can_enter || p_can_kill_walls)) {
             (void)set_monster_csleep(player_ptr, g_ptr->m_idx, 0);
             monster_desc(player_ptr, m_name, m_ptr, 0);
             if (m_ptr->ml) {

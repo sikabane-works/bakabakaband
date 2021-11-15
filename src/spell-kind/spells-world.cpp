@@ -373,7 +373,7 @@ bool recall_player(PlayerType *player_ptr, TIME_EFFECT turns)
         return true;
     }
 
-    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DIFFICULT_RECALL)) {
+    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DIFFICULT_RECALL)) {
         msg_print(_("ここはダンジョンに抵抗されるために、帰還に極めて時間がかかるようだ...",
                 "It will take a long time because the dungeon is resisting to recall power..."));
         turns *= 100;

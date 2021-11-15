@@ -25,7 +25,7 @@ static bool feat_tag_is_not_found = false;
  */
 static bool grab_one_feat_flag(feature_type *f_ptr, std::string_view what)
 {
-    if (EnumClassFlagGroup<FF>::grab_one_flag(f_ptr->flags, f_info_flags, what))
+    if (EnumClassFlagGroup<FloorFeatureType>::grab_one_flag(f_ptr->flags, f_info_flags, what))
         return true;
 
     msg_format(_("未知の地形フラグ '%s'。", "Unknown feature flag '%s'."), what.data());

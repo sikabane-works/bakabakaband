@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include "effect/attribute-types.h"
 
 struct ProjectResult;
 enum class MonsterAbilityType;

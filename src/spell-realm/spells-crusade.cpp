@@ -17,7 +17,7 @@
 #include "grid/feature-flag-types.h"
 #include "spell-realm/spells-crusade.h"
 #include "spell/range-calc.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"

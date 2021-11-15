@@ -1,7 +1,7 @@
 ﻿#include "racial/racial-balrog.h"
 #include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "view/display-messages.h"
@@ -9,7 +9,7 @@
 bool demonic_breath(PlayerType *player_ptr)
 {
     DIRECTION dir;
-    int type = (one_in_(2) ? AttributeType::NETHER : AttributeType::FIRE);
+    AttributeType type = (one_in_(2) ? AttributeType::NETHER : AttributeType::FIRE);
     if (!get_aim_dir(player_ptr, &dir))
         return false;
     stop_mouth(player_ptr);

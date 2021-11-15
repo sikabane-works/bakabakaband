@@ -95,7 +95,7 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
         max_level = MAX_DEPTH - 1;
 
     /* Boost the max_level */
-    if ((option & GMN_ARENA) || d_info[player_ptr->dungeon_idx].flags.has_not(DF::BEGINNER)) {
+    if ((option & GMN_ARENA) || d_info[player_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::BEGINNER)) {
         /* Nightmare mode allows more out-of depth monsters */
         if (ironman_nightmare) {
             /* What a bizarre calculation */
@@ -279,7 +279,7 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MO
         else
             level = floor_ptr->dun_level;
 
-        if (d_info[player_ptr->dungeon_idx].flags.has(DF::CHAMELEON))
+        if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::CHAMELEON))
             level += 2 + randint1(3);
 
         r_idx = get_mon_num(player_ptr, 0, level, 0);

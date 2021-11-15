@@ -32,7 +32,7 @@
 #include "player/player-move.h"
 #include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -512,7 +512,7 @@ void teleport_away_followable(PlayerType *player_ptr, MONSTER_IDX m_idx)
         return;
 
     bool follow = false;
-    if (player_ptr->muta.has(MUTA::VTELEPORT) || (player_ptr->pclass == PlayerClassType::IMITATOR))
+    if (player_ptr->muta.has(PlayerMutationType::VTELEPORT) || (player_ptr->pclass == PlayerClassType::IMITATOR))
         follow = true;
     else {
         object_type *o_ptr;

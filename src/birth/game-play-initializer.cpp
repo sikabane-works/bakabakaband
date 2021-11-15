@@ -204,7 +204,7 @@ void init_dungeon_quests(PlayerType *player_ptr)
  */
 void init_turn(PlayerType *player_ptr)
 {
-    if (PlayerRace(player_ptr).life() == PlayerRaceLife::UNDEAD) {
+    if (PlayerRace(player_ptr).life() == PlayerRaceLifeType::UNDEAD) {
         w_ptr->game_turn = (TURNS_PER_TICK * 3 * TOWN_DAWN) / 4 + 1;
         w_ptr->game_turn_limit = TURNS_PER_TICK * TOWN_DAWN * MAX_DAYS + TURNS_PER_TICK * TOWN_DAWN * 3 / 4;
     } else {

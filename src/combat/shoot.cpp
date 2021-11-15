@@ -53,7 +53,7 @@
 #include "player/player-personality-types.h"
 #include "player/player-skill.h"
 #include "player/player-status-table.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "sv-definition/sv-bow-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -75,10 +75,10 @@
  * @param arrow_ptr 矢弾のオブジェクト構造体参照ポインタ
  * @return スナイパーの射撃属性、弓矢の属性を考慮する。デフォルトはAttributeType::PLAYER_SHOOT。
  */
-EffectFlags shot_effect_type(PlayerType *player_ptr, object_type *bow_ptr, object_type *arrow_ptr, SPELL_IDX snipe_type)
+AttributeFlags shot_attribute(PlayerType *player_ptr, object_type *bow_ptr, object_type *arrow_ptr, SPELL_IDX snipe_type)
 {
-    EffectFlags effect_flags{};
-    effect_flags.set(AttributeType::PLAYER_SHOOT);
+    AttributeFlags attribute_flags{};
+    attribute_flags.set(AttributeType::PLAYER_SHOOT);
 
     TrFlags flags{};
     auto arrow_flags = object_flags(arrow_ptr);
@@ -88,52 +88,52 @@ EffectFlags shot_effect_type(PlayerType *player_ptr, object_type *bow_ptr, objec
 
     static const struct snipe_convert_table_t {
         SPELL_IDX snipe_type;
-        spells_type effect_type;
+        AttributeType attribute;
     } snipe_convert_table[] = {
-        { SP_LITE,      AttributeType::LITE },
-        { SP_FIRE,      AttributeType::FIRE },
-        { SP_COLD,      AttributeType::COLD },
-        { SP_ELEC,      AttributeType::ELEC },
+        { SP_LITE, AttributeType::LITE },
+        { SP_FIRE, AttributeType::FIRE },
+        { SP_COLD, AttributeType::COLD },
+        { SP_ELEC, AttributeType::ELEC },
         { SP_KILL_WALL, AttributeType::KILL_WALL },
-        { SP_EVILNESS,  AttributeType::HELL_FIRE },
-        { SP_HOLYNESS,  AttributeType::HOLY_FIRE },
-        { SP_FINAL,     AttributeType::MANA },
+        { SP_EVILNESS, AttributeType::HELL_FIRE },
+        { SP_HOLYNESS, AttributeType::HOLY_FIRE },
+        { SP_FINAL, AttributeType::MANA },
     };
 
     static const struct brand_convert_table_t {
         tr_type brand_type;
-        spells_type effect_type;
+        AttributeType attribute;
     } brand_convert_table[] = {
-        { TR_BRAND_ACID,    AttributeType::ACID },
-        { TR_BRAND_FIRE,    AttributeType::FIRE },
-        { TR_BRAND_ELEC,    AttributeType::ELEC },
-        { TR_BRAND_COLD,    AttributeType::COLD },
-        { TR_BRAND_POIS,    AttributeType::POIS },
-        { TR_SLAY_GOOD,     AttributeType::HELL_FIRE },
-        { TR_KILL_GOOD,     AttributeType::HELL_FIRE },
-        { TR_SLAY_EVIL,     AttributeType::HOLY_FIRE },
-        { TR_KILL_EVIL,     AttributeType::HOLY_FIRE },
+        { TR_BRAND_ACID, AttributeType::ACID },
+        { TR_BRAND_FIRE, AttributeType::FIRE },
+        { TR_BRAND_ELEC, AttributeType::ELEC },
+        { TR_BRAND_COLD, AttributeType::COLD },
+        { TR_BRAND_POIS, AttributeType::POIS },
+        { TR_SLAY_GOOD, AttributeType::HELL_FIRE },
+        { TR_KILL_GOOD, AttributeType::HELL_FIRE },
+        { TR_SLAY_EVIL, AttributeType::HOLY_FIRE },
+        { TR_KILL_EVIL, AttributeType::HOLY_FIRE },
     };
 
     for (size_t i = 0; i < sizeof(snipe_convert_table) / sizeof(snipe_convert_table[0]); ++i) {
         const struct snipe_convert_table_t *p = &snipe_convert_table[i];
 
         if (snipe_type == p->snipe_type)
-            effect_flags.set(p->effect_type);
+            attribute_flags.set(p->attribute);
     }
 
     for (size_t i = 0; i < sizeof(brand_convert_table) / sizeof(brand_convert_table[0]); ++i) {
         const struct brand_convert_table_t *p = &brand_convert_table[i];
 
         if (flags.has(p->brand_type))
-            effect_flags.set(p->effect_type);
+            attribute_flags.set(p->attribute);
     }
 
     if ((flags.has(TR_FORCE_WEAPON)) && (player_ptr->csp > (player_ptr->msp / 30))) {
-        effect_flags.set(AttributeType::MANA);
+        attribute_flags.set(AttributeType::MANA);
     }
 
-    return effect_flags;
+    return attribute_flags;
 }
 
 /*!
@@ -461,8 +461,8 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, object_type *j_ptr, SP
     object_type *q_ptr;
     object_type *o_ptr;
 
-    EffectFlags effect_flags{};
-    effect_flags.set(AttributeType::PLAYER_SHOOT);
+    AttributeFlags attribute_flags{};
+    attribute_flags.set(AttributeType::PLAYER_SHOOT);
 
     bool hit_body = false;
 
@@ -768,7 +768,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, object_type *j_ptr, SP
                         }
                     } else {
 
-                        effect_flags = shot_effect_type(player_ptr, j_ptr, q_ptr, snipe_type);
+                        attribute_flags = shot_attribute(player_ptr, j_ptr, q_ptr, snipe_type);
                         /* Apply special damage */
                         tdam = calc_shot_damage_with_slay(player_ptr, j_ptr, q_ptr, tdam, m_ptr, snipe_type);
                         tdam = critical_shot(player_ptr, q_ptr->weight, q_ptr->to_h, j_ptr->to_h, tdam);
@@ -802,7 +802,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, object_type *j_ptr, SP
                     }
 
                     /* Hit the monster, check for death */
-                    MonsterDamageProcessor mdp(player_ptr, c_mon_ptr->m_idx, tdam, &fear, effect_flags);
+                    MonsterDamageProcessor mdp(player_ptr, c_mon_ptr->m_idx, tdam, &fear, attribute_flags);
                     if (mdp.mon_take_hit(extract_note_dies(real_r_idx(m_ptr)))) {
                         /* Dead monster */
                     }

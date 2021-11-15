@@ -4,7 +4,7 @@
 
 /*!
  * @details 仮引数がtmpなのは、全て範囲外の値を範囲内に収める処理が含まれるため
- * @todo TIME_EFFECT型の引数はplayer_typeの時限ステータスをTimedEffectsクラスへ入れる時にshortへ差し替えること.
+ * @todo TIME_EFFECT型の引数はPlayerTypeの時限ステータスをTimedEffectsクラスへ入れる時にshortへ差し替えること.
  */
 enum class PlayerCutRank;
 enum class PlayerStunRank;

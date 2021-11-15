@@ -10,7 +10,7 @@
 #include "object-enchant/tr-types.h"
 #include "object/object-flags.h"
 #include "object/object-kind.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "sv-definition/sv-potion-types.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -249,7 +249,7 @@ bool ObjectBreaker::can_destroy(object_type *o_ptr) const
 bool potion_smash_effect(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, KIND_OBJECT_IDX k_idx)
 {
     int radius = 2;
-    int dt = 0;
+    AttributeType dt = AttributeType::NONE;
     int dam = 0;
     bool angry = false;
     object_kind *k_ptr = &k_info[k_idx];

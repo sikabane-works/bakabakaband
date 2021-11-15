@@ -929,7 +929,7 @@ static int term_xtra_win_delay(int v)
 
 /*!
  * @brief Do a "special thing"
- * @todo z-termに影響があるのでplayer_typeの追加は保留
+ * @todo z-termに影響があるのでPlayerTypeの追加は保留
  */
 static errr term_xtra_win(int n, int v)
 {
@@ -2588,11 +2588,11 @@ void create_debug_spoiler(void)
     init_angband(p_ptr, true);
 
     switch (output_all_spoilers()) {
-    case spoiler_output_status::SPOILER_OUTPUT_SUCCESS:
+    case SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS:
         fprintf(stdout, "Successfully created a spoiler file.");
-    case spoiler_output_status::SPOILER_OUTPUT_FAIL_FOPEN:
+    case SpoilerOutputResultType::SPOILER_OUTPUT_FAIL_FOPEN:
         fprintf(stderr, "Cannot create spoiler file.");
-    case spoiler_output_status::SPOILER_OUTPUT_FAIL_FCLOSE:
+    case SpoilerOutputResultType::SPOILER_OUTPUT_FAIL_FCLOSE:
         fprintf(stderr, "Cannot close spoiler file.");
     default:
         break;

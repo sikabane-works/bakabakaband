@@ -5,7 +5,7 @@
 #include "spell-kind/spells-launcher.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "status/element-resistance.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/object-type-definition.h"
@@ -29,7 +29,7 @@ bool activate_dragon_breath(PlayerType *player_ptr, object_type *o_ptr)
 
     auto resistance_flags = object_flags(o_ptr);
 
-    int type[20];
+    AttributeType type[20];
     int n = 0;
     concptr name[20];
     for (int i = 0; dragonbreath_info[i].flag != 0; i++) {

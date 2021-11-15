@@ -54,7 +54,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<smith_data_type> 
         auto [magic_num1, magic_num2] = load_old_savfile_magic_num();
         for (auto i = 0; i < OLD_SAVEFILE_MAX_SPELLS; ++i) {
             if (magic_num1[i] > 0) {
-                smith_data->essences[i2enum<SmithEssence>(i)] = static_cast<int16_t>(magic_num1[i]);
+                smith_data->essences[i2enum<SmithEssenceType>(i)] = static_cast<int16_t>(magic_num1[i]);
             }
         }
     } else {
@@ -64,7 +64,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<smith_data_type> 
             if (essence < 0 && amount < 0) {
                 break;
             }
-            smith_data->essences[i2enum<SmithEssence>(essence)] = amount;
+            smith_data->essences[i2enum<SmithEssenceType>(essence)] = amount;
         }
     }
 }
@@ -171,7 +171,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<samurai_data_type
         // 古いセーブファイルの剣術家のデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
-        samurai_data->stance = i2enum<SamuraiStance>(rd_byte());
+        samurai_data->stance = i2enum<SamuraiStanceType>(rd_byte());
     }
 }
 
@@ -181,7 +181,7 @@ void PlayerClassSpecificDataLoader::operator()(std::shared_ptr<monk_data_type> &
         // 古いセーブファイルの修行僧のデータは magic_num には保存されていないので読み捨てる
         load_old_savfile_magic_num();
     } else {
-        monk_data->stance = i2enum<MonkStance>(rd_byte());
+        monk_data->stance = i2enum<MonkStanceType>(rd_byte());
     }
 }
 

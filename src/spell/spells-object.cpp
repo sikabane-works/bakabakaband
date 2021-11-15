@@ -116,14 +116,14 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
             continue;
 
         /* Search an artifact index if need */
-        insta_art = k_info[k_idx].gen_flags.has(TRG::INSTA_ART);
+        insta_art = k_info[k_idx].gen_flags.has(ItemGenerationTraitType::INSTA_ART);
         fixed_art = (amuse_info[i].flag & AMS_FIXED_ART);
 
         if (insta_art || fixed_art) {
             for (const auto &a_ref : a_info) {
                 if (a_ref.idx == 0)
                     continue;
-                if (insta_art && !a_ref.gen_flags.has(TRG::INSTA_ART))
+                if (insta_art && !a_ref.gen_flags.has(ItemGenerationTraitType::INSTA_ART))
                     continue;
                 if (a_ref.tval != k_info[k_idx].tval)
                     continue;
@@ -131,6 +131,8 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
                     continue;
                 if (a_ref.cur_num > 0)
                     continue;
+
+                a_idx = a_ref.idx;
                 break;
             }
 
@@ -250,7 +252,7 @@ bool curse_armor(PlayerType *player_ptr)
     o_ptr->art_flags.clear();
 
     /* Curse it */
-    o_ptr->curse_flags.set(TRC::CURSED);
+    o_ptr->curse_flags.set(CurseTraitType::CURSED);
 
     /* Break it */
     o_ptr->ident |= (IDENT_BROKEN);
@@ -304,7 +306,7 @@ bool curse_weapon_object(PlayerType *player_ptr, bool force, object_type *o_ptr)
     o_ptr->art_flags.clear();
 
     /* Curse it */
-    o_ptr->curse_flags.set(TRC::CURSED);
+    o_ptr->curse_flags.set(CurseTraitType::CURSED);
 
     /* Break it */
     o_ptr->ident |= (IDENT_BROKEN);
@@ -361,7 +363,7 @@ void brand_bolts(PlayerType *player_ptr)
 static void break_curse(object_type *o_ptr)
 {
     BIT_FLAGS is_curse_broken
-        = o_ptr->is_cursed() && o_ptr->curse_flags.has_not(TRC::PERMA_CURSE) && o_ptr->curse_flags.has_not(TRC::HEAVY_CURSE) && (randint0(100) < 25);
+        = o_ptr->is_cursed() && o_ptr->curse_flags.has_not(CurseTraitType::PERMA_CURSE) && o_ptr->curse_flags.has_not(CurseTraitType::HEAVY_CURSE) && (randint0(100) < 25);
     if (!is_curse_broken) {
         return;
     }

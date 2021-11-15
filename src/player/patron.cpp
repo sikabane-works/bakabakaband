@@ -22,7 +22,7 @@
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-random.h"
 #include "spell-kind/spells-sight.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/spells-object.h"
 #include "spell/spells-status.h"
 #include "spell/spells-summon.h"
@@ -569,7 +569,7 @@ void Patron::gain_level_reward(PlayerType *player_ptr_, int chosen_reward)
 void Patron::admire(PlayerType *player_ptr_)
 {
     this->player_ptr = player_ptr_;
-    if ((this->player_ptr->pclass == PlayerClassType::CHAOS_WARRIOR) || this->player_ptr->muta.has(MUTA::CHAOS_GIFT)) {
+    if ((this->player_ptr->pclass == PlayerClassType::CHAOS_WARRIOR) || this->player_ptr->muta.has(PlayerMutationType::CHAOS_GIFT)) {
         msg_format(_("%sからの声が響いた。", "The voice of %s booms out:"), this->name.c_str());
         msg_print(_("『よくやった、定命の者よ！』", "'Thou art donst well, mortal!'"));
     }

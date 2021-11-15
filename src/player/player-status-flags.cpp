@@ -660,7 +660,7 @@ BIT_FLAGS has_esp_telepathy(PlayerType *player_ptr)
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
-    if (player_ptr->muta.has(MUTA::ESP)) {
+    if (player_ptr->muta.has(PlayerMutationType::ESP)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -801,7 +801,7 @@ BIT_FLAGS has_sh_fire(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_SH_FIRE);
 
-    if (player_ptr->muta.has(MUTA::FIRE_BODY)) {
+    if (player_ptr->muta.has(PlayerMutationType::FIRE_BODY)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -816,7 +816,7 @@ BIT_FLAGS has_sh_elec(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_SH_ELEC);
 
-    if (player_ptr->muta.has(MUTA::ELEC_TOUC))
+    if (player_ptr->muta.has(PlayerMutationType::ELEC_TOUC))
         result |= FLAG_CAUSE_MUTATION;
 
     if (SpellHex(player_ptr).is_spelling_specific(HEX_SHOCK_CLOAK) || player_ptr->ult_res) {
@@ -882,7 +882,7 @@ BIT_FLAGS has_free_act(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_FREE_ACT);
 
-    if (player_ptr->muta.has(MUTA::MOTION))
+    if (player_ptr->muta.has(PlayerMutationType::MOTION))
         result |= FLAG_CAUSE_MUTATION;
 
     if (player_ptr->ult_res || player_ptr->magicdef) {
@@ -962,7 +962,7 @@ BIT_FLAGS has_levitation(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_LEVITATION);
 
-    if (player_ptr->muta.has(MUTA::WINGS)) {
+    if (player_ptr->muta.has(PlayerMutationType::WINGS)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1012,14 +1012,14 @@ BIT_FLAGS has_regenerate(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_REGEN);
 
-    if (player_ptr->muta.has(MUTA::REGEN))
+    if (player_ptr->muta.has(PlayerMutationType::REGEN))
         result |= FLAG_CAUSE_MUTATION;
 
     if (SpellHex(player_ptr).is_spelling_specific(HEX_DEMON_AURA) || player_ptr->ult_res || player_ptr->tim_regen) {
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;
     }
 
-    if (player_ptr->muta.has(MUTA::FLESH_ROT))
+    if (player_ptr->muta.has(PlayerMutationType::FLESH_ROT))
         result = 0L;
 
     return result;
@@ -1032,7 +1032,7 @@ void update_curses(PlayerType *player_ptr)
     player_ptr->cursed_special.clear();
 
     if (player_ptr->ppersonality == PERSONALITY_SEXY)
-        player_ptr->cursed.set(TRC::AGGRAVATE);
+        player_ptr->cursed.set(CurseTraitType::AGGRAVATE);
 
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         o_ptr = &player_ptr->inventory_list[i];
@@ -1040,65 +1040,65 @@ void update_curses(PlayerType *player_ptr)
             continue;
         auto flgs = object_flags(o_ptr);
         if (flgs.has(TR_AGGRAVATE))
-            player_ptr->cursed.set(TRC::AGGRAVATE);
+            player_ptr->cursed.set(CurseTraitType::AGGRAVATE);
         if (flgs.has(TR_DRAIN_EXP))
-            player_ptr->cursed.set(TRC::DRAIN_EXP);
+            player_ptr->cursed.set(CurseTraitType::DRAIN_EXP);
         if (flgs.has(TR_TY_CURSE))
-            player_ptr->cursed.set(TRC::TY_CURSE);
+            player_ptr->cursed.set(CurseTraitType::TY_CURSE);
         if (flgs.has(TR_ADD_L_CURSE))
-            player_ptr->cursed.set(TRC::ADD_L_CURSE);
+            player_ptr->cursed.set(CurseTraitType::ADD_L_CURSE);
         if (flgs.has(TR_ADD_H_CURSE))
-            player_ptr->cursed.set(TRC::ADD_H_CURSE);
+            player_ptr->cursed.set(CurseTraitType::ADD_H_CURSE);
         if (flgs.has(TR_DRAIN_HP))
-            player_ptr->cursed.set(TRC::DRAIN_HP);
+            player_ptr->cursed.set(CurseTraitType::DRAIN_HP);
         if (flgs.has(TR_DRAIN_MANA))
-            player_ptr->cursed.set(TRC::DRAIN_MANA);
+            player_ptr->cursed.set(CurseTraitType::DRAIN_MANA);
         if (flgs.has(TR_CALL_ANIMAL))
-            player_ptr->cursed.set(TRC::CALL_ANIMAL);
+            player_ptr->cursed.set(CurseTraitType::CALL_ANIMAL);
         if (flgs.has(TR_CALL_DEMON))
-            player_ptr->cursed.set(TRC::CALL_DEMON);
+            player_ptr->cursed.set(CurseTraitType::CALL_DEMON);
         if (flgs.has(TR_CALL_DRAGON))
-            player_ptr->cursed.set(TRC::CALL_DRAGON);
+            player_ptr->cursed.set(CurseTraitType::CALL_DRAGON);
         if (flgs.has(TR_CALL_UNDEAD))
-            player_ptr->cursed.set(TRC::CALL_UNDEAD);
+            player_ptr->cursed.set(CurseTraitType::CALL_UNDEAD);
         if (flgs.has(TR_COWARDICE))
-            player_ptr->cursed.set(TRC::COWARDICE);
+            player_ptr->cursed.set(CurseTraitType::COWARDICE);
         if (flgs.has(TR_LOW_MELEE))
-            player_ptr->cursed.set(TRC::LOW_MELEE);
+            player_ptr->cursed.set(CurseTraitType::LOW_MELEE);
         if (flgs.has(TR_LOW_AC))
-            player_ptr->cursed.set(TRC::LOW_AC);
+            player_ptr->cursed.set(CurseTraitType::LOW_AC);
         if (flgs.has(TR_HARD_SPELL))
-            player_ptr->cursed.set(TRC::HARD_SPELL);
+            player_ptr->cursed.set(CurseTraitType::HARD_SPELL);
         if (flgs.has(TR_FAST_DIGEST))
-            player_ptr->cursed.set(TRC::FAST_DIGEST);
+            player_ptr->cursed.set(CurseTraitType::FAST_DIGEST);
         if (flgs.has(TR_SLOW_REGEN))
-            player_ptr->cursed.set(TRC::SLOW_REGEN);
+            player_ptr->cursed.set(CurseTraitType::SLOW_REGEN);
         if (flgs.has(TR_BERS_RAGE))
-            player_ptr->cursed.set(TRC::BERS_RAGE);
+            player_ptr->cursed.set(CurseTraitType::BERS_RAGE);
 
         auto obj_curse_flags = o_ptr->curse_flags;
-        obj_curse_flags.reset({ TRC::CURSED, TRC::HEAVY_CURSE, TRC::PERMA_CURSE });
+        obj_curse_flags.reset({ CurseTraitType::CURSED, CurseTraitType::HEAVY_CURSE, CurseTraitType::PERMA_CURSE });
         player_ptr->cursed.set(obj_curse_flags);
         if (o_ptr->name1 == ART_CHAINSWORD)
-            player_ptr->cursed_special.set(TRCS::CHAINSWORD);
+            player_ptr->cursed_special.set(CurseSpecialTraitType::CHAINSWORD);
 
         if (flgs.has(TR_TELEPORT)) {
             if (o_ptr->is_cursed())
-                player_ptr->cursed.set(TRC::TELEPORT);
+                player_ptr->cursed.set(CurseTraitType::TELEPORT);
             else {
                 concptr insc = quark_str(o_ptr->inscription);
 
                 /* {.} will stop random teleportation. */
                 if (o_ptr->inscription && angband_strchr(insc, '.')) {
                 } else {
-                    player_ptr->cursed_special.set(TRCS::TELEPORT_SELF);
+                    player_ptr->cursed_special.set(CurseSpecialTraitType::TELEPORT_SELF);
                 }
             }
         }
     }
 
-    if (player_ptr->cursed.has(TRC::TELEPORT))
-        player_ptr->cursed_special.reset(TRCS::TELEPORT_SELF);
+    if (player_ptr->cursed.has(CurseTraitType::TELEPORT))
+        player_ptr->cursed_special.reset(CurseSpecialTraitType::TELEPORT_SELF);
 }
 
 BIT_FLAGS has_impact(PlayerType *player_ptr)
@@ -1155,7 +1155,7 @@ BIT_FLAGS has_vuln_acid(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_VUL_ACID);
 
-    if (player_ptr->muta.has(MUTA::VULN_ELEM)) {
+    if (player_ptr->muta.has(PlayerMutationType::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1179,7 +1179,7 @@ BIT_FLAGS has_vuln_elec(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_VUL_ELEC);
 
-    if (player_ptr->muta.has(MUTA::VULN_ELEM)) {
+    if (player_ptr->muta.has(PlayerMutationType::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1203,7 +1203,7 @@ BIT_FLAGS has_vuln_fire(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_VUL_FIRE);
 
-    if (player_ptr->muta.has(MUTA::VULN_ELEM)) {
+    if (player_ptr->muta.has(PlayerMutationType::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1227,7 +1227,7 @@ BIT_FLAGS has_vuln_cold(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_VUL_COLD);
 
-    if (player_ptr->muta.has(MUTA::VULN_ELEM)) {
+    if (player_ptr->muta.has(PlayerMutationType::VULN_ELEM)) {
         result |= FLAG_CAUSE_MUTATION;
     }
 
@@ -1417,7 +1417,7 @@ BIT_FLAGS has_resist_fear(PlayerType *player_ptr)
 {
     BIT_FLAGS result = common_cause_flags(player_ptr, TR_RES_FEAR);
 
-    if (player_ptr->muta.has(MUTA::FEARLESS))
+    if (player_ptr->muta.has(PlayerMutationType::FEARLESS))
         result |= FLAG_CAUSE_MUTATION;
 
     if (is_hero(player_ptr) || is_shero(player_ptr) || player_ptr->ult_res) {
@@ -1665,12 +1665,12 @@ bool has_not_monk_weapon(PlayerType *player_ptr, int i)
 
 bool has_good_luck(PlayerType *player_ptr)
 {
-    return (player_ptr->ppersonality == PERSONALITY_LUCKY) || (player_ptr->muta.has(MUTA::GOOD_LUCK));
+    return (player_ptr->ppersonality == PERSONALITY_LUCKY) || (player_ptr->muta.has(PlayerMutationType::GOOD_LUCK));
 }
 
 BIT_FLAGS player_aggravate_state(PlayerType *player_ptr)
 {
-    if (player_ptr->cursed.has(TRC::AGGRAVATE)) {
+    if (player_ptr->cursed.has(CurseTraitType::AGGRAVATE)) {
         if ((PlayerRace(player_ptr).equals(PlayerRaceType::S_FAIRY)) && (player_ptr->ppersonality != PERSONALITY_SEXY)) {
             return AGGRAVATE_S_FAIRY;
         }

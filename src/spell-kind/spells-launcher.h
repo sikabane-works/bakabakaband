@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include "effect/attribute-types.h"
 
 class PlayerType;
 bool fire_ball(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, HIT_POINT dam, POSITION rad);

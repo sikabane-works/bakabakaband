@@ -4,7 +4,7 @@
 #include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-sight.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "status/base-status.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"

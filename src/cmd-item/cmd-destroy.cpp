@@ -196,7 +196,7 @@ static void exe_destroy_item(PlayerType *player_ptr, destroy_type *destroy_ptr)
  */
 void do_cmd_destroy(PlayerType *player_ptr)
 {
-    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStance::MUSOU });
+    PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU });
 
     object_type forge;
     destroy_type tmp_destroy;

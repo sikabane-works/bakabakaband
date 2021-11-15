@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "system/angband.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 
 #define SPELL_MAX 6
 

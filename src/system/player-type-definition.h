@@ -176,8 +176,8 @@ public:
 
     int16_t chaos_patron{};
 
-    EnumClassFlagGroup<MUTA> muta{}; /*!< 突然変異 / mutations */
-    EnumClassFlagGroup<MUTA> trait{}; /*!< 後天特性 / permanent trait */
+    EnumClassFlagGroup<PlayerMutationType> muta{}; /*!< 突然変異 / mutations */
+    EnumClassFlagGroup<PlayerMutationType> trait{}; /*!< 後天特性 / permanent trait */
 
     int16_t virtues[8]{};
     int16_t vir_types[8]{};
@@ -343,8 +343,8 @@ public:
     BIT_FLAGS anti_magic{}; /* Anti-magic */
     BIT_FLAGS anti_tele{}; /* Prevent teleportation */
 
-    EnumClassFlagGroup<TRC> cursed{}; /* Player is cursed */
-    EnumClassFlagGroup<TRCS> cursed_special{}; /* Player is special type cursed */
+    EnumClassFlagGroup<CurseTraitType> cursed{}; /* Player is cursed */
+    EnumClassFlagGroup<CurseSpecialTraitType> cursed_special{}; /* Player is special type cursed */
 
     bool can_swim{}; /* No damage falling */
     BIT_FLAGS levitation{}; /* No damage falling */

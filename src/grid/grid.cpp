@@ -45,7 +45,7 @@
 #include "player/player-status-flags.h"
 #include "player/player-status.h"
 #include "room/rooms-builder.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -266,7 +266,7 @@ void print_rel(PlayerType *player_ptr, SYMBOL_CODE c, TERM_COLOR a, POSITION y, 
 }
 
 /*!
- * @todo ここにplayer_type を追加した時のコンパイルエラーに対処できなかったので保留
+ * @todo ここにPlayerType を追加した時のコンパイルエラーに対処できなかったので保留
  * Memorize interesting viewable object/features in the given grid
  *
  * This function should only be called on "legal" grids.
@@ -732,7 +732,7 @@ void update_flow(PlayerType *player_ptr)
  * Take a feature, determine what that feature becomes
  * through applying the given action.
  */
-FEAT_IDX feat_state(floor_type *floor_ptr, FEAT_IDX feat, FF action)
+FEAT_IDX feat_state(floor_type *floor_ptr, FEAT_IDX feat, FloorFeatureType action)
 {
     feature_type *f_ptr = &f_info[feat];
     int i;
@@ -753,7 +753,7 @@ FEAT_IDX feat_state(floor_type *floor_ptr, FEAT_IDX feat, FF action)
  * Takes a location and action and changes the feature at that
  * location through applying the given action.
  */
-void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, FF action)
+void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, FloorFeatureType action)
 {
     /* Set old feature */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
@@ -812,7 +812,7 @@ void remove_mirror(PlayerType *player_ptr, POSITION y, POSITION x)
     g_ptr->info &= ~(CAVE_OBJECT);
     g_ptr->mimic = 0;
 
-    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS)) {
+    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
         g_ptr->info &= ~(CAVE_GLOW);
         if (!view_torch_grids)
             g_ptr->info &= ~(CAVE_MARK);

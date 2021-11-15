@@ -138,7 +138,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
     }
 
     const PlayerRace race(player_ptr);
-    if (race.life() == PlayerRaceLife::UNDEAD && race.tr_flags().has(TR_VUL_LITE)) {
+    if (race.life() == PlayerRaceLifeType::UNDEAD && race.tr_flags().has(TR_VUL_LITE)) {
         if (!is_in_dungeon(player_ptr) && !has_resist_lite(player_ptr) && !is_invuln(player_ptr) && is_daytime()) {
             if ((player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & (CAVE_GLOW | CAVE_MNDK)) == CAVE_GLOW) {
                 msg_print(_("日光があなたのアンデッドの肉体を焼き焦がした！", "The sun's rays scorch your undead flesh!"));
@@ -373,10 +373,10 @@ void process_player_hp_mp(PlayerType *player_ptr)
         if (player_ptr->regenerate) {
             regen_amount = regen_amount * 2;
         }
-        if (!PlayerClass(player_ptr).monk_stance_is(MonkStance::NONE) || !PlayerClass(player_ptr).samurai_stance_is(SamuraiStance::NONE)) {
+        if (!PlayerClass(player_ptr).monk_stance_is(MonkStanceType::NONE) || !PlayerClass(player_ptr).samurai_stance_is(SamuraiStanceType::NONE)) {
             regen_amount /= 2;
         }
-        if (player_ptr->cursed.has(TRC::SLOW_REGEN)) {
+        if (player_ptr->cursed.has(CurseTraitType::SLOW_REGEN)) {
             regen_amount /= 5;
         }
     }
@@ -386,7 +386,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
     }
 
     upkeep_factor = calculate_upkeep(player_ptr);
-    if ((player_ptr->action == ACTION_LEARN) || (player_ptr->action == ACTION_HAYAGAKE) || PlayerClass(player_ptr).samurai_stance_is(SamuraiStance::KOUKIJIN)) {
+    if ((player_ptr->action == ACTION_LEARN) || (player_ptr->action == ACTION_HAYAGAKE) || PlayerClass(player_ptr).samurai_stance_is(SamuraiStanceType::KOUKIJIN)) {
         upkeep_factor += 100;
     }
 

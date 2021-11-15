@@ -2,9 +2,7 @@
 
 #include "system/angband.h"
 
-
 class PlayerType;
-
 class ThrowCommand {
 public:
     ThrowCommand(PlayerType *player_ptr);

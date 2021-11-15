@@ -32,7 +32,7 @@
 #include "object-enchant/item-apply-magic.h"
 #include "object-hook/hook-enchant.h"
 #include "object/object-kind-hook.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/summon-types.h"
 #include "sv-definition/sv-potion-types.h"
 #include "sv-definition/sv-other-types.h"
@@ -647,15 +647,15 @@ static void on_dead_mimics(PlayerType *player_ptr, monster_death_type *md_ptr)
     }
 }
 
-static void on_dead_swordfish(PlayerType *player_ptr, monster_death_type *md_ptr, EffectFlags effect_flags)
+static void on_dead_swordfish(PlayerType *player_ptr, monster_death_type *md_ptr, AttributeFlags attribute_flags)
 {
-    if (effect_flags.has_not(AttributeType::COLD) || !md_ptr->drop_chosen_item || (randint1(100) >= 10))
+    if (attribute_flags.has_not(AttributeType::COLD) || !md_ptr->drop_chosen_item || (randint1(100) >= 10))
         return;
 
     drop_single_artifact(player_ptr, md_ptr, ART_FROZEN_SWORDFISH);
 }
 
-void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, EffectFlags effect_flags)
+void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, AttributeFlags attribute_flags)
 {
     if (r_info[md_ptr->m_ptr->r_idx].flags8 & RF8_NINJA)
     {
@@ -759,7 +759,7 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, Ef
         on_dead_chest_mimic(player_ptr, md_ptr);
         break;
     case MON_SWORDFISH:
-        on_dead_swordfish(player_ptr, md_ptr, effect_flags);
+        on_dead_swordfish(player_ptr, md_ptr, attribute_flags);
         break;
     default:
         on_dead_mimics(player_ptr, md_ptr);
