@@ -26167,7 +26167,7 @@ F:DROP_GREAT | DROP_1D2 | WILD_TOWN
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EVIL | DROP_SKELETON | DROP_CORPSE
 F:EAT_GIVE_DEX | EAT_LOSE_WIS
 S:1_IN_5 | TRAPS
-A:268:1:20
+A:272:1:20
 V:75
 D:$This legendary thief steals from the rich (you qualify).
 D:この伝説の盗賊は金持ち（あなたは合格）から金を盗む
@@ -30283,6 +30283,23 @@ F:DROP_KIND_1_IN_8_748_0_1d1
 F:DROP_KIND_1_IN_8_749_0_1d1
 S:1_IN_4 | SHOOT
 D:ラオウが掲げる「恐怖による支配」を実現すべく組織された軍隊の一員だ。
+
+N:1606:処刑者『スモウ』
+E:Executioner Smough
+G:P:y
+I:120:70d70:20:90:20
+W:44:3:0:10000:0:0
+B:HIT:HURT:40d1
+B:HIT:HURT:60d1
+B:CRUSH:HURT:10d12
+F:DEMON | GIANT | EVIL | DROP_GOOD | REGENERATE | UNIQUE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_GOOD | DROP_4D2 |
+F:OPEN_DOOR | BASH_DOOR | RES_NETH | RES_NEXU | RES_TELE | KILL_BODY |
+F:IM_ACID | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+A:273:1:40
+D:太陽の光の王グウィンの忠実にして酷薄な処刑人だ。。
+D:その巨大な大鎚で罪人をすり潰すことに喜びを覚える残忍さを持っている。
+
 
 # N: serial number : monster name
 # G: symbol : color
