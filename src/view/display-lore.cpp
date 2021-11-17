@@ -557,7 +557,7 @@ void display_lore_this(PlayerType *player_ptr, lore_type *lore_ptr)
     }
 #endif
 
-    if (lore_ptr->r_ptr->alliance_idx) {
+    if (lore_ptr->r_ptr->alliance_idx != AllianceType::NONE) {
 #ifdef JP
         hooked_roff(alliance_list.at(lore_ptr->r_ptr->alliance_idx)->name.c_str());
         hooked_roff("に所属している");

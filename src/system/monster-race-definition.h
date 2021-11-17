@@ -6,6 +6,7 @@
 #include "monster-race/race-ability-flags.h"
 #include "util/flag-group.h"
 #include "system/angband.h"
+#include "alliance/alliance.h"
 #include <string>
 #include <tuple>
 
@@ -111,5 +112,5 @@ struct monster_race {
     PLAYER_LEVEL defeat_level{}; //!< 倒したレベル(ユニーク用) / player level at which defeated this race
     REAL_TIME defeat_time{}; //!< 倒した時間(ユニーク用) / time at which defeated this race
     PERCENTAGE cur_hp_per{}; //!< 生成時現在HP率(%)
-    int alliance_idx;
+    AllianceType alliance_idx;
 };

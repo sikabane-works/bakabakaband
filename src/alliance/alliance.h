@@ -7,13 +7,21 @@
 typedef int ALLIANCE_ID;
 class PlayerType;
 
-enum class alliance_types {
+enum class AllianceType : int {
     NONE = 0, //!< 無所属 
     AMBER = 1, //!< アンバー
-    COURT_OF_CHAOS = 2, //!< 混沌の宮廷
+    COCHAOS = 2, //!< 混沌の宮廷
     VALINOR = 3,        //!< ヴァリノール
     UTUMNO = 4,         //!< ウトゥムノ
-    JURAL = 5,         //!< ジュラル星人
+    JURAL = 5,          //!< ジュラル星人
+    CHINCHINTEI = 6,    //!< ちんちん亭
+    ODIO = 7,           //!< オディオ
+    KENOHGUN = 8,       //!< 拳王軍
+    FANG_FAMILY = 9,    //!< 牙一族
+    KOGAN_RYU = 10,     //!< 虎眼流
+    ELDRAZI = 11,     //!< エルドラージ
+    UNGOLIANT = 12,     //!< ウンゴリアント一族
+    SHITTO_DAN = 13,     //!< しっと団
     MAX,
 };
 
@@ -27,11 +35,11 @@ enum alliance_flags
 
 class Alliance {
 public:
-    int id; //!< ID
+    AllianceType id; //!< ID
     std::string tag; //!< タグ
     std::string name; //!< 陣営名
     int64_t base_power; //!< 基本勢力指数
-    Alliance(int id, std::string tag, std::string name, int64_t base_power);
+    Alliance(AllianceType id, std::string tag, std::string name, int64_t base_power);
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int64_t calcCurrentPower();
     bool isAnnihilated();
@@ -167,4 +175,4 @@ public:
 
 
 
-extern const std::map<int, std::shared_ptr<Alliance>> alliance_list;
+extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;

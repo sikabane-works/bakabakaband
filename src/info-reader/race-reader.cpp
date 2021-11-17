@@ -236,7 +236,7 @@ errr parse_r_info(std::string_view buf, angband_header *)
             if (s_tokens.size() == 2 && s_tokens[0] == "ALLIANCE") {
                 for (auto a : alliance_list) {
                     if (a.second->tag == s_tokens[1]) {
-                        r_ptr->alliance_idx = a.second->id;
+                        r_ptr->alliance_idx = static_cast<AllianceType>(a.second->id);
                     }
                 }
                 continue;
