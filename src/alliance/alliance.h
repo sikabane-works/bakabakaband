@@ -176,3 +176,4 @@ public:
 
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
+extern const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession;
