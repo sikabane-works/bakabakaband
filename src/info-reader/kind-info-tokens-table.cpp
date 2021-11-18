@@ -177,6 +177,7 @@ const std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "SELF_COLD", TR_SELF_COLD },
     { "SELF_ELEC", TR_SELF_ELEC },
     { "WORLD_END", TR_WORLD_END },
+    { "PERSITENT_CURSE", TR_PERSITENT_CURSE },
 };
 
 /*!
