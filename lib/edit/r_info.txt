@@ -30306,7 +30306,7 @@ A:273:1:40
 D:太陽の光の王グウィンの忠実にして酷薄な処刑人だ。。
 D:その巨大な大鎚で罪人をすり潰すことに喜びを覚える残忍さを持っている。
 
-N:1607:GOLAN総帥『カーネル』
+N:1607:GOLANの総帥『カーネル』
 E:Colonel, the Chieftain of GOLAN
 T:GOLAN_COLONEL
 G:p:r
@@ -30322,6 +30322,42 @@ F:OPEN_DOOR | EVIL | BASH_DOOR
 D:世界が核の炎に包まれた後、選民思想に染まりきった
 D:軍人集団GOLANを作り上げたレッドベレーの長だ。
 D:南斗聖拳の流派の一つ、南斗無音拳の使い手でもある。
+
+N:1608:GOLANの軍曹『マッド』
+E:Mad, Sergeant of GOLAN
+G:p:R
+I:113:20d40:40:75:4
+W:32:4:0:4000:0:0
+B:HIT:HURT:10d4
+B:HIT:HURT:10d4
+B:HIT:HURT:10d4
+B:HIT:HURT:10d4
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | UNIQUE |
+F:OPEN_DOOR | EVIL | BASH_DOOR
+D:世紀末の軍人集団GOLANの下士官だ。
+D:1秒間に10度の刺突を行うことできるほどの歴戦のナイフ使いであり、
+D:訓練中の兵士が無残に死ぬことも躊躇わない冷酷さを持つ。
+
+N:1609:『ファーストサムライ』
+E:'First Samurai'
+G:p:o
+I:115:24d40:40:60:4
+W:34:6:0:4400:0:0
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | UNIQUE |
+F:OPEN_DOOR | GOOD | BASH_DOOR | FRIENDLY
+S:1_IN_4 | HASTE | HOLD | BO_FIRE
+D:古代の悪霊「魔狂神」を代々封じる一族であり、
+D:その怨敵に師匠の命を奪われた若き侍だ。
+D:妖術使いの力を借り受けながら、時空を超え仇を追っているらしい。
+D:彼は自らの刀に異常なまでの愛着を持っている。
 
 # N: serial number : monster name
 # G: symbol : color
