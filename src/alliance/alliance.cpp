@@ -18,6 +18,12 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::SHITTO_DAN, std::make_unique<AllianceShittoDan>(AllianceType::SHITTO_DAN, "SHITTO-DAN", _("しっと団", "Sitto-Dan"), 1500L) }
 };
 
+const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
+    { std::make_tuple(AllianceType::VALINOR, AllianceType::UTUMNO), -5000 },
+    { std::make_tuple(AllianceType::UTUMNO, AllianceType::VALINOR), -1000 },
+};
+
+
 Alliance::Alliance(AllianceType id, std::string tag, std::string name, int64_t base_power)
     : id(id)
     , tag(tag)
