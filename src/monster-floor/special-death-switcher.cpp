@@ -164,17 +164,6 @@ static void on_dead_bottle_gnome(PlayerType *player_ptr, monster_death_type *md_
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
-static void on_dead_doneld(PlayerType *player_ptr, monster_death_type *md_ptr)
-{
-    object_type forge;
-    object_type *q_ptr = &forge;
-    for (int i = 0; i < 10; i++) {
-        q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_HAMBURGER));
-        q_ptr->number = damroll(10, 10);
-        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
-    }
-}
-
 static void on_dead_bloodletter(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     if (!md_ptr->drop_chosen_item || (randint1(100) >= 15))
@@ -670,9 +659,6 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, At
         break;
     case MON_BOTTLE_GNOME:
         on_dead_bottle_gnome(player_ptr, md_ptr);
-        return;
-    case MON_DONELD:
-        on_dead_doneld(player_ptr, md_ptr);
         return;
     case MON_PINK_HORROR:
         on_dead_pink_horror(player_ptr, md_ptr);
