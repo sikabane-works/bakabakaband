@@ -30358,6 +30358,28 @@ D:古代の悪霊「魔狂神」を代々封じる一族であり、
 D:その怨敵に師匠の命を奪われた若き侍だ。
 D:妖術使いの力を借り受けながら、時空を超え仇を追っているらしい。
 D:彼は自らの刀に異常なまでの愛着を持っている。
+D:「武士道と 言うけれど 本当はお前だけ」（ファーストサムライ）
+
+# WotCの無料pdfでエルドラージタイタンをD&Dで再現するなら
+# とりあえずタラヲベースにしとけって書いてあったの参考に(DSKL)
+N:1610:絶え間ない飢餓『ウラモグ』
+E:Ulamog, the Ceaseless Hunger
+G:P:R
+I:130:100d100:60:105:30
+W:79:2:0:36000:0:0
+B:HIT:HURT:12d18
+B:HIT:HURT:12d18
+B:BITE:EXP_VAMP:10d10
+B:TOUCH:UN_POWER
+F:UNIQUE | ELDRAZI
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE 
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | ELDRITCH_HORROR
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | KILL_WALL | KILL_ITEM
+F:EVIL | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | IM_ACID | NO_CONF | NO_SLEEP
+S:1_IN_3 | 
+S:BR_DISI
+D:「時間そのもののごとく貪欲な力──」(M:tG)
+D:次元を食らうエルドラージの中でも最も強大なタイタンの一柱だ。
 
 # N: serial number : monster name
 # G: symbol : color
