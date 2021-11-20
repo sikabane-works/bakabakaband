@@ -23,6 +23,7 @@ enum class AllianceType : int {
     UNGOLIANT = 12,     //!< ウンゴリアント一族
     SHITTO_DAN = 13,     //!< しっと団
     GE_ORLIC = 14,     //!< オーリック朝銀河帝国（超人ロック）
+    TURBAN_KIDS = 15, //!< ターバンのガキ共
     MAX,
 };
 
@@ -181,6 +182,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGEOrlic() = default;
+};
+
+class AllianceTurbanKids : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceTurbanKids() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceTurbanKids() = default;
 };
 
 
