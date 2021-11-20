@@ -30399,6 +30399,26 @@ F:DROP_1D2 | OPEN_DOOR | BASH_DOOR
 D:角界の暗部を煮詰めたような様相の上に、クッソ汚いホモ特有の可愛がりが尽きない連中だ。
 D:ただその張り手だけには気をつけろ。
 
+N:1612:大いなる歪み『コジレック』
+E:Kozilek, the Great Distortion
+G:P:s
+I:135:90d90:60:135:30
+W:80:2:0:35000:0:0
+B:HIT:HURT:13d10
+B:HIT:HURT:13d10
+B:TOUCH:UN_POWER
+B:BITE:EXP_VAMP:12d12
+F:UNIQUE | ELDRAZI
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | SMART | ALLIANCE_ELDRAZI
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | ELDRITCH_HORROR | WEIRD_MIND
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | KILL_WALL | KILL_ITEM
+F:EVIL | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | IM_ACID | NO_CONF | NO_SLEEP
+S:1_IN_3 | 
+S:BRAIN_SMASH | FORGET | MIND_BLAST | HAND_DOOM | DISPEL | PSY_SPEAR
+D:「現実そのもののごとく不可解な虚無──」
+D:次元を食らうエルドラージの中でも最も強大なタイタンの一柱だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
