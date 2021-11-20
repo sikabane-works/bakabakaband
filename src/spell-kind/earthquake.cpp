@@ -164,7 +164,7 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
 
         map[earthquake_max + player_ptr->y - cy][earthquake_max + player_ptr->x - cx] = false;
         if (damage) {
-            concptr killer;
+            std::string killer;
 
             if (m_idx) {
                 GAME_TEXT m_name[MAX_NLEN];
@@ -175,7 +175,7 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
                 killer = _("地震", "an earthquake");
             }
 
-            take_hit(player_ptr, DAMAGE_ATTACK, damage, killer);
+            take_hit(player_ptr, DAMAGE_ATTACK, damage, killer.c_str());
         }
     }
 
