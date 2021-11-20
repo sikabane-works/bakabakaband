@@ -1,5 +1,9 @@
 ﻿#include "alliance/alliance.h"
 #include "system/player-type-definition.h"
+#include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
+#include "util/bit-flags-calculator.h"
+#include "monster-race/race-flags1.h"
 
 const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NONE, std::make_unique<AllianceNone>(AllianceType::NONE, "NONE", _("無所属", "None"), 0) },
@@ -35,7 +39,13 @@ Alliance::Alliance(AllianceType id, std::string tag, std::string name, int64_t b
 
 int64_t Alliance::calcCurrentPower()
 {
-    return this->base_power;
+    int64_t res = this->base_power;
+    for (auto r : r_info) {
+        if (r.alliance_idx == this->id && any_bits(r.flags1, RF1_UNIQUE)) {
+            res += calc_monrace_eval(&r);
+        }
+    }
+    return res;
 }
 
 bool Alliance::isAnnihilated()

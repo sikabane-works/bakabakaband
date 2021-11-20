@@ -28,7 +28,7 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr)
         fprintf(fff, _("所属戦力--\n", "Affiliation strength--\n"));
         for (auto r : r_info) {
             if (r.alliance_idx == a.second->id) {
-                fprintf(fff, _("  %-40s レベル %3d 評価値 %7d\n", "  %-40s LEVEL %3d POW %7d\n"), r.name.c_str(), r.level, calc_monrace_eval(&r));
+                fprintf(fff, _("  %-40s レベル %3d 評価値 %7d\n", "  %-40s LEVEL %3d POW %9d\n"), r.name.c_str(), r.level, calc_monrace_eval(&r));
             }
         }
         fprintf(fff, "\n\n");
