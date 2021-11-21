@@ -24,6 +24,7 @@ enum class AllianceType : int {
     SHITTO_DAN = 13,     //!< しっと団
     GE_ORLIC = 14,     //!< オーリック朝銀河帝国（超人ロック）
     TURBAN_KIDS = 15, //!< ターバンのガキ共
+    NAKED_KNIGHTS = 16, //!< 全裸騎士団
     MAX,
 };
 
@@ -191,6 +192,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceTurbanKids() = default;
+};
+
+class AllianceNakedKnights : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceNakedKnights() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceNakedKnights() = default;
 };
 
 
