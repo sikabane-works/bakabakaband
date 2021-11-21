@@ -44,8 +44,10 @@ int64_t Alliance::calcCurrentPower()
 {
     int64_t res = this->base_power;
     for (auto r : r_info) {
-        if (r.alliance_idx == this->id && any_bits(r.flags1, RF1_UNIQUE)) {
-            res += calc_monrace_eval(&r);
+        if (r.alliance_idx == this->id) {
+            if (r.mob_num > 0) {
+                res += calc_monrace_eval(&r) * r.mob_num;
+            }
         }
     }
     return res;
