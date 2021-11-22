@@ -19801,24 +19801,27 @@ D:メルコールの拷問に屈して隠れ王国ゴンドリンの位置を告
 N:978:黄金王『アル=ファラゾン』
 E:Ar-Pharazon the Golden
 G:p:y
-I:120:180d10:30:90:100
-W:38:6:0:2500:0:0
-B:HIT:HURT:4d12
-B:HIT:HURT:4d12
-B:HIT:HURT:4d12
-B:HIT:HURT:4d12
+I:125:180d25:40:150:20
+W:64:3:0:34000:0:0
+B:SLASH:HURT:12d13
+B:SLASH:HURT:12d13
+B:SLASH:SUPERHURT:10d10
+B:SHOOT:HURT:20d20
+R:1586:10d10
 F:HUMAN |
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE | CAN_SPEAK | HAS_LITE_2 | MALE |
 F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_GOOD | DROP_SKELETON | DROP_CORPSE
-F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY
-S:1_IN_10 |
-S:HEAL | HASTE | TELE_AWAY | S_MONSTERS
-D:$Last and proudest king of ancient Numenor.  Corrupted by power and
-D:$avarice, he fell victim to Sauron's wiles, tried to fight the immortals
-D:$themselves, and condemned Numenor to oblivion.
-D:ヌメノール国第25代にして最後の王だ。彼はアンナタールを捕えるも、
-D:逆にその甘言に誑かされ、至福の地アマンへ兵を向け、
-D:それが結局はヌメノールを滅亡に導くことになる。
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | ALLIANCE_NUMENOR
+S:1_IN_3 |
+S:HEAL | HASTE | TELE_AWAY | SHOOT | BO_MANA | PSY_SPEAR | S_KIN
+D:ヌメノール国第25代の王にして、最も文武に優れると言わしめられた英傑だ。
+D:彼からさかのぼること数代に渡り、
+D:古ウルクの諸侯をも平らげ服属させたヌメノールは、しかし彼らの信仰であった
+D:ウトゥムノやメルドールへの傾倒を重ね、魔道の文明をさらに栄えさせた。
+D:ついに、その叡知が神々にも介入し得る域に達したとき、
+D:イルーヴァタールは大洪水を起こした。またそれに抗してヌメノールは
+D:その大島ごとアルダという世界からの『大脱出』を果たしたのである。
+
 
 N:979:大江山の鬼の王『酒呑童子』
 E:Shuten-douji, the King Ogre of Ooe-Mountain
@@ -29960,7 +29963,7 @@ B:SLASH:HURT:10d4
 B:SLASH:HURT:10d4
 B:SLASH:HURT:10d4
 F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | SMART
-F:DROP_CORPSE | DROP_SKELETON | HUMAN | FRIENDS | MOB_1200
+F:DROP_CORPSE | DROP_SKELETON | HUMAN | FRIENDS | MOB_1200 | ALLIANCE_NUMENOR
 S:1_IN_7 |
 S:BO_MANA
 D:ヌメノールがかつてウルクやエルフをしのぐ栄光を四海に広げた礎と言える士族階級の正規兵だ。
