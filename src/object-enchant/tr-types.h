@@ -180,9 +180,10 @@ enum tr_type : int32_t {
     TR_SELF_COLD = 164, //!< マイナスフラグ - 持続冷気ダメージ
 
     TR_WORLD_END = 165, //!< 時空崩壊度を早める
-    TR_PERSITENT_CURSE = 166, //!< 頻繁に自身を呪いなおすフラグ
+    TR_PERSISTENT_CURSE = 166, //!< 頻繁に自身を呪いなおすフラグ
+    TR_VUL_CURSE = 167, //!< 呪力弱点
 
-    TR_FLAG_MAX = 167,
+    TR_FLAG_MAX = 168,
 };
 
 /** 能力値(STR,INT,WIS,DEX,CON,CHR)のpvalを増減させるフラグのリスト */
