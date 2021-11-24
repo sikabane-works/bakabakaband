@@ -27,6 +27,7 @@ enum class AllianceType : int {
     NAKED_KNIGHTS = 16, //!< 全裸騎士団
     NUMENOR = 17, //!< ヌメノール王国
     GO = 18, //!< GO教
+    THE_SHIRE = 19, //!< ホビット庄
     MAX,
 };
 
@@ -221,6 +222,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType* creature_ptr) const override;
     virtual ~AllianceGO() = default;
+};
+
+class AllianceTheShire : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceTheShire() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceTheShire() = default;
 };
 
 

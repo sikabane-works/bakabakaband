@@ -24,7 +24,8 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::TURBAN_KIDS, std::make_unique<AllianceTurbanKids>(AllianceType::TURBAN_KIDS, "TURBAN-KIDS", _("ターバンのガキ共", "Turban Kids"), 20000L) },
     { AllianceType::NAKED_KNIGHTS, std::make_unique<AllianceNakedKnights>(AllianceType::NAKED_KNIGHTS, "NAKED-KNIGHTS", _("全裸騎士団", "Naked Nights"), 3000L) },
     { AllianceType::NUMENOR, std::make_unique<AllianceNumenor>(AllianceType::NUMENOR, "NUMENOR", _("ヌメノール王国", "Numenor Kingdom"), 1500000L) },
-    { AllianceType::GO, std::make_unique<AllianceGO>(AllianceType::GO, "GO", _("GO教", "GO"), 1800000L) }
+    { AllianceType::GO, std::make_unique<AllianceGO>(AllianceType::GO, "GO", _("GO教", "GO"), 1800000L) },
+    { AllianceType::THE_SHIRE, std::make_unique<AllianceTheShire>(AllianceType::THE_SHIRE, "THE-SHIRE", _("ホビット庄", "The Shire"), 5000L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -151,6 +152,11 @@ int AllianceNumenor::calcImplessionPoint([[maybe_unused]] PlayerType* creature_p
 }
 
 int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
 {
     return 0;
 }
