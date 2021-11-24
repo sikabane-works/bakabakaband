@@ -32,7 +32,7 @@
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 使うオブジェクトの所持品ID
  */
-ObjectZapRodEntity::ObjectZapRodEntity(player_type* player_ptr)
+ObjectZapRodEntity::ObjectZapRodEntity(PlayerType* player_ptr)
     : player_ptr(player_ptr)
 {
 }
@@ -147,5 +147,5 @@ bool ObjectZapRodEntity::check_can_zap()
         return false;
     }
 
-    return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていてロッドを振れなかった！", "You were not able to zap it by the stun!"));
+    return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていてロッドを振れなかった！", "You are too stunned to zap it!"));
 }

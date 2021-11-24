@@ -25,7 +25,7 @@
 #include "view/display-messages.h"
 #include "view/object-describer.h"
 
-ObjectZapWandEntity::ObjectZapWandEntity(player_type *player_ptr)
+ObjectZapWandEntity::ObjectZapWandEntity(PlayerType *player_ptr)
     : player_ptr(player_ptr)
 {
 }
@@ -135,5 +135,5 @@ bool ObjectZapWandEntity::check_can_zap() const
         return false;
     }
 
-    return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて魔法棒を振れなかった！", "You were not able to zap it by the stun!"));
+    return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて魔法棒を振れなかった！", "You are too stunned to zap it!"));
 }

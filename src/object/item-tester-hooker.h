@@ -5,7 +5,7 @@
 #include <memory>
 
 struct object_type;
-class player_type;
+class PlayerType;
 
 /*!
  * @brief アイテムの絞り込み条件をテストする基底クラス
@@ -72,11 +72,11 @@ public:
     using TestMemberFunctionPtr = bool (object_type::*)() const;
     explicit FuncItemTester(TestMemberFunctionPtr test_func);
     explicit FuncItemTester(std::function<bool(const object_type *)> test_func);
-    explicit FuncItemTester(std::function<bool(player_type *, const object_type *)> test_func, player_type *player_ptr);
+    explicit FuncItemTester(std::function<bool(PlayerType *, const object_type *)> test_func, PlayerType *player_ptr);
 
 private:
     virtual bool okay_impl(const object_type *o_ptr) const;
 
-    std::function<bool(player_type *, const object_type *)> test_func;
-    player_type *player_ptr;
+    std::function<bool(PlayerType *, const object_type *)> test_func;
+    PlayerType *player_ptr;
 };

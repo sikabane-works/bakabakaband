@@ -1,6 +1,4 @@
 ﻿#pragma once
 
-#include "system/angband.h"
-
-class player_type;
-void load_store(player_type *player_ptr);
+class PlayerType;
+void load_store(PlayerType *player_ptr);

@@ -124,6 +124,7 @@ static void spoiler_print_art(obj_desc_list *art_ptr)
     spoiler_outlist(_("武器属性:", ""), art_ptr->brands, list_separator);
     spoiler_outlist(_("免疫:", "Immunity to"), art_ptr->immunities, item_separator);
     spoiler_outlist(_("耐性:", "Resist"), art_ptr->resistances, item_separator);
+    spoiler_outlist(_("弱点:", "Vulnerable"), art_ptr->vulnerables, item_separator);
     spoiler_outlist(_("維持:", "Sustain"), art_ptr->sustains, item_separator);
     spoiler_outlist("", art_ptr->misc_magic, list_separator);
 
@@ -141,13 +142,13 @@ static void spoiler_print_art(obj_desc_list *art_ptr)
  * Create a spoiler file for artifacts
  * @param fname 生成ファイル名
  */
-spoiler_output_status spoil_fixed_artifact(concptr fname)
+SpoilerOutputResultType spoil_fixed_artifact(concptr fname)
 {
     char buf[1024];
     path_build(buf, sizeof(buf), ANGBAND_DIR_USER, fname);
     spoiler_file = angband_fopen(buf, "w");
     if (!spoiler_file) {
-        return spoiler_output_status::SPOILER_OUTPUT_FAIL_FOPEN;
+        return SpoilerOutputResultType::SPOILER_OUTPUT_FAIL_FOPEN;
     }
 
     print_header();
@@ -166,7 +167,7 @@ spoiler_output_status spoil_fixed_artifact(concptr fname)
                 if (!make_fake_artifact(&obj, a_ref.idx))
                     continue;
 
-                player_type dummy;
+                PlayerType dummy;
                 obj_desc_list artifact;
                 object_analyze(&dummy, &obj, &artifact);
                 spoiler_print_art(&artifact);
@@ -174,6 +175,6 @@ spoiler_output_status spoil_fixed_artifact(concptr fname)
         }
     }
 
-    return ferror(spoiler_file) || angband_fclose(spoiler_file) ? spoiler_output_status::SPOILER_OUTPUT_FAIL_FCLOSE
-                                                                : spoiler_output_status::SPOILER_OUTPUT_SUCCESS;
+    return ferror(spoiler_file) || angband_fclose(spoiler_file) ? SpoilerOutputResultType::SPOILER_OUTPUT_FAIL_FCLOSE
+                                                                : SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS;
 }

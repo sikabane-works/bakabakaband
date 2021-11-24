@@ -20,7 +20,7 @@
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 持ち替えを行いたい装備部位ID
  */
-void verify_equip_slot(player_type *player_ptr, INVENTORY_IDX item)
+void verify_equip_slot(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     object_type *o_ptr, *new_o_ptr;
     GAME_TEXT o_name[MAX_NLEN];
@@ -70,5 +70,5 @@ void verify_equip_slot(player_type *player_ptr, INVENTORY_IDX item)
     new_o_ptr->copy_from(o_ptr);
     inven_item_increase(player_ptr, INVEN_MAIN_HAND, -((int)o_ptr->number));
     inven_item_optimize(player_ptr, INVEN_MAIN_HAND);
-    msg_format(_("%sを持ち替えた。", "You switched hand of %s."), o_name);
+    msg_format(_("%sを持ち替えた。", "You shifted %s to your other hand."), o_name);
 }

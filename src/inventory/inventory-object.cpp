@@ -21,7 +21,7 @@
 #include "system/object-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
-void vary_item(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
+void vary_item(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
 {
     if (item >= 0) {
         inven_item_increase(player_ptr, item, num);
@@ -42,7 +42,7 @@ void vary_item(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
  * @param item 所持数を増やしたいプレイヤーのアイテム所持スロット
  * @param num 増やしたい量
  */
-void inven_item_increase(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
+void inven_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
 {
     object_type *o_ptr = &player_ptr->inventory_list[item];
     num += o_ptr->number;
@@ -77,7 +77,7 @@ void inven_item_increase(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBE
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 消去したいプレイヤーのアイテム所持スロット
  */
-void inven_item_optimize(player_type *player_ptr, INVENTORY_IDX item)
+void inven_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     object_type *o_ptr = &player_ptr->inventory_list[item];
     if (!o_ptr->k_idx)
@@ -117,7 +117,7 @@ void inven_item_optimize(player_type *player_ptr, INVENTORY_IDX item)
  * @details
  * The object will be dropped "near" the current location
  */
-void drop_from_inventory(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER amt)
+void drop_from_inventory(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER amt)
 {
     object_type forge;
     object_type *q_ptr;
@@ -152,7 +152,7 @@ void drop_from_inventory(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBE
  * @details
  * Note special handling of the "overflow" slot
  */
-void combine_pack(player_type *player_ptr)
+void combine_pack(PlayerType *player_ptr)
 {
     bool flag = false;
     bool is_first_combination = true;
@@ -225,7 +225,7 @@ void combine_pack(player_type *player_ptr)
  * @details
  * Note special handling of the "overflow" slot
  */
-void reorder_pack(player_type *player_ptr)
+void reorder_pack(PlayerType *player_ptr)
 {
     int i, j, k;
     int32_t o_value;
@@ -286,7 +286,7 @@ void reorder_pack(player_type *player_ptr)
  * Note that this code must remove any location/stack information\n
  * from the object once it is placed into the inventory.\n
  */
-int16_t store_item_to_inventory(player_type *player_ptr, object_type *o_ptr)
+int16_t store_item_to_inventory(PlayerType *player_ptr, object_type *o_ptr)
 {
     INVENTORY_IDX i, j, k;
     INVENTORY_IDX n = -1;
@@ -362,7 +362,7 @@ bool check_get_item(object_type *o_ptr) {
  * @param o_ptr 拾いたいオブジェクトの構造体参照ポインタ
  * @return 溢れずに済むならTRUEを返す
  */
-bool check_store_item_to_inventory(player_type *player_ptr, const object_type *o_ptr)
+bool check_store_item_to_inventory(PlayerType *player_ptr, const object_type *o_ptr)
 {
     if (player_ptr->inven_cnt < INVEN_PACK)
         return true;
@@ -392,7 +392,7 @@ bool check_store_item_to_inventory(player_type *player_ptr, const object_type *o
  * to fall to the ground.\n
  * Return the inventory slot into which the item is placed.\n
  */
-INVENTORY_IDX inven_takeoff(player_type *player_ptr, INVENTORY_IDX item, ITEM_NUMBER amt)
+INVENTORY_IDX inven_takeoff(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER amt)
 {
     INVENTORY_IDX slot;
     object_type forge;

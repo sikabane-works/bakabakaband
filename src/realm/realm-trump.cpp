@@ -15,7 +15,7 @@
 #include "spell-kind/spells-world.h"
 #include "spell-realm/spells-chaos.h"
 #include "spell-realm/spells-trump.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "spell/spells-object.h"
 #include "spell/spells-status.h"
 #include "spell/spells-summon.h"
@@ -35,7 +35,7 @@
  * @param mode 処理内容 (SpellProcessType::NAME / SPELL_DESC / SpellProcessType::INFO / SpellProcessType::CAST)
  * @return SpellProcessType::NAME / SPELL_DESC / SpellProcessType::INFO 時には文字列ポインタを返す。SpellProcessType::CAST時はnullptr文字列を返す。
  */
-concptr do_trump_spell(player_type *player_ptr, SPELL_IDX spell, SpellProcessType mode)
+concptr do_trump_spell(PlayerType *player_ptr, SPELL_IDX spell, SpellProcessType mode)
 {
     bool name = mode == SpellProcessType::NAME;
     bool desc = mode == SpellProcessType::DESCRIPTION;
@@ -73,7 +73,7 @@ concptr do_trump_spell(player_type *player_ptr, SPELL_IDX spell, SpellProcessTyp
 
         {
             if (cast || fail) {
-                msg_print(_("あなたは蜘蛛のカードに集中する...", "You concentrate on the trump of an spider..."));
+                msg_print(_("あなたは蜘蛛のカードに集中する...", "You concentrate on the trump of a spider..."));
                 if (trump_summoning(player_ptr, 1, !fail, player_ptr->y, player_ptr->x, 0, SUMMON_SPIDER, PM_ALLOW_GROUP)) {
                     if (fail) {
                         msg_print(_("召喚された蜘蛛は怒っている！", "The summoned spiders get angry!"));
@@ -166,7 +166,7 @@ concptr do_trump_spell(player_type *player_ptr, SPELL_IDX spell, SpellProcessTyp
                 if (!get_aim_dir(player_ptr, &dir))
                     return nullptr;
 
-                fire_beam(player_ptr, GF_AWAY_ALL, dir, power);
+                fire_beam(player_ptr, AttributeType::AWAY_ALL, dir, power);
             }
         }
         break;

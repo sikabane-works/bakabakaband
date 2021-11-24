@@ -18,6 +18,6 @@ enum cfm_type {
 	CFM_FIRST_FLOOR = 0x0200, /*!< ダンジョンに入った最初のフロアである / Create exit from the dungeon */
 };
 
-class player_type;
-void prepare_change_floor_mode(player_type *player_ptr, BIT_FLAGS mode);
-void move_floor(player_type *player_ptr, BIT_FLAGS mode);
+class PlayerType;
+void prepare_change_floor_mode(PlayerType *player_ptr, BIT_FLAGS mode);
+void move_floor(PlayerType *player_ptr, BIT_FLAGS mode);

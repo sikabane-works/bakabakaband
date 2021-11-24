@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-void rd_extra(player_type *player_ptr);
+class PlayerType;
+void rd_extra(PlayerType *player_ptr);

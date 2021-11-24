@@ -49,7 +49,7 @@
  * @param m_idx 地震を起こしたモンスターID(0ならばプレイヤー)
  * @return 効力があった場合TRUEを返す
  */
-bool earthquake(player_type *player_ptr, POSITION cy, POSITION cx, POSITION r, MONSTER_IDX m_idx)
+bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MONSTER_IDX m_idx)
 {
     const int earthquake_max = 80;
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
@@ -164,7 +164,7 @@ bool earthquake(player_type *player_ptr, POSITION cy, POSITION cx, POSITION r, M
 
         map[earthquake_max + player_ptr->y - cy][earthquake_max + player_ptr->x - cx] = false;
         if (damage) {
-            concptr killer;
+            std::string killer;
 
             if (m_idx) {
                 GAME_TEXT m_name[MAX_NLEN];
@@ -175,7 +175,7 @@ bool earthquake(player_type *player_ptr, POSITION cy, POSITION cx, POSITION r, M
                 killer = _("地震", "an earthquake");
             }
 
-            take_hit(player_ptr, DAMAGE_ATTACK, damage, killer);
+            take_hit(player_ptr, DAMAGE_ATTACK, damage, killer.c_str());
         }
     }
 
@@ -292,7 +292,7 @@ bool earthquake(player_type *player_ptr, POSITION cy, POSITION cx, POSITION r, M
                 continue;
 
             delete_all_items_from_floor(player_ptr, yy, xx);
-            int t = cave_has_flag_bold(floor_ptr, yy, xx, FF::PROJECT) ? randint0(100) : 200;
+            int t = cave_has_flag_bold(floor_ptr, yy, xx, FloorFeatureType::PROJECT) ? randint0(100) : 200;
             if (t < 20) {
                 cave_set_feat(player_ptr, yy, xx, feat_granite);
                 continue;
@@ -328,7 +328,7 @@ bool earthquake(player_type *player_ptr, POSITION cy, POSITION cx, POSITION r, M
                 continue;
             }
 
-            if (d_info[player_ptr->dungeon_idx].flags.has(DF::DARKNESS))
+            if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS))
                 continue;
 
             grid_type *cc_ptr;
@@ -338,7 +338,7 @@ bool earthquake(player_type *player_ptr, POSITION cy, POSITION cx, POSITION r, M
                 if (!in_bounds2(floor_ptr, yyy, xxx))
                     continue;
                 cc_ptr = &floor_ptr->grid_array[yyy][xxx];
-                if (f_info[cc_ptr->get_feat_mimic()].flags.has(FF::GLOW)) {
+                if (f_info[cc_ptr->get_feat_mimic()].flags.has(FloorFeatureType::GLOW)) {
                     g_ptr->info |= CAVE_GLOW;
                     break;
                 }

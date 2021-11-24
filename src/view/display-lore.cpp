@@ -82,7 +82,7 @@ void roff_top(MONRACE_IDX r_idx)
  * @param r_idx モンスターの種族ID
  * @param mode 表示オプション
  */
-void screen_roff(player_type *player_ptr, MONRACE_IDX r_idx, monster_lore_mode mode)
+void screen_roff(PlayerType *player_ptr, MONRACE_IDX r_idx, monster_lore_mode mode)
 {
     msg_erase();
     term_erase(0, 1, 255);
@@ -96,7 +96,7 @@ void screen_roff(player_type *player_ptr, MONRACE_IDX r_idx, monster_lore_mode m
  * Hack -- describe the given monster race in the current "term" window
  * @param r_idx モンスターの種族ID
  */
-void display_roff(player_type *player_ptr)
+void display_roff(PlayerType *player_ptr)
 {
     for (int y = 0; y < Term->hgt; y++) {
         term_erase(0, y, 255);
@@ -119,7 +119,7 @@ void display_roff(player_type *player_ptr)
 void output_monster_spoiler(MONRACE_IDX r_idx, void (*roff_func)(TERM_COLOR attr, concptr str))
 {
     hook_c_roff = roff_func;
-    player_type dummy;
+    PlayerType dummy;
 
     dummy.lev = 1;
     dummy.max_plv = 1;
@@ -462,7 +462,7 @@ void display_monster_alignment(lore_type *lore_ptr)
  * @param player_ptr プレイヤーの情報へのポインター
  * @param lore_ptr モンスターの思い出の情報へのポインター
  */
-void display_monster_exp(player_type *player_ptr, lore_type *lore_ptr)
+void display_monster_exp(PlayerType *player_ptr, lore_type *lore_ptr)
 {
 #ifdef JP
     hooked_roff("を倒すことは");
@@ -542,7 +542,7 @@ void display_monster_aura(lore_type *lore_ptr)
         hook_c_roff(TERM_L_BLUE, format(_("%^sはスパークに包まれている。", "%^s is surrounded by electricity.  "), Who::who(lore_ptr->msex)));
 }
 
-void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)
+void display_lore_this(PlayerType *player_ptr, lore_type *lore_ptr)
 {
     if ((lore_ptr->r_ptr->r_tkills == 0) && !lore_ptr->know_everything)
         return;
@@ -557,7 +557,7 @@ void display_lore_this(player_type *player_ptr, lore_type *lore_ptr)
     }
 #endif
 
-    if (lore_ptr->r_ptr->alliance_idx) {
+    if (lore_ptr->r_ptr->alliance_idx != AllianceType::NONE) {
 #ifdef JP
         hooked_roff(alliance_list.at(lore_ptr->r_ptr->alliance_idx)->name.c_str());
         hooked_roff("に所属している");
@@ -638,16 +638,16 @@ void display_monster_collective(lore_type *lore_ptr)
  * a monster.
  * @todo max_blows はゲームの中核的なパラメータの1つなのでどこかのヘッダに定数宣言しておきたい
  */
-void display_monster_launching(player_type *player_ptr, lore_type *lore_ptr)
+void display_monster_launching(PlayerType *player_ptr, lore_type *lore_ptr)
 {
-    if (lore_ptr->ability_flags.has(RF_ABILITY::ROCKET)) {
-        set_damage(player_ptr, lore_ptr, RF_ABILITY::ROCKET, _("ロケット%sを発射する", "shoot a rocket%s"));
+    if (lore_ptr->ability_flags.has(MonsterAbilityType::ROCKET)) {
+        set_damage(player_ptr, lore_ptr, MonsterAbilityType::ROCKET, _("ロケット%sを発射する", "shoot a rocket%s"));
         lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
         lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
         lore_ptr->rocket = true;
     }
 
-    if (lore_ptr->ability_flags.has_not(RF_ABILITY::SHOOT))
+    if (lore_ptr->ability_flags.has_not(MonsterAbilityType::SHOOT))
         return;
 
     int p = -1; /* Position of SHOOT */

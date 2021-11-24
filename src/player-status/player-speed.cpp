@@ -30,7 +30,7 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
-PlayerSpeed::PlayerSpeed(player_type *player_ptr)
+PlayerSpeed::PlayerSpeed(PlayerType *player_ptr)
     : PlayerStatusBase(player_ptr)
 {
 }
@@ -122,17 +122,22 @@ int16_t PlayerSpeed::personality_value()
  * @return 速度値の増減分
  * @details
  * ** 棘セット装備中ならば加算(+7)
- * ** アイシングデス-トゥインクル装備中ならば加算(+7)
+ * ** アイシングデス-トゥインクル装備中ならば加算(+5)
+ * ** アヌビス-チャリオッツ装備中ならば加算(+5)
  */
 int16_t PlayerSpeed::special_weapon_set_value()
 {
     int16_t result = 0;
     if (has_melee_weapon(this->player_ptr, INVEN_MAIN_HAND) && has_melee_weapon(this->player_ptr, INVEN_SUB_HAND)) {
-        if ((this->player_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_QUICKTHORN) && (this->player_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TINYTHORN)) {
+        if (set_quick_and_tiny(this->player_ptr)) {
             result += 7;
         }
 
-        if ((this->player_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_ICINGDEATH) && (this->player_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_TWINKLE)) {
+        if (set_icing_and_twinkle(this->player_ptr)) {
+            result += 5;
+        }
+
+        if (set_anubis_and_chariot(this->player_ptr)) {
             result += 5;
         }
     }
@@ -201,7 +206,7 @@ int16_t PlayerSpeed::time_effect_value()
 int16_t PlayerSpeed::stance_value()
 {
     int16_t result = 0;
-    if (PlayerClass(player_ptr).monk_stance_is(MonkStance::SUZAKU))
+    if (PlayerClass(player_ptr).monk_stance_is(MonkStanceType::SUZAKU))
         result += 10;
     return result;
 }
@@ -219,15 +224,15 @@ int16_t PlayerSpeed::mutation_value()
     SPEED result = 0;
 
     const auto &muta = this->player_ptr->muta;
-    if (muta.has(MUTA::XTRA_FAT)) {
+    if (muta.has(PlayerMutationType::XTRA_FAT)) {
         result -= 2;
     }
 
-    if (muta.has(MUTA::XTRA_LEGS)) {
+    if (muta.has(PlayerMutationType::XTRA_LEGS)) {
         result += 3;
     }
 
-    if (muta.has(MUTA::SHORT_LEG)) {
+    if (muta.has(PlayerMutationType::SHORT_LEG)) {
         result -= 3;
     }
 

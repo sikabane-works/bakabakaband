@@ -291,7 +291,7 @@ static errr interpret_v_token(char *buf)
  * Process "X:<str>" -- turn option off
  * Process "Y:<str>" -- turn option on
  */
-static errr interpret_xy_token(player_type *player_ptr, char *buf)
+static errr interpret_xy_token(PlayerType *player_ptr, char *buf)
 {
     for (int i = 0; option_info[i].o_desc; i++) {
         bool is_option = option_info[i].o_var != nullptr;
@@ -304,7 +304,7 @@ static errr interpret_xy_token(player_type *player_ptr, char *buf)
         int ob = option_info[i].o_bit;
 
         if ((player_ptr->playing || w_ptr->character_xtra) && (OPT_PAGE_BIRTH == option_info[i].o_page) && !allow_debug_options) {
-            msg_format(_("初期オプションは変更できません! '%s'", "Birth options can not changed! '%s'"), buf);
+            msg_format(_("初期オプションは変更できません! '%s'", "Birth options can not be changed! '%s'"), buf);
             msg_print(nullptr);
             return 0;
         }
@@ -342,7 +342,7 @@ static errr interpret_z_token(char *buf)
         if (!streq(gf_desc[i].name, buf + 2))
             continue;
 
-        gf_color[gf_desc[i].num] = (TERM_COLOR)quark_add(t);
+        gf_color[(int)gf_desc[i].num] = (TERM_COLOR)quark_add(t);
         return 0;
     }
 
@@ -470,7 +470,7 @@ static errr interpret_t_token(char *buf)
  * used for the "nothing" attr/char.
  * </pre>
  */
-errr interpret_pref_file(player_type *player_ptr, char *buf)
+errr interpret_pref_file(PlayerType *player_ptr, char *buf)
 {
     if (buf[1] != ':')
         return 1;

@@ -14,7 +14,7 @@
 #include "realm/realm-hex-numbers.h"
 #include "specific-object/torch.h"
 #include "spell-realm/spells-hex.h"
-#include "spell/spell-types.h"
+#include "effect/attribute-types.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -29,7 +29,7 @@
  * @param m_ptr 目標モンスターの構造体参照ポインタ
  * @return スレイング加味後の倍率(/10倍)
  */
-MULTIPLY mult_slaying(player_type *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr)
+MULTIPLY mult_slaying(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr)
 {
     static const struct slay_table_t {
         tr_type slay_flag;
@@ -87,7 +87,7 @@ MULTIPLY mult_slaying(player_type *player_ptr, MULTIPLY mult, const TrFlags &flg
  * @param m_ptr 目標モンスターの構造体参照ポインタ
  * @return スレイング加味後の倍率(/10倍)
  */
-MULTIPLY mult_brand(player_type *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr)
+MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, monster_type *m_ptr)
 {
     static const struct brand_table_t {
         tr_type brand_flag;
@@ -149,7 +149,7 @@ MULTIPLY mult_brand(player_type *player_ptr, MULTIPLY mult, const TrFlags &flgs,
  * Note that most brands and slays are x3, except Slay Animal (x2),\n
  * Slay Evil (x2), and Kill dragon (x5).\n
  */
-HIT_POINT calc_attack_damage_with_slay(player_type *player_ptr, object_type *o_ptr, HIT_POINT tdam, monster_type *m_ptr, combat_options mode, bool thrown)
+HIT_POINT calc_attack_damage_with_slay(PlayerType *player_ptr, object_type *o_ptr, HIT_POINT tdam, monster_type *m_ptr, combat_options mode, bool thrown)
 {
     auto flgs = object_flags(o_ptr);
     torch_flags(o_ptr, flgs); /* torches has secret flags */
@@ -208,28 +208,28 @@ HIT_POINT calc_attack_damage_with_slay(player_type *player_ptr, object_type *o_p
     return (tdam * mult / 10);
 }
 
-EffectFlags melee_effect_type(player_type *player_ptr, object_type *o_ptr, combat_options mode)
+AttributeFlags melee_attribute(PlayerType *player_ptr, object_type *o_ptr, combat_options mode)
 {
-    EffectFlags effect_flags{};
-    effect_flags.set(GF_PLAYER_MELEE);
+    AttributeFlags attribute_flags{};
+    attribute_flags.set(AttributeType::PLAYER_MELEE);
 
     if (player_ptr->pclass == PlayerClassType::SAMURAI) {
         static const struct samurai_convert_table_t {
             combat_options hissatsu_type;
-            spells_type effect_type;
+            AttributeType attribute;
         } samurai_convert_table[] = {
-            { HISSATSU_FIRE,    GF_FIRE },
-            { HISSATSU_COLD,    GF_COLD },
-            { HISSATSU_ELEC,    GF_ELEC },
-            { HISSATSU_POISON,  GF_POIS },
-            { HISSATSU_HAGAN,   GF_KILL_WALL },
+            { HISSATSU_FIRE, AttributeType::FIRE },
+            { HISSATSU_COLD, AttributeType::COLD },
+            { HISSATSU_ELEC, AttributeType::ELEC },
+            { HISSATSU_POISON, AttributeType::POIS },
+            { HISSATSU_HAGAN, AttributeType::KILL_WALL },
         };
 
         for (size_t i = 0; i < sizeof(samurai_convert_table) / sizeof(samurai_convert_table[0]); ++i) {
             const struct samurai_convert_table_t *p = &samurai_convert_table[i];
 
             if (mode == p->hissatsu_type)
-                effect_flags.set(p->effect_type);
+                attribute_flags.set(p->attribute);
         }
     }
 
@@ -251,30 +251,30 @@ EffectFlags melee_effect_type(player_type *player_ptr, object_type *o_ptr, comba
     
     static const struct brand_convert_table_t {
         tr_type brand_type;
-        spells_type effect_type;
+        AttributeType attribute;
     } brand_convert_table[] = {
-        { TR_BRAND_ACID, GF_ACID },
-        { TR_BRAND_FIRE, GF_FIRE },
-        { TR_BRAND_ELEC, GF_ELEC },
-        { TR_BRAND_COLD, GF_COLD },
-        { TR_BRAND_POIS, GF_POIS },
-        { TR_SLAY_GOOD, GF_HELL_FIRE },
-        { TR_KILL_GOOD, GF_HELL_FIRE },
-        { TR_SLAY_EVIL, GF_HOLY_FIRE },
-        { TR_KILL_EVIL, GF_HOLY_FIRE },
+        { TR_BRAND_ACID, AttributeType::ACID },
+        { TR_BRAND_FIRE, AttributeType::FIRE },
+        { TR_BRAND_ELEC, AttributeType::ELEC },
+        { TR_BRAND_COLD, AttributeType::COLD },
+        { TR_BRAND_POIS, AttributeType::POIS },
+        { TR_SLAY_GOOD, AttributeType::HELL_FIRE },
+        { TR_KILL_GOOD, AttributeType::HELL_FIRE },
+        { TR_SLAY_EVIL, AttributeType::HOLY_FIRE },
+        { TR_KILL_EVIL, AttributeType::HOLY_FIRE },
     };
 
     for (size_t i = 0; i < sizeof(brand_convert_table) / sizeof(brand_convert_table[0]); ++i) {
         const struct brand_convert_table_t *p = &brand_convert_table[i];
 
         if (flgs.has(p->brand_type))
-            effect_flags.set(p->effect_type);
+            attribute_flags.set(p->attribute);
     }
 
     
     if ((flgs.has(TR_FORCE_WEAPON)) && (player_ptr->csp > (o_ptr->dd * o_ptr->ds / 5))) {
-        effect_flags.set(GF_MANA);
+        attribute_flags.set(AttributeType::MANA);
     }
 
-    return effect_flags;
+    return attribute_flags;
 }

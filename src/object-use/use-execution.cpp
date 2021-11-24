@@ -33,7 +33,7 @@
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 使うオブジェクトの所持品ID
  */
-ObjectUseEntity::ObjectUseEntity(player_type* player_ptr, INVENTORY_IDX item)
+ObjectUseEntity::ObjectUseEntity(PlayerType* player_ptr, INVENTORY_IDX item)
     : player_ptr(player_ptr)
     , item(item)
 {
@@ -145,5 +145,5 @@ bool ObjectUseEntity::check_can_use()
         return false;
     }
 
-    return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて杖を振れなかった！", "You were not able to use it by the stun!"));
+    return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて杖を振れなかった！", "You are too stunned to use it!"));
 }

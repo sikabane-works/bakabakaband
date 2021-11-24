@@ -48,7 +48,7 @@
  * @param idx テレポート・レベル対象のモンスター
  * @todo 変数名が実態と合っているかどうかは要確認
  */
-bool is_teleport_level_ineffective(player_type *player_ptr, MONSTER_IDX idx)
+bool is_teleport_level_ineffective(PlayerType *player_ptr, MONSTER_IDX idx)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     bool is_special_floor
@@ -67,7 +67,7 @@ bool is_teleport_level_ineffective(player_type *player_ptr, MONSTER_IDX idx)
  * @param m_idx テレポートの対象となるモンスターID(0ならばプレイヤー) / If m_idx <= 0, target is player.
  * @todo cmd-save.h への依存あり。コールバックで何とかしたい
  */
-void teleport_level(player_type *player_ptr, MONSTER_IDX m_idx)
+void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     GAME_TEXT m_name[160];
     bool see_m = true;
@@ -210,7 +210,7 @@ void teleport_level(player_type *player_ptr, MONSTER_IDX m_idx)
         sound(SOUND_TPLEVEL);
 }
 
-bool teleport_level_other(player_type *player_ptr)
+bool teleport_level_other(PlayerType *player_ptr)
 {
     if (!target_set(player_ptr, TARGET_KILL))
         return false;
@@ -245,7 +245,7 @@ bool teleport_level_other(player_type *player_ptr)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return テレポート処理を決定したか否か
  */
-bool tele_town(player_type *player_ptr)
+bool tele_town(PlayerType *player_ptr)
 {
     if (player_ptr->current_floor_ptr->dun_level) {
         msg_print(_("この魔法は地上でしか使えない！", "This spell can only be used on the surface!"));
@@ -317,7 +317,7 @@ bool tele_town(player_type *player_ptr)
  * @brief 現実変容処理
  * @param player_ptr プレイヤーへの参照ポインタ
  */
-void reserve_alter_reality(player_type *player_ptr, TIME_EFFECT turns)
+void reserve_alter_reality(PlayerType *player_ptr, TIME_EFFECT turns)
 {
     if (player_ptr->current_floor_ptr->inside_arena || ironman_downward) {
         msg_print(_("何も起こらなかった。", "Nothing happens."));
@@ -343,7 +343,7 @@ void reserve_alter_reality(player_type *player_ptr, TIME_EFFECT turns)
  * @param turns 発動までのターン数
  * @return TRUEならばダンジョンから地上へ、FALSEなら地上からダンジョンへ。
  */
-bool recall_player(player_type *player_ptr, TIME_EFFECT turns)
+bool recall_player(PlayerType *player_ptr, TIME_EFFECT turns)
 {
     /*
      * TODO: Recall the player to the last
@@ -373,7 +373,7 @@ bool recall_player(player_type *player_ptr, TIME_EFFECT turns)
         return true;
     }
 
-    if (d_info[player_ptr->dungeon_idx].flags.has(DF::DIFFICULT_RECALL)) {
+    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DIFFICULT_RECALL)) {
         msg_print(_("ここはダンジョンに抵抗されるために、帰還に極めて時間がかかるようだ...",
                 "It will take a long time because the dungeon is resisting to recall power..."));
         turns *= 100;
@@ -393,7 +393,7 @@ bool recall_player(player_type *player_ptr, TIME_EFFECT turns)
     return true;
 }
 
-bool free_level_recall(player_type *player_ptr)
+bool free_level_recall(PlayerType *player_ptr)
 {
     DUNGEON_IDX select_dungeon = choose_dungeon(_("にテレポート", "teleport"), 4, 0);
     if (!select_dungeon)
@@ -432,7 +432,7 @@ bool free_level_recall(player_type *player_ptr)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return リセット処理が実際に行われたらTRUEを返す
  */
-bool reset_recall(player_type *player_ptr)
+bool reset_recall(PlayerType *player_ptr)
 {
     int select_dungeon, dummy = 0;
     char ppp[80];

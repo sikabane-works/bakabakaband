@@ -4,7 +4,7 @@
 #include "racial/racial-util.h"
 #include "system/player-type-definition.h"
 
-void set_mimic_racial_command(player_type *player_ptr, rc_type *rc_ptr)
+void set_mimic_racial_command(PlayerType *player_ptr, rc_type *rc_ptr)
 {
     rpi_type rpi;
     switch (player_ptr->mimic_form) {
@@ -33,7 +33,7 @@ void set_mimic_racial_command(player_type *player_ptr, rc_type *rc_ptr)
     }
 }
 
-void set_race_racial_command(player_type *player_ptr, rc_type *rc_ptr)
+void set_race_racial_command(PlayerType *player_ptr, rc_type *rc_ptr)
 {
     rpi_type rpi;
     switch (player_ptr->prace) {
@@ -346,6 +346,17 @@ void set_race_racial_command(player_type *player_ptr, rc_type *rc_ptr)
         rpi.stat = A_STR;
         rc_ptr->add_power(rpi, RC_IDX_RACE_0);
         break;
+    case PlayerRaceType::MERFOLK:
+        rpi = rpi_type(_("水呼び", "Waterspout"));
+        rpi.text = _("自身の周辺に水地形を生み出す", "Create water terrain around yourself.");
+        rpi.min_level = 35;
+        rpi.cost = 35;
+        rpi.stat = A_INT;
+        rpi.fail = 18;
+        rc_ptr->add_power(rpi, RC_IDX_RACE_0);
+        break;
+
+
     default:
         break;
     }

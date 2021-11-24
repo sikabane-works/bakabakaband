@@ -19,6 +19,7 @@
 #include "core/speed-table.h"
 #include "floor/cave.h"
 #include "floor/geometry.h"
+#include "floor/floor-object.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
 #include "io/write-diary.h"
@@ -67,29 +68,28 @@
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
+#include "sv-definition/sv-junk-types.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
-#include "sv-definition/sv-junk-types.h"
-#include "floor/floor-object.h"
 
-void decide_drop_from_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
-bool process_stealth(player_type *player_ptr, MONSTER_IDX m_idx);
-bool vanish_summoned_children(player_type *player_ptr, MONSTER_IDX m_idx, bool see_m);
-bool awake_monster(player_type *player_ptr, MONSTER_IDX m_idx);
-void process_angar(player_type *player_ptr, MONSTER_IDX m_idx, bool see_m);
-bool explode_grenade(player_type *player_ptr, MONSTER_IDX m_idx);
-bool decide_monster_multiplication(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
-void process_monster_change_feat(player_type *player_ptr, MONSTER_IDX m_idx);
-bool process_monster_spawn_monster(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
-void process_monster_spawn_item(player_type *player_ptr, MONSTER_IDX m_idx);
-void process_monster_spawn_zanki(player_type *player_ptr, MONSTER_IDX m_idx);
-void process_special(player_type *player_ptr, MONSTER_IDX m_idx);
-bool cast_spell(player_type *player_ptr, MONSTER_IDX m_idx, bool aware);
+void decide_drop_from_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
+bool process_stealth(PlayerType *player_ptr, MONSTER_IDX m_idx);
+bool vanish_summoned_children(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m);
+bool awake_monster(PlayerType *player_ptr, MONSTER_IDX m_idx);
+void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m);
+bool explode_grenade(PlayerType *player_ptr, MONSTER_IDX m_idx);
+bool decide_monster_multiplication(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_change_feat(PlayerType *player_ptr, MONSTER_IDX m_idx);
+bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox);
+void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx);
+void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx);
+void process_special(PlayerType *player_ptr, MONSTER_IDX m_idx);
+bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware);
 
-bool process_monster_fear(player_type *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx);
+bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx);
 
-void sweep_monster_process(player_type *player_ptr);
-bool decide_process_continue(player_type *player_ptr, monster_type *m_ptr);
+void sweep_monster_process(PlayerType *player_ptr);
+bool decide_process_continue(PlayerType *player_ptr, monster_type *m_ptr);
 
 /*!
  * @brief モンスター単体の1ターン行動処理メインルーチン /
@@ -120,7 +120,7 @@ bool decide_process_continue(player_type *player_ptr, monster_type *m_ptr);
  *\n
  * A "direction" of "5" means "pick a random direction".\n
  */
-void process_monster(player_type *player_ptr, MONSTER_IDX m_idx)
+void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -129,7 +129,7 @@ void process_monster(player_type *player_ptr, MONSTER_IDX m_idx)
     turn_flags_ptr->see_m = is_seen(player_ptr, m_ptr);
 
     decide_drop_from_monster(player_ptr, m_idx, turn_flags_ptr->is_riding_mon);
-    if (m_ptr->mflag2.has(MFLAG2::CHAMELEON) && one_in_(13) && !monster_csleep_remaining(m_ptr)) {
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON) && one_in_(13) && !monster_csleep_remaining(m_ptr)) {
         choose_new_monster(player_ptr, m_idx, false, 0);
         r_ptr = &r_info[m_ptr->r_idx];
     }
@@ -179,7 +179,7 @@ void process_monster(player_type *player_ptr, MONSTER_IDX m_idx)
      *  Try to flow by smell.
      */
     if (player_ptr->no_flowed && count > 2 && m_ptr->target_y)
-        m_ptr->mflag2.reset(MFLAG2::NOFLOW);
+        m_ptr->mflag2.reset(MonsterConstantFlagType::NOFLOW);
 
     if (!turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && !monster_fear_remaining(m_ptr) && !turn_flags_ptr->is_riding_mon && turn_flags_ptr->aware) {
         if (r_ptr->freq_spell && randint1(100) <= r_ptr->freq_spell) {
@@ -204,7 +204,7 @@ void process_monster(player_type *player_ptr, MONSTER_IDX m_idx)
  * @param m_idx モンスターID
  * @return モンスターがプレイヤーに気付いているならばTRUE、超隠密状態ならばFALSE
  */
-bool process_stealth(player_type *player_ptr, MONSTER_IDX m_idx)
+bool process_stealth(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     auto ninja_data = PlayerClass(player_ptr).get_specific_data<ninja_data_type>();
     if (!ninja_data || !ninja_data->s_stealth)
@@ -231,7 +231,7 @@ bool process_stealth(player_type *player_ptr, MONSTER_IDX m_idx)
  * @param m_idx モンスターID
  * @param is_riding_mon 騎乗中であればTRUE
  */
-void decide_drop_from_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon)
+void decide_drop_from_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -256,7 +256,7 @@ void decide_drop_from_monster(player_type *player_ptr, MONSTER_IDX m_idx, bool i
  * @param see_m モンスターが視界内にいたらTRUE
  * @return 召喚モンスターが消滅したらTRUE
  */
-bool vanish_summoned_children(player_type *player_ptr, MONSTER_IDX m_idx, bool see_m)
+bool vanish_summoned_children(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
 
@@ -289,7 +289,7 @@ bool vanish_summoned_children(player_type *player_ptr, MONSTER_IDX m_idx, bool s
  * @param m_idx モンスターID
  * @return 寝たままならFALSE、起きているor起きたらTRUE
  */
-bool awake_monster(player_type *player_ptr, MONSTER_IDX m_idx)
+bool awake_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -318,7 +318,7 @@ bool awake_monster(player_type *player_ptr, MONSTER_IDX m_idx)
  * @param m_idx モンスターID
  * @param see_m モンスターが視界内にいたらTRUE
  */
-void process_angar(player_type *player_ptr, MONSTER_IDX m_idx, bool see_m)
+void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -362,7 +362,7 @@ void process_angar(player_type *player_ptr, MONSTER_IDX m_idx, bool see_m)
  * @param m_idx モンスターID
  * @return 爆死したらTRUE
  */
-bool explode_grenade(player_type *player_ptr, MONSTER_IDX m_idx)
+bool explode_grenade(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     if (m_ptr->r_idx != MON_GRENADE)
@@ -378,11 +378,11 @@ bool explode_grenade(player_type *player_ptr, MONSTER_IDX m_idx)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param m_idx モンスターID
  */
-void process_special(player_type *player_ptr, MONSTER_IDX m_idx)
+void process_special(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
-    if (r_ptr->ability_flags.has_not(RF_ABILITY::SPECIAL) || (m_ptr->r_idx != MON_OHMU) || player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out
+    if (r_ptr->ability_flags.has_not(MonsterAbilityType::SPECIAL) || (m_ptr->r_idx != MON_OHMU) || player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out
         || (r_ptr->freq_spell == 0) || (randint1(100) > r_ptr->freq_spell))
         return;
 
@@ -398,7 +398,7 @@ void process_special(player_type *player_ptr, MONSTER_IDX m_idx)
     }
 
     if (count && is_original_ap_and_seen(player_ptr, m_ptr))
-        r_ptr->r_ability_flags.set(RF_ABILITY::SPECIAL);
+        r_ptr->r_ability_flags.set(MonsterAbilityType::SPECIAL);
 }
 
 /*!
@@ -409,7 +409,7 @@ void process_special(player_type *player_ptr, MONSTER_IDX m_idx)
  * @param ox 分裂元モンスターのX座標
  * @return 実際に分裂したらTRUEを返す
  */
-bool decide_monster_multiplication(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
+bool decide_monster_multiplication(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -445,7 +445,7 @@ bool decide_monster_multiplication(player_type *player_ptr, MONSTER_IDX m_idx, P
 /*!
  * @brief モンスターのアイテム自然生成処理
  */
-void process_monster_spawn_item(player_type *player_ptr, MONSTER_IDX m_idx)
+void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -466,7 +466,7 @@ void process_monster_spawn_item(player_type *player_ptr, MONSTER_IDX m_idx)
 /*!
  * @brief モンスターの残気自然生成処理
  */
-void process_monster_spawn_zanki(player_type *player_ptr, MONSTER_IDX m_idx)
+void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -488,7 +488,7 @@ void process_monster_spawn_zanki(player_type *player_ptr, MONSTER_IDX m_idx)
 /*!
  * @brief モンスターによる地形変化処理
  */
-void process_monster_change_feat(player_type *player_ptr, MONSTER_IDX m_idx)
+void process_monster_change_feat(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -510,7 +510,7 @@ void process_monster_change_feat(player_type *player_ptr, MONSTER_IDX m_idx)
  * @param ox 分裂元モンスターのX座標
  * @return 実際に分裂したらTRUEを返す
  */
-bool process_monster_spawn_monster(player_type *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
+bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -557,7 +557,7 @@ bool process_monster_spawn_monster(player_type *player_ptr, MONSTER_IDX m_idx, P
  * @param aware モンスターがプレイヤーに気付いているならばTRUE、超隠密状態ならばFALSE
  * @return 魔法を唱えられなければ強制的にFALSE、その後モンスターが実際に魔法を唱えればTRUE
  */
-bool cast_spell(player_type *player_ptr, MONSTER_IDX m_idx, bool aware)
+bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
@@ -592,7 +592,7 @@ bool cast_spell(player_type *player_ptr, MONSTER_IDX m_idx, bool aware)
  * @param aware モンスターがプレイヤーに気付いているならばTRUE、超隠密状態ならばFALSE
  * @return モンスターが戦いを決意したらTRUE
  */
-bool process_monster_fear(player_type *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
+bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     GAME_TEXT m_name[MAX_NLEN];
@@ -659,7 +659,7 @@ bool process_monster_fear(player_type *player_ptr, turn_flags *turn_flags_ptr, M
  * changes (flags, attacks, spells), we induce a redraw of the monster\n
  * recall window.\n
  */
-void process_monsters(player_type *player_ptr)
+void process_monsters(PlayerType *player_ptr)
 {
     old_race_flags tmp_flags;
     old_race_flags *old_race_flags_ptr = init_old_race_flags(&tmp_flags);
@@ -678,7 +678,7 @@ void process_monsters(player_type *player_ptr)
  * @brief フロア内のモンスターについてターン終了時の処理を繰り返す
  * @param player_ptr プレイヤーへの参照ポインタ
  */
-void sweep_monster_process(player_type *player_ptr)
+void sweep_monster_process(PlayerType *player_ptr)
 {
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     for (MONSTER_IDX i = floor_ptr->m_max - 1; i >= 1; i--) {
@@ -691,8 +691,8 @@ void sweep_monster_process(player_type *player_ptr)
         if (!monster_is_valid(m_ptr) || player_ptr->wild_mode)
             continue;
 
-        if (m_ptr->mflag.has(MFLAG::BORN)) {
-            m_ptr->mflag.reset(MFLAG::BORN);
+        if (m_ptr->mflag.has(MonsterTemporaryFlagType::BORN)) {
+            m_ptr->mflag.reset(MonsterTemporaryFlagType::BORN);
             continue;
         }
 
@@ -709,7 +709,7 @@ void sweep_monster_process(player_type *player_ptr)
         process_monster(player_ptr, i);
         reset_target(m_ptr);
         if (player_ptr->no_flowed && one_in_(3))
-            m_ptr->mflag2.set(MFLAG2::NOFLOW);
+            m_ptr->mflag2.set(MonsterConstantFlagType::NOFLOW);
 
         if (!player_ptr->playing || player_ptr->is_dead || player_ptr->leaving)
             return;
@@ -722,12 +722,12 @@ void sweep_monster_process(player_type *player_ptr)
  * @param m_ptr モンスターへの参照ポインタ
  * @return 後続処理が必要ならTRUE
  */
-bool decide_process_continue(player_type *player_ptr, monster_type *m_ptr)
+bool decide_process_continue(PlayerType *player_ptr, monster_type *m_ptr)
 {
     monster_race *r_ptr;
     r_ptr = &r_info[m_ptr->r_idx];
     if (!player_ptr->no_flowed) {
-        m_ptr->mflag2.reset(MFLAG2::NOFLOW);
+        m_ptr->mflag2.reset(MonsterConstantFlagType::NOFLOW);
     }
 
     if (m_ptr->cdis <= (is_pet(m_ptr) ? (r_ptr->aaf > MAX_SIGHT ? MAX_SIGHT : r_ptr->aaf) : r_ptr->aaf))

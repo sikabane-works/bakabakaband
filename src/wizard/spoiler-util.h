@@ -9,7 +9,7 @@
 /* Given an array, determine how many elements are in the array */
 #define N_ELEMENTS(a) (sizeof(a) / sizeof((a)[0]))
 
-enum class spoiler_output_status {
+enum class SpoilerOutputResultType {
     SPOILER_OUTPUT_CANCEL,
     SPOILER_OUTPUT_SUCCESS,
     SPOILER_OUTPUT_FAIL_FOPEN,
@@ -31,6 +31,7 @@ typedef struct obj_desc_list {
     concptr brands[N_ELEMENTS(brand_flags_desc) + 1]; /* A list if an object's elemental brands */
     concptr immunities[N_ELEMENTS(immune_flags_desc) + 1]; /* A list of immunities granted by an object */
     concptr resistances[N_ELEMENTS(resist_flags_desc) + 1]; /* A list of resistances granted by an object */
+    concptr vulnerables[N_ELEMENTS(vulnerable_flags_desc) + 1]; /* A list of resistances granted by an object */
     concptr sustains[N_ELEMENTS(sustain_flags_desc) - 1 + 1]; /* A list of stats sustained by an object */
 
     /* A list of various magical qualities an object may have */

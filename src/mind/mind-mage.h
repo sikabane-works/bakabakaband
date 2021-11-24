@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-bool eat_magic(player_type *player_ptr, int power);
+class PlayerType;
+bool eat_magic(PlayerType *player_ptr, int power);

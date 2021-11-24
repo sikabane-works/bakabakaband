@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-void do_cmd_store(player_type *player_ptr);
+class PlayerType;
+void do_cmd_store(PlayerType *player_ptr);

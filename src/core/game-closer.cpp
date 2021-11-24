@@ -33,7 +33,7 @@
 #include "world/world.h"
 #include "world/world-collapsion.h"
 
-static void clear_floor(player_type *player_ptr)
+static void clear_floor(PlayerType *player_ptr)
 {
     (void)fd_close(highscore_fd);
     highscore_fd = -1;
@@ -41,7 +41,7 @@ static void clear_floor(player_type *player_ptr)
     signals_handle_tstp();
 }
 
-static void send_world_score_on_closing(player_type *player_ptr, bool do_send)
+static void send_world_score_on_closing(PlayerType *player_ptr, bool do_send)
 {
     if (send_world_score(player_ptr, do_send, display_player))
         return;
@@ -61,7 +61,7 @@ static void send_world_score_on_closing(player_type *player_ptr, bool do_send)
  * @param player_ptr プレイヤー構造体参照ポインタ。
  * @return 死亡していればTRUE, まだ生きているならば各処理を済ませた上ででFALSE。
  */
-static bool check_death(player_type *player_ptr)
+static bool check_death(PlayerType *player_ptr)
 {
     if (player_ptr->is_dead || wc_ptr->is_blown_away() )
         return true;
@@ -80,7 +80,7 @@ static bool check_death(player_type *player_ptr)
  * @brief 勝利者用の引退演出処理 /
  * Change the player into a King! -RAK-
  */
-static void kingly(player_type *player_ptr)
+static void kingly(PlayerType *player_ptr)
 {
     bool seppuku = streq(player_ptr->died_from, "Seppuku");
     player_ptr->current_floor_ptr->dun_level = 0;
@@ -140,7 +140,7 @@ static void kingly(player_type *player_ptr)
  * This function is called only from "main.c" and "signals.c".
  * </pre>
  */
-void close_game(player_type *player_ptr)
+void close_game(PlayerType *player_ptr)
 {
     bool do_send = true;
     handle_stuff(player_ptr);

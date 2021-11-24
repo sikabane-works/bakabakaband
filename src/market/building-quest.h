@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-void castle_quest(player_type *player_ptr);
+class PlayerType;
+void castle_quest(PlayerType *player_ptr);

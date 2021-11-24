@@ -1,5 +1,4 @@
 ﻿#pragma once
 
-class player_type;
-
-void process_command(player_type* player_ptr);
+class PlayerType;
+void process_command(PlayerType* player_ptr);
