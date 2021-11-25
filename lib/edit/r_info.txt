@@ -28373,7 +28373,7 @@ N:1486:昆虫の逸脱者
 E:Insectile aberration
 G:I:r
 I:120:12d9:20:40:10
-W:16:2:0:100:0:0
+W:16:2:0:100:4000:1617
 B:STING:HURT:3d4
 B:STING:HURT:3d4
 B:STING:HURT:3d4
@@ -30488,6 +30488,41 @@ S:1_IN_4 | FORGET | MIND_BLAST
 D:人々の抱く「恐怖」の具現によって生まれるとされる人造の悪魔の一体だ。
 D:粘液を全身にまとった艶やかな女性の姿をしている。
 
+N:1616:野盗の長『ジード』
+E:Zeed, the Bandits Leader
+G:p:y
+T:ZEED
+I:112:45d12:25:80:25
+W:19:2:0:290:0:0
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+R:1392:4d9
+F:UNIQUE | MALE | MOVE_BODY | DROP_CORPSE | DROP_SKELETON | HUMAN
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | EVIL
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_POIS | NO_CONF | NO_SLEEP
+D:文明崩壊後の世界を、仲間と共に悪党として生き抜く男だ。
+
+N:1617:繰り返しつくした完成態
+E:Final iterated perfection
+G:I:R
+T:INCECT_PERFECTION
+I:123:20d90:20:100:10
+W:38:2:0:5000:0:0
+B:STING:HURT:9d4
+B:STING:HURT:9d4
+B:STING:HURT:9d4
+R:1486:4d6
+F:IM_POIS | IM_COLD | COLD_BLOOD | ANIMAL | ELDRAZI | EVIL | 
+F:NO_SLEEP | NO_CONF | CAN_FLY | DROP_SKELETON
+S:1_IN_3
+S:BO_MANA
+D:彼は自らの体に施した素晴らしい研究成果を
+D:あらゆるものに施したくて仕方がない。
+D:イニストラードに現れたエムラクールはその手伝いをしてくれたようだ。
 
 
 
