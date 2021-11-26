@@ -28,6 +28,7 @@ enum class AllianceType : int {
     NUMENOR = 17, //!< ヌメノール王国
     GO = 18, //!< GO教
     THE_SHIRE = 19, //!< ホビット庄
+    HAKUSIN_KARATE = 20, //!< 迫真空手部
     MAX,
 };
 
@@ -231,6 +232,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType* creature_ptr) const override;
     virtual ~AllianceTheShire() = default;
+};
+
+class AllianceHakushinKarate : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceHakushinKarate() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceHakushinKarate() = default;
 };
 
 
