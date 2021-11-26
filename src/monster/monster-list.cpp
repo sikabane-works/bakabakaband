@@ -43,6 +43,7 @@
 #include "util/probability-table.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 #include <iterator>
 
 #define HORDE_NOGOOD 0x01 /*!< (未実装フラグ)HORDE生成でGOODなモンスターの生成を禁止する？ */
@@ -102,6 +103,9 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
             max_level = 1 + (max_level * MAX_DEPTH / randint1(MAX_DEPTH));
         }
     }
+
+    max_level += wc_ptr->plus_monster_level();
+
 
     ProbabilityTable<int> prob_table;
 
