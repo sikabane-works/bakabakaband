@@ -31,6 +31,15 @@ void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, PlayerType 
 }
 
 /*!
+ * @brief 時空崩壊度に伴う深層モンスター加算処理
+ */
+DEPTH WorldCollapsion::plus_monster_level()
+{
+    int pow = this->collapse_degree / 1000000 / 2; // 0-50
+    return pow > randint1(100) ? randint1(pow) : 0;
+}
+
+/*!
  * @brief 時空崩壊度単純増減
  */
 void WorldCollapsion::plus_collapsion(int value)
