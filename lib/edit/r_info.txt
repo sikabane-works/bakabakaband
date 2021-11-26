@@ -30524,7 +30524,31 @@ D:彼は自らの体に施した素晴らしい研究成果を
 D:あらゆるものに施したくて仕方がない。
 D:イニストラードに現れたエムラクールはその手伝いをしてくれたようだ。
 
+N:1618:チンピラ
+E:Chinpira
+G:t:s
+I:110:3d6:10:15:250
+W:0:1:0:0:20:1619
+B:HIT:HURT:2d4
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:DROP_90 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | YAKUZA
+D:独特の口調で弱者や愚か者を脅かす、極東の前近代的共同体の末端構成員だ。
 
+N:1619:ヤクザ
+E:Yakuza
+G:p:o
+I:110:4d6:10:20:250
+W:0:3:0:20:0:0
+B:SHOOT:HURT:2d5
+B:HIT:HURT:2d5
+R:1618:1d6
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:DROP_90 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | YAKUZA
+S:1_IN_5
+S:SHOOT
+D:極東の前近代的共同体の正式な一員だ。常に配下を引き連れ食い物にする相手を探している。
 
 # N: serial number : monster name
 # G: symbol : color
