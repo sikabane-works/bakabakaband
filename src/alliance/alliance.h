@@ -29,6 +29,7 @@ enum class AllianceType : int {
     GO = 18, //!< GO教
     THE_SHIRE = 19, //!< ホビット庄
     HAKUSIN_KARATE = 20, //!< 迫真空手部
+    DOKACHANS = 21, //!< 岡山中高年男児糞尿愛好会
     MAX,
 };
 
@@ -241,6 +242,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType* creature_ptr) const override;
     virtual ~AllianceHakushinKarate() = default;
+};
+
+class AllianceDokachans : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceDokachans() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceDokachans() = default;
 };
 
 
