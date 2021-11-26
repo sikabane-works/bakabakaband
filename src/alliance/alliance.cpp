@@ -27,6 +27,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::GO, std::make_unique<AllianceGO>(AllianceType::GO, "GO", _("GO教", "GO"), 1800000L) },
     { AllianceType::THE_SHIRE, std::make_unique<AllianceTheShire>(AllianceType::THE_SHIRE, "THE-SHIRE", _("ホビット庄", "The Shire"), 5000L) },
     { AllianceType::HAKUSIN_KARATE, std::make_unique<AllianceTheShire>(AllianceType::HAKUSIN_KARATE, "HAKUSIN-KARATE", _("迫真空手部", "Hakusin Karate"), 5000L) },
+    { AllianceType::DOKACHANS, std::make_unique<AllianceTheShire>(AllianceType::DOKACHANS, "DOKACHANS", _("岡山中高年男児糞尿愛好会", "Dokachans"), 69L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -158,6 +159,11 @@ int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) c
 }
 
 int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
 {
     return 0;
 }
