@@ -30,6 +30,7 @@ enum class AllianceType : int {
     THE_SHIRE = 19, //!< ホビット庄
     HAKUSIN_KARATE = 20, //!< 迫真空手部
     DOKACHANS = 21, //!< 岡山中高年男児糞尿愛好会
+    KETHOLDETH = 22, //!< ケツホルデス
     MAX,
 };
 
@@ -251,6 +252,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType* creature_ptr) const override;
     virtual ~AllianceDokachans() = default;
+};
+
+class AllianceKetholdeth : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceKetholdeth() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceKetholdeth() = default;
 };
 
 
