@@ -29526,7 +29526,7 @@ I:110:35d12:40:20:3
 W:0:8:0:0:0:0
 B:HIT:HURT:1d5
 B:CRUSH:HURT:1d5
-F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | HUMAN
 F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:彼は森の平和を守るペンギンだ。例え魚臭くとも彼を愛さずにはいられない。
@@ -29636,7 +29636,7 @@ F:DROP_KIND_1_IN_1_758_0_1d1
 F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
 F:RAND_25 | RAND_50 | WILD_TOWN | WILD_ONLY
 F:TAKE_ITEM | OPEN_DOOR | UNIQUE | STUPID | WEIRD_MIND
-D:$'Where should we go?' You just can't help feeling sorry for him.
+D:$'Where should I go?' You just can't help feeling sorry for him.
 D:「∴さて‥‥どこへ行こうか？」彼を見ると、どうしても哀れだという思いを禁じ得ない。
 
 N:1565:ケンカ柔道『加納剛次』
@@ -30549,6 +30549,24 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | YAKUZA
 S:1_IN_5
 S:SHOOT
 D:極東の前近代的共同体の正式な一員だ。常に配下を引き連れ食い物にする相手を探している。
+
+N:1620:川越市の未亡人『柊飾美』
+E:Kazami Hiiragi, the Widow of Kawagoe City
+G:p:o
+I:125:150d14:60:80:5
+W:45:5:0:14000:0:0
+B:SLASH:SUPERHURT:14d4
+B:SLASH:SUPERHURT:14d4
+B:SLASH:SUPERHURT:14d4
+B:SLASH:SUPERHURT:14d4
+F:UNIQUE | FEMALE | WEIRD_MIND | HUMAN
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | NO_STUN
+D:夫を失い、内気になってしまった指名手配中の連続殺人犯の一人息子の行く末を憂う、
+D:ごく普通の川越市民の女性だ。その刀の切れ味は一呼吸の間もなく、
+D:息子の世話を拒否する学生を抹殺する。
+
 
 # N: serial number : monster name
 # G: symbol : color
