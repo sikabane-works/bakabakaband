@@ -30571,6 +30571,20 @@ D:夫を失い、内気になってしまった指名手配中の連続殺人犯
 D:ごく普通の川越市民の女性だ。その刀の切れ味は一呼吸の間もなく、
 D:息子の世話を拒否する学生を抹殺する。
 
+N:1621:爆破魔術師『ティム』
+E:Tim, the Blast Encnhanter
+G:p:R
+I:125:11d30:50:30:10
+W:32:5:0:3000:0:0
+B:HIT:HURT:1d4
+F:RAND_50 | HUMAN | MAGE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:OPEN_DOOR | BASH_DOOR | DROP_GOOD | DROP_2D2
+F:IM_FIRE | NO_CONF | NO_SLEEP | NO_STUN | UNIQUE
+S:1_IN_1 |
+S:BA_FIRE | BLINK
+D:聖杯のありかを知る魔術師だ。
+D:とかく周囲を爆破せずにはいられない。
+D:相手がかのアーサー王でもない限り、人の話を聞く気もないようだ。
 
 # N: serial number : monster name
 # G: symbol : color
