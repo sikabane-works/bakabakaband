@@ -31,6 +31,7 @@ enum class AllianceType : int {
     HAKUSIN_KARATE = 20, //!< 迫真空手部
     DOKACHANS = 21, //!< 岡山中高年男児糞尿愛好会
     KETHOLDETH = 22, //!< ケツホルデス
+    MELDOR = 23, //!< メルドール
     MAX,
 };
 
@@ -261,6 +262,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType* creature_ptr) const override;
     virtual ~AllianceKetholdeth() = default;
+};
+
+class AllianceMeldor : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceMeldor() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceMeldor() = default;
 };
 
 
