@@ -30586,6 +30586,23 @@ D:聖杯のありかを知る魔術師だ。
 D:とかく周囲を爆破せずにはいられない。
 D:相手がかのアーサー王でもない限り、人の話を聞く気もないようだ。
 
+# また壊れた奴を追加するのか、壊れるなあ（自戒）(DSKL)
+N:1622:教育実習生『神谷』
+E:Kamiya, the Principal
+G:t:W
+I:109:10d4:10:1:40
+W:0:1:0:0:0:0
+B:PUNCH:HURT:1d1
+F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN | HOMO_SEXUAL
+F:RAND_25 | RAND_50 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | UNIQUE | STUPID | WEIRD_MIND
+D:$'Go away, Mr.Ishii and Morishita are waiting for sex with me.'
+D:$ You just can't help feeling sorry for naked him.
+D:「どいて下さい、石井先生と森下君が俺とのセックスを待っているんです」
+D:全裸の彼を見ると、どうしても哀れだという思いを禁じ得ない。
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
