@@ -32,6 +32,7 @@ enum class AllianceType : int {
     DOKACHANS = 21, //!< 岡山中高年男児糞尿愛好会
     KETHOLDETH = 22, //!< ケツホルデス
     MELDOR = 23, //!< メルドール
+    ANGARTHA = 24, //!< アンガルタ
     MAX,
 };
 
@@ -271,6 +272,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType* creature_ptr) const override;
     virtual ~AllianceMeldor() = default;
+};
+
+class AllianceAngartha : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceAngartha() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceAngartha() = default;
 };
 
 
