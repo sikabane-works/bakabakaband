@@ -72,6 +72,7 @@ enum class ItemKindType : short {
     HISSATSU_BOOK = 106,
     HEX_BOOK = 107,
     TRAP = 108,
+    MATERIAL = 109,
     GOLD = 127, /* Gold can only be picked up by players */
 };
 
