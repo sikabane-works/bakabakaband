@@ -176,8 +176,11 @@ errr parse_f_info(std::string_view buf, angband_header *)
                 } else if (f_tokens[0] == "POWER") {
                     info_set_value(f_ptr->power, f_tokens[1]);
                     continue;
+                } else if (f_tokens[0] == "C-PRIORITY") {
+                    info_set_value(f_ptr->change_priority, f_tokens[1]);
+                    continue;
                 }
-            }
+        }
 
             if (!grab_one_feat_flag(f_ptr, f))
                 return PARSE_ERROR_INVALID_FLAG;

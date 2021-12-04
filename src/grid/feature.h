@@ -44,6 +44,7 @@ typedef struct feature_type {
     FEAT_IDX destroyed{}; /*!< *破壊*に巻き込まれた時の地形移行先(未実装？) / Default destroyed state */
     EnumClassFlagGroup<FloorFeatureType> flags{}; /*!< 地形の基本特性ビット配列 / Flags */
     int16_t priority{}; /*!< 縮小表示で省略する際の表示優先度 / Map priority */
+    int16_t change_priority{}; /*!< 地形変化の優先度 / Map priority */
     feature_state state[MAX_FEAT_STATES]{}; /*!< feature_state テーブル */
     FEAT_SUBTYPE subtype{}; /*!< 副特性値 */
     FEAT_POWER power{}; /*!< 地形強度 */
