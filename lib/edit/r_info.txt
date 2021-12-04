@@ -30672,6 +30672,24 @@ F:OPEN_DOOR | BASH_DOOR | WILD_MOUNTAIN | DROP_CORPSE | UNIQUE | FORCE_MAXHP
 F:ANIMAL | NASTY | NO_SLEEP | NO_STUN | MALE
 D:しｗらｗなｗいｗよｗ
 
+N:1627:『JGN姉貴』
+E:Sister JGN
+G:p:B
+I:130:30d40:50:100:30
+W:39:2:0:4500:0:0
+B:HIT:HURT:6d4
+B:HIT:HURT:6d4
+B:HIT:HURT:6d4
+B:SHOOT:HURT:50d4
+F:FEMALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_GOOD | DROP_4D2 | SMART
+F:DROP_CORPSE | DROP_SKELETON | CAN_SWIM | HOMO_SEXUAL | FORCE_MAXHP
+F:UNIQUE
+S:1_IN_3 |
+S:ROCKET | SHOOT
+V:133
+D:ALCと似た姿をしているが前髪の長い別人だ、恐ろしい俊敏さで多数の銃器を巧みに操る。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
