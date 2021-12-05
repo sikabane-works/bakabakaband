@@ -490,14 +490,14 @@ void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 void process_monster_change_feat(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     for (const auto &spawn_info : r_ptr->change_feats) {
         auto num = std::get<0>(spawn_info);
         auto deno = std::get<1>(spawn_info);
         auto feat = std::get<2>(spawn_info);
-        if (randint1(deno) <= num) {
-            cave_set_feat(player_ptr, m_ptr->fy, m_ptr->fx, feat);
+        if (randint1(deno) <= num && feat) {
+            cave_set_feat_priority(player_ptr, m_ptr->fy, m_ptr->fx, feat);
         }
     }
 }
