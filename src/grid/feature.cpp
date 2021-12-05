@@ -188,6 +188,16 @@ FEAT_IDX feat_jammed_door_random(int door_type)
     return feat_door[door_type].num_jammed ? feat_door[door_type].jammed[randint0(feat_door[door_type].num_jammed)] : feat_none;
 }
 
+void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat)
+{
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *g_ptr = &floor_ptr->grid_array[y][x];
+    if(f_info[g_ptr->feat].change_priority <= f_info[feat].change_priority)
+    {
+        cave_set_feat(player_ptr, y, x, feat);
+    }
+}
+
 /*
  * Change the "feat" flag for a grid, and notice/redraw the grid
  */

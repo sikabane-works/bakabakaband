@@ -125,5 +125,6 @@ bool is_ascii_graphics(char x);
 bool permanent_wall(feature_type *f_ptr);
 FEAT_IDX feat_locked_door_random(int door_type);
 FEAT_IDX feat_jammed_door_random(int door_type);
+void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat);
 void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat);
 FEAT_IDX conv_dungeon_feat(floor_type *floor_ptr, FEAT_IDX newfeat);
