@@ -460,6 +460,7 @@ BIT_FLAGS get_player_flags(PlayerType *player_ptr, tr_type tr_flag)
     case TR_SELF_ELEC:
     case TR_WORLD_END:
     case TR_PERSISTENT_CURSE:
+    case TR_MEGATON_COIN:
         return check_equipment_flags(player_ptr, tr_flag);
     case TR_VUL_CURSE:
         return has_vuln_curse(player_ptr);

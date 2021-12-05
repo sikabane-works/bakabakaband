@@ -1,13 +1,17 @@
 ﻿#include "inventory/inventory-curse.h"
 #include "artifact/fixed-art-types.h"
+#include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
+#include "dungeon/dungeon.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
+#include "floor/floor-mode-changer.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/files-util.h"
+#include "io/write-diary.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "object-enchant/item-feeling.h"
@@ -24,6 +28,7 @@
 #include "spell-kind/spells-random.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell/summon-types.h"
+#include "game-option/special-options.h"
 #include "status/bad-status-setter.h"
 #include "status/buff-setter.h"
 #include "system/floor-type-definition.h"
@@ -415,6 +420,28 @@ static void curse_drain_mp(PlayerType *player_ptr)
     player_ptr->redraw |= PR_MANA;
 }
 
+static void curse_megaton_coin(PlayerType *player_ptr)
+{
+    if (!get_player_flags(player_ptr, TR_MEGATON_COIN)) return;
+    auto d_ptr = &d_info[player_ptr->current_floor_ptr->dungeon_idx];
+    if (!one_in_(364) || player_ptr->current_floor_ptr->dun_level == 0 || player_ptr->current_floor_ptr->dun_level == d_ptr->maxdepth ||
+        player_ptr->current_floor_ptr->inside_quest || player_ptr->current_floor_ptr->inside_arena)
+        return;
+
+    msg_print(_("メガトンコインで床が抜けた！ンアアアアアアァァァ！", "The floor came off with the Megaton Coin!AAAAaaaaaa!"));
+
+    auto dam = damroll(2, 8);
+    take_hit(player_ptr, DAMAGE_NOESCAPE, dam, _("メガトンコイン", "the Megaton Coin"));
+
+    if (autosave_l && (player_ptr->chp >= 0))
+        do_cmd_save_game(player_ptr, true);
+
+    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
+    move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+
+
+}
+
 static void occur_curse_effects(PlayerType *player_ptr)
 {
     if ((player_ptr->cursed.has_none_of(TRC_P_FLAG_MASK) && player_ptr->cursed_special.has_none_of(TRCS_P_FLAG_MASK)) || player_ptr->phase_out
@@ -442,6 +469,7 @@ static void occur_curse_effects(PlayerType *player_ptr)
 
     curse_drain_hp(player_ptr);
     curse_drain_mp(player_ptr);
+    curse_megaton_coin(player_ptr);
 }
 
 /*!

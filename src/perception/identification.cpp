@@ -725,6 +725,10 @@ bool screen_object(PlayerType *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それはあなたの魔力を吸い取る。", "It drains your mana.");
     }
 
+    if (flgs.has(TR_MEGATON_COIN)) {
+        info[i++] = _("それはあなたをダンジョンの奥へ引きずり落とす", "It drops you into the dungeon");
+    }
+
     if (mode & SCROBJ_FAKE_OBJECT) {
         switch (o_ptr->tval) {
         case ItemKindType::RING:
