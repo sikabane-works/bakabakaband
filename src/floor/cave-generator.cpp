@@ -391,6 +391,7 @@ static void decide_grid_glowing(floor_type *floor_ptr, dun_data_type *dd_ptr, du
     bool is_empty_or_dark = dd_ptr->empty_level;
     is_empty_or_dark &= !one_in_(DARK_EMPTY) || (randint1(100) > floor_ptr->dun_level);
     is_empty_or_dark &= d_ptr->flags.has_not(DungeonFeatureType::DARKNESS);
+    is_empty_or_dark &= d_ptr->flags.has(DungeonFeatureType::ALWAY_LIGHT);
     if (!is_empty_or_dark)
         return;
 
