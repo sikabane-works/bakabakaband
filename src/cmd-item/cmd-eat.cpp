@@ -54,7 +54,6 @@
 #include "sv-definition/sv-other-types.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
-#include "system/player-type-definition.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
@@ -493,6 +492,23 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, object_type *o_ptr)
     case SV_FOOD_HIDEBU:
         gain_exp(player_ptr, player_ptr->lev * 100);
         (void)set_hero(player_ptr, randint1(25) + 25, false);
+        if (one_in_(100)) {
+            (void)do_inc_stat(player_ptr, A_STR);
+        }
+        if (one_in_(100)) {
+            (void)do_inc_stat(player_ptr, A_DEX);
+        }
+        if (one_in_(100)) {
+            (void)do_inc_stat(player_ptr, A_CON);
+        }
+        return true;
+    case SV_FOOD_BASILISK_TIME:
+        gain_exp(player_ptr, player_ptr->lev * 100);
+        msg_print("あなたは突如狂ったように踊り始めた！");
+        msg_print("「みずのよーうにのようにやさしく！はなのよーうにはげしく！ふーるえ……」");
+        (void)BadStatusSetter(player_ptr).mod_stun(25 + randint1(25));
+        (void)set_hero(player_ptr, randint1(25) + 25, false);
+        (void)set_shero(player_ptr, randint1(25) + 25, false);
         if (one_in_(100)) {
             (void)do_inc_stat(player_ptr, A_STR);
         }

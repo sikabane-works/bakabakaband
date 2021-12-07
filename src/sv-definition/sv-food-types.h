@@ -44,4 +44,5 @@ enum sv_food_type {
     SV_FOOD_ABESHI = 56,
     SV_FOOD_HIDEBU = 57,
     SV_FOOD_COOKIE = 58,
+    SV_FOOD_BASILISK_TIME = 60,
 };
