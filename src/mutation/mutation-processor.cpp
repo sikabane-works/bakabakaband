@@ -213,6 +213,16 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
     }
 
+    if (player_ptr->muta.has(PlayerMutationType::ZEERO_VIRUS) && (randint1(721) == 1)) {
+        msg_print(_("SEX!DAAAAAAAAAAAA!", "SEX!DAAAAAAAAAAAA!"));
+        msg_print(NULL);
+        disturb(player_ptr, false, true);
+        player_ptr->redraw |= PR_EXTRA;
+        (void)bss.mod_hallucination(randint0(10) + 20);
+        (void)set_shero(player_ptr, 10 + randint1(player_ptr->lev), false);
+        (void)set_fast(player_ptr, 10 + randint1(player_ptr->lev), false);
+    }
+
     if (player_ptr->muta.has(PlayerMutationType::PROD_MANA) && !player_ptr->anti_magic && one_in_(9000)) {
         int dire = 0;
         disturb(player_ptr, false, true);
