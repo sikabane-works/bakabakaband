@@ -30756,6 +30756,25 @@ D:とある未来、レプリロイドと呼ばれる機械人造生命体たち
 D:人類への叛逆を企てる時代、その動乱に身を投じた「イレギュラー」の一体だ。
 D:『このグラスの中身がバーボンでも泥水でも、俺たちには大差ない』
 
+N:1632:『ハート様』
+E:Mr.Heart
+G:P:R
+I:109:18d100:40:180:20
+W:38:2:0:4000:0:0
+B:CRUSH:SUPERHURT:9d10
+B:CRUSH:SUPERHURT:9d10
+B:CRUSH:SUPERHURT:9d10
+B:CRUSH:SUPERHURT:9d10
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GOOD
+F:OPEN_DOOR | POWERFUL | MOVE_BODY | FRIENDLY
+F:GOOD | EVIL | RES_TELE | NO_CONF | NO_SLEEP | NO_STUN |
+D:拳法殺しの異名を持つ、世紀末の組織『ＫＩＮＧ』の大幹部だ。
+D:普段は暴力を好まぬ温和な統治者であるが、
+D:血を見ると狂乱して周囲を破壊し尽くす悪癖がある。
+F:DROP_KIND_1_IN_1_749_0_1d1
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
