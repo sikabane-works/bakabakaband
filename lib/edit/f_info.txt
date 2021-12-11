@@ -2366,6 +2366,21 @@ W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | REMEMBER | THORN
 F:CAN_FLY | TELEPORTABLE
 
+N:296:DEEP_BLOOD_POND
+J:深い血溜まり
+E:Deep blood pond
+G:~:r:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | REMEMBER | WATER | DEEP | CAN_FLY | CAN_SWIM |
+F:TELEPORTABLE
+
+N:297:SHALLOW_BLOOD_POND
+J:浅い血溜まり
+E:Shallow blood pond
+G:~:R:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | REMEMBER | WATER | SHALLOW |
+F:CAN_FLY | CAN_SWIM | TELEPORTABLE
 
 
 # D - Black        w - White          s - Gray          o - Orange
