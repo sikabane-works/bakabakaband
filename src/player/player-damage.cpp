@@ -395,7 +395,6 @@ int take_hit(PlayerType *player_ptr, int damage_type, HIT_POINT damage, concptr 
                 angband_strcpy(player_ptr->died_from, dummy, sizeof player_ptr->died_from);
             }
 
-            w_ptr->total_winner = false;
             if (winning_seppuku) {
                 add_retired_class(player_ptr->pclass);
                 exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
