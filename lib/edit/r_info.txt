@@ -30770,7 +30770,8 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
 F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GOOD
 F:OPEN_DOOR | POWERFUL | MOVE_BODY | FRIENDLY
 F:GOOD | EVIL | RES_TELE | NO_CONF | NO_SLEEP | NO_STUN |
-D:拳法殺しの異名を持つ、世紀末の組織『ＫＩＮＧ』の大幹部だ。
+D:「拳法殺し」の異名で呼ばれ、脂肪に覆われた異形の巨躯を持つ、
+D:世紀末の組織『ＫＩＮＧ』の大幹部だ。
 D:普段は暴力を好まぬ温和な統治者であるが、
 D:血を見ると狂乱して周囲を破壊し尽くす悪癖がある。
 F:DROP_KIND_1_IN_1_749_0_1d1
@@ -30811,7 +30812,26 @@ F:NASTY | FRIENDLY
 F:OPEN_DOOR | BASH_DOOR | NO_FEAR | UNIQUE | DROP_GOOD | DROP_3D2
 D:１回の射精で１リットルのザーメンを流し込むガロン塚本！
 
-
+# シュマ=ゴラスから調整。虹裏設定はなしだから(DSKL)
+N:1635:『バックベアード』
+E:Backbeard
+G:e:s
+I:125:45d100:70:120:0
+W:60:3:0:27000:0:0
+B:CRUSH:HURT:10d12
+B:CRUSH:HURT:10d12
+B:CRUSH:HURT:10d12
+B:GAZE:UN_BONUS:5d9
+F:ONLY_ITEM | DROP_1D2 | CAN_SWIM | DROP_GREAT
+F:CAN_SPEAK | UNIQUE | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC
+F:IM_ACID | IM_POIS | IM_COLD | IM_ELEC | RES_NETH | RES_WATE | RES_NEXU
+F:NO_FEAR | NO_CONF | NO_SLEEP | DEMON | SMART | RES_CHAO
+F:COLD_BLOOD | RES_DISE | NO_STUN | POWERFUL
+S:1_IN_3 |
+S:HASTE | FORGET | HEAL | HAND_DOOM | TPORT
+S:TELE_LEVEL | CONF | BLIND | BRAIN_SMASH | DRAIN_MANA | BO_MANA | BA_NETH
+S:S_MONSTERS | DISPEL | PSY_SPEAR
+D:西洋の妖の頂点に立つ者とも、異界の存在とも言われる恐るべき黒く巨大な目だ。
 
 # N: serial number : monster name
 # G: symbol : color
