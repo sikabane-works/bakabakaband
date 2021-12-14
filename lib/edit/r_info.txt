@@ -30833,6 +30833,25 @@ S:TELE_LEVEL | CONF | BLIND | BRAIN_SMASH | DRAIN_MANA | BO_MANA | BA_NETH
 S:S_MONSTERS | DISPEL | PSY_SPEAR
 D:西洋の妖の頂点に立つ者とも、異界の存在とも言われる恐るべき黒く巨大な目だ。
 
+# 新ゲッターの「地獄変」364364(DSKL)
+N:1636:ゲッター聖ドラゴンの下僕
+E:Follower of Getter Saint Dragon
+G:P:r
+I:135:60d70:30:180:20
+W:52:3:0:16500:0:0
+B:HIT:HURT:48d1
+B:HIT:HURT:48d1
+B:HIT:HURT:48d1
+B:SHOOT:HURT:48d2
+F:EVIL | DROP_GOOD | REGENERATE | CAN_FLY | NONLIVING | ALLIANCE_GETTER | MOB_400
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_4D2
+F:OPEN_DOOR | BASH_DOOR | RES_TELE | KILL_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_3 | HEAL | SHOOT
+D:彼らはゲッターが見せる無数の人類の未来の中でも特に恐るべき具現だ。
+D:聖ドラゴンの力の元、機械と融合を果たした彼らは互いに殺し合い、
+D:その部品を奪い合うことでただひたすらに強くなることを求め続けている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
