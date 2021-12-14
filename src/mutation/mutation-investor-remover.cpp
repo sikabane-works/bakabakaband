@@ -196,6 +196,22 @@ static void neutralize_other_status(PlayerType *player_ptr, glm_type *gm_ptr)
             player_ptr->muta.reset(PlayerMutationType::BEAK);
         }
     }
+
+    if (gm_ptr->muta_which == PlayerMutationType::HOMO_SEXUAL) {
+        if (player_ptr->muta.has(PlayerMutationType::BI_SEXUAL)) {
+            msg_print(_("あなたは同性しか興味を持たなくなった。", "You are only interested in the same sex."));
+            player_ptr->muta.reset(PlayerMutationType::BI_SEXUAL);
+        }
+    }
+
+    if (gm_ptr->muta_which == PlayerMutationType::BI_SEXUAL) {
+        if (player_ptr->muta.has(PlayerMutationType::HOMO_SEXUAL)) {
+            msg_print(_("あなたは同性のみならず、異性にも興味を持ち始めた。", "You have begun to be interested not only in the same sex but also in the opposite sex."));
+            player_ptr->muta.reset(PlayerMutationType::HOMO_SEXUAL);
+        }
+    }
+
+
 }
 
 /*!
