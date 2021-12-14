@@ -101,5 +101,7 @@ enum class PlayerMutationType {
     GOOD_LUCK = 95, /*!< 突然変異: 白いオーラ(幸運) */
     DEFECATION = 96, /*!< 突然変異: 脱糞癖 */
     ZEERO_VIRUS = 97, /*!< 突然変異: ゼEROウイルス感染 */
+    HOMO_SEXUAL = 98, /*!< 突然変異: 同性愛 */
+    BI_SEXUAL = 99, /*!< 突然変異: 両性愛 */
     MAX,
 };
