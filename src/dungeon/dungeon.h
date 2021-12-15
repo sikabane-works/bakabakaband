@@ -32,6 +32,7 @@
 #define DUNGEON_NO_MELEE 17
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
+#define DUNGEON_VOID_TERRITORY 23
 #define DUNGEON_MAX 25
 
 typedef struct feat_prob {

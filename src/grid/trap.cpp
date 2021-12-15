@@ -8,6 +8,7 @@
 #include "effect/effect-processor.h"
 #include "floor/cave.h"
 #include "floor/floor-mode-changer.h"
+#include "floor/floor-leaver.h"
 #include "game-option/birth-options.h"
 #include "game-option/special-options.h"
 #include "grid/feature.h"
@@ -157,6 +158,7 @@ void init_normal_traps(void)
     normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_FIRE_STORM");
     normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_ICE_STORM");
     normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_CHAOS_STORM");
+    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_JUMP_VOID");
 }
 
 /*!
@@ -659,6 +661,14 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         fire_ball(player_ptr, AttributeType::CHAOS, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(player_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
         break;
+
+    case TRAP_JUMP_VOID: {
+        msg_print(_("なんてこった！あなたは猿空間に送られた！", "What a hell! You were sent to the SARU space!"));
+        jump_floor(player_ptr, DUNGEON_VOID_TERRITORY, player_ptr->current_floor_ptr->dun_level);
+        break;
+    }
+
+
     }
     default:
         break;
