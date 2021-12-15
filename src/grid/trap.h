@@ -56,10 +56,11 @@ enum trap_type {
     TRAP_FIRE_STORM = 23,
     TRAP_ICE_STORM = 24,
     TRAP_CHAOS_STORM = 25,
+    TRAP_JUMP_VOID = 26,
 
-	TRAP_MAX = 26,
+	TRAP_MAX = 27,
 };
-const int MAX_NORMAL_TRAPS = 23;
+const int MAX_NORMAL_TRAPS = 24;
 
 
 extern const std::vector<EnumClassFlagGroup<ChestTrapType>> chest_traps;
