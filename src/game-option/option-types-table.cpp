@@ -164,7 +164,7 @@ const std::vector<option_type> option_info = {
 
     { &auto_debug_save, true, OPT_PAGE_GAMEPLAY, 4, 7, "auto_debug_save", _("デバッグ用セーブデータを自動生成する", "Create a debug save automatically") },
 
-    { &allow_debug_options, false, OPT_PAGE_GAMEPLAY, 6, 11, "allow_debug_options", _("デバッグ/詐欺オプションを許可する", "Allow use of debug/cheat options") },
+    { &allow_debug_opts, false, OPT_PAGE_GAMEPLAY, 6, 11, "allow_debug_opts", _("デバッグ/詐欺オプションを許可する", "Allow use of debug/cheat options") },
 
     /*** Disturbance ***/
 
@@ -239,7 +239,7 @@ const std::vector<option_type> option_info = {
 
     { &powerup_home, true, OPT_PAGE_BIRTH, 4, 3, "powerup_home", _("我が家を拡張する(*)", "Increase capacity of your home (*)") },
 
-    { &keep_savefile, true, OPT_PAGE_BIRTH, 4, 4, "keep_savefile", _("同一のセーブファイルでゲームを開始する(*)", "Start game with same savefile thet is loaded (*)") },
+    { &keep_savefile, true, OPT_PAGE_BIRTH, 4, 4, "keep_savefile", _("同一のセーブファイルでゲームを開始する", "Start game with same savefile thet is loaded") },
 
     /*** Easy Object Auto-Destroyer ***/
     { &destroy_items, false, OPT_PAGE_AUTODESTROY, 7, 0, "destroy_items", _("アイテムの簡易自動破壊を使用する", "Use easy auto-destroyer") },
