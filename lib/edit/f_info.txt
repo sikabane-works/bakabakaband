@@ -2392,6 +2392,13 @@ K:DESTROYED:*FLOOR*
 F:SUBTYPE_26 | POWER_5 | LOS | PROJECT | MOVE | PLACE | NOTICE | REMEMBER |
 F:DISARM | TRAP | HIT_TRAP | CAN_FLY | HURT_DISI | TELEPORTABLE
 
+N:299:PERMANENT_FLOOR
+J:永久床
+E:PERMANENT floor
+G:.:B:LIT
+W:2
+F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE | PERMANENT
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
