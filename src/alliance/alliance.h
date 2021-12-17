@@ -34,6 +34,7 @@ enum class AllianceType : int {
     MELDOR = 23, //!< メルドール
     ANGARTHA = 24, //!< アンガルタ
     GETTER = 25, //!< ゲッター
+    PURE_MIRRODIN = 26, //!< 清純なるミラディン
     MAX,
 };
 
@@ -293,6 +294,14 @@ public:
     virtual ~AllianceGetter() = default;
 };
 
+class AlliancePureMirrodin : public Alliance {
+public:
+    using Alliance::Alliance;
+    AlliancePureMirrodin() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AlliancePureMirrodin() = default;
+};
 
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
