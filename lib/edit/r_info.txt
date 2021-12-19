@@ -30878,6 +30878,25 @@ F:NASTY | FRIENDLY
 F:OPEN_DOOR | BASH_DOOR | NO_FEAR | UNIQUE | DROP_GOOD | DROP_3D2
 D:抜かずで八時間やり続けた記録を持つ…抜か八！
 
+N:1639:風雲拳の使い手『ショー・疾風』
+E:Joe Hayate, the Master of the Fuhunken
+G:p:B
+I:128:28d40:50:110:30
+W:33:2:0:4500:0:0
+B:PUNCH:HURT:10d5
+B:PUNCH:HURT:10d5
+B:PUNCH:HURT:10d5
+B:SHOOT:HURT:15d4
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_GOOD | DROP_3D2 | STUPID
+F:DROP_CORPSE | DROP_SKELETON | CAN_SWIM | HUMAN | FORCE_MAXHP
+F:UNIQUE | GOOD | NO_FEAR
+S:1_IN_2 |
+S:SHOOT | SHRIEK
+D:風雲拳───それは実戦空手道とブーメランをくみあわせた
+D:まったくあたらしい格闘技…
+D:そしてこの若者の名はハヤテ。風雲拳の奥義をきわめた男だ。
+D:今、最強の獅子に挑む！「うおおおおおおおおおおおおおおおおおお！」
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
