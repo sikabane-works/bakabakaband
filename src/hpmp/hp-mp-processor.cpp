@@ -227,6 +227,19 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
+    if (f_ptr->flags.has(FloorFeatureType::THORN) && !player_ptr->levitation) {
+        int damage;
+        msg_print(_("棘に体が突き刺さっている！", "Your body is stuck in a thorn!"));
+        if (calc_inventory_weight(player_ptr) > calc_weight_limit(player_ptr)) {
+            damage = randint1(player_ptr->lev);        }
+        else {
+            damage = (randint1(player_ptr->lev) + 1) / 2;
+        }
+        cave_no_regen = true;
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, _("突起物", "Protrusions"));
+        sound(SOUND_TERRAIN_DAMAGE);
+    }
+
     if (f_ptr->flags.has(FloorFeatureType::PLASMA)) {
         cave_no_regen
             = deal_damege_by_feat(player_ptr, g_ptr, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);

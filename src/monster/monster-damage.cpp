@@ -12,7 +12,6 @@
 #include "core/speed-table.h"
 #include "core/stuff-handler.h"
 #include "game-option/birth-options.h"
-#include "game-option/game-play-options.h"
 #include "game-option/play-record-options.h"
 #include "io/files-util.h"
 #include "io/report.h"
@@ -108,7 +107,7 @@ bool MonsterDamageProcessor::mon_take_hit(concptr note)
         m_ptr->dealt_damage = m_ptr->max_maxhp * 100;
     }
 
-    if (allow_debug_options) {
+    if (w_ptr->wizard) {
         msg_format(_("合計%d/%dのダメージを与えた。", "You do %d (out of %d) damage."), m_ptr->dealt_damage, m_ptr->maxhp);
     }
 
@@ -384,7 +383,7 @@ void MonsterDamageProcessor::show_kill_message(concptr note, GAME_TEXT *m_name)
 
     auto explode = false;
     for (auto i = 0; i < 4; i++) {
-        if (r_ptr->blow[i].method == RBM_EXPLODE) {
+        if (r_ptr->blow[i].method == RaceBlowMethodType::EXPLODE) {
             explode = true;
         }
     }

@@ -179,6 +179,7 @@ const std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "WORLD_END", TR_WORLD_END },
     { "PERSISTENT_CURSE", TR_PERSISTENT_CURSE },
     { "VUL_CURSE", TR_VUL_CURSE },
+    { "MEGATON_COIN", TR_MEGATON_COIN },
 };
 
 /*!

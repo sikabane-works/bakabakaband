@@ -9,6 +9,7 @@
 #include "system/angband.h"
 #include "util/flag-group.h"
 #include "room/room-types.h"
+#include "alliance/alliance.h"
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -31,6 +32,7 @@
 #define DUNGEON_NO_MELEE 17
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
+#define DUNGEON_VOID_TERRITORY 23
 #define DUNGEON_MAX 25
 
 typedef struct feat_prob {
@@ -44,6 +46,8 @@ typedef struct dungeon_type {
 
     std::string name; /* Name */
     std::string text; /* Description */
+
+	int trap_rate = 100; //!< トラップ生成率
 
 	POSITION dy{};
 	POSITION dx{};
@@ -89,6 +93,7 @@ typedef struct dungeon_type {
 
 	bool unique_room_rate;
 	int room_rate[ROOM_T_MAX]; /* ダンジョン独自の部屋生成率 */
+    AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
 } dungeon_type;
 
 extern std::vector<DEPTH> max_dlv;

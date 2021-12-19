@@ -28,6 +28,13 @@ enum class AllianceType : int {
     NUMENOR = 17, //!< ヌメノール王国
     GO = 18, //!< GO教
     THE_SHIRE = 19, //!< ホビット庄
+    HAKUSIN_KARATE = 20, //!< 迫真空手部
+    DOKACHANS = 21, //!< 岡山中高年男児糞尿愛好会
+    KETHOLDETH = 22, //!< ケツホルデス
+    MELDOR = 23, //!< メルドール
+    ANGARTHA = 24, //!< アンガルタ
+    GETTER = 25, //!< ゲッター
+    PURE_MIRRODIN = 26, //!< 清純なるミラディン
     MAX,
 };
 
@@ -233,6 +240,68 @@ public:
     virtual ~AllianceTheShire() = default;
 };
 
+class AllianceHakushinKarate : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceHakushinKarate() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceHakushinKarate() = default;
+};
+
+class AllianceDokachans : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceDokachans() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceDokachans() = default;
+};
+
+class AllianceKetholdeth : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceKetholdeth() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceKetholdeth() = default;
+};
+
+class AllianceMeldor : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceMeldor() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceMeldor() = default;
+};
+
+class AllianceAngartha : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceAngartha() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType* creature_ptr) const override;
+    virtual ~AllianceAngartha() = default;
+};
+
+class AllianceGetter : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceGetter() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceGetter() = default;
+};
+
+class AlliancePureMirrodin : public Alliance {
+public:
+    using Alliance::Alliance;
+    AlliancePureMirrodin() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AlliancePureMirrodin() = default;
+};
 
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;

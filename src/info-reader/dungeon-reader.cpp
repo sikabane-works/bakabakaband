@@ -233,6 +233,20 @@ errr parse_d_info(std::string_view buf, angband_header *)
                     info_set_value(d_ptr->special_div, f_tokens[2]);
                     continue;
                 }
+                if (f_tokens[0] == "TRAP" && f_tokens[1] == "RATE") {
+                    info_set_value(d_ptr->trap_rate, f_tokens[2]);
+                    continue;
+                }
+
+            }
+
+            if (f_tokens.size() == 2 && f_tokens[0] == "ALLIANCE") {
+                for (auto a : alliance_list) {
+                    if (a.second->tag == f_tokens[1]) {
+                        d_ptr->alliance_idx = static_cast<AllianceType>(a.second->id);
+                    }
+                }
+                continue;
             }
 
             if (!grab_one_dungeon_flag(d_ptr, f))

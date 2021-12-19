@@ -5,7 +5,7 @@
 
 void switch_lose_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
 {
-    switch ((glm_ptr->choose_mut != 0) ? glm_ptr->choose_mut : randint1(197)) {
+    switch ((glm_ptr->choose_mut != 0) ? glm_ptr->choose_mut : randint1(205)) {
     case 1:
     case 2:
     case 3:
@@ -496,6 +496,23 @@ void switch_lose_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
     case 197:
         glm_ptr->muta_which = PlayerMutationType::DEFECATION;
         glm_ptr->muta_desc = _("あなたは脱糞を制御できるようになった。", "You become to be able to controll your defecation.");
+        break;
+    case 198:
+    case 199:
+        glm_ptr->muta_which = PlayerMutationType::ZEERO_VIRUS;
+        glm_ptr->muta_desc = _("あなたはゼEROウイルスから解放され、変態行為に歯止めがかかるようになった。", "You have been released from the Ze ERO virus and the metamorphosis has come to a halt.");
+        break;
+    case 200:
+    case 201:
+    case 202:
+        glm_ptr->muta_which = PlayerMutationType::HOMO_SEXUAL;
+        glm_ptr->muta_desc = _("あなたは同性への興味を失った。", "You have lost interest in the same sex.");
+        break;
+    case 203:
+    case 204:
+    case 205:
+        glm_ptr->muta_which = PlayerMutationType::BI_SEXUAL;
+        glm_ptr->muta_desc = _("あなたは同性への興味を失った。", "You have lost interest in the same sex.");
         break;
     default:
         glm_ptr->muta_which = PlayerMutationType::MAX;

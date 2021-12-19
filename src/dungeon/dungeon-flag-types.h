@@ -35,5 +35,6 @@ enum class DungeonFeatureType {
     POISONOUS_RIVER,
     DIFFICULT_RECALL,
     ALWAY_ARENA,
+    ALWAY_LIGHT,
     MAX,
 };

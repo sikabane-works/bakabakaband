@@ -5,7 +5,7 @@
 
 void switch_gain_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
 {
-    switch (glm_ptr->choose_mut ? glm_ptr->choose_mut : (player_ptr->pclass == PlayerClassType::BERSERKER ? 74 + randint1(119) : randint1(193))) {
+    switch (glm_ptr->choose_mut ? glm_ptr->choose_mut : (player_ptr->pclass == PlayerClassType::BERSERKER ? 74 + randint1(119) : randint1(205))) {
     case 1:
     case 2:
     case 3:
@@ -500,6 +500,24 @@ void switch_gain_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
         glm_ptr->muta_which = PlayerMutationType::DEFECATION;
         glm_ptr->muta_desc = _("あなたは脱糞を制御できなくなった。", "You become subject to uncontrollable defecation.");
         break;
+    case 198:
+    case 199:
+        glm_ptr->muta_which = PlayerMutationType::DEFECATION;
+        glm_ptr->muta_desc = _("あなたはゼEROウイルスに感染した！DAAAAAAA！", "You are infected with ZEERO virus. DAAAAAAA!");
+        break;
+    case 200:
+    case 201:
+    case 202:
+        glm_ptr->muta_which = PlayerMutationType::HOMO_SEXUAL;
+        glm_ptr->muta_desc = _("あなたは同性にしか欲情しなくなった。", "You are only lustful for the same sex.");
+        break;
+    case 203:
+    case 204:
+    case 205:
+        glm_ptr->muta_which = PlayerMutationType::BI_SEXUAL;
+        glm_ptr->muta_desc = _("あなたは男女問わず欲情するようになった。", "You have become lustful for both men and women.");
+        break;
+
     default:
         glm_ptr->muta_which = PlayerMutationType::MAX;
         break;

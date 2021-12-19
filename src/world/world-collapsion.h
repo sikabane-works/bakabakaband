@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "system/h-type.h"
 #include <cstdint>
 
 struct world_type;
@@ -9,6 +10,7 @@ public:
     WorldCollapsion();
     void plus_timed_world_collapsion(world_type *w_ptr, PlayerType *player_ptr, int multi);
     void plus_collapsion(int value);
+    DEPTH plus_monster_level();
     bool is_blown_away();
 
     int32_t collapse_degree{}; /*!< 時空崩壊度 */

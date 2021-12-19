@@ -9,7 +9,6 @@
 #include "effect/effect-processor.h"
 #include "floor/floor-object.h"
 #include "game-option/birth-options.h"
-#include "game-option/game-play-options.h"
 #include "game-option/play-record-options.h"
 #include "io/write-diary.h"
 #include "lore/lore-store.h"
@@ -65,7 +64,7 @@ static void write_pet_death(PlayerType *player_ptr, monster_death_type *md_ptr)
 static void on_dead_explosion(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (int i = 0; i < 4; i++) {
-        if (md_ptr->r_ptr->blow[i].method != RBM_EXPLODE)
+        if (md_ptr->r_ptr->blow[i].method != RaceBlowMethodType::EXPLODE)
             continue;
 
         BIT_FLAGS flg = PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
@@ -166,13 +165,8 @@ static ARTIFACT_IDX drop_artifact_index(PlayerType *player_ptr, monster_death_ty
 
         a_idx = md_ptr->r_ptr->artifact_id[i];
         chance = md_ptr->r_ptr->artifact_percent[i];
-        if (allow_debug_options) {
-            // continue process.
-            // @todo ここより下の処理は関数分割で何とかしたい.
-            // 処理を送るだけのif文は気持ち悪い.
-        } else if (randint0(100) >= chance) {
+        if ((randint0(100) >= chance) && !w_ptr->wizard)
             continue;
-        }
 
         if (drop_single_artifact(player_ptr, md_ptr, a_idx))
             break;
@@ -442,7 +436,7 @@ concptr extract_note_dies(MONRACE_IDX r_idx)
         return _("は死んだ。", " dies.");
 
     for (int i = 0; i < 4; i++)
-        if (r_ptr->blow[i].method == RBM_EXPLODE)
+        if (r_ptr->blow[i].method == RaceBlowMethodType::EXPLODE)
             return _("は爆発して粉々になった。", " explodes into tiny shreds.");
 
     return _("を倒した。", " is destroyed.");

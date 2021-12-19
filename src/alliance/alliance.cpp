@@ -26,6 +26,15 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NUMENOR, std::make_unique<AllianceNumenor>(AllianceType::NUMENOR, "NUMENOR", _("ヌメノール王国", "Numenor Kingdom"), 1500000L) },
     { AllianceType::GO, std::make_unique<AllianceGO>(AllianceType::GO, "GO", _("GO教", "GO"), 1800000L) },
     { AllianceType::THE_SHIRE, std::make_unique<AllianceTheShire>(AllianceType::THE_SHIRE, "THE-SHIRE", _("ホビット庄", "The Shire"), 5000L) },
+    { AllianceType::HAKUSIN_KARATE, std::make_unique<AllianceTheShire>(AllianceType::HAKUSIN_KARATE, "HAKUSIN-KARATE", _("迫真空手部", "Hakusin Karate"), 5000L) },
+    { AllianceType::DOKACHANS, std::make_unique<AllianceTheShire>(AllianceType::DOKACHANS, "DOKACHANS", _("岡山中高年男児糞尿愛好会", "Dokachans"), 69L) },
+    { AllianceType::KETHOLDETH, std::make_unique<AllianceTheShire>(AllianceType::KETHOLDETH, "KETHOLDETH", _("ケツホルデス家", "Kethholdeth House"), 1919L) },
+    { AllianceType::MELDOR, std::make_unique<AllianceMeldor>(AllianceType::MELDOR, "MELDOR", _("メルドール", "Meldor"), 5000000L) },
+    { AllianceType::ANGARTHA, std::make_unique<AllianceAngartha>(AllianceType::ANGARTHA, "ANGARTHA", _("アンガルタ", "Angartha"), 900000L) },
+    { AllianceType::GETTER, std::make_unique<AllianceGetter>(AllianceType::GETTER, "GETTER", _("ゲッター", "Getter"), 200000000L) },
+    { AllianceType::PURE_MIRRODIN, std::make_unique<AlliancePureMirrodin>(AllianceType::PURE_MIRRODIN, "PURE-MIRRODIN", _("清純なるミラディン", "Pure Mirrodin"), 200000L)
+}
+,
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -157,6 +166,36 @@ int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) c
 }
 
 int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceAngartha::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceGetter::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AlliancePureMirrodin::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }

@@ -43,6 +43,7 @@
 #include "util/probability-table.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 #include <iterator>
 
 #define HORDE_NOGOOD 0x01 /*!< (未実装フラグ)HORDE生成でGOODなモンスターの生成を禁止する？ */
@@ -102,6 +103,9 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
             max_level = 1 + (max_level * MAX_DEPTH / randint1(MAX_DEPTH));
         }
     }
+
+    max_level += wc_ptr->plus_monster_level();
+
 
     ProbabilityTable<int> prob_table;
 
@@ -180,8 +184,8 @@ static bool monster_hook_chameleon_lord(PlayerType *player_ptr, MONRACE_IDX r_id
     if (std::abs(r_ptr->level - r_info[MON_CHAMELEON_K].level) > 5)
         return false;
 
-    if ((r_ptr->blow[0].method == RBM_EXPLODE) || (r_ptr->blow[1].method == RBM_EXPLODE) || (r_ptr->blow[2].method == RBM_EXPLODE)
-        || (r_ptr->blow[3].method == RBM_EXPLODE))
+    if ((r_ptr->blow[0].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[1].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[2].method == RaceBlowMethodType::EXPLODE)
+        || (r_ptr->blow[3].method == RaceBlowMethodType::EXPLODE))
         return false;
 
     if (!monster_can_cross_terrain(player_ptr, floor_ptr->grid_array[m_ptr->fy][m_ptr->fx].feat, r_ptr, 0))
@@ -218,8 +222,8 @@ static bool monster_hook_chameleon(PlayerType *player_ptr, MONRACE_IDX r_idx)
     if (r_ptr->flags7 & (RF7_FRIENDLY | RF7_CHAMELEON))
         return false;
 
-    if ((r_ptr->blow[0].method == RBM_EXPLODE) || (r_ptr->blow[1].method == RBM_EXPLODE) || (r_ptr->blow[2].method == RBM_EXPLODE)
-        || (r_ptr->blow[3].method == RBM_EXPLODE))
+    if ((r_ptr->blow[0].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[1].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[2].method == RaceBlowMethodType::EXPLODE)
+        || (r_ptr->blow[3].method == RaceBlowMethodType::EXPLODE))
         return false;
 
     if (!monster_can_cross_terrain(player_ptr, floor_ptr->grid_array[m_ptr->fy][m_ptr->fx].feat, r_ptr, 0))

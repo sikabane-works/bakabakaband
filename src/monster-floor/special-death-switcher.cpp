@@ -101,6 +101,37 @@ static void on_dead_pink_horror(PlayerType *player_ptr, monster_death_type *md_p
     }
 }
 
+static void on_dead_spawn_monsters(PlayerType* player_ptr, monster_death_type* md_ptr)
+{
+    bool notice = false;
+
+    for (auto race : md_ptr->r_ptr->dead_spawns) {
+        int num = std::get<0>(race);
+        int deno = std::get<1>(race);
+        if (randint1(deno) > num) {
+            continue;
+        }
+        int r_idx = std::get<2>(race);
+        int dn = std::get<3>(race);
+        int ds = std::get<4>(race);
+        int spawn_nums = damroll(dn, ds);
+        POSITION wy = md_ptr->md_y;
+        POSITION wx = md_ptr->md_x;
+        bool pet = is_pet(md_ptr->m_ptr);
+        BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
+        for (int i = 0; i < spawn_nums; i++)
+        {
+            if (summon_named_creature(player_ptr, 0, wy, wx, r_idx, mode) && player_can_see_bold(player_ptr, wy, wx))
+                notice = true;
+        }
+    }
+
+    if (notice) {
+        sound(SOUND_SUMMON);
+    }
+
+}
+
 static void on_dead_drop_item(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (auto kind : md_ptr->r_ptr->drop_kinds) {
@@ -652,6 +683,7 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, At
         return;
     }
     on_dead_drop_item(player_ptr, md_ptr);
+    on_dead_spawn_monsters(player_ptr, md_ptr);
 
     switch (md_ptr->m_ptr->r_idx) {
     case MON_EARTH_DESTROYER:

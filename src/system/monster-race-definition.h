@@ -14,7 +14,7 @@
 constexpr int MAX_NUM_BLOWS = 4;
 
 struct monster_blow {
-    rbm_type method{};
+    RaceBlowMethodType method{};
     RaceBlowEffectType effect{};
     DICE_NUMBER d_dice{};
     DICE_SID d_side{};
@@ -68,11 +68,12 @@ struct monster_race {
     EnumClassFlagGroup<MonsterAbilityType> ability_flags; //!< 能力フラグ(魔法/ブレス) / Ability Flags
     EnumClassFlagGroup<MonsterAuraType> aura_flags; //!< オーラフラグ / Aura Flags
     monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
-    std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces; 
+    std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces;
     std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
+    std::vector<std::tuple<int, int, MONRACE_IDX, int, int>> dead_spawns; //!< 死亡時モンスター生成
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
     PERCENTAGE artifact_percent[4]{}; //!< 特定アーティファクトドロップ率

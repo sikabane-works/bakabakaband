@@ -40,4 +40,5 @@ const std::unordered_map<std::string_view, DungeonFeatureType> d_info_flags = {
     { "POISONOUS_RIVER", DungeonFeatureType::POISONOUS_RIVER },
     { "DIFFICULT_RECALL", DungeonFeatureType::DIFFICULT_RECALL },
     { "ALWAY_ARENA", DungeonFeatureType::ALWAY_ARENA },
+    { "ALWAY_LIGHT", DungeonFeatureType::ALWAY_LIGHT },
 };

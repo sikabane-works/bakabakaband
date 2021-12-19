@@ -311,5 +311,18 @@ void dump_mutations(PlayerType *player_ptr, FILE *out_file)
 	    if (player_ptr->muta.has(PlayerMutationType::DEFECATION)) {
             fprintf(out_file, _("あなたは脱糞を制御できない。", "You are subject to uncontrollable defecation."));        
         }
+
+	    if (player_ptr->muta.has(PlayerMutationType::ZEERO_VIRUS)) {
+            fprintf(out_file, _("あなたはゼEROウイルスに感染している。SEXDA!", "You are infected with ZEERO virus. Let's SEX!"));
+        }
+
+	    if (player_ptr->muta.has(PlayerMutationType::HOMO_SEXUAL)) {
+            fprintf(out_file, _("あなたは同性愛者だ。", "You are Homosexual."));
+        }
+
+        if (player_ptr->muta.has(PlayerMutationType::BI_SEXUAL)) {
+            fprintf(out_file, _("あなたは両性愛者だ。", "You are Homosexual."));
+        }
+
     }
 }
