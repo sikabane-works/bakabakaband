@@ -30909,6 +30909,25 @@ F:UNIQUE | WEIRD_MIND | WILD_TOWN | HUMAN
 F:OPEN_DOOR | BASH_DOOR | RES_TELE | JOKE | CAN_SPEAK
 D:「結婚したのか？…俺以外の奴と？…」彼はかつてお茶の間を凍り付かせ、今はホモの玩具と化した。
 
+N:1641:『ピンキー姉貴』
+E:Sister Pinky
+G:H:v
+I:120:22d100:30:110:10
+W:50:3:0:16000:0:0
+B:GAZE:PARALYZE:13d5
+B:GAZE:PARALYZE:13d5
+B:GAZE:PARALYZE:13d5
+B:GAZE:PARALYZE:13d5
+F:UNIQUE | FEMALE | DROP_CORPSE | JOKE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM | ELDRITCH_HORROR | HUMAN
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_GOOD | 
+F:SMART | OPEN_DOOR | BASH_DOOR | SELF_LITE_2 |
+F:IM_COLD | IM_FIRE | IM_ELEC | RES_NETH | NO_CONF | NO_SLEEP
+S:1_IN_2 | 
+S:MIND_BLAST | DRAIN_MANA
+D:彼女の姿に、ただただ絶望せよ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
