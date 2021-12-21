@@ -278,6 +278,7 @@ hengband_SOURCES = \
 	info-reader/parse-error-types.h \
 	info-reader/race-info-tokens-table.cpp info-reader/race-info-tokens-table.h \
 	info-reader/race-reader.cpp info-reader/race-reader.h \
+	info-reader/party-reader.cpp info-reader/party-reader.h \
 	info-reader/random-grid-effect-types.h \
 	info-reader/skill-reader.cpp info-reader/skill-reader.h \
 	info-reader/vault-reader.cpp info-reader/vault-reader.h \
@@ -520,6 +521,7 @@ hengband_SOURCES = \
 	monster-race/race-flags7.h monster-race/race-flags8.h \
 	monster-race/race-flags9.h \
 	monster-race/race-indice-types.h \
+	monster-race/monster-party.cpp monster-race/monster-party.h \
 	\
 	mspell/assign-monster-spell.cpp mspell/assign-monster-spell.h \
 	mspell/element-resistance-checker.cpp mspell/element-resistance-checker.h \
