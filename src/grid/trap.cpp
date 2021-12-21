@@ -44,11 +44,12 @@
 #include "target/projection-path-calculator.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/timed-effects.h"
+#include "util/enum-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #include "player/player-status-resist.h"
 
-static int16_t normal_traps[MAX_NORMAL_TRAPS];
+static std::vector<int16_t> normal_traps;
 
 /*!
  * @brief 箱のトラップテーブル
@@ -133,32 +134,30 @@ const std::vector<EnumClassFlagGroup<ChestTrapType>> chest_traps = {
  */
 void init_normal_traps(void)
 {
-    int cur_trap = 0;
-
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_TRAPDOOR");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_PIT");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_SPIKED_PIT");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_POISON_PIT");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_TY_CURSE");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_TELEPORT");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_FIRE");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_ACID");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_SLOW");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_LOSE_STR");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_LOSE_DEX");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_LOSE_CON");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_BLIND");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_CONFUSE");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_POISON");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_SLEEP");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_TRAPS");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_ALARM");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_LAVA");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_DUNG_POOL");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_FIRE_STORM");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_ICE_STORM");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_CHAOS_STORM");
-    normal_traps[cur_trap++] = f_tag_to_index_in_init("TRAP_JUMP_VOID");
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TRAPDOOR"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_PIT"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_SPIKED_PIT"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_POISON_PIT"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TY_CURSE"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TELEPORT"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_FIRE"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_ACID"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_SLOW"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LOSE_STR"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LOSE_DEX"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LOSE_CON"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_BLIND"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_CONFUSE"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_POISON"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_SLEEP"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TRAPS"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_ALARM"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LAVA"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_DUNG_POOL"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_FIRE_STORM"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_ICE_STORM"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_CHAOS_STORM"));
+    normal_traps.push_back(f_tag_to_index_in_init("TRAP_JUMP_VOID"));
 }
 
 /*!
@@ -178,8 +177,7 @@ FEAT_IDX choose_random_trap(PlayerType *player_ptr)
     /* Pick a trap */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     while (true) {
-        /* Hack -- pick a trap */
-        feat = normal_traps[randint0(MAX_NORMAL_TRAPS)];
+        feat = normal_traps[randint0(normal_traps.size())];
 
         /* Accept non-trapdoors */
         if (f_info[feat].flags.has_not(FloorFeatureType::MORE))
@@ -294,21 +292,21 @@ static int check_hit_from_monster_to_player(PlayerType *player_ptr, int power)
  * @brief 落とし穴系トラップの判定とプレイヤーの被害処理
  * @param trap_feat_type トラップの種別ID
  */
-static void hit_trap_pit(PlayerType *player_ptr, enum trap_type trap_feat_type)
+static void hit_trap_pit(PlayerType *player_ptr, TrapType trap_feat_type)
 {
     HIT_POINT dam;
     concptr trap_name = "";
     concptr spike_name = "";
 
     switch (trap_feat_type) {
-    case TRAP_PIT:
+    case TrapType::PIT:
         trap_name = _("落とし穴", "a pit trap");
         break;
-    case TRAP_SPIKED_PIT:
+    case TrapType::SPIKED_PIT:
         trap_name = _("スパイクが敷かれた落とし穴", "a spiked pit");
         spike_name = _("スパイク", "spikes");
         break;
-    case TRAP_POISON_PIT:
+    case TrapType::POISON_PIT:
         trap_name = _("スパイクが敷かれた落とし穴", "a spiked pit");
         spike_name = _("毒を塗られたスパイク", "poisonous spikes");
         break;
@@ -323,7 +321,7 @@ static void hit_trap_pit(PlayerType *player_ptr, enum trap_type trap_feat_type)
 
     msg_format(_("%sに落ちてしまった！", "You have fallen into %s!"), trap_name);
     dam = damroll(2, 6);
-    if (((trap_feat_type != TRAP_SPIKED_PIT) && (trap_feat_type != TRAP_POISON_PIT)) || one_in_(2)) {
+    if (((trap_feat_type != TrapType::SPIKED_PIT) && (trap_feat_type != TrapType::POISON_PIT)) || one_in_(2)) {
         take_hit(player_ptr, DAMAGE_NOESCAPE, dam, trap_name);
         return;
     }
@@ -332,7 +330,7 @@ static void hit_trap_pit(PlayerType *player_ptr, enum trap_type trap_feat_type)
     dam = dam * 2;
     BadStatusSetter bss(player_ptr);
     (void)bss.mod_cut(randint1(dam));
-    if (trap_feat_type != TRAP_POISON_PIT) {
+    if (trap_feat_type != TrapType::POISON_PIT) {
         take_hit(player_ptr, DAMAGE_NOESCAPE, dam, trap_name);
         return;
     }
@@ -401,7 +399,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     POSITION x = player_ptr->x, y = player_ptr->y;
     grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
     feature_type *f_ptr = &f_info[g_ptr->feat];
-    enum trap_type trap_feat_type = f_ptr->flags.has(FloorFeatureType::TRAP) ? (enum trap_type)f_ptr->subtype : NOT_TRAP;
+    TrapType trap_feat_type = f_ptr->flags.has(FloorFeatureType::TRAP) ? i2enum<TrapType>(f_ptr->subtype) : TrapType::NOT_TRAP;
     concptr name = _("トラップ", "a trap");
 
     disturb(player_ptr, false, true);
@@ -415,7 +413,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
 
     /* Analyze */
     switch (trap_feat_type) {
-    case TRAP_TRAPDOOR: {
+    case TrapType::TRAPDOOR: {
         if (player_ptr->levitation) {
             msg_print(_("落とし戸を飛び越えた。", "You fly over a trap door."));
         } else {
@@ -441,14 +439,14 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_PIT:
-    case TRAP_SPIKED_PIT:
-    case TRAP_POISON_PIT: {
+    case TrapType::PIT:
+    case TrapType::SPIKED_PIT:
+    case TrapType::POISON_PIT: {
         hit_trap_pit(player_ptr, trap_feat_type);
         break;
     }
 
-    case TRAP_TY_CURSE: {
+    case TrapType::TY_CURSE: {
         msg_print(_("何かがピカッと光った！", "There is a flash of shimmering light!"));
         num = 2 + randint1(3);
         for (i = 0; i < num; i++) {
@@ -467,54 +465,54 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_TELEPORT: {
+    case TrapType::TELEPORT: {
         msg_print(_("テレポート・トラップにひっかかった！", "You hit a teleport trap!"));
         teleport_player(player_ptr, 100, TELEPORT_PASSIVE);
         break;
     }
 
-    case TRAP_FIRE: {
+    case TrapType::FIRE: {
         msg_print(_("炎に包まれた！", "You are enveloped in flames!"));
         dam = damroll(4, 6);
         (void)fire_dam(player_ptr, dam, _("炎のトラップ", "a fire trap"), false);
         break;
     }
 
-    case TRAP_ACID: {
+    case TrapType::ACID: {
         msg_print(_("酸が吹きかけられた！", "You are splashed with acid!"));
         dam = damroll(4, 6);
         (void)acid_dam(player_ptr, dam, _("酸のトラップ", "an acid trap"), false);
         break;
     }
 
-    case TRAP_SLOW: {
+    case TrapType::SLOW: {
         hit_trap_slow(player_ptr);
         break;
     }
 
-    case TRAP_LOSE_STR: {
+    case TrapType::LOSE_STR: {
         hit_trap_lose_stat(player_ptr, A_STR);
         break;
     }
 
-    case TRAP_LOSE_DEX: {
+    case TrapType::LOSE_DEX: {
         hit_trap_lose_stat(player_ptr, A_DEX);
         break;
     }
 
-    case TRAP_LOSE_CON: {
+    case TrapType::LOSE_CON: {
         hit_trap_lose_stat(player_ptr, A_CON);
         break;
     }
 
-    case TRAP_BLIND:
+    case TrapType::BLIND:
         msg_print(_("黒いガスに包み込まれた！", "A black gas surrounds you!"));
         if (has_resist_blind(player_ptr) == 0) {
             (void)BadStatusSetter(player_ptr).mod_blindness(randint0(50) + 25);
         }
 
         break;
-    case TRAP_CONFUSE: {
+    case TrapType::CONFUSE: {
         msg_print(_("きらめくガスに包み込まれた！", "A gas of scintillating colors surrounds you!"));
         if (has_resist_conf(player_ptr) == 0) {
             (void)BadStatusSetter(player_ptr).mod_confusion(randint0(20) + 10);
@@ -523,7 +521,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_POISON: {
+    case TrapType::POISON: {
         msg_print(_("刺激的な緑色のガスに包み込まれた！", "A pungent green gas surrounds you!"));
         if (has_resist_pois(player_ptr) == 0) {
             (void)BadStatusSetter(player_ptr).mod_poison(randint0(20) + 10);
@@ -532,7 +530,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_SLEEP: {
+    case TrapType::SLEEP: {
         msg_print(_("奇妙な白い霧に包まれた！", "A strange white mist surrounds you!"));
         if (player_ptr->free_act) {
             break;
@@ -548,7 +546,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_TRAPS: {
+    case TrapType::TRAPS: {
         msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
         /* Make some new traps */
         project(player_ptr, 0, 1, y, x, 0, AttributeType::MAKE_TRAP, PROJECT_HIDE | PROJECT_JUMP | PROJECT_GRID);
@@ -556,7 +554,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_ALARM: {
+    case TrapType::ALARM: {
         msg_print(_("けたたましい音が鳴り響いた！", "An alarm sounds!"));
 
         aggravate_monsters(player_ptr, 0);
@@ -564,7 +562,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_OPEN: {
+    case TrapType::OPEN: {
         msg_print(_("大音響と共にまわりの壁が崩れた！", "Suddenly, surrounding walls are opened!"));
         (void)project(player_ptr, 0, 3, y, x, 0, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
         (void)project(player_ptr, 0, 3, y, x - 4, 0, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_HIDE);
@@ -574,7 +572,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_ARMAGEDDON: {
+    case TrapType::ARMAGEDDON: {
         static int levs[10] = { 0, 0, 20, 10, 5, 3, 2, 1, 1, 1 };
         int evil_idx = 0, good_idx = 0;
 
@@ -617,7 +615,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_PIRANHA: {
+    case TrapType::PIRANHA: {
         msg_print(_("突然壁から水が溢れ出した！ピラニアがいる！", "Suddenly, the room is filled with water with piranhas!"));
 
         /* Water fills room */
@@ -631,38 +629,38 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         break;
     }
 
-    case TRAP_LAVA: {
+    case TrapType::LAVA: {
         msg_print(_("突然溶岩が溢れだした！", "Suddenly, the room is filled with lava!"));
         fire_ball_hide(player_ptr, AttributeType::LAVA_FLOW, 0, 1, 10);
         break;
     }
 
-    case TRAP_DUNG_POOL: {
+    case TrapType::DUNG_POOL: {
         msg_print(_("突然糞便が溢れだした！ああ＾～たまらねえぜ！", "Suddenly, the room is filled with dung! Ahh^- how marvelous!"));
         fire_ball_hide(player_ptr, AttributeType::DIRT, 0, 1, 10);
         break;
     }
 
-    case TRAP_FIRE_STORM: {
+    case TrapType::FIRE_STORM: {
         msg_print(_("火炎の嵐に包まれた！", "You ware filled with huge fire storm!"));
         fire_ball(player_ptr, AttributeType::FIRE, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_fire_damage_rate(player_ptr) / 100, _("火炎嵐の罠", "a Hige Fire Trap"));
 
         break;
     }
-    case TRAP_ICE_STORM: {
+    case TrapType::ICE_STORM: {
         msg_print(_("冷気の嵐に包まれた！", "You ware filled with huge ice storm!"));
         fire_ball(player_ptr, AttributeType::ICE, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_cold_damage_rate(player_ptr) / 100, _("極寒嵐の罠", "a Hige Ice Trap"));
         break;
     }
-    case TRAP_CHAOS_STORM: {
+    case TrapType::CHAOS_STORM: {
         msg_print(_("混沌の嵐に包まれた！", "You ware filled with huge chaos storm!"));
         fire_ball(player_ptr, AttributeType::CHAOS, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(player_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
         break;
 
-    case TRAP_JUMP_VOID: {
+    case TrapType::JUMP_VOID: {
         msg_print(_("なんてこった！あなたは猿空間に送られた！", "What a hell! You were sent to the SARU space!"));
         jump_floor(player_ptr, DUNGEON_VOID_TERRITORY, player_ptr->current_floor_ptr->dun_level);
         break;
