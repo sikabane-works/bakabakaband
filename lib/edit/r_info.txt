@@ -30939,7 +30939,17 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL | GIANT | MALE | SELF_LITE_1
 D:一物のような頭部に似たような形状の棍坊を振り回すクッソ汚い巨人だ。
 
-
+N:1643:『あずま寿司』
+E:Azumasushi
+G:#:v
+I:110:30d20:40:70:20
+W:22:1:0:1200:0:0
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE | NEVER_MOVE
+F:EMPTY_MIND | UNDEAD | COLD_BLOOD | DROP_90 | DROP_GREAT
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_TELE | NEVER_BLOW
+S:1_IN_3 | BLINK | S_UNDEAD
+D:風評被害により自分を滅ぼしたホモ共に復讐するため、冥界から復活した！
+D:実際はただの不景気で潰れただけのようだ。
 
 # N: serial number : monster name
 # G: symbol : color
