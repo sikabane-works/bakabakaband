@@ -159,7 +159,7 @@ std::tuple<bool, bool> QuestCompletionChecker::complete_random()
         this->player_ptr->current_floor_ptr->inside_quest = 0;
     }
 
-    if ((this->quest_idx == QUEST_OBERON) || (this->quest_idx == QUEST_SERPENT)) {
+    if ((this->quest_idx == QUEST_OBERON) || (this->quest_idx == QUEST_SERPENT) || (this->quest_idx == QUEST_MELKO)) {
         this->q_ptr->status = QuestStatusType::FINISHED;
     }
 
