@@ -30968,6 +30968,30 @@ S:1_IN_3 | HEAL | HASTE |
 D:極限まで鍛えた鋼鉄のごとき肉体に、麦わらを束ねたような髪をした男だ。
 D:ほぼ全裸のまま拳で全てを粉砕しようとする有様は戦慄そのものである。
 
+N:1645:マケグミ・サラリマン
+E:Makegumi Salaryman
+G:t:U
+I:110:1d4:10:1:40
+W:0:1:0:0:10:1646
+B:BEG:FLAVOR
+F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR
+D:暗黒メガコーポの支配下の中でカロウシするまで酷使される哀れな存在だ。
+
+N:1646:カチグミ・サラリマン
+E:Kachigumi Salaryman
+G:t:w
+I:110:3d4:10:1:40
+W:0:15:0:0:0:0
+B:PUNCH:HURT:1d3
+F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY | 
+F:TAKE_ITEM | OPEN_DOOR | DROP_3D2 | ONLY_GOLD
+D:暗黒メガコーポの支配下で、上司の靴を舐めるかのような
+D:諂いと共にいくつかの特権を得ているエリートだ。
+D:しかし、その地位は常に転落の前兆と共にある。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
