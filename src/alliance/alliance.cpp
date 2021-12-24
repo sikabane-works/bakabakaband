@@ -198,3 +198,8 @@ int AlliancePureMirrodin::calcImplessionPoint([[maybe_unused]] PlayerType *creat
 {
     return 0;
 }
+
+int AllianceKING::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
