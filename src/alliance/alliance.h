@@ -35,6 +35,7 @@ enum class AllianceType : int {
     ANGARTHA = 24, //!< アンガルタ
     GETTER = 25, //!< ゲッター
     PURE_MIRRODIN = 26, //!< 清純なるミラディン
+    KING = 27, //!< KING
     MAX,
 };
 
@@ -301,6 +302,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AlliancePureMirrodin() = default;
+};
+
+class AllianceKING : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceKING() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceKING() = default;
 };
 
 
