@@ -10,6 +10,7 @@ public:
     WorldCollapsion();
     void plus_timed_world_collapsion(world_type *w_ptr, PlayerType *player_ptr, int multi);
     void plus_collapsion(int value);
+    void plus_perm_collapsion(int permyriad);
     DEPTH plus_monster_level();
     bool is_blown_away();
 

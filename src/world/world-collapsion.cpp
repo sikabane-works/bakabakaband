@@ -46,3 +46,18 @@ void WorldCollapsion::plus_collapsion(int value)
 {
     this->collapse_degree += value;
 }
+
+/*!
+ * @brief 時空崩壊度比率増減(万分率変動)
+ */
+void WorldCollapsion::plus_perm_collapsion(int permyriad)
+{
+    if(permyriad > 0)
+    {
+        this->collapse_degree += static_cast<int32_t>((1000000LL - this->collapse_degree) * permyriad / 10000);
+    }
+    else
+    {
+        this->collapse_degree -= static_cast<int32_t>(this->collapse_degree * permyriad / 10000);
+    }
+}
