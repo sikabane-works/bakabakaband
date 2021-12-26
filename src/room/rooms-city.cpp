@@ -107,7 +107,7 @@ static void build_stores(PlayerType *player_ptr, POSITION ltcy, POSITION ltcx, S
 
     for (i = 0; i < n; i++) {
         cur_ugbldg = &ugbldg[i];
-        generate_room_floor(player_ptr, ltcy + cur_ugbldg->y0 - 2, ltcx + cur_ugbldg->x0 - 2, ltcy + cur_ugbldg->y1 + 2, ltcx + cur_ugbldg->x1 + 2, false);
+        generate_room_floor(player_ptr, ltcy + cur_ugbldg->y0 - 5, ltcx + cur_ugbldg->x0 - 5, ltcy + cur_ugbldg->y1 + 5, ltcx + cur_ugbldg->x1 + 5, false);
     }
 
     for (i = 0; i < n; i++) {
@@ -190,7 +190,7 @@ bool build_type16(PlayerType *player_ptr, dun_data_type *dd_ptr)
         return false;
     }
 
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, town_hgt + 4, town_wid + 4)) {
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, town_hgt + 10, town_wid + 10)) {
         return false;
     }
 
