@@ -18,6 +18,7 @@
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "world/world-collapsion.h"
 
 
 /*!
@@ -141,6 +142,13 @@ void execute_floor_reset(PlayerType *player_ptr)
     disturb(player_ptr, false, true);
     if (!quest_number(player_ptr, floor_ptr->dun_level) && floor_ptr->dun_level) {
         msg_print(_("世界が変わった！", "The world changes!"));
+
+        /* 時空崩壊度進行 */
+        if (player_ptr->prace != PlayerRaceType::AMBERITE)
+        {
+            msg_print(_("乱暴な現実の変容で時空崩壊が進んだ！", "World collapsion has progressed due to the violent transformation of reality!"));
+            wc_ptr->plus_perm_collapsion(20 + floor_ptr->dun_level / 2);
+        }
 
         /*
          * Clear all saved floors
