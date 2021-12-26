@@ -3,10 +3,10 @@
 #include "system/angband.h"
 
 /* Minimum & maximum town size */
-#define MIN_TOWN_WID ((MAX_WID / 3) / 2)
-#define MIN_TOWN_HGT ((MAX_HGT / 3) / 2)
-#define MAX_TOWN_WID ((MAX_WID / 3) * 2 / 3)
-#define MAX_TOWN_HGT ((MAX_HGT / 3) * 2 / 3)
+constexpr int MIN_TOWN_WID = 15;
+constexpr int MIN_TOWN_HGT = 15;
+constexpr int MAX_TOWN_WID = 32;
+constexpr int MAX_TOWN_HGT = 32;
 
 /* Struct for build underground buildings */
 typedef struct ugbldg_type {
