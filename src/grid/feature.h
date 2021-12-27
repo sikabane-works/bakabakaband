@@ -48,6 +48,7 @@ typedef struct feature_type {
     feature_state state[MAX_FEAT_STATES]{}; /*!< feature_state テーブル */
     FEAT_SUBTYPE subtype{}; /*!< 副特性値 */
     FEAT_POWER power{}; /*!< 地形強度 */
+    int hygiene = 0; /*!< 衛生度修正 */
     TERM_COLOR d_attr[F_LIT_MAX]{}; /*!< デフォルトの地形シンボルカラー / Default feature attribute */
     SYMBOL_CODE d_char[F_LIT_MAX]{}; /*!< デフォルトの地形シンボルアルファベット / Default feature character */
     TERM_COLOR x_attr[F_LIT_MAX]{}; /*!< 設定変更後の地形シンボルカラー / Desired feature attribute */
