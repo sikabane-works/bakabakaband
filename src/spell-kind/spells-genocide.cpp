@@ -29,6 +29,7 @@
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief モンスターへの単体抹殺処理サブルーチン / Delete a non-unique/non-quest monster
@@ -37,6 +38,7 @@
  * @param player_cast プレイヤーの魔法によるものならば TRUE
  * @param dam_side プレイヤーへの負担ダメージ量(1d(dam_side))
  * @param spell_name 抹殺効果を起こした魔法の名前
+ * @details 抹殺したモンスターのレベルに応じて時空崩壊度が進行。
  * @return 効力があった場合TRUEを返す
  */
 bool genocide_aux(PlayerType *player_ptr, MONSTER_IDX m_idx, int power, bool player_cast, int dam_side, concptr spell_name)
@@ -67,6 +69,7 @@ bool genocide_aux(PlayerType *player_ptr, MONSTER_IDX m_idx, int power, bool pla
             exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_GENOCIDE, m_name);
         }
 
+        wc_ptr->plus_collapsion(10 + r_ptr->level * 5);
         delete_monster_idx(player_ptr, m_idx);
     }
 
