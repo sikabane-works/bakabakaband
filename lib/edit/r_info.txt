@@ -31015,9 +31015,23 @@ W:45:6:0:5000:0:0
 F:PREVENT_SUDDEN_MAGIC | CAN_FLY | WEIRD_MIND | BASH_DOOR | RAND_50 | MALE | NASTY | HOMO_SEXUAL
 F:IM_ACID | IM_POIS | NO_CONF | ONLY_ITEM | DROP_90 | DROP_GREAT | NEVER_BLOW
 S:1_IN_2 | BO_NETH | BR_POIS
-D:この肥満中年のような巨大な蝶は、常識を持たぬホモのアンバー人のクッソ汚い妄想によって生み出された、のかもしれない。
+D:この肥満中年男のような巨大な蝶は、常識を持たぬホモのアンバー人のクッソ汚い妄想によって生み出された、のかもしれない。
 D:$This giant butterfly, like a middle-aged obese person
 D:$ may have been created by a nasty unconventional delusion of homosexual Amberite.
+
+N:1649:現場ウロス
+E:Genbauros
+G:q:s
+I:120:30d30:30:80:0
+W:35:6:0:2000:0:0
+B:KICK:HURT:2d10
+B:KICK:HURT:2d10
+B:BITE:DISEASE:4d12
+F:REFLECTING | DROP_1D2 | DROP_2D2 | RES_CHAO | ANIMAL | HUMAN | HOMO_SEXUAL | NASTY
+F:REGENERATE | MALE
+F:NO_CONF | NO_SLEEP | RES_TELE | CAN_SWIM | RIDING
+D:上半身に肥満中年男の姿を持った馬で、ホモにのみ心を許すと言われる。願い下げだ。
+D:$A horse with an obese middle-aged man on his upper body, he is seemed to forgive only gays. No thank you.
 
 # N: serial number : monster name
 # G: symbol : color
