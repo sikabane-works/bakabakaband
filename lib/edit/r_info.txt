@@ -31033,6 +31033,21 @@ F:NO_CONF | NO_SLEEP | RES_TELE | CAN_SWIM | RIDING
 D:上半身に肥満中年男の姿を持った馬で、ホモにのみ心を許すと言われる。願い下げだ。
 D:$A horse with an obese middle-aged man on his upper body, he is seemed to forgive only gays. No thank you.
 
+#自爆は複数のmeleeテーブルを実装できるようになってからの予定(DSKL)
+N:1650:栽培マン
+E:Cultivars
+G:H:u
+I:110:7d12:20:10:30
+W:14:2:0:180:0:0
+B:CLAW:HURT:4d7
+B:CLAW:HURT:4d7
+B:CLAW:HURT:4d7
+F:CAN_SWIM | OPEN_DOOR | BASH_DOOR | WILD_SWAMP | FRIENDS
+D:フリーザ軍が惑星侵略によく用いる、
+D:現地の土で急激に育つ植物人造人間だ。
+D:単純な戦力としては下級戦士を超えると言われている。
+S:1_IN_5 | BO_ACID
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
