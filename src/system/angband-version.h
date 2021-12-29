@@ -19,7 +19,7 @@
 #define FAKE_VER_MAJOR 20 /*!< ゲームのバージョン番号定義(メジャー番号 + 20) */
 #define FAKE_VER_MINOR 0 /*!< ゲームのバージョン番号定義(マイナー番号) */
 #define FAKE_VER_PATCH 0 /*!< ゲームのバージョン番号定義(エクストラ番号) */
-#define FAKE_VER_EXTRA 26 /*!< ゲームのバージョン番号定義(エクストラ番号) */
+#define FAKE_VER_EXTRA 27 /*!< ゲームのバージョン番号定義(エクストラ番号) */
 constexpr uint32_t SAVEFILE_VERSION = 15;
 
 /*!
