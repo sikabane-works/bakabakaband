@@ -53,6 +53,7 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "world/world-collapsion.h"
 
 /*
  * @brief 啓蒙/陽光召喚処理
@@ -249,12 +250,18 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
     /* Prevent destruction of quest levels and town */
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if ((floor_ptr->inside_quest && quest_type::is_fixed(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
+        if(!in_generate) msg_print(_("破壊の力はかき消された…", "The power of destruction has been drowned out ..."));
         return false;
     }
 
-    /* Lose monster light */
     if (!in_generate)
+    {
+        /* Lose monster light */
         clear_mon_lite(floor_ptr);
+
+        /* 時空崩壊度進行 */
+        wc_ptr->plus_perm_collapsion(10 + floor_ptr->dun_level / 2);
+    }
 
     /* Big area of affect */
     bool flag = false;

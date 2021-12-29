@@ -27517,10 +27517,12 @@ I:110:5d8:12:10:10
 W:6:2:0:50:0:0
 B:HIT:HURT:1d4
 B:HIT:HURT:1d4
-F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | ALLIANCE_PURE-MIRRODIN
 F:IM_FIRE | IM_COLD | IM_ACID | IM_POIS | 
 F:NONLIVING
-F:NO_CONF | NO_SLEEP | NO_FEAR
+F:NO_CONF | NO_SLEEP | NO_FEAR | MOB_1500
+D:ミラディンの旧き管理者、メムナークの名残のごとき機械生命体たちだ。
+D:無意識にミラディンへの侵略者を防ごうとしているように思える
 
 N:1434:エムラクールの手
 E:Hand of Emrakul
@@ -30768,7 +30770,7 @@ B:CRUSH:SUPERHURT:9d10
 F:UNIQUE | MALE | HAS_LITE_2 | HUMAN
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
 F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GOOD
-F:OPEN_DOOR | POWERFUL | MOVE_BODY | FRIENDLY
+F:OPEN_DOOR | POWERFUL | MOVE_BODY | FRIENDLY | ALLIANCE_KING
 F:GOOD | EVIL | RES_TELE | NO_CONF | NO_SLEEP | NO_STUN |
 D:「拳法殺し」の異名で呼ばれ、脂肪に覆われた異形の巨躯を持つ、
 D:世紀末の組織『ＫＩＮＧ』の大幹部だ。
@@ -30896,6 +30898,155 @@ D:風雲拳───それは実戦空手道とブーメランをくみあわせ
 D:まったくあたらしい格闘技…
 D:そしてこの若者の名はハヤテ。風雲拳の奥義をきわめた男だ。
 D:今、最強の獅子に挑む！「うおおおおおおおおおおおおおおおおおお！」
+
+N:1640:『東山源次』(淫夢)
+E:Genzi Higasytama(INM)
+G:t:w
+I:110:10d16:30:20:12
+W:0:5:0:300:0:0
+B:HIT:HURT:1d8
+B:HIT:HURT:1d8
+F:FORCE_MAXHP
+F:UNIQUE | WEIRD_MIND | WILD_TOWN | HUMAN
+F:OPEN_DOOR | BASH_DOOR | RES_TELE | JOKE | CAN_SPEAK
+D:「結婚したのか？…俺以外の奴と？…」彼はかつてお茶の間を凍り付かせ、今はホモの玩具と化した。
+
+N:1641:『ピンキー姉貴』
+E:Sister Pinky
+G:H:v
+I:120:22d100:30:110:10
+W:50:3:0:16000:0:0
+B:GAZE:PARALYZE:13d5
+B:GAZE:PARALYZE:13d5
+B:GAZE:PARALYZE:13d5
+B:GAZE:PARALYZE:13d5
+F:UNIQUE | FEMALE | DROP_CORPSE | JOKE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM | ELDRITCH_HORROR | HUMAN
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_GOOD | 
+F:SMART | OPEN_DOOR | BASH_DOOR | SELF_LITE_2 |
+F:IM_COLD | IM_FIRE | IM_ELEC | RES_NETH | NO_CONF | NO_SLEEP
+S:1_IN_2 | 
+S:MIND_BLAST | DRAIN_MANA
+D:彼女の姿に、ただただ絶望せよ。
+
+N:1642:ギガンテスDB
+E:Gigantes DB
+G:P:o
+I:110:38d20:20:75:40
+W:37:2:0:1800:0:0
+B:HIT:HURT:10d8
+B:HIT:HURT:10d8
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | WILD_MOUNTAIN | HOMO_SEXUAL | NASTY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL | GIANT | MALE | SELF_LITE_1
+D:一物のような頭部に似たような形状の棍坊を振り回すクッソ汚い巨人だ。
+
+N:1643:『あずま寿司』
+E:Azumasushi
+G:#:v
+I:110:30d20:40:70:20
+W:22:1:0:1200:0:0
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE | NEVER_MOVE
+F:EMPTY_MIND | UNDEAD | COLD_BLOOD | DROP_90 | DROP_GREAT
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_TELE | NEVER_BLOW
+S:1_IN_3 | BLINK | S_UNDEAD
+D:風評被害により自分を滅ぼしたホモ共に復讐するため、冥界から復活した！
+D:実際はただの不景気で潰れただけのようだ。
+
+N:1644:肉体覇王『ジャルマル』
+E:Jyarumar, the Muscle Dynast
+G:p:o
+I:143:30d100:30:150:20
+W:48:3:0:10000:0:0
+B:PUNCH:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d10
+F:UNIQUE | MALE | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NASTY | HOMO_SEXUAL
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_GOOD | HUMAN |
+F:REFLECTING | REGENERATE | OPEN_DOOR | KILL_WALL
+F:IM_COLD | IM_FIRE | IM_ELEC | NO_CONF | NO_STUN | NO_SLEEP
+S:1_IN_3 | HEAL | HASTE |
+D:極限まで鍛えた鋼鉄のごとき肉体に、麦わらを束ねたような髪をした男だ。
+D:ほぼ全裸のまま拳で全てを粉砕しようとする有様は戦慄そのものである。
+
+N:1645:マケグミ・サラリマン
+E:Makegumi Salaryman
+G:t:U
+I:110:1d4:10:1:40
+W:0:1:0:0:10:1646
+B:BEG:FLAVOR
+F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR
+D:暗黒メガコーポの支配下の中でカロウシするまで酷使される哀れな存在だ。
+
+N:1646:カチグミ・サラリマン
+E:Kachigumi Salaryman
+G:t:w
+I:110:3d4:10:1:40
+W:0:15:0:0:0:0
+B:PUNCH:HURT:1d3
+F:MALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY | 
+F:TAKE_ITEM | OPEN_DOOR | DROP_3D2 | ONLY_GOLD
+D:暗黒メガコーポの支配下で、上司の靴を舐めるかのような
+D:諂いと共にいくつかの特権を得ているエリートだ。
+D:しかし、その地位は常に転落の前兆と共にある。
+
+N:1647:マイア
+E:Myr
+G:g:s
+I:110:10d12:12:30:10
+W:10:2:0:80:0:0
+B:HIT:HURT:1d8
+F:PREVENT_SUDDEN_MAGIC | ALLIANCE_PURE-MIRRODIN
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | FRIENDS
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | MOB_800
+D:ミラディンの旧き管理者、メムナークが世界の管理のために
+D:用いていた下僕たちだ。
+
+N:1648:現場バタフライ
+E:Genbutterfly
+G:I:u
+I:120:60d50:50:64:50
+W:45:6:0:5000:0:0
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | WEIRD_MIND | BASH_DOOR | RAND_50 | MALE | NASTY | HOMO_SEXUAL
+F:IM_ACID | IM_POIS | NO_CONF | ONLY_ITEM | DROP_90 | DROP_GREAT | NEVER_BLOW
+S:1_IN_2 | BO_NETH | BR_POIS
+D:この肥満中年男のような巨大な蝶は、常識を持たぬホモのアンバー人のクッソ汚い妄想によって生み出された、のかもしれない。
+D:$This giant butterfly, like a middle-aged obese person
+D:$ may have been created by a nasty unconventional delusion of homosexual Amberite.
+
+N:1649:現場ウロス
+E:Genbauros
+G:q:s
+I:120:30d30:30:80:0
+W:35:6:0:2000:0:0
+B:KICK:HURT:2d10
+B:KICK:HURT:2d10
+B:BITE:DISEASE:4d12
+F:REFLECTING | DROP_1D2 | DROP_2D2 | RES_CHAO | ANIMAL | HUMAN | HOMO_SEXUAL | NASTY
+F:REGENERATE | MALE
+F:NO_CONF | NO_SLEEP | RES_TELE | CAN_SWIM | RIDING
+D:上半身に肥満中年男の姿を持った馬で、ホモにのみ心を許すと言われる。願い下げだ。
+D:$A horse with an obese middle-aged man on his upper body, he is seemed to forgive only gays. No thank you.
+
+#自爆は複数のmeleeテーブルを実装できるようになってからの予定(DSKL)
+N:1650:栽培マン
+E:Cultivars
+G:H:u
+I:110:7d12:20:10:30
+W:14:2:0:180:0:0
+B:CLAW:HURT:4d7
+B:CLAW:HURT:4d7
+B:CLAW:HURT:4d7
+F:CAN_SWIM | OPEN_DOOR | BASH_DOOR | WILD_SWAMP | FRIENDS
+D:フリーザ軍が惑星侵略によく用いる、
+D:現地の土で急激に育つ植物人造人間だ。
+D:単純な戦力としては下級戦士を超えると言われている。
+S:1_IN_5 | BO_ACID
 
 # N: serial number : monster name
 # G: symbol : color

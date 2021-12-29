@@ -47,7 +47,8 @@ typedef struct dungeon_type {
     std::string name; /* Name */
     std::string text; /* Description */
 
-	int trap_rate = 100; //!< トラップ生成率
+	int monster_rate = 100; //!< トラップ生成比率
+    int trap_rate = 100; //!< トラップ生成比率
 
 	POSITION dy{};
 	POSITION dx{};

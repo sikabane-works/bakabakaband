@@ -342,11 +342,11 @@ static void decide_dungeon_data_allocation(PlayerType *player_ptr, dun_data_type
         dd_ptr->alloc_object_num += randint1(50);
     }
 
-    dd_ptr->alloc_monster_num = d_ptr->min_m_alloc_level;
+    dd_ptr->alloc_monster_num = d_ptr->min_m_alloc_level * d_ptr->monster_rate / 100;
     if (floor_ptr->height >= MAX_HGT && floor_ptr->width >= MAX_WID)
         return;
 
-    int small_tester = dd_ptr->alloc_monster_num;
+    int small_tester = dd_ptr->alloc_monster_num * d_ptr->monster_rate / 100;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->height) / MAX_HGT;
     dd_ptr->alloc_monster_num = (dd_ptr->alloc_monster_num * floor_ptr->width) / MAX_WID;
     dd_ptr->alloc_monster_num *= DUNGEON_MONSTER_MULTIPLE;
