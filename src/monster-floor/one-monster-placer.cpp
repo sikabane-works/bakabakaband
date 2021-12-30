@@ -6,6 +6,7 @@
 
 #include "monster-floor/one-monster-placer.h"
 #include "core/player-update-types.h"
+#include "core/disturbance.h"
 #include "core/speed-table.h"
 #include "dungeon/quest.h"
 #include "effect/effect-characteristics.h"
@@ -18,6 +19,7 @@
 #include "game-option/cheat-types.h"
 #include "grid/grid.h"
 #include "monster-attack/monster-attack-types.h"
+#include "monster-attack/monster-attack-player.h"
 #include "monster-floor/monster-move.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
@@ -27,6 +29,7 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
+#include "monster/monster-describer.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
@@ -380,6 +383,15 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     update_monster(player_ptr, g_ptr->m_idx, true);
 
     real_r_ptr(m_ptr)->cur_num++;
+
+    if(any_bits(mode, PM_AMBUSH))
+    {
+        GAME_TEXT m_name[MAX_NLEN];
+        monster_desc(player_ptr, m_name, m_ptr, 0);
+        msg_format(_("突如%sがあなたに襲い掛かってきた！", "Suddenly %s has ambushed you!"), m_name);
+        disturb(player_ptr, false, true);
+        make_attack_normal(player_ptr, g_ptr->m_idx);
+    }
 
     /*
      * Memorize location of the unique monster in saved floors.
