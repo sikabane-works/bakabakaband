@@ -31033,7 +31033,7 @@ F:NO_CONF | NO_SLEEP | RES_TELE | CAN_SWIM | RIDING
 D:上半身に肥満中年男の姿を持った馬で、ホモにのみ心を許すと言われる。願い下げだ。
 D:$A horse with an obese middle-aged man on his upper body, he is seemed to forgive only gays. No thank you.
 
-#自爆は複数のmeleeテーブルを実装できるようになってからの予定(DSKL)
+# 自爆は複数のmeleeテーブルを実装できるようになってからの予定(DSKL)
 N:1650:栽培マン
 E:Cultivars
 G:H:u
@@ -31047,6 +31047,29 @@ D:フリーザ軍が惑星侵略によく用いる、
 D:現地の土で急激に育つ植物人造人間だ。
 D:単純な戦力としては下級戦士を超えると言われている。
 S:1_IN_5 | BO_ACID
+
+# 隙あらば龍語りのドラゴンフェチ
+# これまでのプレインズウォーカー名義から妥当そうな組み合わせで命名(DSKL)
+N:1651:龍魂『サルカン・ヴォル』
+E:Sarkhan Vol, the Dragonsoul
+G:p:R
+I:122:25d100:30:120:40
+W:49:4:0:26000:0:0
+B:CLAW:HURT:6d10
+B:CLAW:HURT:6d10
+B:BITE:FIRE:14d6
+B:BITE:ELEC:14d6
+F:UNIQUE | MALE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD
+F:BASH_DOOR | POWERFUL | MOVE_BODY | SELF_LITE_2 |
+F:HUMAN | DRAGON | IM_FIRE | NO_CONF | NO_SLEEP | IM_POIS
+S:1_IN_3 |
+S:BR_FIRE | BR_COLD | BR_ELEC | BA_FIRE | S_DRAGON | S_HI_DRAGON | BLINK | TELEPORT
+D:この龍を長く敬慕してきたプレインズウォーカーはかつて暴君ニコル・ボーラスと
+D:精霊龍ウギンの二体の古龍に翻弄されながら己自身の龍たる道を勝ち取った。
+D:彼はいまや人であり龍であり、その姿を自在に変化させながら、
+D:多くのドラゴンを従えることができる。
 
 # N: serial number : monster name
 # G: symbol : color
