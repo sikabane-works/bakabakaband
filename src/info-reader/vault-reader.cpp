@@ -58,9 +58,22 @@ errr parse_v_info(std::string_view buf, angband_header *)
         }
         char c;
         FEAT_IDX feat_idx;
-        c = tokens[1].c_str()[0];
-        info_set_value(feat_idx, tokens[2]);
-        v_ptr->feature_list[c] = feat_idx;
+        if (tokens.size() == 3) {
+            c = tokens[1].c_str()[0];
+            info_set_value(feat_idx, tokens[2]);
+            v_ptr->feature_list[c] = feat_idx;
+            v_ptr->feature_ap_list[c] = feat_idx;
+        }
+        else if (tokens.size() == 4) {
+            c = tokens[1].c_str()[0];
+            info_set_value(feat_idx, tokens[2]);
+            v_ptr->feature_list[c] = feat_idx;
+            info_set_value(feat_idx, tokens[3]);
+            v_ptr->feature_ap_list[c] = feat_idx;
+        } else {
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
+
     } else if (tokens[0] == "T") {
         // T:traits
         if (tokens.size() < 2 || tokens[1].size() == 0)
