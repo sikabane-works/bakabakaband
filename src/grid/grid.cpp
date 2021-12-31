@@ -1063,6 +1063,11 @@ void set_cave_feat(floor_type *floor_ptr, POSITION y, POSITION x, FEAT_IDX featu
     floor_ptr->grid_array[y][x].feat = feature_idx;
 }
 
+void set_cave_feat_mimic(floor_type *floor_ptr, POSITION y, POSITION x, FEAT_IDX feature_idx)
+{
+    floor_ptr->grid_array[y][x].mimic = feature_idx;
+}
+
 /*!
  * @brief プレイヤーの周辺9マスに該当する地形がいくつあるかを返す /
  * Attempt to open the given chest at the given location

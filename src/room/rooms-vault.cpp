@@ -356,6 +356,7 @@ static void build_vault(
 
             if (v_ptr->feature_list.count(*t) != 0) {
                 set_cave_feat(floor_ptr, y, x, v_ptr->feature_list[*t]);
+                set_cave_feat_mimic(floor_ptr, y, x, v_ptr->feature_ap_list[*t]);
                 continue;
             }
             /* Analyze the grid */
