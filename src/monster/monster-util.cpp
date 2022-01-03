@@ -21,6 +21,7 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "world/world-collapsion.h"
 
 enum dungeon_mode_type {
     DUNGEON_MODE_AND = 1,
@@ -340,6 +341,10 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
 
             // クエスト内でRES_ALLの生成を禁止する (殲滅系クエストの詰み防止)
             if (player_ptr->current_floor_ptr->inside_quest && any_bits(r_ptr->flagsr, RFR_RES_ALL))
+                continue;
+
+            // 時空崩壊度が一定数到達していないモンスターを禁止
+            if (r_ptr->collapse_over > wc_ptr->collapse_degree)
                 continue;
         }
 
