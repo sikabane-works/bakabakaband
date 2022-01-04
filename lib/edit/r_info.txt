@@ -30278,7 +30278,7 @@ E:Odric, Blood-Cursed
 T:ODRIC
 G:V:W
 I:113:25d20:20:70:10
-W:30:2:0:400:0:0
+W:30:2:0:1000:0:0
 B:SLASH:HURT:5d6
 B:SLASH:HURT:5d6
 B:SLASH:EXP_VAMP:2d8
@@ -31175,6 +31175,28 @@ D:ドラングレイグ王ヴァンクラッドの兄。
 D:神代より定められた人が生まれ持つ呪いの克服を求め、
 D:おぞましい研究を苦悶と共に重ねた果て、
 D:植物とも人の頭部ともつかぬ姿に成り果てた探究者だ。
+
+N:1658:永代巡礼者『アイリ』
+E:Ayli, Eternal Pilgrim
+G:h:s
+I:120:52d20:20:70:10
+W:40:2:0:4000:0:0
+B:HIT:HURT:6d4
+B:HIT:HURT:6d4
+B:HIT:HURT:6d5
+F:FEMALE | HAS_LITE_2 |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_90 | DROP_2D2 | DROP_GOOD | HUMAN |
+F:SMART | OPEN_DOOR | BASH_DOOR | ALLIANCE_ELDRAZI
+F:EVIL | NO_CONF | NO_SLEEP | RES_NETH | RES_CHAO
+S:1_IN_2 | 
+S:HEAL | BLIND | HOLD | CONF | CAUSE_3 | BO_MANA
+S:S_MONSTER
+D:かつてゼンディカーの神々を敬慕していた彼女は、
+D:その正体がエルドラージのタイタンたちの虚像に過ぎなかった事実を
+D:正しく受け入れられず同志共々狂気に陥った。
+D:今は永代巡礼会を組織し、エルドラージにゼンディカーの全てを
+D:生贄に捧げんとする教義に取りつかれている。
 
 
 # N: serial number : monster name
