@@ -31209,6 +31209,21 @@ F:AQUATIC | WILD_ALL | RES_WATE | IM_COLD | EVIL | NO_CONF
 D:幅広くマーフォークと呼ばれる種族の中でも特に魚類に容貌が近い。
 D:厳格な社会を保ち、他種族の根絶をしばしば教義とする特に危険な種族だ。
 
+N:1660:戦慄衆の戦士
+E:Dreadhorde warrior
+G:z:B
+I:110:15d13:20:50:40
+W:23:1:0:70:0:0
+B:SLASH:HURT:5d5
+B:SLASH:SUPERHURT:4d5
+F:MALE | HAS_LITE_1
+F:DROP_1D2 | FRIENDS 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL | UNDEAD
+D:ニコル・ボーラスがアモンケットの遠大な計画で生み出した軍団の一員だ。
+D:生前熟練の戦士であったものが、ラゾテプ鉱に覆われ
+D:意志を持たぬアンデッド、永遠衆に加工されたものである。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
