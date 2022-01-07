@@ -31224,6 +31224,26 @@ D:ニコル・ボーラスがアモンケットの遠大な計画で生み出し
 D:生前熟練の戦士であったものが、ラゾテプ鉱に覆われ
 D:意志を持たぬアンデッド、永遠衆に加工されたものである。
 
+# インペリアルクロスは即刻中止せよ！繰り返す！インペリアルクロスは即刻中止せよ！(DSKL)
+N:1661:ゼラチナス・マター
+E:Gelatinous matter
+G:j:w
+I:113:36d36:12:110:1
+W:30:3:0:1800:0:0
+B:TOUCH:ACID:7d10
+B:TOUCH:ACID:7d10
+B:TOUCH:ACID:7d10
+F:FORCE_MAXHP | 
+F:DROP_1D2 | DROP_4D2 | 
+F:EMPTY_MIND | COLD_BLOOD | POWERFUL
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | CAN_SWIM |
+F:IM_ELEC
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_2 | BO_ELEC
+D:生物の細胞がそのまま全長数メートルまで巨大になったかのような軟体生物だ。
+D:他の生き物を溶解させようとするだけでなく、電撃を放ってくる。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
