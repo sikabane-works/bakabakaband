@@ -101,7 +101,8 @@ int object_similar_part(const object_type *o_ptr, const object_type *j_ptr)
     }
     case ItemKindType::FOOD:
     case ItemKindType::POTION:
-    case ItemKindType::SCROLL: {
+    case ItemKindType::SCROLL:
+    case ItemKindType::MATERIAL: {
         break;
     }
     case ItemKindType::STAFF: {
