@@ -31243,6 +31243,26 @@ S:1_IN_2 | BO_ELEC
 D:生物の細胞がそのまま全長数メートルまで巨大になったかのような軟体生物だ。
 D:他の生き物を溶解させようとするだけでなく、電撃を放ってくる。
 
+N:1662:警備員『DIYUSI』
+E:DIYUSI, the Security Guard
+G:h:w
+I:120:77d20:20:80:20
+W:43:2:0:5200:0:0
+B:HIT:HURT:7d12
+B:HIT:HURT:7d12
+B:HIT:HURT:7d12
+F:IM_POIS | IM_FIRE | IM_ELEC | IM_ACID | IM_COLD | GOOD | ELF | HAS_LITE_2 |
+F:RES_LITE | RES_DARK | RES_NETH | RES_SHAR | RES_SOUN | UNIQUE
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_TIME | RES_TELE |
+F:NO_SLEEP | NO_CONF | NO_FEAR | NO_STUN | NONLIVING
+F:DROP_1D2 | DROP_90 | DROP_60 | FRIENDS | REFLECTING |
+F:FEMALE | OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | FRIENDLY
+S:1_IN_6
+S:HEAL | HASTE | CAUSE_4
+D:彼女は"警備員"という役割を持っている
+D:警備員は、ある重要な任務を任されている。
+D:警備員は、ある神聖な任務を任されている。
+D:その全うのために鉄獄に赴いたようだ。
 
 # N: serial number : monster name
 # G: symbol : color
