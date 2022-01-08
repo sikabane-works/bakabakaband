@@ -33,7 +33,9 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::ANGARTHA, std::make_unique<AllianceAngartha>(AllianceType::ANGARTHA, "ANGARTHA", _("アンガルタ", "Angartha"), 900000L) },
     { AllianceType::GETTER, std::make_unique<AllianceGetter>(AllianceType::GETTER, "GETTER", _("ゲッター", "Getter"), 200000000L) },
     { AllianceType::PURE_MIRRODIN, std::make_unique<AlliancePureMirrodin>(AllianceType::PURE_MIRRODIN, "PURE-MIRRODIN", _("清純なるミラディン", "Pure Mirrodin"), 200000L) },
-    { AllianceType::KING, std::make_unique<AllianceKING>(AllianceType::KING, "KING", _("KING", "KING"), 150000L) }
+    { AllianceType::KING, std::make_unique<AllianceKING>(AllianceType::KING, "KING", _("KING", "KING"), 150000L) },
+    { AllianceType::PHYREXIA, std::make_unique<AlliancePhyrexia>(AllianceType::PHYREXIA, "PHYREXIA", _("ファイレクシア", "Phyrexia"), 2000000L) }
+,
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -200,6 +202,11 @@ int AlliancePureMirrodin::calcImplessionPoint([[maybe_unused]] PlayerType *creat
 }
 
 int AllianceKING::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AlliancePhyrexia::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
