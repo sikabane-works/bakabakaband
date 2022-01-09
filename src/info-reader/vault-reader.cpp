@@ -2,6 +2,8 @@
 #include "main/angband-headers.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/parse-error-types.h"
+#include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
 #include "room/rooms-vault.h"
 #include "util/string-processor.h"
 
@@ -35,9 +37,9 @@ errr parse_v_info(std::string_view buf, angband_header *)
         v_ptr = &v_info[i];
         v_ptr->idx = static_cast<int16_t>(i);
         v_ptr->name = std::string(tokens[2]);
-    } else if (!v_ptr)
+    } else if (!v_ptr) {
         return PARSE_ERROR_MISSING_RECORD_HEADER;
-    else if (tokens[0] == "D") {
+    } else if (tokens[0] == "D") {
         // D:MapText
         if (tokens.size() < 2 || tokens[1].size() == 0)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
@@ -58,20 +60,41 @@ errr parse_v_info(std::string_view buf, angband_header *)
         }
         char c;
         FEAT_IDX feat_idx;
-        if (tokens.size() == 3) {
+        if (tokens.size() >= 3) {
             c = tokens[1].c_str()[0];
             info_set_value(feat_idx, tokens[2]);
             v_ptr->feature_list[c] = feat_idx;
             v_ptr->feature_ap_list[c] = feat_idx;
         }
-        else if (tokens.size() == 4) {
-            c = tokens[1].c_str()[0];
-            info_set_value(feat_idx, tokens[2]);
-            v_ptr->feature_list[c] = feat_idx;
+        if (tokens.size() >= 4) {
             info_set_value(feat_idx, tokens[3]);
             v_ptr->feature_ap_list[c] = feat_idx;
-        } else {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
+        if (tokens.size() == 5) {
+            const auto &flags = str_split(tokens[4], '|', true, 10);
+            for (const auto &f : flags) {
+                if (f.size() == 0)
+                    continue;
+
+                const auto &s_tokens = str_split(f, '_', false);
+
+                if (s_tokens.size() == 2 && s_tokens[0] == "MONSTER") {
+                    for(const auto &r_ptr : r_info) {
+                       if (s_tokens[1] == r_ptr.tag)
+                       {
+                           v_ptr->place_monster_list[c] = r_ptr.idx;
+                           break;
+                       }
+                    }
+                    if(v_ptr->place_monster_list.count(c) == 0) {
+                        info_set_value(v_ptr->place_monster_list[c], s_tokens[1]);
+                    }
+                    continue;
+                }
+
+                return PARSE_ERROR_INVALID_FLAG;
+            } 
+            
         }
 
     } else if (tokens[0] == "T") {
