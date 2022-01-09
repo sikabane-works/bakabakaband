@@ -17,6 +17,7 @@ typedef struct vault_type {
     POSITION wid{}; /* Vault width */
     std::map<char, FEAT_IDX> feature_list;
     std::map<char, FEAT_IDX> feature_ap_list;
+    std::map<char, MONRACE_IDX> place_monster_list;
 
     int min_depth = 0;
     int max_depth = 999;
