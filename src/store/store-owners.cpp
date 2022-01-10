@@ -299,7 +299,7 @@ const owner_type owners[MAX_STORES][MAX_OWNERS] = {
         { "化学者マウザー", 30000, 111, PlayerRaceType::HALF_ELF, STORE_OBJ_STD_LEVEL },
         { "カオスのウィズル", 30000, 110, PlayerRaceType::HOBBIT, STORE_OBJ_STD_LEVEL },
         { "強欲ミダス", 30000, 116, PlayerRaceType::GNOME, STORE_OBJ_STD_LEVEL },
-        { "貧弱ジャ=ファー", 30000, 111, PlayerRaceType::ELF }, /*FIRST*/
+        { "貧弱ジャ=ファー", 30000, 111, PlayerRaceType::ELF, STORE_OBJ_STD_LEVEL }, /*FIRST*/
         { "カカルラカカル", 30000, 116, PlayerRaceType::KLACKON, STORE_OBJ_STD_LEVEL },
         { "錬金術師ジャル=エス", 30000, 111, PlayerRaceType::ELF, STORE_OBJ_STD_LEVEL },
         { "用心深いファネラス", 30000, 111, PlayerRaceType::DWARF, STORE_OBJ_STD_LEVEL },

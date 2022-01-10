@@ -130,10 +130,10 @@ static std::vector<PARAMETER_VALUE> store_same_magic_device_pvals(object_type *j
 void store_create(
     PlayerType *player_ptr, KIND_OBJECT_IDX fix_k_idx, black_market_crap_pf black_market_crap, store_will_buy_pf store_will_buy, mass_produce_pf mass_produce)
 {
-    const owner_type *ow_ptr = &owners[enum2i(cur_store_num)][st_ptr->owner];
-
     if (st_ptr->stock_num >= st_ptr->stock_size)
         return;
+
+    const owner_type *ow_ptr = &owners[enum2i(cur_store_num)][st_ptr->owner];
 
     for (int tries = 0; tries < 4; tries++) {
         KIND_OBJECT_IDX k_idx;
