@@ -248,6 +248,25 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 continue;
             }
 
+            if (s_tokens.size() == 2 && s_tokens[0] == "COLLAPSE-OVER") {
+                const auto &p_tokens = str_split(s_tokens[1], '.', false);
+                if (p_tokens.size() != 2) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                if (p_tokens[1].size() > 6) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                int mul = 6 - static_cast<int>(p_tokens[1].size());
+                int deci, fraq;
+                info_set_value(deci, p_tokens[0]);
+                info_set_value(fraq, p_tokens[1]);
+                for (int i = 0; i < mul; i++) {
+                    fraq *= 10;
+                }
+                r_ptr->collapse_over = deci * 1000000 + fraq;
+                continue;
+            }
+
             if (s_tokens.size() == 2 && s_tokens[0] == "COLLAPSE") {
                 const auto &p_tokens = str_split(s_tokens[1], '.', false);
                 if (p_tokens.size() != 2) {

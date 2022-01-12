@@ -36,6 +36,7 @@ enum class AllianceType : int {
     GETTER = 25, //!< ゲッター
     PURE_MIRRODIN = 26, //!< 清純なるミラディン
     KING = 27, //!< KING
+    PHYREXIA = 28, //!< ファイレクシア
     MAX,
 };
 
@@ -311,6 +312,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceKING() = default;
+};
+
+class AlliancePhyrexia : public Alliance {
+public:
+    using Alliance::Alliance;
+    AlliancePhyrexia() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AlliancePhyrexia() = default;
 };
 
 

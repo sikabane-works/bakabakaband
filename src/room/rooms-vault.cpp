@@ -19,6 +19,7 @@
 #include "grid/object-placer.h"
 #include "grid/trap.h"
 #include "monster-floor/monster-generator.h"
+#include "monster-floor/one-monster-placer.h"
 #include "monster-floor/place-monster-types.h"
 #include "object-enchant/item-apply-magic.h"
 #include "room/cave-filler.h"
@@ -356,6 +357,10 @@ static void build_vault(
 
             if (v_ptr->feature_list.count(*t) != 0) {
                 set_cave_feat(floor_ptr, y, x, v_ptr->feature_list[*t]);
+                set_cave_feat_mimic(floor_ptr, y, x, v_ptr->feature_ap_list[*t]);
+                if (v_ptr->place_monster_list.count(*t) != 0) {
+                    place_monster_one(player_ptr, 0, y, x, v_ptr->place_monster_list[*t], 0);
+                }
                 continue;
             }
             /* Analyze the grid */

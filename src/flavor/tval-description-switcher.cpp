@@ -330,6 +330,7 @@ void switch_tval_description(flavor_type *flavor_ptr)
     case ItemKindType::FLASK:
     case ItemKindType::CHEST:
     case ItemKindType::WHISTLE:
+    case ItemKindType::MATERIAL:
         break;
     case ItemKindType::CAPTURE:
         describe_monster_ball(flavor_ptr);

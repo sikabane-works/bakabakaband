@@ -9799,6 +9799,7 @@ D:意識を持った秘密の書で、悪意を持って呪文を唱えてくる
 #J0#
 N:558:巨像
 E:Colossus
+T:COLOSSUS
 G:g:y
 I:105:30d100:15:150:10
 W:36:4:0:900:0:0
@@ -16161,7 +16162,7 @@ B:HIT:HURT:1d50
 B:HIT:HURT:1d50
 B:HIT:HURT:1d50
 F:RAND_25 | EVIL | DEMON |
-F:DROP_2D2 | DROP_GOOD | ONLY_ITEM | RES_TELE |
+F:DROP_3D2 | DROP_GOOD | ONLY_ITEM | RES_TELE |
 F:IM_POIS | IM_FIRE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NONLIVING
 S:1_IN_4 |
 S:ROCKET
@@ -25370,7 +25371,8 @@ D:戦神アレスの狂乱に憑かれた挙げ句、妻子を殺めてしまっ
 D:オリュンポスの統べるギリシャ世界に終焉をもたらした。
 
 N:1285:貧弱エルフ
-E:Scruffy looking elf
+E:Awkward elf
+T:AWKWARD_ELF
 G:h:G
 W:2:5:0:5:0:0
 I:110:2d6:10:0:20
@@ -26611,13 +26613,14 @@ D:ん、どうした？そこには誰もいないぞ。
 
 N:1380:糞便ゴーレム
 E:Feces golem
+T:FECES-GOLEM
 G:g:u
 I:110:12d8:12:25:10
 W:17:1:0:80:0:0
 B:HIT:DISEASE:1d8
 B:HIT:DISEASE:1d8
 F:EMPTY_MIND | BASH_DOOR | CAN_SWIM |
-F:IM_ELEC | IM_COLD | NASTY
+F:IM_ELEC | IM_COLD | IM_POIS | NASTY
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 D:何故こんなものを作る存在がいるのか、私には理解に苦しむね（ペチペチ）
 
@@ -27506,7 +27509,7 @@ B:CRUSH:SUPERHURT:10d6
 B:CRUSH:SUPERHURT:10d6
 B:CRUSH:SUPERHURT:10d6
 B:CRUSH:SUPERHURT:10d6
-F:BASH_DOOR | REFLECTING | KILL_ITEM |
+F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_50 | ALLIANCE_PHYREXIA
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
 
@@ -28065,8 +28068,10 @@ I:110:1d4:20:16:5
 W:12:10:0:50:0:0
 B:SLASH:HURT:1d30
 F:MALE | HAS_LITE_1 | WEIRD_MIND | QUANTUM | MULTIPLY | ALLIANCE_TURBAN-KIDS | MOB_3000
-F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
 F:OPEN_DOOR | BASH_DOOR
+F:DROP_KIND_1_IN_1_775_0_1d1
+F:DROP_KIND_1_IN_1_43_0_1d1
 D:気をつけろ！この少年と思しき何者たちかは世界中を監視しながら増殖し続けており、
 D:いずれ世界と人類を駆逐してしまう！南斗の聖帝がそう確信しているのだ！
 
@@ -28286,7 +28291,7 @@ N:1482:ミミック(ミミック(ミミック(箱)の像)の像)
 E:Statu of Statue of Chest mimic mimic mimic
 G:`:W
 I:110:15d14:30:50:0
-W:25:6:0:70:1000:1483
+W:25:255:0:70:1000:1483
 B:GAZE:CONFUSE:4d3
 B:CLAW:POISON:5d4
 B:CLAW:POISON:5d4
@@ -28310,7 +28315,7 @@ N:1483:ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の
 E:Statu of Statu of Statue of Chest mimic mimic mimic mimic
 G:`:W
 I:110:20d14:30:60:0
-W:30:6:0:70:1000:1484
+W:30:255:0:70:1000:1484
 B:GAZE:CONFUSE:6d3
 B:CLAW:POISON:7d4
 B:CLAW:POISON:7d4
@@ -28334,7 +28339,7 @@ N:1484:ミミック(ミミック(ミミック(ミミック(ミミック(箱)の�
 E:Statu of Statu of Statu of Statue of Chest mimic mimic mimic mimic mimic
 G:`:W
 I:110:20d14:30:70:0
-W:35:6:0:80:0:0
+W:35:255:0:80:0:0
 B:GAZE:CONFUSE:8d3
 B:CLAW:POISON:9d4
 B:CLAW:POISON:11d4
@@ -30276,7 +30281,7 @@ E:Odric, Blood-Cursed
 T:ODRIC
 G:V:W
 I:113:25d20:20:70:10
-W:30:2:0:400:0:0
+W:30:2:0:1000:0:0
 B:SLASH:HURT:5d6
 B:SLASH:HURT:5d6
 B:SLASH:EXP_VAMP:2d8
@@ -30391,6 +30396,7 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | POWERFUL | ALLIANCE_ELDRAZI
 F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | ELDRITCH_HORROR | WEIRD_MIND
 F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | KILL_WALL | KILL_ITEM
 F:EVIL | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | IM_ACID | NO_CONF | NO_SLEEP
+F:COLLAPSE-OVER_70.000
 S:1_IN_3 | 
 S:BR_DISI
 D:「時間そのもののごとく貪欲な力──」(M:tG)
@@ -30423,6 +30429,7 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | SMART | ALLIANCE_ELDRAZI
 F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | ELDRITCH_HORROR | WEIRD_MIND
 F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | KILL_WALL | KILL_ITEM
 F:EVIL | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | IM_ACID | NO_CONF | NO_SLEEP
+F:COLLAPSE-OVER_70.000
 S:1_IN_3 | 
 S:BRAIN_SMASH | FORGET | MIND_BLAST | HAND_DOOM | DISPEL | PSY_SPEAR
 D:「現実そのもののごとく不可解な虚無──」
@@ -31033,7 +31040,7 @@ F:NO_CONF | NO_SLEEP | RES_TELE | CAN_SWIM | RIDING
 D:上半身に肥満中年男の姿を持った馬で、ホモにのみ心を許すと言われる。願い下げだ。
 D:$A horse with an obese middle-aged man on his upper body, he is seemed to forgive only gays. No thank you.
 
-#自爆は複数のmeleeテーブルを実装できるようになってからの予定(DSKL)
+# 自爆は複数のmeleeテーブルを実装できるようになってからの予定(DSKL)
 N:1650:栽培マン
 E:Cultivars
 G:H:u
@@ -31047,6 +31054,262 @@ D:フリーザ軍が惑星侵略によく用いる、
 D:現地の土で急激に育つ植物人造人間だ。
 D:単純な戦力としては下級戦士を超えると言われている。
 S:1_IN_5 | BO_ACID
+
+# 隙あらば龍語りのドラゴンフェチ
+# これまでのプレインズウォーカー名義から妥当そうな組み合わせで命名(DSKL)
+N:1651:龍魂『サルカン・ヴォル』
+E:Sarkhan Vol, the Dragonsoul
+G:p:R
+I:122:25d100:30:120:40
+W:49:4:0:26000:0:0
+B:CLAW:HURT:6d10
+B:CLAW:HURT:6d10
+B:BITE:FIRE:14d6
+B:BITE:ELEC:14d6
+F:UNIQUE | MALE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD
+F:BASH_DOOR | POWERFUL | MOVE_BODY | SELF_LITE_2 |
+F:HUMAN | DRAGON | IM_FIRE | NO_CONF | NO_SLEEP | IM_POIS
+S:1_IN_3 |
+S:BR_FIRE | BR_COLD | BR_ELEC | BA_FIRE | S_DRAGON | S_HI_DRAGON | BLINK | TPORT
+D:この龍を長く敬慕してきたプレインズウォーカーはかつて暴君ニコル・ボーラスと
+D:精霊龍ウギンの二体の古龍に翻弄されながら己自身の龍たる道を勝ち取った。
+D:彼はいまや人であり龍であり、その姿を自在に変化させながら、
+D:多くのドラゴンを従えることができる。
+
+N:1652:超合金Ｚ・ゴーレム
+E:Super alloy Z golem
+G:g:s
+I:120:80d30:20:280:10
+W:50:4:0:15000:0:0
+B:HIT:HURT:13d8
+B:HIT:HURT:13d8
+B:HIT:HURT:13d5
+B:HIT:HURT:13d5
+F:ONLY_GOLD | DROP_2D2 | FORCE_MAXHP
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | NO_STUN
+D:それは未来の素材で魔法的に作られたゴーレムだ。
+D:本来の用途にはそぐわない様だが、最上級の脅威であることは変わらない。
+
+N:1653:惑星戦士『ラディッツ』
+E:Raditz, the Planet Soldier
+G:p:o
+I:115:40d12:20:90:20
+W:24:2:0:80:0:0
+B:PUNCH:HURT:10d6
+B:PUNCH:HURT:8d6
+B:KICK:HURT:8d8
+F:MALE | PREVENT_SUDDEN_MAGIC | HUMAN | UNIQUE | FORCE_MAXHP
+F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | CAN_FLY | WARRIOR
+F:EVIL
+S:1_IN_4
+S:MISSILE | BO_MANA
+D:サイヤ人の数少ない生き残りの一人であり、
+D:フリーザの軍団に加わる戦士の一人だ。
+D:実力はあるが戦闘民族サイヤ人の中では、まだ凡庸な類に入るらしい。
+
+N:1654:カコデーモン
+E:Cacodemon
+G:u:R
+I:110:27d19:25:70:15
+W:30:1:0:250:0:0
+B:BITE:HURT:6d4
+B:BITE:HURT:6d4
+B:BITE:HURT:6d4
+F:DROP_60 | ONLY_ITEM | DROP_CORPSE | EVIL | DEMON | POWERFUL
+F:RIDING | IM_FIRE | RES_PLAS | BASH_DOOR | CAN_FLY | WILD_OCEAN
+F:WILD_VOLCANO | WILD_MOUNTAIN | WILD_TOWN | WILD_ALL
+S:1_IN_8
+S:BO_FIRE
+D:$It is floating and one-eyed demon.
+D:$It is very round, and has six spines on upper body and two on lower.
+D:$It breathes a plasma ball from its wide mouth.
+D:それはとても丸っこくて体の上部に6本、下部に2本のトゲがあり、浮遊する一つ目の悪魔だ。
+D:その裂けたような口からプラズマの弾を発射してくる。
+
+N:1655:マンキュバス
+E:Mancubus
+G:U:U
+I:110:45d50:15:90:10
+W:39:2:0:2000:0:0
+F:DROP_1D2 | ONLY_ITEM | DROP_CORPSE | EVIL | DEMON | NEVER_BLOW | FORCE_MAXHP
+F:POWERFUL | IM_FIRE | RES_TELE | BASH_DOOR | WILD_VOLCANO | WILD_TOWN
+F:WILD_ALL
+S:1_IN_2
+S:BA_FIRE
+D:$This is fatso has twin gun-arms.
+D:$Its fire balls are just nightmare.
+D:この両腕に砲がある太っちょが出す火の弾は悪夢そのものだ。
+
+N:1656:アラクノトロン
+E:Arachnotron
+G:S:U
+I:115:40d30:10:100:0
+W:45:3:0:10000:0:0
+F:DROP_1D2 | DROP_60 | DROP_90 | ONLY_ITEM | DROP_GOOD | DROP_CORPSE | EVIL | DEMON | NEVER_BLOW
+F:FORCE_MAXHP | NO_FEAR | RES_PLAS | BASH_DOOR | KILL_BODY
+S:1_IN_1
+S:BO_PLAS
+D:$It has spider-like machine legs and carries a monster that looks brain-like.
+D:蜘蛛のような機械の脚を持っている敵で、脳みそのような生き物を載せている。
+
+N:1657:原罪の探究者『アン・ディール』
+E:Aldia, Scholar of the First Sin
+G:#:R
+I:127:55d110:20:105:70
+W:66:3:0:27500:0:0
+B:TOUCH:FIRE:15d12
+B:TOUCH:FIRE:15d12
+B:TOUCH:FIRE:15d12
+B:TOUCH:FIRE:15d12
+F:UNIQUE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD | 
+F:IM_ACID | IM_FIRE | IM_POIS | IM_COLD | IM_POIS | ELDRITCH_HORROR |
+F:NEVER_MOVE | RES_NEXU | AURA_FIRE | POWERFUL
+F:NO_CONF | NO_SLEEP
+S:1_IN_4 | 
+S:BR_FIRE | BA_FIRE | BO_PLAS | BO_MANA | TPORT | BLINK
+D:ドラングレイグ王ヴァンクラッドの兄。
+D:神代より定められた人が生まれ持つ呪いの克服を求め、
+D:おぞましい研究を苦悶と共に重ねた果て、
+D:植物とも人の頭部ともつかぬ姿に成り果てた探究者だ。
+
+N:1658:永代巡礼者『アイリ』
+E:Ayli, Eternal Pilgrim
+G:h:s
+I:120:52d20:20:70:10
+W:40:2:0:4000:0:0
+B:HIT:HURT:6d4
+B:HIT:HURT:6d4
+B:HIT:HURT:6d5
+F:FEMALE | HAS_LITE_2 |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_90 | DROP_2D2 | DROP_GOOD | HUMAN |
+F:SMART | OPEN_DOOR | BASH_DOOR | ALLIANCE_ELDRAZI
+F:EVIL | NO_CONF | NO_SLEEP | RES_NETH | RES_CHAO
+S:1_IN_2 | 
+S:HEAL | BLIND | HOLD | CONF | CAUSE_3 | BO_MANA
+S:S_MONSTER
+D:かつてゼンディカーの神々を敬慕していた彼女は、
+D:その正体がエルドラージのタイタンたちの虚像に過ぎなかった事実を
+D:正しく受け入れられず同志共々狂気に陥った。
+D:今は永代巡礼会を組織し、エルドラージにゼンディカーの全てを
+D:生贄に捧げんとする教義に取りつかれている。
+
+N:1659:サハギン
+E:Sahuagin
+G:h:b
+I:110:16d12:20:60:50
+W:18:1:0:60:0:0
+B:HIT:HURT:6d5
+B:HIT:HURT:6d5
+F:AQUATIC | WILD_ALL | RES_WATE | IM_COLD | EVIL | NO_CONF
+D:幅広くマーフォークと呼ばれる種族の中でも特に魚類に容貌が近い。
+D:厳格な社会を保ち、他種族の根絶をしばしば教義とする特に危険な種族だ。
+
+N:1660:戦慄衆の戦士
+E:Dreadhorde warrior
+G:z:B
+I:110:15d13:20:50:40
+W:23:1:0:70:0:0
+B:SLASH:HURT:5d5
+B:SLASH:SUPERHURT:4d5
+F:MALE | HAS_LITE_1
+F:DROP_1D2 | FRIENDS 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL | UNDEAD
+D:ニコル・ボーラスがアモンケットの遠大な計画で生み出した軍団の一員だ。
+D:生前熟練の戦士であったものが、ラゾテプ鉱に覆われ
+D:意志を持たぬアンデッド、永遠衆に加工されたものである。
+
+# インペリアルクロスは即刻中止せよ！繰り返す！インペリアルクロスは即刻中止せよ！(DSKL)
+N:1661:ゼラチナス・マター
+E:Gelatinous matter
+G:j:w
+I:113:36d36:12:110:1
+W:30:3:0:1800:0:0
+B:TOUCH:ACID:7d10
+B:TOUCH:ACID:7d10
+B:TOUCH:ACID:7d10
+F:FORCE_MAXHP | 
+F:DROP_1D2 | DROP_4D2 | 
+F:EMPTY_MIND | COLD_BLOOD | POWERFUL
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | CAN_SWIM |
+F:IM_ELEC
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_2 | BO_ELEC
+D:生物の細胞がそのまま全長数メートルまで巨大になったかのような軟体生物だ。
+D:他の生き物を溶解させようとするだけでなく、電撃を放ってくる。
+
+N:1662:警備員『DIYUSI』
+E:DIYUSI, the Security Guard
+G:h:w
+I:120:77d20:20:80:20
+W:43:2:0:5200:0:0
+B:HIT:HURT:7d12
+B:HIT:HURT:7d12
+B:HIT:HURT:7d12
+F:IM_POIS | IM_FIRE | IM_ELEC | IM_ACID | IM_COLD | GOOD | ELF | HAS_LITE_2 |
+F:RES_LITE | RES_DARK | RES_NETH | RES_SHAR | RES_SOUN | UNIQUE
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_TIME | RES_TELE |
+F:NO_SLEEP | NO_CONF | NO_FEAR | NO_STUN | NONLIVING
+F:DROP_1D2 | DROP_90 | DROP_60 | FRIENDS | REFLECTING |
+F:FEMALE | OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | FRIENDLY
+S:1_IN_6
+S:HEAL | HASTE | CAUSE_4
+D:彼女は"警備員"という役割を持っている
+D:警備員は、ある重要な任務を任されている。
+D:警備員は、ある神聖な任務を任されている。
+D:その全うのために鉄獄に赴いたようだ。
+
+N:1663:智神のヴァララウコ
+E:Wizard of Valarauko
+G:U:w
+I:132:62d85:50:100:90
+W:83:4:0:35000:0:0
+B:TOUCH:EXP_VAMP:1d16
+B:TOUCH:UN_POWER
+B:HIT:HURT:13d13
+B:HIT:HURT:13d13
+F:DEMON | ANGEL
+F:DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD | ONLY_ITEM | RES_TELE | WARRIOR
+F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NONLIVING
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN | POWERFUL | SMART
+F:RES_CHAO | RES_NEXU | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+F:ALLIANCE_UTUMNO | MOB_44
+S:1_IN_3 | 
+S:TPORT | TELE_LEVEL | BLIND | CONF | SCARE | CAUSE_4 | 
+S:BRAIN_SMASH | FORGET | HASTE | HEAL
+S:BO_ICEE | BO_MANA | BO_PLAS | 
+S:BA_MANA | BA_FIRE | BA_ELEC | BA_NETH | BA_DARK | 
+S:S_MONSTERS | S_DEMON
+S:HAND_DOOM | ANIM_DEAD | DISPEL | PSY_SPEAR
+D:「赤表紙本」にも子細な記述の乏しい、メルコール率いるウトゥムノの一統にあった「バルログ」の古名。
+D:この実態はその中でもアルダの上古創世にも直接携わり、
+D:「赤表紙本」の堕落者の汚名に反して今も何ら神なる力を失っていない魔神だ。
+D:それはその中も叡智の与え手として、旧きウルク＝ハイやオログ＝ハイの諸部族に祭られている。
+
+# 某所で記事が上がっていたが、よく考えればヤムチャ以上にひでえ噛ませ扱いだったよな（回顧）(DSKL)
+N:1664:『チャパ王』
+E:King Chapa
+G:p:o
+I:115:44d10:20:60:8
+W:23:2:0:800:0:0
+B:PUNCH:SUPERHURT:6d2
+B:PUNCH:SUPERHURT:6d1
+B:KICK:SUPERHURT:4d5
+B:HIT:SUPERHURT:4d4
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | FORCE_MAXHP | UNIQUE
+F:DROP_60 | DROP_1D2 | OPEN_DOOR | BASH_DOOR | DROP_GOOD | HAS_LITE_1
+F:NO_FEAR | NO_CONF | NO_SLEEP
+D:天下一武道会の優勝経験を持つ武術の達人だ。
+D:あまりもの機敏な手の動きに残像を見せられるその手技は八手拳とも言われている。
+
 
 # N: serial number : monster name
 # G: symbol : color
@@ -31068,3 +31331,4 @@ S:1_IN_5 | BO_ACID
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
 # R - Light Red    G - Light Green    B - Light Blue    U - Light Brown
+

@@ -10,6 +10,7 @@
 #include "inventory/inventory-slot-types.h"
 #include "io/input-key-requester.h"
 #include "main/sound-of-music.h"
+#include "monster-attack/monster-attack-player.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
@@ -114,10 +115,7 @@ static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
 void process_world_aux_sudden_attack(PlayerType *player_ptr)
 {
     if (randint1(10000) == 1919) {
-        if (summon_specific(player_ptr, 0, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_TURBAN_KID, 0)) {
-            msg_print(_("突如ダーバンのガキがあなたを刺しにかかってきた！", "Suddenly a Durban kid stabbed you!"));
-            disturb(player_ptr, false, true);
-        }
+        summon_specific(player_ptr, 0, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_TURBAN_KID, PM_AMBUSH);
     }
 }
 
