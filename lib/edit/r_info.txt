@@ -27467,7 +27467,7 @@ B:BITE:HURT:10d10
 F:ANIMAL | HUMAN | MALE
 F:NO_FEAR | CAN_FLY | DROP_CORPSE
 F:DROP_GOOD | DROP_3D2
-D:血の医療の街、ヤーナムにの末期に現れだした巨大な獣だ。
+D:血の医療の街、ヤーナムの末期に現れだした巨大な獣だ。
 D:彼らはかつて聖職者であり、聖職者こそが獣の病に陥った時より強大な獣になると言われている。
 
 N:1430:野獣妹『SIK』
@@ -31098,7 +31098,7 @@ N:1653:惑星戦士『ラディッツ』
 E:Raditz, the Planet Soldier
 G:p:o
 I:115:40d12:20:90:20
-W:24:2:0:80:0:0
+W:24:2:0:500:0:0
 B:PUNCH:HURT:10d6
 B:PUNCH:HURT:8d6
 B:KICK:HURT:8d8
@@ -31299,16 +31299,32 @@ N:1664:『チャパ王』
 E:King Chapa
 G:p:o
 I:115:44d10:20:60:8
-W:23:2:0:800:0:0
+W:20:2:0:400:0:0
 B:PUNCH:SUPERHURT:6d2
 B:PUNCH:SUPERHURT:6d1
-B:KICK:SUPERHURT:4d5
-B:HIT:SUPERHURT:4d4
+B:KICK:SUPERHURT:4d3
+B:HIT:SUPERHURT:4d3
 F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | FORCE_MAXHP | UNIQUE
 F:DROP_60 | DROP_1D2 | OPEN_DOOR | BASH_DOOR | DROP_GOOD | HAS_LITE_1
 F:NO_FEAR | NO_CONF | NO_SLEEP
 D:天下一武道会の優勝経験を持つ武術の達人だ。
 D:あまりもの機敏な手の動きに残像を見せられるその手技は八手拳とも言われている。
+
+N:1665:教区長『エミーリア』
+E:Vicar Amelia
+G:H:w
+I:120:50d30:30:100:10
+W:43:3:0:9000:0:0
+B:PUNCH:HURT:12d9
+B:PUNCH:HURT:12d9
+B:CLAW:HURT:9d9
+B:BITE:HURT:10d10
+F:ANIMAL | HUMAN | FEMALE | UNIQUE | FORCE_MAXHP
+F:NO_FEAR | NO_SLEEP | NO_CONF | DROP_CORPSE
+F:DROP_GOOD | DROP_4D2
+S:1_IN_3 | HEAL
+D:ヤーナムの医療協会を維持していた末期の長だ。
+D:自身の獣の病を抑えるべく克己の祈りを繰り返していたが、遂に獣と成り果ててしまった。
 
 
 # N: serial number : monster name
