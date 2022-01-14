@@ -31326,6 +31326,24 @@ S:1_IN_3 | HEAL
 D:ヤーナムの医療協会を維持していた末期の長だ。
 D:自身の獣の病を抑えるべく克己の祈りを繰り返していたが、遂に獣と成り果ててしまった。
 
+# RTA勢の怨敵(DSKL)
+N:1666:ヤーナムの影
+E:Shadow of Yharnam
+G:h:D
+I:115:19d40:20:75:10
+W:38:4:0:350:0:0
+B:SLASH:HURT:8d4
+B:SLASH:HURT:8d4
+B:SLASH:HURT:8d4
+B:SHOOT:HURT:5d10
+F:DROP_1D2 | FRIENDS | DROP_SKELETON | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP
+F:EVIL | RES_DARK | NO_CONF | NO_SLEEP
+S:1_IN_4
+S:BO_FIRE | SHOOT
+D:ヤーナムの随所、現実とも悪夢とも知れぬ場に現れる黒ずくめの奇妙な集団だ。
+D:古代トゥメル人で、その女王ヤーナムの配下とも類推されるが、
+D:その一部はそれからも明らかに異質な蛇の異形をも宿している。
 
 # N: serial number : monster name
 # G: symbol : color
