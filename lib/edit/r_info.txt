@@ -31345,6 +31345,27 @@ D:ヤーナムの随所、現実とも悪夢とも知れぬ場に現れる黒ず
 D:古代トゥメル人で、その女王ヤーナムの配下とも類推されるが、
 D:その一部はそれからも明らかに異質な蛇の異形をも宿している。
 
+# オマエそれでいいのか(DSKL)
+N:1667:河馬人間
+E:Hippo Human
+G:H:o
+I:112:30d22:20:90:30
+W:35:2:0:1150:0:0
+B:CRUSH:HURT:6d8
+B:CRUSH:HURT:6d8
+B:CRUSH:HURT:6d8
+B:CRUSH:HURT:6d8
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_2D2 | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:EVIL | ANIMAL | HUMAN 
+S:1_IN_4 | 
+S:HEAL | BR_FIRE | BA_FIRE | 
+D:カバの口中に人間の頭部を持つ、間抜けとも不気味とも言える姿の合成人間だ。
+D:奇病により全身の筋肉が盛り上がった悪人とも、かの七英雄から望んで与えられた肉体とも言われている。
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
