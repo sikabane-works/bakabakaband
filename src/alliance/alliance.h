@@ -37,6 +37,7 @@ enum class AllianceType : int {
     PURE_MIRRODIN = 26, //!< 清純なるミラディン
     KING = 27, //!< KING
     PHYREXIA = 28, //!< ファイレクシア
+    AVARIN_LORDS = 29, //!< アヴァリ諸侯
     MAX,
 };
 
@@ -321,6 +322,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AlliancePhyrexia() = default;
+};
+
+class AllianceAvarinLords : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceAvarinLords() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceAvarinLords() = default;
 };
 
 
