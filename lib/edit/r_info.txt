@@ -31364,6 +31364,23 @@ S:HEAL | BR_FIRE | BA_FIRE |
 D:カバの口中に人間の頭部を持つ、間抜けとも不気味とも言える姿の合成人間だ。
 D:奇病により全身の筋肉が盛り上がった悪人とも、かの七英雄から望んで与えられた肉体とも言われている。
 
+N:1668:『オディオザウルス』
+E:Odiosaurus
+G:R:o
+I:128:60d80:30:180:50
+W:51:3:0:14000:0:0
+B:CRUSH:SUPERHURT:10d10
+B:CRUSH:SUPERHURT:10d10
+B:BITE:HURT:10d8
+B:BITE:HURT:10d8
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | EVIL | ANIMAL | POWERFUL | REGENERATE | RIDING |
+F:MOVE_BODY | CAN_SWIM | OPEN_DOOR | BASH_DOOR | KILL_WALL | KILL_BODY | KILL_ITEM
+F:DROP_GOOD | ONLY_ITEM | DROP_4D2 | DROP_SKELETON | DROP_CORPSE | MALE
+F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | UNIQUE | ALLIANCE_ODIO
+D:このとある太古の時代に生き残った、物言わぬ最後の恐竜が何故オディオの名を冠するに至ったかは、
+D:定かではない。滅び行く己らの種に対して、いと小さきものが栄えることを憎んでいたのか。
+D:せめて彼等に畏怖され、生贄を貢がせながら不毛の高地に閉じ込め、
+D:互いに争わせることが彼にとっての慰みであったのかも知れない。
 
 
 # N: serial number : monster name
