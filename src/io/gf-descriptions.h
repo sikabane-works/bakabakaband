@@ -3,7 +3,7 @@
 #include "system/angband.h"
 #include "effect/attribute-types.h"
 
-#define MAX_NAMED_NUM 104
+#define MAX_NAMED_NUM 106
 
 typedef struct named_num
 {
