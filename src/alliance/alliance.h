@@ -39,6 +39,7 @@ enum class AllianceType : int {
     PHYREXIA = 28, //!< ファイレクシア
     AVARIN_LORDS = 29, //!< アヴァリ諸侯
     GOLAN = 30, //!< GOLAN
+    BINJO_BUDDHISM = 31, //!< 便乗仏教
     MAX,
 };
 
@@ -342,6 +343,17 @@ public:
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGOLAN() = default;
 };
+
+class AllianceBinjoBuddhism : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceBinjoBuddhism() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceBinjoBuddhism() = default;
+};
+
+
 
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
