@@ -31443,6 +31443,39 @@ S:BR_ACID | BR_POIS | BA_ACID
 D:日ノ本の維新近き時代、過去の時代の亡霊を操る魔界の邪法で、
 D:天下を取ろうとした大名だ。彼はその野心のために遂に自らをも怪物へと変えた。
 
+# お馴染み三デブでござい(DSKL)
+N:1673:トゥメルの守り人の長
+E:Merciless chieftain of Pthumerian
+G:h:w
+I:110:30d60:20:100:20
+W:35:4:0:1000:0:0
+B:SLASH:HURT:6d8
+B:SLASH:HURT:6d8
+B:SLASH:HURT:6d8
+B:SHOOT:HURT:10d10
+R:1674:2d1
+F:MALE | OPEN_DOOR | BASH_DOOR | HUMAN
+F:ONLY_ITEM | DROP_2D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
+F:IM_ACID | IM_COLD | RES_CHAO | RES_NETH | RES_NEXU |
+S:1_IN_3 | SHOOT
+D:トゥメルの墳墓に侍る太った守り人の長だ。よく配下を伴っている。
+
+N:1674:トゥメルの残酷な守り人
+E:Merciless watcher of Pthumerian
+G:h:w
+I:110:30d50:20:90:20
+W:30:4:0:1000:0:0
+B:SLASH:HURT:6d8
+B:SLASH:HURT:6d8
+B:SLASH:HURT:6d8
+B:SHOOT:HURT:10d10
+F:MALE | OPEN_DOOR | BASH_DOOR | HUMAN
+F:ONLY_ITEM | DROP_2D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
+F:IM_ACID | IM_COLD | RES_CHAO | RES_NETH | RES_NEXU |
+S:1_IN_3 | SHOOT
+D:トゥメルの墳墓に侍る太った守り人だ。上役に率いられ三人一組で働くことがあるようだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
