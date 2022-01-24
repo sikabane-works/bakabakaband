@@ -218,18 +218,18 @@ concptr PlayerSkill::skill_rank_str(PlayerSkillRank rank)
 {
     switch (rank) {
     case PlayerSkillRank::UNSKILLED:
-        return _("[初心者]", "[Unskilled]");
+        return "[E]";
     case PlayerSkillRank::BEGINNER:
-        return _("[入門者]", "[Beginner]");
+        return "[D]";
     case PlayerSkillRank::SKILLED:
-        return _("[熟練者]", "[Skilled]");
+        return "[C]";
     case PlayerSkillRank::EXPERT:
-        return _("[エキスパート]", "[Expert]");
+        return "[B]";
     case PlayerSkillRank::MASTER:
-        return _("[達人]", "[Master]");
+        return "[A]";
     }
 
-    return _("[不明]", "[Unknown]");
+    return "[?]";
 }
 
 void PlayerSkill::gain_melee_weapon_exp(const object_type *o_ptr)
