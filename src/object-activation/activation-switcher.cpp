@@ -25,6 +25,7 @@
 #include "specific-object/ring-of-power.h"
 #include "specific-object/stone-of-lore.h"
 #include "specific-object/toragoroshi.h"
+#include "spell-kind/spells-floor.h"
 #include "spell-realm/spells-sorcery.h"
 #include "spell/spells-object.h"
 #include "spell/spells-status.h"
@@ -383,6 +384,8 @@ bool switch_activation(PlayerType *player_ptr, object_type **o_ptr_ptr, const ac
         return activate_create_ammo(player_ptr);
     case RandomArtActType::DISPEL_MAGIC:
         return activate_dispel_magic(player_ptr);
+    case RandomArtActType::DESTRUCTION:
+        return destroy_area(player_ptr, player_ptr->y, player_ptr->x, (13) + randint0(5), false);
     default:
         msg_format(_("Unknown activation effect: %d.", "Unknown activation effect: %d."), act_ptr->index);
         return false;
