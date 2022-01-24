@@ -35,6 +35,7 @@
 #include "player/digestion-processor.h"
 #include "player/eldritch-horror.h"
 #include "player/player-damage.h"
+#include "player/player-skill.h"
 #include "player/player-status-flags.h"
 #include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
@@ -81,6 +82,7 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, object_type *o_ptr)
             player_ptr->incident[INCIDENT::EAT_FECES] = 0;
         }
         player_ptr->incident[INCIDENT::EAT_FECES]++;
+        PlayerSkill(player_ptr).gain_riding_skill_exp_on_gross_eating();
         return true;
         break;
     case SV_JUNK_VOMITTING:
@@ -93,6 +95,7 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, object_type *o_ptr)
             player_ptr->incident[INCIDENT::EAT_FECES] = 0;
         }
         player_ptr->incident[INCIDENT::EAT_FECES]++;
+        PlayerSkill(player_ptr).gain_riding_skill_exp_on_gross_eating();
         return true;
         break;
     }

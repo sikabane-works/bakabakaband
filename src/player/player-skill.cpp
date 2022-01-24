@@ -207,6 +207,8 @@ concptr PlayerSkill::skill_name(PlayerSkillKindType skill)
         return _("乗馬", "Riding");
     case PlayerSkillKindType::SHIELD:
         return _("盾", "Shield");
+    case PlayerSkillKindType::GROSS_EATING:
+        return _("悪食", "Gross Eating");
     case PlayerSkillKindType::MAX:
         break;
     }
@@ -273,6 +275,14 @@ void PlayerSkill::gain_two_weapon_skill_exp()
     if (this->player_ptr->skill_exp[PlayerSkillKindType::TWO_WEAPON] < s_info[enum2i(this->player_ptr->pclass)].s_max[PlayerSkillKindType::TWO_WEAPON]) {
         const GainAmountList gain_amount_list{ 80, 4, 1, (one_in_(3) ? 1 : 0) };
         gain_attack_skill_exp(this->player_ptr, this->player_ptr->skill_exp[PlayerSkillKindType::TWO_WEAPON], gain_amount_list);
+    }
+}
+
+void PlayerSkill::gain_riding_skill_exp_on_gross_eating()
+{
+    if (this->player_ptr->skill_exp[PlayerSkillKindType::GROSS_EATING] < s_info[enum2i(this->player_ptr->pclass)].s_max[PlayerSkillKindType::GROSS_EATING]) {
+        const GainAmountList gain_amount_list{ 40, 5, 1, (one_in_(3) ? 1 : 0) };
+        gain_attack_skill_exp(this->player_ptr, this->player_ptr->skill_exp[PlayerSkillKindType::GROSS_EATING], gain_amount_list);
     }
 }
 

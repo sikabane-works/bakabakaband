@@ -14,6 +14,7 @@ enum class PlayerSkillKindType {
     TWO_WEAPON = 1,
     RIDING = 2,
     SHIELD = 3,
+    GROSS_EATING = 4,
     MAX,
 };
 
@@ -25,7 +26,7 @@ enum class PlayerSkillRank {
     MASTER = 4,
 };
 
-constexpr auto PLAYER_SKILL_KIND_TYPE_RANGE = EnumRange(PlayerSkillKindType::MARTIAL_ARTS, PlayerSkillKindType::SHIELD);
+constexpr auto PLAYER_SKILL_KIND_TYPE_RANGE = EnumRange(PlayerSkillKindType::MARTIAL_ARTS, PlayerSkillKindType::GROSS_EATING);
 
 enum class ItemKindType : short;
 
@@ -62,6 +63,7 @@ public:
     void gain_range_weapon_exp(const object_type *o_ptr);
     void gain_martial_arts_skill_exp();
     void gain_two_weapon_skill_exp();
+    void gain_riding_skill_exp_on_gross_eating();
     void gain_riding_skill_exp_on_melee_attack(const monster_race *r_ptr);
     void gain_riding_skill_exp_on_range_attack();
     void gain_riding_skill_exp_on_fall_off_check(HIT_POINT dam);
