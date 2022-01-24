@@ -278,6 +278,14 @@ void PlayerSkill::gain_two_weapon_skill_exp()
     }
 }
 
+void PlayerSkill::gain_riding_skill_exp_on_gross_eating()
+{
+    if (this->player_ptr->skill_exp[PlayerSkillKindType::GROSS_EATING] < s_info[enum2i(this->player_ptr->pclass)].s_max[PlayerSkillKindType::GROSS_EATING]) {
+        const GainAmountList gain_amount_list{ 40, 5, 1, (one_in_(3) ? 1 : 0) };
+        gain_attack_skill_exp(this->player_ptr, this->player_ptr->skill_exp[PlayerSkillKindType::GROSS_EATING], gain_amount_list);
+    }
+}
+
 void PlayerSkill::gain_riding_skill_exp_on_melee_attack(const monster_race *r_ptr)
 {
     auto now_exp = this->player_ptr->skill_exp[PlayerSkillKindType::RIDING];
