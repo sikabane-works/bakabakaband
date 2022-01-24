@@ -207,6 +207,8 @@ concptr PlayerSkill::skill_name(PlayerSkillKindType skill)
         return _("乗馬", "Riding");
     case PlayerSkillKindType::SHIELD:
         return _("盾", "Shield");
+    case PlayerSkillKindType::GROSS_EATING:
+        return _("悪食", "Gross Eating");
     case PlayerSkillKindType::MAX:
         break;
     }

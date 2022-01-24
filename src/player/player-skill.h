@@ -14,6 +14,7 @@ enum class PlayerSkillKindType {
     TWO_WEAPON = 1,
     RIDING = 2,
     SHIELD = 3,
+    GROSS_EATING = 4,
     MAX,
 };
 
@@ -25,7 +26,7 @@ enum class PlayerSkillRank {
     MASTER = 4,
 };
 
-constexpr auto PLAYER_SKILL_KIND_TYPE_RANGE = EnumRange(PlayerSkillKindType::MARTIAL_ARTS, PlayerSkillKindType::SHIELD);
+constexpr auto PLAYER_SKILL_KIND_TYPE_RANGE = EnumRange(PlayerSkillKindType::MARTIAL_ARTS, PlayerSkillKindType::GROSS_EATING);
 
 enum class ItemKindType : short;
 
