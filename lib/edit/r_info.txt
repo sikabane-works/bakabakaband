@@ -26519,13 +26519,13 @@ N:1374:バイオスモトリ
 E:Bio Sumotori
 G:H:g
 I:103:10d20:12:15:10
-W:7:2:0:200:0:0
+W:7:2:0:200:200:1676
 B:HIT:HURT:4d6
 B:HIT:HURT:4d6
 B:HIT:HURT:4d6
 B:HIT:HURT:4d6
 F:DROP_90 
-F:EMPTY_MIND | BASH_DOOR | FRIENDS
+F:EMPTY_MIND | BASH_DOOR | FRIENDS | SUMOU_WRESTLER
 D:暗黒メガコーポ「ヨロシサン製薬」が開発したクローン生物だ。
 D:クローンヤクザと並びマッポーの世の一側面を如実に現した存在である。ショギョムッジョ。
 
@@ -31490,6 +31490,18 @@ F:DROP_60 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | ONLY_ITEM
 S:1_IN_4 | SHOOT
 D:葦名の谷底、落ち谷に住む猿だ。恐るべき賢さで、刃物や銃器まで扱う。
 
+N:1676:巨大バイオスモトリ
+E:Giant Bio Sumotori
+G:H:u
+I:105:10d40:12:35:10
+W:18:2:0:200:0:0
+B:HIT:HURT:8d6
+B:HIT:HURT:8d6
+B:HIT:HURT:8d6
+B:HIT:HURT:8d6
+F:DROP_90 
+F:EMPTY_MIND | BASH_DOOR | FRIENDS | SUMOU_WRESTLER
+D:野生のバイオスモトリがさらにコメをむさぼり肥大化したものだ。
 
 # N: serial number : monster name
 # G: symbol : color
