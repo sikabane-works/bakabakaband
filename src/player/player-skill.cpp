@@ -207,6 +207,8 @@ concptr PlayerSkill::skill_name(PlayerSkillKindType skill)
         return _("乗馬", "Riding");
     case PlayerSkillKindType::SHIELD:
         return _("盾", "Shield");
+    case PlayerSkillKindType::GROSS_EATING:
+        return _("悪食", "Gross Eating");
     case PlayerSkillKindType::MAX:
         break;
     }
@@ -218,18 +220,18 @@ concptr PlayerSkill::skill_rank_str(PlayerSkillRank rank)
 {
     switch (rank) {
     case PlayerSkillRank::UNSKILLED:
-        return _("[初心者]", "[Unskilled]");
+        return "[E]";
     case PlayerSkillRank::BEGINNER:
-        return _("[入門者]", "[Beginner]");
+        return "[D]";
     case PlayerSkillRank::SKILLED:
-        return _("[熟練者]", "[Skilled]");
+        return "[C]";
     case PlayerSkillRank::EXPERT:
-        return _("[エキスパート]", "[Expert]");
+        return "[B]";
     case PlayerSkillRank::MASTER:
-        return _("[達人]", "[Master]");
+        return "[A]";
     }
 
-    return _("[不明]", "[Unknown]");
+    return "[?]";
 }
 
 void PlayerSkill::gain_melee_weapon_exp(const object_type *o_ptr)
@@ -273,6 +275,14 @@ void PlayerSkill::gain_two_weapon_skill_exp()
     if (this->player_ptr->skill_exp[PlayerSkillKindType::TWO_WEAPON] < s_info[enum2i(this->player_ptr->pclass)].s_max[PlayerSkillKindType::TWO_WEAPON]) {
         const GainAmountList gain_amount_list{ 80, 4, 1, (one_in_(3) ? 1 : 0) };
         gain_attack_skill_exp(this->player_ptr, this->player_ptr->skill_exp[PlayerSkillKindType::TWO_WEAPON], gain_amount_list);
+    }
+}
+
+void PlayerSkill::gain_riding_skill_exp_on_gross_eating()
+{
+    if (this->player_ptr->skill_exp[PlayerSkillKindType::GROSS_EATING] < s_info[enum2i(this->player_ptr->pclass)].s_max[PlayerSkillKindType::GROSS_EATING]) {
+        const GainAmountList gain_amount_list{ 40, 5, 1, (one_in_(3) ? 1 : 0) };
+        gain_attack_skill_exp(this->player_ptr, this->player_ptr->skill_exp[PlayerSkillKindType::GROSS_EATING], gain_amount_list);
     }
 }
 

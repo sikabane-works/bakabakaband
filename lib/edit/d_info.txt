@@ -365,6 +365,22 @@ F:CAVERN | WATER_RIVER | LAVA_RIVER | ARENA | DESTROY
 F:LAKE_WATER | LAKE_LAVA | LAKE_RUBBLE | LAKE_TREE | NO_ROOM
 F:MONSTER_DIV_0 | NO_MAGIC | NO_MELEE | DIFFICULT_RECALL | ALWAY_LIGHT
 
+N:26:ア ナ ル 鉄獄
+E:*Dark Ring*
+D:$the ass holl to the cave filled with nasty darkness
+D:ア ナ ル 鉄獄
+P:41:55
+W:19:72:30:0:14:160:80:30:0xffff:0xffff
+L:ORGANIC_FLOOR:100:TENTACLE_BATH:3:ORGANIC_FLOOR:0:100
+A:ORGANIC_WALL:100:ORGANIC_WALL:0:ORGANIC_WALL:0:ORGANIC_WALL:ORGANIC_WALL:ORGANIC_WALL:ORGANIC_WALL
+F:CAVERN | ACID_RIVER | ARENA | DESTROY
+F:LAKE_ACID | ACID_RIVER | LAKE_POISONOUS | POISONOUS_RIVER
+F:MONSTER_DIV_1 | DARKNESS
+M:NASTY | HOMO_SEXUAL
+R:1:1
+R:2:1
+R:8:1000
+
 # N:<index>:<name>
 # D:<long name>
 # W:<min depth>:<min depth>:<min player level>:<flags mode>:<min alloc>:<max alloc chance>:<obj good>:<obj great>:<pit>:<nest>

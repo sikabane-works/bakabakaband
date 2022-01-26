@@ -34,8 +34,10 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::GETTER, std::make_unique<AllianceGetter>(AllianceType::GETTER, "GETTER", _("ゲッター", "Getter"), 200000000L) },
     { AllianceType::PURE_MIRRODIN, std::make_unique<AlliancePureMirrodin>(AllianceType::PURE_MIRRODIN, "PURE-MIRRODIN", _("清純なるミラディン", "Pure Mirrodin"), 200000L) },
     { AllianceType::KING, std::make_unique<AllianceKING>(AllianceType::KING, "KING", _("KING", "KING"), 150000L) },
-    { AllianceType::PHYREXIA, std::make_unique<AlliancePhyrexia>(AllianceType::PHYREXIA, "PHYREXIA", _("ファイレクシア", "Phyrexia"), 2000000L) }
-,
+    { AllianceType::PHYREXIA, std::make_unique<AlliancePhyrexia>(AllianceType::PHYREXIA, "PHYREXIA", _("ファイレクシア", "Phyrexia"), 2000000L) },
+    { AllianceType::AVARIN_LORDS, std::make_unique<AllianceAvarinLords>(AllianceType::AVARIN_LORDS, "AVARIN-LORDS", _("アヴァリ諸侯同盟", "Avarin Lords"), 1000000L) },
+    { AllianceType::GOLAN, std::make_unique<AllianceGOLAN>(AllianceType::GOLAN, "GOLAN", _("GOLAN", "GOLAN"), 100000L) },
+    { AllianceType::BINJO_BUDDHISM, std::make_unique<AllianceBinjoBuddhism>(AllianceType::BINJO_BUDDHISM, "BINJO-BUDDHISM", _("便乗仏教", "Binjo Buddhism"), 80000L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -210,3 +212,19 @@ int AlliancePhyrexia::calcImplessionPoint([[maybe_unused]] PlayerType *creature_
 {
     return 0;
 }
+
+int AllianceAvarinLords::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceGOLAN::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceBinjoBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+

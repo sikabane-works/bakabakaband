@@ -152,5 +152,6 @@ const std::vector<activation_type> activation_info = {
     { "HERO_BLESS", RandomArtActType::HERO_BLESS, 10, 500, { 30, 30 }, _("士気高揚、祝福", "hero, bless") },
     { "CREATE_AMMO", RandomArtActType::CREATE_AMMO, 10, 30000, { 200, 0 }, _("弾/矢の製造", "Create Ammo") },
     { "DISPEL_MAGIC", RandomArtActType::DISPEL_MAGIC, 10, 10000, { 50, 50 }, _("魔力消去", "Dispel Magic") },
+    { "DESTRUCTION", RandomArtActType::DESTRUCTION, 10, 30000, { 50, 50 }, _("*破壊*", "*Destruction*") },
     { nullptr, RandomArtActType::NONE, 0, 0, { 0, 0 }, "" },
 };

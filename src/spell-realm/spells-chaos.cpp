@@ -24,6 +24,7 @@
 #include "target/projection-path-calculator.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief 虚無招来処理 /
@@ -33,8 +34,13 @@
  */
 void call_the_void(PlayerType *player_ptr)
 {
+
     bool do_call = true;
     auto *floor_ptr = player_ptr->current_floor_ptr;
+
+    /* 虚無招来そのものを唱えることによる時空崩壊度進行(*破壊*とは別) */
+    wc_ptr->plus_perm_collapsion(150);
+
     for (int i = 0; i < 9; i++) {
         auto *g_ptr = &floor_ptr->grid_array[player_ptr->y + ddy_ddd[i]][player_ptr->x + ddx_ddd[i]];
 

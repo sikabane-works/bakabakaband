@@ -1,8 +1,7 @@
 ﻿#pragma once
 #include "util/flag-group.h"
 
-enum class AttributeType : EFFECT_ID
-{
+enum class AttributeType : int {
 	NONE = 0,
 	ELEC = 1,					/*!< 魔法効果: 電撃*/
 	POIS = 2,					/*!< 魔法効果: 毒*/
@@ -11,7 +10,7 @@ enum class AttributeType : EFFECT_ID
 	FIRE = 5,					/*!< 魔法効果: 火炎*/
 	PSY_SPEAR = 9,				/*!< 魔法効果: 光の剣*/
 	MISSILE = 10,				/*!< 魔法効果: 弱魔力*/
-	ARROW = 11,					/*!< 魔法効果: 射撃*/
+    DEBUG = 11,					/*!< 魔法効果: デバッグ用必中属性*/
 	PLASMA = 12,				/*!< 魔法効果: プラズマ*/
 	WATER = 14,					/*!< 魔法効果: 水流*/
 	LITE = 15,					/*!< 魔法効果: 閃光*/
@@ -111,9 +110,10 @@ enum class AttributeType : EFFECT_ID
     STUNGUN = 122,              /*!< 魔法効果: 汚物 */
     PLAYER_SHOOT = 123,         /*!< 属性取得用: プレイヤーの射撃/投擲 */
 	PLAYER_MELEE = 124,			/*!< 属性取得用: プレイヤーの近接攻撃 */
+    MONSTER_SHOOT = 125,        /*!< 属性取得用: モンスターの射撃/投擲>*/
+    MONSTER_MELEE = 126,        /*!< 属性取得用: モンスターの近接攻撃>*/
     MAX /*!< 欠番を無視した最大サイズ (直上の値+1) */
 };
-
 
 /*! 属性フラグATTRIBUTEの集合を表すクラス */
 using AttributeFlags = FlagGroup<AttributeType, AttributeType::MAX>;
