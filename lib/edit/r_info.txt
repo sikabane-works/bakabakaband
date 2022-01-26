@@ -31494,7 +31494,7 @@ N:1676:巨大バイオスモトリ
 E:Giant Bio Sumotori
 G:H:u
 I:105:10d40:12:35:10
-W:18:2:0:200:0:0
+W:18:2:0:200:8000:1677
 B:HIT:HURT:8d6
 B:HIT:HURT:8d6
 B:HIT:HURT:8d6
@@ -31502,6 +31502,26 @@ B:HIT:HURT:8d6
 F:DROP_90 
 F:EMPTY_MIND | BASH_DOOR | FRIENDS | SUMOU_WRESTLER
 D:野生のバイオスモトリがさらにコメをむさぼり肥大化したものだ。
+
+#某第四の壁ニンジャがマザーバイオスモトリがいるというが、雄っぽい方がええやろ(DSKL)
+N:1677:バイオスモトリの種父
+E:Spawnsire of Bio Sumotori
+G:H:y
+I:113:40d40:12:95:10
+W:49:2:0:200:0:0
+B:HIT:HURT:12d6
+B:HIT:HURT:12d6
+B:HIT:HURT:12d6
+B:HIT:HURT:12d6
+F:SPAWN_CREATURE_1_IN_16_1676
+F:SPAWN_CREATURE_1_IN_16_1374
+R:1676:2d6
+R:1374:5d6
+F:DROP_90 | FORCE_MAXHP
+F:EMPTY_MIND | BASH_DOOR | FRIENDS | SUMOU_WRESTLER
+F:IM_COLD | IM_ACID | IM_POIS
+D:野生のバイオスモトリがコメというコメを貪り尽くし単性生殖可能まで成長した。
+
 
 # N: serial number : monster name
 # G: symbol : color
