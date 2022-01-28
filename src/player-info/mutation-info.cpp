@@ -311,6 +311,6 @@ void set_mutation_info(PlayerType *player_ptr, self_info_type *self_ptr)
     if (player_ptr->muta.has(PlayerMutationType::DEFECATION))
         self_ptr->info[self_ptr->line++] = _("あなたは脱糞を制御できない。", "You are subject to uncontrollable defecation.");
 
-    if (player_ptr->muta.has(PlayerMutationType::DEFECATION))
-        self_ptr->info[self_ptr->line++] = _("あなたはゼEROウイルスに感染している。", "あなたはゼEROウイルスに感染している。");
+    if (player_ptr->muta.has(PlayerMutationType::ZEERO_VIRUS))
+        self_ptr->info[self_ptr->line++] = _("あなたはゼEROウイルスに感染している。", "You've been infected with the ZEERO virus.");
 }
