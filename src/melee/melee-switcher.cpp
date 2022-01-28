@@ -13,6 +13,7 @@
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
+#include "player/player-damage.h"
 
 void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
 {

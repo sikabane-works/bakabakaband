@@ -17,3 +17,4 @@ HIT_POINT elec_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
 HIT_POINT fire_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura);
 HIT_POINT cold_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura);
 void touch_zap_player(monster_type *m_ptr, PlayerType *player_ptr);
+void player_defecate(PlayerType *player_ptr);

@@ -495,6 +495,9 @@ void switch_monster_blow_to_player(PlayerType *player_ptr, monap_type *monap_ptr
         monap_ptr->obvious = true;
         monap_ptr->damage -= (monap_ptr->damage * ((monap_ptr->ac < 150) ? monap_ptr->ac : 150) / 250);
         monap_ptr->get_damage += take_hit(player_ptr, DAMAGE_ATTACK, monap_ptr->damage, monap_ptr->ddesc);
+        if (monap_ptr->damage * 2 > randint1(p_ptr->chp)) {
+            player_defecate(player_ptr);
+        }
         break;
     }
 
