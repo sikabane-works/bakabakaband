@@ -286,6 +286,7 @@ static int blow_damcalc(monster_type *m_ptr, PlayerType *player_ptr, monster_blo
 
     case RaceBlowEffectType::HURT:
     case RaceBlowEffectType::SHATTER:
+    case RaceBlowEffectType::DEFECATE:
         dam -= (dam * ((ac < 150) ? ac : 150) / 250);
         break;
 
