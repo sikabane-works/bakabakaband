@@ -69,6 +69,9 @@
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include "sv-definition/sv-junk-types.h"
+#include "floor/floor-object.h"
+#include "object/object-kind-hook.h"
 
 using dam_func = HIT_POINT (*)(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura);
 
@@ -586,4 +589,19 @@ void touch_zap_player(monster_type *m_ptr, PlayerType *player_ptr)
     process_aura_damage(m_ptr, player_ptr, has_immune_fire(player_ptr) != 0, MonsterAuraType::FIRE, fire_dam, _("突然とても熱くなった！", "You are suddenly very hot!"));
     process_aura_damage(m_ptr, player_ptr, has_immune_cold(player_ptr) != 0, MonsterAuraType::COLD, cold_dam, _("突然とても寒くなった！", "You are suddenly very cold!"));
     process_aura_damage(m_ptr, player_ptr, has_immune_elec(player_ptr) != 0, MonsterAuraType::ELEC, elec_dam, _("電撃をくらった！", "You get zapped!"));
+}
+
+/*!
+ * @brief プレイヤーの脱糞処理
+ * @param player_ptr プレイヤーへの参照ポインタ
+ */
+void player_defecate(PlayerType *player_ptr)
+{
+    object_type forge;
+    object_type *q_ptr = &forge;
+    disturb(player_ptr, false, true);
+    msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
+    msg_print(NULL);
+    q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
+    (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
 }

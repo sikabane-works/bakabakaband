@@ -52,9 +52,7 @@
 #include "target/target-types.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
-#include "sv-definition/sv-junk-types.h"
-#include "floor/floor-object.h"
-#include "object/object-kind-hook.h"
+
 
 static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
 {
@@ -202,13 +200,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     }
 
     if (player_ptr->muta.has(PlayerMutationType::DEFECATION) && (randint1(1500) == 13)) {
-        object_type forge;
-        object_type *q_ptr = &forge;
-        disturb(player_ptr, false, true);
-        msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
-        msg_print(NULL);
-        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
-        (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
+        player_defecate(player_ptr);
     }
 
     if (player_ptr->muta.has(PlayerMutationType::ZEERO_VIRUS) && (randint1(721) == 1)) {
