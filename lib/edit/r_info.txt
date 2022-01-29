@@ -31526,7 +31526,6 @@ F:EMPTY_MIND | BASH_DOOR | FRIENDS | SUMOU_WRESTLER
 F:IM_COLD | IM_ACID | IM_POIS
 D:野生のバイオスモトリがコメというコメを貪り尽くし単性生殖可能まで成長した。
 
-#J0#
 N:1678:ネクタイゴーレム
 E:Necktie golem
 G:g:r
@@ -31541,6 +31540,21 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:それは出演作をバラまかれた怨念を吹き込まれた不気味な巨像で、
 D:多数のネクタイの塊でできている。
 
+N:1679:義破門団総帥『オディワン・リー』
+E:Odi Wang Lee,the Grand Master Yi Po Men Kung Fu
+G:p:v
+I:122:20d110:50:130:4
+W:42:4:0:7500:0:0
+B:PUNCH:HURT:18d2
+B:PUNCH:HURT:18d2
+B:KICK:HURT:20d2
+B:CRUSH:FIRE:7d8
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_STUN | HUMAN | ALLIANCE_ODIO
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | UNIQUE |
+F:OPEN_DOOR | EVIL | BASH_DOOR
+D:純粋なる強さを追い求め、同門同士で互いに命を狙うことも躊躇わぬ義破門団。
+D:その頂点に立つ武術の達人だ。
 
 # N: serial number : monster name
 # G: symbol : color
