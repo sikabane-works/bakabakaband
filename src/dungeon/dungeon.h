@@ -92,8 +92,7 @@ typedef struct dungeon_type {
 	int obj_great{};
 	int obj_good{};
 
-	bool unique_room_rate;
-	int room_rate[ROOM_TYPE_MAX]; /* ダンジョン独自の部屋生成率 */
+	std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
     AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
 } dungeon_type;
 
