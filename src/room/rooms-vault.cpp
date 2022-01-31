@@ -1222,3 +1222,74 @@ bool build_type17(PlayerType *player_ptr, dun_data_type *dd_ptr)
 
     return true;
 }
+
+/*!
+ * @brief タイプ18の部屋…v_info.txtより変態部屋を生成する / Type 18 -- pervo room (see "v_info.txt")
+ */
+bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
+{
+    vault_type *v_ptr = nullptr;
+    int dummy;
+    POSITION x, y;
+    POSITION xval, yval;
+    POSITION xoffset, yoffset;
+    int transno;
+
+    /* Pick a lesser vault */
+    for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
+        /* Access a random vault record */
+        v_ptr = &v_info[randint0(v_info.size())];
+
+        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
+            continue;
+
+        /* Accept the special fix room. */
+        if (v_ptr->typ == 18)
+            break;
+    }
+
+    /* No lesser vault found */
+    if (dummy >= SAFE_MAX_ATTEMPTS) {
+        msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("固定特殊部屋を配置できませんでした。", "Could not place fixed special room."));
+        return false;
+    }
+
+    /* pick type of transformation (0-7) */
+    transno = randint0(8);
+
+    /* calculate offsets */
+    x = v_ptr->wid;
+    y = v_ptr->hgt;
+
+    /* Some huge vault cannot be ratated to fit in the dungeon */
+    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    if (x + 2 > floor_ptr->height - 2) {
+        /* Forbid 90 or 270 degree ratation */
+        transno &= ~1;
+    }
+
+    coord_trans(&x, &y, 0, 0, transno);
+
+    if (x < 0) {
+        xoffset = -x - 1;
+    } else {
+        xoffset = 0;
+    }
+
+    if (y < 0) {
+        yoffset = -y - 1;
+    } else {
+        yoffset = 0;
+    }
+
+    /* Find and reserve some space in the dungeon.  Get center of room. */
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x)))
+        return false;
+
+    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
+
+    /* Hack -- Build the vault */
+    build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
+
+    return true;
+}

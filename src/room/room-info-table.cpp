@@ -50,6 +50,7 @@ RoomType room_build_order[ROOM_TYPE_MAX] = {
     RoomType::TRAP,
     RoomType::GLASS,
     RoomType::INNER_FEAT,
+    RoomType::PERVO,
     RoomType::FIXED,
     RoomType::OVAL,
     RoomType::CRYPT,

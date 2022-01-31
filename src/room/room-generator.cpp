@@ -64,6 +64,8 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
         return build_type16(player_ptr, dd_ptr);
     case RoomType::FIXED:
         return build_type17(player_ptr, dd_ptr);
+    case RoomType::PERVO:
+        return build_type18(player_ptr, dd_ptr);
     default:
         return false;
     }
