@@ -22,9 +22,10 @@ enum class RoomType {
     GLASS = 14, /*!<部屋型ID:ガラス部屋 / Glass room */
     ARCADE = 15, /*!<部屋型ID:商店 / Arcade */
     FIXED = 16, /*!<部屋型ID:固定部屋 / Fixed room */
-    MAX = 17, /*!<部屋型ID最大数 */
+    PERVO = 17, /*!<部屋型ID:変態部屋 / pervo theme fixed room */
+    MAX = 18, /*!<部屋型ID最大数 */
 };
 
 constexpr int ROOM_TYPE_MAX = enum2i(RoomType::MAX);
 
-constexpr auto ROOM_TYPE_LIST = EnumRange(RoomType::NORMAL, RoomType::FIXED);
+constexpr auto ROOM_TYPE_LIST = EnumRange(RoomType::NORMAL, RoomType::PERVO);
