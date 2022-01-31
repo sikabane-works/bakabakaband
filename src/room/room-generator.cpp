@@ -106,18 +106,16 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
 
     room_info_type *room_info_ptr = room_info_normal;
 
-    if (d_info[floor_ptr->dungeon_idx].unique_room_rate) {
-        for (auto r : ROOM_TYPE_LIST) {
-            prob_list[r] = d_info[floor_ptr->dungeon_idx].room_rate[enum2i(r)];
-        }    
-    } else {
-        for (auto r : ROOM_TYPE_LIST) {
-            if (floor_ptr->dun_level < room_info_ptr[enum2i(r)].min_level)
-                prob_list[r] = 0;
-            else
-                prob_list[r] = room_info_ptr[enum2i(r)].prob[level_index];
+    for (auto r : ROOM_TYPE_LIST) {
+        if (d_info[floor_ptr->dungeon_idx].room_rate.count(r)) {
+            prob_list[r] = d_info[floor_ptr->dungeon_idx].room_rate[r];
+        } else if (floor_ptr->dun_level < room_info_ptr[enum2i(r)].min_level) {
+            prob_list[r] = 0;
+        } else {
+            prob_list[r] = room_info_ptr[enum2i(r)].prob[level_index];
         }
     }
+
 
     /*!
      * @details ダンジョンにBEGINNER、CHAMELEON、SMALLESTいずれのフラグもなく、
