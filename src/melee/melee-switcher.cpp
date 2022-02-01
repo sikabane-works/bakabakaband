@@ -146,6 +146,11 @@ void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
         mam_ptr->touched = true;
         break;
     }
+    case RaceBlowMethodType::BIND: {
+        mam_ptr->act = _("%sを縛り上げた。", "binds %s.");
+        mam_ptr->touched = true;
+        break;
+    }
 
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:
@@ -273,6 +278,7 @@ void describe_monster_missed_monster(PlayerType *player_ptr, mam_type *mam_ptr)
     case RaceBlowMethodType::ENGULF:
     case RaceBlowMethodType::CHARGE:
     case RaceBlowMethodType::ENEMA:
+    case RaceBlowMethodType::BIND:
     {
         (void)set_monster_csleep(player_ptr, mam_ptr->t_idx, 0);
         if (mam_ptr->see_m) {
