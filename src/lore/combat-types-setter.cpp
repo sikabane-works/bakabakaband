@@ -102,6 +102,10 @@ void set_monster_blow_method(lore_type *lore_ptr, int m)
         break;
     case RaceBlowMethodType::ENEMA:
         lore_ptr->p = _("浣腸する", "give an enema");
+        lore_ptr->pc = TERM_L_UMBER;
+        break;
+    case RaceBlowMethodType::BIND:
+        lore_ptr->p = _("縛り上げる", "bind");
         lore_ptr->pc = TERM_L_WHITE;
         break;
 
