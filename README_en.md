@@ -4,7 +4,7 @@ Baka means "stupid" in Japanese. Bakabakaband is Hengband's variant for purpose 
 
  * Abolish "permanent death" and resurrection by stupid reasons.
  * Stupid monsters and items that have no regard for game balance.
- * Palodys of Stupid Internet Memes on Japanese Websites.
+ * Parody of Stupid Internet Memes on Japanese Websites.
  * Enhanced elements of crossover fanfiction since Zangband. (I'll be frank. I like Zelazny, Moorcock, Warhammer and so on, but I hate only Tolkien's religious worldview.) 
  * Extreme and experimental new systems.
 
