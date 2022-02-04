@@ -31630,6 +31630,22 @@ F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 D:あまりにも壮絶かつ外道な性癖をもった変態医師だ。
 D:なまじ医者としても優秀であることが彼の鬼畜ぶりを高めている。
 
+N:1684:デュオ・デ・チコ
+E:Duo de Chico
+G:p:G
+I:110:13d50:40:60:30
+W:32:8:0:2000:0:0
+B:BIND:PARALYZE:5d4
+B:KICK:HURT:8d4
+B:KICK:HURT:8d4
+B:SHOOT:HURT:10d5
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2
+F:DROP_CORPSE | DROP_SKELETON | ALLIANCE_ODIO | MOB_2
+S:1_IN_3 |
+S:SHOOT
+D:アメリカ西部の強盗集団、クレイジー・バンチで
+D:特に馬の扱いに長けたならずもののコンビだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
