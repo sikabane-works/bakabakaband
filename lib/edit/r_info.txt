@@ -31646,6 +31646,31 @@ S:SHOOT
 D:アメリカ西部の強盗集団、クレイジー・バンチで
 D:特に馬の扱いに長けたならずもののコンビだ。
 
+N:1685:シコザルの幼体
+E:Juvenile of Sikozaru
+G:Y:y
+I:110:20d8:30:30:20
+W:19:3:0:50:600:1686
+B:HIT:HURT:2d8
+B:HIT:HURT:2d8
+F:DROP_60 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | HOMO_SEXUAL | NASTY
+D:シコザル（指股猿）は、哺乳綱霊長目サオナガザル科マスカク属に属するサルの一種。新日暮里の固有種である。
+D:強力な統率力をもつシコザルとそれを取巻くオス、子供を中心として、
+D:他のオスは周辺部に位置し中心部に入ることが許されないという「同性縁二重構造」という社会構造を持つという。
+D:(ニコニコ大百科より出典)
+
+N:1686:シコザルの成体
+E:Adult of Sikozaru
+G:Y:u
+I:110:60d8:30:30:20
+W:29:3:0:300:0:0
+B:PUNCH:HURT:6d8
+B:PUNCH:HURT:6d8
+B:PUNCH:HURT:6d8
+F:DROP_1D2 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | HOMO_SEXUAL | NASTY
+D:シコザルが成長しきった姿だ。人間の成人男性に近く、
+D:筋骨隆々で歪みねえ姿をしているが、クッソ汚いのには変わりない。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
