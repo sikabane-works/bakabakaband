@@ -31671,6 +31671,21 @@ F:DROP_1D2 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | HOMO_SEXUAL | NAST
 D:シコザルが成長しきった姿だ。人間の成人男性に近く、
 D:筋骨隆々で歪みねえ姿をしているが、クッソ汚いのには変わりない。
 
+N:1687:GOLAN兵
+E:Soldier of GOLAN
+G:p:u
+I:110:10d10:25:40:10
+W:22:3:0:240:0:0
+B:SHOOT:HURT:3d6
+B:HIT:HURT:3d9
+B:HIT:HURT:3d9
+F:BASH_DOOR | OPEN_DOOR | FRIENDS | DROP_90 |
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF | MOB_300 | ALLIANCE_GOLAN
+F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON | EVIL
+S:1_IN_2 |
+S:SHOOT
+D:世紀末の選民思想的軍集団GOLANの兵士だ。常に周囲で奴隷狩りを繰り返している。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
