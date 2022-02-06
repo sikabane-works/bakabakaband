@@ -31654,6 +31654,7 @@ W:19:3:0:50:600:1686
 B:HIT:HURT:2d8
 B:HIT:HURT:2d8
 F:DROP_60 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | HOMO_SEXUAL | NASTY
+F:WILD_WOOD | WILD_MOUNTAIN 
 D:シコザル（指股猿）は、哺乳綱霊長目サオナガザル科マスカク属に属するサルの一種。新日暮里の固有種である。
 D:強力な統率力をもつシコザルとそれを取巻くオス、子供を中心として、
 D:他のオスは周辺部に位置し中心部に入ることが許されないという「同性縁二重構造」という社会構造を持つという。
@@ -31668,6 +31669,7 @@ B:PUNCH:HURT:6d8
 B:PUNCH:HURT:6d8
 B:PUNCH:HURT:6d8
 F:DROP_1D2 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | HOMO_SEXUAL | NASTY
+F:WILD_WOOD | WILD_MOUNTAIN 
 D:シコザルが成長しきった姿だ。人間の成人男性に近く、
 D:筋骨隆々で歪みねえ姿をしているが、クッソ汚いのには変わりない。
 
@@ -31700,6 +31702,25 @@ S:SHRIEK | CAUSE_2
 D:猫かな？……んな訳ねえだろ。猫耳つけただけの全裸のデブの中年ホモだ(半ギレマジレス)
 D:だが、世界こわれかけるほどこいつらはアホみたいに湧き出てくる。
 
+# 思い出セルフレイプ(DSKL)
+N:1689:始祖シコザル『ポッケ』
+E:Pokke, the Ur-Sikozaru
+G:Y:v
+I:115:60d30:30:100:20
+W:38:3:0:3000:0:0
+B:PUNCH:HURT:13d8
+B:PUNCH:HURT:13d8
+B:PUNCH:HURT:13d8
+B:CLAW:HURT:3d12
+F:SPAWN_CREATURE_1_IN_16_1685
+F:SPAWN_CREATURE_1_IN_16_1686
+R:1685:2d6
+R:1686:5d6
+F:DROP_3D2 | DROP_GOOD |ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | HOMO_SEXUAL | NASTY
+F:BASH_DOOR | FORCE_MAXHP | UNIQUE
+F:WILD_WOOD | WILD_MOUNTAIN | NO_SLEEP | NO_FEAR
+D:シコザルの単性生殖、その全ての源たる始祖が彼だ。おやつが好きで、お昼寝が好きだが、
+D:意味深なまでにもっと好きなものが沢山ある。
 
 # N: serial number : monster name
 # G: symbol : color
