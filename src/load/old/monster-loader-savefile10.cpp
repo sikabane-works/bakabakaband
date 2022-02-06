@@ -3,6 +3,8 @@
 #include "load/load-util.h"
 #include "load/old/load-v1-5-0.h"
 #include "load/old/monster-flag-types-savefile10.h"
+#include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -27,6 +29,14 @@ void MonsterLoader10::rd_monster(monster_type *m_ptr_)
 
     auto flags = rd_u32b();
     this->m_ptr->r_idx = rd_s16b();
+
+    if (loading_savefile_version_is_older_than(16)) {
+        monster_race *r_ptr = &r_info[m_ptr->r_idx];
+        m_ptr->alliance_idx = r_ptr->alliance_idx;
+    } else {
+        m_ptr->alliance_idx = i2enum<AllianceType>(rd_s32b());
+    }
+
     this->m_ptr->fy = rd_byte();
     this->m_ptr->fx = rd_byte();
 

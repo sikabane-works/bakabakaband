@@ -1,4 +1,5 @@
-﻿#include "view/display-monster-status.h"
+﻿#include "alliance/alliance.h"
+#include "view/display-monster-status.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster/monster-flag-types.h"
@@ -39,11 +40,13 @@ concptr look_mon_desc(monster_type *m_ptr, BIT_FLAGS mode)
         attitude = _("", "");
     }
 
+    concptr ally = alliance_list.find(m_ptr->alliance_idx)->second.get()->name.c_str();
+    
     concptr clone = m_ptr->mflag2.has(MonsterConstantFlagType::CLONED) ? ", clone" : "";
     monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
     if (ap_r_ptr->r_tkills && m_ptr->mflag2.has_not(MonsterConstantFlagType::KAGE)) {
-        return format(_("レベル%d, %s%s%s", "Level %d, %s%s%s"), ap_r_ptr->level, desc, attitude, clone);
+        return format(_("レベル%d, %s %s%s%s", "Level %d, %s %s%s%s"), ap_r_ptr->level, ally, desc, attitude, clone);
     }
 
-    return format(_("レベル???, %s%s%s", "Level ???, %s%s%s"), desc, attitude, clone);
+    return format(_("レベル???, %s %s%s%s", "Level ???, %s %s%s%s"), ally, desc, attitude, clone);
 }

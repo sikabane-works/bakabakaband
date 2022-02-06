@@ -7,6 +7,7 @@
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "util/enum-converter.h"
 #include "util/quarks.h"
 
 static void write_monster_flags(monster_type *m_ptr, BIT_FLAGS *flags)
@@ -127,6 +128,7 @@ void wr_monster(monster_type *m_ptr)
     write_monster_flags(m_ptr, &flags);
 
     wr_s16b(m_ptr->r_idx);
+    wr_s32b(enum2i<AllianceType>(m_ptr->alliance_idx));
     wr_byte((byte)m_ptr->fy);
     wr_byte((byte)m_ptr->fx);
     wr_s16b((int16_t)m_ptr->hp);
