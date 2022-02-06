@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "alliance/alliance.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-timed-effect-types.h"
 #include "monster/smart-learn-types.h"
@@ -27,6 +28,7 @@ typedef struct monster_type {
 	#define SUB_ALIGN_EVIL    0x0001 /*!< モンスターのサブアライメント:善 */
 	#define SUB_ALIGN_GOOD    0x0002 /*!< モンスターのサブアライメント:悪 */
 	BIT_FLAGS8 sub_align{};	/*!< 中立属性のモンスターが召喚主のアライメントに従い一時的に立っている善悪陣営 / Sub-alignment for a neutral monster */
+    AllianceType alliance_idx; /*!< 現在の所属アライアンス */
 
 	POSITION fy{};		/*!< 所在グリッドY座標 / Y location on map */
 	POSITION fx{};		/*!< 所在グリッドX座標 / X location on map */
