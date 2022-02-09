@@ -8,7 +8,7 @@
 #include "load/item/item-loader-base.h"
 #include "load/item/item-loader-version-types.h"
 #include "load/load-util.h"
-#include "load/old/item-loader-savefile10.h"
+#include "load/old/item-loader-savefile50.h"
 
 /*!
  * @brief アイテム読み込みクラスを返却する.
@@ -22,7 +22,7 @@ std::shared_ptr<ItemLoaderBase> ItemLoaderFactory::create_loader()
     switch (version) {
     case ItemLoaderVersionType::LOAD14:
     case ItemLoaderVersionType::LOAD15:
-        return std::make_shared<ItemLoader10>();
+        return std::make_shared<ItemLoader50>();
         // dummy yet.
     default:
         throw("Invalid loader version was specified!");
@@ -33,7 +33,7 @@ std::shared_ptr<ItemLoaderBase> ItemLoaderFactory::create_loader()
  * @brief ItemLoaderのバージョン切り替え.
  * @return セーブファイルバージョン群の中で互換性のある最古のバージョン.
  * @details (備忘録)例えばバージョン15で更に変更された場合、以下のように書き換えること.
- * 
+ *
  * if (loading_savefile_version_is_older_than(15)) {
  *   return ItemLoaderVersionType::LOAD11;
  * } else if (loading_savefile_version_is_older_than(11)) {
