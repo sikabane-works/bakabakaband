@@ -13,6 +13,7 @@
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
+#include "player/player-damage.h"
 
 void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
 {
@@ -140,6 +141,16 @@ void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
         mam_ptr->touched = false;
         break;
     }
+    case RaceBlowMethodType::ENEMA: {
+        mam_ptr->act = _("%sに浣腸した。", "gives %s an enema.");
+        mam_ptr->touched = true;
+        break;
+    }
+    case RaceBlowMethodType::BIND: {
+        mam_ptr->act = _("%sを縛り上げた。", "binds %s.");
+        mam_ptr->touched = true;
+        break;
+    }
 
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:
@@ -265,7 +276,10 @@ void describe_monster_missed_monster(PlayerType *player_ptr, mam_type *mam_ptr)
     case RaceBlowMethodType::BUTT:
     case RaceBlowMethodType::CRUSH:
     case RaceBlowMethodType::ENGULF:
-    case RaceBlowMethodType::CHARGE: {
+    case RaceBlowMethodType::CHARGE:
+    case RaceBlowMethodType::ENEMA:
+    case RaceBlowMethodType::BIND:
+    {
         (void)set_monster_csleep(player_ptr, mam_ptr->t_idx, 0);
         if (mam_ptr->see_m) {
 #ifdef JP

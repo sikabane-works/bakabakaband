@@ -33,6 +33,8 @@ const std::unordered_map<std::string_view, RaceBlowMethodType> r_info_blow_metho
 	{ "MOAN", RaceBlowMethodType::MOAN },
 	{ "SHOW", RaceBlowMethodType::SHOW },
 	{ "SHOOT", RaceBlowMethodType::SHOOT },
+    { "ENEMA", RaceBlowMethodType::ENEMA },
+    { "BIND", RaceBlowMethodType::BIND },
 };
 
 /*!
@@ -77,6 +79,7 @@ const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effec
     { "STUN", RaceBlowEffectType::STUN },
     { "HUNGRY", RaceBlowEffectType::HUNGRY },
     { "FLAVOR", RaceBlowEffectType::FLAVOR },
+    { "DEFECATE", RaceBlowEffectType::DEFECATE },
 };
 
 /*!

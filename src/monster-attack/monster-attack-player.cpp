@@ -341,6 +341,7 @@ static void process_monster_attack_evasion(PlayerType *player_ptr, monap_type *m
     case RaceBlowMethodType::HIT:
     case RaceBlowMethodType::TOUCH:
     case RaceBlowMethodType::PUNCH:
+    case RaceBlowMethodType::ENEMA:
     case RaceBlowMethodType::KICK:
     case RaceBlowMethodType::CLAW:
     case RaceBlowMethodType::BITE:

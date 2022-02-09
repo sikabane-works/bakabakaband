@@ -148,7 +148,7 @@ static void on_dead_spawn_monsters(PlayerType* player_ptr, monster_death_type* m
 
 }
 
-static void on_dead_drop_item(PlayerType *player_ptr, monster_death_type *md_ptr)
+static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (auto kind : md_ptr->r_ptr->drop_kinds) {
         object_type forge;
@@ -167,6 +167,60 @@ static void on_dead_drop_item(PlayerType *player_ptr, monster_death_type *md_ptr
         for (int i = 0; i < drop_nums; i++)
         {
             q_ptr->prep(kind_idx);
+            switch (grade) {
+            /* Apply bad magic, but first clear object */
+            case -2:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_GREAT | AM_CURSED);
+                break;
+            /* Apply bad magic, but first clear object */
+            case -1:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_CURSED);
+                break;
+            /* Apply normal magic, but first clear object */
+            case 0:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART);
+                break;
+            /* Apply good magic, but first clear object */
+            case 1:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD);
+                break;
+            /* Apply great magic, but first clear object */
+            case 2:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | AM_GOOD | AM_GREAT);
+                break;
+            /* Apply special magic, but first clear object */
+            case 3:
+                apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_GOOD | AM_GREAT | AM_SPECIAL);
+                if (!q_ptr->is_fixed_artifact()) {
+                    become_random_artifact(player_ptr, q_ptr, false);
+                }
+                break;
+            default:
+                break;
+            }
+            (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+        }
+    }
+}
+
+static void on_dead_drop_tval_item(PlayerType *player_ptr, monster_death_type *md_ptr)
+{
+    for (auto kind : md_ptr->r_ptr->drop_tvals) {
+        object_type forge;
+        object_type *q_ptr = &forge;
+        int num = std::get<0>(kind);
+        int deno = std::get<1>(kind);
+        if (randint1(deno) > num) {
+            continue;
+        }
+        int tval = std::get<2>(kind);
+        int grade = std::get<3>(kind);
+        int dn = std::get<4>(kind);
+        int ds = std::get<5>(kind);
+        int drop_nums = damroll(dn, ds);
+
+        for (int i = 0; i < drop_nums; i++) {
+            q_ptr->prep(lookup_kind(i2enum<ItemKindType>(tval), SV_ANY));
             switch (grade) {
             /* Apply bad magic, but first clear object */
             case -2:
@@ -699,7 +753,8 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, At
         on_dead_ninja(player_ptr, md_ptr);
         return;
     }
-    on_dead_drop_item(player_ptr, md_ptr);
+    on_dead_drop_kind_item(player_ptr, md_ptr);
+    on_dead_drop_tval_item(player_ptr, md_ptr);
     on_dead_spawn_monsters(player_ptr, md_ptr);
 
     switch (md_ptr->m_ptr->r_idx) {

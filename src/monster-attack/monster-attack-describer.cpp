@@ -248,6 +248,22 @@ void describe_monster_attack_method(monap_type *monap_ptr)
         monster_attack_show(monap_ptr);
         break;
     }
+    case RaceBlowMethodType::ENEMA: {
+        monap_ptr->act = _("浣腸された", "gives you an enema.");
+        monap_ptr->touched = true;
+        monap_ptr->do_stun = 1;
+        sound(SOUND_HIT);
+        break;
+    }
+
+    case RaceBlowMethodType::BIND:
+    {
+        monap_ptr->act = _("縛られた", "binds you");
+        monap_ptr->touched = true;
+        monap_ptr->do_stun = 1;
+        sound(SOUND_HIT);
+        break;
+    }
 
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:

@@ -502,7 +502,7 @@ void switch_gain_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
         break;
     case 198:
     case 199:
-        glm_ptr->muta_which = PlayerMutationType::DEFECATION;
+        glm_ptr->muta_which = PlayerMutationType::ZEERO_VIRUS;
         glm_ptr->muta_desc = _("あなたはゼEROウイルスに感染した！DAAAAAAA！", "You are infected with ZEERO virus. DAAAAAAA!");
         break;
     case 200:

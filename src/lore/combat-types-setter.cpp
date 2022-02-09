@@ -100,6 +100,14 @@ void set_monster_blow_method(lore_type *lore_ptr, int m)
         lore_ptr->p = _("歌う", "sing");
         lore_ptr->pc = TERM_SLATE;
         break;
+    case RaceBlowMethodType::ENEMA:
+        lore_ptr->p = _("浣腸する", "give an enema");
+        lore_ptr->pc = TERM_L_UMBER;
+        break;
+    case RaceBlowMethodType::BIND:
+        lore_ptr->p = _("縛り上げる", "bind");
+        lore_ptr->pc = TERM_L_WHITE;
+        break;
 
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:
@@ -256,6 +264,10 @@ void set_monster_blow_effect(lore_type *lore_ptr, int m)
     case RaceBlowEffectType::HUNGRY:
         lore_ptr->q = _("空腹を進行させる", "increase hunger");
         lore_ptr->qc = TERM_L_BLUE;
+        break;
+    case RaceBlowEffectType::DEFECATE:
+        lore_ptr->q = _("脱糞させる", "makes defecates");
+        lore_ptr->qc = TERM_UMBER;
         break;
     case RaceBlowEffectType::FLAVOR:
         // フレーバー打撃には何の効果もないので付加説明もない。
