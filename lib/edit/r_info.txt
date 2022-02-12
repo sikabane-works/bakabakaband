@@ -31749,6 +31749,22 @@ F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
 F:HURT_ROCK | NO_CONF | NO_SLEEP
 D:鬱陶しい声を放ちながらもたついた脚でうろつく、本当に憎たらしいクリーチャーだ。
 
+N:1692:GOLAN将校
+E:Officer of GOLAN
+G:p:y
+I:110:30d15:25:60:10
+W:22:3:0:240:0:0
+B:SHOOT:HURT:8d6
+B:HIT:HURT:6d9
+B:HIT:HURT:6d9
+R:1687:3d5
+F:BASH_DOOR | OPEN_DOOR | DROP_4D2 | FORCE_MAXHP
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF | MOB_20 | ALLIANCE_GOLAN
+F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON | EVIL
+S:1_IN_2 |
+S:SHOOT
+D:世紀末の選民思想的軍集団GOLANの将校だ。非情な軍律で味方の損失をも恐れない。
+
 
 # N: serial number : monster name
 # G: symbol : color
