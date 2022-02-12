@@ -380,26 +380,40 @@ std::map<AttributeType, ushort> gf_colors;
  */
 static TERM_COLOR mh_attr(int max)
 {
-    constexpr static auto colors = {
-        TERM_RED,
-        TERM_GREEN,
-        TERM_BLUE,
-        TERM_YELLOW,
-        TERM_ORANGE,
-        TERM_VIOLET,
-        TERM_L_RED,
-        TERM_L_GREEN,
-        TERM_L_BLUE,
-        TERM_UMBER,
-        TERM_L_UMBER,
-        TERM_SLATE,
-        TERM_WHITE,
-        TERM_L_WHITE,
-        TERM_L_DARK,
-    };
+    switch (randint1(max)) {
+    case 1:
+        return TERM_RED;
+    case 2:
+        return TERM_GREEN;
+    case 3:
+        return TERM_BLUE;
+    case 4:
+        return TERM_YELLOW;
+    case 5:
+        return TERM_ORANGE;
+    case 6:
+        return TERM_VIOLET;
+    case 7:
+        return TERM_L_RED;
+    case 8:
+        return TERM_L_GREEN;
+    case 9:
+        return TERM_L_BLUE;
+    case 10:
+        return TERM_UMBER;
+    case 11:
+        return TERM_L_UMBER;
+    case 12:
+        return TERM_SLATE;
+    case 13:
+        return TERM_WHITE;
+    case 14:
+        return TERM_L_WHITE;
+    case 15:
+        return TERM_L_DARK;
+    }
 
-    std::span<const term_color_type> candidates(colors.begin(), max);
-    return rand_choice(candidates);
+    return TERM_WHITE;
 }
 
 /*!
@@ -488,17 +502,17 @@ static TERM_COLOR spell_color(AttributeType type)
             return mh_attr(2);
         case AttributeType::DISINTEGRATE:
             return 0x05;
-        case AttributeType::PSI:
-        case AttributeType::PSI_DRAIN:
-        case AttributeType::TELEKINESIS:
-        case AttributeType::DOMINATION:
-        case AttributeType::DRAIN_MANA:
-        case AttributeType::MIND_BLAST:
+        case AttributeType::PSI:            /* fall through */
+        case AttributeType::PSI_DRAIN:      /* fall through */
+        case AttributeType::TELEKINESIS:    /* fall through */
+        case AttributeType::DOMINATION:     /* fall through */
+        case AttributeType::DRAIN_MANA:     /* fall through */
+        case AttributeType::MIND_BLAST:     /* fall through */
         case AttributeType::BRAIN_SMASH:
             return 0x09;
-        case AttributeType::CAUSE_1:
-        case AttributeType::CAUSE_2:
-        case AttributeType::CAUSE_3:
+        case AttributeType::CAUSE_1: /* fall through */
+        case AttributeType::CAUSE_2: /* fall through */
+        case AttributeType::CAUSE_3: /* fall through */
         case AttributeType::CAUSE_4:
             return 0x0E;
         case AttributeType::HAND_DOOM:
