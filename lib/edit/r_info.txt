@@ -31771,7 +31771,7 @@ N:1693:オディオアイ
 E:Odio eye
 G:e:v
 I:120:30d100:34:130:5
-W:55:4:0:6000:40000:0
+W:55:4:0:12000:0:0
 B:SLASH:HURT:10d14
 B:SLASH:HURT:10d14
 B:GAZE:PARALYZE:10d6
@@ -31822,6 +31822,25 @@ D:深淵の渦巻きだ。
 # S: spell type | spell type | etc
 # F: flag | flag | etc
 # D: Description
+
+N:1696:オディオマウス
+E:Odio mouth
+G:#:v
+I:120:35d100:34:130:5
+W:58:4:0:15000:0:0
+B:BITE:HURT:10d14
+B:BITE:HURT:10d14
+B:BITE:HURT:10d14
+B:BITE:HURT:10d14
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE
+F:COLD_BLOOD | BASH_DOOR | 
+F:EVIL | CAN_FLY | MOB_1 | ALLIANCE_ODIO
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NEVER_MOVE
+S:1_IN_2 | 
+S:BR_ABYSS | BR_VOID
+D:多数の憎しみ満ちた争いの果て、屍の山の上に姿を現すという憎悪の権化だ。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
