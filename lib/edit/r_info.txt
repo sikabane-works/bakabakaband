@@ -28294,11 +28294,11 @@ D:膝の皿が砕けても、頭蓋骨が砕け落ちて、脳味噌が吹き出
 D:肛門が引き裂かれても恐れないだろう。
 D:是非、あなたの手で実際に試してみるといい。
 
-N:1482:ミミック(ミミック(ミミック(箱)の像)の像)
-E:Statu of Statue of Chest mimic mimic mimic
-G:`:W
+N:1482:ミミック(糞便)
+E:Feces mimic
+G:~:u
 I:110:15d14:30:50:0
-W:25:255:0:70:1000:1483
+W:25:3:0:70:1000:1483
 B:GAZE:CONFUSE:4d3
 B:CLAW:POISON:5d4
 B:CLAW:POISON:5d4
@@ -28310,13 +28310,11 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 S:1_IN_5 | 
 S:BLIND | CONF | SCARE | CAUSE_3 | BA_POIS |
 S:S_MONSTER
-D:$This strange creature, transformed into an image of a strange creature
-D:$ that is transformed into an abandoned box, waits for a stupid adventurer
+D:$This strange creature, transformed into an abandoned feces, 
+D:$ waits for a stupid fecalophile
 D:$ to get close to its poisonous claws.
-D:$ Even so, its existence is really redundant.
-D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
-D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
-D:それにしてもその存在は実に冗長だ。
+D:放置された糞便に化けた奇妙な生物で、
+D:愚かなスカトロ愛好者がその毒のある爪の射程に入るのを待ち構えている。
 
 N:1483:ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)
 E:Statu of Statu of Statue of Chest mimic mimic mimic mimic
@@ -31737,7 +31735,56 @@ F:WEIRD_MIND | FRIENDS | CAN_FLY | WILD_ALL |
 F:ANIMAL | NASTY | HOMO_SEXUAL
 D:それは毒を持っている上に、自分と同じ顔をしたホモを執拗に刺そうとしてくる。
 
-N:1691:ヴォイド・ボルテックス
+N:1691:多脚ひで
+E:Multi-legged Hide
+G:X:v
+I:110:32d10:15:100:10
+W:30:1:0:200:0:0
+B:KICK:HURT:3d4
+B:KICK:HURT:3d4
+B:KICK:HURT:3d4
+B:KICK:HURT:3d4
+F:FORCE_MAXHP | NASTY | MALE | HOMO_SEXUAL
+F:EMPTY_MIND | COLD_BLOOD | RAND_25
+F:KILL_ITEM | FRIENDS
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:HURT_ROCK | NO_CONF | NO_SLEEP
+D:鬱陶しい声を放ちながらもたついた脚でうろつく、本当に憎たらしいクリーチャーだ。
+
+N:1692:GOLAN将校
+E:Officer of GOLAN
+G:p:y
+I:110:30d15:25:60:10
+W:22:3:0:240:0:0
+B:SHOOT:HURT:8d6
+B:HIT:HURT:6d9
+B:HIT:HURT:6d9
+R:1687:3d5
+F:BASH_DOOR | OPEN_DOOR | DROP_4D2 | FORCE_MAXHP
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF | MOB_20 | ALLIANCE_GOLAN
+F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON | EVIL
+S:1_IN_2 |
+S:SHOOT
+D:世紀末の選民思想的軍集団GOLANの将校だ。非情な軍律で味方の損失をも恐れない。
+
+N:1693:オディオアイ
+E:Odio eye
+G:e:v
+I:120:30d100:34:130:5
+W:55:4:0:6000:40000:0
+B:SLASH:HURT:10d14
+B:SLASH:HURT:10d14
+B:GAZE:PARALYZE:10d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE
+F:COLD_BLOOD | BASH_DOOR | 
+F:EVIL | CAN_FLY | MOB_2 | ALLIANCE_ODIO
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NEVER_MOVE
+S:1_IN_2 | 
+S:SLOW | MIND_BLAST | BRAIN_SMASH | FORGET | BO_WATE
+D:多数の憎しみ満ちた争いの果て、屍の山の上に姿を現すという憎悪の権化だ。
+
+N:1694:ヴォイド・ボルテックス
 E:Void vortex
 G:v:v
 I:140:32d20:100:80:0
@@ -31752,7 +31799,7 @@ V:150
 D:$It's a void whirlpool.
 D:空虚な渦巻きだ。
 
-N:1692:アビス・ボルテックス
+N:1695:アビス・ボルテックス
 E:Abyss vortex
 G:v:v
 I:140:32d20:100:80:0
