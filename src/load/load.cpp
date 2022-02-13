@@ -183,24 +183,31 @@ static void load_spells(PlayerType *player_ptr)
 static errr verify_checksum()
 {
     auto n_v_check = v_check;
-    if (rd_u32b() == n_v_check) {
+    auto a = rd_u32b();
+    if (a == n_v_check) {
         return 0;
     }
 
     load_note(_("チェックサムがおかしい", "Invalid checksum"));
 
-    return 0;
-    //return 11;
+    if (loading_savefile_version_is_older_than(18)) {
+        return 0;
+    }
+    return 11;
 }
 
 static errr verify_encoded_checksum()
 {
     auto n_x_check = x_check;
-    if (rd_u32b() == n_x_check) {
+    auto a = rd_u32b();
+    if (a == n_x_check) {
         return 0;
     }
 
     load_note(_("エンコードされたチェックサムがおかしい", "Invalid encoded checksum"));
+    if (loading_savefile_version_is_older_than(18)) {
+        return 0;
+    }
     return 11;
 }
 
