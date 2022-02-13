@@ -17,7 +17,7 @@
 void rd_version_info(void)
 {
     auto tmp_major = rd_byte();
-    auto is_old_ver = (10 <= tmp_major) && (tmp_major <= 13);
+    auto is_old_ver = (20 == tmp_major);
     constexpr auto variant_length = VARIANT_NAME.length();
     if (tmp_major == variant_length) {
         strip_bytes(variant_length);
@@ -53,7 +53,7 @@ void rd_version_info(void)
     loading_savefile_version = rd_u32b();
 
     /* h_ver_majorがfake_ver_majorと同じだったころへの対策 */
-    if (loading_savefile_version_is_older_than(10)) {
+    if (loading_savefile_version_is_older_than(17)) {
         constexpr auto fake_ver_plus = 10;
         if (tmp_major - w_ptr->h_ver_major < fake_ver_plus) {
             w_ptr->h_ver_major -= fake_ver_plus;
