@@ -36,6 +36,7 @@ room_info_type room_info_normal[ROOM_TYPE_MAX] = {
     { { 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2 }, 40 }, /*GLASS    */
     { { 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3 }, 1 }, /*ARCADE   */
     { { 1, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 }, 1 }, /*FIX      */
+    { { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21 }, 1 }, /*PERVO      */
 };
 
 /*! 部屋の生成処理順 / Build rooms in descending order of difficulty. */
