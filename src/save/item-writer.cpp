@@ -8,7 +8,7 @@
 #include "util/enum-converter.h"
 #include "util/quarks.h"
 
-static void write_item_flags(object_type *o_ptr, BIT_FLAGS *flags)
+static void write_item_flags(ObjectType *o_ptr, BIT_FLAGS *flags)
 {
     if (o_ptr->pval)
         set_bits(*flags, SaveDataItemFlagType::PVAL);
@@ -61,14 +61,14 @@ static void write_item_flags(object_type *o_ptr, BIT_FLAGS *flags)
     if (o_ptr->held_m_idx)
         set_bits(*flags, SaveDataItemFlagType::HELD_M_IDX);
 
-    if (o_ptr->xtra1)
-        set_bits(*flags, SaveDataItemFlagType::XTRA1);
-
     if (o_ptr->activation_id > RandomArtActType::NONE)
         set_bits(*flags, SaveDataItemFlagType::ACTIVATION_ID);
 
-    if (o_ptr->xtra3)
-        set_bits(*flags, SaveDataItemFlagType::XTRA3);
+    if (o_ptr->chest_level > 0)
+        set_bits(*flags, SaveDataItemFlagType::CHEST_LEVEL);
+
+    if (o_ptr->captured_monster_speed != 0)
+        set_bits(*flags, SaveDataItemFlagType::CAPTURED_MONSTER_SPEED);
 
     if (o_ptr->xtra4)
         set_bits(*flags, SaveDataItemFlagType::XTRA4);
@@ -95,7 +95,7 @@ static void write_item_flags(object_type *o_ptr, BIT_FLAGS *flags)
     wr_u32b(*flags);
 }
 
-static void write_item_info(object_type *o_ptr, const BIT_FLAGS flags)
+static void write_item_info(ObjectType *o_ptr, const BIT_FLAGS flags)
 {
     wr_s16b((int16_t)o_ptr->weight);
     if (any_bits(flags, SaveDataItemFlagType::NAME1))
@@ -140,14 +140,14 @@ static void write_item_info(object_type *o_ptr, const BIT_FLAGS flags)
     if (any_bits(flags, SaveDataItemFlagType::HELD_M_IDX))
         wr_s16b(o_ptr->held_m_idx);
 
-    if (any_bits(flags, SaveDataItemFlagType::XTRA1))
-        wr_byte(o_ptr->xtra1);
-
     if (any_bits(flags, SaveDataItemFlagType::ACTIVATION_ID))
         wr_s16b(enum2i(o_ptr->activation_id));
 
-    if (any_bits(flags, SaveDataItemFlagType::XTRA3))
-        wr_byte(o_ptr->xtra3);
+    if (any_bits(flags, SaveDataItemFlagType::CHEST_LEVEL))
+        wr_byte(o_ptr->chest_level);
+
+    if (any_bits(flags, SaveDataItemFlagType::CAPTURED_MONSTER_SPEED))
+        wr_byte(o_ptr->captured_monster_speed);
 
     if (any_bits(flags, SaveDataItemFlagType::XTRA4))
         wr_s16b(o_ptr->xtra4);
@@ -180,7 +180,7 @@ static void write_item_info(object_type *o_ptr, const BIT_FLAGS flags)
  * @brief アイテムオブジェクトを書き込む / Write an "item" record
  * @param o_ptr アイテムオブジェクト保存元ポインタ
  */
-void wr_item(object_type *o_ptr)
+void wr_item(ObjectType *o_ptr)
 {
     BIT_FLAGS flags = 0x00000000;
     write_item_flags(o_ptr, &flags);
@@ -212,7 +212,7 @@ void wr_item(object_type *o_ptr)
 void wr_perception(KIND_OBJECT_IDX k_idx)
 {
     byte tmp8u = 0;
-    object_kind *k_ptr = &k_info[k_idx];
+    auto *k_ptr = &k_info[k_idx];
     if (k_ptr->aware)
         tmp8u |= 0x01;
 

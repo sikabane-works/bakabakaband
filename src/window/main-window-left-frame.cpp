@@ -183,14 +183,14 @@ void print_depth(PlayerType *player_ptr)
     TERM_LEN col_depth = wid + COL_DEPTH;
     TERM_LEN row_depth = hgt + ROW_DEPTH;
 
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!floor_ptr->dun_level) {
         strcpy(depths, _("地上", "Surf."));
         c_prt(attr, format("%7s", depths), row_depth, col_depth);
         return;
     }
 
-    if (floor_ptr->inside_quest && !player_ptr->dungeon_idx) {
+    if (inside_quest(floor_ptr->quest_number) && !player_ptr->dungeon_idx) {
         strcpy(depths, _("地上", "Quest"));
         c_prt(attr, format("%7s", depths), row_depth, col_depth);
         return;
@@ -368,7 +368,8 @@ void health_redraw(PlayerType *player_ptr, bool riding)
 
     int pct = m_ptr->maxhp > 0 ? 100L * m_ptr->hp / m_ptr->maxhp : 0;
     int pct2 = m_ptr->maxhp > 0 ? 100L * m_ptr->hp / m_ptr->max_maxhp : 0;
-    int len = (pct2 < 10) ? 1 : (pct2 < 90) ? (pct2 / 10 + 1) : 10;
+    int len = (pct2 < 10) ? 1 : (pct2 < 90) ? (pct2 / 10 + 1)
+                                            : 10;
     TERM_COLOR attr = TERM_RED;
     if (monster_invulner_remaining(m_ptr))
         attr = TERM_WHITE;

@@ -17,9 +17,9 @@
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flgs フラグ情報を受け取る配列
  */
-TrFlags object_flags(const object_type *o_ptr)
+TrFlags object_flags(const ObjectType *o_ptr)
 {
-    object_kind *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &k_info[o_ptr->k_idx];
 
     /* Base object */
     auto flgs = k_ptr->flags;
@@ -62,10 +62,10 @@ TrFlags object_flags(const object_type *o_ptr)
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flgs フラグ情報を受け取る配列
  */
-TrFlags object_flags_known(const object_type *o_ptr)
+TrFlags object_flags_known(const ObjectType *o_ptr)
 {
     bool spoil = false;
-    object_kind *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &k_info[o_ptr->k_idx];
     TrFlags flgs{};
 
     if (!o_ptr->is_aware())

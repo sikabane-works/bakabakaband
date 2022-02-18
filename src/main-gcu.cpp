@@ -165,9 +165,11 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "system/angband.h"
+#include "system/angband-version.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
 #include "term/term-color-types.h"
+#include "term/z-form.h"
 #include "util/angband-files.h"
 #include "view/display-map.h"
 
@@ -188,11 +190,10 @@
 /**
  * Simple rectangle type
  */
-struct rect_s {
+struct rect_t {
     int x, y;
     int cx, cy;
 };
-typedef struct rect_s rect_t, *rect_ptr;
 
 /* Trivial rectangle utility to make code a bit more readable */
 static rect_t rect(int x, int y, int cx, int cy)
@@ -567,7 +568,7 @@ static errr Term_xtra_gcu_alive(int v)
         keymap_game();
     }
 
-    return (0);
+    return 0;
 }
 
 /*
@@ -612,7 +613,7 @@ static bool init_sound(void)
 
     /* Sound available */
     can_use_sound = true;
-    return (can_use_sound);
+    return can_use_sound;
 }
 
 /*
@@ -734,7 +735,7 @@ static errr Term_xtra_gcu_event(int v)
         char eucbuf[sizeof(buf)];
         /* strlen + 1 を渡して文字列終端('\0')を含めて変換する */
         if (utf8_to_euc(buf, strlen(buf) + 1, eucbuf, sizeof(eucbuf)) < 0) {
-            return (-1);
+            return -1;
         }
 #endif
         term_string_push(_(eucbuf, buf));
@@ -753,16 +754,16 @@ static errr Term_xtra_gcu_event(int v)
 
         /* None ready */
         if (i == ERR)
-            return (1);
+            return 1;
         if (i == EOF)
-            return (1);
+            return 1;
 
         /* Enqueue the keypress */
         term_key_push(i);
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #else /* USE_GETCH */
@@ -792,7 +793,7 @@ static errr Term_xtra_gcu_event(int v)
 
         /* Oops */
         if (k < 0)
-            return (1);
+            return 1;
 
         /* Tell stdin not to block */
         if (fcntl(0, F_SETFL, k | O_NDELAY) >= 0) {
@@ -802,7 +803,7 @@ static errr Term_xtra_gcu_event(int v)
 
             /* Replace the flags for stdin */
             if (fcntl(0, F_SETFL, k))
-                return (1);
+                return 1;
         }
 
         bp[0] = '\0';
@@ -810,7 +811,7 @@ static errr Term_xtra_gcu_event(int v)
         char eucbuf[sizeof(buf)];
         /* strlen + 1 を渡して文字列終端('\0')を含めて変換する */
         if (utf8_to_euc(buf, strlen(buf) + 1, eucbuf, sizeof(eucbuf)) < 0) {
-            return (-1);
+            return -1;
         }
 #endif
         term_string_push(_(eucbuf, buf));
@@ -823,29 +824,29 @@ static errr Term_xtra_gcu_event(int v)
 
         /* Oops */
         if (k < 0)
-            return (1);
+            return 1;
 
         /* Tell stdin not to block */
         if (fcntl(0, F_SETFL, k | O_NDELAY) < 0)
-            return (1);
+            return 1;
 
         /* Read one byte, if possible */
         i = read(0, buf, 1);
 
         /* Replace the flags for stdin */
         if (fcntl(0, F_SETFL, k))
-            return (1);
+            return 1;
 
         /* Ignore "invalid" keys */
         if ((i != 1) || (!buf[0]))
-            return (1);
+            return 1;
 
         /* Enqueue the keypress */
         term_key_push(buf[0]);
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #endif /* USE_GETCH */
@@ -859,21 +860,21 @@ static errr Term_xtra_gcu_sound(int v)
 
     /* Sound disabled */
     if (!use_sound)
-        return (1);
+        return 1;
 
     /* Illegal sound */
     if ((v < 0) || (v >= SOUND_MAX))
-        return (1);
+        return 1;
 
     /* Unknown sound */
     if (!sound_file[v])
-        return (1);
+        return 1;
 
     sprintf(buf, "./gcusound.sh %s\n", sound_file[v]);
 
-    return (system(buf) < 0);
+    return system(buf) < 0;
 
-    return (0);
+    return 0;
 }
 
 static int scale_color(int i, int j, int scale)
@@ -936,7 +937,7 @@ static errr Term_xtra_gcu_react(void)
 #endif
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
@@ -952,7 +953,7 @@ static errr Term_xtra_gcu(int n, int v)
     case TERM_XTRA_CLEAR:
         touchwin(td->win);
         (void)wclear(td->win);
-        return (0);
+        return 0;
 
     /* Make a noise */
     case TERM_XTRA_NOISE:
@@ -960,45 +961,45 @@ static errr Term_xtra_gcu(int n, int v)
 
     /* Make a special sound */
     case TERM_XTRA_SOUND:
-        return (Term_xtra_gcu_sound(v));
+        return Term_xtra_gcu_sound(v);
 
     /* Flush the Curses buffer */
     case TERM_XTRA_FRESH:
         (void)wrefresh(td->win);
-        return (0);
+        return 0;
 
     /* Change the cursor visibility */
     case TERM_XTRA_SHAPE:
         curs_set(v);
-        return (0);
+        return 0;
 
     /* Suspend/Resume curses */
     case TERM_XTRA_ALIVE:
-        return (Term_xtra_gcu_alive(v));
+        return Term_xtra_gcu_alive(v);
 
     /* Process events */
     case TERM_XTRA_EVENT:
-        return (Term_xtra_gcu_event(v));
+        return Term_xtra_gcu_event(v);
 
     /* Flush events */
     case TERM_XTRA_FLUSH:
         while (!Term_xtra_gcu_event(false))
             ;
-        return (0);
+        return 0;
 
     /* Delay */
     case TERM_XTRA_DELAY:
         usleep(1000 * v);
-        return (0);
+        return 0;
 
     /* React to events */
     case TERM_XTRA_REACT:
         Term_xtra_gcu_react();
-        return (0);
+        return 0;
     }
 
     /* Unknown */
-    return (1);
+    return 1;
 }
 
 /*
@@ -1012,7 +1013,7 @@ static errr Term_curs_gcu(int x, int y)
     wmove(td->win, y, x);
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
@@ -1038,7 +1039,7 @@ static errr Term_wipe_gcu(int x, int y, int n)
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #ifdef USE_NCURSES_ACS
@@ -1083,7 +1084,7 @@ static errr Term_text_gcu(int x, int y, int n, byte a, concptr s)
     /* then call special routine for drawing special characters */
     if (a & 0x10) {
         Term_acs_text_gcu(x, y, n, a, s);
-        return (0);
+        return 0;
     }
 #endif
 
@@ -1100,14 +1101,14 @@ static errr Term_text_gcu(int x, int y, int n, byte a, concptr s)
     char text[1024];
     int text_len = euc_to_utf8(s, n, text, sizeof(text));
     if (text_len < 0) {
-        return (-1);
+        return -1;
     }
 #endif
     /* Add the text */
     waddnstr(td->win, _(text, s), _(text_len, n));
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /**
@@ -1121,7 +1122,7 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
 
     /* Make sure the window has a positive size */
     if (rows <= 0 || cols <= 0)
-        return (0);
+        return 0;
 
     /* Create a window */
     td->win = newwin(rows, cols, y, x);
@@ -1129,7 +1130,7 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
     /* Make sure we succeed */
     if (!td->win) {
         plog("Failed to setup curses window.");
-        return (-1);
+        return -1;
     }
 
     /* Initialize the term */
@@ -1159,7 +1160,7 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
     term_activate(t);
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /**
@@ -1251,7 +1252,7 @@ errr init_gcu(int argc, char *argv[])
 
     /* Initialize for others systems */
     if (initscr() == (WINDOW *)ERR)
-        return (-1);
+        return -1;
 
     /* Activate hooks */
     quit_aux = hook_quit;
@@ -1260,7 +1261,7 @@ errr init_gcu(int argc, char *argv[])
     /* Hack -- Require large screen, or Quit with message */
     i = ((LINES < 24) || (COLS < 80));
     if (i)
-        quit("Angband needs an 80x24 'curses' screen");
+        quit_fmt("%s needs an 80x24 'curses' screen", std::string(VARIANT_NAME).c_str());
 
 #ifdef A_COLOR
 
@@ -1553,7 +1554,7 @@ errr init_gcu(int argc, char *argv[])
 
         /* Map Terminal */
         if (remaining.cx < MIN_TERM0_COLS || remaining.cy < MIN_TERM0_LINES)
-            quit(format("Failed: angband needs an %dx%d map screen, not %dx%d", MIN_TERM0_COLS, MIN_TERM0_LINES, remaining.cx, remaining.cy));
+            quit_fmt("Failed: %s needs an %dx%d map screen, not %dx%d", std::string(VARIANT_NAME).c_str(), MIN_TERM0_COLS, MIN_TERM0_LINES, remaining.cx, remaining.cy);
         data[0].r = remaining;
         term_data_init(&data[0]);
         angband_term[0] = Term;
@@ -1572,7 +1573,7 @@ errr init_gcu(int argc, char *argv[])
     term_screen = &data[0].t;
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #endif /* USE_GCU */

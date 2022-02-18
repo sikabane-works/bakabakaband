@@ -13,6 +13,7 @@
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
+#include "effect/attribute-types.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/cave.h"
@@ -43,7 +44,6 @@
 #include "player/player-status-flags.h"
 #include "player/special-defense-types.h"
 #include "spell-kind/spells-teleport.h"
-#include "effect/attribute-types.h"
 #include "status/bad-status-setter.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -64,7 +64,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
 {
     /* Memorize objects */
     for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
-        object_type *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
+        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
         if (!o_ptr->is_valid())
             continue;
         if (o_ptr->is_held_by_monster())
@@ -76,7 +76,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
     for (POSITION y = 1; y < player_ptr->current_floor_ptr->height - 1; y++) {
         /* Scan all normal grids */
         for (POSITION x = 1; x < player_ptr->current_floor_ptr->width - 1; x++) {
-            grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+            auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
             /* Memorize terrain of the grid */
             g_ptr->info |= (CAVE_KNOWN);
@@ -135,7 +135,7 @@ void wiz_dark(PlayerType *player_ptr)
     /* Forget every grid */
     for (POSITION y = 1; y < player_ptr->current_floor_ptr->height - 1; y++) {
         for (POSITION x = 1; x < player_ptr->current_floor_ptr->width - 1; x++) {
-            grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+            auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
             /* Process the grid */
             g_ptr->info &= ~(CAVE_MARK | CAVE_IN_DETECT | CAVE_KNOWN);
@@ -157,7 +157,7 @@ void wiz_dark(PlayerType *player_ptr)
 
     /* Forget all objects */
     for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
-        object_type *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
+        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
 
         if (!o_ptr->is_valid())
             continue;
@@ -248,9 +248,14 @@ void map_area(PlayerType *player_ptr, POSITION range)
 bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, bool in_generate)
 {
     /* Prevent destruction of quest levels and town */
+<<<<<<< HEAD
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     if ((floor_ptr->inside_quest && quest_type::is_fixed(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
         if(!in_generate) msg_print(_("破壊の力はかき消された…", "The power of destruction has been drowned out ..."));
+=======
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if ((inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number)) || !floor_ptr->dun_level) {
+>>>>>>> hengband/develop
         return false;
     }
 
@@ -305,8 +310,8 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
                 continue;
 
             if (g_ptr->m_idx) {
-                monster_type *m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
-                monster_race *r_ptr = &r_info[m_ptr->r_idx];
+                auto *m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
+                auto *r_ptr = &r_info[m_ptr->r_idx];
 
                 if (in_generate) /* In generation */
                 {
@@ -336,7 +341,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
             if (preserve_mode || in_generate) {
                 /* Scan all objects in the grid */
                 for (const auto this_o_idx : g_ptr->o_idx_list) {
-                    object_type *o_ptr;
+                    ObjectType *o_ptr;
                     o_ptr = &floor_ptr->o_list[this_o_idx];
 
                     /* Hack -- Preserve unknown artifacts */

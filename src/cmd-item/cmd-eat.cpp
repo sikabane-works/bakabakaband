@@ -38,11 +38,11 @@
 #include "player/player-skill.h"
 #include "player/player-status-flags.h"
 #include "player/special-defense-types.h"
+#include "spell-kind/spells-launcher.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
-#include "spell/spells-status.h"
 #include "spell/spell-types.h"
-#include "spell-kind/spells-launcher.h"
+#include "spell/spells-status.h"
 #include "status/action-setter.h"
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
@@ -273,7 +273,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, object_type *o_pt
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-bool exe_eat_food_type_object(PlayerType *player_ptr, object_type *o_ptr)
+bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     if (o_ptr->tval != ItemKindType::FOOD)
         return false;
@@ -320,7 +320,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, object_type *o_ptr)
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
                 player_ptr->incident[INCIDENT::EAT_POISON]++;
-                return true;        
+                return true;
             }
         }
         break;
@@ -337,14 +337,13 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, object_type *o_ptr)
         break;
     case SV_FOOD_PARALYSIS:
         if (!player_ptr->free_act) {
-            if (bss.paralysis(10 + randint1(10)))
-                {
+            if (bss.paralysis(10 + randint1(10))) {
                 if (player_ptr->incident.count(INCIDENT::EAT_POISON) == 0) {
                     player_ptr->incident[INCIDENT::EAT_POISON] = 0;
                 }
                 player_ptr->incident[INCIDENT::EAT_POISON]++;
                 return true;
-            }        
+            }
         }
         break;
     case SV_FOOD_WEAKNESS:
@@ -535,7 +534,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, object_type *o_ptr)
  * @param item オブジェクトのインベントリ番号
  * @return 食べようとしたらTRUE、しなかったらFALSE
  */
-bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, object_type *o_ptr, INVENTORY_IDX item)
+bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ObjectType *o_ptr, INVENTORY_IDX item)
 {
     if (o_ptr->tval != ItemKindType::STAFF && o_ptr->tval != ItemKindType::WAND)
         return false;
@@ -568,8 +567,8 @@ bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, object_type *o_ptr, 
 
         /* XXX Hack -- unstack if necessary */
         if (o_ptr->tval == ItemKindType::STAFF && (item >= 0) && (o_ptr->number > 1)) {
-            object_type forge;
-            object_type *q_ptr;
+            ObjectType forge;
+            ObjectType *q_ptr;
             q_ptr = &forge;
             q_ptr->copy_from(o_ptr);
 
@@ -613,7 +612,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         (void)spell_hex.stop_all_spells();
     }
 
-    object_type *o_ptr = ref_item(player_ptr, item);
+    auto *o_ptr = ref_item(player_ptr, item);
 
     sound(SOUND_EAT);
 
@@ -724,7 +723,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
                 (void)set_food(player_ptr, player_ptr->food + o_ptr->pval);
             }
             ate = true;
-        }    
+        }
     }
 
     if (!ate) {

@@ -21,7 +21,7 @@
 
 static void describe_monster_ball(flavor_type *flavor_ptr)
 {
-    monster_race *r_ptr = &r_info[flavor_ptr->o_ptr->pval];
+    auto *r_ptr = &r_info[flavor_ptr->o_ptr->pval];
     if (!flavor_ptr->known)
         return;
 
@@ -35,7 +35,7 @@ static void describe_monster_ball(flavor_type *flavor_ptr)
     flavor_ptr->modstr = flavor_ptr->tmp_val2;
 #else
     flavor_ptr->t = format("%s", r_ptr->name.c_str());
-    if (!(r_ptr->flags1 & RF1_UNIQUE)) {
+    if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         sprintf(flavor_ptr->tmp_val2, " (%s%s)", (is_a_vowel(*flavor_ptr->t) ? "an " : "a "), flavor_ptr->t);
         flavor_ptr->modstr = flavor_ptr->tmp_val2;
     } else {
@@ -47,12 +47,12 @@ static void describe_monster_ball(flavor_type *flavor_ptr)
 
 static void describe_statue(flavor_type *flavor_ptr)
 {
-    monster_race *r_ptr = &r_info[flavor_ptr->o_ptr->pval];
+    auto *r_ptr = &r_info[flavor_ptr->o_ptr->pval];
 #ifdef JP
     flavor_ptr->modstr = r_ptr->name.c_str();
 #else
     flavor_ptr->t = format("%s", r_ptr->name.c_str());
-    if (!(r_ptr->flags1 & RF1_UNIQUE)) {
+    if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         sprintf(flavor_ptr->tmp_val2, "%s%s", (is_a_vowel(*flavor_ptr->t) ? "an " : "a "), flavor_ptr->t);
         flavor_ptr->modstr = flavor_ptr->tmp_val2;
     } else
@@ -62,12 +62,12 @@ static void describe_statue(flavor_type *flavor_ptr)
 
 static void describe_corpse(flavor_type *flavor_ptr)
 {
-    monster_race *r_ptr = &r_info[flavor_ptr->o_ptr->pval];
+    auto *r_ptr = &r_info[flavor_ptr->o_ptr->pval];
     flavor_ptr->modstr = r_ptr->name.c_str();
 #ifdef JP
     flavor_ptr->basenm = "#%";
 #else
-    if (r_ptr->flags1 & RF1_UNIQUE)
+    if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE))
         flavor_ptr->basenm = "& % of #";
     else
         flavor_ptr->basenm = "& # %";

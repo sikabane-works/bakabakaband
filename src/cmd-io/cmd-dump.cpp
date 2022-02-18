@@ -210,7 +210,7 @@ void do_cmd_feeling(PlayerType *player_ptr)
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     int grids_rate = floor_ptr->width * floor_ptr->height * 100 / (MAX_WID * MAX_HGT);
 
-    if (floor_ptr->inside_quest && !random_quest_number(player_ptr, floor_ptr->dun_level)) {
+    if (inside_quest(player_ptr->current_floor_ptr->quest_number) && !inside_quest(random_quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level))) {
         msg_print(_("典型的なクエストのダンジョンのようだ。", "Looks like a typical quest level."));
         return;
     }
@@ -231,7 +231,7 @@ void do_cmd_feeling(PlayerType *player_ptr)
     }
 
     if (grids_rate > 80) {
-        msg_print("途方に暮れる程に広そうなフロアだ。");    
+        msg_print("途方に暮れる程に広そうなフロアだ。");
     } else if (grids_rate > 60) {
         msg_print("極めて広そうなフロアだ。");
     } else if (grids_rate > 50) {

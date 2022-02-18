@@ -20,6 +20,31 @@
 #include "util/string-processor.h"
 #include "util/bit-flags-calculator.h"
 
+<<<<<<< HEAD
+=======
+/*!
+ * @brief オブジェクトをプレイヤーが食べることができるかを判定する /
+ * Hook to determine if an object is eatable
+ * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
+ * @return 食べることが可能ならばTRUEを返す
+ */
+bool item_tester_hook_eatable(PlayerType *player_ptr, const ObjectType *o_ptr)
+{
+    if (o_ptr->tval == ItemKindType::FOOD)
+        return true;
+
+    auto food_type = PlayerRace(player_ptr).food();
+    if (food_type == PlayerRaceFoodType::MANA) {
+        if (o_ptr->tval == ItemKindType::STAFF || o_ptr->tval == ItemKindType::WAND)
+            return true;
+    } else if (food_type == PlayerRaceFoodType::CORPSE) {
+        if (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[o_ptr->pval].d_char))
+            return true;
+    }
+
+    return false;
+}
+>>>>>>> hengband/develop
 
 /*!
  * @brief オブジェクトをプレイヤーが飲むことができるかを判定する /
@@ -27,7 +52,7 @@
  * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
  * @return 飲むことが可能ならばTRUEを返す
  */
-bool item_tester_hook_quaff(PlayerType *player_ptr, const object_type *o_ptr)
+bool item_tester_hook_quaff(PlayerType *player_ptr, const ObjectType *o_ptr)
 {
     if (o_ptr->tval == ItemKindType::POTION)
         return true;
@@ -44,7 +69,7 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const object_type *o_ptr)
  * @param o_ptr 破壊可能かを確認したいオブジェクトの構造体参照ポインタ
  * @return オブジェクトが破壊可能ならばTRUEを返す
  */
-bool can_player_destroy_object(PlayerType *player_ptr, object_type *o_ptr)
+bool can_player_destroy_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
     if (flgs.has(TR_INDESTRUCTIBLE))

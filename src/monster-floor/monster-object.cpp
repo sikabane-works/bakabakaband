@@ -33,48 +33,48 @@
 /*!
  * @brief オブジェクトのフラグを更新する
  */
-static void update_object_flags(const TrFlags &flgs, BIT_FLAGS *flg2, BIT_FLAGS *flg3, BIT_FLAGS *flgr)
+static void update_object_flags(const TrFlags &flgs, EnumClassFlagGroup<MonsterKindType> flg_monster_kind, BIT_FLAGS *flgr)
 {
     if (flgs.has(TR_SLAY_DRAGON))
-        *flg3 |= (RF3_DRAGON);
+        flg_monster_kind.set(MonsterKindType::DRAGON);
     if (flgs.has(TR_KILL_DRAGON))
-        *flg3 |= (RF3_DRAGON);
+        flg_monster_kind.set(MonsterKindType::DRAGON);
     if (flgs.has(TR_SLAY_TROLL))
-        *flg3 |= (RF3_TROLL);
+        flg_monster_kind.set(MonsterKindType::TROLL);
     if (flgs.has(TR_KILL_TROLL))
-        *flg3 |= (RF3_TROLL);
+        flg_monster_kind.set(MonsterKindType::TROLL);
     if (flgs.has(TR_SLAY_GIANT))
-        *flg3 |= (RF3_GIANT);
+        flg_monster_kind.set(MonsterKindType::GIANT);
     if (flgs.has(TR_KILL_GIANT))
-        *flg3 |= (RF3_GIANT);
+        flg_monster_kind.set(MonsterKindType::GIANT);
     if (flgs.has(TR_SLAY_ORC))
-        *flg3 |= (RF3_ORC);
+        flg_monster_kind.set(MonsterKindType::ORC);
     if (flgs.has(TR_KILL_ORC))
-        *flg3 |= (RF3_ORC);
+        flg_monster_kind.set(MonsterKindType::ORC);
     if (flgs.has(TR_SLAY_DEMON))
-        *flg3 |= (RF3_DEMON);
+        flg_monster_kind.set(MonsterKindType::DEMON);
     if (flgs.has(TR_KILL_DEMON))
-        *flg3 |= (RF3_DEMON);
+        flg_monster_kind.set(MonsterKindType::DEMON);
     if (flgs.has(TR_SLAY_UNDEAD))
-        *flg3 |= (RF3_UNDEAD);
+        flg_monster_kind.set(MonsterKindType::UNDEAD);
     if (flgs.has(TR_KILL_UNDEAD))
-        *flg3 |= (RF3_UNDEAD);
+        flg_monster_kind.set(MonsterKindType::UNDEAD);
     if (flgs.has(TR_SLAY_ANIMAL))
-        *flg3 |= (RF3_ANIMAL);
+        flg_monster_kind.set(MonsterKindType::ANIMAL);
     if (flgs.has(TR_KILL_ANIMAL))
-        *flg3 |= (RF3_ANIMAL);
+        flg_monster_kind.set(MonsterKindType::ANIMAL);
     if (flgs.has(TR_SLAY_EVIL))
-        *flg3 |= (RF3_EVIL);
+        flg_monster_kind.set(MonsterKindType::EVIL);
     if (flgs.has(TR_KILL_EVIL))
-        *flg3 |= (RF3_EVIL);
+        flg_monster_kind.set(MonsterKindType::EVIL);
     if (flgs.has(TR_SLAY_GOOD))
-        *flg3 |= (RF3_GOOD);
+        flg_monster_kind.set(MonsterKindType::GOOD);
     if (flgs.has(TR_KILL_GOOD))
-        *flg3 |= (RF3_GOOD);
+        flg_monster_kind.set(MonsterKindType::GOOD);
     if (flgs.has(TR_SLAY_HUMAN))
-        *flg2 |= (RF2_HUMAN);
+        flg_monster_kind.set(MonsterKindType::HUMAN);
     if (flgs.has(TR_KILL_HUMAN))
-        *flg2 |= (RF2_HUMAN);
+        flg_monster_kind.set(MonsterKindType::HUMAN);
     if (flgs.has(TR_BRAND_ACID))
         *flgr |= (RFR_IM_ACID);
     if (flgs.has(TR_BRAND_ELEC))
@@ -100,11 +100,11 @@ static void update_object_flags(const TrFlags &flgs, BIT_FLAGS *flg2, BIT_FLAGS 
  * @param o_name アイテム名
  * @param this_o_idx モンスターが乗ったオブジェクトID
  */
-static void monster_pickup_object(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx, object_type *o_ptr, bool is_special_object,
+static void monster_pickup_object(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx, ObjectType *o_ptr, bool is_special_object,
     POSITION ny, POSITION nx, GAME_TEXT *m_name, GAME_TEXT *o_name, OBJECT_IDX this_o_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     if (is_special_object) {
         if (turn_flags_ptr->do_take && r_ptr->behavior_flags.has(MonsterBehaviorType::STUPID)) {
             turn_flags_ptr->did_take_item = true;
@@ -151,17 +151,18 @@ static void monster_pickup_object(PlayerType *player_ptr, turn_flags *turn_flags
  */
 void update_object_by_monster_movement(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx, POSITION ny, POSITION nx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     grid_type *g_ptr;
     g_ptr = &player_ptr->current_floor_ptr->grid_array[ny][nx];
 
     turn_flags_ptr->do_take = r_ptr->behavior_flags.has(MonsterBehaviorType::TAKE_ITEM);
     for (auto it = g_ptr->o_idx_list.begin(); it != g_ptr->o_idx_list.end();) {
-        BIT_FLAGS flg2 = 0L, flg3 = 0L, flgr = 0L;
+        EnumClassFlagGroup<MonsterKindType> flg_monster_kind;
+        BIT_FLAGS flgr = 0L;
         GAME_TEXT m_name[MAX_NLEN], o_name[MAX_NLEN];
         OBJECT_IDX this_o_idx = *it++;
-        object_type *o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
+        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
 
         if (turn_flags_ptr->do_take) {
             /* Skip gold, corpse and statue */
@@ -172,9 +173,9 @@ void update_object_by_monster_movement(PlayerType *player_ptr, turn_flags *turn_
         auto flgs = object_flags(o_ptr);
         describe_flavor(player_ptr, o_name, o_ptr, 0);
         monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_HIDDEN);
-        update_object_flags(flgs, &flg2, &flg3, &flgr);
+        update_object_flags(flgs, flg_monster_kind, &flgr);
 
-        bool is_special_object = o_ptr->is_artifact() || ((r_ptr->flags3 & flg3) != 0) || ((r_ptr->flags2 & flg2) != 0) || (((~(r_ptr->flagsr) & flgr) != 0) && !(r_ptr->flagsr & RFR_RES_ALL));
+        bool is_special_object = o_ptr->is_artifact() || r_ptr->kind_flags.has_any_of(flg_monster_kind) || (((~(r_ptr->flagsr) & flgr) != 0) && !(r_ptr->flagsr & RFR_RES_ALL));
         monster_pickup_object(player_ptr, turn_flags_ptr, m_idx, o_ptr, is_special_object, ny, nx, m_name, o_name, this_o_idx);
     }
 }
@@ -187,9 +188,9 @@ void update_object_by_monster_movement(PlayerType *player_ptr, turn_flags *turn_
 void monster_drop_carried_objects(PlayerType *player_ptr, monster_type *m_ptr)
 {
     for (auto it = m_ptr->hold_o_idx_list.begin(); it != m_ptr->hold_o_idx_list.end();) {
-        object_type forge;
-        object_type *o_ptr;
-        object_type *q_ptr;
+        ObjectType forge;
+        ObjectType *o_ptr;
+        ObjectType *q_ptr;
         const OBJECT_IDX this_o_idx = *it++;
         o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
         q_ptr = &forge;

@@ -37,6 +37,7 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
+#include "player-base/player-class.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
 #include "player-status/player-status-base.h"
@@ -1061,11 +1062,11 @@ process_result effect_monster_elemental_genocide(PlayerType *player_ptr, effect_
  */
 bool has_element_resist(PlayerType *player_ptr, ElementRealmType realm, PLAYER_LEVEL lev)
 {
-    if (player_ptr->pclass != PlayerClassType::ELEMENTALIST)
+    if (!PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST))
         return false;
 
     auto prealm = i2enum<ElementRealmType>(player_ptr->element);
-    return (prealm == realm && player_ptr->lev >= lev);
+    return (prealm == realm) && (player_ptr->lev >= lev);
 }
 
 /*!
@@ -1186,7 +1187,7 @@ static int get_element_realm(PlayerType *player_ptr, int is, int n)
     }
 
     display_realm_cursor(cs, n, TERM_YELLOW);
-    return (cs + 1);
+    return cs + 1;
 }
 
 /*!
@@ -1405,7 +1406,7 @@ static bool is_target_grid_dark(floor_type *f_ptr, POSITION y, POSITION x)
                 continue;
 
             POSITION d = distance(dy, dx, y, x);
-            monster_race *r_ptr = &r_info[f_ptr->m_list[m_idx].r_idx];
+            auto *r_ptr = &r_info[f_ptr->m_list[m_idx].r_idx];
             if (d <= 1 && any_bits(r_ptr->flags7, RF7_HAS_LITE_1 | RF7_SELF_LITE_1))
                 return false;
             if (d <= 2 && any_bits(r_ptr->flags7, RF7_HAS_LITE_2 | RF7_SELF_LITE_2))

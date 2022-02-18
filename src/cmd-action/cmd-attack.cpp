@@ -68,8 +68,8 @@
 static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMutationType attack, bool *fear, bool *mdeath)
 {
     WEIGHT n_weight = 0;
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
 
     int dice_num, dice_side;
     concptr atk_desc;
@@ -120,7 +120,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMuta
     }
     player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]++;
 
-    bool is_hit = ((r_ptr->flags2 & RF2_QUANTUM) == 0) || !randint0(2);
+    bool is_hit = (r_ptr->kind_flags.has_not(MonsterKindType::QUANTUM)) || !randint0(2);
     is_hit &= test_hit_norm(player_ptr, chance, r_ptr->ac, m_ptr->ml);
     if (!is_hit) {
         sound(SOUND_MISS);
@@ -173,9 +173,9 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMuta
  */
 bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_options mode)
 {
-    grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     GAME_TEXT m_name[MAX_NLEN];
 
     const std::initializer_list<PlayerMutationType> mutation_attack_methods = { PlayerMutationType::HORNS, PlayerMutationType::BEAK, PlayerMutationType::SCOR_TAIL, PlayerMutationType::TRUNK, PlayerMutationType::TENTACLES };
@@ -224,7 +224,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
             chg_virtue(player_ptr, V_HONOUR, -1);
             chg_virtue(player_ptr, V_JUSTICE, -1);
             chg_virtue(player_ptr, V_COMPASSION, -1);
-        } else if (player_ptr->pclass != PlayerClassType::BERSERKER) {
+        } else if (!PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
             if (get_check(_("本当に攻撃しますか？", "Really hit it? "))) {
                 chg_virtue(player_ptr, V_INDIVIDUALISM, 1);
                 chg_virtue(player_ptr, V_HONOUR, -1);
@@ -248,9 +248,9 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
     }
 
     if (monster_csleep_remaining(m_ptr)) {
-        if (!(r_ptr->flags3 & RF3_EVIL) || one_in_(5))
+        if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5))
             chg_virtue(player_ptr, V_COMPASSION, -1);
-        if (!(r_ptr->flags3 & RF3_EVIL) || one_in_(5))
+        if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5))
             chg_virtue(player_ptr, V_HONOUR, -1);
     }
 

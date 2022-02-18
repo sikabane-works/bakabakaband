@@ -3,6 +3,7 @@
 #include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
+#include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "floor/cave.h"
@@ -13,6 +14,7 @@
 #include "io/input-key-acceptor.h"
 #include "locale/english.h"
 #include "lore/lore-store.h"
+#include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags3.h"
 #include "monster/monster-describer.h"
@@ -22,7 +24,6 @@
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
 #include "monster/smart-learn-types.h"
-#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -47,7 +48,7 @@
 bool project_all_los(PlayerType *player_ptr, AttributeType typ, HIT_POINT dam)
 {
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         if (!monster_is_valid(m_ptr))
             continue;
 
@@ -62,7 +63,7 @@ bool project_all_los(PlayerType *player_ptr, AttributeType typ, HIT_POINT dam)
     BIT_FLAGS flg = PROJECT_JUMP | PROJECT_KILL | PROJECT_HIDE;
     bool obvious = false;
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         if (m_ptr->mflag.has_not(MonsterTemporaryFlagType::LOS))
             continue;
 
@@ -84,7 +85,7 @@ bool project_all_los(PlayerType *player_ptr, AttributeType typ, HIT_POINT dam)
  */
 bool speed_monsters(PlayerType *player_ptr)
 {
-    return (project_all_los(player_ptr, AttributeType::OLD_SPEED, player_ptr->lev));
+    return project_all_los(player_ptr, AttributeType::OLD_SPEED, player_ptr->lev);
 }
 
 /*!
@@ -94,7 +95,7 @@ bool speed_monsters(PlayerType *player_ptr)
  */
 bool slow_monsters(PlayerType *player_ptr, int power)
 {
-    return (project_all_los(player_ptr, AttributeType::OLD_SLOW, power));
+    return project_all_los(player_ptr, AttributeType::OLD_SLOW, power);
 }
 
 /*!
@@ -104,7 +105,7 @@ bool slow_monsters(PlayerType *player_ptr, int power)
  */
 bool sleep_monsters(PlayerType *player_ptr, int power)
 {
-    return (project_all_los(player_ptr, AttributeType::OLD_SLEEP, power));
+    return project_all_los(player_ptr, AttributeType::OLD_SLEEP, power);
 }
 
 /*!
@@ -114,7 +115,7 @@ bool sleep_monsters(PlayerType *player_ptr, int power)
  */
 bool banish_evil(PlayerType *player_ptr, int dist)
 {
-    return (project_all_los(player_ptr, AttributeType::AWAY_EVIL, dist));
+    return project_all_los(player_ptr, AttributeType::AWAY_EVIL, dist);
 }
 
 /*!
@@ -149,7 +150,7 @@ bool dispel_undead(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_evil(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::DISP_EVIL, dam));
+    return project_all_los(player_ptr, AttributeType::DISP_EVIL, dam);
 }
 
 /*!
@@ -159,7 +160,7 @@ bool dispel_evil(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_good(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::DISP_GOOD, dam));
+    return project_all_los(player_ptr, AttributeType::DISP_GOOD, dam);
 }
 
 /*!
@@ -169,7 +170,7 @@ bool dispel_good(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::DISP_ALL, dam));
+    return project_all_los(player_ptr, AttributeType::DISP_ALL, dam);
 }
 
 /*!
@@ -179,7 +180,7 @@ bool dispel_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_living(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::DISP_LIVING, dam));
+    return project_all_los(player_ptr, AttributeType::DISP_LIVING, dam);
 }
 
 /*!
@@ -189,7 +190,7 @@ bool dispel_living(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool dispel_demons(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::DISP_DEMON, dam));
+    return project_all_los(player_ptr, AttributeType::DISP_DEMON, dam);
 }
 
 /*!
@@ -199,7 +200,7 @@ bool dispel_demons(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool crusade(PlayerType *player_ptr)
 {
-    return (project_all_los(player_ptr, AttributeType::CRUSADE, player_ptr->lev * 4));
+    return project_all_los(player_ptr, AttributeType::CRUSADE, player_ptr->lev * 4);
 }
 
 /*!
@@ -212,7 +213,7 @@ void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
     bool sleep = false;
     bool speed = false;
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         if (!monster_is_valid(m_ptr))
             continue;
         if (i == who)
@@ -252,7 +253,7 @@ void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
  */
 bool confuse_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::OLD_CONF, dam));
+    return project_all_los(player_ptr, AttributeType::OLD_CONF, dam);
 }
 
 /*!
@@ -263,7 +264,7 @@ bool confuse_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool charm_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::CHARM, dam));
+    return project_all_los(player_ptr, AttributeType::CHARM, dam);
 }
 
 /*!
@@ -274,7 +275,7 @@ bool charm_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool charm_animals(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::CONTROL_ANIMAL, dam));
+    return project_all_los(player_ptr, AttributeType::CONTROL_ANIMAL, dam);
 }
 
 /*!
@@ -285,7 +286,7 @@ bool charm_animals(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool stun_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::STUN, dam));
+    return project_all_los(player_ptr, AttributeType::STUN, dam);
 }
 
 /*!
@@ -296,7 +297,7 @@ bool stun_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool stasis_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::STASIS, dam));
+    return project_all_los(player_ptr, AttributeType::STASIS, dam);
 }
 
 /*!
@@ -307,7 +308,7 @@ bool stasis_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool mindblast_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::PSI, dam));
+    return project_all_los(player_ptr, AttributeType::PSI, dam);
 }
 
 /*!
@@ -318,7 +319,7 @@ bool mindblast_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool banish_monsters(PlayerType *player_ptr, int dist)
 {
-    return (project_all_los(player_ptr, AttributeType::AWAY_ALL, dist));
+    return project_all_los(player_ptr, AttributeType::AWAY_ALL, dist);
 }
 
 /*!
@@ -329,7 +330,7 @@ bool banish_monsters(PlayerType *player_ptr, int dist)
  */
 bool turn_evil(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::TURN_EVIL, dam));
+    return project_all_los(player_ptr, AttributeType::TURN_EVIL, dam);
 }
 
 /*!
@@ -340,7 +341,7 @@ bool turn_evil(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool turn_monsters(PlayerType *player_ptr, HIT_POINT dam)
 {
-    return (project_all_los(player_ptr, AttributeType::TURN_ALL, dam));
+    return project_all_los(player_ptr, AttributeType::TURN_ALL, dam);
 }
 
 /*!
@@ -350,7 +351,7 @@ bool turn_monsters(PlayerType *player_ptr, HIT_POINT dam)
  */
 bool deathray_monsters(PlayerType *player_ptr)
 {
-    return (project_all_los(player_ptr, AttributeType::DEATH_RAY, player_ptr->lev * 200));
+    return project_all_los(player_ptr, AttributeType::DEATH_RAY, player_ptr->lev * 200);
 }
 
 /*!
@@ -381,11 +382,11 @@ void probed_monster_info(char *buf, PlayerType *player_ptr, monster_type *m_ptr,
         speed += 5;
 
     concptr align;
-    if ((r_ptr->flags3 & (RF3_EVIL | RF3_GOOD)) == (RF3_EVIL | RF3_GOOD))
+    if (r_ptr->kind_flags.has_all_of(alignment_mask))
         align = _("善悪", "good&evil");
-    else if (r_ptr->flags3 & RF3_EVIL)
+    else if (r_ptr->kind_flags.has(MonsterKindType::EVIL))
         align = _("邪悪", "evil");
-    else if (r_ptr->flags3 & RF3_GOOD)
+    else if (r_ptr->kind_flags.has(MonsterKindType::GOOD))
         align = _("善良", "good");
     else if ((m_ptr->sub_align & (SUB_ALIGN_EVIL | SUB_ALIGN_GOOD)) == (SUB_ALIGN_EVIL | SUB_ALIGN_GOOD))
         align = _("中立(善悪)", "neutral(good&evil)");
@@ -432,8 +433,8 @@ bool probing(PlayerType *player_ptr)
     bool probe = false;
     char buf[256];
     for (int i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        monster_race *r_ptr = &r_info[m_ptr->r_idx];
+        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+        auto *r_ptr = &r_info[m_ptr->r_idx];
         if (!monster_is_valid(m_ptr))
             continue;
         if (!player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx))
@@ -477,5 +478,5 @@ bool probing(PlayerType *player_ptr)
         msg_print(_("これで全部です。", "That's all."));
     }
 
-    return (probe);
+    return probe;
 }
