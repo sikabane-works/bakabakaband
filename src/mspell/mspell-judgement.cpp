@@ -364,7 +364,7 @@ bool dispel_check(PlayerType *player_ptr, MONSTER_IDX m_idx)
     if ((player_ptr->special_attack & ATTACK_COLD) && r_ptr->resistance_flags.has_none_of(RFR_EFF_IM_COLD_MASK)) {
         return true;
     }
-
+    
     if ((player_ptr->special_attack & ATTACK_POIS) && r_ptr->resistance_flags.has_none_of(RFR_EFF_IM_POISON_MASK)) {
         return true;
     }
