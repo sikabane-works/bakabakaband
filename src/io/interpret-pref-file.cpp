@@ -363,7 +363,7 @@ static int interpret_z_token(char *buf)
     }
 
     *(t++) = '\0';
-    for (const auto &description : gf_descriptions) {
+    for (const auto &description : gf_desc) {
         if (!streq(description.name, buf + 2)) {
             continue;
         }
