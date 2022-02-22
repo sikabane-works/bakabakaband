@@ -30148,7 +30148,7 @@ B:BITE:HURT:12d8
 F:PREVENT_SUDDEN_MAGIC | SELF_LITE_2 |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | EVIL
 F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | 
-F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | FRIENDS
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | RES_DARK | FRIENDS
 F:NO_CONF | NO_SLEEP | NO_FEAR | CAN_FLY | ANGEL
 S:1_IN_6
 S:BO_MANA
@@ -31872,6 +31872,23 @@ S:S_MONSTERS | PSY_SPEAR
 D:カインの末裔たち──あの醜悪な怪物の母親だ。
 D:美しく妖艶な姿をしているが、それが仮初なのか真実まことのものなのか
 D:知る術はない。ただいずれにせよその姿にぞっとする何かを感じずにはいられない。
+
+N:1699:新宿の『母』
+E:The Mother in Shinjuku
+G:A:W
+I:130:75d100:40:160:10
+W:87:3:0:75000:0:0
+R:1596:5d10
+F:SPAWN_CREATURE_1_IN_16_1596
+F:UNIQUE | FEMALE | CAN_SPEAK | RES_NETH | NO_FEAR | EVIL |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | REFLECTING |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GREAT | NEVER_MOVE |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | NEVER_BLOW |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_DARK | RES_LITE
+F:NO_CONF | NO_SLEEP | ANGEL
+S:1_IN_1 | BR_LITE | BR_DARK
+D:この髪のない全裸の巨大な女性を象った
+D:「敵」の母体は光と闇の声をただ周囲に振りまき続けている。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
