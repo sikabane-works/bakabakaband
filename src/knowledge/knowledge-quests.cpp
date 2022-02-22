@@ -234,9 +234,9 @@ void do_cmd_knowledge_quests_completed(PlayerType *player_ptr, FILE *fff, const 
 {
     fprintf(fff, _("《達成したクエスト》\n", "< Completed Quest >\n"));
     int16_t total = 0;
+    auto quest_num = quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level);
     for (auto &q_idx : quest_numbers) {
         auto &q_ref = quest[q_idx];
-
         if (q_ref.status == QuestStatusType::FINISHED && do_cmd_knowledge_quests_aux(player_ptr, fff, q_idx)) {
             ++total;
         }
@@ -257,9 +257,9 @@ void do_cmd_knowledge_quests_failed(PlayerType *player_ptr, FILE *fff, const std
 {
     fprintf(fff, _("《失敗したクエスト》\n", "< Failed Quest >\n"));
     int16_t total = 0;
+    auto quest_num = quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level);
     for (auto &q_idx : quest_numbers) {
         auto &q_ref = quest[q_idx];
-
         if (((q_ref.status == QuestStatusType::FAILED_DONE) || (q_ref.status == QuestStatusType::FAILED)) && do_cmd_knowledge_quests_aux(player_ptr, fff, q_idx)) {
             ++total;
         }

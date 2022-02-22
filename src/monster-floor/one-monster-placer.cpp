@@ -172,9 +172,7 @@ static bool check_quest_placeable(PlayerType *player_ptr, MONRACE_IDX r_idx)
     int number_mon = 0;
     for (int i2 = 0; i2 < floor_ptr->width; ++i2) {
         for (int j2 = 0; j2 < floor_ptr->height; j2++) {
-            auto quest_monster = (floor_ptr->grid_array[j2][i2].m_idx > 0);
-            quest_monster &= (floor_ptr->m_list[floor_ptr->grid_array[j2][i2].m_idx].r_idx == quest[hoge].r_idx);
-            if (quest_monster) {
+            if ((floor_ptr->grid_array[j2][i2].m_idx > 0) && (floor_ptr->m_list[floor_ptr->grid_array[j2][i2].m_idx].r_idx == quest[hoge].r_idx)) {
                 number_mon++;
             }
         }
