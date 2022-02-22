@@ -177,10 +177,7 @@ void check_find_art_quest_completion(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     /* Check if completed a quest */
     for (auto &[q_idx, q_ref] : quest) {
-        auto found_artifact = (q_ref.type == QuestKindType::FIND_ARTIFACT);
-        found_artifact &= (q_ref.status == QuestStatusType::TAKEN);
-        found_artifact &= (q_ref.k_idx == o_ptr->fixed_artifact_idx);
-        if (found_artifact) {
+        if ((q_ref.type == QuestKindType::FIND_ARTIFACT) && (q_ref.status == QuestStatusType::TAKEN) && (q_ref.k_idx == o_ptr->fixed_artifact_idx)) {
             complete_quest(player_ptr, q_idx);
         }
     }
@@ -244,11 +241,8 @@ QuestId quest_number(PlayerType *player_ptr, DEPTH level)
         if (q_ref.status != QuestStatusType::TAKEN) {
             continue;
         }
-        auto depth_quest = (q_ref.type == QuestKindType::KILL_LEVEL);
-        depth_quest &= !(q_ref.flags & QUEST_FLAG_PRESET);
-        depth_quest &= (q_ref.level == level);
-        depth_quest &= (q_ref.dungeon == player_ptr->dungeon_idx);
-        if (depth_quest) {
+
+        if ((q_ref.type == QuestKindType::KILL_LEVEL) && !(q_ref.flags & QUEST_FLAG_PRESET) && (q_ref.level == level) && (q_ref.dungeon == player_ptr->dungeon_idx)) {
             return q_idx;
         }
     }
@@ -270,11 +264,7 @@ QuestId random_quest_number(PlayerType *player_ptr, DEPTH level)
 
     for (auto q_idx : EnumRange(QuestId::RANDOM_QUEST1, QuestId::RANDOM_QUEST10)) {
         auto &q_ref = quest[q_idx];
-        auto is_random_quest = (q_ref.type == QuestKindType::RANDOM);
-        is_random_quest &= (q_ref.status == QuestStatusType::TAKEN);
-        is_random_quest &= (q_ref.level == level);
-        is_random_quest &= (q_ref.dungeon == DUNGEON_ANGBAND);
-        if (is_random_quest) {
+        if ((q_ref.type == QuestKindType::RANDOM) && (q_ref.status == QuestStatusType::TAKEN) && (q_ref.level == level) && (q_ref.dungeon == DUNGEON_ANGBAND)) {
             return q_idx;
         }
     }
