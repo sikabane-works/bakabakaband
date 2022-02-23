@@ -32,7 +32,7 @@ using store_k_idx = std::vector<KIND_OBJECT_IDX>;
 /*!
  * @brief 店舗の情報構造体
  */
-class object_type;
+class ObjectType;
 class store_type {
 public:
     byte type{}; //!< Store type

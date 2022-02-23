@@ -412,7 +412,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, HIT_POINT damage, concptr 
                     strcpy(buf, _("アリーナ", "in the Arena"));
                 else if (!is_in_dungeon(player_ptr))
                     strcpy(buf, _("地上", "on the surface"));
-                else if (inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::QUEST_MELKO)))
+                else if (inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::MELKO)))
                     strcpy(buf, _("クエスト", "in a quest"));
                 else
                     sprintf(buf, _("%d階", "level %d"), (int)player_ptr->current_floor_ptr->dun_level);
@@ -601,8 +601,8 @@ void touch_zap_player(monster_type *m_ptr, PlayerType *player_ptr)
  */
 void player_defecate(PlayerType *player_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     disturb(player_ptr, false, true);
     msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
     msg_print(NULL);

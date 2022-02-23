@@ -423,7 +423,7 @@ static void curse_megaton_coin(PlayerType *player_ptr)
     if (!get_player_flags(player_ptr, TR_MEGATON_COIN)) return;
     auto d_ptr = &d_info[player_ptr->current_floor_ptr->dungeon_idx];
     if (!one_in_(364) || player_ptr->current_floor_ptr->dun_level == 0 || player_ptr->current_floor_ptr->dun_level == d_ptr->maxdepth ||
-        player_ptr->current_floor_ptr->inside_quest || player_ptr->current_floor_ptr->inside_arena)
+        inside_quest(player_ptr->current_floor_ptr->quest_number) || player_ptr->current_floor_ptr->inside_arena)
         return;
 
     msg_print(_("メガトンコインで床が抜けた！ンアアアアアアァァァ！", "The floor came off with the Megaton Coin!AAAAaaaaaa!"));

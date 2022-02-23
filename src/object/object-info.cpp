@@ -177,7 +177,7 @@ static concptr item_activation_aux(ObjectType *o_ptr)
 concptr activation_explanation(ObjectType *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
-    if (flgs.has_none_of(TR_ACTIVATE, TR_INVEN_ACTIVATE))
+    if (!flgs.has(TR_ACTIVATE) && !flgs.has(TR_INVEN_ACTIVATE))
         return (_("なし", "nothing"));
 
     if (activation_index(o_ptr) > RandomArtActType::NONE) {

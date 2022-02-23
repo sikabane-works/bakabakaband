@@ -18,7 +18,7 @@
  * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
  * @return 魔道具として発動可能ならばTRUEを返す
  */
-bool object_is_activatable(const object_type *o_ptr)
+bool object_is_activatable(const ObjectType *o_ptr)
 {
     if (!o_ptr->is_known())
         return false;

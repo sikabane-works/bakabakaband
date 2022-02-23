@@ -347,7 +347,7 @@ void display_monster_kind(lore_type *lore_ptr)
     if (lore_ptr->kind_flags.has_none_of({ MonsterKindType::DRAGON, MonsterKindType::DEMON,
             MonsterKindType::GIANT, MonsterKindType::TROLL, MonsterKindType::ORC, MonsterKindType::ANGEL,
             MonsterKindType::QUANTUM, MonsterKindType::HUMAN, MonsterKindType::ELDRAZI, MonsterKindType::QUYLTHLUG, MonsterKindType::ELF,
-            MonsterKindType::DWARF, MonsterKindType::HOBIT, MonsterKindType::SPIDER })) {
+            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER })) {
         hooked_roff(_("モンスター", " creature"));
         return;
     }
@@ -598,7 +598,7 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
         if (!is_reinforced)
             continue;
 
-        monster_race *rf_ptr = &r_info[lore_ptr->r_ptr->reinforce_id[n]];
+        monster_race *rf_ptr = &r_info[mon_idx];
         if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
             continue;
