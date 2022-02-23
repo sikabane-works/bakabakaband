@@ -1,4 +1,5 @@
 ﻿#include "specific-object/monster-ball.h"
+#include "effect/attribute-types.h"
 #include "effect/spells-effect-util.h"
 #include "floor/geometry.h"
 #include "game-option/input-options.h"
@@ -8,10 +9,10 @@
 #include "monster/monster-info.h"
 #include "monster/monster-util.h"
 #include "object-activation/activation-util.h"
+#include "object/tval-types.h"
 #include "pet/pet-util.h"
 #include "racial/racial-android.h"
 #include "spell-kind/spells-launcher.h"
-#include "effect/attribute-types.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -75,7 +76,7 @@ static bool set_activation_target(PlayerType *player_ptr, ae_type *ae_ptr)
         return true;
 
     ae_ptr->o_ptr->pval = (PARAMETER_VALUE)cap_mon;
-    ae_ptr->o_ptr->xtra3 = (XTRA8)cap_mspeed;
+    ae_ptr->o_ptr->captured_monster_speed = static_cast<int8_t>(cap_mspeed);
     ae_ptr->o_ptr->xtra4 = (XTRA16)cap_hp;
     ae_ptr->o_ptr->xtra5 = (XTRA16)cap_maxhp;
     inscribe_nickname(ae_ptr);
@@ -149,9 +150,9 @@ static void check_monster_ball_use(PlayerType *player_ptr, ae_type *ae_ptr)
     if (!place_monster_aux(player_ptr, 0, player_ptr->y + ddy[ae_ptr->dir], player_ptr->x + ddx[ae_ptr->dir], ae_ptr->o_ptr->pval, PM_FORCE_PET | PM_NO_KAGE))
         return;
 
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (ae_ptr->o_ptr->xtra3)
-        floor_ptr->m_list[hack_m_idx_ii].mspeed = ae_ptr->o_ptr->xtra3;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if (ae_ptr->o_ptr->captured_monster_speed != 0)
+        floor_ptr->m_list[hack_m_idx_ii].mspeed = ae_ptr->o_ptr->captured_monster_speed;
 
     if (ae_ptr->o_ptr->xtra5)
         floor_ptr->m_list[hack_m_idx_ii].max_maxhp = ae_ptr->o_ptr->xtra5;
@@ -162,7 +163,7 @@ static void check_monster_ball_use(PlayerType *player_ptr, ae_type *ae_ptr)
     floor_ptr->m_list[hack_m_idx_ii].maxhp = floor_ptr->m_list[hack_m_idx_ii].max_maxhp;
     check_inscription_value(player_ptr, ae_ptr);
     ae_ptr->o_ptr->pval = 0;
-    ae_ptr->o_ptr->xtra3 = 0;
+    ae_ptr->o_ptr->captured_monster_speed = 0;
     ae_ptr->o_ptr->xtra4 = 0;
     ae_ptr->o_ptr->xtra5 = 0;
     ae_ptr->success = true;

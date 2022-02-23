@@ -38,7 +38,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
 
             do {
                 hallu_race = &r_info[randint1(r_info.size() - 1)];
-            } while (hallu_race->name.empty() || (hallu_race->flags1 & RF1_UNIQUE));
+            } while (hallu_race->name.empty() || hallu_race->kind_flags.has(MonsterKindType::UNIQUE));
 
             strcpy(silly_name, (hallu_race->name.c_str()));
         }
@@ -50,7 +50,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
     bool pron = (m_ptr && ((seen && (mode & MD_PRON_VISIBLE)) || (!seen && (mode & MD_PRON_HIDDEN))));
 
     /* First, try using pronouns, or describing hidden monsters */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!seen || pron) {
         int kind = 0x00;
         if (r_ptr->flags1 & (RF1_FEMALE))
@@ -172,7 +172,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
         (void)sprintf(desc, "%s?", name);
 #endif
     } else {
-        if ((r_ptr->flags1 & RF1_UNIQUE) && !(player_ptr->hallucinated && !(mode & MD_IGNORE_HALLU))) {
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && !(player_ptr->hallucinated && !(mode & MD_IGNORE_HALLU))) {
             if (m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON) && !(mode & MD_TRUE_NAME)) {
 #ifdef JP
                 char *t;
@@ -222,7 +222,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
     }
 
     if ((mode & MD_IGNORE_HALLU) && m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON)) {
-        if (r_ptr->flags1 & RF1_UNIQUE) {
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             strcat(desc, _("(カメレオンの王)", "(Chameleon Lord)"));
         } else {
             strcat(desc, _("(カメレオン)", "(Chameleon)"));
@@ -249,8 +249,8 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
  */
 void message_pain(PlayerType *player_ptr, MONSTER_IDX m_idx, HIT_POINT dam)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
 
     GAME_TEXT m_name[MAX_NLEN];
 

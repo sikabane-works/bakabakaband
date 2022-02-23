@@ -18,8 +18,8 @@
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "floor/cave.h"
-#include "floor/geometry.h"
 #include "floor/floor-object.h"
+#include "floor/geometry.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
 #include "io/write-diary.h"
@@ -62,13 +62,13 @@
 #include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
 #include "spell/summon-types.h"
-#include "system/object-type-definition.h"
+#include "sv-definition/sv-junk-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
-#include "sv-definition/sv-junk-types.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
 
@@ -122,8 +122,8 @@ bool decide_process_continue(PlayerType *player_ptr, monster_type *m_ptr);
  */
 void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     turn_flags tmp_flags;
     turn_flags *turn_flags_ptr = init_turn_flags(player_ptr->riding, m_idx, &tmp_flags);
     turn_flags_ptr->see_m = is_seen(player_ptr, m_ptr);
@@ -135,8 +135,7 @@ void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
     }
 
     turn_flags_ptr->aware = process_stealth(player_ptr, m_idx);
-    if (vanish_summoned_children(player_ptr, m_idx, turn_flags_ptr->see_m) || process_quantum_effect(player_ptr, m_idx, turn_flags_ptr->see_m)
-        || explode_grenade(player_ptr, m_idx) || runaway_monster(player_ptr, turn_flags_ptr, m_idx) || !awake_monster(player_ptr, m_idx))
+    if (vanish_summoned_children(player_ptr, m_idx, turn_flags_ptr->see_m) || process_quantum_effect(player_ptr, m_idx, turn_flags_ptr->see_m) || explode_grenade(player_ptr, m_idx) || runaway_monster(player_ptr, turn_flags_ptr, m_idx) || !awake_monster(player_ptr, m_idx))
         return;
 
     if (monster_stunned_remaining(m_ptr) && one_in_(2))
@@ -210,8 +209,8 @@ bool process_stealth(PlayerType *player_ptr, MONSTER_IDX m_idx)
     if (!ninja_data || !ninja_data->s_stealth)
         return true;
 
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     int tmp = player_ptr->lev * 6 + (player_ptr->skill_stl + 10) * 4;
     if (player_ptr->monlite)
         tmp /= 3;
@@ -222,7 +221,7 @@ bool process_stealth(PlayerType *player_ptr, MONSTER_IDX m_idx)
     if (r_ptr->level > (player_ptr->lev * player_ptr->lev / 20 + 10))
         tmp /= 3;
 
-    return (randint0(tmp) <= (r_ptr->level + 20));
+    return randint0(tmp) <= (r_ptr->level + 20);
 }
 
 /*!
@@ -233,8 +232,8 @@ bool process_stealth(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 void decide_drop_from_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     if (!is_riding_mon || ((r_ptr->flags7 & RF7_RIDING) != 0))
         return;
 
@@ -258,7 +257,7 @@ void decide_drop_from_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool is
  */
 bool vanish_summoned_children(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
 
     if (m_ptr->parent_m_idx == 0)
         return false;
@@ -291,8 +290,8 @@ bool vanish_summoned_children(PlayerType *player_ptr, MONSTER_IDX m_idx, bool se
  */
 bool awake_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     if (!monster_csleep_remaining(m_ptr))
         return true;
 
@@ -320,15 +319,13 @@ bool awake_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     bool gets_angry = false;
     if (is_friendly(m_ptr) && has_aggravate(player_ptr))
         gets_angry = true;
 
-    if (is_pet(m_ptr)
-        && ((((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr))
-            || (r_ptr->flagsr & RFR_RES_ALL)))
+    if (is_pet(m_ptr) && (((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) || (r_ptr->flagsr & RFR_RES_ALL)))
         gets_angry = true;
 
     if (player_ptr->phase_out || !gets_angry)
@@ -364,7 +361,7 @@ void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
  */
 bool explode_grenade(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     if (m_ptr->r_idx != MON_GRENADE)
         return false;
 
@@ -380,10 +377,9 @@ bool explode_grenade(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 void process_special(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
-    if (r_ptr->ability_flags.has_not(MonsterAbilityType::SPECIAL) || (m_ptr->r_idx != MON_OHMU) || player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out
-        || (r_ptr->freq_spell == 0) || (randint1(100) > r_ptr->freq_spell))
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
+    if (r_ptr->ability_flags.has_not(MonsterAbilityType::SPECIAL) || (m_ptr->r_idx != MON_OHMU) || player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out || (r_ptr->freq_spell == 0) || (randint1(100) > r_ptr->freq_spell))
         return;
 
     int count = 0;
@@ -411,8 +407,8 @@ void process_special(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 bool decide_monster_multiplication(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     if (((r_ptr->flags2 & RF2_MULTIPLY) == 0) || (player_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
         return false;
 
@@ -454,8 +450,8 @@ void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
         auto deno = std::get<1>(spawn_info);
         auto kind = std::get<2>(spawn_info);
         if (randint1(deno) <= num) {
-            object_type forge;
-            object_type *q_ptr = &forge;
+            ObjectType forge;
+            ObjectType *q_ptr = &forge;
             q_ptr->prep(kind);
             q_ptr->number = 1;
             (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
@@ -477,8 +473,8 @@ void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
     if (randint1(53) < 10000) {
         return;
     }
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(684);
     q_ptr->number = 1;
     q_ptr->pval = m_ptr->ap_r_idx;
@@ -544,7 +540,7 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
 
                 return true;
             }
-        }    
+        }
     }
 
     return false;
@@ -559,16 +555,15 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
  */
 bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     if ((r_ptr->freq_spell == 0) || (randint1(100) > r_ptr->freq_spell))
         return false;
 
     bool counterattack = false;
     if (m_ptr->target_y) {
         MONSTER_IDX t_m_idx = player_ptr->current_floor_ptr->grid_array[m_ptr->target_y][m_ptr->target_x].m_idx;
-        if (t_m_idx && are_enemies(player_ptr, m_ptr, &player_ptr->current_floor_ptr->m_list[t_m_idx])
-            && projectable(player_ptr, m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x)) {
+        if (t_m_idx && are_enemies(player_ptr, m_ptr, &player_ptr->current_floor_ptr->m_list[t_m_idx]) && projectable(player_ptr, m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x)) {
             counterattack = true;
         }
     }
@@ -594,22 +589,22 @@ bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware)
  */
 bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     GAME_TEXT m_name[MAX_NLEN];
     monster_desc(player_ptr, m_name, m_ptr, 0);
 
-    if(monster_fear_remaining(m_ptr) && one_in_(20)) {
+    if (monster_fear_remaining(m_ptr) && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
     if (monster_fear_remaining(m_ptr) && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_VOMITTING));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
@@ -680,7 +675,7 @@ void process_monsters(PlayerType *player_ptr)
  */
 void sweep_monster_process(PlayerType *player_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (MONSTER_IDX i = floor_ptr->m_max - 1; i >= 1; i--) {
         monster_type *m_ptr;
         m_ptr = &floor_ptr->m_list[i];

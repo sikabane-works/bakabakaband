@@ -5,15 +5,17 @@
 
 #include "action/activation-execution.h"
 #include "action/action-limited.h"
-#include "artifact/random-art-effects.h"
 #include "artifact/artifact-info.h"
+#include "artifact/random-art-effects.h"
 #include "core/window-redrawer.h"
+#include "effect/attribute-types.h"
 #include "effect/spells-effect-util.h"
-#include "floor/geometry.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
+#include "floor/geometry.h"
 #include "game-option/disturbance-options.h"
 #include "game-option/input-options.h"
+#include "inventory/inventory-slot-types.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-floor/monster-generator.h"
@@ -27,19 +29,19 @@
 #include "object-enchant/object-ego.h"
 #include "object/object-info.h"
 #include "object/object-kind.h"
+#include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "racial/racial-android.h"
 #include "specific-object/monster-ball.h"
-#include "spell/spells-object.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
-#include "effect/attribute-types.h"
+#include "spell/spells-object.h"
 #include "sv-definition/sv-bow-types.h"
+#include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "sv-definition/sv-junk-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -47,15 +49,14 @@
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
+#include "util/bit-flags-calculator.h"
 #include "util/quarks.h"
 #include "util/sort.h"
-#include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-#include "inventory/inventory-slot-types.h"
 
 /*!
- * @brief アイテムの発動難度の設定 
+ * @brief アイテムの発動難度の設定
  * @todo ランダムアーティファクトに破損率を指定する実装をそのうちするかも知れない。当分は0に。
  */
 static void decide_activation_level(ae_type *ae_ptr)
@@ -75,8 +76,7 @@ static void decide_activation_level(ae_type *ae_ptr)
         return;
     }
 
-    if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->name2)
-    {
+    if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->name2) {
         ae_ptr->lev = e_info[ae_ptr->o_ptr->name2].level;
         ae_ptr->broken = e_info[ae_ptr->o_ptr->name2].broken_rate;
     }
@@ -103,7 +103,7 @@ static void decide_chance_fail(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static void decide_activation_success(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (player_ptr->pclass == PlayerClassType::BERSERKER) {
+    if (PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
         ae_ptr->success = false;
         return;
     }
@@ -139,7 +139,7 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
         return false;
     }
 
-    if (!ae_ptr->o_ptr->xtra4 && (ae_ptr->o_ptr->tval == ItemKindType::FLASK) && ((ae_ptr->o_ptr->sval == SV_LITE_TORCH) || (ae_ptr->o_ptr->sval == SV_LITE_LANTERN))) {
+    if (ae_ptr->o_ptr->is_fuel() && (ae_ptr->o_ptr->xtra4 == 0)) {
         msg_print(_("燃料がない。", "It has no fuel."));
         PlayerEnergy(player_ptr).reset_player_turn();
         return false;
@@ -154,7 +154,7 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return 発動実行の是非を返す。
  */
-static bool activate_artifact(PlayerType *player_ptr, object_type *o_ptr)
+static bool activate_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     concptr name = k_info[o_ptr->k_idx].name.c_str();
     auto tmp_act_ptr = find_activation_info(o_ptr);
@@ -304,7 +304,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 
     if (ae_ptr->o_ptr->name2 == EGO_SHATTERED || ae_ptr->o_ptr->name2 == EGO_BLASTED) {
         msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
-        return;        
+        return;
     }
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
@@ -341,7 +341,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 
     if (!activated) {
         msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
-        return;    
+        return;
     }
 
     if (randint1(100) <= ae_ptr->broken) {
@@ -351,5 +351,4 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
         msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name);
         curse_weapon_object(player_ptr, true, ae_ptr->o_ptr);
     }
-
 }

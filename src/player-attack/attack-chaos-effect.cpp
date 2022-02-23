@@ -13,16 +13,16 @@
 #include "flavor/object-flavor-types.h"
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
+#include "lore/lore-store.h"
+#include "monster-race//race-ability-mask.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags3.h"
-#include "monster-race//race-ability-mask.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
-#include "lore/lore-store.h"
 #include "object/object-mark-types.h"
 #include "player-attack/player-attack-util.h"
 #include "player/attack-defense-types.h"
@@ -55,7 +55,7 @@ static void attack_confuse(PlayerType *player_ptr, player_attack_type *pa_ptr, b
         player_ptr->redraw |= (PR_STATUS);
     }
 
-    monster_race *r_ptr = pa_ptr->r_ptr;
+    auto *r_ptr = pa_ptr->r_ptr;
     if (r_ptr->flags3 & RF3_NO_CONF) {
         if (is_original_ap_and_seen(player_ptr, pa_ptr->m_ptr))
             r_ptr->r_flags3 |= RF3_NO_CONF;
@@ -79,7 +79,7 @@ static void attack_confuse(PlayerType *player_ptr, player_attack_type *pa_ptr, b
  */
 static void attack_stun(PlayerType *player_ptr, player_attack_type *pa_ptr, bool can_resist = true)
 {
-    monster_race *r_ptr = pa_ptr->r_ptr;
+    auto *r_ptr = pa_ptr->r_ptr;
     if (any_bits(r_ptr->flags3, RF3_NO_STUN)) {
         if (is_original_ap_and_seen(player_ptr, pa_ptr->m_ptr))
             set_bits(r_ptr->flags3, RF3_NO_STUN);
@@ -102,7 +102,7 @@ static void attack_stun(PlayerType *player_ptr, player_attack_type *pa_ptr, bool
  */
 static void attack_scare(PlayerType *player_ptr, player_attack_type *pa_ptr, bool can_resist = true)
 {
-    monster_race *r_ptr = pa_ptr->r_ptr;
+    auto *r_ptr = pa_ptr->r_ptr;
     if (any_bits(r_ptr->flags3, RF3_NO_FEAR)) {
         if (is_original_ap_and_seen(player_ptr, pa_ptr->m_ptr))
             set_bits(r_ptr->flags3, RF3_NO_FEAR);
@@ -169,11 +169,11 @@ static void attack_probe(PlayerType *player_ptr, player_attack_type *pa_ptr)
  */
 static bool judge_tereprt_resistance(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
-    monster_race *r_ptr = pa_ptr->r_ptr;
+    auto *r_ptr = pa_ptr->r_ptr;
     if ((r_ptr->flagsr & RFR_RES_TELE) == 0)
         return false;
 
-    if (r_ptr->flags1 & RF1_UNIQUE) {
+    if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
         if (is_original_ap_and_seen(player_ptr, pa_ptr->m_ptr))
             r_ptr->r_flagsr |= RFR_RES_TELE;
 
@@ -218,8 +218,8 @@ static void attack_teleport_away(PlayerType *player_ptr, player_attack_type *pa_
  */
 static void attack_polymorph(PlayerType *player_ptr, player_attack_type *pa_ptr, POSITION y, POSITION x)
 {
-    monster_race *r_ptr = pa_ptr->r_ptr;
-    if (((r_ptr->flags1 & (RF1_UNIQUE | RF1_QUESTOR)) != 0) || ((r_ptr->flagsr & RFR_EFF_RES_CHAO_MASK) != 0))
+    auto *r_ptr = pa_ptr->r_ptr;
+    if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(r_ptr->flags1, RF1_QUESTOR) || ((r_ptr->flagsr & RFR_EFF_RES_CHAO_MASK) != 0))
         return;
 
     if (polymorph_monster(player_ptr, y, x)) {
@@ -240,12 +240,12 @@ static void attack_polymorph(PlayerType *player_ptr, player_attack_type *pa_ptr,
  */
 static void attack_golden_hammer(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    monster_type *m_ptr = &floor_ptr->m_list[pa_ptr->m_idx];
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *m_ptr = &floor_ptr->m_list[pa_ptr->m_idx];
     if (m_ptr->hold_o_idx_list.empty())
         return;
 
-    object_type *q_ptr = &floor_ptr->o_list[m_ptr->hold_o_idx_list.front()];
+    auto *q_ptr = &floor_ptr->o_list[m_ptr->hold_o_idx_list.front()];
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, q_ptr, OD_NAME_ONLY);
     q_ptr->held_m_idx = 0;
@@ -265,11 +265,10 @@ static void attack_golden_hammer(PlayerType *player_ptr, player_attack_type *pa_
  */
 void change_monster_stat(PlayerType *player_ptr, player_attack_type *pa_ptr, const POSITION y, const POSITION x, int *num)
 {
-    monster_race *r_ptr = &r_info[pa_ptr->m_ptr->r_idx];
-    object_type *o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand];
+    auto *r_ptr = &r_info[pa_ptr->m_ptr->r_idx];
+    auto *o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand];
 
-    if (any_bits(player_ptr->special_attack, ATTACK_CONFUSE) || pa_ptr->chaos_effect == CE_CONFUSION || pa_ptr->mode == HISSATSU_CONF
-        || SpellHex(player_ptr).is_spelling_specific(HEX_CONFUSION))
+    if (any_bits(player_ptr->special_attack, ATTACK_CONFUSE) || pa_ptr->chaos_effect == CE_CONFUSION || pa_ptr->mode == HISSATSU_CONF || SpellHex(player_ptr).is_spelling_specific(HEX_CONFUSION))
         attack_confuse(player_ptr, pa_ptr);
 
     if (pa_ptr->magical_effect == MagicalBrandEffectType::STUN)

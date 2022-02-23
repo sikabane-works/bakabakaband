@@ -75,7 +75,7 @@
  */
 static void summon_self(PlayerType *player_ptr, monster_death_type *md_ptr, summon_type type, int probability, POSITION radius, concptr message)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (floor_ptr->inside_arena || player_ptr->phase_out || one_in_(probability))
         return;
 
@@ -151,8 +151,8 @@ static void on_dead_spawn_monsters(PlayerType* player_ptr, monster_death_type* m
 static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (auto kind : md_ptr->r_ptr->drop_kinds) {
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         int num = std::get<0>(kind);
         int deno = std::get<1>(kind);
         if (randint1(deno) > num) {
@@ -206,8 +206,8 @@ static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *m
 static void on_dead_drop_tval_item(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (auto kind : md_ptr->r_ptr->drop_tvals) {
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         int num = std::get<0>(kind);
         int deno = std::get<1>(kind);
         if (randint1(deno) > num) {
@@ -259,8 +259,8 @@ static void on_dead_drop_tval_item(PlayerType *player_ptr, monster_death_type *m
 
 static void on_dead_bottle_gnome(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::POTION, SV_POTION_CURE_CRITICAL));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -270,8 +270,8 @@ static void on_dead_bloodletter(PlayerType *player_ptr, monster_death_type *md_p
     if (!md_ptr->drop_chosen_item || (randint1(100) >= 15))
         return;
 
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::SWORD, SV_BLADE_OF_CHAOS));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
@@ -279,8 +279,8 @@ static void on_dead_bloodletter(PlayerType *player_ptr, monster_death_type *md_p
 
 static void on_dead_inariman1_2(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI2));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
@@ -288,8 +288,8 @@ static void on_dead_inariman1_2(PlayerType *player_ptr, monster_death_type *md_p
 
 static void on_dead_inariman3(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI3));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
@@ -297,12 +297,12 @@ static void on_dead_inariman3(PlayerType *player_ptr, monster_death_type *md_ptr
 
 static void on_dead_raal(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!md_ptr->drop_chosen_item || (floor_ptr->dun_level <= 9))
         return;
 
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     q_ptr->wipe();
     if ((floor_ptr->dun_level > 49) && one_in_(5))
         get_obj_num_hook = kind_is_good_book;
@@ -392,8 +392,8 @@ static void on_dead_serpent(PlayerType *player_ptr, monster_death_type *md_ptr)
     if (!md_ptr->drop_chosen_item)
         return;
 
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::HAFTED, SV_GROND));
     q_ptr->name1 = ART_GROND;
     apply_magic_to_object(player_ptr, q_ptr, -1, AM_GOOD | AM_GREAT);
@@ -410,8 +410,8 @@ static void on_dead_death_sword(PlayerType *player_ptr, monster_death_type *md_p
     if (!md_ptr->drop_chosen_item)
         return;
 
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::SWORD, randint1(2)));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -425,8 +425,8 @@ static void on_dead_can_angel(PlayerType *player_ptr, monster_death_type *md_ptr
     if (!is_drop_can)
         return;
 
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::CHEST, SV_CHEST_KANDUME));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
@@ -545,7 +545,7 @@ static void on_dead_big_raven(PlayerType *player_ptr, monster_death_type *md_ptr
  * @return 生成したアイテムが装備品ならtrue、それ以外ならfalse
  * @todo 汎用的に使えそうだがどこかにいいファイルはないか？
  */
-static bool make_equipment(PlayerType *player_ptr, object_type *q_ptr, const BIT_FLAGS drop_mode, const bool is_object_hook_null)
+static bool make_equipment(PlayerType *player_ptr, ObjectType *q_ptr, const BIT_FLAGS drop_mode, const bool is_object_hook_null)
 {
     q_ptr->wipe();
     (void)make_object(player_ptr, q_ptr, drop_mode);
@@ -590,8 +590,8 @@ static bool make_equipment(PlayerType *player_ptr, object_type *q_ptr, const BIT
  */
 static void on_dead_random_artifact(PlayerType *player_ptr, monster_death_type *md_ptr, bool (*object_hook_pf)(KIND_OBJECT_IDX k_idx))
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     auto is_object_hook_null = object_hook_pf == nullptr;
     auto drop_mode = md_ptr->mo_mode | AM_NO_FIXED_ART;
     while (true) {
@@ -638,8 +638,8 @@ static void on_dead_manimani(PlayerType *player_ptr, monster_death_type *md_ptr)
 
 static void drop_specific_item_on_dead(PlayerType *player_ptr, monster_death_type *md_ptr, bool (*object_hook_pf)(KIND_OBJECT_IDX k_idx))
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    auto *q_ptr = &forge;
     q_ptr->wipe();
     get_obj_num_hook = object_hook_pf;
     (void)make_object(player_ptr, q_ptr, md_ptr->mo_mode);

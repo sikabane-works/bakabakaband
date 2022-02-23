@@ -1,4 +1,5 @@
 ﻿#include "specific-object/chest.h"
+#include "effect/attribute-types.h"
 #include "floor/cave.h"
 #include "floor/floor-object.h"
 #include "grid/grid.h"
@@ -15,7 +16,6 @@
 #include "spell-kind/spells-equipment.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-sight.h"
-#include "effect/attribute-types.h"
 #include "spell/spells-summon.h"
 #include "spell/summon-types.h"
 #include "status/bad-status-setter.h"
@@ -61,11 +61,11 @@ void Chest::chest_death(bool scatter, POSITION y, POSITION x, OBJECT_IDX o_idx)
     bool small;
     BIT_FLAGS mode = AM_GOOD | AM_FORBID_CHEST;
 
-    object_type forge;
-    object_type *q_ptr;
+    ObjectType forge;
+    ObjectType *q_ptr;
 
-    floor_type *floor_ptr = this->player_ptr->current_floor_ptr;
-    object_type *o_ptr = &floor_ptr->o_list[o_idx];
+    auto *floor_ptr = this->player_ptr->current_floor_ptr;
+    auto *o_ptr = &floor_ptr->o_list[o_idx];
 
     /* Small chests often hold "gold" */
     small = (o_ptr->sval < SV_CHEST_MIN_LARGE);
@@ -77,7 +77,7 @@ void Chest::chest_death(bool scatter, POSITION y, POSITION x, OBJECT_IDX o_idx)
         number = 5;
         small = false;
         mode |= AM_GREAT;
-        floor_ptr->object_level = o_ptr->xtra3;
+        floor_ptr->object_level = o_ptr->chest_level;
     } else {
         /* Determine the "value" of the items */
         floor_ptr->object_level = std::abs(o_ptr->pval) + 10;
@@ -157,17 +157,18 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
 {
     int i;
 
-    object_type *o_ptr = &this->player_ptr->current_floor_ptr->o_list[o_idx];
+    auto *o_ptr = &this->player_ptr->current_floor_ptr->o_list[o_idx];
 
-	int mon_level = o_ptr->xtra3;
+    int mon_level = o_ptr->chest_level;
 
-	/* Ignore disarmed chests */
-	if (o_ptr->pval <= 0) return;
+    /* Ignore disarmed chests */
+    if (o_ptr->pval <= 0)
+        return;
 
     /* Obtain the traps */
     auto trap = chest_traps[o_ptr->pval];
-	if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
-		player_ptr->incident[INCIDENT::TRAPPED] = 0;
+    if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+        player_ptr->incident[INCIDENT::TRAPPED] = 0;
     }
     player_ptr->incident[INCIDENT::TRAPPED]++;
 
@@ -281,13 +282,13 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
                 take_hit(this->player_ptr, DAMAGE_NOESCAPE, damroll(5, 20), _("破滅のトラップの宝箱", "a chest dispel-player trap"));
                 continue;
             }
-            
+
             BadStatusSetter bss(this->player_ptr);
             if (one_in_(5)) {
                 (void)bss.mod_cut(200);
                 continue;
             }
-            
+
             if (one_in_(4)) {
                 if (!this->player_ptr->free_act) {
                     (void)bss.mod_paralysis(2 + randint0(6));
@@ -297,12 +298,12 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
 
                 continue;
             }
-            
+
             if (one_in_(3)) {
                 apply_disenchant(this->player_ptr, 0);
                 continue;
             }
-            
+
             if (one_in_(2)) {
                 (void)do_dec_stat(this->player_ptr, A_STR);
                 (void)do_dec_stat(this->player_ptr, A_DEX);
@@ -337,6 +338,4 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
         this->chest_death(true, y, x, o_idx);
         o_ptr->pval = 0;
     }
-
-
 }

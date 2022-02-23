@@ -43,9 +43,9 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
     case RoomType::PIT:
         return build_type6(player_ptr, dd_ptr);
     case RoomType::LESSER_VAULT:
-        return build_type7(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 7, false);
     case RoomType::GREATER_VAULT:
-        return build_type8(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 8, true);
     case RoomType::FRACAVE:
         return build_type9(player_ptr, dd_ptr);
     case RoomType::RANDOM_VAULT:
@@ -63,9 +63,9 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
     case RoomType::ARCADE:
         return build_type16(player_ptr, dd_ptr);
     case RoomType::FIXED:
-        return build_type17(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 17, false);
     case RoomType::PERVO:
-        return build_type18(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 18, false);
     default:
         return false;
     }
@@ -90,7 +90,7 @@ static void move_prob_list(RoomType dst, RoomType src, std::map<RoomType, int> &
  */
 bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     int crowded = 0;
     std::map<RoomType, int> prob_list;
     int rooms_built = 0;
@@ -116,13 +116,12 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
         }
     }
 
-
     /*!
      * @details ダンジョンにBEGINNER、CHAMELEON、SMALLESTいずれのフラグもなく、
      * かつ「常に通常でない部屋を生成する」フラグがONならば、
      * GRATER_VAULTのみを生成対象とする。 / Ironman sees only Greater Vaults
      */
-    if (ironman_rooms && d_info[floor_ptr->dungeon_idx].flags.has_none_of( {DungeonFeatureType::BEGINNER, DungeonFeatureType::CHAMELEON, DungeonFeatureType::SMALLEST })) {
+    if (ironman_rooms && d_info[floor_ptr->dungeon_idx].flags.has_none_of({ DungeonFeatureType::BEGINNER, DungeonFeatureType::CHAMELEON, DungeonFeatureType::SMALLEST })) {
         for (auto r : ROOM_TYPE_LIST) {
             if (r == RoomType::GREATER_VAULT)
                 prob_list[r] = 1;

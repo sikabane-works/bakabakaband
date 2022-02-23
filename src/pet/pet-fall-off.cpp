@@ -17,6 +17,7 @@
 #include "monster-race/monster-race.h"
 #include "monster/monster-describer.h"
 #include "pet/pet-util.h"
+#include "player-base/player-class.h"
 #include "player/player-damage.h"
 #include "player/player-move.h"
 #include "player/player-skill.h"
@@ -69,7 +70,7 @@ static bool calc_fall_off_possibility(PlayerType *player_ptr, const HIT_POINT da
     if (randint0(dam / 2 + fall_off_level * 2) >= cur / 30 + 10)
         return true;
 
-    if ((((player_ptr->pclass == PlayerClassType::BEASTMASTER) || (player_ptr->pclass == PlayerClassType::CAVALRY)) && !player_ptr->riding_ryoute)
+    if ((PlayerClass(player_ptr).is_tamer() && !player_ptr->riding_ryoute)
         || !one_in_(player_ptr->lev * (player_ptr->riding_ryoute ? 2 : 3) + 30)) {
         return false;
     }
@@ -89,8 +90,8 @@ bool process_fall_off_horse(PlayerType *player_ptr, HIT_POINT dam, bool force)
     POSITION sx = 0;
     int sn = 0;
     GAME_TEXT m_name[MAX_NLEN];
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
 
     if (!player_ptr->riding || player_ptr->wild_mode)
         return false;

@@ -9,19 +9,18 @@
 
 #include "object-enchant/tr-flags.h"
 #include "object-enchant/trc-types.h"
-#include "object/tval-types.h"
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
-
 #include <optional>
 
 enum class ItemKindType : short;
 enum class SmithEffectType : int16_t;
 enum class RandomArtActType : short;
 
-class PlayerType;
-typedef struct object_type {
+class ObjectType {
+public:
+    ObjectType() = default;
     KIND_OBJECT_IDX k_idx{}; /*!< Kind index (zero if "dead") */
     POSITION iy{}; /*!< Y-position on map, or zero */
     POSITION ix{}; /*!< X-position on map, or zero */
@@ -36,9 +35,9 @@ typedef struct object_type {
     ARTIFACT_IDX name1{}; /*!< Artifact type, if any */
     EGO_IDX name2{}; /*!< Ego-Item type, if any */
 
-    XTRA8 xtra1{}; /*!< Extra info type (now unused) */
     RandomArtActType activation_id{}; /*!< エゴ/アーティファクトの発動ID / Extra info activation index */
-    XTRA8 xtra3{}; /*!< 複数の使用用途 捕らえたモンスターの速度 / Extra info */
+    byte chest_level = 0; /*!< 箱の中身レベル */
+    int8_t captured_monster_speed = 0; /*!< 捕らえたモンスターの速度 */
     XTRA16 xtra4{}; /*!< 複数の使用用途 光源の残り寿命、あるいは捕らえたモンスターの現HP / Extra info fuel or captured monster's current HP */
     XTRA16 xtra5{}; /*!< 複数の使用用途 捕らえたモンスターの最大HP / Extra info captured monster's max HP */
 
@@ -65,7 +64,7 @@ typedef struct object_type {
     int artifact_bias{}; /*!< ランダムアーティファクト生成時のバイアスID */
 
     void wipe();
-    void copy_from(object_type *j_ptr);
+    void copy_from(ObjectType *j_ptr);
     void prep(KIND_OBJECT_IDX ko_idx);
     bool is_weapon() const;
     bool is_weapon_ammo() const;
@@ -108,4 +107,5 @@ typedef struct object_type {
     bool is_rechargeable() const;
     bool is_offerable() const;
     bool is_activatable() const;
-} object_type;
+    bool is_fuel() const;
+};

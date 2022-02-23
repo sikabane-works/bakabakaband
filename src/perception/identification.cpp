@@ -32,7 +32,7 @@
  * @param mode 表示オプション
  * @return 特筆すべき情報が一つでもあった場合TRUE、一つもなく表示がキャンセルされた場合FALSEを返す。
  */
-bool screen_object(PlayerType *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
+bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
 {
     char temp[70 * 20];
     concptr info[128];
@@ -57,13 +57,11 @@ bool screen_object(PlayerType *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
     if (flgs.has(TR_INVEN_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
         info[i++] = activation_explanation(o_ptr);
-    }
-    else if (flgs.has(TR_ACTIVATE)) {
+    } else if (flgs.has(TR_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
         info[i++] = activation_explanation(o_ptr);
         info[i++] = _("...ただし装備していなければならない。", "...if it is being worn.");
     }
-
 
     if (flgs.has(TR_NASTY)) {
         info[i++] = _("それは例のアレだ。", "It is .. need I say anything more?");
@@ -111,7 +109,7 @@ bool screen_object(PlayerType *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
     }
 
     if (o_ptr->tval == ItemKindType::STATUE) {
-        monster_race *r_ptr = &r_info[o_ptr->pval];
+        auto *r_ptr = &r_info[o_ptr->pval];
         if (o_ptr->pval == MON_STOLENMAN)
             info[i++] = _("それは部屋に飾ると恥ずかしい。", "It is shameful.");
         else if (r_ptr->flags2 & (RF2_ELDRITCH_HORROR))
@@ -573,8 +571,7 @@ bool screen_object(PlayerType *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは呪いへの抵抗力を高める。", "It increases your resistance to curses.");
     }
 
-    if (flgs.has(TR_SH_FIRE))
-    {
+    if (flgs.has(TR_SH_FIRE)) {
         info[i++] = _("それは炎のバリアを張る。", "It produces a fiery sheath.");
     }
 
@@ -802,7 +799,7 @@ bool screen_object(PlayerType *player_ptr, object_type *o_ptr, BIT_FLAGS mode)
     }
 
     if ((o_ptr->tval == ItemKindType::STATUE) && (o_ptr->sval == SV_PHOTO)) {
-        monster_race *r_ptr = &r_info[o_ptr->pval];
+        auto *r_ptr = &r_info[o_ptr->pval];
         int namelen = strlen(r_ptr->name.c_str());
         prt(format("%s: '", r_ptr->name.c_str()), 1, 15);
         term_queue_bigchar(18 + namelen, 1, r_ptr->x_attr, r_ptr->x_char, 0, 0);

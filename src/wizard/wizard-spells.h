@@ -1,9 +1,7 @@
 ﻿#pragma once
 
-#include "system/angband.h"
 #include "effect/attribute-types.h"
-
-#define SPELL_MAX 6
+#include "system/angband.h"
 
 struct floor_type;
 class PlayerType;
@@ -21,7 +19,7 @@ typedef union spell_functions {
     } spell3;
 
     struct debug_spell_type4 { // 実質 ty curse
-        bool (*spell_function)(PlayerType *, bool, int*);
+        bool (*spell_function)(PlayerType *, bool, int *);
     } spell4;
 
     struct debug_spell_type5 {
@@ -30,13 +28,11 @@ typedef union spell_functions {
 
 } spell_functions;
 
-typedef struct debug_spell_command {
+struct debug_spell_command {
     int type;
     concptr command_name;
     spell_functions command_function;
-} debug_spell_command;
-
-extern debug_spell_command debug_spell_commands_list[SPELL_MAX];
+};
 
 bool wiz_debug_spell(PlayerType *player_ptr);
 void wiz_dimension_door(PlayerType *player_ptr);

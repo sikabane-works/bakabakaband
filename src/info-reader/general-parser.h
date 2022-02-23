@@ -6,7 +6,7 @@
 
 enum parse_error_type : int;
 
-typedef struct dungeon_grid {
+struct dungeon_grid {
     FEAT_IDX feature; /* Terrain feature */
     MONSTER_IDX monster; /* Monster */
     OBJECT_IDX object; /* Object */
@@ -17,7 +17,7 @@ typedef struct dungeon_grid {
     int16_t special; /* Reserved for special terrain info */
     int random; /* Number of the random effect */
     bool force_monster_place; /*!< モンスターの強制配置 */
-} dungeon_grid;
+};
 
 extern dungeon_grid letter[255];
 
