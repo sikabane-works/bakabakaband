@@ -198,15 +198,9 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
         init_flags = INIT_NAME_ONLY;
         parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
 #ifdef JP
-<<<<<<< HEAD
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺されて飽きた。", quest[floor_ptr->inside_quest].name, player_ptr->died_from));
+        return std::string(format("…あなたは、クエスト「%s」で%sに殺されて飽きた。。", quest[enum2i(floor_ptr->quest_number)].name, player_ptr->died_from));
 #else
-        return std::string(format("...You were killed by %s in the quest '%s' and got tired.", player_ptr->died_from, quest[floor_ptr->inside_quest].name));
-=======
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺された。", quest[enum2i(floor_ptr->quest_number)].name, player_ptr->died_from));
-#else
-        return std::string(format("...You were killed by %s in the quest '%s'.", player_ptr->died_from, quest[enum2i(floor_ptr->quest_number)].name));
->>>>>>> hengband/develop
+        return std::string(format("...You were killed by %s in the quest '%s' and got tired.", player_ptr->died_from, quest[enum2i(floor_ptr->quest_number)].name));
 #endif
     }
 

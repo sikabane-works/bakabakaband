@@ -51,17 +51,12 @@
  */
 bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MONSTER_IDX m_idx)
 {
-<<<<<<< HEAD
     const int earthquake_max = 80;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if ((floor_ptr->inside_quest && quest_type::is_fixed(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
-=======
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if ((inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number)) || !floor_ptr->dun_level) {
->>>>>>> hengband/develop
         return false;
     }
-    
+
     if (r > 75)
         r = 75;
 
@@ -360,4 +355,3 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
 
     return true;
 }
-

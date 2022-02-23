@@ -47,8 +47,8 @@
 #include "util/angband-files.h"
 #include "util/enum-converter.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 #include <sstream>
 #include <string>
 #include <vector>
@@ -98,7 +98,6 @@ static void rd_total_play_time()
     }
 
     w_ptr->sf_play_time = rd_u32b();
-
 }
 
 /*!
@@ -313,7 +312,7 @@ static errr rd_savefile(PlayerType *player_ptr)
 
         angband_fclose(loading_savefile);
         return err;
-    } catch (SaveDataNotSupportedException const& e) {
+    } catch (SaveDataNotSupportedException const &e) {
         msg_print(e.what());
         angband_fclose(loading_savefile);
         return 1;
@@ -459,16 +458,8 @@ bool load_savedata(PlayerType *player_ptr, bool *new_game)
         return on_read_save_data_not_supported(player_ptr, new_game);
     }
 
-<<<<<<< HEAD
     if (player_ptr->is_dead || wc_ptr->is_blown_away()) {
-        *new_game = true;
-        player_ptr->is_dead = false;
-        w_ptr->sf_lives++;
-        return true;
-=======
-    if (player_ptr->is_dead) {
         return reset_save_data(player_ptr, new_game);
->>>>>>> hengband/develop
     }
 
     w_ptr->character_loaded = true;

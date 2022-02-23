@@ -84,11 +84,7 @@ static QuestId write_floor(PlayerType *player_ptr, concptr *note_level, char *no
         *note_level = _("アリーナ:", "Arena:");
     else if (!floor_ptr->dun_level)
         *note_level = _("地上:", "Surface:");
-<<<<<<< HEAD
-    else if (q_idx && quest_type::is_fixed(q_idx) && !(q_idx == QUEST_MELKO))
-=======
-    else if (inside_quest(q_idx) && quest_type::is_fixed(q_idx) && !((q_idx == QuestId::OBERON) || (q_idx == QuestId::SERPENT)))
->>>>>>> hengband/develop
+    else if (inside_quest(q_idx) && quest_type::is_fixed(q_idx) && !(q_idx == QUEST_MELKO))
         *note_level = _("クエスト:", "Quest:");
     else {
 #ifdef JP

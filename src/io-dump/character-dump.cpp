@@ -296,13 +296,8 @@ static void dump_aux_monsters(PlayerType *player_ptr, FILE *fff)
         if (r_ref.idx == 0 || r_ref.name.empty())
             continue;
 
-<<<<<<< HEAD
-        if (r_ref.flags1 & RF1_UNIQUE) {
-            bool dead = (r_ref.mob_num == 0);
-=======
         if (r_ref.kind_flags.has(MonsterKindType::UNIQUE)) {
-            bool dead = (r_ref.max_num == 0);
->>>>>>> hengband/develop
+            bool dead = (r_ref.mob_num == 0);
             if (dead) {
                 norm_total++;
 

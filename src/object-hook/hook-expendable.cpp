@@ -7,8 +7,8 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-enchant.h"
-#include "object/object-kind.h"
 #include "object/object-flags.h"
+#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-race.h"
 #include "player-info/mimic-info-table.h"
@@ -17,34 +17,8 @@
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
-#include "util/string-processor.h"
 #include "util/bit-flags-calculator.h"
-
-<<<<<<< HEAD
-=======
-/*!
- * @brief オブジェクトをプレイヤーが食べることができるかを判定する /
- * Hook to determine if an object is eatable
- * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
- * @return 食べることが可能ならばTRUEを返す
- */
-bool item_tester_hook_eatable(PlayerType *player_ptr, const ObjectType *o_ptr)
-{
-    if (o_ptr->tval == ItemKindType::FOOD)
-        return true;
-
-    auto food_type = PlayerRace(player_ptr).food();
-    if (food_type == PlayerRaceFoodType::MANA) {
-        if (o_ptr->tval == ItemKindType::STAFF || o_ptr->tval == ItemKindType::WAND)
-            return true;
-    } else if (food_type == PlayerRaceFoodType::CORPSE) {
-        if (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[o_ptr->pval].d_char))
-            return true;
-    }
-
-    return false;
-}
->>>>>>> hengband/develop
+#include "util/string-processor.h"
 
 /*!
  * @brief オブジェクトをプレイヤーが飲むことができるかを判定する /
@@ -74,7 +48,6 @@ bool can_player_destroy_object(PlayerType *player_ptr, ObjectType *o_ptr)
     auto flgs = object_flags(o_ptr);
     if (flgs.has(TR_INDESTRUCTIBLE))
         return false;
-
 
     /* Artifacts cannot be destroyed */
     if (!o_ptr->is_artifact())

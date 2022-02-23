@@ -195,17 +195,12 @@ static void rd_lore(monster_race *r_ptr, const MONRACE_IDX r_idx)
     migrate_old_aura_flags(r_ptr);
     rd_r_ability_flags(r_ptr, r_idx);
     rd_r_aura_flags(r_ptr);
-<<<<<<< HEAD
 
     if (!loading_savefile_version_is_older_than(17)) {
         rd_r_behavior_flags(r_ptr);
+        rd_r_kind_flags(r_ptr);
     }
     r_ptr->mob_num = rd_byte();
-=======
-    rd_r_behavior_flags(r_ptr);
-    rd_r_kind_flags(r_ptr);
-    r_ptr->max_num = rd_byte();
->>>>>>> hengband/develop
     r_ptr->floor_id = rd_s16b();
 
     if (!loading_savefile_version_is_older_than(4)) {

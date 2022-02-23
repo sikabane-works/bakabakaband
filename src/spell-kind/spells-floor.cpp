@@ -248,19 +248,14 @@ void map_area(PlayerType *player_ptr, POSITION range)
 bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, bool in_generate)
 {
     /* Prevent destruction of quest levels and town */
-<<<<<<< HEAD
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if ((floor_ptr->inside_quest && quest_type::is_fixed(floor_ptr->inside_quest)) || !floor_ptr->dun_level) {
-        if(!in_generate) msg_print(_("破壊の力はかき消された…", "The power of destruction has been drowned out ..."));
-=======
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if ((inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number)) || !floor_ptr->dun_level) {
->>>>>>> hengband/develop
+        if (!in_generate)
+            msg_print(_("破壊の力はかき消された…", "The power of destruction has been drowned out ..."));
         return false;
     }
 
-    if (!in_generate)
-    {
+    if (!in_generate) {
         /* Lose monster light */
         clear_mon_lite(floor_ptr);
 

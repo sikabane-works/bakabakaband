@@ -61,27 +61,15 @@
  */
 static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *start_x)
 {
-<<<<<<< HEAD
     POSITION yval = ARENA_WID / 2;
     POSITION xval = ARENA_HGT / 2;
     POSITION y_height = yval - 15;
     POSITION y_depth = yval + 15;
     POSITION x_left = xval - 15;
     POSITION x_right = xval + 15;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-
- 
-    for (POSITION i = y_height; i <= y_height + 5; i++) {
-=======
-    POSITION yval = SCREEN_HGT / 2;
-    POSITION xval = SCREEN_WID / 2;
-    POSITION y_height = yval - 10;
-    POSITION y_depth = yval + 10;
-    POSITION x_left = xval - 32;
-    POSITION x_right = xval + 32;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    for (POSITION i = y_height; i <= y_height + 5; i++)
->>>>>>> hengband/develop
+
+    for (POSITION i = y_height; i <= y_height + 5; i++) {
         for (POSITION j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
@@ -128,11 +116,10 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
     place_bold(player_ptr, y_depth - 9, x_right - 21, GB_EXTRA_PERM);
     floor_ptr->grid_array[y_depth - 9][x_right - 21].info |= CAVE_GLOW | CAVE_MARK;
 
-
     *start_y = y_height + 10;
     *start_x = xval;
-    floor_ptr->grid_array[*start_y-5][*start_x].feat = f_tag_to_index("ARENA_GATE");
-    floor_ptr->grid_array[*start_y-5][*start_x].info |= CAVE_GLOW | CAVE_MARK;
+    floor_ptr->grid_array[*start_y - 5][*start_x].feat = f_tag_to_index("ARENA_GATE");
+    floor_ptr->grid_array[*start_y - 5][*start_x].info |= CAVE_GLOW | CAVE_MARK;
 }
 
 /*!
@@ -142,15 +129,9 @@ static void generate_challenge_arena(PlayerType *player_ptr)
 {
     POSITION qy = 0;
     POSITION qx = 0;
-<<<<<<< HEAD
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->height = ARENA_WID;
     floor_ptr->width = ARENA_HGT;
-=======
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->height = SCREEN_HGT;
-    floor_ptr->width = SCREEN_WID;
->>>>>>> hengband/develop
 
     POSITION y, x;
     for (y = 0; y < floor_ptr->height; y++)
@@ -165,7 +146,7 @@ static void generate_challenge_arena(PlayerType *player_ptr)
 
     build_arena(player_ptr, &y, &x);
     player_place(player_ptr, y, x);
-    if (place_monster_aux(player_ptr, 0, floor_ptr->height - 10 , player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET))
+    if (place_monster_aux(player_ptr, 0, floor_ptr->height - 10, player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET))
         return;
 
     player_ptr->exit_bldg = true;
@@ -179,32 +160,16 @@ static void generate_challenge_arena(PlayerType *player_ptr)
  */
 static void build_battle(PlayerType *player_ptr, POSITION *y, POSITION *x)
 {
-<<<<<<< HEAD
     POSITION yval = ARENA_WID / 2;
     POSITION xval = ARENA_HGT / 2;
     POSITION y_height = yval - 15;
     POSITION y_depth = yval + 15;
     POSITION x_left = xval - 15;
     POSITION x_right = xval + 15;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-=======
-    POSITION yval = SCREEN_HGT / 2;
-    POSITION xval = SCREEN_WID / 2;
-    POSITION y_height = yval - 10;
-    POSITION y_depth = yval + 10;
-    POSITION x_left = xval - 32;
-    POSITION x_right = xval + 32;
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    for (int i = y_height; i <= y_height + 5; i++)
+    for (int i = y_height; i <= y_height + 5; i++) {
         for (int j = x_left; j <= x_right; j++) {
-            place_bold(player_ptr, i, j, GB_EXTRA_PERM);
-            floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
-        }
->>>>>>> hengband/develop
-
-    for (POSITION i = y_height; i <= y_height + 5; i++) {
-        for (POSITION j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
@@ -334,10 +299,8 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
         } else {
             if (one_in_(HUGE_DUNGEON_RATE)) {
                 level_height = randint1(MAX_HGT / SCREEN_HGT);
-                level_width = randint1(MAX_WID / SCREEN_WID);            
-            }
-            else if(one_in_(LARGE_DUNGEON_RATE))
-            {
+                level_width = randint1(MAX_WID / SCREEN_WID);
+            } else if (one_in_(LARGE_DUNGEON_RATE)) {
                 level_height = randint1(MAX_HGT / SCREEN_HGT / 2);
                 level_width = randint1(MAX_WID / SCREEN_WID / 2);
             } else {

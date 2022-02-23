@@ -57,13 +57,11 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
     if (flgs.has(TR_INVEN_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
         info[i++] = activation_explanation(o_ptr);
-    }
-    else if (flgs.has(TR_ACTIVATE)) {
+    } else if (flgs.has(TR_ACTIVATE)) {
         info[i++] = _("始動したときの効果...", "It can be activated for...");
         info[i++] = activation_explanation(o_ptr);
         info[i++] = _("...ただし装備していなければならない。", "...if it is being worn.");
     }
-
 
     if (flgs.has(TR_NASTY)) {
         info[i++] = _("それは例のアレだ。", "It is .. need I say anything more?");
@@ -111,13 +109,8 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
     }
 
     if (o_ptr->tval == ItemKindType::STATUE) {
-<<<<<<< HEAD
-        monster_race *r_ptr = &r_info[o_ptr->pval];
-        if (o_ptr->pval == MON_STOLENMAN)
-=======
         auto *r_ptr = &r_info[o_ptr->pval];
-        if (o_ptr->pval == MON_BULLGATES)
->>>>>>> hengband/develop
+        if (o_ptr->pval == MON_STOLENMAN)
             info[i++] = _("それは部屋に飾ると恥ずかしい。", "It is shameful.");
         else if (r_ptr->flags2 & (RF2_ELDRITCH_HORROR))
             info[i++] = _("それは部屋に飾ると恐い。", "It is fearful.");
@@ -578,8 +571,7 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは呪いへの抵抗力を高める。", "It increases your resistance to curses.");
     }
 
-    if (flgs.has(TR_SH_FIRE))
-    {
+    if (flgs.has(TR_SH_FIRE)) {
         info[i++] = _("それは炎のバリアを張る。", "It produces a fiery sheath.");
     }
 

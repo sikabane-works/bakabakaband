@@ -28,12 +28,9 @@
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
-#include "view/display-messages.h"
-<<<<<<< HEAD
-#include "world/world-collapsion.h"
-=======
 #include "util/bit-flags-calculator.h"
->>>>>>> hengband/develop
+#include "view/display-messages.h"
+#include "world/world-collapsion.h"
 
 /*!
  * @brief モンスターへの単体抹殺処理サブルーチン / Delete a non-unique/non-quest monster

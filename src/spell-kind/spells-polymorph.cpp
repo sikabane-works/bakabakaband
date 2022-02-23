@@ -1,6 +1,12 @@
 ﻿#include "spell-kind/spells-polymorph.h"
+#include "core/player-redraw-types.h"
+#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
+#include "core/window-redrawer.h"
 #include "floor/floor-object.h"
+#include "io/input-key-acceptor.h"
+#include "io/input-key-processor.h"
+#include "market/building-util.h"
 #include "monster-floor/monster-generator.h"
 #include "monster-floor/monster-remover.h"
 #include "monster-floor/place-monster-types.h"
@@ -11,6 +17,7 @@
 #include "monster/monster-list.h"
 #include "monster/monster-status.h"
 #include "monster/monster-util.h"
+#include "player/player-sex.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -18,20 +25,9 @@
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-checker.h"
-<<<<<<< HEAD
-#include "io/input-key-acceptor.h"
-#include "io/input-key-processor.h"
 #include "term/screen-processor.h"
-#include "player/player-sex.h"
+#include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
-#include "util/bit-flags-calculator.h"
-#include "market/building-util.h"
-#include "core/player-update-types.h"
-#include "core/player-redraw-types.h"
-#include "core/window-redrawer.h"
-=======
-#include "util/bit-flags-calculator.h"
->>>>>>> hengband/develop
 
 /*!
  * @brief 変身処理向けにモンスターの近隣レベル帯モンスターを返す /

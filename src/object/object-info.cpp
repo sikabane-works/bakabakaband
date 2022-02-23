@@ -25,12 +25,12 @@
 #include "player/player-realm.h"
 #include "realm/realm-names-table.h"
 #include "sv-definition/sv-bow-types.h"
+#include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "sv-definition/sv-junk-types.h"
 #include "system/floor-type-definition.h"
-#include "system/object-type-definition.h"
 #include "system/monster-race-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -177,13 +177,8 @@ static concptr item_activation_aux(ObjectType *o_ptr)
 concptr activation_explanation(ObjectType *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
-<<<<<<< HEAD
-    if (!(flgs.has(TR_ACTIVATE)) && !(flgs.has(TR_INVEN_ACTIVATE)))
+    if (flgs.has_none_of(TR_ACTIVATE, TR_INVEN_ACTIVATE))
         return (_("なし", "nothing"));
-=======
-    if (flgs.has_not(TR_ACTIVATE))
-        return _("なし", "nothing");
->>>>>>> hengband/develop
 
     if (activation_index(o_ptr) > RandomArtActType::NONE) {
         return item_activation_aux(o_ptr);
@@ -223,7 +218,10 @@ concptr activation_explanation(ObjectType *o_ptr)
  * @return 対応するアルファベット
  * @details Note that the label does NOT distinguish inven/equip.
  */
-char index_to_label(int i) { return i < INVEN_MAIN_HAND ? I2A(i) : I2A(i - INVEN_MAIN_HAND); }
+char index_to_label(int i)
+{
+    return i < INVEN_MAIN_HAND ? I2A(i) : I2A(i - INVEN_MAIN_HAND);
+}
 
 /*!
  * @brief オブジェクトの該当装備部位IDを返す /
@@ -332,8 +330,8 @@ ObjectType *ref_item(PlayerType *player_ptr, INVENTORY_IDX item)
 TERM_COLOR object_attr(ObjectType *o_ptr)
 {
     return ((k_info[o_ptr->k_idx].flavor)
-            ? (k_info[k_info[o_ptr->k_idx].flavor].x_attr)
-            : ((!o_ptr->k_idx || (o_ptr->tval != ItemKindType::CORPSE) || (o_ptr->sval != SV_CORPSE) || (k_info[o_ptr->k_idx].x_attr != TERM_DARK))
-                    ? (k_info[o_ptr->k_idx].x_attr)
-                    : (r_info[o_ptr->pval].x_attr)));
+                ? (k_info[k_info[o_ptr->k_idx].flavor].x_attr)
+                : ((!o_ptr->k_idx || (o_ptr->tval != ItemKindType::CORPSE) || (o_ptr->sval != SV_CORPSE) || (k_info[o_ptr->k_idx].x_attr != TERM_DARK))
+                          ? (k_info[o_ptr->k_idx].x_attr)
+                          : (r_info[o_ptr->pval].x_attr)));
 }

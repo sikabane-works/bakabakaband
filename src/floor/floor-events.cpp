@@ -31,9 +31,9 @@
 #include "perception/object-perception.h"
 #include "player/special-defense-types.h"
 #include "sv-definition/sv-amulet-types.h"
+#include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "sv-definition/sv-armor-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -249,15 +249,8 @@ void update_dungeon_feeling(PlayerType *player_ptr)
         return;
 
     auto quest_num = quest_number(player_ptr, floor_ptr->dun_level);
-<<<<<<< HEAD
-    if ((quest_num > 0)
-        && (quest_type::is_fixed(quest_num) && !((quest_num == QUEST_MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET))))
-=======
-    if (inside_quest(quest_num) && (quest_type::is_fixed(quest_num) && !((quest_num == QuestId::OBERON) || (quest_num == QuestId::SERPENT) || !(quest[enum2i(quest_num)].flags & QUEST_FLAG_PRESET))))
->>>>>>> hengband/develop
-        return;
-
-    byte new_feeling = get_dungeon_feeling(player_ptr);
+    if (inside_quest(quest_num) && (quest_type::is_fixed(quest_num) && !((quest_num == QuestId::MELKO) || !(quest[enum2i(quest_num)].flags & QUEST_FLAG_PRESET))))
+        byte new_feeling = get_dungeon_feeling(player_ptr);
     player_ptr->feeling_turn = w_ptr->game_turn;
     if (player_ptr->feeling == new_feeling)
         return;

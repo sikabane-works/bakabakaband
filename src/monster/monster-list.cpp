@@ -43,8 +43,8 @@
 #include "system/player-type-definition.h"
 #include "util/probability-table.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 #include <iterator>
 
 #define HORDE_NOGOOD 0x01 /*!< (未実装フラグ)HORDE生成でGOODなモンスターの生成を禁止する？ */
@@ -107,7 +107,6 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
 
     max_level += wc_ptr->plus_monster_level();
 
-
     ProbabilityTable<int> prob_table;
 
     /* Process probabilities */
@@ -120,11 +119,7 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
         r_idx = entry.index;
         r_ptr = &r_info[r_idx];
         if (!(option & GMN_ARENA) && !chameleon_change_m_idx) {
-<<<<<<< HEAD
-            if (((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->mob_num)) {
-=======
-            if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->max_num)) {
->>>>>>> hengband/develop
+            if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->mob_num)) {
                 continue;
             }
 

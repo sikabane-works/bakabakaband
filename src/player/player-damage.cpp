@@ -13,6 +13,7 @@
 #include "dungeon/quest.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
+#include "floor/floor-object.h"
 #include "floor/wild.h"
 #include "game-option/birth-options.h"
 #include "game-option/cheat-options.h"
@@ -43,6 +44,7 @@
 #include "object/item-tester-hooker.h"
 #include "object/object-broken.h"
 #include "object/object-flags.h"
+#include "object/object-kind-hook.h"
 #include "player-base/player-class.h"
 #include "player-info/class-info.h"
 #include "player-info/race-types.h"
@@ -57,6 +59,7 @@
 #include "save/save.h"
 #include "status/base-status.h"
 #include "status/element-resistance.h"
+#include "sv-definition/sv-junk-types.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -69,9 +72,6 @@
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-#include "sv-definition/sv-junk-types.h"
-#include "floor/floor-object.h"
-#include "object/object-kind-hook.h"
 
 using dam_func = HIT_POINT (*)(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura);
 
@@ -412,11 +412,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, HIT_POINT damage, concptr 
                     strcpy(buf, _("アリーナ", "in the Arena"));
                 else if (!is_in_dungeon(player_ptr))
                     strcpy(buf, _("地上", "on the surface"));
-<<<<<<< HEAD
-                else if (q_idx && (quest_type::is_fixed(q_idx) && !(q_idx == QUEST_MELKO)))
-=======
-                else if (inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !((q_idx == QuestId::OBERON) || (q_idx == QuestId::SERPENT))))
->>>>>>> hengband/develop
+                else if (inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::QUEST_MELKO)))
                     strcpy(buf, _("クエスト", "in a quest"));
                 else
                     sprintf(buf, _("%d階", "level %d"), (int)player_ptr->current_floor_ptr->dun_level);

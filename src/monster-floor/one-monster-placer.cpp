@@ -5,8 +5,8 @@
  */
 
 #include "monster-floor/one-monster-placer.h"
-#include "core/player-update-types.h"
 #include "core/disturbance.h"
+#include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "dungeon/quest.h"
 #include "effect/attribute-types.h"
@@ -19,8 +19,8 @@
 #include "game-option/birth-options.h"
 #include "game-option/cheat-types.h"
 #include "grid/grid.h"
-#include "monster-attack/monster-attack-types.h"
 #include "monster-attack/monster-attack-player.h"
+#include "monster-attack/monster-attack-types.h"
 #include "monster-floor/monster-move.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
@@ -117,13 +117,8 @@ static bool check_unique_placeable(PlayerType *player_ptr, MONRACE_IDX r_idx)
     if (player_ptr->phase_out)
         return true;
 
-<<<<<<< HEAD
-    monster_race *r_ptr = &r_info[r_idx];
-    if ((any_bits(r_ptr->flags1, RF1_UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->mob_num)) {
-=======
     auto *r_ptr = &r_info[r_idx];
-    if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->max_num)) {
->>>>>>> hengband/develop
+    if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(r_ptr->flags7, RF7_NAZGUL)) && (r_ptr->cur_num >= r_ptr->mob_num)) {
         return false;
     }
 
@@ -393,8 +388,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 
     real_r_ptr(m_ptr)->cur_num++;
 
-    if(any_bits(mode, PM_AMBUSH))
-    {
+    if (any_bits(mode, PM_AMBUSH)) {
         GAME_TEXT m_name[MAX_NLEN];
         monster_desc(player_ptr, m_name, m_ptr, 0);
         msg_format(_("突如%sがあなたに襲い掛かってきた！", "Suddenly %s has ambushed you!"), m_name);

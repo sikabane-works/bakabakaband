@@ -11,12 +11,8 @@ struct ae_type {
     DEPTH lev;
     int chance;
     int fail;
-<<<<<<< HEAD
     PERCENTAGE broken;
-} ae_type;
-=======
 };
->>>>>>> hengband/develop
 
 class PlayerType;
 ae_type *initialize_ae_type(PlayerType *player_ptr, ae_type *ae_ptr, const INVENTORY_IDX item);

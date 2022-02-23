@@ -18,8 +18,8 @@
 #include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "floor/cave.h"
-#include "floor/geometry.h"
 #include "floor/floor-object.h"
+#include "floor/geometry.h"
 #include "game-option/play-record-options.h"
 #include "grid/feature.h"
 #include "io/write-diary.h"
@@ -62,13 +62,13 @@
 #include "player/special-defense-types.h"
 #include "spell-realm/spells-hex.h"
 #include "spell/summon-types.h"
-#include "system/object-type-definition.h"
+#include "sv-definition/sv-junk-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
-#include "sv-definition/sv-junk-types.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
 
@@ -540,7 +540,7 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
 
                 return true;
             }
-        }    
+        }
     }
 
     return false;
@@ -589,12 +589,11 @@ bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware)
  */
 bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
-<<<<<<< HEAD
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     GAME_TEXT m_name[MAX_NLEN];
     monster_desc(player_ptr, m_name, m_ptr, 0);
 
-    if(monster_fear_remaining(m_ptr) && one_in_(20)) {
+    if (monster_fear_remaining(m_ptr) && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         object_type forge;
         object_type *q_ptr = &forge;
@@ -610,9 +609,6 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
-=======
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
->>>>>>> hengband/develop
     bool is_battle_determined = !turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && monster_fear_remaining(m_ptr) && turn_flags_ptr->aware;
     if (!is_battle_determined)
         return false;
