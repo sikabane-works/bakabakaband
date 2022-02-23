@@ -53,7 +53,6 @@
 #include "term/screen-processor.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/timed-effects.h"
-#include "util/bit-flags-calculator.h"
 #include "util/quarks.h"
 #include "util/sort.h"
 #include "view/display-messages.h"
