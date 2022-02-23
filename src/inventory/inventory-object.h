@@ -13,4 +13,4 @@ void reorder_pack(PlayerType *player_ptr);
 int16_t store_item_to_inventory(PlayerType *player_ptr, ObjectType *o_ptr);
 bool check_store_item_to_inventory(PlayerType *player_ptr, const ObjectType *o_ptr);
 INVENTORY_IDX inven_takeoff(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER amt);
-bool check_get_item(object_type *o_ptr);
+bool check_get_item(ObjectType *o_ptr);

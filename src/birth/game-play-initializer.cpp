@@ -193,10 +193,10 @@ void init_dungeon_quests(PlayerType *player_ptr)
     }
 
     init_flags = INIT_ASSIGN;
-    floor_ptr->inside_quest = QuestId::MELKO;
+    floor_ptr->quest_number = QuestId::MELKO;
     parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
-    quest[QUEST_MELKO].status = QuestStatusType::TAKEN;
-    floor_ptr->inside_quest = QuestId::NONE;
+    quest[enum2i<QuestId>(QuestId::MELKO)].status = QuestStatusType::TAKEN;
+    floor_ptr->quest_number = QuestId::NONE;
 }
 
 /*!

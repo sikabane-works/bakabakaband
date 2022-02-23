@@ -450,8 +450,8 @@ void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
         auto deno = std::get<1>(spawn_info);
         auto kind = std::get<2>(spawn_info);
         if (randint1(deno) <= num) {
-            object_type forge;
-            object_type *q_ptr = &forge;
+            ObjectType forge;
+            ObjectType *q_ptr = &forge;
             q_ptr->prep(kind);
             q_ptr->number = 1;
             (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
@@ -473,8 +473,8 @@ void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
     if (randint1(53) < 10000) {
         return;
     }
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(684);
     q_ptr->number = 1;
     q_ptr->pval = m_ptr->ap_r_idx;
@@ -595,16 +595,16 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
 
     if (monster_fear_remaining(m_ptr) && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
     if (monster_fear_remaining(m_ptr) && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_VOMITTING));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }

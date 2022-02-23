@@ -45,6 +45,7 @@ enum class QuestId : int16_t{
 	DARK_ELF = 32, /*<! ダークエルフの王 */
 	CLONE = 33, /*<! クローン地獄 */
 	DUMP_WITNESS = 34, /*<! もの言えぬ証人 */
+	MELKO = 35, /*!< メル子くんわからせ */
 	RANDOM_QUEST1 = 40, /*<! ランダムクエストを割り当てるクエストIDの開始値 */
 	RANDOM_QUEST2 = 41,
 	RANDOM_QUEST3 = 42,

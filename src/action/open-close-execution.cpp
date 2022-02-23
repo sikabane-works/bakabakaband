@@ -265,8 +265,8 @@ bool exe_disarm(PlayerType *player_ptr, POSITION y, POSITION x, DIRECTION dir)
         j = 2;
 
     if (randint0(100) < j) {
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         q_ptr->prep(lookup_kind(ItemKindType::TRAP, 0));
         q_ptr->pval = g_ptr->feat;
 

@@ -151,8 +151,8 @@ static void on_dead_spawn_monsters(PlayerType* player_ptr, monster_death_type* m
 static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (auto kind : md_ptr->r_ptr->drop_kinds) {
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         int num = std::get<0>(kind);
         int deno = std::get<1>(kind);
         if (randint1(deno) > num) {
@@ -206,8 +206,8 @@ static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *m
 static void on_dead_drop_tval_item(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     for (auto kind : md_ptr->r_ptr->drop_tvals) {
-        object_type forge;
-        object_type *q_ptr = &forge;
+        ObjectType forge;
+        ObjectType *q_ptr = &forge;
         int num = std::get<0>(kind);
         int deno = std::get<1>(kind);
         if (randint1(deno) > num) {
@@ -259,8 +259,8 @@ static void on_dead_drop_tval_item(PlayerType *player_ptr, monster_death_type *m
 
 static void on_dead_bottle_gnome(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::POTION, SV_POTION_CURE_CRITICAL));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -279,8 +279,8 @@ static void on_dead_bloodletter(PlayerType *player_ptr, monster_death_type *md_p
 
 static void on_dead_inariman1_2(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI2));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
@@ -288,8 +288,8 @@ static void on_dead_inariman1_2(PlayerType *player_ptr, monster_death_type *md_p
 
 static void on_dead_inariman3(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
-    object_type forge;
-    object_type *q_ptr = &forge;
+    ObjectType forge;
+    ObjectType *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::FOOD, SV_FOOD_SUSHI3));
     apply_magic_to_object(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);

@@ -65,7 +65,7 @@
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_junk_type_object(PlayerType *player_ptr, object_type *o_ptr)
+static bool exe_eat_junk_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     if (o_ptr->tval != ItemKindType::JUNK)
         return false;
@@ -108,7 +108,7 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, object_type *o_ptr)
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_soul(PlayerType *player_ptr, object_type *o_ptr)
+static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_SOUL))
         return false;
@@ -136,7 +136,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, object_type *o_ptr)
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_corpse_type_object(PlayerType *player_ptr, object_type *o_ptr)
+static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE))
         return false;
@@ -683,8 +683,8 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     if (o_ptr->tval == ItemKindType::FOOD) {
         if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
             if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
-                object_type forge;
-                object_type *q_ptr = &forge;
+                ObjectType forge;
+                ObjectType *q_ptr = &forge;
 
                 msg_print(_("食べ物がアゴを素通りして落ちた！", "The food falls through your jaws!"));
                 q_ptr->prep(lookup_kind(o_ptr->tval, o_ptr->sval));
