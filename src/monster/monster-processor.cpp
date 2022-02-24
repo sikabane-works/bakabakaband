@@ -325,7 +325,7 @@ void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
     if (is_friendly(m_ptr) && has_aggravate(player_ptr))
         gets_angry = true;
 
-    if (is_pet(m_ptr) && (((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) || (r_ptr->flagsr & RFR_RES_ALL)))
+    if (is_pet(m_ptr) && (((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) || r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)))
         gets_angry = true;
 
     if (player_ptr->phase_out || !gets_angry)
@@ -694,8 +694,8 @@ void sweep_monster_process(PlayerType *player_ptr)
         if ((m_ptr->cdis >= AAF_LIMIT) || !decide_process_continue(player_ptr, m_ptr))
             continue;
 
-        SPEED speed = (player_ptr->riding == i) ? player_ptr->pspeed : decide_monster_speed(m_ptr);
-        m_ptr->energy_need -= SPEED_TO_ENERGY(speed);
+        byte speed = (player_ptr->riding == i) ? player_ptr->pspeed : decide_monster_speed(m_ptr);
+        m_ptr->energy_need -= speed_to_energy(speed);
         if (m_ptr->energy_need > 0)
             continue;
 

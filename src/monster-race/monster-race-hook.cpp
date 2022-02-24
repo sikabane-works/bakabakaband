@@ -289,7 +289,7 @@ bool mon_hook_lava(PlayerType *player_ptr, MONRACE_IDX r_idx)
     if (!mon_hook_dungeon(player_ptr, r_idx))
         return false;
 
-    return (any_bits(r_ptr->flagsr, RFR_EFF_IM_FIRE_MASK) || any_bits(r_ptr->flags7, RF7_CAN_FLY)) && r_ptr->aura_flags.has_not(MonsterAuraType::COLD);
+    return (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_FIRE_MASK) || any_bits(r_ptr->flags7, RF7_CAN_FLY)) && r_ptr->aura_flags.has_not(MonsterAuraType::COLD);
 }
 
 /*!
@@ -863,7 +863,7 @@ bool monster_can_entry_arena(PlayerType *player_ptr, MONRACE_IDX r_idx)
     /* Unused */
     (void)player_ptr;
 
-    HIT_POINT dam = 0;
+    int dam = 0;
     auto *r_ptr = &r_info[r_idx];
     bool unselectable = r_ptr->behavior_flags.has(MonsterBehaviorType::NEVER_MOVE);
     unselectable |= any_bits(r_ptr->flags2, RF2_MULTIPLY);
@@ -904,7 +904,7 @@ bool item_monster_okay(PlayerType *player_ptr, MONRACE_IDX r_idx)
     if (any_bits(r_ptr->flags7, RF7_KAGE))
         return false;
 
-    if (any_bits(r_ptr->flagsr, RFR_RES_ALL))
+    if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL))
         return false;
 
     if (any_bits(r_ptr->flags7, RF7_NAZGUL))
@@ -930,5 +930,5 @@ bool item_monster_okay(PlayerType *player_ptr, MONRACE_IDX r_idx)
  */
 bool vault_monster_okay(PlayerType *player_ptr, MONRACE_IDX r_idx)
 {
-    return mon_hook_dungeon(player_ptr, r_idx) && r_info[r_idx].kind_flags.has_not(MonsterKindType::UNIQUE) && none_bits(r_info[r_idx].flags7, RF7_UNIQUE2) && none_bits(r_info[r_idx].flagsr, RFR_RES_ALL) && none_bits(r_info[r_idx].flags7, RF7_AQUATIC);
+    return mon_hook_dungeon(player_ptr, r_idx) && r_info[r_idx].kind_flags.has_not(MonsterKindType::UNIQUE) && none_bits(r_info[r_idx].flags7, RF7_UNIQUE2) && r_info[r_idx].resistance_flags.has_not(MonsterResistanceType::RESIST_ALL) && none_bits(r_info[r_idx].flags7, RF7_AQUATIC);
 }

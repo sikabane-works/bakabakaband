@@ -133,7 +133,7 @@ void store_create(
     if (st_ptr->stock_num >= st_ptr->stock_size)
         return;
 
-    const owner_type *ow_ptr = &owners[enum2i(cur_store_num)][st_ptr->owner];
+    const owner_type *ow_ptr = &owners.at(cur_store_num)[st_ptr->owner];
 
     for (int tries = 0; tries < 4; tries++) {
         KIND_OBJECT_IDX k_idx;
@@ -167,10 +167,10 @@ void store_create(
 
         if (q_ptr->tval == ItemKindType::LITE) {
             if (q_ptr->sval == SV_LITE_TORCH)
-                q_ptr->xtra4 = FUEL_TORCH / 2;
+                q_ptr->fuel = FUEL_TORCH / 2;
 
             if (q_ptr->sval == SV_LITE_LANTERN)
-                q_ptr->xtra4 = FUEL_LAMP / 2;
+                q_ptr->fuel = FUEL_LAMP / 2;
         }
 
         object_known(q_ptr);

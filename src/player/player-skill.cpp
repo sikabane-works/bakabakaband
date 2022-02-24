@@ -2,6 +2,7 @@
 #include "core/player-update-types.h"
 #include "monster-race/monster-race.h"
 #include "player-base/player-class.h"
+#include "player-base/player-race.h"
 #include "player-info/class-info.h"
 #include "player/player-realm.h"
 #include "sv-definition/sv-weapon-types.h"
@@ -324,7 +325,7 @@ void PlayerSkill::gain_riding_skill_exp_on_range_attack()
     }
 }
 
-void PlayerSkill::gain_riding_skill_exp_on_fall_off_check(HIT_POINT dam)
+void PlayerSkill::gain_riding_skill_exp_on_fall_off_check(int dam)
 {
     auto now_exp = this->player_ptr->skill_exp[PlayerSkillKindType::RIDING];
     auto max_exp = s_info[enum2i(this->player_ptr->pclass)].s_max[PlayerSkillKindType::RIDING];
@@ -448,7 +449,7 @@ void PlayerSkill::apply_special_weapon_skill_max_values()
         w_exp_max[ItemKindType::HAFTED][SV_WHIP] = PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER);
     }
 
-    if (this->player_ptr->prace == PlayerRaceType::MERFOLK) {
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::MERFOLK)) {
         w_exp_max[ItemKindType::POLEARM][SV_TRIDENT] = PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER);
         w_exp_max[ItemKindType::POLEARM][SV_TRIFURCATE_SPEAR] = PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER);
     }

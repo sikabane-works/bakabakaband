@@ -4,6 +4,7 @@
 #include "monster-race/monster-aura-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-behavior-flags.h"
+#include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "system/angband.h"
@@ -26,7 +27,7 @@ struct lore_type {
 #endif
     bool nightmare;
     monster_race *r_ptr;
-    SPEED speed;
+    byte speed;
     ITEM_NUMBER drop_gold;
     ITEM_NUMBER drop_item;
     BIT_FLAGS flags1;
@@ -37,10 +38,9 @@ struct lore_type {
     EnumClassFlagGroup<MonsterBehaviorType> behavior_flags;
     EnumClassFlagGroup<MonsterVisualType> visual_flags;
     EnumClassFlagGroup<MonsterKindType> kind_flags;
+    EnumClassFlagGroup<MonsterResistanceType> resistance_flags;
 
     BIT_FLAGS flags7;
-    BIT_FLAGS flags8;
-    BIT_FLAGS flagsr;
     bool reinforce;
     bool spawn_monster;
     bool know_everything;

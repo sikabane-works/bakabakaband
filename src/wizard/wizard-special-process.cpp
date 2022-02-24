@@ -58,6 +58,7 @@
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
+#include "player-base/player-race.h"
 #include "player-info/class-info.h"
 #include "player-info/race-info.h"
 #include "player-info/race-types.h"
@@ -456,7 +457,7 @@ void wiz_change_status(PlayerType *player_ptr)
     if (tmp_long < 0)
         tmp_long = 0L;
 
-    if (player_ptr->prace == PlayerRaceType::ANDROID)
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID))
         return;
 
     player_ptr->max_exp = tmp_long;
@@ -490,7 +491,7 @@ void wiz_create_feature(PlayerType *player_ptr)
         return;
     }
 
-    cave_set_feat(player_ptr, y, x, f_val1);
+    cave_set_feat(player_ptr, y, x, static_cast<FEAT_IDX>(f_val1));
     g_ptr->mimic = (int16_t)f_val2;
     feature_type *f_ptr;
     f_ptr = &f_info[g_ptr->get_feat_mimic()];

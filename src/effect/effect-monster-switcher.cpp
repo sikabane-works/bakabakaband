@@ -100,7 +100,7 @@ process_result effect_monster_death_ray(PlayerType *player_ptr, effect_monster_t
 
 process_result effect_monster_kill_wall(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    if ((em_ptr->r_ptr->flags3 & (RF3_HURT_ROCK)) == 0) {
+    if (em_ptr->r_ptr->resistance_flags.has_not(MonsterResistanceType::HURT_ROCK)) {
         em_ptr->dam = 0;
         return PROCESS_CONTINUE;
     }
@@ -109,7 +109,7 @@ process_result effect_monster_kill_wall(PlayerType *player_ptr, effect_monster_t
         em_ptr->obvious = true;
 
     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr))
-        em_ptr->r_ptr->r_flags3 |= (RF3_HURT_ROCK);
+        em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::HURT_ROCK);
 
     em_ptr->note = _("の皮膚がただれた！", " loses some skin!");
     em_ptr->note_dies = _("はドロドロに溶けた！", " dissolves!");
@@ -262,12 +262,12 @@ process_result effect_monster_photo(PlayerType *player_ptr, effect_monster_type 
     if (!em_ptr->who)
         msg_format(_("%sを写真に撮った。", "You take a photograph of %s."), em_ptr->m_name);
 
-    if (em_ptr->r_ptr->flags3 & (RF3_HURT_LITE)) {
+    if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::HURT_LITE)) {
         if (em_ptr->seen)
             em_ptr->obvious = true;
 
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr))
-            em_ptr->r_ptr->r_flags3 |= (RF3_HURT_LITE);
+            em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::HURT_LITE);
 
         em_ptr->note = _("は光に身をすくめた！", " cringes from the light!");
         em_ptr->note_dies = _("は光を受けてしぼんでしまった！", " shrivels away in the light!");
@@ -297,7 +297,7 @@ process_result effect_monster_wounds(effect_monster_type *em_ptr)
  * @param em_ptr モンスター効果構造体への参照ポインタ
  * @return ここのスイッチングで終るならTRUEかFALSE、後続処理を実行するならCONTINUE
  */
-process_result switch_effects_monster(PlayerType *player_ptr, effect_monster_type *em_ptr)
+process_result switch_effects_monster(PlayerType *player_ptr, effect_monster_type *em_ptr, std::optional<CapturedMonsterType *> cap_mon_ptr)
 {
     switch (em_ptr->attribute) {
     case AttributeType::PSY_SPEAR:
@@ -452,7 +452,7 @@ process_result switch_effects_monster(PlayerType *player_ptr, effect_monster_typ
     case AttributeType::HAND_DOOM:
         return effect_monster_hand_doom(em_ptr);
     case AttributeType::CAPTURE:
-        return effect_monster_capture(player_ptr, em_ptr);
+        return effect_monster_capture(player_ptr, em_ptr, cap_mon_ptr);
     case AttributeType::ATTACK:
         return do_cmd_attack(player_ptr, em_ptr->y, em_ptr->x, i2enum<combat_options>(em_ptr->dam)) ? PROCESS_TRUE : PROCESS_FALSE;
     case AttributeType::ENGETSU:
