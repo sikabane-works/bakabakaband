@@ -14,6 +14,7 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-flags3.h"
+#include "monster-race/race-resistance-mask.h"
 #include "monster/monster-damage.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
@@ -36,14 +37,14 @@ static void aura_fire_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
 
     auto *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-    if ((r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK) != 0) {
+    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_FIRE_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= (r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK);
+            r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_FIRE_MASK);
 
         return;
     }
 
-    HIT_POINT dam = damroll(2, 6);
+    int dam = damroll(2, 6);
     dam = mon_damage_mod(player_ptr, monap_ptr->m_ptr, dam, false);
     msg_format(_("%^sは突然熱くなった！", "%^s is suddenly very hot!"), monap_ptr->m_name);
     MonsterDamageProcessor mdp(player_ptr, monap_ptr->m_idx, dam, &monap_ptr->fear, AttributeType::FIRE);
@@ -59,14 +60,14 @@ static void aura_elec_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
 
     auto *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-    if ((r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK) != 0) {
+    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_ELEC_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= (r_ptr->flagsr & RFR_EFF_IM_ELEC_MASK);
+            r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_ELEC_MASK);
 
         return;
     }
 
-    HIT_POINT dam = damroll(2, 6);
+    int dam = damroll(2, 6);
     dam = mon_damage_mod(player_ptr, monap_ptr->m_ptr, dam, false);
     msg_format(_("%^sは電撃をくらった！", "%^s gets zapped!"), monap_ptr->m_name);
     MonsterDamageProcessor mdp(player_ptr, monap_ptr->m_idx, dam, &monap_ptr->fear, AttributeType::ELEC);
@@ -82,14 +83,14 @@ static void aura_cold_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
 
     auto *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-    if ((r_ptr->flagsr & RFR_EFF_IM_COLD_MASK) != 0) {
+    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_COLD_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= (r_ptr->flagsr & RFR_EFF_IM_COLD_MASK);
+            r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_COLD_MASK);
 
         return;
     }
 
-    HIT_POINT dam = damroll(2, 6);
+    int dam = damroll(2, 6);
     dam = mon_damage_mod(player_ptr, monap_ptr->m_ptr, dam, false);
     msg_format(_("%^sは冷気をくらった！", "%^s is very cold!"), monap_ptr->m_name);
     MonsterDamageProcessor mdp(player_ptr, monap_ptr->m_idx, dam, &monap_ptr->fear, AttributeType::COLD);
@@ -105,11 +106,11 @@ static void aura_shards_by_monster_attack(PlayerType *player_ptr, MonsterAttackP
         return;
 
     auto *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-    if ((r_ptr->flagsr & RFR_EFF_RES_SHAR_MASK) != 0) {
+    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_RESIST_SHARDS_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= (r_ptr->flagsr & RFR_EFF_RES_SHAR_MASK);
+            r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_RESIST_SHARDS_MASK);
     } else {
-        HIT_POINT dam = damroll(2, 6);
+        int dam = damroll(2, 6);
         dam = mon_damage_mod(player_ptr, monap_ptr->m_ptr, dam, false);
         msg_format(_("%^sは鏡の破片をくらった！", "%^s gets sliced!"), monap_ptr->m_name);
         MonsterDamageProcessor mdp(player_ptr, monap_ptr->m_idx, dam, &monap_ptr->fear, AttributeType::SHARDS);
@@ -132,14 +133,14 @@ static void aura_holy_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
     if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL))
         return;
 
-    if ((r_ptr->flagsr & RFR_RES_ALL) != 0) {
+    if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= RFR_RES_ALL;
+            r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_ALL);
 
         return;
     }
 
-    HIT_POINT dam = damroll(2, 6);
+    int dam = damroll(2, 6);
     dam = mon_damage_mod(player_ptr, monap_ptr->m_ptr, dam, false);
     msg_format(_("%^sは聖なるオーラで傷ついた！", "%^s is injured by holy power!"), monap_ptr->m_name);
     MonsterDamageProcessor mdp(player_ptr, monap_ptr->m_idx, dam, &monap_ptr->fear, AttributeType::HOLY_FIRE);
@@ -158,14 +159,14 @@ static void aura_force_by_monster_attack(PlayerType *player_ptr, MonsterAttackPl
         return;
 
     auto *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-    if ((r_ptr->flagsr & RFR_RES_ALL) != 0) {
+    if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= RFR_RES_ALL;
+            r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_ALL);
 
         return;
     }
 
-    HIT_POINT dam = damroll(2, 6);
+    int dam = damroll(2, 6);
     dam = mon_damage_mod(player_ptr, monap_ptr->m_ptr, dam, false);
     msg_format(_("%^sが鋭い闘気のオーラで傷ついた！", "%^s is injured by the Force"), monap_ptr->m_name);
     MonsterDamageProcessor mdp(player_ptr, monap_ptr->m_idx, dam, &monap_ptr->fear, AttributeType::MANA);
@@ -180,12 +181,14 @@ static void aura_shadow_by_monster_attack(PlayerType *player_ptr, MonsterAttackP
     if (!SpellHex(player_ptr).is_spelling_specific(HEX_SHADOW_CLOAK) || !monap_ptr->alive || player_ptr->is_dead)
         return;
 
-    HIT_POINT dam = 1;
+    int dam = 1;
     ObjectType *o_armed_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
     auto *r_ptr = &r_info[monap_ptr->m_ptr->r_idx];
-    if (((r_ptr->flagsr & RFR_RES_ALL) != 0) || ((r_ptr->flagsr & RFR_RES_DARK) != 0)) {
+    const EnumClassFlagGroup<MonsterResistanceType> resist_flags = { MonsterResistanceType::RESIST_ALL, MonsterResistanceType::RESIST_DARK };
+
+    if (r_ptr->resistance_flags.has_any_of(resist_flags)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr))
-            r_ptr->r_flagsr |= (RFR_RES_ALL | RFR_RES_DARK);
+            r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & resist_flags);
 
         return;
     }

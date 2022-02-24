@@ -27,7 +27,7 @@
  */
 bool is_active_torch(ObjectType *o_ptr)
 {
-    return (o_ptr->tval == ItemKindType::LITE) && (o_ptr->sval == SV_LITE_TORCH) && (o_ptr->xtra4 > 0);
+    return (o_ptr->tval == ItemKindType::LITE) && (o_ptr->sval == SV_LITE_TORCH) && (o_ptr->fuel > 0);
 }
 
 /*!
@@ -72,9 +72,7 @@ void torch_lost_fuel(ObjectType *o_ptr)
     if (!is_active_torch(o_ptr))
         return;
 
-    o_ptr->xtra4 -= (FUEL_TORCH / 25);
-    if (o_ptr->xtra4 < 0)
-        o_ptr->xtra4 = 0;
+    o_ptr->fuel -= FUEL_TORCH / 25;
 }
 
 /*!
@@ -93,15 +91,15 @@ void update_lite_radius(PlayerType *player_ptr)
         if (!o_ptr->k_idx)
             continue;
 
-        if (o_ptr->name2 == EGO_LITE_SHINE)
+        if (o_ptr->name2 == EgoType::LITE_SHINE)
             player_ptr->cur_lite++;
 
         if (flgs.has_not(TR_DARK_SOURCE)) {
             if (o_ptr->tval == ItemKindType::LITE) {
-                if ((o_ptr->sval == SV_LITE_TORCH) && !(o_ptr->xtra4 > 0))
+                if ((o_ptr->sval == SV_LITE_TORCH) && !(o_ptr->fuel > 0))
                     continue;
 
-                if ((o_ptr->sval == SV_LITE_LANTERN) && !(o_ptr->xtra4 > 0))
+                if ((o_ptr->sval == SV_LITE_LANTERN) && !(o_ptr->fuel > 0))
                     continue;
             }
         }

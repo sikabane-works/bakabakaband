@@ -50,7 +50,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         o_ptr->name1 = 0;
     }
 
-    o_ptr->name2 = any_bits(flags, SaveDataItemFlagType::NAME2) ? rd_byte() : 0;
+    o_ptr->name2 = i2enum<EgoType>(any_bits(flags, SaveDataItemFlagType::NAME2) ? rd_byte() : 0);
     o_ptr->timeout = any_bits(flags, SaveDataItemFlagType::TIMEOUT) ? rd_s16b() : 0;
     o_ptr->to_h = any_bits(flags, SaveDataItemFlagType::TO_H) ? rd_s16b() : 0;
     o_ptr->to_d = any_bits(flags, SaveDataItemFlagType::TO_D) ? rd_s16b() : 0;
@@ -116,9 +116,9 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
 
     // xtra3フィールドが複数目的に共用されていた頃の名残.
     if (loading_savefile_version_is_older_than(12)) {
-        int8_t tmp8s = any_bits(flags, SavedataItemOlderThan12FlagType::XTRA3) ? rd_byte() : 0;
+        uint8_t tmp8s = any_bits(flags, SavedataItemOlderThan12FlagType::XTRA3) ? rd_byte() : 0;
         if (o_ptr->tval == ItemKindType::CHEST) {
-            o_ptr->chest_level = static_cast<uint8_t>(tmp8s);
+            o_ptr->chest_level = tmp8s;
         } else if (o_ptr->tval == ItemKindType::CAPTURE) {
             o_ptr->captured_monster_speed = tmp8s;
         }
@@ -127,8 +127,23 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         o_ptr->captured_monster_speed = any_bits(flags, SaveDataItemFlagType::CAPTURED_MONSTER_SPEED) ? rd_byte() : 0;
     }
 
-    o_ptr->xtra4 = any_bits(flags, SaveDataItemFlagType::XTRA4) ? rd_s16b() : 0;
-    o_ptr->xtra5 = any_bits(flags, SaveDataItemFlagType::XTRA5) ? rd_s16b() : 0;
+    // xtra4フィールドが複数目的に共用されていた頃の名残.
+    if (loading_savefile_version_is_older_than(13)) {
+        int16_t xtra4 = any_bits(flags, SavedataItemOlderThan13FlagType::XTRA4) ? rd_s16b() : 0;
+        if (o_ptr->is_fuel()) {
+            o_ptr->fuel = static_cast<ushort>(xtra4);
+        } else if (o_ptr->tval == ItemKindType::CAPTURE) {
+            o_ptr->captured_monster_current_hp = xtra4;
+        } else {
+            o_ptr->smith_hit = static_cast<byte>(xtra4 >> 8);
+            o_ptr->smith_damage = static_cast<byte>(xtra4 & 0x000f);
+        }
+    } else {
+        o_ptr->fuel = any_bits(flags, SaveDataItemFlagType::FUEL) ? rd_u16b() : 0;
+        o_ptr->captured_monster_current_hp = any_bits(flags, SaveDataItemFlagType::CAPTURED_MONSTER_CURRENT_HP) ? rd_s16b() : 0;
+    }
+
+    o_ptr->captured_monster_max_hp = any_bits(flags, SaveDataItemFlagType::XTRA5) ? rd_s16b() : 0;
     o_ptr->feeling = any_bits(flags, SaveDataItemFlagType::FEELING) ? rd_byte() : 0;
     o_ptr->stack_idx = any_bits(flags, SaveDataItemFlagType::STACK_IDX) ? rd_s16b() : 0;
     if (any_bits(flags, SaveDataItemFlagType::SMITH) && !loading_savefile_version_is_older_than(7)) {
@@ -138,6 +153,11 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
 
         if (auto tmp16s = rd_s16b(); tmp16s > 0) {
             o_ptr->smith_act_idx = static_cast<RandomArtActType>(tmp16s);
+        }
+
+        if (!loading_savefile_version_is_older_than(13)) {
+            o_ptr->smith_hit = rd_byte();
+            o_ptr->smith_damage = rd_byte();
         }
     }
 
@@ -161,7 +181,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         return;
     }
 
-    if ((o_ptr->name2 == EGO_DARK) || (o_ptr->name2 == EGO_ANCIENT_CURSE) || (o_ptr->name1 == ART_NIGHT)) {
+    if ((o_ptr->name2 == EgoType::DARK) || (o_ptr->name2 == EgoType::ANCIENT_CURSE) || (o_ptr->name1 == ART_NIGHT)) {
         o_ptr->art_flags.set(TR_LITE_M1);
         o_ptr->art_flags.reset(TR_LITE_1);
         o_ptr->art_flags.reset(TR_LITE_2);
@@ -169,7 +189,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         return;
     }
 
-    if (o_ptr->name2 == EGO_LITE_DARKNESS) {
+    if (o_ptr->name2 == EgoType::LITE_DARKNESS) {
         if (o_ptr->tval != ItemKindType::LITE) {
             o_ptr->art_flags.set(TR_LITE_M1);
             return;

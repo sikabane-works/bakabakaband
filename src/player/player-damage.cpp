@@ -46,6 +46,7 @@
 #include "object/object-flags.h"
 #include "object/object-kind-hook.h"
 #include "player-base/player-class.h"
+#include "player-base/player-race.h"
 #include "player-info/class-info.h"
 #include "player-info/race-types.h"
 #include "player-info/samurai-data-type.h"
@@ -73,7 +74,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 
-using dam_func = HIT_POINT (*)(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura);
+using dam_func = int (*)(PlayerType *player_ptr, int dam, concptr kb_str, bool aura);
 
 /*!
  * @brief 酸攻撃による装備のAC劣化処理 /
@@ -147,7 +148,7 @@ static bool acid_minus_ac(PlayerType *player_ptr)
  * @return 修正HPダメージ量
  * @details 酸オーラは存在しないが関数ポインタのために引数だけは用意している
  */
-HIT_POINT acid_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura)
+int acid_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2
                                           : 3;
@@ -164,7 +165,7 @@ HIT_POINT acid_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
             dam = (dam + 1) / 2;
     }
 
-    HIT_POINT get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
+    int get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_acid(player_ptr)))
         inventory_damage(player_ptr, BreakerAcid(), inv);
 
@@ -181,7 +182,7 @@ HIT_POINT acid_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
  * @param aura オーラよるダメージが原因ならばTRUE
  * @return 修正HPダメージ量
  */
-HIT_POINT elec_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura)
+int elec_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2
                                           : 3;
@@ -197,7 +198,7 @@ HIT_POINT elec_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
             (void)do_dec_stat(player_ptr, A_DEX);
     }
 
-    HIT_POINT get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
+    int get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_elec(player_ptr)))
         inventory_damage(player_ptr, BreakerElec(), inv);
 
@@ -214,7 +215,7 @@ HIT_POINT elec_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
  * @param aura オーラよるダメージが原因ならばTRUE
  * @return 修正HPダメージ量
  */
-HIT_POINT fire_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura)
+int fire_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2
                                           : 3;
@@ -230,7 +231,7 @@ HIT_POINT fire_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
             (void)do_dec_stat(player_ptr, A_STR);
     }
 
-    HIT_POINT get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
+    int get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_fire(player_ptr)))
         inventory_damage(player_ptr, BreakerFire(), inv);
 
@@ -247,7 +248,7 @@ HIT_POINT fire_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
  * @param aura オーラよるダメージが原因ならばTRUE
  * @return 修正HPダメージ量
  */
-HIT_POINT cold_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool aura)
+int cold_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 {
     int inv = (dam < 30) ? 1 : (dam < 60) ? 2
                                           : 3;
@@ -261,7 +262,7 @@ HIT_POINT cold_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
             (void)do_dec_stat(player_ptr, A_STR);
     }
 
-    HIT_POINT get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
+    int get_damage = take_hit(player_ptr, aura ? DAMAGE_NOESCAPE : DAMAGE_ATTACK, dam, kb_str);
     if (!aura && !(double_resist && has_resist_cold(player_ptr)))
         inventory_damage(player_ptr, BreakerCold(), inv);
 
@@ -277,7 +278,7 @@ HIT_POINT cold_dam(PlayerType *player_ptr, HIT_POINT dam, concptr kb_str, bool a
  * the game when he dies, since the "You die." message is shown before
  * setting the player to "dead".
  */
-int take_hit(PlayerType *player_ptr, int damage_type, HIT_POINT damage, concptr hit_from)
+int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_from)
 {
     int old_chp = player_ptr->chp;
 
@@ -354,7 +355,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, HIT_POINT damage, concptr 
     }
 
     if (player_ptr->chp < 0 && !cheat_immortal) {
-        bool android = player_ptr->prace == PlayerRaceType::ANDROID;
+        bool android = PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID);
 
         /* 死んだ時に強制終了して死を回避できなくしてみた by Habu */
         if (!cheat_save && !save_player(player_ptr, SAVE_TYPE_CLOSE_GAME))
@@ -471,8 +472,8 @@ int take_hit(PlayerType *player_ptr, int damage_type, HIT_POINT damage, concptr 
 #ifdef JP
                 if (winning_seppuku) {
                     int i, len;
-                    int w = Term->wid;
-                    int h = Term->hgt;
+                    int w = game_term->wid;
+                    int h = game_term->hgt;
                     int msg_pos_x[9] = { 5, 7, 9, 12, 14, 17, 19, 21, 23 };
                     int msg_pos_y[9] = { 3, 4, 5, 4, 5, 4, 5, 6, 4 };
                     concptr str;

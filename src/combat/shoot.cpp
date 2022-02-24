@@ -36,6 +36,7 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
+#include "monster-race/race-resistance-mask.h"
 #include "monster/monster-damage.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
@@ -146,7 +147,7 @@ AttributeFlags shot_attribute(PlayerType *player_ptr, ObjectType *bow_ptr, Objec
  * @return スレイ倍率をかけたダメージ量
  */
 static MULTIPLY calc_shot_damage_with_slay(
-    PlayerType *player_ptr, ObjectType *bow_ptr, ObjectType *arrow_ptr, HIT_POINT tdam, monster_type *monster_ptr, SPELL_IDX snipe_type)
+    PlayerType *player_ptr, ObjectType *bow_ptr, ObjectType *arrow_ptr, int tdam, monster_type *monster_ptr, SPELL_IDX snipe_type)
 {
     MULTIPLY mult = 10;
 
@@ -328,9 +329,9 @@ static MULTIPLY calc_shot_damage_with_slay(
 
         if (flags.has(TR_BRAND_ACID)) {
             /* Notice immunity */
-            if (any_bits(race_ptr->flagsr, RFR_EFF_IM_ACID_MASK)) {
+            if (race_ptr->resistance_flags.has_any_of(RFR_EFF_IM_ACID_MASK)) {
                 if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                    set_bits(race_ptr->r_flagsr, (race_ptr->flagsr & RFR_EFF_IM_ACID_MASK));
+                    race_ptr->r_resistance_flags.set(race_ptr->resistance_flags & RFR_EFF_IM_ACID_MASK);
                 }
             } else {
                 if (mult < 17)
@@ -340,9 +341,9 @@ static MULTIPLY calc_shot_damage_with_slay(
 
         if (flags.has(TR_BRAND_ELEC)) {
             /* Notice immunity */
-            if (any_bits(race_ptr->flagsr, RFR_EFF_IM_ELEC_MASK)) {
+            if (race_ptr->resistance_flags.has_any_of(RFR_EFF_IM_ELEC_MASK)) {
                 if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                    set_bits(race_ptr->r_flagsr, (race_ptr->flagsr & RFR_EFF_IM_ELEC_MASK));
+                    race_ptr->r_resistance_flags.set(race_ptr->resistance_flags & RFR_EFF_IM_ELEC_MASK);
                 }
             } else {
                 if (mult < 17)
@@ -352,18 +353,18 @@ static MULTIPLY calc_shot_damage_with_slay(
 
         if (flags.has(TR_BRAND_FIRE)) {
             /* Notice immunity */
-            if (any_bits(race_ptr->flagsr, RFR_EFF_IM_FIRE_MASK)) {
+            if (race_ptr->resistance_flags.has_any_of(RFR_EFF_IM_FIRE_MASK)) {
                 if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                    set_bits(race_ptr->r_flagsr, (race_ptr->flagsr & RFR_EFF_IM_FIRE_MASK));
+                    race_ptr->r_resistance_flags.set(race_ptr->resistance_flags & RFR_EFF_IM_FIRE_MASK);
                 }
             }
             /* Otherwise, take the damage */
             else {
-                if (any_bits(race_ptr->flags3, RF3_HURT_FIRE)) {
+                if (race_ptr->resistance_flags.has(MonsterResistanceType::HURT_FIRE)) {
                     if (mult < 25)
                         mult = 25;
                     if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                        set_bits(race_ptr->r_flags3, RF3_HURT_FIRE);
+                        race_ptr->r_resistance_flags.set(MonsterResistanceType::HURT_FIRE);
                     }
                 } else if (mult < 17)
                     mult = 17;
@@ -372,18 +373,18 @@ static MULTIPLY calc_shot_damage_with_slay(
 
         if (flags.has(TR_BRAND_COLD)) {
             /* Notice immunity */
-            if (any_bits(race_ptr->flagsr, RFR_EFF_IM_COLD_MASK)) {
+            if (race_ptr->resistance_flags.has_any_of(RFR_EFF_IM_COLD_MASK)) {
                 if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                    set_bits(race_ptr->r_flagsr, (race_ptr->flagsr & RFR_EFF_IM_COLD_MASK));
+                    race_ptr->r_resistance_flags.set(race_ptr->resistance_flags & RFR_EFF_IM_COLD_MASK);
                 }
             }
             /* Otherwise, take the damage */
             else {
-                if (any_bits(race_ptr->flags3, RF3_HURT_COLD)) {
+                if (race_ptr->resistance_flags.has(MonsterResistanceType::HURT_COLD)) {
                     if (mult < 25)
                         mult = 25;
                     if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                        set_bits(race_ptr->r_flags3, RF3_HURT_COLD);
+                        race_ptr->r_resistance_flags.set(MonsterResistanceType::HURT_COLD);
                     }
                 } else if (mult < 17)
                     mult = 17;
@@ -392,9 +393,9 @@ static MULTIPLY calc_shot_damage_with_slay(
 
         if (flags.has(TR_BRAND_POIS)) {
             /* Notice immunity */
-            if (any_bits(race_ptr->flagsr, RFR_EFF_IM_POIS_MASK)) {
+            if (race_ptr->resistance_flags.has_any_of(RFR_EFF_IM_POISON_MASK)) {
                 if (is_original_ap_and_seen(player_ptr, monster_ptr)) {
-                    set_bits(race_ptr->r_flagsr, race_ptr->flagsr & RFR_EFF_IM_POIS_MASK);
+                    race_ptr->r_resistance_flags.set(race_ptr->resistance_flags & RFR_EFF_IM_POISON_MASK);
                 }
             }
             /* Otherwise, take the damage */
@@ -1012,7 +1013,7 @@ bool test_hit_fire(PlayerType *player_ptr, int chance, monster_type *m_ptr, int 
  * @param dam 現在算出中のダメージ値
  * @return クリティカル修正が入ったダメージ値
  */
-HIT_POINT critical_shot(PlayerType *player_ptr, WEIGHT weight, int plus_ammo, int plus_bow, HIT_POINT dam)
+int critical_shot(PlayerType *player_ptr, WEIGHT weight, int plus_ammo, int plus_bow, int dam)
 {
     int i, k;
     auto *j_ptr = &player_ptr->inventory_list[INVEN_BOW];
@@ -1164,9 +1165,9 @@ int bow_tmul(OBJECT_SUBTYPE_VALUE sval)
  * @return ダメージ期待値
  * @note 基本ダメージ量と重量はこの部位では計算に加わらない。
  */
-HIT_POINT calc_crit_ratio_shot(PlayerType *player_ptr, HIT_POINT plus_ammo, HIT_POINT plus_bow)
+int calc_crit_ratio_shot(PlayerType *player_ptr, int plus_ammo, int plus_bow)
 {
-    HIT_POINT i;
+    int i;
     auto *j_ptr = &player_ptr->inventory_list[INVEN_BOW];
 
     /* Extract "shot" power */
@@ -1203,7 +1204,7 @@ HIT_POINT calc_crit_ratio_shot(PlayerType *player_ptr, HIT_POINT plus_ammo, HIT_
  * @param dam 基本ダメージ量
  * @return ダメージ期待値
  */
-HIT_POINT calc_expect_crit_shot(PlayerType *player_ptr, WEIGHT weight, int plus_ammo, int plus_bow, HIT_POINT dam)
+int calc_expect_crit_shot(PlayerType *player_ptr, WEIGHT weight, int plus_ammo, int plus_bow, int dam)
 {
     uint32_t num;
     int i, k, crit;
@@ -1246,7 +1247,7 @@ HIT_POINT calc_expect_crit_shot(PlayerType *player_ptr, WEIGHT weight, int plus_
  * @param impact 強撃かどうか
  * @return ダメージ期待値
  */
-HIT_POINT calc_expect_crit(PlayerType *player_ptr, WEIGHT weight, int plus, HIT_POINT dam, int16_t meichuu, bool dokubari, bool impact)
+int calc_expect_crit(PlayerType *player_ptr, WEIGHT weight, int plus, int dam, int16_t meichuu, bool dokubari, bool impact)
 {
     if (dokubari)
         return dam;
@@ -1256,8 +1257,8 @@ HIT_POINT calc_expect_crit(PlayerType *player_ptr, WEIGHT weight, int plus, HIT_
         i = 0;
 
     // 通常ダメージdam、武器重量weightでクリティカルが発生した時のクリティカルダメージ期待値
-    auto calc_weight_expect_dam = [](HIT_POINT dam, WEIGHT weight) {
-        HIT_POINT sum = 0;
+    auto calc_weight_expect_dam = [](int dam, WEIGHT weight) {
+        int sum = 0;
         for (int d = 1; d <= 650; ++d) {
             int k = weight + d;
             sum += std::get<0>(apply_critical_norm_damage(k, dam));

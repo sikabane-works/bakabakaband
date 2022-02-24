@@ -76,9 +76,9 @@ static void decide_activation_level(ae_type *ae_ptr)
         return;
     }
 
-    if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->name2) {
-        ae_ptr->lev = e_info[ae_ptr->o_ptr->name2].level;
-        ae_ptr->broken = e_info[ae_ptr->o_ptr->name2].broken_rate;
+    if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->is_ego()) {
+        ae_ptr->lev = e_info[enum2i<EgoType>(ae_ptr->o_ptr->name2)].level;
+        ae_ptr->broken = e_info[enum2i<EgoType>(ae_ptr->o_ptr->name2)].broken_rate;
     }
 }
 
@@ -139,7 +139,7 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
         return false;
     }
 
-    if (ae_ptr->o_ptr->is_fuel() && (ae_ptr->o_ptr->xtra4 == 0)) {
+    if (ae_ptr->o_ptr->is_fuel() && (ae_ptr->o_ptr->fuel == 0)) {
         msg_print(_("燃料がない。", "It has no fuel."));
         PlayerEnergy(player_ptr).reset_player_turn();
         return false;
@@ -302,7 +302,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
     ae_type tmp_ae;
     ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, item);
 
-    if (ae_ptr->o_ptr->name2 == EGO_SHATTERED || ae_ptr->o_ptr->name2 == EGO_BLASTED) {
+    if (ae_ptr->o_ptr->name2 == EgoType::SHATTERED || ae_ptr->o_ptr->name2 == EgoType::BLASTED) {
         msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
         return;
     }

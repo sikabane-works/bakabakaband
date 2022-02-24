@@ -8,6 +8,7 @@
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-indice-types.h"
+#include "monster-race/race-resistance-mask.h"
 #include "monster/monster-info.h"
 #include "object-enchant/tr-types.h"
 #include "object/object-flags.h"
@@ -89,14 +90,14 @@ MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, 
 {
     static const struct brand_table_t {
         tr_type brand_flag;
-        BIT_FLAGS resist_mask;
-        BIT_FLAGS hurt_flag;
+        EnumClassFlagGroup<MonsterResistanceType> resist_mask;
+        MonsterResistanceType hurt_flag;
     } brand_table[] = {
-        { TR_BRAND_ACID, RFR_EFF_IM_ACID_MASK, 0U },
-        { TR_BRAND_ELEC, RFR_EFF_IM_ELEC_MASK, 0U },
-        { TR_BRAND_FIRE, RFR_EFF_IM_FIRE_MASK, RF3_HURT_FIRE },
-        { TR_BRAND_COLD, RFR_EFF_IM_COLD_MASK, RF3_HURT_COLD },
-        { TR_BRAND_POIS, RFR_EFF_IM_POIS_MASK, 0U },
+        { TR_BRAND_ACID, RFR_EFF_IM_ACID_MASK, MonsterResistanceType::MAX },
+        { TR_BRAND_ELEC, RFR_EFF_IM_ELEC_MASK, MonsterResistanceType::MAX },
+        { TR_BRAND_FIRE, RFR_EFF_IM_FIRE_MASK, MonsterResistanceType::HURT_FIRE },
+        { TR_BRAND_COLD, RFR_EFF_IM_COLD_MASK, MonsterResistanceType::HURT_COLD },
+        { TR_BRAND_POIS, RFR_EFF_IM_POISON_MASK, MonsterResistanceType::MAX },
     };
 
     auto *r_ptr = &r_info[m_ptr->r_idx];
@@ -107,18 +108,18 @@ MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, 
             continue;
 
         /* Notice immunity */
-        if (r_ptr->flagsr & p->resist_mask) {
+        if (r_ptr->resistance_flags.has_any_of(p->resist_mask)) {
             if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-                r_ptr->r_flagsr |= (r_ptr->flagsr & p->resist_mask);
+                r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & p->resist_mask);
             }
 
             continue;
         }
 
         /* Otherwise, take the damage */
-        if (r_ptr->flags3 & p->hurt_flag) {
+        if (r_ptr->resistance_flags.has(p->hurt_flag)) {
             if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-                r_ptr->r_flags3 |= p->hurt_flag;
+                r_ptr->r_resistance_flags.set(p->hurt_flag);
             }
 
             mult = std::max<short>(mult, 50);
@@ -147,7 +148,7 @@ MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flgs, 
  * Note that most brands and slays are x3, except Slay Animal (x2),\n
  * Slay Evil (x2), and Kill dragon (x5).\n
  */
-HIT_POINT calc_attack_damage_with_slay(PlayerType *player_ptr, ObjectType *o_ptr, HIT_POINT tdam, monster_type *m_ptr, combat_options mode, bool thrown)
+int calc_attack_damage_with_slay(PlayerType *player_ptr, ObjectType *o_ptr, int tdam, monster_type *m_ptr, combat_options mode, bool thrown)
 {
     auto flgs = object_flags(o_ptr);
     torch_flags(o_ptr, flgs); /* torches has secret flags */

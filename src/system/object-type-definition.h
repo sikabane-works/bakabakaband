@@ -9,8 +9,10 @@
 
 #include "object-enchant/tr-flags.h"
 #include "object-enchant/trc-types.h"
+#include "object-enchant/object-ego.h"
 #include "system/angband.h"
 #include "system/system-variables.h"
+#include "system/object-type-definition.h"
 #include "util/flag-group.h"
 #include <optional>
 
@@ -33,19 +35,22 @@ public:
     ITEM_NUMBER number{}; /*!< Number of items */
     WEIGHT weight{}; /*!< Item weight */
     ARTIFACT_IDX name1{}; /*!< Artifact type, if any */
-    EGO_IDX name2{}; /*!< Ego-Item type, if any */
+    EgoType name2{}; /*!< Ego-Item type, if any */
 
     RandomArtActType activation_id{}; /*!< エゴ/アーティファクトの発動ID / Extra info activation index */
     byte chest_level = 0; /*!< 箱の中身レベル */
-    int8_t captured_monster_speed = 0; /*!< 捕らえたモンスターの速度 */
-    XTRA16 xtra4{}; /*!< 複数の使用用途 光源の残り寿命、あるいは捕らえたモンスターの現HP / Extra info fuel or captured monster's current HP */
-    XTRA16 xtra5{}; /*!< 複数の使用用途 捕らえたモンスターの最大HP / Extra info captured monster's max HP */
+    uint8_t captured_monster_speed = 0; /*!< 捕らえたモンスターの速度 */
+    short captured_monster_current_hp = 0; /*!< 捕らえたモンスターの現HP */
+    short captured_monster_max_hp = 0; /*!< 捕らえたモンスターの最大HP */
+    ushort fuel = 0; /*!< 光源の残り寿命 / Extra info fuel or captured monster's current HP */
 
+    byte smith_hit = 0; /*!< 鍛冶をした結果上昇した命中値 */
+    byte smith_damage = 0; /*!< 鍛冶をした結果上昇したダメージ */
     std::optional<SmithEffectType> smith_effect; //!< 鍛冶で付与された効果
     std::optional<RandomArtActType> smith_act_idx; //!< 鍛冶で付与された発動効果のID
 
     HIT_PROB to_h{}; /*!< Plusses to hit */
-    HIT_POINT to_d{}; /*!< Plusses to damage */
+    int to_d{}; /*!< Plusses to damage */
     ARMOUR_CLASS to_a{}; /*!< Plusses to AC */
     ARMOUR_CLASS ac{}; /*!< Normal AC */
 
@@ -108,4 +113,6 @@ public:
     bool is_offerable() const;
     bool is_activatable() const;
     bool is_fuel() const;
+    bool is_glove_same_temper(const ObjectType *j_ptr) const;
+    bool can_pile(const ObjectType *j_ptr) const;
 };

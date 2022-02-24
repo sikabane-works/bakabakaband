@@ -45,7 +45,7 @@
  * this is done in two passes. -- JDL
  * </pre>
  */
-bool project_all_los(PlayerType *player_ptr, AttributeType typ, HIT_POINT dam)
+bool project_all_los(PlayerType *player_ptr, AttributeType typ, int dam)
 {
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
@@ -135,7 +135,7 @@ bool turn_undead(PlayerType *player_ptr)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 効力があった場合TRUEを返す
  */
-bool dispel_undead(PlayerType *player_ptr, HIT_POINT dam)
+bool dispel_undead(PlayerType *player_ptr, int dam)
 {
     bool tester = (project_all_los(player_ptr, AttributeType::DISP_UNDEAD, dam));
     if (tester)
@@ -148,7 +148,7 @@ bool dispel_undead(PlayerType *player_ptr, HIT_POINT dam)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 効力があった場合TRUEを返す
  */
-bool dispel_evil(PlayerType *player_ptr, HIT_POINT dam)
+bool dispel_evil(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::DISP_EVIL, dam);
 }
@@ -158,7 +158,7 @@ bool dispel_evil(PlayerType *player_ptr, HIT_POINT dam)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 効力があった場合TRUEを返す
  */
-bool dispel_good(PlayerType *player_ptr, HIT_POINT dam)
+bool dispel_good(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::DISP_GOOD, dam);
 }
@@ -168,7 +168,7 @@ bool dispel_good(PlayerType *player_ptr, HIT_POINT dam)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 効力があった場合TRUEを返す
  */
-bool dispel_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool dispel_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::DISP_ALL, dam);
 }
@@ -178,7 +178,7 @@ bool dispel_monsters(PlayerType *player_ptr, HIT_POINT dam)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 効力があった場合TRUEを返す
  */
-bool dispel_living(PlayerType *player_ptr, HIT_POINT dam)
+bool dispel_living(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::DISP_LIVING, dam);
 }
@@ -188,7 +188,7 @@ bool dispel_living(PlayerType *player_ptr, HIT_POINT dam)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 効力があった場合TRUEを返す
  */
-bool dispel_demons(PlayerType *player_ptr, HIT_POINT dam)
+bool dispel_demons(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::DISP_DEMON, dam);
 }
@@ -251,7 +251,7 @@ void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool confuse_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool confuse_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::OLD_CONF, dam);
 }
@@ -262,7 +262,7 @@ bool confuse_monsters(PlayerType *player_ptr, HIT_POINT dam)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool charm_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool charm_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::CHARM, dam);
 }
@@ -273,7 +273,7 @@ bool charm_monsters(PlayerType *player_ptr, HIT_POINT dam)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool charm_animals(PlayerType *player_ptr, HIT_POINT dam)
+bool charm_animals(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::CONTROL_ANIMAL, dam);
 }
@@ -284,7 +284,7 @@ bool charm_animals(PlayerType *player_ptr, HIT_POINT dam)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool stun_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool stun_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::STUN, dam);
 }
@@ -295,7 +295,7 @@ bool stun_monsters(PlayerType *player_ptr, HIT_POINT dam)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool stasis_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool stasis_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::STASIS, dam);
 }
@@ -306,7 +306,7 @@ bool stasis_monsters(PlayerType *player_ptr, HIT_POINT dam)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool mindblast_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool mindblast_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::PSI, dam);
 }
@@ -328,7 +328,7 @@ bool banish_monsters(PlayerType *player_ptr, int dist)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool turn_evil(PlayerType *player_ptr, HIT_POINT dam)
+bool turn_evil(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::TURN_EVIL, dam);
 }
@@ -339,7 +339,7 @@ bool turn_evil(PlayerType *player_ptr, HIT_POINT dam)
  * @param dam 効力
  * @return 作用が実際にあった場合TRUEを返す
  */
-bool turn_monsters(PlayerType *player_ptr, HIT_POINT dam)
+bool turn_monsters(PlayerType *player_ptr, int dam)
 {
     return project_all_los(player_ptr, AttributeType::TURN_ALL, dam);
 }
@@ -373,7 +373,7 @@ void probed_monster_info(char *buf, PlayerType *player_ptr, monster_type *m_ptr,
     GAME_TEXT m_name[MAX_NLEN];
     monster_desc(player_ptr, m_name, m_ptr, MD_IGNORE_HALLU | MD_INDEF_HIDDEN);
 
-    SPEED speed = m_ptr->mspeed - 110;
+    auto speed = m_ptr->mspeed - 110;
     if (monster_fast_remaining(m_ptr))
         speed += 10;
     if (monster_slow_remaining(m_ptr))
@@ -425,10 +425,10 @@ void probed_monster_info(char *buf, PlayerType *player_ptr, monster_type *m_ptr,
  */
 bool probing(PlayerType *player_ptr)
 {
-    bool cu = Term->scr->cu;
-    bool cv = Term->scr->cv;
-    Term->scr->cu = 0;
-    Term->scr->cv = 1;
+    bool cu = game_term->scr->cu;
+    bool cv = game_term->scr->cv;
+    game_term->scr->cu = 0;
+    game_term->scr->cv = 1;
 
     bool probe = false;
     char buf[256];
@@ -469,8 +469,8 @@ bool probing(PlayerType *player_ptr)
         probe = true;
     }
 
-    Term->scr->cu = cu;
-    Term->scr->cv = cv;
+    game_term->scr->cu = cu;
+    game_term->scr->cv = cv;
     term_fresh();
 
     if (probe) {

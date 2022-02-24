@@ -6,6 +6,7 @@
 #include "object/object-kind.h"
 #include "object/object-value-calc.h"
 #include "object/object-value.h"
+#include "player-base/player-race.h"
 #include "player-info/equipment-info.h"
 #include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
@@ -57,7 +58,7 @@ bool android_inside_weapon(PlayerType *player_ptr)
 void calc_android_exp(PlayerType *player_ptr)
 {
     uint32_t total_exp = 0;
-    if (player_ptr->is_dead || (player_ptr->prace != PlayerRaceType::ANDROID))
+    if (player_ptr->is_dead || !PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID))
         return;
 
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
@@ -81,7 +82,7 @@ void calc_android_exp(PlayerType *player_ptr)
             level = (level + std::max(a_info[o_ptr->name1].level - 8, 5)) / 2;
             level += std::min(20, a_info[o_ptr->name1].rarity / (a_info[o_ptr->name1].gen_flags.has(ItemGenerationTraitType::INSTA_ART) ? 10 : 3));
         } else if (o_ptr->is_ego()) {
-            level += std::max(3, (e_info[o_ptr->name2].rating - 5) / 2);
+            level += std::max(3, (e_info[enum2i<EgoType>(o_ptr->name2)].rating - 5) / 2);
         } else if (o_ptr->art_name) {
             int32_t total_flags = flag_cost(o_ptr, o_ptr->pval);
             int fake_level;

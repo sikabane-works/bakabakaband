@@ -282,7 +282,7 @@ static void invest_negative_modified_value(ObjectType *o_ptr)
         if (one_in_(o_ptr->to_d) && one_in_(o_ptr->to_h))
             break;
 
-        o_ptr->to_d -= (HIT_POINT)randint0(3);
+        o_ptr->to_d -= (int)randint0(3);
         o_ptr->to_h -= (HIT_PROB)randint0(3);
     }
 
@@ -290,7 +290,7 @@ static void invest_negative_modified_value(ObjectType *o_ptr)
         if (one_in_(o_ptr->to_d) || one_in_(o_ptr->to_h))
             break;
 
-        o_ptr->to_d -= (HIT_POINT)randint0(3);
+        o_ptr->to_d -= (int)randint0(3);
         o_ptr->to_h -= (HIT_PROB)randint0(3);
     }
 }
@@ -401,7 +401,7 @@ bool become_random_artifact(PlayerType *player_ptr, ObjectType *o_ptr, bool a_sc
 {
     o_ptr->artifact_bias = 0;
     o_ptr->name1 = 0;
-    o_ptr->name2 = 0;
+    o_ptr->name2 = EgoType::NONE;
     o_ptr->art_flags |= k_info[o_ptr->k_idx].flags;
 
     bool has_pval = o_ptr->pval != 0;

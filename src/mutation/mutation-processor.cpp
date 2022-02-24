@@ -292,9 +292,9 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         o_ptr = &player_ptr->inventory_list[INVEN_LITE];
 
         if (o_ptr->tval == ItemKindType::LITE) {
-            if (!o_ptr->is_fixed_artifact() && (o_ptr->xtra4 > 0)) {
-                hp_player(player_ptr, o_ptr->xtra4 / 20);
-                o_ptr->xtra4 /= 2;
+            if (!o_ptr->is_fixed_artifact() && (o_ptr->fuel > 0)) {
+                hp_player(player_ptr, o_ptr->fuel / 20);
+                o_ptr->fuel /= 2;
                 msg_print(_("光源からエネルギーを吸収した！", "You absorb energy from your light!"));
                 notice_lite_change(player_ptr, o_ptr);
             }
@@ -464,7 +464,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     if (player_ptr->muta.has(PlayerMutationType::SP_TO_HP) && one_in_(2000)) {
         MANA_POINT wounds = (MANA_POINT)(player_ptr->mhp - player_ptr->chp);
         if (wounds > 0) {
-            HIT_POINT healing = player_ptr->csp;
+            int healing = player_ptr->csp;
             if (healing > wounds)
                 healing = wounds;
 
@@ -475,9 +475,9 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     }
 
     if (player_ptr->muta.has(PlayerMutationType::HP_TO_SP) && !player_ptr->anti_magic && one_in_(4000)) {
-        HIT_POINT wounds = (HIT_POINT)(player_ptr->msp - player_ptr->csp);
+        int wounds = (int)(player_ptr->msp - player_ptr->csp);
         if (wounds > 0) {
-            HIT_POINT healing = player_ptr->chp;
+            int healing = player_ptr->chp;
             if (healing > wounds)
                 healing = wounds;
 
