@@ -23,7 +23,7 @@
 /*
  * The ego-item arrays
  */
-std::vector<ego_item_type> e_info;
+std::map<EgoType, ego_item_type> e_info;
 
 /*!
  * @brief アイテムのエゴをレア度の重みに合わせてランダムに選択する
@@ -35,7 +35,7 @@ std::vector<ego_item_type> e_info;
 EgoType get_random_ego(byte slot, bool good)
 {
     ProbabilityTable<EgoType> prob_table;
-    for (const auto &e_ref : e_info) {
+    for (const auto &[e_idx, e_ref] : e_info) {
         if (e_ref.idx == EgoType::NONE || e_ref.slot != slot || e_ref.rarity <= 0)
             continue;
 
@@ -204,7 +204,7 @@ void ego_invest_extra_attack(ObjectType *o_ptr, ego_item_type *e_ptr, DEPTH lev)
         return;
     }
 
-    if (o_ptr->name2 == EgoType::ATTACKS) {
+    if (o_ptr->ego_idx == EgoType::ATTACKS) {
         o_ptr->pval = randint1(e_ptr->max_pval * lev / 100 + 1);
         if (o_ptr->pval > 3)
             o_ptr->pval = 3;
@@ -236,7 +236,7 @@ void ego_invest_extra_attack(ObjectType *o_ptr, ego_item_type *e_ptr, DEPTH lev)
  */
 void apply_ego(ObjectType *o_ptr, DEPTH lev)
 {
-    auto e_ptr = &e_info[enum2i<EgoType>(o_ptr->name2)];
+    auto e_ptr = &e_info[o_ptr->ego_idx];
     auto gen_flags = e_ptr->gen_flags;
 
     ego_interpret_extra_abilities(o_ptr, e_ptr, gen_flags);
@@ -295,12 +295,12 @@ void apply_ego(ObjectType *o_ptr, DEPTH lev)
             o_ptr->to_d = std::max(o_ptr->to_d, 15);
         }
 
-        if ((o_ptr->name2 == EgoType::PROTECTION) || (o_ptr->name2 == EgoType::S_PROTECTION) || (o_ptr->name2 == EgoType::H_PROTECTION)) {
+        if ((o_ptr->ego_idx == EgoType::PROTECTION) || (o_ptr->ego_idx == EgoType::S_PROTECTION) || (o_ptr->ego_idx == EgoType::H_PROTECTION)) {
             o_ptr->to_a = std::max<short>(o_ptr->to_a, 15);
         }
 
         if (e_ptr->max_pval) {
-            if (o_ptr->name2 == EgoType::BAT) {
+            if (o_ptr->ego_idx == EgoType::BAT) {
                 o_ptr->pval = randint1(e_ptr->max_pval);
                 if (o_ptr->sval == SV_ELVEN_CLOAK)
                     o_ptr->pval += randint1(2);
@@ -318,11 +318,11 @@ void apply_ego(ObjectType *o_ptr, DEPTH lev)
             }
         }
 
-        if ((o_ptr->name2 == EgoType::SPEED) && (lev < 50)) {
+        if ((o_ptr->ego_idx == EgoType::SPEED) && (lev < 50)) {
             o_ptr->pval = randint1(o_ptr->pval);
         }
 
-        if ((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_HAYABUSA) && (o_ptr->pval > 2) && (o_ptr->name2 != EgoType::ATTACKS))
+        if ((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_HAYABUSA) && (o_ptr->pval > 2) && (o_ptr->ego_idx != EgoType::ATTACKS))
             o_ptr->pval = 2;
     }
 }
