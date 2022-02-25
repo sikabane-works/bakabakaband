@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -271,7 +272,7 @@ struct ego_item_type {
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::vector<ego_item_type> e_info;
+extern std::map<EgoType, ego_item_type> e_info;
 
 class ObjectType;
 class PlayerType;

@@ -62,8 +62,8 @@
 static void decide_activation_level(ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->is_fixed_artifact()) {
-        ae_ptr->lev = a_info[ae_ptr->o_ptr->name1].level;
-        ae_ptr->broken = a_info[ae_ptr->o_ptr->name1].broken_rate;
+        ae_ptr->lev = a_info[ae_ptr->o_ptr->fixed_artifact_idx].level;
+        ae_ptr->broken = a_info[ae_ptr->o_ptr->fixed_artifact_idx].broken_rate;
         return;
     }
 
@@ -77,8 +77,8 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->is_ego()) {
-        ae_ptr->lev = e_info[enum2i<EgoType>(ae_ptr->o_ptr->name2)].level;
-        ae_ptr->broken = e_info[enum2i<EgoType>(ae_ptr->o_ptr->name2)].broken_rate;
+        ae_ptr->lev = e_info[ae_ptr->o_ptr->ego_idx].level;
+        ae_ptr->broken = e_info[ae_ptr->o_ptr->ego_idx].broken_rate;
     }
 }
 
@@ -302,7 +302,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
     ae_type tmp_ae;
     ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, item);
 
-    if (ae_ptr->o_ptr->name2 == EgoType::SHATTERED || ae_ptr->o_ptr->name2 == EgoType::BLASTED) {
+    if (ae_ptr->o_ptr->ego_idx == EgoType::SHATTERED || ae_ptr->o_ptr->ego_idx == EgoType::BLASTED) {
         msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
         return;
     }

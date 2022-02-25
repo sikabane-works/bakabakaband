@@ -100,7 +100,7 @@ void apply_magic_to_object(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH lev,
 
     if (mode & (AM_GREAT | AM_SPECIAL))
         rolls = 4;
-    if ((mode & AM_NO_FIXED_ART) || o_ptr->name1)
+    if ((mode & AM_NO_FIXED_ART) || o_ptr->fixed_artifact_idx)
         rolls = 0;
 
     for (int i = 0; i < rolls; i++) {
@@ -128,22 +128,14 @@ void apply_magic_to_object(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH lev,
     case ItemKindType::SHOT:
     case ItemKindType::ARROW:
     case ItemKindType::BOLT:
-        if (power != 0) {
-            WeaponEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
-        }
-
+        WeaponEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
         break;
     case ItemKindType::POLEARM:
-        if ((power != 0) && (o_ptr->sval != SV_DEATH_SCYTHE)) {
-            WeaponEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
-        }
-
+        WeaponEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
         break;
     case ItemKindType::SWORD:
-        if ((power != 0) && (o_ptr->sval != SV_POISON_NEEDLE)) {
-            WeaponEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
-        }
-
+        // @todo いずれSwordEnchanter等作って分離する.
+        WeaponEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
         break;
     case ItemKindType::SHIELD:
         ShieldEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
@@ -163,6 +155,7 @@ void apply_magic_to_object(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH lev,
     case ItemKindType::DRAG_ARMOR:
     case ItemKindType::HARD_ARMOR:
     case ItemKindType::SOFT_ARMOR:
+        // @todo いずれSoftArmorEnchanter等作って分離する.
         ArmorEnchanter(player_ptr, o_ptr, lev, power).apply_magic();
         break;
     case ItemKindType::GLOVES:
@@ -178,18 +171,8 @@ void apply_magic_to_object(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH lev,
         LiteEnchanter(player_ptr, o_ptr, power).apply_magic();
         break;
     default:
-        apply_magic_others(player_ptr, o_ptr);
+        OtherItemsEnchanter(player_ptr, o_ptr).apply_magic();
         break;
-    }
-
-    if ((o_ptr->tval == ItemKindType::SOFT_ARMOR) && (o_ptr->sval == SV_ABUNAI_MIZUGI) && (player_ptr->ppersonality == PERSONALITY_SEXY)) {
-        o_ptr->pval = 3;
-        o_ptr->art_flags.set(TR_STR);
-        o_ptr->art_flags.set(TR_INT);
-        o_ptr->art_flags.set(TR_WIS);
-        o_ptr->art_flags.set(TR_DEX);
-        o_ptr->art_flags.set(TR_CON);
-        o_ptr->art_flags.set(TR_CHR);
     }
 
     if (o_ptr->is_ego()) {
