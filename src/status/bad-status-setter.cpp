@@ -23,6 +23,7 @@
 #include "timed-effect/timed-effects.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -281,8 +282,9 @@ bool BadStatusSetter::paralysis(const TIME_EFFECT tmp_v)
         return false;
     }
 
+    auto paralysis = this->player_ptr->effects()->paralysis();
     if (v > 0) {
-        if (!this->player_ptr->paralyzed) {
+        if (!paralysis->is_paralyzed()) {
             msg_print(_("体が麻痺してしまった！", "You are paralyzed!"));
             reset_concentration(this->player_ptr, true);
 
@@ -295,13 +297,13 @@ bool BadStatusSetter::paralysis(const TIME_EFFECT tmp_v)
             notice = true;
         }
     } else {
-        if (this->player_ptr->paralyzed) {
+        if (paralysis->is_paralyzed()) {
             msg_print(_("やっと動けるようになった。", "You can move again."));
             notice = true;
         }
     }
 
-    this->player_ptr->paralyzed = v;
+    paralysis->set(v);
     this->player_ptr->redraw |= PR_STATUS;
     if (!notice) {
         return false;
@@ -318,7 +320,7 @@ bool BadStatusSetter::paralysis(const TIME_EFFECT tmp_v)
 
 bool BadStatusSetter::mod_paralysis(const TIME_EFFECT tmp_v)
 {
-    return this->paralysis(this->player_ptr->paralyzed + tmp_v);
+    return this->paralysis(this->player_ptr->effects()->paralysis()->current() + tmp_v);
 }
 
 /*!
