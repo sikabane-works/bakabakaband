@@ -14,6 +14,7 @@
 
 #include <array>
 #include <map>
+#include <string>
 
 enum class INCIDENT {
     WALK = 0,
@@ -218,7 +219,7 @@ public:
     ClassSpecificData class_specific_data;
 
     int player_hp[PY_MAX_LEVEL]{};
-    char died_from[MAX_MONSTER_NAME]{}; /* What killed the player */
+    std::string died_from{}; /* What killed the player */
     concptr last_message{}; /* Last message on death or retirement */
     char history[4][60]{}; /* Textual "history" for the Player */
 

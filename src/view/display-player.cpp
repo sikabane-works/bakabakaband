@@ -189,9 +189,9 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
 
     if (!floor_ptr->dun_level) {
 #ifdef JP
-        return std::string(format("…あなたは%sで%sに殺されて飽きた。", map_name(player_ptr), player_ptr->died_from));
+        return std::string(format("…あなたは%sで%sに殺されて飽きた。", map_name(player_ptr), player_ptr->died_from.c_str()));
 #else
-        return std::string(format("...You were killed by %s in %s and got tired.", player_ptr->died_from, map_name(player_ptr)));
+        return std::string(format("...You were killed by %s in %s and got tired.", player_ptr->died_from.c_str(), map_name(player_ptr)));
 #endif
     }
 
@@ -201,16 +201,16 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
         init_flags = INIT_NAME_ONLY;
         parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
 #ifdef JP
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺されて飽きた。。", quest_map[floor_ptr->quest_number].name, player_ptr->died_from));
+        return std::string(format("…あなたは、クエスト「%s」で%sに殺されて飽きた。。", quest_map[floor_ptr->quest_number].name, player_ptr->died_from.c_str()));
 #else
-        return std::string(format("...You were killed by %s in the quest '%s' and got tired.", player_ptr->died_from, quest_map[floor_ptr->quest_number].name));
+        return std::string(format("...You were killed by %s in the quest '%s' and got tired.", player_ptr->died_from.c_str(), quest_map[floor_ptr->quest_number].name));
 #endif
     }
 
 #ifdef JP
-    return std::string(format("…あなたは、%sの%d階で%sに殺されて飽きた。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from));
+    return std::string(format("…あなたは、%sの%d階で%sに殺されて飽きた。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from.c_str()));
 #else
-    return std::string(format("...You were killed by %s on level %d of %s and got tired.", player_ptr->died_from, floor_ptr->dun_level, map_name(player_ptr)));
+    return std::string(format("...You were killed by %s on level %d of %s and got tired.", player_ptr->died_from.c_str(), floor_ptr->dun_level, map_name(player_ptr)));
 #endif
 }
 
