@@ -19,6 +19,7 @@
 #include "status/base-status.h"
 #include "status/buff-setter.h"
 #include "system/player-type-definition.h"
+#include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
@@ -27,6 +28,7 @@
 
 BadStatusSetter::BadStatusSetter(PlayerType *player_ptr)
     : player_ptr(player_ptr)
+    , player_confusion(player_ptr->effects()->confusion())
 {
 }
 
@@ -47,8 +49,8 @@ bool BadStatusSetter::blindness(const TIME_EFFECT tmp_v)
     if (this->player_ptr->is_dead) {
         return false;
     }
-    
-    PlayerRace pr(player_ptr);    
+
+    PlayerRace pr(player_ptr);
     if (v > 0) {
         if (!this->player_ptr->blind) {
             if (pr.equals(PlayerRaceType::ANDROID)) {
@@ -107,8 +109,9 @@ bool BadStatusSetter::confusion(const TIME_EFFECT tmp_v)
         return false;
     }
 
+    auto is_confused = this->player_confusion->is_confused();
     if (v > 0) {
-        if (!this->player_ptr->confused) {
+        if (!is_confused) {
             msg_print(_("あなたは混乱した！", "You are confused!"));
 
             if (this->player_ptr->action == ACTION_LEARN) {
@@ -143,14 +146,14 @@ bool BadStatusSetter::confusion(const TIME_EFFECT tmp_v)
             chg_virtue(this->player_ptr, V_HARMONY, -1);
         }
     } else {
-        if (this->player_ptr->confused) {
+        if (is_confused) {
             msg_print(_("やっと混乱がおさまった。", "You feel less confused now."));
             this->player_ptr->special_attack &= ~(ATTACK_SUIKEN);
             notice = true;
         }
     }
 
-    this->player_ptr->confused = v;
+    this->player_confusion->set(v);
     this->player_ptr->redraw |= PR_STATUS;
     if (!notice) {
         return false;
@@ -166,7 +169,7 @@ bool BadStatusSetter::confusion(const TIME_EFFECT tmp_v)
 
 bool BadStatusSetter::mod_confusion(const TIME_EFFECT tmp_v)
 {
-    return this->confusion(this->player_ptr->confused + tmp_v);
+    return this->confusion(this->player_confusion->current() + tmp_v);
 }
 
 /*!
@@ -507,7 +510,7 @@ bool BadStatusSetter::process_stun_effect(const short v)
         this->process_stun_status(new_rank, v);
         return true;
     }
-    
+
     if (new_rank < old_rank) {
         this->clear_head();
         return true;
@@ -572,7 +575,7 @@ void BadStatusSetter::decrease_int_wis(const short v)
         if (has_sustain_int(this->player_ptr) == 0) {
             (void)do_dec_stat(this->player_ptr, A_INT);
         }
-        
+
         return;
     case 3:
     case 4:
@@ -628,8 +631,8 @@ void BadStatusSetter::stop_blooding(const PlayerCutRank new_rank)
     }
 
     auto blood_stop_mes = PlayerRace(this->player_ptr).equals(PlayerRaceType::ANDROID)
-        ? _("怪我が直った", "leaking fluid")
-        : _("出血が止まった", "bleeding");
+                              ? _("怪我が直った", "leaking fluid")
+                              : _("出血が止まった", "bleeding");
     msg_format(_("やっと%s。", "You are no longer %s."), blood_stop_mes);
     if (disturb_state) {
         disturb(this->player_ptr, false, false);

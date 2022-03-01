@@ -85,15 +85,17 @@ static int show_killing_monster(PlayerType *player_ptr, char *buf, char *tomb_me
     shape_buffer(player_ptr->died_from, GRAVE_LINE_WIDTH + 1, tomb_message, tomb_message_size);
     char *t;
     t = tomb_message + strlen(tomb_message) + 1;
-    if (!*t)
+    if (!*t) {
         return 0;
+    }
 
     char killer[MAX_MONSTER_NAME];
     strcpy(killer, t); /* 2nd line */
     if (*(t + strlen(t) + 1)) /* Does 3rd line exist? */
     {
-        for (t = killer + strlen(killer) - 2; iskanji(*(t - 1)); t--) /* Loop */
+        for (t = killer + strlen(killer) - 2; iskanji(*(t - 1)); t--) { /* Loop */
             ;
+        }
         strcpy(t, "…");
     } else if (angband_strstr(tomb_message, "『") && suffix(killer, "』")) {
         char killer2[MAX_MONSTER_NAME];
@@ -127,8 +129,9 @@ static int show_killing_monster(PlayerType *player_ptr, char *buf, char *tomb_me
  */
 static void show_dead_place(PlayerType *player_ptr, char *buf, char *tomb_message, int extra_line)
 {
-    if (streq(player_ptr->died_from, "ripe") || streq(player_ptr->died_from, "Seppuku"))
+    if (streq(player_ptr->died_from, "ripe") || streq(player_ptr->died_from, "Seppuku")) {
         return;
+    }
 
     if (wc_ptr->is_blown_away())
     {
@@ -200,8 +203,9 @@ static void show_tomb_detail(PlayerType *player_ptr, char *buf)
     char *t;
     put_str(buf, 15, 11);
     t = tomb_message + strlen(tomb_message) + 1;
-    if (!*t)
+    if (!*t) {
         return;
+    }
 
     char killer[MAX_MONSTER_NAME];
     strcpy(killer, t); /* 2nd line */
@@ -267,8 +271,9 @@ static void inventory_aware(PlayerType *player_ptr)
     ObjectType *o_ptr;
     for (int i = 0; i < INVEN_TOTAL; i++) {
         o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx)
+        if (!o_ptr->k_idx) {
             continue;
+        }
 
         object_aware(player_ptr, o_ptr);
         object_known(o_ptr);
@@ -287,8 +292,9 @@ static void home_aware(PlayerType *player_ptr)
         store_ptr = &town_info[i].store[enum2i(StoreSaleType::HOME)];
         for (int j = 0; j < store_ptr->stock_num; j++) {
             o_ptr = &store_ptr->stock[j];
-            if (!o_ptr->k_idx)
+            if (!o_ptr->k_idx) {
                 continue;
+            }
 
             object_aware(player_ptr, o_ptr);
             object_known(o_ptr);
@@ -307,8 +313,9 @@ static bool show_dead_player_items(PlayerType *player_ptr)
         term_clear();
         (void)show_equipment(player_ptr, 0, USE_FULL, AllMatchItemTester());
         prt(_("装備していたアイテム: -続く-", "You are using: -more-"), 0, 0);
-        if (inkey() == ESCAPE)
+        if (inkey() == ESCAPE) {
             return true;
+        }
     }
 
     if (player_ptr->inven_cnt) {
@@ -316,8 +323,9 @@ static bool show_dead_player_items(PlayerType *player_ptr)
         (void)show_inventory(player_ptr, 0, USE_FULL, AllMatchItemTester());
         prt(_("持っていたアイテム: -続く-", "You are carrying: -more-"), 0, 0);
 
-        if (inkey() == ESCAPE)
+        if (inkey() == ESCAPE) {
             return true;
+        }
     }
 
     return false;
@@ -332,8 +340,9 @@ static void show_dead_home_items(PlayerType *player_ptr)
     for (int l = 1; l < max_towns; l++) {
         store_type *store_ptr;
         store_ptr = &town_info[l].store[enum2i(StoreSaleType::HOME)];
-        if (store_ptr->stock_num == 0)
+        if (store_ptr->stock_num == 0) {
             continue;
+        }
 
         for (int i = 0, k = 0; i < store_ptr->stock_num; k++) {
             term_clear();
@@ -349,8 +358,9 @@ static void show_dead_home_items(PlayerType *player_ptr)
             }
 
             prt(format(_("我が家に置いてあったアイテム ( %d ページ): -続く-", "Your home contains (page %d): -more-"), k + 1), 0, 0);
-            if (inkey() == ESCAPE)
+            if (inkey() == ESCAPE) {
                 return;
+            }
         }
     }
 }
@@ -368,10 +378,12 @@ static void export_player_info(PlayerType *player_ptr)
         char out_val[160];
         put_str(_("ファイルネーム: ", "Filename: "), 23, 0);
         strcpy(out_val, "");
-        if (!askfor(out_val, 60))
+        if (!askfor(out_val, 60)) {
             return;
-        if (!out_val[0])
+        }
+        if (!out_val[0]) {
             break;
+        }
 
         screen_save();
         (void)file_character(player_ptr, out_val);
@@ -413,16 +425,19 @@ void show_death_info(PlayerType *player_ptr)
     flush();
     msg_erase();
 
-    if (auto_dump)
+    if (auto_dump) {
         file_character_auto(player_ptr);
+    }
 
     export_player_info(player_ptr);
     (void)display_player(player_ptr, 0);
     prt(_("何かキーを押すとさらに情報が続きます (ESCで中断): ", "Hit any key to see more information (ESC to abort): "), 23, 0);
-    if (inkey() == ESCAPE)
+    if (inkey() == ESCAPE) {
         return;
-    if (show_dead_player_items(player_ptr))
+    }
+    if (show_dead_player_items(player_ptr)) {
         return;
+    }
 
     show_dead_home_items(player_ptr);
 }

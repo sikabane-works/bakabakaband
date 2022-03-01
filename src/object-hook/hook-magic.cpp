@@ -41,8 +41,9 @@ bool object_is_activatable(const ObjectType *o_ptr)
  */
 bool item_tester_hook_use(PlayerType *player_ptr, const ObjectType *o_ptr)
 {
-    if (o_ptr->tval == player_ptr->tval_ammo)
+    if (o_ptr->tval == player_ptr->tval_ammo) {
         return true;
+    }
 
     switch (o_ptr->tval) {
     case ItemKindType::SPIKE:
@@ -61,8 +62,9 @@ bool item_tester_hook_use(PlayerType *player_ptr, const ObjectType *o_ptr)
         for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
             if (&player_ptr->inventory_list[i] == o_ptr) {
                 auto flags = object_flags(o_ptr);
-                if (flags.has(TR_ACTIVATE))
+                if (flags.has(TR_ACTIVATE)) {
                     return true;
+                }
             }
         }
 
@@ -87,16 +89,17 @@ bool item_tester_learn_spell(PlayerType *player_ptr, const ObjectType *o_ptr)
         }
     }
 
-    if ((o_ptr->tval < ItemKindType::LIFE_BOOK) || (o_ptr->tval > ItemKindType::HEX_BOOK))
+    if ((o_ptr->tval < ItemKindType::LIFE_BOOK) || (o_ptr->tval > ItemKindType::HEX_BOOK)) {
         return false;
+    }
 
-    if ((o_ptr->tval == ItemKindType::MUSIC_BOOK) && pc.equals(PlayerClassType::BARD))
+    if ((o_ptr->tval == ItemKindType::MUSIC_BOOK) && pc.equals(PlayerClassType::BARD)) {
         return true;
-    else if (!is_magic(tval2realm(o_ptr->tval)))
+    } else if (!is_magic(tval2realm(o_ptr->tval))) {
         return false;
+    }
 
-    return (get_realm1_book(player_ptr) == o_ptr->tval) || (get_realm2_book(player_ptr) == o_ptr->tval)
-        || (choices & (0x0001U << (tval2realm(o_ptr->tval) - 1)));
+    return (get_realm1_book(player_ptr) == o_ptr->tval) || (get_realm2_book(player_ptr) == o_ptr->tval) || (choices & (0x0001U << (tval2realm(o_ptr->tval) - 1)));
 }
 
 /*!
@@ -106,13 +109,12 @@ bool item_tester_learn_spell(PlayerType *player_ptr, const ObjectType *o_ptr)
  */
 bool item_tester_high_level_book(const ObjectType *o_ptr)
 {
-    if ((o_ptr->tval == ItemKindType::LIFE_BOOK) || (o_ptr->tval == ItemKindType::SORCERY_BOOK) || (o_ptr->tval == ItemKindType::NATURE_BOOK) || (o_ptr->tval == ItemKindType::CHAOS_BOOK)
-        || (o_ptr->tval == ItemKindType::DEATH_BOOK) || (o_ptr->tval == ItemKindType::TRUMP_BOOK) || (o_ptr->tval == ItemKindType::CRAFT_BOOK) || (o_ptr->tval == ItemKindType::DEMON_BOOK)
-        || (o_ptr->tval == ItemKindType::CRUSADE_BOOK) || (o_ptr->tval == ItemKindType::MUSIC_BOOK) || (o_ptr->tval == ItemKindType::HEX_BOOK)) {
-        if (o_ptr->sval > 1)
+    if ((o_ptr->tval == ItemKindType::LIFE_BOOK) || (o_ptr->tval == ItemKindType::SORCERY_BOOK) || (o_ptr->tval == ItemKindType::NATURE_BOOK) || (o_ptr->tval == ItemKindType::CHAOS_BOOK) || (o_ptr->tval == ItemKindType::DEATH_BOOK) || (o_ptr->tval == ItemKindType::TRUMP_BOOK) || (o_ptr->tval == ItemKindType::CRAFT_BOOK) || (o_ptr->tval == ItemKindType::DEMON_BOOK) || (o_ptr->tval == ItemKindType::CRUSADE_BOOK) || (o_ptr->tval == ItemKindType::MUSIC_BOOK) || (o_ptr->tval == ItemKindType::HEX_BOOK)) {
+        if (o_ptr->sval > 1) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     return false;

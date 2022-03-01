@@ -275,8 +275,9 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
  */
 bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    if (o_ptr->tval != ItemKindType::FOOD)
+    if (o_ptr->tval != ItemKindType::FOOD) {
         return false;
+    }
 
     BadStatusSetter bss(player_ptr);
     switch (o_ptr->sval) {
@@ -536,8 +537,9 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
  */
 bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ObjectType *o_ptr, INVENTORY_IDX item)
 {
-    if (o_ptr->tval != ItemKindType::STAFF && o_ptr->tval != ItemKindType::WAND)
+    if (o_ptr->tval != ItemKindType::STAFF && o_ptr->tval != ItemKindType::WAND) {
         return false;
+    }
 
     if (PlayerRace(player_ptr).food() == PlayerRaceFoodType::MANA) {
         concptr staff;
@@ -604,8 +606,9 @@ bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ObjectType *o_ptr, I
  */
 void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
 {
-    if (music_singing_any(player_ptr))
+    if (music_singing_any(player_ptr)) {
         stop_singing(player_ptr);
+    }
 
     SpellHex spell_hex(player_ptr);
     if (spell_hex.is_spelling_any()) {
@@ -649,8 +652,9 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     /* We have tried it */
-    if (o_ptr->tval == ItemKindType::FOOD)
+    if (o_ptr->tval == ItemKindType::FOOD) {
         object_tried(o_ptr);
+    }
 
     /* The player is now aware of the object */
     if (ident && !o_ptr->is_aware()) {
@@ -754,8 +758,9 @@ void do_cmd_eat_food(PlayerType *player_ptr)
     q = _("どれを食べますか? ", "Eat which item? ");
     s = _("食べ物がない。", "You have nothing to eat.");
 
-    if (!choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR)))
+    if (!choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR))) {
         return;
+    }
 
     exe_eat_food(player_ptr, item);
 }

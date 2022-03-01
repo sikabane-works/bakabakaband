@@ -51,8 +51,9 @@ static concptr item_activation_dragon_breath(ObjectType *o_ptr)
 
     for (int i = 0; dragonbreath_info[i].flag != 0; i++) {
         if (flgs.has(dragonbreath_info[i].flag)) {
-            if (n > 0)
+            if (n > 0) {
                 strcat(desc, _("、", ", "));
+            }
 
             strcat(desc, dragonbreath_info[i].name);
             n++;
@@ -83,19 +84,22 @@ static concptr item_activation_aux(ObjectType *o_ptr)
     case RandomArtActType::NONE:
         break;
     case RandomArtActType::BR_FIRE:
-        if ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_FLAMES))
+        if ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_FLAMES)) {
             desc = _("火炎のブレス (200) と火への耐性", "breathe fire (200) and resist fire");
+        }
         break;
     case RandomArtActType::BR_COLD:
-        if ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_ICE))
+        if ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_ICE)) {
             desc = _("冷気のブレス (200) と冷気への耐性", "breathe cold (200) and resist cold");
+        }
         break;
     case RandomArtActType::BR_DRAGON:
         desc = item_activation_dragon_breath(o_ptr);
         break;
     case RandomArtActType::AGGRAVATE:
-        if (o_ptr->fixed_artifact_idx == ART_HYOUSIGI)
+        if (o_ptr->fixed_artifact_idx == ART_HYOUSIGI) {
             desc = _("拍子木を打ちならす", "beat wooden clappers");
+        }
         break;
     case RandomArtActType::ACID_BALL_AND_RESISTANCE:
         desc = _("アシッド・ボール (100) と酸への耐性", "ball of acid (100) and resist acid");
@@ -177,8 +181,9 @@ static concptr item_activation_aux(ObjectType *o_ptr)
 concptr activation_explanation(ObjectType *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
-    if (!flgs.has(TR_ACTIVATE) && !flgs.has(TR_INVEN_ACTIVATE))
+    if (!flgs.has(TR_ACTIVATE) && !flgs.has(TR_INVEN_ACTIVATE)) {
         return (_("なし", "nothing"));
+    }
 
     if (activation_index(o_ptr) > RandomArtActType::NONE) {
         return item_activation_aux(o_ptr);
@@ -236,27 +241,32 @@ int16_t wield_slot(PlayerType *player_ptr, const ObjectType *o_ptr)
     case ItemKindType::HAFTED:
     case ItemKindType::POLEARM:
     case ItemKindType::SWORD: {
-        if (!player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
+        if (!player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx) {
             return INVEN_MAIN_HAND;
-        if (player_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
+        }
+        if (player_ptr->inventory_list[INVEN_SUB_HAND].k_idx) {
             return INVEN_MAIN_HAND;
+        }
         return INVEN_SUB_HAND;
     }
     case ItemKindType::CAPTURE:
     case ItemKindType::CARD:
     case ItemKindType::SHIELD: {
-        if (!player_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
+        if (!player_ptr->inventory_list[INVEN_SUB_HAND].k_idx) {
             return INVEN_SUB_HAND;
-        if (player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
+        }
+        if (player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx) {
             return INVEN_SUB_HAND;
+        }
         return INVEN_MAIN_HAND;
     }
     case ItemKindType::BOW: {
         return INVEN_BOW;
     }
     case ItemKindType::RING: {
-        if (!player_ptr->inventory_list[INVEN_MAIN_RING].k_idx)
+        if (!player_ptr->inventory_list[INVEN_MAIN_RING].k_idx) {
             return INVEN_MAIN_RING;
+        }
 
         return INVEN_SUB_RING;
     }
@@ -302,15 +312,17 @@ int16_t wield_slot(PlayerType *player_ptr, const ObjectType *o_ptr)
  */
 bool check_book_realm(PlayerType *player_ptr, const ItemKindType book_tval, const OBJECT_SUBTYPE_VALUE book_sval)
 {
-    if (book_tval < ItemKindType::LIFE_BOOK)
+    if (book_tval < ItemKindType::LIFE_BOOK) {
         return false;
+    }
 
     PlayerClass pc(player_ptr);
     if (pc.equals(PlayerClassType::SORCERER)) {
         return is_magic(tval2realm(book_tval));
     } else if (pc.equals(PlayerClassType::RED_MAGE)) {
-        if (is_magic(tval2realm(book_tval)))
+        if (is_magic(tval2realm(book_tval))) {
             return ((book_tval == ItemKindType::ARCANE_BOOK) || (book_sval < 2));
+        }
     }
 
     return (get_realm1_book(player_ptr) == book_tval) || (get_realm2_book(player_ptr) == book_tval);

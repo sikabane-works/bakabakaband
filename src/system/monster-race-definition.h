@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "alliance/alliance.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-types.h"
 #include "monster-race/monster-aura-types.h"
@@ -9,7 +10,6 @@
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "system/angband.h"
-#include "alliance/alliance.h"
 #include "util/flag-group.h"
 #include <string>
 #include <tuple>
@@ -17,7 +17,8 @@
 /*! モンスターが1ターンに攻撃する最大回数 (射撃を含む) / The maximum number of times a monster can attack in a turn (including SHOOT) */
 constexpr int MAX_NUM_BLOWS = 4;
 
-struct monster_blow {
+class MonsterBlow {
+public:
     RaceBlowMethodType method{};
     RaceBlowEffectType effect{};
     DICE_NUMBER d_dice{};
@@ -74,7 +75,7 @@ struct monster_race {
     EnumClassFlagGroup<MonsterVisualType> visual_flags; //!< 能力フラグ（シンボル） / Symbol Flags
     EnumClassFlagGroup<MonsterKindType> kind_flags; //!< 能力フラグ（種族・徳） / Attr Flags
     EnumClassFlagGroup<MonsterResistanceType> resistance_flags; //!< 耐性フラグ / Flags R (resistances info)
-    monster_blow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
+    MonsterBlow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
     std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces;
     std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
@@ -91,9 +92,9 @@ struct monster_race {
     DEPTH level{}; //!< レベル / Level of creature
     RARITY rarity{}; //!< レアリティ / Rarity of creature
     TERM_COLOR d_attr{}; //!< デフォルトの表示色 / Default monster attribute
-    SYMBOL_CODE d_char{}; //!< デフォルトの表示文字 / Default monster character
+    char d_char{}; //!< デフォルトの表示文字 / Default monster character
     TERM_COLOR x_attr{}; //!< 設定した表示色(またはタイル位置Y) / Desired monster attribute
-    SYMBOL_CODE x_char{}; //!< 設定した表示文字(またはタイル位置X) / Desired monster character
+    char x_char{}; //!< 設定した表示文字(またはタイル位置X) / Desired monster character
     MONSTER_NUMBER max_num{}; //!< 動員基本最大数
     MONSTER_NUMBER mob_num{}; //!< 動員可能数
     MONSTER_NUMBER cur_num{}; //!< 階に現在いる数 / Monster population on current level

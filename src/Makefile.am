@@ -915,6 +915,7 @@ hengband_SOURCES = \
 	term/z-term.cpp term/z-term.h term/z-util.cpp term/z-util.h \
 	term/z-virt.cpp term/z-virt.h \
 	\
+	timed-effect/player-confusion.cpp timed-effect/player-confusion.h \
 	timed-effect/player-cut.cpp timed-effect/player-cut.h \
 	timed-effect/player-stun.cpp timed-effect/player-stun.h \
 	timed-effect/timed-effects.cpp timed-effect/timed-effects.h \
@@ -1017,7 +1018,7 @@ EXTRA_DIST = \
 DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src
 CPPFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS)
 if PCH
-CPPFLAGS += -include stdafx.h
+CPPFLAGS += -include ../src/stdafx.h
 endif
 LIBS += $(XFT_LIBS) $(libcurl_LIBS)
 COMPILE = $(srcdir)/gcc-wrap $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -1042,3 +1043,4 @@ endif
 
 clean-local:
 	-rm stdafx.h.gch stdafx.h.gch.sum
+	-rm -rf ../build

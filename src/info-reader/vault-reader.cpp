@@ -1,10 +1,10 @@
 ﻿#include "info-reader/vault-reader.h"
-#include "main/angband-headers.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/parse-error-types.h"
+#include "main/angband-headers.h"
 #include "monster-race/monster-race.h"
-#include "system/monster-race-definition.h"
 #include "room/rooms-vault.h"
+#include "system/monster-race-definition.h"
 #include "util/string-processor.h"
 
 /*!
@@ -21,14 +21,17 @@ errr parse_v_info(std::string_view buf, angband_header *)
 
     if (tokens[0] == "N") {
         // N:index:name
-        if (tokens.size() < 3)
+        if (tokens.size() < 3) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-        if (tokens[1].size() == 0 || tokens[2].size() == 0)
+        }
+        if (tokens[1].size() == 0 || tokens[2].size() == 0) {
             return PARSE_ERROR_GENERIC;
+        }
 
         auto i = std::stoi(tokens[1]);
-        if (i < error_idx)
+        if (i < error_idx) {
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
+        }
         if (i >= static_cast<int>(v_info.size())) {
             v_info.resize(i + 1);
         }
@@ -41,14 +44,16 @@ errr parse_v_info(std::string_view buf, angband_header *)
         return PARSE_ERROR_MISSING_RECORD_HEADER;
     } else if (tokens[0] == "D") {
         // D:MapText
-        if (tokens.size() < 2 || tokens[1].size() == 0)
+        if (tokens.size() < 2 || tokens[1].size() == 0) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
 
         v_ptr->text.append(buf.substr(2));
     } else if (tokens[0] == "X") {
         // X:type:rate:height:width
-        if (tokens.size() < 5)
+        if (tokens.size() < 5) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
 
         info_set_value(v_ptr->typ, tokens[1]);
         info_set_value(v_ptr->rat, tokens[2]);
@@ -79,22 +84,20 @@ errr parse_v_info(std::string_view buf, angband_header *)
                 const auto &s_tokens = str_split(f, '_', false);
 
                 if (s_tokens.size() == 2 && s_tokens[0] == "MONSTER") {
-                    for(const auto &r_ptr : r_info) {
-                       if (s_tokens[1] == r_ptr.tag)
-                       {
-                           v_ptr->place_monster_list[c] = r_ptr.idx;
-                           break;
-                       }
+                    for (const auto &r_ptr : r_info) {
+                        if (s_tokens[1] == r_ptr.tag) {
+                            v_ptr->place_monster_list[c] = r_ptr.idx;
+                            break;
+                        }
                     }
-                    if(v_ptr->place_monster_list.count(c) == 0) {
+                    if (v_ptr->place_monster_list.count(c) == 0) {
                         info_set_value(v_ptr->place_monster_list[c], s_tokens[1]);
                     }
                     continue;
                 }
 
                 return PARSE_ERROR_INVALID_FLAG;
-            } 
-            
+            }
         }
 
     } else if (tokens[0] == "T") {
@@ -125,9 +128,11 @@ errr parse_v_info(std::string_view buf, angband_header *)
             }
 
             return PARSE_ERROR_INVALID_FLAG;
-        } 
-    } else
+        }
+    } else {
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
+    }
+}
 
-    return PARSE_ERROR_NONE;
+return PARSE_ERROR_NONE;
 }

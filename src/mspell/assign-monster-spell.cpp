@@ -6,6 +6,8 @@
 
 #include "mspell/assign-monster-spell.h"
 #include "blue-magic/blue-magic-checker.h"
+#include "effect/attribute-types.h"
+#include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-flags8.h"
 #include "mspell/mspell-ball.h"
@@ -21,13 +23,10 @@
 #include "mspell/mspell-status.h"
 #include "mspell/mspell-summon.h"
 #include "mspell/mspell-util.h"
-#include "mspell/mspell-result.h"
-#include "effect/attribute-types.h"
-#include "system/monster-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/player-type-definition.h"
 #include "system/floor-type-definition.h"
-#include "monster-race/monster-race.h"
+#include "system/monster-race-definition.h"
+#include "system/monster-type-definition.h"
+#include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
@@ -35,9 +34,9 @@ static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, Monste
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
- 
+
     // クイルスルグは自身を中心に召喚する
-    if(any_bits(r_ptr->flags8, RF8_QUYLTHLUG)) {
+    if (any_bits(r_ptr->flags8, RF8_QUYLTHLUG)) {
         switch (ms_type) {
 
         case MonsterAbilityType::S_KIN:
@@ -62,7 +61,6 @@ static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, Monste
         default:
             break;
         }
-
     }
 
     // clang-format off
@@ -334,8 +332,9 @@ MonsterSpellResult monspell_to_player(PlayerType *player_ptr, MonsterAbilityType
     const bool player_could_see_monster = spell_learnable(player_ptr, m_idx);
 
     auto res = monspell_to_player_impl(player_ptr, ms_type, y, x, m_idx);
-    if (!player_could_see_monster)
+    if (!player_could_see_monster) {
         res.learnable = false;
+    }
 
     // 条件を満たしていればラーニングを試みる。
     if (res.valid && res.learnable) {
@@ -363,8 +362,9 @@ MonsterSpellResult monspell_to_monster(
     const bool player_could_see_monster = spell_learnable(player_ptr, m_idx);
 
     auto res = monspell_to_monster_impl(player_ptr, ms_type, y, x, m_idx, t_idx, is_special_spell);
-    if (!player_could_see_monster)
+    if (!player_could_see_monster) {
         res.learnable = false;
+    }
 
     // 条件を満たしていればラーニングを試みる。
     if (res.valid && res.learnable) {

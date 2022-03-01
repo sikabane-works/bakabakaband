@@ -71,14 +71,15 @@ static void display_initial_birth_message(PlayerType *player_ptr)
  */
 static void display_help_on_sex_select(PlayerType *player_ptr, char c)
 {
-    if (c == '?')
+    if (c == '?') {
         do_cmd_help(player_ptr);
-    else if (c == '=') {
+    } else if (c == '=') {
         screen_save();
         do_cmd_options_aux(player_ptr, OPT_PAGE_BIRTH, _("初期オプション((*)はスコアに影響)", "Birth Options ((*)) affect score"));
         screen_load();
-    } else if (c != '4' && c != '6')
+    } else if (c != '4' && c != '6') {
         bell();
+    }
 }
 
 /*!
@@ -98,9 +99,9 @@ static bool get_player_sex(PlayerType *player_ptr, char *buf)
     while (true) {
         if (cs != os) {
             put_str(cur, 12 + (os / 5), 2 + 15 * (os % 5));
-            if (cs == MAX_SEXES)
+            if (cs == MAX_SEXES) {
                 sprintf(cur, _("%c%c%s", "%c%c %s"), '*', p2, _("ランダム", "Random"));
-            else {
+            } else {
                 sp_ptr = &sex_info[cs];
                 concptr str = sp_ptr->title;
                 sprintf(cur, _("%c%c%s", "%c%c %s"), I2A(cs), p2, str);
@@ -110,17 +111,20 @@ static bool get_player_sex(PlayerType *player_ptr, char *buf)
             os = cs;
         }
 
-        if (k >= 0)
+        if (k >= 0) {
             break;
+        }
 
         sprintf(buf, _("性別を選んで下さい (%c-%c) ('='初期オプション設定): ", "Choose a sex (%c-%c) ('=' for options): "), I2A(0), I2A(1));
         put_str(buf, 10, 10);
         char c = inkey();
-        if (c == 'Q')
+        if (c == 'Q') {
             birth_quit();
+        }
 
-        if (c == 'S')
+        if (c == 'S') {
             return false;
+        }
 
         if (c == ' ' || c == '\r' || c == '\n') {
             k = cs == MAX_SEXES ? randint0(MAX_SEXES) : cs;
@@ -133,21 +137,24 @@ static bool get_player_sex(PlayerType *player_ptr, char *buf)
         }
 
         if (c == '4') {
-            if (cs > 0)
+            if (cs > 0) {
                 cs--;
+            }
         }
 
         if (c == '6') {
-            if (cs < MAX_SEXES)
+            if (cs < MAX_SEXES) {
                 cs++;
+            }
         }
 
         k = (islower(c) ? A2I(c) : -1);
         if ((k >= 0) && (k < MAX_SEXES)) {
             cs = k;
             continue;
-        } else
+        } else {
             k = -1;
+        }
 
         display_help_on_sex_select(player_ptr, c);
     }
@@ -164,22 +171,24 @@ static bool let_player_select_race(PlayerType *player_ptr)
     player_ptr->prace = PlayerRaceType::HUMAN;
     while (true) {
         char temp[80 * 10];
-        if (!get_player_race(player_ptr))
+        if (!get_player_race(player_ptr)) {
             return false;
+        }
 
         clear_from(10);
         shape_buffer(race_explanations[enum2i(player_ptr->prace)].data(), 74, temp, sizeof(temp));
         concptr t = temp;
         for (int i = 0; i < 10; i++) {
-            if (t[0] == 0)
+            if (t[0] == 0) {
                 break;
-            else {
+            } else {
                 prt(t, 12 + i, 3);
                 t += strlen(t) + 1;
             }
         }
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y))
+        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
             break;
+        }
 
         clear_from(10);
         c_put_str(TERM_WHITE, "              ", 4, 15);
@@ -194,23 +203,25 @@ static bool let_player_select_class(PlayerType *player_ptr)
     player_ptr->pclass = PlayerClassType::WARRIOR;
     while (true) {
         char temp[80 * 9];
-        if (!get_player_class(player_ptr))
+        if (!get_player_class(player_ptr)) {
             return false;
+        }
 
         clear_from(10);
         shape_buffer(class_explanations[enum2i(player_ptr->pclass)].data(), 74, temp, sizeof(temp));
         concptr t = temp;
         for (int i = 0; i < 9; i++) {
-            if (t[0] == 0)
+            if (t[0] == 0) {
                 break;
-            else {
+            } else {
                 prt(t, 12 + i, 3);
                 t += strlen(t) + 1;
             }
         }
 
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y))
+        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
             break;
+        }
 
         c_put_str(TERM_WHITE, "              ", 5, 15);
     }
@@ -223,23 +234,25 @@ static bool let_player_select_personality(PlayerType *player_ptr)
     player_ptr->ppersonality = PERSONALITY_ORDINARY;
     while (true) {
         char temp[80 * 8];
-        if (!get_player_personality(player_ptr))
+        if (!get_player_personality(player_ptr)) {
             return false;
+        }
 
         clear_from(10);
         shape_buffer(personality_explanations[player_ptr->ppersonality].data(), 74, temp, sizeof(temp));
         concptr t = temp;
         for (int i = 0; i < A_MAX; i++) {
-            if (t[0] == 0)
+            if (t[0] == 0) {
                 break;
-            else {
+            } else {
                 prt(t, 12 + i, 3);
                 t += strlen(t) + 1;
             }
         }
 
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y))
+        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
             break;
+        }
 
         c_put_str(TERM_L_BLUE, player_ptr->name, 1, 34);
         prt("", 1, 34 + strlen(player_ptr->name));
@@ -251,20 +264,25 @@ static bool let_player_select_personality(PlayerType *player_ptr)
 static bool let_player_build_character(PlayerType *player_ptr)
 {
     char buf[80];
-    if (!get_player_sex(player_ptr, buf))
+    if (!get_player_sex(player_ptr, buf)) {
         return false;
+    }
 
-    if (!let_player_select_race(player_ptr))
+    if (!let_player_select_race(player_ptr)) {
         return false;
+    }
 
-    if (!let_player_select_class(player_ptr))
+    if (!let_player_select_class(player_ptr)) {
         return false;
+    }
 
-    if (!get_player_realms(player_ptr))
+    if (!get_player_realms(player_ptr)) {
         return false;
+    }
 
-    if (!let_player_select_personality(player_ptr))
+    if (!let_player_select_personality(player_ptr)) {
         return false;
+    }
 
     PlayerClass(player_ptr).init_specific_data();
 
@@ -291,10 +309,11 @@ static void display_initial_options(PlayerType *player_ptr)
     c_put_str(TERM_L_BLUE, buf, 6, 43);
 
     put_str(_("隠密", "Stealth"), 6, 47);
-    if (PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER))
+    if (PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
         strcpy(buf, "xx");
-    else
+    } else {
         sprintf(buf, "%+2d", rp_ptr->r_stl + cp_ptr->c_stl + ap_ptr->a_stl);
+    }
     c_put_str(TERM_L_BLUE, buf, 6, _(52, 55));
 
     put_str(_("赤外線視力", "Infra"), 6, _(56, 59));
@@ -309,20 +328,22 @@ static void display_initial_options(PlayerType *player_ptr)
 
 static void display_auto_roller_success_rate(const int col)
 {
-    if (!autoroller)
+    if (!autoroller) {
         return;
+    }
 
     put_str(_("最小値", " Limit"), 2, col + 13);
     put_str(_("現在値", "  Roll"), 2, col + 24);
 
     char buf[32];
 
-    if (autoroll_chance >= 1)
+    if (autoroll_chance >= 1) {
         sprintf(buf, _("確率 :  1/%8d00", "Prob :  1/%8d00"), autoroll_chance);
-    else if (autoroll_chance == -999)
+    } else if (autoroll_chance == -999) {
         sprintf(buf, _("確率 :     不可能", "Prob :     Impossible"));
-    else
+    } else {
         sprintf(buf, _("確率 :     1/10000以上", "Prob :     >1/10000"));
+    }
     put_str(buf, 11, col + 10);
 
     put_str(_("注意 : 体格等のオートローラを併用時は、上記確率より困難です。", "Note : Prob may be lower when you use the 'autochara' option."), 22, 5);
@@ -338,20 +359,23 @@ static void display_auto_roller_success_rate(const int col)
 
 static void auto_roller_count(void)
 {
-    if (auto_round < 1000000000L)
+    if (auto_round < 1000000000L) {
         return;
+    }
 
     auto_round = 1;
-    if (!autoroller)
+    if (!autoroller) {
         return;
+    }
 
     auto_upper_round++;
 }
 
 static bool decide_initial_stat(PlayerType *player_ptr)
 {
-    if (!autoroller)
+    if (!autoroller) {
         return true;
+    }
 
     bool accept = true;
     for (int i = 0; i < A_MAX; i++) {
@@ -366,233 +390,258 @@ static bool decide_initial_stat(PlayerType *player_ptr)
 
 static bool decide_body_spec(PlayerType *player_ptr, chara_limit_type chara_limit, bool *accept)
 {
-    if (!*accept)
+    if (!*accept) {
         return false;
+    }
 
     get_ahw(player_ptr);
     get_history(player_ptr);
 
     if (autochara) {
-        if ((player_ptr->age < chara_limit.agemin) || (player_ptr->age > chara_limit.agemax))
+        if ((player_ptr->age < chara_limit.agemin) || (player_ptr->age > chara_limit.agemax)) {
             *accept = false;
-        if ((player_ptr->ht < chara_limit.htmin) || (player_ptr->ht > chara_limit.htmax))
+        }
+        if ((player_ptr->ht < chara_limit.htmin) || (player_ptr->ht > chara_limit.htmax)) {
             *accept = false;
-        if ((player_ptr->wt < chara_limit.wtmin) || (player_ptr->wt > chara_limit.wtmax))
+        }
+        if ((player_ptr->wt < chara_limit.wtmin) || (player_ptr->wt > chara_limit.wtmax)) {
             *accept = false;
-        if ((player_ptr->prestige < chara_limit.scmin) || (player_ptr->prestige > chara_limit.scmax))
-            *accept = false;
+            if ((player_ptr->prestige < chara_limit.scmin) || (player_ptr->prestige > chara_limit.scmax)) {
+                *accept = false;
+            }
+        }
+
+        return *accept;
     }
 
-    return *accept;
-}
+    static bool display_auto_roller_count(PlayerType * player_ptr, const int col)
+    {
+        if ((auto_round % AUTOROLLER_STEP) != 0) {
+            return false;
+        }
 
-static bool display_auto_roller_count(PlayerType *player_ptr, const int col)
-{
-    if ((auto_round % AUTOROLLER_STEP) != 0)
+        birth_put_stats(player_ptr);
+        if (auto_upper_round) {
+            put_str(format("%ld%09ld", auto_upper_round, auto_round), 10, col + 20);
+        } else {
+            put_str(format("%10ld", auto_round), 10, col + 20);
+        }
+        term_fresh();
+        inkey_scan = true;
+        if (inkey()) {
+            get_ahw(player_ptr);
+            get_history(player_ptr);
+            return true;
+        }
+
         return false;
+    }
 
-    birth_put_stats(player_ptr);
-    if (auto_upper_round)
-        put_str(format("%ld%09ld", auto_upper_round, auto_round), 10, col + 20);
-    else
-        put_str(format("%10ld", auto_round), 10, col + 20);
-    term_fresh();
-    inkey_scan = true;
-    if (inkey()) {
-        get_ahw(player_ptr);
-        get_history(player_ptr);
+    static void exe_auto_roller(PlayerType * player_ptr, chara_limit_type chara_limit, const int col)
+    {
+        while (autoroller || autochara) {
+            get_stats(player_ptr);
+            auto_round++;
+            auto_roller_count();
+            bool accept = decide_initial_stat(player_ptr);
+            if (decide_body_spec(player_ptr, chara_limit, &accept)) {
+                return;
+            }
+
+            if (display_auto_roller_count(player_ptr, col)) {
+                return;
+            }
+        }
+    }
+
+    static bool display_auto_roller_result(PlayerType * player_ptr, bool prev, char *c)
+    {
+        BIT_FLAGS mode = 0;
+        while (true) {
+            player_ptr->update |= (PU_BONUS | PU_HP);
+            update_creature(player_ptr);
+            player_ptr->chp = player_ptr->mhp;
+            player_ptr->csp = player_ptr->msp;
+            (void)display_player(player_ptr, mode);
+            term_gotoxy(2, 23);
+            const char b1 = '[';
+            term_addch(TERM_WHITE, b1);
+            term_addstr(-1, TERM_WHITE, _("'r' 次の数値", "'r'eroll"));
+            if (prev) {
+                term_addstr(-1, TERM_WHITE, _(", 'p' 前の数値", "'p'previous"));
+            }
+
+            if (mode) {
+                term_addstr(-1, TERM_WHITE, _(", 'h' その他の情報", ", 'h' Misc."));
+            } else {
+                term_addstr(-1, TERM_WHITE, _(", 'h' 生い立ちを表示", ", 'h'istory"));
+            }
+
+            term_addstr(-1, TERM_WHITE, _(", Enter この数値に決定", ", or Enter to accept"));
+            const char b2 = ']';
+            term_addch(TERM_WHITE, b2);
+            *c = inkey();
+            if (*c == 'Q') {
+                birth_quit();
+            }
+
+            if (*c == 'S') {
+                return false;
+            }
+
+            if (*c == '\r' || *c == '\n' || *c == ESCAPE) {
+                break;
+            }
+
+            if ((*c == ' ') || (*c == 'r')) {
+                break;
+            }
+
+            if (prev && (*c == 'p')) {
+                load_prev_data(player_ptr, true);
+                continue;
+            }
+
+            if ((*c == 'H') || (*c == 'h')) {
+                mode = ((mode != 0) ? 0 : 1);
+                continue;
+            }
+
+            birth_help_option(player_ptr, *c, BK_AUTO_ROLLER);
+            bell();
+        }
+
         return true;
     }
 
-    return false;
-}
+    /*
+     * @brief オートロールを回して結果を表示し、その数値に決めるかさらに回すか確認する。
+     * @param player_ptr プレイヤーへの参照ポインタ
+     * @param chara_limit 社会的地位の要求水準
+     * @details 2つめの結果以降は、'p'キーで1つ前のロール結果に戻せる。
+     */
+    static bool display_auto_roller(PlayerType * player_ptr, chara_limit_type chara_limit)
+    {
+        bool prev = false;
 
-static void exe_auto_roller(PlayerType *player_ptr, chara_limit_type chara_limit, const int col)
-{
-    while (autoroller || autochara) {
-        get_stats(player_ptr);
-        auto_round++;
-        auto_roller_count();
-        bool accept = decide_initial_stat(player_ptr);
-        if (decide_body_spec(player_ptr, chara_limit, &accept))
-            return;
+        while (true) {
+            int col = 22;
+            if (autoroller || autochara) {
+                term_clear();
+                put_str(_("回数 :", "Round:"), 10, col + 10);
+                put_str(_("(ESCで停止)", "(Hit ESC to stop)"), 13, col + 13);
+            } else {
+                get_stats(player_ptr);
+                get_ahw(player_ptr);
+                get_history(player_ptr);
+            }
 
-        if (display_auto_roller_count(player_ptr, col))
-            return;
+            display_auto_roller_success_rate(col);
+            exe_auto_roller(player_ptr, chara_limit, col);
+            if (autoroller || autochara) {
+                sound(SOUND_LEVEL);
+            }
+
+            flush();
+
+            get_extra(player_ptr, true);
+            get_money(player_ptr);
+            player_ptr->chaos_patron = (int16_t)randint0(MAX_PATRON);
+
+            char c;
+            if (!display_auto_roller_result(player_ptr, prev, &c)) {
+                return false;
+            }
+
+            if (c == '\r' || c == '\n' || c == ESCAPE) {
+                break;
+            }
+
+            save_prev_data(player_ptr, &previous_char);
+            previous_char.quick_ok = false;
+            prev = true;
+        }
+
+        return true;
     }
-}
 
-static bool display_auto_roller_result(PlayerType *player_ptr, bool prev, char *c)
-{
-    BIT_FLAGS mode = 0;
-    while (true) {
-        player_ptr->update |= (PU_BONUS | PU_HP);
-        update_creature(player_ptr);
-        player_ptr->chp = player_ptr->mhp;
-        player_ptr->csp = player_ptr->msp;
-        (void)display_player(player_ptr, mode);
-        term_gotoxy(2, 23);
-        const char b1 = '[';
-        term_addch(TERM_WHITE, b1);
-        term_addstr(-1, TERM_WHITE, _("'r' 次の数値", "'r'eroll"));
-        if (prev)
-            term_addstr(-1, TERM_WHITE, _(", 'p' 前の数値", "'p'previous"));
+    /*!
+     * @brief 名前と生い立ちを設定する
+     * @param player_ptr プレイヤーへの参照ポインタ
+     * @details ついでにステータス限界もここで決めている
+     */
+    static void set_name_history(PlayerType * player_ptr)
+    {
+        clear_from(23);
+        get_name(player_ptr);
+        process_player_name(player_ptr, w_ptr->creating_savefile);
+        edit_history(player_ptr);
+        get_max_stats(player_ptr);
+        initialize_virtues(player_ptr);
+        prt(_("[ 'Q' 中断, 'S' 初めから, Enter ゲーム開始 ]", "['Q'uit, 'S'tart over, or Enter to continue]"), 23, _(14, 10));
+    }
 
-        if (mode)
-            term_addstr(-1, TERM_WHITE, _(", 'h' その他の情報", ", 'h' Misc."));
-        else
-            term_addstr(-1, TERM_WHITE, _(", 'h' 生い立ちを表示", ", 'h'istory"));
+    /*!
+     * @brief プレイヤーキャラ作成ウィザード
+     * @details
+     * The delay may be reduced, but is recommended to keep players
+     * from continuously rolling up characters, which can be VERY
+     * expensive CPU wise.  And it cuts down on player stupidity.
+     */
+    bool player_birth_wizard(PlayerType * player_ptr)
+    {
+        display_initial_birth_message(player_ptr);
+        const char p2 = ')';
+        char buf[80];
+        for (int n = 0; n < MAX_SEXES; n++) {
+            sp_ptr = &sex_info[n];
+            sprintf(buf, _("%c%c%s", "%c%c %s"), I2A(n), p2, sp_ptr->title);
+            put_str(buf, 12 + (n / 5), 2 + 15 * (n % 5));
+        }
 
-        term_addstr(-1, TERM_WHITE, _(", Enter この数値に決定", ", or Enter to accept"));
-        const char b2 = ']';
-        term_addch(TERM_WHITE, b2);
-        *c = inkey();
-        if (*c == 'Q')
-            birth_quit();
-
-        if (*c == 'S')
+        if (!let_player_build_character(player_ptr)) {
             return false;
-
-        if (*c == '\r' || *c == '\n' || *c == ESCAPE)
-            break;
-
-        if ((*c == ' ') || (*c == 'r'))
-            break;
-
-        if (prev && (*c == 'p')) {
-            load_prev_data(player_ptr, true);
-            continue;
         }
 
-        if ((*c == 'H') || (*c == 'h')) {
-            mode = ((mode != 0) ? 0 : 1);
-            continue;
-        }
-
-        birth_help_option(player_ptr, *c, BK_AUTO_ROLLER);
-        bell();
-    }
-
-    return true;
-}
-
-/*
- * @brief オートロールを回して結果を表示し、その数値に決めるかさらに回すか確認する。
- * @param player_ptr プレイヤーへの参照ポインタ
- * @param chara_limit 社会的地位の要求水準
- * @details 2つめの結果以降は、'p'キーで1つ前のロール結果に戻せる。
- */
-static bool display_auto_roller(PlayerType *player_ptr, chara_limit_type chara_limit)
-{
-    bool prev = false;
-
-    while (true) {
-        int col = 22;
+        display_initial_options(player_ptr);
         if (autoroller || autochara) {
-            term_clear();
-            put_str(_("回数 :", "Round:"), 10, col + 10);
-            put_str(_("(ESCで停止)", "(Hit ESC to stop)"), 13, col + 13);
-        } else {
-            get_stats(player_ptr);
-            get_ahw(player_ptr);
-            get_history(player_ptr);
+            auto_round = 0L;
+            auto_upper_round = 0L;
+            autoroll_chance = 0L;
         }
 
-        display_auto_roller_success_rate(col);
-        exe_auto_roller(player_ptr, chara_limit, col);
-        if (autoroller || autochara)
-            sound(SOUND_LEVEL);
+        if (autoroller) {
+            if (!get_stat_limits(player_ptr)) {
+                return false;
+            }
+        }
 
-        flush();
+        chara_limit_type chara_limit;
+        initialize_chara_limit(&chara_limit);
+        if (autochara) {
+            if (!get_chara_limits(player_ptr, &chara_limit)) {
+                return false;
+            }
+        }
 
-        get_extra(player_ptr, true);
-        get_money(player_ptr);
-        player_ptr->chaos_patron = (int16_t)randint0(MAX_PATRON);
-
-        char c;
-        if (!display_auto_roller_result(player_ptr, prev, &c))
+        clear_from(10);
+        init_turn(player_ptr);
+        if (!display_auto_roller(player_ptr, chara_limit)) {
             return false;
+        }
 
-        if (c == '\r' || c == '\n' || c == ESCAPE)
-            break;
+        set_name_history(player_ptr);
+        char c = inkey();
+        if (c == 'Q') {
+            birth_quit();
+        }
 
+        if (c == 'S') {
+            return false;
+        }
+
+        init_dungeon_quests(player_ptr);
         save_prev_data(player_ptr, &previous_char);
-        previous_char.quick_ok = false;
-        prev = true;
+        previous_char.quick_ok = true;
+        return true;
     }
-
-    return true;
-}
-
-/*!
- * @brief 名前と生い立ちを設定する
- * @param player_ptr プレイヤーへの参照ポインタ
- * @details ついでにステータス限界もここで決めている
- */
-static void set_name_history(PlayerType *player_ptr)
-{
-    clear_from(23);
-    get_name(player_ptr);
-    process_player_name(player_ptr, w_ptr->creating_savefile);
-    edit_history(player_ptr);
-    get_max_stats(player_ptr);
-    initialize_virtues(player_ptr);
-    prt(_("[ 'Q' 中断, 'S' 初めから, Enter ゲーム開始 ]", "['Q'uit, 'S'tart over, or Enter to continue]"), 23, _(14, 10));
-}
-
-/*!
- * @brief プレイヤーキャラ作成ウィザード
- * @details
- * The delay may be reduced, but is recommended to keep players
- * from continuously rolling up characters, which can be VERY
- * expensive CPU wise.  And it cuts down on player stupidity.
- */
-bool player_birth_wizard(PlayerType *player_ptr)
-{
-    display_initial_birth_message(player_ptr);
-    const char p2 = ')';
-    char buf[80];
-    for (int n = 0; n < MAX_SEXES; n++) {
-        sp_ptr = &sex_info[n];
-        sprintf(buf, _("%c%c%s", "%c%c %s"), I2A(n), p2, sp_ptr->title);
-        put_str(buf, 12 + (n / 5), 2 + 15 * (n % 5));
-    }
-
-    if (!let_player_build_character(player_ptr))
-        return false;
-
-    display_initial_options(player_ptr);
-    if (autoroller || autochara) {
-        auto_round = 0L;
-        auto_upper_round = 0L;
-        autoroll_chance = 0L;
-    }
-
-    if (autoroller)
-        if (!get_stat_limits(player_ptr))
-            return false;
-
-    chara_limit_type chara_limit;
-    initialize_chara_limit(&chara_limit);
-    if (autochara)
-        if (!get_chara_limits(player_ptr, &chara_limit))
-            return false;
-
-    clear_from(10);
-    init_turn(player_ptr);
-    if (!display_auto_roller(player_ptr, chara_limit))
-        return false;
-
-    set_name_history(player_ptr);
-    char c = inkey();
-    if (c == 'Q')
-        birth_quit();
-
-    if (c == 'S')
-        return false;
-
-    init_dungeon_quests(player_ptr);
-    save_prev_data(player_ptr, &previous_char);
-    previous_char.quick_ok = true;
-    return true;
-}

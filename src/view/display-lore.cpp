@@ -128,8 +128,9 @@ void output_monster_spoiler(MONRACE_IDX r_idx, void (*roff_func)(TERM_COLOR attr
 
 static bool display_kill_unique(lore_type *lore_ptr)
 {
-    if (lore_ptr->kind_flags.has_not(MonsterKindType::UNIQUE))
+    if (lore_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         return false;
+    }
 
     bool dead = (lore_ptr->r_ptr->mob_num == 0);
     if (lore_ptr->r_ptr->r_deaths) {
@@ -145,10 +146,11 @@ static bool display_kill_unique(lore_type *lore_ptr)
 
         hooked_roff("\n");
     } else {
-        if (dead)
+        if (dead) {
             hooked_roff(_("あなたはこの仇敵をすでに葬り去っている。", "You have slain this foe.  "));
-        else
+        } else {
             hooked_roff(_("この仇敵はまだ生きている！", "This foe is still alive!  "));
+        }
 
         hooked_roff("\n");
     }
@@ -194,8 +196,12 @@ static void display_no_killed(lore_type *lore_ptr)
  */
 static void display_number_of_nazguls(lore_type *lore_ptr)
 {
-    if (lore_ptr->mode != MONSTER_LORE_DEBUG && lore_ptr->r_ptr->r_tkills == 0)
+    if (lore_ptr->mode != MONSTER_LORE_DEBUG && lore_ptr->r_ptr->r_tkills == 0) {
         return;
+    }
+    if (!any_bits(lore_ptr->r_ptr->flags7, RF7_NAZGUL)) {
+        return;
+    }
 
     int remain = lore_ptr->r_ptr->mob_num;
     int killed = lore_ptr->r_ptr->r_akills;
@@ -217,16 +223,19 @@ static void display_number_of_nazguls(lore_type *lore_ptr)
 
 void display_kill_numbers(lore_type *lore_ptr)
 {
-    if ((lore_ptr->mode & 0x02) != 0)
+    if ((lore_ptr->mode & 0x02) != 0) {
         return;
+    }
 
-    if (display_kill_unique(lore_ptr))
+    if (display_kill_unique(lore_ptr)) {
         return;
+    }
 
-    if (lore_ptr->r_ptr->r_deaths == 0)
+    if (lore_ptr->r_ptr->r_deaths == 0) {
         display_no_killed(lore_ptr);
-    else
+    } else {
         display_killed(lore_ptr);
+    }
 
     display_number_of_nazguls(lore_ptr);
 
@@ -279,26 +288,28 @@ void display_monster_move(lore_type *lore_ptr)
 
     display_random_move(lore_ptr);
     if (lore_ptr->speed > 110) {
-        if (lore_ptr->speed > 139)
+        if (lore_ptr->speed > 139) {
             hook_c_roff(TERM_RED, _("信じ難いほど", " incredibly"));
-        else if (lore_ptr->speed > 134)
+        } else if (lore_ptr->speed > 134) {
             hook_c_roff(TERM_ORANGE, _("猛烈に", " extremely"));
-        else if (lore_ptr->speed > 129)
+        } else if (lore_ptr->speed > 129) {
             hook_c_roff(TERM_ORANGE, _("非常に", " very"));
-        else if (lore_ptr->speed > 124)
+        } else if (lore_ptr->speed > 124) {
             hook_c_roff(TERM_UMBER, _("かなり", " fairly"));
-        else if (lore_ptr->speed < 120)
+        } else if (lore_ptr->speed < 120) {
             hook_c_roff(TERM_L_UMBER, _("やや", " somewhat"));
+        }
         hook_c_roff(TERM_L_RED, _("素早く", " quickly"));
     } else if (lore_ptr->speed < 110) {
-        if (lore_ptr->speed < 90)
+        if (lore_ptr->speed < 90) {
             hook_c_roff(TERM_L_GREEN, _("信じ難いほど", " incredibly"));
-        else if (lore_ptr->speed < 95)
+        } else if (lore_ptr->speed < 95) {
             hook_c_roff(TERM_BLUE, _("非常に", " very"));
-        else if (lore_ptr->speed < 100)
+        } else if (lore_ptr->speed < 100) {
             hook_c_roff(TERM_BLUE, _("かなり", " fairly"));
-        else if (lore_ptr->speed > 104)
+        } else if (lore_ptr->speed > 104) {
             hook_c_roff(TERM_GREEN, _("やや", " somewhat"));
+        }
         hook_c_roff(TERM_L_BLUE, _("ゆっくりと", " slowly"));
     } else {
         hooked_roff(_("普通の速さで", " at normal speed"));
@@ -311,8 +322,9 @@ void display_monster_move(lore_type *lore_ptr)
 
 void display_random_move(lore_type *lore_ptr)
 {
-    if (lore_ptr->behavior_flags.has_none_of({ MonsterBehaviorType::RAND_MOVE_50, MonsterBehaviorType::RAND_MOVE_25 }))
+    if (lore_ptr->behavior_flags.has_none_of({ MonsterBehaviorType::RAND_MOVE_50, MonsterBehaviorType::RAND_MOVE_25 })) {
         return;
+    }
 
     if (lore_ptr->behavior_flags.has(MonsterBehaviorType::RAND_MOVE_50) && lore_ptr->behavior_flags.has(MonsterBehaviorType::RAND_MOVE_25)) {
         hooked_roff(_("かなり", " extremely"));
@@ -323,14 +335,16 @@ void display_random_move(lore_type *lore_ptr)
     }
 
     hooked_roff(_("不規則に", " erratically"));
-    if (lore_ptr->speed != 110)
+    if (lore_ptr->speed != 110) {
         hooked_roff(_("、かつ", ", and"));
+    }
 }
 
 void display_monster_never_move(lore_type *lore_ptr)
 {
-    if (lore_ptr->behavior_flags.has_not(MonsterBehaviorType::NEVER_MOVE))
+    if (lore_ptr->behavior_flags.has_not(MonsterBehaviorType::NEVER_MOVE)) {
         return;
+    }
 
     if (lore_ptr->old) {
         hooked_roff(_("、しかし", ", but "));
@@ -352,110 +366,146 @@ void display_monster_kind(lore_type *lore_ptr)
         return;
     }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::ELDRAZI))
+    if (lore_ptr->kind_flags.has(MonsterKindType::ELDRAZI)) {
         hook_c_roff(TERM_WHITE, _("エルドラージ", " eldrazi"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::ELF))
+    if (lore_ptr->kind_flags.has(MonsterKindType::ELF)) {
         hook_c_roff(TERM_GREEN, _("エルフ", " elf"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::DWARF))
+    if (lore_ptr->kind_flags.has(MonsterKindType::DWARF)) {
         hook_c_roff(TERM_ORANGE, _("ドワーフ", " dwarf"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::HOBBIT))
+    if (lore_ptr->kind_flags.has(MonsterKindType::HOBBIT)) {
         hook_c_roff(TERM_WHITE, _("ホビット", " hobbit"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::QUYLTHLUG))
+    if (lore_ptr->kind_flags.has(MonsterKindType::QUYLTHLUG)) {
         hook_c_roff(TERM_RED, _("クイルスルグ", " quylthlug"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::SPIDER))
+    if (lore_ptr->kind_flags.has(MonsterKindType::SPIDER)) {
         hook_c_roff(TERM_SLATE, _("蜘蛛", " spider"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::DRAGON))
+    if (lore_ptr->kind_flags.has(MonsterKindType::DRAGON)) {
         hook_c_roff(TERM_ORANGE, _("ドラゴン", " dragon"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::DEMON))
+    if (lore_ptr->kind_flags.has(MonsterKindType::DEMON)) {
         hook_c_roff(TERM_VIOLET, _("デーモン", " demon"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::GIANT))
+    if (lore_ptr->kind_flags.has(MonsterKindType::GIANT)) {
         hook_c_roff(TERM_L_UMBER, _("巨人", " giant"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::TROLL))
+    if (lore_ptr->kind_flags.has(MonsterKindType::TROLL)) {
         hook_c_roff(TERM_BLUE, _("トロル", " troll"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::ORC))
+    if (lore_ptr->kind_flags.has(MonsterKindType::ORC)) {
         hook_c_roff(TERM_UMBER, _("オーク", " orc"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::HUMAN))
+    if (lore_ptr->kind_flags.has(MonsterKindType::HUMAN)) {
         hook_c_roff(TERM_L_WHITE, _("人間", " human"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::QUANTUM))
+    if (lore_ptr->kind_flags.has(MonsterKindType::QUANTUM)) {
         hook_c_roff(TERM_VIOLET, _("量子生物", " quantum creature"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::ANGEL))
+    if (lore_ptr->kind_flags.has(MonsterKindType::ANGEL)) {
         hook_c_roff(TERM_YELLOW, _("天使", " angel"));
+    }
 }
 
 void display_monster_alignment(lore_type *lore_ptr)
 {
-    if (lore_ptr->flags1 & RF1_MALE && lore_ptr->flags1 & RF1_FEMALE)
+    if (lore_ptr->flags1 & RF1_MALE && lore_ptr->flags1 & RF1_FEMALE) {
         hook_c_roff(TERM_VIOLET, _("両性具有であり", " hermaphroditic"));
+    }
 
-    if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR)
+    if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR) {
+
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::NASTY))
+    if (lore_ptr->kind_flags.has(MonsterKindType::NASTY)) {
         hook_c_roff(TERM_L_DARK, _("クッソ汚い", " nasty"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::JOKE))
+    if (lore_ptr->kind_flags.has(MonsterKindType::JOKE)) {
         hook_c_roff(TERM_L_DARK, _("ふざけた", " jokeful"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::ANIMAL))
+    if (lore_ptr->kind_flags.has(MonsterKindType::ANIMAL)) {
         hook_c_roff(TERM_L_GREEN, _("自然界の", " natural"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::EVIL))
+    if (lore_ptr->kind_flags.has(MonsterKindType::EVIL)) {
         hook_c_roff(TERM_L_DARK, _("邪悪なる", " evil"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::GOOD))
+    if (lore_ptr->kind_flags.has(MonsterKindType::GOOD)) {
         hook_c_roff(TERM_YELLOW, _("善良な", " good"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::WARRIOR))
+    if (lore_ptr->kind_flags.has(MonsterKindType::WARRIOR)) {
         hook_c_roff(TERM_ORANGE, _("戦士の", " warrior"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::ROGUE))
+    if (lore_ptr->kind_flags.has(MonsterKindType::ROGUE)) {
         hook_c_roff(TERM_L_DARK, _("盗賊の", " rogue"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::PRIEST))
+    if (lore_ptr->kind_flags.has(MonsterKindType::PRIEST)) {
         hook_c_roff(TERM_WHITE, _("プリーストの", " priest"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::MAGE))
+    if (lore_ptr->kind_flags.has(MonsterKindType::MAGE)) {
+
         hook_c_roff(TERM_RED, _("メイジの", " mage"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::PALADIN))
+    if (lore_ptr->kind_flags.has(MonsterKindType::PALADIN)) {
         hook_c_roff(TERM_YELLOW, _("パラディンの", " paladin"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::RANGER))
+    if (lore_ptr->kind_flags.has(MonsterKindType::RANGER)) {
         hook_c_roff(TERM_GREEN, _("レンジャーの", " ranger"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::SAMURAI))
+    if (lore_ptr->kind_flags.has(MonsterKindType::SAMURAI)) {
         hook_c_roff(TERM_RED, _("サムライの", " ranger"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::NINJA))
+    if (lore_ptr->kind_flags.has(MonsterKindType::NINJA)) {
         hook_c_roff(TERM_L_DARK, _("ニンジャの", " ninja"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::KARATEKA))
+    if (lore_ptr->kind_flags.has(MonsterKindType::KARATEKA)) {
         hook_c_roff(TERM_ORANGE, _("カラテカの", " karateka"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::YAKUZA))
+    if (lore_ptr->kind_flags.has(MonsterKindType::YAKUZA)) {
         hook_c_roff(TERM_L_DARK, _("ヤクザな", " yakuza"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::SUMOU_WRESTLER))
+    if (lore_ptr->kind_flags.has(MonsterKindType::SUMOU_WRESTLER)) {
         hook_c_roff(TERM_YELLOW, _("スモトリの", " sumou wrestler"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::UNDEAD))
+    if (lore_ptr->kind_flags.has(MonsterKindType::UNDEAD)) {
         hook_c_roff(TERM_VIOLET, _("アンデッドの", " undead"));
+    }
 
-    if (lore_ptr->kind_flags.has(MonsterKindType::AMBERITE))
+    if (lore_ptr->kind_flags.has(MonsterKindType::AMBERITE)) {
         hook_c_roff(TERM_VIOLET, _("アンバーの王族の", " Amberite"));
+    }
 }
 
 /*!
@@ -526,27 +576,29 @@ void display_monster_aura(lore_type *lore_ptr)
     auto has_fire_aura = lore_ptr->aura_flags.has(MonsterAuraType::FIRE);
     auto has_elec_aura = lore_ptr->aura_flags.has(MonsterAuraType::ELEC);
     auto has_cold_aura = lore_ptr->aura_flags.has(MonsterAuraType::COLD);
-    if (has_fire_aura && has_elec_aura && has_cold_aura)
+    if (has_fire_aura && has_elec_aura && has_cold_aura) {
         hook_c_roff(
             TERM_VIOLET, format(_("%^sは炎と氷とスパークに包まれている。", "%^s is surrounded by flames, ice and electricity.  "), Who::who(lore_ptr->msex)));
-    else if (has_fire_aura && has_elec_aura)
+    } else if (has_fire_aura && has_elec_aura) {
         hook_c_roff(TERM_L_RED, format(_("%^sは炎とスパークに包まれている。", "%^s is surrounded by flames and electricity.  "), Who::who(lore_ptr->msex)));
-    else if (has_fire_aura && has_cold_aura)
+    } else if (has_fire_aura && has_cold_aura) {
         hook_c_roff(TERM_BLUE, format(_("%^sは炎と氷に包まれている。", "%^s is surrounded by flames and ice.  "), Who::who(lore_ptr->msex)));
-    else if (has_cold_aura && has_elec_aura)
+    } else if (has_cold_aura && has_elec_aura) {
         hook_c_roff(TERM_L_GREEN, format(_("%^sは氷とスパークに包まれている。", "%^s is surrounded by ice and electricity.  "), Who::who(lore_ptr->msex)));
-    else if (has_fire_aura)
+    } else if (has_fire_aura) {
         hook_c_roff(TERM_RED, format(_("%^sは炎に包まれている。", "%^s is surrounded by flames.  "), Who::who(lore_ptr->msex)));
-    else if (has_cold_aura)
+    } else if (has_cold_aura) {
         hook_c_roff(TERM_BLUE, format(_("%^sは氷に包まれている。", "%^s is surrounded by ice.  "), Who::who(lore_ptr->msex)));
-    else if (has_elec_aura)
+    } else if (has_elec_aura) {
         hook_c_roff(TERM_L_BLUE, format(_("%^sはスパークに包まれている。", "%^s is surrounded by electricity.  "), Who::who(lore_ptr->msex)));
+    }
 }
 
 void display_lore_this(PlayerType *player_ptr, lore_type *lore_ptr)
 {
-    if ((lore_ptr->r_ptr->r_tkills == 0) && !lore_ptr->know_everything)
+    if ((lore_ptr->r_ptr->r_tkills == 0) && !lore_ptr->know_everything) {
         return;
+    }
 
 #ifdef JP
     hooked_roff("この");
@@ -575,8 +627,9 @@ void display_lore_this(PlayerType *player_ptr, lore_type *lore_ptr)
 
 static void display_monster_escort_contents(lore_type *lore_ptr)
 {
-    if (!lore_ptr->reinforce)
+    if (!lore_ptr->reinforce) {
         return;
+    }
 
     hooked_roff(_("護衛の構成は", "These escorts"));
     if ((lore_ptr->flags1 & RF1_ESCORT) || (lore_ptr->flags1 & RF1_ESCORTS)) {
@@ -595,28 +648,31 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
         bool is_reinforced = mon_idx > 0;
         is_reinforced &= dn > 0;
         is_reinforced &= ds > 0;
-        if (!is_reinforced)
-            continue;
-
-        monster_race *rf_ptr = &r_info[mon_idx];
-        if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
+        if (!is_reinforced) {
             continue;
         }
-
-#ifdef JP
-        hooked_roff(format("、 %dd%d 体の%s", dn, ds, rf_ptr->name.c_str()));
-#else
-        bool plural = (dn * ds > 1);
-        GAME_TEXT name[MAX_NLEN];
-        strcpy(name, rf_ptr->name.c_str());
-        if (plural)
-            plural_aux(name);
-        hooked_roff(format(",%dd%d %s", dn, ds, name));
-#endif
     }
 
-    hooked_roff(_("で成り立っている。", "."));
+    monster_race *rf_ptr = &r_info[mon_idx];
+    if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+        hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
+        continue;
+    }
+
+#ifdef JP
+    hooked_roff(format("、 %dd%d 体の%s", dn, ds, rf_ptr->name.c_str()));
+#else
+    bool plural = (dn * ds > 1);
+    GAME_TEXT name[MAX_NLEN];
+    strcpy(name, rf_ptr->name.c_str());
+    if (plural) {
+        plural_aux(name);
+    }
+    hooked_roff(format(",%dd%d %s", dn, ds, name));
+#endif
+}
+
+hooked_roff(_("で成り立っている。", "."));
 }
 
 void display_monster_collective(lore_type *lore_ptr)
@@ -648,15 +704,17 @@ void display_monster_launching(PlayerType *player_ptr, lore_type *lore_ptr)
         lore_ptr->rocket = true;
     }
 
-    if (lore_ptr->ability_flags.has_not(MonsterAbilityType::SHOOT))
+    if (lore_ptr->ability_flags.has_not(MonsterAbilityType::SHOOT)) {
         return;
+    }
 
     int p = -1; /* Position of SHOOT */
     int n = 0; /* Number of blows */
     const int max_blows = 4;
     for (int m = 0; m < max_blows; m++) {
-        if (lore_ptr->r_ptr->blow[m].method != RaceBlowMethodType::NONE)
-            n++; /* Count blows */
+        if (lore_ptr->r_ptr->blow[m].method != RaceBlowMethodType::NONE) {
+            n++;
+        } /* Count blows */
 
         if (lore_ptr->r_ptr->blow[m].method == RaceBlowMethodType::SHOOT) {
             p = m; /* Remember position */
@@ -665,17 +723,20 @@ void display_monster_launching(PlayerType *player_ptr, lore_type *lore_ptr)
     }
 
     /* When full blows, use a first damage */
-    if (n == max_blows)
+    if (n == max_blows) {
         p = 0;
+    }
 
-    if (p < 0)
+    if (p < 0) {
         return;
+    }
 
-    if (know_armour(lore_ptr->r_idx, lore_ptr->know_everything))
+    if (know_armour(lore_ptr->r_idx, lore_ptr->know_everything)) {
         sprintf(lore_ptr->tmp_msg[lore_ptr->vn], _("威力 %dd%d の射撃をする", "fire an arrow (Power:%dd%d)"), lore_ptr->r_ptr->blow[p].d_dice,
             lore_ptr->r_ptr->blow[p].d_side);
-    else
+    } else {
         sprintf(lore_ptr->tmp_msg[lore_ptr->vn], _("射撃をする", "fire an arrow"));
+    }
 
     lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
     lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
@@ -684,8 +745,9 @@ void display_monster_launching(PlayerType *player_ptr, lore_type *lore_ptr)
 
 void display_monster_sometimes(lore_type *lore_ptr)
 {
-    if (lore_ptr->vn <= 0)
+    if (lore_ptr->vn <= 0) {
         return;
+    }
 
     hooked_roff(format(_("%^sは", "%^s"), Who::who(lore_ptr->msex)));
     for (int n = 0; n < lore_ptr->vn; n++) {
@@ -695,15 +757,17 @@ void display_monster_sometimes(lore_type *lore_ptr)
             hook_c_roff(lore_ptr->color[n], lore_ptr->jverb_buf);
             hook_c_roff(lore_ptr->color[n], "り");
             hooked_roff("、");
-        } else
+        } else {
             hook_c_roff(lore_ptr->color[n], lore_ptr->vp[n]);
+        }
 #else
-        if (n == 0)
+        if (n == 0) {
             hooked_roff(" may ");
-        else if (n < lore_ptr->vn - 1)
+        } else if (n < lore_ptr->vn - 1) {
             hooked_roff(", ");
-        else
+        } else {
             hooked_roff(" or ");
+        }
 
         hook_c_roff(lore_ptr->color[n], lore_ptr->vp[n]);
 #endif
