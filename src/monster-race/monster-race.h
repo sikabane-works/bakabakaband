@@ -14,6 +14,9 @@ bool is_valid_monster_race(MonsterRaceId r_idx);
 class MonsterRace {
 public:
     MonsterRace(MonsterRaceId r_idx);
+
+    static MonsterRaceId pick_one_at_random();
+
     bool is_valid() const;
 
 private:
