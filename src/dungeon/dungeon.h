@@ -40,6 +40,8 @@
 #define DUNGEON_VOID_TERRITORY 23
 #define DUNGEON_MAX 29
 
+enum class MonsterRaceId;
+
 struct feat_prob {
     FEAT_IDX feat{}; /* Feature tile */
     PERCENTAGE percent{}; /* Chance of type */
@@ -90,7 +92,7 @@ struct dungeon_type {
     char r_char[5]{}; /* Monster race allowed */
     KIND_OBJECT_IDX final_object{}; /* The object you'll find at the bottom */
     ARTIFACT_IDX final_artifact{}; /* The artifact you'll find at the bottom */
-    MONRACE_IDX final_guardian{}; /* The artifact's guardian. If an artifact is specified, then it's NEEDED */
+    MonsterRaceId final_guardian{}; /* The artifact's guardian. If an artifact is specified, then it's NEEDED */
 
     PROB special_div{}; /* % of monsters affected by the flags/races allowed, to add some variety */
     int tunnel_percent{};

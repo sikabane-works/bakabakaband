@@ -70,7 +70,7 @@ MONSTER_IDX m_pop(floor_type *floor_ptr)
     for (MONSTER_IDX i = 1; i < floor_ptr->m_max; i++) {
         monster_type *m_ptr;
         m_ptr = &floor_ptr->m_list[i];
-        if (m_ptr->r_idx) {
+        if (is_valid_monster_race(m_ptr->r_idx)) {
             continue;
         }
         floor_ptr->m_cnt++;
@@ -90,11 +90,8 @@ MONSTER_IDX m_pop(floor_type *floor_ptr)
  * @param max_level 最大生成階
  * @return 選択されたモンスター生成種族
  */
-MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level, BIT_FLAGS option)
-{
-    int r_idx;
-    monster_race *r_ptr;
-
+MonsterRaceId get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level, BIT_FLAGS option)
+{   
     if (max_level > MAX_DEPTH - 1) {
         max_level = MAX_DEPTH - 1;
     }
@@ -121,8 +118,8 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
         if (max_level < entry.level) {
             break;
         } // sorted by depth array,
-        r_idx = entry.index;
-        r_ptr = &r_info[r_idx];
+        auto r_idx = i2enum<MonsterRaceId>(entry.index);
+        auto r_ptr = &r_info[r_idx];
         if (!(option & GMN_ARENA) && !chameleon_change_m_idx) {
             if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & (RF7_NAZGUL))) && (r_ptr->cur_num >= r_ptr->mob_num)) {
                 continue;
@@ -132,11 +129,11 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
                 continue;
             }
 
-            if (r_idx == MON_BANORLUPART) {
-                if (r_info[MON_BANOR].cur_num > 0) {
+            if (r_idx == MonsterRaceId::BANORLUPART) {
+                if (r_info[MonsterRaceId::BANOR].cur_num > 0) {
                     continue;
                 }
-                if (r_info[MON_LUPART].cur_num > 0) {
+                if (r_info[MonsterRaceId::LUPART].cur_num > 0) {
                     continue;
                 }
             }
@@ -151,7 +148,7 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
     }
 
     if (prob_table.empty()) {
-        return 0;
+        return MonsterRaceId::PLAYER;
     }
 
     // 40%で1回、50%で2回、10%で3回抽選し、その中で一番レベルが高いモンスターを選択する
@@ -170,7 +167,7 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
 
     auto it = std::max_element(result.begin(), result.end(), [](int a, int b) { return alloc_race_table[a].level < alloc_race_table[b].level; });
 
-    return alloc_race_table[*it].index;
+    return i2enum<MonsterRaceId>(alloc_race_table[*it].index);
 }
 
 /*!
@@ -179,7 +176,7 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
  * @param r_idx モンスター種族ID
  * @return 対象にできるならtrueを返す
  */
-static bool monster_hook_chameleon_lord(PlayerType *player_ptr, MONRACE_IDX r_idx)
+static bool monster_hook_chameleon_lord(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *r_ptr = &r_info[r_idx];
@@ -193,7 +190,7 @@ static bool monster_hook_chameleon_lord(PlayerType *player_ptr, MONRACE_IDX r_id
         return false;
     }
 
-    if (std::abs(r_ptr->level - r_info[MON_CHAMELEON_K].level) > 5) {
+    if (std::abs(r_ptr->level - r_info[MonsterRaceId::CHAMELEON_K].level) > 5) {
         return false;
     }
 
@@ -224,7 +221,7 @@ static bool monster_hook_chameleon_lord(PlayerType *player_ptr, MONRACE_IDX r_id
  * @return 対象にできるならtrueを返す
  * @todo グローバル変数対策の上 monster_hook.cへ移す。
  */
-static bool monster_hook_chameleon(PlayerType *player_ptr, MONRACE_IDX r_idx)
+static bool monster_hook_chameleon(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *r_ptr = &r_info[r_idx];
@@ -276,7 +273,7 @@ static bool monster_hook_chameleon(PlayerType *player_ptr, MONRACE_IDX r_idx)
  * @param born 生成時の初変身先指定ならばtrue
  * @param r_idx 旧モンスター種族のID
  */
-void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MONRACE_IDX r_idx)
+void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MonsterRaceId r_idx)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
@@ -286,15 +283,15 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MO
     if (r_info[m_ptr->r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
         old_unique = true;
     }
-    if (old_unique && (r_idx == MON_CHAMELEON)) {
-        r_idx = MON_CHAMELEON_K;
+    if (old_unique && (r_idx == MonsterRaceId::CHAMELEON)) {
+        r_idx = MonsterRaceId::CHAMELEON_K;
     }
     r_ptr = &r_info[r_idx];
 
     char old_m_name[MAX_NLEN];
     monster_desc(player_ptr, old_m_name, m_ptr, 0);
 
-    if (!r_idx) {
+    if (!is_valid_monster_race(r_idx)) {
         DEPTH level;
 
         chameleon_change_m_idx = m_idx;
@@ -305,7 +302,7 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MO
         }
 
         if (old_unique) {
-            level = r_info[MON_CHAMELEON_K].level;
+            level = r_info[MonsterRaceId::CHAMELEON_K].level;
         } else if (!floor_ptr->dun_level) {
             level = wilderness[player_ptr->wilderness_y][player_ptr->wilderness_x].level;
         } else {
@@ -320,7 +317,7 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MO
         r_ptr = &r_info[r_idx];
 
         chameleon_change_m_idx = 0;
-        if (!r_idx) {
+        if (!is_valid_monster_race(r_idx)) {
             return;
         }
     }
@@ -330,7 +327,7 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, MO
     update_monster(player_ptr, m_idx, false);
     lite_spot(player_ptr, m_ptr->fy, m_ptr->fx);
 
-    int old_r_idx = m_ptr->r_idx;
+    auto old_r_idx = m_ptr->r_idx;
     if ((r_info[old_r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK)) || (r_ptr->flags7 & (RF7_LITE_MASK | RF7_DARK_MASK))) {
         player_ptr->update |= (PU_MON_LITE);
     }

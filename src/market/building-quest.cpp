@@ -7,6 +7,7 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster/monster-list.h"
+#include "monster-race/race-indice-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -127,7 +128,7 @@ void castle_quest(PlayerType *player_ptr)
         return;
     }
 
-    if (q_ptr->r_idx == 0) {
+    if (q_ptr->r_idx == MonsterRaceId::PLAYER) {
         q_ptr->r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 4 + randint1(6), 0);
     }
 
