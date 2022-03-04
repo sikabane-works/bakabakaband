@@ -45,35 +45,35 @@ void get_ahw(PlayerType *player_ptr)
 void get_money(PlayerType *player_ptr)
 {
     int gold = (player_ptr->prestige * 6) + randint1(100) + 300;
-    if (PlayerClass(player_ptr).equals(PlayerClassType::TOURIST))
+    if (PlayerClass(player_ptr).equals(PlayerClassType::TOURIST)) {
         gold += 2000;
-}
-
-for (int i = 0; i < A_MAX; i++) {
-    if (player_ptr->stat_max[i] >= 18 + 50) {
-        gold -= 300;
-    } else if (player_ptr->stat_max[i] >= 18 + 20) {
-        gold -= 200;
-    } else if (player_ptr->stat_max[i] > 18) {
-        gold -= 150;
-    } else {
-        gold -= (player_ptr->stat_max[i] - 8) * 10;
     }
-}
 
-const int minimum_deposit = 100;
-if (gold < minimum_deposit) {
-    gold = minimum_deposit;
-}
+    for (int i = 0; i < A_MAX; i++) {
+        if (player_ptr->stat_max[i] >= 18 + 50) {
+            gold -= 300;
+        } else if (player_ptr->stat_max[i] >= 18 + 20) {
+            gold -= 200;
+        } else if (player_ptr->stat_max[i] > 18) {
+            gold -= 150;
+        } else {
+            gold -= (player_ptr->stat_max[i] - 8) * 10;
+        }
+    }
 
-if (player_ptr->ppersonality == PERSONALITY_LAZY) {
-    gold /= 2;
-} else if (player_ptr->ppersonality == PERSONALITY_MUNCHKIN) {
-    gold = 10000000;
-}
-if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
-    gold /= 5;
-}
+    const int minimum_deposit = 100;
+    if (gold < minimum_deposit) {
+        gold = minimum_deposit;
+    }
 
-player_ptr->au = gold;
+    if (player_ptr->ppersonality == PERSONALITY_LAZY) {
+        gold /= 2;
+    } else if (player_ptr->ppersonality == PERSONALITY_MUNCHKIN) {
+        gold = 10000000;
+    }
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
+        gold /= 5;
+    }
+
+    player_ptr->au = gold;
 }

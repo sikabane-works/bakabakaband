@@ -261,19 +261,13 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
         return false;
     }
 
-<<<<<<< HEAD
-    if (!in_generate) {
-        /* Lose monster light */
-=======
     /* Lose monster light */
     if (!in_generate) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         clear_mon_lite(floor_ptr);
     }
 
-        /* 時空崩壊度進行 */
-        wc_ptr->plus_perm_collapsion(10 + floor_ptr->dun_level / 2);
-    }
+    /* 時空崩壊度進行 */
+    wc_ptr->plus_perm_collapsion(10 + floor_ptr->dun_level / 2);
 
     /* Big area of affect */
     bool flag = false;

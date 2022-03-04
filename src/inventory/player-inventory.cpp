@@ -109,11 +109,7 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
             continue;
         }
 
-<<<<<<< HEAD
-        if (check_store_item_to_inventory(player_ptr, o_ptr) && check_get_item(o_ptr))
-=======
-        if (check_store_item_to_inventory(player_ptr, o_ptr)) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+        if (check_store_item_to_inventory(player_ptr, o_ptr) && check_get_item(o_ptr)) {
             can_pickup++;
         }
 
@@ -141,17 +137,12 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
         if (floor_num == 1) {
             o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
             describe_flavor(player_ptr, o_name, o_ptr, 0);
-<<<<<<< HEAD
             if (!check_get_item(o_ptr)) {
                 msg_format(_("%sを動かすことはできない", "You can't carry %s."), o_name);
             } else {
                 msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
             }
-        } else
-=======
-            msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
         } else {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
             msg_print(_("ザックには床にあるどのアイテムも入らない。", "You have no room for any of the objects on the floor."));
         }
 

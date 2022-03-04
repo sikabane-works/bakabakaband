@@ -132,7 +132,6 @@ errr parse_v_info(std::string_view buf, angband_header *)
     } else {
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
     }
+    return PARSE_ERROR_NONE;
 }
 
-return PARSE_ERROR_NONE;
-}

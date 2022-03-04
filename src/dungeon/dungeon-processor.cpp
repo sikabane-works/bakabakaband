@@ -111,7 +111,7 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
     handle_stuff(player_ptr);
     term_fresh();
 
-    if (inside_quest(quest_num) && (quest_type::is_fixed(quest_num) && !((quest_num == QuestId::MELKO) || !(quest[enum2i(quest_num)].flags & QUEST_FLAG_PRESET)))) {
+    if (inside_quest(quest_num) && (quest_type::is_fixed(quest_num) && !((quest_num == QuestId::MELKO) || !(quest[quest_num].flags & QUEST_FLAG_PRESET)))) {
         do_cmd_feeling(player_ptr);
     }
 

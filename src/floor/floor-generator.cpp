@@ -68,10 +68,7 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
     POSITION x_left = xval - 15;
     POSITION x_right = xval + 15;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-<<<<<<< HEAD
 
-=======
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
     for (POSITION i = y_height; i <= y_height + 5; i++) {
         for (POSITION j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
@@ -86,22 +83,14 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
         }
     }
 
-<<<<<<< HEAD
     for (POSITION j = x_left; j <= x_left + 5; j++) {
-=======
-    for (POSITION j = x_left; j <= x_left + 17; j++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         for (POSITION i = y_height; i <= y_depth; i++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
     }
 
-<<<<<<< HEAD
     for (POSITION j = x_right; j >= x_right - 5; j--) {
-=======
-    for (POSITION j = x_right; j >= x_right - 17; j--) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         for (POSITION i = y_height; i <= y_depth; i++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
@@ -145,36 +134,22 @@ static void generate_challenge_arena(PlayerType *player_ptr)
     floor_ptr->width = ARENA_HGT;
 
     POSITION y, x;
-<<<<<<< HEAD
-    for (y = 0; y < floor_ptr->height; y++)
+    for (y = 0; y < floor_ptr->height; y++) {
         for (x = 0; x < floor_ptr->width; x++) {
-=======
-    for (y = 0; y < MAX_HGT; y++) {
-        for (x = 0; x < MAX_WID; x++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
             place_bold(player_ptr, y, x, GB_SOLID_PERM);
             floor_ptr->grid_array[y][x].info |= (CAVE_GLOW | CAVE_MARK);
         }
     }
 
-<<<<<<< HEAD
-    for (y = qy + 1; y < qy + floor_ptr->height - 1; y++)
-        for (x = qx + 1; x < qx + floor_ptr->width - 1; x++)
-=======
-    for (y = qy + 1; y < qy + SCREEN_HGT - 1; y++) {
-        for (x = qx + 1; x < qx + SCREEN_WID - 1; x++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+    for (y = qy + 1; y < qy + floor_ptr->height - 1; y++) {
+        for (x = qx + 1; x < qx + floor_ptr->width - 1; x++) {
             floor_ptr->grid_array[y][x].feat = feat_floor;
         }
     }
 
     build_arena(player_ptr, &y, &x);
     player_place(player_ptr, y, x);
-<<<<<<< HEAD
-    if (place_monster_aux(player_ptr, 0, floor_ptr->height - 10, player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET))
-=======
-    if (place_monster_aux(player_ptr, 0, player_ptr->y + 5, player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET)) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+    if (place_monster_aux(player_ptr, 0, floor_ptr->height - 10, player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET)) {
         return;
     }
 
@@ -204,37 +179,22 @@ static void build_battle(PlayerType *player_ptr, POSITION *y, POSITION *x)
         }
     }
 
-<<<<<<< HEAD
-    for (POSITION i = y_depth; i >= y_depth - 5; i--) {
-        for (POSITION j = x_left; j <= x_right; j++) {
-=======
-    for (int i = y_depth; i >= y_depth - 3; i--) {
+    for (int i = y_depth; i >= y_depth - 5; i--) {
         for (int j = x_left; j <= x_right; j++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
     }
 
-<<<<<<< HEAD
-    for (POSITION j = x_left; j <= x_left + 5; j++) {
-        for (POSITION i = y_height; i <= y_depth; i++) {
-=======
-    for (int j = x_left; j <= x_left + 17; j++) {
+    for (int j = x_left; j <= x_left + 5; j++) {
         for (int i = y_height; i <= y_depth; i++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
     }
 
-<<<<<<< HEAD
     for (POSITION j = x_right; j >= x_right - 5; j--) {
         for (POSITION i = y_height; i <= y_depth; i++) {
-=======
-    for (int j = x_right; j >= x_right - 17; j--) {
-        for (int i = y_height; i <= y_depth; i++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
@@ -278,15 +238,9 @@ static void generate_gambling_arena(PlayerType *player_ptr)
             place_bold(player_ptr, y, x, GB_SOLID_PERM);
             floor_ptr->grid_array[y][x].info |= (CAVE_GLOW | CAVE_MARK);
         }
-<<<<<<< HEAD
-    for (y = qy + 1; y < qy + ARENA_HGT - 1; y++)
-        for (x = qx + 1; x < qx + ARENA_WID - 1; x++)
-=======
     }
-
-    for (y = qy + 1; y < qy + SCREEN_HGT - 1; y++) {
-        for (x = qx + 1; x < qx + SCREEN_WID - 1; x++) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+    for (y = qy + 1; y < qy + ARENA_HGT - 1; y++) {
+        for (x = qx + 1; x < qx + ARENA_WID - 1; x++) {
             floor_ptr->grid_array[y][x].feat = feat_floor;
         }
     }

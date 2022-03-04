@@ -410,238 +410,238 @@ static bool decide_body_spec(PlayerType *player_ptr, chara_limit_type chara_limi
                 *accept = false;
             }
         }
-
-        return *accept;
     }
+    return *accept;
+}
 
-    static bool display_auto_roller_count(PlayerType * player_ptr, const int col)
-    {
-        if ((auto_round % AUTOROLLER_STEP) != 0) {
-            return false;
-        }
-
-        birth_put_stats(player_ptr);
-        if (auto_upper_round) {
-            put_str(format("%ld%09ld", auto_upper_round, auto_round), 10, col + 20);
-        } else {
-            put_str(format("%10ld", auto_round), 10, col + 20);
-        }
-        term_fresh();
-        inkey_scan = true;
-        if (inkey()) {
-            get_ahw(player_ptr);
-            get_history(player_ptr);
-            return true;
-        }
-
+static bool display_auto_roller_count(PlayerType *player_ptr, const int col)
+{
+    if ((auto_round % AUTOROLLER_STEP) != 0) {
         return false;
     }
 
-    static void exe_auto_roller(PlayerType * player_ptr, chara_limit_type chara_limit, const int col)
-    {
-        while (autoroller || autochara) {
-            get_stats(player_ptr);
-            auto_round++;
-            auto_roller_count();
-            bool accept = decide_initial_stat(player_ptr);
-            if (decide_body_spec(player_ptr, chara_limit, &accept)) {
-                return;
-            }
-
-            if (display_auto_roller_count(player_ptr, col)) {
-                return;
-            }
-        }
+    birth_put_stats(player_ptr);
+    if (auto_upper_round) {
+        put_str(format("%ld%09ld", auto_upper_round, auto_round), 10, col + 20);
+    } else {
+        put_str(format("%10ld", auto_round), 10, col + 20);
     }
-
-    static bool display_auto_roller_result(PlayerType * player_ptr, bool prev, char *c)
-    {
-        BIT_FLAGS mode = 0;
-        while (true) {
-            player_ptr->update |= (PU_BONUS | PU_HP);
-            update_creature(player_ptr);
-            player_ptr->chp = player_ptr->mhp;
-            player_ptr->csp = player_ptr->msp;
-            (void)display_player(player_ptr, mode);
-            term_gotoxy(2, 23);
-            const char b1 = '[';
-            term_addch(TERM_WHITE, b1);
-            term_addstr(-1, TERM_WHITE, _("'r' 次の数値", "'r'eroll"));
-            if (prev) {
-                term_addstr(-1, TERM_WHITE, _(", 'p' 前の数値", "'p'previous"));
-            }
-
-            if (mode) {
-                term_addstr(-1, TERM_WHITE, _(", 'h' その他の情報", ", 'h' Misc."));
-            } else {
-                term_addstr(-1, TERM_WHITE, _(", 'h' 生い立ちを表示", ", 'h'istory"));
-            }
-
-            term_addstr(-1, TERM_WHITE, _(", Enter この数値に決定", ", or Enter to accept"));
-            const char b2 = ']';
-            term_addch(TERM_WHITE, b2);
-            *c = inkey();
-            if (*c == 'Q') {
-                birth_quit();
-            }
-
-            if (*c == 'S') {
-                return false;
-            }
-
-            if (*c == '\r' || *c == '\n' || *c == ESCAPE) {
-                break;
-            }
-
-            if ((*c == ' ') || (*c == 'r')) {
-                break;
-            }
-
-            if (prev && (*c == 'p')) {
-                load_prev_data(player_ptr, true);
-                continue;
-            }
-
-            if ((*c == 'H') || (*c == 'h')) {
-                mode = ((mode != 0) ? 0 : 1);
-                continue;
-            }
-
-            birth_help_option(player_ptr, *c, BK_AUTO_ROLLER);
-            bell();
-        }
-
+    term_fresh();
+    inkey_scan = true;
+    if (inkey()) {
+        get_ahw(player_ptr);
+        get_history(player_ptr);
         return true;
     }
 
-    /*
-     * @brief オートロールを回して結果を表示し、その数値に決めるかさらに回すか確認する。
-     * @param player_ptr プレイヤーへの参照ポインタ
-     * @param chara_limit 社会的地位の要求水準
-     * @details 2つめの結果以降は、'p'キーで1つ前のロール結果に戻せる。
-     */
-    static bool display_auto_roller(PlayerType * player_ptr, chara_limit_type chara_limit)
-    {
-        bool prev = false;
+    return false;
+}
 
-        while (true) {
-            int col = 22;
-            if (autoroller || autochara) {
-                term_clear();
-                put_str(_("回数 :", "Round:"), 10, col + 10);
-                put_str(_("(ESCで停止)", "(Hit ESC to stop)"), 13, col + 13);
-            } else {
-                get_stats(player_ptr);
-                get_ahw(player_ptr);
-                get_history(player_ptr);
-            }
-
-            display_auto_roller_success_rate(col);
-            exe_auto_roller(player_ptr, chara_limit, col);
-            if (autoroller || autochara) {
-                sound(SOUND_LEVEL);
-            }
-
-            flush();
-
-            get_extra(player_ptr, true);
-            get_money(player_ptr);
-            player_ptr->chaos_patron = (int16_t)randint0(MAX_PATRON);
-
-            char c;
-            if (!display_auto_roller_result(player_ptr, prev, &c)) {
-                return false;
-            }
-
-            if (c == '\r' || c == '\n' || c == ESCAPE) {
-                break;
-            }
-
-            save_prev_data(player_ptr, &previous_char);
-            previous_char.quick_ok = false;
-            prev = true;
+static void exe_auto_roller(PlayerType *player_ptr, chara_limit_type chara_limit, const int col)
+{
+    while (autoroller || autochara) {
+        get_stats(player_ptr);
+        auto_round++;
+        auto_roller_count();
+        bool accept = decide_initial_stat(player_ptr);
+        if (decide_body_spec(player_ptr, chara_limit, &accept)) {
+            return;
         }
 
-        return true;
+        if (display_auto_roller_count(player_ptr, col)) {
+            return;
+        }
     }
+}
 
-    /*!
-     * @brief 名前と生い立ちを設定する
-     * @param player_ptr プレイヤーへの参照ポインタ
-     * @details ついでにステータス限界もここで決めている
-     */
-    static void set_name_history(PlayerType * player_ptr)
-    {
-        clear_from(23);
-        get_name(player_ptr);
-        process_player_name(player_ptr, w_ptr->creating_savefile);
-        edit_history(player_ptr);
-        get_max_stats(player_ptr);
-        initialize_virtues(player_ptr);
-        prt(_("[ 'Q' 中断, 'S' 初めから, Enter ゲーム開始 ]", "['Q'uit, 'S'tart over, or Enter to continue]"), 23, _(14, 10));
-    }
-
-    /*!
-     * @brief プレイヤーキャラ作成ウィザード
-     * @details
-     * The delay may be reduced, but is recommended to keep players
-     * from continuously rolling up characters, which can be VERY
-     * expensive CPU wise.  And it cuts down on player stupidity.
-     */
-    bool player_birth_wizard(PlayerType * player_ptr)
-    {
-        display_initial_birth_message(player_ptr);
-        const char p2 = ')';
-        char buf[80];
-        for (int n = 0; n < MAX_SEXES; n++) {
-            sp_ptr = &sex_info[n];
-            sprintf(buf, _("%c%c%s", "%c%c %s"), I2A(n), p2, sp_ptr->title);
-            put_str(buf, 12 + (n / 5), 2 + 15 * (n % 5));
+static bool display_auto_roller_result(PlayerType *player_ptr, bool prev, char *c)
+{
+    BIT_FLAGS mode = 0;
+    while (true) {
+        player_ptr->update |= (PU_BONUS | PU_HP);
+        update_creature(player_ptr);
+        player_ptr->chp = player_ptr->mhp;
+        player_ptr->csp = player_ptr->msp;
+        (void)display_player(player_ptr, mode);
+        term_gotoxy(2, 23);
+        const char b1 = '[';
+        term_addch(TERM_WHITE, b1);
+        term_addstr(-1, TERM_WHITE, _("'r' 次の数値", "'r'eroll"));
+        if (prev) {
+            term_addstr(-1, TERM_WHITE, _(", 'p' 前の数値", "'p'previous"));
         }
 
-        if (!let_player_build_character(player_ptr)) {
-            return false;
+        if (mode) {
+            term_addstr(-1, TERM_WHITE, _(", 'h' その他の情報", ", 'h' Misc."));
+        } else {
+            term_addstr(-1, TERM_WHITE, _(", 'h' 生い立ちを表示", ", 'h'istory"));
         }
 
-        display_initial_options(player_ptr);
-        if (autoroller || autochara) {
-            auto_round = 0L;
-            auto_upper_round = 0L;
-            autoroll_chance = 0L;
-        }
-
-        if (autoroller) {
-            if (!get_stat_limits(player_ptr)) {
-                return false;
-            }
-        }
-
-        chara_limit_type chara_limit;
-        initialize_chara_limit(&chara_limit);
-        if (autochara) {
-            if (!get_chara_limits(player_ptr, &chara_limit)) {
-                return false;
-            }
-        }
-
-        clear_from(10);
-        init_turn(player_ptr);
-        if (!display_auto_roller(player_ptr, chara_limit)) {
-            return false;
-        }
-
-        set_name_history(player_ptr);
-        char c = inkey();
-        if (c == 'Q') {
+        term_addstr(-1, TERM_WHITE, _(", Enter この数値に決定", ", or Enter to accept"));
+        const char b2 = ']';
+        term_addch(TERM_WHITE, b2);
+        *c = inkey();
+        if (*c == 'Q') {
             birth_quit();
         }
 
-        if (c == 'S') {
+        if (*c == 'S') {
             return false;
         }
 
-        init_dungeon_quests(player_ptr);
-        save_prev_data(player_ptr, &previous_char);
-        previous_char.quick_ok = true;
-        return true;
+        if (*c == '\r' || *c == '\n' || *c == ESCAPE) {
+            break;
+        }
+
+        if ((*c == ' ') || (*c == 'r')) {
+            break;
+        }
+
+        if (prev && (*c == 'p')) {
+            load_prev_data(player_ptr, true);
+            continue;
+        }
+
+        if ((*c == 'H') || (*c == 'h')) {
+            mode = ((mode != 0) ? 0 : 1);
+            continue;
+        }
+
+        birth_help_option(player_ptr, *c, BK_AUTO_ROLLER);
+        bell();
     }
+
+    return true;
+}
+
+/*
+ * @brief オートロールを回して結果を表示し、その数値に決めるかさらに回すか確認する。
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param chara_limit 社会的地位の要求水準
+ * @details 2つめの結果以降は、'p'キーで1つ前のロール結果に戻せる。
+ */
+static bool display_auto_roller(PlayerType *player_ptr, chara_limit_type chara_limit)
+{
+    bool prev = false;
+
+    while (true) {
+        int col = 22;
+        if (autoroller || autochara) {
+            term_clear();
+            put_str(_("回数 :", "Round:"), 10, col + 10);
+            put_str(_("(ESCで停止)", "(Hit ESC to stop)"), 13, col + 13);
+        } else {
+            get_stats(player_ptr);
+            get_ahw(player_ptr);
+            get_history(player_ptr);
+        }
+
+        display_auto_roller_success_rate(col);
+        exe_auto_roller(player_ptr, chara_limit, col);
+        if (autoroller || autochara) {
+            sound(SOUND_LEVEL);
+        }
+
+        flush();
+
+        get_extra(player_ptr, true);
+        get_money(player_ptr);
+        player_ptr->chaos_patron = (int16_t)randint0(MAX_PATRON);
+
+        char c;
+        if (!display_auto_roller_result(player_ptr, prev, &c)) {
+            return false;
+        }
+
+        if (c == '\r' || c == '\n' || c == ESCAPE) {
+            break;
+        }
+
+        save_prev_data(player_ptr, &previous_char);
+        previous_char.quick_ok = false;
+        prev = true;
+    }
+
+    return true;
+}
+
+/*!
+ * @brief 名前と生い立ちを設定する
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @details ついでにステータス限界もここで決めている
+ */
+static void set_name_history(PlayerType *player_ptr)
+{
+    clear_from(23);
+    get_name(player_ptr);
+    process_player_name(player_ptr, w_ptr->creating_savefile);
+    edit_history(player_ptr);
+    get_max_stats(player_ptr);
+    initialize_virtues(player_ptr);
+    prt(_("[ 'Q' 中断, 'S' 初めから, Enter ゲーム開始 ]", "['Q'uit, 'S'tart over, or Enter to continue]"), 23, _(14, 10));
+}
+
+/*!
+ * @brief プレイヤーキャラ作成ウィザード
+ * @details
+ * The delay may be reduced, but is recommended to keep players
+ * from continuously rolling up characters, which can be VERY
+ * expensive CPU wise.  And it cuts down on player stupidity.
+ */
+bool player_birth_wizard(PlayerType *player_ptr)
+{
+    display_initial_birth_message(player_ptr);
+    const char p2 = ')';
+    char buf[80];
+    for (int n = 0; n < MAX_SEXES; n++) {
+        sp_ptr = &sex_info[n];
+        sprintf(buf, _("%c%c%s", "%c%c %s"), I2A(n), p2, sp_ptr->title);
+        put_str(buf, 12 + (n / 5), 2 + 15 * (n % 5));
+    }
+
+    if (!let_player_build_character(player_ptr)) {
+        return false;
+    }
+
+    display_initial_options(player_ptr);
+    if (autoroller || autochara) {
+        auto_round = 0L;
+        auto_upper_round = 0L;
+        autoroll_chance = 0L;
+    }
+
+    if (autoroller) {
+        if (!get_stat_limits(player_ptr)) {
+            return false;
+        }
+    }
+
+    chara_limit_type chara_limit;
+    initialize_chara_limit(&chara_limit);
+    if (autochara) {
+        if (!get_chara_limits(player_ptr, &chara_limit)) {
+            return false;
+        }
+    }
+
+    clear_from(10);
+    init_turn(player_ptr);
+    if (!display_auto_roller(player_ptr, chara_limit)) {
+        return false;
+    }
+
+    set_name_history(player_ptr);
+    char c = inkey();
+    if (c == 'Q') {
+        birth_quit();
+    }
+
+    if (c == 'S') {
+        return false;
+    }
+
+    init_dungeon_quests(player_ptr);
+    save_prev_data(player_ptr, &previous_char);
+    previous_char.quick_ok = true;
+    return true;
+}

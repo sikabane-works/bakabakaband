@@ -28,9 +28,9 @@
 #include "monster/smart-learn-types.h"
 #include "mspell/summon-checker.h"
 #include "spell/summon-types.h"
-#include "system/h-type.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/h-type.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
@@ -148,11 +148,7 @@ bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_i
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
     POSITION y, x;
-<<<<<<< HEAD
-    if (!mon_scatter(player_ptr, r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1))
-=======
     if (!mon_scatter(player_ptr, m_ptr->r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1)) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         return false;
     }
 
@@ -160,11 +156,7 @@ bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_i
         mode |= PM_NO_PET;
     }
 
-<<<<<<< HEAD
-    if (!place_monster_aux(player_ptr, m_idx, y, x, r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY)))
-=======
     if (!place_monster_aux(player_ptr, m_idx, y, x, m_ptr->r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY))) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         return false;
     }
 
@@ -315,21 +307,14 @@ bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     place_monster_m_idx = hack_m_idx_ii;
 
     /* Reinforcement */
-<<<<<<< HEAD
     for (auto reinforce : r_ptr->reinforces) {
         auto mon_idx = std::get<0>(reinforce);
         auto dn = std::get<1>(reinforce);
         auto ds = std::get<2>(reinforce);
-        if (!mon_idx)
-            break;
-        int n = damroll(dn, ds);
-=======
-    for (int i = 0; i < 6; i++) {
-        if (!r_ptr->reinforce_id[i]) {
+        if (!mon_idx) {
             break;
         }
-        int n = damroll(r_ptr->reinforce_dd[i], r_ptr->reinforce_ds[i]);
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+        int n = damroll(dn, ds);
         for (int j = 0; j < n; j++) {
             POSITION nx, ny, d;
             const POSITION scatter_min = 7;
@@ -485,13 +470,8 @@ bool alloc_guardian(PlayerType *player_ptr, bool def_val)
     auto *floor_ptr = player_ptr->current_floor_ptr;
     bool is_guardian_applicable = guardian > 0;
     is_guardian_applicable &= d_info[player_ptr->dungeon_idx].maxdepth == floor_ptr->dun_level;
-<<<<<<< HEAD
     is_guardian_applicable &= r_info[guardian].cur_num < r_info[guardian].mob_num;
-    if (!is_guardian_applicable)
-=======
-    is_guardian_applicable &= r_info[guardian].cur_num < r_info[guardian].max_num;
     if (!is_guardian_applicable) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         return def_val;
     }
 

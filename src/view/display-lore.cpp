@@ -651,29 +651,29 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
         if (!is_reinforced) {
             continue;
         }
-    }
 
-    monster_race *rf_ptr = &r_info[mon_idx];
-    if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-        hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
-        continue;
-    }
+        monster_race *rf_ptr = &r_info[mon_idx];
+        if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+            hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
+            continue;
+        }
 
 #ifdef JP
-    hooked_roff(format("、 %dd%d 体の%s", dn, ds, rf_ptr->name.c_str()));
+        hooked_roff(format("、 %dd%d 体の%s", dn, ds, rf_ptr->name.c_str()));
 #else
-    bool plural = (dn * ds > 1);
-    GAME_TEXT name[MAX_NLEN];
-    strcpy(name, rf_ptr->name.c_str());
-    if (plural) {
-        plural_aux(name);
-    }
-    hooked_roff(format(",%dd%d %s", dn, ds, name));
+        bool plural = (dn * ds > 1);
+        GAME_TEXT name[MAX_NLEN];
+        strcpy(name, rf_ptr->name.c_str());
+        if (plural) {
+            plural_aux(name);
+        }
+        hooked_roff(format(",%dd%d %s", dn, ds, name));
 #endif
+    }
+
+    hooked_roff(_("で成り立っている。", "."));
 }
 
-hooked_roff(_("で成り立っている。", "."));
-}
 
 void display_monster_collective(lore_type *lore_ptr)
 {

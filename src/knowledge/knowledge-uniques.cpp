@@ -69,19 +69,11 @@ static bool sweep_uniques(monster_race *r_ptr, bool is_alive)
     }
 
     if (is_alive) {
-<<<<<<< HEAD
-        if (r_ptr->mob_num == 0)
-=======
-        if (r_ptr->max_num == 0) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+        if (r_ptr->mob_num == 0) {
             return false;
         }
     } else {
-<<<<<<< HEAD
-        if (r_ptr->mob_num > 0)
-=======
-        if (r_ptr->max_num > 0) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+        if (r_ptr->mob_num > 0) {
             return false;
         }
     }

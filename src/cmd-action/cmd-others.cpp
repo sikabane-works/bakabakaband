@@ -175,41 +175,42 @@ void do_cmd_suicide(PlayerType *player_ptr)
             return;
         }
     } else {
-        if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? ")))
+        if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? "))) {
             return;
+        }
     }
-}
 
-/* Special Verification for suicide */
-prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
+    /* Special Verification for suicide */
+    prt(_("確認のため '@' を押して下さい。", "Please verify SUICIDE by typing the '@' sign: "), 0, 0);
 
-flush();
-i = inkey();
-prt("", 0, 0);
-if (i != '@')
-    return;
+    flush();
+    i = inkey();
+    prt("", 0, 0);
+    if (i != '@') {
+        return;
+    }
 
-if (!decide_suicide())
-    return;
-}
+    if (!decide_suicide()) {
+        return;
+    }
 
-if (player_ptr->last_message) {
-    string_free(player_ptr->last_message);
-}
+    if (player_ptr->last_message) {
+        string_free(player_ptr->last_message);
+    }
 
-player_ptr->last_message = nullptr;
-player_ptr->playing = false;
-player_ptr->is_dead = true;
-player_ptr->leaving = true;
-if (w_ptr->total_winner) {
-    accept_winner_message(player_ptr);
-    add_retired_class(player_ptr->pclass);
-} else {
-    play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_GAMEOVER);
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("ダンジョンの探索に飽きて自殺した。", "got tired to commit suicide."));
-    exe_write_diary(player_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
-}
+    player_ptr->last_message = nullptr;
+    player_ptr->playing = false;
+    player_ptr->is_dead = true;
+    player_ptr->leaving = true;
+    if (w_ptr->total_winner) {
+        accept_winner_message(player_ptr);
+        add_retired_class(player_ptr->pclass);
+    } else {
+        play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_GAMEOVER);
+        exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("ダンジョンの探索に飽きて自殺した。", "got tired to commit suicide."));
+        exe_write_diary(player_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
+        exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
+    }
 
-(void)strcpy(player_ptr->died_from, _("途中終了", "Quitting"));
+    (void)strcpy(player_ptr->died_from, _("途中終了", "Quitting"));
 }

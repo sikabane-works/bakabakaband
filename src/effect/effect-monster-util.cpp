@@ -60,7 +60,6 @@ effect_monster_type *initialize_effect_monster(PlayerType *player_ptr, effect_mo
     auto *floor_ptr = player_ptr->current_floor_ptr;
     em_ptr->g_ptr = &floor_ptr->grid_array[em_ptr->y][em_ptr->x];
     em_ptr->m_ptr = &floor_ptr->m_list[em_ptr->g_ptr->m_idx];
-    em_ptr->m_caster_ptr = (em_ptr->who > 0) ? &floor_ptr->m_list[em_ptr->who] : nullptr;
     em_ptr->r_ptr = &r_info[em_ptr->m_ptr->r_idx];
     em_ptr->seen = em_ptr->m_ptr->ml;
     em_ptr->seen_msg = is_seen(player_ptr, em_ptr->m_ptr);
@@ -80,6 +79,6 @@ effect_monster_type *initialize_effect_monster(PlayerType *player_ptr, effect_mo
     em_ptr->photo = 0;
     em_ptr->note = nullptr;
     em_ptr->note_dies = extract_note_dies(real_r_idx(em_ptr->m_ptr));
-    em_ptr->caster_lev = (em_ptr->who > 0) ? r_info[em_ptr->m_caster_ptr->r_idx].level : (player_ptr->lev * 2);
+    em_ptr->caster_lev = (em_ptr->who > 0) ? r_info[em_ptr->m_ptr->r_idx].level : (player_ptr->lev * 2);
     return em_ptr;
 }

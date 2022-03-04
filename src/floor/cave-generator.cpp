@@ -95,11 +95,10 @@ static void place_cave_contents(PlayerType *player_ptr, dun_data_type *dd_ptr, d
         add_river(floor_ptr, dd_ptr);
     }
 
-        //追加でさらに川を増やす。
-        if (one_in_(4)) {
-            while (!one_in_(3)) {
-                add_river(floor_ptr, dd_ptr);
-            }
+    //追加でさらに川を増やす。
+    if (one_in_(4)) {
+        while (!one_in_(3)) {
+            add_river(floor_ptr, dd_ptr);
         }
     }
 
@@ -227,16 +226,18 @@ static bool make_one_floor(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeo
     }
 
     dt_ptr = initialize_dt_type(&tmp_dt);
-    if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+    if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr)) {
         return false;
+    }
 
     // 通路の過剰生成処理
     if (one_in_(2)) {
         int num = randint1(100);
         for (int i = 0; i < num; i++) {
             dt_ptr = initialize_dt_type(&tmp_dt);
-            if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr))
+            if (!make_centers(player_ptr, dd_ptr, d_ptr, dt_ptr)) {
                 return false;
+            }
         }
     }
 
@@ -272,11 +273,7 @@ static bool switch_making_floor(PlayerType *player_ptr, dun_data_type *dd_ptr, d
         return true;
     }
 
-<<<<<<< HEAD
-    if (!make_one_floor(player_ptr, dd_ptr, d_ptr))
-=======
     if (!make_one_floor(player_ptr, dd_ptr, d_ptr)) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         return false;
     }
 
@@ -355,7 +352,6 @@ static bool check_place_necessary_objects(PlayerType *player_ptr, dun_data_type 
 static void decide_dungeon_data_allocation(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeon_type *d_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-<<<<<<< HEAD
     dd_ptr->alloc_object_num = floor_ptr->dun_level / 3 + 5;
     if (dd_ptr->alloc_object_num > 30)
         dd_ptr->alloc_object_num = 30;
@@ -365,20 +361,7 @@ static void decide_dungeon_data_allocation(PlayerType *player_ptr, dun_data_type
     }
 
     dd_ptr->alloc_monster_num = d_ptr->min_m_alloc_level * d_ptr->monster_rate / 100;
-    if (floor_ptr->height >= MAX_HGT && floor_ptr->width >= MAX_WID)
-=======
-    dd_ptr->alloc_object_num = floor_ptr->dun_level / 3;
-    if (dd_ptr->alloc_object_num > 10) {
-        dd_ptr->alloc_object_num = 10;
-    }
-
-    if (dd_ptr->alloc_object_num < 2) {
-        dd_ptr->alloc_object_num = 2;
-    }
-
-    dd_ptr->alloc_monster_num = d_ptr->min_m_alloc_level;
     if (floor_ptr->height >= MAX_HGT && floor_ptr->width >= MAX_WID) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         return;
     }
 
@@ -402,13 +385,8 @@ static bool allocate_dungeon_data(PlayerType *player_ptr, dun_data_type *dd_ptr,
         (void)alloc_monster(player_ptr, 0, PM_ALLOW_SLEEP, summon_specific);
     }
 
-<<<<<<< HEAD
     alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num * d_ptr->trap_rate / 100));
-    if (d_ptr->flags.has_not(DungeonFeatureType::NO_CAVE))
-=======
-    alloc_object(player_ptr, ALLOC_SET_BOTH, ALLOC_TYP_TRAP, randint1(dd_ptr->alloc_object_num));
     if (d_ptr->flags.has_not(DungeonFeatureType::NO_CAVE)) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         alloc_object(player_ptr, ALLOC_SET_CORR, ALLOC_TYP_RUBBLE, randint1(dd_ptr->alloc_object_num));
     }
 
@@ -435,12 +413,8 @@ static void decide_grid_glowing(floor_type *floor_ptr, dun_data_type *dd_ptr, du
     bool is_empty_or_dark = dd_ptr->empty_level;
     is_empty_or_dark &= !one_in_(DARK_EMPTY) || (randint1(100) > floor_ptr->dun_level);
     is_empty_or_dark &= d_ptr->flags.has_not(DungeonFeatureType::DARKNESS);
-<<<<<<< HEAD
     is_empty_or_dark &= d_ptr->flags.has(DungeonFeatureType::ALWAY_LIGHT);
-    if (!is_empty_or_dark)
-=======
     if (!is_empty_or_dark) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         return;
     }
 

@@ -47,8 +47,8 @@
 #include "system/system-variables.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 
 static void write_pet_death(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
@@ -152,7 +152,7 @@ static void drop_corpse(PlayerType *player_ptr, monster_death_type *md_ptr)
 
         q_ptr->prep(lookup_kind(ItemKindType::CORPSE, SV_SOUL));
         q_ptr->pval = md_ptr->m_ptr->r_idx;
-        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);    
+        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     }
 }
 
@@ -271,13 +271,11 @@ static void decide_drop_quality(monster_death_type *md_ptr)
 
     if (md_ptr->r_ptr->flags1 & RF1_DROP_GREAT) {
         md_ptr->mo_mode |= (AM_GOOD | AM_GREAT);
-<<<<<<< HEAD
-
-    if (md_ptr->r_ptr->flags1 & RF1_DROP_NASTY)
-        md_ptr->mo_mode |= AM_NASTY;
-=======
     }
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+
+    if (md_ptr->r_ptr->flags1 & RF1_DROP_NASTY) {
+        md_ptr->mo_mode |= AM_NASTY;
+    }
 }
 
 static int decide_drop_numbers(PlayerType *player_ptr, monster_death_type *md_ptr, const bool drop_item)
@@ -452,11 +450,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
     auto *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->object_level = (floor_ptr->dun_level + md_ptr->r_ptr->level) / 2;
     drop_items_golds(player_ptr, md_ptr, drop_numbers);
-<<<<<<< HEAD
-    if (((md_ptr->r_ptr->flags1 & RF1_QUESTOR) == 0) || player_ptr->phase_out || (md_ptr->m_ptr->r_idx != MON_MELKO) || md_ptr->cloned)
-=======
-    if (((md_ptr->r_ptr->flags1 & RF1_QUESTOR) == 0) || player_ptr->phase_out || (md_ptr->m_ptr->r_idx != MON_SERPENT) || md_ptr->cloned) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
+    if (((md_ptr->r_ptr->flags1 & RF1_QUESTOR) == 0) || player_ptr->phase_out || (md_ptr->m_ptr->r_idx != MON_MELKO) || md_ptr->cloned) {
         return;
     }
 

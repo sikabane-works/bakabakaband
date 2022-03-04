@@ -112,10 +112,7 @@ const std::vector<named_num> gf_descriptions = {
     { "GF_HUNGRY", AttributeType::HUNGRY },
     { "GF_MONSTER_SHOOT", AttributeType::MONSTER_SHOOT },
     { "GF_MONSTER_MELEE", AttributeType::MONSTER_MELEE },
-<<<<<<< HEAD
     { "GF_DIRT", AttributeType::DIRT },
-=======
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
 };
 
 //clang-format on

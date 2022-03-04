@@ -95,43 +95,10 @@ MONRACE_IDX get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level
     int r_idx;
     monster_race *r_ptr;
 
-<<<<<<< HEAD
-    if (max_level > MAX_DEPTH - 1)
-=======
-    int pls_kakuritu, pls_max_level, over_days;
-    int delay = mysqrt(max_level * 10000L) + (max_level * 5);
-
-    /* town max_level : same delay as 10F, no nasty mons till day18 */
-    if (!max_level) {
-        delay = 360;
-    }
-
     if (max_level > MAX_DEPTH - 1) {
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
         max_level = MAX_DEPTH - 1;
     }
 
-<<<<<<< HEAD
-=======
-    /* +1 per day after the base date */
-    /* base dates : day5(1F), day18(10F,0F), day34(30F), day53(60F), day69(90F) */
-    over_days = std::max<int>(0, w_ptr->dungeon_turn / (TURNS_PER_TICK * 10000L) - delay / 20);
-
-    /* starts from 1/25, reaches 1/3 after 44days from a max_level dependent base date */
-    pls_kakuritu = std::max(NASTY_MON_MAX, NASTY_MON_BASE - over_days / 2);
-    /* starts from 0, reaches +25lv after 75days from a max_level dependent base date */
-    pls_max_level = std::min(NASTY_MON_PLUS_MAX, over_days / 3);
-
-    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::MAZE)) {
-        pls_kakuritu = std::min(pls_kakuritu / 2, pls_kakuritu - 10);
-        if (pls_kakuritu < 2) {
-            pls_kakuritu = 2;
-        }
-        pls_max_level += 2;
-        max_level += 3;
-    }
-
->>>>>>> 6775f21bce2e4a3c6870088f2d10016e3bb4e6c8
     /* Boost the max_level */
     if ((option & GMN_ARENA) || d_info[player_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::BEGINNER)) {
         /* Nightmare mode allows more out-of depth monsters */
