@@ -16,6 +16,7 @@ public:
 
     bool is_valid() const;
     int calc_eval() const;
+    bool is_bounty(bool unachieved_only) const;
     int calc_power() const;
 
 private:
