@@ -15,40 +15,34 @@ const player_sex_type *sp_ptr;
  *      Winner
  * </pre>
  */
-const player_sex_type sex_info[MAX_SEXES] =
-{
-	{
+const player_sex_type sex_info[MAX_SEXES] = {
+    {
 #ifdef JP
-		"女性",
-		"クイーン",
+        "女性",
+        "クイーン",
 #endif
-		"Female",
-		"Queen"
-	},
-	{
+        "Female",
+        "Queen" },
+    {
 #ifdef JP
-		"男性",
-		"キング",
+        "男性",
+        "キング",
 #endif
-		"Male",
-		"King"
-	},
-	{
+        "Male",
+        "King" },
+    {
 #ifdef JP
-		"両性",
-		"ロード",
+        "両性",
+        "ロード",
 #endif
-		"Bisexual",
-		"Lord"
-	},
-	{
+        "Bisexual",
+        "Lord" },
+    {
 #ifdef JP
-		"無性",
-		"ロード",
+        "無性",
+        "ロード",
 #endif
-		"Asexual",
-		"Lord"
-	}
+        "Asexual",
+        "Lord" }
 
 };
-

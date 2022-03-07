@@ -151,7 +151,7 @@ void OtherItemsEnchanter::generate_corpse()
         auto &r_ref = r_info[r_idx];
         auto check = (floor_ptr->dun_level < r_ref.level) ? (r_ref.level - floor_ptr->dun_level) : 0;
         if ((r_ref.rarity == 0) || none_bits(r_ref.flags9, match) || (randint0(check) > 0)) {
-            continue;
+            break;
         }
 
         break;

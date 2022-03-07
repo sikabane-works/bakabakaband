@@ -34,8 +34,8 @@
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/object-type-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "system/system-variables.h"
 #include "target/projection-path-calculator.h"
@@ -176,10 +176,12 @@ bool make_gold(PlayerType *player_ptr, ObjectType *j_ptr)
         i += randint1(floor_ptr->object_level + 1);
     }
 
-    if (coin_type)
+    if (coin_type) {
         i = coin_type;
-    if (i >= MAX_GOLD)
+    }
+    if (i >= MAX_GOLD) {
         i = MAX_GOLD - 1;
+    }
     j_ptr->prep(OBJ_GOLD_LIST + i);
 
     int boost = floor_ptr->object_level > 20 ? ((floor_ptr->object_level - 10) * (floor_ptr->object_level - 10) / 100) : 1;
@@ -202,8 +204,9 @@ void delete_all_items_from_floor(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     grid_type *g_ptr;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (!in_bounds(floor_ptr, y, x))
+    if (!in_bounds(floor_ptr, y, x)) {
         return;
+    }
 
     g_ptr = &floor_ptr->grid_array[y][x];
     for (const auto this_o_idx : g_ptr->o_idx_list) {
@@ -230,10 +233,11 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
 
     auto *o_ptr = &floor_ptr->o_list[item];
     num += o_ptr->number;
-    if (num > 255)
+    if (num > 255) {
         num = 255;
-    else if (num < 0)
+    } else if (num < 0) {
         num = 0;
+    }
 
     num -= o_ptr->number;
     o_ptr->number += num;
@@ -250,10 +254,12 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
 void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &player_ptr->current_floor_ptr->o_list[item];
-    if (!o_ptr->k_idx)
+    if (!o_ptr->k_idx) {
         return;
-    if (o_ptr->number)
+    }
+    if (o_ptr->number) {
         return;
+    }
 
     delete_object_idx(player_ptr, item);
 
@@ -359,8 +365,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
 #else
         msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
 #endif
-        if (w_ptr->wizard)
+        if (w_ptr->wizard) {
             msg_print(_("(破損)", "(breakage)"));
+        }
 
         return 0;
     }
@@ -375,44 +382,54 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
         for (dx = -3; dx <= 3; dx++) {
             bool comb = false;
             d = (dy * dy) + (dx * dx);
-            if (d > 10)
+            if (d > 10) {
                 continue;
+            }
 
             ty = y + dy;
             tx = x + dx;
-            if (!in_bounds(floor_ptr, ty, tx))
+            if (!in_bounds(floor_ptr, ty, tx)) {
                 continue;
-            if (!projectable(player_ptr, y, x, ty, tx))
+            }
+            if (!projectable(player_ptr, y, x, ty, tx)) {
                 continue;
+            }
 
             g_ptr = &floor_ptr->grid_array[ty][tx];
-            if (!cave_drop_bold(floor_ptr, ty, tx))
+            if (!cave_drop_bold(floor_ptr, ty, tx)) {
                 continue;
+            }
 
             k = 0;
             for (const auto this_o_idx : g_ptr->o_idx_list) {
                 ObjectType *o_ptr;
                 o_ptr = &floor_ptr->o_list[this_o_idx];
-                if (object_similar(o_ptr, j_ptr))
+                if (object_similar(o_ptr, j_ptr)) {
                     comb = true;
+                }
 
                 k++;
             }
 
-            if (!comb)
+            if (!comb) {
                 k++;
-            if (k > 99)
+            }
+            if (k > 99) {
                 continue;
+            }
 
             s = 1000 - (d + k * 5);
-            if (s < bs)
+            if (s < bs) {
                 continue;
+            }
 
-            if (s > bs)
+            if (s > bs) {
                 bn = 0;
+            }
 
-            if ((++bn >= 2) && !one_in_(bn))
+            if ((++bn >= 2) && !one_in_(bn)) {
                 continue;
+            }
 
             bs = s;
             by = ty;
@@ -428,8 +445,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
 #else
         msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
 #endif
-        if (w_ptr->wizard)
+        if (w_ptr->wizard) {
             msg_print(_("(床スペースがない)", "(no floor space)"));
+        }
 
         return 0;
     }
@@ -438,14 +456,16 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
         ty = rand_spread(by, 1);
         tx = rand_spread(bx, 1);
 
-        if (!in_bounds(floor_ptr, ty, tx))
+        if (!in_bounds(floor_ptr, ty, tx)) {
             continue;
+        }
 
         by = ty;
         bx = tx;
 
-        if (!cave_drop_bold(floor_ptr, by, bx))
+        if (!cave_drop_bold(floor_ptr, by, bx)) {
             continue;
+        }
 
         flag = true;
     }
@@ -454,8 +474,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
         int candidates = 0, pick;
         for (ty = 1; ty < floor_ptr->height - 1; ty++) {
             for (tx = 1; tx < floor_ptr->width - 1; tx++) {
-                if (cave_drop_bold(floor_ptr, ty, tx))
+                if (cave_drop_bold(floor_ptr, ty, tx)) {
                     candidates++;
+                }
             }
         }
 
@@ -466,8 +487,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
             msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
 #endif
 
-            if (w_ptr->wizard)
+            if (w_ptr->wizard) {
                 msg_print(_("(床スペースがない)", "(no floor space)"));
+            }
 
             if (preserve_mode) {
                 if (j_ptr->is_fixed_artifact() && !j_ptr->is_known()) {
@@ -483,13 +505,15 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
             for (tx = 1; tx < floor_ptr->width - 1; tx++) {
                 if (cave_drop_bold(floor_ptr, ty, tx)) {
                     pick--;
-                    if (!pick)
+                    if (!pick) {
                         break;
+                    }
                 }
             }
 
-            if (!pick)
+            if (!pick) {
                 break;
+            }
         }
 
         by = ty;
@@ -507,8 +531,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
         }
     }
 
-    if (!done)
+    if (!done) {
         o_idx = o_pop(floor_ptr);
+    }
 
     if (!done && !o_idx) {
 #ifdef JP
@@ -516,8 +541,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
 #else
         msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
 #endif
-        if (w_ptr->wizard)
+        if (w_ptr->wizard) {
             msg_print(_("(アイテムが多過ぎる)", "(too many objects)"));
+        }
 
         if (j_ptr->is_fixed_artifact()) {
             a_info[j_ptr->fixed_artifact_idx].cur_num = 0;
@@ -540,8 +566,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
     lite_spot(player_ptr, by, bx);
     sound(SOUND_DROP);
 
-    if (player_bold(player_ptr, by, bx))
+    if (player_bold(player_ptr, by, bx)) {
         set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST);
+    }
 
     if (chance && player_bold(player_ptr, by, bx)) {
         msg_print(_("何かが足下に転がってきた。", "You feel something roll beneath your feet."));
@@ -559,10 +586,12 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ObjectType *j_ptr, PERCENTAGE chanc
 void floor_item_charges(floor_type *floor_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &floor_ptr->o_list[item];
-    if ((o_ptr->tval != ItemKindType::STAFF) && (o_ptr->tval != ItemKindType::WAND))
+    if ((o_ptr->tval != ItemKindType::STAFF) && (o_ptr->tval != ItemKindType::WAND)) {
         return;
-    if (!o_ptr->is_known())
+    }
+    if (!o_ptr->is_known()) {
         return;
+    }
 
 #ifdef JP
     if (o_ptr->pval <= 0) {
@@ -604,23 +633,27 @@ void floor_item_describe(PlayerType *player_ptr, INVENTORY_IDX item)
 /*
  * Choose an item and get auto-picker entry from it.
  */
-ObjectType *choose_object(PlayerType *player_ptr, OBJECT_IDX *idx, concptr q, concptr s, BIT_FLAGS option, const ItemTester& item_tester)
+ObjectType *choose_object(PlayerType *player_ptr, OBJECT_IDX *idx, concptr q, concptr s, BIT_FLAGS option, const ItemTester &item_tester)
 {
     OBJECT_IDX item;
 
-    if (idx)
+    if (idx) {
         *idx = INVEN_NONE;
+    }
 
     FixItemTesterSetter setter(item_tester);
 
-    if (!get_item(player_ptr, &item, q, s, option, item_tester))
+    if (!get_item(player_ptr, &item, q, s, option, item_tester)) {
         return nullptr;
+    }
 
-    if (idx)
+    if (idx) {
         *idx = item;
+    }
 
-    if (item == INVEN_FORCE)
+    if (item == INVEN_FORCE) {
         return nullptr;
+    }
 
     return ref_item(player_ptr, item);
 }

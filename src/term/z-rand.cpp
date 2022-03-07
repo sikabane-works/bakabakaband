@@ -98,8 +98,9 @@ int16_t randnor(int mean, int stand)
 int16_t damroll(DICE_NUMBER num, DICE_SID sides)
 {
     int i, sum = 0;
-    for (i = 0; i < num; i++)
+    for (i = 0; i < num; i++) {
         sum += randint1(sides);
+    }
     return (int16_t)(sum);
 }
 
@@ -120,8 +121,9 @@ int32_t div_round(int32_t n, int32_t d)
     int32_t tmp;
 
     /* Refuse to divide by zero */
-    if (!d)
+    if (!d) {
         return n;
+    }
 
     /* Division */
     tmp = n / d;
@@ -129,10 +131,11 @@ int32_t div_round(int32_t n, int32_t d)
     /* Rounding */
     if ((std::abs(n) % std::abs(d)) > randint0(std::abs(d))) {
         /* Increase the absolute value */
-        if (n * d > 0L)
+        if (n * d > 0L) {
             tmp += 1L;
-        else
+        } else {
             tmp -= 1L;
+        }
     }
 
     /* Return */
