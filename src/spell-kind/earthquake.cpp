@@ -383,6 +383,6 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
             set_superstealth(player_ptr, false);
         }
 
-        return true;
     }
+    return true;
 }
