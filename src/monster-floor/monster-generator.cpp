@@ -143,7 +143,7 @@ bool mon_scatter(PlayerType *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSITI
  * @details
  * Note that "reproduction" REQUIRES empty space.
  */
-bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_idx, bool clone, BIT_FLAGS mode)
+bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool clone, BIT_FLAGS mode)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
