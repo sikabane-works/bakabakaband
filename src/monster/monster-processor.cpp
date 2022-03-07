@@ -461,7 +461,7 @@ bool decide_monster_multiplication(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
     }
 
     if ((k < 5) && (!k || !randint0(k * MON_MULT_ADJ))) {
-        if (multiply_monster(player_ptr, m_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+        if (multiply_monster(player_ptr, m_idx, m_ptr->r_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
             if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr)) {
                 r_ptr->r_flags2 |= RF2_MULTIPLY;
             }
@@ -568,7 +568,7 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
         auto deno = std::get<1>(spawn_info);
         MONRACE_IDX idx = std::get<2>(spawn_info);
         if (randint1(deno) <= num) {
-            if (multiply_monster(player_ptr, m_idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
+            if (multiply_monster(player_ptr, m_idx, idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
                 if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr))
                     r_ptr->r_flags2 |= RF2_MULTIPLY;
 

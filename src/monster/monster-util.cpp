@@ -188,47 +188,34 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
                 return true;
         }
 
-        for (a = 0; a < 5; a++) {
-            if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char)) {
+        for (a = 0; a < 5; a++)
+            if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char))
                 return true;
-            }
-        }
 
         return false;
     }
     case DUNGEON_MODE_OR: {
-        if (r_ptr->flags1 & d_ptr->mflags1) {
+        if (r_ptr->flags1 & d_ptr->mflags1)
             return true;
-        }
-        if (r_ptr->flags2 & d_ptr->mflags2) {
+        if (r_ptr->flags2 & d_ptr->mflags2)
             return true;
-        }
-        if (r_ptr->flags3 & d_ptr->mflags3) {
+        if (r_ptr->flags3 & d_ptr->mflags3)
             return true;
-        }
-        if (r_ptr->ability_flags.has_any_of(d_ptr->mon_ability_flags)) {
+        if (r_ptr->ability_flags.has_any_of(d_ptr->mon_ability_flags))
             return true;
-        }
-        if (r_ptr->behavior_flags.has_any_of(d_ptr->mon_behavior_flags)) {
+        if (r_ptr->behavior_flags.has_any_of(d_ptr->mon_behavior_flags))
             return true;
-        }
-        if (r_ptr->flags7 & d_ptr->mflags7) {
+        if (r_ptr->flags7 & d_ptr->mflags7)
             return true;
-        }
-        if (r_ptr->flags8 & d_ptr->mflags8) {
+        if (r_ptr->flags8 & d_ptr->mflags8)
             return true;
-        }
-        if (r_ptr->flags9 & d_ptr->mflags9) {
+        if (r_ptr->flags9 & d_ptr->mflags9)
             return true;
-        }
-        if (r_ptr->resistance_flags.has_any_of(d_ptr->mon_resistance_flags)) {
+        if (r_ptr->resistance_flags.has_any_of(d_ptr->mon_resistance_flags))
             return true;
-        }
-        for (a = 0; a < 5; a++) {
-            if (d_ptr->r_char[a] == r_ptr->d_char) {
+        for (a = 0; a < 5; a++)
+            if (d_ptr->r_char[a] == r_ptr->d_char)
                 return true;
-            }
-        }
 
         return false;
     }
@@ -381,6 +368,7 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
         if (r_ptr->flags8 & RF8_NASTY) {
             entry->prob2 *= NASTY_GENERATE_RATE;
         }
+
 
         // 引数で指定されていればさらにダンジョンによる制約を試みる。
         if (restrict_to_dungeon) {
