@@ -237,12 +237,14 @@ static bool activate_whistle(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_firethrowing(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER)
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER) {
         return false;
+    }
 
     DIRECTION dir;
-    if (!get_aim_dir(player_ptr, &dir))
+    if (!get_aim_dir(player_ptr, &dir)) {
         return false;
+    }
 
     msg_print(_("汚物は消毒だあ！", "The filth must be disinfected!"));
     fire_breath(player_ptr, AttributeType::FIRE, dir, 20 + player_ptr->lev * 5, 2);
