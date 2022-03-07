@@ -148,7 +148,7 @@ bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_i
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
     POSITION y, x;
-    if (!mon_scatter(player_ptr, m_ptr->r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1)) {
+    if (!mon_scatter(player_ptr, r_idx, &y, &x, m_ptr->fy, m_ptr->fx, 1)) {
         return false;
     }
 
