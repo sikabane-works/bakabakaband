@@ -457,21 +457,7 @@ bool QuaffEffects::influence(const ObjectType &o_ref)
         break;
 
     case SV_POTION_POLYMORPH:
-        if (this->player_ptr->muta.any() && one_in_(23)) {
-            lose_all_mutations(this->player_ptr);
-            break;
-        }
-
-        do {
-            if (one_in_(2)) {
-                if (gain_mutation(this->player_ptr, 0)) {
-                    ident = true;
-                }
-            } else if (lose_mutation(this->player_ptr, 0)) {
-                ident = true;
-            }
-        } while (!ident || one_in_(2));
-        break;
+        return this->polymorph();
 
     case SV_POTION_ICHIZIKU_ENEMA:
         msg_print(_("うぇ！思わず吐いてしまった。", "The potion makes you vomit!"));
@@ -491,7 +477,6 @@ bool QuaffEffects::influence(const ObjectType &o_ref)
         ident = true;
         msg_print(_("この薬は直腸に注入するものらしい。", "The potion seems to be injected into the rectum"));
         break;
-
     }
 
     return ident;
@@ -596,4 +581,28 @@ bool QuaffEffects::detonation()
     (void)bss.mod_stun(75);
     (void)bss.mod_cut(5000);
     return true;
+}
+
+/*!
+ * @brief 自己変容の薬
+ * @return 突然変異を得たか失ったらtrue、そのままならfalse
+ */
+bool QuaffEffects::polymorph()
+{
+    if (this->player_ptr->muta.any() && one_in_(23)) {
+        lose_all_mutations(this->player_ptr);
+        return false;
+    }
+
+    auto ident = false;
+    do {
+        if (one_in_(2)) {
+            if (gain_mutation(this->player_ptr, 0)) {
+                ident = true;
+            }
+        } else if (lose_mutation(this->player_ptr, 0)) {
+            ident = true;
+        }
+    } while (!ident || one_in_(2));
+    return ident;
 }
