@@ -6,9 +6,9 @@
 
 #include "object-enchant/protector/apply-magic-soft-armor.h"
 #include "object-enchant/object-boost.h"
+#include "sv-definition/sv-armor-types.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
-#include "sv-definition/sv-armor-types.h"
 
 /*
  * @brief コンストラクタ
@@ -27,34 +27,7 @@ SoftArmorEnchanter::SoftArmorEnchanter(PlayerType *player_ptr, ObjectType *o_ptr
  */
 void SoftArmorEnchanter::apply_magic()
 {
-    switch (this->o_ptr->sval) {
-    case SV_KUROSHOUZOKU:
-        this->o_ptr->pval = randint1(4);
-        break;
-    case SV_ABUNAI_MIZUGI:
-        if (this->player_ptr->ppersonality != PERSONALITY_SEXY) {
-            break;
-        }
-
-        this->o_ptr->pval = 3;
-        this->o_ptr->art_flags.set(TR_STR);
-        this->o_ptr->art_flags.set(TR_INT);
-        this->o_ptr->art_flags.set(TR_WIS);
-        this->o_ptr->art_flags.set(TR_DEX);
-        this->o_ptr->art_flags.set(TR_CON);
-        this->o_ptr->art_flags.set(TR_CHR);
-        break;
-
-    case SV_DRAGON_BIKINI:
-        dragon_resist(this->o_ptr);
-        if (!one_in_(3)) {
-            return;
-        }
-        break;
-    default:
-        break;
-    }
-
+    this->sval_enchant();
     if (this->power > 1) {
         this->give_high_ego_index();
         if (this->is_high_ego_generated) {
@@ -67,5 +40,35 @@ void SoftArmorEnchanter::apply_magic()
 
     if (this->power < -1) {
         this->give_cursed();
+    }
+}
+
+void SoftArmorEnchanter::sval_enchant()
+{
+    switch (this->o_ptr->sval) {
+    case SV_KUROSHOUZOKU:
+        this->o_ptr->pval = randint1(4);
+        return;
+    case SV_ABUNAI_MIZUGI:
+        if (this->player_ptr->ppersonality != PERSONALITY_SEXY) {
+            return;
+        }
+
+        this->o_ptr->pval = 3;
+        this->o_ptr->art_flags.set(TR_STR);
+        this->o_ptr->art_flags.set(TR_INT);
+        this->o_ptr->art_flags.set(TR_WIS);
+        this->o_ptr->art_flags.set(TR_DEX);
+        this->o_ptr->art_flags.set(TR_CON);
+        this->o_ptr->art_flags.set(TR_CHR);
+        return;
+    case SV_DRAGON_BIKINI:
+        dragon_resist(this->o_ptr);
+        if (!one_in_(3)) {
+            return;
+        }
+        break;
+    default:
+        return;
     }
 }
