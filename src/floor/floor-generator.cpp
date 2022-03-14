@@ -294,7 +294,10 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
         && d_info[d_idx].flags.has_not(DungeonFeatureType::BIG)) {
         int level_height;
         int level_width;
-        if (d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
+        if (d_info[d_idx].flags.has(DungeonFeatureType::ALWAY_MAX_SIZE)) {
+            level_height = MAX_HGT / SCREEN_HGT;
+            level_width = MAX_WID / SCREEN_WID;
+        } else if (d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
             level_height = MIN_HGT_MULTIPLE;
             level_width = MIN_WID_MULTIPLE;
         } else if (d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {

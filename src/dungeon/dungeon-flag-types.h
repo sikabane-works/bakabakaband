@@ -36,5 +36,6 @@ enum class DungeonFeatureType {
     DIFFICULT_RECALL,
     ALWAY_ARENA,
     ALWAY_LIGHT,
+    ALWAY_MAX_SIZE,
     MAX,
 };
