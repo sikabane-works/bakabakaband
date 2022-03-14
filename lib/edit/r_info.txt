@@ -31976,6 +31976,25 @@ D:無冠の者が賞を欲した時、その呪いは始まった。
 D:今や彼の姿はクッソ愛らしいカエルのマスコットからは程遠く、
 D:口にするのも憚る有様をしているこの悲劇を誰か止めて差し上げろ。
 
+N:1705:黄金の鉄の塊で出来たナイト『ブロントさん』
+E:Mr.Bront, the Knight Made of a Golden Mass of Iron.
+G:h:w
+I:120:32d100:20:160:20
+W:60:5:0:30000:0:0
+B:PUNCH:HURT:8d10
+B:SLASH:SUPERHURT:10d10
+B:SLASH:SUPERHURT:10d10
+B:SLASH:SUPERHURT:10d10
+F:UNIQUE | MALE | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_4D2 | DROP_GREAT |
+F:SMART | OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
+S:1_IN_3 |
+S:HASTE | HEAL |
+D:「もうついたのか！はやいきた！盾きた！メイン盾きた！これで勝つる！」
+D:と称えられる、火を見るより確定的に明らかな英雄だ。
+D:彼を前にしてはキングベヒんもスすらも致命的な致命傷を負うだろう。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
