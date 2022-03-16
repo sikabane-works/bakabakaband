@@ -31996,6 +31996,25 @@ D:「もうついたのか！はやいきた！盾きた！メイン盾きた！
 D:と称えられる、火を見るより確定的に明らかな英雄だ。
 D:彼を前にしてはキングベヒんもスすらも致命的な致命傷を負うだろう。
 
+N:1706:皆様のおもちゃ『とくさん』
+E:Tokusan, the Sex Slave of Everyone
+G:t:W
+I:120:77d11:25:100:25
+W:26:3:0:800:0:0
+B:GAZE:BLIND:8d8
+B:TOUCH:TERRIFY
+B:GAZE:EXP_40
+B:TOUCH:EAT_ITEM
+F:ONLY_ITEM | DROP_90 | DROP_1D2 | DROP_GREAT | DROP_CORPSE
+F:CHAR_MULTI | CHAR_CLEAR | ATTR_CLEAR | INVISIBLE | COLD_BLOOD
+F:NO_CONF | UNIQUE | FORCE_MAXHP | NO_SLEEP | REFLECTING
+F:IM_FIRE | IM_ELEC | QUANTUM | NASTY | HOMO_SEXUAL | SMART | RES_TELE | CAN_FLY
+F:EAT_GIVE_INT | EAT_GIVE_WIS | EAT_BLIND | EAT_DRAIN_EXP
+S:1_IN_4
+S:DRAIN_MANA | BLINK | BLIND | SCARE | CONF
+S:HEAL | TELE_AWAY | DARKNESS | TRAPS | FORGET | TELE_TO | SHRIEK
+D:「とくさんか？」
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
