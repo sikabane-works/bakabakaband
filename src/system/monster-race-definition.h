@@ -88,9 +88,8 @@ struct monster_race {
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_tvals; //!< アイテム種別ドロップ指定
     std::vector<std::tuple<int, int, MonsterRaceId, int, int>> dead_spawns; //!< 死亡時モンスター生成
-    ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
-    RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
-    PERCENTAGE artifact_percent[4]{}; //!< 特定アーティファクトドロップ率
+    //! 特定アーティファクトドロップリスト <アーティファクトID,ドロップ率>
+    std::vector<std::tuple<ARTIFACT_IDX, PERCENTAGE>> drop_artifacts;
     PERCENTAGE arena_ratio{}; //!< モンスター闘技場の掛け金倍率修正値(%基準 / 0=100%) / The adjustment ratio for gambling monster
     MonsterRaceId next_r_idx{}; //!< 進化先モンスター種族ID
     EXP next_exp{}; //!< 進化に必要な経験値
