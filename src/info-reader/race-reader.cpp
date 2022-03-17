@@ -484,7 +484,6 @@ errr parse_r_info(std::string_view buf, angband_header *)
         info_set_value(a_idx, tokens[1]);
         info_set_value(chance, tokens[2]);
         r_ptr->drop_artifacts.emplace_back(a_idx, chance);
-
     } else if (tokens[0] == "V") {
         // V:arena_odds
         if (tokens.size() < 2) {
