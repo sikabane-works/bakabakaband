@@ -395,6 +395,17 @@ A:DIRT:100:DIRT:0:DIRT:0:DIRT:DIRT:NONE:NONE
 F:MONSTER_DIV_16 | NO_ROOM | NO_DOORS | WATER_RIVER | ALWAY_MAX_SIZE | ALWAY_LIGHT
 M:ANIMAL
 
+N:28:雪原
+E:Snow Field
+D:広大なる雪原
+D:$Vast snow field
+P:2:73
+W:10:35:30:3:14:160:75:20:0x037f:0x033f
+L:SNOW_FIELD:100:SNOW_FIELD:0:SNOW_FIELD:0:100
+A:SNOW_FIELD:100:SNOW_FIELD:0:SNOW_FIELD:0:SNOW_FIELD:SNOW_FIELD:NONE:NONE
+F:MONSTER_DIV_16 | NO_ROOM | NO_DOORS | WATER_RIVER | ALWAY_MAX_SIZE | ALWAY_LIGHT
+M:ANIMAL
+
 # N:<index>:<name>
 # D:<long name>
 # W:<min depth>:<min depth>:<min player level>:<flags mode>:<min alloc>:<max alloc chance>:<obj good>:<obj great>:<pit>:<nest>
