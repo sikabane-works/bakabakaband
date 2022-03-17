@@ -202,10 +202,6 @@ errr parse_r_info(std::string_view buf, angband_header *)
         info_set_value(r_ptr->next_r_idx, tokens[6]);
     } else if (tokens[0] == "R") {
         // R:reinforcer_idx:number_dice
-        DICE_NUMBER dn;
-        DICE_SID ds;
-        MonsterRaceId mon_idx;
-
         if (tokens.size() < 3) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
@@ -213,11 +209,14 @@ errr parse_r_info(std::string_view buf, angband_header *)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
 
-        info_set_value(mon_idx, tokens[1]);
         const auto &dice = str_split(tokens[2], 'd', false, 2);
-        info_set_value(dn, dice[0]);
+        MonsterRaceId r_idx;
+        DICE_NUMBER dd;
+        DICE_SID ds;
+        info_set_value(r_idx, tokens[1]);
+        info_set_value(dd, dice[0]);
         info_set_value(ds, dice[1]);
-        r_ptr->reinforces.push_back({ mon_idx, dn, ds });
+        r_ptr->reinforces.emplace_back(r_idx, dd, ds);
     } else if (tokens[0] == "B") {
         // B:blow_type:blow_effect:dice
         size_t i = 0;
