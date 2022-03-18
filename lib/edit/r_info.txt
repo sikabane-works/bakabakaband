@@ -32015,6 +32015,26 @@ S:DRAIN_MANA | BLINK | BLIND | SCARE | CONF
 S:HEAL | TELE_AWAY | DARKNESS | TRAPS | FORGET | TELE_TO | SHRIEK
 D:「とくさんか？」
 
+N:1707:極悪の華『ジャギ』
+E:Jagi, the Flower of Carnage
+G:p:g
+I:125:50d30:20:90:10
+W:41:3:0:10000:0:0
+B:PUNCH:HURT:12d6
+B:PUNCH:HURT:12d6
+B:KICK:HURT:10d8
+B:SHOOT:HURT:10d20
+R:1292:3d10
+F:MALE | HUMAN | FORCE_MAXHP | UNIQUE
+F:PREVENT_SUDDEN_MAGIC | DROP_3D2 | KARATEKA | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:NO_STUN | NO_SLEEP | NO_CONF | EVIL
+S:1_IN_4 | SHOOT | BA_FIRE | CAUSE_4
+D:北斗神拳伝承者候補に数えられる程の拳法家としての才はあったものの、
+D:それをさらに大きく上回る兄弟弟子達に及ばぬことに心を捻じ曲げ、外道に走った男だ。
+D:依然として兄弟達と比べて惨めな境遇ではあるが、
+D:世紀末を生き抜く悪党として、確かな実力者の一人であることに変わりはない。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
