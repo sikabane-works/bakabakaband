@@ -191,6 +191,8 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
         }
     }
 
+    //TODO:固定生成部屋の追加。
+
     bool remain;
     while (true) {
         remain = false;

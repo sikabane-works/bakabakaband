@@ -96,6 +96,8 @@ struct dungeon_type {
 	int monster_rate = 100; //!< トラップ生成比率
     int trap_rate = 100; //!< トラップ生成比率
 
+    std::vector<std::tuple<int, int, int>> fixed_room_list;
+
 	std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
     AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
 };
