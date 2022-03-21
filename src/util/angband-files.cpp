@@ -341,8 +341,8 @@ errr fd_move(concptr file, concptr what)
     if (path_parse(aux, 1024, what))
         return -1;
 
-    (void)rename(buf, aux);
-    return 0;
+    errr e = rename(buf, aux);
+    return e;
 }
 
 /*

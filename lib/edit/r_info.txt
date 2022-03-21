@@ -32053,8 +32053,25 @@ S:SCARE | BR_SHAR |
 D:ヒドラと呼ばれる奇妙な雑種の爬虫類の中でもさらに珍種だ。
 D:鋭い刃物のような無数の頭部を生やし、口からも放ってくる。
 
-
-
+N:1709:量産型山野田
+E:Yamanoda mass production model
+G:P:s
+I:124:100d20:12:125:10
+W:70:4:0:13000:0:0
+B:PUNCH:HURT:12d6
+B:PUNCH:HURT:12d6
+B:KICK:HURT:10d6
+B:KICK:HURT:10d6
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING |
+F:IM_FIRE | IM_COLD | IM_POIS | RIDING
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | FRIENDS
+S:1_IN_9 | 
+S:BO_MANA | BR_SHAR
+D:日本の天才的マッドサイエンティスト、
+D:岸和田博士が生み出したブリーフ一丁の男性の形をした巨大人型兵器。その安定した量産型のようだ。
+D:もっとも成熟したモデルである山野田・ザ・グレードをベースに、
+D:横隔膜ブーメラン、指鉄砲、鼻くそボンバー、傷口レーザーを搭載している。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
