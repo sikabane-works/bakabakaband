@@ -312,6 +312,7 @@ bool save_player(PlayerType *player_ptr, save_type type)
     if (save_player_aux(player_ptr, safe, type)) {
         char temp[1024];
         char filename[1024];
+        errr err;
         strcpy(temp, savefile);
         strcat(temp, ".old");
         safe_setuid_grab(player_ptr);
@@ -324,9 +325,9 @@ bool save_player(PlayerType *player_ptr, save_type type)
             strcpy(filename, savefile);
         }
 
-        fd_move(filename, temp);
-        fd_move(safe, filename);
-        fd_kill(temp);
+        err = fd_move(filename, temp);
+        err = fd_move(safe, filename);
+        err = fd_kill(temp);
         safe_setuid_drop();
         w_ptr->character_loaded = true;
         result = true;

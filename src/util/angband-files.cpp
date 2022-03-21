@@ -368,8 +368,8 @@ errr fd_move(concptr file, concptr what)
         return -1;
     }
 
-    (void)rename(buf, aux);
-    return 0;
+    errr e = rename(buf, aux);
+    return e;
 }
 
 /*
