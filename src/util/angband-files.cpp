@@ -345,13 +345,14 @@ errr angband_fputs(FILE *fff, concptr buf, ulong n)
  */
 errr fd_kill(concptr file)
 {
+    errr err;
     char buf[1024];
     if (path_parse(buf, 1024, file)) {
         return -1;
     }
 
-    (void)remove(buf);
-    return 0;
+    err = remove(buf);
+    return err;
 }
 
 /*
