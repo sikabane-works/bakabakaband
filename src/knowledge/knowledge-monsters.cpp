@@ -281,13 +281,12 @@ static void display_monster_list(int col, int row, int per_page, int16_t mon_idx
         term_erase(69, row + i, 255);
         term_queue_bigchar(use_bigtile ? 69 : 70, row + i, r_ptr->x_attr, r_ptr->x_char, 0, 0);
         if (!visual_only) {
-            if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE) && r_ptr->mob_num > 0) {
-                put_str(format("%4d(%4d)", r_ptr->r_pkills, r_ptr->mob_num), row + i, 73);
-
-            } else if (none_bits(r_ptr->flags1, RF1_UNIQUE)) {
-                put_str(format("%4d(****)", r_ptr->r_pkills, r_ptr->mob_num), row + i, 73);
-            } else {
+            if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
                 c_put_str((r_ptr->mob_num == 0 ? TERM_L_DARK : TERM_WHITE), (r_ptr->mob_num == 0 ? _("死亡", " dead") : _("生存", "alive")), row + i, 74);
+            } else if (r_ptr->mob_num > 0) {
+                put_str(format("%4d(%4d)", r_ptr->r_pkills, r_ptr->mob_num), row + i, 73);
+            } else {
+                put_str(format("%4d(****)", r_ptr->r_pkills, r_ptr->mob_num), row + i, 73);
             }
         }
     }
