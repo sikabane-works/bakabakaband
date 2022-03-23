@@ -288,6 +288,7 @@ errr parse_d_info(std::string_view buf, angband_header *)
                 info_set_value(id, f_tokens[3]);
                 info_set_value(percentage, f_tokens[4]);
                 d_ptr->fixed_room_list.push_back(std::make_tuple(depth, id, percentage));
+                continue;
             }
 
             if (f_tokens.size() == 2 && f_tokens[0] == "ALLIANCE") {
