@@ -1017,7 +1017,7 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
 /*!
  * @brief v_info.txtからの部屋生成 / vaults from "v_info.txt"
  */
-bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space)
+bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space, int id = -1)
 {
     vault_type *v_ptr = nullptr;
     POSITION x, y;
@@ -1027,16 +1027,21 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
 
     ProbabilityTable<int> prob_table;
 
-    /* Pick fixed room */
-    for (const auto &v_ref : v_info) {
-        if (v_ref.typ == typ) {
-            prob_table.entry_item(v_ref.idx, 1);
+    if (id == -1) {
+        /* Pick fixed room */
+        for (const auto &v_ref : v_info) {
+            if (v_ref.typ == typ) {
+                prob_table.entry_item(v_ref.idx, 1);
+            }
         }
+
+        auto result = prob_table.pick_one_at_random();
+        v_ptr = &v_info[result];
+    } else {
+        v_ptr = &v_info[id];
     }
 
-    auto result = prob_table.pick_one_at_random();
 
-    v_ptr = &v_info[result];
 
     /* pick type of transformation (0-7) */
     transno = randint0(8);

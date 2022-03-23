@@ -282,6 +282,15 @@ errr parse_d_info(std::string_view buf, angband_header *)
                 }
             }
 
+            if (f_tokens.size() == 5 && f_tokens[0] == "FIXED" && f_tokens[1] == "ROOM") {
+                int depth, id, percentage; 
+                info_set_value(depth, f_tokens[2]);
+                info_set_value(id, f_tokens[3]);
+                info_set_value(percentage, f_tokens[4]);
+                d_ptr->fixed_room_list.push_back(std::make_tuple(depth, id, percentage));
+                continue;
+            }
+
             if (f_tokens.size() == 2 && f_tokens[0] == "ALLIANCE") {
                 for (auto a : alliance_list) {
                     if (a.second->tag == f_tokens[1]) {

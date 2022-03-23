@@ -43,9 +43,9 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
     case RoomType::PIT:
         return build_type6(player_ptr, dd_ptr);
     case RoomType::LESSER_VAULT:
-        return build_fixed_room(player_ptr, dd_ptr, 7, false);
+        return build_fixed_room(player_ptr, dd_ptr, 7, false, -1);
     case RoomType::GREATER_VAULT:
-        return build_fixed_room(player_ptr, dd_ptr, 8, true);
+        return build_fixed_room(player_ptr, dd_ptr, 8, true, -1);
     case RoomType::FRACAVE:
         return build_type9(player_ptr, dd_ptr);
     case RoomType::RANDOM_VAULT:
@@ -63,9 +63,9 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
     case RoomType::ARCADE:
         return build_type16(player_ptr, dd_ptr);
     case RoomType::FIXED:
-        return build_fixed_room(player_ptr, dd_ptr, 17, false);
+        return build_fixed_room(player_ptr, dd_ptr, 17, false, -1);
     case RoomType::PERVO:
-        return build_fixed_room(player_ptr, dd_ptr, 18, false);
+        return build_fixed_room(player_ptr, dd_ptr, 18, false, -1);
     default:
         return false;
     }
@@ -192,6 +192,18 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
         default:
             break;
         }
+    }
+
+    for (auto &r : d_info[floor_ptr->dungeon_idx].fixed_room_list) {
+        auto depth = std::get<0>(r);
+        auto id = std::get<1>(r);
+        auto percentage = std::get<2>(r);
+        if (depth == floor_ptr->dun_level && percentage > randint0(100)) {
+            if (!build_fixed_room(player_ptr, dd_ptr, 0, true, id)) {
+                return false;
+            }
+        }
+
     }
 
     bool remain;
