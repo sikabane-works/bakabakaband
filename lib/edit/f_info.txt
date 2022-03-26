@@ -2515,6 +2515,15 @@ W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE
 F:HYGIENE_-10
 
+N:310:ICE_PILLAR
+J:氷柱
+E:ice pillar
+G:::B:LIT
+W:2
+K:DESTROYED:*FLOOR*
+F:POWER_10 | REMEMBER | TUNNEL | HAS_ITEM | HURT_ROCK | CAN_PASS | CAN_DIG |
+F:HURT_DISI
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
