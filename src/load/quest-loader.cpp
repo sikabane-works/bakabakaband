@@ -40,7 +40,8 @@ static void load_quest_details(PlayerType *player_ptr, quest_type *q_ptr, const 
 
     q_ptr->r_idx = i2enum<MonsterRaceId>(rd_s16b());
     if ((q_ptr->type == QuestKindType::RANDOM) && !MonsterRace(q_ptr->r_idx).is_valid()) {
-        determine_random_questor(player_ptr, &quest_map[loading_quest_index]);
+        auto &quest_list = QuestList::get_instance();
+        determine_random_questor(player_ptr, &quest_list[loading_quest_index]);
     }
     q_ptr->k_idx = rd_s16b();
     if (q_ptr->k_idx) {
@@ -52,7 +53,8 @@ static void load_quest_details(PlayerType *player_ptr, quest_type *q_ptr, const 
 
 static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
 {
-    if (quest_map.find(q_idx) != quest_map.end()) {
+    const auto &quest_list = QuestList::get_instance();
+    if (quest_list.find(q_idx) != quest_list.end()) {
         return true;
     }
 
@@ -78,6 +80,7 @@ static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
 
 void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, const byte max_rquests_load)
 {
+    auto &quest_list = QuestList::get_instance();
     for (auto i = 0; i < max_quests_load; i++) {
         QuestId q_idx;
         if (loading_savefile_version_is_older_than(19)) {
@@ -89,7 +92,7 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
             continue;
         }
 
-        auto *const q_ptr = &quest_map.at(q_idx);
+        auto *const q_ptr = &quest_list[q_idx];
         load_quest_completion(q_ptr);
         auto is_quest_running = (q_ptr->status == QuestStatusType::TAKEN);
         is_quest_running |= (q_ptr->status == QuestStatusType::COMPLETED);
