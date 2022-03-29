@@ -32113,6 +32113,28 @@ D:だが、その強さに焦がれるものは両陣営に多く、古ウルク
 D:彼を破壊神、あるいは彼こそを真の父祖として崇める者も多かったという。
 D:そこに一部の真実があったのか、メルコールは彼らを決して否定も罰しもしなかった。
 
+# 禁止カード勢[DSKL]
+N:1712:創造の座『オムナス』
+E:Omnath, Locus of Creation
+G:E:G
+I:120:25d100:60:90:20
+W:53:3:0:10000:0:0
+B:HIT:FIRE:7d20
+B:HIT:COLD:7d20
+B:HIT:ELEC:7d20
+F:RAND_25 | AURA_FIRE | AURA_COLD | AURA_ELEC |
+F:DROP_2D2 | DROP_4D2 | DROP_GOOD | ONLY_ITEM | RES_TELE | 
+F:IM_POIS | IM_FIRE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NONLIVING |
+F:IM_COLD | IM_ACID | IM_ELEC | RES_NEXU | RES_NETH | RES_PLAS |
+F:REGENERATE | UNIQUE | SELF_LITE_2 |
+S:1_IN_3 |
+S:BR_ACID | BR_ELEC | BR_COLD | BR_FIRE | S_KIN
+D:オムナスは天地が自我をもち自ら蠢く世界、ゼンディカーの原初時代にも関わると
+D:言われるエレメンタルだ。エルドラージの覚醒と前後して解放されたこの存在は、
+D:エルドラージと争い駆逐した後も様々なゼンディカーの力と同化を重ね、
+D:今や多くの次元渡りにも恐れられる存在となった。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
