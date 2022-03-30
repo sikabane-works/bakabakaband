@@ -16,6 +16,7 @@
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
+#include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <ctime>
@@ -199,7 +200,7 @@ int exe_write_diary_quest(PlayerType *player_ptr, int type, QuestId num)
 
     switch (type) {
     case DIARY_FIX_QUEST_C: {
-        if (q_ref.flags & QUEST_FLAG_SILENT) {
+        if (any_bits(q_ref.flags, QUEST_FLAG_SILENT)) {
             break;
         }
 
@@ -207,7 +208,7 @@ int exe_write_diary_quest(PlayerType *player_ptr, int type, QuestId num)
         break;
     }
     case DIARY_FIX_QUEST_F: {
-        if (q_ref.flags & QUEST_FLAG_SILENT) {
+        if (any_bits(q_ref.flags, QUEST_FLAG_SILENT)) {
             break;
         }
 
@@ -227,7 +228,7 @@ int exe_write_diary_quest(PlayerType *player_ptr, int type, QuestId num)
         break;
     }
     case DIARY_TO_QUEST: {
-        if (q_ref.flags & QUEST_FLAG_SILENT) {
+        if (any_bits(q_ref.flags, QUEST_FLAG_SILENT)) {
             break;
         }
 
