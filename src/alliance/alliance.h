@@ -40,6 +40,7 @@ enum class AllianceType : int {
     AVARIN_LORDS = 29, //!< アヴァリ諸侯
     GOLAN = 30, //!< GOLAN
     BINJO_BUDDHISM = 31, //!< 便乗仏教
+    ASHINA_CLAN = 32, //!< 葦名一門
     MAX,
 };
 
@@ -351,6 +352,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceBinjoBuddhism() = default;
+};
+
+class AllianceAshinaClan : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceAshinaClan() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceAshinaClan() = default;
 };
 
 
