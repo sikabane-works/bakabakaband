@@ -202,10 +202,12 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
         /* Bewere that INIT_ASSIGN resets the cur_num. */
         init_flags = INIT_NAME_ONLY;
         parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
+
+        const auto *q_ptr = &quest_list[floor_ptr->quest_number];
 #ifdef JP
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺されて飽きた。", quest_list[floor_ptr->quest_number].name, player_ptr->died_from.c_str()));
+        return std::string(format("…あなたは、クエスト「%s」で%sに殺された飽きた。", q_ptr->name, player_ptr->died_from.c_str()));
 #else
-        return std::string(format("...You were killed by %s in the quest '%s' and god tired.", player_ptr->died_from.c_str(), quest_list[floor_ptr->quest_number].name));
+        return std::string(format("...You were killed by %s in the quest '%s' and god tired.", player_ptr->died_from.c_str(), q_ptr->name));
 #endif
     }
 
