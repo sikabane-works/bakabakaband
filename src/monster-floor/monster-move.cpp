@@ -527,7 +527,7 @@ void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy,
         return;
     }
 
-    if (((ap_r_ptr->flags2 & RF2_CAN_SPEAK) == 0) || !aware || !one_in_(SPEAK_CHANCE) || !player_has_los_bold(player_ptr, oy, ox) || !projectable(player_ptr, oy, ox, player_ptr->y, player_ptr->x)) {
+    if ((ap_r_ptr->speak_flags.has_not(MonsterSpeakType::SPEAK_ALL)) || !aware || !one_in_(SPEAK_CHANCE) || !player_has_los_bold(player_ptr, oy, ox) || !projectable(player_ptr, oy, ox, player_ptr->y, player_ptr->x)) {
         return;
     }
     speaking(p_ptr, m_ptr, false);
