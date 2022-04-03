@@ -27,6 +27,7 @@
 #include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-other-types.h"
+#include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -211,6 +212,10 @@ concptr activation_explanation(ObjectType *o_ptr)
 
     if (o_ptr->tval == ItemKindType::BOW && o_ptr->sval == SV_RAYGUN) {
         return _("はかいこうせん", "Blaster");
+    }
+
+    if (o_ptr->tval == ItemKindType::HELM && o_ptr->sval == SV_SCOUTER) {
+        return _("調査", "Probing");
     }
 
     return _("何も起きない", "Nothing");
