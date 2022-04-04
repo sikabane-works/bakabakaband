@@ -289,6 +289,18 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 continue;
             }
 
+            if (s_tokens.size() == 2 && s_tokens[0] == "FATHER") {
+                info_set_value(r_ptr->max_num, s_tokens[1]);
+                r_ptr->father_r_idx = r_ptr->max_num;
+                continue;
+            }
+
+            if (s_tokens.size() == 2 && s_tokens[0] == "MOTHER") {
+                info_set_value(r_ptr->max_num, s_tokens[1]);
+                r_ptr->mother_r_idx = r_ptr->max_num;
+                continue;
+            }
+
             if (s_tokens.size() == 2 && s_tokens[0] == "COLLAPSE-OVER") {
                 const auto &p_tokens = str_split(s_tokens[1], '.', false);
                 if (p_tokens.size() != 2) {
