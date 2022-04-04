@@ -34,6 +34,7 @@
 #include "racial/racial-android.h"
 #include "specific-object/monster-ball.h"
 #include "spell-kind/spells-launcher.h"
+#include "spell-kind/spells-sight.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
@@ -41,6 +42,7 @@
 #include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-lite-types.h"
+#include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -235,6 +237,16 @@ static bool activate_whistle(PlayerType *player_ptr, ae_type *ae_ptr)
     return true;
 }
 
+static bool scouter_probing(PlayerType *player_ptr, ae_type *ae_ptr)
+{
+    if (ae_ptr->o_ptr->tval != ItemKindType::HELM || ae_ptr->o_ptr->sval != SV_SCOUTER) {
+        return false;
+    }
+
+    probing(player_ptr);
+    return true;
+}
+
 static bool activate_firethrowing(PlayerType *player_ptr, ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER) {
@@ -345,6 +357,8 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 
     if (activate_whistle(player_ptr, ae_ptr)) {
         activated = true;
+    } else if (scouter_probing(player_ptr, ae_ptr)) {
+        activated = true; 
     } else if (exe_monster_capture(player_ptr, ae_ptr)) {
         activated = true;
     } else if (activate_firethrowing(player_ptr, ae_ptr)) {
@@ -370,13 +384,4 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
         curse_weapon_object(player_ptr, true, ae_ptr->o_ptr);
     }
 
-    if (activate_whistle(player_ptr, ae_ptr)) {
-        return;
-    }
-
-    if (exe_monster_capture(player_ptr, ae_ptr)) {
-        return;
-    }
-
-    msg_print(_("おっと、このアイテムは始動できない。", "Oops.  That object cannot be activated."));
 }
