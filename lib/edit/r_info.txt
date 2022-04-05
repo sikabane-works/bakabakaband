@@ -22401,8 +22401,8 @@ B:HIT:HURT:10d6
 S:1_IN_8 | S_KIN | SHRIEK
 F:DROP_1D2 | DROP_90 | ONLY_ITEM | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
-F:UNIQUE | FORCE_MAXHP
-F:EVIL | IM_POIS | EAT_POISONOUS
+F:UNIQUE | FORCE_MAXHP | MOTHER_1717
+F:EVIL | IM_POIS | EAT_POISONOUS | MALE
 F:ESCORT | ESCORTS | RES_SOUN | CAN_FLY
 F:NO_CONF
 D:$"Hey Nobita, I regret to say, but the capacity of this dungeon is 3."
@@ -32179,6 +32179,22 @@ F:MALE | DROP_60 | DROP_2D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | IM_FIRE | HAS_
 F:NO_FEAR | NO_CONF | NO_SLEEP | 
 F:HUMAN | DROP_CORPSE | DROP_SKELETON | UNIQUE | FORCE_MAXHP
 D:南斗五車星の一人、火炎を操る南斗慈母星の守り手だ。
+
+N:1717:『スネヲの母』
+E:Suneo's Mother
+G:k:v
+I:120:55d20:40:90:10
+W:39:1:0:4100:0:0
+B:HIT:HURT:10d6
+S:1_IN_3 | S_KIN | SHRIEK | BR_SOUN
+F:DROP_2D2 | DROP_90 | ONLY_ITEM | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:UNIQUE | FORCE_MAXHP | FEMALE
+F:EVIL | IM_POIS | EAT_POISONOUS
+F:ESCORT | ESCORTS | RES_SOUN | CAN_FLY
+F:NO_CONF | NO_STUN
+D:息子がこれほどまでに母親とそっくりだったことにあなたは驚きを隠せないだろう！
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
