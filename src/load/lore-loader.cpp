@@ -255,7 +255,7 @@ static void rd_r_behavior_flags(monster_race *r_ptr)
 
 static void rd_r_feature_flags(monster_race *r_ptr)
 {
-    if (loading_savefile_version_is_older_than(19)) {
+    if (loading_savefile_version_is_older_than(21)) {
         migrate_old_feature_flags(r_ptr, r_ptr->r_flags2);
         return;
     }

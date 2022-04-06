@@ -24,6 +24,15 @@ errr load_town(void)
     return 23;
 }
 
+std::tuple<uint16_t, byte> load_quest_info()
+{
+    auto max_quests_load = rd_u16b();
+    byte max_rquests_load;
+    max_rquests_load = rd_byte();
+
+    return std::make_tuple(max_quests_load, max_rquests_load);
+}
+
 static void load_quest_completion(quest_type *q_ptr)
 {
     q_ptr->status = i2enum<QuestStatusType>(rd_s16b());
