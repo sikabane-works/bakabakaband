@@ -32212,6 +32212,21 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 S:1_IN_4 | SHOOT
 D:南斗最後の将、慈母星に仕えその直臣五車星に付き従う南斗の戦士だ。
 
+N:1719:古狩人『デュラ』
+E:Djura the Old Hunter
+G:p:W
+I:118:55d12:30:70:10
+W:32:2:0:4000:0:0
+B:HIT:SUPERHURT:9d10
+B:SHOOT:HURT:10d10
+F:MALE | DROP_60 | DROP_2D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | IM_FIRE | HAS_LITE_2 |
+F:NO_FEAR | NO_CONF | NO_SLEEP | NO_STUN
+F:HUMAN | DROP_CORPSE | DROP_SKELETON | UNIQUE | FORCE_MAXHP
+S:1_IN_4 | SHOOT
+D:かつてヤーナムの優秀な獣狩りだった男だ。しかし彼は
+D:旧市街の凄惨な獣狩りの中、医療教会や狩人の蛮行、
+D:そして獣となった人々の本質に疑念を持った。やがて彼は
+D:逆に獣となった人々を守る立場となり狩人を討つようになった。
 
 
 # 'N' indicates the beginning of an entry. The serial number must
