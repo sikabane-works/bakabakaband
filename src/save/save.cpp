@@ -325,8 +325,8 @@ bool save_player(PlayerType *player_ptr, save_type type)
             strcpy(filename, savefile);
         }
 
-        err |= fd_move(filename, temp);
-        err |= fd_move(safe, filename);
+        err |= fd_move(savefile, temp);
+        err |= fd_move(safe, savefile);
         err |= fd_kill(temp);
         if (err) {
             msg_print(_("(セーブデータの置換処理ミス)", "(Failed to replace save files)"));   
