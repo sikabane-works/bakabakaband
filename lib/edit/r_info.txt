@@ -32238,7 +32238,21 @@ F:RES_CHAO | NO_CONF | ONLY_ITEM | DROP_2D2 | DROP_GOOD | NEVER_BLOW
 S:1_IN_6 | BO_MANA
 D:安心と信頼の企業、キサラギ社が生み出した巨大昆虫型生物兵器だ。
 
-
+#こいつだけ足りてなかったのなんでやろうな[DSKL]
+N:1721:ウルファングの息子『ウルドール』
+E:Uldor, Son of Ulfang
+G:p:U
+I:110:45d10:20:50:40
+W:22:4:0:300:0:0
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:FORCE_MAXHP | WILD_ALL | HAS_LITE_2 | HUMAN |
+F:DROP_90 | DROP_GOOD | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EVIL
+D:背が低くて浅黒い肌をした東夷だ。彼こそは西部の大同盟を裏切り、
+D:『暗黒の敵』に魂を売ったという裏切り者一族の直接の主犯と言われている。
+D:様々な呪詛を一族もろとも西部の史書に書き記されている。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
