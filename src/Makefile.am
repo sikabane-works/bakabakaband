@@ -525,6 +525,7 @@ hengband_SOURCES = \
 	monster-race/race-flags9.h \
 	monster-race/race-indice-types.h \
 	monster-race/race-kind-flags.h \
+	monster-race/race-population-flags.h \
 	monster-race/race-resistance-mask.cpp monster-race/race-resistance-mask.h \
 	monster-race/race-visual-flags.h \
 	monster-race/race-wilderness-flags.h \
