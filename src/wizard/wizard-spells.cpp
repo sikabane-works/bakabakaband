@@ -21,6 +21,7 @@
 #include "monster-race/race-ability-flags.h"
 #include "mutation/mutation-processor.h"
 #include "object-activation/activation-others.h"
+#include "room/rooms-vault.h"
 #include "player-base/player-class.h"
 #include "player-info/bluemage-data-type.h"
 #include "player-info/smith-data-type.h"
@@ -213,6 +214,19 @@ void wiz_summon_specific_enemy(PlayerType *player_ptr, MONRACE_IDX r_idx)
         r_idx = static_cast<MONRACE_IDX>(val);
     }
     (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
+}
+
+void wiz_generate_room(PlayerType *player_ptr, int v_idx)
+{
+    if (v_idx <= 0) {
+        int val = 1;
+        if (!get_value("VaultID", 1, v_info.size() - 1, &val)) {
+            return;
+        }
+        v_idx = static_cast<MONRACE_IDX>(val);
+        vault_type *v_ptr = &v_info[v_idx];
+        build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
+    }
 }
 
 /*!

@@ -312,8 +312,7 @@ static void coord_trans(POSITION *x, POSITION *y, POSITION xoffset, POSITION yof
  * @param yoffset 変換基準Y座標
  * @param transno 変換ID
  */
-static void build_vault(
-    vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSITION xval, POSITION xoffset, POSITION yoffset, int transno)
+void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSITION xval, POSITION xoffset, POSITION yoffset, int transno)
 {
     POSITION dx, dy, x, y, i, j;
     concptr t;
