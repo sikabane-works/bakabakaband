@@ -200,7 +200,7 @@ void MonsterDamageProcessor::death_special_flag_monster()
         return;
     }
 
-    if (r_ptr->max_num > 0) { // 無限生成可能でないモンスターの動員数減少
+    if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) {
         r_ptr->mob_num--;
         return;
     }
