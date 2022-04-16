@@ -268,6 +268,12 @@ bool activate_fully_identification(PlayerType *player_ptr)
     return true;
 }
 
+bool activate_huge_stinking_storm(PlayerType *player_ptr)
+{
+    msg_print(_("「ンアッー－－！」", "You shout, 'NAAAAAHHHHHHH!!'"));
+    (void)project(player_ptr, 0, 8, player_ptr->y, player_ptr->x, (randint1(100) + 1500) * 2, AttributeType::POIS, PROJECT_KILL | PROJECT_ITEM | PROJECT_GRID);
+    return true;
+}
 /*!
  * @brief switch_activation() から個々のスペルへの依存性をなくすためのシンタックスシュガー
  * @param player_ptr プレイヤーへの参照ポインタ
