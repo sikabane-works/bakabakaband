@@ -153,5 +153,6 @@ const std::vector<activation_type> activation_info = {
     { "CREATE_AMMO", RandomArtActType::CREATE_AMMO, 10, 30000, { 200, 0 }, _("弾/矢の製造", "Create Ammo") },
     { "DISPEL_MAGIC", RandomArtActType::DISPEL_MAGIC, 10, 10000, { 50, 50 }, _("魔力消去", "Dispel Magic") },
     { "DESTRUCTION", RandomArtActType::DESTRUCTION, 10, 30000, { 50, 50 }, _("*破壊*", "*Destruction*") },
+    { "HUGE_STINKING_STORM", RandomArtActType::HUGE_STINKING_STORM, 40, 25000, { 200, 200 }, _("超巨大悪臭嵐", "huge stinking storm") },
     { nullptr, RandomArtActType::NONE, 0, 0, { 0, 0 }, "" },
 };

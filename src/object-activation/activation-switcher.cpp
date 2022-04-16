@@ -386,6 +386,8 @@ bool switch_activation(PlayerType *player_ptr, ObjectType **o_ptr_ptr, const act
         return activate_dispel_magic(player_ptr);
     case RandomArtActType::DESTRUCTION:
         return destroy_area(player_ptr, player_ptr->y, player_ptr->x, (13) + randint0(5), false);
+    case RandomArtActType::HUGE_STINKING_STORM:
+        return activate_huge_stinking_storm(player_ptr);
     default:
         msg_format(_("Unknown activation effect: %d.", "Unknown activation effect: %d."), act_ptr->index);
         return false;

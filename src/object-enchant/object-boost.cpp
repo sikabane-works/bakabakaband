@@ -519,6 +519,7 @@ void one_activation(ObjectType *o_ptr)
             break;
         case RandomArtActType::CURE_1000:
         case RandomArtActType::XTRA_SPEED:
+        case RandomArtActType::HUGE_STINKING_STORM:
         case RandomArtActType::DETECT_XTRA:
         case RandomArtActType::DIM_DOOR:
             chance = 10;
