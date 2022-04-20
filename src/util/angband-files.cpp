@@ -1,7 +1,6 @@
 ﻿#include "util/angband-files.h"
 #include "locale/japanese.h"
 #include "util/string-processor.h"
-#include <errno.h>
 
 #ifdef SET_UID
 
@@ -371,10 +370,6 @@ errr fd_move(concptr file, concptr what)
     }
 
     errr e = rename(buf, aux);
-    if (e != 0) {
-        int ee = _doserrno;
-        return ee;
-    }
     return e;
 }
 
