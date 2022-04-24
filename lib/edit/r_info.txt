@@ -32333,6 +32333,31 @@ F:DROP_90 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
 F:NO_SLEEP
 D:葦名の足軽たちを束ねる組頭の一人だ。
 
+#[DSKL]久々にガンダム漫画読み直した結果生まれた劣化ジェノサイバー
+N:1727:宇宙の公王『デギン・ザ・グレート』
+E:Degwin the Great Space Principality
+G:P:r
+I:128:80d100:40:180:10
+W:82:3:0:27500:0:0
+B:PUNCH:HURT:11d12
+B:PUNCH:HURT:11d12
+B:CRUSH:SUPERHURT:12d11
+B:CRUSH:SUPERHURT:12d11
+F:UNIQUE | MALE | RES_TELE | CAN_FLY
+F:DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_WALL | GIANT | JOKE
+F:ONLY_ITEM | DROP_4D2 | DROP_3D2 | DROP_GREAT | MOVE_BODY
+F:REGENERATE | NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR | POWERFUL
+F:IM_COLD | IM_POIS | IM_ACID | IM_ELEC | IM_FIRE
+F:OPEN_DOOR | BASH_DOOR | RES_WALL
+S:1_IN_8 |
+S:BO_MANA | BR_MANA | BR_FORC
+D:身長180m、体重10万tの巨体。ジオン公国のデギン公王が
+D:ソーラ・レイのエネルギーを受け旗艦グレートデギンと融合した姿だ。
+D:はげ粒子砲は連邦軍を一掃し、水爆頭突きは連邦の白い奴を一撃で滅ぼす。
+D:と、ギレン総帥が夢の中で見た妄想に過ぎないものが、なぜ鉄獄に湧くのか。
+D:それは〈混沌〉しかあずかり知らぬ話である。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
