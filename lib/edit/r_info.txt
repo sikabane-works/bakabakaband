@@ -32345,7 +32345,7 @@ B:CRUSH:SUPERHURT:12d11
 B:CRUSH:SUPERHURT:12d11
 F:UNIQUE | MALE | RES_TELE | CAN_FLY
 F:DROP_SKELETON | DROP_CORPSE
-F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_WALL | GIANT | JOKE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_WALL | GIANT | ANGEL | JOKE
 F:ONLY_ITEM | DROP_4D2 | DROP_3D2 | DROP_GREAT | MOVE_BODY
 F:REGENERATE | NO_CONF | NO_STUN | NO_SLEEP | NO_FEAR | POWERFUL
 F:IM_COLD | IM_POIS | IM_ACID | IM_ELEC | IM_FIRE
@@ -32357,6 +32357,23 @@ D:ソーラ・レイのエネルギーを受け旗艦グレートデギンと融
 D:はげ粒子砲は連邦軍を一掃し、水爆頭突きは連邦の白い奴を一撃で滅ぼす。
 D:と、ギレン総帥が夢の中で見た妄想に過ぎないものが、なぜ鉄獄に湧くのか。
 D:それは〈混沌〉しかあずかり知らぬ話である。
+
+N:1728:殴打頭蓋
+E:Batterskull
+G:I:D
+I:123:90d23:12:100:10
+W:45:3:0:3500:0:0
+B:CRUSH:HURT:10d6
+B:CRUSH:HURT:10d6
+B:CRUSH:HURT:10d6
+B:CRUSH:HURT:10d6
+F:BASH_DOOR | REFLECTING | KILL_ITEM |
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
+F:NONLIVING | RIDING
+F:NO_CONF | NO_SLEEP | NO_FEAR | MOB_100 | ALLIANCE_PHYREXIA | EVIL
+D:ファイレクシア人の未成熟な「細菌」が乗って操る成体武器だ。
+D:その中でも特に戦車のような強靭さ相手をひき殺す。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
