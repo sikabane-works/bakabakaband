@@ -32386,6 +32386,20 @@ F:UNIQUE | FORCE_MAXHP | MALE | EVIL | ANIMAL | RAND_25 | RAND_50
 F:DROP_60 | DROP_90 | DROP_GOOD | RES_SOUN | NO_STUN
 D:ドクターモービスが宿敵チーターマンを破るために生み出した新型改造生物だ。
 
+N:1730:バル・ベルデ将校
+E:Officer of Val Verde
+G:p:R
+I:110:6d10:25:35:10
+W:22:3:0:240:0:0
+B:SHOOT:HURT:10d10
+B:HIT:HURT:2d10
+R:1513:5d6
+F:BASH_DOOR | OPEN_DOOR | DROP_90 |
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF
+F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON
+S:1_IN_2 |
+S:SHOOT
+D:政情不安定な社会の中で彼らは汚職で儲ける金にしか興味がない。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
