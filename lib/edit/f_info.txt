@@ -2540,6 +2540,15 @@ G:.:R:LIT
 W:2
 F:LOS | PROJECT | MOVE | PLACE | DROP | FLOOR | CAN_FLY | TELEPORTABLE
 
+N:313:HUMAN_FACE_WALL
+J:人面壁
+E:Human Face Wall
+G:#:R:LIT
+W:2
+K:DESTROYED:*FLOOR*
+F:POWER_30 | REMEMBER | TUNNEL | HAS_ITEM | HURT_ROCK | CAN_PASS | CAN_DIG |
+F:HURT_DISI
+
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
 # d - Dark Gray    W - Light Gray     v - Violet        y - Yellow
