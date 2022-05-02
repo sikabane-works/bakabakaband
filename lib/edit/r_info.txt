@@ -32445,6 +32445,20 @@ F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
 F:NO_CONF | NO_SLEEP | NO_FEAR | NASTY
 D:邪淫を繰り返したために下の世界に生まれ変わってしまった亡者だ。
 
+#[DSKL]王道を征く
+N:1734:サキュバス
+E:Succubus
+G:u:r
+I:116:11d8:20:40:30
+W:16:1:0:70:0:0
+B:CLAW:CONFUSE:3d4
+B:CLAW:CONFUSE:3d4
+F:FORCE_MAXHP | DROP_90 | FEMALE |
+F:OPEN_DOOR | BASH_DOOR | IM_FIRE | NO_CONF | NO_SLEEP |
+F:EVIL | DEMON | IM_POIS | IM_FIRE
+S:1_IN_6
+S:SCARE | S_DEMON | CAUSE_2 | CONF | FORGET
+D:蠱惑的な女性の姿をした悪魔で、男性を性的誘惑により堕落させようとしてくる。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
