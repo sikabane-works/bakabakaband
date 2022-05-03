@@ -32455,10 +32455,25 @@ B:CLAW:CONFUSE:3d4
 B:CLAW:CONFUSE:3d4
 F:FORCE_MAXHP | DROP_90 | FEMALE |
 F:OPEN_DOOR | BASH_DOOR | IM_FIRE | NO_CONF | NO_SLEEP |
-F:EVIL | DEMON | IM_POIS | IM_FIRE
+F:EVIL | DEMON | IM_POIS
 S:1_IN_6
 S:SCARE | S_DEMON | CAUSE_2 | CONF | FORGET
 D:蠱惑的な女性の姿をした悪魔で、男性を性的誘惑により堕落させようとしてくる。
+
+N:1735:インキュバス
+E:Incubus
+G:u:B
+I:116:11d8:20:40:30
+W:16:1:0:70:0:0
+B:CLAW:CONFUSE:3d4
+B:CLAW:CONFUSE:3d4
+F:FORCE_MAXHP | DROP_90 | MALE |
+F:OPEN_DOOR | BASH_DOOR | IM_COLD | NO_CONF | NO_SLEEP |
+F:EVIL | DEMON | IM_POIS
+S:1_IN_6
+S:SCARE | S_DEMON | CAUSE_2 | CONF | FORGET
+D:蠱惑的な男性の姿をした悪魔で、女性を性的誘惑により堕落させようとしてくる。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
