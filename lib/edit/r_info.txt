@@ -32503,6 +32503,18 @@ F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | EVIL
 D:宇宙海賊ギルドの冷酷な幹部で、全身を特殊偏向グラスに変えたサイボーグの戦士だ。
 D:一説によれば、何度か宿敵に敗れたのち暗黒神アーリマンに魂を売り蘇ったという。
 
+#[DSKL]ただの廃人
+N:1738:薬中
+E:Tecato
+G:t:R
+I:100:1d2:6:1:0
+W:0:1:0:0:0:0
+B:DROOL:FLAVOR
+B:PUNCH:HURT:1d1
+F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
+F:RAND_25 | RAND_50 | EAT_LOSE_CHR | HUMAN |
+D:彼は幻覚の中で邪悪と戦っている光の戦士だ。大変立派なことだ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
