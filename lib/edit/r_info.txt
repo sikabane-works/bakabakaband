@@ -32485,6 +32485,23 @@ F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
 F:RAND_25 | RAND_50 | EAT_LOSE_INT | HUMAN |
 D:彼は心底楽しそうだ。
 
+#[DSKL]虹裏オナニーネタはとりあえずなし
+N:1737:『クリスタル・ボーイ』
+E:The Crystal Bowie
+G:g:W
+I:130:50d100:30:140:0
+W:63:3:0:35000:0:0
+B:PUNCH:HURT:10d10
+B:PUNCH:HURT:10d10
+B:SLASH:HURT:16d10
+B:SLASH:HURT:16d10
+F:UNIQUE | MALE | DROP_CORPSE | ATTR_CLEAR | REFLECTING
+F:NONLIVING | NO_FEAR | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC |
+F:MOVE_BODY | IM_FIRE | IM_COLD | IM_ACID | IM_POIS |
+F:NO_STUN | REGENERATE | NO_CONF | NO_SLEEP | CAN_SWIM |
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | EVIL
+D:宇宙海賊ギルドの冷酷な幹部で、全身を特殊偏向グラスに変えたサイボーグの戦士だ。
+D:一説によれば、何度か宿敵に敗れたのち暗黒神アーリマンに魂を売り蘇ったという。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
