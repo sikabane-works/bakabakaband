@@ -32375,16 +32375,16 @@ D:ファイレクシア人の未成熟な「細菌」が乗って操る成体武
 D:その中でも特に戦車のような強靭さ相手をひき殺す。
 
 #[DSKL]勿
-N:1729:エイプマン
+N:1729:『エイプマン』
 G:H:o
-E:Hercules, the second eldest cheetahmen
+E:the Apeman
 I:110:15d16:20:35:25
 W:11:1:0:230:0:0
 B:CRUSH:HURT:7d6
 B:CRUSH:HURT:7d6
 F:UNIQUE | FORCE_MAXHP | MALE | EVIL | ANIMAL | RAND_25 | RAND_50
 F:DROP_60 | DROP_90 | DROP_GOOD | RES_SOUN | NO_STUN
-D:ドクターモービスが宿敵チーターマンを破るために生み出した新型改造生物だ。
+D:ドクター・モービスが宿敵チーターマンを破るために生み出した新型改造生物だ。
 
 N:1730:バル・ベルデ将校
 E:Officer of Val Verde
@@ -32514,6 +32514,18 @@ B:PUNCH:HURT:1d1
 F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
 F:RAND_25 | RAND_50 | EAT_LOSE_CHR | HUMAN |
 D:彼は幻覚の中で邪悪と戦っている光の戦士だ。大変立派なことだ。
+
+N:1739:『ドクター・モービス』
+G:p:o
+E:Dr.Morbis
+I:110:12d16:20:15:25
+W:10:1:0:230:0:0
+B:CRUSH:HURT:5d6
+B:CRUSH:HURT:5d6
+F:UNIQUE | FORCE_MAXHP | MALE | EVIL | HUMAN | RAND_25 | RAND_50
+F:DROP_60 | DROP_90 | DROP_GOOD | RES_ELEC | NO_STUN
+S:1_IN_2 | BLINK
+D:チーターマン達に遺伝子改造を施し、その生みの母親を殺した冷酷な科学者だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
