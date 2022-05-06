@@ -32515,6 +32515,18 @@ F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
 F:RAND_25 | RAND_50 | EAT_LOSE_CHR | HUMAN |
 D:彼は幻覚の中で邪悪と戦っている光の戦士だ。大変立派なことだ。
 
+N:1739:『ドクター・モービス』
+G:p:o
+E:Dr.Morbis
+I:110:12d16:20:15:25
+W:10:1:0:230:0:0
+B:CRUSH:HURT:5d6
+B:CRUSH:HURT:5d6
+F:UNIQUE | FORCE_MAXHP | MALE | EVIL | HUMAN | RAND_25 | RAND_50
+F:DROP_60 | DROP_90 | DROP_GOOD | RES_ELEC | NO_STUN
+S:1_IN_2 | BLINK
+D:チーターマン達に遺伝子改造を施し、その生みの母親を殺した冷酷な科学者だ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
