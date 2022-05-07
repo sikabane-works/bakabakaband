@@ -32527,6 +32527,34 @@ F:DROP_60 | DROP_90 | DROP_GOOD | RES_ELEC | NO_STUN
 S:1_IN_2 | BLINK
 D:チーターマン達に遺伝子改造を施し、その生みの母親を殺した冷酷な科学者だ。
 
+N:1739:『ドクター・モービス』
+G:p:o
+E:Vengevine
+I:110:12d16:20:15:25
+W:10:1:0:230:0:0
+B:CRUSH:HURT:5d6
+B:CRUSH:HURT:5d6
+F:UNIQUE | FORCE_MAXHP | MALE | EVIL | HUMAN | RAND_25 | RAND_50
+F:DROP_60 | DROP_90 | DROP_GOOD | RES_ELEC | NO_STUN
+S:1_IN_2 | BLINK
+D:チーターマン達に遺伝子改造を施し、その生みの母親を殺した冷酷な科学者だ。
+
+N:1740:サク
+E:Saku
+G:H:g
+I:107:30d12:12:40:10
+W:30:2:0:400:0:0
+B:HIT:HURT:1d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS | MULTIPLY | FRIENDS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING |
+S:1_IN_6 |
+S:MISSILE
+D:ジオン公国が作り出した超量産型モビルスーツだ。サクサク描ける、造れるからサクだ。
+
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
