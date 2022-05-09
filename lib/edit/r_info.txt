@@ -32570,6 +32570,23 @@ F:RES_WATE | IM_COLD | HURT_FIRE | NEVER_MOVE | WILD_ONLY | WILD_WOOD |
 D:それは名前の通り、己の領域を侵す者には誰であろうと襲い掛かる、
 D:憤怒のエレメンタルが植物に宿った姿だ。
 
+N:1743:『魔法少女アイ参』
+E:the 'Magical Girl Ai 3'
+G:#:D
+I:120:20d100:30:60:20
+W:40:2:0:12500:0:0
+B:TOUCH:LOSE_CHR:6d6
+B:TOUCH:EXP_VAMP:6d6
+B:TOUCH:UN_POWER:6d6
+B:TOUCH:DR_MANA:6d6
+F:UNIQUE | FORCE_MAXHP | PASS_WALL | NONLIVING | IM_COLD | CAN_FLY
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | STUPID | EVIL | FEMALE
+F:ELDRITCH_HORROR | IM_COLD | RES_NETH | RES_DARK
+F:NO_CONF | NO_SLEEP | NO_STUN | QUANTUM | RAND_25
+F:REGENERATE | SELF_DARK_1 | SELF_DARK_2
+S:1_IN_5 | HASTE | BRAIN_SMASH | SCARE | HOLD
+S:DRAIN_MANA | HEAL | ANIM_DEAD | BO_ABYSS | BO_VOID
+D:ごらんの有様だよ。あなたもこの虚無に飲み込まれるだろう。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
