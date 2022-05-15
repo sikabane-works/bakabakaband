@@ -32650,6 +32650,28 @@ F:FEMALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
 F:RAND_25 | RAND_50 | EAT_LOSE_CHR | HUMAN |
 D:「こんな女に誰がした」彼女はいつもそんな風に大げさに叫んでいる。
 
+#[DSKL]ファミコン版準拠
+N:1748:神の召使『カルノフ』
+E:Karnov, the Servant of God
+G:p:o
+I:118:50d14:30:50:30
+W:29:2:0:2000:0:0
+B:PUNCH:HURT:4d6
+B:PUNCH:HURT:5d5
+B:PUNCH:HURT:5d5
+B:PUNCH:HURT:4d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_FEAR | CAN_FLY | UNIQUE
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | REFLECTING | RES_TELE |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | CAN_FLY
+F:IM_ACID | IM_FIRE 
+F:NO_CONF | NO_SLEEP | SELF_LITE_2 | HUMAN | ANGEL | MALE
+S:1_IN_3 | 
+S:HEAL | HASTE | MISSILE | BR_FIRE | BO_FIRE
+D:生前悪行を繰り返していたために、死後神様に召使として
+D:働く責務を負わされた恰幅のよい男だ。
+D:クリアミナ王国が魔物に蹂躙される中、
+D:神様はいくらかの力を貸し与え、彼に邪悪の討伐を任せた。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
