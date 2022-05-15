@@ -32650,6 +32650,68 @@ F:FEMALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
 F:RAND_25 | RAND_50 | EAT_LOSE_CHR | HUMAN |
 D:「こんな女に誰がした」彼女はいつもそんな風に大げさに叫んでいる。
 
+#[DSKL]ファミコン版準拠
+N:1748:神の召使『カルノフ』
+E:Karnov, the Servant of God
+G:p:o
+I:118:50d14:30:50:30
+W:29:2:0:2000:0:0
+B:PUNCH:HURT:4d6
+B:PUNCH:HURT:5d5
+B:PUNCH:HURT:5d5
+B:PUNCH:HURT:4d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_FEAR | CAN_FLY | UNIQUE
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | REFLECTING | RES_TELE |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | CAN_FLY
+F:IM_ACID | IM_FIRE 
+F:NO_CONF | NO_SLEEP | SELF_LITE_2 | HUMAN | ANGEL | MALE
+S:1_IN_3 | 
+S:HEAL | HASTE | MISSILE | BR_FIRE | BO_FIRE
+D:生前悪行を繰り返していたために、死後神様に召使として
+D:働く責務を負わされた恰幅のよい男だ。
+D:クリアミナ王国が魔物に蹂躙される中、
+D:神様はいくらかの力を貸し与え、彼に邪悪の討伐を任せた。
+
+#[DSKL]覇邪の封印より
+N:1749:デーモンの女王『テラリン』
+E:Terarin, the Demon Queen 
+G:U:g
+I:130:44d100:40:120:10
+W:56:5:0:28000:0:0
+B:BITE:SUPERHURT:14d8
+B:BITE:SUPERHURT:14d8
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+F:UNIQUE | FEMALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | CAN_SPEAK | CAN_FLY |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | REGENERATE | RES_NETH | RES_DARK |
+F:EVIL | DEMON | IM_ACID | IM_POIS | NO_CONF | NO_SLEEP | RES_TELE
+S:1_IN_5 | 
+S:BLIND | HOLD | SCARE | CAUSE_4 | BA_NETH
+D:ある異世界の魔物に蹂躙された世界を守るべく封印された「バァンドゥラの通路」
+D:その封印を破り、再び邪悪な魔物を率いて世界へ襲撃してきた邪悪な魔物の女王だ。
+
+N:1750:戦う人間発電所『チェルノブ』
+E:Chelnov, the Atomic Runner
+G:p:w
+I:130:18d100:70:90:0
+W:40:2:0:10000:0:0
+B:HIT:HURT:7d8
+B:HIT:HURT:7d8
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GOOD |
+F:OPEN_DOOR | POWERFUL | MOVE_BODY | CAN_SWIM
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | 
+F:RES_LITE | RES_DARK | RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER
+F:RES_TELE | NO_CONF | NO_SLEEP | NO_STUN |
+S:1_IN_5 | 
+S:BO_FIRE | BA_FIRE | ROCKET | BO_MANA
+D:原子力発電所の爆発事故に巻き込まれた炭鉱夫だ。
+D:九死に一生を得て身に着けたその「異状能力」を邪悪なる組織デスタリアンに狙われ、
+D:彼は今日も走りを止めることなく戦い続けている。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
