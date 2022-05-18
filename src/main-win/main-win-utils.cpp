@@ -22,12 +22,10 @@
  */
 bool is_already_running(void)
 {
-    [[maybe_unused]] HANDLE hMutex = CreateMutexW(NULL, TRUE, L"" VERSION_NAME);
-    if (GetLastError() == ERROR_ALREADY_EXISTS) {
-        return true;
-    }
-
-    return false;
+    wchar_t wtext[32];
+    mbstowcs(wtext, VARIANT_NAME.data(), VARIANT_NAME.length());
+    [[maybe_unused]] HANDLE hMutex = CreateMutexW(NULL, TRUE, wtext);
+    return GetLastError() == ERROR_ALREADY_EXISTS;
 }
 
 /*!

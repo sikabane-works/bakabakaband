@@ -14279,7 +14279,7 @@ N:751:カオス・ボルテックス
 E:Chaos vortex
 G:v:v
 I:140:32d20:100:80:0
-W:55:1:0:4000:0:0
+W:55:2:0:4000:0:0
 F:ATTR_MULTI | ATTR_ANY |
 F:PREVENT_SUDDEN_MAGIC | NEVER_BLOW | 
 F:RAND_50 | RAND_25 | CAN_FLY |
@@ -15751,7 +15751,7 @@ F:ELDRITCH_HORROR | IM_COLD | RES_NETH | RES_DARK
 F:NO_CONF | NO_SLEEP | NO_STUN | QUANTUM | RAND_25
 F:REGENERATE | SELF_DARK_1 | SELF_DARK_2
 S:1_IN_5 | BR_NETH | BRAIN_SMASH | SCARE | S_UNDEAD | S_HI_UNDEAD
-S:DRAIN_MANA | HEAL | ANIM_DEAD
+S:DRAIN_MANA | HEAL | ANIM_DEAD | BO_ABYSS | BO_VOID | BR_ABYSS | BR_VOID | BA_VOID | BA_ABYSS
 D:$A black hole in the fabric of reality.
 D:$  It simply is not there.
 D:現実という生地に空いた黒い穴。これは「無」だ。
@@ -26495,13 +26495,17 @@ B:BITE:HURT:3d4
 B:BITE:HURT:3d4
 F:BASH_DOOR | WILD_GRASS | ANIMAL | PASS_WALL
 D:$This terrifying tiger used to escape nightly from the folding screen
-D:$ in a lord's mansion and eat people.  So the lord asked a child priest
-D:$ to get rid of the tiger.  The priest exorcised the tiger from the
-D:$ screen but did not catch it afterwards.  Now it roams as it wills.
+D:$ in a lord's mansion and eat people.
+D:$  So the lord asked a child priest to get rid of the tiger.
+D:$  The priest exorcised the tiger from the
+D:$ screen but did not catch it afterwards.
+D:$  Now it roams as it wills.
+D:$  Now it is settled in the Angband and breeding.
 D:この恐るべき虎は、さる殿様の屋敷に飾ってある屏風から毎晩抜け出しては
-D:人を食い殺している。
-D:そこで殿様は坊主に退治を依頼して屏風からこの虎を出したが、
-D:坊主は捕まえ損ねてそのまま逃げ出してしまった。
+D:人を食い殺していた。
+D:そこで殿様は坊主に退治を依頼して屏風からこの虎を出した。
+D:しかし坊主は捕まえ損ね、虎はそのまま逃げ出してしまった。
+D:それから幾星霜、この虎は鉄獄に居着いて繁殖している。
 
 # In Japan, also, taxi in Edo era and bird cage have pronunciation, 'kago'
 # Driver and painter have same pronunciation, 'kaki'
@@ -28301,7 +28305,7 @@ B:CLAW:POISON:5d4
 B:SPIT:BLIND:4d3
 F:CHAR_MULTI | 
 F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
-F:EMPTY_MIND | COLD_BLOOD |
+F:EMPTY_MIND | COLD_BLOOD | NASTY
 F:NO_CONF | NO_SLEEP | NO_FEAR
 S:1_IN_5 | 
 S:BLIND | CONF | SCARE | CAUSE_3 | BA_POIS |
@@ -28312,53 +28316,46 @@ D:$ to get close to its poisonous claws.
 D:放置された糞便に化けた奇妙な生物で、
 D:愚かなスカトロ愛好者がその毒のある爪の射程に入るのを待ち構えている。
 
-N:1483:ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)
-E:Statu of Statu of Statue of Chest mimic mimic mimic mimic
-G:`:W
+N:1483:ミミック(クソデカ枕)
+E:Huge size pillow mimic
+G:&:W
 I:110:20d14:30:60:0
-W:30:255:0:70:1000:1484
+W:30:3:0:70:1000:1484
 B:GAZE:CONFUSE:6d3
 B:CLAW:POISON:7d4
 B:CLAW:POISON:7d4
 B:SPIT:BLIND:6d3
 F:CHAR_MULTI | 
 F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
-F:EMPTY_MIND | COLD_BLOOD |
+F:EMPTY_MIND | COLD_BLOOD | NASTY
 F:NO_CONF | NO_SLEEP | NO_FEAR
 S:1_IN_5 | 
 S:BLIND | CONF | SCARE | CAUSE_4 | BA_POIS |
 S:S_MONSTER
-D:$This strange creature, transformed into an image of a strange creature
-D:$ that is transformed into an abandoned box, waits for a stupid adventurer
-D:$ to get close to its poisonous claws.
-D:$ Even so, what a boring repetition.
-D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
-D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
-D:それにしてもなんてつまらない繰り返しだろうか。
+D:$This strange creature, transformed into an abandoned huge size pillow, 
+D:$ waits for a stupid gay
+D:$ to get close to its poisonous claws and extreme orgasms.
+D:クソデカ枕に化けている奇妙な生物で、
+D:愚かなホモがその毒のある爪の射程に入ってイキスギるのを待ち構えている。
 
-N:1484:ミミック(ミミック(ミミック(ミミック(ミミック(箱)の像)の像)の像)の像)
-E:Statu of Statu of Statu of Statue of Chest mimic mimic mimic mimic mimic
-G:`:W
-I:110:20d14:30:70:0
-W:35:255:0:80:0:0
-B:GAZE:CONFUSE:8d3
-B:CLAW:POISON:9d4
-B:CLAW:POISON:11d4
-B:SPIT:BLIND:8d3
+N:1484:ミミック(ホモの紅茶)
+E:Homo tea mimic
+G:,:o
+I:110:10d10:30:10:0
+W:20:2:0:110:0:0
+B:SPIT:CONFUSE:8d3
+B:SPIT:PARALYZE:8d5
+B:SPIT:PARALYZE:8d5
+B:SPIT:PARALYZE:8d5
 F:CHAR_MULTI | 
 F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
 F:EMPTY_MIND | COLD_BLOOD |
 F:NO_CONF | NO_SLEEP | NO_FEAR
-S:1_IN_5 | 
-S:BLIND | CONF | SCARE | CAUSE_4 | BA_POIS |
-S:S_MONSTER
-D:$This strange creature, transformed into an image of a strange creature
-D:$ that is transformed into an abandoned box, waits for a stupid adventurer
-D:$ to get close to its poisonous claws.
-D:$ Are you tired of being sloppy?
-D:放置された箱に化けている奇妙な生物の像に化けている奇妙な生物で、
-D:愚かな冒険者がその毒のある爪の射程に入るのを待ち構えている。
-D:いい加減に飽きてこないか？
+D:$This strange creature, transformed into an abandoned iced tea with sleeping pills, 
+D:$ waits for a stupid gay
+D:$ to drink itself by Yazyu Senior.
+D:睡眠薬入りのアイスティーに化けている奇妙な生物で、
+D:愚かなホモが野獣先輩に飲まされるのを待ち構えている。
 
 N:1485:州民を滅ぼすもの
 E:Decimator of the provinces
@@ -30151,7 +30148,7 @@ B:BITE:HURT:12d8
 F:PREVENT_SUDDEN_MAGIC | SELF_LITE_2 |
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | EVIL
 F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | 
-F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | FRIENDS
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE | RES_DARK | FRIENDS
 F:NO_CONF | NO_SLEEP | NO_FEAR | CAN_FLY | ANGEL
 S:1_IN_6
 S:BO_MANA
@@ -31767,7 +31764,7 @@ N:1693:オディオアイ
 E:Odio eye
 G:e:v
 I:120:30d100:34:130:5
-W:55:4:0:6000:40000:0
+W:55:4:0:12000:0:0
 B:SLASH:HURT:10d14
 B:SLASH:HURT:10d14
 B:GAZE:PARALYZE:10d6
@@ -31780,6 +31777,35 @@ S:1_IN_2 |
 S:SLOW | MIND_BLAST | BRAIN_SMASH | FORGET | BO_WATE
 D:多数の憎しみ満ちた争いの果て、屍の山の上に姿を現すという憎悪の権化だ。
 
+N:1694:ヴォイド・ボルテックス
+E:Void vortex
+G:v:v
+I:140:32d20:100:80:0
+W:55:2:0:4000:0:0
+F:ATTR_MULTI | ATTR_ANY |
+F:PREVENT_SUDDEN_MAGIC | NEVER_BLOW | 
+F:RAND_50 | RAND_25 | CAN_FLY |
+F:EMPTY_MIND | BASH_DOOR | POWERFUL | 
+F:RES_GRAV | RES_TELE | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | NONLIVING
+S:1_IN_6 | BR_VOID
+V:150
+D:$It's a void whirlpool.
+D:空虚な渦巻きだ。
+
+N:1695:アビス・ボルテックス
+E:Abyss vortex
+G:v:v
+I:140:32d20:100:80:0
+W:55:2:0:4000:0:0
+F:ATTR_MULTI | ATTR_ANY |
+F:PREVENT_SUDDEN_MAGIC | NEVER_BLOW | 
+F:RAND_50 | RAND_25 | CAN_FLY |
+F:EMPTY_MIND | BASH_DOOR | POWERFUL | 
+F:HAS_DARK_1 | HAS_DARK_2 | RES_DARK | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | NONLIVING
+S:1_IN_6 | BR_ABYSS
+V:150
+D:$It's a abyssal whirlpool.
+D:深淵の渦巻きだ。
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
@@ -31789,6 +31815,80 @@ D:多数の憎しみ満ちた争いの果て、屍の山の上に姿を現すと
 # S: spell type | spell type | etc
 # F: flag | flag | etc
 # D: Description
+
+N:1696:オディオマウス
+E:Odio mouth
+G:#:v
+I:120:35d100:34:130:5
+W:58:4:0:15000:0:0
+B:BITE:HURT:10d14
+B:BITE:HURT:10d14
+B:BITE:HURT:10d14
+B:BITE:HURT:10d14
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE
+F:COLD_BLOOD | BASH_DOOR | 
+F:EVIL | CAN_FLY | MOB_1 | ALLIANCE_ODIO
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NEVER_MOVE
+S:1_IN_2 | 
+S:BR_ABYSS | BR_VOID
+D:多数の憎しみ満ちた争いの果て、屍の山の上に姿を現すという憎悪の権化だ。
+
+N:1697:『春画要求姉貴』
+E:The Erotic Picture Requesting Sister
+G:h:b
+I:110:8d8:20:25:10
+W:8:2:0:40:0:0
+B:HIT:HURT:1d10
+B:SHOOT:HURT:2d8
+F:NASTY | HOMO_SEXUAL | FEMALE | UNIQUE
+F:BASH_DOOR | STUPID
+F:RES_LITE
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5
+S:SHOOT
+D:春画を描いたら仲間に入れてくれるらしいが、
+D:ホモガキの仲間のなることと、眼前の小憎らしいメスガキのアヴァターに
+D:腹パンをすること、どちらがあなたの精神衛生に良いだろうか？
+
+N:1698:『グレンデルの母』
+E:Grendel's Mother
+G:p:v
+I:125:49d89:80:100:20
+W:58:2:0:30000:0:0
+B:CLAW:POISON:8d15
+B:CLAW:POISON:8d15
+B:CLAW:POISON:8d15
+B:TOUCH:LOSE_STR
+F:UNIQUE | FEMALE | ONLY_ITEM | RES_CHAO | RES_TELE
+F:DROP_CORPSE | DROP_SKELETON | HAS_LITE_2 | HUMAN | DEMON | ANGEL
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP |
+F:DROP_4D2 | DROP_1D2 | DROP_GOOD | DROP_60 | DROP_90 | POWERFUL
+F:EVIL | IM_POIS | IM_ELEC | SMART | REGENERATE | OPEN_DOOR | BASH_DOOR |
+S:1_IN_3 |
+S:SCARE | BLIND | CONF | TPORT | BLINK | TELE_AWAY | TELE_TO
+S:CAUSE_4 | BA_FIRE | BA_COLD
+S:S_MONSTERS | PSY_SPEAR
+D:カインの末裔たち──あの醜悪な怪物の母親だ。
+D:美しく妖艶な姿をしているが、それが仮初なのか真実まことのものなのか
+D:知る術はない。ただいずれにせよその姿にぞっとする何かを感じずにはいられない。
+
+N:1699:新宿の『母』
+E:The Mother in Shinjuku
+G:A:W
+I:130:75d100:40:160:10
+W:87:3:0:75000:0:0
+R:1596:5d10
+F:SPAWN_CREATURE_1_IN_16_1596
+F:UNIQUE | FEMALE | CAN_SPEAK | RES_NETH | NO_FEAR | EVIL |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | REFLECTING |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GREAT | NEVER_MOVE |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | NEVER_BLOW |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_DARK | RES_LITE
+F:NO_CONF | NO_SLEEP | ANGEL
+S:1_IN_1 | BR_LITE | BR_DARK
+D:この髪のない全裸の巨大な女性を象った
+D:「敵」の母体は光と闇の声をただ周囲に振りまき続けている。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
