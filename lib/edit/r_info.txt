@@ -32811,6 +32811,23 @@ F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:「気持ちよく、inして下さい」そう言いながら小太りの男は
 D:あなたをクッソ汚い尻穴に取り込もうとしている！
 
+N:1758:ガ＝タロウの老婆
+E:Old woman of G'tarou
+G:p:y
+I:125:50d21:20:12:10
+W:43:4:0:3900:0:0
+B:PUNCH:HURT:4d7
+B:KICK:HURT:5d7
+B:CLAW:HURT:5d6
+B:BITE:HURT:7d5
+F:FEMALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_2D2 | DROP_SKELETON
+F:OPEN_DOOR | BASH_DOOR | 
+F:EVIL | HUMAN | NO_CONF | NO_SLEEP | NASTY
+S:1_IN_3 | CAUSE_2 | CAUSE_3 | BA_POIS
+D:因果すら創造主の衝動と悪癖に歪められた世界に生息する、
+D:そんな彼女らは老いた人にして人にならざる何かだ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
