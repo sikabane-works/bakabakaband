@@ -32847,6 +32847,25 @@ S:BR_NUKE
 D:排泄物の塊がそのまま猟犬になったような姿だ。
 D:全くすさまじい匂いを、腹立たしいほどの機敏さで振りまいてくる。
 
+N:1760:100エーカーの森の反逆者『プーさん』
+E:Winnie the Pooh, the Rebel 100 Acre Wood
+G:q:o
+I:125:35d100:30:120:30
+W:55:4:0:22000:0:0
+B:HIT:SHATTER:13d12
+B:HIT:SHATTER:13d12
+B:HIT:SHATTER:13d12
+B:HIT:SHATTER:13d12
+F:UNIQUE | MALE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD | 
+F:DROP_90 | REGENERATE | KILL_WALL | RES_TELE |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL | IM_POIS | NO_CONF | NO_SLEEP |
+F:IM_ELEC | IM_COLD | IM_FIRE |
+D:かつて、かの傲慢にして幼稚な創造主に延々と不毛な野球遊びを強いられる奴隷だった獣だ。
+D:今はその愚かな主の脳髄を粉砕した至高のバットと友とし、鉄獄で獲物を狩り続けている。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
