@@ -32866,6 +32866,25 @@ F:IM_ELEC | IM_COLD | IM_FIRE |
 D:かつて、かの傲慢にして幼稚な創造主に延々と不毛な野球遊びを強いられる奴隷だった獣だ。
 D:今はその愚かな主の脳髄を粉砕した至高のバットと友とし、鉄獄で獲物を狩り続けている。
 
+#[DSKL]ボラギノール
+N:1761:黄の王『ジェレマイア』
+E:Jeremiah, the Xanthous King
+G:p:y
+I:130:80d12:20:40:10
+W:35:2:0:3000:0:0
+B:HIT:HURT:2d8
+B:HIT:HURT:2d8
+B:HIT:HURT:2d8
+F:MALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_90 | DROP_4D2 | UNIQUE
+F:SMART | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | RES_FIRE | NO_CONF | NO_SLEEP
+S:1_IN_2 | 
+S:CAUSE_3 | BO_FIRE | BA_FIRE
+D:目に痛いほど鮮烈な黄色の装束を身にまとい、棘鞭と火炎の呪術を操る。
+D:しかし何よりも目を引くのはその異様な頭部に大きく巻き上げた黄色のダーバンだ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
