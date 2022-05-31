@@ -32932,6 +32932,30 @@ F:OPEN_DOOR | BASH_DOOR
 D:サザンクロスの支配組織、KINGの重鎮の一人だ。
 D:鉤爪の使い手で、逃げ回る奴隷をいたぶり尽くす極悪人である。
 
+N:1765:殖産のヴァララウコ
+E:Industrialist of Valarauko
+G:U:y
+I:132:62d85:50:150:90
+W:79:7:0:35000:0:0
+B:TOUCH:EXP_VAMP:1d16
+B:TOUCH:UN_POWER
+B:TOUCH:UN_BONUS:10d10
+B:TOUCH:UN_BONUS:10d10
+F:DEMON | ANGEL
+F:DROP_2D2 | DROP_3D2 | DROP_GREAT | ONLY_ITEM | RES_TELE | PRIEST | ROGUE
+F:IM_POIS | IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NONLIVING
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN | POWERFUL | SMART
+F:RES_CHAO | RES_NEXU | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+F:ALLIANCE_UTUMNO | MOB_34
+S:1_IN_3 | 
+S:TPORT | TELE_LEVEL | BLIND | CONF | SCARE | CAUSE_4 | 
+S:BRAIN_SMASH | FORGET | HASTE | HEAL
+S:S_MONSTERS | S_DEMON | S_KIN | S_DRAGON
+D:「赤表紙本」にも子細な記述の乏しい、メルコール率いるウトゥムノの一統にあった「バルログ」の古名。
+D:この実態はその中でもアルダの上古創世にも直接携わり、
+D:「赤表紙本」の堕落者の汚名に反して今も何ら神なる力を失っていない魔神だ。
+D:彼らはその中でも産業や交易の神として、古ウルクの民に利益をもたらし続けている。
+D:清貧は持たざる者の僻みか、持てる者の欺瞞に過ぎない。彼は常にそう説いている。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
