@@ -4238,7 +4238,7 @@ N:257:ワーグ
 E:Warg
 G:C:D
 I:120:8d8:20:20:40
-W:14:2:0:40:500:347
+W:14:2:0:40:500:1767
 B:BITE:HURT:1d10
 F:RAND_25 | 
 F:FRIENDS | WILD_WOOD | WILD_MOUNTAIN | DROP_SKELETON | DROP_CORPSE
@@ -32986,6 +32986,19 @@ D:偉大なる父神、あるいは母神の名の下に統治者を名乗る。
 D:その頂点にある者は、しばしば下位のアイヌア、マイアールを
 D:凌駕するウトゥムノの席次を与えられた。
 
+N:1767:軍用ワーグ
+E:Military warg
+G:C:s
+I:123:18d18:20:40:40
+W:20:2:0:40:500:347
+B:BITE:HURT:2d10
+B:BITE:HURT:2d10
+F:RAND_25 | 
+F:FRIENDS | WILD_WOOD | WILD_MOUNTAIN | DROP_SKELETON | DROP_CORPSE
+F:BASH_DOOR | 
+F:ANIMAL | EVIL
+D:より古い魔狼の血を維持すべく、
+D:オークの手により品種改良を重ねられた、より大型のワーグだ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
