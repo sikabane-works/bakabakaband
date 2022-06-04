@@ -33045,6 +33045,18 @@ F:WEIRD_MIND | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:ANIMAL | EVIL | WILD_WOOD | WILD_MOUNTAIN
 D:ヤーナムに時折出没する、文字通り人を食らうほどに大きく凶暴な豚だ。
 
+N:1771:罹患者の獣
+E:Beast patient
+G:H:u
+I:113:10d8:20:30:30
+W:12:2:0:75:0:0
+B:CLAW:HURT:3d5
+B:CLAW:HURT:3d5
+F:DROP_1D2
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_SLEEP | DROP_CORPSE |
+F:EVIL | IM_COLD
+F:EAT_CONF | EAT_DRAIN_EXP | EAT_INSANITY
+D:ヤーナムに蔓延する獣の病に侵された慣れ果ての存在だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
