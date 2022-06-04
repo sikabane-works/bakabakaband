@@ -33016,6 +33016,47 @@ S:1_IN_4 | SHOOT
 D:不吉なる「廃都ケッサリア」に潜む魔を調べる名目で派遣された、
 D:剣と弓を操る麗しい女性の聖職者だ。
 
+N:1769:アメンドーズ
+E:Amygdala
+G:U:o
+I:130:30d70:30:120:20
+W:43:3:0:10000:0:0
+B:CRUSH:HURT:10d10
+B:PUNCH:HURT:10d10
+B:PUNCH:HURT:10d10
+B:HIT:TERRIFY:6d6
+F:DEMON | EVIL | DROP_GOOD | CAN_SWIM |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_2D2 | ELDRITCH_HORROR |
+F:OPEN_DOOR | BASH_DOOR | SMART | POWERFUL | MOVE_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_POIS | NO_CONF | RES_CHAO | NO_SLEEP
+S:1_IN_5
+S:BO_MANA | 
+D:上位者と呼ばれる存在の一種、左右非対称の長い７本腕を有する異形たちだ。
+
+N:1770:人喰い豚
+E:Maneater boar
+G:q:o
+I:114:18d40:13:35:10
+W:20:1:0:200:0:0
+B:CRUSH:HURT:8d5
+B:CRUSH:HURT:8d5
+B:BITE:HURT:3d6
+F:WEIRD_MIND | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:ANIMAL | EVIL | WILD_WOOD | WILD_MOUNTAIN
+D:ヤーナムに時折出没する、文字通り人を食らうほどに大きく凶暴な豚だ。
+
+N:1771:罹患者の獣
+E:Beast patient
+G:H:u
+I:113:10d8:20:30:30
+W:12:2:0:75:0:0
+B:CLAW:HURT:3d5
+B:CLAW:HURT:3d5
+F:DROP_1D2
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_SLEEP | DROP_CORPSE |
+F:EVIL | IM_COLD
+F:EAT_CONF | EAT_DRAIN_EXP | EAT_INSANITY
+D:ヤーナムに蔓延する獣の病に侵された慣れ果ての存在だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
