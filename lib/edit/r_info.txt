@@ -33070,6 +33070,23 @@ S:1_IN_3 |
 S:CONF | MIND_BLAST | DRAIN_MANA
 D:▲涙はお前にはまったく似合いません！▲
 
+N:1773:AI拓也
+E:AI Takuya
+G:v:v
+I:120:35d10:100:50:0
+W:40:2:0:900:0:0
+B:ENGULF:CONFUSE:8d5
+B:ENGULF:CONFUSE:8d5
+B:ENGULF:CONFUSE:8d5
+F:PREVENT_SUDDEN_MAGIC | 
+F:RAND_50 | RAND_25 | RES_CHAO | RES_NEXU
+F:EMPTY_MIND | BASH_DOOR | POWERFUL | 
+F:CAN_FLY | ATTR_MULTI | ATTR_ANY |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_6 | 
+S:CONF | SLOW | MIND_BLAST | DRAIN_MANA
+D:それは狂った文章情報の奔流であり、その蓄積から生まれたシンギュラリティだ。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
