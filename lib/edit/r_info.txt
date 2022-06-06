@@ -33112,6 +33112,23 @@ F:OPEN_DOOR | BASH_DOOR |
 F:IM_FIRE | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP
 D:ミスターXの配下の一人で塔の一階の守護者だ。
 
+N:1776:ラザロ
+E:Razaro
+G:*:w
+I:120:10d100:14:120:20
+W:40:3:0:9000:0:0
+B:CRUSH:SHATTER:3d10
+B:CRUSH:SHATTER:3d10
+F:FORCE_MAXHP | DROP_4D2 | DROP_GOOD | EMPTY_MIND | NONLIVING
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV
+F:RES_TELE | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP
+F:CAN_FLY | CAN_SPEAK | POWERFUL | BASH_DOOR
+S:1_IN_4 | BO_MANA | MISSILE
+D:宇宙より飛来し、合体しながら襲い来る謎の白く巨大な顔面そのものだ。
+
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
