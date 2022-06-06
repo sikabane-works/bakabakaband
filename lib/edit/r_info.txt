@@ -33098,6 +33098,19 @@ F:BASH_DOOR | IM_COLD | IM_ACID | IM_FIRE | IM_ELEC | IM_POIS | NONLIVING |
 F:HURT_ROCK | NO_CONF | NO_SLEEP | CAN_FLY | RES_SHAR
 D:それは256回攻撃を打ち込めば破壊できる。
 
+N:1775:『棒術使い』
+E:The Cudgel User
+G:p:o
+I:110:45d10:30:50:25
+W:18:2:0:250:0:0
+B:HIT:HURT:7d5
+B:HIT:HURT:7d5
+F:UNIQUE | MALE | MOVE_BODY | SMART | DROP_CORPSE | DROP_SKELETON |
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC | HUMAN
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP
+D:ミスターXの配下の一人で塔の一階の守護者だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
