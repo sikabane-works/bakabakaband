@@ -33175,6 +33175,23 @@ S:1_IN_2 |
 S:TRAPS | BLINK
 D:南斗五車星の一人、知恵者の軍師らしいがトラップを作ることばかりに執心している。
 
+N:1780:雲の『ジュウザ』
+E:Jurza, the Cloud
+G:p:W
+I:120:10d100:30:80:10
+W:36:2:0:5000:0:0
+B:KICK:SUPERHURT:9d1
+B:PUNCH:BLIND:3d5
+B:KICK:HURT:20d1
+B:KICK:HURT:20d1
+F:UNIQUE | MALE | HUMAN |
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_COLD | IM_ELEC
+D:雲ゆえの気紛れ。己の行動をそう称する飄々とした態度の五車星の一人だ。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
