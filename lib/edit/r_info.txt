@@ -33270,11 +33270,23 @@ W:36:2:0:1800:0:0
 B:HIT:SUPERHURT:8d10
 B:HIT:SUPERHURT:8d10
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
-F:FRIENDS | 
 F:ONLY_ITEM | DROP_1D2 | 
 F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
 F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP
 D:イザリスの混沌から生まれた存在、二本の大鉈を操る山羊頭のデーモンだ。
+
+N:1787:牛頭のデーモン
+E:Taurus demon
+G:U:s
+I:115:40d30:22:105:20
+W:38:2:0:1800:0:0
+B:HIT:SUPERHURT:7d10
+B:HIT:SUPERHURT:7d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP
+D:イザリスの混沌から生まれた存在、大斧を奮う牛の頭をしたデーモンだ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
