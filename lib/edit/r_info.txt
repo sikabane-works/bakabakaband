@@ -33262,6 +33262,20 @@ F:IM_FIRE | IM_POIS | HAS_LITE_1 |
 D:髑髏の面に黒づくめをした亡者の戦士だ。
 D:世界蛇の一頭、闇撫でのカアスに唆され人間性を狩る闇の業を重ねている。
 
+N:1786:山羊頭のデーモン
+E:Capra demon
+G:U:s
+I:115:40d20:30:98:20
+W:36:2:0:1800:0:0
+B:HIT:SUPERHURT:8d10
+B:HIT:SUPERHURT:8d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP
+D:イザリスの混沌から生まれた存在、二本の大鉈を操る山羊頭のデーモンだ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
