@@ -33246,6 +33246,48 @@ F:NO_SLEEP | FRIENDS | COLD_BLOOD |
 F:NO_FEAR | EMPTY_MIND | CAN_FLY | RAND_50 | RAND_25
 D:狭間の地の海岸に見かける浮遊するクラゲだ。
 
+N:1785:ダークレイス
+E:Darkwraith
+G:p:D
+I:115:30d30:25:120:10
+W:39:3:0:3000:0:0
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | RES_CHAO | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | NO_FEAR | NO_CONF
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_FIRE | IM_POIS | HAS_LITE_1 |
+D:髑髏の面に黒づくめをした亡者の戦士だ。
+D:世界蛇の一頭、闇撫でのカアスに唆され人間性を狩る闇の業を重ねている。
+
+N:1786:山羊頭のデーモン
+E:Capra demon
+G:U:s
+I:115:40d20:30:98:20
+W:36:2:0:1800:0:0
+B:HIT:SUPERHURT:8d10
+B:HIT:SUPERHURT:8d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP
+D:イザリスの混沌から生まれた存在、二本の大鉈を操る山羊頭のデーモンだ。
+
+N:1787:牛頭のデーモン
+E:Taurus demon
+G:U:s
+I:115:40d30:22:105:20
+W:38:2:0:1800:0:0
+B:HIT:SUPERHURT:7d10
+B:HIT:SUPERHURT:7d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP
+D:イザリスの混沌から生まれた存在、大斧を奮う牛の頭をしたデーモンだ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
