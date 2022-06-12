@@ -33312,6 +33312,16 @@ S:1_IN_5
 S:BLINK | TELE_TO | CAUSE_2 | CAUSE_3
 D:ホモの風評被害によって潰れた恨みを遺した、寿司屋そのものの亡霊だ。
 
+N:1790:『一般通過爺』
+E:the Commonly Passing Old Man
+G:t:w
+I:200:10d10:40:200:3
+W:0:20:0:0:0:0
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | NEVER_BLOW | RAND_25 | RAND_50
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_1D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | QUANTUM
+D:たまたま通りかかった自転車の通行客だ。むやみに襲ってはいけない（戒め）
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
