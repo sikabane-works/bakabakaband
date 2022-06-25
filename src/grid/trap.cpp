@@ -465,8 +465,8 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
             (void)summon_specific(player_ptr, 0, y, x, player_ptr->current_floor_ptr->dun_level, SUMMON_NONE, (PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET));
         }
 
-        if (player_ptr->current_floor_ptr->dun_level > randint1(100)) /* No nasty effect for low levels */
-        {
+        if (player_ptr->current_floor_ptr->dun_level > randint1(100)) {
+            /* No nasty effect for low levels */
             bool stop_ty = false;
             int count = 0;
 

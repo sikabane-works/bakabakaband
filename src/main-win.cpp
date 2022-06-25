@@ -1132,8 +1132,7 @@ static errr term_text_win(int x, int y, int n, TERM_COLOR a, concptr s)
             i++;
             rc.left += 2 * td->tile_wid;
             rc.right += 2 * td->tile_wid;
-        } else if (iskanji(*(s + i))) /* 2バイト文字 */
-        {
+        } else if (iskanji(*(s + i))) { /* 2バイト文字 */
             char tmp[] = { *(s + i), *(s + i + 1), '\0' };
             to_wchar wc(tmp);
             const auto *buf = wc.wc_str();

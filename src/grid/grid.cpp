@@ -92,13 +92,13 @@ bool new_player_spot(PlayerType *player_ptr)
         if (is_in_dungeon(player_ptr)) {
             f_ptr = &f_info[g_ptr->feat];
 
-            if (max_attempts > 5000) /* Rule 1 */
-            {
+            if (max_attempts > 5000) {
+                /* Rule 1 */
                 if (f_ptr->flags.has_not(FloorFeatureType::FLOOR)) {
                     continue;
                 }
-            } else /* Rule 2 */
-            {
+            } else {
+                /* Rule 2 */
                 if (f_ptr->flags.has_not(FloorFeatureType::MOVE)) {
                     continue;
                 }
@@ -213,8 +213,8 @@ void update_local_illumination(PlayerType *player_ptr, POSITION y, POSITION x)
         update_local_illumination_aux(player_ptr, yy, xx);
         update_local_illumination_aux(player_ptr, y, xx);
         update_local_illumination_aux(player_ptr, yy, x);
-    } else if (x != player_ptr->x) /* y == player_ptr->y */
-    {
+    } else if (x != player_ptr->x) {
+        /* y == player_ptr->y */
         xx = (x < player_ptr->x) ? (x - 1) : (x + 1);
         for (i = -1; i <= 1; i++) {
             yy = y + i;
@@ -224,8 +224,8 @@ void update_local_illumination(PlayerType *player_ptr, POSITION y, POSITION x)
         update_local_illumination_aux(player_ptr, yy, x);
         yy = y + 1;
         update_local_illumination_aux(player_ptr, yy, x);
-    } else if (y != player_ptr->y) /* x == player_ptr->x */
-    {
+    } else if (y != player_ptr->y) {
+        /* x == player_ptr->x */
         yy = (y < player_ptr->y) ? (y - 1) : (y + 1);
         for (i = -1; i <= 1; i++) {
             xx = x + i;
@@ -235,8 +235,7 @@ void update_local_illumination(PlayerType *player_ptr, POSITION y, POSITION x)
         update_local_illumination_aux(player_ptr, y, xx);
         xx = x + 1;
         update_local_illumination_aux(player_ptr, y, xx);
-    } else /* Player's grid */
-    {
+    } else { /* Player's grid */
         for (i = 0; i < 8; i++) {
             yy = y + ddy_cdd[i];
             xx = x + ddx_cdd[i];

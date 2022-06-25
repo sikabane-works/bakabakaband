@@ -661,8 +661,7 @@ void do_cmd_browse(PlayerType *player_ptr)
     o_ptr = choose_object(player_ptr, &item, q, s, USE_INVEN | USE_FLOOR | (pc.equals(PlayerClassType::FORCETRAINER) ? USE_FORCE : 0), item_tester);
 
     if (!o_ptr) {
-        if (item == INVEN_FORCE) /* the_force */
-        {
+        if (item == INVEN_FORCE) { /* the_force */
             do_cmd_mind_browse(player_ptr);
             return;
         }
@@ -922,11 +921,10 @@ void do_cmd_study(PlayerType *player_ptr)
             return;
         }
 #ifdef JP
-        if (!get_check(format("%sの%sをさらに学びます。よろしいですか？", name, p)))
+        if (!get_check(format("%sの%sをさらに学びます。よろしいですか？", name, p))) {
 #else
-        if (!get_check(format("You will study a %s of %s again. Are you sure? ", p, name)))
+        if (!get_check(format("You will study a %s of %s again. Are you sure? ", p, name))) {
 #endif
-        {
             return;
         }
 
@@ -1065,8 +1063,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
 
     o_ptr = choose_object(player_ptr, &item, q, s, USE_INVEN | USE_FLOOR | (pc.equals(PlayerClassType::FORCETRAINER) ? USE_FORCE : 0), item_tester);
     if (!o_ptr) {
-        if (item == INVEN_FORCE) /* the_force */
-        {
+        if (item == INVEN_FORCE) { /* the_force */
             do_cmd_mind(player_ptr);
             return true; //!< 錬気キャンセル時の処理がない
         }

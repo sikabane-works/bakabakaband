@@ -130,8 +130,9 @@ errr parse_r_info(std::string_view buf, angband_header *)
         r_ptr->name = tokens[1];
 #endif
     } else if (tokens[0] == "T") {
-        if (tokens.size() < 2 || tokens[1].size() == 0)
+        if (tokens.size() < 2 || tokens[1].size() == 0) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
         r_ptr->tag = tokens[1];
     } else if (tokens[0] == "D") {
         // D:text_ja
@@ -437,8 +438,9 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 r_ptr->dead_spawns.push_back({ num, deno, kind_idx, ds, dn });
                 continue;
             }
-            if (!grab_one_basic_flag(r_ptr, f))
+            if (!grab_one_basic_flag(r_ptr, f)) {
                 return PARSE_ERROR_INVALID_FLAG;
+            }
         }
 
     } else if (tokens[0] == "S") {

@@ -150,11 +150,10 @@ void edit_history(PlayerType *player_ptr)
 #endif
         }
 #ifdef JP
-        else if (iskanji(c) || isprint(c))
+        else if (iskanji(c) || isprint(c)) {
 #else
-        else if (isprint(c)) /* BUGFIX */
+        else if (isprint(c)) { /* BUGFIX */
 #endif
-        {
 #ifdef JP
             if (iskanji2(player_ptr->history[y], x)) {
                 player_ptr->history[y][x + 1] = ' ';

@@ -19,8 +19,7 @@ void toggle_keyword(text_body_type *tb, BIT_FLAGS flg)
     if (tb->mark) {
         by1 = std::min(tb->my, tb->cy);
         by2 = std::max(tb->my, tb->cy);
-    } else /* if (!tb->mark) */
-    {
+    } else { /* if (!tb->mark) */
         by1 = by2 = tb->cy;
     }
 
@@ -88,8 +87,7 @@ void toggle_command_letter(text_body_type *tb, byte flg)
     if (tb->mark) {
         by1 = std::min(tb->my, tb->cy);
         by2 = std::max(tb->my, tb->cy);
-    } else /* if (!tb->mark) */
-    {
+    } else { /* if (!tb->mark) */
         by1 = by2 = tb->cy;
     }
 

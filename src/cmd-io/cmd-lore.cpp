@@ -134,11 +134,12 @@ void do_cmd_query_symbol(PlayerType *player_ptr)
             }
 
 #ifdef JP
-            if (angband_strstr(temp2, temp) || angband_strstr(r_ref.name.c_str(), temp))
+            if (angband_strstr(temp2, temp) || angband_strstr(r_ref.name.c_str(), temp)) {
 #else
-            if (angband_strstr(temp2, temp))
+            if (angband_strstr(temp2, temp)) {
 #endif
                 who.push_back(r_ref.idx);
+            }
         }
 
         else if (all || (r_ref.d_char == sym)) {
