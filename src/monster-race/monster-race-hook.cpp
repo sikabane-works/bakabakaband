@@ -792,14 +792,17 @@ bool vault_aux_dark_elf(PlayerType *player_ptr, MONRACE_IDX r_idx)
 bool vault_aux_gay(PlayerType *player_ptr, MONRACE_IDX r_idx)
 {
     monster_race *r_ptr = &r_info[r_idx];
-    if (!vault_monster_okay(player_ptr, r_idx))
+    if (!vault_monster_okay(player_ptr, r_idx)) {
         return false;
+    }
 
-    if (!(r_ptr->flags1 & (RF1_MALE)))
+    if (!(r_ptr->flags1 & (RF1_MALE))) {
         return false;
+    }
 
-    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL)))
+    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL))) {
         return false;
+    }
 
     return true;
 }
@@ -812,14 +815,17 @@ bool vault_aux_gay(PlayerType *player_ptr, MONRACE_IDX r_idx)
 bool vault_aux_les(PlayerType *player_ptr, MONRACE_IDX r_idx)
 {
     monster_race *r_ptr = &r_info[r_idx];
-    if (!vault_monster_okay(player_ptr, r_idx))
+    if (!vault_monster_okay(player_ptr, r_idx)) {
         return false;
+    }
 
-    if (!(r_ptr->flags1 & (RF1_FEMALE)))
+    if (!(r_ptr->flags1 & (RF1_FEMALE))) {
         return false;
+    }
 
-    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL)))
+    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL))) {
         return false;
+    }
 
     return true;
 }

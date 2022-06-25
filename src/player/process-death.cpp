@@ -33,8 +33,8 @@
 #include "view/display-inventory.h"
 #include "view/display-messages.h"
 #include "view/display-player.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 #include <ctime>
 
 #define GRAVE_LINE_WIDTH 31
@@ -91,8 +91,8 @@ static int show_killing_monster(PlayerType *player_ptr, char *buf, char *tomb_me
 
     char killer[MAX_MONSTER_NAME];
     strcpy(killer, t); /* 2nd line */
-    if (*(t + strlen(t) + 1)) /* Does 3rd line exist? */
-    {
+    if (*(t + strlen(t) + 1)) {
+        /* Does 3rd line exist? */
         for (t = killer + strlen(killer) - 2; iskanji(*(t - 1)); t--) { /* Loop */
             ;
         }
@@ -133,8 +133,7 @@ static void show_dead_place(PlayerType *player_ptr, char *buf, char *tomb_messag
         return;
     }
 
-    if (wc_ptr->is_blown_away())
-    {
+    if (wc_ptr->is_blown_away()) {
         return;
     }
 
@@ -167,7 +166,7 @@ static void show_tomb_detail(PlayerType *player_ptr, char *buf)
     char tomb_message[160];
     int extra_line = 0;
     if (wc_ptr->is_blown_away()) {
-        strcpy(tomb_message, "");    
+        strcpy(tomb_message, "");
     } else if (streq(player_ptr->died_from, "途中終了")) {
         strcpy(tomb_message, "<自殺>");
     } else if (streq(player_ptr->died_from, "ripe")) {
@@ -256,7 +255,7 @@ void print_tomb(PlayerType *player_ptr)
     center_string(buf, current_time);
     put_str(buf, 17, 11);
     if (wc_ptr->is_blown_away()) {
-        msg_format(_("世 界 こ わ れ る", "The world had *b*r*o*k*e*n*."));    
+        msg_format(_("世 界 こ わ れ る", "The world had *b*r*o*k*e*n*."));
     } else {
         msg_format(_("さようなら、%s!", "Goodbye, %s!"), player_ptr->name);
     }

@@ -34,11 +34,10 @@ void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
             continue;
         }
 
-        if (iscntrl((unsigned char)player_ptr->name[i]))
+        if (iscntrl((unsigned char)player_ptr->name[i])) {
 #else
-        if (iscntrl(player_ptr->name[i]))
+        if (iscntrl(player_ptr->name[i])) {
 #endif
-        {
             quit_fmt(_("'%s' という名前は不正なコントロールコードを含んでいます。", "The name '%s' contains control chars!"), player_ptr->name);
         }
     }
