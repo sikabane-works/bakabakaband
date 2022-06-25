@@ -18,8 +18,8 @@
 #include "system/player-type-definition.h"
 #include "util/enum-range.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 
 /*!
  * @brief プレイヤーの現在ダンジョンIDと階層に応じて、ダンジョン内ランクエの自動放棄を行う
@@ -159,8 +159,7 @@ void execute_floor_reset(PlayerType *player_ptr)
         msg_print(_("世界が変わった！", "The world changes!"));
 
         /* 時空崩壊度進行 */
-        if (player_ptr->prace != PlayerRaceType::AMBERITE)
-        {
+        if (player_ptr->prace != PlayerRaceType::AMBERITE) {
             msg_print(_("乱暴な現実の変容で時空崩壊が進んだ！", "World collapsion has progressed due to the violent transformation of reality!"));
             wc_ptr->plus_perm_collapsion(20 + floor_ptr->dun_level / 2);
         }

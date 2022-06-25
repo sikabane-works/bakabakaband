@@ -40,9 +40,9 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "window/main-window-row-column.h"
+#include "world/world-collapsion.h"
 #include "world/world-movement-processor.h"
 #include "world/world.h"
-#include "world/world-collapsion.h"
 
 WorldTurnProcessor::WorldTurnProcessor(PlayerType *player_ptr)
     : player_ptr(player_ptr)
