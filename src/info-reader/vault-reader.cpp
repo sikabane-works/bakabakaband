@@ -134,4 +134,3 @@ errr parse_v_info(std::string_view buf, angband_header *)
     }
     return PARSE_ERROR_NONE;
 }
-
