@@ -1,9 +1,9 @@
 ﻿#include "alliance/alliance.h"
-#include "system/player-type-definition.h"
 #include "monster-race/monster-race.h"
-#include "system/monster-race-definition.h"
-#include "util/bit-flags-calculator.h"
 #include "monster-race/race-flags1.h"
+#include "system/monster-race-definition.h"
+#include "system/player-type-definition.h"
+#include "util/bit-flags-calculator.h"
 
 const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NONE, std::make_unique<AllianceNone>(AllianceType::NONE, "NONE", _("無所属", "None"), 0) },
@@ -46,14 +46,12 @@ const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_imples
     { std::make_tuple(AllianceType::UTUMNO, AllianceType::VALINOR), -1000 },
 };
 
-
 Alliance::Alliance(AllianceType id, std::string tag, std::string name, int64_t base_power)
     : id(id)
     , tag(tag)
     , name(name)
     , base_power(base_power)
 {
-
 }
 
 int64_t Alliance::calcCurrentPower()
@@ -134,12 +132,12 @@ int AllianceEldrazi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_p
     return 0;
 }
 
-int AllianceUngoliant::calcImplessionPoint(PlayerType* creature_ptr) const
+int AllianceUngoliant::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
@@ -154,42 +152,42 @@ int AllianceTurbanKids::calcImplessionPoint([[maybe_unused]] PlayerType *creatur
     return 0;
 }
 
-int AllianceNakedKnights::calcImplessionPoint(PlayerType* creature_ptr) const
+int AllianceNakedKnights::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment : creature_ptr->alignment * 3;
 }
 
-int AllianceNumenor::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceNumenor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceAngartha::calcImplessionPoint([[maybe_unused]] PlayerType* creature_ptr) const
+int AllianceAngartha::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
