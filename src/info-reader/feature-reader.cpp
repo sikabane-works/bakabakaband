@@ -200,7 +200,7 @@ errr parse_f_info(std::string_view buf, angband_header *)
                     info_set_value(f_ptr->change_priority, f_tokens[1]);
                     continue;
                 }
-        }
+            }
 
             if (!grab_one_feat_flag(f_ptr, f)) {
                 return PARSE_ERROR_INVALID_FLAG;

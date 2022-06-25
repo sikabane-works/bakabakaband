@@ -283,7 +283,7 @@ errr parse_d_info(std::string_view buf, angband_header *)
             }
 
             if (f_tokens.size() == 5 && f_tokens[0] == "FIXED" && f_tokens[1] == "ROOM") {
-                int depth, id, percentage; 
+                int depth, id, percentage;
                 info_set_value(depth, f_tokens[2]);
                 info_set_value(id, f_tokens[3]);
                 info_set_value(percentage, f_tokens[4]);

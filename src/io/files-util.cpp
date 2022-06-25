@@ -254,7 +254,6 @@ static errr counts_seek(PlayerType *player_ptr, int fd, uint32_t where, bool fla
     }
 
     return fd_seek(fd, seekpoint + where * sizeof(uint32_t));
-
 }
 
 /*!
