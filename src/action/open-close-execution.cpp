@@ -8,6 +8,7 @@
 #include "action/open-close-execution.h"
 #include "action/movement-execution.h"
 #include "combat/attack-power-table.h"
+#include "floor/floor-object.h"
 #include "game-option/disturbance-options.h"
 #include "game-option/input-options.h"
 #include "grid/feature.h"
@@ -15,6 +16,7 @@
 #include "grid/trap.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
+#include "object/object-kind-hook.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-status/player-energy.h"
@@ -31,8 +33,6 @@
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
-#include "object/object-kind-hook.h"
-#include "floor/floor-object.h"
 
 /*!
  * @brief 「開ける」動作コマンドのサブルーチン /

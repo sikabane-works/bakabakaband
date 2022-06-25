@@ -7,8 +7,8 @@
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "floor/cave.h"
-#include "floor/floor-mode-changer.h"
 #include "floor/floor-leaver.h"
+#include "floor/floor-mode-changer.h"
 #include "game-option/birth-options.h"
 #include "game-option/special-options.h"
 #include "grid/feature.h"
@@ -27,6 +27,7 @@
 #include "player/player-damage.h"
 #include "player/player-personality-types.h"
 #include "player/player-status-flags.h"
+#include "player/player-status-resist.h"
 #include "player/player-status.h"
 #include "spell-kind/spells-launcher.h"
 #include "spell-kind/spells-random.h"
@@ -46,7 +47,6 @@
 #include "util/enum-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-#include "player/player-status-resist.h"
 
 static std::vector<int16_t> normal_traps;
 
@@ -416,7 +416,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
 
     cave_alter_feat(player_ptr, y, x, FloorFeatureType::HIT_TRAP);
 
-	if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
+    if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
         player_ptr->incident[INCIDENT::TRAPPED] = 0;
     }
     player_ptr->incident[INCIDENT::TRAPPED]++;
@@ -680,13 +680,9 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         jump_floor(player_ptr, DUNGEON_VOID_TERRITORY, player_ptr->current_floor_ptr->dun_level);
         break;
     }
-
-
     }
     default:
         break;
-
-
     }
 
     if (break_trap && is_trap(player_ptr, g_ptr->feat)) {

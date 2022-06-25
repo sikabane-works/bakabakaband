@@ -19,8 +19,8 @@
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 
 /*!
  * @brief 宿屋で食事を摂る
@@ -216,14 +216,14 @@ static bool stay_inn(PlayerType *player_ptr)
     back_to_health(player_ptr);
     charge_magic_eating_energy(player_ptr);
 
-	display_stay_result(player_ptr, prev_hour);
+    display_stay_result(player_ptr, prev_hour);
 
     if (player_ptr->incident.count(INCIDENT::STAY_INN) == 0) {
-		player_ptr->incident[INCIDENT::STAY_INN] = 0;
+        player_ptr->incident[INCIDENT::STAY_INN] = 0;
     }
     player_ptr->incident[INCIDENT::STAY_INN]++;
 
-	return true;
+    return true;
 }
 
 /*!

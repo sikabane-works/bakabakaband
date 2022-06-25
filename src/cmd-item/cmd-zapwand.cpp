@@ -62,7 +62,6 @@ bool wand_effect(PlayerType *player_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION di
     }
     player_ptr->incident[INCIDENT::ZAP_WAND]++;
 
-
     /* XXX Hack -- Wand of wonder can do anything before it */
     if (sval == SV_WAND_WONDER) {
         int vir = virtue_number(player_ptr, V_CHANCE);

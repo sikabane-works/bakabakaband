@@ -139,7 +139,7 @@ void process_player(PlayerType *player_ptr)
 
         WorldTurnProcessor(player_ptr).print_time();
         WorldTurnProcessor(player_ptr).print_world_collapse();
-        
+
     } else if (!(load && player_ptr->energy_need <= 0)) {
         player_ptr->energy_need -= speed_to_energy(player_ptr->pspeed);
     }

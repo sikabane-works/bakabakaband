@@ -154,12 +154,12 @@ void player_outfit(PlayerType *player_ptr)
     decide_initial_items(player_ptr, q_ptr);
     q_ptr = &forge;
 
-    //アンナタールの羊皮紙
+    // アンナタールの羊皮紙
     q_ptr->prep(lookup_kind(ItemKindType::READING_MATTER, 0));
     q_ptr->number = 1;
     add_outfit(player_ptr, q_ptr);
 
-    //メルコールの羊皮紙
+    // メルコールの羊皮紙
     q_ptr->prep(lookup_kind(ItemKindType::READING_MATTER, 3));
     q_ptr->number = 1;
     add_outfit(player_ptr, q_ptr);

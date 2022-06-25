@@ -200,8 +200,7 @@ void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
-    if(f_info[g_ptr->feat].change_priority <= f_info[feat].change_priority)
-    {
+    if (f_info[g_ptr->feat].change_priority <= f_info[feat].change_priority) {
         cave_set_feat(player_ptr, y, x, feat);
     }
 }

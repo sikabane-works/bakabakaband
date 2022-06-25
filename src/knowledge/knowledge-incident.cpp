@@ -72,5 +72,4 @@ void do_cmd_knowledge_incident(PlayerType *player_ptr)
     angband_fclose(fff);
     (void)show_file(player_ptr, true, file_name, _("これまでの出来事", "Incidents"), 0, 0);
     fd_kill(file_name);
-
 }

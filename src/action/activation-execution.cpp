@@ -265,12 +265,14 @@ static bool activate_firethrowing(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_rosmarinus(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS)
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS) {
         return false;
+    }
 
     DIRECTION dir;
-    if (!get_aim_dir(player_ptr, &dir))
+    if (!get_aim_dir(player_ptr, &dir)) {
         return false;
+    }
 
     fire_breath(player_ptr, AttributeType::MISSILE, dir, 20 + player_ptr->lev * 5, 2);
     return true;
@@ -278,13 +280,15 @@ static bool activate_rosmarinus(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_stungun(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN)
+    if (ae_ptr->o_ptr->tval != ItemKindType::JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN) {
         return false;
+    }
 
     DIRECTION dir;
     project_length = 1;
-    if (!get_aim_dir(player_ptr, &dir))
+    if (!get_aim_dir(player_ptr, &dir)) {
         return false;
+    }
 
     msg_print(_("『バチィ』", "'bzzt'"));
     fire_ball(player_ptr, AttributeType::STUNGUN, dir, player_ptr->lev, 0);
@@ -294,12 +298,14 @@ static bool activate_stungun(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_RAYGUN)
+    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_RAYGUN) {
         return false;
+    }
 
     DIRECTION dir;
-    if (!get_aim_dir(player_ptr, &dir))
+    if (!get_aim_dir(player_ptr, &dir)) {
         return false;
+    }
 
     msg_print(_("『ビィーム！』", "'ZAP! ZAP!'"));
     fire_bolt(player_ptr, AttributeType::MISSILE, dir, 10 + player_ptr->lev * 2);
@@ -358,7 +364,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
     if (activate_whistle(player_ptr, ae_ptr)) {
         activated = true;
     } else if (scouter_probing(player_ptr, ae_ptr)) {
-        activated = true; 
+        activated = true;
     } else if (exe_monster_capture(player_ptr, ae_ptr)) {
         activated = true;
     } else if (activate_firethrowing(player_ptr, ae_ptr)) {
@@ -383,5 +389,4 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
         msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name);
         curse_weapon_object(player_ptr, true, ae_ptr->o_ptr);
     }
-
 }

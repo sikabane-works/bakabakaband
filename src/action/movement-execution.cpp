@@ -378,6 +378,5 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     }
     player_ptr->incident[INCIDENT::WALK]++;
 
-
     (void)move_player_effect(player_ptr, y, x, mpe_mode);
 }

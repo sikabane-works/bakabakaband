@@ -1,9 +1,10 @@
 ﻿#pragma once
 
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
+#include "alliance/alliance.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-behavior-flags.h"
@@ -11,10 +12,9 @@
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster-race/race-visual-flags.h"
+#include "room/room-types.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
-#include "room/room-types.h"
-#include "alliance/alliance.h"
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -97,12 +97,12 @@ struct dungeon_type {
     int obj_great{};
     int obj_good{};
 
-	int monster_rate = 100; //!< トラップ生成比率
+    int monster_rate = 100; //!< トラップ生成比率
     int trap_rate = 100; //!< トラップ生成比率
 
     std::vector<std::tuple<int, int, int>> fixed_room_list;
 
-	std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
+    std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
     AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
 };
 
