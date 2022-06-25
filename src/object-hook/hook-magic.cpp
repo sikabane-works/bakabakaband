@@ -24,11 +24,9 @@ bool object_is_activatable(const ObjectType *o_ptr)
         return false;
 
     auto flags = object_flags(o_ptr);
-    if (flags.has(TR_ACTIVATE) || flags.has(TR_INVEN_ACTIVATE))
-    {
+    if (flags.has(TR_ACTIVATE) || flags.has(TR_INVEN_ACTIVATE)) {
         return true;
     }
-        
 
     return false;
 }

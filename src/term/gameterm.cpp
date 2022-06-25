@@ -13,16 +13,15 @@
 /*
  * Standard window names
  */
-const char angband_term_name[8][16] =
-{
-	"Bakabakaband",
-	"Term-1",
-	"Term-2",
-	"Term-3",
-	"Term-4",
-	"Term-5",
-	"Term-6",
-	"Term-7"
+const char angband_term_name[8][16] = {
+    "Bakabakaband",
+    "Term-1",
+    "Term-2",
+    "Term-3",
+    "Term-4",
+    "Term-5",
+    "Term-6",
+    "Term-7"
 };
 
 /*

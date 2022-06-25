@@ -4,22 +4,21 @@
 #include "flavor/flavor-describer.h"
 #include "floor/floor-object.h"
 #include "inventory/inventory-slot-types.h"
+#include "object-enchant/tr-types.h"
 #include "object-hook/hook-weapon.h"
+#include "object/object-flags.h"
 #include "object/object-info.h"
 #include "object/object-mark-types.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
-#include "object/object-flags.h"
 #include "player-info/equipment-info.h"
 #include "spell-realm/spells-craft.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "util/bit-flags-calculator.h"
 #include "util/object-sort.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
-#include "object-enchant/tr-types.h"
-#include "system/object-type-definition.h"
-#include "util/bit-flags-calculator.h"
 
 void vary_item(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
 {
@@ -367,15 +366,14 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ObjectType *o_ptr)
     return i;
 }
 
-
 /*!
- * @brief アイテムが拾えるものかどうか返す。 
+ * @brief アイテムが拾えるものかどうか返す。
  */
-bool check_get_item(ObjectType *o_ptr) {
+bool check_get_item(ObjectType *o_ptr)
+{
     auto flgs = object_flags(o_ptr);
     return !flgs.has(TR_NEVER_MOVE);
 }
-
 
 /*!
  * @brief アイテムを拾う際にザックから溢れずに済むかを判定する /

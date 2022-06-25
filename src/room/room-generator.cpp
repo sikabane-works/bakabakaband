@@ -99,10 +99,12 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
     std::map<RoomType, int> room_num;
 
     int dun_rooms = DUN_ROOMS_MAX * area_size * damroll(10, 20) / 12000;
-    if (one_in_(5))
+    if (one_in_(5)) {
         dun_rooms /= randint1(4);
-    else if (one_in_(4))
+
+    } else if (one_in_(4)) {
         dun_rooms *= randint1(4);
+    }
 
     room_info_type *room_info_ptr = room_info_normal;
 
@@ -203,7 +205,6 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
                 return false;
             }
         }
-
     }
 
     bool remain;

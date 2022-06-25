@@ -483,11 +483,11 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
 
         break;
     }
-    default:
+    default: {
         break;
     }
-}
+    }
 
-lite_spot(player_ptr, y, x);
-return obvious;
+    lite_spot(player_ptr, y, x);
+    return obvious;
 }

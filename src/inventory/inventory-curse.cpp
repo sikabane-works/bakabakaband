@@ -9,6 +9,7 @@
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/floor-mode-changer.h"
+#include "game-option/special-options.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/files-util.h"
 #include "io/write-diary.h"
@@ -29,7 +30,6 @@
 #include "spell-kind/spells-random.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell/summon-types.h"
-#include "game-option/special-options.h"
 #include "status/bad-status-setter.h"
 #include "status/buff-setter.h"
 #include "system/floor-type-definition.h"
@@ -442,7 +442,8 @@ static void curse_drain_mp(PlayerType *player_ptr)
 
 static void curse_megaton_coin(PlayerType *player_ptr)
 {
-    if (!get_player_flags(player_ptr, TR_MEGATON_COIN)) return;
+    if (!get_player_flags(player_ptr, TR_MEGATON_COIN))
+        return;
     auto d_ptr = &d_info[player_ptr->current_floor_ptr->dungeon_idx];
     if (!one_in_(364) || player_ptr->current_floor_ptr->dun_level == 0 || player_ptr->current_floor_ptr->dun_level == d_ptr->maxdepth ||
         inside_quest(player_ptr->current_floor_ptr->quest_number) || player_ptr->current_floor_ptr->inside_arena)
@@ -458,8 +459,6 @@ static void curse_megaton_coin(PlayerType *player_ptr)
 
     exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
     move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-
-
 }
 
 static void occur_curse_effects(PlayerType *player_ptr)

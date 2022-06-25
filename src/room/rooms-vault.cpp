@@ -1040,8 +1040,6 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
         v_ptr = &v_info[id];
     }
 
-
-
     /* pick type of transformation (0-7) */
     transno = randint0(8);
 
@@ -1108,12 +1106,14 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
         /* Access a random vault record */
         v_ptr = &v_info[randint0(v_info.size())];
 
-        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
+        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity)) {
             continue;
+        }
 
         /* Accept the special fix room. */
-        if (v_ptr->typ == 18)
+        if (v_ptr->typ == 18) {
             break;
+        }
     }
 
     /* No lesser vault found */

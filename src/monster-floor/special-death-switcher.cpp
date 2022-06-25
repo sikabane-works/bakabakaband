@@ -34,11 +34,11 @@
 #include "object-hook/hook-enchant.h"
 #include "object/object-kind-hook.h"
 #include "spell/summon-types.h"
-#include "sv-definition/sv-potion-types.h"
+#include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-other-types.h"
+#include "sv-definition/sv-potion-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
-#include "sv-definition/sv-food-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -123,7 +123,7 @@ static void on_dead_pink_horror(PlayerType *player_ptr, monster_death_type *md_p
     }
 }
 
-static void on_dead_spawn_monsters(PlayerType* player_ptr, monster_death_type* md_ptr)
+static void on_dead_spawn_monsters(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     bool notice = false;
 
@@ -141,17 +141,16 @@ static void on_dead_spawn_monsters(PlayerType* player_ptr, monster_death_type* m
         POSITION wx = md_ptr->md_x;
         bool pet = is_pet(md_ptr->m_ptr);
         BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
-        for (int i = 0; i < spawn_nums; i++)
-        {
-            if (summon_named_creature(player_ptr, 0, wy, wx, r_idx, mode) && player_can_see_bold(player_ptr, wy, wx))
+        for (int i = 0; i < spawn_nums; i++) {
+            if (summon_named_creature(player_ptr, 0, wy, wx, r_idx, mode) && player_can_see_bold(player_ptr, wy, wx)) {
                 notice = true;
+            }
         }
     }
 
     if (notice) {
         sound(SOUND_SUMMON);
     }
-
 }
 
 static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *md_ptr)
@@ -170,8 +169,7 @@ static void on_dead_drop_kind_item(PlayerType *player_ptr, monster_death_type *m
         int ds = std::get<5>(kind);
         int drop_nums = damroll(dn, ds);
 
-        for (int i = 0; i < drop_nums; i++)
-        {
+        for (int i = 0; i < drop_nums; i++) {
             q_ptr->prep(kind_idx);
             switch (grade) {
             /* Apply bad magic, but first clear object */
@@ -779,8 +777,7 @@ static void on_dead_swordfish(PlayerType *player_ptr, monster_death_type *md_ptr
 
 void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, AttributeFlags attribute_flags)
 {
-    if (r_info[md_ptr->m_ptr->r_idx].flags8 & RF8_NINJA)
-    {
+    if (r_info[md_ptr->m_ptr->r_idx].flags8 & RF8_NINJA) {
         on_dead_ninja(player_ptr, md_ptr);
         return;
     }
