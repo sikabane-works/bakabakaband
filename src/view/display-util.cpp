@@ -57,7 +57,7 @@ const std::vector<disp_player_line> disp_player_lines = {
     { 29, 14, 21, _("強化度", "Construction") },
     { 29, 16, 21, _("次レベル", "Const to Adv") },
     { 53, 19, -1, _("掘削      :", "Digging    : ") },
-	{ 29,  8, 21, _("死亡回数" , "Dead")},
+    { 29, 8, 21, _("死亡回数", "Dead") },
     { 29, 21, 21, _("時空崩壊度", "W. Collapse") },
 };
 }

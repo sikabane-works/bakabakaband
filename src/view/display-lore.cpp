@@ -674,7 +674,6 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
     hooked_roff(_("で成り立っている。", "."));
 }
 
-
 void display_monster_collective(lore_type *lore_ptr)
 {
     if ((lore_ptr->flags1 & RF1_ESCORT) || (lore_ptr->flags1 & RF1_ESCORTS) || lore_ptr->reinforce) {
