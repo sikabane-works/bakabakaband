@@ -56,8 +56,8 @@
 #include "player-status/player-energy.h"
 #include "player/player-personality-types.h"
 #include "spell-kind/spells-perception.h"
-#include "spell-kind/spells-world.h"
 #include "spell-kind/spells-polymorph.h"
+#include "spell-kind/spells-world.h"
 #include "spell/spells-status.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -295,7 +295,6 @@ static void bldg_process_command(PlayerType *player_ptr, building_type *bldg, in
         paid = true;
         trans_sex(player_ptr);
         break;
-
     }
 
     if (paid) {

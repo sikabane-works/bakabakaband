@@ -7,6 +7,7 @@
 #include "knowledge/knowledge-autopick.h"
 #include "knowledge/knowledge-experiences.h"
 #include "knowledge/knowledge-features.h"
+#include "knowledge/knowledge-incident.h"
 #include "knowledge/knowledge-inventory.h"
 #include "knowledge/knowledge-items.h"
 #include "knowledge/knowledge-monsters.h"
@@ -14,7 +15,6 @@
 #include "knowledge/knowledge-quests.h"
 #include "knowledge/knowledge-self.h"
 #include "knowledge/knowledge-uniques.h"
-#include "knowledge/knowledge-incident.h"
 #include "main/sound-of-music.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -46,7 +46,7 @@ void do_cmd_knowledge(PlayerType *player_ptr)
             prt(_("(8) 現在のペット                         の一覧", "(8) Display current pets"), 13, 5);
             prt(_("(9) 我が家のアイテム                     の一覧", "(9) Display home inventory"), 14, 5);
             prt(_("(0) *鑑定*済み装備の耐性                 の一覧", "(0) Display *identified* equip."), 15, 5);
-        } else if (p == 1){
+        } else if (p == 1) {
             prt(_("(a) 地形の表示文字/タイル                の一覧", "(a) Display terrain symbols"), 6, 5);
             prt(_("(b) 自分に関する情報                     の一覧", "(b) Display about yourself"), 7, 5);
             prt(_("(c) 突然変異                             の一覧", "(c) Display mutations"), 8, 5);

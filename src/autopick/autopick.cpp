@@ -119,7 +119,7 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
         if (!check_get_item(o_ptr)) {
             msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), o_name);
             o_ptr->marked |= OM_NOMSG;
-            continue;            
+            continue;
         }
 
         if (!check_store_item_to_inventory(player_ptr, o_ptr)) {

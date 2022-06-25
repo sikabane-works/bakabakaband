@@ -1,7 +1,7 @@
 ﻿/*!
  * @brief プレイヤーの食べるコマンド実装
  * @date 2018/09/07
- @ @author deskull
+ * @author deskull
  */
 
 #include "cmd-item/cmd-eat.h"
@@ -110,11 +110,13 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
  */
 static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_SOUL))
+    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_SOUL)) {
         return false;
+    }
 
-    if (player_ptr->prace == PlayerRaceType::ANDROID)
+    if (player_ptr->prace == PlayerRaceType::ANDROID) {
         return false;
+    }
 
     monster_race *r_ptr = &r_info[o_ptr->pval];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
@@ -138,8 +140,9 @@ static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
  */
 static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE))
+    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE)) {
         return false;
+    }
 
     monster_race *r_ptr = &r_info[o_ptr->pval];
 

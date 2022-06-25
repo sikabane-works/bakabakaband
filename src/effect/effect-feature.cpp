@@ -469,11 +469,13 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
         break;
     }
     case AttributeType::DIRT: {
-        if (f_ptr->flags.has(FloorFeatureType::PERMANENT))
+        if (f_ptr->flags.has(FloorFeatureType::PERMANENT)) {
             break;
+        }
         if (dam == 1) {
-            if (!f_ptr->flags.has(FloorFeatureType::FLOOR))
+            if (!f_ptr->flags.has(FloorFeatureType::FLOOR)) {
                 break;
+            }
             cave_set_feat(player_ptr, y, x, feat_shallow_dung_pool);
         } else if (dam) {
             cave_set_feat(player_ptr, y, x, feat_deep_dung_pool);
@@ -481,11 +483,11 @@ bool affect_feature(PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITIO
 
         break;
     }
-    default: {
+    default:
         break;
     }
-    }
+}
 
-    lite_spot(player_ptr, y, x);
-    return obvious;
+lite_spot(player_ptr, y, x);
+return obvious;
 }

@@ -128,8 +128,7 @@ bool make_object(PlayerType *player_ptr, ObjectType *j_ptr, BIT_FLAGS mode, std:
     if (!one_in_(prob) || !make_artifact_special(player_ptr, j_ptr)) {
         if (any_bits(mode, AM_NASTY) && !get_obj_num_hook) {
             get_obj_num_hook = kind_is_nasty;
-        }
-        else if (any_bits(mode, AM_GOOD) && !get_obj_num_hook) {
+        } else if (any_bits(mode, AM_GOOD) && !get_obj_num_hook) {
             get_obj_num_hook = kind_is_good;
         }
 
@@ -187,8 +186,9 @@ bool make_gold(PlayerType *player_ptr, ObjectType *j_ptr)
     int boost = floor_ptr->object_level > 20 ? ((floor_ptr->object_level - 10) * (floor_ptr->object_level - 10) / 100) : 1;
     int32_t base = k_info[OBJ_GOLD_LIST + i].cost;
     int price = (base + (8L * randint1(base)) + randint1(8)) * boost;
-    if (price > 30000)
+    if (price > 30000) {
         price = 30000;
+    }
     j_ptr->pval = price;
     return true;
 }

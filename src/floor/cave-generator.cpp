@@ -95,7 +95,7 @@ static void place_cave_contents(PlayerType *player_ptr, dun_data_type *dd_ptr, d
         add_river(floor_ptr, dd_ptr);
     }
 
-    //追加でさらに川を増やす。
+    // 追加でさらに川を増やす。
     if (one_in_(4)) {
         while (!one_in_(3)) {
             add_river(floor_ptr, dd_ptr);
@@ -127,8 +127,7 @@ static bool decide_tunnel_planned_site(PlayerType *player_ptr, dun_data_type *dd
     if (dd_ptr->tunnel_fail_count >= 200) {
         *dd_ptr->why = _("トンネル接続に失敗", "Failed to generate tunnels");
         return false;
-    }
-    else {
+    } else {
         msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("トンネル失敗回数:%d ", "Failure Tunnels:%d "), dd_ptr->tunnel_fail_count);
     }
 

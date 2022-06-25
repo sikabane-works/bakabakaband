@@ -206,8 +206,9 @@ static byte get_dungeon_feeling(PlayerType *player_ptr)
             delta += 5 * base;
         }
 
-        if (o_ptr->tval == ItemKindType::SOFT_ARMOR && o_ptr->sval == SV_DRAGON_BIKINI)
+        if (o_ptr->tval == ItemKindType::SOFT_ARMOR && o_ptr->sval == SV_DRAGON_BIKINI) {
             delta += 5 * base;
+        }
 
         if (o_ptr->tval == ItemKindType::RING && o_ptr->sval == SV_RING_SPEED && !o_ptr->is_cursed()) {
             delta += 25 * base;

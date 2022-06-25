@@ -782,8 +782,9 @@ process_result effect_monster_abyss(PlayerType *player_ptr, effect_monster_type 
  */
 process_result effect_monster_dirt(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    if (em_ptr->seen)
+    if (em_ptr->seen) {
         em_ptr->obvious = true;
+    }
 
     if (em_ptr->r_ptr->resistance_flags.has_not(MonsterResistanceType::IMMUNE_POISON)) {
         return PROCESS_CONTINUE;
@@ -800,8 +801,9 @@ process_result effect_monster_dirt(PlayerType *player_ptr, effect_monster_type *
 
 process_result effect_monster_stungun(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    if (em_ptr->seen)
+    if (em_ptr->seen) {
         em_ptr->obvious = true;
+    }
 
     if (em_ptr->r_ptr->resistance_flags.has_not(MonsterResistanceType::IMMUNE_ELEC)) {
         return PROCESS_CONTINUE;
