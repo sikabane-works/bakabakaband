@@ -378,34 +378,41 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
 
         // 基本重みが 0 以下なら生成禁止。
         // テーブル内の無効エントリもこれに該当する(alloc_race_table は生成時にゼロクリアされるため)。
-        if (entry->prob1 <= 0)
+        if (entry->prob1 <= 0) {
             continue;
+        }
 
         // いずれかの生成制約関数が偽を返したら生成禁止。
-        if ((hook1 && !hook1(player_ptr, entry->index)) || (hook2 && !hook2(player_ptr, entry->index)))
+        if ((hook1 && !hook1(player_ptr, entry->index)) || (hook2 && !hook2(player_ptr, entry->index))) {
             continue;
+        }
 
         // 原則生成禁止するものたち(フェイズアウト状態 / カメレオンの変身先 / ダンジョンの主召喚 は例外)。
         if (!player_ptr->phase_out && !chameleon_change_m_idx && summon_specific_type != SUMMON_GUARDIANS) {
             // クエストモンスターは生成禁止。
-            if (r_ptr->flags1 & RF1_QUESTOR)
+            if (r_ptr->flags1 & RF1_QUESTOR) {
                 continue;
+            }
 
             // ダンジョンの主は生成禁止。
-            if (r_ptr->flags7 & RF7_GUARDIAN)
+            if (r_ptr->flags7 & RF7_GUARDIAN) {
                 continue;
+            }
 
             // RF1_FORCE_DEPTH フラグ持ちは指定階未満では生成禁止。
-            if ((r_ptr->flags1 & RF1_FORCE_DEPTH) && (r_ptr->level > floor_ptr->dun_level))
+            if ((r_ptr->flags1 & RF1_FORCE_DEPTH) && (r_ptr->level > floor_ptr->dun_level)) {
                 continue;
+            }
 
             // クエスト内でRES_ALLの生成を禁止する (殲滅系クエストの詰み防止)
-            if (inside_quest(player_ptr->current_floor_ptr->quest_number) && r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL))
+            if (inside_quest(player_ptr->current_floor_ptr->quest_number) && r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
                 continue;
+            }
 
             // 時空崩壊度が一定数到達していないモンスターを禁止
-            if (r_ptr->collapse_over > wc_ptr->collapse_degree)
+            if (r_ptr->collapse_over > wc_ptr->collapse_degree) {
                 continue;
+            }
         }
 
         // 生成を許可するものは基本重みをそのまま引き継ぐ。
