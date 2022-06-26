@@ -19,8 +19,9 @@ static s32b last_inc = 0L;
 int increase_insults(void)
 {
     st_ptr->insult_cur++;
-    if (st_ptr->insult_cur <= ot_ptr->insult_max)
+    if (st_ptr->insult_cur <= ot_ptr->insult_max) {
         return FALSE;
+    }
 
     say_comment_4();
     st_ptr->insult_cur = 0;
@@ -79,8 +80,9 @@ void updatebargain(PRICE price, PRICE minprice, int num)
 static int get_haggle(concptr pmt, s32b *poffer, PRICE price, int final)
 {
     GAME_TEXT buf[128];
-    if (!allow_inc)
+    if (!allow_inc) {
         last_inc = 0L;
+    }
 
     if (final) {
         sprintf(buf, _("%s [承諾] ", "%s [accept] "), pmt);
@@ -105,12 +107,13 @@ static int get_haggle(concptr pmt, s32b *poffer, PRICE price, int final)
          */
         res = askfor_aux(out_val, 32, FALSE);
         prt("", 0, 0);
-        if (!res)
+        if (!res) {
             return FALSE;
+        }
 
         concptr p;
-        for (p = out_val; *p == ' '; p++) /* loop */
-            ;
+        for (p = out_val; *p == ' '; p++) {
+        } /* loop */
 
         if (*p == '\0') {
             if (final) {
