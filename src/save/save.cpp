@@ -40,8 +40,8 @@
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 
 #include <ctime>
 
@@ -329,7 +329,7 @@ bool save_player(PlayerType *player_ptr, save_type type)
         err |= fd_move(safe, savefile);
         err |= fd_kill(temp);
         if (err) {
-            msg_print(_("(セーブデータの置換処理ミス)", "(Failed to replace save files)"));   
+            msg_print(_("(セーブデータの置換処理ミス)", "(Failed to replace save files)"));
             msg_print(nullptr);
         }
         safe_setuid_drop();

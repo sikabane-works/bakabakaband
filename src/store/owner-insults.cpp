@@ -38,8 +38,9 @@ int increase_insults(void)
  */
 void decrease_insults(void)
 {
-    if (st_ptr->insult_cur)
+    if (st_ptr->insult_cur) {
         st_ptr->insult_cur--;
+    }
 }
 
 /*!
@@ -49,8 +50,9 @@ void decrease_insults(void)
  */
 int haggle_insults(void)
 {
-    if (increase_insults())
+    if (increase_insults()) {
         return TRUE;
+    }
 
     say_comment_5();
     return FALSE;
@@ -164,14 +166,17 @@ static int get_haggle(concptr pmt, s32b *poffer, PRICE price, int final)
 bool receive_offer(concptr pmt, s32b *poffer, s32b last_offer, int factor, PRICE price, int final)
 {
     while (TRUE) {
-        if (!get_haggle(pmt, poffer, price, final))
+        if (!get_haggle(pmt, poffer, price, final)) {
             return TRUE;
+        }
 
-        if (((*poffer) * factor) >= (last_offer * factor))
+        if (((*poffer) * factor) >= (last_offer * factor)) {
             break;
+        }
 
-        if (haggle_insults())
+        if (haggle_insults()) {
             return TRUE;
+        }
 
         *poffer = last_offer;
     }
