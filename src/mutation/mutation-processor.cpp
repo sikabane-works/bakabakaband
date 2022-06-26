@@ -56,7 +56,6 @@
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
 
-
 static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
 {
     *dp = 0;

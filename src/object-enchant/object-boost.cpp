@@ -82,7 +82,9 @@ int m_bonus(int max, DEPTH level)
         stand++;
     }
 
-    if(stand <= 0) stand = 1;
+    if (stand <= 0) {
+        stand = 1;
+    }
     /* Choose an "interesting" value */
     value = randnor(bonus, stand);
 

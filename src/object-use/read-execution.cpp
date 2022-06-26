@@ -33,6 +33,7 @@
 #include "player/digestion-processor.h"
 #include "player/player-damage.h"
 #include "player/player-status-flags.h"
+#include "spell-kind/earthquake.h"
 #include "spell-kind/magic-item-recharger.h"
 #include "spell-kind/spells-curse-removal.h"
 #include "spell-kind/spells-detection.h"
@@ -47,9 +48,8 @@
 #include "spell-kind/spells-sight.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell-kind/spells-world.h"
-#include "spell-kind/earthquake.h"
-#include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-chaos.h"
+#include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "spell/spells-object.h"
 #include "spell/spells-summon.h"
@@ -527,8 +527,9 @@ void ObjectReadEntity::execute(bool known)
         }
         case SV_SCROLL_THUNDER: {
             fire_ball(player_ptr, AttributeType::ELEC, 0, 888, 4);
-            if (!(is_oppose_elec(player_ptr) || has_resist_elec(player_ptr) || has_immune_elec(player_ptr)))
+            if (!(is_oppose_elec(player_ptr) || has_resist_elec(player_ptr) || has_immune_elec(player_ptr))) {
                 take_hit(player_ptr, DAMAGE_NOESCAPE, 100 + randint1(100), _("雷の巻物", "a Scroll of Thunder"));
+            }
             ident = true;
             break;
         }
