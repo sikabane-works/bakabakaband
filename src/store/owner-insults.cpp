@@ -19,8 +19,9 @@ static s32b last_inc = 0L;
 int increase_insults(void)
 {
     st_ptr->insult_cur++;
-    if (st_ptr->insult_cur <= ot_ptr->insult_max)
+    if (st_ptr->insult_cur <= ot_ptr->insult_max) {
         return FALSE;
+    }
 
     say_comment_4();
     st_ptr->insult_cur = 0;
@@ -37,8 +38,9 @@ int increase_insults(void)
  */
 void decrease_insults(void)
 {
-    if (st_ptr->insult_cur)
+    if (st_ptr->insult_cur) {
         st_ptr->insult_cur--;
+    }
 }
 
 /*!
@@ -48,8 +50,9 @@ void decrease_insults(void)
  */
 int haggle_insults(void)
 {
-    if (increase_insults())
+    if (increase_insults()) {
         return TRUE;
+    }
 
     say_comment_5();
     return FALSE;
@@ -79,8 +82,9 @@ void updatebargain(PRICE price, PRICE minprice, int num)
 static int get_haggle(concptr pmt, s32b *poffer, PRICE price, int final)
 {
     GAME_TEXT buf[128];
-    if (!allow_inc)
+    if (!allow_inc) {
         last_inc = 0L;
+    }
 
     if (final) {
         sprintf(buf, _("%s [承諾] ", "%s [accept] "), pmt);
@@ -105,12 +109,13 @@ static int get_haggle(concptr pmt, s32b *poffer, PRICE price, int final)
          */
         res = askfor_aux(out_val, 32, FALSE);
         prt("", 0, 0);
-        if (!res)
+        if (!res) {
             return FALSE;
+        }
 
         concptr p;
-        for (p = out_val; *p == ' '; p++) /* loop */
-            ;
+        for (p = out_val; *p == ' '; p++) {
+        } /* loop */
 
         if (*p == '\0') {
             if (final) {
@@ -161,14 +166,17 @@ static int get_haggle(concptr pmt, s32b *poffer, PRICE price, int final)
 bool receive_offer(concptr pmt, s32b *poffer, s32b last_offer, int factor, PRICE price, int final)
 {
     while (TRUE) {
-        if (!get_haggle(pmt, poffer, price, final))
+        if (!get_haggle(pmt, poffer, price, final)) {
             return TRUE;
+        }
 
-        if (((*poffer) * factor) >= (last_offer * factor))
+        if (((*poffer) * factor) >= (last_offer * factor)) {
             break;
+        }
 
-        if (haggle_insults())
+        if (haggle_insults()) {
             return TRUE;
+        }
 
         *poffer = last_offer;
     }

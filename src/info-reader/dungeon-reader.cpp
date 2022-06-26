@@ -356,8 +356,9 @@ errr parse_d_info(std::string_view buf, angband_header *)
         }
     } else if (tokens[0] == "R") {
         int r_type, r_rate;
-        if (tokens.size() < 2)
+        if (tokens.size() < 2) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
         info_set_value(r_type, tokens[1]);
         info_set_value(r_rate, tokens[2]);
         d_ptr->room_rate[i2enum<RoomType>(r_type)] = r_rate;

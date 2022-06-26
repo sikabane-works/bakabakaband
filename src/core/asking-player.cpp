@@ -193,11 +193,10 @@ bool askfor_aux(char *buf, int len, bool numpad_cursor)
 #endif
             {
 #ifdef JP
-                if (pos < len && (isprint(c) || iskana(c)))
+                if (pos < len && (isprint(c) || iskana(c))) {
 #else
-                if (pos < len && isprint(c))
+                if (pos < len && isprint(c)) {
 #endif
-                {
                     buf[pos++] = c;
                 } else {
                     bell();

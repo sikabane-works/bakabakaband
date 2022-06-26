@@ -709,8 +709,10 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
             (void)set_food(player_ptr, player_ptr->food + (o_ptr->pval / 10));
             msg_print(_("あなたのような者にとって食糧など僅かな栄養にしかならない。", "Mere victuals hold scant sustenance for a being such as yourself."));
 
-            if (player_ptr->food < PY_FOOD_ALERT) /* Hungry */
+            if (player_ptr->food < PY_FOOD_ALERT) {
+                /* Hungry */
                 msg_print(_("あなたの飢えは新鮮な血によってのみ満たされる！", "Your hunger can only be satisfied with fresh blood!"));
+            }
             ate = true;
 
         } else if (food_type == PlayerRaceFoodType::WATER) {

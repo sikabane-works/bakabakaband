@@ -280,11 +280,10 @@ byte get_string_for_search(PlayerType *player_ptr, ObjectType **o_handle, concpt
             } else
 #endif
 #ifdef JP
-                if (pos < len && (isprint(c) || iskana(c)))
+                if (pos < len && (isprint(c) || iskana(c))) {
 #else
-            if (pos < len && isprint(c))
+            if (pos < len && isprint(c)) {
 #endif
-            {
                 buf[pos++] = c;
             } else {
                 bell();

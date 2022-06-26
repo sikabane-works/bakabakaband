@@ -23,12 +23,15 @@ bool WorldCollapsion::is_blown_away()
  */
 void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, PlayerType *player_ptr, int multi)
 {
-    if (w_ptr->total_winner && player_ptr->arena_number > MAX_ARENA_MONS + 2)
+    if (w_ptr->total_winner && player_ptr->arena_number > MAX_ARENA_MONS + 2) {
         return;
-    if (get_player_flags(player_ptr, TR_WORLD_END))
+    }
+    if (get_player_flags(player_ptr, TR_WORLD_END)) {
         multi *= 2;
-    if (w_ptr->total_winner)
+    }
+    if (w_ptr->total_winner) {
         multi /= 3;
+    }
     this->collapse_degree += (std::min(1, mysqrt(w_ptr->game_turn / 2000)) * multi);
 }
 

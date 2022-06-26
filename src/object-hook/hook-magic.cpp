@@ -20,8 +20,9 @@
  */
 bool object_is_activatable(const ObjectType *o_ptr)
 {
-    if (!o_ptr->is_known())
+    if (!o_ptr->is_known()) {
         return false;
+    }
 
     auto flags = object_flags(o_ptr);
     if (flags.has(TR_ACTIVATE) || flags.has(TR_INVEN_ACTIVATE)) {

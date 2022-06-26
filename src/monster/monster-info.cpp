@@ -132,8 +132,9 @@ bool monster_can_cross_terrain(PlayerType *player_ptr, FEAT_IDX feat, monster_ra
     }
 
     if (f_ptr->flags.has(FloorFeatureType::DUNG_POOL)) {
-        if (r_ptr->resistance_flags.has_none_of(RFR_EFF_IM_POISON_MASK))
+        if (r_ptr->resistance_flags.has_none_of(RFR_EFF_IM_POISON_MASK)) {
             return false;
+        }
     }
 
     return true;

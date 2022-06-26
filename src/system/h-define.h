@@ -12,6 +12,6 @@
 /*
  * Refer to the member at offset of structure
  */
-#define atoffset(TYPE, STRUCT_PTR, OFFSET) (*(TYPE*)(((char*)STRUCT_PTR) + (OFFSET)))
+#define atoffset(TYPE, STRUCT_PTR, OFFSET) (*(TYPE *)(((char *)STRUCT_PTR) + (OFFSET)))
 
 #endif

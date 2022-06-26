@@ -78,8 +78,9 @@ errr parse_v_info(std::string_view buf, angband_header *)
         if (tokens.size() == 5) {
             const auto &flags = str_split(tokens[4], '|', true, 10);
             for (const auto &f : flags) {
-                if (f.size() == 0)
+                if (f.size() == 0) {
                     continue;
+                }
 
                 const auto &s_tokens = str_split(f, '_', false);
 
@@ -102,13 +103,15 @@ errr parse_v_info(std::string_view buf, angband_header *)
 
     } else if (tokens[0] == "T") {
         // T:traits
-        if (tokens.size() < 2 || tokens[1].size() == 0)
+        if (tokens.size() < 2 || tokens[1].size() == 0) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
 
         const auto &flags = str_split(tokens[1], '|', true, 10);
         for (const auto &f : flags) {
-            if (f.size() == 0)
+            if (f.size() == 0) {
                 continue;
+            }
 
             const auto &s_tokens = str_split(f, '_', false);
 

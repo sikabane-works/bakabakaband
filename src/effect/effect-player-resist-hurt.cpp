@@ -79,8 +79,7 @@ void effect_player_nuke(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
     }
 
     (void)BadStatusSetter(player_ptr).mod_poison(randint0(ep_ptr->dam) + 10);
-    if (one_in_(5)) /* 6 */
-    {
+    if (one_in_(5)) { /* 6 */
         msg_print(_("奇形的な変身を遂げた！", "You undergo a freakish metamorphosis!"));
         if (one_in_(4)) { /* 4 */
             do_poly_self(player_ptr);
