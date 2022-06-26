@@ -11,9 +11,9 @@
 /* Purpose: a simple random number generator -BEN- */
 
 #include "term/z-rand.h"
-#include <ctime>
 #include "util/rng-xoshiro.h"
 #include "world/world.h"
+#include <ctime>
 
 #include <algorithm>
 #include <cmath>
