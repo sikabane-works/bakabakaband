@@ -155,8 +155,9 @@ void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
         return;
     }
 
-    if (process_monster_spawn_monster(player_ptr, m_idx, oy, ox))
+    if (process_monster_spawn_monster(player_ptr, m_idx, oy, ox)) {
         return;
+    }
 
     process_monster_spawn_item(player_ptr, m_idx);
     process_monster_spawn_zanki(player_ptr, m_idx);
@@ -544,8 +545,9 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
 {
     monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
-    if ((r_ptr->spawn_monsters.size() == 0) || (player_ptr->current_floor_ptr->num_repro >= MAX_REPRO))
+    if ((r_ptr->spawn_monsters.size() == 0) || (player_ptr->current_floor_ptr->num_repro >= MAX_REPRO)) {
         return false;
+    }
 
     int k = 0;
 
@@ -553,24 +555,28 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
 
         for (POSITION y = oy - 1; y <= oy + 1; y++) {
             for (POSITION x = ox - 1; x <= ox + 1; x++) {
-                if (!in_bounds2(player_ptr->current_floor_ptr, y, x))
+                if (!in_bounds2(player_ptr->current_floor_ptr, y, x)) {
                     continue;
+                }
 
-                if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx)
+                if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
                     k++;
+                }
             }
         }
 
-        if (SpellHex(player_ptr).check_hex_barrier(m_idx, HEX_ANTI_MULTI))
+        if (SpellHex(player_ptr).check_hex_barrier(m_idx, HEX_ANTI_MULTI)) {
             k = 8;
+        }
 
         auto num = std::get<0>(spawn_info);
         auto deno = std::get<1>(spawn_info);
         MONRACE_IDX idx = std::get<2>(spawn_info);
         if (randint1(deno) <= num) {
             if (multiply_monster(player_ptr, m_idx, idx, false, (is_pet(m_ptr) ? PM_FORCE_PET : 0))) {
-                if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr))
+                if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr)) {
                     r_ptr->r_flags2 |= RF2_MULTIPLY;
+                }
 
                 return true;
             }

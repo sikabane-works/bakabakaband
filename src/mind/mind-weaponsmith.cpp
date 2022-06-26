@@ -655,11 +655,10 @@ void do_cmd_kaji(PlayerType *player_ptr, bool only_browse)
                     prt(_("  d) エッセンス付加", "  d) Add essence"), 5, 14);
                     prt(_("  e) 武器/防具強化", "  e) Enchant weapon/armor"), 6, 14);
 #ifdef JP
-                    if (!get_com(format("どの能力を%sますか:", only_browse ? "調べ" : "使い"), &choice, true))
+                    if (!get_com(format("どの能力を%sますか:", only_browse ? "調べ" : "使い"), &choice, true)) {
 #else
-                    if (!get_com("Command :", &choice, true))
+                    if (!get_com("Command :", &choice, true)) {
 #endif
-                    {
                         screen_load();
                         return;
                     }
