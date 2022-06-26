@@ -166,8 +166,9 @@ bool trans_sex(PlayerType *player_ptr)
     for (i = 0; i < MAX_SEXES; i++) {
         char buf[80];
 
-        if (i == player_ptr->psex)
+        if (i == player_ptr->psex) {
             continue;
+        }
 
         sprintf(buf, "%c) %-20s", I2A(i), sex_info[i].title);
         prt(buf, 5 + i, 5);
@@ -183,10 +184,12 @@ bool trans_sex(PlayerType *player_ptr)
             return false;
         }
 
-        else if ((i < 'a') || (i > ('a' + MAX_SEXES - 1)))
+        else if ((i < 'a') || (i > ('a' + MAX_SEXES - 1))) {
             continue;
-        else if (i - 'a' == player_ptr->psex)
+
+        } else if (i - 'a' == player_ptr->psex) {
             continue;
+        }
         break;
     }
 
