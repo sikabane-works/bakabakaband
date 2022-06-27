@@ -446,10 +446,12 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
         // 統計情報更新。
         if (entry->prob2 > 0) {
             mon_num++;
-            if (lev_min > entry->level)
+            if (lev_min > entry->level) {
                 lev_min = entry->level;
-            if (lev_max < entry->level)
+            }
+            if (lev_max < entry->level) {
                 lev_max = entry->level;
+            }
             prob2_total += entry->prob2;
         }
     }

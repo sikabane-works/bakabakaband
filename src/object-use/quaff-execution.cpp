@@ -580,9 +580,7 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
             ident = true;
             msg_print(_("この薬は直腸に注入するものらしい。", "The potion seems to be injected into the rectum"));
             break;
-
         }
-
     }
 
     if (PlayerRace(this->player_ptr).equals(PlayerRaceType::SKELETON)) {

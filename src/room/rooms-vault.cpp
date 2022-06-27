@@ -1151,8 +1151,9 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
     }
 
     /* Find and reserve some space in the dungeon.  Get center of room. */
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x)))
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x))) {
         return false;
+    }
 
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
 
