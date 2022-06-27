@@ -497,7 +497,7 @@ static void rd_player_status(PlayerType *player_ptr)
             int32_t id, count;
             id = rd_s32b();
             count = rd_s32b();
-            player_ptr->incident[(INCIDENT)id] = count; 
+            player_ptr->incident[(INCIDENT)id] = count;
         }
     }
 }
