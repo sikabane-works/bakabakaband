@@ -1,7 +1,9 @@
 ﻿#pragma once
 
-#include <mciapi.h>
 #include <windows.h>
+#ifdef TRUE
+#include <mciapi.h>
+#endif
 
 #include <string>
 
