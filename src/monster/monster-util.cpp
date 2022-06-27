@@ -213,9 +213,11 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
             }
         }
 
-        for (a = 0; a < 5; a++)
-            if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char))
+        for (a = 0; a < 5; a++) {
+            if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char)) {
                 return true;
+            }
+        }
 
         return false;
     }
@@ -303,8 +305,9 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
  */
 monsterrace_hook_type get_monster_hook(PlayerType *player_ptr)
 {
-    if ((player_ptr->current_floor_ptr->dun_level > 0) || (inside_quest(player_ptr->current_floor_ptr->quest_number)))
+    if ((player_ptr->current_floor_ptr->dun_level > 0) || (inside_quest(player_ptr->current_floor_ptr->quest_number))) {
         return (monsterrace_hook_type)mon_hook_dungeon;
+    }
 
     switch (wilderness[player_ptr->wilderness_y][player_ptr->wilderness_x].terrain) {
     case TERRAIN_TOWN:
@@ -338,11 +341,13 @@ monsterrace_hook_type get_monster_hook(PlayerType *player_ptr)
 monsterrace_hook_type get_monster_hook2(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     auto *f_ptr = &f_info[player_ptr->current_floor_ptr->grid_array[y][x].feat];
-    if (f_ptr->flags.has(FloorFeatureType::WATER))
+    if (f_ptr->flags.has(FloorFeatureType::WATER)) {
         return f_ptr->flags.has(FloorFeatureType::DEEP) ? (monsterrace_hook_type)mon_hook_deep_water : (monsterrace_hook_type)mon_hook_shallow_water;
+    }
 
-    if (f_ptr->flags.has(FloorFeatureType::LAVA))
+    if (f_ptr->flags.has(FloorFeatureType::LAVA)) {
         return (monsterrace_hook_type)mon_hook_lava;
+    }
 
     return (monsterrace_hook_type)mon_hook_floor;
 }
