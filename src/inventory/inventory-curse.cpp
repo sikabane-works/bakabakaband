@@ -456,8 +456,9 @@ static void curse_megaton_coin(PlayerType *player_ptr)
     auto dam = damroll(2, 8);
     take_hit(player_ptr, DAMAGE_NOESCAPE, dam, _("メガトンコイン", "the Megaton Coin"));
 
-    if (autosave_l && (player_ptr->chp >= 0))
+    if (autosave_l && (player_ptr->chp >= 0)) {
         do_cmd_save_game(player_ptr, true);
+    }
 
     exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
     move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);

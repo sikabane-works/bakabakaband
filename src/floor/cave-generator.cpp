@@ -355,8 +355,9 @@ static void decide_dungeon_data_allocation(PlayerType *player_ptr, dun_data_type
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     dd_ptr->alloc_object_num = floor_ptr->dun_level / 3 + 5;
-    if (dd_ptr->alloc_object_num > 30)
+    if (dd_ptr->alloc_object_num > 30) {
         dd_ptr->alloc_object_num = 30;
+    }
 
     if (one_in_(12)) {
         dd_ptr->alloc_object_num += randint1(50);

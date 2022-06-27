@@ -469,7 +469,6 @@ void do_cmd_rest(PlayerType *player_ptr)
     }
 
     set_superstealth(player_ptr, false);
-
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
     if (command_arg > 100) {
         chg_virtue(player_ptr, V_DILIGENCE, -1);

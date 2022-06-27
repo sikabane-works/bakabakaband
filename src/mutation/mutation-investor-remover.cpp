@@ -216,8 +216,6 @@ static void neutralize_other_status(PlayerType *player_ptr, glm_type *gm_ptr)
             player_ptr->muta.reset(PlayerMutationType::HOMO_SEXUAL);
         }
     }
-
-
 }
 
 /*!

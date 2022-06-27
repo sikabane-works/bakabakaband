@@ -382,7 +382,6 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
         if (floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) {
             set_superstealth(player_ptr, false);
         }
-
     }
     return true;
 }

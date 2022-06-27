@@ -97,7 +97,7 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
         }
     }
 
-    //柱っぽいもの
+    // 柱っぽいもの
     place_bold(player_ptr, y_height + 6, x_left + 18, GB_EXTRA_PERM);
     floor_ptr->grid_array[y_height + 6][x_left + 18].info |= CAVE_GLOW | CAVE_MARK;
     place_bold(player_ptr, y_depth - 6, x_left + 18, GB_EXTRA_PERM);

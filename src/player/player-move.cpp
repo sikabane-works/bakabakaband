@@ -208,7 +208,7 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
 
         if (f_ptr->flags.has(FloorFeatureType::SLOW) ^ of_ptr->flags.has(FloorFeatureType::SLOW)) {
             player_ptr->update |= PU_BONUS;
-            update_creature(player_ptr);        
+            update_creature(player_ptr);
         }
     }
 

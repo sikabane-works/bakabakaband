@@ -60,8 +60,9 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
     auto *r_ptr = &r_info[r_idx];
 
     if (d_ptr->flags.has(DungeonFeatureType::CHAMELEON)) {
-        if (chameleon_change_m_idx)
+        if (chameleon_change_m_idx) {
             return true;
+        }
     }
 
     if (d_ptr->flags.has(DungeonFeatureType::NO_MAGIC)) {
@@ -71,8 +72,9 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
     }
 
     if (d_ptr->flags.has(DungeonFeatureType::NO_MELEE)) {
-        if (r_idx == MON_CHAMELEON)
+        if (r_idx == MON_CHAMELEON) {
             return true;
+        }
         if (r_ptr->ability_flags.has_none_of(RF_ABILITY_BOLT_MASK | RF_ABILITY_BEAM_MASK | RF_ABILITY_BALL_MASK) && r_ptr->ability_flags.has_none_of(
                                                                                                                         { MonsterAbilityType::CAUSE_1, MonsterAbilityType::CAUSE_2, MonsterAbilityType::CAUSE_3, MonsterAbilityType::CAUSE_4, MonsterAbilityType::MIND_BLAST, MonsterAbilityType::BRAIN_SMASH })) {
             return false;
@@ -213,9 +215,11 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
             }
         }
 
-        for (a = 0; a < 5; a++)
-            if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char))
+        for (a = 0; a < 5; a++) {
+            if (d_ptr->r_char[a] && (d_ptr->r_char[a] != r_ptr->d_char)) {
                 return true;
+            }
+        }
 
         return false;
     }
@@ -303,8 +307,9 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
  */
 monsterrace_hook_type get_monster_hook(PlayerType *player_ptr)
 {
-    if ((player_ptr->current_floor_ptr->dun_level > 0) || (inside_quest(player_ptr->current_floor_ptr->quest_number)))
+    if ((player_ptr->current_floor_ptr->dun_level > 0) || (inside_quest(player_ptr->current_floor_ptr->quest_number))) {
         return (monsterrace_hook_type)mon_hook_dungeon;
+    }
 
     switch (wilderness[player_ptr->wilderness_y][player_ptr->wilderness_x].terrain) {
     case TERRAIN_TOWN:
@@ -338,11 +343,13 @@ monsterrace_hook_type get_monster_hook(PlayerType *player_ptr)
 monsterrace_hook_type get_monster_hook2(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     auto *f_ptr = &f_info[player_ptr->current_floor_ptr->grid_array[y][x].feat];
-    if (f_ptr->flags.has(FloorFeatureType::WATER))
+    if (f_ptr->flags.has(FloorFeatureType::WATER)) {
         return f_ptr->flags.has(FloorFeatureType::DEEP) ? (monsterrace_hook_type)mon_hook_deep_water : (monsterrace_hook_type)mon_hook_shallow_water;
+    }
 
-    if (f_ptr->flags.has(FloorFeatureType::LAVA))
+    if (f_ptr->flags.has(FloorFeatureType::LAVA)) {
         return (monsterrace_hook_type)mon_hook_lava;
+    }
 
     return (monsterrace_hook_type)mon_hook_floor;
 }
@@ -446,10 +453,12 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
         // 統計情報更新。
         if (entry->prob2 > 0) {
             mon_num++;
-            if (lev_min > entry->level)
+            if (lev_min > entry->level) {
                 lev_min = entry->level;
-            if (lev_max < entry->level)
+            }
+            if (lev_max < entry->level) {
                 lev_max = entry->level;
+            }
             prob2_total += entry->prob2;
         }
     }

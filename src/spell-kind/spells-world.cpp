@@ -222,8 +222,9 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
         }
 
         delete_monster_idx(player_ptr, m_idx);
-        if (see_m)
+        if (see_m) {
             sound(SOUND_TPLEVEL);
+        }
     }
 
     if (m_idx <= 0) {

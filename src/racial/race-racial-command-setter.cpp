@@ -359,7 +359,6 @@ void set_race_racial_command(PlayerType *player_ptr, rc_type *rc_ptr)
         rc_ptr->add_power(rpi, RC_IDX_RACE_0);
         break;
 
-
     default:
         break;
     }

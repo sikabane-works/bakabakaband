@@ -9,11 +9,11 @@
 #include "melee/melee-util.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster/monster-status-setter.h"
+#include "player/player-damage.h"
 #include "spell-kind/earthquake.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
-#include "player/player-damage.h"
 
 void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
 {
@@ -281,8 +281,7 @@ void describe_monster_missed_monster(PlayerType *player_ptr, mam_type *mam_ptr)
     case RaceBlowMethodType::ENGULF:
     case RaceBlowMethodType::CHARGE:
     case RaceBlowMethodType::ENEMA:
-    case RaceBlowMethodType::BIND:
-    {
+    case RaceBlowMethodType::BIND: {
         (void)set_monster_csleep(player_ptr, mam_ptr->t_idx, 0);
         if (mam_ptr->see_m) {
 #ifdef JP

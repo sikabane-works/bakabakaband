@@ -20,6 +20,7 @@
 #include "monster/monster-status.h" //!< @todo 相互依存. 後で何とかする.
 #include "monster/monster-util.h"
 #include "monster/smart-learn-types.h"
+#include "player/player-status-flags.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -27,7 +28,6 @@
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-#include "player/player-status-flags.h"
 
 /*!
  * @brief モンスターをペットにする
