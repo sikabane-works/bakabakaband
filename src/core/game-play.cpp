@@ -347,8 +347,9 @@ static void decide_arena_death(PlayerType *player_ptr)
             flush();
             i = inkey();
             prt("", 0, 0);
-            if (i == '@')
+            if (i == '@') {
                 return;
+            }
         }
     }
 

@@ -67,8 +67,9 @@
  */
 static bool exe_eat_junk_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    if (o_ptr->tval != ItemKindType::JUNK)
+    if (o_ptr->tval != ItemKindType::JUNK) {
         return false;
+    }
 
     switch (o_ptr->sval) {
     case SV_JUNK_FECES:

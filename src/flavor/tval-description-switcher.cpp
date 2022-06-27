@@ -6,13 +6,13 @@
 
 #include "flavor/tval-description-switcher.h"
 #include "flavor/flavor-util.h"
+#include "grid/feature.h"
 #include "locale/english.h"
 #include "monster-race/monster-race.h"
 #include "object-enchant/trg-types.h"
 #include "object/object-kind.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
-#include "grid/feature.h"
 #ifdef JP
 #else
 #include "monster-race/race-flags1.h"
