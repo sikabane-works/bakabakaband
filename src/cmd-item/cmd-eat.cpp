@@ -125,8 +125,9 @@ static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
     chg_virtue(player_ptr, V_ENLIGHTEN, 1);
     if (player_ptr->exp < PY_MAX_EXP) {
         EXP ee = (player_ptr->exp / 2) + 10;
-        if (ee > max_exp)
+        if (ee > max_exp) {
             ee = max_exp;
+        }
         msg_print(_("更に経験を積んだような気がする。", "You feel more experienced."));
         gain_exp(player_ptr, ee);
     }
@@ -164,8 +165,9 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
     }
 
     if (r_ptr->flags9 & RF9_EAT_SLEEP) {
-        if (!player_ptr->free_act)
+        if (!player_ptr->free_act) {
             BadStatusSetter(player_ptr).paralysis(10 + randint1(10));
+        }
     }
 
     if (r_ptr->flags9 & RF9_EAT_BERSERKER) {
@@ -631,10 +633,10 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     /* 基本食い物でないものを喰う判定 */
     bool ate = false;
     ate = exe_eat_soul(player_ptr, o_ptr);
-    if (!ate)
+    if (!ate) {
         ate = exe_eat_corpse_type_object(player_ptr, o_ptr);
-    if (!ate)
         ate = exe_eat_junk_type_object(player_ptr, o_ptr);
+    }
 
     /* Identity not known yet */
     int ident = exe_eat_food_type_object(player_ptr, o_ptr);
