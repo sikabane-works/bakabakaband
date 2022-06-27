@@ -236,12 +236,13 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
 #ifdef JP
         monap_ptr->abbreviate = -1;
 #endif
-        if (monap_ptr->m_ptr->ap_r_idx == MON_MAGGOT)
+        if (monap_ptr->m_ptr->ap_r_idx == MON_MAGGOT) {
             monap_ptr->act = desc_moan[randint0(4)];
-        else if (monap_ptr->m_ptr->ap_r_idx == MON_MISUMI)
+        } else if (monap_ptr->m_ptr->ap_r_idx == MON_MISUMI) {
             monap_ptr->act = desc_moan3[randint0(4)];
-        else
+        } else {
             monap_ptr->act = desc_moan2[randint0(4)];
+        }
 
         sound(SOUND_MOAN);
         break;
@@ -258,8 +259,7 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
         break;
     }
 
-    case RaceBlowMethodType::BIND:
-    {
+    case RaceBlowMethodType::BIND: {
         monap_ptr->act = _("縛られた", "binds you");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;

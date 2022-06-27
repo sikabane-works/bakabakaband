@@ -60,8 +60,9 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
     auto *r_ptr = &r_info[r_idx];
 
     if (d_ptr->flags.has(DungeonFeatureType::CHAMELEON)) {
-        if (chameleon_change_m_idx)
+        if (chameleon_change_m_idx) {
             return true;
+        }
     }
 
     if (d_ptr->flags.has(DungeonFeatureType::NO_MAGIC)) {
@@ -71,8 +72,9 @@ static bool restrict_monster_to_dungeon(PlayerType *player_ptr, MONRACE_IDX r_id
     }
 
     if (d_ptr->flags.has(DungeonFeatureType::NO_MELEE)) {
-        if (r_idx == MON_CHAMELEON)
+        if (r_idx == MON_CHAMELEON) {
             return true;
+        }
         if (r_ptr->ability_flags.has_none_of(RF_ABILITY_BOLT_MASK | RF_ABILITY_BEAM_MASK | RF_ABILITY_BALL_MASK) && r_ptr->ability_flags.has_none_of(
                                                                                                                         { MonsterAbilityType::CAUSE_1, MonsterAbilityType::CAUSE_2, MonsterAbilityType::CAUSE_3, MonsterAbilityType::CAUSE_4, MonsterAbilityType::MIND_BLAST, MonsterAbilityType::BRAIN_SMASH })) {
             return false;
