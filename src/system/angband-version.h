@@ -25,7 +25,6 @@ constexpr std::string_view ROOT_VARIANT_NAME("Hengband");
 #define H_VER_PATCH 0 //!< ゲームのバージョン定義(パッチ番号)
 #define H_VER_EXTRA 31 //!< ゲームのバージョン定義(エクストラ番号)
 
-
 /*!
  * @brief セーブファイルのバージョン(3.0.0から導入)
  */

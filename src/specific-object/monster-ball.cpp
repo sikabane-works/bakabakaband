@@ -183,7 +183,7 @@ static void check_monster_ball_use(PlayerType *player_ptr, ae_type *ae_ptr)
     ae_ptr->success = true;
 }
 
- bool exe_monster_capture(PlayerType *player_ptr, ae_type *ae_ptr)
+bool exe_monster_capture(PlayerType *player_ptr, ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->tval != ItemKindType::CAPTURE) {
         return false;
