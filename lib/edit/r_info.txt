@@ -33358,6 +33358,22 @@ F:ANIMAL | HUMAN | WILD_ONLY | WILD_WOOD | WILD_GRASS | WILD_MOUNTAIN
 F:DROP_90 | DROP_GREAT | HUMAN | NASTY | HOMO_SEXUAL
 D:エッチなクマさんは全身が性感帯！
 
+N:1794:ホビットの斥候
+E:Hobbit scout
+G:h:s
+I:112:5d6:26:20:10
+W:14:1:0:5:0:0
+B:SLASH:HURT:1d10
+B:SLASH:HURT:1d10
+B:SHOOT:HURT:1d10
+F:MALE | HAS_LITE_1 |
+F:DROP_90 | HOBBIT | ALLIANCE_THE-SHIRE
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+S:1_IN_5 | SHOOT
+F:GOOD
+F:MOB_60
+D:「忍びの者」と自称するホビットの隠密だ。多少の卑劣さは郷土愛故に許される。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
