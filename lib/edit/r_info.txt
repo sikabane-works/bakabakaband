@@ -33358,6 +33358,41 @@ F:ANIMAL | HUMAN | WILD_ONLY | WILD_WOOD | WILD_GRASS | WILD_MOUNTAIN
 F:DROP_90 | DROP_GREAT | HUMAN | NASTY | HOMO_SEXUAL
 D:エッチなクマさんは全身が性感帯！
 
+N:1794:ホビットの斥候
+E:Hobbit scout
+G:h:s
+I:112:5d6:26:20:10
+W:14:1:0:5:0:0
+B:SLASH:HURT:1d10
+B:SLASH:HURT:1d10
+B:SHOOT:HURT:1d10
+F:MALE | HAS_LITE_1 |
+F:DROP_90 | HOBBIT | ALLIANCE_THE-SHIRE
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+S:1_IN_5 | SHOOT
+F:GOOD
+F:MOB_60
+D:「忍びの者」と自称するホビットの隠密だ。多少の卑劣さは郷土愛故に許される。
+
+N:1795:殺人鬼『辺見和雄』
+E:Kazuo Henmi, the Cutthroat
+G:p:s
+I:112:30d10:25:50:25
+W:13:2:0:250:0:0
+B:SLASH:HURT:3d5
+B:SLASH:HURT:3d5
+B:SLASH:HURT:3d5
+B:SLASH:HURT:3d5
+F:UNIQUE | MALE | MOVE_BODY | SMART | DROP_CORPSE | DROP_SKELETON |
+F:FORCE_MAXHP | PREVENT_SUDDEN_MAGIC
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | EVIL
+F:IM_POIS | NO_CONF | NO_SLEEP
+D:その温和な中年男の容貌と振る舞いの裏で、性的興奮に根ざした殺人を繰り返してきた狂人だ。
+D:彼は犠牲者の残酷で苦痛に満ちた死が、自らにも降り注ぐ時が来ることを
+D:絶頂の予感と共に望んでいる。あなたならば、それを叶えてやることも可能だろう。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
