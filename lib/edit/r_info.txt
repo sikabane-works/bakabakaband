@@ -33392,6 +33392,18 @@ D:その温和な中年男の容貌と振る舞いの裏で、性的興奮に根
 D:彼は犠牲者の残酷で苦痛に満ちた死が、自らにも降り注ぐ時が来ることを
 D:絶頂の予感と共に望んでいる。あなたならば、それを叶えてやることも可能だろう。
 
+N:1796:『不死院のデーモン』
+E:The Asylum Demon
+G:U:g
+I:110:40d25:20:70:20
+W:35:2:0:2800:0:0
+B:HIT:SUPERHURT:6d10
+B:HIT:SUPERHURT:6d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_1D2 | UNIQUE
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_COLD | IM_ACID | IM_POIS | NO_CONF | NO_SLEEP
+D:「北の不死院」で隔離された不死者に立ちはだかる、イザリスのデーモンの端くれだ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
