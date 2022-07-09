@@ -33405,6 +33405,18 @@ F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
 F:EVIL | DEMON | IM_COLD | IM_ACID | IM_POIS | NO_CONF | NO_SLEEP
 D:「北の不死院」で隔離された不死者に立ちはだかる、イザリスのデーモンの端くれだ。
 
+N:1797:ボーレタリア兵
+E:Boletaria Soldier
+G:p:U
+I:110:12d8:20:34:20
+W:12:3:0:40:0:0
+B:SLASH:HURT:4d6
+B:SLASH:HURT:3d6
+F:MALE | UNDEAD | HUMAN | WILD_ALL | HAS_LITE_2 |
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | MOB_400
+F:OPEN_DOOR | BASH_DOOR
+D:色のない霧に包まれたボーレタリアの地でソウルに飢え自我を失った兵士だ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
