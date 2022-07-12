@@ -33417,6 +33417,20 @@ F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | MOB_400
 F:OPEN_DOOR | BASH_DOOR
 D:色のない霧に包まれたボーレタリアの地でソウルに飢え自我を失った兵士だ。
 
+#DSKL http://www5d.biglobe.ne.jp/~yuribeya/600man.htm
+N:1798:黒猫へのクレーマー『ジャムおじさん』
+E:Uncle Jam, the Cramer to Black Cat
+G:t:v
+I:111:10d20:50:15:4
+W:0:4:0:0:0:0
+B:HIT:HURT:1d3
+F:UNIQUE | MALE
+F:FORCE_MAXHP | DROP_CORPSE | WILD_TOWN | WILD_ONLY
+F:ONLY_ITEM | DROP_90 | HUMAN | STUPID
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 |
+F:NO_CONF | NO_SLEEP
+D:彼は黒猫から600万ゴールドから2億5500万ゴールドをせしめようとした。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
