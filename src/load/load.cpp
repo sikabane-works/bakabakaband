@@ -423,6 +423,8 @@ bool load_savedata(PlayerType *player_ptr, bool *new_game)
         return false;
     }
 
+    fd_close(fd);
+
     if (!err) {
         term_clear();
         auto ret_rd_savefile = rd_savefile(player_ptr);
