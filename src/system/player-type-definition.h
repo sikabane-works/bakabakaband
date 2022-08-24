@@ -121,7 +121,6 @@ public:
     uint32_t count{};
 
     TIME_EFFECT blind{}; /* Timed -- Blindness */
-    TIME_EFFECT poisoned{}; /* Timed -- Poisoned */
 
     TIME_EFFECT protevil{}; /* Timed -- Protection */
     TIME_EFFECT invuln{}; /* Timed -- Invulnerable */
