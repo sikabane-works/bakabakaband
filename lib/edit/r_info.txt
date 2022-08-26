@@ -33445,6 +33445,22 @@ D:人類がとある誤った未来に至った終着の一つだ。
 D:致死性99.9%の生物兵器ウイルス「H4Q1」に冒され残った僅かなものが、
 D:この凶暴な捕食と破壊しか術を持たぬ、醜い姿に成り果てるという。
 
+N:1801:ボーレタリアの赤目騎士
+E:Red eye knight of Boletaria
+G:p:s
+I:120:60d30:25:110:10
+W:40:3:0:3200:0:0
+B:HIT:HURT:8d6
+B:HIT:HURT:9d5
+B:HIT:HURT:10d5
+B:HIT:HURT:11d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | RES_NETH | MALE | HUMAN | DEMON
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | NO_FEAR | NO_CONF
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_FIRE | IM_ACID | HAS_LITE_1 |
+D:デーモンがはびこるボーレタリアの中にあって、
+D:ソウルに飢える故にさらなる力を手に入れた精鋭の騎士だ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
