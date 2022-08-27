@@ -32363,7 +32363,7 @@ F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
 F:NONLIVING | RIDING
 F:NO_CONF | NO_SLEEP | NO_FEAR | MOB_100 | ALLIANCE_PHYREXIA | EVIL
 D:ファイレクシア人の未成熟な「細菌」が乗って操る成体武器だ。
-D:その中でも特に戦車のような強靭さ相手をひき殺す。
+D:その中でも特に戦車のような強靭さで相手をひき殺す。
 
 #[DSKL]勿
 N:1729:『エイプマン』
@@ -33460,6 +33460,25 @@ F:OPEN_DOOR | BASH_DOOR |
 F:IM_FIRE | IM_ACID | HAS_LITE_1 |
 D:デーモンがはびこるボーレタリアの中にあって、
 D:ソウルに飢える故にさらなる力を手に入れた精鋭の騎士だ。
+
+N:1802:カルドラの完成体
+E:The Kaldra Compleat
+G:g:W
+I:133:40d100:30:120:0
+W:64:3:0:27500:0:0
+B:SLASH:HURT:10d12
+B:SLASH:HURT:10d12
+B:SLASH:SHATTER:16d10
+B:SLASH:SHATTER:16d10
+F:UNIQUE
+F:NONLIVING | NO_FEAR | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC |
+F:KILL_BODY | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
+F:NO_STUN | REGENERATE | NO_CONF | NO_SLEEP | CAN_SWIM |
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | ALLIANCE_PHYREXIA
+D:かつてミラディンの守護者の依代であった存在は、
+D:新ファイレクシアの侵食により「完成」し
+D:その最も恐ろしい戦力の一つに成り果てた。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
