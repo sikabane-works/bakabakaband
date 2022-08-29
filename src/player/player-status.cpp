@@ -1735,7 +1735,7 @@ static ARMOUR_CLASS calc_to_ac(PlayerType *player_ptr, bool is_real_value)
         ac += 10;
         break;
     }
-
+    
     PlayerClass pc(player_ptr);
     if (pc.equals(PlayerClassType::BERSERKER)) {
         ac += 10 + player_ptr->lev / 2;

@@ -11,7 +11,6 @@
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
-#include <map>
 
 #include <array>
 #include <map>
@@ -159,7 +158,7 @@ public:
     TIME_EFFECT magicdef{};
     TIME_EFFECT tim_res_nether{}; /* Timed -- Nether resistance */
     TIME_EFFECT tim_res_time{}; /* Timed -- Time resistance */
-    MimicKindType mimic_form{};
+    MimicKindType mimic_form{}; // @todo 後でPlayerRaceTypeに差し替える.
     TIME_EFFECT tim_mimic{};
     TIME_EFFECT tim_sh_fire{};
     TIME_EFFECT tim_sh_holy{};
