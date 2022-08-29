@@ -6,6 +6,7 @@
 #include "store/store-owner-comments.h"
 #include "store/store-util.h"
 #include "view/display-messages.h"
+#include "system/object-type-definition.h"
 
 #define RUMOR_CHANCE 8
 

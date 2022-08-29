@@ -31,6 +31,7 @@
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/player-type-definition.h"
+#include "system/object-type-definition.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
 #include "view/display-store.h"
