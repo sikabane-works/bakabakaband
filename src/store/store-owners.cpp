@@ -1,6 +1,7 @@
 ﻿#include "store/store-owners.h"
 #include "player-info/race-types.h"
 #include "store/store-util.h"
+#include "system/object-type-definition.h"
 
 /*!
  * @todo _() でまとめる

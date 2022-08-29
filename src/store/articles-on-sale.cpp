@@ -14,6 +14,7 @@
 #include "sv-definition/sv-staff-types.h"
 #include "sv-definition/sv-wand-types.h"
 #include "sv-definition/sv-weapon-types.h"
+#include "system/object-type-definition.h"
 
 /*!
  * @brief 店舗で常時販売するオブジェクトを定義する
