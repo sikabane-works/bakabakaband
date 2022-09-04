@@ -33494,6 +33494,21 @@ F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 D:この若々しいスーツの男はしかし、汚れた尻をさらしたまま周囲の者を
 D:自分と同じ目に合わせようと躍起になっている。
 
+#JZ#
+N:1804:訓練されたアーモドン
+E:Trained armodon
+G:q:G
+I:110:12d24:10:55:10
+W:20:1:0:25:0:0
+B:CRUSH:HURT:1d12
+B:CRUSH:HURT:1d12
+B:HIT:HURT:2d10
+F:BASH_DOOR | WILD_WOOD | WILD_MOUNTAIN | DROP_CORPSE
+F:ANIMAL | WILD_ONLY
+D:$Armodons are trained to step on things. Enemy things.
+D:アーモドンは物を踏みつけるように訓練されている。敵である物を。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
