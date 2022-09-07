@@ -30,7 +30,7 @@ void ItemLoaderBase::load_artifact(void)
     artifact_type dummy;
     for (auto i = 0U; i < loading_max_a_idx; i++) {
         auto *a_ptr = i < a_info.size() ? &a_info[i] : &dummy;
-        a_ptr->cur_num = rd_byte();
+        a_ptr->is_generated = rd_bool();
         a_ptr->floor_id = rd_s16b();
     }
 
