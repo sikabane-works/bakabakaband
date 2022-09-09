@@ -33520,6 +33520,21 @@ F:HUMAN | UNDEAD | UNIQUE | FORCE_MAXHP
 D:$Odric is trained to slash at things. Enemy things.
 D:オドリックは物を斬りつけるように訓練されている。敵である物を。
 
+N:1806:キスキン
+E:Kithkin
+G:h:r
+I:110:2d5:20:10:10
+W:9:3:0:40:0:0
+B:PUNCH:HURT:2d5
+B:HIT:HURT:2d4
+B:HIT:HURT:2d4
+F:DROP_60 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE |
+F:WILD_WOOD | HAS_LITE_1 | RANGER
+S:1_IN_8
+S:SHOOT | SLOW
+D:同族間で精神の共有をし合うこともあるという、強固な団結心をもった小型の人型種族だ。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
