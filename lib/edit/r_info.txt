@@ -33534,6 +33534,20 @@ S:1_IN_8
 S:SHOOT | SLOW
 D:同族間で精神の共有をし合うこともあるという、強固な団結心をもった小型の人型種族だ。
 
+N:1807:キンズベイルの賢人『ガドック・ティーグ』
+E:Gaddock Teeg, the Wiseman of Kinsbaile
+G:h:g
+I:125:20d10:20:80:10
+W:25:3:0:700:0:0
+B:HIT:HURT:5d10
+B:HIT:HURT:5d10
+F:UNIQUE | DROP_CORPSE | FORCE_MAXHP | MALE |
+F:ONLY_ITEM | DROP_2D2 | DROP_60 | DROP_GOOD |
+F:NO_SLEEP | NO_CONF | BASH_DOOR
+R:1806:10d2
+S:1_IN_3 | 
+S:CONF | BLIND | HOLD | SLOW | MIND_BLAST | S_MONSTER | BLINK
+D:ローウィンに住まうキスキンの長だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
