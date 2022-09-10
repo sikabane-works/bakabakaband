@@ -33549,6 +33549,24 @@ S:1_IN_3 |
 S:CONF | BLIND | HOLD | SLOW | MIND_BLAST | S_MONSTER | BLINK
 D:ローウィンに住まうキスキンの長だ。
 
+N:1808:鉄のゴーレム『ボッシュ』
+E:Bosh, Iron golem
+G:g:W
+I:110:90d12:12:110:10
+W:23:2:0:660:0:0
+B:HIT:HURT:2d12
+B:HIT:HURT:2d12
+B:HIT:HURT:2d12
+B:SHOOT:HURT:4d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:COLD_BLOOD | BASH_DOOR | FORCE_MAXHP | UNIQUE
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_4 | 
+S:SHOOT
+D:ミラディンの管理者メムナークに直に創造されたと言われる、茫洋とした性格のゴーレムだ。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
