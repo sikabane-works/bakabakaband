@@ -33596,7 +33596,30 @@ F:DROP_90 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
 F:GOOD | IM_FIRE | IM_COLD | NO_CONF | NO_SLEEP
 D:バサム帝国の暴君オゴレスを滅ぼすべく戦う勇敢なる王だ。
 
-
+N:1811:憤怒の上級王『フェアノール』
+E:Feanor, the High King of Rage
+G:h:r
+I:170:70d100:200:140:20
+W:85:2:0:42000:0:0
+B:SLASH:HURT:14d14
+B:SLASH:HURT:14d14
+B:SLASH:HURT:14d14
+B:SLASH:SUPERHURT:16d14
+F:UNIQUE | MALE | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_GREAT | ELF |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR |
+F:IM_COLD | IM_FIRE | IM_ELEC | NO_CONF | NO_STUN |
+F:NO_SLEEP | RES_TELE | RES_NETH | RES_TIME | POWERFUL | CAN_FLY |
+S:1_IN_3 | 
+S:TPORT | BLIND | HOLD | BLINK | HEAL | HASTE |
+S:TELE_TO | CONF | BA_FIRE | BA_LITE | BRAIN_SMASH | PSY_SPEAR
+D:フェアノールはエルダールの中でも冥王メルコールが認めるほどの俊英であり、
+D:分けても三つの宝玉──シルマリルはあらゆる者たちに取って
+D:大いなる意味を持つ至宝である。しかしそれを産み出したことこそが、
+D:ヴァリノールから端を発した大いなる争乱となり、彼の一族に多くの罪業と苦難を、
+D:そして更なる自由と栄達を与える発端となった。
+D:今や彼は、死してマンドスの館にまどろむとヴァリノールの神統は語るが、
+D:一方で様々な種族から火神として崇められなおその力を随所で顕現している。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
