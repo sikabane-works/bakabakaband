@@ -305,7 +305,6 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
     { "MAGE", RF8_MAGE },
     { "PALADIN", RF8_PALADIN },
     { "RANGER", RF8_RANGER },
-    { "ELF", RF8_ELF },
     { "DWARF", RF8_DWARF },
     { "HOBBIT", RF8_HOBBIT },
     { "SAMURAI", RF8_SAMURAI },
@@ -316,7 +315,6 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
     { "YAKUZA", RF8_YAKUZA },
     { "HOMO_SEXUAL", RF8_HOMO_SEXUAL },
     { "JOKE", RF8_JOKE },
-    { "NASTY", RF8_NASTY },
     { "WILD_SWAMP", RF8_WILD_SWAMP },
     { "WILD_ALL", RF8_WILD_ALL },
     { "SPIDER", RF8_SPIDER },
@@ -489,4 +487,6 @@ const std::unordered_map<std::string_view, MonsterKindType> r_info_kind_flags = 
     { "GOOD", MonsterKindType::GOOD },
     { "NONLIVING", MonsterKindType::NONLIVING },
     { "ANGEL", MonsterKindType::ANGEL },
+    { "NASTY", MonsterKindType::NASTY },
+    { "ELF", MonsterKindType::ELF },
 };

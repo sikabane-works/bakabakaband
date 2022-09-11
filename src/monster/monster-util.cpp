@@ -426,7 +426,7 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
         entry->prob2 = entry->prob1;
 
         // クッソ汚い奴なら生成率が跳ねあがる。
-        if (r_ptr->flags8 & RF8_NASTY) {
+        if (r_ptr->kind_flags.has(MonsterKindType::NASTY)) {
             entry->prob2 *= NASTY_GENERATE_RATE;
         }
 
