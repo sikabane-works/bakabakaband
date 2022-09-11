@@ -31,11 +31,11 @@ PRICE flag_cost(const ObjectType *o_ptr, int plusses)
     flags.reset(k_ptr->flags);
 
     if (o_ptr->is_fixed_artifact()) {
-        auto *a_ptr = &a_info[enum2i(o_ptr->fixed_artifact_idx)];
-        flags.reset(a_ptr->flags);
+        const auto &a_ref = a_info.at(o_ptr->fixed_artifact_idx);
+        flags.reset(a_ref.flags);
     } else if (o_ptr->is_ego()) {
-        auto *e_ptr = &e_info[o_ptr->ego_idx];
-        flags.reset(e_ptr->flags);
+        const auto &e_ref = e_info[o_ptr->ego_idx];
+        flags.reset(e_ref.flags);
     }
 
     /*
