@@ -212,7 +212,7 @@ static bool parse_qtw_QQ(quest_type *q_ptr, char **zz, int num)
     }
 
     monster_race *r_ptr;
-    artifact_type *a_ptr;
+    ArtifactType *a_ptr;
 
     if (num < 9) {
         return true;
