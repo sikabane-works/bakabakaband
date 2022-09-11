@@ -531,7 +531,6 @@ static TERM_COLOR spell_color(AttributeType type)
     /* Normal tiles or ASCII */
     else {
         TERM_COLOR a;
-
         /* Lookup the default colors for this type */
         concptr s = quark_str(gf_colors[type]);
 
@@ -581,7 +580,6 @@ uint16_t bolt_pict(POSITION y, POSITION x, POSITION ny, POSITION nx, AttributeTy
     byte k;
 
     TERM_COLOR a;
-
     /* No motion (*) */
     if ((ny == y) && (nx == x)) {
         base = 0x30;

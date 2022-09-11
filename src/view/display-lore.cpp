@@ -430,7 +430,6 @@ void display_monster_alignment(lore_type *lore_ptr)
     }
 
     if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR) {
-
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
     }
 
