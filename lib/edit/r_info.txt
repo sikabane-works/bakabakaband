@@ -30897,17 +30897,17 @@ D:まったくあたらしい格闘技…
 D:そしてこの若者の名はハヤテ。風雲拳の奥義をきわめた男だ。
 D:今、最強の獅子に挑む！「うおおおおおおおおおおおおおおおおおお！」
 
-N:1640:『東山源次』(淫夢)
-E:Genzi Higasytama(INM)
-G:t:w
+N:1640:BB素材の残骸
+E:Dust of Blue back stuff
+G:X:w
 I:110:10d16:30:20:12
-W:0:5:0:300:0:0
-B:HIT:HURT:1d8
-B:HIT:HURT:1d8
-F:FORCE_MAXHP
-F:UNIQUE | WEIRD_MIND | WILD_TOWN | HUMAN
-F:OPEN_DOOR | BASH_DOOR | RES_TELE | JOKE | CAN_SPEAK
-D:「結婚したのか？…俺以外の奴と？…」彼はかつてお茶の間を凍り付かせ、今はホモの玩具と化した。
+W:0:5:0:100:0:0
+F:NEVER_MOVE | 
+F:STUPID | EMPTY_MIND | IM_POIS | DROP_CORPSE | EAT_CONF
+F:NO_CONF | NO_SLEEP | NO_FEAR | RAND_25 | QUANTUM
+S:1_IN_2 |
+S:BLINK
+D:それはホモ共のおもちゃの捨て屑だ。
 
 N:1641:『ピンキー姉貴』
 E:Sister Pinky
