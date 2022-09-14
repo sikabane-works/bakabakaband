@@ -33666,7 +33666,7 @@ N:1815:スレン王の騎士
 E:Knight of King Suren
 G:p:u
 I:110:17d21:20:70:5
-W:16:5:0:60:0:0
+W:16:5:0:60:500:1816
 B:SLASH:HURT:3d6
 B:SLASH:HURT:3d6
 B:SLASH:HURT:3d6
@@ -33676,7 +33676,19 @@ F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:スレン王にとって比較的心強い精鋭だ。
 
-
+N:1816:スレン王の重騎士
+E:Great knight of King Suren
+G:p:u
+I:110:26d21:20:90:5
+W:24:5:0:60:0:0
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:スレン王の精鋭が戦いの中で、さらに心強く成長した者だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
