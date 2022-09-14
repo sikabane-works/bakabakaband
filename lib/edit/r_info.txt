@@ -33585,11 +33585,15 @@ N:1810:『スレン王』
 E:King Suren
 G:p:w
 I:110:80d10:25:80:25
-W:24:2:0:440:0:0
+W:30:2:0:900:0:0
 B:HIT:HURT:4d10
 B:HIT:HURT:4d10
 B:HIT:HURT:4d10
 B:HIT:HURT:4d10
+R:1813:4d10
+R:1814:1d10
+R:1815:4d5
+R:1816:1d5
 F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN | KILL_WALL
 F:DROP_90 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
@@ -33620,6 +33624,75 @@ D:ヴァリノールから端を発した大いなる争乱となり、彼の一
 D:そして更なる自由と栄達を与える発端となった。
 D:今や彼は、死してマンドスの館にまどろむとヴァリノールの神統は語るが、
 D:一方で様々な種族から火神として崇められなおその力を随所で顕現している。
+
+N:1812:バル・ベルデ市民
+E:Citizen of Val Verde
+G:t:r
+I:110:2d6:10:8:99
+W:0:4:0:0:0:0
+B:HIT:HURT:1d6
+B:TOUCH:EAT_ITEM
+F:MALE | DROP_CORPSE | DROP_SKELETON
+F:DROP_60 | WILD_TOWN | HUMAN |
+F:WILD_SWAMP | WILD_WOOD | WILD_GRASS | WILD_MOUNTAIN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+D:過酷極まる政情不安定な国家の民は、言うまでもなく多くが荒みきっている。
+
+N:1813:スレン王の兵卒
+E:Pawn of King Suren
+G:p:U
+I:110:9d4:20:16:5
+W:6:3:0:6:300:1814
+B:SLASH:HURT:1d6
+B:SLASH:HURT:1d6
+B:SLASH:HURT:1d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_60 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:大半がバサム帝国の捕虜になっていることもある、頼りないスレン王の兵士たちだ。
+D:王にしてみれば、経験を積んで強くなってくれることを祈るほかはない。
+
+N:1814:スレン王の重兵卒
+E:Great pawn of King Suren
+G:p:y
+I:110:15d12:20:60:5
+W:20:5:0:60:0:0
+B:SLASH:HURT:2d6
+B:SLASH:HURT:2d6
+B:SLASH:HURT:2d6
+B:SLASH:HURT:2d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:運よく何度かの戦いを生き延び、戦い慣れたスレン王の兵卒だ。
+
+N:1815:スレン王の騎士
+E:Knight of King Suren
+G:p:u
+I:110:17d21:20:70:5
+W:16:5:0:60:500:1816
+B:SLASH:HURT:3d6
+B:SLASH:HURT:3d6
+B:SLASH:HURT:3d6
+B:SLASH:HURT:3d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:スレン王にとって比較的心強い精鋭だ。
+
+N:1816:スレン王の重騎士
+E:Great knight of King Suren
+G:p:U
+I:110:26d21:20:90:5
+W:24:5:0:250:0:0
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:スレン王の精鋭が戦いの中で、さらに心強く成長した者だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
