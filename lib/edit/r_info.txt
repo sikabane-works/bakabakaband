@@ -33638,7 +33638,7 @@ N:1813:スレン王の兵卒
 E:Pawn of King Suren
 G:p:U
 I:110:9d4:20:16:5
-W:6:3:0:6:0:0
+W:6:3:0:6:300:1814
 B:SLASH:HURT:1d6
 B:SLASH:HURT:1d6
 B:SLASH:HURT:1d6
@@ -33647,6 +33647,20 @@ F:FRIENDS | DROP_60 | WILD_ALL | WARRIOR
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:大半がバサム帝国の捕虜になっていることもある、頼りないスレン王の兵士たちだ。
 D:王にしてみれば、経験を積んで強くなってくれることを祈るほかはない。
+
+N:1814:スレン王の重兵卒
+E:Great pawn of King Suren
+G:p:y
+I:110:15d12:20:60:5
+W:20:5:0:60:0:0
+B:SLASH:HURT:2d6
+B:SLASH:HURT:2d6
+B:SLASH:HURT:2d6
+B:SLASH:HURT:2d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:運よく何度かの戦いを生き延び、戦い慣れたスレン王の兵卒だ。
 
 
 # 'N' indicates the beginning of an entry. The serial number must
