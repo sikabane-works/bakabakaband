@@ -33634,6 +33634,21 @@ F:WILD_SWAMP | WILD_WOOD | WILD_GRASS | WILD_MOUNTAIN | WILD_ONLY
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
 D:過酷極まる政情不安定な国家の民は、言うまでもなく多くが荒みきっている。
 
+N:1813:スレン王の兵卒
+E:Pawn of King Suren
+G:p:U
+I:110:9d4:20:16:5
+W:6:3:0:6:0:0
+B:SLASH:HURT:1d6
+B:SLASH:HURT:1d6
+B:SLASH:HURT:1d6
+F:MALE | HAS_LITE_1 | HUMAN |
+F:FRIENDS | DROP_60 | WILD_ALL | WARRIOR
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:大半がバサム帝国の捕虜になっていることもある、頼りないスレン王の兵士たちだ。
+D:王にしてみれば、経験を積んで強くなってくれることを祈るほかはない。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
