@@ -39,7 +39,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::GOLAN, std::make_unique<AllianceGOLAN>(AllianceType::GOLAN, "GOLAN", _("GOLAN", "GOLAN"), 100000L) },
     { AllianceType::BINJO_BUDDHISM, std::make_unique<AllianceBinjoBuddhism>(AllianceType::BINJO_BUDDHISM, "BINJO-BUDDHISM", _("便乗仏教", "Binjo Buddhism"), 80000L) },
     { AllianceType::ASHINA_CLAN, std::make_unique<AllianceBinjoBuddhism>(AllianceType::ASHINA_CLAN, "ASHINA-CLAN", _("葦名一門", "Ashina Clan"), 180000L) },
-    { AllianceType::SUREN, std::make_unique<AllianceSuren>(AllianceType::SUREN, "Suren", _("スレン王国", "Suren Kingdom"), 100000L) },
+    { AllianceType::SUREN, std::make_unique<AllianceSuren>(AllianceType::SUREN, "SUREN", _("スレン王国", "Suren Kingdom"), 100000L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
