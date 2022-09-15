@@ -33694,6 +33694,22 @@ F:FRIENDS | DROP_90 | WILD_ALL | WARRIOR
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:スレン王の精鋭が戦いの中で、さらに心強く成長した者だ。
 
+N:1817:究極『変態仮面』
+E:Ultimate, Pervert Mask
+G:p:w
+I:128:50d40:20:80:10
+W:48:3:0:14000:0:0
+B:PUNCH:HURT:12d9
+B:PUNCH:HURT:12d9
+B:KICK:HURT:10d8
+B:ENGULF:SUPERHURT:10d10
+F:MALE | HUMAN | FORCE_MAXHP | UNIQUE
+F:PREVENT_SUDDEN_MAGIC | DROP_3D2 | KARATEKA | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:NO_STUN | NO_SLEEP | NO_CONF
+S:1_IN_4 | HASTE | HEAL
+D:「それは私のおいなりさんだ」それに触れると同時に彼は現れる。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
