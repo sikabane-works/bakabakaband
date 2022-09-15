@@ -41,6 +41,7 @@ enum class AllianceType : int {
     GOLAN = 30, //!< GOLAN
     BINJO_BUDDHISM = 31, //!< 便乗仏教
     ASHINA_CLAN = 32, //!< 葦名一門
+    SUREN = 33, //!< スレン王国
     MAX,
 };
 
@@ -359,6 +360,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceAshinaClan() = default;
+};
+
+class AllianceSuren : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceSuren() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceSuren() = default;
 };
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
