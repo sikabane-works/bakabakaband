@@ -42,6 +42,7 @@ enum class AllianceType : int {
     BINJO_BUDDHISM = 31, //!< 便乗仏教
     ASHINA_CLAN = 32, //!< 葦名一門
     SUREN = 33, //!< スレン王国
+    FEANOR_NOLDOR = 34, //!< フェアノール統ノルドール
     MAX,
 };
 
@@ -369,6 +370,15 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceSuren() = default;
+};
+
+class AllianceFeanorNoldor : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceFeanorNoldor() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceFeanorNoldor() = default;
 };
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
