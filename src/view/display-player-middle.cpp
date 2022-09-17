@@ -181,9 +181,11 @@ static int calc_temporary_speed(PlayerType *player_ptr)
         if (is_fast(player_ptr)) {
             tmp_speed += 10;
         }
+
         if (player_ptr->effects()->deceleration()->is_slow()) {
             tmp_speed -= 10;
         }
+
         if (player_ptr->lightspeed) {
             tmp_speed = 99;
         }
@@ -192,7 +194,8 @@ static int calc_temporary_speed(PlayerType *player_ptr)
         if (m_ref.is_accelerated()) {
             tmp_speed += 10;
         }
-        if (monster_slow_remaining(&player_ptr->current_floor_ptr->m_list[player_ptr->riding])) {
+
+        if (m_ref.is_decelerated()) {
             tmp_speed -= 10;
         }
     }
