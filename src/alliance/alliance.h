@@ -61,7 +61,7 @@ public:
     Alliance(AllianceType id, std::string tag, std::string name, int64_t base_power);
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int64_t calcCurrentPower();
-    bool isAnnihilated();
+    virtual bool isAnnihilated();
     virtual int calcImplessionPoint(PlayerType *creature_ptr) const = 0;
     virtual ~Alliance() = default;
 };
@@ -117,6 +117,7 @@ public:
     AllianceJural() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    bool isAnnihilated();
     virtual ~AllianceJural() = default;
 };
 
