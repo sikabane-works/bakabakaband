@@ -57,4 +57,5 @@ struct monster_type {
 
     bool is_friendly() const;
     bool is_pet() const;
+    bool is_hostile() const;
 };
