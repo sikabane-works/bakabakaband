@@ -54,7 +54,7 @@
  */
 static BIT_FLAGS dead_mode(monster_death_type *md_ptr)
 {
-    bool pet = is_pet(md_ptr->m_ptr);
+    bool pet = md_ptr->m_ptr->is_pet();
     bool clone = md_ptr->m_ptr->mflag2.has(MonsterConstantFlagType::CLONED);
     BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
     if (clone) {
@@ -83,7 +83,7 @@ static void summon_self(PlayerType *player_ptr, monster_death_type *md_ptr, summ
     POSITION wy = md_ptr->md_y;
     POSITION wx = md_ptr->md_x;
     int attempts = 100;
-    bool pet = is_pet(md_ptr->m_ptr);
+    bool pet = md_ptr->m_ptr->is_pet();
     do {
         scatter(player_ptr, &wy, &wx, md_ptr->md_y, md_ptr->md_x, radius, PROJECT_NONE);
     } while (!(in_bounds(floor_ptr, wy, wx) && is_cave_empty_bold2(player_ptr, wy, wx)) && --attempts);
@@ -109,7 +109,7 @@ static void on_dead_pink_horror(PlayerType *player_ptr, monster_death_type *md_p
     for (int i = 0; i < blue_horrors; i++) {
         POSITION wy = md_ptr->md_y;
         POSITION wx = md_ptr->md_x;
-        bool pet = is_pet(md_ptr->m_ptr);
+        bool pet = md_ptr->m_ptr->is_pet();
         BIT_FLAGS mode = dead_mode(md_ptr);
         if (summon_specific(player_ptr, (pet ? -1 : md_ptr->m_idx), wy, wx, 100, SUMMON_BLUE_HORROR, mode) && player_can_see_bold(player_ptr, wy, wx)) {
             notice = true;
@@ -138,7 +138,7 @@ static void on_dead_spawn_monsters(PlayerType *player_ptr, monster_death_type *m
         int spawn_nums = damroll(dn, ds);
         POSITION wy = md_ptr->md_y;
         POSITION wx = md_ptr->md_x;
-        bool pet = is_pet(md_ptr->m_ptr);
+        bool pet = md_ptr->m_ptr->is_pet();
         BIT_FLAGS mode = pet ? PM_FORCE_PET : PM_NONE;
         for (int i = 0; i < spawn_nums; i++) {
             if (summon_named_creature(player_ptr, 0, wy, wx, r_idx, mode) && player_can_see_bold(player_ptr, wy, wx)) {
@@ -439,7 +439,7 @@ static void on_dead_aqua_illusion(PlayerType *player_ptr, monster_death_type *md
     for (int i = 0; i < popped_bubbles; i++) {
         POSITION wy = md_ptr->md_y;
         POSITION wx = md_ptr->md_x;
-        bool pet = is_pet(md_ptr->m_ptr);
+        bool pet = md_ptr->m_ptr->is_pet();
         BIT_FLAGS mode = dead_mode(md_ptr);
         auto smaller_bubble = md_ptr->m_ptr->r_idx - 1;
         if (summon_named_creature(player_ptr, (pet ? -1 : md_ptr->m_idx), wy, wx, smaller_bubble, mode) && player_can_see_bold(player_ptr, wy, wx)) {
@@ -474,7 +474,7 @@ static void on_dead_dragon_centipede(PlayerType *player_ptr, monster_death_type 
     for (int i = 0; i < reproduced_centipede; i++) {
         POSITION wy = md_ptr->md_y;
         POSITION wx = md_ptr->md_x;
-        bool pet = is_pet(md_ptr->m_ptr);
+        bool pet = md_ptr->m_ptr->is_pet();
         BIT_FLAGS mode = dead_mode(md_ptr);
 
         auto smaller_centipede = md_ptr->m_ptr->r_idx - 1;
@@ -632,7 +632,7 @@ static void on_dead_chest_mimic(PlayerType *player_ptr, monster_death_type *md_p
     for (auto i = 0; i < num_summons; i++) {
         auto wy = md_ptr->md_y;
         auto wx = md_ptr->md_x;
-        auto pet = is_pet(md_ptr->m_ptr);
+        auto pet = md_ptr->m_ptr->is_pet();
         BIT_FLAGS mode = dead_mode(md_ptr);
         if (summon_named_creature(player_ptr, (pet ? -1 : md_ptr->m_idx), wy, wx, mimic_inside, (BIT_FLAGS)mode) && player_can_see_bold(player_ptr, wy, wx)) {
             notice = true;
