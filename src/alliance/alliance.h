@@ -117,7 +117,7 @@ public:
     AllianceJural() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
-    bool isAnnihilated();
+    bool isAnnihilated() override;
     virtual ~AllianceJural() = default;
 };
 
