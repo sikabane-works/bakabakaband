@@ -122,6 +122,10 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::QUANTUM);
     }
 
+    if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::ELF)) {
+        lore_ptr->kind_flags.set(MonsterKindType::ELF);
+    }
+
     if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::ELDRAZI)) {
         lore_ptr->kind_flags.set(MonsterKindType::ELDRAZI);
     }
