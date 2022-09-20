@@ -4,6 +4,7 @@
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "monster-race/race-indice-types.h"
 
 const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NONE, std::make_unique<AllianceNone>(AllianceType::NONE, "NONE", _("無所属", "None"), 0) },
@@ -102,6 +103,11 @@ int AllianceUtumno::calcImplessionPoint(PlayerType *creature_ptr) const
 int AllianceJural::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+}
+
+bool AllianceJural::isAnnihilated()
+{
+    return r_info[MON_JURAL_WITCHKING].mob_num == 0;
 }
 
 int AllianceChinChinTei::calcImplessionPoint(PlayerType *creature_ptr) const
