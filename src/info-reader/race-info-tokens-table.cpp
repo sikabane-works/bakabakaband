@@ -299,7 +299,6 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
     { "WILD_MOUNTAIN", RF8_WILD_MOUNTAIN },
     { "WILD_GRASS", RF8_WILD_GRASS },
     { "QUYLTHLUG", RF8_QUYLTHLUG },
-    { "ROGUE", RF8_ROGUE },
     { "PRIEST", RF8_PRIEST },
     { "MAGE", RF8_MAGE },
     { "PALADIN", RF8_PALADIN },
@@ -487,6 +486,7 @@ const std::unordered_map<std::string_view, MonsterKindType> r_info_kind_flags = 
     { "ELF", MonsterKindType::ELF },
     { "DWARF", MonsterKindType::DWARF },
     { "HOBBIT", MonsterKindType::HOBBIT },
-    { "WARRIOR", MonsterKindType::WARRIOR },
     { "ELDRAZI", MonsterKindType::ELDRAZI },
+    { "WARRIOR", MonsterKindType::WARRIOR },
+    { "ROGUE", MonsterKindType::ROGUE },
 };
