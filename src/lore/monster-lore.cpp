@@ -142,6 +142,10 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::WARRIOR);
     }
 
+    if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::ROGUE)) {
+        lore_ptr->kind_flags.set(MonsterKindType::ROGUE);
+    }
+
     if (lore_ptr->r_ptr->flags1 & RF1_FORCE_DEPTH) {
         lore_ptr->flags1 |= (RF1_FORCE_DEPTH);
     }
