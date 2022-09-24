@@ -777,7 +777,7 @@ static void on_dead_swordfish(PlayerType *player_ptr, monster_death_type *md_ptr
 
 void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, AttributeFlags attribute_flags)
 {
-    if (r_info[md_ptr->m_ptr->r_idx].flags8 & RF8_NINJA) {
+    if (md_ptr->r_ptr->kind_flags.has(MonsterKindType::NINJA)) {
         on_dead_ninja(player_ptr, md_ptr);
         return;
     }

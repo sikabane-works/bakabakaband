@@ -300,7 +300,6 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
     { "WILD_GRASS", RF8_WILD_GRASS },
     { "QUYLTHLUG", RF8_QUYLTHLUG },
     { "KARATEKA", RF8_KARATEKA },
-    { "NINJA", RF8_NINJA },
     { "SUMOU_WRESTLER", RF8_SUMOU_WRESTLER },
     { "YAKUZA", RF8_YAKUZA },
     { "HOMO_SEXUAL", RF8_HOMO_SEXUAL },
@@ -489,4 +488,5 @@ const std::unordered_map<std::string_view, MonsterKindType> r_info_kind_flags = 
     { "PALADIN", MonsterKindType::PALADIN },
     { "RANGER", MonsterKindType::RANGER },
     { "SAMURAI", MonsterKindType::SAMURAI },
+    { "NINJA", MonsterKindType::NINJA },
 };
