@@ -33721,6 +33721,23 @@ F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN |
 F:OPEN_DOOR | BASH_DOOR | EAT_LOSE_INT | EAT_LOSE_WIS | WARRIOR
 D:素晴らしい熱意だ。熱意だけは本物だ。うん。
 
+N:1819:膨らんだ意識曲げ
+E:Distended mindbender
+G:I:v
+I:120:90d10:30:80:1
+W:43:3:0:3000:0:0
+B:BITE:CONFUSE:6d8
+B:BITE:LOSE_INT:4d8
+B:BITE:LOSE_WIS:4d8
+B:BITE:LOSE_CHR:4d8
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | KILL_BODY | DROP_CORPSE | ONLY_ITEM | DROP_4D2 |
+F:FRIENDS | NO_SLEEP | NO_CONF | NO_STUN | ELDRAZI
+F:IM_ACID | IM_POIS | RES_SOUN
+S:1_IN_4
+S:BRAIN_SMASH
+D:エムラクールの影響を受け、知的生命の知性を
+D:ついばむ様に変容した異形の昆虫だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
