@@ -372,11 +372,14 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
 
     bool is_winner = wilderness[y][x].entrance > 0;
     is_winner &= (wilderness[y][x].town == 0);
+
     bool is_wild_winner = d_info[wilderness[y][x].entrance].flags.has_not(DungeonFeatureType::WINNER);
     is_winner &= ((w_ptr->total_winner != 0) || is_wild_winner);
     if (!is_winner) {
         return;
     }
+
+
 
     const auto state_backup = w_ptr->rng.get_state();
     w_ptr->rng.set_state(wilderness[y][x].seed);
