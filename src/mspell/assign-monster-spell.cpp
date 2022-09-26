@@ -36,7 +36,7 @@ static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, Monste
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
     // クイルスルグは自身を中心に召喚する
-    if (any_bits(r_ptr->flags8, RF8_QUYLTHLUG)) {
+    if (r_ptr->kind_flags.has(MonsterKindType::QUYLTHLUG)) {
         switch (ms_type) {
 
         case MonsterAbilityType::S_KIN:
@@ -182,7 +182,7 @@ static MonsterSpellResult monspell_to_monster_impl(
     monster_race *r_ptr = &r_info[m_ptr->r_idx];
 
     // クイルスルグは自身を中心に召喚する
-    if (any_bits(r_ptr->flags8, RF8_QUYLTHLUG)) {
+    if (r_ptr->kind_flags.has(MonsterKindType::QUYLTHLUG)) {
         switch (ms_type) {
 
         case MonsterAbilityType::S_KIN:
