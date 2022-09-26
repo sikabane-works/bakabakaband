@@ -210,8 +210,9 @@ enum monster_race_type {
     MON_INARIMAN_1 = 1518,
     MON_INARIMAN_2 = 1519,
     MON_INARIMAN_3 = 1520,
-
     MON_CHEST_MIMIC_03 = 1529,
     MON_CHEST_MIMIC_04 = 1530,
     MON_CHEST_MIMIC_11 = 1531,
+    MON_SHITTO_MASK = 1546,
+
 };
