@@ -178,6 +178,10 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::YAKUZA);
     }
 
+    if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::KARATEKA)) {
+        lore_ptr->kind_flags.set(MonsterKindType::KARATEKA);
+    }
+
     if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::JOKE)) {
         lore_ptr->kind_flags.set(MonsterKindType::JOKE);
     }
