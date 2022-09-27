@@ -145,7 +145,7 @@ int AllianceUngoliant::calcImplessionPoint(PlayerType *creature_ptr) const
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceShittoDan::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceShittoDan::calcImplessionPoint([[maybe_unused]]  PlayerType *creature_ptr) const
 {
     return 0;
 }
