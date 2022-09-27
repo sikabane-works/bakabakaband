@@ -125,6 +125,11 @@ int AllianceKenohgun::calcImplessionPoint(PlayerType *creature_ptr) const
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
+bool AllianceKenohgun::isAnnihilated()
+{
+    return r_info[MON_RAOU].mob_num == 0;
+}
+
 int AllianceFangFamily::calcImplessionPoint(PlayerType *creature_ptr) const
 {
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
@@ -145,7 +150,7 @@ int AllianceUngoliant::calcImplessionPoint(PlayerType *creature_ptr) const
     return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
 }
 
-int AllianceShittoDan::calcImplessionPoint([[maybe_unused]]  PlayerType *creature_ptr) const
+int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
