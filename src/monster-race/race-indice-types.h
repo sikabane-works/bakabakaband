@@ -214,5 +214,6 @@ enum monster_race_type {
     MON_CHEST_MIMIC_04 = 1530,
     MON_CHEST_MIMIC_11 = 1531,
     MON_SHITTO_MASK = 1546,
+    MON_PRINCESS_KETHOLDETH = 1590,
 
 };

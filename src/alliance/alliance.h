@@ -273,6 +273,7 @@ public:
     AllianceKetholdeth() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    bool isAnnihilated() override;
     virtual ~AllianceKetholdeth() = default;
 };
 
