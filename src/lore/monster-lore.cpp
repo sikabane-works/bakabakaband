@@ -142,6 +142,10 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::QUYLTHLUG);
     }
 
+    if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::SPIDER)) {
+        lore_ptr->kind_flags.set(MonsterKindType::SPIDER);
+    }
+
     if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::WARRIOR)) {
         lore_ptr->kind_flags.set(MonsterKindType::WARRIOR);
     }
