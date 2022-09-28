@@ -201,6 +201,11 @@ int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType *creatur
     return 0;
 }
 
+bool AllianceKetholdeth::isAnnihilated()
+{
+    return r_info[MON_PRINCESS_KETHOLDETH].mob_num == 0;
+}
+
 int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
