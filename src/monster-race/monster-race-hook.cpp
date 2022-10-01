@@ -800,7 +800,7 @@ bool vault_aux_gay(PlayerType *player_ptr, MONRACE_IDX r_idx)
         return false;
     }
 
-    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL))) {
+    if (!(r_ptr->kind_flags.has(MonsterKindType::HOMO_SEXUAL))) {
         return false;
     }
 
@@ -823,7 +823,7 @@ bool vault_aux_les(PlayerType *player_ptr, MONRACE_IDX r_idx)
         return false;
     }
 
-    if (!(r_ptr->flags8 & (RF8_HOMO_SEXUAL))) {
+    if (!(r_ptr->kind_flags.has(MonsterKindType::HOMO_SEXUAL))) {
         return false;
     }
 
