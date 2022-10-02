@@ -65,6 +65,11 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr
     return 0;
 }
 
+parse_error_type parse_line_vault(floor_type *floor_ptr, char *buf)
+{
+    return PARSE_ERROR_NONE;
+}
+
 /*!
  * @brief 地形情報の「F:」情報をパースする
  * Process "F:<letter>:<terrain>:<cave_info>:<monster>:<object>:<ego>:<artifact>:<trap>:<special>" -- info for dungeon grid

@@ -2,6 +2,7 @@
 
 #include "object-enchant/object-ego.h"
 #include "system/angband.h"
+#include "room/vault-builder.h"
 #include <functional>
 #include <string_view>
 
@@ -20,6 +21,10 @@ struct dungeon_grid {
     bool force_monster_place; /*!< モンスターの強制配置 */
 };
 
+struct town_vault {
+    VaultTypeId id;
+};
+
 extern dungeon_grid letter[255];
 
 struct angband_header;
@@ -27,4 +32,5 @@ struct floor_type;
 
 errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr(std::string_view, angband_header *)> parse_info_txt_line);
 parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf);
+parse_error_type parse_line_vault(floor_type *floor_ptr, char *buf);
 parse_error_type parse_line_building(char *buf);
