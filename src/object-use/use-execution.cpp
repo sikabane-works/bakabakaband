@@ -19,11 +19,14 @@
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
+#include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "status/experience.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-confusion.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
@@ -33,7 +36,7 @@
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 使うオブジェクトの所持品ID
  */
-ObjectUseEntity::ObjectUseEntity(PlayerType* player_ptr, INVENTORY_IDX item)
+ObjectUseEntity::ObjectUseEntity(PlayerType *player_ptr, INVENTORY_IDX item)
     : player_ptr(player_ptr)
     , item(item)
 {
@@ -62,7 +65,7 @@ void ObjectUseEntity::execute()
     }
 
     auto chance = this->player_ptr->skill_dev;
-    if (this->player_ptr->confused) {
+    if (this->player_ptr->effects()->confusion()->is_confused()) {
         chance = chance / 2;
     }
 
@@ -71,7 +74,7 @@ void ObjectUseEntity::execute()
         chance = USE_DEVICE;
     }
 
-    if ((chance < USE_DEVICE) || (randint1(chance) < USE_DEVICE) || (this->player_ptr->pclass == PlayerClassType::BERSERKER)) {
+    if ((chance < USE_DEVICE) || (randint1(chance) < USE_DEVICE) || PlayerClass(this->player_ptr).equals(PlayerClassType::BERSERKER)) {
         if (flush_failure) {
             flush();
         }
@@ -122,7 +125,7 @@ void ObjectUseEntity::execute()
 
     o_ptr->pval--;
     if ((this->item >= 0) && (o_ptr->number > 1)) {
-        object_type forge;
+        ObjectType forge;
         auto *q_ptr = &forge;
         q_ptr->copy_from(o_ptr);
         q_ptr->number = 1;

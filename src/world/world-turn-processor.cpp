@@ -34,15 +34,16 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "window/main-window-row-column.h"
+#include "world/world-collapsion.h"
 #include "world/world-movement-processor.h"
 #include "world/world.h"
-#include "world/world-collapsion.h"
 
 WorldTurnProcessor::WorldTurnProcessor(PlayerType *player_ptr)
     : player_ptr(player_ptr)
@@ -109,10 +110,11 @@ void WorldTurnProcessor::print_time()
     int day;
     c_put_str(TERM_WHITE, "             ", ROW_DAY, COL_DAY);
     extract_day_hour_min(this->player_ptr, &day, &this->hour, &this->min);
-    if (day < 1000)
+    if (day < 1000) {
         c_put_str(TERM_WHITE, format(_("%2d日目", "Day%3d"), day), ROW_DAY, COL_DAY);
-    else
+    } else {
         c_put_str(TERM_WHITE, _("***日目", "Day***"), ROW_DAY, COL_DAY);
+    }
 
     c_put_str(TERM_WHITE, format("%2d:%02d", this->hour, this->min), ROW_DAY, COL_DAY + 7);
 }
@@ -230,7 +232,7 @@ void WorldTurnProcessor::decide_auto_save()
 void WorldTurnProcessor::process_change_daytime_night()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    if (!floor_ptr->dun_level && !floor_ptr->inside_quest && !this->player_ptr->phase_out && !floor_ptr->inside_arena) {
+    if (!floor_ptr->dun_level && !inside_quest(floor_ptr->quest_number) && !this->player_ptr->phase_out && !floor_ptr->inside_arena) {
         if (!(w_ptr->game_turn % ((TURNS_PER_TICK * TOWN_DAWN) / 2))) {
             auto dawn = w_ptr->game_turn % (TURNS_PER_TICK * TOWN_DAWN) == 0;
             if (dawn) {
@@ -244,7 +246,7 @@ void WorldTurnProcessor::process_change_daytime_night()
     }
 
     auto is_in_dungeon = vanilla_town;
-    is_in_dungeon |= lite_town && (floor_ptr->inside_quest == 0) && !this->player_ptr->phase_out && !floor_ptr->inside_arena;
+    is_in_dungeon |= lite_town && (!inside_quest(floor_ptr->quest_number)) && !this->player_ptr->phase_out && !floor_ptr->inside_arena;
     is_in_dungeon &= floor_ptr->dun_level != 0;
     if (!is_in_dungeon) {
         return;
@@ -294,8 +296,9 @@ void WorldTurnProcessor::shuffle_shopkeeper()
     } while (true);
 
     for (const auto &f_ref : f_info) {
-        if (f_ref.name.empty() || f_ref.flags.has_not(FloorFeatureType::STORE))
+        if (f_ref.name.empty() || f_ref.flags.has_not(FloorFeatureType::STORE)) {
             continue;
+        }
 
         if (f_ref.subtype != n) {
             continue;
@@ -315,7 +318,7 @@ void WorldTurnProcessor::decide_alloc_monster()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto should_alloc = one_in_(d_info[this->player_ptr->dungeon_idx].max_m_alloc_chance);
     should_alloc &= !floor_ptr->inside_arena;
-    should_alloc &= floor_ptr->inside_quest == 0;
+    should_alloc &= !inside_quest(floor_ptr->quest_number);
     should_alloc &= !this->player_ptr->phase_out;
     if (should_alloc) {
         (void)alloc_monster(this->player_ptr, MAX_SIGHT + 5, 0, summon_specific);

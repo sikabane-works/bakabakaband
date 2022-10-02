@@ -509,6 +509,7 @@ hengband_SOURCES = \
 	monster-floor/special-death-switcher.cpp monster-floor/special-death-switcher.h \
 	\
 	monster-race/monster-aura-types.h \
+	monster-race/monster-kind-mask.cpp monster-race/monster-kind-mask.h \
 	monster-race/monster-race.cpp monster-race/monster-race.h \
 	monster-race/monster-race-hook.cpp monster-race/monster-race-hook.h \
 	monster-race/race-ability-flags.h \
@@ -520,6 +521,8 @@ hengband_SOURCES = \
 	monster-race/race-flags7.h monster-race/race-flags8.h \
 	monster-race/race-flags9.h \
 	monster-race/race-indice-types.h \
+	monster-race/race-kind-flags.h \
+	monster-race/race-resistance-mask.cpp monster-race/race-resistance-mask.h \
 	monster-race/race-visual-flags.h \
 	\
 	mspell/assign-monster-spell.cpp mspell/assign-monster-spell.h \
@@ -601,6 +604,7 @@ hengband_SOURCES = \
 	object-enchant/vorpal-weapon.cpp object-enchant/vorpal-weapon.h \
 	\
 	object-enchant/others/apply-magic-amulet.cpp object-enchant/others/apply-magic-amulet.h \
+	object-enchant/others/apply-magic-lite.cpp object-enchant/others/apply-magic-lite.h \
 	object-enchant/others/apply-magic-ring.cpp object-enchant/others/apply-magic-ring.h \
 	object-enchant/others/apply-magic-others.cpp object-enchant/others/apply-magic-others.h \
 	\
@@ -878,6 +882,7 @@ hengband_SOURCES = \
 	\
 	system/alloc-entries.cpp system/alloc-entries.h \
 	system/angband.h \
+	system/angband-exceptions.h \
 	system/angband-version.cpp system/angband-version.h \
 	system/artifact-type-definition.cpp system/artifact-type-definition.h \
 	system/building-type-definition.cpp system/building-type-definition.h \
@@ -886,7 +891,7 @@ hengband_SOURCES = \
 	system/grid-type-definition.cpp system/grid-type-definition.h \
 	system/game-option-types.h \
 	system/h-basic.h system/h-config.h \
-	system/h-define.h system/h-system.h system/h-type.h \
+	system/h-system.h system/h-type.h \
 	system/monster-race-definition.h \
 	system/monster-type-definition.h \
 	system/object-type-definition.cpp system/object-type-definition.h \
@@ -910,6 +915,7 @@ hengband_SOURCES = \
 	term/z-term.cpp term/z-term.h term/z-util.cpp term/z-util.h \
 	term/z-virt.cpp term/z-virt.h \
 	\
+	timed-effect/player-confusion.cpp timed-effect/player-confusion.h \
 	timed-effect/player-cut.cpp timed-effect/player-cut.h \
 	timed-effect/player-stun.cpp timed-effect/player-stun.h \
 	timed-effect/timed-effects.cpp timed-effect/timed-effects.h \
@@ -1012,7 +1018,7 @@ EXTRA_DIST = \
 DEFAULT_INCLUDES = -I$(srcdir) -I$(top_builddir)/src
 CPPFLAGS += $(XFT_CFLAGS) $(libcurl_CFLAGS)
 if PCH
-CPPFLAGS += -include stdafx.h
+CPPFLAGS += -include ../src/stdafx.h
 endif
 LIBS += $(XFT_LIBS) $(libcurl_LIBS)
 COMPILE = $(srcdir)/gcc-wrap $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -1037,3 +1043,4 @@ endif
 
 clean-local:
 	-rm stdafx.h.gch stdafx.h.gch.sum
+	-rm -rf ../build

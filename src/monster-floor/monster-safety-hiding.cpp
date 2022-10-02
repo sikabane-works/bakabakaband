@@ -33,36 +33,42 @@
 static coordinate_candidate sweep_safe_coordinate(PlayerType *player_ptr, MONSTER_IDX m_idx, const POSITION *y_offsets, const POSITION *x_offsets, int d)
 {
     coordinate_candidate candidate = init_coordinate_candidate();
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     for (POSITION i = 0, dx = x_offsets[0], dy = y_offsets[0]; dx != 0 || dy != 0; i++, dx = x_offsets[i], dy = y_offsets[i]) {
         POSITION y = m_ptr->fy + dy;
         POSITION x = m_ptr->fx + dx;
-        if (!in_bounds(floor_ptr, y, x))
+        if (!in_bounds(floor_ptr, y, x)) {
             continue;
+        }
 
-        monster_race *r_ptr = &r_info[m_ptr->r_idx];
+        auto *r_ptr = &r_info[m_ptr->r_idx];
         grid_type *g_ptr;
         g_ptr = &floor_ptr->grid_array[y][x];
 
         BIT_FLAGS16 riding_mode = (m_idx == player_ptr->riding) ? CEM_RIDING : 0;
-        if (!monster_can_cross_terrain(player_ptr, g_ptr->feat, r_ptr, riding_mode))
+        if (!monster_can_cross_terrain(player_ptr, g_ptr->feat, r_ptr, riding_mode)) {
             continue;
+        }
 
         if (m_ptr->mflag2.has_not(MonsterConstantFlagType::NOFLOW)) {
             byte dist = g_ptr->get_distance(r_ptr);
-            if (dist == 0)
+            if (dist == 0) {
                 continue;
-            if (dist > floor_ptr->grid_array[m_ptr->fy][m_ptr->fx].get_distance(r_ptr) + 2 * d)
+            }
+            if (dist > floor_ptr->grid_array[m_ptr->fy][m_ptr->fx].get_distance(r_ptr) + 2 * d) {
                 continue;
+            }
         }
 
-        if (projectable(player_ptr, player_ptr->y, player_ptr->x, y, x))
+        if (projectable(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
             continue;
+        }
 
         POSITION dis = distance(y, x, player_ptr->y, player_ptr->x);
-        if (dis <= candidate.gdis)
+        if (dis <= candidate.gdis) {
             continue;
+        }
 
         candidate.gy = y;
         candidate.gx = x;
@@ -93,7 +99,7 @@ static coordinate_candidate sweep_safe_coordinate(PlayerType *player_ptr, MONSTE
  */
 bool find_safety(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION *yp, POSITION *xp)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     for (POSITION d = 1; d < 10; d++) {
         const POSITION *y_offsets;
         y_offsets = dist_offsets_y[d];
@@ -103,8 +109,9 @@ bool find_safety(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION *yp, POSITI
 
         coordinate_candidate candidate = sweep_safe_coordinate(player_ptr, m_idx, y_offsets, x_offsets, d);
 
-        if (candidate.gdis <= 0)
+        if (candidate.gdis <= 0) {
             continue;
+        }
 
         *yp = m_ptr->fy - candidate.gy;
         *xp = m_ptr->fx - candidate.gx;
@@ -126,16 +133,19 @@ bool find_safety(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION *yp, POSITI
 static void sweep_hiding_candidate(
     PlayerType *player_ptr, monster_type *m_ptr, const POSITION *y_offsets, const POSITION *x_offsets, coordinate_candidate *candidate)
 {
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     for (POSITION i = 0, dx = x_offsets[0], dy = y_offsets[0]; dx != 0 || dy != 0; i++, dx = x_offsets[i], dy = y_offsets[i]) {
         POSITION y = m_ptr->fy + dy;
         POSITION x = m_ptr->fx + dx;
-        if (!in_bounds(player_ptr->current_floor_ptr, y, x))
+        if (!in_bounds(player_ptr->current_floor_ptr, y, x)) {
             continue;
-        if (!monster_can_enter(player_ptr, y, x, r_ptr, 0))
+        }
+        if (!monster_can_enter(player_ptr, y, x, r_ptr, 0)) {
             continue;
-        if (projectable(player_ptr, player_ptr->y, player_ptr->x, y, x) || !clean_shot(player_ptr, m_ptr->fy, m_ptr->fx, y, x, false))
+        }
+        if (projectable(player_ptr, player_ptr->y, player_ptr->x, y, x) || !clean_shot(player_ptr, m_ptr->fy, m_ptr->fx, y, x, false)) {
             continue;
+        }
 
         POSITION dis = distance(y, x, player_ptr->y, player_ptr->x);
         if (dis < candidate->gdis && dis >= 2) {
@@ -162,7 +172,7 @@ static void sweep_hiding_candidate(
  */
 bool find_hiding(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION *yp, POSITION *xp)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     coordinate_candidate candidate = init_coordinate_candidate();
     candidate.gdis = 999;
 
@@ -174,8 +184,9 @@ bool find_hiding(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION *yp, POSITI
         x_offsets = dist_offsets_x[d];
 
         sweep_hiding_candidate(player_ptr, m_ptr, y_offsets, x_offsets, &candidate);
-        if (candidate.gdis >= 999)
+        if (candidate.gdis >= 999) {
             continue;
+        }
 
         *yp = m_ptr->fy - candidate.gy;
         *xp = m_ptr->fx - candidate.gx;

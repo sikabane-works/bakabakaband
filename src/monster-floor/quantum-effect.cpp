@@ -1,4 +1,5 @@
 ﻿#include "monster-floor/quantum-effect.h"
+#include "effect/attribute-types.h"
 #include "floor/line-of-sight.h"
 #include "monster-floor/monster-death.h"
 #include "monster-floor/monster-remover.h"
@@ -11,7 +12,6 @@
 #include "monster/smart-learn-types.h"
 #include "mspell/assign-monster-spell.h"
 #include "mspell/mspell-result.h"
-#include "effect/attribute-types.h"
 #include "spell-kind/spells-teleport.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -27,7 +27,7 @@
  */
 static void vanish_nonunique(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     if (see_m) {
         GAME_TEXT m_name[MAX_NLEN];
         monster_desc(player_ptr, m_name, m_ptr, 0);
@@ -36,8 +36,9 @@ static void vanish_nonunique(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see
 
     monster_death(player_ptr, m_idx, false, AttributeType::NONE);
     delete_monster_idx(player_ptr, m_idx);
-    if (is_pet(m_ptr) && !(m_ptr->ml))
+    if (is_pet(m_ptr) && !(m_ptr->ml)) {
         msg_print(_("少しの間悲しい気分になった。", "You feel sad for a moment."));
+    }
 }
 
 /*!
@@ -54,23 +55,26 @@ static void vanish_nonunique(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see
  */
 static void produce_quantum_effect(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     bool coherent = los(player_ptr, m_ptr->fy, m_ptr->fx, player_ptr->y, player_ptr->x);
-    if (!see_m && !coherent)
+    if (!see_m && !coherent) {
         return;
+    }
 
     if (see_m) {
         GAME_TEXT m_name[MAX_NLEN];
         monster_desc(player_ptr, m_name, m_ptr, MD_NONE);
         msg_format(_("%sは量子的効果を起こした！", "%^s produced a decoherence!"), m_name);
-    } else
+    } else {
         msg_print(_("量子的効果が起こった！", "A decoherence was produced!"));
+    }
 
     bool target = one_in_(2);
-    if (target)
+    if (target) {
         (void)monspell_to_monster(player_ptr, MonsterAbilityType::BLINK, m_ptr->fy, m_ptr->fx, m_idx, m_idx, true);
-    else
+    } else {
         teleport_player_away(m_idx, player_ptr, 10, true);
+    }
 }
 
 /*!
@@ -82,16 +86,19 @@ static void produce_quantum_effect(PlayerType *player_ptr, MONSTER_IDX m_idx, bo
  */
 bool process_quantum_effect(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
-    if ((r_ptr->flags2 & RF2_QUANTUM) == 0)
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
+    if (r_ptr->kind_flags.has_not(MonsterKindType::QUANTUM)) {
         return false;
-    if (!randint0(2))
+    }
+    if (!randint0(2)) {
         return false;
-    if (randint0((m_idx % 100) + 10))
+    }
+    if (randint0((m_idx % 100) + 10)) {
         return false;
+    }
 
-    bool can_disappear = (r_ptr->flags1 & RF1_UNIQUE) == 0;
+    bool can_disappear = r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE);
     can_disappear &= (r_ptr->flags1 & RF1_QUESTOR) == 0;
     if (can_disappear) {
         vanish_nonunique(player_ptr, m_idx, see_m);

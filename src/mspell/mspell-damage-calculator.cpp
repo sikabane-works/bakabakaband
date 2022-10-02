@@ -23,7 +23,7 @@
  * @param TYPE  DAM_MAXで最大値を返し、DAM_MINで最小値を返す。DAM_ROLLはダイスを振って値を決定する。
  * @return 攻撃呪文のダメージを返す。攻撃呪文以外は-1を返す。
  */
-static HIT_POINT monspell_damage_roll(HIT_POINT dam, int dice_num, int dice_side, int mult, int div, int TYPE)
+static int monspell_damage_roll(int dam, int dice_num, int dice_side, int mult, int div, int TYPE)
 {
     switch (TYPE) {
     case DAM_MAX:
@@ -47,8 +47,9 @@ static HIT_POINT monspell_damage_roll(HIT_POINT dam, int dice_num, int dice_side
         return dam;
     }
 
-    if (dam < 1)
+    if (dam < 1) {
         dam = 1;
+    }
     return dam;
 }
 
@@ -65,10 +66,10 @@ static HIT_POINT monspell_damage_roll(HIT_POINT dam, int dice_num, int dice_side
  * @param TYPE  DAM_MAXで最大値を返し、DAM_MINで最小値を返す。DAM_ROLLはダイスを振って値を決定する。
  * @return 攻撃呪文のダメージを返す。攻撃呪文以外は-1を返す。
  */
-static HIT_POINT monspell_damage_base(
+static int monspell_damage_base(
     PlayerType *player_ptr, MonsterAbilityType ms_type, int hp, int rlev, bool powerful, int shoot_dd, int shoot_ds, int shoot_base, int TYPE)
 {
-    HIT_POINT dam = 0, dice_num = 0, dice_side = 0, mult = 1, div = 1;
+    int dam = 0, dice_num = 0, dice_side = 0, mult = 1, div = 1;
 
     switch (ms_type) {
     case MonsterAbilityType::SHRIEK:
@@ -446,8 +447,9 @@ void monspell_shoot_dice(monster_race *r_ptr, int *dd, int *ds)
     int n = 0; /* Number of blows */
     const int max_blows = 4;
     for (int m = 0; m < max_blows; m++) {
-        if (r_ptr->blow[m].method != RaceBlowMethodType::NONE)
-            n++; /* Count blows */
+        if (r_ptr->blow[m].method != RaceBlowMethodType::NONE) {
+            n++;
+        } /* Count blows */
 
         if (r_ptr->blow[m].method == RaceBlowMethodType::SHOOT) {
             p = m; /* Remember position */
@@ -456,8 +458,9 @@ void monspell_shoot_dice(monster_race *r_ptr, int *dd, int *ds)
     }
 
     /* When full blows, use a first damage */
-    if (n == max_blows)
+    if (n == max_blows) {
         p = 0;
+    }
 
     if (p < 0) {
         (*dd) = 0;
@@ -476,13 +479,13 @@ void monspell_shoot_dice(monster_race *r_ptr, int *dd, int *ds)
  * @param TYPE  DAM_MAXで最大値を返し、DAM_MINで最小値を返す。DAM_ROLLはダイスを振って値を決定する。
  * @return 攻撃呪文のダメージを返す。攻撃呪文以外は-1を返す。
  */
-HIT_POINT monspell_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONSTER_IDX m_idx, int TYPE)
+int monspell_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONSTER_IDX m_idx, int TYPE)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    monster_type *m_ptr = &floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *m_ptr = &floor_ptr->m_list[m_idx];
+    auto *r_ptr = &r_info[m_ptr->r_idx];
     DEPTH rlev = monster_level_idx(floor_ptr, m_idx);
-    HIT_POINT hp = (TYPE == DAM_ROLL) ? m_ptr->hp : m_ptr->max_maxhp;
+    int hp = (TYPE == DAM_ROLL) ? m_ptr->hp : m_ptr->max_maxhp;
     int shoot_dd, shoot_ds;
 
     monspell_shoot_dice(r_ptr, &shoot_dd, &shoot_ds);
@@ -497,12 +500,12 @@ HIT_POINT monspell_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MO
  * @param TYPE  DAM_MAXで最大値を返し、DAM_MINで最小値を返す。DAM_ROLLはダイスを振って値を決定する。
  * @return 攻撃呪文のダメージを返す。攻撃呪文以外は-1を返す。
  */
-HIT_POINT monspell_race_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONRACE_IDX r_idx, int TYPE)
+int monspell_race_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONRACE_IDX r_idx, int TYPE)
 {
-    monster_race *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &r_info[r_idx];
     DEPTH rlev = ((r_ptr->level >= 1) ? r_ptr->level : 1);
     bool powerful = any_bits(r_ptr->flags2, RF2_POWERFUL);
-    HIT_POINT hp = r_ptr->hdice * (ironman_nightmare ? 2 : 1) * r_ptr->hside;
+    int hp = r_ptr->hdice * (ironman_nightmare ? 2 : 1) * r_ptr->hside;
     int shoot_dd, shoot_ds;
 
     monspell_shoot_dice(r_ptr, &shoot_dd, &shoot_ds);
@@ -517,16 +520,17 @@ HIT_POINT monspell_race_damage(PlayerType *player_ptr, MonsterAbilityType ms_typ
  * @param TYPE  DAM_MAXで最大値を返し、DAM_MINで最小値を返す。DAM_ROLLはダイスを振って値を決定する。
  * @return 攻撃呪文のダメージを返す。攻撃呪文以外は-1を返す。
  */
-HIT_POINT monspell_bluemage_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, PLAYER_LEVEL plev, int TYPE)
+int monspell_bluemage_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, PLAYER_LEVEL plev, int TYPE)
 {
     int hp = player_ptr->chp;
     int shoot_dd = 1, shoot_ds = 1, shoot_base = 0;
-    object_type *o_ptr = nullptr;
+    ObjectType *o_ptr = nullptr;
 
-    if (has_melee_weapon(player_ptr, INVEN_MAIN_HAND))
+    if (has_melee_weapon(player_ptr, INVEN_MAIN_HAND)) {
         o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
-    else if (has_melee_weapon(player_ptr, INVEN_SUB_HAND))
+    } else if (has_melee_weapon(player_ptr, INVEN_SUB_HAND)) {
         o_ptr = &player_ptr->inventory_list[INVEN_SUB_HAND];
+    }
 
     if (o_ptr) {
         shoot_dd = o_ptr->dd;

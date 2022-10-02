@@ -26,7 +26,7 @@
  */
 static cfg_key make_cfg_key(int type, int val)
 {
-    return ((type << 16) | (val & 0xffff));
+    return (type << 16) | (val & 0xffff);
 }
 
 /*!
@@ -64,7 +64,7 @@ concptr CfgData::get_rand(int key1_type, int key2_val)
 bool CfgData::has_key(int key1_type, int key2_val)
 {
     auto ite = map->find(make_cfg_key(key1_type, key2_val));
-    return (ite != map->end());
+    return ite != map->end();
 }
 
 void CfgData::insert(int key1_type, int key2_val, cfg_values *value)
@@ -116,8 +116,9 @@ CfgData *CfgReader::read_sections(std::initializer_list<cfg_section> sections)
                 const int num = tokenize_whitespace(buf, SAMPLE_MAX, tokens);
                 for (int j = 0; j < num; j++) {
                     path_build(path, MAIN_WIN_MAX_PATH, dir, tokens[j]);
-                    if (check_file(path))
+                    if (check_file(path)) {
                         filenames->push_back(string_make(tokens[j]));
+                    }
                 }
                 if (filenames->empty()) {
                     delete filenames;

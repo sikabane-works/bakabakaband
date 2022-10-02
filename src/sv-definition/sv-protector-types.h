@@ -2,7 +2,7 @@
 
 /* The "sval" codes for TV_SHIELD */
 enum sv_shield_type {
-	SV_SMALL_LEATHER_SHIELD = 2,
+    SV_SMALL_LEATHER_SHIELD = 2,
     SV_SMALL_METAL_SHIELD = 3,
     SV_LARGE_LEATHER_SHIELD = 4,
     SV_LARGE_METAL_SHIELD = 5,
@@ -21,6 +21,7 @@ enum sv_helm_type {
     SV_STEEL_HELM = 6,
     SV_DRAGON_HELM = 7,
     SV_KABUTO = 8, /* 7 */
+    SV_SCOUTER = 22,
 };
 
 /* The "sval" codes for TV_CROWN */

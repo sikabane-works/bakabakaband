@@ -81,7 +81,7 @@ static int damage;
  * @param power ものまねの効力の種類
  * @param dam ものまねの威力
  */
-static void mane_info(PlayerType *player_ptr, char *p, MonsterAbilityType power, HIT_POINT dam)
+static void mane_info(PlayerType *player_ptr, char *p, MonsterAbilityType power, int dam)
 {
     PLAYER_LEVEL plev = player_ptr->lev;
 
@@ -212,7 +212,7 @@ static int get_mane_power(PlayerType *player_ptr, int *sn, bool baigaesi)
 
                     chance += player_ptr->to_m_chance;
 
-                    if (player_ptr->inventory_list[INVEN_NECK].name1 == ART_GOGO_PENDANT) {
+                    if (player_ptr->inventory_list[INVEN_NECK].fixed_artifact_idx == ART_GOGO_PENDANT) {
                         chance -= 10;
                     }
 
@@ -220,8 +220,9 @@ static int get_mane_power(PlayerType *player_ptr, int *sn, bool baigaesi)
                     minfail = adj_mag_fail[player_ptr->stat_index[spell.use_stat]];
 
                     /* Minimum failure rate */
-                    if (chance < minfail)
+                    if (chance < minfail) {
                         chance = minfail;
+                    }
 
                     auto player_stun = player_ptr->effects()->stun();
                     chance += player_stun->get_magic_chance_penalty();
@@ -971,17 +972,17 @@ static bool use_mane(PlayerType *player_ptr, MonsterAbilityType spell)
         m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx];
         r_ptr = &r_info[m_ptr->r_idx];
         monster_desc(player_ptr, m_name, m_ptr, 0);
-        if (r_ptr->flagsr & RFR_RES_TELE) {
-            if ((r_ptr->flags1 & (RF1_UNIQUE)) || (r_ptr->flagsr & RFR_RES_ALL)) {
+        if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_TELEPORT)) {
+            if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
                 if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-                    r_ptr->r_flagsr |= RFR_RES_TELE;
+                    r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_TELEPORT);
                 }
                 msg_format(_("%sには効果がなかった！", "%s is unaffected!"), m_name);
 
                 break;
             } else if (r_ptr->level > randint1(100)) {
                 if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-                    r_ptr->r_flagsr |= RFR_RES_TELE;
+                    r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_TELEPORT);
                 }
                 msg_format(_("%sには耐性がある！", "%s resists!"), m_name);
 

@@ -11,7 +11,6 @@
 #include "system/angband.h"
 #include "system/system-variables.h"
 #include "util/flag-group.h"
-#include <map>
 
 #include <array>
 #include <map>
@@ -39,10 +38,11 @@ enum class INCIDENT {
 
 enum class ItemKindType : short;
 enum class PlayerSkillKindType;
+enum class MimicKindType;
 enum class MonsterAbilityType;
 
 struct floor_type;
-struct object_type;
+class ObjectType;
 class TimedEffects;
 class PlayerType {
 public:
@@ -97,8 +97,8 @@ public:
     POSITION wilderness_y{};
     bool wild_mode{};
 
-    HIT_POINT mhp{}; /* Max hit pts */
-    HIT_POINT chp{}; /* Cur hit pts */
+    int mhp{}; /* Max hit pts */
+    int chp{}; /* Cur hit pts */
     uint32_t chp_frac{}; /* Cur hit frac (times 2^16) */
     PERCENTAGE mutant_regenerate_mod{};
 
@@ -121,7 +121,6 @@ public:
     TIME_EFFECT slow{}; /* Timed -- Slow */
     TIME_EFFECT blind{}; /* Timed -- Blindness */
     TIME_EFFECT paralyzed{}; /* Timed -- Paralysis */
-    TIME_EFFECT confused{}; /* Timed -- Confusion */
     TIME_EFFECT afraid{}; /* Timed -- Fear */
     TIME_EFFECT hallucinated{}; /* Timed -- Hallucination */
     TIME_EFFECT poisoned{}; /* Timed -- Poisoned */
@@ -159,7 +158,7 @@ public:
     TIME_EFFECT magicdef{};
     TIME_EFFECT tim_res_nether{}; /* Timed -- Nether resistance */
     TIME_EFFECT tim_res_time{}; /* Timed -- Time resistance */
-    int16_t mimic_form{}; // @todo 後でPlayerRaceTypeに差し替える.
+    MimicKindType mimic_form{}; // @todo 後でPlayerRaceTypeに差し替える.
     TIME_EFFECT tim_mimic{};
     TIME_EFFECT tim_sh_fire{};
     TIME_EFFECT tim_sh_holy{};
@@ -220,7 +219,7 @@ public:
 
     ClassSpecificData class_specific_data;
 
-    HIT_POINT player_hp[PY_MAX_LEVEL]{};
+    int player_hp[PY_MAX_LEVEL]{};
     char died_from[MAX_MONSTER_NAME]{}; /* What killed the player */
     concptr last_message{}; /* Last message on death or retirement */
     char history[4][60]{}; /* Textual "history" for the Player */
@@ -258,7 +257,7 @@ public:
     byte feeling{}; /* Most recent dungeon feeling */
     int32_t feeling_turn{}; /* The turn of the last dungeon feeling */
 
-    std::shared_ptr<object_type[]> inventory_list{}; /* The player's inventory */
+    std::shared_ptr<ObjectType[]> inventory_list{}; /* The player's inventory */
     int16_t inven_cnt{}; /* Number of items in inventory */
     int16_t equip_cnt{}; /* Number of items in equipment */
 
@@ -389,7 +388,7 @@ public:
 
     HIT_PROB dis_to_h[2]{}; /*!< 判明している現在の表記上の近接武器命中修正値 /  Known bonus to hit (wield) */
     HIT_PROB dis_to_h_b{}; /*!< 判明している現在の表記上の射撃武器命中修正値 / Known bonus to hit (bow) */
-    HIT_POINT dis_to_d[2]{}; /*!< 判明している現在の表記上の近接武器ダメージ修正値 / Known bonus to dam (wield) */
+    int dis_to_d[2]{}; /*!< 判明している現在の表記上の近接武器ダメージ修正値 / Known bonus to dam (wield) */
     ARMOUR_CLASS dis_to_a{}; /*!< 判明している現在の表記上の装備AC修正値 / Known bonus to ac */
     ARMOUR_CLASS dis_ac{}; /*!< 判明している現在の表記上の装備AC基礎値 / Known base ac */
 
@@ -442,6 +441,7 @@ public:
     char base_name[32]{}; /*!< Stripped version of "player_name" */
 
     std::shared_ptr<TimedEffects> effects() const;
+    bool is_fully_healthy() const;
 
 private:
     std::shared_ptr<TimedEffects> timed_effects;

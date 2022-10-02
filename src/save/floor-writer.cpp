@@ -25,7 +25,7 @@
  */
 void wr_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!sf_ptr) {
         wr_s16b((int16_t)floor_ptr->dun_level);
     } else {
@@ -60,20 +60,20 @@ void wr_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     std::vector<grid_template_type> templates;
     for (int y = 0; y < floor_ptr->height; y++) {
         for (int x = 0; x < floor_ptr->width; x++) {
-            grid_type *g_ptr = &floor_ptr->grid_array[y][x];
+            auto *g_ptr = &floor_ptr->grid_array[y][x];
             uint i;
             for (i = 0; i < templates.size(); i++) {
-                if (templates[i].info == g_ptr->info && templates[i].feat == g_ptr->feat && templates[i].mimic == g_ptr->mimic
-                    && templates[i].special == g_ptr->special) {
+                if (templates[i].info == g_ptr->info && templates[i].feat == g_ptr->feat && templates[i].mimic == g_ptr->mimic && templates[i].special == g_ptr->special) {
                     templates[i].occurrence++;
                     break;
                 }
             }
 
-            if (i < templates.size())
+            if (i < templates.size()) {
                 continue;
+            }
 
-            templates.push_back({g_ptr->info, g_ptr->feat, g_ptr->mimic, g_ptr->special, 1});
+            templates.push_back({ g_ptr->info, g_ptr->feat, g_ptr->mimic, g_ptr->special, 1 });
         }
     }
 
@@ -93,12 +93,12 @@ void wr_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     uint16_t prev_u16b = 0;
     for (int y = 0; y < floor_ptr->height; y++) {
         for (int x = 0; x < floor_ptr->width; x++) {
-            grid_type *g_ptr = &floor_ptr->grid_array[y][x];
+            auto *g_ptr = &floor_ptr->grid_array[y][x];
             uint i;
             for (i = 0; i < templates.size(); i++) {
-                if (templates[i].info == g_ptr->info && templates[i].feat == g_ptr->feat && templates[i].mimic == g_ptr->mimic
-                    && templates[i].special == g_ptr->special)
+                if (templates[i].info == g_ptr->info && templates[i].feat == g_ptr->feat && templates[i].mimic == g_ptr->mimic && templates[i].special == g_ptr->special) {
                     break;
+                }
             }
 
             uint16_t tmp16u = (uint16_t)i;
@@ -132,14 +132,14 @@ void wr_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     /*** Dump objects ***/
     wr_u16b(floor_ptr->o_max);
     for (int i = 1; i < floor_ptr->o_max; i++) {
-        object_type *o_ptr = &floor_ptr->o_list[i];
+        auto *o_ptr = &floor_ptr->o_list[i];
         wr_item(o_ptr);
     }
 
     /*** Dump the monsters ***/
     wr_u16b(floor_ptr->m_max);
     for (int i = 1; i < floor_ptr->m_max; i++) {
-        monster_type *m_ptr = &floor_ptr->m_list[i];
+        auto *m_ptr = &floor_ptr->m_list[i];
         wr_monster(m_ptr);
     }
 }
@@ -181,13 +181,15 @@ bool wr_dungeon(PlayerType *player_ptr)
 
     saved_floor_type *cur_sf_ptr;
     cur_sf_ptr = get_sf_ptr(player_ptr->floor_id);
-    if (!save_floor(player_ptr, cur_sf_ptr, SLF_SECOND))
+    if (!save_floor(player_ptr, cur_sf_ptr, SLF_SECOND)) {
         return false;
+    }
 
     for (int i = 0; i < MAX_SAVED_FLOORS; i++) {
         saved_floor_type *sf_ptr = &saved_floors[i];
-        if (!sf_ptr->floor_id)
+        if (!sf_ptr->floor_id) {
             continue;
+        }
         if (!load_floor(player_ptr, sf_ptr, (SLF_SECOND | SLF_NO_KILL))) {
             wr_byte(1);
             continue;
@@ -261,11 +263,13 @@ bool save_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mode
         saving_savefile = angband_fopen(floor_savefile, "wb");
         safe_setuid_drop();
         if (saving_savefile) {
-            if (save_floor_aux(player_ptr, sf_ptr))
+            if (save_floor_aux(player_ptr, sf_ptr)) {
                 is_save_successful = true;
+            }
 
-            if (angband_fclose(saving_savefile))
+            if (angband_fclose(saving_savefile)) {
                 is_save_successful = false;
+            }
         }
 
         if (!is_save_successful) {

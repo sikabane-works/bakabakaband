@@ -22,20 +22,24 @@
 errr type_string(concptr str, uint len)
 {
     errr err = 0;
-    term_type *old = Term;
-    if (!str)
+    term_type *old = game_term;
+    if (!str) {
         return -1;
-    if (!len)
+    }
+    if (!len) {
         len = strlen(str);
+    }
 
     term_activate(term_screen);
     for (concptr s = str; s < str + len; s++) {
-        if (*s == '\0')
+        if (*s == '\0') {
             break;
+        }
 
         err = term_key_push(*s);
-        if (err)
+        if (err) {
             break;
+        }
     }
 
     term_activate(old);

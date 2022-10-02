@@ -17,6 +17,7 @@
 #include "io/inet.h"
 #include "io/input-key-acceptor.h"
 #include "mind/mind-elementalist.h"
+#include "player-base/player-class.h"
 #include "player-info/class-info.h"
 #include "player-info/race-info.h"
 #include "player/player-personality.h"
@@ -55,12 +56,12 @@ concptr screen_dump = nullptr;
 /*
  * simple buffer library
  */
-typedef struct {
+struct BUF {
     size_t max_size;
     size_t size;
     size_t read_head;
     char *data;
-} BUF;
+};
 
 #define BUFSIZE (65536) /*!< スコアサーバ転送バッファサイズ */
 
@@ -72,8 +73,9 @@ static BUF *buf_new(void)
 {
     BUF *p;
     p = static_cast<BUF *>(malloc(sizeof(BUF)));
-    if (!p)
+    if (!p) {
         return nullptr;
+    }
 
     p->size = 0;
     p->max_size = BUFSIZE;
@@ -107,8 +109,9 @@ static int buf_append(BUF *buf, concptr data, size_t size)
 {
     while (buf->size + size > buf->max_size) {
         char *tmp;
-        if ((tmp = static_cast<char *>(malloc(buf->max_size * 2))) == nullptr)
+        if ((tmp = static_cast<char *>(malloc(buf->max_size * 2))) == nullptr) {
             return -1;
+        }
 
         memcpy(tmp, buf->data, buf->max_size);
         free(buf->data);
@@ -143,8 +146,9 @@ static int buf_sprintf(BUF *buf, concptr fmt, ...)
 #endif
     va_end(ap);
 
-    if (ret < 0)
+    if (ret < 0) {
         return -1;
+    }
 
     ret = buf_append(buf, tmpbuf, strlen(tmpbuf));
     return ret;
@@ -293,8 +297,9 @@ concptr make_screen_dump(PlayerType *player_ptr)
     /* Alloc buffer */
     BUF *screen_buf;
     screen_buf = buf_new();
-    if (screen_buf == nullptr)
+    if (screen_buf == nullptr) {
         return nullptr;
+    }
 
     bool old_use_graphics = use_graphics;
     if (old_use_graphics) {
@@ -308,18 +313,20 @@ concptr make_screen_dump(PlayerType *player_ptr)
         handle_stuff(player_ptr);
     }
 
-    for (int i = 0; html_head[i]; i++)
+    for (int i = 0; html_head[i]; i++) {
         buf_sprintf(screen_buf, html_head[i]);
+    }
 
     /* Dump the screen */
     for (int y = 0; y < hgt; y++) {
         /* Start the row */
-        if (y != 0)
+        if (y != 0) {
             buf_sprintf(screen_buf, "\n");
+        }
 
         /* Dump each row */
         TERM_COLOR a = 0, old_a = 0;
-        SYMBOL_CODE c = ' ';
+        auto c = ' ';
         for (int x = 0; x < wid - 1; x++) {
             int rv, gv, bv;
             concptr cc = nullptr;
@@ -361,17 +368,19 @@ concptr make_screen_dump(PlayerType *player_ptr)
                 old_a = a;
             }
 
-            if (cc)
+            if (cc) {
                 buf_sprintf(screen_buf, "%s", cc);
-            else
+            } else {
                 buf_sprintf(screen_buf, "%c", c);
+            }
         }
     }
 
     buf_sprintf(screen_buf, "</font>");
 
-    for (int i = 0; html_foot[i]; i++)
+    for (int i = 0; html_foot[i]; i++) {
         buf_sprintf(screen_buf, html_foot[i]);
+    }
 
     /* Screen dump size is too big ? */
     concptr ret;
@@ -387,8 +396,9 @@ concptr make_screen_dump(PlayerType *player_ptr)
     /* Free buffer */
     buf_delete(screen_buf);
 
-    if (!old_use_graphics)
+    if (!old_use_graphics) {
         return ret;
+    }
 
     use_graphics = true;
     reset_visuals(player_ptr);
@@ -415,7 +425,7 @@ bool report_score(PlayerType *player_ptr)
     sprintf(personality_desc, "%s ", ap_ptr->title);
 #endif
 
-    auto realm1_name = player_ptr->pclass == PlayerClassType::ELEMENTALIST ? get_element_title(player_ptr->element) : realm_names[player_ptr->realm1];
+    auto realm1_name = PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST) ? get_element_title(player_ptr->element) : realm_names[player_ptr->realm1];
     buf_sprintf(score, "name: %s\n", player_ptr->name);
     buf_sprintf(score, "version: %s\n", title);
     buf_sprintf(score, "score: %d\n", calc_score(player_ptr));

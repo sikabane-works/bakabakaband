@@ -1,17 +1,20 @@
 ﻿#pragma once
 
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
+#include "alliance/alliance.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-behavior-flags.h"
+#include "monster-race/race-flags-resistance.h"
+#include "monster-race/race-kind-flags.h"
+#include "monster-race/race-resistance-mask.h"
 #include "monster-race/race-visual-flags.h"
+#include "room/room-types.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
-#include "room/room-types.h"
-#include "alliance/alliance.h"
 
 #define DUNGEON_FEAT_PROB_NUM 3
 
@@ -35,12 +38,12 @@
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
 #define DUNGEON_VOID_TERRITORY 23
-#define DUNGEON_MAX 26
+#define DUNGEON_MAX 28
 
-typedef struct feat_prob {
+struct feat_prob {
     FEAT_IDX feat{}; /* Feature tile */
     PERCENTAGE percent{}; /* Chance of type */
-} feat_prob;
+};
 
 /* A structure for the != dungeon types */
 struct dungeon_type {
@@ -77,11 +80,12 @@ struct dungeon_type {
     BIT_FLAGS mflags7{};
     BIT_FLAGS mflags8{};
     BIT_FLAGS mflags9{};
-    BIT_FLAGS mflagsr{};
 
     EnumClassFlagGroup<MonsterAbilityType> mon_ability_flags;
     EnumClassFlagGroup<MonsterBehaviorType> mon_behavior_flags;
     EnumClassFlagGroup<MonsterVisualType> mon_visual_flags;
+    EnumClassFlagGroup<MonsterKindType> mon_kind_flags;
+    EnumClassFlagGroup<MonsterResistanceType> mon_resistance_flags;
 
     char r_char[5]{}; /* Monster race allowed */
     KIND_OBJECT_IDX final_object{}; /* The object you'll find at the bottom */
@@ -93,10 +97,12 @@ struct dungeon_type {
     int obj_great{};
     int obj_good{};
 
-	int monster_rate = 100; //!< トラップ生成比率
+    int monster_rate = 100; //!< トラップ生成比率
     int trap_rate = 100; //!< トラップ生成比率
 
-	std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
+    std::vector<std::tuple<int, int, int>> fixed_room_list;
+
+    std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
     AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
 };
 

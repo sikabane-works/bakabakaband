@@ -15,6 +15,7 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-flags.h"
+#include "player-base/player-class.h"
 #include "realm/realm-hex-numbers.h"
 #include "spell-realm/spells-hex.h"
 #include "sv-definition/sv-weapon-types.h"
@@ -34,7 +35,7 @@
  * @param force 理力特別計算フラグ
  * @return ダメージ期待値
  */
-static HIT_POINT calc_slaydam(HIT_POINT dam, int mult, int div, bool force)
+static int calc_slaydam(int dam, int mult, int div, bool force)
 {
     int tmp;
     if (force) {
@@ -116,7 +117,7 @@ static void show_weapon_dmg(int r, int c, int mindice, int maxdice, int blows, i
  * Only accurate for the current weapon, because it includes\n
  * the current number of blows for the player.\n
  */
-static void compare_weapon_aux(PlayerType *player_ptr, object_type *o_ptr, int col, int r)
+static void compare_weapon_aux(PlayerType *player_ptr, ObjectType *o_ptr, int col, int r)
 {
     int blow = player_ptr->num_blow[0];
     bool force = false;
@@ -134,15 +135,16 @@ static void compare_weapon_aux(PlayerType *player_ptr, object_type *o_ptr, int c
     int dmg_bonus = o_ptr->to_d + player_ptr->to_d[0];
 
     auto flgs = object_flags(o_ptr);
-    if ((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_POISON_NEEDLE))
+    if ((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_POISON_NEEDLE)) {
         dokubari = true;
+    }
 
     bool impact = flgs.has(TR_IMPACT) || (player_ptr->impact != 0);
     mindam = calc_expect_crit(player_ptr, o_ptr->weight, o_ptr->to_h, mindice, player_ptr->to_h[0], dokubari, impact);
     maxdam = calc_expect_crit(player_ptr, o_ptr->weight, o_ptr->to_h, maxdice, player_ptr->to_h[0], dokubari, impact);
     show_weapon_dmg(r++, col, mindam, maxdam, blow, dmg_bonus, _("会心:", "Critical:"), TERM_L_RED);
     if ((flgs.has(TR_VORPAL) || SpellHex(player_ptr).is_spelling_specific(HEX_RUNESWORD))) {
-        if ((o_ptr->name1 == ART_VORPAL_BLADE) || (o_ptr->name1 == ART_CHAINSWORD)) {
+        if ((o_ptr->fixed_artifact_idx == ART_VORPAL_BLADE) || (o_ptr->fixed_artifact_idx == ART_CHAINSWORD)) {
             vorpal_mult = 5;
             vorpal_div = 3;
         } else {
@@ -155,7 +157,7 @@ static void compare_weapon_aux(PlayerType *player_ptr, object_type *o_ptr, int c
         show_weapon_dmg(r++, col, mindam, maxdam, blow, dmg_bonus, _("切れ味:", "Vorpal:"), TERM_L_RED);
     }
 
-    if ((player_ptr->pclass != PlayerClassType::SAMURAI) && flgs.has(TR_FORCE_WEAPON) && (player_ptr->csp > (o_ptr->dd * o_ptr->ds / 5))) {
+    if (!PlayerClass(player_ptr).equals(PlayerClassType::SAMURAI) && flgs.has(TR_FORCE_WEAPON) && (player_ptr->csp > (o_ptr->dd * o_ptr->ds / 5))) {
         force = true;
 
         mindam = calc_expect_dice(player_ptr, mindice, 1, 1, force, o_ptr->weight, o_ptr->to_h, player_ptr->to_h[0], dokubari, impact, vorpal_mult, vorpal_div);
@@ -306,7 +308,7 @@ static void compare_weapon_aux(PlayerType *player_ptr, object_type *o_ptr, int c
  * Only accurate for the current weapon, because it includes
  * various info about the player's +to_dam and number of blows.
  */
-static void list_weapon(PlayerType *player_ptr, object_type *o_ptr, TERM_LEN row, TERM_LEN col)
+static void list_weapon(PlayerType *player_ptr, ObjectType *o_ptr, TERM_LEN row, TERM_LEN col)
 {
     GAME_TEXT o_name[MAX_NLEN];
     GAME_TEXT tmp_str[80];
@@ -347,9 +349,9 @@ static void list_weapon(PlayerType *player_ptr, object_type *o_ptr, TERM_LEN row
  */
 PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
 {
-    object_type *o_ptr[2];
-    object_type orig_weapon;
-    object_type *i_ptr;
+    ObjectType *o_ptr[2];
+    ObjectType orig_weapon;
+    ObjectType *i_ptr;
     TERM_LEN row = 2;
     TERM_LEN wid = 38, mgn = 2;
     bool old_character_xtra = w_ptr->character_xtra;
@@ -366,7 +368,7 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
     concptr s = _("比べるものがありません。", "You have nothing to compare.");
 
     OBJECT_IDX item;
-    o_ptr[0] = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&object_type::is_orthodox_melee_weapons));
+    o_ptr[0] = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ObjectType::is_orthodox_melee_weapons));
     if (!o_ptr[0]) {
         screen_load();
         return 0;
@@ -380,8 +382,9 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
         w_ptr->character_xtra = true;
         for (int i = 0; i < n; i++) {
             int col = (wid * i + mgn);
-            if (o_ptr[i] != i_ptr)
+            if (o_ptr[i] != i_ptr) {
                 i_ptr->copy_from(o_ptr[i]);
+            }
 
             player_ptr->update |= PU_BONUS;
             handle_stuff(player_ptr);
@@ -407,8 +410,9 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
 
         flush();
         ch = inkey();
-        if (ch != 's')
+        if (ch != 's') {
             break;
+        }
 
         if (total + cost > player_ptr->au) {
             msg_print(_("お金が足りません！", "You don't have enough money!"));
@@ -419,9 +423,10 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
         q = _("第二の武器は？", "What is your second weapon? ");
         s = _("比べるものがありません。", "You have nothing to compare.");
         OBJECT_IDX item2;
-        object_type *i2_ptr = choose_object(player_ptr, &item2, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&object_type::is_orthodox_melee_weapons));
-        if (!i2_ptr)
+        ObjectType *i2_ptr = choose_object(player_ptr, &item2, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ObjectType::is_orthodox_melee_weapons));
+        if (!i2_ptr) {
             continue;
+        }
 
         if (i2_ptr == o_ptr[0] || (n == 2 && i2_ptr == o_ptr[1])) {
             msg_print(_("表示中の武器は選べません！", "Select a different weapon than those displayed."));

@@ -35,9 +35,11 @@
  */
 static concptr *spoiler_flag_aux(const TrFlags &art_flags, const flag_desc *flag_ptr, concptr *desc_ptr, const int n_elmnts)
 {
-    for (int i = 0; i < n_elmnts; ++i)
-        if (art_flags.has(flag_ptr[i].flag))
+    for (int i = 0; i < n_elmnts; ++i) {
+        if (art_flags.has(flag_ptr[i].flag)) {
             *desc_ptr++ = flag_ptr[i].desc;
+        }
+    }
 
     return desc_ptr;
 }
@@ -48,7 +50,7 @@ static concptr *spoiler_flag_aux(const TrFlags &art_flags, const flag_desc *flag
  * @param o_ptr 記述を得たいオブジェクトの参照ポインタ
  * @param desc_ptr 記述内容を返すための文字列参照ポインタ
  */
-static void analyze_general(PlayerType *player_ptr, object_type *o_ptr, char *desc_ptr)
+static void analyze_general(PlayerType *player_ptr, ObjectType *o_ptr, char *desc_ptr)
 {
     describe_flavor(player_ptr, desc_ptr, o_ptr, OD_NAME_AND_ENCHANT | OD_STORE | OD_DEBUG);
 }
@@ -60,7 +62,7 @@ static void analyze_general(PlayerType *player_ptr, object_type *o_ptr, char *de
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param pi_ptr pval修正構造体の参照ポインタ
  */
-static void analyze_pval(object_type *o_ptr, pval_info_type *pi_ptr)
+static void analyze_pval(ObjectType *o_ptr, pval_info_type *pi_ptr)
 {
     concptr *affects_list;
     if (!o_ptr->pval) {
@@ -87,7 +89,7 @@ static void analyze_pval(object_type *o_ptr, pval_info_type *pi_ptr)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param slay_list 種族スレイ構造体の参照ポインタ
  */
-static void analyze_slay(object_type *o_ptr, concptr *slay_list)
+static void analyze_slay(ObjectType *o_ptr, concptr *slay_list)
 {
     auto flgs = object_flags(o_ptr);
     slay_list = spoiler_flag_aux(flgs, slay_flags_desc, slay_list, N_ELEMENTS(slay_flags_desc));
@@ -100,7 +102,7 @@ static void analyze_slay(object_type *o_ptr, concptr *slay_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param brand_list 属性ブランド構造体の参照ポインタ
  */
-static void analyze_brand(object_type *o_ptr, concptr *brand_list)
+static void analyze_brand(ObjectType *o_ptr, concptr *brand_list)
 {
     auto flgs = object_flags(o_ptr);
     brand_list = spoiler_flag_aux(flgs, brand_flags_desc, brand_list, N_ELEMENTS(brand_flags_desc));
@@ -113,7 +115,7 @@ static void analyze_brand(object_type *o_ptr, concptr *brand_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param resist_list 通常耐性構造体の参照ポインタ
  */
-static void analyze_resist(object_type *o_ptr, concptr *resist_list)
+static void analyze_resist(ObjectType *o_ptr, concptr *resist_list)
 {
     auto flgs = object_flags(o_ptr);
     resist_list = spoiler_flag_aux(flgs, resist_flags_desc, resist_list, N_ELEMENTS(resist_flags_desc));
@@ -126,7 +128,7 @@ static void analyze_resist(object_type *o_ptr, concptr *resist_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param immune_list 免疫構造体の参照ポインタ
  */
-static void analyze_immune(object_type *o_ptr, concptr *immune_list)
+static void analyze_immune(ObjectType *o_ptr, concptr *immune_list)
 {
     auto flgs = object_flags(o_ptr);
     immune_list = spoiler_flag_aux(flgs, immune_flags_desc, immune_list, N_ELEMENTS(immune_flags_desc));
@@ -139,7 +141,7 @@ static void analyze_immune(object_type *o_ptr, concptr *immune_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param immune_list 弱点構造体の参照ポインタ
  */
-static void analyze_vulnerable(object_type *o_ptr, concptr *vulnerable_list)
+static void analyze_vulnerable(ObjectType *o_ptr, concptr *vulnerable_list)
 {
     auto flgs = object_flags(o_ptr);
     vulnerable_list = spoiler_flag_aux(flgs, vulnerable_flags_desc, vulnerable_list, N_ELEMENTS(vulnerable_flags_desc));
@@ -152,7 +154,7 @@ static void analyze_vulnerable(object_type *o_ptr, concptr *vulnerable_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param sustain_list 維持特性構造体の参照ポインタ
  */
-static void analyze_sustains(object_type *o_ptr, concptr *sustain_list)
+static void analyze_sustains(ObjectType *o_ptr, concptr *sustain_list)
 {
     auto flgs = object_flags(o_ptr);
     if (flgs.has_all_of(EnumRange(TR_SUST_STR, TR_SUST_CHR))) {
@@ -171,7 +173,7 @@ static void analyze_sustains(object_type *o_ptr, concptr *sustain_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param misc_list その他の特性構造体の参照ポインタ
  */
-static void analyze_misc_magic(object_type *o_ptr, concptr *misc_list)
+static void analyze_misc_magic(ObjectType *o_ptr, concptr *misc_list)
 {
     char desc[256];
 
@@ -179,56 +181,71 @@ static void analyze_misc_magic(object_type *o_ptr, concptr *misc_list)
     misc_list = spoiler_flag_aux(flgs, misc_flags2_desc, misc_list, N_ELEMENTS(misc_flags2_desc));
     misc_list = spoiler_flag_aux(flgs, misc_flags3_desc, misc_list, N_ELEMENTS(misc_flags3_desc));
     POSITION rad = 0;
-    if (flgs.has(TR_LITE_1))
+    if (flgs.has(TR_LITE_1)) {
         rad += 1;
-
-    if (flgs.has(TR_LITE_2))
-        rad += 2;
-
-    if (flgs.has(TR_LITE_3))
-        rad += 3;
-
-    if (flgs.has(TR_LITE_M1))
-        rad -= 1;
-
-    if (flgs.has(TR_LITE_M2))
-        rad -= 2;
-
-    if (flgs.has(TR_LITE_M3))
-        rad -= 3;
-
-    if (o_ptr->name2 == EGO_LITE_SHINE)
-        rad++;
-
-    if (flgs.has(TR_LITE_FUEL)) {
-        if (rad > 0)
-            sprintf(desc, _("それは燃料補給によって明かり(半径 %d)を授ける。", "It provides light (radius %d) when fueled."), (int)rad);
-    } else {
-        if (rad > 0)
-            sprintf(desc, _("永久光源(半径 %d)", "Permanent Light(radius %d)"), (int)rad);
-
-        if (rad < 0)
-            sprintf(desc, _("永久光源(半径-%d)。", "Permanent Light(radius -%d)"), (int)-rad);
     }
 
-    if (rad != 0)
+    if (flgs.has(TR_LITE_2)) {
+        rad += 2;
+    }
+
+    if (flgs.has(TR_LITE_3)) {
+        rad += 3;
+    }
+
+    if (flgs.has(TR_LITE_M1)) {
+        rad -= 1;
+    }
+
+    if (flgs.has(TR_LITE_M2)) {
+        rad -= 2;
+    }
+
+    if (flgs.has(TR_LITE_M3)) {
+        rad -= 3;
+    }
+
+    if (o_ptr->ego_idx == EgoType::LITE_SHINE) {
+        rad++;
+    }
+
+    if (flgs.has(TR_LITE_FUEL)) {
+        if (rad > 0) {
+            sprintf(desc, _("それは燃料補給によって明かり(半径 %d)を授ける。", "It provides light (radius %d) when fueled."), (int)rad);
+        }
+    } else {
+        if (rad > 0) {
+            sprintf(desc, _("永久光源(半径 %d)", "Permanent Light(radius %d)"), (int)rad);
+        }
+
+        if (rad < 0) {
+            sprintf(desc, _("永久光源(半径-%d)。", "Permanent Light(radius -%d)"), (int)-rad);
+        }
+    }
+
+    if (rad != 0) {
         *misc_list++ = quark_str(quark_add(desc));
+    }
 
-    if (flgs.has(TR_TY_CURSE))
+    if (flgs.has(TR_TY_CURSE)) {
         *misc_list++ = _("太古の怨念", "Ancient Curse");
+    }
 
-    if (o_ptr->curse_flags.has(CurseTraitType::PERMA_CURSE))
+    if (o_ptr->curse_flags.has(CurseTraitType::PERMA_CURSE)) {
         *misc_list++ = _("永遠の呪い", "Permanently Cursed");
-    else if (o_ptr->curse_flags.has(CurseTraitType::HEAVY_CURSE))
+    } else if (o_ptr->curse_flags.has(CurseTraitType::HEAVY_CURSE)) {
         *misc_list++ = _("強力な呪い", "Heavily Cursed");
-    else if (o_ptr->curse_flags.has(CurseTraitType::CURSED))
+    } else if (o_ptr->curse_flags.has(CurseTraitType::CURSED)) {
         *misc_list++ = _("呪い", "Cursed");
+    }
 
-    if (flgs.has(TR_ADD_L_CURSE))
+    if (flgs.has(TR_ADD_L_CURSE)) {
         *misc_list++ = _("呪いを増やす", "Cursing");
+    }
 
-    if (flgs.has(TR_ADD_H_CURSE))
+    if (flgs.has(TR_ADD_H_CURSE)) {
         *misc_list++ = _("強力な呪いを増やす", "Heavily Cursing");
+    }
 
     *misc_list = nullptr;
 }
@@ -239,27 +256,31 @@ static void analyze_misc_magic(object_type *o_ptr, concptr *misc_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param addition 追加ランダム耐性構造体の参照ポインタ
  */
-static void analyze_addition(object_type *o_ptr, char *addition)
+static void analyze_addition(ObjectType *o_ptr, char *addition)
 {
-    artifact_type *a_ptr = &a_info[o_ptr->name1];
+    auto *a_ptr = &a_info[o_ptr->fixed_artifact_idx];
     strcpy(addition, "");
 
     if (a_ptr->gen_flags.has_all_of({ ItemGenerationTraitType::XTRA_POWER, ItemGenerationTraitType::XTRA_H_RES })) {
         strcat(addition, _("能力and耐性", "Ability and Resistance"));
     } else if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_POWER)) {
         strcat(addition, _("能力", "Ability"));
-        if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER))
+        if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
             strcat(addition, _("(1/2でand耐性)", "(plus Resistance about 1/2)"));
+        }
     } else if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_H_RES)) {
         strcat(addition, _("耐性", "Resistance"));
-        if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER))
+        if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
             strcat(addition, _("(1/2でand能力)", "(plus Ability about 1/2)"));
-    } else if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER))
+        }
+    } else if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
         strcat(addition, _("能力or耐性", "Ability or Resistance"));
+    }
 
     if (a_ptr->gen_flags.has(ItemGenerationTraitType::XTRA_DICE)) {
-        if (strlen(addition) > 0)
+        if (strlen(addition) > 0) {
             strcat(addition, _("、", ", "));
+        }
         strcat(addition, _("ダイス数", "Dice number"));
     }
 }
@@ -271,9 +292,9 @@ static void analyze_addition(object_type *o_ptr, char *addition)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param misc_desc 基本情報を収める文字列参照ポインタ
  */
-static void analyze_misc(object_type *o_ptr, char *misc_desc)
+static void analyze_misc(ObjectType *o_ptr, char *misc_desc)
 {
-    artifact_type *a_ptr = &a_info[o_ptr->name1];
+    auto *a_ptr = &a_info[o_ptr->fixed_artifact_idx];
     sprintf(misc_desc, _("レベル %d, 希少度 %u, %d.%d kg, ＄%ld", "Level %d, Rarity %u, %d.%d lbs, %ld Gold"), (int)a_ptr->level, a_ptr->rarity,
         _(lb_to_kg_integer(a_ptr->weight), a_ptr->weight / 10), _(lb_to_kg_fraction(a_ptr->weight), a_ptr->weight % 10), (long int)a_ptr->cost);
 }
@@ -286,7 +307,7 @@ static void analyze_misc(object_type *o_ptr, char *misc_desc)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param desc_ptr 全アーティファクト情報を収める文字列参照ポインタ
  */
-void object_analyze(PlayerType *player_ptr, object_type *o_ptr, obj_desc_list *desc_ptr)
+void object_analyze(PlayerType *player_ptr, ObjectType *o_ptr, obj_desc_list *desc_ptr)
 {
     analyze_general(player_ptr, o_ptr, desc_ptr->description);
     analyze_pval(o_ptr, &desc_ptr->pval_info);
@@ -309,7 +330,7 @@ void object_analyze(PlayerType *player_ptr, object_type *o_ptr, obj_desc_list *d
  * @param o_ptr ランダムアーティファクトのオブジェクト構造体参照ポインタ
  * @param desc_ptr 記述内容を収める構造体参照ポインタ
  */
-void random_artifact_analyze(PlayerType *player_ptr, object_type *o_ptr, obj_desc_list *desc_ptr)
+void random_artifact_analyze(PlayerType *player_ptr, ObjectType *o_ptr, obj_desc_list *desc_ptr)
 {
     analyze_general(player_ptr, o_ptr, desc_ptr->description);
     analyze_pval(o_ptr, &desc_ptr->pval_info);

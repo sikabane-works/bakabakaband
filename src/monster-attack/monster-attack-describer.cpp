@@ -73,10 +73,11 @@ static void monster_attack_show(MonsterAttackPlayer *monap_ptr)
     if (monap_ptr->m_ptr->r_idx == MON_JAIAN) {
         show_jaian_song(monap_ptr);
     } else {
-        if (one_in_(3))
+        if (one_in_(3)) {
             monap_ptr->act = _("は♪僕らは楽しい家族♪と歌っている。", "sings 'We are a happy family.'");
-        else
+        } else {
             monap_ptr->act = _("は♪アイ ラブ ユー、ユー ラブ ミー♪と歌っている。", "sings 'I love you, you love me.'");
+        }
     }
 
     sound(SOUND_SHOW);
@@ -235,12 +236,13 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
 #ifdef JP
         monap_ptr->abbreviate = -1;
 #endif
-        if (monap_ptr->m_ptr->ap_r_idx == MON_MAGGOT)
+        if (monap_ptr->m_ptr->ap_r_idx == MON_MAGGOT) {
             monap_ptr->act = desc_moan[randint0(4)];
-        else if (monap_ptr->m_ptr->ap_r_idx == MON_MISUMI)
+        } else if (monap_ptr->m_ptr->ap_r_idx == MON_MISUMI) {
             monap_ptr->act = desc_moan3[randint0(4)];
-        else
+        } else {
             monap_ptr->act = desc_moan2[randint0(4)];
+        }
 
         sound(SOUND_MOAN);
         break;
@@ -257,8 +259,7 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
         break;
     }
 
-    case RaceBlowMethodType::BIND:
-    {
+    case RaceBlowMethodType::BIND: {
         monap_ptr->act = _("縛られた", "binds you");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;

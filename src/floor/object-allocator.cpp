@@ -31,17 +31,21 @@
 static int next_to_walls(floor_type *floor_ptr, POSITION y, POSITION x)
 {
     int k = 0;
-    if (in_bounds(floor_ptr, y + 1, x) && floor_ptr->grid_array[y + 1][x].is_extra())
+    if (in_bounds(floor_ptr, y + 1, x) && floor_ptr->grid_array[y + 1][x].is_extra()) {
         k++;
+    }
 
-    if (in_bounds(floor_ptr, y - 1, x) && floor_ptr->grid_array[y - 1][x].is_extra())
+    if (in_bounds(floor_ptr, y - 1, x) && floor_ptr->grid_array[y - 1][x].is_extra()) {
         k++;
+    }
 
-    if (in_bounds(floor_ptr, y, x + 1) && floor_ptr->grid_array[y][x + 1].is_extra())
+    if (in_bounds(floor_ptr, y, x + 1) && floor_ptr->grid_array[y][x + 1].is_extra()) {
         k++;
+    }
 
-    if (in_bounds(floor_ptr, y, x - 1) && floor_ptr->grid_array[y][x - 1].is_extra())
+    if (in_bounds(floor_ptr, y, x - 1) && floor_ptr->grid_array[y][x - 1].is_extra()) {
         k++;
+    }
 
     return k;
 }
@@ -56,10 +60,11 @@ static int next_to_walls(floor_type *floor_ptr, POSITION y, POSITION x)
  */
 static bool alloc_stairs_aux(PlayerType *player_ptr, POSITION y, POSITION x, int walls)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    grid_type *g_ptr = &floor_ptr->grid_array[y][x];
-    if (!g_ptr->is_floor() || pattern_tile(floor_ptr, y, x) || !g_ptr->o_idx_list.empty() || (g_ptr->m_idx != 0) || next_to_walls(floor_ptr, y, x) < walls)
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *g_ptr = &floor_ptr->grid_array[y][x];
+    if (!g_ptr->is_floor() || pattern_tile(floor_ptr, y, x) || !g_ptr->o_idx_list.empty() || (g_ptr->m_idx != 0) || next_to_walls(floor_ptr, y, x) < walls) {
         return false;
+    }
 
     return true;
 }
@@ -75,43 +80,53 @@ static bool alloc_stairs_aux(PlayerType *player_ptr, POSITION y, POSITION x, int
 bool alloc_stairs(PlayerType *player_ptr, FEAT_IDX feat, int num, int walls)
 {
     int shaft_num = 0;
-    feature_type *f_ptr = &f_info[feat];
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *f_ptr = &f_info[feat];
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (f_ptr->flags.has(FloorFeatureType::LESS)) {
-        if (ironman_downward || !floor_ptr->dun_level)
+        if (ironman_downward || !floor_ptr->dun_level) {
             return true;
-
-        if (floor_ptr->dun_level > d_info[floor_ptr->dungeon_idx].mindepth)
-            shaft_num = (randint1(num + 1)) / 2;
-    } else if (f_ptr->flags.has(FloorFeatureType::MORE)) {
-        QUEST_IDX q_idx = quest_number(player_ptr, floor_ptr->dun_level);
-        if (floor_ptr->dun_level > 1 && q_idx) {
-            monster_race *r_ptr = &r_info[quest[q_idx].r_idx];
-            if (!(r_ptr->flags1 & RF1_UNIQUE) || 0 < r_ptr->mob_num)
-                return true;
         }
 
-        if (floor_ptr->dun_level >= d_info[floor_ptr->dungeon_idx].maxdepth)
-            return true;
+        if (floor_ptr->dun_level > d_info[floor_ptr->dungeon_idx].mindepth) {
+            shaft_num = (randint1(num + 1)) / 2;
+        }
+    } else if (f_ptr->flags.has(FloorFeatureType::MORE)) {
+        auto q_idx = quest_number(player_ptr, floor_ptr->dun_level);
+        if (floor_ptr->dun_level > 1 && inside_quest(q_idx)) {
+            auto *r_ptr = &r_info[quest[q_idx].r_idx];
+            if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE) || 0 < r_ptr->mob_num) {
+                return true;
+            }
+        }
 
-        if ((floor_ptr->dun_level < d_info[floor_ptr->dungeon_idx].maxdepth - 1) && !quest_number(player_ptr, floor_ptr->dun_level + 1))
+        if (floor_ptr->dun_level >= d_info[floor_ptr->dungeon_idx].maxdepth) {
+            return true;
+        }
+
+        if ((floor_ptr->dun_level < d_info[floor_ptr->dungeon_idx].maxdepth - 1) && !inside_quest(quest_number(player_ptr, floor_ptr->dun_level + 1))) {
             shaft_num = (randint1(num) + 1) / 2;
-    } else
+        }
+    } else {
         return false;
+    }
 
     for (int i = 0; i < num; i++) {
         while (true) {
             grid_type *g_ptr;
             int candidates = 0;
             const POSITION max_x = floor_ptr->width - 1;
-            for (POSITION y = 1; y < floor_ptr->height - 1; y++)
-                for (POSITION x = 1; x < max_x; x++)
-                    if (alloc_stairs_aux(player_ptr, y, x, walls))
+            for (POSITION y = 1; y < floor_ptr->height - 1; y++) {
+                for (POSITION x = 1; x < max_x; x++) {
+                    if (alloc_stairs_aux(player_ptr, y, x, walls)) {
                         candidates++;
+                    }
+                }
+            }
 
             if (!candidates) {
-                if (walls <= 0)
+                if (walls <= 0) {
                     return false;
+                }
 
                 walls--;
                 continue;
@@ -124,13 +139,15 @@ bool alloc_stairs(PlayerType *player_ptr, FEAT_IDX feat, int num, int walls)
                 for (x = 1; x < floor_ptr->width - 1; x++) {
                     if (alloc_stairs_aux(player_ptr, y, x, walls)) {
                         pick--;
-                        if (pick == 0)
+                        if (pick == 0) {
                             break;
+                        }
                     }
                 }
 
-                if (pick == 0)
+                if (pick == 0) {
                     break;
+                }
             }
 
             g_ptr = &floor_ptr->grid_array[y][x];
@@ -167,7 +184,7 @@ void alloc_object(PlayerType *player_ptr, dap_type set, dungeon_allocation_type 
     POSITION x = 0;
     int dummy = 0;
     grid_type *g_ptr;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     num = num * floor_ptr->height * floor_ptr->width / (MAX_HGT * MAX_WID) + 1;
     for (int k = 0; k < num; k++) {
         while (dummy < SAFE_MAX_ATTEMPTS) {
@@ -175,15 +192,18 @@ void alloc_object(PlayerType *player_ptr, dap_type set, dungeon_allocation_type 
             y = randint0(floor_ptr->height);
             x = randint0(floor_ptr->width);
             g_ptr = &floor_ptr->grid_array[y][x];
-            if (!g_ptr->is_floor() || !g_ptr->o_idx_list.empty() || g_ptr->m_idx)
+            if (!g_ptr->is_floor() || !g_ptr->o_idx_list.empty() || g_ptr->m_idx) {
                 continue;
+            }
 
-            if (player_bold(player_ptr, y, x))
+            if (player_bold(player_ptr, y, x)) {
                 continue;
+            }
 
             auto is_room = floor_ptr->grid_array[y][x].is_room();
-            if (((set == ALLOC_SET_CORR) && is_room) || ((set == ALLOC_SET_ROOM) && !is_room))
+            if (((set == ALLOC_SET_CORR) && is_room) || ((set == ALLOC_SET_ROOM) && !is_room)) {
                 continue;
+            }
 
             break;
         }

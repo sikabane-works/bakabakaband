@@ -44,7 +44,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{91B5F434-C680-49FE-9532-8586F6F6E2E4}</ProjectGuid>
     <RootNamespace>Hengband</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -146,7 +146,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\..\src;curl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>SyncCThrow</ExceptionHandling>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
@@ -276,6 +276,9 @@
     <ClCompile Include="..\..\src\load\item\item-loader-factory.cpp" />
     <ClCompile Include="..\..\src\load\monster\monster-loader-factory.cpp" />
     <ClCompile Include="..\..\src\load\player-class-specific-data-loader.cpp" />
+    <ClCompile Include="..\..\src\object-enchant\others\apply-magic-lite.cpp" />
+    <ClCompile Include="..\..\src\monster-race\monster-kind-mask.cpp" />
+    <ClCompile Include="..\..\src\monster-race\race-resistance-mask.cpp" />
     <ClCompile Include="..\..\src\object-enchant\weapon\abstract-weapon-enchanter.cpp" />
     <ClCompile Include="..\..\src\smith\object-smith.cpp" />
     <ClCompile Include="..\..\src\smith\smith-info.cpp" />
@@ -580,6 +583,7 @@
     <ClCompile Include="..\..\src\target\target-getter.cpp" />
     <ClCompile Include="..\..\src\target\target-preparation.cpp" />
     <ClCompile Include="..\..\src\target\target-setter.cpp" />
+    <ClCompile Include="..\..\src\timed-effect\player-confusion.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-cut.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-stun.cpp" />
     <ClCompile Include="..\..\src\timed-effect\timed-effects.cpp" />
@@ -939,9 +943,13 @@
     <ClInclude Include="..\..\src\load\player-class-specific-data-loader.h" />
     <ClInclude Include="..\..\src\load\savedata-old-flag-types.h" />
     <ClInclude Include="..\..\src\monster-race\monster-aura-types.h" />
+    <ClInclude Include="..\..\src\monster-race\monster-kind-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-behavior-flags.h" />
+    <ClInclude Include="..\..\src\monster-race\race-kind-flags.h" />
+    <ClInclude Include="..\..\src\monster-race\race-resistance-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-visual-flags.h" />
     <ClInclude Include="..\..\src\mspell\mspell-result.h" />
+    <ClInclude Include="..\..\src\object-enchant\others\apply-magic-lite.h" />
     <ClInclude Include="..\..\src\object-enchant\weapon\abstract-weapon-enchanter.h" />
     <ClInclude Include="..\..\src\smith\object-smith.h" />
     <ClInclude Include="..\..\src\smith\smith-info.h" />
@@ -1330,6 +1338,7 @@
     <ClInclude Include="..\..\src\store\service-checker.h" />
     <ClInclude Include="..\..\src\sv-definition\sv-junk-types.h" />
     <ClInclude Include="..\..\src\system\alloc-entries.h" />
+    <ClInclude Include="..\..\src\system\angband-exceptions.h" />
     <ClInclude Include="..\..\src\system\dungeon-data-definition.h" />
     <ClInclude Include="..\..\src\system\floor-type-definition.h" />
     <ClInclude Include="..\..\src\system\grid-type-definition.h" />
@@ -1342,6 +1351,7 @@
     <ClInclude Include="..\..\src\target\target-setter.h" />
     <ClInclude Include="..\..\src\target\target-types.h" />
     <ClInclude Include="..\..\src\term\screen-processor.h" />
+    <ClInclude Include="..\..\src\timed-effect\player-confusion.h" />
     <ClInclude Include="..\..\src\timed-effect\player-cut.h" />
     <ClInclude Include="..\..\src\timed-effect\player-stun.h" />
     <ClInclude Include="..\..\src\timed-effect\timed-effects.h" />
@@ -1869,7 +1879,6 @@
     <ClInclude Include="..\..\src\grid\grid.h" />
     <ClInclude Include="..\..\src\system\h-basic.h" />
     <ClInclude Include="..\..\src\system\h-config.h" />
-    <ClInclude Include="..\..\src\system\h-define.h" />
     <ClInclude Include="..\..\src\system\h-system.h" />
     <ClInclude Include="..\..\src\system\h-type.h" />
     <ClInclude Include="..\..\src\birth\history.h" />

@@ -39,9 +39,10 @@
 void identify_pack(PlayerType *player_ptr)
 {
     for (INVENTORY_IDX i = 0; i < INVEN_TOTAL; i++) {
-        object_type *o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx)
+        auto *o_ptr = &player_ptr->inventory_list[i];
+        if (!o_ptr->k_idx) {
             continue;
+        }
 
         identify_item(player_ptr, o_ptr);
         autopick_alter_item(player_ptr, i, false);
@@ -55,18 +56,20 @@ void identify_pack(PlayerType *player_ptr)
  * @param o_ptr 鑑定されるアイテムの情報参照ポインタ
  * @return 実際に鑑定できたらTRUEを返す
  */
-bool identify_item(PlayerType *player_ptr, object_type *o_ptr)
+bool identify_item(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, o_ptr, 0);
 
     bool old_known = false;
-    if (any_bits(o_ptr->ident, IDENT_KNOWN))
+    if (any_bits(o_ptr->ident, IDENT_KNOWN)) {
         old_known = true;
+    }
 
     if (!o_ptr->is_fully_known()) {
-        if (o_ptr->is_artifact() || one_in_(5))
+        if (o_ptr->is_artifact() || one_in_(5)) {
             chg_virtue(player_ptr, V_KNOWLEDGE, 1);
+        }
     }
 
     object_aware(player_ptr, o_ptr);
@@ -81,10 +84,12 @@ bool identify_item(PlayerType *player_ptr, object_type *o_ptr)
 
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
 
-    if (record_fix_art && !old_known && o_ptr->is_fixed_artifact())
+    if (record_fix_art && !old_known && o_ptr->is_fixed_artifact()) {
         exe_write_diary(player_ptr, DIARY_ART, 0, o_name);
-    if (record_rand_art && !old_known && o_ptr->art_name)
+    }
+    if (record_rand_art && !old_known && o_ptr->art_name) {
         exe_write_diary(player_ptr, DIARY_ART, 0, o_name);
+    }
 
     return old_known;
 }
@@ -108,7 +113,7 @@ bool ident_spell(PlayerType *player_ptr, bool only_equip)
         q = _("どのアイテムを鑑定しますか? ", "Identify which item? ");
     } else {
         if (only_equip) {
-            item_tester = std::make_unique<FuncItemTester>(&object_type::is_weapon_armour_ammo);
+            item_tester = std::make_unique<FuncItemTester>(&ObjectType::is_weapon_armour_ammo);
         } else {
             item_tester = std::make_unique<AllMatchItemTester>();
         }
@@ -117,10 +122,11 @@ bool ident_spell(PlayerType *player_ptr, bool only_equip)
 
     concptr s = _("鑑定するべきアイテムがない。", "You have nothing to identify.");
     OBJECT_IDX item;
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), *item_tester);
-    if (!o_ptr)
+    if (!o_ptr) {
         return false;
+    }
 
     bool old_known = identify_item(player_ptr, o_ptr);
 
@@ -150,15 +156,14 @@ bool ident_spell(PlayerType *player_ptr, bool only_equip)
  */
 bool identify_fully(PlayerType *player_ptr, bool only_equip)
 {
-    std::unique_ptr<ItemTester> item_tester
-        = std::make_unique<FuncItemTester>(only_equip ? object_is_not_fully_identified_weapon_armour : object_is_not_fully_identified);
+    std::unique_ptr<ItemTester> item_tester = std::make_unique<FuncItemTester>(only_equip ? object_is_not_fully_identified_weapon_armour : object_is_not_fully_identified);
 
     concptr q;
     if (can_get_item(player_ptr, *item_tester)) {
         q = _("どのアイテムを*鑑定*しますか? ", "*Identify* which item? ");
     } else {
         if (only_equip) {
-            item_tester = std::make_unique<FuncItemTester>(&object_type::is_weapon_armour_ammo);
+            item_tester = std::make_unique<FuncItemTester>(&ObjectType::is_weapon_armour_ammo);
         } else {
             item_tester = std::make_unique<AllMatchItemTester>();
         }
@@ -168,10 +173,11 @@ bool identify_fully(PlayerType *player_ptr, bool only_equip)
     concptr s = _("*鑑定*するべきアイテムがない。", "You have nothing to *identify*.");
 
     OBJECT_IDX item;
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), *item_tester);
-    if (!o_ptr)
+    if (!o_ptr) {
         return false;
+    }
 
     bool old_known = identify_item(player_ptr, o_ptr);
 

@@ -75,16 +75,20 @@ void update_smell(floor_type *floor_ptr, PlayerType *player_ptr)
             grid_type *g_ptr;
             POSITION y = i + player_ptr->y - 2;
             POSITION x = j + player_ptr->x - 2;
-            if (!in_bounds(floor_ptr, y, x))
+            if (!in_bounds(floor_ptr, y, x)) {
                 continue;
+            }
 
             g_ptr = &floor_ptr->grid_array[y][x];
-            if (!g_ptr->cave_has_flag(FloorFeatureType::MOVE) && !is_closed_door(player_ptr, g_ptr->feat))
+            if (!g_ptr->cave_has_flag(FloorFeatureType::MOVE) && !is_closed_door(player_ptr, g_ptr->feat)) {
                 continue;
-            if (!player_has_los_bold(player_ptr, y, x))
+            }
+            if (!player_has_los_bold(player_ptr, y, x)) {
                 continue;
-            if (scent_adjust[i][j] == -1)
+            }
+            if (scent_adjust[i][j] == -1) {
                 continue;
+            }
 
             g_ptr->when = scent_when + scent_adjust[i][j];
         }
@@ -119,13 +123,14 @@ void forget_flow(floor_type *floor_ptr)
 void wipe_o_list(floor_type *floor_ptr)
 {
     for (OBJECT_IDX i = 1; i < floor_ptr->o_max; i++) {
-        object_type *o_ptr = &floor_ptr->o_list[i];
-        if (!o_ptr->is_valid())
+        auto *o_ptr = &floor_ptr->o_list[i];
+        if (!o_ptr->is_valid()) {
             continue;
+        }
 
         if (!w_ptr->character_dungeon || preserve_mode) {
             if (o_ptr->is_fixed_artifact() && !o_ptr->is_known()) {
-                a_info[o_ptr->name1].cur_num = 0;
+                a_info[o_ptr->fixed_artifact_idx].cur_num = 0;
             }
         }
 
@@ -151,24 +156,28 @@ void wipe_o_list(floor_type *floor_ptr)
  */
 void scatter(PlayerType *player_ptr, POSITION *yp, POSITION *xp, POSITION y, POSITION x, POSITION d, BIT_FLAGS mode)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     POSITION nx, ny;
     while (true) {
         ny = rand_spread(y, d);
         nx = rand_spread(x, d);
 
-        if (!in_bounds(floor_ptr, ny, nx))
+        if (!in_bounds(floor_ptr, ny, nx)) {
             continue;
-        if ((d > 1) && (distance(y, x, ny, nx) > d))
+        }
+        if ((d > 1) && (distance(y, x, ny, nx) > d)) {
             continue;
+        }
         if (mode & PROJECT_LOS) {
-            if (los(player_ptr, y, x, ny, nx))
+            if (los(player_ptr, y, x, ny, nx)) {
                 break;
+            }
             continue;
         }
 
-        if (projectable(player_ptr, y, x, ny, nx))
+        if (projectable(player_ptr, y, x, ny, nx)) {
             break;
+        }
     }
 
     *yp = ny;
@@ -182,17 +191,21 @@ void scatter(PlayerType *player_ptr, POSITION *yp, POSITION *xp, POSITION y, POS
  */
 concptr map_name(PlayerType *player_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (floor_ptr->inside_quest && quest_type::is_fixed(floor_ptr->inside_quest) && (quest[floor_ptr->inside_quest].flags & QUEST_FLAG_PRESET))
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto is_fixed_quest = inside_quest(floor_ptr->quest_number);
+    is_fixed_quest &= quest_type::is_fixed(floor_ptr->quest_number);
+    is_fixed_quest &= (quest[floor_ptr->quest_number].flags & QUEST_FLAG_PRESET);
+    if (is_fixed_quest) {
         return _("クエスト", "Quest");
-    else if (player_ptr->wild_mode)
+    } else if (player_ptr->wild_mode) {
         return _("地上", "Surface");
-    else if (floor_ptr->inside_arena)
+    } else if (floor_ptr->inside_arena) {
         return _("アリーナ", "Arena");
-    else if (player_ptr->phase_out)
+    } else if (player_ptr->phase_out) {
         return _("闘技場", "Monster Arena");
-    else if (!floor_ptr->dun_level && player_ptr->town_num)
+    } else if (!floor_ptr->dun_level && player_ptr->town_num) {
         return town_info[player_ptr->town_num].name;
-    else
+    } else {
         return d_info[player_ptr->dungeon_idx].name.c_str();
+    }
 }

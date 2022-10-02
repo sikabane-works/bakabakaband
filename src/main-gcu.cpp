@@ -164,10 +164,12 @@
 #include "locale/japanese.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
+#include "system/angband-version.h"
 #include "system/angband.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
 #include "term/term-color-types.h"
+#include "term/z-form.h"
 #include "util/angband-files.h"
 #include "view/display-map.h"
 
@@ -188,11 +190,10 @@
 /**
  * Simple rectangle type
  */
-struct rect_s {
+struct rect_t {
     int x, y;
     int cx, cy;
 };
-typedef struct rect_s rect_t, *rect_ptr;
 
 /* Trivial rectangle utility to make code a bit more readable */
 static rect_t rect(int x, int y, int cx, int cy)
@@ -532,7 +533,7 @@ static void keymap_game_prepare(void)
 /*
  * Suspend/Resume
  */
-static errr Term_xtra_gcu_alive(int v)
+static errr game_term_xtra_gcu_alive(int v)
 {
     if (!v) {
         /* Go to normal keymap mode */
@@ -567,7 +568,7 @@ static errr Term_xtra_gcu_alive(int v)
         keymap_game();
     }
 
-    return (0);
+    return 0;
 }
 
 /*
@@ -577,8 +578,9 @@ static bool check_file(concptr s)
 {
     FILE *fff;
     fff = fopen(s, "r");
-    if (!fff)
+    if (!fff) {
         return false;
+    }
 
     fclose(fff);
     return true;
@@ -590,8 +592,9 @@ static bool check_file(concptr s)
 static bool init_sound(void)
 {
     /* Initialize once */
-    if (can_use_sound)
+    if (can_use_sound) {
         return can_use_sound;
+    }
 
     int i;
     char wav[128];
@@ -606,25 +609,27 @@ static bool init_sound(void)
         path_build(buf, sizeof(buf), ANGBAND_DIR_XTRA_SOUND, wav);
 
         /* Save the sound filename, if it exists */
-        if (check_file(buf))
+        if (check_file(buf)) {
             sound_file[i] = string_make(buf);
+        }
     }
 
     /* Sound available */
     can_use_sound = true;
-    return (can_use_sound);
+    return can_use_sound;
 }
 
 /*
  * Init the "curses" system
  */
-static void Term_init_gcu(term_type *t)
+static void game_term_init_gcu(term_type *t)
 {
     term_data *td = (term_data *)(t->data);
 
     /* Count init's, handle first */
-    if (active++ != 0)
+    if (active++ != 0) {
         return;
+    }
 
     /* Erase the screen */
     (void)wclear(td->win);
@@ -642,7 +647,7 @@ static void Term_init_gcu(term_type *t)
 /*
  * Nuke the "curses" system
  */
-static void Term_nuke_gcu(term_type *t)
+static void game_term_nuke_gcu(term_type *t)
 {
     term_data *td = (term_data *)(t->data);
 
@@ -650,8 +655,9 @@ static void Term_nuke_gcu(term_type *t)
     delwin(td->win);
 
     /* Count nuke's, handle last */
-    if (--active != 0)
+    if (--active != 0) {
         return;
+    }
 
     /* Hack -- make sure the cursor is visible */
     term_xtra(TERM_XTRA_SHAPE, 1);
@@ -683,8 +689,9 @@ static void Term_nuke_gcu(term_type *t)
 static void term_string_push(char *buf)
 {
     int i, l = strlen(buf);
-    for (i = l; i >= 0; i--)
+    for (i = l; i >= 0; i--) {
         term_key_push(buf[i]);
+    }
 }
 
 #ifdef USE_GETCH
@@ -692,7 +699,7 @@ static void term_string_push(char *buf)
 /*
  * Process events, with optional wait
  */
-static errr Term_xtra_gcu_event(int v)
+static errr game_term_xtra_gcu_event(int v)
 {
     int i, k;
 
@@ -708,10 +715,12 @@ static errr Term_xtra_gcu_event(int v)
         i = getch();
 
         /* Broken input is special */
-        if (i == ERR)
+        if (i == ERR) {
             exit_game_panic(p_ptr);
-        if (i == EOF)
+        }
+        if (i == EOF) {
             exit_game_panic(p_ptr);
+        }
 
         *bp++ = (char)i;
 
@@ -719,11 +728,13 @@ static errr Term_xtra_gcu_event(int v)
         nodelay(stdscr, true);
 
         while ((i = getch()) != EOF) {
-            if (i == ERR)
+            if (i == ERR) {
                 exit_game_panic(p_ptr);
+            }
             *bp++ = (char)i;
-            if (bp == &buf[255])
+            if (bp == &buf[255]) {
                 break;
+            }
         }
 
         /* Wait for it next time */
@@ -734,7 +745,7 @@ static errr Term_xtra_gcu_event(int v)
         char eucbuf[sizeof(buf)];
         /* strlen + 1 を渡して文字列終端('\0')を含めて変換する */
         if (utf8_to_euc(buf, strlen(buf) + 1, eucbuf, sizeof(eucbuf)) < 0) {
-            return (-1);
+            return -1;
         }
 #endif
         term_string_push(_(eucbuf, buf));
@@ -752,17 +763,19 @@ static errr Term_xtra_gcu_event(int v)
         nodelay(stdscr, false);
 
         /* None ready */
-        if (i == ERR)
-            return (1);
-        if (i == EOF)
-            return (1);
+        if (i == ERR) {
+            return 1;
+        }
+        if (i == EOF) {
+            return 1;
+        }
 
         /* Enqueue the keypress */
         term_key_push(i);
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #else /* USE_GETCH */
@@ -770,7 +783,7 @@ static errr Term_xtra_gcu_event(int v)
 /*
  * Process events (with optional wait)
  */
-static errr Term_xtra_gcu_event(int v)
+static errr game_term_xtra_gcu_event(int v)
 {
     int i, k;
 
@@ -784,15 +797,17 @@ static errr Term_xtra_gcu_event(int v)
         i = read(0, bp++, 1);
 
         /* Hack -- Handle bizarre "errors" */
-        if ((i <= 0) && (errno != EINTR))
+        if ((i <= 0) && (errno != EINTR)) {
             exit_game_panic(p_ptr);
+        }
 
         /* Get the current flags for stdin */
         k = fcntl(0, F_GETFL, 0);
 
         /* Oops */
-        if (k < 0)
-            return (1);
+        if (k < 0) {
+            return 1;
+        }
 
         /* Tell stdin not to block */
         if (fcntl(0, F_SETFL, k | O_NDELAY) >= 0) {
@@ -801,8 +816,9 @@ static errr Term_xtra_gcu_event(int v)
             }
 
             /* Replace the flags for stdin */
-            if (fcntl(0, F_SETFL, k))
-                return (1);
+            if (fcntl(0, F_SETFL, k)) {
+                return 1;
+            }
         }
 
         bp[0] = '\0';
@@ -810,7 +826,7 @@ static errr Term_xtra_gcu_event(int v)
         char eucbuf[sizeof(buf)];
         /* strlen + 1 を渡して文字列終端('\0')を含めて変換する */
         if (utf8_to_euc(buf, strlen(buf) + 1, eucbuf, sizeof(eucbuf)) < 0) {
-            return (-1);
+            return -1;
         }
 #endif
         term_string_push(_(eucbuf, buf));
@@ -822,30 +838,34 @@ static errr Term_xtra_gcu_event(int v)
         k = fcntl(0, F_GETFL, 0);
 
         /* Oops */
-        if (k < 0)
-            return (1);
+        if (k < 0) {
+            return 1;
+        }
 
         /* Tell stdin not to block */
-        if (fcntl(0, F_SETFL, k | O_NDELAY) < 0)
-            return (1);
+        if (fcntl(0, F_SETFL, k | O_NDELAY) < 0) {
+            return 1;
+        }
 
         /* Read one byte, if possible */
         i = read(0, buf, 1);
 
         /* Replace the flags for stdin */
-        if (fcntl(0, F_SETFL, k))
-            return (1);
+        if (fcntl(0, F_SETFL, k)) {
+            return 1;
+        }
 
         /* Ignore "invalid" keys */
-        if ((i != 1) || (!buf[0]))
-            return (1);
+        if ((i != 1) || (!buf[0])) {
+            return 1;
+        }
 
         /* Enqueue the keypress */
         term_key_push(buf[0]);
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #endif /* USE_GETCH */
@@ -853,27 +873,30 @@ static errr Term_xtra_gcu_event(int v)
 /*
  * Hack -- make a sound
  */
-static errr Term_xtra_gcu_sound(int v)
+static errr game_term_xtra_gcu_sound(int v)
 {
     char buf[1024];
 
     /* Sound disabled */
-    if (!use_sound)
-        return (1);
+    if (!use_sound) {
+        return 1;
+    }
 
     /* Illegal sound */
-    if ((v < 0) || (v >= SOUND_MAX))
-        return (1);
+    if ((v < 0) || (v >= SOUND_MAX)) {
+        return 1;
+    }
 
     /* Unknown sound */
-    if (!sound_file[v])
-        return (1);
+    if (!sound_file[v]) {
+        return 1;
+    }
 
     sprintf(buf, "./gcusound.sh %s\n", sound_file[v]);
 
-    return (system(buf) < 0);
+    return system(buf) < 0;
 
-    return (0);
+    return 0;
 }
 
 static int scale_color(int i, int j, int scale)
@@ -889,10 +912,12 @@ static int create_color(int i, int scale)
     int rgb = 16 + scale * scale * r + scale * g + b;
     /* In the case of white and black we need to use the ANSI colors */
     if (r == g && g == b) {
-        if (b == 0)
+        if (b == 0) {
             rgb = 0;
-        if (b == scale)
+        }
+        if (b == scale) {
             rgb = 15;
+        }
     }
     return rgb;
 }
@@ -900,7 +925,7 @@ static int create_color(int i, int scale)
 /*
  * React to changes
  */
-static errr Term_xtra_gcu_react(void)
+static errr game_term_xtra_gcu_react(void)
 {
 
 #ifdef A_COLOR
@@ -936,15 +961,15 @@ static errr Term_xtra_gcu_react(void)
 #endif
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
  * Handle a "special request"
  */
-static errr Term_xtra_gcu(int n, int v)
+static errr game_term_xtra_gcu(int n, int v)
 {
-    term_data *td = (term_data *)(Term->data);
+    term_data *td = (term_data *)(game_term->data);
 
     /* Analyze the request */
     switch (n) {
@@ -952,7 +977,7 @@ static errr Term_xtra_gcu(int n, int v)
     case TERM_XTRA_CLEAR:
         touchwin(td->win);
         (void)wclear(td->win);
-        return (0);
+        return 0;
 
     /* Make a noise */
     case TERM_XTRA_NOISE:
@@ -960,68 +985,69 @@ static errr Term_xtra_gcu(int n, int v)
 
     /* Make a special sound */
     case TERM_XTRA_SOUND:
-        return (Term_xtra_gcu_sound(v));
+        return game_term_xtra_gcu_sound(v);
 
     /* Flush the Curses buffer */
     case TERM_XTRA_FRESH:
         (void)wrefresh(td->win);
-        return (0);
+        return 0;
 
     /* Change the cursor visibility */
     case TERM_XTRA_SHAPE:
         curs_set(v);
-        return (0);
+        return 0;
 
     /* Suspend/Resume curses */
     case TERM_XTRA_ALIVE:
-        return (Term_xtra_gcu_alive(v));
+        return game_term_xtra_gcu_alive(v);
 
     /* Process events */
     case TERM_XTRA_EVENT:
-        return (Term_xtra_gcu_event(v));
+        return game_term_xtra_gcu_event(v);
 
     /* Flush events */
     case TERM_XTRA_FLUSH:
-        while (!Term_xtra_gcu_event(false))
+        while (!game_term_xtra_gcu_event(false)) {
             ;
-        return (0);
+        }
+        return 0;
 
     /* Delay */
     case TERM_XTRA_DELAY:
         usleep(1000 * v);
-        return (0);
+        return 0;
 
     /* React to events */
     case TERM_XTRA_REACT:
-        Term_xtra_gcu_react();
-        return (0);
+        game_term_xtra_gcu_react();
+        return 0;
     }
 
     /* Unknown */
-    return (1);
+    return 1;
 }
 
 /*
  * Actually MOVE the hardware cursor
  */
-static errr Term_curs_gcu(int x, int y)
+static errr game_term_curs_gcu(int x, int y)
 {
-    term_data *td = (term_data *)(Term->data);
+    term_data *td = (term_data *)(game_term->data);
 
     /* Literally move the cursor */
     wmove(td->win, y, x);
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
  * Erase a grid of space
  * Hack -- try to be "semi-efficient".
  */
-static errr Term_wipe_gcu(int x, int y, int n)
+static errr game_term_wipe_gcu(int x, int y, int n)
 {
-    term_data *td = (term_data *)(Term->data);
+    term_data *td = (term_data *)(game_term->data);
 
     /* Place cursor */
     wmove(td->win, y, x);
@@ -1033,12 +1059,13 @@ static errr Term_wipe_gcu(int x, int y, int n)
 
     /* Clear some characters */
     else {
-        while (n-- > 0)
+        while (n-- > 0) {
             waddch(td->win, ' ');
+        }
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #ifdef USE_NCURSES_ACS
@@ -1050,9 +1077,9 @@ static errr Term_wipe_gcu(int x, int y, int n)
  * think hard about how map_info() in cave.c should handle the color
  * of something that we here draw in reverse. It's not so simple, alas.
  */
-static void Term_acs_text_gcu(int x, int y, int n, byte a, concptr s)
+static void game_term_acs_text_gcu(int x, int y, int n, byte a, concptr s)
 {
-    term_data *td = (term_data *)(Term->data);
+    term_data *td = (term_data *)(game_term->data);
     int i;
 
     /* position the cursor */
@@ -1074,16 +1101,16 @@ static void Term_acs_text_gcu(int x, int y, int n, byte a, concptr s)
 /*
  * Place some text on the screen using an attribute
  */
-static errr Term_text_gcu(int x, int y, int n, byte a, concptr s)
+static errr game_term_text_gcu(int x, int y, int n, byte a, concptr s)
 {
-    term_data *td = (term_data *)(Term->data);
+    term_data *td = (term_data *)(game_term->data);
 
 #ifdef USE_NCURSES_ACS
     /* do we have colors + 16 ? */
     /* then call special routine for drawing special characters */
     if (a & 0x10) {
-        Term_acs_text_gcu(x, y, n, a, s);
-        return (0);
+        game_term_acs_text_gcu(x, y, n, a, s);
+        return 0;
     }
 #endif
 
@@ -1092,22 +1119,23 @@ static errr Term_text_gcu(int x, int y, int n, byte a, concptr s)
 
 #ifdef A_COLOR
     /* Set the color */
-    if (can_use_color)
+    if (can_use_color) {
         wattrset(td->win, colortable[a & 0x0F]);
+    }
 #endif
 
 #ifdef JP
     char text[1024];
     int text_len = euc_to_utf8(s, n, text, sizeof(text));
     if (text_len < 0) {
-        return (-1);
+        return -1;
     }
 #endif
     /* Add the text */
     waddnstr(td->win, _(text, s), _(text_len, n));
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /**
@@ -1120,8 +1148,9 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
     term_type *t = &td->t;
 
     /* Make sure the window has a positive size */
-    if (rows <= 0 || cols <= 0)
-        return (0);
+    if (rows <= 0 || cols <= 0) {
+        return 0;
+    }
 
     /* Create a window */
     td->win = newwin(rows, cols, y, x);
@@ -1129,7 +1158,7 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
     /* Make sure we succeed */
     if (!td->win) {
         plog("Failed to setup curses window.");
-        return (-1);
+        return -1;
     }
 
     /* Initialize the term */
@@ -1143,14 +1172,14 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
     t->char_blank = ' ';
 
     /* Set some hooks */
-    t->init_hook = Term_init_gcu;
-    t->nuke_hook = Term_nuke_gcu;
+    t->init_hook = game_term_init_gcu;
+    t->nuke_hook = game_term_nuke_gcu;
 
     /* Set some more hooks */
-    t->text_hook = Term_text_gcu;
-    t->wipe_hook = Term_wipe_gcu;
-    t->curs_hook = Term_curs_gcu;
-    t->xtra_hook = Term_xtra_gcu;
+    t->text_hook = game_term_text_gcu;
+    t->wipe_hook = game_term_wipe_gcu;
+    t->curs_hook = game_term_curs_gcu;
+    t->xtra_hook = game_term_xtra_gcu;
 
     /* Save the data */
     t->data = td;
@@ -1159,7 +1188,7 @@ static errr term_data_init_gcu(term_data *td, int rows, int cols, int y, int x)
     term_activate(t);
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /**
@@ -1180,23 +1209,26 @@ static int _parse_size_list(const char *arg, int sizes[], int max)
 
     for (;;) {
         if (!*stop || !isdigit(*stop)) {
-            if (i >= max)
+            if (i >= max) {
                 break;
-            if (*start == '*')
+            }
+            if (*start == '*') {
                 sizes[i] = 255;
-            else {
+            } else {
                 /* rely on atoi("23,34,*") -> 23
                    otherwise, copy [start, stop) into a new buffer first.*/
                 sizes[i] = atoi(start);
             }
             i++;
-            if (!*stop || *stop != ',')
+            if (!*stop || *stop != ',') {
                 break;
+            }
 
             stop++;
             start = stop;
-        } else
+        } else {
             stop++;
+        }
     }
     return i;
 }
@@ -1250,8 +1282,9 @@ errr init_gcu(int argc, char *argv[])
     }
 
     /* Initialize for others systems */
-    if (initscr() == (WINDOW *)ERR)
-        return (-1);
+    if (initscr() == (WINDOW *)ERR) {
+        return -1;
+    }
 
     /* Activate hooks */
     quit_aux = hook_quit;
@@ -1259,8 +1292,9 @@ errr init_gcu(int argc, char *argv[])
 
     /* Hack -- Require large screen, or Quit with message */
     i = ((LINES < 24) || (COLS < 80));
-    if (i)
-        quit("Angband needs an 80x24 'curses' screen");
+    if (i) {
+        quit_fmt("%s needs an 80x24 'curses' screen", std::string(VARIANT_NAME).c_str());
+    }
 
 #ifdef A_COLOR
 
@@ -1283,7 +1317,7 @@ errr init_gcu(int argc, char *argv[])
             }
 
             colortable[i] = COLOR_PAIR(i);
-            Term_xtra_gcu_react();
+            game_term_xtra_gcu_react();
         }
     }
     /* Attempt to use colors */
@@ -1413,8 +1447,9 @@ errr init_gcu(int argc, char *argv[])
             }
 
             /* Skip non-existant windows */
-            if (rows <= 0 || cols <= 0)
+            if (rows <= 0 || cols <= 0) {
                 continue;
+            }
 
             /* Create a term */
             term_data_init_gcu(&data[next_win], rows, cols, y, x);
@@ -1457,8 +1492,9 @@ errr init_gcu(int argc, char *argv[])
         for (i = 1; i < argc; i++) {
             if (streq(argv[i], "-spacer")) {
                 i++;
-                if (i >= argc)
+                if (i >= argc) {
                     quit("Missing size specifier for -spacer");
+                }
                 sscanf(argv[i], "%dx%d", &spacer_cx, &spacer_cy);
             } else if (streq(argv[i], "-right") || streq(argv[i], "-left")) {
                 const char *arg, *tmp;
@@ -1466,13 +1502,15 @@ errr init_gcu(int argc, char *argv[])
                 int cx, cys[MAX_TERM_DATA] = { 0 }, ct, j, x, y;
 
                 i++;
-                if (i >= argc)
+                if (i >= argc) {
                     quit(format("Missing size specifier for -%s", left ? "left" : "right"));
+                }
 
                 arg = argv[i];
                 tmp = strchr(arg, 'x');
-                if (!tmp)
+                if (!tmp) {
                     quit(format("Expected something like -%s 60x27,* for two %s hand terminals of 60 columns, the first 27 lines and the second whatever is left.", left ? "left" : "right", left ? "left" : "right"));
+                }
                 cx = atoi(arg);
                 remaining.cx -= cx;
                 if (left) {
@@ -1484,17 +1522,20 @@ errr init_gcu(int argc, char *argv[])
                     y = remaining.y;
                 }
                 remaining.cx -= spacer_cx;
-                if (left)
+                if (left) {
                     remaining.x += spacer_cx;
+                }
 
                 tmp++;
                 ct = _parse_size_list(tmp, cys, MAX_TERM_DATA);
                 for (j = 0; j < ct; j++) {
                     int cy = cys[j];
-                    if (y + cy > remaining.y + remaining.cy)
+                    if (y + cy > remaining.y + remaining.cy) {
                         cy = remaining.y + remaining.cy - y;
-                    if (next_term >= MAX_TERM_DATA)
+                    }
+                    if (next_term >= MAX_TERM_DATA) {
                         quit(format("Too many terminals. Only %d are allowed.", MAX_TERM_DATA));
+                    }
                     if (cy <= 0) {
                         quit(format("Out of bounds in -%s: %d is too large (%d rows max for this strip)",
                             left ? "left" : "right", cys[j], remaining.cy));
@@ -1509,13 +1550,15 @@ errr init_gcu(int argc, char *argv[])
                 int cy, cxs[MAX_TERM_DATA] = { 0 }, ct, j, x, y;
 
                 i++;
-                if (i >= argc)
+                if (i >= argc) {
                     quit(format("Missing size specifier for -%s", top ? "top" : "bottom"));
+                }
 
                 arg = argv[i];
                 tmp = strchr(arg, 'x');
-                if (!tmp)
+                if (!tmp) {
                     quit(format("Expected something like -%s *x7 for a single %s terminal of 7 lines using as many columns as are available.", top ? "top" : "bottom", top ? "top" : "bottom"));
+                }
                 tmp++;
                 cy = atoi(tmp);
                 ct = _parse_size_list(arg, cxs, MAX_TERM_DATA);
@@ -1530,16 +1573,19 @@ errr init_gcu(int argc, char *argv[])
                     y = remaining.y + remaining.cy;
                 }
                 remaining.cy -= spacer_cy;
-                if (top)
+                if (top) {
                     remaining.y += spacer_cy;
+                }
 
                 tmp++;
                 for (j = 0; j < ct; j++) {
                     int cx = cxs[j];
-                    if (x + cx > remaining.x + remaining.cx)
+                    if (x + cx > remaining.x + remaining.cx) {
                         cx = remaining.x + remaining.cx - x;
-                    if (next_term >= MAX_TERM_DATA)
+                    }
+                    if (next_term >= MAX_TERM_DATA) {
                         quit(format("Too many terminals. Only %d are allowed.", MAX_TERM_DATA));
+                    }
                     if (cx <= 0) {
                         quit(format("Out of bounds in -%s: %d is too large (%d cols max for this strip)",
                             top ? "top" : "bottom", cxs[j], remaining.cx));
@@ -1552,16 +1598,17 @@ errr init_gcu(int argc, char *argv[])
         }
 
         /* Map Terminal */
-        if (remaining.cx < MIN_TERM0_COLS || remaining.cy < MIN_TERM0_LINES)
-            quit(format("Failed: angband needs an %dx%d map screen, not %dx%d", MIN_TERM0_COLS, MIN_TERM0_LINES, remaining.cx, remaining.cy));
+        if (remaining.cx < MIN_TERM0_COLS || remaining.cy < MIN_TERM0_LINES) {
+            quit_fmt("Failed: %s needs an %dx%d map screen, not %dx%d", std::string(VARIANT_NAME).c_str(), MIN_TERM0_COLS, MIN_TERM0_LINES, remaining.cx, remaining.cy);
+        }
         data[0].r = remaining;
         term_data_init(&data[0]);
-        angband_term[0] = Term;
+        angband_term[0] = game_term;
 
         /* Child Terminals */
         for (next_term = 1; next_term < term_ct; next_term++) {
             term_data_init(&data[next_term]);
-            angband_term[next_term] = Term;
+            angband_term[next_term] = game_term;
         }
     }
 
@@ -1572,7 +1619,7 @@ errr init_gcu(int argc, char *argv[])
     term_screen = &data[0].t;
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #endif /* USE_GCU */

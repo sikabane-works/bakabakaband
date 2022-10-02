@@ -46,7 +46,7 @@ bool exchange_cash(PlayerType *player_ptr)
 {
     bool change = false;
     GAME_TEXT o_name[MAX_NLEN];
-    object_type *o_ptr;
+    ObjectType *o_ptr;
 
     for (INVENTORY_IDX i = 0; i <= INVEN_SUB_HAND; i++) {
         o_ptr = &player_ptr->inventory_list[i];
@@ -101,8 +101,7 @@ bool exchange_cash(PlayerType *player_ptr)
 
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
         o_ptr = &player_ptr->inventory_list[i];
-        if ((o_ptr->tval == ItemKindType::CORPSE) && (o_ptr->sval == SV_CORPSE)
-            && (streq(r_info[o_ptr->pval].name.c_str(), r_info[w_ptr->today_mon].name.c_str()))) {
+        if ((o_ptr->tval == ItemKindType::CORPSE) && (o_ptr->sval == SV_CORPSE) && (streq(r_info[o_ptr->pval].name.c_str(), r_info[w_ptr->today_mon].name.c_str()))) {
             char buf[MAX_NLEN + 32];
             describe_flavor(player_ptr, o_name, o_ptr, 0);
             sprintf(buf, _("%s を換金しますか？", "Convert %s into money? "), o_name);
@@ -121,8 +120,7 @@ bool exchange_cash(PlayerType *player_ptr)
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
         o_ptr = &player_ptr->inventory_list[i];
 
-        if ((o_ptr->tval == ItemKindType::CORPSE) && (o_ptr->sval == SV_SKELETON)
-            && (streq(r_info[o_ptr->pval].name.c_str(), r_info[w_ptr->today_mon].name.c_str()))) {
+        if ((o_ptr->tval == ItemKindType::CORPSE) && (o_ptr->sval == SV_SKELETON) && (streq(r_info[o_ptr->pval].name.c_str(), r_info[w_ptr->today_mon].name.c_str()))) {
             char buf[MAX_NLEN + 32];
             describe_flavor(player_ptr, o_name, o_ptr, 0);
             sprintf(buf, _("%s を換金しますか？", "Convert %s into money? "), o_name);
@@ -140,26 +138,29 @@ bool exchange_cash(PlayerType *player_ptr)
     for (int j = 0; j < MAX_BOUNTY; j++) {
         for (INVENTORY_IDX i = INVEN_PACK - 1; i >= 0; i--) {
             o_ptr = &player_ptr->inventory_list[i];
-            if ((o_ptr->tval != ItemKindType::CORPSE) || (o_ptr->pval != w_ptr->bounty_r_idx[j]))
+            if ((o_ptr->tval != ItemKindType::CORPSE) || (o_ptr->pval != w_ptr->bounty_r_idx[j])) {
                 continue;
+            }
 
             char buf[MAX_NLEN + 20];
             int num, k;
             INVENTORY_IDX item_new;
-            object_type forge;
+            ObjectType forge;
 
             describe_flavor(player_ptr, o_name, o_ptr, 0);
             sprintf(buf, _("%sを渡しますか？", "Hand %s over? "), o_name);
-            if (!get_check(buf))
+            if (!get_check(buf)) {
                 continue;
+            }
 
             vary_item(player_ptr, i, -o_ptr->number);
             chg_virtue(player_ptr, V_JUSTICE, 5);
             w_ptr->bounty_r_idx[j] += 10000;
 
             for (num = 0, k = 0; k < MAX_BOUNTY; k++) {
-                if (w_ptr->bounty_r_idx[k] >= 10000)
+                if (w_ptr->bounty_r_idx[k] >= 10000) {
                     num++;
+                }
             }
 
             msg_format(_("これで合計 %d ポイント獲得しました。", "You earned %d point%s total."), num, (num > 1 ? "s" : ""));
@@ -185,8 +186,9 @@ bool exchange_cash(PlayerType *player_ptr)
         }
     }
 
-    if (change)
+    if (change) {
         return true;
+    }
 
     msg_print(_("賞金を得られそうなものは持っていなかった。", "You have nothing."));
     msg_print(nullptr);
@@ -200,7 +202,7 @@ bool exchange_cash(PlayerType *player_ptr)
 void today_target(PlayerType *player_ptr)
 {
     char buf[160];
-    monster_race *r_ptr = &r_info[w_ptr->today_mon];
+    auto *r_ptr = &r_info[w_ptr->today_mon];
 
     clear_bldg(4, 18);
     c_put_str(TERM_YELLOW, _("本日の賞金首", "Wanted monster that changes from day to day"), 5, 10);
@@ -240,8 +242,7 @@ void show_bounty(void)
     for (int i = 0; i < MAX_BOUNTY; i++) {
         byte color;
         concptr done_mark;
-        monster_race *r_ptr
-            = &r_info[(w_ptr->bounty_r_idx[i] > 10000 ? w_ptr->bounty_r_idx[i] - 10000 : w_ptr->bounty_r_idx[i])];
+        monster_race *r_ptr = &r_info[(w_ptr->bounty_r_idx[i] > 10000 ? w_ptr->bounty_r_idx[i] - 10000 : w_ptr->bounty_r_idx[i])];
 
         if (w_ptr->bounty_r_idx[i] > 10000) {
             color = TERM_RED;
@@ -273,10 +274,12 @@ void determine_daily_bounty(PlayerType *player_ptr, bool conv_old)
     int max_dl = 3;
     if (!conv_old) {
         for (const auto &d_ref : d_info) {
-            if (max_dlv[d_ref.idx] < d_ref.mindepth)
+            if (max_dlv[d_ref.idx] < d_ref.mindepth) {
                 continue;
-            if (max_dl < max_dlv[d_ref.idx])
+            }
+            if (max_dl < max_dlv[d_ref.idx]) {
                 max_dl = max_dlv[d_ref.idx];
+            }
         }
     } else {
         max_dl = std::max(max_dlv[DUNGEON_ANGBAND], 3);
@@ -293,16 +296,21 @@ void determine_daily_bounty(PlayerType *player_ptr, bool conv_old)
             msg_format("日替わり候補: %s ", r_ptr->name.c_str());
         }
 
-        if (r_ptr->flags1 & RF1_UNIQUE)
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             continue;
-        if (r_ptr->flags7 & (RF7_NAZGUL | RF7_UNIQUE2))
+        }
+        if (r_ptr->flags7 & (RF7_NAZGUL | RF7_UNIQUE2)) {
             continue;
-        if (r_ptr->flags2 & RF2_MULTIPLY)
+        }
+        if (r_ptr->flags2 & RF2_MULTIPLY) {
             continue;
-        if ((r_ptr->flags9 & (RF9_DROP_CORPSE | RF9_DROP_SKELETON)) != (RF9_DROP_CORPSE | RF9_DROP_SKELETON))
+        }
+        if ((r_ptr->flags9 & (RF9_DROP_CORPSE | RF9_DROP_SKELETON)) != (RF9_DROP_CORPSE | RF9_DROP_SKELETON)) {
             continue;
-        if (r_ptr->rarity > 10)
+        }
+        if (r_ptr->rarity > 10) {
             continue;
+        }
         break;
     }
 
@@ -324,26 +332,32 @@ void determine_bounty_uniques(PlayerType *player_ptr)
             monster_race *r_ptr;
             r_ptr = &r_info[w_ptr->bounty_r_idx[i]];
 
-            if (!(r_ptr->flags1 & RF1_UNIQUE))
+            if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
                 continue;
+            }
 
-            if (!(r_ptr->flags9 & (RF9_DROP_CORPSE | RF9_DROP_SKELETON)))
+            if (!(r_ptr->flags9 & (RF9_DROP_CORPSE | RF9_DROP_SKELETON))) {
                 continue;
+            }
 
-            if (r_ptr->rarity > 100)
+            if (r_ptr->rarity > 100) {
                 continue;
+            }
 
-            if (no_questor_or_bounty_uniques(w_ptr->bounty_r_idx[i]))
+            if (no_questor_or_bounty_uniques(w_ptr->bounty_r_idx[i])) {
                 continue;
+            }
 
             int j;
             for (j = 0; j < i; j++) {
-                if (w_ptr->bounty_r_idx[i] == w_ptr->bounty_r_idx[j])
+                if (w_ptr->bounty_r_idx[i] == w_ptr->bounty_r_idx[j]) {
                     break;
+                }
             }
 
-            if (j == i)
+            if (j == i) {
                 break;
+            }
         }
     }
 

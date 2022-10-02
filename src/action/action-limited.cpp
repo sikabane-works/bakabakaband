@@ -10,10 +10,12 @@
 #include "grid/grid.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
+#include "player-base/player-class.h"
 #include "player/player-status.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-confusion.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -35,7 +37,7 @@ bool cmd_limit_cast(PlayerType *player_ptr)
         return true;
     }
 
-    if (is_shero(player_ptr) && (player_ptr->pclass != PlayerClassType::BERSERKER)) {
+    if (is_shero(player_ptr) && !PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
         msg_format(_("狂戦士化していて頭が回らない！", "You cannot think directly!"));
         return true;
     }
@@ -45,7 +47,7 @@ bool cmd_limit_cast(PlayerType *player_ptr)
 
 bool cmd_limit_confused(PlayerType *player_ptr)
 {
-    if (player_ptr->confused) {
+    if (player_ptr->effects()->confusion()->is_confused()) {
         msg_print(_("混乱していてできない！", "You are too confused!"));
         return true;
     }
@@ -102,8 +104,9 @@ bool cmd_limit_blind(PlayerType *player_ptr)
 bool cmd_limit_time_walk(PlayerType *player_ptr)
 {
     if (player_ptr->timewalk) {
-        if (flush_failure)
+        if (flush_failure) {
             flush();
+        }
 
         msg_print(_("止まった時の中ではうまく働かないようだ。", "It shows no reaction."));
         sound(SOUND_FAIL);

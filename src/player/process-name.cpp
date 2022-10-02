@@ -23,8 +23,9 @@
 void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
 {
     char old_player_base[32] = "";
-    if (w_ptr->character_generated)
+    if (w_ptr->character_generated) {
         strcpy(old_player_base, player_ptr->base_name);
+    }
 
     for (int i = 0; player_ptr->name[i]; i++) {
 #ifdef JP
@@ -33,11 +34,10 @@ void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
             continue;
         }
 
-        if (iscntrl((unsigned char)player_ptr->name[i]))
+        if (iscntrl((unsigned char)player_ptr->name[i])) {
 #else
-        if (iscntrl(player_ptr->name[i]))
+        if (iscntrl(player_ptr->name[i])) {
 #endif
-        {
             quit_fmt(_("'%s' という名前は不正なコントロールコードを含んでいます。", "The name '%s' contains control chars!"), player_ptr->name);
         }
     }
@@ -52,8 +52,9 @@ void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
 
 #ifdef JP
         if (iskanji(c)) {
-            if (k + 2 >= (int)sizeof(player_ptr->base_name) || !player_ptr->name[i + 1])
+            if (k + 2 >= (int)sizeof(player_ptr->base_name) || !player_ptr->name[i + 1]) {
                 break;
+            }
 
             player_ptr->base_name[k++] = c;
             i++;
@@ -73,13 +74,15 @@ void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
         else if (angband_strchr("\"*,/:;<>?\\|", c))
             player_ptr->base_name[k++] = '_';
 #endif
-        else if (isprint(c))
+        else if (isprint(c)) {
             player_ptr->base_name[k++] = c;
+        }
     }
 
     player_ptr->base_name[k] = '\0';
-    if (!player_ptr->base_name[0])
+    if (!player_ptr->base_name[0]) {
         strcpy(player_ptr->base_name, "PLAYER");
+    }
 
     auto is_modified = false;
     if (is_new_savefile && (!savefile[0] || !keep_savefile)) {
@@ -96,13 +99,14 @@ void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
         is_modified = true;
     }
 
-    if (is_modified  || !savefile_base[0]) {
+    if (is_modified || !savefile_base[0]) {
         concptr s = savefile;
         while (true) {
             concptr t;
             t = angband_strstr(s, PATH_SEP);
-            if (!t)
+            if (!t) {
                 break;
+            }
             s = t + 1;
         }
 
@@ -145,8 +149,9 @@ void get_name(PlayerType *player_ptr)
 
     strcpy(tmp, ap_ptr->title);
 #ifdef JP
-    if (ap_ptr->no == 1)
+    if (ap_ptr->no == 1) {
         strcat(tmp, "の");
+    }
 #else
     strcat(tmp, " ");
 #endif

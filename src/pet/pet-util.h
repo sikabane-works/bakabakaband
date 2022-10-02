@@ -3,7 +3,7 @@
 #include "system/angband.h"
 
 enum pet_command {
-	PET_DISMISS = 1, /*!< ペットに関するコマンド: ペットを離す */
+    PET_DISMISS = 1, /*!< ペットに関するコマンド: ペットを離す */
     PET_TARGET = 2, /*!< ペットに関するコマンド: ペットのターゲットを指定 */
     PET_STAY_CLOSE = 3, /*!< ペットに関するコマンド: 近くにいろ */
     PET_FOLLOW_ME = 4, /*!< ペットに関するコマンド: ついて来い */

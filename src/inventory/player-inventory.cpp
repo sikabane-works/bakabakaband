@@ -44,11 +44,13 @@
  * @return アイテムを拾えるならばTRUEを返す。
  * @details assuming mode = (USE_EQUIP | USE_INVEN | USE_FLOOR).
  */
-bool can_get_item(PlayerType *player_ptr, const ItemTester& item_tester)
+bool can_get_item(PlayerType *player_ptr, const ItemTester &item_tester)
 {
-    for (int j = 0; j < INVEN_TOTAL; j++)
-        if (item_tester.okay(&player_ptr->inventory_list[j]))
+    for (int j = 0; j < INVEN_TOTAL; j++) {
+        if (item_tester.okay(&player_ptr->inventory_list[j])) {
             return true;
+        }
+    }
 
     OBJECT_IDX floor_list[23];
     ITEM_NUMBER floor_num = scan_floor_items(player_ptr, floor_list, player_ptr->y, player_ptr->x, SCAN_FLOOR_ITEM_TESTER | SCAN_FLOOR_ONLY_MARKED, item_tester);
@@ -65,10 +67,11 @@ static bool py_pickup_floor_aux(PlayerType *player_ptr)
     OBJECT_IDX item;
     concptr q = _("どれを拾いますか？", "Get which item? ");
     concptr s = _("もうザックには床にあるどのアイテムも入らない。", "You no longer have any room for the objects on the floor.");
-    if (choose_object(player_ptr, &item, q, s, (USE_FLOOR), FuncItemTester(check_store_item_to_inventory, player_ptr)))
+    if (choose_object(player_ptr, &item, q, s, (USE_FLOOR), FuncItemTester(check_store_item_to_inventory, player_ptr))) {
         this_o_idx = 0 - item;
-    else
+    } else {
         return false;
+    }
 
     describe_pickup_item(player_ptr, this_o_idx);
     return true;
@@ -83,7 +86,7 @@ static bool py_pickup_floor_aux(PlayerType *player_ptr)
 void py_pickup_floor(PlayerType *player_ptr, bool pickup)
 {
     GAME_TEXT o_name[MAX_NLEN];
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     int floor_num = 0;
     OBJECT_IDX floor_o_idx = 0;
     int can_pickup = 0;
@@ -106,23 +109,26 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
             continue;
         }
 
-        if (check_store_item_to_inventory(player_ptr, o_ptr) && check_get_item(o_ptr))
+        if (check_store_item_to_inventory(player_ptr, o_ptr) && check_get_item(o_ptr)) {
             can_pickup++;
+        }
 
         floor_num++;
         floor_o_idx = this_o_idx;
     }
 
-    if (!floor_num)
+    if (!floor_num) {
         return;
+    }
 
     if (!pickup) {
         if (floor_num == 1) {
             o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
             describe_flavor(player_ptr, o_name, o_ptr, 0);
             msg_format(_("%sがある。", "You see %s."), o_name);
-        } else
+        } else {
             msg_format(_("%d 個のアイテムの山がある。", "You see a pile of %d items."), floor_num);
+        }
 
         return;
     }
@@ -136,16 +142,19 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
             } else {
                 msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
             }
-        } else
+        } else {
             msg_print(_("ザックには床にあるどのアイテムも入らない。", "You have no room for any of the objects on the floor."));
+        }
 
         return;
     }
 
     if (floor_num != 1) {
-        while (can_pickup--)
-            if (!py_pickup_floor_aux(player_ptr))
+        while (can_pickup--) {
+            if (!py_pickup_floor_aux(player_ptr)) {
                 break;
+            }
+        }
 
         return;
     }
@@ -155,8 +164,9 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
         o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
         describe_flavor(player_ptr, o_name, o_ptr, 0);
         (void)sprintf(out_val, _("%sを拾いますか? ", "Pick up %s? "), o_name);
-        if (!get_check(out_val))
+        if (!get_check(out_val)) {
             return;
+        }
     }
 
     o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
@@ -187,7 +197,7 @@ void describe_pickup_item(PlayerType *player_ptr, OBJECT_IDX o_idx)
     GAME_TEXT o_name[MAX_NLEN];
 #endif
 
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     o_ptr = &player_ptr->current_floor_ptr->o_list[o_idx];
 
 #ifdef JP
@@ -202,14 +212,15 @@ void describe_pickup_item(PlayerType *player_ptr, OBJECT_IDX o_idx)
     if (player_ptr->ppersonality == PERSONALITY_MUNCHKIN) {
         bool old_known = identify_item(player_ptr, o_ptr);
         autopick_alter_item(player_ptr, slot, (bool)(destroy_identify && !old_known));
-        if (o_ptr->marked & OM_AUTODESTROY)
+        if (o_ptr->marked & OM_AUTODESTROY) {
             return;
+        }
     }
 
     describe_flavor(player_ptr, o_name, o_ptr, 0);
 
 #ifdef JP
-    if ((o_ptr->name1 == ART_CRIMSON) && (player_ptr->ppersonality == PERSONALITY_COMBAT)) {
+    if ((o_ptr->fixed_artifact_idx == ART_CRIMSON) && (player_ptr->ppersonality == PERSONALITY_COMBAT)) {
         msg_format("こうして、%sは『クリムゾン』を手に入れた。", player_ptr->name);
         msg_print("しかし今、『混沌のサーペント』の放ったモンスターが、");
         msg_format("%sに襲いかかる．．．", player_ptr->name);
@@ -246,7 +257,7 @@ void carry(PlayerType *player_ptr, bool pickup)
     player_ptr->redraw |= PR_MAP;
     player_ptr->window_flags |= PW_OVERHEAD;
     handle_stuff(player_ptr);
-    grid_type *g_ptr = &player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x];
+    auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x];
     autopick_pickup_items(player_ptr, g_ptr);
     if (easy_floor) {
         py_pickup_floor(player_ptr, pickup);
@@ -255,7 +266,7 @@ void carry(PlayerType *player_ptr, bool pickup)
 
     for (auto it = g_ptr->o_idx_list.begin(); it != g_ptr->o_idx_list.end();) {
         const OBJECT_IDX this_o_idx = *it++;
-        object_type *o_ptr;
+        ObjectType *o_ptr;
         o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, 0);

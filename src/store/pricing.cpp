@@ -31,40 +31,47 @@
  * "greed" value is always something (?).
  * </pre>
  */
-PRICE price_item(PlayerType *player_ptr, object_type *o_ptr, int greed, bool flip)
+PRICE price_item(PlayerType *player_ptr, ObjectType *o_ptr, int greed, bool flip)
 {
     PRICE price = object_value(o_ptr);
-    if (price <= 0)
+    if (price <= 0) {
         return 0L;
+    }
 
     int factor = rgold_adj[enum2i(ot_ptr->owner_race)][enum2i(player_ptr->prace)] - std::min(player_ptr->prestige / 10, 30);
     factor += adj_chr_gold[player_ptr->stat_index[A_CHR]];
     int adjust;
     if (flip) {
         adjust = 100 + (300 - (greed + factor));
-        if (adjust > 100)
+        if (adjust > 100) {
             adjust = 100;
+        }
 
-        if (cur_store_num == StoreSaleType::BLACK)
+        if (cur_store_num == StoreSaleType::BLACK) {
             price = price / 2;
+        }
 
         price = (price * adjust + 50L) / 100L;
     } else {
         adjust = 100 + ((greed + factor) - 300);
-        if (adjust < 100)
+        if (adjust < 100) {
             adjust = 100;
+        }
 
-        if (cur_store_num == StoreSaleType::BLACK)
+        if (cur_store_num == StoreSaleType::BLACK) {
             price = price * 2;
+        }
 
         price = (int32_t)(((uint32_t)price * (uint32_t)adjust + 50UL) / 100UL);
     }
 
-    if (price <= 0L)
+    if (price <= 0L) {
         return 1L;
+    }
 
-    if (price >= LOW_PRICE_THRESHOLD)
+    if (price >= LOW_PRICE_THRESHOLD) {
         price += (flip ? -1 : 1) * price / 10;
+    }
 
     return price;
 }

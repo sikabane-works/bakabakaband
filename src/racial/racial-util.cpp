@@ -1,5 +1,6 @@
 ﻿#include "racial/racial-util.h"
 #include "io/input-key-requester.h"
+#include "player-base/player-class.h"
 #include "system/player-type-definition.h"
 #include "util/enum-converter.h"
 
@@ -7,10 +8,11 @@ rc_type::rc_type(PlayerType *player_ptr)
 {
     this->ask = true;
     this->lvl = player_ptr->lev;
-    this->is_warrior = (player_ptr->pclass == PlayerClassType::WARRIOR || player_ptr->pclass == PlayerClassType::BERSERKER);
+    PlayerClass pc(player_ptr);
+    this->is_warrior = pc.equals(PlayerClassType::WARRIOR) || pc.equals(PlayerClassType::BERSERKER);
 }
 
-void rc_type::add_power(rpi_type& rpi, int number)
+void rc_type::add_power(rpi_type &rpi, int number)
 {
     rpi.number = number;
     this->power_desc.push_back(std::move(rpi));

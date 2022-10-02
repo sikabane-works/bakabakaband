@@ -21,7 +21,7 @@
  * @param questnum クエストのID
  * @param do_init クエストの開始処理か(true)、結果処理か(FALSE)
  */
-static void get_questinfo(PlayerType *player_ptr, IDX questnum, bool do_init)
+static void get_questinfo(PlayerType *player_ptr, QuestId questnum, bool do_init)
 {
     for (int i = 0; i < 10; i++) {
         quest_text[i][0] = '\0';
@@ -29,16 +29,17 @@ static void get_questinfo(PlayerType *player_ptr, IDX questnum, bool do_init)
 
     quest_text_line = 0;
 
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    QUEST_IDX old_quest = floor_ptr->inside_quest;
-    floor_ptr->inside_quest = questnum;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    QuestId old_quest = floor_ptr->quest_number;
+    floor_ptr->quest_number = questnum;
 
     init_flags = INIT_SHOW_TEXT;
-    if (do_init)
+    if (do_init) {
         init_flags = i2enum<init_flags_type>(init_flags | INIT_ASSIGN);
+    }
 
     parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
-    floor_ptr->inside_quest = old_quest;
+    floor_ptr->quest_number = old_quest;
 }
 
 /*!
@@ -47,7 +48,7 @@ static void get_questinfo(PlayerType *player_ptr, IDX questnum, bool do_init)
  * @param questnum クエストのID
  * @param do_init クエストの開始処理か(true)、結果処理か(FALSE)
  */
-void print_questinfo(PlayerType *player_ptr, IDX questnum, bool do_init)
+void print_questinfo(PlayerType *player_ptr, QuestId questnum, bool do_init)
 {
     get_questinfo(player_ptr, questnum, do_init);
 
@@ -68,9 +69,9 @@ void print_questinfo(PlayerType *player_ptr, IDX questnum, bool do_init)
 void castle_quest(PlayerType *player_ptr)
 {
     clear_bldg(4, 18);
-    QUEST_IDX q_index = player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].special;
+    QuestId q_index = i2enum<QuestId>(player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].special);
 
-    if (!q_index) {
+    if (!inside_quest(q_index)) {
         put_str(_("今のところクエストはありません。", "I don't have a quest for you at the moment."), 8, 0);
         return;
     }
@@ -98,8 +99,9 @@ void castle_quest(PlayerType *player_ptr)
 
         put_str(_("このクエストは放棄することができます。", "You can give up this quest."), 12, 0);
 
-        if (!get_check(_("二度と受けられなくなりますが放棄しますか？", "Are you sure to give up this quest? ")))
+        if (!get_check(_("二度と受けられなくなりますが放棄しますか？", "Are you sure to give up this quest? "))) {
             return;
+        }
 
         clear_bldg(4, 18);
         msg_print(_("放棄しました。", "You gave up."));
@@ -114,8 +116,9 @@ void castle_quest(PlayerType *player_ptr)
         return;
     }
 
-    if (q_ptr->status != QuestStatusType::UNTAKEN)
+    if (q_ptr->status != QuestStatusType::UNTAKEN) {
         return;
+    }
 
     q_ptr->status = QuestStatusType::TAKEN;
     reinit_wilderness = true;
@@ -130,16 +133,17 @@ void castle_quest(PlayerType *player_ptr)
 
     monster_race *r_ptr;
     r_ptr = &r_info[q_ptr->r_idx];
-    while ((r_ptr->flags1 & RF1_UNIQUE) || (r_ptr->rarity != 1)) {
+    while (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->rarity != 1)) {
         q_ptr->r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 4 + randint1(6), 0);
         r_ptr = &r_info[q_ptr->r_idx];
     }
 
     if (q_ptr->max_num == 0) {
-        if (randint1(10) > 7)
+        if (randint1(10) > 7) {
             q_ptr->max_num = 1;
-        else
+        } else {
             q_ptr->max_num = randint1(3) + 1;
+        }
     }
 
     q_ptr->cur_num = 0;

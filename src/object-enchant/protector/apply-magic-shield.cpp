@@ -20,7 +20,7 @@
  * @param level 生成基準階
  * @param power 生成ランク
  */
-ShieldEnchanter::ShieldEnchanter(PlayerType *player_ptr, object_type *o_ptr, DEPTH level, int power)
+ShieldEnchanter::ShieldEnchanter(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH level, int power)
     : AbstractProtectorEnchanter{ o_ptr, level, power }
     , player_ptr(player_ptr)
 {
@@ -42,7 +42,7 @@ void ShieldEnchanter::apply_magic()
         return;
     }
 
-    if (one_in_(20) || (this->power > 2)) {
+    if ((this->power > 2) || one_in_(20)) {
         become_random_artifact(this->player_ptr, this->o_ptr, false);
         return;
     }
@@ -57,20 +57,20 @@ void ShieldEnchanter::apply_magic()
 void ShieldEnchanter::give_ego_index()
 {
     while (true) {
-        this->o_ptr->name2 = get_random_ego(INVEN_SUB_HAND, true);
+        this->o_ptr->ego_idx = get_random_ego(INVEN_SUB_HAND, true);
         auto is_metal = this->o_ptr->sval == SV_SMALL_METAL_SHIELD;
         is_metal |= this->o_ptr->sval == SV_LARGE_METAL_SHIELD;
-        if (!is_metal && (this->o_ptr->name2 == EGO_S_DWARVEN)) {
+        if (!is_metal && (this->o_ptr->ego_idx == EgoType::S_DWARVEN)) {
             continue;
         }
 
         break;
     }
 
-    switch (this->o_ptr->name2) {
-    case EGO_REFLECTION:
+    switch (this->o_ptr->ego_idx) {
+    case EgoType::REFLECTION:
         if (this->o_ptr->sval == SV_MIRROR_SHIELD) {
-            this->o_ptr->name2 = 0;
+            this->o_ptr->ego_idx = EgoType::NONE;
         }
 
         return;

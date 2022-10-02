@@ -44,12 +44,12 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
-typedef struct {
+struct amuse_type {
     ItemKindType tval;
     OBJECT_SUBTYPE_VALUE sval;
     PERCENTAGE prob;
     byte flag;
-} amuse_type;
+};
 
 /*!
  * @brief 装備強化処理の失敗率定数（千分率） /
@@ -68,14 +68,13 @@ static int enchant_table[16] = { 0, 10, 50, 100, 200, 300, 400, 500, 650, 800, 9
 #define AMS_MULTIPLE 0x04 /* Drop 1-3 objects for one type */
 #define AMS_PILE 0x08 /* Drop 1-99 pile objects for one type */
 
-static amuse_type amuse_info[]
-    = { { ItemKindType::BOTTLE, SV_ANY, 5, AMS_NOTHING }, { ItemKindType::JUNK, SV_ANY, 3, AMS_MULTIPLE }, { ItemKindType::SPIKE, SV_ANY, 10, AMS_PILE }, { ItemKindType::STATUE, SV_ANY, 15, AMS_NOTHING },
-          { ItemKindType::CORPSE, SV_ANY, 15, AMS_NO_UNIQUE }, { ItemKindType::SKELETON, SV_ANY, 10, AMS_NO_UNIQUE }, { ItemKindType::FIGURINE, SV_ANY, 10, AMS_NO_UNIQUE },
-          { ItemKindType::READING_MATTER, SV_ANY, 1, AMS_NOTHING }, { ItemKindType::POLEARM, SV_TSURIZAO, 3, AMS_NOTHING }, // Fishing Pole of Taikobo
-          { ItemKindType::SWORD, SV_BROKEN_DAGGER, 3, AMS_FIXED_ART }, // Broken Dagger of Magician
-          { ItemKindType::SWORD, SV_BROKEN_DAGGER, 10, AMS_NOTHING }, { ItemKindType::SWORD, SV_BROKEN_SWORD, 5, AMS_NOTHING }, { ItemKindType::SCROLL, SV_SCROLL_AMUSEMENT, 10, AMS_NOTHING },
+static amuse_type amuse_info[] = { { ItemKindType::BOTTLE, SV_ANY, 5, AMS_NOTHING }, { ItemKindType::JUNK, SV_ANY, 3, AMS_MULTIPLE }, { ItemKindType::SPIKE, SV_ANY, 10, AMS_PILE }, { ItemKindType::STATUE, SV_ANY, 15, AMS_NOTHING },
+    { ItemKindType::CORPSE, SV_ANY, 15, AMS_NO_UNIQUE }, { ItemKindType::SKELETON, SV_ANY, 10, AMS_NO_UNIQUE }, { ItemKindType::FIGURINE, SV_ANY, 10, AMS_NO_UNIQUE },
+    { ItemKindType::READING_MATTER, SV_ANY, 1, AMS_NOTHING }, { ItemKindType::POLEARM, SV_TSURIZAO, 3, AMS_NOTHING }, // Fishing Pole of Taikobo
+    { ItemKindType::SWORD, SV_BROKEN_DAGGER, 3, AMS_FIXED_ART }, // Broken Dagger of Magician
+    { ItemKindType::SWORD, SV_BROKEN_DAGGER, 10, AMS_NOTHING }, { ItemKindType::SWORD, SV_BROKEN_SWORD, 5, AMS_NOTHING }, { ItemKindType::SCROLL, SV_SCROLL_AMUSEMENT, 10, AMS_NOTHING },
 
-          { ItemKindType::NONE, 0, 0, 0 } };
+    { ItemKindType::NONE, 0, 0, 0 } };
 
 /*!
  * @brief 誰得ドロップを行う。
@@ -93,8 +92,8 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
     }
 
     /* Acquirement */
-    object_type *i_ptr;
-    object_type object_type_body;
+    ObjectType *i_ptr;
+    ObjectType ObjectType_body;
     while (num) {
         int i;
         KIND_OBJECT_IDX k_idx;
@@ -104,16 +103,18 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
 
         for (i = 0;; i++) {
             r -= amuse_info[i].prob;
-            if (r <= 0)
+            if (r <= 0) {
                 break;
+            }
         }
-        i_ptr = &object_type_body;
+        i_ptr = &ObjectType_body;
         i_ptr->wipe();
         k_idx = lookup_kind(amuse_info[i].tval, amuse_info[i].sval);
 
         /* Paranoia - reroll if nothing */
-        if (!k_idx)
+        if (!k_idx) {
             continue;
+        }
 
         /* Search an artifact index if need */
         insta_art = k_info[k_idx].gen_flags.has(ItemGenerationTraitType::INSTA_ART);
@@ -121,40 +122,50 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
 
         if (insta_art || fixed_art) {
             for (const auto &a_ref : a_info) {
-                if (a_ref.idx == 0)
+                if (a_ref.idx == 0) {
                     continue;
-                if (insta_art && !a_ref.gen_flags.has(ItemGenerationTraitType::INSTA_ART))
+                }
+                if (insta_art && !a_ref.gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
                     continue;
-                if (a_ref.tval != k_info[k_idx].tval)
+                }
+                if (a_ref.tval != k_info[k_idx].tval) {
                     continue;
-                if (a_ref.sval != k_info[k_idx].sval)
+                }
+                if (a_ref.sval != k_info[k_idx].sval) {
                     continue;
-                if (a_ref.cur_num > 0)
+                }
+                if (a_ref.cur_num > 0) {
                     continue;
+                }
 
                 a_idx = a_ref.idx;
                 break;
             }
 
-            if (a_idx >= static_cast<ARTIFACT_IDX>(a_info.size()))
+            if (a_idx >= static_cast<ARTIFACT_IDX>(a_info.size())) {
                 continue;
+            }
         }
 
         /* Make an object (if possible) */
         i_ptr->prep(k_idx);
-        if (a_idx)
-            i_ptr->name1 = a_idx;
+        if (a_idx) {
+            i_ptr->fixed_artifact_idx = a_idx;
+        }
         apply_magic_to_object(player_ptr, i_ptr, 1, AM_NO_FIXED_ART);
 
         if (amuse_info[i].flag & AMS_NO_UNIQUE) {
-            if (r_info[i_ptr->pval].flags1 & RF1_UNIQUE)
+            if (r_info[i_ptr->pval].kind_flags.has(MonsterKindType::UNIQUE)) {
                 continue;
+            }
         }
 
-        if (amuse_info[i].flag & AMS_MULTIPLE)
+        if (amuse_info[i].flag & AMS_MULTIPLE) {
             i_ptr->number = randint1(3);
-        if (amuse_info[i].flag & AMS_PILE)
+        }
+        if (amuse_info[i].flag & AMS_PILE) {
             i_ptr->number = randint1(99);
+        }
 
         if (known) {
             object_aware(player_ptr, i_ptr);
@@ -162,8 +173,9 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
         }
 
         /* Paranoia - reroll if nothing */
-        if (!(i_ptr->k_idx))
+        if (!(i_ptr->k_idx)) {
             continue;
+        }
 
         (void)drop_near(player_ptr, i_ptr, -1, y1, x1);
 
@@ -184,18 +196,19 @@ void amusement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool k
  */
 void acquirement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool great, bool special, bool known)
 {
-    object_type *i_ptr;
-    object_type object_type_body;
+    ObjectType *i_ptr;
+    ObjectType ObjectType_body;
     BIT_FLAGS mode = AM_GOOD | (great || special ? AM_GREAT : AM_NONE) | (special ? AM_SPECIAL : AM_NONE);
 
     /* Acquirement */
     while (num--) {
-        i_ptr = &object_type_body;
+        i_ptr = &ObjectType_body;
         i_ptr->wipe();
 
         /* Make a good (or great) object (if possible) */
-        if (!make_object(player_ptr, i_ptr, mode))
+        if (!make_object(player_ptr, i_ptr, mode)) {
             continue;
+        }
 
         if (known) {
             object_aware(player_ptr, i_ptr);
@@ -215,11 +228,12 @@ void acquirement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool
 bool curse_armor(PlayerType *player_ptr)
 {
     /* Curse the body armor */
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     o_ptr = &player_ptr->inventory_list[INVEN_BODY];
 
-    if (!o_ptr->k_idx)
+    if (!o_ptr->k_idx) {
         return false;
+    }
 
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX);
@@ -240,8 +254,8 @@ bool curse_armor(PlayerType *player_ptr)
     chg_virtue(player_ptr, V_ENCHANT, -5);
 
     /* Blast the armor */
-    o_ptr->name1 = 0;
-    o_ptr->name2 = EGO_BLASTED;
+    o_ptr->fixed_artifact_idx = 0;
+    o_ptr->ego_idx = EgoType::BLASTED;
     o_ptr->to_a = 0 - randint1(5) - randint1(5);
     o_ptr->to_h = 0;
     o_ptr->to_d = 0;
@@ -270,10 +284,11 @@ bool curse_armor(PlayerType *player_ptr)
  * @return 何も持っていない場合を除き、常にTRUEを返す
  * @todo 元のreturnは間違っているが、修正後の↓文がどれくらい正しいかは要チェック
  */
-bool curse_weapon_object(PlayerType *player_ptr, bool force, object_type *o_ptr)
+bool curse_weapon_object(PlayerType *player_ptr, bool force, ObjectType *o_ptr)
 {
-    if (!o_ptr->k_idx)
+    if (!o_ptr->k_idx) {
         return false;
+    }
 
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX);
@@ -289,13 +304,14 @@ bool curse_weapon_object(PlayerType *player_ptr, bool force, object_type *o_ptr)
     }
 
     /* not artifact or failed save... */
-    if (!force)
+    if (!force) {
         msg_format(_("恐怖の暗黒オーラがあなたの%sを包み込んだ！", "A terrible black aura blasts your %s!"), o_name);
+    }
     chg_virtue(player_ptr, V_ENCHANT, -5);
 
     /* Shatter the weapon */
-    o_ptr->name1 = 0;
-    o_ptr->name2 = EGO_SHATTERED;
+    o_ptr->fixed_artifact_idx = 0;
+    o_ptr->ego_idx = EgoType::SHATTERED;
     o_ptr->to_h = 0 - randint1(5) - randint1(5);
     o_ptr->to_d = 0 - randint1(5) - randint1(5);
     o_ptr->to_a = 0;
@@ -324,34 +340,39 @@ void brand_bolts(PlayerType *player_ptr)
 {
     /* Use the first acceptable bolts */
     for (int i = 0; i < INVEN_PACK; i++) {
-        object_type *o_ptr = &player_ptr->inventory_list[i];
+        auto *o_ptr = &player_ptr->inventory_list[i];
 
         /* Skip non-bolts */
-        if (o_ptr->tval != ItemKindType::BOLT)
+        if (o_ptr->tval != ItemKindType::BOLT) {
             continue;
+        }
 
         /* Skip artifacts and ego-items */
-        if (o_ptr->is_artifact() || o_ptr->is_ego())
+        if (o_ptr->is_artifact() || o_ptr->is_ego()) {
             continue;
+        }
 
         /* Skip cursed/broken items */
-        if (o_ptr->is_cursed() || o_ptr->is_broken())
+        if (o_ptr->is_cursed() || o_ptr->is_broken()) {
             continue;
+        }
 
         /* Randomize */
-        if (randint0(100) < 75)
+        if (randint0(100) < 75) {
             continue;
+        }
 
         msg_print(_("クロスボウの矢が炎のオーラに包まれた！", "Your bolts are covered in a fiery aura!"));
 
         /* Ego-item */
-        o_ptr->name2 = EGO_FLAME;
+        o_ptr->ego_idx = EgoType::FLAME;
         enchant_equipment(player_ptr, o_ptr, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
         return;
     }
 
-    if (flush_failure)
+    if (flush_failure) {
         flush();
+    }
     msg_print(_("炎で強化するのに失敗した。", "The fiery enchantment failed."));
 }
 
@@ -360,10 +381,9 @@ void brand_bolts(PlayerType *player_ptr)
  * Break the curse of an item
  * @param o_ptr 呪い装備情報の参照ポインタ
  */
-static void break_curse(object_type *o_ptr)
+static void break_curse(ObjectType *o_ptr)
 {
-    BIT_FLAGS is_curse_broken
-        = o_ptr->is_cursed() && o_ptr->curse_flags.has_not(CurseTraitType::PERMA_CURSE) && o_ptr->curse_flags.has_not(CurseTraitType::HEAVY_CURSE) && (randint0(100) < 25);
+    BIT_FLAGS is_curse_broken = o_ptr->is_cursed() && o_ptr->curse_flags.has_not(CurseTraitType::PERMA_CURSE) && o_ptr->curse_flags.has_not(CurseTraitType::HEAVY_CURSE) && (randint0(100) < 25);
     if (!is_curse_broken) {
         return;
     }
@@ -398,7 +418,7 @@ static void break_curse(object_type *o_ptr)
  * the larger the pile, the lower the chance of success.
  * </pre>
  */
-bool enchant_equipment(PlayerType *player_ptr, object_type *o_ptr, int n, int eflag)
+bool enchant_equipment(PlayerType *player_ptr, ObjectType *o_ptr, int n, int eflag)
 {
     /* Large piles resist enchantment */
     int prob = o_ptr->number * 100;
@@ -415,44 +435,49 @@ bool enchant_equipment(PlayerType *player_ptr, object_type *o_ptr, int n, int ef
     bool force = (eflag & ENCH_FORCE);
     for (int i = 0; i < n; i++) {
         /* Hack -- Roll for pile resistance */
-        if (!force && randint0(prob) >= 100)
+        if (!force && randint0(prob) >= 100) {
             continue;
+        }
 
         /* Enchant to hit */
         if (eflag & ENCH_TOHIT) {
-            if (o_ptr->to_h < 0)
+            if (o_ptr->to_h < 0) {
                 chance = 0;
-            else if (o_ptr->to_h > 15)
+            } else if (o_ptr->to_h > 15) {
                 chance = 1000;
-            else
+            } else {
                 chance = enchant_table[o_ptr->to_h];
+            }
 
             if (force || ((randint1(1000) > chance) && (!a || (randint0(100) < 50)))) {
                 o_ptr->to_h++;
                 res = true;
 
                 /* only when you get it above -1 -CFT */
-                if (o_ptr->to_h >= 0)
+                if (o_ptr->to_h >= 0) {
                     break_curse(o_ptr);
+                }
             }
         }
 
         /* Enchant to damage */
         if (eflag & ENCH_TODAM) {
-            if (o_ptr->to_d < 0)
+            if (o_ptr->to_d < 0) {
                 chance = 0;
-            else if (o_ptr->to_d > 15)
+            } else if (o_ptr->to_d > 15) {
                 chance = 1000;
-            else
+            } else {
                 chance = enchant_table[o_ptr->to_d];
+            }
 
             if (force || ((randint1(1000) > chance) && (!a || (randint0(100) < 50)))) {
                 o_ptr->to_d++;
                 res = true;
 
                 /* only when you get it above -1 -CFT */
-                if (o_ptr->to_d >= 0)
+                if (o_ptr->to_d >= 0) {
                     break_curse(o_ptr);
+                }
             }
         }
 
@@ -461,26 +486,29 @@ bool enchant_equipment(PlayerType *player_ptr, object_type *o_ptr, int n, int ef
             continue;
         }
 
-        if (o_ptr->to_a < 0)
+        if (o_ptr->to_a < 0) {
             chance = 0;
-        else if (o_ptr->to_a > 15)
+        } else if (o_ptr->to_a > 15) {
             chance = 1000;
-        else
+        } else {
             chance = enchant_table[o_ptr->to_a];
+        }
 
         if (force || ((randint1(1000) > chance) && (!a || (randint0(100) < 50)))) {
             o_ptr->to_a++;
             res = true;
 
             /* only when you get it above -1 -CFT */
-            if (o_ptr->to_a >= 0)
+            if (o_ptr->to_a >= 0) {
                 break_curse(o_ptr);
+            }
         }
     }
 
     /* Failure */
-    if (!res)
+    if (!res) {
         return false;
+    }
     set_bits(player_ptr->update, PU_BONUS | PU_COMBINE | PU_REORDER);
     set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST);
 
@@ -500,23 +528,25 @@ bool enchant_equipment(PlayerType *player_ptr, object_type *o_ptr, int n, int ef
  * Note that "num_ac" requires armour, else weapon
  * Returns TRUE if attempted, false if cancelled
  */
-bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, HIT_POINT num_dam, ARMOUR_CLASS num_ac)
+bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR_CLASS num_ac)
 {
     /* Assume enchant weapon */
-    FuncItemTester item_tester(&object_type::allow_enchant_weapon);
+    FuncItemTester item_tester(&ObjectType::allow_enchant_weapon);
 
     /* Enchant armor if requested */
-    if (num_ac)
-        item_tester = FuncItemTester(&object_type::is_armour);
+    if (num_ac) {
+        item_tester = FuncItemTester(&ObjectType::is_armour);
+    }
 
     concptr q = _("どのアイテムを強化しますか? ", "Enchant which item? ");
     concptr s = _("強化できるアイテムがない。", "You have nothing to enchant.");
 
     OBJECT_IDX item;
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), item_tester);
-    if (!o_ptr)
+    if (!o_ptr) {
         return false;
+    }
 
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -528,21 +558,27 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, HIT_POINT num_dam, 
 
     /* Enchant */
     bool is_enchant_successful = false;
-    if (enchant_equipment(player_ptr, o_ptr, num_hit, ENCH_TOHIT))
+    if (enchant_equipment(player_ptr, o_ptr, num_hit, ENCH_TOHIT)) {
         is_enchant_successful = true;
-    if (enchant_equipment(player_ptr, o_ptr, num_dam, ENCH_TODAM))
+    }
+    if (enchant_equipment(player_ptr, o_ptr, num_dam, ENCH_TODAM)) {
         is_enchant_successful = true;
-    if (enchant_equipment(player_ptr, o_ptr, num_ac, ENCH_TOAC))
+    }
+    if (enchant_equipment(player_ptr, o_ptr, num_ac, ENCH_TOAC)) {
         is_enchant_successful = true;
+    }
 
     if (!is_enchant_successful) {
-        if (flush_failure)
+        if (flush_failure) {
             flush();
+        }
         msg_print(_("強化に失敗した。", "The enchantment failed."));
-        if (one_in_(3))
+        if (one_in_(3)) {
             chg_virtue(player_ptr, V_ENCHANT, -1);
-    } else
+        }
+    } else {
         chg_virtue(player_ptr, V_ENCHANT, 1);
+    }
 
     calc_android_exp(player_ptr);
 
@@ -562,17 +598,17 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
     concptr s = _("強化できる武器がない。", "You have nothing to enchant.");
 
     OBJECT_IDX item;
-    object_type *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, USE_EQUIP | IGNORE_BOTHHAND_SLOT, FuncItemTester(&object_type::allow_enchant_melee_weapon));
-    if (!o_ptr)
+    ObjectType *o_ptr;
+    o_ptr = choose_object(player_ptr, &item, q, s, USE_EQUIP | IGNORE_BOTHHAND_SLOT, FuncItemTester(&ObjectType::allow_enchant_melee_weapon));
+    if (!o_ptr) {
         return;
+    }
 
-    bool is_special_item = o_ptr->k_idx && !o_ptr->is_artifact() && !o_ptr->is_ego() && !o_ptr->is_cursed()
-        && !((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_POISON_NEEDLE)) && !((o_ptr->tval == ItemKindType::POLEARM) && (o_ptr->sval == SV_DEATH_SCYTHE))
-        && !((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_DIAMOND_EDGE));
+    bool is_special_item = o_ptr->k_idx && !o_ptr->is_artifact() && !o_ptr->is_ego() && !o_ptr->is_cursed() && !((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_POISON_NEEDLE)) && !((o_ptr->tval == ItemKindType::POLEARM) && (o_ptr->sval == SV_DEATH_SCYTHE)) && !((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_DIAMOND_EDGE));
     if (!is_special_item) {
-        if (flush_failure)
+        if (flush_failure) {
             flush();
+        }
 
         msg_print(_("属性付加に失敗した。", "The branding failed."));
         chg_virtue(player_ptr, V_ENCHANT, -2);
@@ -589,86 +625,87 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
         if (o_ptr->tval == ItemKindType::SWORD) {
             act = _("は鋭さを増した！", "becomes very sharp!");
 
-            o_ptr->name2 = EGO_SHARPNESS;
+            o_ptr->ego_idx = EgoType::SHARPNESS;
             o_ptr->pval = (PARAMETER_VALUE)m_bonus(5, player_ptr->current_floor_ptr->dun_level) + 1;
 
-            if ((o_ptr->sval == SV_HAYABUSA) && (o_ptr->pval > 2))
+            if ((o_ptr->sval == SV_HAYABUSA) && (o_ptr->pval > 2)) {
                 o_ptr->pval = 2;
+            }
         } else {
             act = _("は破壊力を増した！", "seems very powerful.");
-            o_ptr->name2 = EGO_EARTHQUAKES;
+            o_ptr->ego_idx = EgoType::EARTHQUAKES;
             o_ptr->pval = (PARAMETER_VALUE)m_bonus(3, player_ptr->current_floor_ptr->dun_level);
         }
 
         break;
     case 16:
         act = _("は人間の血を求めている！", "seems to be looking for humans!");
-        o_ptr->name2 = EGO_KILL_HUMAN;
+        o_ptr->ego_idx = EgoType::KILL_HUMAN;
         break;
     case 15:
         act = _("は電撃に覆われた！", "covered with lightning!");
-        o_ptr->name2 = EGO_BRAND_ELEC;
+        o_ptr->ego_idx = EgoType::BRAND_ELEC;
         break;
     case 14:
         act = _("は酸に覆われた！", "coated with acid!");
-        o_ptr->name2 = EGO_BRAND_ACID;
+        o_ptr->ego_idx = EgoType::BRAND_ACID;
         break;
     case 13:
         act = _("は邪悪なる怪物を求めている！", "seems to be looking for evil monsters!");
-        o_ptr->name2 = EGO_KILL_EVIL;
+        o_ptr->ego_idx = EgoType::KILL_EVIL;
         break;
     case 12:
         act = _("は異世界の住人の肉体を求めている！", "seems to be looking for demons!");
-        o_ptr->name2 = EGO_KILL_DEMON;
+        o_ptr->ego_idx = EgoType::KILL_DEMON;
         break;
     case 11:
         act = _("は屍を求めている！", "seems to be looking for undead!");
-        o_ptr->name2 = EGO_KILL_UNDEAD;
+        o_ptr->ego_idx = EgoType::KILL_UNDEAD;
         break;
     case 10:
         act = _("は動物の血を求めている！", "seems to be looking for animals!");
-        o_ptr->name2 = EGO_KILL_ANIMAL;
+        o_ptr->ego_idx = EgoType::KILL_ANIMAL;
         break;
     case 9:
         act = _("はドラゴンの血を求めている！", "seems to be looking for dragons!");
-        o_ptr->name2 = EGO_KILL_DRAGON;
+        o_ptr->ego_idx = EgoType::KILL_DRAGON;
         break;
     case 8:
         act = _("はトロルの血を求めている！", "seems to be looking for troll!s");
-        o_ptr->name2 = EGO_KILL_TROLL;
+        o_ptr->ego_idx = EgoType::KILL_TROLL;
         break;
     case 7:
         act = _("はオークの血を求めている！", "seems to be looking for orcs!");
-        o_ptr->name2 = EGO_KILL_ORC;
+        o_ptr->ego_idx = EgoType::KILL_ORC;
         break;
     case 6:
         act = _("は巨人の血を求めている！", "seems to be looking for giants!");
-        o_ptr->name2 = EGO_KILL_GIANT;
+        o_ptr->ego_idx = EgoType::KILL_GIANT;
         break;
     case 5:
         act = _("は非常に不安定になったようだ。", "seems very unstable now.");
-        o_ptr->name2 = EGO_TRUMP;
+        o_ptr->ego_idx = EgoType::TRUMP;
         o_ptr->pval = randint1(2);
         break;
     case 4:
         act = _("は血を求めている！", "thirsts for blood!");
-        o_ptr->name2 = EGO_VAMPIRIC;
+        o_ptr->ego_idx = EgoType::VAMPIRIC;
         break;
     case 3:
         act = _("は毒に覆われた。", "is coated with poison.");
-        o_ptr->name2 = EGO_BRAND_POIS;
+        o_ptr->ego_idx = EgoType::BRAND_POIS;
         break;
     case 2:
         act = _("は純ログルスに飲み込まれた。", "is engulfed in raw Logrus!");
-        o_ptr->name2 = EGO_CHAOTIC;
+        o_ptr->ego_idx = EgoType::CHAOTIC;
         break;
     case 1:
         act = _("は炎のシールドに覆われた！", "is covered in a fiery shield!");
-        o_ptr->name2 = EGO_BRAND_FIRE;
+        o_ptr->ego_idx = EgoType::BRAND_FIRE;
         break;
     default:
         act = _("は深く冷たいブルーに輝いた！", "glows deep, icy blue!");
-        o_ptr->name2 = EGO_BRAND_COLD;
+        o_ptr->ego_idx = EgoType::BRAND_COLD;
         break;
     }
 

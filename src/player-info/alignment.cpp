@@ -29,8 +29,9 @@ PlayerAlignment::PlayerAlignment(PlayerType *player_ptr)
 concptr PlayerAlignment::get_alignment_description(bool with_value)
 {
     auto s = alignment_label();
-    if (with_value || show_actual_value)
+    if (with_value || show_actual_value) {
         return format(_("%s(%ld)", "%s (%ld)"), s, static_cast<long>(this->player_ptr->alignment));
+    }
 
     return s;
 }
@@ -42,51 +43,57 @@ concptr PlayerAlignment::get_alignment_description(bool with_value)
 void PlayerAlignment::update_alignment()
 {
     this->reset_alignment();
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = this->player_ptr->current_floor_ptr;
     for (MONSTER_IDX m_idx = floor_ptr->m_max - 1; m_idx >= 1; m_idx--) {
         auto *m_ptr = &floor_ptr->m_list[m_idx];
-        if (!monster_is_valid(m_ptr))
+        if (!monster_is_valid(m_ptr)) {
             continue;
+        }
         auto *r_ptr = &r_info[m_ptr->r_idx];
 
-        if (!is_pet(m_ptr))
+        if (!is_pet(m_ptr)) {
             continue;
+        }
 
-        if (any_bits(r_ptr->flags3, RF3_GOOD)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::GOOD)) {
             this->bias_good_alignment(r_ptr->level);
         }
 
-        if (any_bits(r_ptr->flags3, RF3_EVIL)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::EVIL)) {
             this->bias_evil_alignment(r_ptr->level);
         }
     }
 
-    if (player_ptr->mimic_form) {
-        switch (player_ptr->mimic_form) {
-        case MIMIC_DEMON:
-            this->bias_evil_alignment(200);
-            break;
-        case MIMIC_DEMON_LORD:
-            this->bias_evil_alignment(200);
-            break;
-        }
-    } else {
-        switch (player_ptr->prace) {
+    switch (this->player_ptr->mimic_form) {
+    case MimicKindType::NONE:
+        switch (this->player_ptr->prace) {
         case PlayerRaceType::ARCHON:
             this->bias_good_alignment(200);
             break;
         case PlayerRaceType::BALROG:
             this->bias_evil_alignment(200);
             break;
-
         default:
             break;
         }
+
+        break;
+    case MimicKindType::DEMON:
+        this->bias_evil_alignment(200);
+        break;
+    case MimicKindType::DEMON_LORD:
+        this->bias_evil_alignment(200);
+        break;
+    case MimicKindType::VAMPIRE:
+        break;
+    default:
+        throw("Invalid MimicKindType was specified!");
     }
 
     for (int i = 0; i < 2; i++) {
-        if (!has_melee_weapon(player_ptr, INVEN_MAIN_HAND + i) || (player_ptr->inventory_list[INVEN_MAIN_HAND + i].name1 != ART_IRON_BALL))
+        if (!has_melee_weapon(this->player_ptr, INVEN_MAIN_HAND + i) || (this->player_ptr->inventory_list[INVEN_MAIN_HAND + i].fixed_artifact_idx != ART_IRON_BALL)) {
             continue;
+        }
 
         this->bias_evil_alignment(1000);
     }
@@ -94,9 +101,9 @@ void PlayerAlignment::update_alignment()
     int j = 0;
     int neutral[2];
     for (int i = 0; i < 8; i++) {
-        switch (player_ptr->vir_types[i]) {
+        switch (this->player_ptr->vir_types[i]) {
         case V_JUSTICE:
-            this->bias_good_alignment(player_ptr->virtues[i] * 2);
+            this->bias_good_alignment(this->player_ptr->virtues[i] * 2);
             break;
         case V_CHANCE:
             break;
@@ -105,23 +112,25 @@ void PlayerAlignment::update_alignment()
             neutral[j++] = i;
             break;
         case V_UNLIFE:
-            this->bias_evil_alignment(player_ptr->virtues[i]);
+            this->bias_evil_alignment(this->player_ptr->virtues[i]);
             break;
         default:
-            this->bias_good_alignment(player_ptr->virtues[i]);
+            this->bias_good_alignment(this->player_ptr->virtues[i]);
             break;
         }
     }
 
     for (int i = 0; i < j; i++) {
-        if (player_ptr->alignment > 0) {
-            this->bias_evil_alignment(player_ptr->virtues[neutral[i]] / 2);
-            if (player_ptr->alignment < 0)
+        if (this->player_ptr->alignment > 0) {
+            this->bias_evil_alignment(this->player_ptr->virtues[neutral[i]] / 2);
+            if (this->player_ptr->alignment < 0) {
                 this->reset_alignment();
-        } else if (player_ptr->alignment < 0) {
-            this->bias_good_alignment(player_ptr->virtues[neutral[i]] / 2);
-            if (player_ptr->alignment > 0)
+            }
+        } else if (this->player_ptr->alignment < 0) {
+            this->bias_good_alignment(this->player_ptr->virtues[neutral[i]] / 2);
+            if (this->player_ptr->alignment > 0) {
                 this->reset_alignment();
+            }
         }
     }
 }
@@ -148,18 +157,19 @@ void PlayerAlignment::reset_alignment()
  */
 concptr PlayerAlignment::alignment_label()
 {
-    if (this->player_ptr->alignment > 150)
+    if (this->player_ptr->alignment > 150) {
         return _("大善", "Lawful");
-    else if (this->player_ptr->alignment > 50)
+    } else if (this->player_ptr->alignment > 50) {
         return _("中善", "Good");
-    else if (this->player_ptr->alignment > 10)
+    } else if (this->player_ptr->alignment > 10) {
         return _("小善", "Neutral Good");
-    else if (this->player_ptr->alignment > -11)
+    } else if (this->player_ptr->alignment > -11) {
         return _("中立", "Neutral");
-    else if (this->player_ptr->alignment > -51)
+    } else if (this->player_ptr->alignment > -51) {
         return _("小悪", "Neutral Evil");
-    else if (this->player_ptr->alignment > -151)
+    } else if (this->player_ptr->alignment > -151) {
         return _("中悪", "Evil");
-    else
+    } else {
         return _("大悪", "Chaotic");
+    }
 }

@@ -20,7 +20,7 @@
  * @param level 生成基準階
  * @param power 生成ランク
  */
-BootsEnchanter::BootsEnchanter(PlayerType *player_ptr, object_type *o_ptr, DEPTH level, int power)
+BootsEnchanter::BootsEnchanter(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH level, int power)
     : AbstractProtectorEnchanter{ o_ptr, level, power }
     , player_ptr(player_ptr)
 {
@@ -39,16 +39,16 @@ void BootsEnchanter::apply_magic()
     }
 
     if (this->power > 1) {
-        if (one_in_(20) || (this->power > 2)) {
+        if ((this->power > 2) || one_in_(20)) {
             become_random_artifact(this->player_ptr, this->o_ptr, false);
             return;
         }
 
-        this->o_ptr->name2 = get_random_ego(INVEN_FEET, true);
+        this->o_ptr->ego_idx = get_random_ego(INVEN_FEET, true);
         return;
     }
 
     if (this->power < -1) {
-        this->o_ptr->name2 = get_random_ego(INVEN_FEET, false);
+        this->o_ptr->ego_idx = get_random_ego(INVEN_FEET, false);
     }
 }

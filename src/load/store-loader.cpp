@@ -7,6 +7,7 @@
 #include "load/old/item-loader-savefile50.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
+#include "store/store-owners.h"
 #include "store/store.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -26,7 +27,7 @@
  * Also note that it may not correctly "adapt" to "knowledge" bacoming
  * known, the player may have to pick stuff up and drop it again.
  */
-static void home_carry_load(PlayerType *player_ptr, store_type *store_ptr, object_type *o_ptr)
+static void home_carry_load(PlayerType *player_ptr, store_type *store_ptr, ObjectType *o_ptr)
 {
     for (auto i = 0; i < store_ptr->stock_num; i++) {
         auto *j_ptr = &store_ptr->stock[i];
@@ -45,8 +46,9 @@ static void home_carry_load(PlayerType *player_ptr, store_type *store_ptr, objec
     auto value = object_value(o_ptr);
     int slot;
     for (slot = 0; slot < store_ptr->stock_num; slot++) {
-        if (object_sort_comp(player_ptr, o_ptr, value, &store_ptr->stock[slot]))
+        if (object_sort_comp(player_ptr, o_ptr, value, &store_ptr->stock[slot])) {
             break;
+        }
     }
 
     for (auto i = store_ptr->stock_num; i > slot; i--) {
@@ -82,6 +84,11 @@ static void rd_store(PlayerType *player_ptr, int town_number, int store_number)
     store_ptr->insult_cur = rd_s16b();
     store_ptr->owner = rd_byte();
 
+    if (auto num = owners.at(i2enum<StoreSaleType>(store_number)).size();
+        num <= store_ptr->owner) {
+        store_ptr->owner %= num;
+    }
+
     int16_t inven_num;
     if (h_older_than(1, 0, 4)) {
         inven_num = rd_byte();
@@ -95,7 +102,7 @@ static void rd_store(PlayerType *player_ptr, int town_number, int store_number)
 
     auto item_loader = ItemLoaderFactory::create_loader();
     for (int j = 0; j < inven_num; j++) {
-        object_type item;
+        ObjectType item;
         item_loader->rd_item(&item);
         auto stock_max = store_get_stock_max(i2enum<StoreSaleType>(store_number));
         if (store_ptr->stock_num >= stock_max) {

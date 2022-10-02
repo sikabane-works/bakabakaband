@@ -1,7 +1,9 @@
 ﻿#include "player-info/equipment-info.h"
 #include "inventory/inventory-slot-types.h"
 #include "object-hook/hook-weapon.h"
+#include "object/tval-types.h"
 #include "pet/pet-util.h"
+#include "player-base/player-class.h"
 #include "player-status/player-hand-types.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -26,16 +28,19 @@ bool has_melee_weapon(PlayerType *player_ptr, int slot)
 BIT_FLAGS16 empty_hands(PlayerType *player_ptr, bool riding_control)
 {
     BIT_FLAGS16 status = EMPTY_HAND_NONE;
-    if (!player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx)
+    if (!player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx) {
         status |= EMPTY_HAND_MAIN;
-    if (!player_ptr->inventory_list[INVEN_SUB_HAND].k_idx)
+    }
+    if (!player_ptr->inventory_list[INVEN_SUB_HAND].k_idx) {
         status |= EMPTY_HAND_SUB;
+    }
 
     if (riding_control && (status != EMPTY_HAND_NONE) && player_ptr->riding && none_bits(player_ptr->pet_extra_flags, PF_TWO_HANDS)) {
-        if (any_bits(status, EMPTY_HAND_SUB))
+        if (any_bits(status, EMPTY_HAND_SUB)) {
             reset_bits(status, EMPTY_HAND_SUB);
-        else if (any_bits(status, EMPTY_HAND_MAIN))
+        } else if (any_bits(status, EMPTY_HAND_MAIN)) {
             reset_bits(status, EMPTY_HAND_MAIN);
+        }
     }
 
     return status;
@@ -52,19 +57,25 @@ bool can_two_hands_wielding(PlayerType *player_ptr)
  */
 bool heavy_armor(PlayerType *player_ptr)
 {
-    if ((player_ptr->pclass != PlayerClassType::MONK) && (player_ptr->pclass != PlayerClassType::FORCETRAINER) && (player_ptr->pclass != PlayerClassType::NINJA))
+    PlayerClass pc(player_ptr);
+    if (!pc.is_martial_arts_pro() && !pc.equals(PlayerClassType::NINJA)) {
         return false;
+    }
 
     WEIGHT monk_arm_wgt = 0;
-    if (player_ptr->inventory_list[INVEN_MAIN_HAND].tval > ItemKindType::SWORD)
+    if (player_ptr->inventory_list[INVEN_MAIN_HAND].tval > ItemKindType::SWORD) {
         monk_arm_wgt += player_ptr->inventory_list[INVEN_MAIN_HAND].weight;
-    if (player_ptr->inventory_list[INVEN_SUB_HAND].tval > ItemKindType::SWORD)
+    }
+
+    if (player_ptr->inventory_list[INVEN_SUB_HAND].tval > ItemKindType::SWORD) {
         monk_arm_wgt += player_ptr->inventory_list[INVEN_SUB_HAND].weight;
+    }
+
     monk_arm_wgt += player_ptr->inventory_list[INVEN_BODY].weight;
     monk_arm_wgt += player_ptr->inventory_list[INVEN_HEAD].weight;
     monk_arm_wgt += player_ptr->inventory_list[INVEN_OUTER].weight;
     monk_arm_wgt += player_ptr->inventory_list[INVEN_ARMS].weight;
     monk_arm_wgt += player_ptr->inventory_list[INVEN_FEET].weight;
 
-    return (monk_arm_wgt > (100 + (player_ptr->lev * 4)));
+    return monk_arm_wgt > (100 + (player_ptr->lev * 4));
 }

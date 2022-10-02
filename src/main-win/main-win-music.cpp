@@ -1,4 +1,6 @@
-﻿/*!
+﻿
+
+/*!
  * @file main-win-music.cpp
  * @brief Windows版固有実装(BGM)
  */
@@ -49,8 +51,9 @@ static concptr basic_key_at(int index, char *buf)
 {
     (void)buf;
 
-    if (index >= MUSIC_BASIC_MAX)
+    if (index >= MUSIC_BASIC_MAX) {
         return nullptr;
+    }
 
     return angband_music_basic_name[index];
 }
@@ -68,14 +71,15 @@ static inline DUNGEON_IDX get_dungeon_count()
  */
 static concptr dungeon_key_at(int index, char *buf)
 {
-    if (index >= get_dungeon_count())
+    if (index >= get_dungeon_count()) {
         return nullptr;
+    }
 
     sprintf(buf, "dungeon%03d", index);
     return buf;
 }
 
-static inline QUEST_IDX get_quest_count()
+static inline int16_t get_quest_count()
 {
     return max_q_idx;
 }
@@ -88,8 +92,9 @@ static inline QUEST_IDX get_quest_count()
  */
 static concptr quest_key_at(int index, char *buf)
 {
-    if (index >= get_quest_count())
+    if (index >= get_quest_count()) {
         return nullptr;
+    }
 
     sprintf(buf, "quest%03d", index);
     return buf;
@@ -108,8 +113,9 @@ static inline int16_t get_town_count()
  */
 static concptr town_key_at(int index, char *buf)
 {
-    if (index >= get_town_count())
+    if (index >= get_town_count()) {
         return nullptr;
+    }
 
     sprintf(buf, "town%03d", index);
     return buf;
@@ -128,8 +134,9 @@ static inline MONRACE_IDX get_monster_count()
  */
 static concptr monster_key_at(int index, char *buf)
 {
-    if (index >= get_monster_count())
+    if (index >= get_monster_count()) {
         return nullptr;
+    }
 
     sprintf(buf, "monster%04d", index);
     return buf;
@@ -188,22 +195,27 @@ errr stop_music(void)
  */
 errr play_music(int type, int val)
 {
-    if (type == TERM_XTRA_MUSIC_MUTE)
+    if (type == TERM_XTRA_MUSIC_MUTE) {
         return stop_music();
+    }
 
-    if (current_music_type == type && current_music_id == val)
-        return 0; // now playing
+    if (current_music_type == type && current_music_id == val) {
+        return 0;
+    } // now playing
 
     concptr filename = music_cfg_data->get_rand(type, val);
-    if (!filename)
-        return 1; // no setting
+    if (!filename) {
+        return 1;
+    } // no setting
 
     char buf[MAIN_WIN_MAX_PATH];
     path_build(buf, MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_MUSIC, filename);
 
-    if (current_music_type != TERM_XTRA_MUSIC_MUTE)
-        if (0 == strcmp(current_music_path, buf))
-            return 0; // now playing same file
+    if (current_music_type != TERM_XTRA_MUSIC_MUTE) {
+        if (0 == strcmp(current_music_path, buf)) {
+            return 0;
+        }
+    } // now playing same file
 
     current_music_type = type;
     current_music_id = val;

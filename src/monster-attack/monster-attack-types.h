@@ -1,8 +1,8 @@
 ﻿#pragma once
 
+#include "effect/attribute-types.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "system/angband.h"
-#include "effect/attribute-types.h"
 
 /*!
  * @note モンスターの打撃方法 / New monster blow methods
@@ -44,9 +44,9 @@ enum class RaceBlowMethodType {
     MAX, /*!< enum バリアント数 */
 };
 
-typedef struct mbe_info_type {
+struct mbe_info_type {
     int power; /* The attack "power" */
     AttributeType explode_type; /* Explosion effect */
-} mbe_info_type;
+};
 
 extern const mbe_info_type mbe_info[static_cast<int>(RaceBlowEffectType::MAX)];

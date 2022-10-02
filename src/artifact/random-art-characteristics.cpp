@@ -10,6 +10,7 @@
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
 #include "object/object-flags.h"
+#include "player-base/player-class.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -17,51 +18,64 @@
 #include <sstream>
 #include <string_view>
 
-static void pval_subtraction(object_type *o_ptr)
+static void pval_subtraction(ObjectType *o_ptr)
 {
-    if (o_ptr->pval > 0)
+    if (o_ptr->pval > 0) {
         o_ptr->pval = 0 - (o_ptr->pval + randint1(4));
+    }
 
-    if (o_ptr->to_a > 0)
+    if (o_ptr->to_a > 0) {
         o_ptr->to_a = 0 - (o_ptr->to_a + randint1(4));
+    }
 
-    if (o_ptr->to_h > 0)
+    if (o_ptr->to_h > 0) {
         o_ptr->to_h = 0 - (o_ptr->to_h + randint1(4));
+    }
 
-    if (o_ptr->to_d > 0)
+    if (o_ptr->to_d > 0) {
         o_ptr->to_d = 0 - (o_ptr->to_d + randint1(4));
+    }
 }
 
-static void add_negative_flags(object_type *o_ptr)
+static void add_negative_flags(ObjectType *o_ptr)
 {
-    if (one_in_(4))
+    if (one_in_(4)) {
         o_ptr->curse_flags.set(CurseTraitType::PERMA_CURSE);
+    }
 
-    if (one_in_(3))
+    if (one_in_(3)) {
         o_ptr->art_flags.set(TR_TY_CURSE);
+    }
 
-    if (one_in_(2))
+    if (one_in_(2)) {
         o_ptr->art_flags.set(TR_AGGRAVATE);
+    }
 
-    if (one_in_(3))
+    if (one_in_(3)) {
         o_ptr->art_flags.set(TR_DRAIN_EXP);
+    }
 
-    if (one_in_(6))
+    if (one_in_(6)) {
         o_ptr->art_flags.set(TR_ADD_L_CURSE);
+    }
 
-    if (one_in_(9))
+    if (one_in_(9)) {
         o_ptr->art_flags.set(TR_ADD_H_CURSE);
+    }
 
-    if (one_in_(9))
+    if (one_in_(9)) {
         o_ptr->art_flags.set(TR_DRAIN_HP);
+    }
 
-    if (one_in_(9))
+    if (one_in_(9)) {
         o_ptr->art_flags.set(TR_DRAIN_MANA);
+    }
 
-    if (one_in_(2))
+    if (one_in_(2)) {
         o_ptr->art_flags.set(TR_TELEPORT);
-    else if (one_in_(3))
+    } else if (one_in_(3)) {
         o_ptr->art_flags.set(TR_NO_TELE);
+    }
 }
 
 /*!
@@ -73,15 +87,15 @@ static void add_negative_flags(object_type *o_ptr)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  */
-void curse_artifact(PlayerType *player_ptr, object_type *o_ptr)
+void curse_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     pval_subtraction(o_ptr);
     o_ptr->curse_flags.set({ CurseTraitType::HEAVY_CURSE, CurseTraitType::CURSED });
     o_ptr->art_flags.reset(TR_BLESSED);
     add_negative_flags(o_ptr);
-    if ((player_ptr->pclass != PlayerClassType::WARRIOR) && (player_ptr->pclass != PlayerClassType::ARCHER) && (player_ptr->pclass != PlayerClassType::CAVALRY)
-        && (player_ptr->pclass != PlayerClassType::BERSERKER) && (player_ptr->pclass != PlayerClassType::SMITH) && one_in_(3))
+    if (!PlayerClass(player_ptr).is_soldier() && one_in_(3)) {
         o_ptr->art_flags.set(TR_NO_MAGIC);
+    }
 }
 
 /*!
@@ -124,7 +138,7 @@ static std::string get_random_art_filename(const bool armour, const int power)
  * @param armour 対象のオブジェクトが防具が否か
  * @param power 銘の基準となるオブジェクトの価値レベル(0=呪い、1=低位、2=中位、3以上=高位)
  */
-void get_random_name(object_type *o_ptr, char *return_name, bool armour, int power)
+void get_random_name(ObjectType *o_ptr, char *return_name, bool armour, int power)
 {
     PERCENTAGE prob = randint1(100);
     if (prob <= SINDARIN_NAME) {
@@ -140,41 +154,45 @@ void get_random_name(object_type *o_ptr, char *return_name, bool armour, int pow
     auto filename = get_random_art_filename(armour, power);
     (void)get_rnd_line(filename.c_str(), o_ptr->artifact_bias, return_name);
 #ifdef JP
-    if (return_name[0] == 0)
+    if (return_name[0] == 0) {
         get_table_name(return_name);
+    }
 #endif
 }
 
 /*対邪平均ダメージの計算処理*/
-static HIT_POINT calc_arm_avgdamage(PlayerType *player_ptr, object_type *o_ptr)
+static int calc_arm_avgdamage(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
-    HIT_POINT base, forced, vorpal;
-    HIT_POINT s_evil = forced = vorpal = 0;
-    HIT_POINT dam = base = (o_ptr->dd * o_ptr->ds + o_ptr->dd) / 2;
+    int base, forced, vorpal;
+    int s_evil = forced = vorpal = 0;
+    int dam = base = (o_ptr->dd * o_ptr->ds + o_ptr->dd) / 2;
     if (flgs.has(TR_KILL_EVIL)) {
         dam = s_evil = dam * 7 / 2;
     } else if (flgs.has_not(TR_KILL_EVIL) && flgs.has(TR_SLAY_EVIL)) {
         dam = s_evil = dam * 2;
-    } else
+    } else {
         s_evil = dam;
+    }
 
     if (flgs.has(TR_FORCE_WEAPON)) {
         dam = forced = dam * 3 / 2 + (o_ptr->dd * o_ptr->ds + o_ptr->dd);
-    } else
+    } else {
         forced = dam;
+    }
 
     if (flgs.has(TR_VORPAL)) {
         dam = vorpal = dam * 11 / 9;
-    } else
+    } else {
         vorpal = dam;
+    }
 
     dam = dam + o_ptr->to_d;
     msg_format_wizard(player_ptr, CHEAT_OBJECT, "素:%d> 対邪:%d> 理力:%d> 切:%d> 最終:%d", base, s_evil, forced, vorpal, dam);
     return dam;
 }
 
-bool has_extreme_damage_rate(PlayerType *player_ptr, object_type *o_ptr)
+bool has_extreme_damage_rate(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     auto flgs = object_flags(o_ptr);
     if (flgs.has(TR_VAMPIRIC)) {

@@ -9,6 +9,7 @@
 #include "store/store.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "wizard/wizard-messages.h"
@@ -18,7 +19,7 @@
 /*
  * Precalculate buildings' location of underground arcade
  */
-static bool precalc_ugarcade(int town_hgt, int town_wid, int n, std::vector<ugbldg_type>& ugbldg)
+static bool precalc_ugarcade(int town_hgt, int town_wid, int n, std::vector<ugbldg_type> &ugbldg)
 {
     POSITION i, y, x, center_y, center_x;
     int tmp, attempt = 10000;
@@ -54,8 +55,9 @@ static bool precalc_ugarcade(int town_hgt, int town_wid, int n, std::vector<ugbl
             attempt--;
         } while (abort && attempt);
 
-        if (!attempt)
+        if (!attempt) {
             break;
+        }
 
         for (y = cur_ugbldg->y0 - 1; y <= cur_ugbldg->y1 + 1; y++) {
             for (x = cur_ugbldg->x0 - 1; x <= cur_ugbldg->x1 + 1; x++) {
@@ -76,17 +78,20 @@ static void generate_room_floor(PlayerType *player_ptr, POSITION y1, POSITION x1
             g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
             place_grid(player_ptr, g_ptr, GB_FLOOR);
             g_ptr->info |= (CAVE_ROOM);
-            if (light)
+            if (light) {
                 g_ptr->info |= (CAVE_GLOW);
+            }
         }
     }
 }
 
 static void generate_fill_perm_bold(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2)
 {
-    for (POSITION y = y1; y <= y2; y++)
-        for (POSITION x = x1; x <= x2; x++)
+    for (POSITION y = y1; y <= y2; y++) {
+        for (POSITION x = x1; x <= x2; x++) {
             place_bold(player_ptr, y, x, GB_INNER_PERM);
+        }
+    }
 }
 
 /*!
@@ -99,7 +104,7 @@ static void generate_fill_perm_bold(PlayerType *player_ptr, POSITION y1, POSITIO
  * @note
  * Note: ltcy and ltcx indicate "left top corner".
  */
-static void build_stores(PlayerType *player_ptr, POSITION ltcy, POSITION ltcx, StoreSaleType stores[], int n, const std::vector<ugbldg_type>& ugbldg)
+static void build_stores(PlayerType *player_ptr, POSITION ltcy, POSITION ltcx, StoreSaleType stores[], int n, const std::vector<ugbldg_type> &ugbldg)
 {
     int i;
     POSITION y, x;
@@ -182,8 +187,9 @@ bool build_type16(PlayerType *player_ptr, dun_data_type *dd_ptr)
     int town_hgt = rand_range(MIN_TOWN_HGT, MAX_TOWN_HGT);
     int town_wid = rand_range(MIN_TOWN_WID, MAX_TOWN_WID);
 
-    if (!n)
+    if (!n) {
         return false;
+    }
 
     std::vector<ugbldg_type> ugbldg(n);
     if (!precalc_ugarcade(town_hgt, town_wid, n, ugbldg)) {

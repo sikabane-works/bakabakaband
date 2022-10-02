@@ -156,7 +156,7 @@ std::vector<SmithEssenceType> Smith::get_need_essences(SmithEffectType effect)
  * @param o_ptr 鍛冶効果を付与するアイテムへのポインタ。nullptrの場合はデフォルトの消費量が返される。
  * @return 鍛冶効果を付与する時のエッセンス消費量
  */
-int Smith::get_essence_consumption(SmithEffectType effect, const object_type *o_ptr)
+int Smith::get_essence_consumption(SmithEffectType effect, const ObjectType *o_ptr)
 {
     auto info = find_smith_info(effect);
     if (!info.has_value()) {
@@ -190,7 +190,7 @@ std::unique_ptr<ItemTester> Smith::get_item_tester(SmithEffectType effect)
         return std::make_unique<TvalItemTester>(ItemKindType::NONE);
     }
 
-    auto tester_func = [i = info.value()](const object_type *o_ptr) {
+    auto tester_func = [i = info.value()](const ObjectType *o_ptr) {
         return i->can_give_smith_effect(o_ptr);
     };
     return std::make_unique<FuncItemTester>(tester_func);
@@ -219,7 +219,7 @@ TrFlags Smith::get_effect_tr_flags(SmithEffectType effect)
  * @return アイテムに付与されている発動効果の発動ID(random_art_activation_type型)
  * 付与されている発動効果が無い場合は std::nullopt
  */
-std::optional<RandomArtActType> Smith::object_activation(const object_type *o_ptr)
+std::optional<RandomArtActType> Smith::object_activation(const ObjectType *o_ptr)
 {
     return o_ptr->smith_act_idx;
 }
@@ -231,7 +231,7 @@ std::optional<RandomArtActType> Smith::object_activation(const object_type *o_pt
  * @return アイテムに付与されている鍛冶効果を保持する std::optional オブジェクト返す。
  * 鍛冶効果が付与できないアイテムか、何も付与されていなければ std::nullopt を返す。
  */
-std::optional<SmithEffectType> Smith::object_effect(const object_type *o_ptr)
+std::optional<SmithEffectType> Smith::object_effect(const ObjectType *o_ptr)
 {
     return o_ptr->smith_effect;
 }
@@ -262,7 +262,7 @@ std::vector<SmithEffectType> Smith::get_effect_list(SmithCategoryType category)
  * @param o_ptr 鍛冶効果を付与するアイテムへのポインタ。nullptrの場合はデフォルトの消費量での回数が返される。
  * @return エッセンスを付与できる回数を返す
  */
-int Smith::get_addable_count(SmithEffectType effect, const object_type *o_ptr) const
+int Smith::get_addable_count(SmithEffectType effect, const ObjectType *o_ptr) const
 {
     auto info = find_smith_info(effect);
     if (!info.has_value()) {
@@ -301,35 +301,46 @@ int Smith::get_essence_num_of_posessions(SmithEssenceType essence) const
  * @param o_ptr エッセンスの抽出を行うアイテムへのポインタ
  * @return 抽出したエッセンスと抽出した量のタプルのリストを返す
  */
-Smith::DrainEssenceResult Smith::drain_essence(object_type *o_ptr)
+Smith::DrainEssenceResult Smith::drain_essence(ObjectType *o_ptr)
 {
     // 抽出量を揃えるためKILLフラグのみ付いている場合はSLAYフラグも付ける
     auto old_flgs = object_flags(o_ptr);
-    if (old_flgs.has(TR_KILL_DRAGON))
+    if (old_flgs.has(TR_KILL_DRAGON)) {
         old_flgs.set(TR_SLAY_DRAGON);
-    if (old_flgs.has(TR_KILL_ANIMAL))
+    }
+    if (old_flgs.has(TR_KILL_ANIMAL)) {
         old_flgs.set(TR_SLAY_ANIMAL);
-    if (old_flgs.has(TR_KILL_EVIL))
+    }
+    if (old_flgs.has(TR_KILL_EVIL)) {
         old_flgs.set(TR_SLAY_EVIL);
-    if (old_flgs.has(TR_KILL_UNDEAD))
+    }
+    if (old_flgs.has(TR_KILL_UNDEAD)) {
         old_flgs.set(TR_SLAY_UNDEAD);
-    if (old_flgs.has(TR_KILL_DEMON))
+    }
+    if (old_flgs.has(TR_KILL_DEMON)) {
         old_flgs.set(TR_SLAY_DEMON);
-    if (old_flgs.has(TR_KILL_ORC))
+    }
+    if (old_flgs.has(TR_KILL_ORC)) {
         old_flgs.set(TR_SLAY_ORC);
-    if (old_flgs.has(TR_KILL_TROLL))
+    }
+    if (old_flgs.has(TR_KILL_TROLL)) {
         old_flgs.set(TR_SLAY_TROLL);
-    if (old_flgs.has(TR_KILL_GIANT))
+    }
+    if (old_flgs.has(TR_KILL_GIANT)) {
         old_flgs.set(TR_SLAY_GIANT);
-    if (old_flgs.has(TR_KILL_HUMAN))
+    }
+    if (old_flgs.has(TR_KILL_HUMAN)) {
         old_flgs.set(TR_SLAY_HUMAN);
-    if (old_flgs.has(TR_KILL_GOOD))
+    }
+    if (old_flgs.has(TR_KILL_GOOD)) {
         old_flgs.set(TR_SLAY_GOOD);
+    }
 
     // マイナス効果のあるアイテムから抽出する時のペナルティを計算
     int dec = 4;
-    if (o_ptr->curse_flags.has_any_of({ CurseTraitType::CURSED, CurseTraitType::HEAVY_CURSE, CurseTraitType::PERMA_CURSE }))
+    if (o_ptr->curse_flags.has_any_of({ CurseTraitType::CURSED, CurseTraitType::HEAVY_CURSE, CurseTraitType::PERMA_CURSE })) {
         dec--;
+    }
 
     for (auto &&info : essence_drain_info_table) {
         if (info.amount < 0 && old_flgs.has(info.tr_flag)) {
@@ -340,7 +351,7 @@ Smith::DrainEssenceResult Smith::drain_essence(object_type *o_ptr)
     const auto is_artifact = o_ptr->is_artifact();
 
     // アイテムをエッセンス抽出後の状態にする
-    const object_type old_o = *o_ptr;
+    const ObjectType old_o = *o_ptr;
     o_ptr->prep(o_ptr->k_idx);
 
     o_ptr->iy = old_o.iy;
@@ -349,8 +360,9 @@ Smith::DrainEssenceResult Smith::drain_essence(object_type *o_ptr)
     o_ptr->number = old_o.number;
     o_ptr->discount = old_o.discount;
 
-    if (o_ptr->tval == ItemKindType::DRAG_ARMOR)
+    if (o_ptr->tval == ItemKindType::DRAG_ARMOR) {
         o_ptr->timeout = old_o.timeout;
+    }
     o_ptr->ident |= (IDENT_FULL_KNOWN);
     object_aware(player_ptr, o_ptr);
     object_known(o_ptr);
@@ -368,7 +380,8 @@ Smith::DrainEssenceResult Smith::drain_essence(object_type *o_ptr)
 
         if ((new_flgs.has_not(info.tr_flag) || pval) && old_flgs.has(info.tr_flag)) {
             for (auto &&essence : info.essences) {
-                drain_values[essence] += info.amount * std::max(pval, 1);
+                auto mult = TR_PVAL_FLAG_MASK.has(info.tr_flag) ? pval : 1;
+                drain_values[essence] += info.amount * mult;
             }
         }
     }
@@ -424,7 +437,7 @@ Smith::DrainEssenceResult Smith::drain_essence(object_type *o_ptr)
  * @param number エッセンス付与数
  * @return 鍛冶効果の付与に成功したら ture、失敗したら false を返す
  */
-bool Smith::add_essence(SmithEffectType effect, object_type *o_ptr, int number)
+bool Smith::add_essence(SmithEffectType effect, ObjectType *o_ptr, int number)
 {
     auto info = find_smith_info(effect);
     if (!info.has_value()) {
@@ -444,7 +457,7 @@ bool Smith::add_essence(SmithEffectType effect, object_type *o_ptr, int number)
  *
  * @param o_ptr 鍛冶効果を消去するアイテムへのポインタ
  */
-void Smith::erase_essence(object_type *o_ptr) const
+void Smith::erase_essence(ObjectType *o_ptr) const
 {
     o_ptr->smith_act_idx = std::nullopt;
 

@@ -203,7 +203,7 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
         auto magic_ptr = &m_info[c];
         concptr book_name = "なし";
         if (magic_ptr->spell_book != ItemKindType::NONE) {
-            object_type book;
+            ObjectType book;
             auto o_ptr = &book;
             o_ptr->prep(lookup_kind(magic_ptr->spell_book, 0));
             describe_flavor(&dummy_p, title, o_ptr, OD_NAME_ONLY);
@@ -312,28 +312,34 @@ void exe_output_spoilers(void)
 SpoilerOutputResultType output_all_spoilers(void)
 {
     auto status = spoil_obj_desc("obj-desc.txt");
-    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS)
+    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS) {
         return status;
+    }
 
     status = spoil_fixed_artifact("artifact.txt");
-    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS)
+    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS) {
         return status;
+    }
 
     status = spoil_mon_desc("mon-desc.txt");
-    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS)
+    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS) {
         return status;
+    }
 
     status = spoil_categorized_mon_desc();
-    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS)
+    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS) {
         return status;
+    }
 
     status = spoil_mon_info("mon-info.txt");
-    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS)
+    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS) {
         return status;
+    }
 
     status = spoil_mon_evol("mon-evol.txt");
-    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS)
+    if (status != SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS) {
         return status;
+    }
 
     return SpoilerOutputResultType::SPOILER_OUTPUT_SUCCESS;
 }

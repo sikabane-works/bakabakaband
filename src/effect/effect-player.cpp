@@ -6,6 +6,7 @@
 
 #include "effect/effect-player.h"
 #include "core/disturbance.h"
+#include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-player-switcher.h"
 #include "effect/effect-player.h"
@@ -25,7 +26,6 @@
 #include "realm/realm-hex-numbers.h"
 #include "spell-realm/spells-crusade.h"
 #include "spell-realm/spells-hex.h"
-#include "effect/attribute-types.h"
 #include "spell/spells-util.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -46,8 +46,16 @@
  * @param monspell 効果元のモンスター魔法ID
  * @return 初期化後の構造体ポインタ
  */
-EffectPlayerType::EffectPlayerType(MONSTER_IDX who, HIT_POINT dam, AttributeType attribute, BIT_FLAGS flag)
-    : rlev(0), m_ptr(nullptr), killer(""), m_name(""), get_damage(0), who(who), dam(dam), attribute(attribute), flag(flag)
+EffectPlayerType::EffectPlayerType(MONSTER_IDX who, int dam, AttributeType attribute, BIT_FLAGS flag)
+    : rlev(0)
+    , m_ptr(nullptr)
+    , killer("")
+    , m_name("")
+    , get_damage(0)
+    , who(who)
+    , dam(dam)
+    , attribute(attribute)
+    , flag(flag)
 {
 }
 
@@ -99,7 +107,7 @@ static bool process_bolt_reflection(PlayerType *player_ptr, EffectPlayerType *ep
         t_x = player_ptr->x - 1 + randint1(3);
     }
 
-    (*project)(player_ptr, 0, 0, t_y, t_x, ep_ptr->dam, ep_ptr->attribute, (PROJECT_STOP | PROJECT_KILL | PROJECT_REFLECTABLE));
+    (*project)(player_ptr, 0, 0, t_y, t_x, ep_ptr->dam, ep_ptr->attribute, (PROJECT_STOP | PROJECT_KILL | PROJECT_REFLECTABLE), std::nullopt);
     disturb(player_ptr, true, true);
     return true;
 }
@@ -181,7 +189,7 @@ static void describe_effect_source(PlayerType *player_ptr, EffectPlayerType *ep_
  * @param monspell 効果元のモンスター魔法ID
  * @return 何か一つでも効力があればTRUEを返す / TRUE if any "effects" of the projection were observed, else FALSE
  */
-bool affect_player(MONSTER_IDX who, PlayerType *player_ptr, concptr who_name, int r, POSITION y, POSITION x, HIT_POINT dam, AttributeType attribute,
+bool affect_player(MONSTER_IDX who, PlayerType *player_ptr, concptr who_name, int r, POSITION y, POSITION x, int dam, AttributeType attribute,
     BIT_FLAGS flag, project_func project)
 {
     EffectPlayerType tmp_effect(who, dam, attribute, flag);
@@ -204,7 +212,7 @@ bool affect_player(MONSTER_IDX who, PlayerType *player_ptr, concptr who_name, in
         GAME_TEXT m_name_self[MAX_MONSTER_NAME];
         monster_desc(player_ptr, m_name_self, ep_ptr->m_ptr, MD_PRON_VISIBLE | MD_POSSESSIVE | MD_OBJECTIVE);
         msg_format(_("攻撃が%s自身を傷つけた！", "The attack of %s has wounded %s!"), ep_ptr->m_name, m_name_self);
-        (*project)(player_ptr, 0, 0, ep_ptr->m_ptr->fy, ep_ptr->m_ptr->fx, ep_ptr->get_damage, AttributeType::MISSILE, PROJECT_KILL);
+        (*project)(player_ptr, 0, 0, ep_ptr->m_ptr->fy, ep_ptr->m_ptr->fx, ep_ptr->get_damage, AttributeType::MISSILE, PROJECT_KILL, std::nullopt);
         if (player_ptr->tim_eyeeye) {
             set_tim_eyeeye(player_ptr, player_ptr->tim_eyeeye - 5, true);
         }

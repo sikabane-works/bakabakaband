@@ -14,8 +14,9 @@ void do_cmd_knowledge_incident(PlayerType *player_ptr)
 {
     FILE *fff = NULL;
     GAME_TEXT file_name[FILE_NAME_SIZE];
-    if (!open_temporary_file(&fff, file_name))
+    if (!open_temporary_file(&fff, file_name)) {
         return;
+    }
 
     if (player_ptr->incident.count(INCIDENT::WALK)) {
         fprintf(fff, _("あなたはこれまで%d歩進んだ。\n", "You walked %d steps\n"), player_ptr->incident[INCIDENT::WALK]);
@@ -72,5 +73,4 @@ void do_cmd_knowledge_incident(PlayerType *player_ptr)
     angband_fclose(fff);
     (void)show_file(player_ptr, true, file_name, _("これまでの出来事", "Incidents"), 0, 0);
     fd_kill(file_name);
-
 }

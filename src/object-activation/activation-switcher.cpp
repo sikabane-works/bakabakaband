@@ -41,9 +41,9 @@
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
-bool switch_activation(PlayerType *player_ptr, object_type **o_ptr_ptr, const activation_type *const act_ptr, concptr name)
+bool switch_activation(PlayerType *player_ptr, ObjectType **o_ptr_ptr, const activation_type *const act_ptr, concptr name)
 {
-    object_type *o_ptr = (*o_ptr_ptr);
+    auto *o_ptr = (*o_ptr_ptr);
 
     switch (act_ptr->index) {
     case RandomArtActType::SUNLIGHT:
@@ -386,6 +386,8 @@ bool switch_activation(PlayerType *player_ptr, object_type **o_ptr_ptr, const ac
         return activate_dispel_magic(player_ptr);
     case RandomArtActType::DESTRUCTION:
         return destroy_area(player_ptr, player_ptr->y, player_ptr->x, (13) + randint0(5), false);
+    case RandomArtActType::HUGE_STINKING_STORM:
+        return activate_huge_stinking_storm(player_ptr);
     default:
         msg_format(_("Unknown activation effect: %d.", "Unknown activation effect: %d."), act_ptr->index);
         return false;

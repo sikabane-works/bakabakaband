@@ -32,12 +32,12 @@ inline static bool has_shadower_flag(monster_type *m_ptr)
 
 inline static bool is_unique(monster_race *ap_r_ptr)
 {
-    return any_bits(ap_r_ptr->flags1, RF1_UNIQUE);
+    return ap_r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
 }
 
 inline static bool is_unknown_monster(monster_race *ap_r_ptr)
 {
-    return (ap_r_ptr->r_tkills == 0);
+    return ap_r_ptr->r_tkills == 0;
 }
 
 void clear_scene_target_monster()
@@ -71,7 +71,7 @@ void set_temp_mute_scene_monster(int sec)
  */
 inline static bool can_mute_scene_monster()
 {
-    return (scene_target_monster.mute_until > time(nullptr));
+    return scene_target_monster.mute_until > time(nullptr);
 }
 
 /*!
@@ -93,20 +93,24 @@ static bool is_high_rate(PlayerType *player_ptr, MONSTER_IDX m_idx1, MONSTER_IDX
     auto ap_r_ptr2 = &r_info[m_ptr2->ap_r_idx];
 
     /* Unique monsters first */
-    if (any_bits(ap_r_ptr1->flags1, RF1_UNIQUE) != any_bits(ap_r_ptr2->flags1, RF1_UNIQUE))
-        return any_bits(ap_r_ptr1->flags1, RF1_UNIQUE);
+    if (ap_r_ptr1->kind_flags.has(MonsterKindType::UNIQUE) != ap_r_ptr2->kind_flags.has(MonsterKindType::UNIQUE)) {
+        return ap_r_ptr1->kind_flags.has(MonsterKindType::UNIQUE);
+    }
 
     /* Shadowers first (あやしい影) */
-    if (m_ptr1->mflag2.has(MonsterConstantFlagType::KAGE) != m_ptr2->mflag2.has(MonsterConstantFlagType::KAGE))
+    if (m_ptr1->mflag2.has(MonsterConstantFlagType::KAGE) != m_ptr2->mflag2.has(MonsterConstantFlagType::KAGE)) {
         return m_ptr1->mflag2.has(MonsterConstantFlagType::KAGE);
+    }
 
     /* Unknown monsters first */
-    if ((ap_r_ptr1->r_tkills == 0) != (ap_r_ptr2->r_tkills == 0))
-        return (ap_r_ptr1->r_tkills == 0);
+    if ((ap_r_ptr1->r_tkills == 0) != (ap_r_ptr2->r_tkills == 0)) {
+        return ap_r_ptr1->r_tkills == 0;
+    }
 
     /* Higher level monsters first (if known) */
-    if (ap_r_ptr1->r_tkills && ap_r_ptr2->r_tkills && ap_r_ptr1->level != ap_r_ptr2->level)
+    if (ap_r_ptr1->r_tkills && ap_r_ptr2->r_tkills && ap_r_ptr1->level != ap_r_ptr2->level) {
         return ap_r_ptr1->level > ap_r_ptr2->level;
+    }
 
     /* Sort by index if all conditions are same */
     return m_ptr1->ap_r_idx > m_ptr2->ap_r_idx;
@@ -136,7 +140,7 @@ static void update_target_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
         }
 
         if (do_dwap) {
-            monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+            auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
             monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
             scene_target_monster.m_idx = m_idx;
             scene_target_monster.ap_r_ptr = ap_r_ptr;
@@ -149,7 +153,7 @@ using scene_monster_func = bool (*)(PlayerType *player_ptr, scene_type *value);
 
 static bool scene_monster(PlayerType *player_ptr, scene_type *value)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[scene_target_monster.m_idx];
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[scene_target_monster.m_idx];
 
     if (has_shadower_flag(m_ptr)) {
         value->type = TERM_XTRA_MUSIC_BASIC;
@@ -241,7 +245,7 @@ void refresh_scene_monster(PlayerType *player_ptr, const std::vector<MONSTER_IDX
                 // 最後に見かけてから一定のゲームターンが経過した場合、BGM対象から外す
                 clear_scene_target_monster();
             } else {
-                monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[scene_target_monster.m_idx];
+                auto *m_ptr = &player_ptr->current_floor_ptr->m_list[scene_target_monster.m_idx];
                 monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
                 if (ap_r_ptr != scene_target_monster.ap_r_ptr) {
                     // 死亡、チェンジモンスター、etc.

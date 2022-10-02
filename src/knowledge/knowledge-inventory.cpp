@@ -18,8 +18,8 @@
 #include "object/tval-types.h"
 #include "perception/object-perception.h"
 #include "store/store-util.h"
-#include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-amulet-types.h"
+#include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/object-type-definition.h"
@@ -64,14 +64,9 @@ static void print_flag(tr_type tr, const TrFlags &flags, FILE *fff)
  * @param tval アイテム主分類番号
  * @return 特殊なアイテムならTRUE
  */
-static bool determine_spcial_item_type(object_type *o_ptr, ItemKindType tval)
+static bool determine_spcial_item_type(ObjectType *o_ptr, ItemKindType tval)
 {
-    bool is_special_item_type = (o_ptr->is_wearable() && o_ptr->is_ego()) || ((tval == ItemKindType::AMULET) && (o_ptr->sval == SV_AMULET_RESISTANCE))
-        || ((tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_LORDLY)) || ((tval == ItemKindType::SHIELD) && (o_ptr->sval == SV_DRAGON_SHIELD))
-        || ((tval == ItemKindType::HELM) && (o_ptr->sval == SV_DRAGON_HELM)) || ((tval == ItemKindType::GLOVES) && (o_ptr->sval == SV_SET_OF_DRAGON_GLOVES))
-        || ((tval == ItemKindType::SOFT_ARMOR) && (o_ptr->sval == SV_DRAGON_BIKINI))
-        || ((tval == ItemKindType::BOOTS) && (o_ptr->sval == SV_PAIR_OF_DRAGON_GREAVE)) || o_ptr->is_artifact();
-
+    bool is_special_item_type = (o_ptr->is_wearable() && o_ptr->is_ego()) || ((tval == ItemKindType::AMULET) && (o_ptr->sval == SV_AMULET_RESISTANCE)) || ((tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_LORDLY)) || ((tval == ItemKindType::SHIELD) && (o_ptr->sval == SV_DRAGON_SHIELD)) || ((tval == ItemKindType::HELM) && (o_ptr->sval == SV_DRAGON_HELM)) || ((tval == ItemKindType::GLOVES) && (o_ptr->sval == SV_SET_OF_DRAGON_GLOVES)) || ((tval == ItemKindType::BOOTS) && (o_ptr->sval == SV_PAIR_OF_DRAGON_GREAVE)) || (o_ptr->tval == ItemKindType::SOFT_ARMOR && o_ptr->sval == SV_DRAGON_BIKINI) || o_ptr->is_artifact();
     return is_special_item_type;
 }
 
@@ -81,16 +76,20 @@ static bool determine_spcial_item_type(object_type *o_ptr, ItemKindType tval)
  * @param tval アイテム主分類番号
  * @return 必要があるならTRUE
  */
-static bool check_item_knowledge(object_type *o_ptr, ItemKindType tval)
+static bool check_item_knowledge(ObjectType *o_ptr, ItemKindType tval)
 {
-    if (o_ptr->k_idx == 0)
+    if (o_ptr->k_idx == 0) {
         return false;
-    if (o_ptr->tval != tval)
+    }
+    if (o_ptr->tval != tval) {
         return false;
-    if (!o_ptr->is_known())
+    }
+    if (!o_ptr->is_known()) {
         return false;
-    if (!determine_spcial_item_type(o_ptr, tval))
+    }
+    if (!determine_spcial_item_type(o_ptr, tval)) {
         return false;
+    }
 
     return true;
 }
@@ -101,7 +100,7 @@ static bool check_item_knowledge(object_type *o_ptr, ItemKindType tval)
  * @param fff 一時ファイルへの参照ポインタ
  * @todo ここの関数から表示用の関数に移したい
  */
-static void display_identified_resistances_flag(object_type *o_ptr, FILE *fff)
+static void display_identified_resistances_flag(ObjectType *o_ptr, FILE *fff)
 {
     auto flags = object_flags_known(o_ptr);
 
@@ -142,15 +141,16 @@ static void display_identified_resistances_flag(object_type *o_ptr, FILE *fff)
  * @param o_ptr アイテムへの参照ポインタ
  * @param where アイテムの場所 (手持ち、家等) を示す文字列への参照ポインタ
  */
-static void do_cmd_knowledge_inventory_aux(PlayerType *player_ptr, FILE *fff, object_type *o_ptr, char *where)
+static void do_cmd_knowledge_inventory_aux(PlayerType *player_ptr, FILE *fff, ObjectType *o_ptr, char *where)
 {
     int i = 0;
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
     while (o_name[i] && (i < 26)) {
 #ifdef JP
-        if (iskanji(o_name[i]))
+        if (iskanji(o_name[i])) {
             i++;
+        }
 #endif
         i++;
     }
@@ -195,8 +195,9 @@ static void add_res_label(int *label_number, FILE *fff)
  */
 static void reset_label_number(int *label_number, FILE *fff)
 {
-    if (*label_number == 0)
+    if (*label_number == 0) {
         return;
+    }
 
     for (; *label_number < 9; (*label_number)++) {
         fputc('\n', fff);
@@ -218,9 +219,10 @@ static void show_wearing_equipment_resistances(PlayerType *player_ptr, ItemKindT
     char where[32];
     strcpy(where, _("装", "E "));
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
-        object_type *o_ptr = &player_ptr->inventory_list[i];
-        if (!check_item_knowledge(o_ptr, tval))
+        auto *o_ptr = &player_ptr->inventory_list[i];
+        if (!check_item_knowledge(o_ptr, tval)) {
             continue;
+        }
 
         do_cmd_knowledge_inventory_aux(player_ptr, fff, o_ptr, where);
         add_res_label(label_number, fff);
@@ -239,9 +241,10 @@ static void show_holding_equipment_resistances(PlayerType *player_ptr, ItemKindT
     char where[32];
     strcpy(where, _("持", "I "));
     for (int i = 0; i < INVEN_PACK; i++) {
-        object_type *o_ptr = &player_ptr->inventory_list[i];
-        if (!check_item_knowledge(o_ptr, tval))
+        auto *o_ptr = &player_ptr->inventory_list[i];
+        if (!check_item_knowledge(o_ptr, tval)) {
             continue;
+        }
 
         do_cmd_knowledge_inventory_aux(player_ptr, fff, o_ptr, where);
         add_res_label(label_number, fff);
@@ -262,9 +265,10 @@ static void show_home_equipment_resistances(PlayerType *player_ptr, ItemKindType
     char where[32];
     strcpy(where, _("家", "H "));
     for (int i = 0; i < store_ptr->stock_num; i++) {
-        object_type *o_ptr = &store_ptr->stock[i];
-        if (!check_item_knowledge(o_ptr, tval))
+        auto *o_ptr = &store_ptr->stock[i];
+        if (!check_item_knowledge(o_ptr, tval)) {
             continue;
+        }
 
         do_cmd_knowledge_inventory_aux(player_ptr, fff, o_ptr, where);
         add_res_label(label_number, fff);
@@ -279,8 +283,9 @@ void do_cmd_knowledge_inventory(PlayerType *player_ptr)
 {
     FILE *fff = nullptr;
     GAME_TEXT file_name[FILE_NAME_SIZE];
-    if (!open_temporary_file(&fff, file_name))
+    if (!open_temporary_file(&fff, file_name)) {
         return;
+    }
 
     fprintf(fff, "%s\n", inven_res_label);
     int label_number = 0;

@@ -3,6 +3,7 @@
 #include "core/disturbance.h"
 #include "core/player-redraw-types.h"
 #include "dungeon/dungeon.h"
+#include "effect/attribute-types.h"
 #include "floor/geometry.h"
 #include "grid/grid.h"
 #include "hpmp/hp-mp-processor.h"
@@ -18,6 +19,7 @@
 #include "mutation/mutation-flag-types.h"
 #include "mutation/mutation-investor-remover.h"
 #include "object/lite-processor.h"
+#include "object/tval-types.h"
 #include "player-info/equipment-info.h"
 #include "player/digestion-processor.h"
 #include "player/player-damage.h"
@@ -30,7 +32,6 @@
 #include "spell-kind/spells-world.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
-#include "effect/attribute-types.h"
 #include "spell/summon-types.h"
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
@@ -51,8 +52,9 @@
 #include "target/target-setter.h"
 #include "target/target-types.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-confusion.h"
+#include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
-
 
 static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
 {
@@ -61,13 +63,15 @@ static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
     DIRECTION dir = 0;
     while (!dir) {
         concptr p = target_okay(player_ptr)
-            ? _("方向 ('5'でターゲットへ, '*'でターゲット再選択, ESCで中断)? ", "Direction ('5' for target, '*' to re-target, Escape to cancel)? ")
-            : _("方向 ('*'でターゲット選択, ESCで中断)? ", "Direction ('*' to choose a target, Escape to cancel)? ");
-        if (!get_com(p, &command, true))
+                        ? _("方向 ('5'でターゲットへ, '*'でターゲット再選択, ESCで中断)? ", "Direction ('5' for target, '*' to re-target, Escape to cancel)? ")
+                        : _("方向 ('*'でターゲット選択, ESCで中断)? ", "Direction ('*' to choose a target, Escape to cancel)? ");
+        if (!get_com(p, &command, true)) {
             break;
+        }
 
-        if (use_menu && (command == '\r'))
+        if (use_menu && (command == '\r')) {
             command = 't';
+        }
 
         switch (command) {
         case 'T':
@@ -80,8 +84,9 @@ static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
         case '*':
         case ' ':
         case '\r':
-            if (target_set(player_ptr, TARGET_KILL))
+            if (target_set(player_ptr, TARGET_KILL)) {
                 dir = 5;
+            }
 
             break;
         default:
@@ -89,22 +94,27 @@ static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
             break;
         }
 
-        if ((dir == 5) && !target_okay(player_ptr))
+        if ((dir == 5) && !target_okay(player_ptr)) {
             dir = 0;
+        }
 
-        if (!dir)
+        if (!dir) {
             bell();
+        }
     }
 
-    if (!dir)
+    if (!dir) {
         return false;
+    }
 
     command_dir = dir;
-    if (player_ptr->confused)
+    if (player_ptr->effects()->confusion()->is_confused()) {
         dir = ddd[randint0(8)];
+    }
 
-    if (command_dir != dir)
+    if (command_dir != dir) {
         msg_print(_("あなたは混乱している。", "You are confused."));
+    }
 
     *dp = dir;
     return true;
@@ -167,10 +177,11 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         if (!has_resist_chaos(player_ptr)) {
             if (one_in_(20)) {
                 msg_print(nullptr);
-                if (one_in_(3))
+                if (one_in_(3)) {
                     lose_all_info(player_ptr);
-                else
+                } else {
                     wiz_dark(player_ptr);
+                }
                 (void)teleport_player_aux(player_ptr, 100, false, i2enum<teleport_flags>(TELEPORT_NONMAGICAL | TELEPORT_PASSIVE));
                 wiz_dark(player_ptr);
                 msg_print(_("あなたは見知らぬ場所で目が醒めた...頭が痛い。", "You wake up somewhere with a sore head..."));
@@ -229,10 +240,11 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         bool pet = one_in_(6);
         BIT_FLAGS mode = PM_ALLOW_GROUP;
 
-        if (pet)
+        if (pet) {
             mode |= PM_FORCE_PET;
-        else
+        } else {
             mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
+        }
 
         if (summon_specific(player_ptr, (pet ? -1 : 0), player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_DEMON, mode)) {
             msg_print(_("あなたはデーモンを引き寄せた！", "You have attracted a demon!"));
@@ -279,7 +291,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     }
 
     if (player_ptr->muta.has(PlayerMutationType::EAT_LIGHT) && one_in_(3000)) {
-        object_type *o_ptr;
+        ObjectType *o_ptr;
 
         msg_print(_("影につつまれた。", "A shadow passes over you."));
         msg_print(nullptr);
@@ -291,9 +303,9 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         o_ptr = &player_ptr->inventory_list[INVEN_LITE];
 
         if (o_ptr->tval == ItemKindType::LITE) {
-            if (!o_ptr->is_fixed_artifact() && (o_ptr->xtra4 > 0)) {
-                hp_player(player_ptr, o_ptr->xtra4 / 20);
-                o_ptr->xtra4 /= 2;
+            if (!o_ptr->is_fixed_artifact() && (o_ptr->fuel > 0)) {
+                hp_player(player_ptr, o_ptr->fuel / 20);
+                o_ptr->fuel /= 2;
                 msg_print(_("光源からエネルギーを吸収した！", "You absorb energy from your light!"));
                 notice_lite_change(player_ptr, o_ptr);
             }
@@ -310,10 +322,11 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         bool pet = one_in_(3);
         BIT_FLAGS mode = PM_ALLOW_GROUP;
 
-        if (pet)
+        if (pet) {
             mode |= PM_FORCE_PET;
-        else
+        } else {
             mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
+        }
 
         if (summon_specific(player_ptr, (pet ? -1 : 0), player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_ANIMAL, mode)) {
             msg_print(_("動物を引き寄せた！", "You have attracted an animal!"));
@@ -329,8 +342,9 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     }
 
     if (player_ptr->muta.has(PlayerMutationType::NORMALITY) && one_in_(5000)) {
-        if (!lose_mutation(player_ptr, 0))
+        if (!lose_mutation(player_ptr, 0)) {
             msg_print(_("奇妙なくらい普通になった気がする。", "You feel oddly normal."));
+        }
     }
 
     if (player_ptr->muta.has(PlayerMutationType::WRAITH) && !player_ptr->anti_magic && one_in_(3000)) {
@@ -340,8 +354,9 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         set_wraith_form(player_ptr, randint1(player_ptr->lev / 2) + (player_ptr->lev / 2), false);
     }
 
-    if (player_ptr->muta.has(PlayerMutationType::POLY_WOUND) && one_in_(3000))
+    if (player_ptr->muta.has(PlayerMutationType::POLY_WOUND) && one_in_(3000)) {
         do_poly_wounds(player_ptr);
+    }
 
     if (player_ptr->muta.has(PlayerMutationType::WASTING) && one_in_(3000)) {
         int which_stat = randint0(A_MAX);
@@ -349,28 +364,34 @@ void process_world_aux_mutation(PlayerType *player_ptr)
 
         switch (which_stat) {
         case A_STR:
-            if (has_sustain_str(player_ptr))
+            if (has_sustain_str(player_ptr)) {
                 sustained = true;
+            }
             break;
         case A_INT:
-            if (has_sustain_int(player_ptr))
+            if (has_sustain_int(player_ptr)) {
                 sustained = true;
+            }
             break;
         case A_WIS:
-            if (has_sustain_wis(player_ptr))
+            if (has_sustain_wis(player_ptr)) {
                 sustained = true;
+            }
             break;
         case A_DEX:
-            if (has_sustain_dex(player_ptr))
+            if (has_sustain_dex(player_ptr)) {
                 sustained = true;
+            }
             break;
         case A_CON:
-            if (has_sustain_con(player_ptr))
+            if (has_sustain_con(player_ptr)) {
                 sustained = true;
+            }
             break;
         case A_CHR:
-            if (has_sustain_chr(player_ptr))
+            if (has_sustain_chr(player_ptr)) {
                 sustained = true;
+            }
             break;
         default:
             msg_print(_("不正な状態！", "Invalid stat chosen!"));
@@ -388,10 +409,11 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     if (player_ptr->muta.has(PlayerMutationType::ATT_DRAGON) && !player_ptr->anti_magic && one_in_(3000)) {
         bool pet = one_in_(5);
         BIT_FLAGS mode = PM_ALLOW_GROUP;
-        if (pet)
+        if (pet) {
             mode |= PM_FORCE_PET;
-        else
+        } else {
             mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
+        }
 
         if (summon_specific(player_ptr, (pet ? -1 : 0), player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_DRAGON, mode)) {
             msg_print(_("ドラゴンを引き寄せた！", "You have attracted a dragon!"));
@@ -414,8 +436,9 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         msg_print(_("胃が痙攣し、食事を失った！", "Your stomach roils, and you lose your lunch!"));
         msg_print(nullptr);
         set_food(player_ptr, PY_FOOD_WEAK);
-        if (music_singing_any(player_ptr))
+        if (music_singing_any(player_ptr)) {
             stop_singing(player_ptr);
+        }
 
         SpellHex spell_hex(player_ptr);
         if (spell_hex.is_spelling_any()) {
@@ -423,34 +446,37 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         }
     }
 
-    if (player_ptr->muta.has(PlayerMutationType::WALK_SHAD) && !player_ptr->anti_magic && one_in_(12000) && !player_ptr->current_floor_ptr->inside_arena)
+    if (player_ptr->muta.has(PlayerMutationType::WALK_SHAD) && !player_ptr->anti_magic && one_in_(12000) && !player_ptr->current_floor_ptr->inside_arena) {
         reserve_alter_reality(player_ptr, randint0(21) + 15);
+    }
 
     if (player_ptr->muta.has(PlayerMutationType::WARNING) && one_in_(1000)) {
         int danger_amount = 0;
         for (MONSTER_IDX monster = 0; monster < player_ptr->current_floor_ptr->m_max; monster++) {
-            monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[monster];
-            monster_race *r_ptr = &r_info[m_ptr->r_idx];
-            if (!monster_is_valid(m_ptr))
+            auto *m_ptr = &player_ptr->current_floor_ptr->m_list[monster];
+            auto *r_ptr = &r_info[m_ptr->r_idx];
+            if (!monster_is_valid(m_ptr)) {
                 continue;
+            }
 
             if (r_ptr->level >= player_ptr->lev) {
                 danger_amount += r_ptr->level - player_ptr->lev + 1;
             }
         }
 
-        if (danger_amount > 100)
+        if (danger_amount > 100) {
             msg_print(_("非常に恐ろしい気がする！", "You feel utterly terrified!"));
-        else if (danger_amount > 50)
+        } else if (danger_amount > 50) {
             msg_print(_("恐ろしい気がする！", "You feel terrified!"));
-        else if (danger_amount > 20)
+        } else if (danger_amount > 20) {
             msg_print(_("非常に心配な気がする！", "You feel very worried!"));
-        else if (danger_amount > 10)
+        } else if (danger_amount > 10) {
             msg_print(_("心配な気がする！", "You feel paranoid!"));
-        else if (danger_amount > 5)
+        } else if (danger_amount > 5) {
             msg_print(_("ほとんど安全な気がする。", "You feel almost safe."));
-        else
+        } else {
             msg_print(_("寂しい気がする。", "You feel lonely."));
+        }
     }
 
     if (player_ptr->muta.has(PlayerMutationType::INVULN) && !player_ptr->anti_magic && one_in_(5000)) {
@@ -463,9 +489,10 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     if (player_ptr->muta.has(PlayerMutationType::SP_TO_HP) && one_in_(2000)) {
         MANA_POINT wounds = (MANA_POINT)(player_ptr->mhp - player_ptr->chp);
         if (wounds > 0) {
-            HIT_POINT healing = player_ptr->csp;
-            if (healing > wounds)
+            int healing = player_ptr->csp;
+            if (healing > wounds) {
                 healing = wounds;
+            }
 
             hp_player(player_ptr, healing);
             player_ptr->csp -= healing;
@@ -474,11 +501,12 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     }
 
     if (player_ptr->muta.has(PlayerMutationType::HP_TO_SP) && !player_ptr->anti_magic && one_in_(4000)) {
-        HIT_POINT wounds = (HIT_POINT)(player_ptr->msp - player_ptr->csp);
+        int wounds = (int)(player_ptr->msp - player_ptr->csp);
         if (wounds > 0) {
-            HIT_POINT healing = player_ptr->chp;
-            if (healing > wounds)
+            int healing = player_ptr->chp;
+            if (healing > wounds) {
                 healing = wounds;
+            }
 
             player_ptr->csp += healing;
             player_ptr->redraw |= (PR_HP | PR_MANA);
@@ -497,10 +525,11 @@ void process_world_aux_mutation(PlayerType *player_ptr)
 bool drop_weapons(PlayerType *player_ptr)
 {
     INVENTORY_IDX slot = 0;
-    object_type *o_ptr = nullptr;
+    ObjectType *o_ptr = nullptr;
 
-    if (player_ptr->wild_mode)
+    if (player_ptr->wild_mode) {
         return false;
+    }
 
     msg_print(nullptr);
     if (has_melee_weapon(player_ptr, INVEN_MAIN_HAND)) {
@@ -516,8 +545,9 @@ bool drop_weapons(PlayerType *player_ptr)
         slot = INVEN_SUB_HAND;
     }
 
-    if ((slot == 0) || o_ptr->is_cursed())
+    if ((slot == 0) || o_ptr->is_cursed()) {
         return false;
+    }
 
     msg_print(_("武器を落としてしまった！", "You drop your weapon!"));
     drop_from_inventory(player_ptr, slot, 1);

@@ -1,8 +1,8 @@
 ﻿#include "world/world.h"
 #include "player-info/race-types.h"
 #include "system/player-type-definition.h"
-#include "util/bit-flags-calculator.h"
 #include "term/z-util.h"
+#include "util/bit-flags-calculator.h"
 #include <ctime>
 
 world_type world;
@@ -16,10 +16,11 @@ world_type *w_ptr = &world;
 bool is_daytime(void)
 {
     int32_t len = TURNS_PER_TICK * TOWN_DAWN;
-    if ((w_ptr->game_turn % len) < (len / 2))
+    if ((w_ptr->game_turn % len) < (len / 2)) {
         return true;
-    else
+    } else {
         return false;
+    }
 }
 
 /*!
@@ -67,8 +68,9 @@ void update_playtime(void)
  */
 void add_winner_class(PlayerClassType c)
 {
-    if (!w_ptr->noscore)
+    if (!w_ptr->noscore) {
         w_ptr->sf_winner.set(c);
+    }
 }
 
 /*!
@@ -76,8 +78,9 @@ void add_winner_class(PlayerClassType c)
  */
 void add_retired_class(PlayerClassType c)
 {
-    if (!w_ptr->noscore)
+    if (!w_ptr->noscore) {
         w_ptr->sf_retired.set(c);
+    }
 }
 
 /*!
@@ -85,8 +88,9 @@ void add_retired_class(PlayerClassType c)
  */
 bool is_winner_class(PlayerClassType c)
 {
-    if (c == PlayerClassType::MAX)
+    if (c == PlayerClassType::MAX) {
         return false;
+    }
     return w_ptr->sf_winner.has(c);
 }
 
@@ -95,7 +99,8 @@ bool is_winner_class(PlayerClassType c)
  */
 bool is_retired_class(PlayerClassType c)
 {
-    if (c == PlayerClassType::MAX)
+    if (c == PlayerClassType::MAX) {
         return false;
+    }
     return w_ptr->sf_retired.has(c);
 }

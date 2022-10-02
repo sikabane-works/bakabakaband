@@ -20,6 +20,7 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include <algorithm>
 
 QuestCompletionChecker::QuestCompletionChecker(PlayerType *player_ptr, monster_type *m_ptr)
     : player_ptr(player_ptr)
@@ -38,7 +39,7 @@ void QuestCompletionChecker::complete()
     this->set_quest_idx();
     auto create_stairs = false;
     auto reward = false;
-    if ((this->quest_idx > 0) && (quest[this->quest_idx].status == QuestStatusType::TAKEN)) {
+    if (inside_quest(this->quest_idx) && (quest[this->quest_idx].status == QuestStatusType::TAKEN)) {
         this->q_ptr = &quest[this->quest_idx];
         auto [tmp_create_stairs, tmp_reward] = this->switch_completion();
         create_stairs = tmp_create_stairs;
@@ -53,47 +54,54 @@ void QuestCompletionChecker::complete()
     this->make_reward(pos);
 }
 
+static bool check_quest_completion(PlayerType *player_ptr, const quest_type &q_ref, monster_type *m_ptr)
+{
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if (q_ref.status != QuestStatusType::TAKEN) {
+        return false;
+    }
+
+    if (any_bits(q_ref.flags, QUEST_FLAG_PRESET)) {
+        return false;
+    }
+
+    if ((q_ref.level != floor_ptr->dun_level) && (q_ref.type != QuestKindType::KILL_ANY_LEVEL)) {
+        return false;
+    }
+
+    if ((q_ref.type == QuestKindType::FIND_ARTIFACT) || (q_ref.type == QuestKindType::FIND_EXIT)) {
+        return false;
+    }
+
+    auto kill_them_all = q_ref.type == QuestKindType::KILL_NUMBER;
+    kill_them_all |= q_ref.type == QuestKindType::TOWER;
+    kill_them_all |= q_ref.type == QuestKindType::KILL_ALL;
+    if (kill_them_all) {
+        return true;
+    }
+
+    auto is_target = (q_ref.type == QuestKindType::RANDOM) && (q_ref.r_idx == m_ptr->r_idx);
+    if ((q_ref.type == QuestKindType::KILL_LEVEL) || (q_ref.type == QuestKindType::KILL_ANY_LEVEL) || is_target) {
+        return true;
+    }
+
+    return false;
+}
+
 void QuestCompletionChecker::set_quest_idx()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    this->quest_idx = floor_ptr->inside_quest;
-    if (this->quest_idx > 0) {
+    this->quest_idx = floor_ptr->quest_number;
+    if (inside_quest(this->quest_idx)) {
         return;
     }
+    auto q = std::find_if(quest.rbegin(), quest.rend(), [this](auto q) { return check_quest_completion(this->player_ptr, q.second, this->m_ptr); });
 
-    short i;
-    for (i = max_q_idx - 1; i > 0; i--) {
-        auto *const quest_ptr = &quest[i];
-        if (quest_ptr->status != QuestStatusType::TAKEN) {
-            continue;
-        }
-
-        if (any_bits(quest_ptr->flags, QUEST_FLAG_PRESET)) {
-            continue;
-        }
-
-        if ((quest_ptr->level != floor_ptr->dun_level) && (quest_ptr->type != QuestKindType::KILL_ANY_LEVEL)) {
-            continue;
-        }
-
-        if ((quest_ptr->type == QuestKindType::FIND_ARTIFACT) || (quest_ptr->type == QuestKindType::FIND_EXIT)) {
-            continue;
-        }
-
-        auto kill_them_all = quest_ptr->type == QuestKindType::KILL_NUMBER;
-        kill_them_all |= quest_ptr->type == QuestKindType::TOWER;
-        kill_them_all |= quest_ptr->type == QuestKindType::KILL_ALL;
-        if (kill_them_all) {
-            break;
-        }
-
-        auto is_target = (quest_ptr->type == QuestKindType::RANDOM) && (quest_ptr->r_idx == this->m_ptr->r_idx);
-        if ((quest_ptr->type == QuestKindType::KILL_LEVEL) || (quest_ptr->type == QuestKindType::KILL_ANY_LEVEL) || is_target) {
-            break;
-        }
+    if (q != quest.rend()) {
+        this->quest_idx = q->first;
+    } else {
+        this->quest_idx = QuestId::NONE;
     }
-
-    this->quest_idx = i;
 }
 
 std::tuple<bool, bool> QuestCompletionChecker::switch_completion()
@@ -156,10 +164,10 @@ std::tuple<bool, bool> QuestCompletionChecker::complete_random()
     auto create_stairs = false;
     if (none_bits(this->q_ptr->flags, QUEST_FLAG_PRESET)) {
         create_stairs = true;
-        this->player_ptr->current_floor_ptr->inside_quest = 0;
+        this->player_ptr->current_floor_ptr->quest_number = QuestId::NONE;
     }
 
-    if ((this->quest_idx == QUEST_OBERON) || (this->quest_idx == QUEST_SERPENT) || (this->quest_idx == QUEST_MELKO)) {
+    if (this->quest_idx == QuestId::OBERON || this->quest_idx == QuestId::SERPENT || this->quest_idx == QuestId::MELKO) {
         this->q_ptr->status = QuestStatusType::FINISHED;
     }
 
@@ -192,11 +200,11 @@ void QuestCompletionChecker::complete_tower()
     }
 
     this->q_ptr->status = QuestStatusType::STAGE_COMPLETED;
-    auto is_tower_completed = quest[QUEST_TOWER1].status == QuestStatusType::STAGE_COMPLETED;
-    is_tower_completed &= quest[QUEST_TOWER2].status == QuestStatusType::STAGE_COMPLETED;
-    is_tower_completed &= quest[QUEST_TOWER3].status == QuestStatusType::STAGE_COMPLETED;
+    auto is_tower_completed = quest[QuestId::TOWER1].status == QuestStatusType::STAGE_COMPLETED;
+    is_tower_completed &= quest[QuestId::TOWER2].status == QuestStatusType::STAGE_COMPLETED;
+    is_tower_completed &= quest[QuestId::TOWER3].status == QuestStatusType::STAGE_COMPLETED;
     if (is_tower_completed) {
-        complete_quest(this->player_ptr, QUEST_TOWER1);
+        complete_quest(this->player_ptr, QuestId::TOWER1);
     }
 }
 
@@ -249,7 +257,7 @@ void QuestCompletionChecker::make_reward(const Pos2D pos)
 {
     auto dun_level = this->player_ptr->current_floor_ptr->dun_level;
     for (auto i = 0; i < (dun_level / 15) + 1; i++) {
-        object_type item;
+        ObjectType item;
         while (true) {
             item.wipe();
             auto &r_ref = r_info[this->m_ptr->r_idx];
@@ -273,10 +281,10 @@ void QuestCompletionChecker::make_reward(const Pos2D pos)
  * 2. 固定アーティファクト以外の矢弾
  * 3. 穴掘りエゴの装備品
  */
-bool QuestCompletionChecker::check_quality(object_type &item)
+bool QuestCompletionChecker::check_quality(ObjectType &item)
 {
     auto is_good_reward = !item.is_cursed();
     is_good_reward &= !item.is_ammo() || (item.is_ammo() && item.is_fixed_artifact());
-    is_good_reward &= item.name2 != EGO_DIGGING;
+    is_good_reward &= item.ego_idx != EgoType::DIGGING;
     return is_good_reward;
 }

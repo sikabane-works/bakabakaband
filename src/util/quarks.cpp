@@ -31,7 +31,7 @@ void quark_init(void)
 /*
  * Add a new "quark" to the set of quarks.
  */
-uint16_t quark_add(concptr str)
+ushort quark_add(concptr str)
 {
     for (uint16_t i = 1; i < quark__str.size(); i++) {
         if (streq(quark__str[i], str)) {
@@ -50,17 +50,18 @@ uint16_t quark_add(concptr str)
 /*
  * This function looks up a quark
  */
-concptr quark_str(STR_OFFSET i)
+concptr quark_str(ushort i)
 {
     concptr q;
 
     /* Return nullptr for an invalid index */
-    if ((i < 1) || (i >= quark__str.size()))
+    if ((i < 1) || (i >= quark__str.size())) {
         return nullptr;
+    }
 
     /* Access the quark */
     q = quark__str[i].data();
 
     /* Return the quark */
-    return (q);
+    return q;
 }

@@ -7,6 +7,7 @@
 #include "mutation/mutation-calculator.h" //!< @todo calc_mutant_regenerate_mod() が相互依存している、後で消す.
 #include "mutation/mutation-flag-types.h"
 #include "mutation/mutation-util.h"
+#include "player-base/player-race.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -14,49 +15,54 @@
 static void sweep_gain_mutation(PlayerType *player_ptr, glm_type *gm_ptr)
 {
     int attempts_left = 20;
-    if (gm_ptr->choose_mut)
+    if (gm_ptr->choose_mut) {
         attempts_left = 1;
+    }
 
     while (attempts_left--) {
         switch_gain_mutation(player_ptr, gm_ptr);
-        if (gm_ptr->muta_which != PlayerMutationType::MAX && player_ptr->muta.has_not(gm_ptr->muta_which))
+        if (gm_ptr->muta_which != PlayerMutationType::MAX && player_ptr->muta.has_not(gm_ptr->muta_which)) {
             gm_ptr->muta_chosen = true;
+        }
 
-        if (gm_ptr->muta_chosen)
+        if (gm_ptr->muta_chosen) {
             break;
+        }
     }
 }
 
 static void race_dependent_mutation(PlayerType *player_ptr, glm_type *gm_ptr)
 {
-    if (gm_ptr->choose_mut != 0)
+    if (gm_ptr->choose_mut != 0) {
         return;
+    }
 
-    if (player_ptr->prace == PlayerRaceType::VAMPIRE && player_ptr->muta.has_not(PlayerMutationType::HYPN_GAZE) && (randint1(10) < 7)) {
+    PlayerRace pr(player_ptr);
+    if (pr.equals(PlayerRaceType::VAMPIRE) && player_ptr->muta.has_not(PlayerMutationType::HYPN_GAZE) && (randint1(10) < 7)) {
         gm_ptr->muta_which = PlayerMutationType::HYPN_GAZE;
         gm_ptr->muta_desc = _("眼が幻惑的になった...", "Your eyes look mesmerizing...");
         return;
     }
 
-    if (player_ptr->prace == PlayerRaceType::IMP && player_ptr->muta.has_not(PlayerMutationType::HORNS) && (randint1(10) < 7)) {
+    if (pr.equals(PlayerRaceType::IMP) && player_ptr->muta.has_not(PlayerMutationType::HORNS) && (randint1(10) < 7)) {
         gm_ptr->muta_which = PlayerMutationType::HORNS;
         gm_ptr->muta_desc = _("角が額から生えてきた！", "Horns pop forth into your forehead!");
         return;
     }
 
-    if (player_ptr->prace == PlayerRaceType::YEEK && player_ptr->muta.has_not(PlayerMutationType::SHRIEK) && (randint1(10) < 7)) {
+    if (pr.equals(PlayerRaceType::YEEK) && player_ptr->muta.has_not(PlayerMutationType::SHRIEK) && (randint1(10) < 7)) {
         gm_ptr->muta_which = PlayerMutationType::SHRIEK;
         gm_ptr->muta_desc = _("声質がかなり強くなった。", "Your vocal cords get much tougher.");
         return;
     }
 
-    if (player_ptr->prace == PlayerRaceType::BEASTMAN && player_ptr->muta.has_not(PlayerMutationType::POLYMORPH) && (randint1(10) < 2)) {
+    if (pr.equals(PlayerRaceType::BEASTMAN) && player_ptr->muta.has_not(PlayerMutationType::POLYMORPH) && (randint1(10) < 2)) {
         gm_ptr->muta_which = PlayerMutationType::POLYMORPH;
         gm_ptr->muta_desc = _("あなたの肉体は変化できるようになった、", "Your body seems mutable.");
         return;
     }
 
-    if (player_ptr->prace == PlayerRaceType::MIND_FLAYER && player_ptr->muta.has_not(PlayerMutationType::TENTACLES) && (randint1(10) < 7)) {
+    if (pr.equals(PlayerRaceType::MIND_FLAYER) && player_ptr->muta.has_not(PlayerMutationType::TENTACLES) && (randint1(10) < 7)) {
         gm_ptr->muta_which = PlayerMutationType::TENTACLES;
         gm_ptr->muta_desc = _("邪悪な触手が口の周りに生えた。", "Evil-looking tentacles sprout from your mouth.");
     }
@@ -210,8 +216,6 @@ static void neutralize_other_status(PlayerType *player_ptr, glm_type *gm_ptr)
             player_ptr->muta.reset(PlayerMutationType::HOMO_SEXUAL);
         }
     }
-
-
 }
 
 /*!
@@ -232,8 +236,9 @@ bool gain_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
     race_dependent_mutation(player_ptr, gm_ptr);
     msg_print(_("突然変異した！", "You mutate!"));
     msg_print(gm_ptr->muta_desc);
-    if (gm_ptr->muta_which != PlayerMutationType::MAX)
+    if (gm_ptr->muta_which != PlayerMutationType::MAX) {
         player_ptr->muta.set(gm_ptr->muta_which);
+    }
 
     neutralize_base_status(player_ptr, gm_ptr);
     neutralize_other_status(player_ptr, gm_ptr);
@@ -247,8 +252,9 @@ bool gain_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
 static void sweep_lose_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
 {
     int attempts_left = 20;
-    if (glm_ptr->choose_mut)
+    if (glm_ptr->choose_mut) {
         attempts_left = 1;
+    }
 
     while (attempts_left--) {
         switch_lose_mutation(player_ptr, glm_ptr);
@@ -258,8 +264,9 @@ static void sweep_lose_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
             }
         }
 
-        if (glm_ptr->muta_chosen)
+        if (glm_ptr->muta_chosen) {
             break;
+        }
     }
 }
 
@@ -272,12 +279,14 @@ bool lose_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
     glm_type tmp_glm;
     glm_type *glm_ptr = initialize_glm_type(&tmp_glm, choose_mut);
     sweep_lose_mutation(player_ptr, glm_ptr);
-    if (!glm_ptr->muta_chosen)
+    if (!glm_ptr->muta_chosen) {
         return false;
+    }
 
     msg_print(glm_ptr->muta_desc);
-    if (glm_ptr->muta_which != PlayerMutationType::MAX)
+    if (glm_ptr->muta_which != PlayerMutationType::MAX) {
         player_ptr->muta.reset(glm_ptr->muta_which);
+    }
 
     set_bits(player_ptr->update, PU_BONUS);
     handle_stuff(player_ptr);

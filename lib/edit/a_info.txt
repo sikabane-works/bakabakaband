@@ -4626,6 +4626,84 @@ D:魔に抗う道を選んだ半吸血鬼アドリアンが、自ら造り振る
 D:彼自身の手を離れた後もヴァンパイアハンターの一族の一つ、
 D:リカード家に伝わり、ドラキュラを破る一助になったという。
 
+N:281:『グラットンソード』
+E:'Gluttony Sword'
+I:23:21:4
+W:30:15:140:100000
+P:0:5d4:12:16:0
+F:CON | HIDE_TYPE |
+F:SLAY_GOOD | VAMPIRIC | RES_LITE | RES_DARK
+D:謙虚なナイトが異常なまでに執着した七罪武器の一つだ。
+D:ナイトが持てば光に闇が備わり最強に見えるが、
+D:逆に暗黒が持つと頭がおかしくなって死ぬという。
+
+N:282:ク
+E:'Kusai'
+I:36:8:-10
+W:20:3:110:0
+P:8:1d1:-1:0:100
+F:AGGRAVATE | SUST_CHR | RES_POIS | RES_NETHER | RES_CHAOS | STEALTH | CHR
+F:ACTIVATE
+D:くさそう。後なんかもう絶望的にきたない。
+U:HUGE_STINKING_STORM
+
+#[DSKL]FJW
+N:283:梅澤の十手
+E:Umezawa's Jitte
+I:21:21:4
+W:50:30:20:120000
+P:0:4d4:20:20:0
+F:INT | WIS | CHR | HIDE_TYPE | SEARCH | FORCE_WEAPON |
+F:LITE | DEC_MANA | XTRA_POWER |
+F:HOLD_EXP | RES_ELEC | RES_NETHER | SEE_INVIS | SHOW_MODS
+F:REGEN | SLOW_DIGEST | RES_CONF | RES_BLIND | FULL_NAME
+
+N:284:ハゲのカツラ
+E:ADEPT BALDNESS
+W:40:20:10:10
+I:32:14:5
+P:1:4d4:10:10:20
+F:INT | WIS | HIDE_TYPE | LITE | DEC_MANA | EASY_SPELL
+F:FULL_NAME | RES_CURSE | REFLECT | RES_LITE
+F:CURSED | HEAVY_CURSE | PERMA_CURSE
+
+N:285:妖刀『似蛭』
+E:the Cursed Blade 'Nihil'
+I:23:20:3
+W:20:20:120:40000
+P:0:4d4:15:23:0
+F:STR | DEX | VORPAL | CURSED | HEAVY_CURSE | TUNNEL | AGGRAVATE | FULL_NAME
+F:RES_CONF | RES_NETHER | RES_FEAR | RES_DISEN | BERS_RAGE | VUL_CURSE | KILL_HUMAN
+D:使い手の精神に干渉し、手当たり次第に他人を斬らせる呪いの刀だ。
+
+N:286:エルデの女王マリカの
+E:of Marika
+I:21:8:4
+W:40:75:120:260000
+P:0:8d3:25:21:5
+F:INT | DEX | HIDE_TYPE |
+F:SLAY_EVIL | IMPACT |
+F:FREE_ACT | RES_ACID | RES_ELEC | RES_FIRE | RES_COLD | RES_NEXUS |
+F:SEE_INVIS | SHOW_MODS | XTRA_POWER | XTRA_H_RES
+D:エルデの支配者であり、多くのデミゴッドの母たるマリカが、大いなる意思に
+D:抗い、律たるエルデンリングを砕くのに用いたハンマーだ。
+D:後にその王配ラダゴンが逆に黄金律の修復を試みるためにも扱われたという。
+
+N:287:『テスタロッサ』
+E:'Testarosa'
+I:23:25:4
+W:20:15:280:60000
+P:0:4d6:15:15:15
+F:STR | DEX | HIDE_TYPE | 
+F:SLAY_HUMAN | SLAY_EVIL | SLAY_GOOD | VORPAL
+F:FREE_ACT | LEVITATION | BLESSED
+F:SLOW_DIGEST | SHOW_MODS
+F:ESP_GOOD | ESP_EVIL
+D:呪われた地ザムハンの試練の塔に安置され、
+D:その塔にて戦士の魂を試す意志ある聖剣だ。
+D:太刀筋に戦いへの苦悩があろうと、躊躇なき闘志があろうと、
+D:試練を乗り越えた戦士の手にそれは収まるだろう。
+
 # N: serial number : item name
 # I: tval : sval : pval
 # W: depth : rarity : weight : cost

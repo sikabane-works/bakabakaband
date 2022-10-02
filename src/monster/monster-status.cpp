@@ -7,6 +7,7 @@
 #include "game-option/birth-options.h"
 #include "game-option/text-display-options.h"
 #include "grid/grid.h"
+#include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-flags1.h"
@@ -67,10 +68,10 @@ DEPTH monster_level_idx(floor_type *floor_ptr, MONSTER_IDX m_idx)
  * @return 修正を行った結果のダメージ量
  * @details RES_ALL持ちはAC軽減後のダメージを1/100に補正する. 光の剣は無敵を無効化する. 一定確率で無敵は貫通できる.
  */
-HIT_POINT mon_damage_mod(PlayerType *player_ptr, monster_type *m_ptr, HIT_POINT dam, bool is_psy_spear)
+int mon_damage_mod(PlayerType *player_ptr, monster_type *m_ptr, int dam, bool is_psy_spear)
 {
     auto *r_ptr = &r_info[m_ptr->r_idx];
-    if ((r_ptr->flagsr & RFR_RES_ALL) && dam > 0) {
+    if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL) && dam > 0) {
         dam /= 100;
         if ((dam == 0) && one_in_(3)) {
             dam = 1;
@@ -198,7 +199,7 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
         auto d = (m_ptr->cdis < AAF_LIMIT / 2) ? (AAF_LIMIT / m_ptr->cdis) : 1;
 
         /* Hack -- amount of "waking" is affected by speed of player */
-        d = (d * SPEED_TO_ENERGY(player_ptr->pspeed)) / 10;
+        d = (d * speed_to_energy(player_ptr->pspeed)) / 10;
         if (d < 0) {
             d = 1;
         }
@@ -210,8 +211,9 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
             /* Notice the "not waking up" */
             if (is_original_ap_and_seen(player_ptr, m_ptr)) {
                 /* Hack -- Count the ignores */
-                if (r_ptr->r_ignore < MAX_UCHAR)
+                if (r_ptr->r_ignore < MAX_UCHAR) {
                     r_ptr->r_ignore++;
+                }
             }
 
             break;
@@ -226,8 +228,9 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
 
         if (is_original_ap_and_seen(player_ptr, m_ptr)) {
             /* Hack -- Count the wakings */
-            if (r_ptr->r_wake < MAX_UCHAR)
+            if (r_ptr->r_wake < MAX_UCHAR) {
                 r_ptr->r_wake++;
+            }
         }
 
         break;
@@ -402,8 +405,9 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX s_i
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
 
-    if (!monster_is_valid(m_ptr))
+    if (!monster_is_valid(m_ptr)) {
         return;
+    }
 
     auto *r_ptr = &r_info[m_ptr->r_idx];
     auto *s_ptr = &r_info[s_idx];
@@ -468,15 +472,15 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX s_i
     m_ptr->mspeed = get_mspeed(floor_ptr, r_ptr);
 
     /* Sub-alignment of a monster */
-    if (!is_pet(m_ptr) && none_bits(r_ptr->flags3, RF3_EVIL | RF3_GOOD)) {
+    if (!is_pet(m_ptr) && r_ptr->kind_flags.has_none_of(alignment_mask)) {
         m_ptr->sub_align = old_sub_align;
     } else {
         m_ptr->sub_align = SUB_ALIGN_NEUTRAL;
-        if (any_bits(r_ptr->flags3, RF3_EVIL)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::EVIL)) {
             m_ptr->sub_align |= SUB_ALIGN_EVIL;
         }
 
-        if (any_bits(r_ptr->flags3, RF3_GOOD)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::GOOD)) {
             m_ptr->sub_align |= SUB_ALIGN_GOOD;
         }
     }
@@ -488,7 +492,7 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX s_i
                 monster_race *hallu_race;
                 do {
                     hallu_race = &r_info[randint1(r_info.size() - 1)];
-                } while (hallu_race->name.empty() || any_bits(hallu_race->flags1, RF1_UNIQUE));
+                } while (hallu_race->name.empty() || hallu_race->kind_flags.has(MonsterKindType::UNIQUE));
                 msg_format(_("%sは%sに進化した。", "%^s evolved into %s."), m_name, hallu_race->name.c_str());
             } else {
                 msg_format(_("%sは%sに進化した。", "%^s evolved into %s."), m_name, r_ptr->name.c_str());

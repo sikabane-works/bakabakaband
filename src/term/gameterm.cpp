@@ -1,4 +1,5 @@
 ﻿#include "term/gameterm.h"
+#include "effect/attribute-types.h"
 #include "system/system-variables.h"
 #include "term/term-color-types.h"
 #include "util/quarks.h"
@@ -12,16 +13,15 @@
 /*
  * Standard window names
  */
-const char angband_term_name[8][16] =
-{
-	"Bakabakaband",
-	"Term-1",
-	"Term-2",
-	"Term-3",
-	"Term-4",
-	"Term-5",
-	"Term-6",
-	"Term-7"
+const char angband_term_name[8][16] = {
+    "Bakabakaband",
+    "Term-1",
+    "Term-2",
+    "Term-3",
+    "Term-4",
+    "Term-5",
+    "Term-6",
+    "Term-7"
 };
 
 /*
@@ -34,7 +34,7 @@ byte angband_color_table[256][4] = {
     { 0x00, 0xFF, 0x80, 0x00 }, /* TERM_ORANGE */
     { 0x00, 0xC0, 0x00, 0x00 }, /* TERM_RED */
     { 0x00, 0x00, 0x80, 0x40 }, /* TERM_GREEN */
-    { 0x00, 0x00, 0x00, 0xFF }, /* TERM_BLUE */
+    { 0x00, 0x00, 0x80, 0xFF }, /* TERM_BLUE */
     { 0x00, 0x80, 0x40, 0x00 }, /* TERM_UMBER */
     { 0x00, 0x40, 0x40, 0x40 }, /* TERM_L_DARK */
     { 0x00, 0xC0, 0xC0, 0xC0 }, /* TERM_L_WHITE */
@@ -358,7 +358,7 @@ static const concptr color_char = "dwsorgbuDWvyRGBU";
  * Be sure to use "index & 0x7F" to avoid illegal access
  */
 TERM_COLOR misc_to_attr[256];
-SYMBOL_CODE misc_to_char[256];
+char misc_to_char[256];
 
 /*
  * Specify attr/char pairs for inventory items (by tval)
@@ -369,7 +369,7 @@ TERM_COLOR tval_to_attr[128];
 /*
  * Default spell color table (quark index)
  */
-TERM_COLOR gf_color[(int)AttributeType::MAX];
+std::map<AttributeType, ushort> gf_colors;
 
 /*!
  * @brief 万色表現用にランダムな色を選択する関数 /
@@ -381,38 +381,38 @@ static TERM_COLOR mh_attr(int max)
 {
     switch (randint1(max)) {
     case 1:
-        return (TERM_RED);
+        return TERM_RED;
     case 2:
-        return (TERM_GREEN);
+        return TERM_GREEN;
     case 3:
-        return (TERM_BLUE);
+        return TERM_BLUE;
     case 4:
-        return (TERM_YELLOW);
+        return TERM_YELLOW;
     case 5:
-        return (TERM_ORANGE);
+        return TERM_ORANGE;
     case 6:
-        return (TERM_VIOLET);
+        return TERM_VIOLET;
     case 7:
-        return (TERM_L_RED);
+        return TERM_L_RED;
     case 8:
-        return (TERM_L_GREEN);
+        return TERM_L_GREEN;
     case 9:
-        return (TERM_L_BLUE);
+        return TERM_L_BLUE;
     case 10:
-        return (TERM_UMBER);
+        return TERM_UMBER;
     case 11:
-        return (TERM_L_UMBER);
+        return TERM_L_UMBER;
     case 12:
-        return (TERM_SLATE);
+        return TERM_SLATE;
     case 13:
-        return (TERM_WHITE);
+        return TERM_WHITE;
     case 14:
-        return (TERM_L_WHITE);
+        return TERM_L_WHITE;
     case 15:
-        return (TERM_L_DARK);
+        return TERM_L_DARK;
     }
 
-    return (TERM_WHITE);
+    return TERM_WHITE;
 }
 
 /*!
@@ -428,102 +428,102 @@ static TERM_COLOR spell_color(AttributeType type)
         /* Analyze */
         switch (type) {
         case AttributeType::PSY_SPEAR:
-            return (0x06);
+            return 0x06;
         case AttributeType::MISSILE:
-            return (0x0F);
+            return 0x0F;
         case AttributeType::ACID:
-            return (0x04);
+            return 0x04;
         case AttributeType::ELEC:
-            return (0x02);
+            return 0x02;
         case AttributeType::FIRE:
-            return (0x00);
+            return 0x00;
         case AttributeType::COLD:
-            return (0x01);
+            return 0x01;
         case AttributeType::POIS:
-            return (0x03);
+            return 0x03;
         case AttributeType::HOLY_FIRE:
-            return (0x00);
+            return 0x00;
         case AttributeType::HELL_FIRE:
-            return (0x00);
+            return 0x00;
         case AttributeType::MANA:
-            return (0x0E);
+            return 0x0E;
             /* by henkma */
         case AttributeType::SEEKER:
-            return (0x0E);
+            return 0x0E;
         case AttributeType::SUPER_RAY:
-            return (0x0E);
+            return 0x0E;
 
         case AttributeType::DEBUG:
-            return (0x0F);
+            return 0x0F;
         case AttributeType::WATER:
-            return (0x04);
+            return 0x04;
         case AttributeType::NETHER:
-            return (0x07);
+            return 0x07;
         case AttributeType::CHAOS:
-            return (mh_attr(15));
+            return mh_attr(15);
         case AttributeType::DISENCHANT:
-            return (0x05);
+            return 0x05;
         case AttributeType::NEXUS:
-            return (0x0C);
+            return 0x0C;
         case AttributeType::CONFUSION:
-            return (mh_attr(4));
+            return mh_attr(4);
         case AttributeType::SOUND:
-            return (0x09);
+            return 0x09;
         case AttributeType::SHARDS:
-            return (0x08);
+            return 0x08;
         case AttributeType::FORCE:
-            return (0x09);
+            return 0x09;
         case AttributeType::INERTIAL:
-            return (0x09);
+            return 0x09;
         case AttributeType::GRAVITY:
-            return (0x09);
+            return 0x09;
         case AttributeType::TIME:
-            return (0x09);
+            return 0x09;
         case AttributeType::LITE_WEAK:
-            return (0x06);
+            return 0x06;
         case AttributeType::LITE:
-            return (0x06);
+            return 0x06;
         case AttributeType::DARK_WEAK:
-            return (0x07);
+            return 0x07;
         case AttributeType::DARK:
-            return (0x07);
+            return 0x07;
         case AttributeType::PLASMA:
-            return (0x0B);
+            return 0x0B;
         case AttributeType::METEOR:
-            return (0x00);
+            return 0x00;
         case AttributeType::ICE:
-            return (0x01);
+            return 0x01;
         case AttributeType::ROCKET:
-            return (0x0F);
+            return 0x0F;
         case AttributeType::DEATH_RAY:
-            return (0x07);
+            return 0x07;
         case AttributeType::NUKE:
-            return (mh_attr(2));
+            return mh_attr(2);
         case AttributeType::DISINTEGRATE:
-            return (0x05);
-        case AttributeType::PSI:            /* fall through */
-        case AttributeType::PSI_DRAIN:      /* fall through */
-        case AttributeType::TELEKINESIS:    /* fall through */
-        case AttributeType::DOMINATION:     /* fall through */
-        case AttributeType::DRAIN_MANA:     /* fall through */
-        case AttributeType::MIND_BLAST:     /* fall through */
+            return 0x05;
+        case AttributeType::PSI: /* fall through */
+        case AttributeType::PSI_DRAIN: /* fall through */
+        case AttributeType::TELEKINESIS: /* fall through */
+        case AttributeType::DOMINATION: /* fall through */
+        case AttributeType::DRAIN_MANA: /* fall through */
+        case AttributeType::MIND_BLAST: /* fall through */
         case AttributeType::BRAIN_SMASH:
-            return (0x09);
+            return 0x09;
         case AttributeType::CAUSE_1: /* fall through */
         case AttributeType::CAUSE_2: /* fall through */
         case AttributeType::CAUSE_3: /* fall through */
         case AttributeType::CAUSE_4:
-            return (0x0E);
+            return 0x0E;
         case AttributeType::HAND_DOOM:
-            return (0x07);
+            return 0x07;
         case AttributeType::CAPTURE:
-            return (0x0E);
+            return 0x0E;
         case AttributeType::IDENTIFY:
-            return (0x01);
+            return 0x01;
         case AttributeType::ATTACK:
-            return (0x0F);
+            return 0x0F;
         case AttributeType::PHOTO:
-            return (0x06);
+            return 0x06;
         default:
             break;
         }
@@ -531,31 +531,31 @@ static TERM_COLOR spell_color(AttributeType type)
     /* Normal tiles or ASCII */
     else {
         TERM_COLOR a;
-        SYMBOL_CODE c;
-
         /* Lookup the default colors for this type */
-        concptr s = quark_str(gf_color[(int)type]);
+        concptr s = quark_str(gf_colors[type]);
 
-        if (!s)
-            return (TERM_WHITE);
+        if (!s) {
+            return TERM_WHITE;
+        }
 
         /* Pick a random color */
-        c = s[randint0(strlen(s))];
+        auto c = s[randint0(strlen(s))];
 
         /* Lookup this color */
         a = angband_strchr(color_char, c) - color_char;
 
         /* Invalid color (note check for < 0 removed, gave a silly
-		 * warning because bytes are always >= 0 -- RG) */
-        if (a > 15)
-            return (TERM_WHITE);
+         * warning because bytes are always >= 0 -- RG) */
+        if (a > 15) {
+            return TERM_WHITE;
+        }
 
         /* Use this color */
-        return (a);
+        return a;
     }
 
     /* Standard "color" */
-    return (TERM_WHITE);
+    return TERM_WHITE;
 }
 
 /*!
@@ -580,41 +580,45 @@ uint16_t bolt_pict(POSITION y, POSITION x, POSITION ny, POSITION nx, AttributeTy
     byte k;
 
     TERM_COLOR a;
-    SYMBOL_CODE c;
-
     /* No motion (*) */
-    if ((ny == y) && (nx == x))
+    if ((ny == y) && (nx == x)) {
         base = 0x30;
+    }
 
     /* Vertical (|) */
-    else if (nx == x)
+    else if (nx == x) {
         base = 0x40;
+    }
 
     /* Horizontal (-) */
-    else if (ny == y)
+    else if (ny == y) {
         base = 0x50;
+    }
 
     /* Diagonal (/) */
-    else if ((ny - y) == (x - nx))
+    else if ((ny - y) == (x - nx)) {
         base = 0x60;
+    }
 
     /* Diagonal (\) */
-    else if ((ny - y) == (nx - x))
+    else if ((ny - y) == (nx - x)) {
         base = 0x70;
+    }
 
     /* Weird (*) */
-    else
+    else {
         base = 0x30;
+    }
 
     /* Basic spell color */
     k = spell_color(typ);
 
     /* Obtain attr/char */
     a = misc_to_attr[base + k];
-    c = misc_to_char[base + k];
+    auto c = misc_to_char[base + k];
 
     /* Create pict */
-    return (PICT(a, c));
+    return PICT(a, c);
 }
 
 /*!
@@ -624,43 +628,43 @@ uint16_t bolt_pict(POSITION y, POSITION x, POSITION ny, POSITION nx, AttributeTy
  * @param c シンボル文字
  * @return カラーID
  */
-TERM_COLOR color_char_to_attr(SYMBOL_CODE c)
+TERM_COLOR color_char_to_attr(char c)
 {
     switch (c) {
     case 'd':
-        return (TERM_DARK);
+        return TERM_DARK;
     case 'w':
-        return (TERM_WHITE);
+        return TERM_WHITE;
     case 's':
-        return (TERM_SLATE);
+        return TERM_SLATE;
     case 'o':
-        return (TERM_ORANGE);
+        return TERM_ORANGE;
     case 'r':
-        return (TERM_RED);
+        return TERM_RED;
     case 'g':
-        return (TERM_GREEN);
+        return TERM_GREEN;
     case 'b':
-        return (TERM_BLUE);
+        return TERM_BLUE;
     case 'u':
-        return (TERM_UMBER);
+        return TERM_UMBER;
 
     case 'D':
-        return (TERM_L_DARK);
+        return TERM_L_DARK;
     case 'W':
-        return (TERM_L_WHITE);
+        return TERM_L_WHITE;
     case 'v':
-        return (TERM_VIOLET);
+        return TERM_VIOLET;
     case 'y':
-        return (TERM_YELLOW);
+        return TERM_YELLOW;
     case 'R':
-        return (TERM_L_RED);
+        return TERM_L_RED;
     case 'G':
-        return (TERM_L_GREEN);
+        return TERM_L_GREEN;
     case 'B':
-        return (TERM_L_BLUE);
+        return TERM_L_BLUE;
     case 'U':
-        return (TERM_L_UMBER);
+        return TERM_L_UMBER;
     }
 
-    return (255);
+    return 255;
 }

@@ -29,11 +29,12 @@ bool artifact_scroll(PlayerType *player_ptr)
 {
     concptr q = _("どのアイテムを強化しますか? ", "Enchant which item? ");
     concptr s = _("強化できるアイテムがない。", "You have nothing to enchant.");
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     OBJECT_IDX item;
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), FuncItemTester(object_is_nameless_weapon_armour));
-    if (!o_ptr)
+    if (!o_ptr) {
         return false;
+    }
 
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -58,7 +59,7 @@ bool artifact_scroll(PlayerType *player_ptr)
         msg_format("The %s %s already %s!", o_name, ((o_ptr->number > 1) ? "are" : "is"), ((o_ptr->number > 1) ? "ego items" : "an ego item"));
 #endif
         okay = false;
-    } else if (o_ptr->xtra3) {
+    } else if (o_ptr->is_smith()) {
 #ifdef JP
         msg_format("%sは既に強化されています！", o_name);
 #else
@@ -84,12 +85,14 @@ bool artifact_scroll(PlayerType *player_ptr)
     }
 
     if (!okay) {
-        if (flush_failure)
+        if (flush_failure) {
             flush();
+        }
 
         msg_print(_("強化に失敗した。", "The enchantment failed."));
-        if (one_in_(3))
+        if (one_in_(3)) {
             chg_virtue(player_ptr, V_ENCHANT, -1);
+        }
 
         calc_android_exp(player_ptr);
         return true;
@@ -121,17 +124,19 @@ bool artifact_scroll(PlayerType *player_ptr)
 bool mundane_spell(PlayerType *player_ptr, bool only_equip)
 {
     std::unique_ptr<ItemTester> item_tester = std::make_unique<AllMatchItemTester>();
-    if (only_equip)
-        item_tester = std::make_unique<FuncItemTester>(&object_type::is_weapon_armour_ammo);
+    if (only_equip) {
+        item_tester = std::make_unique<FuncItemTester>(&ObjectType::is_weapon_armour_ammo);
+    }
 
     OBJECT_IDX item;
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     concptr q = _("どのアイテムを凡庸化しますか？", "Mundanify which item? ");
     concptr s = _("凡庸化できるアイテムがない。", "You have nothing to mundanify.");
 
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), *item_tester);
-    if (!o_ptr)
+    if (!o_ptr) {
         return false;
+    }
 
     msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
     POSITION iy = o_ptr->iy;

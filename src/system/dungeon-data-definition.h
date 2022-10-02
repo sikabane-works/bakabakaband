@@ -7,7 +7,7 @@
  * Bounds on some arrays used in the "dun_data_type" structure.
  * These bounds are checked, though usually this is a formality.
  */
-#define CENT_MAX 300 //!<「部屋の中心」最大数/巨大マップを作るバリアントにするほど大きめにとっておかないといけないと思われる。
+#define CENT_MAX 300 //!< 「部屋の中心」最大数/巨大マップを作るバリアントにするほど大きめにとっておかないといけないと思われる。
 #define DOOR_MAX 200
 #define WALL_MAX 500
 #define TUNN_MAX 900
@@ -27,15 +27,15 @@
 /*
  * Simple structure to hold a map location
  */
-typedef struct coord {
+struct coord {
     POSITION y;
     POSITION x;
-} coord;
+};
 
 /*
  * Structure to hold all "dungeon generation" data
  */
-typedef struct dun_data_type {
+struct dun_data_type {
     /* Array of centers of rooms */
     int cent_n;
     coord cent[CENT_MAX];
@@ -73,4 +73,4 @@ typedef struct dun_data_type {
     int alloc_monster_num;
 
     concptr *why;
-} dun_data_type;
+};

@@ -10,15 +10,17 @@
  * @param o_ptr 判定するアイテムの情報参照ポインタ
  * @return 並ならばTRUEを返す
  */
-bool object_is_nameless_weapon_armour(const object_type *o_ptr)
+bool object_is_nameless_weapon_armour(const ObjectType *o_ptr)
 {
     /* Require weapon or armour */
-    if (!o_ptr->is_weapon_armour_ammo())
+    if (!o_ptr->is_weapon_armour_ammo()) {
         return false;
+    }
 
     /* Require nameless object if the object is well known */
-    if (o_ptr->is_known() && !o_ptr->is_nameless())
+    if (o_ptr->is_known() && !o_ptr->is_nameless()) {
         return false;
+    }
 
     return true;
 }
@@ -28,7 +30,7 @@ bool object_is_nameless_weapon_armour(const object_type *o_ptr)
  * @param o_ptr 判定するアイテムの情報参照ポインタ
  * @return 実際に未鑑定ならばTRUEを返す
  */
-bool object_is_not_identified(const object_type *o_ptr)
+bool object_is_not_identified(const ObjectType *o_ptr)
 {
     return !o_ptr->is_known();
 }
@@ -38,10 +40,11 @@ bool object_is_not_identified(const object_type *o_ptr)
  * @param o_ptr 判定するアイテムの情報参照ポインタ
  * @return 実際に未鑑定の武器防具ならばTRUEを返す
  */
-bool object_is_not_identified_weapon_armor(const object_type *o_ptr)
+bool object_is_not_identified_weapon_armor(const ObjectType *o_ptr)
 {
-    if (!object_is_not_identified(o_ptr))
+    if (!object_is_not_identified(o_ptr)) {
         return false;
+    }
 
     return o_ptr->is_weapon_armour_ammo();
 }
@@ -51,7 +54,7 @@ bool object_is_not_identified_weapon_armor(const object_type *o_ptr)
  * @param o_ptr 判定するアイテムの情報参照ポインタ
  * @return 実際に未*鑑定*ならばTRUEを返す
  */
-bool object_is_not_fully_identified(const object_type *o_ptr)
+bool object_is_not_fully_identified(const ObjectType *o_ptr)
 {
     return !o_ptr->is_known() || !o_ptr->is_fully_known();
 }
@@ -61,10 +64,11 @@ bool object_is_not_fully_identified(const object_type *o_ptr)
  * @param o_ptr 判定するアイテムの情報参照ポインタ
  * @return 実際に未*鑑定*の武器防具ならばTRUEを返す
  */
-bool object_is_not_fully_identified_weapon_armour(const object_type *o_ptr)
+bool object_is_not_fully_identified_weapon_armour(const ObjectType *o_ptr)
 {
-    if (!object_is_not_fully_identified(o_ptr))
+    if (!object_is_not_fully_identified(o_ptr)) {
         return false;
+    }
 
     return o_ptr->is_weapon_armour_ammo();
 }

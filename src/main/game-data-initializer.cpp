@@ -40,9 +40,16 @@ constexpr int MACRO_MAX = 256;
  */
 void init_quests(void)
 {
-    quest.assign(max_q_idx, {});
-    for (auto &q_ref : quest) {
-        q_ref.status = QuestStatusType::UNTAKEN;
+    for (auto i = 0; i < max_q_idx; i++) {
+        quest[i2enum<QuestId>(i)].status = QuestStatusType::UNTAKEN;
+    }
+}
+
+static void init_gf_colors()
+{
+    constexpr ushort default_gf_color = 0;
+    for (auto i = 0; i < enum2i(AttributeType::MAX); i++) {
+        gf_colors.emplace(i2enum<AttributeType>(i), default_gf_color);
     }
 }
 
@@ -63,6 +70,7 @@ void init_other(PlayerType *player_ptr)
 
     max_dlv.assign(d_info.size(), {});
     floor_ptr->grid_array.assign(MAX_HGT, std::vector<grid_type>(MAX_WID));
+    init_gf_colors();
 
     macro__pat.assign(MACRO_MAX, {});
     macro__act.assign(MACRO_MAX, {});

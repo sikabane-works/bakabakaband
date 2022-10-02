@@ -5,7 +5,6 @@
 
 #include "main-win/main-win-bg.h"
 #include "main-win/graphics-win.h"
-#include "system/h-define.h"
 #include <algorithm>
 
 HBITMAP hBG = NULL;
@@ -28,18 +27,19 @@ void delete_bg(void)
     }
 }
 
-bool load_bg(char* filename)
+bool load_bg(char *filename)
 {
     delete_bg();
     hBG = read_graphic(filename);
 
-    return (hBG != NULL);
+    return hBG != NULL;
 }
 
 void draw_bg(HDC hdc, RECT *r)
 {
-    if (!hBG)
+    if (!hBG) {
         return;
+    }
 
     int x = r->left, y = r->top;
     int nx = x;

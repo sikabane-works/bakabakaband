@@ -67,9 +67,8 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
     POSITION y_depth = yval + 15;
     POSITION x_left = xval - 15;
     POSITION x_right = xval + 15;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
 
- 
     for (POSITION i = y_height; i <= y_height + 5; i++) {
         for (POSITION j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
@@ -98,7 +97,7 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
         }
     }
 
-    //柱っぽいもの
+    // 柱っぽいもの
     place_bold(player_ptr, y_height + 6, x_left + 18, GB_EXTRA_PERM);
     floor_ptr->grid_array[y_height + 6][x_left + 18].info |= CAVE_GLOW | CAVE_MARK;
     place_bold(player_ptr, y_depth - 6, x_left + 18, GB_EXTRA_PERM);
@@ -117,11 +116,10 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
     place_bold(player_ptr, y_depth - 9, x_right - 21, GB_EXTRA_PERM);
     floor_ptr->grid_array[y_depth - 9][x_right - 21].info |= CAVE_GLOW | CAVE_MARK;
 
-
     *start_y = y_height + 10;
     *start_x = xval;
-    floor_ptr->grid_array[*start_y-5][*start_x].feat = f_tag_to_index("ARENA_GATE");
-    floor_ptr->grid_array[*start_y-5][*start_x].info |= CAVE_GLOW | CAVE_MARK;
+    floor_ptr->grid_array[*start_y - 5][*start_x].feat = f_tag_to_index("ARENA_GATE");
+    floor_ptr->grid_array[*start_y - 5][*start_x].info |= CAVE_GLOW | CAVE_MARK;
 }
 
 /*!
@@ -131,25 +129,29 @@ static void generate_challenge_arena(PlayerType *player_ptr)
 {
     POSITION qy = 0;
     POSITION qx = 0;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->height = ARENA_WID;
     floor_ptr->width = ARENA_HGT;
 
     POSITION y, x;
-    for (y = 0; y < floor_ptr->height; y++)
+    for (y = 0; y < floor_ptr->height; y++) {
         for (x = 0; x < floor_ptr->width; x++) {
             place_bold(player_ptr, y, x, GB_SOLID_PERM);
             floor_ptr->grid_array[y][x].info |= (CAVE_GLOW | CAVE_MARK);
         }
+    }
 
-    for (y = qy + 1; y < qy + floor_ptr->height - 1; y++)
-        for (x = qx + 1; x < qx + floor_ptr->width - 1; x++)
+    for (y = qy + 1; y < qy + floor_ptr->height - 1; y++) {
+        for (x = qx + 1; x < qx + floor_ptr->width - 1; x++) {
             floor_ptr->grid_array[y][x].feat = feat_floor;
+        }
+    }
 
     build_arena(player_ptr, &y, &x);
     player_place(player_ptr, y, x);
-    if (place_monster_aux(player_ptr, 0, floor_ptr->height - 10 , player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET))
+    if (place_monster_aux(player_ptr, 0, floor_ptr->height - 10, player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET)) {
         return;
+    }
 
     player_ptr->exit_bldg = true;
     player_ptr->arena_number++;
@@ -168,24 +170,24 @@ static void build_battle(PlayerType *player_ptr, POSITION *y, POSITION *x)
     POSITION y_depth = yval + 15;
     POSITION x_left = xval - 15;
     POSITION x_right = xval + 15;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
 
-    for (POSITION i = y_height; i <= y_height + 5; i++) {
-        for (POSITION j = x_left; j <= x_right; j++) {
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    for (int i = y_height; i <= y_height + 5; i++) {
+        for (int j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
     }
 
-    for (POSITION i = y_depth; i >= y_depth - 5; i--) {
-        for (POSITION j = x_left; j <= x_right; j++) {
+    for (int i = y_depth; i >= y_depth - 5; i--) {
+        for (int j = x_left; j <= x_right; j++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
     }
 
-    for (POSITION j = x_left; j <= x_left + 5; j++) {
-        for (POSITION i = y_height; i <= y_depth; i++) {
+    for (int j = x_left; j <= x_left + 5; j++) {
+        for (int i = y_height; i <= y_depth; i++) {
             place_bold(player_ptr, i, j, GB_EXTRA_PERM);
             floor_ptr->grid_array[i][j].info |= (CAVE_GLOW | CAVE_MARK);
         }
@@ -207,11 +209,12 @@ static void build_battle(PlayerType *player_ptr, POSITION *y, POSITION *x)
     place_bold(player_ptr, y_depth - 4, x_right - 18, GB_EXTRA_PERM);
     floor_ptr->grid_array[y_depth - 4][x_right - 18].info |= CAVE_GLOW | CAVE_MARK;
 
-    for (int i = y_height + 1; i <= y_height + 5; i++)
+    for (int i = y_height + 1; i <= y_height + 5; i++) {
         for (int j = x_left + 20 + 2 * (y_height + 5 - i); j <= x_right - 20 - 2 * (y_height + 5 - i); j++) {
             assert(j >= 0 && i >= 0);
             floor_ptr->grid_array[i][j].feat = feat_permanent_glass_wall;
         }
+    }
 
     POSITION last_y = y_height + 1;
     POSITION last_x = xval;
@@ -229,15 +232,18 @@ static void generate_gambling_arena(PlayerType *player_ptr)
     POSITION y, x;
     POSITION qy = 0;
     POSITION qx = 0;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    for (y = 0; y < MAX_HGT; y++)
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    for (y = 0; y < MAX_HGT; y++) {
         for (x = 0; x < MAX_WID; x++) {
             place_bold(player_ptr, y, x, GB_SOLID_PERM);
             floor_ptr->grid_array[y][x].info |= (CAVE_GLOW | CAVE_MARK);
         }
-    for (y = qy + 1; y < qy + ARENA_HGT - 1; y++)
-        for (x = qx + 1; x < qx + ARENA_WID - 1; x++)
+    }
+    for (y = qy + 1; y < qy + ARENA_HGT - 1; y++) {
+        for (x = qx + 1; x < qx + ARENA_WID - 1; x++) {
             floor_ptr->grid_array[y][x].feat = feat_floor;
+        }
+    }
 
     build_battle(player_ptr, &y, &x);
     player_place(player_ptr, y, x);
@@ -247,9 +253,10 @@ static void generate_gambling_arena(PlayerType *player_ptr)
     }
 
     for (MONSTER_IDX i = 1; i < floor_ptr->m_max; i++) {
-        monster_type *m_ptr = &floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr))
+        auto *m_ptr = &floor_ptr->m_list[i];
+        if (!monster_is_valid(m_ptr)) {
             continue;
+        }
 
         m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
         update_monster(player_ptr, i, false);
@@ -262,18 +269,20 @@ static void generate_gambling_arena(PlayerType *player_ptr)
  */
 static void generate_fixed_floor(PlayerType *player_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    for (POSITION y = 0; y < floor_ptr->height; y++)
-        for (POSITION x = 0; x < floor_ptr->width; x++)
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    for (POSITION y = 0; y < floor_ptr->height; y++) {
+        for (POSITION x = 0; x < floor_ptr->width; x++) {
             place_bold(player_ptr, y, x, GB_SOLID_PERM);
+        }
+    }
 
-    floor_ptr->base_level = quest[floor_ptr->inside_quest].level;
+    floor_ptr->base_level = quest[floor_ptr->quest_number].level;
     floor_ptr->dun_level = floor_ptr->base_level;
     floor_ptr->object_level = floor_ptr->base_level;
     floor_ptr->monster_level = floor_ptr->base_level;
-    if (record_stair)
-        exe_write_diary(player_ptr, DIARY_TO_QUEST, floor_ptr->inside_quest, nullptr);
-
+    if (record_stair) {
+        exe_write_diary_quest(player_ptr, DIARY_TO_QUEST, floor_ptr->quest_number);
+    }
     get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), nullptr);
     init_flags = INIT_CREATE_DUNGEON;
     parse_fixed_map(player_ptr, "q_info.txt", 0, 0, MAX_HGT, MAX_WID);
@@ -287,14 +296,15 @@ static void generate_fixed_floor(PlayerType *player_ptr)
  */
 static bool level_gen(PlayerType *player_ptr, concptr *why)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     DUNGEON_IDX d_idx = floor_ptr->dungeon_idx;
-    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)
-            || d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST))
-        && d_info[d_idx].flags.has_not(DungeonFeatureType::BIG)) {
+    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER) || d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) && d_info[d_idx].flags.has_not(DungeonFeatureType::BIG)) {
         int level_height;
         int level_width;
-        if (d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
+        if (d_info[d_idx].flags.has(DungeonFeatureType::ALWAY_MAX_SIZE)) {
+            level_height = MAX_HGT / SCREEN_HGT;
+            level_width = MAX_WID / SCREEN_WID;
+        } else if (d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
             level_height = MIN_HGT_MULTIPLE;
             level_width = MIN_WID_MULTIPLE;
         } else if (d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {
@@ -303,10 +313,8 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
         } else {
             if (one_in_(HUGE_DUNGEON_RATE)) {
                 level_height = randint1(MAX_HGT / SCREEN_HGT);
-                level_width = randint1(MAX_WID / SCREEN_WID);            
-            }
-            else if(one_in_(LARGE_DUNGEON_RATE))
-            {
+                level_width = randint1(MAX_WID / SCREEN_WID);
+            } else if (one_in_(LARGE_DUNGEON_RATE)) {
                 level_height = randint1(MAX_HGT / SCREEN_HGT / 2);
                 level_width = randint1(MAX_WID / SCREEN_WID / 2);
             } else {
@@ -345,14 +353,19 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
  */
 void wipe_generate_random_floor_flags(floor_type *floor_ptr)
 {
-    for (POSITION y = 0; y < floor_ptr->height; y++)
-        for (POSITION x = 0; x < floor_ptr->width; x++)
+    for (POSITION y = 0; y < floor_ptr->height; y++) {
+        for (POSITION x = 0; x < floor_ptr->width; x++) {
             floor_ptr->grid_array[y][x].info &= ~(CAVE_MASK);
+        }
+    }
 
-    if (floor_ptr->dun_level > 0)
-        for (POSITION y = 1; y < floor_ptr->height - 1; y++)
-            for (POSITION x = 1; x < floor_ptr->width - 1; x++)
+    if (floor_ptr->dun_level > 0) {
+        for (POSITION y = 1; y < floor_ptr->height - 1; y++) {
+            for (POSITION x = 1; x < floor_ptr->width - 1; x++) {
                 floor_ptr->grid_array[y][x].info |= CAVE_UNSAFE;
+            }
+        }
+    }
 }
 
 /*!
@@ -361,24 +374,26 @@ void wipe_generate_random_floor_flags(floor_type *floor_ptr)
  */
 void clear_cave(PlayerType *player_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    std::fill_n(floor_ptr->o_list.begin(), floor_ptr->o_max, object_type{});
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    std::fill_n(floor_ptr->o_list.begin(), floor_ptr->o_max, ObjectType{});
     floor_ptr->o_max = 1;
     floor_ptr->o_cnt = 0;
 
-    for (auto &r_ref : r_info)
+    for (auto &r_ref : r_info) {
         r_ref.cur_num = 0;
+    }
 
     std::fill_n(floor_ptr->m_list.begin(), floor_ptr->m_max, monster_type{});
     floor_ptr->m_max = 1;
     floor_ptr->m_cnt = 0;
-    for (int i = 0; i < MAX_MTIMED; i++)
+    for (int i = 0; i < MAX_MTIMED; i++) {
         floor_ptr->mproc_max[i] = 0;
+    }
 
     precalc_cur_num_of_pet(player_ptr);
     for (POSITION y = 0; y < MAX_HGT; y++) {
         for (POSITION x = 0; x < MAX_WID; x++) {
-            grid_type *g_ptr = &floor_ptr->grid_array[y][x];
+            auto *g_ptr = &floor_ptr->grid_array[y][x];
             g_ptr->info = 0;
             g_ptr->feat = 0;
             g_ptr->o_idx_list.clear();
@@ -433,13 +448,16 @@ static void floor_is_connected_dfs(const floor_type *const floor_ptr, const IsWa
         for (int i = 0; i < 8; ++i) {
             const int y_nxt = y + DY[i];
             const int x_nxt = x + DX[i];
-            if (y_nxt < 0 || h <= y_nxt || x_nxt < 0 || w <= x_nxt)
+            if (y_nxt < 0 || h <= y_nxt || x_nxt < 0 || w <= x_nxt) {
                 continue;
+            }
             const int nxt = w * y_nxt + x_nxt;
-            if (visited[nxt])
+            if (visited[nxt]) {
                 continue;
-            if (is_wall(floor_ptr, y_nxt, x_nxt))
+            }
+            if (is_wall(floor_ptr, y_nxt, x_nxt)) {
                 continue;
+            }
 
             stk.emplace(nxt);
             visited[nxt] = true;
@@ -465,13 +483,16 @@ static bool floor_is_connected(const floor_type *const floor_ptr, const IsWallFu
     for (int y = 0; y < h; ++y) {
         for (int x = 0; x < w; ++x) {
             const int idx = w * y + x;
-            if (visited[idx])
+            if (visited[idx]) {
                 continue;
-            if (is_wall(floor_ptr, y, x))
+            }
+            if (is_wall(floor_ptr, y, x)) {
                 continue;
+            }
 
-            if (++n_component >= 2)
+            if (++n_component >= 2) {
                 break;
+            }
             floor_is_connected_dfs(floor_ptr, is_wall, y, x, visited.data());
         }
     }
@@ -486,7 +507,7 @@ static bool floor_is_connected(const floor_type *const floor_ptr, const IsWallFu
  */
 void generate_floor(PlayerType *player_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->dungeon_idx = player_ptr->dungeon_idx;
     set_floor_and_wall(floor_ptr->dungeon_idx);
     for (int num = 0; true; num++) {
@@ -494,19 +515,21 @@ void generate_floor(PlayerType *player_ptr)
         concptr why = nullptr;
         clear_cave(player_ptr);
         player_ptr->x = player_ptr->y = 0;
-        if (floor_ptr->inside_arena)
+        if (floor_ptr->inside_arena) {
             generate_challenge_arena(player_ptr);
-        else if (player_ptr->phase_out)
+        } else if (player_ptr->phase_out) {
             generate_gambling_arena(player_ptr);
-        else if (floor_ptr->inside_quest)
+        } else if (inside_quest(floor_ptr->quest_number)) {
             generate_fixed_floor(player_ptr);
-        else if (!floor_ptr->dun_level)
-            if (player_ptr->wild_mode)
+        } else if (!floor_ptr->dun_level) {
+            if (player_ptr->wild_mode) {
                 wilderness_gen_small(player_ptr);
-            else
+            } else {
                 wilderness_gen(player_ptr);
-        else
+            }
+        } else {
             okay = level_gen(player_ptr, &why);
+        }
 
         if (floor_ptr->o_max >= w_ptr->max_o_idx) {
             why = _("アイテムが多すぎる", "too many objects");
@@ -520,7 +543,7 @@ void generate_floor(PlayerType *player_ptr)
         // 狂戦士でのプレイに支障をきたしうるので再生成する。
         // 地上、荒野マップ、クエストでは連結性判定は行わない。
         // TODO: 本来はダンジョン生成アルゴリズム自身で連結性を保証するのが理想ではある。
-        const bool check_conn = okay && floor_ptr->dun_level > 0 && floor_ptr->inside_quest == 0;
+        const bool check_conn = okay && floor_ptr->dun_level > 0 && !inside_quest(floor_ptr->quest_number);
         if (check_conn && !floor_is_connected(floor_ptr, is_permanent_blocker)) {
             // 一定回数試しても連結にならないなら諦める。
             if (num >= 1000) {
@@ -531,11 +554,13 @@ void generate_floor(PlayerType *player_ptr)
             }
         }
 
-        if (okay)
+        if (okay) {
             break;
+        }
 
-        if (why)
+        if (why) {
             msg_format(_("生成やり直し(%s)", "Generation restarted (%s)"), why);
+        }
 
         wipe_o_list(floor_ptr);
         wipe_monsters_list(player_ptr);

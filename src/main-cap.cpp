@@ -150,16 +150,18 @@ static void ewrite(char *str)
         numwritten = write(1, str, numtowrite);
 
         /* Handle FIFOs and EINTR */
-        if (numwritten < 0)
+        if (numwritten < 0) {
             numwritten = 0;
+        }
 
         /* See what we completed */
         numtowrite -= numwritten;
         str += numwritten;
 
         /* Hack -- sleep if not done */
-        if (numtowrite > 0)
+        if (numtowrite > 0) {
             sleep(1);
+        }
     }
 }
 
@@ -204,8 +206,9 @@ static void tp(char *s)
  */
 static void do_cl(void)
 {
-    if (cl)
+    if (cl) {
         tp(cl);
+    }
 }
 
 /*
@@ -213,8 +216,9 @@ static void do_cl(void)
  */
 static void do_ce(void)
 {
-    if (ce)
+    if (ce) {
         tp(ce);
+    }
 }
 
 /*
@@ -232,8 +236,9 @@ static void curs_set(int vis)
         v = ve ? ve : vs;
     }
 
-    if (v)
+    if (v) {
         tp(v);
+    }
 }
 
 /*
@@ -243,8 +248,9 @@ static void do_cs(int y1, int y2)
 {
 
 #ifdef USE_TERMCAP
-    if (cs)
+    if (cs) {
         tp(tgoto(cs, y2, y1));
+    }
 #endif
 
 #ifdef USE_HARDCODE
@@ -261,8 +267,9 @@ static void do_cm(int x, int y)
 {
 
 #ifdef USE_TERMCAP
-    if (cm)
+    if (cm) {
         tp(tgoto(cm, x, y));
+    }
 #endif
 
 #ifdef USE_HARDCODE
@@ -280,24 +287,27 @@ static void do_cm(int x, int y)
 static void do_move(int x1, int y1, int x2, int y2)
 {
     /* Hack -- unknown start location */
-    if ((x1 == x2) && (y1 == y2))
+    if ((x1 == x2) && (y1 == y2)) {
         do_cm(x2, y2);
+    }
 
     /* Left edge */
     else if (x2 == 0) {
-        if ((y2 <= 0) && ho)
+        if ((y2 <= 0) && ho) {
             tp(ho);
-        else if ((y2 >= rows - 1) && ll)
+        } else if ((y2 >= rows - 1) && ll) {
             tp(ll);
-        else if ((y2 == y1) && cr)
+        } else if ((y2 == y1) && cr) {
             tp(cr);
-        else
+        } else {
             do_cm(x2, y2);
+        }
     }
 
     /* Default -- go directly there */
-    else
+    else {
         do_cm(x2, y2);
+    }
 }
 
 /*
@@ -310,23 +320,28 @@ errr init_cap_aux(void)
 
     /* Get the terminal name (if possible) */
     desc = getenv("TERM");
-    if (!desc)
-        return (1);
+    if (!desc) {
+        return 1;
+    }
 
     /* Get the terminal info */
-    if (tgetent(blob, desc) != 1)
-        return (2);
+    if (tgetent(blob, desc) != 1) {
+        return 2;
+    }
 
     /* Get the (initial) columns and rows, or default */
-    if ((cols = tgetnum("co")) == -1)
+    if ((cols = tgetnum("co")) == -1) {
         cols = 80;
-    if ((rows = tgetnum("li")) == -1)
+    }
+    if ((rows = tgetnum("li")) == -1) {
         rows = 24;
+    }
 
     /* Find out how to move the cursor to a given location */
     cm = tgetstr("cm", &next);
-    if (!cm)
-        return (10);
+    if (!cm) {
+        return 10;
+    }
 
     /* Find out how to move the cursor to a given position */
     ch = tgetstr("ch", &next);
@@ -340,13 +355,15 @@ errr init_cap_aux(void)
 
     /* Find out how to do a "carriage return" */
     cr = tgetstr("cr", &next);
-    if (!cr)
+    if (!cr) {
         cr = "\r";
+    }
 
     /* Find out how to clear the screen */
     cl = tgetstr("cl", &next);
-    if (!cl)
-        return (11);
+    if (!cl) {
+        return 11;
+    }
 
     /* Find out how to clear to the end of display */
     cd = tgetstr("cd", &next);
@@ -360,14 +377,16 @@ errr init_cap_aux(void)
     /* Find out how to hilite */
     so = tgetstr("so", &next);
     se = tgetstr("se", &next);
-    if (!so || !se)
+    if (!so || !se) {
         so = se = nullptr;
+    }
 
     /* Find out how to bold */
     md = tgetstr("md", &next);
     me = tgetstr("me", &next);
-    if (!md || !me)
+    if (!md || !me) {
         md = me = nullptr;
+    }
 
     /* Check the cursor visibility stuff */
     vi = tgetstr("vi", &next);
@@ -401,7 +420,7 @@ errr init_cap_aux(void)
 #endif
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
@@ -654,12 +673,13 @@ static void keymap_game_prepare(void)
 /*
  * Suspend/Resume
  */
-static errr Term_xtra_cap_alive(int v)
+static errr game_term_xtra_cap_alive(int v)
 {
     /* Suspend */
     if (!v) {
-        if (!active)
-            return (1);
+        if (!active) {
+            return 1;
+        }
 
         /* Hack -- make sure the cursor is visible */
         curs_set(1);
@@ -676,8 +696,9 @@ static errr Term_xtra_cap_alive(int v)
 
     /* Resume */
     else {
-        if (active)
-            return (1);
+        if (active) {
+            return 1;
+        }
 
         /* Hack -- restore the cursor location */
         do_move(curx, cury, curx, cury);
@@ -693,13 +714,13 @@ static errr Term_xtra_cap_alive(int v)
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
  * Process an event
  */
-static errr Term_xtra_cap_event(int v)
+static errr game_term_xtra_cap_event(int v)
 {
     int i, arg;
     char buf[2];
@@ -710,43 +731,48 @@ static errr Term_xtra_cap_event(int v)
         i = read(0, buf, 1);
 
         /* Hack -- Handle "errors" */
-        if ((i <= 0) && (errno != EINTR))
+        if ((i <= 0) && (errno != EINTR)) {
             exit_game_panic(p_ptr);
+        }
     }
 
     /* Do not wait */
     else {
         /* Get the current flags for stdin */
-        if ((arg = fcntl(0, F_GETFL, 0)) < 1)
-            return (1);
+        if ((arg = fcntl(0, F_GETFL, 0)) < 1) {
+            return 1;
+        }
 
         /* Tell stdin not to block */
-        if (fcntl(0, F_SETFL, arg | O_NDELAY) < 0)
-            return (1);
+        if (fcntl(0, F_SETFL, arg | O_NDELAY) < 0) {
+            return 1;
+        }
 
         /* Read one byte, if possible */
         i = read(0, buf, 1);
 
         /* Replace the flags for stdin */
-        if (fcntl(0, F_SETFL, arg))
-            return (1);
+        if (fcntl(0, F_SETFL, arg)) {
+            return 1;
+        }
     }
 
     /* No keys ready */
-    if ((i != 1) || (!buf[0]))
-        return (1);
+    if ((i != 1) || (!buf[0])) {
+        return 1;
+    }
 
     /* Enqueue the keypress */
-    Term_keypress(buf[0]);
+    game_term_keypress(buf[0]);
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
  * Actually move the hardware cursor
  */
-static errr Term_curs_cap(int x, int y)
+static errr game_term_curs_cap(int x, int y)
 {
     /* Literally move the cursor */
     do_move(curx, cury, x, y);
@@ -756,7 +782,7 @@ static errr Term_curs_cap(int x, int y)
     cury = y;
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
@@ -766,12 +792,12 @@ static errr Term_curs_cap(int x, int y)
  * bottom line all the way to the bottom right edge, since we
  * have set the "avoid the bottom right corner" flag.
  */
-static errr Term_wipe_cap(int x, int y, int n)
+static errr game_term_wipe_cap(int x, int y, int n)
 {
     int dx;
 
     /* Place the cursor */
-    Term_curs_cap(x, y);
+    game_term_curs_cap(x, y);
 
     /* Wipe to end of line */
     if (x + n >= 80) {
@@ -787,18 +813,18 @@ static errr Term_wipe_cap(int x, int y, int n)
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
  * Place some text on the screen using an attribute
  */
-static errr Term_text_cap(int x, int y, int n, byte a, concptr s)
+static errr game_term_text_cap(int x, int y, int n, byte a, concptr s)
 {
     int i;
 
     /* Move the cursor */
-    Term_curs_cap(x, y);
+    game_term_curs_cap(x, y);
 
     /* Dump the text, advance the cursor */
     for (i = 0; s[i]; i++) {
@@ -811,19 +837,20 @@ static errr Term_text_cap(int x, int y, int n, byte a, concptr s)
             curx = 0;
 
             /* Hack -- Advance cursor 'Y', and wrap */
-            if (++cury == rows)
+            if (++cury == rows) {
                 cury = 0;
+            }
         }
     }
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 /*
  * Handle a "special request"
  */
-static errr Term_xtra_cap(int n, int v)
+static errr game_term_xtra_cap(int n, int v)
 {
     /* Analyze the request */
     switch (n) {
@@ -831,50 +858,52 @@ static errr Term_xtra_cap(int n, int v)
     case TERM_XTRA_CLEAR:
         do_cl();
         do_move(0, 0, 0, 0);
-        return (0);
+        return 0;
 
     /* Make a noise */
     case TERM_XTRA_NOISE:
         (void)write(1, "\007", 1);
-        return (0);
+        return 0;
 
     /* Change the cursor visibility */
     case TERM_XTRA_SHAPE:
         curv = v;
         curs_set(v);
-        return (0);
+        return 0;
 
     /* Suspend/Resume */
     case TERM_XTRA_ALIVE:
-        return (Term_xtra_cap_alive(v));
+        return game_term_xtra_cap_alive(v);
 
     /* Process events */
     case TERM_XTRA_EVENT:
-        return (Term_xtra_cap_event(v));
+        return game_term_xtra_cap_event(v);
 
     /* Flush events */
     case TERM_XTRA_FLUSH:
-        while (!Term_xtra_cap_event(false))
+        while (!game_term_xtra_cap_event(false)) {
             ;
-        return (0);
+        }
+        return 0;
 
     /* Delay */
     case TERM_XTRA_DELAY:
         usleep(1000 * v);
-        return (0);
+        return 0;
     }
 
     /* Not parsed */
-    return (1);
+    return 1;
 }
 
 /*
  * Init a "term" for this file
  */
-static void Term_init_cap(term *t)
+static void game_term_init_cap(term *t)
 {
-    if (active)
+    if (active) {
         return;
+    }
 
     /* Assume cursor at top left */
     curx = 0;
@@ -896,10 +925,11 @@ static void Term_init_cap(term *t)
 /*
  * Nuke a "term" for this file
  */
-static void Term_nuke_cap(term *t)
+static void game_term_nuke_cap(term *t)
 {
-    if (!active)
+    if (!active) {
         return;
+    }
 
     /* Hack -- make sure the cursor is visible */
     curs_set(1);
@@ -924,12 +954,14 @@ errr init_cap(void)
     /*** Initialize ***/
 
     /* Initialize the screen */
-    if (init_cap_aux())
-        return (-1);
+    if (init_cap_aux()) {
+        return -1;
+    }
 
     /* Hack -- Require large screen, or Quit with message */
-    if ((rows < 24) || (cols < 80))
+    if ((rows < 24) || (cols < 80)) {
         quit("Screen too small!");
+    }
 
     /*** Prepare to play ***/
 
@@ -958,23 +990,23 @@ errr init_cap(void)
     t->char_blank = ' ';
 
     /* Set some hooks */
-    t->init_hook = Term_init_cap;
-    t->nuke_hook = Term_nuke_cap;
+    t->init_hook = game_term_init_cap;
+    t->nuke_hook = game_term_nuke_cap;
 
     /* Set some more hooks */
-    t->text_hook = Term_text_cap;
-    t->wipe_hook = Term_wipe_cap;
-    t->curs_hook = Term_curs_cap;
-    t->xtra_hook = Term_xtra_cap;
+    t->text_hook = game_term_text_cap;
+    t->wipe_hook = game_term_wipe_cap;
+    t->curs_hook = game_term_curs_cap;
+    t->xtra_hook = game_term_xtra_cap;
 
     /* Save the term */
     term_screen = t;
 
     /* Activate it */
-    Term_activate(term_screen);
+    game_term_activate(term_screen);
 
     /* Success */
-    return (0);
+    return 0;
 }
 
 #endif /* USE_CAP */

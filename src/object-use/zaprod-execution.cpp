@@ -16,6 +16,7 @@
 #include "object/object-info.h"
 #include "object/object-kind.h"
 #include "perception/object-perception.h"
+#include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "status/experience.h"
 #include "sv-definition/sv-other-types.h"
@@ -24,6 +25,8 @@
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-confusion.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -32,7 +35,7 @@
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 使うオブジェクトの所持品ID
  */
-ObjectZapRodEntity::ObjectZapRodEntity(PlayerType* player_ptr)
+ObjectZapRodEntity::ObjectZapRodEntity(PlayerType *player_ptr)
     : player_ptr(player_ptr)
 {
 }
@@ -50,8 +53,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
         return;
     }
 
-    if (((o_ptr->sval >= SV_ROD_MIN_DIRECTION) && (o_ptr->sval != SV_ROD_HAVOC) && (o_ptr->sval != SV_ROD_AGGRAVATE) && (o_ptr->sval != SV_ROD_PESTICIDE))
-        || !o_ptr->is_aware()) {
+    if (((o_ptr->sval >= SV_ROD_MIN_DIRECTION) && (o_ptr->sval != SV_ROD_HAVOC) && (o_ptr->sval != SV_ROD_AGGRAVATE) && (o_ptr->sval != SV_ROD_PESTICIDE)) || !o_ptr->is_aware()) {
         if (!get_aim_dir(this->player_ptr, &dir)) {
             return;
         }
@@ -64,7 +66,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
 
     auto lev = k_info[o_ptr->k_idx].level;
     auto chance = this->player_ptr->skill_dev;
-    if (this->player_ptr->confused) {
+    if (this->player_ptr->effects()->confusion()->is_confused()) {
         chance = chance / 2;
     }
 
@@ -84,7 +86,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
     }
 
     bool success;
-    if (this->player_ptr->pclass == PlayerClassType::BERSERKER) {
+    if (PlayerClass(this->player_ptr).equals(PlayerClassType::BERSERKER)) {
         success = false;
     } else if (chance > fail) {
         success = randint0(chance * 2) >= fail;

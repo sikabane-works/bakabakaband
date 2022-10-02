@@ -13,6 +13,7 @@
 #include "inventory/inventory-slot-types.h"
 #include "io/input-key-requester.h"
 #include "mutation/mutation-investor-remover.h"
+#include "player-base/player-class.h"
 #include "player/patron.h"
 #include "spell-kind/spells-detection.h"
 #include "spell-kind/spells-floor.h"
@@ -34,8 +35,8 @@
 #include "wizard/wizard-special-process.h"
 #include "wizard/wizard-spells.h"
 #include "wizard/wizard-spoiler.h"
-#include "world/world.h"
 #include "world/world-collapsion.h"
+#include "world/world.h"
 
 #include <sstream>
 #include <string>
@@ -72,6 +73,7 @@ constexpr std::array debug_menu_table = {
     std::make_tuple('p', _("ショート・テレポート", "Phase door")),
     std::make_tuple('P', _("プレイヤー設定変更メニュー", "Modify player configurations")),
     std::make_tuple('r', _("カオスパトロンの報酬", "Get reward of chaos patron")),
+    std::make_tuple('R', _("部屋生成", "Generate room")),
     std::make_tuple('s', _("フロア相当のモンスター召喚", "Summon monster which be in target depth")),
     std::make_tuple('t', _("テレポート", "Teleport self")),
     std::make_tuple('u', _("啓蒙(忍者以外)", "Wiz-lite all floor except Ninja")),
@@ -97,23 +99,26 @@ constexpr std::array debug_menu_table = {
  */
 void display_debug_menu(int page, int max_page, int page_size, int max_line)
 {
-    for (int y = 1; y < page_size + 3; y++)
+    for (int y = 1; y < page_size + 3; y++) {
         term_erase(14, y, 64);
+    }
 
     int r = 1;
     int c = 15;
     for (int i = 0; i < page_size; i++) {
         int pos = page * page_size + i;
-        if (pos >= max_line)
+        if (pos >= max_line) {
             break;
+        }
 
         std::stringstream ss;
         const auto &[symbol, desc] = debug_menu_table[pos];
         ss << symbol << ") " << desc;
         put_str(ss.str().c_str(), r++, c);
     }
-    if (max_page > 1)
+    if (max_page > 1) {
         put_str("-- more --", r++, c);
+    }
 }
 
 /*!
@@ -189,10 +194,13 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         wiz_jump_to_dungeon(player_ptr);
         break;
     case 'k':
-        wiz_kill_me(player_ptr, 0, (AttributeType)command_arg);
+        wiz_kill_target(player_ptr, 0, (AttributeType)command_arg, true);
         break;
     case 'm':
         map_area(player_ptr, DETECT_RAD_ALL * 3);
+        break;
+    case 'R':
+        wiz_generate_room(player_ptr, command_arg);
         break;
     case 'r':
         patron_list[player_ptr->chaos_patron].gain_level_reward(player_ptr, command_arg);
@@ -216,8 +224,9 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         wizard_player_modifier(player_ptr);
         break;
     case 's':
-        if (command_arg <= 0)
+        if (command_arg <= 0) {
             command_arg = 1;
+        }
 
         wiz_summon_random_enemy(player_ptr, command_arg);
         break;
@@ -225,9 +234,11 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         teleport_player(player_ptr, 100, TELEPORT_SPONTANEOUS);
         break;
     case 'u':
-        for (int y = 0; y < player_ptr->current_floor_ptr->height; y++)
-            for (int x = 0; x < player_ptr->current_floor_ptr->width; x++)
+        for (int y = 0; y < player_ptr->current_floor_ptr->height; y++) {
+            for (int x = 0; x < player_ptr->current_floor_ptr->width; x++) {
                 player_ptr->current_floor_ptr->grid_array[y][x].info |= CAVE_GLOW | CAVE_MARK;
+            }
+        }
 
         wiz_lite(player_ptr, false);
         break;
@@ -235,23 +246,25 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         get_value("時空崩壊度(0.000001%単位)", 0, 100000000, &(wc_ptr->collapse_degree));
         break;
     case 'w':
-        wiz_lite(player_ptr, (bool)(player_ptr->pclass == PlayerClassType::NINJA));
+        wiz_lite(player_ptr, PlayerClass(player_ptr).equals(PlayerClassType::NINJA));
         break;
     case 'x':
         gain_exp(player_ptr, command_arg ? command_arg : (player_ptr->exp + 1));
         break;
     case 'X':
-        for (INVENTORY_IDX i = INVEN_TOTAL - 1; i >= 0; i--)
-            if (player_ptr->inventory_list[i].k_idx)
+        for (INVENTORY_IDX i = INVEN_TOTAL - 1; i >= 0; i--) {
+            if (player_ptr->inventory_list[i].k_idx) {
                 drop_from_inventory(player_ptr, i, 999);
+            }
+        }
 
         player_outfit(player_ptr);
         break;
     case 'y':
-        wiz_kill_enemy(player_ptr);
+        wiz_kill_target(player_ptr);
         break;
     case 'Y':
-        wiz_kill_enemy(player_ptr, 0, (AttributeType)command_arg);
+        wiz_kill_target(player_ptr, 0, (AttributeType)command_arg);
         break;
     case 'z':
         wiz_zap_surrounding_monsters(player_ptr);
@@ -304,8 +317,9 @@ void do_cmd_debug(PlayerType *player_ptr)
         get_com("Debug Command: ", &cmd, false);
         screen_load();
 
-        if (exe_cmd_debug(player_ptr, cmd))
+        if (exe_cmd_debug(player_ptr, cmd)) {
             break;
+        }
 
         page = (page + 1) % max_page;
     }

@@ -33,18 +33,20 @@
  * A function for Auto-picker/destroyer
  * Examine whether the object matches to the list of keywords or not.
  */
-int find_autopick_list(PlayerType *player_ptr, object_type *o_ptr)
+int find_autopick_list(PlayerType *player_ptr, ObjectType *o_ptr)
 {
     GAME_TEXT o_name[MAX_NLEN];
-    if (o_ptr->tval == ItemKindType::GOLD)
+    if (o_ptr->tval == ItemKindType::GOLD) {
         return -1;
+    }
 
     describe_flavor(player_ptr, o_name, o_ptr, (OD_NO_FLAVOR | OD_OMIT_PREFIX | OD_NO_PLURAL));
     str_tolower(o_name);
     for (auto i = 0U; i < autopick_list.size(); i++) {
         autopick_type *entry = &autopick_list[i];
-        if (is_autopick_match(player_ptr, o_ptr, entry, o_name))
+        if (is_autopick_match(player_ptr, o_ptr, entry, o_name)) {
             return i;
+        }
     }
 
     return -1;
@@ -53,14 +55,15 @@ int find_autopick_list(PlayerType *player_ptr, object_type *o_ptr)
 /*!
  * @brief Choose an item for search
  */
-bool get_object_for_search(PlayerType *player_ptr, object_type **o_handle, concptr *search_strp)
+bool get_object_for_search(PlayerType *player_ptr, ObjectType **o_handle, concptr *search_strp)
 {
     concptr q = _("どのアイテムを検索しますか? ", "Enter which item? ");
     concptr s = _("アイテムを持っていない。", "You have nothing to enter.");
-    object_type *o_ptr;
+    ObjectType *o_ptr;
     o_ptr = choose_object(player_ptr, nullptr, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP);
-    if (!o_ptr)
+    if (!o_ptr) {
         return false;
+    }
 
     *o_handle = o_ptr;
     string_free(*search_strp);
@@ -73,10 +76,11 @@ bool get_object_for_search(PlayerType *player_ptr, object_type **o_handle, concp
 /*!
  * @brief Prepare for search by destroyed object
  */
-bool get_destroyed_object_for_search(PlayerType *player_ptr, object_type **o_handle, concptr *search_strp)
+bool get_destroyed_object_for_search(PlayerType *player_ptr, ObjectType **o_handle, concptr *search_strp)
 {
-    if (!autopick_last_destroyed_object.k_idx)
+    if (!autopick_last_destroyed_object.k_idx) {
         return false;
+    }
 
     *o_handle = &autopick_last_destroyed_object;
     string_free(*search_strp);
@@ -93,20 +97,22 @@ bool get_destroyed_object_for_search(PlayerType *player_ptr, object_type **o_han
  * TERM_YELLOW : Overwrite mode
  * TERM_WHITE : Insert mode
  */
-byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concptr *search_strp)
+byte get_string_for_search(PlayerType *player_ptr, ObjectType **o_handle, concptr *search_strp)
 {
     byte color = TERM_YELLOW;
     char buf[MAX_NLEN + 20];
     const int len = 80;
     char prompt[] = _("検索(^I:持ち物 ^L:破壊された物): ", "Search key(^I:inven ^L:destroyed): ");
     int col = sizeof(prompt) - 1;
-    if (*search_strp)
+    if (*search_strp) {
         strcpy(buf, *search_strp);
-    else
+    } else {
         buf[0] = '\0';
+    }
 
-    if (*o_handle)
+    if (*o_handle) {
         color = TERM_L_GREEN;
+    }
 
     prt(prompt, 0, 0);
     int pos = 0;
@@ -122,18 +128,21 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
         case KTRL('b'): {
             int i = 0;
             color = TERM_WHITE;
-            if (pos == 0)
+            if (pos == 0) {
                 break;
+            }
 
             while (true) {
                 int next_pos = i + 1;
 
 #ifdef JP
-                if (iskanji(buf[i]))
+                if (iskanji(buf[i])) {
                     next_pos++;
+                }
 #endif
-                if (next_pos >= pos)
+                if (next_pos >= pos) {
                     break;
+                }
 
                 i = next_pos;
             }
@@ -145,14 +154,16 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
         case SKEY_RIGHT:
         case KTRL('f'):
             color = TERM_WHITE;
-            if ('\0' == buf[pos])
+            if ('\0' == buf[pos]) {
                 break;
+            }
 
 #ifdef JP
-            if (iskanji(buf[pos]))
+            if (iskanji(buf[pos])) {
                 pos += 2;
-            else
+            } else {
                 pos++;
+            }
 #else
             pos++;
 #endif
@@ -167,36 +178,43 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
 
         case '\n':
         case '\r':
-        case KTRL('s'):
-            if (*o_handle)
-                return (back ? -1 : 1);
+        case KTRL('s'): {
+            byte ret = back ? -1 : 1;
+            if (*o_handle) {
+                return ret;
+            }
+
             string_free(*search_strp);
             *search_strp = string_make(buf);
             *o_handle = nullptr;
-            return (back ? -1 : 1);
-
+            return ret;
+        }
         case KTRL('i'):
             return get_object_for_search(player_ptr, o_handle, search_strp);
 
         case KTRL('l'):
-            if (get_destroyed_object_for_search(player_ptr, o_handle, search_strp))
+            if (get_destroyed_object_for_search(player_ptr, o_handle, search_strp)) {
                 return 1;
+            }
             break;
 
         case '\010': {
             int i = 0;
             color = TERM_WHITE;
-            if (pos == 0)
+            if (pos == 0) {
                 break;
+            }
 
             while (true) {
                 int next_pos = i + 1;
 #ifdef JP
-                if (iskanji(buf[i]))
+                if (iskanji(buf[i])) {
                     next_pos++;
+                }
 #endif
-                if (next_pos >= pos)
+                if (next_pos >= pos) {
                     break;
+                }
 
                 i = next_pos;
             }
@@ -209,17 +227,20 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
         case KTRL('d'): {
             int dst, src;
             color = TERM_WHITE;
-            if (buf[pos] == '\0')
+            if (buf[pos] == '\0') {
                 break;
+            }
 
             src = pos + 1;
 #ifdef JP
-            if (iskanji(buf[pos]))
+            if (iskanji(buf[pos])) {
                 src++;
+            }
 #endif
             dst = pos;
-            while ('\0' != (buf[dst++] = buf[src++]))
+            while ('\0' != (buf[dst++] = buf[src++])) {
                 ;
+            }
 
             break;
         }
@@ -227,8 +248,9 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
         default: {
             char tmp[100];
             char c;
-            if (skey & SKEY_MASK)
+            if (skey & SKEY_MASK) {
                 break;
+            }
 
             c = (char)skey;
             if (color != TERM_WHITE) {
@@ -258,11 +280,10 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
             } else
 #endif
 #ifdef JP
-                if (pos < len && (isprint(c) || iskana(c)))
+                if (pos < len && (isprint(c) || iskana(c))) {
 #else
-            if (pos < len && isprint(c))
+            if (pos < len && isprint(c)) {
 #endif
-            {
                 buf[pos++] = c;
             } else {
                 bell();
@@ -275,8 +296,9 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
         }
         }
 
-        if (*o_handle == nullptr || color == TERM_L_GREEN)
+        if (*o_handle == nullptr || color == TERM_L_GREEN) {
             continue;
+        }
 
         *o_handle = nullptr;
         buf[0] = '\0';
@@ -288,7 +310,7 @@ byte get_string_for_search(PlayerType *player_ptr, object_type **o_handle, concp
 /*!
  * @brief Search next line matches for o_ptr
  */
-void search_for_object(PlayerType *player_ptr, text_body_type *tb, object_type *o_ptr, bool forward)
+void search_for_object(PlayerType *player_ptr, text_body_type *tb, ObjectType *o_ptr, bool forward)
 {
     autopick_type an_entry, *entry = &an_entry;
     GAME_TEXT o_name[MAX_NLEN];
@@ -300,23 +322,28 @@ void search_for_object(PlayerType *player_ptr, text_body_type *tb, object_type *
     while (true) {
         bool match;
         if (forward) {
-            if (!tb->lines_list[++i])
+            if (!tb->lines_list[++i]) {
                 break;
+            }
         } else {
-            if (--i < 0)
+            if (--i < 0) {
                 break;
+            }
         }
 
-        if (!autopick_new_entry(entry, tb->lines_list[i], false))
+        if (!autopick_new_entry(entry, tb->lines_list[i], false)) {
             continue;
+        }
 
         match = is_autopick_match(player_ptr, o_ptr, entry, o_name);
-        if (!match)
+        if (!match) {
             continue;
+        }
 
         if (tb->states[i] & LSTAT_BYPASS) {
-            if (bypassed_cy == -1)
+            if (bypassed_cy == -1) {
                 bypassed_cy = i;
+            }
             continue;
         }
 
@@ -351,16 +378,19 @@ void search_for_string(text_body_type *tb, concptr search_str, bool forward)
     while (true) {
         concptr pos;
         if (forward) {
-            if (!tb->lines_list[++i])
+            if (!tb->lines_list[++i]) {
                 break;
+            }
         } else {
-            if (--i < 0)
+            if (--i < 0) {
                 break;
+            }
         }
 
         pos = angband_strstr(tb->lines_list[i], search_str);
-        if (!pos)
+        if (!pos) {
             continue;
+        }
 
         if ((tb->states[i] & LSTAT_BYPASS) && !(tb->states[i] & LSTAT_EXPRESSION)) {
             if (bypassed_cy == -1) {

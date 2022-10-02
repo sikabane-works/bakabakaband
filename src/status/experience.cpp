@@ -1,4 +1,5 @@
 ﻿#include "status/experience.h"
+#include "player-base/player-race.h"
 #include "player/player-status.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
@@ -8,10 +9,12 @@
  */
 void gain_exp_64(PlayerType *player_ptr, int32_t amount, uint32_t amount_frac)
 {
-    if (player_ptr->is_dead)
+    if (player_ptr->is_dead) {
         return;
-    if (player_ptr->prace == PlayerRaceType::ANDROID)
+    }
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
         return;
+    }
 
     s64b_add(&(player_ptr->exp), &(player_ptr->exp_frac), amount, amount_frac);
 
@@ -25,17 +28,22 @@ void gain_exp_64(PlayerType *player_ptr, int32_t amount, uint32_t amount_frac)
 /*
  * Gain experience
  */
-void gain_exp(PlayerType *player_ptr, int32_t amount) { gain_exp_64(player_ptr, amount, 0L); }
+void gain_exp(PlayerType *player_ptr, int32_t amount)
+{
+    gain_exp_64(player_ptr, amount, 0L);
+}
 
 /*
  * Lose experience
  */
 void lose_exp(PlayerType *player_ptr, int32_t amount)
 {
-    if (player_ptr->prace == PlayerRaceType::ANDROID)
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
         return;
-    if (amount > player_ptr->exp)
+    }
+    if (amount > player_ptr->exp) {
         amount = player_ptr->exp;
+    }
 
     player_ptr->exp -= amount;
 
@@ -63,8 +71,9 @@ bool restore_level(PlayerType *player_ptr)
  */
 bool drain_exp(PlayerType *player_ptr, int32_t drain, int32_t slip, int hold_exp_prob)
 {
-    if (player_ptr->prace == PlayerRaceType::ANDROID)
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
         return false;
+    }
 
     if (player_ptr->hold_exp && (randint0(100) < hold_exp_prob)) {
         msg_print(_("しかし自己の経験値を守りきった！", "You keep hold of your experience!"));

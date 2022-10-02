@@ -9,11 +9,11 @@
 #include "melee/melee-util.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster/monster-status-setter.h"
+#include "player/player-damage.h"
 #include "spell-kind/earthquake.h"
 #include "system/monster-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
-#include "player/player-damage.h"
 
 void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
 {
@@ -93,8 +93,9 @@ void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
         break;
     }
     case RaceBlowMethodType::EXPLODE: {
-        if (mam_ptr->see_either)
+        if (mam_ptr->see_either) {
             disturb(player_ptr, true, true);
+        }
 
         mam_ptr->act = _("爆発した。", "explodes.");
         mam_ptr->explode = true;
@@ -188,8 +189,9 @@ void decide_monster_attack_effect(PlayerType *player_ptr, mam_type *mam_ptr)
         break;
     case RaceBlowEffectType::EAT_ITEM:
     case RaceBlowEffectType::EAT_GOLD:
-        if ((player_ptr->riding != mam_ptr->m_idx) && one_in_(2))
+        if ((player_ptr->riding != mam_ptr->m_idx) && one_in_(2)) {
             mam_ptr->blinked = true;
+        }
 
         break;
     case RaceBlowEffectType::EAT_FOOD:
@@ -226,8 +228,9 @@ void decide_monster_attack_effect(PlayerType *player_ptr, mam_type *mam_ptr)
         break;
     case RaceBlowEffectType::SHATTER:
         mam_ptr->damage -= (mam_ptr->damage * ((mam_ptr->ac < 150) ? mam_ptr->ac : 150) / 250);
-        if (mam_ptr->damage > 23)
+        if (mam_ptr->damage > 23) {
             earthquake(player_ptr, mam_ptr->m_ptr->fy, mam_ptr->m_ptr->fx, 8, mam_ptr->m_idx);
+        }
 
         break;
     case RaceBlowEffectType::EXP_10:
@@ -278,8 +281,7 @@ void describe_monster_missed_monster(PlayerType *player_ptr, mam_type *mam_ptr)
     case RaceBlowMethodType::ENGULF:
     case RaceBlowMethodType::CHARGE:
     case RaceBlowMethodType::ENEMA:
-    case RaceBlowMethodType::BIND:
-    {
+    case RaceBlowMethodType::BIND: {
         (void)set_monster_csleep(player_ptr, mam_ptr->t_idx, 0);
         if (mam_ptr->see_m) {
 #ifdef JP

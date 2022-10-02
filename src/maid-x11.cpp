@@ -22,7 +22,7 @@
  *
  * Major fixes and cleanup by Ben Harrison (benh@phial.com).
  *
- * This file is designed to be "included" by "main-x11.c" or "main-xaw.c",
+ * This file is designed to be "included" by "main-x11.c",
  * which will have already "included" several relevant header files.
  */
 
@@ -73,14 +73,16 @@ static unsigned long create_pixel(Display *dpy, byte red, byte green, byte blue)
     XColor xcolour;
     if (!gamma_table_ready) {
         concptr str = getenv("ANGBAND_X11_GAMMA");
-        if (str != nullptr)
+        if (str != nullptr) {
             gamma_val = atoi(str);
+        }
 
         gamma_table_ready = true;
 
         /* Only need to build the table if gamma exists */
-        if (gamma_val)
+        if (gamma_val) {
             build_gamma_table(gamma_val);
+        }
     }
 
     /* Hack -- Gamma Correction */
@@ -115,7 +117,7 @@ static unsigned long create_pixel(Display *dpy, byte red, byte green, byte blue)
         quit_fmt("Couldn't allocate bitmap color '#%02x%02x%02x'\n", red, green, blue);
     }
 
-    return (xcolour.pixel);
+    return xcolour.pixel;
 #endif
 }
 
@@ -124,18 +126,18 @@ static unsigned long create_pixel(Display *dpy, byte red, byte green, byte blue)
 /*
  * The Win32 "BITMAPFILEHEADER" type.
  */
-typedef struct BITMAPFILEHEADER {
+struct BITMAPFILEHEADER {
     uint16_t bfType;
     uint32_t bfSize;
     uint16_t bfReserved1;
     uint16_t bfReserved2;
     uint32_t bfOffBits;
-} BITMAPFILEHEADER;
+};
 
 /*
  * The Win32 "BITMAPINFOHEADER" type.
  */
-typedef struct BITMAPINFOHEADER {
+struct BITMAPINFOHEADER {
     uint32_t biSize;
     uint32_t biWidth;
     uint32_t biHeight;
@@ -147,22 +149,22 @@ typedef struct BITMAPINFOHEADER {
     uint32_t biYPelsPerMeter;
     uint32_t biClrUsed;
     uint32_t biClrImportand;
-} BITMAPINFOHEADER;
+};
 
 /*
  * The Win32 "RGBQUAD" type.
  */
-typedef struct RGBQUAD {
+struct RGBQUAD {
     unsigned char b, g, r;
     unsigned char filler;
-} RGBQUAD;
+};
 
 /*** Helper functions for system independent file loading. ***/
 
 static byte get_byte(FILE *fff)
 {
     /* Get a character, and return it */
-    return (getc(fff) & 0xFF);
+    return getc(fff) & 0xFF;
 }
 
 static void rd_byte(FILE *fff, byte *ip)
@@ -272,12 +274,13 @@ static XImage *ReadBMP(Display *dpy, char *Name)
     /* Determine total bytes needed for image */
     i = 1;
     j = (depth - 1) >> 2;
-    while (j >>= 1)
+    while (j >>= 1) {
         i <<= 1;
+    }
     total = infoheader.biWidth * infoheader.biHeight * i;
 
     /* Allocate image memory */
-    Data = (char*)malloc(total);
+    Data = (char *)malloc(total);
 
     Res = XCreateImage(dpy, visual, depth, ZPixmap, 0 /*offset*/, Data, infoheader.biWidth, infoheader.biHeight, 8 /*bitmap_pad*/, 0 /*bytes_per_line*/);
 
@@ -295,16 +298,18 @@ static XImage *ReadBMP(Display *dpy, char *Name)
             int ch = getc(f);
 
             /* Verify not at end of file XXX XXX */
-            if (feof(f))
+            if (feof(f)) {
                 quit_fmt("Unexpected end of file in %s", Name);
+            }
 
             if (infoheader.biBitCount == 24) {
                 int c2 = getc(f);
                 int c3 = getc(f);
 
                 /* Verify not at end of file XXX XXX */
-                if (feof(f))
+                if (feof(f)) {
                     quit_fmt("Unexpected end of file in %s", Name);
+                }
 
                 XPutPixel(Res, x, y2, create_pixel(dpy, ch, c2, c3));
             } else if (infoheader.biBitCount == 8) {
@@ -480,8 +485,7 @@ static void PutRGBScan(XImage *Im, int x, int y, int w, int div, unsigned long *
     unsigned long pix;
     unsigned long adj = div / 2;
     for (xi = 0; xi < w; xi++) {
-        pix = (((((redScan[xi] + adj) / div) & redMask) << redShift) + ((((greenScan[xi] + adj) / div) & greenMask) << greenShift)
-            + ((((blueScan[xi] + adj) / div) & blueMask) << blueShift));
+        pix = (((((redScan[xi] + adj) / div) & redMask) << redShift) + ((((greenScan[xi] + adj) / div) & greenMask) << greenShift) + ((((blueScan[xi] + adj) / div) & blueMask) << blueShift));
         XPutPixel(Im, x + xi, y, pix);
     }
 }
@@ -514,12 +518,13 @@ static void ScaleIcon(XImage *ImIn, XImage *ImOut, int x1, int y1, int x2, int y
     bool getNextRow;
 
     /* get divider value for the horizontal scaling: */
-    if (ix == ox)
+    if (ix == ox) {
         div = 1;
-    else if (ix < ox)
+    } else if (ix < ox) {
         div = ox - 1;
-    else
+    } else {
         div = ix;
+    }
 
     if (iy == oy) {
         /* no scaling needed vertically: */
@@ -678,9 +683,7 @@ static XImage *ResizeImageSmooth(Display *dpy, XImage *Im, int ix, int iy, int o
 }
 
 /*
- * Resize an image. XXX XXX XXX
- *
- * Also appears in "main-xaw.c".
+ * Resize an image.
  */
 static XImage *ResizeImage(Display *dpy, XImage *Im, int ix, int iy, int ox, int oy)
 {

@@ -59,25 +59,30 @@ static bool see_wall(PlayerType *player_ptr, DIRECTION dir, POSITION y, POSITION
 {
     y += ddy[dir];
     x += ddx[dir];
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (!in_bounds2(floor_ptr, y, x))
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if (!in_bounds2(floor_ptr, y, x)) {
         return false;
+    }
 
     grid_type *g_ptr;
     g_ptr = &floor_ptr->grid_array[y][x];
-    if (!g_ptr->is_mark())
+    if (!g_ptr->is_mark()) {
         return false;
+    }
 
     int16_t feat = g_ptr->get_feat_mimic();
-    feature_type *f_ptr = &f_info[feat];
-    if (!player_can_enter(player_ptr, feat, 0))
+    auto *f_ptr = &f_info[feat];
+    if (!player_can_enter(player_ptr, feat, 0)) {
         return f_ptr->flags.has_not(FloorFeatureType::DOOR);
+    }
 
-    if (f_ptr->flags.has(FloorFeatureType::AVOID_RUN) && !ignore_avoid_run)
+    if (f_ptr->flags.has(FloorFeatureType::AVOID_RUN) && !ignore_avoid_run) {
         return true;
+    }
 
-    if (f_ptr->flags.has_none_of({FloorFeatureType::MOVE, FloorFeatureType::CAN_FLY}))
+    if (f_ptr->flags.has_none_of({ FloorFeatureType::MOVE, FloorFeatureType::CAN_FLY })) {
         return f_ptr->flags.has_not(FloorFeatureType::DOOR);
+    }
 
     return false;
 }
@@ -131,8 +136,9 @@ static void run_init(PlayerType *player_ptr, DIRECTION dir)
         deepright = true;
     }
 
-    if (!find_breakleft || !find_breakright)
+    if (!find_breakleft || !find_breakright) {
         return;
+    }
 
     find_openarea = false;
     if (dir & 0x01) {
@@ -145,8 +151,9 @@ static void run_init(PlayerType *player_ptr, DIRECTION dir)
         return;
     }
 
-    if (!see_wall(player_ptr, cycle[i], row, col))
+    if (!see_wall(player_ptr, cycle[i], row, col)) {
         return;
+    }
 
     if (shortleft && !shortright) {
         find_prevdir = cycle[i - 2];
@@ -169,15 +176,18 @@ static bool see_nothing(PlayerType *player_ptr, DIRECTION dir, POSITION y, POSIT
     y += ddy[dir];
     x += ddx[dir];
 
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (!in_bounds2(floor_ptr, y, x))
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if (!in_bounds2(floor_ptr, y, x)) {
         return true;
+    }
 
-    if (floor_ptr->grid_array[y][x].is_mark())
+    if (floor_ptr->grid_array[y][x].is_mark()) {
         return false;
+    }
 
-    if (player_can_see_bold(player_ptr, y, x))
+    if (player_can_see_bold(player_ptr, y, x)) {
         return false;
+    }
 
     return true;
 }
@@ -194,7 +204,7 @@ static bool run_test(PlayerType *player_ptr)
 {
     DIRECTION prev_dir = find_prevdir;
     int max = (prev_dir & 0x01) + 1;
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if ((disturb_trap_detect || alert_trap_detect) && player_ptr->dtrap && !(floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_IN_DETECT)) {
         player_ptr->dtrap = false;
         if (!(floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_UNSAFE)) {
@@ -221,36 +231,38 @@ static bool run_test(PlayerType *player_ptr)
         feature_type *f_ptr;
         f_ptr = &f_info[feat];
         if (g_ptr->m_idx) {
-            monster_type *m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
-            if (m_ptr->ml)
+            auto *m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
+            if (m_ptr->ml) {
                 return true;
+            }
         }
 
         for (const auto this_o_idx : g_ptr->o_idx_list) {
-            object_type *o_ptr;
+            ObjectType *o_ptr;
             o_ptr = &floor_ptr->o_list[this_o_idx];
-            if (o_ptr->marked & OM_FOUND)
+            if (o_ptr->marked & OM_FOUND) {
                 return true;
+            }
         }
 
         bool inv = true;
         if (g_ptr->is_mark()) {
             bool notice = f_ptr->flags.has(FloorFeatureType::NOTICE);
             if (notice && f_ptr->flags.has(FloorFeatureType::MOVE)) {
-                if (find_ignore_doors && f_ptr->flags.has_all_of({FloorFeatureType::DOOR, FloorFeatureType::CLOSE})) {
+                if (find_ignore_doors && f_ptr->flags.has_all_of({ FloorFeatureType::DOOR, FloorFeatureType::CLOSE })) {
                     notice = false;
                 } else if (find_ignore_stairs && f_ptr->flags.has(FloorFeatureType::STAIRS)) {
                     notice = false;
                 } else if (f_ptr->flags.has(FloorFeatureType::LAVA) && (has_immune_fire(player_ptr) || is_invuln(player_ptr))) {
                     notice = false;
-                } else if (f_ptr->flags.has_all_of({FloorFeatureType::WATER, FloorFeatureType::DEEP})
-                    && (player_ptr->levitation || player_ptr->can_swim || (calc_inventory_weight(player_ptr) <= calc_weight_limit(player_ptr)))) {
+                } else if (f_ptr->flags.has_all_of({ FloorFeatureType::WATER, FloorFeatureType::DEEP }) && (player_ptr->levitation || player_ptr->can_swim || (calc_inventory_weight(player_ptr) <= calc_weight_limit(player_ptr)))) {
                     notice = false;
                 }
             }
 
-            if (notice)
+            if (notice) {
                 return true;
+            }
 
             inv = false;
         }
@@ -267,19 +279,22 @@ static bool run_test(PlayerType *player_ptr)
             continue;
         }
 
-        if (find_openarea)
+        if (find_openarea) {
             continue;
+        }
 
         if (!option) {
             option = new_dir;
             continue;
         }
 
-        if (option2)
+        if (option2) {
             return true;
+        }
 
-        if (option != cycle[chome[prev_dir] + i - 1])
+        if (option != cycle[chome[prev_dir] + i - 1]) {
             return true;
+        }
 
         if (new_dir & 0x01) {
             check_dir = cycle[chome[prev_dir] + i - 2];
@@ -295,29 +310,34 @@ static bool run_test(PlayerType *player_ptr)
     if (find_openarea) {
         for (int i = -max; i < 0; i++) {
             if (!see_wall(player_ptr, cycle[chome[prev_dir] + i], player_ptr->y, player_ptr->x)) {
-                if (find_breakright)
+                if (find_breakright) {
                     return true;
+                }
             } else {
-                if (find_breakleft)
+                if (find_breakleft) {
                     return true;
+                }
             }
         }
 
         for (int i = max; i > 0; i--) {
             if (!see_wall(player_ptr, cycle[chome[prev_dir] + i], player_ptr->y, player_ptr->x)) {
-                if (find_breakleft)
+                if (find_breakleft) {
                     return true;
+                }
             } else {
-                if (find_breakright)
+                if (find_breakright) {
                     return true;
+                }
             }
         }
 
         return see_wall(player_ptr, find_current, player_ptr->y, player_ptr->x);
     }
 
-    if (!option)
+    if (!option) {
         return true;
+    }
 
     if (!option2) {
         find_current = option;
@@ -377,8 +397,9 @@ void run_step(PlayerType *player_ptr, DIRECTION dir)
         }
     }
 
-    if (--player_ptr->running <= 0)
+    if (--player_ptr->running <= 0) {
         return;
+    }
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
     exe_movement(player_ptr, find_current, false, false);

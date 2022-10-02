@@ -2,11 +2,12 @@
  * @brief プレイヤーの種族に基づく耐性・能力の判定処理等を行うクラス
  * @date 2021/09/08
  * @author Hourier
- * @details 本クラス作成時点で責務に対する余裕はかなりあるので、適宜ここへ移してくること.
+ * @details PlayerRaceからPlayerClassへの依存はあるが、逆は依存させないこと.
  */
 #include "player-base/player-race.h"
 #include "grid/feature-flag-types.h"
 #include "grid/feature.h"
+#include "player-base/player-class.h"
 #include "player-info/mimic-info-table.h"
 #include "player/race-info-table.h"
 #include "system/floor-type-definition.h"
@@ -35,17 +36,22 @@ TrFlags PlayerRace::tr_flags() const
     TrFlags flags;
 
     auto race_ptr = this->get_info();
-    if (race_ptr->infra > 0)
+    if (race_ptr->infra > 0) {
         flags.set(TR_INFRA);
+    }
 
     for (auto &cond : race_ptr->extra_flags) {
-        if (player_ptr->lev < cond.level)
+        if (this->player_ptr->lev < cond.level) {
             continue;
-        if (cond.pclass != std::nullopt) {
-            if (cond.not_class && player_ptr->pclass == cond.pclass)
+        }
+        if (cond.pclass.has_value()) {
+            auto is_class_equal = PlayerClass(this->player_ptr).equals(cond.pclass.value());
+            if (cond.not_class && is_class_equal) {
                 continue;
-            if (!cond.not_class && player_ptr->pclass != cond.pclass)
+            }
+            if (!cond.not_class && !is_class_equal) {
                 continue;
+            }
         }
 
         flags.set(cond.type);
@@ -66,12 +72,14 @@ const player_race_info *PlayerRace::get_info() const
     }
 
     switch (this->player_ptr->mimic_form) {
-    case MIMIC_DEMON:
-    case MIMIC_DEMON_LORD:
-    case MIMIC_VAMPIRE:
-        return &mimic_info[this->player_ptr->mimic_form];
-    default: // MIMIC_NONE or undefined
+    case MimicKindType::NONE:
         return &race_info[enum2i(this->player_ptr->prace)];
+    case MimicKindType::DEMON:
+    case MimicKindType::DEMON_LORD:
+    case MimicKindType::VAMPIRE:
+        return &mimic_info.at(this->player_ptr->mimic_form);
+    default:
+        throw("Invalid MimicKindType was specified!");
     }
 }
 
@@ -99,27 +107,26 @@ PlayerRaceFoodType PlayerRace::food() const
 bool PlayerRace::is_mimic_nonliving() const
 {
     constexpr int nonliving_flag = 1;
-    return any_bits(mimic_info[this->player_ptr->mimic_form].choice, nonliving_flag);
+    return any_bits(mimic_info.at(this->player_ptr->mimic_form).choice, nonliving_flag);
 }
 
 bool PlayerRace::has_cut_immunity() const
 {
-    auto cut_immunity = PlayerRace(this->player_ptr).equals(PlayerRaceType::GOLEM);
-    cut_immunity |= PlayerRace(this->player_ptr).equals(PlayerRaceType::SKELETON);
-    cut_immunity |= PlayerRace(this->player_ptr).equals(PlayerRaceType::SPECTRE);
-    cut_immunity |= PlayerRace(this->player_ptr).equals(PlayerRaceType::ZOMBIE) && (this->player_ptr->lev > 11);
+    auto cut_immunity = this->equals(PlayerRaceType::GOLEM);
+    cut_immunity |= this->equals(PlayerRaceType::SKELETON);
+    cut_immunity |= this->equals(PlayerRaceType::SPECTRE);
+    cut_immunity |= this->equals(PlayerRaceType::ZOMBIE) && (this->player_ptr->lev > 11);
     return cut_immunity;
 }
 
-
 bool PlayerRace::has_stun_immunity() const
 {
-    return PlayerRace(this->player_ptr).equals(PlayerRaceType::GOLEM);
+    return this->equals(PlayerRaceType::GOLEM);
 }
 
 bool PlayerRace::equals(PlayerRaceType prace) const
 {
-    return (this->player_ptr->mimic_form == MIMIC_NONE) && (this->player_ptr->prace == prace);
+    return (this->player_ptr->mimic_form == MimicKindType::NONE) && (this->player_ptr->prace == prace);
 }
 
 /*!
@@ -138,14 +145,14 @@ int16_t PlayerRace::speed() const
 
     floor_type *floor_ptr = this->player_ptr->current_floor_ptr;
     feature_type *f_ptr = &f_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
-    if(f_ptr->flags.has(FloorFeatureType::SLOW)) {
-        result -= 10;    
+    if (f_ptr->flags.has(FloorFeatureType::SLOW)) {
+        result -= 10;
+    }
+    if (this->equals(PlayerRaceType::KLACKON) || this->equals(PlayerRaceType::SPRITE)) {
+        result += (this->player_ptr->lev) / 10;
     }
 
-    if (PlayerRace(this->player_ptr).equals(PlayerRaceType::KLACKON) || PlayerRace(this->player_ptr).equals(PlayerRaceType::SPRITE))
-        result += (this->player_ptr->lev) / 10;
-
-    if (PlayerRace(this->player_ptr).equals(PlayerRaceType::MERFOLK)) {
+    if (this->equals(PlayerRaceType::MERFOLK)) {
         if (f_ptr->flags.has(FloorFeatureType::WATER)) {
             result += (2 + this->player_ptr->lev / 10);
         } else if (!this->player_ptr->levitation) {
@@ -153,20 +160,18 @@ int16_t PlayerRace::speed() const
         }
     }
 
-    if (this->player_ptr->mimic_form) {
-        switch (this->player_ptr->mimic_form) {
-        case MIMIC_DEMON:
-            result += 3;
-            break;
-        case MIMIC_DEMON_LORD:
-            result += 5;
-            break;
-        case MIMIC_VAMPIRE:
-            result += 3;
-            break;
-        }
+    switch (this->player_ptr->mimic_form) {
+    case MimicKindType::NONE:
+        return result;
+    case MimicKindType::DEMON:
+        return result + 3;
+    case MimicKindType::DEMON_LORD:
+        return result + 5;
+    case MimicKindType::VAMPIRE:
+        return result + 3;
+    default:
+        throw("Invalid MimicKindType was specified!");
     }
-    return result;
 }
 
 /*!
@@ -180,13 +185,16 @@ int16_t PlayerRace::additional_strength() const
 {
     int16_t result = 0;
 
-    if (PlayerRace(this->player_ptr).equals(PlayerRaceType::ENT)) {
-        if (this->player_ptr->lev > 25)
+    if (this->equals(PlayerRaceType::ENT)) {
+        if (this->player_ptr->lev > 25) {
             result++;
-        if (this->player_ptr->lev > 40)
+        }
+        if (this->player_ptr->lev > 40) {
             result++;
-        if (this->player_ptr->lev > 45)
+        }
+        if (this->player_ptr->lev > 45) {
             result++;
+        }
     }
 
     return result;
@@ -203,13 +211,16 @@ int16_t PlayerRace::additional_dexterity() const
 {
     int16_t result = 0;
 
-    if (PlayerRace(this->player_ptr).equals(PlayerRaceType::ENT)) {
-        if (this->player_ptr->lev > 25)
+    if (this->equals(PlayerRaceType::ENT)) {
+        if (this->player_ptr->lev > 25) {
             result--;
-        if (this->player_ptr->lev > 40)
+        }
+        if (this->player_ptr->lev > 40) {
             result--;
-        if (this->player_ptr->lev > 45)
+        }
+        if (this->player_ptr->lev > 45) {
             result--;
+        }
     }
 
     return result;
@@ -227,12 +238,15 @@ int16_t PlayerRace::additional_constitution() const
     int16_t result = 0;
 
     if (PlayerRace(this->player_ptr).equals(PlayerRaceType::ENT)) {
-        if (this->player_ptr->lev > 25)
+        if (this->player_ptr->lev > 25) {
             result++;
-        if (this->player_ptr->lev > 40)
+        }
+        if (this->player_ptr->lev > 40) {
             result++;
-        if (this->player_ptr->lev > 45)
+        }
+        if (this->player_ptr->lev > 45) {
             result++;
+        }
     }
 
     return result;

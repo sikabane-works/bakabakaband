@@ -25,12 +25,14 @@
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-flags8.h"
+#include "monster-race/race-resistance-mask.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
 #include "mutation/mutation-flag-types.h"
 #include "object/warning.h"
+#include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "player/player-move.h"
 #include "player/player-status-flags.h"
@@ -41,6 +43,7 @@
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "timed-effect/player-confusion.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -83,8 +86,8 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
 {
     POSITION y = player_ptr->y + ddy[dir];
     POSITION x = player_ptr->x + ddx[dir];
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    grid_type *g_ptr = &floor_ptr->grid_array[y][x];
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *g_ptr = &floor_ptr->grid_array[y][x];
     bool p_can_enter = player_can_enter(player_ptr, g_ptr->feat, CEM_P_CAN_ENTER_PATTERN);
     bool stormbringer = false;
     if (!floor_ptr->dun_level && !player_ptr->wild_mode && ((x == 0) || (x == MAX_WID - 1) || (y == 0) || (y == MAX_HGT - 1))) {
@@ -145,32 +148,40 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
 
     monster_type *m_ptr;
     m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
-    if (player_ptr->inventory_list[INVEN_MAIN_HAND].name1 == ART_STORMBRINGER)
+    if (player_ptr->inventory_list[INVEN_MAIN_HAND].fixed_artifact_idx == ART_STORMBRINGER) {
         stormbringer = true;
+    }
 
-    if (player_ptr->inventory_list[INVEN_SUB_HAND].name1 == ART_STORMBRINGER)
+    if (player_ptr->inventory_list[INVEN_SUB_HAND].fixed_artifact_idx == ART_STORMBRINGER) {
         stormbringer = true;
+    }
 
-    feature_type *f_ptr = &f_info[g_ptr->feat];
+    auto *f_ptr = &f_info[g_ptr->feat];
     bool p_can_kill_walls = has_kill_wall(player_ptr) && f_ptr->flags.has(FloorFeatureType::HURT_DISI) && (!p_can_enter || f_ptr->flags.has_not(FloorFeatureType::LOS)) && f_ptr->flags.has_not(FloorFeatureType::PERMANENT);
     GAME_TEXT m_name[MAX_NLEN];
     bool can_move = true;
     bool do_past = false;
     if (g_ptr->m_idx && (m_ptr->ml || p_can_enter || p_can_kill_walls)) {
-        monster_race *r_ptr = &r_info[m_ptr->r_idx];
+        auto *r_ptr = &r_info[m_ptr->r_idx];
         auto effects = player_ptr->effects();
         auto is_stunned = effects->stun()->is_stunned();
-        if (!is_hostile(m_ptr) && !(player_ptr->confused || player_ptr->hallucinated || !m_ptr->ml || is_stunned || (player_ptr->muta.has(PlayerMutationType::BERS_RAGE) && is_shero(player_ptr))) && pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x) && (p_can_enter || p_can_kill_walls)) {
+        auto can_cast = !player_ptr->effects()->confusion()->is_confused();
+        can_cast &= !player_ptr->hallucinated;
+        can_cast &= m_ptr->ml;
+        can_cast &= !is_stunned;
+        can_cast &= player_ptr->muta.has_not(PlayerMutationType::BERS_RAGE) || !is_shero(player_ptr);
+        if (!is_hostile(m_ptr) && !can_cast && pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x) && (p_can_enter || p_can_kill_walls)) {
             (void)set_monster_csleep(player_ptr, g_ptr->m_idx, 0);
             monster_desc(player_ptr, m_name, m_ptr, 0);
             if (m_ptr->ml) {
-                if (!player_ptr->hallucinated)
+                if (!player_ptr->hallucinated) {
                     monster_race_track(player_ptr, m_ptr->ap_r_idx);
+                }
 
                 health_track(player_ptr, g_ptr->m_idx);
             }
 
-            if ((stormbringer && (randint1(1000) > 666)) || (player_ptr->pclass == PlayerClassType::BERSERKER)) {
+            if ((stormbringer && (randint1(1000) > 666)) || PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
                 do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
                 can_move = false;
             } else if (monster_can_cross_terrain(player_ptr, floor_ptr->grid_array[player_ptr->y][player_ptr->x].feat, r_ptr, 0)) {
@@ -218,7 +229,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
             energy.reset_player_turn();
             can_move = false;
             disturb(player_ptr, false, true);
-        } else if (f_ptr->flags.has(FloorFeatureType::LAVA) && !(riding_r_ptr->flagsr & RFR_EFF_IM_FIRE_MASK)) {
+        } else if (f_ptr->flags.has(FloorFeatureType::LAVA) && riding_r_ptr->resistance_flags.has_none_of(RFR_EFF_IM_FIRE_MASK)) {
             msg_format(_("%sの上に行けない。", "Too hot to go through."), f_info[g_ptr->get_feat_mimic()].name.c_str());
             energy.reset_player_turn();
             can_move = false;
@@ -241,7 +252,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         player_ptr->running = 0;
         can_move = false;
     } else if (f_ptr->flags.has(FloorFeatureType::TREE) && !p_can_kill_walls) {
-        if ((player_ptr->pclass != PlayerClassType::RANGER) && !player_ptr->levitation && (!player_ptr->riding || !(riding_r_ptr->flags8 & RF8_WILD_WOOD))) {
+        if (!PlayerClass(player_ptr).equals(PlayerClassType::RANGER) && !player_ptr->levitation && (!player_ptr->riding || !(riding_r_ptr->flags8 & RF8_WILD_WOOD))) {
             energy.mul_player_turn_energy(2);
         }
     } else if ((do_pickup != easy_disarm) && f_ptr->flags.has(FloorFeatureType::DISARM) && !g_ptr->mimic) {
@@ -255,9 +266,9 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         concptr name = mimic_f_ptr->name.c_str();
         can_move = false;
         if (!g_ptr->is_mark() && !player_can_see_bold(player_ptr, y, x)) {
-            if (boundary_floor(g_ptr, f_ptr, mimic_f_ptr))
+            if (boundary_floor(g_ptr, f_ptr, mimic_f_ptr)) {
                 msg_print(_("それ以上先には進めないようだ。", "You feel you cannot go any more."));
-            else {
+            } else {
 #ifdef JP
                 msg_format("%sが行く手をはばんでいるようだ。", name);
 #else
@@ -268,35 +279,40 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
             }
         } else {
             auto effects = player_ptr->effects();
+            auto is_confused = effects->confusion()->is_confused();
             auto is_stunned = effects->stun()->is_stunned();
             if (boundary_floor(g_ptr, f_ptr, mimic_f_ptr)) {
                 msg_print(_("それ以上先には進めない。", "You cannot go any more."));
-                if (!(player_ptr->confused || is_stunned || player_ptr->hallucinated)) {
+                if (!(is_confused || is_stunned || player_ptr->hallucinated)) {
                     energy.reset_player_turn();
                 }
             } else {
-                if (easy_open && is_closed_door(player_ptr, feat) && easy_open_door(player_ptr, y, x))
+                if (easy_open && is_closed_door(player_ptr, feat) && easy_open_door(player_ptr, y, x)) {
                     return;
+                }
 
 #ifdef JP
                 msg_format("%sが行く手をはばんでいる。", name);
 #else
                 msg_format("There is %s %s blocking your way.", is_a_vowel(name[0]) ? "an" : "a", name);
 #endif
-                if (!(player_ptr->confused || is_stunned || player_ptr->hallucinated))
+                if (!(is_confused || is_stunned || player_ptr->hallucinated)) {
                     energy.reset_player_turn();
+                }
             }
         }
 
         disturb(player_ptr, false, true);
-        if (!boundary_floor(g_ptr, f_ptr, mimic_f_ptr))
+        if (!boundary_floor(g_ptr, f_ptr, mimic_f_ptr)) {
             sound(SOUND_HITWALL);
+        }
     }
 
     if (can_move && !pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
         auto effects = player_ptr->effects();
+        auto is_confused = effects->confusion()->is_confused();
         auto is_stunned = effects->stun()->is_stunned();
-        if (!(player_ptr->confused || is_stunned || player_ptr->hallucinated)) {
+        if (!(is_confused || is_stunned || player_ptr->hallucinated)) {
             energy.reset_player_turn();
         }
 
@@ -304,35 +320,43 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         can_move = false;
     }
 
-    if (!can_move)
+    if (!can_move) {
         return;
+    }
 
     if (player_ptr->warning && (!process_warning(player_ptr, x, y))) {
         energy.set_player_turn_energy(25);
         return;
     }
 
-    if (do_past)
+    if (do_past) {
         msg_format(_("%sを押し退けた。", "You push past %s."), m_name);
+    }
 
     if (player_ptr->wild_mode) {
-        if (ddy[dir] > 0)
+        if (ddy[dir] > 0) {
             player_ptr->oldpy = 1;
+        }
 
-        if (ddy[dir] < 0)
+        if (ddy[dir] < 0) {
             player_ptr->oldpy = MAX_HGT - 2;
+        }
 
-        if (ddy[dir] == 0)
+        if (ddy[dir] == 0) {
             player_ptr->oldpy = MAX_HGT / 2;
+        }
 
-        if (ddx[dir] > 0)
+        if (ddx[dir] > 0) {
             player_ptr->oldpx = 1;
+        }
 
-        if (ddx[dir] < 0)
+        if (ddx[dir] < 0) {
             player_ptr->oldpx = MAX_WID - 2;
+        }
 
-        if (ddx[dir] == 0)
+        if (ddx[dir] == 0) {
             player_ptr->oldpx = MAX_WID / 2;
+        }
     }
 
     if (p_can_kill_walls) {
@@ -341,17 +365,18 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     }
 
     uint32_t mpe_mode = MPE_ENERGY_USE;
-    if (do_pickup != always_pickup)
+    if (do_pickup != always_pickup) {
         mpe_mode |= MPE_DO_PICKUP;
+    }
 
-    if (break_trap)
+    if (break_trap) {
         mpe_mode |= MPE_BREAK_TRAP;
+    }
 
     if (player_ptr->incident.count(INCIDENT::WALK) == 0) {
         player_ptr->incident[INCIDENT::WALK] = 0;
     }
     player_ptr->incident[INCIDENT::WALK]++;
-
 
     (void)move_player_effect(player_ptr, y, x, mpe_mode);
 }

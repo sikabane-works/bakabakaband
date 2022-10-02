@@ -34,7 +34,9 @@
 #include "system/dungeon-data-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "util/probability-table.h"
 #include "wizard/wizard-messages.h"
 
 /*
@@ -87,8 +89,9 @@ static void build_bubble_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
 
             for (j = 0; j < i; j++) {
                 /* rough test to see if there is an overlap */
-                if ((x == center[j].x) && (y == center[j].y))
+                if ((x == center[j].x) && (y == center[j].y)) {
                     done = false;
+                }
             }
         }
 
@@ -97,7 +100,7 @@ static void build_bubble_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     }
 
     /* Top and bottom boundaries */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (i = 0; i < xsize; i++) {
         int side_x = x0 - xhsize + i;
 
@@ -182,7 +185,7 @@ static void build_room_vault(PlayerType *player_ptr, POSITION x0, POSITION y0, P
     msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("部屋型ランダムVaultを生成しました。", "Room Vault."));
 
     /* fill area so don't get problems with on_defeat_arena_monster levels */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (x1 = 0; x1 < xsize; x1++) {
         POSITION x = x0 - xhsize + x1;
 
@@ -232,7 +235,7 @@ static void build_cave_vault(PlayerType *player_ptr, POSITION x0, POSITION y0, P
     light = done = false;
     room = true;
 
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     while (!done) {
         /* testing values for these parameters feel free to adjust */
         grd = 1 << randint0(4);
@@ -310,8 +313,7 @@ static void coord_trans(POSITION *x, POSITION *y, POSITION xoffset, POSITION yof
  * @param yoffset 変換基準Y座標
  * @param transno 変換ID
  */
-static void build_vault(
-    vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSITION xval, POSITION xoffset, POSITION yoffset, int transno)
+void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSITION xval, POSITION xoffset, POSITION yoffset, int transno)
 {
     POSITION dx, dy, x, y, i, j;
     concptr t;
@@ -321,7 +323,7 @@ static void build_vault(
     concptr data = v_ptr->text.c_str();
 
     /* Place dungeon features and objects */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (t = data, dy = 0; dy < ymax; dy++) {
         for (dx = 0; dx < xmax; dx++, t++) {
             /* prevent loop counter from being overwritten */
@@ -342,8 +344,9 @@ static void build_vault(
             }
 
             /* Hack -- skip "non-grids" */
-            if (*t == ' ')
+            if (*t == ' ') {
                 continue;
+            }
             g_ptr = &floor_ptr->grid_array[y][x];
 
             /* Lay down a floor */
@@ -419,8 +422,9 @@ static void build_vault(
                 /* Secret glass doors */
             case '-':
                 place_secret_door(player_ptr, y, x, DOOR_GLASS_DOOR);
-                if (is_closed_door(player_ptr, g_ptr->feat))
+                if (is_closed_door(player_ptr, g_ptr->feat)) {
                     g_ptr->mimic = feat_glass_wall;
+                }
                 break;
 
                 /* Curtains */
@@ -547,8 +551,9 @@ static void build_vault(
             }
 
             /* Hack -- skip "non-grids" */
-            if (*t == ' ')
+            if (*t == ' ') {
                 continue;
+            }
 
             /* Analyze the symbol */
             switch (*t) {
@@ -608,154 +613,6 @@ static void build_vault(
     }
 }
 
-/*!
- * @brief タイプ7の部屋…v_info.txtより小型vaultを生成する / Type 7 -- simple vaults (see "v_info.txt")
- */
-bool build_type7(PlayerType *player_ptr, dun_data_type *dd_ptr)
-{
-    vault_type *v_ptr = nullptr;
-    int dummy;
-    POSITION x, y;
-    POSITION xval, yval;
-    POSITION xoffset, yoffset;
-    int transno;
-
-    /* Pick a lesser vault */
-    for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
-        /* Access a random vault record */
-        v_ptr = &v_info[randint0(v_info.size())];
-
-        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
-            continue;
-
-        /* Accept the first lesser vault */
-        if (v_ptr->typ == 7)
-            break;
-    }
-
-    /* No lesser vault found */
-    if (dummy >= SAFE_MAX_ATTEMPTS) {
-        msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("小型固定Vaultを配置できませんでした。", "Could not place lesser vault."));
-        return false;
-    }
-
-    /* pick type of transformation (0-7) */
-    transno = randint0(8);
-
-    /* calculate offsets */
-    x = v_ptr->wid;
-    y = v_ptr->hgt;
-
-    /* Some huge vault cannot be ratated to fit in the dungeon */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (x + 2 > floor_ptr->height - 2) {
-        /* Forbid 90 or 270 degree ratation */
-        transno &= ~1;
-    }
-
-    coord_trans(&x, &y, 0, 0, transno);
-
-    if (x < 0) {
-        xoffset = -x - 1;
-    } else {
-        xoffset = 0;
-    }
-
-    if (y < 0) {
-        yoffset = -y - 1;
-    } else {
-        yoffset = 0;
-    }
-
-    /* Find and reserve some space in the dungeon.  Get center of room. */
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x)))
-        return false;
-
-    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("小型Vault(%s)を生成しました。", "Lesser vault (%s)."), v_ptr->name.c_str());
-
-    /* Hack -- Build the vault */
-    build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
-
-    return true;
-}
-
-/*!
- * @brief タイプ8の部屋…v_info.txtより大型vaultを生成する / Type 8 -- greater vaults (see "v_info.txt")
- */
-bool build_type8(PlayerType *player_ptr, dun_data_type *dd_ptr)
-{
-    vault_type *v_ptr;
-    int dummy;
-    POSITION xval, yval;
-    POSITION x, y;
-    int transno;
-    POSITION xoffset, yoffset;
-
-    /* Pick a greater vault */
-    for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
-        /* Access a random vault record */
-        v_ptr = &v_info[randint0(v_info.size())];
-
-        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
-            continue;
-
-        /* Accept the first greater vault */
-        if (v_ptr->typ == 8)
-            break;
-    }
-
-    /* No greater vault found */
-    if (dummy >= SAFE_MAX_ATTEMPTS) {
-        msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("大型固定Vaultを配置できませんでした。", "Could not place greater vault."));
-        return false;
-    }
-
-    /* pick type of transformation (0-7) */
-    transno = randint0(8);
-
-    /* calculate offsets */
-    x = v_ptr->wid;
-    y = v_ptr->hgt;
-
-    /* Some huge vault cannot be ratated to fit in the dungeon */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (x + 2 > floor_ptr->height - 2) {
-        /* Forbid 90 or 270 degree ratation */
-        transno &= ~1;
-    }
-
-    coord_trans(&x, &y, 0, 0, transno);
-
-    if (x < 0) {
-        xoffset = -x - 1;
-    } else {
-        xoffset = 0;
-    }
-
-    if (y < 0) {
-        yoffset = -y - 1;
-    } else {
-        yoffset = 0;
-    }
-
-    /*
-     * Try to allocate space for room.  If fails, exit
-     *
-     * Hack -- Prepare a bit larger space (+2, +2) to
-     * prevent generation of vaults with no-entrance.
-     */
-    /* Find and reserve some space in the dungeon.  Get center of room. */
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, (POSITION)(abs(y) + 2), (POSITION)(abs(x) + 2)))
-        return false;
-
-    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("大型固定Vault(%s)を生成しました。", "Greater vault (%s)."), v_ptr->name.c_str());
-
-    /* Hack -- Build the vault */
-    build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
-
-    return true;
-}
-
 /*
  * Build target vault.
  * This is made by two concentric "crypts" with perpendicular
@@ -782,7 +639,7 @@ static void build_target_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     }
 
     /* Make floor */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (x = x0 - rad; x <= x0 + rad; x++) {
         for (y = y0 - rad; y <= y0 + rad; y++) {
             /* clear room flag */
@@ -882,7 +739,7 @@ static void build_elemental_vault(PlayerType *player_ptr, POSITION x0, POSITION 
     xsize = xhsize * 2;
     ysize = yhsize * 2;
 
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (floor_ptr->dun_level < 25) {
         /* Earth vault  (Rubble) */
         type = LAKE_T_EARTH_VAULT;
@@ -962,10 +819,11 @@ static void build_mini_c_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     x2 = x0 + dx;
 
     /* generate the room */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (x = x1 - 2; x <= x2 + 2; x++) {
-        if (!in_bounds(floor_ptr, y1 - 2, x))
+        if (!in_bounds(floor_ptr, y1 - 2, x)) {
             break;
+        }
 
         floor_ptr->grid_array[y1 - 2][x].info |= (CAVE_ROOM | CAVE_ICKY);
 
@@ -973,8 +831,9 @@ static void build_mini_c_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     }
 
     for (x = x1 - 2; x <= x2 + 2; x++) {
-        if (!in_bounds(floor_ptr, y2 + 2, x))
+        if (!in_bounds(floor_ptr, y2 + 2, x)) {
             break;
+        }
 
         floor_ptr->grid_array[y2 + 2][x].info |= (CAVE_ROOM | CAVE_ICKY);
 
@@ -982,8 +841,9 @@ static void build_mini_c_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     }
 
     for (y = y1 - 2; y <= y2 + 2; y++) {
-        if (!in_bounds(floor_ptr, y, x1 - 2))
+        if (!in_bounds(floor_ptr, y, x1 - 2)) {
             break;
+        }
 
         floor_ptr->grid_array[y][x1 - 2].info |= (CAVE_ROOM | CAVE_ICKY);
 
@@ -991,8 +851,9 @@ static void build_mini_c_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     }
 
     for (y = y1 - 2; y <= y2 + 2; y++) {
-        if (!in_bounds(floor_ptr, y, x2 + 2))
+        if (!in_bounds(floor_ptr, y, x2 + 2)) {
             break;
+        }
 
         floor_ptr->grid_array[y][x2 + 2].info |= (CAVE_ROOM | CAVE_ICKY);
 
@@ -1001,7 +862,7 @@ static void build_mini_c_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
 
     for (y = y1 - 1; y <= y2 + 1; y++) {
         for (x = x1 - 1; x <= x2 + 1; x++) {
-            grid_type *g_ptr = &floor_ptr->grid_array[y][x];
+            auto *g_ptr = &floor_ptr->grid_array[y][x];
 
             g_ptr->info |= (CAVE_ROOM | CAVE_ICKY);
 
@@ -1073,7 +934,7 @@ static void build_castle_vault(PlayerType *player_ptr, POSITION x0, POSITION y0,
     msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("城型ランダムVaultを生成しました。", "Castle Vault"));
 
     /* generate the room */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     for (y = y1 - 1; y <= y2 + 1; y++) {
         for (x = x1 - 1; x <= x2 + 1; x++) {
             floor_ptr->grid_array[y][x].info |= (CAVE_ROOM | CAVE_ICKY);
@@ -1102,9 +963,10 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
     ysize = randint1(11) + 11;
 
     /* Find and reserve some space in the dungeon.  Get center of room. */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
-    if (!find_space(player_ptr, dd_ptr, &y0, &x0, ysize + 1, xsize + 1))
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if (!find_space(player_ptr, dd_ptr, &y0, &x0, ysize + 1, xsize + 1)) {
         return false;
+    }
 
     /* Select type of vault */
     do {
@@ -1153,34 +1015,30 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
 }
 
 /*!
- * @brief タイプ17の部屋…v_info.txtより固定特殊部屋を生成する / Type 17 -- fixed special room (see "v_info.txt")
+ * @brief v_info.txtからの部屋生成 / vaults from "v_info.txt"
  */
-bool build_type17(PlayerType *player_ptr, dun_data_type *dd_ptr)
+bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space, int id = -1)
 {
     vault_type *v_ptr = nullptr;
-    int dummy;
     POSITION x, y;
     POSITION xval, yval;
     POSITION xoffset, yoffset;
     int transno;
 
-    /* Pick a lesser vault */
-    for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
-        /* Access a random vault record */
-        v_ptr = &v_info[randint0(v_info.size())];
+    ProbabilityTable<int> prob_table;
 
-        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
-            continue;
+    if (id == -1) {
+        /* Pick fixed room */
+        for (const auto &v_ref : v_info) {
+            if (v_ref.typ == typ) {
+                prob_table.entry_item(v_ref.idx, 1);
+            }
+        }
 
-        /* Accept the special fix room. */
-        if (v_ptr->typ == 17)
-            break;
-    }
-
-    /* No lesser vault found */
-    if (dummy >= SAFE_MAX_ATTEMPTS) {
-        msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("固定特殊部屋を配置できませんでした。", "Could not place fixed special room."));
-        return false;
+        auto result = prob_table.pick_one_at_random();
+        v_ptr = &v_info[result];
+    } else {
+        v_ptr = &v_info[id];
     }
 
     /* pick type of transformation (0-7) */
@@ -1191,7 +1049,7 @@ bool build_type17(PlayerType *player_ptr, dun_data_type *dd_ptr)
     y = v_ptr->hgt;
 
     /* Some huge vault cannot be ratated to fit in the dungeon */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (x + 2 > floor_ptr->height - 2) {
         /* Forbid 90 or 270 degree ratation */
         transno &= ~1;
@@ -1211,11 +1069,20 @@ bool build_type17(PlayerType *player_ptr, dun_data_type *dd_ptr)
         yoffset = 0;
     }
 
+    /*
+     * Try to allocate space for room.  If fails, exit
+     *
+     * Hack -- Prepare a bit larger space (+2, +2) to
+     * prevent generation of vaults with no-entrance.
+     */
+    int xsize = more_space ? abs(x) + 2 : abs(x);
+    int ysize = more_space ? abs(y) + 2 : abs(y);
     /* Find and reserve some space in the dungeon.  Get center of room. */
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x)))
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, ysize, xsize)) {
         return false;
+    }
 
-    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
+    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("固定部屋(%s)を生成しました。", "Fixed room (%s)."), v_ptr->name.c_str());
 
     /* Hack -- Build the vault */
     build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
@@ -1240,12 +1107,14 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
         /* Access a random vault record */
         v_ptr = &v_info[randint0(v_info.size())];
 
-        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity))
+        if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity)) {
             continue;
+        }
 
         /* Accept the special fix room. */
-        if (v_ptr->typ == 18)
+        if (v_ptr->typ == 18) {
             break;
+        }
     }
 
     /* No lesser vault found */
@@ -1283,8 +1152,9 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
     }
 
     /* Find and reserve some space in the dungeon.  Get center of room. */
-    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x)))
+    if (!find_space(player_ptr, dd_ptr, &yval, &xval, abs(y), abs(x))) {
         return false;
+    }
 
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
 

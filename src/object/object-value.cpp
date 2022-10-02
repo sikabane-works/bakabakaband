@@ -21,52 +21,55 @@
  * @param o_ptr 未鑑定価格を確認したいオブジェクトの構造体参照ポインタ
  * @return オブジェクトの未鑑定価格
  */
-static PRICE object_value_base(const object_type *o_ptr)
+static PRICE object_value_base(const ObjectType *o_ptr)
 {
-    if (o_ptr->is_aware())
-        return (k_info[o_ptr->k_idx].cost);
+    if (o_ptr->is_aware()) {
+        return k_info[o_ptr->k_idx].cost;
+    }
 
     switch (o_ptr->tval) {
     case ItemKindType::FOOD:
-        return (5L);
+        return 5;
     case ItemKindType::POTION:
-        return (20L);
+        return 20;
     case ItemKindType::SCROLL:
-        return (20L);
+        return 20;
     case ItemKindType::STAFF:
-        return (70L);
+        return 70;
     case ItemKindType::WAND:
-        return (50L);
+        return 50;
     case ItemKindType::ROD:
-        return (90L);
+        return 90;
     case ItemKindType::RING:
-        return (45L);
+        return 45;
     case ItemKindType::AMULET:
-        return (45L);
+        return 45;
     case ItemKindType::FIGURINE: {
         DEPTH level = r_info[o_ptr->pval].level;
-        if (level < 20)
+        if (level < 20) {
             return level * 50L;
-        else if (level < 30)
-            return 1000 + (level - 20) * 150L;
-        else if (level < 40)
-            return 2500 + (level - 30) * 350L;
-        else if (level < 50)
-            return 6000 + (level - 40) * 800L;
-        else
-            return 14000 + (level - 50) * 2000L;
+        } else if (level < 30) {
+            return 1000 + (level - 20) * 150;
+        } else if (level < 40) {
+            return 2500 + (level - 30) * 350;
+        } else if (level < 50) {
+            return 6000 + (level - 40) * 800;
+        } else {
+            return 14000 + (level - 50) * 2000;
+        }
     }
     case ItemKindType::CAPTURE:
-        if (!o_ptr->pval)
-            return 1000L;
-        else
-            return ((r_info[o_ptr->pval].level) * 50L + 1000);
+        if (!o_ptr->pval) {
+            return 1000;
+        } else {
+            return (r_info[o_ptr->pval].level) * 50 + 1000;
+        }
 
     default:
         break;
     }
 
-    return (0L);
+    return 0;
 }
 
 /*!
@@ -83,30 +86,35 @@ static PRICE object_value_base(const object_type *o_ptr)
  * Note that discounted items stay discounted forever, even if\n
  * the discount is "forgotten" by the player via memory loss.\n
  */
-PRICE object_value(const object_type *o_ptr)
+PRICE object_value(const ObjectType *o_ptr)
 {
     PRICE value;
 
     if (o_ptr->is_known()) {
-        if (o_ptr->is_broken())
-            return (0L);
-        if (o_ptr->is_cursed())
-            return (0L);
+        if (o_ptr->is_broken()) {
+            return 0;
+        }
+        if (o_ptr->is_cursed()) {
+            return 0;
+        }
 
         value = object_value_real(o_ptr);
     } else {
-        if ((o_ptr->ident & (IDENT_SENSE)) && o_ptr->is_broken())
-            return (0L);
-        if ((o_ptr->ident & (IDENT_SENSE)) && o_ptr->is_cursed())
-            return (0L);
+        if ((o_ptr->ident & (IDENT_SENSE)) && o_ptr->is_broken()) {
+            return 0;
+        }
+        if ((o_ptr->ident & (IDENT_SENSE)) && o_ptr->is_cursed()) {
+            return 0;
+        }
 
         value = object_value_base(o_ptr);
     }
 
-    if (o_ptr->discount)
+    if (o_ptr->discount) {
         value -= (value * o_ptr->discount / 100L);
+    }
 
-    return (value);
+    return value;
 }
 
 /*!
@@ -135,33 +143,37 @@ PRICE object_value(const object_type *o_ptr)
  *\n
  * Every wearable item with a "pval" bonus is worth extra (see below).\n
  */
-PRICE object_value_real(const object_type *o_ptr)
+PRICE object_value_real(const ObjectType *o_ptr)
 {
-    object_kind *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &k_info[o_ptr->k_idx];
 
-    if (!k_info[o_ptr->k_idx].cost)
-        return (0L);
+    if (!k_info[o_ptr->k_idx].cost) {
+        return 0;
+    }
 
     PRICE value = k_info[o_ptr->k_idx].cost;
     auto flgs = object_flags(o_ptr);
     if (o_ptr->is_fixed_artifact()) {
-        artifact_type *a_ptr = &a_info[o_ptr->name1];
-        if (!a_ptr->cost)
-            return (0L);
+        auto *a_ptr = &a_info[o_ptr->fixed_artifact_idx];
+        if (!a_ptr->cost) {
+            return 0;
+        }
 
         value = a_ptr->cost;
         value += flag_cost(o_ptr, o_ptr->pval);
-        return (value);
+        return value;
     } else if (o_ptr->is_ego()) {
-        ego_item_type *e_ptr = &e_info[o_ptr->name2];
-        if (!e_ptr->cost)
-            return (0L);
+        auto *e_ptr = &e_info[o_ptr->ego_idx];
+        if (!e_ptr->cost) {
+            return 0;
+        }
 
         value += e_ptr->cost;
         value += flag_cost(o_ptr, o_ptr->pval);
     } else {
-        if (o_ptr->art_flags.any())
+        if (o_ptr->art_flags.any()) {
             value += flag_cost(o_ptr, o_ptr->pval);
+        }
     }
 
     /* Analyze pval bonus for normal object */
@@ -186,37 +198,52 @@ PRICE object_value_real(const object_type *o_ptr)
     case ItemKindType::LITE:
     case ItemKindType::AMULET:
     case ItemKindType::RING:
-        if (!o_ptr->pval)
+        if (!o_ptr->pval) {
             break;
-        if (o_ptr->pval < 0)
-            return (0L);
+        }
+        if (o_ptr->pval < 0) {
+            return 0;
+        }
 
-        if (flgs.has(TR_STR))
+        if (flgs.has(TR_STR)) {
             value += (o_ptr->pval * 200L);
-        if (flgs.has(TR_INT))
+        }
+        if (flgs.has(TR_INT)) {
             value += (o_ptr->pval * 200L);
-        if (flgs.has(TR_WIS))
+        }
+        if (flgs.has(TR_WIS)) {
             value += (o_ptr->pval * 200L);
-        if (flgs.has(TR_DEX))
+        }
+        if (flgs.has(TR_DEX)) {
             value += (o_ptr->pval * 200L);
-        if (flgs.has(TR_CON))
+        }
+        if (flgs.has(TR_CON)) {
             value += (o_ptr->pval * 200L);
-        if (flgs.has(TR_CHR))
+        }
+        if (flgs.has(TR_CHR)) {
             value += (o_ptr->pval * 200L);
-        if (flgs.has(TR_MAGIC_MASTERY))
+        }
+        if (flgs.has(TR_MAGIC_MASTERY)) {
             value += (o_ptr->pval * 100);
-        if (flgs.has(TR_STEALTH))
+        }
+        if (flgs.has(TR_STEALTH)) {
             value += (o_ptr->pval * 100L);
-        if (flgs.has(TR_SEARCH))
+        }
+        if (flgs.has(TR_SEARCH)) {
             value += (o_ptr->pval * 100L);
-        if (flgs.has(TR_INFRA))
+        }
+        if (flgs.has(TR_INFRA)) {
             value += (o_ptr->pval * 50L);
-        if (flgs.has(TR_TUNNEL))
+        }
+        if (flgs.has(TR_TUNNEL)) {
             value += (o_ptr->pval * 50L);
-        if (flgs.has(TR_BLOWS))
+        }
+        if (flgs.has(TR_BLOWS)) {
             value += (o_ptr->pval * 5000L);
-        if (flgs.has(TR_SPEED))
+        }
+        if (flgs.has(TR_SPEED)) {
             value += (o_ptr->pval * 10000L);
+        }
         break;
 
     default:
@@ -240,8 +267,9 @@ PRICE object_value_real(const object_type *o_ptr)
     }
     case ItemKindType::RING:
     case ItemKindType::AMULET: {
-        if (o_ptr->to_h + o_ptr->to_d + o_ptr->to_a < 0)
-            return (0L);
+        if (o_ptr->to_h + o_ptr->to_d + o_ptr->to_a < 0) {
+            return 0;
+        }
 
         value += ((o_ptr->to_h + o_ptr->to_d + o_ptr->to_a) * 200L);
         break;
@@ -255,8 +283,9 @@ PRICE object_value_real(const object_type *o_ptr)
     case ItemKindType::SOFT_ARMOR:
     case ItemKindType::HARD_ARMOR:
     case ItemKindType::DRAG_ARMOR: {
-        if (o_ptr->to_a < 0)
-            return (0L);
+        if (o_ptr->to_a < 0) {
+            return 0;
+        }
 
         value += (((o_ptr->to_h - k_ptr->to_h) + (o_ptr->to_d - k_ptr->to_d)) * 200L + (o_ptr->to_a) * 100L);
         break;
@@ -266,8 +295,9 @@ PRICE object_value_real(const object_type *o_ptr)
     case ItemKindType::HAFTED:
     case ItemKindType::SWORD:
     case ItemKindType::POLEARM: {
-        if (o_ptr->to_h + o_ptr->to_d < 0)
-            return (0L);
+        if (o_ptr->to_h + o_ptr->to_d < 0) {
+            return 0;
+        }
 
         value += ((o_ptr->to_h + o_ptr->to_d + o_ptr->to_a) * 100L);
         value += (o_ptr->dd - k_ptr->dd) * o_ptr->ds * 250L;
@@ -277,8 +307,9 @@ PRICE object_value_real(const object_type *o_ptr)
     case ItemKindType::SHOT:
     case ItemKindType::ARROW:
     case ItemKindType::BOLT: {
-        if (o_ptr->to_h + o_ptr->to_d < 0)
-            return (0L);
+        if (o_ptr->to_h + o_ptr->to_d < 0) {
+            return 0;
+        }
 
         value += ((o_ptr->to_h + o_ptr->to_d) * 5L);
         value += (o_ptr->dd - k_ptr->dd) * o_ptr->ds * 5L;
@@ -287,28 +318,31 @@ PRICE object_value_real(const object_type *o_ptr)
     }
     case ItemKindType::FIGURINE: {
         DEPTH level = r_info[o_ptr->pval].level;
-        if (level < 20)
+        if (level < 20) {
             value = level * 50L;
-        else if (level < 30)
+        } else if (level < 30) {
             value = 1000 + (level - 20) * 150L;
-        else if (level < 40)
+        } else if (level < 40) {
             value = 2500 + (level - 30) * 350L;
-        else if (level < 50)
+        } else if (level < 50) {
             value = 6000 + (level - 40) * 800L;
-        else
+        } else {
             value = 14000 + (level - 50) * 2000L;
+        }
         break;
     }
     case ItemKindType::CAPTURE: {
-        if (!o_ptr->pval)
+        if (!o_ptr->pval) {
             value = 1000L;
-        else
+        } else {
             value = ((r_info[o_ptr->pval].level) * 50L + 1000);
+        }
         break;
     }
     case ItemKindType::CHEST: {
-        if (!o_ptr->pval)
+        if (!o_ptr->pval) {
             value = 0L;
+        }
         break;
     }
 
@@ -316,8 +350,9 @@ PRICE object_value_real(const object_type *o_ptr)
         break;
     }
 
-    if (value < 0)
+    if (value < 0) {
         return 0L;
+    }
 
-    return (value);
+    return value;
 }

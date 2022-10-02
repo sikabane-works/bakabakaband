@@ -1,7 +1,7 @@
 ﻿#include "market/building-initializer.h"
 #include "floor/floor-town.h"
-#include "object/object-kind.h"
 #include "object/object-kind-hook.h"
+#include "object/object-kind.h"
 #include "player-info/class-types.h"
 #include "store/articles-on-sale.h"
 #include "store/store-owners.h"
@@ -29,7 +29,7 @@ void init_towns(void)
             }
 
             store_ptr->stock_size = store_get_stock_max(sst);
-            store_ptr->stock = std::make_unique<object_type[]>(store_ptr->stock_size);
+            store_ptr->stock = std::make_unique<ObjectType[]>(store_ptr->stock_size);
             if ((sst == StoreSaleType::BLACK) || (sst == StoreSaleType::HOME) || (sst == StoreSaleType::MUSEUM)) {
                 continue;
             }

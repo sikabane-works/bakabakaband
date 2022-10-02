@@ -1,11 +1,14 @@
 ﻿#include "mutation/gain-mutation-switcher.h"
 #include "mutation/mutation-flag-types.h"
 #include "mutation/mutation-util.h"
+#include "player-base/player-class.h"
 #include "system/player-type-definition.h"
 
 void switch_gain_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
 {
-    switch (glm_ptr->choose_mut ? glm_ptr->choose_mut : (player_ptr->pclass == PlayerClassType::BERSERKER ? 74 + randint1(119) : randint1(205))) {
+    PlayerClass pc(player_ptr);
+    switch (glm_ptr->choose_mut ? glm_ptr->choose_mut : pc.equals(PlayerClassType::BERSERKER) ? 74 + randint1(119)
+                                                                                              : randint1(205)) {
     case 1:
     case 2:
     case 3:
@@ -288,8 +291,9 @@ void switch_gain_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
         break;
     case 110:
     case 111:
-        if (player_ptr->pclass == PlayerClassType::CHAOS_WARRIOR)
+        if (pc.equals(PlayerClassType::CHAOS_WARRIOR)) {
             break;
+        }
 
         glm_ptr->muta_which = PlayerMutationType::CHAOS_GIFT;
         glm_ptr->muta_desc = _("あなたはカオスの守護悪魔の注意を惹くようになった。", "You attract the notice of a chaos deity!");
@@ -473,8 +477,9 @@ void switch_gain_mutation(PlayerType *player_ptr, glm_type *glm_ptr)
         glm_ptr->muta_desc = _("関節が突然痛み出した。", "Your joints suddenly hurt.");
         break;
     case 188:
-        if (player_ptr->ppersonality == PERSONALITY_LUCKY)
+        if (player_ptr->ppersonality == PERSONALITY_LUCKY) {
             break;
+        }
 
         glm_ptr->muta_which = PlayerMutationType::BAD_LUCK;
         glm_ptr->muta_desc = _("悪意に満ちた黒いオーラがあなたをとりまいた...", "There is a malignant black aura surrounding you...");

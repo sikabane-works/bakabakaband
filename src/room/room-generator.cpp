@@ -43,9 +43,9 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
     case RoomType::PIT:
         return build_type6(player_ptr, dd_ptr);
     case RoomType::LESSER_VAULT:
-        return build_type7(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 7, false, -1);
     case RoomType::GREATER_VAULT:
-        return build_type8(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 8, true, -1);
     case RoomType::FRACAVE:
         return build_type9(player_ptr, dd_ptr);
     case RoomType::RANDOM_VAULT:
@@ -63,9 +63,9 @@ static bool room_build(PlayerType *player_ptr, dun_data_type *dd_ptr, RoomType t
     case RoomType::ARCADE:
         return build_type16(player_ptr, dd_ptr);
     case RoomType::FIXED:
-        return build_type17(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 17, false, -1);
     case RoomType::PERVO:
-        return build_type18(player_ptr, dd_ptr);
+        return build_fixed_room(player_ptr, dd_ptr, 18, false, -1);
     default:
         return false;
     }
@@ -90,7 +90,7 @@ static void move_prob_list(RoomType dst, RoomType src, std::map<RoomType, int> &
  */
 bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
 {
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     int crowded = 0;
     std::map<RoomType, int> prob_list;
     int rooms_built = 0;
@@ -99,10 +99,12 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
     std::map<RoomType, int> room_num;
 
     int dun_rooms = DUN_ROOMS_MAX * area_size * damroll(10, 20) / 12000;
-    if (one_in_(5))
+    if (one_in_(5)) {
         dun_rooms /= randint1(4);
-    else if (one_in_(4))
+
+    } else if (one_in_(4)) {
         dun_rooms *= randint1(4);
+    }
 
     room_info_type *room_info_ptr = room_info_normal;
 
@@ -116,18 +118,18 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
         }
     }
 
-
     /*!
      * @details ダンジョンにBEGINNER、CHAMELEON、SMALLESTいずれのフラグもなく、
      * かつ「常に通常でない部屋を生成する」フラグがONならば、
      * GRATER_VAULTのみを生成対象とする。 / Ironman sees only Greater Vaults
      */
-    if (ironman_rooms && d_info[floor_ptr->dungeon_idx].flags.has_none_of( {DungeonFeatureType::BEGINNER, DungeonFeatureType::CHAMELEON, DungeonFeatureType::SMALLEST })) {
+    if (ironman_rooms && d_info[floor_ptr->dungeon_idx].flags.has_none_of({ DungeonFeatureType::BEGINNER, DungeonFeatureType::CHAMELEON, DungeonFeatureType::SMALLEST })) {
         for (auto r : ROOM_TYPE_LIST) {
-            if (r == RoomType::GREATER_VAULT)
+            if (r == RoomType::GREATER_VAULT) {
                 prob_list[r] = 1;
-            else
+            } else {
                 prob_list[r] = 0;
+            }
         }
     } else if (d_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_VAULT)) {
         /*! @details ダンジョンにNO_VAULTフラグがあるならば、LESSER_VAULT / GREATER_VAULT/ RANDOM_VAULTを除外 / Forbidden vaults */
@@ -137,8 +139,9 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
     }
 
     /*! @details ダンジョンにBEGINNERフラグがあるならば、FIXED_ROOMを除外 / Forbidden vaults */
-    if (d_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::BEGINNER))
+    if (d_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::BEGINNER)) {
         prob_list[RoomType::FIXED] = 0;
+    }
 
     /*! @details ダンジョンにNO_CAVEフラグがある場合、FRACAVEの生成枠がNORMALに与えられる。CRIPT、OVALの生成枠がINNER_Fに与えられる。/ NO_CAVE dungeon */
     if (d_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_CAVE)) {
@@ -154,12 +157,14 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
     }
 
     /*! @details ダンジョンに最初からGLASS_ROOMフラグがある場合、GLASS を生成から除外。/ Forbidden glass rooms */
-    if (d_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::GLASS_ROOM))
+    if (d_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::GLASS_ROOM)) {
         prob_list[RoomType::GLASS] = 0;
+    }
 
     /*! @details ARCADEは同フラグがダンジョンにないと生成されない。 / Forbidden glass rooms */
-    if (d_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::ARCADE))
+    if (d_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::ARCADE)) {
         prob_list[RoomType::ARCADE] = 0;
+    }
 
     ProbabilityTable<RoomType> prob_table;
     for (auto i : ROOM_TYPE_LIST) {
@@ -191,17 +196,30 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
         }
     }
 
+    for (auto &r : d_info[floor_ptr->dungeon_idx].fixed_room_list) {
+        auto depth = std::get<0>(r);
+        auto id = std::get<1>(r);
+        auto percentage = std::get<2>(r);
+        if (depth == floor_ptr->dun_level && percentage > randint0(100)) {
+            if (!build_fixed_room(player_ptr, dd_ptr, 0, true, id)) {
+                return false;
+            }
+        }
+    }
+
     bool remain;
     while (true) {
         remain = false;
         for (auto i = 0; i < ROOM_TYPE_MAX; i++) {
             auto room_type = room_build_order[i];
-            if (!room_num[room_type])
+            if (!room_num[room_type]) {
                 continue;
+            }
 
             room_num[room_type]--;
-            if (!room_build(player_ptr, dd_ptr, room_type))
+            if (!room_build(player_ptr, dd_ptr, room_type)) {
                 continue;
+            }
 
             rooms_built++;
             remain = true;
@@ -224,8 +242,9 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
             }
         }
 
-        if (!remain)
+        if (!remain) {
             break;
+        }
     }
 
     if (rooms_built < 2) {

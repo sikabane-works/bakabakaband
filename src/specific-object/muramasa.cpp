@@ -7,13 +7,15 @@
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
 
-bool activate_muramasa(PlayerType *player_ptr, object_type *o_ptr)
+bool activate_muramasa(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    if (o_ptr->name1 != ART_MURAMASA)
+    if (o_ptr->fixed_artifact_idx != ART_MURAMASA) {
         return false;
+    }
 
-    if (!get_check(_("本当に使いますか？", "Are you sure?! ")))
+    if (!get_check(_("本当に使いますか？", "Are you sure?! "))) {
         return true;
+    }
 
     msg_print(_("村正が震えた．．．", "The Muramasa pulsates..."));
     do_inc_stat(player_ptr, A_STR);
