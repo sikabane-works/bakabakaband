@@ -23,6 +23,11 @@ struct dungeon_grid {
 
 struct town_vault {
     VaultTypeId id;
+    POSITION x;
+    POSITION y;
+    POSITION xoffset;
+    POSITION yoffset;
+    int transno;
 };
 
 extern dungeon_grid letter[255];
