@@ -36,6 +36,7 @@
 #include "player/attack-defense-types.h"
 #include "player/player-status.h"
 #include "realm/realm-names-table.h"
+#include "room/rooms-vault.h"
 #include "spell-realm/spells-hex.h"
 #include "status/action-setter.h"
 #include "system/floor-type-definition.h"
@@ -319,9 +320,15 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
             init_flags = INIT_CREATE_DUNGEON;
         }
 
+        floor_ptr->vault_list.clear();
         parse_fixed_map(player_ptr, "t_info.txt", 0, 0, MAX_HGT, MAX_WID);
         floor_ptr->width = MAX_WID;
         floor_ptr->height = MAX_HGT;
+
+        for (auto tv : floor_ptr->vault_list) {
+            build_vault(&v_info[static_cast<int>(tv.id)], player_ptr, tv.y, tv.x, tv.yoffset, tv.xoffset, tv.transno);
+        }
+
         if (!corner && !border) {
             player_ptr->visit |= (1UL << (player_ptr->town_num - 1));
         }
