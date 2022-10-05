@@ -20,7 +20,6 @@
 #include <string>
 
 dungeon_grid letter[255];
-std::vector<town_vault> vault_list;
 
     /*!
  * @brief パース関数に基づいてデータファイルからデータを読み取る /
@@ -74,7 +73,7 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr
  * @param buf 解析文字列
  * @return エラーコード
  */
-parse_error_type parse_line_vault(char *buf)
+parse_error_type parse_line_vault(floor_type *floor_ptr, char *buf)
 {
     char *zz[6];
     town_vault tv;
@@ -89,7 +88,7 @@ parse_error_type parse_line_vault(char *buf)
     tv.yoffset = atoi(zz[3]);
     tv.xoffset = atoi(zz[4]);
     tv.transno = atoi(zz[5]);
-    vault_list.push_back(tv);
+    floor_ptr->vault_list.push_back(tv);
     return PARSE_ERROR_NONE;
 }
 
