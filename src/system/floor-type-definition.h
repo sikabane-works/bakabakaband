@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "alliance/alliance.h"
 #include "dungeon/quest.h"
 #include "floor/floor-base-definitions.h"
 #include "floor/sight-definitions.h"
@@ -67,4 +68,5 @@ struct floor_type {
     bool inside_arena; /* Is character inside on_defeat_arena_monster? */
 
     std::vector<town_vault> vault_list;
+    AllianceType allianceID;
 };

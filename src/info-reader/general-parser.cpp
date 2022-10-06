@@ -67,8 +67,25 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr
 }
 
 /*!
+ * @brief 地形情報の「A:」情報をパースする
+ * Process "A:<ID>" -- alliance
+ * @param buf 解析文字列
+ * @return エラーコード
+ */
+parse_error_type parse_line_alliance(floor_type *floor_ptr, char *buf)
+{
+    char *zz[1];
+    int num = tokenize(buf + 2, 6, zz, 0);
+    if (num != 1) {
+        return PARSE_ERROR_GENERIC;
+    }
+    floor_ptr->allianceID = static_cast<AllianceType>(atoi(zz[0]));
+    return PARSE_ERROR_NONE;
+}
+
+/*!
  * @brief 地形情報の「V:」情報をパースする
- * Process "F:<ID>:<y>:<x>:<offsety>:<offsetx>:<transno>" -- info for vault_setting
+ * Process "V:<ID>:<y>:<x>:<offsety>:<offsetx>:<transno>" -- info for vault_setting
  * @param floor_ptr 現在フロアへの参照ポインタ
  * @param buf 解析文字列
  * @return エラーコード
