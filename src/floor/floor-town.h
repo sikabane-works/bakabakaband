@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include "alliance/alliance.h"
 
 #include <vector>
 
@@ -15,6 +16,7 @@ struct town_type {
     uint32_t seed; /* Seed for RNG */
     std::vector<store_type> store; /* The stores [MAX_STORES] */
     byte numstores;
+    AllianceType alliance = AllianceType::NONE;
 };
 
 extern int16_t max_towns;
