@@ -425,11 +425,6 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
         // 生成を許可するものは基本重みをそのまま引き継ぐ。
         entry->prob2 = entry->prob1;
 
-        // クッソ汚い奴なら生成率が跳ねあがる。
-        if (r_ptr->kind_flags.has(MonsterKindType::NASTY)) {
-            entry->prob2 *= NASTY_GENERATE_RATE;
-        }
-
         // 引数で指定されていればさらにダンジョンによる制約を試みる。
         if (restrict_to_dungeon) {
             // ダンジョンによる制約を適用する条件:
@@ -447,6 +442,23 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
                 const int q = numer / 64;
                 const int r = numer % 64;
                 entry->prob2 = (PROB)(randint0(64) < r ? q + 1 : q);
+            }
+        }
+
+        // クッソ汚い奴なら生成率が跳ねあがる。
+        if (r_ptr->kind_flags.has(MonsterKindType::NASTY)) {
+            entry->prob2 *= NASTY_GENERATE_RATE;
+        }
+
+        if (player_ptr->current_floor_ptr->allianceID != AllianceType::NONE) {
+            if (r_ptr->alliance_idx == player_ptr->current_floor_ptr->allianceID)
+            {
+                entry->prob2 *= ALLIANCE_GENERATE_RATE;
+            } else {
+                entry->prob2 /= ALLIANCE_GENERATE_RATE;
+                if (entry->prob2 < 0) {
+                    entry->prob2 = 1;                 
+                }
             }
         }
 
