@@ -186,6 +186,7 @@ enum monster_race_type {
     MON_BIG_RAVEN = 1268,
     MON_MELKO = 1287,
     MON_STOLENMAN = 1288,
+    MON_DOKACHAN = 1307,
     MON_YENDOR_WIZARD_1 = 1360,
     MON_YENDOR_WIZARD_2 = 1361,
     MON_DOPPIO = 1366,
