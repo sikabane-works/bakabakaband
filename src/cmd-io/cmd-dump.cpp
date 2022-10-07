@@ -9,6 +9,7 @@
  * 2020 Hourier Rearranged
  */
 
+#include "alliance/alliance.h"
 #include "cmd-io/cmd-dump.h"
 #include "cmd-io/feeling-table.h"
 #include "core/asking-player.h"
@@ -225,11 +226,20 @@ void do_cmd_version(void)
  */
 void do_cmd_feeling(PlayerType *player_ptr)
 {
+
     if (player_ptr->wild_mode) {
         return;
     }
     floor_type *floor_ptr = player_ptr->current_floor_ptr;
     int grids_rate = floor_ptr->width * floor_ptr->height * 100 / (MAX_WID * MAX_HGT);
+
+    if (floor_ptr->allianceID != AllianceType::NONE) {
+        auto a_ptr = alliance_list.find(floor_ptr->allianceID)->second;
+        if (!a_ptr->isAnnihilated()) {
+            msg_format(_("ここは%sの支配下にある。", "This place is under %s's control."), a_ptr->name.c_str());        
+        }
+        
+    }
 
     if (inside_quest(player_ptr->current_floor_ptr->quest_number) && !inside_quest(random_quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level))) {
         msg_print(_("典型的なクエストのダンジョンのようだ。", "Looks like a typical quest level."));
