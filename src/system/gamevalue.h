@@ -8,7 +8,9 @@
  */
 #define GREAT_OBJ 8
 
-#define NASTY_GENERATE_RATE 10 /*!< クッソ汚いものが生成される倍率  */
+#define NASTY_GENERATE_RATE 4 /*!< クッソ汚いものが生成される倍率  */
+
+#define ALLIANCE_GENERATE_RATE 50 /*!< アライアンスに関するものが生成される倍率  */
 
 #define PENETRATE_INVULNERABILITY 13 /*!< 無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable! */
 
