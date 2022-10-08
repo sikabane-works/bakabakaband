@@ -9,7 +9,9 @@
 
 enum class ItemKindType : short;
 enum class RandomArtActType : short;
-struct object_kind {
+class BaseItemInfo {
+public:
+    BaseItemInfo() = default;
     KIND_OBJECT_IDX idx{};
 
     std::string name; /*!< ベースアイテム名 */
@@ -59,4 +61,4 @@ struct object_kind {
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::vector<object_kind> k_info;
+extern std::vector<BaseItemInfo> k_info;
