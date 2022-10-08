@@ -4,6 +4,7 @@
  * @author deskull
  */
 
+#include "flavor/flavor-util.h"
 #include "object/object-kind-hook.h"
 #include "object-enchant/tr-types.h"
 #include "sv-definition/sv-amulet-types.h"
@@ -125,7 +126,7 @@ bool kind_is_amulet(KIND_OBJECT_IDX k_idx)
 
 bool kind_is_nasty(KIND_OBJECT_IDX k_idx)
 {
-    object_kind *k_ptr = &k_info[k_idx];
+    BaseItemInfo *k_ptr = &k_info[k_idx];
     return k_ptr->flags.has(TR_NASTY);
 }
 
