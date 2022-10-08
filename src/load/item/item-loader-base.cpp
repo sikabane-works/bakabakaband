@@ -1,8 +1,8 @@
 ﻿#include "load/item/item-loader-base.h"
 #include "artifact/fixed-art-types.h"
 #include "load/load-util.h"
-#include "object/object-kind.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
