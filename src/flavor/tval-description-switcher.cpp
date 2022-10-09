@@ -84,7 +84,7 @@ static void describe_corpse(flavor_type *flavor_ptr)
 
 static void describe_trap(flavor_type *flavor_ptr)
 {
-    feature_type *f_ptr = &f_info[flavor_ptr->o_ptr->pval];
+    terrain_type *f_ptr = &terrains_info[flavor_ptr->o_ptr->pval];
     flavor_ptr->modstr = f_ptr->name.c_str();
 #ifdef JP
     flavor_ptr->basenm = "#%";
