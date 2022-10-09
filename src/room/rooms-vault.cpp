@@ -43,7 +43,7 @@
 /*
  * The vault generation arrays
  */
-std::vector<vault_type> v_info;
+std::vector<vault_type> vaults_info;
 
 /*
  * This function creates a random vault that looks like a collection of bubbles.
@@ -1016,7 +1016,7 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
 }
 
 /*!
- * @brief v_info.txtからの部屋生成 / vaults from "v_info.txt"
+ * @brief VaultDefinitions からの部屋生成
  */
 bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space, int id = -1)
 {
@@ -1030,16 +1030,16 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
 
     if (id == -1) {
         /* Pick fixed room */
-        for (const auto &v_ref : v_info) {
+        for (const auto &v_ref : vaults_info) {
             if (v_ref.typ == typ) {
                 prob_table.entry_item(v_ref.idx, 1);
             }
         }
 
         auto result = prob_table.pick_one_at_random();
-        v_ptr = &v_info[result];
+        v_ptr = &vaults_info[result];
     } else {
-        v_ptr = &v_info[id];
+        v_ptr = &vaults_info[id];
     }
 
     /* pick type of transformation (0-7) */
@@ -1092,7 +1092,7 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
 }
 
 /*!
- * @brief タイプ18の部屋…v_info.txtより変態部屋を生成する / Type 18 -- pervo room (see "v_info.txt")
+ * @brief タイプ18の部屋…vaults_info.txtより変態部屋を生成する / Type 18 -- pervo room (see "vaults_info.txt")
  */
 bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
 {
@@ -1106,7 +1106,7 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
     /* Pick a lesser vault */
     for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
         /* Access a random vault record */
-        v_ptr = &v_info[randint0(v_info.size())];
+        v_ptr = &vaults_info[randint0(vaults_info.size())];
 
         if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity)) {
             continue;

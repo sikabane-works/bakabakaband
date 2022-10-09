@@ -26,7 +26,7 @@ struct vault_type {
     int rarity = 1;
 };
 
-extern std::vector<vault_type> v_info;
+extern std::vector<vault_type> vaults_info;
 
 struct dun_data_type;
 class PlayerType;
