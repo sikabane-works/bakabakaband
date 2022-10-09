@@ -100,7 +100,7 @@ static void init_header(angband_header *head, IDX num = 0)
  */
 template <typename InfoType>
 static errr init_info(concptr filename, angband_header &head, InfoType &info, std::function<errr(std::string_view, angband_header *)> parser,
-    void (*retouch)(angband_header *head))
+    void (*retouch)(angband_header *head) = nullptr)
 {
     char buf[1024];
     path_build(buf, sizeof(buf), ANGBAND_DIR_EDIT, format("%s.txt", filename));
@@ -145,6 +145,16 @@ static errr init_info(concptr filename, angband_header &head, InfoType &info, st
 }
 
 /*!
+ * @brief 固定アーティファクト情報読み込みのメインルーチン
+ * @return エラーコード
+ */
+errr init_artifacts_info()
+{
+    init_header(&artifacts_header);
+    return init_info("ArtifactDefinitions", artifacts_header, artifacts_info, parse_artifacts_info);
+}
+
+/*!
  * @brief 地形情報読み込みのメインルーチン /
  * Initialize the "f_info" array
  * @return エラーコード
@@ -164,17 +174,6 @@ errr init_k_info()
 {
     init_header(&k_head);
     return init_info("k_info", k_head, k_info, parse_k_info, nullptr);
-}
-
-/*!
- * @brief 固定アーティファクト情報読み込みのメインルーチン /
- * Initialize the "a_info" array
- * @return エラーコード
- */
-errr init_a_info()
-{
-    init_header(&a_head);
-    return init_info("a_info", a_head, a_info, parse_a_info, nullptr);
 }
 
 /*!

@@ -43,4 +43,4 @@ public:
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::map<FixedArtifactId, ArtifactType> a_info;
+extern std::map<FixedArtifactId, ArtifactType> artifacts_info;
