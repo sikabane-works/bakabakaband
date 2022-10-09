@@ -115,8 +115,8 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
         q_ptr->dungeon = rd_byte();
 
         if (q_ptr->status == QuestStatusType::TAKEN || q_ptr->status == QuestStatusType::UNTAKEN) {
-            if (r_info[q_ptr->r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
-                r_info[q_ptr->r_idx].flags1 |= RF1_QUESTOR;
+            if (monraces_info[q_ptr->r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
+                monraces_info[q_ptr->r_idx].flags1 |= RF1_QUESTOR;
             }
         }
     }

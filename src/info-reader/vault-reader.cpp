@@ -85,7 +85,7 @@ errr parse_v_info(std::string_view buf, angband_header *)
                 const auto &s_tokens = str_split(f, '_', false);
 
                 if (s_tokens.size() == 2 && s_tokens[0] == "MONSTER") {
-                    for (const auto &[r_idx, r_ref] : r_info) {
+                    for (const auto &[r_idx, r_ref] : monraces_info) {
                         if (s_tokens[1] == r_ref.tag) {
                             v_ptr->place_monster_list[c] = r_idx;
                             break;

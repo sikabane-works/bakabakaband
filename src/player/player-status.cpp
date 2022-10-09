@@ -1977,7 +1977,7 @@ static int16_t calc_riding_bow_penalty(PlayerType *player_ptr)
             penalty = 5;
         }
     } else {
-        penalty = r_info[floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 80;
+        penalty = monraces_info[floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 80;
         penalty += 30;
         if (penalty < 30) {
             penalty = 30;
@@ -2323,7 +2323,7 @@ static short calc_to_hit(PlayerType *player_ptr, INVENTORY_IDX slot, bool is_rea
                 if (PlayerClass(player_ptr).is_tamer()) {
                     penalty = 5;
                 } else {
-                    penalty = r_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 80;
+                    penalty = monraces_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx].level - player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 80;
                     penalty += 30;
                     if (penalty < 30) {
                         penalty = 30;

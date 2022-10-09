@@ -43,7 +43,7 @@ bool monster_type::is_mimicry() const
         return true;
     }
 
-    const auto &r_ref = r_info[this->ap_r_idx];
+    const auto &r_ref = monraces_info[this->ap_r_idx];
     const auto mimic_symbols = "/|\\()[]=$,.!?&`#%<>+~";
     if (angband_strchr(mimic_symbols, r_ref.d_char) == nullptr) {
         return false;
@@ -63,7 +63,7 @@ bool monster_type::is_valid() const
 
 MonsterRaceId monster_type::get_real_r_idx() const
 {
-    const auto &r_ref = r_info[this->r_idx];
+    const auto &r_ref = monraces_info[this->r_idx];
     if (this->mflag2.has_not(MonsterConstantFlagType::CHAMELEON)) {
         return this->r_idx;
     }
@@ -77,7 +77,7 @@ MonsterRaceId monster_type::get_real_r_idx() const
  */
 monster_race &monster_type::get_real_r_ref() const
 {
-    return r_info[this->get_real_r_idx()];
+    return monraces_info[this->get_real_r_idx()];
 }
 
 short monster_type::get_remaining_sleep() const
