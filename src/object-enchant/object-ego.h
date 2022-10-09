@@ -271,7 +271,7 @@ struct ego_item_type {
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::map<EgoType, ego_item_type> e_info;
+extern std::map<EgoType, ego_item_type> egos_info;
 
 class ObjectType;
 class PlayerType;

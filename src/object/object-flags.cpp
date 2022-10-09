@@ -22,7 +22,7 @@ static void object_flags_lite(const ObjectType *o_ptr, TrFlags &flags)
         return;
     }
 
-    auto *e_ptr = &e_info[o_ptr->ego_idx];
+    auto *e_ptr = &egos_info[o_ptr->ego_idx];
     flags.set(e_ptr->flags);
 
     auto is_out_of_fuel = o_ptr->fuel == 0;
