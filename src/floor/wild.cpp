@@ -321,7 +321,7 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
         }
 
         floor_ptr->vault_list.clear();
-        parse_fixed_map(player_ptr, "t_info.txt", 0, 0, MAX_HGT, MAX_WID);
+        parse_fixed_map(player_ptr, TOWN_DEFINITION_LIST, 0, 0, MAX_HGT, MAX_WID);
         floor_ptr->width = MAX_WID;
         floor_ptr->height = MAX_HGT;
 
