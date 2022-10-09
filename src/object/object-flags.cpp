@@ -49,7 +49,7 @@ static void object_flags_lite(const ObjectType *o_ptr, TrFlags &flags)
  */
 TrFlags object_flags(const ObjectType *o_ptr)
 {
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
 
     /* Base object */
     auto flags = k_ptr->flags;
@@ -83,7 +83,7 @@ TrFlags object_flags(const ObjectType *o_ptr)
 TrFlags object_flags_known(const ObjectType *o_ptr)
 {
     bool spoil = false;
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
     TrFlags flags{};
 
     if (!o_ptr->is_aware()) {

@@ -57,4 +57,4 @@ public:
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::vector<BaseItemInfo> k_info;
+extern std::vector<BaseItemInfo> baseitems_info;

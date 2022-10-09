@@ -575,7 +575,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
 
     /* Object level */
-    int lev = k_info[o_ptr->k_idx].level;
+    int lev = baseitems_info[o_ptr->k_idx].level;
 
     /* 基本食い物でないものを喰う判定 */
     bool ate = false;

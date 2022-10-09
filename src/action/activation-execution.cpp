@@ -329,7 +329,7 @@ static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     bool activated = false;
-    if (item <= INVEN_PACK && k_info[player_ptr->inventory_list[item].k_idx].flags.has_not(TR_INVEN_ACTIVATE)) {
+    if (item <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[item].k_idx].flags.has_not(TR_INVEN_ACTIVATE)) {
         msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
         return;
     }
