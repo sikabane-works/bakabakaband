@@ -334,52 +334,6 @@ static int parse_qtw_Q(qtwg_type *qtwg_ptr, char **zz)
     return PARSE_ERROR_GENERIC;
 }
 
-static bool parse_qtw_P(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char **zz)
-{
-    if (qtwg_ptr->buf[0] != 'P') {
-        return false;
-    }
-
-    if ((init_flags & INIT_CREATE_DUNGEON) == 0) {
-        return true;
-    }
-
-    if (tokenize(qtwg_ptr->buf + 2, 2, zz, 0) != 2) {
-        return true;
-    }
-
-    int panels_y = (*qtwg_ptr->y / SCREEN_HGT);
-    if (*qtwg_ptr->y % SCREEN_HGT) {
-        panels_y++;
-    }
-
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->height = panels_y * SCREEN_HGT;
-    int panels_x = (*qtwg_ptr->x / SCREEN_WID);
-    if (*qtwg_ptr->x % SCREEN_WID) {
-        panels_x++;
-    }
-
-    floor_ptr->width = panels_x * SCREEN_WID;
-    panel_row_min = floor_ptr->height;
-    panel_col_min = floor_ptr->width;
-    if (inside_quest(floor_ptr->quest_number)) {
-        POSITION py = atoi(zz[0]);
-        POSITION px = atoi(zz[1]);
-        player_ptr->y = py;
-        player_ptr->x = px;
-        delete_monster(player_ptr, player_ptr->y, player_ptr->x);
-        return true;
-    }
-
-    if (!player_ptr->oldpx && !player_ptr->oldpy) {
-        player_ptr->oldpy = atoi(zz[0]);
-        player_ptr->oldpx = atoi(zz[1]);
-    }
-
-    return true;
-}
-
 static bool parse_qtw_M(qtwg_type *qtwg_ptr, char **zz)
 {
     if (qtwg_ptr->buf[0] != 'M') {
@@ -453,6 +407,10 @@ parse_error_type generate_fixed_map_floor(PlayerType *player_ptr, qtwg_type *qtw
         return parse_line_feature(player_ptr->current_floor_ptr, qtwg_ptr->buf);
     }
 
+    if (qtwg_ptr->buf[0] == 'P') {
+        return parse_line_start_point(player_ptr->current_floor_ptr, qtwg_ptr->buf);
+    }
+
     if (qtwg_ptr->buf[0] == 'D') {
         char *s = qtwg_ptr->buf + 2;
         if (init_flags & INIT_ONLY_BUILDINGS) {
@@ -473,9 +431,6 @@ parse_error_type generate_fixed_map_floor(PlayerType *player_ptr, qtwg_type *qtw
         return parse_line_wilderness(player_ptr, qtwg_ptr->buf, qtwg_ptr->xmin, qtwg_ptr->xmax, qtwg_ptr->y, qtwg_ptr->x);
     }
 
-    if (parse_qtw_P(player_ptr, qtwg_ptr, zz)) {
-        return PARSE_ERROR_NONE;
-    }
 
     if (qtwg_ptr->buf[0] == 'B') {
         return parse_line_building(qtwg_ptr->buf);

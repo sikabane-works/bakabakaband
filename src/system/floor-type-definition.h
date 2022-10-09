@@ -69,4 +69,7 @@ struct floor_type {
 
     std::vector<town_vault> vault_list;
     AllianceType allianceID;
+
+    POSITION entrance_x = -1; /*!< 代替入口X座標 -1で無効*/
+    POSITION entrance_y = -1; /*!< 代替入口Y座標 -1で無効*/
 };
