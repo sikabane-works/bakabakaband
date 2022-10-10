@@ -24,6 +24,7 @@
 #include "view/display-lore-status.h"
 #include "view/display-lore.h"
 
+
 static void set_msex_flags(lore_type *lore_ptr)
 {
     lore_ptr->msex = MSEX_NONE;

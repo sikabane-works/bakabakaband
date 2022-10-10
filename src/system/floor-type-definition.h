@@ -1,15 +1,26 @@
 ﻿#pragma once
 
+#include "alliance/alliance.h"
 #include "dungeon/quest.h"
 #include "floor/floor-base-definitions.h"
 #include "floor/sight-definitions.h"
 #include "monster/monster-timed-effect-types.h"
+#include "room/vault-builder.h"
 #include "system/angband.h"
 
 #include <vector>
 
 struct grid_type;
 ;
+struct town_vault {
+    VaultTypeId id;
+    POSITION x;
+    POSITION y;
+    POSITION xoffset;
+    POSITION yoffset;
+    int transno;
+};
+
 class ObjectType;
 struct monster_type;
 struct floor_type {
@@ -55,4 +66,10 @@ struct floor_type {
     bool monster_noise;
     QuestId quest_number; /* Inside quest level */
     bool inside_arena; /* Is character inside on_defeat_arena_monster? */
+
+    std::vector<town_vault> vault_list;
+    AllianceType allianceID;
+
+    POSITION entrance_x = -1; /*!< 代替入口X座標 -1で無効*/
+    POSITION entrance_y = -1; /*!< 代替入口Y座標 -1で無効*/
 };

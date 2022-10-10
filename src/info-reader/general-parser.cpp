@@ -10,17 +10,19 @@
 #include "object-enchant/trg-types.h"
 #include "object/object-kind-hook.h"
 #include "realm/realm-types.h"
+#include "room/vault-builder.h"
 #include "system/artifact-type-definition.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/system-variables.h"
 #include "util/angband-files.h"
 #include "util/string-processor.h"
+#include "floor/floor-town.h"
 #include <string>
 
 dungeon_grid letter[255];
 
-/*!
+    /*!
  * @brief パース関数に基づいてデータファイルからデータを読み取る /
  * Initialize an "*_info" array, by parsing an ascii "template" file
  * @param fp 読み取りに使うファイルポインタ
@@ -63,6 +65,65 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr
     }
 
     return 0;
+}
+
+parse_error_type parse_line_start_point(floor_type *floor_ptr, char *buf)
+{
+    if (init_flags & INIT_ONLY_BUILDINGS)
+        return PARSE_ERROR_NONE;
+
+    char *zz[2];
+    int num = tokenize(buf + 2, 2, zz, 0);
+    if (num != 2)
+        return PARSE_ERROR_GENERIC;
+
+    floor_ptr->entrance_y = atoi(zz[0]);
+    floor_ptr->entrance_x = atoi(zz[1]);
+
+    return PARSE_ERROR_NONE;
+}
+
+/*!
+ * @brief 地形情報の「A:」情報をパースする
+ * Process "A:<ID>" -- alliance
+ * @param buf 解析文字列
+ * @return エラーコード
+ */
+parse_error_type parse_line_alliance(floor_type *floor_ptr, char *buf)
+{
+    char *zz[1];
+    int num = tokenize(buf + 2, 6, zz, 0);
+    if (num != 1) {
+        return PARSE_ERROR_GENERIC;
+    }
+    floor_ptr->allianceID = static_cast<AllianceType>(atoi(zz[0]));
+    return PARSE_ERROR_NONE;
+}
+
+/*!
+ * @brief 地形情報の「V:」情報をパースする
+ * Process "V:<ID>:<y>:<x>:<offsety>:<offsetx>:<transno>" -- info for vault_setting
+ * @param floor_ptr 現在フロアへの参照ポインタ
+ * @param buf 解析文字列
+ * @return エラーコード
+ */
+parse_error_type parse_line_vault(floor_type *floor_ptr, char *buf)
+{
+    char *zz[6];
+    town_vault tv;
+    int num = tokenize(buf + 2, 6, zz, 0);
+    if (num != 6) {
+        return PARSE_ERROR_GENERIC;
+    }
+
+    tv.id = static_cast<VaultTypeId>(atoi(zz[0]));
+    tv.y = atoi(zz[1]);
+    tv.x = atoi(zz[2]);
+    tv.yoffset = atoi(zz[3]);
+    tv.xoffset = atoi(zz[4]);
+    tv.transno = atoi(zz[5]);
+    floor_ptr->vault_list.push_back(tv);
+    return PARSE_ERROR_NONE;
 }
 
 /*!

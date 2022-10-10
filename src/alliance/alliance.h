@@ -64,6 +64,7 @@ public:
     virtual bool isAnnihilated();
     virtual int calcImplessionPoint(PlayerType *creature_ptr) const = 0;
     virtual ~Alliance() = default;
+    int64_t AnihilatedPowerdownDiv = 1000; //!< 壊滅時戦力指数除算
 };
 
 class AllianceNone : public Alliance {
@@ -264,6 +265,7 @@ public:
     AllianceDokachans() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    bool isAnnihilated() override;
     virtual ~AllianceDokachans() = default;
 };
 
