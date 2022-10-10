@@ -38,7 +38,7 @@
  * ESCAPE clears the buffer and the window and returns FALSE.
  * RETURN accepts the current buffer contents and returns TRUE.
  */
-bool askfor_aux(char *buf, int len, bool numpad_cursor)
+bool askfor(char *buf, int len, bool numpad_cursor)
 {
     /*
      * Text color
@@ -210,16 +210,6 @@ bool askfor_aux(char *buf, int len, bool numpad_cursor)
         }
         }
     }
-}
-
-/*
- * Get some string input at the cursor location.
- *
- * Allow to use numpad keys as cursor keys.
- */
-bool askfor(char *buf, int len)
-{
-    return askfor_aux(buf, len, true);
 }
 
 /*
@@ -417,7 +407,7 @@ QUANTITY get_quantity(concptr prompt, QUANTITY max)
      * Ask for a quantity
      * Don't allow to use numpad as cursor key.
      */
-    res = askfor_aux(buf, 6, false);
+    res = askfor(buf, 6, false);
 
     prt("", 0, 0);
     if (!res) {
