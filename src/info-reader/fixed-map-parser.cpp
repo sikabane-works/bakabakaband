@@ -238,6 +238,9 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
 
 void set_position(floor_type *floor_ptr, PlayerType *player_ptr)
 {
+    if (floor_ptr == NULL || player_ptr == NULL) {
+        return;
+    }
     /*
     int panels_y = (*qtwg_ptr->y / SCREEN_HGT);
     if (*qtwg_ptr->y % SCREEN_HGT) {
