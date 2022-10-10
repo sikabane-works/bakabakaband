@@ -33799,6 +33799,35 @@ F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
 F:DROP_KIND_1_IN_5_102_0_1d1
 D:聖地巡礼と称して私邸をうろつくくっせえガキ共だ。
 
+N:1823:『NML兄貴』
+E:the Brother of Nash Music Library
+G:.:d
+I:110:21d80:30:60:20
+W:40:10:0:28:0:0
+B:CHARGE:TERRIFY:8d5
+B:CHARGE:TERRIFY:8d5
+B:CHARGE:TERRIFY:8d5
+B:CHARGE:TERRIFY:8d5
+F:PASS_WALL | NO_CONF | NO_SLEEP | NONLIVING | CAN_FLY | QUANTUM
+F:CHAR_CLEAR | ATTR_CLEAR | INVISIBLE | COLD_BLOOD
+F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | RES_LITE | RES_DARK | RAND_25 | MALE | UNIQUE | JOKE
+F:DROP_GOOD | DROP_3D2
+D:版権を無視したまま音源を使おうとするホモに襲い掛かる静かなる怒りの声だ。
+
+N:1824:『NML姉貴』
+E:the Sister of Nash Music Library
+G:.:d
+I:110:21d80:30:60:20
+W:40:10:0:28:0:0
+B:CHARGE:TERRIFY:8d5
+B:CHARGE:TERRIFY:8d5
+B:CHARGE:TERRIFY:8d5
+B:CHARGE:TERRIFY:8d5
+F:PASS_WALL | NO_CONF | NO_SLEEP | NONLIVING | CAN_FLY | QUANTUM
+F:CHAR_CLEAR | ATTR_CLEAR | INVISIBLE | COLD_BLOOD
+F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | RES_LITE | RES_DARK | RAND_25 | FEMALE | UNIQUE | JOKE
+F:DROP_GOOD | DROP_3D2
+D:版権を無視したまま音源を使おうとするホモに襲い掛かる静かなる怒りの声だ。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
