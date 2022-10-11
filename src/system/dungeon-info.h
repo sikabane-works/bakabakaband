@@ -20,9 +20,13 @@
 #include "room/room-types.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
+#include <array>
+#include <string>
+#include <vector>
 
-#define DUNGEON_FEAT_PROB_NUM 3
+constexpr auto DUNGEON_FEAT_PROB_NUM = 3;
 
+/*! @todo 後でenum classとして再定義する */
 #define DUNGEON_ANGBAND 1
 #define DUNGEON_GALGALS 2
 #define DUNGEON_ORC 3
@@ -63,8 +67,8 @@ struct dungeon_type {
     POSITION dy{};
     POSITION dx{};
 
-    feat_prob floor[DUNGEON_FEAT_PROB_NUM]{}; /* Floor probability */
-    feat_prob fill[DUNGEON_FEAT_PROB_NUM]{}; /* Cave wall probability */
+    std::array<feat_prob, DUNGEON_FEAT_PROB_NUM> floor{}; /* Floor probability */
+    std::array<feat_prob, DUNGEON_FEAT_PROB_NUM> fill{}; /* Cave wall probability */
     FEAT_IDX outer_wall{}; /* Outer wall tile */
     FEAT_IDX inner_wall{}; /* Inner wall tile */
     FEAT_IDX stream1{}; /* stream tile */

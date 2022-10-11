@@ -35,7 +35,6 @@
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
 
-
 /*!
  * @brief セーブデータから領域情報を読み込む / Read player realms
  * @param player_ptr プレイヤーへの参照ポインタ
