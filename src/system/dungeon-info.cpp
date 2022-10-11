@@ -1,4 +1,4 @@
-﻿#include "dungeon/dungeon.h"
+﻿#include "system/dungeon-info.h"
 #include "game-option/birth-options.h"
 #include "grid/feature.h"
 #include "io/input-key-acceptor.h"
