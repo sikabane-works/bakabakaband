@@ -3,8 +3,8 @@
 #include "util/enum-converter.h"
 
 /*!
- * @brief Feature flags - should be used instead of feature indexes unless generating.
- * Originally from UnAngband, and modified into TR-like style in Hengband
+ * @brief 地形特性フラグ群定義
+ * @details Originally from UnAngband
  */
 enum class TerrainCharacteristics {
     LOS = 0, /*!< 視界が通る地形である */
