@@ -15,8 +15,6 @@
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
-#include <map>
-
 #include <variant>
 
 /*!
