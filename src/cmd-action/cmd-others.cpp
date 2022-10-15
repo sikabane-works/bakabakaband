@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @brief その他の小さなコマンド処理群 (探索、汎用グリッド処理、自殺/引退/切腹)
  * @date 2014/01/02
  * @author
@@ -17,7 +17,6 @@
 #include "core/disturbance.h"
 #include "floor/geometry.h"
 #include "game-option/game-play-options.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "io/input-key-acceptor.h"
 #include "io/input-key-requester.h"
@@ -35,6 +34,7 @@
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"

@@ -23,6 +23,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "term/z-form.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"

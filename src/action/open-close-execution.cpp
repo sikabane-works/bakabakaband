@@ -29,6 +29,7 @@
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/player-confusion.h"

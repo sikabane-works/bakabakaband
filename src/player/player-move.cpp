@@ -44,6 +44,7 @@
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-checker.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/player-confusion.h"
