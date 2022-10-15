@@ -267,6 +267,14 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
         break;
     }
 
+    case RaceBlowMethodType::WHISPER: {
+        monap_ptr->act = _("囁かれた", "whispers you");
+        monap_ptr->touched = true;
+        monap_ptr->do_stun = 1;
+        sound(SOUND_HIT);
+        break;
+    }
+
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:
     case RaceBlowMethodType::MAX:

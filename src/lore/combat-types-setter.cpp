@@ -108,6 +108,10 @@ void set_monster_blow_method(lore_type *lore_ptr, int m)
         lore_ptr->p = _("縛り上げる", "bind");
         lore_ptr->pc = TERM_L_WHITE;
         break;
+    case RaceBlowMethodType::WHISPER:
+        lore_ptr->p = _("囁く", "whisper");
+        lore_ptr->pc = TERM_SLATE;
+        break;
 
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:
