@@ -152,6 +152,11 @@ void describe_melee_method(PlayerType *player_ptr, mam_type *mam_ptr)
         mam_ptr->touched = true;
         break;
     }
+    case RaceBlowMethodType::WHISPER: {
+        mam_ptr->act = _("%sに囁いた。", "whispers %s.");
+        mam_ptr->touched = false;
+        break;
+    }
 
     case RaceBlowMethodType::NONE:
     case RaceBlowMethodType::SHOOT:
@@ -281,6 +286,7 @@ void describe_monster_missed_monster(PlayerType *player_ptr, mam_type *mam_ptr)
     case RaceBlowMethodType::ENGULF:
     case RaceBlowMethodType::CHARGE:
     case RaceBlowMethodType::ENEMA:
+    case RaceBlowMethodType::WHISPER:
     case RaceBlowMethodType::BIND: {
         (void)set_monster_csleep(player_ptr, mam_ptr->t_idx, 0);
         if (mam_ptr->see_m) {
