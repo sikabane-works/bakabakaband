@@ -33830,6 +33830,31 @@ F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | RES_LITE | RES_DARK | RAND_25 | FEMALE
 F:DROP_GOOD | DROP_3D2
 D:版権を無視したまま音源を使おうとするホモに襲い掛かる静かなる怒りの声だ。
 
+N:1825:聡明の上級王『フィンゴルフィン』
+E:Fingolfin, the High King of Sagacity
+G:h:b
+I:150:70d110:200:150:20
+W:82:2:0:42000:0:0
+B:SLASH:HURT:12d14
+B:SLASH:HURT:12d14
+B:SLASH:HURT:12d14
+B:SLASH:SUPERHURT:17d14
+F:UNIQUE | MALE | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_GREAT | ELF |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR
+F:IM_COLD | IM_FIRE | IM_ELEC | NO_CONF | NO_STUN | GOOD
+F:NO_SLEEP | RES_TELE | RES_NETH | RES_TIME | POWERFUL | CAN_FLY |
+S:1_IN_3 | 
+S:TPORT | BLIND | HOLD | BLINK | HEAL | HASTE |
+S:TELE_TO | CONF | BA_COLD | BA_LITE | BRAIN_SMASH | PSY_SPEAR
+A:82:1:100
+D:フィンゴルフィンは客観的に見ても、最終的にノルドールの王統の中で最たる血筋の主となり、
+D:ヴァリノールの神々からも覚えめでたく、その子々孫々まで庇護を受けることとなった。
+D:その栄えは、ヴァリノールから独立した神統となり、望まずも政敵ともなったフェアノールと
+D:全く対照的であり、甲乙はつけがたい。
+D:ウトゥムノの伝承の限りでも、メルコールはこの兄弟を末弟フィナルフィンと共に讃えて止まない。
+D:なんとなれば、メルコールにとってノルドールはなべてヴァリノール虜囚時代の良き徒弟であったからだ。
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
