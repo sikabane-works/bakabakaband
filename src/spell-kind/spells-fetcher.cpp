@@ -24,6 +24,8 @@
 #include "target/target-checker.h"
 #include "target/target-setter.h"
 #include "target/target-types.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -175,7 +177,7 @@ bool fetch_monster(PlayerType *player_ptr)
     }
 
     if (m_ptr->ml) {
-        if (!player_ptr->hallucinated) {
+        if (!player_ptr->effects()->hallucination()->is_hallucinated()) {
             monster_race_track(player_ptr, m_ptr->ap_r_idx);
         }
 
