@@ -28419,7 +28419,6 @@ S:1_IN_10 |
 S:BR_MANA | BR_DISE | BR_DISI
 D:ゼンディカーに姿を現したコジレックの大型の眷属だ。
 
-<<<<<<< HEAD
 N:1488:葦名流門弟
 E:Disciple of Ashina-ryu
 G:p:U
@@ -28433,23 +28432,6 @@ F:MALE | HAS_LITE_1 |
 F:DROP_1D2 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN | ALLIANCE_ASHINA-CLAN
 F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_STR | EAT_LOSE_INT | EAT_LOSE_WIS
 D:葦名一心の元で戦国の剣術を学んだ素肌剣術の武者だ。
-=======
-N:1349:マンキュバス
-E:Mancubus
-G:U:U
-I:105:35d40:15:90:10
-W:39:2:0:2500:0:0
-B:HIT:HURT:8d5
-B:HIT:HURT:8d5
-F:DROP_1D2 | ONLY_ITEM | DROP_CORPSE | EVIL | DEMON | NEVER_BLOW | FORCE_MAXHP
-F:POWERFUL | IM_FIRE | RES_TELE | BASH_DOOR | WILD_VOLCANO | WILD_TOWN
-F:WILD_ALL
-S:1_IN_2
-S:BA_FIRE
-D:$This fatso has twin gun-arms.
-D:$  Its fire balls are nightmares.
-D:この両腕に砲がある太っちょが出す火の弾は悪夢そのものだ。
->>>>>>> 234197502 ([Feature] マンキュバスの性能を調整)
 
 N:1489:太郎兵
 E:Taro soldier
@@ -31143,8 +31125,10 @@ D:その裂けたような口からプラズマの弾を発射してくる。
 N:1655:マンキュバス
 E:Mancubus
 G:U:U
-I:110:45d50:15:90:10
-W:39:2:0:2000:0:0
+I:105:35d40:15:90:10
+W:39:2:0:2500:0:0
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
 F:DROP_1D2 | ONLY_ITEM | DROP_CORPSE | EVIL | DEMON | NEVER_BLOW | FORCE_MAXHP
 F:POWERFUL | IM_FIRE | RES_TELE | BASH_DOOR | WILD_VOLCANO | WILD_TOWN
 F:WILD_ALL
@@ -33872,6 +33856,7 @@ D:その栄えは、ヴァリノールから独立した神統となり、望ま
 D:全く対照的であり、甲乙はつけがたい。
 D:ウトゥムノの伝承の限りでも、メルコールはこの兄弟を末弟フィナルフィンと共に讃えて止まない。
 D:なんとなれば、メルコールにとってノルドールはなべてヴァリノール虜囚時代の良き徒弟であったからだ。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
