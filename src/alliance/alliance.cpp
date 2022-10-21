@@ -258,6 +258,11 @@ int AllianceBinjoBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *crea
     return 0;
 }
 
+bool AllianceBinjoBuddhism::isAnnihilated()
+{
+    return r_info[MON_BINZYOU_MUR].mob_num == 0;
+}
+
 int AllianceAshinaClan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
