@@ -351,13 +351,14 @@ public:
     virtual ~AllianceGOLAN() = default;
 };
 
-class AllianceBinjoBuddhism : public Alliance {
+class AllianceBinzyouBuddhism : public Alliance {
 public:
     using Alliance::Alliance;
-    AllianceBinjoBuddhism() = delete;
+    AllianceBinzyouBuddhism() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
-    virtual ~AllianceBinjoBuddhism() = default;
+    bool isAnnihilated() override;
+    virtual ~AllianceBinzyouBuddhism() = default;
 };
 
 class AllianceAshinaClan : public Alliance {
