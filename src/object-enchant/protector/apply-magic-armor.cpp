@@ -75,15 +75,14 @@ void ArmorEnchanter::apply_magic()
             this->o_ptr->art_flags.set(TR_CON);
             this->o_ptr->art_flags.set(TR_CHR);
             break;
-        default:
-            break;
-        }
-
-        if (this->o_ptr->sval == SV_DRAGON_BIKINI) {
+        case SV_DRAGON_BIKINI:
             dragon_resist(this->o_ptr);
             if (!one_in_(3)) {
                 return;
             }
+
+        default:
+            break;
         }
 
         if (this->power > 1) {
