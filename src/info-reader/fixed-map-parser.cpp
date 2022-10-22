@@ -255,7 +255,7 @@ void set_position(floor_type *floor_ptr, PlayerType *player_ptr)
     }
     */
 
-    if (inside_quest(floor_ptr->quest_number)) {
+    if (inside_quest(floor_ptr->quest_number) && floor_ptr->entrance_y != -1 && floor_ptr->entrance_x != -1) {
         player_ptr->y = floor_ptr->entrance_y;
         player_ptr->x = floor_ptr->entrance_x;
         //delete_monster(player_ptr, player_ptr->y, player_ptr->x);

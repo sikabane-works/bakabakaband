@@ -2770,8 +2770,6 @@ bool player_place(PlayerType *player_ptr, POSITION y, POSITION x)
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (x <= 0 || y <= 0 || x >= floor_ptr->width - 1 || y >= floor_ptr->height - 1) {
         msg_print(_("エラー:不正なプレイヤー配置試行", "ERROR:Invalid Player Position Trying"));
-        player_ptr->y = 1;
-        player_ptr->x = 1;
         inkey();
         return false;
     }
