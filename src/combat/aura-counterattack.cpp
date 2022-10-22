@@ -177,7 +177,6 @@ static void aura_force_by_monster_attack(PlayerType *player_ptr, MonsterAttackPl
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr)) {
             r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_ALL);
         }
-
         return;
     }
 
