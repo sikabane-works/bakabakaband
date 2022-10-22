@@ -51,6 +51,7 @@ body {
     background-repeat: no-repeat;
     background-position: top;
     background-attachment: fixed;
+    background-size: cover;
 }
 
 #melko {
@@ -144,13 +145,14 @@ a.button-link:hover		{ color:white;}
 .button
 {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.2vw;
+    line-height: 2.5vw;
     display: flex;
     background-color: rgba(20,10,0,1.00);
-    border: solid 0.5rem;
+    border: solid 1.5vw;
     margin: 1rem;
-    padding: 1rem 1rem 1rem 3.5rem;
-    border-radius: 5.5rem;
+    padding: 1vw 1vw 1vw 3.5rem;
+    border-radius: 5.5vw;
     z-index: 10;
     justify-content: center;
     flex-direction: column;
