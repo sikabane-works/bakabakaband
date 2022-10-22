@@ -1,7 +1,6 @@
 # q0seinourawaza.txt
 
-# Name The Cloning Pits
-Q:$36:N:The Cloning Pits
+Q:$36:N:The Hakusin Karate
 Q:36:N:迫真空手部性の裏技
 
 # Definition 
@@ -26,7 +25,7 @@ Q:36:T:素晴らしい!! 褒美を外に置いておきました。
 
 # Description for quest failed
 ?:[EQU $QUEST36 5]
-Q:$36:T:It seems like this task was too difficult for you.
+Q:$36:T:It seems like this INM was too difficult for you.
 Q:36:T:この淫夢はあなたには難しかったようですね。
 ?:1
 
@@ -49,7 +48,7 @@ F:j:FLOOR:8:1347
 # 超巨大MUR肉
 F:k:FLOOR:8:1348
 
-# シン大MUR肉          
+# シン大MUR肉
 F:K:FLOOR:8:1349
 
 # 目力先輩 
@@ -90,7 +89,7 @@ F:o:DEEP_WATER:8:775
 # The Doors, Floors, an Features 
 
 # Normal floor 
-F: :FLOOR:8
+F:.:FLOOR:8
 
 # locked door
 F:|:LOCKED_DOOR_7:8
@@ -119,29 +118,30 @@ F:e:FLOOR:8:0:25
 
 # Dungeon layout
 D:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-D:X                              X
-D:X   E    f     h      h        X
-D:X  EaE                     i   X
-D:X   E                          X
-D:X        h    E%%              X
-D:X           EEEE%%%         E  X
-D:X           EEEE%%%        EaE X
-D:X    f     EEEmmm%%%        E  X
-D:X          EEEmnm%%%           X
-D:X          ECCmmmCC%    i      X
-D:X h         CCCCCCC            X
-D:X           CCCCCCC       j    X
-D:X    i        CCC    j         X
-D:X                              X
-D:X                kkKkk         X
-D:X         j      kX|XX++XXXXX+XX
-D:X      E         kX     wXlWWWoX
-D:X     EaE        kX      XWWWWWX
-D:X      E          +      XWMWNWX
-D:X                 +    r X     X
-D:X                 X q    X  t  X
-D:X                 XYe p  |     X
+D:X..............................X
+D:X...E....f.....h......h........X
+D:X..EaE.....................i...X
+D:X...E..........................X
+D:X........h....E%%..............X
+D:X...........EEEE%%%.........E..X
+D:X...........EEEE%%%........EaE.X
+D:X....f.....EEEmmm%%%........E..X
+D:X..........EEEmnm%%%...........X
+D:X..........ECCmmmCC%....i......X
+D:X.h.........CCCCCCC............X
+D:X...........CCCCCCC.......j....X
+D:X....i........CCC....j.........X
+D:X..............................X
+D:X................kkKkk.........X
+D:X.........j......kX|XX++XXXXX+XX
+D:X......E.........kX.....wXlWWWoX
+D:X.....EaE........kX......XWWWWWX
+D:X......E..........+......XWMWNWX
+D:X.................+....r.X.....X
+D:X.................X.q....X..t..X
+D:X.................XYe.p..|.....X
 D:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 # Starting position
 P:1:1
+
