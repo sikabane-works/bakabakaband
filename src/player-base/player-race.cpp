@@ -144,19 +144,21 @@ int16_t PlayerRace::speed() const
     int16_t result = 0;
 
     floor_type *floor_ptr = this->player_ptr->current_floor_ptr;
-    feature_type *f_ptr = &f_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
-    if (f_ptr->flags.has(FloorFeatureType::SLOW)) {
-        result -= 10;
-    }
-    if (this->equals(PlayerRaceType::KLACKON) || this->equals(PlayerRaceType::SPRITE)) {
-        result += (this->player_ptr->lev) / 10;
-    }
+    if (player_ptr->x > 0 && player_ptr->y > 0 && player_ptr->x <= floor_ptr->width - 1 && player_ptr->y <= floor_ptr->height - 1) {
+        feature_type *f_ptr = &f_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
+        if (f_ptr->flags.has(FloorFeatureType::SLOW)) {
+            result -= 10;
+        }
+        if (this->equals(PlayerRaceType::KLACKON) || this->equals(PlayerRaceType::SPRITE)) {
+            result += (this->player_ptr->lev) / 10;
+        }
 
-    if (this->equals(PlayerRaceType::MERFOLK)) {
-        if (f_ptr->flags.has(FloorFeatureType::WATER)) {
-            result += (2 + this->player_ptr->lev / 10);
-        } else if (!this->player_ptr->levitation) {
-            result -= 2;
+        if (this->equals(PlayerRaceType::MERFOLK)) {
+            if (f_ptr->flags.has(FloorFeatureType::WATER)) {
+                result += (2 + this->player_ptr->lev / 10);
+            } else if (!this->player_ptr->levitation) {
+                result -= 2;
+            }
         }
     }
 
