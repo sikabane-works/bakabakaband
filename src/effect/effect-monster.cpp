@@ -631,8 +631,8 @@ static void postprocess_by_effected_pet(PlayerType *player_ptr, effect_monster_t
         return;
     }
 
-    if ((em_ptr->who > 0) && is_pet(em_ptr->m_player_ptr) && !player_bold(player_ptr, em_ptr->m_ptr->target_y, em_ptr->m_ptr->target_x)) {
-        set_target(em_ptr->m_ptr, em_ptr->m_player_ptr->fy, em_ptr->m_player_ptr->fx);
+    if ((em_ptr->who > 0) && is_pet(em_ptr->m_ptr) && !player_bold(player_ptr, em_ptr->m_ptr->target_y, em_ptr->m_ptr->target_x)) {
+        set_target(em_ptr->m_ptr, em_ptr->m_ptr->fy, em_ptr->m_ptr->fx);
     }
 }
 
