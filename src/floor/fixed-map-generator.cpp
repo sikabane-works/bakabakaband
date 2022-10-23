@@ -92,6 +92,9 @@ static void generate_artifact(PlayerType *player_ptr, qtwg_type *qtwg_ptr, const
     drop_here(player_ptr->current_floor_ptr, q_ptr, *qtwg_ptr->y, *qtwg_ptr->x);
 }
 
+/**
+ * @note 馬鹿馬鹿では固定配置モンスターのグループ生成はクビだ！クビだ！クビだ！ 
+ */
 static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
 {
     *qtwg_ptr->x = qtwg_ptr->xmin;
@@ -136,9 +139,8 @@ static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
                 if (r_info[monster_index].cur_num == r_info[monster_index].mob_num) {
                     r_info[monster_index].max_num++;
                 }
-            } else {
-                option |= PM_ALLOW_GROUP;
             }
+
 
             place_monster_aux(player_ptr, 0, *qtwg_ptr->y, *qtwg_ptr->x, monster_index, option);
 
