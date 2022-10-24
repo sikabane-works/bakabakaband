@@ -43,6 +43,7 @@ enum class AllianceType : int {
     ASHINA_CLAN = 32, //!< 葦名一門
     SUREN = 33, //!< スレン王国
     FEANOR_NOLDOR = 34, //!< フェアノール統ノルドール
+    GAICHI = 35, //!< ガイチ帝国
     MAX,
 };
 
@@ -387,6 +388,16 @@ public:
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceFeanorNoldor() = default;
 };
+
+class AllianceGaichi : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceGaichi() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceGaichi() = default;
+};
+
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
 extern const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession;
