@@ -415,11 +415,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     disturb(player_ptr, false, true);
 
     cave_alter_feat(player_ptr, y, x, FloorFeatureType::HIT_TRAP);
-
-    if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
-        player_ptr->incident[INCIDENT::TRAPPED] = 0;
-    }
-    player_ptr->incident[INCIDENT::TRAPPED]++;
+    player_ptr->plus_incident(INCIDENT::TRAPPED, 1);
 
     /* Analyze */
     switch (trap_feat_type) {

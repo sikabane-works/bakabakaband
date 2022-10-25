@@ -91,10 +91,8 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
     q_ptr->number = 1;
     vary_item(this->player_ptr, item, -1);
     sound(SOUND_QUAFF);
-    if (player_ptr->incident.count(INCIDENT::QUAFF) == 0) {
-        player_ptr->incident[INCIDENT::QUAFF] = 0;
-    }
-    player_ptr->incident[INCIDENT::QUAFF]++;
+
+    player_ptr->plus_incident(INCIDENT::QUAFF, 1);
 
     auto ident = false;
     if (q_ptr->tval == ItemKindType::POTION) {

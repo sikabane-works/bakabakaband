@@ -405,10 +405,7 @@ static void update_upper_lower_or_floor_id(PlayerType *player_ptr, saved_floor_t
 
 static void exe_leave_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
-    if (player_ptr->incident.count(INCIDENT::LEAVE_FLOOR) == 0) {
-        player_ptr->incident[INCIDENT::LEAVE_FLOOR] = 0;
-    }
-    player_ptr->incident[INCIDENT::LEAVE_FLOOR]++;
+    player_ptr->plus_incident(INCIDENT::LEAVE_FLOOR, 1);
 
     grid_type *g_ptr = NULL;
     set_grid_by_leaving_floor(player_ptr, &g_ptr);

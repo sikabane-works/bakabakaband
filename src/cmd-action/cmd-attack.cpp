@@ -117,10 +117,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMuta
     int bonus = player_ptr->to_h_m + (player_ptr->lev * 6 / 5);
     int chance = (player_ptr->skill_thn + (bonus * BTH_PLUS_ADJ));
 
-    if (player_ptr->incident.count(INCIDENT::ATTACK_EXE_COUNT) == 0) {
-        player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT] = 0;
-    }
-    player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]++;
+    player_ptr->plus_incident(INCIDENT::ATTACK_EXE_COUNT, 1);
 
     bool is_hit = (r_ptr->kind_flags.has_not(MonsterKindType::QUANTUM)) || !randint0(2);
     is_hit &= test_hit_norm(player_ptr, chance, r_ptr->ac, m_ptr->ml);
@@ -278,10 +275,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
         PlayerSkill(player_ptr).gain_riding_skill_exp_on_melee_attack(r_ptr);
     }
 
-    if (player_ptr->incident.count(INCIDENT::ATTACK_ACT_COUNT) == 0) {
-        player_ptr->incident[INCIDENT::ATTACK_ACT_COUNT] = 0;
-    }
-    player_ptr->incident[INCIDENT::ATTACK_ACT_COUNT]++;
+    player_ptr->plus_incident(INCIDENT::ATTACK_ACT_COUNT, 1);
 
     player_ptr->riding_t_m_idx = g_ptr->m_idx;
     bool fear = false;

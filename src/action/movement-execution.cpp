@@ -377,10 +377,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         mpe_mode |= MPE_BREAK_TRAP;
     }
 
-    if (player_ptr->incident.count(INCIDENT::WALK) == 0) {
-        player_ptr->incident[INCIDENT::WALK] = 0;
-    }
-    player_ptr->incident[INCIDENT::WALK]++;
+    player_ptr->plus_incident(INCIDENT::WALK, 1);
 
     (void)move_player_effect(player_ptr, y, x, mpe_mode);
 }
