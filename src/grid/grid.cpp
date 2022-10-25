@@ -657,6 +657,10 @@ static POSITION flow_y = 0;
  */
 void update_flow(PlayerType *player_ptr)
 {
+    if (!player_ptr->is_vaild_position()) {
+        return;
+    }
+
     POSITION x, y;
     DIRECTION d;
     floor_type *f_ptr = player_ptr->current_floor_ptr;
