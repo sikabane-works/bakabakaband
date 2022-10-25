@@ -29,6 +29,20 @@ bool PlayerType::is_true_winner() const
     return (w_ptr->total_winner > 0) && (this->arena_number > MAX_ARENA_MONS + 2);
 }
 
+/*!
+ * @brief インシデント数加算 
+ * @param incident_id 加算したいインシデント
+ * @param num 加算量
+ */
+void PlayerType::plus_incident(INCIDENT incidentID, int num)
+{
+    if (this->incident.count(incidentID) == 0) {
+        this->incident[incidentID] = 0;
+    }
+    this->incident[incidentID] += num;
+}
+
+
 std::shared_ptr<TimedEffects> PlayerType::effects() const
 {
     return this->timed_effects;
