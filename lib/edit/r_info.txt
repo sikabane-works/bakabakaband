@@ -33870,7 +33870,20 @@ F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:「オチンチン見せて」母親にその本性を隠しながら、幼い少年に性的暴行を重ねていた人間の屑だ。
 
-
+N:1827:社会正義戦士
+E:Social justice warrior
+G:t:w
+I:110:1d2:4:1:40
+W:0:2:0:0:10:14
+B:PUNCH:HURT:1d1
+B:PUNCH:HURT:1d1
+F:WILD_TOWN | WILD_ONLY
+F:GOOD | RAND_25 | FRIENDS | HUMAN | WARRIOR | JOKE
+F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
+D:彼らは世界に対して怒り、家族に対して怒り、自分の人生に対して怒っている。
+D:だが、大体はとにかく怒っている。ああ、現在進行形だ。
+D:$They is raging at the world, at their family, at their life.
+D:$ But mostly they are just raging. Of course, they're ongoing.
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
