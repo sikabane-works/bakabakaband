@@ -173,10 +173,7 @@ void Chest::chest_trap(POSITION y, POSITION x, OBJECT_IDX o_idx)
 
     /* Obtain the traps */
     auto trap = chest_traps[o_ptr->pval];
-    if (player_ptr->incident.count(INCIDENT::TRAPPED) == 0) {
-        player_ptr->incident[INCIDENT::TRAPPED] = 0;
-    }
-    player_ptr->incident[INCIDENT::TRAPPED]++;
+    player_ptr->plus_incident(INCIDENT::TRAPPED, 1);
 
     /* Lose strength */
     if (trap.has(ChestTrapType::LOSE_STR)) {
