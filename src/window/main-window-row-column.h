@@ -21,6 +21,12 @@
 #define ROW_COLLAPSE 24
 #define COL_COLLAPSE 0 /* world collapse */
 
+#define ROW_NOW_POS 25
+#define COL_NOW_POS 0 /* cheat player now pos */
+
+#define ROW_OLD_POS 26
+#define COL_OLD_POS 0 /* cheat player old pos */
+
 #define ROW_LEVEL 3
 #define COL_LEVEL 0 /* "LEVEL xxxxxx" */
 
