@@ -2691,23 +2691,17 @@ void update_creature(PlayerType *player_ptr)
 
     if (any_bits(player_ptr->update, (PU_VIEW))) {
         reset_bits(player_ptr->update, PU_VIEW);
-        if(player_ptr->is_vaild_position()) {
-            update_view(player_ptr);        
-        }
+        update_view(player_ptr);        
     }
 
     if (any_bits(player_ptr->update, (PU_LITE))) {
         reset_bits(player_ptr->update, PU_LITE);
-        if (player_ptr->is_vaild_position()) {
-            update_lite(player_ptr);
-        }
+        update_lite(player_ptr);
     }
 
     if (any_bits(player_ptr->update, (PU_FLOW))) {
         reset_bits(player_ptr->update, PU_FLOW);
-        if (player_ptr->is_vaild_position()) {
-            update_flow(player_ptr);
-        }
+        update_flow(player_ptr);
     }
 
     if (any_bits(player_ptr->update, (PU_DISTANCE))) {
@@ -2718,9 +2712,7 @@ void update_creature(PlayerType *player_ptr)
 
     if (any_bits(player_ptr->update, (PU_MON_LITE))) {
         reset_bits(player_ptr->update, PU_MON_LITE);
-        if (player_ptr->is_vaild_position()) {
-            update_mon_lite(player_ptr);
-        }
+        update_mon_lite(player_ptr);
     }
 
     if (any_bits(player_ptr->update, (PU_DELAY_VIS))) {
