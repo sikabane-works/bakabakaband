@@ -98,6 +98,7 @@ void redraw_stuff(PlayerType *player_ptr)
         print_frame_basic(player_ptr);
         WorldTurnProcessor(player_ptr).print_time();
         WorldTurnProcessor(player_ptr).print_world_collapse();
+        WorldTurnProcessor(player_ptr).print_cheat_position();
         print_dungeon(player_ptr);
     }
 
