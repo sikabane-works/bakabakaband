@@ -82,14 +82,6 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define DUN_STR_WAT 3 /* Max number of rivers */
 #define DUN_WAT_CHG 50 /* 1 in 50 chance of junction in river */
 
-/*
- * Dungeon treausre allocation values
- */
-#define DUN_AMT_ROOM 9 /* Amount of objects for rooms */
-#define DUN_AMT_ITEM 3 /* Amount of objects for rooms/corridors */
-#define DUN_AMT_GOLD 3 /* Amount of treasure for rooms/corridors */
-#define DUN_AMT_INVIS 3 /* Amount of invisible walls for rooms/corridors */
-
 /* Chance of using syllables to form the name instead of the "template" files */
 #define SINDARIN_NAME 10 /*!< ランダムアーティファクトにシンダリン銘をつける確率 */
 #define TABLE_NAME 20 /*!< ランダムアーティファクトに漢字銘をつける確率(正確には TABLE_NAME - SINDARIN_NAME %)となる */
