@@ -141,7 +141,7 @@ void WorldTurnProcessor::print_cheat_position()
         c_put_str(TERM_WHITE,
             format("nX:%03d nY:%03d", player_ptr->x, player_ptr->y), ROW_NOW_POS, COL_NOW_POS);    
         c_put_str(TERM_WHITE,
-            format("nX:%03d nY:%03d", player_ptr->oldpx, player_ptr->oldpy), ROW_OLD_POS, COL_OLD_POS);
+            format("oX:%03d oY:%03d", player_ptr->oldpx, player_ptr->oldpy), ROW_OLD_POS, COL_OLD_POS);
     }
 }
 
