@@ -31679,14 +31679,14 @@ N:1687:GOLAN兵
 E:Soldier of GOLAN
 G:p:u
 I:110:10d10:25:40:10
-W:22:3:0:240:0:0
-B:SHOOT:HURT:3d6
-B:HIT:HURT:3d9
-B:HIT:HURT:3d9
+W:16:3:0:240:0:0
+B:SHOOT:HURT:3d5
+B:HIT:HURT:2d8
+B:HIT:HURT:2d8
 F:BASH_DOOR | OPEN_DOOR | FRIENDS | DROP_90 | WILD_TOWN | WILD_ALL
-F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF | MOB_300 | ALLIANCE_GOLAN
+F:IM_FIRE | IM_POIS | NO_SLEEP | NO_CONF | MOB_500 | ALLIANCE_GOLAN
 F:MALE | HUMAN | DROP_CORPSE | DROP_SKELETON | EVIL
-S:1_IN_2 |
+S:1_IN_3 |
 S:SHOOT
 D:世紀末の選民思想的軍集団GOLANの兵士だ。常に周囲で奴隷狩りを繰り返している。
 
@@ -33908,6 +33908,23 @@ D:彼らは世界に対して怒り、家族に対して怒り、自分の人生
 D:だが、大体はとにかく怒っている。ああ、現在進行形だ。
 D:$They is raging at the world, at their family, at their life.
 D:$ But mostly they are just raging. Of course, they're ongoing.
+
+N:1828:GOLANのレッドベレー
+E:Red Beret of GOLAN
+G:p:r
+I:112:20d30:40:75:4
+W:25:4:0:1000:0:0
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+B:HIT:HURT:8d4
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN |
+F:ONLY_ITEM | DROP_2D2 | UNIQUE | MOB_100
+F:OPEN_DOOR | EVIL | BASH_DOOR | ALLIANCE_GOLAN
+D:世紀末の軍人集団GOLANの中でも核戦争前から
+D:カーネルの思想に同調した軍人たちだ。
+D:GOLANの支配者層として君臨している。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
