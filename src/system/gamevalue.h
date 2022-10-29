@@ -47,11 +47,6 @@
 #define MAX_REPRO 100
 
 #define MAX_VAMPIRIC_DRAIN 50 /*!< 吸血処理の最大回復HP */
-
-/*
- * Dungeon generation values
- */
-#define DUN_CAVERN 20 /*!< 洞窟状のダンジョンが生成される基本確率(1/定数) / 1/chance of having a cavern level */
 constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生成率(1/N) */
 
 /*
