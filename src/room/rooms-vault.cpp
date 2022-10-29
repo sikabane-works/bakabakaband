@@ -1132,7 +1132,7 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
     y = v_ptr->hgt;
 
     /* Some huge vault cannot be ratated to fit in the dungeon */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    FloorType *floor_ptr = player_ptr->current_floor_ptr;
     if (x + 2 > floor_ptr->height - 2) {
         /* Forbid 90 or 270 degree ratation */
         transno &= ~1;

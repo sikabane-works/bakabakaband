@@ -672,7 +672,7 @@ void update_flow(PlayerType *player_ptr)
 
     POSITION x, y;
     DIRECTION d;
-    floor_type *f_ptr = player_ptr->current_floor_ptr;
+    FloorType *f_ptr = player_ptr->current_floor_ptr;
 
     /* The last way-point is on the map */
     if (player_ptr->running && in_bounds(f_ptr, flow_y, flow_x)) {
@@ -769,7 +769,7 @@ void update_flow(PlayerType *player_ptr)
  * Take a feature, determine what that feature becomes
  * through applying the given action.
  */
-FEAT_IDX feat_state(floor_type *floor_ptr, FEAT_IDX feat, FloorFeatureType action)
+FEAT_IDX feat_state(FloorType *floor_ptr, FEAT_IDX feat, FloorFeatureType action)
 {
     auto *f_ptr = &terrains_info[feat];
     int i;
@@ -1096,12 +1096,12 @@ void place_bold(PlayerType *player_ptr, POSITION y, POSITION x, grid_bold_type g
     place_grid(player_ptr, g_ptr, gb_type);
 }
 
-void set_cave_feat(floor_type *floor_ptr, POSITION y, POSITION x, FEAT_IDX feature_idx)
+void set_cave_feat(FloorType *floor_ptr, POSITION y, POSITION x, FEAT_IDX feature_idx)
 {
     floor_ptr->grid_array[y][x].feat = feature_idx;
 }
 
-void set_cave_feat_mimic(floor_type *floor_ptr, POSITION y, POSITION x, FEAT_IDX feature_idx)
+void set_cave_feat_mimic(FloorType *floor_ptr, POSITION y, POSITION x, FEAT_IDX feature_idx)
 {
     floor_ptr->grid_array[y][x].mimic = feature_idx;
 }
@@ -1161,7 +1161,7 @@ bool feat_uses_special(FEAT_IDX f_idx)
  * have already been placed into the "lite" array, and we are never
  * called when the "lite" array is full.
  */
-void cave_lite_hack(floor_type *floor_ptr, POSITION y, POSITION x)
+void cave_lite_hack(FloorType *floor_ptr, POSITION y, POSITION x)
 {
     auto *g_ptr = &floor_ptr->grid_array[y][x];
     if (g_ptr->is_lite()) {
@@ -1176,7 +1176,7 @@ void cave_lite_hack(floor_type *floor_ptr, POSITION y, POSITION x)
 /*
  * For delayed visual update
  */
-void cave_redraw_later(floor_type *floor_ptr, POSITION y, POSITION x)
+void cave_redraw_later(FloorType *floor_ptr, POSITION y, POSITION x)
 {
     auto *g_ptr = &floor_ptr->grid_array[y][x];
     if (g_ptr->is_redraw()) {
@@ -1191,13 +1191,13 @@ void cave_redraw_later(floor_type *floor_ptr, POSITION y, POSITION x)
 /*
  * For delayed visual update
  */
-void cave_note_and_redraw_later(floor_type *floor_ptr, POSITION y, POSITION x)
+void cave_note_and_redraw_later(FloorType *floor_ptr, POSITION y, POSITION x)
 {
     floor_ptr->grid_array[y][x].info |= CAVE_NOTE;
     cave_redraw_later(floor_ptr, y, x);
 }
 
-void cave_view_hack(floor_type *floor_ptr, POSITION y, POSITION x)
+void cave_view_hack(FloorType *floor_ptr, POSITION y, POSITION x)
 {
     auto *g_ptr = &floor_ptr->grid_array[y][x];
     if (g_ptr->is_view()) {

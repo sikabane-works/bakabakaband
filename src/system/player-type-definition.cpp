@@ -53,7 +53,7 @@ std::shared_ptr<TimedEffects> PlayerType::effects() const
 
 bool PlayerType::is_vaild_position() const
 {
-    floor_type *floor_ptr = this->current_floor_ptr;
+    FloorType *floor_ptr = this->current_floor_ptr;
     return this->x > 0 && this->y > 0 && this->x <= floor_ptr->width - 1 && this->y <= floor_ptr->height - 1;
 }
 

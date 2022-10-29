@@ -43,7 +43,7 @@ enum class MimicKindType;
 enum class MonsterAbilityType;
 enum class MonsterRaceId : int16_t;
 
-struct floor_type;
+class FloorType;
 class ObjectType;
 class TimedEffects;
 class PlayerType {
@@ -56,7 +56,7 @@ public:
     int player_euid{};
     int player_egid{};
 
-    floor_type *current_floor_ptr{};
+    FloorType *current_floor_ptr{};
     POSITION oldpy{}; /* Previous player location -KMW- */
     POSITION oldpx{}; /* Previous player location -KMW- */
 
