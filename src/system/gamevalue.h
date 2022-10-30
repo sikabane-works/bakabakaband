@@ -51,6 +51,9 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define MON_DRAIN_LIFE 2 /*!< モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit */
 #define USE_DEVICE 3 /*!< 魔道具の最低失敗基準値 x> Harder devices x< Easier devices     */
 
+/*!< ベースアイテム生成階層が加算される確率 */
+constexpr auto CHANCE_BASEITEM_LEVEL_BOOST = 10;
+
 constexpr auto MAX_PLAYER_SIGHT = 20; /*!< プレイヤーの最大視界グリッド数 */
 constexpr auto MAX_MONSTER_SENSING = 100; /*!< モンスターの最大感知グリッド数 */
 
