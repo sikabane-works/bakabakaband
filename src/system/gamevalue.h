@@ -49,9 +49,6 @@
 #define MAX_VAMPIRIC_DRAIN 50 /*!< 吸血処理の最大回復HP */
 constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生成率(1/N) */
 
-#define A_CURSED 13 /*!< 1/nの確率で生成の巻物以外のランダムアーティファクトが呪いつきになる。 */
-#define WEIRD_LUCK 12 /*!< 1/nの確率でrandom_resistance()の処理中バイアス外の耐性がつき、become_random_artifactで4を超えるpvalが許可される。*/
-#define SWORDFISH_LUCK 6 /*!< 1/nの確率で一定以上のスレイダメージを超える武器のスレイ喪失が回避される。 */
 #define BIAS_LUCK 20 /*!< 1/nの確率でrandom_resistance()で付加する元素耐性が免疫になる */
 #define IM_LUCK 7 /*!< 1/nの確率でrandom_resistance()で複数免疫の除去処理が免除される */
 
@@ -81,6 +78,9 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define MON_SUMMON_ADJ 2 /*!< 現在未使用 Adjust level of summoned creatures */
 #define MON_DRAIN_LIFE 2 /*!< モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit */
 #define USE_DEVICE 3 /*!< 魔道具の最低失敗基準値 x> Harder devices x< Easier devices     */
+
+/*!< ランダムアーティファクトにバイアス外の耐性がつき、4を超えるpvalを許可する確率 */
+constexpr auto CHANCE_STRENGTHENING = 12;
 
 /* プレイヤー/モンスターの標準速度 (加速0) */
 constexpr auto STANDARD_SPEED = 110;
