@@ -36,16 +36,6 @@
 
 #define MAX_SKILLS 10
 
-/*!
- * @brief モンスター増殖の最大数
- * @details
- * A monster can only "multiply" (reproduce) if there are fewer than 100
- * monsters on the level capable of such spontaneous reproduction.  This
- * is a hack which prevents the "m_list[]" array from exploding due to
- * reproducing monsters.  Messy, but necessary.
- */
-#define MAX_REPRO 100
-
 constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生成率(1/N) */
 
 #define TY_CURSE_CHANCE 200 /*!<太古の怨念の1ターン毎の発動確率(1/n)*/
@@ -71,6 +61,13 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define MON_SUMMON_ADJ 2 /*!< 現在未使用 Adjust level of summoned creatures */
 #define MON_DRAIN_LIFE 2 /*!< モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit */
 #define USE_DEVICE 3 /*!< 魔道具の最低失敗基準値 x> Harder devices x< Easier devices     */
+
+/*!
+ * @brief 1フロアに存在可能な、増殖フラグ付きモンスター実体の最大数
+ * @details 呪術や突然変異で増殖阻止状態にすると、
+ * フロア構造体の「増殖フラグ付きモンスター実体の現在数」が強制的に最大値まで引き上げられる.
+ */
+constexpr auto MAX_REPRODUCTION = 100;
 
 /*!< 属性攻撃を受けた際に能力値低下を起こす確率(1/n) */
 constexpr auto CHANCE_ABILITY_SCORE_DECREASE = 16;
