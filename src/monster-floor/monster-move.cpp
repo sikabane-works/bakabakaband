@@ -538,14 +538,14 @@ void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy,
 
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     auto *r_ptr = &monraces_info[m_ptr->r_idx];
-    if (m_ptr->ap_r_idx == MonsterRaceId::CYBER && one_in_(CYBERNOISE) && !m_ptr->ml && (m_ptr->cdis <= MAX_SIGHT)) {
+    if (m_ptr->ap_r_idx == MonsterRaceId::CYBER && one_in_(CYBERNOISE) && !m_ptr->ml && (m_ptr->cdis <= MAX_PLAYER_SIGHT)) {
         if (disturb_minor) {
             disturb(player_ptr, false, false);
         }
         msg_print(_("重厚な足音が聞こえた。", "You hear heavy steps."));
     }
 
-    if ((r_ptr->flags2 & RF2_VOCIFEROUS) && (m_ptr->cdis <= MAX_SIGHT * 2) && one_in_(SPEAK_CHANCE / 3 + 1)) {
+    if ((r_ptr->flags2 & RF2_VOCIFEROUS) && (m_ptr->cdis <= MAX_PLAYER_SIGHT * 2) && one_in_(SPEAK_CHANCE / 3 + 1)) {
         speaking(p_ptr, m_ptr, true);
         return;
     }

@@ -21,13 +21,6 @@
 #define FUEL_TORCH 5000 /*!< 松明の基本寿命値 / Maximum amount of fuel in a torch */
 #define FUEL_LAMP 15000 /*!< ランタンの基本寿命値 / Maximum amount of fuel in a lantern */
 
-/*
- * More maximum values
- */
-#define MAX_SIGHT 20 /*!< プレイヤーの最大視界範囲(マス) / Maximum view distance */
-
-#define AAF_LIMIT 100 /*!< モンスターの限界感知範囲(マス) Limit of sensing radius */
-
 #define MAX_SKILLS 10
 
 constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生成率(1/N) */
@@ -57,6 +50,9 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define MON_SUMMON_ADJ 2 /*!< 現在未使用 Adjust level of summoned creatures */
 #define MON_DRAIN_LIFE 2 /*!< モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit */
 #define USE_DEVICE 3 /*!< 魔道具の最低失敗基準値 x> Harder devices x< Easier devices     */
+
+constexpr auto MAX_PLAYER_SIGHT = 20; /*!< プレイヤーの最大視界グリッド数 */
+constexpr auto MAX_MONSTER_SENSING = 100; /*!< モンスターの最大感知グリッド数 */
 
 /*!
  * @brief 1フロアに存在可能な、増殖フラグ付きモンスター実体の最大数
