@@ -89,6 +89,7 @@ MONSTER_IDX m_pop(FloorType *floor_ptr)
  * @param min_level 最小生成階
  * @param max_level 最大生成階
  * @return 選択されたモンスター生成種族
+ * @details nasty生成 (ゲーム内経過日数に応じて、現在フロアより深いフロアのモンスターを出現させる仕様)は
  */
 MonsterRaceId get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level, BIT_FLAGS option)
 {

@@ -1,14 +1,5 @@
 ﻿#pragma once
 
-/*!
- * @brief ベースアイテム生成階層が加算される確率
- * @details
- * There is a 1/10 (10%) chance of inflating the requested object_level
- * during the creation of an object (see "get_obj_num()" in "object.c").
- * Lower values yield better objects more often.
- */
-#define GREAT_OBJ 8
-
 #define ALLIANCE_GENERATE_RATE 50 /*!< アライアンスに関するものが生成される倍率  */
 
 #define PENETRATE_INVULNERABILITY 13 /*!< 無敵化が破られる確率(1/x) / 1/x chance of hurting even if invulnerable! */
