@@ -43,6 +43,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::SUREN, std::make_unique<AllianceSuren>(AllianceType::SUREN, "SUREN", _("スレン王国", "Suren Kingdom"), 100000L) },
     { AllianceType::FEANOR_NOLDOR, std::make_unique<AllianceFeanorNoldor>(AllianceType::FEANOR_NOLDOR, "FEANOR-NOLDOR", _("フェアノール統一ノルドール", "Feanor Noldor"), 3500000L) },
     { AllianceType::GAICHI, std::make_unique <AllianceGaichi>(AllianceType::GAICHI, "GAICHI", _("ガイチ帝国", "Gaichi Empire"), 1100000L) },
+    { AllianceType::LEGEND_OF_SAVIOR, std::make_unique<AllianceLegendOfSavior>(AllianceType::LEGEND_OF_SAVIOR, "LEGEND-OF-SAVIOR", _("世紀末救世主伝説", "Legend of the Latter-day Savior"), 0L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -280,6 +281,11 @@ int AllianceFeanorNoldor::calcImplessionPoint([[maybe_unused]] PlayerType *creat
 }
 
 int AllianceGaichi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
