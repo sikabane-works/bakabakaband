@@ -1,4 +1,10 @@
-﻿#pragma once
+﻿/*
+ * @brief ゲーム内で広範に使われる定数群の定義
+ * @author Hourier
+ * @date 2022/11/02
+ */
+
+#pragma once
 
 #define ALLIANCE_GENERATE_RATE 50 /*!< アライアンスに関するものが生成される倍率  */
 
