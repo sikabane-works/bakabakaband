@@ -15,8 +15,6 @@
 constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生成率(1/N) */
 
 #define SPEAK_CHANCE 8
-#define GRINDNOISE 20
-#define CYBERNOISE 20
 
 #define GROUP_MAX 32 /*!< place_monster_group() 関数によるモンスターのGROUP生成時の配置最大数 / Maximum size of a group of monsters */
 
