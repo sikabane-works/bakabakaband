@@ -33951,6 +33951,28 @@ D:さらにはウトゥムノの長、父への叛逆者となった魂の兄、
 D:壊れかけたアルダを維持するための労苦にあっては同志でもあり、
 D:何としても父と長兄の和解を成そうと尽力したが、遂に果たせなかったことを嘆いたという。
 
+#アレ、「俺」じゃくてどじょうと"おめ"(お前)のさ～
+#って言っていたと思うんすけど（普推理）─DSKL
+N:1830:妄言の忌み子『総理大臣』
+E:The Prime Minister, by Absurd Omen
+G:l:D
+I:120:65d100:40:150:30
+W:58:3:0:30000:0:0
+B:TOUCH:ACID:12d12
+B:TOUCH:ACID:12d12
+B:BITE:HURT:10d10
+B:BITE:HURT:10d10
+F:UNIQUE | DROP_CORPSE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM |
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | HOMO_SEXUAL | NASTY
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | DEMON 
+F:EVIL | IM_ACID | IM_FIRE | IM_POIS | IM_COLD | ANIMAL |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+F:SPAWN_CREATURE_15_IN_16_1295
+S:1_IN_4 |
+S:BR_ACID | BR_POIS | BR_COLD
+D:上半身に比べて下半身が貧弱すぎる
+D:活舌の悪きホモの妄言と〈混沌〉との配合がこの悍ましき怪物を具現化させた。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
