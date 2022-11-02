@@ -70,10 +70,8 @@ bool exe_tunnel(PlayerType *player_ptr, POSITION y, POSITION x)
     f_ptr = &terrains_info[g_ptr->feat];
     power = f_ptr->power;
     mimic_f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
-    name = mimic_f_ptr->name.c_str();
-    if (command_rep == 0) {
-        sound(SOUND_DIG);
-    }
+    name = mimic_f_ptr->name.data();
+    sound(SOUND_DIG);
     if (f_ptr->flags.has(TerrainCharacteristics::PERMANENT)) {
         if (mimic_f_ptr->flags.has(TerrainCharacteristics::PERMANENT)) {
             msg_print(_("この岩は硬すぎて掘れないようだ。", "This seems to be permanent rock."));

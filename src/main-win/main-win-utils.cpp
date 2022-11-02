@@ -63,7 +63,7 @@ void save_screen_as_html(HWND hWnd)
 void open_dir_in_explorer(char *filename)
 {
     std::string str = "/select," + std::string(filename);
-    ShellExecuteW(NULL, NULL, L"explorer.exe", to_wchar(str.c_str()).wc_str(), NULL, SW_SHOWNORMAL);
+    ShellExecuteW(NULL, NULL, L"explorer.exe", to_wchar(str.data()).wc_str(), NULL, SW_SHOWNORMAL);
 }
 
 /*!

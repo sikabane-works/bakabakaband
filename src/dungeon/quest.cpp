@@ -304,7 +304,7 @@ void quest_discovery(QuestId q_idx)
     }
 
     GAME_TEXT name[MAX_NLEN];
-    strcpy(name, (r_ptr->name.c_str()));
+    strcpy(name, (r_ptr->name.data()));
 
     msg_print(find_quest_list[rand_range(0, 4)]);
     msg_print(nullptr);

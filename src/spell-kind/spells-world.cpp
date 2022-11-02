@@ -378,6 +378,79 @@ void reserve_alter_reality(PlayerType *player_ptr, TIME_EFFECT turns)
 }
 
 /*!
+<<<<<<< HEAD
+=======
+ * @brief これまでに入ったダンジョンの一覧を表示し、選択させる。
+ * @param note ダンジョンに施す処理記述
+ * @param y コンソールY座標
+ * @param x コンソールX座標
+ * @return 選択されたダンジョンID
+ */
+static DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x)
+{
+    DUNGEON_IDX select_dungeon;
+    if (lite_town || vanilla_town || ironman_downward) {
+        if (max_dlv[DUNGEON_ANGBAND]) {
+            return DUNGEON_ANGBAND;
+        } else {
+            msg_format(_("まだ%sに入ったことはない。", "You haven't entered %s yet."), dungeons_info[DUNGEON_ANGBAND].name.data());
+            msg_print(nullptr);
+            return 0;
+        }
+    }
+
+    std::vector<DUNGEON_IDX> dun;
+
+    screen_save();
+    for (const auto &d_ref : dungeons_info) {
+        char buf[80];
+        bool seiha = false;
+
+        if (d_ref.idx == 0 || !d_ref.maxdepth) {
+            continue;
+        }
+        if (!max_dlv[d_ref.idx]) {
+            continue;
+        }
+        if (MonsterRace(d_ref.final_guardian).is_valid()) {
+            if (!monraces_info[d_ref.final_guardian].max_num) {
+                seiha = true;
+            }
+        } else if (max_dlv[d_ref.idx] == d_ref.maxdepth) {
+            seiha = true;
+        }
+
+        sprintf(buf, _("      %c) %c%-12s : 最大 %d 階", "      %c) %c%-16s : Max level %d"),
+            static_cast<char>('a' + dun.size()), seiha ? '!' : ' ', d_ref.name.data(), (int)max_dlv[d_ref.idx]);
+        prt(buf, y + dun.size(), x);
+        dun.push_back(d_ref.idx);
+    }
+
+    if (dun.empty()) {
+        prt(_("      選べるダンジョンがない。", "      No dungeon is available."), y, x);
+    }
+
+    prt(format(_("どのダンジョン%sしますか:", "Which dungeon do you %s?: "), note), 0, 0);
+    while (true) {
+        auto i = inkey();
+        if ((i == ESCAPE) || dun.empty()) {
+            screen_load();
+            return 0;
+        }
+        if (i >= 'a' && i < static_cast<char>('a' + dun.size())) {
+            select_dungeon = dun[i - 'a'];
+            break;
+        } else {
+            bell();
+        }
+    }
+    screen_load();
+
+    return select_dungeon;
+}
+
+/*!
+>>>>>>> 004f1ae7e ([Refactor] std::string をC言語の文字列表現に変換するメソッドを統一)
  * @brief プレイヤーの帰還発動及び中止処理 /
  * Recall the player to town or dungeon
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -453,7 +526,7 @@ bool free_level_recall(PlayerType *player_ptr)
     }
 
     const auto mes = _("%sの何階にテレポートしますか？", "Teleport to which level of %s? ");
-    QUANTITY amt = get_quantity(format(mes, dungeon.name.c_str()), (QUANTITY)max_depth);
+    QUANTITY amt = get_quantity(format(mes, dungeon.name.data()), (QUANTITY)max_depth);
     if (amt <= 0) {
         return false;
     }
@@ -516,7 +589,7 @@ bool reset_recall(PlayerType *player_ptr)
         exe_write_diary(player_ptr, DIARY_TRUMP, select_dungeon, _("フロア・リセットで", "using a scroll of reset recall"));
     }
 #ifdef JP
-    msg_format("%sの帰還レベルを %d 階にセット。", dungeons_info[select_dungeon].name.c_str(), dummy, dummy * 50);
+    msg_format("%sの帰還レベルを %d 階にセット。", dungeons_info[select_dungeon].name.data(), dummy, dummy * 50);
 #else
     msg_format("Recall depth set to level %d (%d').", dummy, dummy * 50);
 #endif
