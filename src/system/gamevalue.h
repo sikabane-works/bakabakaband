@@ -25,7 +25,6 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
  */
 #define TOWN_DAWN 10000 /*!< 1日分のターン / Number of ticks from dawn to dawn XXX */
 #define TURNS_PER_TICK 10L /*!< 時間経過処理を行うターン数の刻み / Number of energy-gain-turns per ticks */
-#define INN_DUNGEON_TURN_ADJ 10 /*!< 宿屋で時間をつぶした場合に増える dungeon_turn の倍率 */
 #define MAX_DAYS 20000 /*!< 内部処理中で保持される最大日数 / Maximum days */
 #define BREAK_RUNE_PROTECTION 550 /*!< 守りのルーンの強靭度 / Rune of protection resistance */
 #define BREAK_RUNE_EXPLOSION 299 /*!< 爆発のルーンの発動しやすさ / For explosive runes */
