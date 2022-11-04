@@ -223,7 +223,7 @@ static void on_dead_drop_tval_item(PlayerType *player_ptr, monster_death_type *m
         int drop_nums = damroll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
-            q_ptr->prep(lookup_kind(i2enum<ItemKindType>(tval), SV_ANY));
+            q_ptr->prep(lookup_kind(i2enum<ItemKindType>(tval), 0));
             switch (grade) {
             /* Apply bad magic, but first clear object */
             case -2:
