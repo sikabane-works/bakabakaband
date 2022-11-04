@@ -64,6 +64,7 @@
 #include "spell-realm/spells-hex.h"
 #include "spell/summon-types.h"
 #include "sv-definition/sv-junk-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -644,7 +645,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         ObjectType forge;
         ObjectType *q_ptr = &forge;
-        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
+        q_ptr->prep(lookup_kind({ ItemKindType::JUNK, SV_JUNK_FECES }));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -652,7 +653,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
         ObjectType forge;
         ObjectType *q_ptr = &forge;
-        q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_VOMITTING));
+        q_ptr->prep(lookup_kind({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 

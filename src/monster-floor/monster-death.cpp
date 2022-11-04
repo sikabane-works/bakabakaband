@@ -155,7 +155,7 @@ static void drop_corpse(PlayerType *player_ptr, monster_death_type *md_ptr)
 
     if (one_in_(RF1_UNIQUE ? 1 : 4)) {
 
-        q_ptr->prep(lookup_kind(ItemKindType::CORPSE, SV_SOUL));
+        q_ptr->prep(lookup_kind({ ItemKindType::CORPSE, SV_SOUL }));
         q_ptr->pval = enum2i(md_ptr->m_ptr->r_idx);
         (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     }
