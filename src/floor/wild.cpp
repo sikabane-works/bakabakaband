@@ -570,9 +570,6 @@ void wilderness_gen(PlayerType *player_ptr)
         }
 
         player_ptr->teleport_town = false;
-    } else if (floor_ptr->entrance_y != -1 && floor_ptr->entrance_x != -1) {
-        player_ptr->oldpy = floor_ptr->entrance_y;
-        player_ptr->oldpx = floor_ptr->entrance_x;
     }
 
     player_place(player_ptr, player_ptr->oldpy, player_ptr->oldpx);
