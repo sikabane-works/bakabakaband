@@ -17,7 +17,6 @@
 #include "system/system-variables.h"
 #include "util/angband-files.h"
 #include "util/string-processor.h"
-#include "floor/floor-town.h"
 #include <string>
 
 dungeon_grid letter[255];
@@ -65,22 +64,6 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr
     }
 
     return 0;
-}
-
-parse_error_type parse_line_start_point(floor_type *floor_ptr, char *buf)
-{
-    if (init_flags & INIT_ONLY_BUILDINGS)
-        return PARSE_ERROR_NONE;
-
-    char *zz[2];
-    int num = tokenize(buf + 2, 2, zz, 0);
-    if (num != 2)
-        return PARSE_ERROR_GENERIC;
-
-    floor_ptr->entrance_y = atoi(zz[0]);
-    floor_ptr->entrance_x = atoi(zz[1]);
-
-    return PARSE_ERROR_NONE;
 }
 
 /*!

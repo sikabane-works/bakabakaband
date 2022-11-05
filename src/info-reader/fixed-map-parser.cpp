@@ -236,40 +236,6 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
     return v;
 }
 
-void set_position(floor_type *floor_ptr, PlayerType *player_ptr)
-{
-    if (floor_ptr == NULL || player_ptr == NULL) {
-        return;
-    }
-    /*
-    int panels_y = (*qtwg_ptr->y / SCREEN_HGT);
-    if (*qtwg_ptr->y % SCREEN_HGT) {
-        panels_y++;
-    }
-
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->height = panels_y * SCREEN_HGT;
-    int panels_x = (*qtwg_ptr->x / SCREEN_WID);
-    if (*qtwg_ptr->x % SCREEN_WID) {
-        panels_x++;
-    }
-    */
-
-    if (inside_quest(floor_ptr->quest_number) && floor_ptr->entrance_y != -1 && floor_ptr->entrance_x != -1) {
-        player_ptr->y = floor_ptr->entrance_y;
-        player_ptr->x = floor_ptr->entrance_x;
-        //delete_monster(player_ptr, player_ptr->y, player_ptr->x);
-        return;
-    }
-
-    if (!player_ptr->oldpx && !player_ptr->oldpy) {
-        player_ptr->oldpy = floor_ptr->entrance_y;
-        player_ptr->oldpx = floor_ptr->entrance_x;
-    }
-
-    return;
-}
-
 /*!
  * @brief 固定マップ (クエスト＆街＆広域マップ)をq_info、t_info、w_infoから読み込んでパースする
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -316,9 +282,6 @@ parse_error_type parse_fixed_map(PlayerType *player_ptr, concptr name, int ymin,
         }
 
         err = generate_fixed_map_floor(player_ptr, qg_ptr, parse_fixed_map);
-
-        set_position(player_ptr->current_floor_ptr, player_ptr);
-
         if (err != PARSE_ERROR_NONE) {
             break;
         }
