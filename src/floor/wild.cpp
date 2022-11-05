@@ -308,8 +308,6 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
 {
     player_ptr->town_num = wilderness[y][x].town;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->entrance_y = -1;
-    floor_ptr->entrance_x = -1;
     floor_ptr->base_level = wilderness[y][x].level;
     floor_ptr->dun_level = 0;
     floor_ptr->monster_level = floor_ptr->base_level;
@@ -572,7 +570,7 @@ void wilderness_gen(PlayerType *player_ptr)
         }
 
         player_ptr->teleport_town = false;
-    } else if (floor_ptr->entrance_y != -1 && floor_ptr->entrance_x != -1 && player_ptr->wild_mode) {
+    } else if (floor_ptr->entrance_y != -1 && floor_ptr->entrance_x != -1) {
         player_ptr->oldpy = floor_ptr->entrance_y;
         player_ptr->oldpx = floor_ptr->entrance_x;
     }
