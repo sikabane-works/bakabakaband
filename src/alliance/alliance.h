@@ -43,6 +43,8 @@ enum class AllianceType : int {
     ASHINA_CLAN = 32, //!< 葦名一門
     SUREN = 33, //!< スレン王国
     FEANOR_NOLDOR = 34, //!< フェアノール統ノルドール
+    GAICHI = 35, //!< ガイチ帝国
+    LEGEND_OF_SAVIOR = 36, //!< 世紀末救世主伝説
     MAX,
 };
 
@@ -351,13 +353,14 @@ public:
     virtual ~AllianceGOLAN() = default;
 };
 
-class AllianceBinjoBuddhism : public Alliance {
+class AllianceBinzyouBuddhism : public Alliance {
 public:
     using Alliance::Alliance;
-    AllianceBinjoBuddhism() = delete;
+    AllianceBinzyouBuddhism() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
-    virtual ~AllianceBinjoBuddhism() = default;
+    bool isAnnihilated() override;
+    virtual ~AllianceBinzyouBuddhism() = default;
 };
 
 class AllianceAshinaClan : public Alliance {
@@ -385,6 +388,24 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceFeanorNoldor() = default;
+};
+
+class AllianceGaichi : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceGaichi() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceGaichi() = default;
+};
+
+class AllianceLegendOfSavior : public Alliance {
+public:
+    using Alliance::Alliance;
+    AllianceLegendOfSavior() = delete;
+    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
+    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    virtual ~AllianceLegendOfSavior() = default;
 };
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;

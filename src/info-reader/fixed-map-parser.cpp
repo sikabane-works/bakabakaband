@@ -208,10 +208,10 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
         sprintf(tmp, "%d", enum2i(leaving_quest));
         v = tmp;
     } else if (prefix(b + 1, "QUEST_TYPE")) {
-        sprintf(tmp, "%d", enum2i(quest[i2enum<QuestId>(atoi(b + 11))].type));
+        sprintf(tmp, "%d", enum2i(quest_map[i2enum<QuestId>(atoi(b + 11))].type));
         v = tmp;
     } else if (prefix(b + 1, "QUEST")) {
-        sprintf(tmp, "%d", enum2i(quest[i2enum<QuestId>(atoi(b + 6))].status));
+        sprintf(tmp, "%d", enum2i(quest_map[i2enum<QuestId>(atoi(b + 6))].status));
         v = tmp;
     } else if (prefix(b + 1, "RANDOM")) {
         sprintf(tmp, "%d", (int)(w_ptr->seed_town % atoi(b + 7)));
@@ -234,40 +234,6 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
     (*fp) = f;
     (*sp) = s;
     return v;
-}
-
-void set_position(floor_type *floor_ptr, PlayerType *player_ptr)
-{
-    if (floor_ptr == NULL || player_ptr == NULL) {
-        return;
-    }
-    /*
-    int panels_y = (*qtwg_ptr->y / SCREEN_HGT);
-    if (*qtwg_ptr->y % SCREEN_HGT) {
-        panels_y++;
-    }
-
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->height = panels_y * SCREEN_HGT;
-    int panels_x = (*qtwg_ptr->x / SCREEN_WID);
-    if (*qtwg_ptr->x % SCREEN_WID) {
-        panels_x++;
-    }
-    */
-
-    if (inside_quest(floor_ptr->quest_number)) {
-        player_ptr->y = floor_ptr->entrance_y;
-        player_ptr->x = floor_ptr->entrance_x;
-        //delete_monster(player_ptr, player_ptr->y, player_ptr->x);
-        return;
-    }
-
-    if (!player_ptr->oldpx && !player_ptr->oldpy) {
-        player_ptr->oldpy = floor_ptr->entrance_y;
-        player_ptr->oldpx = floor_ptr->entrance_x;
-    }
-
-    return;
 }
 
 /*!
@@ -316,9 +282,6 @@ parse_error_type parse_fixed_map(PlayerType *player_ptr, concptr name, int ymin,
         }
 
         err = generate_fixed_map_floor(player_ptr, qg_ptr, parse_fixed_map);
-
-        set_position(player_ptr->current_floor_ptr, player_ptr);
-
         if (err != PARSE_ERROR_NONE) {
             break;
         }

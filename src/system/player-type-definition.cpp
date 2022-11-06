@@ -1,7 +1,10 @@
 ﻿#include "system/player-type-definition.h"
+#include "system/floor-type-definition.h"
 #include "market/arena-info-table.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
@@ -26,10 +29,31 @@ bool PlayerType::is_true_winner() const
     return (w_ptr->total_winner > 0) && (this->arena_number > MAX_ARENA_MONS + 2);
 }
 
+/*!
+ * @brief インシデント数加算 
+ * @param incident_id 加算したいインシデント
+ * @param num 加算量
+ */
+void PlayerType::plus_incident(INCIDENT incidentID, int num)
+{
+    if (this->incident.count(incidentID) == 0) {
+        this->incident[incidentID] = 0;
+    }
+    this->incident[incidentID] += num;
+}
+
+
 std::shared_ptr<TimedEffects> PlayerType::effects() const
 {
     return this->timed_effects;
 }
+
+bool PlayerType::is_vaild_position() const
+{
+    floor_type *floor_ptr = this->current_floor_ptr;
+    return this->x > 0 && this->y > 0 && this->x <= floor_ptr->width - 1 && this->y <= floor_ptr->height - 1;
+}
+
 
 /*!
  * @brief 自身の状態が全快で、かつフロアに影響を与えないかを検証する
@@ -48,8 +72,8 @@ bool PlayerType::is_fully_healthy() const
     is_fully_healthy &= !effects->stun()->is_stunned();
     is_fully_healthy &= !effects->cut()->is_cut();
     is_fully_healthy &= !this->slow;
-    is_fully_healthy &= !this->paralyzed;
-    is_fully_healthy &= !this->hallucinated;
+    is_fully_healthy &= !effects->paralysis()->is_paralyzed();
+    is_fully_healthy &= !effects->hallucination()->is_hallucinated();
     is_fully_healthy &= !this->word_recall;
     is_fully_healthy &= !this->alter_reality;
     return is_fully_healthy;

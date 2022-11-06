@@ -38,10 +38,12 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::PHYREXIA, std::make_unique<AlliancePhyrexia>(AllianceType::PHYREXIA, "PHYREXIA", _("ファイレクシア", "Phyrexia"), 2000000L) },
     { AllianceType::AVARIN_LORDS, std::make_unique<AllianceAvarinLords>(AllianceType::AVARIN_LORDS, "AVARIN-LORDS", _("アヴァリ諸侯同盟", "Avarin Lords"), 1000000L) },
     { AllianceType::GOLAN, std::make_unique<AllianceGOLAN>(AllianceType::GOLAN, "GOLAN", _("GOLAN", "GOLAN"), 100000L) },
-    { AllianceType::BINJO_BUDDHISM, std::make_unique<AllianceBinjoBuddhism>(AllianceType::BINJO_BUDDHISM, "BINJO-BUDDHISM", _("便乗仏教", "Binjo Buddhism"), 80000L) },
-    { AllianceType::ASHINA_CLAN, std::make_unique<AllianceBinjoBuddhism>(AllianceType::ASHINA_CLAN, "ASHINA-CLAN", _("葦名一門", "Ashina Clan"), 180000L) },
+    { AllianceType::BINJO_BUDDHISM, std::make_unique<AllianceBinzyouBuddhism>(AllianceType::BINJO_BUDDHISM, "BINJO-BUDDHISM", _("便乗仏教", "Binjo Buddhism"), 80000L) },
+    { AllianceType::ASHINA_CLAN, std::make_unique<AllianceBinzyouBuddhism>(AllianceType::ASHINA_CLAN, "ASHINA-CLAN", _("葦名一門", "Ashina Clan"), 180000L) },
     { AllianceType::SUREN, std::make_unique<AllianceSuren>(AllianceType::SUREN, "SUREN", _("スレン王国", "Suren Kingdom"), 100000L) },
     { AllianceType::FEANOR_NOLDOR, std::make_unique<AllianceFeanorNoldor>(AllianceType::FEANOR_NOLDOR, "FEANOR-NOLDOR", _("フェアノール統一ノルドール", "Feanor Noldor"), 3500000L) },
+    { AllianceType::GAICHI, std::make_unique <AllianceGaichi>(AllianceType::GAICHI, "GAICHI", _("ガイチ帝国", "Gaichi Empire"), 1100000L) },
+    { AllianceType::LEGEND_OF_SAVIOR, std::make_unique<AllianceLegendOfSavior>(AllianceType::LEGEND_OF_SAVIOR, "LEGEND-OF-SAVIOR", _("世紀末救世主伝説", "Legend of the Latter-day Savior"), 0L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
@@ -253,9 +255,14 @@ int AllianceGOLAN::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr
     return 0;
 }
 
-int AllianceBinjoBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceBinzyouBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
+}
+
+bool AllianceBinzyouBuddhism::isAnnihilated()
+{
+    return r_info[MON_BINZYOU_MUR].mob_num == 0;
 }
 
 int AllianceAshinaClan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -269,6 +276,16 @@ int AllianceSuren::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr
 }
 
 int AllianceFeanorNoldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceGaichi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+{
+    return 0;
+}
+
+int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }

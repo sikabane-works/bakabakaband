@@ -486,7 +486,7 @@ hengband_SOURCES = \
 	monster-attack/monster-attack-processor.cpp monster-attack/monster-attack-processor.h \
 	monster-attack/monster-attack-status.cpp monster-attack/monster-attack-status.h \
 	monster-attack/monster-attack-switcher.cpp monster-attack/monster-attack-switcher.h \
-	monster-attack/monster-attack-types.cpp monster-attack/monster-attack-types.h \
+	monster-attack/monster-attack-table.cpp monster-attack/monster-attack-table.h \
 	monster-attack/monster-eating.cpp monster-attack/monster-eating.h \
 	\
 	monster-floor/monster-death.cpp monster-floor/monster-death.h \
@@ -917,6 +917,8 @@ hengband_SOURCES = \
 	\
 	timed-effect/player-confusion.cpp timed-effect/player-confusion.h \
 	timed-effect/player-cut.cpp timed-effect/player-cut.h \
+	timed-effect/player-hallucination.cpp timed-effect/player-hallucination.h \
+	timed-effect/player-paralysis.cpp timed-effect/player-paralysis.h \
 	timed-effect/player-stun.cpp timed-effect/player-stun.h \
 	timed-effect/timed-effects.cpp timed-effect/timed-effects.h \
 	\

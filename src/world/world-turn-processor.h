@@ -8,6 +8,7 @@ public:
     void process_world();
     void print_time();
     void print_world_collapse();
+    void print_cheat_position();
 
 private:
     PlayerType *player_ptr;

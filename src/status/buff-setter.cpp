@@ -21,6 +21,8 @@
 #include "system/player-type-definition.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -35,10 +37,10 @@ void reset_tim_flags(PlayerType *player_ptr)
     player_ptr->lightspeed = 0;
     player_ptr->slow = 0; /* Timed -- Slow */
     player_ptr->blind = 0; /* Timed -- Blindness */
-    player_ptr->paralyzed = 0; /* Timed -- Paralysis */
+    effects->paralysis()->reset();
     effects->confusion()->reset();
     player_ptr->afraid = 0; /* Timed -- Fear */
-    player_ptr->hallucinated = 0; /* Timed -- Hallucination */
+    effects->hallucination()->reset();
     player_ptr->poisoned = 0; /* Timed -- Poisoned */
     effects->cut()->reset();
     effects->stun()->reset();

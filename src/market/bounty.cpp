@@ -142,6 +142,10 @@ bool exchange_cash(PlayerType *player_ptr)
                 continue;
             }
 
+            if (o_ptr->sval != SV_SKELETON && o_ptr->sval != SV_CORPSE) {
+                continue;
+            }
+
             char buf[MAX_NLEN + 20];
             int num, k;
             INVENTORY_IDX item_new;

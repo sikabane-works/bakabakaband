@@ -950,7 +950,7 @@
     <ClCompile Include="..\..\src\monster-attack\monster-attack-switcher.cpp">
       <Filter>monster-attack</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\monster-attack\monster-attack-types.cpp">
+    <ClCompile Include="..\..\src\monster-attack\monster-attack-table.cpp">
       <Filter>monster-attack</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\monster-attack\monster-eating.cpp">
@@ -2394,7 +2394,12 @@
     <ClCompile Include="..\..\src\timed-effect\player-confusion.cpp">
       <Filter>timed-effect</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp" />
+    <ClCompile Include="..\..\src\timed-effect\player-hallucination.cpp">
+      <Filter>timed-effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\timed-effect\player-paralysis.cpp">
+      <Filter>timed-effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -3477,7 +3482,7 @@
     <ClInclude Include="..\..\src\monster-attack\monster-attack-switcher.h">
       <Filter>monster-attack</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\monster-attack\monster-attack-types.h">
+    <ClInclude Include="..\..\src\monster-attack\monster-attack-table.h">
       <Filter>monster-attack</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\monster-attack\monster-eating.h">
@@ -5203,7 +5208,12 @@
     <ClInclude Include="..\..\src\timed-effect\player-confusion.h">
       <Filter>timed-effect</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\knowledge\knowledge-incident.h" />
+    <ClInclude Include="..\..\src\timed-effect\player-hallucination.h">
+      <Filter>timed-effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\timed-effect\player-paralysis.h">
+      <Filter>timed-effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />

@@ -20,7 +20,10 @@
 #include "status/buff-setter.h"
 #include "system/player-type-definition.h"
 #include "timed-effect/player-confusion.h"
+#include "timed-effect/timed-effects.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -279,8 +282,9 @@ bool BadStatusSetter::paralysis(const TIME_EFFECT tmp_v)
         return false;
     }
 
+    auto paralysis = this->player_ptr->effects()->paralysis();
     if (v > 0) {
-        if (!this->player_ptr->paralyzed) {
+        if (!paralysis->is_paralyzed()) {
             msg_print(_("体が麻痺してしまった！", "You are paralyzed!"));
             reset_concentration(this->player_ptr, true);
 
@@ -293,13 +297,13 @@ bool BadStatusSetter::paralysis(const TIME_EFFECT tmp_v)
             notice = true;
         }
     } else {
-        if (this->player_ptr->paralyzed) {
+        if (paralysis->is_paralyzed()) {
             msg_print(_("やっと動けるようになった。", "You can move again."));
             notice = true;
         }
     }
 
-    this->player_ptr->paralyzed = v;
+    paralysis->set(v);
     this->player_ptr->redraw |= PR_STATUS;
     if (!notice) {
         return false;
@@ -316,7 +320,7 @@ bool BadStatusSetter::paralysis(const TIME_EFFECT tmp_v)
 
 bool BadStatusSetter::mod_paralysis(const TIME_EFFECT tmp_v)
 {
-    return this->paralysis(this->player_ptr->paralyzed + tmp_v);
+    return this->paralysis(this->player_ptr->effects()->paralysis()->current() + tmp_v);
 }
 
 /*!
@@ -337,9 +341,10 @@ bool BadStatusSetter::hallucination(const TIME_EFFECT tmp_v)
         v = 0;
     }
 
+    auto hallucination = this->player_ptr->effects()->hallucination();
     if (v > 0) {
         set_tsuyoshi(this->player_ptr, 0, true);
-        if (!this->player_ptr->hallucinated) {
+        if (!hallucination->is_hallucinated()) {
             msg_print(_("ワーオ！何もかも虹色に見える！", "Oh, wow! Everything looks so cosmic now!"));
             reset_concentration(this->player_ptr, true);
 
@@ -347,13 +352,13 @@ bool BadStatusSetter::hallucination(const TIME_EFFECT tmp_v)
             notice = true;
         }
     } else {
-        if (this->player_ptr->hallucinated) {
+        if (hallucination->is_hallucinated()) {
             msg_print(_("やっとはっきりと物が見えるようになった。", "You can see clearly again."));
             notice = true;
         }
     }
 
-    this->player_ptr->hallucinated = v;
+    hallucination->set(v);
     this->player_ptr->redraw |= PR_STATUS;
     if (!notice) {
         return false;
@@ -372,7 +377,7 @@ bool BadStatusSetter::hallucination(const TIME_EFFECT tmp_v)
 
 bool BadStatusSetter::mod_hallucination(const TIME_EFFECT tmp_v)
 {
-    return this->hallucination(this->player_ptr->hallucinated + tmp_v);
+    return this->hallucination(this->player_ptr->effects()->hallucination()->current() + tmp_v);
 }
 
 /*!

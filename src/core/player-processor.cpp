@@ -58,6 +58,8 @@
 #include "term/screen-processor.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -139,6 +141,7 @@ void process_player(PlayerType *player_ptr)
 
         WorldTurnProcessor(player_ptr).print_time();
         WorldTurnProcessor(player_ptr).print_world_collapse();
+        WorldTurnProcessor(player_ptr).print_cheat_position();
 
     } else if (!(load && player_ptr->energy_need <= 0)) {
         player_ptr->energy_need -= speed_to_energy(player_ptr->pspeed);
@@ -150,6 +153,7 @@ void process_player(PlayerType *player_ptr)
     if (!command_rep) {
         WorldTurnProcessor(player_ptr).print_time();
         WorldTurnProcessor(player_ptr).print_world_collapse();
+        WorldTurnProcessor(player_ptr).print_cheat_position();
     }
 
     if (fresh_once && (continuous_action_running(player_ptr) || !command_rep)) {
@@ -284,11 +288,12 @@ void process_player(PlayerType *player_ptr)
         energy.reset_player_turn();
         auto effects = player_ptr->effects();
         auto is_knocked_out = effects->stun()->is_knocked_out();
+        auto is_paralyzed = effects->paralysis()->is_paralyzed();
         if (player_ptr->phase_out) {
             move_cursor_relative(player_ptr->y, player_ptr->x);
             command_cmd = SPECIAL_KEY_BUILDING;
             process_command(player_ptr);
-        } else if ((player_ptr->paralyzed || is_knocked_out) && !cheat_immortal) {
+        } else if ((is_paralyzed || is_knocked_out) && !cheat_immortal) {
             energy.set_player_turn_energy(100);
         } else if (player_ptr->action == ACTION_REST) {
             if (player_ptr->resting > 0) {
@@ -333,7 +338,7 @@ void process_player(PlayerType *player_ptr)
                 player_ptr->energy_need += (int16_t)((int32_t)player_ptr->energy_use * ENERGY_NEED() / 100L);
             }
 
-            if (player_ptr->hallucinated) {
+            if (effects->hallucination()->is_hallucinated()) {
                 player_ptr->redraw |= (PR_MAP);
             }
 

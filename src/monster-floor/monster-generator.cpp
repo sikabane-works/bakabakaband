@@ -156,7 +156,7 @@ bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_i
         mode |= PM_NO_PET;
     }
 
-    if (!place_monster_aux(player_ptr, m_idx, y, x, m_ptr->r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY))) {
+    if (!place_monster_aux(player_ptr, m_idx, y, x, r_idx, (mode | PM_NO_KAGE | PM_MULTIPLY))) {
         return false;
     }
 

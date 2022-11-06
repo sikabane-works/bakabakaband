@@ -260,7 +260,7 @@ static void get_out_monster(PlayerType *player_ptr)
 static void preserve_info(PlayerType *player_ptr)
 {
     MONRACE_IDX quest_r_idx = 0;
-    for (auto &[q_idx, q_ref] : quest) {
+    for (auto &[q_idx, q_ref] : quest_map) {
         auto quest_relating_monster = (q_ref.status == QuestStatusType::TAKEN);
         quest_relating_monster &= ((q_ref.type == QuestKindType::KILL_LEVEL) || (q_ref.type == QuestKindType::RANDOM));
         quest_relating_monster &= (q_ref.level == player_ptr->current_floor_ptr->dun_level);
@@ -405,10 +405,7 @@ static void update_upper_lower_or_floor_id(PlayerType *player_ptr, saved_floor_t
 
 static void exe_leave_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
-    if (player_ptr->incident.count(INCIDENT::LEAVE_FLOOR) == 0) {
-        player_ptr->incident[INCIDENT::LEAVE_FLOOR] = 0;
-    }
-    player_ptr->incident[INCIDENT::LEAVE_FLOOR]++;
+    player_ptr->plus_incident(INCIDENT::LEAVE_FLOOR, 1);
 
     grid_type *g_ptr = NULL;
     set_grid_by_leaving_floor(player_ptr, &g_ptr);

@@ -100,10 +100,7 @@ void ObjectReadEntity::execute(bool known)
         (void)SpellHex(this->player_ptr).stop_all_spells();
     }
 
-    if (player_ptr->incident.count(INCIDENT::READ_SCROLL) == 0) {
-        player_ptr->incident[INCIDENT::READ_SCROLL] = 0;
-    }
-    player_ptr->incident[INCIDENT::READ_SCROLL]++;
+    player_ptr->plus_incident(INCIDENT::READ_SCROLL, 1);
 
     auto ident = false;
     auto lev = k_info[o_ptr->k_idx].level;

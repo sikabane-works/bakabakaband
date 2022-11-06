@@ -445,11 +445,6 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
             }
         }
 
-        // クッソ汚い奴なら生成率が跳ねあがる。
-        if (r_ptr->kind_flags.has(MonsterKindType::NASTY)) {
-            entry->prob2 *= NASTY_GENERATE_RATE;
-        }
-
         if (player_ptr->current_floor_ptr->allianceID != AllianceType::NONE) {
             if (r_ptr->alliance_idx == player_ptr->current_floor_ptr->allianceID)
             {

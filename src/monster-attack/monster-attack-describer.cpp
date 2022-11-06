@@ -9,7 +9,7 @@
 #include "main/sound-of-music.h"
 #include "monster-attack/insults-moans.h"
 #include "monster-attack/monster-attack-player.h"
-#include "monster-attack/monster-attack-types.h"
+#include "monster-attack/monster-attack-table.h"
 #include "monster-race/race-indice-types.h"
 #include "system/angband.h"
 #include "system/monster-type-definition.h"
@@ -261,6 +261,22 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
 
     case RaceBlowMethodType::BIND: {
         monap_ptr->act = _("縛られた", "binds you");
+        monap_ptr->touched = true;
+        monap_ptr->do_stun = 1;
+        sound(SOUND_HIT);
+        break;
+    }
+
+    case RaceBlowMethodType::WHISPER: {
+        monap_ptr->act = _("囁かれた", "whispers you");
+        monap_ptr->touched = true;
+        monap_ptr->do_stun = 1;
+        sound(SOUND_HIT);
+        break;
+    }
+
+    case RaceBlowMethodType::STAMP: {
+        monap_ptr->act = _("踏みつけられた", "stomps on you");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;
         sound(SOUND_HIT);

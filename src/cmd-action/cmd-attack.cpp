@@ -52,6 +52,7 @@
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "timed-effect/player-confusion.h"
+#include "timed-effect/player-hallucination.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -116,10 +117,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMuta
     int bonus = player_ptr->to_h_m + (player_ptr->lev * 6 / 5);
     int chance = (player_ptr->skill_thn + (bonus * BTH_PLUS_ADJ));
 
-    if (player_ptr->incident.count(INCIDENT::ATTACK_EXE_COUNT) == 0) {
-        player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT] = 0;
-    }
-    player_ptr->incident[INCIDENT::ATTACK_EXE_COUNT]++;
+    player_ptr->plus_incident(INCIDENT::ATTACK_EXE_COUNT, 1);
 
     bool is_hit = (r_ptr->kind_flags.has_not(MonsterKindType::QUANTUM)) || !randint0(2);
     is_hit &= test_hit_norm(player_ptr, chance, r_ptr->ac, m_ptr->ml);
@@ -194,18 +192,19 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
 
     monster_desc(player_ptr, m_name, m_ptr, 0);
 
+    auto effects = player_ptr->effects();
+    auto is_hallucinated = effects->hallucination()->is_hallucinated();
     if (m_ptr->ml) {
-        if (!player_ptr->hallucinated) {
+        if (!is_hallucinated) {
             monster_race_track(player_ptr, m_ptr->ap_r_idx);
         }
 
         health_track(player_ptr, g_ptr->m_idx);
     }
 
-    auto effects = player_ptr->effects();
     auto is_confused = effects->confusion()->is_confused();
     auto is_stunned = effects->stun()->is_stunned();
-    if (any_bits(r_ptr->flags1, RF1_FEMALE) && !(is_stunned || is_confused || player_ptr->hallucinated || !m_ptr->ml)) {
+    if (any_bits(r_ptr->flags1, RF1_FEMALE) && !(is_stunned || is_confused || is_hallucinated || !m_ptr->ml)) {
         if ((player_ptr->inventory_list[INVEN_MAIN_HAND].fixed_artifact_idx == ART_ZANTETSU) || (player_ptr->inventory_list[INVEN_SUB_HAND].fixed_artifact_idx == ART_ZANTETSU)) {
             msg_print(_("拙者、おなごは斬れぬ！", "I can not attack women!"));
             return false;
@@ -218,7 +217,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
     }
 
     bool stormbringer = false;
-    if (!is_hostile(m_ptr) && !(is_stunned || is_confused || player_ptr->hallucinated || is_shero(player_ptr) || !m_ptr->ml)) {
+    if (!is_hostile(m_ptr) && !(is_stunned || is_confused || is_hallucinated || is_shero(player_ptr) || !m_ptr->ml)) {
         if (player_ptr->inventory_list[INVEN_MAIN_HAND].fixed_artifact_idx == ART_STORMBRINGER) {
             stormbringer = true;
         }
@@ -276,10 +275,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
         PlayerSkill(player_ptr).gain_riding_skill_exp_on_melee_attack(r_ptr);
     }
 
-    if (player_ptr->incident.count(INCIDENT::ATTACK_ACT_COUNT) == 0) {
-        player_ptr->incident[INCIDENT::ATTACK_ACT_COUNT] = 0;
-    }
-    player_ptr->incident[INCIDENT::ATTACK_ACT_COUNT]++;
+    player_ptr->plus_incident(INCIDENT::ATTACK_ACT_COUNT, 1);
 
     player_ptr->riding_t_m_idx = g_ptr->m_idx;
     bool fear = false;

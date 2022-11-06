@@ -14,6 +14,7 @@
 
 #include <array>
 #include <map>
+#include <string>
 
 enum class INCIDENT {
     WALK = 0,
@@ -47,6 +48,7 @@ class TimedEffects;
 class PlayerType {
 public:
     PlayerType();
+    void plus_incident(INCIDENT incidentID, int num);
     bool is_true_winner() const;
 
     int player_uid{};
@@ -120,9 +122,7 @@ public:
     TIME_EFFECT fast{}; /* Timed -- Fast */
     TIME_EFFECT slow{}; /* Timed -- Slow */
     TIME_EFFECT blind{}; /* Timed -- Blindness */
-    TIME_EFFECT paralyzed{}; /* Timed -- Paralysis */
     TIME_EFFECT afraid{}; /* Timed -- Fear */
-    TIME_EFFECT hallucinated{}; /* Timed -- Hallucination */
     TIME_EFFECT poisoned{}; /* Timed -- Poisoned */
 
     TIME_EFFECT protevil{}; /* Timed -- Protection */
@@ -158,7 +158,7 @@ public:
     TIME_EFFECT magicdef{};
     TIME_EFFECT tim_res_nether{}; /* Timed -- Nether resistance */
     TIME_EFFECT tim_res_time{}; /* Timed -- Time resistance */
-    MimicKindType mimic_form{}; // @todo 後でPlayerRaceTypeに差し替える.
+    MimicKindType mimic_form{};
     TIME_EFFECT tim_mimic{};
     TIME_EFFECT tim_sh_fire{};
     TIME_EFFECT tim_sh_holy{};
@@ -220,7 +220,7 @@ public:
     ClassSpecificData class_specific_data;
 
     int player_hp[PY_MAX_LEVEL]{};
-    char died_from[MAX_MONSTER_NAME]{}; /* What killed the player */
+    std::string died_from{}; /* What killed the player */
     concptr last_message{}; /* Last message on death or retirement */
     char history[4][60]{}; /* Textual "history" for the Player */
 
@@ -442,8 +442,9 @@ public:
 
     std::shared_ptr<TimedEffects> effects() const;
     bool is_fully_healthy() const;
+    bool is_vaild_position() const;
 
-private:
+    private:
     std::shared_ptr<TimedEffects> timed_effects;
 };
 

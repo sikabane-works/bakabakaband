@@ -19,6 +19,8 @@
 #include "system/player-type-definition.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 
@@ -34,7 +36,7 @@ void reduce_magic_effects_timeout(PlayerType *player_ptr)
 
     BadStatusSetter bss(player_ptr);
     auto effects = player_ptr->effects();
-    if (player_ptr->hallucinated) {
+    if (effects->hallucination()->is_hallucinated()) {
         (void)bss.mod_hallucination(-1);
     }
 
@@ -128,7 +130,7 @@ void reduce_magic_effects_timeout(PlayerType *player_ptr)
         (void)set_pass_wall(player_ptr, player_ptr->tim_pass_wall - 1, true);
     }
 
-    if (player_ptr->paralyzed) {
+    if (effects->paralysis()->is_paralyzed()) {
         (void)bss.mod_paralysis(-1);
     }
 

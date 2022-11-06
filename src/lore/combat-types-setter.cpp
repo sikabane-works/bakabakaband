@@ -1,7 +1,7 @@
 ﻿#include "lore/combat-types-setter.h"
 #include "lore/lore-util.h"
 #include "monster-attack/monster-attack-effect.h"
-#include "monster-attack/monster-attack-types.h"
+#include "monster-attack/monster-attack-table.h"
 #include "system/monster-race-definition.h"
 #include "term/term-color-types.h"
 
@@ -107,6 +107,14 @@ void set_monster_blow_method(lore_type *lore_ptr, int m)
     case RaceBlowMethodType::BIND:
         lore_ptr->p = _("縛り上げる", "bind");
         lore_ptr->pc = TERM_L_WHITE;
+        break;
+    case RaceBlowMethodType::WHISPER:
+        lore_ptr->p = _("囁く", "whisper");
+        lore_ptr->pc = TERM_SLATE;
+        break;
+    case RaceBlowMethodType::STAMP:
+        lore_ptr->p = _("踏みつける", "stomp on");
+        lore_ptr->pc = TERM_SLATE;
         break;
 
     case RaceBlowMethodType::NONE:

@@ -5,6 +5,7 @@
 #include <mciapi.h>
 #endif
 
+#include <mciapi.h>
 #include <string>
 
 extern MCI_OPEN_PARMSW mci_open_parms;

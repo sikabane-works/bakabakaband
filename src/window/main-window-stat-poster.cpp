@@ -24,6 +24,8 @@
 #include "term/term-color-types.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/status-bars-table.h"
@@ -454,11 +456,12 @@ void print_status(PlayerType *player_ptr)
     BIT_FLAGS bar_flags[3];
     bar_flags[0] = bar_flags[1] = bar_flags[2] = 0L;
 
+    auto effects = player_ptr->effects();
     if (player_ptr->tsuyoshi) {
         ADD_BAR_FLAG(BAR_TSUYOSHI);
     }
 
-    if (player_ptr->hallucinated) {
+    if (effects->hallucination()->is_hallucinated()) {
         ADD_BAR_FLAG(BAR_HALLUCINATION);
     }
 
@@ -466,11 +469,11 @@ void print_status(PlayerType *player_ptr)
         ADD_BAR_FLAG(BAR_BLINDNESS);
     }
 
-    if (player_ptr->paralyzed) {
+    if (effects->paralysis()->is_paralyzed()) {
         ADD_BAR_FLAG(BAR_PARALYZE);
     }
 
-    if (player_ptr->effects()->confusion()->is_confused()) {
+    if (effects->confusion()->is_confused()) {
         ADD_BAR_FLAG(BAR_CONFUSE);
     }
 
