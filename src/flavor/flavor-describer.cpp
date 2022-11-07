@@ -168,8 +168,8 @@ static void describe_bow(PlayerType *player_ptr, flavor_type *flavor_ptr)
     if (!(flavor_ptr->mode & OD_DEBUG)) {
         num_fire = calc_num_fire(player_ptr, flavor_ptr->o_ptr);
     } else {
-        auto flgs = object_flags(flavor_ptr->o_ptr);
-        if (flgs.has(TR_XTRA_SHOTS)) {
+        auto flags = object_flags(flavor_ptr->o_ptr);
+        if (flags.has(TR_XTRA_SHOTS)) {
             num_fire += 100;
         }
     }
