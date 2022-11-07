@@ -266,7 +266,7 @@ static void drop_artifact(PlayerType *player_ptr, monster_death_type *md_ptr)
 
 static void decide_drop_quality(monster_death_type *md_ptr)
 {
-    md_ptr->mo_mode = 0L;
+    md_ptr->mo_mode = AM_NO_NEVER_MOVE;
     if (md_ptr->r_ptr->flags1 & RF1_DROP_GOOD) {
         md_ptr->mo_mode |= AM_GOOD;
     }

@@ -12,4 +12,5 @@ enum item_am_type : uint32_t {
     AM_CURSED = 0x00000010, /*!< Generate cursed/worthless items */
     AM_FORBID_CHEST = 0x00000020, /*!< 箱からさらに箱が出現することを抑止する */
     AM_NASTY = 0x00000040, /*!< 例のアレなアイテムだけ落とす */
+    AM_NO_NEVER_MOVE = 0x00000080 /*!< NEVER_MOVEアイテムは生成外 */
 };
