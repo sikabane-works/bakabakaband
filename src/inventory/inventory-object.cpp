@@ -371,8 +371,8 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ObjectType *o_ptr)
  */
 bool check_get_item(ObjectType *o_ptr)
 {
-    auto flgs = object_flags(o_ptr);
-    return !flgs.has(TR_NEVER_MOVE);
+    auto flags = object_flags(o_ptr);
+    return !flags.has(TR_NEVER_MOVE);
 }
 
 /*!

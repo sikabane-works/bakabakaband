@@ -331,11 +331,11 @@ static void prt_binary(BIT_FLAGS flags, const int row, int col)
  */
 static void wiz_display_item(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    auto flgs = object_flags(o_ptr);
-    auto get_seq_32bits = [](const TrFlags &flgs, uint start) {
+    auto flags = object_flags(o_ptr);
+    auto get_seq_32bits = [](const TrFlags &flags, uint start) {
         BIT_FLAGS result = 0U;
-        for (auto i = 0U; i < 32 && start + i < flgs.size(); i++) {
-            if (flgs.has(i2enum<tr_type>(start + i))) {
+        for (auto i = 0U; i < 32 && start + i < flags.size(); i++) {
+            if (flags.has(i2enum<tr_type>(start + i))) {
                 result |= 1U << i;
             }
         }
@@ -368,7 +368,7 @@ static void wiz_display_item(PlayerType *player_ptr, ObjectType *o_ptr)
     prt("siwdccsossidsahanvudotgddhuoclio", ++line, j);
     prt("tnieohtctrnipttmiinmrrnrrraiierl", ++line, j);
     prt("rtsxnarelcfgdkcpmldncltggpksdced", ++line, j);
-    prt_binary(get_seq_32bits(flgs, 32 * 0), ++line, j);
+    prt_binary(get_seq_32bits(flags, 32 * 0), ++line, j);
 
     prt("+------------FLAGS2------------+", ++line, j);
     prt("SUST....IMMUN.RESIST............", ++line, j);
@@ -376,7 +376,7 @@ static void wiz_display_item(PlayerType *player_ptr, ObjectType *o_ptr)
     prt("siwdcciaclioheatcliooeialoshtncd", ++line, j);
     prt("tnieohdsierlrfraierliatrnnnrhehi", ++line, j);
     prt("rtsxnaeydcedwlatdcedsrekdfddrxss", ++line, j);
-    prt_binary(get_seq_32bits(flgs, 32 * 1), ++line, j);
+    prt_binary(get_seq_32bits(flags, 32 * 1), ++line, j);
 
     line = 10;
     prt("+------------FLAGS3------------+", line, j + 32);
@@ -385,7 +385,7 @@ static void wiz_display_item(PlayerType *player_ptr, ObjectType *o_ptr)
     prt("uu utmacaih eielgggonnnnaaere   ", ++line, j + 32);
     prt("rr reanurdo vtieeehtrrrrcilas   ", ++line, j + 32);
     prt("aa algarnew ienpsntsaefctnevs   ", ++line, j + 32);
-    prt_binary(get_seq_32bits(flgs, 32 * 2), ++line, j + 32);
+    prt_binary(get_seq_32bits(flags, 32 * 2), ++line, j + 32);
 
     prt("+------------FLAGS4------------+", ++line, j + 32);
     prt("KILL....ESP.........            ", ++line, j + 32);
@@ -393,7 +393,7 @@ static void wiz_display_item(PlayerType *player_ptr, ObjectType *o_ptr)
     prt("nvneoriunneoriruvoon            ", ++line, j + 32);
     prt("iidmroamidmroagmionq            ", ++line, j + 32);
     prt("mlenclnmmenclnnnldlu            ", ++line, j + 32);
-    prt_binary(get_seq_32bits(flgs, 32 * 3), ++line, j + 32);
+    prt_binary(get_seq_32bits(flags, 32 * 3), ++line, j + 32);
 }
 
 /*!

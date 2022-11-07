@@ -47,8 +47,8 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const ObjectType *o_ptr)
  */
 bool can_player_destroy_object(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    auto flgs = object_flags(o_ptr);
-    if (flgs.has(TR_INDESTRUCTIBLE)) {
+    auto flags = object_flags(o_ptr);
+    if (flags.has(TR_INDESTRUCTIBLE)) {
         return false;
     }
 

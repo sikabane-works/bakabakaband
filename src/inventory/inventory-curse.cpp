@@ -78,7 +78,7 @@ static void choise_cursed_item(CurseTraitType flag, ObjectType *o_ptr, int *choi
     }
 
     tr_type cf = TR_STR;
-    auto flgs = object_flags(o_ptr);
+    auto flags = object_flags(o_ptr);
     switch (flag) {
     case CurseTraitType::ADD_L_CURSE:
         cf = TR_ADD_L_CURSE;
@@ -135,7 +135,7 @@ static void choise_cursed_item(CurseTraitType flag, ObjectType *o_ptr, int *choi
         break;
     }
 
-    if (flgs.has_not(cf)) {
+    if (flags.has_not(cf)) {
         return;
     }
 
@@ -190,9 +190,9 @@ static void curse_teleport(PlayerType *player_ptr)
             continue;
         }
 
-        auto flgs = object_flags(o_ptr);
+        auto flags = object_flags(o_ptr);
 
-        if (flgs.has_not(TR_TELEPORT)) {
+        if (flags.has_not(TR_TELEPORT)) {
             continue;
         }
 
