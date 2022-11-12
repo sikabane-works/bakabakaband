@@ -273,7 +273,7 @@ void store_create(PlayerType *player_ptr, KIND_OBJECT_IDX fix_k_idx, StoreSaleTy
         DEPTH level;
         if (store_num == StoreSaleType::BLACK) {
             level = ow_ptr->level + 25 + randint0(25);
-            k_idx = get_obj_num(player_ptr, level, 0x00000000);
+            k_idx = get_obj_index(player_ptr, level, 0x00000000);
             if (k_idx == 0) {
                 continue;
             }
