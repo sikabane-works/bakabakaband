@@ -221,6 +221,7 @@ errr init_d_info()
 errr init_v_info()
 {
     init_header(&v_head);
+
     return init_info("v_info", v_head, v_info, parse_v_info, nullptr);
 }
 
