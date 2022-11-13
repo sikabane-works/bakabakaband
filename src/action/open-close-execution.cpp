@@ -293,7 +293,7 @@ bool exe_disarm(PlayerType *player_ptr, POSITION y, POSITION x, DIRECTION dir)
     if (randint0(100) < j) {
         ObjectType forge;
         ObjectType *q_ptr = &forge;
-        q_ptr->prep(lookup_kind({ ItemKindType::TRAP, 0 }));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::TRAP, 0 }));
         q_ptr->pval = g_ptr->feat;
 
         msg_format(_("%sを解除した。", "You have disarmed the %s."), name);

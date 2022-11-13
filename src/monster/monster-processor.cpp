@@ -645,7 +645,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         ObjectType forge;
         ObjectType *q_ptr = &forge;
-        q_ptr->prep(lookup_kind({ ItemKindType::JUNK, SV_JUNK_FECES }));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_FECES }));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -653,7 +653,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
         ObjectType forge;
         ObjectType *q_ptr = &forge;
-        q_ptr->prep(lookup_kind({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
