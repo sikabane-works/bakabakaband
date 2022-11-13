@@ -9,6 +9,7 @@
 #include "floor/cave.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
+#include "io/input-key-requester.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "player-status/player-energy.h"
@@ -70,7 +71,9 @@ bool exe_tunnel(PlayerType *player_ptr, POSITION y, POSITION x)
     power = f_ptr->power;
     mimic_f_ptr = &f_info[g_ptr->get_feat_mimic()];
     name = mimic_f_ptr->name.c_str();
-    sound(SOUND_DIG);
+    if (command_rep == 0) {
+        sound(SOUND_DIG);
+    }
     if (f_ptr->flags.has(FloorFeatureType::PERMANENT)) {
         if (mimic_f_ptr->flags.has(FloorFeatureType::PERMANENT)) {
             msg_print(_("この岩は硬すぎて掘れないようだ。", "This seems to be permanent rock."));
