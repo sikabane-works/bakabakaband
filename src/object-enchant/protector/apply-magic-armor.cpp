@@ -11,6 +11,7 @@
 #include "object-enchant/object-boost.h"
 #include "object-enchant/object-ego.h"
 #include "object/object-kind-hook.h"
+#include "object/tval-types.h"
 #include "system/object-type-definition.h"
 #include "view/display-messages.h"
 
