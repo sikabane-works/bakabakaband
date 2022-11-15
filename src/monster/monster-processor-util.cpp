@@ -11,7 +11,7 @@
 #include "game-option/birth-options.h"
 #include "monster-race/monster-race.h"
 #include "monster/monster-status.h"
-#include "system/monster-race-definition.h"
+#include "system/monster-race-info.h"
 #include "system/monster-type-definition.h"
 
 /*!
