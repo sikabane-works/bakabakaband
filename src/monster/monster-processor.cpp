@@ -67,12 +67,13 @@
 #include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/item-entity.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
+
 
 void decide_drop_from_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool is_riding_mon);
 bool process_stealth(PlayerType *player_ptr, MONSTER_IDX m_idx);

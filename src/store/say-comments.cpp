@@ -5,7 +5,7 @@
 #include "store/rumor.h"
 #include "store/store-owner-comments.h"
 #include "store/store-util.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "view/display-messages.h"
 
 #define RUMOR_CHANCE 8

@@ -22,7 +22,7 @@
 #include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "util/bit-flags-calculator.h"

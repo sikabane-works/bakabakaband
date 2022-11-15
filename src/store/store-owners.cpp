@@ -1,7 +1,7 @@
 ﻿#include "store/store-owners.h"
 #include "player-info/race-types.h"
 #include "store/store-util.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 
 const std::unordered_map<StoreSaleType, std::vector<owner_type>> owners = {
     { StoreSaleType::GENERAL,

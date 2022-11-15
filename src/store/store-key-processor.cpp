@@ -30,7 +30,7 @@
 #include "store/sell-order.h"
 #include "store/store-util.h"
 #include "store/store.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
