@@ -34,7 +34,7 @@
  * @param PlayerType プレイヤーへの参照ポインタ
  * @param m_ptr モンスター情報構造体の参照ポインタ
  */
-void set_pet(PlayerType *player_ptr, monster_type *m_ptr)
+void set_pet(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     QuestCompletionChecker(player_ptr, m_ptr).complete();
     m_ptr->mflag2.set(MonsterConstantFlagType::PET);
@@ -48,7 +48,7 @@ void set_pet(PlayerType *player_ptr, monster_type *m_ptr)
  * Makes the monster hostile towards the player
  * @param m_ptr モンスター情報構造体の参照ポインタ
  */
-void set_hostile(PlayerType *player_ptr, monster_type *m_ptr)
+void set_hostile(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     if (player_ptr->phase_out) {
         return;
@@ -62,7 +62,7 @@ void set_hostile(PlayerType *player_ptr, monster_type *m_ptr)
  * Anger the monster
  * @param m_ptr モンスター情報構造体の参照ポインタ
  */
-void anger_monster(PlayerType *player_ptr, monster_type *m_ptr)
+void anger_monster(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     if (player_ptr->phase_out || !m_ptr->is_friendly()) {
         return;

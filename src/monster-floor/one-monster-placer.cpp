@@ -302,7 +302,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         return false;
     }
 
-    monster_type *m_ptr;
+    MonsterEntity *m_ptr;
     m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
     m_ptr->r_idx = r_idx;
     m_ptr->alliance_idx = r_ptr->alliance_idx;

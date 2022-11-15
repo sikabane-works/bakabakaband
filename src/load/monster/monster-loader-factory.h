@@ -3,7 +3,8 @@
 #include <memory>
 
 enum class MonsterLoaderVersionType;
-struct monster_type;
+class PlayerType;
+class MonsterEntity;
 class MonsterLoaderBase;
 class MonsterLoaderFactory {
 public:

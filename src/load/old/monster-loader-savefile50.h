@@ -2,12 +2,13 @@
 
 #include "load/monster/monster-loader-base.h"
 
-struct monster_type;
+class MonsterEntity;
+class PlayerType;
 class MonsterLoader50 : public MonsterLoaderBase {
 public:
     MonsterLoader50();
-    void rd_monster(monster_type *m_ptr) override;
+    void rd_monster(MonsterEntity *m_ptr) override;
 
 private:
-    monster_type *m_ptr = nullptr;
+    MonsterEntity *m_ptr = nullptr;
 };

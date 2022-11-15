@@ -17,7 +17,7 @@ MonsterLoader50::MonsterLoader50()
 /*!
  * @brief モンスターを読み込む(v3.0.0 Savefile ver50まで)
  */
-void MonsterLoader50::rd_monster(monster_type *m_ptr_)
+void MonsterLoader50::rd_monster(MonsterEntity *m_ptr_)
 {
     this->m_ptr = m_ptr_;
 
