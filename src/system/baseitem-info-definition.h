@@ -44,9 +44,9 @@ private:
 
 enum class ItemKindType : short;
 enum class RandomArtActType : short;
-class BaseItemInfo {
+class BaseitemInfo {
 public:
-    BaseItemInfo() = default;
+    BaseitemInfo() = default;
     KIND_OBJECT_IDX idx{};
 
     std::string name; /*!< ベースアイテム名 */
@@ -92,4 +92,4 @@ public:
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::vector<BaseItemInfo> baseitems_info;
+extern std::vector<BaseitemInfo> baseitems_info;
