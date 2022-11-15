@@ -499,7 +499,7 @@ bool has_kill_wall(PlayerType *player_ptr)
 
     if (player_ptr->riding) {
         MonsterEntity *riding_m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-        monster_race *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
+        MonsterRaceInfo *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
         if (riding_r_ptr->feature_flags.has(MonsterFeatureType::KILL_WALL)) {
             return true;
         }
@@ -526,7 +526,7 @@ bool has_pass_wall(PlayerType *player_ptr)
 
     if (player_ptr->riding) {
         MonsterEntity *riding_m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-        monster_race *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
+        MonsterRaceInfo *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
         if (riding_r_ptr->feature_flags.has_not(MonsterFeatureType::PASS_WALL)) {
             pow = false;
         }
@@ -1023,7 +1023,7 @@ BIT_FLAGS has_levitation(PlayerType *player_ptr)
     // 乗馬中は実際に浮遊するかどうかは乗馬中のモンスターに依存する
     if (player_ptr->riding) {
         MonsterEntity *riding_m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-        monster_race *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
+        MonsterRaceInfo *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
         result = riding_r_ptr->feature_flags.has(MonsterFeatureType::CAN_FLY) ? FLAG_CAUSE_RIDING : FLAG_CAUSE_NONE;
     }
 
@@ -1035,7 +1035,7 @@ bool has_can_swim(PlayerType *player_ptr)
     bool can_swim = false;
     if (player_ptr->riding) {
         MonsterEntity *riding_m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-        monster_race *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
+        MonsterRaceInfo *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
         if (riding_r_ptr->feature_flags.has_any_of({ MonsterFeatureType::CAN_SWIM, MonsterFeatureType::AQUATIC })) {
             can_swim = true;
         }

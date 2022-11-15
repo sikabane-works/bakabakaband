@@ -482,7 +482,7 @@ bool decide_monster_multiplication(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
 void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
+    MonsterRaceInfo *r_ptr = &monraces_info[m_ptr->r_idx];
     for (const auto &spawn_info : r_ptr->spawn_items) {
         auto num = std::get<0>(spawn_info);
         auto deno = std::get<1>(spawn_info);
@@ -503,7 +503,7 @@ void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
 void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
+    MonsterRaceInfo *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->level < 30 || !(r_ptr->flags1 & RF1_UNIQUE) || r_ptr->flags2 & RF2_EMPTY_MIND) {
         return;
     }
@@ -547,7 +547,7 @@ void process_monster_change_feat(PlayerType *player_ptr, MONSTER_IDX m_idx)
 bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
 {
     MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
+    MonsterRaceInfo *r_ptr = &monraces_info[m_ptr->r_idx];
     if ((r_ptr->spawn_monsters.size() == 0) || (player_ptr->current_floor_ptr->num_repro >= MAX_REPRODUCTION)) {
         return false;
     }
@@ -833,7 +833,7 @@ void sweep_monster_process(PlayerType *player_ptr)
  */
 bool decide_process_continue(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
-    monster_race *r_ptr;
+    MonsterRaceInfo *r_ptr;
     r_ptr = &monraces_info[m_ptr->r_idx];
     if (!player_ptr->no_flowed) {
         m_ptr->mflag2.reset(MonsterConstantFlagType::NOFLOW);
