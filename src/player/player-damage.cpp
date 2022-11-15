@@ -91,7 +91,7 @@ using dam_func = int (*)(PlayerType *player_ptr, int dam, concptr kb_str, bool a
  */
 static bool acid_minus_ac(PlayerType *player_ptr)
 {
-    ObjectType *o_ptr = nullptr;
+    ItemEntity *o_ptr = nullptr;
     switch (randint1(7)) {
     case 1:
         o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
@@ -651,8 +651,8 @@ void touch_zap_player(monster_type *m_ptr, PlayerType *player_ptr)
  */
 void player_defecate(PlayerType *player_ptr)
 {
-    ObjectType forge;
-    ObjectType *q_ptr = &forge;
+    ItemEntity forge;
+    ItemEntity *q_ptr = &forge;
     disturb(player_ptr, false, true);
     msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
     msg_print(NULL);

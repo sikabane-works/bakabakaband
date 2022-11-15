@@ -3,7 +3,7 @@
 #include "system/angband.h"
 #include <vector>
 
-class store_type;
+struct store_type;
 
 /*
  * A structure describing a town with
