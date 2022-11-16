@@ -28,7 +28,7 @@
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
