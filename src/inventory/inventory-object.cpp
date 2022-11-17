@@ -84,7 +84,7 @@ void inven_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
 void inven_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &player_ptr->inventory_list[item];
-    if (!o_ptr->k_idx) {
+    if (!o_ptr->bi_id) {
         return;
     }
     if (o_ptr->number) {
@@ -172,13 +172,13 @@ void combine_pack(PlayerType *player_ptr)
         for (int i = INVEN_PACK; i > 0; i--) {
             ItemEntity *o_ptr;
             o_ptr = &player_ptr->inventory_list[i];
-            if (!o_ptr->k_idx) {
+            if (!o_ptr->bi_id) {
                 continue;
             }
             for (int j = 0; j < i; j++) {
                 ItemEntity *j_ptr;
                 j_ptr = &player_ptr->inventory_list[j];
-                if (!j_ptr->k_idx) {
+                if (!j_ptr->bi_id) {
                     continue;
                 }
 
@@ -252,7 +252,7 @@ void reorder_pack(PlayerType *player_ptr)
         }
 
         o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx) {
+        if (!o_ptr->bi_id) {
             continue;
         }
 
@@ -311,7 +311,7 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ItemEntity *o_ptr)
     ItemEntity *j_ptr;
     for (j = 0; j < INVEN_PACK; j++) {
         j_ptr = &player_ptr->inventory_list[j];
-        if (!j_ptr->k_idx) {
+        if (!j_ptr->bi_id) {
             continue;
         }
 
@@ -331,7 +331,7 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ItemEntity *o_ptr)
 
     for (j = 0; j <= INVEN_PACK; j++) {
         j_ptr = &player_ptr->inventory_list[j];
-        if (!j_ptr->k_idx) {
+        if (!j_ptr->bi_id) {
             break;
         }
     }
@@ -390,7 +390,7 @@ bool check_store_item_to_inventory(PlayerType *player_ptr, const ItemEntity *o_p
 
     for (int j = 0; j < INVEN_PACK; j++) {
         auto *j_ptr = &player_ptr->inventory_list[j];
-        if (!j_ptr->k_idx) {
+        if (!j_ptr->bi_id) {
             continue;
         }
 
