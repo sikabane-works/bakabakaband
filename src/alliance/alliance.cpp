@@ -59,6 +59,20 @@ Alliance::Alliance(AllianceType id, std::string tag, std::string name, int64_t b
 {
 }
 
+/*!
+* @brief プレイヤーのレベル自体を印象値に加減算する処理
+* @param player_ptr 評価対象とするプレイヤー
+* @param bias 倍率
+* @param min_level 評価基準最低レベル
+*/
+int Alliance::calcPlayerPower(PlayerType const &player_ptr, const int bias, const int min_level)
+{
+    if (min_level > player_ptr.lev) {
+        return 0;
+    }
+    return (2000 + 10 * (player_ptr.lev - min_level + 1) * (player_ptr.lev - min_level + 1)) * bias / 100;
+}
+
 int64_t Alliance::calcCurrentPower()
 {
     int64_t res = this->base_power;
@@ -87,7 +101,10 @@ int AllianceNone::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr)
 
 int AllianceAmber::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment;
+    int impression = 0;
+    impression += (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 35);
+    return impression;
 }
 
 int AllianceCourtOfChaos::calcImplessionPoint(PlayerType *creature_ptr) const
