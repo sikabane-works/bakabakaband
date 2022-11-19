@@ -34046,6 +34046,50 @@ D:義母を失う悲劇の決裂から世界的戦争を引き起こした、兄
 D:ファイレクシアに心身を捧げた身がその技術をもとに作った
 D:ドラゴン・エンジンの一つと融合した姿だ。
 
+N:1835:カネミツ社オートモ
+E:Otomo of Kanemitsu Corporation
+G:p:D
+I:113:80d20:12:80:10
+W:36:4:0:1500:0:0
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+F:ONLY_GOLD | DROP_2D2 | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING |
+F:IM_FIRE | IM_COLD | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:日本に本社を置く国際企業、カネミツ社の生み出した完全人型アンドロイドだ。
+D:多くの武芸をインストールされており、そのOSにはカタカナが持ちいられている。
+
+N:1836:追突事件の空気『中村』
+E:Nakamura, the Trivial Actor in the traffic accident
+G:p:b
+I:110:19d10:20:30:20
+W:9:2:0:90:0:0
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE | INVISIBLE
+F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:作中の空気だ。だが、実は黒幕と言われている。
+
+N:1837:追突事件の犬『三浦』
+E:Miura, the Dog in the traffic accident
+G:C:r
+I:110:19d10:20:30:20
+W:9:2:0:90:0:0
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:後輩をかばい、犬の真似を強いられた先輩だ。
+D:鑑とは言いたいが結局一転攻勢には加わったから屑だ。
+
+
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
 
