@@ -67,6 +67,8 @@ public:
     virtual int calcImplessionPoint(PlayerType *creature_ptr) const = 0;
     virtual ~Alliance() = default;
     int64_t AnihilatedPowerdownDiv = 1000; //!< 壊滅時戦力指数除算
+protected:
+    static int calcPlayerPower(PlayerType const &player_ptr, const int bias, const int base_level);
 };
 
 class AllianceNone : public Alliance {

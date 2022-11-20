@@ -59,6 +59,20 @@ Alliance::Alliance(AllianceType id, std::string tag, std::string name, int64_t b
 {
 }
 
+/*!
+* @brief プレイヤーのレベル自体を印象値に加減算する処理
+* @param player_ptr 評価対象とするプレイヤー
+* @param bias 倍率
+* @param min_level 評価基準最低レベル
+*/
+int Alliance::calcPlayerPower(PlayerType const &player_ptr, const int bias, const int min_level)
+{
+    if (min_level > player_ptr.lev) {
+        return 0;
+    }
+    return (2000 + 10 * (player_ptr.lev - min_level + 1) * (player_ptr.lev - min_level + 1)) * bias / 100;
+}
+
 int64_t Alliance::calcCurrentPower()
 {
     int64_t res = this->base_power;
@@ -87,27 +101,38 @@ int AllianceNone::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr)
 
 int AllianceAmber::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 35);
+    return impression;
 }
 
 int AllianceCourtOfChaos::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 35);
+    return impression;
 }
 
 int AllianceValinor::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment : creature_ptr->alignment * 3;
+    int impression = 0;
+    impression += (creature_ptr->alignment > 0) ? creature_ptr->alignment : -creature_ptr->alignment * 3;
+    impression += Alliance::calcPlayerPower(*creature_ptr, -16, 30);
+    return impression;
 }
 
 int AllianceUtumno::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 30);
+    return impression;
 }
 
 int AllianceJural::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
+    return impression;
 }
 
 bool AllianceJural::isAnnihilated()
@@ -115,19 +140,21 @@ bool AllianceJural::isAnnihilated()
     return r_info[MON_JURAL_WITCHKING].mob_num == 0;
 }
 
-int AllianceChinChinTei::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceChinChinTei::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    return 0;
 }
 
-int AllianceOdio::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceOdio::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    return 0;
 }
 
 int AllianceKenohgun::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 15, 20);
+    return impression;
 }
 
 bool AllianceKenohgun::isAnnihilated()
@@ -137,12 +164,16 @@ bool AllianceKenohgun::isAnnihilated()
 
 int AllianceFangFamily::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
+    return impression;
 }
 
 int AllianceKoganRyu::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 15, 18);
+    return impression;
 }
 
 int AllianceEldrazi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -152,7 +183,9 @@ int AllianceEldrazi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_p
 
 int AllianceUngoliant::calcImplessionPoint(PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment / 3 : -creature_ptr->alignment / 2;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 8, 30);
+    return impression;
 }
 
 int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -167,7 +200,9 @@ bool AllianceShittoDan::isAnnihilated()
 
 int AllianceGEOrlic::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 30);
+    return impression;
 }
 
 int AllianceTurbanKids::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -175,14 +210,16 @@ int AllianceTurbanKids::calcImplessionPoint([[maybe_unused]] PlayerType *creatur
     return 0;
 }
 
-int AllianceNakedKnights::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceNakedKnights::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return (creature_ptr->alignment > 0) ? creature_ptr->alignment : creature_ptr->alignment * 3;
+    return 0;
 }
 
 int AllianceNumenor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 20);
+    return impression;
 }
 
 int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -192,7 +229,9 @@ int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) c
 
 int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, -10, 1);
+    return impression;
 }
 
 int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -217,42 +256,58 @@ bool AllianceKetholdeth::isAnnihilated()
 
 int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 13, 28);
+    return impression;
 }
 
 int AllianceAngartha::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 11, 20);
+    return impression;
 }
 
 int AllianceGetter::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 20, 1);
+    return impression;
 }
 
 int AlliancePureMirrodin::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 12);
+    return impression;
 }
 
 int AllianceKING::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 15, 15);
+    return impression;
 }
 
 int AlliancePhyrexia::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 15, 21);
+    return impression;
 }
 
 int AllianceAvarinLords::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 10, 23);
+    return impression;
 }
 
 int AllianceGOLAN::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 15, 12);
+    return impression;
 }
 
 int AllianceBinzyouBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -277,12 +332,16 @@ int AllianceSuren::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr
 
 int AllianceFeanorNoldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 19, 26);
+    return impression;
 }
 
 int AllianceGaichi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    int impression = 0;
+    impression += Alliance::calcPlayerPower(*creature_ptr, 4, 10);
+    return impression;
 }
 
 int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const

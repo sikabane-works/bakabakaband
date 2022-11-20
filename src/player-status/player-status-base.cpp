@@ -221,9 +221,9 @@ BIT_FLAGS PlayerStatusBase::equipments_flags(tr_type check_flag)
             continue;
         }
 
-        auto flgs = object_flags(o_ptr);
+        auto flags = object_flags(o_ptr);
 
-        if (flgs.has(check_flag)) {
+        if (flags.has(check_flag)) {
             set_bits(result, convert_inventory_slot_type_to_flag_cause(i2enum<inventory_slot_type>(i)));
         }
     }
@@ -245,9 +245,9 @@ BIT_FLAGS PlayerStatusBase::equipments_bad_flags(tr_type check_flag)
             continue;
         }
 
-        auto flgs = object_flags(o_ptr);
+        auto flags = object_flags(o_ptr);
 
-        if (flgs.has(check_flag)) {
+        if (flags.has(check_flag)) {
             if (o_ptr->pval < 0) {
                 set_bits(result, convert_inventory_slot_type_to_flag_cause(i2enum<inventory_slot_type>(i)));
             }
@@ -266,12 +266,12 @@ int16_t PlayerStatusBase::equipments_value()
     int16_t result = 0;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        auto flgs = object_flags(o_ptr);
+        auto flags = object_flags(o_ptr);
 
         if (!o_ptr->k_idx) {
             continue;
         }
-        if (flgs.has(this->tr_flag)) {
+        if (flags.has(this->tr_flag)) {
             result += o_ptr->pval;
         }
     }

@@ -20572,21 +20572,27 @@ D:無表情で襲いかかる、二足歩行の熊のような生き物だ。
 
 #
 # OnePiecebandのプレビュー。こうしてみるとなんかサブイ……。
+# [DSKL]ワンピースも100巻超えて今更サブいこともあるまいし、アラバスタ編
+# からさらにそのまた先くらいまでを基準に強化。
+# ベースを盗賊リッチにしつつ、元素攻撃で積極的に攻めていく調子で。
 #
 N:1021:航海士『ナミ』
 E:Nami, the Mate
 G:p:o
-I:120:13d12:20:30:20
-W:8:4:0:150:0:0
-B:HIT:EAT_GOLD:1d9
-B:HIT:EAT_GOLD:1d9
+I:125:40d10:30:60:20
+W:30:2:0:1300:0:0
+B:HIT:HURT:5d6
+B:HIT:HURT:5d6
+B:TOUCH:EAT_GOLD
 B:TOUCH:EAT_ITEM
-B:TOUCH:EAT_ITEM
-F:UNIQUE | FEMALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SPEAK | FRIENDLY | HUMAN |
-F:ONLY_ITEM | DROP_1D2 | DROP_GREAT | WILD_GRASS | ROGUE
-F:TAKE_ITEM | OPEN_DOOR | CAN_SWIM | DROP_SKELETON | DROP_CORPSE
-S:1_IN_3
-S:HEAL | TRAPS
+F:UNIQUE | DROP_CORPSE | FORCE_MAXHP | CAN_SPEAK | HUMAN | FEMALE |
+F:EVIL | ONLY_ITEM | DROP_1D2 | DROP_GREAT | FRIENDLY | CAN_SWIM
+F:NO_SLEEP | NO_CONF | OPEN_DOOR | MOVE_BODY | ROGUE
+S:1_IN_4 |
+S:TRAPS | BA_FIRE | BA_COLD | BA_ELEC | BO_FIRE | BO_COLD | BO_ELEC
+D:海賊「麦わらの一味」の航海士で、偉大なる航路の探求に欠かせぬ主要な役を務めている。
+D:荒事は専門外らしいが、その手に操る天候棒なる魔道具は、
+D:世界の趨勢に関わる争いの只中を生き延びるだけの力を彼女に与えているようだ。
 
 #
 # 強すぎる？
@@ -30335,7 +30341,7 @@ D:その巨大な大鎚で罪人をすり潰すことに喜びを覚える残忍
 N:1607:GOLANの総帥『カーネル』
 E:Colonel, the Chieftain of GOLAN
 T:GOLAN_COLONEL
-G:p:r
+G:p:v
 I:120:20d90:40:100:4
 W:38:4:0:7000:0:0
 B:SLASH:HURT:15d2
@@ -33974,6 +33980,121 @@ S:1_IN_4 |
 S:BR_ACID | BR_POIS | BR_COLD
 D:上半身に比べて下半身が貧弱すぎる
 D:活舌の悪きホモの妄言と〈混沌〉との配合がこの悍ましき怪物を具現化させた。
+
+N:1831:サバンナ・ライオン
+E:Savannah Lion
+G:f:w
+I:120:18d15:20:58:5
+W:22:2:0:180:0:0
+B:CLAW:HURT:2d10
+B:BITE:HURT:2d10
+F:WILD_GRASS | WILD_WASTE | FRIENDS | ANIMAL | DROP_CORPSE | DROP_SKELETON
+D:古きプレインズウォーカーの郷愁を誘い、今なお愛着を感じさせるクリーチャーだ。
+D:「お前それサバンナでも同じこと言えんの？」
+
+N:1832:追突事件の主犯『中田』
+E:Nakata, the Main Culprit in the traffic accident
+G:p:o
+I:110:19d10:20:30:20
+W:9:2:0:90:0:0
+B:HIT:HURT:1d10
+B:HIT:HURT:1d10
+B:SHOOT:HURT:5d6
+S:1_IN_4 | SHOOT
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:追突事件の主犯でありながら、責任を全て先輩に被せた人間の屑だ。
+
+N:1833:泉の『エクセリオン』
+E:Ecthelion of the Fountain
+G:h:B
+I:139:60d110:50:130:20
+W:70:2:0:42000:0:0
+B:SLASH:HURT:12d10
+B:SLASH:HURT:12d10
+B:SLASH:HURT:12d10
+B:SLASH:HURT:12d10
+F:UNIQUE | MALE | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_GOOD | ELF |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR
+F:IM_COLD | IM_ACID | IM_POIS | NO_CONF | NO_STUN | GOOD
+F:NO_SLEEP | RES_TELE | RES_NETH | RES_TIME | POWERFUL | CAN_FLY |
+S:1_IN_3 | 
+S:TPORT | BLIND | HOLD | BLINK | HEAL
+S:TELE_TO | CONF | BA_ELEC | BA_LITE | BRAIN_SMASH | PSY_SPEAR
+D:フィンゴルフィンの子にして次代の上級王であったトゥアゴンに仕える忠臣であり、
+D:その都ゴンドリンが破滅の時にあっても死守に尽くしたノルドール指折りの大将だ。
+D:バルログを幾多も討ち取ったとも、メルドールの子ゴスモグまでを討ち取ったとも、
+D:ゴンドリンの陥落の感傷の入り混じった浅はかな願望に武勇を誇張され過ぎている。
+D:だが、彼が下位のマイアールをしのぐ存在であり、ヴァリノールとウトゥムノ双方の神々に
+D:賛美され得る人物であったこと、それ自体は全くの事実であった。
+
+# 兄弟戦争のプレリ行ったこったし。
+N:1834:ファイレクシアに下りし者『ミシュラ』
+E:Mishra, Lost to Phyrexia
+G:g:R
+I:126:70d100:25:200:30
+W:69:8:0:45000:0:0
+B:BITE:HURT:20d8
+B:BITE:HURT:20d8
+B:CLAW:POISON:12d5
+B:CLAW:POISON:12d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE | ALLIANCE_PHYREXIA
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | UNIQUE | EVIL
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_4D2 | DROP_GOOD
+F:DRAGON | HUMAN | IM_FIRE | IM_COLD
+F:IM_POIS | CAN_SWIM | RES_NETH | RES_CHAO
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_6 | 
+S:BR_FIRE | BA_FIRE | BR_ELEC | BR_POIS
+D:義母を失う悲劇の決裂から世界的戦争を引き起こした、兄弟の片割れの成れの果て。
+D:ファイレクシアに心身を捧げた身がその技術をもとに作った
+D:ドラゴン・エンジンの一つと融合した姿だ。
+
+N:1835:カネミツ社オートモ
+E:Otomo of Kanemitsu Corporation
+G:p:D
+I:113:80d20:12:80:10
+W:36:4:0:1500:0:0
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+B:SLASH:HURT:9d6
+F:ONLY_GOLD | DROP_2D2 | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING |
+F:IM_FIRE | IM_COLD | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:日本に本社を置く国際企業、カネミツ社の生み出した完全人型アンドロイドだ。
+D:多くの武芸をインストールされており、そのOSにはカタカナが持ちいられている。
+
+N:1836:追突事件の空気『中村』
+E:Nakamura, the Trivial Actor in the traffic accident
+G:p:b
+I:110:19d10:20:30:20
+W:9:2:0:90:0:0
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE | INVISIBLE
+F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:作中の空気だ。だが、実は黒幕と言われている。
+
+N:1837:追突事件の犬『三浦』
+E:Miura, the Dog in the traffic accident
+G:C:r
+I:110:19d10:20:30:20
+W:9:2:0:90:0:0
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+F:UNIQUE | MALE | EVIL | HAS_LITE_2 | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:後輩をかばい、犬の真似を強いられた先輩だ。
+D:鑑とは言いたいが結局一転攻勢には加わったから屑だ。
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.

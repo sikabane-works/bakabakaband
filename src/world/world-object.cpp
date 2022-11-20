@@ -95,6 +95,11 @@ OBJECT_IDX get_obj_num(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
             continue;
         }
 
+        if ((mode & AM_NO_NEVER_MOVE) && k_ptr->flags.has(TR_NEVER_MOVE)) {
+            continue;
+        }
+
+
         prob_table.entry_item(i, entry.prob2);
     }
 
