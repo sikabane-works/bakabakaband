@@ -34095,6 +34095,25 @@ F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 D:後輩をかばい、犬の真似を強いられた先輩だ。
 D:鑑とは言いたいが結局一転攻勢には加わったから屑だ。
 
+N:1838:〈力持て立つ者〉の化身
+E:Avater who arises in Might
+G:E:v
+I:120:30d100:40:100:50
+W:62:4:0:22500:0:0
+B:TOUCH:FIRE:15d12
+B:TOUCH:COLD:15d12
+B:TOUCH:FIRE:15d12
+B:TOUCH:COLD:15d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | CAN_SWIM |
+F:IM_FIRE | IM_COLD | IM_ELEC | RES_CHAO
+F:BASH_DOOR | OPEN_DOOR | POWERFUL | MOVE_BODY | 
+F:NO_CONF | NO_SLEEP | EVIL | NONLIVING
+S:1_IN_3 |
+S:BR_FIRE | BR_COLD | BR_CHAO
+D:かつてアルダ創世の時代、メルコールが聖霊アイヌアの一員であった頃の影だ。
+D:彼はこの頃より灼熱と極寒、さらにその源なる混沌を手繰り、他の無数のアイヌの能を
+D:いくばくかずつ兼ね備えた監督者であった。
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
