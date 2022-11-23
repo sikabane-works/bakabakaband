@@ -177,7 +177,7 @@ void rd_bounty_uniques(PlayerType *player_ptr)
         auto &b_ref = w_ptr->bounties[i];
         b_ref.r_idx = rd_s16b();
 
-        if (loading_savefile_version_is_older_than(17)) {
+        if (loading_savefile_version_is_older_than(18)) {
             constexpr auto old_achieved_flag = 10000; // かつて賞金首達成フラグとしてモンスター種族番号を10000増やしていた
             b_ref.is_achieved = false;
             if (b_ref.r_idx >= old_achieved_flag) {
