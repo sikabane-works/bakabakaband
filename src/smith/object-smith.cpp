@@ -367,7 +367,7 @@ Smith::DrainEssenceResult Smith::drain_essence(ObjectType *o_ptr)
     object_aware(player_ptr, o_ptr);
     object_known(o_ptr);
 
-    auto new_flgs = object_flags(o_ptr);
+    auto new_flags = object_flags(o_ptr);
 
     std::unordered_map<SmithEssenceType, int> drain_values;
 
@@ -375,10 +375,10 @@ Smith::DrainEssenceResult Smith::drain_essence(ObjectType *o_ptr)
     for (auto &&info : essence_drain_info_table) {
         int pval = 0;
         if (TR_PVAL_FLAG_MASK.has(info.tr_flag) && old_o.pval > 0) {
-            pval = new_flgs.has(info.tr_flag) ? old_o.pval - o_ptr->pval : old_o.pval;
+            pval = new_flags.has(info.tr_flag) ? old_o.pval - o_ptr->pval : old_o.pval;
         }
 
-        if ((new_flgs.has_not(info.tr_flag) || pval) && old_flags.has(info.tr_flag)) {
+        if ((new_flags.has_not(info.tr_flag) || pval) && old_flags.has(info.tr_flag)) {
             for (auto &&essence : info.essences) {
                 auto mult = TR_PVAL_FLAG_MASK.has(info.tr_flag) ? pval : 1;
                 drain_values[essence] += info.amount * mult;
