@@ -304,36 +304,36 @@ int Smith::get_essence_num_of_posessions(SmithEssenceType essence) const
 Smith::DrainEssenceResult Smith::drain_essence(ObjectType *o_ptr)
 {
     // 抽出量を揃えるためKILLフラグのみ付いている場合はSLAYフラグも付ける
-    auto old_flgs = object_flags(o_ptr);
-    if (old_flgs.has(TR_KILL_DRAGON)) {
-        old_flgs.set(TR_SLAY_DRAGON);
+    auto old_flags = object_flags(o_ptr);
+    if (old_flags.has(TR_KILL_DRAGON)) {
+        old_flags.set(TR_SLAY_DRAGON);
     }
-    if (old_flgs.has(TR_KILL_ANIMAL)) {
-        old_flgs.set(TR_SLAY_ANIMAL);
+    if (old_flags.has(TR_KILL_ANIMAL)) {
+        old_flags.set(TR_SLAY_ANIMAL);
     }
-    if (old_flgs.has(TR_KILL_EVIL)) {
-        old_flgs.set(TR_SLAY_EVIL);
+    if (old_flags.has(TR_KILL_EVIL)) {
+        old_flags.set(TR_SLAY_EVIL);
     }
-    if (old_flgs.has(TR_KILL_UNDEAD)) {
-        old_flgs.set(TR_SLAY_UNDEAD);
+    if (old_flags.has(TR_KILL_UNDEAD)) {
+        old_flags.set(TR_SLAY_UNDEAD);
     }
-    if (old_flgs.has(TR_KILL_DEMON)) {
-        old_flgs.set(TR_SLAY_DEMON);
+    if (old_flags.has(TR_KILL_DEMON)) {
+        old_flags.set(TR_SLAY_DEMON);
     }
-    if (old_flgs.has(TR_KILL_ORC)) {
-        old_flgs.set(TR_SLAY_ORC);
+    if (old_flags.has(TR_KILL_ORC)) {
+        old_flags.set(TR_SLAY_ORC);
     }
-    if (old_flgs.has(TR_KILL_TROLL)) {
-        old_flgs.set(TR_SLAY_TROLL);
+    if (old_flags.has(TR_KILL_TROLL)) {
+        old_flags.set(TR_SLAY_TROLL);
     }
-    if (old_flgs.has(TR_KILL_GIANT)) {
-        old_flgs.set(TR_SLAY_GIANT);
+    if (old_flags.has(TR_KILL_GIANT)) {
+        old_flags.set(TR_SLAY_GIANT);
     }
-    if (old_flgs.has(TR_KILL_HUMAN)) {
-        old_flgs.set(TR_SLAY_HUMAN);
+    if (old_flags.has(TR_KILL_HUMAN)) {
+        old_flags.set(TR_SLAY_HUMAN);
     }
-    if (old_flgs.has(TR_KILL_GOOD)) {
-        old_flgs.set(TR_SLAY_GOOD);
+    if (old_flags.has(TR_KILL_GOOD)) {
+        old_flags.set(TR_SLAY_GOOD);
     }
 
     // マイナス効果のあるアイテムから抽出する時のペナルティを計算
@@ -343,7 +343,7 @@ Smith::DrainEssenceResult Smith::drain_essence(ObjectType *o_ptr)
     }
 
     for (auto &&info : essence_drain_info_table) {
-        if (info.amount < 0 && old_flgs.has(info.tr_flag)) {
+        if (info.amount < 0 && old_flags.has(info.tr_flag)) {
             dec += info.amount;
         }
     }
@@ -378,7 +378,7 @@ Smith::DrainEssenceResult Smith::drain_essence(ObjectType *o_ptr)
             pval = new_flgs.has(info.tr_flag) ? old_o.pval - o_ptr->pval : old_o.pval;
         }
 
-        if ((new_flgs.has_not(info.tr_flag) || pval) && old_flgs.has(info.tr_flag)) {
+        if ((new_flgs.has_not(info.tr_flag) || pval) && old_flags.has(info.tr_flag)) {
             for (auto &&essence : info.essences) {
                 auto mult = TR_PVAL_FLAG_MASK.has(info.tr_flag) ? pval : 1;
                 drain_values[essence] += info.amount * mult;
