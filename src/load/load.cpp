@@ -428,13 +428,13 @@ bool load_savedata(PlayerType *player_ptr, bool *new_game)
     if (!err) {
         term_clear();
         auto ret_rd_savefile = rd_savefile(player_ptr);
-        if (ret_rd_savefile != 0) {
+        if (ret_rd_savefile != 0 && ret_rd_savefile != 11) {
             err = true;
         }
 
         if (ret_rd_savefile < 0) {
             what = _("セーブファイルを解析出来ません。", "Cannot parse savefile");
-        } else if (ret_rd_savefile > 0) {
+        } else if (ret_rd_savefile > 0 && ret_rd_savefile != 11) {
             return on_read_save_data_not_supported(player_ptr, new_game);
         }
     }
