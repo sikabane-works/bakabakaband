@@ -274,14 +274,14 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_food_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
+static bool exe_eat_food_type_object(PlayerType *player_ptr, const BaseitemKey &bi_key)
 {
-    if (o_ptr->tval != ItemKindType::FOOD) {
+    if (bi_key.tval() != ItemKindType::FOOD) {
         return false;
     }
 
     BadStatusSetter bss(player_ptr);
-    switch (o_ptr->sval) {
+    switch (bi_key.sval().value()) {
     case SV_FOOD_POISON:
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
             if (bss.mod_poison(randint0(10) + 10)) {
@@ -578,7 +578,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     /* Identity not known yet */
-    int ident = exe_eat_food_type_object(player_ptr, o_ptr);
+    int ident = exe_eat_food_type_object(player_ptr, { o_ptr->tval, o_ptr->sval });
 
     /*
      * Store what may have to be updated for the inventory (including
