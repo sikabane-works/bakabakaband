@@ -334,7 +334,7 @@ static bool get_spike(PlayerType *player_ptr, INVENTORY_IDX *ip)
             continue;
         }
 
-        if (o_ptr->tval == ItemKindType::SPIKE) {
+        if (o_ptr->bi_key.tval() == ItemKindType::SPIKE) {
             *ip = i;
             return true;
         }
