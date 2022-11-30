@@ -3179,6 +3179,11 @@ bool is_echizen(PlayerType *player_ptr)
     return (player_ptr->ppersonality == PERSONALITY_COMBAT) || (player_ptr->inventory_list[INVEN_BOW].fixed_artifact_idx == ART_CRIMSON);
 }
 
+bool is_tough(PlayerType *player_ptr)
+{
+    return (player_ptr->ppersonality == PERSONALITY_TOUGH);
+}
+
 bool is_chargeman(PlayerType *player_ptr)
 {
     return player_ptr->ppersonality == PERSONALITY_CHARGEMAN;
