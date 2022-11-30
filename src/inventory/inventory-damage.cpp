@@ -84,7 +84,10 @@ void inventory_damage(PlayerType *player_ptr, const ObjectBreaker &breaker, int 
             } else {
                 msg_print(_("弱い者いじめは止めるんだ！", ""));
             }
+        } else if (is_tough(player_ptr)) {
+            msg_print(_("う わ あ あ あ あ あ あ あ あ", ""));
         }
+
 #endif
 
         /* Potions smash open */
