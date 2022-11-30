@@ -249,6 +249,10 @@ const std::vector<std::string_view> personality_explanations = {
 
     _("チャージマンは「こんなところ」に連れて行かれても仕方のない可愛そうなお友達なんＤＡ。腕っ節やタフさはマンモス並みに強いのだけれど知能面はまるで駄目なのが分かるだろう？この性格は最初から気が狂っているので、混乱したり幻覚を見る心配がないのです。",
         "\"ChargeMan\" is a crazy killer.  You are strong and tough but have poor intelligence.  Since you're already insane, confusion and hallucinations do not affect you."),
+
+    _("タフは、ナチュラル・ボーン・ファイターであり、まさにタフという言葉はこの性格の持ち主のためにあります。ちからじまん以上に戦闘能力にすぐれますが、余りも理不尽な猿空間、猿展開に巻き込まれる定めにあります。",
+        "\"Tough\" is a just natural born fighter, and the very word \"tough\" is reserved for those with this personality. You can be a better combat skill than mighty, but you are destined to get caught up in too much unreasonable monkey-space and monkey-deployment."),
+
 };
 
 /*! 魔法領域の詳細解説メッセージテーブル */
