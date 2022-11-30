@@ -34197,7 +34197,39 @@ F:IM_COLD | IM_FIRE | IM_ELEC | IM_POIS | NO_CONF | NO_STUN |
 F:NO_SLEEP | RES_TELE | RES_CHAO | RES_TIME | POWERFUL | CAN_FLY |
 S:1_IN_3 | HOLD | HEAL | HASTE | SHOOT | INVULNER | DISPEL | BA_LITE
 D:「百年前の民も、百年後の民も、「神州無敵」と問われて答えるのは、麻呂の名であろう」
-D:吉備津彦命とも呼ばれる日ノ本の秩序の源『覇府』との盟で不老を得た、最強の剣士だ。
+D:吉備津彦命とも呼ばれる桃太郎卿は、日ノ本の秩序の源『覇府』との盟で不老を得た最強の剣士だ。
+
+N:1844:課長天使
+E:Kacho angel
+G:A:o
+I:120:100d40:30:200:20
+W:50:5:0:18000:0:0
+B:CRUSH:TERRIFY:10d4
+B:CRUSH:TERRIFY:10d4
+B:PUNCH:HURT:8d6
+B:PUNCH:HURT:8d6
+F:PREVENT_SUDDEN_MAGIC | SELF_LITE_2 |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_GOOD | NO_FEAR | REFLECTING |
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | RES_LITE |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_TELE | CAN_FLY | ANGEL
+F:COLLAPSE-OVER_80.000 | NASTY | HOMO_SEXUAL
+S:1_IN_3 | 
+S:TELE_TO | BLINK | CAUSE_2 | CAUSE_4 | BO_MANA | 
+S:S_MONSTERS | INVULNER | SHRIEK
+D:このようなクッソ汚い存在は見た事がない。
+D:その存在自体がで不快であり、深く殺意を覚えそうになる。
+D:世界の崩壊が近づくにつれて無数に現れる、中年デブの姿をした天使だ。
+
+# N: serial number : monster name
+# G: symbol : color
+# I: speed : hit points : vision : armor class : alertness
+# W: depth : rarity : 0 : exp : next_exp : next_mon
+# B: attack method : attack effect : damage
+# S: spell frequency |
+# S: spell type | spell type | etc
+# F: flag | flag | etc
+# D: Description
+
 
 # 'N' indicates the beginning of an entry. The serial number must
 # increase for each new item. Entry 0 is used for the player.
