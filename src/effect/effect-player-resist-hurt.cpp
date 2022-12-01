@@ -18,6 +18,7 @@
 #include "player-base/player-race.h"
 #include "player-info/race-info.h"
 #include "player/player-damage.h"
+#include "player/player-status.h"
 #include "player/player-status-flags.h"
 #include "player/player-status-resist.h"
 #include "spell-kind/spells-equipment.h"
@@ -135,6 +136,12 @@ void effect_player_arrow(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
 
     if (has_invuln_arrow(player_ptr)) {
         msg_print(_("矢を斬り捨てた！", "You cut down the arrow!"));
+        return;
+    }
+
+    if (is_tough(player_ptr) && one_in_(100 / (2 + player_ptr->lev)))
+    {
+        msg_print(_("灘神影流、弾丸すべり！", "Bullet slipping of Nada-Shinkage-Arts!"));
         return;
     }
 
