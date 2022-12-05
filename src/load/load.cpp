@@ -133,8 +133,8 @@ static void load_player_world(PlayerType *player_ptr)
     rd_winner_class();
     rd_base_info(player_ptr);
     rd_player_info(player_ptr);
-    preserve_mode = rd_byte() != 0;
-    player_ptr->wait_report_score = rd_byte() != 0;
+    preserve_mode = rd_bool();
+    player_ptr->wait_report_score = rd_bool();
     rd_dummy2();
     rd_global_configurations(player_ptr);
     rd_extra(player_ptr);
@@ -428,13 +428,13 @@ bool load_savedata(PlayerType *player_ptr, bool *new_game)
     if (!err) {
         term_clear();
         auto ret_rd_savefile = rd_savefile(player_ptr);
-        if (ret_rd_savefile != 0) {
+        if (ret_rd_savefile != 0 && ret_rd_savefile != 11) {
             err = true;
         }
 
         if (ret_rd_savefile < 0) {
             what = _("セーブファイルを解析出来ません。", "Cannot parse savefile");
-        } else if (ret_rd_savefile > 0) {
+        } else if (ret_rd_savefile > 0 && ret_rd_savefile != 11) {
             return on_read_save_data_not_supported(player_ptr, new_game);
         }
     }

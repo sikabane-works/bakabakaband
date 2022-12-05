@@ -280,6 +280,11 @@
     <ClCompile Include="..\..\src\monster-race\monster-kind-mask.cpp" />
     <ClCompile Include="..\..\src\monster-race\race-resistance-mask.cpp" />
     <ClCompile Include="..\..\src\object-enchant\weapon\abstract-weapon-enchanter.cpp" />
+    <ClCompile Include="..\..\src\object-use\read\gbh-shirt-read-executor.cpp" />
+    <ClCompile Include="..\..\src\object-use\read\parchment-read-executor.cpp" />
+    <ClCompile Include="..\..\src\object-use\read\read-executor-factory.cpp" />
+    <ClCompile Include="..\..\src\object-use\read\ring-power-read-executor.cpp" />
+    <ClCompile Include="..\..\src\object-use\read\scroll-read-executor.cpp" />
     <ClCompile Include="..\..\src\smith\object-smith.cpp" />
     <ClCompile Include="..\..\src\smith\smith-info.cpp" />
     <ClCompile Include="..\..\src\smith\smith-tables.cpp" />
@@ -478,7 +483,7 @@
     <ClCompile Include="..\..\src\room\vault-builder.cpp" />
     <ClCompile Include="..\..\src\specific-object\blade-turner.cpp" />
     <ClCompile Include="..\..\src\specific-object\monster-ball.cpp" />
-    <ClCompile Include="..\..\src\object-use\read-execution.cpp" />
+    <ClCompile Include="..\..\src\object-use\read\read-execution.cpp" />
     <ClCompile Include="..\..\src\player\player-status-flags.cpp" />
     <ClCompile Include="..\..\src\player\player-status-table.cpp" />
     <ClCompile Include="..\..\src\player\player-view.cpp" />
@@ -585,6 +590,7 @@
     <ClCompile Include="..\..\src\target\target-setter.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-confusion.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-cut.cpp" />
+    <ClCompile Include="..\..\src\timed-effect\player-fear.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-hallucination.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-paralysis.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-stun.cpp" />
@@ -944,6 +950,7 @@
     <ClInclude Include="..\..\src\load\old\monster-flag-types-savefile50.h" />
     <ClInclude Include="..\..\src\load\player-class-specific-data-loader.h" />
     <ClInclude Include="..\..\src\load\savedata-old-flag-types.h" />
+    <ClInclude Include="..\..\src\market\bounty-type-definition.h" />
     <ClInclude Include="..\..\src\monster-race\monster-aura-types.h" />
     <ClInclude Include="..\..\src\monster-race\monster-kind-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-behavior-flags.h" />
@@ -953,6 +960,12 @@
     <ClInclude Include="..\..\src\mspell\mspell-result.h" />
     <ClInclude Include="..\..\src\object-enchant\others\apply-magic-lite.h" />
     <ClInclude Include="..\..\src\object-enchant\weapon\abstract-weapon-enchanter.h" />
+    <ClInclude Include="..\..\src\object-use\read\gbh-shirt-read-executor.h" />
+    <ClInclude Include="..\..\src\object-use\read\parchment-read-executor.h" />
+    <ClInclude Include="..\..\src\object-use\read\read-executor-base.h" />
+    <ClInclude Include="..\..\src\object-use\read\read-executor-factory.h" />
+    <ClInclude Include="..\..\src\object-use\read\ring-power-read-executor.h" />
+    <ClInclude Include="..\..\src\object-use\read\scroll-read-executor.h" />
     <ClInclude Include="..\..\src\smith\object-smith.h" />
     <ClInclude Include="..\..\src\smith\smith-info.h" />
     <ClInclude Include="..\..\src\smith\smith-tables.h" />
@@ -1234,7 +1247,7 @@
     <ClInclude Include="..\..\src\room\vault-builder.h" />
     <ClInclude Include="..\..\src\specific-object\blade-turner.h" />
     <ClInclude Include="..\..\src\specific-object\monster-ball.h" />
-    <ClInclude Include="..\..\src\object-use\read-execution.h" />
+    <ClInclude Include="..\..\src\object-use\read\read-execution.h" />
     <ClInclude Include="..\..\src\player\player-status-flags.h" />
     <ClInclude Include="..\..\src\player\player-status-table.h" />
     <ClInclude Include="..\..\src\player\player-view.h" />
@@ -1355,6 +1368,7 @@
     <ClInclude Include="..\..\src\term\screen-processor.h" />
     <ClInclude Include="..\..\src\timed-effect\player-confusion.h" />
     <ClInclude Include="..\..\src\timed-effect\player-cut.h" />
+    <ClInclude Include="..\..\src\timed-effect\player-fear.h" />
     <ClInclude Include="..\..\src\timed-effect\player-hallucination.h" />
     <ClInclude Include="..\..\src\timed-effect\player-paralysis.h" />
     <ClInclude Include="..\..\src\timed-effect\player-stun.h" />

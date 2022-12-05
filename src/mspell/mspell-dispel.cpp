@@ -140,7 +140,10 @@ MonsterSpellResult spell_RF4_DISPEL(MONSTER_IDX m_idx, PlayerType *player_ptr, M
             } else {
                 msg_print(_("弱い者いじめは止めるんだ！", ""));
             }
+        } else if (is_tough(player_ptr)) {
+            msg_print(_("う わ あ あ あ あ あ あ あ あ", ""));
         }
+
 
         return res;
     }

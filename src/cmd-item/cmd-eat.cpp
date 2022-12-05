@@ -299,7 +299,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
         break;
     case SV_FOOD_PARANOIA:
         if (!has_resist_fear(player_ptr)) {
-            if (bss.mod_afraidness(randint0(10) + 10)) {
+            if (bss.mod_fear(randint0(10) + 10)) {
                 player_ptr->plus_incident(INCIDENT::EAT_POISON, 1);
                 return true;
             }
@@ -364,7 +364,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
     case SV_FOOD_CURE_BLINDNESS:
         return bss.blindness(0);
     case SV_FOOD_CURE_PARANOIA:
-        return bss.afraidness(0);
+        return bss.fear(0);
     case SV_FOOD_CURE_CONFUSION:
         return bss.confusion(0);
     case SV_FOOD_CURE_SERIOUS:

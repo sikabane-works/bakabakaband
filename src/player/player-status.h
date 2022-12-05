@@ -35,6 +35,7 @@ bool is_invuln(PlayerType *player_ptr);
 bool is_hero(PlayerType *player_ptr);
 bool is_shero(PlayerType *player_ptr);
 bool is_echizen(PlayerType *player_ptr);
+bool is_tough(PlayerType *player_ptr);
 bool is_chargeman(PlayerType *player_ptr);
 
 void stop_mouth(PlayerType *player_ptr);

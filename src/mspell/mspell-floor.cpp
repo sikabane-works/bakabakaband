@@ -272,7 +272,10 @@ MonsterSpellResult spell_RF6_TELE_AWAY(PlayerType *player_ptr, MONSTER_IDX m_idx
             } else {
                 msg_print(_("弱い者いじめは止めるんだ！", ""));
             }
+        } else if (is_tough(player_ptr)) {
+            msg_print(_("う わ あ あ あ あ あ あ あ あ", ""));
         }
+
 
         teleport_player_away(m_idx, player_ptr, 100, false);
         return res;

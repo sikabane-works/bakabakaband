@@ -411,6 +411,7 @@ hengband_SOURCES = \
 	market/poker.cpp market/poker.h \
 	market/arena.cpp market/arena.h \
 	market/bounty-prize-table.cpp market/bounty-prize-table.h \
+	market/bounty-type-definition.h \
 	market/bounty.cpp market/bounty.h \
 	market/building-recharger.cpp market/building-recharger.h \
 	market/building-quest.cpp market/building-quest.h \
@@ -629,11 +630,18 @@ hengband_SOURCES = \
 	\
 	object-use/item-use-checker.cpp object-use/item-use-checker.h \
 	object-use/quaff-execution.cpp object-use/quaff-execution.h \
-	object-use/read-execution.cpp object-use/read-execution.h \
 	object-use/throw-execution.cpp object-use/throw-execution.h \
 	object-use/use-execution.cpp object-use/use-execution.h \
 	object-use/zaprod-execution.cpp object-use/zaprod-execution.h \
 	object-use/zapwand-execution.cpp object-use/zapwand-execution.h \
+	\
+	object-use/read/read-execution.cpp object-use/read/read-execution.h \
+	object-use/read/gbh-shirt-read-executor.cpp object-use/read/gbh-shirt-read-executor.h \
+	object-use/read/parchment-read-executor.cpp object-use/read/parchment-read-executor.h \
+	object-use/read/read-executor-base.h \
+	object-use/read/read-executor-factory.cpp object-use/read/read-executor-factory.h \
+	object-use/read/ring-power-read-executor.cpp object-use/read/ring-power-read-executor.h \
+	object-use/read/scroll-read-executor.cpp object-use/read/scroll-read-executor.h \
 	\
 	perception/identification.cpp perception/identification.h \
 	perception/object-perception.cpp perception/object-perception.h \
@@ -917,6 +925,7 @@ hengband_SOURCES = \
 	\
 	timed-effect/player-confusion.cpp timed-effect/player-confusion.h \
 	timed-effect/player-cut.cpp timed-effect/player-cut.h \
+	timed-effect/player-fear.cpp timed-effect/player-fear.h \
 	timed-effect/player-hallucination.cpp timed-effect/player-hallucination.h \
 	timed-effect/player-paralysis.cpp timed-effect/player-paralysis.h \
 	timed-effect/player-stun.cpp timed-effect/player-stun.h \

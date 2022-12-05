@@ -22,6 +22,7 @@
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/timed-effects.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-fear.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/player-paralysis.h"
 #include "timed-effect/player-stun.h"
@@ -220,11 +221,11 @@ bool BadStatusSetter::mod_poison(const TIME_EFFECT tmp_v)
 }
 
 /*!
- * @brief 恐怖の継続時間をセットする / Set "afraid", notice observable changes
+ * @brief 恐怖の継続時間をセットする / Set "fearful", notice observable changes
  * @param v 継続時間
  * @return ステータスに影響を及ぼす変化があった場合TRUEを返す。
  */
-bool BadStatusSetter::afraidness(const TIME_EFFECT tmp_v)
+bool BadStatusSetter::fear(const TIME_EFFECT tmp_v)
 {
     auto notice = false;
     auto v = std::clamp<short>(tmp_v, 0, 10000);
@@ -232,8 +233,9 @@ bool BadStatusSetter::afraidness(const TIME_EFFECT tmp_v)
         return false;
     }
 
+    auto fear = this->player_ptr->effects()->fear();
     if (v > 0) {
-        if (!this->player_ptr->afraid) {
+        if (!fear->is_fearful()) {
             msg_print(_("何もかも恐くなってきた！", "You are terrified!"));
             if (PlayerClass(this->player_ptr).lose_balance()) {
                 msg_print(_("型が崩れた。", "You lose your stance."));
@@ -244,13 +246,13 @@ bool BadStatusSetter::afraidness(const TIME_EFFECT tmp_v)
             chg_virtue(this->player_ptr, V_VALOUR, -1);
         }
     } else {
-        if (this->player_ptr->afraid) {
+        if (fear->is_fearful()) {
             msg_print(_("やっと恐怖を振り払った。", "You feel bolder now."));
             notice = true;
         }
     }
 
-    this->player_ptr->afraid = v;
+    fear->set(v);
     this->player_ptr->redraw |= PR_STATUS;
     if (!notice) {
         return false;
@@ -264,9 +266,9 @@ bool BadStatusSetter::afraidness(const TIME_EFFECT tmp_v)
     return true;
 }
 
-bool BadStatusSetter::mod_afraidness(const TIME_EFFECT tmp_v)
+bool BadStatusSetter::mod_fear(const TIME_EFFECT tmp_v)
 {
-    return this->afraidness(this->player_ptr->afraid + tmp_v);
+    return this->fear(this->player_ptr->effects()->fear()->current() + tmp_v);
 }
 
 /*!
