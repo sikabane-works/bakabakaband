@@ -123,10 +123,9 @@ static bool decide_tunnel_planned_site(PlayerType *player_ptr, dun_data_type *dd
     } else if (!build_tunnel(player_ptr, dd_ptr, dt_ptr, dd_ptr->cent[i].y, dd_ptr->cent[i].x, dd_ptr->tunnel_y, dd_ptr->tunnel_x)) {
         dd_ptr->tunnel_fail_count++;
     }
-
     if (dd_ptr->tunnel_fail_count >= 200) {
-        *dd_ptr->why = _("トンネル接続に失敗", "Failed to generate tunnels");
-        return false;
+        //*dd_ptr->why = _("トンネル接続に失敗", "Failed to generate tunnels");
+        return true;
     } else {
         msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("トンネル失敗回数:%d ", "Failure Tunnels:%d "), dd_ptr->tunnel_fail_count);
     }
