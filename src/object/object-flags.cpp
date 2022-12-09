@@ -48,24 +48,20 @@ static void object_flags_lite(const ItemEntity *o_ptr, TrFlags &flags)
  */
 TrFlags object_flags(const ItemEntity *o_ptr)
 {
-    auto *k_ptr = &baseitems_info[o_ptr->bi_id];
-
-    /* Base object */
-    auto flags = k_ptr->flags;
+    const auto &baseitem = baseitems_info[o_ptr->bi_id];
+    auto flags = baseitem.flags;
 
     if (o_ptr->is_fixed_artifact()) {
         flags = artifacts_info.at(o_ptr->fixed_artifact_idx).flags;
     }
 
     object_flags_lite(o_ptr, flags);
-
-    /* Random artifact ! */
     flags.set(o_ptr->art_flags);
-
     if (auto effect = Smith::object_effect(o_ptr); effect.has_value()) {
         auto tr_flags = Smith::get_effect_tr_flags(effect.value());
         flags.set(tr_flags);
     }
+
     if (Smith::object_activation(o_ptr).has_value()) {
         flags.set(TR_ACTIVATE);
     }
@@ -82,15 +78,14 @@ TrFlags object_flags(const ItemEntity *o_ptr)
 TrFlags object_flags_known(const ItemEntity *o_ptr)
 {
     bool spoil = false;
-    auto *k_ptr = &baseitems_info[o_ptr->bi_id];
     TrFlags flags{};
 
     if (!o_ptr->is_aware()) {
         return flags;
     }
 
-    /* Base object */
-    flags = k_ptr->flags;
+    const auto &baseitem = baseitems_info[o_ptr->bi_id];
+    flags = baseitem.flags;
 
     if (!o_ptr->is_known()) {
         return flags;
