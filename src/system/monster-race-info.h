@@ -6,6 +6,7 @@
 #include "monster-race/monster-aura-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-behavior-flags.h"
+#include "monster-race/race-brightness-flags.h"
 #include "monster-race/race-drop-flags.h"
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags-resistance.h"
@@ -91,6 +92,7 @@ public:
     EnumClassFlagGroup<MonsterFeatureType> feature_flags; //!< 能力フラグ（地形関連） / Feature Flags
     EnumClassFlagGroup<MonsterPopulationType> population_flags; //!< 能力フラグ（出現数関連） / Population Flags
     EnumClassFlagGroup<MonsterSpeakType> speak_flags; //!< 能力フラグ（セリフ） / Speaking Flags
+    EnumClassFlagGroup<MonsterBrightnessType> brightness_flags; //!< 能力フラグ（明暗） / Speaking Lite or Dark
     MonsterBlow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
     std::vector<std::tuple<MonsterRaceId, DICE_NUMBER, DICE_SID>> reinforces;
     std::vector<std::tuple<int, int, MonsterRaceId>> spawn_monsters; //!< 落とし子生成率
