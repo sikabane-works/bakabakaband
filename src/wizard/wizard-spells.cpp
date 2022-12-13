@@ -209,7 +209,7 @@ void wiz_summon_random_enemy(PlayerType *player_ptr, int num)
  */
 void wiz_summon_specific_enemy(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
-    if (!is_valid_monster_race(r_idx)) {
+    if (!MonsterRace(r_idx).is_valid()) {
         int val = 1;
         if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
             return;
@@ -244,7 +244,7 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
  */
 void wiz_summon_pet(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
-    if (!is_valid_monster_race(r_idx)) {
+    if (!MonsterRace(r_idx).is_valid()) {
         int val = 1;
         if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
             return;

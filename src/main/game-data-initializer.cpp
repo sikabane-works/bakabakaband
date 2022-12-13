@@ -166,9 +166,9 @@ void init_alloc(void)
 {
     std::vector<tag_type> elements(r_info.size());
     for (const auto &[r_idx, r_ref] : r_info) {
-        if (is_valid_monster_race(r_idx)) {
-            elements[enum2i(r_idx)].tag = r_ref.level;
-            elements[enum2i(r_idx)].index = enum2i(r_ref.idx);
+        if (MonsterRace(r_ref.idx).is_valid()) {
+            elements[enum2i(r_ref.idx)].tag = r_ref.level;
+            elements[enum2i(r_ref.idx)].index = enum2i(r_ref.idx);
         }
     }
 

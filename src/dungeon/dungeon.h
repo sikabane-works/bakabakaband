@@ -40,7 +40,7 @@
 #define DUNGEON_VOID_TERRITORY 23
 #define DUNGEON_MAX 29
 
-enum class MonsterRaceId;
+enum class MonsterRaceId : int16_t;
 
 struct feat_prob {
     FEAT_IDX feat{}; /* Feature tile */

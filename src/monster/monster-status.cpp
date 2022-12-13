@@ -400,7 +400,7 @@ void dispel_monster_status(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId s_idx)
 {
-    if (m_idx <= 0 || !is_valid_monster_race(s_idx)) {
+    if (m_idx <= 0 || !MonsterRace(s_idx).is_valid()) {
         return;
     }
 
@@ -494,7 +494,7 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId s
             if (is_hallucinated) {
                 monster_race *hallucinated_race = nullptr;
                 do {
-                    auto r_idx = i2enum<MonsterRaceId>(randint1(r_info.size() - 1));
+                    auto r_idx = MonsterRace::pick_one_at_random();
                     hallucinated_race = &r_info[r_idx];
                 } while (hallucinated_race->name.empty() || hallucinated_race->kind_flags.has(MonsterKindType::UNIQUE));
                 auto mes_evolution = _("%sは%sに進化した。", "%^s evolved into %s.");
@@ -524,7 +524,7 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId s
 
 bool monster_is_valid(monster_type *m_ptr)
 {
-    return is_valid_monster_race(m_ptr->r_idx);
+    return MonsterRace(m_ptr->r_idx).is_valid();
 }
 
 TIME_EFFECT monster_csleep_remaining(monster_type *m_ptr)
