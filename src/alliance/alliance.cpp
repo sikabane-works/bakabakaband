@@ -76,10 +76,10 @@ int Alliance::calcPlayerPower(PlayerType const &player_ptr, const int bias, cons
 int64_t Alliance::calcCurrentPower()
 {
     int64_t res = this->base_power;
-    for (auto r : r_info) {
-        if (r.alliance_idx == this->id) {
-            if (r.mob_num > 0) {
-                res += calc_monrace_eval(&r) * r.mob_num;
+    for (auto &[r_idx, r_ref] : r_info) {
+        if (r_ref.alliance_idx == this->id) {
+            if (r_ref.mob_num > 0) {
+                res += calc_monrace_eval(&r_ref) * r_ref.mob_num;
             }
         }
     }
@@ -137,7 +137,7 @@ int AllianceJural::calcImplessionPoint(PlayerType *creature_ptr) const
 
 bool AllianceJural::isAnnihilated()
 {
-    return r_info[MON_JURAL_WITCHKING].mob_num == 0;
+    return r_info[MonsterRaceId::JURAL_WITCHKING].mob_num == 0;
 }
 
 int AllianceChinChinTei::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -159,7 +159,7 @@ int AllianceKenohgun::calcImplessionPoint(PlayerType *creature_ptr) const
 
 bool AllianceKenohgun::isAnnihilated()
 {
-    return r_info[MON_RAOU].mob_num == 0;
+    return r_info[MonsterRaceId::RAOU].mob_num == 0;
 }
 
 int AllianceFangFamily::calcImplessionPoint(PlayerType *creature_ptr) const
@@ -195,7 +195,7 @@ int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType *creature
 
 bool AllianceShittoDan::isAnnihilated()
 {
-    return r_info[MON_SHITTO_MASK].mob_num == 0;
+    return r_info[MonsterRaceId::SHITTO_MASK].mob_num == 0;
 }
 
 int AllianceGEOrlic::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -241,7 +241,7 @@ int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType *creature
 
 bool AllianceDokachans::isAnnihilated()
 {
-    return r_info[MON_DOKACHAN].mob_num == 0;
+    return r_info[MonsterRaceId::DOKACHAN].mob_num == 0;
 }
 
 int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -251,7 +251,7 @@ int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType *creatur
 
 bool AllianceKetholdeth::isAnnihilated()
 {
-    return r_info[MON_PRINCESS_KETHOLDETH].mob_num == 0;
+    return r_info[MonsterRaceId::PRINCESS_KETHOLDETH].mob_num == 0;
 }
 
 int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
@@ -317,7 +317,7 @@ int AllianceBinzyouBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *cr
 
 bool AllianceBinzyouBuddhism::isAnnihilated()
 {
-    return r_info[MON_BINZYOU_MUR].mob_num == 0;
+    return r_info[MonsterRaceId::BINZYOU_MUR].mob_num == 0;
 }
 
 int AllianceAshinaClan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const

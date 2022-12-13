@@ -8,6 +8,7 @@
 #include "player-ability/player-ability-types.h"
 #include "system/monster-race-definition.h"
 #include "term/gameterm.h"
+#include "util/enum-converter.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 
@@ -107,13 +108,10 @@ errr parse_r_info(std::string_view buf, angband_header *)
         if (i < error_idx) {
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
         }
-        if (i >= static_cast<int>(r_info.size())) {
-            r_info.resize(i + 1);
-        }
 
         error_idx = i;
-        r_ptr = &r_info[i];
-        r_ptr->idx = static_cast<MONRACE_IDX>(i);
+        r_ptr = &(r_info.emplace_hint(r_info.end(), i2enum<MonsterRaceId>(i), monster_race{})->second);
+        r_ptr->idx = i2enum<MonsterRaceId>(i);
 #ifdef JP
         r_ptr->name = tokens[2];
 #endif
@@ -199,9 +197,10 @@ errr parse_r_info(std::string_view buf, angband_header *)
         info_set_value(r_ptr->next_exp, tokens[5]);
         info_set_value(r_ptr->next_r_idx, tokens[6]);
     } else if (tokens[0] == "R") {
-        MONSTER_IDX mon_idx;
+        // R:reinforcer_idx:number_dice
         DICE_NUMBER dn;
         DICE_SID ds;
+        MonsterRaceId mon_idx;
 
         if (tokens.size() < 3) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
@@ -291,14 +290,12 @@ errr parse_r_info(std::string_view buf, angband_header *)
             }
 
             if (s_tokens.size() == 2 && s_tokens[0] == "FATHER") {
-                info_set_value(r_ptr->max_num, s_tokens[1]);
-                r_ptr->father_r_idx = r_ptr->max_num;
+                info_set_value(r_ptr->father_r_idx, s_tokens[1]);
                 continue;
             }
 
             if (s_tokens.size() == 2 && s_tokens[0] == "MOTHER") {
-                info_set_value(r_ptr->max_num, s_tokens[1]);
-                r_ptr->mother_r_idx = r_ptr->max_num;
+                info_set_value(r_ptr->mother_r_idx, s_tokens[1]);
                 continue;
             }
 
@@ -346,7 +343,7 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 if (s_tokens[1] == "CREATURE" && s_tokens[3] == "IN") {
                     int num;
                     int deno;
-                    MONRACE_IDX mon_idx;
+                    MonsterRaceId mon_idx;
                     info_set_value(num, s_tokens[2]);
                     info_set_value(deno, s_tokens[4]);
                     info_set_value(mon_idx, s_tokens[5]);
@@ -425,17 +422,17 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 int deno;
                 int dn;
                 int ds;
-                KIND_OBJECT_IDX kind_idx;
+                MonsterRaceId r_idx;
                 info_set_value(num, s_tokens[2]);
                 info_set_value(deno, s_tokens[4]);
-                info_set_value(kind_idx, s_tokens[5]);
+                info_set_value(r_idx, s_tokens[5]);
                 const auto &dices = str_split(s_tokens[6], 'd', true, 10);
                 if (dices.size() != 2) {
                     return PARSE_ERROR_INVALID_FLAG;
                 }
                 info_set_value(dn, dices[0]);
                 info_set_value(ds, dices[1]);
-                r_ptr->dead_spawns.push_back({ num, deno, kind_idx, ds, dn });
+                r_ptr->dead_spawns.push_back({ num, deno, r_idx, ds, dn });
                 continue;
             }
             if (!grab_one_basic_flag(r_ptr, f)) {

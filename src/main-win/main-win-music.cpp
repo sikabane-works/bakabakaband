@@ -121,9 +121,9 @@ static concptr town_key_at(int index, char *buf)
     return buf;
 }
 
-static inline MONRACE_IDX get_monster_count()
+static inline MonsterRaceId get_monster_count()
 {
-    return static_cast<MONRACE_IDX>(r_info.size());
+    return static_cast<MonsterRaceId>(r_info.size());
 }
 
 /*!
@@ -134,7 +134,7 @@ static inline MONRACE_IDX get_monster_count()
  */
 static concptr monster_key_at(int index, char *buf)
 {
-    if (index >= get_monster_count()) {
+    if (index >= enum2i(get_monster_count())) {
         return nullptr;
     }
 
