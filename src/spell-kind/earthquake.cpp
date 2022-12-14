@@ -59,7 +59,8 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
 
     if (r > 75) {
         r = 75;
-
+    }
+    {
         bool map[earthquake_max * 2][earthquake_max * 2];
         for (POSITION y = 0; y < earthquake_max * 2; y++) {
             for (POSITION x = 0; x < earthquake_max * 2; x++) {
