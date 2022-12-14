@@ -76,10 +76,10 @@ void call_the_void(PlayerType *player_ptr)
 
     bool is_special_fllor = inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number);
     is_special_fllor |= floor_ptr->dun_level > 0;
-    //if (is_special_fllor) {
-    //    msg_print(_("地面が揺れた。", "The ground trembles."));
-    //    return;
-    //}
+    if (is_special_fllor) {
+        msg_print(_("地面が揺れた。", "The ground trembles."));
+        return;
+    }
 
 #ifdef JP
     msg_format("あなたは%sを壁に近すぎる場所で唱えてしまった！", ((mp_ptr->spell_book == ItemKindType::LIFE_BOOK) ? "祈り" : "呪文"));
