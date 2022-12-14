@@ -38,16 +38,16 @@ static void add_inscription(char **short_flavor, concptr str)
  * @brief get_inscriptionのサブセットとしてアイテムの特性フラグを表す文字列を返す
  * @param fi_vec 参照する特性表示記号テーブル
  * @param flags 対応するアイテムの特性フラグ
- * @param kanji trueならば漢字記述/falseならば英語記述
+ * @param is_kanji trueならば漢字記述/falseならば英語記述
  * @return アイテムの特性フラグを表す文字列
  */
-static std::string inscribe_flags_aux(const std::vector<flag_insc_table> &fi_vec, const TrFlags &flags, [[maybe_unused]] bool kanji)
+static std::string inscribe_flags_aux(const std::vector<flag_insc_table> &fi_vec, const TrFlags &flags, [[maybe_unused]] bool is_kanji)
 {
     std::stringstream ss;
 
     for (const auto &fi : fi_vec) {
         if (flags.has(fi.flag) && (!fi.except_flag.has_value() || flags.has_not(fi.except_flag.value()))) {
-            const auto flag_str = _(kanji ? fi.japanese : fi.english, fi.english);
+            const auto flag_str = _(is_kanji ? fi.japanese : fi.english, fi.english);
             ss << flag_str;
         }
     }
@@ -76,11 +76,11 @@ static bool has_flag_of(const std::vector<flag_insc_table> &fi_vec, const TrFlag
 /*!
  * @brief アイテムの特性短縮表記をまとめて提示する。
  * @param item 特性短縮表記を得たいアイテムの参照
- * @param kanji trueならば漢字表記 / falseなら英語表記
+ * @param is_kanji trueならば漢字表記 / falseなら英語表記
  * @param all falseならばベースアイテム上で明らかなフラグは省略する
  * @return アイテムの特性短縮表記
  */
-std::string get_ability_abbreviation(const ItemEntity &item, bool kanji, bool all)
+std::string get_ability_abbreviation(const ItemEntity &item, bool is_kanji, bool all)
 {
     auto flags = object_flags(&item);
     if (!all) {
@@ -124,14 +124,14 @@ std::string get_ability_abbreviation(const ItemEntity &item, bool kanji, bool al
     std::stringstream ss;
     auto prev_tellp = ss.tellp();
 
-    if (has_flag_of(flag_insc_plus, flags) && kanji) {
+    if (has_flag_of(flag_insc_plus, flags) && is_kanji) {
         ss << '+';
     }
 
-    ss << inscribe_flags_aux(flag_insc_plus, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_plus, flags, is_kanji);
 
     if (has_flag_of(flag_insc_immune, flags)) {
-        if (!kanji && (ss.tellp() != prev_tellp)) {
+        if (!is_kanji && (ss.tellp() != prev_tellp)) {
             ss << ';';
             prev_tellp = ss.tellp();
         }
@@ -139,10 +139,10 @@ std::string get_ability_abbreviation(const ItemEntity &item, bool kanji, bool al
         ss << '*';
     }
 
-    ss << inscribe_flags_aux(flag_insc_immune, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_immune, flags, is_kanji);
 
     if (has_flag_of(flag_insc_vuln, flags)) {
-        if (!kanji && (ss.tellp() != prev_tellp)) {
+        if (!is_kanji && (ss.tellp() != prev_tellp)) {
             ss << ';';
             prev_tellp = ss.tellp();
         }
@@ -150,10 +150,10 @@ std::string get_ability_abbreviation(const ItemEntity &item, bool kanji, bool al
         ss << 'v';
     }
 
-    ss << inscribe_flags_aux(flag_insc_vuln, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_vuln, flags, is_kanji);
 
     if (has_flag_of(flag_insc_resistance, flags)) {
-        if (kanji) {
+        if (is_kanji) {
             ss << 'r';
         } else if (ss.tellp() != prev_tellp) {
             ss << ';';
@@ -161,65 +161,65 @@ std::string get_ability_abbreviation(const ItemEntity &item, bool kanji, bool al
         }
     }
 
-    ss << inscribe_flags_aux(flag_insc_resistance, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_resistance, flags, is_kanji);
 
     if (has_flag_of(flag_insc_misc, flags) && (ss.tellp() != prev_tellp)) {
         ss << ';';
         prev_tellp = ss.tellp();
     }
 
-    ss << inscribe_flags_aux(flag_insc_misc, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_misc, flags, is_kanji);
 
     if (has_flag_of(flag_insc_aura, flags)) {
         ss << '[';
     }
 
-    ss << inscribe_flags_aux(flag_insc_aura, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_aura, flags, is_kanji);
 
     if (has_flag_of(flag_insc_brand, flags)) {
         ss << '|';
     }
 
-    ss << inscribe_flags_aux(flag_insc_brand, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_brand, flags, is_kanji);
 
     if (has_flag_of(flag_insc_kill, flags)) {
         ss << "/X";
     }
 
-    ss << inscribe_flags_aux(flag_insc_kill, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_kill, flags, is_kanji);
 
     if (has_flag_of(flag_insc_slay, flags)) {
         ss << '/';
     }
 
-    ss << inscribe_flags_aux(flag_insc_slay, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_slay, flags, is_kanji);
 
-    if (kanji) {
+    if (is_kanji) {
         if (has_flag_of(flag_insc_esp1, flags) || has_flag_of(flag_insc_esp2, flags)) {
             ss << '~';
         }
 
-        ss << inscribe_flags_aux(flag_insc_esp1, flags, kanji)
-           << inscribe_flags_aux(flag_insc_esp2, flags, kanji);
+        ss << inscribe_flags_aux(flag_insc_esp1, flags, is_kanji)
+           << inscribe_flags_aux(flag_insc_esp2, flags, is_kanji);
     } else {
         if (has_flag_of(flag_insc_esp1, flags)) {
             ss << '~';
         }
 
-        ss << inscribe_flags_aux(flag_insc_esp1, flags, kanji);
+        ss << inscribe_flags_aux(flag_insc_esp1, flags, is_kanji);
 
         if (has_flag_of(flag_insc_esp2, flags)) {
             ss << '~';
         }
 
-        ss << inscribe_flags_aux(flag_insc_esp2, flags, kanji);
+        ss << inscribe_flags_aux(flag_insc_esp2, flags, is_kanji);
     }
 
     if (has_flag_of(flag_insc_sust, flags)) {
         ss << '(';
     }
 
-    ss << inscribe_flags_aux(flag_insc_sust, flags, kanji);
+    ss << inscribe_flags_aux(flag_insc_sust, flags, is_kanji);
 
     return ss.str();
 }
