@@ -78,7 +78,7 @@ Name                                          Lev  Rar  Spd      Hp      Ac     
 
 ## ミーム的お約束勢
 
-許されなれないんDA☆
+許されないんDA☆
 
 ```
 Name                                          Lev  Rar  Spd      Hp      Ac          Visual Info
