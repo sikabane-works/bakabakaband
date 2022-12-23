@@ -37,7 +37,17 @@
 #include "world/world.h"
 #include <ctime>
 
-#define GRAVE_LINE_WIDTH 31
+constexpr auto GRAVE_LINE_WIDTH = 31;
+constexpr auto GRAVE_LINE_START_COL = 11;
+constexpr auto GRAVE_PLAYER_NAME_ROW = 6;
+constexpr auto GRAVE_PLAYER_TITLE_ROW = 8;
+constexpr auto GRAVE_PLAYER_CLASS_ROW = 10;
+constexpr auto GRAVE_LEVEL_ROW = 11;
+constexpr auto GRAVE_EXP_ROW = 12;
+constexpr auto GRAVE_AU_ROW = 13;
+constexpr auto GRAVE_KILLER_NAME_ROW = _(14, 15);
+constexpr auto GRAVE_DEAD_PLACE_ROW = _(15, 14);
+constexpr auto GRAVE_DEAD_DATETIME_ROW = 17;
 
 /*!
  * @brief 墓石の真ん中に文字列を書き込む /
@@ -57,11 +67,11 @@ static std::string center_string(std::string_view str)
  */
 static void show_basic_params(PlayerType *player_ptr)
 {
-    put_str(center_string(format(_("レベル: %d", "Level: %d"), (int)player_ptr->lev)), 11, 11);
+    put_str(center_string(format(_("レベル: %d", "Level: %d"), (int)player_ptr->lev)), GRAVE_LEVEL_ROW, GRAVE_LINE_START_COL);
 
-    put_str(center_string(format(_("経験値: %ld", "Exp: %ld"), (long)player_ptr->exp)), 12, 11);
+    put_str(center_string(format(_("経験値: %ld", "Exp: %ld"), (long)player_ptr->exp)), GRAVE_EXP_ROW, GRAVE_LINE_START_COL);
 
-    put_str(center_string(format(_("所持金: %ld", "AU: %ld"), (long)player_ptr->au)), 13, 11);
+    put_str(center_string(format(_("所持金: %ld", "AU: %ld"), (long)player_ptr->au)), GRAVE_AU_ROW, GRAVE_LINE_START_COL);
 }
 
 #ifdef JP
@@ -82,7 +92,7 @@ static int show_killing_monster(PlayerType *player_ptr)
 {
     const auto lines = shape_buffer(player_ptr->died_from, GRAVE_LINE_WIDTH + 1);
     if (lines.size() == 1) {
-        put_str(center_string(lines[0]), 14, 11);
+        put_str(center_string(lines[0]), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
         return 0;
     }
 
@@ -90,8 +100,8 @@ static int show_killing_monster(PlayerType *player_ptr)
         char buf[GRAVE_LINE_WIDTH + 1];
         angband_strcpy(buf, lines[1].data(), sizeof(buf) - 2);
         angband_strcat(buf, "…", sizeof(buf));
-        put_str(center_string(lines[0]), 14, 11);
-        put_str(center_string(buf), 15, 11);
+        put_str(center_string(lines[0]), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
+        put_str(center_string(buf), GRAVE_KILLER_NAME_ROW + 1, GRAVE_LINE_START_COL);
         return 1;
     }
 
@@ -102,14 +112,14 @@ static int show_killing_monster(PlayerType *player_ptr)
         if (lines[0].length() + lines[1].length() - start_pos <= GRAVE_LINE_WIDTH) {
             const auto name = lines[0].substr(start_pos).append(lines[1]);
             std::string_view title(lines[0].begin(), lines[0].begin() + start_pos);
-            put_str(center_string(title), 14, 11);
-            put_str(center_string(name), 15, 11);
+            put_str(center_string(title), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
+            put_str(center_string(name), GRAVE_KILLER_NAME_ROW + 1, GRAVE_LINE_START_COL);
             return 1;
         }
     }
 
-    put_str(center_string(lines[0]), 14, 11);
-    put_str(center_string(lines[1]), 15, 11);
+    put_str(center_string(lines[0]), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
+    put_str(center_string(lines[1]), GRAVE_KILLER_NAME_ROW + 1, GRAVE_LINE_START_COL);
     return 1;
 }
 
@@ -144,7 +154,7 @@ static void show_dead_place(PlayerType *player_ptr, int extra_line)
         }
     }
 
-    put_str(center_string(place), 15 + extra_line, 11);
+    put_str(center_string(place), GRAVE_DEAD_PLACE_ROW + extra_line, GRAVE_LINE_START_COL);
 }
 
 /*!
@@ -155,11 +165,11 @@ static void show_tomb_detail(PlayerType *player_ptr)
 {
     auto offset = 0;
     if (streq(player_ptr->died_from, "途中終了")) {
-        put_str(center_string("<自殺>"), 14, 11);
+        put_str(center_string("<自殺>"), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
     } else if (streq(player_ptr->died_from, "ripe")) {
-        put_str(center_string("引退後に虚無った"), 14, 11);
+        put_str(center_string("引退後に虚無った"), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
     } else if (streq(player_ptr->died_from, "Seppuku")) {
-        put_str(center_string("勝利の後、切腹して虚無った"), 14, 11);
+        put_str(center_string("勝利の後、切腹して虚無った"), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
     } else {
         offset = show_killing_monster(player_ptr);
     }
@@ -175,10 +185,10 @@ static void show_tomb_detail(PlayerType *player_ptr)
  */
 static void show_tomb_detail(PlayerType *player_ptr)
 {
-    put_str(center_string(format("Killed on Level %d", player_ptr->current_floor_ptr->dun_level)), 14, 11);
+    put_str(center_string(format("Killed on Level %d", player_ptr->current_floor_ptr->dun_level)), GRAVE_DEAD_PLACE_ROW, GRAVE_LINE_START_COL);
 
     auto lines = shape_buffer(format("by %s.", player_ptr->died_from.data()).data(), GRAVE_LINE_WIDTH + 1);
-    put_str(center_string(lines[0]), 15, 11);
+    put_str(center_string(lines[0]), GRAVE_KILLER_NAME_ROW, GRAVE_LINE_START_COL);
     if (lines.size() == 1) {
         return;
     }
@@ -190,7 +200,7 @@ static void show_tomb_detail(PlayerType *player_ptr)
         lines[1].append("...");
     }
 
-    put_str(center_string(lines[1]), 16, 11);
+    put_str(center_string(lines[1]), GRAVE_KILLER_NAME_ROW + 1, GRAVE_LINE_START_COL);
 }
 #endif
 
@@ -206,22 +216,22 @@ void print_tomb(PlayerType *player_ptr)
     read_dead_file(buf, sizeof(buf), wc_ptr->is_blown_away());
     concptr p = w_ptr->total_winner ? _("偉大なる者", "Magnificent") : player_titles[enum2i(player_ptr->pclass)][(player_ptr->lev - 1) / 5].data();
 
-    put_str(center_string(player_ptr->name), 6, 11);
+    put_str(center_string(player_ptr->name), GRAVE_PLAYER_NAME_ROW, GRAVE_LINE_START_COL);
 
 #ifdef JP
 #else
-    put_str(center_string("the"), 7, 11);
+    put_str(center_string("the"), GRAVE_PLAYER_TITLE_ROW - 1, GRAVE_LINE_START_COL);
 #endif
 
-    put_str(center_string(p), 8, 11);
+    put_str(center_string(p), GRAVE_PLAYER_TITLE_ROW, GRAVE_LINE_START_COL);
 
-    put_str(center_string(cp_ptr->title), 10, 11);
+    put_str(center_string(cp_ptr->title), GRAVE_PLAYER_CLASS_ROW, GRAVE_LINE_START_COL);
 
     show_basic_params(player_ptr);
     show_tomb_detail(player_ptr);
 
     time_t ct = time((time_t *)0);
-    put_str(center_string(format("%-.24s", ctime(&ct))), 17, 11);
+    put_str(center_string(format("%-.24s", ctime(&ct))), GRAVE_DEAD_DATETIME_ROW, GRAVE_LINE_START_COL);
     if (wc_ptr->is_blown_away()) {
         msg_format(_("世 界 こ わ れ る", "The world had *b*r*o*k*e*n*."));
     } else {
