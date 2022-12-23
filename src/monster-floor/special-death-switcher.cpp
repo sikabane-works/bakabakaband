@@ -333,9 +333,8 @@ static void on_dead_dawn(PlayerType *player_ptr, monster_death_type *md_ptr)
 static void on_dead_ninja(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     if (is_seen(player_ptr, md_ptr->m_ptr)) {
-        GAME_TEXT m_name[MAX_NLEN];
         msg_print(_("「サヨナラ！」", "Sayonara!"));
-        monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
+        auto m_name = monster_desc(player_ptr, md_ptr->m_ptr, MD_NONE);
         msg_format(_("%sは哀れ爆発四散した！ショッギョ・ムッジョ！", "%s explodes pitifully! Shogyomujo!"), m_name);
     }
 
@@ -484,10 +483,9 @@ static void on_dead_dragon_centipede(PlayerType *player_ptr, monster_death_type 
         }
     }
 
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
     if (notice) {
-        msg_format(_("%sが再生した！", "The %s reproduced!"), m_name);
+        const auto m_name = monster_desc(player_ptr, md_ptr->m_ptr, MD_NONE);
+        msg_format(_("%sが再生した！", "The %s reproduced!"), m_name.data());
         sound(SOUND_SUMMON);
     }
 }

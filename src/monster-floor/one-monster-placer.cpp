@@ -447,8 +447,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     m_ptr->get_real_r_ref().cur_num++;
 
     if (any_bits(mode, PM_AMBUSH)) {
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, m_ptr, 0);
+        auto m_name = monster_desc(player_ptr, m_ptr, 0);
         msg_format(_("突如%sがあなたに襲い掛かってきた！", "Suddenly %s has ambushed you!"), m_name);
         disturb(player_ptr, false, true);
         MonsterAttackPlayer(player_ptr, g_ptr->m_idx).make_attack_normal();

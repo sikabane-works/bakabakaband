@@ -507,21 +507,16 @@ static std::string_view get_speak_filename(MonsterEntity *m_ptr)
 
 static void speaking(PlayerType *player_ptr, MonsterEntity *m_ptr, bool vociferous)
 {
-    GAME_TEXT m_name[MAX_NLEN];
+    const auto m_name = m_ptr->ml ? monster_desc(player_ptr, m_ptr, 0) : std::string(_("それ", "It"));
     char monmessage[1024];
-    if (m_ptr->ml) {
-        monster_desc(player_ptr, m_name, m_ptr, 0);
-    } else {
-        strcpy(m_name, _("それ", "It"));
-    }
 
     auto filename = get_speak_filename(m_ptr);
     if (filename.empty()) {
         return;
     }
 
-    if (get_rnd_line(filename.data(), enum2i(vociferous ? m_ptr->r_idx : m_ptr->ap_r_idx), monmessage) == 0) {
-        msg_format(_("%^s%s", "%^s %s"), m_name, monmessage);
+    if (get_rnd_line(filename.data(), enum2i(m_ptr->ap_r_idx), monmessage) == 0) {
+        msg_format(_("%^s%s", "%^s %s"), m_name.data(), monmessage);
     }
 }
 
