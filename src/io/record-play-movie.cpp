@@ -227,10 +227,10 @@ static errr send_text_to_chuukei_server(TERM_LEN x, TERM_LEN y, int len, TERM_CO
     }
 
     if (string_is_repeat(str, len)) {
-        while (len > split_max) {
-            insert_ringbuf(format("n%c%c%c%c%c", x + 1, y + 1, split_max, col, *str));
-            x += split_max;
-            len -= split_max;
+        while (len > SPLIT_MAX) {
+            insert_ringbuf(format("n%c%c%c%c%c", x + 1, y + 1, SPLIT_MAX, col, *str));
+            x += SPLIT_MAX;
+            len -= SPLIT_MAX;
         }
 
         std::string formatted_text;
@@ -251,8 +251,8 @@ static errr send_text_to_chuukei_server(TERM_LEN x, TERM_LEN y, int len, TERM_CO
 #else
     const auto *payload = str;
 #endif
-    while (len > split_max) {
-        auto split_len = _(find_split(payload, split_max), split_max);
+    while (len > SPLIT_MAX) {
+        auto split_len = _(find_split(payload, SPLIT_MAX), SPLIT_MAX);
         insert_ringbuf(format("t%c%c%c%c", x + 1, y + 1, split_len, col), std::string_view(payload, split_len));
         x += split_len;
         len -= split_len;
@@ -262,6 +262,7 @@ static errr send_text_to_chuukei_server(TERM_LEN x, TERM_LEN y, int len, TERM_CO
     insert_ringbuf(format("t%c%c%c%c", x + 1, y + 1, len, col), std::string_view(payload, len));
     return (*old_text_hook)(x, y, len, col, str);
 }
+
 
 static errr send_wipe_to_chuukei_server(int x, int y, int len)
 {
