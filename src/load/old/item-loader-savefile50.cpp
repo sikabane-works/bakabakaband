@@ -169,9 +169,9 @@ void ItemLoader50::rd_item(ItemEntity *o_ptr)
     if (any_bits(flags, SaveDataItemFlagType::ART_NAME)) {
         char buf[128];
         rd_string(buf, sizeof(buf));
-        o_ptr->art_name = quark_add(buf);
+        o_ptr->randart_name.emplace(buf);
     } else {
-        o_ptr->art_name = 0;
+        o_ptr->randart_name.reset();
     }
 
     if ((o_ptr->ego_idx == EgoType::DARK) || (o_ptr->ego_idx == EgoType::ANCIENT_CURSE) || (o_ptr->is_specific_artifact(FixedArtifactId::NIGHT))) {

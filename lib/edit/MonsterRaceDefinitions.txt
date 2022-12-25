@@ -38231,6 +38231,27 @@ S:1_IN_2 |
 S:MISSILE
 D:色々通常の三倍なサクらしいが、そんなに三倍ではないようだ。
 
+N:2086:『許されざる角度を抱く者』
+E:Old sorcerer
+G:p:v
+I:130:52d25:20:60:10
+W:69:3:5000:0:0
+B:HIT:HURT:6d8
+B:HIT:HURT:6d8
+B:HIT:HURT:6d8
+B:TOUCH:DR_MANA:6d8
+F:MALE | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | UNIQUE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD |
+F:SMART | OPEN_DOOR | BASH_DOOR | TAKE_ITEM |
+F:EVIL | NO_CONF | NO_SLEEP |
+S:1_IN_2 |
+S:BLINK | TELE_TO | BLIND | CONF | CAUSE_3 | CAUSE_4 | TRAPS |
+S:BO_ACID | BA_FIRE | BA_COLD | BA_POIS |
+S:S_MONSTER | S_UNDEAD | S_DRAGON | S_HI_DRAGON | S_HI_UNDEAD
+D:「許されないんやな…」「三日後百倍だからな」そのように呟きながら
+D:体を傾ける男の角度は鈍角でありながら、かの猟犬を絶えず生み出している。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
