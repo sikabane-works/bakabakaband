@@ -168,7 +168,6 @@ std::string monster_desc(PlayerType *player_ptr, MonsterEntity *m_ptr, BIT_FLAGS
 
     /* First, try using pronouns, or describing hidden monsters */
     const auto &monrace = monraces_info[m_ptr->ap_r_idx];
-    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!seen || pron) {
         auto kind = 0x00;
         if (any_bits(monrace.flags1, RF1_FEMALE)) {
@@ -221,7 +220,7 @@ std::string monster_desc(PlayerType *player_ptr, MonsterEntity *m_ptr, BIT_FLAGS
         desc.append(_("「", " called ")).append(m_ptr->nickname).append(_("」", ""));
     }
 
-    if (player_ptr->riding && (&floor_ptr->m_list[player_ptr->riding] == m_ptr)) {
+    if (player_ptr->riding && (&player_ptr->current_floor_ptr->m_list[player_ptr->riding] == m_ptr)) {
         desc.append(_("(乗馬中)", "(riding)"));
     }
 
