@@ -508,15 +508,14 @@ static std::string_view get_speak_filename(MonsterEntity *m_ptr)
 static void speaking(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     const auto m_name = m_ptr->ml ? monster_desc(player_ptr, m_ptr, 0) : std::string(_("それ", "It"));
-    char monmessage[1024];
-
     auto filename = get_speak_filename(m_ptr);
     if (filename.empty()) {
         return;
     }
 
-    if (get_random_line(filename.data(), enum2i(m_ptr->ap_r_idx), monmessage) == 0) {
-        msg_format(_("%^s%s", "%^s %s"), m_name.data(), monmessage);
+    const auto monmessage = get_random_line(filename.data(), enum2i(m_ptr->ap_r_idx));
+    if (monmessage.has_value()) {
+        msg_format(_("%^s%s", "%^s %s"), m_name.data(), monmessage->data());
     }
 }
 
