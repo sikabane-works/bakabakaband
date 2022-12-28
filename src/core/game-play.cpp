@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief ゲームプレイのメインルーチン
  * @date 2020/05/10
  * @author Hourier
@@ -50,6 +50,7 @@
 #include "io/screen-util.h"
 #include "io/signal-handlers.h"
 #include "io/write-diary.h"
+#include "item-info/flavor-initializer.h"
 #include "load/load.h"
 #include "main/sound-of-music.h"
 #include "market/arena-info-table.h"
@@ -288,7 +289,7 @@ static void generate_world(PlayerType *player_ptr, bool new_game)
     panel_col_min = floor_ptr->width;
 
     set_floor_and_wall(floor_ptr->dungeon_idx);
-    flavor_init();
+    initialize_items_flavor();
     prt(_("お待ち下さい...", "Please wait..."), 0, 0);
     term_fresh();
     generate_wilderness(player_ptr);

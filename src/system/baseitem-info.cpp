@@ -644,7 +644,7 @@ void BaseitemInfo::decide_easy_know()
     case ItemKindType::SCROLL:
     case ItemKindType::ROD:
     case ItemKindType::STATUE:
-    case ItemKindType::PARCHMENT:
+    case ItemKindType::READING_MATTER:
         this->easy_know = true;
         return;
     default:
