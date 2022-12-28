@@ -25823,7 +25823,7 @@ F:WILD_WOOD | HAS_LITE_1
 D:空飛ぶ島に住まう白い兎に似た人型種族だ。
 
 N:1315:ワームとぐろエンジン
-E:Wurmcoil Engine
+E:Wurmcoil engine
 G:w:r
 I:118:90d25:12:100:10
 W:40:3:0:6500:0:0
@@ -25831,23 +25831,39 @@ B:CRUSH:SUPERHURT:8d6
 B:CRUSH:POISON:12d6
 B:CRUSH:SUPERHURT:8d6
 B:CRUSH:EXP_40:12d6
+F:DEAD_SPAWN_1_IN_1_1316_1d1
+F:DEAD_SPAWN_1_IN_1_1317_1d1
 F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_80 | ALLIANCE_PHYREXIA
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
 D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
 D:真っ二つに破壊されてなお平然と稼働する。
 
-N:1316:Dummy
-I:0:1d1:0:0:0
-W:0:255:0:40:0:0
-E:Player
-G:@:w
+N:1316:ワームとぐろエンジン上部
+E:Upper body of wurmcoil engine
+G:w:y
+I:114:20d25:12:100:10
+W:40:255:0:1500:0:0
+B:CRUSH:SUPERHURT:8d6
+B:CRUSH:POISON:12d6
+F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_80 | ALLIANCE_PHYREXIA
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
+D:真っ二つに破壊されてなお平然と稼働する。
 
-N:1317:Dummy
-I:0:1d1:0:0:0
-W:0:255:0:40:0:0
-E:Player
-G:@:w
+N:1317:ワームとぐろエンジン下部
+E:Lower body of wurmcoil engine
+G:w:o
+I:114:20d25:12:100:10
+W:40:255:0:1500:0:0
+B:CRUSH:SUPERHURT:8d6
+B:CRUSH:EXP_40:12d6
+F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_80 | ALLIANCE_PHYREXIA
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
+D:真っ二つに破壊されてなお平然と稼働する。
 
 N:1318:Dummy
 I:0:1d1:0:0:0
