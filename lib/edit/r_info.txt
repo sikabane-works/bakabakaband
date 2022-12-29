@@ -25865,11 +25865,19 @@ F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
 D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
 D:真っ二つに破壊されてなお平然と稼働する。
 
-N:1318:Dummy
-I:0:1d1:0:0:0
-W:0:255:0:40:0:0
-E:Player
-G:@:w
+N:1318:ボウガンのガキ
+E:Bowgun kid
+G:t:R
+I:110:1d4:20:16:5
+W:12:10:0:50:0:0
+B:SHOOT:HURT:1d30
+F:MALE | HAS_LITE_1 | WEIRD_MIND | QUANTUM | MULTIPLY | ALLIANCE_TURBAN-KIDS | MOB_1000
+F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | HUMAN | NEVER_BLOW
+F:OPEN_DOOR | BASH_DOOR
+F:DROP_KIND_1_IN_1_94_0_1d1
+F:DROP_KIND_1_IN_1_75_0_1d1
+S:1_IN_4 | SHOOT
+D:ターバンのガキの亜種だ！彼らも増殖を繰り返し世界を己等で掌握しつくそうとしているぞ！
 
 N:1319:Dummy
 I:0:1d1:0:0:0
