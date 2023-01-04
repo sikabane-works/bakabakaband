@@ -79,7 +79,7 @@ int64_t Alliance::calcCurrentPower()
     for (auto &[r_idx, r_ref] : r_info) {
         if (r_ref.alliance_idx == this->id) {
             if (r_ref.mob_num > 0) {
-                res += calc_monrace_eval(&r_ref) * r_ref.mob_num;
+                res += MonsterRace(r_idx).calc_eval() * r_ref.mob_num;
             }
         }
     }
