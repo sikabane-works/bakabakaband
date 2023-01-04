@@ -25956,11 +25956,19 @@ F:WEIRD_MIND | DROP_CORPSE
 D:$Yum!  These look quite tasty.
 D:うーん！それはとてもおいしそうに見える。
 
-N:1325:Dummy
-I:0:1d1:0:0:0
-W:0:255:0:40:0:0
-E:Player
-G:@:w
+N:1325:いんゆめ君
+E:Smileghost (Innyume)
+G:#:y
+I:105:10d2:2:1:0
+W:4:1:0:3:0:0
+B:GAZE:CONFUSE:1d6
+F:NEVER_MOVE | 
+F:STUPID | EMPTY_MIND | DROP_CORPSE | EAT_CONF
+F:NO_CONF | NO_SLEEP | NO_FEAR | RAND_25 | QUANTUM | NASTY
+S:1_IN_3 |
+S:BLINK
+D:$Howdy. Howdy.
+D:オッスオッス
 
 N:1326:Dummy
 I:0:1d1:0:0:0
