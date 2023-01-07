@@ -26011,11 +26011,20 @@ F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 D:48時間一睡もせずただひたすら女とやりまくるという、
 D:なんとも過酷でお馬鹿なことを平然とやりぬいた、肉食獣のような格闘家コンビ、その弟だ。
 
-N:1329:Dummy
-I:0:1d1:0:0:0
-W:0:255:0:40:0:0
-E:Player
-G:@:w
+N:1329:セックス・マシンガンズ『ケンゾー』
+E:Kenzo, a Brother of Sex Machine Guns
+G:p:o
+I:110:21d12:20:35:20
+W:11:2:0:100:0:0
+B:PUNCH:HURT:2d8
+B:BITE:HURT:2d8
+B:PUNCH:HURT:2d8
+B:BITE:HURT:2d8
+F:UNIQUE | MALE | HAS_LITE_1 | HUMAN | EVIL
+F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | QUANTUM
+F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+D:48時間一睡もせずただひたすら女とやりまくるという、
+D:なんとも過酷でお馬鹿なことを平然とやりぬいた、肉食獣のような格闘家コンビ、その兄だ。
 
 N:1330:Dummy
 I:0:1d1:0:0:0
