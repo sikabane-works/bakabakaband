@@ -26026,11 +26026,20 @@ F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 D:48時間一睡もせずただひたすら女とやりまくるという、
 D:なんとも過酷でお馬鹿なことを平然とやりぬいた、肉食獣のような格闘家コンビ、その兄だ。
 
-N:1330:Dummy
-I:0:1d1:0:0:0
-W:0:255:0:40:0:0
-E:Player
-G:@:w
+N:1330:聖なる殺人者『九条シオン』
+E:Sion Kuzyo, Sacred Killer
+G:p:w
+I:110:41d12:20:55:20
+W:21:2:0:100:0:0
+B:PUNCH:HURT:6d8
+B:PUNCH:HURT:6d8
+B:PUNCH:HURT:6d8
+B:PUNCH:HURT:6d8
+F:UNIQUE | MALE | HAS_LITE_1 | HUMAN | EVIL
+F:WILD_ALL | DROP_SKELETON | DROP_CORPSE | QUANTUM
+F:DROP_90 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR | NO_FEAR
+D:ヤクザのダーク・ファイトで悪魔を滅ぼすために殺人試合を重ね、解体を繰り返してきた神父だ。
+D:父母を邪悪な非行少年に殺された記憶を持つが、それは己自身の凶行であったことを彼は狂気の中で欺瞞した。
 
 N:1331:迫真空手部後輩『KMR』
 G:p:u
