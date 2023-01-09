@@ -8346,11 +8346,11 @@ D:$surrounded by flickering bright red flames.
 D:素早いカオスの怪物で、ゆらめく真紅の炎に包まれた巨大なコウモリだ。
 
 #J0#
-N:485:ニンジャ
-E:Ninja
+N:485:ノービス・ニンジャ
+E:Novice Ninja
 G:p:D
-I:120:13d12:20:60:10
-W:32:2:0:300:3000:1466
+I:120:10d12:20:60:10
+W:20:2:0:300:3000:1847
 B:HIT:POISON:3d4
 B:HIT:LOSE_STR:3d4
 B:HIT:LOSE_STR:3d4
@@ -8358,8 +8358,9 @@ F:MALE | HUMAN |
 F:DROP_1D2 | 
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA
 F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS
-D:$A humanoid clothed in black who moves with blinding speed.
-D:黒い服に身を包んだ人間で、目にもとまらぬスピードで動く。
+D:$He is a newcomer who has mastered some ninja skills. He is paranormal,
+D: but there are still opportunities to take advantage of him.
+D:ニンジャの技をある程度練磨した新入りだ。超常的ではあるがまだつけ入る隙はある。
 
 #J0#
 N:486:記憶苔
@@ -28351,14 +28352,14 @@ D:大半の多元宇宙で彼らの生存は許されない。
 N:1466:ニンジャマスター
 E:Master Ninja
 G:p:v
-I:135:90d12:80:130:10
-W:45:2:0:3000:0:0
+I:140:90d12:80:130:10
+W:45:2:0:7000:0:0
 B:SLASH:POISON:12d4
 B:HIT:LOSE_STR:6d4
 B:SLASH:SUPERHURT:10d10
 B:SHOOT:HURT:10d10
 F:MALE | HUMAN |
-F:DROP_4D2 | DROP_GOOD
+F:DROP_4D2 | DROP_GOOD | IM_FIRE | IM_ACID | IM_POIS
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA | POWERFUL
 F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS | SMART
 S:1_IN_3
@@ -34540,6 +34541,21 @@ D:ガッチリした体格に雄臭い顔立ちはゴリラであり、
 D:キョロキョロしながら身を低くして棚に近づく様はゴリラであり、
 D:睡眠薬を錠剤のまま酒に投入して他者を昏睡レイプする様は、霊長類未満だ。
 
+#J0#
+N:1847:ニンジャ
+E:Novice Ninja
+G:p:D
+I:125:14d12:20:60:10
+W:30:2:0:700:7000:1466
+B:HIT:POISON:8d4
+B:HIT:LOSE_STR:8d4
+B:HIT:LOSE_STR:8d4
+F:MALE | HUMAN |
+F:DROP_1D2 | IM_POIS | IM_FIRE
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA
+F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS
+D:$A humanoid clothed in black who moves with blinding speed.
+D:黒い服に身を包んだ人間で、目にもとまらぬスピードで動く。
 
 
 # N: serial number : monster name
