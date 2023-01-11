@@ -34558,7 +34558,7 @@ D:$A humanoid clothed in black who moves with blinding speed.
 D:黒い服に身を包んだ人間で、目にもとまらぬスピードで動く。
 
 N:1848:ソウカイヤの手下『オフェンダー』
-E:The Offender, Soukaiya's crew
+E:The Offender, Soukaiya's Crew
 G:p:D
 I:125:14d15:20:50:10
 W:28:2:0:1000:0:0
@@ -34572,6 +34572,22 @@ F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA
 F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS
 D:ネオサイタマを支配するソウカイヤに従うニンジャだ。
 D:モータルの皮をダガーで剥ぎ取ることを愛する快楽殺人犯である。
+
+N:1849:ソウカイヤの手下『スキャッター』
+E:The Scatter, Soukaiya's Crew
+G:p:w
+I:123:14d17:20:60:10
+W:28:2:0:1000:0:0
+B:PUNCH:HURT:8d4
+B:PUNCH:HURT:8d4
+B:PUNCH:HURT:8d4
+B:PUNCH:HURT:8d4
+F:MALE | HUMAN |
+F:DROP_1D2 | DROP_GOOD | FORCE_MAXHP | IM_POIS | IM_FIRE | UNIQUE
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA
+F:EVIL | NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS
+D:ネオサイタマを支配するソウカイヤに従うニンジャだ。
+D:相方スキャッターの残虐行為を喜々として眺め楽しむ、ニンジャに典型的な邪悪さを持つ。
 
 
 # N: serial number : monster name
