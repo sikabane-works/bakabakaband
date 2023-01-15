@@ -51,7 +51,7 @@
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 成功すればtrue
  */
-static bool wr_savefile_new(PlayerType *player_ptr, save_type type)
+static bool wr_savefile_new(PlayerType *player_ptr, SaveType type)
 {
     compact_objects(player_ptr, 0);
     compact_monsters(player_ptr, 0);
@@ -103,7 +103,7 @@ static bool wr_savefile_new(PlayerType *player_ptr, save_type type)
     wr_randomizer();
     wr_options(type);
     uint32_t tmp32u = message_num();
-    if ((compress_savefile || (type == SAVE_TYPE_DEBUG)) && (tmp32u > 40)) {
+    if ((compress_savefile || (type == SaveType::DEBUG)) && (tmp32u > 40)) {
         tmp32u = 40;
     }
 
@@ -114,8 +114,8 @@ static bool wr_savefile_new(PlayerType *player_ptr, save_type type)
 
     uint16_t tmp16u = static_cast<uint16_t>(r_info.size());
     wr_u16b(tmp16u);
-    for (MONRACE_IDX r_idx = 0; r_idx < tmp16u; r_idx++) {
-        wr_lore(r_idx);
+    for (auto r_idx = 0; r_idx < tmp16u; r_idx++) {
+        wr_lore(i2enum<MonsterRaceId>(r_idx));
     }
 
     tmp16u = static_cast<uint16_t>(k_info.size());
@@ -150,7 +150,7 @@ static bool wr_savefile_new(PlayerType *player_ptr, save_type type)
         wr_s16b((int16_t)q_ptr->cur_num);
         wr_s16b((int16_t)q_ptr->max_num);
         wr_s16b(enum2i(q_ptr->type));
-        wr_s16b(q_ptr->r_idx);
+        wr_s16b(enum2i(q_ptr->r_idx));
         wr_s16b(q_ptr->k_idx);
         wr_byte((byte)q_ptr->flags);
         wr_byte((byte)q_ptr->dungeon);
@@ -252,7 +252,7 @@ static bool wr_savefile_new(PlayerType *player_ptr, save_type type)
  * @details
  * Angband 2.8.0 will use "fd" instead of "fff" if possible
  */
-static bool save_player_aux(PlayerType *player_ptr, char *name, save_type type)
+static bool save_player_aux(PlayerType *player_ptr, char *name, SaveType type)
 {
     safe_setuid_grab(player_ptr);
     int file_permission = 0644;
@@ -299,7 +299,7 @@ static bool save_player_aux(PlayerType *player_ptr, char *name, save_type type)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return 成功すればtrue
  */
-bool save_player(PlayerType *player_ptr, save_type type)
+bool save_player(PlayerType *player_ptr, SaveType type)
 {
     char safe[1024];
     strcpy(safe, savefile);
@@ -318,10 +318,10 @@ bool save_player(PlayerType *player_ptr, save_type type)
         safe_setuid_grab(player_ptr);
         fd_kill(temp);
 
-        if (type == SAVE_TYPE_DEBUG) {
+        if (type == SaveType::DEBUG) {
             strcpy(filename, debug_savefile);
         }
-        if (type != SAVE_TYPE_DEBUG) {
+        if (type != SaveType::DEBUG) {
             strcpy(filename, savefile);
         }
 
@@ -337,7 +337,7 @@ bool save_player(PlayerType *player_ptr, save_type type)
         result = true;
     }
 
-    if (type != SAVE_TYPE_CLOSE_GAME) {
+    if (type != SaveType::CLOSE_GAME) {
         w_ptr->is_loading_now = false;
         update_creature(player_ptr);
         mproc_init(player_ptr->current_floor_ptr);

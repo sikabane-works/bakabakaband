@@ -10,6 +10,7 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-indice-types.h"
 #include "object/object-kind.h"
 #include "pet/pet-util.h"
 #include "player-base/player-class.h"
@@ -21,6 +22,7 @@
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
+#include "util/enum-range.h"
 #include "world/world.h"
 
 /*!
@@ -64,7 +66,7 @@ void player_wipe_without_name(PlayerType *player_ptr)
         q_ref.max_num = 0;
         q_ref.type = QuestKindType::NONE;
         q_ref.level = 0;
-        q_ref.r_idx = 0;
+        q_ref.r_idx = MonsterRaceId::PLAYER;
         q_ref.complev = 0;
         q_ref.comptime = 0;
     }
@@ -80,8 +82,8 @@ void player_wipe_without_name(PlayerType *player_ptr)
     }
 
     k_info_reset();
-    for (auto &r_ref : r_info) {
-        if (r_ref.idx == 0) {
+    for (auto &[r_idx, r_ref] : r_info) {
+        if (!MonsterRace(r_ref.idx).is_valid()) {
             continue;
         }
         r_ref.cur_num = 0;
@@ -147,7 +149,7 @@ void player_wipe_without_name(PlayerType *player_ptr)
     player_ptr->current_floor_ptr->quest_number = QuestId::NONE;
 
     player_ptr->exit_bldg = true;
-    player_ptr->today_mon = 0;
+    player_ptr->knows_daily_bounty = false;
     update_gambling_monsters(player_ptr);
     player_ptr->muta.clear();
 
@@ -186,8 +188,8 @@ void init_dungeon_quests(PlayerType *player_ptr)
     floor_ptr->quest_number = QuestId::RANDOM_QUEST1;
     parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
     floor_ptr->quest_number = QuestId::NONE;
-    for (auto q = quest_map.find(QuestId::RANDOM_QUEST10); q != quest_map.lower_bound(QuestId::RANDOM_QUEST1) && q != quest_map.end(); q--) {
-        auto *q_ptr = &q->second;
+    for (auto q_idx : EnumRange(QuestId::RANDOM_QUEST1, QuestId::RANDOM_QUEST10)) {
+        auto *q_ptr = &quest_map[q_idx];
         monster_race *quest_r_ptr;
         q_ptr->status = QuestStatusType::TAKEN;
         determine_random_questor(player_ptr, q_ptr);

@@ -22,6 +22,7 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-flags7.h"
+#include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-info.h"
@@ -31,6 +32,7 @@
 #include "player/player-status.h"
 #include "player/special-defense-types.h"
 #include "save/floor-writer.h"
+#include "spell-class/spells-mirror-master.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -124,7 +126,7 @@ static void record_pet_diary(PlayerType *player_ptr)
 static void preserve_pet(PlayerType *player_ptr)
 {
     for (MONSTER_IDX party_monster_num = 0; party_monster_num < MAX_PARTY_MON; party_monster_num++) {
-        party_mon[party_monster_num].r_idx = 0;
+        party_mon[party_monster_num].r_idx = MonsterRaceId::PLAYER;
     }
 
     check_riding_preservation(player_ptr);
@@ -132,7 +134,8 @@ static void preserve_pet(PlayerType *player_ptr)
     record_pet_diary(player_ptr);
     for (MONSTER_IDX i = player_ptr->current_floor_ptr->m_max - 1; i >= 1; i--) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if ((m_ptr->parent_m_idx == 0) || (player_ptr->current_floor_ptr->m_list[m_ptr->parent_m_idx].r_idx != 0)) {
+        const auto parent_r_idx = player_ptr->current_floor_ptr->m_list[m_ptr->parent_m_idx].r_idx;
+        if ((m_ptr->parent_m_idx == 0) || MonsterRace(parent_r_idx).is_valid()) {
             continue;
         }
 
@@ -259,7 +262,7 @@ static void get_out_monster(PlayerType *player_ptr)
  */
 static void preserve_info(PlayerType *player_ptr)
 {
-    MONRACE_IDX quest_r_idx = 0;
+    auto quest_r_idx = MonsterRaceId::PLAYER;
     for (auto &[q_idx, q_ref] : quest_map) {
         auto quest_relating_monster = (q_ref.status == QuestStatusType::TAKEN);
         quest_relating_monster &= ((q_ref.type == QuestKindType::KILL_LEVEL) || (q_ref.type == QuestKindType::RANDOM));
@@ -443,7 +446,7 @@ static void exe_leave_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 void leave_floor(PlayerType *player_ptr)
 {
     preserve_pet(player_ptr);
-    remove_all_mirrors(player_ptr, false);
+    SpellsMirrorMaster(player_ptr).remove_all_mirrors(false);
     set_superstealth(player_ptr, false);
 
     new_floor_id = 0;

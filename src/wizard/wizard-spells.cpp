@@ -207,14 +207,14 @@ void wiz_summon_random_enemy(PlayerType *player_ptr, int num)
  * @details
  * This function is rather dangerous
  */
-void wiz_summon_specific_enemy(PlayerType *player_ptr, MONRACE_IDX r_idx)
+void wiz_summon_specific_enemy(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
-    if (r_idx <= 0) {
+    if (!MonsterRace(r_idx).is_valid()) {
         int val = 1;
         if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
             return;
         }
-        r_idx = static_cast<MONRACE_IDX>(val);
+        r_idx = static_cast<MonsterRaceId>(val);
     }
     (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
 }
@@ -226,7 +226,7 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
         if (!get_value("VaultID", 1, v_info.size() - 1, &val)) {
             return;
         }
-        v_idx = static_cast<MONRACE_IDX>(val);
+        v_idx = static_cast<int>(val);
         vault_type *v_ptr = &v_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
         player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
@@ -242,14 +242,14 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
  * @details
  * This function is rather dangerous
  */
-void wiz_summon_pet(PlayerType *player_ptr, MONRACE_IDX r_idx)
+void wiz_summon_pet(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
-    if (r_idx <= 0) {
+    if (!MonsterRace(r_idx).is_valid()) {
         int val = 1;
         if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
             return;
         }
-        r_idx = static_cast<MONRACE_IDX>(val);
+        r_idx = static_cast<MonsterRaceId>(val);
     }
     (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_FORCE_PET);
 }

@@ -494,8 +494,8 @@ static void update_invisible_monster(PlayerType *player_ptr, um_type *um_ptr, MO
 
     if (!player_ptr->effects()->hallucination()->is_hallucinated()) {
         auto *r_ptr = &r_info[um_ptr->m_ptr->r_idx];
-        if ((um_ptr->m_ptr->ap_r_idx == MON_KAGE) && (r_info[MON_KAGE].r_sights < MAX_SHORT)) {
-            r_info[MON_KAGE].r_sights++;
+        if ((um_ptr->m_ptr->ap_r_idx == MonsterRaceId::KAGE) && (r_info[MonsterRaceId::KAGE].r_sights < MAX_SHORT)) {
+            r_info[MonsterRaceId::KAGE].r_sights++;
         } else if (is_original_ap(um_ptr->m_ptr) && (r_ptr->r_sights < MAX_SHORT)) {
             r_ptr->r_sights++;
         }
@@ -699,7 +699,7 @@ void update_smart_learn(PlayerType *player_ptr, MONSTER_IDX m_idx, int what)
 
         break;
     case DRS_DARK:
-        if (has_resist_dark(player_ptr)) {
+        if (has_resist_dark(player_ptr) || has_immune_dark(player_ptr)) {
             m_ptr->smart.set(MonsterSmartLearnType::RES_DARK);
         }
 

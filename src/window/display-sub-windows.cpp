@@ -11,7 +11,6 @@
 #include "inventory/inventory-util.h"
 #include "locale/japanese.h"
 #include "main/sound-of-music.h"
-#include "market/bounty.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster/monster-flag-types.h"
@@ -106,7 +105,7 @@ void fix_inventory(PlayerType *player_ptr)
 static void print_monster_line(TERM_LEN x, TERM_LEN y, monster_type *m_ptr, int n_same)
 {
     char buf[256];
-    MONRACE_IDX r_idx = m_ptr->ap_r_idx;
+    MonsterRaceId r_idx = m_ptr->ap_r_idx;
     auto *r_ptr = &r_info[r_idx];
 
     term_erase(0, y, 255);
@@ -115,7 +114,7 @@ static void print_monster_line(TERM_LEN x, TERM_LEN y, monster_type *m_ptr, int 
         return;
     }
     if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-        term_addstr(-1, TERM_WHITE, is_bounty(r_idx, true) ? "  W" : "  U");
+        term_addstr(-1, TERM_WHITE, MonsterRace(r_idx).is_bounty(true) ? "  W" : "  U");
     } else {
         sprintf(buf, "%3d", n_same);
         term_addstr(-1, TERM_WHITE, buf);
@@ -153,7 +152,7 @@ void print_monster_list(floor_type *floor_ptr, const std::vector<MONSTER_IDX> &m
         if (is_pet(m_ptr)) {
             continue;
         } // pet
-        if (!m_ptr->r_idx) {
+        if (!MonsterRace(m_ptr->r_idx).is_valid()) {
             continue;
         } // dead?
 
@@ -502,7 +501,7 @@ void fix_monster(PlayerType *player_ptr)
         }
 
         term_activate(angband_term[j]);
-        if (player_ptr->monster_race_idx) {
+        if (MonsterRace(player_ptr->monster_race_idx).is_valid()) {
             display_roff(player_ptr);
         }
 

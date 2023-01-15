@@ -17,6 +17,8 @@
 /*! モンスターが1ターンに攻撃する最大回数 (射撃を含む) / The maximum number of times a monster can attack in a turn (including SHOOT) */
 constexpr int MAX_NUM_BLOWS = 4;
 
+enum class MonsterRaceId : int16_t;
+
 class MonsterBlow {
 public:
     RaceBlowMethodType method{};
@@ -47,7 +49,7 @@ public:
  * fields have a special prefix to aid in searching for them.
  */
 struct monster_race {
-    MONRACE_IDX idx{};
+    MonsterRaceId idx{};
     std::string name; //!< 名前データのオフセット(日本語) /  Name offset(Japanese)
 #ifdef JP
     std::string E_name; //!< 名前データのオフセット(英語) /  Name offset(English)
@@ -76,18 +78,18 @@ struct monster_race {
     EnumClassFlagGroup<MonsterKindType> kind_flags; //!< 能力フラグ（種族・徳） / Attr Flags
     EnumClassFlagGroup<MonsterResistanceType> resistance_flags; //!< 耐性フラグ / Flags R (resistances info)
     MonsterBlow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
-    std::vector<std::tuple<MONRACE_IDX, DICE_NUMBER, DICE_SID>> reinforces;
-    std::vector<std::tuple<int, int, MONRACE_IDX>> spawn_monsters; //!< 落とし子生成率
+    std::vector<std::tuple<MonsterRaceId, DICE_NUMBER, DICE_SID>> reinforces;
+    std::vector<std::tuple<int, int, MonsterRaceId>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_tvals; //!< アイテム種別ドロップ指定
-    std::vector<std::tuple<int, int, MONRACE_IDX, int, int>> dead_spawns; //!< 死亡時モンスター生成
+    std::vector<std::tuple<int, int, MonsterRaceId, int, int>> dead_spawns; //!< 死亡時モンスター生成
     ARTIFACT_IDX artifact_id[4]{}; //!< 特定アーティファクトドロップID
     RARITY artifact_rarity[4]{}; //!< 特定アーティファクトレア度
     PERCENTAGE artifact_percent[4]{}; //!< 特定アーティファクトドロップ率
     PERCENTAGE arena_ratio{}; //!< モンスター闘技場の掛け金倍率修正値(%基準 / 0=100%) / The adjustment ratio for gambling monster
-    MONRACE_IDX next_r_idx{}; //!< 進化先モンスター種族ID
+    MonsterRaceId next_r_idx{}; //!< 進化先モンスター種族ID
     EXP next_exp{}; //!< 進化に必要な経験値
     DEPTH level{}; //!< レベル / Level of creature
     RARITY rarity{}; //!< レアリティ / Rarity of creature

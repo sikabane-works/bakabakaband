@@ -46,7 +46,7 @@
  * @brief 護衛対象となるモンスター種族IDを渡すグローバル変数 / Hack -- help pick an escort type
  * @todo 関数ポインタの都合を配慮しながら、グローバル変数place_monster_idxを除去し、関数引数化する
  */
-static MONSTER_IDX place_monster_idx = 0;
+static MonsterRaceId place_monster_idx = MonsterRaceId::PLAYER;
 
 /*!
  * @var place_monster_m_idx
@@ -67,7 +67,7 @@ static MONSTER_IDX place_monster_m_idx = 0;
  * @return 成功したらtrue
  *
  */
-bool mon_scatter(PlayerType *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSITION *xp, POSITION y, POSITION x, POSITION max_dist)
+bool mon_scatter(PlayerType *player_ptr, MonsterRaceId r_idx, POSITION *yp, POSITION *xp, POSITION y, POSITION x, POSITION max_dist)
 {
     POSITION place_x[MON_SCAT_MAXD];
     POSITION place_y[MON_SCAT_MAXD];
@@ -91,7 +91,7 @@ bool mon_scatter(PlayerType *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSITI
             if (!projectable(player_ptr, y, x, ny, nx)) {
                 continue;
             }
-            if (r_idx > 0) {
+            if (MonsterRace(r_idx).is_valid()) {
                 auto *r_ptr = &r_info[r_idx];
                 if (!monster_can_enter(player_ptr, ny, nx, r_ptr, 0)) {
                     continue;
@@ -143,7 +143,7 @@ bool mon_scatter(PlayerType *player_ptr, MONRACE_IDX r_idx, POSITION *yp, POSITI
  * @details
  * Note that "reproduction" REQUIRES empty space.
  */
-bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_idx, bool clone, BIT_FLAGS mode)
+bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId r_idx, bool clone, BIT_FLAGS mode)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
@@ -176,7 +176,7 @@ bool multiply_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONRACE_IDX r_i
  * @param mode 生成オプション
  * @return 成功したらtrue
  */
-static bool place_monster_group(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, MONRACE_IDX r_idx, BIT_FLAGS mode)
+static bool place_monster_group(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, MonsterRaceId r_idx, BIT_FLAGS mode)
 {
     auto *r_ptr = &r_info[r_idx];
     int total = randint1(10);
@@ -236,7 +236,7 @@ static bool place_monster_group(PlayerType *player_ptr, MONSTER_IDX who, POSITIO
  * @param r_idx チェックするモンスター種族のID
  * @return 護衛にできるならばtrue
  */
-static bool place_monster_can_escort(PlayerType *player_ptr, MONRACE_IDX r_idx)
+static bool place_monster_can_escort(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     auto *r_ptr = &r_info[place_monster_idx];
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[place_monster_m_idx];
@@ -289,7 +289,7 @@ static bool place_monster_can_escort(PlayerType *player_ptr, MONRACE_IDX r_idx)
  * @param mode 生成オプション
  * @return 生成に成功したらtrue
  */
-bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, MONRACE_IDX r_idx, BIT_FLAGS mode)
+bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, MonsterRaceId r_idx, BIT_FLAGS mode)
 {
     auto *r_ptr = &r_info[r_idx];
 
@@ -311,7 +311,7 @@ bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         auto mon_idx = std::get<0>(reinforce);
         auto dn = std::get<1>(reinforce);
         auto ds = std::get<2>(reinforce);
-        if (!mon_idx) {
+        if (!MonsterRace(mon_idx).is_valid()) {
             break;
         }
         int n = damroll(dn, ds);
@@ -342,7 +342,7 @@ bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     place_monster_idx = r_idx;
     for (int i = 0; i < 32; i++) {
         POSITION nx, ny, d = 3;
-        MONRACE_IDX z;
+        MonsterRaceId z;
         scatter(player_ptr, &ny, &nx, y, x, d, PROJECT_NONE);
         if (!is_cave_empty_bold2(player_ptr, ny, nx)) {
             continue;
@@ -350,7 +350,7 @@ bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 
         get_mon_num_prep(player_ptr, place_monster_can_escort, get_monster_hook2(player_ptr, ny, nx));
         z = get_mon_num(player_ptr, 0, r_ptr->level, 0);
-        if (!z) {
+        if (!MonsterRace(z).is_valid()) {
             break;
         }
 
@@ -374,12 +374,12 @@ bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 bool place_monster(PlayerType *player_ptr, POSITION y, POSITION x, BIT_FLAGS mode)
 {
     get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), get_monster_hook2(player_ptr, y, x));
-    MONRACE_IDX r_idx;
+    MonsterRaceId r_idx;
     do {
         r_idx = get_mon_num(player_ptr, 0, player_ptr->current_floor_ptr->monster_level, 0);
     } while ((mode & PM_NO_QUEST) && (r_info[r_idx].flags8 & RF8_NO_QUEST));
 
-    if (r_idx == 0) {
+    if (!MonsterRace(r_idx).is_valid()) {
         return false;
     }
 
@@ -402,12 +402,12 @@ bool alloc_horde(PlayerType *player_ptr, POSITION y, POSITION x, summon_specific
     get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), get_monster_hook2(player_ptr, y, x));
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    MONRACE_IDX r_idx = 0;
+    MonsterRaceId r_idx = MonsterRaceId::PLAYER;
     int attempts = 1000;
     monster_race *r_ptr = nullptr;
     while (--attempts) {
         r_idx = get_mon_num(player_ptr, 0, floor_ptr->monster_level, 0);
-        if (!r_idx) {
+        if (!MonsterRace(r_idx).is_valid()) {
             return false;
         }
 
@@ -416,7 +416,7 @@ bool alloc_horde(PlayerType *player_ptr, POSITION y, POSITION x, summon_specific
             continue;
         }
 
-        if (r_idx == MON_HAGURE) {
+        if (r_idx == MonsterRaceId::HAGURE) {
             continue;
         }
         break;
@@ -466,9 +466,9 @@ bool alloc_horde(PlayerType *player_ptr, POSITION y, POSITION x, summon_specific
  */
 bool alloc_guardian(PlayerType *player_ptr, bool def_val)
 {
-    MONRACE_IDX guardian = d_info[player_ptr->dungeon_idx].final_guardian;
+    MonsterRaceId guardian = d_info[player_ptr->dungeon_idx].final_guardian;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    bool is_guardian_applicable = guardian > 0;
+    bool is_guardian_applicable = MonsterRace(guardian).is_valid();
     is_guardian_applicable &= d_info[player_ptr->dungeon_idx].maxdepth == floor_ptr->dun_level;
     is_guardian_applicable &= r_info[guardian].cur_num < r_info[guardian].mob_num;
     if (!is_guardian_applicable) {

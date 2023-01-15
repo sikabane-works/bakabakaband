@@ -38,17 +38,17 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr)
             fprintf(fff, _("残存戦力--\n", "Remaining strength--\n"));
         }
 
-        for (auto r : r_info) {
-            if (r.alliance_idx == a.second->id) {
-                fprintf(fff, _("  %-40s レベル %3d 評価値 %9d", "  %-40s LEVEL %3d POW %9d"), r.name.c_str(), r.level, calc_monrace_eval(&r));
-                if (r.max_num > 0) {
-                    if (r.mob_num > 0) {
-                        fprintf(fff, "x %d\n", r.mob_num);
+        for (auto &[r_idx, r_ref] : r_info) {
+            if (r_ref.alliance_idx == a.second->id) {
+                fprintf(fff, _("  %-40s レベル %3d 評価値 %9d", "  %-40s LEVEL %3d POW %9d"), r_ref.name.c_str(), r_ref.level, MonsterRace(r_idx).calc_eval());
+                if (r_ref.max_num > 0) {
+                    if (r_ref.mob_num > 0) {
+                        fprintf(fff, "x %d\n", r_ref.mob_num);
                     } else {
                         fprintf(fff, _(" 全滅\n", " Wiped\n"));
                     }
                 } else {
-                    if (r.mob_num > 0) {
+                    if (r_ref.mob_num > 0) {
                         fprintf(fff, _(" 生存\n", " Survived\n"));
                     } else {
                         fprintf(fff, _(" 死亡\n", " Dead\n"));
