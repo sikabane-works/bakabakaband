@@ -1731,11 +1731,11 @@ static errr CheckEvent(bool wait)
         }
 
         if (td == &data[0]) {
-            if (cols < 80) {
-                cols = 80;
+            if (cols < MAIN_TERM_MIN_COLS) {
+                cols = MAIN_TERM_MIN_COLS;
             }
-            if (rows < 24) {
-                rows = 24;
+            if (rows < MAIN_TERM_MIN_ROWS) {
+                rows = MAIN_TERM_MIN_ROWS;
             }
         }
 
@@ -2183,8 +2183,8 @@ static errr term_data_init(term_data *td, int i)
     int x = 0;
     int y = 0;
 
-    int cols = 80;
-    int rows = 24;
+    int cols = TERM_DEFAULT_COLS;
+    int rows = TERM_DEFAULT_ROWS;
 
     int ox = 1;
     int oy = 1;
@@ -2261,11 +2261,11 @@ static errr term_data_init(term_data *td, int i)
     }
 
     if (!i) {
-        if (cols < 80) {
-            cols = 80;
+        if (cols < MAIN_TERM_MIN_COLS) {
+            cols = MAIN_TERM_MIN_COLS;
         }
-        if (rows < 24) {
-            rows = 24;
+        if (rows < MAIN_TERM_MIN_ROWS) {
+            rows = MAIN_TERM_MIN_ROWS;
         }
     }
 
@@ -2323,8 +2323,8 @@ static errr term_data_init(term_data *td, int i)
 
     if (i == 0) {
         sh->flags = PMinSize | PMaxSize;
-        sh->min_width = 80 * td->fnt->wid + (ox + ox);
-        sh->min_height = 24 * td->fnt->hgt + (oy + oy);
+        sh->min_width = MAIN_TERM_MIN_COLS * td->fnt->wid + (ox + ox);
+        sh->min_height = MAIN_TERM_MIN_ROWS * td->fnt->hgt + (oy + oy);
         sh->max_width = 255 * td->fnt->wid + (ox + ox);
         sh->max_height = 255 * td->fnt->hgt + (oy + oy);
     } else {

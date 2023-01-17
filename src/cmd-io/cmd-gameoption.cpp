@@ -647,11 +647,11 @@ void do_cmd_options_aux(PlayerType *player_ptr, game_option_types page, concptr 
 {
     char ch;
     int i, k = 0, n = 0, l;
-    int opt[24];
+    int opt[MAIN_TERM_MIN_ROWS];
     char buf[80];
     bool browse_only = (page == OPT_PAGE_BIRTH) && w_ptr->character_generated && (!w_ptr->wizard || !allow_debug_opts);
 
-    for (i = 0; i < 24; i++) {
+    for (i = 0; i < MAIN_TERM_MIN_ROWS; i++) {
         opt[i] = 0;
     }
 
