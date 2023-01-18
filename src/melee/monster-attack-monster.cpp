@@ -78,6 +78,8 @@ static void process_blow_effect(PlayerType *player_ptr, mam_type *mam_ptr)
     case BLOW_EFFECT_TYPE_HEAL:
         heal_monster_by_melee(player_ptr, mam_ptr);
         break;
+    default:
+        break;
     }
 }
 

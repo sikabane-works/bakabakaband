@@ -92,7 +92,7 @@ static inline int16_t get_quest_count()
  */
 static concptr quest_key_at(int index, char *buf)
 {
-    if (index >= get_quest_count()) {
+    if (index > enum2i(quest_map.rbegin()->first)) {
         return nullptr;
     }
 

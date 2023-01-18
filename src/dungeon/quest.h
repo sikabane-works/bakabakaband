@@ -125,7 +125,6 @@ public:
 };
 
 extern std::map<QuestId, quest_type> quest_map;
-extern int16_t max_q_idx;
 extern char quest_text[10][80];
 extern int quest_text_line;
 extern QuestId leaving_quest;
