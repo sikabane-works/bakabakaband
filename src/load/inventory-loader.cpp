@@ -39,6 +39,7 @@ static errr rd_inventory(PlayerType *player_ptr)
         ObjectType item;
         item_loader->rd_item(&item);
         if (!item.k_idx) {
+            load_note(_("ID=0のアイテム", "a ID zero item"));
             return 53;
         }
 
@@ -69,7 +70,8 @@ errr load_inventory(PlayerType *player_ptr)
         player_ptr->spell_order[i] = rd_byte();
     }
 
-    if (!rd_inventory(player_ptr)) {
+    int errr = rd_inventory(player_ptr);
+    if (!errr) {
         return 0;
     }
 
