@@ -315,7 +315,9 @@ static void rd_lore(monster_race *r_ptr, const MonsterRaceId r_idx)
     r_ptr->r_ability_flags &= r_ptr->ability_flags;
     r_ptr->r_aura_flags &= r_ptr->aura_flags;
     r_ptr->r_behavior_flags &= r_ptr->behavior_flags;
-    r_ptr->r_drop_flags &= r_ptr->drop_flags;
+    if (loading_savefile_version_is_older_than(20)) {
+        r_ptr->r_drop_flags &= r_ptr->drop_flags;
+    }
     r_ptr->r_kind_flags &= r_ptr->kind_flags;
 }
 
