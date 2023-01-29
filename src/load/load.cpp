@@ -188,10 +188,6 @@ static errr verify_checksum()
     }
 
     load_note(_("チェックサムがおかしい", "Invalid checksum"));
-
-    if (loading_savefile_version_is_older_than(18)) {
-        return 0;
-    }
     return 11;
 }
 
@@ -204,9 +200,6 @@ static errr verify_encoded_checksum()
     }
 
     load_note(_("エンコードされたチェックサムがおかしい", "Invalid encoded checksum"));
-    if (loading_savefile_version_is_older_than(18)) {
-        return 0;
-    }
     return 11;
 }
 
