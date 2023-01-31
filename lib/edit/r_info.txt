@@ -34666,6 +34666,23 @@ S:1_IN_1
 S:ROCKET
 D:自ら標的を見つけて延々と砲を放つゴーレムの一種だ。
 
+N:1855:外道高校野球部員
+E:Baseball club member of Gedou Serior Highschool
+G:p:s
+I:111:10d12:20:30:40
+W:18:3:0:60:0:0
+B:HIT:HURT:4d5
+B:PUNCH:SUPERHURT:2d5
+B:PUNCH:HURT:3d5
+B:SHOOT:HURT:3d5
+F:MALE | HAS_LITE_2 | HUMAN | MOB_23
+F:DROP_90 | FRIENDS
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL
+S:1_IN_4 | SHOOT
+D:相手高校球児を殺戮しながら野球の勝利をももぎ取ろうとする文字通り外道な高校生たちだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
