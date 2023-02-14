@@ -24,7 +24,7 @@ void display_monster_drop_quality(lore_type *lore_ptr)
     if (lore_ptr->flags1 & RF1_DROP_NASTY) {
         lore_ptr->drop_quality = _("例のアレな", " nasty");
     }
- 
+
     if (lore_ptr->drop_flags.has(MonsterDropType::DROP_GREAT)) {
         lore_ptr->drop_quality = _("特別な", " exceptional");
     } else if (lore_ptr->drop_flags.has(MonsterDropType::DROP_GOOD)) {
@@ -70,7 +70,7 @@ void display_monster_drop_items(lore_type *lore_ptr)
 void display_monster_drop_golds(lore_type *lore_ptr)
 {
     auto is_item_only = lore_ptr->drop_gold == 0;
-    is_item_only |= lore_ptr->drop_flags.has_any_of({ MonsterDropType::DROP_GOOD, MonsterDropType::DROP_GREAT, MonsterDropType::DROP_NASTY});
+    is_item_only |= lore_ptr->drop_flags.has_any_of({ MonsterDropType::DROP_GOOD, MonsterDropType::DROP_GREAT, MonsterDropType::DROP_NASTY });
     if (is_item_only) {
         return;
     }

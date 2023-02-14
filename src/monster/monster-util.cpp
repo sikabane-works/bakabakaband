@@ -465,13 +465,12 @@ static errr do_get_mon_num_prep(PlayerType *player_ptr, const monsterrace_hook_t
         }
 
         if (player_ptr->current_floor_ptr->allianceID != AllianceType::NONE) {
-            if (r_ptr->alliance_idx == player_ptr->current_floor_ptr->allianceID)
-            {
+            if (r_ptr->alliance_idx == player_ptr->current_floor_ptr->allianceID) {
                 entry->prob2 *= ALLIANCE_GENERATE_RATE;
             } else {
                 entry->prob2 /= ALLIANCE_GENERATE_RATE;
                 if (entry->prob2 < 0) {
-                    entry->prob2 = 1;                 
+                    entry->prob2 = 1;
                 }
             }
         }

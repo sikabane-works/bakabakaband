@@ -9,8 +9,8 @@
  * 2020 Hourier Rearranged
  */
 
-#include "alliance/alliance.h"
 #include "cmd-io/cmd-dump.h"
+#include "alliance/alliance.h"
 #include "cmd-io/feeling-table.h"
 #include "core/asking-player.h"
 #include "dungeon/dungeon.h"
@@ -238,9 +238,8 @@ void do_cmd_feeling(PlayerType *player_ptr)
     if (floor_ptr->allianceID != AllianceType::NONE) {
         auto a_ptr = alliance_list.find(floor_ptr->allianceID)->second;
         if (!a_ptr->isAnnihilated()) {
-            msg_format(_("ここは%sの支配下にある。", "This place is under %s's control."), a_ptr->name.c_str());        
+            msg_format(_("ここは%sの支配下にある。", "This place is under %s's control."), a_ptr->name.c_str());
         }
-        
     }
 
     if (inside_quest(player_ptr->current_floor_ptr->quest_number) && !inside_quest(random_quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level))) {

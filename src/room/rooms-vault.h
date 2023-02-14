@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "system/angband.h"
 #include "monster-race/race-indice-types.h"
+#include "system/angband.h"
 #include <map>
 #include <string>
 #include <vector>

@@ -18,9 +18,9 @@
 #include "player-base/player-race.h"
 #include "player-info/race-info.h"
 #include "player/player-damage.h"
-#include "player/player-status.h"
 #include "player/player-status-flags.h"
 #include "player/player-status-resist.h"
+#include "player/player-status.h"
 #include "spell-kind/spells-equipment.h"
 #include "spell-kind/spells-teleport.h"
 #include "spell/spells-status.h"
@@ -139,8 +139,7 @@ void effect_player_arrow(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
         return;
     }
 
-    if (is_tough(player_ptr) && one_in_(100 / (2 + player_ptr->lev)))
-    {
+    if (is_tough(player_ptr) && one_in_(100 / (2 + player_ptr->lev))) {
         msg_print(_("灘神影流、弾丸すべり！", "Bullet slipping of Nada-Shinkage-Arts!"));
         return;
     }
