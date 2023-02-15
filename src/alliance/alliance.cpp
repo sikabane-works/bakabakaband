@@ -1,10 +1,10 @@
 ﻿#include "alliance/alliance.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
+#include "monster-race/race-indice-types.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
-#include "monster-race/race-indice-types.h"
 
 const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NONE, std::make_unique<AllianceNone>(AllianceType::NONE, "NONE", _("無所属", "None"), 0) },
@@ -42,7 +42,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::ASHINA_CLAN, std::make_unique<AllianceBinzyouBuddhism>(AllianceType::ASHINA_CLAN, "ASHINA-CLAN", _("葦名一門", "Ashina Clan"), 180000L) },
     { AllianceType::SUREN, std::make_unique<AllianceSuren>(AllianceType::SUREN, "SUREN", _("スレン王国", "Suren Kingdom"), 100000L) },
     { AllianceType::FEANOR_NOLDOR, std::make_unique<AllianceFeanorNoldor>(AllianceType::FEANOR_NOLDOR, "FEANOR-NOLDOR", _("フェアノール統一ノルドール", "Feanor Noldor"), 3500000L) },
-    { AllianceType::GAICHI, std::make_unique <AllianceGaichi>(AllianceType::GAICHI, "GAICHI", _("ガイチ帝国", "Gaichi Empire"), 1100000L) },
+    { AllianceType::GAICHI, std::make_unique<AllianceGaichi>(AllianceType::GAICHI, "GAICHI", _("ガイチ帝国", "Gaichi Empire"), 1100000L) },
     { AllianceType::LEGEND_OF_SAVIOR, std::make_unique<AllianceLegendOfSavior>(AllianceType::LEGEND_OF_SAVIOR, "LEGEND-OF-SAVIOR", _("世紀末救世主伝説", "Legend of the Latter-day Savior"), 0L) },
 };
 
@@ -60,11 +60,11 @@ Alliance::Alliance(AllianceType id, std::string tag, std::string name, int64_t b
 }
 
 /*!
-* @brief プレイヤーのレベル自体を印象値に加減算する処理
-* @param player_ptr 評価対象とするプレイヤー
-* @param bias 倍率
-* @param min_level 評価基準最低レベル
-*/
+ * @brief プレイヤーのレベル自体を印象値に加減算する処理
+ * @param player_ptr 評価対象とするプレイヤー
+ * @param bias 倍率
+ * @param min_level 評価基準最低レベル
+ */
 int Alliance::calcPlayerPower(PlayerType const &player_ptr, const int bias, const int min_level)
 {
     if (min_level > player_ptr.lev) {

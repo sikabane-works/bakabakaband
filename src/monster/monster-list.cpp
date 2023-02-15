@@ -91,7 +91,7 @@ MONSTER_IDX m_pop(floor_type *floor_ptr)
  * @return 選択されたモンスター生成種族
  */
 MonsterRaceId get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_level, BIT_FLAGS option)
-{   
+{
     if (max_level > MAX_DEPTH - 1) {
         max_level = MAX_DEPTH - 1;
     }

@@ -148,7 +148,6 @@ static void hissatsu_serpent_tongue(PlayerType *player_ptr, samurai_slaying_type
     }
 }
 
-
 /*!
  * @brief 二重の極み^h^h^h^h^h 斬魔剣弐の太刀 (邪悪無生命スレイ)
  * @param samurai_slaying_ptr スレイ計算に必要なパラメータ群への参照ポインタ
@@ -180,8 +179,9 @@ static void hissatsu_rock_smash(PlayerType *player_ptr, samurai_slaying_type *sa
     }
 
     if (samurai_slaying_ptr->r_ptr->flags3 & RF3_HURT_ROCK) {
-        if (is_original_ap_and_seen(player_ptr, samurai_slaying_ptr->m_ptr))
+        if (is_original_ap_and_seen(player_ptr, samurai_slaying_ptr->m_ptr)) {
             samurai_slaying_ptr->r_ptr->r_flags3 |= RF3_HURT_ROCK;
+        }
 
         if (samurai_slaying_ptr->mult == 10) {
             samurai_slaying_ptr->mult = 40;
@@ -191,11 +191,6 @@ static void hissatsu_rock_smash(PlayerType *player_ptr, samurai_slaying_type *sa
     }
 }
 
-/*!
- * @brief 乱れ雪月花 (冷気スレイ)
- * @param player_ptr プレイヤーへの参照ポインタ
- * @param samurai_slaying_ptr スレイ計算に必要なパラメータ群への参照ポインタ
- */
 /*!
  * @brief 乱れ雪月花 (冷気スレイ)
  * @param player_ptr プレイヤーへの参照ポインタ

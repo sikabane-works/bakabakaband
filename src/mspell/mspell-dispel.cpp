@@ -144,7 +144,6 @@ MonsterSpellResult spell_RF4_DISPEL(MONSTER_IDX m_idx, PlayerType *player_ptr, M
             msg_print(_("う わ あ あ あ あ あ あ あ あ", ""));
         }
 
-
         return res;
     }
 

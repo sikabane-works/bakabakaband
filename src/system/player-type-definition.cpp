@@ -1,6 +1,6 @@
 ﻿#include "system/player-type-definition.h"
-#include "system/floor-type-definition.h"
 #include "market/arena-info-table.h"
+#include "system/floor-type-definition.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-fear.h"
@@ -31,7 +31,7 @@ bool PlayerType::is_true_winner() const
 }
 
 /*!
- * @brief インシデント数加算 
+ * @brief インシデント数加算
  * @param incident_id 加算したいインシデント
  * @param num 加算量
  */
@@ -43,7 +43,6 @@ void PlayerType::plus_incident(INCIDENT incidentID, int num)
     this->incident[incidentID] += num;
 }
 
-
 std::shared_ptr<TimedEffects> PlayerType::effects() const
 {
     return this->timed_effects;
@@ -54,7 +53,6 @@ bool PlayerType::is_vaild_position() const
     floor_type *floor_ptr = this->current_floor_ptr;
     return this->x > 0 && this->y > 0 && this->x <= floor_ptr->width - 1 && this->y <= floor_ptr->height - 1;
 }
-
 
 /*!
  * @brief 自身の状態が全快で、かつフロアに影響を与えないかを検証する

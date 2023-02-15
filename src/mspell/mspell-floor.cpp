@@ -276,7 +276,6 @@ MonsterSpellResult spell_RF6_TELE_AWAY(PlayerType *player_ptr, MONSTER_IDX m_idx
             msg_print(_("う わ あ あ あ あ あ あ あ あ", ""));
         }
 
-
         teleport_player_away(m_idx, player_ptr, 100, false);
         return res;
     }

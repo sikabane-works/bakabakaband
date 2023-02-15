@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "object-enchant/object-ego.h"
-#include "system/angband.h"
 #include "room/vault-builder.h"
+#include "system/angband.h"
 #include <functional>
 #include <string_view>
 
