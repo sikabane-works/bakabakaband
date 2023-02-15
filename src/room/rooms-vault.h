@@ -1,10 +1,11 @@
 ﻿#pragma once
 
-#include "monster-race/race-indice-types.h"
 #include "system/angband.h"
 #include <map>
 #include <string>
 #include <vector>
+
+enum class MonsterRaceId : int16_t;
 
 struct vault_type {
     int16_t idx;
