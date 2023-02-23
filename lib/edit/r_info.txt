@@ -34723,6 +34723,25 @@ F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:「違うだろ？」「喜ぶんやど？」そう言いながら小太りの男は
 D:あなたの尻穴を弄り回そうとする。
 
+N:1859:ファイレクシアのドラゴン・エンジン
+E:Phyrexian Dragon Engine
+G:g:r
+I:120:30d100:25:130:30
+W:44:8:0:12000:0:0
+B:BITE:HURT:5d8
+B:BITE:HURT:5d8
+B:CLAW:FIRE:13d3
+B:CLAW:FIRE:13d3
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE |
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:DRAGON | IM_FIRE | IM_COLD | 
+F:IM_ELEC | IM_POIS | CAN_SWIM | MOB_10 | ALLIANCE_PHYREXIA
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+S:1_IN_7 | 
+S:BR_FIRE
+D:ファイレクシアの下僕と化した弟ミシュラが兄ウルザと
+D:最終決戦を行う際に造り上げた最高傑作だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
