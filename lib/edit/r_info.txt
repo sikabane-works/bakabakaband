@@ -34742,6 +34742,22 @@ S:BR_FIRE
 D:ファイレクシアの下僕と化した弟ミシュラが兄ウルザと
 D:最終決戦を行う際に造り上げた最高傑作だ。
 
+N:1860:幽霊ガレオン船
+E:Ghost galleon
+G:l:b
+I:100:250d10:35:30:10
+W:30:1:0:100:0:0
+B:CRUSH:HURT:10d10
+B:CRUSH:HURT:10d10
+B:SHOOT:HURT:10d10
+F:COLD_BLOOD | EMPTY_MIND | AQUATIC | NONLIVING
+F:IM_COLD | IM_POIS | RES_WATE | UNDEAD
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:過去大航海時代からの歴史の中に沈み消えていった船だ。
+S:1_IN_4
+S:SHOOT
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
