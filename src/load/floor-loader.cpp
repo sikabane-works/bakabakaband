@@ -88,7 +88,6 @@ errr rd_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     floor_ptr->num_repro = rd_s16b();
 
     player_ptr->y = rd_u16b();
-
     player_ptr->x = rd_u16b();
 
     floor_ptr->height = rd_s16b();

@@ -34685,11 +34685,11 @@ D:相手高校球児を殺戮しながら野球の勝利をももぎ取ろうと
 N:1856:ファイレクシアのダニ
 E:Phyrexian Mite
 G:S:w
-I:100:12d8:12:40:20
-W:12:4:0:27:500:411
+I:110:12d8:12:40:20
+W:12:4:0:27:0:0
 B:BITE:POISON:3d6
 B:BITE:POISON:3d6
-F:WEIRD_MIND | BASH_DOOR | CAN_FLY |
+F:WEIRD_MIND | BASH_DOOR
 F:ANIMAL | IM_POIS | ALLIANCE_PHYREXIA
 D:新ファイレクシアに無数に湧き出でる機械生命体にしてダニだ。
 
@@ -34790,6 +34790,20 @@ F:MALE | ONLY_ITEM | DROP_90 | DROP_CORPSE | DROP_SKELETON | HUMAN | KILL_BODY
 F:OPEN_DOOR | BASH_DOOR | NO_FEAR | HAS_LITE_1 | SAMURAI
 D:厳しい軍規と、時代によってはその誇りを抑圧された薩摩の武家者（ぼっけもん）は
 D:戦場や荒事に及んでは奇声を上げ、狂乱したように敵に向かい襲い来る。
+
+N:1863:離反ダニ『スクレルヴ』
+E:Skrelv, Defector Mite
+G:S:w
+I:110:12d16:12:200:20
+W:26:4:0:27:0:0
+B:BITE:POISON:10d6
+B:BITE:POISON:10d6
+F:WEIRD_MIND | BASH_DOOR | CAN_FLY | UNIQUE | MALE
+F:ANIMAL | IM_POIS | ALLIANCE_PHYREXIA
+F:SPAWN_CREATURE_7_IN_16_1856
+D:新ファイレクシアの片隅に生きる自我あるダニだ。
+D:完全なる支配者を標榜するエリシュ・ノーンの機械正典とて、
+D:一切を統一された意志の下に置けているとは限らない。彼の存在そのものがその証左だ。
 
 # N: serial number : monster name
 # G: symbol : color
