@@ -34855,6 +34855,18 @@ F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
 D:本当に大事なものは目に見えないらしいが、彼には目に見える大事すら分かってない。
 D:羊の絵が気に食わないだけで斧を振り回してくるぞ！気をつけろ！
 
+N:1867:ガラスのゴーレム
+E:Glass golem
+G:g:W
+I:110:30d12:12:1:10
+W:24:2:0:160:0:0
+B:HIT:HURT:3d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_8 | 
+S:BR_SHAR
 
 # N: serial number : monster name
 # G: symbol : color
