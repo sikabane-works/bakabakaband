@@ -34868,6 +34868,39 @@ F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 S:1_IN_8 | 
 S:BR_SHAR
 
+N:1868:フェルダグリフ
+E:Phelddagrif
+G:H:s
+I:110:40d22:20:90:30
+W:30:2:0:1100:0:0
+B:CRUSH:HURT:5d8
+B:CRUSH:HURT:5d8
+B:CRUSH:HURT:5d8
+B:CRUSH:HURT:5d8
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_2D2 | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL | CAN_FLY
+S:1_IN_4 | 
+S:HEAL | HASTE | SLOW
+D:翼の生えたカバだ。
+
+N:1869:十二足獣
+E:Dodecapod
+G:g:W
+I:110:70d12:12:70:10
+W:26:2:0:560:0:0
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RES_TELE
+D:名の通り、多くの足を持った金属製のゴーレムだ。
+D:その足は腕のように他者を殴りつけることもできる。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
