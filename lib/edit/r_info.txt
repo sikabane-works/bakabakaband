@@ -34913,6 +34913,24 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 F:DROP_KIND_1_IN_5_102_0_1d1
 D:AIが生み出した架空の地に生きる県民だ。一人余さずクッソ汚いホモだ。
 
+N:380:沈黙の長『ユルト』
+E:Angamaite of Umbar
+G:p:u
+I:110:80d10:25:80:25
+W:24:2:0:400:0:0
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+B:HIT:HURT:4d6
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN |
+F:DROP_90 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
+F:EVIL | IM_FIRE | IM_ELEC | NO_CONF | NO_SLEEP
+S:1_IN_4 | SLOW | FORGET
+D:$A Black Numenorean who hates the men of the west.
+D:西方国の人間を忌み嫌っている黒きヌメノール人だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
