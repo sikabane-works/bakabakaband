@@ -34961,6 +34961,18 @@ F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | SAMURAI
 D:江戸時代から続くカラクリ製造の一族が何かを誤って生み出した
 D:サムライを模したと思われる殺戮カラクリの一体だ。
 
+N:1874:黒曜石のゴーレム
+E:Obsidian golem
+G:g:s
+I:110:10d75:20:70:10
+W:38:3:0:4000:0:0
+B:PUNCH:HURT:8d10
+B:PUNCH:HURT:8d10
+B:PUNCH:HURT:8d10
+F:EMPTY_MIND | BASH_DOOR | RES_LITE | RES_TIME |
+F:IM_COLD | NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | FORCE_MAXHP
+D:多くの文明の黎明に用いられた素材で作り上げられた、優美なゴーレムだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
