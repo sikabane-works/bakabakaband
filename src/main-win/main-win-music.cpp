@@ -102,7 +102,7 @@ static concptr quest_key_at(int index, char *buf)
  */
 static concptr town_key_at(int index, char *buf)
 {
-    if (index >= static_cast<int>(max_towns)) {
+    if (index >= static_cast<int>(town_info.size())) {
         return nullptr;
     }
 
