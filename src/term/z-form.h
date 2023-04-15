@@ -25,22 +25,22 @@
 /**** Available Functions ****/
 
 /* Format arguments into given bounded-length buffer */
-extern uint vstrnfmt(char *buf, uint max, concptr fmt, va_list vp);
+uint vstrnfmt(char *buf, uint max, concptr fmt, va_list vp);
 
 /* Simple interface to "vstrnfmt()" */
-extern uint strnfmt(char *buf, uint max, concptr fmt, ...);
+uint strnfmt(char *buf, uint max, concptr fmt, ...);
 
 /* Format arguments into a static resizing buffer */
-extern std::string vformat(concptr fmt, va_list vp);
+std::string vformat(concptr fmt, va_list vp);
 
 /* Simple interface to "vformat()" */
-extern std::string format(concptr fmt, ...);
+std::string format(concptr fmt, ...);
 
 /* Vararg interface to "plog()", using "format()" */
-extern void plog_fmt(concptr fmt, ...);
+void plog_fmt(concptr fmt, ...);
 
 /* Vararg interface to "quit()", using "format()" */
-extern void quit_fmt(concptr fmt, ...);
+void quit_fmt(concptr fmt, ...);
 
 /* Vararg interface to "core()", using "format()" */
-extern void core_fmt(concptr fmt, ...);
+void core_fmt(concptr fmt, ...);
