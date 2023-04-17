@@ -70,7 +70,18 @@ static void rd_store(PlayerType *player_ptr, int town_number, int store_number)
 {
     store_type *store_ptr;
     auto sort = false;
+<<<<<<< HEAD
     store_ptr = &town_info[town_number].store[store_number];
+=======
+    if (h_older_than(0, 3, 3) && (i2enum<StoreSaleType>(store_number) == StoreSaleType::HOME)) {
+        store_ptr = &towns_info[1].store[store_number];
+        if (store_ptr->stock_num) {
+            sort = true;
+        }
+    } else {
+        store_ptr = &towns_info[town_number].store[store_number];
+    }
+>>>>>>> cc7663851 ([Refactor] #2476 town_info をtowns_info に改名した)
 
     store_ptr->store_open = rd_s32b();
     store_ptr->insult_cur = rd_s16b();
