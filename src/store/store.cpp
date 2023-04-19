@@ -419,18 +419,18 @@ void store_maintenance(PlayerType *player_ptr, int town_num, StoreSaleType store
  */
 void store_init(int town_num, StoreSaleType store_num)
 {
-    auto owner_num = owners.at(store_num).size();
+    int owner_num = owners.at(store_num).size();
     st_ptr = &towns_info[town_num].store[enum2i(store_num)];
+    const int towns_size = towns_info.size();
     while (true) {
         st_ptr->owner = (byte)randint0(owner_num);
 
-        if (owner_num <= (uint16_t)towns_info.size()) {
+        if (owner_num <= towns_size) {
             break;
         }
 
         int i;
-
-        for (i = 1; i < (uint16_t)towns_info.size(); i++) {
+        for (i = 1; i < towns_size; i++) {
             if (i == town_num) {
                 continue;
             }
@@ -439,7 +439,7 @@ void store_init(int town_num, StoreSaleType store_num)
             }
         }
 
-        if (i == towns_info.size()) {
+        if (i == towns_size) {
             break;
         }
     }
