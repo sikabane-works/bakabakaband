@@ -133,27 +133,6 @@ errr rd_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
         }
     }
 
-    /* Quest 18 was removed */
-    if (h_older_than(1, 7, 0, 6) && !vanilla_town) {
-        for (POSITION y = 0; y < ymax; y++) {
-            for (POSITION x = 0; x < xmax; x++) {
-                auto *g_ptr = &floor_ptr->grid_array[y][x];
-
-                if ((g_ptr->special == OLD_QUEST_WATER_CAVE) && !floor_ptr->dun_level) {
-                    if (g_ptr->feat == OLD_FEAT_QUEST_ENTER) {
-                        g_ptr->feat = feat_tree;
-                        g_ptr->special = 0;
-                    } else if (g_ptr->feat == OLD_FEAT_BLDG_1) {
-                        g_ptr->special = lite_town ? QUEST_OLD_CASTLE : QUEST_ROYAL_CRYPT;
-                    }
-                } else if ((g_ptr->feat == OLD_FEAT_QUEST_EXIT) && (floor_ptr->quest_number == i2enum<QuestId>(OLD_QUEST_WATER_CAVE))) {
-                    g_ptr->feat = feat_up_stair;
-                    g_ptr->special = 0;
-                }
-            }
-        }
-    }
-
     limit = rd_u16b();
     if (limit > w_ptr->max_o_idx) {
         return 151;
