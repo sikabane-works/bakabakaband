@@ -31,7 +31,7 @@ void rd_extra(PlayerType *player_ptr)
         player_ptr->floor_id = rd_s16b();
     }
 
-    rd_dummy_monsters(player_ptr);
+    rd_dummy_monsters();
     if (h_older_than(0, 1, 2)) {
         w_ptr->play_time = 0;
     } else {

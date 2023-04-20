@@ -753,7 +753,7 @@ errr rd_dungeon_old(PlayerType *player_ptr)
         return 161;
     }
 
-    auto monster_loader = MonsterLoaderFactory::create_loader(player_ptr);
+    auto monster_loader = MonsterLoaderFactory::create_loader();
     for (int i = 1; i < limit; i++) {
         auto m_idx = m_pop(floor_ptr);
         if (i != m_idx) {
