@@ -100,14 +100,8 @@ errr rd_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 
     for (auto &ct_ref : templates) {
         ct_ref.info = rd_u16b();
-        if (h_older_than(1, 7, 0, 2)) {
-            ct_ref.feat = rd_byte();
-            ct_ref.mimic = rd_byte();
-        } else {
-            ct_ref.feat = rd_s16b();
-            ct_ref.mimic = rd_s16b();
-        }
-
+        ct_ref.feat = rd_s16b();
+        ct_ref.mimic = rd_s16b();
         ct_ref.special = rd_s16b();
     }
 
