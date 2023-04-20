@@ -200,15 +200,16 @@ static bool load_floor_aux(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     if (rd_saved_floor(player_ptr, sf_ptr)) {
         return false;
     }
-
     auto n_v_check = v_check;
-    if (rd_u32b() != n_v_check) {
-        return false;
+    auto c_v_check = rd_u32b();
+    if (c_v_check != n_v_check) {
+        return true;
     }
 
     auto n_x_check = x_check;
-    if (rd_u32b() != n_x_check) {
-        return false;
+    auto c_x_check = rd_u32b();
+    if (c_x_check != n_x_check) {
+        return true;
     }
     return true;
 }
