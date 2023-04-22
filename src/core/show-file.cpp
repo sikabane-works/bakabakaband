@@ -135,52 +135,45 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
     int wid, hgt;
     term_get_size(&wid, &hgt);
 
-    char finder_str[81];
-    strcpy(finder_str, "");
+    char finder_str[81] = "";
 
-    char shower_str[81];
-    strcpy(shower_str, "");
+    char shower_str[81] = "";
 
-    char caption[1024 + 256];
-    strcpy(caption, "");
+    std::string caption;
 
     char hook[68][32];
     for (int i = 0; i < 68; i++) {
         hook[i][0] = '\0';
     }
 
-    char filename[1024];
-    strcpy(filename, name);
-    int n = strlen(filename);
-
-    concptr tag = nullptr;
-    for (int i = 0; i < n; i++) {
-        if (filename[i] == '#') {
-            filename[i] = '\0';
-            tag = filename + i + 1;
-            break;
-        }
+    std::string stripped_name;
+    concptr tag = angband_strstr(name, "#");
+    if (tag) {
+        stripped_name.append(name, tag - name);
+        name = stripped_name.data();
+        ++tag;
     }
 
-    name = filename;
     FILE *fff = nullptr;
     char path[1024];
     if (what) {
-        strcpy(caption, what);
-        strcpy(path, name);
-        fff = angband_fopen(path, "r");
+        caption = what;
+        angband_strcpy(path, name, sizeof(path));
+        fff = angband_fopen(path, FileOpenMode::READ);
     }
 
     if (!fff) {
-        sprintf(caption, _("ヘルプ・ファイル'%s'", "Help file '%s'"), name);
+        caption = _("ヘルプ・ファイル'", "Help file '");
+        caption.append(name).append("'");
         path_build(path, sizeof(path), ANGBAND_DIR_HELP, name);
-        fff = angband_fopen(path, "r");
+        fff = angband_fopen(path, FileOpenMode::READ);
     }
 
     if (!fff) {
-        sprintf(caption, _("スポイラー・ファイル'%s'", "Info file '%s'"), name);
+        caption = _("スポイラー・ファイル'", "Info file '");
+        caption.append(name).append("'");
         path_build(path, sizeof(path), ANGBAND_DIR_INFO, name);
-        fff = angband_fopen(path, "r");
+        fff = angband_fopen(path, FileOpenMode::READ);
     }
 
     if (!fff) {
@@ -192,8 +185,9 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
             }
         }
 
-        sprintf(caption, _("スポイラー・ファイル'%s'", "Info file '%s'"), name);
-        fff = angband_fopen(path, "r");
+        caption = _("スポイラー・ファイル'", "Info file '");
+        caption.append(name).append("'");
+        fff = angband_fopen(path, FileOpenMode::READ);
     }
 
     if (!fff) {
@@ -264,7 +258,7 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
 
         if (next > line) {
             angband_fclose(fff);
-            fff = angband_fopen(path, "r");
+            fff = angband_fopen(path, FileOpenMode::READ);
             if (!fff) {
                 return false;
             }
@@ -321,14 +315,14 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
             continue;
         }
 
-        prt(format(_("[馬鹿馬鹿蛮怒 %d.%d.%d, %s, %d/%d]", "[Bakabakaband %d.%d.%d, %s, Line %d/%d]"), H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH, caption,
+        prt(format(_("[馬鹿馬鹿蛮怒 %d.%d.%d, %s, %d/%d]", "[Bakabakaband %d.%d.%d, %s, Line %d/%d]"), H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH, caption.data(),
                 line, size),
             0, 0);
 
         if (show_version) {
             prt(format("[%s]", get_version().data()), 0, 0);
         } else {
-            prt(format(_("[%s, %d/%d]", "[%s, Line %d/%d]"), caption, line, size), 0, 0);
+            prt(format(_("[%s, %d/%d]", "[%s, Line %d/%d]"), caption.data(), line, size), 0, 0);
         }
 
         if (size <= rows) {
@@ -485,9 +479,7 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
         if (skey == '|') {
             FILE *ffp;
             char buff[1024];
-            char xtmp[sizeof(caption) + 128];
-
-            strcpy(xtmp, "");
+            char xtmp[81] = "";
 
             if (!get_string(_("ファイル名: ", "File name: "), xtmp, 80)) {
                 continue;
@@ -496,9 +488,9 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
             path_build(buff, sizeof(buff), ANGBAND_DIR_USER, xtmp);
 
             /* Hack -- Re-Open the file */
-            fff = angband_fopen(path, "r");
+            fff = angband_fopen(path, FileOpenMode::READ);
 
-            ffp = angband_fopen(buff, "w");
+            ffp = angband_fopen(buff, FileOpenMode::WRITE);
 
             if (!(fff && ffp)) {
                 msg_print(_("ファイルを開けません。", "Failed to open file."));
@@ -506,16 +498,14 @@ bool show_file(PlayerType *player_ptr, bool show_version, concptr name, concptr 
                 break;
             }
 
-            sprintf(xtmp, "%s: %s", player_ptr->name, what ? what : caption);
-            angband_fputs(ffp, xtmp, 80);
-            angband_fputs(ffp, "\n", 80);
+            fprintf(ffp, "%s: %s\n", player_ptr->name, what ? what : caption.data());
 
             while (!angband_fgets(fff, buff, sizeof(buff))) {
                 angband_fputs(ffp, buff, 80);
             }
             angband_fclose(fff);
             angband_fclose(ffp);
-            fff = angband_fopen(path, "r");
+            fff = angband_fopen(path, FileOpenMode::READ);
         }
 
         if ((skey == ESCAPE) || (skey == '<')) {

@@ -262,7 +262,7 @@ bool load_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mode
     sprintf(floor_savefile, "%s.F%02d", savefile, (int)sf_ptr->savefile_id);
 
     safe_setuid_grab(player_ptr);
-    loading_savefile = angband_fopen(floor_savefile, "rb");
+    loading_savefile = angband_fopen(floor_savefile, FileOpenMode::READ, true);
     safe_setuid_drop();
 
     bool is_save_successful = true;
