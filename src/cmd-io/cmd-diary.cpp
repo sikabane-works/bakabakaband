@@ -31,18 +31,20 @@ static void display_diary(PlayerType *player_ptr)
     path_build(buf, sizeof(buf), ANGBAND_DIR_USER, file_name);
 
     PlayerClass pc(player_ptr);
+    const auto max_subtitles = diary_subtitles.size();
+    std::string subtitle;
     if (pc.is_tough()) {
-        strcpy(tmp, subtitle[randint0(MAX_SUBTITLE - 1)]);
+        subtitle = diary_subtitles[randint0(max_subtitles - 1)];
     } else if (pc.is_wizard()) {
-        strcpy(tmp, subtitle[randint0(MAX_SUBTITLE - 1) + 1]);
+        subtitle = diary_subtitles[randint0(max_subtitles - 1) + 1];
     } else {
-        strcpy(tmp, subtitle[randint0(MAX_SUBTITLE - 2) + 1]);
+        subtitle = diary_subtitles[randint0(max_subtitles - 2) + 1];
     }
 
 #ifdef JP
-    sprintf(diary_title, "「%s%s%sの伝説 -%s-」", ap_ptr->title, ap_ptr->no ? "の" : "", player_ptr->name, tmp);
+    strnfmt(diary_title, sizeof(diary_title), "「%s%s%sの伝説 -%s-」", ap_ptr->title, ap_ptr->no ? "の" : "", player_ptr->name, subtitle.data());
 #else
-    sprintf(diary_title, "Legend of %s %s '%s'", ap_ptr->title, player_ptr->name, tmp);
+    strnfmt(diary_title, sizeof(diary_title), "Legend of %s %s '%s'", ap_ptr->title, player_ptr->name, subtitle.data());
 #endif
 
     (void)show_file(player_ptr, false, buf, diary_title, -1, 0);
