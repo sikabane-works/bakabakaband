@@ -16,6 +16,8 @@
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <sstream>
+#include <string>
 
 /*!
  * @brief 日記のタイトル表記と内容出力
@@ -23,12 +25,11 @@
  */
 static void display_diary(PlayerType *player_ptr)
 {
-    char diary_title[256];
-    GAME_TEXT file_name[MAX_NLEN];
+    std::stringstream file_name;
+    file_name << _("playrecord-", "playrec-") << savefile_base << ".txt";
     char buf[1024];
-    char tmp[80];
-    sprintf(file_name, _("playrecord-%s.txt", "playrec-%s.txt"), savefile_base);
-    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, file_name);
+    char diary_title[1024];
+    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, file_name.str().data());
 
     PlayerClass pc(player_ptr);
     const auto max_subtitles = diary_subtitles.size();
