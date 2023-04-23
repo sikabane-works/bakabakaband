@@ -209,30 +209,6 @@ void set_zangband_quest(PlayerType *player_ptr, quest_type *const q_ptr, const Q
     player_ptr->current_floor_ptr->quest_number = old_inside_quest;
 }
 
-void set_zangband_class(PlayerType *player_ptr)
-{
-    PlayerClass pc(player_ptr);
-    if (h_older_than(0, 2, 2) && pc.equals(PlayerClassType::BEASTMASTER) && !player_ptr->is_dead) {
-        player_ptr->hitdie = rp_ptr->r_mhp + cp_ptr->c_mhp + ap_ptr->a_mhp;
-        roll_hitdice(player_ptr, SPOP_NONE);
-    }
-
-    if (h_older_than(0, 3, 2) && pc.equals(PlayerClassType::ARCHER) && !player_ptr->is_dead) {
-        player_ptr->hitdie = rp_ptr->r_mhp + cp_ptr->c_mhp + ap_ptr->a_mhp;
-        roll_hitdice(player_ptr, SPOP_NONE);
-    }
-
-    if (h_older_than(0, 2, 6) && pc.equals(PlayerClassType::SORCERER) && !player_ptr->is_dead) {
-        player_ptr->hitdie = rp_ptr->r_mhp / 2 + cp_ptr->c_mhp + ap_ptr->a_mhp;
-        roll_hitdice(player_ptr, SPOP_NONE);
-    }
-
-    if (h_older_than(0, 4, 7) && pc.equals(PlayerClassType::BLUE_MAGE) && !player_ptr->is_dead) {
-        player_ptr->hitdie = rp_ptr->r_mhp + cp_ptr->c_mhp + ap_ptr->a_mhp;
-        roll_hitdice(player_ptr, SPOP_NONE);
-    }
-}
-
 void set_zangband_learnt_spells(PlayerType *player_ptr)
 {
     player_ptr->learned_spells = 0;
