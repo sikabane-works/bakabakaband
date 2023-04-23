@@ -34,15 +34,11 @@ void rd_dummy2(void)
  * @param player_ptr プレーヤーへの参照ポインタ
  * @details もはや何に使われていたのか不明
  */
-void rd_dummy_monsters(PlayerType *player_ptr)
+void rd_dummy_monsters()
 {
-    if (h_older_than(1, 5, 0, 2)) {
-        return;
-    }
-
     auto tmp16s = rd_s16b();
     monster_type dummy_mon;
-    auto monster_loader = MonsterLoaderFactory::create_loader(player_ptr);
+    auto monster_loader = MonsterLoaderFactory::create_loader();
     for (int i = 0; i < tmp16s; i++) {
         monster_loader->rd_monster(&dummy_mon);
     }

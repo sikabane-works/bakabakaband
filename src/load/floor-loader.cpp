@@ -100,14 +100,8 @@ errr rd_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 
     for (auto &ct_ref : templates) {
         ct_ref.info = rd_u16b();
-        if (h_older_than(1, 7, 0, 2)) {
-            ct_ref.feat = rd_byte();
-            ct_ref.mimic = rd_byte();
-        } else {
-            ct_ref.feat = rd_s16b();
-            ct_ref.mimic = rd_s16b();
-        }
-
+        ct_ref.feat = rd_s16b();
+        ct_ref.mimic = rd_s16b();
         ct_ref.special = rd_s16b();
     }
 
@@ -139,27 +133,6 @@ errr rd_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
         }
     }
 
-    /* Quest 18 was removed */
-    if (h_older_than(1, 7, 0, 6) && !vanilla_town) {
-        for (POSITION y = 0; y < ymax; y++) {
-            for (POSITION x = 0; x < xmax; x++) {
-                auto *g_ptr = &floor_ptr->grid_array[y][x];
-
-                if ((g_ptr->special == OLD_QUEST_WATER_CAVE) && !floor_ptr->dun_level) {
-                    if (g_ptr->feat == OLD_FEAT_QUEST_ENTER) {
-                        g_ptr->feat = feat_tree;
-                        g_ptr->special = 0;
-                    } else if (g_ptr->feat == OLD_FEAT_BLDG_1) {
-                        g_ptr->special = lite_town ? QUEST_OLD_CASTLE : QUEST_ROYAL_CRYPT;
-                    }
-                } else if ((g_ptr->feat == OLD_FEAT_QUEST_EXIT) && (floor_ptr->quest_number == i2enum<QuestId>(OLD_QUEST_WATER_CAVE))) {
-                    g_ptr->feat = feat_up_stair;
-                    g_ptr->special = 0;
-                }
-            }
-        }
-    }
-
     limit = rd_u16b();
     if (limit > w_ptr->max_o_idx) {
         return 151;
@@ -183,7 +156,7 @@ errr rd_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
         return 161;
     }
 
-    auto monster_loader = MonsterLoaderFactory::create_loader(player_ptr);
+    auto monster_loader = MonsterLoaderFactory::create_loader();
     for (auto i = 1; i < limit; i++) {
         auto m_idx = m_pop(floor_ptr);
         if (i != m_idx) {
@@ -227,15 +200,16 @@ static bool load_floor_aux(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     if (rd_saved_floor(player_ptr, sf_ptr)) {
         return false;
     }
-
     auto n_v_check = v_check;
-    if (rd_u32b() != n_v_check) {
-        return false;
+    auto c_v_check = rd_u32b();
+    if (c_v_check != n_v_check) {
+        return true;
     }
 
     auto n_x_check = x_check;
-    if (rd_u32b() != n_x_check) {
-        return false;
+    auto c_x_check = rd_u32b();
+    if (c_x_check != n_x_check) {
+        return true;
     }
     return true;
 }
