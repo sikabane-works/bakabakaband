@@ -166,17 +166,8 @@ static void load_spells(PlayerType *player_ptr)
     player_ptr->spell_worked2 = rd_u32b();
     player_ptr->spell_forgotten1 = rd_u32b();
     player_ptr->spell_forgotten2 = rd_u32b();
-    if (h_older_than(0, 0, 5)) {
-        set_zangband_learnt_spells(player_ptr);
-    } else {
-        player_ptr->learned_spells = rd_s16b();
-    }
-
-    if (h_older_than(0, 0, 6)) {
-        player_ptr->add_spells = 0;
-    } else {
-        player_ptr->add_spells = rd_s16b();
-    }
+    player_ptr->learned_spells = rd_s16b();
+    player_ptr->add_spells = 0;
 }
 
 static errr verify_checksum()
