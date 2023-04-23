@@ -230,28 +230,16 @@ void set_zangband_pet(PlayerType *player_ptr)
         player_ptr->pet_extra_flags |= PF_PICKUP_ITEMS;
     }
 
-    if (h_older_than(0, 0, 4)) {
+    if (rd_byte() != 0) {
         player_ptr->pet_extra_flags |= PF_TELEPORT;
-    } else {
-        if (rd_byte() != 0) {
-            player_ptr->pet_extra_flags |= PF_TELEPORT;
-        }
     }
 
-    if (h_older_than(0, 0, 7)) {
+    if (rd_byte() != 0) {
         player_ptr->pet_extra_flags |= PF_ATTACK_SPELL;
-    } else {
-        if (rd_byte() != 0) {
-            player_ptr->pet_extra_flags |= PF_ATTACK_SPELL;
-        }
     }
 
-    if (h_older_than(0, 0, 8)) {
+    if (rd_byte() != 0) {
         player_ptr->pet_extra_flags |= PF_SUMMON_SPELL;
-    } else {
-        if (rd_byte() != 0) {
-            player_ptr->pet_extra_flags |= PF_SUMMON_SPELL;
-        }
     }
 
     if (h_older_than(0, 0, 8)) {
