@@ -234,7 +234,6 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
     cp_ptr = &class_info[short_pclass];
     ap_ptr = &personality_info[player_ptr->ppersonality];
 
-    set_zangband_class(player_ptr);
     mp_ptr = &m_info[short_pclass];
 
     load_spells(player_ptr);
