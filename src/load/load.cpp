@@ -167,7 +167,7 @@ static void load_spells(PlayerType *player_ptr)
     player_ptr->spell_forgotten1 = rd_u32b();
     player_ptr->spell_forgotten2 = rd_u32b();
     player_ptr->learned_spells = rd_s16b();
-    player_ptr->add_spells = 0;
+    player_ptr->add_spells = rd_s16b();
 }
 
 static errr verify_checksum()
