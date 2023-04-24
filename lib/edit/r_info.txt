@@ -30841,7 +30841,7 @@ N:1619:ヤクザ
 E:Yakuza
 G:p:o
 I:110:4d6:10:20:250
-W:0:3:0:20:0:0
+W:0:3:0:20:300:1881
 B:SHOOT:HURT:2d5
 B:HIT:HURT:2d5
 R:1618:1d6
@@ -35045,6 +35045,23 @@ B:PUNCH:HURT:3d5
 F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
 F:WILD_WOOD | HAS_LITE_1 | CAN_SPEAK | QUANTUM
 D:キャプテン・マッスルのドラゴン・ラッシュに乗せられてガルシアの心臓を狩りに来た格闘家たちだ。
+
+N:1881:グレーター・ヤクザ
+E:Greater Yakuza
+G:p:W
+I:110:7d6:10:20:250
+W:0:12:0:20:0:0
+B:SHOOT:HURT:4d5
+B:HIT:HURT:3d5
+B:HIT:HURT:3d5
+R:1618:6d3
+R:1619:2d3
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:DROP_90 | WILD_TOWN | WILD_ONLY | DROP_GOOD
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | YAKUZA
+S:1_IN_3
+S:SHOOT
+D:複数のヤクザを束ねて、組織的なシノギを行うリーダーだ。
 
 # N: serial number : monster name
 # G: symbol : color
