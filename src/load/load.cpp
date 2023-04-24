@@ -229,27 +229,17 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
 
     load_store(player_ptr);
     player_ptr->pet_follow_distance = rd_s16b();
-    if (h_older_than(0, 4, 10)) {
-        set_zangband_pet(player_ptr);
-    } else {
-        player_ptr->pet_extra_flags = rd_u16b();
-    }
+    player_ptr->pet_extra_flags = rd_u16b();
 
-    if (!h_older_than(1, 0, 9)) {
-        std::vector<char> buf(SCREEN_BUF_MAX_SIZE);
-        rd_string(buf.data(), SCREEN_BUF_MAX_SIZE);
-        if (buf[0]) {
-            screen_dump = string_make(buf.data());
-        }
+    std::vector<char> buf(SCREEN_BUF_MAX_SIZE);
+    rd_string(buf.data(), SCREEN_BUF_MAX_SIZE);
+    if (buf[0]) {
+        screen_dump = string_make(buf.data());
     }
 
     auto restore_dungeon_result = restore_dungeon(player_ptr);
     if (restore_dungeon_result != 0) {
         return restore_dungeon_result;
-    }
-
-    if (h_older_than(1, 7, 0, 6)) {
-        remove_water_cave(player_ptr);
     }
 
     auto checksum_result = verify_checksum();
