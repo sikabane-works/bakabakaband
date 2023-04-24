@@ -60,10 +60,6 @@
  */
 static errr load_town_quest(PlayerType *player_ptr)
 {
-    if (h_older_than(2, 1, 3)) {
-        return 0;
-    }
-
     auto load_town_result = load_town();
     if (load_town_result != 0) {
         return load_town_result;
@@ -74,12 +70,6 @@ static errr load_town_quest(PlayerType *player_ptr)
     load_quest_info(&max_quests_load, &max_rquests_load);
 
     analyze_quests(player_ptr, max_quests_load, max_rquests_load);
-
-    /* Quest 18 was removed */
-    if (h_older_than(1, 7, 0, 6)) {
-        quest_map[i2enum<QuestId>(OLD_QUEST_WATER_CAVE)] = {};
-        quest_map[i2enum<QuestId>(OLD_QUEST_WATER_CAVE)].status = QuestStatusType::UNTAKEN;
-    }
 
     load_wilderness_info(player_ptr);
     return analyze_wilderness();
