@@ -24,11 +24,6 @@
  */
 void ItemLoader50::rd_item(ObjectType *o_ptr)
 {
-    if (h_older_than(1, 5, 0, 0)) {
-        rd_item_old(o_ptr);
-        return;
-    }
-
     auto flags = rd_u32b();
     o_ptr->k_idx = rd_s16b();
     o_ptr->iy = rd_byte();
