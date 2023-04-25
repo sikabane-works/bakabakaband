@@ -109,18 +109,14 @@ static void rd_r_drop_flags(monster_race *r_ptr)
     rd_FlagGroup(r_ptr->r_drop_flags, rd_byte);
 }
 
-static void rd_r_ability_flags(monster_race *r_ptr, const MonsterRaceId r_idx)
+static void rd_r_ability_flags(monster_race *r_ptr)
 {
     if (loading_savefile_version_is_older_than(3)) {
         BIT_FLAGS r_flagsr = 0;
         uint32_t f4 = rd_u32b();
         uint32_t f5 = rd_u32b();
         uint32_t f6 = rd_u32b();
-        if (h_older_than(1, 5, 0, 3)) {
-            set_old_lore(r_ptr, f4, r_idx);
-        } else {
-            r_flagsr = rd_u32b();
-        }
+        r_flagsr = rd_u32b();
 
         migrate_bitflag_to_flaggroup(r_ptr->r_ability_flags, f4, sizeof(uint32_t) * 8 * 0);
         migrate_bitflag_to_flaggroup(r_ptr->r_ability_flags, f5, sizeof(uint32_t) * 8 * 1);
@@ -253,18 +249,12 @@ static void rd_r_behavior_flags(monster_race *r_ptr)
  * @param r_ptr 読み込み先モンスター種族情報へのポインタ
  * @param r_idx 読み込み先モンスターID(種族特定用)
  */
-static void rd_lore(monster_race *r_ptr, const MonsterRaceId r_idx)
+static void rd_lore(monster_race *r_ptr)
 {
     r_ptr->r_sights = rd_s16b();
     r_ptr->r_deaths = rd_s16b();
     r_ptr->r_pkills = rd_s16b();
-
-    if (h_older_than(1, 7, 0, 5)) {
-        r_ptr->r_akills = r_ptr->r_pkills;
-    } else {
-        r_ptr->r_akills = rd_s16b();
-    }
-
+    r_ptr->r_akills = rd_s16b();
     r_ptr->r_tkills = rd_s16b();
 
     r_ptr->r_wake = rd_byte();
@@ -291,7 +281,7 @@ static void rd_lore(monster_race *r_ptr, const MonsterRaceId r_idx)
     r_ptr->r_flags2 = rd_u32b();
     r_ptr->r_flags3 = rd_u32b();
     migrate_old_aura_flags(r_ptr);
-    rd_r_ability_flags(r_ptr, r_idx);
+    rd_r_ability_flags(r_ptr);
     rd_r_aura_flags(r_ptr);
     if (!loading_savefile_version_is_older_than(20)) {
         rd_r_behavior_flags(r_ptr);
@@ -328,7 +318,7 @@ void load_lore(void)
     for (auto i = 0U; i < loading_max_r_idx; i++) {
         auto r_idx = static_cast<MonsterRaceId>(i);
         auto *r_ptr = i < r_info.size() ? &r_info[r_idx] : &dummy;
-        rd_lore(r_ptr, r_idx);
+        rd_lore(r_ptr);
     }
 
     load_note(_("モンスターの思い出をロードしました", "Loaded Monster Memory"));
