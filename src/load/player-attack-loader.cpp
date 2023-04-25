@@ -11,11 +11,6 @@
 
 void rd_special_attack(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 0, 9)) {
-        set_zangband_special_attack(player_ptr);
-        return;
-    }
-
     player_ptr->ele_attack = rd_s16b();
     player_ptr->special_attack = rd_u32b();
 }
@@ -34,11 +29,6 @@ void rd_special_action(PlayerType *player_ptr)
 
 void rd_special_defense(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 0, 12)) {
-        set_zangband_special_defense(player_ptr);
-        return;
-    }
-
     player_ptr->ele_immune = rd_s16b();
     player_ptr->special_defense = rd_u32b();
 }
@@ -47,7 +37,5 @@ void rd_action(PlayerType *player_ptr)
 {
     strip_bytes(1);
     player_ptr->action = rd_byte();
-    if (!h_older_than(0, 4, 3)) {
-        set_zangband_action(player_ptr);
-    }
+    set_zangband_action(player_ptr);
 }

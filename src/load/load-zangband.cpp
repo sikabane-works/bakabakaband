@@ -242,10 +242,6 @@ void set_zangband_pet(PlayerType *player_ptr)
         player_ptr->pet_extra_flags |= PF_SUMMON_SPELL;
     }
 
-    if (h_older_than(0, 0, 8)) {
-        return;
-    }
-
     if (rd_byte() != 0) {
         player_ptr->pet_extra_flags |= PF_BALL_SPELL;
     }
