@@ -25,25 +25,6 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
-void set_zangband_realm(PlayerType *player_ptr)
-{
-    if (player_ptr->realm1 == 9) {
-        player_ptr->realm1 = REALM_MUSIC;
-    }
-
-    if (player_ptr->realm2 == 9) {
-        player_ptr->realm2 = REALM_MUSIC;
-    }
-
-    if (player_ptr->realm1 == 10) {
-        player_ptr->realm1 = REALM_HISSATSU;
-    }
-
-    if (player_ptr->realm2 == 10) {
-        player_ptr->realm2 = REALM_HISSATSU;
-    }
-}
-
 void set_zangband_skill(PlayerType *player_ptr)
 {
     if (!PlayerClass(player_ptr).equals(PlayerClassType::BEASTMASTER)) {

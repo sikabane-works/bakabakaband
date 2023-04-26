@@ -5,7 +5,6 @@
 
 class PlayerType;
 struct quest_type;
-void set_zangband_realm(PlayerType *player_ptr);
 void set_zangband_skill(PlayerType *player_ptr);
 void set_zangband_race(PlayerType *player_ptr);
 void set_zangband_bounty_uniques(PlayerType *player_ptr);

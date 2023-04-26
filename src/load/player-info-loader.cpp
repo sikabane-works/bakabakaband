@@ -79,9 +79,6 @@ void rd_base_info(PlayerType *player_ptr)
     rd_realms(player_ptr);
 
     strip_bytes(1);
-    if (h_older_than(0, 4, 4)) {
-        set_zangband_realm(player_ptr);
-    }
 
     player_ptr->hitdie = rd_byte();
     player_ptr->expfact = rd_u16b();
