@@ -35075,6 +35075,23 @@ F:TAKE_ITEM | OPEN_DOOR
 F:DROP_KIND_1_IN_5_102_0_1d1
 D:ノンケ向け凌辱エロゲ時空から迷い込んできたクッソ哀れな存在だ。
 
+N:1883:メスガキ・インプ
+E:Mesugaki Imp
+G:u:r
+I:110:9d8:20:20:20
+W:18:8:0:55:0:0
+B:INSULT:HURT:3d4
+B:INSULT:HURT:3d4
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY |
+F:RAND_25 | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:STUPID | BASH_DOOR | 
+F:EVIL | DEMON | IM_FIRE | RES_TELE | FEMALE
+S:1_IN_10 | 
+S:BLINK | TPORT | TELE_TO | BLIND | CONF | SCARE | MISSILE
+D:ノンケのサディストデーモンのお気に入りのペットだ。
+D:彼女らが熟練の分からせられる有様を見て主は愉悦を感じている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
