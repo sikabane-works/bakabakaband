@@ -79,9 +79,6 @@ void rd_base_info(PlayerType *player_ptr)
     rd_realms(player_ptr);
 
     strip_bytes(1);
-    if (h_older_than(0, 4, 4)) {
-        set_zangband_realm(player_ptr);
-    }
 
     player_ptr->hitdie = rd_byte();
     player_ptr->expfact = rd_u16b();
@@ -257,30 +254,16 @@ static void rd_phase_out(PlayerType *player_ptr)
 
 static void rd_arena(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 0, 3)) {
-        update_gambling_monsters(player_ptr);
-    } else {
-        set_gambling_monsters();
-    }
+    set_gambling_monsters();
 
     player_ptr->town_num = rd_s16b();
     player_ptr->arena_number = rd_s16b();
-    if (h_older_than(1, 5, 0, 1)) {
-        if (player_ptr->arena_number >= 99) {
-            player_ptr->arena_number = ARENA_DEFEATED_OLD_VER;
-        }
-    }
-
     rd_phase_out(player_ptr);
     player_ptr->exit_bldg = rd_byte();
     strip_bytes(1);
 
     player_ptr->oldpx = rd_s16b();
     player_ptr->oldpy = rd_s16b();
-    if (h_older_than(0, 3, 13) && !is_in_dungeon(player_ptr) && !player_ptr->current_floor_ptr->inside_arena) {
-        player_ptr->oldpy = 33;
-        player_ptr->oldpx = 131;
-    }
 }
 
 /*!

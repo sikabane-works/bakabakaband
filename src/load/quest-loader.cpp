@@ -105,7 +105,6 @@ static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
 
 void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, const byte max_rquests_load)
 {
-    QuestId old_inside_quest = player_ptr->current_floor_ptr->quest_number;
     for (auto i = 0; i < max_quests_load; i++) {
         QuestId q_idx;
         if (loading_savefile_version_is_older_than(19)) {
@@ -127,11 +126,7 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
         }
 
         load_quest_details(player_ptr, q_ptr, q_idx);
-        if (h_older_than(0, 3, 11)) {
-            set_zangband_quest(player_ptr, q_ptr, q_idx, old_inside_quest);
-        } else {
-            q_ptr->dungeon = rd_byte();
-        }
+        q_ptr->dungeon = rd_byte();
 
         if (q_ptr->status == QuestStatusType::TAKEN || q_ptr->status == QuestStatusType::UNTAKEN) {
             if (r_info[q_ptr->r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {

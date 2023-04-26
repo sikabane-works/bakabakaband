@@ -39,4 +39,3 @@ extern const int QUEST_ROYAL_CRYPT;
 class ObjectType;
 class PlayerType;
 void set_old_lore(monster_race *r_ptr, BIT_FLAGS f4, const MonsterRaceId r_idx);
-errr rd_dungeon_old(PlayerType *player_ptr);

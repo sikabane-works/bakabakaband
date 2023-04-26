@@ -28,15 +28,6 @@ static errr rd_dungeon(PlayerType *player_ptr)
 {
     init_saved_floors(player_ptr, false);
     errr err = 0;
-    if (h_older_than(1, 5, 0, 0)) {
-        err = rd_dungeon_old(player_ptr);
-        if (player_ptr->dungeon_idx) {
-            player_ptr->floor_id = get_new_floor_id(player_ptr);
-            get_sf_ptr(player_ptr->floor_id)->dun_level = player_ptr->current_floor_ptr->dun_level;
-        }
-
-        return err;
-    }
 
     max_floor_id = rd_s16b();
     player_ptr->dungeon_idx = rd_byte(); // @todo セーブデータの方を16ビットにするかdungeon_idxの定義を8ビットにした方が良い.

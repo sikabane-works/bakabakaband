@@ -25,82 +25,6 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
-void load_zangband_options(void)
-{
-    if (option_flag[5] & (0x00000001U << 4)) {
-        option_flag[5] &= ~(0x00000001U << 4);
-    } else {
-        option_flag[5] |= (0x00000001U << 4);
-    }
-
-    if (option_flag[2] & (0x00000001U << 5)) {
-        option_flag[2] &= ~(0x00000001U << 5);
-    } else {
-        option_flag[2] |= (0x00000001U << 5);
-    }
-
-    if (option_flag[4] & (0x00000001U << 5)) {
-        option_flag[4] &= ~(0x00000001U << 5);
-    } else {
-        option_flag[4] |= (0x00000001U << 5);
-    }
-
-    if (option_flag[5] & (0x00000001U << 0)) {
-        option_flag[5] &= ~(0x00000001U << 0);
-    } else {
-        option_flag[5] |= (0x00000001U << 0);
-    }
-
-    if (option_flag[5] & (0x00000001U << 12)) {
-        option_flag[5] &= ~(0x00000001U << 12);
-    } else {
-        option_flag[5] |= (0x00000001U << 12);
-    }
-
-    if (option_flag[1] & (0x00000001U << 0)) {
-        option_flag[1] &= ~(0x00000001U << 0);
-    } else {
-        option_flag[1] |= (0x00000001U << 0);
-    }
-
-    if (option_flag[1] & (0x00000001U << 18)) {
-        option_flag[1] &= ~(0x00000001U << 18);
-    } else {
-        option_flag[1] |= (0x00000001U << 18);
-    }
-
-    if (option_flag[1] & (0x00000001U << 19)) {
-        option_flag[1] &= ~(0x00000001U << 19);
-    } else {
-        option_flag[1] |= (0x00000001U << 19);
-    }
-
-    if (option_flag[5] & (0x00000001U << 3)) {
-        option_flag[1] &= ~(0x00000001U << 3);
-    } else {
-        option_flag[5] |= (0x00000001U << 3);
-    }
-}
-
-void set_zangband_realm(PlayerType *player_ptr)
-{
-    if (player_ptr->realm1 == 9) {
-        player_ptr->realm1 = REALM_MUSIC;
-    }
-
-    if (player_ptr->realm2 == 9) {
-        player_ptr->realm2 = REALM_MUSIC;
-    }
-
-    if (player_ptr->realm1 == 10) {
-        player_ptr->realm1 = REALM_HISSATSU;
-    }
-
-    if (player_ptr->realm2 == 10) {
-        player_ptr->realm2 = REALM_HISSATSU;
-    }
-}
-
 void set_zangband_skill(PlayerType *player_ptr)
 {
     if (!PlayerClass(player_ptr).equals(PlayerClassType::BEASTMASTER)) {
@@ -194,19 +118,6 @@ void set_zangband_visited_towns(PlayerType *player_ptr)
 {
     strip_bytes(4);
     player_ptr->visit = 1L;
-}
-
-void set_zangband_quest(PlayerType *player_ptr, quest_type *const q_ptr, const QuestId loading_quest_index, const QuestId old_inside_quest)
-{
-    if (q_ptr->flags & QUEST_FLAG_PRESET) {
-        q_ptr->dungeon = 0;
-        return;
-    }
-
-    init_flags = INIT_ASSIGN;
-    player_ptr->current_floor_ptr->quest_number = loading_quest_index;
-    parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
-    player_ptr->current_floor_ptr->quest_number = old_inside_quest;
 }
 
 void set_zangband_learnt_spells(PlayerType *player_ptr)
