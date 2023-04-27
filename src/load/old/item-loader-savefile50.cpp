@@ -172,10 +172,6 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         o_ptr->art_name = 0;
     }
 
-    if (!h_older_than(2, 1, 2, 4)) {
-        return;
-    }
-
     if ((o_ptr->ego_idx == EgoType::DARK) || (o_ptr->ego_idx == EgoType::ANCIENT_CURSE) || (o_ptr->fixed_artifact_idx == ART_NIGHT)) {
         o_ptr->art_flags.set(TR_LITE_M1);
         o_ptr->art_flags.reset(TR_LITE_1);
