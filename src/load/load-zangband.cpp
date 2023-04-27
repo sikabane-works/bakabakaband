@@ -25,15 +25,6 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
-void set_zangband_skill(PlayerType *player_ptr)
-{
-    if (!PlayerClass(player_ptr).equals(PlayerClassType::BEASTMASTER)) {
-        player_ptr->skill_exp[PlayerSkillKindType::RIDING] /= 2;
-    }
-
-    player_ptr->skill_exp[PlayerSkillKindType::RIDING] = std::min(player_ptr->skill_exp[PlayerSkillKindType::RIDING], s_info[enum2i(player_ptr->pclass)].s_max[PlayerSkillKindType::RIDING]);
-}
-
 void set_zangband_race(PlayerType *player_ptr)
 {
     player_ptr->start_race = player_ptr->prace;

@@ -133,10 +133,6 @@ void rd_experience(PlayerType *player_ptr)
 
 void rd_skills(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 4, 1)) {
-        set_zangband_skill(player_ptr);
-    }
-
     PlayerClass(player_ptr).init_specific_data();
     std::visit(PlayerClassSpecificDataLoader(), player_ptr->class_specific_data);
 
