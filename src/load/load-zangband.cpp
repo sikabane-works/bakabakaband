@@ -33,17 +33,6 @@ void set_zangband_race(PlayerType *player_ptr)
     player_ptr->old_realm = 0;
 }
 
-void set_zangband_bounty_uniques(PlayerType *player_ptr)
-{
-    determine_bounty_uniques(player_ptr);
-    for (auto &[r_idx, is_achieved] : w_ptr->bounties) {
-        /* Is this bounty unique already dead? */
-        if (r_info[r_idx].max_num == 0) {
-            is_achieved = true;
-        }
-    }
-}
-
 void set_zangband_mimic(PlayerType *player_ptr)
 {
     player_ptr->tim_res_time = 0;

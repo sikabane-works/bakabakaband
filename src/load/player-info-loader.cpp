@@ -149,13 +149,8 @@ void rd_race(PlayerType *player_ptr)
     set_race(player_ptr);
 }
 
-void rd_bounty_uniques(PlayerType *player_ptr)
+void rd_bounty_uniques()
 {
-    if (h_older_than(0, 0, 3)) {
-        set_zangband_bounty_uniques(player_ptr);
-        return;
-    }
-
     for (auto &[r_idx, is_achieved] : w_ptr->bounties) {
         auto r_idx_num = rd_s16b();
 
@@ -411,7 +406,7 @@ static void rd_player_status(PlayerType *player_ptr)
     rd_skills(player_ptr);
     rd_race(player_ptr);
     set_imitation(player_ptr);
-    rd_bounty_uniques(player_ptr);
+    rd_bounty_uniques();
     rd_arena(player_ptr);
     rd_dummy1();
     rd_hp(player_ptr);
