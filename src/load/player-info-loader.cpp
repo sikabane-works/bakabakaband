@@ -318,11 +318,6 @@ static void rd_status(PlayerType *player_ptr)
     player_ptr->ult_res = rd_s16b();
 }
 
-static void rd_tsuyoshi(PlayerType *player_ptr)
-{
-    player_ptr->tsuyoshi = rd_s16b();
-}
-
 static void set_timed_effects(PlayerType *player_ptr)
 {
     player_ptr->tim_esp = rd_s16b();
@@ -451,7 +446,7 @@ static void rd_player_status(PlayerType *player_ptr)
     player_ptr->oppose_acid = rd_s16b();
     player_ptr->oppose_elec = rd_s16b();
     player_ptr->oppose_pois = rd_s16b();
-    rd_tsuyoshi(player_ptr);
+    player_ptr->tsuyoshi = rd_s16b();
     rd_timed_effects(player_ptr);
     player_ptr->mutant_regenerate_mod = calc_mutant_regenerate_mod(player_ptr);
 
