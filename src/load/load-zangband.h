@@ -6,7 +6,6 @@
 class PlayerType;
 struct quest_type;
 void set_zangband_race(PlayerType *player_ptr);
-void set_zangband_mimic(PlayerType *player_ptr);
 void set_zangband_holy_aura(PlayerType *player_ptr);
 void set_zangband_reflection(PlayerType *player_ptr);
 void rd_zangband_dungeon(void);

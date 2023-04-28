@@ -328,15 +328,10 @@ static void set_timed_effects(PlayerType *player_ptr)
     }
 
     player_ptr->tim_res_nether = rd_s16b();
-    if (h_older_than(0, 4, 11)) {
-        set_zangband_mimic(player_ptr);
-    } else {
-        player_ptr->tim_res_time = rd_s16b();
-
-        player_ptr->mimic_form = i2enum<MimicKindType>(rd_byte());
-        player_ptr->tim_mimic = rd_s16b();
-        player_ptr->tim_sh_fire = rd_s16b();
-    }
+    player_ptr->tim_res_time = rd_s16b();
+    player_ptr->mimic_form = i2enum<MimicKindType>(rd_byte());
+    player_ptr->tim_mimic = rd_s16b();
+    player_ptr->tim_sh_fire = rd_s16b();
 
     if (h_older_than(1, 0, 99)) {
         set_zangband_holy_aura(player_ptr);
