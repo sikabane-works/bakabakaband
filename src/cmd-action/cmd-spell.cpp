@@ -920,7 +920,7 @@ void do_cmd_study(PlayerType *player_ptr)
     update_creature(player_ptr);
 
     /* Redraw object recall */
-    player_ptr->window_flags |= (PW_OBJECT);
+    player_ptr->window_flags |= (PW_ITEM_KNOWLEDGTE);
 }
 
 /*!
@@ -1183,7 +1183,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
             }
 
             gain_exp(player_ptr, e * s_ptr->slevel);
-            player_ptr->window_flags |= (PW_OBJECT);
+            player_ptr->window_flags |= (PW_ITEM_KNOWLEDGTE);
 
             switch (realm) {
             case REALM_LIFE:
@@ -1319,7 +1319,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
     } else {
         over_exerted = true;
     }
-    player_ptr->redraw |= (PR_MANA);
+    player_ptr->redraw |= (PR_MP);
 
     /* Over-exert the player */
     if (over_exerted) {

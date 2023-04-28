@@ -58,9 +58,9 @@ void inven_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
 
     o_ptr->number += num;
     player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_MANA);
-    player_ptr->update |= (PU_COMBINE);
-    player_ptr->window_flags |= (PW_INVEN | PW_EQUIP);
+    player_ptr->update |= (PU_MP);
+    player_ptr->update |= (PU_COMBINATION);
+    player_ptr->window_flags |= (PW_INVENTORY | PW_EQUIPMENT);
 
     if (o_ptr->number || !player_ptr->ele_attack) {
         return;
@@ -96,9 +96,9 @@ void inven_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
         (&player_ptr->inventory_list[item])->wipe();
         player_ptr->update |= PU_BONUS;
         player_ptr->update |= PU_TORCH;
-        player_ptr->update |= PU_MANA;
+        player_ptr->update |= PU_MP;
 
-        player_ptr->window_flags |= PW_EQUIP;
+        player_ptr->window_flags |= PW_EQUIPMENT;
         player_ptr->window_flags |= PW_SPELL;
         return;
     }
@@ -110,7 +110,7 @@ void inven_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     (&player_ptr->inventory_list[i])->wipe();
-    player_ptr->window_flags |= PW_INVEN;
+    player_ptr->window_flags |= PW_INVENTORY;
     player_ptr->window_flags |= PW_SPELL;
 }
 
@@ -217,7 +217,7 @@ void combine_pack(PlayerType *player_ptr)
                     }
                 }
 
-                player_ptr->window_flags |= (PW_INVEN);
+                player_ptr->window_flags |= (PW_INVENTORY);
                 combined = true;
                 break;
             }
@@ -274,7 +274,7 @@ void reorder_pack(PlayerType *player_ptr)
         }
 
         (&player_ptr->inventory_list[j])->copy_from(q_ptr);
-        player_ptr->window_flags |= (PW_INVEN);
+        player_ptr->window_flags |= (PW_INVENTORY);
     }
 
     if (flag) {
@@ -319,7 +319,7 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ItemEntity *o_ptr)
             object_absorb(j_ptr, o_ptr);
 
             player_ptr->update |= (PU_BONUS);
-            player_ptr->window_flags |= (PW_INVEN | PW_PLAYER);
+            player_ptr->window_flags |= (PW_INVENTORY | PW_PLAYER);
             return j;
         }
     }
@@ -359,8 +359,8 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ItemEntity *o_ptr)
     j_ptr->marked.clear().set(OmType::TOUCHED);
 
     player_ptr->inven_cnt++;
-    player_ptr->update |= (PU_BONUS | PU_COMBINE | PU_REORDER);
-    player_ptr->window_flags |= (PW_INVEN | PW_PLAYER);
+    player_ptr->update |= (PU_BONUS | PU_COMBINATION | PU_REORDER);
+    player_ptr->window_flags |= (PW_INVENTORY | PW_PLAYER);
 
     return i;
 }

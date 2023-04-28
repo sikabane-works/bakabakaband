@@ -121,7 +121,7 @@ void do_cmd_open(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= PR_STATE;
+        player_ptr->redraw |= PR_ACTION;
         command_arg = 0;
     }
 
@@ -174,7 +174,7 @@ void do_cmd_close(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        player_ptr->redraw |= (PR_ACTION);
         command_arg = 0;
     }
 
@@ -230,7 +230,7 @@ void do_cmd_disarm(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        player_ptr->redraw |= (PR_ACTION);
         command_arg = 0;
     }
 
@@ -290,7 +290,7 @@ void do_cmd_bash(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        player_ptr->redraw |= (PR_ACTION);
         command_arg = 0;
     }
 

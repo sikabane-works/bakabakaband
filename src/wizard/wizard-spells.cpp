@@ -229,7 +229,7 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
         v_idx = static_cast<int>(val);
         vault_type *v_ptr = &vaults_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
-        player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
+        player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MONSTER_LITE | PU_MONSTER_STATUSES);
         player_ptr->redraw |= (PR_MAP);
         player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
     }
