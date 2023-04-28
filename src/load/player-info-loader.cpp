@@ -278,15 +278,7 @@ static void rd_bad_status(PlayerType *player_ptr)
 static void rd_energy(PlayerType *player_ptr)
 {
     player_ptr->energy_need = rd_s16b();
-    if (h_older_than(1, 0, 13)) {
-        player_ptr->energy_need = 100 - player_ptr->energy_need;
-    }
-
-    if (h_older_than(2, 1, 2, 0)) {
-        player_ptr->enchant_energy_need = 0;
-    } else {
-        player_ptr->enchant_energy_need = rd_s16b();
-    }
+    player_ptr->enchant_energy_need = rd_s16b();
 }
 
 /*!
