@@ -57,12 +57,10 @@ void rd_base_info(PlayerType *player_ptr)
 {
     rd_string(player_ptr->name, sizeof(player_ptr->name));
     rd_string(player_ptr->died_from, 1024);
-    if (!h_older_than(1, 7, 0, 1)) {
-        char buf[1024];
-        rd_string(buf, sizeof buf);
-        if (buf[0]) {
-            player_ptr->last_message = string_make(buf);
-        }
+    char buf[1024];
+    rd_string(buf, sizeof buf);
+    if (buf[0]) {
+        player_ptr->last_message = string_make(buf);
     }
 
     load_quick_start();
@@ -92,18 +90,10 @@ void rd_base_info(PlayerType *player_ptr)
 void rd_experience(PlayerType *player_ptr)
 {
     player_ptr->max_exp = rd_s32b();
-    if (h_older_than(1, 5, 4, 1)) {
-        player_ptr->max_max_exp = player_ptr->max_exp;
-    } else {
-        player_ptr->max_max_exp = rd_s32b();
-    }
+    player_ptr->max_max_exp = rd_s32b();
 
     player_ptr->exp = rd_s32b();
-    if (h_older_than(1, 7, 0, 3)) {
-        set_exp_frac_old(player_ptr);
-    } else {
-        player_ptr->exp_frac = rd_u32b();
-    }
+    player_ptr->exp_frac = rd_u32b();
 
     player_ptr->lev = rd_s16b();
     for (int i = 0; i < 64; i++) {
