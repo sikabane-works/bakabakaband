@@ -195,21 +195,6 @@ static void rd_base_status(PlayerType *player_ptr)
 
 static void set_imitation(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 0, 1)) {
-        return;
-    }
-
-    if (h_older_than(0, 2, 3)) {
-        const int OLD_MAX_MANE = 22;
-        for (int i = 0; i < OLD_MAX_MANE; i++) {
-            strip_bytes(2);
-            strip_bytes(2);
-        }
-
-        strip_bytes(2);
-        return;
-    }
-
     if (loading_savefile_version_is_older_than(11)) {
         auto mane_data = PlayerClass(player_ptr).get_specific_data<mane_data_type>();
         if (!mane_data) {
@@ -330,20 +315,12 @@ static void rd_status(PlayerType *player_ptr)
     effects->hallucination()->set(rd_s16b());
     player_ptr->protevil = rd_s16b();
     player_ptr->invuln = rd_s16b();
-    if (h_older_than(0, 0, 0)) {
-        player_ptr->ult_res = 0;
-    } else {
-        player_ptr->ult_res = rd_s16b();
-    }
+    player_ptr->ult_res = rd_s16b();
 }
 
 static void rd_tsuyoshi(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 0, 2)) {
-        player_ptr->tsuyoshi = 0;
-    } else {
-        player_ptr->tsuyoshi = rd_s16b();
-    }
+    player_ptr->tsuyoshi = rd_s16b();
 }
 
 static void set_timed_effects(PlayerType *player_ptr)
