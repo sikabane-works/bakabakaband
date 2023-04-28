@@ -31,7 +31,7 @@ void toggle_keyword(text_body_type *tb, BIT_FLAGS flg)
 
         string_free(tb->lines_list[y]);
         if (!fixed) {
-            if (!IS_FLG(flg)) {
+            if (!entry->has(flg)) {
                 add = true;
             } else {
                 add = false;
@@ -180,7 +180,7 @@ void add_keyword(text_body_type *tb, BIT_FLAGS flg)
             continue;
         }
 
-        if (IS_FLG(flg)) {
+        if (entry->has(flg)) {
             continue;
         }
 
