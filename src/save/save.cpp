@@ -317,7 +317,6 @@ bool save_player(PlayerType *player_ptr, SaveType type)
     if (save_player_aux(player_ptr, safe, type)) {
         char temp[1024];
         char filename[1024];
-        errr err = 0;
         strcpy(temp, savefile);
         strcat(temp, ".old");
         safe_setuid_grab(player_ptr);
