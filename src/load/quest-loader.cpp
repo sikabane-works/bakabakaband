@@ -39,18 +39,8 @@ static void load_quest_completion(quest_type *q_ptr)
 {
     q_ptr->status = i2enum<QuestStatusType>(rd_s16b());
     q_ptr->level = rd_s16b();
-
-    if (h_older_than(1, 0, 6)) {
-        q_ptr->complev = 0;
-    } else {
-        q_ptr->complev = rd_byte();
-    }
-
-    if (h_older_than(2, 1, 2, 2)) {
-        q_ptr->comptime = 0;
-    } else {
-        q_ptr->comptime = rd_u32b();
-    }
+    q_ptr->complev = rd_byte();
+    q_ptr->comptime = rd_u32b();
 }
 
 static void load_quest_details(PlayerType *player_ptr, quest_type *q_ptr, const QuestId loading_quest_index)
