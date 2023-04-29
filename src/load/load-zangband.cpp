@@ -25,14 +25,6 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
-void set_zangband_race(PlayerType *player_ptr)
-{
-    player_ptr->start_race = player_ptr->prace;
-    player_ptr->old_race1 = 0L;
-    player_ptr->old_race2 = 0L;
-    player_ptr->old_realm = 0;
-}
-
 void rd_zangband_dungeon()
 {
     max_dlv[DUNGEON_ANGBAND] = rd_s16b();

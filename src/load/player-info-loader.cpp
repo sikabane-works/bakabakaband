@@ -139,16 +139,6 @@ static void set_race(PlayerType *player_ptr)
     player_ptr->old_realm = rd_s16b();
 }
 
-void rd_race(PlayerType *player_ptr)
-{
-    if (h_older_than(1, 0, 7)) {
-        set_zangband_race(player_ptr);
-        return;
-    }
-
-    set_race(player_ptr);
-}
-
 void rd_bounty_uniques()
 {
     for (auto &[r_idx, is_achieved] : w_ptr->bounties) {
@@ -372,7 +362,7 @@ static void rd_player_status(PlayerType *player_ptr)
     player_ptr->au = rd_s32b();
     rd_experience(player_ptr);
     rd_skills(player_ptr);
-    rd_race(player_ptr);
+    set_race(player_ptr);
     set_imitation(player_ptr);
     rd_bounty_uniques();
     rd_arena(player_ptr);

@@ -5,7 +5,6 @@
 
 class PlayerType;
 struct quest_type;
-void set_zangband_race(PlayerType *player_ptr);
 void rd_zangband_dungeon(void);
 void set_zangband_game_turns(PlayerType *player_ptr);
 void set_zangband_gambling_monsters(int i);
