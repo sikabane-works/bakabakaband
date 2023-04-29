@@ -7,6 +7,9 @@
 #include "player/player-status-table.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
+#include "term/z-form.h"
+#include "util/enum-converter.h"
+#include "util/string-processor.h"
 #include <string>
 
 void display_life_rating(PlayerType *player_ptr, self_info_type *self_ptr)
@@ -35,44 +38,42 @@ void display_virtue(PlayerType *player_ptr, self_info_type *self_ptr)
 {
     self_ptr->info[self_ptr->line++] = "";
     std::string alg = PlayerAlignment(player_ptr).get_alignment_description(true);
-    sprintf(self_ptr->plev_buf, _("現在の属性 : %s", "Your alignment : %s"), alg.data());
-    strcpy(self_ptr->buf[1], self_ptr->plev_buf);
+    strnfmt(self_ptr->plev_buf, sizeof(self_ptr->plev_buf), _("現在の属性 : %s", "Your alignment : %s"), alg.data());
+    angband_strcpy(self_ptr->buf[1], self_ptr->plev_buf, sizeof(self_ptr->buf[1]));
     self_ptr->info[self_ptr->line++] = self_ptr->buf[1];
     for (int v_nr = 0; v_nr < 8; v_nr++) {
-        GAME_TEXT vir_name[20];
-        char vir_desc[80];
+        const auto vir_name = virtue[enum2i(player_ptr->vir_types[v_nr])];
+        std::string vir_desc;
         int tester = player_ptr->virtues[v_nr];
-        strcpy(vir_name, virtue[(player_ptr->vir_types[v_nr]) - 1]);
-        sprintf(vir_desc, _("おっと。%sの情報なし。", "Oops. No info about %s."), vir_name);
         if (tester < -100) {
-            sprintf(vir_desc, _("[%s]の対極 (%d)", "You are the polar opposite of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の対極 (%d)", "You are the polar opposite of %s (%d)."), vir_name, tester);
         } else if (tester < -80) {
-            sprintf(vir_desc, _("[%s]の大敵 (%d)", "You are an arch-enemy of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の大敵 (%d)", "You are an arch-enemy of %s (%d)."), vir_name, tester);
         } else if (tester < -60) {
-            sprintf(vir_desc, _("[%s]の強敵 (%d)", "You are a bitter enemy of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の強敵 (%d)", "You are a bitter enemy of %s (%d)."), vir_name, tester);
         } else if (tester < -40) {
-            sprintf(vir_desc, _("[%s]の敵 (%d)", "You are an enemy of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の敵 (%d)", "You are an enemy of %s (%d)."), vir_name, tester);
         } else if (tester < -20) {
-            sprintf(vir_desc, _("[%s]の罪者 (%d)", "You have sinned against %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の罪者 (%d)", "You have sinned against %s (%d)."), vir_name, tester);
         } else if (tester < 0) {
-            sprintf(vir_desc, _("[%s]の迷道者 (%d)", "You have strayed from the path of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の迷道者 (%d)", "You have strayed from the path of %s (%d)."), vir_name, tester);
         } else if (tester == 0) {
-            sprintf(vir_desc, _("[%s]の中立者 (%d)", "You are neutral to %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の中立者 (%d)", "You are neutral to %s (%d)."), vir_name, tester);
         } else if (tester < 20) {
-            sprintf(vir_desc, _("[%s]の小徳者 (%d)", "You are somewhat virtuous in %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の小徳者 (%d)", "You are somewhat virtuous in %s (%d)."), vir_name, tester);
         } else if (tester < 40) {
-            sprintf(vir_desc, _("[%s]の中徳者 (%d)", "You are virtuous in %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の中徳者 (%d)", "You are virtuous in %s (%d)."), vir_name, tester);
         } else if (tester < 60) {
-            sprintf(vir_desc, _("[%s]の高徳者 (%d)", "You are very virtuous in %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の高徳者 (%d)", "You are very virtuous in %s (%d)."), vir_name, tester);
         } else if (tester < 80) {
-            sprintf(vir_desc, _("[%s]の覇者 (%d)", "You are a champion of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の覇者 (%d)", "You are a champion of %s (%d)."), vir_name, tester);
         } else if (tester < 100) {
-            sprintf(vir_desc, _("[%s]の偉大な覇者 (%d)", "You are a great champion of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の偉大な覇者 (%d)", "You are a great champion of %s (%d)."), vir_name, tester);
         } else {
-            sprintf(vir_desc, _("[%s]の具現者 (%d)", "You are the living embodiment of %s (%d)."), vir_name, tester);
+            vir_desc = format(_("[%s]の具現者 (%d)", "You are the living embodiment of %s (%d)."), vir_name, tester);
         }
 
-        strcpy(self_ptr->v_string[v_nr], vir_desc);
+        angband_strcpy(self_ptr->v_string[v_nr], vir_desc.data(), sizeof(self_ptr->v_string[v_nr]));
         self_ptr->info[self_ptr->line++] = self_ptr->v_string[v_nr];
     }
 }
