@@ -6,14 +6,6 @@
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 
-void set_hp_old(PlayerType *player_ptr)
-{
-    player_ptr->mhp = rd_s16b();
-
-    player_ptr->chp = rd_s16b();
-    player_ptr->chp_frac = rd_u16b();
-}
-
 void set_mana_old(PlayerType *player_ptr)
 {
     player_ptr->msp = rd_s16b();

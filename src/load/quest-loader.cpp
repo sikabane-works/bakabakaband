@@ -39,18 +39,8 @@ static void load_quest_completion(quest_type *q_ptr)
 {
     q_ptr->status = i2enum<QuestStatusType>(rd_s16b());
     q_ptr->level = rd_s16b();
-
-    if (h_older_than(1, 0, 6)) {
-        q_ptr->complev = 0;
-    } else {
-        q_ptr->complev = rd_byte();
-    }
-
-    if (h_older_than(2, 1, 2, 2)) {
-        q_ptr->comptime = 0;
-    } else {
-        q_ptr->comptime = rd_u32b();
-    }
+    q_ptr->complev = rd_byte();
+    q_ptr->comptime = rd_u32b();
 }
 
 static void load_quest_details(PlayerType *player_ptr, quest_type *q_ptr, const QuestId loading_quest_index)
@@ -79,13 +69,7 @@ static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
 
     auto status = i2enum<QuestStatusType>(rd_s16b());
 
-    strip_bytes(2);
-    if (!h_older_than(1, 0, 6)) {
-        strip_bytes(1);
-    }
-    if (!h_older_than(2, 1, 2, 2)) {
-        strip_bytes(4);
-    }
+    strip_bytes(7);
 
     auto is_quest_running = (status == QuestStatusType::TAKEN);
     is_quest_running |= (!h_older_than(0, 3, 14) && (status == QuestStatusType::COMPLETED));

@@ -100,13 +100,7 @@ void rd_experience(PlayerType *player_ptr)
         player_ptr->spell_exp[i] = rd_s16b();
     }
 
-    if (PlayerClass(player_ptr).equals(PlayerClassType::SORCERER) && h_older_than(0, 4, 2)) {
-        for (int i = 0; i < 64; i++) {
-            player_ptr->spell_exp[i] = PlayerSkill::spell_exp_at(PlayerSkillRank::MASTER);
-        }
-    }
-
-    const int max_weapon_exp_size = h_older_than(0, 3, 6) ? 60 : 64;
+    const int max_weapon_exp_size = 64;
     for (auto tval : TV_WEAPON_RANGE) {
         for (int j = 0; j < max_weapon_exp_size; j++) {
             player_ptr->weapon_exp[tval][j] = rd_s16b();
@@ -137,16 +131,6 @@ static void set_race(PlayerType *player_ptr)
     player_ptr->old_race1 = rd_u32b();
     player_ptr->old_race2 = rd_u32b();
     player_ptr->old_realm = rd_s16b();
-}
-
-void rd_race(PlayerType *player_ptr)
-{
-    if (h_older_than(1, 0, 7)) {
-        set_zangband_race(player_ptr);
-        return;
-    }
-
-    set_race(player_ptr);
 }
 
 void rd_bounty_uniques()
@@ -234,11 +218,6 @@ static void rd_arena(PlayerType *player_ptr)
  */
 static void rd_hp(PlayerType *player_ptr)
 {
-    if (h_older_than(1, 7, 0, 3)) {
-        set_hp_old(player_ptr);
-        return;
-    }
-
     player_ptr->mhp = rd_s32b();
     player_ptr->chp = rd_s32b();
     player_ptr->chp_frac = rd_u32b();
@@ -313,32 +292,17 @@ static void set_timed_effects(PlayerType *player_ptr)
     player_ptr->tim_sh_touki = rd_s16b();
     player_ptr->lightspeed = rd_s16b();
     player_ptr->tsubureru = rd_s16b();
-    if (h_older_than(0, 4, 7)) {
-        player_ptr->magicdef = 0;
-    } else {
-        player_ptr->magicdef = rd_s16b();
-    }
-
+    player_ptr->magicdef = rd_s16b();
     player_ptr->tim_res_nether = rd_s16b();
     player_ptr->tim_res_time = rd_s16b();
     player_ptr->mimic_form = i2enum<MimicKindType>(rd_byte());
     player_ptr->tim_mimic = rd_s16b();
     player_ptr->tim_sh_fire = rd_s16b();
-
-    if (h_older_than(1, 0, 99)) {
-        set_zangband_holy_aura(player_ptr);
-    } else {
-        player_ptr->tim_sh_holy = rd_s16b();
-        player_ptr->tim_eyeeye = rd_s16b();
-    }
-
-    if (h_older_than(1, 0, 3)) {
-        set_zangband_reflection(player_ptr);
-    } else {
-        player_ptr->tim_reflect = rd_s16b();
-        player_ptr->multishadow = rd_s16b();
-        player_ptr->dustrobe = rd_s16b();
-    }
+    player_ptr->tim_sh_holy = rd_s16b();
+    player_ptr->tim_eyeeye = rd_s16b();
+    player_ptr->tim_reflect = rd_s16b();
+    player_ptr->multishadow = rd_s16b();
+    player_ptr->dustrobe = rd_s16b();
 }
 
 static void set_mutations(PlayerType *player_ptr)
@@ -387,7 +351,7 @@ static void rd_player_status(PlayerType *player_ptr)
     player_ptr->au = rd_s32b();
     rd_experience(player_ptr);
     rd_skills(player_ptr);
-    rd_race(player_ptr);
+    set_race(player_ptr);
     set_imitation(player_ptr);
     rd_bounty_uniques();
     rd_arena(player_ptr);

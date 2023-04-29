@@ -25,38 +25,9 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
-void set_zangband_race(PlayerType *player_ptr)
-{
-    player_ptr->start_race = player_ptr->prace;
-    player_ptr->old_race1 = 0L;
-    player_ptr->old_race2 = 0L;
-    player_ptr->old_realm = 0;
-}
-
-void set_zangband_holy_aura(PlayerType *player_ptr)
-{
-    player_ptr->tim_sh_holy = 0;
-    player_ptr->tim_eyeeye = 0;
-}
-
-void set_zangband_reflection(PlayerType *player_ptr)
-{
-    player_ptr->tim_reflect = 0;
-    player_ptr->multishadow = 0;
-    player_ptr->dustrobe = 0;
-}
-
 void rd_zangband_dungeon()
 {
     max_dlv[DUNGEON_ANGBAND] = rd_s16b();
-}
-
-void set_zangband_game_turns(PlayerType *player_ptr)
-{
-    player_ptr->current_floor_ptr->generated_turn /= 2;
-    player_ptr->feeling_turn /= 2;
-    w_ptr->game_turn /= 2;
-    w_ptr->dungeon_turn /= 2;
 }
 
 void set_zangband_gambling_monsters(int i)
