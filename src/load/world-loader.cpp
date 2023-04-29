@@ -109,21 +109,6 @@ static void rd_world_info(PlayerType *player_ptr)
     player_ptr->knows_daily_bounty = rd_s16b() != 0; // 現在bool型だが、かつてモンスター種族IDを保存していた仕様に合わせる
 }
 
-void rd_visited_towns(PlayerType *player_ptr)
-{
-    if (h_older_than(0, 3, 9)) {
-        player_ptr->visit = 1L;
-        return;
-    }
-
-    if (h_older_than(0, 3, 10)) {
-        set_zangband_visited_towns(player_ptr);
-        return;
-    }
-
-    player_ptr->visit = rd_u32b();
-}
-
 void rd_global_configurations(PlayerType *player_ptr)
 {
     w_ptr->seed_flavor = rd_u32b();

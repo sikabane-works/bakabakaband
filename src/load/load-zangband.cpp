@@ -57,12 +57,6 @@ void set_zangband_action(PlayerType *player_ptr)
     }
 }
 
-void set_zangband_visited_towns(PlayerType *player_ptr)
-{
-    strip_bytes(4);
-    player_ptr->visit = 1L;
-}
-
 void set_zangband_learnt_spells(PlayerType *player_ptr)
 {
     player_ptr->learned_spells = 0;
