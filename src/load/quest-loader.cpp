@@ -79,13 +79,7 @@ static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
 
     auto status = i2enum<QuestStatusType>(rd_s16b());
 
-    strip_bytes(2);
-    if (!h_older_than(1, 0, 6)) {
-        strip_bytes(1);
-    }
-    if (!h_older_than(2, 1, 2, 2)) {
-        strip_bytes(4);
-    }
+    strip_bytes(7);
 
     auto is_quest_running = (status == QuestStatusType::TAKEN);
     is_quest_running |= (!h_older_than(0, 3, 14) && (status == QuestStatusType::COMPLETED));
