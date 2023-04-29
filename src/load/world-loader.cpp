@@ -100,35 +100,13 @@ static void rd_world_info(PlayerType *player_ptr)
     set_undead_turn_limit(player_ptr);
     w_ptr->dungeon_turn_limit = TURNS_PER_TICK * TOWN_DAWN * (MAX_DAYS - 1) + TURNS_PER_TICK * TOWN_DAWN * 3 / 4;
     player_ptr->current_floor_ptr->generated_turn = rd_s32b();
-    if (h_older_than(1, 7, 0, 4)) {
-        player_ptr->feeling_turn = player_ptr->current_floor_ptr->generated_turn;
-    } else {
-        player_ptr->feeling_turn = rd_s32b();
-    }
+    player_ptr->feeling_turn = rd_s32b();
 
     w_ptr->game_turn = rd_s32b();
-    if (h_older_than(0, 3, 12)) {
-        w_ptr->dungeon_turn = w_ptr->game_turn;
-    } else {
-        w_ptr->dungeon_turn = rd_s32b();
-    }
-
-    if (h_older_than(1, 0, 13)) {
-        set_zangband_game_turns(player_ptr);
-    }
-
-    if (h_older_than(0, 3, 13)) {
-        w_ptr->arena_start_turn = w_ptr->game_turn;
-    } else {
-        w_ptr->arena_start_turn = rd_s32b();
-    }
-
-    if (h_older_than(0, 0, 3)) {
-        determine_daily_bounty(player_ptr, true);
-    } else {
-        w_ptr->today_mon = i2enum<MonsterRaceId>(rd_s16b());
-        player_ptr->knows_daily_bounty = rd_s16b() != 0; // 現在bool型だが、かつてモンスター種族IDを保存していた仕様に合わせる
-    }
+    w_ptr->dungeon_turn = rd_s32b();
+    w_ptr->arena_start_turn = rd_s32b();
+    w_ptr->today_mon = i2enum<MonsterRaceId>(rd_s16b());
+    player_ptr->knows_daily_bounty = rd_s16b() != 0; // 現在bool型だが、かつてモンスター種族IDを保存していた仕様に合わせる
 }
 
 void rd_visited_towns(PlayerType *player_ptr)

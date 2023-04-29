@@ -30,14 +30,6 @@ void rd_zangband_dungeon()
     max_dlv[DUNGEON_ANGBAND] = rd_s16b();
 }
 
-void set_zangband_game_turns(PlayerType *player_ptr)
-{
-    player_ptr->current_floor_ptr->generated_turn /= 2;
-    player_ptr->feeling_turn /= 2;
-    w_ptr->game_turn /= 2;
-    w_ptr->dungeon_turn /= 2;
-}
-
 void set_zangband_gambling_monsters(int i)
 {
     mon_odds[i] = rd_s16b();
