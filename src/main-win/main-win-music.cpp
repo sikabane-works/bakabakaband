@@ -187,7 +187,7 @@ errr play_music(int type, int val)
         return 0;
     } // now playing
 
-    concptr filename = music_cfg_data->get_rand(type, val);
+    auto filename = music_cfg_data->get_rand(type, val);
     if (!filename) {
         return 1;
     } // no setting

@@ -1804,12 +1804,8 @@ static void init_sound(void)
     char dir_xtra_sound[1024];
     path_build(dir_xtra_sound, sizeof(dir_xtra_sound), ANGBAND_DIR_XTRA, "sound");
     for (i = 1; i < SOUND_MAX; i++) {
-<<<<<<< HEAD
-        sprintf(wav, "%s.wav", angband_sound_name[i]);
-=======
         std::string wav = angband_sound_name[i];
         wav.append(".wav");
->>>>>>> 0c590da5a ([Refactor] #3209 path_build() の引数をpath とstring_view に差し替え、std::string からconcptr に変換していた箇所をstd::string のまま扱えるようにした)
         path_build(buf, sizeof(buf), dir_xtra_sound, wav);
         if (check_file(buf)) {
             sound_file[i] = string_make(buf);

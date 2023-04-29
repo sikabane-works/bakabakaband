@@ -362,9 +362,7 @@ void show_highclass(PlayerType *player_ptr)
     screen_save();
     char buf[1024], out_val[256];
     path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-
     highscore_fd = fd_open(buf, O_RDONLY);
-
     if (highscore_fd < 0) {
         msg_print(_("スコア・ファイルが使用できません。", "Score file unavailable."));
         msg_print(nullptr);
@@ -446,9 +444,7 @@ void race_score(PlayerType *player_ptr, int race_num)
 
     prt(tmp_str, 5, 15);
     path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-
     highscore_fd = fd_open(buf, O_RDONLY);
-
     if (highscore_fd < 0) {
         msg_print(_("スコア・ファイルが使用できません。", "Score file unavailable."));
         msg_print(nullptr);
