@@ -224,11 +224,6 @@ static void rd_arena(PlayerType *player_ptr)
  */
 static void rd_hp(PlayerType *player_ptr)
 {
-    if (h_older_than(1, 7, 0, 3)) {
-        set_hp_old(player_ptr);
-        return;
-    }
-
     player_ptr->mhp = rd_s32b();
     player_ptr->chp = rd_s32b();
     player_ptr->chp_frac = rd_u32b();
