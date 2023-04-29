@@ -33,12 +33,6 @@ void set_zangband_race(PlayerType *player_ptr)
     player_ptr->old_realm = 0;
 }
 
-void set_zangband_holy_aura(PlayerType *player_ptr)
-{
-    player_ptr->tim_sh_holy = 0;
-    player_ptr->tim_eyeeye = 0;
-}
-
 void set_zangband_reflection(PlayerType *player_ptr)
 {
     player_ptr->tim_reflect = 0;
