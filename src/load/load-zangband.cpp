@@ -33,13 +33,6 @@ void set_zangband_race(PlayerType *player_ptr)
     player_ptr->old_realm = 0;
 }
 
-void set_zangband_reflection(PlayerType *player_ptr)
-{
-    player_ptr->tim_reflect = 0;
-    player_ptr->multishadow = 0;
-    player_ptr->dustrobe = 0;
-}
-
 void rd_zangband_dungeon()
 {
     max_dlv[DUNGEON_ANGBAND] = rd_s16b();

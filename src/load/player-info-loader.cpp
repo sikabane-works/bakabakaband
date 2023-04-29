@@ -321,14 +321,9 @@ static void set_timed_effects(PlayerType *player_ptr)
     player_ptr->tim_sh_fire = rd_s16b();
     player_ptr->tim_sh_holy = rd_s16b();
     player_ptr->tim_eyeeye = rd_s16b();
-
-    if (h_older_than(1, 0, 3)) {
-        set_zangband_reflection(player_ptr);
-    } else {
-        player_ptr->tim_reflect = rd_s16b();
-        player_ptr->multishadow = rd_s16b();
-        player_ptr->dustrobe = rd_s16b();
-    }
+    player_ptr->tim_reflect = rd_s16b();
+    player_ptr->multishadow = rd_s16b();
+    player_ptr->dustrobe = rd_s16b();
 }
 
 static void set_mutations(PlayerType *player_ptr)
