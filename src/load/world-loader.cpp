@@ -124,22 +124,8 @@ void load_wilderness_info(PlayerType *player_ptr)
 {
     player_ptr->wilderness_x = rd_s32b();
     player_ptr->wilderness_y = rd_s32b();
-    if (h_older_than(0, 3, 13)) {
-        player_ptr->wilderness_x = 5;
-        player_ptr->wilderness_y = 48;
-    }
-
-    if (h_older_than(0, 3, 7)) {
-        player_ptr->wild_mode = false;
-    } else {
-        player_ptr->wild_mode = rd_bool();
-    }
-
-    if (h_older_than(0, 3, 7)) {
-        player_ptr->ambush_flag = false;
-    } else {
-        player_ptr->ambush_flag = rd_bool();
-    }
+    player_ptr->wild_mode = rd_bool();
+    player_ptr->ambush_flag = rd_bool();
 }
 
 errr analyze_wilderness(void)
