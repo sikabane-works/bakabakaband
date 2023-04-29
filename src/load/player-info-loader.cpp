@@ -100,13 +100,7 @@ void rd_experience(PlayerType *player_ptr)
         player_ptr->spell_exp[i] = rd_s16b();
     }
 
-    if (PlayerClass(player_ptr).equals(PlayerClassType::SORCERER) && h_older_than(0, 4, 2)) {
-        for (int i = 0; i < 64; i++) {
-            player_ptr->spell_exp[i] = PlayerSkill::spell_exp_at(PlayerSkillRank::MASTER);
-        }
-    }
-
-    const int max_weapon_exp_size = h_older_than(0, 3, 6) ? 60 : 64;
+    const int max_weapon_exp_size = 64;
     for (auto tval : TV_WEAPON_RANGE) {
         for (int j = 0; j < max_weapon_exp_size; j++) {
             player_ptr->weapon_exp[tval][j] = rd_s16b();
