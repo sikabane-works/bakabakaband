@@ -25,16 +25,6 @@ errr load_town(void)
     return 23;
 }
 
-void load_quest_info(uint16_t *max_quests_load, byte *max_rquests_load)
-{
-    *max_quests_load = rd_u16b();
-    if (h_older_than(1, 0, 7)) {
-        *max_rquests_load = 10;
-    } else {
-        *max_rquests_load = rd_byte();
-    }
-}
-
 static void load_quest_completion(quest_type *q_ptr)
 {
     q_ptr->status = i2enum<QuestStatusType>(rd_s16b());
