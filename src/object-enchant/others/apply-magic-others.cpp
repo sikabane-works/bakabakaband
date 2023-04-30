@@ -62,7 +62,7 @@ void OtherItemsEnchanter::apply_magic()
         this->enchant_wand_staff();
         break;
     case ItemKindType::ROD:
-        this->o_ptr->pval = baseitems_info[this->o_ptr->bi_id].pval;
+        this->o_ptr->pval = this->o_ptr->get_baseitem().pval;
         break;
     case ItemKindType::CAPTURE:
         this->o_ptr->pval = 0;
@@ -96,7 +96,7 @@ void OtherItemsEnchanter::apply_magic()
  */
 void OtherItemsEnchanter::enchant_wand_staff()
 {
-    const auto &baseitem = baseitems_info[this->o_ptr->bi_id];
+    const auto &baseitem = this->o_ptr->get_baseitem();
     this->o_ptr->pval = baseitem.pval / 2 + randint1((baseitem.pval + 1) / 2);
 }
 
@@ -204,7 +204,7 @@ void OtherItemsEnchanter::generate_statue()
  */
 void OtherItemsEnchanter::generate_chest()
 {
-    auto obj_level = baseitems_info[this->o_ptr->bi_id].level;
+    auto obj_level = this->o_ptr->get_baseitem().level;
     if (obj_level <= 0) {
         return;
     }
