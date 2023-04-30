@@ -239,7 +239,9 @@ struct ego_generate_type {
  * Information about "ego-items".
  */
 enum class RandomArtActType : short;
-struct ego_item_type {
+class EgoItemDefinition {
+public:
+    EgoItemDefinition() = default;
     EgoType idx{};
 
     std::string name; //!< エゴの名前
@@ -271,7 +273,7 @@ struct ego_item_type {
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::map<EgoType, ego_item_type> egos_info;
+extern std::map<EgoType, EgoItemDefinition> egos_info;
 
 class ItemEntity;
 class PlayerType;
