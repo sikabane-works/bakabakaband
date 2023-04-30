@@ -89,7 +89,7 @@ static std::pair<QuestId, std::string> write_floor(PlayerType *player_ptr)
         return make_pair(q_idx, std::string(_("アリーナ:", "Arena:")));
     } else if (!floor_ptr->dun_level) {
         return make_pair(q_idx, std::string(_("地上:", "Surface:")));
-    } else if (inside_quest(q_idx) && quest_type::is_fixed(q_idx) && !(q_idx == QuestId::MELKO)) {
+    } else if (inside_quest(q_idx) && QuestType::is_fixed(q_idx) && !(q_idx == QuestId::MELKO)) {
         return make_pair(q_idx, std::string(_("クエスト:", "Quest:")));
     } else {
         char desc[40];
@@ -316,7 +316,7 @@ errr exe_write_diary(PlayerType *player_ptr, int type, int num, concptr note)
         break;
     }
     case DIARY_STAIR: {
-        auto to = inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))
+        auto to = inside_quest(q_idx) && (QuestType::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))
                       ? _("地上", "the surface")
                   : !(player_ptr->current_floor_ptr->dun_level + num)
                       ? _("地上", "the surface")
