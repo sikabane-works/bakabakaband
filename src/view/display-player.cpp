@@ -202,9 +202,9 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
 
         const auto *q_ptr = &quest_list[floor_ptr->quest_number];
 #ifdef JP
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺された飽きた。", q_ptr->name, player_ptr->died_from.data()));
+        return std::string(format("…あなたは、クエスト「%s」で%sに殺されて飽きた。", q_ptr->name.data(), player_ptr->died_from.data()));
 #else
-        return std::string(format("...You were killed by %s in the quest '%s' and god tired..", player_ptr->died_from.data(), q_ptr->name));
+        return std::string(format("...You were killed by %s in the quest '%s' and god tired..", player_ptr->died_from.data(), q_ptr->name.data()));
 #endif
     }
 
@@ -236,7 +236,7 @@ static std::optional<std::string> decide_death_in_quest(PlayerType *player_ptr)
     quest_text_line = 0;
     init_flags = INIT_NAME_ONLY;
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
-    return std::string(format(_("…あなたは現在、 クエスト「%s」を遂行中だ。", "...Now, you are in the quest '%s'."), quest_list[floor_ptr->quest_number].name));
+    return std::string(format(_("…あなたは現在、 クエスト「%s」を遂行中だ。", "...Now, you are in the quest '%s'."), quest_list[floor_ptr->quest_number].name.data()));
 }
 
 /*!
