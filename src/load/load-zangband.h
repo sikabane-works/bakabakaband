@@ -6,10 +6,8 @@
 class PlayerType;
 struct quest_type;
 void rd_zangband_dungeon(void);
-void set_zangband_gambling_monsters(int i);
 void set_zangband_special_attack(PlayerType *player_ptr);
 void set_zangband_special_defense(PlayerType *player_ptr);
 void set_zangband_action(PlayerType *player_ptr);
-void set_zangband_visited_towns(PlayerType *player_ptr);
 void set_zangband_learnt_spells(PlayerType *player_ptr);
 void set_zangband_pet(PlayerType *player_ptr);

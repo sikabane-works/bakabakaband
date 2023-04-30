@@ -64,11 +64,7 @@ void set_gambling_monsters(void)
     const int max_gambling_monsters = 4;
     for (int i = 0; i < max_gambling_monsters; i++) {
         battle_mon_list[i] = i2enum<MonsterRaceId>(rd_s16b());
-        if (h_older_than(0, 3, 4)) {
-            set_zangband_gambling_monsters(i);
-        } else {
-            mon_odds[i] = rd_u32b();
-        }
+        mon_odds[i] = rd_u32b();
     }
 }
 
@@ -109,21 +105,6 @@ static void rd_world_info(PlayerType *player_ptr)
     player_ptr->knows_daily_bounty = rd_s16b() != 0; // 現在bool型だが、かつてモンスター種族IDを保存していた仕様に合わせる
 }
 
-void rd_visited_towns(PlayerType *player_ptr)
-{
-    if (h_older_than(0, 3, 9)) {
-        player_ptr->visit = 1L;
-        return;
-    }
-
-    if (h_older_than(0, 3, 10)) {
-        set_zangband_visited_towns(player_ptr);
-        return;
-    }
-
-    player_ptr->visit = rd_u32b();
-}
-
 void rd_global_configurations(PlayerType *player_ptr)
 {
     w_ptr->seed_flavor = rd_u32b();
@@ -143,22 +124,8 @@ void load_wilderness_info(PlayerType *player_ptr)
 {
     player_ptr->wilderness_x = rd_s32b();
     player_ptr->wilderness_y = rd_s32b();
-    if (h_older_than(0, 3, 13)) {
-        player_ptr->wilderness_x = 5;
-        player_ptr->wilderness_y = 48;
-    }
-
-    if (h_older_than(0, 3, 7)) {
-        player_ptr->wild_mode = false;
-    } else {
-        player_ptr->wild_mode = rd_bool();
-    }
-
-    if (h_older_than(0, 3, 7)) {
-        player_ptr->ambush_flag = false;
-    } else {
-        player_ptr->ambush_flag = rd_bool();
-    }
+    player_ptr->wild_mode = rd_bool();
+    player_ptr->ambush_flag = rd_bool();
 }
 
 errr analyze_wilderness(void)

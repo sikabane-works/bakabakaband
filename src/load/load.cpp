@@ -65,10 +65,8 @@ static errr load_town_quest(PlayerType *player_ptr)
         return load_town_result;
     }
 
-    uint16_t max_quests_load;
-    byte max_rquests_load;
-    load_quest_info(&max_quests_load, &max_rquests_load);
-
+    uint16_t max_quests_load = rd_u16b();
+    byte max_rquests_load = rd_byte();
     analyze_quests(player_ptr, max_quests_load, max_rquests_load);
 
     load_wilderness_info(player_ptr);

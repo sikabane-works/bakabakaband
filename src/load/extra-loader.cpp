@@ -25,6 +25,6 @@ void rd_extra(PlayerType *player_ptr)
     rd_dummy_monsters();
     w_ptr->play_time = rd_u32b();
 
-    rd_visited_towns(player_ptr);
+    player_ptr->visit = rd_u32b();
     player_ptr->count = rd_u32b();
 }

@@ -30,11 +30,6 @@ void rd_zangband_dungeon()
     max_dlv[DUNGEON_ANGBAND] = rd_s16b();
 }
 
-void set_zangband_gambling_monsters(int i)
-{
-    mon_odds[i] = rd_s16b();
-}
-
 void set_zangband_special_attack(PlayerType *player_ptr)
 {
     if (rd_byte() != 0) {
@@ -55,12 +50,6 @@ void set_zangband_action(PlayerType *player_ptr)
     if (rd_byte() != 0) {
         player_ptr->action = ACTION_LEARN;
     }
-}
-
-void set_zangband_visited_towns(PlayerType *player_ptr)
-{
-    strip_bytes(4);
-    player_ptr->visit = 1L;
 }
 
 void set_zangband_learnt_spells(PlayerType *player_ptr)
