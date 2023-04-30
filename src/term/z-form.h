@@ -12,7 +12,6 @@
 
 uint vstrnfmt(char *buf, uint max, concptr fmt, va_list vp);
 uint strnfmt(char *buf, uint max, concptr fmt, ...);
-std::string vformat(concptr fmt, va_list vp);
 std::string format(concptr fmt, ...);
 void plog_fmt(concptr fmt, ...);
 void quit_fmt(concptr fmt, ...);
