@@ -48,6 +48,7 @@ enum class SubWindowRedrawingFlag {
     MAX,
 };
 
+
 enum class StatusRedrawingFlag {
     BONUS, /*!< 能力値修正 */
     TORCH, /*!< 光源半径 */

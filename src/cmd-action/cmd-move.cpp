@@ -39,6 +39,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-getter.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
@@ -494,7 +495,8 @@ void do_cmd_rest(PlayerType *player_ptr)
 
     player_ptr->resting = command_arg;
     player_ptr->action = ACTION_REST;
-    player_ptr->update |= PU_BONUS;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     player_ptr->redraw |= (PR_ACTION);
     handle_stuff(player_ptr);
     term_fresh();

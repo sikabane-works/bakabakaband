@@ -24,6 +24,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-checker.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -197,7 +198,8 @@ bool trans_sex(PlayerType *player_ptr)
 
     screen_load();
     player_ptr->window_flags |= PW_PLAYER;
-    player_ptr->update |= PU_BONUS | PU_HP | PU_MP | PU_SPELLS;
+    const auto flags = { StatusRedrawingFlag::BONUS, StatusRedrawingFlag::HP, StatusRedrawingFlag::MP, StatusRedrawingFlag::SPELLS };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags);
     player_ptr->redraw |= PR_BASIC | PR_HP | PR_MP | PR_ABILITY_SCORE;
     sp_ptr = &sex_info[player_ptr->psex];
     handle_stuff(player_ptr);

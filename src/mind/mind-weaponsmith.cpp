@@ -21,6 +21,7 @@
 #include "smith/smith-types.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -105,7 +106,12 @@ static void display_essence(PlayerType *player_ptr)
 
 static void set_smith_redrawing_flags(PlayerType *player_ptr)
 {
-    player_ptr->update |= (PU_COMBINATION | PU_REORDER);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags = {
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
+    };
+    rfu.set_flags(flags);
     player_ptr->window_flags |= (PW_INVENTORY);
 }
 
