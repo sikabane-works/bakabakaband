@@ -29,12 +29,7 @@ static void rd_hengband_dungeons(void)
 
 void rd_dungeons(PlayerType *player_ptr)
 {
-    if (h_older_than(0, 3, 8)) {
-        rd_zangband_dungeon();
-    } else {
-        rd_hengband_dungeons();
-    }
-
+    rd_hengband_dungeons();
     if (player_ptr->max_plv < player_ptr->lev) {
         player_ptr->max_plv = player_ptr->lev;
     }
