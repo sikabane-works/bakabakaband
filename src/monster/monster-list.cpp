@@ -46,6 +46,7 @@
 #include "view/display-messages.h"
 #include "world/world-collapsion.h"
 #include "world/world.h"
+#include <cmath>
 #include <iterator>
 
 #define HORDE_NOGOOD 0x01 /*!< (未実装フラグ)HORDE生成でGOODなモンスターの生成を禁止する？ */
