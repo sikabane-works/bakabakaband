@@ -25,11 +25,6 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
-void rd_zangband_dungeon()
-{
-    max_dlv[DUNGEON_ANGBAND] = rd_s16b();
-}
-
 void set_zangband_special_attack(PlayerType *player_ptr)
 {
     if (rd_byte() != 0) {
