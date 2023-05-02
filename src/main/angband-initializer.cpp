@@ -70,50 +70,8 @@ void init_file_paths(const std::filesystem::path &libpath)
     struct tm *t = localtime(&now);
     char tmp[128];
     strftime(tmp, sizeof(tmp), "%Y-%m-%d-%H-%M-%S", t);
-    char savefile_buf[1024]{};
-    path_build(savefile_buf, sizeof(savefile_buf), ANGBAND_DIR_DEBUG_SAVE, tmp);
-    debug_savefile = savefile_buf;
-
-#ifdef WINDOWS
-    struct _finddata_t c_file;
-    intptr_t hFile;
-    char log_file_expr[1024];
-    path_build(log_file_expr, sizeof(log_file_expr), ANGBAND_DIR_DEBUG_SAVE, "*-*");
-
-    if ((hFile = _findfirst(log_file_expr, &c_file)) != -1L) {
-        do {
-            if (((t->tm_yday + 365 - localtime(&c_file.time_write)->tm_yday) % 365) > 7) {
-                char c_file_fullpath[1024];
-                path_build(c_file_fullpath, sizeof(c_file_fullpath), ANGBAND_DIR_DEBUG_SAVE, c_file.name);
-                remove(c_file_fullpath);
-            }
-        } while (_findnext(hFile, &c_file) == 0);
-        _findclose(hFile);
-    }
-#else
-    const auto &debug_save_str = ANGBAND_DIR_DEBUG_SAVE.string();
-    DIR *saves_dir = opendir(debug_save_str.data());
-    if (saves_dir == nullptr) {
-        return;
-    }
-
-    struct dirent *next_entry;
-    while ((next_entry = readdir(saves_dir))) {
-        if (!angband_strchr(next_entry->d_name, '-')) {
-            continue;
-        }
-
-        char path[1024];
-        struct stat next_stat;
-        path_build(path, sizeof(path), ANGBAND_DIR_DEBUG_SAVE, next_entry->d_name);
-        constexpr auto one_week = 7 * 24 * 60 * 60;
-        if ((stat(path, &next_stat) == 0) && (difftime(now, next_stat.st_mtime) > one_week)) {
-            remove(path);
-        }
-    }
-
-    closedir(saves_dir);
-#endif
+    debug_savefile = path_build(ANGBAND_DIR_DEBUG_SAVE, tmp);
+//    remove_old_debug_savefiles();
 }
 
 /*!
@@ -177,12 +135,11 @@ static void put_title()
  */
 void init_angband(PlayerType *player_ptr, bool no_term)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
-    auto fd = fd_open(buf, O_RDONLY);
+    const auto &path_news = path_build(ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
+    auto fd = fd_open(path_news.string(), O_RDONLY);
     if (fd < 0) {
         std::string why = _("'", "Cannot access the '");
-        why.append(buf);
+        why.append(path_news.string());
         why.append(_("'ファイルにアクセスできません!", "' file!"));
         init_angband_aux(why);
     }
@@ -190,10 +147,10 @@ void init_angband(PlayerType *player_ptr, bool no_term)
     (void)fd_close(fd);
     if (!no_term) {
         term_clear();
-        path_build(buf, sizeof(buf), ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
-        auto *fp = angband_fopen(buf, FileOpenMode::READ);
+        auto *fp = angband_fopen(path_news, FileOpenMode::READ);
         if (fp) {
             int i = 0;
+            char buf[1024]{};
             while (0 == angband_fgets(fp, buf, sizeof(buf))) {
                 term_putstr(0, i++, -1, TERM_WHITE, buf);
             }
@@ -204,15 +161,15 @@ void init_angband(PlayerType *player_ptr, bool no_term)
         term_flush();
     }
 
-    path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-    fd = fd_open(buf, O_RDONLY);
+    const auto &filename_score = path_build(ANGBAND_DIR_APEX, "scores.raw").string();
+    fd = fd_open(filename_score, O_RDONLY);
     if (fd < 0) {
         safe_setuid_grab(player_ptr);
-        fd = fd_make(buf, true);
+        fd = fd_make(filename_score, true);
         safe_setuid_drop();
         if (fd < 0) {
             std::string why = _("'", "Cannot create the '");
-            why.append(buf);
+            why.append(filename_score);
             why.append(_("'ファイルを作成できません!", "' file!"));
             init_angband_aux(why);
         }

@@ -11,6 +11,7 @@
 #include "wizard/artifact-analyzer.h"
 #include "wizard/fixed-artifacts-spoiler.h"
 #include "wizard/spoiler-util.h"
+#include <fstream>
 
 /*!
  * @brief ランダムアーティファクト1件をスポイラー出力する /
@@ -70,16 +71,14 @@ static void spoil_random_artifact_aux(PlayerType *player_ptr, ItemEntity *o_ptr,
  */
 void spoil_random_artifact(PlayerType *player_ptr, concptr fname)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(buf, FileOpenMode::WRITE);
-    if (!spoiler_file) {
+    const auto path = path_build(ANGBAND_DIR_USER, fname);
+    std::ofstream ofs(path);
+    if (!ofs) {
         msg_print("Cannot create list file.");
         return;
     }
 
-    sprintf(buf, "Random artifacts list.\r");
-    spoiler_underline(buf);
+    spoiler_underline("Random artifacts list.\r");
     for (const auto &[tval_list, name] : group_artifact_list) {
         for (auto tval : tval_list) {
             for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {

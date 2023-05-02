@@ -95,9 +95,7 @@ void process_player_name(PlayerType *player_ptr, bool is_new_savefile)
         /* Rename the savefile, using the player_ptr->base_name */
         temp = format("%s", player_ptr->base_name);
 #endif
-        char buf[1024];
-        path_build(buf, sizeof(buf), ANGBAND_DIR_SAVE, temp);
-        savefile = buf;
+        savefile = path_build(ANGBAND_DIR_SAVE, temp);
         is_modified = true;
     }
 

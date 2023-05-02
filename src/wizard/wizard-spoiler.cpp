@@ -98,9 +98,8 @@ static auto get_mon_evol_roots(void)
  */
 static SpoilerOutputResultType spoil_mon_evol(concptr fname)
 {
-    char buf[1024];
-    path_build(buf, sizeof buf, ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(buf, FileOpenMode::WRITE);
+    const auto &path = path_build(ANGBAND_DIR_USER, fname);
+    spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
@@ -176,9 +175,8 @@ static SpoilerOutputResultType spoil_categorized_mon_desc()
 
 static SpoilerOutputResultType spoil_player_spell(concptr fname)
 {
-    char buf[1024];
-    path_build(buf, sizeof buf, ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(buf, FileOpenMode::WRITE);
+    const auto &path = path_build(ANGBAND_DIR_USER, fname);
+    spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
@@ -190,8 +188,7 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
     dummy_p.lev = 1;
     for (auto c = 0; c < PLAYER_CLASS_TYPE_MAX; c++) {
         auto class_ptr = &class_info[c];
-        sprintf(buf, "[[Class: %s]]\n", class_ptr->title);
-        spoil_out(buf);
+        spoil_out(format("[[Class: %s]]\n", class_ptr->title));
 
         auto magic_ptr = &class_magics_info[c];
         auto book_name = "なし";
@@ -214,14 +211,12 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
         }
 
         for (int16_t r = 1; r < MAX_MAGIC; r++) {
-            sprintf(buf, "[Realm: %s]\n", realm_names[r]);
-            spoil_out(buf);
+            spoil_out(format("[Realm: %s]\n", realm_names[r]));
             spoil_out("Name                     Lv Cst Dif Exp\n");
             for (SPELL_IDX i = 0; i < 32; i++) {
                 auto spell_ptr = &magic_ptr->info[r][i];
                 const auto spell_name = exe_spell(&dummy_p, r, i, SpellProcessType::NAME);
-                sprintf(buf, "%-24s %2d %3d %3d %3d\n", spell_name->data(), spell_ptr->slevel, spell_ptr->smana, spell_ptr->sfail, spell_ptr->sexp);
-                spoil_out(buf);
+                spoil_out(format("%-24s %2d %3d %3d %3d\n", spell_name->data(), spell_ptr->slevel, spell_ptr->smana, spell_ptr->sfail, spell_ptr->sexp));
             }
             spoil_out("\n");
         }

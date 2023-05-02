@@ -83,7 +83,6 @@ void do_cmd_visuals(PlayerType *player_ptr)
 {
     FILE *auto_dump_stream;
     char tmp[160];
-    char buf[1024];
     bool need_redraw = false;
     concptr empty_symbol = "<< ? >>";
     if (use_bigtile) {
@@ -120,9 +119,9 @@ void do_cmd_visuals(PlayerType *player_ptr)
                 continue;
             }
 
-            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
+            const auto &path = path_build(ANGBAND_DIR_USER, tmp);
             constexpr auto mark = "Monster attr/chars";
-            if (!open_auto_dump(&auto_dump_stream, buf, mark)) {
+            if (!open_auto_dump(&auto_dump_stream, path, mark)) {
                 continue;
             }
 
@@ -148,9 +147,9 @@ void do_cmd_visuals(PlayerType *player_ptr)
                 continue;
             }
 
-            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
+            const auto &path = path_build(ANGBAND_DIR_USER, tmp);
             constexpr auto mark = "Object attr/chars";
-            if (!open_auto_dump(&auto_dump_stream, buf, mark)) {
+            if (!open_auto_dump(&auto_dump_stream, path, mark)) {
                 continue;
             }
 
@@ -185,9 +184,9 @@ void do_cmd_visuals(PlayerType *player_ptr)
                 continue;
             }
 
-            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
+            const auto &path = path_build(ANGBAND_DIR_USER, tmp);
             constexpr auto mark = "Feature attr/chars";
-            if (!open_auto_dump(&auto_dump_stream, buf, mark)) {
+            if (!open_auto_dump(&auto_dump_stream, path, mark)) {
                 continue;
             }
 
