@@ -62,8 +62,8 @@ static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
     strip_bytes(7);
 
     auto is_quest_running = (status == QuestStatusType::TAKEN);
-    is_quest_running |= (!h_older_than(0, 3, 14) && (status == QuestStatusType::COMPLETED));
-    is_quest_running |= (!h_older_than(1, 0, 7) && (enum2i(q_idx) >= MIN_RANDOM_QUEST) && (enum2i(q_idx) <= (MIN_RANDOM_QUEST + max_rquests_load)));
+    is_quest_running |= (status == QuestStatusType::COMPLETED);
+    is_quest_running |= ((enum2i(q_idx) >= MIN_RANDOM_QUEST) && (enum2i(q_idx) <= (MIN_RANDOM_QUEST + max_rquests_load)));
     if (!is_quest_running) {
         return false;
     }
@@ -93,8 +93,8 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
         auto *const q_ptr = &quest_map.at(q_idx);
         load_quest_completion(q_ptr);
         auto is_quest_running = (q_ptr->status == QuestStatusType::TAKEN);
-        is_quest_running |= (!h_older_than(0, 3, 14) && (q_ptr->status == QuestStatusType::COMPLETED));
-        is_quest_running |= (!h_older_than(1, 0, 7) && (enum2i(q_idx) >= MIN_RANDOM_QUEST) && (enum2i(q_idx) <= (MIN_RANDOM_QUEST + max_rquests_load)));
+        is_quest_running |= (q_ptr->status == QuestStatusType::COMPLETED);
+        is_quest_running |= ((enum2i(q_idx) >= MIN_RANDOM_QUEST) && (enum2i(q_idx) <= (MIN_RANDOM_QUEST + max_rquests_load)));
         if (!is_quest_running) {
             continue;
         }

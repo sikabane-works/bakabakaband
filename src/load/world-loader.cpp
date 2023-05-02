@@ -35,25 +35,6 @@ void rd_dungeons(PlayerType *player_ptr)
     }
 }
 
-/*!
- * @brief 現実変容処理の有無及びその残りターン数を読み込む
- * @param player_ptr プレイヤーへの参照ポインタ
- */
-void rd_alter_reality(PlayerType *player_ptr)
-{
-    if (h_older_than(0, 3, 8)) {
-        player_ptr->recall_dungeon = DUNGEON_ANGBAND;
-    } else {
-        player_ptr->recall_dungeon = rd_s16b();
-    }
-
-    if (h_older_than(1, 5, 0, 0)) {
-        player_ptr->alter_reality = 0;
-    } else {
-        player_ptr->alter_reality = rd_s16b();
-    }
-}
-
 void set_gambling_monsters(void)
 {
     const int max_gambling_monsters = 4;

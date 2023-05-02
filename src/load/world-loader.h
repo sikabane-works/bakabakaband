@@ -4,7 +4,6 @@
 
 class PlayerType;
 void rd_dungeons(PlayerType *player_ptr);
-void rd_alter_reality(PlayerType *player_ptr);
 void set_gambling_monsters(void);
 void rd_autopick(PlayerType *player_ptr);
 void rd_global_configurations(PlayerType *player_ptr);
