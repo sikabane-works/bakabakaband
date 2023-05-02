@@ -375,7 +375,8 @@ static void rd_player_status(PlayerType *player_ptr)
     player_ptr->blessed = rd_s16b();
     player_ptr->tim_invis = rd_s16b();
     player_ptr->word_recall = rd_s16b();
-    rd_alter_reality(player_ptr);
+    player_ptr->recall_dungeon = rd_s16b();
+    player_ptr->alter_reality = rd_s16b();
     player_ptr->see_infra = rd_s16b();
     player_ptr->tim_infra = rd_s16b();
     player_ptr->oppose_fire = rd_s16b();
