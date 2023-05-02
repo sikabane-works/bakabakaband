@@ -36,11 +36,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
     o_ptr->number = any_bits(flags, SaveDataItemFlagType::NUMBER) ? rd_byte() : 1;
     o_ptr->weight = rd_s16b();
     if (any_bits(flags, SaveDataItemFlagType::FIXED_ARTIFACT_IDX)) {
-        if (h_older_than(3, 0, 0, 2)) {
-            o_ptr->fixed_artifact_idx = rd_byte();
-        } else {
-            o_ptr->fixed_artifact_idx = rd_s16b();
-        }
+        o_ptr->fixed_artifact_idx = rd_s16b();
     } else {
         o_ptr->fixed_artifact_idx = 0;
     }
@@ -100,11 +96,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
     }
 
     if (any_bits(flags, SaveDataItemFlagType::ACTIVATION_ID)) {
-        if (h_older_than(3, 0, 0, 2)) {
-            o_ptr->activation_id = i2enum<RandomArtActType>(rd_byte());
-        } else {
-            o_ptr->activation_id = i2enum<RandomArtActType>(rd_s16b());
-        }
+        o_ptr->activation_id = i2enum<RandomArtActType>(rd_s16b());
     } else {
         o_ptr->activation_id = i2enum<RandomArtActType>(0);
     }
