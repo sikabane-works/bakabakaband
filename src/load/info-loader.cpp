@@ -1,6 +1,5 @@
 ﻿#include "load/info-loader.h"
 #include "game-option/runtime-arguments.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/option-loader.h"
 #include "system/angband-version.h"

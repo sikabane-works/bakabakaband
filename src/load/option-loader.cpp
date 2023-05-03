@@ -3,7 +3,6 @@
 #include "game-option/cheat-options.h"
 #include "game-option/option-flags.h"
 #include "game-option/special-options.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "system/angband.h"

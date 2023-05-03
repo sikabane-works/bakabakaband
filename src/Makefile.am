@@ -339,7 +339,6 @@ hengband_SOURCES = \
 	knowledge/monster-group-table.cpp knowledge/monster-group-table.h \
 	knowledge/object-group-table.cpp knowledge/object-group-table.h \
 	\
-	load/angband-version-comparer.cpp load/angband-version-comparer.h \
 	load/birth-loader.cpp load/birth-loader.h \
 	load/dummy-loader.cpp load/dummy-loader.h \
 	load/dungeon-loader.cpp load/dungeon-loader.h \

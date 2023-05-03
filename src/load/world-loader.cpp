@@ -2,7 +2,6 @@
 #include "cmd-building/cmd-building.h"
 #include "dungeon/dungeon.h"
 #include "floor/wild.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "market/bounty.h"

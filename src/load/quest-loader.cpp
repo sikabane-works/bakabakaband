@@ -1,7 +1,6 @@
 ﻿#include "load/quest-loader.h"
 #include "dungeon/quest.h"
 #include "floor/floor-town.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "monster-race/monster-race.h"
