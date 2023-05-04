@@ -199,7 +199,14 @@ bool trans_sex(PlayerType *player_ptr)
     player_ptr->window_flags |= PW_PLAYER;
     const auto flags = { StatusRedrawingFlag::BONUS, StatusRedrawingFlag::HP, StatusRedrawingFlag::MP, StatusRedrawingFlag::SPELLS };
     RedrawingFlagsUpdater::get_instance().set_flags(flags);
-    player_ptr->redraw |= PR_BASIC | PR_HP | PR_MP | PR_ABILITY_SCORE;
+    const auto flags2 = {
+        MainWindowRedrawingFlag::BASIC,
+        MainWindowRedrawingFlag::HP,
+        MainWindowRedrawingFlag::MP,
+        MainWindowRedrawingFlag::ABILITY_SCORE,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags2);
+
     sp_ptr = &sex_info[player_ptr->psex];
     handle_stuff(player_ptr);
     return true;

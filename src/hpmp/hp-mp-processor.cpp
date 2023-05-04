@@ -43,6 +43,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-poison.h"
 #include "timed-effect/timed-effects.h"
@@ -502,7 +503,8 @@ bool hp_player(PlayerType *player_ptr, int num)
             player_ptr->chp_frac = 0;
         }
 
-        player_ptr->redraw |= (PR_HP);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(MainWindowRedrawingFlag::HP);
         player_ptr->window_flags |= (PW_PLAYER);
         if (num < 5) {
             msg_print(_("少し気分が良くなった。", "You feel a little better."));

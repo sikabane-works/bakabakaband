@@ -25,6 +25,7 @@
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-blindness.h"
@@ -121,7 +122,7 @@ void do_cmd_open(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= PR_ACTION;
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -174,7 +175,7 @@ void do_cmd_close(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_ACTION);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -230,7 +231,7 @@ void do_cmd_disarm(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_ACTION);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -290,7 +291,7 @@ void do_cmd_bash(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_ACTION);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 

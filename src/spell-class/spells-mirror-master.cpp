@@ -32,6 +32,7 @@
 #include "system/grid-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-checker.h"
@@ -169,7 +170,7 @@ bool SpellsMirrorMaster::mirror_concentration()
         this->player_ptr->csp_frac = 0;
     }
 
-    set_bits(this->player_ptr->redraw, PR_MP);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
     return true;
 }
 

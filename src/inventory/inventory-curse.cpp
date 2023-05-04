@@ -449,7 +449,7 @@ static void curse_drain_mp(PlayerType *player_ptr)
         player_ptr->csp_frac = 0;
     }
 
-    player_ptr->redraw |= PR_MP;
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
 }
 
 static void curse_megaton_coin(PlayerType *player_ptr)
