@@ -1,7 +1,6 @@
 ﻿#include "load/player-info-loader.h"
 #include "cmd-building/cmd-building.h"
 #include "dungeon/dungeon.h"
-#include "load/angband-version-comparer.h"
 #include "load/birth-loader.h"
 #include "load/dummy-loader.h"
 #include "load/load-util.h"

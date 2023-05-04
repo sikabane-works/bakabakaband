@@ -1,5 +1,4 @@
 ﻿#include "load/item/item-loader-base.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "object/object-kind.h"
 #include "system/artifact-type-definition.h"

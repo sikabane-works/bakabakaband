@@ -7,7 +7,6 @@
 #include "grid/grid.h"
 #include "io/files-util.h"
 #include "io/uid-checker.h"
-#include "load/angband-version-comparer.h"
 #include "load/item/item-loader-factory.h"
 #include "load/load-util.h"
 #include "load/monster/monster-loader-factory.h"

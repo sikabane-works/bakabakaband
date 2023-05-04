@@ -1,6 +1,5 @@
 ﻿#include "load/birth-loader.h"
 #include "birth/quick-start.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "player-ability/player-ability-types.h"
 #include "system/angband.h"

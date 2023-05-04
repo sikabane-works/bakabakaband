@@ -1,6 +1,5 @@
 ﻿#include "load/lore-loader.h"
 #include "game-option/runtime-arguments.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/old/load-v1-5-0.h"
 #include "load/savedata-old-flag-types.h"

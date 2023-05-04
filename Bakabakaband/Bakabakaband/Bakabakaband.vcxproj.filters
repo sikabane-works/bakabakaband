@@ -1439,9 +1439,6 @@
     <ClCompile Include="..\..\src\load\load.cpp">
       <Filter>load</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\load\angband-version-comparer.cpp">
-      <Filter>load</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\load\load-util.cpp">
       <Filter>load</Filter>
     </ClCompile>
@@ -2433,6 +2430,7 @@
     <ClCompile Include="..\..\src\object-enchant\protector\apply-magic-soft-armor.cpp">
       <Filter>object-enchant\protector</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -4112,9 +4110,6 @@
     <ClInclude Include="..\..\src\load\old-feature-types.h">
       <Filter>load</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\load\angband-version-comparer.h">
-      <Filter>load</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\load\load-util.h">
       <Filter>load</Filter>
     </ClInclude>
@@ -5289,6 +5284,7 @@
     <ClInclude Include="..\..\src\object-enchant\protector\apply-magic-soft-armor.h">
       <Filter>object-enchant\protector</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\knowledge\knowledge-incident.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />

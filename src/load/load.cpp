@@ -16,7 +16,6 @@
 #include "io/files-util.h"
 #include "io/report.h"
 #include "io/uid-checker.h"
-#include "load/angband-version-comparer.h"
 #include "load/dummy-loader.h"
 #include "load/dungeon-loader.h"
 #include "load/extra-loader.h"

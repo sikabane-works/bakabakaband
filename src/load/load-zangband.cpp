@@ -5,7 +5,6 @@
 #include "dungeon/quest.h"
 #include "game-option/option-flags.h"
 #include "info-reader/fixed-map-parser.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "market/bounty.h"
 #include "monster-race/monster-race.h"

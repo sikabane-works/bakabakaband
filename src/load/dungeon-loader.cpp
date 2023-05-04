@@ -2,7 +2,6 @@
 #include "dungeon/quest.h"
 #include "floor/floor-save-util.h"
 #include "floor/floor-save.h"
-#include "load/angband-version-comparer.h"
 #include "load/dummy-loader.h"
 #include "load/floor-loader.h"
 #include "load/load-util.h"
