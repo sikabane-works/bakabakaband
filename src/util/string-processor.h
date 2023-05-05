@@ -37,3 +37,6 @@ std::vector<std::string> str_split(std::string_view str, char delim, bool trim =
 std::vector<std::string> str_separate(std::string_view str, size_t len);
 std::string str_erase(std::string str, std::string_view erase_chars);
 std::string trim_kanji(const std::string &str, std::optional<int> count = std::nullopt);
+std::string str_substr(std::string_view sv, size_t pos = 0, size_t n = std::string_view::npos);
+std::string str_substr(std::string &&str, size_t pos = 0, size_t n = std::string_view::npos);
+std::string str_substr(const char *str, size_t pos = 0, size_t n = std::string_view::npos);

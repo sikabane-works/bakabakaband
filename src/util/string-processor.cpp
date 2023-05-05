@@ -792,3 +792,80 @@ std::string trim_kanji(const std::string &str, std::optional<int> count)
     return str.substr(0, max_chars);
 #endif
 }
+
+static std::pair<size_t, size_t> adjust_substr_pos(std::string_view sv, size_t pos, size_t n)
+{
+    const auto start = std::min(pos, sv.length());
+    const auto end = n == std::string_view::npos ? sv.length() : std::min(pos + n, sv.length());
+
+#ifdef JP
+    auto seek_pos = 0U;
+    while (seek_pos < start) {
+        if (iskanji(sv[seek_pos])) {
+            ++seek_pos;
+        }
+        ++seek_pos;
+    }
+    const auto mb_pos = seek_pos;
+
+    while (seek_pos < end) {
+        if (iskanji(sv[seek_pos])) {
+            if (seek_pos == end - 1) {
+                break;
+            }
+            ++seek_pos;
+        }
+        ++seek_pos;
+    }
+    const auto mb_n = seek_pos - mb_pos;
+
+    return { mb_pos, mb_n };
+#else
+    return { start, end - start };
+#endif
+}
+
+/*!
+ * @brief 2バイト文字を考慮して部分文字列を取得する
+ *
+ * 引数で与えられた文字列から pos バイト目から n バイトの部分文字列を取得する。
+ * 但し、以下の通り2バイト文字の途中で分断されないようにする。
+ * - 開始位置 pos バイト目が2バイト文字の後半バイトの場合は pos+1 バイト目を開始位置とする。
+ * - 終了位置 pos+n バイト目が2バイト文字の前半バイトの場合は pos+n-1 バイト目を終了位置とする。
+ *
+ * @param sv 文字列
+ * @param pos 部分文字列の開始位置
+ * @param n 部分文字列の長さ
+ * @return 部分文字列
+ */
+std::string str_substr(std::string_view sv, size_t pos, size_t n)
+{
+    const auto &[mb_pos, mb_n] = adjust_substr_pos(sv, pos, n);
+    return std::string(sv.substr(mb_pos, mb_n));
+}
+
+/*!
+ * @brief 2バイト文字を考慮して部分文字列を取得する
+ *
+ * 引数で与えられた文字列を pos バイト目から n バイトの部分文字列にして返す。
+ * 但し、以下の通り2バイト文字の途中で分断されないようにする。
+ * - 開始位置 pos バイト目が2バイト文字の後半バイトの場合は pos+1 バイト目を開始位置とする。
+ * - 終了位置 pos+n バイト目が2バイト文字の前半バイトの場合は pos+n-1 バイト目を終了位置とする。
+ *
+ * @param str 文字列
+ * @param pos 部分文字列の開始位置
+ * @param n 部分文字列の長さ
+ * @return 部分文字列
+ */
+std::string str_substr(std::string &&str, size_t pos, size_t n)
+{
+    const auto &[mb_pos, mb_n] = adjust_substr_pos(str, pos, n);
+    str.erase(mb_pos + mb_n);
+    str.erase(0, mb_pos);
+    return std::move(str);
+}
+
+std::string str_substr(const char *str, size_t pos, size_t n)
+{
+    return str_substr(std::string_view(str), pos, n);
+}
