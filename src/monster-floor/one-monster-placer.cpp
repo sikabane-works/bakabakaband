@@ -4,9 +4,7 @@
  * @author Hourier
  */
 
-#include "monster-floor/one-monster-placer.h"
 #include "core/disturbance.h"
-#include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "dungeon/quest.h"
 #include "effect/attribute-types.h"
