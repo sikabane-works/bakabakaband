@@ -307,21 +307,18 @@ bool place_monster_aux(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     place_monster_m_idx = hack_m_idx_ii;
 
     /* Reinforcement */
-    for (auto reinforce : r_ptr->reinforces) {
-        auto mon_idx = std::get<0>(reinforce);
-        auto dn = std::get<1>(reinforce);
-        auto ds = std::get<2>(reinforce);
-        if (!MonsterRace(mon_idx).is_valid()) {
-            break;
+    for (auto [reinforce_r_idx, dd, ds] : r_ptr->reinforces) {
+        if (!MonsterRace(reinforce_r_idx).is_valid()) {
+            continue;
         }
-        int n = damroll(dn, ds);
+        auto n = damroll(dd, ds);
         for (int j = 0; j < n; j++) {
             POSITION nx, ny, d;
             const POSITION scatter_min = 7;
             const POSITION scatter_max = 40;
             for (d = scatter_min; d <= scatter_max; d++) {
                 scatter(player_ptr, &ny, &nx, y, x, d, PROJECT_NONE);
-                if (place_monster_one(player_ptr, place_monster_m_idx, ny, nx, mon_idx, mode)) {
+                if (place_monster_one(player_ptr, place_monster_m_idx, ny, nx, reinforce_r_idx, mode)) {
                     break;
                 }
             }
