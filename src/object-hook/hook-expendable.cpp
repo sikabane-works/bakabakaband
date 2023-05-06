@@ -65,12 +65,11 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const ItemEntity *o_ptr)
 }
 
 /*!
- * @brief 破壊可能なアイテムかを返す /
- * Determines whether an object can be destroyed, and makes fake inscription.
+ * @brief 破壊可能なアイテムかを返す
  * @param o_ptr 破壊可能かを確認したいオブジェクトの構造体参照ポインタ
  * @return オブジェクトが破壊可能ならばTRUEを返す
  */
-bool can_player_destroy_object(PlayerType *player_ptr, ItemEntity *o_ptr)
+bool can_player_destroy_object(ItemEntity *o_ptr)
 {
     auto flags = object_flags(o_ptr);
     if (flags.has(TR_INDESTRUCTIBLE)) {
