@@ -236,7 +236,9 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
             MainWindowRedrawingFlag::MAP,
         };
         RedrawingFlagsUpdater::get_instance().set_flags(flags2);
-        player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        const auto flags3 = { SubWindowRedrawingFlag::OVERHEAD, SubWindowRedrawingFlag::DUNGEON };
+        rfu.set_flags(flags3);
     }
 }
 
