@@ -35110,6 +35110,25 @@ F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
 F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_SHAR | RES_TELE | KILL_WALL
 D:ミラディンの大地を清掃する容赦なき巨大ローラーだ。
 
+N:1886:アーボーグの暴食『ヤーグル』
+E:Yargle, Glutton of Urborg
+G:R:o
+I:113:55d11:23:65:20
+W:40:5:0:7000:0:0
+B:BITE:SUPERHURT:10d7
+B:BITE:SUPERHURT:10d7
+B:BITE:SUPERHURT:10d7
+B:BITE:SUPERHURT:10d7
+F:UNIQUE | STUPID
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ANIMAL | EVIL
+F:IM_FIRE | IM_ACID | IM_POIS
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR
+D:ベルゼンロックの呪いで人から暴食のカエルになり果てた存在だ。
+D:しかしアーボーグでファイレクシアすら油諸共貪るその日々は、
+D:妄信者であった時よりもとても充実しているように思える。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
