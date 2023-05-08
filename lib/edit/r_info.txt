@@ -35128,6 +35128,19 @@ D:ベルゼンロックの呪いで人から暴食のカエルになり果てた
 D:しかしアーボーグでファイレクシアすら油諸共貪るその日々は、
 D:妄信者であった時よりもとても充実しているように思える。
 
+N:1887:腐れ谷の腐敗人
+E:Depraved one in Valley of Defilement
+G:p:u
+I:110:10d5:100:1:50
+W:9:2:0:60:0:0
+B:SLASH:DISEASE:1d6
+B:SLASH:DISEASE:1d6
+F:MALE | DROP_CORPSE | DROP_SKELETON | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | EAT_LOSE_CON | EAT_POISONOUS
+F:DROP_KIND_1_IN_5_102_0_1d1
+D:病に冒された者の掃きだめ、腐れ谷に住まい苦しみ続ける住人だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
