@@ -35141,6 +35141,46 @@ F:TAKE_ITEM | OPEN_DOOR | EAT_LOSE_CON | EAT_POISONOUS
 F:DROP_KIND_1_IN_5_102_0_1d1
 D:病に冒された者の掃きだめ、腐れ谷に住まい苦しみ続ける住人だ。
 
+N:1888:ヴィザードリックス
+E:Vizzerdrix
+G:r:b
+I:115:80d20:40:40:0
+W:38:3:0:2400:0:0
+B:BITE:HURT:16d2
+B:BITE:HURT:16d2
+F:BASH_DOOR | WILD_MOUNTAIN | DROP_CORPSE
+F:ANIMAL
+V:133
+D:ある魔術師が退屈しのぎに兎とピラニアからヴィザードリックスを造った。そしてその後はそんな間違いはもう二度としなかった。
+D:$A bored wizard once created a vizzerdrix out of a bunny and a piranha. He never made that mistake again.d
+
+N:1889:今田家の猟犬『勇丸』
+E:Isamaru, Hound of Konda
+G:C:w
+I:120:10d5:30:30:0
+W:5:2:0:90:0:0
+B:BITE:HURT:5d4
+F:UNIQUE | CAN_SPEAK |
+F:FORCE_MAXHP | RAND_25 | DROP_CORPSE
+F:BASH_DOOR | 
+F:ANIMAL | NO_CONF | NO_SLEEP | NO_FEAR
+
+N:1890:鐘突きの『ズルゴ』
+E:Zurgo Bellstriker
+G:o:u
+I:110:24d10:40:60:5
+W:13:4:0:260:0:0
+B:HIT:HURT:3d12
+B:HIT:HURT:2d12
+F:UNIQUE | MALE | 
+F:FORCE_MAXHP | WILD_ALL |
+F:ESCORT | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | CAN_SPEAK |
+F:EVIL | ORC | IM_FIRE | RES_DARK
+S:1_IN_7 | 
+S:SHRIEK
+
 
 # N: serial number : monster name
 # G: symbol : color
