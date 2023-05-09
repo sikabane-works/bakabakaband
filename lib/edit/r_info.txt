@@ -35141,6 +35141,19 @@ F:TAKE_ITEM | OPEN_DOOR | EAT_LOSE_CON | EAT_POISONOUS
 F:DROP_KIND_1_IN_5_102_0_1d1
 D:病に冒された者の掃きだめ、腐れ谷に住まい苦しみ続ける住人だ。
 
+N:1888:ヴィザードリックス
+E:Vizzerdrix
+G:r:b
+I:115:80d20:40:40:0
+W:38:3:0:2400:0:0
+B:BITE:HURT:16d2
+B:BITE:HURT:16d2
+F:BASH_DOOR | WILD_MOUNTAIN | DROP_CORPSE
+F:ANIMAL
+V:133
+D:ある魔術師が退屈しのぎに兎とピラニアからヴィザードリックスを造った。そしてその後はそんな間違いはもう二度としなかった。
+D:$A bored wizard once created a vizzerdrix out of a bunny and a piranha. He never made that mistake again.d
+
 
 # N: serial number : monster name
 # G: symbol : color
