@@ -35165,6 +35165,23 @@ F:FORCE_MAXHP | RAND_25 | DROP_CORPSE
 F:BASH_DOOR | 
 F:ANIMAL | NO_CONF | NO_SLEEP | NO_FEAR
 
+N:1890:鐘突きの『ズルゴ』
+E:Zurgo Bellstriker
+G:o:u
+I:110:24d10:40:60:5
+W:13:4:0:260:0:0
+B:HIT:HURT:3d12
+B:HIT:HURT:2d12
+F:UNIQUE | MALE | 
+F:FORCE_MAXHP | WILD_ALL |
+F:ESCORT | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | CAN_SPEAK |
+F:EVIL | ORC | IM_FIRE | RES_DARK
+S:1_IN_7 | 
+S:SHRIEK
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
