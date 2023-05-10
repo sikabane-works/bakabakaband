@@ -442,7 +442,7 @@ void do_cmd_options(PlayerType *player_ptr)
     screen_save();
     while (true) {
         int n = OPT_NUM;
-        if (!w_ptr->noscore && !allow_debug_opts) {
+        if (!w_ptr->noscore || !allow_debug_opts) {
             n--;
         }
 
@@ -544,7 +544,7 @@ void do_cmd_options(PlayerType *player_ptr)
         }
         case 'C':
         case 'c': {
-            if (!w_ptr->noscore && !allow_debug_opts) {
+            if (!w_ptr->noscore || !allow_debug_opts) {
                 bell();
                 break;
             }

@@ -35181,6 +35181,17 @@ F:EVIL | ORC | IM_FIRE | RES_DARK
 S:1_IN_7 | 
 S:SHRIEK
 
+N:1891:惑乱の死霊
+E:Hypnotic Specter
+G:G:d
+I:110:12d12:20:40:40
+W:24:1:0:100:0:0
+B:HIT:HURT:10d2
+B:HIT:HURT:10d2
+F:PASS_WALL | NO_SLEEP | COLD_BLOOD | NONLIVING | UNDEAD | NO_FEAR |
+F:FORCE_MAXHP | CAN_FLY 
+S:1_IN_5
+S:BLINK | FORGET | BRAIN_SMASH
 
 # N: serial number : monster name
 # G: symbol : color
