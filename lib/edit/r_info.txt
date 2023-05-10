@@ -35181,6 +35181,44 @@ F:EVIL | ORC | IM_FIRE | RES_DARK
 S:1_IN_7 | 
 S:SHRIEK
 
+N:1891:惑乱の死霊
+E:Hypnotic Specter
+G:G:D
+I:110:12d12:20:40:40
+W:24:1:0:100:0:0
+B:HIT:HURT:10d2
+B:HIT:HURT:10d2
+F:PASS_WALL | NO_SLEEP | COLD_BLOOD | NONLIVING | UNDEAD | NO_FEAR |
+F:FORCE_MAXHP | CAN_FLY 
+S:1_IN_5
+S:BLINK | FORGET | BRAIN_SMASH
+
+N:1892:完成化した『ウェザーライト』
+E:Weatherlight Compleated
+G:l:D
+I:115:100d10:20:120:30
+W:40:4:0:3650:0:0
+B:CRUSH:HURT:20d2
+B:CRUSH:HURT:20d2
+B:CRUSH:HURT:20d2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | UNIQUE
+F:DROP_60 | DROP_90 | DROP_2D2 | DROP_CORPSE
+F:BASH_DOOR | SMART | EVIL | ALLIANCE_PHYREXIAN
+F:NO_CONF | NO_SLEEP | RES_WATE | IM_FIRE | IM_COLD | IM_POIS | RES_DISE | RIDING
+S:1_IN_9 | 
+S:BO_MANA | ROCKET
+D:かつてファイレクシアからドミナリアを守った天翔ける船は新たなるファイレクシアの魔の手に堕ちた。
+
+N:1893:否定の壁
+E:Wall of Denial
+G:#:B
+I:120:50d40:20:160:0
+W:60:4:0:3500:0:0
+F:PREVENT_SUDDEN_MAGIC | COLD_BLOOD | EMPTY_MIND | NEVER_MOVE | NEVER_BLOW | RES_ALL
+F:BASH_DOOR | CAN_FLY | REFLECTING
+F:NO_CONF | NO_SLEEP | CAN_FLY
+D:$It provides what every discerning mage requires—time to think.
+D:それは洞察力のある魔道士すべてが求めるものを与えてくれる。考える時間だ。
 
 # N: serial number : monster name
 # G: symbol : color
