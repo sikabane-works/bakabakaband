@@ -345,7 +345,7 @@ void store_maintenance(PlayerType *player_ptr, int town_num, StoreSaleType store
         return;
     }
 
-    st_ptr = &towns_info[town_num].store[enum2i(store_num)];
+    st_ptr = &towns_info[town_num].stores[enum2i(store_num)];
     ot_ptr = &owners.at(store_num)[st_ptr->owner];
     st_ptr->insult_cur = 0;
     if (store_num == StoreSaleType::BLACK) {
@@ -419,7 +419,7 @@ void store_maintenance(PlayerType *player_ptr, int town_num, StoreSaleType store
 void store_init(int town_num, StoreSaleType store_num)
 {
     int owner_num = owners.at(store_num).size();
-    st_ptr = &towns_info[town_num].store[enum2i(store_num)];
+    st_ptr = &towns_info[town_num].stores[enum2i(store_num)];
     const int towns_size = towns_info.size();
     while (true) {
         st_ptr->owner = (byte)randint0(owner_num);
@@ -433,7 +433,7 @@ void store_init(int town_num, StoreSaleType store_num)
             if (i == town_num) {
                 continue;
             }
-            if (st_ptr->owner == towns_info[i].store[enum2i(store_num)].owner) {
+            if (st_ptr->owner == towns_info[i].stores[enum2i(store_num)].owner) {
                 break;
             }
         }
