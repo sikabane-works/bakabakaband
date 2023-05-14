@@ -45,6 +45,30 @@
 #include "world/world-turn-processor.h"
 #include "world/world.h"
 
+static void redraw_character_xtra(PlayerType *player_ptr)
+{
+    w_ptr->character_xtra = true;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::HP,
+        StatusRedrawingFlag::MP,
+        StatusRedrawingFlag::SPELLS,
+        StatusRedrawingFlag::VIEW,
+        StatusRedrawingFlag::LITE,
+        StatusRedrawingFlag::MONSTER_LITE,
+        StatusRedrawingFlag::TORCH,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+        StatusRedrawingFlag::DISTANCE,
+        StatusRedrawingFlag::FLOW,
+    };
+    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_SPELL | PW_PLAYER | PW_MONSTER_LORE | PW_OVERHEAD | PW_DUNGEON);
+    set_bits(player_ptr->redraw, PR_WIPE | PR_BASIC | PR_EXTRA | PR_EQUIPPY | PR_MAP);
+    rfu.set_flags(flags_srf);
+    handle_stuff(player_ptr);
+    w_ptr->character_xtra = false;
+}
+
 /*!
  * process_player()、process_world() をcore.c から移設するのが先.
  * process_upkeep_with_speed() はこの関数と同じところでOK
@@ -101,27 +125,21 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
     verify_panel(player_ptr);
     msg_erase();
 
-    w_ptr->character_xtra = true;
-    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    redraw_character_xtra(player_ptr);
     auto flags_srf = {
         StatusRedrawingFlag::BONUS,
         StatusRedrawingFlag::HP,
         StatusRedrawingFlag::MP,
         StatusRedrawingFlag::SPELLS,
-        StatusRedrawingFlag::VIEW,
-        StatusRedrawingFlag::LITE,
-        StatusRedrawingFlag::MONSTER_LITE,
-        StatusRedrawingFlag::TORCH,
-        StatusRedrawingFlag::MONSTER_STATUSES,
-        StatusRedrawingFlag::DISTANCE,
-        StatusRedrawingFlag::FLOW,
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
     };
-    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_SPELL | PW_PLAYER | PW_MONSTER_LORE | PW_OVERHEAD | PW_DUNGEON);
-    set_bits(player_ptr->redraw, PR_WIPE | PR_BASIC | PR_EXTRA | PR_EQUIPPY | PR_MAP);
-    rfu.set_flags(flags_srf);
+    RedrawingFlagsUpdater::get_instance().set_flags(flags_srf);
     handle_stuff(player_ptr);
+    term_fresh();
 
-    auto no_feeling_quest = (quest_num == QuestId::MELKO);
+    auto no_feeling_quest = (quest_num == QuestId::OBERON);
+    no_feeling_quest |= (quest_num == QuestId::SERPENT);
     no_feeling_quest |= none_bits(quest_list[quest_num].flags, QUEST_FLAG_PRESET);
     if (inside_quest(quest_num) && QuestType::is_fixed(quest_num) && !no_feeling_quest) {
         do_cmd_feeling(player_ptr);
