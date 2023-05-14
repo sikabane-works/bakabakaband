@@ -70,7 +70,7 @@ static void rd_store(PlayerType *player_ptr, int town_number, StoreSaleType stor
 {
     store_type *store_ptr;
     auto sort = false;
-    store_ptr = &towns_info[town_number].stores[enum2i(store_number)];
+    store_ptr = &towns_info[town_number].stores[store_number];
 
     store_ptr->store_open = rd_s32b();
     store_ptr->insult_cur = rd_s16b();
