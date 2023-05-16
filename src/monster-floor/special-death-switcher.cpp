@@ -372,10 +372,6 @@ static void on_dead_sacred_treasures(PlayerType *player_ptr, monster_death_type 
 
     const auto a_idx = rand_choice(candidates);
     create_named_art(player_ptr, a_idx, md_ptr->md_y, md_ptr->md_x);
-
-    if (w_ptr->character_dungeon) {
-        a_ptr->floor_id = player_ptr->floor_id;
-    }
 }
 
 static void on_dead_serpent(PlayerType *player_ptr, monster_death_type *md_ptr)
