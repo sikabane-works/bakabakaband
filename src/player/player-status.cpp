@@ -3102,6 +3102,10 @@ long calc_score(PlayerType *player_ptr)
         }
     }
 
+    if (player_ptr->death_count > 0) {
+        point /= (player_ptr->death_count + 1);
+    }
+
     if ((player_ptr->ppersonality == PERSONALITY_MUNCHKIN) && point) {
         point = 1;
         if (w_ptr->total_winner) {
