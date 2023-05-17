@@ -413,7 +413,7 @@ void store_init(int town_num, StoreSaleType store_num)
         }
     }
 
-    ot_ptr = &owners.at(cur_store_num)[st_ptr->owner];
+    ot_ptr = &owners.at(store_num)[st_ptr->owner];
     st_ptr->store_open = 0;
     st_ptr->insult_cur = 0;
     st_ptr->good_buy = 0;
