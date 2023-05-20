@@ -153,4 +153,5 @@ public:
     bool has_living_flag() const;
     bool is_explodable() const;
     std::string get_died_message() const;
+    bool no_suitable_questor_bounty() const;
 };
