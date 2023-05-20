@@ -150,4 +150,5 @@ public:
     AllianceType alliance_idx;
 
     const std::string &decide_horror_message() const;
+    bool has_living_flag() const;
 };
