@@ -226,10 +226,11 @@ errr top_twenty(PlayerType *player_ptr)
     memcpy(the_score.p_a, buf, 3);
 
     /* Save the level and such */
-    sprintf(the_score.cur_lev, "%3d", std::min<ushort>(player_ptr->lev, 999));
-    sprintf(the_score.cur_dun, "%3d", (int)player_ptr->current_floor_ptr->dun_level);
-    sprintf(the_score.max_lev, "%3d", std::min<ushort>(player_ptr->max_plv, 999));
-    sprintf(the_score.max_dun, "%3d", (int)max_dlv[player_ptr->dungeon_idx]);
+    snprintf(the_score.cur_lev, sizeof(the_score.cur_lev), "%3d", std::min<ushort>(player_ptr->lev, 999));
+    const auto &floor = *player_ptr->current_floor_ptr;
+    snprintf(the_score.cur_dun, sizeof(the_score.cur_dun), "%3d", floor.dun_level);
+    snprintf(the_score.max_lev, sizeof(the_score.max_lev), "%3d", std::min<ushort>(player_ptr->max_plv, 999));
+    snprintf(the_score.max_dun, sizeof(the_score.max_dun), "%3d", max_dlv[floor.dungeon_idx]);
 
     /* Save the cause of death (31 chars) */
     if (player_ptr->died_from.size() >= sizeof(the_score.how)) {
@@ -331,10 +332,11 @@ errr predict_score(PlayerType *player_ptr)
     memcpy(the_score.p_a, buf, 3);
 
     /* Save the level and such */
-    sprintf(the_score.cur_lev, "%3d", std::min<ushort>(player_ptr->lev, 999));
-    sprintf(the_score.cur_dun, "%3d", (int)player_ptr->current_floor_ptr->dun_level);
-    sprintf(the_score.max_lev, "%3d", std::min<ushort>(player_ptr->max_plv, 999));
-    sprintf(the_score.max_dun, "%3d", (int)max_dlv[player_ptr->dungeon_idx]);
+    snprintf(the_score.cur_lev, sizeof(the_score.cur_lev), "%3d", std::min<ushort>(player_ptr->lev, 999));
+    const auto &floor = *player_ptr->current_floor_ptr;
+    snprintf(the_score.cur_dun, sizeof(the_score.cur_dun), "%3d", floor.dun_level);
+    snprintf(the_score.max_lev, sizeof(the_score.max_lev), "%3d", std::min<ushort>(player_ptr->max_plv, 999));
+    snprintf(the_score.max_dun, sizeof(the_score.max_dun), "%3d", max_dlv[floor.dungeon_idx]);
 
     /* まだ死んでいないときの識別文字 */
     strcpy(the_score.how, _("yet", "nobody (yet!)"));
