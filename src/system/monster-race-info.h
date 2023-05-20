@@ -151,4 +151,5 @@ public:
 
     const std::string &decide_horror_message() const;
     bool has_living_flag() const;
+    std::string get_died_message() const;
 };
