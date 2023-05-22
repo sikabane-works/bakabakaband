@@ -35304,6 +35304,22 @@ F:CAN_SWIM | HAS_LITE_1 | DROP_CORPSE
 F:IM_FIRE | IM_COLD | IM_ELEC | RES_DARK
 D:重い首切り斧を平然と振り回す、ボーレタリアの女処刑人だ。
 
+N:1899:コビトカバ
+E:Pygmy Hippo
+G:q:s
+I:110:10d22:20:90:30
+W:22:2:0:600:0:0
+B:CRUSH:HURT:2d8
+B:CRUSH:HURT:2d8
+B:CRUSH:HURT:2d8
+B:CRUSH:UN_POWER
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_2D2 | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL
+S:1_IN_4 | SLOW
+D:魔力を吸い上げる力を持つ不思議なカバだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
