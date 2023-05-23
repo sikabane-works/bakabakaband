@@ -96,6 +96,7 @@
 #include "view/display-messages.h"
 #include "wizard/spoiler-table.h"
 #include "wizard/tval-descriptions-table.h"
+#include "wizard/wizard-messages.h"
 #include "wizard/wizard-spells.h"
 #include "wizard/wizard-spoiler.h"
 #include "world/world.h"
