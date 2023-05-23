@@ -170,7 +170,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
             msg_format(_("%sを $%dで売却しました。", "You sold %s for %d gold."), sold_item_name.data(), price);
 
             if (record_sell) {
-                exe_write_diary(player_ptr, DIARY_SELL, 0, sold_item_name.data());
+                exe_write_diary(player_ptr, DIARY_SELL, 0, sold_item_name);
             }
 
             player_ptr->plus_incident(INCIDENT::STORE_SELL, 1);

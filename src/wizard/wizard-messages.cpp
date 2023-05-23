@@ -3,6 +3,9 @@
 #include "game-option/cheat-types.h"
 #include "io/write-diary.h"
 #include "view/display-messages.h"
+#include <array>
+#include <sstream>
+#include <string>
 
 void msg_print_wizard(PlayerType *player_ptr, int cheat_type, concptr msg)
 {
@@ -19,13 +22,13 @@ void msg_print_wizard(PlayerType *player_ptr, int cheat_type, concptr msg)
         return;
     }
 
-    concptr cheat_mes[] = { "ITEM", "MONS", "DUNG", "MISC" };
-    char buf[1024 + 32];
-    sprintf(buf, "WIZ-%s:%s", cheat_mes[cheat_type], msg);
-    msg_print(buf);
-
+    static const std::array<std::string, 4> cheat_mes = { { "ITEM:", "MONS:", "DUNG:", "MISC:" } };
+    std::stringstream ss;
+    ss << "WIZ-" << cheat_mes[cheat_type] << msg;
+    const auto mes = ss.str();
+    msg_print(mes);
     if (cheat_diary_output) {
-        exe_write_diary(player_ptr, DIARY_WIZARD_LOG, 0, buf);
+        exe_write_diary(player_ptr, DIARY_WIZARD_LOG, 0, mes);
     }
 }
 
