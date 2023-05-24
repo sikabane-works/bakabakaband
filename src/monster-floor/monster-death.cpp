@@ -61,7 +61,7 @@ static void write_pet_death(PlayerType *player_ptr, monster_death_type *md_ptr)
     md_ptr->md_x = md_ptr->m_ptr->fx;
     if (record_named_pet && md_ptr->m_ptr->is_named_pet()) {
         const auto m_name = monster_desc(player_ptr, md_ptr->m_ptr, MD_INDEF_VISIBLE);
-        exe_write_diary(player_ptr, DIARY_NAMED_PET, 3, m_name);
+        exe_write_diary(player_ptr, DiaryKind::NAMED_PET, 3, m_name);
     }
 }
 
@@ -116,7 +116,7 @@ static void on_defeat_arena_monster(PlayerType *player_ptr, monster_death_type *
     }
 
     const auto m_name = monster_desc(player_ptr, md_ptr->m_ptr, MD_WRONGDOER_NAME);
-    exe_write_diary(player_ptr, DIARY_ARENA, player_ptr->arena_number, m_name);
+    exe_write_diary(player_ptr, DiaryKind::ARENA, player_ptr->arena_number, m_name);
 }
 
 static void drop_corpse(PlayerType *player_ptr, monster_death_type *md_ptr)
@@ -364,7 +364,7 @@ static void on_defeat_last_boss(PlayerType *player_ptr)
     add_winner_class(player_ptr->pclass);
     RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TITLE);
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_FINAL_QUEST_CLEAR);
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
+    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
     patron_list[player_ptr->chaos_patron].admire(player_ptr);
     msg_print(_("*** おめでとう ***", "*** CONGRATULATIONS ***"));
     msg_print(_("あなたはゲームをコンプリートしました。", "You have won the game!"));
