@@ -35320,6 +35320,24 @@ F:ANIMAL
 S:1_IN_4 | SLOW
 D:魔力を吸い上げる力を持つ不思議なカバだ。
 
+N:1900:量子ザメ
+E:Quantum shark
+G:l:v
+I:110:40d20:20:40:0
+W:35:5:0:1500:0:0
+B:BITE:LOSE_STR:5d4
+B:BITE:LOSE_CON:5d4
+B:BITE:CONFUSE:5d4
+B:BITE:TERRIFY:5d4
+F:ANIMAL | ATTR_MULTI | ATTR_ANY | QUANTUM | CAN_FLY
+F:ELDRITCH_HORROR | FRIENDS | PASS_WALL | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_2 |
+S:BLINK
+D:この世のクソ映画がある限り、サメは遍在するのだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
