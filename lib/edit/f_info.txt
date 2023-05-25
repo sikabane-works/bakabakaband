@@ -2650,8 +2650,18 @@ E:Gaming Dick
 G:::v:LIT
 W:2
 F:PROJECT | PLACE | DROP | FLOOR | REMEMBER | DEEP |
-F:CAN_FLY | CAN_SWIM | TELEPORTABLE | SLOW
+F:CAN_FLY | CAN_SWIM | TELEPORTABLE | SLOW | GLOW
 F:HYGIENE_-20
+
+N:326:STAINED_GLASS
+J:ステンドグラス
+E:stained glass
+G:#:v:LIT
+W:2
+K:DESTROYED:*FLOOR*
+F:POWER_40 | LOS | REMEMBER | TUNNEL | WALL | HURT_ROCK | CAN_PASS |
+F:HURT_DISI | GLASS
+
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
