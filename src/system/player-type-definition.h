@@ -53,8 +53,6 @@ public:
     void plus_incident(INCIDENT incidentID, int num);
     bool is_true_winner() const;
 
-    int player_egid{};
-
     FloorType *current_floor_ptr{};
     POSITION oldpy{}; /* Previous player location -KMW- */
     POSITION oldpx{}; /* Previous player location -KMW- */
