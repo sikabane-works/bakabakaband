@@ -53,7 +53,6 @@ public:
     void plus_incident(INCIDENT incidentID, int num);
     bool is_true_winner() const;
 
-    int player_uid{};
     int player_euid{};
     int player_egid{};
 
