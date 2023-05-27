@@ -888,7 +888,8 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
     if (floor_ptr->dungeon_idx) {
         player_ptr->recall_dungeon = floor_ptr->dungeon_idx;
     }
-    floor_ptr->dungeon_idx = 0;
+
+    floor_ptr->reset_dungeon_index();
     if (lite_town || vanilla_town) {
         player_ptr->wilderness_y = 1;
         player_ptr->wilderness_x = 1;
