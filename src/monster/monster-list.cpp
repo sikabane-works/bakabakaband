@@ -99,9 +99,10 @@ MonsterRaceId get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_lev
     if (max_level > MAX_DEPTH - 1) {
         max_level = MAX_DEPTH - 1;
     }
+    const auto &dungeon = dungeons_info[floor.dungeon_idx];
 
     /* Boost the max_level */
-    if ((option & GMN_ARENA) || dungeons_info[floor.dungeon_idx].flags.has_not(DungeonFeatureType::BEGINNER)) {
+    if ((option & GMN_ARENA) || dungeon.flags.has_not(DungeonFeatureType::BEGINNER)) {
         /* Nightmare mode allows more out-of depth monsters */
         if (ironman_nightmare) {
             /* What a bizarre calculation */
