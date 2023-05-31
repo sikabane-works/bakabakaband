@@ -35357,6 +35357,23 @@ B:BITE:HURT:2d5
 F:ANIMAL | NO_FEAR | CAN_FLY | WILD_WOOD | DROP_CORPSE | FRIENDS
 D:常に集団で揃い襲い来る訓練された鷹だ。
 
+N:1903:怒竜級陸軍空中戦艦
+E:Doryu class army air battleship
+G:l:s
+I:110:120d25:20:75:30
+W:48:6:0:8000:0:0
+B:CRUSH:HURT:33d2
+B:CRUSH:HURT:33d2
+B:CRUSH:SUPERHURT:33d2
+B:SHOOT:HURT:33d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | IM_FIRE | IM_POIS
+F:DROP_60 | DROP_90 | DROP_2D2 | NONLIVING |
+F:BASH_DOOR | SMART | 
+F:NO_CONF | NO_SLEEP | RIDING |
+S:1_IN_6 | 
+S:SHOOT | BA_FIRE
+D:液体人間の軍事利用を目論む陸軍の最大戦力だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
