@@ -2,6 +2,7 @@
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/race-ability-flags.h"
+#include "monster-race/race-drop-flags.h"
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-visual-flags.h"
 
@@ -100,17 +101,6 @@ const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
     { "FRIENDS", RF1_FRIENDS },
     { "ESCORT", RF1_ESCORT },
     { "ESCORTS", RF1_ESCORTS },
-    { "ONLY_GOLD", RF1_ONLY_GOLD },
-    { "ONLY_ITEM", RF1_ONLY_ITEM },
-    { "DROP_60", RF1_DROP_60 },
-    { "DROP_90", RF1_DROP_90 },
-    { "DROP_1D2", RF1_DROP_1D2 },
-    { "DROP_2D2", RF1_DROP_2D2 },
-    { "DROP_3D2", RF1_DROP_3D2 },
-    { "DROP_4D2", RF1_DROP_4D2 },
-    { "DROP_GOOD", RF1_DROP_GOOD },
-    { "DROP_GREAT", RF1_DROP_GREAT },
-    { "DROP_NASTY", RF1_DROP_NASTY },
 };
 
 /*!
@@ -309,8 +299,6 @@ const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
  * Monster race flags
  */
 const std::unordered_map<std::string_view, race_flags9> r_info_flags9 = {
-    { "DROP_CORPSE", RF9_DROP_CORPSE },
-    { "DROP_SKELETON", RF9_DROP_SKELETON },
     { "EAT_BLIND", RF9_EAT_BLIND },
     { "EAT_CONF", RF9_EAT_CONF },
     { "EAT_MANA", RF9_EAT_MANA },
@@ -491,4 +479,20 @@ const std::unordered_map<std::string_view, MonsterKindType> r_info_kind_flags = 
     { "KARATEKA", MonsterKindType::KARATEKA },
     { "JOKE", MonsterKindType::JOKE },
     { "HOMO_SEXUAL", MonsterKindType::HOMO_SEXUAL },
+};
+
+const std::unordered_map<std::string_view, MonsterDropType> r_info_drop_flags = {
+    { "ONLY_GOLD", MonsterDropType::ONLY_GOLD },
+    { "ONLY_ITEM", MonsterDropType::ONLY_ITEM },
+    { "DROP_GOOD", MonsterDropType::DROP_GOOD },
+    { "DROP_GREAT", MonsterDropType::DROP_GREAT },
+    { "DROP_CORPSE", MonsterDropType::DROP_CORPSE },
+    { "DROP_SKELETON", MonsterDropType::DROP_SKELETON },
+    { "DROP_60", MonsterDropType::DROP_60 },
+    { "DROP_90", MonsterDropType::DROP_90 },
+    { "DROP_1D2", MonsterDropType::DROP_1D2 },
+    { "DROP_2D2", MonsterDropType::DROP_2D2 },
+    { "DROP_3D2", MonsterDropType::DROP_3D2 },
+    { "DROP_4D2", MonsterDropType::DROP_4D2 },
+    { "DROP_NASTY", MonsterDropType::DROP_NASTY },
 };

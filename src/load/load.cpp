@@ -16,7 +16,6 @@
 #include "io/files-util.h"
 #include "io/report.h"
 #include "io/uid-checker.h"
-#include "load/angband-version-comparer.h"
 #include "load/dummy-loader.h"
 #include "load/dungeon-loader.h"
 #include "load/extra-loader.h"
@@ -60,29 +59,14 @@
  */
 static errr load_town_quest(PlayerType *player_ptr)
 {
-    if (h_older_than(2, 1, 3)) {
-        return 0;
-    }
-
     auto load_town_result = load_town();
     if (load_town_result != 0) {
         return load_town_result;
     }
 
-    uint16_t max_quests_load;
-    byte max_rquests_load;
-    auto load_quest_result = load_quest_info(&max_quests_load, &max_rquests_load);
-    if (load_quest_result != 0) {
-        return load_quest_result;
-    }
-
+    uint16_t max_quests_load = rd_u16b();
+    byte max_rquests_load = rd_byte();
     analyze_quests(player_ptr, max_quests_load, max_rquests_load);
-
-    /* Quest 18 was removed */
-    if (h_older_than(1, 7, 0, 6)) {
-        quest_map[i2enum<QuestId>(OLD_QUEST_WATER_CAVE)] = {};
-        quest_map[i2enum<QuestId>(OLD_QUEST_WATER_CAVE)].status = QuestStatusType::UNTAKEN;
-    }
 
     load_wilderness_info(player_ptr);
     return analyze_wilderness();
@@ -169,17 +153,8 @@ static void load_spells(PlayerType *player_ptr)
     player_ptr->spell_worked2 = rd_u32b();
     player_ptr->spell_forgotten1 = rd_u32b();
     player_ptr->spell_forgotten2 = rd_u32b();
-    if (h_older_than(0, 0, 5)) {
-        set_zangband_learnt_spells(player_ptr);
-    } else {
-        player_ptr->learned_spells = rd_s16b();
-    }
-
-    if (h_older_than(0, 0, 6)) {
-        player_ptr->add_spells = 0;
-    } else {
-        player_ptr->add_spells = rd_s16b();
-    }
+    player_ptr->learned_spells = rd_s16b();
+    player_ptr->add_spells = rd_s16b();
 }
 
 static errr verify_checksum()
@@ -191,10 +166,6 @@ static errr verify_checksum()
     }
 
     load_note(_("チェックサムがおかしい", "Invalid checksum"));
-
-    if (loading_savefile_version_is_older_than(18)) {
-        return 0;
-    }
     return 11;
 }
 
@@ -207,9 +178,6 @@ static errr verify_encoded_checksum()
     }
 
     load_note(_("エンコードされたチェックサムがおかしい", "Invalid encoded checksum"));
-    if (loading_savefile_version_is_older_than(18)) {
-        return 0;
-    }
     return 11;
 }
 
@@ -244,7 +212,6 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
     cp_ptr = &class_info[short_pclass];
     ap_ptr = &personality_info[player_ptr->ppersonality];
 
-    set_zangband_class(player_ptr);
     mp_ptr = &m_info[short_pclass];
 
     load_spells(player_ptr);
@@ -259,27 +226,17 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
 
     load_store(player_ptr);
     player_ptr->pet_follow_distance = rd_s16b();
-    if (h_older_than(0, 4, 10)) {
-        set_zangband_pet(player_ptr);
-    } else {
-        player_ptr->pet_extra_flags = rd_u16b();
-    }
+    player_ptr->pet_extra_flags = rd_u16b();
 
-    if (!h_older_than(1, 0, 9)) {
-        std::vector<char> buf(SCREEN_BUF_MAX_SIZE);
-        rd_string(buf.data(), SCREEN_BUF_MAX_SIZE);
-        if (buf[0]) {
-            screen_dump = string_make(buf.data());
-        }
+    std::vector<char> buf(SCREEN_BUF_MAX_SIZE);
+    rd_string(buf.data(), SCREEN_BUF_MAX_SIZE);
+    if (buf[0]) {
+        screen_dump = string_make(buf.data());
     }
 
     auto restore_dungeon_result = restore_dungeon(player_ptr);
     if (restore_dungeon_result != 0) {
         return restore_dungeon_result;
-    }
-
-    if (h_older_than(1, 7, 0, 6)) {
-        remove_water_cave(player_ptr);
     }
 
     auto checksum_result = verify_checksum();

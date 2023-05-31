@@ -244,6 +244,7 @@ void wr_item(ObjectType *o_ptr)
     write_item_flags(o_ptr, &flags);
 
     wr_s16b(o_ptr->k_idx);
+
     wr_byte((byte)o_ptr->iy);
     wr_byte((byte)o_ptr->ix);
     if (any_bits(flags, SaveDataItemFlagType::PVAL)) {

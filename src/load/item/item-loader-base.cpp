@@ -1,5 +1,4 @@
 ﻿#include "load/item/item-loader-base.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "object/object-kind.h"
 #include "system/artifact-type-definition.h"
@@ -32,12 +31,7 @@ void ItemLoaderBase::load_artifact(void)
     for (auto i = 0U; i < loading_max_a_idx; i++) {
         auto *a_ptr = i < a_info.size() ? &a_info[i] : &dummy;
         a_ptr->cur_num = rd_byte();
-        if (h_older_than(1, 5, 0, 0)) {
-            a_ptr->floor_id = 0;
-            strip_bytes(3);
-        } else {
-            a_ptr->floor_id = rd_s16b();
-        }
+        a_ptr->floor_id = rd_s16b();
     }
 
     load_note(_("伝説のアイテムをロードしました", "Loaded Artifacts"));

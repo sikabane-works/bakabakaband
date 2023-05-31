@@ -1439,9 +1439,6 @@
     <ClCompile Include="..\..\src\load\load.cpp">
       <Filter>load</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\load\angband-version-comparer.cpp">
-      <Filter>load</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\load\load-util.cpp">
       <Filter>load</Filter>
     </ClCompile>
@@ -1486,9 +1483,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\load\quest-loader.cpp">
       <Filter>load</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\object-use\quaff-execution.cpp">
-      <Filter>object-use</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\flavor\flag-inscriptions-table.cpp">
       <Filter>flavor</Filter>
@@ -2421,6 +2415,22 @@
     <ClCompile Include="..\..\src\spell-class\spells-mirror-master.cpp">
       <Filter>spell-class</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\object-use\quaff\quaff-execution.cpp">
+      <Filter>object-use\quaff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-use\quaff\quaff-effects.cpp">
+      <Filter>object-use\quaff</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\protector\apply-magic-dragon-armor.cpp">
+      <Filter>object-enchant\protector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\protector\apply-magic-hard-armor.cpp">
+      <Filter>object-enchant\protector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\protector\apply-magic-soft-armor.cpp">
+      <Filter>object-enchant\protector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -4100,9 +4110,6 @@
     <ClInclude Include="..\..\src\load\old-feature-types.h">
       <Filter>load</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\load\angband-version-comparer.h">
-      <Filter>load</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\load\load-util.h">
       <Filter>load</Filter>
     </ClInclude>
@@ -4156,9 +4163,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\core\player-redraw-types.h">
       <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\object-use\quaff-execution.h">
-      <Filter>object-use</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\flavor\object-flavor-types.h">
       <Filter>flavor</Filter>
@@ -5262,6 +5266,25 @@
     <ClInclude Include="..\..\src\spell-class\spells-mirror-master.h">
       <Filter>spell-class</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\object-use\quaff\quaff-execution.h">
+      <Filter>object-use\quaff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-use\quaff\quaff-effects.h">
+      <Filter>object-use\quaff</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\monster-race\race-drop-flags.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\protector\apply-magic-dragon-armor.h">
+      <Filter>object-enchant\protector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\protector\apply-magic-hard-armor.h">
+      <Filter>object-enchant\protector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\protector\apply-magic-soft-armor.h">
+      <Filter>object-enchant\protector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\knowledge\knowledge-incident.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />
@@ -5513,6 +5536,9 @@
     </Filter>
     <Filter Include="spell-class">
       <UniqueIdentifier>{b03873b1-e021-4bfe-84e4-0fa1e0bc87a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object-use\quaff">
+      <UniqueIdentifier>{5eec2f75-7108-42ad-9aa4-85b1129354db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

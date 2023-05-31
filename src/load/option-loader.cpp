@@ -3,7 +3,6 @@
 #include "game-option/cheat-options.h"
 #include "game-option/option-flags.h"
 #include "game-option/special-options.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "system/angband.h"
@@ -34,12 +33,7 @@ void rd_options(void)
     }
 
     hitpoint_warn = rd_byte();
-
-    if (h_older_than(1, 7, 0, 0)) {
-        mana_warn = 2;
-    } else {
-        mana_warn = rd_byte();
-    }
+    mana_warn = rd_byte();
 
     auto c = rd_u16b();
 
@@ -85,10 +79,6 @@ void rd_options(void)
                 option_flag[n] &= ~(1UL << i);
             }
         }
-    }
-
-    if (h_older_than(0, 4, 5)) {
-        load_zangband_options();
     }
 
     extract_option_vars();

@@ -99,7 +99,6 @@ OBJECT_IDX get_obj_num(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
             continue;
         }
 
-
         prob_table.entry_item(i, entry.prob2);
     }
 

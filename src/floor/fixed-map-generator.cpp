@@ -93,7 +93,7 @@ static void generate_artifact(PlayerType *player_ptr, qtwg_type *qtwg_ptr, const
 }
 
 /**
- * @note 馬鹿馬鹿では固定配置モンスターのグループ生成はクビだ！クビだ！クビだ！ 
+ * @note 馬鹿馬鹿では固定配置モンスターのグループ生成はクビだ！クビだ！クビだ！
  */
 static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
 {
@@ -394,8 +394,6 @@ static bool parse_qtw_M(qtwg_type *qtwg_ptr, char **zz)
 
     if (zz[0][0] == 'T') {
         max_towns = static_cast<int16_t>(atoi(zz[1]));
-    } else if (zz[0][0] == 'Q') {
-        max_q_idx = (int16_t)atoi(zz[1]);
     } else if (zz[0][0] == 'O') {
         w_ptr->max_o_idx = (OBJECT_IDX)atoi(zz[1]);
     } else if (zz[0][0] == 'M') {

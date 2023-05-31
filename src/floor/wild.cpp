@@ -386,8 +386,6 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
         return;
     }
 
-
-
     const auto state_backup = w_ptr->rng.get_state();
     w_ptr->rng.set_state(wilderness[y][x].seed);
     int dy = rand_range(6, floor_ptr->height - 6);

@@ -763,7 +763,7 @@ F:EVIL | IM_ACID | IM_ELEC | IM_FIRE | IM_POIS | IM_COLD | UNIQUE |
 F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
 F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
 F:KILL_WALL | FORCE_MAXHP | CAN_SWIM | DROP_CORPSE |
-A:192:1:100
+A:192:100
 S:1_IN_9 |
 S:TPORT | BLINK | TELE_AWAY
 D:$This unholy abomination will crush you. Flee while you can! 
@@ -2265,7 +2265,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GREAT | WILD_WOOD | ROGUE
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EVIL | DROP_SKELETON | DROP_CORPSE
 F:EAT_GIVE_DEX | EAT_LOSE_WIS
 S:1_IN_5 | SHOOT | HEAL | TRAPS
-A:221:1:5
+A:221:5
 V:75
 D:$This legendary archer steals from the rich (you qualify).
 D:この伝説の射手は金持ち（あなたは合格）から金を盗む。
@@ -6420,7 +6420,7 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN | DWARF
 F:DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | EVIL |
 F:IM_FIRE | IM_COLD | RES_DARK | RES_DISE | NO_CONF | NO_SLEEP | RES_TELE
 S:1_IN_8 | HEAL | HASTE | BO_FIRE
-A:99:1:66
+A:99:66
 D:$Alberich's son, born of a mortal woman won with gold.
 D:アルベリヒの息子で、金で買われた人間の女性との間に生まれた。
 D:グンター王の異父弟にあたり、奸計によってジークフリードを殺害し、
@@ -8751,7 +8751,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | ROGUE | SAMURAI
 #F:TROLL | IM_COLD | IM_POIS
 F:IM_COLD | IM_POIS
-A:150:1:100
+A:150:100
 
 #JZ#
 #JZ#巨人ファゾルト
@@ -12269,7 +12269,7 @@ F:REGENERATE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | RES_TELE
 F:ONLY_ITEM | DROP_1D2 | DROP_GREAT | ROGUE
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
 S:1_IN_3 | BLIND | HEAL | BA_DARK | HASTE | CONF |
-A:43:1:15
+A:43:15
 D:$Deriving his strength from the shadows, this king of thieves 
 D:$steals only for the challenge.
 D:薄明界の大盗賊にして、暗黒界の王の一人。
@@ -13004,7 +13004,7 @@ F:CHAR_MULTI | EVIL | IM_POIS | IM_COLD | IM_FIRE | RES_NETH | RES_CHAO |
 F:PREVENT_SUDDEN_MAGIC | UNIQUE | FORCE_MAXHP | CAN_FLY |
 F:COLD_BLOOD | BASH_DOOR | NONLIVING |
 F:NO_CONF | NO_SLEEP | NO_FEAR
-A:190:1:100
+A:190:100
 V:150
 D:$The mightiest of hellblades, a black runesword which thirsts for 
 D:$your soul.
@@ -13784,7 +13784,7 @@ F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | 
 F:IM_POIS | IM_FIRE | NO_CONF | NO_SLEEP | EVIL | RES_TELE
 S:1_IN_6 | TRAPS | S_KIN
-A:139:1:66
+A:139:66
 D:$He may not code worth a dime, but he certainly knows how to make money.
 D:彼の書くプログラムは一銭の価値もないかもしれないが、彼は金を儲ける方法を
 D:確かに知っている。
@@ -14584,7 +14584,7 @@ S:1_IN_4 |
 S:HEAL | BLIND | CONF | SCARE | CAUSE_3 | CAUSE_4 | BRAIN_SMASH | 
 S:FORGET | 
 S:S_MONSTERS
-A:214:1:5
+A:214:5
 D:$He is one of the greatest dwarven priests to walk the earth.  Fundin has 
 D:$earned a high position in the church, and his skill with both weapon and 
 D:$spell only justify his position further.  His combination of both dwarven 
@@ -14617,7 +14617,7 @@ S:1_IN_4 |
 S:HEAL | BLIND | CONF | SCARE | CAUSE_4 | BRAIN_SMASH | 
 S:FORGET | S_MONSTERS | BA_CHAO | BLINK | TPORT | TELE_TO |
 S:TELE_AWAY | S_DEMON
-A:3:1:20
+A:3:20
 D:$Once this now gnomish creature created the universe with the Jewel 
 D:$of Judgement - or so you have been told. There is little sanity left 
 D:$in his present form even if he still has the power. "He was a small 
@@ -14873,7 +14873,7 @@ S:HEAL | HASTE | TPORT | TELE_AWAY | BLIND | CONF | SCARE |
 S:CAUSE_4 | MIND_BLAST | FORGET | TRAPS | ANIM_DEAD |
 S:BO_ICEE | BA_ACID | BA_FIRE | BA_COLD | BA_WATE | 
 S:S_UNDEAD | S_DEMON | S_DRAGON | PSY_SPEAR
-A:2:1:33
+A:2:33
 D:$Originally known as the White, Saruman fell prey to Sauron's wiles. He 
 D:$searches forever for the One Ring, to become a mighty Sorcerer-King of the 
 D:$world.
@@ -14903,7 +14903,7 @@ S:HEAL | HASTE | TPORT | TELE_AWAY | BLIND | CONF | SCARE |
 S:CAUSE_4 | BRAIN_SMASH | FORGET | TRAPS | 
 S:BA_FIRE | BO_FIRE | BO_PLAS | BO_MANA | PSY_SPEAR |
 S:S_MONSTER | S_ANGEL | S_DRAGON | S_KIN 
-A:131:1:20
+A:131:20
 D:$The wizard who opposed Saruman, and in the end, was the only 
 D:$one of the Istari to succeed in his task. Gandalf is very 
 D:$wise and specializes in fire magic.
@@ -14938,8 +14938,8 @@ S:TPORT | BLINK | BA_FIRE | BA_COLD |
 S:DRAIN_MANA | CAUSE_4 | BA_ACID | TELE_AWAY |
 S:MIND_BLAST | TRAPS | HEAL |
 S:HASTE | BRAIN_SMASH | BA_CHAO | BA_DARK | PSY_SPEAR
-A:84:3:33
-A:126:1:25
+A:84:33
+A:126:25
 D:$Brand sees himself as a hero, the god creator 
 D:$and absolute monarch of a future world. Unfortunately he needs 
 D:$to erase the existing world to make his new world. "...a figure both 
@@ -15441,7 +15441,7 @@ S:SCARE | BLIND | CONF | TPORT | BLINK | TELE_AWAY | TELE_TO
 S:TRAPS | CAUSE_4 | BA_POIS | S_DEMON
 S:S_MONSTERS | PSY_SPEAR
 R:201:8d10
-A:70:1:5
+A:70:5
 D:$She is beautiful and deadly. "...I have always been very fond of Fiona. 
 D:$She is certainly the loveliest, most civilized of (all Amberites)."
 D:彼女は美しく、また危険な存在でもある。「…フィオナの事はとても好きだ。
@@ -15521,7 +15521,7 @@ S:TPORT | TELE_TO | SHOOT | SHRIEK | SCARE | DARKNESS |
 S:S_ANT | S_SPIDER | S_HOUND | S_HYDRA | TRAPS | BO_WATE | BO_ELEC
 R:151:1d6
 R:829:5d10
-A:23:1:45
+A:23:45
 V:75
 D:$Julian is at home in wild woodlands. He enjoys hunting a challenging 
 D:$prey: you. "Julian, dark hair hanging long, blue eyes containing neither 
@@ -15674,7 +15674,7 @@ S:1_IN_4 |
 S:TPORT | TELE_TO | SCARE | DARKNESS |
 S:S_DRAGON | TRAPS | BO_WATE | BO_NETH | S_UNDEAD | S_DEMON |
 S:CONF | BO_ACID | FORGET | MIND_BLAST | CAUSE_4
-A:65:1:50
+A:65:50
 V:75
 D:$Caine is perhaps the least reliable Amberite, always ready to ignore 
 D:$his pacts and promises when it suits him. "...the swarthy, dark-eyed 
@@ -16260,7 +16260,7 @@ S:1_IN_2 |
 S:CAUSE_3 | TELE_TO | BA_FIRE | DRAIN_MANA | HOLD |
 S:TRAPS | BA_WATE | BO_PLAS | BA_NETH | DISPEL | PSY_SPEAR |
 S:BA_MANA | BA_DARK | S_HI_UNDEAD | BA_CHAO | HAND_DOOM | ANIM_DEAD
-A:98:1:40
+A:98:40
 D:$Klingsor, whose hopeless effort to join the Knights of the Grail 
 D:$was thwarted, turned to black magic and became a deadly necromancer.
 D:クリングゾールは聖杯の騎士団に加わる望みを断たれ、黒魔術
@@ -16297,8 +16297,8 @@ S:CAUSE_3 | BO_ACID | BO_MANA | HOLD | BA_FIRE | BA_COLD |
 S:TRAPS | TELE_AWAY | HEAL | BRAIN_SMASH | BA_WATE | BA_NETH |
 S:FORGET | BO_WATE | BO_NETH | CAUSE_4 | DARKNESS | S_MONSTERS |
 S:BO_PLAS | S_ANGEL | PSY_SPEAR
-A:55:3:33
-A:72:1:33
+A:55:33
+A:72:33
 D:$Corwin is one of the most feared and respected Amberites; his skill 
 D:$and cunning are well known. "Green eyes, black hair, dressed in black 
 D:$and silver, yes. (Corwin) had on a cloak and it was slightly furled 
@@ -16817,8 +16817,8 @@ F:IM_FIRE | NO_CONF | NO_SLEEP | IM_POIS | HURT_COLD | GIANT |
 S:1_IN_5 |
 S:BR_FIRE | BR_PLAS | BLIND | TELE_TO | S_KIN | S_HI_UNDEAD |
 S:HAND_DOOM | TELE_AWAY | S_CYBER | S_DEMON
-A:245:3:50
-A:78:1:100
+A:245:50
+A:78:100
 D:$Surtur is also one of the most ancient of all creatures. He is a demonic 
 D:$giant of fire, who is destined to set the nine worlds afire with his 
 D:$accursed sword of doom on the day of Ragnarok.
@@ -16873,7 +16873,7 @@ S:1_IN_4 |
 S:BLIND | CONF | SCARE | 
 S:BR_FIRE | 
 S:S_DEMON | S_HI_UNDEAD
-A:71:1:50
+A:71:50
 D:$A massive form cloaked in flame.  Lungorthin stares balefully at you with 
 D:$eyes that smoulder red.  The dungeon floor where he stands is scorched by 
 D:$the heat of his body.
@@ -17373,7 +17373,7 @@ F:EVIL | DEMON | IM_FIRE | IM_ELEC | IM_POIS | RES_DARK |
 F:NO_FEAR | NO_CONF | NO_SLEEP | NO_STUN | ALLIANCE_UTUMNO
 S:1_IN_3 | 
 S:BR_FIRE | BR_NETH | S_KIN | S_DEMON | 
-A:212:1:50
+A:212:50
 D:$Gothmog is the Chief Balrog in Morgoth's personal guard.  He is renowned 
 D:$for slaying Ecthelion the Warder of the Gates and he has never been 
 D:$defeated in combat.  With his whip of flame and awesome fiery breath he 
@@ -17450,8 +17450,8 @@ S:BO_ICEE | BO_MANA | BO_PLAS |
 S:BA_MANA | BA_FIRE | BA_WATE | BA_NETH | BA_DARK | 
 S:S_MONSTERS | S_DEMON | S_HI_UNDEAD | S_HI_DRAGON |
 S:HAND_DOOM | ANIM_DEAD | DISPEL | PSY_SPEAR
-A:13:10:10
-A:14:1:100
+A:13:10
+A:14:100
 D:$Mighty in spells and enchantments,
 D:$he created the One Ring.  His eyes glow with power and his gaze seeks to 
 D:$destroy your soul.  He has many servants, and rarely fights without them.
@@ -17544,8 +17544,8 @@ D:「オベロン、アンバーの君主。あの緑と金の服装で、目の
 D:高く、肩幅が広く、胸が厚い。白髪のいくらか混じった黒い顎ひげ。髪の毛は
 D:相変わらず。緑の石のはまった金の指輪、金色の剣。」
 D:（ロジャー・ゼラズニイ、岡部宏之訳「アンバーの九王子」早川書房、p.181）
-A:3:3:33
-A:42:1:50
+A:3:33
+A:42:50
 
 # Morgoth, mr normal monster!
 
@@ -17861,7 +17861,7 @@ F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | CAN_SWIM | RES_WATE |
 F:EVIL | IM_FIRE | IM_COLD | IM_POIS | IM_ELEC | NO_CONF | NO_SLEEP
 S:1_IN_2 | 
 S:BR_FIRE | BR_NEXU | BR_CHAO | BR_POIS | BR_DISE | BR_PLAS | BR_NUKE | BR_DARK
-A:128:1:25
+A:128:25
 V:150
 D:$Is a legendary snake, with eight necks and eight tails, living in Izumo.
 D:$  If denied sacrificial victims, it causes floods and annihilates people.
@@ -17887,7 +17887,7 @@ F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
 F:RES_TELE | NO_CONF | NO_SLEEP | NO_STUN |
 S:1_IN_2 | 
 S:ROCKET | HEAL | BLINK | INVULNER
-A:16:1:50
+A:16:50
 V:900
 D:$His favorite food is grilled rice noodle. 
 D:$He is a lone wolf filled with the adventurous spirit. 
@@ -17987,7 +17987,7 @@ F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_NETH | RES_DARK | HURT_LITE |
 F:NO_CONF | NO_SLEEP | RES_TIME | RES_TELE | REFLECTING |
 S:1_IN_4 | 
 S:SCARE | S_KIN | WORLD | TELE_TO
-A:146:1:20
+A:146:20
 D:$Dio, who became an immortal vampire with the help of a stone mask,
 D:$ looks only at the adventurer.  Watch out for The World, Dio's stand
 D:$ or visual manifestation of his life energy:  "I don't know what his
@@ -19716,7 +19716,7 @@ F:UNIQUE | MALE | FORCE_MAXHP | DROP_60 | DROP_GOOD | HUMAN |
 F:DROP_1D2 | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL | IM_FIRE |
 F:TAKE_ITEM | CAN_SPEAK | EVIL | NO_FEAR | NO_CONF | NO_SLEEP | 
 F:CAN_SWIM | DROP_CORPSE | AURA_FIRE | HAS_LITE_2 |
-A:154:1:10
+A:154:10
 D:$Beld seeks to conquer Lodoss and will destroy anyone who stands in his way.
 D:ベルドはロードス征服をたくらみ、立ちはだかる全てを破壊しようとした。
 
@@ -19839,7 +19839,7 @@ F:UNIQUE | MALE | CAN_SPEAK | FORCE_MAXHP | ESCORT |
 F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_GOOD | DROP_CORPSE |
 F:OPEN_DOOR | BASH_DOOR | CAN_SWIM | AURA_ELEC |
 F:EVIL | GIANT | IM_POIS | IM_FIRE | IM_ELEC
-A:194:1:33
+A:194:33
 D:$Living on Mt. Oe, in the province of Tanba, this large ogre seized young
 D:$ women and treasure from nearby Kyoto.
 D:丹波の国の大江山をねぐらとし、京の都を襲っては財宝と娘を
@@ -20283,7 +20283,7 @@ F:OPEN_DOOR | GOOD | CAN_SWIM |
 F:NO_CONF | NO_SLEEP | FRIENDLY | TAKE_ITEM |
 S:1_IN_5 |
 S:BA_FIRE | HOLD | BO_FIRE | HEAL
-A:179:1:50
+A:179:50
 D:$Merlin the magician summoned this young warrior to complete a variety of
 D:$ tasks.  Pip carries a dubious sword, created by Merlin and modeled on King
 D:$ Arthur's Excalibur.
@@ -22020,7 +22020,7 @@ F:UNIQUE | MALE | WEIRD_MIND | HUMAN | CAN_SPEAK
 F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
 F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ALLIANCE_KOGAN-RYU
 F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | SAMURAI
-A:248:1:80
+A:248:80
 D:「あの君さまはいつが盛りよな」この老剣士は今、正気でも曖昧でもなく、
 D:敵であろうと味方であろうと、間合いに入った者全てを斬る魔神と化している。
 
@@ -22483,7 +22483,7 @@ F:BASH_DOOR | NO_SLEEP | NO_CONF | NO_FEAR
 F:DROP_GREAT | ONLY_ITEM | DROP_1D2
 S:1_IN_6
 S:ANIM_DEAD | BA_LITE | CAUSE_3 | CONF | HOLD | BLIND | SHRIEK | BLINK
-A:253:1:10
+A:253:10
 D:$You are a UNIQUE.
 D:$  She will surely fail your animation!
 D:あなたはユニークな存在だ。
@@ -25394,7 +25394,7 @@ B:SHOOT:HURT:1d4
 B:HIT:HURT:1d4
 F:FEMALE | HAS_LITE_1 | DROP_60 | TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 F:DROP_SKELETON | DROP_CORPSE | GOOD | NASTY
-S:1_IN_2 | SHOOT
+S:1_IN_8 | SHOOT
 D:やたら様々な化け物の慰み物になっているクッソ哀れなエルフ共だ。好きにしろ。
 
 N:1286:レッサー不潔で醜い哀れな身なりのわめきふらつくキチガイ人間
@@ -26464,7 +26464,7 @@ F:DROP_GREAT | DROP_1D2 | WILD_TOWN
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EVIL | DROP_SKELETON | DROP_CORPSE
 F:EAT_GIVE_DEX | EAT_LOSE_WIS | ROGUE
 S:1_IN_5 | TRAPS
-A:272:1:20
+A:272:20
 V:75
 D:$This legendary thief steals from the rich (you qualify).
 D:この伝説の盗賊は金持ち（あなたは合格）から金を盗む
@@ -29098,7 +29098,7 @@ B:KICK:HURT:2d13
 F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | GOOD | ROGUE
 F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE
 F:DROP_1D2 | DROP_GREAT | OPEN_DOOR | BASH_DOOR
-A:146:1:4
+A:146:4
 D:彼の冒険は古代の神秘の追求が目的であり、金目当ての宝探しを忌避している。
 D:その英国紳士キックの威力を恐れよ！
 
@@ -29536,7 +29536,7 @@ W:11:3:0:110:0:0
 B:PUNCH:HURT:2d8
 B:PUNCH:HURT:2d8
 B:KICK:HURT:2d10
-A:289:1:100
+A:289:100
 F:DROP_KIND_1_IN_1_803_0_2d10
 F:UNIQUE | MALE | GOOD | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
@@ -29598,7 +29598,7 @@ F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | MOVE_BODY | DROP_CORPSE
 F:ONLY_ITEM | DROP_3D2 | DROP_GOOD |
 F:SMART | OPEN_DOOR | BASH_DOOR |
 F:GOOD | EVIL | IM_ACID | IM_FIRE | IM_POIS | IM_COLD
-A:189:1:100
+A:189:100
 S:1_IN_3 |
 S:BLIND | BO_FIRE | BA_FIRE
 D:同胞からも無能の烙印を押された世界線の彼は、
@@ -30494,7 +30494,7 @@ S:1_IN_9 |
 S:TELE_TO
 D:このクッソ汚い強姦魔はあなたを押し潰すだろう。ホモの魔の手からは絶対に逃れられない！
 
-N:1600:ゲドの裏切り者『カリタス』
+N:1600:ゲトの裏切り者『カリタス』
 E:Kalitas, Traitor of Ghet
 G:V:s
 I:126:18d100:30:100:10
@@ -30610,7 +30610,7 @@ F:DEMON | GIANT | EVIL | DROP_GOOD | REGENERATE | UNIQUE
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_GOOD | DROP_4D2 |
 F:OPEN_DOOR | BASH_DOOR | RES_NETH | RES_NEXU | RES_TELE | KILL_BODY |
 F:IM_ACID | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
-A:273:1:40
+A:273:40
 D:太陽の光の王グウィンの忠実にして酷薄な処刑人だ。。
 D:その巨大な大鎚で罪人をすり潰すことに喜びを覚える残忍さを持っている。
 
@@ -30698,7 +30698,7 @@ W:10:2:0:90:0:00
 B:HIT:HURT:7d5
 B:HIT:HURT:7d5
 F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
-F:FORCE_MAXHP | NASTY | HOMO_SEXUAL | SUMOU_WRESTLER | UNIQUE
+F:FORCE_MAXHP | NASTY | HOMO_SEXUAL | SUMOU_WRESTLER
 F:DROP_1D2 | OPEN_DOOR | BASH_DOOR
 D:角界の暗部を煮詰めたような様相の上に、クッソ汚いホモ特有の可愛がりが尽きない連中だ。
 D:ただその張り手だけには気をつけろ。
@@ -30841,7 +30841,7 @@ N:1619:ヤクザ
 E:Yakuza
 G:p:o
 I:110:4d6:10:20:250
-W:0:3:0:20:0:0
+W:0:3:0:20:300:1881
 B:SHOOT:HURT:2d5
 B:HIT:HURT:2d5
 R:1618:1d6
@@ -32098,15 +32098,6 @@ S:1_IN_6 | BR_ABYSS
 V:150
 D:$It's a abyssal whirlpool.
 D:深淵の渦巻きだ。
-# N: serial number : monster name
-# G: symbol : color
-# I: speed : hit points : vision : armor class : alertness
-# W: depth : rarity : 0 : exp : next_exp : next_mon
-# B: attack method : attack effect : damage
-# S: spell frequency |
-# S: spell type | spell type | etc
-# F: flag | flag | etc
-# D: Description
 
 N:1696:オディオマウス
 E:Odio mouth
@@ -32396,7 +32387,7 @@ F:MOVE_BODY | KILL_WALL | IM_FIRE | IM_ELEC | IM_POIS | IM_ACID | IM_COLD |
 F:RES_NETH | RES_WATE | RES_PLAS | RES_NEXU | RES_CHAO | GOOD | ALLIANCE_VALINOR
 F:RES_DISE | RES_WALL | RES_INER | NO_STUN | REGENERATE |
 F:NO_CONF | NO_SLEEP | CAN_FLY | BASH_DOOR | POWERFUL |
-A:9:1:100
+A:9:100
 D:トゥルカス、あるいはアスタルドと呼ばれるこのヴァラールは、
 D:主イルーヴァタールの意の下、最強たることが定められており故にアイヌアたる
 D:長兄メルコールをも幾度となく叩きのめし、屈辱と苦痛を与えてきた。
@@ -32578,7 +32569,7 @@ F:PREVENT_SUDDEN_MAGIC | RAND_50 | EMPTY_MIND | BASH_DOOR | CAN_FLY |
 F:RES_SHAR | NO_FEAR | NO_CONF | NO_SLEEP | NO_STUN | POWERFUL | NONLIVING
 F:ALLIANCE_DOKACHANS | MOB_53
 S:1_IN_4 | 
-S:BR_NUKE
+S:BR_POIS
 V:150
 D:$It's a stormy mass of fecal matter that blows around with a 
 D:$terrific defecating sound. It is maintained in its form by the desires of dirt lovers.
@@ -32905,14 +32896,14 @@ E:Riley, the Bionic Soldier
 G:p:r
 I:120:70d12:25:80:10
 W:36:3:0:4000:0:0
-B:SHOOT:HURT:20d15
+B:SHOOT:HURT:10d15
 B:HIT:HURT:3d10
 B:SLASH:HURT:3d10
 B:PUNCH:HURT:3d10
 F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
 F:IM_POIS | NO_SLEEP | NO_CONF | NO_STUN
 F:MALE | DROP_CORPSE | DROP_SKELETON | HUMAN | FORCE_MAXHP
-S:1_IN_2 |
+S:1_IN_4 |
 S:SHOOT
 D:最強の男性ゲリラの種と最高の女性アスリートの卵を掛け合わせて生み出され、
 D:各種の薬物投与や訓練より育て上げられた合衆国ペンタゴンの戦士だ。
@@ -33155,7 +33146,7 @@ F:FRIENDS | CAN_FLY |
 F:BASH_DOOR |
 F:ANIMAL | IM_POIS
 S:1_IN_7 | 
-S:BR_NUKE
+S:BR_POIS
 D:排泄物の塊がそのまま猟犬になったような姿だ。
 D:全くすさまじい匂いを、腹立たしいほどの機敏さで振りまいてくる。
 
@@ -33304,7 +33295,7 @@ N:1767:軍用ワーグ
 E:Military warg
 G:C:s
 I:123:18d18:20:40:40
-W:20:2:0:40:500:347
+W:20:2:0:40:700:1872
 B:BITE:HURT:2d10
 B:BITE:HURT:2d10
 F:RAND_25 | 
@@ -34097,20 +34088,20 @@ D:それはつまる所、野獣先輩が遍く神羅万象に宿っているた
 N:1821:大修道士『エリシュ・ノーン』
 E:Elesh Norn, Grand Cenobite
 G:U:w
-I:120:12d100:25:130:40
-W:49:2:0:2500:0:0
-B:SLASH:SUPERHURT:5d12
-B:SLASH:SUPERHURT:5d12
-B:TOUCH:LOSE_ALL:20d1
-B:TOUCH:LOSE_ALL:20d1
+I:120:42d100:45:190:10
+W:66:2:0:22500:0:0
+B:SLASH:SUPERHURT:7d12
+B:SLASH:SUPERHURT:7d12
+B:TOUCH:LOSE_ALL:30d1
+B:TOUCH:LOSE_ALL:30d1
 F:UNIQUE | FEMALE | CAN_SPEAK | REFLECTING | HAS_LITE_2 | COLD_BLOOD | WEIRD_MIND
 F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON | ALLIANCE_PHYREXIA
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | MOVE_BODY | TAKE_ITEM |
 F:DROP_1D2 | DROP_90 | DROP_GOOD | ONLY_ITEM | CAN_SWIM |
 F:REGENERATE | EAT_GIVE_STR | EAT_GIVE_CON | EAT_LOSE_INT | EAT_LOSE_CHR |
 D:新たなるファイレクシアの権勢争いの中でも、最大勢力を誇る派閥『機械正典』の長だ。
-D:彼女は多元宇宙をも含めた完全なる支配を求めて止まない。
-S:1_IN_6 |
+D:彼女は多元宇宙を全てファイレクシアの完全なる支配に掌握しようと魔の手を伸ばしている。
+S:1_IN_4 |
 S:BR_SHAR | BO_MANA
 
 N:1822:ホモガキ
@@ -34173,7 +34164,7 @@ F:NO_SLEEP | RES_TELE | RES_NETH | RES_TIME | POWERFUL | CAN_FLY |
 S:1_IN_3 | 
 S:TPORT | BLIND | HOLD | BLINK | HEAL | HASTE |
 S:TELE_TO | CONF | BA_COLD | BA_LITE | BRAIN_SMASH | PSY_SPEAR
-A:82:1:100
+A:82:100
 D:フィンゴルフィンは客観的に見ても、最終的にノルドールの王統の中で最たる血筋の主となり、
 D:ヴァリノールの神々からも覚えめでたく、その子々孫々まで庇護を受けることとなった。
 D:その栄えは、ヴァリノールから独立した神統となり、望まずも政敵ともなったフェアノールと
@@ -34602,6 +34593,786 @@ S:1_IN_1 |
 S:BLINK
 D:正確には名状しがたく聞き取れない。風呂場の謎の声だ。
 
+N:1851:糞土方の娘『変態糞娘』
+E:The Hentai Feces Daughter of the Hentai Feces Labor
+G:p:v
+I:117:30d101:101:100:0
+W:40:7:0:28000:0:0
+B:TOUCH:DISEASE:6d8
+B:TOUCH:DISEASE:6d8
+B:ENEMA:DEFECATE:7d10
+B:ENEMA:DEFECATE:7d10
+F:UNIQUE | FEMALE | DROP_CORPSE | FRIENDLY | HAS_LITE_2 | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE | ALLIANCE_DOKACHANS
+F:ONLY_ITEM | DROP_2D2 | DROP_GREAT
+F:SMART | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | NASTY | HOMO_SEXUAL | IM_POIS | NO_CONF | NO_SLEEP
+F:SPAWN_FEATURE_1_IN_2_237
+S:1_IN_3 | BR_NUKE
+D:やりましたわ。
+
+N:1852:武辺者『男衾三郎』
+E:Saburo Obusuma, the Japanese Military Maniac
+G:p:r
+I:120:135d11:24:95:5
+W:39:5:0:10000:0:0
+B:SHOOT:HURT:9d10
+B:SLASH:SUPERHURT:12d4
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:11d4
+F:UNIQUE | MALE | HUMAN | CAN_SPEAK
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | EVIL
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | SAMURAI
+S:SHOOT | 1_IN_3
+D:風雅を嫌い蛮勇を尊ぶ野蛮な侍は、しかし御仏に裁かれることなく平然としている。
+
+N:1853:黙示録『シェオルドレッド』
+E:Sheoldred, the Apocalypse
+G:U:s
+I:120:12d100:25:130:40
+W:45:2:0:13000:0:0
+B:CRUSH:SUPERHURT:7d12
+B:CRUSH:SUPERHURT:7d12
+B:CRUSH:SUPERHURT:7d12
+F:UNIQUE | FEMALE | CAN_SPEAK | REFLECTING | HAS_LITE_2 | COLD_BLOOD | WEIRD_MIND
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON | ALLIANCE_PHYREXIA
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_BODY | TAKE_ITEM |
+F:DROP_1D2 | DROP_90 | DROP_GOOD | ONLY_ITEM | CAN_SWIM |
+F:REGENERATE | EAT_GIVE_STR | EAT_GIVE_CON | EAT_LOSE_INT | EAT_LOSE_CHR |
+D:新ファイレクシアの一派閥『七人の鋼の族長』の筆頭であり、エリシュ・ノーンの
+D:機械正典に屈しながらもいまだに反抗心を失っていない野心家だ。
+S:1_IN_4 |
+S:CAUSE_3 | DRAIN_MANA | BRAIN_SMASH
+
+N:1854:生ける小型ロケット砲
+E:Living small rocket launcher
+G:{:U
+I:100:100d1:4:1:0
+W:30:2:0:400:0:0
+F:NEVER_MOVE | COLD_BLOOD | MULTIPLY | NEVER_BLOW
+F:STUPID | EMPTY_MIND | 
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_1
+S:ROCKET
+D:自ら標的を見つけて延々と砲を放つゴーレムの一種だ。
+
+N:1855:外道高校野球部員
+E:Baseball club member of Gedou Serior Highschool
+G:p:s
+I:111:10d12:20:30:40
+W:18:3:0:60:0:0
+B:HIT:HURT:4d5
+B:PUNCH:SUPERHURT:2d5
+B:PUNCH:HURT:3d5
+B:SHOOT:HURT:3d5
+F:MALE | HAS_LITE_2 | HUMAN | MOB_23
+F:DROP_90 | FRIENDS
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL
+S:1_IN_4 | SHOOT
+D:相手高校球児を殺戮しながら野球の勝利をももぎ取ろうとする文字通り外道な高校生たちだ。
+
+N:1856:ファイレクシアのダニ
+E:Phyrexian Mite
+G:S:w
+I:110:12d8:12:40:20
+W:12:4:0:27:0:0
+B:BITE:POISON:3d6
+B:BITE:POISON:3d6
+F:WEIRD_MIND | BASH_DOOR
+F:ANIMAL | IM_POIS | ALLIANCE_PHYREXIA
+D:新ファイレクシアに無数に湧き出でる機械生命体にしてダニだ。
+
+N:1857:『鴆』
+E:The Zhen
+G:B:G
+I:120:36d100:60:130:0
+W:54:3:0:25000:0:0
+B:BITE:POISON:12d6
+B:BITE:POISON:12d6
+B:HIT:POISON:9d12
+B:HIT:POISON:9d12
+F:UNIQUE | CAN_SPEAK | RES_CHAO
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | RES_NETH |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | RIDING 
+F:ANIMAL | IM_ACID | IM_FIRE | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
+S:1_IN_3 | 
+S:BR_POIS
+D:覇府となった徳川幕府が城に飼いならす、一国を滅ぼすほどの毒を蓄えた巨大な怪鳥だ。
+
+N:1858:『島田部長』
+E:Shimada, General Manager
+G:t:u
+I:107:30d10:40:10:3
+W:0:3:0:0:0:0
+B:ENEMA:HURT:5d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | EVIL | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:「違うだろ？」「喜ぶんやど？」そう言いながら小太りの男は
+D:あなたの尻穴を弄り回そうとする。
+
+N:1859:ファイレクシアのドラゴン・エンジン
+E:Phyrexian Dragon Engine
+G:g:r
+I:120:30d100:25:130:30
+W:44:8:0:12000:0:0
+B:BITE:HURT:5d8
+B:BITE:HURT:5d8
+B:CLAW:FIRE:13d3
+B:CLAW:FIRE:13d3
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE |
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:DRAGON | IM_FIRE | IM_COLD | 
+F:IM_ELEC | IM_POIS | CAN_SWIM | MOB_10 | ALLIANCE_PHYREXIA
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+S:1_IN_7 | 
+S:BR_FIRE
+D:ファイレクシアの下僕と化した弟ミシュラが兄ウルザと
+D:最終決戦を行う際に造り上げた最高傑作だ。
+
+N:1860:幽霊ガレオン船
+E:Ghost galleon
+G:l:b
+I:100:250d10:35:30:10
+W:30:1:0:100:0:0
+B:CRUSH:HURT:10d10
+B:CRUSH:HURT:10d10
+B:SHOOT:HURT:10d10
+F:COLD_BLOOD | EMPTY_MIND | AQUATIC | NONLIVING
+F:IM_COLD | IM_POIS | RES_WATE | UNDEAD
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:過去大航海時代からの歴史の中に沈み消えていった船だ。
+S:1_IN_4
+S:SHOOT
+
+#J0#
+N:1861:光のロードデアボリカ『ゴルドー』
+E:Goldor, Lord Diabolique of Light
+G:U:w
+I:135:45d100:40:125:10
+W:62:2:0:40000:0:0
+B:SLASH:HURT:12d12
+B:SLASH:HURT:12d12
+B:HIT:ELEC:12d12
+B:HIT:ELEC:12d12
+F:UNIQUE | MALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY |
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:EVIL | DEMON | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | 
+F:IM_POIS | NO_CONF | NO_SLEEP | POWERFUL |
+S:1_IN_5 | 
+S:BA_ELEC | PSY_SPEAR | BR_SHAR
+D:退廃にして残酷なる世界の支配者デアボリカを統べる五大貴族の一人だ。
+D:ゴルドーはその中でも最も年若く若輩だが、人間の一国を滅することなど造作もない。
+
+N:1862:薩摩武家者
+E:Bokkemon of Satsuma
+G:p:s
+I:115:18d10:12:40:10
+W:23:2:0:350:0:0
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+B:SLASH:HURT:6d6
+F:MALE | ONLY_ITEM | DROP_90 | DROP_CORPSE | DROP_SKELETON | HUMAN | KILL_BODY
+F:OPEN_DOOR | BASH_DOOR | NO_FEAR | HAS_LITE_1 | SAMURAI
+D:厳しい軍規と、時代によってはその誇りを抑圧された薩摩の武家者（ぼっけもん）は
+D:戦場や荒事に及んでは奇声を上げ、狂乱したように敵に向かい襲い来る。
+
+N:1863:離反ダニ『スクレルヴ』
+E:Skrelv, Defector Mite
+G:S:w
+I:110:12d16:12:200:20
+W:26:4:0:27:0:0
+B:BITE:POISON:10d6
+B:BITE:POISON:10d6
+F:WEIRD_MIND | BASH_DOOR | CAN_FLY | UNIQUE | MALE
+F:ANIMAL | IM_POIS | ALLIANCE_PHYREXIA
+F:SPAWN_CREATURE_7_IN_16_1856
+D:新ファイレクシアの片隅に生きる自我あるダニだ。
+D:完全なる支配を標榜するエリシュ・ノーンの機械正典とて、
+D:一切を統一された意志の下置けるとは限らない。彼の存在がその証左だ。
+
+N:1864:『貪食ドラゴン』
+E:The Gaping Dragon
+G:D:D
+I:112:100d22:20:120:70
+W:38:3:0:8000:0:0
+B:CLAW:HURT:7d10
+B:CLAW:HURT:7d10
+B:BITE:SUPERHURT:10d13
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | UNIQUE
+F:DROP_4D2 | CAN_FLY | RIDING |
+F:SMART | BASH_DOOR | POWERFUL | MOVE_BODY |
+F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | IM_POIS | HURT_COLD
+F:EVIL | DRAGON | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | 
+D:「灰の時代」においては超然たる無我の境地にあったドラゴンの一族が、
+D:一切を貪り喰らう執着に囚われてしまったなれ果てだ。
+D:その口は喉を裂くどころか巨躯の腹にまで開いている。
+
+N:1865:甦る死滅都市『ホガーク』
+E:Hogaak, Arisen Necropolis
+G:#:s
+I:125:60d98:50:100:30
+W:64:3:0:37000:0:0
+B:HIT:SHATTER:7d13
+B:HIT:SHATTER:7d13
+B:HIT:SHATTER:7d13
+B:HIT:SHATTER:7d13
+F:UNIQUE | MALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_GOOD | DROP_4D2 | DROP_3D2 | KILL_BODY | KILL_WALL |
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_CORPSE | 
+F:EVIL | GIANT | UNDEAD | HURT_ROCK | HAS_LITE_2 | 
+F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | IM_POIS
+S:1_IN_6 | S_UNDEAD
+D:それは多元宇宙のいずこかの何らかの悍ましいきっかけで産まれた。
+D:屍の山と邪悪な者たちの呼びかけに応じて現れるという、都市そのものが巨大なアンデッドと化したものだ。
+
+#[DSKL]一部漫☆画太郎仕様
+N:1866:『星の王子さま』
+E:The Little Prince
+G:t:D
+I:110:10d20:4:1:40
+W:0:2:0:0:10:14
+B:BEG:FLAVOR
+B:SLASH:HURT:1d6
+F:MALE | STUPID | WILD_TOWN | WILD_ONLY | UNIQUE
+F:RAND_25 | FRIENDS | HUMAN | ONLY_ITEM | DROP_GREAT | DROP_90
+F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON
+D:本当に大事なものは目に見えないらしいが、彼には目に見える大事すら分かってない。
+D:羊の絵が気に食わないだけで斧を振り回してくるぞ！気をつけろ！
+
+N:1867:ガラスのゴーレム
+E:Glass golem
+G:g:W
+I:110:30d12:12:1:10
+W:24:2:0:160:0:0
+B:HIT:HURT:3d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_8 | 
+S:BR_SHAR
+
+N:1868:フェルダグリフ
+E:Phelddagrif
+G:H:s
+I:110:40d22:20:90:30
+W:30:2:0:1100:0:0
+B:CRUSH:HURT:5d8
+B:CRUSH:HURT:5d8
+B:CRUSH:HURT:5d8
+B:CRUSH:HURT:5d8
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_2D2 | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL | CAN_FLY
+S:1_IN_4 | 
+S:HEAL | HASTE | SLOW
+D:翼の生えたカバだ。
+
+N:1869:十二足獣
+E:Dodecapod
+G:g:W
+I:110:70d12:12:70:10
+W:26:2:0:560:0:0
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+B:HIT:HURT:1d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RES_TELE
+D:名の通り、多くの足を持った金属製のゴーレムだ。
+D:その足は腕のように他者を殴りつけることもできる。
+
+N:1870:拓也県民
+E:Citizens of Takuya prefecture
+G:t:y
+I:110:1d2:6:1:0
+W:0:1:0:0:0:0
+B:DROOL:FLAVOR
+F:MALE | DROP_SKELETON | DROP_CORPSE | WILD_TOWN | WILD_ONLY
+F:RAND_25 | EAT_LOSE_CHR | HUMAN | HOMO_SEXUAL | NASTY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+F:DROP_KIND_1_IN_5_102_0_1d1
+D:AIが生み出した架空の地に生きる県民だ。一人余さずクッソ汚いホモだ。
+
+N:1871:沈黙の長『ユルト』
+E:Yurt, the Silent Chief
+G:p:s
+I:119:70d10:25:80:25
+W:27:2:0:400:0:0
+B:HIT:POISON:4d6
+B:HIT:POISON:4d6
+B:HIT:POISON:4d6
+B:HIT:POISON:4d6
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN |
+F:DROP_90 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
+F:EVIL | IM_FIRE | IM_COLD | NO_CONF | NO_SLEEP
+D:「好奇心は猫をも殺す、弁えることだな」そう警告してくれるクッソ愛らしいウサギさんだ。
+D:実は暗殺者だ。
+
+N:1872:古代種ワーグ
+E:Elder warg
+G:C:s
+I:135:60d18:20:90:40
+W:30:2:0:40:0:0
+B:BITE:HURT:6d10
+B:BITE:HURT:6d10
+B:BITE:HURT:6d10
+F:RAND_25 | 
+F:FRIENDS | WILD_WOOD | WILD_MOUNTAIN | DROP_SKELETON | DROP_CORPSE
+F:BASH_DOOR | 
+F:ANIMAL | EVIL
+D:ドラウグルイン、あるいはアンファウグリアのようなウトゥムノの神々からの血統書を
+D:確かに古ウルクの記録に残されているワーグだ。
+
+N:1873:奇天烈斎の殺戮カラクリ『殺助』
+E:Korosuke, the Kiteretsusai's Killing Karakuri
+G:g:o
+I:119:105d11:23:95:20
+W:38:5:0:7000:0:0
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:10d4
+F:UNIQUE | EMPTY_MIND
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | NONLIVING
+F:IM_FIRE | IM_COLD | IM_POIS
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | SAMURAI
+D:江戸時代から続くカラクリ製造の一族が何かを誤って生み出した
+D:サムライを模したと思われる殺戮カラクリの一体だ。
+
+N:1874:黒曜石のゴーレム
+E:Obsidian golem
+G:g:s
+I:110:10d75:20:70:10
+W:38:3:0:4000:0:0
+B:PUNCH:HURT:8d10
+B:PUNCH:HURT:8d10
+B:PUNCH:HURT:8d10
+F:EMPTY_MIND | BASH_DOOR | RES_LITE | RES_TIME |
+F:IM_COLD | NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | FORCE_MAXHP
+D:多くの文明の黎明に用いられた素材で作り上げられた、優美なゴーレムだ。
+
+N:1875:血の壁
+E:Blood wall
+G:#:R
+I:100:13d15:15:70:10
+W:33:2:0:450:0:0
+B:ENGULF:EXP_40:8d8
+B:ENGULF:EXP_40:8d8
+F:NEVER_MOVE | MULTIPLY | ONLY_GOLD | DROP_90 | HURT_ROCK |
+F:NO_FEAR | NO_SLEEP | NO_CONF | NO_STUN | EMPTY_MIND | COLD_BLOOD |
+F:IM_ACID | IM_FIRE | IM_ELEC | IM_POIS | RES_SHAR
+D:血は漆喰よりも濃し。
+
+N:1876:地獄の樹
+E:Tree of perdition
+G:#:s
+I:110:50d20:40:45:20
+W:23:1:0:75:0:0
+F:DROP_60 | NO_SLEEP | NO_CONF | UNDEAD | WEIRD_MIND | EVIL | NEVER_BLOW
+F:RES_WATE | IM_COLD | HURT_FIRE | NEVER_MOVE | WILD_ONLY | WILD_WOOD |
+S:1_IN_9
+S:CAUSE_3 | S_UNDEAD
+D:ここでは罪が許されることはない。
+
+N:1877:双頭鮫
+E:2-headed shark
+G:l:w
+I:120:100d6:20:70:20
+W:26:4:0:400:600:1878
+B:BITE:HURT:3d6
+B:BITE:HURT:3d6
+B:BITE:HURT:3d6
+B:BITE:HURT:3d6
+F:PREVENT_SUDDEN_MAGIC | AQUATIC | RES_WATE |
+F:ANIMAL
+D:クソ映画でお馴染みの巨大な奴だ。
+
+N:1878:四首鮫
+E:4-headed shark
+G:l:W
+I:121:120d6:20:80:20
+W:32:4:0:1800:0:0
+B:BITE:HURT:6d6
+B:BITE:HURT:6d6
+B:BITE:HURT:6d6
+B:BITE:HURT:6d6
+F:PREVENT_SUDDEN_MAGIC | AQUATIC | RES_WATE |
+F:ANIMAL
+D:双頭鮫から倍だぞ！倍！
+
+N:1879:キラートマト
+E:Killer Tomato
+G:,:R
+I:120:10d14:10:40:12
+W:10:9:0:200:0:0
+B:BITE:HURT:10d2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR |
+F:IM_POIS
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_TELE
+D:$A shining machine of death and destruction.
+D:あなたはそれにおいしく頂かれるだろう。
+
+N:1880:泣いて詫びている弱者に対して冷酷非情にぶちのめす精神メンタルが強さだと信じている野蛮人
+E:Savage who believe that the mentality of ruthlessly and ruthlessly beating up weak people who are crying and apologizing is strength
+G:p:o
+I:110:6d9:10:10:10
+W:9:10:0:20:0:0
+B:PUNCH:HURT:3d5
+B:PUNCH:HURT:3d5
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
+F:WILD_WOOD | HAS_LITE_1 | CAN_SPEAK | QUANTUM
+D:キャプテン・マッスルのドラゴン・ラッシュに乗せられてガルシアの心臓を狩りに来た格闘家たちだ。
+
+N:1881:グレーター・ヤクザ
+E:Greater Yakuza
+G:p:W
+I:110:7d6:10:20:250
+W:0:12:0:20:0:0
+B:SHOOT:HURT:4d5
+B:HIT:HURT:3d5
+B:HIT:HURT:3d5
+R:1618:6d3
+R:1619:2d3
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:DROP_90 | WILD_TOWN | WILD_ONLY | DROP_GOOD
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | YAKUZA
+S:1_IN_3
+S:SHOOT
+D:複数のヤクザを束ねて、組織的なシノギを行うリーダーだ。
+
+N:1882:肉便器女
+E:Promiscuous bitch
+G:t:r
+I:108:1d4:10:1:40
+W:0:1:0:0:0:0
+B:BEG:FLAVOR
+F:FEMALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR
+F:DROP_KIND_1_IN_5_102_0_1d1
+D:ノンケ向け凌辱エロゲ時空から迷い込んできたクッソ哀れな存在だ。
+
+N:1883:メスガキ・インプ
+E:Mesugaki Imp
+G:u:r
+I:110:9d8:20:20:20
+W:18:8:0:55:0:0
+B:INSULT:HURT:3d4
+B:INSULT:HURT:3d4
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY |
+F:RAND_25 | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:STUPID | BASH_DOOR | 
+F:EVIL | DEMON | IM_FIRE | RES_TELE | FEMALE
+S:1_IN_10 | 
+S:BLINK | TPORT | TELE_TO | BLIND | CONF | SCARE | MISSILE
+D:ノンケのサディストデーモンのお気に入りのペットだ。
+D:彼女らが熟練の分からせられる有様を見て主は愉悦を感じている。
+
+N:1884:白鯨『モビー・ディック』
+E:Moby-Dick
+G:l:b
+I:127:50d100:40:180:30
+W:65:3:0:38000:0:0
+B:CRUSH:HURT:8d15
+B:CRUSH:HURT:8d15
+B:CRUSH:HURT:8d15
+B:CRUSH:HURT:6d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | AQUATIC | WILD_OCEAN | EVIL |
+F:IM_POIS | RES_WATE | RES_DARK | DROP_GOOD | DROP_4D2 | UNIQUE
+F:NO_CONF | NO_SLEEP | NO_FEAR | DROP_CORPSE | RIDING
+
+N:1885:地ならし屋
+E:Leveler
+G:g:v
+I:120:70d40:10:130:12
+W:42:2:0:10000:0:0
+B:CRUSH:HURT:8d10
+B:CRUSH:HURT:8d10
+B:CRUSH:HURT:8d10
+B:CRUSH:SUPERHURT:8d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_BODY | KILL_ITEM | REFLECTING |
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_SHAR | RES_TELE | KILL_WALL
+D:ミラディンの大地を清掃する容赦なき巨大ローラーだ。
+
+N:1886:アーボーグの暴食『ヤーグル』
+E:Yargle, Glutton of Urborg
+G:R:o
+I:113:55d11:23:65:20
+W:40:5:0:7000:0:0
+B:BITE:SUPERHURT:10d7
+B:BITE:SUPERHURT:10d7
+B:BITE:SUPERHURT:10d7
+B:BITE:SUPERHURT:10d7
+F:UNIQUE | STUPID
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ANIMAL | EVIL
+F:IM_FIRE | IM_ACID | IM_POIS
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR
+D:ベルゼンロックの呪いで人から暴食のカエルになり果てた存在だ。
+D:しかしアーボーグでファイレクシアすら油諸共貪るその日々は、
+D:妄信者であった時よりもとても充実しているように思える。
+
+N:1887:腐れ谷の腐敗人
+E:Depraved one in Valley of Defilement
+G:p:u
+I:110:10d5:100:1:50
+W:9:2:0:60:0:0
+B:SLASH:DISEASE:1d6
+B:SLASH:DISEASE:1d6
+F:MALE | DROP_CORPSE | DROP_SKELETON | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | EAT_LOSE_CON | EAT_POISONOUS
+F:DROP_KIND_1_IN_5_102_0_1d1
+D:病に冒された者の掃きだめ、腐れ谷に住まい苦しみ続ける住人だ。
+
+N:1888:ヴィザードリックス
+E:Vizzerdrix
+G:r:b
+I:115:80d20:40:40:0
+W:38:3:0:2400:0:0
+B:BITE:HURT:16d2
+B:BITE:HURT:16d2
+F:BASH_DOOR | WILD_MOUNTAIN | DROP_CORPSE
+F:ANIMAL
+V:133
+D:ある魔術師が退屈しのぎに兎とピラニアからヴィザードリックスを造った。そしてその後はそんな間違いはもう二度としなかった。
+D:$A bored wizard once created a vizzerdrix out of a bunny and a piranha. He never made that mistake again.d
+
+N:1889:今田家の猟犬『勇丸』
+E:Isamaru, Hound of Konda
+G:C:w
+I:120:10d5:30:30:0
+W:5:2:0:90:0:0
+B:BITE:HURT:5d4
+F:UNIQUE | CAN_SPEAK |
+F:FORCE_MAXHP | RAND_25 | DROP_CORPSE
+F:BASH_DOOR | 
+F:ANIMAL | NO_CONF | NO_SLEEP | NO_FEAR
+
+N:1890:鐘突きの『ズルゴ』
+E:Zurgo Bellstriker
+G:o:u
+I:110:24d10:40:60:5
+W:13:4:0:260:0:0
+B:HIT:HURT:3d12
+B:HIT:HURT:2d12
+F:UNIQUE | MALE | 
+F:FORCE_MAXHP | WILD_ALL |
+F:ESCORT | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | CAN_SPEAK |
+F:EVIL | ORC | IM_FIRE | RES_DARK
+S:1_IN_7 | 
+S:SHRIEK
+
+N:1891:惑乱の死霊
+E:Hypnotic Specter
+G:G:D
+I:110:12d12:20:40:40
+W:24:1:0:100:0:0
+B:HIT:HURT:10d2
+B:HIT:HURT:10d2
+F:PASS_WALL | NO_SLEEP | COLD_BLOOD | NONLIVING | UNDEAD | NO_FEAR |
+F:FORCE_MAXHP | CAN_FLY 
+S:1_IN_5
+S:BLINK | FORGET | BRAIN_SMASH
+
+N:1892:完成化した『ウェザーライト』
+E:Weatherlight Compleated
+G:l:D
+I:115:100d10:20:120:30
+W:40:4:0:3650:0:0
+B:CRUSH:HURT:20d2
+B:CRUSH:HURT:20d2
+B:CRUSH:HURT:20d2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | UNIQUE
+F:DROP_60 | DROP_90 | DROP_2D2 | DROP_CORPSE
+F:BASH_DOOR | SMART | EVIL | ALLIANCE_PHYREXIAN
+F:NO_CONF | NO_SLEEP | RES_WATE | IM_FIRE | IM_COLD | IM_POIS | RES_DISE | RIDING
+S:1_IN_9 | 
+S:BO_MANA | ROCKET
+D:かつてファイレクシアからドミナリアを守った天翔ける船は新たなるファイレクシアの魔の手に堕ちた。
+
+N:1893:否定の壁
+E:Wall of Denial
+G:#:B
+I:120:50d40:20:160:0
+W:60:4:0:3500:0:0
+F:PREVENT_SUDDEN_MAGIC | COLD_BLOOD | EMPTY_MIND | NEVER_MOVE | NEVER_BLOW | RES_ALL
+F:BASH_DOOR | CAN_FLY | REFLECTING
+F:NO_CONF | NO_SLEEP | CAN_FLY
+D:$It provides what every discerning mage requires—time to think.
+D:それは洞察力のある魔道士すべてが求めるものを与えてくれる。考える時間だ。
+
+N:1894:偉大なる統一者『アトラクサ』
+E:Atraxa, Grand Unifier
+G:A:w
+I:130:65d100:30:140:10
+W:70:3:0:76000:0:0
+B:HIT:UN_BONUS:9d8
+B:HIT:POISON:8d6
+B:HIT:HURT:15d10
+B:HIT:HURT:15d10
+F:UNIQUE | FEMALE | FORCE_MAXHP | NO_FEAR | EVIL |
+F:PREVENT_SUDDEN_MAGIC | SMART | REFLECTING | RES_TELE |
+F:ESCORT | CAN_FLY | POWERFUL | SELF_LITE_1 | SELF_LITE_2 | ANGEL
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GREAT |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE |
+F:NO_CONF | NO_SLEEP | ALLIANCE_PHYREXIA
+S:1_IN_3 |
+S:TELE_TO | BLIND | BO_MANA | S_KIN | INVULNER | DISPEL | PSY_SPEAR
+S:BR_MANA | BR_LITE | BR_ELEC | BA_MANA | HAND_DOOM
+S:BRAIN_SMASH | S_MONSTERS | HEAL | BR_DISE | BA_LITE
+V:133
+D:ファイレクシアの法務官のうち４名が完成の祝福を与えた。かつてのミラディンの天使だ。
+D:宗教的思索にふけるエリシュ・ノーンに代わり新ファイレクシアの統治をおこなっていると言う。
+
+N:1895:世界を喰らう者『ポルクラノス』
+E:Polukranos, World Eater
+G:M:G
+I:120:55d100:20:160:20
+W:51:2:0:24000:0:0
+B:BITE:HURT:12d6
+B:BITE:HURT:12d6
+B:BITE:HURT:12d6
+B:BITE:HURT:12d6
+F:UNIQUE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | DROP_CORPSE | RIDING |
+F:ONLY_GOLD | DROP_3D2 | DROP_4D2 | WILD_SHORE | WILD_SWAMP |
+F:OPEN_DOOR | BASH_DOOR | KILL_BODY | POWERFUL | 
+F:ANIMAL | IM_FIRE | IM_POIS | 
+F:NO_CONF | NO_SLEEP | CAN_SWIM |
+S:1_IN_6 | 
+S:SCARE | 
+S:BO_FIRE | BO_PLAS | BA_FIRE | BA_POIS | 
+S:BR_FIRE | BR_POIS | 
+D:テーロスの神々も直接に手を下しかねる、獰猛なる巨大なハイドラだ。
+
+N:1896:『関西クレーマー』
+E:The Harassment Consumer of Kansai
+G:p:u
+I:110:35d10:40:10:3
+W:0:3:0:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | CAN_SPEAK | DROP_CORPSE | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:商売人の弱みを見つけてホモセクハラを行う人間の屑だ。
+D:だが、クレームをつけても仕方のないことをしょっちゅうされてもいる。
+
+N:1897:河童
+E:Kappa
+G:h:g
+I:110:16d12:20:45:30
+W:18:1:0:60:0:0
+B:HIT:HURT:7d3
+B:ENEMA:EXP_40:8d3
+F:AQUATIC | WILD_ALL | RES_WATE | HURT_FIRE
+D:尻子玉を抜かれるぞ！気をつけろ！
+
+N:1898:断罪者『ミラルダ』
+E:Executioner Miralda
+G:p:U
+I:121:19d100:18:120:20
+W:37:4:0:3000:0:0
+B:HIT:HURT:10d7
+B:HIT:SUPERHURT:8d6
+B:HIT:SUPERHURT:8d7
+B:HIT:SUPERHURT:8d7
+F:UNIQUE | FEMALE | FORCE_MAXHP | PREVENT_SUDDEN_MAGIC
+F:ONLY_ITEM | DROP_60 | DROP_3D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | MOVE_BODY
+F:HUMAN | NO_STUN | NO_CONF | NO_SLEEP
+F:CAN_SWIM | HAS_LITE_1 | DROP_CORPSE
+F:IM_FIRE | IM_COLD | IM_ELEC | RES_DARK
+D:重い首切り斧を平然と振り回す、ボーレタリアの女処刑人だ。
+
+N:1899:コビトカバ
+E:Pygmy Hippo
+G:q:s
+I:110:10d22:20:90:30
+W:22:2:0:600:0:0
+B:CRUSH:HURT:2d8
+B:CRUSH:HURT:2d8
+B:CRUSH:HURT:2d8
+B:CRUSH:UN_POWER
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_2D2 | WILD_MOUNTAIN |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL
+S:1_IN_4 | SLOW
+D:魔力を吸い上げる力を持つ不思議なカバだ。
+
+N:1900:量子ザメ
+E:Quantum shark
+G:l:v
+I:110:40d20:20:40:0
+W:35:5:0:1500:0:0
+B:BITE:LOSE_STR:5d4
+B:BITE:LOSE_CON:5d4
+B:BITE:CONFUSE:5d4
+B:BITE:TERRIFY:5d4
+F:ANIMAL | ATTR_MULTI | ATTR_ANY | QUANTUM | CAN_FLY
+F:ELDRITCH_HORROR | FRIENDS | PASS_WALL | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_2 |
+S:BLINK
+D:この世のクソ映画がある限り、サメは遍在するのだ。
+
+N:1901:ビーブル
+E:Beeble
+G:H:B
+I:110:4d8:30:30:20
+W:5:3:0:10:0:0
+B:HIT:HURT:1d4
+B:HIT:HURT:1d4
+F:DROP_60 | ANIMAL | DROP_SKELETON | DROP_CORPSE | FRIENDS | ONLY_GOLD
+D:実に小憎らしい奴らだが、ソテーにして食うと美味いらしい。
+
+N:1902:戦隊の鷹
+E:Sqadron Hawk
+G:B:w
+I:120:8d8:30:25:10
+W:15:2:0:22:0:0
+B:CLAW:HURT:2d3
+B:BITE:HURT:2d5
+F:ANIMAL | NO_FEAR | CAN_FLY | WILD_WOOD | DROP_CORPSE | FRIENDS
+D:常に集団で揃い襲い来る訓練された鷹だ。
+
+N:1903:怒竜級陸軍空中戦艦
+E:Doryu class army air battleship
+G:l:s
+I:110:120d25:20:75:30
+W:48:6:0:8000:0:0
+B:CRUSH:HURT:33d2
+B:CRUSH:HURT:33d2
+B:CRUSH:SUPERHURT:33d2
+B:SHOOT:HURT:33d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | IM_FIRE | IM_POIS
+F:DROP_60 | DROP_90 | DROP_2D2 | NONLIVING |
+F:BASH_DOOR | SMART | 
+F:NO_CONF | NO_SLEEP | RIDING |
+S:1_IN_6 | 
+S:SHOOT | BA_FIRE
+D:液体人間の軍事利用を目論む陸軍の最大戦力だ。
 
 # N: serial number : monster name
 # G: symbol : color

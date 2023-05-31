@@ -1,7 +1,6 @@
 ﻿#include "load/old/item-loader-savefile50.h"
 #include "artifact/fixed-art-types.h"
 #include "game-option/runtime-arguments.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/old/item-flag-types-savefile50.h"
 #include "load/old/load-v1-5-0.h"
@@ -24,11 +23,6 @@
  */
 void ItemLoader50::rd_item(ObjectType *o_ptr)
 {
-    if (h_older_than(1, 5, 0, 0)) {
-        rd_item_old(o_ptr);
-        return;
-    }
-
     auto flags = rd_u32b();
     o_ptr->k_idx = rd_s16b();
     o_ptr->iy = rd_byte();
@@ -41,11 +35,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
     o_ptr->number = any_bits(flags, SaveDataItemFlagType::NUMBER) ? rd_byte() : 1;
     o_ptr->weight = rd_s16b();
     if (any_bits(flags, SaveDataItemFlagType::FIXED_ARTIFACT_IDX)) {
-        if (h_older_than(3, 0, 0, 2)) {
-            o_ptr->fixed_artifact_idx = rd_byte();
-        } else {
-            o_ptr->fixed_artifact_idx = rd_s16b();
-        }
+        o_ptr->fixed_artifact_idx = rd_s16b();
     } else {
         o_ptr->fixed_artifact_idx = 0;
     }
@@ -105,11 +95,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
     }
 
     if (any_bits(flags, SaveDataItemFlagType::ACTIVATION_ID)) {
-        if (h_older_than(3, 0, 0, 2)) {
-            o_ptr->activation_id = i2enum<RandomArtActType>(rd_byte());
-        } else {
-            o_ptr->activation_id = i2enum<RandomArtActType>(rd_s16b());
-        }
+        o_ptr->activation_id = i2enum<RandomArtActType>(rd_s16b());
     } else {
         o_ptr->activation_id = i2enum<RandomArtActType>(0);
     }
@@ -175,10 +161,6 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         o_ptr->art_name = quark_add(buf);
     } else {
         o_ptr->art_name = 0;
-    }
-
-    if (!h_older_than(2, 1, 2, 4)) {
-        return;
     }
 
     if ((o_ptr->ego_idx == EgoType::DARK) || (o_ptr->ego_idx == EgoType::ANCIENT_CURSE) || (o_ptr->fixed_artifact_idx == ART_NIGHT)) {

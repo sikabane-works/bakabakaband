@@ -339,7 +339,6 @@ hengband_SOURCES = \
 	knowledge/monster-group-table.cpp knowledge/monster-group-table.h \
 	knowledge/object-group-table.cpp knowledge/object-group-table.h \
 	\
-	load/angband-version-comparer.cpp load/angband-version-comparer.h \
 	load/birth-loader.cpp load/birth-loader.h \
 	load/dummy-loader.cpp load/dummy-loader.h \
 	load/dungeon-loader.cpp load/dungeon-loader.h \
@@ -516,6 +515,7 @@ hengband_SOURCES = \
 	monster-race/race-ability-flags.h \
 	monster-race/race-ability-mask.cpp monster-race/race-ability-mask.h \
 	monster-race/race-behavior-flags.h \
+	monster-race/race-drop-flags.h \
 	monster-race/race-flags-resistance.h \
 	monster-race/race-flags1.h monster-race/race-flags2.h \
 	monster-race/race-flags3.h \
@@ -614,9 +614,12 @@ hengband_SOURCES = \
 	object-enchant/protector/apply-magic-boots.cpp object-enchant/protector/apply-magic-boots.h \
 	object-enchant/protector/apply-magic-cloak.cpp object-enchant/protector/apply-magic-cloak.h \
 	object-enchant/protector/apply-magic-crown.cpp object-enchant/protector/apply-magic-crown.h \
+	object-enchant/protector/apply-magic-dragon-armor.cpp object-enchant/protector/apply-magic-dragon-armor.h \
 	object-enchant/protector/apply-magic-gloves.cpp object-enchant/protector/apply-magic-gloves.h \
+	object-enchant/protector/apply-magic-hard-armor.cpp object-enchant/protector/apply-magic-hard-armor.h \
 	object-enchant/protector/apply-magic-helm.cpp object-enchant/protector/apply-magic-helm.h \
 	object-enchant/protector/apply-magic-shield.cpp object-enchant/protector/apply-magic-shield.h \
+	object-enchant/protector/apply-magic-soft-armor.cpp object-enchant/protector/apply-magic-soft-armor.h \
 	\
 	object-enchant/weapon/abstract-weapon-enchanter.cpp object-enchant/weapon/abstract-weapon-enchanter.h \
 	object-enchant/weapon/apply-magic-weapon.cpp object-enchant/weapon/apply-magic-weapon.h \
@@ -629,11 +632,13 @@ hengband_SOURCES = \
 	object-hook/hook-weapon.cpp object-hook/hook-weapon.h \
 	\
 	object-use/item-use-checker.cpp object-use/item-use-checker.h \
-	object-use/quaff-execution.cpp object-use/quaff-execution.h \
 	object-use/throw-execution.cpp object-use/throw-execution.h \
 	object-use/use-execution.cpp object-use/use-execution.h \
 	object-use/zaprod-execution.cpp object-use/zaprod-execution.h \
 	object-use/zapwand-execution.cpp object-use/zapwand-execution.h \
+	\
+	object-use/quaff/quaff-effects.cpp object-use/quaff/quaff-effects.h \
+	object-use/quaff/quaff-execution.cpp object-use/quaff/quaff-execution.h \
 	\
 	object-use/read/read-execution.cpp object-use/read/read-execution.h \
 	object-use/read/gbh-shirt-read-executor.cpp object-use/read/gbh-shirt-read-executor.h \

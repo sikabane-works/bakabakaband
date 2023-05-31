@@ -444,7 +444,7 @@ public:
     bool is_fully_healthy() const;
     bool is_vaild_position() const;
 
-    private:
+private:
     std::shared_ptr<TimedEffects> timed_effects;
 };
 

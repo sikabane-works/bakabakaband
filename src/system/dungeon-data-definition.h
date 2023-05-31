@@ -13,16 +13,10 @@
 #define TUNN_MAX 900
 
 /*
- * The "size" of a "generation block" in grids
- */
-#define BLOCK_HGT 11
-#define BLOCK_WID 11
-
-/*
  * Maximum numbers of rooms along each axis (currently 6x6)
  */
-#define MAX_ROOMS_ROW (MAX_HGT / BLOCK_HGT)
-#define MAX_ROOMS_COL (MAX_WID / BLOCK_WID)
+constexpr int MAX_ROOMS_ROW = (MAX_HGT / BLOCK_HGT);
+constexpr int MAX_ROOMS_COL = (MAX_WID / BLOCK_WID);
 
 /*
  * Simple structure to hold a map location

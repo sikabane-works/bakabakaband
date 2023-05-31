@@ -79,11 +79,6 @@ static concptr dungeon_key_at(int index, char *buf)
     return buf;
 }
 
-static inline int16_t get_quest_count()
-{
-    return max_q_idx;
-}
-
 /*!
  * @brief action-valに対応する[Quest]セクションのキー名を取得する
  * @param index "term_xtra()"の第2引数action-valに対応する値
@@ -92,7 +87,7 @@ static inline int16_t get_quest_count()
  */
 static concptr quest_key_at(int index, char *buf)
 {
-    if (index >= get_quest_count()) {
+    if (index > enum2i(quest_map.rbegin()->first)) {
         return nullptr;
     }
 

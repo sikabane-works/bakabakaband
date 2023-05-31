@@ -1,6 +1,5 @@
 ﻿#include "load/info-loader.h"
 #include "game-option/runtime-arguments.h"
-#include "load/angband-version-comparer.h"
 #include "load/load-util.h"
 #include "load/option-loader.h"
 #include "system/angband-version.h"
@@ -86,18 +85,6 @@ void rd_randomizer(void)
  */
 void rd_messages(void)
 {
-    if (h_older_than(2, 2, 0, 75)) {
-        auto num = rd_u16b();
-        int message_max;
-        message_max = (int)num;
-
-        for (int i = 0; i < message_max; i++) {
-            char buf[128];
-            rd_string(buf, sizeof(buf));
-            message_add(buf);
-        }
-    }
-
     auto num = rd_u32b();
     int message_max = (int)num;
     for (int i = 0; i < message_max; i++) {

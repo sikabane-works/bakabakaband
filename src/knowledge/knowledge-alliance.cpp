@@ -11,8 +11,8 @@
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
-#include <string>
 #include <sstream>
+#include <string>
 
 void do_cmd_knowledge_alliance(PlayerType *player_ptr)
 {

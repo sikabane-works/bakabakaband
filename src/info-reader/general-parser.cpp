@@ -21,7 +21,7 @@
 
 dungeon_grid letter[255];
 
-    /*!
+/*!
  * @brief パース関数に基づいてデータファイルからデータを読み取る /
  * Initialize an "*_info" array, by parsing an ascii "template" file
  * @param fp 読み取りに使うファイルポインタ

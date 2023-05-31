@@ -1741,7 +1741,7 @@ static ARMOUR_CLASS calc_to_ac(PlayerType *player_ptr, bool is_real_value)
         ac += 10;
         break;
     }
-    
+
     PlayerClass pc(player_ptr);
     if (pc.equals(PlayerClassType::BERSERKER)) {
         ac += 10 + player_ptr->lev / 2;
@@ -2697,7 +2697,7 @@ void update_creature(PlayerType *player_ptr)
 
     if (any_bits(player_ptr->update, (PU_VIEW))) {
         reset_bits(player_ptr->update, PU_VIEW);
-        update_view(player_ptr);        
+        update_view(player_ptr);
     }
 
     if (any_bits(player_ptr->update, (PU_LITE))) {
@@ -3100,6 +3100,10 @@ long calc_score(PlayerType *player_ptr)
         if (PlayerRace(player_ptr).equals(PlayerRaceType::SPECTRE)) {
             point = point / 5;
         }
+    }
+
+    if (player_ptr->death_count > 0) {
+        point /= (player_ptr->death_count + 1);
     }
 
     if ((player_ptr->ppersonality == PERSONALITY_MUNCHKIN) && point) {

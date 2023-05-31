@@ -14,6 +14,7 @@
 #include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "floor/cave-generator.h"
+#include "floor/floor-base-definitions.h"
 #include "floor/floor-events.h"
 #include "floor/floor-generator.h"
 #include "floor/floor-save.h" //!< @todo precalc_cur_num_of_pet() が依存している、違和感.
