@@ -35374,6 +35374,21 @@ S:1_IN_6 |
 S:SHOOT | BA_FIRE
 D:液体人間の軍事利用を目論む陸軍の最大戦力だ。
 
+N:1904:『ネッシー』
+E:The Loch Ness Monster
+G:D:B
+I:120:40d100:40:140:30
+W:59:20:0:28000:0:0
+B:CRUSH:HURT:4d15
+B:CRUSH:HURT:4d15
+B:CRUSH:HURT:4d15
+B:CRUSH:HURT:4d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | AQUATIC | WILD_OCEAN | UNIQUE |
+F:IM_FIRE | IM_ACID | IM_COLD | IM_POIS | IM_ELEC | RES_WATE | RES_LITE |
+F:DRAGON | NO_CONF | NO_SLEEP | NO_FEAR | DROP_CORPSE | RIDING | DROP_4D2 | DROP_GREAT
+D:なんてこった。こいつは実在していたんだ！
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
