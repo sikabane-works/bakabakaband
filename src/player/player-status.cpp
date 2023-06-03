@@ -2927,7 +2927,7 @@ void check_experience(PlayerType *player_ptr)
     while ((player_ptr->lev > 1) && (player_ptr->exp < ((android ? player_exp_a : player_exp)[player_ptr->lev - 2] * player_ptr->expfact / 100L))) {
         player_ptr->lev--;
         rfu.set_flags(flags_srf);
-        const auto flags_mwrf = {
+        static constexpr auto flags_mwrf = {
             MainWindowRedrawingFlag::LEVEL,
             MainWindowRedrawingFlag::TITLE,
         };
@@ -3031,7 +3031,7 @@ void check_experience(PlayerType *player_ptr)
         }
 
         rfu.set_flags(flags_srf);
-        const auto flags_mwrf = {
+        static constexpr auto flags_mwrf = {
             MainWindowRedrawingFlag::LEVEL,
             MainWindowRedrawingFlag::TITLE,
         };
