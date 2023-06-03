@@ -175,7 +175,7 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
             rfu.set_flag(MainWindowRedrawingFlag::MAP);
         }
 
-        const auto flags_srf = {
+        static constexpr auto flags_srf = {
             StatusRedrawingFlag::VIEW,
             StatusRedrawingFlag::LITE,
             StatusRedrawingFlag::FLOW,
