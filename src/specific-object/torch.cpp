@@ -164,7 +164,7 @@ void update_lite_radius(PlayerType *player_ptr)
         return;
     }
 
-    const auto flags = {
+    static constexpr auto flags = {
         StatusRedrawingFlag::LITE,
         StatusRedrawingFlag::MONSTER_LITE,
         StatusRedrawingFlag::MONSTER_STATUSES,

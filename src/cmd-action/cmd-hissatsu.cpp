@@ -355,7 +355,7 @@ void do_cmd_hissatsu(PlayerType *player_ptr)
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     rfu.set_flag(MainWindowRedrawingFlag::MP);
-    const auto flags = {
+    static constexpr auto flags = {
         SubWindowRedrawingFlag::PLAYER,
         SubWindowRedrawingFlag::SPELL,
     };
