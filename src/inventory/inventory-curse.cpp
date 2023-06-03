@@ -288,7 +288,7 @@ static void multiply_low_curse(PlayerType *player_ptr)
     o_ptr->curse_flags.set(new_curse);
     msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding your %s..."), item_name.data());
     o_ptr->feeling = FEEL_NONE;
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
 }
 
 static void multiply_high_curse(PlayerType *player_ptr)
@@ -308,7 +308,7 @@ static void multiply_high_curse(PlayerType *player_ptr)
     o_ptr->curse_flags.set(new_curse);
     msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding your %s..."), item_name.data());
     o_ptr->feeling = FEEL_NONE;
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
 }
 
 static void persist_curse(PlayerType *player_ptr)
@@ -327,7 +327,7 @@ static void persist_curse(PlayerType *player_ptr)
     o_ptr->curse_flags.set(CurseTraitType::HEAVY_CURSE);
     msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding your %s..."), item_name.data());
     o_ptr->feeling = FEEL_NONE;
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
 }
 
 static void curse_call_monster(PlayerType *player_ptr)
