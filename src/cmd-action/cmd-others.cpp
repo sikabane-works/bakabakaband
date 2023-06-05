@@ -171,7 +171,7 @@ void do_cmd_suicide(PlayerType *player_ptr)
     char i;
     flush();
     if (w_ptr->total_winner) {
-        if (!get_check_strict(player_ptr, _("引退しますか? ", "Do you want to retire? "), CHECK_NO_HISTORY)) {
+        if (!get_check_strict(player_ptr, _("虚無りますか? ", "Do you want to go to the Nihil War? "), CHECK_NO_HISTORY)) {
             return;
         }
     } else {
