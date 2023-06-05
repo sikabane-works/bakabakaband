@@ -35414,6 +35414,42 @@ F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | MOB_10
 D:ミラディンの奉仕種族が自ら寄り集まって、巨大な兵器となった姿だ。
 
+N:1907:灰を撒くもの『アッシュ』
+E:Ash, the Man Who Scatters Ashes
+G:p:W
+I:120:16d110:20:100:50
+W:36:7:0:2300:0:0
+B:SLASH:HURT:10d3
+B:SLASH:HURT:15d3
+B:SLASH:HURT:16d2
+F:UNIQUE | MALE | HUMAN |
+F:FORCE_MAXHP | DROP_CORPSE | MOVE_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+F:IM_FIRE | IM_COLD | IM_POIS | NO_FEAR | NO_STUN
+D:伝説的な強さで知られる傭兵でありながら、あらゆる負け戦を生き延びたために
+D:平和の世に至って多くの者に疎まれた不愛想な戦士だ。
+D:その魂は呪いの地ザムハンならず鉄獄に導かれたようだ。
+
+N:1908:軍神『ダイナソア』
+E:Dinosaur, the God of War
+G:P:R
+I:125:72d100:100:150:15
+W:70:1:0:40000:0:0
+B:SLASH:HURT:13d15
+B:SLASH:HURT:13d15
+B:SLASH:HURT:13d15
+B:SLASH:HURT:13d15
+F:UNIQUE | MALE | RES_TELE | HAS_LITE_2
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP | GIANT |
+F:DROP_4D2 | DROP_1D2 | DROP_GOOD | DROP_60 | DROP_90 | ONLY_ITEM |
+F:EVIL | IM_COLD | IM_POIS | IM_ACID | IM_ELEC | IM_FIRE | REGENERATE
+S:1_IN_4 |
+S:SCARE | HASTE | HEAL
+D:呪いの地ザムハンに封印された戦の神だ。
+D:その４本の腕に勝利と破滅、力と狂気をもたらすという。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
