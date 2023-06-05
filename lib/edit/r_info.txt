@@ -35414,6 +35414,23 @@ F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | MOB_10
 D:ミラディンの奉仕種族が自ら寄り集まって、巨大な兵器となった姿だ。
 
+N:1907:灰を撒くもの『アッシュ』
+E:Ash, The Man Who Scatters Ashes
+G:p:W
+I:120:16d110:20:100:50
+W:36:7:0:2300:0:0
+B:SLASH:HURT:10d3
+B:SLASH:HURT:15d3
+B:SLASH:HURT:16d2
+F:UNIQUE | MALE | HUMAN |
+F:FORCE_MAXHP | DROP_CORPSE | MOVE_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+F:IM_FIRE | IM_COLD | IM_POIS | NO_FEAR | NO_STUN
+D:伝説的な強さで知られる傭兵でありながら、あらゆる負け戦を生き延びたために
+D:平和の世に至って多くの者に疎まれた不愛想な戦士だ。
+D:その魂は呪いの地ザムハンならず鉄獄に導かれたようだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
