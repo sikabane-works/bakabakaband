@@ -170,9 +170,9 @@ static void show_tomb_detail(PlayerType *player_ptr, char *buf)
     } else if (streq(player_ptr->died_from, "途中終了")) {
         strcpy(tomb_message, "<自殺>");
     } else if (streq(player_ptr->died_from, "ripe")) {
-        strcpy(tomb_message, "引退後に天寿を全う");
+        strcpy(tomb_message, "引退後に虚無った");
     } else if (streq(player_ptr->died_from, "Seppuku")) {
-        strcpy(tomb_message, "勝利の後、切腹");
+        strcpy(tomb_message, "勝利の後、切腹して虚無った");
     } else {
         extra_line = show_killing_monster(player_ptr, buf, tomb_message, sizeof(tomb_message));
     }
