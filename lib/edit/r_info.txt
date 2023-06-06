@@ -35450,6 +35450,21 @@ S:SCARE | HASTE | HEAL
 D:呪いの地ザムハンに封印された戦の神だ。
 D:その四本の腕に握りしめた大剣をもって勝利と破滅、力と狂気をもたらすという。
 
+# [DSKL]猿ゥ！
+N:1909:敏捷なこそ泥『ラガバン』
+E:Ragavan, Nimble Pilferer
+G:Y:R
+I:150:5d10:1000:150:20
+W:2:60:0:4000:0:0
+B:CLAW:HURT:1d5
+B:CLAW:HURT:1d5
+B:BITE:HURT:2d4
+F:ANIMAL | DROP_SKELETON | DROP_CORPSE | DROP_GREAT | DROP_4D2 | DROP_3D2
+F:FORCE_MAXHP | NO_CONF | NO_SLEEP | ONLY_ITEM | UNIQUE
+S:1_IN_2 | BLINK | HASTE
+D:見つけたぞ！このクソ猿を見つけ次第焼き殺せ！
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
