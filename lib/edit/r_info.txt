@@ -35464,6 +35464,24 @@ F:FORCE_MAXHP | NO_CONF | NO_SLEEP | ONLY_ITEM | UNIQUE
 S:1_IN_2 | BLINK | HASTE
 D:見つけたぞ！このクソ猿を見つけ次第焼き殺せ！
 
+N:1910:水没紳士『マサヒコ』
+E:Masahiko the Submerging Gentleman
+G:p:b
+I:118:20d100:12:70:50
+W:41:3:0:4250:0:0
+B:PUNCH:HURT:6d5
+B:PUNCH:HURT:6d5
+B:PUNCH:HURT:6d5
+B:PUNCH:HURT:6d5
+F:UNIQUE | MALE | DROP_1D2 | DROP_2D2 | ONLY_ITEM | DROP_GOOD | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE |
+F:CAN_SWIM | WILD_OCEAN | HOMO_SEXUAL | NASTY
+F:KILL_ITEM | KILL_BODY | BASH_DOOR | POWERFUL |
+F:EVIL | IM_ACID | WILD_SHORE | WILD_SWAMP |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_4 |
+S:BO_WATE | BA_WATE
+D:気をつけろ！彼は一見にこやかな紳士だが、あなたが水没し窒息して苦しむ様を見たくてたまらないようだ。
 
 # N: serial number : monster name
 # G: symbol : color
