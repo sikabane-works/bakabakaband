@@ -35483,6 +35483,23 @@ S:1_IN_4 |
 S:BO_WATE | BA_WATE
 D:気をつけろ！彼は一見にこやかな紳士だが、あなたが水没し窒息して苦しむ様を見たくてたまらないようだ。
 
+N:1911:太陽の戦士『ソラール』
+E:Solaire of Astora
+G:p:W
+I:120:10d100:30:110:40
+W:32:2:0:1800:0:0
+B:SLASH:HURT:8d6
+B:SLASH:HURT:8d6
+B:SLASH:HURT:8d6
+B:SLASH:HURT:8d6
+F:UNIQUE | MALE | HUMAN | UNDEAD
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | PALADIN
+F:IM_FIRE | IM_ELEC | POWERFUL
+S:1_IN_3 | HEAL | BO_ELEC
+D:「己の太陽」を求めてロードランの地を訪れた、アストラの不死者だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
