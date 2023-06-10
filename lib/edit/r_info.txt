@@ -35514,6 +35514,23 @@ F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 S:1_IN_4 | HEAL
 D:白教の教えの国ソルロンドの、ごくありふれた聖職者だ。
 
+N:1913:トゲの騎士『カーク』
+E:Kirk, Knight of Thorns
+G:p:D
+I:118:10d98:50:80:30
+W:30:2:0:1400:0:0
+B:SLASH:SUPERHURT:9d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+F:UNIQUE | MALE | HUMAN | UNDEAD | EVIL
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+F:IM_FIRE | IM_ACID | RAND_25
+D:全身を棘に包まれた黒い甲冑で身を包んだ人狩りの騎士だ。
+D:その嗜虐的戦いぶりで得た戦利品は人外の淑女に捧げられているという。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
