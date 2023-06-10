@@ -1234,7 +1234,7 @@ byte select_element_realm(PlayerType *player_ptr)
 {
     clear_from(10);
 
-    int realm_max = enum2i(ElementRealmType::MAX);
+    constexpr auto realm_max = enum2i(ElementRealmType::MAX);
     int realm_idx = 1;
     int row = 16;
     while (1) {
