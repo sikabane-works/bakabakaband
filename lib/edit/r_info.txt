@@ -35514,6 +35514,56 @@ F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
 S:1_IN_4 | HEAL
 D:白教の教えの国ソルロンドの、ごくありふれた聖職者だ。
 
+N:1913:トゲの騎士『カーク』
+E:Kirk, Knight of Thorns
+G:p:D
+I:118:10d98:50:80:30
+W:30:2:0:1400:0:0
+B:SLASH:SUPERHURT:9d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+F:UNIQUE | MALE | HUMAN | UNDEAD | EVIL
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+F:IM_FIRE | IM_ACID | RAND_25
+D:全身を棘に包まれた黒い甲冑で身を包んだ人狩りの騎士だ。
+D:その嗜虐的戦いぶりで得た戦利品は人外の淑女に捧げられているという。
+
+N:1914:聖騎士『リロイ』
+E:Paladin Leeroy
+G:p:y
+I:115:15d100:50:130:30
+W:39:3:0:4400:0:0
+B:HIT:SUPERHURT:10d4
+B:HIT:SUPERHURT:10d4
+F:UNIQUE | MALE | HUMAN | UNDEAD
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | PALADIN
+F:IM_FIRE | IM_COLD | IM_POIS
+S:1_IN_8 | HEAL | BA_LITE | CAUSE_3
+D:はるか昔、白教で最初に生まれた不死者だ。
+D:黄金の鎧に身を包み、神聖なる力を帯びた巨大な鉄鎚を振るう。
+
+N:1915:アストラの上級騎士『オスカー』
+E:Oscar, Knight of Astora
+G:p:s
+I:115:9d100:30:100:40
+W:28:2:0:1500:0:0
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+B:SLASH:HURT:7d6
+F:UNIQUE | MALE | HUMAN | UNDEAD
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+F:RES_NETH
+D:不死の使命を帯びて、ロードランに旅立った高潔なる騎士だ。
+D:しかしその自我は過酷な旅の中で摩耗していることを当人も自覚している。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
