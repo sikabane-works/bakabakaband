@@ -38,6 +38,7 @@
 #include "world/world-collapsion.h"
 #include "world/world.h"
 
+#include <algorithm>
 #include <sstream>
 #include <string>
 #include <tuple>
@@ -74,7 +75,8 @@ constexpr std::array debug_menu_table = {
     std::make_tuple('P', _("プレイヤー設定変更メニュー", "Modify player configurations")),
     std::make_tuple('r', _("カオスパトロンの報酬", "Get reward of chaos patron")),
     std::make_tuple('R', _("部屋生成", "Generate room")),
-    std::make_tuple('s', _("フロア相当のモンスター召喚", "Summon monster which be in target depth")),
+    std::make_tuple('s', _("フロア相当のモンスター生成", "Generate monster which be in target depth")),
+    std::make_tuple('S', _("フロア相当のモンスター召喚", "Summon monster which be in target depth")),
     std::make_tuple('t', _("テレポート", "Teleport self")),
     std::make_tuple('u', _("啓蒙(忍者以外)", "Wiz-lite all floor except Ninja")),
     std::make_tuple('v', _("時空崩壊度設定", "Set world collapsion degree")),
@@ -225,10 +227,11 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         wizard_player_modifier(player_ptr);
         return true;
     case 's':
-        if (command_arg <= 0) {
-            command_arg = 1;
-        }
-
+        command_arg = std::clamp<short>(command_arg, 1, 999);
+        wiz_generate_random_monster(player_ptr, command_arg);
+        return true;
+    case 'S':
+        command_arg = std::clamp<short>(command_arg, 1, 999);
         wiz_summon_random_monster(player_ptr, command_arg);
         return true;
     case 't':
