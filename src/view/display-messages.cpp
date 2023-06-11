@@ -391,15 +391,12 @@ void msg_print(std::nullptr_t)
     }
 }
 
-/*
- * Display a formatted message, using "vstrnfmt()" and "msg_print()".
- */
-void msg_format(std::string_view fmt, ...)
+void msg_format(const char *fmt, ...)
 {
     va_list vp;
     char buf[1024];
     va_start(vp, fmt);
-    (void)vstrnfmt(buf, sizeof(buf), fmt.data(), vp);
+    (void)vstrnfmt(buf, sizeof(buf), fmt, vp);
     va_end(vp);
     msg_print(buf);
 }
