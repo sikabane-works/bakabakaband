@@ -207,7 +207,7 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         patron_list[player_ptr->chaos_patron].gain_level_reward(player_ptr, command_arg);
         return true;
     case 'n':
-        wiz_summon_specific_enemy(player_ptr, i2enum<MonsterRaceId>(command_arg));
+        wiz_summon_specific_monster(player_ptr, i2enum<MonsterRaceId>(command_arg));
         return true;
     case 'N':
         wiz_summon_pet(player_ptr, i2enum<MonsterRaceId>(command_arg));
@@ -229,7 +229,7 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
             command_arg = 1;
         }
 
-        wiz_summon_random_enemy(player_ptr, command_arg);
+        wiz_summon_random_monster(player_ptr, command_arg);
         return true;
     case 't':
         teleport_player(player_ptr, 100, TELEPORT_SPONTANEOUS);
