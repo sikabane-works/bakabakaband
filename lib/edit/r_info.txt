@@ -35564,6 +35564,24 @@ F:RES_NETH
 D:不死の使命を帯びて、ロードランに旅立った高潔なる騎士だ。
 D:しかしその自我は過酷な旅の中で摩耗していることを当人も自覚している。
 
+# [DSKL] ネトハクとか装甲悪鬼村正とか逃げ上手の若君とかその辺の全部ぶち込んだ感じで。
+N:1916:『足利尊氏』
+E:Takauji Ashikaga
+G:p:W
+I:120:20d113:20:70:50
+W:45:7:0:10000:0:0
+B:SLASH:HURT:20d1
+B:SLASH:HURT:10d5
+B:SLASH:HURT:40d1
+B:SLASH:HURT:50d1
+F:UNIQUE | MALE | CAN_SPEAK | HUMAN |
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GREAT |
+F:OPEN_DOOR | BASH_DOOR | SAMURAI
+F:IM_COLD | IM_ELEC | IM_POIS | NO_FEAR | NO_CONF | NO_STUN
+A:144:100
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
