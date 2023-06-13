@@ -35581,6 +35581,28 @@ F:OPEN_DOOR | BASH_DOOR | SAMURAI
 F:IM_COLD | IM_ELEC | IM_POIS | NO_FEAR | NO_CONF | NO_STUN
 A:144:100
 
+N:1917:上院議員『アームストロング』
+E:Senator Armstrong
+G:p:o
+I:123:30d100:30:140:30
+W:58:4:0:22000:0:0
+B:CRUSH:SUPERHURT:10d10
+B:CRUSH:SUPERHURT:10d10
+B:PUNCH:SHATTER:10d12
+B:PUNCH:SHATTER:10d12
+F:UNIQUE | MALE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD | 
+F:DROP_90 | REGENERATE | KILL_WALL | RES_TELE |
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | WARRIOR
+F:EVIL | HUMAN | IM_POIS | NO_CONF | NO_SLEEP | NO_FEAR
+F:IM_ELEC | IM_COLD | IM_FIRE | RES_SOUN | RES_SHAR | RES_NETH
+S:1_IN_7 | HEAL
+D:「上院議員を舐めんじゃねえ！」
+D:彼の夢とは最新のテクノロジーをもってして、アメリカに、
+D:ひいては世界中に西部開拓時代の混沌が蘇ることだ。
+D:だが、それはそれとして鉄獄には彼の求める闘争が一杯だ。夢中になるのは無理もない。
+
 
 # N: serial number : monster name
 # G: symbol : color
