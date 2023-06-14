@@ -35658,6 +35658,22 @@ D:かつて軍神に帰依し侵略をもって栄えたザムハンの王だ。
 D:緑の姫フォルナの説得に改心し、
 D:恐るべき軍神を封じることを選んだが、結局はかの地に呪いを残し自らもそれに囚われた。
 
+#[DSKL] 天使版クソコウモリ
+N:1921:希望の源『ジアーダ』
+E:Giada, Font of Hope
+G:A:B
+I:120:30d10:50:75:0
+W:33:4:0:4000:0:0
+B:TOUCH:TERRIFY:1d1
+B:TOUCH:TERRIFY:1d1
+F:UNIQUE | FORCE_MAXHP | RAND_25 | RAND_50 | DROP_90
+F:DROP_3D2 | DROP_GOOD | SMART | OPEN_DOOR
+F:BASH_DOOR | MOVE_BODY | TAKE_ITEM | GOOD
+F:HUMAN | ANGEL | NO_STUN | NO_SLEEP | CAN_FLY
+S:1_IN_4 |
+S:S_ANGEL | HEAL
+D:天使を生贄にファイレクシアを撃退し、近代的都市を栄えさせた
+D:ニューカペナでかつての己の姿を忘れていた天使だ。
 
 # N: serial number : monster name
 # G: symbol : color
