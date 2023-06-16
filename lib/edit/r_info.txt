@@ -35685,6 +35685,23 @@ F:DROP_CORPSE | ANIMAL | NEVER_BLOW | NO_FEAR | RAND_25 | AQUATIC
 F:WILD_GRASS | WILD_TOWN | WILD_OCEAN |FRIENDS | FRIENDLY
 D:太古の水棲生物だ。全くもって無害だ。
 
+N:1923:エルフ戦士
+E:Elven warrior
+G:h:g
+I:110:8d11:20:16:20
+W:12:1:0:50:0:0
+B:SHOOT:HURT:2d6
+B:HIT:HURT:1d8
+B:HIT:HURT:1d8
+F:MALE | 
+F:DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:GOOD | RES_LITE | DROP_60 | FRIENDS | WARRIOR | ELF
+S:1_IN_6
+S:SHOOT
+D:弓矢の扱いにもたけた森の戦士だ
+
+
 
 # N: serial number : monster name
 # G: symbol : color
