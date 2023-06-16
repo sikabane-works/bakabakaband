@@ -2989,7 +2989,7 @@ I:110:10d11:20:16:20
 W:10:1:0:50:700:348
 B:HIT:HURT:1d8
 B:HIT:HURT:1d8
-F:MALE | 
+F:MALE | ELF | WARRIOR
 F:DROP_1D2 | 
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL | HURT_LITE | RES_DARK | EAT_BERSERKER |
@@ -35667,13 +35667,14 @@ W:33:4:0:4000:0:0
 B:TOUCH:TERRIFY:1d1
 B:TOUCH:TERRIFY:1d1
 F:UNIQUE | FORCE_MAXHP | RAND_25 | RAND_50 | DROP_90
-F:DROP_3D2 | DROP_GOOD | SMART | OPEN_DOOR
+F:DROP_3D2 | DROP_GOOD | SMART | OPEN_DOOR | FEMALE
 F:BASH_DOOR | MOVE_BODY | TAKE_ITEM | GOOD
 F:HUMAN | ANGEL | NO_STUN | NO_SLEEP | CAN_FLY
 S:1_IN_4 |
 S:S_ANGEL | HEAL
-D:天使を生贄にファイレクシアを撃退し、近代的都市を栄えさせた
-D:ニューカペナでかつての己の姿を忘れていた天使だ。
+D:天使を生贄に生み出した光素をもってファイレクシアを撃退し、
+D:近代的都市を栄えさせた歴史を持つニューカペナ、その生き残りの天使だ。
+D:彼女は己のかつての姿や使命を忘れ、光素を搾取される立場になっていた。
 
 #[DSKL] Skalton氏リクエスト
 N:1922:サカバンバスピス
@@ -35684,6 +35685,23 @@ W:0:4:0:100:0:0
 F:DROP_CORPSE | ANIMAL | NEVER_BLOW | NO_FEAR | RAND_25 | AQUATIC
 F:WILD_GRASS | WILD_TOWN | WILD_OCEAN |FRIENDS | FRIENDLY
 D:太古の水棲生物だ。全くもって無害だ。
+
+N:1923:エルフ戦士
+E:Elven warrior
+G:h:g
+I:110:8d11:20:16:20
+W:12:1:0:50:0:0
+B:SHOOT:HURT:2d6
+B:HIT:HURT:1d8
+B:HIT:HURT:1d8
+F:MALE | 
+F:DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:GOOD | RES_LITE | DROP_60 | FRIENDS | WARRIOR | ELF
+S:1_IN_6
+S:SHOOT
+D:弓矢の扱いにもたけた森の戦士だ
+
 
 
 # N: serial number : monster name
