@@ -35737,6 +35737,24 @@ F:OPEN_DOOR | BASH_DOOR | WARRIOR
 F:RES_NETH
 D:毒の沼地で文字通り人を捌き喰らうための巨大な包丁を振り回す、危険極まりない不死人の女だ。
 
+N:1926:『探索する獣』
+E:The Questing Beast
+G:M:v
+I:120:120d14:10:100:20
+W:40:2:0:9500:0:0
+B:BITE:HURT:7d6
+B:BITE:HURT:7d6
+B:CRUSH:SUPERHURT:10d7
+B:CRUSH:SUPERHURT:10d7
+F:DROP_1D2 | DROP_90 | DROP_GREAT | ONLY_ITEM
+F:MALE | CAN_SPEAK | RES_TELE | CAN_SWIM | DROP_CORPSE
+F:ANIMAL | IM_FIRE | IM_COLD | IM_POIS | NO_CONF | NO_FEAR | NO_SLEEP | FORCE_MAXHP | UNIQUE | PREVENT_SUDDEN_MAGIC
+S:1_IN_4
+S:SHRIEK | CONF | SLOW | BLIND | DRAIN_MANA
+S:FORGET | DARKNESS | BR_POIS | BR_FIRE | BR_COLD
+D:エルドレインの野心と大望ある騎士達に試練を与える伝説の存在だ。
+D:かのケンリス王もこの獣から与えられた試練を乗り越えて５つの王国を束ねる崇王になったという。
+
 
 
 # N: serial number : monster name
