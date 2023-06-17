@@ -35702,6 +35702,59 @@ S:1_IN_6
 S:SHOOT
 D:弓矢の扱いにもたけた森の戦士だ
 
+# DiscordでHourier氏がネタにしたものを、ゲイツやジョーブツやリー・ナスとやり合うくらいに格上げ。
+N:1924:呟く狂王『アーロン・ムスク』
+E:Aalon Reeve Mursk, Lord of the Tweeting Lunatic
+G:B:G
+I:130:30d100:40:120:0
+W:52:3:0:16000:0:0
+B:INSULT:HURT:8d10
+B:INSULT:HURT:8d10
+B:INSULT:HURT:8d10
+B:INSULT:HURT:8d10
+F:UNIQUE | MALE | CAN_SPEAK | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN | ROGUE
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | 
+F:IM_POIS | IM_COLD | NO_CONF | NO_SLEEP | EVIL | NO_STUN
+S:1_IN_4 | MIND_BLAST | CAUSE_4 | S_KIN
+D:「ポリコレつぶやき大会」で優勝をかっさらってその領域を支配した男だ。
+D:彼はそれ以前からも多くの企業を、己の衝動的欲望に満ちた狂乱の渦に巻き込んできた。
+
+N:1925:人食い『ミルドレット』
+E:Maneater Mildred
+G:p:o
+I:116:12d100:30:60:40
+W:31:2:0:1500:0:0
+B:HIT:HURT:9d6
+B:HIT:HURT:9d6
+B:HIT:HURT:9d6
+B:HIT:HURT:9d6
+F:UNIQUE | FEMALE | HUMAN | UNDEAD
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+F:RES_NETH
+D:毒の沼地で文字通り人を捌き喰らうための巨大な包丁を振り回す、危険極まりない不死人の女だ。
+
+N:1926:『探索する獣』
+E:The Questing Beast
+G:M:v
+I:120:120d14:10:100:20
+W:40:2:0:9500:0:0
+B:BITE:HURT:7d6
+B:BITE:HURT:7d6
+B:CRUSH:SUPERHURT:10d7
+B:CRUSH:SUPERHURT:10d7
+F:DROP_1D2 | DROP_90 | DROP_GREAT | ONLY_ITEM
+F:MALE | CAN_SPEAK | RES_TELE | CAN_SWIM | DROP_CORPSE
+F:ANIMAL | IM_FIRE | IM_COLD | IM_POIS | NO_CONF | NO_FEAR | NO_SLEEP | FORCE_MAXHP | UNIQUE | PREVENT_SUDDEN_MAGIC
+S:1_IN_4
+S:SHRIEK | CONF | SLOW | BLIND | DRAIN_MANA
+S:FORGET | DARKNESS | BR_POIS | BR_FIRE | BR_COLD
+D:エルドレインの野心と大望ある騎士達に試練を与える伝説の存在だ。
+D:かのケンリス王もこの獣から与えられた試練を乗り越えて５つの王国を束ねる崇王になったという。
+
 
 
 # N: serial number : monster name
