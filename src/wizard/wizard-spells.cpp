@@ -247,11 +247,12 @@ void wiz_summon_specific_monster(PlayerType *player_ptr, MonsterRaceId r_idx)
 void wiz_generate_room(PlayerType *player_ptr, int v_idx)
 {
     if (v_idx <= 0) {
-        int val = 1;
-        if (!get_value("VaultID", 1, vaults_info.size() - 1, &val)) {
+        const auto val = get_value("VaultID", 1, vaults_info.size() - 1, 1);
+        if (!val.has_value()) {
             return;
         }
-        v_idx = static_cast<int>(val);
+
+        v_idx = val.value();
         vault_type *v_ptr = &vaults_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
 

@@ -99,9 +99,9 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
         "---", "---", "---", "-----", "-----", "-------------------");
 
     std::vector<MonsterRaceId> who;
-    for (const auto &[r_idx, r_ref] : monraces_info) {
-        if (MonsterRace(r_ref.idx).is_valid() && !r_ref.name.empty()) {
-            who.push_back(r_ref.idx);
+    for (const auto &[monrace_id, monrace] : monraces_info) {
+        if (MonsterRace(monrace_id).is_valid()) {
+            who.push_back(monrace_id);
         }
     }
 
@@ -184,9 +184,9 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
     spoil_out("------------------------------------------\n\n");
 
     std::vector<MonsterRaceId> who;
-    for (const auto &[r_idx, r_ref] : monraces_info) {
-        if (MonsterRace(r_ref.idx).is_valid() && !r_ref.name.empty()) {
-            who.push_back(r_ref.idx);
+    for (const auto &[monrace_id, monrace] : monraces_info) {
+        if (MonsterRace(monrace_id).is_valid()) {
+            who.push_back(monrace_id);
         }
     }
 
