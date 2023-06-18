@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 enum class MonsterRaceId : int16_t {
-    PLAYER = 0, // Dummy.
+    PLAYER = 0,
+    FILTHY_URCHIN = 1,
     MAGGOT = 8,
     BEGGAR = 12,
     LEPER = 13,

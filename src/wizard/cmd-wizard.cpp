@@ -247,7 +247,7 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         return true;
     case 'v': {
 
-        const auto value = get_value("時空崩壊度(0.000001%単位)", 0, 100000000, wc_ptr->collapse_degree);
+        const auto value = input_value_int("時空崩壊度(0.000001%単位)", 0, 100000000, wc_ptr->collapse_degree);
         if (value.has_value()) {
             wc_ptr->collapse_degree = value.value();
             return true;
