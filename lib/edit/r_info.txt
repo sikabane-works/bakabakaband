@@ -35778,9 +35778,29 @@ G:I:y
 I:120:2d4:40:20:10
 W:9:5:0:22:0:0
 B:HIT:HURT:1d5
-F:CAN_FLY | WILD_ALL | RES_POIS | FEMALE
+F:CAN_FLY | WILD_ALL | RES_POIS | se FEMALE
 D:小さな妖精の姿をした天のネイティアルだ。
 
+#[DSKL] 完結はしないんだ悔しくもないし仕方ないんだ。
+N:1929:爆乳にして悪魔大元帥『ポルノ・ディアノ』
+E:Porno Di'Anno, ther Archmarshal of Demon or Huge Tits
+G:U:R
+I:130:50d110:60:90:20
+W:70:3:0:95000:0:0
+B:CRUSH:HURT:15d5
+B:CRUSH:HURT:15d5
+B:PUNCH:SUPERHURT:14d8
+B:KICK:SUPERHURT:14d8
+F:UNIQUE | CAN_SPEAK | FEMALE | RES_TELE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP 
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GREAT | NONLIVING
+F:SMART | OPEN_DOOR | BASH_DOOR | REGENERATE | DEMON 
+F:EVIL | IM_ACID | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | RES_CHAO
+S:1_IN_4 |
+S:BO_MANA | BRAIN_SMASH | BA_DARK | HASTE
+S:CAUSE_4 | HEAL | BR_CHAO | BR_CONF | BR_POIS | BR_NUKE |
+S:BA_CHAO
+D:無名から悪魔王サタンに抜擢された妖艶な女大悪魔だ。処女らしい。
 
 # N: serial number : monster name
 # G: symbol : color
