@@ -18,7 +18,6 @@
 #include "system/angband.h"
 #include "util/flag-group.h"
 
-
 #define DUNGEON_FEAT_PROB_NUM 3
 
 #define DUNGEON_ANGBAND 1
