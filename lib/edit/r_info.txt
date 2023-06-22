@@ -20326,7 +20326,7 @@ W:40:3:0:500:0:0
 B:SHOOT:HURT:9d6
 B:HIT:HURT:10d8
 B:HIT:HURT:10d8
-F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF | RANGER
 F:ONLY_ITEM | DROP_1D2 | GOOD | DROP_SKELETON | DROP_CORPSE | SMART |
 F:IM_ACID | IM_COLD | RES_WATE | RES_NETH | MOB_300 | ALLIANCE_VALINOR
 S:1_IN_2
@@ -20355,7 +20355,7 @@ B:HIT:HURT:2d5
 B:HIT:HURT:2d5
 B:HIT:HURT:2d4
 F:HUMAN | MALE | EVIL | DROP_CORPSE | DROP_SKELETON | HAS_LITE_2
-F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_1D2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_1D2 | MAGE
 F:SMART | OPEN_DOOR | BASH_DOOR
 S:1_IN_4 | TPORT | HOLD | S_DEMON
 D:$A figure twisted by evil standing in robes of deepest crimson.
@@ -35893,6 +35893,39 @@ F:IM_ACID | IM_ELEC | NO_CONF | NO_SLEEP | ESCORT
 D:彼はガンダルフの癒しにより、蛇の舌の悪意から脱した。
 D:ガンダルフに従い自由の民のため戦ったローハンの勇猛なる王だ。
 A:93:100
+
+N:1936:フェアノール統の戦士
+E:Warrior of Feanor families
+G:h:R
+I:120:50d50:40:90:25
+W:49:3:0:550:0:0
+B:SHOOT:HURT:11d6
+B:SLASH:HURT:12d8
+B:SLASH:HURT:12d8
+B:KICK:HURT:4d8
+F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF | WARRIOR | EVIL
+F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SMART |
+F:IM_POIS | IM_FIRE | RES_WATE | RES_NETH | MOB_420
+S:1_IN_4
+S:SHOOT | BO_FIRE
+D:ノルドールの分裂の中でも「フェアノールの誓言」及び「マンドスの呪い」の道を選んだ一族の戦士たちだ。
+D:その道には破滅しかなかったとヴァリノールの物語に語られているが、
+D:不思議なことに彼らはそれらで語られるよりも、さらに屈強にして狡猾な形で、盟主と共になお栄えている。
+
+N:1937:屍霊術師
+E:Necromanser
+G:p:s
+I:115:28d12:18:60:10
+W:34:2:0:700:0:0
+B:HIT:HURT:2d5
+B:HIT:HURT:2d5
+B:HIT:HURT:2d4
+F:HUMAN | MALE | EVIL | DROP_CORPSE | DROP_SKELETON | HAS_LITE_2
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_1D2 | MAGE
+F:SMART | OPEN_DOOR | BASH_DOOR
+S:1_IN_4 | TPORT | SLOW | S_UNDEAD
+D:ボロボロのローブを身にまとい、アンデッドたちを己の下僕として使役する邪悪なメイジだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
