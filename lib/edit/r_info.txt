@@ -32257,7 +32257,7 @@ S:1_IN_6 |
 S:BR_NUKE | BR_POIS | BR_CHAO | BR_NEXU | ANIM_DEAD
 D:無冠の者が賞を欲した時、その呪いは始まった。
 D:今や彼の姿はクッソ愛らしいカエルのマスコットからは程遠く、
-D:口にするのも憚る有様をしているこの悲劇を誰か止めて差し上げろ。
+D:口にするのも憚る有様をしている。この悲劇を誰か止めて差し上げろ。
 
 N:1705:黄金の鉄の塊で出来たナイト『ブロントさん』
 E:Mr.Bront, the Knight Made of a Golden Mass of Iron.
@@ -32268,7 +32268,7 @@ B:PUNCH:HURT:8d10
 B:SLASH:SUPERHURT:10d10
 B:SLASH:SUPERHURT:10d10
 B:SLASH:SUPERHURT:10d10
-F:UNIQUE | MALE | DROP_CORPSE
+F:UNIQUE | MALE | DROP_CORPSE | ELF | PALADIN
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
 F:ONLY_ITEM | DROP_4D2 | DROP_GREAT |
 F:SMART | OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY |
@@ -35926,6 +35926,41 @@ F:SMART | OPEN_DOOR | BASH_DOOR
 S:1_IN_4 | TPORT | SLOW | S_UNDEAD
 D:ボロボロのローブを身にまとい、アンデッドたちを己の下僕として使役する邪悪なメイジだ。
 
+N:1938:原始サイヤ人
+E:Archaic Saiyan
+G:p:u
+I:113:22d12:20:38:20
+W:18:3:0:110:0:0
+B:PUNCH:SUPERHURT:3d4
+B:PUNCH:SUPERHURT:3d4
+B:KICK:SUPERHURT:4d4
+B:KICK:SUPERHURT:4d4
+F:HUMAN |
+F:MALE | NO_FEAR | NO_STUN | BASH_DOOR | OPEN_DOOR | DROP_1D2 | HAS_LITE_1 |
+F:WILD_WASTE | DROP_SKELETON | DROP_CORPSE | EAT_BERSERKER
+D:まだ惑星ベジータの支配者にしてフリーザの旗下に入る前、
+D:ツフル人の奴隷あるいは略奪者として原始的生活を送っていた頃のサイヤ人だ。
+D:その暴力性は、文明人の軍隊を平然と叩きのめすだろう。
+
+N:1939:『汚い忍者』
+E:The SQUALID Ninja
+G:p:D
+I:130:18d100:40:240:20
+W:58:5:0:28000:0:0
+B:SHOOT:HURT:18d10
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+B:SLASH:HURT:10d10
+F:UNIQUE | MALE | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_GREAT | NINJA | HUMAN
+F:SMART | OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
+S:1_IN_3 |
+S:HASTE | BLINK | SHOOT
+D:汚いな、流石忍者きたない。
+D:空蝉盾に頼ってメイン盾を務めきれないとにかく汚い忍者だ。
+D:ナイトは忍者よりも高みにいるからお前らのイタズラにも笑顔だったがいい加減にしろよ。
 
 # N: serial number : monster name
 # G: symbol : color
