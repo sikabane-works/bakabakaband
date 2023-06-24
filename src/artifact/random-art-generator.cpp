@@ -395,7 +395,7 @@ static std::string name_unnatural_random_artifact(PlayerType *player_ptr, ItemEn
     o_ptr->randart_name.reset();
     (void)screen_object(player_ptr, o_ptr, 0L);
     char new_name[160] = "";
-    if (!get_string(ask_msg, new_name, sizeof new_name) || !new_name[0]) {
+    if (!input_string(ask_msg, new_name, sizeof new_name) || !new_name[0]) {
         if (one_in_(2)) {
             return get_table_sindarin_aux();
         } else {
