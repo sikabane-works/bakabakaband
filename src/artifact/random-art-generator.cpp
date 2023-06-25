@@ -388,22 +388,28 @@ static std::string name_unnatural_random_artifact(PlayerType *player_ptr, ItemEn
         return get_random_name(*o_ptr, o_ptr->is_protector(), power_level);
     }
 
-    concptr ask_msg = _("このアーティファクトを何と名付けますか？", "What do you want to call the artifact? ");
+    constexpr auto prompt = _("このアーティファクトを何と名付けますか？", "What do you want to call the artifact? ");
     object_aware(player_ptr, o_ptr);
     object_known(o_ptr);
     o_ptr->ident |= IDENT_FULL_KNOWN;
     o_ptr->randart_name.reset();
     (void)screen_object(player_ptr, o_ptr, 0L);
-    char new_name[160] = "";
-    if (!input_string(ask_msg, new_name, sizeof new_name) || !new_name[0]) {
-        if (one_in_(2)) {
-            return get_table_sindarin_aux();
-        } else {
-            return get_table_name_aux();
-        }
+
+    auto wrap_name = [](const auto &name) {
+        std::stringstream ss;
+        ss << _("《", "'") << name << _("》", "'");
+        return ss.str();
+    };
+    const auto new_name = input_string(prompt, 160);
+    if (new_name.has_value() && !new_name->empty()) {
+        return wrap_name(new_name.value());
     }
 
-    return std::string(_("《", "'")).append(new_name).append(_("》", "'"));
+    if (one_in_(2)) {
+        return wrap_name(get_table_sindarin_aux());
+    }
+
+    return wrap_name(get_table_name_aux());
 }
 
 static void generate_unnatural_random_artifact(
