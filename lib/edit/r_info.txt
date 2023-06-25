@@ -32901,7 +32901,7 @@ B:HIT:HURT:3d10
 B:SLASH:HURT:3d10
 B:PUNCH:HURT:3d10
 F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
-F:IM_POIS | NO_SLEEP | NO_CONF | NO_STUN
+F:IM_POIS | NO_SLEEP | NO_CONF | NO_STUN | RANGER
 F:MALE | DROP_CORPSE | DROP_SKELETON | HUMAN | FORCE_MAXHP
 S:1_IN_4 |
 S:SHOOT
@@ -35961,6 +35961,24 @@ S:HASTE | BLINK | SHOOT
 D:汚いな、流石忍者きたない。
 D:空蝉盾に頼ってメイン盾を務めきれないとにかく汚い忍者だ。
 D:ナイトは忍者よりも高みにいるからお前らのイタズラにも笑顔だったがいい加減にしろよ。
+
+# 他のエルフとの強さ調整は色々考える。とりあえずライリーの上位版で。
+N:1940:緑葉の『レゴラス』
+E:Legolas Greenleaf
+G:h:g
+I:125:70d29:25:80:10
+W:45:3:0:12000:0:0
+B:SHOOT:HURT:16d10
+B:SLASH:HURT:4d10
+B:SLASH:HURT:3d10
+B:SLASH:HURT:3d10
+F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
+F:IM_POIS | NO_SLEEP | NO_CONF | NO_STUN | GOOD
+F:MALE | DROP_CORPSE | DROP_SKELETON | ELF | RANGER | FORCE_MAXHP
+S:1_IN_4 |
+S:SHOOT
+D:闇の森の王スランドゥイルの一子にして弓の達人だ。指輪の仲間の一人と言われている。
+
 
 # N: serial number : monster name
 # G: symbol : color
