@@ -36006,6 +36006,19 @@ F:NO_CONF | NO_SLEEP | NO_FEAR | NASTY
 D:$Even today, nobody knows where it lurks... 
 D:今日でさえ、それがどこに潜んでいるのか誰も知らない。
 
+N:1943:現場猫
+E:Dangerous site cat
+G:f:W
+I:130:10d10:30:40:0
+W:25:4:0:200:0:0
+B:EXPLODE:HURT:15d3
+F:PREVENT_SUDDEN_MAGIC |
+F:FRIENDS |
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | NO_CONF | NO_SLEEP
+D:$This cat is about to have an accident.
+D:今にも事故を起こしそうな猫だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
