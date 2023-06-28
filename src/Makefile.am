@@ -970,6 +970,7 @@ hengband_SOURCES = \
 	util/point-2d.h \
 	util/probability-table.h \
 	util/rng-xoshiro.cpp util/rng-xoshiro.h \
+	util/sha256.cpp util/sha256.h \
 	util/sort.cpp util/sort.h \
 	util/string-processor.cpp util/string-processor.h \
 	\
@@ -1044,6 +1045,7 @@ EXTRA_hengband_SOURCES = \
 	main-win/main-win-tokenizer.cpp main-win/main-win-tokenizer.h \
 	main-win/main-win-utils.cpp main-win/main-win-utils.h \
 	main-win/wav-reader.cpp main-win/wav-reader.h \
+	test/test-sha256.cpp \
 	wall.bmp \
 	stdafx.cpp stdafx.h
 
