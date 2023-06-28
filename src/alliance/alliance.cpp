@@ -346,5 +346,9 @@ int AllianceGaichi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_pt
 
 int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    auto impression = 0;
+    if (r_info[MonsterRaceId::MISUMI].mob_num == 0) {
+        impression = -10000;
+    }
+    return impression;
 }
