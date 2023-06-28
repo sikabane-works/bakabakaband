@@ -352,3 +352,8 @@ int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *cre
     }
     return impression;
 }
+
+bool AllianceLegendOfSavior::isAnnihilated()
+{
+    return r_info[MonsterRaceId::KENSHIROU].mob_num == 0;
+}
