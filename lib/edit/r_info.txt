@@ -36051,8 +36051,24 @@ D:光なき闇の大蜘蛛、かのメルコールに堕落させられ汚され
 D:ウンゴリアントが産み出した直なる娘たちだ。彼女らはアルダの全てを喰らい、
 D:母の下へ紡ぎあげようとする使命を今も忘れていない。
 
-
-
+# [DSKL] 他のエルフとの強さはまたレゴラス共々調整する
+N:1946:森エルフの王『スランドゥイル』
+E:Legolas Greenleaf
+G:h:g
+I:128:70d40:40:100:10
+W:52:3:0:19000:0:0
+B:SHOOT:HURT:18d10
+B:SLASH:HURT:8d10
+B:SLASH:HURT:9d10
+B:SLASH:HURT:9d10
+F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
+F:IM_POIS | NO_SLEEP | NO_CONF | NO_STUN | GOOD | ESCORT
+F:MALE | DROP_CORPSE | DROP_SKELETON | ELF | PALADIN | FORCE_MAXHP
+S:1_IN_4 |
+S:SHOOT | HOLD | BA_LITE | CAUSE_3 | CAUSE_4 | S_KIN
+A:36:100
+D:酒と宴会、財宝に目の無い、上のエルフと呼ばれる者の視点からは俗と見られる森エルフの王侯だ。
+D:ただし常に節度はあり、鷹揚な統治の手腕が同胞や異種族にも疑われることは稀である。
 
 
 # N: serial number : monster name
