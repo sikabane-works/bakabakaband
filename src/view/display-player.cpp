@@ -84,14 +84,7 @@ static bool display_player_info(PlayerType *player_ptr, int mode)
  */
 static void display_player_basic_info(PlayerType *player_ptr)
 {
-    char tmp[64];
-#ifdef JP
-    sprintf(tmp, "%s%s%s", ap_ptr->title, ap_ptr->no == 1 ? "の" : "", player_ptr->name);
-#else
-    sprintf(tmp, "%s %s", ap_ptr->title, player_ptr->name);
-#endif
-
-    display_player_one_line(ENTRY_NAME, tmp, TERM_L_BLUE);
+    display_player_name(player_ptr);
     display_player_one_line(ENTRY_SEX, sp_ptr->title, TERM_L_BLUE);
     display_player_one_line(ENTRY_RACE, (player_ptr->mimic_form != MimicKindType::NONE ? mimic_info.at(player_ptr->mimic_form).title : rp_ptr->title), TERM_L_BLUE);
     display_player_one_line(ENTRY_CLASS, cp_ptr->title, TERM_L_BLUE);
