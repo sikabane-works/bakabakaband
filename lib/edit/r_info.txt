@@ -8260,22 +8260,23 @@ D:$It is a very unstable, strange pulsing mound of flesh.
 D:それは非常に不安定で奇妙な脈打つ肉の塊だ。
 
 #J0#
+#[DSKL] 馬鹿馬鹿で大幅強化
 N:481:闇の蜘蛛『シェロブ』
 E:Shelob, Spider of Darkness
 G:S:D
-I:110:12d100:8:80:80
-W:32:3:0:1500:0:0
-B:BITE:HURT:2d10
-B:STING:POISON:2d5
-B:STING:LOSE_STR:1d4
-B:STING:POISON:2d5
+I:125:82d100:8:180:80
+W:74:3:0:45000:0:0
+B:BITE:HURT:20d10
+B:STING:DISEASE:20d5
+B:STING:LOSE_STR:10d4
+B:STING:DISEASE:20d5
 F:UNIQUE | FEMALE | 
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ALLIANCE_UNGOLIANT
-F:ESCORT | ESCORTS | DROP_CORPSE | EAT_BLIND |
+F:ESCORT | ESCORTS | DROP_CORPSE | EAT_BLIND | SMART
 F:DROP_1D2 | DROP_2D2 | DROP_GOOD | SMART | BASH_DOOR | 
 F:ANIMAL | EVIL | HURT_LITE | NO_CONF | NO_SLEEP | RES_DARK | SPIDER
-S:1_IN_2 | HEAL | BLIND | SLOW | CONF | SCARE | CAUSE_3 | CAUSE_4
-S:TRAPS | BR_DARK | S_SPIDER
+S:1_IN_2 | HEAL | BLIND | SLOW | CONF | SCARE | CAUSE_3 | CAUSE_4 | BA_NETH
+S:BR_DARK | S_SPIDER | BA_DARK
 D:$Shelob is an enormous bloated spider, rumoured to have been one of the 
 D:$brood of Ungoliant the Unlight.  Her poison is legendary, as is her ego, 
 D:$which may be her downfall.  She used to guard the pass through Cirith 
@@ -36051,8 +36052,24 @@ D:光なき闇の大蜘蛛、かのメルコールに堕落させられ汚され
 D:ウンゴリアントが産み出した直なる娘たちだ。彼女らはアルダの全てを喰らい、
 D:母の下へ紡ぎあげようとする使命を今も忘れていない。
 
-
-
+# [DSKL] 他のエルフとの強さはまたレゴラス共々調整する
+N:1946:森エルフの王『スランドゥイル』
+E:Legolas Greenleaf
+G:h:g
+I:128:70d40:40:100:10
+W:52:3:0:19000:0:0
+B:SHOOT:HURT:18d10
+B:SLASH:HURT:8d10
+B:SLASH:HURT:9d10
+B:SLASH:HURT:9d10
+F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
+F:IM_POIS | NO_SLEEP | NO_CONF | NO_STUN | GOOD | ESCORT
+F:MALE | DROP_CORPSE | DROP_SKELETON | ELF | PALADIN | FORCE_MAXHP
+S:1_IN_4 |
+S:SHOOT | HOLD | BA_LITE | CAUSE_3 | CAUSE_4 | S_KIN
+A:36:100
+D:酒と宴会、財宝に目の無い、上のエルフと呼ばれる者の視点からは俗と見られる森エルフの王侯だ。
+D:ただし常に節度はあり、鷹揚な統治の手腕が同胞や異種族にも疑われることは稀である。
 
 
 # N: serial number : monster name
