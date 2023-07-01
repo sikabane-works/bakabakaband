@@ -67,6 +67,8 @@ public:
     virtual int calcImplessionPoint(PlayerType *creature_ptr) const = 0;
     virtual ~Alliance() = default;
     int64_t AnihilatedPowerdownDiv = 1000; //!< 壊滅時戦力指数除算
+    virtual void panishment(PlayerType &player_ptr);
+
 protected:
     static int calcPlayerPower(PlayerType const &player_ptr, const int bias, const int base_level);
 };
@@ -409,6 +411,7 @@ public:
     int calcImplessionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceLegendOfSavior() = default;
+    void panishment(PlayerType &player_ptr);
 };
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;

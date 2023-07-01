@@ -1,10 +1,14 @@
 ﻿#include "alliance/alliance.h"
+#include "effect/effect-characteristics.h"
+#include "floor/floor-util.h"
+#include "monster-floor/monster-summon.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-indice-types.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "view/display-messages.h"
 
 const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NONE, std::make_unique<AllianceNone>(AllianceType::NONE, "NONE", _("無所属", "None"), 0) },
@@ -72,6 +76,12 @@ int Alliance::calcPlayerPower(PlayerType const &player_ptr, const int bias, cons
     }
     return (2000 + 10 * (player_ptr.lev - min_level + 1) * (player_ptr.lev - min_level + 1)) * bias / 100;
 }
+
+void Alliance::panishment([[maybe_unused]] PlayerType &player_ptr)
+{
+    return;
+}
+
 
 int64_t Alliance::calcCurrentPower()
 {
@@ -356,4 +366,23 @@ int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *cre
 bool AllianceLegendOfSavior::isAnnihilated()
 {
     return r_info[MonsterRaceId::KENSHIROU].mob_num == 0;
+}
+
+void AllianceLegendOfSavior::panishment(PlayerType &player_ptr)
+{
+    auto impression = calcImplessionPoint(&player_ptr);
+    if (isAnnihilated() || impression > -100) {
+        return;
+    }
+
+    if (one_in_(30)) {
+        int cy, cx;
+        scatter(&player_ptr, &cy, &cx, player_ptr.y, player_ptr.x, 6, PROJECT_NONE);
+        if (summon_named_creature(&player_ptr, 0, cy, cx, MonsterRaceId::KENSHIROU, 0)) {
+            msg_print(_("「てめえに今日を生きる資格はねえ！」", "You don't deserve to live today!"));
+            msg_print(_("ケンシロウはあなたがミスミ老人を殺したことに義憤を覚えて襲ってきた！", "Kenshiro attacked you because you killed old man Misumi!"));
+        }
+    }
+
+    return;
 }
