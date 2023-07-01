@@ -1,10 +1,14 @@
 ﻿#include "alliance/alliance.h"
+#include "effect/effect-characteristics.h"
+#include "floor/floor-util.h"
+#include "monster-floor/monster-summon.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-indice-types.h"
 #include "system/monster-race-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "view/display-messages.h"
 
 const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::NONE, std::make_unique<AllianceNone>(AllianceType::NONE, "NONE", _("無所属", "None"), 0) },
@@ -46,7 +50,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::LEGEND_OF_SAVIOR, std::make_unique<AllianceLegendOfSavior>(AllianceType::LEGEND_OF_SAVIOR, "LEGEND-OF-SAVIOR", _("世紀末救世主伝説", "Legend of the Latter-day Savior"), 0L) },
 };
 
-const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession = {
+const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_impression = {
     { std::make_tuple(AllianceType::VALINOR, AllianceType::UTUMNO), -5000 },
     { std::make_tuple(AllianceType::UTUMNO, AllianceType::VALINOR), -1000 },
 };
@@ -73,6 +77,11 @@ int Alliance::calcPlayerPower(PlayerType const &player_ptr, const int bias, cons
     return (2000 + 10 * (player_ptr.lev - min_level + 1) * (player_ptr.lev - min_level + 1)) * bias / 100;
 }
 
+void Alliance::panishment([[maybe_unused]] PlayerType &player_ptr)
+{
+    return;
+}
+
 int64_t Alliance::calcCurrentPower()
 {
     int64_t res = this->base_power;
@@ -94,26 +103,26 @@ bool Alliance::isAnnihilated()
     return false;
 }
 
-int AllianceNone::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceNone::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceAmber::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceAmber::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 35);
     return impression;
 }
 
-int AllianceCourtOfChaos::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceCourtOfChaos::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 35);
     return impression;
 }
 
-int AllianceValinor::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceValinor::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += (creature_ptr->alignment > 0) ? creature_ptr->alignment : -creature_ptr->alignment * 3;
@@ -121,14 +130,14 @@ int AllianceValinor::calcImplessionPoint(PlayerType *creature_ptr) const
     return impression;
 }
 
-int AllianceUtumno::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceUtumno::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 30);
     return impression;
 }
 
-int AllianceJural::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceJural::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
@@ -140,17 +149,17 @@ bool AllianceJural::isAnnihilated()
     return r_info[MonsterRaceId::JURAL_WITCHKING].mob_num == 0;
 }
 
-int AllianceChinChinTei::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceChinChinTei::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceOdio::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceOdio::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceKenohgun::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceKenohgun::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 15, 20);
@@ -162,33 +171,33 @@ bool AllianceKenohgun::isAnnihilated()
     return r_info[MonsterRaceId::RAOU].mob_num == 0;
 }
 
-int AllianceFangFamily::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceFangFamily::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
     return impression;
 }
 
-int AllianceKoganRyu::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceKoganRyu::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 15, 18);
     return impression;
 }
 
-int AllianceEldrazi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceEldrazi::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceUngoliant::calcImplessionPoint(PlayerType *creature_ptr) const
+int AllianceUngoliant::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 8, 30);
     return impression;
 }
 
-int AllianceShittoDan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceShittoDan::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
@@ -198,43 +207,43 @@ bool AllianceShittoDan::isAnnihilated()
     return r_info[MonsterRaceId::SHITTO_MASK].mob_num == 0;
 }
 
-int AllianceGEOrlic::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceGEOrlic::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 30);
     return impression;
 }
 
-int AllianceTurbanKids::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceTurbanKids::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceNakedKnights::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceNakedKnights::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceNumenor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceNumenor::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 20);
     return impression;
 }
 
-int AllianceGO::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceGO::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceTheShire::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceTheShire::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, -10, 1);
     return impression;
 }
 
-int AllianceDokachans::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceDokachans::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
@@ -244,7 +253,7 @@ bool AllianceDokachans::isAnnihilated()
     return r_info[MonsterRaceId::DOKACHAN].mob_num == 0;
 }
 
-int AllianceKetholdeth::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceKetholdeth::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
@@ -254,63 +263,63 @@ bool AllianceKetholdeth::isAnnihilated()
     return r_info[MonsterRaceId::PRINCESS_KETHOLDETH].mob_num == 0;
 }
 
-int AllianceMeldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceMeldor::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 13, 28);
     return impression;
 }
 
-int AllianceAngartha::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceAngartha::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 11, 20);
     return impression;
 }
 
-int AllianceGetter::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceGetter::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 20, 1);
     return impression;
 }
 
-int AlliancePureMirrodin::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AlliancePureMirrodin::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 12);
     return impression;
 }
 
-int AllianceKING::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceKING::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 15, 15);
     return impression;
 }
 
-int AlliancePhyrexia::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AlliancePhyrexia::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 15, 21);
     return impression;
 }
 
-int AllianceAvarinLords::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceAvarinLords::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 10, 23);
     return impression;
 }
 
-int AllianceGOLAN::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceGOLAN::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 15, 12);
     return impression;
 }
 
-int AllianceBinzyouBuddhism::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceBinzyouBuddhism::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
@@ -320,31 +329,59 @@ bool AllianceBinzyouBuddhism::isAnnihilated()
     return r_info[MonsterRaceId::BINZYOU_MUR].mob_num == 0;
 }
 
-int AllianceAshinaClan::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceAshinaClan::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceSuren::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceSuren::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
 }
 
-int AllianceFeanorNoldor::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceFeanorNoldor::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 19, 26);
     return impression;
 }
 
-int AllianceGaichi::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceGaichi::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 4, 10);
     return impression;
 }
 
-int AllianceLegendOfSavior::calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const
+int AllianceLegendOfSavior::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    auto impression = 0;
+    if (r_info[MonsterRaceId::MISUMI].mob_num == 0) {
+        impression = -10000;
+    }
+    return impression;
+}
+
+bool AllianceLegendOfSavior::isAnnihilated()
+{
+    return r_info[MonsterRaceId::KENSHIROU].mob_num == 0;
+}
+
+void AllianceLegendOfSavior::panishment(PlayerType &player_ptr)
+{
+    auto impression = calcImpressionPoint(&player_ptr);
+    if (isAnnihilated() || impression > -100) {
+        return;
+    }
+
+    if (one_in_(30)) {
+        int cy, cx;
+        scatter(&player_ptr, &cy, &cx, player_ptr.y, player_ptr.x, 6, PROJECT_NONE);
+        if (summon_named_creature(&player_ptr, 0, cy, cx, MonsterRaceId::KENSHIROU, 0)) {
+            msg_print(_("「てめえに今日を生きる資格はねえ！」", "You don't deserve to live today!"));
+            msg_print(_("ケンシロウはあなたがミスミ老人を殺したことに義憤を覚えて襲ってきた！", "Kenshiro attacked you because you killed old man Misumi!"));
+        }
+    }
+
+    return;
 }
