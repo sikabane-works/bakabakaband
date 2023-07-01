@@ -120,7 +120,7 @@ static void send_waiting_record(PlayerType *player_ptr)
         return;
     }
 
-    if (!get_check_strict(player_ptr, _("待機していたスコア登録を今行ないますか？", "Do you register score now? "), CHECK_NO_HISTORY)) {
+    if (!input_check_strict(player_ptr, _("待機していたスコア登録を今行ないますか？", "Do you register score now? "), CHECK_NO_HISTORY)) {
         quit(0);
     }
 
@@ -142,7 +142,7 @@ static void send_waiting_record(PlayerType *player_ptr)
     /* 町名消失バグ対策(#38205)のためここで世界マップ情報を読み出す */
     parse_fixed_map(player_ptr, WILDERNESS_DEFINITION, 0, 0, w_ptr->max_wild_y, w_ptr->max_wild_x);
     bool success = send_world_score(player_ptr, true);
-    if (!success && !get_check_strict(player_ptr, _("スコア登録を諦めますか？", "Do you give up score registration? "), CHECK_NO_HISTORY)) {
+    if (!success && !input_check_strict(player_ptr, _("スコア登録を諦めますか？", "Do you give up score registration? "), CHECK_NO_HISTORY)) {
         prt(_("引き続き待機します。", "standing by for future registration..."), 0, 0);
         (void)inkey();
     } else {
@@ -342,7 +342,7 @@ static void decide_arena_death(PlayerType *player_ptr)
         while (true) {
             char i;
 
-            if (!get_check(_("復活せずに何もかも諦めますか? ", "Do you give up everything without resurrection?? "))) {
+            if (!input_check(_("復活せずに何もかも諦めますか? ", "Do you give up everything without resurrection?? "))) {
                 cheat_death(player_ptr, cheat_live);
                 return;
             }

@@ -1131,7 +1131,7 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
 
         if (cast) {
             int i;
-            if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? "))) {
+            if (!input_check(_("何もかも諦めますか? ", "Do you give up everything? "))) {
                 return std::nullopt;
             }
             /* Special Verification for suicide */

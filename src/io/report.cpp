@@ -135,23 +135,10 @@ static bool http_post(concptr url, const std::vector<char> &buf)
     curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, HTTP_TIMEOUT);
     curl_easy_setopt(curl, CURLOPT_TIMEOUT, HTTP_TIMEOUT);
 
-    curl_easy_setopt(curl, CURLOPT_POST, 1);
-
-    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-    curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 10);
-    curl_easy_setopt(curl, CURLOPT_POSTREDIR, CURL_REDIR_POST_ALL);
-
-    std::span<const char> data(buf);
-    curl_easy_setopt(curl, CURLOPT_READDATA, &data);
-    curl_easy_setopt(curl, CURLOPT_READFUNCTION, read_callback);
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data.size());
-
-    if (curl_easy_perform(curl) == CURLE_OK) {
-        long response_code;
-        curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
-        if (response_code == 200) {
-            succeeded = true;
-        }
+    prt(_("スコア・サーバへの送信に失敗しました。", "Failed to send to the score server."), 0, 0);
+    (void)inkey();
+    if (!input_check_strict(player_ptr, _("もう一度接続を試みますか? ", "Try again? "), CHECK_NO_HISTORY)) {
+        return false;
     }
 
     curl_slist_free_all(slist);

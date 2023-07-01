@@ -155,7 +155,7 @@ static void accept_winner_message(PlayerType *player_ptr)
             continue;
         }
 
-        if (!get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_NO_HISTORY)) {
+        if (!input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_NO_HISTORY)) {
             break;
         }
     }
@@ -176,11 +176,11 @@ void do_cmd_suicide(PlayerType *player_ptr)
     char i;
     flush();
     if (w_ptr->total_winner) {
-        if (!get_check_strict(player_ptr, _("虚無りますか? ", "Do you want to go to the Nihil War? "), CHECK_NO_HISTORY)) {
+        if (!input_check_strict(player_ptr, _("虚無りますか? ", "Do you want to go to the Nihil War? "), CHECK_NO_HISTORY)) {
             return;
         }
     } else {
-        if (!get_check(_("何もかも諦めますか? ", "Do you give up everything? "))) {
+        if (!input_check(_("何もかも諦めますか? ", "Do you give up everything? "))) {
             return;
         }
     }
