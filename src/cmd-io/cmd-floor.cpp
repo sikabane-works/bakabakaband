@@ -61,8 +61,6 @@ void do_cmd_locate(PlayerType *player_ptr)
         { { _("西", " west of"), _("真上", ""), _("東", " east of") } },
         { { _("南西", " southwest of"), _("南", " south of"), _("南東", " southeast of") } },
     } };
-
-    DIRECTION dir;
     POSITION y1, x1;
     TERM_LEN wid, hgt;
     get_screen_size(&wid, &hgt);
@@ -70,23 +68,22 @@ void do_cmd_locate(PlayerType *player_ptr)
     POSITION x2 = x1 = panel_col_min;
     constexpr auto fmt = _("マップ位置 [%d(%02d),%d(%02d)] (プレイヤーの%s)  方向?", "Map sector [%d(%02d),%d(%02d)], which is%s your sector.  Direction?");
     while (true) {
-        std::string_view dirstring = dirstrings[(y2 < y1) ? 0 : ((y2 > y1) ? 2 : 1)][(x2 < x1) ? 0 : ((x2 > x1) ? 2 : 1)];
-        std::string out_val = format(fmt, y2 / (hgt / 2), y2 % (hgt / 2), x2 / (wid / 2), x2 % (wid / 2), dirstring.data());
-
-        dir = 0;
-        while (!dir) {
-            char command;
-            if (!input_command(out_val, &command, true)) {
+        const auto &dirstring = dirstrings[(y2 < y1) ? 0 : ((y2 > y1) ? 2 : 1)][(x2 < x1) ? 0 : ((x2 > x1) ? 2 : 1)];
+        const auto prompt = format(fmt, y2 / (hgt / 2), y2 % (hgt / 2), x2 / (wid / 2), x2 % (wid / 2), dirstring.data());
+        auto dir = 0;
+        while (dir == 0) {
+            const auto command = input_command(prompt, true);
+            if (!command.has_value()) {
                 break;
             }
 
-            dir = get_keymap_dir(command);
-            if (!dir) {
+            dir = get_keymap_dir(command.value());
+            if (dir == 0) {
                 bell();
             }
         }
 
-        if (!dir) {
+        if (dir == 0) {
             break;
         }
 
