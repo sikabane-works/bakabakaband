@@ -82,7 +82,6 @@ void Alliance::panishment([[maybe_unused]] PlayerType &player_ptr)
     return;
 }
 
-
 int64_t Alliance::calcCurrentPower()
 {
     int64_t res = this->base_power;
