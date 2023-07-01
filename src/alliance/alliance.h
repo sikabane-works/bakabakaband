@@ -64,7 +64,7 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int64_t calcCurrentPower();
     virtual bool isAnnihilated();
-    virtual int calcImplessionPoint(PlayerType *creature_ptr) const = 0;
+    virtual int calcImpressionPoint(PlayerType *creature_ptr) const = 0;
     virtual ~Alliance() = default;
     int64_t AnihilatedPowerdownDiv = 1000; //!< 壊滅時戦力指数除算
     virtual void panishment(PlayerType &player_ptr);
@@ -78,7 +78,7 @@ public:
     using Alliance::Alliance;
     AllianceNone() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint([[maybe_unused]] PlayerType *creature_ptr) const override;
+    int calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const override;
     virtual ~AllianceNone() = default;
 };
 
@@ -87,7 +87,7 @@ public:
     using Alliance::Alliance;
     AllianceAmber() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceAmber() = default;
 };
 
@@ -96,7 +96,7 @@ public:
     using Alliance::Alliance;
     AllianceCourtOfChaos() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceCourtOfChaos() = default;
 };
 
@@ -105,7 +105,7 @@ public:
     using Alliance::Alliance;
     AllianceValinor() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceValinor() = default;
 };
 
@@ -114,7 +114,7 @@ public:
     using Alliance::Alliance;
     AllianceUtumno() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceUtumno() = default;
 };
 
@@ -123,7 +123,7 @@ public:
     using Alliance::Alliance;
     AllianceJural() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceJural() = default;
 };
@@ -133,7 +133,7 @@ public:
     using Alliance::Alliance;
     AllianceChinChinTei() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceChinChinTei() = default;
 };
 
@@ -142,7 +142,7 @@ public:
     using Alliance::Alliance;
     AllianceOdio() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceOdio() = default;
 };
 
@@ -152,7 +152,7 @@ public:
     AllianceKenohgun() = delete;
     bool isAnnihilated() override;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceKenohgun() = default;
 };
 
@@ -161,7 +161,7 @@ public:
     using Alliance::Alliance;
     AllianceFangFamily() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceFangFamily() = default;
 };
 
@@ -170,7 +170,7 @@ public:
     using Alliance::Alliance;
     AllianceKoganRyu() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceKoganRyu() = default;
 };
 
@@ -179,7 +179,7 @@ public:
     using Alliance::Alliance;
     AllianceEldrazi() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceEldrazi() = default;
 };
 
@@ -188,7 +188,7 @@ public:
     using Alliance::Alliance;
     AllianceUngoliant() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceUngoliant() = default;
 };
 
@@ -198,7 +198,7 @@ public:
     AllianceShittoDan() = delete;
     bool isAnnihilated() override;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceShittoDan() = default;
 };
 
@@ -207,7 +207,7 @@ public:
     using Alliance::Alliance;
     AllianceGEOrlic() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGEOrlic() = default;
 };
 
@@ -216,7 +216,7 @@ public:
     using Alliance::Alliance;
     AllianceTurbanKids() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceTurbanKids() = default;
 };
 
@@ -225,7 +225,7 @@ public:
     using Alliance::Alliance;
     AllianceNakedKnights() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceNakedKnights() = default;
 };
 
@@ -234,7 +234,7 @@ public:
     using Alliance::Alliance;
     AllianceNumenor() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceNumenor() = default;
 };
 
@@ -243,7 +243,7 @@ public:
     using Alliance::Alliance;
     AllianceGO() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGO() = default;
 };
 
@@ -252,7 +252,7 @@ public:
     using Alliance::Alliance;
     AllianceTheShire() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceTheShire() = default;
 };
 
@@ -261,7 +261,7 @@ public:
     using Alliance::Alliance;
     AllianceHakushinKarate() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceHakushinKarate() = default;
 };
 
@@ -270,7 +270,7 @@ public:
     using Alliance::Alliance;
     AllianceDokachans() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceDokachans() = default;
 };
@@ -280,7 +280,7 @@ public:
     using Alliance::Alliance;
     AllianceKetholdeth() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceKetholdeth() = default;
 };
@@ -290,7 +290,7 @@ public:
     using Alliance::Alliance;
     AllianceMeldor() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceMeldor() = default;
 };
 
@@ -299,7 +299,7 @@ public:
     using Alliance::Alliance;
     AllianceAngartha() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceAngartha() = default;
 };
 
@@ -308,7 +308,7 @@ public:
     using Alliance::Alliance;
     AllianceGetter() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGetter() = default;
 };
 
@@ -317,7 +317,7 @@ public:
     using Alliance::Alliance;
     AlliancePureMirrodin() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AlliancePureMirrodin() = default;
 };
 
@@ -326,7 +326,7 @@ public:
     using Alliance::Alliance;
     AllianceKING() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceKING() = default;
 };
 
@@ -335,7 +335,7 @@ public:
     using Alliance::Alliance;
     AlliancePhyrexia() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AlliancePhyrexia() = default;
 };
 
@@ -344,7 +344,7 @@ public:
     using Alliance::Alliance;
     AllianceAvarinLords() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceAvarinLords() = default;
 };
 
@@ -353,7 +353,7 @@ public:
     using Alliance::Alliance;
     AllianceGOLAN() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGOLAN() = default;
 };
 
@@ -362,7 +362,7 @@ public:
     using Alliance::Alliance;
     AllianceBinzyouBuddhism() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceBinzyouBuddhism() = default;
 };
@@ -372,7 +372,7 @@ public:
     using Alliance::Alliance;
     AllianceAshinaClan() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceAshinaClan() = default;
 };
 
@@ -381,7 +381,7 @@ public:
     using Alliance::Alliance;
     AllianceSuren() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceSuren() = default;
 };
 
@@ -390,7 +390,7 @@ public:
     using Alliance::Alliance;
     AllianceFeanorNoldor() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceFeanorNoldor() = default;
 };
 
@@ -399,7 +399,7 @@ public:
     using Alliance::Alliance;
     AllianceGaichi() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGaichi() = default;
 };
 
@@ -408,11 +408,11 @@ public:
     using Alliance::Alliance;
     AllianceLegendOfSavior() = delete;
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImplessionPoint(PlayerType *creature_ptr) const override;
+    int calcImpressionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceLegendOfSavior() = default;
     void panishment(PlayerType &player_ptr);
 };
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
-extern const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_implession;
+extern const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_impression;

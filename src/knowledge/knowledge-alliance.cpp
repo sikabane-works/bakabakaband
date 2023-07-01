@@ -28,7 +28,7 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr)
         }
         std::stringstream st;
         st << a.second->calcCurrentPower();
-        fprintf(fff, _("%-30s/ あなたへの印象値: %+5d \n", "%-30s/ Implession to you: %+5d \n"), a.second->name.c_str(), a.second->calcImplessionPoint(player_ptr));
+        fprintf(fff, _("%-30s/ あなたへの印象値: %+5d \n", "%-30s/ Impression to you: %+5d \n"), a.second->name.c_str(), a.second->calcImpressionPoint(player_ptr));
         fprintf(fff, _("  勢力指数: %s \n", "  Power Value: %s \n"), st.str().c_str());
         fprintf(fff, _("  (%s) \n", "  (%s) \n"), (a.second->isAnnihilated() ? _("壊滅", "Annihilated") : _("健在", "Alive")));
 
