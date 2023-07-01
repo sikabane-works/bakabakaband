@@ -411,7 +411,7 @@ public:
     int calcImpressionPoint(PlayerType *creature_ptr) const override;
     bool isAnnihilated() override;
     virtual ~AllianceLegendOfSavior() = default;
-    void panishment(PlayerType &player_ptr);
+    void panishment(PlayerType &player_ptr) override;
 };
 
 extern const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list;
