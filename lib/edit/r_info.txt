@@ -36093,6 +36093,19 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | HOMO_SEXUAL | NASTY
 D:オスとしてのプライドをかけて自分のチンポを用いた決闘を日々行う兄貴たちだ。
 D:好きにやっててくれ。
 
+N:1949:飢えたホビット
+E:Starving hobbit
+G:h:U
+I:110:1d4:10:1:40
+W:0:1:0:0:0:0
+B:BEG:FLAVOR
+F:MALE | DROP_SKELETON | DROP_CORPSE | HOBBIT |
+F:RAND_25 | WILD_TOWN | WILD_ONLY | GOOD
+F:TAKE_ITEM | OPEN_DOOR
+F:DROP_KIND_1_IN_5_102_0_1d1
+D:多元宇宙の各都市では、大飯ぐらいの割に小柄で大して役に立たない、
+D:そんな判断で棄民として扱われる哀れなホビットだ。
+D:そこらの残飯や怪しい肉まで貪っている。
 
 # N: serial number : monster name
 # G: symbol : color
