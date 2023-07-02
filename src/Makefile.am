@@ -525,6 +525,7 @@ hengband_SOURCES = \
 	monster-race/race-kind-flags.h \
 	monster-race/race-resistance-mask.cpp monster-race/race-resistance-mask.h \
 	monster-race/race-visual-flags.h \
+	monster-race/race-wilderness-flags.h \
 	\
 	mspell/assign-monster-spell.cpp mspell/assign-monster-spell.h \
 	mspell/element-resistance-checker.cpp mspell/element-resistance-checker.h \
@@ -622,7 +623,10 @@ hengband_SOURCES = \
 	object-enchant/protector/apply-magic-soft-armor.cpp object-enchant/protector/apply-magic-soft-armor.h \
 	\
 	object-enchant/weapon/abstract-weapon-enchanter.cpp object-enchant/weapon/abstract-weapon-enchanter.h \
-	object-enchant/weapon/apply-magic-weapon.cpp object-enchant/weapon/apply-magic-weapon.h \
+	object-enchant/weapon/apply-magic-arrow.cpp object-enchant/weapon/apply-magic-arrow.h \
+	object-enchant/weapon/apply-magic-bow.cpp object-enchant/weapon/apply-magic-bow.h \
+	object-enchant/weapon/apply-magic-digging.cpp object-enchant/weapon/apply-magic-digging.h \
+	object-enchant/weapon/apply-magic-sword.cpp object-enchant/weapon/apply-magic-sword.h \
 	\
 	object-hook/hook-armor.cpp object-hook/hook-armor.h \
 	object-hook/hook-expendable.cpp object-hook/hook-expendable.h \

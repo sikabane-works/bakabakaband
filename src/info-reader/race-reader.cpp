@@ -69,6 +69,10 @@ static bool grab_one_basic_flag(monster_race *r_ptr, std::string_view what)
         return true;
     }
 
+    if (EnumClassFlagGroup<MonsterWildernessType>::grab_one_flag(r_ptr->wilderness_flags, r_info_wilderness_flags, what)) {
+        return true;
+    }
+
     msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
     return false;
 }
@@ -484,7 +488,6 @@ errr parse_r_info(std::string_view buf, angband_header *)
         info_set_value(a_idx, tokens[1]);
         info_set_value(chance, tokens[2]);
         r_ptr->drop_artifacts.emplace_back(a_idx, chance);
-
     } else if (tokens[0] == "V") {
         // V:arena_odds
         if (tokens.size() < 2) {

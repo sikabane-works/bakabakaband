@@ -252,7 +252,7 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
         break;
     }
     case RaceBlowMethodType::ENEMA: {
-        monap_ptr->act = _("浣腸された", "gives you an enema.");
+        monap_ptr->act = _("浣腸された。", "gives you an enema.");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;
         sound(SOUND_HIT);
@@ -260,7 +260,7 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
     }
 
     case RaceBlowMethodType::BIND: {
-        monap_ptr->act = _("縛られた", "binds you");
+        monap_ptr->act = _("縛られた。", "binds you");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;
         sound(SOUND_HIT);
@@ -268,7 +268,7 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
     }
 
     case RaceBlowMethodType::WHISPER: {
-        monap_ptr->act = _("囁かれた", "whispers you");
+        monap_ptr->act = _("囁かれた。", "whispers you");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;
         sound(SOUND_HIT);
@@ -276,7 +276,7 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
     }
 
     case RaceBlowMethodType::STAMP: {
-        monap_ptr->act = _("踏みつけられた", "stomps on you");
+        monap_ptr->act = _("踏みつけられた。", "stomps on you");
         monap_ptr->touched = true;
         monap_ptr->do_stun = 1;
         sound(SOUND_HIT);
