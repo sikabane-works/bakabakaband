@@ -10,6 +10,7 @@
 #include "game-option/cheat-options.h"
 #include "grid/trap.h"
 #include "inventory/inventory-slot-types.h"
+#include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags9.h"
@@ -152,7 +153,7 @@ void OtherItemsEnchanter::generate_corpse()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     MonsterRaceId r_idx;
     while (true) {
-        r_idx = get_mon_num(this->player_ptr, 0, floor_ptr->dun_level, 0);
+        r_idx = get_mon_num(this->player_ptr, 0, floor_ptr->dun_level, PM_NONE);
         auto &r_ref = monraces_info[r_idx];
         auto check = (floor_ptr->dun_level < r_ref.level) ? (r_ref.level - floor_ptr->dun_level) : 0;
         const auto sval = this->o_ptr->bi_key.sval();

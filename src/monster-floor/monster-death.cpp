@@ -1,4 +1,4 @@
-#include "monster-floor/monster-death.h"
+﻿#include "monster-floor/monster-death.h"
 #include "artifact/fixed-art-generator.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-building/cmd-building.h"
@@ -301,7 +301,8 @@ static int decide_drop_numbers(PlayerType *player_ptr, monster_death_type *md_pt
         drop_numbers += damroll(3, 3);
     }
 
-    if (md_ptr->cloned && md_ptr->r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
+    // クローンは、クローン地獄内のユニークモンスター以外はドロップしない
+    if (md_ptr->cloned && !(md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && (player_ptr->current_floor_ptr->quest_number == QuestId::CLONE))) {
         drop_numbers = 0;
     }
 
