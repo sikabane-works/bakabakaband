@@ -71,21 +71,21 @@ static std::optional<PRICE> prompt_to_buy(PlayerType *player_ptr, ItemEntity *o_
  */
 static bool show_store_select_item(COMMAND_CODE *item, const int i, StoreSaleType store_num)
 {
-    char out_val[160];
+    char prompt[160];
 
     switch (store_num) {
     case StoreSaleType::HOME:
-        sprintf(out_val, _("どのアイテムを取りますか? ", "Which item do you want to take? "));
+        sprintf(prompt, _("どのアイテムを取りますか? ", "Which item do you want to take? "));
         break;
     case StoreSaleType::BLACK:
-        sprintf(out_val, _("どれ? ", "Which item, huh? "));
+        sprintf(prompt, _("どれ? ", "Which item, huh? "));
         break;
     default:
-        sprintf(out_val, _("どの品物が欲しいんだい? ", "Which item are you interested in? "));
+        sprintf(prompt, _("どの品物が欲しいんだい? ", "Which item are you interested in? "));
         break;
     }
 
-    return get_stock(item, out_val, 0, i - 1, store_num) != 0;
+    return input_stock(item, prompt, 0, i - 1, store_num) != 0;
 }
 
 /*!
