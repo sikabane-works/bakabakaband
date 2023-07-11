@@ -57,62 +57,6 @@ void spoiler_outlist(std::string_view header, const std::vector<std::string> &de
 }
 
 /*!
- * @brief フラグ名称を出力する汎用関数
- * @param header ヘッダに出力するフラグ群の名前
- * @param list フラグ名リスト
- * @param separator フラグ表示の区切り記号
- * @todo 固定アーティファクトとランダムアーティファクトで共用、ここに置くべきかは要調整.
- * @todo いずれ上で定義したオーバーロードに吸収合併させてこれは消滅させる予定
- */
-void spoiler_outlist(concptr header, concptr *list, char separator)
-{
-    char line[MAX_LINE_LEN + 20], buf[80];
-    if (*list == nullptr) {
-        return;
-    }
-
-    strcpy(line, spoiler_indent);
-    if (header && (header[0])) {
-        strcat(line, header);
-        strcat(line, " ");
-    }
-
-    int buf_len;
-    int line_len = strlen(line);
-    while (true) {
-        strcpy(buf, *list);
-        buf_len = strlen(buf);
-        if (list[1]) {
-            sprintf(buf + buf_len, "%c ", separator);
-            buf_len += 2;
-        }
-
-        if (line_len + buf_len <= MAX_LINE_LEN) {
-            strcat(line, buf);
-            line_len += buf_len;
-        } else {
-            if (line_len > 1 && line[line_len - 1] == ' ' && line[line_len - 2] == list_separator) {
-                line[line_len - 2] = '\0';
-                fprintf(spoiler_file, "%s\n", line);
-                sprintf(line, "%s%s", spoiler_indent, buf);
-            } else {
-                fprintf(spoiler_file, "%s\n", line);
-                concptr ident2 = "      ";
-                sprintf(line, "%s%s", ident2, buf);
-            }
-
-            line_len = strlen(line);
-        }
-
-        if (!*++list) {
-            break;
-        }
-    }
-
-    fprintf(spoiler_file, "%s\n", line);
-}
-
-/*!
  * @brief アーティファクト情報を出力するためにダミー生成を行う /
  * Hack -- Create a "forged" artifact
  * @param o_ptr 一時生成先を保管するオブジェクト構造体
