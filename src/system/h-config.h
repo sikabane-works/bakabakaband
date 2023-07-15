@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file h-config.h
  * @brief 主に変愚/Zang時追加された基本事項のヘッダーファイル /
  * The most basic "include" file. This file simply includes other low level header files.

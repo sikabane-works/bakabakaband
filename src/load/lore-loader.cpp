@@ -1,4 +1,4 @@
-﻿#include "load/lore-loader.h"
+#include "load/lore-loader.h"
 #include "game-option/runtime-arguments.h"
 #include "load/load-util.h"
 #include "load/old/load-v1-5-0.h"

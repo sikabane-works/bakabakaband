@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "grid/feature.h"
 #include "system/angband.h"

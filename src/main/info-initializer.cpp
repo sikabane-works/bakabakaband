@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file info-initializer.cpp
  * @brief 馬鹿馬鹿蛮怒のゲームデータ解析処理定義
  */

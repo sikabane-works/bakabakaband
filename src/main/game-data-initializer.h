@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 /*!
  * @file game-data-initializer.h
  * @brief 馬鹿馬鹿蛮怒のゲームデータ初期化ヘッダファイル

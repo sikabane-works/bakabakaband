@@ -1,4 +1,4 @@
-﻿#include "view/status-bars-table.h"
+#include "view/status-bars-table.h"
 #include "term/term-color-types.h"
 
 stat_bar stat_bars[MAX_STAT_BARS] = { { TERM_YELLOW, _("マ神", "MG"), _("マ神", "MaGod") }, { TERM_VIOLET, _("幻", "Ha"), _("幻覚", "Halluc") },

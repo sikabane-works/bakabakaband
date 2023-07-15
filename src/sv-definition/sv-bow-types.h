@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 /* The "sval" codes for ItemKindType::BOW (note information in "sval") */
 enum sv_bow_type {

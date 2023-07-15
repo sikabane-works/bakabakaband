@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "system/angband-version.h"
 #include <concepts>

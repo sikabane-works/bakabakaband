@@ -1,4 +1,4 @@
-﻿#include "info-reader/race-reader.h"
+#include "info-reader/race-reader.h"
 #include "alliance/alliance.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/parse-error-types.h"
