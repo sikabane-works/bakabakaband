@@ -494,22 +494,10 @@
     <ClCompile Include="..\..\src\core\scores.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-bolt.cpp">
-      <Filter>mspell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-breath.cpp">
-      <Filter>mspell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-curse.cpp">
-      <Filter>mspell</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\mspell\mspell-damage-calculator.cpp">
       <Filter>mspell</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\mspell\mspell-learn-checker.cpp">
-      <Filter>mspell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-ball.cpp">
       <Filter>mspell</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\mspell\mspell-summon.cpp">
@@ -525,9 +513,6 @@
       <Filter>mspell</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\mspell\mspell-special.cpp">
-      <Filter>mspell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-particularity.cpp">
       <Filter>mspell</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\mspell\assign-monster-spell.cpp">
@@ -809,7 +794,7 @@
     <ClCompile Include="..\..\src\object-enchant\object-ego.cpp">
       <Filter>object-enchant</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\object-enchant\apply-magic.cpp">
+    <ClCompile Include="..\..\src\object-enchant\item-magic-applier.cpp">
       <Filter>object-enchant</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\perception\object-perception.cpp">
@@ -2439,6 +2424,39 @@
     <ClCompile Include="..\..\src\object-enchant\weapon\apply-magic-arrow.cpp">
       <Filter>object-enchant\weapon</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\weapon\melee-weapon-enchanter.cpp">
+      <Filter>object-enchant\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\weapon\apply-magic-hafted.cpp">
+      <Filter>object-enchant\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\weapon\apply-magic-polearm.cpp">
+      <Filter>object-enchant\weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\object-enchant\enchanter-factory.cpp">
+      <Filter>object-enchant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-data.cpp">
+      <Filter>mspell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-attack\abstract-mspell.cpp">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-ball.cpp">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-bolt.cpp">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-breath.cpp">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-curse.cpp">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-particularity.cpp">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -2969,22 +2987,10 @@
     <ClInclude Include="..\..\src\core\scores.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-bolt.h">
-      <Filter>mspell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-breath.h">
-      <Filter>mspell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-curse.h">
-      <Filter>mspell</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\mspell\mspell-damage-calculator.h">
       <Filter>mspell</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mspell\mspell-learn-checker.h">
-      <Filter>mspell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-ball.h">
       <Filter>mspell</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mspell\mspell-summon.h">
@@ -3000,9 +3006,6 @@
       <Filter>mspell</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mspell\mspell-special.h">
-      <Filter>mspell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-particularity.h">
       <Filter>mspell</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mspell\assign-monster-spell.h">
@@ -3368,7 +3371,7 @@
     <ClInclude Include="..\..\src\object-enchant\enchanter-base.h">
       <Filter>object-enchant</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\object-enchant\apply-magic.h">
+    <ClInclude Include="..\..\src\object-enchant\item-magic-applier.h">
       <Filter>object-enchant</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\perception\object-perception.h">
@@ -5304,6 +5307,39 @@
     <ClInclude Include="..\..\src\monster-race\race-wilderness-flags.h">
       <Filter>monster-race</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\weapon\melee-weapon-enchanter.h">
+      <Filter>object-enchant\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\weapon\apply-magic-hafted.h">
+      <Filter>object-enchant\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\weapon\apply-magic-polearm.h">
+      <Filter>object-enchant\weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\object-enchant\enchanter-factory.h">
+      <Filter>object-enchant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-data.h">
+      <Filter>mspell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-attack\abstract-mspell.h">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-ball.h">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-bolt.h">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-breath.h">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-curse.h">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-particularity.h">
+      <Filter>mspell\mspell-attack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />
@@ -5558,6 +5594,9 @@
     </Filter>
     <Filter Include="object-use\quaff">
       <UniqueIdentifier>{5eec2f75-7108-42ad-9aa4-85b1129354db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mspell\mspell-attack">
+      <UniqueIdentifier>{ab971e7b-4a9e-4f88-a557-eb89840abd61}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
