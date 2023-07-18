@@ -217,6 +217,7 @@ enum class MonsterRaceId : int16_t {
     CHEST_MIMIC_04 = 1530,
     CHEST_MIMIC_11 = 1531,
     SHITTO_MASK = 1546,
+    JURAL_MONS = 1583,
     BINZYOU_MUR = 1587,
     PRINCESS_KETHOLDETH = 1590,
 

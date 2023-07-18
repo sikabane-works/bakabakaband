@@ -141,6 +141,13 @@ int AllianceJural::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
+    impression -= r_info[MonsterRaceId::ALIEN_JURAL].r_akills * 5;
+    if (r_info[MonsterRaceId::JURAL_MONS].mob_num == 0) {
+        impression -= 300;
+    }
+    if (r_info[MonsterRaceId::JURAL_WITCHKING].mob_num == 0) {
+        impression -= 1230;
+    }
     return impression;
 }
 
