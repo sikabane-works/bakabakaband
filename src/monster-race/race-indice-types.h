@@ -187,6 +187,8 @@ enum class MonsterRaceId : int16_t {
     MELKO = 1287,
     STOLENMAN = 1288,
     DOKACHAN = 1307,
+    OLDMAN_60TY = 1353,
+    BROTHER_45TH = 1354,
     YENDOR_WIZARD_1 = 1360,
     YENDOR_WIZARD_2 = 1361,
     DOPPIO = 1366,
@@ -215,6 +217,7 @@ enum class MonsterRaceId : int16_t {
     CHEST_MIMIC_04 = 1530,
     CHEST_MIMIC_11 = 1531,
     SHITTO_MASK = 1546,
+    JURAL_MONS = 1583,
     BINZYOU_MUR = 1587,
     PRINCESS_KETHOLDETH = 1590,
 

@@ -141,6 +141,13 @@ int AllianceJural::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
+    impression -= r_info[MonsterRaceId::ALIEN_JURAL].r_akills * 5;
+    if (r_info[MonsterRaceId::JURAL_MONS].mob_num == 0) {
+        impression -= 300;
+    }
+    if (r_info[MonsterRaceId::JURAL_WITCHKING].mob_num == 0) {
+        impression -= 1230;
+    }
     return impression;
 }
 
@@ -245,7 +252,17 @@ int AllianceTheShire::calcImpressionPoint([[maybe_unused]] PlayerType *creature_
 
 int AllianceDokachans::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
-    return 0;
+    auto impression = 0;
+    if (r_info[MonsterRaceId::DOKACHAN].mob_num == 0) {
+        impression -= 1000;
+    }
+    if (r_info[MonsterRaceId::OLDMAN_60TY].mob_num == 0) {
+        impression -= 1000;
+    }
+    if (r_info[MonsterRaceId::BROTHER_45TH].mob_num == 0) {
+        impression -= 1000;
+    }
+    return impression;
 }
 
 bool AllianceDokachans::isAnnihilated()
