@@ -206,6 +206,8 @@ enum class MonsterRaceId : int16_t {
     FIGHTER = 1407,
     HAWK = 1408,
     LION = 1409,
+    FANG_FAMILY = 1440,
+    KING_FANG_FAMILY = 1441,
     BOTTLE_GNOME = 1444,
     EARTH_DESTROYER = 1445,
     OOTSUKI = 1453,

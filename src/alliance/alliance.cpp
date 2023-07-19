@@ -178,10 +178,19 @@ bool AllianceKenohgun::isAnnihilated()
     return r_info[MonsterRaceId::RAOU].mob_num == 0;
 }
 
+bool AllianceFangFamily::isAnnihilated()
+{
+    return r_info[MonsterRaceId::KING_FANG_FAMILY].mob_num == 0;
+}
+
 int AllianceFangFamily::calcImpressionPoint(PlayerType *creature_ptr) const
 {
     int impression = 0;
     impression += Alliance::calcPlayerPower(*creature_ptr, 5, 10);
+    impression -= r_info[MonsterRaceId::FANG_FAMILY].r_akills * 5;
+    if (r_info[MonsterRaceId::KING_FANG_FAMILY].mob_num == 0) {
+        impression -= 300;
+    }
     return impression;
 }
 
