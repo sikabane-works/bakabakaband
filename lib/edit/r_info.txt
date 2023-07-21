@@ -36137,7 +36137,16 @@ F:TAKE_ITEM
 D:$They pollute the environment while calling for environmental protection.
 D:彼らは環境保護を訴えながら環境を汚す。
 
-
+N:1952:M-77 ヤマアラシ
+E:M-77 Trigger
+G:.:w
+I:110:100d12:30:120:0
+W:36:5:0:50:0:0
+F:CHAR_CLEAR
+F:NEVER_MOVE | NEVER_BLOW | FORCE_MAXHP | 
+F:EMPTY_MIND | INVISIBLE | COLD_BLOOD
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:侵入者を防ぐ障壁を張る地雷の一種だという。惑星進出時代の月面戦争に用いられているらしい。
 
 # N: serial number : monster name
 # G: symbol : color
