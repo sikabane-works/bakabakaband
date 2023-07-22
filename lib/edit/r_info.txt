@@ -36148,6 +36148,33 @@ F:EMPTY_MIND | INVISIBLE | COLD_BLOOD
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 D:侵入者を防ぐ障壁を張る地雷の一種だという。惑星進出時代の月面戦争に用いられているらしい。
 
+N:1953:ボール・ライトニング
+E:Ball Lightning
+G:*:r
+I:130:12d6:100:30:0
+W:29:1:0:50:0:0
+B:EXPLODE:ELEC:30d8
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | SELF_LITE_2 |
+F:EMPTY_MIND | AURA_ELEC
+F:IM_ELEC | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
+D:往年のプレインズウォーカーが愛用する、歩く火力だ。
+
+N:1954:『虐殺少女』
+E:The Massacre Girl
+G:p:r
+I:125:80d11:18:70:5
+W:32:5:0:10000:0:0
+B:SLASH:HURT:10d4
+B:SLASH:HURT:13d4
+B:SLASH:HURT:16d4
+B:SLASH:HURT:19d4
+F:UNIQUE | FEMALE | HUMAN
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | ROGUE
+D:ラクドス教団の切り札、道化の意匠の化粧を施した快楽殺人に浸る暗殺者だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
