@@ -365,6 +365,11 @@ int AllianceSuren::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr
     return 0;
 }
 
+bool AllianceSuren::isAnnihilated()
+{
+    return r_info[MonsterRaceId::SUREN].mob_num == 0;
+}
+
 int AllianceFeanorNoldor::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     int impression = 0;
