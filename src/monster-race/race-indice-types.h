@@ -222,5 +222,6 @@ enum class MonsterRaceId : int16_t {
     JURAL_MONS = 1583,
     BINZYOU_MUR = 1587,
     PRINCESS_KETHOLDETH = 1590,
+    SUREN = 1810,
 
 };
