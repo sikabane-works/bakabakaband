@@ -125,24 +125,21 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
             sprintf(nam, _("    %s", "The %s"), name.front().data());
         }
 
-        sprintf(lev, "%d", (int)r_ptr->level);
-        sprintf(rar, "%d", (int)r_ptr->rarity);
-        if (r_ptr->speed >= 110) {
-            sprintf(spd, "+%d", (r_ptr->speed - 110));
-        } else {
-            sprintf(spd, "-%d", (110 - r_ptr->speed));
-        }
-
-        sprintf(ac, "%d", r_ptr->ac);
+        const auto lev = format("%d", r_ptr->level);
+        const auto rar = format("%d", (int)r_ptr->rarity);
+        const auto spd = format("%+d", r_ptr->speed - STANDARD_SPEED);
+        const auto ac = format("%d", r_ptr->ac);
+        std::string hp;
         if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || (r_ptr->hside == 1)) {
-            sprintf(hp, "%d", r_ptr->hdice * r_ptr->hside);
+            hp = format("%d", r_ptr->hdice * r_ptr->hside);
         } else {
-            sprintf(hp, "%dd%d", r_ptr->hdice, r_ptr->hside);
+            hp = format("%dd%d", r_ptr->hdice, r_ptr->hside);
         }
 
-        sprintf(symbol, "%ld", (long)(r_ptr->mexp));
-        sprintf(symbol, "%s '%c'", attr_to_text(r_ptr), r_ptr->d_char);
-        fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n", nam, lev, rar, spd, hp, ac, symbol);
+        const auto symbol = format("%s '%c'", attr_to_text(r_ptr), r_ptr->d_char);
+        fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n",
+            nam, lev.data(), rar.data(), spd.data(), hp.data(),
+            ac.data(), symbol.data());
 
         for (auto i = 1U; i < name.size(); ++i) {
             fprintf(spoiler_file, "    %s\n", name[i].data());

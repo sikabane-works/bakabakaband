@@ -1171,8 +1171,7 @@ static int get_element_realm(PlayerType *player_ptr, int is, int n)
     int os = cs;
     int k;
 
-    char buf[80];
-    sprintf(buf, _("領域を選んで下さい(%c-%c) ('='初期オプション設定): ", "Choose a realm (%c-%c) ('=' for options): "), I2A(0), I2A(n - 1));
+    const auto buf = format(_("領域を選んで下さい(%c-%c) ('='初期オプション設定): ", "Choose a realm (%c-%c) ('=' for options): "), I2A(0), I2A(n - 1));
 
     while (true) {
         display_realm_cursor(os, n, TERM_WHITE);
