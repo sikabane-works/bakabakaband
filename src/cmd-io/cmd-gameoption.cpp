@@ -655,8 +655,7 @@ void do_cmd_options_aux(PlayerType *player_ptr, game_option_types page, concptr 
 {
     char ch;
     int i, k = 0, n = 0, l;
-    int opt[MAIN_TERM_MIN_ROWS];
-    char buf[80];
+    int opt[MAIN_TERM_MIN_ROWS]{};
     bool browse_only = (page == OPT_PAGE_BIRTH) && w_ptr->character_generated && (!w_ptr->wizard || !allow_debug_opts);
 
     for (i = 0; i < MAIN_TERM_MIN_ROWS; i++) {
@@ -688,9 +687,9 @@ void do_cmd_options_aux(PlayerType *player_ptr, game_option_types page, concptr 
             const auto reply = *option_info[opt[i]].o_var ? _("はい  ", "yes") : _("いいえ", "no ");
             const auto label = format("%-48s: %s (%.19s)", option_info[opt[i]].o_desc, reply, option_info[opt[i]].o_text);
             if ((page == OPT_PAGE_AUTODESTROY) && i > 2) {
-                c_prt(a, buf, i + 5, 0);
+                c_prt(a, label, i + 5, 0);
             } else {
-                c_prt(a, buf, i + 2, 0);
+                c_prt(a, label, i + 2, 0);
             }
         }
 
