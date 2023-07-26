@@ -36187,7 +36187,7 @@ F:UNIQUE |
 F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | ALLIANCE_ODIO
 F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | EMPTY_MIND
-D:魔王オディオの傀儡だ。時空の狭間に現れる脚のない騎士の姿をしている。
+D:時空の狭間に現れる魔王オディオの傀儡だ。脚のない騎士の姿をしている。
 
 N:1956:メタルギアRAY
 E:Metal Gear RAY
@@ -36241,6 +36241,41 @@ S:BR_FORC
 A:144:100
 D:妖刀村正に宿った怨念が剣士の形を取ったものだ。
 
+N:1959:死兆星
+E:Star of death
+G:*:r
+I:120:10d7:25:200:5
+W:55:10:0:66666:0:0
+F:NEVER_BLOW | NEVER_MOVE | NO_SLEEP | NO_FEAR | NO_CONF | CAN_FLY
+F:IM_COLD | IM_FIRE | IM_POIS | IM_ACID | ONLY_ITEM | DROP_60 | NONLIVING
+S:1_IN_4
+S:HAND_DOOM
+D:天に浮かび、北斗七星の横で死の兆しを示す星だ。これが相手に見えないと戦わないというヘタレが居るらしい。
+
+N:1960:希望の天使『アヴァシン』
+E:Avacyn, Angel of Hope
+G:A:w
+I:130:50d100:40:140:10
+W:63:3:0:30000:0:0
+B:HIT:HURT:6d12
+B:HIT:HURT:6d12
+B:HIT:HURT:10d10
+B:HIT:HURT:10d10
+F:UNIQUE | FEMALE | NO_FEAR | GOOD | REFLECTING |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD | 
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE
+F:NO_CONF | NO_SLEEP | SELF_LITE_2 | ANGEL
+S:1_IN_4 | 
+S:TELE_TO | BLIND | HOLD | HASTE
+S:BO_MANA | BA_FIRE
+S:BR_MANA | INVULNER
+S:S_ANGEL | PSY_SPEAR | HEAL | BA_LITE
+D:アヴァシンは、吸血鬼の存在によりイニストラードの生態系の崩壊を恐れた
+D:吸血鬼のプレインズウォーカー、ソリンが大きな代価をもって生み出した。
+D:彼女は人類の守護者としてその崇拝の対象、希望の象徴になりながら、
+D:長らく時空の外敵からもイニストラードを守り続けてきたのだ。
 
 # N: serial number : monster name
 # G: symbol : color
