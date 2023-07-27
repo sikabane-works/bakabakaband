@@ -5,7 +5,6 @@
 #include "inventory/inventory-slot-types.h"
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-weapon.h"
-#include "object/object-flags.h"
 #include "object/object-info.h"
 #include "object/object-mark-types.h"
 #include "object/object-stack.h"
@@ -376,7 +375,7 @@ int16_t store_item_to_inventory(PlayerType *player_ptr, ItemEntity *o_ptr)
  */
 bool check_get_item(ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
+    auto flags = o_ptr->get_flags();
     return !flags.has(TR_NEVER_MOVE);
 }
 
