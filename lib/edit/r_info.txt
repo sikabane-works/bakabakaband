@@ -29943,7 +29943,7 @@ B:HIT:SUPERHURT:1d14
 B:HIT:SUPERHURT:1d14
 F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | UNIQUE
 F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
-F:NO_FEAR | NO_CONF | HAS_LITE_1 | QUANTUM | KARATEKA
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | KARATEKA
 D:表面的にはオリンピック選手として品行方正を努めるがその実には、
 D:暴君的なまでの強さへの追及を抱く柔道の使い手だ。
 D:彼はスポーツではなく純粋なる格闘技としての柔道を求めている。
@@ -36327,6 +36327,63 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:ヴィクトリア朝ロンドンの迷宮のような下水道を潜り、
 D:劣悪で危険な環境下に残された金属物を命がけで回収してきた労働者だ。
 
+N:1964:アックスアーマー
+E:Axe armor
+G:p:o
+I:109:20d30:25:140:10
+W:25:3:0:1500:0:0
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:SHOOT:HURT:10d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | RES_CHAO | MALE | UNDEAD |
+F:ONLY_ITEM | DROP_2D2 | NO_FEAR | NO_CONF
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_COLD | IM_POIS | HAS_LITE_1 |
+S:1_IN_2 | SHOOT
+D:混沌の産物、悪魔城を徘徊する重装甲の騎士だ。
+
+N:1965:プロレスラー『船田幸司』
+E:Kouji Funada, Wrestler of World Prowress
+G:p:u
+I:113:30d75:25:90:7
+W:26:1:0:1000:0:0
+B:CRUSH:SUPERHURT:1d18
+B:HIT:SUPERHURT:1d20
+B:HIT:SUPERHURT:1d20
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | UNIQUE
+F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | KARATEKA
+D:ワールド・プロレスのアイアン木場に育てられた若手の一人だ。
+D:生まれの貧しさを馬鹿にされて育ってきた悲しい過去を持ち、
+D:プロレスこそを支えに戦ってきた誇りを持っている。
+
+N:1966:壊し屋『鬼川平蔵』
+E:Heizo Onikawa, the Crasher
+G:p:u
+I:118:30d55:25:100:7
+W:26:1:0:1200:0:0
+B:HIT:SUPERHURT:1d16
+B:HIT:SUPERHURT:1d16
+B:HIT:SUPERHURT:1d16
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | UNIQUE
+F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | KARATEKA
+D:ワールド・プロレスの裏稼業として「壊し屋」を務めてきた技巧派レスラーだ。
+D:その緻密な技が若手当時に理解されず人気を得られなかった悲しい過去を持つ。
+
+N:1967:凶獣『左門清正』
+E:Kiyomasa Samon, the Vile Beast
+G:p:u
+I:113:30d80:25:100:7
+W:27:1:0:1000:0:0
+B:CRUSH:SUPERHURT:1d14
+B:HIT:SUPERHURT:1d24
+B:HIT:SUPERHURT:1d24
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | UNIQUE
+F:DROP_60 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | CAN_SWIM
+F:NO_FEAR | NO_CONF | HAS_LITE_1 | KARATEKA
+D:ワールド・プロレスの壊し屋鬼川の弟子にしてその実力を超えた「凶獣」だ。
 
 # N: serial number : monster name
 # G: symbol : color
