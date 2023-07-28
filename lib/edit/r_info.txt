@@ -36327,6 +36327,22 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:ヴィクトリア朝ロンドンの迷宮のような下水道を潜り、
 D:劣悪で危険な環境下に残された金属物を命がけで回収してきた労働者だ。
 
+N:1964:アックスアーマー
+E:Axe armor
+G:p:o
+I:109:20d30:25:140:10
+W:25:3:0:1500:0:0
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:HIT:HURT:3d6
+B:SHOOT:HURT:10d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | RES_CHAO | MALE | UNDEAD |
+F:ONLY_ITEM | DROP_2D2 | NO_FEAR | NO_CONF
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_COLD | IM_POIS | HAS_LITE_1 |
+S:1_IN_2 | SHOOT
+D:混沌の産物、悪魔城を徘徊する重装甲の騎士だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
