@@ -33,3 +33,4 @@ ProcessResult effect_monster_dirt(PlayerType *player_ptr, EffectMonster *em_ptr)
 ProcessResult effect_monster_stungun(PlayerType *player_ptr, EffectMonster *em_ptr);
 ProcessResult effect_monster_void(PlayerType *player_ptr, EffectMonster *em_ptr);
 ProcessResult effect_monster_abyss(PlayerType *player_ptr, EffectMonster *em_ptr);
+ProcessResult effect_monster_meteor(PlayerType *player_ptr, EffectMonster *em_ptr);
