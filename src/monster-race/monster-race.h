@@ -12,6 +12,7 @@ class MonsterRace {
 public:
     MonsterRace(MonsterRaceId r_idx);
 
+    static MonsterRaceId empty_id();
     static MonsterRaceId pick_one_at_random();
 
     bool is_valid() const;
@@ -20,5 +21,5 @@ public:
     int calc_power() const;
 
 private:
-    const MonsterRaceId r_idx;
+    MonsterRaceId r_idx;
 };
