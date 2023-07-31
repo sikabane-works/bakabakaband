@@ -36413,6 +36413,22 @@ D:宮本武蔵を師と仰ぎ、強靭な肉体と一撃必殺を信条に己の
 D:かつて監禁された知人を救うために単身ヤクザの事務所に乗り込み２３名の相手を無傷で倒したが、
 D:そのために過剰防衛として警察に逮捕された悲しき過去を持つ。
 
+N:1970:悲しみの棘『アリオーシュ』
+E:Arioch, Sorrow's Splinter
+G:h:r
+I:126:40d29:25:65:10
+W:39:3:0:7000:0:0
+B:SLASH:HURT:4d10
+B:SLASH:HURT:5d10
+B:SLASH:HURT:6d10
+F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
+F:IM_FIRE | IM_COLD | NO_SLEEP | NO_CONF | NO_STUN | EVIL | WEIRD_MIND
+F:FEMALE | DROP_CORPSE | DROP_SKELETON | ELF | RANGER | FORCE_MAXHP
+S:1_IN_3 |
+S:BA_FIRE | BA_COLD
+D:帝国軍に故郷を襲撃され、幼い実子を失ったために狂ったエルフの母親だ。
+D:その倒錯は、幼子を己が胎の内で守るために幼子を喰らうという名状しがたい域に達している。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
