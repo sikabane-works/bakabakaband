@@ -36471,6 +36471,28 @@ S:1_IN_3 |
 S:SHOOT | ROCKET
 D:月面の過酷な環境で争うために作られたパワードスーツをまとう兵士だ。
 
+N:1974:極道兵器『岩鬼将造』
+E:Syozo Iwaki, the Yakuza Weapon
+G:p:R
+I:140:40d100:50:200:0
+W:70:2:0:40000:0:0
+B:KICK:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d8
+B:KICK:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d8
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | WEIRD_MIND | YAKUZA
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE |
+F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GREAT |
+F:OPEN_DOOR | POWERFUL | MOVE_BODY | CAN_SWIM |
+F:EVIL | IM_ACID | IM_FIRE | IM_COLD | IM_POIS | 
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
+F:RES_TELE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR
+S:1_IN_3 | 
+S:ROCKET | HEAL | BLINK | HASTE | BR_FIRE | BR_NETH
+D:これはあの常識外れのヤクザが虚無った世界の果てに
+D:肉体の100％全てを機械に変えた真の姿だ！だがその全ての武装よりもその狂気を恐れよ！
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
