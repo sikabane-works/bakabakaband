@@ -36524,6 +36524,22 @@ F:EMPTY_MIND | NEVER_MOVE
 F:NO_CONF | NO_SLEEP | NO_FEAR | RES_TELE | NASTY
 D:それは種から育てた大切なものだ。あ（察し）
 
+N:1977:壁殴り代行員
+E:Agent for punching a wall
+G:p:s
+I:110:30d10:20:50:80
+W:31:2:0:800:0:0
+B:PUNCH:SUPERHURT:6d10
+B:PUNCH:SUPERHURT:6d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | RAND_50 | KILL_WALL
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:HUMAN | RES_SOUN | NO_CONF | NO_SLEEP
+D:クソゲーに、あるいは近所づきあいに怒りが満ちた時に殴れる壁がない、
+D:殴れるだけの筋力がないあなたの代わりに壁を殴ってくれる
+D:頼もしいストレス社会の味方だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
