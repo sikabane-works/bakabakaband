@@ -357,11 +357,11 @@ bool ScrollReadExecutor::read()
         this->ident = true;
         break;
     case SV_SCROLL_ACQUIREMENT:
-        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, 1, true, false, false);
+        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, this->player_ptr->lev / 12 + 1, true, false, false);
         this->ident = true;
         break;
     case SV_SCROLL_STAR_ACQUIREMENT:
-        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, randint1(2) + 1, true, false, false);
+        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, this->player_ptr->lev / 6 + 3, true, false, false);
         this->ident = true;
         break;
     case SV_SCROLL_FIRE:
