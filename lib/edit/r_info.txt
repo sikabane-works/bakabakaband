@@ -36515,6 +36515,32 @@ D:火炎王はその中でも良くも悪しくも表裏なく、洒脱にして
 D:彼は親しい従者や、厭世ゆえに変貌した旧友には深い情愛や執着の念を抱くが、
 D:その念を満たすためには、一つの都市を滅ぼす行為も、万人を殺める行為も躊躇わない。
 
+N:1976:植木鉢くん
+E:plant pot
+G:#:G
+I:110:3d3:1000:20:3
+W:5:2:0:50:0:0
+F:EMPTY_MIND | NEVER_MOVE
+F:NO_CONF | NO_SLEEP | NO_FEAR | RES_TELE | NASTY
+D:それは種から育てた大切なものだ。あ（察し）
+
+N:1977:壁殴り代行員
+E:Agent for punching a wall
+G:p:s
+I:110:30d10:20:50:80
+W:31:2:0:800:0:0
+B:PUNCH:SUPERHURT:6d10
+B:PUNCH:SUPERHURT:6d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | RAND_50 | KILL_WALL
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:HUMAN | RES_SOUN | NO_CONF | NO_SLEEP
+D:クソゲーに、あるいは近所づきあいに怒りが満ちた時に殴れる壁がない、
+D:殴れるだけの筋力がないあなたの代わりに壁を殴ってくれる
+D:頼もしいストレス社会の味方だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
