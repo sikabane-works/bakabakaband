@@ -36540,6 +36540,20 @@ D:クソゲーに、あるいは近所づきあいに怒りが満ちた時に殴
 D:殴れるだけの筋力がないあなたの代わりに壁を殴ってくれる
 D:頼もしいストレス社会の味方だ。
 
+N:1978:オークの弓使い
+E:Orcish bowmasters
+G:o:b
+I:120:40d10:50:120:10
+W:34:3:0:4500:0:0
+B:SHOOT:HURT:15d6
+B:HIT:HURT:5d5
+B:HIT:HURT:5d5
+F:PREVENT_SUDDEN_MAGIC | DROP_1D2 | SMART | DROP_CORPSE | DROP_SKELETON |
+F:ORC | EVIL | RES_DARK | RANGER
+S:1_IN_2 |
+S:SHOOT | S_KIN | HOLD | BLIND | SHRIEK
+D:メルドールの東方ウルク諸侯が用いる斥候にして散兵たちだ。
+D:数々の術を操り、太守の軍団を戦線に導くその手練は森エルフのレンジャーを凌ぐ。
 
 # N: serial number : monster name
 # G: symbol : color
