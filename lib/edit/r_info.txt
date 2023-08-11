@@ -36573,6 +36573,23 @@ S:1_IN_3 |
 S:BR_FIRE | BO_FIRE
 D:ストーンファング坑道の奥に潜み、炎に身を覆うデーモンだ。
 
+N:1980:ストームファングの『竜の神』
+E:The Dragon God of Stonefang
+G:D:R
+I:120:76d60:30:150:40
+W:58:3:0:26000:0:0
+B:PUNCH:HURT:10d12
+B:PUNCH:FIRE:12d15
+B:PUNCH:HURT:10d12
+B:PUNCH:FIRE:12d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | DROP_CORPSE | SELF_LITE_1
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | SELF_LITE_2 | UNIQUE
+F:BASH_DOOR | POWERFUL | MOVE_BODY | AURA_FIRE |
+F:EVIL | DEMON | DRAGON | IM_FIRE | NO_CONF | NO_SLEEP | RIDING
+S:1_IN_4 | BLIND | CONF | SCARE | BR_FIRE
+D:ストーンファングの古代人が信仰していた竜神の姿がそのままボーレタリアの災厄にあって、
+D:デーモンと化したものだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
