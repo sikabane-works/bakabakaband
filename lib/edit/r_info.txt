@@ -36556,6 +36556,23 @@ S:1_IN_5 | BR_INER | BA_FIRE
 D:色の無い霧に包まれたボーレタリアでかつて栄えていた鉱脈、
 D:ストーンファング坑道に潜み始めた蜘蛛のデーモンだ。
 
+N:1979:『炎に潜むもの』
+E:Flamelurker
+G:U:R
+I:120:16d100:30:50:10
+W:40:3:0:10000:0:0
+B:PUNCH:FIRE:20d6
+B:PUNCH:FIRE:20d6
+B:PUNCH:FIRE:20d6
+B:PUNCH:FIRE:20d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SELF_LITE_1 |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | 
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP | UNIQUE
+S:1_IN_3 | 
+S:BR_FIRE | BO_FIRE
+D:ストーンファング坑道の奥に潜み、炎に身を覆うデーモンだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
