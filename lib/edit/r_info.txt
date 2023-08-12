@@ -36590,6 +36590,54 @@ S:1_IN_4 | BLIND | CONF | SCARE | BR_FIRE
 D:ストーンファングの古代人が信仰していた竜神の姿がそのままボーレタリアの災厄にあって、
 D:デーモンと化したものだ。
 
+N:1981:OD-10 マザーCOM『コギトエルゴスム』
+E:MUR-TH-UR Matrix of OD-10 Decimus
+G:U:D
+I:115:20d66:100:100:15
+W:42:3:0:10000:0:0
+B:ENGULF:HURT:10d5
+B:GAZE:EXP_10:1d40
+B:GAZE:EXP_10:1d40
+R:1982:8d1
+F:SPAWN_CREATURE_3_IN_16_1982
+F:UNIQUE | RES_CHAO | IM_FIRE | IM_COLD | IM_POIS | IM_ACID | RES_NETH |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_2D2 | | DROP_GREAT | NONLIVING
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:ALLIANCE_ODIO | REGENERATE | NEVER_MOVE
+S:1_IN_3 | MIND_BLAST | DRAIN_MANA | SLOW | HASTE | HEAL 
+D:「宇宙輸送船コギトエルゴスム号の秩序と調和を保つこと」を命令された
+D:メインコンピュータだ。しかし、船員の人間達に絶え間なく
+D:秩序と調和を乱され続けてきた彼は、命令を果たすことができぬために憎悪に駆られ、
+D:遂に船員達を全てを抹殺するという選択を取った。
+
+N:1982:スタビライザー
+E:Stabilizer
+G:*:b
+I:110:10d12:30:120:0
+W:42:255:0:50:0:0
+F:NEVER_MOVE | NEVER_BLOW | FORCE_MAXHP | 
+F:EMPTY_MIND | INVISIBLE | COLD_BLOOD
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:OD-10システム全体を維持するための補助システムだ。
+
+N:1983:クレイジー・バンチの長『Ｏ・ディオ』
+E:O.Dio, Leader of Crazy Bunch
+G:p:u
+I:110:20d100:50:90:10
+W:40:3:0:9000:0:0
+B:PUNCH:HURT:2d16
+B:PUNCH:HURT:2d16
+B:SHOOT:HURT:30d20
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | ANIMAL
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP
+F:DROP_2D2 | DROP_1D2 | DROP_GOOD | ONLY_ITEM | CAN_SWIM | ALLIANCE_ODIO
+F:EVIL
+S:1_IN_3 | SHOOT | BA_FIRE
+D:西部の無法集団、クレイジー・バンチの長だ。
+D:その正体は、開拓時代に繰り返された暴挙の中で産まれた憎悪の産物だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
