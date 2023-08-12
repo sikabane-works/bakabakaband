@@ -332,6 +332,9 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
         }
     }
 
+    level_width = std::max(MIN_WID_MULTIPLE, level_width);
+    level_height = std::max(MIN_HGT_MULTIPLE, level_height);
+
     floor_ptr->height = level_height * SCREEN_HGT;
     floor_ptr->width = level_width * SCREEN_WID;
     panel_row_min = floor_ptr->height;

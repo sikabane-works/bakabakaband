@@ -52,9 +52,6 @@ constexpr int MIN_HGT_MULTIPLE = 15;
 /*! @brief 汎用ダンジョン最小横倍率 */
 constexpr int MIN_WID_MULTIPLE = 15;
 
-/*! @brief クソデカダンジョン生成率(1/N) */
-constexpr int HUGE_DUNGEON_RATE = 10;
-
 /*! @brief 大型ダンジョン生成率(1/N) */
 constexpr int LARGE_DUNGEON_RATE = 4;
 
