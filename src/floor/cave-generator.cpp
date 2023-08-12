@@ -243,12 +243,12 @@ static bool make_one_floor(PlayerType *player_ptr, dun_data_type *dd_ptr, dungeo
     }
 
     make_doors(player_ptr, dd_ptr, dt_ptr);
-    if (!alloc_stairs(player_ptr, feat_down_stair, damroll(std::max(floor_ptr->width * floor_ptr->height / SCREEN_WID / SCREEN_HGT / 20, 1), 3), 3)) {
+    if (!alloc_stairs(player_ptr, feat_down_stair, damroll(std::max(floor_ptr->width * floor_ptr->height / 4000, 1), 3), 3)) {
         *dd_ptr->why = _("下り階段生成に失敗", "Failed to generate down stairs.");
         return false;
     }
 
-    if (!alloc_stairs(player_ptr, feat_up_stair, damroll(std::max(floor_ptr->width * floor_ptr->height / SCREEN_WID / SCREEN_HGT / 20, 1), 3), 3)) {
+    if (!alloc_stairs(player_ptr, feat_up_stair, damroll(std::max(floor_ptr->width * floor_ptr->height / 4000, 1), 3), 3)) {
         *dd_ptr->why = _("上り階段生成に失敗", "Failed to generate up stairs.");
         return false;
     }
