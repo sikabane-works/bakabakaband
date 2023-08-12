@@ -717,12 +717,7 @@ void display_monster_launching(PlayerType *player_ptr, lore_type *lore_ptr)
         }
     }
 
-    /* When full blows, use a first damage */
-    if (n == max_blows) {
-        p = 0;
-    }
-
-    if (p < 0) {
+    if (p == max_blows || p < 0) {
         return;
     }
 
