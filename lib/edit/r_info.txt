@@ -36621,6 +36621,23 @@ F:EMPTY_MIND | INVISIBLE | COLD_BLOOD
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 D:OD-10システム全体を維持するための補助システムだ。
 
+N:1983:クレイジー・バンチの長『Ｏ・ディオ』
+E:O.Dio, Leader of Crazy Bunch
+G:p:u
+I:110:20d100:50:90:10
+W:40:3:0:9000:0:0
+B:PUNCH:HURT:2d16
+B:PUNCH:HURT:2d16
+B:SHOOT:HURT:30d20
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | ANIMAL
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP
+F:DROP_2D2 | DROP_1D2 | DROP_GOOD | ONLY_ITEM | CAN_SWIM | ALLIANCE_ODIO
+F:EVIL
+S:1_IN_3 | SHOOT | BA_FIRE
+D:西部の無法集団、クレイジー・バンチの長だ。
+D:その正体は、開拓時代に繰り返された暴挙の中で産まれた憎悪の産物だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
