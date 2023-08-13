@@ -300,52 +300,48 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     DUNGEON_IDX d_idx = floor_ptr->dungeon_idx;
-    if ((always_small_levels || ironman_small_levels || (one_in_(SMALL_LEVEL) && small_levels) || d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER) || d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) && d_info[d_idx].flags.has_not(DungeonFeatureType::BIG)) {
-        int level_height;
-        int level_width;
-        if (d_info[d_idx].flags.has(DungeonFeatureType::ALWAY_MAX_SIZE)) {
-            level_height = MAX_HGT / SCREEN_HGT;
-            level_width = MAX_WID / SCREEN_WID;
-        } else if (d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
-            level_height = MIN_HGT_MULTIPLE;
-            level_width = MIN_WID_MULTIPLE;
-        } else if (d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {
-            level_height = MIN_HGT_MULTIPLE * 2;
-            level_width = MIN_WID_MULTIPLE * 2;
-        } else {
-            if (one_in_(HUGE_DUNGEON_RATE)) {
-                level_height = randint1(MAX_HGT / SCREEN_HGT);
-                level_width = randint1(MAX_WID / SCREEN_WID);
-            } else if (one_in_(LARGE_DUNGEON_RATE)) {
-                level_height = randint1(MAX_HGT / SCREEN_HGT / 2);
-                level_width = randint1(MAX_WID / SCREEN_WID / 2);
-            } else {
-                level_height = randint1(MAX_HGT / SCREEN_HGT / 3);
-                level_width = randint1(MAX_WID / SCREEN_WID / 3);
-            }
-            bool is_first_level_area = true;
-            bool is_max_area = (level_height == MAX_HGT / SCREEN_HGT) && (level_width == MAX_WID / SCREEN_WID);
-            while (is_first_level_area || is_max_area) {
-                level_height = randint1(MAX_HGT / SCREEN_HGT);
-                level_width = randint1(MAX_WID / SCREEN_WID);
-                is_first_level_area = false;
-                is_max_area = (level_height == MAX_HGT / SCREEN_HGT) && (level_width == MAX_WID / SCREEN_WID);
-            }
-        }
-
-        floor_ptr->height = level_height * SCREEN_HGT;
-        floor_ptr->width = level_width * SCREEN_WID;
-        panel_row_min = floor_ptr->height;
-        panel_col_min = floor_ptr->width;
-
-        msg_format_wizard(
-            player_ptr, CHEAT_DUNGEON, _("小さなフロア: X:%d, Y:%d", "A 'small' dungeon level: X:%d, Y:%d."), floor_ptr->width, floor_ptr->height);
+    int level_height;
+    int level_width;
+    if (d_info[d_idx].flags.has(DungeonFeatureType::ALWAY_MAX_SIZE)) {
+        level_height = MAX_HGT / SCREEN_HGT;
+        level_width = MAX_WID / SCREEN_WID;
+    } else if (always_small_levels || ironman_small_levels || (small_levels && one_in_(SMALL_LEVEL)) || d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
+        level_height = MIN_HGT_MULTIPLE;
+        level_width = MIN_WID_MULTIPLE;
+    } else if (d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {
+        level_height = MIN_HGT_MULTIPLE * 2;
+        level_width = MIN_WID_MULTIPLE * 2;
     } else {
-        floor_ptr->height = MAX_HGT;
-        floor_ptr->width = MAX_WID;
-        panel_row_min = floor_ptr->height;
-        panel_col_min = floor_ptr->width;
+        if (one_in_(HUGE_DUNGEON_RATE)) {
+            level_height = randint1(MAX_HGT / SCREEN_HGT);
+            level_width = randint1(MAX_WID / SCREEN_WID);
+        } else if (one_in_(LARGE_DUNGEON_RATE) || d_info[d_idx].flags.has(DungeonFeatureType::BIG)) {
+            level_height = randint1(MAX_HGT / SCREEN_HGT / 2);
+            level_width = randint1(MAX_WID / SCREEN_WID / 2);
+        } else {
+            level_height = randint1(MAX_HGT / SCREEN_HGT / 3);
+            level_width = randint1(MAX_WID / SCREEN_WID / 3);
+        }
+        bool is_first_level_area = true;
+        bool is_max_area = (level_height == MAX_HGT / SCREEN_HGT) && (level_width == MAX_WID / SCREEN_WID);
+        while (is_first_level_area || is_max_area) {
+            level_height = randint1(MAX_HGT / SCREEN_HGT);
+            level_width = randint1(MAX_WID / SCREEN_WID);
+            is_first_level_area = false;
+            is_max_area = (level_height == MAX_HGT / SCREEN_HGT) && (level_width == MAX_WID / SCREEN_WID);
+        }
     }
+
+    level_width = std::max(MIN_WID_MULTIPLE, level_width);
+    level_height = std::max(MIN_HGT_MULTIPLE, level_height);
+
+    floor_ptr->height = level_height * SCREEN_HGT;
+    floor_ptr->width = level_width * SCREEN_WID;
+    panel_row_min = floor_ptr->height;
+    panel_col_min = floor_ptr->width;
+
+    msg_format_wizard(
+        player_ptr, CHEAT_DUNGEON, _("小さなフロア: X:%d, Y:%d", "A 'small' dungeon level: X:%d, Y:%d."), floor_ptr->width, floor_ptr->height);
 
     return cave_gen(player_ptr, why);
 }

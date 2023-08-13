@@ -1,4 +1,5 @@
-﻿
+﻿#pragma once
+
 /*!
  * @brief ベースアイテム生成階層が加算される確率
  * @details
@@ -54,11 +55,12 @@
  */
 #define DUN_UNUSUAL 250 /*!< 通常ではない部屋が生成される基本確率(レベル/定数) / Level/chance of unusual room (was 200) */
 #define DUN_DEST 18 /*!< 破壊地形がフロアに発生する基本確率(1/定数) / 1/chance of having a destroyed level */
-#define SMALL_LEVEL 3 /*!< 小さいフロアの生成される基本確率(1/定数) / 1/chance of smaller size (3) */
+#define SMALL_LEVEL 10 /*!< 小さいフロアの生成される基本確率(1/定数) / 1/chance of smaller size (3) */
 #define EMPTY_LEVEL 24 /*!< アリーナレベル(外壁のないフロア)の生成される基本確率(1/定数) / 1/chance of being 'empty' (15) */
 #define LAKE_LEVEL 24 /*!< 川や湖のあるフロアの生成される確率(1/定数) / 1/chance of being a lake on the level */
 #define DARK_EMPTY 5 /*!< フロア全体が暗い可能性の基本確率(1/定数) / 1/chance of on_defeat_arena_monster level NOT being lit (2) */
 #define DUN_CAVERN 20 /*!< 洞窟状のダンジョンが生成される基本確率(1/定数) / 1/chance of having a cavern level */
+constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生成率(1/N) */
 
 /*
  * Dungeon streamer generation values

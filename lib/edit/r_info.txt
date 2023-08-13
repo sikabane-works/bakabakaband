@@ -36413,6 +36413,232 @@ D:宮本武蔵を師と仰ぎ、強靭な肉体と一撃必殺を信条に己の
 D:かつて監禁された知人を救うために単身ヤクザの事務所に乗り込み２３名の相手を無傷で倒したが、
 D:そのために過剰防衛として警察に逮捕された悲しき過去を持つ。
 
+N:1970:悲しみの棘『アリオーシュ』
+E:Arioch, Sorrow's Splinter
+G:h:r
+I:126:40d29:25:65:10
+W:39:3:0:7000:0:0
+B:SLASH:HURT:4d10
+B:SLASH:HURT:5d10
+B:SLASH:HURT:6d10
+F:BASH_DOOR | OPEN_DOOR | UNIQUE | DROP_2D2 | DROP_GOOD
+F:IM_FIRE | IM_COLD | NO_SLEEP | NO_CONF | NO_STUN | EVIL | WEIRD_MIND
+F:FEMALE | DROP_CORPSE | DROP_SKELETON | ELF | RANGER | FORCE_MAXHP
+S:1_IN_3 |
+S:BA_FIRE | BA_COLD
+D:帝国軍に故郷を襲撃され、幼い実子を失ったために狂ったエルフの母親だ。
+D:その倒錯は、幼子を己が胎の内で守るために幼子を喰らうという名状しがたい域に達している。
+
+N:1971:SS-80 モノケロス
+E:SS-80 Atlas
+G:{:U
+I:102:50d10:30:70:10
+W:54:2:0:13000:0:0
+B:SHOOT:HURT:60d5
+F:NEVER_MOVE | COLD_BLOOD
+F:EMPTY_MIND | NONLIVING
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+S:1_IN_1
+S:SHOOT
+D:月面戦争に用いられた大口径の野砲だ。
+
+N:1972:GX-77 ムンクス
+E:GX-77 Charlie
+G:p:B
+I:110:8d30:40:80:60
+W:36:2:0:1200:0:0
+B:HIT:HURT:2d4
+B:HIT:HURT:2d4
+B:HIT:HURT:2d4
+B:SHOOT:HURT:16d4
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | SMART
+F:DROP_CORPSE | DROP_SKELETON | CAN_SWIM | FRIENDS
+S:1_IN_2 |
+S:SHOOT
+D:月面の過酷な環境で争うために作られたパワードスーツをまとう兵士だ。
+
+N:1973:GX-87 ダーベック
+E:GX-87 Kilroy
+G:p:B
+I:108:13d30:40:120:60
+W:36:2:0:1200:0:0
+B:HIT:HURT:4d4
+B:HIT:HURT:4d4
+B:HIT:HURT:4d4
+B:SHOOT:HURT:24d4
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | SMART
+F:DROP_CORPSE | DROP_SKELETON | CAN_SWIM | FRIENDS
+S:1_IN_3 |
+S:SHOOT | ROCKET
+D:月面の過酷な環境で争うために作られたパワードスーツをまとう兵士だ。
+
+N:1974:極道兵器『岩鬼将造』
+E:Syozo Iwaki, the Yakuza Weapon
+G:p:R
+I:140:40d100:50:200:0
+W:70:2:0:40000:0:0
+B:KICK:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d8
+B:KICK:SUPERHURT:7d10
+B:PUNCH:SUPERHURT:7d8
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | WEIRD_MIND | YAKUZA
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE |
+F:ONLY_ITEM | DROP_1D2 | DROP_3D2 | DROP_GREAT |
+F:OPEN_DOOR | POWERFUL | MOVE_BODY | CAN_SWIM |
+F:EVIL | IM_ACID | IM_FIRE | IM_COLD | IM_POIS | 
+F:RES_LITE | RES_DARK | RES_NETH | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
+F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
+F:RES_TELE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR
+S:1_IN_3 | 
+S:ROCKET | HEAL | BLINK | HASTE | BR_FIRE | BR_NETH
+D:これはあの常識外れのヤクザが虚無った世界の果てに
+D:肉体の100％全てを機械に変えた真の姿だ！だがその全ての武装よりもその狂気を恐れよ！
+
+N:1975:炎のロードデアボリカ『火炎王』
+E:Kaenoh, Lord Diabolique of Fire
+G:U:R
+I:132:50d100:30:165:10
+W:65:2:0:45000:0:0
+B:PUNCH:HURT:12d12
+B:PUNCH:HURT:12d12
+B:HIT:FIRE:12d12
+B:HIT:FIRE:16d12
+F:UNIQUE | MALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | AURA_FIRE
+F:EVIL | DEMON | IM_ACID | IM_FIRE | RES_NETH | RES_SOUN | IM_ELEC | 
+F:IM_POIS | NO_CONF | NO_SLEEP | POWERFUL |
+S:1_IN_3 | 
+S:BA_FIRE | BR_FIRE | BO_PLAS
+D:退廃にして残酷なる世界の支配者デアボリカを統べる五大貴族の一人だ。
+D:火炎王はその中でも良くも悪しくも表裏なく、洒脱にして直情な振る舞いで知られる。
+D:彼は親しい従者や、厭世ゆえに変貌した旧友には深い情愛や執着の念を抱くが、
+D:その念を満たすためには、一つの都市を滅ぼす行為も、万人を殺める行為も躊躇わない。
+
+N:1976:植木鉢くん
+E:plant pot
+G:#:G
+I:110:3d3:1000:20:3
+W:5:2:0:50:0:0
+F:EMPTY_MIND | NEVER_MOVE
+F:NO_CONF | NO_SLEEP | NO_FEAR | RES_TELE | NASTY
+D:それは種から育てた大切なものだ。あ（察し）
+
+N:1977:壁殴り代行員
+E:Agent for punching a wall
+G:p:s
+I:110:30d10:20:50:80
+W:31:2:0:800:0:0
+B:PUNCH:SUPERHURT:6d10
+B:PUNCH:SUPERHURT:6d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | RAND_50 | KILL_WALL
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:HUMAN | RES_SOUN | NO_CONF | NO_SLEEP
+D:クソゲーに、あるいは近所づきあいに怒りが満ちた時に殴れる壁がない、
+D:殴れるだけの筋力がないあなたの代わりに壁を殴ってくれる
+D:頼もしいストレス社会の味方だ。
+
+N:1978:『タカアシ鎧蜘蛛』
+E:The Armor Spider of Stonefang
+G:S:D
+I:108:12d120:8:120:80
+W:37:3:0:4500:0:0
+B:SLASH:HURT:2d10
+B:STING:INERTIA:6d6
+F:UNIQUE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:DROP_CORPSE | NEVER_MOVE | SPIDER
+F:DROP_1D2 | DROP_2D2 | DROP_GOOD | SMART | BASH_DOOR | DEMON
+F:ANIMAL | EVIL | HURT_LITE | NO_CONF | NO_SLEEP | IM_FIRE
+S:1_IN_5 | BR_INER | BA_FIRE
+D:色の無い霧に包まれたボーレタリアでかつて栄えていた鉱脈、
+D:ストーンファング坑道に潜み始めた蜘蛛のデーモンだ。
+
+N:1979:『炎に潜むもの』
+E:Flamelurker
+G:U:R
+I:120:16d100:30:50:10
+W:40:3:0:10000:0:0
+B:PUNCH:FIRE:20d6
+B:PUNCH:FIRE:20d6
+B:PUNCH:FIRE:20d6
+B:PUNCH:FIRE:20d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SELF_LITE_1 |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY | 
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP | UNIQUE
+S:1_IN_3 | 
+S:BR_FIRE | BO_FIRE
+D:ストーンファング坑道の奥に潜み、炎に身を覆うデーモンだ。
+
+N:1980:ストームファングの『竜の神』
+E:The Dragon God of Stonefang
+G:D:R
+I:120:76d60:30:150:40
+W:58:3:0:26000:0:0
+B:PUNCH:HURT:10d12
+B:PUNCH:FIRE:12d15
+B:PUNCH:HURT:10d12
+B:PUNCH:FIRE:12d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_FLY | DROP_CORPSE | SELF_LITE_1
+F:ONLY_ITEM | DROP_2D2 | DROP_4D2 | DROP_GOOD | SELF_LITE_2 | UNIQUE
+F:BASH_DOOR | POWERFUL | MOVE_BODY | AURA_FIRE |
+F:EVIL | DEMON | DRAGON | IM_FIRE | NO_CONF | NO_SLEEP | RIDING
+S:1_IN_4 | BLIND | CONF | SCARE | BR_FIRE
+D:ストーンファングの古代人が信仰していた竜神の姿がそのままボーレタリアの災厄にあって、
+D:デーモンと化したものだ。
+
+N:1981:OD-10 マザーCOM『コギトエルゴスム』
+E:MUR-TH-UR Matrix of OD-10 Decimus
+G:U:D
+I:115:20d66:100:100:15
+W:42:3:0:10000:0:0
+B:ENGULF:HURT:10d5
+B:GAZE:EXP_10:1d40
+B:GAZE:EXP_10:1d40
+R:1982:8d1
+F:SPAWN_CREATURE_3_IN_16_1982
+F:UNIQUE | RES_CHAO | IM_FIRE | IM_COLD | IM_POIS | IM_ACID | RES_NETH |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_2D2 | | DROP_GREAT | NONLIVING
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:ALLIANCE_ODIO | REGENERATE | NEVER_MOVE
+S:1_IN_3 | MIND_BLAST | DRAIN_MANA | SLOW | HASTE | HEAL 
+D:「宇宙輸送船コギトエルゴスム号の秩序と調和を保つこと」を命令された
+D:メインコンピュータだ。しかし、船員の人間達に絶え間なく
+D:秩序と調和を乱され続けてきた彼は、命令を果たすことができぬために憎悪に駆られ、
+D:遂に船員達を全てを抹殺するという選択を取った。
+
+N:1982:スタビライザー
+E:Stabilizer
+G:*:b
+I:110:10d12:30:120:0
+W:42:255:0:50:0:0
+F:NEVER_MOVE | NEVER_BLOW | FORCE_MAXHP | 
+F:EMPTY_MIND | INVISIBLE | COLD_BLOOD
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:OD-10システム全体を維持するための補助システムだ。
+
+N:1983:クレイジー・バンチの長『Ｏ・ディオ』
+E:O.Dio, Leader of Crazy Bunch
+G:p:u
+I:110:20d100:50:90:10
+W:40:3:0:9000:0:0
+B:PUNCH:HURT:2d16
+B:PUNCH:HURT:2d16
+B:SHOOT:HURT:30d20
+F:UNIQUE | MALE | HAS_LITE_2 | HUMAN | ANIMAL
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP
+F:DROP_2D2 | DROP_1D2 | DROP_GOOD | ONLY_ITEM | CAN_SWIM | ALLIANCE_ODIO
+F:EVIL
+S:1_IN_3 | SHOOT | BA_FIRE
+D:西部の無法集団、クレイジー・バンチの長だ。
+D:その正体は、開拓時代に繰り返された暴挙の中で産まれた憎悪の産物だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
