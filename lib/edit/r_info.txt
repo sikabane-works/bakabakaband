@@ -36683,7 +36683,7 @@ D:チンさんの弟子である艶姿三強男の一人だ。黒い鉄兜に赤
 
 N:1987:タフガイ『サントス』
 E:Tough Guy Santos
-G:p:u
+G:p:o
 I:120:90d10:70:150:4
 W:38:4:0:6000:0:0
 B:HIT:HURT:10d4
@@ -36699,6 +36699,25 @@ S:1_IN_4
 S:HASTE
 D:チンさんの弟子である艶姿三強男の一人だ。野球帽を被り、
 D:師匠のように顔を巨大化させながら一喝することができる。
+
+N:1988:剣士『ロースサブ』
+E:Rosesabu The Swordman
+G:p:v
+I:120:10d100:25:90:10
+W:39:2:0:5500:0:0
+B:SLASH:HURT:10d6
+B:SLASH:HURT:10d6
+B:SLASH:HURT:10d8
+B:SLASH:HURT:10d8
+F:UNIQUE | MALE | HUMAN | WARRIOR
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | HOMO_SEXUAL
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP
+S:1_IN_4 | BO_FIRE
+D:チンさんの弟子である艶姿三強男の一人だ。
+D:半裸で筋肉モリモリのとにかくたくましい男だ。
 
 
 
