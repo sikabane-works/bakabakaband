@@ -36650,6 +36650,93 @@ D:あらゆる滑稽で、迂遠で、残酷な死を求める不思議な兎た
 D:この多元宇宙でもそれを求めて、あなたにこの上ない期待をしているようだ。
 D:是非愛らしい彼らの願いを叶えてあげよう。
 
+N:1985:さんりを
+E:Sanriwo
+G:f:w
+I:110:40d20:10:100:20
+W:10:5:0:1000:0:0
+B:GAZE:BLIND
+B:GAZE:CONFUSE
+B:GAZE:EXP_10
+B:GAZE:UN_BONUS
+F:FRIENDS | ANIMAL | CAN_SWIM | WEIRD_MIND | ELDRITCH_HORROR |
+F:RES_LITE | NO_FEAR | NO_CONF
+D:虚無な目つきと赤いリボンが印象的な二足歩行の白猫だ。
+D:あの仕事を選ばない大女優とは似ても似つかない。
+
+N:1986:忍者『カマクラくん』
+E:Ninja Kamakurakun
+G:p:v
+I:125:60d12:80:100:10
+W:39:2:0:7000:0:0
+B:SLASH:HURT:3d10
+B:SLASH:HURT:3d10
+B:SLASH:HURT:3d10
+B:SHOOT:HURT:5d10
+F:MALE | HUMAN |
+F:DROP_4D2 | DROP_GOOD | IM_FIRE | IM_ACID | IM_POIS | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA | POWERFUL
+F:NO_CONF | NO_SLEEP | EAT_GIVE_DEX | EAT_POISONOUS | UNIQUE
+S:1_IN_4
+S:SHOOT | HOLD | BA_FIRE | BO_FIRE
+D:チンさんの弟子である艶姿三強男の一人だ。黒い鉄兜に赤い衣を着たニンジャだ。
+
+N:1987:タフガイ『サントス』
+E:Tough Guy Santos
+G:p:o
+I:120:90d10:70:150:4
+W:38:4:0:6000:0:0
+B:HIT:HURT:10d4
+B:HIT:HURT:10d4
+B:PUNCH:SUPERHURT:10d6
+B:PUNCH:SUPERHURT:10d6
+F:MALE | FORCE_MAXHP | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | HAS_LITE_2 | HUMAN |
+F:RES_TELE | WARRIOR
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | UNIQUE |
+F:OPEN_DOOR | BASH_DOOR
+S:1_IN_4
+S:HASTE
+D:チンさんの弟子である艶姿三強男の一人だ。野球帽を被り、
+D:師匠のように顔を巨大化させながら一喝することができる。
+
+N:1988:剣士『ロースサブ』
+E:Rosesabu The Swordman
+G:p:v
+I:120:10d100:25:90:10
+W:39:2:0:5500:0:0
+B:SLASH:HURT:10d6
+B:SLASH:HURT:10d6
+B:SLASH:HURT:10d8
+B:SLASH:HURT:10d8
+F:UNIQUE | MALE | HUMAN | WARRIOR
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | HOMO_SEXUAL
+F:OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:NO_CONF | NO_SLEEP
+S:1_IN_4 | BO_FIRE
+D:チンさんの弟子である艶姿三強男の一人だ。
+D:半裸で筋肉モリモリのとにかくたくましい男だ。
+
+N:1989:師匠『チンさん』
+E:Master Chen
+G:p:g
+I:130:56d30:30:120:10
+W:49:2:0:10000:0:0
+B:KICK:SUPERHURT:5d10
+B:HIT:SUPERHURT:5d10
+B:KICK:SUPERHURT:10d5
+B:HIT:SUPERHURT:10d5
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | WARRIOR | FORCE_MAXHP | UNIQUE
+F:DROP_GOOD | DROP_2D2 | OPEN_DOOR | BASH_DOOR | IM_ACID | HAS_LITE_2
+F:IM_FIRE | IM_COLD | IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP
+S:1_IN_6 | BO_MANA
+D:艶姿三強男の師匠だ。彼らが謎の邪悪と戦うための支援を行い、
+D:回りくどい変装をしつつ稽古をつけることもある。
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
