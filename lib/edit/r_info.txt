@@ -36735,6 +36735,23 @@ S:1_IN_6 | BO_MANA
 D:艶姿三強男の師匠だ。彼らが謎の邪悪と戦うための支援を行い、
 D:回りくどい変装をしつつ稽古をつけることもある。
 
+N:1990:ブレインスティーラー・ドラゴン
+E:Brainstealer dragon
+G:D:v
+I:120:69d17:20:110:60
+W:44:3:0:3750:0:0
+B:CLAW:HURT:5d10
+B:CLAW:HURT:5d10
+B:BITE:EXP_10:5d14
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
+F:DROP_3D2 | DROP_4D2 | CAN_FLY | SELF_LITE_2 |
+F:SMART | BASH_DOOR | POWERFUL | MOVE_BODY | 
+F:EVIL | DRAGON | IM_FIRE | NO_CONF | NO_SLEEP | RIDING
+S:1_IN_2 | BLIND | MIND_BLAST | BRAIN_SMASH | FORGET | CONF
+D:それはドラゴンとマインドフレイア、共に高慢なる種族の
+D:忌まわしいかけ合わせで生まれた存在だ。
+
+
 
 
 # N: serial number : monster name
