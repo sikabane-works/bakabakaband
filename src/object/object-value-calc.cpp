@@ -400,6 +400,9 @@ PRICE flag_cost(const ObjectType *o_ptr, int plusses)
     if (flags.has(TR_ESP_ANIMAL)) {
         total += 1000;
     }
+    if (flags.has(TR_ESP_NASTY)) {
+        total += 1000;
+    }
     if (flags.has(TR_ESP_UNDEAD)) {
         total += 1000;
     }

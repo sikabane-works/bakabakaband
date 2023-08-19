@@ -114,6 +114,7 @@ const std::unordered_map<std::string_view, tr_type> k_info_flags = {
     { "KILL_GIANT", TR_KILL_GIANT },
     { "KILL_HUMAN", TR_KILL_HUMAN },
     { "ESP_ANIMAL", TR_ESP_ANIMAL },
+    { "ESP_NASTY", TR_ESP_NASTY },
     { "ESP_UNDEAD", TR_ESP_UNDEAD },
     { "ESP_DEMON", TR_ESP_DEMON },
     { "ESP_ORC", TR_ESP_ORC },
