@@ -358,6 +358,7 @@ public:
 
     BIT_FLAGS telepathy{}; /* Telepathy */
     BIT_FLAGS esp_animal{};
+    BIT_FLAGS esp_nasty{};
     BIT_FLAGS esp_undead{};
     BIT_FLAGS esp_demon{};
     BIT_FLAGS esp_orc{};
