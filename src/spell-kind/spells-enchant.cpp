@@ -113,7 +113,7 @@ bool artifact_scroll(PlayerType *player_ptr)
  * Identify an object in the inventory (or on the floor)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param only_equip 装備品のみを対象とするならばTRUEを返す
- * @return 実際に凡庸化をを行ったならばTRUEを返す
+ * @return 実際に凡庸化を行ったならばTRUEを返す
  * @details
  * <pre>
  * Mundanify an object in the inventory (or on the floor)
