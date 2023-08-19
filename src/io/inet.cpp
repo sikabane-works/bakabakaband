@@ -28,7 +28,7 @@ static concptr errstr;
 static char *proxy;
 static int proxy_port;
 
-/* プロキシサーバのアドレスををファイルから読んで設定する */
+/* プロキシサーバのアドレスをファイルから読んで設定する */
 void set_proxy(char *default_url, int default_port)
 {
     char buf[1024];
