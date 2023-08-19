@@ -101,6 +101,7 @@ std::vector<flag_insc_table> flag_insc_esp1 = {
 std::vector<flag_insc_table> flag_insc_esp2 = {
     { N("人", "p"), TR_ESP_HUMAN, -1 }, { N("竜", "D"), TR_ESP_DRAGON, -1 }, { N("オ", "o"), TR_ESP_ORC, -1 }, { N("ト", "T"), TR_ESP_TROLL, -1 },
     { N("巨", "P"), TR_ESP_GIANT, -1 }, { N("デ", "U"), TR_ESP_DEMON, -1 }, { N("死", "L"), TR_ESP_UNDEAD, -1 }, { N("動", "Z"), TR_ESP_ANIMAL, -1 },
+    { N("汚", "N"), TR_ESP_NASTY, -1 }
 };
 
 /*! オブジェクトの特性表示記号テーブルの定義(能力維持) */

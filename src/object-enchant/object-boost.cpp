@@ -173,6 +173,7 @@ void add_esp_weak(ObjectType *o_ptr, bool extra)
         TR_ESP_HUMAN,
         TR_ESP_GOOD,
         TR_ESP_UNIQUE,
+        TR_ESP_NASTY,
     };
     const int MAX_ESP_WEAK = sizeof(weak_esp_list) / sizeof(weak_esp_list[0]);
     const int add_count = std::min(MAX_ESP_WEAK, (extra) ? (3 + randint1(randint1(6))) : randint1(3));
@@ -390,7 +391,7 @@ void one_ability(ObjectType *o_ptr)
  */
 void one_low_esp(ObjectType *o_ptr)
 {
-    switch (randint1(10)) {
+    switch (randint1(11)) {
     case 1:
         o_ptr->art_flags.set(TR_ESP_ANIMAL);
         break;
@@ -420,6 +421,9 @@ void one_low_esp(ObjectType *o_ptr)
         break;
     case 10:
         o_ptr->art_flags.set(TR_ESP_UNIQUE);
+        break;
+    case 11:
+        o_ptr->art_flags.set(TR_ESP_NASTY);
         break;
     }
 }
