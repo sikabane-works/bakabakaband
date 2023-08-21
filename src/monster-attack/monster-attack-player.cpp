@@ -268,7 +268,7 @@ bool MonsterAttackPlayer::process_monster_attack_hit()
 bool MonsterAttackPlayer::effect_protecion_from_evil()
 {
     auto *r_ptr = &r_info[this->m_ptr->r_idx];
-    if ((this->player_ptr->protevil <= 0) || r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || (this->player_ptr->lev < this->rlev) || ((randint0(100) + this->player_ptr->lev) <= 50)) {
+    if ((this->player_ptr->protevil <= 0) || r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || (randint0(100) + this->player_ptr->lev - this->rlev) <= 50) {
         return false;
     }
 
