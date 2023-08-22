@@ -36788,6 +36788,73 @@ S:SHRIEK
 D:没個性を克服するためにアフロヘアと化した、とかく騙されやすい男だ。
 F:DROP_KIND_1_IN_1_781_2_1d1
 
+N:1993:闇のロードデアボリカ『アズライト』
+E:Azurite, Lord Diabolique of Darkness
+G:U:D
+I:130:51d100:20:145:10
+W:66:2:0:48000:0:0
+B:CLAW:HURT:12d10
+B:CLAW:HURT:12d10
+B:HIT:DISEASE:6d12
+B:HIT:POISON:16d12
+F:UNIQUE | MALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR
+F:EVIL | DEMON | IM_COLD | IM_FIRE | RES_NETH | RES_SOUN | IM_ACID | 
+F:IM_POIS | NO_CONF | NO_SLEEP | POWERFUL | RES_DARK | RES_CHAO
+S:1_IN_4 | 
+S:BR_DARK | BA_DARK | BR_POIS | BA_NETH | SLOW | HOLD
+D:退廃にして残酷なる世界の支配者デアボリカを統べる五大貴族の一人だ。
+D:アズライトは分けてもその退廃と残酷さを究めた最もデアボリカらしいデアボリカと言われており、
+D:不老不死の悠久の時と強大な力を、苛立ちと共に無為な怠惰と殺戮にばかり注ぎ続けている。
+D:その行為はロードデアボリカという存在が果てに何になるかの諦念に基づくものと言われており、
+D:近々、そこから逃避する手段を取るつもりでいるらしい。
+
+N:1994:雲のロードデアボリカ『ファトラ』
+E:Fatras, Lord Diabolique of Cloud
+G:U:b
+I:134:60d100:20:155:10
+W:71:2:0:52000:0:0
+B:SLASH:HURT:13d10
+B:SLASH:HURT:13d10
+B:HIT:ELEC:20d12
+B:HIT:ELEC:20d12
+F:UNIQUE | FEMALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | CAN_FLY
+F:EVIL | DEMON | IM_COLD | IM_FIRE | RES_NETH | RES_SOUN | IM_ACID | 
+F:IM_ELEC | NO_CONF | NO_SLEEP | POWERFUL | RES_LITE | RES_CHAO
+S:1_IN_4 | 
+S:BA_LITE | BA_WATE | BA_ELEC | HASTE | HEAL
+D:退廃にして残酷なる世界の支配者デアボリカを統べる五大貴族の一人だ。
+D:ファトラは妖艶で泰然とした態度の紅一点にして、最も古き王である彭祖とほぼ同世代にして並ぶ実力者である。
+D:彼女は温和で他のデアボリカを慮るのみならず、定命の者にも無為な殺戮や圧政を行わなった話を聞かない。
+D:しばしば調停者として同族の軋轢や放縦の後始末をして窘めることもある。
+
+N:1995:房中のロードデアボリカ『彭祖』
+E:PengZu, Lord Diabolique of Chamber
+G:U:G
+I:131:72d100:40:165:10
+W:79:2:0:56000:0:0
+B:PUNCH:HURT:13d10
+B:PUNCH:HURT:13d10
+B:HIT:SHATTER:10d10
+B:HIT:SHATTER:10d10
+F:UNIQUE | MALE | 
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | CAN_SWIM
+F:ONLY_ITEM | DROP_4D2 | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR
+F:EVIL | DEMON | IM_COLD | IM_FIRE | IM_POIS | RES_NEXU | RES_NETH | RES_SOUN | IM_ACID | 
+F:IM_ELEC | NO_CONF | NO_SLEEP | POWERFUL | RES_CHAO
+S:1_IN_4 | 
+S:HASTE | HEAL | BR_MANA
+D:退廃にして残酷なる世界の支配者デアボリカを統べる五大貴族の一人だ。
+D:彭祖は最年長のロードデアボリカであり、
+D:かつては全てのデアボリカを統べる王の立場にもあった。
+D:今でこそ肉欲の日々を送る絶倫の好々爺を演じているが、
+D:その純然たる力に裏付けられた実力は全く損なわれていない。
 
 # N: serial number : monster name
 # G: symbol : color
