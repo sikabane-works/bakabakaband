@@ -35908,7 +35908,7 @@ B:SLASH:HURT:12d8
 B:KICK:HURT:4d8
 F:MALE | FRIENDS | OPEN_DOOR | BASH_DOOR | ELF | WARRIOR | EVIL
 F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SMART |
-F:IM_POIS | IM_FIRE | RES_WATE | RES_NETH | MOB_420
+F:IM_POIS | IM_FIRE | RES_WATE | RES_NETH | MOB_420 | ALLIANCE_FEANOR-NOLDOR
 S:1_IN_4
 S:SHOOT | BO_FIRE
 D:ノルドールの分裂の中でも「フェアノールの誓言」及び「マンドスの呪い」の道を選んだ一族の戦士たちだ。
@@ -36855,6 +36855,54 @@ D:彭祖は最年長のロードデアボリカであり、
 D:かつては全てのデアボリカを統べる王の立場にもあった。
 D:今でこそ肉欲の日々を送る絶倫の好々爺を演じているが、
 D:その純然たる力に裏付けられた実力は全く損なわれていない。
+
+N:1996:金髪の『ケレゴルム』
+E:Celegorm, the Fair
+G:h:y
+I:140:50d100:50:140:10
+W:65:2:0:40000:0:0
+B:SLASH:HURT:10d14
+B:SLASH:HURT:8d14
+B:SLASH:HURT:8d14
+B:SLASH:SUPERHURT:9d14
+F:UNIQUE | MALE | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_3D2 | DROP_GREAT | ELF |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR | ALLIANCE_FEANOR-NOLDOR
+F:IM_POIS | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | NO_CONF | NO_STUN | EVIL
+F:NO_SLEEP | RES_NETH | RES_TIME | POWERFUL |
+A:31:100
+S:1_IN_4 | 
+S:TPORT | BLIND | HOLD | BLINK | HEAL | BO_PLAS
+S:TELE_TO | BA_ELEC | BO_ELEC | BRAIN_SMASH | PSY_SPEAR
+D:ケルゴルムはフェアノールの七子の一人であり、
+D:ヴァンヤールと見間違うほどの金髪を誇る美男子だ。
+D:フェアノール統ノルドールの暴挙ゆえかヴァリノールに忠実なエルフの伝承では
+D:ベレンとルーシエンの逸話と引き合いに出され
+D:数多くの情けない愚行に死したとされているが、
+D:実際のところ彼は今も父や兄弟と共に権勢を誇り続けている。
+
+N:1997:巧みの『クルフィン』
+E:Curufin, the crafty
+G:h:R
+I:130:56d100:50:170:10
+W:69:2:0:49000:0:0
+B:SLASH:HURT:10d14
+B:SLASH:HURT:10d14
+B:SLASH:SUPERHURT:13d14
+B:SHOOT:HURT:20d30
+F:UNIQUE | MALE | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | DROP_4D2 | DROP_GREAT | ELF |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR | ALLIANCE_FEANOR-NOLDOR
+F:IM_POIS | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | NO_CONF | NO_STUN | EVIL
+F:NO_SLEEP | RES_CHAO | RES_WATE | RES_TIME | POWERFUL |
+S:1_IN_5 | 
+S:TPORT | BLIND | HOLD | BLINK | HEAL | BO_MANA | BA_MANA
+S:TELE_TO | BO_ELEC | PSY_SPEAR | SHOOT
+D:クルフィンはフェアノールの七子の一人であり、
+D:良し悪しはともかく父に最も近く似通った子である。
+D:その威名は全く極端なもので、西側のエルフたちには父と並んで唾棄される一方で、
+D:東側ではエルフどころかドワーフ、ひいては敵であるはずの古ウルクにすら深い敬意を払われている。
+D:同地の人間に至っては彼こそを父を凌ぐ鍛冶と工芸、商業の神として崇拝している。
 
 # N: serial number : monster name
 # G: symbol : color
