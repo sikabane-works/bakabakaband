@@ -434,7 +434,10 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
     }
 
     wc_ptr->plus_collapsion(md_ptr->r_ptr->plus_collapse);
-    drop_corpse(player_ptr, md_ptr);
+    if (attribute_flags.has_not(AttributeType::QUANTUM_VANISH)) {
+        drop_corpse(player_ptr, md_ptr);
+    }
+
     monster_drop_carried_objects(player_ptr, md_ptr->m_ptr);
     decide_drop_quality(md_ptr);
     switch_special_death(player_ptr, md_ptr, attribute_flags);

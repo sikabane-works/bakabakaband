@@ -112,6 +112,7 @@ enum class AttributeType : int {
     STUNGUN = 122, /*!< 魔法効果: バチィ */
     MONSTER_SHOOT = 123, /*!< 属性取得用: モンスターの射撃/投擲>*/
     MONSTER_MELEE = 124, /*!< 属性取得用: モンスターの近接攻撃>*/
+    QUANTUM_VANISH = 125, /*!< 属性取得用: 量子消滅>*/
     MAX /*!< 欠番を無視した最大サイズ (直上の値+1) */
 };
 
