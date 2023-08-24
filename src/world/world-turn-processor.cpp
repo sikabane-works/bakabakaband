@@ -270,8 +270,6 @@ void WorldTurnProcessor::process_change_daytime_night()
     if ((w_ptr->game_turn % (TURNS_PER_TICK * STORE_TICKS)) != 0) {
         return;
     }
-
-    shuffle_shopkeeper();
 }
 
 void WorldTurnProcessor::process_world_monsters()
@@ -293,38 +291,6 @@ void WorldTurnProcessor::process_world_monsters()
         if (this->player_ptr->current_floor_ptr->mproc_max[i] > 0) {
             process_monsters_mtimed(this->player_ptr, i);
         }
-    }
-}
-
-void WorldTurnProcessor::shuffle_shopkeeper()
-{
-    if (!one_in_(STORE_SHUFFLE)) {
-        return;
-    }
-
-    int n;
-    do {
-        n = randint0(MAX_STORES);
-        if ((n == enum2i(StoreSaleType::HOME)) || (n == enum2i(StoreSaleType::MUSEUM))) {
-            break;
-        }
-    } while (true);
-
-    for (const auto &f_ref : f_info) {
-        if (f_ref.name.empty() || f_ref.flags.has_not(FloorFeatureType::STORE)) {
-            continue;
-        }
-
-        if (f_ref.subtype != n) {
-            continue;
-        }
-
-        if (cheat_xtra) {
-            msg_format(_("%sの店主をシャッフルします。", "Shuffle a Shopkeeper of %s."), f_ref.name.c_str());
-        }
-
-        store_shuffle(this->player_ptr, i2enum<StoreSaleType>(n));
-        break;
     }
 }
 
