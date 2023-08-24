@@ -245,61 +245,6 @@ void store_examine(PlayerType *player_ptr, StoreSaleType store_num)
 }
 
 /*!
- * @brief 現在の町の店主を交代させる /
- * Shuffle one of the stores.
- * @param which 店舗種類のID
- * @todo init_store()と処理を一部統合＆ランダム選択を改善。
- */
-void store_shuffle(PlayerType *player_ptr, StoreSaleType store_num)
-{
-    auto owner_num = owners.at(store_num).size();
-    if ((store_num == StoreSaleType::HOME) || (store_num == StoreSaleType::MUSEUM) || (owner_num <= (uint16_t)max_towns)) {
-        return;
-    }
-
-    st_ptr = &town_info[player_ptr->town_num].store[enum2i(store_num)];
-    int j = st_ptr->owner;
-    while (true) {
-        st_ptr->owner = (byte)randint0(owner_num);
-
-        if (j == st_ptr->owner) {
-            continue;
-        }
-
-        int i;
-        for (i = 1; i < max_towns; i++) {
-            if (i == player_ptr->town_num) {
-                continue;
-            }
-
-            if (st_ptr->owner == town_info[i].store[enum2i(store_num)].owner) {
-                break;
-            }
-        }
-
-        if (i == max_towns) {
-            break;
-        }
-    }
-
-    ot_ptr = &owners.at(store_num)[st_ptr->owner];
-    st_ptr->insult_cur = 0;
-    st_ptr->store_open = 0;
-    st_ptr->good_buy = 0;
-    st_ptr->bad_buy = 0;
-    for (int i = 0; i < st_ptr->stock_num; i++) {
-        ObjectType *o_ptr;
-        o_ptr = &st_ptr->stock[i];
-        if (o_ptr->is_artifact()) {
-            continue;
-        }
-
-        o_ptr->discount = 50;
-        o_ptr->inscription = quark_add(_("売出中", "on sale"));
-    }
-}
-
-/*!
  * @brief 店の品揃えを変化させる /
  * Maintain the inventory at the stores.
  * @param player_ptr プレイヤーへの参照ポインタ

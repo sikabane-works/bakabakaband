@@ -133,26 +133,10 @@ static void take_item_from_home(PlayerType *player_ptr, ObjectType *o_ptr, Objec
     chg_virtue(player_ptr, V_SACRIFICE, 1);
 }
 
-static void shuffle_store(PlayerType *player_ptr, StoreSaleType store_num)
-{
-    if (!one_in_(STORE_SHUFFLE)) {
-        msg_print(_("店主は新たな在庫を取り出した。", "The shopkeeper brings out some new stock."));
-        return;
-    }
-
-    char buf[80];
-
-    msg_print(_("店主は引退した。", "The shopkeeper retires."));
-    store_shuffle(player_ptr, store_num);
-    prt("", 3, 0);
-    sprintf(buf, "%s (%s)", ot_ptr->owner_name, race_info[enum2i(ot_ptr->owner_race)].title);
-    put_str(buf, 3, 10);
-}
-
 static void switch_store_stock(PlayerType *player_ptr, const int i, const COMMAND_CODE item, StoreSaleType store_num)
 {
     if (st_ptr->stock_num == 0) {
-        shuffle_store(player_ptr, store_num);
+        msg_print(_("店主は新たな在庫を取り出した。", "The shopkeeper brings out some new stock."));
         store_maintenance(player_ptr, player_ptr->town_num, store_num, 10);
 
         store_top = 0;
