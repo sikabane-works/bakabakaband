@@ -2662,6 +2662,15 @@ K:DESTROYED:*FLOOR*
 F:POWER_40 | LOS | REMEMBER | TUNNEL | WALL | HURT_ROCK | CAN_PASS |
 F:HURT_DISI | GLASS
 
+N:327:TRAP_LAND_MINE
+J:地雷
+E:land mine trap
+G:^:o:LIT
+M:TRAP_LAND_MINE
+W:2
+K:DESTROYED:*FLOOR*
+F:SUBTYPE_27 | POWER_5 | LOS | PROJECT | MOVE | PLACE | NOTICE | REMEMBER |
+F:DISARM | TRAP | HIT_TRAP | CAN_FLY | HURT_DISI | TELEPORTABLE
 
 # D - Black        w - White          s - Gray          o - Orange
 # r - Red          g - Green          b - Blue          u - Brown
