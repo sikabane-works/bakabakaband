@@ -57,8 +57,8 @@ enum class TrapType {
     ICE_STORM = 24,
     CHAOS_STORM = 25,
     JUMP_VOID = 26,
-
-    MAX = 27,
+    MINE = 27,
+    MAX = 28,
 };
 
 extern const std::vector<EnumClassFlagGroup<ChestTrapType>> chest_traps;
