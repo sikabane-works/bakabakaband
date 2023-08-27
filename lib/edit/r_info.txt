@@ -36745,7 +36745,7 @@ N:1990:ブレインスティーラー・ドラゴン
 E:Brainstealer dragon
 G:D:v
 I:120:69d17:20:110:60
-W:44:3:0:3750:0:0
+W:44:3:0:3750:150000:1998
 B:CLAW:HURT:5d10
 B:CLAW:HURT:5d10
 B:BITE:EXP_10:5d14
@@ -36903,6 +36903,26 @@ D:良し悪しはともかく父に最も近く似通った子である。
 D:その威名は全く極端なもので、西側のエルフたちには父と並んで唾棄される一方で、
 D:東側ではエルフどころかドワーフ、ひいては敵であるはずの古ウルクにすら深い敬意を払われている。
 D:同地の人間に至っては彼こそを父を凌ぐ鍛冶と工芸、商業の神として崇拝している。
+
+N:1998:ブレインスティーラー・ワイアーム
+E:Brainstealer dragon
+G:D:v
+I:140:69d50:30:130:30
+W:63:3:0:2000:0:0
+B:CLAW:HURT:8d10
+B:CLAW:HURT:8d10
+B:BITE:EXP_10:7d14
+B:BITE:EXP_10:7d14
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
+F:DROP_3D2 | DROP_4D2 | CAN_FLY | SELF_LITE_2 |
+F:SMART | BASH_DOOR | POWERFUL | MOVE_BODY | ELDRITCH_HORROR
+F:EVIL | DRAGON | IM_FIRE | NO_CONF | NO_SLEEP | RIDING
+S:1_IN_2 | MIND_BLAST | BRAIN_SMASH | FORGET | CONF | S_DRAGON
+S:PSY_SPEAR
+D:それはドラゴンとマインドフレイア、共に高慢なる種族の
+D:忌まわしいかけ合わせで生まれた存在だ。
+D:他の亜神の域に達したワイアームの精神をも支配する程の霊的な狡猾さを備えている。
+
 
 # N: serial number : monster name
 # G: symbol : color
