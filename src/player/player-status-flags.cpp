@@ -387,6 +387,8 @@ BIT_FLAGS get_player_flags(PlayerType *player_ptr, tr_type tr_flag)
         return check_equipment_flags(player_ptr, tr_flag);
     case TR_ESP_ANIMAL:
         return has_esp_animal(player_ptr);
+    case TR_ESP_NASTY:
+        return has_esp_nasty(player_ptr);
     case TR_ESP_UNDEAD:
         return has_esp_undead(player_ptr);
     case TR_ESP_DEMON:
@@ -565,6 +567,16 @@ BIT_FLAGS has_esp_evil(PlayerType *player_ptr)
 BIT_FLAGS has_esp_animal(PlayerType *player_ptr)
 {
     return common_cause_flags(player_ptr, TR_ESP_ANIMAL);
+}
+
+/*!
+ * @brief プレイヤーがクッソ汚い奴らの感知を持っているかを返す。
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @return 持っていたら所持前提ビットフラグを返す。
+ */
+BIT_FLAGS has_esp_nasty(PlayerType *player_ptr)
+{
+    return common_cause_flags(player_ptr, TR_ESP_NASTY);
 }
 
 /*!

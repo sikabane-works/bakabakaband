@@ -287,15 +287,6 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         msg_print(_("突然ほとんど孤独になった気がする。", "You suddenly feel almost lonely."));
 
         banish_monsters(player_ptr, 100);
-        if (!is_in_dungeon(player_ptr) && player_ptr->town_num) {
-            StoreSaleType sst;
-            do {
-                sst = i2enum<StoreSaleType>(randint0(MAX_STORES));
-            } while ((sst == StoreSaleType::HOME) || (sst == StoreSaleType::MUSEUM));
-
-            msg_print(_("店の主人が丘に向かって走っている！", "You see one of the shopkeepers running for the hills!"));
-            store_shuffle(player_ptr, sst);
-        }
         msg_print(nullptr);
     }
 

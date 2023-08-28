@@ -183,8 +183,9 @@ enum tr_type : int32_t {
     TR_PERSISTENT_CURSE = 166, //!< 頻繁に自身を呪いなおすフラグ
     TR_VUL_CURSE = 167, //!< 呪力弱点
     TR_MEGATON_COIN = 168, //!< メ ガ ト ン コ イ ン
+    TR_ESP_NASTY = 169,
 
-    TR_FLAG_MAX = 169,
+    TR_FLAG_MAX = 170,
 };
 
 /** 能力値(STR,INT,WIS,DEX,CON,CHR)のpvalを増減させるフラグのリスト */

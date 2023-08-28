@@ -361,7 +361,7 @@ void display_monster_kind(lore_type *lore_ptr)
     if (lore_ptr->kind_flags.has_none_of({ MonsterKindType::DRAGON, MonsterKindType::DEMON,
             MonsterKindType::GIANT, MonsterKindType::TROLL, MonsterKindType::ORC, MonsterKindType::ANGEL,
             MonsterKindType::QUANTUM, MonsterKindType::HUMAN, MonsterKindType::ELDRAZI, MonsterKindType::QUYLTHLUG, MonsterKindType::ELF,
-            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER })) {
+            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER, MonsterKindType::TANK })) {
         hooked_roff(_("モンスター", " creature"));
         return;
     }
@@ -420,6 +420,10 @@ void display_monster_kind(lore_type *lore_ptr)
 
     if (lore_ptr->kind_flags.has(MonsterKindType::ANGEL)) {
         hook_c_roff(TERM_YELLOW, _("天使", " angel"));
+    }
+
+    if (lore_ptr->kind_flags.has(MonsterKindType::TANK)) {
+        hook_c_roff(TERM_SLATE, _("戦車", " tank"));
     }
 }
 

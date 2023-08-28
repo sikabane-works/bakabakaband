@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#define MAX_PATRON 17 /*!< カオスパトロンの最大定義数 / The number of "patrons" available (for Chaos Warriors) */
+#define MAX_PATRON 18 /*!< カオスパトロンの最大定義数 / The number of "patrons" available (for Chaos Warriors) */
 
 /* カオスパトロンからの報酬種別定義 / Chaos Warrior: Reward types: */
 enum patron_reward {

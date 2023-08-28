@@ -41,6 +41,7 @@ const std::unordered_map<std::string_view, RaceBlowMethodType> r_info_blow_metho
     { "BIND", RaceBlowMethodType::BIND },
     { "WHISPER", RaceBlowMethodType::WHISPER },
     { "STAMP", RaceBlowMethodType::STAMP },
+    { "FECES", RaceBlowMethodType::FECES },
 };
 
 /*!
@@ -469,6 +470,7 @@ const std::unordered_map<std::string_view, MonsterKindType> r_info_kind_flags = 
     { "KARATEKA", MonsterKindType::KARATEKA },
     { "JOKE", MonsterKindType::JOKE },
     { "HOMO_SEXUAL", MonsterKindType::HOMO_SEXUAL },
+    { "TANK", MonsterKindType::TANK },
 };
 
 const std::unordered_map<std::string_view, MonsterDropType> r_info_drop_flags = {

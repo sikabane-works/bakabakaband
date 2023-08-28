@@ -223,5 +223,11 @@ enum class MonsterRaceId : int16_t {
     BINZYOU_MUR = 1587,
     PRINCESS_KETHOLDETH = 1590,
     SUREN = 1810,
+    // GOLAN
+    GOLAN_COLONEL = 1607,
+    GOLAN_MAD = 1608,
+    GOLAN_SOLDIER = 1687,
+    GOLAN_OFFICER = 1692,
+    GOLAN_RED_BELET = 1828,
 
 };

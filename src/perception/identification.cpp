@@ -527,6 +527,10 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは自然界の生物を感知する。", "It senses natural creatures.");
     }
 
+    if (flags.has(TR_ESP_NASTY)) {
+        info[i++] = _("それはクッソ汚い汚物共を感知する。", "It senses nasty creatures.");
+    }
+
     if (flags.has(TR_ESP_UNDEAD)) {
         info[i++] = _("それはアンデッドを感知する。", "It senses undead.");
     }

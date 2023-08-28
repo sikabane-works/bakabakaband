@@ -672,12 +672,19 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
         fire_ball(player_ptr, AttributeType::CHAOS, 0, 600, 4);
         take_hit(player_ptr, DAMAGE_NOESCAPE, (600 + randint1(50)) * calc_chaos_damage_rate(player_ptr, CALC_RAND) / 100, _("混沌嵐の罠", "a Hige Chaos Trap"));
         break;
+    }
+
+    case TrapType::MINE: {
+        msg_print(_("地雷を踏んだ！", "You stepped on a land mine!"));
+        fire_ball(player_ptr, AttributeType::MANA, 0, 200, 4);
+        take_hit(player_ptr, DAMAGE_NOESCAPE, (200 + randint1(50)), _("地雷", "a Land Mine"));
+        break;
+    }
 
     case TrapType::JUMP_VOID: {
         msg_print(_("なんてこった！あなたは猿空間に送られた！", "What a hell! You were sent to the SARU space!"));
         jump_floor(player_ptr, DUNGEON_VOID_TERRITORY, player_ptr->current_floor_ptr->dun_level);
         break;
-    }
     }
     default:
         break;
