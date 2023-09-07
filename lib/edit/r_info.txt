@@ -36941,6 +36941,24 @@ S:1_IN_3 |
 S:BLIND | CONF | SCARE | BRAIN_SMASH
 D:彼女はあの愛らしい少女の姿をした厄神様ではない。もっと悍ましい何かだ。
 
+N:2000:レッサー・ニンジャ・デーモン
+E:Lesser ninja demon
+G:U:W
+I:130:25d100:40:100:20
+W:53:2:0:15000:0:0
+B:SLASH:HURT:14d11
+B:SLASH:SUPERHURT:5d11
+B:SLASH:SUPERHURT:5d11
+D:SHOOT:HURT:4d15
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP | INVISIBLE |
+F:DROP_GOOD | DROP_60 | DROP_1D2 | SMART | PASS_WALL |
+F:RES_CHAO | RES_NETH | NONLIVING | CAN_FLY | ELDRITCH_HORROR
+F:EVIL | IM_POIS | IM_COLD | IM_FIRE | IM_ACID | DEMON | NINJA
+S:1_IN_3 |
+S:BLINK | TPORT | BR_FIRE
+S:SHOOT | DRAIN_MANA | BR_PLAS
+D:名状しがたきメンポを除いては変幻自在の赤黒い闇のように
+D:目に映る、無貌のニンジャにして悪魔だ。
 
 # N: serial number : monster name
 # G: symbol : color
