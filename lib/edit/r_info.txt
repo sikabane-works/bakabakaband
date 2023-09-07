@@ -36960,6 +36960,22 @@ S:SHOOT | DRAIN_MANA | BR_PLAS
 D:名状しがたきメンポを除いては変幻自在の赤黒い闇のように
 D:目に映る、無貌のニンジャにして悪魔だ。
 
+N:2001:ヤクザ・デーモン
+E:Yakuza demon
+G:U:s
+I:110:50d10:20:60:20
+W:44:2:0:2500:0:0
+B:SLASH:SUPERHURT:8d10
+B:SLASH:SUPERHURT:8d10
+B:SHOOT:HURT:10d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | IM_FIRE | IM_COLD
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP | YAKUZA
+S:1_IN_5 | SHOOT
+D:古典ゆかしいドスやチャカを持った、より上位のデーモンに盲目的に従う鉄砲玉悪魔だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
