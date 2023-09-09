@@ -37025,6 +37025,22 @@ S:SLOW | CAUSE_3 | BA_POIS | BR_POIS | BO_MANA
 D:戦鎚世界の混沌神〈ナーグル〉に選ばれた混沌の戦士だ。
 D:肉厚の装甲に包まれたその心身は主君の性質に触れ、腐敗と病毒に塗れながら慈悲深き共存を果たしている。
 
+N:2005:<スラーネッシュ>の選抜者
+E:Chosen of Slaanesh
+G:p:y
+I:120:13d100:20:100:10
+W:49:1:0:4000:0:0
+B:HIT:CONFUSE:8d5
+B:HIT:CONFUSE:8d5
+B:HIT:CONFUSE:8d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_ELEC | IM_POIS | MALE | HUMAN | FEMALE
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
+S:1_IN_4 |
+S:CONF | SCARE | CAUSE_3 | CAUSE_4 | MIND_BLAST
+D:戦鎚世界の混沌神〈スラーネッシュ〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ、美しくも卑猥な誘惑を周囲に振きながら、戦いという快楽に耽溺している。
+
 
 # N: serial number : monster name
 # G: symbol : color
