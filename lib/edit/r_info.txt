@@ -37008,6 +37008,23 @@ F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN | REFLECTING | RES_TELE
 D:戦鎚世界の混沌神〈コーン〉に選ばれた混沌の戦士だ。
 D:肉厚の装甲に包まれたその心身は主君の性質に触れ、常に冷めやらぬ怒りと殺戮の衝動に駆られている。
 
+N:2004:<ナーグル>の選抜者
+E:Chosen of Nurgle
+G:p:g
+I:120:17d100:20:90:10
+W:49:1:0:4000:0:0
+B:HIT:DISEASE:6d5
+B:HIT:DISEASE:6d5
+B:HIT:DISEASE:6d5
+B:HIT:POISON:14d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_ACID | IM_POIS | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
+S:1_IN_5 |
+S:SLOW | CAUSE_3 | BA_POIS | BR_POIS | BO_MANA
+D:戦鎚世界の混沌神〈ナーグル〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ、腐敗と病毒に塗れながら慈悲深き共存を果たしている。
+
 
 # N: serial number : monster name
 # G: symbol : color
