@@ -36987,11 +36987,27 @@ B:HIT:HURT:8d5
 B:HIT:EXP_80
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_COLD | IM_POIS | MALE | HUMAN |
 F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_CHAO |
-F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
 S:1_IN_4 |
 S:HASTE | SCARE | CAUSE_3 | BA_ELEC | BO_PLAS | BA_CHAO
 D:戦鎚世界の混沌神〈ティーンチ〉に選ばれた混沌の戦士だ。
 D:肉厚の装甲に包まれたその心身は主君の性質に触れ異形に歪み、奇妙な光を放っている。
+
+N:2003:<コーン>の選抜者
+E:Chosen of Khorne
+G:p:o
+I:124:14d100:20:130:10
+W:49:1:0:4000:0:0
+B:HIT:HURT:13d5
+B:HIT:HURT:13d5
+B:HIT:HURT:10d5
+B:HIT:HURT:10d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_POIS | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN | REFLECTING | RES_TELE
+D:戦鎚世界の混沌神〈コーン〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ、常に冷めやらぬ怒りと殺戮の衝動に駆られている。
+
 
 # N: serial number : monster name
 # G: symbol : color
