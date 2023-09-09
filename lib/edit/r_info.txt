@@ -36976,6 +36976,72 @@ F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP | YAKUZA
 S:1_IN_5 | SHOOT
 D:古典ゆかしいドスやチャカを持った、より上位のデーモンに盲目的に従う鉄砲玉悪魔だ。
 
+N:2002:<ティーンチ>の選抜者
+E:Chosen of Tzeentch
+G:p:v
+I:120:13d100:20:110:10
+W:49:1:0:4000:0:0
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
+B:HIT:EXP_80
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_COLD | IM_POIS | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
+S:1_IN_4 |
+S:HASTE | SCARE | CAUSE_3 | BA_ELEC | BO_PLAS | BA_CHAO
+D:戦鎚世界の混沌神〈ティーンチ〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ異形に歪み、奇妙な光を放っている。
+
+N:2003:<コーン>の選抜者
+E:Chosen of Khorne
+G:p:o
+I:124:14d100:20:130:10
+W:49:1:0:4000:0:0
+B:HIT:HURT:13d5
+B:HIT:HURT:13d5
+B:HIT:HURT:10d5
+B:HIT:HURT:10d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_POIS | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN | REFLECTING | RES_TELE
+D:戦鎚世界の混沌神〈コーン〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ、常に冷めやらぬ怒りと殺戮の衝動に駆られている。
+
+N:2004:<ナーグル>の選抜者
+E:Chosen of Nurgle
+G:p:g
+I:120:17d100:20:90:10
+W:49:1:0:4000:0:0
+B:HIT:DISEASE:6d5
+B:HIT:DISEASE:6d5
+B:HIT:DISEASE:6d5
+B:HIT:POISON:14d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_ACID | IM_POIS | MALE | HUMAN |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
+S:1_IN_5 |
+S:SLOW | CAUSE_3 | BA_POIS | BR_POIS | BO_MANA
+D:戦鎚世界の混沌神〈ナーグル〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ、腐敗と病毒に塗れながら慈悲深き共存を果たしている。
+
+N:2005:<スラーネッシュ>の選抜者
+E:Chosen of Slaanesh
+G:p:y
+I:120:13d100:20:100:10
+W:49:1:0:4000:0:0
+B:HIT:CONFUSE:8d5
+B:HIT:CONFUSE:8d5
+B:HIT:CONFUSE:8d5
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | SMART | IM_FIRE | IM_ELEC | IM_POIS | MALE | HUMAN | FEMALE
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_NETH | RES_NEXU | RES_CHAO |
+F:OPEN_DOOR | BASH_DOOR | EVIL | PALADIN
+S:1_IN_4 |
+S:CONF | SCARE | CAUSE_3 | CAUSE_4 | MIND_BLAST
+D:戦鎚世界の混沌神〈スラーネッシュ〉に選ばれた混沌の戦士だ。
+D:肉厚の装甲に包まれたその心身は主君の性質に触れ、美しくも卑猥な誘惑を周囲に振きながら、戦いという快楽に耽溺している。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
