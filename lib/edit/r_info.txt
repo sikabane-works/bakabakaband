@@ -37041,6 +37041,22 @@ S:CONF | SCARE | CAUSE_3 | CAUSE_4 | MIND_BLAST
 D:戦鎚世界の混沌神〈スラーネッシュ〉に選ばれた混沌の戦士だ。
 D:肉厚の装甲に包まれたその心身は主君の性質に触れ、美しくも卑猥な誘惑を周囲に振きながら、戦いという快楽に耽溺している。
 
+N:2006:古代兵器『ユラウクス』
+E:Old Machine Euraokos
+G:g:u
+I:120:30d100:30:120:30
+W:53:4:0:10000:0:0
+B:HIT:HURT:1d40
+B:HIT:HURT:1d40
+B:HIT:HURT:1d40
+B:HIT:HURT:1d40
+F:RAND_25 | FORCE_MAXHP | UNIQUE
+F:DROP_3D2 | DROP_GOOD | ONLY_ITEM | RES_TELE | STUPID
+F:IM_POIS | IM_FIRE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NONLIVING
+S:1_IN_6 |
+S:ROCKET | BO_PLAS | HOLD
+D:人の姿の失われたルクレチアの迷宮を彷徨う古代神を称する兵器だ。
+D:己の知性の源たるダイオードを失ってしまったらしい。
 
 # N: serial number : monster name
 # G: symbol : color
