@@ -37097,6 +37097,47 @@ B:CRUSH:HURT:1d4
 F:WEIRD_MIND | DROP_CORPSE
 D:クッパ軍団の先兵だ。
 
+N:2010:巨大ミールワーム
+E:Giant mealworms
+G:w:g
+I:105:20d10:30:30:0
+W:44:4:0:500:0:0
+B:EXPLODE:HURT:50d3
+F:PREVENT_SUDDEN_MAGIC |
+F:FRIENDS |
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | NO_CONF | NO_SLEEP
+D:地底のコーラルをたっぷり摂取して今でも爆発しそうなルビコンの幸だ。
+
+N:2011:惑星封鎖機構大型武装ヘリ
+E:AH12 HC HELICOPTER
+G:g:o
+I:110:30d60:50:40:10
+W:45:4:0:7000:0:0
+F:FORCE_MAXHP | BASH_DOOR | CAN_FLY | RAND_25
+F:NO_CONF | NO_SLEEP | NO_FEAR | HAS_LITE_2
+F:NONLIVING | PREVENT_SUDDEN_MAGIC | NEVER_BLOW
+F:DROP_3D2 | DROP_2D2
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
+S:1_IN_3 | BA_FIRE | ROCKET | BO_FIRE
+D:惑星封鎖機構がルビコンの災厄を抑止すべく各地に派遣する大型ヘリコプターだ。
+
+N:2012:コーラルの煙霧
+E:Coral fume
+G:#:r
+I:110:30d10:100:40:0
+W:48:2:0:800:0:0
+B:ENGULF:CONFUSE:8d4
+B:ENGULF:CONFUSE:8d4
+F:PREVENT_SUDDEN_MAGIC | 
+F:SPAWN_CREATURE_1_IN_16_2012
+F:RAND_50 | RAND_25 | RES_CHAO | RES_NEXU | IM_COLD | IM_ELEC |
+F:EMPTY_MIND | BASH_DOOR
+F:CAN_FLY
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:ルビコンを取り巻く増殖するエネルギー資源であり、
+D:また情報導体にして生命そのものを持った物質だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
