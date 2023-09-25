@@ -37097,6 +37097,18 @@ B:CRUSH:HURT:1d4
 F:WEIRD_MIND | DROP_CORPSE
 D:クッパ軍団の先兵だ。
 
+N:2010:巨大ミールワーム
+E:Giant mealworms
+G:w:g
+I:105:20d10:30:30:0
+W:44:4:0:500:0:0
+B:EXPLODE:HURT:50d3
+F:PREVENT_SUDDEN_MAGIC |
+F:FRIENDS |
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | NO_CONF | NO_SLEEP
+D:地底のコーラルをたっぷり摂取して今でも爆発しそうなルビコンの幸だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
