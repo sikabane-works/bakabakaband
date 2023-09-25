@@ -37122,7 +37122,21 @@ F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
 S:1_IN_3 | BA_FIRE | ROCKET | BO_FIRE
 D:惑星封鎖機構がルビコンの災厄を抑止すべく各地に派遣する大型ヘリコプターだ。
 
-
+N:2012:コーラルの煙霧
+E:Coral fume
+G:#:r
+I:110:30d10:100:40:0
+W:48:2:0:800:0:0
+B:ENGULF:CONFUSE:8d4
+B:ENGULF:CONFUSE:8d4
+F:PREVENT_SUDDEN_MAGIC | 
+F:SPAWN_CREATURE_1_IN_16_2012
+F:RAND_50 | RAND_25 | RES_CHAO | RES_NEXU | IM_COLD | IM_ELEC |
+F:EMPTY_MIND | BASH_DOOR
+F:CAN_FLY
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:ルビコンを取り巻く増殖するエネルギー資源であり、
+D:また情報導体にして生命そのものを持った物質だ。
 
 # N: serial number : monster name
 # G: symbol : color
