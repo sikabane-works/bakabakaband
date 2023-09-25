@@ -37109,6 +37109,21 @@ F:OPEN_DOOR | BASH_DOOR |
 F:ANIMAL | NO_CONF | NO_SLEEP
 D:地底のコーラルをたっぷり摂取して今でも爆発しそうなルビコンの幸だ。
 
+N:2011:惑星封鎖機構大型武装ヘリ
+E:AH12 HC HELICOPTER
+G:g:o
+I:110:30d60:50:40:10
+W:45:4:0:7000:0:0
+F:FORCE_MAXHP | BASH_DOOR | CAN_FLY | RAND_25
+F:NO_CONF | NO_SLEEP | NO_FEAR | HAS_LITE_2
+F:NONLIVING | PREVENT_SUDDEN_MAGIC | NEVER_BLOW
+F:DROP_3D2 | DROP_2D2
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
+S:1_IN_3 | BA_FIRE | ROCKET | BO_FIRE
+D:惑星封鎖機構がルビコンの災厄を抑止すべく各地に派遣する大型ヘリコプターだ。
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
