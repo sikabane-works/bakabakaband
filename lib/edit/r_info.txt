@@ -37179,6 +37179,21 @@ F:DROP_2D2 | RES_SOUN | RES_COLD | RES_POIS
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:鋼鉄の装甲に大剣と大盾。極限の重装備をまとった、不死者の騎士だ。
 
+N:2016:EC-0804『スマートクリーナー』
+E:EC-0804 Smart Cleaner
+G:g:s
+I:120:70d50:10:180:20
+W:49:2:0:12000:0:0
+B:CRUSH:HURT:8d10
+B:CRUSH:HURT:8d10
+B:CRUSH:HURT:8d10
+B:HIT:FIRE:20d10
+S:1_IN_5 | BA_FIRE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_BODY | KILL_ITEM | KILL_WALL | UNIQUE | REFLECTING |
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
+F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_SHAR | RES_TELE | TANK
+D:RaDのシンダー・カーラが作り上げた、破砕アームと溶鉱炉を兼ね備えたジャンクの掃除屋だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
