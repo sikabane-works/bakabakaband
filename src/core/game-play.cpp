@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @brief ゲームプレイのメインルーチン
  * @date 2020/05/10
  * @author Hourier
@@ -26,6 +26,7 @@
 #include "core/window-redrawer.h"
 #include "dungeon/dungeon-processor.h"
 #include "flavor/object-flavor.h"
+#include "dungeon/quest.h"
 #include "floor/cave.h"
 #include "floor/floor-changer.h"
 #include "floor/floor-events.h"
