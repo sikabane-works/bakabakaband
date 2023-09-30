@@ -99,6 +99,7 @@ public:
     std::vector<town_vault> vault_list;
     AllianceType allianceID;
     bool is_in_dungeon() const;
+    bool is_in_quest() const;
     void set_dungeon_index(short dungeon_idx_); /*!< @todo 後でenum class にする */
     void reset_dungeon_index();
     dungeon_type &get_dungeon_definition() const;
