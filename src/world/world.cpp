@@ -5,8 +5,8 @@
 #include "util/bit-flags-calculator.h"
 #include <ctime>
 
-world_type world;
-world_type *w_ptr = &world;
+AngbandWorld world;
+AngbandWorld *w_ptr = &world;
 
 /*!
  * @brief ゲーム時間が日中かどうかを返す /
