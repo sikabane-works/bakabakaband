@@ -310,7 +310,7 @@ B:MOAN:FLAVOR
 B:HIT:HURT:1d5
 F:UNIQUE | MALE | CAN_SPEAK | DROP_CORPSE | FRIENDLY | ALLIANCE_THE-SHIRE
 F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
-F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | HOBBIT
 D:$Before you appears a broad thick-set hobbit with a round red face. 
 D:$"What's wrong with old Maggot?" asked Pippin.  "He's a good friend to 
 D:$all the Brandybucks.  Of course he's a terror to trespassers, and keeps 
@@ -37196,7 +37196,7 @@ D:RaDのシンダー・カーラが作り上げた、破砕アームと溶鉱炉
 
 N:2017:バルデルの騎士
 E:Knight of Barder
-G:w:D
+G:p:w
 I:120:40d16:30:100:20
 W:29:3:0:1000:0:0
 B:SLASH:HURT:5d5
@@ -37206,6 +37206,37 @@ F:MALE | HAS_LITE_2 | HUMAN | UNDEAD
 F:DROP_2D2 | RES_SOUN | RES_COLD | RES_POIS
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:ロードランをさまよう不死者の一団、古き国バルデルの騎士だ。
+
+N:2018:テクノカラテの覚醒者『シガキ・サイゼン』
+E:Saizen Shigaki, Awakener to Techno Karate.
+G:p:b
+I:112:25d10:40:20:3
+W:0:9:0:0:0:0
+B:PUNCH:HURT:8d5
+B:PUNCH:HURT:8d5
+B:PUNCH:HURT:8d5
+F:UNIQUE | MALE | CAN_SPEAK | DROP_CORPSE | FRIENDLY | HUMAN
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:ネオサイタマの底辺を生きる労働者だ。墨絵師の夢をトーフ工場の労災と違法サイボーグ手術で絶たれた
+D:彼は、ある事件を経てテクノカラテに目覚めた。ウカツに喧嘩を売ってはいけない。
+
+N:2019:アフガン航空相撲力士
+G:p:B
+E:Afghan air sumou wrestler
+I:125:60d12:40:90:10
+W:39:3:0:2500:0:0
+B:KICK:HURT:2d10
+B:KICK:HURT:2d10
+B:CRUSH:HURT:2d12
+B:CRUSH:HURT:2d12
+F:PREVENT_SUDDEN_MAGIC | MALE
+F:BASH_DOOR | SUMOU_WRESTLER | CAN_FLY
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID
+F:NO_CONF | NO_FEAR | HUMAN | DROP_2D2
+D:かつてモンゴル帝国の大軍勢すらも
+D:その身一つの空中殺法で撃退したというアフガニスタンの勇士たちだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
