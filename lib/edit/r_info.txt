@@ -37207,6 +37207,21 @@ F:DROP_2D2 | RES_SOUN | RES_COLD | RES_POIS
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:ロードランをさまよう不死者の一団、古き国バルデルの騎士だ。
 
+N:2018:テクノカラテの覚醒者『シガキ・サイゼン』
+E:Saizen Shigaki, Awakener to Techno Karate.
+G:p:b
+I:112:25d10:40:20:3
+W:0:9:0:0:0:0
+B:PUNCH:HURT:8d5
+B:PUNCH:HURT:8d5
+B:PUNCH:HURT:8d5
+F:UNIQUE | MALE | CAN_SPEAK | DROP_CORPSE | FRIENDLY | HUMAN
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:ネオサイタマの底辺を生きる労働者だ。墨絵師の夢をトーフ工場の労災と違法サイボーグ手術で絶たれた
+D:彼は、ある事件を経てテクノカラテに目覚めた。ウカツに喧嘩を売ってはいけない。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
