@@ -448,7 +448,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 
     update_monster(player_ptr, g_ptr->m_idx, true);
 
-    m_ptr->get_real_r_ref().cur_num++;
+    m_ptr->get_real_monrace().cur_num++;
 
     if (any_bits(mode, PM_AMBUSH)) {
         auto m_name = monster_desc(player_ptr, m_ptr, 0);
@@ -462,7 +462,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
      * A unique monster move from old saved floor.
      */
     if (w_ptr->character_dungeon && (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL))) {
-        m_ptr->get_real_r_ref().floor_id = player_ptr->floor_id;
+        m_ptr->get_real_monrace().floor_id = player_ptr->floor_id;
     }
 
     if (any_bits(r_ptr->flags2, RF2_MULTIPLY)) {
