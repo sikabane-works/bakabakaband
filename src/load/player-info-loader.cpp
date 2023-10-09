@@ -19,6 +19,7 @@
 #include "spell-realm/spells-song.h"
 #include "system/angband-exceptions.h"
 #include "system/angband-version.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
@@ -195,9 +196,10 @@ static void set_imitation(PlayerType *player_ptr)
 
 static void rd_phase_out(PlayerType *player_ptr)
 {
+    auto &system = AngbandSystem::get_instance();
     player_ptr->current_floor_ptr->inside_arena = rd_s16b() != 0;
     player_ptr->current_floor_ptr->quest_number = i2enum<QuestId>(rd_s16b());
-    player_ptr->phase_out = rd_s16b() != 0;
+    system.set_watch(rd_s16b() != 0);
 }
 
 static void rd_arena(PlayerType *player_ptr)

@@ -56,6 +56,7 @@
 #include "spell-kind/spells-polymorph.h"
 #include "spell-kind/spells-world.h"
 #include "spell/spells-status.h"
+#include "system/angband-system.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -333,7 +334,9 @@ void do_cmd_building(PlayerType *player_ptr)
     if ((which == 2) && (player_ptr->arena_number < 0)) {
         msg_print(_("「敗者に用はない。」", "'There's no place here for a LOSER like you!'"));
         return;
-    } else if ((which == 2) && player_ptr->current_floor_ptr->inside_arena) {
+    }
+
+    if ((which == 2) && player_ptr->current_floor_ptr->inside_arena) {
         if (!player_ptr->exit_bldg && player_ptr->current_floor_ptr->m_cnt > 0) {
             prt(_("ゲートは閉まっている。モンスターがあなたを待っている！", "The gates are closed.  The monster awaits!"), 0, 0);
         } else {
@@ -344,17 +347,20 @@ void do_cmd_building(PlayerType *player_ptr)
         }
 
         return;
-    } else if (player_ptr->phase_out) {
+    }
+
+    auto &system = AngbandSystem::get_instance();
+    if (system.is_watching()) {
         move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
-        player_ptr->phase_out = false;
+        player_ptr->leaving = true;
+        system.set_watch(false);
         command_new = SPECIAL_KEY_BUILDING;
         energy.reset_player_turn();
         return;
-    } else {
-        player_ptr->oldpy = player_ptr->y;
-        player_ptr->oldpx = player_ptr->x;
     }
 
+    player_ptr->oldpy = player_ptr->y;
+    player_ptr->oldpx = player_ptr->x;
     forget_lite(player_ptr->current_floor_ptr);
     forget_view(player_ptr->current_floor_ptr);
     w_ptr->character_icky_depth++;
@@ -379,7 +385,7 @@ void do_cmd_building(PlayerType *player_ptr)
         if (command == ESCAPE) {
             player_ptr->leave_bldg = true;
             player_ptr->current_floor_ptr->inside_arena = false;
-            player_ptr->phase_out = false;
+            system.set_watch(false);
             break;
         }
 
