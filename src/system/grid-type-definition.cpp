@@ -1,6 +1,7 @@
 #include "system/grid-type-definition.h"
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags7.h"
+#include "system/angband-system.h"
 #include "system/monster-race-info.h"
 #include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -144,4 +145,9 @@ void grid_type::reset_dists()
     for (auto &dist : this->dists) {
         dist = 0;
     }
+}
+
+bool grid_type::has_los() const
+{
+    return any_bits(this->info, CAVE_VIEW) || AngbandSystem::get_instance().is_watching();
 }

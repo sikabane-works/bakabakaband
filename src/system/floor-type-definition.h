@@ -6,6 +6,7 @@
 #include "monster/monster-timed-effect-types.h"
 #include "room/vault-builder.h"
 #include "system/angband.h"
+#include "util/point-2d.h"
 #include <array>
 #include <optional>
 #include <vector>
@@ -98,6 +99,8 @@ public:
 
     std::vector<town_vault> vault_list;
     AllianceType allianceID;
+    grid_type &get_grid(const Pos2D pos);
+    const grid_type &get_grid(const Pos2D pos) const;
     bool is_in_dungeon() const;
     bool is_in_quest() const;
     void set_dungeon_index(short dungeon_idx_); /*!< @todo 後でenum class にする */
@@ -105,4 +108,5 @@ public:
     dungeon_type &get_dungeon_definition() const;
     QuestId get_random_quest_id(std::optional<int> level_opt = std::nullopt) const;
     QuestId get_quest_id(const int bonus = 0) const;
+    bool has_los(const Pos2D pos) const;
 };
