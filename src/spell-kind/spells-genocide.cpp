@@ -78,7 +78,7 @@ bool genocide_aux(PlayerType *player_ptr, MONSTER_IDX m_idx, int power, bool pla
             exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_GENOCIDE, m_name);
         }
 
-        wc_ptr->plus_collapsion(10 + r_ptr->level * 5);
+        wc_ptr->plus_collapsion(10 + monrace.level * 5);
         delete_monster_idx(player_ptr, m_idx);
     }
 
