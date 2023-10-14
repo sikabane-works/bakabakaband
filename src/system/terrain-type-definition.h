@@ -45,6 +45,8 @@ public:
     char x_char[F_LIT_MAX]{}; /*!< 設定変更後の地形シンボルアルファベット / Desired feature character */
     int change_priority;
     int hygiene;
+
+    bool is_permanent_wall() const;
 };
 
 extern std::vector<TerrainType> terrains_info;
