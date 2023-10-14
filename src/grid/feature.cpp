@@ -125,7 +125,7 @@ bool is_trap(PlayerType *player_ptr, FEAT_IDX feat)
 {
     /* 関数ポインタの都合 */
     (void)player_ptr;
-    return terrains_info[feat].flags.has(TerrainCharacteristics::TRAP);
+    return TerrainList::get_instance()[feat].flags.has(TerrainCharacteristics::TRAP);
 }
 
 /*!
@@ -137,10 +137,9 @@ bool is_closed_door(PlayerType *player_ptr, FEAT_IDX feat)
 {
     /* 関数ポインタの都合 */
     (void)player_ptr;
-    auto *f_ptr = &terrains_info[feat];
-
-    return (f_ptr->flags.has(TerrainCharacteristics::OPEN) || f_ptr->flags.has(TerrainCharacteristics::BASH)) &&
-           f_ptr->flags.has_not(TerrainCharacteristics::MOVE);
+    const auto &terrain = TerrainList::get_instance()[feat];
+    return (terrain.flags.has(TerrainCharacteristics::OPEN) || terrain.flags.has(TerrainCharacteristics::BASH)) &&
+           terrain.flags.has_not(TerrainCharacteristics::MOVE);
 }
 
 /*!
@@ -207,12 +206,12 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
-    auto *f_ptr = &terrains_info[feat];
+    const auto &terrain = TerrainList::get_instance()[feat];
     const auto &dungeon = floor_ptr->get_dungeon_definition();
     if (!w_ptr->character_dungeon) {
         g_ptr->mimic = 0;
         g_ptr->feat = feat;
-        if (f_ptr->flags.has(TerrainCharacteristics::GLOW) && dungeon.flags.has_not(DungeonFeatureType::DARKNESS)) {
+        if (terrain.flags.has(TerrainCharacteristics::GLOW) && dungeon.flags.has_not(DungeonFeatureType::DARKNESS)) {
             for (DIRECTION i = 0; i < 9; i++) {
                 POSITION yy = y + ddy_ddd[i];
                 POSITION xx = x + ddx_ddd[i];
@@ -242,7 +241,7 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
         update_local_illumination(player_ptr, y, x);
     }
 
-    if (f_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
+    if (terrain.flags.has_not(TerrainCharacteristics::REMEMBER)) {
         g_ptr->info &= ~(CAVE_MARK);
     }
 
@@ -252,7 +251,7 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
 
     note_spot(player_ptr, y, x);
     lite_spot(player_ptr, y, x);
-    if (old_los ^ f_ptr->flags.has(TerrainCharacteristics::LOS)) {
+    if (old_los ^ terrain.flags.has(TerrainCharacteristics::LOS)) {
         static constexpr auto flags = {
             StatusRecalculatingFlag::VIEW,
             StatusRecalculatingFlag::LITE,
@@ -262,7 +261,7 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
         RedrawingFlagsUpdater::get_instance().set_flags(flags);
     }
 
-    if (f_ptr->flags.has_not(TerrainCharacteristics::GLOW) || dungeon.flags.has(DungeonFeatureType::DARKNESS)) {
+    if (terrain.flags.has_not(TerrainCharacteristics::GLOW) || dungeon.flags.has(DungeonFeatureType::DARKNESS)) {
         return;
     }
 
@@ -294,13 +293,13 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
 
 FEAT_IDX conv_dungeon_feat(FloorType *floor_ptr, FEAT_IDX newfeat)
 {
-    auto *f_ptr = &terrains_info[newfeat];
-    if (f_ptr->flags.has_not(TerrainCharacteristics::CONVERT)) {
+    const auto &terrain = TerrainList::get_instance()[newfeat];
+    if (terrain.flags.has_not(TerrainCharacteristics::CONVERT)) {
         return newfeat;
     }
 
     const auto &dungeon = floor_ptr->get_dungeon_definition();
-    switch (f_ptr->subtype) {
+    switch (terrain.subtype) {
     case CONVERT_TYPE_FLOOR:
         return rand_choice(feat_ground_type);
     case CONVERT_TYPE_WALL:

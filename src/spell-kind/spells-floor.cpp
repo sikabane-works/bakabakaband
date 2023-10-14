@@ -77,6 +77,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
     }
 
     /* Scan all normal grids */
+    const auto &terrains = TerrainList::get_instance();
     for (POSITION y = 1; y < floor.height - 1; y++) {
         /* Scan all normal grids */
         for (POSITION x = 1; x < floor.width - 1; x++) {
@@ -87,8 +88,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
 
             /* Feature code (applying "mimic" field) */
             FEAT_IDX feat = g_ptr->get_feat_mimic();
-            TerrainType *f_ptr;
-            f_ptr = &terrains_info[feat];
+            auto *t_ptr = &terrains[feat];
 
             /* Scan all neighbors */
             for (OBJECT_IDX i = 0; i < 9; i++) {
@@ -97,7 +97,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
                 g_ptr = &floor.grid_array[yy][xx];
 
                 /* Feature code (applying "mimic" field) */
-                f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
+                t_ptr = &terrains[g_ptr->get_feat_mimic()];
 
                 /* Perma-lite the grid */
                 if (floor.get_dungeon_definition().flags.has_not(DungeonFeatureType::DARKNESS) && !ninja) {
@@ -105,7 +105,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
                 }
 
                 /* Memorize normal features */
-                if (f_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
+                if (t_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
                     /* Memorize the grid */
                     g_ptr->info |= (CAVE_MARK);
                 }
@@ -213,6 +213,7 @@ void map_area(PlayerType *player_ptr, POSITION range)
     }
 
     /* Scan that area */
+    const auto &terrains = TerrainList::get_instance();
     for (POSITION y = 1; y < floor.height - 1; y++) {
         for (POSITION x = 1; x < floor.width - 1; x++) {
             if (distance(player_ptr->y, player_ptr->x, y, x) > range) {
@@ -227,11 +228,10 @@ void map_area(PlayerType *player_ptr, POSITION range)
 
             /* Feature code (applying "mimic" field) */
             FEAT_IDX feat = g_ptr->get_feat_mimic();
-            TerrainType *f_ptr;
-            f_ptr = &terrains_info[feat];
+            auto *t_ptr = &terrains[feat];
 
             /* Memorize normal features */
-            if (f_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
+            if (t_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
                 /* Memorize the object */
                 g_ptr->info |= (CAVE_MARK);
             }
@@ -242,10 +242,10 @@ void map_area(PlayerType *player_ptr, POSITION range)
 
                 /* Feature code (applying "mimic" field) */
                 feat = g_ptr->get_feat_mimic();
-                f_ptr = &terrains_info[feat];
+                t_ptr = &terrains[feat];
 
                 /* Memorize walls (etc) */
-                if (f_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
+                if (t_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
                     /* Memorize the walls */
                     g_ptr->info |= (CAVE_MARK);
                 }
