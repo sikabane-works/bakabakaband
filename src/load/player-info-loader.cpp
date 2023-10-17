@@ -199,7 +199,7 @@ static void rd_phase_out(PlayerType *player_ptr)
     auto &system = AngbandSystem::get_instance();
     player_ptr->current_floor_ptr->inside_arena = rd_s16b() != 0;
     player_ptr->current_floor_ptr->quest_number = i2enum<QuestId>(rd_s16b());
-    system.set_watch(rd_s16b() != 0);
+    system.set_phase_out(rd_s16b() != 0);
 }
 
 static void rd_arena(PlayerType *player_ptr)

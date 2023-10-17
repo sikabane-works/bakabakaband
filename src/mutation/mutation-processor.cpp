@@ -144,7 +144,7 @@ void process_world_aux_sudden_attack(PlayerType *player_ptr)
  */
 void process_world_aux_mutation(PlayerType *player_ptr)
 {
-    if (player_ptr->muta.none() || AngbandSystem::get_instance().is_watching() || player_ptr->wild_mode) {
+    if (player_ptr->muta.none() || AngbandSystem::get_instance().is_phase_out() || player_ptr->wild_mode) {
         return;
     }
 

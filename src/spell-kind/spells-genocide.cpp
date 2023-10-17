@@ -126,7 +126,7 @@ bool symbol_genocide(PlayerType *player_ptr, int power, bool player_cast)
     auto &floor = *player_ptr->current_floor_ptr;
     bool is_special_floor = floor.is_in_quest() && !inside_quest(floor.get_random_quest_id());
     is_special_floor |= floor.inside_arena;
-    is_special_floor |= AngbandSystem::get_instance().is_watching();
+    is_special_floor |= AngbandSystem::get_instance().is_phase_out();
     if (is_special_floor) {
         msg_print(_("何も起きないようだ……", "Nothing seems to happen..."));
         return false;
@@ -173,7 +173,7 @@ bool mass_genocide(PlayerType *player_ptr, int power, bool player_cast)
     auto &floor = *player_ptr->current_floor_ptr;
     bool is_special_floor = floor.is_in_quest() && !inside_quest(floor.get_random_quest_id());
     is_special_floor |= floor.inside_arena;
-    is_special_floor |= AngbandSystem::get_instance().is_watching();
+    is_special_floor |= AngbandSystem::get_instance().is_phase_out();
     if (is_special_floor) {
         return false;
     }
@@ -210,7 +210,7 @@ bool mass_genocide_undead(PlayerType *player_ptr, int power, bool player_cast)
     auto &floor = *player_ptr->current_floor_ptr;
     bool is_special_floor = floor.is_in_quest() && !inside_quest(floor.get_random_quest_id());
     is_special_floor |= floor.inside_arena;
-    is_special_floor |= AngbandSystem::get_instance().is_watching();
+    is_special_floor |= AngbandSystem::get_instance().is_phase_out();
     if (is_special_floor) {
         return false;
     }

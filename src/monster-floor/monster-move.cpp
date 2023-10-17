@@ -559,7 +559,7 @@ static void speaking(PlayerType *player_ptr, const MonsterEntity &monster)
  */
 void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox, bool aware)
 {
-    if (AngbandSystem::get_instance().is_watching()) {
+    if (AngbandSystem::get_instance().is_phase_out()) {
         return;
     }
 
