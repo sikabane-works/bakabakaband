@@ -220,7 +220,7 @@ void map_area(PlayerType *player_ptr, POSITION range)
                 continue;
             }
 
-            grid_type *g_ptr;
+            Grid *g_ptr;
             g_ptr = &floor.grid_array[y][x];
 
             /* Memorize terrain of the grid */
@@ -311,7 +311,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
             if (k > r) {
                 continue;
             }
-            grid_type *g_ptr;
+            Grid *g_ptr;
             g_ptr = &floor_ptr->grid_array[y][x];
 
             /* Lose room and vault */
@@ -455,7 +455,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
             if (k > r) {
                 continue;
             }
-            grid_type *g_ptr;
+            Grid *g_ptr;
             g_ptr = &floor_ptr->grid_array[y][x];
 
             if (g_ptr->is_mirror()) {
@@ -469,7 +469,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
 
             DIRECTION i;
             POSITION yy, xx;
-            grid_type *cc_ptr;
+            Grid *cc_ptr;
 
             for (i = 0; i < 9; i++) {
                 yy = y + ddy_ddd[i];

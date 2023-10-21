@@ -319,7 +319,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
 {
     POSITION dx, dy, x, y, i, j;
     concptr t;
-    grid_type *g_ptr;
+    Grid *g_ptr;
     POSITION ymax = v_ptr->hgt;
     POSITION xmax = v_ptr->wid;
     concptr data = v_ptr->text.c_str();
