@@ -9805,8 +9805,8 @@ D:$A sentient arcane tome casting spells with malevolent intent.
 D:意識を持った秘密の書で、悪意を持って呪文を唱えてくる。
 
 #J0#
-N:558:巨像
-E:Colossus
+N:558:石の巨像
+E:Stone Colossus
 T:COLOSSUS
 G:g:y
 I:105:30d100:15:150:10
@@ -29151,7 +29151,7 @@ W:10:1:0:20:0:0
 B:TOUCH:HURT:8d4
 B:TOUCH:HURT:8d4
 F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
-F:HAS_LITE_1 | EVIL | MALE | HUMAN | ELDRAZI | ALLIANCE_ELDRAZI
+F:HAS_LITE_1 | EVIL | MALE | HUMAN | ELDRAZI | ALLIANCE_ELDRAZI | NO_FEAR
 D:エムラクールの影響を受けて、異形と成り果てたイニストラードの住人だ。
 
 N:1516:ウッド・エレメンタル
@@ -37305,6 +37305,55 @@ F:WEIRD_MIND | FRIENDS | CAN_FLY | WILD_ALL |
 F:ANIMAL | RES_NETH | RES_CHAO | RES_DISE | IM_COLD | NO_FEAR | NO_CONF
 D:十六小地獄の一つ、膿血地獄で罪人を苛む大きな虫だ。
 D:生前に腹黒く、人に汚物を食わせた愚者の肉を喰らい続けるという。
+
+N:2025:ワープストーン・ゴーレム
+E:Warpstone golem
+G:g:G
+I:105:100d15:12:105:10
+W:44:4:0:1200:0:0
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+F:ONLY_GOLD | DROP_2D2 | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING |
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_CHAO | RES_DISE
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_10
+S:BO_NETH | SLOW | CONF | BR_CHAO
+D:かのスケイヴンの技術者集団、スクリール族の産物であろうか？
+D:彼ら自身にすら破滅を齎しかねない物質を贅沢にゴーレムに仕上げた危険な兵器だ！
+
+N:2026:ダークスティールの巨像
+E:Darksteel Colossus
+T:DARKSTEEL_COLOSSUS
+G:g:D
+I:104:30d100:15:200:10
+W:55:3:0:11000:0:0
+B:HIT:HURT:14d10
+B:HIT:HURT:14d10
+B:HIT:HURT:12d6
+B:HIT:HURT:12d6
+F:FORCE_MAXHP | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | 
+F:IM_POIS | NONLIVING | REFLECTING |
+F:NO_CONF | NO_SLEEP | NO_FEAR | RES_CHAO | RES_DISE | RES_NEXU
+V:75
+D:ミラディンの極めて強固な金属、ダークスティールで出来た巨像だ。
+D:大きく丈夫なものが強いというのは当然の摂理だ。
+
+N:2027:ファイレクシアへの培養者
+E:Incubated phyrexian
+G:H:D
+I:110:18d8:10:35:10
+W:10:1:0:20:0:0
+B:HIT:HURT:7d4
+B:HIT:HURT:7d4
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
+F:HAS_LITE_1 | EVIL | ALLIANCE_PHYREXIAN | NO_FEAR
+D:新ファイレクシアの大修道士エリシュ・ノーンの多元宇宙支配の下、
+D:現地でファイレクシアの油に屈した住人たちだ。
 
 # N: serial number : monster name
 # G: symbol : color
