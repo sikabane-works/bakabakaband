@@ -547,7 +547,7 @@ static const MonsterEntity *monster_on_floor_items(FloorType *floor_ptr, const G
  * @param y 参照する座標グリッドのy座標
  * @param x 参照する座標グリッドのx座標
  */
-static void display_floor_item_list(PlayerType *player_ptr, const int y, const int x)
+static void display_floor_item_list(PlayerType *player_ptr, const Pos2D &pos)
 {
     const auto &[wid, hgt] = term_get_size();
     if (hgt <= 0) {
@@ -558,19 +558,19 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
     term_gotoxy(0, 0);
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    const auto *g_ptr = &floor_ptr->grid_array[y][x];
-    char line[1024];
+    const auto *g_ptr = &floor_ptr->get_grid(pos);
+    std::string line;
 
     // 先頭行を書く。
     auto is_hallucinated = player_ptr->effects()->hallucination()->is_hallucinated();
-    if (player_bold(player_ptr, y, x)) {
-        sprintf(line, _("(X:%03d Y:%03d) あなたの足元のアイテム一覧", "Items at (%03d,%03d) under you"), x, y);
+    if (player_ptr->is_located_at(pos)) {
+        line = format(_("(X:%03d Y:%03d) あなたの足元のアイテム一覧", "Items at (%03d,%03d) under you"), pos.x, pos.y);
     } else if (const auto *m_ptr = monster_on_floor_items(floor_ptr, g_ptr); m_ptr != nullptr) {
         if (is_hallucinated) {
-            sprintf(line, _("(X:%03d Y:%03d) 何か奇妙な物の足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under something strange"), x, y);
+            line = format(_("(X:%03d Y:%03d) 何か奇妙な物の足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under something strange"), pos.x, pos.y);
         } else {
             const MonsterRaceInfo *const r_ptr = &m_ptr->get_appearance_monrace();
-            sprintf(line, _("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), x, y, r_ptr->name.data());
+            line = format(_("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), pos.x, pos.y, r_ptr->name.data());
         }
     } else {
         const TerrainType *const f_ptr = &terrains_info[g_ptr->feat];
@@ -584,7 +584,7 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
         } else {
             sprintf(buf, _("%s", "on %s"), fn);
         }
-        sprintf(line, _("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), x, y, buf);
+        line = format(_("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), pos.x, pos.y, buf);
     }
     term_addstr(-1, TERM_WHITE, line);
 
@@ -624,7 +624,7 @@ void fix_floor_item_list(PlayerType *player_ptr, const int y, const int x)
 {
     display_sub_windows(SubWindowRedrawingFlag::FLOOR_ITEMS,
         [player_ptr, y, x] {
-            display_floor_item_list(player_ptr, y, x);
+            display_floor_item_list(player_ptr, { y, x });
         });
 }
 
