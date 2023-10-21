@@ -9805,8 +9805,8 @@ D:$A sentient arcane tome casting spells with malevolent intent.
 D:意識を持った秘密の書で、悪意を持って呪文を唱えてくる。
 
 #J0#
-N:558:巨像
-E:Colossus
+N:558:石の巨像
+E:Stone Colossus
 T:COLOSSUS
 G:g:y
 I:105:30d100:15:150:10
@@ -37305,6 +37305,25 @@ F:WEIRD_MIND | FRIENDS | CAN_FLY | WILD_ALL |
 F:ANIMAL | RES_NETH | RES_CHAO | RES_DISE | IM_COLD | NO_FEAR | NO_CONF
 D:十六小地獄の一つ、膿血地獄で罪人を苛む大きな虫だ。
 D:生前に腹黒く、人に汚物を食わせた愚者の肉を喰らい続けるという。
+
+N:2025:ワープストーン・ゴーレム
+E:Warpstone golem
+G:g:G
+I:105:100d15:12:105:10
+W:44:4:0:1200:0:0
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+B:HIT:CONFUSE:8d6
+F:ONLY_GOLD | DROP_2D2 | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING |
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_CHAO | RES_DISE
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_10
+S:BO_NETH | SLOW | CONF | BR_CHAO
+D:かのスケイヴンの技術者集団、スクリール族の産物であろうか？
+D:彼ら自身にすら破滅を齎しかねない物質を贅沢にゴーレムに仕上げた危険な兵器だ！
+
 
 # N: serial number : monster name
 # G: symbol : color
