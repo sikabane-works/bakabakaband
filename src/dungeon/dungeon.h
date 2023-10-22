@@ -41,7 +41,7 @@
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
 #define DUNGEON_VOID_TERRITORY 23
-#define DUNGEON_MAX 30
+#define DUNGEON_MAX 31
 
 enum class MonsterRaceId : int16_t;
 
