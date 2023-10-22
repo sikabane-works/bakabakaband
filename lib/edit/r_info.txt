@@ -30545,7 +30545,7 @@ F:UNIQUE | MALE | HUMAN |
 F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | 
-F:NO_STUN | NO_CONF | NO_SLEEP
+F:NO_STUN | NO_CONF | NO_SLEEP | NO_FEAR
 D:かつて妻子を愛し、正義感に溢れる警察官であったこの男は、
 D:アーリアン・ファミリーのボス、ビッグ・アイの残酷無比な拷問の果てに
 D:狂気の殺戮者になった哀しき過去を持つ。
@@ -37354,6 +37354,42 @@ F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE
 F:HAS_LITE_1 | EVIL | ALLIANCE_PHYREXIAN | NO_FEAR
 D:新ファイレクシアの大修道士エリシュ・ノーンの多元宇宙支配の下、
 D:現地でファイレクシアの油に屈した住人たちだ。
+
+N:2028:アーリアン・ファミリーのボス『ビッグ・アイ』
+E:Big Eye, the Boss of Aryan Family
+G:p:o
+I:116:10d120:100:90:10
+W:40:3:0:5000:0:0
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+F:UNIQUE | MALE | HUMAN | EVIL
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | 
+F:NO_FEAR | NO_CONF | NO_SLEEP
+F:SPAWN_CREATURE_1_IN_11_1297
+S:1_IN_2 | CAUSE_1 | CAUSE_2 | CAUSE_3
+R:1297:5d10
+D:女預言者にして学者、ヒルデガルト・フォン・ビンゲンの末裔であり、
+D:大災害で世界が滅びた後のマンハッタンで
+D:アーリアン・ファミリーの長を務める残虐無比な支配者だ。
+
+N:2029:コーラルリリースの末裔
+E:Scion of Coral Release
+G:P:b
+I:130:60d60:30:150:20
+W:51:2:0:14500:0:0
+B:PUNCH:HURT:20d2
+B:KICK:HURT:20d2
+B:SHOOT:HURT:50d2
+F:DROP_GOOD | REGENERATE | CAN_FLY | NONLIVING
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | ONLY_ITEM | DROP_3D2
+F:OPEN_DOOR | BASH_DOOR | RES_TELE | KILL_BODY |
+F:IM_ACID | IM_COLD | IM_POIS | NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_6 | SHOOT | BO_MANA | ROCKET
+D:とある未来、惑星ルビコンで起こされた宇宙的変容の果てに生まれた者達だ。
+D:────メインシステム、戦闘モード起動。
 
 # N: serial number : monster name
 # G: symbol : color
