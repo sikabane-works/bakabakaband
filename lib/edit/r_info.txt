@@ -6225,23 +6225,24 @@ D:$A scarred warrior who moves with confidence.
 D:傷だらけの戦士で、自信に満ちた足どりで歩んでいる。
 
 #J0#
-N:373:ウルク=ハイの大王『アゾグ』
-E:Azog, King of the Uruk-Hai
+N:373:モリアのオーク王『アゾグ』
+E:Azog, Orcish King of Moria
 G:o:r
-I:120:90d10:20:80:20
-W:23:5:0:1111:0:0
-B:HIT:HURT:5d5
-B:HIT:HURT:5d5
-B:HIT:HURT:5d5
+I:120:90d20:20:100:10
+W:43:3:0:6000:0:0
+B:SLASH:HURT:11d5
+B:SLASH:HURT:11d5
+B:PUNCH:HURT:7d5
+B:KICK:HURT:5d7
 F:UNIQUE | MALE | CAN_SPEAK |
 F:FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
 F:ESCORT | ESCORTS | EAT_POISONOUS
 F:DROP_2D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
-F:EVIL | ORC | IM_POIS | RES_DARK
-D:$He is also known as the King of Khazad-dum.  His ego is renowned to be 
-D:$bigger than his head.
-D:彼はまたカザド=ドゥムの大王としても知られている。彼はとほうもない
-D:うぬぼれやだ。
+F:EVIL | ORC | IM_POIS | RES_DARK | IM_FIRE | IM_ELEC | IM_POIS | RES_NETH
+S:1_IN_4 | CAUSE_3 | BO_FIRE | BA_FIRE | HOLD
+D:かつて、多くの種族が血で血を洗い奪い合ったモリアの鉱山を、
+D:最も長くオークの支配下に置いた王朝の始祖だ。ウトゥムノの祖神達に敬虔であり、
+D:その末裔を招き奉ったという。
 
 #JZ#
 N:374:<コーン>の腐肉犬
