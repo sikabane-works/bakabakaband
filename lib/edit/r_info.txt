@@ -37392,6 +37392,22 @@ S:1_IN_6 | SHOOT | BO_MANA | ROCKET
 D:とある未来、惑星ルビコンで起こされた宇宙的変容の果てに生まれた者達だ。
 D:────メインシステム、戦闘モード起動。
 
+N:2030:姫騎士
+E:Princess knight
+G:p:w
+I:109:4d10:20:25:5
+W:5:4:0:20:0:0
+B:HIT:HURT:2d3
+B:HIT:HURT:2d3
+F:FEMALE | GOOD | HAS_LITE_1 | HUMAN |
+F:PREVENT_SUDDEN_MAGIC | 
+F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE | STUPID
+F:OPEN_DOOR | BASH_DOOR | EAT_GIVE_WIS | EAT_LOSE_INT | PALADIN
+S:1_IN_9 | 
+S:SCARE | CAUSE_1
+D:お約束お馴染みのアレだ。
+D:色んな相手にあひゃって、んほぉるだけに生まれた存在で、戦力としてクッソ無能だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
