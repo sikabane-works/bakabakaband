@@ -7,6 +7,7 @@ class PlayerType;
 
 class WorldCollapsion {
 public:
+    const int32_t OVER_COLLAPSION_DEGREE = 100000000LL;
     WorldCollapsion();
     void plus_timed_world_collapsion(world_type *w_ptr, PlayerType *player_ptr, int multi);
     void plus_collapsion(int value);
