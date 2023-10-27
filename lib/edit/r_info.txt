@@ -37464,6 +37464,24 @@ S:1_IN_4 | BO_ELEC | BA_ELEC
 D:$This big serpentine creature can create a deadly voltage. 
 D:この巨大な曲がりくねった生き物は致命的な電圧を発する事ができる。
 
+N:2034:サイコフレーム・ゴーレム
+E:Psycho frame golem
+G:g:G
+I:110:80d20:100:100:10
+W:53:4:0:16000:0:0
+B:HIT:HURT:10d8
+B:HIT:HURT:10d8
+B:HIT:HURT:10d5
+B:HIT:HURT:10d5
+S:1_IN_3 | BRAIN_SMASH | BR_TIME | BLINK | TELE_TO
+F:ONLY_GOLD | DROP_2D2 | FORCE_MAXHP
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | REFLECTING | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS | RES_TIME
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | NO_STUN
+D:それは未来の素材で魔法的に作られたゴーレムだ。
+D:本来の用途にはそぐわない様だが、最上級の脅威であることは変わらない。
+
+
 
 # N: serial number : monster name
 # G: symbol : color
