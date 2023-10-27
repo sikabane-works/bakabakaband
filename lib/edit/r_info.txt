@@ -5765,7 +5765,7 @@ N:346:電気ウナギ
 E:Electric eel
 G:J:B
 I:110:15d15:15:40:70
-W:20:2:0:145:0:0
+W:20:2:0:145:2500:2033
 B:TOUCH:ELEC:2d7
 B:TOUCH:ELEC:7d2
 B:TOUCH:ELEC:2d7
@@ -37450,6 +37450,20 @@ S:BO_MANA | BA_COLD
 V:150
 D:邪神兵と共に惑星シャンカラに眠っていた古代兵器だ。
 D:その出現共にどこからともなく姿を現すが、その正体は邪神兵に増して謎めいている。
+
+N:2033:巨大電気ウナギ
+E:Gigantic Electric eel
+G:J:b
+I:110:60d15:15:80:70
+W:20:2:0:145:0:0
+B:TOUCH:ELEC:12d7
+B:TOUCH:ELEC:7d12
+B:TOUCH:ELEC:12d7
+F:AQUATIC | ANIMAL | RAND_25 | IM_ELEC | RES_WATE | WILD_ALL |
+S:1_IN_4 | BO_ELEC | BA_ELEC
+D:$This big serpentine creature can create a deadly voltage. 
+D:この巨大な曲がりくねった生き物は致命的な電圧を発する事ができる。
+
 
 # N: serial number : monster name
 # G: symbol : color
