@@ -90,7 +90,7 @@ bool new_player_spot(PlayerType *player_ptr)
             continue;
         }
         if (floor.is_in_dungeon()) {
-            const auto &terrain = terrains_info[grid.feat];
+            const auto &terrain = grid.get_terrain();
 
             if (max_attempts > 5000) /* Rule 1 */
             {
@@ -843,7 +843,7 @@ bool cave_monster_teleportable_bold(PlayerType *player_ptr, MONSTER_IDX m_idx, P
     const Pos2D pos(y, x);
     const auto &floor = *player_ptr->current_floor_ptr;
     const auto &grid = floor.get_grid(pos);
-    const auto &terrain = terrains_info[grid.feat];
+    const auto &terrain = grid.get_terrain();
 
     /* Require "teleportable" space */
     if (terrain.flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
@@ -885,7 +885,7 @@ bool cave_player_teleportable_bold(PlayerType *player_ptr, POSITION y, POSITION 
 {
     const Pos2D pos(y, x);
     const auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
-    const auto &terrain = terrains_info[grid.feat];
+    const auto &terrain = grid.get_terrain();
 
     /* Require "teleportable" space */
     if (terrain.flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {

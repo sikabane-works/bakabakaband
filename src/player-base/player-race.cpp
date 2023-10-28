@@ -153,15 +153,15 @@ int16_t PlayerRace::speed() const
         if (this->equals(PlayerRaceType::KLACKON) || this->equals(PlayerRaceType::SPRITE)) {
             result += (this->player_ptr->lev) / 10;
         }
+    }
 
-        if (this->equals(PlayerRaceType::MERFOLK)) {
-            const auto &floor = *this->player_ptr->current_floor_ptr;
-            const auto &terrain = terrains_info[floor.get_grid(this->player_ptr->get_position()).feat];
-            if (terrain.flags.has(TerrainCharacteristics::WATER)) {
-                result += (2 + this->player_ptr->lev / 10);
-            } else if (!this->player_ptr->levitation) {
-                result -= 2;
-            }
+    if (this->equals(PlayerRaceType::MERFOLK)) {
+        const auto &floor = *this->player_ptr->current_floor_ptr;
+        const auto &terrain = floor.get_grid(this->player_ptr->get_position()).get_terrain();
+        if (terrain.flags.has(TerrainCharacteristics::WATER)) {
+            result += (2 + this->player_ptr->lev / 10);
+        } else if (!this->player_ptr->levitation) {
+            result -= 2;
         }
     }
 

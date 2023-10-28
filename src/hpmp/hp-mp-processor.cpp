@@ -66,7 +66,7 @@
 static bool deal_damege_by_feat(PlayerType *player_ptr, const Grid &grid, concptr msg_levitation, concptr msg_normal,
     std::function<PERCENTAGE(PlayerType *)> damage_rate, std::function<void(PlayerType *, int)> additional_effect)
 {
-    const auto &terrain = terrains_info[grid.feat];
+    const auto &terrain = grid.get_terrain();
     auto damage = 0;
     if (terrain.flags.has(TerrainCharacteristics::CHAOS_TAINTED) || terrain.flags.has(TerrainCharacteristics::PLASMA)) {
         damage = 12000 + randint0(8000);
@@ -119,7 +119,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
 {
     const auto &floor = *player_ptr->current_floor_ptr;
     const auto &grid = floor.get_grid(player_ptr->get_position());
-    const auto &terrain = terrains_info[grid.feat];
+    const auto &terrain = grid.get_terrain();
     bool cave_no_regen = false;
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
