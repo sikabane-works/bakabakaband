@@ -72,7 +72,7 @@ void wiz_debug_spell(PlayerType *player_ptr)
     }
 
     for (const auto &d : debug_spell_commands_list) {
-        if (spell.value() != d.command_name) {
+        if (*spell != d.command_name) {
             continue;
         }
 
@@ -86,7 +86,7 @@ void wiz_debug_spell(PlayerType *player_ptr)
                 return;
             }
 
-            (d.command_function.spell3.spell_function)(player_ptr, power.value());
+            (d.command_function.spell3.spell_function)(player_ptr, *power);
             return;
         }
         case 4: {
@@ -234,7 +234,7 @@ void wiz_summon_specific_monster(PlayerType *player_ptr, MonsterRaceId r_idx)
             return;
         }
 
-        r_idx = new_monrace_id.value();
+        r_idx = *new_monrace_id;
     }
 
     (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
@@ -281,7 +281,7 @@ void wiz_summon_pet(PlayerType *player_ptr, MonsterRaceId r_idx)
             return;
         }
 
-        r_idx = new_monrace_id.value();
+        r_idx = *new_monrace_id;
     }
 
     (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_FORCE_PET);
@@ -303,7 +303,7 @@ void wiz_kill_target(PlayerType *player_ptr, int initial_dam, AttributeType effe
             return;
         }
 
-        dam = input_dam.value();
+        dam = *input_dam;
     }
 
     constexpr auto max = enum2i(AttributeType::MAX);
@@ -327,7 +327,7 @@ void wiz_kill_target(PlayerType *player_ptr, int initial_dam, AttributeType effe
             return;
         }
 
-        idx = input_effect_id.value();
+        idx = *input_effect_id;
         screen_load();
     }
 
