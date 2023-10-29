@@ -137,8 +137,8 @@ static std::string get_describing_monster_name(const MonsterEntity &monster, con
     if (one_in_(2)) {
         constexpr auto filename = _("silly_j.txt", "silly.txt");
         const auto silly_name = get_random_line(filename, enum2i(monster.r_idx));
-        if (silly_name.has_value()) {
-            return silly_name.value();
+        if (silly_name) {
+            return *silly_name;
         }
     }
 
@@ -191,8 +191,8 @@ static std::optional<std::string> get_fake_monster_name(const PlayerType &player
 static std::string describe_non_pet(const PlayerType &player, const MonsterEntity &monster, const std::string &name, const BIT_FLAGS mode)
 {
     const auto fake_name = get_fake_monster_name(player, monster, name, mode);
-    if (fake_name.has_value()) {
-        return fake_name.value();
+    if (fake_name) {
+        return *fake_name;
     }
 
     if (any_bits(mode, MD_INDEF_VISIBLE)) {
@@ -242,13 +242,13 @@ static std::string add_cameleon_name(const MonsterEntity &monster, const BIT_FLA
 std::string monster_desc(PlayerType *player_ptr, const MonsterEntity *m_ptr, BIT_FLAGS mode)
 {
     const auto pronoun = decide_monster_personal_pronoun(*m_ptr, mode);
-    if (pronoun.has_value()) {
-        return pronoun.value();
+    if (pronoun) {
+        return *pronoun;
     }
 
     const auto pronoun_self = get_monster_self_pronoun(*m_ptr, mode);
-    if (pronoun_self.has_value()) {
-        return pronoun_self.value();
+    if (pronoun_self) {
+        return *pronoun_self;
     }
 
     const auto is_hallucinated = player_ptr->effects()->hallucination()->is_hallucinated();
