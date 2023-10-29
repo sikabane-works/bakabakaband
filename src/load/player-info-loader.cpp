@@ -209,7 +209,7 @@ static void rd_arena(PlayerType *player_ptr)
     player_ptr->town_num = rd_s16b();
     player_ptr->arena_number = rd_s16b();
     rd_phase_out(player_ptr);
-    player_ptr->exit_bldg = rd_byte();
+    w_ptr->set_arena(rd_bool());
     strip_bytes(1);
 
     player_ptr->oldpx = rd_s16b();

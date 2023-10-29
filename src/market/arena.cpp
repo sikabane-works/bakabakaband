@@ -98,7 +98,7 @@ static bool check_battle_metal_babble(PlayerType *player_ptr)
     msg_print(_("死ぬがよい。", "Die, maggots."));
     msg_print(nullptr);
 
-    player_ptr->exit_bldg = false;
+    w_ptr->set_arena(false);
     reset_tim_flags(player_ptr);
 
     /* Save the surface floor as saved floor */
@@ -137,7 +137,7 @@ static bool go_to_arena(PlayerType *player_ptr)
         return false;
     }
 
-    player_ptr->exit_bldg = false;
+    w_ptr->set_arena(false);
     reset_tim_flags(player_ptr);
     move_floor(player_ptr, CFM_SAVE_FLOORS);
 
