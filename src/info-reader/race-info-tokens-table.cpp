@@ -135,6 +135,39 @@ const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effec
 };
 
 /*!
+ * モンスター特性トークンの定義1 /
+ * Monster race flags
+ */
+const std::unordered_map<std::string_view, MonsterMiscType> r_info_flags1 = {
+    { "QUESTOR", MonsterMiscType::QUESTOR },
+    { "FORCE_DEPTH", MonsterMiscType::FORCE_DEPTH },
+    { "FORCE_MAXHP", MonsterMiscType::FORCE_MAXHP },
+    { "FORCE_EXTRA", MonsterMiscType::FORCE_EXTRA },
+    { "FRIENDS", MonsterMiscType::FRIENDS },
+    { "ESCORT", MonsterMiscType::ESCORT },
+    { "ESCORTS", MonsterMiscType::ESCORTS },
+};
+
+/*!
+ * モンスター特性トークンの定義2 /
+ * Monster race flags
+ */
+const std::unordered_map<std::string_view, MonsterMiscType> r_info_flags2 = {
+    { "REFLECTING", MonsterMiscType::REFLECTING },
+    { "INVISIBLE", MonsterMiscType::INVISIBLE },
+    { "COLD_BLOOD", MonsterMiscType::COLD_BLOOD },
+    { "EMPTY_MIND", MonsterMiscType::EMPTY_MIND },
+    { "WEIRD_MIND", MonsterMiscType::WEIRD_MIND },
+    { "MULTIPLY", MonsterMiscType::MULTIPLY },
+    { "REGENERATE", MonsterMiscType::REGENERATE },
+    { "CHAR_MULTI", MonsterMiscType::CHAR_MULTI },
+    { "POWERFUL", MonsterMiscType::POWERFUL },
+    { "ELDRITCH_HORROR", MonsterMiscType::ELDRITCH_HORROR },
+    { "VOCIFEROUS", MonsterMiscType::VOCIFEROUS },
+    { "FLAGS2_XX15", MonsterMiscType::XX15 },
+};
+
+/*!
  * モンスター特性トークン (発動型能力) /
  * Monster race flags
  */
@@ -473,34 +506,6 @@ const std::unordered_map<std::string_view, MonsterBrightnessType> r_info_brightn
     { "SELF_DARK_1", MonsterBrightnessType::SELF_DARK_1 },
     { "HAS_DARK_2", MonsterBrightnessType::HAS_DARK_2 },
     { "SELF_DARK_2", MonsterBrightnessType::SELF_DARK_2 },
-};
-
-const std::unordered_map<std::string_view, MonsterMiscType> r_info_misc_flags = {
-    { "FORCE_DEPTH", MonsterMiscType::FORCE_DEPTH },
-    { "FORCE_MAXHP", MonsterMiscType::FORCE_MAXHP },
-    { "FRIENDS", MonsterMiscType::HAS_FRIENDS },
-    { "ESCORT", MonsterMiscType::ESCORT },
-    { "ESCORTS", MonsterMiscType::MORE_ESCORT },
-    { "RIDING", MonsterMiscType::RIDING },
-    { "INVISIBLE", MonsterMiscType::INVISIBLE },
-    { "COLD_BLOOD", MonsterMiscType::COLD_BLOOD },
-    { "KAGE", MonsterMiscType::KAGE },
-    { "CHAMELEON", MonsterMiscType::CHAMELEON },
-    { "TANUKI", MonsterMiscType::TANUKI },
-    { "NO_QUEST", MonsterMiscType::NO_QUEST },
-    { "ELDRITCH_HORROR", MonsterMiscType::ELDRITCH_HORROR },
-    { "MULTIPLY", MonsterMiscType::MULTIPLY },
-    { "REGENERATE", MonsterMiscType::REGENERATE },
-    { "POWERFUL", MonsterMiscType::POWERFUL },
-    { "REFLECTING", MonsterMiscType::REFLECTING },
-    { "QUESTOR", MonsterMiscType::QUESTOR },
-    { "EMPTY_MIND", MonsterMiscType::EMPTY_MIND },
-    { "WEIRD_MIND", MonsterMiscType::WEIRD_MIND },
-    { "VOCIFEROUS", MonsterMiscType::VOCIFEROUS },
-};
-
-const std::unordered_map<std::string_view, MonsterSpecialType> r_info_special_flags = {
-    { "DIMINISH_MAX_DAMAGE", MonsterSpecialType::DIMINISH_MAX_DAMAGE },
 };
 
 const std::unordered_map<std::string_view, MonsterSex> r_info_sex = {

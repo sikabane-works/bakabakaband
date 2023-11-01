@@ -39,6 +39,5 @@ extern const std::unordered_map<std::string_view, MonsterFeatureType> r_info_fea
 extern const std::unordered_map<std::string_view, MonsterPopulationType> r_info_population_flags;
 extern const std::unordered_map<std::string_view, MonsterSpeakType> r_info_speak_flags;
 extern const std::unordered_map<std::string_view, MonsterBrightnessType> r_info_brightness_flags;
-extern const std::unordered_map<std::string_view, MonsterSpecialType> r_info_special_flags;
-extern const std::unordered_map<std::string_view, MonsterSex> r_info_sex;
-extern const std::unordered_map<std::string_view, MonsterMiscType> r_info_misc_flags;
+extern const std::unordered_map<std::string_view, MonsterMiscType> r_info_flags1;
+extern const std::unordered_map<std::string_view, MonsterMiscType> r_info_flags2;

@@ -23,6 +23,11 @@ enum class MonsterMiscType {
     WEIRD_MIND = 19,
     GUARDIAN = 20,
     VOCIFEROUS = 21,
+    FORCE_EXTRA = 22,
+    FRIENDS = 23,
+    ESCORTS = 24,
+    CHAR_MULTI = 25,
+    XX15 = 26,
     MAX
 };
 
