@@ -1,4 +1,4 @@
-#include "info-reader/race-info-tokens-table.h"
+﻿#include "info-reader/race-info-tokens-table.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/race-ability-flags.h"
@@ -7,6 +7,7 @@
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-population-flags.h"
+#include "monster-race/race-sex-const.h"
 #include "monster-race/race-speak-flags.h"
 #include "monster-race/race-special-flags.h"
 #include "monster-race/race-visual-flags.h"
@@ -101,8 +102,6 @@ const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effec
  */
 const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
     { "QUESTOR", RF1_QUESTOR },
-    { "MALE", RF1_MALE },
-    { "FEMALE", RF1_FEMALE },
     { "FORCE_DEPTH", RF1_FORCE_DEPTH },
     { "FORCE_MAXHP", RF1_FORCE_MAXHP },
     { "FORCE_EXTRA", RF1_FORCE_EXTRA },
@@ -531,4 +530,10 @@ const std::unordered_map<std::string_view, MonsterBrightnessType> r_info_brightn
 
 const std::unordered_map<std::string_view, MonsterSpecialType> r_info_special_flags = {
     { "DIMINISH_MAX_DAMAGE", MonsterSpecialType::DIMINISH_MAX_DAMAGE },
+};
+
+const std::unordered_map<std::string_view, MonsterSex> r_info_sex = {
+    { "NONE", MonsterSex::NONE },
+    { "MALE", MonsterSex::MALE },
+    { "FEMALE", MonsterSex::FEMALE },
 };
