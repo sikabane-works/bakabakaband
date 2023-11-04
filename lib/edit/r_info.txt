@@ -37565,6 +37565,26 @@ S:1_IN_8 | BR_GRAV
 D:$A crackling ball of energy.
 D:周囲の重力を乱し続ける漆黒の球体だ。
 
+N:2041:TUNED GRシリーズ
+E:TUNED AR Series 
+G:g:D
+I:123:20d170:70:260:20
+W:56:3:0:18000:0:0
+B:PUNCH:HURT:11d12
+B:PUNCH:HURT:11d12
+B:KICK:HURT:10d14
+B:KICK:HURT:10d14
+F:DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | MOB_9
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | MALE | HUMAN |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR | WARRIOR
+F:IM_COLD | IM_FIRE | IM_ACID | NO_CONF | NO_STUN |
+F:NO_SLEEP | RES_TELE | RES_NETH | CAN_SWIM
+S:1_IN_8 | 
+S:HASTE | ROCKET | BO_MANA
+D:ザレム地上監察局の実働組織、TUNEDが工作員ガリィの精神的不安定さと
+D:叛逆の可能性を厭って作った代替ロボット「ガリィ・レプリカ」だ。
+D:オリジナルがそれまでに見せてきた機甲術の忠実なコピーに成功しており、
+D:戦闘能力の安定性はオリジナル以上とされている。
 
 # N: serial number : monster name
 # G: symbol : color
