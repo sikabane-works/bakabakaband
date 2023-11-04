@@ -37586,6 +37586,24 @@ D:叛逆の可能性を厭って作った代替ロボット「ガリィ・レプ
 D:オリジナルがそれまでに見せてきた機甲術の忠実なコピーに成功しており、
 D:戦闘能力の安定性はオリジナル以上とされている。
 
+N:2042:ベガ親衛隊
+E:Soldier of Shadaloo Dolls
+G:p:s
+I:123:20d40:40:90:4
+W:32:4:0:4000:0:0
+B:KICK:HURT:7d4
+B:KICK:HURT:7d4
+B:PUNCH:HURT:10d2
+B:SHOOT:HURT:8d8
+F:FEMALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN | WARRIOR
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | MOB_20
+F:OPEN_DOOR | EVIL | BASH_DOOR | SMART | CAN_FLY
+S:1_IN_4
+S:SHOOT | HASTE | HEAL
+D:闇の格闘王ベガが、何らかの目的のために各地の素質ある女性を拉致洗脳し、
+D:自らの忠実な配下に仕立て上げたものだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
