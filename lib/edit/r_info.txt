@@ -37549,6 +37549,22 @@ S:TELE_AWAY | BLIND | CONF | SCARE | CAUSE_4 | FORGET | DARKNESS | DISPEL
 D:$A coccyx floating in the air, motionless except for inviting up and down sexually 
 D:それは宙に浮かぶ尾てい骨で、性的に誘うように上下に動く他には身動きをしない。
 
+N:2040:重力の球体
+E:Gravity sphere
+G:*:D
+I:116:50d6:100:130:0
+W:46:3:0:5000:0:0
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY
+F:EMPTY_MIND
+F:IM_ELEC | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
+B:ENGULF:INERTIA:1d5
+B:ENGULF:INERTIA:1d5
+B:ENGULF:INERTIA:1d5
+B:ENGULF:INERTIA:1d5
+S:1_IN_8 | BR_GRAV
+D:$A crackling ball of energy.
+D:周囲の重力を乱し続ける漆黒の球体だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
