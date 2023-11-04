@@ -37535,6 +37535,20 @@ F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | NEVER_BLOW
 S:1_IN_4 | SLOW | HOLD | BLINK | 
 D:「聞いてません」その一言で彼は淡々と戦いを避けようとする。
 
+N:2039:ケツのドルジ
+E:Rump druj
+G:s:D
+I:120:40d10:20:90:10
+W:49:4:0:6000:0:0
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NEVER_MOVE | NEVER_BLOW | RES_TELE
+F:SMART | COLD_BLOOD | CAN_SWIM |
+F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NASTY
+S:1_IN_1 | 
+S:TELE_AWAY | BLIND | CONF | SCARE | CAUSE_4 | FORGET | DARKNESS | DISPEL
+D:$A coccyx floating in the air, motionless except for inviting up and down sexually 
+D:それは宙に浮かぶ尾てい骨で、性的に誘うように上下に動く他には身動きをしない。
+
 
 # N: serial number : monster name
 # G: symbol : color
