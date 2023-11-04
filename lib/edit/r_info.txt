@@ -37524,6 +37524,18 @@ F:EVIL | DEMON | IM_FIRE | IM_COLD | IM_POIS | RES_WATE | IM_ACID | RES_CHAO
 D:深き者が生まれて、さらに数千年近い時を経た姿だ。
 S:1_IN_4 | BR_POIS | SLOW | HOLD | BA_WATE
 
+N:2038:『こぐま部長』
+E:Koguma, General Manager
+G:t:o
+I:106:30d50:100:60:3
+W:0:5:0:0:0:0
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | EVIL | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | NEVER_BLOW
+S:1_IN_4 | SLOW | HOLD | BLINK | 
+D:「聞いてません」その一言で彼は淡々と戦いを避けようとする。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
