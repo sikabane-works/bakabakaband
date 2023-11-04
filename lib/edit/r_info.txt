@@ -37195,7 +37195,7 @@ S:1_IN_5 | BA_FIRE
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | KILL_BODY | KILL_ITEM | KILL_WALL | UNIQUE | REFLECTING |
 F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS
 F:NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | RES_SHAR | RES_TELE | TANK
-D:RaDのシンダー・カーラが作り上げた、破砕アームと溶鉱炉を兼ね備えたジャンクの掃除屋だ。
+D:RaDの頭目、灰かぶりのカーラが作り上げた、破砕アームと溶鉱炉を兼ね備えたジャンクの掃除屋だ。
 
 N:2017:バルデルの騎士
 E:Knight of Barder
@@ -37523,6 +37523,86 @@ F:CAN_SWIM | BASH_DOOR | ELDRITCH_HORROR | RES_TELE | FORCE_MAXHP
 F:EVIL | DEMON | IM_FIRE | IM_COLD | IM_POIS | RES_WATE | IM_ACID | RES_CHAO
 D:深き者が生まれて、さらに数千年近い時を経た姿だ。
 S:1_IN_4 | BR_POIS | SLOW | HOLD | BA_WATE
+
+N:2038:『こぐま部長』
+E:Koguma, General Manager
+G:t:o
+I:106:30d50:100:60:3
+W:0:5:0:0:0:0
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | EVIL | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | NEVER_BLOW
+S:1_IN_4 | SLOW | HOLD | BLINK | 
+D:「聞いてません」その一言で彼は淡々と戦いを避けようとする。
+
+N:2039:ケツのドルジ
+E:Rump druj
+G:s:D
+I:120:40d10:20:90:10
+W:49:4:0:6000:0:0
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NEVER_MOVE | NEVER_BLOW | RES_TELE
+F:SMART | COLD_BLOOD | CAN_SWIM |
+F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR | NASTY
+S:1_IN_1 | 
+S:TELE_AWAY | BLIND | CONF | SCARE | CAUSE_4 | FORGET | DARKNESS | DISPEL
+D:$A coccyx floating in the air, motionless except for inviting up and down sexually 
+D:それは宙に浮かぶ尾てい骨で、性的に誘うように上下に動く他には身動きをしない。
+
+N:2040:重力の球体
+E:Gravity sphere
+G:*:D
+I:116:50d6:100:130:0
+W:46:3:0:5000:0:0
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY
+F:EMPTY_MIND
+F:IM_ELEC | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
+B:ENGULF:INERTIA:1d5
+B:ENGULF:INERTIA:1d5
+B:ENGULF:INERTIA:1d5
+B:ENGULF:INERTIA:1d5
+S:1_IN_8 | BR_GRAV
+D:$A crackling ball of energy.
+D:周囲の重力を乱し続ける漆黒の球体だ。
+
+N:2041:TUNED GRシリーズ
+E:TUNED AR Series 
+G:g:D
+I:123:20d170:70:260:20
+W:56:3:0:18000:0:0
+B:PUNCH:HURT:11d12
+B:PUNCH:HURT:11d12
+B:KICK:HURT:10d14
+B:KICK:HURT:10d14
+F:DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | MOB_9
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | MALE | HUMAN |
+F:REFLECTING | SMART | REGENERATE | OPEN_DOOR | WARRIOR
+F:IM_COLD | IM_FIRE | IM_ACID | NO_CONF | NO_STUN |
+F:NO_SLEEP | RES_TELE | RES_NETH | CAN_SWIM
+S:1_IN_8 | 
+S:HASTE | ROCKET | BO_MANA
+D:ザレム地上監察局の実働組織、TUNEDが工作員ガリィの精神的不安定さと
+D:叛逆の可能性を厭って作った代替ロボット「ガリィ・レプリカ」だ。
+D:オリジナルがそれまでに見せてきた機甲術の忠実なコピーに成功しており、
+D:戦闘能力の安定性はオリジナル以上とされている。
+
+N:2042:ベガ親衛隊
+E:Soldier of Shadaloo Dolls
+G:p:s
+I:123:20d40:40:90:4
+W:32:4:0:4000:0:0
+B:KICK:HURT:7d4
+B:KICK:HURT:7d4
+B:PUNCH:HURT:10d2
+B:SHOOT:HURT:8d8
+F:FEMALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN | WARRIOR
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | MOB_20
+F:OPEN_DOOR | EVIL | BASH_DOOR | SMART | CAN_FLY
+S:1_IN_4
+S:SHOOT | HASTE | HEAL
+D:闇の格闘王ベガが、何らかの目的のために各地の素質ある女性を拉致洗脳し、
+D:自らの忠実な配下に仕立て上げたものだ。
 
 # N: serial number : monster name
 # G: symbol : color
