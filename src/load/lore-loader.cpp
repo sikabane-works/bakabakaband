@@ -13,6 +13,16 @@
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
+static void migrate_old_feature_flags(monster_race *r_ptr, BIT_FLAGS old_flags)
+{
+    if (any_bits(old_flags, enum2i(SavedataLoreOlderThan19FlagType::RF2_PASS_WALL))) {
+        r_ptr->r_feature_flags.set(MonsterFeatureType::PASS_WALL);
+    }
+    if (any_bits(old_flags, enum2i(SavedataLoreOlderThan19FlagType::RF2_KILL_WALL))) {
+        r_ptr->r_feature_flags.set(MonsterFeatureType::KILL_WALL);
+    }
+}
+
 static void migrate_old_aura_flags(monster_race *r_ptr)
 {
     if (loading_savefile_version_is_older_than(14)) {
@@ -243,6 +253,15 @@ static void rd_r_behavior_flags(monster_race *r_ptr)
     rd_FlagGroup(r_ptr->r_behavior_flags, rd_byte);
 }
 
+static void rd_r_feature_flags(monster_race *r_ptr)
+{
+    if (loading_savefile_version_is_older_than(21)) {
+        migrate_old_feature_flags(r_ptr, r_ptr->r_flags2);
+        return;
+    }
+    rd_FlagGroup(r_ptr->r_feature_flags, rd_byte);
+}
+
 /*!
  * @brief モンスターの思い出を読み込む / Read the monster lore
  * @param r_ptr 読み込み先モンスター種族情報へのポインタ
@@ -287,7 +306,8 @@ static void rd_lore(monster_race *r_ptr)
         rd_r_kind_flags(r_ptr);
     }
     rd_r_drop_flags(r_ptr);
-    r_ptr->mob_num = rd_byte();
+    rd_r_feature_flags(r_ptr);
+    r_ptr->max_num = rd_byte();
     r_ptr->floor_id = rd_s16b();
 
     if (!loading_savefile_version_is_older_than(4)) {
@@ -308,6 +328,7 @@ static void rd_lore(monster_race *r_ptr)
         r_ptr->r_drop_flags &= r_ptr->drop_flags;
     }
     r_ptr->r_kind_flags &= r_ptr->kind_flags;
+    r_ptr->r_feature_flags &= r_ptr->feature_flags;
 }
 
 void load_lore(void)

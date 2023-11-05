@@ -2458,6 +2458,9 @@
       <Filter>mspell\mspell-attack</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp" />
+    <ClCompile Include="..\..\src\monster-race\race-feature-mask.cpp">
+      <Filter>monster-race</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -5342,6 +5345,12 @@
       <Filter>mspell\mspell-attack</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\knowledge\knowledge-incident.h" />
+    <ClInclude Include="..\..\src\monster-race\race-feature-flags.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\monster-race\race-feature-mask.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />

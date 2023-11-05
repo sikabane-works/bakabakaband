@@ -57,6 +57,7 @@ const std::vector<tval_desc> tvals = {
     { ItemKindType::JUNK, _("がらくた", "Junk") },
     { ItemKindType::SKELETON, _("骨", "Skeleton") },
     { ItemKindType::MATERIAL, _("素材", "Matrial") },
+    { ItemKindType::TRAP, _("解除済罠", "Disarmed Trap") },
     { ItemKindType::NONE, nullptr },
 };
 

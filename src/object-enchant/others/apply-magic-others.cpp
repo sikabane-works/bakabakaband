@@ -8,6 +8,7 @@
 #include "object-enchant/others/apply-magic-others.h"
 #include "artifact/random-art-generator.h"
 #include "game-option/cheat-options.h"
+#include "grid/trap.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
@@ -77,6 +78,9 @@ void OtherItemsEnchanter::apply_magic()
         break;
     case ItemKindType::CHEST:
         this->generate_chest();
+        break;
+    case ItemKindType::TRAP:
+        this->generate_disarmed_trap();
         break;
     default:
         break;
@@ -207,4 +211,9 @@ void OtherItemsEnchanter::generate_chest()
     if (this->o_ptr->pval > 55) {
         this->o_ptr->pval = 55 + randint0(5);
     }
+}
+
+void OtherItemsEnchanter::generate_disarmed_trap()
+{
+    this->o_ptr->pval = choose_random_trap(this->player_ptr);
 }

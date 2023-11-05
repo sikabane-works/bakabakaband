@@ -15,7 +15,7 @@ WorldCollapsion::WorldCollapsion()
 
 bool WorldCollapsion::is_blown_away()
 {
-    return this->collapse_degree >= 100000000;
+    return this->collapse_degree >= OVER_COLLAPSION_DEGREE;
 }
 
 /*!
@@ -40,7 +40,7 @@ void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, PlayerType 
  */
 DEPTH WorldCollapsion::plus_monster_level()
 {
-    int pow = this->collapse_degree / 1000000 / 2; // 0-50
+    int pow = this->collapse_degree / OVER_COLLAPSION_DEGREE / 2; // 0-50
     return pow > randint1(100) ? randint1(pow) : 0;
 }
 
@@ -58,7 +58,7 @@ void WorldCollapsion::plus_collapsion(int value)
 void WorldCollapsion::plus_perm_collapsion(int permyriad)
 {
     if (permyriad > 0) {
-        this->collapse_degree += static_cast<int32_t>((1000000LL - this->collapse_degree) * permyriad / 10000);
+        this->collapse_degree += static_cast<int32_t>((OVER_COLLAPSION_DEGREE - this->collapse_degree) * permyriad / 10000);
     } else {
         this->collapse_degree -= static_cast<int32_t>(this->collapse_degree * permyriad / 10000);
     }

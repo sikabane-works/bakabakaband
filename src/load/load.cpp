@@ -56,6 +56,7 @@
  * @brief 変愚蛮怒 v2.1.3で追加された街とクエストについて読み込む
  * @param player_ptr プレイヤーへの参照ポインタ
  * @return エラーコード
+ * @details 旧海底都市クエスト (クエストNo.18)は廃止済
  */
 static errr load_town_quest(PlayerType *player_ptr)
 {
@@ -64,8 +65,7 @@ static errr load_town_quest(PlayerType *player_ptr)
         return load_town_result;
     }
 
-    uint16_t max_quests_load = rd_u16b();
-    byte max_rquests_load = rd_byte();
+    auto [max_quests_load, max_rquests_load] = load_quest_info();
     analyze_quests(player_ptr, max_quests_load, max_rquests_load);
 
     load_wilderness_info(player_ptr);

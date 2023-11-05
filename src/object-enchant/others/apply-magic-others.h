@@ -23,4 +23,5 @@ private:
     void generate_corpse();
     void generate_statue();
     void generate_chest();
+    void generate_disarmed_trap();
 };
