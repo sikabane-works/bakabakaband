@@ -37649,6 +37649,22 @@ F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:ANIMAL | HUMAN | EVIL | FRIENDS
 D:それは名状しがたい二足歩行する肉食の獣だ。
 
+N:2046:リザードマンの祭司
+E:Lizardman priest
+G:h:o
+I:120:18d11:20:30:20
+W:24:3:0:190:0:0
+B:HIT:HURT:4d5
+B:HIT:HURT:4d5
+R:290:2d5
+F:MALE | CAN_SWIM | IM_ACID | IM_POIS | WILD_SHORE |
+F:DROP_60 | DROP_1D2 | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | 
+F:EVIL | FORCE_MAXHP
+S:1_IN_5 | HEAL | CAUSE_2 | CAUSE_1 | CONF | BA_POIS
+D:$He is a member of the Lizardmen's intelligentsia, and serving various gods.
+D:彼はリザードマン達の知識階級にして、様々な神に仕えるものだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
