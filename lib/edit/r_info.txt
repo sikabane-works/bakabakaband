@@ -5511,12 +5511,13 @@ D:消え失せていて、はっきりと姿を捉えることができない。
 #JZ#
 N:332:リザードキング
 E:Lizard king
-G:h:R
+G:h:r
 I:120:18d11:20:40:20
 W:20:3:0:150:0:0
 B:HIT:HURT:5d5
 B:HIT:HURT:5d5
 B:WAIL:TERRIFY
+R:290:3d6
 F:MALE | CAN_SWIM | IM_ACID | IM_POIS | WILD_SHORE |
 F:DROP_60 | DROP_1D2 | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR | 
@@ -5734,9 +5735,10 @@ N:344:狼<ウィア>人
 E:Weir
 G:C:W
 I:110:10d12:15:30:40
-W:20:2:0:150:0:0
-B:BITE:HURT:1d6
-B:BITE:HURT:1d6
+W:20:2:0:160:0:0
+B:BITE:HURT:3d6
+B:BITE:HURT:3d6
+B:CLAW:HURT:3d6
 F:RAND_25 | 
 F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:ANIMAL | EVIL | FRIENDS
@@ -37076,7 +37078,7 @@ N:2008:レッサー・サムライ・デーモン
 E:Lesser samurai demon
 G:U:o
 I:118:35d100:30:140:20
-W:55:2:0:19000:0:0
+W:55:2:0:19000:60000:2043
 B:SLASH:HURT:10d11
 B:SLASH:SUPERHURT:6d11
 B:SLASH:SUPERHURT:6d11
@@ -37603,6 +37605,66 @@ S:1_IN_4
 S:SHOOT | HASTE | HEAL
 D:闇の格闘王ベガが、何らかの目的のために各地の素質ある女性を拉致洗脳し、
 D:自らの忠実な配下に仕立て上げたものだ。
+
+N:2043:グレーター・サムライ・デーモン
+E:Greater samurai demon
+G:U:v
+I:126:57d100:30:180:15
+W:73:2:0:30000:0:0
+B:SLASH:HURT:10d11
+B:SLASH:SUPERHURT:9d11
+B:SLASH:SUPERHURT:9d11
+B:SLASH:SUPERHURT:9d11
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP
+F:DROP_GOOD | DROP_60 | DROP_1D2 | SMART
+F:RES_CHAO | RES_NETH | RES_GRAV | RES_NEXU | NONLIVING | CAN_FLY | ELDRITCH_HORROR
+F:EVIL | IM_POIS | IM_COLD | IM_FIRE | IM_ELEC | DEMON | SAMURAI
+S:1_IN_4 |
+S:BR_FIRE | CAUSE_3 | CAUSE_4 | HOLD
+S:BR_PLAS | HEAL | HASTE
+D:レッサー・サムライ・デーモンの中でも天界への侵略など大きな功績を成し遂げたサムライの中のサムライだ。
+D:「武者は犬ともいへ、畜生ともいへ、勝つことが本にて候」の体現そのものである。
+
+N:2044:アンパンマン（アレの方）
+E:Anpanman(thinner addict)
+G:t:G
+I:120:4d4:6:1:0
+W:0:4:0:0:0:0
+B:DROOL:FLAVOR
+F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
+F:RAND_50 | EAT_LOSE_WIS | HUMAN |
+F:TAKE_ITEM
+D:まかり間違っても、シンナーでラリったこの屑をあの温和な正義の味方とごっちゃにするんじゃない！
+
+N:2045:ズルティ
+E:Zruty
+G:H:W
+I:110:10d9:15:40:40
+W:12:2:0:100:0:0
+B:CLAW:HURT:3d4
+B:CLAW:HURT:3d4
+B:BITE:HURT:3d6
+F:RAND_25 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:ANIMAL | HUMAN | EVIL | FRIENDS
+D:それは名状しがたい二足歩行する肉食の獣だ。
+
+N:2046:リザードマンの祭司
+E:Lizardman priest
+G:h:o
+I:120:18d11:20:30:20
+W:24:3:0:190:0:0
+B:HIT:HURT:4d5
+B:HIT:HURT:4d5
+R:290:2d5
+F:MALE | CAN_SWIM | IM_ACID | IM_POIS | WILD_SHORE |
+F:DROP_60 | DROP_1D2 | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | 
+F:EVIL | FORCE_MAXHP
+S:1_IN_5 | HEAL | CAUSE_2 | CAUSE_1 | CONF | BA_POIS
+D:$He is a member of the Lizardmen's intelligentsia, and serving various gods.
+D:彼はリザードマン達の知識階級にして、様々な神に仕えるものだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
