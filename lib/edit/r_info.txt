@@ -37634,6 +37634,19 @@ F:RAND_50 | EAT_LOSE_WIS | HUMAN |
 F:TAKE_ITEM
 D:まかり間違っても、シンナーでラリったこの屑をあの温和な正義の味方とごっちゃにするんじゃない！
 
+N:2045:ズルティ
+E:Zruty
+G:H:W
+I:110:10d9:15:40:40
+W:12:2:0:100:0:0
+B:CLAW:HURT:3d4
+B:CLAW:HURT:3d4
+B:BITE:HURT:3d6
+F:RAND_25 | 
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:ANIMAL | HUMAN | EVIL | FRIENDS
+D:それは名状しがたい二足歩行する肉食の獣だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
