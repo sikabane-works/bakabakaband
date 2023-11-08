@@ -37679,6 +37679,21 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DWARF
 F:HURT_LITE | RES_DARK | RES_DISE | DROP_SKELETON | DROP_CORPSE
 D:より狡猾な財の集め方のために洗練された殺戮に長じたニーベルングだ。
 
+N:2048:マインド・フレイヤーの祭司
+E:Mind flayer proest
+G:h:v
+I:114:15d90:20:90:10
+W:33:2:0:1000:0:0
+B:GAZE:LOSE_INT:4d6
+B:GAZE:LOSE_INT:4d6
+B:GAZE:INERTIA:4d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | EAT_GIVE_INT | EAT_GIVE_WIS |
+F:ONLY_ITEM | DROP_60 | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | 
+F:EVIL | NO_CONF | NO_SLEEP
+S:1_IN_3 | 
+S:BLIND | HOLD | SCARE | MIND_BLAST | BRAIN_SMASH | FORGET | CAUSE_3 | CAUSE_4 | HEAL
+D:「偉大なる頭脳」を崇めるマインド・フレイヤーの聖職者だ。
 
 # N: serial number : monster name
 # G: symbol : color
