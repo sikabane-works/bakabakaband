@@ -37665,6 +37665,20 @@ S:1_IN_5 | HEAL | CAUSE_2 | CAUSE_1 | CONF | BA_POIS
 D:$He is a member of the Lizardmen's intelligentsia, and serving various gods.
 D:彼はリザードマン達の知識階級にして、様々な神に仕えるものだ。
 
+N:2047:ニーベルングの暗殺者
+E:Nibelung Assassin
+G:h:D
+I:124:10d20:20:12:5
+W:19:1:0:120:0:0
+B:SLASH:HURT:7d8
+B:SLASH:POISON:4d8
+B:SLASH:POISON:4d8
+F:MALE | ROGUE
+F:FRIENDS | DROP_60 | 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DWARF
+F:HURT_LITE | RES_DARK | RES_DISE | DROP_SKELETON | DROP_CORPSE
+D:より狡猾な財の集め方のために洗練された殺戮に長じたニーベルングだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
