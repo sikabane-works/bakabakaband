@@ -37723,6 +37723,26 @@ B:CRUSH:HURT:4d4
 F:WEIRD_MIND | DROP_CORPSE
 D:刺々しい甲羅をまとったクッパの手先だ。
 
+N:2051:最強の尖兵『ジェネラル』
+E:General, the Strongest Sentinel
+G:p:G
+I:124:40d100:40:120:4
+W:53:4:0:14000:0:0
+B:PUNCH:HURT:18d4
+B:KICK:HURT:18d4
+B:PUNCH:HURT:30d4
+B:KICK:HURT:18d4
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN | WARRIOR
+F:RES_TELE |
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | UNIQUE |
+F:OPEN_DOOR | EVIL | BASH_DOOR | SMART | CAN_SWIM
+S:1_IN_4
+S:BO_MANA
+D:完璧なる戦士を自称して遜色ない、恐るべき格闘技の使い手だ。
+D:しかし、その所属する組織にあっては彼ですら尖兵に過ぎないそうだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
