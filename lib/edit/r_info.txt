@@ -37780,6 +37780,26 @@ S:1_IN_8 |
 S:SLOW
 D:それは、常に荒廃するダンジョンの修理屋だが、同時にあなたを窒息せしめようとする！
 
+N:2054:盗跖の手下
+E:Agent of DaoZhi
+G:p:D
+I:130:21d40:20:80:40
+W:39:2:0:950:0:0
+B:SLASH:SUPERHURT:8d8
+B:SLASH:SUPERHURT:9d4
+B:HIT:EAT_GOLD:10d4
+B:HIT:EAT_ITEM:8d5
+F:MALE | HUMAN |
+F:DROP_90 | DROP_2D2 | DROP_SKELETON | DROP_CORPSE
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | EAT_GIVE_DEX | EAT_LOSE_WIS |
+F:EVIL | ROGUE | WARRIOR
+S:1_IN_4 | BLINK | SLOW | HOLD
+D:中華の伝説にも残る大盗賊、盗跖が厚遇する盗みの達人たちだ。
+D:一切を悟られぬままの怪盗ぶりも、暴虐に満ちた乱取りもどちらも彼らにとっては茶飯事に過ぎない。
+
+
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
