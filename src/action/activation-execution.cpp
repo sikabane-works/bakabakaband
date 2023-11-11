@@ -70,9 +70,9 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (ae_ptr->o_ptr->is_random_artifact()) {
-        auto act_ptr = find_activation_info(ae_ptr->o_ptr);
-        if (act_ptr.has_value()) {
-            ae_ptr->lev = act_ptr.value()->level;
+        const auto act_ptr = ae_ptr->o_ptr->find_activation_info();
+        if (act_ptr != activation_info.end()) {
+            ae_ptr->lev = act_ptr->level;
         }
 
         return;
@@ -166,15 +166,14 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
  */
 static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    auto tmp_act_ptr = find_activation_info(o_ptr);
-    if (!tmp_act_ptr.has_value()) {
+    const auto act_ptr = o_ptr->find_activation_info();
+    if (act_ptr == activation_info.end()) {
         msg_print("Activation information is not found.");
         return false;
     }
 
-    auto *act_ptr = tmp_act_ptr.value();
     const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_BASE_NAME);
-    if (!switch_activation(player_ptr, &o_ptr, act_ptr, item_name.data())) {
+    if (!switch_activation(player_ptr, &o_ptr, &(*act_ptr), item_name.data())) {
         return false;
     }
 
@@ -200,7 +199,7 @@ static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
     case RandomArtActType::MURAMASA:
         return true;
     default:
-        msg_format("Special timeout is not implemented: %d.", act_ptr->index);
+        msg_format("Special timeout is not implemented: %d.", enum2i(act_ptr->index));
         return false;
     }
 }
