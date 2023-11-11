@@ -37742,6 +37742,25 @@ S:BO_MANA
 D:完璧なる戦士を自称して遜色ない、恐るべき格闘技の使い手だ。
 D:しかし、その所属する組織にあっては彼ですら尖兵に過ぎないそうだ。
 
+N:2052:古ウルクの暗殺者
+E:Assassin of Ancient Uruk
+G:o:D
+I:130:30d50:100:170:6
+W:57:3:0:13000:0:0
+B:SLASH:HURT:15d9
+B:SLASH:HURT:15d9
+B:SLASH:HURT:15d9
+B:SHOOT:HURT:10d15
+F:MALE | 
+F:DROP_4D2 | DROP_3D2 | DROP_GOOD | FORCE_MAXHP
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:IM_FIRE | RES_DARK | RES_LITE | IM_COLD | IM_ELEC | ROGUE
+F:EVIL | ORC | NO_CONF | NO_SLEEP | NO_FEAR | SELF_LITE_1
+S:1_IN_3
+S:SHOOT | BA_FIRE | BLINK | TRAPS
+D:古代ウルクの諸王朝の陰謀の中に潜んできた工作員たちだ。
+D:特に多大な凶行を成し遂げた者は死神そのものになぞらえられ、
+D:同時に余すことなくそのまま歴史の闇に消えた。
 
 # N: serial number : monster name
 # G: symbol : color
