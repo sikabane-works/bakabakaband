@@ -37762,6 +37762,24 @@ D:古代ウルクの諸王朝の陰謀の中に潜んできた工作員たちだ
 D:特に多大な凶行を成し遂げた者は死神そのものになぞらえられ、
 D:同時に余すことなくそのまま歴史の闇に消えた。
 
+N:2053:ウォール・エレメンタル
+E:Wall elemental
+G:E:o
+I:105:90d10:10:100:40
+W:41:2:0:1475:0:0
+B:CRUSH:HURT:7d6
+B:CRUSH:HURT:7d6
+B:CRUSH:HURT:7d6
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | NONLIVING |
+F:KILL_ITEM | KILL_BODY | PASS_WALL |
+F:EVIL | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_SHAR | HURT_ROCK | 
+F:NO_CONF | NO_SLEEP | NO_FEAR
+F:SPAWN_FEATURE_8_IN_11_56
+S:1_IN_8 | 
+S:SLOW
+D:それは、常に荒廃するダンジョンの修理屋だが、同時にあなたを窒息せしめようとする！
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
