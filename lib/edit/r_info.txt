@@ -6970,7 +6970,7 @@ N:414:ベネディクトの手下
 E:Agent of Benedict
 G:p:W
 I:110:20d8:14:54:20
-W:26:3:0:100:0:0
+W:26:3:0:100:20000:2055
 B:HIT:HURT:1d9
 B:HIT:HURT:1d9
 F:FRIENDS | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR
@@ -37797,6 +37797,22 @@ S:1_IN_4 | BLINK | SLOW | HOLD
 D:中華の伝説にも残る大盗賊、盗跖が厚遇する盗みの達人たちだ。
 D:一切を悟られぬままの怪盗ぶりも、暴虐に満ちた乱取りもどちらも彼らにとっては茶飯事に過ぎない。
 
+N:2055:ベネディクトの精鋭
+E:Elite agent of Benedict
+G:p:o
+I:123:20d80:34:129:20
+W:51:2:0:9000:0:0
+B:SLASH:HURT:10d9
+B:CRUSH:HURT:6d11
+B:PUNCH:SUPERHURT:6d9
+B:SHOOT:HURT:12d12
+F:NO_FEAR | NO_CONF | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR | MOB_50
+F:BASH_DOOR | OPEN_DOOR | HAS_LITE_2 | HUMAN | ALLIANCE_AMBER
+S:1_IN_3
+S:BLIND | CONF | TPORT | SHOOT | HEAL
+D:アンバー並行世界の多くで武神、あるいは神懸かりの軍略家とされる
+D:ベネディクトが、見込みある信奉者を手ずから鍛え上げた者たちだ。
+D:各地で英霊そのものとなった彼らを決して侮るな。
 
 
 
