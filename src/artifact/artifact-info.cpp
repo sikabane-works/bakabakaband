@@ -3,7 +3,6 @@
  * @brief アーティファクトの発動効果取得関数定義
  */
 
-#include "artifact/artifact-info.h"
 #include "artifact/random-art-effects.h"
 #include "object-enchant/activation-info-table.h"
 #include "object-enchant/object-ego.h"
