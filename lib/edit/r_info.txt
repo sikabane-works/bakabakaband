@@ -37827,6 +37827,17 @@ F:OPEN_DOOR | BASH_DOOR |
 F:ANIMAL | IM_ACID | NO_FEAR
 D:イークの中でも大王も扱いを好まない凶暴種だ。
 
+N:2057:爆弾男の爆弾
+E:Bomber of bomberman
+G:{:D
+I:130:5d1:200:0:0
+W:38:255:0:0:0:0
+B:EXPLODE:FIRE:2d20
+F:RES_TELE | FORCE_MAXHP | NEVER_MOVE | NEVER_BLOW |
+F:EMPTY_MIND | COLD_BLOOD | NONLIVING | HURT_FIRE |
+F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
+D:$It explodes after two turns. Beware!
+D:2ターン後に爆発する。気をつけろ！
 
 
 # N: serial number : monster name
