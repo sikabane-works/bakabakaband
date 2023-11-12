@@ -37854,6 +37854,19 @@ F:BASH_DOOR | STUPID
 F:SPAWN_CREATURE_3_IN_10_2057
 D:かつてバンゲリング帝国の下僕であったという噂もある謎の爆弾魔だ。
 
+N:2059:巨大カメムシ
+E:Giant Pentatomoidea
+G:I:g
+I:114:10d10:12:10:30
+W:14:1:0:8:0:0
+B:BITE:HURT:1d7
+F:RAND_25 | DROP_CORPSE
+F:BASH_DOOR | EAT_POISONOUS | CAN_FLY
+F:ANIMAL
+S:1_IN_4 | BR_POIS
+D:$It is as big as a wolf.
+D:それは狼と同じくらいの大きさがある。
+
 
 # N: serial number : monster name
 # G: symbol : color
