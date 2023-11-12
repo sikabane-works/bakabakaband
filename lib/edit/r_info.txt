@@ -37839,6 +37839,21 @@ F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
 D:$It explodes after two turns. Beware!
 D:2ターン後に爆発する。気をつけろ！
 
+#([∩∩])<死にたいらしいな
+N:2058:爆弾男
+E:Bomberman
+G:p:W
+I:115:40d10:70:90:4
+W:30:2:0:1000:0:0
+B:HIT:HURT:5d4
+B:KICK:HURT:5d4
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | HAS_LITE_2 | WEIRD_MIND
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:BASH_DOOR | STUPID
+F:SPAWN_CREATURE_3_IN_10_2057
+D:かつてバンゲリング帝国の下僕であったという噂もある謎の爆弾魔だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
