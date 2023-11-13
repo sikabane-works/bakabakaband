@@ -37878,6 +37878,80 @@ S:1_IN_3 |
 S:BR_SOUN
 D:おかしいな？何も聞こえないゾ。
 
+N:2061:シルバー・イーク
+E:Sliver yeek
+G:y:w
+I:123:10d90:18:80:10
+W:42:4:0:4900:0:0
+B:PUNCH:SUPERHURT:4d7
+B:PUNCH:SUPERHURT:4d7
+B:KICK:SUPERHURT:6d6
+B:KICK:SUPERHURT:6d6
+F:DROP_GOOD | ONLY_ITEM | DROP_2D2 | DROP_CORPSE | HAS_LITE_2
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | SMART
+F:ANIMAL | IM_ACID | NO_FEAR | NO_CONF | NO_SLEEP | RES_TELE | RES_NETH
+S:1_IN_4 | S_MONSTER | BLINK | CAUSE_3 | CAUSE_4 | BRAIN_SMASH | BA_ACID | TPORT
+D:イークの遠い原種が持っていたという強力なサイオニックを
+D:取り戻した類まれなる個体だ。
+D:他種族の超能力者をしのぐその力を侮るな！
+
+N:2062:レギオンの人塊
+E:Humanoid mass of Legion
+G:h:w
+I:110:13d13:20:40:10
+W:10:10:0:45:0:0
+B:CRUSH:HURT:1d8
+B:CRUSH:HURT:1d8
+B:CRUSH:HURT:1d8
+F:OPEN_DOOR | BASH_DOOR | FRIENDS | EMPTY_MIND
+F:NO_CONF | NO_SLEEP | UNDEAD | EVIL | NO_FEAR | IM_POIS
+F:IM_COLD | RES_NETH | COLD_BLOOD 
+D:悍ましい球体から零れ落ち歩き回る、人ならざる、あるいはかつて人であった何かだ。
+
+N:2063:レギオン
+E:Legion
+G:*:W
+I:112:100d20:12:90:10
+W:45:4:0:5800:0:0
+R:2062:2d10
+F:SPAWN_CREATURE_5_IN_16_2062
+F:PREVENT_SUDDEN_MAGIC | DEMON | EVIL
+F:COLD_BLOOD | BASH_DOOR | NEVER_MOVE | CAN_FLY
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | NEVER_BLOW
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | ELDRITCH_HORROR
+S:1_IN_5 | BO_MANA
+D:無数の白い人塊に覆われた、得体の知れないデーモンと思われる何かだ。
+D:その球体の内から触手と目玉が時折蠢き出てくる。
+
+N:2064:メスイキ・ゴースト
+E:Dry orgasm ghost
+G:G:r
+I:130:13d8:20:20:10
+W:20:1:0:350:0:0
+B:ENEMA:TERRIFY
+B:ENEMA:HURT:1d4
+B:ENEMA:DR_MANA:2d8
+F:PREVENT_SUDDEN_MAGIC | RAND_25 | RAND_50 | DROP_60 | DROP_1D2 | 
+F:INVISIBLE | COLD_BLOOD | TAKE_ITEM | PASS_WALL | 
+F:UNDEAD | IM_COLD | CAN_FLY | NASTY | HOMO_SEXUAL | MALE
+F:IM_POIS | RES_NETH | NO_CONF | NO_SLEEP
+S:1_IN_15 | 
+S:HOLD
+D:$You don't believe that extasy.
+D:あなたはその快楽を信じていない。
+
+N:2065:チョンチョン
+E:Chonchon
+G:I:U
+I:110:5d10:8:34:10
+W:10:3:0:40:0:0
+B:BITE:EXP_VAMP:2d6
+F:RAND_50 | RAND_25 | CAN_FLY |
+F:WEIRD_MIND | 
+F:ANIMAL | DEMON
+S:1_IN_5 | SHRIEK
+D:人間の頭部から生えた大きな耳とも羽ともつかない何かで飛び回る不気味な魔物だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
