@@ -37908,6 +37908,20 @@ F:NO_CONF | NO_SLEEP | UNDEAD | EVIL | NO_FEAR | IM_POIS
 F:IM_COLD | RES_NETH | COLD_BLOOD 
 D:悍ましい球体から零れ落ち歩き回る、人ならざる、あるいはかつて人であった何かだ。
 
+N:2063:レギオン
+E:Legion
+G:*:W
+I:112:100d20:12:90:10
+W:45:4:0:5800:0:0
+R:2062:2d10
+F:SPAWN_CREATURE_5_IN_16_2062
+F:PREVENT_SUDDEN_MAGIC | DEMON | EVIL
+F:COLD_BLOOD | BASH_DOOR | NEVER_MOVE | CAN_FLY
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | NEVER_BLOW
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | ELDRITCH_HORROR
+S:1_IN_5 | BO_MANA
+D:無数の白い人塊に覆われた、得体の知れないデーモンと思われる何かだ。
+D:その球体の内から触手と目玉が時折蠢き出てくる。
 
 # N: serial number : monster name
 # G: symbol : color
