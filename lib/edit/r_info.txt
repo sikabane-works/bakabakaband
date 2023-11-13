@@ -37923,6 +37923,24 @@ S:1_IN_5 | BO_MANA
 D:無数の白い人塊に覆われた、得体の知れないデーモンと思われる何かだ。
 D:その球体の内から触手と目玉が時折蠢き出てくる。
 
+N:2064:メスイキ・ゴースト
+E:Dry orgasm ghost
+G:G:r
+I:130:13d8:20:20:10
+W:20:1:0:350:0:0
+B:ENEMA:TERRIFY
+B:ENEMA:HURT:1d4
+B:ENEMA:DR_MANA:2d8
+F:PREVENT_SUDDEN_MAGIC | RAND_25 | RAND_50 | DROP_60 | DROP_1D2 | 
+F:INVISIBLE | COLD_BLOOD | TAKE_ITEM | PASS_WALL | 
+F:UNDEAD | IM_COLD | CAN_FLY | NASTY | HOMO_SEXUAL | MALE
+F:IM_POIS | RES_NETH | NO_CONF | NO_SLEEP
+S:1_IN_15 | 
+S:HOLD
+D:$You don't believe that extasy.
+D:あなたはその快楽を信じていない。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
