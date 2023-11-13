@@ -37878,6 +37878,23 @@ S:1_IN_3 |
 S:BR_SOUN
 D:おかしいな？何も聞こえないゾ。
 
+N:2061:シルバー・イーク
+E:Sliver yeek
+G:y:w
+I:123:10d90:18:80:10
+W:42:4:0:4900:0:0
+B:PUNCH:SUPERHURT:4d7
+B:PUNCH:SUPERHURT:4d7
+B:KICK:SUPERHURT:6d6
+B:KICK:SUPERHURT:6d6
+F:DROP_GOOD | ONLY_ITEM | DROP_2D2 | DROP_CORPSE | HAS_LITE_2
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | SMART
+F:ANIMAL | IM_ACID | NO_FEAR | NO_CONF | NO_SLEEP | RES_TELE | RES_NETH
+S:1_IN_4 | S_MONSTER | BLINK | CAUSE_3 | CAUSE_4 | BRAIN_SMASH | BA_ACID | TPORT
+D:イークの遠い原種が持っていたという強力なサイオニックを
+D:取り戻した類まれなる個体だ。
+D:他種族の超能力者をしのぐその力を侮るな！
+
 
 # N: serial number : monster name
 # G: symbol : color
