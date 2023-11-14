@@ -37952,6 +37952,50 @@ F:ANIMAL | DEMON
 S:1_IN_5 | SHRIEK
 D:人間の頭部から生えた大きな耳とも羽ともつかない何かで飛び回る不気味な魔物だ。
 
+#TODO:その内本当に魔力のビーム与えたい
+N:2066:スケルトン・ビーマー
+E:Skeleton beamer
+G:s:g
+I:110:10d8:20:30:30
+W:35:1:0:38:0:0
+B:HIT:HURT:1d8
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | UNDEAD | IM_COLD | MAGE
+F:IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_5 | BO_MANA
+D:混沌の産物、悪魔城の住人だ。
+D:穿孔儀礼によって超常の力を得たスケルトン術法士だそうだ。
+
+N:2067:深淵の球体
+E:Abyss sphere
+G:*:v
+I:110:40d6:90:90:0
+W:42:3:0:4700:0:0
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY
+F:EMPTY_MIND
+F:IM_ELEC | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | HAS_DARK_2
+B:ENGULF:EXP_VAMP:1d5
+B:ENGULF:EXP_VAMP:1d5
+B:ENGULF:EXP_VAMP:1d5
+B:ENGULF:EXP_VAMP:1d5
+S:1_IN_8 | BR_ABYSS
+D:周囲を貪欲に飲み干そうとする名状しがたい球体だ。
+
+N:2068:ヘルジャパンからの亡命者
+E:Fugitives from hell Japan
+G:t:s
+I:110:3d4:6:1:0
+W:0:4:0:0:0:0
+B:DROOL:FLAVOR
+F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
+F:RAND_25 | EAT_LOSE_WIS | EAT_LOSE_INT | EAT_LOSE_CHR | HUMAN | STUPID
+F:TAKE_ITEM
+D:野蛮で恐るべき人権崩壊超衰退後進国中世ジャップランドから逃亡してきたという、
+D:肉屋を支持する豚と違って賢い、生まれついての被害者だ。
+D:可哀そうな彼らを是非救済してさしあげろ。
+
+
 
 # N: serial number : monster name
 # G: symbol : color
