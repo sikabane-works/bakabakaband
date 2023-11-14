@@ -37967,6 +37967,22 @@ S:1_IN_5 | BO_MANA
 D:混沌の産物、悪魔城の住人だ。
 D:穿孔儀礼によって超常の力を得たスケルトン術法士だそうだ。
 
+N:2067:深淵の球体
+E:Abyss sphere
+G:*:v
+I:110:40d6:90:90:0
+W:42:3:0:4700:0:0
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY
+F:EMPTY_MIND
+F:IM_ELEC | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | HAS_DARK_2
+B:ENGULF:EXP_VAMP:1d5
+B:ENGULF:EXP_VAMP:1d5
+B:ENGULF:EXP_VAMP:1d5
+B:ENGULF:EXP_VAMP:1d5
+S:1_IN_8 | BR_ABYSS
+D:周囲を貪欲に飲み干そうとする名状しがたい球体だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
