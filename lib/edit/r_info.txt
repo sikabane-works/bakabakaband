@@ -38029,6 +38029,21 @@ F:EVIL | IM_ACID | IM_FIRE | IM_POIS | ANIMAL |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:あなたの舌を引きちぎろうとする、スタンドの昆虫だ。
 
+N:2071:墓石ゴーレム
+E:Grave Stone golem
+G:g:D
+I:95:28d8:12:55:10
+W:22:2:0:190:0:0
+B:HIT:HURT:1d14
+B:HIT:HURT:1d14
+F:COLD_BLOOD | EMPTY_MIND | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:HURT_ROCK | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_4 | CAUSE_2
+D:墓石を即興かつ粗雑に組み合わせて作られた冒涜的なゴーレムだ。
+D:死者の怨念が渦巻いているように見える。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
