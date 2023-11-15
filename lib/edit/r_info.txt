@@ -37995,7 +37995,54 @@ D:野蛮で恐るべき人権崩壊超衰退後進国中世ジャップランド
 D:肉屋を支持する豚と違って賢い、生まれついての被害者だ。
 D:可哀そうな彼らを是非救済してさしあげろ。
 
+N:2069:NTR・ゴースト
+E:NTR ghost
+G:G:v
+I:125:7d8:20:20:10
+W:15:1:0:200:0:0
+B:TOUCH:DR_MANA:1d1
+B:TOUCH:DR_MANA:1d1
+B:TOUCH:DR_MANA:1d1
+B:TOUCH:DR_MANA:1d1
+F:PREVENT_SUDDEN_MAGIC | RAND_25 | RAND_50 | DROP_60 | DROP_1D2 | 
+F:INVISIBLE | COLD_BLOOD | TAKE_ITEM | PASS_WALL | 
+F:UNDEAD | IM_COLD | CAN_FLY | NASTY
+F:IM_POIS | RES_NETH | NO_CONF | NO_SLEEP
+S:1_IN_10 | 
+S:BRAIN_SMASH
+D:それはあなたの脳を破壊する。しかしハマってしまえば延々と味わいたくなるだろう。
 
+N:2070:皆殺しの『タワー・オブ・グレー』
+E:Tower of Gray, Massacrer
+G:K:s
+I:120:15d100:20:90:10
+W:41:4:0:10000:0:0
+B:STING:HURT:4d12
+B:STING:HURT:4d12
+B:STING:HURT:4d12
+B:STING:HURT:4d12
+F:UNIQUE | DROP_CORPSE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | 
+F:EVIL | IM_ACID | IM_FIRE | IM_POIS | ANIMAL |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:あなたの舌を引きちぎろうとする、スタンドの昆虫だ。
+
+N:2071:墓石ゴーレム
+E:Grave Stone golem
+G:g:D
+I:95:28d8:12:55:10
+W:22:2:0:190:0:0
+B:HIT:HURT:1d14
+B:HIT:HURT:1d14
+F:COLD_BLOOD | EMPTY_MIND | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:HURT_ROCK | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_4 | CAUSE_2
+D:墓石を即興かつ粗雑に組み合わせて作られた冒涜的なゴーレムだ。
+D:死者の怨念が渦巻いているように見える。
 
 # N: serial number : monster name
 # G: symbol : color
