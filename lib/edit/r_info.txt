@@ -38012,6 +38012,23 @@ S:1_IN_10 |
 S:BRAIN_SMASH
 D:それはあなたの脳を破壊する。しかしハマってしまえば延々と味わいたくなるだろう。
 
+N:2070:皆殺しの『タワー・オブ・グレー』
+E:Tower of Gray, Massacrer
+G:K:s
+I:120:15d100:20:90:10
+W:41:4:0:10000:0:0
+B:STING:HURT:4d12
+B:STING:HURT:4d12
+B:STING:HURT:4d12
+B:STING:HURT:4d12
+F:UNIQUE | DROP_CORPSE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | KILL_BODY | 
+F:EVIL | IM_ACID | IM_FIRE | IM_POIS | ANIMAL |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:あなたの舌を引きちぎろうとする、スタンドの昆虫だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
