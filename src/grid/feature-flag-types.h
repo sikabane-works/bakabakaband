@@ -77,6 +77,7 @@ enum class FloorFeatureType {
     RUNE_HEALING = 115, /*!< 癒しのルーンが張られた地形である */
     SLOW = 116, /*!< 減速地形である */
     THORN = 117, /*!< 棘地形である */
+    TENTACLE = 118, /*!< 触手地形である */
     MAX,
 };
 

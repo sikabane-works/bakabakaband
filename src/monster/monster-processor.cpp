@@ -751,6 +751,26 @@ void sweep_monster_process(PlayerType *player_ptr)
 
         m_ptr->energy_need += ENERGY_NEED();
         hack_m_idx = i;
+
+        auto g_ptr = &player_ptr->current_floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
+        auto *f_ptr = &f_info[g_ptr->feat];
+        if (f_ptr->flags.has(FloorFeatureType::TENTACLE)) {
+            int pow = 30;
+            auto r_ptr = r_info[m_ptr->r_idx];
+            if (r_ptr.feature_flags.has(MonsterFeatureType::CAN_FLY)) {
+                pow /= 2;
+            }
+            if (r_ptr.behavior_flags.has(MonsterBehaviorType::STUPID)) {
+                pow *= 3;
+            }
+            if (r_ptr.level < randint0(pow)) {
+                GAME_TEXT m_name[MAX_NLEN];
+                monster_desc(player_ptr, m_name, m_ptr, 0);
+                msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name, f_ptr->name.c_str());
+                return;
+            }
+        }
+
         process_monster(player_ptr, i);
         reset_target(m_ptr);
         if (player_ptr->no_flowed && one_in_(3)) {

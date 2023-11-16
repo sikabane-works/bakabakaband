@@ -127,5 +127,6 @@ const std::unordered_map<std::string_view, FloorFeatureType> f_info_flags = {
     { "RUNE_HEALING", FloorFeatureType::RUNE_HEALING },
     { "SLOW", FloorFeatureType::SLOW },
     { "THORN", FloorFeatureType::THORN },
+    { "TENTACLE", FloorFeatureType::TENTACLE },
 
 };
