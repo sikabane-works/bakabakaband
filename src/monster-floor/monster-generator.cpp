@@ -40,7 +40,7 @@
 #include "wizard/wizard-messages.h"
 #include <optional>
 
-#define MON_SCAT_MAXD 10 /*!< mon_scatter()関数によるモンスター配置で許される中心からの最大距離 */
+#define MON_SCAT_MAXD 15 /*!< mon_scatter()関数によるモンスター配置で許される中心からの最大距離 */
 
 /*!
  * @var place_monster_idx
