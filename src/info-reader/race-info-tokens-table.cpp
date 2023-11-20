@@ -122,7 +122,7 @@ const std::unordered_map<std::string_view, race_flags2> r_info_flags2 = {
     { "CHAR_MULTI", RF2_CHAR_MULTI },
     { "POWERFUL", RF2_POWERFUL },
     { "ELDRITCH_HORROR", RF2_ELDRITCH_HORROR },
-    { "FLAGS2_XX14", RF2_XX14 },
+    { "VOCIFEROUS", RF2_VOCIFEROUS },
     { "FLAGS2_XX15", RF2_XX15 },
 };
 
