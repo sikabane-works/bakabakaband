@@ -39,6 +39,7 @@
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
+#include "monster/monster-damage.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-flag-types.h"
@@ -751,6 +752,53 @@ void sweep_monster_process(PlayerType *player_ptr)
 
         m_ptr->energy_need += ENERGY_NEED();
         hack_m_idx = i;
+
+        auto g_ptr = &player_ptr->current_floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
+        auto *f_ptr = &f_info[g_ptr->feat];
+        if (f_ptr->flags.has(FloorFeatureType::TENTACLE)) {
+            int pow = 30;
+            auto r_ptr = r_info[m_ptr->r_idx];
+            if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
+                pow += 50;
+            }
+            if (r_ptr.feature_flags.has(MonsterFeatureType::CAN_FLY)) {
+                pow /= 2;
+            }
+            if (r_ptr.behavior_flags.has(MonsterBehaviorType::STUPID)) {
+                pow *= 3;
+            }
+            if (r_ptr.level < randint0(pow)) {
+                GAME_TEXT m_name[MAX_NLEN];
+                monster_desc(player_ptr, m_name, m_ptr, 0);
+                if (m_ptr->ml) {
+                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name, f_ptr->name.c_str());
+                }
+                if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
+                    switch (randint1(3)) {
+                    case 1:
+                        msg_format(_("%s「んほぉ！」", "%s 'Nnhor!'"), m_name);
+                        (void)set_monster_stunned(player_ptr, 0, monster_stunned_remaining(m_ptr) + 10 + randint0(player_ptr->lev) / 5);
+                        break;
+                    case 2:
+                        msg_format(_("%s「アへぇ！」", "%s 'Aherr!'"), m_name);
+                        (void)set_monster_slow(player_ptr, 0, monster_slow_remaining(m_ptr) + 10 + randint0(player_ptr->lev) / 5);
+                        break;
+                    case 3: {
+                        bool fear = false;
+                        msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name);
+                        MonsterDamageProcessor mdp(player_ptr, i, damroll(1, 4), &fear, AttributeType::ATTACK);
+                        if (fear) {
+                            msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name);
+                        }
+                        mdp.mon_take_hit(_("は絶頂であの世に逝った。", " was passed to the other side with intense acme."));
+                        break;
+                    }
+                    }
+                }
+                return;
+            }
+        }
+
         process_monster(player_ptr, i);
         reset_target(m_ptr);
         if (player_ptr->no_flowed && one_in_(3)) {

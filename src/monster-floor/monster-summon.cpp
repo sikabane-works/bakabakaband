@@ -198,7 +198,7 @@ bool summon_named_creature(PlayerType *player_ptr, MONSTER_IDX who, POSITION oy,
     }
 
     POSITION x, y;
-    if (player_ptr->current_floor_ptr->inside_arena || !mon_scatter(player_ptr, r_idx, &y, &x, oy, ox, 2)) {
+    if (player_ptr->current_floor_ptr->inside_arena || !mon_scatter(player_ptr, r_idx, &y, &x, oy, ox, 12)) {
         return false;
     }
 

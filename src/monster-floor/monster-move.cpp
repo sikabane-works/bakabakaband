@@ -471,33 +471,8 @@ bool process_monster_movement(PlayerType *player_ptr, turn_flags *turn_flags_ptr
     return true;
 }
 
-/*!
- * @brief モンスターを喋らせたり足音を立てたりする
- * @param player_ptr プレイヤーへの参照ポインタ
- * @param m_idx モンスターID
- * @param oy モンスターが元々いたY座標
- * @param ox モンスターが元々いたX座標
- * @param aware モンスターがプレイヤーに気付いているならばTRUE、超隠密状態ならばFALSE
- */
-void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox, bool aware)
+static void speaking(PlayerType *player_ptr, monster_type *m_ptr, bool vociferous)
 {
-    if (player_ptr->phase_out) {
-        return;
-    }
-
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
-    if (m_ptr->ap_r_idx == MonsterRaceId::CYBER && one_in_(CYBERNOISE) && !m_ptr->ml && (m_ptr->cdis <= MAX_SIGHT)) {
-        if (disturb_minor) {
-            disturb(player_ptr, false, false);
-        }
-        msg_print(_("重厚な足音が聞こえた。", "You hear heavy steps."));
-    }
-
-    if (((ap_r_ptr->flags2 & RF2_CAN_SPEAK) == 0) || !aware || !one_in_(SPEAK_CHANCE) || !player_has_los_bold(player_ptr, oy, ox) || !projectable(player_ptr, oy, ox, player_ptr->y, player_ptr->x)) {
-        return;
-    }
-
     GAME_TEXT m_name[MAX_NLEN];
     char monmessage[1024];
     concptr filename;
@@ -518,9 +493,44 @@ void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy,
         filename = _("monspeak_j.txt", "monspeak.txt");
     }
 
-    if (get_rnd_line(filename, enum2i(m_ptr->ap_r_idx), monmessage) == 0) {
+    if (get_rnd_line(filename, enum2i(vociferous ? m_ptr->r_idx : m_ptr->ap_r_idx), monmessage) == 0) {
         msg_format(_("%^s%s", "%^s %s"), m_name, monmessage);
     }
+}
+
+/*!
+ * @brief モンスターを喋らせたり足音を立てたりする
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param m_idx モンスターID
+ * @param oy モンスターが元々いたY座標
+ * @param ox モンスターが元々いたX座標
+ * @param aware モンスターがプレイヤーに気付いているならばTRUE、超隠密状態ならばFALSE
+ */
+void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox, bool aware)
+{
+    if (player_ptr->phase_out) {
+        return;
+    }
+
+    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    monster_race *ap_r_ptr = &r_info[m_ptr->ap_r_idx];
+    monster_race *r_ptr = &r_info[m_ptr->r_idx];
+    if (m_ptr->ap_r_idx == MonsterRaceId::CYBER && one_in_(CYBERNOISE) && !m_ptr->ml && (m_ptr->cdis <= MAX_SIGHT)) {
+        if (disturb_minor) {
+            disturb(player_ptr, false, false);
+        }
+        msg_print(_("重厚な足音が聞こえた。", "You hear heavy steps."));
+    }
+
+    if ((r_ptr->flags2 & RF2_VOCIFEROUS) && (m_ptr->cdis <= MAX_SIGHT * 2) && one_in_(SPEAK_CHANCE / 3 + 1)) {
+        speaking(p_ptr, m_ptr, true);
+        return;
+    }
+
+    if (((ap_r_ptr->flags2 & RF2_CAN_SPEAK) == 0) || !aware || !one_in_(SPEAK_CHANCE) || !player_has_los_bold(player_ptr, oy, ox) || !projectable(player_ptr, oy, ox, player_ptr->y, player_ptr->x)) {
+        return;
+    }
+    speaking(p_ptr, m_ptr, false);
 }
 
 /*!

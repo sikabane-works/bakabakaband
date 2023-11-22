@@ -36,6 +36,7 @@ enum class MonsterKindType {
     SAMURAI = 32,
     KARATEKA = 33,
     HOMO_SEXUAL = 34,
-    TANK = 34,
+    TANK = 35,
+    HENTAI = 36,
     MAX,
 };
