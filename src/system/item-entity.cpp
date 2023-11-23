@@ -11,6 +11,7 @@
 #include "artifact/random-art-effects.h"
 #include "monster-race/monster-race.h"
 #include "object-enchant/activation-info-table.h"
+#include "object-enchant/dragon-breaths-table.h"
 #include "object-enchant/item-feeling.h"
 #include "object-enchant/object-curse.h"
 #include "object-enchant/special-object-flags.h"
@@ -30,6 +31,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 ItemEntity::ItemEntity()
     : bi_key(BaseitemKey(ItemKindType::NONE))
@@ -905,6 +907,31 @@ TrFlags ItemEntity::get_flags_known() const
     }
 
     return flags;
+}
+
+/*!
+ * @brief アイテムの発動効果名称を返す (ドラゴンブレス)
+ * @return 発動名称
+ */
+std::string ItemEntity::build_activation_description_dragon_breath() const
+{
+    std::stringstream ss;
+    ss << _("", "breathe ");
+    auto n = 0;
+    const auto flags = this->get_flags();
+    for (auto i = 0; dragonbreath_info[i].flag != 0; i++) {
+        if (flags.has(dragonbreath_info[i].flag)) {
+            if (n > 0) {
+                ss << _("、", ", ");
+            }
+
+            ss << dragonbreath_info[i].name;
+            n++;
+        }
+    }
+
+    ss << _("のブレス(250)", " (250)");
+    return ss.str();
 }
 
 /*!
