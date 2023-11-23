@@ -38181,7 +38181,20 @@ F:DEAD_SPAWN_1_IN_1_1104_1440d1
 D:$A mysterious like commet thing. It bursts open and creates many hindrance puyos.
 D:彗星のような謎の生物だ。破裂して大量のおじゃまぷよを生み出す。
 
-
+## TODO:1回でも殴られると怒る処理
+N:2082:ハナチャン
+E:Wiggler
+G:w:y
+I:112:50d20:30:80:1
+W:36:3:0:1000:0:0
+B:BITE:HURT:6d8
+B:BITE:HURT:6d8
+B:CRUSH:HURT:5d10
+F:BASH_DOOR |
+F:ANIMAL | KILL_BODY | DROP_CORPSE | ONLY_GOLD | DROP_3D2 |
+F:FRIENDS | NO_SLEEP | NO_CONF | NO_STUN |
+F:IM_ACID | IM_POIS | RES_SOUN
+D:花を頭部に生やした大きくもどこか愛嬌のある芋虫だ。
 
 # N: serial number : monster name
 # G: symbol : color
