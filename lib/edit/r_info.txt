@@ -16151,6 +16151,7 @@ F:BASH_DOOR | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | IM_ACID |
 F:RES_LITE | RES_DARK | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
 F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
 F:COLD_BLOOD | NONLIVING | RAND_50 | SPAWN_FEATURE_1_IN_2_236
+F:SUICIDE_4d6
 S:1_IN_5 | BR_CHAO
 D:$Summoned from the Courts of Chaos, it is a mass of sentient Logrus, 
 D:$spreading uncontrollably and destroying everything in its path.
@@ -20634,6 +20635,7 @@ B:EXPLODE:FIRE:2d40
 F:RES_TELE | FORCE_MAXHP | RAND_25 | RAND_50 | NEVER_BLOW |
 F:EMPTY_MIND | COLD_BLOOD | NONLIVING | HURT_FIRE |
 F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
+F:SUICIDE_2d1
 D:$It explodes after two turns. Beware!
 D:2ターン後に爆発する。気をつけろ！
 
