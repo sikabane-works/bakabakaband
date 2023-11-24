@@ -753,6 +753,16 @@ void sweep_monster_process(PlayerType *player_ptr)
         m_ptr->energy_need += ENERGY_NEED();
         hack_m_idx = i;
 
+        if (m_ptr->death_count > 0) {
+            m_ptr->death_count--;
+            if (m_ptr->death_count == 0) {
+                bool fear;
+                m_ptr->max_maxhp = m_ptr->maxhp = m_ptr->hp = -1;
+                MonsterDamageProcessor mdp(player_ptr, i, 0, &fear, AttributeType::ATTACK);
+                mdp.mon_take_hit(_("は爆発した。", " explodes."));
+            }
+        }
+
         auto g_ptr = &player_ptr->current_floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
         auto *f_ptr = &f_info[g_ptr->feat];
         if (f_ptr->flags.has(FloorFeatureType::TENTACLE)) {
