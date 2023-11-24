@@ -398,6 +398,9 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     }
 
     m_ptr->dealt_damage = 0;
+    if (r_ptr->suicide_dice_num && r_ptr->suicide_dice_side) {
+        m_ptr->death_count = damroll(r_ptr->suicide_dice_num, r_ptr->suicide_dice_side);
+    }
 
     m_ptr->mspeed = get_mspeed(floor_ptr, r_ptr);
 
