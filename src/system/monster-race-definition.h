@@ -94,6 +94,8 @@ struct monster_race {
     std::vector<std::tuple<int, int, MonsterRaceId, int, int>> dead_spawns; //!< 死亡時モンスター生成
     //! 特定アーティファクトドロップリスト <アーティファクトID,ドロップ率>
     std::vector<std::tuple<ARTIFACT_IDX, PERCENTAGE>> drop_artifacts;
+    DICE_NUMBER suicide_dice_num{}; //!< 自滅ターンダイス数
+    DICE_SID suicide_dice_side{}; //!< 自滅ターン面数
     PERCENTAGE arena_ratio{}; //!< モンスター闘技場の掛け金倍率修正値(%基準 / 0=100%) / The adjustment ratio for gambling monster
     MonsterRaceId next_r_idx{}; //!< 進化先モンスター種族ID
     EXP next_exp{}; //!< 進化に必要な経験値

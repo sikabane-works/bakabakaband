@@ -16151,6 +16151,7 @@ F:BASH_DOOR | IM_ELEC | IM_FIRE | IM_COLD | IM_POIS | IM_ACID |
 F:RES_LITE | RES_DARK | RES_WATE | RES_PLAS | RES_SHAR | RES_SOUN |
 F:RES_CHAO | RES_NEXU | RES_DISE | RES_WALL | RES_INER | RES_TIME | RES_GRAV |
 F:COLD_BLOOD | NONLIVING | RAND_50 | SPAWN_FEATURE_1_IN_2_236
+F:SUICIDE_4d6
 S:1_IN_5 | BR_CHAO
 D:$Summoned from the Courts of Chaos, it is a mass of sentient Logrus, 
 D:$spreading uncontrollably and destroying everything in its path.
@@ -20634,6 +20635,7 @@ B:EXPLODE:FIRE:2d40
 F:RES_TELE | FORCE_MAXHP | RAND_25 | RAND_50 | NEVER_BLOW |
 F:EMPTY_MIND | COLD_BLOOD | NONLIVING | HURT_FIRE |
 F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
+F:SUICIDE_2d1
 D:$It explodes after two turns. Beware!
 D:2ターン後に爆発する。気をつけろ！
 
@@ -37836,6 +37838,7 @@ B:EXPLODE:FIRE:2d20
 F:RES_TELE | FORCE_MAXHP | NEVER_MOVE | NEVER_BLOW |
 F:EMPTY_MIND | COLD_BLOOD | NONLIVING | HURT_FIRE |
 F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
+F:SUICIDE_2d1
 D:$It explodes after two turns. Beware!
 D:2ターン後に爆発する。気をつけろ！
 
@@ -38181,20 +38184,7 @@ F:DEAD_SPAWN_1_IN_1_1104_1440d1
 D:$A mysterious like commet thing. It bursts open and creates many hindrance puyos.
 D:彗星のような謎の生物だ。破裂して大量のおじゃまぷよを生み出す。
 
-## TODO:1回でも殴られると怒る処理
-N:2082:ハナチャン
-E:Wiggler
-G:w:y
-I:112:50d20:30:80:1
-W:36:3:0:1000:0:0
-B:BITE:HURT:6d8
-B:BITE:HURT:6d8
-B:CRUSH:HURT:5d10
-F:BASH_DOOR |
-F:ANIMAL | KILL_BODY | DROP_CORPSE | ONLY_GOLD | DROP_3D2 |
-F:FRIENDS | NO_SLEEP | NO_CONF | NO_STUN |
-F:IM_ACID | IM_POIS | RES_SOUN
-D:花を頭部に生やした大きくもどこか愛嬌のある芋虫だ。
+
 
 # N: serial number : monster name
 # G: symbol : color

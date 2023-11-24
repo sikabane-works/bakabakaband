@@ -38,6 +38,11 @@ void MonsterLoader50::rd_monster(monster_type *m_ptr_)
     this->m_ptr->maxhp = rd_s16b();
     this->m_ptr->max_maxhp = rd_s16b();
     this->m_ptr->dealt_damage = rd_u32b();
+    if (loading_savefile_version_is_older_than(23)) {
+        this->m_ptr->death_count = 0;
+    } else {
+        this->m_ptr->death_count = rd_u32b();
+    }
 
     this->m_ptr->ap_r_idx = any_bits(flags, SaveDataMonsterFlagType::AP_R_IDX) ? i2enum<MonsterRaceId>(rd_s16b()) : this->m_ptr->r_idx;
     this->m_ptr->sub_align = any_bits(flags, SaveDataMonsterFlagType::SUB_ALIGN) ? rd_byte() : 0;
