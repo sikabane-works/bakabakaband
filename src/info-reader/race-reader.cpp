@@ -349,6 +349,20 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 continue;
             }
 
+            if (s_tokens.size() == 2 && s_tokens[0] == "SUICIDE") {
+                // ターン後自滅
+                int num, side;
+                const auto &dices = str_split(s_tokens[1], 'd', true, 10);
+                if (dices.size() != 2) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                info_set_value(num, dices[0]);
+                info_set_value(side, dices[1]);
+                r_ptr->suicide_dice_num = num;
+                r_ptr->suicide_dice_side = side;
+                continue;
+            }
+
             if (s_tokens.size() == 6 && s_tokens[0] == "SPAWN") {
                 // 落とし子自動生成率
                 if (s_tokens[1] == "CREATURE" && s_tokens[3] == "IN") {
