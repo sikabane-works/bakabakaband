@@ -172,7 +172,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
     }
 
     if (r_ptr->flags9 & RF9_EAT_SPEED) {
-        (void)set_fast(player_ptr, randint1(20) + 20, false);
+        (void)set_acceleration(player_ptr, randint1(20) + 20, false);
     }
 
     if (r_ptr->flags9 & RF9_EAT_CURE) {

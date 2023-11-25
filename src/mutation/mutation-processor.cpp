@@ -52,6 +52,7 @@
 #include "target/target-setter.h"
 #include "target/target-types.h"
 #include "term/screen-processor.h"
+#include "timed-effect/player-acceleration.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -230,7 +231,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         player_ptr->redraw |= PR_EXTRA;
         (void)bss.mod_hallucination(randint0(10) + 20);
         (void)set_shero(player_ptr, 10 + randint1(player_ptr->lev), false);
-        (void)set_fast(player_ptr, 10 + randint1(player_ptr->lev), false);
+        (void)set_acceleration(player_ptr, 10 + randint1(player_ptr->lev), false);
     }
 
     if (player_ptr->muta.has(PlayerMutationType::PROD_MANA) && !player_ptr->anti_magic && one_in_(9000)) {
@@ -265,8 +266,8 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         disturb(player_ptr, false, true);
         if (one_in_(2)) {
             msg_print(_("精力的でなくなった気がする。", "You feel less energetic."));
-            if (player_ptr->fast > 0) {
-                set_fast(player_ptr, 0, true);
+            if (player_ptr->effects()->acceleration()->is_fast()) {
+                set_acceleration(player_ptr, 0, true);
             } else {
                 (void)bss.slowness(randint1(30) + 10, false);
             }
@@ -275,7 +276,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
             if (player_ptr->slow > 0) {
                 (void)bss.slowness(0, true);
             } else {
-                set_fast(player_ptr, randint1(30) + 10, false);
+                set_acceleration(player_ptr, randint1(30) + 10, false);
             }
         }
 
