@@ -167,7 +167,6 @@ enum class MonsterRaceId : int16_t {
     ULT_BEHOLDER = 1185,
     G_TITAN = 1187,
     WYRM_COLOURS = 1198,
-    MIRMULNIR = 1203,
     ALDUIN = 1209,
     FOLLOWER_WARRIOR = 1210,
     FOLLOWER_MAGE = 1211,
