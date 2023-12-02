@@ -47,7 +47,7 @@ public:
     store_k_idx table{}; //!< Table -- Legal item kinds
     int16_t stock_num{}; //!< Stock -- Number of entries
     int16_t stock_size{}; //!< Stock -- Total Size of Array
-    std::unique_ptr<ObjectType[]> stock{}; //!< Stock -- Actual stock items
+    std::unique_ptr<ObjectType[]> stock; //!< Stock -- Actual stock items
 
     store_type() = default;
     store_type(const store_type &) = delete;
