@@ -218,7 +218,7 @@ bool QuaffEffects::influence(const ObjectType &o_ref)
         default:
             break;
         }
-        (void)BadStatusSetter(player_ptr).poison(0);
+        (void)BadStatusSetter(player_ptr).set_poison(0);
         BadStatusSetter(player_ptr).mod_paralysis(4);
         msg_print(_("この薬は直腸に注入するものらしい。", "The potion seems to be injected into the rectum"));
         return true;
