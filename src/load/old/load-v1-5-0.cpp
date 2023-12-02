@@ -6,6 +6,7 @@
  */
 
 #include "load/old/load-v1-5-0.h"
+#include "artifact/fixed-art-types.h"
 #include "dungeon/dungeon.h"
 #include "floor/floor-object.h"
 #include "game-option/birth-options.h"
