@@ -349,7 +349,7 @@ void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
         gets_angry = true;
     }
 
-    if (is_pet(m_ptr) && (((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) || r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL))) {
+    if (is_pet(m_ptr) && (((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL))) && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) || r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL))) {
         gets_angry = true;
     }
 
@@ -752,6 +752,16 @@ void sweep_monster_process(PlayerType *player_ptr)
 
         m_ptr->energy_need += ENERGY_NEED();
         hack_m_idx = i;
+
+        if (m_ptr->death_count > 0) {
+            m_ptr->death_count--;
+            if (m_ptr->death_count == 0) {
+                bool fear;
+                m_ptr->max_maxhp = m_ptr->maxhp = m_ptr->hp = -1;
+                MonsterDamageProcessor mdp(player_ptr, i, 0, &fear, AttributeType::ATTACK);
+                mdp.mon_take_hit(_("は爆発した。", " explodes."));
+            }
+        }
 
         auto g_ptr = &player_ptr->current_floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
         auto *f_ptr = &f_info[g_ptr->feat];

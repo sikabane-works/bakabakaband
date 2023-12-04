@@ -12,7 +12,9 @@
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-kind-flags.h"
+#include "monster-race/race-population-flags.h"
 #include "monster-race/race-resistance-mask.h"
+#include "monster-race/race-speak-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "monster-race/race-wilderness-flags.h"
 #include "room/room-types.h"
@@ -43,6 +45,7 @@
 #define DUNGEON_VOID_TERRITORY 23
 #define DUNGEON_MAX 31
 
+enum class FixedArtifactId : short;
 enum class MonsterRaceId : int16_t;
 
 struct feat_prob {
@@ -94,10 +97,12 @@ struct dungeon_type {
     EnumClassFlagGroup<MonsterDropType> mon_drop_flags;
     EnumClassFlagGroup<MonsterWildernessType> mon_wilderness_flags;
     EnumClassFlagGroup<MonsterFeatureType> mon_feature_flags;
+    EnumClassFlagGroup<MonsterPopulationType> mon_population_flags;
+    EnumClassFlagGroup<MonsterSpeakType> mon_speak_flags;
 
     std::vector<char> r_chars; /* Monster symbols allowed */
     KIND_OBJECT_IDX final_object{}; /* The object you'll find at the bottom */
-    ARTIFACT_IDX final_artifact{}; /* The artifact you'll find at the bottom */
+    FixedArtifactId final_artifact{}; /* The artifact you'll find at the bottom */
     MonsterRaceId final_guardian{}; /* The artifact's guardian. If an artifact is specified, then it's NEEDED */
 
     PROB special_div{}; /* % of monsters affected by the flags/races allowed, to add some variety */

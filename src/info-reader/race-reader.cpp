@@ -77,6 +77,14 @@ static bool grab_one_basic_flag(monster_race *r_ptr, std::string_view what)
         return true;
     }
 
+    if (EnumClassFlagGroup<MonsterPopulationType>::grab_one_flag(r_ptr->population_flags, r_info_population_flags, what)) {
+        return true;
+    }
+
+    if (EnumClassFlagGroup<MonsterSpeakType>::grab_one_flag(r_ptr->speak_flags, r_info_speak_flags, what)) {
+        return true;
+    }
+
     msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
     return false;
 }
@@ -349,6 +357,20 @@ errr parse_r_info(std::string_view buf, angband_header *)
                 continue;
             }
 
+            if (s_tokens.size() == 2 && s_tokens[0] == "SUICIDE") {
+                // ターン後自滅
+                int num, side;
+                const auto &dices = str_split(s_tokens[1], 'd', true, 10);
+                if (dices.size() != 2) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+                info_set_value(num, dices[0]);
+                info_set_value(side, dices[1]);
+                r_ptr->suicide_dice_num = num;
+                r_ptr->suicide_dice_side = side;
+                continue;
+            }
+
             if (s_tokens.size() == 6 && s_tokens[0] == "SPAWN") {
                 // 落とし子自動生成率
                 if (s_tokens[1] == "CREATURE" && s_tokens[3] == "IN") {
@@ -487,7 +509,7 @@ errr parse_r_info(std::string_view buf, angband_header *)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
 
-        ARTIFACT_IDX a_idx;
+        FixedArtifactId a_idx;
         PERCENTAGE chance;
         info_set_value(a_idx, tokens[1]);
         info_set_value(chance, tokens[2]);

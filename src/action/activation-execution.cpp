@@ -65,8 +65,8 @@
 static void decide_activation_level(ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->is_fixed_artifact()) {
-        ae_ptr->lev = a_info[ae_ptr->o_ptr->fixed_artifact_idx].level;
-        ae_ptr->broken = a_info[ae_ptr->o_ptr->fixed_artifact_idx].broken_rate;
+        ae_ptr->lev = a_info.at(ae_ptr->o_ptr->fixed_artifact_idx).level;
+        ae_ptr->broken = a_info.at(ae_ptr->o_ptr->fixed_artifact_idx).broken_rate;
         return;
     }
 
@@ -166,7 +166,6 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
  */
 static bool activate_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
 {
-    concptr name = k_info[o_ptr->k_idx].name.c_str();
     auto tmp_act_ptr = find_activation_info(o_ptr);
     if (!tmp_act_ptr.has_value()) {
         msg_print("Activation information is not found.");
@@ -174,6 +173,8 @@ static bool activate_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
     }
 
     auto *act_ptr = tmp_act_ptr.value();
+    GAME_TEXT name[MAX_NLEN];
+    describe_flavor(player_ptr, name, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_BASE_NAME);
     if (!switch_activation(player_ptr, &o_ptr, act_ptr, name)) {
         return false;
     }

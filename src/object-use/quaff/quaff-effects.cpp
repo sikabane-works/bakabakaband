@@ -37,6 +37,9 @@
 #include "system/angband.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "timed-effect/player-acceleration.h"
+#include "timed-effect/player-poison.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -65,7 +68,7 @@ bool QuaffEffects::influence(const ObjectType &o_ref)
         msg_print(_("のどの渇きが少しおさまった。", "You feel less thirsty."));
         return true;
     case SV_POTION_SLOWNESS:
-        return BadStatusSetter(this->player_ptr).slowness(randint1(25) + 15, false);
+        return BadStatusSetter(this->player_ptr).set_deceleration(randint1(25) + 15, false);
     case SV_POTION_SALT_WATER:
         return this->salt_water();
     case SV_POTION_POISON:
@@ -101,10 +104,12 @@ bool QuaffEffects::influence(const ObjectType &o_ref)
         return set_tim_infra(this->player_ptr, this->player_ptr->tim_infra + 100 + randint1(100), false);
     case SV_POTION_DETECT_INVIS:
         return set_tim_invis(this->player_ptr, this->player_ptr->tim_invis + 12 + randint1(12), false);
-    case SV_POTION_SLOW_POISON:
-        return BadStatusSetter(this->player_ptr).poison(this->player_ptr->poisoned / 2);
+    case SV_POTION_SLOW_POISON: {
+        const auto player_poison = this->player_ptr->effects()->poison();
+        return BadStatusSetter(this->player_ptr).set_poison(player_poison->current() / 2);
+    }
     case SV_POTION_CURE_POISON:
-        return BadStatusSetter(this->player_ptr).poison(0);
+        return BadStatusSetter(this->player_ptr).set_poison(0);
     case SV_POTION_BOLDNESS:
         return BadStatusSetter(this->player_ptr).fear(0);
     case SV_POTION_SPEED:
@@ -213,7 +218,7 @@ bool QuaffEffects::influence(const ObjectType &o_ref)
         default:
             break;
         }
-        (void)BadStatusSetter(player_ptr).poison(0);
+        (void)BadStatusSetter(player_ptr).set_poison(0);
         BadStatusSetter(player_ptr).mod_paralysis(4);
         msg_print(_("この薬は直腸に注入するものらしい。", "The potion seems to be injected into the rectum"));
         return true;
@@ -240,7 +245,7 @@ bool QuaffEffects::salt_water()
     }
 
     BadStatusSetter bss(this->player_ptr);
-    (void)bss.poison(0);
+    (void)bss.set_poison(0);
     (void)bss.mod_paralysis(4);
     return true;
 }
@@ -286,7 +291,7 @@ bool QuaffEffects::booze()
     }
 
     BadStatusSetter bss(this->player_ptr);
-    if (!has_resist_conf(this->player_ptr) && bss.confusion(randint0(20) + 15)) {
+    if (!has_resist_conf(this->player_ptr) && bss.set_confusion(randint0(20) + 15)) {
         ident = true;
     }
 
@@ -401,12 +406,12 @@ bool QuaffEffects::death()
  */
 bool QuaffEffects::speed()
 {
-    if (this->player_ptr->fast) {
-        (void)set_fast(this->player_ptr, this->player_ptr->fast + 5, false);
+    if (this->player_ptr->effects()->acceleration()->is_fast()) {
+        (void)mod_acceleration(this->player_ptr, 5, false);
         return false;
     }
 
-    return set_fast(this->player_ptr, randint1(25) + 15, false);
+    return set_acceleration(this->player_ptr, randint1(25) + 15, false);
 }
 
 /*!

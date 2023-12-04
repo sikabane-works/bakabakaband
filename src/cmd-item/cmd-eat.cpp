@@ -172,7 +172,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
     }
 
     if (r_ptr->flags9 & RF9_EAT_SPEED) {
-        (void)set_fast(player_ptr, randint1(20) + 20, false);
+        (void)set_acceleration(player_ptr, randint1(20) + 20, false);
     }
 
     if (r_ptr->flags9 & RF9_EAT_CURE) {
@@ -360,13 +360,13 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
         (void)do_dec_stat(player_ptr, A_STR);
         return true;
     case SV_FOOD_CURE_POISON:
-        return bss.poison(0);
+        return bss.set_poison(0);
     case SV_FOOD_CURE_BLINDNESS:
-        return bss.blindness(0);
+        return bss.set_blindness(0);
     case SV_FOOD_CURE_PARANOIA:
         return bss.fear(0);
     case SV_FOOD_CURE_CONFUSION:
-        return bss.confusion(0);
+        return bss.set_confusion(0);
     case SV_FOOD_CURE_SERIOUS:
         return cure_serious_wounds(player_ptr, 4, 8);
     case SV_FOOD_RESTORE_STR:
@@ -392,7 +392,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
         return true;
     case SV_FOOD_WAYBREAD:
         msg_print(_("これはひじょうに美味だ。", "That tastes very good."));
-        (void)bss.poison(0);
+        (void)bss.set_poison(0);
         (void)hp_player(player_ptr, damroll(4, 8));
         return true;
     case SV_FOOD_PINT_OF_ALE:

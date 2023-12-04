@@ -51,6 +51,7 @@
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
+#include "timed-effect/player-acceleration.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -289,9 +290,9 @@ bool life_stream(PlayerType *player_ptr, bool message, bool virtue_change)
 
     restore_level(player_ptr);
     BadStatusSetter bss(player_ptr);
-    (void)bss.poison(0);
-    (void)bss.blindness(0);
-    (void)bss.confusion(0);
+    (void)bss.set_poison(0);
+    (void)bss.set_blindness(0);
+    (void)bss.set_confusion(0);
     (void)bss.hallucination(0);
     (void)bss.stun(0);
     (void)bss.cut(0);
@@ -348,7 +349,7 @@ bool cure_light_wounds(PlayerType *player_ptr, DICE_NUMBER dice, DICE_SID sides)
     }
 
     BadStatusSetter bss(player_ptr);
-    if (bss.blindness(0)) {
+    if (bss.set_blindness(0)) {
         ident = true;
     }
 
@@ -371,11 +372,11 @@ bool cure_serious_wounds(PlayerType *player_ptr, DICE_NUMBER dice, DICE_SID side
     }
 
     BadStatusSetter bss(player_ptr);
-    if (bss.blindness(0)) {
+    if (bss.set_blindness(0)) {
         ident = true;
     }
 
-    if (bss.confusion(0)) {
+    if (bss.set_confusion(0)) {
         ident = true;
     }
 
@@ -398,15 +399,15 @@ bool cure_critical_wounds(PlayerType *player_ptr, int pow)
     }
 
     BadStatusSetter bss(player_ptr);
-    if (bss.blindness(0)) {
+    if (bss.set_blindness(0)) {
         ident = true;
     }
 
-    if (bss.confusion(0)) {
+    if (bss.set_confusion(0)) {
         ident = true;
     }
 
-    if (bss.poison(0)) {
+    if (bss.set_poison(0)) {
         ident = true;
     }
 
@@ -433,15 +434,15 @@ bool true_healing(PlayerType *player_ptr, int pow)
     }
 
     BadStatusSetter bss(player_ptr);
-    if (bss.blindness(0)) {
+    if (bss.set_blindness(0)) {
         ident = true;
     }
 
-    if (bss.confusion(0)) {
+    if (bss.set_confusion(0)) {
         ident = true;
     }
 
-    if (bss.poison(0)) {
+    if (bss.set_poison(0)) {
         ident = true;
     }
 
@@ -598,7 +599,7 @@ bool cosmic_cast_off(PlayerType *player_ptr, ObjectType **o_ptr_ptr)
     (void)set_tim_regen(player_ptr, player_ptr->tim_regen + t, false);
     (void)set_hero(player_ptr, player_ptr->hero + t, false);
     (void)set_blessed(player_ptr, player_ptr->blessed + t, false);
-    (void)set_fast(player_ptr, player_ptr->fast + t, false);
+    (void)mod_acceleration(player_ptr, t, false);
     (void)set_shero(player_ptr, player_ptr->shero + t, false);
     if (PlayerClass(player_ptr).equals(PlayerClassType::FORCETRAINER)) {
         set_current_ki(player_ptr, true, player_ptr->lev * 5 + 190);

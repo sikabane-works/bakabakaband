@@ -45,6 +45,8 @@
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
+#include "timed-effect/player-blindness.h"
+#include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "util/quarks.h"
 #include "util/string-processor.h"
@@ -721,7 +723,7 @@ BIT_FLAGS has_no_ac(PlayerType *player_ptr)
 
 BIT_FLAGS has_invuln_arrow(PlayerType *player_ptr)
 {
-    if (player_ptr->blind) {
+    if (player_ptr->effects()->blindness()->is_blind()) {
         return 0;
     }
 
@@ -1152,7 +1154,7 @@ void update_curses(PlayerType *player_ptr)
         auto obj_curse_flags = o_ptr->curse_flags;
         obj_curse_flags.reset({ CurseTraitType::CURSED, CurseTraitType::HEAVY_CURSE, CurseTraitType::PERMA_CURSE });
         player_ptr->cursed.set(obj_curse_flags);
-        if (o_ptr->fixed_artifact_idx == ART_CHAINSWORD) {
+        if (o_ptr->fixed_artifact_idx == FixedArtifactId::CHAINSWORD) {
             player_ptr->cursed_special.set(CurseSpecialTraitType::CHAINSWORD);
         }
 
@@ -1371,7 +1373,7 @@ BIT_FLAGS has_vuln_lite(PlayerType *player_ptr)
 
 BIT_FLAGS has_resist_dark(PlayerType *player_ptr)
 {
-    BIT_FLAGS result = common_cause_flags(player_ptr, TR_RES_DARK);
+    BIT_FLAGS result = common_cause_flags(player_ptr, TR_RES_DARK) | common_cause_flags(player_ptr, TR_IM_DARK);
 
     if (player_ptr->ult_res) {
         result |= FLAG_CAUSE_MAGIC_TIME_EFFECT;

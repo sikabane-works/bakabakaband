@@ -16,11 +16,11 @@ public:
     BadStatusSetter(PlayerType *player_ptr);
     virtual ~BadStatusSetter() = default;
 
-    bool blindness(const TIME_EFFECT tmp_v);
+    bool set_blindness(const TIME_EFFECT tmp_v);
     bool mod_blindness(const TIME_EFFECT tmp_v);
-    bool confusion(const TIME_EFFECT tmp_v);
+    bool set_confusion(const TIME_EFFECT tmp_v);
     bool mod_confusion(const TIME_EFFECT tmp_v);
-    bool poison(const TIME_EFFECT tmp_v);
+    bool set_poison(const TIME_EFFECT tmp_v);
     bool mod_poison(const TIME_EFFECT tmp_v);
     bool fear(const TIME_EFFECT tmp_v);
     bool mod_fear(const TIME_EFFECT tmp_v);
@@ -28,8 +28,8 @@ public:
     bool mod_paralysis(const TIME_EFFECT tmp_v);
     bool hallucination(const TIME_EFFECT tmp_v);
     bool mod_hallucination(const TIME_EFFECT tmp_v);
-    bool slowness(const TIME_EFFECT tmp_v, bool do_dec);
-    bool mod_slowness(const TIME_EFFECT tmp_v, bool do_dec);
+    bool set_deceleration(const TIME_EFFECT tmp_v, bool do_dec);
+    bool mod_deceleration(const TIME_EFFECT tmp_v, bool do_dec);
     bool stun(const TIME_EFFECT tmp_v);
     bool mod_stun(const TIME_EFFECT tmp_v);
     bool cut(const TIME_EFFECT tmp_v);

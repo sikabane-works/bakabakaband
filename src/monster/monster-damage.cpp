@@ -200,7 +200,7 @@ void MonsterDamageProcessor::death_special_flag_monster()
         return;
     }
 
-    if (r_ptr->max_num > 0) { // 無限生成可能でないモンスターの動員数減少
+    if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) {
         r_ptr->mob_num--;
         return;
     }
@@ -335,7 +335,7 @@ void MonsterDamageProcessor::dying_scream(GAME_TEXT *m_name)
 {
     auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[this->m_idx];
     auto *r_ptr = real_r_ptr(m_ptr);
-    if (none_bits(r_ptr->flags2, RF2_CAN_SPEAK)) {
+    if (r_ptr->speak_flags.has_none_of({ MonsterSpeakType::SPEAK_ALL, MonsterSpeakType::SPEAK_DEATH })) {
         return;
     }
 

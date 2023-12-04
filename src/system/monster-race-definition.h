@@ -10,6 +10,8 @@
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-kind-flags.h"
+#include "monster-race/race-population-flags.h"
+#include "monster-race/race-speak-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "monster-race/race-wilderness-flags.h"
 #include "system/angband.h"
@@ -21,6 +23,7 @@
 /*! モンスターが1ターンに攻撃する最大回数 (射撃を含む) / The maximum number of times a monster can attack in a turn (including SHOOT) */
 constexpr int MAX_NUM_BLOWS = 4;
 
+enum class FixedArtifactId : short;
 enum class MonsterRaceId : int16_t;
 
 class MonsterBlow {
@@ -84,6 +87,8 @@ struct monster_race {
     EnumClassFlagGroup<MonsterDropType> drop_flags; //!< 能力フラグ（ドロップ） / Drop Flags
     EnumClassFlagGroup<MonsterWildernessType> wilderness_flags; //!< 荒野フラグ / Wilderness Flags
     EnumClassFlagGroup<MonsterFeatureType> feature_flags; //!< 能力フラグ（地形関連） / Feature Flags
+    EnumClassFlagGroup<MonsterPopulationType> population_flags; //!< 能力フラグ（出現数関連） / Population Flags
+    EnumClassFlagGroup<MonsterSpeakType> speak_flags; //!< 能力フラグ（セリフ） / Speaking Flags
     MonsterBlow blow[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
     std::vector<std::tuple<MonsterRaceId, DICE_NUMBER, DICE_SID>> reinforces;
     std::vector<std::tuple<int, int, MonsterRaceId>> spawn_monsters; //!< 落とし子生成率
@@ -93,7 +98,9 @@ struct monster_race {
     std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_tvals; //!< アイテム種別ドロップ指定
     std::vector<std::tuple<int, int, MonsterRaceId, int, int>> dead_spawns; //!< 死亡時モンスター生成
     //! 特定アーティファクトドロップリスト <アーティファクトID,ドロップ率>
-    std::vector<std::tuple<ARTIFACT_IDX, PERCENTAGE>> drop_artifacts;
+    std::vector<std::tuple<FixedArtifactId, PERCENTAGE>> drop_artifacts;
+    DICE_NUMBER suicide_dice_num{}; //!< 自滅ターンダイス数
+    DICE_SID suicide_dice_side{}; //!< 自滅ターン面数
     PERCENTAGE arena_ratio{}; //!< モンスター闘技場の掛け金倍率修正値(%基準 / 0=100%) / The adjustment ratio for gambling monster
     MonsterRaceId next_r_idx{}; //!< 進化先モンスター種族ID
     EXP next_exp{}; //!< 進化に必要な経験値

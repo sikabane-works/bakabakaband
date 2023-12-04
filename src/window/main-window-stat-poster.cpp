@@ -22,11 +22,14 @@
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
+#include "timed-effect/player-blindness.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
+#include "timed-effect/player-deceleration.h"
 #include "timed-effect/player-fear.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/player-paralysis.h"
+#include "timed-effect/player-poison.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/status-bars-table.h"
@@ -265,6 +268,7 @@ void print_speed(PlayerType *player_ptr)
     char buf[32] = "";
     TERM_COLOR attr = TERM_WHITE;
     if (speed_value > 0) {
+        auto is_slow = player_ptr->effects()->deceleration()->is_slow();
         if (player_ptr->riding) {
             auto *m_ptr = &floor_ptr->m_list[player_ptr->riding];
             if (monster_fast_remaining(m_ptr) && !monster_slow_remaining(m_ptr)) {
@@ -274,15 +278,16 @@ void print_speed(PlayerType *player_ptr)
             } else {
                 attr = TERM_GREEN;
             }
-        } else if ((is_player_fast && !player_ptr->slow) || player_ptr->lightspeed) {
+        } else if ((is_player_fast && !is_slow) || player_ptr->lightspeed) {
             attr = TERM_YELLOW;
-        } else if (player_ptr->slow && !is_player_fast) {
+        } else if (is_slow && !is_player_fast) {
             attr = TERM_VIOLET;
         } else {
             attr = TERM_L_GREEN;
         }
         sprintf(buf, "%s(+%d)", (player_ptr->riding ? _("乗馬", "Ride") : _("加速", "Fast")), speed_value);
     } else if (speed_value < 0) {
+        auto is_slow = player_ptr->effects()->deceleration()->is_slow();
         if (player_ptr->riding) {
             auto *m_ptr = &floor_ptr->m_list[player_ptr->riding];
             if (monster_fast_remaining(m_ptr) && !monster_slow_remaining(m_ptr)) {
@@ -292,9 +297,9 @@ void print_speed(PlayerType *player_ptr)
             } else {
                 attr = TERM_RED;
             }
-        } else if (is_player_fast && !player_ptr->slow) {
+        } else if (is_player_fast && !is_slow) {
             attr = TERM_YELLOW;
-        } else if (player_ptr->slow && !is_player_fast) {
+        } else if (is_slow && !is_player_fast) {
             attr = TERM_VIOLET;
         } else {
             attr = TERM_L_UMBER;
@@ -466,7 +471,7 @@ void print_status(PlayerType *player_ptr)
         ADD_BAR_FLAG(BAR_HALLUCINATION);
     }
 
-    if (player_ptr->blind) {
+    if (player_ptr->effects()->blindness()->is_blind()) {
         ADD_BAR_FLAG(BAR_BLINDNESS);
     }
 
@@ -478,7 +483,7 @@ void print_status(PlayerType *player_ptr)
         ADD_BAR_FLAG(BAR_CONFUSE);
     }
 
-    if (player_ptr->poisoned) {
+    if (effects->poison()->is_poisoned()) {
         ADD_BAR_FLAG(BAR_POISONED);
     }
 

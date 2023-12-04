@@ -282,7 +282,7 @@ static void preserve_info(PlayerType *player_ptr)
         }
 
         r_ptr = real_r_ptr(m_ptr);
-        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->flags7 & RF7_NAZGUL)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL))) {
             continue;
         }
 
@@ -296,7 +296,7 @@ static void preserve_info(PlayerType *player_ptr)
         }
 
         if (o_ptr->is_fixed_artifact()) {
-            a_info[o_ptr->fixed_artifact_idx].floor_id = 0;
+            a_info.at(o_ptr->fixed_artifact_idx).floor_id = 0;
         }
     }
 }

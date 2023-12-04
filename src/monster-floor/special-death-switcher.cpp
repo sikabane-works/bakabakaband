@@ -347,52 +347,36 @@ static void on_dead_earth_destroyer(PlayerType *player_ptr, monster_death_type *
     (void)project(player_ptr, md_ptr->m_idx, 10, md_ptr->md_y, md_ptr->md_x, 10000, AttributeType::DISINTEGRATE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
-static void on_dead_unmaker(PlayerType *player_ptr, monster_death_type *md_ptr)
-{
-    if (is_seen(player_ptr, md_ptr->m_ptr)) {
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
-        msg_format(_("%sは辺りにログルスの残り香を撒き散らした！", "%^s sprinkled the remaining incense from Logrus!"), m_name);
-    }
-
-    (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 100, AttributeType::CHAOS, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
-}
-
 static void on_dead_sacred_treasures(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     if ((player_ptr->ppersonality != PERSONALITY_LAZY) || !md_ptr->drop_chosen_item) {
         return;
     }
 
-    ARTIFACT_IDX a_idx = 0;
-    artifact_type *a_ptr = nullptr;
+    FixedArtifactId a_idx = FixedArtifactId::NONE;
+    ArtifactType *a_ptr = nullptr;
     do {
         switch (randint0(3)) {
         case 0:
-            a_idx = ART_NAMAKE_HAMMER;
+            a_idx = FixedArtifactId::NAMAKE_HAMMER;
             break;
         case 1:
-            a_idx = ART_NAMAKE_BOW;
+            a_idx = FixedArtifactId::NAMAKE_BOW;
             break;
         case 2:
-            a_idx = ART_NAMAKE_ARMOR;
+            a_idx = FixedArtifactId::NAMAKE_ARMOR;
             break;
         }
 
-        a_ptr = &a_info[a_idx];
-    } while (a_ptr->cur_num == 1);
+        a_ptr = &a_info.at(a_idx);
+    } while (a_ptr->is_generated);
 
-    if (create_named_art(player_ptr, a_idx, md_ptr->md_y, md_ptr->md_x)) {
-        a_ptr->cur_num = 1;
-        if (w_ptr->character_dungeon) {
-            a_ptr->floor_id = player_ptr->floor_id;
-        }
-
+    if (!create_named_art(player_ptr, a_idx, md_ptr->md_y, md_ptr->md_x)) {
         return;
     }
 
-    if (!preserve_mode) {
-        a_ptr->cur_num = 1;
+    if (w_ptr->character_dungeon) {
+        a_ptr->floor_id = player_ptr->floor_id;
     }
 }
 
@@ -405,12 +389,12 @@ static void on_dead_serpent(PlayerType *player_ptr, monster_death_type *md_ptr)
     ObjectType forge;
     auto *q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::HAFTED, SV_GROND));
-    q_ptr->fixed_artifact_idx = ART_GROND;
+    q_ptr->fixed_artifact_idx = FixedArtifactId::GROND;
     ItemMagicApplier(player_ptr, q_ptr, -1, AM_GOOD | AM_GREAT).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
     q_ptr = &forge;
     q_ptr->prep(lookup_kind(ItemKindType::CROWN, SV_CHAOS));
-    q_ptr->fixed_artifact_idx = ART_CHAOS;
+    q_ptr->fixed_artifact_idx = FixedArtifactId::CHAOS;
     ItemMagicApplier(player_ptr, q_ptr, -1, AM_GOOD | AM_GREAT).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -442,17 +426,6 @@ static void on_dead_can_angel(PlayerType *player_ptr, monster_death_type *md_ptr
     q_ptr->prep(lookup_kind(ItemKindType::CHEST, SV_CHEST_KANDUME));
     ItemMagicApplier(player_ptr, q_ptr, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
-}
-
-static void on_dead_rolento(PlayerType *player_ptr, monster_death_type *md_ptr)
-{
-    if (is_seen(player_ptr, md_ptr->m_ptr)) {
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
-        msg_format(_("%sは手榴弾を抱えて自爆した！", "%^s blew himself up with grenades!"), m_name);
-    }
-
-    (void)project(player_ptr, md_ptr->m_idx, 3, md_ptr->md_y, md_ptr->md_x, damroll(20, 10), AttributeType::FIRE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
 }
 
 static void on_dead_aqua_illusion(PlayerType *player_ptr, monster_death_type *md_ptr)
@@ -490,28 +463,6 @@ static void on_dead_totem_moai(PlayerType *player_ptr, monster_death_type *md_pt
     summon_self(player_ptr, md_ptr, SUMMON_TOTEM_MOAI, 8, 5, _("新たなモアイが現れた！", "A new moai steps forth!"));
 }
 
-static void on_dead_demon_slayer_senior(PlayerType *player_ptr, monster_death_type *md_ptr)
-{
-    if (!is_seen(player_ptr, md_ptr->m_ptr)) {
-        return;
-    }
-
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
-    msg_format(_("あなたの闘気が%sの身体をサイコロ状に切り刻んだ！", "Your fighting spirit chopped %^s's body into dice!"), m_name);
-}
-
-static void on_dead_mirmulnir(PlayerType *player_ptr, monster_death_type *md_ptr)
-{
-    if (!is_seen(player_ptr, md_ptr->m_ptr)) {
-        return;
-    }
-
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
-    msg_format(_("%s「ドヴ＠ーキン、やめろぉ！」", "%^s says, 'Dov@hkiin! No!!'"), m_name);
-}
-
 static void on_dead_dragon_centipede(PlayerType *player_ptr, monster_death_type *md_ptr)
 {
     if (player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out) {
@@ -538,21 +489,6 @@ static void on_dead_dragon_centipede(PlayerType *player_ptr, monster_death_type 
         msg_format(_("%sが再生した！", "The %s reproduced!"), m_name);
         sound(SOUND_SUMMON);
     }
-}
-
-/*!
- * @brief ビッグキューちゃん撃破時メッセージ
- * @todo 死亡時の特殊メッセージを表示するだけの処理を複数作るなら、switch/case文に分けられるように汎用化すること
- */
-static void on_dead_big_raven(PlayerType *player_ptr, monster_death_type *md_ptr)
-{
-    if (!is_seen(player_ptr, md_ptr->m_ptr)) {
-        return;
-    }
-
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, md_ptr->m_ptr, MD_NONE);
-    msg_format(_("%sはお星さまになった！", "%^s became a constellation!"), m_name);
 }
 
 /*
@@ -625,7 +561,7 @@ static void on_dead_random_artifact(PlayerType *player_ptr, monster_death_type *
             break;
         }
 
-        if ((q_ptr->fixed_artifact_idx != 0) && q_ptr->is_ego()) {
+        if ((q_ptr->fixed_artifact_idx != FixedArtifactId::NONE) && q_ptr->is_ego()) {
             continue;
         }
 
@@ -769,7 +705,7 @@ static void on_dead_swordfish(PlayerType *player_ptr, monster_death_type *md_ptr
         return;
     }
 
-    drop_single_artifact(player_ptr, md_ptr, ART_FROZEN_SWORDFISH);
+    drop_single_artifact(player_ptr, md_ptr, FixedArtifactId::FROZEN_SWORDFISH);
 }
 
 void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, AttributeFlags attribute_flags)
@@ -802,7 +738,7 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, At
         on_dead_dawn(player_ptr, md_ptr);
         return;
     case MonsterRaceId::UNMAKER:
-        on_dead_unmaker(player_ptr, md_ptr);
+        (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 100, AttributeType::CHAOS, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
         break;
     case MonsterRaceId::UNICORN_ORD:
     case MonsterRaceId::MORGOTH:
@@ -820,7 +756,7 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, At
         on_dead_can_angel(player_ptr, md_ptr);
         return;
     case MonsterRaceId::ROLENTO:
-        on_dead_rolento(player_ptr, md_ptr);
+        (void)project(player_ptr, md_ptr->m_idx, 3, md_ptr->md_y, md_ptr->md_x, damroll(20, 10), AttributeType::FIRE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
         return;
     case MonsterRaceId::MIDDLE_AQUA_FIRST:
     case MonsterRaceId::LARGE_AQUA_FIRST:
@@ -833,21 +769,12 @@ void switch_special_death(PlayerType *player_ptr, monster_death_type *md_ptr, At
     case MonsterRaceId::TOTEM_MOAI:
         on_dead_totem_moai(player_ptr, md_ptr);
         return;
-    case MonsterRaceId::DESLAYER_SENIOR:
-        on_dead_demon_slayer_senior(player_ptr, md_ptr);
-        return;
-    case MonsterRaceId::MIRMULNIR:
-        on_dead_mirmulnir(player_ptr, md_ptr);
-        return;
     case MonsterRaceId::DRAGON_CENTIPEDE:
     case MonsterRaceId::DRAGON_WORM:
         on_dead_dragon_centipede(player_ptr, md_ptr);
         return;
     case MonsterRaceId::CAIT_SITH:
         drop_specific_item_on_dead(player_ptr, md_ptr, kind_is_boots);
-        return;
-    case MonsterRaceId::BIG_RAVEN:
-        on_dead_big_raven(player_ptr, md_ptr);
         return;
     case MonsterRaceId::YENDOR_WIZARD_1:
         on_dead_random_artifact(player_ptr, md_ptr, kind_is_amulet);

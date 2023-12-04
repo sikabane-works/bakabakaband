@@ -525,7 +525,9 @@ hengband_SOURCES = \
 	monster-race/race-flags9.h \
 	monster-race/race-indice-types.h \
 	monster-race/race-kind-flags.h \
+	monster-race/race-population-flags.h \
 	monster-race/race-resistance-mask.cpp monster-race/race-resistance-mask.h \
+	monster-race/race-speak-flags.h \
 	monster-race/race-visual-flags.h \
 	monster-race/race-wilderness-flags.h \
 	\
@@ -943,11 +945,15 @@ hengband_SOURCES = \
 	term/z-term.cpp term/z-term.h term/z-util.cpp term/z-util.h \
 	term/z-virt.cpp term/z-virt.h \
 	\
+	timed-effect/player-acceleration.cpp timed-effect/player-acceleration.h \
+	timed-effect/player-blindness.cpp timed-effect/player-blindness.h \
 	timed-effect/player-confusion.cpp timed-effect/player-confusion.h \
 	timed-effect/player-cut.cpp timed-effect/player-cut.h \
+	timed-effect/player-deceleration.cpp timed-effect/player-deceleration.h \
 	timed-effect/player-fear.cpp timed-effect/player-fear.h \
 	timed-effect/player-hallucination.cpp timed-effect/player-hallucination.h \
 	timed-effect/player-paralysis.cpp timed-effect/player-paralysis.h \
+	timed-effect/player-poison.cpp timed-effect/player-poison.h \
 	timed-effect/player-stun.cpp timed-effect/player-stun.h \
 	timed-effect/timed-effects.cpp timed-effect/timed-effects.h \
 	\

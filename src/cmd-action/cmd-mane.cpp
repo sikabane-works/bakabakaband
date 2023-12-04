@@ -211,7 +211,7 @@ static int get_mane_power(PlayerType *player_ptr, int *sn, bool baigaesi)
 
                     chance += player_ptr->to_m_chance;
 
-                    if (player_ptr->inventory_list[INVEN_NECK].fixed_artifact_idx == ART_GOGO_PENDANT) {
+                    if (player_ptr->inventory_list[INVEN_NECK].fixed_artifact_idx == FixedArtifactId::GOGO_PENDANT) {
                         chance -= 10;
                     }
 
@@ -895,7 +895,7 @@ static bool use_mane(PlayerType *player_ptr, MonsterAbilityType spell)
         sleep_monster(player_ptr, dir, plev);
         break;
     case MonsterAbilityType::HASTE:
-        (void)set_fast(player_ptr, randint1(20 + plev) + plev, false);
+        (void)set_acceleration(player_ptr, randint1(20 + plev) + plev, false);
         break;
     case MonsterAbilityType::HAND_DOOM: {
         if (!get_aim_dir(player_ptr, &dir)) {

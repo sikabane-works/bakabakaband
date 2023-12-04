@@ -159,6 +159,7 @@ void wr_monster(monster_type *m_ptr)
     wr_s16b((int16_t)m_ptr->maxhp);
     wr_s16b((int16_t)m_ptr->max_maxhp);
     wr_u32b(m_ptr->dealt_damage);
+    wr_u32b(m_ptr->death_count);
 
     if (any_bits(flags, SaveDataMonsterFlagType::AP_R_IDX)) {
         wr_s16b(enum2i(m_ptr->ap_r_idx));
