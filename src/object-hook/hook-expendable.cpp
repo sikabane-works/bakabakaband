@@ -9,6 +9,7 @@
 #include "object-hook/hook-enchant.h"
 #include "object/object-flags.h"
 #include "object/object-kind.h"
+#include "object/tval-types.h"
 #include "perception/object-perception.h"
 #include "player-base/player-race.h"
 #include "player-info/mimic-info-table.h"
