@@ -140,7 +140,7 @@ void QuestCompletionChecker::complete_kill_number()
 
 void QuestCompletionChecker::complete_kill_all()
 {
-    if (!is_hostile(this->m_ptr) || (this->count_all_hostile_monsters() != 1)) {
+    if (!this->m_ptr->is_hostile() || (this->count_all_hostile_monsters() != 1)) {
         return;
     }
 
@@ -194,7 +194,7 @@ void QuestCompletionChecker::complete_kill_any_level()
 void QuestCompletionChecker::complete_tower()
 {
     const auto &quest_list = QuestList::get_instance();
-    if (!is_hostile(this->m_ptr)) {
+    if (!this->m_ptr->is_hostile()) {
         return;
     }
 
@@ -222,7 +222,7 @@ int QuestCompletionChecker::count_all_hostile_monsters()
     for (auto x = 0; x < floor_ptr->width; ++x) {
         for (auto y = 0; y < floor_ptr->height; ++y) {
             auto m_idx = floor_ptr->grid_array[y][x].m_idx;
-            if ((m_idx > 0) && is_hostile(&floor_ptr->m_list[m_idx])) {
+            if ((m_idx > 0) && floor_ptr->m_list[m_idx].is_hostile()) {
                 ++number_mon;
             }
         }

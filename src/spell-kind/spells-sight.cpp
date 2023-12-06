@@ -49,7 +49,7 @@ bool project_all_los(PlayerType *player_ptr, AttributeType typ, int dam)
 {
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
 
@@ -220,7 +220,7 @@ void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
     bool speed = false;
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
         if (i == who) {
@@ -373,7 +373,7 @@ bool deathray_monsters(PlayerType *player_ptr)
  */
 void probed_monster_info(char *buf, PlayerType *player_ptr, monster_type *m_ptr, monster_race *r_ptr)
 {
-    if (!is_original_ap(m_ptr)) {
+    if (!m_ptr->is_original_ap()) {
         if (m_ptr->mflag2.has(MonsterConstantFlagType::KAGE)) {
             m_ptr->mflag2.reset(MonsterConstantFlagType::KAGE);
         }
@@ -456,7 +456,7 @@ bool probing(PlayerType *player_ptr)
     for (int i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         auto *r_ptr = &r_info[m_ptr->r_idx];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
         if (!player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx)) {

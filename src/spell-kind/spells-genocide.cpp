@@ -142,7 +142,7 @@ bool symbol_genocide(PlayerType *player_ptr, int power, bool player_cast)
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         auto *r_ptr = &r_info[m_ptr->r_idx];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
         if (r_ptr->d_char != typ) {
@@ -179,7 +179,7 @@ bool mass_genocide(PlayerType *player_ptr, int power, bool player_cast)
     bool result = false;
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
         if (m_ptr->cdis > MAX_SIGHT) {
@@ -217,7 +217,7 @@ bool mass_genocide_undead(PlayerType *player_ptr, int power, bool player_cast)
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         auto *r_ptr = &r_info[m_ptr->r_idx];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
         if (r_ptr->kind_flags.has_not(MonsterKindType::UNDEAD)) {

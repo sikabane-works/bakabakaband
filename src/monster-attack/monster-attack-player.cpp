@@ -134,7 +134,7 @@ bool MonsterAttackPlayer::check_no_blow()
         return false;
     }
 
-    return is_hostile(this->m_ptr);
+    return this->m_ptr->is_hostile();
 }
 
 /*!
@@ -214,7 +214,7 @@ bool MonsterAttackPlayer::process_monster_blows()
  */
 bool MonsterAttackPlayer::check_monster_continuous_attack()
 {
-    if (!monster_is_valid(this->m_ptr) || (this->method == RaceBlowMethodType::NONE)) {
+    if (!this->m_ptr->is_valid() || (this->method == RaceBlowMethodType::NONE)) {
         return false;
     }
 

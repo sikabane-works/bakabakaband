@@ -57,4 +57,9 @@ struct monster_type {
 
     bool is_friendly() const;
     bool is_pet() const;
+    bool is_hostile() const;
+    bool is_original_ap() const;
+    bool is_mimicry() const;
+    bool is_valid() const;
+    MonsterRaceId get_real_r_idx() const;
 };
