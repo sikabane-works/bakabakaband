@@ -21,27 +21,27 @@ static void write_monster_flags(monster_type *m_ptr, BIT_FLAGS *flags)
         set_bits(*flags, SaveDataMonsterFlagType::SUB_ALIGN);
     }
 
-    if (monster_csleep_remaining(m_ptr)) {
+    if (m_ptr->is_asleep()) {
         set_bits(*flags, SaveDataMonsterFlagType::CSLEEP);
     }
 
-    if (monster_fast_remaining(m_ptr)) {
+    if (m_ptr->is_accelerated()) {
         set_bits(*flags, SaveDataMonsterFlagType::FAST);
     }
 
-    if (monster_slow_remaining(m_ptr)) {
+    if (m_ptr->is_decelerated()) {
         set_bits(*flags, SaveDataMonsterFlagType::SLOW);
     }
 
-    if (monster_stunned_remaining(m_ptr)) {
+    if (m_ptr->is_stunned()) {
         set_bits(*flags, SaveDataMonsterFlagType::STUNNED);
     }
 
-    if (monster_confused_remaining(m_ptr)) {
+    if (m_ptr->is_confused()) {
         set_bits(*flags, SaveDataMonsterFlagType::CONFUSED);
     }
 
-    if (monster_fear_remaining(m_ptr)) {
+    if (m_ptr->is_fearful()) {
         set_bits(*flags, SaveDataMonsterFlagType::MONFEAR);
     }
 
@@ -53,7 +53,7 @@ static void write_monster_flags(monster_type *m_ptr, BIT_FLAGS *flags)
         set_bits(*flags, SaveDataMonsterFlagType::TARGET_X);
     }
 
-    if (monster_invulner_remaining(m_ptr)) {
+    if (m_ptr->is_invulnerable()) {
         set_bits(*flags, SaveDataMonsterFlagType::INVULNER);
     }
 

@@ -402,9 +402,9 @@ static void effect_damage_piles_stun(PlayerType *player_ptr, effect_monster_type
     }
 
     int turns = 0;
-    if (monster_stunned_remaining(em_ptr->m_ptr)) {
+    if (em_ptr->m_ptr->get_remaining_stun()) {
         em_ptr->note = _("はひどくもうろうとした。", " is more dazed.");
-        turns = monster_stunned_remaining(em_ptr->m_ptr) + (em_ptr->do_stun / 2);
+        turns = em_ptr->m_ptr->get_remaining_stun() + (em_ptr->do_stun / 2);
     } else {
         em_ptr->note = _("はもうろうとした。", " is dazed.");
         turns = em_ptr->do_stun;
@@ -431,9 +431,9 @@ static void effect_damage_piles_confusion(PlayerType *player_ptr, effect_monster
     }
 
     int turns = 0;
-    if (monster_confused_remaining(em_ptr->m_ptr)) {
+    if (em_ptr->m_ptr->is_confused()) {
         em_ptr->note = _("はさらに混乱したようだ。", " looks more confused.");
-        turns = monster_confused_remaining(em_ptr->m_ptr) + (em_ptr->do_conf / 2);
+        turns = em_ptr->m_ptr->get_remaining_confusion() + (em_ptr->do_conf / 2);
     } else {
         em_ptr->note = _("は混乱したようだ。", " looks confused.");
         turns = em_ptr->do_conf;
@@ -457,7 +457,7 @@ static void effect_damage_piles_fear(PlayerType *player_ptr, effect_monster_type
         return;
     }
 
-    (void)set_monster_monfear(player_ptr, em_ptr->g_ptr->m_idx, monster_fear_remaining(em_ptr->m_ptr) + em_ptr->do_fear);
+    (void)set_monster_monfear(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->m_ptr->get_remaining_fear() + em_ptr->do_fear);
     em_ptr->get_angry = true;
 }
 

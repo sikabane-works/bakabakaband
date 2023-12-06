@@ -212,7 +212,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
             energy.reset_player_turn();
             can_move = false;
             disturb(player_ptr, false, true);
-        } else if (monster_fear_remaining(riding_m_ptr)) {
+        } else if (riding_m_ptr->is_fearful()) {
             GAME_TEXT steed_name[MAX_NLEN];
             monster_desc(player_ptr, steed_name, riding_m_ptr, 0);
             msg_format(_("%sが恐怖していて制御できない。", "%^s is too scared to control."), steed_name);
@@ -242,7 +242,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
             disturb(player_ptr, false, true);
         }
 
-        if (can_move && monster_stunned_remaining(riding_m_ptr) && one_in_(2)) {
+        if (can_move && riding_m_ptr->is_stunned() && one_in_(2)) {
             GAME_TEXT steed_name[MAX_NLEN];
             monster_desc(player_ptr, steed_name, riding_m_ptr, 0);
             msg_format(_("%sが朦朧としていてうまく動けない！", "You cannot control stunned %s!"), steed_name);

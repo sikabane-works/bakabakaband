@@ -130,7 +130,7 @@ void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
     turn_flags_ptr->see_m = is_seen(player_ptr, m_ptr);
 
     decide_drop_from_monster(player_ptr, m_idx, turn_flags_ptr->is_riding_mon);
-    if (m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON) && one_in_(13) && !monster_csleep_remaining(m_ptr)) {
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON) && one_in_(13) && !m_ptr->is_asleep()) {
         choose_new_monster(player_ptr, m_idx, false, MonsterRace::empty_id());
         r_ptr = &r_info[m_ptr->r_idx];
     }
@@ -140,7 +140,7 @@ void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
         return;
     }
 
-    if (monster_stunned_remaining(m_ptr) && one_in_(2)) {
+    if (m_ptr->is_stunned() && one_in_(2)) {
         return;
     }
 
@@ -190,7 +190,7 @@ void process_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
         m_ptr->mflag2.reset(MonsterConstantFlagType::NOFLOW);
     }
 
-    if (!turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && !monster_fear_remaining(m_ptr) && !turn_flags_ptr->is_riding_mon && turn_flags_ptr->aware) {
+    if (!turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && !m_ptr->is_fearful() && !turn_flags_ptr->is_riding_mon && turn_flags_ptr->aware) {
         if (r_ptr->freq_spell && randint1(100) <= r_ptr->freq_spell) {
             if (make_attack_spell(player_ptr, m_idx)) {
                 return;
@@ -312,7 +312,7 @@ bool awake_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     auto *r_ptr = &r_info[m_ptr->r_idx];
-    if (!monster_csleep_remaining(m_ptr)) {
+    if (!m_ptr->is_asleep()) {
         return true;
     }
 
@@ -639,7 +639,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
     GAME_TEXT m_name[MAX_NLEN];
     monster_desc(player_ptr, m_name, m_ptr, 0);
 
-    if (monster_fear_remaining(m_ptr) && one_in_(20)) {
+    if (m_ptr->is_fearful() && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
         ObjectType forge;
         ObjectType *q_ptr = &forge;
@@ -647,7 +647,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
-    if (monster_fear_remaining(m_ptr) && one_in_(20)) {
+    if (m_ptr->is_fearful() && one_in_(20)) {
         msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
         ObjectType forge;
         ObjectType *q_ptr = &forge;
@@ -655,7 +655,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
-    bool is_battle_determined = !turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && monster_fear_remaining(m_ptr) && turn_flags_ptr->aware;
+    bool is_battle_determined = !turn_flags_ptr->do_turn && !turn_flags_ptr->do_move && m_ptr->is_fearful() && turn_flags_ptr->aware;
     if (!is_battle_determined) {
         return false;
     }
@@ -789,11 +789,11 @@ void sweep_monster_process(PlayerType *player_ptr)
                     switch (randint1(3)) {
                     case 1:
                         msg_format(_("%s「んほぉ！」", "%s 'Nnhor!'"), m_name);
-                        (void)set_monster_stunned(player_ptr, 0, monster_stunned_remaining(m_ptr) + 10 + randint0(player_ptr->lev) / 5);
+                        (void)set_monster_stunned(player_ptr, 0, m_ptr->get_remaining_stun() + 10 + randint0(player_ptr->lev) / 5);
                         break;
                     case 2:
                         msg_format(_("%s「アへぇ！」", "%s 'Aherr!'"), m_name);
-                        (void)set_monster_slow(player_ptr, 0, monster_slow_remaining(m_ptr) + 10 + randint0(player_ptr->lev) / 5);
+                        (void)set_monster_slow(player_ptr, 0, m_ptr->get_remaining_deceleration() + 10 + randint0(player_ptr->lev) / 5);
                         break;
                     case 3: {
                         bool fear = false;

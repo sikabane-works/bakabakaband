@@ -53,7 +53,7 @@ bool monster_type::is_mimicry() const
         return true;
     }
 
-    return r_ref.behavior_flags.has(MonsterBehaviorType::NEVER_MOVE) || monster_csleep_remaining(this);
+    return r_ref.behavior_flags.has(MonsterBehaviorType::NEVER_MOVE) || this->is_asleep();
 }
 
 bool monster_type::is_valid() const
@@ -63,14 +63,89 @@ bool monster_type::is_valid() const
 
 MonsterRaceId monster_type::get_real_r_idx() const
 {
-    auto *r_ptr = &r_info[this->r_idx];
-    if (this->mflag2.has(MonsterConstantFlagType::CHAMELEON)) {
-        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            return MonsterRaceId::CHAMELEON_K;
-        } else {
-            return MonsterRaceId::CHAMELEON;
-        }
+    const auto &r_ref = r_info[this->r_idx];
+    if (this->mflag2.has_not(MonsterConstantFlagType::CHAMELEON)) {
+        return this->r_idx;
     }
 
-    return this->r_idx;
+    return r_ref.kind_flags.has(MonsterKindType::UNIQUE) ? MonsterRaceId::CHAMELEON_K : MonsterRaceId::CHAMELEON;
+}
+
+/*!
+ * @brief モンスターの真の種族を返す / Extract monster race pointer of a monster's true form
+ * @return 本当のモンスター種族参照ポインタ
+ */
+monster_race &monster_type::get_real_r_ref() const
+{
+    return r_info[this->get_real_r_idx()];
+}
+
+short monster_type::get_remaining_sleep() const
+{
+    return this->mtimed[MTIMED_CSLEEP];
+}
+
+bool monster_type::is_asleep() const
+{
+    return this->get_remaining_sleep() > 0;
+}
+
+short monster_type::get_remaining_acceleration() const
+{
+    return this->mtimed[MTIMED_FAST];
+}
+
+bool monster_type::is_accelerated() const
+{
+    return this->get_remaining_acceleration() > 0;
+}
+
+short monster_type::get_remaining_deceleration() const
+{
+    return this->mtimed[MTIMED_SLOW];
+}
+
+bool monster_type::is_decelerated() const
+{
+    return this->get_remaining_deceleration() > 0;
+}
+
+short monster_type::get_remaining_stun() const
+{
+    return this->mtimed[MTIMED_STUNNED];
+}
+
+bool monster_type::is_stunned() const
+{
+    return this->get_remaining_stun() > 0;
+}
+
+short monster_type::get_remaining_confusion() const
+{
+    return this->mtimed[MTIMED_CONFUSED];
+}
+
+bool monster_type::is_confused() const
+{
+    return this->get_remaining_confusion() > 0;
+}
+
+short monster_type::get_remaining_fear() const
+{
+    return this->mtimed[MTIMED_MONFEAR];
+}
+
+bool monster_type::is_fearful() const
+{
+    return this->get_remaining_fear() > 0;
+}
+
+short monster_type::get_remaining_invulnerability() const
+{
+    return this->mtimed[MTIMED_INVULNER];
+}
+
+bool monster_type::is_invulnerable() const
+{
+    return this->get_remaining_invulnerability() > 0;
 }

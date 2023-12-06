@@ -108,12 +108,12 @@ bool set_monster_csleep(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     v = (v > 10000) ? 10000 : (v < 0) ? 0
                                       : v;
     if (v) {
-        if (!monster_csleep_remaining(m_ptr)) {
+        if (!m_ptr->is_asleep()) {
             mproc_add(floor_ptr, m_idx, MTIMED_CSLEEP);
             notice = true;
         }
     } else {
-        if (monster_csleep_remaining(m_ptr)) {
+        if (m_ptr->is_asleep()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_CSLEEP);
             notice = true;
         }
@@ -157,12 +157,12 @@ bool set_monster_fast(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     v = (v > 200) ? 200 : (v < 0) ? 0
                                   : v;
     if (v) {
-        if (!monster_fast_remaining(m_ptr)) {
+        if (!m_ptr->is_accelerated()) {
             mproc_add(floor_ptr, m_idx, MTIMED_FAST);
             notice = true;
         }
     } else {
-        if (monster_fast_remaining(m_ptr)) {
+        if (m_ptr->is_accelerated()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_FAST);
             notice = true;
         }
@@ -191,12 +191,12 @@ bool set_monster_slow(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     v = (v > 200) ? 200 : (v < 0) ? 0
                                   : v;
     if (v) {
-        if (!monster_slow_remaining(m_ptr)) {
+        if (!m_ptr->is_decelerated()) {
             mproc_add(floor_ptr, m_idx, MTIMED_SLOW);
             notice = true;
         }
     } else {
-        if (monster_slow_remaining(m_ptr)) {
+        if (m_ptr->is_decelerated()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_SLOW);
             notice = true;
         }
@@ -230,12 +230,12 @@ bool set_monster_stunned(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     v = (v > 200) ? 200 : (v < 0) ? 0
                                   : v;
     if (v) {
-        if (!monster_stunned_remaining(m_ptr)) {
+        if (!m_ptr->is_stunned()) {
             mproc_add(floor_ptr, m_idx, MTIMED_STUNNED);
             notice = true;
         }
     } else {
-        if (monster_stunned_remaining(m_ptr)) {
+        if (m_ptr->is_stunned()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_STUNNED);
             notice = true;
         }
@@ -261,12 +261,12 @@ bool set_monster_confused(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     v = (v > 200) ? 200 : (v < 0) ? 0
                                   : v;
     if (v) {
-        if (!monster_confused_remaining(m_ptr)) {
+        if (!m_ptr->is_confused()) {
             mproc_add(floor_ptr, m_idx, MTIMED_CONFUSED);
             notice = true;
         }
     } else {
-        if (monster_confused_remaining(m_ptr)) {
+        if (m_ptr->is_confused()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_CONFUSED);
             notice = true;
         }
@@ -292,12 +292,12 @@ bool set_monster_monfear(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     v = (v > 200) ? 200 : (v < 0) ? 0
                                   : v;
     if (v) {
-        if (!monster_fear_remaining(m_ptr)) {
+        if (!m_ptr->is_fearful()) {
             mproc_add(floor_ptr, m_idx, MTIMED_MONFEAR);
             notice = true;
         }
     } else {
-        if (monster_fear_remaining(m_ptr)) {
+        if (m_ptr->is_fearful()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_MONFEAR);
             notice = true;
         }
@@ -339,12 +339,12 @@ bool set_monster_invulner(PlayerType *player_ptr, MONSTER_IDX m_idx, int v, bool
     v = (v > 200) ? 200 : (v < 0) ? 0
                                   : v;
     if (v) {
-        if (!monster_invulner_remaining(m_ptr)) {
+        if (!m_ptr->is_invulnerable()) {
             mproc_add(floor_ptr, m_idx, MTIMED_INVULNER);
             notice = true;
         }
     } else {
-        if (monster_invulner_remaining(m_ptr)) {
+        if (m_ptr->is_invulnerable()) {
             mproc_remove(floor_ptr, m_idx, MTIMED_INVULNER);
             if (energy_need && !player_ptr->wild_mode) {
                 m_ptr->energy_need += ENERGY_NEED();

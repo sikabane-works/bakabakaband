@@ -67,7 +67,7 @@ static bool check_pet_preservation_conditions(PlayerType *player_ptr, monster_ty
     }
 
     POSITION dis = distance(player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx);
-    if (monster_confused_remaining(m_ptr) || monster_stunned_remaining(m_ptr) || monster_csleep_remaining(m_ptr) || (m_ptr->parent_m_idx != 0)) {
+    if (m_ptr->is_confused() || m_ptr->is_stunned() || m_ptr->is_asleep() || (m_ptr->parent_m_idx != 0)) {
         return true;
     }
 
@@ -275,14 +275,13 @@ static void preserve_info(PlayerType *player_ptr)
     }
 
     for (DUNGEON_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        monster_race *r_ptr;
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
         if (!m_ptr->is_valid() || (quest_r_idx != m_ptr->r_idx)) {
             continue;
         }
 
-        r_ptr = real_r_ptr(m_ptr);
-        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL))) {
+        const auto &r_ref = m_ptr->get_real_r_ref();
+        if (r_ref.kind_flags.has(MonsterKindType::UNIQUE) || (r_ref.population_flags.has(MonsterPopulationType::NAZGUL))) {
             continue;
         }
 
