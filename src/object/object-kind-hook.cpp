@@ -4,15 +4,14 @@
  * @author deskull
  */
 
-#include "flavor/flavor-util.h"
 #include "object/object-kind-hook.h"
+#include "flavor/flavor-util.h"
 #include "object-enchant/tr-types.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/baseitem-info-definition.h"
 #include "util/bit-flags-calculator.h"
-
 
 #include <algorithm>
 
