@@ -577,7 +577,6 @@ hengband_SOURCES = \
 	object/object-flags.cpp object/object-flags.h \
 	object/object-index-list.cpp object/object-index-list.h \
 	object/object-info.cpp object/object-info.h \
-	object/object-kind.cpp object/object-kind.h \
 	object/object-kind-hook.cpp object/object-kind-hook.h \
 	object/object-stack.cpp object/object-stack.h \
 	object/object-value.cpp object/object-value.h \
@@ -915,6 +914,7 @@ hengband_SOURCES = \
 	system/angband-exceptions.h \
 	system/angband-version.cpp system/angband-version.h \
 	system/artifact-type-definition.cpp system/artifact-type-definition.h \
+	system/baseitem-info-definition.cpp system/baseitem-info-definition.h \
 	system/building-type-definition.cpp system/building-type-definition.h \
 	system/dungeon-data-definition.h \
 	system/floor-type-definition.h \

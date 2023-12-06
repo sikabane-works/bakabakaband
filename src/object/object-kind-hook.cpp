@@ -5,11 +5,12 @@
  */
 
 #include "object/object-kind-hook.h"
+#include "flavor/flavor-util.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-kind.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "system/baseitem-info-definition.h"
 #include "util/bit-flags-calculator.h"
 
 #include <algorithm>
@@ -124,7 +125,7 @@ bool kind_is_amulet(KIND_OBJECT_IDX k_idx)
 
 bool kind_is_nasty(KIND_OBJECT_IDX k_idx)
 {
-    object_kind *k_ptr = &k_info[k_idx];
+    BaseItemInfo *k_ptr = &k_info[k_idx];
     return k_ptr->flags.has(TR_NASTY);
 }
 
@@ -190,12 +191,12 @@ bool kind_is_good(KIND_OBJECT_IDX k_idx)
     }
 }
 
-static bool comp_tval(const object_kind *a, const object_kind *b)
+static bool comp_tval(const BaseItemInfo *a, const BaseItemInfo *b)
 {
     return a->tval < b->tval;
 };
 
-static bool comp_tval_sval(const object_kind *a, const object_kind *b)
+static bool comp_tval_sval(const BaseItemInfo *a, const BaseItemInfo *b)
 {
     if (a->tval != b->tval) {
         return comp_tval(a, b);
@@ -208,9 +209,9 @@ static bool comp_tval_sval(const object_kind *a, const object_kind *b)
  * 最初にtvalによるソートを行い、tvalが同じものはその中でsvalによるソートが行われた配列となる
  * @return 上述の処理を行った配列(静的変数)への参照を返す
  */
-static const std::vector<const object_kind *> &get_sorted_k_info()
+static const std::vector<const BaseItemInfo *> &get_sorted_k_info()
 {
-    static std::vector<const object_kind *> sorted_k_info_cache;
+    static std::vector<const BaseItemInfo *> sorted_k_info_cache;
 
     if (sorted_k_info_cache.empty()) {
         for (const auto &k_ref : k_info) {
@@ -228,7 +229,7 @@ static const std::vector<const object_kind *> &get_sorted_k_info()
 
 /*!
  * @brief tvalとsvalに対応するベースアイテムのIDを検索する
- * Find the index of the object_kind with the given tval and sval
+ * Find the index of the BaseItemInfo with the given tval and sval
  * svalにSV_ANYが渡された場合はtvalが一致するすべてのベースアイテムから等確率でランダムに1つを選択する
  * @param tval 検索したいベースアイテムのtval
  * @param sval 検索したいベースアイテムのsval
@@ -238,7 +239,7 @@ KIND_OBJECT_IDX lookup_kind(ItemKindType tval, OBJECT_SUBTYPE_VALUE sval)
 {
     const auto &sorted_k_info = get_sorted_k_info();
 
-    object_kind k_obj;
+    BaseItemInfo k_obj;
     k_obj.tval = tval;
     k_obj.sval = sval;
 
