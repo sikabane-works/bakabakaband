@@ -30,7 +30,7 @@ enum conversion_type {
 /*** Terrain feature variables ***/
 
 /* The terrain feature arrays */
-std::vector<feature_type> f_info;
+std::vector<terrain_type> terrains_info;
 
 /* Nothing */
 FEAT_IDX feat_none;
@@ -126,7 +126,7 @@ bool is_trap(PlayerType *player_ptr, FEAT_IDX feat)
 {
     /* 関数ポインタの都合 */
     (void)player_ptr;
-    return f_info[feat].flags.has(FloorFeatureType::TRAP);
+    return terrains_info[feat].flags.has(FloorFeatureType::TRAP);
 }
 
 /*!
@@ -138,7 +138,7 @@ bool is_closed_door(PlayerType *player_ptr, FEAT_IDX feat)
 {
     /* 関数ポインタの都合 */
     (void)player_ptr;
-    auto *f_ptr = &f_info[feat];
+    auto *f_ptr = &terrains_info[feat];
 
     return (f_ptr->flags.has(FloorFeatureType::OPEN) || f_ptr->flags.has(FloorFeatureType::BASH)) &&
            f_ptr->flags.has_not(FloorFeatureType::MOVE);
@@ -181,7 +181,7 @@ bool is_ascii_graphics(char x)
 /*
  * Determine if a "feature" is "permanent wall"
  */
-bool permanent_wall(feature_type *f_ptr)
+bool permanent_wall(terrain_type *f_ptr)
 {
     return f_ptr->flags.has_all_of({ FloorFeatureType::WALL, FloorFeatureType::PERMANENT });
 }
@@ -200,7 +200,7 @@ void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
-    if (f_info[g_ptr->feat].change_priority <= f_info[feat].change_priority) {
+    if (terrains_info[g_ptr->feat].change_priority <= terrains_info[feat].change_priority) {
         cave_set_feat(player_ptr, y, x, feat);
     }
 }
@@ -212,7 +212,7 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
-    auto *f_ptr = &f_info[feat];
+    auto *f_ptr = &terrains_info[feat];
     if (!w_ptr->character_dungeon) {
         g_ptr->mimic = 0;
         g_ptr->feat = feat;
@@ -292,7 +292,7 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
 
 FEAT_IDX conv_dungeon_feat(floor_type *floor_ptr, FEAT_IDX newfeat)
 {
-    auto *f_ptr = &f_info[newfeat];
+    auto *f_ptr = &terrains_info[newfeat];
     if (f_ptr->flags.has_not(FloorFeatureType::CONVERT)) {
         return newfeat;
     }
