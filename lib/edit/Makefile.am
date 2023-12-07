@@ -18,7 +18,7 @@ angband_files = \
 	t0000002.txt t0000003.txt t0000004.txt t0000005.txt \
 	t0000006.txt t_basic.txt t_info.txt t_lite.txt \
 	t_pref.txt v_info.txt w_info.txt \
-	m_info.txt s_info.txt
+	s_info.txt
 
 EXTRA_DIST = \
   $(angband_files)

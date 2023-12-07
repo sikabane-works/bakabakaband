@@ -212,7 +212,7 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
     cp_ptr = &class_info[short_pclass];
     ap_ptr = &personality_info[player_ptr->ppersonality];
 
-    mp_ptr = &m_info[short_pclass];
+    mp_ptr = &class_magics_info[short_pclass];
 
     load_spells(player_ptr);
     if (PlayerClass(player_ptr).equals(PlayerClassType::MINDCRAFTER)) {
