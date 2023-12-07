@@ -132,3 +132,10 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define MON_SUMMON_ADJ 2 /*!< 現在未使用 Adjust level of summoned creatures */
 #define MON_DRAIN_LIFE 2 /*!< モンスターの打撃によるプレイヤーの経験値吸収基本倍率(%) / Percent of player exp drained per hit */
 #define USE_DEVICE 3 /*!< 魔道具の最低失敗基準値 x> Harder devices x< Easier devices     */
+
+/* プレイヤー/モンスターの標準速度 (加速0) */
+constexpr auto STANDARD_SPEED = 110;
+
+constexpr auto QUEST_DEFINITION_LIST = "QuestDefinitionList.txt";
+constexpr auto TOWN_DEFINITION_LIST = "t_info.txt";
+constexpr auto WILDERNESS_DEFINITION_LIST = "w_info.txt";
