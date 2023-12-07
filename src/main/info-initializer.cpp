@@ -43,6 +43,8 @@
 
 namespace {
 
+using Retoucher = void (*)(angband_header *);
+
 template <typename>
 struct is_vector : std::false_type {
 };
@@ -99,16 +101,14 @@ static void init_header(angband_header *head, IDX num = 0)
  * even if the string happens to be empty (everyone has a unique '\0').
  */
 template <typename InfoType>
-static errr init_info(concptr filename, angband_header &head, InfoType &info, std::function<errr(std::string_view, angband_header *)> parser,
-    void (*retouch)(angband_header *head) = nullptr)
+static errr init_info(std::string_view filename, angband_header &head, InfoType &info, Parser parser, Retoucher retouch = nullptr)
 {
     char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_EDIT, format("%s.txt", filename));
+    path_build(buf, sizeof(buf), ANGBAND_DIR_EDIT, filename.data());
 
-    FILE *fp = angband_fopen(buf, "r");
-
+    auto *fp = angband_fopen(buf, "r");
     if (!fp) {
-        quit(format(_("'%s.txt'ファイルをオープンできません。", "Cannot open '%s.txt' file."), filename));
+        quit(format(_("'%s'ファイルをオープンできません。", "Cannot open '%s' file."), filename));
     }
 
     constexpr auto info_is_vector = is_vector_v<InfoType>;
@@ -116,27 +116,26 @@ static errr init_info(concptr filename, angband_header &head, InfoType &info, st
         info.assign(head.info_num, {});
     }
 
-    errr err = init_info_txt(fp, buf, &head, parser);
+    const auto err = init_info_txt(fp, buf, &head, parser);
     angband_fclose(fp);
-
     if (err) {
-        concptr oops = (((err > 0) && (err < PARSE_ERROR_MAX)) ? err_str[err] : _("未知の", "unknown"));
+        const auto oops = (((err > 0) && (err < PARSE_ERROR_MAX)) ? err_str[err] : _("未知の", "unknown"));
 #ifdef JP
-        msg_format("'%s.txt'ファイルの %d 行目にエラー。", filename, error_line);
+        msg_format("'%s'ファイルの %d 行目にエラー。", filename, error_line);
 #else
-        msg_format("Error %d at line %d of '%s.txt'.", err, error_line, filename);
+        msg_format("Error %d at line %d of '%s'.", err, error_line, filename);
 #endif
         msg_format(_("レコード %d は '%s' エラーがあります。", "Record %d contains a '%s' error."), error_idx, oops);
         msg_format(_("構文 '%s'。", "Parsing '%s'."), buf);
         msg_print(nullptr);
-        quit(format(_("'%s.txt'ファイルにエラー", "Error in '%s.txt' file."), filename));
+        quit(format(_("'%s'ファイルにエラー", "Error in '%s' file."), filename));
     }
 
     if constexpr (info_is_vector) {
         info.shrink_to_fit();
     }
-    head.info_num = static_cast<uint16_t>(info.size());
 
+    head.info_num = static_cast<uint16_t>(info.size());
     if (retouch) {
         (*retouch)(&head);
     }
@@ -151,7 +150,7 @@ static errr init_info(concptr filename, angband_header &head, InfoType &info, st
 errr init_artifacts_info()
 {
     init_header(&artifacts_header);
-    return init_info("ArtifactDefinitions", artifacts_header, artifacts_info, parse_artifacts_info);
+    return init_info("ArtifactDefinitions.txt", artifacts_header, artifacts_info, parse_artifacts_info);
 }
 
 /*!
@@ -162,7 +161,7 @@ errr init_artifacts_info()
 errr init_f_info()
 {
     init_header(&f_head);
-    return init_info("f_info", f_head, f_info, parse_f_info, retouch_f_info);
+    return init_info("f_info.txt", f_head, f_info, parse_f_info, retouch_f_info);
 }
 
 /*!
@@ -173,7 +172,7 @@ errr init_f_info()
 errr init_k_info()
 {
     init_header(&k_head);
-    return init_info("k_info", k_head, k_info, parse_k_info, nullptr);
+    return init_info("k_info.txt", k_head, k_info, parse_k_info);
 }
 
 /*!
@@ -184,7 +183,7 @@ errr init_k_info()
 errr init_e_info()
 {
     init_header(&e_head);
-    return init_info("e_info", e_head, e_info, parse_e_info, nullptr);
+    return init_info("e_info.txt", e_head, e_info, parse_e_info);
 }
 
 /*!
@@ -195,7 +194,7 @@ errr init_e_info()
 errr init_r_info()
 {
     init_header(&r_head);
-    return init_info("r_info", r_head, r_info, parse_r_info, nullptr);
+    return init_info("r_info.txt", r_head, r_info, parse_r_info);
 }
 
 /*!
@@ -206,7 +205,7 @@ errr init_r_info()
 errr init_d_info()
 {
     init_header(&d_head);
-    return init_info("d_info", d_head, d_info, parse_d_info, nullptr);
+    return init_info("d_info.txt", d_head, d_info, parse_d_info);
 }
 
 /*!
@@ -221,10 +220,10 @@ errr init_v_info()
 {
     init_header(&v_head);
 
-    return init_info("v_info", v_head, v_info, parse_v_info, nullptr);
+    return init_info("v_info.txt", v_head, v_info, parse_v_info, nullptr);
 }
 
-/*!
+/*!ss
  * @brief 職業技能情報読み込みのメインルーチン /
  * Initialize the "s_info" array
  * @return エラーコード
@@ -232,7 +231,7 @@ errr init_v_info()
 errr init_s_info()
 {
     init_header(&s_head, PLAYER_CLASS_TYPE_MAX);
-    return init_info("s_info", s_head, s_info, parse_s_info, nullptr);
+    return init_info("s_info.txt", s_head, s_info, parse_s_info);
 }
 
 /*!
@@ -243,5 +242,5 @@ errr init_s_info()
 errr init_m_info()
 {
     init_header(&m_head, PLAYER_CLASS_TYPE_MAX);
-    return init_info("m_info", m_head, m_info, parse_m_info, nullptr);
+    return init_info("m_info.txt", m_head, m_info, parse_m_info);
 }
