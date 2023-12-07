@@ -302,20 +302,20 @@ static bool level_gen(PlayerType *player_ptr, concptr *why)
     DUNGEON_IDX d_idx = floor_ptr->dungeon_idx;
     int level_height;
     int level_width;
-    if (d_info[d_idx].flags.has(DungeonFeatureType::ALWAY_MAX_SIZE)) {
+    if (dungeons_info[d_idx].flags.has(DungeonFeatureType::ALWAY_MAX_SIZE)) {
         level_height = MAX_HGT / SCREEN_HGT;
         level_width = MAX_WID / SCREEN_WID;
-    } else if (always_small_levels || ironman_small_levels || (small_levels && one_in_(SMALL_LEVEL)) || d_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
+    } else if (always_small_levels || ironman_small_levels || (small_levels && one_in_(SMALL_LEVEL)) || dungeons_info[d_idx].flags.has(DungeonFeatureType::SMALLEST)) {
         level_height = MIN_HGT_MULTIPLE;
         level_width = MIN_WID_MULTIPLE;
-    } else if (d_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {
+    } else if (dungeons_info[d_idx].flags.has(DungeonFeatureType::BEGINNER)) {
         level_height = MIN_HGT_MULTIPLE * 2;
         level_width = MIN_WID_MULTIPLE * 2;
     } else {
         if (one_in_(HUGE_DUNGEON_RATE)) {
             level_height = randint1(MAX_HGT / SCREEN_HGT);
             level_width = randint1(MAX_WID / SCREEN_WID);
-        } else if (one_in_(LARGE_DUNGEON_RATE) || d_info[d_idx].flags.has(DungeonFeatureType::BIG)) {
+        } else if (one_in_(LARGE_DUNGEON_RATE) || dungeons_info[d_idx].flags.has(DungeonFeatureType::BIG)) {
             level_height = randint1(MAX_HGT / SCREEN_HGT / 2);
             level_width = randint1(MAX_WID / SCREEN_WID / 2);
         } else {
@@ -507,7 +507,7 @@ void generate_floor(PlayerType *player_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     floor_ptr->dungeon_idx = player_ptr->dungeon_idx;
-    floor_ptr->allianceID = d_info[floor_ptr->dungeon_idx].alliance_idx;
+    floor_ptr->allianceID = dungeons_info[floor_ptr->dungeon_idx].alliance_idx;
     set_floor_and_wall(floor_ptr->dungeon_idx);
     for (int num = 0; true; num++) {
         bool okay = true;
