@@ -137,5 +137,5 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 constexpr auto STANDARD_SPEED = 110;
 
 constexpr auto QUEST_DEFINITION_LIST = "QuestDefinitionList.txt";
-constexpr auto TOWN_DEFINITION_LIST = "t_info.txt";
-constexpr auto WILDERNESS_DEFINITION_LIST = "w_info.txt";
+constexpr auto TOWN_DEFINITION_LIST = "TownDefinitionList.txt";
+constexpr auto WILDERNESS_DEFINITION = "WildernessDefinition.txt";
