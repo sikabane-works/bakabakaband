@@ -135,10 +135,10 @@ void castle_quest(PlayerType *player_ptr)
     }
 
     monster_race *r_ptr;
-    r_ptr = &r_info[q_ptr->r_idx];
+    r_ptr = &monraces_info[q_ptr->r_idx];
     while (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->rarity != 1)) {
         q_ptr->r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 4 + randint1(6), 0);
-        r_ptr = &r_info[q_ptr->r_idx];
+        r_ptr = &monraces_info[q_ptr->r_idx];
     }
 
     if (q_ptr->max_num == 0) {

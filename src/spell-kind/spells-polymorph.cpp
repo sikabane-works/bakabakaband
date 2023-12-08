@@ -40,7 +40,7 @@
  */
 static MonsterRaceId poly_r_idx(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
     if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(r_ptr->flags1, RF1_QUESTOR)) {
         return r_idx;
     }
@@ -54,7 +54,7 @@ static MonsterRaceId poly_r_idx(PlayerType *player_ptr, MonsterRaceId r_idx)
             break;
         }
 
-        r_ptr = &r_info[r];
+        r_ptr = &monraces_info[r];
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             continue;
         }

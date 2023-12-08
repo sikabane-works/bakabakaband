@@ -113,7 +113,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
         return false;
     }
 
-    monster_race *r_ptr = &r_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
+    monster_race *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
 
     chg_virtue(player_ptr, V_ENLIGHTEN, 1);
@@ -140,7 +140,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
         return false;
     }
 
-    monster_race *r_ptr = &r_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
+    monster_race *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
 
     if (r_ptr->flags9 & RF9_EAT_BLIND) {
         BadStatusSetter(player_ptr).mod_blindness(200 + randint1(200));
@@ -627,7 +627,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
 
     /* Balrogs change humanoid corpses to energy */
     const auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if (food_type == PlayerRaceFoodType::CORPSE && (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[corpse_r_idx].d_char))) {
+    if (food_type == PlayerRaceFoodType::CORPSE && (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", monraces_info[corpse_r_idx].d_char))) {
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%^s is burnt to ashes.  You absorb its vitality!"), o_name);
