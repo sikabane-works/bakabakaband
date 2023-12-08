@@ -69,4 +69,5 @@ struct floor_type {
 
     std::vector<town_vault> vault_list;
     AllianceType allianceID;
+    bool is_in_dungeon() const;
 };

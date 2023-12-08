@@ -114,7 +114,7 @@ static std::string decide_social_class(PlayerType *player_ptr)
         social_class = 1;
     }
 
-    player_ptr->prestige = (int16_t)social_class;
+    player_ptr->prestige = social_class;
     return ss.str();
 }
 
