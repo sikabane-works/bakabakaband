@@ -160,7 +160,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
 
     if (r_ptr->flags9 & RF9_EAT_SLEEP) {
         if (!player_ptr->free_act) {
-            BadStatusSetter(player_ptr).paralysis(10 + randint1(10));
+            BadStatusSetter(player_ptr).set_paralysis(10 + randint1(10));
         }
     }
 
@@ -323,7 +323,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
         break;
     case SV_FOOD_PARALYSIS:
         if (!player_ptr->free_act) {
-            if (bss.paralysis(10 + randint1(10))) {
+            if (bss.set_paralysis(10 + randint1(10))) {
                 player_ptr->plus_incident(INCIDENT::EAT_POISON, 1);
                 return true;
             }
