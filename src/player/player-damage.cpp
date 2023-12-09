@@ -422,7 +422,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             }
 
             if (winning_seppuku) {
-                add_retired_class(player_ptr->pclass);
+                w_ptr->add_retired_class(player_ptr->pclass);
                 exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
             } else {
                 std::string place;
