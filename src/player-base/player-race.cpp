@@ -143,7 +143,7 @@ int16_t PlayerRace::speed() const
 {
     int16_t result = 0;
 
-    floor_type *floor_ptr = this->player_ptr->current_floor_ptr;
+    FloorType *floor_ptr = this->player_ptr->current_floor_ptr;
     if (player_ptr->x > 0 && player_ptr->y > 0 && player_ptr->x <= floor_ptr->width - 1 && player_ptr->y <= floor_ptr->height - 1) {
         terrain_type *f_ptr = &terrains_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
         if (f_ptr->flags.has(FloorFeatureType::SLOW)) {

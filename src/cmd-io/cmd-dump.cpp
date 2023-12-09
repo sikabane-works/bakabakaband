@@ -232,7 +232,7 @@ void do_cmd_feeling(PlayerType *player_ptr)
     if (player_ptr->wild_mode) {
         return;
     }
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    FloorType *floor_ptr = player_ptr->current_floor_ptr;
     int grids_rate = floor_ptr->width * floor_ptr->height * 100 / (MAX_WID * MAX_HGT);
 
     if (floor_ptr->allianceID != AllianceType::NONE) {
