@@ -139,7 +139,7 @@
     computed: {
       updateList() {
         var self = this;
-        axios.get("/update/update.html")
+        axios.get("./update/update.html")
           .then(function (response) {
             self.updateText = response.data;
           })
@@ -150,7 +150,7 @@
       },
       updateMelkorLetter() {
         var self = this;
-        axios.get("/document/melkor.html")
+        axios.get("./document/melkor.html")
           .then(function (response) {
             self.melkorLetter = response.data;
           })
