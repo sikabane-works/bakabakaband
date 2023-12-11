@@ -6,7 +6,7 @@
  * @brief Feature flags - should be used instead of feature indexes unless generating.
  * Originally from UnAngband, and modified into TR-like style in Hengband
  */
-enum class FloorFeatureType {
+enum class TerrainCharacteristics {
     LOS = 0, /*!< 視界が通る地形である */
     PROJECT = 1, /*!< 飛び道具が通過できる地形である */
     MOVE = 2, /*!< 移動可能な地形である */
@@ -81,4 +81,4 @@ enum class FloorFeatureType {
     MAX,
 };
 
-constexpr auto FF_FLAG_MAX = enum2i(FloorFeatureType::MAX);
+constexpr auto FF_FLAG_MAX = enum2i(TerrainCharacteristics::MAX);
