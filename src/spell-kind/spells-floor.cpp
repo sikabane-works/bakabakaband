@@ -103,7 +103,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
                 }
 
                 /* Memorize normal features */
-                if (f_ptr->flags.has(FloorFeatureType::REMEMBER)) {
+                if (f_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
                     /* Memorize the grid */
                     g_ptr->info |= (CAVE_MARK);
                 }
@@ -210,7 +210,7 @@ void map_area(PlayerType *player_ptr, POSITION range)
             f_ptr = &terrains_info[feat];
 
             /* Memorize normal features */
-            if (f_ptr->flags.has(FloorFeatureType::REMEMBER)) {
+            if (f_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
                 /* Memorize the object */
                 g_ptr->info |= (CAVE_MARK);
             }
@@ -224,7 +224,7 @@ void map_area(PlayerType *player_ptr, POSITION range)
                 f_ptr = &terrains_info[feat];
 
                 /* Memorize walls (etc) */
-                if (f_ptr->flags.has(FloorFeatureType::REMEMBER)) {
+                if (f_ptr->flags.has(TerrainCharacteristics::REMEMBER)) {
                     /* Memorize the walls */
                     g_ptr->info |= (CAVE_MARK);
                 }
@@ -369,7 +369,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
             delete_all_items_from_floor(player_ptr, y, x);
 
             /* Destroy "non-permanent" grids */
-            if (g_ptr->cave_has_flag(FloorFeatureType::PERMANENT)) {
+            if (g_ptr->cave_has_flag(TerrainCharacteristics::PERMANENT)) {
                 continue;
             }
 
@@ -455,7 +455,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
                     continue;
                 }
                 cc_ptr = &floor_ptr->grid_array[yy][xx];
-                if (terrains_info[cc_ptr->get_feat_mimic()].flags.has(FloorFeatureType::GLOW)) {
+                if (terrains_info[cc_ptr->get_feat_mimic()].flags.has(TerrainCharacteristics::GLOW)) {
                     g_ptr->info |= CAVE_GLOW;
                     break;
                 }

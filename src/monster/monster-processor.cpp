@@ -767,7 +767,7 @@ void sweep_monster_process(PlayerType *player_ptr)
 
         auto g_ptr = &player_ptr->current_floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
         auto *f_ptr = &terrains_info[g_ptr->feat];
-        if (f_ptr->flags.has(FloorFeatureType::TENTACLE)) {
+        if (f_ptr->flags.has(TerrainCharacteristics::TENTACLE)) {
             int pow = 30;
             auto r_ptr = monraces_info[m_ptr->r_idx];
             if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {

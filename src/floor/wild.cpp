@@ -503,17 +503,17 @@ void wilderness_gen(PlayerType *player_ptr)
             terrain_type *f_ptr;
             f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
             auto can_darken = !g_ptr->is_mirror();
-            can_darken &= f_ptr->flags.has_none_of({ FloorFeatureType::QUEST_ENTER, FloorFeatureType::ENTRANCE });
+            can_darken &= f_ptr->flags.has_none_of({ TerrainCharacteristics::QUEST_ENTER, TerrainCharacteristics::ENTRANCE });
             if (can_darken) {
                 g_ptr->info &= ~(CAVE_GLOW);
-                if (f_ptr->flags.has_not(FloorFeatureType::REMEMBER)) {
+                if (f_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
                     g_ptr->info &= ~(CAVE_MARK);
                 }
 
                 continue;
             }
 
-            if (f_ptr->flags.has_not(FloorFeatureType::ENTRANCE)) {
+            if (f_ptr->flags.has_not(TerrainCharacteristics::ENTRANCE)) {
                 continue;
             }
 
@@ -531,7 +531,7 @@ void wilderness_gen(PlayerType *player_ptr)
                 g_ptr = &floor_ptr->grid_array[y][x];
                 terrain_type *f_ptr;
                 f_ptr = &terrains_info[g_ptr->feat];
-                if (f_ptr->flags.has_not(FloorFeatureType::BLDG)) {
+                if (f_ptr->flags.has_not(TerrainCharacteristics::BLDG)) {
                     continue;
                 }
 
@@ -554,7 +554,7 @@ void wilderness_gen(PlayerType *player_ptr)
             for (x = 0; x < floor_ptr->width; x++) {
                 grid_type *g_ptr;
                 g_ptr = &floor_ptr->grid_array[y][x];
-                if (!g_ptr->cave_has_flag(FloorFeatureType::ENTRANCE)) {
+                if (!g_ptr->cave_has_flag(TerrainCharacteristics::ENTRANCE)) {
                     continue;
                 }
 
