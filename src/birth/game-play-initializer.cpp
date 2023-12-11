@@ -199,14 +199,9 @@ void init_dungeon_quests(PlayerType *player_ptr)
         q_ptr->max_num = 1;
     }
 
-    init_flags = INIT_ASSIGN;
-    floor_ptr->quest_number = QuestId::OBERON;
+    floor_ptr->quest_number = QuestId::MELKO;
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
-    quest_list[QuestId::OBERON].status = QuestStatusType::TAKEN;
-
-    floor_ptr->quest_number = QuestId::SERPENT;
-    parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
-    quest_list[QuestId::SERPENT].status = QuestStatusType::TAKEN;
+    quest_list[QuestId::MELKO].status = QuestStatusType::TAKEN;
     floor_ptr->quest_number = QuestId::NONE;
 }
 

@@ -323,7 +323,7 @@ errr exe_write_diary(PlayerType *player_ptr, int type, int num, concptr note)
         break;
     }
     case DIARY_STAIR: {
-        concptr to = inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !((q_idx == QuestId::OBERON) || (q_idx == QuestId::SERPENT)))
+        concptr to = inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))
                          ? _("地上", "the surface")
                      : !(player_ptr->current_floor_ptr->dun_level + num)
                          ? _("地上", "the surface")
