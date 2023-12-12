@@ -30,10 +30,10 @@ struct feature_state {
 };
 
 /*!
- * @struct terrain_type
+ * @struct TerrainType
  * @brief 地形情報の構造体 / Information about terrain "features"
  */
-struct terrain_type {
+struct TerrainType {
     FEAT_IDX idx{};
     std::string name; /*!< 地形名 */
     std::string text; /*!< 地形説明 */
@@ -55,7 +55,7 @@ struct terrain_type {
     char x_char[F_LIT_MAX]{}; /*!< 設定変更後の地形シンボルアルファベット / Desired feature character */
 };
 
-extern std::vector<terrain_type> terrains_info;
+extern std::vector<TerrainType> terrains_info;
 
 /*** Terrain feature variables ***/
 extern FEAT_IDX feat_none;
@@ -123,7 +123,7 @@ bool is_closed_door(PlayerType *player_ptr, FEAT_IDX feat);
 bool is_trap(PlayerType *player_ptr, FEAT_IDX feat);
 void apply_default_feat_lighting(TERM_COLOR *f_attr, char *f_char);
 bool is_ascii_graphics(char x);
-bool permanent_wall(terrain_type *f_ptr);
+bool permanent_wall(TerrainType *f_ptr);
 FEAT_IDX feat_locked_door_random(int door_type);
 FEAT_IDX feat_jammed_door_random(int door_type);
 void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat);
