@@ -85,7 +85,7 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
 
             /* Feature code (applying "mimic" field) */
             FEAT_IDX feat = g_ptr->get_feat_mimic();
-            terrain_type *f_ptr;
+            TerrainType *f_ptr;
             f_ptr = &terrains_info[feat];
 
             /* Scan all neighbors */
@@ -206,7 +206,7 @@ void map_area(PlayerType *player_ptr, POSITION range)
 
             /* Feature code (applying "mimic" field) */
             FEAT_IDX feat = g_ptr->get_feat_mimic();
-            terrain_type *f_ptr;
+            TerrainType *f_ptr;
             f_ptr = &terrains_info[feat];
 
             /* Memorize normal features */

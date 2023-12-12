@@ -57,7 +57,7 @@ static bool do_cmd_tunnel_test(FloorType *floor_ptr, POSITION y, POSITION x)
 bool exe_tunnel(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     grid_type *g_ptr;
-    terrain_type *f_ptr, *mimic_f_ptr;
+    TerrainType *f_ptr, *mimic_f_ptr;
     int power;
     concptr name;
     bool more = false;
