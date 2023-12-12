@@ -414,8 +414,9 @@ static bool allocate_dungeon_data(PlayerType *player_ptr, dun_data_type *dd_ptr,
 
 static void decide_grid_glowing(FloorType *floor_ptr, dun_data_type *dd_ptr, dungeon_type *d_ptr)
 {
-    bool is_empty_or_dark = dd_ptr->empty_level;
-    is_empty_or_dark &= !one_in_(DARK_EMPTY) || (randint1(100) > floor_ptr->dun_level);
+    constexpr auto chanle_wholly_dark = 5;
+    auto is_empty_or_dark = dd_ptr->empty_level;
+    is_empty_or_dark &= !one_in_(chanle_wholly_dark) || (randint1(100) > floor_ptr->dun_level);
     is_empty_or_dark &= d_ptr->flags.has_not(DungeonFeatureType::DARKNESS);
     is_empty_or_dark &= d_ptr->flags.has(DungeonFeatureType::ALWAY_LIGHT);
     if (!is_empty_or_dark) {
@@ -454,8 +455,9 @@ bool cave_gen(PlayerType *player_ptr, concptr *why)
     }
 
     dd_ptr->cent_n = 0;
-    dungeon_type *d_ptr = &dungeons_info[floor_ptr->dungeon_idx];
-    if (ironman_empty_levels || (d_ptr->flags.has(DungeonFeatureType::ARENA) && (empty_levels && one_in_(EMPTY_LEVEL)))) {
+    auto *d_ptr = &dungeons_info[floor_ptr->dungeon_idx];
+    constexpr auto chance_empty_floor = 24;
+    if (ironman_empty_levels || (d_ptr->flags.has(DungeonFeatureType::ARENA) && (empty_levels && one_in_(chance_empty_floor)))) {
         dd_ptr->empty_level = true;
         msg_print_wizard(player_ptr, CHEAT_DUNGEON, _("アリーナレベルを生成。", "Arena level."));
     }
