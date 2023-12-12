@@ -378,8 +378,6 @@ void reserve_alter_reality(PlayerType *player_ptr, TIME_EFFECT turns)
 }
 
 /*!
-<<<<<<< HEAD
-=======
  * @brief これまでに入ったダンジョンの一覧を表示し、選択させる。
  * @param note ダンジョンに施す処理記述
  * @param y コンソールY座標
@@ -450,7 +448,6 @@ static DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x)
 }
 
 /*!
->>>>>>> 004f1ae7e ([Refactor] std::string をC言語の文字列表現に変換するメソッドを統一)
  * @brief プレイヤーの帰還発動及び中止処理 /
  * Recall the player to town or dungeon
  * @param player_ptr プレイヤーへの参照ポインタ
