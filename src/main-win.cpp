@@ -1544,7 +1544,7 @@ static void check_for_save_file(const std::string &savefile_option)
         return;
     }
 
-    strcpy(savefile, savefile_option.c_str());
+    strcpy(savefile, savefile_option.data());
     validate_file(savefile);
     game_in_progress = true;
 }

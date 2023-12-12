@@ -1083,7 +1083,7 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
         return false;
     }
 
-    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("固定部屋(%s)を生成しました。", "Fixed room (%s)."), v_ptr->name.c_str());
+    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("固定部屋(%s)を生成しました。", "Fixed room (%s)."), v_ptr->name.data());
 
     /* Hack -- Build the vault */
     build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
@@ -1159,7 +1159,6 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
 
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
 
-    /* Hack -- Build the vault */
     build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
 
     return true;
