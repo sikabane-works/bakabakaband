@@ -48,13 +48,9 @@
 
 #define MAX_VAMPIRIC_DRAIN 50 /*!< 吸血処理の最大回復HP */
 
-#define DUNGEON_ITEM_FLOOR_DROP_RATE 5 /*!< 床に落ちているアイテム数倍率 */
-
 /*
  * Dungeon generation values
  */
-#define DUN_UNUSUAL 250 /*!< 通常ではない部屋が生成される基本確率(レベル/定数) / Level/chance of unusual room (was 200) */
-#define DUN_DEST 18 /*!< 破壊地形がフロアに発生する基本確率(1/定数) / 1/chance of having a destroyed level */
 #define SMALL_LEVEL 10 /*!< 小さいフロアの生成される基本確率(1/定数) / 1/chance of smaller size (3) */
 #define EMPTY_LEVEL 24 /*!< アリーナレベル(外壁のないフロア)の生成される基本確率(1/定数) / 1/chance of being 'empty' (15) */
 #define LAKE_LEVEL 24 /*!< 川や湖のあるフロアの生成される確率(1/定数) / 1/chance of being a lake on the level */
@@ -81,14 +77,6 @@ constexpr int HUGE_DUNGEON_RATE = 10; /*! @brief クソデカダンジョン生�
 #define DUN_WAT_RNG 2 /* Width of rivers */
 #define DUN_STR_WAT 3 /* Max number of rivers */
 #define DUN_WAT_CHG 50 /* 1 in 50 chance of junction in river */
-
-/*
- * Dungeon treausre allocation values
- */
-#define DUN_AMT_ROOM 9 /* Amount of objects for rooms */
-#define DUN_AMT_ITEM 3 /* Amount of objects for rooms/corridors */
-#define DUN_AMT_GOLD 3 /* Amount of treasure for rooms/corridors */
-#define DUN_AMT_INVIS 3 /* Amount of invisible walls for rooms/corridors */
 
 /* Chance of using syllables to form the name instead of the "template" files */
 #define SINDARIN_NAME 10 /*!< ランダムアーティファクトにシンダリン銘をつける確率 */
