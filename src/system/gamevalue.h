@@ -48,8 +48,6 @@
 
 #define MAX_VAMPIRIC_DRAIN 50 /*!< 吸血処理の最大回復HP */
 
-#define DUNGEON_ITEM_FLOOR_DROP_RATE 5 /*!< 床に落ちているアイテム数倍率 */
-
 /*
  * Dungeon generation values
  */
