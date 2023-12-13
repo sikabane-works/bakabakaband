@@ -31,6 +31,7 @@
     $("#malkor-message").on("click", function () {
       $("#popup-bg").fadeOut();
       $("#malkor-message").fadeOut();
+      window.location.hash = "";
       return false;
     });
     $("#malkor-message-close2").on("click", function () {
@@ -95,9 +96,11 @@
     <div id="top-message" v-html="updateList">
     </div>
     <div id="menu-block">
-      <div id="malkor-message-open" class="button">
-        <img class="select-icon" src="mel-icon.png" />冥王の書簡
-      </div>
+      <a class="button-link" href="#Melkor">
+        <div class="button">
+          <img class="select-icon" src="mel-icon.png" />冥王の書簡
+        </div>
+      </a>
       <a class="button-link"
         href="https://github.com/sikabane-works/bakabakaband/releases/download/0.0.0.48-Alpha/Bakabakaband-0.0.0.48-Alpha-jp.zip">
         <div class="button">
@@ -132,8 +135,27 @@
       return {
         text: "この門をくぐる者は一切の良識を捨てよ",
         updateText: "",
+        currentAnchor: "",
         melkorLetter: ""
       }
+    },
+    mounted() {
+      this.getCurrentAnchor();
+      window.addEventListener('hashchange', this.getCurrentAnchor);
+    },
+    methods: {
+      getCurrentAnchor() {
+        this.currentAnchor = window.location.hash.substring(1);
+        if (this.currentAnchor == "Melkor") {
+          this.updateMelkorLetter;
+          $("#popup-bg").fadeIn();
+          $("#malkor-message").fadeIn();
+          scrollTo(0, 0);
+        }
+      }
+    },
+    beforeDestroy() {
+      window.removeEventListener('hashchange', this.getCurrentAnchor);
     },
     computed: {
       updateList() {
