@@ -1,1 +1,180 @@
-ひでぶ
+<h2>(2023/12/14)</h2>
+<h2>馬鹿馬鹿蛮怒はここが汚い～色々垂れ流す奴ら編再び～</h2>
+
+<p>
+    当初より「変愚蛮怒の核実験場」目指して色々やっておる馬鹿馬鹿蛮怒ですが、<a
+        href="https://adventar.org/calendars/7815">2022年のRoguelikeAdventCalender</a>にて、
+    末期枠いただいておきながらバックレてしまって以降を前後して、リアル事情に悶絶して長らく停滞しています。いや言い訳つくづくこればっかやね。
+    最近になってようやく変愚の実装に追いつけるよう必死にマージ作業を再開している有様でしてそいつが少なくともこのクリスマス中に終わる目途はございません。
+</p>
+
+<p>
+    とは言っても、全く変愚とは違う要素を追加せずじまいという訳ではなく、色々雑なりに増やしていった要素はあるのでそいつの紹介でまたお茶を濁そう、と思ったのですが、
+    思えばこのネタは<a
+        href="https://github.com/sikabane-works/bakabakaband/tree/develop/article/20221211#readme">去年もやっていたりすること</a>に後になって気づきましたので、
+    2022年のクリスマス以降に追加していったやつらからピックアップしましょう。
+</p>
+
+<h3>ワームとぐろエンジンくん</h3>
+
+<p>この辺の連中はIDが2022年クリスマス以前実装の頃の連中より若いですが、思わず飛ばしてしまった二十数件分のIDを補完するために埋め合わせた事情があったりします。</p>
+
+<pre>
+N:1315:ワームとぐろエンジン
+E:Wurmcoil engine
+G:w:r
+I:118:90d25:12:100:10
+W:40:3:0:6500:0:0
+B:CRUSH:SUPERHURT:8d6
+B:CRUSH:POISON:12d6
+B:CRUSH:SUPERHURT:8d6
+B:CRUSH:EXP_40:12d6
+F:DEAD_SPAWN_1_IN_1_1316_1d1
+F:DEAD_SPAWN_1_IN_1_1317_1d1
+F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_80 | ALLIANCE_PHYREXIA
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
+D:真っ二つに破壊されてなお平然と稼働する。
+
+N:1316:ワームとぐろエンジン上部
+E:Upper body of wurmcoil engine
+G:w:y
+I:114:20d25:12:100:10
+W:40:255:0:1500:0:0
+B:CRUSH:SUPERHURT:8d6
+B:CRUSH:POISON:12d6
+F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_80 | ALLIANCE_PHYREXIA
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
+D:真っ二つに破壊されてなお平然と稼働する。
+
+N:1317:ワームとぐろエンジン下部
+E:Lower body of wurmcoil engine
+G:w:o
+I:114:20d25:12:100:10
+W:40:255:0:1500:0:0
+B:CRUSH:SUPERHURT:8d6
+B:CRUSH:EXP_40:12d6
+F:BASH_DOOR | REFLECTING | KILL_ITEM | MOB_80 | ALLIANCE_PHYREXIA
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING | RIDING
+D:ファイレクシアの生み出した恐るべき兵器の中でも傑作の一つだ。
+D:真っ二つに破壊されてなお平然と稼働する。
+</pre>
+
+知る人ぞ知るMtGのファイレクシアの雑強アーティファクト・クリーチャー、だったはずなのですが最近のインフレの中では極端に強い部類ではないってウッソだろｗｗｗと思わざるを得ない今日この頃です。死ぬと上半身と下半身を垂れ流します。
+
+<img src="/document/img/2023-12-14-1.png">
+
+<img src="/document/img/2023-12-14-2.png">
+
+<img src="/document/img/2023-12-14-3.png">
+
+<h3>糞便クイルスルグ</h3>
+
+はい、いつものクッソ汚いネタです。糞便ハウンド、糞便ゴーレム、糞便ボルテックスを文字通り垂れ流します。
+
+<pre>
+N:1323:糞便クイルスルグ
+E:Feces quylthulg
+G:Q:u
+I:110:6d8:10:1:0
+W:30:1:0:250:0:0
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | NEVER_BLOW |
+F:EMPTY_MIND | INVISIBLE | STUPID | QUYLTHLUG | NASTY
+F:NO_CONF | NO_SLEEP | NO_FEAR | ALLIANCE_DOKACHANS
+F:RES_CHAO | RES_NETH | IM_POIS
+F:SPAWN_CREATURE_1_IN_10_1722
+F:SPAWN_CREATURE_1_IN_6_1759
+F:SPAWN_CREATURE_1_IN_4_1380
+S:1_IN_4 | 
+S:BLINK | 
+D:$It is a strange pulsing mound of feces.
+D:それは脈打つ奇妙な糞の塊だ。
+</pre>
+
+<img src="/document/img/2023-12-14-4.png">
+
+<img src="/document/img/2023-12-14-5.png">
+
+相変わらず安直ではあるのですが、この辺は
+
+<ul>
+    <li>召喚魔法の実装をしなくてもテーマ性をもったクイルスルグをいくつも作ることができる。</li>
+    <li>そもそもクイルスルグという「何かを産み落とす異形」的には召喚魔法よりこっちの方がフレーバー的にも適しているのではないか</li>
+</ul>
+
+と真面目な模索もあります。とはいえ現状そのコンセプトに該当するものに糞便しか作ってないやら、既存のクイルスルグをそういう風に改変していない以上ホモガキの浅はかなネタからまだ抜け出せていませんね。早めに変愚の更新に追いつきつつ調整したいです。
+
+<h3>異常猿愛者御用達コモド・ドラゴンおじさん</h3>
+
+「コモドドラゴンを放てっ」ネタはタフシリーズじゃないんだ。Runinなんだ、悔しいだろうが仕方ないんだ。
+
+<pre>
+N:2028:アーリアン・ファミリーのボス『ビッグ・アイ』
+E:Big Eye, the Boss of Aryan Family
+G:p:o
+I:116:10d120:100:90:10
+W:40:3:0:5000:0:0
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+B:SLASH:HURT:10d4
+F:UNIQUE | MALE | HUMAN | EVIL
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | 
+F:NO_FEAR | NO_CONF | NO_SLEEP
+F:SPAWN_CREATURE_1_IN_11_1297
+S:1_IN_2 | CAUSE_1 | CAUSE_2 | CAUSE_3
+R:1297:5d10
+D:女預言者にして学者、ヒルデガルト・フォン・ビンゲンの末裔であり、
+D:大災害で世界が滅びた後のマンハッタンで
+D:アーリアン・ファミリーの長を務める残虐無比な支配者だ。
+</pre>
+
+<img src="/document/img/2023-12-14-6.png">
+
+コモドドラゴンを護衛にするだけでなく、猿空間から止めどなく湧き出させます。アーリアン・ファミリーの部下たちはみな荼毘に付したよ。
+
+<h3>爆弾男＆爆弾</h3>
+
+([∩∩])＜死にたいらしいな
+
+<pre>
+N:2057:爆弾男の爆弾
+E:Bomber of bomberman
+G:{:D
+I:130:5d1:200:0:0
+W:38:255:0:0:0:0
+B:EXPLODE:FIRE:2d20
+F:RES_TELE | FORCE_MAXHP | NEVER_MOVE | NEVER_BLOW |
+F:EMPTY_MIND | COLD_BLOOD | NONLIVING | HURT_FIRE |
+F:NO_FEAR | NO_CONF | NO_STUN | NO_SLEEP |
+F:SUICIDE_2d1
+D:$It explodes after two turns. Beware!
+D:2ターン後に爆発する。気をつけろ！
+    
+N:2058:爆弾男
+E:Bomberman
+G:p:W
+I:115:40d10:70:90:4
+W:30:2:0:1000:0:0
+B:HIT:HURT:5d4
+B:KICK:HURT:5d4
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | HAS_LITE_2 | WEIRD_MIND
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD
+F:BASH_DOOR | STUPID
+F:SPAWN_CREATURE_3_IN_10_2057
+D:かつてバンゲリング帝国の下僕であったという噂もある謎の爆弾魔だ。
+</pre>
+
+<img src="/document/img/2023-12-14-7.png">
+
+<img src="/document/img/2023-12-14-8.png">
+
+爆発に爆弾男そのものが巻き込まれるのはいつものご愛敬。爆弾の方は『ロレント』の手榴弾のコピーですが、元ネタ共々あたらしくSUICIDE_XdYフラグを実装し、実際に経過ターンで爆発するようにしました。
+
+<p>今回はこんな所で。これを機に真面目にここの整備しながら定期的な開発報告したいですね。</p>
