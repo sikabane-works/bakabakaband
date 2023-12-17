@@ -113,7 +113,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
         return false;
     }
 
-    monster_race *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
+    MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
 
     chg_virtue(player_ptr, V_ENLIGHTEN, 1);
@@ -140,7 +140,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr
         return false;
     }
 
-    monster_race *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
+    MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
 
     if (r_ptr->flags9 & RF9_EAT_BLIND) {
         BadStatusSetter(player_ptr).mod_blindness(200 + randint1(200));
