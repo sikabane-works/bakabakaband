@@ -88,14 +88,12 @@ OBJECT_IDX get_obj_index(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
             break;
         }
 
-        KIND_OBJECT_IDX k_idx = entry.index;
-        auto *k_ptr = &baseitems_info[k_idx];
-
-        if ((mode & AM_FORBID_CHEST) && (k_ptr->tval == ItemKindType::CHEST)) {
+        const auto &k_ref = baseitems_info[entry.index];
+        if ((mode & AM_FORBID_CHEST) && (k_ref.bi_key.tval() == ItemKindType::CHEST)) {
             continue;
         }
 
-        if ((mode & AM_NO_NEVER_MOVE) && k_ptr->flags.has(TR_NEVER_MOVE)) {
+        if ((mode & AM_NO_NEVER_MOVE) && k_ref.flags.has(TR_NEVER_MOVE)) {
             continue;
         }
 

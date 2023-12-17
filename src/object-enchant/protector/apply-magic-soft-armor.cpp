@@ -7,6 +7,7 @@
 #include "object-enchant/protector/apply-magic-soft-armor.h"
 #include "object-enchant/object-boost.h"
 #include "object/object-kind-hook.h"
+#include "object/tval-types.h"
 #include "sv-definition/sv-armor-types.h"
 #include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
