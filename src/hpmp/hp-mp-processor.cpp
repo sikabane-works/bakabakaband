@@ -155,7 +155,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
             }
         }
 
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &player_ptr->inventory_list[INVEN_LITE];
         auto flags = object_flags(o_ptr);
 
