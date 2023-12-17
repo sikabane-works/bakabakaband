@@ -39,6 +39,7 @@
 #include "sv-definition/sv-lite-types.h"
 #include "system/angband-exceptions.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"

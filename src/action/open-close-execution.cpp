@@ -24,6 +24,7 @@
 #include "specific-object/chest.h"
 #include "status/bad-status-setter.h"
 #include "status/experience.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
@@ -292,7 +293,7 @@ bool exe_disarm(PlayerType *player_ptr, POSITION y, POSITION x, DIRECTION dir)
     if (randint0(100) < j) {
         ObjectType forge;
         ObjectType *q_ptr = &forge;
-        q_ptr->prep(lookup_kind(ItemKindType::TRAP, 0));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::TRAP, 0 }));
         q_ptr->pval = g_ptr->feat;
 
         msg_format(_("%sを解除した。", "You have disarmed the %s."), name);
