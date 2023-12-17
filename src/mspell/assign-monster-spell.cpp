@@ -32,7 +32,7 @@
 
 static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, MonsterAbilityType ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
 
     // クイルスルグは自身を中心に召喚する
@@ -195,7 +195,7 @@ static MonsterSpellResult monspell_to_monster_impl(
     PlayerType *player_ptr, MonsterAbilityType ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx, MONSTER_IDX t_idx, bool is_special_spell)
 {
 
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
 
     // クイルスルグは自身を中心に召喚する

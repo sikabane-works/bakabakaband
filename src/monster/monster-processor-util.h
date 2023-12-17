@@ -62,7 +62,7 @@ struct coordinate_candidate {
     POSITION gdis;
 };
 
-struct monster_type;
+class MonsterEntity;
 turn_flags *init_turn_flags(MONSTER_IDX riding_idx, MONSTER_IDX m_idx, turn_flags *turn_flags_ptr);
 old_race_flags *init_old_race_flags(old_race_flags *old_race_flags_ptr);
 coordinate_candidate init_coordinate_candidate(void);
@@ -70,4 +70,4 @@ coordinate_candidate init_coordinate_candidate(void);
 void store_enemy_approch_direction(int *mm, POSITION y, POSITION x);
 void store_moves_val(int *mm, int y, int x);
 void save_old_race_flags(MonsterRaceId monster_race_idx, old_race_flags *old_race_flags_ptr);
-byte decide_monster_speed(monster_type *m_ptr);
+byte decide_monster_speed(MonsterEntity *m_ptr);

@@ -91,7 +91,7 @@ bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware);
 bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx);
 
 void sweep_monster_process(PlayerType *player_ptr);
-bool decide_process_continue(PlayerType *player_ptr, monster_type *m_ptr);
+bool decide_process_continue(PlayerType *player_ptr, MonsterEntity *m_ptr);
 
 /*!
  * @brief モンスター単体の1ターン行動処理メインルーチン /
@@ -481,7 +481,7 @@ bool decide_monster_multiplication(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
  */
 void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
     for (const auto &spawn_info : r_ptr->spawn_items) {
         auto num = std::get<0>(spawn_info);
@@ -502,7 +502,7 @@ void process_monster_spawn_item(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->level < 30 || !(r_ptr->flags1 & RF1_UNIQUE) || r_ptr->flags2 & RF2_EMPTY_MIND) {
         return;
@@ -546,7 +546,7 @@ void process_monster_change_feat(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy, POSITION ox)
 {
-    monster_type *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     monster_race *r_ptr = &monraces_info[m_ptr->r_idx];
     if ((r_ptr->spawn_monsters.size() == 0) || (player_ptr->current_floor_ptr->num_repro >= MAX_REPRODUCTION)) {
         return false;
@@ -728,7 +728,7 @@ void sweep_monster_process(PlayerType *player_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     for (MONSTER_IDX i = floor_ptr->m_max - 1; i >= 1; i--) {
-        monster_type *m_ptr;
+        MonsterEntity *m_ptr;
         m_ptr = &floor_ptr->m_list[i];
 
         if (player_ptr->leaving) {
@@ -831,7 +831,7 @@ void sweep_monster_process(PlayerType *player_ptr)
  * @param m_ptr モンスターへの参照ポインタ
  * @return 後続処理が必要ならTRUE
  */
-bool decide_process_continue(PlayerType *player_ptr, monster_type *m_ptr)
+bool decide_process_continue(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     monster_race *r_ptr;
     r_ptr = &monraces_info[m_ptr->r_idx];

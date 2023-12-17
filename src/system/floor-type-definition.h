@@ -45,8 +45,7 @@ struct town_vault {
     int transno;
 };
 
-class ItemEntity;
-struct monster_type;
+class MonsterEntity;
 class ItemEntity;
 class FloorType {
 public:
@@ -67,7 +66,7 @@ public:
     OBJECT_IDX o_max = 0; /* Number of allocated objects */
     OBJECT_IDX o_cnt = 0; /* Number of live objects */
 
-    std::vector<monster_type> m_list; /*!< The array of dungeon monsters [max_m_idx] */
+    std::vector<MonsterEntity> m_list; /*!< The array of dungeon monsters [max_m_idx] */
     MONSTER_IDX m_max = 0; /* Number of allocated monsters */
     MONSTER_IDX m_cnt = 0; /* Number of live monsters */
 
