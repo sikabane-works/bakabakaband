@@ -131,6 +131,21 @@ pre {
     right: -2vw;
 }
 
+#article-list {
+    position: absolute;
+    top: 53vw;
+    width: 90vw;
+    height: 15vh;
+    padding: 3rem;
+    left: 4vw;
+    background-color: rgba(0,0,0,0.85);
+    border: solid 0.5vw;
+    border-radius: 2vw;
+    z-index: 10;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
 #top-message {
     position: absolute;
     top: 65vw;
