@@ -70,6 +70,7 @@
     $("#article").on("click", function () {
       $("#popup-bg").fadeOut();
       $("#article").fadeOut();
+      window.location.hash = "";
       return false;
     });
   });
@@ -107,6 +108,8 @@
     <img id="melko" src="Melko.png" />
     <div id="title-div">
       <img id="title" src="BakabakabandTitle.png" />
+    </div>
+    <div id="article-list" v-html="articleList">
     </div>
     <div id="top-message" v-html="updateList">
     </div>
@@ -152,7 +155,8 @@
         updateText: "",
         currentAnchor: "",
         melkorLetter: "",
-        articleLetter: ""
+        articleLetter: "",
+        articleListText: ""
       }
     },
     mounted() {
@@ -194,6 +198,17 @@
       window.removeEventListener('hashchange', this.getCurrentAnchor);
     },
     computed: {
+      articleList() {
+        var self = this;
+        axios.get("./document/list.html")
+          .then(function (response) {
+            self.articleListText = response.data;
+          })
+          .catch(function (error) {
+            self.articleListText = "[ERROR]"
+          });
+        return self.articleListText;
+      },
       updateList() {
         var self = this;
         axios.get("./update/update.html")
