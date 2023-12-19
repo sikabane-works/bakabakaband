@@ -1,19 +1,17 @@
 ﻿#pragma once
 
-#include "object/tval-types.h"
-#include "system/angband.h"
+bool kind_is_cloak(short bi_id);
+bool kind_is_polearm(short bi_id);
+bool kind_is_sword(short bi_id);
+bool kind_is_book(short bi_id);
+bool kind_is_good_book(short bi_id);
+bool kind_is_armor(short bi_id);
+bool kind_is_hafted(short bi_id);
+bool kind_is_potion(short bi_id);
+bool kind_is_boots(short bi_id);
+bool kind_is_amulet(short bi_id);
+bool kind_is_nasty(short k_idx);
+bool kind_is_good(short bi_id);
 
-bool kind_is_cloak(KIND_OBJECT_IDX k_idx);
-bool kind_is_polearm(KIND_OBJECT_IDX k_idx);
-bool kind_is_sword(KIND_OBJECT_IDX k_idx);
-bool kind_is_book(KIND_OBJECT_IDX k_idx);
-bool kind_is_good_book(KIND_OBJECT_IDX k_idx);
-bool kind_is_armor(KIND_OBJECT_IDX k_idx);
-bool kind_is_hafted(KIND_OBJECT_IDX k_idx);
-bool kind_is_potion(KIND_OBJECT_IDX k_idx);
-bool kind_is_boots(KIND_OBJECT_IDX k_idx);
-bool kind_is_amulet(KIND_OBJECT_IDX k_idx);
-bool kind_is_nasty(KIND_OBJECT_IDX k_idx);
-bool kind_is_good(KIND_OBJECT_IDX k_idx);
-
-KIND_OBJECT_IDX lookup_kind(ItemKindType tval, OBJECT_SUBTYPE_VALUE sval);
+class BaseitemKey;
+short lookup_baseitem_id(const BaseitemKey &key);

@@ -19,7 +19,7 @@
  * @param level 生成基準階
  * @param power 生成ランク
  */
-SwordEnchanter::SwordEnchanter(PlayerType *player_ptr, ObjectType *o_ptr, DEPTH level, int power)
+SwordEnchanter::SwordEnchanter(PlayerType *player_ptr, ItemEntity *o_ptr, DEPTH level, int power)
     : MeleeWeaponEnchanter(player_ptr, o_ptr, level, power)
 {
 }
@@ -74,7 +74,7 @@ void SwordEnchanter::give_cursed()
     auto n = 0;
     while (true) {
         this->o_ptr->ego_idx = get_random_ego(INVEN_MAIN_HAND, false);
-        const auto *e_ptr = &e_info[this->o_ptr->ego_idx];
+        const auto *e_ptr = &egos_info[this->o_ptr->ego_idx];
         if ((this->o_ptr->sval != SV_HAYABUSA) || (e_ptr->max_pval >= 0)) {
             return;
         }

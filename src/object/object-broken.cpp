@@ -10,8 +10,9 @@
 #include "mind/snipe-types.h"
 #include "object-enchant/tr-types.h"
 #include "object/object-flags.h"
-#include "object/object-kind.h"
+#include "object/tval-types.h"
 #include "sv-definition/sv-potion-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -50,7 +51,7 @@ BreakerCold::BreakerCold()
  * Does a given class of objects (usually) hate acid?
  * Note that acid can either melt or corrode something.
  */
-bool BreakerAcid::hates(ObjectType *o_ptr) const
+bool BreakerAcid::hates(ItemEntity *o_ptr) const
 {
     /* Analyze the type */
     switch (o_ptr->tval) {
@@ -104,7 +105,7 @@ bool BreakerAcid::hates(ObjectType *o_ptr) const
  * @param o_ptr アイテムの情報参照ポインタ
  * @return 破損するならばTRUEを返す
  */
-bool BreakerElec::hates(ObjectType *o_ptr) const
+bool BreakerElec::hates(ItemEntity *o_ptr) const
 {
     switch (o_ptr->tval) {
     case ItemKindType::RING:
@@ -128,7 +129,7 @@ bool BreakerElec::hates(ObjectType *o_ptr) const
  * Hafted/Polearm weapons have wooden shafts.
  * Arrows/Bows are mostly wooden.
  */
-bool BreakerFire::hates(ObjectType *o_ptr) const
+bool BreakerFire::hates(ItemEntity *o_ptr) const
 {
     /* Analyze the type */
     switch (o_ptr->tval) {
@@ -186,7 +187,7 @@ bool BreakerFire::hates(ObjectType *o_ptr) const
  * @param o_ptr アイテムの情報参照ポインタ
  * @return 破損するならばTRUEを返す
  */
-bool BreakerCold::hates(ObjectType *o_ptr) const
+bool BreakerCold::hates(ItemEntity *o_ptr) const
 {
     switch (o_ptr->tval) {
     case ItemKindType::POTION:
@@ -209,7 +210,7 @@ bool BreakerCold::hates(ObjectType *o_ptr) const
  * @return 破損するならばTRUEを返す
  * @todo 統合を検討
  */
-bool ObjectBreaker::can_destroy(ObjectType *o_ptr) const
+bool ObjectBreaker::can_destroy(ItemEntity *o_ptr) const
 {
     if (!this->hates(o_ptr)) {
         return false;
@@ -254,8 +255,8 @@ bool potion_smash_effect(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, PO
     AttributeType dt = AttributeType::NONE;
     int dam = 0;
     bool angry = false;
-    auto *k_ptr = &k_info[k_idx];
-    switch (k_ptr->sval) {
+    const auto &k_ref = baseitems_info[k_idx];
+    switch (k_ref.bi_key.sval().value()) {
     case SV_POTION_SALT_WATER:
     case SV_POTION_SLIME_MOLD:
     case SV_POTION_LOSE_MEMORIES:
@@ -330,7 +331,7 @@ bool potion_smash_effect(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, PO
         break;
     case SV_POTION_DEATH:
         dt = AttributeType::DEATH_RAY;
-        dam = k_ptr->level * 10;
+        dam = k_ref.level * 10;
         angry = true;
         radius = 1;
         break;
@@ -395,7 +396,7 @@ bool potion_smash_effect(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, PO
  * @details
  * Note that artifacts never break, see the "drop_near()" function.
  */
-PERCENTAGE breakage_chance(PlayerType *player_ptr, ObjectType *o_ptr, bool has_archer_bonus, SPELL_IDX snipe_type)
+PERCENTAGE breakage_chance(PlayerType *player_ptr, ItemEntity *o_ptr, bool has_archer_bonus, SPELL_IDX snipe_type)
 {
     /* Examine the snipe type */
     if (snipe_type) {

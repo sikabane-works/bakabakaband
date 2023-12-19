@@ -3,7 +3,6 @@
 #include "cmd-io/cmd-save.h"
 #include "core/disturbance.h"
 #include "core/magic-effects-timeout-reducer.h"
-#include "dungeon/dungeon.h"
 #include "floor/floor-events.h"
 #include "floor/floor-mode-changer.h"
 #include "floor/wild.h"
@@ -31,6 +30,7 @@
 #include "store/store-owners.h"
 #include "store/store-util.h"
 #include "store/store.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -297,12 +297,12 @@ void WorldTurnProcessor::process_world_monsters()
 void WorldTurnProcessor::decide_alloc_monster()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto should_alloc = one_in_(d_info[this->player_ptr->dungeon_idx].max_m_alloc_chance);
+    auto should_alloc = one_in_(dungeons_info[this->player_ptr->dungeon_idx].max_m_alloc_chance);
     should_alloc &= !floor_ptr->inside_arena;
     should_alloc &= !inside_quest(floor_ptr->quest_number);
     should_alloc &= !this->player_ptr->phase_out;
     if (should_alloc) {
-        (void)alloc_monster(this->player_ptr, MAX_SIGHT + 5, 0, summon_specific);
+        (void)alloc_monster(this->player_ptr, MAX_PLAYER_SIGHT + 5, 0, summon_specific);
     }
 }
 

@@ -57,7 +57,7 @@ void display_wizard_game_modifier_menu()
     for (const auto &[symbol, desc] : wizard_game_modifier_menu_table) {
         std::stringstream ss;
         ss << symbol << ") " << desc;
-        put_str(ss.str().c_str(), r++, c);
+        put_str(ss.str().data(), r++, c);
     }
 }
 
@@ -104,28 +104,16 @@ void wizard_game_modifier(PlayerType *player_ptr)
  */
 void wiz_enter_quest(PlayerType *player_ptr)
 {
-    char ppp[30];
-    char tmp_val[5];
-    int tmp_int;
+    auto quest_num = 0;
     auto &quest_list = QuestList::get_instance();
     const auto quest_max = enum2i(quest_list.rbegin()->first);
-    sprintf(ppp, "QuestID (0-%u):", quest_max);
-    sprintf(tmp_val, "%d", 0);
-
-    if (!get_string(ppp, tmp_val, 3)) {
+    if (!get_value("QuestID", 0, quest_max - 1, &quest_num)) {
         return;
     }
-
-    tmp_int = atoi(tmp_val);
-    if ((tmp_int < 0) || (tmp_int > quest_max)) {
-        return;
-    }
-
-    auto q_idx = i2enum<QuestId>(tmp_int);
-
+    auto q_idx = i2enum<QuestId>(quest_num);
     init_flags = i2enum<init_flags_type>(INIT_SHOW_TEXT | INIT_ASSIGN);
     player_ptr->current_floor_ptr->quest_number = q_idx;
-    parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
+    parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
     quest_list[q_idx].status = QuestStatusType::TAKEN;
     if (quest_list[q_idx].dungeon == 0) {
         exe_enter_quest(player_ptr, q_idx);
@@ -153,14 +141,14 @@ void wiz_complete_quest(PlayerType *player_ptr)
 void wiz_restore_monster_max_num(MonsterRaceId r_idx)
 {
     if (!MonsterRace(r_idx).is_valid()) {
-        int val;
-        if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
+        int val = 1;
+        if (!get_value("MonsterID", 1, monraces_info.size() - 1, &val)) {
             return;
         }
         r_idx = static_cast<MonsterRaceId>(val);
     }
 
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
     if (r_ptr->name.empty()) {
         msg_print("そのモンスターは存在しません。");
         msg_print(nullptr);

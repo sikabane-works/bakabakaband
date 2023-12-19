@@ -18,12 +18,12 @@
 #include "object/item-use-flags.h"
 #include "object/object-flags.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "object/object-value.h"
 #include "racial/racial-android.h"
 #include "spell-realm/spells-hex.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-weapon-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -36,7 +36,7 @@
  * @param from_ptr 修復材料オブジェクトの構造体の参照ポインタ。
  * @return 修復対象になるならTRUEを返す。
  */
-static void give_one_ability_of_object(ObjectType *to_ptr, ObjectType *from_ptr)
+static void give_one_ability_of_object(ItemEntity *to_ptr, ItemEntity *from_ptr)
 {
     auto to_flags = object_flags(to_ptr);
     auto from_flags = object_flags(from_ptr);
@@ -104,8 +104,8 @@ static PRICE repair_broken_weapon_aux(PlayerType *player_ptr, PRICE bcost)
     concptr s = _("修復できる折れた武器がありません。", "You have no broken weapon to repair.");
 
     OBJECT_IDX item;
-    ObjectType *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_EQUIP), FuncItemTester(&ObjectType::is_broken_weapon));
+    ItemEntity *o_ptr;
+    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_EQUIP), FuncItemTester(&ItemEntity::is_broken_weapon));
     if (!o_ptr) {
         return 0;
     }
@@ -128,8 +128,8 @@ static PRICE repair_broken_weapon_aux(PlayerType *player_ptr, PRICE bcost)
     s = _("材料となる武器がありません。", "You have no material for the repair.");
 
     OBJECT_IDX mater;
-    ObjectType *mo_ptr;
-    mo_ptr = choose_object(player_ptr, &mater, q, s, (USE_INVEN | USE_EQUIP), FuncItemTester(&ObjectType::is_orthodox_melee_weapons));
+    ItemEntity *mo_ptr;
+    mo_ptr = choose_object(player_ptr, &mater, q, s, (USE_INVEN | USE_EQUIP), FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
     if (!mo_ptr) {
         return 0;
     }
@@ -152,45 +152,49 @@ static PRICE repair_broken_weapon_aux(PlayerType *player_ptr, PRICE bcost)
         return 0;
     }
 
-    KIND_OBJECT_IDX k_idx;
+    short bi_id;
     if (o_ptr->sval == SV_BROKEN_DAGGER) {
-        int n = 1;
-        k_idx = 0;
-        for (const auto &k_ref : k_info) {
-            if (k_ref.tval != ItemKindType::SWORD) {
+        auto n = 1;
+        bi_id = 0;
+        for (const auto &k_ref : baseitems_info) {
+            if (k_ref.bi_key.tval() != ItemKindType::SWORD) {
                 continue;
             }
-            if ((k_ref.sval == SV_BROKEN_DAGGER) || (k_ref.sval == SV_BROKEN_SWORD) || (k_ref.sval == SV_POISON_NEEDLE)) {
+
+            const auto sval = k_ref.bi_key.sval();
+            if ((sval == SV_BROKEN_DAGGER) || (sval == SV_BROKEN_SWORD) || (sval == SV_POISON_NEEDLE)) {
                 continue;
             }
+
             if (k_ref.weight > 99) {
                 continue;
             }
 
             if (one_in_(n)) {
-                k_idx = k_ref.idx;
+                bi_id = k_ref.idx;
                 n++;
             }
         }
     } else {
         auto tval = (one_in_(5) ? mo_ptr->tval : ItemKindType::SWORD);
         while (true) {
-            object_kind *ck_ptr;
-            k_idx = lookup_kind(tval, SV_ANY);
-            ck_ptr = &k_info[k_idx];
-
+            bi_id = lookup_baseitem_id({ tval });
+            const auto &bi_ref = baseitems_info[bi_id];
+            const auto sval = bi_ref.bi_key.sval();
             if (tval == ItemKindType::SWORD) {
-                if ((ck_ptr->sval == SV_BROKEN_DAGGER) || (ck_ptr->sval == SV_BROKEN_SWORD) || (ck_ptr->sval == SV_DIAMOND_EDGE) || (ck_ptr->sval == SV_POISON_NEEDLE)) {
+                if ((sval == SV_BROKEN_DAGGER) || (sval == SV_BROKEN_SWORD) || (sval == SV_DIAMOND_EDGE) || (sval == SV_POISON_NEEDLE)) {
                     continue;
                 }
             }
+
             if (tval == ItemKindType::POLEARM) {
-                if ((ck_ptr->sval == SV_DEATH_SCYTHE) || (ck_ptr->sval == SV_TSURIZAO)) {
+                if ((sval == SV_DEATH_SCYTHE) || (sval == SV_TSURIZAO)) {
                     continue;
                 }
             }
+
             if (tval == ItemKindType::HAFTED) {
-                if ((ck_ptr->sval == SV_GROND) || (ck_ptr->sval == SV_WIZSTAFF) || (ck_ptr->sval == SV_NAMAKE_HAMMER)) {
+                if ((sval == SV_GROND) || (sval == SV_WIZSTAFF) || (sval == SV_NAMAKE_HAMMER)) {
                     continue;
                 }
             }
@@ -199,27 +203,26 @@ static PRICE repair_broken_weapon_aux(PlayerType *player_ptr, PRICE bcost)
         }
     }
 
-    int dd_bonus = o_ptr->dd - k_info[o_ptr->k_idx].dd;
-    int ds_bonus = o_ptr->ds - k_info[o_ptr->k_idx].ds;
-    dd_bonus += mo_ptr->dd - k_info[mo_ptr->k_idx].dd;
-    ds_bonus += mo_ptr->ds - k_info[mo_ptr->k_idx].ds;
+    auto dd_bonus = o_ptr->dd - baseitems_info[o_ptr->k_idx].dd;
+    auto ds_bonus = o_ptr->ds - baseitems_info[o_ptr->k_idx].ds;
+    dd_bonus += mo_ptr->dd - baseitems_info[mo_ptr->k_idx].dd;
+    ds_bonus += mo_ptr->ds - baseitems_info[mo_ptr->k_idx].ds;
 
-    object_kind *k_ptr;
-    k_ptr = &k_info[k_idx];
-    o_ptr->k_idx = k_idx;
-    o_ptr->weight = k_ptr->weight;
-    o_ptr->tval = k_ptr->tval;
-    o_ptr->sval = k_ptr->sval;
-    o_ptr->dd = k_ptr->dd;
-    o_ptr->ds = k_ptr->ds;
+    const auto &k_ref = baseitems_info[bi_id];
+    o_ptr->k_idx = bi_id;
+    o_ptr->weight = k_ref.weight;
+    o_ptr->tval = k_ref.bi_key.tval();
+    o_ptr->sval = k_ref.bi_key.sval().value();
+    o_ptr->dd = k_ref.dd;
+    o_ptr->ds = k_ref.ds;
 
-    o_ptr->art_flags.set(k_ptr->flags);
+    o_ptr->art_flags.set(k_ref.flags);
 
-    if (k_ptr->pval) {
-        o_ptr->pval = std::max<short>(o_ptr->pval, randint1(k_ptr->pval));
+    if (k_ref.pval) {
+        o_ptr->pval = std::max<short>(o_ptr->pval, randint1(k_ref.pval));
     }
-    if (k_ptr->flags.has(TR_ACTIVATE)) {
-        o_ptr->activation_id = k_ptr->act_idx;
+    if (k_ref.flags.has(TR_ACTIVATE)) {
+        o_ptr->activation_id = k_ref.act_idx;
     }
 
     if (dd_bonus > 0) {
@@ -240,7 +243,7 @@ static PRICE repair_broken_weapon_aux(PlayerType *player_ptr, PRICE bcost)
         }
     }
 
-    if (k_ptr->flags.has(TR_BLOWS)) {
+    if (k_ref.flags.has(TR_BLOWS)) {
         auto bmax = std::min<short>(3, std::max<short>(1, 40 / (o_ptr->dd * o_ptr->ds)));
         o_ptr->pval = std::min<short>(o_ptr->pval, bmax);
     }
@@ -250,7 +253,7 @@ static PRICE repair_broken_weapon_aux(PlayerType *player_ptr, PRICE bcost)
     o_ptr->to_h += std::max<short>(0, (mo_ptr->to_h / 3));
     o_ptr->to_a += std::max<short>(0, (mo_ptr->to_a));
 
-    const auto is_narsil = o_ptr->fixed_artifact_idx == FixedArtifactId::NARSIL;
+    const auto is_narsil = o_ptr->is_specific_artifact(FixedArtifactId::NARSIL);
     if (is_narsil || (o_ptr->is_random_artifact() && one_in_(1)) || (o_ptr->is_ego() && one_in_(7))) {
         if (o_ptr->is_ego()) {
             o_ptr->art_flags.set(TR_IGNORE_FIRE);

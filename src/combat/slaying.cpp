@@ -32,7 +32,7 @@
  * @param m_ptr 目標モンスターの構造体参照ポインタ
  * @return スレイング加味後の倍率(/10倍)
  */
-MULTIPLY mult_slaying(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags, monster_type *m_ptr)
+MULTIPLY mult_slaying(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags, MonsterEntity *m_ptr)
 {
     static const struct slay_table_t {
         tr_type slay_flag;
@@ -61,7 +61,7 @@ MULTIPLY mult_slaying(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flag
         { TR_KILL_DRAGON, MonsterKindType::DRAGON, 50 },
     };
 
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     for (size_t i = 0; i < sizeof(slay_table) / sizeof(slay_table[0]); ++i) {
         const struct slay_table_t *p = &slay_table[i];
 
@@ -87,7 +87,7 @@ MULTIPLY mult_slaying(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flag
  * @param m_ptr 目標モンスターの構造体参照ポインタ
  * @return スレイング加味後の倍率(/10倍)
  */
-MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags, monster_type *m_ptr)
+MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags, MonsterEntity *m_ptr)
 {
     static const struct brand_table_t {
         tr_type brand_flag;
@@ -101,7 +101,7 @@ MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags,
         { TR_BRAND_POIS, RFR_EFF_IM_POISON_MASK, MonsterResistanceType::MAX },
     };
 
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     for (size_t i = 0; i < sizeof(brand_table) / sizeof(brand_table[0]); ++i) {
         const struct brand_table_t *p = &brand_table[i];
 
@@ -150,7 +150,7 @@ MULTIPLY mult_brand(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags,
  * Note that most brands and slays are x3, except Slay Animal (x2),\n
  * Slay Evil (x2), and Kill dragon (x5).\n
  */
-int calc_attack_damage_with_slay(PlayerType *player_ptr, ObjectType *o_ptr, int tdam, monster_type *m_ptr, combat_options mode, bool thrown)
+int calc_attack_damage_with_slay(PlayerType *player_ptr, ItemEntity *o_ptr, int tdam, MonsterEntity *m_ptr, combat_options mode, bool thrown)
 {
     auto flags = object_flags(o_ptr);
     torch_flags(o_ptr, flags); /* torches has secret flags */
@@ -202,7 +202,7 @@ int calc_attack_damage_with_slay(PlayerType *player_ptr, ObjectType *o_ptr, int 
             mult = mult * 3 / 2 + 20;
         }
 
-        if ((o_ptr->fixed_artifact_idx == FixedArtifactId::NOTHUNG) && (m_ptr->r_idx == MonsterRaceId::FAFNER)) {
+        if ((o_ptr->is_specific_artifact(FixedArtifactId::NOTHUNG)) && (m_ptr->r_idx == MonsterRaceId::FAFNER)) {
             mult = 150;
         }
         break;
@@ -218,7 +218,7 @@ int calc_attack_damage_with_slay(PlayerType *player_ptr, ObjectType *o_ptr, int 
     return tdam * mult / 10;
 }
 
-AttributeFlags melee_attribute(PlayerType *player_ptr, ObjectType *o_ptr, combat_options mode)
+AttributeFlags melee_attribute(PlayerType *player_ptr, ItemEntity *o_ptr, combat_options mode)
 {
     AttributeFlags attribute_flags{};
     attribute_flags.set(AttributeType::PLAYER_MELEE);

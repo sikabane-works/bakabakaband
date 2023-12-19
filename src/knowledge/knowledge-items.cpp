@@ -17,10 +17,11 @@
 #include "knowledge/object-group-table.h"
 #include "object-enchant/special-object-flags.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
+#include "object/tval-types.h"
 #include "perception/identification.h"
 #include "perception/object-perception.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
@@ -48,7 +49,7 @@ void do_cmd_knowledge_artifacts(PlayerType *player_ptr)
 
     std::set<FixedArtifactId> known_list;
 
-    for (const auto &[a_idx, a_ref] : a_info) {
+    for (const auto &[a_idx, a_ref] : artifacts_info) {
         if (a_ref.name.empty()) {
             continue;
         }
@@ -63,7 +64,7 @@ void do_cmd_knowledge_artifacts(PlayerType *player_ptr)
         for (POSITION x = 0; x < player_ptr->current_floor_ptr->width; x++) {
             auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
             for (const auto this_o_idx : g_ptr->o_idx_list) {
-                ObjectType *o_ptr;
+                ItemEntity *o_ptr;
                 o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
                 if (!o_ptr->is_fixed_artifact()) {
                     continue;
@@ -97,21 +98,22 @@ void do_cmd_knowledge_artifacts(PlayerType *player_ptr)
     uint16_t why = 3;
     ang_sort(player_ptr, whats.data(), &why, whats.size(), ang_sort_art_comp, ang_sort_art_swap);
     for (auto a_idx : whats) {
-        const auto &a_ref = a_info.at(a_idx);
+        const auto &a_ref = artifacts_info.at(a_idx);
         GAME_TEXT base_name[MAX_NLEN];
         strcpy(base_name, _("未知の伝説のアイテム", "Unknown Artifact"));
-        const auto z = lookup_kind(a_ref.tval, a_ref.sval);
-        if (z != 0) {
-            ObjectType forge;
-            ObjectType *q_ptr;
-            q_ptr = &forge;
-            q_ptr->prep(z);
-            q_ptr->fixed_artifact_idx = a_idx;
-            q_ptr->ident |= IDENT_STORE;
-            describe_flavor(player_ptr, base_name, q_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+        const auto bi_id = lookup_baseitem_id(a_ref.bi_key);
+        constexpr auto template_basename = _("     %s\n", "     The %s\n");
+        if (bi_id == 0) {
+            fprintf(fff, template_basename, base_name);
+            continue;
         }
 
-        fprintf(fff, _("     %s\n", "     The %s\n"), base_name);
+        ItemEntity item;
+        item.prep(bi_id);
+        item.fixed_artifact_idx = a_idx;
+        item.ident |= IDENT_STORE;
+        describe_flavor(player_ptr, base_name, &item, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+        fprintf(fff, template_basename, base_name);
     }
 
     angband_fclose(fff);
@@ -130,7 +132,7 @@ static KIND_OBJECT_IDX collect_objects(int grp_cur, KIND_OBJECT_IDX object_idx[]
 {
     KIND_OBJECT_IDX object_cnt = 0;
     auto group_tval = object_group_tval[grp_cur];
-    for (const auto &k_ref : k_info) {
+    for (const auto &k_ref : baseitems_info) {
         if (k_ref.name.empty()) {
             continue;
         }
@@ -151,13 +153,14 @@ static KIND_OBJECT_IDX collect_objects(int grp_cur, KIND_OBJECT_IDX object_idx[]
             }
         }
 
+        const auto tval = k_ref.bi_key.tval();
         if (group_tval == ItemKindType::LIFE_BOOK) {
-            if (ItemKindType::LIFE_BOOK <= k_ref.tval && k_ref.tval <= ItemKindType::HEX_BOOK) {
+            if (ItemKindType::LIFE_BOOK <= tval && tval <= ItemKindType::HEX_BOOK) {
                 object_idx[object_cnt++] = k_ref.idx;
             } else {
                 continue;
             }
-        } else if (k_ref.tval == group_tval) {
+        } else if (tval == group_tval) {
             object_idx[object_cnt++] = k_ref.idx;
         } else {
             continue;
@@ -179,27 +182,22 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
 {
     int i;
     for (i = 0; i < per_page && (object_idx[object_top + i] >= 0); i++) {
-        GAME_TEXT o_name[MAX_NLEN];
         TERM_COLOR a;
-        object_kind *flavor_k_ptr;
+        BaseitemInfo *flavor_k_ptr;
         KIND_OBJECT_IDX k_idx = object_idx[object_top + i];
-        auto *k_ptr = &k_info[k_idx];
+        auto *k_ptr = &baseitems_info[k_idx];
         TERM_COLOR attr = ((k_ptr->aware || visual_only) ? TERM_WHITE : TERM_SLATE);
         byte cursor = ((k_ptr->aware || visual_only) ? TERM_L_BLUE : TERM_BLUE);
         if (!visual_only && k_ptr->flavor) {
-            flavor_k_ptr = &k_info[k_ptr->flavor];
+            flavor_k_ptr = &baseitems_info[k_ptr->flavor];
         } else {
             flavor_k_ptr = k_ptr;
         }
 
         attr = ((i + object_top == object_cur) ? cursor : attr);
-        if (!k_ptr->flavor || (!visual_only && k_ptr->aware)) {
-            strip_name(o_name, k_idx);
-        } else {
-            strcpy(o_name, flavor_k_ptr->flavor_name.c_str());
-        }
-
-        c_prt(attr, o_name, row + i, col);
+        const auto is_flavor_only = (k_ptr->flavor != 0) && (visual_only || !k_ptr->aware);
+        const auto o_name = is_flavor_only ? flavor_k_ptr->flavor_name : strip_name(k_idx);
+        c_prt(attr, o_name.data(), row + i, col);
         if (per_page == 1) {
             c_prt(attr, format("%02x/%02x", flavor_k_ptr->x_attr, flavor_k_ptr->x_char), row + i, (w_ptr->wizard || visual_only) ? 64 : 68);
         }
@@ -224,8 +222,8 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
  */
 static void desc_obj_fake(PlayerType *player_ptr, KIND_OBJECT_IDX k_idx)
 {
-    ObjectType *o_ptr;
-    ObjectType ObjectType_body;
+    ItemEntity *o_ptr;
+    ItemEntity ObjectType_body;
     o_ptr = &ObjectType_body;
     o_ptr->wipe();
     o_ptr->prep(k_idx);
@@ -259,7 +257,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
     term_get_size(&wid, &hgt);
 
     int browser_rows = hgt - 8;
-    std::vector<KIND_OBJECT_IDX> object_idx(k_info.size());
+    std::vector<KIND_OBJECT_IDX> object_idx(baseitems_info.size());
 
     int len;
     int max = 0;
@@ -280,11 +278,11 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
         object_old = -1;
         object_cnt = 0;
     } else {
-        auto *k_ptr = &k_info[direct_k_idx];
-        object_kind *flavor_k_ptr;
+        auto *k_ptr = &baseitems_info[direct_k_idx];
+        BaseitemInfo *flavor_k_ptr;
 
         if (!visual_only && k_ptr->flavor) {
-            flavor_k_ptr = &k_info[k_ptr->flavor];
+            flavor_k_ptr = &baseitems_info[k_ptr->flavor];
         } else {
             flavor_k_ptr = k_ptr;
         }
@@ -307,7 +305,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
     bool redraw = true;
     int column = 0;
     while (!flag) {
-        object_kind *k_ptr, *flavor_k_ptr;
+        BaseitemInfo *k_ptr, *flavor_k_ptr;
 
         if (redraw) {
             clear_from(0);
@@ -383,10 +381,10 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
             display_visual_list(max + 3, 7, browser_rows - 1, wid - (max + 3), attr_top, char_left);
         }
 
-        k_ptr = &k_info[object_idx[object_cur]];
+        k_ptr = &baseitems_info[object_idx[object_cur]];
 
         if (!visual_only && k_ptr->flavor) {
-            flavor_k_ptr = &k_info[k_ptr->flavor];
+            flavor_k_ptr = &baseitems_info[k_ptr->flavor];
         } else {
             flavor_k_ptr = k_ptr;
         }

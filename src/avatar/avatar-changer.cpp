@@ -6,7 +6,6 @@
 
 #include "avatar/avatar-changer.h"
 #include "avatar/avatar.h"
-#include "dungeon/dungeon.h"
 #include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-mask.h"
@@ -15,6 +14,7 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -24,7 +24,7 @@
 /*!
  * @brief AvaterChangerコンストラクタ
  */
-AvatarChanger::AvatarChanger(PlayerType *player_ptr, monster_type *m_ptr)
+AvatarChanger::AvatarChanger(PlayerType *player_ptr, MonsterEntity *m_ptr)
     : player_ptr(player_ptr)
     , m_ptr(m_ptr)
 {
@@ -37,18 +37,18 @@ void AvatarChanger::change_virtue()
 {
     this->change_virtue_non_beginner();
     this->change_virtue_unique();
-    auto *r_ptr = real_r_ptr(this->m_ptr);
+    const auto &r_ref = this->m_ptr->get_real_r_ref();
     if (m_ptr->r_idx == MonsterRaceId::BEGGAR || m_ptr->r_idx == MonsterRaceId::LEPER) {
         chg_virtue(this->player_ptr, V_COMPASSION, -1);
     }
 
     this->change_virtue_good_evil();
-    if (r_ptr->kind_flags.has(MonsterKindType::UNDEAD) && r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+    if (r_ref.kind_flags.has(MonsterKindType::UNDEAD) && r_ref.kind_flags.has(MonsterKindType::UNIQUE)) {
         chg_virtue(this->player_ptr, V_VITALITY, 2);
     }
 
     this->change_virtue_revenge();
-    if (any_bits(r_ptr->flags2, RF2_MULTIPLY) && (r_ptr->r_akills > 1000) && one_in_(10)) {
+    if (any_bits(r_ref.flags2, RF2_MULTIPLY) && (r_ref.r_akills > 1000) && one_in_(10)) {
         chg_virtue(this->player_ptr, V_VALOUR, -1);
     }
 
@@ -62,8 +62,8 @@ void AvatarChanger::change_virtue()
 void AvatarChanger::change_virtue_non_beginner()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto *r_ptr = &r_info[m_ptr->r_idx];
-    if (d_info[this->player_ptr->dungeon_idx].flags.has(DungeonFeatureType::BEGINNER)) {
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    if (dungeons_info[this->player_ptr->dungeon_idx].flags.has(DungeonFeatureType::BEGINNER)) {
         return;
     }
 
@@ -89,7 +89,7 @@ void AvatarChanger::change_virtue_non_beginner()
  */
 void AvatarChanger::change_virtue_unique()
 {
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         return;
     }
@@ -115,7 +115,7 @@ void AvatarChanger::change_virtue_unique()
 void AvatarChanger::change_virtue_good_evil()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->kind_flags.has(MonsterKindType::GOOD) && ((r_ptr->level) / 10 + (3 * floor_ptr->dun_level) >= randint1(100))) {
         chg_virtue(this->player_ptr, V_UNLIFE, 1);
     }
@@ -146,7 +146,7 @@ void AvatarChanger::change_virtue_good_evil()
 void AvatarChanger::change_virtue_revenge()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->r_deaths == 0) {
         return;
     }
@@ -167,7 +167,7 @@ void AvatarChanger::change_virtue_revenge()
 void AvatarChanger::change_virtue_wild_thief()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     auto innocent = true;
     auto thief = false;
     for (auto i = 0; i < MAX_NUM_BLOWS; i++) {
@@ -207,7 +207,7 @@ void AvatarChanger::change_virtue_wild_thief()
  */
 void AvatarChanger::change_virtue_good_animal()
 {
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     auto magic_ability_flags = r_ptr->ability_flags;
     magic_ability_flags.reset(RF_ABILITY_NOMAGIC_MASK);
     if (r_ptr->kind_flags.has_not(MonsterKindType::ANIMAL) || r_ptr->kind_flags.has(MonsterKindType::EVIL) || magic_ability_flags.any()) {

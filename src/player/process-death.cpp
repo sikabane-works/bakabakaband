@@ -82,7 +82,7 @@ static void show_basic_params(PlayerType *player_ptr, char *buf)
  */
 static int show_killing_monster(PlayerType *player_ptr, char *buf, char *tomb_message, size_t tomb_message_size)
 {
-    shape_buffer(player_ptr->died_from.c_str(), GRAVE_LINE_WIDTH + 1, tomb_message, tomb_message_size);
+    shape_buffer(player_ptr->died_from.data(), GRAVE_LINE_WIDTH + 1, tomb_message, tomb_message_size);
     char *t;
     t = tomb_message + strlen(tomb_message) + 1;
     if (!*t) {
@@ -197,7 +197,7 @@ static void show_tomb_detail(PlayerType *player_ptr, char *buf)
     center_string(buf, tomb_message);
     put_str(buf, 14, 11);
 
-    shape_buffer(format("by %s.", player_ptr->died_from.c_str()), GRAVE_LINE_WIDTH + 1, tomb_message, sizeof(tomb_message));
+    shape_buffer(format("by %s.", player_ptr->died_from.data()), GRAVE_LINE_WIDTH + 1, tomb_message, sizeof(tomb_message));
     center_string(buf, tomb_message);
     char *t;
     put_str(buf, 15, 11);
@@ -267,7 +267,7 @@ void print_tomb(PlayerType *player_ptr)
  */
 static void inventory_aware(PlayerType *player_ptr)
 {
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     for (int i = 0; i < INVEN_TOTAL; i++) {
         o_ptr = &player_ptr->inventory_list[i];
         if (!o_ptr->k_idx) {
@@ -285,7 +285,7 @@ static void inventory_aware(PlayerType *player_ptr)
  */
 static void home_aware(PlayerType *player_ptr)
 {
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     store_type *store_ptr;
     for (int i = 1; i < max_towns; i++) {
         store_ptr = &town_info[i].store[enum2i(StoreSaleType::HOME)];
@@ -348,7 +348,7 @@ static void show_dead_home_items(PlayerType *player_ptr)
             for (int j = 0; (j < 12) && (i < store_ptr->stock_num); j++, i++) {
                 GAME_TEXT o_name[MAX_NLEN];
                 char tmp_val[80];
-                ObjectType *o_ptr;
+                ItemEntity *o_ptr;
                 o_ptr = &store_ptr->stock[i];
                 sprintf(tmp_val, "%c) ", I2A(j));
                 prt(tmp_val, j + 2, 4);

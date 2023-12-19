@@ -22,11 +22,11 @@
  * @param m_ptr モンスターの参照ポインタ
  * @param mode 呼称オプション
  */
-void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_FLAGS mode)
+void monster_desc(PlayerType *player_ptr, char *desc, MonsterEntity *m_ptr, BIT_FLAGS mode)
 {
-    monster_race *r_ptr;
-    r_ptr = &r_info[m_ptr->ap_r_idx];
-    concptr name = (mode & MD_TRUE_NAME) ? real_r_ptr(m_ptr)->name.c_str() : r_ptr->name.c_str();
+    MonsterRaceInfo *r_ptr;
+    r_ptr = &monraces_info[m_ptr->ap_r_idx];
+    concptr name = (mode & MD_TRUE_NAME) ? m_ptr->get_real_r_ref().name.data() : r_ptr->name.data();
     GAME_TEXT silly_name[1024];
     bool named = false;
     auto is_hallucinated = player_ptr->effects()->hallucination()->is_hallucinated();
@@ -38,14 +38,14 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
         }
 
         if (!named) {
-            monster_race *hallu_race;
+            MonsterRaceInfo *hallu_race;
 
             do {
                 auto r_idx = MonsterRace::pick_one_at_random();
-                hallu_race = &r_info[r_idx];
+                hallu_race = &monraces_info[r_idx];
             } while (hallu_race->name.empty() || hallu_race->kind_flags.has(MonsterKindType::UNIQUE));
 
-            strcpy(silly_name, (hallu_race->name.c_str()));
+            strcpy(silly_name, (hallu_race->name.data()));
         }
 
         name = silly_name;
@@ -163,7 +163,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
 
     /* Handle all other visible monster requests */
     /* Tanuki? */
-    if (is_pet(m_ptr) && !is_original_ap(m_ptr)) {
+    if (m_ptr->is_pet() && !m_ptr->is_original_ap()) {
 #ifdef JP
         char *t;
         char buf[128];
@@ -214,7 +214,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
 #endif
             (void)strcat(desc, name);
         } else {
-            if (is_pet(m_ptr)) {
+            if (m_ptr->is_pet()) {
                 (void)strcpy(desc, _("あなたの", "your "));
             } else {
                 (void)strcpy(desc, _("", "the "));
@@ -242,8 +242,8 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
         }
     }
 
-    if ((mode & MD_IGNORE_HALLU) && !is_original_ap(m_ptr)) {
-        strcat(desc, format("(%s)", r_info[m_ptr->r_idx].name.c_str()));
+    if ((mode & MD_IGNORE_HALLU) && !m_ptr->is_original_ap()) {
+        strcat(desc, format("(%s)", monraces_info[m_ptr->r_idx].name.data()));
     }
 
     /* Handle the Possessive as a special afterthought */
@@ -263,7 +263,7 @@ void monster_desc(PlayerType *player_ptr, char *desc, monster_type *m_ptr, BIT_F
 void message_pain(PlayerType *player_ptr, MONSTER_IDX m_idx, int dam)
 {
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
     GAME_TEXT m_name[MAX_NLEN];
 

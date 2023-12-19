@@ -1,6 +1,6 @@
 ﻿#include "room/rooms-city.h"
 #include "floor/floor-generator.h"
-#include "floor/wild.h"
+#include "floor/floor-town.h"
 #include "game-option/cheat-types.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
@@ -146,13 +146,13 @@ static void build_stores(PlayerType *player_ptr, POSITION ltcy, POSITION ltcx, S
             break;
         }
 
-        if (auto it = std::find_if(f_info.begin(), f_info.end(),
-                [subtype = stores[i]](const feature_type &f_ref) {
-                    return f_ref.flags.has(FloorFeatureType::STORE) && (i2enum<StoreSaleType>(static_cast<int>(f_ref.subtype)) == subtype);
+        if (auto it = std::find_if(terrains_info.begin(), terrains_info.end(),
+                [subtype = stores[i]](const TerrainType &f_ref) {
+                    return f_ref.flags.has(TerrainCharacteristics::STORE) && (i2enum<StoreSaleType>(static_cast<int>(f_ref.subtype)) == subtype);
                 });
-            it != f_info.end()) {
+            it != terrains_info.end()) {
             cave_set_feat(player_ptr, ltcy + y, ltcx + x, (*it).idx);
-            store_init(NO_TOWN, stores[i]);
+            store_init(VALID_TOWNS, stores[i]);
         }
     }
 }

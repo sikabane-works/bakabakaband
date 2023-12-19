@@ -16,7 +16,6 @@
 #include "mind/mind-elementalist.h"
 #include "mutation/mutation-flag-types.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "player-base/player-class.h"
 #include "player-info/alignment.h"
 #include "player-info/class-info.h"
@@ -28,6 +27,7 @@
 #include "player/player-status-table.h"
 #include "player/player-status.h"
 #include "realm/realm-names-table.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -137,7 +137,7 @@ static void display_phisique(PlayerType *player_ptr)
     display_player_one_line(ENTRY_SOCIAL, format("%d", (int)player_ptr->prestige), TERM_L_BLUE);
 #endif
     std::string alg = PlayerAlignment(player_ptr).get_alignment_description();
-    display_player_one_line(ENTRY_ALIGN, format("%s", alg.c_str()), TERM_L_BLUE);
+    display_player_one_line(ENTRY_ALIGN, format("%s", alg.data()), TERM_L_BLUE);
     display_player_one_line(ENTRY_DEATH_COUNT, format("%d  ", (int)player_ptr->death_count), TERM_L_BLUE);
 }
 
@@ -189,9 +189,9 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
 
     if (!floor_ptr->dun_level) {
 #ifdef JP
-        return std::string(format("…あなたは%sで%sに殺されて飽きた。", map_name(player_ptr), player_ptr->died_from.c_str()));
+        return std::string(format("…あなたは%sで%sに殺されて飽きた。", map_name(player_ptr), player_ptr->died_from.data()));
 #else
-        return std::string(format("...You were killed by %s in %s and got tired.", player_ptr->died_from.c_str(), map_name(player_ptr)));
+        return std::string(format("...You were killed by %s in %s and got tired..", player_ptr->died_from.data(), map_name(player_ptr)));
 #endif
     }
 
@@ -201,20 +201,20 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
         /* Get the quest text */
         /* Bewere that INIT_ASSIGN resets the cur_num. */
         init_flags = INIT_NAME_ONLY;
-        parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
+        parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
 
         const auto *q_ptr = &quest_list[floor_ptr->quest_number];
 #ifdef JP
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺された飽きた。", q_ptr->name, player_ptr->died_from.c_str()));
+        return std::string(format("…あなたは、クエスト「%s」で%sに殺された飽きた。", q_ptr->name, player_ptr->died_from.data()));
 #else
-        return std::string(format("...You were killed by %s in the quest '%s' and god tired.", player_ptr->died_from.c_str(), q_ptr->name));
+        return std::string(format("...You were killed by %s in the quest '%s' and god tired..", player_ptr->died_from.data(), q_ptr->name));
 #endif
     }
 
 #ifdef JP
-    return std::string(format("…あなたは、%sの%d階で%sに殺されて飽きた。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from.c_str()));
+    return std::string(format("…あなたは、%sの%d階で%sに殺されて飽きた。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from.data()));
 #else
-    return std::string(format("...You were killed by %s on level %d of %s and got tired.", player_ptr->died_from.c_str(), floor_ptr->dun_level, map_name(player_ptr)));
+    return std::string(format("...You were killed by %s on level %d of %s and got tired..", player_ptr->died_from.data(), floor_ptr->dun_level, map_name(player_ptr)));
 #endif
 }
 
@@ -238,7 +238,7 @@ static std::optional<std::string> decide_death_in_quest(PlayerType *player_ptr)
     const auto &quest_list = QuestList::get_instance();
     quest_text_line = 0;
     init_flags = INIT_NAME_ONLY;
-    parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
+    parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
     return std::string(format(_("…あなたは現在、 クエスト「%s」を遂行中だ。", "...Now, you are in the quest '%s'."), quest_list[floor_ptr->quest_number].name));
 }
 
@@ -281,7 +281,7 @@ static int display_current_floor(const std::string &statmsg)
 {
     char temp[1000];
     constexpr auto chars_per_line = 60;
-    shape_buffer(statmsg.c_str(), chars_per_line, temp, sizeof(temp));
+    shape_buffer(statmsg.data(), chars_per_line, temp, sizeof(temp));
     auto t = temp;
     auto statmsg_size = statmsg.size();
     auto fraction = statmsg_size % (chars_per_line - 1);
@@ -322,7 +322,7 @@ std::optional<int> display_player(PlayerType *player_ptr, const int tmp_mode)
     display_player_basic_info(player_ptr);
     display_magic_realms(player_ptr);
     if (PlayerClass(player_ptr).equals(PlayerClassType::CHAOS_WARRIOR) || (player_ptr->muta.has(PlayerMutationType::CHAOS_GIFT))) {
-        display_player_one_line(ENTRY_PATRON, patron_list[player_ptr->chaos_patron].name.c_str(), TERM_L_BLUE);
+        display_player_one_line(ENTRY_PATRON, patron_list[player_ptr->chaos_patron].name.data(), TERM_L_BLUE);
     }
 
     display_phisique(player_ptr);
@@ -357,15 +357,12 @@ std::optional<int> display_player(PlayerType *player_ptr, const int tmp_mode)
  */
 void display_player_equippy(PlayerType *player_ptr, TERM_LEN y, TERM_LEN x, BIT_FLAGS16 mode)
 {
-    int max_i = (mode & DP_WP) ? INVEN_BOW + 1 : INVEN_TOTAL;
+    const auto max_i = (mode & DP_WP) ? INVEN_BOW + 1 : INVEN_TOTAL;
     for (int i = INVEN_MAIN_HAND; i < max_i; i++) {
-        ObjectType *o_ptr;
-        o_ptr = &player_ptr->inventory_list[i];
-
-        TERM_COLOR a = object_attr(o_ptr);
-        auto c = object_char(o_ptr);
-
-        if (!equippy_chars || !o_ptr->k_idx) {
+        const auto &o_ref = player_ptr->inventory_list[i];
+        auto a = o_ref.get_color();
+        auto c = o_ref.get_symbol();
+        if (!equippy_chars || (o_ref.k_idx == 0)) {
             c = ' ';
             a = TERM_DARK;
         }

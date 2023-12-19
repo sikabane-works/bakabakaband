@@ -23,7 +23,6 @@
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-base/player-race.h"
@@ -53,6 +52,7 @@
 #include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-other-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
 #include "util/string-processor.h"
@@ -65,7 +65,7 @@
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_junk_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool exe_eat_junk_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (o_ptr->tval != ItemKindType::JUNK) {
         return false;
@@ -103,7 +103,7 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_SOUL)) {
         return false;
@@ -113,7 +113,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
         return false;
     }
 
-    monster_race *r_ptr = &r_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
+    MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
 
     chg_virtue(player_ptr, V_ENLIGHTEN, 1);
@@ -134,13 +134,13 @@ static bool exe_eat_soul(PlayerType *player_ptr, ObjectType *o_ptr)
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE)) {
         return false;
     }
 
-    monster_race *r_ptr = &r_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
+    MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
 
     if (r_ptr->flags9 & RF9_EAT_BLIND) {
         BadStatusSetter(player_ptr).mod_blindness(200 + randint1(200));
@@ -160,7 +160,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
 
     if (r_ptr->flags9 & RF9_EAT_SLEEP) {
         if (!player_ptr->free_act) {
-            BadStatusSetter(player_ptr).paralysis(10 + randint1(10));
+            BadStatusSetter(player_ptr).set_paralysis(10 + randint1(10));
         }
     }
 
@@ -273,7 +273,7 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ObjectType *o_ptr
  * @param o_ptr 食べるオブジェクト
  * @return 鑑定されるならTRUE、されないならFALSE
  */
-bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
+bool exe_eat_food_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (o_ptr->tval != ItemKindType::FOOD) {
         return false;
@@ -323,7 +323,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
         break;
     case SV_FOOD_PARALYSIS:
         if (!player_ptr->free_act) {
-            if (bss.paralysis(10 + randint1(10))) {
+            if (bss.set_paralysis(10 + randint1(10))) {
                 player_ptr->plus_incident(INCIDENT::EAT_POISON, 1);
                 return true;
             }
@@ -364,7 +364,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
     case SV_FOOD_CURE_BLINDNESS:
         return bss.set_blindness(0);
     case SV_FOOD_CURE_PARANOIA:
-        return bss.fear(0);
+        return bss.set_fear(0);
     case SV_FOOD_CURE_CONFUSION:
         return bss.set_confusion(0);
     case SV_FOOD_CURE_SERIOUS:
@@ -488,7 +488,7 @@ bool exe_eat_food_type_object(PlayerType *player_ptr, ObjectType *o_ptr)
  * @param item オブジェクトのインベントリ番号
  * @return 食べようとしたらTRUE、しなかったらFALSE
  */
-bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ObjectType *o_ptr, INVENTORY_IDX item)
+bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o_ptr, INVENTORY_IDX item)
 {
     if (o_ptr->tval != ItemKindType::STAFF && o_ptr->tval != ItemKindType::WAND) {
         return false;
@@ -522,8 +522,8 @@ bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ObjectType *o_ptr, I
 
         /* XXX Hack -- unstack if necessary */
         if (o_ptr->tval == ItemKindType::STAFF && (item >= 0) && (o_ptr->number > 1)) {
-            ObjectType forge;
-            ObjectType *q_ptr;
+            ItemEntity forge;
+            ItemEntity *q_ptr;
             q_ptr = &forge;
             q_ptr->copy_from(o_ptr);
 
@@ -575,7 +575,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
 
     /* Object level */
-    int lev = k_info[o_ptr->k_idx].level;
+    int lev = baseitems_info[o_ptr->k_idx].level;
 
     /* 基本食い物でないものを喰う判定 */
     bool ate = false;
@@ -627,7 +627,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
 
     /* Balrogs change humanoid corpses to energy */
     const auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if (food_type == PlayerRaceFoodType::CORPSE && (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[corpse_r_idx].d_char))) {
+    if (food_type == PlayerRaceFoodType::CORPSE && (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", monraces_info[corpse_r_idx].d_char))) {
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%^s is burnt to ashes.  You absorb its vitality!"), o_name);
@@ -638,54 +638,51 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         return;
     }
 
-    if (o_ptr->tval == ItemKindType::FOOD) {
-        if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
-            if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
-                ObjectType forge;
-                ObjectType *q_ptr = &forge;
+    if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
+        if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
+            ItemEntity forge;
+            auto *q_ptr = &forge;
 
-                msg_print(_("食べ物がアゴを素通りして落ちた！", "The food falls through your jaws!"));
-                q_ptr->prep(lookup_kind(o_ptr->tval, o_ptr->sval));
+            msg_print(_("食べ物がアゴを素通りして落ちた！", "The food falls through your jaws!"));
+            q_ptr->prep(lookup_baseitem_id({ o_ptr->tval, o_ptr->sval }));
 
-                /* Drop the object from heaven */
-                (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
+            /* Drop the object from heaven */
+            (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
 
-                ate = true;
-            } else {
-                msg_print(_("食べ物がアゴを素通りして落ち、消えた！", "The food falls through your jaws and vanishes!"));
-                ate = true;
-            }
-        } else if (food_type == PlayerRaceFoodType::BLOOD) {
-            /* Vampires are filled only by bloods, so reduced nutritional benefit */
-            (void)set_food(player_ptr, player_ptr->food + (o_ptr->pval / 10));
-            msg_print(_("あなたのような者にとって食糧など僅かな栄養にしかならない。", "Mere victuals hold scant sustenance for a being such as yourself."));
-
-            if (player_ptr->food < PY_FOOD_ALERT) {
-                /* Hungry */
-                msg_print(_("あなたの飢えは新鮮な血によってのみ満たされる！", "Your hunger can only be satisfied with fresh blood!"));
-            }
-            ate = true;
-
-        } else if (food_type == PlayerRaceFoodType::WATER) {
-            msg_print(_("動物の食物はあなたにとってほとんど栄養にならない。", "The food of animals is poor sustenance for you."));
-            set_food(player_ptr, player_ptr->food + ((o_ptr->pval) / 20));
-            ate = true;
-        } else if (food_type != PlayerRaceFoodType::RATION) {
-            msg_print(_("生者の食物はあなたにとってほとんど栄養にならない。", "The food of mortals is poor sustenance for you."));
-            set_food(player_ptr, player_ptr->food + ((o_ptr->pval) / 20));
             ate = true;
         } else {
-            if (o_ptr->tval == ItemKindType::FOOD && o_ptr->sval == SV_FOOD_WAYBREAD) {
-                /* Waybread is always fully satisfying. */
-                set_food(player_ptr, std::max<short>(player_ptr->food, PY_FOOD_MAX - 1));
-            } else {
-                /* Food can feed the player */
-                (void)set_food(player_ptr, player_ptr->food + o_ptr->pval);
-            }
+            msg_print(_("食べ物がアゴを素通りして落ち、消えた！", "The food falls through your jaws and vanishes!"));
             ate = true;
         }
-    }
+    } else if (food_type == PlayerRaceFoodType::BLOOD) {
+        /* Vampires are filled only by bloods, so reduced nutritional benefit */
+        (void)set_food(player_ptr, player_ptr->food + (o_ptr->pval / 10));
+        msg_print(_("あなたのような者にとって食糧など僅かな栄養にしかならない。", "Mere victuals hold scant sustenance for a being such as yourself."));
 
+        if (player_ptr->food < PY_FOOD_ALERT) {
+            /* Hungry */
+            msg_print(_("あなたの飢えは新鮮な血によってのみ満たされる！", "Your hunger can only be satisfied with fresh blood!"));
+        }
+        ate = true;
+
+    } else if (food_type == PlayerRaceFoodType::WATER) {
+        msg_print(_("動物の食物はあなたにとってほとんど栄養にならない。", "The food of animals is poor sustenance for you."));
+        set_food(player_ptr, player_ptr->food + ((o_ptr->pval) / 20));
+        ate = true;
+    } else if (food_type != PlayerRaceFoodType::RATION) {
+        msg_print(_("生者の食物はあなたにとってほとんど栄養にならない。", "The food of mortals is poor sustenance for you."));
+        set_food(player_ptr, player_ptr->food + ((o_ptr->pval) / 20));
+        ate = true;
+    } else {
+        if (o_ptr->tval == ItemKindType::FOOD && o_ptr->sval == SV_FOOD_WAYBREAD) {
+            /* Waybread is always fully satisfying. */
+            set_food(player_ptr, std::max<short>(player_ptr->food, PY_FOOD_MAX - 1));
+        } else {
+            /* Food can feed the player */
+            (void)set_food(player_ptr, player_ptr->food + o_ptr->pval);
+        }
+        ate = true;
+    }
     if (!ate) {
         msg_print("流石に食べるのを躊躇した。");
         return;

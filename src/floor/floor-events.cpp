@@ -5,7 +5,6 @@
 #include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "dungeon/dungeon-flag-types.h"
-#include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
 #include "floor/geometry.h"
@@ -25,15 +24,17 @@
 #include "monster/monster-status.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/special-object-flags.h"
-#include "object/object-kind.h"
 #include "object/object-mark-types.h"
 #include "object/object-value.h"
+#include "object/tval-types.h"
 #include "perception/object-perception.h"
 #include "player/special-defense-types.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "system/baseitem-info-definition.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -78,13 +79,13 @@ void night_falls(PlayerType *player_ptr)
         for (POSITION y = 0; y < floor_ptr->height; y++) {
             for (POSITION x = 0; x < floor_ptr->width; x++) {
                 auto *g_ptr = &floor_ptr->grid_array[y][x];
-                auto *f_ptr = &f_info[g_ptr->get_feat_mimic()];
-                if (g_ptr->is_mirror() || f_ptr->flags.has(FloorFeatureType::QUEST_ENTER) || f_ptr->flags.has(FloorFeatureType::ENTRANCE)) {
+                auto *f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
+                if (g_ptr->is_mirror() || f_ptr->flags.has(TerrainCharacteristics::QUEST_ENTER) || f_ptr->flags.has(TerrainCharacteristics::ENTRANCE)) {
                     continue;
                 }
 
                 g_ptr->info &= ~(CAVE_GLOW);
-                if (f_ptr->flags.has_not(FloorFeatureType::REMEMBER)) {
+                if (f_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
                     g_ptr->info &= ~(CAVE_MARK);
                     note_spot(player_ptr, y, x);
                 }
@@ -127,13 +128,13 @@ static byte get_dungeon_feeling(PlayerType *player_ptr)
     int rating = 0;
     for (MONSTER_IDX i = 1; i < floor_ptr->m_max; i++) {
         auto *m_ptr = &floor_ptr->m_list[i];
-        monster_race *r_ptr;
+        MonsterRaceInfo *r_ptr;
         int delta = 0;
-        if (!monster_is_valid(m_ptr) || is_pet(m_ptr)) {
+        if (!m_ptr->is_valid() || m_ptr->is_pet()) {
             continue;
         }
 
-        r_ptr = &r_info[m_ptr->r_idx];
+        r_ptr = &monraces_info[m_ptr->r_idx];
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             if (r_ptr->level + 10 > floor_ptr->dun_level) {
                 delta += (r_ptr->level + 10 - floor_ptr->dun_level) * 2 * base;
@@ -155,14 +156,14 @@ static byte get_dungeon_feeling(PlayerType *player_ptr)
 
     for (MONSTER_IDX i = 1; i < floor_ptr->o_max; i++) {
         auto *o_ptr = &floor_ptr->o_list[i];
-        auto *k_ptr = &k_info[o_ptr->k_idx];
+        auto *k_ptr = &baseitems_info[o_ptr->k_idx];
         int delta = 0;
         if (!o_ptr->is_valid() || (o_ptr->is_known() && ((o_ptr->marked & OM_TOUCHED) != 0)) || ((o_ptr->ident & IDENT_SENSE) != 0)) {
             continue;
         }
 
         if (o_ptr->is_ego()) {
-            auto *e_ptr = &e_info[o_ptr->ego_idx];
+            auto *e_ptr = &egos_info[o_ptr->ego_idx];
             delta += e_ptr->rating * base;
         }
 
@@ -317,7 +318,7 @@ void update_dungeon_feeling(PlayerType *player_ptr)
  */
 void glow_deep_lava_and_bldg(PlayerType *player_ptr)
 {
-    if (d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
         return;
     }
 
@@ -326,7 +327,7 @@ void glow_deep_lava_and_bldg(PlayerType *player_ptr)
         for (POSITION x = 0; x < floor_ptr->width; x++) {
             grid_type *g_ptr;
             g_ptr = &floor_ptr->grid_array[y][x];
-            if (f_info[g_ptr->get_feat_mimic()].flags.has_not(FloorFeatureType::GLOW)) {
+            if (terrains_info[g_ptr->get_feat_mimic()].flags.has_not(TerrainCharacteristics::GLOW)) {
                 continue;
             }
 
@@ -349,7 +350,7 @@ void glow_deep_lava_and_bldg(PlayerType *player_ptr)
 /*
  * Actually erase the entire "lite" array, redrawing every grid
  */
-void forget_lite(floor_type *floor_ptr)
+void forget_lite(FloorType *floor_ptr)
 {
     if (!floor_ptr->lite_n) {
         return;
@@ -367,7 +368,7 @@ void forget_lite(floor_type *floor_ptr)
 /*
  * Clear the viewable space
  */
-void forget_view(floor_type *floor_ptr)
+void forget_view(FloorType *floor_ptr)
 {
     if (!floor_ptr->view_n) {
         return;

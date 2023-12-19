@@ -55,7 +55,7 @@ bool psychometry(PlayerType *player_ptr)
 {
     concptr q = _("どのアイテムを調べますか？", "Meditate on which item? ");
     concptr s = _("調べるアイテムがありません。", "You have nothing appropriate.");
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     OBJECT_IDX item;
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
     if (!o_ptr) {
@@ -241,8 +241,8 @@ bool cast_mindcrafter_spell(PlayerType *player_ptr, MindMindcrafterType spell)
         break;
     case MindMindcrafterType::ADRENALINE_CHANNELING: {
         BadStatusSetter bss(player_ptr);
-        (void)bss.fear(0);
-        (void)bss.stun(0);
+        (void)bss.set_fear(0);
+        (void)bss.set_stun(0);
         if (!is_fast(player_ptr) || !is_hero(player_ptr)) {
             hp_player(player_ptr, plev);
         }

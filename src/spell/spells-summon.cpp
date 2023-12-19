@@ -219,15 +219,15 @@ bool cast_summon_greater_demon(PlayerType *player_ptr)
     concptr q = _("どの死体を捧げますか? ", "Sacrifice which corpse? ");
     concptr s = _("捧げられる死体を持っていない。", "You have nothing to sacrifice.");
     OBJECT_IDX item;
-    ObjectType *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ObjectType::is_offerable));
+    ItemEntity *o_ptr;
+    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_offerable));
     if (!o_ptr) {
         return false;
     }
 
     PLAYER_LEVEL plev = player_ptr->lev;
     auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    int summon_lev = plev * 2 / 3 + r_info[corpse_r_idx].level;
+    int summon_lev = plev * 2 / 3 + monraces_info[corpse_r_idx].level;
 
     if (summon_specific(player_ptr, -1, player_ptr->y, player_ptr->x, summon_lev, SUMMON_HI_DEMON, (PM_ALLOW_GROUP | PM_FORCE_PET))) {
         msg_print(_("硫黄の悪臭が充満した。", "The area fills with a stench of sulphur and brimstone."));
@@ -273,7 +273,7 @@ int summon_cyber(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (who > 0) {
         auto *m_ptr = &floor_ptr->m_list[who];
-        if (is_pet(m_ptr)) {
+        if (m_ptr->is_pet()) {
             mode |= PM_FORCE_PET;
         }
     }
@@ -309,9 +309,9 @@ void mitokohmon(PlayerType *player_ptr)
 
     if (!count) {
         for (int i = player_ptr->current_floor_ptr->m_max - 1; i > 0; i--) {
-            monster_type *m_ptr;
+            MonsterEntity *m_ptr;
             m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-            if (!monster_is_valid(m_ptr)) {
+            if (!m_ptr->is_valid()) {
                 continue;
             }
             if (!((m_ptr->r_idx == MonsterRaceId::SUKE) || (m_ptr->r_idx == MonsterRaceId::KAKU))) {

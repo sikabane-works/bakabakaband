@@ -10,7 +10,6 @@
 #include "game-option/cheat-options.h"
 #include "game-option/text-display-options.h"
 #include "io-dump/dump-util.h"
-#include "object/object-kind.h"
 #include "player-info/class-info.h"
 #include "player/player-skill.h"
 #include "player/player-status.h"
@@ -18,6 +17,7 @@
 #include "spell/spells-execution.h"
 #include "spell/technic-info-table.h"
 #include "sv-definition/sv-bow-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 
@@ -34,19 +34,21 @@ void do_cmd_knowledge_weapon_exp(PlayerType *player_ptr)
 
     for (auto tval : { ItemKindType::SWORD, ItemKindType::POLEARM, ItemKindType::HAFTED, ItemKindType::DIGGING, ItemKindType::BOW }) {
         for (int num = 0; num < 64; num++) {
-            char tmp[30];
-            for (const auto &k_ref : k_info) {
-                if ((k_ref.tval != tval) || (k_ref.sval != num)) {
+            BaseitemKey bi_key(tval, num);
+            for (const auto &k_ref : baseitems_info) {
+                if (k_ref.bi_key != bi_key) {
                     continue;
                 }
-                if ((k_ref.tval == ItemKindType::BOW) && (k_ref.sval == SV_CRIMSON || k_ref.sval == SV_HARP)) {
+
+                const auto sval = k_ref.bi_key.sval();
+                if ((k_ref.bi_key.tval() == ItemKindType::BOW) && (sval == SV_CRIMSON || sval == SV_HARP)) {
                     continue;
                 }
 
                 SUB_EXP weapon_exp = player_ptr->weapon_exp[tval][num];
                 SUB_EXP weapon_max = player_ptr->weapon_exp_max[tval][num];
-                strip_name(tmp, k_ref.idx);
-                fprintf(fff, "%-25s ", tmp);
+                const auto tmp = strip_name(k_ref.idx);
+                fprintf(fff, "%-25s ", tmp.data());
                 if (show_actual_value) {
                     fprintf(fff, "%4d/%4d ", weapon_exp, weapon_max);
                 }
@@ -175,7 +177,7 @@ void do_cmd_knowledge_skill_exp(PlayerType *player_ptr)
 
     for (auto i : PLAYER_SKILL_KIND_TYPE_RANGE) {
         SUB_EXP skill_exp = player_ptr->skill_exp[i];
-        SUB_EXP skill_max = s_info[enum2i(player_ptr->pclass)].s_max[i];
+        SUB_EXP skill_max = class_skills_info[enum2i(player_ptr->pclass)].s_max[i];
         fprintf(fff, "%-20s ", PlayerSkill::skill_name(i));
         if (show_actual_value) {
             fprintf(fff, "%4d/%4d ", std::min(skill_exp, skill_max), skill_max);

@@ -6,7 +6,6 @@
  */
 
 #include "main-win/main-win-music.h"
-#include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "floor/floor-town.h"
 #include "main-win/main-win-define.h"
@@ -18,10 +17,14 @@
 #include "main/scene-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
+#include "system/dungeon-info.h"
 #include "system/monster-race-definition.h"
 #include "term/z-term.h"
 #include "util/angband-files.h"
 #include "world/world.h"
+#include <algorithm>
+#include <digitalv.h>
+#include <limits>
 
 bool use_pause_music_inactive = false;
 static int current_music_type = TERM_XTRA_MUSIC_MUTE;
@@ -66,7 +69,7 @@ static concptr basic_key_at(int index, char *buf)
  */
 static concptr dungeon_key_at(int index, char *buf)
 {
-    if (index >= static_cast<int>(d_info.size())) {
+    if (index >= static_cast<int>(dungeons_info.size())) {
         return nullptr;
     }
 
@@ -115,7 +118,7 @@ static concptr town_key_at(int index, char *buf)
  */
 static concptr monster_key_at(int index, char *buf)
 {
-    if (index >= static_cast<int>(r_info.size())) {
+    if (index >= static_cast<int>(monraces_info.size())) {
         return nullptr;
     }
 
@@ -203,7 +206,7 @@ errr play_music(int type, int val)
     strcpy(current_music_path, buf);
 
     to_wchar path(buf);
-    mci_open_parms.lpstrDeviceType = mci_device_type.c_str();
+    mci_open_parms.lpstrDeviceType = mci_device_type.data();
     mci_open_parms.lpstrElementName = path.wc_str();
     mciSendCommandW(mci_open_parms.wDeviceID, MCI_STOP, MCI_WAIT, 0);
     mciSendCommandW(mci_open_parms.wDeviceID, MCI_CLOSE, MCI_WAIT, 0);
@@ -245,13 +248,30 @@ errr play_music_scene(int val)
     return 0;
 }
 
+void set_music_volume(int volume)
+{
+    if (current_music_type == TERM_XTRA_MUSIC_MUTE) {
+        return;
+    }
+
+    MCI_DGV_SETAUDIO_PARMSW mci_vol{};
+    mci_vol.dwItem = MCI_DGV_SETAUDIO_VOLUME;
+    mci_vol.dwValue = volume;
+    mciSendCommandW(
+        mci_open_parms.wDeviceID,
+        MCI_SETAUDIO,
+        MCI_DGV_SETAUDIO_ITEM | MCI_DGV_SETAUDIO_VALUE,
+        (DWORD)&mci_vol);
+}
+
 /*
  * Notify event
  */
-void on_mci_notify(WPARAM wFlags, LONG lDevID)
+void on_mci_notify(WPARAM wFlags, LONG lDevID, int volume)
 {
     if (wFlags == MCI_NOTIFY_SUCCESSFUL) {
         // play a music (repeat)
+        set_music_volume(volume);
         mciSendCommandW(lDevID, MCI_SEEK, MCI_SEEK_TO_START | MCI_WAIT, 0);
         mciSendCommandW(lDevID, MCI_PLAY, MCI_NOTIFY, (DWORD)&mci_play_parms);
     }

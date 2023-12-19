@@ -40,7 +40,7 @@
  * @param r_ptr モンスター情報への参照ポインタ
  * @return
  */
-static concptr decide_horror_message(monster_race *r_ptr)
+static concptr decide_horror_message(MonsterRaceInfo *r_ptr)
 {
     int horror_num = randint0(MAX_SAN_HORROR_SUM);
     if (horror_num < MAX_SAN_HORROR_COMMON) {
@@ -60,7 +60,7 @@ static concptr decide_horror_message(monster_race *r_ptr)
  * @param r_ptr モンスター情報への参照ポインタ
  * @todo m_nameとdescで何が違うのかは良く分からない
  */
-static void see_eldritch_horror(GAME_TEXT *m_name, monster_race *r_ptr)
+static void see_eldritch_horror(GAME_TEXT *m_name, MonsterRaceInfo *r_ptr)
 {
     concptr horror_message = decide_horror_message(r_ptr);
     msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message, m_name);
@@ -72,7 +72,7 @@ static void see_eldritch_horror(GAME_TEXT *m_name, monster_race *r_ptr)
  * @param desc モンスター名 (エルドリッチホラー持ちの全モンスターからランダム…のはず)
  * @param r_ptr モンスターへの参照ポインタ
  */
-static void feel_eldritch_horror(concptr desc, monster_race *r_ptr)
+static void feel_eldritch_horror(concptr desc, MonsterRaceInfo *r_ptr)
 {
     concptr horror_message = decide_horror_message(r_ptr);
     msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message, desc);
@@ -84,7 +84,7 @@ static void feel_eldritch_horror(concptr desc, monster_race *r_ptr)
  * @param m_ptr ELDRITCH_HORRORを引き起こしたモンスターの参照ポインタ。薬・罠・魔法の影響ならnullptr
  * @param necro 暗黒領域魔法の詠唱失敗によるものならばTRUEを返す
  */
-void sanity_blast(PlayerType *player_ptr, monster_type *m_ptr, bool necro)
+void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
 {
     if (player_ptr->phase_out || !w_ptr->character_dungeon) {
         return;
@@ -93,7 +93,7 @@ void sanity_blast(PlayerType *player_ptr, monster_type *m_ptr, bool necro)
     int power = 100;
     if (!necro && m_ptr) {
         GAME_TEXT m_name[MAX_NLEN];
-        auto *r_ptr = &r_info[m_ptr->ap_r_idx];
+        auto *r_ptr = &monraces_info[m_ptr->ap_r_idx];
         power = r_ptr->level / 2;
         monster_desc(player_ptr, m_name, m_ptr, 0);
         if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
@@ -116,7 +116,7 @@ void sanity_blast(PlayerType *player_ptr, monster_type *m_ptr, bool necro)
             return;
         }
 
-        if (is_pet(m_ptr)) {
+        if (m_ptr->is_pet()) {
             return;
         }
 
@@ -151,13 +151,13 @@ void sanity_blast(PlayerType *player_ptr, monster_type *m_ptr, bool necro)
             break;
         }
     } else if (!necro) {
-        monster_race *r_ptr;
+        MonsterRaceInfo *r_ptr;
         GAME_TEXT m_name[MAX_NLEN];
         concptr desc;
         get_mon_num_prep(player_ptr, get_nightmare, nullptr);
-        r_ptr = &r_info[get_mon_num(player_ptr, 0, MAX_DEPTH, 0)];
+        r_ptr = &monraces_info[get_mon_num(player_ptr, 0, MAX_DEPTH, 0)];
         power = r_ptr->level + 10;
-        desc = r_ptr->name.c_str();
+        desc = r_ptr->name.data();
         get_mon_num_prep(player_ptr, nullptr, nullptr);
 #ifdef JP
 #else

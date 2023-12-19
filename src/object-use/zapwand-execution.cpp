@@ -12,12 +12,12 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-use/item-use-checker.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "status/experience.h"
 #include "sv-definition/sv-wand-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
@@ -62,7 +62,7 @@ void ObjectZapWandEntity::execute(INVENTORY_IDX item)
         return;
     }
 
-    auto lev = k_info[o_ptr->k_idx].level;
+    auto lev = baseitems_info[o_ptr->k_idx].level;
     if (lev > 50) {
         lev = 50 + (lev - 50) / 2;
     }

@@ -26,7 +26,7 @@
  * Also note that it may not correctly "adapt" to "knowledge" bacoming
  * known, the player may have to pick stuff up and drop it again.
  */
-static void home_carry_load(PlayerType *player_ptr, store_type *store_ptr, ObjectType *o_ptr)
+static void home_carry_load(PlayerType *player_ptr, store_type *store_ptr, ItemEntity *o_ptr)
 {
     for (auto i = 0; i < store_ptr->stock_num; i++) {
         auto *j_ptr = &store_ptr->stock[i];
@@ -42,7 +42,7 @@ static void home_carry_load(PlayerType *player_ptr, store_type *store_ptr, Objec
         return;
     }
 
-    auto value = object_value(o_ptr);
+    const auto value = o_ptr->get_price();
     int slot;
     for (slot = 0; slot < store_ptr->stock_num; slot++) {
         if (object_sort_comp(player_ptr, o_ptr, value, &store_ptr->stock[slot])) {
@@ -89,7 +89,7 @@ static void rd_store(PlayerType *player_ptr, int town_number, int store_number)
 
     auto item_loader = ItemLoaderFactory::create_loader();
     for (int j = 0; j < inven_num; j++) {
-        ObjectType item;
+        ItemEntity item;
         item_loader->rd_item(&item);
         auto stock_max = store_get_stock_max(i2enum<StoreSaleType>(store_number));
         if (store_ptr->stock_num >= stock_max) {

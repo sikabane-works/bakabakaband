@@ -12,7 +12,6 @@
 #include "floor/wild.h"
 #include "core/asking-player.h"
 #include "dungeon/dungeon-flag-types.h"
-#include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
 #include "floor/floor-town.h"
@@ -39,6 +38,7 @@
 #include "room/rooms-vault.h"
 #include "spell-realm/spells-hex.h"
 #include "status/action-setter.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -65,12 +65,14 @@ struct border_type {
     int16_t south_east;
 };
 
+static border_type border;
+
 /*!
  * @brief 地形生成確率を決める要素100の配列を確率テーブルから作成する
  * @param feat_type 非一様確率を再現するための要素数100の配列
  * @param prob 元の確率テーブル
  */
-static void set_floor_and_wall_aux(int16_t feat_type[100], feat_prob prob[DUNGEON_FEAT_PROB_NUM])
+static void set_floor_and_wall_aux(int16_t feat_type[100], const std::array<feat_prob, DUNGEON_FEAT_PROB_NUM> &prob)
 {
     int lim[DUNGEON_FEAT_PROB_NUM];
     lim[0] = prob[0].percent;
@@ -105,7 +107,7 @@ void set_floor_and_wall(DUNGEON_IDX type)
     }
 
     cur_type = type;
-    dungeon_type *d_ptr = &d_info[type];
+    dungeon_type *d_ptr = &dungeons_info[type];
 
     set_floor_and_wall_aux(feat_ground_type, d_ptr->floor);
     set_floor_and_wall_aux(feat_wall_type, d_ptr->fill);
@@ -128,7 +130,7 @@ void set_floor_and_wall(DUNGEON_IDX type)
  * @param depth_max 深みの最大値
  */
 static void perturb_point_mid(
-    floor_type *floor_ptr, FEAT_IDX x1, FEAT_IDX x2, FEAT_IDX x3, FEAT_IDX x4, POSITION xmid, POSITION ymid, FEAT_IDX rough, FEAT_IDX depth_max)
+    FloorType *floor_ptr, FEAT_IDX x1, FEAT_IDX x2, FEAT_IDX x3, FEAT_IDX x4, POSITION xmid, POSITION ymid, FEAT_IDX rough, FEAT_IDX depth_max)
 {
     FEAT_IDX tmp2 = rough * 2 + 1;
     FEAT_IDX tmp = randint1(tmp2) - (rough + 1);
@@ -159,7 +161,7 @@ static void perturb_point_mid(
  * @param rough ランダム幅
  * @param depth_max 深みの最大値
  */
-static void perturb_point_end(floor_type *floor_ptr, FEAT_IDX x1, FEAT_IDX x2, FEAT_IDX x3, POSITION xmid, POSITION ymid, FEAT_IDX rough, FEAT_IDX depth_max)
+static void perturb_point_end(FloorType *floor_ptr, FEAT_IDX x1, FEAT_IDX x2, FEAT_IDX x3, POSITION xmid, POSITION ymid, FEAT_IDX rough, FEAT_IDX depth_max)
 {
     FEAT_IDX tmp2 = rough * 2 + 1;
     FEAT_IDX tmp = randint0(tmp2) - rough;
@@ -197,7 +199,7 @@ static void perturb_point_end(floor_type *floor_ptr, FEAT_IDX x1, FEAT_IDX x2, F
  * need to be converted to features.
  * </pre>
  */
-static void plasma_recursive(floor_type *floor_ptr, POSITION x1, POSITION y1, POSITION x2, POSITION y2, FEAT_IDX depth_max, FEAT_IDX rough)
+static void plasma_recursive(FloorType *floor_ptr, POSITION x1, POSITION y1, POSITION x2, POSITION y2, FEAT_IDX depth_max, FEAT_IDX rough)
 {
     POSITION xmid = (x2 - x1) / 2 + x1;
     POSITION ymid = (y2 - y1) / 2 + y1;
@@ -231,7 +233,7 @@ static int16_t terrain_table[MAX_WILDERNESS][MAX_FEAT_IN_TERRAIN];
  * @param border 未使用
  * @param corner 広域マップの角部分としての生成ならばTRUE
  */
-static void generate_wilderness_area(floor_type *floor_ptr, int terrain, uint32_t seed, bool corner)
+static void generate_wilderness_area(FloorType *floor_ptr, int terrain, uint32_t seed, bool corner)
 {
     if (terrain == TERRAIN_EDGE) {
         for (POSITION y1 = 0; y1 < MAX_HGT; y1++) {
@@ -287,24 +289,14 @@ static void generate_wilderness_area(floor_type *floor_ptr, int terrain, uint32_
 }
 
 /*!
- * @brief 荒野フロア生成のメインルーチン /
- * Load a town or generate a terrain level using "plasma" fractals.
+ * @brief 荒野フロア生成のメインルーチン
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param y 広域Y座標
  * @param x 広域X座標
- * @param border 広域マップの辺部分としての生成ならばTRUE
- * @param corner 広域マップの角部分としての生成ならばTRUE
- * @details
- * <pre>
- * x and y are the coordinates of the area in the wilderness.
- * Border and corner are optimization flags to speed up the
- * generation of the fractal terrain.
- * If border is set then only the border of the terrain should
- * be generated (for initializing the border structure).
- * If corner is set then only the corners of the area are needed.
- * </pre>
+ * @param is_border 広域マップの辺部分としての生成ならばTRUE
+ * @param is_corner 広域マップの角部分としての生成ならばTRUE
  */
-static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool border, bool corner)
+static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool is_border, bool is_corner)
 {
     player_ptr->town_num = wilderness[y][x].town;
     auto *floor_ptr = player_ptr->current_floor_ptr;
@@ -314,31 +306,31 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
     floor_ptr->object_level = floor_ptr->base_level;
     if (player_ptr->town_num) {
         init_buildings();
-        if (border || corner) {
+        if (is_border || is_corner) {
             init_flags = i2enum<init_flags_type>(INIT_CREATE_DUNGEON | INIT_ONLY_FEATURES);
         } else {
             init_flags = INIT_CREATE_DUNGEON;
         }
 
         floor_ptr->vault_list.clear();
-        parse_fixed_map(player_ptr, "t_info.txt", 0, 0, MAX_HGT, MAX_WID);
+        parse_fixed_map(player_ptr, TOWN_DEFINITION_LIST, 0, 0, MAX_HGT, MAX_WID);
         floor_ptr->width = MAX_WID;
         floor_ptr->height = MAX_HGT;
 
         for (auto tv : floor_ptr->vault_list) {
-            build_vault(&v_info[static_cast<int>(tv.id)], player_ptr, tv.y, tv.x, tv.yoffset, tv.xoffset, tv.transno);
+            build_vault(&vaults_info[static_cast<int>(tv.id)], player_ptr, tv.y, tv.x, tv.yoffset, tv.xoffset, tv.transno);
         }
 
-        if (!corner && !border) {
+        if (!is_corner && !is_border) {
             player_ptr->visit |= (1UL << (player_ptr->town_num - 1));
         }
     } else {
         int terrain = wilderness[y][x].terrain;
         uint32_t seed = wilderness[y][x].seed;
-        generate_wilderness_area(floor_ptr, terrain, seed, corner);
+        generate_wilderness_area(floor_ptr, terrain, seed, is_corner);
     }
 
-    if (!corner && !wilderness[y][x].town) {
+    if (!is_corner && !wilderness[y][x].town) {
         //!< @todo make the road a bit more interresting.
         if (wilderness[y][x].road) {
             floor_ptr->grid_array[MAX_HGT / 2][MAX_WID / 2].feat = feat_floor;
@@ -380,7 +372,7 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
     bool is_winner = wilderness[y][x].entrance > 0;
     is_winner &= (wilderness[y][x].town == 0);
 
-    bool is_wild_winner = d_info[wilderness[y][x].entrance].flags.has_not(DungeonFeatureType::WINNER);
+    bool is_wild_winner = dungeons_info[wilderness[y][x].entrance].flags.has_not(DungeonFeatureType::WINNER);
     is_winner &= ((w_ptr->total_winner != 0) || is_wild_winner);
     if (!is_winner) {
         return;
@@ -395,8 +387,27 @@ static void generate_area(PlayerType *player_ptr, POSITION y, POSITION x, bool b
     w_ptr->rng.set_state(state_backup);
 }
 
-/* Border of the wilderness area */
-static border_type border;
+/*!
+ * @brief 地上マップにモンスターを生成する
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @details '>' キーで普通に入った時と、襲撃を受けた時でモンスター数は異なる.
+ * また、集団生成や護衛は、最初に生成された1体だけがカウント対象である.
+ * よって、実際に生成されるモンスターは、コードの見た目より多くなる.
+ */
+static void generate_wild_monsters(PlayerType *player_ptr)
+{
+    constexpr auto num_ambush_monsters = 100;
+    constexpr auto num_normal_monsters = 25;
+    const auto lim = generate_encounter ? num_ambush_monsters : num_normal_monsters;
+    for (auto i = 0; i < lim; i++) {
+        BIT_FLAGS mode = 0;
+        if (!(generate_encounter || (one_in_(2) && (!player_ptr->town_num)))) {
+            mode |= PM_ALLOW_SLEEP;
+        }
+
+        (void)alloc_monster(player_ptr, generate_encounter ? 0 : 3, mode, summon_specific);
+    }
+}
 
 /*!
  * @brief 広域マップの生成 /
@@ -411,7 +422,7 @@ void wilderness_gen(PlayerType *player_ptr)
     floor_ptr->width = MAX_WID;
     panel_row_min = floor_ptr->height;
     panel_col_min = floor_ptr->width;
-    parse_fixed_map(player_ptr, "w_info.txt", 0, 0, w_ptr->max_wild_y, w_ptr->max_wild_x);
+    parse_fixed_map(player_ptr, WILDERNESS_DEFINITION, 0, 0, w_ptr->max_wild_y, w_ptr->max_wild_x);
     POSITION x = player_ptr->wilderness_x;
     POSITION y = player_ptr->wilderness_y;
     get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), nullptr);
@@ -500,20 +511,20 @@ void wilderness_gen(PlayerType *player_ptr)
                 continue;
             }
 
-            feature_type *f_ptr;
-            f_ptr = &f_info[g_ptr->get_feat_mimic()];
+            TerrainType *f_ptr;
+            f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
             auto can_darken = !g_ptr->is_mirror();
-            can_darken &= f_ptr->flags.has_none_of({ FloorFeatureType::QUEST_ENTER, FloorFeatureType::ENTRANCE });
+            can_darken &= f_ptr->flags.has_none_of({ TerrainCharacteristics::QUEST_ENTER, TerrainCharacteristics::ENTRANCE });
             if (can_darken) {
                 g_ptr->info &= ~(CAVE_GLOW);
-                if (f_ptr->flags.has_not(FloorFeatureType::REMEMBER)) {
+                if (f_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
                     g_ptr->info &= ~(CAVE_MARK);
                 }
 
                 continue;
             }
 
-            if (f_ptr->flags.has_not(FloorFeatureType::ENTRANCE)) {
+            if (f_ptr->flags.has_not(TerrainCharacteristics::ENTRANCE)) {
                 continue;
             }
 
@@ -529,9 +540,9 @@ void wilderness_gen(PlayerType *player_ptr)
             for (x = 0; x < floor_ptr->width; x++) {
                 grid_type *g_ptr;
                 g_ptr = &floor_ptr->grid_array[y][x];
-                feature_type *f_ptr;
-                f_ptr = &f_info[g_ptr->feat];
-                if (f_ptr->flags.has_not(FloorFeatureType::BLDG)) {
+                TerrainType *f_ptr;
+                f_ptr = &terrains_info[g_ptr->feat];
+                if (f_ptr->flags.has_not(TerrainCharacteristics::BLDG)) {
                     continue;
                 }
 
@@ -554,7 +565,7 @@ void wilderness_gen(PlayerType *player_ptr)
             for (x = 0; x < floor_ptr->width; x++) {
                 grid_type *g_ptr;
                 g_ptr = &floor_ptr->grid_array[y][x];
-                if (!g_ptr->cave_has_flag(FloorFeatureType::ENTRANCE)) {
+                if (!g_ptr->cave_has_flag(TerrainCharacteristics::ENTRANCE)) {
                     continue;
                 }
 
@@ -571,16 +582,7 @@ void wilderness_gen(PlayerType *player_ptr)
     }
 
     player_place(player_ptr, player_ptr->oldpy, player_ptr->oldpx);
-    int lim = (generate_encounter == true) ? AMBUSH_ENEMY_NUM : MIN_M_ALLOC_TN;
-    for (int i = 0; i < lim; i++) {
-        BIT_FLAGS mode = 0;
-        if (!(generate_encounter || (one_in_(2) && (!player_ptr->town_num)))) {
-            mode |= PM_ALLOW_SLEEP;
-        }
-
-        (void)alloc_monster(player_ptr, generate_encounter ? 0 : 3, mode, summon_specific);
-    }
-
+    generate_wild_monsters(player_ptr);
     if (generate_encounter) {
         player_ptr->ambush_flag = true;
     }
@@ -610,10 +612,10 @@ void wilderness_gen_small(PlayerType *player_ptr)
         }
     }
 
-    parse_fixed_map(player_ptr, "w_info.txt", 0, 0, w_ptr->max_wild_y, w_ptr->max_wild_x);
+    parse_fixed_map(player_ptr, WILDERNESS_DEFINITION, 0, 0, w_ptr->max_wild_y, w_ptr->max_wild_x);
     for (int i = 0; i < w_ptr->max_wild_x; i++) {
         for (int j = 0; j < w_ptr->max_wild_y; j++) {
-            if (wilderness[j][i].town && (wilderness[j][i].town != NO_TOWN)) {
+            if (wilderness[j][i].town && (wilderness[j][i].town != VALID_TOWNS)) {
                 floor_ptr->grid_array[j][i].feat = (int16_t)feat_town;
                 floor_ptr->grid_array[j][i].special = (int16_t)wilderness[j][i].town;
                 floor_ptr->grid_array[j][i].info |= (CAVE_GLOW | CAVE_MARK);
@@ -626,7 +628,7 @@ void wilderness_gen_small(PlayerType *player_ptr)
                 continue;
             }
 
-            if (wilderness[j][i].entrance && (w_ptr->total_winner || d_info[wilderness[j][i].entrance].flags.has_not(DungeonFeatureType::WINNER))) {
+            if (wilderness[j][i].entrance && (w_ptr->total_winner || dungeons_info[wilderness[j][i].entrance].flags.has_not(DungeonFeatureType::WINNER))) {
                 floor_ptr->grid_array[j][i].feat = feat_entrance;
                 floor_ptr->grid_array[j][i].special = (byte)wilderness[j][i].entrance;
                 floor_ptr->grid_array[j][i].info |= (CAVE_GLOW | CAVE_MARK);
@@ -787,7 +789,7 @@ parse_error_type parse_line_wilderness(PlayerType *player_ptr, char *buf, int xm
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
     }
 
-    for (const auto &d_ref : d_info) {
+    for (const auto &d_ref : dungeons_info) {
         if (d_ref.idx == 0 || !d_ref.maxdepth) {
             continue;
         }
@@ -928,15 +930,15 @@ bool change_wild_mode(PlayerType *player_ptr, bool encount)
     PlayerEnergy energy(player_ptr);
     for (int i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
 
-        if (is_pet(m_ptr) && i != player_ptr->riding) {
+        if (m_ptr->is_pet() && i != player_ptr->riding) {
             has_pet = true;
         }
 
-        if (monster_csleep_remaining(m_ptr) || (m_ptr->cdis > MAX_SIGHT) || !is_hostile(m_ptr)) {
+        if (m_ptr->is_asleep() || (m_ptr->cdis > MAX_PLAYER_SIGHT) || !m_ptr->is_hostile()) {
             continue;
         }
 

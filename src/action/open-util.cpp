@@ -20,11 +20,11 @@
  * @param trapped TRUEならばトラップが存在する箱のみ、FALSEならば空でない箱全てを対象にする
  * @return 箱が存在する場合そのオブジェクトID、存在しない場合0を返す。
  */
-OBJECT_IDX chest_check(floor_type *floor_ptr, POSITION y, POSITION x, bool trapped)
+OBJECT_IDX chest_check(FloorType *floor_ptr, POSITION y, POSITION x, bool trapped)
 {
     auto *g_ptr = &floor_ptr->grid_array[y][x];
     for (const auto this_o_idx : g_ptr->o_idx_list) {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &floor_ptr->o_list[this_o_idx];
         if ((o_ptr->tval == ItemKindType::CHEST) && (((!trapped) && (o_ptr->pval)) || /* non empty */
                                                         ((trapped) && (o_ptr->pval > 0)))) { /* trapped only */
@@ -56,7 +56,7 @@ int count_chests(PlayerType *player_ptr, POSITION *y, POSITION *x, bool trapped)
             continue;
         }
 
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &player_ptr->current_floor_ptr->o_list[o_idx];
         if (o_ptr->pval == 0) {
             continue;

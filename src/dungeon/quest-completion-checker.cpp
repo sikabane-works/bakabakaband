@@ -22,7 +22,7 @@
 #include "view/display-messages.h"
 #include <algorithm>
 
-QuestCompletionChecker::QuestCompletionChecker(PlayerType *player_ptr, monster_type *m_ptr)
+QuestCompletionChecker::QuestCompletionChecker(PlayerType *player_ptr, MonsterEntity *m_ptr)
     : player_ptr(player_ptr)
     , m_ptr(m_ptr)
 {
@@ -55,7 +55,7 @@ void QuestCompletionChecker::complete()
     this->make_reward(pos);
 }
 
-static bool check_quest_completion(PlayerType *player_ptr, const quest_type &q_ref, monster_type *m_ptr)
+static bool check_quest_completion(PlayerType *player_ptr, const quest_type &q_ref, MonsterEntity *m_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (q_ref.status != QuestStatusType::TAKEN) {
@@ -140,7 +140,7 @@ void QuestCompletionChecker::complete_kill_number()
 
 void QuestCompletionChecker::complete_kill_all()
 {
-    if (!is_hostile(this->m_ptr) || (this->count_all_hostile_monsters() != 1)) {
+    if (!this->m_ptr->is_hostile() || (this->count_all_hostile_monsters() != 1)) {
         return;
     }
 
@@ -194,7 +194,7 @@ void QuestCompletionChecker::complete_kill_any_level()
 void QuestCompletionChecker::complete_tower()
 {
     const auto &quest_list = QuestList::get_instance();
-    if (!is_hostile(this->m_ptr)) {
+    if (!this->m_ptr->is_hostile()) {
         return;
     }
 
@@ -222,7 +222,7 @@ int QuestCompletionChecker::count_all_hostile_monsters()
     for (auto x = 0; x < floor_ptr->width; ++x) {
         for (auto y = 0; y < floor_ptr->height; ++y) {
             auto m_idx = floor_ptr->grid_array[y][x].m_idx;
-            if ((m_idx > 0) && is_hostile(&floor_ptr->m_list[m_idx])) {
+            if ((m_idx > 0) && floor_ptr->m_list[m_idx].is_hostile()) {
                 ++number_mon;
             }
         }
@@ -241,7 +241,7 @@ Pos2D QuestCompletionChecker::make_stairs(const bool create_stairs)
 
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
-    while (cave_has_flag_bold(floor_ptr, y, x, FloorFeatureType::PERMANENT) || !g_ptr->o_idx_list.empty() || g_ptr->is_object()) {
+    while (cave_has_flag_bold(floor_ptr, y, x, TerrainCharacteristics::PERMANENT) || !g_ptr->o_idx_list.empty() || g_ptr->is_object()) {
         int ny;
         int nx;
         scatter(this->player_ptr, &ny, &nx, y, x, 1, PROJECT_NONE);
@@ -260,10 +260,10 @@ void QuestCompletionChecker::make_reward(const Pos2D pos)
 {
     auto dun_level = this->player_ptr->current_floor_ptr->dun_level;
     for (auto i = 0; i < (dun_level / 15) + 1; i++) {
-        ObjectType item;
+        ItemEntity item;
         while (true) {
             item.wipe();
-            auto &r_ref = r_info[this->m_ptr->r_idx];
+            auto &r_ref = monraces_info[this->m_ptr->r_idx];
             (void)make_object(this->player_ptr, &item, AM_GOOD | AM_GREAT, r_ref.level);
             if (!this->check_quality(item)) {
                 continue;
@@ -284,7 +284,7 @@ void QuestCompletionChecker::make_reward(const Pos2D pos)
  * 2. 固定アーティファクト以外の矢弾
  * 3. 穴掘りエゴの装備品
  */
-bool QuestCompletionChecker::check_quality(ObjectType &item)
+bool QuestCompletionChecker::check_quality(ItemEntity &item)
 {
     auto is_good_reward = !item.is_cursed();
     is_good_reward &= !item.is_ammo() || (item.is_ammo() && item.is_fixed_artifact());

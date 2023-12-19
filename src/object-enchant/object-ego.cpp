@@ -2,7 +2,6 @@
  * @brief エゴアイテムに関する処理
  * @date 2019/05/02
  * @author deskull
- * @details Ego-Item indexes (see "lib/edit/e_info.txt")
  */
 #include "object-enchant/object-ego.h"
 #include "artifact/random-art-effects.h"
@@ -20,10 +19,7 @@
 #include "util/probability-table.h"
 #include <vector>
 
-/*
- * The ego-item arrays
- */
-std::map<EgoType, ego_item_type> e_info;
+std::map<EgoType, ego_item_type> egos_info;
 
 /*!
  * @brief アイテムのエゴをレア度の重みに合わせてランダムに選択する
@@ -35,13 +31,17 @@ std::map<EgoType, ego_item_type> e_info;
 EgoType get_random_ego(byte slot, bool good)
 {
     ProbabilityTable<EgoType> prob_table;
-    for (const auto &[e_idx, e_ref] : e_info) {
+    for (const auto &[e_idx, e_ref] : egos_info) {
         if (e_ref.idx == EgoType::NONE || e_ref.slot != slot || e_ref.rarity <= 0) {
             continue;
         }
 
-        bool worthless = e_ref.rating == 0 || e_ref.gen_flags.has_any_of({ ItemGenerationTraitType::CURSED, ItemGenerationTraitType::HEAVY_CURSE, ItemGenerationTraitType::PERMA_CURSE });
-
+        const auto curses = {
+            ItemGenerationTraitType::CURSED,
+            ItemGenerationTraitType::HEAVY_CURSE,
+            ItemGenerationTraitType::PERMA_CURSE
+        };
+        const auto worthless = e_ref.rating == 0 || e_ref.gen_flags.has_any_of(curses);
         if (good != worthless) {
             prob_table.entry_item(e_ref.idx, (255 / e_ref.rarity));
         }
@@ -60,7 +60,7 @@ EgoType get_random_ego(byte slot, bool good)
  * @param o_ptr オブジェクト情報への参照ポインタ
  * @param gen_flags 生成フラグ(参照渡し)
  */
-static void ego_invest_curse(ObjectType *o_ptr, EnumClassFlagGroup<ItemGenerationTraitType> &gen_flags)
+static void ego_invest_curse(ItemEntity *o_ptr, EnumClassFlagGroup<ItemGenerationTraitType> &gen_flags)
 {
     if (gen_flags.has(ItemGenerationTraitType::CURSED)) {
         o_ptr->curse_flags.set(CurseTraitType::CURSED);
@@ -87,7 +87,7 @@ static void ego_invest_curse(ObjectType *o_ptr, EnumClassFlagGroup<ItemGeneratio
  * @param o_ptr オブジェクト情報への参照ポインタ
  * @param gen_flags 生成フラグ(参照渡し)
  */
-static void ego_invest_extra_abilities(ObjectType *o_ptr, EnumClassFlagGroup<ItemGenerationTraitType> &gen_flags)
+static void ego_invest_extra_abilities(ItemEntity *o_ptr, EnumClassFlagGroup<ItemGenerationTraitType> &gen_flags)
 {
     if (gen_flags.has(ItemGenerationTraitType::ONE_SUSTAIN)) {
         one_sustain(o_ptr);
@@ -158,7 +158,7 @@ static void ego_invest_extra_abilities(ObjectType *o_ptr, EnumClassFlagGroup<Ite
  * @param e_ptr エゴアイテム情報への参照ポインタ
  * @param gen_flags 生成フラグ(参照渡し)
  */
-static void ego_interpret_extra_abilities(ObjectType *o_ptr, ego_item_type *e_ptr, EnumClassFlagGroup<ItemGenerationTraitType> &gen_flags)
+static void ego_interpret_extra_abilities(ItemEntity *o_ptr, ego_item_type *e_ptr, EnumClassFlagGroup<ItemGenerationTraitType> &gen_flags)
 {
     for (auto &xtra : e_ptr->xtra_flags) {
         if (xtra.mul == 0 || xtra.dev == 0) {
@@ -208,7 +208,7 @@ static int randint1_signed(const int n)
  * @param flag フラグ
  * @return 持つならtrue、持たないならfalse
  */
-static bool ego_has_flag(ObjectType *o_ptr, ego_item_type *e_ptr, tr_type flag)
+static bool ego_has_flag(ItemEntity *o_ptr, ego_item_type *e_ptr, tr_type flag)
 {
     if (o_ptr->art_flags.has(flag)) {
         return true;
@@ -226,7 +226,7 @@ static bool ego_has_flag(ObjectType *o_ptr, ego_item_type *e_ptr, tr_type flag)
  * @param e_ptr エゴアイテム情報への参照ポインタ
  * @param lev 生成階
  */
-void ego_invest_extra_attack(ObjectType *o_ptr, ego_item_type *e_ptr, DEPTH lev)
+void ego_invest_extra_attack(ItemEntity *o_ptr, ego_item_type *e_ptr, DEPTH lev)
 {
     if (!o_ptr->is_weapon()) {
         o_ptr->pval = e_ptr->max_pval >= 0 ? 1 : randint1_signed(e_ptr->max_pval);
@@ -266,9 +266,9 @@ void ego_invest_extra_attack(ObjectType *o_ptr, ego_item_type *e_ptr, DEPTH lev)
  * @param o_ptr オブジェクト情報への参照ポインタ
  * @param lev 生成階
  */
-void apply_ego(ObjectType *o_ptr, DEPTH lev)
+void apply_ego(ItemEntity *o_ptr, DEPTH lev)
 {
-    auto e_ptr = &e_info[o_ptr->ego_idx];
+    auto e_ptr = &egos_info[o_ptr->ego_idx];
     auto gen_flags = e_ptr->gen_flags;
 
     ego_interpret_extra_abilities(o_ptr, e_ptr, gen_flags);

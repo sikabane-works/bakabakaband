@@ -25,10 +25,10 @@
 #include "object-enchant/trg-types.h"
 #include "object/object-info.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "room/rooms-vault.h"
 #include "sv-definition/sv-scroll-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -62,10 +62,10 @@ qtwg_type *initialize_quest_generator_type(qtwg_type *qtwg_ptr, char *buf, int y
  * @param x 配置先X座標
  * @return エラーコード
  */
-static void drop_here(floor_type *floor_ptr, ObjectType *j_ptr, POSITION y, POSITION x)
+static void drop_here(FloorType *floor_ptr, ItemEntity *j_ptr, POSITION y, POSITION x)
 {
     OBJECT_IDX o_idx = o_pop(floor_ptr);
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = &floor_ptr->o_list[o_idx];
     o_ptr->copy_from(j_ptr);
     o_ptr->iy = y;
@@ -81,13 +81,13 @@ static void generate_artifact(PlayerType *player_ptr, qtwg_type *qtwg_ptr, const
         return;
     }
 
-    auto &fixed_artifact = a_info.at(artifact_index);
+    auto &fixed_artifact = artifacts_info.at(artifact_index);
     if (!fixed_artifact.is_generated && create_named_art(player_ptr, artifact_index, *qtwg_ptr->y, *qtwg_ptr->x)) {
         return;
     }
 
-    KIND_OBJECT_IDX k_idx = lookup_kind(ItemKindType::SCROLL, SV_SCROLL_ACQUIREMENT);
-    ObjectType forge;
+    const auto k_idx = lookup_baseitem_id({ ItemKindType::SCROLL, SV_SCROLL_ACQUIREMENT });
+    ItemEntity forge;
     auto *q_ptr = &forge;
     q_ptr->prep(k_idx);
     drop_here(player_ptr->current_floor_ptr, q_ptr, *qtwg_ptr->y, *qtwg_ptr->x);
@@ -129,7 +129,7 @@ static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
             }
 
             const auto r_idx = i2enum<MonsterRaceId>(monster_index);
-            auto &r_ref = r_info[r_idx];
+            auto &r_ref = monraces_info[r_idx];
 
             old_cur_num = r_ref.cur_num;
             old_mob_num = r_ref.mob_num;
@@ -182,7 +182,7 @@ static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
             g_ptr->mimic = g_ptr->feat;
             g_ptr->feat = conv_dungeon_feat(floor_ptr, letter[idx].trap);
         } else if (object_index) {
-            ObjectType tmp_object;
+            ItemEntity tmp_object;
             auto *o_ptr = &tmp_object;
             o_ptr->prep(object_index);
             if (o_ptr->tval == ItemKindType::GOLD) {
@@ -228,7 +228,7 @@ static bool parse_qtw_QQ(quest_type *q_ptr, char **zz, int num)
         q_ptr->flags = atoi(zz[10]);
     }
 
-    auto &r_ref = r_info[q_ptr->r_idx];
+    auto &r_ref = monraces_info[q_ptr->r_idx];
     if (r_ref.kind_flags.has(MonsterKindType::UNIQUE)) {
         r_ref.flags1 |= RF1_QUESTOR;
     }
@@ -238,11 +238,11 @@ static bool parse_qtw_QQ(quest_type *q_ptr, char **zz, int num)
     }
 
     // @note 半分デッドコード。reward_artifact_idx が定義されているクエストが1つもない.
-    if (const auto it = a_info.find(a_idx); it == a_info.end()) {
+    if (const auto it = artifacts_info.find(a_idx); it == artifacts_info.end()) {
         return true;
     }
 
-    auto &a_ref = a_info.at(q_ptr->reward_artifact_idx);
+    auto &a_ref = artifacts_info.at(q_ptr->reward_artifact_idx);
     a_ref.gen_flags.set(ItemGenerationTraitType::QUESTITEM);
     return true;
 }
@@ -268,7 +268,7 @@ static bool parse_qtw_QR(quest_type *q_ptr, char **zz, int num)
             continue;
         }
 
-        if (a_info.at(a_idx).is_generated) {
+        if (artifacts_info.at(a_idx).is_generated) {
             continue;
         }
 
@@ -280,7 +280,7 @@ static bool parse_qtw_QR(quest_type *q_ptr, char **zz, int num)
 
     if (reward_idx != FixedArtifactId::NONE) {
         q_ptr->reward_artifact_idx = reward_idx;
-        a_info.at(reward_idx).gen_flags.set(ItemGenerationTraitType::QUESTITEM);
+        artifacts_info.at(reward_idx).gen_flags.set(ItemGenerationTraitType::QUESTITEM);
     } else {
         q_ptr->type = QuestKindType::KILL_ALL;
     }

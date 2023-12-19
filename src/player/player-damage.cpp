@@ -9,7 +9,6 @@
 #include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
-#include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -62,6 +61,7 @@
 #include "status/element-resistance.h"
 #include "sv-definition/sv-junk-types.h"
 #include "system/building-type-definition.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/monster-type-definition.h"
@@ -91,7 +91,7 @@ using dam_func = int (*)(PlayerType *player_ptr, int dam, concptr kb_str, bool a
  */
 static bool acid_minus_ac(PlayerType *player_ptr)
 {
-    ObjectType *o_ptr = nullptr;
+    ItemEntity *o_ptr = nullptr;
     switch (randint1(7)) {
     case 1:
         o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
@@ -163,7 +163,7 @@ int acid_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
     }
 
     if (aura || !check_multishadow(player_ptr)) {
-        if ((!(double_resist || has_resist_acid(player_ptr))) && one_in_(HURT_CHANCE)) {
+        if ((!(double_resist || has_resist_acid(player_ptr))) && one_in_(CHANCE_ABILITY_SCORE_DECREASE)) {
             (void)do_dec_stat(player_ptr, A_CHR);
         }
 
@@ -203,7 +203,7 @@ int elec_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
     }
 
     if (aura || !check_multishadow(player_ptr)) {
-        if ((!(double_resist || has_resist_elec(player_ptr))) && one_in_(HURT_CHANCE)) {
+        if ((!(double_resist || has_resist_elec(player_ptr))) && one_in_(CHANCE_ABILITY_SCORE_DECREASE)) {
             (void)do_dec_stat(player_ptr, A_DEX);
         }
     }
@@ -239,7 +239,7 @@ int fire_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 
     dam = dam * calc_fire_damage_rate(player_ptr) / 100;
     if (aura || !check_multishadow(player_ptr)) {
-        if ((!(double_resist || has_resist_fire(player_ptr))) && one_in_(HURT_CHANCE)) {
+        if ((!(double_resist || has_resist_fire(player_ptr))) && one_in_(CHANCE_ABILITY_SCORE_DECREASE)) {
             (void)do_dec_stat(player_ptr, A_STR);
         }
     }
@@ -273,7 +273,7 @@ int cold_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 
     dam = dam * calc_cold_damage_rate(player_ptr) / 100;
     if (aura || !check_multishadow(player_ptr)) {
-        if ((!(double_resist || has_resist_cold(player_ptr))) && one_in_(HURT_CHANCE)) {
+        if ((!(double_resist || has_resist_cold(player_ptr))) && one_in_(CHANCE_ABILITY_SCORE_DECREASE)) {
             (void)do_dec_stat(player_ptr, A_STR);
         }
     }
@@ -392,15 +392,17 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
         if (!cheat_immortal) {
             player_ptr->is_dead = true;
         }
-        if (player_ptr->current_floor_ptr->inside_arena) {
-            concptr m_name = r_info[arena_info[player_ptr->arena_number].r_idx].name.c_str();
+
+        const auto &floor_ref = *player_ptr->current_floor_ptr;
+        if (floor_ref.inside_arena) {
+            concptr m_name = monraces_info[arena_info[player_ptr->arena_number].r_idx].name.data();
             msg_format(_("あなたは%sの前に敗れ去った。", "You are beaten by %s."), m_name);
             msg_print(nullptr);
             if (record_arena) {
                 exe_write_diary(player_ptr, DIARY_ARENA, -1 - player_ptr->arena_number, m_name);
             }
         } else {
-            auto q_idx = quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level);
+            auto q_idx = quest_number(player_ptr, floor_ref.dun_level);
             bool seppuku = streq(hit_from, "Seppuku");
             bool winning_seppuku = w_ptr->total_winner && seppuku;
 
@@ -436,22 +438,22 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
             } else {
                 std::string place;
 
-                if (player_ptr->current_floor_ptr->inside_arena) {
+                if (floor_ref.inside_arena) {
                     place = _("アリーナ", "in the Arena");
-                } else if (!is_in_dungeon(player_ptr)) {
+                } else if (!floor_ref.is_in_dungeon()) {
                     place = _("地上", "on the surface");
                 } else if (inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))) {
                     place = _("クエスト", "in a quest");
                 } else {
-                    place = format(_("%d階", "on level %d"), static_cast<int>(player_ptr->current_floor_ptr->dun_level));
+                    place = format(_("%d階", "on level %d"), static_cast<int>(floor_ref.dun_level));
                 }
 
 #ifdef JP
-                std::string note = format("%sで%sに殺された。", place.c_str(), player_ptr->died_from.c_str());
+                std::string note = format("%sで%sに殺された。", place.data(), player_ptr->died_from.data());
 #else
-                std::string note = format("killed by %s %s.", player_ptr->died_from.c_str(), place.c_str());
+                std::string note = format("killed by %s %s.", player_ptr->died_from.data(), place.data());
 #endif
-                exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, note.c_str());
+                exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, note.data());
             }
 
             exe_write_diary(player_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
@@ -612,9 +614,9 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
  * @param dam_func ダメージ処理を行う関数の参照ポインタ
  * @param message オーラダメージを受けた際のメッセージ
  */
-static void process_aura_damage(monster_type *m_ptr, PlayerType *player_ptr, bool immune, MonsterAuraType aura_flag, dam_func dam_func, concptr message)
+static void process_aura_damage(MonsterEntity *m_ptr, PlayerType *player_ptr, bool immune, MonsterAuraType aura_flag, dam_func dam_func, concptr message)
 {
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->aura_flags.has_not(aura_flag) || immune) {
         return;
     }
@@ -636,7 +638,7 @@ static void process_aura_damage(monster_type *m_ptr, PlayerType *player_ptr, boo
  * @param m_ptr オーラを持つモンスターの構造体参照ポインタ
  * @param player_ptr プレイヤーへの参照ポインタ
  */
-void touch_zap_player(monster_type *m_ptr, PlayerType *player_ptr)
+void touch_zap_player(MonsterEntity *m_ptr, PlayerType *player_ptr)
 {
     process_aura_damage(m_ptr, player_ptr, has_immune_fire(player_ptr) != 0, MonsterAuraType::FIRE, fire_dam, _("突然とても熱くなった！", "You are suddenly very hot!"));
     process_aura_damage(m_ptr, player_ptr, has_immune_cold(player_ptr) != 0, MonsterAuraType::COLD, cold_dam, _("突然とても寒くなった！", "You are suddenly very cold!"));
@@ -649,11 +651,11 @@ void touch_zap_player(monster_type *m_ptr, PlayerType *player_ptr)
  */
 void player_defecate(PlayerType *player_ptr)
 {
-    ObjectType forge;
-    ObjectType *q_ptr = &forge;
+    ItemEntity forge;
+    ItemEntity *q_ptr = &forge;
     disturb(player_ptr, false, true);
     msg_print(_("ブッチッパ！", "BRUUUUP! Oops."));
     msg_print(NULL);
-    q_ptr->prep(lookup_kind(ItemKindType::JUNK, SV_JUNK_FECES));
+    q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_FECES }));
     (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
 }

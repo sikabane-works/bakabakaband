@@ -30,35 +30,35 @@ void delete_monster_idx(PlayerType *player_ptr, MONSTER_IDX i)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[i];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
     POSITION y = m_ptr->fy;
     POSITION x = m_ptr->fx;
 
-    real_r_ptr(m_ptr)->cur_num--;
+    m_ptr->get_real_r_ref().cur_num--;
     if (r_ptr->flags2 & (RF2_MULTIPLY)) {
         floor_ptr->num_repro--;
     }
 
-    if (monster_csleep_remaining(m_ptr)) {
+    if (m_ptr->is_asleep()) {
         (void)set_monster_csleep(player_ptr, i, 0);
     }
-    if (monster_fast_remaining(m_ptr)) {
+    if (m_ptr->is_accelerated()) {
         (void)set_monster_fast(player_ptr, i, 0);
     }
-    if (monster_slow_remaining(m_ptr)) {
+    if (m_ptr->is_decelerated()) {
         (void)set_monster_slow(player_ptr, i, 0);
     }
-    if (monster_stunned_remaining(m_ptr)) {
+    if (m_ptr->is_stunned()) {
         (void)set_monster_stunned(player_ptr, i, 0);
     }
-    if (monster_confused_remaining(m_ptr)) {
+    if (m_ptr->is_confused()) {
         (void)set_monster_confused(player_ptr, i, 0);
     }
-    if (monster_fear_remaining(m_ptr)) {
+    if (m_ptr->is_fearful()) {
         (void)set_monster_monfear(player_ptr, i, 0);
     }
-    if (monster_invulner_remaining(m_ptr)) {
+    if (m_ptr->is_invulnerable()) {
         (void)set_monster_invulner(player_ptr, i, 0, false);
     }
 
@@ -89,7 +89,7 @@ void delete_monster_idx(PlayerType *player_ptr, MONSTER_IDX i)
     // 召喚元のモンスターが消滅した時は、召喚されたモンスターのparent_m_idxが
     // 召喚されたモンスター自身のm_idxを指すようにする
     for (MONSTER_IDX child_m_idx = 1; child_m_idx < floor_ptr->m_max; child_m_idx++) {
-        monster_type *child_m_ptr = &floor_ptr->m_list[child_m_idx];
+        MonsterEntity *child_m_ptr = &floor_ptr->m_list[child_m_idx];
         if (MonsterRace(child_m_ptr->r_idx).is_valid() && child_m_ptr->parent_m_idx == i) {
             child_m_ptr->parent_m_idx = child_m_idx;
         }
@@ -112,22 +112,22 @@ void delete_monster_idx(PlayerType *player_ptr, MONSTER_IDX i)
  */
 void wipe_monsters_list(PlayerType *player_ptr)
 {
-    if (!r_info[MonsterRaceId::BANORLUPART].mob_num) {
-        if (r_info[MonsterRaceId::BANOR].mob_num) {
-            r_info[MonsterRaceId::BANOR].mob_num = 0;
-            r_info[MonsterRaceId::BANOR].r_pkills++;
-            r_info[MonsterRaceId::BANOR].r_akills++;
-            if (r_info[MonsterRaceId::BANOR].r_tkills < MAX_SHORT) {
-                r_info[MonsterRaceId::BANOR].r_tkills++;
+    if (!monraces_info[MonsterRaceId::BANORLUPART].mob_num) {
+        if (monraces_info[MonsterRaceId::BANOR].mob_num) {
+            monraces_info[MonsterRaceId::BANOR].mob_num = 0;
+            monraces_info[MonsterRaceId::BANOR].r_pkills++;
+            monraces_info[MonsterRaceId::BANOR].r_akills++;
+            if (monraces_info[MonsterRaceId::BANOR].r_tkills < MAX_SHORT) {
+                monraces_info[MonsterRaceId::BANOR].r_tkills++;
             }
         }
 
-        if (r_info[MonsterRaceId::LUPART].mob_num) {
-            r_info[MonsterRaceId::LUPART].mob_num = 0;
-            r_info[MonsterRaceId::LUPART].r_pkills++;
-            r_info[MonsterRaceId::LUPART].r_akills++;
-            if (r_info[MonsterRaceId::LUPART].r_tkills < MAX_SHORT) {
-                r_info[MonsterRaceId::LUPART].r_tkills++;
+        if (monraces_info[MonsterRaceId::LUPART].mob_num) {
+            monraces_info[MonsterRaceId::LUPART].mob_num = 0;
+            monraces_info[MonsterRaceId::LUPART].r_pkills++;
+            monraces_info[MonsterRaceId::LUPART].r_akills++;
+            if (monraces_info[MonsterRaceId::LUPART].r_tkills < MAX_SHORT) {
+                monraces_info[MonsterRaceId::LUPART].r_tkills++;
             }
         }
     }
@@ -135,7 +135,7 @@ void wipe_monsters_list(PlayerType *player_ptr)
     auto *floor_ptr = player_ptr->current_floor_ptr;
     for (int i = floor_ptr->m_max - 1; i >= 1; i--) {
         auto *m_ptr = &floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
 
@@ -148,7 +148,7 @@ void wipe_monsters_list(PlayerType *player_ptr)
      * counters of monsters in party_mon[] are required to prevent multiple
      * generation of unique monster who is the minion of player.
      */
-    for (auto &[r_idx, r_ref] : r_info) {
+    for (auto &[r_idx, r_ref] : monraces_info) {
         r_ref.cur_num = 0;
     }
 

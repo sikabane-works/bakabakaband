@@ -166,7 +166,6 @@ hengband_SOURCES = \
 	core/visuals-reseter.cpp core/visuals-reseter.h \
 	core/window-redrawer.cpp core/window-redrawer.h \
 	\
-	dungeon/dungeon.cpp dungeon/dungeon.h \
 	dungeon/dungeon-flag-mask.h \
 	dungeon/dungeon-flag-types.h \
 	dungeon/dungeon-processor.cpp dungeon/dungeon-processor.h \
@@ -229,7 +228,6 @@ hengband_SOURCES = \
 	floor/object-allocator.cpp floor/object-allocator.h \
 	floor/object-scanner.cpp floor/object-scanner.h \
 	floor/pattern-walk.cpp floor/pattern-walk.h \
-	floor/sight-definitions.h \
 	floor/tunnel-generator.cpp floor/tunnel-generator.h \
 	floor/wild.h floor/wild.cpp \
 	\
@@ -264,6 +262,8 @@ hengband_SOURCES = \
 	hpmp/hp-mp-regenerator.cpp hpmp/hp-mp-regenerator.h \
 	\
 	info-reader/artifact-reader.cpp info-reader/artifact-reader.h \
+	info-reader/baseitem-reader.cpp info-reader/baseitem-reader.h \
+	info-reader/baseitem-tokens-table.cpp info-reader/baseitem-tokens-table.h \
 	info-reader/dungeon-info-tokens-table.cpp info-reader/dungeon-info-tokens-table.h \
 	info-reader/dungeon-reader.cpp info-reader/dungeon-reader.h \
 	info-reader/ego-reader.cpp info-reader/ego-reader.h \
@@ -272,8 +272,6 @@ hengband_SOURCES = \
 	info-reader/fixed-map-parser.cpp info-reader/fixed-map-parser.h \
 	info-reader/general-parser.cpp info-reader/general-parser.h \
 	info-reader/info-reader-util.cpp info-reader/info-reader-util.h \
-	info-reader/kind-info-tokens-table.cpp info-reader/kind-info-tokens-table.h \
-	info-reader/kind-reader.cpp info-reader/kind-reader.h \
 	info-reader/magic-reader.cpp info-reader/magic-reader.h \
 	info-reader/parse-error-types.h \
 	info-reader/race-info-tokens-table.cpp info-reader/race-info-tokens-table.h \
@@ -577,7 +575,6 @@ hengband_SOURCES = \
 	object/object-flags.cpp object/object-flags.h \
 	object/object-index-list.cpp object/object-index-list.h \
 	object/object-info.cpp object/object-info.h \
-	object/object-kind.cpp object/object-kind.h \
 	object/object-kind-hook.cpp object/object-kind-hook.h \
 	object/object-stack.cpp object/object-stack.h \
 	object/object-value.cpp object/object-value.h \
@@ -915,15 +912,17 @@ hengband_SOURCES = \
 	system/angband-exceptions.h \
 	system/angband-version.cpp system/angband-version.h \
 	system/artifact-type-definition.cpp system/artifact-type-definition.h \
+	system/baseitem-info-definition.cpp system/baseitem-info-definition.h \
 	system/building-type-definition.cpp system/building-type-definition.h \
 	system/dungeon-data-definition.h \
-	system/floor-type-definition.h \
+	system/dungeon-info.cpp system/dungeon-info.h \
+	system/floor-type-definition.cpp system/floor-type-definition.h \
 	system/grid-type-definition.cpp system/grid-type-definition.h \
 	system/game-option-types.h \
 	system/h-basic.h system/h-config.h \
 	system/h-system.h system/h-type.h \
 	system/monster-race-definition.h \
-	system/monster-type-definition.h \
+	system/monster-type-definition.cpp system/monster-type-definition.h \
 	system/object-type-definition.cpp system/object-type-definition.h \
 	system/player-type-definition.cpp system/player-type-definition.h \
 	system/system-variables.cpp system/system-variables.h \

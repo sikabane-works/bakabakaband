@@ -20,7 +20,7 @@
  * @param r_ptr モンスター種族の構造体ポインタ
  * @return シンボル職の記述名
  */
-static concptr attr_to_text(monster_race *r_ptr)
+static concptr attr_to_text(MonsterRaceInfo *r_ptr)
 {
     if (r_ptr->visual_flags.has(MonsterVisualType::CLEAR_COLOR)) {
         return _("透明な", "Clear");
@@ -72,7 +72,7 @@ static concptr attr_to_text(monster_race *r_ptr)
     return _("変な色の", "Icky");
 }
 
-SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const monster_race *)> filter_monster)
+SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const MonsterRaceInfo *)> filter_monster)
 {
     PlayerType dummy;
     uint16_t why = 2;
@@ -103,7 +103,7 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const m
         "---", "---", "---", "-----", "-----", "-------------------");
 
     std::vector<MonsterRaceId> who;
-    for (const auto &[r_idx, r_ref] : r_info) {
+    for (const auto &[r_idx, r_ref] : monraces_info) {
         if (MonsterRace(r_ref.idx).is_valid() && !r_ref.name.empty()) {
             who.push_back(r_ref.idx);
         }
@@ -111,26 +111,22 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const m
 
     ang_sort(&dummy, who.data(), &why, who.size(), ang_sort_comp_hook, ang_sort_swap_hook);
     for (auto r_idx : who) {
-        auto *r_ptr = &r_info[r_idx];
-        concptr name = r_ptr->name.c_str();
+        auto *r_ptr = &monraces_info[r_idx];
         if (filter_monster && !filter_monster(r_ptr)) {
             continue;
         }
-
-        char name_buf[41];
-        angband_strcpy(name_buf, name, sizeof(name_buf));
-        name += strlen(name_buf);
 
         if (any_bits(r_ptr->flags7, RF7_KAGE)) {
             continue;
         }
 
+        const auto name = str_separate(r_ptr->name, 40);
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            sprintf(nam, "[U] %s", name_buf);
+            sprintf(nam, "[U] %s", name.front().data());
         } else if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) {
-            sprintf(nam, "[N] %s", name_buf);
+            sprintf(nam, "[N] %s", name.front().data());
         } else {
-            sprintf(nam, _("    %s", "The %s"), name_buf);
+            sprintf(nam, _("    %s", "The %s"), name.front().data());
         }
 
         sprintf(lev, "%d", (int)r_ptr->level);
@@ -152,10 +148,8 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const m
         sprintf(symbol, "%s '%c'", attr_to_text(r_ptr), r_ptr->d_char);
         fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n", nam, lev, rar, spd, hp, ac, symbol);
 
-        while (*name != '\0') {
-            angband_strcpy(name_buf, name, sizeof(name_buf));
-            name += strlen(name_buf);
-            fprintf(spoiler_file, "    %s\n", name_buf);
+        for (auto i = 1U; i < name.size(); ++i) {
+            fprintf(spoiler_file, "    %s\n", name[i].data());
         }
     }
 
@@ -198,7 +192,7 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
     spoil_out("------------------------------------------\n\n");
 
     std::vector<MonsterRaceId> who;
-    for (const auto &[r_idx, r_ref] : r_info) {
+    for (const auto &[r_idx, r_ref] : monraces_info) {
         if (MonsterRace(r_ref.idx).is_valid() && !r_ref.name.empty()) {
             who.push_back(r_ref.idx);
         }
@@ -207,14 +201,14 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
     uint16_t why = 2;
     ang_sort(&dummy, who.data(), &why, who.size(), ang_sort_comp_hook, ang_sort_swap_hook);
     for (auto r_idx : who) {
-        auto *r_ptr = &r_info[r_idx];
+        auto *r_ptr = &monraces_info[r_idx];
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             spoil_out("[U] ");
         } else if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) {
             spoil_out("[N] ");
         }
 
-        sprintf(buf, _("%s/%s  (", "%s%s ("), r_ptr->name.c_str(), _(r_ptr->E_name.c_str(), "")); /* ---)--- */
+        sprintf(buf, _("%s/%s  (", "%s%s ("), r_ptr->name.data(), _(r_ptr->E_name.data(), "")); /* ---)--- */
         spoil_out(buf);
         spoil_out(attr_to_text(r_ptr));
         sprintf(buf, " '%c')\n", r_ptr->d_char);

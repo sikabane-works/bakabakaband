@@ -8,9 +8,10 @@
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
 #include "object/object-flags.h"
-#include "object/object-kind.h"
+#include "object/tval-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "system/angband.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -21,15 +22,15 @@
  * @brief アイテムオブジェクトを読み込む(v3.0.0 Savefile ver50まで)
  * @param o_ptr アイテムオブジェクト保存先ポインタ
  */
-void ItemLoader50::rd_item(ObjectType *o_ptr)
+void ItemLoader50::rd_item(ItemEntity *o_ptr)
 {
     auto flags = rd_u32b();
     o_ptr->k_idx = rd_s16b();
     o_ptr->iy = rd_byte();
     o_ptr->ix = rd_byte();
-    auto *k_ptr = &k_info[o_ptr->k_idx];
-    o_ptr->tval = k_ptr->tval;
-    o_ptr->sval = k_ptr->sval;
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
+    o_ptr->tval = k_ptr->bi_key.tval();
+    o_ptr->sval = k_ptr->bi_key.sval().value();
     o_ptr->pval = any_bits(flags, SaveDataItemFlagType::PVAL) ? rd_s16b() : 0;
     o_ptr->discount = any_bits(flags, SaveDataItemFlagType::DISCOUNT) ? rd_byte() : 0;
     o_ptr->number = any_bits(flags, SaveDataItemFlagType::NUMBER) ? rd_byte() : 1;
@@ -170,7 +171,7 @@ void ItemLoader50::rd_item(ObjectType *o_ptr)
         o_ptr->art_name = 0;
     }
 
-    if ((o_ptr->ego_idx == EgoType::DARK) || (o_ptr->ego_idx == EgoType::ANCIENT_CURSE) || (o_ptr->fixed_artifact_idx == FixedArtifactId::NIGHT)) {
+    if ((o_ptr->ego_idx == EgoType::DARK) || (o_ptr->ego_idx == EgoType::ANCIENT_CURSE) || (o_ptr->is_specific_artifact(FixedArtifactId::NIGHT))) {
         o_ptr->art_flags.set(TR_LITE_M1);
         o_ptr->art_flags.reset(TR_LITE_1);
         o_ptr->art_flags.reset(TR_LITE_2);

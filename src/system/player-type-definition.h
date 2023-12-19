@@ -43,8 +43,8 @@ enum class MimicKindType;
 enum class MonsterAbilityType;
 enum class MonsterRaceId : int16_t;
 
-struct floor_type;
-class ObjectType;
+class FloorType;
+class ItemEntity;
 class TimedEffects;
 class PlayerType {
 public:
@@ -56,7 +56,7 @@ public:
     int player_euid{};
     int player_egid{};
 
-    floor_type *current_floor_ptr{};
+    FloorType *current_floor_ptr{};
     POSITION oldpy{}; /* Previous player location -KMW- */
     POSITION oldpx{}; /* Previous player location -KMW- */
 
@@ -252,7 +252,7 @@ public:
     byte feeling{}; /* Most recent dungeon feeling */
     int32_t feeling_turn{}; /* The turn of the last dungeon feeling */
 
-    std::shared_ptr<ObjectType[]> inventory_list{}; /* The player's inventory */
+    std::shared_ptr<ItemEntity[]> inventory_list{}; /* The player's inventory */
     int16_t inven_cnt{}; /* Number of items in inventory */
     int16_t equip_cnt{}; /* Number of items in equipment */
 
@@ -276,7 +276,7 @@ public:
 
     MonsterRaceId monster_race_idx{}; /* Monster race trackee */
 
-    KIND_OBJECT_IDX object_kind_idx{}; /* Object kind trackee */
+    KIND_OBJECT_IDX baseitem_info_idx{}; /* Object kind trackee */
 
     int16_t new_spells{}; /* Number of spells available */
     int16_t old_spells{};

@@ -1,10 +1,10 @@
 ﻿#include "world/world-object.h"
 #include "dungeon/dungeon-flag-types.h"
-#include "dungeon/dungeon.h"
 #include "object-enchant/item-apply-magic.h"
-#include "object/object-kind.h"
 #include "object/tval-types.h"
 #include "system/alloc-entries.h"
+#include "system/baseitem-info-definition.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -22,7 +22,7 @@
  * This routine should almost never fail, but in case it does,
  * we must be sure to handle "failure" of this routine.
  */
-OBJECT_IDX o_pop(floor_type *floor_ptr)
+OBJECT_IDX o_pop(FloorType *floor_ptr)
 {
     if (floor_ptr->o_max < w_ptr->max_o_idx) {
         OBJECT_IDX i = floor_ptr->o_max;
@@ -32,7 +32,7 @@ OBJECT_IDX o_pop(floor_type *floor_ptr)
     }
 
     for (OBJECT_IDX i = 1; i < floor_ptr->o_max; i++) {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &floor_ptr->o_list[i];
         if (o_ptr->k_idx) {
             continue;
@@ -68,14 +68,14 @@ OBJECT_IDX o_pop(floor_type *floor_ptr)
  * Note that if no objects are "appropriate", then this function will\n
  * fail, and return zero, but this should *almost* never happen.\n
  */
-OBJECT_IDX get_obj_num(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
+OBJECT_IDX get_obj_index(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
 {
     if (level > MAX_DEPTH - 1) {
         level = MAX_DEPTH - 1;
     }
 
-    if ((level > 0) && d_info[player_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::BEGINNER)) {
-        if (one_in_(GREAT_OBJ)) {
+    if ((level > 0) && dungeons_info[player_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::BEGINNER)) {
+        if (one_in_(CHANCE_BASEITEM_LEVEL_BOOST)) {
             level = 1 + (level * MAX_DEPTH / randint1(MAX_DEPTH));
         }
     }
@@ -88,14 +88,12 @@ OBJECT_IDX get_obj_num(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
             break;
         }
 
-        KIND_OBJECT_IDX k_idx = entry.index;
-        auto *k_ptr = &k_info[k_idx];
-
-        if ((mode & AM_FORBID_CHEST) && (k_ptr->tval == ItemKindType::CHEST)) {
+        const auto &k_ref = baseitems_info[entry.index];
+        if ((mode & AM_FORBID_CHEST) && (k_ref.bi_key.tval() == ItemKindType::CHEST)) {
             continue;
         }
 
-        if ((mode & AM_NO_NEVER_MOVE) && k_ptr->flags.has(TR_NEVER_MOVE)) {
+        if ((mode & AM_NO_NEVER_MOVE) && k_ref.flags.has(TR_NEVER_MOVE)) {
             continue;
         }
 

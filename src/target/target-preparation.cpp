@@ -44,7 +44,7 @@ bool target_able(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    if (!monster_is_valid(m_ptr)) {
+    if (!m_ptr->is_valid()) {
         return false;
     }
 
@@ -95,7 +95,7 @@ static bool target_set_accept(PlayerType *player_ptr, POSITION y, POSITION x)
     }
 
     for (const auto this_o_idx : g_ptr->o_idx_list) {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &floor_ptr->o_list[this_o_idx];
         if (o_ptr->marked & OM_FOUND) {
             return true;
@@ -107,7 +107,7 @@ static bool target_set_accept(PlayerType *player_ptr, POSITION y, POSITION x)
             return true;
         }
 
-        if (f_info[g_ptr->get_feat_mimic()].flags.has(FloorFeatureType::NOTICE)) {
+        if (terrains_info[g_ptr->get_feat_mimic()].flags.has(TerrainCharacteristics::NOTICE)) {
             return true;
         }
     }
@@ -144,17 +144,17 @@ void target_set_prepare(PlayerType *player_ptr, std::vector<POSITION> &ys, std::
 
     for (POSITION y = min_hgt; y <= max_hgt; y++) {
         for (POSITION x = min_wid; x <= max_wid; x++) {
-            grid_type *g_ptr;
             if (!target_set_accept(player_ptr, y, x)) {
                 continue;
             }
 
-            g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-            if ((mode & (TARGET_KILL)) && !target_able(player_ptr, g_ptr->m_idx)) {
+            const auto &g_ref = player_ptr->current_floor_ptr->grid_array[y][x];
+            if ((mode & (TARGET_KILL)) && !target_able(player_ptr, g_ref.m_idx)) {
                 continue;
             }
 
-            if ((mode & (TARGET_KILL)) && !target_pet && is_pet(&player_ptr->current_floor_ptr->m_list[g_ptr->m_idx])) {
+            const auto &m_ref = player_ptr->current_floor_ptr->m_list[g_ref.m_idx];
+            if ((mode & (TARGET_KILL)) && !target_pet && m_ref.is_pet()) {
                 continue;
             }
 
@@ -191,12 +191,12 @@ void target_sensing_monsters_prepare(PlayerType *player_ptr, std::vector<MONSTER
 
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr) || !m_ptr->ml || is_pet(m_ptr)) {
+        if (!m_ptr->is_valid() || !m_ptr->ml || m_ptr->is_pet()) {
             continue;
         }
 
         // 感知魔法/スキルやESPで感知していない擬態モンスターはモンスター一覧に表示しない
-        if (is_mimicry(m_ptr) && m_ptr->mflag2.has_none_of({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW }) && m_ptr->mflag.has_not(MonsterTemporaryFlagType::ESP)) {
+        if (m_ptr->is_mimicry() && m_ptr->mflag2.has_none_of({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW }) && m_ptr->mflag.has_not(MonsterTemporaryFlagType::ESP)) {
             continue;
         }
 
@@ -206,8 +206,8 @@ void target_sensing_monsters_prepare(PlayerType *player_ptr, std::vector<MONSTER
     auto comp_importance = [floor_ptr = player_ptr->current_floor_ptr](MONSTER_IDX idx1, MONSTER_IDX idx2) {
         auto m_ptr1 = &floor_ptr->m_list[idx1];
         auto m_ptr2 = &floor_ptr->m_list[idx2];
-        auto ap_r_ptr1 = &r_info[m_ptr1->ap_r_idx];
-        auto ap_r_ptr2 = &r_info[m_ptr2->ap_r_idx];
+        auto ap_r_ptr1 = &monraces_info[m_ptr1->ap_r_idx];
+        auto ap_r_ptr2 = &monraces_info[m_ptr2->ap_r_idx];
 
         /* Unique monsters first */
         if (ap_r_ptr1->kind_flags.has(MonsterKindType::UNIQUE) != ap_r_ptr2->kind_flags.has(MonsterKindType::UNIQUE)) {

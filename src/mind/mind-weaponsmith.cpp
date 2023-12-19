@@ -113,7 +113,7 @@ static void drain_essence(PlayerType *player_ptr)
     auto s = _("抽出できるアイテムがありません。", "You have nothing you can extract from.");
 
     OBJECT_IDX item;
-    auto o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ObjectType::is_weapon_armour_ammo));
+    auto o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ItemEntity::is_weapon_armour_ammo));
     if (!o_ptr) {
         return;
     }
@@ -288,9 +288,9 @@ static void display_smith_effect_list(const Smith &smith, const std::vector<Smit
         if (need_essences.size() == 1) {
             auto essence = need_essences.front();
             auto amount = smith.get_essence_num_of_posessions(essence);
-            snprintf(str, sizeof(str), "%-49s %5d/%d", title.str().c_str(), amount, consumption);
+            snprintf(str, sizeof(str), "%-49s %5d/%d", title.str().data(), amount, consumption);
         } else {
-            snprintf(str, sizeof(str), "%-49s  (\?\?)/%d", title.str().c_str(), consumption);
+            snprintf(str, sizeof(str), "%-49s  (\?\?)/%d", title.str().data(), consumption);
         }
 
         auto col = (smith.get_addable_count(effect) > 0) ? TERM_WHITE : TERM_RED;
@@ -308,7 +308,7 @@ static void add_essence(PlayerType *player_ptr, SmithCategoryType mode)
     bool flag;
     char choice;
     concptr q, s;
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     char out_val[160];
     GAME_TEXT o_name[MAX_NLEN];
     int menu_line = (use_menu ? 1 : 0);
@@ -332,7 +332,7 @@ static void add_essence(PlayerType *player_ptr, SmithCategoryType mode)
         while (!flag) {
             if (page_max > 1) {
                 std::string page_str = format("%d/%d", page + 1, page_max);
-                strnfmt(out_val, 78, _("(SPACEで次ページ, ESCで中断) どの能力を付加しますか？ %s", "(SPACE=next, ESC=exit) Add which ability? %s"), page_str.c_str());
+                strnfmt(out_val, 78, _("(SPACEで次ページ, ESCで中断) どの能力を付加しますか？ %s", "(SPACE=next, ESC=exit) Add which ability? %s"), page_str.data());
             } else {
                 strnfmt(out_val, 78, _("(ESCで中断) どの能力を付加しますか？", "(ESC=exit) Add which ability? "));
             }
@@ -522,13 +522,13 @@ static void erase_essence(PlayerType *player_ptr)
 {
     OBJECT_IDX item;
     concptr q, s;
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     GAME_TEXT o_name[MAX_NLEN];
 
     q = _("どのアイテムのエッセンスを消去しますか？", "Remove from which item? ");
     s = _("エッセンスを付加したアイテムがありません。", "You have nothing with added essence to remove.");
 
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ObjectType::is_smith));
+    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_smith));
     if (!o_ptr) {
         return;
     }

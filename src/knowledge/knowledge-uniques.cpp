@@ -14,6 +14,7 @@
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "util/sort.h"
+#include "util/string-processor.h"
 
 struct unique_list_type {
     bool is_alive;
@@ -48,7 +49,7 @@ unique_list_type *initialize_unique_lsit_type(unique_list_type *unique_list_ptr,
  * @return is_aliveの条件に見合うユニークがいたらTRUE、それ以外はFALSE
  * @details 闘技場のモンスターとは再戦できないので、生きているなら表示から外す
  */
-static bool sweep_uniques(monster_race *r_ptr, bool is_alive)
+static bool sweep_uniques(MonsterRaceInfo *r_ptr, bool is_alive)
 {
     if (r_ptr->name.empty()) {
         return false;
@@ -117,7 +118,7 @@ static void display_uniques(unique_list_type *unique_list_ptr, FILE *fff)
 
     char buf[80];
     for (auto r_idx : unique_list_ptr->who) {
-        auto *r_ptr = &r_info[r_idx];
+        auto *r_ptr = &monraces_info[r_idx];
 
         if (r_ptr->defeat_level && r_ptr->defeat_time) {
             sprintf(buf, _(" - レベル%2d - %d:%02d:%02d", " - level %2d - %d:%02d:%02d"), r_ptr->defeat_level, r_ptr->defeat_time / (60 * 60),
@@ -126,7 +127,11 @@ static void display_uniques(unique_list_type *unique_list_ptr, FILE *fff)
             buf[0] = '\0';
         }
 
-        fprintf(fff, _("     %s (レベル%d)%s\n", "     %s (level %d)%s\n"), r_ptr->name.c_str(), (int)r_ptr->level, buf);
+        const auto name = str_separate(r_ptr->name, 40);
+        fprintf(fff, _("     %-40s (レベル%3d)%s\n", "     %-40s (level %3d)%s\n"), name.front().data(), (int)r_ptr->level, buf);
+        for (auto i = 1U; i < name.size(); ++i) {
+            fprintf(fff, "     %s\n", name[i].data());
+        }
     }
 }
 
@@ -145,7 +150,7 @@ void do_cmd_knowledge_uniques(PlayerType *player_ptr, bool is_alive)
         return;
     }
 
-    for (auto &[r_idx, r_ref] : r_info) {
+    for (auto &[r_idx, r_ref] : monraces_info) {
         if (!MonsterRace(r_ref.idx).is_valid()) {
             continue;
         }

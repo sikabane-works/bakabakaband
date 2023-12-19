@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "system/angband.h"
-
 #include "object-enchant/tr-flags.h"
 #include "object-enchant/trg-types.h"
+#include "system/angband.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "util/flag-group.h"
 #include <map>
@@ -18,12 +18,11 @@ enum class FixedArtifactId : short;
 enum class RandomArtActType : short;
 class ArtifactType {
 public:
-    ArtifactType() = default;
+    ArtifactType();
 
     std::string name; /*!< アーティファクト名 / Name */
     std::string text; /*!< アーティファクト解説 / Text */
-    ItemKindType tval{}; /*!< ベースアイテム大項目ID / Artifact type */
-    OBJECT_SUBTYPE_VALUE sval{}; /*!< ベースアイテム小項目ID / Artifact sub type */
+    BaseitemKey bi_key;
     PARAMETER_VALUE pval{}; /*!< pval修正値 / Artifact extra info */
     HIT_PROB to_h{}; /*!< 命中ボーナス値 /  Bonus to hit */
     int to_d{}; /*!< ダメージボーナス値 / Bonus to damage */
@@ -43,4 +42,20 @@ public:
     PERCENTAGE broken_rate; /*!< 発動破損率 */
 };
 
-extern std::map<FixedArtifactId, ArtifactType> a_info;
+extern std::map<FixedArtifactId, ArtifactType> artifacts_info;
+
+class ArtifactsInfo {
+public:
+    ArtifactsInfo(const ArtifactsInfo &) = delete;
+    ArtifactsInfo(ArtifactsInfo &&) = delete;
+    ArtifactsInfo &operator=(const ArtifactsInfo &) = delete;
+    ArtifactsInfo &operator=(ArtifactsInfo &&) = delete;
+    ~ArtifactsInfo() = default;
+
+    static ArtifactsInfo &get_instance();
+    ArtifactType *get_artifact(const FixedArtifactId id) const;
+
+private:
+    ArtifactsInfo() = default;
+    static ArtifactsInfo instance;
+};

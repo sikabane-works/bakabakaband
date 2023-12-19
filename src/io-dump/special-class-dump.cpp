@@ -11,11 +11,11 @@
 #include "monster-race/race-ability-flags.h"
 #include "mspell/monster-power-table.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "player-base/player-class.h"
 #include "player-info/bluemage-data-type.h"
 #include "player-info/magic-eater-data-type.h"
 #include "smith/object-smith.h"
+#include "system/baseitem-info-definition.h"
 #include "system/player-type-definition.h"
 #include "util/enum-converter.h"
 #include "util/flag-group.h"
@@ -66,13 +66,13 @@ static void dump_magic_eater(PlayerType *player_ptr, FILE *fff)
                 continue;
             }
 
-            KIND_OBJECT_IDX k_idx = lookup_kind(tval, i);
+            auto k_idx = lookup_baseitem_id({ tval, i });
             if (!k_idx) {
                 continue;
             }
 
             char buf[128];
-            snprintf(buf, sizeof(buf), "%23s (%2d)", k_info[k_idx].name.c_str(), item.count);
+            snprintf(buf, sizeof(buf), "%23s (%2d)", baseitems_info[k_idx].name.data(), item.count);
             desc_list.emplace_back(buf);
         }
 
@@ -83,7 +83,7 @@ static void dump_magic_eater(PlayerType *player_ptr, FILE *fff)
 
         uint i;
         for (i = 0; i < desc_list.size(); i++) {
-            fputs(desc_list[i].c_str(), fff);
+            fputs(desc_list[i].data(), fff);
             if (i % 3 < 2) {
                 fputs("    ", fff);
             } else {

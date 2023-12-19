@@ -48,7 +48,7 @@
  * @param o_ptr オブジェクトの構造体参照ポインタ
  * @return 売るなら(true,売値)、売らないなら(false,0)のタプル
  */
-static std::optional<PRICE> prompt_to_sell(PlayerType *player_ptr, ObjectType *o_ptr, StoreSaleType store_num)
+static std::optional<PRICE> prompt_to_sell(PlayerType *player_ptr, ItemEntity *o_ptr, StoreSaleType store_num)
 {
     auto price_ask = price_item(player_ptr, o_ptr, ot_ptr->inflate, true, store_num);
 
@@ -91,7 +91,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
     }
 
     OBJECT_IDX item;
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = choose_object(player_ptr, &item, q, s_none, USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT, FuncItemTester(store_will_buy, player_ptr, store_num));
     if (!o_ptr) {
         return;
@@ -110,7 +110,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
         }
     }
 
-    ObjectType forge;
+    ItemEntity forge;
     auto *q_ptr = &forge;
     q_ptr->copy_from(o_ptr);
     q_ptr->number = amt;
@@ -139,7 +139,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
         auto res = prompt_to_sell(player_ptr, q_ptr, store_num);
         placed = res.has_value();
         if (placed) {
-            PRICE price = res.value();
+            const auto price = res.value();
             store_owner_says_comment(player_ptr, store_num);
 
             sound(SOUND_SELL);
@@ -153,7 +153,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
 
             player_ptr->au += price;
             store_prt_gold(player_ptr);
-            PRICE dummy = object_value(q_ptr) * q_ptr->number;
+            const auto dummy = q_ptr->get_price() * q_ptr->number;
 
             identify_item(player_ptr, o_ptr);
             q_ptr = &forge;
@@ -165,7 +165,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
                 q_ptr->pval = o_ptr->pval * amt / o_ptr->number;
             }
 
-            PRICE value = object_value(q_ptr) * q_ptr->number;
+            const auto value = q_ptr->get_price() * q_ptr->number;
             describe_flavor(player_ptr, o_name, q_ptr, 0);
             msg_format(_("%sを $%ldで売却しました。", "You sold %s for %ld gold."), o_name, static_cast<long>(price));
 

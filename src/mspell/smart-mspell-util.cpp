@@ -11,7 +11,7 @@
 msr_type *initialize_msr_type(PlayerType *player_ptr, msr_type *msr_ptr, MONSTER_IDX m_idx, const EnumClassFlagGroup<MonsterAbilityType> &ability_flags)
 {
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    msr_ptr->r_ptr = &r_info[m_ptr->r_idx];
+    msr_ptr->r_ptr = &monraces_info[m_ptr->r_idx];
     msr_ptr->ability_flags = ability_flags;
     msr_ptr->smart.clear();
     return msr_ptr;
@@ -24,7 +24,7 @@ msr_type *initialize_msr_type(PlayerType *player_ptr, msr_type *msr_ptr, MONSTER
  * @param prob 基本確率(%)
  * @return 適した選択を取るならばTRUEを返す。
  */
-bool int_outof(monster_race *r_ptr, PERCENTAGE prob)
+bool int_outof(MonsterRaceInfo *r_ptr, PERCENTAGE prob)
 {
     if (r_ptr->behavior_flags.has_not(MonsterBehaviorType::SMART)) {
         prob = prob / 2;

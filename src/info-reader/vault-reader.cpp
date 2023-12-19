@@ -8,13 +8,12 @@
 #include "util/string-processor.h"
 
 /*!
- * @brief Vault情報(v_info)のパース関数 /
- * Initialize the "v_info" array, by parsing an ascii "template" file
+ * @brief Vault定義 (VaultDefinitions)のパース関数
  * @param buf テキスト列
  * @param head ヘッダ構造体
  * @return エラーコード
  */
-errr parse_v_info(std::string_view buf, angband_header *)
+errr parse_vaults_info(std::string_view buf, angband_header *)
 {
     static vault_type *v_ptr = nullptr;
     const auto &tokens = str_split(buf, ':', false, 5);
@@ -32,12 +31,12 @@ errr parse_v_info(std::string_view buf, angband_header *)
         if (i < error_idx) {
             return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
         }
-        if (i >= static_cast<int>(v_info.size())) {
-            v_info.resize(i + 1);
+        if (i >= static_cast<int>(vaults_info.size())) {
+            vaults_info.resize(i + 1);
         }
 
         error_idx = i;
-        v_ptr = &v_info[i];
+        v_ptr = &vaults_info[i];
         v_ptr->idx = static_cast<int16_t>(i);
         v_ptr->name = std::string(tokens[2]);
     } else if (!v_ptr) {
@@ -85,7 +84,7 @@ errr parse_v_info(std::string_view buf, angband_header *)
                 const auto &s_tokens = str_split(f, '_', false);
 
                 if (s_tokens.size() == 2 && s_tokens[0] == "MONSTER") {
-                    for (const auto &[r_idx, r_ref] : r_info) {
+                    for (const auto &[r_idx, r_ref] : monraces_info) {
                         if (s_tokens[1] == r_ref.tag) {
                             v_ptr->place_monster_list[c] = r_idx;
                             break;

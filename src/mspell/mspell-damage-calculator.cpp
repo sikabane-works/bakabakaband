@@ -441,7 +441,7 @@ static int monspell_damage_base(
  * @param dd ダイス数への参照ポインタ
  * @param ds ダイス面への参照ポインタ
  */
-void monspell_shoot_dice(monster_race *r_ptr, int *dd, int *ds)
+void monspell_shoot_dice(MonsterRaceInfo *r_ptr, int *dd, int *ds)
 {
     int p = -1; /* Position of SHOOT */
     int n = 0; /* Number of blows */
@@ -483,7 +483,7 @@ int monspell_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONSTER_
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     DEPTH rlev = monster_level_idx(floor_ptr, m_idx);
     int hp = (TYPE == DAM_ROLL) ? m_ptr->hp : m_ptr->max_maxhp;
     int shoot_dd, shoot_ds;
@@ -502,7 +502,7 @@ int monspell_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONSTER_
  */
 int monspell_race_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MonsterRaceId r_idx, int TYPE)
 {
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
     DEPTH rlev = ((r_ptr->level >= 1) ? r_ptr->level : 1);
     bool powerful = any_bits(r_ptr->flags2, RF2_POWERFUL);
     int hp = r_ptr->hdice * (ironman_nightmare ? 2 : 1) * r_ptr->hside;
@@ -524,7 +524,7 @@ int monspell_bluemage_damage(PlayerType *player_ptr, MonsterAbilityType ms_type,
 {
     int hp = player_ptr->chp;
     int shoot_dd = 1, shoot_ds = 1, shoot_base = 0;
-    ObjectType *o_ptr = nullptr;
+    ItemEntity *o_ptr = nullptr;
 
     if (has_melee_weapon(player_ptr, INVEN_MAIN_HAND)) {
         o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];

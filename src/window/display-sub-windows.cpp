@@ -18,11 +18,11 @@
 #include "monster/monster-status.h"
 #include "object/item-tester-hooker.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "object/object-mark-types.h"
 #include "player/player-status-flags.h"
 #include "player/player-status.h"
 #include "spell-kind/magic-item-recharger.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -102,11 +102,11 @@ void fix_inventory(PlayerType *player_ptr)
  *  name: name of monster
  * </pre>
  */
-static void print_monster_line(TERM_LEN x, TERM_LEN y, monster_type *m_ptr, int n_same)
+static void print_monster_line(TERM_LEN x, TERM_LEN y, MonsterEntity *m_ptr, int n_same)
 {
     char buf[256];
     MonsterRaceId r_idx = m_ptr->ap_r_idx;
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
 
     term_erase(0, y, 255);
     term_gotoxy(x, y);
@@ -131,7 +131,7 @@ static void print_monster_line(TERM_LEN x, TERM_LEN y, monster_type *m_ptr, int 
 
     term_addstr(-1, TERM_WHITE, buf);
 
-    sprintf(buf, " %s ", r_ptr->name.c_str());
+    sprintf(buf, " %s ", r_ptr->name.data());
     term_addstr(-1, TERM_WHITE, buf);
 }
 
@@ -141,15 +141,15 @@ static void print_monster_line(TERM_LEN x, TERM_LEN y, monster_type *m_ptr, int 
  * @param y 表示行
  * @param max_lines 最大何行描画するか
  */
-void print_monster_list(floor_type *floor_ptr, const std::vector<MONSTER_IDX> &monster_list, TERM_LEN x, TERM_LEN y, TERM_LEN max_lines)
+void print_monster_list(FloorType *floor_ptr, const std::vector<MONSTER_IDX> &monster_list, TERM_LEN x, TERM_LEN y, TERM_LEN max_lines)
 {
     TERM_LEN line = y;
-    monster_type *last_mons = nullptr;
+    MonsterEntity *last_mons = nullptr;
     int n_same = 0;
     size_t i;
     for (i = 0; i < monster_list.size(); i++) {
         auto m_ptr = &floor_ptr->m_list[monster_list[i]];
-        if (is_pet(m_ptr)) {
+        if (m_ptr->is_pet()) {
             continue;
         } // pet
         if (!MonsterRace(m_ptr->r_idx).is_valid()) {
@@ -281,8 +281,8 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
         }
 
         if (show_item_graph) {
-            TERM_COLOR a = object_attr(o_ptr);
-            auto c = object_char(o_ptr);
+            const auto a = o_ptr->get_color();
+            const auto c = o_ptr->get_symbol();
             term_queue_bigchar(cur_col, cur_row, a, c, 0, 0);
             if (use_bigtile) {
                 cur_col++;
@@ -436,7 +436,7 @@ static void display_dungeon(PlayerType *player_ptr)
             TERM_COLOR a;
             char c;
             if (!in_bounds2(player_ptr->current_floor_ptr, y, x)) {
-                auto *f_ptr = &f_info[feat_none];
+                auto *f_ptr = &terrains_info[feat_none];
                 a = f_ptr->x_attr[F_LIT_STANDARD];
                 c = f_ptr->x_char[F_LIT_STANDARD];
                 term_queue_char(x - player_ptr->x + game_term->wid / 2 - 1, y - player_ptr->y + game_term->hgt / 2 - 1, a, c, ta, tc);
@@ -528,8 +528,8 @@ void fix_object(PlayerType *player_ptr)
         }
 
         term_activate(angband_term[j]);
-        if (player_ptr->object_kind_idx) {
-            display_koff(player_ptr, player_ptr->object_kind_idx);
+        if (player_ptr->baseitem_info_idx) {
+            display_koff(player_ptr, player_ptr->baseitem_info_idx);
         }
 
         term_fresh();
@@ -545,14 +545,14 @@ void fix_object(PlayerType *player_ptr)
  * @details
  * Lookコマンドでカーソルを合わせた場合に合わせてミミックは考慮しない。
  */
-static const monster_type *monster_on_floor_items(floor_type *floor_ptr, const grid_type *g_ptr)
+static const MonsterEntity *monster_on_floor_items(FloorType *floor_ptr, const grid_type *g_ptr)
 {
     if (g_ptr->m_idx == 0) {
         return nullptr;
     }
 
     auto m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
-    if (!monster_is_valid(m_ptr) || !m_ptr->ml) {
+    if (!m_ptr->is_valid() || !m_ptr->ml) {
         return nullptr;
     }
 
@@ -592,17 +592,17 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
         if (is_hallucinated) {
             sprintf(line, _("(X:%03d Y:%03d) 何か奇妙な物の足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under something strange"), x, y);
         } else {
-            const monster_race *const r_ptr = &r_info[m_ptr->ap_r_idx];
-            sprintf(line, _("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), x, y, r_ptr->name.c_str());
+            const MonsterRaceInfo *const r_ptr = &monraces_info[m_ptr->ap_r_idx];
+            sprintf(line, _("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), x, y, r_ptr->name.data());
         }
     } else {
-        const feature_type *const f_ptr = &f_info[g_ptr->feat];
-        concptr fn = f_ptr->name.c_str();
+        const TerrainType *const f_ptr = &terrains_info[g_ptr->feat];
+        concptr fn = f_ptr->name.data();
         char buf[512];
 
-        if (f_ptr->flags.has(FloorFeatureType::STORE) || (f_ptr->flags.has(FloorFeatureType::BLDG) && !floor_ptr->inside_arena)) {
+        if (f_ptr->flags.has(TerrainCharacteristics::STORE) || (f_ptr->flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena)) {
             sprintf(buf, _("%sの入口", "on the entrance of %s"), fn);
-        } else if (f_ptr->flags.has(FloorFeatureType::WALL)) {
+        } else if (f_ptr->flags.has(TerrainCharacteristics::WALL)) {
             sprintf(buf, _("%sの中", "in %s"), fn);
         } else {
             sprintf(buf, _("%s", "on %s"), fn);
@@ -614,7 +614,7 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
     // (y,x) のアイテムを1行に1個ずつ書く。
     TERM_LEN term_y = 1;
     for (const auto o_idx : g_ptr->o_idx_list) {
-        ObjectType *const o_ptr = &floor_ptr->o_list[o_idx];
+        ItemEntity *const o_ptr = &floor_ptr->o_list[o_idx];
 
         // 未発見アイテムおよび金は対象外。
         if (none_bits(o_ptr->marked, OM_FOUND) || o_ptr->tval == ItemKindType::GOLD) {

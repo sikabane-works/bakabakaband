@@ -56,7 +56,7 @@ void effect_player_poison(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
 
     ep_ptr->dam = ep_ptr->dam * calc_pois_damage_rate(player_ptr) / 100;
 
-    if ((!(double_resist || has_resist_pois(player_ptr))) && one_in_(HURT_CHANCE) && !check_multishadow(player_ptr)) {
+    if ((!(double_resist || has_resist_pois(player_ptr))) && one_in_(CHANCE_ABILITY_SCORE_DECREASE) && !check_multishadow(player_ptr)) {
         do_dec_stat(player_ptr, A_CON);
     }
 
@@ -451,7 +451,7 @@ void effect_player_dark(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
 
     ep_ptr->dam = ep_ptr->dam * calc_dark_damage_rate(player_ptr, CALC_RAND) / 100;
 
-    auto go_blind = is_blind;
+    auto go_blind = !is_blind;
     go_blind &= !has_resist_blind(player_ptr);
     go_blind &= !(has_resist_dark(player_ptr) || has_immune_dark(player_ptr));
     go_blind &= !check_multishadow(player_ptr);

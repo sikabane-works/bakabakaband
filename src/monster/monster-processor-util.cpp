@@ -291,8 +291,8 @@ void save_old_race_flags(MonsterRaceId monster_race_idx, old_race_flags *old_rac
         return;
     }
 
-    monster_race *r_ptr;
-    r_ptr = &r_info[monster_race_idx];
+    MonsterRaceInfo *r_ptr;
+    r_ptr = &monraces_info[monster_race_idx];
 
     old_race_flags_ptr->old_r_flags1 = r_ptr->r_flags1;
     old_race_flags_ptr->old_r_flags2 = r_ptr->r_flags2;
@@ -316,17 +316,17 @@ void save_old_race_flags(MonsterRaceId monster_race_idx, old_race_flags *old_rac
  * @param m_ptr モンスターへの参照ポインタ
  * return モンスターの加速値
  */
-byte decide_monster_speed(monster_type *m_ptr)
+byte decide_monster_speed(MonsterEntity *m_ptr)
 {
     auto speed = m_ptr->mspeed;
     if (ironman_nightmare) {
         speed += 5;
     }
 
-    if (monster_fast_remaining(m_ptr)) {
+    if (m_ptr->is_accelerated()) {
         speed += 10;
     }
-    if (monster_slow_remaining(m_ptr)) {
+    if (m_ptr->is_decelerated()) {
         speed -= 10;
     }
 

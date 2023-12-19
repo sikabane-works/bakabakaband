@@ -1,13 +1,13 @@
 ﻿#include "market/building-initializer.h"
 #include "floor/floor-town.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "player-info/class-types.h"
 #include "store/articles-on-sale.h"
 #include "store/store-owners.h"
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/angband.h"
+#include "system/baseitem-info-definition.h"
 #include "system/building-type-definition.h"
 #include "system/object-type-definition.h"
 #include <vector>
@@ -29,38 +29,18 @@ void init_towns(void)
             }
 
             store_ptr->stock_size = store_get_stock_max(sst);
-            store_ptr->stock = std::make_unique<ObjectType[]>(store_ptr->stock_size);
+            store_ptr->stock = std::make_unique<ItemEntity[]>(store_ptr->stock_size);
             if ((sst == StoreSaleType::BLACK) || (sst == StoreSaleType::HOME) || (sst == StoreSaleType::MUSEUM)) {
                 continue;
             }
 
-            for (auto k = 0; k < STORE_INVEN_MAX; k++) {
-                auto tv = store_regular_table[enum2i(sst)][k].tval;
-                auto sv = store_regular_table[enum2i(sst)][k].sval;
-                if (tv == ItemKindType::NONE) {
-                    break;
-                }
-
-                auto k_idx = lookup_kind(tv, sv);
-                if (k_idx == 0) {
-                    continue;
-                }
-
+            for (const auto &baseitem : store_regular_sale_table.at(sst)) {
+                auto k_idx = lookup_baseitem_id(baseitem);
                 store_ptr->regular.push_back(k_idx);
             }
 
-            for (auto k = 0; k < STORE_CHOICES; k++) {
-                auto tv = store_table[enum2i(sst)][k].tval;
-                auto sv = store_table[enum2i(sst)][k].sval;
-                if (tv == ItemKindType::NONE) {
-                    break;
-                }
-
-                auto k_idx = lookup_kind(tv, sv);
-                if (k_idx == 0) {
-                    continue;
-                }
-
+            for (const auto &baseitem : store_sale_table.at(sst)) {
+                auto k_idx = lookup_baseitem_id(baseitem);
                 store_ptr->table.push_back(k_idx);
             }
         }

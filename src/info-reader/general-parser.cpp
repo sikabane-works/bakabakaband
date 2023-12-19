@@ -13,6 +13,7 @@
 #include "realm/realm-types.h"
 #include "room/vault-builder.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/building-type-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/system-variables.h"
@@ -31,7 +32,7 @@ dungeon_grid letter[255];
  * @param parse_info_txt_line パース関数
  * @return エラーコード
  */
-errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr(std::string_view, angband_header *)> parse_info_txt_line)
+errr init_info_txt(FILE *fp, char *buf, angband_header *head, Parser parse_info_txt_line)
 {
     error_idx = -1;
     error_line = 0;
@@ -73,7 +74,7 @@ errr init_info_txt(FILE *fp, char *buf, angband_header *head, std::function<errr
  * @param buf 解析文字列
  * @return エラーコード
  */
-parse_error_type parse_line_alliance(floor_type *floor_ptr, char *buf)
+parse_error_type parse_line_alliance(FloorType *floor_ptr, char *buf)
 {
     char *zz[1];
     int num = tokenize(buf + 2, 6, zz, 0);
@@ -91,7 +92,7 @@ parse_error_type parse_line_alliance(floor_type *floor_ptr, char *buf)
  * @param buf 解析文字列
  * @return エラーコード
  */
-parse_error_type parse_line_vault(floor_type *floor_ptr, char *buf)
+parse_error_type parse_line_vault(FloorType *floor_ptr, char *buf)
 {
     char *zz[6];
     town_vault tv;
@@ -117,7 +118,7 @@ parse_error_type parse_line_vault(floor_type *floor_ptr, char *buf)
  * @param buf 解析文字列
  * @return エラーコード
  */
-parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
+parse_error_type parse_line_feature(FloorType *floor_ptr, char *buf)
 {
     if (init_flags & INIT_ONLY_BUILDINGS) {
         return PARSE_ERROR_NONE;
@@ -154,7 +155,7 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
     switch (num) {
     case 9:
         letter[index].special = (int16_t)atoi(zz[8]);
-        /* Fall through */
+        [[fallthrough]];
     case 8:
         if ((zz[7][0] == '*') && !zz[7][1]) {
             letter[index].random |= RANDOM_TRAP;
@@ -164,7 +165,7 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
                 return PARSE_ERROR_UNDEFINED_TERRAIN_TAG;
             }
         }
-        /* Fall through */
+        [[fallthrough]];
     case 7:
         if (zz[6][0] == '*') {
             letter[index].random |= RANDOM_ARTIFACT;
@@ -179,7 +180,7 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
         } else {
             letter[index].artifact = i2enum<FixedArtifactId>(atoi(zz[6]));
         }
-        /* Fall through */
+        [[fallthrough]];
     case 6:
         if (zz[5][0] == '*') {
             letter[index].random |= RANDOM_EGO;
@@ -189,7 +190,7 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
         } else {
             letter[index].ego = i2enum<EgoType>(atoi(zz[5]));
         }
-        /* Fall through */
+        [[fallthrough]];
     case 5:
         if (zz[4][0] == '*') {
             letter[index].random |= RANDOM_OBJECT;
@@ -201,16 +202,16 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
                 const auto &quest_list = QuestList::get_instance();
                 const auto a_idx = quest_list[floor_ptr->quest_number].reward_artifact_idx;
                 if (a_idx != FixedArtifactId::NONE) {
-                    const auto &a_ref = a_info.at(a_idx);
+                    const auto &a_ref = artifacts_info.at(a_idx);
                     if (a_ref.gen_flags.has_not(ItemGenerationTraitType::INSTA_ART)) {
-                        letter[index].object = lookup_kind(a_ref.tval, a_ref.sval);
+                        letter[index].object = lookup_baseitem_id(a_ref.bi_key);
                     }
                 }
             }
         } else {
             letter[index].object = (OBJECT_IDX)atoi(zz[4]);
         }
-        /* Fall through */
+        [[fallthrough]];
     case 4:
         if (zz[3][0] == '*') {
             letter[index].random |= RANDOM_MONSTER;
@@ -225,10 +226,10 @@ parse_error_type parse_line_feature(floor_type *floor_ptr, char *buf)
         } else {
             letter[index].monster = (MONSTER_IDX)atoi(zz[3]);
         }
-        /* Fall through */
+        [[fallthrough]];
     case 3:
         letter[index].cave_info = atoi(zz[2]);
-        /* Fall through */
+        [[fallthrough]];
     case 2:
         if ((zz[1][0] == '*') && !zz[1][1]) {
             letter[index].random |= RANDOM_FEATURE;

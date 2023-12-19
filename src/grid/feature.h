@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-/* Number of feats we change to (Excluding default). Used in f_info.txt. */
+/* Number of feats we change to (Excluding default). Used in TerrainDefinitions.txt. */
 #define MAX_FEAT_STATES 8
 
 /* Lighting levels of features' attr and char */
@@ -24,25 +24,25 @@
  * @brief 地形状態変化指定構造体 / Feature state structure
  */
 struct feature_state {
-    FloorFeatureType action{}; /*!< 変化条件をFF_*のIDで指定 / Action (FF_*) */
-    std::string result_tag{}; /*!< 変化先ID / Result (f_info ID) */
-    FEAT_IDX result{}; /*!< 変化先ID / Result (f_info ID) */
+    TerrainCharacteristics action{}; /*!< 変化条件をFF_*のIDで指定 */
+    std::string result_tag{}; /*!< 変化先ID */
+    FEAT_IDX result{}; /*!< 変化先ID */
 };
 
 /*!
- * @struct feature_type
+ * @struct TerrainType
  * @brief 地形情報の構造体 / Information about terrain "features"
  */
-struct feature_type {
+struct TerrainType {
     FEAT_IDX idx{};
-    std::string name; /*!< 地形名参照のためのネームバッファオフセット値 / Name (offset) */
-    std::string text; /*!< 地形説明参照のためのネームバッファオフセット値 /  Text (offset) */
-    std::string tag; /*!< 地形特性タグ参照のためのネームバッファオフセット値 /  Tag (offset) */
+    std::string name; /*!< 地形名 */
+    std::string text; /*!< 地形説明 */
+    std::string tag; /*!< 地形特性タグ */
     std::string mimic_tag;
     std::string destroyed_tag;
     FEAT_IDX mimic{}; /*!< 未確定時の外形地形ID / Feature to mimic */
     FEAT_IDX destroyed{}; /*!< *破壊*に巻き込まれた時の地形移行先(未実装？) / Default destroyed state */
-    EnumClassFlagGroup<FloorFeatureType> flags{}; /*!< 地形の基本特性ビット配列 / Flags */
+    EnumClassFlagGroup<TerrainCharacteristics> flags{}; /*!< 地形の基本特性ビット配列 / Flags */
     int16_t priority{}; /*!< 縮小表示で省略する際の表示優先度 / Map priority */
     int16_t change_priority{}; /*!< 地形変化の優先度 / Map priority */
     feature_state state[MAX_FEAT_STATES]{}; /*!< feature_state テーブル */
@@ -55,7 +55,7 @@ struct feature_type {
     char x_char[F_LIT_MAX]{}; /*!< 設定変更後の地形シンボルアルファベット / Desired feature character */
 };
 
-extern std::vector<feature_type> f_info;
+extern std::vector<TerrainType> terrains_info;
 
 /*** Terrain feature variables ***/
 extern FEAT_IDX feat_none;
@@ -117,15 +117,15 @@ extern FEAT_IDX feat_wall_solid;
 extern FEAT_IDX feat_ground_type[100];
 extern FEAT_IDX feat_wall_type[100];
 
-struct floor_type;
+class FloorType;
 class PlayerType;
 bool is_closed_door(PlayerType *player_ptr, FEAT_IDX feat);
 bool is_trap(PlayerType *player_ptr, FEAT_IDX feat);
 void apply_default_feat_lighting(TERM_COLOR *f_attr, char *f_char);
 bool is_ascii_graphics(char x);
-bool permanent_wall(feature_type *f_ptr);
+bool permanent_wall(TerrainType *f_ptr);
 FEAT_IDX feat_locked_door_random(int door_type);
 FEAT_IDX feat_jammed_door_random(int door_type);
 void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat);
 void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat);
-FEAT_IDX conv_dungeon_feat(floor_type *floor_ptr, FEAT_IDX newfeat);
+FEAT_IDX conv_dungeon_feat(FloorType *floor_ptr, FEAT_IDX newfeat);

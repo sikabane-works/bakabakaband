@@ -46,12 +46,12 @@ void PlayerAlignment::update_alignment()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     for (MONSTER_IDX m_idx = floor_ptr->m_max - 1; m_idx >= 1; m_idx--) {
         auto *m_ptr = &floor_ptr->m_list[m_idx];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
-        auto *r_ptr = &r_info[m_ptr->r_idx];
+        auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
-        if (!is_pet(m_ptr)) {
+        if (!m_ptr->is_pet()) {
             continue;
         }
 
@@ -92,7 +92,7 @@ void PlayerAlignment::update_alignment()
 
     for (int i = 0; i < 2; i++) {
         const auto &wielding_weapon = this->player_ptr->inventory_list[INVEN_MAIN_HAND + i];
-        if (!has_melee_weapon(this->player_ptr, INVEN_MAIN_HAND + i) || (wielding_weapon.fixed_artifact_idx != FixedArtifactId::IRON_BALL)) {
+        if (!has_melee_weapon(this->player_ptr, INVEN_MAIN_HAND + i) || !wielding_weapon.is_specific_artifact(FixedArtifactId::IRON_BALL)) {
             continue;
         }
 

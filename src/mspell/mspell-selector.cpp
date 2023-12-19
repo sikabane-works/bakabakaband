@@ -300,7 +300,7 @@ MonsterAbilityType choose_attack_spell(PlayerType *player_ptr, msa_type *msa_ptr
     std::vector<MonsterAbilityType> dispel;
 
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[msa_ptr->m_idx];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->flags2 & RF2_STUPID) {
         return msa_ptr->mspells[randint0(msa_ptr->mspells.size())];
     }
@@ -368,7 +368,7 @@ MonsterAbilityType choose_attack_spell(PlayerType *player_ptr, msa_type *msa_ptr
         switch (m_ptr->r_idx) {
         case MonsterRaceId::BANOR:
         case MonsterRaceId::LUPART:
-            if ((m_ptr->hp < m_ptr->maxhp / 2) && r_info[MonsterRaceId::BANOR].mob_num && r_info[MonsterRaceId::LUPART].mob_num) {
+            if ((m_ptr->hp < m_ptr->maxhp / 2) && monraces_info[MonsterRaceId::BANOR].mob_num && monraces_info[MonsterRaceId::LUPART].mob_num) {
                 success = true;
             }
             break;
@@ -387,7 +387,7 @@ MonsterAbilityType choose_attack_spell(PlayerType *player_ptr, msa_type *msa_ptr
         }
     }
 
-    if (((m_ptr->hp < m_ptr->maxhp / 3) || monster_fear_remaining(m_ptr)) && one_in_(2)) {
+    if (((m_ptr->hp < m_ptr->maxhp / 3) || m_ptr->is_fearful()) && one_in_(2)) {
         if (!escape.empty()) {
             return escape[randint0(escape.size())];
         }
@@ -465,7 +465,7 @@ MonsterAbilityType choose_attack_spell(PlayerType *player_ptr, msa_type *msa_ptr
         }
     }
 
-    if (!haste.empty() && (randint0(100) < 20) && !monster_fast_remaining(m_ptr)) {
+    if (!haste.empty() && (randint0(100) < 20) && !m_ptr->is_accelerated()) {
         return haste[randint0(haste.size())];
     }
 

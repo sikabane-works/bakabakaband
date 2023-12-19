@@ -48,6 +48,7 @@
 #include "status/body-improvement.h"
 #include "status/element-resistance.h"
 #include "status/temporary-resistance.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -79,7 +80,7 @@ bool kawarimi(PlayerType *player_ptr, bool success)
         return false;
     }
 
-    ObjectType forge;
+    ItemEntity forge;
     auto *q_ptr = &forge;
     if (player_ptr->is_dead) {
         return false;
@@ -110,8 +111,8 @@ bool kawarimi(PlayerType *player_ptr, bool success)
 
     teleport_player(player_ptr, 10 + randint1(90), TELEPORT_SPONTANEOUS);
     q_ptr->wipe();
-    const int SV_WOODEN_STATUE = 0;
-    q_ptr->prep(lookup_kind(ItemKindType::STATUE, SV_WOODEN_STATUE));
+    const int sv_wooden_statue = 0;
+    q_ptr->prep(lookup_baseitem_id({ ItemKindType::STATUE, sv_wooden_statue }));
 
     q_ptr->pval = enum2i(MonsterRaceId::NINJA);
     (void)drop_near(player_ptr, q_ptr, -1, y, x);
@@ -170,7 +171,7 @@ bool rush_attack(PlayerType *player_ptr, bool *mdeath)
     bool tmp_mdeath = false;
     bool moved = false;
     for (const auto &[ny, nx] : path_g) {
-        monster_type *m_ptr;
+        MonsterEntity *m_ptr;
 
         if (is_cave_empty_bold(player_ptr, ny, nx) && player_can_enter(player_ptr, floor_ptr->grid_array[ny][nx].feat, 0)) {
             ty = ny;
@@ -232,7 +233,7 @@ bool rush_attack(PlayerType *player_ptr, bool *mdeath)
  */
 void process_surprise_attack(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
-    auto *r_ptr = &r_info[pa_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
     if (!has_melee_weapon(player_ptr, enum2i(INVEN_MAIN_HAND) + pa_ptr->hand) || player_ptr->is_icky_wield[pa_ptr->hand]) {
         return;
     }
@@ -249,13 +250,13 @@ void process_surprise_attack(PlayerType *player_ptr, player_attack_type *pa_ptr)
     }
 
     auto ninja_data = PlayerClass(player_ptr).get_specific_data<ninja_data_type>();
-    if (monster_csleep_remaining(pa_ptr->m_ptr) && pa_ptr->m_ptr->ml) {
+    if (pa_ptr->m_ptr->is_asleep() && pa_ptr->m_ptr->ml) {
         /* Can't backstab creatures that we can't see, right? */
         pa_ptr->backstab = true;
     } else if ((ninja_data && ninja_data->s_stealth) && (randint0(tmp) > (r_ptr->level + 20)) &&
                pa_ptr->m_ptr->ml && !r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
         pa_ptr->surprise_attack = true;
-    } else if (monster_fear_remaining(pa_ptr->m_ptr) && pa_ptr->m_ptr->ml) {
+    } else if (pa_ptr->m_ptr->is_fearful() && pa_ptr->m_ptr->ml) {
         pa_ptr->stab_fleeing = true;
     }
 }
@@ -310,9 +311,9 @@ bool hayagake(PlayerType *player_ptr)
     }
 
     auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x];
-    auto *f_ptr = &f_info[g_ptr->feat];
+    auto *f_ptr = &terrains_info[g_ptr->feat];
 
-    if (f_ptr->flags.has_not(FloorFeatureType::PROJECT) || (!player_ptr->levitation && f_ptr->flags.has(FloorFeatureType::DEEP))) {
+    if (f_ptr->flags.has_not(TerrainCharacteristics::PROJECT) || (!player_ptr->levitation && f_ptr->flags.has(TerrainCharacteristics::DEEP))) {
         msg_print(_("ここでは素早く動けない。", "You cannot run in here."));
     } else {
         set_action(player_ptr, ACTION_HAYAGAKE);

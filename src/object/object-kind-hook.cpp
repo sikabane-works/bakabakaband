@@ -5,139 +5,138 @@
  */
 
 #include "object/object-kind-hook.h"
-#include "object-enchant/tr-types.h"
-#include "object/object-kind.h"
+#include "object/tval-types.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "util/bit-flags-calculator.h"
-
+#include "system/baseitem-info-definition.h"
 #include <algorithm>
+#include <map>
+#include <sstream>
+#include <vector>
 
-/*
- * Special "sval" limit -- first "good" magic/prayer book
- */
+// @brief 3冊目の魔法書からは上質アイテムとして扱う.
 static const int SV_BOOK_MIN_GOOD = 2;
 
 /*!
  * @brief オブジェクトがクロークかどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトがクロークならばTRUEを返す
  */
-bool kind_is_cloak(KIND_OBJECT_IDX k_idx)
+bool kind_is_cloak(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::CLOAK;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::CLOAK;
 }
 
 /*!
  * @brief オブジェクトが竿状武器かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが竿状武器ならばTRUEを返す
  */
-bool kind_is_polearm(KIND_OBJECT_IDX k_idx)
+bool kind_is_polearm(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::POLEARM;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::POLEARM;
 }
 
 /*!
  * @brief オブジェクトが剣かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが剣ならばTRUEを返す
  */
-bool kind_is_sword(KIND_OBJECT_IDX k_idx)
+bool kind_is_sword(short bi_id)
 {
-    auto *k_ptr = &k_info[k_idx];
-    return (k_ptr->tval == ItemKindType::SWORD) && (k_ptr->sval > 2);
+    const auto &k_ref = baseitems_info[bi_id];
+    return (k_ref.bi_key.tval() == ItemKindType::SWORD) && (k_ref.bi_key.sval() > 2);
 }
 
 /*!
  * @brief オブジェクトが魔法書かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが魔法書ならばTRUEを返す
  */
-bool kind_is_book(KIND_OBJECT_IDX k_idx)
+bool kind_is_book(short bi_id)
 {
-    auto *k_ptr = &k_info[k_idx];
-    return (k_ptr->tval >= ItemKindType::LIFE_BOOK) && (k_ptr->tval <= ItemKindType::CRUSADE_BOOK);
+    const auto &k_ref = baseitems_info[bi_id];
+    return (k_ref.bi_key.tval() >= ItemKindType::LIFE_BOOK) && (k_ref.bi_key.tval() <= ItemKindType::CRUSADE_BOOK);
 }
 
 /*!
  * @brief オブジェクトがベースアイテム時点でGOODかどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトがベースアイテム時点でGOODなアイテムならばTRUEを返す
  */
-bool kind_is_good_book(KIND_OBJECT_IDX k_idx)
+bool kind_is_good_book(short bi_id)
 {
-    auto *k_ptr = &k_info[k_idx];
-    return (k_ptr->tval >= ItemKindType::LIFE_BOOK) && (k_ptr->tval <= ItemKindType::CRUSADE_BOOK) && (k_ptr->tval != ItemKindType::ARCANE_BOOK) && (k_ptr->sval > 1);
+    const auto &k_ref = baseitems_info[bi_id];
+    return (k_ref.bi_key.tval() >= ItemKindType::LIFE_BOOK) && (k_ref.bi_key.tval() <= ItemKindType::CRUSADE_BOOK) && (k_ref.bi_key.tval() != ItemKindType::ARCANE_BOOK) && (k_ref.bi_key.sval() > 1);
 }
 
 /*!
  * @brief オブジェクトが鎧かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが鎧ならばTRUEを返す
  */
-bool kind_is_armor(KIND_OBJECT_IDX k_idx)
+bool kind_is_armor(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::HARD_ARMOR;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::HARD_ARMOR;
 }
 
 /*!
  * @brief オブジェクトが打撃武器かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが打撃武器ならばTRUEを返す
  */
-bool kind_is_hafted(KIND_OBJECT_IDX k_idx)
+bool kind_is_hafted(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::HAFTED;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::HAFTED;
 }
 
 /*!
  * @brief オブジェクトが薬かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが薬ならばTRUEを返す
  */
-bool kind_is_potion(KIND_OBJECT_IDX k_idx)
+bool kind_is_potion(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::POTION;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::POTION;
 }
 
 /*!
  * @brief オブジェクトが靴かどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトが靴ならばTRUEを返す
  */
-bool kind_is_boots(KIND_OBJECT_IDX k_idx)
+bool kind_is_boots(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::BOOTS;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::BOOTS;
 }
 
 /*!
  * @brief オブジェクトがアミュレットかどうかを判定する /
- * @param k_idx 判定したいオブジェクトのベースアイテムID
+ * @param bi_id 判定したいオブジェクトのベースアイテムID
  * @return オブジェクトがアミュレットならばTRUEを返す
  */
-bool kind_is_amulet(KIND_OBJECT_IDX k_idx)
+bool kind_is_amulet(short bi_id)
 {
-    return k_info[k_idx].tval == ItemKindType::AMULET;
+    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::AMULET;
 }
 
-bool kind_is_nasty(KIND_OBJECT_IDX k_idx)
+bool kind_is_nasty(short bi_id)
 {
-    object_kind *k_ptr = &k_info[k_idx];
+    BaseitemInfo *k_ptr = &baseitems_info[bi_id];
     return k_ptr->flags.has(TR_NASTY);
 }
 
 /*!
  * @brief ベースアイテムが上質として扱われるかどうかを返す。
  * Hack -- determine if a template is "good"
- * @param k_idx 判定したいベースアイテムのID
+ * @param bi_id 判定したいベースアイテムのID
  * @return ベースアイテムが上質ならばTRUEを返す。
  */
-bool kind_is_good(KIND_OBJECT_IDX k_idx)
+bool kind_is_good(short bi_id)
 {
-    auto *k_ptr = &k_info[k_idx];
-    switch (k_ptr->tval) {
+    const auto &k_ref = baseitems_info[bi_id];
+    switch (k_ref.bi_key.tval()) {
         /* Armor -- Good unless damaged */
     case ItemKindType::HARD_ARMOR:
     case ItemKindType::SOFT_ARMOR:
@@ -148,7 +147,7 @@ bool kind_is_good(KIND_OBJECT_IDX k_idx)
     case ItemKindType::GLOVES:
     case ItemKindType::HELM:
     case ItemKindType::CROWN:
-        return k_ptr->to_a >= 0;
+        return k_ref.to_a >= 0;
 
     /* Weapons -- Good unless damaged */
     case ItemKindType::BOW:
@@ -156,7 +155,7 @@ bool kind_is_good(KIND_OBJECT_IDX k_idx)
     case ItemKindType::HAFTED:
     case ItemKindType::POLEARM:
     case ItemKindType::DIGGING:
-        return (k_ptr->to_h >= 0) && (k_ptr->to_d >= 0);
+        return (k_ref.to_h >= 0) && (k_ref.to_d >= 0);
 
     /* Ammo -- Arrows/Bolts are good */
     case ItemKindType::BOLT:
@@ -176,88 +175,98 @@ bool kind_is_good(KIND_OBJECT_IDX k_idx)
     case ItemKindType::MUSIC_BOOK:
     case ItemKindType::HISSATSU_BOOK:
     case ItemKindType::HEX_BOOK:
-        return k_ptr->sval >= SV_BOOK_MIN_GOOD;
+        return k_ref.bi_key.sval() >= SV_BOOK_MIN_GOOD;
 
     /* Rings -- Rings of Speed are good */
     case ItemKindType::RING:
-        return (k_ptr->sval == SV_RING_SPEED) || (k_ptr->sval == SV_RING_LORDLY);
+        return (k_ref.bi_key.sval() == SV_RING_SPEED) || (k_ref.bi_key.sval() == SV_RING_LORDLY);
 
     /* Amulets -- Amulets of the Magi and Resistance are good */
     case ItemKindType::AMULET:
-        return (k_ptr->sval == SV_AMULET_THE_MAGI) || (k_ptr->sval == SV_AMULET_RESISTANCE);
+        return (k_ref.bi_key.sval() == SV_AMULET_THE_MAGI) || (k_ref.bi_key.sval() == SV_AMULET_RESISTANCE);
     default:
         return false;
     }
 }
 
-static bool comp_tval(const object_kind *a, const object_kind *b)
-{
-    return a->tval < b->tval;
-};
-
-static bool comp_tval_sval(const object_kind *a, const object_kind *b)
-{
-    if (a->tval != b->tval) {
-        return comp_tval(a, b);
-    }
-    return a->sval < b->sval;
-};
-
-/*!
- * @brief k_info配列の各要素を指すポインタをtvalおよびsvalでソートした配列を取得する
- * 最初にtvalによるソートを行い、tvalが同じものはその中でsvalによるソートが行われた配列となる
- * @return 上述の処理を行った配列(静的変数)への参照を返す
+/*
+ * @brief 特定のtvalとランダムなsvalの組み合わせからベースアイテムを選択するためのキャッシュを生成する
+ * @return tvalをキーに、svalのリストを値とした辞書
  */
-static const std::vector<const object_kind *> &get_sorted_k_info()
+static const std::map<ItemKindType, std::vector<int>> &create_baseitems_cache()
 {
-    static std::vector<const object_kind *> sorted_k_info_cache;
-
-    if (sorted_k_info_cache.empty()) {
-        for (const auto &k_ref : k_info) {
-            if (k_ref.tval == ItemKindType::NONE) {
-                continue;
-            }
-            sorted_k_info_cache.push_back(&k_ref);
+    static std::map<ItemKindType, std::vector<int>> cache;
+    for (const auto &baseitem : baseitems_info) {
+        const auto &bi_key = baseitem.bi_key;
+        const auto tval = bi_key.tval();
+        if (tval == ItemKindType::NONE) {
+            continue;
         }
 
-        std::sort(sorted_k_info_cache.begin(), sorted_k_info_cache.end(), comp_tval_sval);
+        cache[tval].push_back(bi_key.sval().value());
     }
 
-    return sorted_k_info_cache;
+    return cache;
+}
+
+/*
+ * @brief tvalとbi_key.svalに対応する、BaseitenDefinitions のIDを返すためのキャッシュを生成する
+ * @return tvalと(実在する)svalの組み合わせをキーに、ベースアイテムIDを値とした辞書
+ */
+static const std::map<BaseitemKey, short> &create_baseitem_index_chache()
+{
+    static std::map<BaseitemKey, short> cache;
+    for (const auto &baseitem : baseitems_info) {
+        const auto &bi_key = baseitem.bi_key;
+        if (bi_key.tval() == ItemKindType::NONE) {
+            continue;
+        }
+
+        cache[bi_key] = baseitem.idx;
+    }
+
+    return cache;
 }
 
 /*!
  * @brief tvalとsvalに対応するベースアイテムのIDを検索する
- * Find the index of the object_kind with the given tval and sval
- * svalにSV_ANYが渡された場合はtvalが一致するすべてのベースアイテムから等確率でランダムに1つを選択する
- * @param tval 検索したいベースアイテムのtval
- * @param sval 検索したいベースアイテムのsval
+ * @param key 検索したいベースアイテムの、tval/svalのペア (svalがnulloptの可能性はない)
  * @return tvalとsvalに対応するベースアイテムが存在すればそのID、存在しなければ0
+ * @details 存在しないことはリファクタリング成果により考えにくく、自作の不存在例外を投げればいいはず.
+ * 但し呼び出し側全部の処理を保証するのが面倒なので旧処理のままとする.
  */
-KIND_OBJECT_IDX lookup_kind(ItemKindType tval, OBJECT_SUBTYPE_VALUE sval)
+static short exe_lookup(const BaseitemKey &key)
 {
-    const auto &sorted_k_info = get_sorted_k_info();
-
-    object_kind k_obj;
-    k_obj.tval = tval;
-    k_obj.sval = sval;
-
-    if (sval == SV_ANY) {
-        auto [begin, end] = std::equal_range(sorted_k_info.begin(), sorted_k_info.end(), &k_obj, comp_tval);
-        if (auto candidates_num = std::distance(begin, end);
-            candidates_num > 0) {
-            auto choice = randint0(candidates_num);
-            return (*std::next(begin, choice))->idx;
-        }
-
+    static const auto &cache = create_baseitem_index_chache();
+    const auto itr = cache.find(key);
+    if (itr == cache.end()) {
         return 0;
     }
 
-    auto it = std::lower_bound(sorted_k_info.begin(), sorted_k_info.end(), &k_obj, comp_tval_sval);
-    if (it != sorted_k_info.end() &&
-        (((*it)->tval == tval) && ((*it)->sval == sval))) {
-        return (*it)->idx;
+    return itr->second;
+}
+
+/*!
+ * @brief ベースアイテムのtval/svalからIDを引いて返す
+ * @param key tval/svalのペア、但しsvalはランダム (nullopt)の可能性がある
+ * @return ベースアイテムID
+ * @details 「tvalが不存在」という状況は事実上ないが、辞書探索のお作法として「有無チェック」を入れておく.
+ * 万が一tvalがキャッシュになかったらベースアイテムID 0を返す.
+ */
+short lookup_baseitem_id(const BaseitemKey &key)
+{
+    const auto sval = key.sval();
+    if (sval.has_value()) {
+        return exe_lookup(key);
     }
 
-    return 0;
+    static const auto &cache = create_baseitems_cache();
+    const auto itr = cache.find(key.tval());
+    if (itr == cache.end()) {
+        return 0;
+    }
+
+    const auto &svals = itr->second;
+    const auto sval_indice = randint0(svals.size());
+    return exe_lookup({ key.tval(), svals.at(sval_indice) });
 }

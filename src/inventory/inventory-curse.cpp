@@ -5,7 +5,6 @@
 #include "core/disturbance.h"
 #include "core/player-redraw-types.h"
 #include "core/player-update-types.h"
-#include "dungeon/dungeon.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/floor-mode-changer.h"
@@ -32,6 +31,7 @@
 #include "spell/summon-types.h"
 #include "status/bad-status-setter.h"
 #include "status/buff-setter.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -71,7 +71,7 @@ static bool is_specific_curse(CurseTraitType flag)
     }
 }
 
-static void choise_cursed_item(CurseTraitType flag, ObjectType *o_ptr, int *choices, int *number, int item_num)
+static void choise_cursed_item(CurseTraitType flag, ItemEntity *o_ptr, int *choices, int *number, int item_num)
 {
     if (!is_specific_curse(flag)) {
         return;
@@ -149,7 +149,7 @@ static void choise_cursed_item(CurseTraitType flag, ObjectType *o_ptr, int *choi
  * @return 該当の呪いが一つでもあった場合にランダムに選ばれた装備品のオブジェクト構造体参照ポインタを返す。\n
  * 呪いがない場合nullptrを返す。
  */
-ObjectType *choose_cursed_obj_name(PlayerType *player_ptr, CurseTraitType flag)
+ItemEntity *choose_cursed_obj_name(PlayerType *player_ptr, CurseTraitType flag)
 {
     int choices[INVEN_TOTAL - INVEN_MAIN_HAND];
     int number = 0;
@@ -182,7 +182,7 @@ static void curse_teleport(PlayerType *player_ptr)
     }
 
     GAME_TEXT o_name[MAX_NLEN];
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     int i_keep = 0, count = 0;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         o_ptr = &player_ptr->inventory_list[i];
@@ -223,7 +223,8 @@ static void curse_teleport(PlayerType *player_ptr)
  */
 static void occur_chainsword_effect(PlayerType *player_ptr)
 {
-    if ((player_ptr->cursed_special.has_not(CurseSpecialTraitType::CHAINSWORD)) || !one_in_(CHAINSWORD_NOISE)) {
+    constexpr auto chance_noise = 100;
+    if ((player_ptr->cursed_special.has_not(CurseSpecialTraitType::CHAINSWORD)) || !one_in_(chance_noise)) {
         return;
     }
 
@@ -259,7 +260,7 @@ static void multiply_low_curse(PlayerType *player_ptr)
         return;
     }
 
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = choose_cursed_obj_name(player_ptr, CurseTraitType::ADD_L_CURSE);
     auto new_curse = get_curse(0, o_ptr);
     if (o_ptr->curse_flags.has(new_curse)) {
@@ -280,7 +281,7 @@ static void multiply_high_curse(PlayerType *player_ptr)
         return;
     }
 
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = choose_cursed_obj_name(player_ptr, CurseTraitType::ADD_H_CURSE);
     auto new_curse = get_curse(1, o_ptr);
     if (o_ptr->curse_flags.has(new_curse)) {
@@ -301,7 +302,7 @@ static void persist_curse(PlayerType *player_ptr)
         return;
     }
 
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = choose_cursed_obj_name(player_ptr, CurseTraitType::PERSISTENT_CURSE);
     if (o_ptr->curse_flags.has(CurseTraitType::HEAVY_CURSE)) {
         return;
@@ -407,7 +408,7 @@ static void curse_berserk_rage(PlayerType *player_ptr)
     msg_print(_("ウガァァア！", "RAAAAGHH!"));
     msg_print(_("激怒の発作に襲われた！", "You feel a fit of rage coming over you!"));
     (void)set_shero(player_ptr, duration, false);
-    (void)BadStatusSetter(player_ptr).fear(0);
+    (void)BadStatusSetter(player_ptr).set_fear(0);
 }
 
 static void curse_drain_hp(PlayerType *player_ptr)
@@ -445,7 +446,7 @@ static void curse_megaton_coin(PlayerType *player_ptr)
     if (!get_player_flags(player_ptr, TR_MEGATON_COIN)) {
         return;
     }
-    auto d_ptr = &d_info[player_ptr->current_floor_ptr->dungeon_idx];
+    auto d_ptr = &dungeons_info[player_ptr->current_floor_ptr->dungeon_idx];
     if (!one_in_(364) || player_ptr->current_floor_ptr->dun_level == 0 || player_ptr->current_floor_ptr->dun_level == d_ptr->maxdepth ||
         inside_quest(player_ptr->current_floor_ptr->quest_number) || player_ptr->current_floor_ptr->inside_arena) {
         return;
@@ -472,7 +473,8 @@ static void occur_curse_effects(PlayerType *player_ptr)
 
     curse_teleport(player_ptr);
     occur_chainsword_effect(player_ptr);
-    if (player_ptr->cursed.has(CurseTraitType::TY_CURSE) && one_in_(TY_CURSE_CHANCE)) {
+    constexpr auto chance_ty_curse = 200;
+    if (player_ptr->cursed.has(CurseTraitType::TY_CURSE) && one_in_(chance_ty_curse)) {
         int count = 0;
         (void)activate_ty_curse(player_ptr, false, &count);
     }
@@ -507,7 +509,7 @@ void execute_cursed_items_effect(PlayerType *player_ptr)
     }
 
     auto *o_ptr = &player_ptr->inventory_list[INVEN_LITE];
-    if (o_ptr->fixed_artifact_idx != FixedArtifactId::JUDGE) {
+    if (!o_ptr->is_specific_artifact(FixedArtifactId::JUDGE)) {
         return;
     }
 

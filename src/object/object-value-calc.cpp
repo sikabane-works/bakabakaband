@@ -5,8 +5,8 @@
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
 #include "object/object-flags.h"
-#include "object/object-kind.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -18,10 +18,10 @@
  * @param plusses フラグに与える価格の基本重み
  * @return オブジェクトのフラグ価格
  */
-PRICE flag_cost(const ObjectType *o_ptr, int plusses)
+PRICE flag_cost(const ItemEntity *o_ptr, int plusses)
 {
     PRICE total = 0;
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
     auto flags = object_flags(o_ptr);
 
     /*
@@ -31,10 +31,10 @@ PRICE flag_cost(const ObjectType *o_ptr, int plusses)
     flags.reset(k_ptr->flags);
 
     if (o_ptr->is_fixed_artifact()) {
-        const auto &a_ref = a_info.at(o_ptr->fixed_artifact_idx);
+        const auto &a_ref = artifacts_info.at(o_ptr->fixed_artifact_idx);
         flags.reset(a_ref.flags);
     } else if (o_ptr->is_ego()) {
-        const auto &e_ref = e_info[o_ptr->ego_idx];
+        const auto &e_ref = egos_info[o_ptr->ego_idx];
         flags.reset(e_ref.flags);
     }
 

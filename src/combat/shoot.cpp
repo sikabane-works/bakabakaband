@@ -46,7 +46,6 @@
 #include "object/object-broken.h"
 #include "object/object-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "object/object-mark-types.h"
 #include "player-base/player-class.h"
 #include "player-info/class-info.h"
@@ -57,6 +56,7 @@
 #include "player/player-status-table.h"
 #include "sv-definition/sv-bow-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -78,7 +78,7 @@
  * @param arrow_ptr 矢弾のオブジェクト構造体参照ポインタ
  * @return スナイパーの射撃属性、弓矢の属性を考慮する。デフォルトはAttributeType::PLAYER_SHOOT。
  */
-AttributeFlags shot_attribute(PlayerType *player_ptr, ObjectType *bow_ptr, ObjectType *arrow_ptr, SPELL_IDX snipe_type)
+AttributeFlags shot_attribute(PlayerType *player_ptr, ItemEntity *bow_ptr, ItemEntity *arrow_ptr, SPELL_IDX snipe_type)
 {
     AttributeFlags attribute_flags{};
     attribute_flags.set(AttributeType::PLAYER_SHOOT);
@@ -151,11 +151,11 @@ AttributeFlags shot_attribute(PlayerType *player_ptr, ObjectType *bow_ptr, Objec
  * @return スレイ倍率をかけたダメージ量
  */
 static MULTIPLY calc_shot_damage_with_slay(
-    PlayerType *player_ptr, ObjectType *bow_ptr, ObjectType *arrow_ptr, int tdam, monster_type *monster_ptr, SPELL_IDX snipe_type)
+    PlayerType *player_ptr, ItemEntity *bow_ptr, ItemEntity *arrow_ptr, int tdam, MonsterEntity *monster_ptr, SPELL_IDX snipe_type)
 {
     MULTIPLY mult = 10;
 
-    monster_race *race_ptr = &r_info[monster_ptr->r_idx];
+    MonsterRaceInfo *race_ptr = &monraces_info[monster_ptr->r_idx];
 
     TrFlags flags{};
     auto arrow_flags = object_flags(arrow_ptr);
@@ -348,8 +348,8 @@ static MULTIPLY calc_shot_damage_with_slay(
                 mult = 30;
             }
 
-            auto can_eliminate_smaug = arrow_ptr->fixed_artifact_idx == FixedArtifactId::BARD_ARROW;
-            can_eliminate_smaug &= player_ptr->inventory_list[INVEN_BOW].fixed_artifact_idx == FixedArtifactId::BARD;
+            auto can_eliminate_smaug = arrow_ptr->is_specific_artifact(FixedArtifactId::BARD_ARROW);
+            can_eliminate_smaug &= player_ptr->inventory_list[INVEN_BOW].is_specific_artifact(FixedArtifactId::BARD);
             can_eliminate_smaug &= monster_ptr->r_idx == MonsterRaceId::SMAUG;
             if (can_eliminate_smaug) {
                 mult *= 5;
@@ -485,7 +485,7 @@ static MULTIPLY calc_shot_damage_with_slay(
  * Note that Bows of "Extra Shots" give an extra shot.
  * </pre>
  */
-void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPELL_IDX snipe_type)
+void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPELL_IDX snipe_type)
 {
     DIRECTION dir;
     int i;
@@ -495,9 +495,9 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
     int cur_dis, visible;
     PERCENTAGE j;
 
-    ObjectType forge;
-    ObjectType *q_ptr;
-    ObjectType *o_ptr;
+    ItemEntity forge;
+    ItemEntity *q_ptr;
+    ItemEntity *o_ptr;
 
     AttributeFlags attribute_flags{};
     attribute_flags.set(AttributeType::PLAYER_SHOOT);
@@ -659,7 +659,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
             if (snipe_type == SP_KILL_WALL) {
                 g_ptr = &player_ptr->current_floor_ptr->grid_array[ny][nx];
 
-                if (g_ptr->cave_has_flag(FloorFeatureType::HURT_ROCK) && !g_ptr->m_idx) {
+                if (g_ptr->cave_has_flag(TerrainCharacteristics::HURT_ROCK) && !g_ptr->m_idx) {
                     if (any_bits(g_ptr->info, (CAVE_MARK))) {
                         msg_print(_("岩が砕け散った。", "Wall rocks were shattered."));
                     }
@@ -668,7 +668,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
                     set_bits(player_ptr->update, PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE);
 
                     /* Destroy the wall */
-                    cave_alter_feat(player_ptr, ny, nx, FloorFeatureType::HURT_ROCK);
+                    cave_alter_feat(player_ptr, ny, nx, TerrainCharacteristics::HURT_ROCK);
 
                     hit_body = true;
                     break;
@@ -676,7 +676,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
             }
 
             /* Stopped by walls/doors */
-            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, FloorFeatureType::PROJECT) && !player_ptr->current_floor_ptr->grid_array[ny][nx].m_idx) {
+            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, TerrainCharacteristics::PROJECT) && !player_ptr->current_floor_ptr->grid_array[ny][nx].m_idx) {
                 break;
             }
 
@@ -692,8 +692,8 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
 
             /* The player can see the (on screen) missile */
             if (panel_contains(ny, nx) && player_can_see_bold(player_ptr, ny, nx)) {
-                auto c = object_char(q_ptr);
-                TERM_COLOR a = object_attr(q_ptr);
+                const auto a = q_ptr->get_color();
+                const auto c = q_ptr->get_symbol();
 
                 /* Draw, Hilite, Fresh, Pause, Erase */
                 if (delay_factor > 0) {
@@ -739,7 +739,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
                 grid_type *c_mon_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
                 auto *m_ptr = &player_ptr->current_floor_ptr->m_list[c_mon_ptr->m_idx];
-                auto *r_ptr = &r_info[m_ptr->r_idx];
+                auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
                 /* Check the visibility */
                 visible = m_ptr->ml;
@@ -747,7 +747,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
                 /* Note the collision */
                 hit_body = true;
 
-                if (monster_csleep_remaining(m_ptr)) {
+                if (m_ptr->is_asleep()) {
                     if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5)) {
                         chg_virtue(player_ptr, V_COMPASSION, -1);
                     }
@@ -849,7 +849,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
 
                     /* Hit the monster, check for death */
                     MonsterDamageProcessor mdp(player_ptr, c_mon_ptr->m_idx, tdam, &fear, attribute_flags);
-                    if (mdp.mon_take_hit(extract_note_dies(real_r_idx(m_ptr)))) {
+                    if (mdp.mon_take_hit(extract_note_dies(m_ptr->get_real_r_idx()))) {
                         /* Dead monster */
                     }
 
@@ -958,7 +958,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
             if (!o_idx) {
                 msg_format(_("%sはどこかへ行った。", "The %s went somewhere."), o_name);
                 if (q_ptr->is_fixed_artifact()) {
-                    a_info.at(j_ptr->fixed_artifact_idx).is_generated = false;
+                    artifacts_info.at(j_ptr->fixed_artifact_idx).is_generated = false;
                 }
                 return;
             }
@@ -977,7 +977,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
 
             /* Carry object */
             m_ptr->hold_o_idx_list.add(player_ptr->current_floor_ptr, o_idx);
-        } else if (cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FloorFeatureType::PROJECT)) {
+        } else if (cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
             /* Drop (or break) near that location */
             (void)drop_near(player_ptr, q_ptr, j, y, x);
         } else {
@@ -1002,11 +1002,11 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ObjectType *j_ptr, SPE
  * @return 命中と判定された場合TRUEを返す
  * @note Always miss 5%, always hit 5%, otherwise random.
  */
-bool test_hit_fire(PlayerType *player_ptr, int chance, monster_type *m_ptr, int vis, char *o_name)
+bool test_hit_fire(PlayerType *player_ptr, int chance, MonsterEntity *m_ptr, int vis, char *o_name)
 {
     int k;
     ARMOUR_CLASS ac;
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
     /* Percentile dice */
     k = randint1(100);
@@ -1039,7 +1039,7 @@ bool test_hit_fire(PlayerType *player_ptr, int chance, monster_type *m_ptr, int 
     ac = r_ptr->ac;
     ac = ac * (8 - sniper_concent) / 8;
 
-    if (m_ptr->r_idx == MonsterRaceId::GOEMON && !monster_csleep_remaining(m_ptr)) {
+    if (m_ptr->r_idx == MonsterRaceId::GOEMON && !m_ptr->is_asleep()) {
         ac *= 3;
     }
 
@@ -1050,7 +1050,7 @@ bool test_hit_fire(PlayerType *player_ptr, int chance, monster_type *m_ptr, int 
 
     /* Power competes against armor */
     if (randint0(chance) < (ac * 3 / 4)) {
-        if (m_ptr->r_idx == MonsterRaceId::GOEMON && !monster_csleep_remaining(m_ptr)) {
+        if (m_ptr->r_idx == MonsterRaceId::GOEMON && !m_ptr->is_asleep()) {
             GAME_TEXT m_name[MAX_NLEN];
             monster_desc(player_ptr, m_name, m_ptr, 0);
             msg_format(_("%sは%sを斬り捨てた！", "%s cuts down %s!"), m_name, o_name);

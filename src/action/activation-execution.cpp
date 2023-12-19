@@ -28,7 +28,6 @@
 #include "object-enchant/activation-info-table.h"
 #include "object-enchant/object-ego.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "racial/racial-android.h"
@@ -45,6 +44,7 @@
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-type-definition.h"
 #include "system/object-type-definition.h"
@@ -65,8 +65,8 @@
 static void decide_activation_level(ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->is_fixed_artifact()) {
-        ae_ptr->lev = a_info.at(ae_ptr->o_ptr->fixed_artifact_idx).level;
-        ae_ptr->broken = a_info.at(ae_ptr->o_ptr->fixed_artifact_idx).broken_rate;
+        ae_ptr->lev = artifacts_info.at(ae_ptr->o_ptr->fixed_artifact_idx).level;
+        ae_ptr->broken = artifacts_info.at(ae_ptr->o_ptr->fixed_artifact_idx).broken_rate;
         return;
     }
 
@@ -80,8 +80,8 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->is_ego()) {
-        ae_ptr->lev = e_info[ae_ptr->o_ptr->ego_idx].level;
-        ae_ptr->broken = e_info[ae_ptr->o_ptr->ego_idx].broken_rate;
+        ae_ptr->lev = egos_info[ae_ptr->o_ptr->ego_idx].level;
+        ae_ptr->broken = egos_info[ae_ptr->o_ptr->ego_idx].broken_rate;
     }
 }
 
@@ -164,7 +164,7 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return 発動実行の是非を返す。
  */
-static bool activate_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     auto tmp_act_ptr = find_activation_info(o_ptr);
     if (!tmp_act_ptr.has_value()) {
@@ -222,7 +222,8 @@ static bool activate_whistle(PlayerType *player_ptr, ae_type *ae_ptr)
 
     std::vector<MONSTER_IDX> who;
     for (MONSTER_IDX pet_ctr = player_ptr->current_floor_ptr->m_max - 1; pet_ctr >= 1; pet_ctr--) {
-        if (is_pet(&player_ptr->current_floor_ptr->m_list[pet_ctr]) && (player_ptr->riding != pet_ctr)) {
+        const auto &m_ref = player_ptr->current_floor_ptr->m_list[pet_ctr];
+        if (m_ref.is_pet() && (player_ptr->riding != pet_ctr)) {
             who.push_back(pet_ctr);
         }
     }
@@ -328,7 +329,7 @@ static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     bool activated = false;
-    if (item <= INVEN_PACK && k_info[player_ptr->inventory_list[item].k_idx].flags.has_not(TR_INVEN_ACTIVATE)) {
+    if (item <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[item].k_idx].flags.has_not(TR_INVEN_ACTIVATE)) {
         msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
         return;
     }

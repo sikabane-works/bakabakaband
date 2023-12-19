@@ -21,7 +21,7 @@ std::vector<autopick_type> autopick_list; /*!< 自動拾い/破壊設定構造�
  * When always_pickup is 'yes', we disable auto-destroyer function of
  * auto-picker/destroyer, and do only easy-auto-destroyer.
  */
-ObjectType autopick_last_destroyed_object;
+ItemEntity autopick_last_destroyed_object;
 
 /*!
  * @brief Free memory of lines_list.
@@ -52,14 +52,14 @@ int get_com_id(char key)
 /*!
  * @brief Auto inscription
  */
-void auto_inscribe_item(PlayerType *player_ptr, ObjectType *o_ptr, int idx)
+void auto_inscribe_item(PlayerType *player_ptr, ItemEntity *o_ptr, int idx)
 {
     if (idx < 0 || autopick_list[idx].insc.empty()) {
         return;
     }
 
     if (!o_ptr->inscription) {
-        o_ptr->inscription = quark_add(autopick_list[idx].insc.c_str());
+        o_ptr->inscription = quark_add(autopick_list[idx].insc.data());
     }
 
     player_ptr->window_flags |= (PW_EQUIP | PW_INVEN);

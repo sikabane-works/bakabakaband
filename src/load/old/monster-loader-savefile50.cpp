@@ -17,7 +17,7 @@ MonsterLoader50::MonsterLoader50()
 /*!
  * @brief モンスターを読み込む(v3.0.0 Savefile ver50まで)
  */
-void MonsterLoader50::rd_monster(monster_type *m_ptr_)
+void MonsterLoader50::rd_monster(MonsterEntity *m_ptr_)
 {
     this->m_ptr = m_ptr_;
 
@@ -25,7 +25,7 @@ void MonsterLoader50::rd_monster(monster_type *m_ptr_)
     this->m_ptr->r_idx = i2enum<MonsterRaceId>(rd_s16b());
 
     if (loading_savefile_version_is_older_than(16)) {
-        monster_race *r_ptr = &r_info[m_ptr->r_idx];
+        MonsterRaceInfo *r_ptr = &monraces_info[m_ptr->r_idx];
         m_ptr->alliance_idx = r_ptr->alliance_idx;
     } else {
         m_ptr->alliance_idx = i2enum<AllianceType>(rd_s32b());

@@ -19,7 +19,7 @@
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return オブジェクトが報酬対象になるならTRUEを返す
  */
-bool object_is_bounty(PlayerType *player_ptr, ObjectType *o_ptr)
+bool object_is_bounty(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (o_ptr->tval != ItemKindType::CORPSE) {
         return false;
@@ -30,7 +30,7 @@ bool object_is_bounty(PlayerType *player_ptr, ObjectType *o_ptr)
     }
 
     auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if (player_ptr->knows_daily_bounty && (streq(r_info[corpse_r_idx].name.c_str(), r_info[w_ptr->today_mon].name.c_str()))) {
+    if (player_ptr->knows_daily_bounty && (streq(monraces_info[corpse_r_idx].name.data(), monraces_info[w_ptr->today_mon].name.data()))) {
         return true;
     }
 
@@ -46,7 +46,7 @@ bool object_is_bounty(PlayerType *player_ptr, ObjectType *o_ptr)
  * @param o_ptr 特性短縮表記を得たいオブジェクト構造体の参照ポインタ
  * @return 現在クエスト達成目的のアイテムならばTRUEを返す。
  */
-bool object_is_quest_target(QuestId quest_idx, ObjectType *o_ptr)
+bool object_is_quest_target(QuestId quest_idx, ItemEntity *o_ptr)
 {
     if (!inside_quest(quest_idx)) {
         return false;
@@ -58,10 +58,10 @@ bool object_is_quest_target(QuestId quest_idx, ObjectType *o_ptr)
         return false;
     }
 
-    const auto &a_ref = a_info.at(a_idx);
+    const auto &a_ref = artifacts_info.at(a_idx);
     if (a_ref.gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
         return false;
     }
 
-    return (o_ptr->tval == a_ref.tval) && (o_ptr->sval == a_ref.sval);
+    return (o_ptr->tval == a_ref.bi_key.tval()) && (o_ptr->sval == a_ref.bi_key.sval());
 }

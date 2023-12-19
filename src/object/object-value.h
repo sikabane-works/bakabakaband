@@ -2,7 +2,6 @@
 
 #include "system/angband.h"
 
-class ObjectType;
+class ItemEntity;
 class PlayerType;
-PRICE object_value(const ObjectType *o_ptr);
-PRICE object_value_real(const ObjectType *o_ptr);
+PRICE object_value_real(const ItemEntity *o_ptr);

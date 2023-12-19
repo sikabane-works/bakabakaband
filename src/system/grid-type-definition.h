@@ -44,8 +44,8 @@ enum flow_type {
     FLOW_MAX = 2,
 };
 
-struct monster_race;
-enum class FloorFeatureType;
+class MonsterRaceInfo;
+enum class TerrainCharacteristics;
 struct grid_type {
 public:
     BIT_FLAGS info{}; /* Hack -- grid flags */
@@ -82,12 +82,12 @@ public:
     bool is_mirror() const;
     bool is_rune_protection() const;
     bool is_rune_explosion() const;
-    byte get_cost(monster_race *r_ptr) const;
-    byte get_distance(monster_race *r_ptr) const;
+    byte get_cost(MonsterRaceInfo *r_ptr) const;
+    byte get_distance(MonsterRaceInfo *r_ptr) const;
     FEAT_IDX get_feat_mimic() const;
-    bool cave_has_flag(FloorFeatureType feature_flags) const;
+    bool cave_has_flag(TerrainCharacteristics feature_flags) const;
     bool is_symbol(const int ch) const;
 
 private:
-    flow_type get_grid_flow_type(monster_race *r_ptr) const;
+    flow_type get_grid_flow_type(MonsterRaceInfo *r_ptr) const;
 };

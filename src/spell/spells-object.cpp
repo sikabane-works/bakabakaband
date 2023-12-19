@@ -29,7 +29,6 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-info/class-info.h"
 #include "racial/racial-android.h"
@@ -37,6 +36,7 @@
 #include "sv-definition/sv-scroll-types.h"
 #include "sv-definition/sv-weapon-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
@@ -64,32 +64,39 @@ enum class AmusementFlagType : byte {
     PILE, /* Drop 1-99 pile objects for one type */
 };
 
-struct amuse_type {
-    ItemKindType tval;
-    OBJECT_SUBTYPE_VALUE sval;
+class AmuseDefinition {
+public:
+    AmuseDefinition(const BaseitemKey &key, PERCENTAGE prob, AmusementFlagType flag)
+        : key(key)
+        , prob(prob)
+        , flag(flag)
+    {
+    }
+
+    BaseitemKey key;
     PERCENTAGE prob;
     AmusementFlagType flag;
 };
 
-static constexpr std::array<amuse_type, 13> amuse_info = { {
-    { ItemKindType::BOTTLE, SV_ANY, 5, AmusementFlagType::NOTHING },
-    { ItemKindType::JUNK, SV_ANY, 3, AmusementFlagType::MULTIPLE },
-    { ItemKindType::SPIKE, SV_ANY, 10, AmusementFlagType::PILE },
-    { ItemKindType::STATUE, SV_ANY, 15, AmusementFlagType::NOTHING },
-    { ItemKindType::CORPSE, SV_ANY, 15, AmusementFlagType::NO_UNIQUE },
-    { ItemKindType::SKELETON, SV_ANY, 10, AmusementFlagType::NO_UNIQUE },
-    { ItemKindType::FIGURINE, SV_ANY, 10, AmusementFlagType::NO_UNIQUE },
-    { ItemKindType::READING_MATTER, SV_ANY, 1, AmusementFlagType::NOTHING },
-    { ItemKindType::POLEARM, SV_TSURIZAO, 3, AmusementFlagType::NOTHING }, // Fishing Pole of Taikobo
-    { ItemKindType::SWORD, SV_BROKEN_DAGGER, 3, AmusementFlagType::FIXED_ART }, // Broken Dagger of Magician
-    { ItemKindType::SWORD, SV_BROKEN_DAGGER, 10, AmusementFlagType::NOTHING },
-    { ItemKindType::SWORD, SV_BROKEN_SWORD, 5, AmusementFlagType::NOTHING },
-    { ItemKindType::SCROLL, SV_SCROLL_AMUSEMENT, 10, AmusementFlagType::NOTHING },
+static const std::array<AmuseDefinition, 13> amuse_info = { {
+    { { ItemKindType::BOTTLE }, 5, AmusementFlagType::NOTHING },
+    { { ItemKindType::JUNK }, 3, AmusementFlagType::MULTIPLE },
+    { { ItemKindType::SPIKE }, 10, AmusementFlagType::PILE },
+    { { ItemKindType::STATUE }, 15, AmusementFlagType::NOTHING },
+    { { ItemKindType::CORPSE }, 15, AmusementFlagType::NO_UNIQUE },
+    { { ItemKindType::SKELETON }, 10, AmusementFlagType::NO_UNIQUE },
+    { { ItemKindType::FIGURINE }, 10, AmusementFlagType::NO_UNIQUE },
+    { { ItemKindType::READING_MATTER }, 1, AmusementFlagType::NOTHING },
+    { { ItemKindType::POLEARM, SV_TSURIZAO }, 3, AmusementFlagType::NOTHING }, // Fishing Pole of Taikobo
+    { { ItemKindType::SWORD, SV_BROKEN_DAGGER }, 3, AmusementFlagType::FIXED_ART }, // Broken Dagger of Magician
+    { { ItemKindType::SWORD, SV_BROKEN_DAGGER }, 10, AmusementFlagType::NOTHING },
+    { { ItemKindType::SWORD, SV_BROKEN_SWORD }, 5, AmusementFlagType::NOTHING },
+    { { ItemKindType::SCROLL, SV_SCROLL_AMUSEMENT }, 10, AmusementFlagType::NOTHING },
 } };
 
 static std::optional<FixedArtifactId> sweep_amusement_artifact(const bool insta_art, const short k_idx)
 {
-    for (const auto &[a_idx, a_ref] : a_info) {
+    for (const auto &[a_idx, a_ref] : artifacts_info) {
         if (a_idx == FixedArtifactId::NONE) {
             continue;
         }
@@ -98,11 +105,7 @@ static std::optional<FixedArtifactId> sweep_amusement_artifact(const bool insta_
             continue;
         }
 
-        if (a_ref.tval != k_info[k_idx].tval) {
-            continue;
-        }
-
-        if (a_ref.sval != k_info[k_idx].sval) {
+        if (a_ref.bi_key != baseitems_info[k_idx].bi_key) {
             continue;
         }
 
@@ -124,7 +127,7 @@ static std::optional<FixedArtifactId> sweep_amusement_artifact(const bool insta_
  */
 void generate_amusement(PlayerType *player_ptr, int num, bool known)
 {
-    ProbabilityTable<const amuse_type *> pt;
+    ProbabilityTable<const AmuseDefinition *> pt;
     for (const auto &am_ref : amuse_info) {
         pt.entry_item(&am_ref, am_ref.prob);
     }
@@ -132,12 +135,12 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
     while (num > 0) {
         auto am_ptr = pt.pick_one_at_random();
 
-        const auto k_idx = lookup_kind(am_ptr->tval, am_ptr->sval);
+        const auto k_idx = lookup_baseitem_id(am_ptr->key);
         if (k_idx == 0) {
             continue;
         }
 
-        const auto insta_art = k_info[k_idx].gen_flags.has(ItemGenerationTraitType::INSTA_ART);
+        const auto insta_art = baseitems_info[k_idx].gen_flags.has(ItemGenerationTraitType::INSTA_ART);
         const auto flag = am_ptr->flag;
         const auto fixed_art = flag == AmusementFlagType::FIXED_ART;
         std::optional<FixedArtifactId> opt_a_idx(std::nullopt);
@@ -148,7 +151,7 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
             }
         }
 
-        ObjectType item;
+        ItemEntity item;
         item.prep(k_idx);
         if (opt_a_idx.has_value()) {
             item.fixed_artifact_idx = opt_a_idx.value();
@@ -156,7 +159,7 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
 
         ItemMagicApplier(player_ptr, &item, 1, AM_NO_FIXED_ART).execute();
         if (flag == AmusementFlagType::NO_UNIQUE) {
-            if (r_info[i2enum<MonsterRaceId>(item.pval)].kind_flags.has(MonsterKindType::UNIQUE)) {
+            if (monraces_info[i2enum<MonsterRaceId>(item.pval)].kind_flags.has(MonsterKindType::UNIQUE)) {
                 continue;
             }
         }
@@ -192,8 +195,8 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
  */
 void acquirement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool great, bool special, bool known)
 {
-    ObjectType *i_ptr;
-    ObjectType ObjectType_body;
+    ItemEntity *i_ptr;
+    ItemEntity ObjectType_body;
     BIT_FLAGS mode = AM_GOOD | (great || special ? AM_GREAT : AM_NONE) | (special ? AM_SPECIAL : AM_NONE);
 
     /* Acquirement */
@@ -224,7 +227,7 @@ void acquirement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool
 bool curse_armor(PlayerType *player_ptr)
 {
     /* Curse the body armor */
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = &player_ptr->inventory_list[INVEN_BODY];
 
     if (!o_ptr->k_idx) {
@@ -280,7 +283,7 @@ bool curse_armor(PlayerType *player_ptr)
  * @return 何も持っていない場合を除き、常にTRUEを返す
  * @todo 元のreturnは間違っているが、修正後の↓文がどれくらい正しいかは要チェック
  */
-bool curse_weapon_object(PlayerType *player_ptr, bool force, ObjectType *o_ptr)
+bool curse_weapon_object(PlayerType *player_ptr, bool force, ItemEntity *o_ptr)
 {
     if (!o_ptr->k_idx) {
         return false;
@@ -377,7 +380,7 @@ void brand_bolts(PlayerType *player_ptr)
  * Break the curse of an item
  * @param o_ptr 呪い装備情報の参照ポインタ
  */
-static void break_curse(ObjectType *o_ptr)
+static void break_curse(ItemEntity *o_ptr)
 {
     BIT_FLAGS is_curse_broken = o_ptr->is_cursed() && o_ptr->curse_flags.has_not(CurseTraitType::PERMA_CURSE) && o_ptr->curse_flags.has_not(CurseTraitType::HEAVY_CURSE) && (randint0(100) < 25);
     if (!is_curse_broken) {
@@ -414,7 +417,7 @@ static void break_curse(ObjectType *o_ptr)
  * the larger the pile, the lower the chance of success.
  * </pre>
  */
-bool enchant_equipment(PlayerType *player_ptr, ObjectType *o_ptr, int n, int eflag)
+bool enchant_equipment(PlayerType *player_ptr, ItemEntity *o_ptr, int n, int eflag)
 {
     /* Large piles resist enchantment */
     int prob = o_ptr->number * 100;
@@ -527,18 +530,18 @@ bool enchant_equipment(PlayerType *player_ptr, ObjectType *o_ptr, int n, int efl
 bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR_CLASS num_ac)
 {
     /* Assume enchant weapon */
-    FuncItemTester item_tester(&ObjectType::allow_enchant_weapon);
+    FuncItemTester item_tester(&ItemEntity::allow_enchant_weapon);
 
     /* Enchant armor if requested */
     if (num_ac) {
-        item_tester = FuncItemTester(&ObjectType::is_armour);
+        item_tester = FuncItemTester(&ItemEntity::is_armour);
     }
 
     concptr q = _("どのアイテムを強化しますか? ", "Enchant which item? ");
     concptr s = _("強化できるアイテムがない。", "You have nothing to enchant.");
 
     OBJECT_IDX item;
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), item_tester);
     if (!o_ptr) {
         return false;
@@ -586,7 +589,7 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
  * @brief 武器へのエゴ付加処理 /
  * Brand the current weapon
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param brand_type エゴ化ID(e_info.txtとは連動していない)
+ * @param brand_type エゴ化ID(EgoDefinitionsとは連動していない)
  */
 void brand_weapon(PlayerType *player_ptr, int brand_type)
 {
@@ -594,14 +597,17 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
     concptr s = _("強化できる武器がない。", "You have nothing to enchant.");
 
     OBJECT_IDX item;
-    ObjectType *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, USE_EQUIP | IGNORE_BOTHHAND_SLOT, FuncItemTester(&ObjectType::allow_enchant_melee_weapon));
+    ItemEntity *o_ptr;
+    o_ptr = choose_object(player_ptr, &item, q, s, USE_EQUIP | IGNORE_BOTHHAND_SLOT, FuncItemTester(&ItemEntity::allow_enchant_melee_weapon));
     if (!o_ptr) {
         return;
     }
 
-    bool is_special_item = o_ptr->k_idx && !o_ptr->is_artifact() && !o_ptr->is_ego() && !o_ptr->is_cursed() && !((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_POISON_NEEDLE)) && !((o_ptr->tval == ItemKindType::POLEARM) && (o_ptr->sval == SV_DEATH_SCYTHE)) && !((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_DIAMOND_EDGE));
-    if (!is_special_item) {
+    auto special_weapon = (o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_POISON_NEEDLE);
+    special_weapon |= (o_ptr->tval == ItemKindType::POLEARM) && (o_ptr->sval == SV_DEATH_SCYTHE);
+    special_weapon |= (o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_DIAMOND_EDGE);
+    const auto is_normal_item = o_ptr->k_idx && !o_ptr->is_artifact() && !o_ptr->is_ego() && !o_ptr->is_cursed() && !special_weapon;
+    if (!is_normal_item) {
         if (flush_failure) {
             flush();
         }

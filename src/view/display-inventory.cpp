@@ -9,7 +9,7 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
@@ -28,7 +28,7 @@ COMMAND_CODE show_inventory(PlayerType *player_ptr, int target_item, BIT_FLAGS m
 {
     COMMAND_CODE i;
     int k, l, z = 0;
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     GAME_TEXT o_name[MAX_NLEN];
     char tmp_val[80];
     COMMAND_CODE out_index[23];
@@ -107,8 +107,8 @@ COMMAND_CODE show_inventory(PlayerType *player_ptr, int target_item, BIT_FLAGS m
         put_str(tmp_val, j + 1, col);
         cur_col = col + 3;
         if (show_item_graph) {
-            TERM_COLOR a = object_attr(o_ptr);
-            auto c = object_char(o_ptr);
+            const auto a = o_ptr->get_color();
+            const auto c = o_ptr->get_symbol();
             term_queue_bigchar(cur_col, j + 1, a, c, 0, 0);
             if (use_bigtile) {
                 cur_col++;
@@ -183,8 +183,8 @@ void display_inventory(PlayerType *player_ptr, const ItemTester &item_tester)
         }
 
         if (show_item_graph) {
-            TERM_COLOR a = object_attr(o_ptr);
-            auto c = object_char(o_ptr);
+            const auto a = o_ptr->get_color();
+            const auto c = o_ptr->get_symbol();
             term_queue_bigchar(cur_col, i, a, c, 0, 0);
             if (use_bigtile) {
                 cur_col++;

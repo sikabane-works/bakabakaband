@@ -36,6 +36,6 @@ extern const int OLD_QUEST_WATER_CAVE;
 extern const int QUEST_OLD_CASTLE;
 extern const int QUEST_ROYAL_CRYPT;
 
-class ObjectType;
+class ItemEntity;
 class PlayerType;
-void set_old_lore(monster_race *r_ptr, BIT_FLAGS f4, const MonsterRaceId r_idx);
+void set_old_lore(MonsterRaceInfo *r_ptr, BIT_FLAGS f4, const MonsterRaceId r_idx);

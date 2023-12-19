@@ -42,7 +42,7 @@
  */
 void roff_top(MonsterRaceId r_idx)
 {
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
     char c1 = r_ptr->d_char;
     char c2 = r_ptr->x_char;
 
@@ -65,7 +65,7 @@ void roff_top(MonsterRaceId r_idx)
         term_addstr(-1, TERM_WHITE, "] ");
     }
 
-    term_addstr(-1, TERM_WHITE, (r_ptr->name.c_str()));
+    term_addstr(-1, TERM_WHITE, (r_ptr->name.data()));
 
     term_addstr(-1, TERM_WHITE, " ('");
     term_add_bigch(a1, c1);
@@ -656,18 +656,18 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
             continue;
         }
 
-        const auto *rf_ptr = &r_info[r_idx];
+        const auto *rf_ptr = &monraces_info[r_idx];
         if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.c_str()));
+            hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.data()));
             continue;
         }
 
 #ifdef JP
-        hooked_roff(format("、 %dd%d 体の%s", dd, ds, rf_ptr->name.c_str()));
+        hooked_roff(format("、 %dd%d 体の%s", dd, ds, rf_ptr->name.data()));
 #else
         auto plural = (dd * ds > 1);
         GAME_TEXT name[MAX_NLEN];
-        strcpy(name, rf_ptr->name.c_str());
+        strcpy(name, rf_ptr->name.data());
         if (plural) {
             plural_aux(name);
         }
@@ -779,7 +779,7 @@ void display_monster_guardian(lore_type *lore_ptr)
     bool is_kingpin = (lore_ptr->flags1 & RF1_QUESTOR) != 0;
     is_kingpin &= lore_ptr->r_ptr->r_sights > 0;
     is_kingpin &= lore_ptr->r_ptr->mob_num > 0;
-    is_kingpin &= (lore_ptr->r_idx == MonsterRaceId::OBERON) || (lore_ptr->r_idx == MonsterRaceId::SERPENT);
+    is_kingpin &= (lore_ptr->r_idx == MonsterRaceId::MELKO);
     if (is_kingpin) {
         hook_c_roff(TERM_VIOLET, _("あなたはこのモンスターを殺したいという強い欲望を感じている...", "You feel an intense desire to kill this monster...  "));
     } else if (lore_ptr->flags7 & RF7_GUARDIAN) {

@@ -45,6 +45,7 @@
 #include "spell-kind/spells-polymorph.h"
 #include "spell-kind/spells-teleport.h"
 #include "sv-definition/sv-other-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -178,7 +179,7 @@ static ProcessResult exe_affect_monster_by_effect(PlayerType *player_ptr, effect
  */
 static void effect_damage_killed_pet(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    bool sad = is_pet(em_ptr->m_ptr) && !(em_ptr->m_ptr->ml);
+    bool sad = em_ptr->m_ptr->is_pet() && !(em_ptr->m_ptr->ml);
     if (em_ptr->known && em_ptr->note) {
         monster_desc(player_ptr, em_ptr->m_name, em_ptr->m_ptr, MD_TRUE_NAME);
         if (em_ptr->see_s_msg) {
@@ -267,7 +268,7 @@ static bool heal_leaper(PlayerType *player_ptr, effect_monster_type *em_ptr)
         msg_print(_("不潔な病人は病気が治った！", "The Mangy looking leper is healed!"));
     }
 
-    if (record_named_pet && is_pet(em_ptr->m_ptr) && em_ptr->m_ptr->nickname) {
+    if (record_named_pet && em_ptr->m_ptr->is_pet() && em_ptr->m_ptr->nickname) {
         char m2_name[MAX_NLEN];
         monster_desc(player_ptr, m2_name, em_ptr->m_ptr, MD_INDEF_VISIBLE);
         exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_HEAL_LEPER, m2_name);
@@ -402,9 +403,9 @@ static void effect_damage_piles_stun(PlayerType *player_ptr, effect_monster_type
     }
 
     int turns = 0;
-    if (monster_stunned_remaining(em_ptr->m_ptr)) {
+    if (em_ptr->m_ptr->get_remaining_stun()) {
         em_ptr->note = _("はひどくもうろうとした。", " is more dazed.");
-        turns = monster_stunned_remaining(em_ptr->m_ptr) + (em_ptr->do_stun / 2);
+        turns = em_ptr->m_ptr->get_remaining_stun() + (em_ptr->do_stun / 2);
     } else {
         em_ptr->note = _("はもうろうとした。", " is dazed.");
         turns = em_ptr->do_stun;
@@ -431,9 +432,9 @@ static void effect_damage_piles_confusion(PlayerType *player_ptr, effect_monster
     }
 
     int turns = 0;
-    if (monster_confused_remaining(em_ptr->m_ptr)) {
+    if (em_ptr->m_ptr->is_confused()) {
         em_ptr->note = _("はさらに混乱したようだ。", " looks more confused.");
-        turns = monster_confused_remaining(em_ptr->m_ptr) + (em_ptr->do_conf / 2);
+        turns = em_ptr->m_ptr->get_remaining_confusion() + (em_ptr->do_conf / 2);
     } else {
         em_ptr->note = _("は混乱したようだ。", " looks confused.");
         turns = em_ptr->do_conf;
@@ -457,7 +458,7 @@ static void effect_damage_piles_fear(PlayerType *player_ptr, effect_monster_type
         return;
     }
 
-    (void)set_monster_monfear(player_ptr, em_ptr->g_ptr->m_idx, monster_fear_remaining(em_ptr->m_ptr) + em_ptr->do_fear);
+    (void)set_monster_monfear(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->m_ptr->get_remaining_fear() + em_ptr->do_fear);
     em_ptr->get_angry = true;
 }
 
@@ -511,7 +512,7 @@ static void effect_damage_makes_polymorph(PlayerType *player_ptr, effect_monster
     }
 
     em_ptr->m_ptr = &player_ptr->current_floor_ptr->m_list[em_ptr->g_ptr->m_idx];
-    em_ptr->r_ptr = &r_info[em_ptr->m_ptr->r_idx];
+    em_ptr->r_ptr = &monraces_info[em_ptr->m_ptr->r_idx];
 }
 
 /*!
@@ -619,20 +620,22 @@ static void update_phase_out_stat(PlayerType *player_ptr, effect_monster_type *e
  */
 static void postprocess_by_effected_pet(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    if ((em_ptr->dam <= 0) || is_pet(em_ptr->m_ptr) || is_friendly(em_ptr->m_ptr)) {
+    auto *m_ptr = em_ptr->m_ptr;
+    if ((em_ptr->dam <= 0) || m_ptr->is_pet() || m_ptr->is_friendly()) {
         return;
     }
 
     if (em_ptr->who == 0) {
         if (!(em_ptr->flag & PROJECT_NO_HANGEKI)) {
-            set_target(em_ptr->m_ptr, monster_target_y, monster_target_x);
+            set_target(m_ptr, monster_target_y, monster_target_x);
         }
 
         return;
     }
 
-    if ((em_ptr->who > 0) && is_pet(em_ptr->m_ptr) && !player_bold(player_ptr, em_ptr->m_ptr->target_y, em_ptr->m_ptr->target_x)) {
-        set_target(em_ptr->m_ptr, em_ptr->m_ptr->fy, em_ptr->m_ptr->fx);
+    const auto &m_caster_ref = *em_ptr->m_caster_ptr;
+    if ((em_ptr->who > 0) && m_caster_ref.is_pet() && !player_bold(player_ptr, m_ptr->target_y, m_ptr->target_x)) {
+        set_target(m_ptr, m_caster_ref.fy, m_caster_ref.fx);
     }
 }
 
@@ -666,10 +669,10 @@ static void postprocess_by_taking_photo(PlayerType *player_ptr, effect_monster_t
         return;
     }
 
-    ObjectType *q_ptr;
-    ObjectType forge;
+    ItemEntity *q_ptr;
+    ItemEntity forge;
     q_ptr = &forge;
-    q_ptr->prep(lookup_kind(ItemKindType::STATUE, SV_PHOTO));
+    q_ptr->prep(lookup_baseitem_id({ ItemKindType::STATUE, SV_PHOTO }));
     q_ptr->pval = em_ptr->photo;
     q_ptr->ident |= (IDENT_FULL_KNOWN);
     (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);

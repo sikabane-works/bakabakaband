@@ -109,7 +109,7 @@
       <WarningLevel>EnableAllWarnings</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <CompileAs>CompileAsCpp</CompileAs>
-      <DisableSpecificWarnings>4061;4062;4127;4244;4255;4365;4514;4668;4710;4820;4996;4774;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4061;4062;4127;4244;4255;4365;4514;4668;4710;4820;4996;4774;5045;5264;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\..\src;curl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -312,6 +312,7 @@
     <ClCompile Include="..\..\src\save\player-class-specific-data-writer.cpp" />
     <ClCompile Include="..\..\src\specific-object\stone-of-lore.cpp" />
     <ClCompile Include="..\..\src\spell-class\spells-mirror-master.cpp" />
+    <ClCompile Include="..\..\src\system\floor-type-definition.cpp" />
     <ClCompile Include="..\..\src\system\grid-type-definition.cpp" />
     <ClCompile Include="..\..\src\grid\feature-action-flags.cpp" />
     <ClCompile Include="..\..\src\main-win\commandline-win.cpp" />
@@ -395,8 +396,8 @@
     <ClCompile Include="..\..\src\info-reader\feature-reader.cpp" />
     <ClCompile Include="..\..\src\info-reader\general-parser.cpp" />
     <ClCompile Include="..\..\src\info-reader\info-reader-util.cpp" />
-    <ClCompile Include="..\..\src\info-reader\kind-info-tokens-table.cpp" />
-    <ClCompile Include="..\..\src\info-reader\kind-reader.cpp" />
+    <ClCompile Include="..\..\src\info-reader\baseitem-tokens-table.cpp" />
+    <ClCompile Include="..\..\src\info-reader\baseitem-reader.cpp" />
     <ClCompile Include="..\..\src\info-reader\magic-reader.cpp" />
     <ClCompile Include="..\..\src\info-reader\race-info-tokens-table.cpp" />
     <ClCompile Include="..\..\src\info-reader\race-reader.cpp" />
@@ -594,6 +595,7 @@
     <ClCompile Include="..\..\src\store\sell-order.cpp" />
     <ClCompile Include="..\..\src\store\service-checker.cpp" />
     <ClCompile Include="..\..\src\system\angband-version.cpp" />
+    <ClCompile Include="..\..\src\system\monster-type-definition.cpp" />
     <ClCompile Include="..\..\src\system\object-type-definition.cpp" />
     <ClCompile Include="..\..\src\system\player-type-definition.cpp" />
     <ClCompile Include="..\..\src\target\grid-selector.cpp" />
@@ -855,7 +857,7 @@
     <ClCompile Include="..\..\src\core\show-file.cpp" />
     <ClCompile Include="..\..\src\core\speed-table.cpp" />
     <ClCompile Include="..\..\src\info-reader\fixed-map-parser.cpp" />
-    <ClCompile Include="..\..\src\dungeon\dungeon.cpp" />
+    <ClCompile Include="..\..\src\system\dungeon-info.cpp" />
     <ClCompile Include="..\..\src\locale\english.cpp" />
     <ClCompile Include="..\..\src\grid\feature.cpp" />
     <ClCompile Include="..\..\src\floor\floor-events.cpp" />
@@ -905,7 +907,7 @@
     <ClCompile Include="..\..\src\object-enchant\object-ego.cpp" />
     <ClCompile Include="..\..\src\flavor\object-flavor.cpp" />
     <ClCompile Include="..\..\src\object\item-tester-hooker.cpp" />
-    <ClCompile Include="..\..\src\object\object-kind.cpp" />
+    <ClCompile Include="..\..\src\system\baseitem-info-definition.cpp" />
     <ClCompile Include="..\..\src\object\object-kind-hook.cpp" />
     <ClCompile Include="..\..\src\object\object-broken.cpp" />
     <ClCompile Include="..\..\src\object\lite-processor.cpp" />
@@ -1141,7 +1143,6 @@
     <ClInclude Include="..\..\src\floor\line-of-sight.h" />
     <ClInclude Include="..\..\src\floor\object-allocator.h" />
     <ClInclude Include="..\..\src\floor\object-scanner.h" />
-    <ClInclude Include="..\..\src\floor\sight-definitions.h" />
     <ClInclude Include="..\..\src\floor\tunnel-generator.h" />
     <ClInclude Include="..\..\src\game-option\auto-destruction-options.h" />
     <ClInclude Include="..\..\src\game-option\birth-options.h" />
@@ -1171,8 +1172,8 @@
     <ClInclude Include="..\..\src\info-reader\feature-reader.h" />
     <ClInclude Include="..\..\src\info-reader\general-parser.h" />
     <ClInclude Include="..\..\src\info-reader\info-reader-util.h" />
-    <ClInclude Include="..\..\src\info-reader\kind-info-tokens-table.h" />
-    <ClInclude Include="..\..\src\info-reader\kind-reader.h" />
+    <ClInclude Include="..\..\src\info-reader\baseitem-tokens-table.h" />
+    <ClInclude Include="..\..\src\info-reader\baseitem-reader.h" />
     <ClInclude Include="..\..\src\info-reader\magic-reader.h" />
     <ClInclude Include="..\..\src\info-reader\parse-error-types.h" />
     <ClInclude Include="..\..\src\info-reader\race-info-tokens-table.h" />
@@ -1926,7 +1927,7 @@
     <ClInclude Include="..\..\src\system\system-variables.h" />
     <ClInclude Include="..\..\src\core\speed-table.h" />
     <ClInclude Include="..\..\src\info-reader\fixed-map-parser.h" />
-    <ClInclude Include="..\..\src\dungeon\dungeon.h" />
+    <ClInclude Include="..\..\src\system\dungeon-info.h" />
     <ClInclude Include="..\..\src\grid\feature.h" />
     <ClInclude Include="..\..\src\io\files-util.h" />
     <ClInclude Include="..\..\src\floor\floor-events.h" />
@@ -1958,7 +1959,7 @@
     <ClInclude Include="..\..\src\object\object-broken.h" />
     <ClInclude Include="..\..\src\object\object-info.h" />
     <ClInclude Include="..\..\src\object\object-kind-hook.h" />
-    <ClInclude Include="..\..\src\object\object-kind.h" />
+    <ClInclude Include="..\..\src\system\baseitem-info-definition.h" />
     <ClInclude Include="..\..\src\player\patron.h" />
     <ClInclude Include="..\..\src\player-info\class-info.h" />
     <ClInclude Include="..\..\src\player\player-damage.h" />

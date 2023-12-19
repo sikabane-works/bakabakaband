@@ -56,7 +56,7 @@ void check_fall_off_horse(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr
  * @return falseなら落馬しないことで確定、TRUEなら処理続行
  * @details レベルの低い乗馬からは落馬しにくい
  */
-static bool calc_fall_off_possibility(PlayerType *player_ptr, const int dam, const bool force, monster_race *r_ptr)
+static bool calc_fall_off_possibility(PlayerType *player_ptr, const int dam, const bool force, MonsterRaceInfo *r_ptr)
 {
     if (force) {
         return true;
@@ -95,7 +95,7 @@ bool process_fall_off_horse(PlayerType *player_ptr, int dam, bool force)
     int sn = 0;
     GAME_TEXT m_name[MAX_NLEN];
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
     if (!player_ptr->riding || player_ptr->wild_mode) {
         return false;
@@ -119,13 +119,13 @@ bool process_fall_off_horse(PlayerType *player_ptr, int dam, bool force)
             }
 
             /* Skip non-empty grids */
-            if (!g_ptr->cave_has_flag(FloorFeatureType::MOVE) && !g_ptr->cave_has_flag(FloorFeatureType::CAN_FLY)) {
+            if (!g_ptr->cave_has_flag(TerrainCharacteristics::MOVE) && !g_ptr->cave_has_flag(TerrainCharacteristics::CAN_FLY)) {
                 if (!can_player_ride_pet(player_ptr, g_ptr, false)) {
                     continue;
                 }
             }
 
-            if (g_ptr->cave_has_flag(FloorFeatureType::PATTERN)) {
+            if (g_ptr->cave_has_flag(TerrainCharacteristics::PATTERN)) {
                 continue;
             }
 

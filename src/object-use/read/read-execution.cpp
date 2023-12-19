@@ -15,13 +15,13 @@
 #include "object-use/item-use-checker.h"
 #include "object-use/read/read-executor-factory.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "status/experience.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -90,7 +90,7 @@ bool ObjectReadEntity::can_read() const
     return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて読めなかった！", "You too stunned to read it!"));
 }
 
-void ObjectReadEntity::change_virtue_as_read(ObjectType &o_ref)
+void ObjectReadEntity::change_virtue_as_read(ItemEntity &o_ref)
 {
     if (o_ref.is_aware()) {
         return;
@@ -101,13 +101,13 @@ void ObjectReadEntity::change_virtue_as_read(ObjectType &o_ref)
     chg_virtue(this->player_ptr, V_KNOWLEDGE, -1);
 }
 
-void ObjectReadEntity::gain_exp_from_item_use(ObjectType *o_ptr, bool is_identified)
+void ObjectReadEntity::gain_exp_from_item_use(ItemEntity *o_ptr, bool is_identified)
 {
     if (!is_identified || o_ptr->is_aware()) {
         return;
     }
 
     object_aware(this->player_ptr, o_ptr);
-    auto lev = k_info[o_ptr->k_idx].level;
+    auto lev = baseitems_info[o_ptr->k_idx].level;
     gain_exp(this->player_ptr, (lev + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
 }

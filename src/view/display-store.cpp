@@ -7,12 +7,12 @@
 #include "locale/japanese.h"
 #include "object-enchant/special-object-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "player/race-info-table.h"
 #include "store/pricing.h"
 #include "store/store-owners.h"
 #include "store/store-util.h"
 #include "store/store.h" //!< @todo 相互依存している、こっちは残す？.
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
@@ -42,7 +42,7 @@ void store_prt_gold(PlayerType *player_ptr)
  */
 void display_entry(PlayerType *player_ptr, int pos, StoreSaleType store_num)
 {
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = &st_ptr->stock[pos];
     int i = (pos % store_bottom);
 
@@ -53,8 +53,8 @@ void display_entry(PlayerType *player_ptr, int pos, StoreSaleType store_num)
 
     int cur_col = 3;
     if (show_item_graph) {
-        TERM_COLOR a = object_attr(o_ptr);
-        auto c = object_char(o_ptr);
+        const auto a = o_ptr->get_color();
+        const auto c = o_ptr->get_symbol();
 
         term_queue_bigchar(cur_col, i + 6, a, c, 0, 0);
         if (use_bigtile) {
@@ -178,11 +178,14 @@ void display_store(PlayerType *player_ptr, StoreSaleType store_num)
         return;
     }
 
+    concptr store_name = terrains_info[cur_store_feat].name.data();
     concptr owner_name = (ot_ptr->owner_name);
     concptr race_name = race_info[enum2i(ot_ptr->owner_race)].title;
     char buf[80];
     sprintf(buf, "%s (%s)", owner_name, race_name);
     put_str(buf, 3, 10);
+
+    prt(format("%s (%d)", store_name, ot_ptr->max_cost), 3, 50);
 
     put_str(_("商品の一覧", "Item Description"), 5, 5);
     if (show_weights) {

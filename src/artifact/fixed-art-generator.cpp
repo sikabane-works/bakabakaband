@@ -21,11 +21,11 @@
 #include "object-enchant/trc-types.h"
 #include "object-enchant/trg-types.h"
 #include "object/object-kind-hook.h"
-#include "object/object-kind.h"
 #include "player-base/player-class.h"
 #include "player/player-sex.h"
 #include "specific-object/bloody-moon.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -40,9 +40,9 @@
  * 純戦士系職業は追加能力/耐性がもらえる。
  * それ以外では、反感、太古の怨念、呪いが付き追加能力/耐性はもらえない。
  */
-static bool invest_terror_mask(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool invest_terror_mask(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if (o_ptr->fixed_artifact_idx != FixedArtifactId::TERROR) {
+    if (!o_ptr->is_specific_artifact(FixedArtifactId::TERROR)) {
         return false;
     }
 
@@ -66,9 +66,9 @@ static bool invest_terror_mask(PlayerType *player_ptr, ObjectType *o_ptr)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 対象のオブジェクト構造体への参照ポインタ
  */
-static void milim_swimsuit(PlayerType *player_ptr, ObjectType *o_ptr)
+static void milim_swimsuit(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if ((o_ptr->fixed_artifact_idx != FixedArtifactId::MILIM) || (player_ptr->ppersonality != PERSONALITY_SEXY)) {
+    if (!o_ptr->is_specific_artifact(FixedArtifactId::MILIM) || (player_ptr->ppersonality != PERSONALITY_SEXY)) {
         return;
     }
 
@@ -91,7 +91,7 @@ static void milim_swimsuit(PlayerType *player_ptr, ObjectType *o_ptr)
  * @details
  * 対象は村正、ロビントンのハープ、龍争虎鬪、ブラッディムーン、羽衣、天女の羽衣、ミリム
  */
-static void invest_special_artifact_abilities(PlayerType *player_ptr, ObjectType *o_ptr)
+static void invest_special_artifact_abilities(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     const auto pc = PlayerClass(player_ptr);
     switch (o_ptr->fixed_artifact_idx) {
@@ -133,7 +133,7 @@ static void invest_special_artifact_abilities(PlayerType *player_ptr, ObjectType
  * @param a_ptr 固定アーティファクト情報への参照ポインタ
  * @param q_ptr オブジェクト情報への参照ポインタ
  */
-static void fixed_artifact_random_abilities(PlayerType *player_ptr, const ArtifactType &a_ref, ObjectType *o_ptr)
+static void fixed_artifact_random_abilities(PlayerType *player_ptr, const ArtifactType &a_ref, ItemEntity *o_ptr)
 {
     auto give_power = false;
     auto give_resistance = false;
@@ -186,7 +186,7 @@ static void fixed_artifact_random_abilities(PlayerType *player_ptr, const Artifa
  * @param a_ptr 固定アーティファクト情報への参照ポインタ
  * @param q_ptr オブジェクト情報への参照ポインタ
  */
-static void invest_curse_to_fixed_artifact(const ArtifactType &a_ref, ObjectType *o_ptr)
+static void invest_curse_to_fixed_artifact(const ArtifactType &a_ref, ItemEntity *o_ptr)
 {
     if (!a_ref.cost) {
         set_bits(o_ptr->ident, IDENT_BROKEN);
@@ -223,9 +223,9 @@ static void invest_curse_to_fixed_artifact(const ArtifactType &a_ref, ObjectType
  * @param o_ptr 生成に割り当てたいオブジェクトの構造体参照ポインタ
  * @return 適用したアーティファクト情報への参照ポインタ
  */
-void apply_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
+void apply_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    auto &a_ref = a_info.at(o_ptr->fixed_artifact_idx);
+    auto &a_ref = artifacts_info.at(o_ptr->fixed_artifact_idx);
     o_ptr->pval = a_ref.pval;
     o_ptr->ac = a_ref.ac;
     o_ptr->dd = a_ref.dd;
@@ -254,19 +254,19 @@ void apply_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
  */
 bool create_named_art(PlayerType *player_ptr, FixedArtifactId a_idx, POSITION y, POSITION x)
 {
-    auto &a_ref = a_info.at(a_idx);
+    auto &a_ref = artifacts_info.at(a_idx);
     if (a_ref.name.empty()) {
         return false;
     }
 
-    auto i = lookup_kind(a_ref.tval, a_ref.sval);
-    if (i == 0) {
+    auto bi_id = lookup_baseitem_id(a_ref.bi_key);
+    if (bi_id == 0) {
         return true;
     }
 
-    ObjectType forge;
+    ItemEntity forge;
     auto q_ptr = &forge;
-    q_ptr->prep(i);
+    q_ptr->prep(bi_id);
     q_ptr->fixed_artifact_idx = a_idx;
     apply_artifact(player_ptr, q_ptr);
     if (drop_near(player_ptr, q_ptr, -1, y, x) == 0) {
@@ -288,7 +288,7 @@ bool create_named_art(PlayerType *player_ptr, FixedArtifactId a_idx, POSITION y,
  * This routine should only be called by "apply_magic()"\n
  * Note -- see "make_artifact_special()" and "apply_magic()"\n
  */
-bool make_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
+bool make_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     auto floor_ptr = player_ptr->current_floor_ptr;
     if (floor_ptr->dun_level == 0) {
@@ -299,7 +299,7 @@ bool make_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
         return false;
     }
 
-    for (const auto &[a_idx, a_ref] : a_info) {
+    for (const auto &[a_idx, a_ref] : artifacts_info) {
         if (a_ref.name.empty()) {
             continue;
         }
@@ -316,11 +316,11 @@ bool make_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
             continue;
         }
 
-        if (a_ref.tval != o_ptr->tval) {
+        if (a_ref.bi_key.tval() != o_ptr->tval) {
             continue;
         }
 
-        if (a_ref.sval != o_ptr->sval) {
+        if (a_ref.bi_key.sval() != o_ptr->sval) {
             continue;
         }
 
@@ -354,23 +354,21 @@ bool make_artifact(PlayerType *player_ptr, ObjectType *o_ptr)
  *\n
  * Note -- see "make_artifact()" and "apply_magic()"\n
  */
-bool make_artifact_special(PlayerType *player_ptr, ObjectType *o_ptr)
+bool make_artifact_special(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    KIND_OBJECT_IDX k_idx = 0;
-
     /*! @note 地上ではキャンセルする / No artifacts in the town */
     auto floor_ptr = player_ptr->current_floor_ptr;
     if (floor_ptr->dun_level == 0) {
         return false;
     }
 
-    /*! @note get_obj_num_hookによる指定がある場合は生成をキャンセルする / Themed object */
-    if (get_obj_num_hook) {
+    /*! @note get_obj_index_hookによる指定がある場合は生成をキャンセルする / Themed object */
+    if (get_obj_index_hook) {
         return false;
     }
 
     /*! @note 全固定アーティファクト中からIDの若い順に生成対象とその確率を走査する / Check the artifact list (just the "specials") */
-    for (const auto &[a_idx, a_ref] : a_info) {
+    for (const auto &[a_idx, a_ref] : artifacts_info) {
         /*! @note アーティファクト名が空の不正なデータは除外する / Skip "empty" artifacts */
         if (a_ref.name.empty()) {
             continue;
@@ -405,9 +403,9 @@ bool make_artifact_special(PlayerType *player_ptr, ObjectType *o_ptr)
          * @note INSTA_ART型固定アーティファクトのベースアイテムもチェック対象とする。
          * ベースアイテムの生成階層が足りない場合1/(不足階層*5)を満たさないと除外される。
          */
-        k_idx = lookup_kind(a_ref.tval, a_ref.sval);
-        if (k_info[k_idx].level > floor_ptr->object_level) {
-            int d = (k_info[k_idx].level - floor_ptr->object_level) * 5;
+        const auto bi_id = lookup_baseitem_id(a_ref.bi_key);
+        if (baseitems_info[bi_id].level > floor_ptr->object_level) {
+            int d = (baseitems_info[bi_id].level - floor_ptr->object_level) * 5;
             if (!one_in_(d)) {
                 continue;
             }
@@ -415,7 +413,7 @@ bool make_artifact_special(PlayerType *player_ptr, ObjectType *o_ptr)
 
         /*! @note 前述の条件を満たしたら、後のIDのアーティファクトはチェックせずすぐ確定し生成処理に移す /
          * Assign the template. Mega-Hack -- mark the item as an artifact. Hack: Some artifacts get random extra powers. Success. */
-        o_ptr->prep(k_idx);
+        o_ptr->prep(bi_id);
 
         o_ptr->fixed_artifact_idx = a_idx;
         return true;

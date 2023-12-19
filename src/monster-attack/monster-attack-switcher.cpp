@@ -349,7 +349,7 @@ void switch_monster_blow_to_player(PlayerType *player_ptr, MonsterAttackPlayer *
             break;
         }
     }
-        /* Fall through */
+        [[fallthrough]];
     case RaceBlowEffectType::HURT: { /* AC軽減あり / Player armor reduces total damage */
         monap_ptr->obvious = true;
         monap_ptr->damage -= (monap_ptr->damage * ((monap_ptr->ac < 150) ? monap_ptr->ac : 150) / 250);
@@ -367,7 +367,7 @@ void switch_monster_blow_to_player(PlayerType *player_ptr, MonsterAttackPlayer *
         break;
     case RaceBlowEffectType::EAT_GOLD:
         monap_ptr->get_damage += take_hit(player_ptr, DAMAGE_ATTACK, monap_ptr->damage, monap_ptr->ddesc);
-        if (monster_confused_remaining(monap_ptr->m_ptr) || player_ptr->is_dead || check_multishadow(player_ptr)) {
+        if (monap_ptr->m_ptr->is_confused() || player_ptr->is_dead || check_multishadow(player_ptr)) {
             break;
         }
 

@@ -18,12 +18,12 @@
 #include "object-hook/hook-quest.h"
 #include "object-hook/hook-weapon.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "object/object-stack.h"
 #include "object/object-value.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player/player-realm.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
@@ -33,9 +33,9 @@
 /*!
  * @brief A function for Auto-picker/destroyer Examine whether the object matches to the entry
  */
-bool is_autopick_match(PlayerType *player_ptr, ObjectType *o_ptr, autopick_type *entry, concptr o_name)
+bool is_autopick_match(PlayerType *player_ptr, ItemEntity *o_ptr, autopick_type *entry, concptr o_name)
 {
-    concptr ptr = entry->name.c_str();
+    concptr ptr = entry->name.data();
     if (IS_FLG(FLG_UNAWARE) && o_ptr->is_aware()) {
         return false;
     }
@@ -53,7 +53,7 @@ bool is_autopick_match(PlayerType *player_ptr, ObjectType *o_ptr, autopick_type 
     }
 
     if (IS_FLG(FLG_BOOSTED)) {
-        auto *k_ptr = &k_info[o_ptr->k_idx];
+        auto *k_ptr = &baseitems_info[o_ptr->k_idx];
         if (!o_ptr->is_melee_weapon()) {
             return false;
         }
@@ -89,7 +89,7 @@ bool is_autopick_match(PlayerType *player_ptr, ObjectType *o_ptr, autopick_type 
         }
     }
 
-    if (IS_FLG(FLG_WORTHLESS) && object_value(o_ptr) > 0) {
+    if (IS_FLG(FLG_WORTHLESS) && (o_ptr->get_price() > 0)) {
         return false;
     }
 
@@ -199,11 +199,11 @@ bool is_autopick_match(PlayerType *player_ptr, ObjectType *o_ptr, autopick_type 
     }
 
     const auto r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if (IS_FLG(FLG_UNIQUE) && ((o_ptr->tval != ItemKindType::CORPSE && o_ptr->tval != ItemKindType::STATUE) || r_info[r_idx].kind_flags.has_not(MonsterKindType::UNIQUE))) {
+    if (IS_FLG(FLG_UNIQUE) && ((o_ptr->tval != ItemKindType::CORPSE && o_ptr->tval != ItemKindType::STATUE) || monraces_info[r_idx].kind_flags.has_not(MonsterKindType::UNIQUE))) {
         return false;
     }
 
-    if (IS_FLG(FLG_HUMAN) && (o_ptr->tval != ItemKindType::CORPSE || !angband_strchr("pht", r_info[r_idx].d_char))) {
+    if (IS_FLG(FLG_HUMAN) && (o_ptr->tval != ItemKindType::CORPSE || !angband_strchr("pht", monraces_info[r_idx].d_char))) {
         return false;
     }
 

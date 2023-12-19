@@ -18,6 +18,7 @@
 #include "object/item-use-flags.h"
 #include "object/object-kind-hook.h"
 #include "perception/object-perception.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
@@ -112,19 +113,19 @@ bool create_ammo(PlayerType *player_ptr)
         POSITION y = player_ptr->y + ddy[dir];
         POSITION x = player_ptr->x + ddx[dir];
         auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-        if (f_info[g_ptr->get_feat_mimic()].flags.has_not(FloorFeatureType::CAN_DIG)) {
+        if (terrains_info[g_ptr->get_feat_mimic()].flags.has_not(TerrainCharacteristics::CAN_DIG)) {
             msg_print(_("そこには岩石がない。", "You need a pile of rubble."));
             return false;
         }
 
-        if (!g_ptr->cave_has_flag(FloorFeatureType::CAN_DIG) || !g_ptr->cave_has_flag(FloorFeatureType::HURT_ROCK)) {
+        if (!g_ptr->cave_has_flag(TerrainCharacteristics::CAN_DIG) || !g_ptr->cave_has_flag(TerrainCharacteristics::HURT_ROCK)) {
             msg_print(_("硬すぎて崩せなかった。", "You failed to make ammo."));
             return true;
         }
 
-        ObjectType forge;
+        ItemEntity forge;
         auto *q_ptr = &forge;
-        q_ptr->prep(lookup_kind(ItemKindType::SHOT, (OBJECT_SUBTYPE_VALUE)m_bonus(1, player_ptr->lev) + 1));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::SHOT, (OBJECT_SUBTYPE_VALUE)m_bonus(1, player_ptr->lev) + 1 }));
         q_ptr->number = (byte)rand_range(15, 30);
         object_aware(player_ptr, q_ptr);
         object_known(q_ptr);
@@ -138,7 +139,7 @@ bool create_ammo(PlayerType *player_ptr)
             autopick_alter_item(player_ptr, slot, false);
         }
 
-        cave_alter_feat(player_ptr, y, x, FloorFeatureType::HURT_ROCK);
+        cave_alter_feat(player_ptr, y, x, TerrainCharacteristics::HURT_ROCK);
         player_ptr->update |= PU_FLOW;
         return true;
     }
@@ -146,14 +147,14 @@ bool create_ammo(PlayerType *player_ptr)
         concptr q = _("どのアイテムから作りますか？ ", "Convert which item? ");
         concptr s = _("材料を持っていない。", "You have no item to convert.");
         OBJECT_IDX item;
-        auto *q_ptr = choose_object(player_ptr, &item, q, s, USE_INVEN | USE_FLOOR, FuncItemTester(&ObjectType::is_convertible));
+        auto *q_ptr = choose_object(player_ptr, &item, q, s, USE_INVEN | USE_FLOOR, FuncItemTester(&ItemEntity::is_convertible));
         if (!q_ptr) {
             return false;
         }
 
-        ObjectType forge;
+        ItemEntity forge;
         q_ptr = &forge;
-        q_ptr->prep(lookup_kind(ItemKindType::ARROW, (OBJECT_SUBTYPE_VALUE)m_bonus(1, player_ptr->lev) + 1));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::ARROW, static_cast<short>(m_bonus(1, player_ptr->lev) + 1) }));
         q_ptr->number = (byte)rand_range(5, 10);
         object_aware(player_ptr, q_ptr);
         object_known(q_ptr);
@@ -174,14 +175,14 @@ bool create_ammo(PlayerType *player_ptr)
         concptr q = _("どのアイテムから作りますか？ ", "Convert which item? ");
         concptr s = _("材料を持っていない。", "You have no item to convert.");
         OBJECT_IDX item;
-        auto *q_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ObjectType::is_convertible));
+        auto *q_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_convertible));
         if (!q_ptr) {
             return false;
         }
 
-        ObjectType forge;
+        ItemEntity forge;
         q_ptr = &forge;
-        q_ptr->prep(lookup_kind(ItemKindType::BOLT, (OBJECT_SUBTYPE_VALUE)m_bonus(1, player_ptr->lev) + 1));
+        q_ptr->prep(lookup_baseitem_id({ ItemKindType::BOLT, static_cast<short>(m_bonus(1, player_ptr->lev) + 1) }));
         q_ptr->number = (byte)rand_range(4, 8);
         object_aware(player_ptr, q_ptr);
         object_known(q_ptr);

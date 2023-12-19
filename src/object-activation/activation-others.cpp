@@ -109,9 +109,9 @@ bool activate_scare(PlayerType *player_ptr)
     return true;
 }
 
-bool activate_aggravation(PlayerType *player_ptr, ObjectType *o_ptr, concptr name)
+bool activate_aggravation(PlayerType *player_ptr, ItemEntity *o_ptr, concptr name)
 {
-    if (o_ptr->fixed_artifact_idx == FixedArtifactId::HYOUSIGI) {
+    if (o_ptr->is_specific_artifact(FixedArtifactId::HYOUSIGI)) {
         msg_print(_("拍子木を打った。", "You beat your wooden clappers."));
     } else {
         msg_format(_("%sは不快な物音を立てた。", "The %s sounds an unpleasant noise."), name);
@@ -168,18 +168,18 @@ bool activate_telekinesis(PlayerType *player_ptr, concptr name)
 
 bool activate_unique_detection(PlayerType *player_ptr)
 {
-    monster_type *m_ptr;
-    monster_race *r_ptr;
+    MonsterEntity *m_ptr;
+    MonsterRaceInfo *r_ptr;
     msg_print(_("奇妙な場所が頭の中に浮かんだ．．．", "Some strange places show up in your mind. And you see ..."));
     for (int i = player_ptr->current_floor_ptr->m_max - 1; i >= 1; i--) {
         m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!monster_is_valid(m_ptr)) {
+        if (!m_ptr->is_valid()) {
             continue;
         }
 
-        r_ptr = &r_info[m_ptr->r_idx];
+        r_ptr = &monraces_info[m_ptr->r_idx];
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            msg_format(_("%s． ", "%s. "), r_ptr->name.c_str());
+            msg_format(_("%s． ", "%s. "), r_ptr->name.data());
         }
 
         if (m_ptr->r_idx == MonsterRaceId::DIO) {
@@ -204,7 +204,7 @@ bool activate_dispel_curse(PlayerType *player_ptr, concptr name)
 
 bool activate_cure_lw(PlayerType *player_ptr)
 {
-    (void)BadStatusSetter(player_ptr).fear(0);
+    (void)BadStatusSetter(player_ptr).set_fear(0);
     (void)hp_player(player_ptr, 30);
     return true;
 }
@@ -345,7 +345,7 @@ bool activate_recharge_extra(PlayerType *player_ptr, concptr name)
 bool activate_shikofumi(PlayerType *player_ptr)
 {
     msg_print(_("力強く四股を踏んだ。", "You stamp. (as if you are in a ring.)"));
-    (void)BadStatusSetter(player_ptr).fear(0);
+    (void)BadStatusSetter(player_ptr).set_fear(0);
     (void)set_hero(player_ptr, randint1(20) + 20, false);
     (void)dispel_evil(player_ptr, player_ptr->lev * 3);
     return true;
@@ -384,7 +384,7 @@ bool activate_protection_elbereth(PlayerType *player_ptr)
     BadStatusSetter bss(player_ptr);
     msg_print(_("エルベレスよ、我を護り給え！", "A Elbereth gilthoniel!"));
     create_rune_protection_one(player_ptr);
-    (void)bss.fear(0);
+    (void)bss.set_fear(0);
     (void)bss.set_blindness(0);
     (void)bss.hallucination(0);
     set_blessed(player_ptr, randint0(25) + 25, true);
@@ -405,16 +405,16 @@ bool activate_recall(PlayerType *player_ptr)
     return recall_player(player_ptr, randint0(21) + 15);
 }
 
-bool activate_tree_creation(PlayerType *player_ptr, ObjectType *o_ptr, concptr name)
+bool activate_tree_creation(PlayerType *player_ptr, ItemEntity *o_ptr, concptr name)
 {
     msg_format(_("%s%sから明るい緑の光があふれ出た...", "The %s%s wells with clear light..."), name, quark_str(o_ptr->art_name));
     return tree_creation(player_ptr, player_ptr->y, player_ptr->x);
 }
 
-bool activate_animate_dead(PlayerType *player_ptr, ObjectType *o_ptr)
+bool activate_animate_dead(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     msg_print(_("黄金色の光が溢れ出た...", "It emitted a golden light..."));
-    if (o_ptr->fixed_artifact_idx == FixedArtifactId::EXCALIBORG) {
+    if (o_ptr->is_specific_artifact(FixedArtifactId::EXCALIBORG)) {
         msg_print(_("ぴぴるぴるぴるぴぴるぴ～♪", "Pipiru piru piru pipiru pii"));
     }
 

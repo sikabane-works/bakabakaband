@@ -186,8 +186,8 @@ MonsterSpellResult spell_RF6_TELE_TO(PlayerType *player_ptr, MONSTER_IDX m_idx, 
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    monster_type *t_ptr = &floor_ptr->m_list[t_idx];
-    monster_race *tr_ptr = &r_info[t_ptr->r_idx];
+    MonsterEntity *t_ptr = &floor_ptr->m_list[t_idx];
+    MonsterRaceInfo *tr_ptr = &monraces_info[t_ptr->r_idx];
 
     mspell_cast_msg_simple msg(_("%^sがあなたを引き戻した。", "%^s commands you to return."),
         _("%^sが%sを引き戻した。", "%^s commands %s to return."));
@@ -257,8 +257,8 @@ MonsterSpellResult spell_RF6_TELE_AWAY(PlayerType *player_ptr, MONSTER_IDX m_idx
     res.learnable = target_type == MONSTER_TO_PLAYER;
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    monster_type *t_ptr = &floor_ptr->m_list[t_idx];
-    monster_race *tr_ptr = &r_info[t_ptr->r_idx];
+    MonsterEntity *t_ptr = &floor_ptr->m_list[t_idx];
+    MonsterRaceInfo *tr_ptr = &monraces_info[t_ptr->r_idx];
 
     mspell_cast_msg_simple msg(_("%^sにテレポートさせられた。", "%^s teleports you away."),
         _("%^sは%sをテレポートさせた。", "%^s teleports %s away."));
@@ -316,9 +316,9 @@ MonsterSpellResult spell_RF6_TELE_AWAY(PlayerType *player_ptr, MONSTER_IDX m_idx
     }
 
     if (t_idx == player_ptr->riding) {
-        teleport_player_away(m_idx, player_ptr, MAX_SIGHT * 2 + 5, false);
+        teleport_player_away(m_idx, player_ptr, MAX_PLAYER_SIGHT * 2 + 5, false);
     } else {
-        teleport_away(player_ptr, t_idx, MAX_SIGHT * 2 + 5, TELEPORT_PASSIVE);
+        teleport_away(player_ptr, t_idx, MAX_PLAYER_SIGHT * 2 + 5, TELEPORT_PASSIVE);
     }
     set_monster_csleep(player_ptr, t_idx, 0);
 
@@ -339,8 +339,8 @@ MonsterSpellResult spell_RF6_TELE_LEVEL(PlayerType *player_ptr, MONSTER_IDX m_id
     const auto res = MonsterSpellResult::make_valid();
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    monster_type *t_ptr = &floor_ptr->m_list[t_idx];
-    monster_race *tr_ptr = &r_info[t_ptr->r_idx];
+    MonsterEntity *t_ptr = &floor_ptr->m_list[t_idx];
+    MonsterRaceInfo *tr_ptr = &monraces_info[t_ptr->r_idx];
     DEPTH rlev = monster_level_idx(floor_ptr, m_idx);
     bool resist, saving_throw;
 
@@ -398,19 +398,22 @@ MonsterSpellResult spell_RF6_DARKNESS(PlayerType *player_ptr, POSITION y, POSITI
     concptr msg_done;
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    monster_type *t_ptr = &floor_ptr->m_list[t_idx];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     bool can_use_lite_area = false;
     bool monster_to_monster = target_type == MONSTER_TO_MONSTER;
     bool monster_to_player = target_type == MONSTER_TO_PLAYER;
     GAME_TEXT t_name[MAX_NLEN];
     monster_name(player_ptr, t_idx, t_name);
 
-    if (PlayerClass(player_ptr).equals(PlayerClassType::NINJA) && r_ptr->kind_flags.has_not(MonsterKindType::UNDEAD) && r_ptr->resistance_flags.has_not(MonsterResistanceType::HURT_LITE) && !(r_ptr->flags7 & RF7_DARK_MASK)) {
+    const auto is_ninja = PlayerClass(player_ptr).equals(PlayerClassType::NINJA);
+    const auto is_living_monster = r_ptr->kind_flags.has_not(MonsterKindType::UNDEAD);
+    const auto is_not_weak_lite = r_ptr->resistance_flags.has_not(MonsterResistanceType::HURT_LITE);
+    if (is_ninja && is_living_monster && is_not_weak_lite && none_bits(r_ptr->flags7, RF7_DARK_MASK)) {
         can_use_lite_area = true;
     }
 
-    if (monster_to_monster && !is_hostile(t_ptr)) {
+    const auto &t_ref = floor_ptr->m_list[t_idx];
+    if (monster_to_monster && !t_ref.is_hostile()) {
         can_use_lite_area = false;
     }
 

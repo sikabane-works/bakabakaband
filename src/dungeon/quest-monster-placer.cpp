@@ -24,7 +24,7 @@ bool place_quest_monsters(PlayerType *player_ptr)
     auto *floor_ptr = player_ptr->current_floor_ptr;
     const auto &quest_list = QuestList::get_instance();
     for (const auto &[q_idx, q_ref] : quest_list) {
-        monster_race *r_ptr;
+        MonsterRaceInfo *r_ptr;
         BIT_FLAGS mode;
 
         auto no_quest_monsters = q_ref.status != QuestStatusType::TAKEN;
@@ -37,7 +37,7 @@ bool place_quest_monsters(PlayerType *player_ptr)
             continue;
         }
 
-        r_ptr = &r_info[q_ref.r_idx];
+        r_ptr = &monraces_info[q_ref.r_idx];
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && (r_ptr->cur_num >= r_ptr->mob_num)) {
             continue;
         }
@@ -55,12 +55,12 @@ bool place_quest_monsters(PlayerType *player_ptr)
                 int l;
                 for (l = SAFE_MAX_ATTEMPTS; l > 0; l--) {
                     grid_type *g_ptr;
-                    feature_type *f_ptr;
+                    TerrainType *f_ptr;
                     y = randint0(floor_ptr->height);
                     x = randint0(floor_ptr->width);
                     g_ptr = &floor_ptr->grid_array[y][x];
-                    f_ptr = &f_info[g_ptr->feat];
-                    if (f_ptr->flags.has_none_of({ FloorFeatureType::MOVE, FloorFeatureType::CAN_FLY })) {
+                    f_ptr = &terrains_info[g_ptr->feat];
+                    if (f_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY })) {
                         continue;
                     }
 

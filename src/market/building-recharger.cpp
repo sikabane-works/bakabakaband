@@ -12,9 +12,9 @@
 #include "object-hook/hook-magic.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "spell-kind/spells-perception.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -41,14 +41,14 @@ void building_recharge(PlayerType *player_ptr)
     concptr s = _("魔力を充填すべきアイテムがない。", "You have nothing to recharge.");
 
     OBJECT_IDX item;
-    ObjectType *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ObjectType::is_rechargeable));
+    ItemEntity *o_ptr;
+    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_rechargeable));
     if (!o_ptr) {
         return;
     }
 
-    object_kind *k_ptr;
-    k_ptr = &k_info[o_ptr->k_idx];
+    BaseitemInfo *k_ptr;
+    k_ptr = &baseitems_info[o_ptr->k_idx];
 
     /*
      * We don't want to give the player free info about
@@ -75,7 +75,7 @@ void building_recharge(PlayerType *player_ptr)
         return;
     }
 
-    DEPTH lev = k_info[o_ptr->k_idx].level;
+    DEPTH lev = baseitems_info[o_ptr->k_idx].level;
     PRICE price;
     if (o_ptr->tval == ItemKindType::ROD) {
         if (o_ptr->timeout > 0) {
@@ -86,10 +86,10 @@ void building_recharge(PlayerType *player_ptr)
             return;
         }
     } else if (o_ptr->tval == ItemKindType::STAFF) {
-        price = (k_info[o_ptr->k_idx].cost / 10) * o_ptr->number;
+        price = (baseitems_info[o_ptr->k_idx].cost / 10) * o_ptr->number;
         price = std::max(10, price);
     } else {
-        price = (k_info[o_ptr->k_idx].cost / 10);
+        price = (baseitems_info[o_ptr->k_idx].cost / 10);
         price = std::max(10, price);
     }
 
@@ -185,7 +185,7 @@ void building_recharge_all(PlayerType *player_ptr)
     PRICE price = 0;
     PRICE total_cost = 0;
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &player_ptr->inventory_list[i];
 
         if ((o_ptr->tval < ItemKindType::STAFF) || (o_ptr->tval > ItemKindType::ROD)) {
@@ -195,9 +195,9 @@ void building_recharge_all(PlayerType *player_ptr)
             total_cost += 50;
         }
 
-        DEPTH lev = k_info[o_ptr->k_idx].level;
-        object_kind *k_ptr;
-        k_ptr = &k_info[o_ptr->k_idx];
+        DEPTH lev = baseitems_info[o_ptr->k_idx].level;
+        BaseitemInfo *k_ptr;
+        k_ptr = &baseitems_info[o_ptr->k_idx];
 
         switch (o_ptr->tval) {
         case ItemKindType::ROD:
@@ -205,13 +205,13 @@ void building_recharge_all(PlayerType *player_ptr)
             break;
 
         case ItemKindType::STAFF:
-            price = (k_info[o_ptr->k_idx].cost / 10) * o_ptr->number;
+            price = (baseitems_info[o_ptr->k_idx].cost / 10) * o_ptr->number;
             price = std::max(10, price);
             price = (k_ptr->pval - o_ptr->pval) * price;
             break;
 
         case ItemKindType::WAND:
-            price = (k_info[o_ptr->k_idx].cost / 10);
+            price = (baseitems_info[o_ptr->k_idx].cost / 10);
             price = std::max(10, price);
             price = (o_ptr->number * k_ptr->pval - o_ptr->pval) * price;
             break;
@@ -242,10 +242,10 @@ void building_recharge_all(PlayerType *player_ptr)
     }
 
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &player_ptr->inventory_list[i];
-        object_kind *k_ptr;
-        k_ptr = &k_info[o_ptr->k_idx];
+        BaseitemInfo *k_ptr;
+        k_ptr = &baseitems_info[o_ptr->k_idx];
 
         if ((o_ptr->tval < ItemKindType::STAFF) || (o_ptr->tval > ItemKindType::ROD)) {
             continue;

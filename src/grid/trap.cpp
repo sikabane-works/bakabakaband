@@ -2,7 +2,6 @@
 #include "cmd-io/cmd-dump.h"
 #include "cmd-io/cmd-save.h"
 #include "core/disturbance.h"
-#include "dungeon/dungeon.h"
 #include "dungeon/quest.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -37,6 +36,7 @@
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
 #include "status/element-resistance.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -179,7 +179,7 @@ FEAT_IDX choose_random_trap(PlayerType *player_ptr)
         feat = normal_traps[randint0(normal_traps.size())];
 
         /* Accept non-trapdoors */
-        if (f_info[feat].flags.has_not(FloorFeatureType::MORE)) {
+        if (terrains_info[feat].flags.has_not(TerrainCharacteristics::MORE)) {
             break;
         }
 
@@ -189,7 +189,7 @@ FEAT_IDX choose_random_trap(PlayerType *player_ptr)
         }
 
         /* Hack -- no trap doors on the deepest level */
-        if (floor_ptr->dun_level >= d_info[floor_ptr->dungeon_idx].maxdepth) {
+        if (floor_ptr->dun_level >= dungeons_info[floor_ptr->dungeon_idx].maxdepth) {
             continue;
         }
 
@@ -210,9 +210,9 @@ void disclose_grid(PlayerType *player_ptr, POSITION y, POSITION x)
 {
     auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
-    if (g_ptr->cave_has_flag(FloorFeatureType::SECRET)) {
+    if (g_ptr->cave_has_flag(TerrainCharacteristics::SECRET)) {
         /* No longer hidden */
-        cave_alter_feat(player_ptr, y, x, FloorFeatureType::SECRET);
+        cave_alter_feat(player_ptr, y, x, TerrainCharacteristics::SECRET);
     } else if (g_ptr->mimic) {
         /* No longer hidden */
         g_ptr->mimic = 0;
@@ -408,13 +408,13 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     int i, num, dam;
     POSITION x = player_ptr->x, y = player_ptr->y;
     auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-    auto *f_ptr = &f_info[g_ptr->feat];
-    TrapType trap_feat_type = f_ptr->flags.has(FloorFeatureType::TRAP) ? i2enum<TrapType>(f_ptr->subtype) : TrapType::NOT_TRAP;
+    auto *f_ptr = &terrains_info[g_ptr->feat];
+    TrapType trap_feat_type = f_ptr->flags.has(TerrainCharacteristics::TRAP) ? i2enum<TrapType>(f_ptr->subtype) : TrapType::NOT_TRAP;
     concptr name = _("トラップ", "a trap");
 
     disturb(player_ptr, false, true);
 
-    cave_alter_feat(player_ptr, y, x, FloorFeatureType::HIT_TRAP);
+    cave_alter_feat(player_ptr, y, x, TerrainCharacteristics::HIT_TRAP);
     player_ptr->plus_incident(INCIDENT::TRAPPED, 1);
 
     /* Analyze */
@@ -615,8 +615,8 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
 
                 /* Let them fight each other */
                 if (evil_idx && good_idx) {
-                    monster_type *evil_ptr = &player_ptr->current_floor_ptr->m_list[evil_idx];
-                    monster_type *good_ptr = &player_ptr->current_floor_ptr->m_list[good_idx];
+                    MonsterEntity *evil_ptr = &player_ptr->current_floor_ptr->m_list[evil_idx];
+                    MonsterEntity *good_ptr = &player_ptr->current_floor_ptr->m_list[good_idx];
                     evil_ptr->target_y = good_ptr->fy;
                     evil_ptr->target_x = good_ptr->fx;
                     good_ptr->target_y = evil_ptr->fy;
@@ -691,7 +691,7 @@ void hit_trap(PlayerType *player_ptr, bool break_trap)
     }
 
     if (break_trap && is_trap(player_ptr, g_ptr->feat)) {
-        cave_alter_feat(player_ptr, y, x, FloorFeatureType::DISARM);
+        cave_alter_feat(player_ptr, y, x, TerrainCharacteristics::DISARM);
         msg_print(_("トラップを粉砕した。", "You destroyed the trap."));
     }
 }

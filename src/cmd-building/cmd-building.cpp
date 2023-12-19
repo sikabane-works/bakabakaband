@@ -166,10 +166,10 @@ static void bldg_process_command(PlayerType *player_ptr, building_type *bldg, in
         bcost = compare_weapons(player_ptr, bcost);
         break;
     case BACT_ENCHANT_WEAPON:
-        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(&ObjectType::allow_enchant_melee_weapon));
+        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(&ItemEntity::allow_enchant_melee_weapon));
         break;
     case BACT_ENCHANT_ARMOR:
-        enchant_item(player_ptr, bcost, 0, 0, 1, FuncItemTester(&ObjectType::is_armour));
+        enchant_item(player_ptr, bcost, 0, 0, 1, FuncItemTester(&ItemEntity::is_armour));
         break;
     case BACT_RECHARGE:
         building_recharge(player_ptr);
@@ -198,7 +198,7 @@ static void bldg_process_command(PlayerType *player_ptr, building_type *bldg, in
         paid = restore_all_status(player_ptr);
         break;
     case BACT_ENCHANT_ARROWS:
-        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(&ObjectType::is_ammo));
+        enchant_item(player_ptr, bcost, 1, 1, 0, FuncItemTester(&ItemEntity::is_ammo));
         break;
     case BACT_ENCHANT_BOW:
         enchant_item(player_ptr, bcost, 1, 1, 0, TvalItemTester(ItemKindType::BOW));
@@ -315,12 +315,12 @@ void do_cmd_building(PlayerType *player_ptr)
     PlayerEnergy energy(player_ptr);
     energy.set_player_turn_energy(100);
 
-    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, player_ptr->y, player_ptr->x, FloorFeatureType::BLDG)) {
+    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, player_ptr->y, player_ptr->x, TerrainCharacteristics::BLDG)) {
         msg_print(_("ここには建物はない。", "You see no building here."));
         return;
     }
 
-    int which = f_info[player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].feat].subtype;
+    int which = terrains_info[player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].feat].subtype;
 
     building_type *bldg;
     bldg = &building[which];

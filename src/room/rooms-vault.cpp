@@ -6,10 +6,10 @@
 
 #include "room/rooms-vault.h"
 #include "dungeon/dungeon-flag-types.h"
-#include "dungeon/dungeon.h"
 #include "floor/cave.h"
 #include "floor/floor-generator-util.h"
 #include "floor/floor-generator.h"
+#include "floor/floor-town.h"
 #include "floor/geometry.h"
 #include "floor/wild.h"
 #include "game-option/cheat-types.h"
@@ -33,6 +33,7 @@
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/dungeon-data-definition.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/object-type-definition.h"
@@ -43,7 +44,7 @@
 /*
  * The vault generation arrays
  */
-std::vector<vault_type> v_info;
+std::vector<vault_type> vaults_info;
 
 /*
  * This function creates a random vault that looks like a collection of bubbles.
@@ -441,7 +442,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
                 /* Black market in a dungeon */
             case 'S':
                 set_cave_feat(floor_ptr, y, x, feat_black_market);
-                store_init(NO_TOWN, StoreSaleType::BLACK);
+                store_init(VALID_TOWNS, StoreSaleType::BLACK);
                 break;
 
                 /* The Pattern */
@@ -972,7 +973,7 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
     /* Select type of vault */
     do {
         vtype = randint1(15);
-    } while (d_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_CAVE) && ((vtype == 1) || (vtype == 3) || (vtype == 8) || (vtype == 9) || (vtype == 11)));
+    } while (dungeons_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_CAVE) && ((vtype == 1) || (vtype == 3) || (vtype == 8) || (vtype == 9) || (vtype == 11)));
 
     switch (vtype) {
         /* Build an appropriate room */
@@ -1016,7 +1017,7 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
 }
 
 /*!
- * @brief v_info.txtからの部屋生成 / vaults from "v_info.txt"
+ * @brief VaultDefinitions からの部屋生成
  */
 bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space, int id = -1)
 {
@@ -1030,16 +1031,16 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
 
     if (id == -1) {
         /* Pick fixed room */
-        for (const auto &v_ref : v_info) {
+        for (const auto &v_ref : vaults_info) {
             if (v_ref.typ == typ) {
                 prob_table.entry_item(v_ref.idx, 1);
             }
         }
 
         auto result = prob_table.pick_one_at_random();
-        v_ptr = &v_info[result];
+        v_ptr = &vaults_info[result];
     } else {
-        v_ptr = &v_info[id];
+        v_ptr = &vaults_info[id];
     }
 
     /* pick type of transformation (0-7) */
@@ -1083,7 +1084,7 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
         return false;
     }
 
-    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("固定部屋(%s)を生成しました。", "Fixed room (%s)."), v_ptr->name.c_str());
+    msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("固定部屋(%s)を生成しました。", "Fixed room (%s)."), v_ptr->name.data());
 
     /* Hack -- Build the vault */
     build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
@@ -1092,7 +1093,7 @@ bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bo
 }
 
 /*!
- * @brief タイプ18の部屋…v_info.txtより変態部屋を生成する / Type 18 -- pervo room (see "v_info.txt")
+ * @brief タイプ18の部屋…vaults_info.txtより変態部屋を生成する / Type 18 -- pervo room (see "vaults_info.txt")
  */
 bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
 {
@@ -1106,7 +1107,7 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
     /* Pick a lesser vault */
     for (dummy = 0; dummy < SAFE_MAX_ATTEMPTS; dummy++) {
         /* Access a random vault record */
-        v_ptr = &v_info[randint0(v_info.size())];
+        v_ptr = &vaults_info[randint0(vaults_info.size())];
 
         if (player_ptr->current_floor_ptr->dun_level < v_ptr->min_depth || v_ptr->max_depth < player_ptr->current_floor_ptr->dun_level || !one_in_(v_ptr->rarity)) {
             continue;
@@ -1132,7 +1133,7 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
     y = v_ptr->hgt;
 
     /* Some huge vault cannot be ratated to fit in the dungeon */
-    floor_type *floor_ptr = player_ptr->current_floor_ptr;
+    FloorType *floor_ptr = player_ptr->current_floor_ptr;
     if (x + 2 > floor_ptr->height - 2) {
         /* Forbid 90 or 270 degree ratation */
         transno &= ~1;
@@ -1159,7 +1160,6 @@ bool build_type18(PlayerType *player_ptr, dun_data_type *dd_ptr)
 
     msg_format_wizard(player_ptr, CHEAT_DUNGEON, _("特殊固定部屋(%s)を生成しました。", "Special Fixed Room (%s)."), v_ptr->name.c_str());
 
-    /* Hack -- Build the vault */
     build_vault(v_ptr, player_ptr, yval, xval, xoffset, yoffset, transno);
 
     return true;

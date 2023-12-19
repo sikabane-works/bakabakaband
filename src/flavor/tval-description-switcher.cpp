@@ -10,7 +10,8 @@
 #include "locale/english.h"
 #include "monster-race/monster-race.h"
 #include "object-enchant/trg-types.h"
-#include "object/object-kind.h"
+#include "object/tval-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
 #include "util/enum-converter.h"
@@ -23,7 +24,7 @@
 static void describe_monster_ball(flavor_type *flavor_ptr)
 {
     const auto r_idx = i2enum<MonsterRaceId>(flavor_ptr->o_ptr->pval);
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
     if (!flavor_ptr->known) {
         return;
     }
@@ -34,10 +35,10 @@ static void describe_monster_ball(flavor_type *flavor_ptr)
     }
 
 #ifdef JP
-    sprintf(flavor_ptr->tmp_val2, " (%s)", r_ptr->name.c_str());
+    sprintf(flavor_ptr->tmp_val2, " (%s)", r_ptr->name.data());
     flavor_ptr->modstr = flavor_ptr->tmp_val2;
 #else
-    flavor_ptr->t = format("%s", r_ptr->name.c_str());
+    flavor_ptr->t = format("%s", r_ptr->name.data());
     if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         sprintf(flavor_ptr->tmp_val2, " (%s%s)", (is_a_vowel(*flavor_ptr->t) ? "an " : "a "), flavor_ptr->t);
         flavor_ptr->modstr = flavor_ptr->tmp_val2;
@@ -51,11 +52,11 @@ static void describe_monster_ball(flavor_type *flavor_ptr)
 static void describe_statue(flavor_type *flavor_ptr)
 {
     const auto r_idx = i2enum<MonsterRaceId>(flavor_ptr->o_ptr->pval);
-    auto *r_ptr = &r_info[r_idx];
+    auto *r_ptr = &monraces_info[r_idx];
 #ifdef JP
-    flavor_ptr->modstr = r_ptr->name.c_str();
+    flavor_ptr->modstr = r_ptr->name.data();
 #else
-    flavor_ptr->t = format("%s", r_ptr->name.c_str());
+    flavor_ptr->t = format("%s", r_ptr->name.data());
     if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         sprintf(flavor_ptr->tmp_val2, "%s%s", (is_a_vowel(*flavor_ptr->t) ? "an " : "a "), flavor_ptr->t);
         flavor_ptr->modstr = flavor_ptr->tmp_val2;
@@ -68,8 +69,8 @@ static void describe_statue(flavor_type *flavor_ptr)
 static void describe_corpse(flavor_type *flavor_ptr)
 {
     const auto r_idx = i2enum<MonsterRaceId>(flavor_ptr->o_ptr->pval);
-    auto *r_ptr = &r_info[r_idx];
-    flavor_ptr->modstr = r_ptr->name.c_str();
+    auto *r_ptr = &monraces_info[r_idx];
+    flavor_ptr->modstr = r_ptr->name.data();
 #ifdef JP
     flavor_ptr->basenm = "#%";
 #else
@@ -83,7 +84,7 @@ static void describe_corpse(flavor_type *flavor_ptr)
 
 static void describe_trap(flavor_type *flavor_ptr)
 {
-    feature_type *f_ptr = &f_info[flavor_ptr->o_ptr->pval];
+    TerrainType *f_ptr = &terrains_info[flavor_ptr->o_ptr->pval];
     flavor_ptr->modstr = f_ptr->name.c_str();
 #ifdef JP
     flavor_ptr->basenm = "#%";
@@ -98,7 +99,7 @@ static void describe_amulet(flavor_type *flavor_ptr)
         return;
     }
 
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%のアミュレット", "& Amulet~ of %");
     } else if (flavor_ptr->aware) {
@@ -114,7 +115,7 @@ static void describe_ring(flavor_type *flavor_ptr)
         return;
     }
 
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%の指輪", "& Ring~ of %");
     } else if (flavor_ptr->aware) {
@@ -130,7 +131,7 @@ static void describe_ring(flavor_type *flavor_ptr)
 
 static void describe_staff(flavor_type *flavor_ptr)
 {
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%の杖", "& Staff~ of %");
     } else if (flavor_ptr->aware) {
@@ -142,7 +143,7 @@ static void describe_staff(flavor_type *flavor_ptr)
 
 static void describe_wand(flavor_type *flavor_ptr)
 {
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%の魔法棒", "& Wand~ of %");
     } else if (flavor_ptr->aware) {
@@ -154,7 +155,7 @@ static void describe_wand(flavor_type *flavor_ptr)
 
 static void describe_rod(flavor_type *flavor_ptr)
 {
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%のロッド", "& Rod~ of %");
     } else if (flavor_ptr->aware) {
@@ -166,7 +167,7 @@ static void describe_rod(flavor_type *flavor_ptr)
 
 static void describe_scroll(flavor_type *flavor_ptr)
 {
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%の巻物", "& Scroll~ of %");
     } else if (flavor_ptr->aware) {
@@ -178,7 +179,7 @@ static void describe_scroll(flavor_type *flavor_ptr)
 
 static void describe_potion(flavor_type *flavor_ptr)
 {
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%の薬", "& Potion~ of %");
     } else if (flavor_ptr->aware) {
@@ -194,7 +195,7 @@ static void describe_food(flavor_type *flavor_ptr)
         return;
     }
 
-    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.c_str();
+    flavor_ptr->modstr = flavor_ptr->flavor_k_ptr->flavor_name.data();
     if (!flavor_ptr->flavor) {
         flavor_ptr->basenm = _("%のキノコ", "& Mushroom~ of %");
     } else if (flavor_ptr->aware) {

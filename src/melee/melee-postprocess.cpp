@@ -48,7 +48,7 @@
 // Melee-post-process-type
 struct mam_pp_type {
     MONSTER_IDX m_idx;
-    monster_type *m_ptr;
+    MonsterEntity *m_ptr;
     bool seen;
     GAME_TEXT m_name[160];
     int dam;
@@ -66,7 +66,7 @@ mam_pp_type *initialize_mam_pp_type(
     mam_pp_ptr->m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     mam_pp_ptr->seen = is_seen(player_ptr, mam_pp_ptr->m_ptr);
     mam_pp_ptr->dam = dam;
-    mam_pp_ptr->known = mam_pp_ptr->m_ptr->cdis <= MAX_SIGHT;
+    mam_pp_ptr->known = mam_pp_ptr->m_ptr->cdis <= MAX_PLAYER_SIGHT;
     mam_pp_ptr->dead = dead;
     mam_pp_ptr->fear = fear;
     mam_pp_ptr->note = note;
@@ -96,7 +96,7 @@ static void prepare_redraw(PlayerType *player_ptr, mam_pp_type *mam_pp_ptr)
  */
 static bool process_invulnerability(mam_pp_type *mam_pp_ptr)
 {
-    if (monster_invulner_remaining(mam_pp_ptr->m_ptr) && randint0(PENETRATE_INVULNERABILITY)) {
+    if (mam_pp_ptr->m_ptr->is_invulnerable() && randint0(PENETRATE_INVULNERABILITY)) {
         return false;
     }
 
@@ -114,7 +114,7 @@ static bool process_invulnerability(mam_pp_type *mam_pp_ptr)
  */
 static bool process_all_resistances(mam_pp_type *mam_pp_ptr)
 {
-    auto *r_ptr = &r_info[mam_pp_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[mam_pp_ptr->m_ptr->r_idx];
     if (r_ptr->resistance_flags.has_not(MonsterResistanceType::RESIST_ALL)) {
         return false;
     }
@@ -182,7 +182,7 @@ static void print_monster_dead_by_monster(PlayerType *player_ptr, mam_pp_type *m
  */
 static bool check_monster_hp(PlayerType *player_ptr, mam_pp_type *mam_pp_ptr)
 {
-    auto *r_ptr = &r_info[mam_pp_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[mam_pp_ptr->m_ptr->r_idx];
     if (mam_pp_ptr->m_ptr->hp < 0) {
         return false;
     }
@@ -208,7 +208,9 @@ static bool check_monster_hp(PlayerType *player_ptr, mam_pp_type *mam_pp_ptr)
  */
 static void cancel_fear_by_pain(PlayerType *player_ptr, mam_pp_type *mam_pp_ptr)
 {
-    if (!monster_fear_remaining(mam_pp_ptr->m_ptr) || (mam_pp_ptr->dam <= 0) || !set_monster_monfear(player_ptr, mam_pp_ptr->m_idx, monster_fear_remaining(mam_pp_ptr->m_ptr) - randint1(mam_pp_ptr->dam / 4))) {
+    const auto &m_ref = *mam_pp_ptr->m_ptr;
+    const auto dam = mam_pp_ptr->dam;
+    if (!m_ref.is_fearful() || (dam <= 0) || !set_monster_monfear(player_ptr, mam_pp_ptr->m_idx, m_ref.get_remaining_fear() - randint1(dam / 4))) {
         return;
     }
 
@@ -222,8 +224,8 @@ static void cancel_fear_by_pain(PlayerType *player_ptr, mam_pp_type *mam_pp_ptr)
  */
 static void make_monster_fear(PlayerType *player_ptr, mam_pp_type *mam_pp_ptr)
 {
-    auto *r_ptr = &r_info[mam_pp_ptr->m_ptr->r_idx];
-    if (monster_fear_remaining(mam_pp_ptr->m_ptr) || ((r_ptr->flags3 & RF3_NO_FEAR) == 0)) {
+    auto *r_ptr = &monraces_info[mam_pp_ptr->m_ptr->r_idx];
+    if (mam_pp_ptr->m_ptr->is_fearful() || ((r_ptr->flags3 & RF3_NO_FEAR) == 0)) {
         return;
     }
 
@@ -296,9 +298,10 @@ void mon_take_hit_mon(PlayerType *player_ptr, MONSTER_IDX m_idx, int dam, bool *
     *dead = false;
     cancel_fear_by_pain(player_ptr, mam_pp_ptr);
     make_monster_fear(player_ptr, mam_pp_ptr);
-    if ((dam > 0) && !is_pet(m_ptr) && !is_friendly(m_ptr) && (mam_pp_ptr->who != m_idx)) {
-        if (is_pet(&floor_ptr->m_list[mam_pp_ptr->who]) && !player_bold(player_ptr, m_ptr->target_y, m_ptr->target_x)) {
-            set_target(m_ptr, floor_ptr->m_list[mam_pp_ptr->who].fy, floor_ptr->m_list[mam_pp_ptr->who].fx);
+    if ((dam > 0) && !m_ptr->is_pet() && !m_ptr->is_friendly() && (mam_pp_ptr->who != m_idx)) {
+        const auto &m_ref = floor_ptr->m_list[who];
+        if (m_ref.is_pet() && !player_bold(player_ptr, m_ptr->target_y, m_ptr->target_x)) {
+            set_target(m_ptr, m_ref.fy, m_ref.fx);
         }
     }
 

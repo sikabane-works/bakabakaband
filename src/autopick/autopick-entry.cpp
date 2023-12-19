@@ -17,10 +17,10 @@
 #include "object-hook/hook-weapon.h"
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player/player-realm.h"
+#include "system/baseitem-info-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
@@ -324,7 +324,7 @@ bool autopick_new_entry(autopick_type *entry, concptr str, bool allow_default)
 /*!
  * @brief Get auto-picker entry from o_ptr.
  */
-void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, ObjectType *o_ptr)
+void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, ItemEntity *o_ptr)
 {
     /* Assume that object name is to be added */
     bool name = true;
@@ -385,13 +385,13 @@ void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, Ob
                  * are almost meaningless.
                  * Register the ego type only.
                  */
-                auto *e_ptr = &e_info[o_ptr->ego_idx];
+                auto *e_ptr = &egos_info[o_ptr->ego_idx];
 #ifdef JP
                 /* エゴ銘には「^」マークが使える */
-                sprintf(name_str, "^%s", e_ptr->name.c_str());
+                sprintf(name_str, "^%s", e_ptr->name.data());
 #else
                 /* We ommit the basename and cannot use the ^ mark */
-                strcpy(name_str, e_ptr->name.c_str());
+                strcpy(name_str, e_ptr->name.data());
 #endif
                 name = false;
                 if (!o_ptr->is_rare()) {
@@ -412,7 +412,7 @@ void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, Ob
     }
 
     if (o_ptr->is_melee_weapon()) {
-        auto *k_ptr = &k_info[o_ptr->k_idx];
+        auto *k_ptr = &baseitems_info[o_ptr->k_idx];
 
         if ((o_ptr->dd != k_ptr->dd) || (o_ptr->ds != k_ptr->ds)) {
             ADD_FLG(FLG_BOOSTED);
@@ -425,11 +425,11 @@ void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, Ob
     }
 
     const auto r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if ((o_ptr->tval == ItemKindType::CORPSE || o_ptr->tval == ItemKindType::STATUE) && r_info[r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
+    if ((o_ptr->tval == ItemKindType::CORPSE || o_ptr->tval == ItemKindType::STATUE) && monraces_info[r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
         ADD_FLG(FLG_UNIQUE);
     }
 
-    if (o_ptr->tval == ItemKindType::CORPSE && angband_strchr("pht", r_info[r_idx].d_char)) {
+    if (o_ptr->tval == ItemKindType::CORPSE && angband_strchr("pht", monraces_info[r_idx].d_char)) {
         ADD_FLG(FLG_HUMAN);
     }
 
@@ -730,7 +730,7 @@ bool entry_from_choosed_object(PlayerType *player_ptr, autopick_type *entry)
 {
     concptr q = _("どのアイテムを登録しますか? ", "Enter which item? ");
     concptr s = _("アイテムを持っていない。", "You have nothing to enter.");
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = choose_object(player_ptr, nullptr, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP);
     if (!o_ptr) {
         return false;

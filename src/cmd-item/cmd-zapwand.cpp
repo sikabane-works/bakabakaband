@@ -15,7 +15,6 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-info/class-info.h"
@@ -34,6 +33,7 @@
 #include "status/action-setter.h"
 #include "status/experience.h"
 #include "sv-definition/sv-wand-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
@@ -111,7 +111,7 @@ bool wand_effect(PlayerType *player_ptr, OBJECT_SUBTYPE_VALUE sval, DIRECTION di
     }
 
     case SV_WAND_TELEPORT_AWAY: {
-        int distance = MAX_SIGHT * (powerful ? 8 : 5);
+        int distance = MAX_PLAYER_SIGHT * (powerful ? 8 : 5);
         if (teleport_monster(player_ptr, dir, distance)) {
             ident = true;
         }

@@ -1,6 +1,5 @@
 ﻿#include "room/rooms-special.h"
 #include "dungeon/dungeon-flag-types.h"
-#include "dungeon/dungeon.h"
 #include "floor//geometry.h"
 #include "floor/floor-generator.h"
 #include "game-option/cheat-types.h"
@@ -18,6 +17,7 @@
 #include "object/object-kind-hook.h"
 #include "room/door-definition.h"
 #include "room/space-finder.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
@@ -47,7 +47,7 @@ bool build_type15(PlayerType *player_ptr, dun_data_type *dd_ptr)
     }
 
     /* Choose lite or dark */
-    light = ((floor_ptr->dun_level <= randint1(25)) && d_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::DARKNESS));
+    light = ((floor_ptr->dun_level <= randint1(25)) && dungeons_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::DARKNESS));
 
     /* Get corner values */
     y1 = yval - ysize / 2;
@@ -132,7 +132,7 @@ bool build_type15(PlayerType *player_ptr, dun_data_type *dd_ptr)
         }
 
         /* Place a potion */
-        get_obj_num_hook = kind_is_potion;
+        get_obj_index_hook = kind_is_potion;
         place_object(player_ptr, yval, xval, AM_NO_FIXED_ART);
         floor_ptr->grid_array[yval][xval].info |= (CAVE_ICKY);
     } break;
@@ -232,14 +232,14 @@ bool build_type15(PlayerType *player_ptr, dun_data_type *dd_ptr)
 
         /* Place two potions */
         if (one_in_(2)) {
-            get_obj_num_hook = kind_is_potion;
+            get_obj_index_hook = kind_is_potion;
             place_object(player_ptr, yval, xval - 1, AM_NO_FIXED_ART);
-            get_obj_num_hook = kind_is_potion;
+            get_obj_index_hook = kind_is_potion;
             place_object(player_ptr, yval, xval + 1, AM_NO_FIXED_ART);
         } else {
-            get_obj_num_hook = kind_is_potion;
+            get_obj_index_hook = kind_is_potion;
             place_object(player_ptr, yval - 1, xval, AM_NO_FIXED_ART);
-            get_obj_num_hook = kind_is_potion;
+            get_obj_index_hook = kind_is_potion;
             place_object(player_ptr, yval + 1, xval, AM_NO_FIXED_ART);
         }
 

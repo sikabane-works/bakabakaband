@@ -86,7 +86,7 @@ static bool py_pickup_floor_aux(PlayerType *player_ptr)
 void py_pickup_floor(PlayerType *player_ptr, bool pickup)
 {
     GAME_TEXT o_name[MAX_NLEN];
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     int floor_num = 0;
     OBJECT_IDX floor_o_idx = 0;
     int can_pickup = 0;
@@ -197,7 +197,7 @@ void describe_pickup_item(PlayerType *player_ptr, OBJECT_IDX o_idx)
     GAME_TEXT o_name[MAX_NLEN];
 #endif
 
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     o_ptr = &player_ptr->current_floor_ptr->o_list[o_idx];
 
 #ifdef JP
@@ -220,7 +220,7 @@ void describe_pickup_item(PlayerType *player_ptr, OBJECT_IDX o_idx)
     describe_flavor(player_ptr, o_name, o_ptr, 0);
 
 #ifdef JP
-    if ((o_ptr->fixed_artifact_idx == FixedArtifactId::CRIMSON) && (player_ptr->ppersonality == PERSONALITY_COMBAT)) {
+    if (o_ptr->is_specific_artifact(FixedArtifactId::CRIMSON) && (player_ptr->ppersonality == PERSONALITY_COMBAT)) {
         msg_format("こうして、%sは『クリムゾン』を手に入れた。", player_ptr->name);
         msg_print("しかし今、『混沌のサーペント』の放ったモンスターが、");
         msg_format("%sに襲いかかる．．．", player_ptr->name);
@@ -266,7 +266,7 @@ void carry(PlayerType *player_ptr, bool pickup)
 
     for (auto it = g_ptr->o_idx_list.begin(); it != g_ptr->o_idx_list.end();) {
         const OBJECT_IDX this_o_idx = *it++;
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, 0);

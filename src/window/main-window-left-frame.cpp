@@ -311,7 +311,7 @@ void health_redraw(PlayerType *player_ptr, bool riding)
         col = COL_INFO;
     }
 
-    monster_type *m_ptr;
+    MonsterEntity *m_ptr;
     m_ptr = &player_ptr->current_floor_ptr->m_list[health_who];
 
     if (w_ptr->wizard && player_ptr->phase_out) {
@@ -324,29 +324,29 @@ void health_redraw(PlayerType *player_ptr, bool riding)
         term_putstr(col - 2, row + 3, 12, TERM_WHITE, "      /     ");
 
         if (MonsterRace(player_ptr->current_floor_ptr->m_list[1].r_idx).is_valid()) {
-            term_putstr(col - 2, row, 2, r_info[player_ptr->current_floor_ptr->m_list[1].r_idx].x_attr,
-                format("%c", r_info[player_ptr->current_floor_ptr->m_list[1].r_idx].x_char));
+            term_putstr(col - 2, row, 2, monraces_info[player_ptr->current_floor_ptr->m_list[1].r_idx].x_attr,
+                format("%c", monraces_info[player_ptr->current_floor_ptr->m_list[1].r_idx].x_char));
             term_putstr(col - 1, row, 5, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[1].hp));
             term_putstr(col + 5, row, 6, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[1].max_maxhp));
         }
 
         if (MonsterRace(player_ptr->current_floor_ptr->m_list[2].r_idx).is_valid()) {
-            term_putstr(col - 2, row + 1, 2, r_info[player_ptr->current_floor_ptr->m_list[2].r_idx].x_attr,
-                format("%c", r_info[player_ptr->current_floor_ptr->m_list[2].r_idx].x_char));
+            term_putstr(col - 2, row + 1, 2, monraces_info[player_ptr->current_floor_ptr->m_list[2].r_idx].x_attr,
+                format("%c", monraces_info[player_ptr->current_floor_ptr->m_list[2].r_idx].x_char));
             term_putstr(col - 1, row + 1, 5, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[2].hp));
             term_putstr(col + 5, row + 1, 6, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[2].max_maxhp));
         }
 
         if (MonsterRace(player_ptr->current_floor_ptr->m_list[3].r_idx).is_valid()) {
-            term_putstr(col - 2, row + 2, 2, r_info[player_ptr->current_floor_ptr->m_list[3].r_idx].x_attr,
-                format("%c", r_info[player_ptr->current_floor_ptr->m_list[3].r_idx].x_char));
+            term_putstr(col - 2, row + 2, 2, monraces_info[player_ptr->current_floor_ptr->m_list[3].r_idx].x_attr,
+                format("%c", monraces_info[player_ptr->current_floor_ptr->m_list[3].r_idx].x_char));
             term_putstr(col - 1, row + 2, 5, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[3].hp));
             term_putstr(col + 5, row + 2, 6, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[3].max_maxhp));
         }
 
         if (MonsterRace(player_ptr->current_floor_ptr->m_list[4].r_idx).is_valid()) {
-            term_putstr(col - 2, row + 3, 2, r_info[player_ptr->current_floor_ptr->m_list[4].r_idx].x_attr,
-                format("%c", r_info[player_ptr->current_floor_ptr->m_list[4].r_idx].x_char));
+            term_putstr(col - 2, row + 3, 2, monraces_info[player_ptr->current_floor_ptr->m_list[4].r_idx].x_attr,
+                format("%c", monraces_info[player_ptr->current_floor_ptr->m_list[4].r_idx].x_char));
             term_putstr(col - 1, row + 3, 5, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[4].hp));
             term_putstr(col + 5, row + 3, 6, TERM_WHITE, format("%5d", player_ptr->current_floor_ptr->m_list[4].max_maxhp));
         }
@@ -379,11 +379,11 @@ void health_redraw(PlayerType *player_ptr, bool riding)
     int len = (pct2 < 10) ? 1 : (pct2 < 90) ? (pct2 / 10 + 1)
                                             : 10;
     TERM_COLOR attr = TERM_RED;
-    if (monster_invulner_remaining(m_ptr)) {
+    if (m_ptr->is_invulnerable()) {
         attr = TERM_WHITE;
-    } else if (monster_csleep_remaining(m_ptr)) {
+    } else if (m_ptr->is_asleep()) {
         attr = TERM_BLUE;
-    } else if (monster_fear_remaining(m_ptr)) {
+    } else if (m_ptr->is_fearful()) {
         attr = TERM_VIOLET;
     } else if (pct >= 100) {
         attr = TERM_L_GREEN;

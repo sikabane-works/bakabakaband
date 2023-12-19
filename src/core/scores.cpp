@@ -15,7 +15,6 @@
 #include "core/asking-player.h"
 #include "core/score-util.h"
 #include "core/turn-compensator.h"
-#include "dungeon/dungeon.h"
 #include "game-option/birth-options.h"
 #include "game-option/game-play-options.h"
 #include "io/files-util.h"
@@ -30,6 +29,7 @@
 #include "player/player-status.h"
 #include "player/race-info-table.h"
 #include "system/angband-version.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -234,14 +234,14 @@ errr top_twenty(PlayerType *player_ptr)
     /* Save the cause of death (31 chars) */
     if (player_ptr->died_from.size() >= sizeof(the_score.how)) {
 #ifdef JP
-        angband_strcpy(the_score.how, player_ptr->died_from.c_str(), sizeof(the_score.how) - 2);
+        angband_strcpy(the_score.how, player_ptr->died_from.data(), sizeof(the_score.how) - 2);
         strcat(the_score.how, "…");
 #else
-        angband_strcpy(the_score.how, player_ptr->died_from.c_str(), sizeof(the_score.how) - 3);
+        angband_strcpy(the_score.how, player_ptr->died_from.data(), sizeof(the_score.how) - 3);
         strcat(the_score.how, "...");
 #endif
     } else {
-        angband_strcpy(the_score.how, player_ptr->died_from.c_str(), sizeof(the_score.how));
+        angband_strcpy(the_score.how, player_ptr->died_from.data(), sizeof(the_score.how));
     }
 
     /* Grab permissions */

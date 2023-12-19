@@ -11,7 +11,6 @@
 #include "core/stuff-handler.h"
 #include "core/turn-compensator.h"
 #include "core/visuals-reseter.h"
-#include "dungeon/dungeon.h"
 #include "game-option/special-options.h"
 #include "io-dump/character-dump.h"
 #include "io/inet.h"
@@ -24,6 +23,7 @@
 #include "player/player-status.h"
 #include "realm/realm-names-table.h"
 #include "system/angband-version.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "system/system-variables.h"
@@ -441,7 +441,7 @@ bool report_score(PlayerType *player_ptr)
     buf_sprintf(score, "seikaku: %s\n", personality_desc);
     buf_sprintf(score, "realm1: %s\n", realm1_name);
     buf_sprintf(score, "realm2: %s\n", realm_names[player_ptr->realm2]);
-    buf_sprintf(score, "killer: %s\n", player_ptr->died_from.c_str());
+    buf_sprintf(score, "killer: %s\n", player_ptr->died_from.data());
     buf_sprintf(score, "-----charcter dump-----\n");
 
     make_dump(player_ptr, score);

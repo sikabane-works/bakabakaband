@@ -20,8 +20,8 @@
 #include "object-hook/hook-magic.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "object/object-kind.h"
 #include "player-base/player-class.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
@@ -53,15 +53,15 @@ bool recharge(PlayerType *player_ptr, int power)
     concptr s = _("魔力を充填すべきアイテムがない。", "You have nothing to recharge.");
 
     OBJECT_IDX item;
-    ObjectType *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ObjectType::is_rechargeable));
+    ItemEntity *o_ptr;
+    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_rechargeable));
     if (!o_ptr) {
         return false;
     }
 
-    object_kind *k_ptr;
-    k_ptr = &k_info[o_ptr->k_idx];
-    DEPTH lev = k_info[o_ptr->k_idx].level;
+    BaseitemInfo *k_ptr;
+    k_ptr = &baseitems_info[o_ptr->k_idx];
+    DEPTH lev = baseitems_info[o_ptr->k_idx].level;
 
     TIME_EFFECT recharge_amount;
     int recharge_strength;

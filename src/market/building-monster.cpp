@@ -86,7 +86,7 @@ bool research_mon(PlayerType *player_ptr)
     std::vector<MonsterRaceId> who;
 
     /* Collect matching monsters */
-    for (const auto &[r_idx, r_ref] : r_info) {
+    for (const auto &[r_idx, r_ref] : monraces_info) {
         /* Empty monster */
         if (!MonsterRace(r_ref.idx).is_valid() || r_ref.name.empty()) {
             continue;
@@ -119,9 +119,9 @@ bool research_mon(PlayerType *player_ptr)
 
             char temp2[MAX_MONSTER_NAME];
 #ifdef JP
-            strcpy(temp2, r_ref.E_name.c_str());
+            strcpy(temp2, r_ref.E_name.data());
 #else
-            strcpy(temp2, r_ref.name.c_str());
+            strcpy(temp2, r_ref.name.data());
 #endif
             for (int xx = 0; temp2[xx] && xx < 80; xx++) {
                 if (isupper(temp2[xx])) {
@@ -130,7 +130,7 @@ bool research_mon(PlayerType *player_ptr)
             }
 
 #ifdef JP
-            if (angband_strstr(temp2, temp) || angband_strstr(r_ref.name.c_str(), temp))
+            if (angband_strstr(temp2, temp) || angband_strstr(r_ref.name.data(), temp))
 #else
             if (angband_strstr(temp2, temp))
 #endif

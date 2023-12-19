@@ -10,7 +10,6 @@
  */
 
 #include "mspell/mspell-judgement.h"
-#include "dungeon/dungeon.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "floor/cave.h"
@@ -32,6 +31,7 @@
 #include "realm/realm-song-numbers.h"
 #include "spell-realm/spells-song.h"
 #include "spell/range-calc.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -50,7 +50,7 @@
  * @param m_ptr 使用するモンスターの構造体参照ポインタ
  * @return ビームが到達可能ならばTRUEを返す
  */
-bool direct_beam(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2, monster_type *m_ptr)
+bool direct_beam(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2, MonsterEntity *m_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     projection_path grid_g(player_ptr, get_max_range(player_ptr), y1, x1, y2, x2, PROJECT_THRU);
@@ -59,11 +59,12 @@ bool direct_beam(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2, 
     }
 
     bool hit2 = false;
-    bool is_friend = is_pet(m_ptr);
+    bool is_friend = m_ptr->is_pet();
     for (const auto &[y, x] : grid_g) {
+        const auto &g_ref = floor_ptr->grid_array[y][x];
         if (y == y2 && x == x2) {
             hit2 = true;
-        } else if (is_friend && floor_ptr->grid_array[y][x].m_idx > 0 && !are_enemies(player_ptr, m_ptr, &floor_ptr->m_list[floor_ptr->grid_array[y][x].m_idx])) {
+        } else if (is_friend && g_ref.m_idx > 0 && !are_enemies(player_ptr, *m_ptr, floor_ptr->m_list[g_ref.m_idx])) {
             return false;
         }
 
@@ -120,7 +121,7 @@ bool breath_direct(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2
                 break;
             }
         } else {
-            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, FloorFeatureType::PROJECT)) {
+            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, TerrainCharacteristics::PROJECT)) {
                 break;
             }
         }
@@ -199,7 +200,7 @@ void get_project_point(PlayerType *player_ptr, POSITION sy, POSITION sx, POSITIO
     *ty = sy;
     *tx = sx;
     for (const auto &[y, x] : path_g) {
-        if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FloorFeatureType::PROJECT)) {
+        if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
             break;
         }
 
@@ -218,12 +219,12 @@ void get_project_point(PlayerType *player_ptr, POSITION sy, POSITION sx, POSITIO
  */
 bool dispel_check_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx)
 {
-    monster_type *t_ptr = &player_ptr->current_floor_ptr->m_list[t_idx];
-    if (monster_invulner_remaining(t_ptr)) {
+    const auto &t_ref = player_ptr->current_floor_ptr->m_list[t_idx];
+    if (t_ref.is_invulnerable()) {
         return true;
     }
 
-    if ((t_ptr->mspeed < 135) && monster_fast_remaining(t_ptr)) {
+    if ((t_ref.mspeed < 135) && t_ref.is_accelerated()) {
         return true;
     }
 
@@ -275,8 +276,9 @@ bool dispel_check(PlayerType *player_ptr, MONSTER_IDX m_idx)
         return true;
     }
 
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    const auto &floor_ref = *player_ptr->current_floor_ptr;
+    auto *m_ptr = &floor_ref.m_list[m_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (r_ptr->ability_flags.has(MonsterAbilityType::BR_ACID)) {
         if (!has_immune_acid(player_ptr) && (player_ptr->oppose_acid || music_singing(player_ptr, MUSIC_RESIST))) {
             return true;
@@ -365,7 +367,8 @@ bool dispel_check(PlayerType *player_ptr, MONSTER_IDX m_idx)
         return true;
     }
 
-    if (player_ptr->riding && (player_ptr->current_floor_ptr->m_list[player_ptr->riding].mspeed < 135) && monster_fast_remaining(&player_ptr->current_floor_ptr->m_list[player_ptr->riding])) {
+    const auto &m_ref = player_ptr->current_floor_ptr->m_list[player_ptr->riding];
+    if (player_ptr->riding && (player_ptr->current_floor_ptr->m_list[player_ptr->riding].mspeed < 135) && m_ref.is_accelerated()) {
         return true;
     }
 

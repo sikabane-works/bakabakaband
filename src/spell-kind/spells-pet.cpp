@@ -26,7 +26,7 @@ void discharge_minion(PlayerType *player_ptr)
     bool okay = true;
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!MonsterRace(m_ptr->r_idx).is_valid() || !is_pet(m_ptr)) {
+        if (!MonsterRace(m_ptr->r_idx).is_valid() || !m_ptr->is_pet()) {
             continue;
         }
         if (m_ptr->nickname) {
@@ -42,12 +42,12 @@ void discharge_minion(PlayerType *player_ptr)
 
     for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!MonsterRace(m_ptr->r_idx).is_valid() || !is_pet(m_ptr)) {
+        if (!MonsterRace(m_ptr->r_idx).is_valid() || !m_ptr->is_pet()) {
             continue;
         }
 
-        monster_race *r_ptr;
-        r_ptr = &r_info[m_ptr->r_idx];
+        MonsterRaceInfo *r_ptr;
+        r_ptr = &monraces_info[m_ptr->r_idx];
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             GAME_TEXT m_name[MAX_NLEN];
             monster_desc(player_ptr, m_name, m_ptr, 0x00);

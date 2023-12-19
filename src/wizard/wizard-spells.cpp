@@ -211,7 +211,7 @@ void wiz_summon_specific_enemy(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     if (!MonsterRace(r_idx).is_valid()) {
         int val = 1;
-        if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
+        if (!get_value("MonsterID", 1, monraces_info.size() - 1, &val)) {
             return;
         }
         r_idx = static_cast<MonsterRaceId>(val);
@@ -223,11 +223,11 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
 {
     if (v_idx <= 0) {
         int val = 1;
-        if (!get_value("VaultID", 1, v_info.size() - 1, &val)) {
+        if (!get_value("VaultID", 1, vaults_info.size() - 1, &val)) {
             return;
         }
         v_idx = static_cast<int>(val);
-        vault_type *v_ptr = &v_info[v_idx];
+        vault_type *v_ptr = &vaults_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
         player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
         player_ptr->redraw |= (PR_MAP);
@@ -246,7 +246,7 @@ void wiz_summon_pet(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     if (!MonsterRace(r_idx).is_valid()) {
         int val = 1;
-        if (!get_value("MonsterID", 1, r_info.size() - 1, &val)) {
+        if (!get_value("MonsterID", 1, monraces_info.size() - 1, &val)) {
             return;
         }
         r_idx = static_cast<MonsterRaceId>(val);

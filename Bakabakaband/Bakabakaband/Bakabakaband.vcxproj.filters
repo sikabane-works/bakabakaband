@@ -95,9 +95,6 @@
     <ClCompile Include="..\..\src\knowledge\knowledge-experiences.cpp">
       <Filter>knowledge</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\object\object-kind.cpp">
-      <Filter>object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\object\object-kind-hook.cpp">
       <Filter>object</Filter>
     </ClCompile>
@@ -345,9 +342,6 @@
       <Filter>world</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\dungeon\dungeon-processor.cpp">
-      <Filter>dungeon</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\dungeon\dungeon.cpp">
       <Filter>dungeon</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\core\game-play.cpp">
@@ -959,7 +953,7 @@
     <ClCompile Include="..\..\src\info-reader\race-info-tokens-table.cpp">
       <Filter>info-reader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\info-reader\kind-info-tokens-table.cpp">
+    <ClCompile Include="..\..\src\info-reader\baseitem-tokens-table.cpp">
       <Filter>info-reader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\info-reader\dungeon-info-tokens-table.cpp">
@@ -977,7 +971,7 @@
     <ClCompile Include="..\..\src\info-reader\vault-reader.cpp">
       <Filter>info-reader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\info-reader\kind-reader.cpp">
+    <ClCompile Include="..\..\src\info-reader\baseitem-reader.cpp">
       <Filter>info-reader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\info-reader\artifact-reader.cpp">
@@ -2473,6 +2467,18 @@
     <ClCompile Include="..\..\src\timed-effect\player-blindness.cpp">
       <Filter>timed-effect</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\system\monster-type-definition.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\baseitem-info-definition.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\floor-type-definition.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\dungeon-info.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -2567,9 +2573,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\knowledge\knowledge-experiences.h">
       <Filter>knowledge</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\object\object-kind.h">
-      <Filter>object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\object\object-kind-hook.h">
       <Filter>object</Filter>
@@ -2845,9 +2848,6 @@
       <Filter>world</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\dungeon\dungeon-processor.h">
-      <Filter>dungeon</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dungeon\dungeon.h">
       <Filter>dungeon</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\core\game-play.h">
@@ -3564,7 +3564,7 @@
     <ClInclude Include="..\..\src\info-reader\race-info-tokens-table.h">
       <Filter>info-reader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\info-reader\kind-info-tokens-table.h">
+    <ClInclude Include="..\..\src\info-reader\baseitem-tokens-table.h">
       <Filter>info-reader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\info-reader\dungeon-info-tokens-table.h">
@@ -3588,7 +3588,7 @@
     <ClInclude Include="..\..\src\info-reader\vault-reader.h">
       <Filter>info-reader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\info-reader\kind-reader.h">
+    <ClInclude Include="..\..\src\info-reader\baseitem-reader.h">
       <Filter>info-reader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\info-reader\artifact-reader.h">
@@ -4369,9 +4369,6 @@
       <Filter>racial</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\floor\floor-base-definitions.h">
-      <Filter>floor</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\floor\sight-definitions.h">
       <Filter>floor</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\system\floor-type-definition.h">
@@ -5380,6 +5377,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\timed-effect\player-blindness.h">
       <Filter>timed-effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\system\baseitem-info-definition.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\system\dungeon-info.h">
+      <Filter>system</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

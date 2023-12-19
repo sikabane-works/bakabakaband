@@ -20,7 +20,6 @@
 #include "object-enchant/dragon-breaths-table.h"
 #include "object-enchant/object-ego.h"
 #include "object/object-flags.h"
-#include "object/object-kind.h"
 #include "player-base/player-class.h"
 #include "player/player-realm.h"
 #include "realm/realm-names-table.h"
@@ -29,6 +28,7 @@
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-definition.h"
 #include "system/object-type-definition.h"
@@ -42,7 +42,7 @@
  * @param o_ptr 名称を取得する元のオブジェクト構造体参照ポインタ
  * @return concptr 発動名称を返す文字列ポインタ
  */
-static concptr item_activation_dragon_breath(ObjectType *o_ptr)
+static concptr item_activation_dragon_breath(ItemEntity *o_ptr)
 {
     static char desc[256];
     int n = 0;
@@ -70,7 +70,7 @@ static concptr item_activation_dragon_breath(ObjectType *o_ptr)
  * @param o_ptr 名称を取得する元のオブジェクト構造体参照ポインタ
  * @return concptr 発動名称を返す文字列ポインタ
  */
-static concptr item_activation_aux(ObjectType *o_ptr)
+static concptr item_activation_aux(ItemEntity *o_ptr)
 {
     static char activation_detail[512];
     char timeout[64];
@@ -98,7 +98,7 @@ static concptr item_activation_aux(ObjectType *o_ptr)
         desc = item_activation_dragon_breath(o_ptr);
         break;
     case RandomArtActType::AGGRAVATE:
-        if (o_ptr->fixed_artifact_idx == FixedArtifactId::HYOUSIGI) {
+        if (o_ptr->is_specific_artifact(FixedArtifactId::HYOUSIGI)) {
             desc = _("拍子木を打ちならす", "beat wooden clappers");
         }
         break;
@@ -179,7 +179,7 @@ static concptr item_activation_aux(ObjectType *o_ptr)
  * @param o_ptr 名称を取得する元のオブジェクト構造体参照ポインタ
  * @return concptr 発動名称を返す文字列ポインタ
  */
-concptr activation_explanation(ObjectType *o_ptr)
+concptr activation_explanation(ItemEntity *o_ptr)
 {
     auto flags = object_flags(o_ptr);
     if (!flags.has(TR_ACTIVATE) && !flags.has(TR_INVEN_ACTIVATE)) {
@@ -239,7 +239,7 @@ char index_to_label(int i)
  * @param o_ptr 名称を取得する元のオブジェクト構造体参照ポインタ
  * @return 対応する装備部位ID
  */
-int16_t wield_slot(PlayerType *player_ptr, const ObjectType *o_ptr)
+int16_t wield_slot(PlayerType *player_ptr, const ItemEntity *o_ptr)
 {
     switch (o_ptr->tval) {
     case ItemKindType::DIGGING:
@@ -333,22 +333,8 @@ bool check_book_realm(PlayerType *player_ptr, const ItemKindType book_tval, cons
     return (get_realm1_book(player_ptr) == book_tval) || (get_realm2_book(player_ptr) == book_tval);
 }
 
-ObjectType *ref_item(PlayerType *player_ptr, INVENTORY_IDX item)
+ItemEntity *ref_item(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     return item >= 0 ? &player_ptr->inventory_list[item] : &(floor_ptr->o_list[0 - item]);
-}
-
-/*
- * Return the "attr" for a given item.
- * Use "flavor" if available.
- * Default to user definitions.
- */
-TERM_COLOR object_attr(ObjectType *o_ptr)
-{
-    return ((k_info[o_ptr->k_idx].flavor)
-                ? (k_info[k_info[o_ptr->k_idx].flavor].x_attr)
-                : ((!o_ptr->k_idx || (o_ptr->tval != ItemKindType::CORPSE) || (o_ptr->sval != SV_CORPSE) || (k_info[o_ptr->k_idx].x_attr != TERM_DARK))
-                          ? (k_info[o_ptr->k_idx].x_attr)
-                          : (r_info[i2enum<MonsterRaceId>(o_ptr->pval)].x_attr)));
 }

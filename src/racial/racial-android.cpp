@@ -4,9 +4,9 @@
 #include "object-enchant/object-ego.h"
 #include "object-enchant/trg-types.h"
 #include "object-hook/hook-weapon.h"
-#include "object/object-kind.h"
 #include "object/object-value-calc.h"
 #include "object/object-value.h"
+#include "object/tval-types.h"
 #include "player-base/player-race.h"
 #include "player-info/equipment-info.h"
 #include "player/player-status.h"
@@ -15,6 +15,7 @@
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
@@ -65,10 +66,10 @@ void calc_android_exp(PlayerType *player_ptr)
 
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        ObjectType forge;
+        ItemEntity forge;
         auto *q_ptr = &forge;
         uint32_t value, exp;
-        DEPTH level = std::max(k_info[o_ptr->k_idx].level - 8, 1);
+        DEPTH level = std::max(baseitems_info[o_ptr->k_idx].level - 8, 1);
 
         if ((i == INVEN_MAIN_RING) || (i == INVEN_SUB_RING) || (i == INVEN_NECK) || (i == INVEN_LITE)) {
             continue;
@@ -83,11 +84,11 @@ void calc_android_exp(PlayerType *player_ptr)
         q_ptr->curse_flags.clear();
 
         if (o_ptr->is_fixed_artifact()) {
-            const auto &fixed_artifact = a_info.at(o_ptr->fixed_artifact_idx);
+            const auto &fixed_artifact = artifacts_info.at(o_ptr->fixed_artifact_idx);
             level = (level + std::max(fixed_artifact.level - 8, 5)) / 2;
             level += std::min(20, fixed_artifact.rarity / (fixed_artifact.gen_flags.has(ItemGenerationTraitType::INSTA_ART) ? 10 : 3));
         } else if (o_ptr->is_ego()) {
-            level += std::max(3, (e_info[o_ptr->ego_idx].rating - 5) / 2);
+            level += std::max(3, (egos_info[o_ptr->ego_idx].rating - 5) / 2);
         } else if (o_ptr->art_name) {
             int32_t total_flags = flag_cost(o_ptr, o_ptr->pval);
             int fake_level;

@@ -2,11 +2,11 @@
 #include "mind/mind-weaponsmith.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "smith/object-smith.h"
 #include "sv-definition/sv-lite-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
@@ -16,13 +16,13 @@
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flags フラグ情報を受け取る配列
  */
-static void object_flags_lite(const ObjectType *o_ptr, TrFlags &flags)
+static void object_flags_lite(const ItemEntity *o_ptr, TrFlags &flags)
 {
     if (!o_ptr->is_ego()) {
         return;
     }
 
-    auto *e_ptr = &e_info[o_ptr->ego_idx];
+    auto *e_ptr = &egos_info[o_ptr->ego_idx];
     flags.set(e_ptr->flags);
 
     auto is_out_of_fuel = o_ptr->fuel == 0;
@@ -47,15 +47,15 @@ static void object_flags_lite(const ObjectType *o_ptr, TrFlags &flags)
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flags フラグ情報を受け取る配列
  */
-TrFlags object_flags(const ObjectType *o_ptr)
+TrFlags object_flags(const ItemEntity *o_ptr)
 {
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
 
     /* Base object */
     auto flags = k_ptr->flags;
 
     if (o_ptr->is_fixed_artifact()) {
-        flags = a_info.at(o_ptr->fixed_artifact_idx).flags;
+        flags = artifacts_info.at(o_ptr->fixed_artifact_idx).flags;
     }
 
     object_flags_lite(o_ptr, flags);
@@ -80,10 +80,10 @@ TrFlags object_flags(const ObjectType *o_ptr)
  * @param o_ptr フラグ取得元のオブジェクト構造体ポインタ
  * @param flags フラグ情報を受け取る配列
  */
-TrFlags object_flags_known(const ObjectType *o_ptr)
+TrFlags object_flags_known(const ItemEntity *o_ptr)
 {
     bool spoil = false;
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
     TrFlags flags{};
 
     if (!o_ptr->is_aware()) {
@@ -100,7 +100,7 @@ TrFlags object_flags_known(const ObjectType *o_ptr)
     object_flags_lite(o_ptr, flags);
     if (spoil || o_ptr->is_fully_known()) {
         if (o_ptr->is_fixed_artifact()) {
-            flags = a_info.at(o_ptr->fixed_artifact_idx).flags;
+            flags = artifacts_info.at(o_ptr->fixed_artifact_idx).flags;
         }
 
         /* Random artifact ! */

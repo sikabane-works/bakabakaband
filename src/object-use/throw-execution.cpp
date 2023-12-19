@@ -46,7 +46,6 @@
 #include "object/object-broken.h"
 #include "object/object-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "object/object-stack.h"
 #include "player-base/player-class.h"
 #include "player-info/equipment-info.h"
@@ -54,6 +53,7 @@
 #include "player/player-status-table.h"
 #include "racial/racial-android.h"
 #include "specific-object/torch.h"
+#include "system/baseitem-info-definition.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-type-definition.h"
@@ -70,7 +70,7 @@
 #include "view/object-describer.h"
 #include "wizard/wizard-messages.h"
 
-ObjectThrowEntity::ObjectThrowEntity(PlayerType *player_ptr, ObjectType *q_ptr, const int delay_factor_val, const int mult, const bool boomerang, const OBJECT_IDX shuriken)
+ObjectThrowEntity::ObjectThrowEntity(PlayerType *player_ptr, ItemEntity *q_ptr, const int delay_factor_val, const int mult, const bool boomerang, const OBJECT_IDX shuriken)
     : q_ptr(q_ptr)
     , player_ptr(player_ptr)
     , shuriken(shuriken)
@@ -151,7 +151,7 @@ bool ObjectThrowEntity::calc_throw_grid()
 
 void ObjectThrowEntity::reflect_inventory_by_throw()
 {
-    if ((this->q_ptr->fixed_artifact_idx == FixedArtifactId::MJOLLNIR) || (this->q_ptr->fixed_artifact_idx == FixedArtifactId::AEGISFANG) || this->boomerang) {
+    if (this->q_ptr->is_specific_artifact(FixedArtifactId::MJOLLNIR) || this->q_ptr->is_specific_artifact(FixedArtifactId::AEGISFANG) || this->boomerang) {
         this->return_when_thrown = true;
     }
 
@@ -258,7 +258,7 @@ void ObjectThrowEntity::display_potion_throw()
 
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *angry_m_ptr = &floor_ptr->m_list[floor_ptr->grid_array[this->y][this->x].m_idx];
-    if ((floor_ptr->grid_array[this->y][this->x].m_idx == 0) || !is_friendly(angry_m_ptr) || monster_invulner_remaining(angry_m_ptr)) {
+    if ((floor_ptr->grid_array[this->y][this->x].m_idx == 0) || !angry_m_ptr->is_friendly() || angry_m_ptr->is_invulnerable()) {
         this->do_drop = false;
         return;
     }
@@ -277,7 +277,7 @@ void ObjectThrowEntity::check_boomerang_throw()
     }
 
     this->back_chance = randint1(30) + 20 + ((int)(adj_dex_th[this->player_ptr->stat_index[A_DEX]]) - 128);
-    this->super_boomerang = (((this->q_ptr->fixed_artifact_idx == FixedArtifactId::MJOLLNIR) || (this->q_ptr->fixed_artifact_idx == FixedArtifactId::AEGISFANG)) && this->boomerang);
+    this->super_boomerang = ((this->q_ptr->is_specific_artifact(FixedArtifactId::MJOLLNIR) || this->q_ptr->is_specific_artifact(FixedArtifactId::AEGISFANG)) && this->boomerang);
     this->corruption_possibility = -1;
     if (this->boomerang) {
         this->back_chance += 4 + randint1(5);
@@ -321,7 +321,7 @@ void ObjectThrowEntity::drop_thrown_item()
         return;
     }
 
-    auto is_bold = cave_has_flag_bold(this->player_ptr->current_floor_ptr, this->y, this->x, FloorFeatureType::PROJECT);
+    auto is_bold = cave_has_flag_bold(this->player_ptr->current_floor_ptr, this->y, this->x, TerrainCharacteristics::PROJECT);
     auto drop_y = is_bold ? this->y : this->prev_y;
     auto drop_x = is_bold ? this->x : this->prev_x;
     (void)drop_near(this->player_ptr, this->q_ptr, this->corruption_possibility, drop_y, drop_x);
@@ -357,7 +357,7 @@ bool ObjectThrowEntity::check_throw_boomerang()
         concptr q, s;
         q = _("どの武器を投げますか? ", "Throw which item? ");
         s = _("投げる武器がない。", "You have nothing to throw.");
-        this->o_ptr = choose_object(this->player_ptr, &this->item, q, s, USE_EQUIP, FuncItemTester(&ObjectType::is_throwable));
+        this->o_ptr = choose_object(this->player_ptr, &this->item, q, s, USE_EQUIP, FuncItemTester(&ItemEntity::is_throwable));
         if (!this->o_ptr) {
             flush();
             return false;
@@ -383,7 +383,7 @@ bool ObjectThrowEntity::check_racial_target_bold()
     this->nx[this->cur_dis] = this->x;
     mmove2(&this->ny[this->cur_dis], &this->nx[this->cur_dis], this->player_ptr->y, this->player_ptr->x, this->ty, this->tx);
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    if (cave_has_flag_bold(floor_ptr, this->ny[this->cur_dis], this->nx[this->cur_dis], FloorFeatureType::PROJECT)) {
+    if (cave_has_flag_bold(floor_ptr, this->ny[this->cur_dis], this->nx[this->cur_dis], TerrainCharacteristics::PROJECT)) {
         return false;
     }
 
@@ -402,8 +402,8 @@ void ObjectThrowEntity::check_racial_target_seen()
         return;
     }
 
-    auto c = object_char(this->q_ptr);
-    auto a = object_attr(this->q_ptr);
+    const auto c = this->q_ptr->get_symbol();
+    const auto a = this->q_ptr->get_color();
     print_rel(this->player_ptr, c, a, this->ny[this->cur_dis], this->nx[this->cur_dis]);
     move_cursor_relative(this->ny[this->cur_dis], this->nx[this->cur_dis]);
     term_fresh();
@@ -441,7 +441,7 @@ void ObjectThrowEntity::attack_racial_power()
     }
 
     MonsterDamageProcessor mdp(this->player_ptr, this->g_ptr->m_idx, this->tdam, &fear, attribute_flags);
-    if (mdp.mon_take_hit(extract_note_dies(real_r_idx(this->m_ptr)))) {
+    if (mdp.mon_take_hit(extract_note_dies(this->m_ptr->get_real_r_idx()))) {
         return;
     }
 
@@ -518,8 +518,8 @@ void ObjectThrowEntity::process_boomerang_throw()
             continue;
         }
 
-        auto c = object_char(this->q_ptr);
-        auto a = object_attr(this->q_ptr);
+        const auto c = this->q_ptr->get_symbol();
+        const auto a = this->q_ptr->get_color();
         if (this->msec <= 0) {
             continue;
         }

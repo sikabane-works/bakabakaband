@@ -38,7 +38,7 @@ ITEM_NUMBER scan_floor_items(PlayerType *player_ptr, OBJECT_IDX *items, POSITION
 
     ITEM_NUMBER num = 0;
     for (const auto this_o_idx : floor_ptr->grid_array[y][x].o_idx_list) {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         o_ptr = &floor_ptr->o_list[this_o_idx];
         if ((mode & SCAN_FLOOR_ITEM_TESTER) && !item_tester.okay(o_ptr)) {
             continue;
@@ -70,7 +70,7 @@ ITEM_NUMBER scan_floor_items(PlayerType *player_ptr, OBJECT_IDX *items, POSITION
  */
 /*
  */
-static void prepare_label_string_floor(floor_type *floor_ptr, char *label, FLOOR_IDX floor_list[], ITEM_NUMBER floor_num)
+static void prepare_label_string_floor(FloorType *floor_ptr, char *label, FLOOR_IDX floor_list[], ITEM_NUMBER floor_num)
 {
     concptr alphabet_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     strcpy(label, alphabet_chars);
@@ -102,7 +102,7 @@ COMMAND_CODE show_floor_items(PlayerType *player_ptr, int target_item, POSITION 
 {
     COMMAND_CODE i, m;
     int j, k, l;
-    ObjectType *o_ptr;
+    ItemEntity *o_ptr;
     GAME_TEXT o_name[MAX_NLEN];
     char tmp_val[80];
     COMMAND_CODE out_index[23];

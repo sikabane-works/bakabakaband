@@ -8,9 +8,9 @@
 #include "object-enchant/activation-info-table.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-kind.h"
 #include "smith/object-smith.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
@@ -22,23 +22,25 @@
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return 発動効果のIDを返す
  */
-RandomArtActType activation_index(const ObjectType *o_ptr)
+RandomArtActType activation_index(const ItemEntity *o_ptr)
 {
     if (auto act_idx = Smith::object_activation(o_ptr); act_idx.has_value()) {
         return act_idx.value();
     }
 
-    const auto &fixed_artifact = a_info.at(o_ptr->fixed_artifact_idx);
-    if (o_ptr->is_fixed_artifact() && fixed_artifact.flags.has(TR_ACTIVATE)) {
-        return fixed_artifact.act_idx;
+    if (o_ptr->is_fixed_artifact()) {
+        const auto &fixed_artifact = artifacts_info.at(o_ptr->fixed_artifact_idx);
+        if (fixed_artifact.flags.has(TR_ACTIVATE)) {
+            return fixed_artifact.act_idx;
+        }
     }
 
-    if (o_ptr->is_ego() && e_info[o_ptr->ego_idx].flags.has(TR_ACTIVATE)) {
-        return e_info[o_ptr->ego_idx].act_idx;
+    if (o_ptr->is_ego() && egos_info[o_ptr->ego_idx].flags.has(TR_ACTIVATE)) {
+        return egos_info[o_ptr->ego_idx].act_idx;
     }
 
-    if (!o_ptr->is_random_artifact() && k_info[o_ptr->k_idx].flags.has(TR_ACTIVATE)) {
-        return k_info[o_ptr->k_idx].act_idx;
+    if (!o_ptr->is_random_artifact() && baseitems_info[o_ptr->k_idx].flags.has(TR_ACTIVATE)) {
+        return baseitems_info[o_ptr->k_idx].act_idx;
     }
 
     return o_ptr->activation_id;
@@ -50,7 +52,7 @@ RandomArtActType activation_index(const ObjectType *o_ptr)
  * @param o_ptr 対象のオブジェクト構造体ポインタ
  * @return 発動効果構造体のポインタを返す
  */
-std::optional<const activation_type *> find_activation_info(const ObjectType *o_ptr)
+std::optional<const activation_type *> find_activation_info(const ItemEntity *o_ptr)
 {
     const auto index = activation_index(o_ptr);
     for (const auto &p : activation_info) {

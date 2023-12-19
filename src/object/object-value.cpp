@@ -1,124 +1,12 @@
 ﻿#include "object/object-value.h"
 #include "monster-race/monster-race.h"
-#include "object-enchant/object-curse.h"
-#include "object-enchant/object-ego.h"
-#include "object-enchant/special-object-flags.h"
-#include "object-enchant/tr-types.h"
-#include "object/object-broken.h"
 #include "object/object-flags.h"
-#include "object/object-kind.h"
 #include "object/object-value-calc.h"
-#include "perception/object-perception.h"
+#include "object/tval-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/monster-race-definition.h"
-#include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
-#include "util/bit-flags-calculator.h"
-
-/*!
- * @brief 未鑑定なベースアイテムの基本価格を返す /
- * Return the "value" of an "unknown" item Make a guess at the value of non-aware items
- * @param o_ptr 未鑑定価格を確認したいオブジェクトの構造体参照ポインタ
- * @return オブジェクトの未鑑定価格
- */
-static PRICE object_value_base(const ObjectType *o_ptr)
-{
-    if (o_ptr->is_aware()) {
-        return k_info[o_ptr->k_idx].cost;
-    }
-
-    switch (o_ptr->tval) {
-    case ItemKindType::FOOD:
-        return 5;
-    case ItemKindType::POTION:
-        return 20;
-    case ItemKindType::SCROLL:
-        return 20;
-    case ItemKindType::STAFF:
-        return 70;
-    case ItemKindType::WAND:
-        return 50;
-    case ItemKindType::ROD:
-        return 90;
-    case ItemKindType::RING:
-        return 45;
-    case ItemKindType::AMULET:
-        return 45;
-    case ItemKindType::FIGURINE: {
-        auto figure_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        DEPTH level = r_info[figure_r_idx].level;
-        if (level < 20) {
-            return level * 50L;
-        } else if (level < 30) {
-            return 1000 + (level - 20) * 150;
-        } else if (level < 40) {
-            return 2500 + (level - 30) * 350;
-        } else if (level < 50) {
-            return 6000 + (level - 40) * 800;
-        } else {
-            return 14000 + (level - 50) * 2000;
-        }
-    }
-    case ItemKindType::CAPTURE: {
-        auto capture_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        if (!MonsterRace(capture_r_idx).is_valid()) {
-            return 1000;
-        } else {
-            return (r_info[capture_r_idx].level) * 50 + 1000;
-        }
-    }
-
-    default:
-        break;
-    }
-
-    return 0;
-}
-
-/*!
- * @brief オブジェクト価格算出のメインルーチン /
- * Return the price of an item including plusses (and charges)
- * @param o_ptr 判明している現価格を確認したいオブジェクトの構造体参照ポインタ
- * @return オブジェクトの判明している現価格
- * @details
- * This function returns the "value" of the given item (qty one)\n
- *\n
- * Never notice "unknown" bonuses or properties, including "curses",\n
- * since that would give the player information he did not have.\n
- *\n
- * Note that discounted items stay discounted forever, even if\n
- * the discount is "forgotten" by the player via memory loss.\n
- */
-PRICE object_value(const ObjectType *o_ptr)
-{
-    PRICE value;
-
-    if (o_ptr->is_known()) {
-        if (o_ptr->is_broken()) {
-            return 0;
-        }
-        if (o_ptr->is_cursed()) {
-            return 0;
-        }
-
-        value = object_value_real(o_ptr);
-    } else {
-        if ((o_ptr->ident & (IDENT_SENSE)) && o_ptr->is_broken()) {
-            return 0;
-        }
-        if ((o_ptr->ident & (IDENT_SENSE)) && o_ptr->is_cursed()) {
-            return 0;
-        }
-
-        value = object_value_base(o_ptr);
-    }
-
-    if (o_ptr->discount) {
-        value -= (value * o_ptr->discount / 100L);
-    }
-
-    return value;
-}
 
 /*!
  * @brief オブジェクトの真の価格を算出する /
@@ -146,18 +34,18 @@ PRICE object_value(const ObjectType *o_ptr)
  *\n
  * Every wearable item with a "pval" bonus is worth extra (see below).\n
  */
-PRICE object_value_real(const ObjectType *o_ptr)
+PRICE object_value_real(const ItemEntity *o_ptr)
 {
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
 
-    if (!k_info[o_ptr->k_idx].cost) {
+    if (!baseitems_info[o_ptr->k_idx].cost) {
         return 0;
     }
 
-    PRICE value = k_info[o_ptr->k_idx].cost;
+    PRICE value = baseitems_info[o_ptr->k_idx].cost;
     auto flags = object_flags(o_ptr);
     if (o_ptr->is_fixed_artifact()) {
-        const auto &a_ref = a_info.at(o_ptr->fixed_artifact_idx);
+        const auto &a_ref = artifacts_info.at(o_ptr->fixed_artifact_idx);
         if (!a_ref.cost) {
             return 0;
         }
@@ -166,7 +54,7 @@ PRICE object_value_real(const ObjectType *o_ptr)
         value += flag_cost(o_ptr, o_ptr->pval);
         return value;
     } else if (o_ptr->is_ego()) {
-        const auto &e_ref = e_info[o_ptr->ego_idx];
+        const auto &e_ref = egos_info[o_ptr->ego_idx];
         if (!e_ref.cost) {
             return 0;
         }
@@ -321,7 +209,7 @@ PRICE object_value_real(const ObjectType *o_ptr)
     }
     case ItemKindType::FIGURINE: {
         auto figure_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        DEPTH level = r_info[figure_r_idx].level;
+        DEPTH level = monraces_info[figure_r_idx].level;
         if (level < 20) {
             value = level * 50L;
         } else if (level < 30) {
@@ -340,7 +228,7 @@ PRICE object_value_real(const ObjectType *o_ptr)
         if (!MonsterRace(capture_r_idx).is_valid()) {
             value = 1000L;
         } else {
-            value = ((r_info[capture_r_idx].level) * 50L + 1000);
+            value = ((monraces_info[capture_r_idx].level) * 50L + 1000);
         }
         break;
     }

@@ -13,12 +13,12 @@
 #include "object-hook/hook-weapon.h"
 #include "object/object-flags.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "sv-definition/sv-weapon-types.h"
 #include "system/artifact-type-definition.h"
+#include "system/baseitem-info-definition.h"
 #include "system/monster-race-definition.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -33,7 +33,7 @@
  * @param mode 表示オプション
  * @return 特筆すべき情報が一つでもあった場合TRUE、一つもなく表示がキャンセルされた場合FALSEを返す。
  */
-bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
+bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
 {
     char temp[70 * 20];
     concptr info[128];
@@ -43,7 +43,7 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
     int trivial_info = 0;
     auto flags = object_flags(o_ptr);
 
-    const auto item_text = o_ptr->is_fixed_artifact() ? a_info.at(o_ptr->fixed_artifact_idx).text.c_str() : k_info[o_ptr->k_idx].text.c_str();
+    const auto item_text = o_ptr->is_fixed_artifact() ? artifacts_info.at(o_ptr->fixed_artifact_idx).text.data() : baseitems_info[o_ptr->k_idx].text.data();
     shape_buffer(item_text, 77 - 15, temp, sizeof(temp));
 
     int i = 0;
@@ -73,7 +73,7 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは投げた時ペットに変化する。", "It will transform into a pet when thrown.");
     }
 
-    if (o_ptr->fixed_artifact_idx == FixedArtifactId::STONEMASK) {
+    if (o_ptr->is_specific_artifact(FixedArtifactId::STONEMASK)) {
         info[i++] = _("それを装備した者は吸血鬼になる。", "It makes you turn into a vampire permanently.");
     }
 
@@ -112,7 +112,7 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
 
     if (o_ptr->tval == ItemKindType::STATUE) {
         auto statue_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        auto *r_ptr = &r_info[statue_r_idx];
+        auto *r_ptr = &monraces_info[statue_r_idx];
         if (statue_r_idx == MonsterRaceId::STOLENMAN) {
             info[i++] = _("それは部屋に飾ると恥ずかしい。", "It is shameful.");
         } else if (r_ptr->flags2 & (RF2_ELDRITCH_HORROR)) {
@@ -829,9 +829,9 @@ bool screen_object(PlayerType *player_ptr, ObjectType *o_ptr, BIT_FLAGS mode)
 
     if ((o_ptr->tval == ItemKindType::STATUE) && (o_ptr->sval == SV_PHOTO)) {
         auto statue_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        auto *r_ptr = &r_info[statue_r_idx];
-        int namelen = strlen(r_ptr->name.c_str());
-        prt(format("%s: '", r_ptr->name.c_str()), 1, 15);
+        auto *r_ptr = &monraces_info[statue_r_idx];
+        int namelen = strlen(r_ptr->name.data());
+        prt(format("%s: '", r_ptr->name.data()), 1, 15);
         term_queue_bigchar(18 + namelen, 1, r_ptr->x_attr, r_ptr->x_char, 0, 0);
         prt("'", 1, (use_bigtile ? 20 : 19) + namelen);
     } else {

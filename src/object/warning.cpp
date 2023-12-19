@@ -3,7 +3,6 @@
 #include "core/asking-player.h"
 #include "core/disturbance.h"
 #include "dungeon/dungeon-flag-types.h"
-#include "dungeon/dungeon.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/cave.h"
@@ -28,6 +27,7 @@
 #include "player/player-status-resist.h"
 #include "player/special-defense-types.h"
 #include "status/element-resistance.h"
+#include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-definition.h"
@@ -46,7 +46,7 @@
  * Calculate spell damages
  * @return 警告を行う
  */
-ObjectType *choose_warning_item(PlayerType *player_ptr)
+ItemEntity *choose_warning_item(PlayerType *player_ptr)
 {
     int choices[INVEN_TOTAL - INVEN_MAIN_HAND];
 
@@ -79,9 +79,9 @@ ObjectType *choose_warning_item(PlayerType *player_ptr)
  * @param dam 基本ダメージ
  * @param max 算出した最大ダメージを返すポインタ
  */
-static void spell_damcalc(PlayerType *player_ptr, monster_type *m_ptr, AttributeType typ, int dam, int *max)
+static void spell_damcalc(PlayerType *player_ptr, MonsterEntity *m_ptr, AttributeType typ, int dam, int *max)
 {
-    auto *r_ptr = &r_info[m_ptr->r_idx];
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     int rlev = r_ptr->level;
     bool ignore_wraith_form = false;
 
@@ -278,7 +278,7 @@ static void spell_damcalc_by_spellnum(PlayerType *player_ptr, MonsterAbilityType
  * @param blow_ptr モンスターの打撃能力の構造体参照ポインタ
  * @return 算出された最大ダメージを返す。
  */
-static int blow_damcalc(monster_type *m_ptr, PlayerType *player_ptr, MonsterBlow *blow_ptr)
+static int blow_damcalc(MonsterEntity *m_ptr, PlayerType *player_ptr, MonsterBlow *blow_ptr)
 {
     int dam = blow_ptr->d_dice * blow_ptr->d_side;
     int dummy_max = 0;
@@ -368,8 +368,8 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
     for (mx = xx - WARNING_AWARE_RANGE; mx < xx + WARNING_AWARE_RANGE + 1; mx++) {
         for (my = yy - WARNING_AWARE_RANGE; my < yy + WARNING_AWARE_RANGE + 1; my++) {
             int dam_max0 = 0;
-            monster_type *m_ptr;
-            monster_race *r_ptr;
+            MonsterEntity *m_ptr;
+            MonsterRaceInfo *r_ptr;
 
             if (!in_bounds(player_ptr->current_floor_ptr, my, mx) || (distance(my, mx, yy, xx) > WARNING_AWARE_RANGE)) {
                 continue;
@@ -383,20 +383,20 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
 
             m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
 
-            if (monster_csleep_remaining(m_ptr)) {
+            if (m_ptr->is_asleep()) {
                 continue;
             }
-            if (!is_hostile(m_ptr)) {
+            if (!m_ptr->is_hostile()) {
                 continue;
             }
 
-            r_ptr = &r_info[m_ptr->r_idx];
+            r_ptr = &monraces_info[m_ptr->r_idx];
 
             /* Monster spells (only powerful ones)*/
             if (projectable(player_ptr, my, mx, yy, xx)) {
                 const auto flags = r_ptr->ability_flags;
 
-                if (d_info[player_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::NO_MAGIC)) {
+                if (dungeons_info[player_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::NO_MAGIC)) {
                     if (flags.has(MonsterAbilityType::BA_CHAO)) {
                         spell_damcalc_by_spellnum(player_ptr, MonsterAbilityType::BA_CHAO, AttributeType::CHAOS, g_ptr->m_idx, &dam_max0);
                     }
@@ -500,7 +500,7 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
                 }
             }
             /* Monster melee attacks */
-            if (r_ptr->behavior_flags.has(MonsterBehaviorType::NEVER_BLOW) || d_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_MELEE)) {
+            if (r_ptr->behavior_flags.has(MonsterBehaviorType::NEVER_BLOW) || dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_MELEE)) {
                 dam_max += dam_max0;
                 continue;
             }

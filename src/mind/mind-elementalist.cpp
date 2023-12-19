@@ -587,7 +587,7 @@ static bool cast_element_spell(PlayerType *player_ptr, SPELL_IDX spell_idx)
             int attempts = 1000;
             while (attempts--) {
                 scatter(player_ptr, &y, &x, player_ptr->y, player_ptr->x, 4, PROJECT_NONE);
-                if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, FloorFeatureType::PROJECT)) {
+                if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
                     continue;
                 }
                 if (!player_bold(player_ptr, y, x)) {
@@ -995,7 +995,7 @@ void do_cmd_element_browse(PlayerType *player_ptr)
  * @param type 魔法攻撃属性
  * @return 効果があるならTRUE、なければFALSE
  */
-bool is_elemental_genocide_effective(monster_race *r_ptr, AttributeType type)
+bool is_elemental_genocide_effective(MonsterRaceInfo *r_ptr, AttributeType type)
 {
     switch (type) {
     case AttributeType::FIRE:
@@ -1420,8 +1420,8 @@ bool switch_element_execution(PlayerType *player_ptr)
         (void)earthquake(player_ptr, player_ptr->y, player_ptr->x, 10, 0);
         break;
     case ElementRealmType::DEATH:
-        if (player_ptr->current_floor_ptr->num_repro <= MAX_REPRO) {
-            player_ptr->current_floor_ptr->num_repro += MAX_REPRO;
+        if (player_ptr->current_floor_ptr->num_repro <= MAX_REPRODUCTION) {
+            player_ptr->current_floor_ptr->num_repro += MAX_REPRODUCTION;
         }
         break;
     default:
@@ -1438,7 +1438,7 @@ bool switch_element_execution(PlayerType *player_ptr)
  * @param x 指定のx座標
  * @return 暗いならTRUE、そうでないならFALSE
  */
-static bool is_target_grid_dark(floor_type *f_ptr, POSITION y, POSITION x)
+static bool is_target_grid_dark(FloorType *f_ptr, POSITION y, POSITION x)
 {
     if (any_bits(f_ptr->grid_array[y][x].info, CAVE_MNLT)) {
         return false;
@@ -1462,7 +1462,7 @@ static bool is_target_grid_dark(floor_type *f_ptr, POSITION y, POSITION x)
             }
 
             POSITION d = distance(dy, dx, y, x);
-            auto *r_ptr = &r_info[f_ptr->m_list[m_idx].r_idx];
+            auto *r_ptr = &monraces_info[f_ptr->m_list[m_idx].r_idx];
             if (d <= 1 && any_bits(r_ptr->flags7, RF7_HAS_LITE_1 | RF7_SELF_LITE_1)) {
                 return false;
             }
@@ -1489,7 +1489,7 @@ static bool door_to_darkness(PlayerType *player_ptr, POSITION dist)
 {
     POSITION y = player_ptr->y;
     POSITION x = player_ptr->x;
-    floor_type *f_ptr;
+    FloorType *f_ptr;
 
     for (int i = 0; i < 3; i++) {
         if (!tgt_pt(player_ptr, &x, &y)) {

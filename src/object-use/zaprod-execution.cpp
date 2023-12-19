@@ -14,13 +14,13 @@
 #include "main/sound-of-music.h"
 #include "object-use/item-use-checker.h"
 #include "object/object-info.h"
-#include "object/object-kind.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-status/player-energy.h"
 #include "status/experience.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-rod-types.h"
+#include "system/baseitem-info-definition.h"
 #include "system/object-type-definition.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
@@ -64,7 +64,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
         return;
     }
 
-    auto lev = k_info[o_ptr->k_idx].level;
+    auto lev = baseitems_info[o_ptr->k_idx].level;
     auto chance = this->player_ptr->skill_dev;
     if (this->player_ptr->effects()->confusion()->is_confused()) {
         chance = chance / 2;
@@ -104,7 +104,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
         return;
     }
 
-    auto *k_ptr = &k_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
     if ((o_ptr->number == 1) && (o_ptr->timeout)) {
         if (flush_failure) {
             flush();

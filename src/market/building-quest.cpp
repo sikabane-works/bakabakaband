@@ -39,7 +39,7 @@ static void get_questinfo(PlayerType *player_ptr, QuestId questnum, bool do_init
         init_flags = i2enum<init_flags_type>(init_flags | INIT_ASSIGN);
     }
 
-    parse_fixed_map(player_ptr, "q_info.txt", 0, 0, 0, 0);
+    parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
     floor_ptr->quest_number = old_quest;
 }
 
@@ -134,11 +134,11 @@ void castle_quest(PlayerType *player_ptr)
         q_ptr->r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 4 + randint1(6), 0);
     }
 
-    monster_race *r_ptr;
-    r_ptr = &r_info[q_ptr->r_idx];
+    MonsterRaceInfo *r_ptr;
+    r_ptr = &monraces_info[q_ptr->r_idx];
     while (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->rarity != 1)) {
         q_ptr->r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 4 + randint1(6), 0);
-        r_ptr = &r_info[q_ptr->r_idx];
+        r_ptr = &monraces_info[q_ptr->r_idx];
     }
 
     if (q_ptr->max_num == 0) {

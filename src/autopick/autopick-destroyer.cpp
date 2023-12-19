@@ -39,7 +39,7 @@
  * @param o_ptr アイテムへの参照ポインタ
  * @return 特別なクラス、かつそのクラス特有のアイテムであればFALSE、それ以外はTRUE
  */
-static bool is_leave_special_item(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool is_leave_special_item(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (!leave_special) {
         return true;
@@ -48,7 +48,7 @@ static bool is_leave_special_item(PlayerType *player_ptr, ObjectType *o_ptr)
     PlayerClass pc(player_ptr);
     if (PlayerRace(player_ptr).equals(PlayerRaceType::BALROG)) {
         auto r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        if (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", r_info[r_idx].d_char)) {
+        if (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", monraces_info[r_idx].d_char)) {
             return false;
         }
     } else if (pc.equals(PlayerClassType::ARCHER)) {
@@ -71,14 +71,14 @@ static bool is_leave_special_item(PlayerType *player_ptr, ObjectType *o_ptr)
 /*!
  * @brief Automatically destroy items in this grid.
  */
-static bool is_opt_confirm_destroy(PlayerType *player_ptr, ObjectType *o_ptr)
+static bool is_opt_confirm_destroy(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     if (!destroy_items) {
         return false;
     }
 
     if (leave_worth) {
-        if (object_value(o_ptr) > 0) {
+        if (o_ptr->get_price() > 0) {
             return false;
         }
     }
@@ -124,7 +124,7 @@ static bool is_opt_confirm_destroy(PlayerType *player_ptr, ObjectType *o_ptr)
     return true;
 }
 
-void auto_destroy_item(PlayerType *player_ptr, ObjectType *o_ptr, int autopick_idx)
+void auto_destroy_item(PlayerType *player_ptr, ItemEntity *o_ptr, int autopick_idx)
 {
     bool destroy = false;
     if (is_opt_confirm_destroy(player_ptr, o_ptr)) {

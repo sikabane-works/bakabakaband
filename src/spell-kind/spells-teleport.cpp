@@ -44,6 +44,7 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <array>
 
 /*!
  * @brief モンスターとの位置交換処理 / Switch position with a monster.
@@ -79,10 +80,10 @@ bool teleport_swap(PlayerType *player_ptr, DIRECTION dir)
         return false;
     }
 
-    monster_type *m_ptr;
-    monster_race *r_ptr;
+    MonsterEntity *m_ptr;
+    MonsterRaceInfo *r_ptr;
     m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
-    r_ptr = &r_info[m_ptr->r_idx];
+    r_ptr = &monraces_info[m_ptr->r_idx];
 
     (void)set_monster_csleep(player_ptr, g_ptr->m_idx, 0);
 
@@ -127,7 +128,7 @@ bool teleport_monster(PlayerType *player_ptr, DIRECTION dir, int distance)
 bool teleport_away(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION dis, teleport_flags mode)
 {
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    if (!monster_is_valid(m_ptr)) {
+    if (!m_ptr->is_valid()) {
         return false;
     }
 
@@ -193,7 +194,7 @@ bool teleport_away(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION dis, tele
     lite_spot(player_ptr, oy, ox);
     lite_spot(player_ptr, ny, nx);
 
-    if (r_info[m_ptr->r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK)) {
+    if (monraces_info[m_ptr->r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK)) {
         player_ptr->update |= (PU_MON_LITE);
     }
 
@@ -274,7 +275,7 @@ void teleport_monster_to(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION ty,
     lite_spot(player_ptr, oy, ox);
     lite_spot(player_ptr, ny, nx);
 
-    if (r_info[m_ptr->r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK)) {
+    if (monraces_info[m_ptr->r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK)) {
         player_ptr->update |= (PU_MON_LITE);
     }
 }
@@ -308,27 +309,26 @@ bool teleport_player_aux(PlayerType *player_ptr, POSITION dis, bool is_quantum_e
     if (player_ptr->wild_mode) {
         return false;
     }
+
     if (!is_quantum_effect && player_ptr->anti_tele && !(mode & TELEPORT_NONMAGICAL)) {
         msg_print(_("不思議な力がテレポートを防いだ！", "A mysterious force prevents you from teleporting!"));
         return false;
     }
 
-    int candidates_at[MAX_TELEPORT_DISTANCE + 1];
-    for (int i = 0; i <= MAX_TELEPORT_DISTANCE; i++) {
-        candidates_at[i] = 0;
+    constexpr auto max_distance = 200;
+    std::array<int, max_distance + 1> candidates_at{};
+    if (dis > max_distance) {
+        dis = max_distance;
     }
 
-    if (dis > MAX_TELEPORT_DISTANCE) {
-        dis = MAX_TELEPORT_DISTANCE;
-    }
-
-    int left = std::max(1, player_ptr->x - dis);
-    int right = std::min(player_ptr->current_floor_ptr->width - 2, player_ptr->x + dis);
-    int top = std::max(1, player_ptr->y - dis);
-    int bottom = std::min(player_ptr->current_floor_ptr->height - 2, player_ptr->y + dis);
-    int total_candidates = 0;
-    for (POSITION y = top; y <= bottom; y++) {
-        for (POSITION x = left; x <= right; x++) {
+    const auto &floor_ref = *player_ptr->current_floor_ptr;
+    const auto left = std::max(1, player_ptr->x - dis);
+    const auto right = std::min(floor_ref.width - 2, player_ptr->x + dis);
+    const auto top = std::max(1, player_ptr->y - dis);
+    const auto bottom = std::min(floor_ref.height - 2, player_ptr->y + dis);
+    auto total_candidates = 0;
+    for (auto y = top; y <= bottom; y++) {
+        for (auto x = left; x <= right; x++) {
             if (!cave_player_teleportable_bold(player_ptr, y, x, mode)) {
                 continue;
             }
@@ -348,7 +348,7 @@ bool teleport_player_aux(PlayerType *player_ptr, POSITION dis, bool is_quantum_e
     }
 
     int cur_candidates;
-    int min = dis;
+    auto min = dis;
     for (cur_candidates = 0; min >= 0; min--) {
         cur_candidates += candidates_at[min];
         if (cur_candidates && (cur_candidates >= total_candidates / 2)) {
@@ -356,11 +356,12 @@ bool teleport_player_aux(PlayerType *player_ptr, POSITION dis, bool is_quantum_e
         }
     }
 
-    int pick = randint1(cur_candidates);
+    auto pick = randint1(cur_candidates);
 
     /* Search again the choosen location */
-    POSITION yy, xx = 0;
-    for (yy = top; yy <= bottom; yy++) {
+    auto yy = top;
+    auto xx = 0;
+    for (; yy <= bottom; yy++) {
         for (xx = left; xx <= right; xx++) {
             if (!cave_player_teleportable_bold(player_ptr, yy, xx, mode)) {
                 continue;
@@ -420,11 +421,11 @@ void teleport_player(PlayerType *player_ptr, POSITION dis, BIT_FLAGS mode)
             MONSTER_IDX tmp_m_idx = player_ptr->current_floor_ptr->grid_array[oy + yy][ox + xx].m_idx;
             if (tmp_m_idx && (player_ptr->riding != tmp_m_idx)) {
                 auto *m_ptr = &player_ptr->current_floor_ptr->m_list[tmp_m_idx];
-                auto *r_ptr = &r_info[m_ptr->r_idx];
+                auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
                 bool can_follow = r_ptr->ability_flags.has(MonsterAbilityType::TPORT);
                 can_follow &= r_ptr->resistance_flags.has_not(MonsterResistanceType::RESIST_TELEPORT);
-                can_follow &= monster_csleep_remaining(m_ptr) == 0;
+                can_follow &= !m_ptr->is_asleep();
                 if (can_follow) {
                     teleport_monster_to(player_ptr, tmp_m_idx, player_ptr->y, player_ptr->x, r_ptr->level, TELEPORT_SPONTANEOUS);
                 }
@@ -465,11 +466,11 @@ void teleport_player_away(MONSTER_IDX m_idx, PlayerType *player_ptr, POSITION di
             }
 
             auto *m_ptr = &player_ptr->current_floor_ptr->m_list[tmp_m_idx];
-            auto *r_ptr = &r_info[m_ptr->r_idx];
+            auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
             bool can_follow = r_ptr->ability_flags.has(MonsterAbilityType::TPORT);
             can_follow &= r_ptr->resistance_flags.has_not(MonsterResistanceType::RESIST_TELEPORT);
-            can_follow &= monster_csleep_remaining(m_ptr) == 0;
+            can_follow &= !m_ptr->is_asleep();
             if (can_follow) {
                 teleport_monster_to(player_ptr, tmp_m_idx, player_ptr->y, player_ptr->x, r_ptr->level, TELEPORT_SPONTANEOUS);
             }
@@ -538,10 +539,10 @@ void teleport_away_followable(PlayerType *player_ptr, MONSTER_IDX m_idx)
     bool old_ml = m_ptr->ml;
     POSITION old_cdis = m_ptr->cdis;
 
-    teleport_away(player_ptr, m_idx, MAX_SIGHT * 2 + 5, TELEPORT_SPONTANEOUS);
+    teleport_away(player_ptr, m_idx, MAX_PLAYER_SIGHT * 2 + 5, TELEPORT_SPONTANEOUS);
 
     bool is_followable = old_ml;
-    is_followable &= old_cdis <= MAX_SIGHT;
+    is_followable &= old_cdis <= MAX_PLAYER_SIGHT;
     is_followable &= w_ptr->timewalk_m_idx == 0;
     is_followable &= !player_ptr->phase_out;
     is_followable &= los(player_ptr, player_ptr->y, player_ptr->x, oldfy, oldfx);
@@ -553,7 +554,7 @@ void teleport_away_followable(PlayerType *player_ptr, MONSTER_IDX m_idx)
     if (player_ptr->muta.has(PlayerMutationType::VTELEPORT) || PlayerClass(player_ptr).equals(PlayerClassType::IMITATOR)) {
         follow = true;
     } else {
-        ObjectType *o_ptr;
+        ItemEntity *o_ptr;
         INVENTORY_IDX i;
 
         for (i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
