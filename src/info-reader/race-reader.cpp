@@ -398,7 +398,7 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
                 if (s_tokens[1] == "ITEM" && s_tokens[3] == "IN") {
                     int num;
                     int deno;
-                    KIND_OBJECT_IDX kind_idx;
+                    short kind_idx;
                     info_set_value(num, s_tokens[2]);
                     info_set_value(deno, s_tokens[4]);
                     info_set_value(kind_idx, s_tokens[5]);
@@ -413,7 +413,7 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
                 int dn;
                 int ds;
                 int grade;
-                KIND_OBJECT_IDX kind_idx;
+                short kind_idx;
                 info_set_value(num, s_tokens[2]);
                 info_set_value(deno, s_tokens[4]);
                 info_set_value(kind_idx, s_tokens[5]);
@@ -434,7 +434,7 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
                 int dn;
                 int ds;
                 int grade;
-                KIND_OBJECT_IDX kind_idx;
+                short kind_idx;
                 info_set_value(num, s_tokens[2]);
                 info_set_value(deno, s_tokens[4]);
                 info_set_value(kind_idx, s_tokens[5]);

@@ -95,9 +95,9 @@ public:
     std::vector<std::tuple<MonsterRaceId, DICE_NUMBER, DICE_SID>> reinforces;
     std::vector<std::tuple<int, int, MonsterRaceId>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
-    std::vector<std::tuple<int, int, KIND_OBJECT_IDX>> spawn_items; //!< アイテム自然生成率
-    std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
-    std::vector<std::tuple<int, int, KIND_OBJECT_IDX, int, int, int>> drop_tvals; //!< アイテム種別ドロップ指定
+    std::vector<std::tuple<int, int, short>> spawn_items; //!< アイテム自然生成率
+    std::vector<std::tuple<int, int, short, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
+    std::vector<std::tuple<int, int, short, int, int, int>> drop_tvals; //!< アイテム種別ドロップ指定
     std::vector<std::tuple<int, int, MonsterRaceId, int, int>> dead_spawns; //!< 死亡時モンスター生成
     //! 特定アーティファクトドロップリスト <アーティファクトID,ドロップ率>
     std::vector<std::tuple<FixedArtifactId, PERCENTAGE>> drop_artifacts;

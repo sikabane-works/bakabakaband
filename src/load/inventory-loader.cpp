@@ -38,9 +38,8 @@ static errr rd_inventory(PlayerType *player_ptr)
 
         ItemEntity item;
         item_loader->rd_item(&item);
-        if (!item.k_idx) {
-            load_note(_("ID=0のアイテム", "a ID zero item"));
-            // return 53;
+        if (!item.bi_id) {
+            return 53;
         }
 
         if (n >= INVEN_MAIN_HAND) {
