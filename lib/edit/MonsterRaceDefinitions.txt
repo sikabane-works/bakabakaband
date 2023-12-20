@@ -38200,6 +38200,23 @@ B:ENGULF:EXP_VAMP:1d5
 S:1_IN_8 | BR_NETH
 D:邪悪な異界の瘴気が固まり集まった球体だ。
 
+N:2084:カプコン製ヘリコプター
+E:Capcom helicopter
+G:F:o
+I:130:30d40:30:50:0
+W:44:4:1500:0:0
+B:EXPLODE:HURT:30d3
+B:SHOOT:HURT:10d10
+F:PREVENT_SUDDEN_MAGIC |
+F:SUICIDE_4d10
+F:COLD_BLOOD | EMPTY_MIND | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | 
+F:HURT_ROCK | 
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_5 | SHOOT
+D:$This helicopter is about to explode.
+D:今にも爆発しそうなヘリコプターだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
