@@ -30,7 +30,6 @@
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
-
 static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, MonsterAbilityType ms_type, POSITION y, POSITION x, MONSTER_IDX m_idx)
 {
     MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
