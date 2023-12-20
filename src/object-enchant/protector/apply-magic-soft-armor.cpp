@@ -9,8 +9,8 @@
 #include "object/object-kind-hook.h"
 #include "object/tval-types.h"
 #include "sv-definition/sv-armor-types.h"
-#include "system/baseitem-info-definition.h"
-#include "system/object-type-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 
 /*

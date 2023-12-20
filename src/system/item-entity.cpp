@@ -1,11 +1,11 @@
 ﻿/*
- * @file object-type-definition.h
+ * @file item-entity.cpp
  * @brief アイテム定義の構造体とエンティティ処理実装
  * @author Hourier
  * @date 2022/10/09
  */
 
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "artifact/fixed-art-types.h"
 #include "artifact/random-art-effects.h"
 #include "monster-race/monster-race.h"
@@ -23,8 +23,8 @@
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-weapon-types.h"
-#include "system/baseitem-info-definition.h"
-#include "system/monster-race-definition.h"
+#include "system/baseitem-info.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -697,17 +697,17 @@ bool ItemEntity::can_pile(const ItemEntity *j_ptr) const
  */
 TERM_COLOR ItemEntity::get_color() const
 {
-    const auto &base_item = baseitems_info[this->k_idx];
-    const auto flavor = base_item.flavor;
+    const auto &baseitem = baseitems_info[this->k_idx];
+    const auto flavor = baseitem.flavor;
     if (flavor != 0) {
         return baseitems_info[flavor].x_attr;
     }
 
     auto has_attr = this->k_idx == 0;
     has_attr |= (this->tval != ItemKindType::CORPSE) || (this->sval != SV_CORPSE);
-    has_attr |= base_item.x_attr != TERM_DARK;
+    has_attr |= baseitem.x_attr != TERM_DARK;
     if (has_attr) {
-        return base_item.x_attr;
+        return baseitem.x_attr;
     }
 
     return monraces_info[i2enum<MonsterRaceId>(this->pval)].x_attr;
@@ -717,13 +717,13 @@ TERM_COLOR ItemEntity::get_color() const
  * @brief アイテムシンボルを取得する
  * @details 未鑑定名のないアイテム (魔法書等)はベースアイテム定義そのまま
  * 未鑑定名のあるアイテム (薬等)は、未鑑定名の割り当てられたシンボル
- * @todo 色と違って変える必要はない……はず？
+ * 以上について、設定で変更しているシンボルならばそれを、していないならば定義シンボルを返す
  */
 char ItemEntity::get_symbol() const
 {
-    const auto &base_item = baseitems_info[this->k_idx];
-    const auto flavor = base_item.flavor;
-    return flavor ? baseitems_info[flavor].x_char : base_item.x_char;
+    const auto &baseitem = baseitems_info[this->k_idx];
+    const auto flavor = baseitem.flavor;
+    return flavor ? baseitems_info[flavor].x_char : baseitem.x_char;
 }
 
 /*!
