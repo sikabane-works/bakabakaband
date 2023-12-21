@@ -147,8 +147,14 @@ pre {
     overflow-y: scroll;
 }
 
-#top-message {
+#flex-box {
+    display: flex;
+    flex-direction: row;
     position: absolute;
+    top: 68vw;
+}
+
+#top-message {
     top: 65vw;
     left: 2vw;
     margin: 0.3vw;
@@ -163,7 +169,6 @@ pre {
 }
 
 #menu-block {
-    position: absolute;
     top: 63vw;
     right: 0vw;
     margin: 1.5vw;
@@ -210,6 +215,7 @@ a.button-link:hover		{ color:white;}
     z-index: 10;
     justify-content: center;
     flex-direction: column;
+    position:relative;
 }
 
 .button-small
