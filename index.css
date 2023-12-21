@@ -152,6 +152,7 @@ pre {
     flex-direction: row;
     position: absolute;
     top: 68vw;
+    height: 50vw;
 }
 
 #top-message {
@@ -159,21 +160,20 @@ pre {
     left: 2vw;
     margin: 0.3vw;
     padding: 1vw;
-    width: 50vw;
     background-color: rgba(0,0,0,0.85);
     border: solid 0.5vw;
     border-radius: 2vw;
     z-index: 10;
-    max-height: 50vh;
+    max-height: 30rem;
     overflow-y: scroll;
 }
 
 #menu-block {
+    flex: 1 0 50%;
     top: 63vw;
     right: 0vw;
     margin: 1.5vw;
     padding: 1vw;
-    width: 42vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
