@@ -147,28 +147,33 @@ pre {
     overflow-y: scroll;
 }
 
-#top-message {
+#flex-box {
+    display: flex;
+    flex-direction: row;
     position: absolute;
+    top: 68vw;
+    height: 50vw;
+}
+
+#top-message {
     top: 65vw;
     left: 2vw;
     margin: 0.3vw;
     padding: 1vw;
-    width: 50vw;
     background-color: rgba(0,0,0,0.85);
     border: solid 0.5vw;
     border-radius: 2vw;
     z-index: 10;
-    max-height: 50vh;
+    max-height: 30rem;
     overflow-y: scroll;
 }
 
 #menu-block {
-    position: absolute;
+    flex: 1 0 50%;
     top: 63vw;
     right: 0vw;
     margin: 1.5vw;
     padding: 1vw;
-    width: 42vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -199,17 +204,18 @@ a.button-link:hover		{ color:white;}
 .button
 {
     width: 100%;
-    font-size: 1.2vw;
-    line-height: 2.5vw;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
     display: flex;
     background-color: rgba(20,10,0,1.00);
-    border: solid 1.5vw;
+    border: solid 0.5rem;
     margin: 1rem;
-    padding: 1vw 1vw 1vw 4.8vw;
-    border-radius: 5.5vw;
+    padding: 1vw 1vw 1vw 5.5rem;
+    border-radius: 5.5rem;
     z-index: 10;
     justify-content: center;
     flex-direction: column;
+    position:relative;
 }
 
 .button-small
