@@ -116,7 +116,7 @@ static bool acid_minus_ac(PlayerType *player_ptr)
         break;
     }
 
-    if ((o_ptr == nullptr) || (o_ptr->bi_id == 0) || !o_ptr->is_armour()) {
+    if ((o_ptr == nullptr) || (o_ptr->bi_id == 0) || !o_ptr->is_protector()) {
         return false;
     }
 
