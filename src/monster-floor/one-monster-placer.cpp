@@ -49,6 +49,7 @@
 #include "view/display-messages.h"
 #include "wizard/wizard-messages.h"
 #include "world/world.h"
+#include <time.h>
 
 static bool is_friendly_idx(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
@@ -314,6 +315,14 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         m_ptr->ap_r_idx = floor_ptr->m_list[who].ap_r_idx;
         if (floor_ptr->m_list[who].mflag2.has(MonsterConstantFlagType::KAGE)) {
             m_ptr->mflag2.set(MonsterConstantFlagType::KAGE);
+        }
+    }
+
+    time_t now = time(nullptr);
+    struct tm *t = localtime(&now);
+    if (t->tm_mon == 11 && t->tm_mday >= 24 && t->tm_mday <= 25 && one_in_(6)) {
+        if (none_bits(mode, PM_MULTIPLY | PM_KAGE) && m_ptr->r_idx != MonsterRaceId::SANTA) {
+            m_ptr->mflag2.set(MonsterConstantFlagType::SANTA);         
         }
     }
 
