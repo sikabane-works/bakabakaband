@@ -296,6 +296,10 @@ static int decide_drop_numbers(PlayerType *player_ptr, monster_death_type *md_pt
         drop_numbers += damroll(4, 2);
     }
 
+    if (md_ptr->m_ptr->mflag2.has(MonsterConstantFlagType::SANTA)) {
+        drop_numbers += damroll(3, 3);
+    }
+
     if (md_ptr->cloned && md_ptr->r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
         drop_numbers = 0;
     }

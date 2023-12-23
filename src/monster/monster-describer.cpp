@@ -15,6 +15,8 @@
 #include "util/quarks.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
+#include <sstream>
+#include <string_view>
 
 /*!
  * @brief モンスターの呼称を作成する / Build a string describing a monster in some way.
@@ -161,13 +163,27 @@ void monster_desc(PlayerType *player_ptr, char *desc, MonsterEntity *m_ptr, BIT_
         return;
     }
 
+    std::stringstream ss;
+#ifdef JP
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::SANTA)) {
+        ss << "サンタと化した";
+    }
+#endif
+    ss << name;
+#ifndef JP
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::SANTA)) {
+        ss << "Santa turned";
+    }
+#endif
+    std::string a_name = ss.str();
+
     /* Handle all other visible monster requests */
     /* Tanuki? */
     if (m_ptr->is_pet() && !m_ptr->is_original_ap()) {
 #ifdef JP
         char *t;
         char buf[128];
-        strcpy(buf, name);
+        strcpy(buf, a_name.c_str());
         t = buf;
         while (strncmp(t, "』", 2) && *t) {
             t++;
@@ -176,18 +192,19 @@ void monster_desc(PlayerType *player_ptr, char *desc, MonsterEntity *m_ptr, BIT_
             *t = '\0';
             (void)sprintf(desc, "%s？』", buf);
         } else {
-            (void)sprintf(desc, "%s？", name);
+            (void)sprintf(desc, "%s？", a_name.c_str());
         }
 #else
         (void)sprintf(desc, "%s?", name);
 #endif
     } else {
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && !(is_hallucinated && !(mode & MD_IGNORE_HALLU))) {
+
             if (m_ptr->mflag2.has(MonsterConstantFlagType::CHAMELEON) && !(mode & MD_TRUE_NAME)) {
 #ifdef JP
                 char *t;
                 char buf[128];
-                strcpy(buf, name);
+                strcpy(buf, a_name.c_str());
                 t = buf;
                 while (strncmp(t, "』", 2) && *t) {
                     t++;
@@ -196,15 +213,15 @@ void monster_desc(PlayerType *player_ptr, char *desc, MonsterEntity *m_ptr, BIT_
                     *t = '\0';
                     (void)sprintf(desc, "%s？』", buf);
                 } else {
-                    (void)sprintf(desc, "%s？", name);
+                    (void)sprintf(desc, "%s？", a_name.c_str());
                 }
 #else
-                (void)sprintf(desc, "%s?", name);
+                (void)sprintf(desc, "%s?", a_name.c_str());
 #endif
             } else if (player_ptr->phase_out && !(player_ptr->riding && (&floor_ptr->m_list[player_ptr->riding] == m_ptr))) {
-                (void)sprintf(desc, _("%sもどき", "fake %s"), name);
+                (void)sprintf(desc, _("%sもどき", "fake %s"), a_name.c_str());
             } else {
-                (void)strcpy(desc, name);
+                (void)strcpy(desc, a_name.c_str());
             }
         } else if (mode & MD_INDEF_VISIBLE) {
 #ifdef JP
@@ -212,15 +229,16 @@ void monster_desc(PlayerType *player_ptr, char *desc, MonsterEntity *m_ptr, BIT_
 #else
             (void)strcpy(desc, is_a_vowel(name[0]) ? "an " : "a ");
 #endif
-            (void)strcat(desc, name);
+            (void)strcat(desc, a_name.c_str());
         } else {
+
             if (m_ptr->is_pet()) {
                 (void)strcpy(desc, _("あなたの", "your "));
             } else {
                 (void)strcpy(desc, _("", "the "));
             }
 
-            (void)strcat(desc, name);
+            (void)strcat(desc, a_name.c_str());
         }
     }
 
