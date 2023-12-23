@@ -322,7 +322,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     struct tm *t = localtime(&now);
     if (t->tm_mon == 11 && t->tm_mday >= 24 && t->tm_mday <= 25 && one_in_(6)) {
         if (none_bits(mode, PM_MULTIPLY | PM_KAGE) && m_ptr->r_idx != MonsterRaceId::SANTA) {
-            m_ptr->mflag2.set(MonsterConstantFlagType::SANTA);         
+            m_ptr->mflag2.set(MonsterConstantFlagType::SANTA);
         }
     }
 
