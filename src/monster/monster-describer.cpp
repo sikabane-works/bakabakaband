@@ -15,6 +15,8 @@
 #include "util/quarks.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
+#include <sstream>
+#include <string_view>
 
 /*!
  * @brief モンスターの呼称を作成する / Build a string describing a monster in some way.
