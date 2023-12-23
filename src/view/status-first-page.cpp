@@ -24,7 +24,7 @@
 #include "player/player-status-flags.h"
 #include "player/special-defense-types.h"
 #include "sv-definition/sv-weapon-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -41,11 +41,11 @@ static TERM_COLOR likert_color = TERM_WHITE;
  */
 static void calc_shot_params(PlayerType *player_ptr, ItemEntity *o_ptr, int *shots, int *shot_frac)
 {
-    if (o_ptr->k_idx == 0) {
+    if (o_ptr->bi_id == 0) {
         return;
     }
 
-    ENERGY energy_fire = bow_energy(o_ptr->sval);
+    const auto energy_fire = o_ptr->get_bow_energy();
     *shots = player_ptr->num_fire * 100;
     *shot_frac = ((*shots) * 100 / energy_fire) % 100;
     *shots = (*shots) / energy_fire;
@@ -121,7 +121,7 @@ static bool calc_weapon_damage_limit(PlayerType *player_ptr, int hand, int *dama
  */
 static bool calc_weapon_one_hand(ItemEntity *o_ptr, int hand, int *damage, int *basedam)
 {
-    if (o_ptr->k_idx == 0) {
+    if (o_ptr->bi_id == 0) {
         return false;
     }
 

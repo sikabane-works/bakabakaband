@@ -63,9 +63,9 @@
 #include "system/building-type-definition.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
@@ -116,7 +116,7 @@ static bool acid_minus_ac(PlayerType *player_ptr)
         break;
     }
 
-    if ((o_ptr == nullptr) || (o_ptr->k_idx == 0) || !o_ptr->is_armour()) {
+    if ((o_ptr == nullptr) || (o_ptr->bi_id == 0) || !o_ptr->is_protector()) {
         return false;
     }
 

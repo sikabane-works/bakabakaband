@@ -2,9 +2,9 @@
 #include "artifact/random-art-effects.h"
 #include "object-enchant/tr-types.h"
 #include "player-ability/player-ability-types.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
@@ -606,7 +606,7 @@ void one_lordly_high_resistance(ItemEntity *o_ptr)
  */
 void make_weight_ligten(ItemEntity *o_ptr)
 {
-    o_ptr->weight = (2 * baseitems_info[o_ptr->k_idx].weight / 3);
+    o_ptr->weight = (2 * baseitems_info[o_ptr->bi_id].weight / 3);
 }
 
 /*!
@@ -615,7 +615,7 @@ void make_weight_ligten(ItemEntity *o_ptr)
  */
 void make_weight_heavy(ItemEntity *o_ptr)
 {
-    o_ptr->weight = (4 * baseitems_info[o_ptr->k_idx].weight / 3);
+    o_ptr->weight = (4 * baseitems_info[o_ptr->bi_id].weight / 3);
 }
 
 /*!

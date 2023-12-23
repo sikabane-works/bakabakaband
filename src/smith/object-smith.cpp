@@ -10,9 +10,8 @@
 #include "smith/smith-info.h"
 #include "smith/smith-tables.h"
 #include "smith/smith-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
-
 #include <algorithm>
 #include <optional>
 #include <sstream>
@@ -168,7 +167,7 @@ int Smith::get_essence_consumption(SmithEffectType effect, const ItemEntity *o_p
         return consumption;
     }
 
-    if ((o_ptr->tval >= ItemKindType::SHOT) && (o_ptr->tval <= ItemKindType::BOLT)) {
+    if (o_ptr->is_ammo()) {
         consumption = (consumption + 9) / 10;
     }
 
@@ -352,7 +351,7 @@ Smith::DrainEssenceResult Smith::drain_essence(ItemEntity *o_ptr)
 
     // アイテムをエッセンス抽出後の状態にする
     const ItemEntity old_o = *o_ptr;
-    o_ptr->prep(o_ptr->k_idx);
+    o_ptr->prep(o_ptr->bi_id);
 
     o_ptr->iy = old_o.iy;
     o_ptr->ix = old_o.ix;

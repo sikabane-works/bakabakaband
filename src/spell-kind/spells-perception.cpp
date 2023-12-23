@@ -22,12 +22,11 @@
 #include "object/object-mark-types.h"
 #include "perception/identification.h"
 #include "perception/object-perception.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-
 #include <memory>
 
 /*!
@@ -40,7 +39,7 @@ void identify_pack(PlayerType *player_ptr)
 {
     for (INVENTORY_IDX i = 0; i < INVEN_TOTAL; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx) {
+        if (!o_ptr->bi_id) {
             continue;
         }
 
@@ -74,10 +73,10 @@ bool identify_item(PlayerType *player_ptr, ItemEntity *o_ptr)
 
     object_aware(player_ptr, o_ptr);
     object_known(o_ptr);
-    set_bits(o_ptr->marked, OM_TOUCHED);
+    o_ptr->marked.set(OmType::TOUCHED);
 
     set_bits(player_ptr->update, PU_BONUS | PU_COMBINE | PU_REORDER);
-    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
 
     strcpy(record_o_name, o_name);
     record_turn = w_ptr->game_turn;

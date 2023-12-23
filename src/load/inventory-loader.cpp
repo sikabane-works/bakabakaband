@@ -4,7 +4,7 @@
 #include "load/load-util.h"
 #include "load/old/item-loader-savefile50.h"
 #include "object/object-mark-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 
 /*!
@@ -38,13 +38,12 @@ static errr rd_inventory(PlayerType *player_ptr)
 
         ItemEntity item;
         item_loader->rd_item(&item);
-        if (!item.k_idx) {
-            load_note(_("ID=0のアイテム", "a ID zero item"));
-            // return 53;
+        if (!item.bi_id) {
+            return 53;
         }
 
         if (n >= INVEN_MAIN_HAND) {
-            item.marked |= OM_TOUCHED;
+            item.marked.set(OmType::TOUCHED);
             player_ptr->inventory_list[n].copy_from(&item);
             player_ptr->equip_cnt++;
             continue;
@@ -56,7 +55,7 @@ static errr rd_inventory(PlayerType *player_ptr)
         }
 
         n = slot++;
-        item.marked |= OM_TOUCHED;
+        item.marked.set(OmType::TOUCHED);
         player_ptr->inventory_list[n].copy_from(&item);
         player_ptr->inven_cnt++;
     }

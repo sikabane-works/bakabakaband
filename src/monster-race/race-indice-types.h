@@ -74,6 +74,7 @@ enum class MonsterRaceId : int16_t {
     FAFNER = 712,
     G_BALROG = 720,
     BULLGATES = 732,
+    SANTA = 733,
     LORD_CHAOS = 737,
     NIGHTWALKER = 768,
     SHADOWLORD = 774,

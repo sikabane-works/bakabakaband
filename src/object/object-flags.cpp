@@ -4,10 +4,9 @@
 #include "object-enchant/tr-types.h"
 #include "perception/object-perception.h"
 #include "smith/object-smith.h"
-#include "sv-definition/sv-lite-types.h"
 #include "system/artifact-type-definition.h"
-#include "system/baseitem-info-definition.h"
-#include "system/object-type-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
@@ -22,21 +21,21 @@ static void object_flags_lite(const ItemEntity *o_ptr, TrFlags &flags)
         return;
     }
 
-    auto *e_ptr = &egos_info[o_ptr->ego_idx];
-    flags.set(e_ptr->flags);
+    const auto &ego = egos_info[o_ptr->ego_idx];
+    flags.set(ego.flags);
 
-    auto is_out_of_fuel = o_ptr->fuel == 0;
-    if ((o_ptr->ego_idx == EgoType::AURA_FIRE) && is_out_of_fuel && (o_ptr->sval <= SV_LITE_LANTERN)) {
+    const auto is_out_of_fuel = o_ptr->fuel == 0;
+    if ((o_ptr->ego_idx == EgoType::AURA_FIRE) && is_out_of_fuel && o_ptr->is_lite_requiring_fuel()) {
         flags.reset(TR_SH_FIRE);
         return;
     }
 
-    if ((o_ptr->ego_idx == EgoType::LITE_INFRA) && is_out_of_fuel && (o_ptr->sval <= SV_LITE_LANTERN)) {
+    if ((o_ptr->ego_idx == EgoType::LITE_INFRA) && is_out_of_fuel && o_ptr->is_lite_requiring_fuel()) {
         flags.reset(TR_INFRA);
         return;
     }
 
-    if ((o_ptr->ego_idx == EgoType::LITE_EYE) && is_out_of_fuel && (o_ptr->sval <= SV_LITE_LANTERN)) {
+    if ((o_ptr->ego_idx == EgoType::LITE_EYE) && is_out_of_fuel && o_ptr->is_lite_requiring_fuel()) {
         flags.reset(TR_RES_BLIND);
         flags.reset(TR_SEE_INVIS);
     }
@@ -49,7 +48,7 @@ static void object_flags_lite(const ItemEntity *o_ptr, TrFlags &flags)
  */
 TrFlags object_flags(const ItemEntity *o_ptr)
 {
-    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->bi_id];
 
     /* Base object */
     auto flags = k_ptr->flags;
@@ -83,7 +82,7 @@ TrFlags object_flags(const ItemEntity *o_ptr)
 TrFlags object_flags_known(const ItemEntity *o_ptr)
 {
     bool spoil = false;
-    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->bi_id];
     TrFlags flags{};
 
     if (!o_ptr->is_aware()) {

@@ -13,7 +13,7 @@
 #include "object/item-use-flags.h"
 #include "object/object-flags.h"
 #include "racial/racial-android.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -58,7 +58,7 @@ bool bless_weapon(PlayerType *player_ptr)
         set_bits(o_ptr->ident, IDENT_SENSE);
         o_ptr->feeling = FEEL_NONE;
         set_bits(player_ptr->update, PU_BONUS);
-        set_bits(player_ptr->window_flags, PW_EQUIP | PW_FLOOR_ITEM_LIST);
+        set_bits(player_ptr->window_flags, PW_EQUIP | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
     }
 
     /*
@@ -132,7 +132,7 @@ bool bless_weapon(PlayerType *player_ptr)
     }
 
     set_bits(player_ptr->update, PU_BONUS);
-    set_bits(player_ptr->window_flags, PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
     calc_android_exp(player_ptr);
     return true;
 }

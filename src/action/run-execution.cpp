@@ -20,8 +20,8 @@
 #include "player/player-status.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -240,7 +240,7 @@ static bool run_test(PlayerType *player_ptr)
         for (const auto this_o_idx : g_ptr->o_idx_list) {
             ItemEntity *o_ptr;
             o_ptr = &floor_ptr->o_list[this_o_idx];
-            if (o_ptr->marked & OM_FOUND) {
+            if (o_ptr->marked.has(OmType::FOUND)) {
                 return true;
             }
         }

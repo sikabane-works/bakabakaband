@@ -4,8 +4,9 @@
 #include "object/object-value-calc.h"
 #include "object/tval-types.h"
 #include "system/artifact-type-definition.h"
-#include "system/baseitem-info-definition.h"
-#include "system/monster-race-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 
 /*!
@@ -36,13 +37,13 @@
  */
 PRICE object_value_real(const ItemEntity *o_ptr)
 {
-    auto *k_ptr = &baseitems_info[o_ptr->k_idx];
+    auto *k_ptr = &baseitems_info[o_ptr->bi_id];
 
-    if (!baseitems_info[o_ptr->k_idx].cost) {
+    if (!baseitems_info[o_ptr->bi_id].cost) {
         return 0;
     }
 
-    PRICE value = baseitems_info[o_ptr->k_idx].cost;
+    PRICE value = baseitems_info[o_ptr->bi_id].cost;
     auto flags = object_flags(o_ptr);
     if (o_ptr->is_fixed_artifact()) {
         const auto &a_ref = artifacts_info.at(o_ptr->fixed_artifact_idx);

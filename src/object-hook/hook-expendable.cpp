@@ -14,9 +14,9 @@
 #include "player-info/mimic-info-table.h"
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-other-types.h"
-#include "system/baseitem-info-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/object-type-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/string-processor.h"
@@ -35,7 +35,7 @@ bool item_tester_hook_eatable(PlayerType *player_ptr, const ItemEntity *o_ptr)
 
     auto food_type = PlayerRace(player_ptr).food();
     if (food_type == PlayerRaceFoodType::MANA) {
-        if (o_ptr->tval == ItemKindType::STAFF || o_ptr->tval == ItemKindType::WAND) {
+        if (o_ptr->is_wand_staff()) {
             return true;
         }
     } else if (food_type == PlayerRaceFoodType::CORPSE) {

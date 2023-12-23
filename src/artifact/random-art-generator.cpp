@@ -31,8 +31,8 @@
 #include "perception/identification.h"
 #include "perception/object-perception.h"
 #include "sv-definition/sv-weapon-types.h"
-#include "system/baseitem-info-definition.h"
-#include "system/object-type-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/quarks.h"
@@ -43,8 +43,8 @@
 
 static bool weakening_artifact(ItemEntity *o_ptr)
 {
-    const auto k_idx = lookup_baseitem_id({ o_ptr->tval, o_ptr->sval });
-    auto *k_ptr = &baseitems_info[k_idx];
+    const auto bi_id = lookup_baseitem_id({ o_ptr->tval, o_ptr->sval });
+    auto *k_ptr = &baseitems_info[bi_id];
     auto flags = object_flags(o_ptr);
 
     if (flags.has(TR_KILL_EVIL)) {
@@ -275,7 +275,7 @@ static void strengthen_pval(ItemEntity *o_ptr)
  */
 static void invest_positive_modified_value(ItemEntity *o_ptr)
 {
-    if (o_ptr->is_armour()) {
+    if (o_ptr->is_protector()) {
         o_ptr->to_a += randint1(o_ptr->to_a > 19 ? 1 : 20 - o_ptr->to_a);
         return;
     }
@@ -298,7 +298,7 @@ static void invest_positive_modified_value(ItemEntity *o_ptr)
  */
 static void invest_negative_modified_value(ItemEntity *o_ptr)
 {
-    if (!o_ptr->is_armour()) {
+    if (!o_ptr->is_protector()) {
         return;
     }
 
@@ -385,7 +385,7 @@ static int decide_random_art_power_level(ItemEntity *o_ptr, const bool a_cursed,
 static void name_unnatural_random_artifact(PlayerType *player_ptr, ItemEntity *o_ptr, const bool a_scroll, const int power_level, GAME_TEXT *new_name)
 {
     if (!a_scroll) {
-        get_random_name(o_ptr, new_name, o_ptr->is_armour(), power_level);
+        get_random_name(o_ptr, new_name, o_ptr->is_protector(), power_level);
         return;
     }
 
@@ -419,7 +419,7 @@ static void generate_unnatural_random_artifact(
     msg_format_wizard(player_ptr, CHEAT_OBJECT,
         _("パワー %d で 価値%ld のランダムアーティファクト生成 バイアスは「%s」", "Random artifact generated - Power:%d Value:%d Bias:%s."), max_powers,
         total_flags, artifact_bias_name[o_ptr->artifact_bias]);
-    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_FLOOR_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
 }
 
 /*!
@@ -435,7 +435,7 @@ bool become_random_artifact(PlayerType *player_ptr, ItemEntity *o_ptr, bool a_sc
     o_ptr->artifact_bias = 0;
     o_ptr->fixed_artifact_idx = FixedArtifactId::NONE;
     o_ptr->ego_idx = EgoType::NONE;
-    o_ptr->art_flags |= baseitems_info[o_ptr->k_idx].flags;
+    o_ptr->art_flags |= baseitems_info[o_ptr->bi_id].flags;
 
     bool has_pval = o_ptr->pval != 0;
     decide_warrior_bias(player_ptr, o_ptr, a_scroll);
@@ -460,7 +460,7 @@ bool become_random_artifact(PlayerType *player_ptr, ItemEntity *o_ptr, bool a_sc
     }
 
     constexpr auto activation_chance = 3;
-    if (!a_cursed && one_in_(o_ptr->is_armour() ? activation_chance * 2 : activation_chance)) {
+    if (!a_cursed && one_in_(o_ptr->is_protector() ? activation_chance * 2 : activation_chance)) {
         o_ptr->activation_id = RandomArtActType::NONE;
         give_activation_power(o_ptr);
     }

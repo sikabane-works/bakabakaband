@@ -48,9 +48,9 @@
 #include "status/shape-changer.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "util/bit-flags-calculator.h"
@@ -154,7 +154,7 @@ bool exe_mutation_power(PlayerType *player_ptr, PlayerMutationType power)
     case PlayerMutationType::DET_CURSE:
         for (int i = 0; i < INVEN_TOTAL; i++) {
             auto *o_ptr = &player_ptr->inventory_list[i];
-            if ((o_ptr->k_idx == 0) || !o_ptr->is_cursed()) {
+            if ((o_ptr->bi_id == 0) || !o_ptr->is_cursed()) {
                 continue;
             }
 

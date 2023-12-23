@@ -22,7 +22,7 @@
 #include "object/object-info.h"
 #include "perception/object-perception.h"
 #include "player/player-status-flags.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/timed-effects.h"
@@ -276,7 +276,7 @@ void sense_inventory1(PlayerType *player_ptr)
 
         o_ptr = &player_ptr->inventory_list[i];
 
-        if (!o_ptr->k_idx) {
+        if (!o_ptr->bi_id) {
             continue;
         }
 
@@ -405,7 +405,7 @@ void sense_inventory2(PlayerType *player_ptr)
     for (INVENTORY_IDX i = 0; i < INVEN_TOTAL; i++) {
         bool okay = false;
         o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx) {
+        if (!o_ptr->bi_id) {
             continue;
         }
 

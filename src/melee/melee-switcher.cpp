@@ -11,7 +11,7 @@
 #include "monster/monster-status-setter.h"
 #include "player/player-damage.h"
 #include "spell-kind/earthquake.h"
-#include "system/monster-type-definition.h"
+#include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
 

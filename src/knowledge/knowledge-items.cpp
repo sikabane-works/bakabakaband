@@ -21,9 +21,10 @@
 #include "perception/identification.h"
 #include "perception/object-perception.h"
 #include "system/artifact-type-definition.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
@@ -80,7 +81,7 @@ void do_cmd_knowledge_artifacts(PlayerType *player_ptr)
 
     for (auto i = 0; i < INVEN_TOTAL; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx) {
+        if (!o_ptr->bi_id) {
             continue;
         }
         if (!o_ptr->is_fixed_artifact()) {
@@ -128,9 +129,9 @@ void do_cmd_knowledge_artifacts(PlayerType *player_ptr)
  * mode & 0x01 : check for non-empty group
  * mode & 0x02 : visual operation only
  */
-static KIND_OBJECT_IDX collect_objects(int grp_cur, KIND_OBJECT_IDX object_idx[], BIT_FLAGS8 mode)
+static short collect_objects(int grp_cur, short object_idx[], BIT_FLAGS8 mode)
 {
-    KIND_OBJECT_IDX object_cnt = 0;
+    short object_cnt = 0;
     auto group_tval = object_group_tval[grp_cur];
     for (const auto &k_ref : baseitems_info) {
         if (k_ref.name.empty()) {
@@ -155,7 +156,7 @@ static KIND_OBJECT_IDX collect_objects(int grp_cur, KIND_OBJECT_IDX object_idx[]
 
         const auto tval = k_ref.bi_key.tval();
         if (group_tval == ItemKindType::LIFE_BOOK) {
-            if (ItemKindType::LIFE_BOOK <= tval && tval <= ItemKindType::HEX_BOOK) {
+            if (k_ref.bi_key.is_spell_book()) {
                 object_idx[object_cnt++] = k_ref.idx;
             } else {
                 continue;
@@ -184,8 +185,8 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
     for (i = 0; i < per_page && (object_idx[object_top + i] >= 0); i++) {
         TERM_COLOR a;
         BaseitemInfo *flavor_k_ptr;
-        KIND_OBJECT_IDX k_idx = object_idx[object_top + i];
-        auto *k_ptr = &baseitems_info[k_idx];
+        short bi_id = object_idx[object_top + i];
+        auto *k_ptr = &baseitems_info[bi_id];
         TERM_COLOR attr = ((k_ptr->aware || visual_only) ? TERM_WHITE : TERM_SLATE);
         byte cursor = ((k_ptr->aware || visual_only) ? TERM_L_BLUE : TERM_BLUE);
         if (!visual_only && k_ptr->flavor) {
@@ -196,14 +197,14 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
 
         attr = ((i + object_top == object_cur) ? cursor : attr);
         const auto is_flavor_only = (k_ptr->flavor != 0) && (visual_only || !k_ptr->aware);
-        const auto o_name = is_flavor_only ? flavor_k_ptr->flavor_name : strip_name(k_idx);
+        const auto o_name = is_flavor_only ? flavor_k_ptr->flavor_name : strip_name(bi_id);
         c_prt(attr, o_name.data(), row + i, col);
         if (per_page == 1) {
             c_prt(attr, format("%02x/%02x", flavor_k_ptr->x_attr, flavor_k_ptr->x_char), row + i, (w_ptr->wizard || visual_only) ? 64 : 68);
         }
 
         if (w_ptr->wizard || visual_only) {
-            c_prt(attr, format("%d", k_idx), row + i, 70);
+            c_prt(attr, format("%d", bi_id), row + i, 70);
         }
 
         a = flavor_k_ptr->x_attr;
@@ -220,13 +221,13 @@ static void display_object_list(int col, int row, int per_page, IDX object_idx[]
 /*
  * Describe fake object
  */
-static void desc_obj_fake(PlayerType *player_ptr, KIND_OBJECT_IDX k_idx)
+static void desc_obj_fake(PlayerType *player_ptr, short bi_id)
 {
     ItemEntity *o_ptr;
     ItemEntity ObjectType_body;
     o_ptr = &ObjectType_body;
     o_ptr->wipe();
-    o_ptr->prep(k_idx);
+    o_ptr->prep(bi_id);
 
     o_ptr->ident |= IDENT_KNOWN;
     handle_stuff(player_ptr);
@@ -242,10 +243,10 @@ static void desc_obj_fake(PlayerType *player_ptr, KIND_OBJECT_IDX k_idx)
 /**
  * @brief Display known objects
  */
-void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool visual_only, KIND_OBJECT_IDX direct_k_idx)
+void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool visual_only, short direct_k_idx)
 {
-    KIND_OBJECT_IDX object_old, object_top;
-    KIND_OBJECT_IDX grp_idx[100];
+    short object_old, object_top;
+    short grp_idx[100];
     int object_cnt;
 
     bool visual_list = false;
@@ -257,7 +258,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
     term_get_size(&wid, &hgt);
 
     int browser_rows = hgt - 8;
-    std::vector<KIND_OBJECT_IDX> object_idx(baseitems_info.size());
+    std::vector<short> object_idx(baseitems_info.size());
 
     int len;
     int max = 0;

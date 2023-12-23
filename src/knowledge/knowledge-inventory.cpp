@@ -22,7 +22,7 @@
 #include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "util/bit-flags-calculator.h"
@@ -78,7 +78,7 @@ static bool determine_spcial_item_type(ItemEntity *o_ptr, ItemKindType tval)
  */
 static bool check_item_knowledge(ItemEntity *o_ptr, ItemKindType tval)
 {
-    if (o_ptr->k_idx == 0) {
+    if (o_ptr->bi_id == 0) {
         return false;
     }
     if (o_ptr->tval != tval) {
@@ -289,11 +289,11 @@ void do_cmd_knowledge_inventory(PlayerType *player_ptr)
 
     fprintf(fff, "%s\n", inven_res_label);
     int label_number = 0;
-    for (auto tval = enum2i(TV_WEARABLE_BEGIN); tval <= enum2i(TV_WEARABLE_END); tval++) {
+    for (auto tval : TV_WEARABLE_RANGE) {
         reset_label_number(&label_number, fff);
-        show_wearing_equipment_resistances(player_ptr, i2enum<ItemKindType>(tval), &label_number, fff);
-        show_holding_equipment_resistances(player_ptr, i2enum<ItemKindType>(tval), &label_number, fff);
-        show_home_equipment_resistances(player_ptr, i2enum<ItemKindType>(tval), &label_number, fff);
+        show_wearing_equipment_resistances(player_ptr, tval, &label_number, fff);
+        show_holding_equipment_resistances(player_ptr, tval, &label_number, fff);
+        show_home_equipment_resistances(player_ptr, tval, &label_number, fff);
     }
 
     angband_fclose(fff);

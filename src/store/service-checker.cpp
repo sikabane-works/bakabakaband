@@ -10,8 +10,8 @@
 #include "sv-definition/sv-rod-types.h"
 #include "sv-definition/sv-scroll-types.h"
 #include "sv-definition/sv-weapon-types.h"
-#include "system/monster-race-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/string-processor.h"
@@ -451,7 +451,7 @@ void mass_produce(PlayerType *, ItemEntity *o_ptr, StoreSaleType store_num)
 
     o_ptr->discount = discount;
     o_ptr->number = size - (size * discount / 100);
-    if ((o_ptr->tval == ItemKindType::ROD) || (o_ptr->tval == ItemKindType::WAND)) {
+    if (o_ptr->is_wand_rod()) {
         o_ptr->pval *= (PARAMETER_VALUE)o_ptr->number;
     }
 }

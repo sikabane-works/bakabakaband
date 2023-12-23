@@ -12,7 +12,7 @@
 #include "knowledge/lighting-level-table.h"
 #include "monster-race/monster-race.h"
 #include "system/dungeon-info.h"
-#include "system/monster-race-definition.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"

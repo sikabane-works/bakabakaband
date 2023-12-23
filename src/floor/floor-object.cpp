@@ -31,11 +31,11 @@
 #include "perception/object-perception.h"
 #include "system/alloc-entries.h"
 #include "system/artifact-type-definition.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "system/system-variables.h"
 #include "target/projection-path-calculator.h"
@@ -136,17 +136,17 @@ bool make_object(PlayerType *player_ptr, ItemEntity *j_ptr, BIT_FLAGS mode, std:
             get_obj_index_prep();
         }
 
-        auto k_idx = get_obj_index(player_ptr, base, mode);
+        auto bi_id = get_obj_index(player_ptr, base, mode);
         if (get_obj_index_hook) {
             get_obj_index_hook = nullptr;
             get_obj_index_prep();
         }
 
-        if (k_idx == 0) {
+        if (bi_id == 0) {
             return false;
         }
 
-        j_ptr->prep(k_idx);
+        j_ptr->prep(bi_id);
     }
 
     ItemMagicApplier(player_ptr, j_ptr, floor_ptr->object_level, mode).execute();
@@ -242,7 +242,7 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
     num -= o_ptr->number;
     o_ptr->number += num;
 
-    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
 }
 
 /*!
@@ -254,7 +254,7 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
 void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &player_ptr->current_floor_ptr->o_list[item];
-    if (!o_ptr->k_idx) {
+    if (!o_ptr->bi_id) {
         return;
     }
     if (o_ptr->number) {
@@ -263,7 +263,7 @@ void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 
     delete_object_idx(player_ptr, item);
 
-    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
 }
 
 /*!
@@ -290,7 +290,7 @@ void delete_object_idx(PlayerType *player_ptr, OBJECT_IDX o_idx)
     j_ptr->wipe();
     floor_ptr->o_cnt--;
 
-    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
 }
 
 /*!
@@ -567,7 +567,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
     sound(SOUND_DROP);
 
     if (player_bold(player_ptr, by, bx)) {
-        set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST);
+        set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
     }
 
     if (chance && player_bold(player_ptr, by, bx)) {
@@ -586,10 +586,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
 void floor_item_charges(FloorType *floor_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &floor_ptr->o_list[item];
-    if ((o_ptr->tval != ItemKindType::STAFF) && (o_ptr->tval != ItemKindType::WAND)) {
-        return;
-    }
-    if (!o_ptr->is_known()) {
+    if (!o_ptr->is_wand_staff() || !o_ptr->is_known()) {
         return;
     }
 

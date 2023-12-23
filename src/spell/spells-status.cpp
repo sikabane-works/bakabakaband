@@ -44,11 +44,11 @@
 #include "status/experience.h"
 #include "status/shape-changer.h"
 #include "status/sight-setter.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "timed-effect/player-acceleration.h"
@@ -477,8 +477,8 @@ bool restore_mana(PlayerType *player_ptr, bool magic_eater)
 
         auto sval = 0;
         for (auto &item : magic_eater_data->get_item_group(ItemKindType::ROD)) {
-            const auto k_idx = lookup_baseitem_id({ ItemKindType::ROD, sval });
-            item.charge -= ((item.count < 10) ? EATER_ROD_CHARGE * 3 : item.count * EATER_ROD_CHARGE / 3) * baseitems_info[k_idx].pval;
+            const auto bi_id = lookup_baseitem_id({ ItemKindType::ROD, sval });
+            item.charge -= ((item.count < 10) ? EATER_ROD_CHARGE * 3 : item.count * EATER_ROD_CHARGE / 3) * baseitems_info[bi_id].pval;
             item.charge = std::max(item.charge, 0);
             ++sval;
         }

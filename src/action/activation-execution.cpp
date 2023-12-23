@@ -44,10 +44,10 @@
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
 #include "system/artifact-type-definition.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
@@ -329,7 +329,7 @@ static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     bool activated = false;
-    if (item <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[item].k_idx].flags.has_not(TR_INVEN_ACTIVATE)) {
+    if (item <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[item].bi_id].flags.has_not(TR_INVEN_ACTIVATE)) {
         msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
         return;
     }

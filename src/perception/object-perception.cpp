@@ -7,8 +7,8 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/trg-types.h"
 #include "object/item-tester-hooker.h" // 暫定、このファイルへ引っ越す.
-#include "system/baseitem-info-definition.h"
-#include "system/object-type-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 
 /*!
@@ -46,7 +46,7 @@ void object_aware(PlayerType *player_ptr, const ItemEntity *o_ptr)
 {
     const bool is_already_awared = o_ptr->is_aware();
 
-    baseitems_info[o_ptr->k_idx].aware = true;
+    baseitems_info[o_ptr->bi_id].aware = true;
 
     // 以下、playrecordに記録しない場合はreturnする
     if (!record_ident) {
@@ -58,12 +58,11 @@ void object_aware(PlayerType *player_ptr, const ItemEntity *o_ptr)
     }
 
     // アーティファクト専用ベースアイテムは記録しない
-    if (baseitems_info[o_ptr->k_idx].gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
+    if (baseitems_info[o_ptr->bi_id].gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
         return;
     }
 
-    // 未鑑定名の無いアイテムは記録しない
-    if (!((o_ptr->tval >= ItemKindType::AMULET && o_ptr->tval <= ItemKindType::POTION) || o_ptr->tval == ItemKindType::FOOD)) {
+    if (!o_ptr->has_unidentified_name()) {
         return;
     }
 
@@ -88,5 +87,5 @@ void object_aware(PlayerType *player_ptr, const ItemEntity *o_ptr)
  */
 void object_tried(const ItemEntity *o_ptr)
 {
-    baseitems_info[o_ptr->k_idx].tried = true;
+    baseitems_info[o_ptr->bi_id].tried = true;
 }

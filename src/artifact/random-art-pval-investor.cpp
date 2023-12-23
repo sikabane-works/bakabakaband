@@ -11,7 +11,7 @@
 #include "object-hook/hook-weapon.h"
 #include "object/tval-types.h"
 #include "sv-definition/sv-armor-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "util/bit-flags-calculator.h"
 
 static bool random_art_bias_strength(ItemEntity *o_ptr)
@@ -156,7 +156,7 @@ void random_plus(ItemEntity *o_ptr)
         return;
     }
 
-    int this_type = o_ptr->is_weapon_ammo() ? 23 : 19;
+    const auto this_type = o_ptr->is_weapon_ammo() ? 23 : 19;
     switch (randint1(this_type)) {
     case 1:
     case 2:

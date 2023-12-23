@@ -7,9 +7,9 @@
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/angband.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/building-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include <vector>
 
 /*!
@@ -35,13 +35,13 @@ void init_towns(void)
             }
 
             for (const auto &baseitem : store_regular_sale_table.at(sst)) {
-                auto k_idx = lookup_baseitem_id(baseitem);
-                store_ptr->regular.push_back(k_idx);
+                auto bi_id = lookup_baseitem_id(baseitem);
+                store_ptr->regular.push_back(bi_id);
             }
 
             for (const auto &baseitem : store_sale_table.at(sst)) {
-                auto k_idx = lookup_baseitem_id(baseitem);
-                store_ptr->table.push_back(k_idx);
+                auto bi_id = lookup_baseitem_id(baseitem);
+                store_ptr->table.push_back(bi_id);
             }
         }
     }

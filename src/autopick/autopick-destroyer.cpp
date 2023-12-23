@@ -27,8 +27,8 @@
 #include "player-info/race-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-wand-types.h"
-#include "system/monster-race-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
@@ -154,6 +154,6 @@ void auto_destroy_item(PlayerType *player_ptr, ItemEntity *o_ptr, int autopick_i
     }
 
     autopick_last_destroyed_object = *o_ptr;
-    o_ptr->marked |= OM_AUTODESTROY;
+    o_ptr->marked.set(OmType::AUTODESTROY);
     player_ptr->update |= PU_AUTODESTROY;
 }

@@ -9,7 +9,7 @@
 #include "object/object-mark-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
@@ -44,7 +44,7 @@ ITEM_NUMBER scan_floor_items(PlayerType *player_ptr, OBJECT_IDX *items, POSITION
             continue;
         }
 
-        if ((mode & SCAN_FLOOR_ONLY_MARKED) && !(o_ptr->marked & OM_FOUND)) {
+        if ((mode & SCAN_FLOOR_ONLY_MARKED) && o_ptr->marked.has_not(OmType::FOUND)) {
             continue;
         }
 

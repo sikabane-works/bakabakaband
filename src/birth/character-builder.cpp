@@ -36,7 +36,7 @@
 #include "realm/realm-names-table.h"
 #include "store/store-owners.h"
 #include "store/store.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/enum-converter.h"
 #include "view/display-messages.h"

@@ -32,7 +32,7 @@
 #include "store/store-owners.h"
 #include "store/store-util.h"
 #include "store/store.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -115,7 +115,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
     q_ptr->copy_from(o_ptr);
     q_ptr->number = amt;
 
-    if ((o_ptr->tval == ItemKindType::ROD) || (o_ptr->tval == ItemKindType::WAND)) {
+    if (o_ptr->is_wand_rod()) {
         q_ptr->pval = o_ptr->pval * amt / o_ptr->number;
     }
 
@@ -161,7 +161,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
             q_ptr->number = amt;
             q_ptr->ident |= IDENT_STORE;
 
-            if ((o_ptr->tval == ItemKindType::ROD) || (o_ptr->tval == ItemKindType::WAND)) {
+            if (o_ptr->is_wand_rod()) {
                 q_ptr->pval = o_ptr->pval * amt / o_ptr->number;
             }
 

@@ -13,7 +13,7 @@
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
 #include "racial/racial-android.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
@@ -141,10 +141,10 @@ bool mundane_spell(PlayerType *player_ptr, bool only_equip)
     msg_print(_("まばゆい閃光が走った！", "There is a bright flash of light!"));
     POSITION iy = o_ptr->iy;
     POSITION ix = o_ptr->ix;
-    byte marked = o_ptr->marked;
+    auto marked = o_ptr->marked;
     uint16_t inscription = o_ptr->inscription;
 
-    o_ptr->prep(o_ptr->k_idx);
+    o_ptr->prep(o_ptr->bi_id);
 
     o_ptr->iy = iy;
     o_ptr->ix = ix;

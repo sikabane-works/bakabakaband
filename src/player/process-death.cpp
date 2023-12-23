@@ -23,7 +23,7 @@
 #include "store/store-util.h"
 #include "store/store.h"
 #include "system/floor-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
@@ -270,7 +270,7 @@ static void inventory_aware(PlayerType *player_ptr)
     ItemEntity *o_ptr;
     for (int i = 0; i < INVEN_TOTAL; i++) {
         o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->k_idx) {
+        if (!o_ptr->bi_id) {
             continue;
         }
 
@@ -291,7 +291,7 @@ static void home_aware(PlayerType *player_ptr)
         store_ptr = &town_info[i].store[enum2i(StoreSaleType::HOME)];
         for (int j = 0; j < store_ptr->stock_num; j++) {
             o_ptr = &store_ptr->stock[j];
-            if (!o_ptr->k_idx) {
+            if (!o_ptr->bi_id) {
                 continue;
             }
 

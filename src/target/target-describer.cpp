@@ -29,9 +29,9 @@
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/system-variables.h"
 #include "target/target-types.h"
@@ -409,7 +409,7 @@ static int16_t loop_describing_grid(PlayerType *player_ptr, eg_type *eg_ptr)
 
 static int16_t describe_footing_sight(PlayerType *player_ptr, eg_type *eg_ptr, ItemEntity *o_ptr)
 {
-    if ((o_ptr->marked & OM_FOUND) == 0) {
+    if (o_ptr->marked.has_not(OmType::FOUND)) {
         return CONTINUOUS_DESCRIPTION;
     }
 

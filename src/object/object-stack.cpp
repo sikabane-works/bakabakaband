@@ -14,8 +14,8 @@
 #include "perception/object-perception.h"
 #include "smith/object-smith.h"
 #include "sv-definition/sv-other-types.h"
-#include "system/baseitem-info-definition.h"
-#include "system/object-type-definition.h"
+#include "system/baseitem-info.h"
+#include "system/item-entity.h"
 
 /*!
  * @brief 魔法棒やロッドのスロット分割時に使用回数を分配する /
@@ -31,7 +31,7 @@
  */
 void distribute_charges(ItemEntity *o_ptr, ItemEntity *q_ptr, int amt)
 {
-    if ((o_ptr->tval != ItemKindType::WAND) && (o_ptr->tval != ItemKindType::ROD)) {
+    if (!o_ptr->is_wand_rod()) {
         return;
     }
 
@@ -66,7 +66,7 @@ void distribute_charges(ItemEntity *o_ptr, ItemEntity *q_ptr, int amt)
  */
 void reduce_charges(ItemEntity *o_ptr, int amt)
 {
-    if (((o_ptr->tval == ItemKindType::WAND) || (o_ptr->tval == ItemKindType::ROD)) && (amt < o_ptr->number)) {
+    if (o_ptr->is_wand_rod() && (amt < o_ptr->number)) {
         o_ptr->pval -= o_ptr->pval * amt / o_ptr->number;
     }
 }
@@ -82,7 +82,7 @@ int object_similar_part(const ItemEntity *o_ptr, const ItemEntity *j_ptr)
 {
     const int max_stack_size = 99;
     int max_num = max_stack_size;
-    if (o_ptr->k_idx != j_ptr->k_idx) {
+    if (o_ptr->bi_id != j_ptr->bi_id) {
         return 0;
     }
 
@@ -134,7 +134,7 @@ int object_similar_part(const ItemEntity *o_ptr, const ItemEntity *j_ptr)
         break;
     }
     case ItemKindType::ROD: {
-        max_num = std::min(max_num, MAX_SHORT / baseitems_info[o_ptr->k_idx].pval);
+        max_num = std::min(max_num, MAX_SHORT / baseitems_info[o_ptr->bi_id].pval);
         break;
     }
     case ItemKindType::GLOVES:

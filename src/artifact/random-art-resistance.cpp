@@ -7,19 +7,18 @@
 #include "artifact/random-art-bias-types.h"
 #include "object-enchant/tr-types.h"
 #include "object/tval-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "util/bit-flags-calculator.h"
 
 /*!
  * @brief オーラフラグを付与する
- *
  * @param o_ptr フラグを付与するオブジェクト構造体へのポインタ
  * @param tr_sh_flag 付与するフラグ (TR_SH_*)
  * @return 続くフラグ付与の処理を打ち切る場合 true を返す
  */
 static bool random_art_aura(ItemEntity *o_ptr, tr_type tr_sh_flag)
 {
-    if ((o_ptr->tval < ItemKindType::CLOAK) || (o_ptr->tval > ItemKindType::HARD_ARMOR) || o_ptr->art_flags.has(tr_sh_flag)) {
+    if (!o_ptr->can_be_aura_protector() || o_ptr->art_flags.has(tr_sh_flag)) {
         return false;
     }
 

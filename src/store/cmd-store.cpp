@@ -26,7 +26,7 @@
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -154,7 +154,7 @@ void do_cmd_store(PlayerType *player_ptr)
         bool need_redraw_store_inv = any_bits(player_ptr->update, PU_BONUS);
         w_ptr->character_icky_depth = 1;
         handle_stuff(player_ptr);
-        if (player_ptr->inventory_list[INVEN_PACK].k_idx) {
+        if (player_ptr->inventory_list[INVEN_PACK].bi_id) {
             INVENTORY_IDX item = INVEN_PACK;
             auto *o_ptr = &player_ptr->inventory_list[item];
             if (store_num != StoreSaleType::HOME) {

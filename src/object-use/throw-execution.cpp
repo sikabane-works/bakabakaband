@@ -53,11 +53,11 @@
 #include "player/player-status-table.h"
 #include "racial/racial-android.h"
 #include "specific-object/torch.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
@@ -251,7 +251,7 @@ void ObjectThrowEntity::display_potion_throw()
     }
 
     msg_format(_("%sは砕け散った！", "The %s shatters!"), this->o_name);
-    if (!potion_smash_effect(this->player_ptr, 0, this->y, this->x, this->q_ptr->k_idx)) {
+    if (!potion_smash_effect(this->player_ptr, 0, this->y, this->x, this->q_ptr->bi_id)) {
         this->do_drop = false;
         return;
     }

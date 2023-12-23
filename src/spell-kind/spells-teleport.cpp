@@ -35,9 +35,9 @@
 #include "spell-kind/spells-launcher.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/monster-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "target/grid-selector.h"
 #include "target/target-checker.h"
@@ -559,7 +559,7 @@ void teleport_away_followable(PlayerType *player_ptr, MONSTER_IDX m_idx)
 
         for (i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
             o_ptr = &player_ptr->inventory_list[i];
-            if (o_ptr->k_idx && !o_ptr->is_cursed()) {
+            if (o_ptr->bi_id && !o_ptr->is_cursed()) {
                 auto flags = object_flags(o_ptr);
                 if (flags.has(TR_TELEPORT)) {
                     follow = true;

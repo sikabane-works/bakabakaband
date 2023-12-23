@@ -5,7 +5,7 @@
 #include "object/tval-types.h"
 #include "player/player-skill.h"
 #include "sv-definition/sv-weapon-types.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
@@ -16,8 +16,7 @@
  */
 bool object_is_favorite(PlayerType *player_ptr, const ItemEntity *o_ptr)
 {
-    /* Only melee weapons match */
-    if (!(o_ptr->tval == ItemKindType::POLEARM || o_ptr->tval == ItemKindType::SWORD || o_ptr->tval == ItemKindType::DIGGING || o_ptr->tval == ItemKindType::HAFTED)) {
+    if (!o_ptr->is_melee_weapon()) {
         return false;
     }
 

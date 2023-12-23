@@ -28,7 +28,7 @@
 #include "object/object-mark-types.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
@@ -42,7 +42,7 @@ static void autopick_delayed_alter_aux(PlayerType *player_ptr, INVENTORY_IDX ite
     ItemEntity *o_ptr;
     o_ptr = ref_item(player_ptr, item);
 
-    if (o_ptr->k_idx == 0 || !(o_ptr->marked & OM_AUTODESTROY)) {
+    if (o_ptr->bi_id == 0 || o_ptr->marked.has_not(OmType::AUTODESTROY)) {
         return;
     }
 
@@ -118,13 +118,13 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
 
         if (!check_get_item(o_ptr)) {
             msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), o_name);
-            o_ptr->marked |= OM_NOMSG;
+            o_ptr->marked.set(OmType::SUPRESS_MESSAGE);
             continue;
         }
 
         if (!check_store_item_to_inventory(player_ptr, o_ptr)) {
             msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
-            o_ptr->marked |= OM_NOMSG;
+            o_ptr->marked.set(OmType::SUPRESS_MESSAGE);
             continue;
         }
 
@@ -134,14 +134,14 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
         }
 
         char out_val[MAX_NLEN + 20];
-        if (o_ptr->marked & OM_NO_QUERY) {
+        if (o_ptr->marked.has(OmType::NO_QUERY)) {
             continue;
         }
 
         describe_flavor(player_ptr, o_name, o_ptr, 0);
         sprintf(out_val, _("%sを拾いますか? ", "Pick up %s? "), o_name);
         if (!get_check(out_val)) {
-            o_ptr->marked |= OM_NOMSG | OM_NO_QUERY;
+            o_ptr->marked.set({ OmType::SUPRESS_MESSAGE, OmType::NO_QUERY });
             continue;
         }
 

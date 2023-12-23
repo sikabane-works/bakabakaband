@@ -58,8 +58,9 @@
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
 #include "status/experience.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-blindness.h"
@@ -552,7 +553,7 @@ static void confirm_use_force(PlayerType *player_ptr, bool browse_only)
 
 static FuncItemTester get_castable_spellbook_tester(PlayerType *player_ptr)
 {
-    return FuncItemTester([](auto p_ptr, auto o_ptr) { return check_book_realm(p_ptr, o_ptr->tval, o_ptr->sval); }, player_ptr);
+    return FuncItemTester([](auto p_ptr, auto o_ptr) { return check_book_realm(p_ptr, { o_ptr->tval, o_ptr->sval }); }, player_ptr);
 }
 
 static FuncItemTester get_learnable_spellbook_tester(PlayerType *player_ptr)
@@ -629,7 +630,7 @@ void do_cmd_browse(PlayerType *player_ptr)
     use_realm = tval2realm(o_ptr->tval);
 
     /* Track the object kind */
-    object_kind_track(player_ptr, o_ptr->k_idx);
+    object_kind_track(player_ptr, o_ptr->bi_id);
     handle_stuff(player_ptr);
 
     /* Extract spells */
@@ -800,7 +801,7 @@ void do_cmd_study(PlayerType *player_ptr)
     }
 
     /* Track the object kind */
-    object_kind_track(player_ptr, o_ptr->k_idx);
+    object_kind_track(player_ptr, o_ptr->bi_id);
     handle_stuff(player_ptr);
 
     /* Mage -- Learn a selected spell */
@@ -1033,7 +1034,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
     }
 
     /* Track the object kind */
-    object_kind_track(player_ptr, o_ptr->k_idx);
+    object_kind_track(player_ptr, o_ptr->bi_id);
     handle_stuff(player_ptr);
 
     if (is_every_magic) {

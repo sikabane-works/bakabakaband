@@ -36,7 +36,7 @@
 #include "player/player-status.h"
 #include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-lite-types.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "util/bit-flags-calculator.h"
 #include "util/quarks.h"
 #include "util/string-processor.h"
@@ -251,11 +251,11 @@ void flavor_init(void)
 /*!
  * @brief nameバッファ内からベースアイテム名を返す / Strip an "object name" into a buffer
  * @param buf ベースアイテム格納先の参照ポインタ
- * @param k_idx ベースアイテムID
+ * @param bi_id ベースアイテムID
  */
-std::string strip_name(KIND_OBJECT_IDX k_idx)
+std::string strip_name(short bi_id)
 {
-    auto k_ptr = &baseitems_info[k_idx];
+    auto k_ptr = &baseitems_info[bi_id];
     auto tok = str_split(k_ptr->name, ' ');
     std::stringstream name;
     for (const auto &s : tok) {

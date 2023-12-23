@@ -8,10 +8,10 @@
 #include "object-enchant/special-object-flags.h"
 #include "object/object-kind-hook.h"
 #include "system/artifact-type-definition.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/dungeon-info.h"
-#include "system/monster-race-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -111,9 +111,9 @@ void display_rumor(PlayerType *player_ptr, bool ex)
     if (category == "ARTIFACT") {
         const auto &artifact_name = tokens[1];
         const auto &[a_idx, a_ptr] = get_artifact_definition(artifact_name);
-        const auto k_idx = lookup_baseitem_id(a_ptr->bi_key);
+        const auto bi_id = lookup_baseitem_id(a_ptr->bi_key);
         ItemEntity item;
-        item.prep(k_idx);
+        item.prep(bi_id);
         item.fixed_artifact_idx = a_idx;
         item.ident = IDENT_STORE;
         describe_flavor(player_ptr, fullname, &item, OD_NAME_ONLY);

@@ -28,10 +28,10 @@
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
-#include "system/baseitem-info-definition.h"
+#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
-#include "system/monster-race-definition.h"
-#include "system/object-type-definition.h"
+#include "system/item-entity.h"
+#include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -246,10 +246,10 @@ int16_t wield_slot(PlayerType *player_ptr, const ItemEntity *o_ptr)
     case ItemKindType::HAFTED:
     case ItemKindType::POLEARM:
     case ItemKindType::SWORD: {
-        if (!player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx) {
+        if (!player_ptr->inventory_list[INVEN_MAIN_HAND].bi_id) {
             return INVEN_MAIN_HAND;
         }
-        if (player_ptr->inventory_list[INVEN_SUB_HAND].k_idx) {
+        if (player_ptr->inventory_list[INVEN_SUB_HAND].bi_id) {
             return INVEN_MAIN_HAND;
         }
         return INVEN_SUB_HAND;
@@ -257,10 +257,10 @@ int16_t wield_slot(PlayerType *player_ptr, const ItemEntity *o_ptr)
     case ItemKindType::CAPTURE:
     case ItemKindType::CARD:
     case ItemKindType::SHIELD: {
-        if (!player_ptr->inventory_list[INVEN_SUB_HAND].k_idx) {
+        if (!player_ptr->inventory_list[INVEN_SUB_HAND].bi_id) {
             return INVEN_SUB_HAND;
         }
-        if (player_ptr->inventory_list[INVEN_MAIN_HAND].k_idx) {
+        if (player_ptr->inventory_list[INVEN_MAIN_HAND].bi_id) {
             return INVEN_SUB_HAND;
         }
         return INVEN_MAIN_HAND;
@@ -269,7 +269,7 @@ int16_t wield_slot(PlayerType *player_ptr, const ItemEntity *o_ptr)
         return INVEN_BOW;
     }
     case ItemKindType::RING: {
-        if (!player_ptr->inventory_list[INVEN_MAIN_RING].k_idx) {
+        if (!player_ptr->inventory_list[INVEN_MAIN_RING].bi_id) {
             return INVEN_MAIN_RING;
         }
 
@@ -309,28 +309,28 @@ int16_t wield_slot(PlayerType *player_ptr, const ItemEntity *o_ptr)
 }
 
 /*!
- * @brief tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す /
- * Hack: Check if a spellbook is one of the realms we can use. -- TY
- * @param book_tval ベースアイテムのtval
- * @param book_sval ベースアイテムのsval
+ * @brief tval/sval指定のベースアイテムがプレイヤーの使用可能な魔法書かどうかを返す
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param bi_key ベースアイテム特定キー
  * @return 使用可能な魔法書ならばTRUEを返す。
  */
-bool check_book_realm(PlayerType *player_ptr, const ItemKindType book_tval, const OBJECT_SUBTYPE_VALUE book_sval)
+bool check_book_realm(PlayerType *player_ptr, const BaseitemKey &bi_key)
 {
-    if (book_tval < ItemKindType::LIFE_BOOK) {
+    if (!bi_key.is_spell_book()) {
         return false;
     }
 
+    const auto tval = bi_key.tval();
     PlayerClass pc(player_ptr);
     if (pc.equals(PlayerClassType::SORCERER)) {
-        return is_magic(tval2realm(book_tval));
+        return is_magic(tval2realm(tval));
     } else if (pc.equals(PlayerClassType::RED_MAGE)) {
-        if (is_magic(tval2realm(book_tval))) {
-            return ((book_tval == ItemKindType::ARCANE_BOOK) || (book_sval < 2));
+        if (is_magic(tval2realm(tval))) {
+            return ((tval == ItemKindType::ARCANE_BOOK) || (bi_key.sval() < 2));
         }
     }
 
-    return (get_realm1_book(player_ptr) == book_tval) || (get_realm2_book(player_ptr) == book_tval);
+    return (get_realm1_book(player_ptr) == tval) || (get_realm2_book(player_ptr) == tval);
 }
 
 ItemEntity *ref_item(PlayerType *player_ptr, INVENTORY_IDX item)
