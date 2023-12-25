@@ -38217,6 +38217,20 @@ S:1_IN_5 | SHOOT
 D:$This helicopter is about to explode.
 D:今にも爆発しそうなヘリコプターだ。
 
+N:2085:シャア専用サク
+E:Saku Char custom
+G:H:r
+I:120:30d14:12:50:10
+W:30:5:0:400:0:0
+B:HIT:HURT:1d12
+F:PREVENT_SUDDEN_MAGIC | 
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING |
+S:1_IN_2 |
+S:MISSILE
+D:色々通常の三倍なサクらしいが、そんなに三倍ではないようだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
