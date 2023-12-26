@@ -79,7 +79,8 @@ static void decide_activation_level(ae_type *ae_ptr)
         return;
     }
 
-    if (((ae_ptr->o_ptr->tval == ItemKindType::RING) || (ae_ptr->o_ptr->tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->is_ego()) {
+    const auto tval = ae_ptr->o_ptr->bi_key.tval();
+    if (((tval == ItemKindType::RING) || (tval == ItemKindType::AMULET)) && ae_ptr->o_ptr->is_ego()) {
         ae_ptr->lev = egos_info[ae_ptr->o_ptr->ego_idx].level;
         ae_ptr->broken = egos_info[ae_ptr->o_ptr->ego_idx].broken_rate;
     }
@@ -190,10 +191,10 @@ static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 
     switch (act_ptr->index) {
     case RandomArtActType::BR_FIRE:
-        o_ptr->timeout = ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_FLAMES)) ? 200 : 250;
+        o_ptr->timeout = o_ptr->bi_key == BaseitemKey(ItemKindType::RING, SV_RING_FLAMES) ? 200 : 250;
         return true;
     case RandomArtActType::BR_COLD:
-        o_ptr->timeout = ((o_ptr->tval == ItemKindType::RING) && (o_ptr->sval == SV_RING_ICE)) ? 200 : 250;
+        o_ptr->timeout = o_ptr->bi_key == BaseitemKey(ItemKindType::RING, SV_RING_ICE) ? 200 : 250;
         return true;
     case RandomArtActType::TERROR:
         o_ptr->timeout = 3 * (player_ptr->lev + 10);
@@ -208,7 +209,7 @@ static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 
 static bool activate_whistle(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::WHISTLE) {
+    if (ae_ptr->o_ptr->bi_key.tval() != ItemKindType::WHISTLE) {
         return false;
     }
 
@@ -240,7 +241,7 @@ static bool activate_whistle(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool scouter_probing(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::HELM || ae_ptr->o_ptr->sval != SV_SCOUTER) {
+    if (ae_ptr->o_ptr->bi_key.tval() != ItemKindType::HELM || ae_ptr->o_ptr->bi_key.sval() != SV_SCOUTER) {
         return false;
     }
 
@@ -250,7 +251,7 @@ static bool scouter_probing(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_firethrowing(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_FLAMETHROWER) {
+    if (ae_ptr->o_ptr->bi_key.tval() != ItemKindType::BOW || ae_ptr->o_ptr->bi_key.sval() != SV_FLAMETHROWER) {
         return false;
     }
 
@@ -266,7 +267,7 @@ static bool activate_firethrowing(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_rosmarinus(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_ROSMARINUS) {
+    if (ae_ptr->o_ptr->bi_key.tval() != ItemKindType::BOW || ae_ptr->o_ptr->bi_key.sval() != SV_ROSMARINUS) {
         return false;
     }
 
@@ -281,7 +282,7 @@ static bool activate_rosmarinus(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_stungun(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::JUNK || ae_ptr->o_ptr->sval != SV_STUNGUN) {
+    if (ae_ptr->o_ptr->bi_key.tval() != ItemKindType::JUNK || ae_ptr->o_ptr->bi_key.sval() != SV_STUNGUN) {
         return false;
     }
 
@@ -299,7 +300,7 @@ static bool activate_stungun(PlayerType *player_ptr, ae_type *ae_ptr)
 
 static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 {
-    if (ae_ptr->o_ptr->tval != ItemKindType::BOW || ae_ptr->o_ptr->sval != SV_RAYGUN) {
+    if (ae_ptr->o_ptr->bi_key.tval() != ItemKindType::BOW || ae_ptr->o_ptr->bi_key.sval() != SV_RAYGUN) {
         return false;
     }
 
