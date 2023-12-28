@@ -53,6 +53,7 @@ constexpr auto DUNGEON_FEAT_PROB_NUM = 3;
 
 enum class FixedArtifactId : short;
 enum class MonsterRaceId : int16_t;
+enum class MonsterSex;
 
 struct feat_prob {
     FEAT_IDX feat{}; /* Feature tile */
@@ -107,6 +108,7 @@ struct dungeon_type {
     EnumClassFlagGroup<MonsterSpeakType> mon_speak_flags;
     EnumClassFlagGroup<MonsterBrightnessType> mon_brightness_flags;
     EnumClassFlagGroup<MonsterSpecialType> mon_special_flags;
+    MonsterSex mon_sex{};
 
     std::vector<char> r_chars; /* Monster symbols allowed */
     short final_object{}; /* The object you'll find at the bottom */
@@ -128,7 +130,7 @@ struct dungeon_type {
     bool has_river_flag() const;
 };
 
-extern std::vector<DEPTH> max_dlv;
+extern std::vector<int> max_dlv;
 extern std::vector<dungeon_type> dungeons_info;
 
 class PlayerType;
