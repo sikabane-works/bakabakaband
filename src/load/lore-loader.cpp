@@ -329,6 +329,9 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
     }
     rd_r_drop_flags(r_ptr);
     rd_r_feature_flags(r_ptr);
+    if (!loading_savefile_version_is_older_than(20)) {
+        rd_FlagGroup(r_ptr->special_flags, rd_byte);
+    }
     r_ptr->max_num = rd_byte();
     r_ptr->floor_id = rd_s16b();
 
@@ -351,6 +354,7 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
     }
     r_ptr->r_kind_flags &= r_ptr->kind_flags;
     r_ptr->r_feature_flags &= r_ptr->feature_flags;
+    r_ptr->r_special_flags &= r_ptr->special_flags;
 }
 
 void load_lore(void)
