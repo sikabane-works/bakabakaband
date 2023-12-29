@@ -228,5 +228,7 @@ enum class MonsterRaceId : int16_t {
     GOLAN_SOLDIER = 1687,
     GOLAN_OFFICER = 1692,
     GOLAN_RED_BELET = 1828,
+    LAFFEY_II = 2151,
+    BUNBUN_STRIKERS = 2152,
 
 };
