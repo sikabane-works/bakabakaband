@@ -64,7 +64,7 @@ static void check_object_known_aware(flavor_type *flavor_ptr)
         flavor_ptr->aware = false;
         flavor_ptr->flavor = true;
         flavor_ptr->known = false;
-        flavor_ptr->flavor_k_ptr = flavor_ptr->k_ptr;
+        flavor_ptr->flavor_bii_ptr = flavor_ptr->bii_ptr;
     }
 }
 
@@ -384,13 +384,10 @@ static void describe_charges_rod(flavor_type *flavor_ptr)
         return;
     }
 
-    if (flavor_ptr->k_ptr->pval == 0) {
-        flavor_ptr->k_ptr->pval = 1;
-    }
-
-    flavor_ptr->power = (flavor_ptr->o_ptr->timeout + (flavor_ptr->k_ptr->pval - 1)) / flavor_ptr->k_ptr->pval;
-    if (flavor_ptr->power > flavor_ptr->o_ptr->number) {
-        flavor_ptr->power = flavor_ptr->o_ptr->number;
+    const auto timeout_per_one = baseitems_info[flavor_ptr->o_ptr->bi_id].pval;
+    auto num_of_charging = (flavor_ptr->o_ptr->timeout + (timeout_per_one - 1)) / timeout_per_one;
+    if (num_of_charging > flavor_ptr->o_ptr->number) {
+        num_of_charging = flavor_ptr->o_ptr->number;
     }
 
     flavor_ptr->t = object_desc_str(flavor_ptr->t, " (");
