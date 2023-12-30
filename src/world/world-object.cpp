@@ -93,7 +93,7 @@ OBJECT_IDX get_obj_index(PlayerType *player_ptr, DEPTH level, BIT_FLAGS mode)
             continue;
         }
 
-        if ((mode & AM_NO_NEVER_MOVE) && k_ref.flags.has(TR_NEVER_MOVE)) {
+        if ((mode & AM_NO_NEVER_MOVE) && baseitem.flags.has(TR_NEVER_MOVE)) {
             continue;
         }
 
