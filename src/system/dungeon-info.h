@@ -8,6 +8,7 @@
 #include "dungeon/dungeon-flag-types.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-behavior-flags.h"
+#include "monster-race/race-brightness-flags.h"
 #include "monster-race/race-drop-flags.h"
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags-resistance.h"
@@ -103,6 +104,7 @@ struct dungeon_type {
     EnumClassFlagGroup<MonsterFeatureType> mon_feature_flags;
     EnumClassFlagGroup<MonsterPopulationType> mon_population_flags;
     EnumClassFlagGroup<MonsterSpeakType> mon_speak_flags;
+    EnumClassFlagGroup<MonsterBrightnessType> mon_brightness_flags;
 
     std::vector<char> r_chars; /* Monster symbols allowed */
     short final_object{}; /* The object you'll find at the bottom */
