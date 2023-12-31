@@ -363,5 +363,18 @@ void load_lore(void)
         rd_lore(r_ptr);
     }
 
+    for (size_t i = loading_max_r_idx; i < monraces_info.size(); i++) {
+        auto monrace_id = i2enum<MonsterRaceId>(i);
+        auto &monrace = monraces_info[monrace_id];
+        auto max_num = 100;
+        if (monrace.kind_flags.has(MonsterKindType::UNIQUE) || monrace.population_flags.has(MonsterPopulationType::ONLY_ONE)) {
+            max_num = 1;
+        } else if (monrace.population_flags.has(MonsterPopulationType::NAZGUL)) {
+            max_num = 5;
+        }
+
+        monrace.max_num = max_num;
+    }
+
     load_note(_("モンスターの思い出をロードしました", "Loaded Monster Memory"));
 }
