@@ -68,13 +68,11 @@
  */
 static bool exe_eat_junk_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if (o_ptr->tval != ItemKindType::JUNK) {
+    if (o_ptr->bi_key.tval() != ItemKindType::JUNK) {
         return false;
     }
 
-    switch (o_ptr->sval) {
-    case SV_JUNK_FECES:
-    case SV_KMR_CURRY:
+    if (o_ptr->bi_key.sval() == SV_JUNK_FECES || o_ptr->bi_key.sval() == SV_KMR_CURRY) {
         msg_print("ワーォ！貴方は糞を喰った！");
         msg_print("『涙が出るほどうめぇ……』");
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
@@ -83,8 +81,8 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
         player_ptr->plus_incident(INCIDENT::EAT_FECES, 1);
         PlayerSkill(player_ptr).gain_riding_skill_exp_on_gross_eating();
         return true;
-        break;
-    case SV_JUNK_VOMITTING:
+    }
+    if (o_ptr->bi_key.sval() == SV_JUNK_VOMITTING) {
         msg_print("ワーォ！貴方はゲロを喰った！");
         msg_print("『涙が出るほどうめぇ……』");
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
@@ -93,7 +91,6 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
         player_ptr->plus_incident(INCIDENT::EAT_FECES, 1);
         PlayerSkill(player_ptr).gain_riding_skill_exp_on_gross_eating();
         return true;
-        break;
     }
     return false;
 }
@@ -106,7 +103,7 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
  */
 static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_SOUL)) {
+    if (!(o_ptr->bi_key.tval() == ItemKindType::CORPSE && o_ptr->bi_key.sval() == SV_SOUL)) {
         return false;
     }
 
@@ -137,7 +134,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
  */
 static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if (!(o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE)) {
+    if (!(o_ptr->bi_key.tval() == ItemKindType::CORPSE && o_ptr->bi_key.sval() == SV_CORPSE)) {
         return false;
     }
 
@@ -495,7 +492,7 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
         return false;
     }
 
-    const auto is_staff = o_ptr->tval == ItemKindType::STAFF;
+    const auto is_staff = o_ptr->bi_key.tval() == ItemKindType::STAFF;
     if (is_staff && (inventory < 0) && (o_ptr->number > 1)) {
         msg_print(_("まずは杖を拾わなければ。", "You must first pick up the staffs."));
         return true;
@@ -578,7 +575,8 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     /* Identity not known yet */
-    int ident = exe_eat_food_type_object(player_ptr, { o_ptr->tval, o_ptr->sval });
+    const auto &bi_key = o_ptr->bi_key;
+    const auto ident = exe_eat_food_type_object(player_ptr, bi_key);
 
     /*
      * Store what may have to be updated for the inventory (including
@@ -597,7 +595,8 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     /* We have tried it */
-    if (o_ptr->tval == ItemKindType::FOOD) {
+    const auto tval = bi_key.tval();
+    if (tval == ItemKindType::FOOD) {
         object_tried(o_ptr);
     }
 
@@ -619,7 +618,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
 
     /* Balrogs change humanoid corpses to energy */
     const auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if (food_type == PlayerRaceFoodType::CORPSE && (o_ptr->tval == ItemKindType::CORPSE && o_ptr->sval == SV_CORPSE && angband_strchr("pht", monraces_info[corpse_r_idx].d_char))) {
+    if (food_type == PlayerRaceFoodType::CORPSE && (bi_key == BaseitemKey(ItemKindType::CORPSE, SV_CORPSE) && angband_strchr("pht", monraces_info[corpse_r_idx].d_char))) {
         GAME_TEXT o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%^s is burnt to ashes.  You absorb its vitality!"), o_name);
@@ -631,12 +630,13 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
-        if (!((o_ptr->sval == SV_FOOD_WAYBREAD) || (o_ptr->sval < SV_FOOD_BISCUIT))) {
+        const auto sval = bi_key.sval();
+        if ((sval != SV_FOOD_WAYBREAD) && (sval >= SV_FOOD_BISCUIT)) {
             ItemEntity forge;
             auto *q_ptr = &forge;
 
             msg_print(_("食べ物がアゴを素通りして落ちた！", "The food falls through your jaws!"));
-            q_ptr->prep(lookup_baseitem_id({ o_ptr->tval, o_ptr->sval }));
+            q_ptr->prep(lookup_baseitem_id(bi_key));
 
             /* Drop the object from heaven */
             (void)drop_near(player_ptr, q_ptr, -1, player_ptr->y, player_ptr->x);
@@ -666,7 +666,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         set_food(player_ptr, player_ptr->food + ((o_ptr->pval) / 20));
         ate = true;
     } else {
-        if (o_ptr->tval == ItemKindType::FOOD && o_ptr->sval == SV_FOOD_WAYBREAD) {
+        if (bi_key == BaseitemKey(ItemKindType::FOOD, SV_FOOD_WAYBREAD)) {
             /* Waybread is always fully satisfying. */
             set_food(player_ptr, std::max<short>(player_ptr->food, PY_FOOD_MAX - 1));
         } else {

@@ -221,12 +221,7 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
         spoil_out(buf);
         sprintf(buf, "Rar:%d  ", r_ptr->rarity);
         spoil_out(buf);
-        if (r_ptr->speed >= 110) {
-            sprintf(buf, "Spd:+%d  ", (r_ptr->speed - 110));
-        } else {
-            sprintf(buf, "Spd:-%d  ", (110 - r_ptr->speed));
-        }
-
+        sprintf(buf, "Spd:%+d  ", r_ptr->speed - STANDARD_SPEED);
         spoil_out(buf);
         if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || (r_ptr->hside == 1)) {
             sprintf(buf, "Hp:%d  ", r_ptr->hdice * r_ptr->hside);

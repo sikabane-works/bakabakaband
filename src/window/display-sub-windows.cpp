@@ -47,6 +47,7 @@
 #include "window/main-window-equipments.h"
 #include "window/main-window-util.h"
 #include "world/world.h"
+#include <algorithm>
 #include <mutex>
 #include <sstream>
 #include <string>
@@ -73,7 +74,7 @@ void fix_inventory(PlayerType *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
 
@@ -81,7 +82,7 @@ void fix_inventory(PlayerType *player_ptr)
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         display_inventory(player_ptr, *fix_item_tester);
         term_fresh();
         term_activate(old);
@@ -209,17 +210,17 @@ void fix_monster_list(PlayerType *player_ptr)
 
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
         if (!(window_flag[j] & PW_MONSTER_LIST)) {
             continue;
         }
-        if (angband_term[j]->never_fresh) {
+        if (angband_terms[j]->never_fresh) {
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         int w, h;
         term_get_size(&w, &h);
         std::call_once(once, target_sensing_monsters_prepare, player_ptr, monster_list);
@@ -274,7 +275,7 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
             attr = TERM_WHITE;
         } else {
             describe_flavor(player_ptr, o_name, o_ptr, 0);
-            attr = tval_to_attr[enum2i(o_ptr->tval) % 128];
+            attr = tval_to_attr[enum2i(o_ptr->bi_key.tval()) % 128];
         }
 
         int n = strlen(o_name);
@@ -320,14 +321,14 @@ void fix_equip(PlayerType *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
         if (!(window_flag[j] & (PW_EQUIP))) {
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         display_equipment(player_ptr, *fix_item_tester);
         term_fresh();
         term_activate(old);
@@ -343,7 +344,7 @@ void fix_player(PlayerType *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
 
@@ -351,7 +352,7 @@ void fix_player(PlayerType *player_ptr)
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         update_playtime();
         (void)display_player(player_ptr, 0);
         term_fresh();
@@ -368,7 +369,7 @@ void fix_message(void)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
 
@@ -376,7 +377,7 @@ void fix_message(void)
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         TERM_LEN w, h;
         term_get_size(&w, &h);
         for (int i = 0; i < h; i++) {
@@ -404,7 +405,7 @@ void fix_overhead(PlayerType *player_ptr)
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
         TERM_LEN wid, hgt;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
 
@@ -412,7 +413,7 @@ void fix_overhead(PlayerType *player_ptr)
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         term_get_size(&wid, &hgt);
         if (wid > COL_MAP + 2 && hgt > ROW_MAP + 2) {
             int cy, cx;
@@ -470,7 +471,7 @@ void fix_dungeon(PlayerType *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
 
@@ -478,7 +479,7 @@ void fix_dungeon(PlayerType *player_ptr)
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         display_dungeon(player_ptr);
         term_fresh();
         term_activate(old);
@@ -494,7 +495,7 @@ void fix_monster(PlayerType *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
         term_type *old = game_term;
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
 
@@ -502,7 +503,7 @@ void fix_monster(PlayerType *player_ptr)
             continue;
         }
 
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
         if (MonsterRace(player_ptr->monster_race_idx).is_valid()) {
             display_roff(player_ptr);
         }
@@ -519,21 +520,18 @@ void fix_monster(PlayerType *player_ptr)
  */
 void fix_object(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_term[j]) {
+    for (auto i = 0; i < 8; i++) {
+        auto *old = game_term;
+        if (angband_terms[i] == nullptr) {
             continue;
         }
 
-        if (!(window_flag[j] & (PW_OBJECT))) {
+        if (none_bits(window_flag[i], PW_OBJECT)) {
             continue;
         }
 
-        term_activate(angband_term[j]);
-        if (player_ptr->baseitem_info_idx) {
-            display_koff(player_ptr, player_ptr->baseitem_info_idx);
-        }
-
+        term_activate(angband_terms[i]);
+        display_koff(player_ptr);
         term_fresh();
         term_activate(old);
     }
@@ -616,10 +614,9 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
     // (y,x) のアイテムを1行に1個ずつ書く。
     TERM_LEN term_y = 1;
     for (const auto o_idx : g_ptr->o_idx_list) {
-        ItemEntity *const o_ptr = &floor_ptr->o_list[o_idx];
-
-        // 未発見アイテムおよび金は対象外。
-        if (o_ptr->marked.has_not(OmType::FOUND) || o_ptr->tval == ItemKindType::GOLD) {
+        auto *const o_ptr = &floor_ptr->o_list[o_idx];
+        const auto tval = o_ptr->bi_key.tval();
+        if (o_ptr->marked.has_not(OmType::FOUND) || tval == ItemKindType::GOLD) {
             continue;
         }
 
@@ -635,7 +632,7 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
             term_addstr(-1, TERM_WHITE, _("何か奇妙な物", "something strange"));
         } else {
             describe_flavor(player_ptr, line, o_ptr, 0);
-            TERM_COLOR attr = tval_to_attr[enum2i(o_ptr->tval) % 128];
+            TERM_COLOR attr = tval_to_attr[enum2i(tval) % 128];
             term_addstr(-1, attr, line);
         }
 
@@ -649,10 +646,10 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
 void fix_floor_item_list(PlayerType *player_ptr, const int y, const int x)
 {
     for (int j = 0; j < 8; j++) {
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
-        if (angband_term[j]->never_fresh) {
+        if (angband_terms[j]->never_fresh) {
             continue;
         }
         if (!(window_flag[j] & PW_FLOOR_ITEM_LIST)) {
@@ -660,7 +657,7 @@ void fix_floor_item_list(PlayerType *player_ptr, const int y, const int x)
         }
 
         term_type *old = game_term;
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
 
         display_floor_item_list(player_ptr, y, x);
         term_fresh();
@@ -694,7 +691,7 @@ static void display_found_item_list(PlayerType *player_ptr)
     std::vector<ItemEntity *> found_item_list;
     for (auto &item : floor_ptr->o_list) {
         auto item_entity_ptr = &item;
-        if (item_entity_ptr->bi_id > 0 && item_entity_ptr->marked.has(OmType::FOUND) && item_entity_ptr->tval != ItemKindType::GOLD) {
+        if (item_entity_ptr->bi_id > 0 && item_entity_ptr->marked.has(OmType::FOUND) && item_entity_ptr->bi_key.tval() != ItemKindType::GOLD) {
             found_item_list.push_back(item_entity_ptr);
         }
     }
@@ -731,7 +728,7 @@ static void display_found_item_list(PlayerType *player_ptr)
         char temp[512];
         describe_flavor(player_ptr, temp, item, 0);
         const std::string item_description(temp);
-        const auto color_code_for_item = tval_to_attr[enum2i(item->tval) % 128];
+        const auto color_code_for_item = tval_to_attr[enum2i(item->bi_key.tval()) % 128];
         term_addstr(-1, color_code_for_item, item_description.data());
 
         // アイテム座標表示
@@ -748,10 +745,10 @@ static void display_found_item_list(PlayerType *player_ptr)
 void fix_found_item_list(PlayerType *player_ptr)
 {
     for (int j = 0; j < 8; j++) {
-        if (!angband_term[j]) {
+        if (!angband_terms[j]) {
             continue;
         }
-        if (angband_term[j]->never_fresh) {
+        if (angband_terms[j]->never_fresh) {
             continue;
         }
         if (none_bits(window_flag[j], PW_FOUND_ITEM_LIST)) {
@@ -759,7 +756,7 @@ void fix_found_item_list(PlayerType *player_ptr)
         }
 
         term_type *old = game_term;
-        term_activate(angband_term[j]);
+        term_activate(angband_terms[j]);
 
         display_found_item_list(player_ptr);
         term_fresh();
@@ -774,21 +771,21 @@ void fix_found_item_list(PlayerType *player_ptr)
  */
 void toggle_inventory_equipment(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        if (!angband_term[j]) {
+    for (auto i = 0U; i < angband_terms.size(); ++i) {
+        if (!angband_terms[i]) {
             continue;
         }
 
-        if (window_flag[j] & (PW_INVEN)) {
-            window_flag[j] &= ~(PW_INVEN);
-            window_flag[j] |= (PW_EQUIP);
+        if (window_flag[i] & (PW_INVEN)) {
+            window_flag[i] &= ~(PW_INVEN);
+            window_flag[i] |= (PW_EQUIP);
             player_ptr->window_flags |= (PW_EQUIP);
             continue;
         }
 
-        if (window_flag[j] & PW_EQUIP) {
-            window_flag[j] &= ~(PW_EQUIP);
-            window_flag[j] |= PW_INVEN;
+        if (window_flag[i] & PW_EQUIP) {
+            window_flag[i] &= ~(PW_EQUIP);
+            window_flag[i] |= PW_INVEN;
             player_ptr->window_flags |= PW_INVEN;
         }
     }

@@ -43,8 +43,8 @@
 
 static bool weakening_artifact(ItemEntity *o_ptr)
 {
-    const auto bi_id = lookup_baseitem_id({ o_ptr->tval, o_ptr->sval });
-    auto *k_ptr = &baseitems_info[bi_id];
+    const auto bi_id = lookup_baseitem_id(o_ptr->bi_key);
+    const auto &baseitem = baseitems_info[bi_id];
     auto flags = object_flags(o_ptr);
 
     if (flags.has(TR_KILL_EVIL)) {
@@ -53,12 +53,12 @@ static bool weakening_artifact(ItemEntity *o_ptr)
         return true;
     }
 
-    if (k_ptr->dd < o_ptr->dd) {
+    if (baseitem.dd < o_ptr->dd) {
         o_ptr->dd--;
         return true;
     }
 
-    if (k_ptr->ds < o_ptr->ds) {
+    if (baseitem.ds < o_ptr->ds) {
         o_ptr->ds--;
         return true;
     }
@@ -178,7 +178,8 @@ static bool decide_random_art_cursed(const bool a_scroll, ItemEntity *o_ptr)
         return true;
     }
 
-    if (((o_ptr->tval == ItemKindType::AMULET) || (o_ptr->tval == ItemKindType::RING)) && o_ptr->is_cursed()) {
+    const auto tval = o_ptr->bi_key.tval();
+    if (((tval == ItemKindType::AMULET) || (tval == ItemKindType::RING)) && o_ptr->is_cursed()) {
         return true;
     }
 
@@ -215,7 +216,7 @@ static void invest_powers(PlayerType *player_ptr, ItemEntity *o_ptr, int *powers
             break;
         case 3:
         case 4:
-            if (one_in_(2) && o_ptr->is_weapon_ammo() && (o_ptr->tval != ItemKindType::BOW)) {
+            if (one_in_(2) && o_ptr->is_weapon_ammo() && (o_ptr->bi_key.tval() != ItemKindType::BOW)) {
                 if (a_cursed && !one_in_(13)) {
                     break;
                 }
@@ -254,7 +255,7 @@ static void strengthen_pval(ItemEntity *o_ptr)
 {
     if (o_ptr->art_flags.has(TR_BLOWS)) {
         o_ptr->pval = randint1(2);
-        if ((o_ptr->tval == ItemKindType::SWORD) && (o_ptr->sval == SV_HAYABUSA)) {
+        if (o_ptr->bi_key == BaseitemKey(ItemKindType::SWORD, SV_HAYABUSA)) {
             o_ptr->pval++;
         }
     } else {
@@ -323,7 +324,7 @@ static void invest_negative_modified_value(ItemEntity *o_ptr)
 
 static void reset_flags_poison_needle(ItemEntity *o_ptr)
 {
-    if ((o_ptr->tval != ItemKindType::SWORD) || (o_ptr->sval != SV_POISON_NEEDLE)) {
+    if (o_ptr->bi_key != BaseitemKey(ItemKindType::SWORD, SV_POISON_NEEDLE)) {
         return;
     }
 
@@ -466,7 +467,7 @@ bool become_random_artifact(PlayerType *player_ptr, ItemEntity *o_ptr, bool a_sc
     }
 
     invest_negative_modified_value(o_ptr);
-    if (((o_ptr->artifact_bias == BIAS_MAGE) || (o_ptr->artifact_bias == BIAS_INT)) && (o_ptr->tval == ItemKindType::GLOVES)) {
+    if (((o_ptr->artifact_bias == BIAS_MAGE) || (o_ptr->artifact_bias == BIAS_INT)) && (o_ptr->bi_key.tval() == ItemKindType::GLOVES)) {
         o_ptr->art_flags.set(TR_FREE_ACT);
     }
 

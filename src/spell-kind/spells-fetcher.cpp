@@ -10,6 +10,7 @@
 #include "grid/grid.h"
 #include "inventory/inventory-object.h"
 #include "monster-race/monster-race.h"
+#include "monster-race/race-brightness-mask.h"
 #include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-status-setter.h"
@@ -167,7 +168,7 @@ bool fetch_monster(PlayerType *player_ptr)
     update_monster(player_ptr, m_idx, true);
     lite_spot(player_ptr, target_row, target_col);
     lite_spot(player_ptr, ty, tx);
-    if (monraces_info[m_ptr->r_idx].flags7 & (RF7_LITE_MASK | RF7_DARK_MASK)) {
+    if (monraces_info[m_ptr->r_idx].brightness_flags.has_any_of(ld_mask)) {
         player_ptr->update |= (PU_MON_LITE);
     }
 

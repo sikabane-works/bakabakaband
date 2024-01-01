@@ -812,9 +812,6 @@
     <ClCompile Include="..\..\src\spell\range-calc.cpp">
       <Filter>spell</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\specific-object\bow.cpp">
-      <Filter>specific-object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\specific-object\chest.cpp">
       <Filter>specific-object</Filter>
     </ClCompile>
@@ -1524,9 +1521,6 @@
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\window\main-window-equipments.cpp">
-      <Filter>window</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\window\display-sub-window-items.cpp">
       <Filter>window</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\window\display-sub-windows.cpp">
@@ -2476,6 +2470,12 @@
     <ClCompile Include="..\..\src\system\dungeon-info.cpp">
       <Filter>system</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\system\terrain-type-definition.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\monster-race\race-brightness-mask.cpp">
+      <Filter>monster-race</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -3414,9 +3414,6 @@
     <ClInclude Include="..\..\src\realm\realm-song-numbers.h">
       <Filter>realm</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\specific-object\bow.h">
-      <Filter>specific-object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\specific-object\chest.h">
       <Filter>specific-object</Filter>
     </ClInclude>
@@ -4255,9 +4252,6 @@
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\window\main-window-equipments.h">
-      <Filter>window</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\window\display-sub-window-items.h">
       <Filter>window</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\window\display-sub-windows.h">
@@ -5378,6 +5372,18 @@
     <ClInclude Include="..\..\src\system\dungeon-info.h">
       <Filter>system</Filter>
     </ClInclude>
+<<<<<<< HEAD:Bakabakaband/Bakabakaband/Bakabakaband.vcxproj.filters
+=======
+    <ClInclude Include="..\..\src\system\terrain-type-definition.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\monster-race\race-brightness-flags.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\monster-race\race-brightness-mask.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
+>>>>>>> 985454096 ([Refactor] モンスターの明かり・闇フラグをFlagGroup化):Hengband/Hengband/Hengband.vcxproj.filters
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />
