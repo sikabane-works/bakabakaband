@@ -23,6 +23,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "term/z-form.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-hallucination.h"
@@ -61,8 +62,8 @@ void pattern_teleport(PlayerType *player_ptr)
             min_level = dungeons_info[player_ptr->dungeon_idx].mindepth;
         }
 
-        sprintf(ppp, _("テレポート先:(%d-%d)", "Teleport to level (%d-%d): "), (int)min_level, (int)max_level);
-        sprintf(tmp_val, "%d", (int)player_ptr->current_floor_ptr->dun_level);
+        strnfmt(ppp, sizeof(ppp), _("テレポート先:(%d-%d)", "Teleport to level (%d-%d): "), (int)min_level, (int)max_level);
+        strnfmt(tmp_val, sizeof(tmp_val), "%d", (int)player_ptr->current_floor_ptr->dun_level);
         if (!get_string(ppp, tmp_val, 10)) {
             return;
         }
