@@ -1,7 +1,11 @@
 ﻿#pragma once
 
 #include <bitset>
+#include <concepts>
+#include <iterator>
 #include <optional>
+#include <stdint.h>
+#include <type_traits>
 
 template <typename T>
 class EnumRange;
