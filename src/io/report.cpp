@@ -432,7 +432,7 @@ bool report_score(PlayerType *player_ptr)
     buf_sprintf(score, "sex: %d\n", player_ptr->psex);
     buf_sprintf(score, "race: %s\n", rp_ptr->title);
     buf_sprintf(score, "class: %s\n", cp_ptr->title);
-    buf_sprintf(score, "seikaku: %s\n", personality_desc);
+    buf_sprintf(score, "seikaku: %s\n", personality_desc.c_str());
     buf_sprintf(score, "realm1: %s\n", realm1_name);
     buf_sprintf(score, "realm2: %s\n", realm_names[player_ptr->realm2]);
     buf_sprintf(score, "killer: %s\n", player_ptr->died_from.data());
