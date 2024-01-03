@@ -815,7 +815,7 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
 
                     concptr s = get_element_name(player_ptr->element, elem);
                     sprintf(name, spell.name, s);
-                    strcat(desc, format("%-30s%2d %4d %3d%%%s", name, spell.min_lev, mana_cost, chance, comment));
+                    strcat(desc, format("%-30s%2d %4d %3d%%%s", name, spell.min_lev, mana_cost, chance, comment).c_str());
                     prt(desc, y + i + 1, x);
                 }
 
