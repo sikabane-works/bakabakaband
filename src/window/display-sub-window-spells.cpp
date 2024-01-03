@@ -52,8 +52,6 @@ static void display_spell_list(PlayerType *player_ptr)
         PLAYER_LEVEL plev = player_ptr->lev;
         PERCENTAGE chance = 0;
         mind_type spell;
-        char comment[80];
-        char psi_desc[160];
         MindKindType use_mind;
         bool use_hp = false;
 
@@ -123,10 +121,9 @@ static void display_spell_list(PlayerType *player_ptr)
                 chance = 95;
             }
 
-            mindcraft_info(player_ptr, comment, use_mind, i);
-            sprintf(psi_desc, "  %c) %-30s%2d %4d %3d%%%s", I2A(i), spell.name, spell.min_lev, spell.mana_cost, chance, comment);
+            const auto comment = mindcraft_info(player_ptr, use_mind, i);
 
-            term_putstr(x, y + i + 1, -1, a, psi_desc);
+            term_putstr(x, y + i + 1, -1, a, format("  %c) %-30s%2d %4d %3d%%%s", I2A(i), spell.name, spell.min_lev, spell.mana_cost, chance, comment.data()));
         }
 
         return;
