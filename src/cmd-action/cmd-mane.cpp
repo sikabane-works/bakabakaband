@@ -169,7 +169,6 @@ static int get_mane_power(PlayerType *player_ptr, int *sn, bool baigaesi)
         if ((choice == ' ') || (choice == '*') || (choice == '?')) {
             /* Show the list */
             if (!redraw) {
-                char psi_desc[160];
                 redraw = true;
                 screen_save();
 
