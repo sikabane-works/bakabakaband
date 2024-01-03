@@ -269,7 +269,8 @@ void MindPowerGetter::display_each_mind_chance()
 
         strcat(psi_desc,
             format("%-30s%2d %4d%s %3d%%%s", this->spell->name, this->spell->min_lev, mana_cost,
-                (((this->use_mind == MindKindType::MINDCRAFTER) && (this->index == 13)) ? _("～", "~ ") : "  "), chance, comment));
+                (((this->use_mind == MindKindType::MINDCRAFTER) && (this->index == 13)) ? _("～", "~ ") : "  "), chance, comment)
+                .c_str());
         prt(psi_desc, y + this->index + 1, x);
     }
 }

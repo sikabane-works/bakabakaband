@@ -235,7 +235,7 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
         sprintf(buf, "Exp:%ld\n", (long)(r_ptr->mexp));
         spoil_out(buf);
         output_monster_spoiler(r_idx, roff_func);
-        spoil_out(nullptr);
+        spoil_out({}, true);
     }
 
     return ferror(spoiler_file) || angband_fclose(spoiler_file) ? SpoilerOutputResultType::FILE_CLOSE_FAILED
