@@ -71,11 +71,7 @@ void spoiler_outlist(concptr header, concptr *list, char separator)
  */
 static void print_header(void)
 {
-    char buf[360];
-    char title[180];
-    put_version(title);
-    sprintf(buf, "Artifact Spoilers for Bakabakaband Version %s", title);
-    spoiler_underline(buf);
+    spoiler_underline(std::string("Artifact Spoilers for Bakabakaband Version ").append(get_version()).data());
 }
 
 /*!
