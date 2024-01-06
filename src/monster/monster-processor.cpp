@@ -659,7 +659,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
     (void)set_monster_monfear(player_ptr, m_idx, 0);
     if (!turn_flags_ptr->see_m) {
         return true;
-   }
+    }
 
     msg_format(_("%^sは戦いを決意した！", "%^s turns to fight!"), m_name.data());
     return true;
