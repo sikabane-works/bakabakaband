@@ -636,7 +636,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
     auto m_name = monster_desc(player_ptr, m_ptr, 0);
 
     if (m_ptr->is_fearful() && one_in_(20)) {
-        msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
+        msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name.data());
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
         q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_FECES }));
@@ -644,7 +644,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
     }
 
     if (m_ptr->is_fearful() && one_in_(20)) {
-        msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
+        msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name.data());
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
         q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
@@ -783,19 +783,19 @@ void sweep_monster_process(PlayerType *player_ptr)
                 if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
                     switch (randint1(3)) {
                     case 1:
-                        msg_format(_("%s「んほぉ！」", "%s 'Nnhor!'"), m_name);
+                        msg_format(_("%s「んほぉ！」", "%s 'Nnhor!'"), m_name.data());
                         (void)set_monster_stunned(player_ptr, 0, m_ptr->get_remaining_stun() + 10 + randint0(player_ptr->lev) / 5);
                         break;
                     case 2:
-                        msg_format(_("%s「アへぇ！」", "%s 'Aherr!'"), m_name);
+                        msg_format(_("%s「アへぇ！」", "%s 'Aherr!'"), m_name.data());
                         (void)set_monster_slow(player_ptr, 0, m_ptr->get_remaining_deceleration() + 10 + randint0(player_ptr->lev) / 5);
                         break;
                     case 3: {
                         bool fear = false;
-                        msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name);
+                        msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name.data());
                         MonsterDamageProcessor mdp(player_ptr, i, damroll(1, 4), &fear, AttributeType::ATTACK);
                         if (fear) {
-                            msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name);
+                            msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name.data());
                         }
                         mdp.mon_take_hit(_("は絶頂であの世に逝った。", " was passed to the other side with intense acme."));
                         break;
