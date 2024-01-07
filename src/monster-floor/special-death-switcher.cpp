@@ -335,7 +335,7 @@ static void on_dead_ninja(PlayerType *player_ptr, monster_death_type *md_ptr)
     if (is_seen(player_ptr, md_ptr->m_ptr)) {
         msg_print(_("「サヨナラ！」", "Sayonara!"));
         auto m_name = monster_desc(player_ptr, md_ptr->m_ptr, MD_NONE);
-        msg_format(_("%sは哀れ爆発四散した！ショッギョ・ムッジョ！", "%s explodes pitifully! Shogyomujo!"), m_name);
+        msg_format(_("%sは哀れ爆発四散した！ショッギョ・ムッジョ！", "%s explodes pitifully! Shogyomujo!"), m_name.data());
     }
 
     (void)project(player_ptr, md_ptr->m_idx, 6, md_ptr->md_y, md_ptr->md_x, 20, AttributeType::MISSILE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);

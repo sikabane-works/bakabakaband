@@ -778,7 +778,7 @@ void sweep_monster_process(PlayerType *player_ptr)
             if (r_ptr.level < randint0(pow)) {
                 auto m_name = monster_desc(player_ptr, m_ptr, 0);
                 if (m_ptr->ml) {
-                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name, f_ptr->name.c_str());
+                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name.data(), f_ptr->name.data());
                 }
                 if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
                     switch (randint1(3)) {
