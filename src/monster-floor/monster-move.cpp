@@ -505,7 +505,7 @@ static std::string_view get_speak_filename(MonsterEntity *m_ptr)
     return "";
 }
 
-static void speaking(PlayerType *player_ptr, MonsterEntity *m_ptr, bool vociferous)
+static void speaking(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     const auto m_name = m_ptr->ml ? monster_desc(player_ptr, m_ptr, 0) : std::string(_("それ", "It"));
     char monmessage[1024];
@@ -545,7 +545,7 @@ void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy,
     }
 
     if ((r_ptr->flags2 & RF2_VOCIFEROUS) && (m_ptr->cdis <= MAX_PLAYER_SIGHT * 2) && one_in_(SPEAK_CHANCE / 3 + 1)) {
-        speaking(p_ptr, m_ptr, true);
+        speaking(p_ptr, m_ptr);
         return;
     }
 
@@ -555,7 +555,7 @@ void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy,
         return;
     }
 
-    speaking(p_ptr, m_ptr, false);
+    speaking(p_ptr, m_ptr);
 }
 
 /*!
