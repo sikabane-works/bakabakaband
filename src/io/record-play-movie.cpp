@@ -263,7 +263,6 @@ static errr send_text_to_chuukei_server(TERM_LEN x, TERM_LEN y, int len, TERM_CO
     return (*old_text_hook)(x, y, len, col, str);
 }
 
-
 static errr send_wipe_to_chuukei_server(int x, int y, int len)
 {
     while (len > SPLIT_MAX) {
