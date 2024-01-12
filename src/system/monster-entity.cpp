@@ -7,11 +7,6 @@
 #include "system/monster-race-info.h"
 #include "util/string-processor.h"
 
-bool MonsterEntity::is_named() const
-{
-    return this->nickname;
-}
-
 bool MonsterEntity::is_friendly() const
 {
     return this->mflag2.has(MonsterConstantFlagType::FRIENDLY);
@@ -25,6 +20,16 @@ bool MonsterEntity::is_pet() const
 bool MonsterEntity::is_hostile() const
 {
     return !this->is_friendly() && !this->is_pet();
+}
+
+bool MonsterEntity::is_named() const
+{
+    return !this->nickname.empty();
+}
+
+bool MonsterEntity::is_named_pet() const
+{
+    return this->is_pet() && this->is_named();
 }
 
 bool MonsterEntity::is_original_ap() const
