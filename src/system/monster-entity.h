@@ -57,6 +57,7 @@ public:
     EnumClassFlagGroup<MonsterSmartLearnType> smart{}; /*!< モンスターのプレイヤーに対する学習状態 / Field for "smart_learn" - Some bit-flags for the "smart" field */
     MONSTER_IDX parent_m_idx{}; /*!< 召喚主のモンスターID */
 
+    bool is_named() const;
     bool is_friendly() const;
     bool is_pet() const;
     bool is_hostile() const;
