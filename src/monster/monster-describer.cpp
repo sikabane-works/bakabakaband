@@ -16,6 +16,7 @@
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include <optional>
+#include <sstream>
 #include <string>
 #include <string_view>
 
