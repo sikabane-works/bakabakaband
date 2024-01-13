@@ -367,7 +367,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
         activated = true;
     } else if (scouter_probing(player_ptr, ae_ptr)) {
         activated = true;
-    } else if (exe_monster_capture(player_ptr, ae_ptr)) {
+    } else if (exe_monster_capture(player_ptr, *ae_ptr->o_ptr)) {
         activated = true;
     } else if (activate_firethrowing(player_ptr, ae_ptr)) {
         activated = true;
@@ -387,7 +387,6 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
     if (randint1(100) <= ae_ptr->broken) {
         char o_name[MAX_NLEN];
         describe_flavor(player_ptr, o_name, ae_ptr->o_ptr, OD_OMIT_PREFIX);
-
         msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name);
         curse_weapon_object(player_ptr, true, ae_ptr->o_ptr);
     }
