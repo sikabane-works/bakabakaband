@@ -39,6 +39,8 @@
 #include "util/quarks.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
+#include <optional>
+#include <string>
 
 namespace {
 const EnumClassFlagGroup<CurseTraitType> TRC_P_FLAG_MASK({ CurseTraitType::TY_CURSE, CurseTraitType::DRAIN_EXP, CurseTraitType::ADD_L_CURSE, CurseTraitType::ADD_H_CURSE, CurseTraitType::CALL_ANIMAL, CurseTraitType::CALL_DEMON,
@@ -228,10 +230,11 @@ static void occur_chainsword_effect(PlayerType *player_ptr)
         return;
     }
 
-    char noise[1024];
-    if (!get_rnd_line(_("chainswd_j.txt", "chainswd.txt"), 0, noise)) {
-        msg_print(noise);
+    const auto noise = get_random_line(_("chainswd_j.txt", "chainswd.txt"), 0);
+    if (noise.has_value()) {
+        msg_print(noise.value());
     }
+
     disturb(player_ptr, false, false);
 }
 
