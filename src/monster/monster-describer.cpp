@@ -128,7 +128,7 @@ static std::string replace_monster_name_undefined(std::string_view name)
 std::string monster_desc(PlayerType *player_ptr, MonsterEntity *m_ptr, BIT_FLAGS mode)
 {
     const auto is_hallucinated = player_ptr->effects()->hallucination()->is_hallucinated();
-    const auto name = get_describing_monster_name(*m_ptr, is_hallucinated, mode);
+    const auto base_name = get_describing_monster_name(*m_ptr, is_hallucinated, mode);
     const auto seen = (m_ptr && ((mode & MD_ASSUME_VISIBLE) || (!(mode & MD_ASSUME_HIDDEN) && m_ptr->ml)));
     const auto pron = (m_ptr && ((seen && (mode & MD_PRON_VISIBLE)) || (!seen && (mode & MD_PRON_HIDDEN))));
 
@@ -168,13 +168,13 @@ std::string monster_desc(PlayerType *player_ptr, MonsterEntity *m_ptr, BIT_FLAGS
         ss << "サンタと化した";
     }
 #endif
-    ss << name;
 #ifndef JP
     if (m_ptr->mflag2.has(MonsterConstantFlagType::SANTA)) {
         ss << "Santa turned";
     }
 #endif
-    std::string a_name = ss.str();
+    ss << base_name;
+    std::string name = ss.str();
 
     std::string desc;
     if (m_ptr->is_pet() && !m_ptr->is_original_ap()) {
