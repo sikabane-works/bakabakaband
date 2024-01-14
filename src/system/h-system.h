@@ -40,7 +40,6 @@
     #include <sys/file.h>
     #include <sys/param.h>
     #include <sys/stat.h>
-    #include <sys/timeb.h>
     #include <sys/types.h>
     #include <unistd.h>
   #endif
