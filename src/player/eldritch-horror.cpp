@@ -182,7 +182,7 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
         }
 
         if (player_ptr->effects()->hallucination()->is_hallucinated()) {
-            msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), funny_desc[randint0(MAX_SAN_FUNNY)], m_name);
+            msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), funny_desc[randint0(MAX_SAN_FUNNY)], m_name.data());
             if (one_in_(3)) {
                 msg_print(funny_comments[randint0(MAX_SAN_COMMENT)]);
                 BadStatusSetter(player_ptr).mod_hallucination(randint1(r_ptr->level));
