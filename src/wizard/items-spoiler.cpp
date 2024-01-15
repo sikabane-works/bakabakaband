@@ -9,10 +9,10 @@
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "term/z-form.h"
 #include "util/angband-files.h"
 #include "view/display-messages.h"
 #include "wizard/spoiler-util.h"
-
 #include <algorithm>
 
 /*!
@@ -26,7 +26,8 @@
  * @param value 価値を返すバッファ参照ポインタ
  * @param bi_id ベースアイテムID
  */
-static void describe_baseitem_info(PlayerType *player_ptr, char *name, char *damage_desc, char *weight_desc, char *chance_desc, DEPTH *level, PRICE *value, short bi_id)
+static void describe_baseitem_info(PlayerType *player_ptr,
+    char *name, std::string *damage_desc, std::string *weight_desc, std::string *chance_desc, DEPTH *level_desc, PRICE *value, short bi_id)
 {
     ItemEntity forge;
     auto *q_ptr = &forge;
@@ -36,25 +37,24 @@ static void describe_baseitem_info(PlayerType *player_ptr, char *name, char *dam
     q_ptr->to_a = 0;
     q_ptr->to_h = 0;
     q_ptr->to_d = 0;
-    *level = baseitems_info[q_ptr->bi_id].level;
+    *level_desc = baseitems_info[q_ptr->bi_id].level;
     *value = q_ptr->get_price();
     if (!name || !damage_desc || !chance_desc || !weight_desc) {
         return;
     }
 
     describe_flavor(player_ptr, name, q_ptr, OD_NAME_ONLY | OD_STORE);
-    strcpy(damage_desc, "");
     switch (q_ptr->bi_key.tval()) {
     case ItemKindType::SHOT:
     case ItemKindType::BOLT:
     case ItemKindType::ARROW:
-        sprintf(damage_desc, "%dd%d", q_ptr->dd, q_ptr->ds);
+        *damage_desc = format("%dd%d", q_ptr->dd, q_ptr->ds);
         break;
     case ItemKindType::HAFTED:
     case ItemKindType::POLEARM:
     case ItemKindType::SWORD:
     case ItemKindType::DIGGING:
-        sprintf(damage_desc, "%dd%d", q_ptr->dd, q_ptr->ds);
+        *damage_desc = format("%dd%d", q_ptr->dd, q_ptr->ds);
         break;
     case ItemKindType::BOOTS:
     case ItemKindType::GLOVES:
@@ -65,24 +65,23 @@ static void describe_baseitem_info(PlayerType *player_ptr, char *name, char *dam
     case ItemKindType::SOFT_ARMOR:
     case ItemKindType::HARD_ARMOR:
     case ItemKindType::DRAG_ARMOR:
-        sprintf(damage_desc, "%d", q_ptr->ac);
+        *damage_desc = format("%d", q_ptr->ac);
         break;
     default:
+        damage_desc->clear();
         break;
     }
 
-    strcpy(chance_desc, "");
+    chance_desc->clear();
     const auto &baseitem = baseitems_info[q_ptr->bi_id];
     for (auto i = 0U; i < baseitem.alloc_tables.size(); i++) {
         const auto &[level, chance] = baseitem.alloc_tables[i];
-        char chance_aux[20] = "";
         if (chance > 0) {
-            sprintf(chance_aux, "%s%3dF:%+4d", (i != 0 ? "/" : ""), level, 100 / chance);
-            strcat(chance_desc, chance_aux);
+            chance_desc->append(format("%s%3dF:%+4d", (i != 0 ? "/" : ""), level, 100 / chance));
         }
     }
 
-    sprintf(weight_desc, "%3d.%d", (int)(q_ptr->weight / 10), (int)(q_ptr->weight % 10));
+    *weight_desc = format("%3d.%d", (int)(q_ptr->weight / 10), (int)(q_ptr->weight % 10));
 }
 
 /*!
@@ -99,9 +98,7 @@ SpoilerOutputResultType spoil_obj_desc(concptr fname)
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    char title[200];
-    put_version(title);
-    fprintf(spoiler_file, "Spoiler File -- Basic Items (%s)\n\n\n", title);
+    fprintf(spoiler_file, "Spoiler File -- Basic Items (%s)\n\n\n", get_version().data());
     fprintf(spoiler_file, "%-37s%8s%7s%5s %40s%9s\n", "Description", "Dam/AC", "Wgt", "Lev", "Chance", "Cost");
     fprintf(spoiler_file, "%-37s%8s%7s%5s %40s%9s\n", "-------------------------------------", "------", "---", "---", "----------------", "----");
 
@@ -131,12 +128,12 @@ SpoilerOutputResultType spoil_obj_desc(concptr fname)
         for (const auto &bi_id : whats) {
             DEPTH e;
             PRICE v;
-            char wgt[80];
-            char chance[80];
-            char dam[80];
+            std::string wgt, chance, dam;
             PlayerType dummy;
-            describe_baseitem_info(&dummy, buf, dam, wgt, chance, &e, &v, bi_id);
-            fprintf(spoiler_file, "  %-35s%8s%7s%5d %-40s%9ld\n", buf, dam, wgt, static_cast<int>(e), chance, static_cast<long>(v));
+            describe_baseitem_info(&dummy, buf, &dam, &wgt, &chance, &e, &v, bi_id);
+            fprintf(spoiler_file, "  %-35s%8s%7s%5d %-40s%9ld\n", buf,
+                dam.data(), wgt.data(), static_cast<int>(e), chance.data(),
+                static_cast<long>(v));
         }
     }
 

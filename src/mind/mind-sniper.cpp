@@ -35,9 +35,10 @@
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
-#include "util/buffer-shaper.h"
+#include "term/z-form.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
+#include "view/display-util.h"
 
 #define MAX_SNIPE_POWERS 16
 
@@ -76,7 +77,7 @@ static concptr const snipe_tips[MAX_SNIPE_POWERS] = {
     "Shoot an arrow able to shatter rocks.",
     "Deals extra damage of ice.",
     "Shoot an arrow that pushes away the target.",
-    "Shoot an arrow that does not always stop at the first target on its path."
+    "Shoot an arrow that does not always stop at the first target on its path.",
     "Deals more damage to good monsters.",
     "Deals more damage to evil monsters.",
     "Shoot an arrow that explodes when it hits a monster.",
@@ -284,10 +285,10 @@ static int get_snipe_power(PlayerType *player_ptr, COMMAND_CODE *sn, bool only_b
     /* Build a prompt (accept all spells) */
     if (only_browse) {
         (void)strnfmt(
-            out_val, 78, _("(%^s %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%^ss %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num), p);
+            out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num), p);
     } else {
         (void)strnfmt(
-            out_val, 78, _("(%^s %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%^ss %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num), p);
+            out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num), p);
     }
 
     choice = always_show_list ? ESCAPE : 1;
@@ -643,8 +644,6 @@ void do_cmd_snipe(PlayerType *player_ptr)
 void do_cmd_snipe_browse(PlayerType *player_ptr)
 {
     COMMAND_CODE n = 0;
-    int j, line;
-    char temp[62 * 4];
 
     screen_save();
 
@@ -661,10 +660,6 @@ void do_cmd_snipe_browse(PlayerType *player_ptr)
         term_erase(12, 19, 255);
         term_erase(12, 18, 255);
 
-        shape_buffer(snipe_tips[n], 62, temp, sizeof(temp));
-        for (j = 0, line = 19; temp[j]; j += (1 + strlen(&temp[j]))) {
-            prt(&temp[j], line, 15);
-            line++;
-        }
+        display_wrap_around(snipe_tips[n], 62, 19, 15);
     }
 }

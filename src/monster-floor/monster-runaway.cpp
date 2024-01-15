@@ -46,10 +46,10 @@ static bool is_acting_monster(const MonsterRaceId r_idx)
  * @param m_ptr モンスターへの参照ポインタ
  * @param m_name モンスター名称
  */
-static void escape_monster(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MonsterEntity *m_ptr, GAME_TEXT *m_name)
+static void escape_monster(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MonsterEntity *m_ptr, concptr m_name)
 {
     if (turn_flags_ptr->is_riding_mon) {
-        msg_format(_("%sはあなたの束縛から脱出した。", "%^s succeeded to escape from your restriction!"), m_name);
+        msg_format(_("%sはあなたの束縛から脱出した。", "%s^ succeeded to escape from your restriction!"), m_name);
         if (process_fall_off_horse(player_ptr, -1, false)) {
             msg_print(_("地面に落とされた。", "You have fallen from the pet you were riding."));
         }
@@ -67,11 +67,11 @@ static void escape_monster(PlayerType *player_ptr, turn_flags *turn_flags_ptr, M
         speak &= player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx);
         speak &= projectable(player_ptr, m_ptr->fy, m_ptr->fx, player_ptr->y, player_ptr->x);
         if (speak) {
-            msg_format(_("%^s「ピンチだ！退却させてもらう！」", "%^s says 'It is the pinch! I will retreat'."), m_name);
+            msg_format(_("%s^「ピンチだ！退却させてもらう！」", "%s^ says 'It is the pinch! I will retreat'."), m_name);
         }
 
-        msg_format(_("%^sがテレポート・レベルの巻物を読んだ。", "%^s reads a scroll of teleport level."), m_name);
-        msg_format(_("%^sが消え去った。", "%^s disappears."), m_name);
+        msg_format(_("%s^がテレポート・レベルの巻物を読んだ。", "%s^ reads a scroll of teleport level."), m_name);
+        msg_format(_("%s^が消え去った。", "%s^ disappears."), m_name);
     }
 
     if (turn_flags_ptr->is_riding_mon && process_fall_off_horse(player_ptr, -1, false)) {
@@ -109,17 +109,16 @@ bool runaway_monster(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER
         return false;
     }
 
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, m_ptr, 0);
+    const auto m_name = monster_desc(player_ptr, m_ptr, 0);
     if (turn_flags_ptr->is_riding_mon && riding_pinch < 2) {
         msg_format(
-            _("%sは傷の痛さの余りあなたの束縛から逃れようとしている。", "%^s seems to be in so much pain and tries to escape from your restriction."), m_name);
+            _("%sは傷の痛さの余りあなたの束縛から逃れようとしている。", "%s^ seems to be in so much pain and tries to escape from your restriction."), m_name.data());
         riding_pinch++;
         disturb(player_ptr, true, true);
         return false;
     }
 
-    escape_monster(player_ptr, turn_flags_ptr, m_ptr, m_name);
+    escape_monster(player_ptr, turn_flags_ptr, m_ptr, m_name.data());
     QuestCompletionChecker(player_ptr, m_ptr).complete();
     delete_monster_idx(player_ptr, m_idx);
     return true;

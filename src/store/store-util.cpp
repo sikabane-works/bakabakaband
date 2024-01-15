@@ -189,6 +189,10 @@ bool store_object_similar(ItemEntity *o_ptr, ItemEntity *j_ptr)
         return false;
     }
 
+    if ((tval == ItemKindType::LITE) && (o_ptr->fuel != j_ptr->fuel)) {
+        return false;
+    }
+
     if (o_ptr->discount != j_ptr->discount) {
         return false;
     }
@@ -239,7 +243,7 @@ int store_carry(ItemEntity *o_ptr)
     }
 
     o_ptr->ident |= IDENT_FULL_KNOWN;
-    o_ptr->inscription = 0;
+    o_ptr->inscription.reset();
     o_ptr->feeling = FEEL_NONE;
     int slot;
     for (slot = 0; slot < st_ptr->stock_num; slot++) {

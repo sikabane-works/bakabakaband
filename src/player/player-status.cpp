@@ -606,10 +606,11 @@ static void update_num_of_spells(PlayerType *player_ptr)
             which = player_ptr->realm2;
         }
 
+        const auto spell_name = exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME);
 #ifdef JP
-        msg_format("%sの%sを忘れてしまった。", exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME), p);
+        msg_format("%sの%sを忘れてしまった。", spell_name->data(), p);
 #else
-        msg_format("You have forgotten the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME));
+        msg_format("You have forgotten the %s of %s.", p, spell_name->data());
 #endif
         player_ptr->new_spells++;
     }
@@ -650,10 +651,11 @@ static void update_num_of_spells(PlayerType *player_ptr)
             which = player_ptr->realm2;
         }
 
+        const auto spell_name = exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME);
 #ifdef JP
-        msg_format("%sの%sを忘れてしまった。", exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME), p);
+        msg_format("%sの%sを忘れてしまった。", spell_name->data(), p);
 #else
-        msg_format("You have forgotten the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME));
+        msg_format("You have forgotten the %s of %s.", p, spell_name->data());
 #endif
         player_ptr->new_spells++;
     }
@@ -710,10 +712,11 @@ static void update_num_of_spells(PlayerType *player_ptr)
             which = player_ptr->realm2;
         }
 
+        const auto spell_name = exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME);
 #ifdef JP
-        msg_format("%sの%sを思い出した。", exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME), p);
+        msg_format("%sの%sを思い出した。", spell_name->data(), p);
 #else
-        msg_format("You have remembered the %s of %s.", p, exe_spell(player_ptr, which, j % 32, SpellProcessType::NAME));
+        msg_format("You have remembered the %s of %s.", p, spell_name->data());
 #endif
         player_ptr->new_spells--;
     }
@@ -2937,20 +2940,13 @@ void check_experience(PlayerType *player_ptr)
                 screen_save();
                 while (true) {
                     int n;
-                    char tmp[32];
 
-                    cnv_stat(player_ptr->stat_max[0], tmp);
-                    prt(format(_("        a) 腕力 (現在値 %s)", "        a) Str (cur %s)"), tmp), 2, 14);
-                    cnv_stat(player_ptr->stat_max[1], tmp);
-                    prt(format(_("        b) 知能 (現在値 %s)", "        b) Int (cur %s)"), tmp), 3, 14);
-                    cnv_stat(player_ptr->stat_max[2], tmp);
-                    prt(format(_("        c) 賢さ (現在値 %s)", "        c) Wis (cur %s)"), tmp), 4, 14);
-                    cnv_stat(player_ptr->stat_max[3], tmp);
-                    prt(format(_("        d) 器用 (現在値 %s)", "        d) Dex (cur %s)"), tmp), 5, 14);
-                    cnv_stat(player_ptr->stat_max[4], tmp);
-                    prt(format(_("        e) 耐久 (現在値 %s)", "        e) Con (cur %s)"), tmp), 6, 14);
-                    cnv_stat(player_ptr->stat_max[5], tmp);
-                    prt(format(_("        f) 魅力 (現在値 %s)", "        f) Chr (cur %s)"), tmp), 7, 14);
+                    prt(format(_("        a) 腕力 (現在値 %s)", "        a) Str (cur %s)"), cnv_stat(player_ptr->stat_max[0]).data()), 2, 14);
+                    prt(format(_("        b) 知能 (現在値 %s)", "        b) Int (cur %s)"), cnv_stat(player_ptr->stat_max[1]).data()), 3, 14);
+                    prt(format(_("        c) 賢さ (現在値 %s)", "        c) Wis (cur %s)"), cnv_stat(player_ptr->stat_max[2]).data()), 4, 14);
+                    prt(format(_("        d) 器用 (現在値 %s)", "        d) Dex (cur %s)"), cnv_stat(player_ptr->stat_max[3]).data()), 5, 14);
+                    prt(format(_("        e) 耐久 (現在値 %s)", "        e) Con (cur %s)"), cnv_stat(player_ptr->stat_max[4]).data()), 6, 14);
+                    prt(format(_("        f) 魅力 (現在値 %s)", "        f) Chr (cur %s)"), cnv_stat(player_ptr->stat_max[5]).data()), 7, 14);
 
                     prt("", 8, 14);
                     prt(_("        どの能力値を上げますか？", "        Which stat do you want to raise?"), 1, 14);
@@ -3006,22 +3002,21 @@ void check_experience(PlayerType *player_ptr)
 /*!
  * @brief 現在の修正後能力値を3～17及び18/xxx形式に変換する / Converts stat num into a six-char (right justified) string
  * @param val 能力値
- * @param out_val 出力先文字列ポインタ
+ * @return std::string 右詰め6文字で記述した能力値
  */
-void cnv_stat(int val, char *out_val)
+std::string cnv_stat(int val)
 {
     if (val <= 18) {
-        sprintf(out_val, "    %2d", val);
-        return;
+        return format("    %2d", val);
     }
 
     int bonus = (val - 18);
     if (bonus >= 220) {
-        sprintf(out_val, "18/%3s", "***");
+        return "18/***";
     } else if (bonus >= 100) {
-        sprintf(out_val, "18/%03d", bonus);
+        return format("18/%03d", bonus);
     } else {
-        sprintf(out_val, " 18/%02d", bonus);
+        return format(" 18/%02d", bonus);
     }
 }
 

@@ -13,9 +13,10 @@
 
 #include "system/angband.h"
 #include "system/h-basic.h"
-
 #include <memory>
+#include <optional>
 #include <stack>
+#include <string_view>
 #include <vector>
 
 /*!
@@ -76,6 +77,9 @@ struct term_type {
     TERM_LEN wid{}; //!< Window Width(max 255)
     TERM_LEN hgt{}; //!< Window Height(max 255)
 
+    TERM_LEN offset_x{};
+    TERM_LEN offset_y{};
+
     TERM_LEN y1{}; //!< Minimum modified row
     TERM_LEN y2{}; //!< Maximum modified row
 
@@ -110,6 +114,34 @@ struct term_type {
     term_type &operator=(const term_type &) = delete;
     term_type(term_type &&) = default;
     term_type &operator=(term_type &&) = default;
+};
+
+class TermOffsetSetter {
+public:
+    TermOffsetSetter(std::optional<TERM_LEN> x, std::optional<TERM_LEN> y);
+    ~TermOffsetSetter();
+    TermOffsetSetter(const TermOffsetSetter &) = delete;
+    TermOffsetSetter &operator=(const TermOffsetSetter &) = delete;
+    TermOffsetSetter(TermOffsetSetter &&) = delete;
+    TermOffsetSetter &operator=(TermOffsetSetter &&) = delete;
+
+private:
+    term_type *term;
+    TERM_LEN orig_offset_x;
+    TERM_LEN orig_offset_y;
+};
+
+class TermCenteredOffsetSetter {
+public:
+    TermCenteredOffsetSetter(std::optional<TERM_LEN> width, std::optional<TERM_LEN> height);
+    ~TermCenteredOffsetSetter() = default;
+    TermCenteredOffsetSetter(const TermCenteredOffsetSetter &) = delete;
+    TermCenteredOffsetSetter &operator=(const TermCenteredOffsetSetter &) = delete;
+    TermCenteredOffsetSetter(TermCenteredOffsetSetter &&) = delete;
+    TermCenteredOffsetSetter &operator=(TermCenteredOffsetSetter &&) = delete;
+
+private:
+    std::optional<TermOffsetSetter> tos;
 };
 
 /**** Available Constants ****/
@@ -170,9 +202,9 @@ errr term_gotoxy(TERM_LEN x, TERM_LEN y);
 errr term_draw(TERM_LEN x, TERM_LEN y, TERM_COLOR a, char c);
 errr term_addch(TERM_COLOR a, char c);
 errr term_add_bigch(TERM_COLOR a, char c);
-errr term_addstr(int n, TERM_COLOR a, concptr s);
+errr term_addstr(int n, TERM_COLOR a, std::string_view sv);
 errr term_putch(TERM_LEN x, TERM_LEN y, TERM_COLOR a, char c);
-errr term_putstr(TERM_LEN x, TERM_LEN y, int n, TERM_COLOR a, concptr s);
+errr term_putstr(TERM_LEN x, TERM_LEN y, int n, TERM_COLOR a, std::string_view sv);
 errr term_erase(TERM_LEN x, TERM_LEN y, int n);
 errr term_clear(void);
 errr term_redraw(void);

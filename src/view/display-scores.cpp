@@ -133,7 +133,7 @@ void display_scores(int from, int to, int note, high_score *score)
                 class_info[pc].title, clev);
 #endif
             if (mlev > clev) {
-                strcat(out_val, format(_(" (最高%d)", " (Max %d)"), mlev));
+                strcat(out_val, format(_(" (最高%d)", " (Max %d)"), mlev).c_str());
             }
 
             c_put_str(attr, out_val, n * 4 + 2, 0);
@@ -167,7 +167,7 @@ void display_scores(int from, int to, int note, high_score *score)
             }
 
             if (mdun > cdun) {
-                strcat(out_val, format(" (Max %d)", mdun));
+                strcat(out_val, format(" (Max %d)", mdun).c_str());
             }
 #endif
             c_put_str(attr, out_val, n * 4 + 3, 0);

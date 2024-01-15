@@ -36,6 +36,7 @@
 #include "target/projection-path-calculator.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/timed-effects.h"
+#include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #ifdef JP
@@ -129,14 +130,7 @@ static void set_mspell_list(msa_type *msa_ptr)
 
 static void describe_mspell_monster(PlayerType *player_ptr, msa_type *msa_ptr)
 {
-    monster_desc(player_ptr, msa_ptr->m_name, msa_ptr->m_ptr, 0x00);
-
-#ifdef JP
-#else
-    /* Get the monster possessive ("his"/"her"/"its") */
-    char m_poss[80];
-    monster_desc(player_ptr, m_poss, msa_ptr->m_ptr, MD_PRON_VISIBLE | MD_POSSESSIVE);
-#endif
+    angband_strcpy(msa_ptr->m_name, monster_desc(player_ptr, msa_ptr->m_ptr, 0x00).data(), sizeof(msa_ptr->m_name));
 }
 
 static bool switch_do_spell(PlayerType *player_ptr, msa_type *msa_ptr)
@@ -201,12 +195,12 @@ static bool check_mspell_unexploded(PlayerType *player_ptr, msa_type *msa_ptr)
 
     if (!spell_is_inate(msa_ptr->thrown_spell) && (msa_ptr->in_no_magic_dungeon || (msa_ptr->m_ptr->get_remaining_stun() && one_in_(2)) || (randint0(100) < fail_rate))) {
         disturb(player_ptr, true, true);
-        msg_format(_("%^sは呪文を唱えようとしたが失敗した。", "%^s tries to cast a spell, but fails."), msa_ptr->m_name);
+        msg_format(_("%s^は呪文を唱えようとしたが失敗した。", "%s^ tries to cast a spell, but fails."), msa_ptr->m_name);
         return true;
     }
 
     if (!spell_is_inate(msa_ptr->thrown_spell) && SpellHex(player_ptr).check_hex_barrier(msa_ptr->m_idx, HEX_ANTI_MAGIC)) {
-        msg_format(_("反魔法バリアが%^sの呪文をかき消した。", "Anti magic barrier cancels the spell which %^s casts."), msa_ptr->m_name);
+        msg_format(_("反魔法バリアが%s^の呪文をかき消した。", "Anti magic barrier cancels the spell which %s^ casts."), msa_ptr->m_name);
         return true;
     }
 

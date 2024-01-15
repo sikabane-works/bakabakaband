@@ -76,6 +76,8 @@
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <sstream>
+#include <string>
 
 using dam_func = int (*)(PlayerType *player_ptr, int dam, concptr kb_str, bool aura);
 
@@ -298,10 +300,6 @@ int cold_dam(PlayerType *player_ptr, int dam, concptr kb_str, bool aura)
 int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_from)
 {
     int old_chp = player_ptr->chp;
-
-    char death_message[1024];
-    char tmp[1024];
-
     int warning = (player_ptr->mhp * hitpoint_warn / 10);
     if (player_ptr->is_dead) {
         return 0;
@@ -480,32 +478,38 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
 
                 msg_print(nullptr);
             } else {
+                std::optional<std::string> opt_death_message;
                 if (winning_seppuku) {
-                    get_rnd_line(_("seppuku_j.txt", "seppuku.txt"), 0, death_message);
+                    opt_death_message = get_random_line(_("seppuku_j.txt", "seppuku.txt"), 0);
                 } else {
-                    get_rnd_line(_("death_j.txt", "death.txt"), 0, death_message);
+                    opt_death_message = get_random_line(_("death_j.txt", "death.txt"), 0);
                 }
 
+                auto &death_message = opt_death_message.value();
+                constexpr auto max_last_words = 1024;
+                char player_last_words[max_last_words]{};
+                angband_strcpy(player_last_words, death_message.data(), max_last_words);
                 do {
 #ifdef JP
-                    while (!get_string(winning_seppuku ? "辞世の句: " : "断末魔の叫び: ", death_message, sizeof(death_message))) {
+                    while (!get_string(winning_seppuku ? "辞世の句: " : "断末魔の叫び: ", player_last_words, max_last_words)) {
                         ;
                     }
 #else
-                    while (!get_string("Last words: ", death_message, 1024)) {
+                    while (!get_string("Last words: ", player_last_words, max_last_words)) {
                         ;
                     }
 #endif
                 } while (winning_seppuku && !get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_NO_HISTORY));
 
-                if (death_message[0] == '\0') {
+                death_message = player_last_words;
+                if (death_message.empty()) {
 #ifdef JP
-                    strcpy(death_message, format("あなたは%sました。", android ? "壊れ" : "死に"));
+                    death_message = format("あなたは%sました。", android ? "壊れ" : "死に");
 #else
-                    strcpy(death_message, android ? "You are broken." : "You die.");
+                    death_message = android ? "You are broken." : "You die.";
 #endif
                 } else {
-                    player_ptr->last_message = string_make(death_message);
+                    player_ptr->last_message = string_make(death_message.data());
                 }
 
 #ifdef JP
@@ -515,9 +519,6 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
                     int h = game_term->hgt;
                     int msg_pos_x[9] = { 5, 7, 9, 12, 14, 17, 19, 21, 23 };
                     int msg_pos_y[9] = { 3, 4, 5, 4, 5, 4, 5, 6, 4 };
-                    concptr str;
-                    char *str2;
-
                     term_clear();
 
                     /* 桜散る */
@@ -525,12 +526,12 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
                         term_putstr(randint0(w / 2) * 2, randint0(h), 2, TERM_VIOLET, "υ");
                     }
 
-                    str = death_message;
+                    auto str = death_message.data();
                     if (strncmp(str, "「", 2) == 0) {
                         str += 2;
                     }
 
-                    str2 = angband_strstr(str, "」");
+                    auto *str2 = angband_strstr(str, "」");
                     if (str2 != nullptr) {
                         *str2 = '\0';
                     }
@@ -584,8 +585,11 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
                 hit_from = _("何か", "something");
             }
 
-            sprintf(tmp, _("%sによってピンチに陥った。", "was in a critical situation because of %s."), hit_from);
-            exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, tmp);
+            std::stringstream ss;
+            ss << _(hit_from, "was in a critical situation because of ");
+            ss << _("によってピンチに陥った。", hit_from);
+            ss << _("", ".");
+            exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, ss.str().data());
         }
 
         if (auto_more) {
@@ -621,11 +625,9 @@ static void process_aura_damage(MonsterEntity *m_ptr, PlayerType *player_ptr, bo
         return;
     }
 
-    GAME_TEXT mon_name[MAX_NLEN];
     int aura_damage = damroll(1 + (r_ptr->level / 26), 1 + (r_ptr->level / 17));
-    monster_desc(player_ptr, mon_name, m_ptr, MD_WRONGDOER_NAME);
     msg_print(message);
-    (*dam_func)(player_ptr, aura_damage, mon_name, true);
+    (*dam_func)(player_ptr, aura_damage, monster_desc(player_ptr, m_ptr, MD_WRONGDOER_NAME).data(), true);
     if (is_original_ap_and_seen(player_ptr, m_ptr)) {
         r_ptr->r_aura_flags.set(aura_flag);
     }
@@ -640,9 +642,12 @@ static void process_aura_damage(MonsterEntity *m_ptr, PlayerType *player_ptr, bo
  */
 void touch_zap_player(MonsterEntity *m_ptr, PlayerType *player_ptr)
 {
-    process_aura_damage(m_ptr, player_ptr, has_immune_fire(player_ptr) != 0, MonsterAuraType::FIRE, fire_dam, _("突然とても熱くなった！", "You are suddenly very hot!"));
-    process_aura_damage(m_ptr, player_ptr, has_immune_cold(player_ptr) != 0, MonsterAuraType::COLD, cold_dam, _("突然とても寒くなった！", "You are suddenly very cold!"));
-    process_aura_damage(m_ptr, player_ptr, has_immune_elec(player_ptr) != 0, MonsterAuraType::ELEC, elec_dam, _("電撃をくらった！", "You get zapped!"));
+    constexpr auto fire_mes = _("突然とても熱くなった！", "You are suddenly very hot!");
+    constexpr auto cold_mes = _("突然とても寒くなった！", "You are suddenly very cold!");
+    constexpr auto elec_mes = _("電撃をくらった！", "You get zapped!");
+    process_aura_damage(m_ptr, player_ptr, has_immune_fire(player_ptr) != 0, MonsterAuraType::FIRE, fire_dam, fire_mes);
+    process_aura_damage(m_ptr, player_ptr, has_immune_cold(player_ptr) != 0, MonsterAuraType::COLD, cold_dam, cold_mes);
+    process_aura_damage(m_ptr, player_ptr, has_immune_elec(player_ptr) != 0, MonsterAuraType::ELEC, elec_dam, elec_mes);
 }
 
 /*!

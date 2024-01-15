@@ -2470,11 +2470,11 @@
     <ClCompile Include="..\..\src\system\dungeon-info.cpp">
       <Filter>system</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\system\terrain-type-definition.cpp">
-      <Filter>system</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\monster-race\race-brightness-mask.cpp">
       <Filter>monster-race</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\monster\monster-pain-describer.cpp">
+      <Filter>monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5372,18 +5372,15 @@
     <ClInclude Include="..\..\src\system\dungeon-info.h">
       <Filter>system</Filter>
     </ClInclude>
-<<<<<<< HEAD:Bakabakaband/Bakabakaband/Bakabakaband.vcxproj.filters
-=======
-    <ClInclude Include="..\..\src\system\terrain-type-definition.h">
-      <Filter>system</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\monster-race\race-brightness-flags.h">
       <Filter>monster-race</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\monster-race\race-brightness-mask.h">
       <Filter>monster-race</Filter>
     </ClInclude>
->>>>>>> 985454096 ([Refactor] モンスターの明かり・闇フラグをFlagGroup化):Hengband/Hengband/Hengband.vcxproj.filters
+    <ClInclude Include="..\..\src\monster\monster-pain-describer.h">
+      <Filter>monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />

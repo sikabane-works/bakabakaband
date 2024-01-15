@@ -16,6 +16,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <algorithm>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -36,15 +37,18 @@ static short get_rumor_num(std::string_view zz, short max_idx)
     return static_cast<short>(atoi(zz.data()));
 }
 
-static std::string_view bind_rumor_name(std::string &base, concptr fullname)
+static std::string bind_rumor_name(std::string_view base, concptr fullname)
 {
-    auto *s = strstr(base.data(), "{Name}");
-    if (s) {
-        s[0] = '\0';
-        return format("%s%s%s", base.data(), fullname, (s + 6));
+    if (const auto pos = base.find("{Name}");
+        pos != std::string::npos) {
+        const auto head = base.substr(0, pos);
+        const auto tail = base.substr(pos + 6);
+        std::stringstream ss;
+        ss << head << fullname << tail;
+        return ss.str();
     }
 
-    return base;
+    return std::string(base);
 }
 
 /*
@@ -89,15 +93,21 @@ static std::pair<FixedArtifactId, const ArtifactType *> get_artifact_definition(
 
 void display_rumor(PlayerType *player_ptr, bool ex)
 {
-    char rumor[1024];
     int section = (ex && (randint0(3) == 0)) ? 1 : 0;
-    errr err = _(get_rnd_line_jonly("rumors_j.txt", section, rumor, 10), get_rnd_line("rumors.txt", section, rumor));
-    if (err) {
-        strcpy(rumor, _("嘘の噂もある。", "Some rumors are wrong."));
+#ifdef JP
+    auto opt_rumor = get_random_line_ja_only("rumors_j.txt", section, 10);
+#else
+    auto opt_rumor = get_random_line("rumors.txt", section);
+#endif
+    std::string rumor;
+    if (opt_rumor.has_value()) {
+        rumor = std::move(opt_rumor.value());
+    } else {
+        rumor = _("嘘の噂もある。", "Some rumors are wrong.");
     }
 
-    if (strncmp(rumor, "R:", 2) != 0) {
-        msg_format("%s", rumor);
+    if (!rumor.starts_with("R:")) {
+        msg_print(rumor);
         return;
     }
 
@@ -176,8 +186,7 @@ void display_rumor(PlayerType *player_ptr, bool ex)
         throw std::runtime_error("Unknown token exists in rumor.txt");
     }
 
-    auto base = std::string(tokens[2]);
-    const auto rumor_msg = bind_rumor_name(base, fullname);
+    const auto rumor_msg = bind_rumor_name(tokens[2], fullname);
     msg_print(rumor_msg);
     if (rumor_eff_format) {
         msg_print(nullptr);

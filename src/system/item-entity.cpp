@@ -328,7 +328,7 @@ bool ItemEntity::is_smith() const
  */
 bool ItemEntity::is_artifact() const
 {
-    return this->is_fixed_artifact() || (this->art_name != 0);
+    return this->is_fixed_artifact() || this->randart_name.has_value();
 }
 
 /*!
@@ -798,4 +798,9 @@ bool ItemEntity::is_armour() const
 bool ItemEntity::is_cross_bow() const
 {
     return this->bi_key.is_cross_bow();
+}
+
+bool ItemEntity::is_inscribed() const
+{
+    return this->inscription != std::nullopt;
 }

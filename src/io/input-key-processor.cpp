@@ -96,6 +96,8 @@
 #include "window/display-sub-windows.h"
 #include "wizard/cmd-wizard.h"
 #include "world/world.h"
+#include <optional>
+#include <string>
 
 /*!
  * @brief ウィザードモードへの導入処理

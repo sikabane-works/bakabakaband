@@ -71,7 +71,7 @@ static std::string describe_artifact_mark_ja(const ItemEntity &item, const descr
 
     if (item.is_fixed_artifact()) {
         return "★";
-    } else if (item.art_name) {
+    } else if (item.is_random_artifact()) {
         return "☆";
     }
 
@@ -95,17 +95,17 @@ static std::string describe_unique_name_before_body_ja(const ItemEntity &item, c
         return "";
     }
 
-    if (item.art_name) {
-        concptr temp = quark_str(item.art_name);
+    if (item.is_random_artifact()) {
+        const std::string_view name_sv = item.randart_name.value();
 
         /* '『' から始まらない伝説のアイテムの名前は最初に付加する */
         /* 英語版のセーブファイルから来た 'of XXX' は,「XXXの」と表示する */
-        if (strncmp(temp, "of ", 3) == 0) {
+        if (name_sv.starts_with("of ")) {
             std::stringstream ss;
-            ss << &temp[3] << "の";
+            ss << name_sv.substr(3) << "の";
             return ss.str();
-        } else if ((strncmp(temp, "『", 2) != 0) && (strncmp(temp, "《", 2) != 0) && (temp[0] != '\'')) {
-            return temp;
+        } else if (!name_sv.starts_with("『") && !name_sv.starts_with("《") && !name_sv.starts_with('\'')) {
+            return item.randart_name.value();
         }
     }
 
@@ -128,33 +128,31 @@ static std::string describe_unique_name_before_body_ja(const ItemEntity &item, c
 
 static std::optional<std::string> describe_random_artifact_name_after_body_ja(const ItemEntity &item)
 {
-    if (item.art_name == 0) {
+    if (!item.is_random_artifact()) {
         return std::nullopt;
     }
 
-    char temp[256];
-    int itemp;
-    strcpy(temp, quark_str(item.art_name));
-    if (strncmp(temp, "『", 2) == 0 || strncmp(temp, "《", 2) == 0) {
-        return temp;
+    const std::string_view name_sv = item.randart_name.value();
+    if (name_sv.starts_with("『") || name_sv.starts_with("《")) {
+        return item.randart_name;
     }
 
-    if (temp[0] != '\'') {
+    if (!name_sv.starts_with('\'')) {
         return "";
     }
 
-    itemp = strlen(temp);
-    temp[itemp - 1] = 0;
-    return format("『%s』", &temp[1]);
+    // "'foobar'" の foobar の部分を取り出し『foobar』と表記する
+    // (英語版のセーブファイルのランダムアーティファクトを考慮)
+    return format("『%s』", name_sv.substr(1, name_sv.length() - 2));
 }
 
 static std::string describe_fake_artifact_name_after_body_ja(const ItemEntity &item)
 {
-    if (!item.inscription) {
+    if (!item.is_inscribed()) {
         return "";
     }
 
-    concptr str = quark_str(item.inscription);
+    auto str = item.inscription->data();
     while (*str) {
         if (iskanji(*str)) {
             str += 2;
@@ -172,7 +170,7 @@ static std::string describe_fake_artifact_name_after_body_ja(const ItemEntity &i
         return "";
     }
 
-    concptr str_aux = angband_strchr(quark_str(item.inscription), '#');
+    auto str_aux = angband_strchr(item.inscription->data(), '#');
     return format("『%s』", str_aux + 1);
 }
 
@@ -290,8 +288,8 @@ static std::string describe_unique_name_after_body_en(const ItemEntity &item, co
 
     std::stringstream ss;
 
-    if (item.art_name) {
-        ss << ' ' << quark_str(item.art_name);
+    if (item.is_random_artifact()) {
+        ss << ' ' << item.randart_name.value();
         return ss.str();
     }
 
@@ -305,8 +303,8 @@ static std::string describe_unique_name_after_body_en(const ItemEntity &item, co
         ss << ' ' << egos_info[item.ego_idx].name;
     }
 
-    if (item.inscription) {
-        if (auto str = angband_strchr(quark_str(item.inscription), '#'); str != nullptr) {
+    if (item.is_inscribed()) {
+        if (auto str = angband_strchr(item.inscription->data(), '#'); str != nullptr) {
             ss << ' ' << str + 1;
         }
     }

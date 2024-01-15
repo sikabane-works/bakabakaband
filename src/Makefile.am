@@ -467,6 +467,7 @@ hengband_SOURCES = \
 	monster/monster-flag-types.h \
 	monster/monster-info.cpp monster/monster-info.h \
 	monster/monster-list.cpp monster/monster-list.h \
+	monster/monster-pain-describer.cpp monster/monster-pain-describer.h \
 	monster/monster-processor.cpp monster/monster-processor.h \
 	monster/monster-processor-util.cpp monster/monster-processor-util.h \
 	monster/monster-timed-effect-types.h \
@@ -1064,8 +1065,10 @@ CXXCOMPILE = $(srcdir)/gcc-wrap $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 if PCH
 stdafx.h.gch: stdafx.h stdafx.cpp Makefile
 	$(CXX) -x c++-header $(CXXFLAGS) $(srcdir)/stdafx.cpp -o $@
-	rm -f stdafx.h.gch.sum
-	md5sum $@ > stdafx.h.gch.sum
+	if test none != "$(PCH_CHECKSUMMER)" ; then \
+		rm -f "$@".sum ; \
+		$(PCH_CHECKSUMMER) $@ > "$@".sum ; \
+	fi
 
 $(hengband_SOURCES:.cpp=.$(OBJEXT)): stdafx.h.gch
 endif

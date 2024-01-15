@@ -104,10 +104,7 @@ static SpoilerOutputResultType spoil_mon_evol(concptr fname)
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    char title[200];
-    put_version(title);
-    sprintf(buf, "Monster Spoilers for %s\n", title);
-    spoil_out(buf);
+    spoil_out(std::string("Monster Spoilers for ").append(get_version()).append("\n"));
 
     spoil_out("------------------------------------------\n\n");
 
@@ -186,10 +183,7 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    char title[200];
-    put_version(title);
-    sprintf(buf, "Player Spells for %s\n", title);
-    spoil_out(buf);
+    spoil_out(format("Player spells for %s\n", get_version().data()));
     spoil_out("------------------------------------------\n\n");
 
     PlayerType dummy_p;
@@ -202,12 +196,13 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
 
         auto magic_ptr = &class_magics_info[c];
         concptr book_name = "なし";
+        char name_buffer[200];
         if (magic_ptr->spell_book != ItemKindType::NONE) {
             ItemEntity book;
             auto o_ptr = &book;
             o_ptr->prep(lookup_baseitem_id({ magic_ptr->spell_book, 0 }));
-            describe_flavor(&dummy_p, title, o_ptr, OD_NAME_ONLY);
-            book_name = title;
+            describe_flavor(&dummy_p, name_buffer, o_ptr, OD_NAME_ONLY);
+            book_name = name_buffer;
             char *s = angband_strchr(book_name, '[');
             *s = '\0';
         }
@@ -226,8 +221,8 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
             spoil_out("Name                     Lv Cst Dif Exp\n");
             for (SPELL_IDX i = 0; i < 32; i++) {
                 auto spell_ptr = &magic_ptr->info[r][i];
-                auto spell_name = exe_spell(&dummy_p, r, i, SpellProcessType::NAME);
-                sprintf(buf, "%-24s %2d %3d %3d %3d\n", spell_name, spell_ptr->slevel, spell_ptr->smana, spell_ptr->sfail, spell_ptr->sexp);
+                const auto spell_name = exe_spell(&dummy_p, r, i, SpellProcessType::NAME);
+                sprintf(buf, "%-24s %2d %3d %3d %3d\n", spell_name->data(), spell_ptr->slevel, spell_ptr->smana, spell_ptr->sfail, spell_ptr->sexp);
                 spoil_out(buf);
             }
             spoil_out("\n");

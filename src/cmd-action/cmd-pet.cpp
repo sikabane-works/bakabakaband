@@ -66,6 +66,7 @@
 #include "util/int-char-converter.h"
 #include "util/quarks.h"
 #include "util/sort.h"
+#include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <sstream>
@@ -102,23 +103,19 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
 
     /* Process the monsters (backwards) */
     for (auto i = 0U; i < who.size(); i++) {
-        bool delete_this;
-        GAME_TEXT friend_name[MAX_NLEN];
-        bool kakunin;
-
         auto pet_ctr = who[i];
         m_ptr = &player_ptr->current_floor_ptr->m_list[pet_ctr];
 
-        delete_this = false;
-        kakunin = ((pet_ctr == player_ptr->riding) || (m_ptr->nickname));
-        monster_desc(player_ptr, friend_name, m_ptr, MD_ASSUME_VISIBLE);
+        auto delete_this = false;
+        auto should_ask = (pet_ctr == player_ptr->riding) || m_ptr->is_named();
+        const auto friend_name = monster_desc(player_ptr, m_ptr, MD_ASSUME_VISIBLE);
 
         if (!all_pets) {
             /* Hack -- health bar for this monster */
             health_track(player_ptr, pet_ctr);
             handle_stuff(player_ptr);
 
-            msg_format(_("%sを放しますか？ [Yes/No/Unnamed (%d体)]", "Dismiss %s? [Yes/No/Unnamed (%d remain)]"), friend_name, who.size() - i);
+            msg_format(_("%sを放しますか？ [Yes/No/Unnamed (%d体)]", "Dismiss %s? [Yes/No/Unnamed (%d remain)]"), friend_name.data(), who.size() - i);
 
             if (m_ptr->ml) {
                 move_cursor_relative(m_ptr->fy, m_ptr->fx);
@@ -130,8 +127,8 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
                 if (ch == 'Y' || ch == 'y') {
                     delete_this = true;
 
-                    if (kakunin) {
-                        msg_format(_("本当によろしいですか？ (%s) ", "Are you sure? (%s) "), friend_name);
+                    if (should_ask) {
+                        msg_format(_("本当によろしいですか？ (%s) ", "Are you sure? (%s) "), friend_name.data());
                         ch = inkey();
                         if (ch != 'Y' && ch != 'y') {
                             delete_this = false;
@@ -153,16 +150,14 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
             }
         }
 
-        if ((all_pets && !kakunin) || (!all_pets && delete_this)) {
-            if (record_named_pet && m_ptr->nickname) {
-                GAME_TEXT m_name[MAX_NLEN];
-
-                monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-                exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_DISMISS, m_name);
+        if ((all_pets && !should_ask) || (!all_pets && delete_this)) {
+            if (record_named_pet && m_ptr->is_named()) {
+                const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
+                exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_DISMISS, m_name.data());
             }
 
             if (pet_ctr == player_ptr->riding) {
-                msg_format(_("%sから降りた。", "You dismount from %s. "), friend_name);
+                msg_format(_("%sから降りた。", "You dismount from %s. "), friend_name.data());
 
                 player_ptr->riding = 0;
 
@@ -171,7 +166,7 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
             }
 
             /* HACK : Add the line to message buffer */
-            msg_format(_("%s を放した。", "Dismissed %s."), friend_name);
+            msg_format(_("%s を放した。", "Dismissed %s."), friend_name.data());
             player_ptr->update |= (PU_BONUS);
             player_ptr->window_flags |= (PW_MESSAGE);
 
@@ -284,10 +279,9 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
         }
 
         if (m_ptr->is_asleep()) {
-            GAME_TEXT m_name[MAX_NLEN];
-            monster_desc(player_ptr, m_name, m_ptr, 0);
+            const auto m_name = monster_desc(player_ptr, m_ptr, 0);
             (void)set_monster_csleep(player_ptr, g_ptr->m_idx, 0);
-            msg_format(_("%sを起こした。", "You have woken %s up."), m_name);
+            msg_format(_("%sを起こした。", "You have woken %s up."), m_name.data());
         }
 
         if (player_ptr->action == ACTION_MONK_STANCE) {
@@ -321,8 +315,6 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
 static void do_name_pet(PlayerType *player_ptr)
 {
     MonsterEntity *m_ptr;
-    char out_val[20];
-    GAME_TEXT m_name[MAX_NLEN];
     bool old_name = false;
     bool old_target_pet = target_pet;
 
@@ -345,18 +337,17 @@ static void do_name_pet(PlayerType *player_ptr)
             msg_print(_("そのモンスターの名前は変えられない！", "You cannot change the name of this monster!"));
             return;
         }
-        monster_desc(player_ptr, m_name, m_ptr, 0);
 
-        msg_format(_("%sに名前をつける。", "Name %s."), m_name);
+        msg_format(_("%sに名前をつける。", "Name %s."), monster_desc(player_ptr, m_ptr, 0).data());
         msg_print(nullptr);
 
         /* Start with nothing */
-        strcpy(out_val, "");
+        char out_val[20]{};
 
         /* Use old inscription */
-        if (m_ptr->nickname) {
+        if (m_ptr->is_named()) {
             /* Start with the old inscription */
-            strcpy(out_val, quark_str(m_ptr->nickname));
+            angband_strcpy(out_val, m_ptr->nickname.data(), sizeof(out_val));
             old_name = true;
         }
 
@@ -364,17 +355,15 @@ static void do_name_pet(PlayerType *player_ptr)
         if (get_string(_("名前: ", "Name: "), out_val, 15)) {
             if (out_val[0]) {
                 /* Save the inscription */
-                m_ptr->nickname = quark_add(out_val);
+                m_ptr->nickname = out_val;
                 if (record_named_pet) {
-                    monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-                    exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_NAME, m_name);
+                    exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_NAME, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE).data());
                 }
             } else {
                 if (record_named_pet && old_name) {
-                    monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-                    exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_UNNAME, m_name);
+                    exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_UNNAME, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE).data());
                 }
-                m_ptr->nickname = 0;
+                m_ptr->nickname.clear();
             }
         }
     }

@@ -51,7 +51,7 @@ static std::optional<PRICE> prompt_to_buy(PlayerType *player_ptr, ItemEntity *o_
     auto price_ask = price_item(player_ptr, o_ptr, ot_ptr->inflate, false, store_num);
 
     price_ask *= o_ptr->number;
-    concptr s = format(_("買値 $%ld で買いますか？", "Do you buy for $%ld? "), static_cast<long>(price_ask));
+    const auto s = format(_("買値 $%ld で買いますか？", "Do you buy for $%ld? "), static_cast<long>(price_ask));
     if (get_check_strict(player_ptr, s, CHECK_DEFAULT_Y)) {
         return price_ask;
     }
@@ -213,7 +213,7 @@ void store_purchase(PlayerType *player_ptr, StoreSaleType store_num)
             msg_format(_("一つにつき $%ldです。", "That costs %ld gold per item."), (long)(best));
         }
 
-        amt = get_quantity(nullptr, o_ptr->number);
+        amt = get_quantity(std::nullopt, o_ptr->number);
         if (amt <= 0) {
             return;
         }
@@ -292,11 +292,11 @@ void store_purchase(PlayerType *player_ptr, StoreSaleType store_num)
     player_ptr->plus_incident(INCIDENT::STORE_BUY, 1);
 
     describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
-    if (record_rand_art && o_ptr->art_name) {
+    if (record_rand_art && o_ptr->is_random_artifact()) {
         exe_write_diary(player_ptr, DIARY_ART, 0, o_name);
     }
 
-    j_ptr->inscription = 0;
+    j_ptr->inscription.reset();
     j_ptr->feeling = FEEL_NONE;
     j_ptr->ident &= ~(IDENT_STORE);
 

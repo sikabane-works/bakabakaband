@@ -1,5 +1,6 @@
 ﻿#include "term/screen-processor.h"
 #include "io/input-key-acceptor.h"
+#include "locale/japanese.h"
 #include "term/term-color-types.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -77,36 +78,81 @@ void screen_load(ScreenLoadOptType opt)
  * At the given location, using the given attribute, if allowed,
  * add the given string.  Do not clear the line.
  */
-void c_put_str(TERM_COLOR attr, concptr str, TERM_LEN row, TERM_LEN col)
+void c_put_str(TERM_COLOR attr, std::string_view sv, TERM_LEN row, TERM_LEN col)
 {
-    term_putstr(col, row, -1, attr, str);
+    term_putstr(col, row, -1, attr, sv);
 }
 
 /*
  * As above, but in "white"
  */
-void put_str(concptr str, TERM_LEN row, TERM_LEN col)
+void put_str(std::string_view sv, TERM_LEN row, TERM_LEN col)
 {
-    term_putstr(col, row, -1, TERM_WHITE, str);
+    term_putstr(col, row, -1, TERM_WHITE, sv);
 }
 
 /*
  * Display a string on the screen using an attribute, and clear
  * to the end of the line.
  */
-void c_prt(TERM_COLOR attr, concptr str, TERM_LEN row, TERM_LEN col)
+void c_prt(TERM_COLOR attr, std::string_view sv, TERM_LEN row, TERM_LEN col)
 {
     term_erase(col, row, 255);
-    term_addstr(-1, attr, str);
+    term_addstr(-1, attr, sv);
 }
 
 /*
  * As above, but in "white"
  */
-void prt(concptr str, TERM_LEN row, TERM_LEN col)
+void prt(std::string_view sv, TERM_LEN row, TERM_LEN col)
 {
     /* Spawn */
-    c_prt(TERM_WHITE, str, row, col);
+    c_prt(TERM_WHITE, sv, row, col);
+}
+
+static std::vector<std::pair<TERM_COLOR, char>> c_roff_wrap(int x, int y, int w, const char *s)
+{
+    if (x >= w) {
+        return {};
+    }
+
+    std::vector<std::pair<TERM_COLOR, char>> wrap_chars;
+    auto wrap_col = w;
+
+    if (_(iskanji(*s), false)) {
+        /* 現在が全角文字の場合 */
+        /* 行頭が行頭禁則文字になるときは、その１つ前の語で改行 */
+        if (is_kinsoku({ s, 2 })) {
+            TERM_COLOR a;
+            char c;
+            term_what(x - 2, y, &a, &c);
+            wrap_chars.emplace_back(a, c);
+            term_what(x - 1, y, &a, &c);
+            wrap_chars.emplace_back(a, c);
+            wrap_col = x - 2;
+        }
+    } else {
+        /* 現在が半角文字の場合 */
+        for (auto i = 0; i < x; i++) {
+            TERM_COLOR a;
+            char c;
+            term_what(i, y, &a, &c);
+
+            if (c == ' ') {
+                wrap_col = i + 1;
+                wrap_chars.clear();
+            } else if (_(iskanji(c), false)) {
+                wrap_col = i + 2;
+                i++;
+                wrap_chars.clear();
+            } else {
+                wrap_chars.emplace_back(a, c);
+            }
+        }
+    }
+
+    term_erase(wrap_col, y, 255);
+    return wrap_chars;
 }
 
 /*
@@ -123,7 +169,7 @@ void prt(concptr str, TERM_LEN row, TERM_LEN col)
  * This function will correctly handle any width up to the maximum legal
  * value of 256, though it works best for a standard 80 character width.
  */
-void c_roff(TERM_COLOR a, concptr str)
+void c_roff(TERM_COLOR a, std::string_view str)
 {
     int w, h;
     (void)term_get_size(&w, &h);
@@ -135,111 +181,40 @@ void c_roff(TERM_COLOR a, concptr str)
         return;
     }
 
-    for (concptr s = str; *s; s++) {
-        char ch;
-#ifdef JP
-        int k_flag = iskanji(*s);
-#endif
+    for (auto s = str.begin(); s != str.end(); ++s) {
+        const auto is_kanji = _(iskanji(*s), false);
+
         if (*s == '\n') {
-            x = 0;
-            y++;
-            if (y == h) {
-                break;
+            if (y + 1 < h) {
+                term_erase(0, y + 1, 255);
             }
 
-            term_erase(x, y, 255);
-            break;
+            return;
         }
 
-#ifdef JP
-        ch = ((k_flag || isprint(*s)) ? *s : ' ');
-#else
-        ch = (isprint(*s) ? *s : ' ');
-#endif
+        const auto ch = (is_kanji || isprint(*s)) ? *s : ' ';
 
-#ifdef JP
-        if ((x >= ((k_flag) ? w - 2 : w - 1)) && (ch != ' '))
-#else
-        if ((x >= w - 1) && (ch != ' '))
-#endif
-        {
-            int i, n = 0;
-            const int end_col = x - 1;
+        if ((x >= ((is_kanji) ? w - 2 : w - 1)) && (ch != ' ')) {
+            const auto wrap_chars = c_roff_wrap(x, y, w, &*s);
 
-            TERM_COLOR av[256];
-            char cv[256];
-            if (x < w) {
-#ifdef JP
-                /* 現在が半角文字の場合 */
-                if (!k_flag)
-#endif
-                {
-                    for (i = 0; i <= end_col; i++) {
-                        term_what(i, y, &av[i], &cv[i]);
-
-                        if (cv[i] == ' ') {
-                            n = i + 1;
-                        }
-#ifdef JP
-                        if (iskanji(cv[i])) {
-                            n = i + 2;
-                            i++;
-                            term_what(i, y, &av[i], &cv[i]);
-                        }
-#endif
-                    }
-                }
-#ifdef JP
-                else {
-                    /* 現在が全角文字のとき */
-                    /* 文頭が「。」「、」等になるときは、その１つ前の語で改行 */
-                    if (strncmp(s, "。", 2) == 0 || strncmp(s, "、", 2) == 0) {
-                        term_what(x - 1, y, &av[x - 1], &cv[x - 1]);
-                        term_what(x - 2, y, &av[x - 2], &cv[x - 2]);
-                        n = x - 2;
-                    }
-                }
-#endif
-            }
-            if (n == 0) {
-                n = w;
-            }
-
-            term_erase(n, y, 255);
-            x = 0;
             y++;
             if (y == h) {
-                break;
+                return;
             }
 
-            term_erase(x, y, 255);
-            for (i = n; i <= end_col; i++) {
-#ifdef JP
-                if (cv[i] == '\0') {
-                    break;
-                }
-#endif
-                term_addch(av[i], cv[i]);
-                if (++x > w) {
-                    x = w;
-                }
+            term_erase(0, y, 255);
+            for (const auto &[ca, cv] : wrap_chars) {
+                term_addch(ca, cv);
             }
+            x = wrap_chars.size();
         }
 
-#ifdef JP
-        term_addch((byte)(a | 0x10), ch);
-#else
-        term_addch(a, ch);
-#endif
-
-#ifdef JP
-        if (k_flag) {
+        term_addch(_((a | 0x10), a), ch);
+        if (is_kanji) {
             s++;
             x++;
-            ch = *s;
-            term_addch((byte)(a | 0x20), ch);
+            term_addch((a | 0x20), *s);
         }
-#endif
 
         if (++x > w) {
             x = w;
@@ -250,7 +225,7 @@ void c_roff(TERM_COLOR a, concptr str)
 /*
  * As above, but in "white"
  */
-void roff(concptr str)
+void roff(std::string_view str)
 {
     /* Spawn */
     c_roff(TERM_WHITE, str);
@@ -262,6 +237,7 @@ void roff(concptr str)
 void clear_from(int row)
 {
     for (int y = row; y < game_term->hgt; y++) {
+        TermOffsetSetter tos(0, std::nullopt);
         term_erase(0, y, 255);
     }
 }

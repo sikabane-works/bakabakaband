@@ -60,10 +60,10 @@ bool MindPowerGetter::get_mind_power(SPELL_IDX *sn, bool only_browse)
 
     char out_val[160];
     if (only_browse) {
-        (void)strnfmt(out_val, 78, _("(%^s %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%^ss %c-%c, *=List, ESC=exit) Use which %s? "),
+        (void)strnfmt(out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "),
             this->mind_description, I2A(0), I2A(this->num - 1), this->mind_description);
     } else {
-        (void)strnfmt(out_val, 78, _("(%^s %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%^ss %c-%c, *=List, ESC=exit) Use which %s? "),
+        (void)strnfmt(out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "),
             this->mind_description, I2A(0), I2A(this->num - 1), this->mind_description);
     }
 
@@ -254,22 +254,20 @@ void MindPowerGetter::display_each_mind_chance()
         }
 
         calculate_mind_chance(has_weapon);
-        char comment[80];
-        mindcraft_info(this->player_ptr, comment, this->use_mind, this->index);
-        char psi_desc[80];
+        const auto comment = mindcraft_info(this->player_ptr, this->use_mind, this->index);
+        std::string psi_desc;
         if (use_menu) {
             if (this->index == (this->menu_line - 1)) {
-                strcpy(psi_desc, _("  》 ", "  >  "));
+                psi_desc = _("  》 ", "  >  ");
             } else {
-                strcpy(psi_desc, "     ");
+                psi_desc = "     ";
             }
         } else {
-            sprintf(psi_desc, "  %c) ", I2A(this->index));
+            psi_desc = format("  %c) ", I2A(this->index));
         }
 
-        strcat(psi_desc,
-            format("%-30s%2d %4d%s %3d%%%s", this->spell->name, this->spell->min_lev, mana_cost,
-                (((this->use_mind == MindKindType::MINDCRAFTER) && (this->index == 13)) ? _("～", "~ ") : "  "), chance, comment));
+        psi_desc.append(format("%-30s%2d %4d%s %3d%%%s", this->spell->name, this->spell->min_lev, mana_cost,
+            (((this->use_mind == MindKindType::MINDCRAFTER) && (this->index == 13)) ? _("～", "~ ") : "  "), chance, comment.data()));
         prt(psi_desc, y + this->index + 1, x);
     }
 }

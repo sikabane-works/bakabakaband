@@ -89,6 +89,7 @@
 #include "system/player-type-definition.h"
 #include "target/grid-selector.h"
 #include "term/screen-processor.h"
+#include "term/z-form.h"
 #include "util/angband-files.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
@@ -412,8 +413,8 @@ void wiz_change_status(PlayerType *player_ptr)
     char tmp_val[160];
     char ppp[80];
     for (int i = 0; i < A_MAX; i++) {
-        sprintf(ppp, "%s (3-%d): ", stat_names[i], player_ptr->stat_max_max[i]);
-        sprintf(tmp_val, "%d", player_ptr->stat_max[i]);
+        strnfmt(ppp, sizeof(ppp), "%s (3-%d): ", stat_names[i], player_ptr->stat_max_max[i]);
+        strnfmt(tmp_val, sizeof(tmp_val), "%d", player_ptr->stat_max[i]);
         if (!get_string(ppp, tmp_val, 3)) {
             return;
         }
@@ -428,7 +429,7 @@ void wiz_change_status(PlayerType *player_ptr)
         player_ptr->stat_cur[i] = player_ptr->stat_max[i] = (BASE_STATUS)tmp_int;
     }
 
-    sprintf(tmp_val, "%d", PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER));
+    strnfmt(tmp_val, sizeof(tmp_val), "%d", PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER));
     if (!get_string(_("熟練度: ", "Proficiency: "), tmp_val, 4)) {
         return;
     }
@@ -461,7 +462,7 @@ void wiz_change_status(PlayerType *player_ptr)
         player_ptr->spell_exp[k] = std::min(PlayerSkill::spell_exp_at(PlayerSkillRank::EXPERT), tmp_s16b);
     }
 
-    sprintf(tmp_val, "%ld", (long)(player_ptr->au));
+    strnfmt(tmp_val, sizeof(tmp_val), "%ld", (long)(player_ptr->au));
     if (!get_string("Gold: ", tmp_val, 9)) {
         return;
     }
@@ -472,7 +473,7 @@ void wiz_change_status(PlayerType *player_ptr)
     }
 
     player_ptr->au = tmp_long;
-    sprintf(tmp_val, "%ld", (long)(player_ptr->max_exp));
+    strnfmt(tmp_val, sizeof(tmp_val), "%ld", (long)(player_ptr->max_exp));
     if (!get_string("Experience: ", tmp_val, 9)) {
         return;
     }
@@ -534,6 +535,34 @@ void wiz_create_feature(PlayerType *player_ptr)
     player_ptr->update |= PU_FLOW;
 }
 
+/*!
+ * @brief デバッグ帰還のダンジョンを選ぶ
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @details 範囲外の値が選択されたら再入力を促す
+ */
+static bool select_debugging_dungeon(PlayerType *player_ptr, DUNGEON_IDX *dungeon_type)
+{
+    if (command_arg > 0) {
+        return true;
+    }
+
+    while (true) {
+        char tmp_val[160];
+        strnfmt(tmp_val, sizeof(tmp_val), "%d", player_ptr->dungeon_idx);
+        if (!get_string("Jump which dungeon : ", tmp_val, 2)) {
+            return false;
+        }
+
+        *dungeon_type = (DUNGEON_IDX)atoi(tmp_val);
+        if ((*dungeon_type < DUNGEON_ANGBAND) || (*dungeon_type > DUNGEON_MAX)) {
+            msg_print("Invalid dungeon. Please re-input.");
+            continue;
+        }
+
+        return true;
+    }
+}
+
 /*
  * @brief 選択したダンジョンの任意フロアを選択する
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -553,8 +582,8 @@ static bool select_debugging_floor(PlayerType *player_ptr, int dungeon_type)
     while (true) {
         char ppp[80];
         char tmp_val[160];
-        sprintf(ppp, "Jump to level (0, %d-%d): ", min_depth, max_depth);
-        sprintf(tmp_val, "%d", (int)player_ptr->current_floor_ptr->dun_level);
+        strnfmt(ppp, sizeof(ppp), "Jump to level (0, %d-%d): ", min_depth, max_depth);
+        strnfmt(tmp_val, sizeof(tmp_val), "%d", (int)player_ptr->current_floor_ptr->dun_level);
         if (!get_string(ppp, tmp_val, 10)) {
             return false;
         }
@@ -578,36 +607,6 @@ static bool select_debugging_floor(PlayerType *player_ptr, int dungeon_type)
     }
 
     return true;
-}
-
-/*!
- * @brief デバッグ帰還のダンジョンを選ぶ
- * @param player_ptr プレイヤーへの参照ポインタ
- * @details 範囲外の値が選択されたら再入力を促す
- */
-static bool select_debugging_dungeon(PlayerType *player_ptr, DUNGEON_IDX *dungeon_type)
-{
-    if (command_arg > 0) {
-        return true;
-    }
-
-    while (true) {
-        char ppp[80];
-        char tmp_val[160];
-        sprintf(ppp, "Jump which dungeon : ");
-        sprintf(tmp_val, "%d", player_ptr->dungeon_idx);
-        if (!get_string(ppp, tmp_val, 2)) {
-            return false;
-        }
-
-        *dungeon_type = (DUNGEON_IDX)atoi(tmp_val);
-        if ((*dungeon_type < DUNGEON_ANGBAND) || (*dungeon_type > DUNGEON_MAX)) {
-            msg_print("Invalid dungeon. Please re-input.");
-            continue;
-        }
-
-        return true;
-    }
 }
 
 /*!
@@ -749,9 +748,7 @@ void wiz_dump_options(void)
         }
     }
 
-    char title[200];
-    put_version(title);
-    fprintf(fff, "[Option bits usage on %s\n]", title);
+    fprintf(fff, "[Option bits usage on %s\n]", get_version().data());
     fputs("Set - Bit (Page) Option Name\n", fff);
     fputs("------------------------------------------------\n", fff);
     for (int i = 0; i < NUM_O_SET; i++) {
@@ -796,11 +793,9 @@ void wiz_zap_surrounding_monsters(PlayerType *player_ptr)
             continue;
         }
 
-        if (record_named_pet && m_ptr->is_pet() && m_ptr->nickname) {
-            GAME_TEXT m_name[MAX_NLEN];
-
-            monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-            exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name);
+        if (record_named_pet && m_ptr->is_named_pet()) {
+            const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
+            exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name.data());
         }
 
         delete_monster_idx(player_ptr, i);
@@ -819,10 +814,9 @@ void wiz_zap_floor_monsters(PlayerType *player_ptr)
             continue;
         }
 
-        if (record_named_pet && m_ptr->is_pet() && m_ptr->nickname) {
-            GAME_TEXT m_name[MAX_NLEN];
-            monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-            exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name);
+        if (record_named_pet && m_ptr->is_named_pet()) {
+            const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
+            exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name.data());
         }
 
         delete_monster_idx(player_ptr, i);

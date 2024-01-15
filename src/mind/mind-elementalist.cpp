@@ -70,10 +70,10 @@
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
-#include "util/buffer-shaper.h"
 #include "util/enum-converter.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
+#include "view/display-util.h"
 #include <array>
 #include <string>
 #include <unordered_map>
@@ -370,7 +370,7 @@ concptr get_element_name(int realm_idx, int n)
  * @param spell_idx 呪文番号
  * @return 説明文
  */
-static concptr get_element_tip(PlayerType *player_ptr, int spell_idx)
+static std::string get_element_tip(PlayerType *player_ptr, int spell_idx)
 {
     auto realm = i2enum<ElementRealmType>(player_ptr->element);
     auto spell = i2enum<ElementSpells>(spell_idx);
@@ -408,10 +408,9 @@ static mind_type get_elemental_info(PlayerType *player_ptr, int spell_idx)
  * @brief 元素魔法呪文の効果表示文字列を取得
  * @param player_ptr プレイヤー情報への参照ポインタ
  * @param spell_idx 呪文番号
- * @param p バッファ
- * @return なし(pを更新)
+ * @return std::string 魔法の効果を表す文字列
  */
-void get_element_effect_info(PlayerType *player_ptr, int spell_idx, char *p)
+static std::string get_element_effect_info(PlayerType *player_ptr, int spell_idx)
 {
     PLAYER_LEVEL plev = player_ptr->lev;
     auto spell = i2enum<ElementSpells>(spell_idx);
@@ -419,51 +418,36 @@ void get_element_effect_info(PlayerType *player_ptr, int spell_idx, char *p)
 
     switch (spell) {
     case ElementSpells::BOLT_1ST:
-        sprintf(p, " %s%dd%d", KWD_DAM, 3 + ((plev - 1) / 5), 4);
-        break;
+        return format(" %s%dd%d", KWD_DAM, 3 + ((plev - 1) / 5), 4);
     case ElementSpells::CURE:
-        sprintf(p, " %s%dd%d", KWD_HEAL, 2, 8);
-        break;
+        return format(" %s%dd%d", KWD_HEAL, 2, 8);
     case ElementSpells::BOLT_2ND:
-        sprintf(p, " %s%dd%d", KWD_DAM, 8 + ((plev - 5) / 4), 8);
-        break;
+        return format(" %s%dd%d", KWD_DAM, 8 + ((plev - 5) / 4), 8);
     case ElementSpells::BALL_3RD:
-        sprintf(p, " %s%d", KWD_DAM, (50 + plev * 2));
-        break;
+        return format(" %s%d", KWD_DAM, (50 + plev * 2));
     case ElementSpells::BALL_1ST:
-        sprintf(p, " %s%d", KWD_DAM, 55 + plev);
-        break;
+        return format(" %s%d", KWD_DAM, 55 + plev);
     case ElementSpells::BREATH_2ND:
         dam = p_ptr->chp / 2;
-        sprintf(p, " %s%d", KWD_DAM, (dam > 150) ? 150 : dam);
-        break;
+        return format(" %s%d", KWD_DAM, (dam > 150) ? 150 : dam);
     case ElementSpells::ANNIHILATE:
-        sprintf(p, " %s%d", _("効力:", "pow "), 50 + plev);
-        break;
+        return format(" %s%d", _("効力:", "pow "), 50 + plev);
     case ElementSpells::BOLT_3RD:
-        sprintf(p, " %s%dd%d", KWD_DAM, 12 + ((plev - 5) / 4), 8);
-        break;
+        return format(" %s%dd%d", KWD_DAM, 12 + ((plev - 5) / 4), 8);
     case ElementSpells::WAVE_1ST:
-        sprintf(p, " %s50+d%d", KWD_DAM, plev * 3);
-        break;
+        return format(" %s50+d%d", KWD_DAM, plev * 3);
     case ElementSpells::BALL_2ND:
-        sprintf(p, " %s%d", KWD_DAM, 75 + plev * 3 / 2);
-        break;
+        return format(" %s%d", KWD_DAM, 75 + plev * 3 / 2);
     case ElementSpells::BURST_1ST:
-        sprintf(p, " %s%dd%d", KWD_DAM, 6 + plev / 8, 7);
-        break;
+        return format(" %s%dd%d", KWD_DAM, 6 + plev / 8, 7);
     case ElementSpells::STORM_2ND:
-        sprintf(p, " %s%d", KWD_DAM, 115 + plev * 5 / 2);
-        break;
+        return format(" %s%d", KWD_DAM, 115 + plev * 5 / 2);
     case ElementSpells::BREATH_1ST:
-        sprintf(p, " %s%d", KWD_DAM, p_ptr->chp * 2 / 3);
-        break;
+        return format(" %s%d", KWD_DAM, p_ptr->chp * 2 / 3);
     case ElementSpells::STORM_3ND:
-        sprintf(p, " %s%d", KWD_DAM, 300 + plev * 5);
-        break;
+        return format(" %s%d", KWD_DAM, 300 + plev * 5);
     default:
-        p[0] = '\0';
-        break;
+        return std::string();
     }
 }
 
@@ -701,7 +685,6 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
     PLAYER_LEVEL plev = player_ptr->lev;
     char choice;
     char out_val[160];
-    char comment[80];
     COMMAND_CODE code;
     bool flag, redraw;
     int menu_line = (use_menu ? 1 : 0);
@@ -725,11 +708,11 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
     }
 
     if (only_browse) {
-        (void)strnfmt(out_val, 78, _("(%^s %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%^ss %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0),
+        (void)strnfmt(out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0),
             I2A(num - 1), p);
     } else {
         (void)strnfmt(
-            out_val, 78, _("(%^s %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%^ss %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num - 1), p);
+            out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num - 1), p);
     }
 
     if (use_menu && !only_browse) {
@@ -778,11 +761,9 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
             }
         }
 
-        int spell_max = enum2i(ElementSpells::MAX);
+        constexpr auto spell_max = enum2i(ElementSpells::MAX);
         if ((choice == ' ') || (choice == '*') || (choice == '?') || (use_menu && should_redraw_cursor)) {
             if (!redraw || use_menu) {
-                char desc[80];
-                char name[80];
                 redraw = true;
                 if (!only_browse && !use_menu) {
                     screen_save();
@@ -801,21 +782,22 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
 
                     PERCENTAGE chance = decide_element_chance(player_ptr, spell);
                     int mana_cost = decide_element_mana_cost(player_ptr, spell);
-                    get_element_effect_info(player_ptr, i, comment);
+                    const auto comment = get_element_effect_info(player_ptr, i);
 
+                    std::string desc;
                     if (use_menu) {
                         if (i == (menu_line - 1)) {
-                            strcpy(desc, _("  》 ", "  >  "));
+                            desc = _("  》 ", "  >  ");
                         } else {
-                            strcpy(desc, "     ");
+                            desc = "     ";
                         }
                     } else {
-                        sprintf(desc, "  %c) ", I2A(i));
+                        desc = format("  %c) ", I2A(i));
                     }
 
-                    concptr s = get_element_name(player_ptr->element, elem);
-                    sprintf(name, spell.name, s);
-                    strcat(desc, format("%-30s%2d %4d %3d%%%s", name, spell.min_lev, mana_cost, chance, comment));
+                    const auto s = get_element_name(player_ptr->element, elem);
+                    const auto name = format(spell.name, s);
+                    desc.append(format("%-30s%2d %4d %3d%%%s", name.data(), spell.min_lev, mana_cost, chance, comment.data()));
                     prt(desc, y + i + 1, x);
                 }
 
@@ -964,7 +946,6 @@ void do_cmd_element(PlayerType *player_ptr)
 void do_cmd_element_browse(PlayerType *player_ptr)
 {
     SPELL_IDX n = 0;
-    char temp[62 * 5];
 
     screen_save();
     while (true) {
@@ -979,11 +960,7 @@ void do_cmd_element_browse(PlayerType *player_ptr)
         term_erase(12, 18, 255);
         term_erase(12, 17, 255);
         term_erase(12, 16, 255);
-        shape_buffer(get_element_tip(player_ptr, n), 62, temp, sizeof(temp));
-        for (int j = 0, line = 17; temp[j]; j += (1 + strlen(&temp[j]))) {
-            prt(&temp[j], line, 15);
-            line++;
-        }
+        display_wrap_around(get_element_tip(player_ptr, n), 62, 17, 15);
 
         prt(_("何かキーを押して下さい。", "Hit any key."), 0, 0);
         (void)inkey();
@@ -1068,7 +1045,7 @@ ProcessResult effect_monster_elemental_genocide(PlayerType *player_ptr, effect_m
 
     if (!b) {
         if (em_ptr->seen_msg) {
-            msg_format(_("%sには効果がなかった。", "%^s is unaffected."), em_ptr->m_name);
+            msg_format(_("%sには効果がなかった。", "%s^ is unaffected."), em_ptr->m_name);
         }
         em_ptr->dam = 0;
         return ProcessResult::PROCESS_TRUE;
@@ -1076,7 +1053,7 @@ ProcessResult effect_monster_elemental_genocide(PlayerType *player_ptr, effect_m
 
     if (genocide_aux(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, !em_ptr->who, (em_ptr->r_ptr->level + 1) / 2, _("モンスター消滅", "Genocide One"))) {
         if (em_ptr->seen_msg) {
-            msg_format(_("%sは消滅した！", "%^s disappeared!"), em_ptr->m_name);
+            msg_format(_("%sは消滅した！", "%s^ disappeared!"), em_ptr->m_name);
         }
         em_ptr->dam = 0;
         chg_virtue(player_ptr, V_VITALITY, -1);
@@ -1265,16 +1242,7 @@ byte select_element_realm(PlayerType *player_ptr)
         }
 
         auto realm = i2enum<ElementRealmType>(realm_idx);
-        char temp[80 * 5];
-        shape_buffer(element_texts.at(realm).data(), 74, temp, sizeof(temp));
-        concptr t = temp;
-        for (int i = 0; i < 5; i++) {
-            if (t[0] == 0) {
-                break;
-            }
-            prt(t, row + i, 3);
-            t += strlen(t) + 1;
-        }
+        display_wrap_around(element_texts.at(realm), 74, row, 3);
 
         if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
             break;

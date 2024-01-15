@@ -16,20 +16,19 @@
 
 static bool message_curse(PlayerType *player_ptr, MONSTER_IDX m_idx, MONSTER_IDX t_idx, std::string_view msg1, std::string_view msg2, std::string_view msg3, int target_type)
 {
-    GAME_TEXT m_name[MAX_NLEN], t_name[MAX_NLEN];
-    monster_name(player_ptr, m_idx, m_name);
-    monster_name(player_ptr, t_idx, t_name);
+    const auto m_name = monster_name(player_ptr, m_idx);
+    const auto t_name = monster_name(player_ptr, t_idx);
 
     if (target_type == MONSTER_TO_PLAYER) {
         disturb(player_ptr, true, true);
         if (player_ptr->effects()->blindness()->is_blind()) {
-            msg_format(msg1.data(), m_name);
+            msg_format(msg1.data(), m_name.data());
         } else {
-            msg_format(msg2.data(), m_name);
+            msg_format(msg2.data(), m_name.data());
         }
     } else if (target_type == MONSTER_TO_MONSTER) {
         if (see_monster(player_ptr, m_idx)) {
-            msg_format(msg3.data(), m_name, t_name);
+            msg_format(msg3.data(), m_name.data(), t_name.data());
         } else {
             player_ptr->current_floor_ptr->monster_noise = true;
         }
@@ -46,20 +45,20 @@ CurseData::CurseData(const std::string_view &msg1, const std::string_view &msg2,
 }
 
 const std::unordered_map<MonsterAbilityType, CurseData> curse_list = {
-    { MonsterAbilityType::CAUSE_1, { _("%^sが何かをつぶやいた。", "%^s mumbles."),
-                                       _("%^sがあなたを指さして呪った。", "%^s points at you and curses."), _("%^sは%sを指さして呪いをかけた。", "%^s points at %s and curses."),
+    { MonsterAbilityType::CAUSE_1, { _("%s^が何かをつぶやいた。", "%s^ mumbles."),
+                                       _("%s^があなたを指さして呪った。", "%s^ points at you and curses."), _("%s^は%sを指さして呪いをかけた。", "%s^ points at %s and curses."),
                                        AttributeType::CAUSE_1 } },
-    { MonsterAbilityType::CAUSE_2, { _("%^sが何かをつぶやいた。", "%^s mumbles."),
-                                       _("%^sがあなたを指さして恐ろしげに呪った。", "%^s points at you and curses horribly."),
-                                       _("%^sは%sを指さして恐ろしげに呪いをかけた。", "%^s points at %s and curses horribly."),
+    { MonsterAbilityType::CAUSE_2, { _("%s^が何かをつぶやいた。", "%s^ mumbles."),
+                                       _("%s^があなたを指さして恐ろしげに呪った。", "%s^ points at you and curses horribly."),
+                                       _("%s^は%sを指さして恐ろしげに呪いをかけた。", "%s^ points at %s and curses horribly."),
                                        AttributeType::CAUSE_2 } },
-    { MonsterAbilityType::CAUSE_3, { _("%^sが何かを大声で叫んだ。", "%^s mumbles loudly."),
-                                       _("%^sがあなたを指さして恐ろしげに呪文を唱えた！", "%^s points at you, incanting terribly!"),
-                                       _("%^sは%sを指さし、恐ろしげに呪文を唱えた！", "%^s points at %s, incanting terribly!"),
+    { MonsterAbilityType::CAUSE_3, { _("%s^が何かを大声で叫んだ。", "%s^ mumbles loudly."),
+                                       _("%s^があなたを指さして恐ろしげに呪文を唱えた！", "%s^ points at you, incanting terribly!"),
+                                       _("%s^は%sを指さし、恐ろしげに呪文を唱えた！", "%s^ points at %s, incanting terribly!"),
                                        AttributeType::CAUSE_3 } },
-    { MonsterAbilityType::CAUSE_4, { _("%^sが「お前は既に死んでいる」と叫んだ。", "%^s screams the word 'DIE!'"),
-                                       _("%^sがあなたの秘孔を突いて「お前は既に死んでいる」と叫んだ。", "%^s points at you, screaming the word DIE!"),
-                                       _("%^sが%sの秘孔を突いて、「お前は既に死んでいる」と叫んだ。", "%^s points at %s, screaming the word, 'DIE!'"),
+    { MonsterAbilityType::CAUSE_4, { _("%s^が「お前は既に死んでいる」と叫んだ。", "%s^ screams the word 'DIE!'"),
+                                       _("%s^があなたの秘孔を突いて「お前は既に死んでいる」と叫んだ。", "%s^ points at you, screaming the word DIE!"),
+                                       _("%s^が%sの秘孔を突いて、「お前は既に死んでいる」と叫んだ。", "%s^ points at %s, screaming the word, 'DIE!'"),
                                        AttributeType::CAUSE_4 } },
 };
 

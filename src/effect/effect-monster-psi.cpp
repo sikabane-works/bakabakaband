@@ -20,6 +20,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
+#include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 
@@ -89,8 +90,8 @@ static bool reflects_psi_with_currupted_mind(PlayerType *player_ptr, effect_mons
     }
 
     em_ptr->note = nullptr;
-    msg_format(_("%^sの堕落した精神は攻撃を跳ね返した！",
-                   (em_ptr->seen ? "%^s's corrupted mind backlashes your attack!" : "%^ss corrupted mind backlashes your attack!")),
+    msg_format(_("%s^の堕落した精神は攻撃を跳ね返した！",
+                   (em_ptr->seen ? "%s^'s corrupted mind backlashes your attack!" : "%s^s corrupted mind backlashes your attack!")),
         em_ptr->m_name);
     return true;
 }
@@ -161,7 +162,7 @@ static void effect_monster_psi_resist(PlayerType *player_ptr, effect_monster_typ
     }
 
     /* Injure +/- confusion */
-    monster_desc(player_ptr, em_ptr->killer, em_ptr->m_ptr, MD_WRONGDOER_NAME);
+    angband_strcpy(em_ptr->killer, monster_desc(player_ptr, em_ptr->m_ptr, MD_WRONGDOER_NAME).data(), sizeof(em_ptr->killer));
     take_hit(player_ptr, DAMAGE_ATTACK, em_ptr->dam, em_ptr->killer);
     effect_monster_psi_reflect_extra_effect(player_ptr, em_ptr);
     em_ptr->dam = 0;
@@ -214,7 +215,7 @@ ProcessResult effect_monster_psi(PlayerType *player_ptr, effect_monster_type *em
     }
     if (!(los(player_ptr, em_ptr->m_ptr->fy, em_ptr->m_ptr->fx, player_ptr->y, player_ptr->x))) {
         if (em_ptr->seen_msg) {
-            msg_format(_("%sはあなたが見えないので影響されない！", "%^s can't see you, and isn't affected!"), em_ptr->m_name);
+            msg_format(_("%sはあなたが見えないので影響されない！", "%s^ can't see you, and isn't affected!"), em_ptr->m_name);
         }
 
         em_ptr->skipped = true;
@@ -253,7 +254,7 @@ static void effect_monster_psi_drain_resist(PlayerType *player_ptr, effect_monst
         return;
     }
 
-    monster_desc(player_ptr, em_ptr->killer, em_ptr->m_ptr, MD_WRONGDOER_NAME);
+    angband_strcpy(em_ptr->killer, monster_desc(player_ptr, em_ptr->m_ptr, MD_WRONGDOER_NAME).data(), sizeof(em_ptr->killer));
     if (check_multishadow(player_ptr)) {
         take_hit(player_ptr, DAMAGE_ATTACK, em_ptr->dam, em_ptr->killer);
         em_ptr->dam = 0;

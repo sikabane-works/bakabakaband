@@ -475,27 +475,22 @@ static std::string describe_ability_abbrev(const ItemEntity &item)
 {
     auto should_describe = abbrev_extra || abbrev_all;
     should_describe &= item.is_fully_known();
-    should_describe &= (item.inscription == 0) || !angband_strchr(quark_str(item.inscription), '%');
+    should_describe &= !item.is_inscribed() || !angband_strchr(item.inscription->data(), '%');
     if (!should_describe) {
         return "";
     }
 
-    char buf[1024]{};
     const auto is_kanji = _(true, false);
-    get_ability_abbreviation(buf, &item, is_kanji, abbrev_all);
-
-    return buf;
+    return get_ability_abbreviation(item, is_kanji, abbrev_all);
 }
 
 static std::string describe_player_inscription(const ItemEntity &item)
 {
-    if (item.inscription == 0) {
+    if (!item.is_inscribed()) {
         return "";
     }
 
-    char insc[1024]{};
-    get_inscription(insc, &item);
-    return insc;
+    return get_inscription(item);
 }
 
 static std::string describe_item_discount(const ItemEntity &item, bool hide_discount)

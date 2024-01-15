@@ -136,7 +136,7 @@ static void monster_pickup_object(PlayerType *player_ptr, turn_flags *turn_flags
         if (turn_flags_ptr->do_take && r_ptr->behavior_flags.has(MonsterBehaviorType::STUPID)) {
             turn_flags_ptr->did_take_item = true;
             if (m_ptr->ml && player_can_see_bold(player_ptr, ny, nx)) {
-                msg_format(_("%^sは%sを拾おうとしたが、だめだった。", "%^s tries to pick up %s, but fails."), m_name, o_name);
+                msg_format(_("%s^は%sを拾おうとしたが、だめだった。", "%s^ tries to pick up %s, but fails."), m_name, o_name);
             }
         }
 
@@ -146,7 +146,7 @@ static void monster_pickup_object(PlayerType *player_ptr, turn_flags *turn_flags
     if (turn_flags_ptr->do_take) {
         turn_flags_ptr->did_take_item = true;
         if (player_can_see_bold(player_ptr, ny, nx)) {
-            msg_format(_("%^sが%sを拾った。", "%^s picks up %s."), m_name, o_name);
+            msg_format(_("%s^が%sを拾った。", "%s^ picks up %s."), m_name, o_name);
         }
 
         excise_object_idx(player_ptr->current_floor_ptr, this_o_idx);
@@ -165,7 +165,7 @@ static void monster_pickup_object(PlayerType *player_ptr, turn_flags *turn_flags
 
     turn_flags_ptr->did_kill_item = true;
     if (player_has_los_bold(player_ptr, ny, nx)) {
-        msg_format(_("%^sが%sを破壊した。", "%^s destroys %s."), m_name, o_name);
+        msg_format(_("%s^が%sを破壊した。", "%s^ destroys %s."), m_name, o_name);
     }
 
     delete_object_idx(player_ptr, this_o_idx);
@@ -190,7 +190,7 @@ void update_object_by_monster_movement(PlayerType *player_ptr, turn_flags *turn_
     for (auto it = g_ptr->o_idx_list.begin(); it != g_ptr->o_idx_list.end();) {
         EnumClassFlagGroup<MonsterKindType> flg_monster_kind;
         EnumClassFlagGroup<MonsterResistanceType> flgr;
-        GAME_TEXT m_name[MAX_NLEN], o_name[MAX_NLEN];
+        GAME_TEXT o_name[MAX_NLEN];
         OBJECT_IDX this_o_idx = *it++;
         auto *o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
 
@@ -203,13 +203,13 @@ void update_object_by_monster_movement(PlayerType *player_ptr, turn_flags *turn_
 
         auto flags = object_flags(o_ptr);
         describe_flavor(player_ptr, o_name, o_ptr, 0);
-        monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_HIDDEN);
+        const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_HIDDEN);
         update_object_flags(flags, flg_monster_kind, flgr);
 
         auto is_unpickable_object = o_ptr->is_artifact();
         is_unpickable_object |= r_ptr->kind_flags.has_any_of(flg_monster_kind);
         is_unpickable_object |= !r_ptr->resistance_flags.has_all_of(flgr) && r_ptr->resistance_flags.has_not(MonsterResistanceType::RESIST_ALL);
-        monster_pickup_object(player_ptr, turn_flags_ptr, m_idx, o_ptr, is_unpickable_object, ny, nx, m_name, o_name, this_o_idx);
+        monster_pickup_object(player_ptr, turn_flags_ptr, m_idx, o_ptr, is_unpickable_object, ny, nx, m_name.data(), o_name, this_o_idx);
     }
 }
 

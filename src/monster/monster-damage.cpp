@@ -48,6 +48,8 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <algorithm>
+#include <optional>
+#include <string>
 
 /*
  * @brief コンストラクタ
@@ -148,8 +150,7 @@ bool MonsterDamageProcessor::process_dead_exp_virtue(concptr note, MonsterEntity
     }
 
     this->increase_kill_numbers();
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(this->player_ptr, m_name, m_ptr, MD_TRUE_NAME);
+    const auto m_name = monster_desc(this->player_ptr, m_ptr, MD_TRUE_NAME);
     this->death_amberites(m_name);
     this->dying_scream(m_name);
     AvatarChanger ac(player_ptr, m_ptr);
@@ -312,7 +313,7 @@ void MonsterDamageProcessor::increase_kill_numbers()
     monster_race_track(this->player_ptr, m_ptr->ap_r_idx);
 }
 
-void MonsterDamageProcessor::death_amberites(GAME_TEXT *m_name)
+void MonsterDamageProcessor::death_amberites(std::string_view m_name)
 {
     auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[this->m_idx];
     const auto &r_ref = m_ptr->get_real_r_ref();
@@ -323,14 +324,14 @@ void MonsterDamageProcessor::death_amberites(GAME_TEXT *m_name)
     auto curses = 1 + randint1(3);
     auto stop_ty = false;
     auto count = 0;
-    msg_format(_("%^sは恐ろしい血の呪いをあなたにかけた！", "%^s puts a terrible blood curse on you!"), m_name);
+    msg_format(_("%s^は恐ろしい血の呪いをあなたにかけた！", "%s^ puts a terrible blood curse on you!"), m_name.data());
     curse_equipment(this->player_ptr, 100, 50);
     do {
         stop_ty = activate_ty_curse(this->player_ptr, stop_ty, &count);
     } while (--curses);
 }
 
-void MonsterDamageProcessor::dying_scream(GAME_TEXT *m_name)
+void MonsterDamageProcessor::dying_scream(std::string_view m_name)
 {
     auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[this->m_idx];
     const auto &r_ref = m_ptr->get_real_r_ref();
@@ -338,9 +339,9 @@ void MonsterDamageProcessor::dying_scream(GAME_TEXT *m_name)
         return;
     }
 
-    char line_got[1024];
-    if (!get_rnd_line(_("mondeath_j.txt", "mondeath.txt"), enum2i(m_ptr->r_idx), line_got)) {
-        msg_format("%^s %s", m_name, line_got);
+    const auto death_mes = get_random_line(_("mondeath_j.txt", "mondeath.txt"), enum2i(m_ptr->r_idx));
+    if (death_mes.has_value()) {
+        msg_format("%s^ %s", m_name.data(), death_mes->data());
     }
 
 #ifdef WORLD_SCORE
@@ -350,48 +351,48 @@ void MonsterDamageProcessor::dying_scream(GAME_TEXT *m_name)
 #endif
 }
 
-void MonsterDamageProcessor::show_kill_message(concptr note, GAME_TEXT *m_name)
+void MonsterDamageProcessor::show_kill_message(concptr note, std::string_view m_name)
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[this->m_idx];
     const auto &r_ref = m_ptr->get_real_r_ref();
     if (note != nullptr) {
-        msg_format("%^s%s", m_name, note);
+        msg_format("%s^%s", m_name.data(), note);
         return;
     }
 
     if (!m_ptr->ml) {
         auto mes = is_echizen(this->player_ptr) ? _("せっかくだから%sを殺した。", "Because it's time, you have killed %s.")
                                                 : _("%sを殺した。", "You have killed %s.");
-        msg_format(mes, m_name);
+        msg_format(mes, m_name.data());
         return;
     }
+
+    const auto explode = std::any_of(std::begin(r_ref.blow), std::end(r_ref.blow), [](const auto &blow) { return blow.method == RaceBlowMethodType::EXPLODE; });
 
     if (monster_living(m_ptr->r_idx)) {
+        if (explode) {
+            msg_format(_("%sは爆発して死んだ。", "%s^ explodes and dies."), m_name.data());
+            return;
+        }
+
         auto mes = is_echizen(this->player_ptr) ? _("せっかくだから%sを葬り去った。", "Because it's time, you have slain %s.")
                                                 : _("%sを葬り去った。", "You have slain %s.");
-        msg_format(mes, m_name);
+        msg_format(mes, m_name.data());
         return;
-    }
-
-    auto explode = false;
-    for (auto i = 0; i < 4; i++) {
-        if (r_ref.blow[i].method == RaceBlowMethodType::EXPLODE) {
-            explode = true;
-        }
     }
 
     if (explode) {
-        msg_format(_("%sは爆発して粉々になった。", "%^s explodes into tiny shreds."), m_name);
+        msg_format(_("%sは爆発して粉々になった。", "%s^ explodes into tiny shreds."), m_name.data());
         return;
     }
 
     auto mes = is_echizen(this->player_ptr) ? _("せっかくだから%sを倒した。", "Because it's time, you have destroyed %s.")
                                             : _("%sを倒した。", "You have destroyed %s.");
-    msg_format(mes, m_name);
+    msg_format(mes, m_name.data());
 }
 
-void MonsterDamageProcessor::show_bounty_message(GAME_TEXT *m_name)
+void MonsterDamageProcessor::show_bounty_message(std::string_view m_name)
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[this->m_idx];
@@ -405,7 +406,7 @@ void MonsterDamageProcessor::show_bounty_message(GAME_TEXT *m_name)
     }
 
     if (MonsterRace(m_ptr->r_idx).is_bounty(true)) {
-        msg_format(_("%sの首には賞金がかかっている。", "There is a price on %s's head."), m_name);
+        msg_format(_("%sの首には賞金がかかっている。", "There is a price on %s's head."), m_name.data());
     }
 }
 

@@ -330,8 +330,8 @@ void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, It
     bool name = true;
     GAME_TEXT name_str[MAX_NLEN + 32];
     name_str[0] = '\0';
-    auto insc = quark_str(o_ptr->inscription);
-    entry->insc = insc != nullptr ? insc : "";
+    entry->name.clear();
+    entry->insc = o_ptr->inscription.value_or("");
     entry->action = DO_AUTOPICK | DO_DISPLAY;
     entry->flag[0] = entry->flag[1] = 0L;
     entry->dice = 0;
@@ -566,13 +566,13 @@ concptr autopick_line_from_entry(autopick_type *entry)
 
     if (IS_FLG(FLG_MORE_DICE)) {
         ADD_KEY(KEY_MORE_THAN);
-        strcat(ptr, format("%d", entry->dice));
+        strcat(ptr, format("%d", entry->dice).data());
         ADD_KEY(KEY_DICE);
     }
 
     if (IS_FLG(FLG_MORE_BONUS)) {
         ADD_KEY(KEY_MORE_BONUS);
-        strcat(ptr, format("%d", entry->bonus));
+        strcat(ptr, format("%d", entry->bonus).data());
         ADD_KEY(KEY_MORE_BONUS2);
     }
 

@@ -90,10 +90,7 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    char title[200];
-    put_version(title);
-
-    fprintf(spoiler_file, "Monster Spoilers for %s\n", title);
+    fprintf(spoiler_file, "Monster Spoilers for %s\n", get_version().data());
     fprintf(spoiler_file, "------------------------------------------\n\n");
     fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n", "Name", "Lev", "Rar", "Spd", "Hp", "Ac", "Visual Info");
     fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %4.19s\n",
@@ -164,10 +161,10 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
  * @param attr 未使用
  * @param str 文字列参照ポインタ
  */
-static void roff_func(TERM_COLOR attr, concptr str)
+static void roff_func(TERM_COLOR attr, std::string_view str)
 {
     (void)attr;
-    spoil_out(str);
+    spoil_out(str.data());
 }
 
 /*!
@@ -185,10 +182,7 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    char title[200];
-    put_version(title);
-    sprintf(buf, "Monster Spoilers for %s\n", title);
-    spoil_out(buf);
+    spoil_out(std::string("Monster Spoilers for ").append(get_version()).append("\n"));
     spoil_out("------------------------------------------\n\n");
 
     std::vector<MonsterRaceId> who;
@@ -235,7 +229,7 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
         sprintf(buf, "Exp:%ld\n", (long)(r_ptr->mexp));
         spoil_out(buf);
         output_monster_spoiler(r_idx, roff_func);
-        spoil_out(nullptr);
+        spoil_out({}, true);
     }
 
     return ferror(spoiler_file) || angband_fclose(spoiler_file) ? SpoilerOutputResultType::FILE_CLOSE_FAILED

@@ -103,7 +103,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='English-Release|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;WIN32;HAVE_STDINT_H;JP;SJIS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;SJIS;WIN32;HAVE_STDINT_H;JP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>EnableAllWarnings</WarningLevel>
@@ -113,7 +113,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\..\src;curl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <ExceptionHandling>SyncCThrow</ExceptionHandling>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
@@ -278,6 +278,7 @@
     <ClCompile Include="..\..\src\load\player-class-specific-data-loader.cpp" />
     <ClCompile Include="..\..\src\monster-race\race-brightness-mask.cpp" />
     <ClCompile Include="..\..\src\monster-race\race-feature-mask.cpp" />
+    <ClCompile Include="..\..\src\monster\monster-pain-describer.cpp" />
     <ClCompile Include="..\..\src\object-enchant\enchanter-factory.cpp" />
     <ClCompile Include="..\..\src\mspell\mspell-attack\abstract-mspell.cpp" />
     <ClCompile Include="..\..\src\mspell\mspell-data.cpp" />
@@ -984,6 +985,7 @@
     <ClInclude Include="..\..\src\monster-race\race-speak-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-visual-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-wilderness-flags.h" />
+    <ClInclude Include="..\..\src\monster\monster-pain-describer.h" />
     <ClInclude Include="..\..\src\mspell\mspell-attack\abstract-mspell.h" />
     <ClInclude Include="..\..\src\mspell\mspell-data.h" />
     <ClInclude Include="..\..\src\mspell\mspell-result.h" />

@@ -129,7 +129,7 @@ void do_cmd_drop(PlayerType *player_ptr)
     }
 
     if (o_ptr->number > 1) {
-        amt = get_quantity(nullptr, o_ptr->number);
+        amt = get_quantity(std::nullopt, o_ptr->number);
         if (amt <= 0) {
             return;
         }
@@ -187,13 +187,13 @@ void do_cmd_uninscribe(PlayerType *player_ptr)
         return;
     }
 
-    if (!o_ptr->inscription) {
+    if (!o_ptr->is_inscribed()) {
         msg_print(_("このアイテムには消すべき銘がない。", "That item had no inscription to remove."));
         return;
     }
 
     msg_print(_("銘を消した。", "Inscription removed."));
-    o_ptr->inscription = 0;
+    o_ptr->inscription.reset();
     set_bits(player_ptr->update, PU_COMBINE);
     set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
     set_bits(player_ptr->update, PU_BONUS);
@@ -220,12 +220,12 @@ void do_cmd_inscribe(PlayerType *player_ptr)
     msg_format(_("%sに銘を刻む。", "Inscribing %s."), o_name);
     msg_print(nullptr);
     strcpy(out_val, "");
-    if (o_ptr->inscription) {
-        angband_strcpy(out_val, quark_str(o_ptr->inscription), MAX_INSCRIPTION);
+    if (o_ptr->is_inscribed()) {
+        angband_strcpy(out_val, o_ptr->inscription->data(), MAX_INSCRIPTION);
     }
 
     if (get_string(_("銘: ", "Inscription: "), out_val, MAX_INSCRIPTION)) {
-        o_ptr->inscription = quark_add(out_val);
+        o_ptr->inscription.emplace(out_val);
         set_bits(player_ptr->update, PU_COMBINE);
         set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
         set_bits(player_ptr->update, PU_BONUS);

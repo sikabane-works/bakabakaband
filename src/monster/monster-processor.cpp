@@ -260,9 +260,8 @@ void decide_drop_from_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool is
 #ifdef JP
         msg_print("地面に落とされた。");
 #else
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, &player_ptr->current_floor_ptr->m_list[player_ptr->riding], 0);
-        msg_format("You have fallen from %s.", m_name);
+        const auto m_name = monster_desc(player_ptr, &player_ptr->current_floor_ptr->m_list[player_ptr->riding], 0);
+        msg_format("You have fallen from %s.", m_name.data());
 #endif
     }
 }
@@ -288,15 +287,13 @@ bool vanish_summoned_children(PlayerType *player_ptr, MONSTER_IDX m_idx, bool se
     }
 
     if (see_m) {
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, m_ptr, 0);
-        msg_format(_("%sは消え去った！", "%^s disappears!"), m_name);
+        const auto m_name = monster_desc(player_ptr, m_ptr, 0);
+        msg_format(_("%sは消え去った！", "%s^ disappears!"), m_name.data());
     }
 
-    if (record_named_pet && m_ptr->is_pet() && m_ptr->nickname) {
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, m_ptr, MD_INDEF_VISIBLE);
-        exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_LOSE_PARENT, m_name);
+    if (record_named_pet && m_ptr->is_named_pet()) {
+        const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
+        exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_LOSE_PARENT, m_name.data());
     }
 
     delete_monster_idx(player_ptr, m_idx);
@@ -323,9 +320,8 @@ bool awake_monster(PlayerType *player_ptr, MONSTER_IDX m_idx)
 
     (void)set_monster_csleep(player_ptr, m_idx, 0);
     if (m_ptr->ml) {
-        GAME_TEXT m_name[MAX_NLEN];
-        monster_desc(player_ptr, m_name, m_ptr, 0);
-        msg_format(_("%^sが目を覚ました。", "%^s wakes up."), m_name);
+        const auto m_name = monster_desc(player_ptr, m_ptr, 0);
+        msg_format(_("%s^が目を覚ました。", "%s^ wakes up."), m_name.data());
     }
 
     if (is_original_ap_and_seen(player_ptr, m_ptr) && (r_ptr->r_wake < MAX_UCHAR)) {
@@ -358,8 +354,7 @@ void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
         return;
     }
 
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, m_ptr, m_ptr->is_pet() ? MD_ASSUME_VISIBLE : 0);
+    const auto m_name = monster_desc(player_ptr, m_ptr, m_ptr->is_pet() ? MD_ASSUME_VISIBLE : 0);
 
     /* When riding a hostile alignment pet */
     if (player_ptr->riding == m_idx) {
@@ -367,7 +362,7 @@ void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
             return;
         }
 
-        msg_format(_("%^sが突然暴れだした！", "%^s suddenly begins unruly!"), m_name);
+        msg_format(_("%s^が突然暴れだした！", "%s^ suddenly begins unruly!"), m_name.data());
         if (!process_fall_off_horse(player_ptr, 1, true)) {
             return;
         }
@@ -376,7 +371,7 @@ void process_angar(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
     }
 
     if (m_ptr->is_pet() || see_m) {
-        msg_format(_("%^sは突然敵にまわった！", "%^s suddenly becomes hostile!"), m_name);
+        msg_format(_("%s^は突然敵にまわった！", "%s^ suddenly becomes hostile!"), m_name.data());
     }
 
     set_hostile(player_ptr, m_ptr);
@@ -638,11 +633,10 @@ bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware)
 bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    GAME_TEXT m_name[MAX_NLEN];
-    monster_desc(player_ptr, m_name, m_ptr, 0);
+    auto m_name = monster_desc(player_ptr, m_ptr, 0);
 
     if (m_ptr->is_fearful() && one_in_(20)) {
-        msg_format(_("%^sは恐怖のあまり脱糞した！", "%^s was defecated because of fear!"), m_name);
+        msg_format(_("%s^は恐怖のあまり脱糞した！", "%s^ was defecated because of fear!"), m_name.data());
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
         q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_FECES }));
@@ -650,7 +644,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
     }
 
     if (m_ptr->is_fearful() && one_in_(20)) {
-        msg_format(_("%^sは恐怖のあまり嘔吐した！", "%^s vomited in fear!"), m_name);
+        msg_format(_("%s^は恐怖のあまり嘔吐した！", "%s^ vomited in fear!"), m_name.data());
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
         q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
@@ -667,7 +661,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         return true;
     }
 
-    msg_format(_("%^sは戦いを決意した！", "%^s turns to fight!"), m_name);
+    msg_format(_("%s^は戦いを決意した！", "%s^ turns to fight!"), m_name.data());
     return true;
 }
 
@@ -782,27 +776,26 @@ void sweep_monster_process(PlayerType *player_ptr)
                 pow *= 3;
             }
             if (r_ptr.level < randint0(pow)) {
-                GAME_TEXT m_name[MAX_NLEN];
-                monster_desc(player_ptr, m_name, m_ptr, 0);
+                auto m_name = monster_desc(player_ptr, m_ptr, 0);
                 if (m_ptr->ml) {
-                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name, f_ptr->name.c_str());
+                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name.data(), f_ptr->name.data());
                 }
                 if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
                     switch (randint1(3)) {
                     case 1:
-                        msg_format(_("%s「んほぉ！」", "%s 'Nnhor!'"), m_name);
+                        msg_format(_("%s「んほぉ！」", "%s 'Nnhor!'"), m_name.data());
                         (void)set_monster_stunned(player_ptr, 0, m_ptr->get_remaining_stun() + 10 + randint0(player_ptr->lev) / 5);
                         break;
                     case 2:
-                        msg_format(_("%s「アへぇ！」", "%s 'Aherr!'"), m_name);
+                        msg_format(_("%s「アへぇ！」", "%s 'Aherr!'"), m_name.data());
                         (void)set_monster_slow(player_ptr, 0, m_ptr->get_remaining_deceleration() + 10 + randint0(player_ptr->lev) / 5);
                         break;
                     case 3: {
                         bool fear = false;
-                        msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name);
+                        msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name.data());
                         MonsterDamageProcessor mdp(player_ptr, i, damroll(1, 4), &fear, AttributeType::ATTACK);
                         if (fear) {
-                            msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name);
+                            msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name.data());
                         }
                         mdp.mon_take_hit(_("は絶頂であの世に逝った。", " was passed to the other side with intense acme."));
                         break;

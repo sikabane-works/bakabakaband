@@ -54,7 +54,7 @@ static std::optional<PRICE> prompt_to_sell(PlayerType *player_ptr, ItemEntity *o
 
     price_ask = std::min(price_ask, ot_ptr->max_cost);
     price_ask *= o_ptr->number;
-    concptr s = format(_("売値 $%ld で売りますか？", "Do you sell for $%ld? "), static_cast<long>(price_ask));
+    const auto s = format(_("売値 $%ld で売りますか？", "Do you sell for $%ld? "), static_cast<long>(price_ask));
     if (get_check_strict(player_ptr, s, CHECK_DEFAULT_Y)) {
         return price_ask;
     }
@@ -104,7 +104,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
 
     int amt = 1;
     if (o_ptr->number > 1) {
-        amt = get_quantity(nullptr, o_ptr->number);
+        amt = get_quantity(std::nullopt, o_ptr->number);
         if (amt <= 0) {
             return;
         }
@@ -122,7 +122,7 @@ void store_sell(PlayerType *player_ptr, StoreSaleType store_num)
     GAME_TEXT o_name[MAX_NLEN];
     describe_flavor(player_ptr, o_name, q_ptr, 0);
     if ((store_num != StoreSaleType::HOME) && (store_num != StoreSaleType::MUSEUM)) {
-        q_ptr->inscription = 0;
+        q_ptr->inscription.reset();
         q_ptr->feeling = FEEL_NONE;
     }
 

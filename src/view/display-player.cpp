@@ -33,7 +33,6 @@
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
-#include "util/buffer-shaper.h"
 #include "view/display-characteristic.h"
 #include "view/display-player-middle.h"
 #include "view/display-player-misc-info.h"
@@ -69,6 +68,8 @@ static bool display_player_info(PlayerType *player_ptr, int mode)
     }
 
     if (mode == 5) {
+        constexpr auto display_width = 80;
+        TermCenteredOffsetSetter tcos(display_width, std::nullopt);
         do_cmd_knowledge_mutations(player_ptr);
         return true;
     }
@@ -147,20 +148,16 @@ static void display_phisique(PlayerType *player_ptr)
  */
 static void display_player_stats(PlayerType *player_ptr)
 {
-    char buf[80];
     for (int i = 0; i < A_MAX; i++) {
         if (player_ptr->stat_cur[i] < player_ptr->stat_max[i]) {
             put_str(stat_names_reduced[i], 3 + i, 53);
             int value = player_ptr->stat_use[i];
-            cnv_stat(value, buf);
-            c_put_str(TERM_YELLOW, buf, 3 + i, 60);
+            c_put_str(TERM_YELLOW, cnv_stat(value), 3 + i, 60);
             value = player_ptr->stat_top[i];
-            cnv_stat(value, buf);
-            c_put_str(TERM_L_GREEN, buf, 3 + i, 67);
+            c_put_str(TERM_L_GREEN, cnv_stat(value), 3 + i, 67);
         } else {
             put_str(stat_names[i], 3 + i, 53);
-            cnv_stat(player_ptr->stat_use[i], buf);
-            c_put_str(TERM_L_GREEN, buf, 3 + i, 60);
+            c_put_str(TERM_L_GREEN, cnv_stat(player_ptr->stat_use[i]), 3 + i, 60);
         }
 
         if (player_ptr->stat_max[i] == player_ptr->stat_max_max[i]) {
@@ -271,31 +268,6 @@ static std::string decide_current_floor(PlayerType *player_ptr)
 }
 
 /*!
- * @brief 今いる、または死亡した場所を表示する
- * @param statmsg メッセージバッファ
- * @return ダンプ表示行数の補正項
- * @details v2.2までは状況に関係なく必ず2行であり、v3.0では1～4行になり得、num_linesはその行数.
- * ギリギリ見切れる場合があるので行数は僅かに多めに取る.
- */
-static int display_current_floor(const std::string &statmsg)
-{
-    char temp[1000];
-    constexpr auto chars_per_line = 60;
-    shape_buffer(statmsg.data(), chars_per_line, temp, sizeof(temp));
-    auto t = temp;
-    auto statmsg_size = statmsg.size();
-    auto fraction = statmsg_size % (chars_per_line - 1);
-    auto num_lines = statmsg_size / (chars_per_line - 1);
-    num_lines += fraction > 0 ? 1 : 0;
-    for (auto i = 0U; i < num_lines; i++) {
-        put_str(t, i + 5 + 12, 10);
-        t += strlen(t) + 1;
-    }
-
-    return num_lines;
-}
-
-/*!
  * @brief プレイヤーのステータス表示メイン処理
  * Display the character on the screen (various modes)
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -314,7 +286,10 @@ std::optional<int> display_player(PlayerType *player_ptr, const int tmp_mode)
 {
     auto has_any_mutation = (player_ptr->muta.any() || has_good_luck(player_ptr)) && display_mutations;
     auto mode = has_any_mutation ? tmp_mode % 6 : tmp_mode % 5;
-    clear_from(0);
+    {
+        TermOffsetSetter tos(0, 0);
+        clear_from(0);
+    }
     if (display_player_info(player_ptr, mode)) {
         return std::nullopt;
     }
@@ -322,7 +297,7 @@ std::optional<int> display_player(PlayerType *player_ptr, const int tmp_mode)
     display_player_basic_info(player_ptr);
     display_magic_realms(player_ptr);
     if (PlayerClass(player_ptr).equals(PlayerClassType::CHAOS_WARRIOR) || (player_ptr->muta.has(PlayerMutationType::CHAOS_GIFT))) {
-        display_player_one_line(ENTRY_PATRON, patron_list[player_ptr->chaos_patron].name.data(), TERM_L_BLUE);
+        display_player_one_line(ENTRY_PATRON, patron_list[player_ptr->chaos_patron].name, TERM_L_BLUE);
     }
 
     display_phisique(player_ptr);
@@ -339,11 +314,12 @@ std::optional<int> display_player(PlayerType *player_ptr, const int tmp_mode)
     }
 
     auto statmsg = decide_current_floor(player_ptr);
-    if (statmsg == "") {
+    if (statmsg.empty()) {
         return std::nullopt;
     }
 
-    return display_current_floor(statmsg);
+    constexpr auto chars_per_line = 60;
+    return display_wrap_around(statmsg, chars_per_line, 17, 10);
 }
 
 /*!

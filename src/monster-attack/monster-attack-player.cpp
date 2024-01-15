@@ -58,6 +58,7 @@
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
+#include "util/string-processor.h"
 #include "view/display-messages.h"
 
 /*!
@@ -86,8 +87,8 @@ void MonsterAttackPlayer::make_attack_normal()
 
     auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
     this->rlev = ((r_ptr->level >= 1) ? r_ptr->level : 1);
-    monster_desc(this->player_ptr, this->m_name, this->m_ptr, 0);
-    monster_desc(this->player_ptr, this->ddesc, this->m_ptr, MD_WRONGDOER_NAME);
+    angband_strcpy(this->m_name, monster_desc(this->player_ptr, this->m_ptr, 0).data(), sizeof(this->m_name));
+    angband_strcpy(this->ddesc, monster_desc(this->player_ptr, this->m_ptr, MD_WRONGDOER_NAME).data(), sizeof(this->ddesc));
     if (PlayerClass(this->player_ptr).samurai_stance_is(SamuraiStanceType::IAI)) {
         msg_format(_("相手が襲いかかる前に素早く武器を振るった。", "You took sen, drew and cut in one motion before %s moved."), this->m_name);
         if (do_cmd_attack(this->player_ptr, this->m_ptr->fy, this->m_ptr->fx, HISSATSU_IAI)) {
@@ -277,10 +278,10 @@ bool MonsterAttackPlayer::effect_protecion_from_evil()
     }
 
 #ifdef JP
-    this->abbreviate ? msg_format("撃退した。") : msg_format("%^sは撃退された。", this->m_name);
+    this->abbreviate ? msg_format("撃退した。") : msg_format("%s^は撃退された。", this->m_name);
     this->abbreviate = 1; /* 2回目以降は省略 */
 #else
-    msg_format("%^s is repelled.", this->m_name);
+    msg_format("%s^ is repelled.", this->m_name);
 #endif
 
     return true;
@@ -301,17 +302,17 @@ void MonsterAttackPlayer::describe_silly_attacks()
 
 #ifdef JP
     if (this->abbreviate == 0) {
-        msg_format("%^sに%s", this->m_name, this->act);
+        msg_format("%s^に%s", this->m_name, this->act);
     } else if (this->abbreviate == 1) {
         msg_format("%s", this->act);
     } else {
         /* if (this->abbreviate == -1) */
-        msg_format("%^s%s", this->m_name, this->act);
+        msg_format("%s^%s", this->m_name, this->act);
     }
 
     this->abbreviate = 1; /*2回目以降は省略 */
 #else
-    msg_format("%^s %s%s", this->m_name, this->act, this->do_silly_attack ? " you." : "");
+    msg_format("%s^ %s%s", this->m_name, this->act, this->do_silly_attack ? " you." : "");
 #endif
 }
 
@@ -441,12 +442,12 @@ void MonsterAttackPlayer::describe_attack_evasion()
     if (this->abbreviate) {
         msg_format("%sかわした。", is_suiken ? "奇妙な動きで" : "");
     } else {
-        msg_format("%s%^sの攻撃をかわした。", is_suiken ? "奇妙な動きで" : "", this->m_name);
+        msg_format("%s%s^の攻撃をかわした。", is_suiken ? "奇妙な動きで" : "", this->m_name);
     }
 
     this->abbreviate = 1; /* 2回目以降は省略 */
 #else
-    msg_format("%^s misses you.", this->m_name);
+    msg_format("%s^ misses you.", this->m_name);
 #endif
 }
 
@@ -513,7 +514,7 @@ void MonsterAttackPlayer::postprocess_monster_blows()
 
     if (this->m_ptr->ml && this->fear && this->alive && !this->player_ptr->is_dead) {
         sound(SOUND_FLEE);
-        msg_format(_("%^sは恐怖で逃げ出した！", "%^s flees in terror!"), this->m_name);
+        msg_format(_("%s^は恐怖で逃げ出した！", "%s^ flees in terror!"), this->m_name);
     }
 
     PlayerClass(this->player_ptr).break_samurai_stance({ SamuraiStanceType::IAI });
