@@ -80,14 +80,16 @@ void print_stat(PlayerType *player_ptr, int stat)
  */
 void print_cut(PlayerType *player_ptr)
 {
+    TERM_LEN width, height;
+    term_get_size(&width, &height);
     auto player_cut = player_ptr->effects()->cut();
     if (!player_cut->is_cut()) {
-        put_str("            ", ROW_CUT, COL_CUT);
+        put_str("            ", height + ROW_CUT, COL_CUT);
         return;
     }
 
     auto [color, stat] = player_cut->get_expr();
-    c_put_str(color, stat.data(), ROW_CUT, COL_CUT);
+    c_put_str(color, stat.data(), height + ROW_CUT, COL_CUT);
 }
 
 /*!
@@ -96,14 +98,16 @@ void print_cut(PlayerType *player_ptr)
  */
 void print_stun(PlayerType *player_ptr)
 {
+    TERM_LEN width, height;
+    term_get_size(&width, &height);
     auto player_stun = player_ptr->effects()->stun();
     if (!player_stun->is_stunned()) {
-        put_str("            ", ROW_STUN, COL_STUN);
+        put_str("            ", height + ROW_STUN, COL_STUN);
         return;
     }
 
     auto [color, stat] = player_stun->get_expr();
-    c_put_str(color, stat.data(), ROW_STUN, COL_STUN);
+    c_put_str(color, stat.data(), height + ROW_STUN, COL_STUN);
 }
 
 /*!
@@ -116,34 +120,46 @@ void print_hunger(PlayerType *player_ptr)
         return;
     }
 
+    TERM_LEN width, height;
+    term_get_size(&width, &height);
+    const auto row = height + ROW_HUNGRY;
+
     if (player_ptr->food < PY_FOOD_FAINT) {
-        c_put_str(TERM_RED, _("衰弱  ", "Weak  "), ROW_HUNGRY, COL_HUNGRY);
+        c_put_str(TERM_RED, _("衰弱  ", "Weak  "), row, COL_HUNGRY);
         return;
     }
 
     if (player_ptr->food < PY_FOOD_WEAK) {
-        c_put_str(TERM_ORANGE, _("衰弱  ", "Weak  "), ROW_HUNGRY, COL_HUNGRY);
+        c_put_str(TERM_ORANGE, _("衰弱  ", "Weak  "), row, COL_HUNGRY);
         return;
     }
 
     if (player_ptr->food < PY_FOOD_ALERT) {
-        c_put_str(TERM_YELLOW, _("空腹  ", "Hungry"), ROW_HUNGRY, COL_HUNGRY);
+        c_put_str(TERM_YELLOW, _("空腹  ", "Hungry"), row, COL_HUNGRY);
         return;
     }
 
     if (player_ptr->food < PY_FOOD_FULL) {
-        c_put_str(TERM_L_GREEN, "      ", ROW_HUNGRY, COL_HUNGRY);
+        c_put_str(TERM_L_GREEN, "      ", row, COL_HUNGRY);
         return;
     }
 
     if (player_ptr->food < PY_FOOD_MAX) {
-        c_put_str(TERM_L_GREEN, _("満腹  ", "Full  "), ROW_HUNGRY, COL_HUNGRY);
+        c_put_str(TERM_L_GREEN, _("満腹  ", "Full  "), row, COL_HUNGRY);
         return;
     }
 
-    c_put_str(TERM_GREEN, _("食過ぎ", "Gorged"), ROW_HUNGRY, COL_HUNGRY);
+    c_put_str(TERM_GREEN, _("食過ぎ", "Gorged"), row, COL_HUNGRY);
 }
 
+/*!
+ * @brief プレイヤーの行動状態を表示する / Prints Searching, Resting, Paralysis, or 'count' status
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @details
+ * Display is always exactly 10 characters wide (see below)
+ * This function was a major bottleneck when resting, so a lot of
+ * the text formatting code was optimized in place below.
+ */
 /*!
  * @brief プレイヤーの行動状態を表示する / Prints Searching, Resting, Paralysis, or 'count' status
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -155,37 +171,38 @@ void print_hunger(PlayerType *player_ptr)
 void print_state(PlayerType *player_ptr)
 {
     TERM_COLOR attr = TERM_WHITE;
-    GAME_TEXT text[16];
+    std::string text;
     if (command_rep) {
         if (command_rep > 999) {
-            (void)sprintf(text, "%2d00", command_rep / 100);
+            text = format("%2d00", command_rep / 100);
         } else {
-            (void)sprintf(text, "  %2d", command_rep);
+            text = format("  %2d", command_rep);
         }
 
-        c_put_str(attr, format("%5.5s", text), ROW_STATE, COL_STATE);
+        c_put_str(attr, format("%5.5s", text.data()), ROW_STATE, COL_STATE);
         return;
     }
 
     switch (player_ptr->action) {
     case ACTION_SEARCH: {
-        strcpy(text, _("探索", "Sear"));
+        text = _("探索", "Sear");
         break;
     }
     case ACTION_REST:
-        strcpy(text, _("    ", "    "));
         if (player_ptr->resting > 0) {
-            sprintf(text, "%4d", player_ptr->resting);
+            text = format("%4d", player_ptr->resting);
         } else if (player_ptr->resting == COMMAND_ARG_REST_FULL_HEALING) {
-            text[0] = text[1] = text[2] = text[3] = '*';
+            text = "****";
         } else if (player_ptr->resting == COMMAND_ARG_REST_UNTIL_DONE) {
-            text[0] = text[1] = text[2] = text[3] = '&';
+            text = "&&&&";
+        } else {
+            text = "    ";
         }
 
         break;
 
     case ACTION_LEARN: {
-        strcpy(text, _("学習", "lear"));
+        text = _("学習", "lear");
         auto bluemage_data = PlayerClass(player_ptr).get_specific_data<bluemage_data_type>();
         if (bluemage_data->new_magic_learned) {
             attr = TERM_L_RED;
@@ -193,7 +210,7 @@ void print_state(PlayerType *player_ptr)
         break;
     }
     case ACTION_FISH: {
-        strcpy(text, _("釣り", "fish"));
+        text = _("釣り", "fish");
         break;
     }
     case ACTION_MONK_STANCE: {
@@ -215,36 +232,36 @@ void print_state(PlayerType *player_ptr)
             default:
                 break;
             }
-            strcpy(text, monk_stances[enum2i(stance) - 1].desc);
+            text = monk_stances[enum2i(stance) - 1].desc;
         }
         break;
     }
     case ACTION_SAMURAI_STANCE: {
         if (auto stance = PlayerClass(player_ptr).get_samurai_stance();
             stance != SamuraiStanceType::NONE) {
-            strcpy(text, samurai_stances[enum2i(stance) - 1].desc);
+            text = samurai_stances[enum2i(stance) - 1].desc;
         }
         break;
     }
     case ACTION_SING: {
-        strcpy(text, _("歌  ", "Sing"));
+        text = _("歌  ", "Sing");
         break;
     }
     case ACTION_HAYAGAKE: {
-        strcpy(text, _("速駆", "Fast"));
+        text = _("速駆", "Fast");
         break;
     }
     case ACTION_SPELL: {
-        strcpy(text, _("詠唱", "Spel"));
+        text = _("詠唱", "Spel");
         break;
     }
     default: {
-        strcpy(text, "    ");
+        text = "    ";
         break;
     }
     }
 
-    c_put_str(attr, format("%5.5s", text), ROW_STATE, COL_STATE);
+    c_put_str(attr, format("%5.5s", text.data()), ROW_STATE, COL_STATE);
 }
 
 /*!
