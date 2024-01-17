@@ -16,13 +16,7 @@
 #define ROW_TITLE 2
 #define COL_TITLE 0 /* <title> or <mode> */
 
-#define ROW_DAY 21
-#define COL_DAY 0 /* day */
-
-#define ROW_DUNGEON 22
-#define COL_DUNGEON 0 /* dungeon */
-
-#define ROW_COLLAPSE 24
+#define ROW_COLLAPSE 27
 #define COL_COLLAPSE 0 /* world collapse */
 
 #define ROW_NOW_POS 25
