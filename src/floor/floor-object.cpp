@@ -357,7 +357,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
     bool plural = (j_ptr->number != 1);
 #endif
     describe_flavor(player_ptr, o_name, j_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-    if (!j_ptr->is_artifact() && (randint0(100) < chance)) {
+    if (!j_ptr->is_fixed_or_random_artifact() && (randint0(100) < chance)) {
 #ifdef JP
         msg_format("%sは消えた。", o_name);
 #else
@@ -437,7 +437,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
         }
     }
 
-    if (!flag && !j_ptr->is_artifact()) {
+    if (!flag && !j_ptr->is_fixed_or_random_artifact()) {
 #ifdef JP
         msg_format("%sは消えた。", o_name);
 #else
@@ -558,6 +558,11 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
         j_ptr->held_m_idx = 0;
         g_ptr->o_idx_list.add(floor_ptr, o_idx);
         done = true;
+    }
+
+    if (j_ptr->is_fixed_artifact() && w_ptr->character_dungeon) {
+        auto &artifact = artifacts_info.at(j_ptr->fixed_artifact_idx);
+        artifact.floor_id = player_ptr->floor_id;
     }
 
     note_spot(player_ptr, by, bx);
