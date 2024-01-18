@@ -26,14 +26,13 @@ void ItemLoaderBase::load_item(void)
 /*!
  * @brief 固定アーティファクトの出現情報をロードする.
  */
-void ItemLoaderBase::load_artifact(void)
+void ItemLoaderBase::load_artifact()
 {
     ArtifactType dummy;
     auto loading_max_a_idx = rd_u16b();
     for (auto i = 0U; i < loading_max_a_idx; i++) {
         const auto a_idx = i2enum<FixedArtifactId>(i);
-        const auto it = artifacts_info.find(a_idx);
-        auto &artifact = it != artifacts_info.end() ? it->second : dummy;
+        auto &artifact = (i > 0) ? artifacts_info.at(a_idx) : dummy;
         artifact.is_generated = rd_bool();
         artifact.floor_id = rd_s16b();
     }
