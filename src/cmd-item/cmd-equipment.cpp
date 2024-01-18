@@ -138,7 +138,7 @@ void do_cmd_wield(PlayerType *player_ptr)
     ItemEntity *o_ptr;
     concptr act;
     GAME_TEXT o_name[MAX_NLEN];
-    GAME_TEXT dummy[MAX_NLEN];
+    GAME_TEXT dummy[MAX_NLEN * 2];
     OBJECT_IDX need_switch_wielding = 0;
     PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU });
 
