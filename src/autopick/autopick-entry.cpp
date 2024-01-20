@@ -508,16 +508,14 @@ void autopick_entry_from_object(PlayerType *player_ptr, autopick_type *entry, It
         return;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_NO_FLAVOR | OD_OMIT_PREFIX | OD_NO_PLURAL | OD_NAME_ONLY));
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_NO_FLAVOR | OD_OMIT_PREFIX | OD_NO_PLURAL | OD_NAME_ONLY));
 
     /*
      * If necessary, add a '^' which indicates the
      * beginning of line.
      */
-    sprintf(name_str, "%s%s", is_hat_added ? "^" : "", o_name);
-    str_tolower(name_str);
-    entry->name = name_str;
+    entry->name = std::string(is_hat_added ? "^" : "").append(item_name);
+    str_tolower(entry->name.data());
 }
 
 /*!

@@ -38,9 +38,6 @@
 bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
 {
     concptr info[128];
-    GAME_TEXT o_name[MAX_NLEN];
-    char desc[256];
-
     int trivial_info = 0;
     auto flags = object_flags(o_ptr);
 
@@ -158,21 +155,25 @@ bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
         rad++;
     }
 
+    std::string desc;
     if (flags.has(TR_LITE_FUEL) && flags.has_not(TR_DARK_SOURCE)) {
         if (rad > 0) {
-            sprintf(desc, _("それは燃料補給によって明かり(半径 %d)を授ける。", "It provides light (radius %d) when fueled."), (int)rad);
+            desc = _("それは燃料補給によって明かり(半径 ", "It provides light (radius ");
+            desc.append(std::to_string((int)rad)).append(_(")を授ける。", ") when fueled."));
         }
     } else {
         if (rad > 0) {
-            sprintf(desc, _("それは永遠なる明かり(半径 %d)を授ける。", "It provides light (radius %d) forever."), (int)rad);
+            desc = _("それは永遠なる明かり(半径 ", "It provides light (radius ");
+            desc.append(std::to_string((int)rad)).append(_(")を授ける。", ") forever."));
         }
         if (rad < 0) {
-            sprintf(desc, _("それは明かりの半径を狭める(半径に-%d)。", "It decreases the radius of your light by %d."), (int)-rad);
+            desc = _("それは明かりの半径を狭める(半径に-", "It decreases the radius of your light by");
+            desc.append(std::to_string((int)-rad)).append(_(")。", "."));
         }
     }
 
     if (rad != 0) {
-        info[i++] = desc;
+        info[i++] = desc.data();
     }
 
     if (o_ptr->ego_idx == EgoType::LITE_LONG) {
@@ -817,13 +818,14 @@ bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
     int wid, hgt;
     term_get_size(&wid, &hgt);
 
+    std::string item_name;
     if (!(mode & SCROBJ_FAKE_OBJECT)) {
-        describe_flavor(player_ptr, o_name, o_ptr, 0);
+        item_name = describe_flavor(player_ptr, o_ptr, 0);
     } else {
-        describe_flavor(player_ptr, o_name, o_ptr, (OD_NAME_ONLY | OD_STORE));
+        item_name = describe_flavor(player_ptr, o_ptr, (OD_NAME_ONLY | OD_STORE));
     }
 
-    prt(o_name, 0, 0);
+    prt(item_name, 0, 0);
     for (int k = 1; k < hgt; k++) {
         prt("", k, 13);
     }

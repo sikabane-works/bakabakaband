@@ -50,9 +50,7 @@ void do_cmd_checkquest(PlayerType *player_ptr)
 static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
 {
     const auto &quest_list = QuestList::get_instance();
-    char tmp_str[1024];
-    char rand_tmp_str[512] = "\0";
-    GAME_TEXT name[MAX_NLEN];
+    std::string rand_tmp_str;
     MonsterRaceInfo *r_ptr;
     int rand_level = 100;
     int total = 0;
@@ -82,25 +80,26 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
         }
         total++;
         if (q_ref.type != QuestKindType::RANDOM) {
-            char note[512] = "\0";
+            std::string note;
             if (q_ref.status == QuestStatusType::TAKEN || q_ref.status == QuestStatusType::STAGE_COMPLETED) {
                 switch (q_ref.type) {
                 case QuestKindType::KILL_LEVEL:
                     r_ptr = &monraces_info[q_ref.r_idx];
-                    strcpy(name, r_ptr->name.data());
                     if (q_ref.max_num > 1) {
 #ifdef JP
-                        sprintf(note, " - %d 体の%sを倒す。(あと %d 体)", (int)q_ref.max_num, name, (int)(q_ref.max_num - q_ref.cur_num));
+                        note = format(" - %d 体の%sを倒す。(あと %d 体)", (int)q_ref.max_num, r_ptr->name.data(), (int)(q_ref.max_num - q_ref.cur_num));
 #else
-                        plural_aux(name);
-                        sprintf(note, " - kill %d %s, have killed %d.", (int)q_ref.max_num, name, (int)q_ref.cur_num);
+                        auto monster_name(r_ptr->name);
+                        plural_aux(monster_name.data());
+                        note = format(" - kill %d %s, have killed %d.", (int)q_ref.max_num, monster_name.data(), (int)q_ref.cur_num);
 #endif
                     } else {
-                        sprintf(note, _(" - %sを倒す。", " - kill %s."), name);
+                        note = format(_(" - %sを倒す。", " - kill %s."), r_ptr->name.data());
                     }
 
                     break;
-                case QuestKindType::FIND_ARTIFACT:
+                case QuestKindType::FIND_ARTIFACT: {
+                    std::string item_name("");
                     if (q_ref.reward_artifact_idx != FixedArtifactId::NONE) {
                         const auto &a_ref = artifacts_info.at(q_ref.reward_artifact_idx);
                         ItemEntity item;
@@ -108,39 +107,37 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
                         item.prep(bi_id);
                         item.fixed_artifact_idx = q_ref.reward_artifact_idx;
                         item.ident = IDENT_STORE;
-                        describe_flavor(player_ptr, name, &item, OD_NAME_ONLY);
+                        item_name = describe_flavor(player_ptr, &item, OD_NAME_ONLY);
                     }
 
-                    sprintf(note, _("\n   - %sを見つけ出す。", "\n   - Find %s."), name);
+                    note = format(_("\n   - %sを見つけ出す。", "\n   - Find %s."), item_name.data());
                     break;
+                }
                 case QuestKindType::FIND_EXIT:
-                    sprintf(note, _(" - 出口に到達する。", " - Reach exit."));
+                    note = format(_(" - 出口に到達する。", " - Reach exit."));
                     break;
                 case QuestKindType::KILL_NUMBER:
 #ifdef JP
-                    sprintf(note, " - %d 体のモンスターを倒す。(あと %d 体)", (int)q_ref.max_num, (int)(q_ref.max_num - q_ref.cur_num));
+                    note = format(" - %d 体のモンスターを倒す。(あと %d 体)", (int)q_ref.max_num, (int)(q_ref.max_num - q_ref.cur_num));
 #else
-                    sprintf(note, " - Kill %d monsters, have killed %d.", (int)q_ref.max_num, (int)q_ref.cur_num);
+                    note = format(" - Kill %d monsters, have killed %d.", (int)q_ref.max_num, (int)q_ref.cur_num);
 #endif
                     break;
 
                 case QuestKindType::KILL_ALL:
                 case QuestKindType::TOWER:
-                    sprintf(note, _(" - 全てのモンスターを倒す。", " - Kill all monsters."));
+                    note = format(_(" - 全てのモンスターを倒す。", " - Kill all monsters."));
                     break;
                 default:
                     break;
                 }
             }
 
-            sprintf(tmp_str, _("  %s (危険度:%d階相当)%s\n", "  %s (Danger level: %d)%s\n"), q_ref.name, (int)q_ref.level, note);
-            fputs(tmp_str, fff);
+            fprintf(fff, _("  %s (危険度:%d階相当)%s\n", "  %s (Danger level: %d)%s\n"), q_ref.name, (int)q_ref.level, note.data());
             if (q_ref.status == QuestStatusType::COMPLETED) {
-                sprintf(tmp_str, _("    クエスト達成 - まだ報酬を受けとってない。\n", "    Quest Completed - Unrewarded\n"));
-                fputs(tmp_str, fff);
+                fputs(_("    クエスト達成 - まだ報酬を受けとってない。\n", "    Quest Completed - Unrewarded\n"), fff);
                 continue;
             }
-
             int k = 0;
             while (quest_text[k][0] && k < 10) {
                 fprintf(fff, "    %s\n", quest_text[k]);
@@ -159,25 +156,25 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
         }
 
         r_ptr = &monraces_info[q_ref.r_idx];
-        strcpy(name, r_ptr->name.data());
         if (q_ref.max_num <= 1) {
-            sprintf(rand_tmp_str, _("  %s (%d 階) - %sを倒す。\n", "  %s (Dungeon level: %d)\n  Kill %s.\n"), q_ref.name, (int)q_ref.level, name);
+            constexpr auto mes = _("  %s (%d 階) - %sを倒す。\n", "  %s (Dungeon level: %d)\n  Kill %s.\n");
+            rand_tmp_str = format(mes, q_ref.name, (int)q_ref.level, r_ptr->name.data());
             continue;
         }
 
 #ifdef JP
-        sprintf(rand_tmp_str, "  %s (%d 階) - %d 体の%sを倒す。(あと %d 体)\n", q_ref.name, (int)q_ref.level, (int)q_ref.max_num, name,
+        rand_tmp_str = format("  %s (%d 階) - %d 体の%sを倒す。(あと %d 体)\n", q_ref.name, (int)q_ref.level, (int)q_ref.max_num, r_ptr->name.data(),
             (int)(q_ref.max_num - q_ref.cur_num));
 #else
-        plural_aux(name);
-
-        sprintf(rand_tmp_str, "  %s (Dungeon level: %d)\n  Kill %d %s, have killed %d.\n", q_ref.name, (int)q_ref.level, (int)q_ref.max_num, name,
-            (int)q_ref.cur_num);
+        auto monster_name(r_ptr->name);
+        plural_aux(monster_name.data());
+        rand_tmp_str = format("  %s (Dungeon level: %d)\n  Kill %d %s, have killed %d.\n", q_ref.name, (int)q_ref.level, (int)q_ref.max_num,
+            monster_name.data(), (int)q_ref.cur_num);
 #endif
     }
 
-    if (rand_tmp_str[0]) {
-        fputs(rand_tmp_str, fff);
+    if (!rand_tmp_str.empty()) {
+        fputs(rand_tmp_str.data(), fff);
     }
 
     if (!total) {
