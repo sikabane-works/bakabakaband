@@ -28,7 +28,6 @@ static void display_diary(PlayerType *player_ptr)
     std::stringstream file_name;
     file_name << _("playrecord-", "playrec-") << savefile_base << ".txt";
     char buf[1024];
-    char diary_title[1024];
     path_build(buf, sizeof(buf), ANGBAND_DIR_USER, file_name.str().data());
 
     PlayerClass pc(player_ptr);
@@ -43,12 +42,12 @@ static void display_diary(PlayerType *player_ptr)
     }
 
 #ifdef JP
-    strnfmt(diary_title, sizeof(diary_title), "「%s%s%sの伝説 -%s-」", ap_ptr->title, ap_ptr->no ? "の" : "", player_ptr->name, subtitle.data());
+    auto diary_title = format("「%s%s%sの伝説 -%s-」", ap_ptr->title, ap_ptr->no ? "の" : "", player_ptr->name, subtitle.data());
 #else
-    strnfmt(diary_title, sizeof(diary_title), "Legend of %s %s '%s'", ap_ptr->title, player_ptr->name, subtitle.data());
+    auto diary_title = format("Legend of %s %s '%s'", ap_ptr->title, player_ptr->name, subtitle.data());
 #endif
 
-    (void)show_file(player_ptr, false, buf, diary_title, -1, 0);
+    (void)show_file(player_ptr, false, buf, diary_title.data(), -1, 0);
 }
 
 /*!
