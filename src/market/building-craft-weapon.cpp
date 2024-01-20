@@ -339,7 +339,6 @@ static void list_weapon(PlayerType *player_ptr, ItemEntity *o_ptr, TERM_LEN row,
         row + 7, col + 1);
 }
 
-
 /*!
  * @brief 武器匠鑑定1回分（オブジェクト2種）の処理。/ Compare weapons
  * @details

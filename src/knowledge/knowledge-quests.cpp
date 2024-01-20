@@ -176,7 +176,7 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
     if (!rand_tmp_str.empty()) {
         fputs(rand_tmp_str.data(), fff);
     }
-    
+
     if (!total) {
         fprintf(fff, _("  なし\n", "  Nothing.\n"));
     }
