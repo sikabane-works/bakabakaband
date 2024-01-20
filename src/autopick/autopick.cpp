@@ -33,6 +33,7 @@
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
 #include "window/display-sub-windows.h"
+#include <sstream>
 
 /*!
  * @brief Auto-destroy marked item
@@ -46,8 +47,7 @@ static void autopick_delayed_alter_aux(PlayerType *player_ptr, INVENTORY_IDX ite
         return;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
     if (item >= 0) {
         inven_item_increase(player_ptr, item, -(o_ptr->number));
         inven_item_optimize(player_ptr, item);
@@ -55,7 +55,7 @@ static void autopick_delayed_alter_aux(PlayerType *player_ptr, INVENTORY_IDX ite
         delete_object_idx(player_ptr, 0 - item);
     }
 
-    msg_format(_("%sを自動破壊します。", "Auto-destroying %s."), o_name);
+    msg_format(_("%sを自動破壊します。", "Auto-destroying %s."), item_name.data());
 }
 
 /*!
@@ -113,17 +113,16 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
         }
 
         disturb(player_ptr, false, false);
-        GAME_TEXT o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, o_ptr, 0);
+        const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 
         if (!check_get_item(o_ptr)) {
-            msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), o_name);
+            msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), item_name.data());
             o_ptr->marked.set(OmType::SUPRESS_MESSAGE);
             continue;
         }
 
         if (!check_store_item_to_inventory(player_ptr, o_ptr)) {
-            msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), o_name);
+            msg_format(_("ザックには%sを入れる隙間がない。", "You have no room for %s."), item_name.data());
             o_ptr->marked.set(OmType::SUPRESS_MESSAGE);
             continue;
         }
@@ -138,9 +137,9 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
             continue;
         }
 
-        describe_flavor(player_ptr, o_name, o_ptr, 0);
-        sprintf(out_val, _("%sを拾いますか? ", "Pick up %s? "), o_name);
-        if (!get_check(out_val)) {
+        std::stringstream ss;
+        ss << _(item_name, "Pick up ") << _("を拾いますか", item_name) << "? ";
+        if (!get_check(ss.str())) {
             o_ptr->marked.set({ OmType::SUPRESS_MESSAGE, OmType::NO_QUERY });
             continue;
         }

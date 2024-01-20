@@ -174,9 +174,8 @@ static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
     }
 
     auto *act_ptr = tmp_act_ptr.value();
-    GAME_TEXT name[MAX_NLEN];
-    describe_flavor(player_ptr, name, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_BASE_NAME);
-    if (!switch_activation(player_ptr, &o_ptr, act_ptr, name)) {
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_BASE_NAME);
+    if (!switch_activation(player_ptr, &o_ptr, act_ptr, item_name.data())) {
         return false;
     }
 
@@ -385,9 +384,8 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
     }
 
     if (randint1(100) <= ae_ptr->broken) {
-        char o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, ae_ptr->o_ptr, OD_OMIT_PREFIX);
-        msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name);
+        std::string o_name = describe_flavor(player_ptr, ae_ptr->o_ptr, OD_OMIT_PREFIX);
+        msg_format(_("%sは壊れた！", "%s is destroyed!"), o_name.data());
         curse_weapon_object(player_ptr, true, ae_ptr->o_ptr);
     }
 }
