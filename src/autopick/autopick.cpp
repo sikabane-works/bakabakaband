@@ -132,7 +132,6 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
             continue;
         }
 
-        char out_val[MAX_NLEN + 20];
         if (o_ptr->marked.has(OmType::NO_QUERY)) {
             continue;
         }
