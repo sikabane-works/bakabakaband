@@ -158,12 +158,12 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
         r_ptr = &monraces_info[q_ref.r_idx];
         if (q_ref.max_num <= 1) {
             constexpr auto mes = _("  %s (%d 階) - %sを倒す。\n", "  %s (Dungeon level: %d)\n  Kill %s.\n");
-            rand_tmp_str = format(mes, q_ref.name, (int)q_ref.level, r_ptr->name);
+            rand_tmp_str = format(mes, q_ref.name, (int)q_ref.level, r_ptr->name.data());
             continue;
         }
 
 #ifdef JP
-        rand_tmp_str = format("  %s (%d 階) - %d 体の%sを倒す。(あと %d 体)\n", q_ref.name, (int)q_ref.level, (int)q_ref.max_num, r_ptr->name,
+        rand_tmp_str = format("  %s (%d 階) - %d 体の%sを倒す。(あと %d 体)\n", q_ref.name, (int)q_ref.level, (int)q_ref.max_num, r_ptr->name.data(),
             (int)(q_ref.max_num - q_ref.cur_num));
 #else
         auto monster_name(r_ptr->name);
