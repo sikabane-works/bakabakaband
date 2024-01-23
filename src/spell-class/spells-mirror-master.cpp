@@ -169,7 +169,7 @@ bool SpellsMirrorMaster::mirror_concentration()
         this->player_ptr->csp_frac = 0;
     }
 
-    set_bits(this->player_ptr->redraw, PR_MANA);
+    set_bits(this->player_ptr->redraw, PR_MP);
     return true;
 }
 

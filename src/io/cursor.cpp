@@ -133,7 +133,7 @@ bool change_panel(PlayerType *player_ptr, POSITION dy, POSITION dx)
     panel_col_min = x;
     panel_bounds_center();
 
-    player_ptr->update |= (PU_MONSTERS);
+    player_ptr->update |= (PU_MONSTER_STATUSES);
     player_ptr->redraw |= (PR_MAP);
     handle_stuff(player_ptr);
     return true;

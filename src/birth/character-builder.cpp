@@ -128,6 +128,6 @@ void player_birth(PlayerType *player_ptr)
     }
 
     if (!window_flag[2]) {
-        window_flag[2] |= PW_INVEN;
+        window_flag[2] |= PW_INVENTORY;
     }
 }

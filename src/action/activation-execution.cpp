@@ -357,8 +357,8 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
     sound(SOUND_ZAP);
     if (activation_index(ae_ptr->o_ptr) > RandomArtActType::NONE) {
         (void)activate_artifact(player_ptr, ae_ptr->o_ptr);
-        player_ptr->window_flags |= PW_INVEN | PW_EQUIP;
-        activated = true;
+        player_ptr->window_flags |= PW_INVENTORY | PW_EQUIPMENT;
+        return;
     }
 
     if (activate_whistle(player_ptr, ae_ptr)) {

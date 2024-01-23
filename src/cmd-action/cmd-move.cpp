@@ -347,7 +347,7 @@ void do_cmd_walk(PlayerType *player_ptr, bool pickup)
 {
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= PR_STATE;
+        player_ptr->redraw |= PR_ACTION;
         command_arg = 0;
     }
 
@@ -425,7 +425,7 @@ void do_cmd_stay(PlayerType *player_ptr, bool pickup)
     uint32_t mpe_mode = MPE_STAYING | MPE_ENERGY_USE;
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        player_ptr->redraw |= (PR_ACTION);
         command_arg = 0;
     }
 
@@ -491,7 +491,7 @@ void do_cmd_rest(PlayerType *player_ptr)
     player_ptr->resting = command_arg;
     player_ptr->action = ACTION_REST;
     player_ptr->update |= PU_BONUS;
-    player_ptr->redraw |= (PR_STATE);
+    player_ptr->redraw |= (PR_ACTION);
     handle_stuff(player_ptr);
     term_fresh();
 }
