@@ -287,7 +287,6 @@ static void analyze_addition(ItemEntity *o_ptr, char *addition, size_t addition_
     }
 }
 
-
 /*!
  * @brief アーティファクトの基本情報を文字列に収める /
  * Determine the minimum depth an artifact can appear, its rarity, its weight,
