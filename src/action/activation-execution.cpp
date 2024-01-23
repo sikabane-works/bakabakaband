@@ -65,8 +65,7 @@
 static void decide_activation_level(ae_type *ae_ptr)
 {
     if (ae_ptr->o_ptr->is_fixed_artifact()) {
-        ae_ptr->lev = artifacts_info.at(ae_ptr->o_ptr->fixed_artifact_idx).level;
-        ae_ptr->broken = artifacts_info.at(ae_ptr->o_ptr->fixed_artifact_idx).broken_rate;
+        ae_ptr->lev = ArtifactsInfo::get_instance().get_artifact(ae_ptr->o_ptr->fixed_artifact_idx).level;
         return;
     }
 
