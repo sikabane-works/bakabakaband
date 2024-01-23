@@ -261,8 +261,7 @@ static bool wr_savefile_new(PlayerType *player_ptr, SaveType type)
 static bool save_player_aux(PlayerType *player_ptr, char *name, SaveType type)
 {
     safe_setuid_grab(player_ptr);
-    int file_permission = 0644;
-    int fd = fd_make(name, file_permission);
+    auto fd = fd_make(name);
     safe_setuid_drop();
 
     bool is_save_successful = false;
@@ -318,7 +317,6 @@ bool save_player(PlayerType *player_ptr, SaveType type)
     if (save_player_aux(player_ptr, safe, type)) {
         char temp[1024];
         char filename[1024];
-        errr err = 0;
         strcpy(temp, savefile);
         strcat(temp, ".old");
         safe_setuid_grab(player_ptr);
@@ -331,13 +329,6 @@ bool save_player(PlayerType *player_ptr, SaveType type)
             strcpy(filename, savefile);
         }
 
-        err |= fd_move(savefile, temp);
-        err |= fd_move(safe, savefile);
-        err |= fd_kill(temp);
-        if (err) {
-            msg_print(_("(セーブデータの置換処理ミス)", "(Failed to replace save files)"));
-            msg_print(nullptr);
-        }
         safe_setuid_drop();
         w_ptr->character_loaded = true;
         result = true;
