@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "system/angband.h"
-
-#define MAX_VIRTUE 18 /*!< 徳定義の最大数 */
+#include <map>
+#include <string>
 
 enum class Virtue : short {
     NONE = 0,
@@ -27,14 +27,11 @@ enum class Virtue : short {
     MAX,
 };
 
-#define VIRTUE_LARGE 1
-#define VIRTUE_SMALL 2
-
 class PlayerType;
-bool compare_virtue(PlayerType *player_ptr, Virtue type, int num, int tekitou);
-int virtue_number(PlayerType *player_ptr, Virtue type);
-extern concptr virtue[MAX_VIRTUE];
+extern const std::map<Virtue, std::string> virtue_names;
+bool compare_virtue(PlayerType *player_ptr, Virtue virtue, int threshold);
+int virtue_number(PlayerType *player_ptr, Virtue virtue);
 void initialize_virtues(PlayerType *player_ptr);
 void chg_virtue(PlayerType *player_ptr, Virtue virtue, int amount);
 void set_virtue(PlayerType *player_ptr, Virtue virtue, int amount);
-void dump_virtues(PlayerType *player_ptr, FILE *OutFile);
+void dump_virtues(PlayerType *player_ptr, FILE *out_file);

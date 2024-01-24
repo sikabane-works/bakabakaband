@@ -42,7 +42,7 @@ void display_virtue(PlayerType *player_ptr, self_info_type *self_ptr)
     angband_strcpy(self_ptr->buf[1], self_ptr->plev_buf, sizeof(self_ptr->buf[1]));
     self_ptr->info[self_ptr->line++] = self_ptr->buf[1];
     for (int v_nr = 0; v_nr < 8; v_nr++) {
-        const auto vir_name = virtue[enum2i(player_ptr->vir_types[v_nr])];
+        const auto vir_name = virtue_names.at(player_ptr->vir_types[v_nr]).data();
         std::string vir_desc;
         int tester = player_ptr->virtues[v_nr];
         if (tester < -100) {

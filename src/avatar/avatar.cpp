@@ -24,66 +24,51 @@
 /*!
  * 徳の名称 / The names of the virtues
  */
-concptr virtue[MAX_VIRTUE] = {
-    _("情", "Compassion"),
-    _("誉", "Honour"),
-    _("正", "Justice"),
-    _("犠", "Sacrifice"),
-    _("識", "Knowledge"),
-    _("誠", "Faith"),
-    _("啓", "Enlightenment"),
-    _("秘", "Mysticism"),
-    _("運", "Chance"),
-    _("然", "Nature"),
-    _("調", "Harmony"),
-    _("活", "Vitality"),
-    _("死", "Unlife"),
-    _("忍", "Patience"),
-    _("節", "Temperance"),
-    _("勤", "Diligence"),
-    _("勇", "Valour"),
-    _("個", "Individualism"),
+const std::map<Virtue, std::string> virtue_names = {
+    { Virtue::NONE, "" },
+    { Virtue::COMPASSION, _("情", "Compassion") },
+    { Virtue::HONOUR, _("誉", "Honour") },
+    { Virtue::JUSTICE, _("正", "Justice") },
+    { Virtue::SACRIFICE, _("犠", "Sacrifice") },
+    { Virtue::KNOWLEDGE, _("識", "Knowledge") },
+    { Virtue::FAITH, _("誠", "Faith") },
+    { Virtue::ENLIGHTEN, _("啓", "Enlightenment") },
+    { Virtue::ENCHANT, _("秘", "Mysticism") },
+    { Virtue::CHANCE, _("運", "Chance") },
+    { Virtue::NATURE, _("然", "Nature") },
+    { Virtue::HARMONY, _("調", "Harmony") },
+    { Virtue::VITALITY, _("活", "Vitality") },
+    { Virtue::UNLIFE, _("死", "Unlife") },
+    { Virtue::PATIENCE, _("忍", "Patience") },
+    { Virtue::TEMPERANCE, _("節", "Temperance") },
+    { Virtue::DILIGENCE, _("勤", "Diligence") },
+    { Virtue::VALOUR, _("勇", "Valour") },
+    { Virtue::INDIVIDUALISM, _("個", "Individualism") },
 };
 
 /*!
  * @brief 該当の徳がプレイヤーに指定されているか否かに応じつつ、大小を比較する。
  * @details 徳がない場合は値0として比較する。
- * @param type 比較したい徳のID
- * @param num 比較基準値
- * @param tekitou VIRTUE_LARGE = 基準値より大きいか / VIRTUE_SMALL = 基準値より小さいか
+ * @param virtue_names 比較したい徳のID
+ * @param threshold 比較基準値
  * @return 比較の真偽値を返す
- * @todo 引数名を直しておく
  */
-bool compare_virtue(PlayerType *player_ptr, Virtue type, int num, int tekitou)
+bool compare_virtue(PlayerType *player_ptr, Virtue virtue, int threshold)
 {
-    int vir = virtue_number(player_ptr, type) ? player_ptr->virtues[virtue_number(player_ptr, type) - 1] : 0;
-    switch (tekitou) {
-    case VIRTUE_LARGE:
-        if (vir > num) {
-            return true;
-        } else {
-            return false;
-        }
-    case VIRTUE_SMALL:
-        if (vir < num) {
-            return true;
-        } else {
-            return false;
-        }
-    default:
-        return false;
-    }
+    const auto num = virtue_number(player_ptr, virtue);
+    const auto virtue_value = num ? player_ptr->virtues[num - 1] : 0;
+    return virtue_value > threshold;
 }
 
 /*!
  * @brief プレイヤーの指定の徳が何番目のスロットに登録されているかを返す。 / Aux function
- * @param type 確認したい徳のID
+ * @param virtue_names 確認したい徳のID
  * @return スロットがあるならばスロットのID(0～7)+1、ない場合は0を返す。
  */
-int virtue_number(PlayerType *player_ptr, Virtue type)
+int virtue_number(PlayerType *player_ptr, Virtue virtue)
 {
     for (int i = 0; i < 8; i++) {
-        if (player_ptr->vir_types[i] == type) {
+        if (player_ptr->vir_types[i] == virtue) {
             return i + 1;
         }
     }
@@ -345,7 +330,7 @@ void initialize_virtues(PlayerType *player_ptr)
         break;
     };
 
-    /* Get one virtue based on race */
+    /* Get one virtue_names based on race */
     switch (player_ptr->prace) {
     case PlayerRaceType::HUMAN:
     case PlayerRaceType::HALF_ELF:
@@ -423,7 +408,7 @@ void initialize_virtues(PlayerType *player_ptr)
         break;
     }
 
-    /* Get a virtue for realms */
+    /* Get a virtue_names for realms */
     if (player_ptr->realm1) {
         tmp_vir = get_realm_virtues(player_ptr, player_ptr->realm1);
         if (tmp_vir != Virtue::NONE) {
@@ -458,7 +443,7 @@ void initialize_virtues(PlayerType *player_ptr)
 /*!
  * @brief 対応する徳をプレイヤーがスロットに登録している場合に加減を行う。
  * @details 範囲は-125～125、基本的に絶対値が大きいほど絶対値が上がり辛くなる。
- * @param virtue 徳のID
+ * @param virtue_names 徳のID
  * @param amount 加減量
  */
 void chg_virtue(PlayerType *player_ptr, Virtue virtue_id, int amount)
@@ -519,7 +504,7 @@ void chg_virtue(PlayerType *player_ptr, Virtue virtue_id, int amount)
 
 /*!
  * @brief 対応する徳をプレイヤーがスロットに登録している場合に固定値をセットする
- * @param virtue 徳のID
+ * @param virtue_names 徳のID
  * @param amount セットしたい値
  */
 void set_virtue(PlayerType *player_ptr, Virtue virtue_id, int amount)
@@ -545,7 +530,7 @@ void dump_virtues(PlayerType *player_ptr, FILE *out_file)
     for (int v_nr = 0; v_nr < 8; v_nr++) {
         GAME_TEXT vir_name[20];
         int tester = player_ptr->virtues[v_nr];
-        strcpy(vir_name, virtue[enum2i(player_ptr->vir_types[v_nr]) - 1]);
+        strcpy(vir_name, virtue_names.at(player_ptr->vir_types[v_nr]).data());
         const std::string vir_val_str = format(" (%d)", tester);
         const auto vir_val = show_actual_value ? vir_val_str.data() : "";
         if ((player_ptr->vir_types[v_nr] == Virtue::NONE) || (player_ptr->vir_types[v_nr] >= Virtue::MAX)) {
