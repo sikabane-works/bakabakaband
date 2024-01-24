@@ -114,7 +114,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
     MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
 
-    chg_virtue(player_ptr, V_ENLIGHTEN, 1);
+    chg_virtue(player_ptr, Virtue::ENLIGHTEN, 1);
     if (player_ptr->exp < PY_MAX_EXP) {
         EXP ee = (player_ptr->exp / 2) + 10;
         if (ee > max_exp) {
@@ -589,9 +589,9 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     player_ptr->update &= ~(PU_COMBINATION | PU_REORDER | PU_AUTO_DESTRUCTION);
 
     if (!(o_ptr->is_aware())) {
-        chg_virtue(player_ptr, V_KNOWLEDGE, -1);
-        chg_virtue(player_ptr, V_PATIENCE, -1);
-        chg_virtue(player_ptr, V_CHANCE, 1);
+        chg_virtue(player_ptr, Virtue::KNOWLEDGE, -1);
+        chg_virtue(player_ptr, Virtue::PATIENCE, -1);
+        chg_virtue(player_ptr, Virtue::CHANCE, 1);
     }
 
     /* We have tried it */
