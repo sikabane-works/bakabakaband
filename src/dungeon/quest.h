@@ -4,6 +4,7 @@
 
 #include "util/enum-converter.h"
 #include <map>
+#include <stdint.h>
 #include <vector>
 
 enum class FixedArtifactId : short;

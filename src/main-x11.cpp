@@ -1799,12 +1799,12 @@ static bool check_file(concptr s)
 static void init_sound(void)
 {
     int i;
-    char wav[128];
     char buf[1024];
     char dir_xtra_sound[1024];
     path_build(dir_xtra_sound, sizeof(dir_xtra_sound), ANGBAND_DIR_XTRA, "sound");
     for (i = 1; i < SOUND_MAX; i++) {
-        sprintf(wav, "%s.wav", angband_sound_name[i]);
+        std::string wav = angband_sound_name[i];
+        wav.append(".wav");
         path_build(buf, sizeof(buf), dir_xtra_sound, wav);
         if (check_file(buf)) {
             sound_file[i] = string_make(buf);
