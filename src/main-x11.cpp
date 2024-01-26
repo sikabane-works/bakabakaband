@@ -1799,7 +1799,6 @@ static bool check_file(concptr s)
 static void init_sound(void)
 {
     int i;
-    char wav[128];
     char buf[1024];
     char dir_xtra_sound[1024];
     path_build(dir_xtra_sound, sizeof(dir_xtra_sound), ANGBAND_DIR_XTRA, "sound");
