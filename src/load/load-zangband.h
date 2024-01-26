@@ -4,7 +4,6 @@
 #include "system/angband.h"
 
 class PlayerType;
-struct QuestType;
 void set_zangband_special_attack(PlayerType *player_ptr);
 void set_zangband_special_defense(PlayerType *player_ptr);
 void set_zangband_action(PlayerType *player_ptr);
