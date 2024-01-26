@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <set>
+#include <stdint.h>
 #include <string_view>
 
 class PlayerType;
