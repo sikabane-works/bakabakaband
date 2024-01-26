@@ -189,7 +189,6 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
 
 static bool do_cmd_knowledge_quests_aux(PlayerType *player_ptr, FILE *fff, QuestId q_idx)
 {
-    char tmp_str[120];
     const auto &quest_list = QuestList::get_instance();
     const auto &quest = quest_list[q_idx];
 
@@ -289,7 +288,6 @@ static void do_cmd_knowledge_quests_wiz_random(FILE *fff)
 {
     fprintf(fff, _("《残りのランダムクエスト》\n", "< Remaining Random Quest >\n"));
     const auto &quest_list = QuestList::get_instance();
-    GAME_TEXT tmp_str[120];
     int16_t total = 0;
     for (const auto &[q_idx, quest] : quest_list) {
         if (quest.flags & QUEST_FLAG_SILENT) {
