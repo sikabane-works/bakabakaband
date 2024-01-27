@@ -239,7 +239,6 @@ bool save_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mode
     uint32_t old_v_stamp = 0;
     uint32_t old_x_stamp = 0;
 
-    char floor_savefile[sizeof(savefile) + 32];
     if ((mode & SLF_SECOND) != 0) {
         old_fff = saving_savefile;
         old_xor_byte = save_xor_byte;
@@ -247,7 +246,10 @@ bool save_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr, BIT_FLAGS mode
         old_x_stamp = x_stamp;
     }
 
-    sprintf(floor_savefile, "%s.F%02d", savefile, (int)sf_ptr->savefile_id);
+    auto floor_savefile = savefile.string();
+    char ext[32];
+    strnfmt(ext, sizeof(ext), ".F%02d", (int)sf_ptr->savefile_id);
+    floor_savefile.append(ext);
     safe_setuid_grab(player_ptr);
     fd_kill(floor_savefile);
     safe_setuid_drop();
