@@ -4,6 +4,8 @@
 #include "player/player-status-flags.h"
 #include "system/player-type-definition.h"
 #include "world/world.h"
+#include <algorithm>
+#include <cmath>
 
 WorldCollapsion world_collapsion;
 WorldCollapsion *wc_ptr = &world_collapsion;
@@ -32,7 +34,7 @@ void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, PlayerType 
     if (w_ptr->total_winner) {
         multi /= 3;
     }
-    this->collapse_degree += (std::min(1, mysqrt(w_ptr->game_turn / 2000)) * multi);
+    this->collapse_degree += std::min(1, static_cast<int>(std::round(std::sqrt(w_ptr->game_turn / 2000) * multi)));
 }
 
 /*!
