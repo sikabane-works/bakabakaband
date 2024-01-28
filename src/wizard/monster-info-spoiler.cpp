@@ -106,7 +106,7 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
             continue;
         }
 
-        if (any_bits(r_ptr->flags7, RF7_KAGE)) {
+        if (r_ptr->misc_flags.has(MonsterMiscType::KAGE)) {
             continue;
         }
 
