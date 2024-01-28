@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @brief モンスターをフロアに1体配置する処理
  * @date 2020/06/13
  * @author Hourier
@@ -31,6 +31,7 @@
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
+#include "monster-race/race-misc-flags.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
@@ -146,7 +147,7 @@ static bool check_unique_placeable(const FloorType &floor, MonsterRaceId r_idx, 
         return false;
     }
 
-    const auto is_deep = any_bits(r_ptr->flags1, RF1_FORCE_DEPTH) && (floor.dun_level < r_ptr->level);
+    const auto is_deep = r_ptr->misc_flags.has(MonsterMiscType::FORCE_DEPTH) && (floor.dun_level < r_ptr->level);
     const auto is_questor = !ironman_nightmare || any_bits(r_ptr->flags1, RF1_QUESTOR);
     return !is_deep || !is_questor;
 }

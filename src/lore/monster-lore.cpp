@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @brief モンスターの思い出表示に必要なフラグ類の処理
  * @date 2020/06/09
  * @author Hourier
@@ -14,6 +14,7 @@
 #include "monster-race/race-flags2.h"
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-indice-types.h"
+#include "monster-race/race-misc-flags.h"
 #include "monster-race/race-sex-const.h"
 #include "player-ability/player-ability-types.h"
 #include "system/angband.h"
@@ -210,8 +211,8 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::PUYO);
     }
 
-    if (lore_ptr->r_ptr->flags1 & RF1_FORCE_DEPTH) {
-        lore_ptr->flags1 |= (RF1_FORCE_DEPTH);
+    if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::FORCE_DEPTH)) {
+        lore_ptr->misc_flags.set(MonsterMiscType::FORCE_DEPTH);
     }
 
     if (lore_ptr->r_ptr->flags1 & RF1_FORCE_MAXHP) {
