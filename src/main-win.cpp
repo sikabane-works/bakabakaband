@@ -519,7 +519,6 @@ static void load_prefs(void)
     GetPrivateProfileStringA("Angband", "BackGroundBitmap", DEFAULT_BG_FILENAME, wallpaper_file, 1023, ini_file);
     char savefile_buf[1024]{};
     GetPrivateProfileStringA("Angband", "SaveFile", "", savefile_buf, 1023, ini_file);
-
     if (strncmp(".\\", savefile_buf, 2) == 0) {
         std::string angband_dir_str(ANGBAND_DIR.string());
         const auto path_length = angband_dir_str.length() - 4; // "\lib" を除く.
@@ -1906,9 +1905,9 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         break;
     }
     case IDM_OPTIONS_OPEN_MUSIC_DIR: {
-        std::vector<char> buf(MAIN_WIN_MAX_PATH);
-        path_build(&buf[0], MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_MUSIC, "music.cfg");
-        open_dir_in_explorer(&buf[0]);
+        char buf[MAIN_WIN_MAX_PATH];
+        path_build(buf, MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_MUSIC, "music.cfg");
+        open_dir_in_explorer(buf);
         break;
     }
     case IDM_OPTIONS_SOUND: {
@@ -1930,9 +1929,9 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         break;
     }
     case IDM_OPTIONS_OPEN_SOUND_DIR: {
-        std::vector<char> buf(MAIN_WIN_MAX_PATH);
-        path_build(&buf[0], MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_SOUND, "sound.cfg");
-        open_dir_in_explorer(&buf[0]);
+        char buf[MAIN_WIN_MAX_PATH];
+        path_build(buf, MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_SOUND, "sound.cfg");
+        open_dir_in_explorer(buf);
         break;
     }
     case IDM_OPTIONS_NO_BG: {
@@ -2657,15 +2656,15 @@ static void init_stuff()
 
     validate_file(path);
     path_build(path, sizeof(path), ANGBAND_DIR_XTRA, "graf");
-    ANGBAND_DIR_XTRA_GRAF = string_make(path);
+    ANGBAND_DIR_XTRA_GRAF = path;
     validate_dir(ANGBAND_DIR_XTRA_GRAF, true);
 
     path_build(path, sizeof(path), ANGBAND_DIR_XTRA, "sound");
-    ANGBAND_DIR_XTRA_SOUND = string_make(path);
+    ANGBAND_DIR_XTRA_SOUND = path;
     validate_dir(ANGBAND_DIR_XTRA_SOUND, false);
 
     path_build(path, sizeof(path), ANGBAND_DIR_XTRA, "music");
-    ANGBAND_DIR_XTRA_MUSIC = string_make(path);
+    ANGBAND_DIR_XTRA_MUSIC = path;
     validate_dir(ANGBAND_DIR_XTRA_MUSIC, false);
 
     for (i = 0; special_key_list[i]; ++i) {
