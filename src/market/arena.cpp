@@ -287,14 +287,18 @@ bool monster_arena_comm(PlayerType *player_ptr)
 
     prt(_("モンスター                                                     倍率", "Monsters                                                       Odds"), 4, 4);
     for (int i = 0; i < 4; i++) {
-        char buf[MAX_MONSTER_NAME];
         auto *r_ptr = &monraces_info[battle_mon_list[i]];
+        std::string name;
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+            name = _(r_ptr->name, "Fake ");
+            name.append(_("もどき", r_ptr->name));
+        } else {
+            name = r_ptr->name;
+            name.append(_("      ", ""));
+        }
 
-        sprintf(buf, _("%d) %-58s  %4ld.%02ld倍", "%d) %-58s  %4ld.%02ld"), i + 1,
-            _(format("%s%s", r_ptr->name.data(), r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? "もどき" : "      ").c_str(),
-                format("%s%s", r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? "Fake " : "", r_ptr->name.data()).c_str()),
-            (long int)mon_odds[i] / 100, (long int)mon_odds[i] % 100);
-        prt(buf, 5 + i, 1);
+        constexpr auto fmt = _("%d) %-58s  %4ld.%02ld倍", "%d) %-58s  %4ld.%02ld");
+        prt(format(fmt, i + 1, name.data(), (long int)mon_odds[i] / 100, (long int)mon_odds[i] % 100), 5 + i, 1);
     }
 
     prt(_("どれに賭けますか:", "Which monster: "), 0, 0);
