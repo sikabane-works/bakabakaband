@@ -61,8 +61,6 @@ void do_cmd_locate(PlayerType *player_ptr)
 
     DIRECTION dir;
     POSITION y1, x1;
-    GAME_TEXT tmp_val[80];
-    GAME_TEXT out_val[MAX_MONSTER_NAME];
     TERM_LEN wid, hgt;
     get_screen_size(&wid, &hgt);
     POSITION y2 = y1 = panel_row_min;

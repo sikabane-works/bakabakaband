@@ -287,7 +287,6 @@ bool monster_arena_comm(PlayerType *player_ptr)
 
     prt(_("モンスター                                                     倍率", "Monsters                                                       Odds"), 4, 4);
     for (int i = 0; i < 4; i++) {
-        char buf[MAX_MONSTER_NAME];
         auto *r_ptr = &monraces_info[battle_mon_list[i]];
         std::string name;
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
