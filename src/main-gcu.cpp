@@ -1268,7 +1268,7 @@ errr init_gcu(int argc, char *argv[])
     core_aux = hook_quit;
 
     /* Hack -- Require large screen, or Quit with message */
-    i = ((LINES < 24) || (COLS < 80));
+    bool i = ((LINES < 24) || (COLS < 80));
     if (i) {
         quit_fmt("%s needs an 80x24 'curses' screen", std::string(VARIANT_NAME).data());
     }
