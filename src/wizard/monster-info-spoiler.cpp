@@ -76,7 +76,6 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
 {
     PlayerType dummy;
     uint16_t why = 2;
-    char buf[1024];
     char nam[MAX_MONSTER_NAME + 10]; // ユニークには[U] が付くので少し伸ばす
     char lev[80];
     char rar[80];
