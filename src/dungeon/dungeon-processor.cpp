@@ -122,19 +122,6 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
     rfu.set_flags(flags_srf);
     handle_stuff(player_ptr);
 
-    w_ptr->character_xtra = false;
-    flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::HP,
-        StatusRedrawingFlag::MP,
-        StatusRedrawingFlag::SPELLS,
-        StatusRedrawingFlag::COMBINATION,
-        StatusRedrawingFlag::REORDER,
-    };
-    rfu.set_flags(flags_srf);
-    handle_stuff(player_ptr);
-    term_fresh();
-
     auto no_feeling_quest = (quest_num == QuestId::MELKO);
     no_feeling_quest |= none_bits(quest_list[quest_num].flags, QUEST_FLAG_PRESET);
     if (inside_quest(quest_num) && QuestType::is_fixed(quest_num) && !no_feeling_quest) {
