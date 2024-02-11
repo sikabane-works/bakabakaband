@@ -39,6 +39,7 @@
 #include "system/floor-type-definition.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
@@ -228,7 +229,11 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
         v_idx = static_cast<int>(val);
         vault_type *v_ptr = &vaults_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
-        player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MONSTER_LITE | PU_MONSTER_STATUSES);
+
+        const auto flags = { StatusRedrawingFlag::MONSTER_LITE, StatusRedrawingFlag::UN_VIEW, StatusRedrawingFlag::UN_LITE, StatusRedrawingFlag::VIEW, StatusRedrawingFlag::LITE,
+            StatusRedrawingFlag::FLOW, StatusRedrawingFlag::MONSTER_LITE, StatusRedrawingFlag::MONSTER_STATUSES };
+        RedrawingFlagsUpdater::get_instance().set_flags(flags);
+
         player_ptr->redraw |= (PR_MAP);
         player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
     }
