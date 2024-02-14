@@ -233,7 +233,10 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
             StatusRedrawingFlag::FLOW, StatusRedrawingFlag::MONSTER_LITE, StatusRedrawingFlag::MONSTER_STATUSES };
         RedrawingFlagsUpdater::get_instance().set_flags(flags);
 
-        player_ptr->redraw |= (PR_MAP);
+        const auto flags2 = {
+            MainWindowRedrawingFlag::MAP,
+        };
+        RedrawingFlagsUpdater::get_instance().set_flags(flags2);
         player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
     }
 }

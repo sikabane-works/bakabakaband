@@ -355,7 +355,8 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
         player_ptr->chp = 0;
     }
 
-    player_ptr->redraw |= PR_HP;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::HP);
     player_ptr->window_flags |= PW_PLAYER;
 
     if (damage_type != DAMAGE_GENO && player_ptr->chp == 0) {

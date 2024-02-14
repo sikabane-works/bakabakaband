@@ -128,7 +128,7 @@ static snipe_power const snipe_powers[MAX_SNIPE_POWERS] = {
 #endif
 };
 
-static void reset_concentration_flag(PlayerType *player_ptr, sniper_data_type *sniper_data)
+static void reset_concentration_flag(sniper_data_type *sniper_data)
 {
     sniper_data->reset_concent = false;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
@@ -137,7 +137,7 @@ static void reset_concentration_flag(PlayerType *player_ptr, sniper_data_type *s
         StatusRedrawingFlag::MONSTER_STATUSES,
     };
     rfu.set_flags(flags);
-    player_ptr->redraw |= (PR_TIMED_EFFECT);
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
 }
 
 /*!
@@ -156,7 +156,7 @@ static bool snipe_concentrate(PlayerType *player_ptr)
     }
 
     msg_format(_("集中した。(集中度 %d)", "You concentrate deeply. (lvl %d)"), sniper_data->concent);
-    reset_concentration_flag(player_ptr, sniper_data.get());
+    reset_concentration_flag(sniper_data.get());
     return true;
 }
 
@@ -177,7 +177,7 @@ void reset_concentration(PlayerType *player_ptr, bool msg)
     }
 
     sniper_data->concent = 0;
-    reset_concentration_flag(player_ptr, sniper_data.get());
+    reset_concentration_flag(sniper_data.get());
 }
 
 /*!
@@ -617,29 +617,33 @@ static bool cast_sniper_spell(PlayerType *player_ptr, int spell)
  */
 void do_cmd_snipe(PlayerType *player_ptr)
 {
-    COMMAND_CODE n = 0;
-    bool cast;
-
     if (cmd_limit_confused(player_ptr)) {
         return;
     }
+
     if (cmd_limit_image(player_ptr)) {
         return;
     }
+
     if (cmd_limit_stun(player_ptr)) {
         return;
     }
 
+    COMMAND_CODE n = 0;
     if (!get_snipe_power(player_ptr, &n, false)) {
         return;
     }
 
-    cast = cast_sniper_spell(player_ptr, n);
-
-    if (!cast) {
+    if (!cast_sniper_spell(player_ptr, n)) {
         return;
     }
-    player_ptr->redraw |= (PR_HP | PR_MP);
+
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::HP,
+        MainWindowRedrawingFlag::MP,
+    };
+    rfu.set_flags(flags_mwrf);
     player_ptr->window_flags |= (PW_PLAYER);
     player_ptr->window_flags |= (PW_SPELL);
 }
