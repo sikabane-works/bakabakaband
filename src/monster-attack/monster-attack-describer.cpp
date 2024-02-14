@@ -237,11 +237,11 @@ void describe_monster_attack_method(MonsterAttackPlayer *monap_ptr)
         monap_ptr->abbreviate = -1;
 #endif
         if (monap_ptr->m_ptr->ap_r_idx == MonsterRaceId::MAGGOT) {
-            monap_ptr->act = desc_moan[randint0(4)];
+            monap_ptr->act = rand_choice(desc_moan);
         } else if (monap_ptr->m_ptr->ap_r_idx == MonsterRaceId::MISUMI) {
-            monap_ptr->act = desc_moan3[randint0(4)];
+            monap_ptr->act = rand_choice(desc_moan3);
         } else {
-            monap_ptr->act = desc_moan2[randint0(4)];
+            monap_ptr->act = rand_choice(desc_moan2);
         }
 
         sound(SOUND_MOAN);
