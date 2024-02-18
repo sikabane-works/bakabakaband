@@ -78,18 +78,6 @@ int lore_do_probe(PlayerType *player_ptr, MonsterRaceId r_idx)
     }
     r_ptr->r_cast_spell = MAX_UCHAR;
 
-    for (int i = 0; i < 32; i++) {
-        if (!(r_ptr->r_flags1 & (1UL << i)) && (r_ptr->flags1 & (1UL << i))) {
-            n++;
-        }
-        if (!(r_ptr->r_flags2 & (1UL << i)) && (r_ptr->flags2 & (1UL << i))) {
-            n++;
-        }
-        if (!(r_ptr->r_flags3 & (1UL << i)) && (r_ptr->flags3 & (1UL << i))) {
-            n++;
-        }
-    }
-
     n += count_lore_mflag_group(r_ptr->resistance_flags, r_ptr->r_resistance_flags);
     n += count_lore_mflag_group(r_ptr->ability_flags, r_ptr->r_ability_flags);
     n += count_lore_mflag_group(r_ptr->behavior_flags, r_ptr->r_behavior_flags);
@@ -98,9 +86,6 @@ int lore_do_probe(PlayerType *player_ptr, MonsterRaceId r_idx)
     n += count_lore_mflag_group(r_ptr->special_flags, r_ptr->r_special_flags);
     n += count_lore_mflag_group(r_ptr->misc_flags, r_ptr->r_misc_flags);
 
-    r_ptr->r_flags1 = r_ptr->flags1;
-    r_ptr->r_flags2 = r_ptr->flags2;
-    r_ptr->r_flags3 = r_ptr->flags3;
     r_ptr->r_resistance_flags = r_ptr->resistance_flags;
     r_ptr->r_ability_flags = r_ptr->ability_flags;
     r_ptr->r_behavior_flags = r_ptr->behavior_flags;
@@ -153,8 +138,8 @@ void lore_treasure(PlayerType *player_ptr, MONSTER_IDX m_idx, ITEM_NUMBER num_it
         r_ptr->r_drop_flags.set(MonsterDropType::DROP_GREAT);
     }
 
-    if (r_ptr->flags1 & (RF1_DROP_NASTY)) {
-        r_ptr->r_flags1 |= (RF1_DROP_NASTY);
+    if (r_ptr->drop_flags.has(MonsterDropType::DROP_NASTY)) {
+        r_ptr->r_drop_flags.set(MonsterDropType::DROP_NASTY);
     }
 
     if (player_ptr->monster_race_idx == m_ptr->r_idx) {

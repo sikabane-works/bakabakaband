@@ -179,7 +179,7 @@ static void hissatsu_rock_smash(PlayerType *player_ptr, samurai_slaying_type *sa
 
     if (samurai_slaying_ptr->r_ptr->flags3 & RF3_HURT_ROCK) {
         if (is_original_ap_and_seen(player_ptr, samurai_slaying_ptr->m_ptr)) {
-            samurai_slaying_ptr->r_ptr->r_flags3 |= RF3_HURT_ROCK;
+            samurai_slaying_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::HURT_ROCK);
         }
 
         if (samurai_slaying_ptr->mult == 10) {
