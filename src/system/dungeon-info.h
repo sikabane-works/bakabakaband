@@ -90,12 +90,6 @@ struct dungeon_type {
 
     EnumClassFlagGroup<DungeonFeatureType> flags{}; /* Dungeon Flags */
 
-    BIT_FLAGS mflags1{}; /* The monster flags that are allowed */
-    BIT_FLAGS mflags2{};
-    BIT_FLAGS mflags3{};
-    BIT_FLAGS mflags7{};
-    BIT_FLAGS mflags8{};
-
     EnumClassFlagGroup<MonsterFeedType> mon_meat_feed_flags;
     EnumClassFlagGroup<MonsterAbilityType> mon_ability_flags;
     EnumClassFlagGroup<MonsterBehaviorType> mon_behavior_flags;

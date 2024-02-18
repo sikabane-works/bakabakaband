@@ -564,7 +564,7 @@ void process_speak_sound(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION oy,
         msg_print(_("重厚な足音が聞こえた。", "You hear heavy steps."));
     }
 
-    if ((r_ptr->flags2 & RF2_VOCIFEROUS) && (monster.cdis <= MAX_PLAYER_SIGHT * 2) && one_in_(SPEAK_CHANCE / 3 + 1)) {
+    if (r_ptr->r_misc_flags.has(MonsterMiscType::VOCIFEROUS) && (monster.cdis <= MAX_PLAYER_SIGHT * 2) && one_in_(SPEAK_CHANCE / 3 + 1)) {
         speaking(p_ptr, monster);
         return;
     }
