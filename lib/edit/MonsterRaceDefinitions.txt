@@ -38258,6 +38258,27 @@ S:S_MONSTER | S_UNDEAD | S_DRAGON | S_HI_DRAGON | S_HI_UNDEAD
 D:「許されないんやな…」「三日後百倍だからな」そのように呟きながら
 D:体を傾ける男の角度は鈍角でありながら、かの猟犬を絶えず生み出している。
 
+N:2087:二オーム
+E:Nhiorm
+T:NHIORM
+G:g:v
+I:109:10d100:25:100:10
+W:45:4:9000:0:0
+B:SLASH:HURT:10d9
+B:SLASH:HURT:10d9
+B:HIT:HURT:12d6
+B:SHOOT:HURT:19d6
+F:FORCE_MAXHP |
+F:EMPTY_MIND | COLD_BLOOD | BASH_DOOR |
+F:IM_FIRE | IM_COLD | IM_ELEC |
+F:IM_POIS | NONLIVING | REFLECTING |
+F:NO_CONF | NO_SLEEP | NO_FEAR | RES_CHAO | RES_DISE | RES_NEXU
+S:1_IN_6 | BR_FIRE | SHOOT
+V:75
+D:全長45メートル、重量988トンのロングー製ロボット兵器だ。
+D:バクシンガーのおやつと油断していると痛い目にあうだろう。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
