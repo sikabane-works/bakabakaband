@@ -561,7 +561,7 @@ void wilderness_gen(PlayerType *player_ptr)
                     continue;
                 }
 
-                if (is_monster(grid.m_idx)) {
+                if (grid.has_monster()) {
                     delete_monster_idx(player_ptr, grid.m_idx);
                 }
 
@@ -579,7 +579,7 @@ void wilderness_gen(PlayerType *player_ptr)
                     continue;
                 }
 
-                if (is_monster(grid.m_idx)) {
+                if (grid.has_monster()) {
                     delete_monster_idx(player_ptr, grid.m_idx);
                 }
 

@@ -34,7 +34,6 @@
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster/monster-update.h"
-#include "monster/monster-util.h"
 #include "monster/smart-learn-types.h"
 #include "mutation/mutation-calculator.h"
 #include "mutation/mutation-flag-types.h"
@@ -174,7 +173,7 @@ static void delayed_visual_update(PlayerType *player_ptr)
         }
 
         lite_spot(player_ptr, y, x);
-        if (is_monster(g_ptr->m_idx)) {
+        if (g_ptr->has_monster()) {
             update_monster(player_ptr, g_ptr->m_idx, false);
         }
 
@@ -2822,7 +2821,7 @@ bool player_place(PlayerType *player_ptr, POSITION y, POSITION x)
         inkey();
         return false;
     }
-    if (is_monster(player_ptr->current_floor_ptr->grid_array[y][x].m_idx)) {
+    if (player_ptr->current_floor_ptr->grid_array[y][x].has_monster()) {
         return false;
     }
 
