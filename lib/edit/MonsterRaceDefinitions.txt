@@ -38300,6 +38300,23 @@ F:RAND_25 | WILD_TOWN | WILD_ONLY | STUPID
 F:TAKE_ITEM | OPEN_DOOR
 D:彼らはあなたに文字通り異次元の戦いを仕掛けてくるだろう！
 
+N:2090:チンピラ・デーモン
+E:Chinpira demon
+G:U:o
+I:110:44d8:18:40:20
+W:30:2:0:1000:0:0
+B:SLASH:SUPERHURT:4d10
+B:SLASH:SUPERHURT:4d10
+B:SHOOT:HURT:5d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | IM_FIRE | IM_COLD
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | NO_CONF | NO_SLEEP | YAKUZA
+S:1_IN_5 | SHOOT
+D:けたたましい脅しの声はまさに悪魔めいているが、その悪魔の中では極々矮小な存在に過ぎない。
+D:デーモン極道階級においては最底辺の使い捨てに用いられている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
