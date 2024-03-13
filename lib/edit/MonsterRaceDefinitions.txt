@@ -38317,6 +38317,22 @@ S:1_IN_5 | SHOOT
 D:けたたましい脅しの声はまさに悪魔めいているが、その悪魔の中では極々矮小な存在に過ぎない。
 D:デーモン極道階級においては最底辺の使い捨てに用いられている。
 
+N:2091:サラリマン・デーモン
+E:White‐collar worker demon
+G:U:w
+I:113:44d12:16:50:10
+W:39:1:2000:0:0
+B:CRUSH:HURT:4d10
+B:CRUSH:HURT:4d10
+B:CRUSH:HURT:4d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | IM_FIRE | IM_COLD | IM_ACID
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | NO_CONF | NO_SLEEP | NO_STUN
+S:1_IN_8 |SHRIEK | HASTE
+D:地獄で２４時間を戦い抜き、異空間までの出張も苦にしないエコノミック・デーモンだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
