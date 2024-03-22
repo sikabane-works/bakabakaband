@@ -16,13 +16,14 @@ strong {
 
 h1.copy
 {
-    padding: 1rem;
+    padding: 0.5rem;
     z-index: 30;
-    font-size: 1.3rem;
-    width: 50vw;
+    font-size: 1.0rem;
+    width: 100vw;
     line-height: 1.2rem;
     background-color: rgba(20,10,0,0.8);
-    border-radius: 1.5rem;
+    border-radius: 0.4rem;
+    letter-spacing: 0.05rem;
 }
 
 #top-message h2 {
@@ -35,7 +36,6 @@ p {
     padding: 0.4rem;
     font-size: 0.9rem;
     line-height: 1.1rem;
-    letter-spacing: 0.05rem;
     z-index: 200;
 }
 
@@ -44,9 +44,7 @@ html, body {
     margin: 0;
     color:#ffffff;
     font-weight: normal;
-    letter-spacing: .2rem;
     line-height: 1.8rem;
-    min-width: 640px;
     overflow-x: hidden;
 }
 
@@ -66,9 +64,9 @@ body {
 }
 
 #melko {
-    width: 100vw;
-    position: absolute;
-    left: -21vw;
+    width: 80vw;
+    position: relative;
+    left: -10vw;
     z-index: 0;
 }
 
@@ -89,19 +87,35 @@ h2 {
     text-align: center;
     line-height: 1.4rem;
     background-color: rgba(30,30,30,0.8);
-    border: solid 0.1rem rgba(50,50,50,0.9);
+    border: solid 0.7rem rgba(50,50,50,0.9);
     border-radius: 0.3rem;
 }
 
 h3 {
     margin: 0.5rem;
-    padding: 0.8rem;
-    font-size: 1.2rem;
+    padding: 0.5rem;
+    font-size: 1.0rem;
     display: block;
     text-align: left;
-    line-height: 1.2rem;
+    line-height: 1.0rem;
     background-color: rgba(30,30,30,0.8);
-    border: solid 0.1rem rgba(50,50,50,0.9);
+    border: solid 0.5rem rgba(50,50,50,0.9);
+    border-radius: 0.3rem;
+}
+
+h4 {
+    margin: 0.2rem;
+    padding: 0.4rem;
+    font-size: 0.9rem;
+    display: block;
+    text-align: left;
+    line-height: 1.0rem;
+    border: solid;
+    border-left-width: 0.4rem;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-color: rgba(100,100,100,0.9);
     border-radius: 0.3rem;
 }
 
@@ -128,36 +142,64 @@ pre {
     z-index: 10;
     position: absolute;
     top: 12vw;
-    width: 60vw;
-    right: -2vw;
+    width: 50vw;
+    right: 5vw;
+}
+
+#visual {
+    width: 100vw;
+    height: 40vw;
 }
 
 #article-list {
-    position: absolute;
-    top: 53vw;
-    width: 90vw;
-    height: 15vh;
     padding: 0.8rem;
-    left: 4vw;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0, 0, 0, 0.85);
     border: solid 0.5vw;
     border-radius: 2vw;
     z-index: 10;
     max-height: 50vh;
     overflow-y: scroll;
+    display: inline-block;
+}
+
+#article-list {
+    font-size: 90%;
+    line-height: 120%;
+    width: 70%;
+    max-width: 200rem;
+}
+
+#article-list ul {
+    padding-left: 1rem;
+}
+
+#app {
+    display: flex;
+    splay: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #flex-box {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    top: 68vw;
-    height: 50vw;
+}
+
+@media screen and (max-width: 480px) {
+    #flex-box {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    #article-list {
+        width: 100%;
+        order: 3;
+    }
 }
 
 #top-message {
-    top: 65vw;
-    left: 2vw;
     margin: 0.3vw;
     padding: 1vw;
     background-color: rgba(0,0,0,0.85);
@@ -173,10 +215,9 @@ pre {
     top: 63vw;
     right: 0vw;
     margin: 1.5vw;
-    padding: 1vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     justify-items: baseline;
     align-items: center;
     align-content: space-between;
@@ -209,7 +250,7 @@ a.button-link:hover		{ color:white;}
     display: flex;
     background-color: rgba(20,10,0,1.00);
     border: solid 0.5rem;
-    margin: 1rem;
+    margin: 0.2rem 0;
     padding: 1vw 1vw 1vw 5.5rem;
     border-radius: 5.5rem;
     z-index: 10;
@@ -231,18 +272,20 @@ a.button-link:hover		{ color:white;}
 .popup-contents {
     color: #ffffff;
     background: #000000;
-    left: 15%;
+    left: 5%;
     padding: 2rem;
     position: absolute;
-    top: 15%;
-    width: 70%;
+    width: 90%;
     display: none;
     border: solid 0.2rem black;
     z-index: 30;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0, 0, 0, 0.85);
     border: solid 0.4rem;
     border-radius: 1.5rem;
     margin: 1rem 0;
+    overflow-y: scroll;
+    height: 90vh;
+    top: 5vh;
 }
 
 .melkor-symbol
@@ -252,8 +295,8 @@ a.button-link:hover		{ color:white;}
 
 #popup-bg{
     background: rgba(0,0,0,0.8);
-    height: 500vh;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     width: 100%;
     display: none;
     z-index: 20;
