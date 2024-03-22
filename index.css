@@ -19,11 +19,12 @@ h1.copy
     padding: 0.5rem;
     z-index: 30;
     font-size: 1.0rem;
-    width: 100vw;
+    width: 80vw;
     line-height: 1.2rem;
     background-color: rgba(20,10,0,0.8);
     border-radius: 0.4rem;
     letter-spacing: 0.05rem;
+    margin: 0.3rem;
 }
 
 #top-message h2 {
@@ -45,7 +46,6 @@ html, body {
     color:#ffffff;
     font-weight: normal;
     line-height: 1.8rem;
-    overflow-x: hidden;
 }
 
 body {
@@ -61,6 +61,9 @@ body {
     background-position: top;
     background-attachment: fixed;
     background-size: cover;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #melko {
@@ -175,11 +178,11 @@ pre {
 
 #app {
     display: flex;
-    splay: flex;
     flex-direction: column;
     justify-items: center;
     justify-content: center;
     align-items: center;
+    max-width: 1400px;
 }
 
 #flex-box {
