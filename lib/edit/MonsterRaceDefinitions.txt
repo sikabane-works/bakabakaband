@@ -38374,6 +38374,17 @@ F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
 F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:「もしかして、おちんちんがムズムズするんじゃないか？」この医師の屑は、治療にかこつけて強姦行為を行う。
 
+N:2095:ショッカー戦闘員
+E:Shocker combatant
+G:p:w
+I:110:4d8:10:20:10
+W:4:1:0:30:0:0
+B:PUNCH:HURT:2d3
+B:KICK:HURT:2d3
+F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE | WARRIOR
+F:WILD_WOOD | HAS_LITE_1 | EVIL | MALE
+D:邪悪な秘密結社ショッカーの戦闘員だ。酷薄な組織内において彼らは哀れな消耗品に過ぎない。
+
 
 # N: serial number : monster name
 # G: symbol : color
