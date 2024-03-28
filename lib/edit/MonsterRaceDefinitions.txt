@@ -38385,6 +38385,19 @@ F:DROP_90 | OPEN_DOOR | BASH_DOOR | FRIENDS | DROP_CORPSE | WARRIOR
 F:WILD_WOOD | HAS_LITE_1 | EVIL | MALE
 D:邪悪な秘密結社ショッカーの戦闘員だ。酷薄な組織内において彼らは哀れな消耗品に過ぎない。
 
+N:2096:糞の球体
+E:Ball feces
+G:*:u
+I:120:6d6:100:30:0
+W:17:1:50:0:0
+B:EXPLODE:POISON:8d8
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | SELF_LITE_2 |
+F:EMPTY_MIND
+F:IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
+D:$A ball of stinking feces.
+D:汚臭を放つ糞の球体だ。
+
+
 
 # N: serial number : monster name
 # G: symbol : color
