@@ -38397,6 +38397,17 @@ F:IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
 D:$A ball of stinking feces.
 D:汚臭を放つ糞の球体だ。
 
+N:2097:エナジー発生装置
+E:Energy generator
+G:&:b
+I:112:10d20:12:90:10
+W:20:4:0:100:0:0
+F:SPAWN_CREATURE_5_IN_16_300
+F:PREVENT_SUDDEN_MAGIC | EMPTY_MIND
+F:COLD_BLOOD | BASH_DOOR | NEVER_MOVE | CAN_FLY
+F:IM_POIS | NEVER_BLOW
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:絶え間なく電気の球体を発生させ続ける、機械の箱だ。
 
 
 # N: serial number : monster name
