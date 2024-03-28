@@ -38421,6 +38421,19 @@ F:IM_FIRE | IM_POIS | NEVER_BLOW
 F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 D:絶え間なく火炎の球を発生させ続ける、機械の箱だ。
 
+N:2099:冷気球発生装置
+E:Freezing ball generator
+G:&:W
+I:112:10d20:12:90:10
+W:20:4:0:100:0:0
+F:SPAWN_CREATURE_5_IN_16_298
+F:PREVENT_SUDDEN_MAGIC | EMPTY_MIND
+F:COLD_BLOOD | BASH_DOOR | NEVER_MOVE | CAN_FLY
+F:IM_COLD | IM_POIS | NEVER_BLOW
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:絶え間なく火炎の球を発生させ続ける、機械の箱だ。
+
+
 
 # N: serial number : monster name
 # G: symbol : color
