@@ -38449,6 +38449,19 @@ F:CAN_FLY | ATTR_MULTI | ATTR_ANY | ELDRITCH_HORROR
 F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN | NONLIVING
 D:その原始的な線の奔流と電子音はあなたを狂気に苛むだろう！今のうちに逃げろ！
 
+N:2101:ぶぶ漬け
+E:Bubuzuke
+G:,:v
+I:130:10d1:15:1:0
+W:50:4:10:0:0
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | NEVER_BLOW | STUPID |
+F:EMPTY_MIND | RES_NEXU | NONLIVING
+F:NO_CONF | NO_SLEEP | NO_FEAR | RES_TELE
+S:1_IN_2 |
+S:TELE_AWAY | TELE_LEVEL
+D:美味しそうに見える？
+D:とんでもない、それはあなたをこの場から追い返そうとする、古都の因習に基づいた絶対的呪いだ。
+D:今のうちに帰れ！
 
 # N: serial number : monster name
 # G: symbol : color
