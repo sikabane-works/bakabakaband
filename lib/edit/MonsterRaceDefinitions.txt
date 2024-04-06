@@ -38463,6 +38463,35 @@ D:美味しそうに見える？
 D:とんでもない、それはあなたをこの場から追い返そうとする、古都の因習に基づいた絶対的呪いだ。
 D:今のうちに帰れ！
 
+N:2102:幼稚な売女
+E:Immature whore
+G:t:v
+I:110:1d4:10:1:40
+W:0:1:0:10:14
+B:BEG:FLAVOR
+F:FEMALE | DROP_SKELETON | DROP_CORPSE | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR
+F:DROP_KIND_1_IN_5_169_0_1d1
+S:1_IN_12 | SHRIEK
+D:彼女は色々と履き違えていることを、ただ、若さだけで許されている。
+
+N:2103:インプレゾンビ
+E:Impression Zombie
+G:z:r
+I:110:12d8:20:24:20
+W:14:1:44:0:0
+B:WHISPER:HURT:1d4
+B:WHISPER:HURT:1d4
+R:2102:2d5
+R:2:2d5
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+F:ONLY_GOLD | DROP_1D2
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+D:呟く狂王、アーロン・ムスクが成した覇道のはた迷惑な副産物だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
