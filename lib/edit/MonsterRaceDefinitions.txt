@@ -38492,6 +38492,16 @@ F:ONLY_GOLD | DROP_1D2
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:呟く狂王、アーロン・ムスクが成した覇道のはた迷惑な副産物だ。
 
+N:2104:露出狂
+E:Flasher
+G:t:o
+I:112:3d4:10:-4:0
+W:0:4:0:0:0
+B:DROOL:FLAVOR
+F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
+F:RAND_25 | EAT_LOSE_WIS | HUMAN | NASTY
+D:彼に良識を期待するだけ無駄だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
