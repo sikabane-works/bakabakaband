@@ -38502,6 +38502,25 @@ F:MALE | DROP_CORPSE | DROP_SKELETON | WILD_TOWN | WILD_ONLY
 F:RAND_25 | EAT_LOSE_WIS | HUMAN | NASTY
 D:彼に良識を期待するだけ無駄だ。
 
+N:2105:レッサー・カラテカ・デーモン
+E:Lesser karateka demon
+G:U:o
+I:120:60d16:20:100:80
+W:51:3:7000:0:0
+B:PUNCH:SUPERHURT:5d10
+B:PUNCH:SUPERHURT:5d10
+B:KICK:SUPERHURT:5d10
+B:KICK:SUPERHURT:5d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:FRIENDS | 
+F:ONLY_ITEM | DROP_60 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | NONLIVING |
+F:EVIL | DEMON | IM_FIRE | IM_COLD | NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | KARATEKA
+S:1_IN_8 | 
+S:HASTE | HEAL
+D:一切をその手脚だけで破壊しようとするのは、まさに冒涜の極みだろう。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
