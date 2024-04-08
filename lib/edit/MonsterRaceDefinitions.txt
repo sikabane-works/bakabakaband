@@ -38520,6 +38520,25 @@ S:1_IN_8 |
 S:HASTE | HEAL
 D:一切をその手脚だけで破壊しようとするのは、まさに冒涜の極みだろう。
 
+N:2106:『サイコジェニー』
+E:Psycho Jenny
+G:H:v
+I:123:12d120:120:90:4
+W:43:3:10000:0:0
+B:GAZE:LOSE_INT:5d5
+B:GAZE:LOSE_WIS:5d5
+B:GAZE:LOSE_CHR:5d5
+B:GAZE:EXP_80:14d1
+F:UNIQUE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | FEMALE
+F:COLD_BLOOD | MOVE_BODY | NONLIVING |
+F:OPEN_DOOR | BASH_DOOR | IM_POIS | IM_COLD | DEMON | EVIL 
+S:1_IN_2 |
+S:CAUSE_3 | HOLD | SCARE | BLIND | FORGET | MIND_BLAST | BRAIN_SMASH
+D:人類史以前に地球の支配者であったデーモン族、その中でも精神を操る術に長けた者だ。
+D:巨大な女性の頭部に手脚を生やした異形の姿をしている。
+
 
 # N: serial number : monster name
 # G: symbol : color
