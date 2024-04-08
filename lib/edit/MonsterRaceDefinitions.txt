@@ -38539,6 +38539,26 @@ S:CAUSE_3 | HOLD | SCARE | BLIND | FORGET | MIND_BLAST | BRAIN_SMASH
 D:人類史以前に地球の支配者であったデーモン族、その中でも精神を操る術に長けた者だ。
 D:巨大な女性の頭部に手脚を生やした異形の姿をしている。
 
+N:2107:カメック
+E:Magikoopa
+G:h:r
+I:110:15d8:20:50:10
+W:23:1:150:0:0
+B:HIT:HURT:4d5
+B:HIT:HURT:4d5
+F:MALE | HAS_LITE_2 | MAGE |
+F:PREVENT_SUDDEN_MAGIC | 
+F:ONLY_ITEM | DROP_1D2 | DROP_SKELETON | DROP_CORPSE
+F:SMART | OPEN_DOOR | BASH_DOOR | EAT_GIVE_INT | EAT_LOSE_STR |
+F:EVIL
+S:1_IN_3 | 
+S:TPORT | BLINK | BLIND | CONF | MISSILE 
+S:BO_FIRE | BO_COLD | BO_ELEC | TELE_AWAY
+S:S_MONSTER
+D:ローブをまとい眼鏡をかけた亀、クッパ軍団の知恵者たちだ。
+
+
+
 
 # N: serial number : monster name
 # G: symbol : color
