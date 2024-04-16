@@ -5,6 +5,7 @@
 #include "load/savedata-old-flag-types.h"
 #include "system/angband.h"
 #include "system/monster-race-info.h"
+#include "system/system-variables.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
@@ -427,7 +428,9 @@ void load_lore(void)
         if (monrace.kind_flags.has(MonsterKindType::UNIQUE) || monrace.population_flags.has(MonsterPopulationType::ONLY_ONE)) {
             max_num = 1;
         } else if (monrace.population_flags.has(MonsterPopulationType::NAZGUL)) {
-            max_num = 5;
+            max_num = MAX_NAZGUL_NUM;
+        } else if (monrace.population_flags.has(MonsterPopulationType::BUNBUN_STRIKER)) {
+            max_num = MAX_BUNBUN_NUM;
         }
 
         monrace.max_num = max_num;
