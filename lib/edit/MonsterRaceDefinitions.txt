@@ -38650,7 +38650,21 @@ F:TAKE_ITEM | KILL_BODY | OPEN_DOOR | BASH_DOOR |
 F:IM_POIS | NO_FEAR
 D:なんてこった、それはそこら中の社会に溢れているぞ！
 
-
+N:2114:生体性軟泥
+E:Biogenic Ooze
+G:j:g
+I:100:12d100:20:89:1
+W:39:2:7:0:0
+B:ENGULF:HURT:8d6
+B:ENGULF:HURT:8d6
+B:ENGULF:HURT:8d6
+F:RAND_50 | DROP_4D2 
+F:STUPID | EMPTY_MIND | CAN_SWIM |
+F:TAKE_ITEM | KILL_BODY | OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_POIS | NO_FEAR
+S:1_IN_9 |
+S:S_KIN
+D:はた迷惑な生体改造集団、シミック団ご自慢の傑作スライムだ。
 
 # N: serial number : monster name
 # G: symbol : color
