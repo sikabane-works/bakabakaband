@@ -38638,6 +38638,19 @@ S:BA_FIRE
 S:S_ANGEL | HEAL | BA_LITE
 D:ラヴニカの治安維持組織、ボロス団で主要な役目を務めてきた戦天使だ。
 
+N:2113:人道に対する膿
+E:Slime against humanity
+G:j:G
+I:100:12d8:40:6:1
+W:33:3:7:0:0
+B:ENGULF:HURT:3d6
+F:RAND_50 | DROP_60 | FRIENDS 
+F:STUPID | EMPTY_MIND | MULTIPLY | CAN_SWIM |
+F:TAKE_ITEM | KILL_BODY | OPEN_DOOR | BASH_DOOR | 
+F:IM_POIS | NO_FEAR
+D:なんてこった、それはそこら中の社会に溢れているぞ！
+
+
 
 # N: serial number : monster name
 # G: symbol : color
