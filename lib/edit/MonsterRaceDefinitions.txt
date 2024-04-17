@@ -38638,6 +38638,89 @@ S:BA_FIRE
 S:S_ANGEL | HEAL | BA_LITE
 D:ラヴニカの治安維持組織、ボロス団で主要な役目を務めてきた戦天使だ。
 
+N:2113:人道に対する膿
+E:Slime against humanity
+G:j:G
+I:100:12d8:40:6:1
+W:33:3:7:0:0
+B:ENGULF:HURT:3d6
+F:RAND_50 | DROP_60 | FRIENDS 
+F:STUPID | EMPTY_MIND | MULTIPLY | CAN_SWIM |
+F:TAKE_ITEM | KILL_BODY | OPEN_DOOR | BASH_DOOR | 
+F:IM_POIS | NO_FEAR
+D:なんてこった、それはそこら中の社会に溢れているぞ！
+
+N:2114:生体性軟泥
+E:Biogenic Ooze
+G:j:g
+I:100:12d100:20:89:1
+W:39:2:7:0:0
+B:ENGULF:HURT:8d6
+B:ENGULF:HURT:8d6
+B:ENGULF:HURT:8d6
+F:RAND_50 | DROP_4D2 
+F:STUPID | EMPTY_MIND | CAN_SWIM |
+F:TAKE_ITEM | KILL_BODY | OPEN_DOOR | BASH_DOOR | 
+F:IM_ACID | IM_POIS | NO_FEAR
+S:1_IN_9 |
+S:S_KIN
+D:はた迷惑な生体改造集団、シミック団ご自慢の傑作スライムだ。
+
+N:2115:ゲラルフの伝書使
+E:Geralf's Messenger
+G:z:s
+I:112:49d13:30:40:10
+W:37:3:900:0:0
+B:CLAW:EXP_VAMP:3d4
+B:CLAW:EXP_VAMP:3d4
+B:CLAW:TERRIFY:1d4
+B:CLAW:TERRIFY:1d4
+F:PREVENT_SUDDEN_MAGIC | NO_FEAR | EVIL | UNDEAD |
+F:COLD_BLOOD |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_TELE
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP
+F:DEAD_SPAWN_1_IN_2_2115_1d1
+D:イニストラードの若き優秀なる縫い師、ゲラルフが日頃使うゾンビの使いだ。
+D:伝書使の使命を、より確実に果たさせるためか執拗に蘇るように造られている。
+
+N:2116:スケイズ・ゾンビ
+E:Scathe Zombies
+G:z:s
+I:108:10d8:20:14:20
+W:10:1:34:0:0
+B:HIT:HURT:1d3
+B:HIT:HURT:1d3
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:それは通常より惰弱なゾンビに過ぎないが、古くからのプレインズウォーカーには一種の懐古を引き起こす。
+
+N:2117:食通『我修院』
+E:Gasyuin, Gourmet
+G:t:u
+I:107:30d10:40:10:3
+W:0:5:0:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_1D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:「もうこの世の中にある美味といわれるものはもうすべて食べつくしちゃっ…しまったんだよ」
+D:そうのたまう気さくなセレブだが、彼は恐らく裏切者の邪悪な罠に仕掛けられて、かのレストランに導かれたようだ。
+D:絶望の未来を文字通り味わう前にいっそここで終わらせて差し上げろ。
+
+N:2118:食通『TKGW様』
+E:Mr.Tokugawa, Gourmet
+G:t:u
+I:107:30d10:40:10:3
+W:0:5:0:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE | FRIENDLY | HUMAN | NASTY | HOMO_SEXUAL
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_1D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
+D:その苗字の通り、好奇な血筋の生まれのグルメらしいが、恐らく裏切者の邪悪な罠に仕掛けられて、かのレストランに導かれたようだ。
+D:絶望の未来を文字通り味わう前にいっそここで終わらせて差し上げろ。
 
 # N: serial number : monster name
 # G: symbol : color
