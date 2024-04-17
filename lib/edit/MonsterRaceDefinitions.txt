@@ -38666,6 +38666,25 @@ S:1_IN_9 |
 S:S_KIN
 D:はた迷惑な生体改造集団、シミック団ご自慢の傑作スライムだ。
 
+N:2115:ゲラルフの伝書使
+E:Geralf's Messenger
+G:z:s
+I:112:49d13:30:40:10
+W:37:3:900:0:0
+B:CLAW:EXP_VAMP:3d4
+B:CLAW:EXP_VAMP:3d4
+B:CLAW:TERRIFY:1d4
+B:CLAW:TERRIFY:1d4
+F:PREVENT_SUDDEN_MAGIC | NO_FEAR | EVIL | UNDEAD |
+F:COLD_BLOOD |
+F:ONLY_ITEM | DROP_1D2 | DROP_2D2 | RES_TELE
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | 
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP
+F:DEAD_SPAWN_1_IN_2_2115_1d1
+D:イニストラードの若き優秀なる縫い師、ゲラルフが日頃使うゾンビの使いだ。
+D:伝書使の使命を、より確実に果たさせるためか執拗に蘇るように造られている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
