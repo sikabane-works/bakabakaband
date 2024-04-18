@@ -38722,6 +38722,19 @@ F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP
 D:その苗字の通り、好奇な血筋の生まれのグルメらしいが、恐らく裏切者の邪悪な罠に仕掛けられて、かのレストランに導かれたようだ。
 D:絶望の未来を文字通り味わう前にいっそここで終わらせて差し上げろ。
 
+N:2119:債務者の弔鐘
+E:Debtors' knell
+G:*:w
+I:110:10d200:100:130:0
+W:34:3:0:100:0:0
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY
+F:EMPTY_MIND
+F:RES_LITE | RES_DARK | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING | SELF_LITE_1 | SELF_LITE_2 | NEVER_BLOW | NEVER_MOVE
+S:1_IN_1 | ANIM_DEAD
+V:10
+D:オルゾフ組が死者なお行使する力そのものだ。彼らは財貨の代償を払い終えるまで死してなお債務者を逃さない。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
