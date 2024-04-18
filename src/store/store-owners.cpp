@@ -39,6 +39,7 @@ const std::unordered_map<StoreSaleType, std::vector<owner_type>> owners = {
             { _("貧乏なハーク", "Hurk the Poor"), 30000, 108, PlayerRaceType::HALF_ORC, STORE_OBJ_STD_LEVEL },
             { _("みじめなソアリン", "Soalin the Wretched"), 30000, 107, PlayerRaceType::ZOMBIE, STORE_OBJ_STD_LEVEL },
             { _("質素なメルラ", "Merulla the Humble"), 30000, 107, PlayerRaceType::ELF, STORE_OBJ_STD_LEVEL },
+            { _("ラトスタイン翁", "Old Rutstein"), 30000, 107, PlayerRaceType::HUMAN, STORE_OBJ_STD_LEVEL },
         } },
     { StoreSaleType::ARMOURY,
         {
