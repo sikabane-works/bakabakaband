@@ -38734,6 +38734,20 @@ S:1_IN_1 | ANIM_DEAD
 V:10
 D:オルゾフ組が死者を行使する力そのものだ。彼らは貸しつけた財貨の返済を終えるまで、死しても債務者を逃さない。
 
+N:2120:漁師
+E:Fisherman
+G:p:B
+I:110:3d3:10:1:255
+W:0:1:0:100:83
+B:HIT:HURT:1d6
+B:HIT:HURT:1d6
+F:DROP_KIND_1_IN_5_64_0_1d1
+F:MALE | WILD_ONLY | WILD_WOOD | HUMAN |
+F:RAND_25 | DROP_SKELETON | DROP_CORPSE |
+F:ONLY_GOLD | DROP_60 | RANGER
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+D:鋭い銛を持った荒くれ者だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
