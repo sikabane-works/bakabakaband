@@ -38780,6 +38780,28 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
 S:1_IN_6 | BO_COLD | BO_FIRE | BO_ELEC | BA_FIRE | BA_COLD | BA_ELEC | BO_PLAS
 D:あらゆる派手な実験を愛するイゼット団の模範ともいうべき魔術師にして科学者、そしてプレインズウォーカーだ。
 
+N:2123:幽霊暗殺者『ケイヤ』
+E:Kaya, Ghost Assassin
+G:p:g
+I:118:10d110:90:70:10
+W:40:7:8000:0:0
+B:SLASH:EXP_VAMP:3d8
+B:SLASH:EXP_VAMP:3d8
+B:SLASH:EXP_VAMP:4d8
+B:SLASH:EXP_VAMP:4d8
+F:UNIQUE | FEMALE | CAN_FLY
+F:FORCE_MAXHP | SMART | REGENERATE |
+F:NO_CONF | NO_STUN | NO_FEAR
+F:IM_ACID | IM_ELEC | IM_FIRE | IM_COLD |
+F:RES_LITE | RES_DARK | RES_NETH | RES_DISE |
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD |
+F:TAKE_ITEM | DROP_CORPSE |
+F:INVISIBLE | PASS_WALL | ROGUE
+S:1_IN_5 |
+S:HASTE | BLINK | HEAL | BO_MANA
+D:幽霊を殺すことに長けた暗殺者だ。その刃はパリアノの永遠王ブレイゴやオルゾフの支配階級達、不滅を誇る幽霊の権力者をことごとく暗殺した。
+D:彼女はその独特なプレインズウォーカーの灯ゆえか、生ける存在でありながら自在に自らを幽体化させることができる。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
