@@ -38748,6 +38748,21 @@ F:ONLY_GOLD | DROP_60 | RANGER
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:鋭い銛を持った荒くれ者だ。
 
+N:2121:凍結燃焼の奇魔
+E:Frostburn Weird
+G:u:v
+I:110:6d10:20:30:20
+W:17:2:55:0:0
+B:HIT:FIRE:3d10
+B:HIT:COLD:3d10
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY |
+F:RAND_25 | 
+F:ONLY_ITEM | DROP_1D2 | 
+F:SMART | BASH_DOOR |
+F:DEMON | IM_FIRE | RES_TELE
+S:1_IN_10 | 
+S:BLINK | BO_FIRE | BO_COLD
+D:イゼット団お気に入りの実験材料にして芸術品、ペットでもある疑似生命体だ。
 
 # N: serial number : monster name
 # G: symbol : color
