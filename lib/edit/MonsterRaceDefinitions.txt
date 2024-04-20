@@ -38764,6 +38764,22 @@ S:1_IN_10 |
 S:BLINK | BO_FIRE | BO_COLD
 D:イゼット団お気に入りの実験材料にして芸術品、ペットでもある疑似生命体だ。
 
+N:2122:イゼット副長『ラル・ザレック』
+E:Ral Zarek, Izzet Viceroy
+G:p:v
+I:119:20d90:70:90:4
+W:35:2:7000:0:0
+B:HIT:FIRE:12d10
+B:HIT:COLD:12d10
+B:HIT:FIRE:12d10
+B:HIT:COLD:12d10
+F:UNIQUE | MALE | FORCE_MAXHP | HUMAN | HOMO_SEXUAL | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MAGE | IM_FIRE | IM_COLD 
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
+S:1_IN_6 | BO_COLD | BO_FIRE | BO_ELEC | BA_FIRE | BA_COLD | BA_ELEC | BO_PLAS
+D:あらゆる派手な実験を愛するイゼット団の模範ともいうべき魔術師にして科学者、そしてプレインズウォーカーだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
