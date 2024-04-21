@@ -606,6 +606,11 @@ BaseitemInfo::BaseitemInfo()
 {
 }
 
+bool BaseitemInfo::is_valid() const
+{
+    return (this->idx > 0) && !this->name.empty();
+}
+
 /*!
  * @brief オブジェクトを試行済にする
  */
