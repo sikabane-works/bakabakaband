@@ -38833,6 +38833,24 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
 S:1_IN_3 | BR_FIRE | BO_FIRE | BA_FIRE
 D:果ての地に姿を見せる道化の姿をした不死者だ。恐るべき呪術の使い手で炎を手足のように操る。
 
+N:2126:ウーゴの『バンホルド』
+E:Benhart of Jugo
+G:p:B
+I:120:10d120:20:110:20
+W:37:2:2200:0:0
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
+B:HIT:HURT:8d5
+F:UNIQUE | MALE | HUMAN 
+F:FORCE_MAXHP | HAS_LITE_1 | DROP_SKELETON | DROP_CORPSE |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR | WARRIOR
+D:果ての地で修行の場を求めてやってきた砂漠の国ウーゴの騎士だ。
+D:独特の青色に輝く剣は特に何か強力な力を秘めているでないまがい物らしいが、
+D:その剣の腕はそれを補うほどに熟達している。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
