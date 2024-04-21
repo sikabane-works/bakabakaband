@@ -38802,6 +38802,22 @@ S:HASTE | BLINK | HEAL | BO_MANA
 D:幽霊を殺すことに長けた暗殺者だ。その刃はパリアノの永遠王ブレイゴやオルゾフの支配階級達、不滅を誇る幽霊の権力者をことごとく暗殺した。
 D:彼女はその独特なプレインズウォーカーの灯ゆえか、生ける存在でありながら自在に自らを幽体化させることができる。
 
+N:2124:ゲノム兵
+E:Genome soldier
+G:p:B
+I:110:10d25:40:70:60
+W:35:2:700:0:0
+B:SHOOT:HURT:4d10
+B:HIT:HURT:6d4
+B:HIT:HURT:6d4
+F:MALE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_1D2 | STUPID | WARRIOR
+F:DROP_CORPSE | DROP_SKELETON | CAN_SWIM | FRIENDS | MOB_340
+S:1_IN_9 |
+S:ROCKET | SHOOT
+D:ATGC社のジーンセラピー技術により、後天的に戦士としての遺伝素質を組み込まれた改造兵だ。
+D:その源たる伝説の英雄ビッグ・ボスの素質を確かに発揮しているが、戦闘経験自体は未熟なままのようだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
