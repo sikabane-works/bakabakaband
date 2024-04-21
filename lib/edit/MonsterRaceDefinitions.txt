@@ -38817,6 +38817,21 @@ S:ROCKET | SHOOT
 D:ATGC社のジーンセラピー技術により、後天的に戦士としての遺伝素質を組み込まれた改造兵だ。
 D:その源たる伝説の英雄ビッグ・ボスの素質を確かに発揮しているが、戦闘経験自体は未熟なままのようだ。
 
+N:2125:土の塔の道化『トーマス』
+E:Thomas, Jester of Earthen Peak
+G:p:r
+I:130:20d100:40:120:4
+W:42:4:10000:0:0
+B:HIT:FIRE:20d10
+B:HIT:FIRE:20d10
+B:PUNCH:HURT:7d10
+B:PUNCH:HURT:7d10
+F:UNIQUE | MALE | FORCE_MAXHP | HUMAN | UNDEAD | IM_FIRE | DROP_SKELETON | DROP_CORPSE
+F:REGENERATE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | RES_TELE
+F:ONLY_ITEM | DROP_3D2 | DROP_GOOD | ROGUE
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
+S:1_IN_3 | BR_FIRE | BO_FIRE | BA_FIRE
+D:果ての地に姿を見せる道化の姿をした不死者だ。恐るべき呪術の使い手で炎を手足のように操る。
 
 # N: serial number : monster name
 # G: symbol : color
