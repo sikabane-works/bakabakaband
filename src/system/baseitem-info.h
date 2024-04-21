@@ -158,6 +158,11 @@ public:
     BaseitemInfo &get_baseitem(const short bi_id);
     const BaseitemInfo &get_baseitem(const short bi_id) const;
 
+    std::vector<BaseitemInfo>::iterator begin();
+    std::vector<BaseitemInfo>::const_iterator begin() const;
+    std::vector<BaseitemInfo>::iterator end();
+    std::vector<BaseitemInfo>::const_iterator end() const;
+
 private:
     BaseitemList() = default;
 
