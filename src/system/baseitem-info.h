@@ -144,8 +144,6 @@ public:
     void mark_as_aware();
 };
 
-extern std::vector<BaseitemInfo> baseitems_info;
-
 class BaseitemList {
 public:
     BaseitemList(BaseitemList &&) = delete;
@@ -158,7 +156,7 @@ public:
     BaseitemInfo &get_baseitem(const short bi_id);
     const BaseitemInfo &get_baseitem(const short bi_id) const;
 
-    std::vector<BaseitemInfo> &get_raw_vector(); // @todo init_baseitems_info() 専用、将来的に廃止する.
+    std::vector<BaseitemInfo> &get_raw_vector(); // @todo init_baseitems() 専用、将来的に廃止する.
     std::vector<BaseitemInfo>::iterator begin();
     std::vector<BaseitemInfo>::const_iterator begin() const;
     std::vector<BaseitemInfo>::iterator end();
