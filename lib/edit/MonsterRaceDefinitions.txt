@@ -38916,6 +38916,23 @@ F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR
 D:悪代官を打ち破るべく二人で立ち上がった百姓だ。
 
+N:2132:暗殺者『元』
+E:Gen, Chinese Assassin
+G:p:o
+I:120:18d100:100:130:4
+W:41:5:7300:0:0
+B:PUNCH:HURT:18d3
+B:KICK:HURT:18d2
+B:PUNCH:HURT:18d3
+B:KICK:HURT:18d2
+F:MALE | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:NO_CONF | NO_SLEEP | HUMAN | WARRIOR
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | UNIQUE |
+F:OPEN_DOOR | EVIL | BASH_DOOR | SMART
+S:1_IN_8
+S:CAUSE_4 | HASTE
+D:香港裏社会では数々の伝説とともに広く名を知られている暗殺拳術家だ。
+D:二つの古き流派を巧みに操るという。
 
 # N: serial number : monster name
 # G: symbol : color
