@@ -29535,6 +29535,7 @@ F:UNIQUE | MALE | GOOD | HAS_LITE_2 | HUMAN |
 F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD | 
 F:OPEN_DOOR | BASH_DOOR
+F:SPAWN_CREATURE_7_IN_16_2134
 D:彼はブリーフの舞を踊ることにより大気中のブリフィッシュエネルギーを吸収し、
 D:よりエレガントな男に変身することができるのだ。
 
@@ -38933,6 +38934,46 @@ S:1_IN_8
 S:CAUSE_4 | HASTE
 D:香港裏社会では数々の伝説とともに広く名を知られている暗殺拳術家だ。
 D:二つの古き流派を巧みに操るという。
+
+N:2133:空飛ぶフンドシ
+E:Flying traditional Japanese G-string
+G:(:o
+I:110:4d7:20:40:0
+W:6:5:30:0:0
+B:HIT:INERTIA:5d5
+B:HIT:TERRIFY:5d5
+F:NONLIVING | NO_FEAR | NASTY
+F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
+F:EVIL | IM_COLD | FORCE_MAXHP | IM_ELEC | IM_POIS
+D:悪趣味な魔導師が作り出したクッソ汚い疑似生命体だ。
+F:DROP_KIND_1_IN_1_702_0_1d1
+
+N:2134:空飛ぶブリーフ
+E:Flying briefs
+G:(:w
+I:198:2d7:20:40:0
+W:11:10:30:0:0
+B:HIT:INERTIA:1d5
+B:HIT:TERRIFY:1d5
+F:NONLIVING | NO_FEAR | NASTY
+F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
+F:IM_COLD | FORCE_MAXHP | IM_ELEC | IM_POIS
+D:ヨロシク仮面の舞い操るブリーフだ。
+F:DROP_KIND_1_IN_1_803_0_1d1
+
+N:2135:尿路結石ゴーレム
+E:Urinary stone golem
+G:g:y
+I:105:28d9:12:55:10
+W:21:6:140:0:0
+B:HIT:HURT:2d10
+B:HIT:HURT:2d10
+F:COLD_BLOOD | EMPTY_MIND | BASH_DOOR |
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
+F:HURT_ROCK | NASTY
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+D:それは悪趣味な医師兼魔術師が執念を込めて作り上げたゴーレムだ。
+D:砂利を固める要領でより刺々しいデザインに仕立て上げているのはどうみても悪意の塊だ。
 
 # N: serial number : monster name
 # G: symbol : color
