@@ -211,6 +211,10 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::ELEMENTAL);
     }
 
+    if (lore_ptr->r_ptr->kind_flags.has(MonsterKindType::GOLEM)) {
+        lore_ptr->kind_flags.set(MonsterKindType::GOLEM);
+    }
+
     if (lore_ptr->r_ptr->flags1 & RF1_FORCE_DEPTH) {
         lore_ptr->flags1 |= (RF1_FORCE_DEPTH);
     }
