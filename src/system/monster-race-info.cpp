@@ -33,8 +33,8 @@ bool MonsterRaceInfo::has_living_flag() const
 }
 
 /*!
- * @brief モンスターが自爆するかどうかを返す
- * @return 自爆するならならばtrue
+ * @brief モンスターが自爆するか否か
+ * @return 自爆するならtrue
  */
 bool MonsterRaceInfo::is_explodable() const
 {
