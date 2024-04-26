@@ -39008,6 +39008,21 @@ F:ANIMAL | FRIENDLY
 D:しばしば見受けられる誤解と異なり、神経質なだけで怒らせなければ大人しい霊長類だ。
 D:これに喧嘩を売って負けた、怪物を超えた怪物と呼ばれる男がいるらしい。
 
+N:2138:変位エルドラージ
+E:Eldrazi Displacer
+G:H:W
+I:110:20d40:60:80:1
+W:36:3:0:2000:0:0
+B:CRUSH:HURT:5d10
+B:CRUSH:HURT:5d10
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | WEIRD_MIND
+F:ELDRAZI | DROP_CORPSE | ONLY_ITEM | DROP_2D2 |
+F:RES_SHAR | RES_SOUN | RES_DISE | RES_WATE | RES_GRAV | RES_NEXU
+F:NO_FEAR | NO_STUN | NO_CONF | NO_SLEEP | ALLIANCE_ELDRAZI
+S:1_IN_3
+S:TELE_AWAY | TELE_TO | BLINK
+D:時空や物質的存在そのものを搔き乱すエルドラージの変種の一つだ。
+
 
 # N: serial number : monster name
 # G: symbol : color
