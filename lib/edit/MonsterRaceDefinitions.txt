@@ -38977,6 +38977,23 @@ F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
 D:それは悪趣味な医師兼魔術師が執念を込めて作り上げたゴーレムだ。
 D:砂利を固める要領でより刺々しいデザインに仕立て上げているのはどうみても悪意の塊だ。
 
+N:2136:BT-91 マジュー第一形態
+E:BT-91 Beast (first form)
+G:P:g
+I:120:30d50:30:125:15
+W:40:1:6000:0:0
+B:PUNCH:HURT:6d12
+B:PUNCH:HURT:6d12
+B:PUNCH:HURT:6d12
+B:PUNCH:HURT:6d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | KILL_BODY |
+F:OPEN_DOOR | BASH_DOOR |
+F:GIANT | MALE |
+S:1_IN_5 | HEAL | BO_MANA
+D:帝国復興を企むガイチ軍が火星で開発したバイオ兵器の一つだ。
+D:初期の状態ではゴリラに似た長い手をした人型の姿をしている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
