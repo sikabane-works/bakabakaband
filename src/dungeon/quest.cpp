@@ -208,7 +208,7 @@ void determine_random_questor(PlayerType *player_ptr, QuestType *q_ptr)
         if (r_ptr->wilderness_flags.has(MonsterWildernessType::WILD_ONLY)) {
             continue;
         }
-        if (!r_ptr->no_suitable_questor_bounty()) {
+        if (r_ptr->no_suitable_questor_bounty()) {
             continue;
         }
 
