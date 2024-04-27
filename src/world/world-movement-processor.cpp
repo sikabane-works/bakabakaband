@@ -1,7 +1,6 @@
 ﻿#include "world/world-movement-processor.h"
 #include "cmd-io/cmd-save.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
 #include "dungeon/quest.h"
 #include "floor/floor-mode-changer.h"
 #include "game-option/birth-options.h"
@@ -16,6 +15,7 @@
 #include "system/floor-type-definition.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/enum-range.h"
 #include "view/display-messages.h"
 #include "world/world-collapsion.h"
@@ -32,19 +32,19 @@ void check_random_quest_auto_failure(PlayerType *player_ptr)
         return;
     }
     for (auto q_idx : EnumRange(QuestId::RANDOM_QUEST1, QuestId::RANDOM_QUEST10)) {
-        auto &q_ref = quest_list[q_idx];
-        auto is_taken_quest = (q_ref.type == QuestKindType::RANDOM);
-        is_taken_quest &= (q_ref.status == QuestStatusType::TAKEN);
-        is_taken_quest &= (q_ref.level < player_ptr->current_floor_ptr->dun_level);
+        auto &quest = quest_list[q_idx];
+        auto is_taken_quest = (quest.type == QuestKindType::RANDOM);
+        is_taken_quest &= (quest.status == QuestStatusType::TAKEN);
+        is_taken_quest &= (quest.level < player_ptr->current_floor_ptr->dun_level);
         if (!is_taken_quest) {
             continue;
         }
 
-        q_ref.status = QuestStatusType::FAILED;
-        q_ref.complev = (byte)player_ptr->lev;
+        quest.status = QuestStatusType::FAILED;
+        quest.complev = (byte)player_ptr->lev;
         update_playtime();
-        q_ref.comptime = w_ptr->play_time;
-        monraces_info[q_ref.r_idx].flags1 &= ~(RF1_QUESTOR);
+        quest.comptime = w_ptr->play_time;
+        monraces_info[quest.r_idx].flags1 &= ~(RF1_QUESTOR);
     }
 }
 
@@ -67,14 +67,14 @@ void execute_recall(PlayerType *player_ptr)
     }
 
     player_ptr->word_recall--;
-    player_ptr->redraw |= (PR_STATUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (player_ptr->word_recall != 0) {
         return;
     }
 
     disturb(player_ptr, false, true);
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (floor_ptr->dun_level || inside_quest(player_ptr->current_floor_ptr->quest_number) || player_ptr->enter_dungeon) {
+    if (floor_ptr->dun_level || inside_quest(floor_ptr->quest_number) || player_ptr->enter_dungeon) {
         msg_print(_("上に引っ張りあげられる感じがする！", "You feel yourself yanked upwards!"));
         if (player_ptr->dungeon_idx) {
             player_ptr->recall_dungeon = player_ptr->dungeon_idx;
@@ -150,7 +150,7 @@ void execute_floor_reset(PlayerType *player_ptr)
     }
 
     player_ptr->alter_reality--;
-    player_ptr->redraw |= (PR_STATUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (player_ptr->alter_reality != 0) {
         return;
     }

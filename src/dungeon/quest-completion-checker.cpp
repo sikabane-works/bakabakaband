@@ -1,5 +1,4 @@
 ﻿#include "dungeon/quest-completion-checker.h"
-#include "core/player-update-types.h"
 #include "dungeon/quest.h"
 #include "effect/effect-characteristics.h"
 #include "floor/cave.h"
@@ -18,6 +17,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include <algorithm>
@@ -55,34 +55,34 @@ void QuestCompletionChecker::complete()
     this->make_reward(pos);
 }
 
-static bool check_quest_completion(PlayerType *player_ptr, const quest_type &q_ref, MonsterEntity *m_ptr)
+static bool check_quest_completion(PlayerType *player_ptr, const QuestType &quest, MonsterEntity *m_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (q_ref.status != QuestStatusType::TAKEN) {
+    if (quest.status != QuestStatusType::TAKEN) {
         return false;
     }
 
-    if (any_bits(q_ref.flags, QUEST_FLAG_PRESET)) {
+    if (any_bits(quest.flags, QUEST_FLAG_PRESET)) {
         return false;
     }
 
-    if ((q_ref.level != floor_ptr->dun_level) && (q_ref.type != QuestKindType::KILL_ANY_LEVEL)) {
+    if ((quest.level != floor_ptr->dun_level) && (quest.type != QuestKindType::KILL_ANY_LEVEL)) {
         return false;
     }
 
-    if ((q_ref.type == QuestKindType::FIND_ARTIFACT) || (q_ref.type == QuestKindType::FIND_EXIT)) {
+    if ((quest.type == QuestKindType::FIND_ARTIFACT) || (quest.type == QuestKindType::FIND_EXIT)) {
         return false;
     }
 
-    auto kill_them_all = q_ref.type == QuestKindType::KILL_NUMBER;
-    kill_them_all |= q_ref.type == QuestKindType::TOWER;
-    kill_them_all |= q_ref.type == QuestKindType::KILL_ALL;
+    auto kill_them_all = quest.type == QuestKindType::KILL_NUMBER;
+    kill_them_all |= quest.type == QuestKindType::TOWER;
+    kill_them_all |= quest.type == QuestKindType::KILL_ALL;
     if (kill_them_all) {
         return true;
     }
 
-    auto is_target = (q_ref.type == QuestKindType::RANDOM) && (q_ref.r_idx == m_ptr->r_idx);
-    if ((q_ref.type == QuestKindType::KILL_LEVEL) || (q_ref.type == QuestKindType::KILL_ANY_LEVEL) || is_target) {
+    auto is_target = (quest.type == QuestKindType::RANDOM) && (quest.r_idx == m_ptr->r_idx);
+    if ((quest.type == QuestKindType::KILL_LEVEL) || (quest.type == QuestKindType::KILL_ANY_LEVEL) || is_target) {
         return true;
     }
 
@@ -252,7 +252,7 @@ Pos2D QuestCompletionChecker::make_stairs(const bool create_stairs)
 
     msg_print(_("魔法の階段が現れた...", "A magical staircase appears..."));
     cave_set_feat(this->player_ptr, y, x, feat_down_stair);
-    set_bits(this->player_ptr->update, PU_FLOW);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::FLOW);
     return Pos2D(y, x);
 }
 

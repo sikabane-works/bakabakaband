@@ -262,7 +262,7 @@ bool detect_objects_normal(PlayerType *player_ptr, POSITION range)
         detect = false;
     }
     if (detect) {
-        player_ptr->window_flags |= PW_FOUND_ITEM_LIST;
+        player_ptr->window_flags |= PW_FOUND_ITEMS;
         msg_print(_("アイテムの存在を感じとった！", "You sense the presence of objects!"));
     }
 
@@ -317,7 +317,7 @@ bool detect_objects_magic(PlayerType *player_ptr, POSITION range)
 
         auto has_bonus = o_ptr->to_a > 0;
         has_bonus |= o_ptr->to_h + o_ptr->to_d > 0;
-        if (o_ptr->is_artifact() || o_ptr->is_ego() || is_object_magically(o_ptr->bi_key.tval()) || o_ptr->is_spell_book() || has_bonus) {
+        if (o_ptr->is_fixed_or_random_artifact() || o_ptr->is_ego() || is_object_magically(o_ptr->bi_key.tval()) || o_ptr->is_spell_book() || has_bonus) {
             o_ptr->marked.set(OmType::FOUND);
             lite_spot(player_ptr, y, x);
             detect = true;
@@ -325,7 +325,7 @@ bool detect_objects_magic(PlayerType *player_ptr, POSITION range)
     }
 
     if (detect) {
-        player_ptr->window_flags |= PW_FOUND_ITEM_LIST;
+        player_ptr->window_flags |= PW_FOUND_ITEMS;
         msg_print(_("魔法のアイテムの存在を感じとった！", "You sense the presence of magic objects!"));
     }
 
@@ -405,7 +405,7 @@ bool detect_monsters_invis(PlayerType *player_ptr, POSITION range)
 
         if (r_ptr->flags2 & RF2_INVISIBLE) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER);
+                player_ptr->window_flags |= (PW_MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
@@ -455,7 +455,7 @@ bool detect_monsters_evil(PlayerType *player_ptr, POSITION range)
             if (m_ptr->is_original_ap()) {
                 r_ptr->r_kind_flags.set(MonsterKindType::EVIL);
                 if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                    player_ptr->window_flags |= (PW_MONSTER);
+                    player_ptr->window_flags |= (PW_MONSTER_LORE);
                 }
             }
 
@@ -497,9 +497,9 @@ bool detect_monsters_nonliving(PlayerType *player_ptr, POSITION range)
             continue;
         }
 
-        if (!monster_living(m_ptr->r_idx)) {
+        if (!m_ptr->has_living_flag()) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER);
+                player_ptr->window_flags |= (PW_MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
@@ -544,7 +544,7 @@ bool detect_monsters_mind(PlayerType *player_ptr, POSITION range)
 
         if (!(r_ptr->flags2 & RF2_EMPTY_MIND)) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER);
+                player_ptr->window_flags |= (PW_MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
@@ -590,7 +590,7 @@ bool detect_monsters_string(PlayerType *player_ptr, POSITION range, concptr Matc
 
         if (angband_strchr(Match, r_ptr->d_char)) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER);
+                player_ptr->window_flags |= (PW_MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });

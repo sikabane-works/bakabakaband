@@ -154,8 +154,6 @@ hengband_SOURCES = \
 	core/magic-effects-timeout-reducer.cpp core/magic-effects-timeout-reducer.h \
 	core/object-compressor.cpp core/object-compressor.h \
 	core/player-processor.cpp core/player-processor.h \
-	core/player-redraw-types.h \
-	core/player-update-types.h \
 	core/score-util.cpp core/score-util.h \
 	core/scores.cpp core/scores.h \
 	core/show-file.cpp core/show-file.h \
@@ -925,8 +923,9 @@ hengband_SOURCES = \
 	system/h-system.h system/h-type.h \
 	system/item-entity.cpp system/item-entity.h \
 	system/monster-entity.cpp system/monster-entity.h \
-	system/monster-race-info.h \
+	system/monster-race-info.cpp system/monster-race-info.h \
 	system/player-type-definition.cpp system/player-type-definition.h \
+	system/redrawing-flags-updater.cpp system/redrawing-flags-updater.h \
 	system/system-variables.cpp system/system-variables.h \
 	system/gamevalue.h \
 	\
@@ -997,10 +996,9 @@ hengband_SOURCES = \
 	view/status-first-page.cpp view/status-first-page.h \
 	view/status-bars-table.cpp view/status-bars-table.h \
 	\
-	window/display-sub-window-spells.cpp window/display-sub-window-spells.h \
 	window/display-sub-windows.cpp window/display-sub-windows.h \
 	window/main-window-left-frame.cpp window/main-window-left-frame.h \
-	window/main-window-row-column.h \
+	window/main-window-row-column.cpp window/main-window-row-column.h \
 	window/main-window-stat-poster.cpp window/main-window-stat-poster.h \
 	window/main-window-util.cpp window/main-window-util.h \
 	window/main-window-equipments.cpp window/main-window-equipments.h \

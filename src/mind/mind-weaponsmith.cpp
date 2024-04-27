@@ -2,7 +2,6 @@
 #include "action/action-limited.h"
 #include "autopick/autopick.h"
 #include "core/asking-player.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -21,6 +20,7 @@
 #include "smith/smith-types.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -103,6 +103,17 @@ static void display_essence(PlayerType *player_ptr)
     return;
 }
 
+static void set_smith_redrawing_flags(PlayerType *player_ptr)
+{
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags = {
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
+    };
+    rfu.set_flags(flags);
+    player_ptr->window_flags |= (PW_INVENTORY);
+}
+
 /*!
  * @brief エッセンスの抽出処理
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -113,15 +124,15 @@ static void drain_essence(PlayerType *player_ptr)
     auto s = _("抽出できるアイテムがありません。", "You have nothing you can extract from.");
 
     OBJECT_IDX item;
-    auto o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ItemEntity::is_weapon_armour_ammo));
+    constexpr auto options = USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT;
+    auto o_ptr = choose_object(player_ptr, &item, q, s, options, FuncItemTester(&ItemEntity::is_weapon_armour_ammo));
     if (!o_ptr) {
         return;
     }
 
     if (o_ptr->is_known() && !o_ptr->is_nameless()) {
-        GAME_TEXT o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-        if (!get_check(format(_("本当に%sから抽出してよろしいですか？", "Really extract from %s? "), o_name))) {
+        const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+        if (!get_check(format(_("本当に%sから抽出してよろしいですか？", "Really extract from %s? "), item_name.data()))) {
             return;
         }
     }
@@ -144,8 +155,7 @@ static void drain_essence(PlayerType *player_ptr)
 
     /* Apply autodestroy/inscription to the drained item */
     autopick_alter_item(player_ptr, item, true);
-    player_ptr->update |= (PU_COMBINE | PU_REORDER);
-    player_ptr->window_flags |= (PW_INVEN);
+    set_smith_redrawing_flags(player_ptr);
 }
 
 /*!
@@ -310,7 +320,6 @@ static void add_essence(PlayerType *player_ptr, SmithCategoryType mode)
     concptr q, s;
     ItemEntity *o_ptr;
     char out_val[160];
-    GAME_TEXT o_name[MAX_NLEN];
     int menu_line = (use_menu ? 1 : 0);
 
     Smith smith(player_ptr);
@@ -447,8 +456,7 @@ static void add_essence(PlayerType *player_ptr, SmithCategoryType mode)
         return;
     }
 
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
     const auto use_essence = Smith::get_essence_consumption(effect, o_ptr);
     if (o_ptr->number > 1) {
         msg_format(_("%d個あるのでエッセンスは%d必要です。", "For %d items, it will take %d essences."), o_ptr->number, use_essence);
@@ -510,9 +518,8 @@ static void add_essence(PlayerType *player_ptr, SmithCategoryType mode)
 
     auto effect_name = Smith::get_effect_name(effect);
 
-    _(msg_format("%sに%sの能力を付加しました。", o_name, effect_name), msg_format("You have added ability of %s to %s.", effect_name, o_name));
-    player_ptr->update |= (PU_COMBINE | PU_REORDER);
-    player_ptr->window_flags |= (PW_INVEN);
+    _(msg_format("%sに%sの能力を付加しました。", item_name.data(), effect_name), msg_format("You have added ability of %s to %s.", effect_name, item_name.data()));
+    set_smith_redrawing_flags(player_ptr);
 }
 
 /*!
@@ -520,21 +527,16 @@ static void add_essence(PlayerType *player_ptr, SmithCategoryType mode)
  */
 static void erase_essence(PlayerType *player_ptr)
 {
+    const auto q = _("どのアイテムのエッセンスを消去しますか？", "Remove from which item? ");
+    const auto s = _("エッセンスを付加したアイテムがありません。", "You have nothing with added essence to remove.");
     OBJECT_IDX item;
-    concptr q, s;
-    ItemEntity *o_ptr;
-    GAME_TEXT o_name[MAX_NLEN];
-
-    q = _("どのアイテムのエッセンスを消去しますか？", "Remove from which item? ");
-    s = _("エッセンスを付加したアイテムがありません。", "You have nothing with added essence to remove.");
-
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_smith));
+    auto *o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_smith));
     if (!o_ptr) {
         return;
     }
 
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-    if (!get_check(format(_("よろしいですか？ [%s]", "Are you sure? [%s]"), o_name))) {
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+    if (!get_check(format(_("よろしいですか？ [%s]", "Are you sure? [%s]"), item_name.data()))) {
         return;
     }
 
@@ -543,8 +545,7 @@ static void erase_essence(PlayerType *player_ptr)
     Smith(player_ptr).erase_essence(o_ptr);
 
     msg_print(_("エッセンスを取り去った。", "You removed all essence you have added."));
-    player_ptr->update |= (PU_COMBINE | PU_REORDER);
-    player_ptr->window_flags |= (PW_INVEN);
+    set_smith_redrawing_flags(player_ptr);
 }
 
 /*!

@@ -7,7 +7,6 @@
 #include "action/action-limited.h"
 #include "avatar/avatar.h"
 #include "cmd-item/cmd-usestaff.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
 #include "game-option/disturbance-options.h"
@@ -24,6 +23,7 @@
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/timed-effects.h"
@@ -59,7 +59,7 @@ void ObjectUseEntity::execute()
         return;
     }
 
-    auto lev = baseitems_info[o_ptr->bi_id].level;
+    auto lev = o_ptr->get_baseitem().level;
     if (lev > 50) {
         lev = 50 + (lev - 50) / 2;
     }
@@ -91,34 +91,40 @@ void ObjectUseEntity::execute()
 
         msg_print(_("この杖にはもう魔力が残っていない。", "The staff has no charges left."));
         o_ptr->ident |= IDENT_EMPTY;
-        this->player_ptr->update |= PU_COMBINE | PU_REORDER;
-        this->player_ptr->window_flags |= PW_INVEN;
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        const auto flags = {
+            StatusRedrawingFlag::COMBINATION,
+            StatusRedrawingFlag::REORDER,
+        };
+        rfu.set_flags(flags);
+        this->player_ptr->window_flags |= PW_INVENTORY;
         return;
     }
 
     sound(SOUND_ZAP);
     auto ident = staff_effect(this->player_ptr, o_ptr->bi_key.sval().value(), &use_charge, false, false, o_ptr->is_aware());
     if (!(o_ptr->is_aware())) {
-        chg_virtue(this->player_ptr, V_PATIENCE, -1);
-        chg_virtue(this->player_ptr, V_CHANCE, 1);
-        chg_virtue(this->player_ptr, V_KNOWLEDGE, -1);
+        chg_virtue(this->player_ptr, Virtue::PATIENCE, -1);
+        chg_virtue(this->player_ptr, Virtue::CHANCE, 1);
+        chg_virtue(this->player_ptr, Virtue::KNOWLEDGE, -1);
     }
 
-    /*
-     * Temporarily remove the flags for updating the inventory so
-     * gain_exp() does not reorder the inventory before the charge
-     * is deducted from the staff.
-     */
-    BIT_FLAGS inventory_flags = PU_COMBINE | PU_REORDER | (this->player_ptr->update & PU_AUTODESTROY);
-    reset_bits(this->player_ptr->update, PU_COMBINE | PU_REORDER | PU_AUTODESTROY);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    using Srf = StatusRedrawingFlag;
+    EnumClassFlagGroup<Srf> flags_srf = { Srf::COMBINATION, Srf::REORDER };
+    if (rfu.has(Srf::AUTO_DESTRUCTION)) {
+        flags_srf.set(Srf::AUTO_DESTRUCTION);
+    }
+
+    rfu.reset_flags(flags_srf);
     object_tried(o_ptr);
     if (ident && !o_ptr->is_aware()) {
         object_aware(this->player_ptr, o_ptr);
         gain_exp(this->player_ptr, (lev + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
     }
 
-    set_bits(this->player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
-    set_bits(this->player_ptr->update, inventory_flags);
+    set_bits(this->player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
+    rfu.set_flags(flags_srf);
     if (!use_charge) {
         return;
     }

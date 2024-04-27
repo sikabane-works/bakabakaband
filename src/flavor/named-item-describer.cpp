@@ -32,9 +32,8 @@ static std::string get_fullname_if_set(const ItemEntity &item, const describe_op
         return "";
     }
 
-    const auto fixed_art_id = item.fixed_artifact_idx;
     const auto is_known_artifact = opt.known && item.is_fixed_artifact() && none_bits(opt.mode, OD_BASE_NAME);
-    return is_known_artifact ? artifacts_info.at(fixed_art_id).name : baseitems_info[item.bi_id].name;
+    return is_known_artifact ? item.get_fixed_artifact().name : item.get_baseitem().name;
 }
 
 #ifdef JP
@@ -110,17 +109,17 @@ static std::string describe_unique_name_before_body_ja(const ItemEntity &item, c
     }
 
     if (item.is_fixed_artifact() && object_flags(&item).has_not(TR_FULL_NAME)) {
-        const auto &a_ref = artifacts_info.at(item.fixed_artifact_idx);
+        const auto &artifact = item.get_fixed_artifact();
         /* '『' から始まらない伝説のアイテムの名前は最初に付加する */
-        if (a_ref.name.find("『", 0, 2) != 0) {
-            return a_ref.name;
+        if (artifact.name.find("『", 0, 2) != 0) {
+            return artifact.name;
         }
 
         return "";
     }
 
     if (item.is_ego()) {
-        return egos_info[item.ego_idx].name;
+        return item.get_ego().name;
     }
 
     return "";
@@ -143,7 +142,7 @@ static std::optional<std::string> describe_random_artifact_name_after_body_ja(co
 
     // "'foobar'" の foobar の部分を取り出し『foobar』と表記する
     // (英語版のセーブファイルのランダムアーティファクトを考慮)
-    return format("『%s』", name_sv.substr(1, name_sv.length() - 2));
+    return format("『%s』", name_sv.substr(1, name_sv.length() - 2).data());
 }
 
 static std::string describe_fake_artifact_name_after_body_ja(const ItemEntity &item)
@@ -200,9 +199,9 @@ static std::string describe_unique_name_after_body_ja(const ItemEntity &item, co
     }
 
     if (item.is_fixed_artifact()) {
-        const auto &a_ref = artifacts_info.at(item.fixed_artifact_idx);
-        if (a_ref.name.find("『", 0, 2) == 0) {
-            return a_ref.name;
+        const auto &artifact = item.get_fixed_artifact();
+        if (artifact.name.find("『", 0, 2) == 0) {
+            return artifact.name;
         }
 
         return "";
@@ -256,7 +255,7 @@ static std::string describe_item_count_or_article_en(const ItemEntity &item, con
     const auto corpse_r_idx = i2enum<MonsterRaceId>(item.pval);
     auto is_unique_corpse = item.bi_key.tval() == ItemKindType::CORPSE;
     is_unique_corpse &= monraces_info[corpse_r_idx].kind_flags.has(MonsterKindType::UNIQUE);
-    if ((opt.known && item.is_artifact()) || is_unique_corpse) {
+    if ((opt.known && item.is_fixed_or_random_artifact()) || is_unique_corpse) {
         return "The ";
     }
 
@@ -273,7 +272,7 @@ static std::string describe_item_count_or_definite_article_en(const ItemEntity &
         return prefix;
     }
 
-    if (opt.known && item.is_artifact()) {
+    if (opt.known && item.is_fixed_or_random_artifact()) {
         return "The ";
     }
 
@@ -294,8 +293,8 @@ static std::string describe_unique_name_after_body_en(const ItemEntity &item, co
     }
 
     if (item.is_fixed_artifact()) {
-        const auto &a_ref = artifacts_info.at(item.fixed_artifact_idx);
-        ss << ' ' << a_ref.name;
+        const auto &artifact = ArtifactsInfo::get_instance().get_artifact(item.fixed_artifact_idx);
+        ss << ' ' << artifact.name;
         return ss.str();
     }
 
@@ -334,6 +333,17 @@ static std::string describe_unique_name_after_body_en(const ItemEntity &item, co
  */
 static std::string describe_body(const ItemEntity &item, [[maybe_unused]] const describe_option_type &opt, std::string_view basename, std::string_view modstr)
 {
+#ifndef JP
+    auto pluralize = [&opt, &item](auto &ss, auto it) {
+        if (none_bits(opt.mode, OD_NO_PLURAL) && (item.number != 1)) {
+            char k = *std::next(it, -1);
+            if ((k == 's') || (k == 'h')) {
+                ss << 'e';
+            }
+            ss << 's';
+        }
+    };
+#endif
     std::stringstream ss;
 
     for (auto it = basename.begin(), it_end = basename.end(); it != it_end; ++it) {
@@ -342,20 +352,25 @@ static std::string describe_body(const ItemEntity &item, [[maybe_unused]] const 
             ss << modstr;
             break;
 
-        case '%':
-            ss << baseitems_info[item.bi_id].name;
+        case '%': {
+            const auto &baseitem = item.get_baseitem();
+#ifdef JP
+            ss << baseitem.name;
+#else
+            for (auto ib = baseitem.name.begin(), ib_end = baseitem.name.end(); ib != ib_end; ++ib) {
+                if (*ib == '~') {
+                    pluralize(ss, ib);
+                } else {
+                    ss << *ib;
+                }
+            }
+#endif
             break;
+        }
 
 #ifndef JP
         case '~':
-            if (none_bits(opt.mode, OD_NO_PLURAL) && (item.number != 1)) {
-                char k = *std::next(it, -1);
-                if ((k == 's') || (k == 'h')) {
-                    ss << 'e';
-                }
-
-                ss << 's';
-            }
+            pluralize(ss, it);
             break;
 #endif
 

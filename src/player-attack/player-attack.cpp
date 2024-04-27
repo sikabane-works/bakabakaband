@@ -12,7 +12,6 @@
 #include "combat/attack-criticality.h"
 #include "combat/martial-arts-table.h"
 #include "combat/slaying.h"
-#include "core/player-update-types.h"
 #include "floor/cave.h"
 #include "floor/geometry.h"
 #include "game-option/cheat-types.h"
@@ -150,7 +149,7 @@ static void get_attack_exp(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
     auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
     auto *o_ptr = &player_ptr->inventory_list[enum2i(INVEN_MAIN_HAND) + pa_ptr->hand];
-    if (o_ptr->bi_id == 0) {
+    if (!o_ptr->is_valid()) {
         get_bare_knuckle_exp(player_ptr, pa_ptr);
         return;
     }
@@ -200,7 +199,7 @@ static chaotic_effect select_chaotic_effect(PlayerType *player_ptr, player_attac
     }
 
     if (one_in_(10)) {
-        chg_virtue(player_ptr, V_CHANCE, 1);
+        chg_virtue(player_ptr, Virtue::CHANCE, 1);
     }
 
     if (randint1(5) < 3) {
@@ -231,7 +230,7 @@ static MagicalBrandEffectType select_magical_brand_effect(PlayerType *player_ptr
     }
 
     if (one_in_(10)) {
-        chg_virtue(player_ptr, V_CHANCE, 1);
+        chg_virtue(player_ptr, Virtue::CHANCE, 1);
     }
 
     if (one_in_(5)) {
@@ -374,7 +373,7 @@ static void calc_attack_damage(PlayerType *player_ptr, player_attack_type *pa_pt
         return;
     }
 
-    if (o_ptr->bi_id) {
+    if (o_ptr->is_valid()) {
         process_weapon_attack(player_ptr, pa_ptr, do_quake, vorpal_cut, vorpal_chance);
     }
 }
@@ -393,7 +392,7 @@ static void apply_damage_bonus(PlayerType *player_ptr, player_attack_type *pa_pt
         pa_ptr->attack_damage *= 2;
     }
 
-    if ((pa_ptr->mode == HISSATSU_SEKIRYUKA) && !monster_living(pa_ptr->m_ptr->r_idx)) {
+    if ((pa_ptr->mode == HISSATSU_SEKIRYUKA) && !pa_ptr->m_ptr->has_living_flag()) {
         pa_ptr->attack_damage = 0;
     }
 
@@ -421,7 +420,7 @@ static void apply_damage_negative_effect(player_attack_type *pa_ptr, bool is_zan
     }
 
     auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
-    if ((pa_ptr->mode == HISSATSU_ZANMA) && !(!monster_living(pa_ptr->m_ptr->r_idx) && r_ptr->kind_flags.has(MonsterKindType::EVIL))) {
+    if ((pa_ptr->mode == HISSATSU_ZANMA) && !(!pa_ptr->m_ptr->has_living_flag() && r_ptr->kind_flags.has(MonsterKindType::EVIL))) {
         pa_ptr->attack_damage = 0;
     }
 
@@ -445,7 +444,7 @@ static void apply_damage_negative_effect(player_attack_type *pa_ptr, bool is_zan
 static bool check_fear_death(PlayerType *player_ptr, player_attack_type *pa_ptr, const int num, const bool is_lowlevel)
 {
     MonsterDamageProcessor mdp(player_ptr, pa_ptr->m_idx, pa_ptr->attack_damage, pa_ptr->fear, pa_ptr->attribute_flags);
-    if (!mdp.mon_take_hit(nullptr)) {
+    if (!mdp.mon_take_hit("")) {
         return false;
     }
 
@@ -603,7 +602,7 @@ void exe_player_attack_to_monster(PlayerType *player_ptr, POSITION y, POSITION x
     }
 
     if ((pa_ptr->drain_left != MAX_VAMPIRIC_DRAIN) && one_in_(4)) {
-        chg_virtue(player_ptr, V_UNLIFE, 1);
+        chg_virtue(player_ptr, Virtue::UNLIFE, 1);
     }
 
     cause_earthquake(player_ptr, pa_ptr, do_quake, y, x);

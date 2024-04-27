@@ -6,7 +6,6 @@
 
 #include "cmd-item/cmd-eat.h"
 #include "avatar/avatar.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -56,6 +55,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "view/object-describer.h"
@@ -114,7 +114,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
     MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
     EXP max_exp = r_ptr->level * r_ptr->level * 10;
 
-    chg_virtue(player_ptr, V_ENLIGHTEN, 1);
+    chg_virtue(player_ptr, Virtue::ENLIGHTEN, 1);
     if (player_ptr->exp < PY_MAX_EXP) {
         EXP ee = (player_ptr->exp / 2) + 10;
         if (ee > max_exp) {
@@ -504,7 +504,7 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
     if (o_ptr->pval == 0) {
         msg_format(_("この%sにはもう魔力が残っていない。", "The %s has no charges left."), staff);
         o_ptr->ident |= IDENT_EMPTY;
-        player_ptr->window_flags |= PW_INVEN;
+        player_ptr->window_flags |= PW_INVENTORY;
         return true;
     }
 
@@ -538,7 +538,7 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
         floor_item_charges(player_ptr->current_floor_ptr, 0 - inventory);
     }
 
-    player_ptr->window_flags |= PW_INVEN | PW_EQUIP;
+    player_ptr->window_flags |= PW_INVENTORY | PW_EQUIPMENT;
     return true;
 }
 
@@ -562,9 +562,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     sound(SOUND_EAT);
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
-
-    /* Object level */
-    int lev = baseitems_info[o_ptr->bi_id].level;
+    const auto lev = o_ptr->get_baseitem().level;
 
     /* 基本食い物でないものを喰う判定 */
     bool ate = false;
@@ -585,13 +583,18 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
      * do not rearrange the inventory before the food item is destroyed in
      * the pack.
      */
-    BIT_FLAGS inventory_flags = (PU_COMBINE | PU_REORDER | (player_ptr->update & PU_AUTODESTROY));
-    player_ptr->update &= ~(PU_COMBINE | PU_REORDER | PU_AUTODESTROY);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    using Srf = StatusRedrawingFlag;
+    EnumClassFlagGroup<Srf> flags_srf = { Srf::COMBINATION, Srf::REORDER };
+    if (rfu.has(Srf::AUTO_DESTRUCTION)) {
+        flags_srf.set(Srf::AUTO_DESTRUCTION);
+    }
 
+    rfu.reset_flags(flags_srf);
     if (!(o_ptr->is_aware())) {
-        chg_virtue(player_ptr, V_KNOWLEDGE, -1);
-        chg_virtue(player_ptr, V_PATIENCE, -1);
-        chg_virtue(player_ptr, V_CHANCE, 1);
+        chg_virtue(player_ptr, Virtue::KNOWLEDGE, -1);
+        chg_virtue(player_ptr, Virtue::PATIENCE, -1);
+        chg_virtue(player_ptr, Virtue::CHANCE, 1);
     }
 
     /* We have tried it */
@@ -606,11 +609,11 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         gain_exp(player_ptr, (lev + (player_ptr->lev >> 1)) / player_ptr->lev);
     }
 
-    player_ptr->window_flags |= (PW_INVEN | PW_EQUIP | PW_PLAYER);
+    player_ptr->window_flags |= (PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER);
 
     /* Undeads drain recharge of magic device */
     if (exe_eat_charge_of_magic_device(player_ptr, o_ptr, item)) {
-        player_ptr->update |= inventory_flags;
+        rfu.set_flags(flags_srf);
         return;
     }
 
@@ -618,13 +621,13 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
 
     /* Balrogs change humanoid corpses to energy */
     const auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-    if (food_type == PlayerRaceFoodType::CORPSE && (bi_key == BaseitemKey(ItemKindType::CORPSE, SV_CORPSE) && angband_strchr("pht", monraces_info[corpse_r_idx].d_char))) {
-        GAME_TEXT o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-        msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%s^ is burnt to ashes.  You absorb its vitality!"), o_name);
+    const auto search = angband_strchr("pht", monraces_info[corpse_r_idx].d_char);
+    if (food_type == PlayerRaceFoodType::CORPSE && (bi_key == BaseitemKey(ItemKindType::CORPSE, SV_CORPSE)) && (search != nullptr)) {
+        const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+        msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%s^ is burnt to ashes.  You absorb its vitality!"), item_name.data());
         (void)set_food(player_ptr, PY_FOOD_MAX - 1);
 
-        player_ptr->update |= inventory_flags;
+        rfu.set_flags(flags_srf);
         vary_item(player_ptr, item, -1);
         return;
     }
@@ -682,7 +685,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
 
     player_ptr->plus_incident(INCIDENT::EAT, 1);
 
-    player_ptr->update |= inventory_flags;
+    rfu.set_flags(flags_srf);
     vary_item(player_ptr, item, -1);
 }
 

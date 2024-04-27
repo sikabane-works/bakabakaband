@@ -11,7 +11,6 @@
 #include "combat/attack-criticality.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "effect/effect-characteristics.h"
@@ -154,7 +153,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMuta
     case PlayerMutationType::TENTACLES:
     default: {
         MonsterDamageProcessor mdp(player_ptr, m_idx, k, fear, AttributeType::ATTACK);
-        *mdeath = mdp.mon_take_hit(nullptr);
+        *mdeath = mdp.mon_take_hit("");
         break;
     }
     }
@@ -230,16 +229,16 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
 
         if (is_stormbringer) {
             msg_format(_("黒い刃は強欲に%sを攻撃した！", "Your black blade greedily attacks %s!"), m_name.data());
-            chg_virtue(player_ptr, V_INDIVIDUALISM, 1);
-            chg_virtue(player_ptr, V_HONOUR, -1);
-            chg_virtue(player_ptr, V_JUSTICE, -1);
-            chg_virtue(player_ptr, V_COMPASSION, -1);
+            chg_virtue(player_ptr, Virtue::INDIVIDUALISM, 1);
+            chg_virtue(player_ptr, Virtue::HONOUR, -1);
+            chg_virtue(player_ptr, Virtue::JUSTICE, -1);
+            chg_virtue(player_ptr, Virtue::COMPASSION, -1);
         } else if (!PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
             if (get_check(_("本当に攻撃しますか？", "Really hit it? "))) {
-                chg_virtue(player_ptr, V_INDIVIDUALISM, 1);
-                chg_virtue(player_ptr, V_HONOUR, -1);
-                chg_virtue(player_ptr, V_JUSTICE, -1);
-                chg_virtue(player_ptr, V_COMPASSION, -1);
+                chg_virtue(player_ptr, Virtue::INDIVIDUALISM, 1);
+                chg_virtue(player_ptr, Virtue::HONOUR, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::COMPASSION, -1);
             } else {
                 msg_format(_("%sを攻撃するのを止めた。", "You stop to avoid hitting %s."), m_name.data());
                 return false;
@@ -260,10 +259,10 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
 
     if (m_ptr->is_asleep()) {
         if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5)) {
-            chg_virtue(player_ptr, V_COMPASSION, -1);
+            chg_virtue(player_ptr, Virtue::COMPASSION, -1);
         }
         if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5)) {
-            chg_virtue(player_ptr, V_HONOUR, -1);
+            chg_virtue(player_ptr, Virtue::HONOUR, -1);
         }
     }
 

@@ -2,8 +2,6 @@
 #include "artifact/fixed-art-types.h"
 #include "avatar/avatar.h"
 #include "combat/attack-criticality.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
@@ -64,6 +62,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
@@ -445,7 +444,7 @@ static MULTIPLY calc_shot_damage_with_slay(
 
         if ((flags.has(TR_FORCE_WEAPON)) && (player_ptr->csp > (player_ptr->msp / 30))) {
             player_ptr->csp -= (1 + (player_ptr->msp / 30));
-            set_bits(player_ptr->redraw, PR_MANA);
+            RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
             mult = mult * 5 / 2;
         }
         break;
@@ -501,10 +500,11 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
     auto stick_to = false;
 
     /* Access the item (if in the pack) */
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (item >= 0) {
         o_ptr = &player_ptr->inventory_list[item];
     } else {
-        o_ptr = &player_ptr->current_floor_ptr->o_list[0 - item];
+        o_ptr = &floor_ptr->o_list[0 - item];
     }
 
     /* Sniper - Cannot shot a single arrow twice */
@@ -512,8 +512,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
         snipe_type = SP_NONE;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX);
 
     /* Use the proper number of shots */
     auto thits = player_ptr->num_fire;
@@ -661,7 +660,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
 
             /* Shatter Arrow */
             if (snipe_type == SP_KILL_WALL) {
-                g_ptr = &player_ptr->current_floor_ptr->grid_array[ny][nx];
+                g_ptr = &floor_ptr->grid_array[ny][nx];
 
                 if (g_ptr->cave_has_flag(TerrainCharacteristics::HURT_ROCK) && !g_ptr->m_idx) {
                     if (any_bits(g_ptr->info, (CAVE_MARK))) {
@@ -669,7 +668,13 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                     }
                     /* Forget the wall */
                     reset_bits(g_ptr->info, (CAVE_MARK));
-                    set_bits(player_ptr->update, PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE);
+                    const auto flags = {
+                        StatusRedrawingFlag::VIEW,
+                        StatusRedrawingFlag::LITE,
+                        StatusRedrawingFlag::FLOW,
+                        StatusRedrawingFlag::MONSTER_LITE,
+                    };
+                    RedrawingFlagsUpdater::get_instance().set_flags(flags);
 
                     /* Destroy the wall */
                     cave_alter_feat(player_ptr, ny, nx, TerrainCharacteristics::HURT_ROCK);
@@ -680,7 +685,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
             }
 
             /* Stopped by walls/doors */
-            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, ny, nx, TerrainCharacteristics::PROJECT) && !player_ptr->current_floor_ptr->grid_array[ny][nx].m_idx) {
+            if (!cave_has_flag_bold(floor_ptr, ny, nx, TerrainCharacteristics::PROJECT) && !floor_ptr->grid_array[ny][nx].m_idx) {
                 break;
             }
 
@@ -689,7 +694,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
 
             /* Sniper */
             if (snipe_type == SP_LITE) {
-                set_bits(player_ptr->current_floor_ptr->grid_array[ny][nx].info, CAVE_GLOW);
+                set_bits(floor_ptr->grid_array[ny][nx].info, CAVE_GLOW);
                 note_spot(player_ptr, ny, nx);
                 lite_spot(player_ptr, ny, nx);
             }
@@ -720,12 +725,13 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
 
             /* Sniper */
             if (snipe_type == SP_KILL_TRAP) {
-                project(player_ptr, 0, 0, ny, nx, 0, AttributeType::KILL_TRAP, (PROJECT_JUMP | PROJECT_HIDE | PROJECT_GRID | PROJECT_ITEM));
+                constexpr auto flags = PROJECT_JUMP | PROJECT_HIDE | PROJECT_GRID | PROJECT_ITEM;
+                project(player_ptr, 0, 0, ny, nx, 0, AttributeType::KILL_TRAP, flags);
             }
 
             /* Sniper */
             if (snipe_type == SP_EVILNESS) {
-                reset_bits(player_ptr->current_floor_ptr->grid_array[ny][nx].info, (CAVE_GLOW | CAVE_MARK));
+                reset_bits(floor_ptr->grid_array[ny][nx].info, (CAVE_GLOW | CAVE_MARK));
                 note_spot(player_ptr, ny, nx);
                 lite_spot(player_ptr, ny, nx);
             }
@@ -738,11 +744,11 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
             y = ny;
 
             /* Monster here, Try to hit it */
-            if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+            if (floor_ptr->grid_array[y][x].m_idx) {
                 sound(SOUND_SHOOT_HIT);
-                grid_type *c_mon_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+                grid_type *c_mon_ptr = &floor_ptr->grid_array[y][x];
 
-                auto *m_ptr = &player_ptr->current_floor_ptr->m_list[c_mon_ptr->m_idx];
+                auto *m_ptr = &floor_ptr->m_list[c_mon_ptr->m_idx];
                 auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
                 /* Check the visibility */
@@ -753,10 +759,10 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
 
                 if (m_ptr->is_asleep()) {
                     if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5)) {
-                        chg_virtue(player_ptr, V_COMPASSION, -1);
+                        chg_virtue(player_ptr, Virtue::COMPASSION, -1);
                     }
                     if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || one_in_(5)) {
-                        chg_virtue(player_ptr, V_HONOUR, -1);
+                        chg_virtue(player_ptr, Virtue::HONOUR, -1);
                     }
                 }
 
@@ -769,7 +775,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                 }
 
                 /* Did we hit it (penalize range) */
-                if (test_hit_fire(player_ptr, chance - cur_dis, m_ptr, m_ptr->ml, o_name)) {
+                if (test_hit_fire(player_ptr, chance - cur_dis, m_ptr, m_ptr->ml, item_name.data())) {
                     bool fear = false;
                     auto tdam = tdam_base; //!< @note 実際に与えるダメージ
                     auto base_dam = tdam; //!< @note 補正前の与えるダメージ(無傷、全ての耐性など)
@@ -780,7 +786,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                     /* Handle unseen monster */
                     if (!visible) {
                         /* Invisible monster */
-                        msg_format(_("%sが敵を捕捉した。", "The %s finds a mark."), o_name);
+                        msg_format(_("%sが敵を捕捉した。", "The %s finds a mark."), item_name.data());
                     }
 
                     /* Handle visible monster */
@@ -788,7 +794,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                         /* Get "the monster" or "it" */
                         const auto m_name = monster_desc(player_ptr, m_ptr, 0);
 
-                        msg_format(_("%sが%sに命中した。", "The %s hits %s."), o_name, m_name.data());
+                        msg_format(_("%sが%sに命中した。", "The %s hits %s."), item_name.data(), m_name.data());
 
                         if (m_ptr->ml) {
                             if (!player_ptr->effects()->hallucination()->is_hallucinated()) {
@@ -844,14 +850,14 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
 
                     /* Sniper */
                     if (snipe_type == SP_HOLYNESS) {
-                        set_bits(player_ptr->current_floor_ptr->grid_array[ny][nx].info, CAVE_GLOW);
+                        set_bits(floor_ptr->grid_array[ny][nx].info, CAVE_GLOW);
                         note_spot(player_ptr, ny, nx);
                         lite_spot(player_ptr, ny, nx);
                     }
 
                     /* Hit the monster, check for death */
                     MonsterDamageProcessor mdp(player_ptr, c_mon_ptr->m_idx, tdam, &fear, attribute_flags);
-                    if (mdp.mon_take_hit(extract_note_dies(m_ptr->get_real_r_idx()))) {
+                    if (mdp.mon_take_hit(m_ptr->get_died_message())) {
                         /* Dead monster */
                     }
 
@@ -862,7 +868,7 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                             const auto m_name = monster_desc(player_ptr, m_ptr, 0);
 
                             stick_to = true;
-                            msg_format(_("%sは%sに突き刺さった！", "%s^ is stuck in %s!"), o_name, m_name.data());
+                            msg_format(_("%sは%sに突き刺さった！", "%s^ is stuck in %s!"), item_name.data(), m_name.data());
                         }
 
                         if (const auto pain_message = MonsterPainDescriber(player_ptr, c_mon_ptr->m_idx).describe(tdam);
@@ -900,12 +906,12 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                                 mmove2(&ny, &nx, player_ptr->y, player_ptr->x, ty, tx);
 
                                 /* Stopped by wilderness boundary */
-                                if (!in_bounds2(player_ptr->current_floor_ptr, ny, nx)) {
+                                if (!in_bounds2(floor_ptr, ny, nx)) {
                                     break;
                                 }
 
                                 /* Stopped by walls/doors */
-                                if (!player_can_enter(player_ptr, player_ptr->current_floor_ptr->grid_array[ny][nx].feat, 0)) {
+                                if (!player_can_enter(player_ptr, floor_ptr->grid_array[ny][nx].feat, 0)) {
                                     break;
                                 }
 
@@ -914,8 +920,8 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
                                     break;
                                 }
 
-                                player_ptr->current_floor_ptr->grid_array[ny][nx].m_idx = m_idx;
-                                player_ptr->current_floor_ptr->grid_array[oy][ox].m_idx = 0;
+                                floor_ptr->grid_array[ny][nx].m_idx = m_idx;
+                                floor_ptr->grid_array[oy][ox].m_idx = 0;
 
                                 m_ptr->fx = nx;
                                 m_ptr->fy = ny;
@@ -953,19 +959,19 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
         auto j = (hit_body ? breakage_chance(player_ptr, q_ptr, PlayerClass(player_ptr).equals(PlayerClassType::ARCHER), snipe_type) : 0);
 
         if (stick_to) {
-            MONSTER_IDX m_idx = player_ptr->current_floor_ptr->grid_array[y][x].m_idx;
-            auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-            OBJECT_IDX o_idx = o_pop(player_ptr->current_floor_ptr);
+            MONSTER_IDX m_idx = floor_ptr->grid_array[y][x].m_idx;
+            auto *m_ptr = &floor_ptr->m_list[m_idx];
+            OBJECT_IDX o_idx = o_pop(floor_ptr);
 
             if (!o_idx) {
-                msg_format(_("%sはどこかへ行った。", "The %s went somewhere."), o_name);
+                msg_format(_("%sはどこかへ行った。", "The %s went somewhere."), item_name.data());
                 if (q_ptr->is_fixed_artifact()) {
-                    artifacts_info.at(j_ptr->fixed_artifact_idx).is_generated = false;
+                    ArtifactsInfo::get_instance().get_artifact(j_ptr->fixed_artifact_idx).is_generated = false;
                 }
                 return;
             }
 
-            o_ptr = &player_ptr->current_floor_ptr->o_list[o_idx];
+            o_ptr = &floor_ptr->o_list[o_idx];
             o_ptr->copy_from(q_ptr);
 
             /* Forget mark */
@@ -978,8 +984,8 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
             o_ptr->held_m_idx = m_idx;
 
             /* Carry object */
-            m_ptr->hold_o_idx_list.add(player_ptr->current_floor_ptr, o_idx);
-        } else if (cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
+            m_ptr->hold_o_idx_list.add(floor_ptr, o_idx);
+        } else if (cave_has_flag_bold(floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
             /* Drop (or break) near that location */
             (void)drop_near(player_ptr, q_ptr, j, y, x);
         } else {
@@ -995,16 +1001,15 @@ void exe_fire(PlayerType *player_ptr, INVENTORY_IDX item, ItemEntity *j_ptr, SPE
 }
 
 /*!
- * @brief プレイヤーからモンスターへの射撃命中判定 /
- * Determine if the player "hits" a monster (normal combat).
+ * @brief プレイヤーからモンスターへの射撃命中判定
  * @param chance 基本命中値
  * @param monster_ptr モンスターの構造体参照ポインタ
  * @param vis 目標を視界に捕らえているならばTRUEを指定
- * @param o_name メッセージ表示時のモンスター名
+ * @param item_name 石川五右衛門専用メッセージ：無効化した矢弾の名前
  * @return 命中と判定された場合TRUEを返す
- * @note Always miss 5%, always hit 5%, otherwise random.
+ * @note 最低命中率5%、最大命中率95%
  */
-bool test_hit_fire(PlayerType *player_ptr, int chance, MonsterEntity *m_ptr, int vis, char *o_name)
+bool test_hit_fire(PlayerType *player_ptr, int chance, MonsterEntity *m_ptr, int vis, std::string_view item_name)
 {
     int k;
     ARMOUR_CLASS ac;
@@ -1054,7 +1059,7 @@ bool test_hit_fire(PlayerType *player_ptr, int chance, MonsterEntity *m_ptr, int
     if (randint0(chance) < (ac * 3 / 4)) {
         if (m_ptr->r_idx == MonsterRaceId::GOEMON && !m_ptr->is_asleep()) {
             const auto m_name = monster_desc(player_ptr, m_ptr, 0);
-            msg_format(_("%sは%sを斬り捨てた！", "%s cuts down %s!"), m_name.data(), o_name);
+            msg_format(_("%sは%sを斬り捨てた！", "%s cuts down %s!"), m_name.data(), item_name.data());
         }
         return false;
     }

@@ -39,6 +39,7 @@
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include <vector>
 
 /*!
  * @brief 警告を放つアイテムを選択する /
@@ -48,27 +49,24 @@
  */
 ItemEntity *choose_warning_item(PlayerType *player_ptr)
 {
-    int choices[INVEN_TOTAL - INVEN_MAIN_HAND];
-
     /* Paranoia -- Player has no warning ability */
     if (!player_ptr->warning) {
         return nullptr;
     }
 
     /* Search Inventory */
-    int number = 0;
+    std::vector<int> candidates;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
 
         auto flags = object_flags(o_ptr);
         if (flags.has(TR_WARNING)) {
-            choices[number] = i;
-            number++;
+            candidates.push_back(i);
         }
     }
 
     /* Choice one of them */
-    return number ? &player_ptr->inventory_list[choices[randint0(number)]] : nullptr;
+    return candidates.empty() ? nullptr : &player_ptr->inventory_list[rand_choice(candidates)];
 }
 
 /*!
@@ -359,7 +357,6 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
 {
     POSITION mx, my;
     grid_type *g_ptr;
-    GAME_TEXT o_name[MAX_NLEN];
 
 #define WARNING_AWARE_RANGE 12
     int dam_max = 0;
@@ -537,13 +534,14 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
 
         if (dam_max > player_ptr->chp / 2) {
             auto *o_ptr = choose_warning_item(player_ptr);
-
-            if (o_ptr) {
-                describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+            std::string item_name;
+            if (o_ptr != nullptr) {
+                item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
             } else {
-                strcpy(o_name, _("体", "body")); /* Warning ability without item */
+                item_name = _("体", "body");
             }
-            msg_format(_("%sが鋭く震えた！", "Your %s pulsates sharply!"), o_name);
+
+            msg_format(_("%sが鋭く震えた！", "Your %s pulsates sharply!"), item_name.data());
 
             disturb(player_ptr, false, true);
             return get_check(_("本当にこのまま進むか？", "Really want to go ahead? "));
@@ -560,12 +558,14 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
     }
 
     auto *o_ptr = choose_warning_item(player_ptr);
+    std::string item_name;
     if (o_ptr != nullptr) {
-        describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+        item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
     } else {
-        strcpy(o_name, _("体", "body")); /* Warning ability without item */
+        item_name = _("体", "body");
     }
-    msg_format(_("%sが鋭く震えた！", "Your %s pulsates sharply!"), o_name);
+
+    msg_format(_("%sが鋭く震えた！", "Your %s pulsates sharply!"), item_name.data());
     disturb(player_ptr, false, true);
     return get_check(_("本当にこのまま進むか？", "Really want to go ahead? "));
 }

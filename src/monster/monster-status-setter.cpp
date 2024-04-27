@@ -1,8 +1,6 @@
 ﻿#include "monster/monster-status-setter.h"
 #include "avatar/avatar.h"
 #include "cmd-visual/cmd-draw.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
@@ -26,6 +24,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -72,10 +71,10 @@ void anger_monster(PlayerType *player_ptr, MonsterEntity *m_ptr)
     const auto m_name = monster_desc(player_ptr, m_ptr, 0);
     msg_format(_("%s^は怒った！", "%s^ gets angry!"), m_name.data());
     set_hostile(player_ptr, m_ptr);
-    chg_virtue(player_ptr, V_INDIVIDUALISM, 1);
-    chg_virtue(player_ptr, V_HONOUR, -1);
-    chg_virtue(player_ptr, V_JUSTICE, -1);
-    chg_virtue(player_ptr, V_COMPASSION, -1);
+    chg_virtue(player_ptr, Virtue::INDIVIDUALISM, 1);
+    chg_virtue(player_ptr, Virtue::HONOUR, -1);
+    chg_virtue(player_ptr, Virtue::JUSTICE, -1);
+    chg_virtue(player_ptr, Virtue::COMPASSION, -1);
 }
 
 /*!
@@ -124,18 +123,19 @@ bool set_monster_csleep(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
         return false;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (m_ptr->ml) {
         if (player_ptr->health_who == m_idx) {
-            player_ptr->redraw |= PR_HEALTH;
+            rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
         }
 
         if (player_ptr->riding == m_idx) {
-            player_ptr->redraw |= PR_UHEALTH;
+            rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
         }
     }
 
     if (monraces_info[m_ptr->r_idx].brightness_flags.has_any_of(has_ld_mask)) {
-        player_ptr->update |= PU_MON_LITE;
+        rfu.set_flag(StatusRedrawingFlag::MONSTER_LITE);
     }
 
     return true;
@@ -174,7 +174,7 @@ bool set_monster_fast(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     }
 
     if ((player_ptr->riding == m_idx) && !player_ptr->leaving) {
-        player_ptr->update |= PU_BONUS;
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     }
 
     return true;
@@ -208,7 +208,7 @@ bool set_monster_slow(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     }
 
     if ((player_ptr->riding == m_idx) && !player_ptr->leaving) {
-        player_ptr->update |= PU_BONUS;
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     }
 
     return true;
@@ -310,12 +310,13 @@ bool set_monster_monfear(PlayerType *player_ptr, MONSTER_IDX m_idx, int v)
     }
 
     if (m_ptr->ml) {
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
         if (player_ptr->health_who == m_idx) {
-            player_ptr->redraw |= PR_HEALTH;
+            rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
         }
 
         if (player_ptr->riding == m_idx) {
-            player_ptr->redraw |= PR_UHEALTH;
+            rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
         }
     }
 
@@ -359,12 +360,13 @@ bool set_monster_invulner(PlayerType *player_ptr, MONSTER_IDX m_idx, int v, bool
     }
 
     if (m_ptr->ml) {
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
         if (player_ptr->health_who == m_idx) {
-            player_ptr->redraw |= PR_HEALTH;
+            rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
         }
 
         if (player_ptr->riding == m_idx) {
-            player_ptr->redraw |= PR_UHEALTH;
+            rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
         }
     }
 
@@ -432,8 +434,9 @@ bool set_monster_timewalk(PlayerType *player_ptr, int num, MonsterRaceId who, bo
         }
     }
 
-    player_ptr->redraw |= PR_MAP;
-    player_ptr->update |= PU_MONSTERS;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
+    rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
     player_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
     w_ptr->timewalk_m_idx = 0;
     if (vs_player || (player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx) && projectable(player_ptr, player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx))) {

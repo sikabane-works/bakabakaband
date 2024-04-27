@@ -6,7 +6,6 @@
 
 #include "object-use/quaff/quaff-execution.h"
 #include "avatar/avatar.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "game-option/disturbance-options.h"
 #include "inventory/inventory-object.h"
@@ -27,6 +26,7 @@
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
 
@@ -64,15 +64,19 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
         (void)potion_smash_effect(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, o_ref.bi_id);
     }
 
-    this->player_ptr->update |= PU_COMBINE | PU_REORDER;
+    const auto flags_srf = {
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags_srf);
     this->change_virtue_as_quaff(o_ref);
     object_tried(&o_ref);
     if (ident && !o_ref.is_aware()) {
         object_aware(this->player_ptr, &o_ref);
-        gain_exp(this->player_ptr, (baseitems_info[o_ref.bi_id].level + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
+        gain_exp(this->player_ptr, (o_ref.get_baseitem().level + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
     }
 
-    this->player_ptr->window_flags |= (PW_INVEN | PW_EQUIP | PW_PLAYER);
+    this->player_ptr->window_flags |= (PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER);
     if (PlayerRace(this->player_ptr).equals(PlayerRaceType::SKELETON)) {
         return;
     }
@@ -157,7 +161,7 @@ void ObjectQuaffEntity::change_virtue_as_quaff(const ItemEntity &o_ref)
         return;
     }
 
-    chg_virtue(this->player_ptr, V_PATIENCE, -1);
-    chg_virtue(this->player_ptr, V_CHANCE, 1);
-    chg_virtue(this->player_ptr, V_KNOWLEDGE, -1);
+    chg_virtue(this->player_ptr, Virtue::PATIENCE, -1);
+    chg_virtue(this->player_ptr, Virtue::CHANCE, 1);
+    chg_virtue(this->player_ptr, Virtue::KNOWLEDGE, -1);
 }

@@ -28,6 +28,7 @@
 #include "system/dungeon-info.h"
 #include "system/monster-race-info.h"
 #include "system/system-variables.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "time.h"
@@ -42,113 +43,36 @@
 #endif
 
 /*!
- * @brief 各データファイルを読み取るためのパスを取得する
- * Find the default paths to all of our important sub-directories.
- * @param path パス保管先の文字列
+ * @brief 各データファイルを読み取るためのパスを取得する.
+ * @param libpath 各PCのインストール環境における"lib/" を表す絶対パス
  */
-void init_file_paths(char *libpath, char *varpath)
+void init_file_paths(const std::filesystem::path &libpath)
 {
-    char *libtail, *vartail;
-    char buf[1024];
-
-    string_free(ANGBAND_DIR);
-    string_free(ANGBAND_DIR_APEX);
-    string_free(ANGBAND_DIR_BONE);
-    string_free(ANGBAND_DIR_DATA);
-    string_free(ANGBAND_DIR_EDIT);
-    string_free(ANGBAND_DIR_SCRIPT);
-    string_free(ANGBAND_DIR_FILE);
-    string_free(ANGBAND_DIR_HELP);
-    string_free(ANGBAND_DIR_INFO);
-    string_free(ANGBAND_DIR_SAVE);
-    string_free(ANGBAND_DIR_DEBUG_SAVE);
-    string_free(ANGBAND_DIR_USER);
-    string_free(ANGBAND_DIR_XTRA);
-
-    ANGBAND_DIR = string_make(libpath);
-    libtail = libpath + strlen(libpath);
-    vartail = varpath + strlen(varpath);
-    strcpy(vartail, "apex");
-    ANGBAND_DIR_APEX = string_make(varpath);
-    strcpy(vartail, "bone");
-    ANGBAND_DIR_BONE = string_make(varpath);
-    strcpy(vartail, "data");
-    ANGBAND_DIR_DATA = string_make(varpath);
-    strcpy(libtail, "edit");
-    ANGBAND_DIR_EDIT = string_make(libpath);
-    strcpy(libtail, "script");
-    ANGBAND_DIR_SCRIPT = string_make(libpath);
-    strcpy(libtail, "file");
-    ANGBAND_DIR_FILE = string_make(libpath);
-    strcpy(libtail, "help");
-    ANGBAND_DIR_HELP = string_make(libpath);
-    strcpy(libtail, "info");
-    ANGBAND_DIR_INFO = string_make(libpath);
-    strcpy(libtail, "pref");
-    ANGBAND_DIR_PREF = string_make(libpath);
-    strcpy(vartail, "save");
-    ANGBAND_DIR_SAVE = string_make(varpath);
-    path_build(buf, sizeof(buf), ANGBAND_DIR_SAVE, "log");
-    ANGBAND_DIR_DEBUG_SAVE = string_make(buf);
+    ANGBAND_DIR = std::filesystem::path(libpath);
+    ANGBAND_DIR_APEX = std::filesystem::path(libpath).append("apex");
+    ANGBAND_DIR_BONE = std::filesystem::path(libpath).append("bone");
+    ANGBAND_DIR_DATA = std::filesystem::path(libpath).append("data");
+    ANGBAND_DIR_EDIT = std::filesystem::path(libpath).append("edit");
+    ANGBAND_DIR_SCRIPT = std::filesystem::path(libpath).append("script");
+    ANGBAND_DIR_FILE = std::filesystem::path(libpath).append("file");
+    ANGBAND_DIR_HELP = std::filesystem::path(libpath).append("help");
+    ANGBAND_DIR_INFO = std::filesystem::path(libpath).append("info");
+    ANGBAND_DIR_PREF = std::filesystem::path(libpath).append("pref");
+    ANGBAND_DIR_SAVE = std::filesystem::path(libpath).append("save");
+    ANGBAND_DIR_DEBUG_SAVE = std::filesystem::path(ANGBAND_DIR_SAVE).append("log");
 #ifdef PRIVATE_USER_PATH
-    path_build(buf, sizeof(buf), PRIVATE_USER_PATH, VARIANT_NAME.data());
-    ANGBAND_DIR_USER = string_make(buf);
+    ANGBAND_DIR_USER = std::filesystem::path(PRIVATE_USER_PATH).append(VARIANT_NAME);
 #else
-    strcpy(vartail, "user");
-    ANGBAND_DIR_USER = string_make(varpath);
+    ANGBAND_DIR_USER = std::filesystem::path(libpath).append("user");
 #endif
-    strcpy(libtail, "xtra");
-    ANGBAND_DIR_XTRA = string_make(libpath);
+    ANGBAND_DIR_XTRA = std::filesystem::path(libpath).append("xtra");
 
     time_t now = time(nullptr);
     struct tm *t = localtime(&now);
     char tmp[128];
     strftime(tmp, sizeof(tmp), "%Y-%m-%d-%H-%M-%S", t);
-    path_build(debug_savefile, sizeof(debug_savefile), ANGBAND_DIR_DEBUG_SAVE, tmp);
-
-#ifdef WINDOWS
-    struct _finddata_t c_file;
-    intptr_t hFile;
-    char log_file_expr[1024];
-    path_build(log_file_expr, sizeof(log_file_expr), ANGBAND_DIR_DEBUG_SAVE, "*-*");
-
-    if ((hFile = _findfirst(log_file_expr, &c_file)) != -1L) {
-        do {
-            if (((t->tm_yday + 365 - localtime(&c_file.time_write)->tm_yday) % 365) > 7) {
-                char c_file_fullpath[1024];
-                path_build(c_file_fullpath, sizeof(c_file_fullpath), ANGBAND_DIR_DEBUG_SAVE, c_file.name);
-                remove(c_file_fullpath);
-            }
-        } while (_findnext(hFile, &c_file) == 0);
-        _findclose(hFile);
-    }
-#else
-    {
-        DIR *saves_dir = opendir(ANGBAND_DIR_DEBUG_SAVE);
-
-        if (saves_dir) {
-            struct dirent *next_entry;
-
-            while ((next_entry = readdir(saves_dir))) {
-                if (angband_strchr(next_entry->d_name, '-')) {
-                    char path[1024];
-                    struct stat next_stat;
-
-                    path_build(path, sizeof(path), ANGBAND_DIR_DEBUG_SAVE, next_entry->d_name);
-                    /*
-                     * Remove if modified more than a week ago,
-                     * 7*24*60*60 seconds.
-                     */
-                    if (stat(path, &next_stat) == 0 &&
-                        difftime(now, next_stat.st_mtime) > 604800) {
-                        remove(path);
-                    }
-                }
-            }
-            closedir(saves_dir);
-        }
-    }
-#endif
+    debug_savefile = path_build(ANGBAND_DIR_DEBUG_SAVE, tmp);
+    //    remove_old_debug_savefiles();
 }
 
 /*!
@@ -199,7 +123,7 @@ static void put_title()
 {
     const auto title = get_version();
 
-    auto col = (title.length() <= 80) ? (80 - title.length()) / 2 : 0;
+    auto col = (title.length() <= MAIN_TERM_MIN_COLS) ? (MAIN_TERM_MIN_COLS - title.length()) / 2 : 0;
     constexpr auto VER_INFO_ROW = 3; //!< タイトル表記(行)
     prt(title, VER_INFO_ROW, col);
 }
@@ -212,26 +136,22 @@ static void put_title()
  */
 void init_angband(PlayerType *player_ptr, bool no_term)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
-    int fd = fd_open(buf, O_RDONLY);
+    const auto &path_news = path_build(ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
+    auto fd = fd_open(path_news, O_RDONLY);
     if (fd < 0) {
         std::string why = _("'", "Cannot access the '");
-        why.append(buf);
+        why.append(path_news.string());
         why.append(_("'ファイルにアクセスできません!", "' file!"));
         init_angband_aux(why);
     }
 
     (void)fd_close(fd);
-
     if (!no_term) {
         term_clear();
-
-        path_build(buf, sizeof(buf), ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
-        FILE *fp;
-        fp = angband_fopen(buf, "r");
+        auto *fp = angband_fopen(path_news, FileOpenMode::READ);
         if (fp) {
             int i = 0;
+            char buf[1024]{};
             while (0 == angband_fgets(fp, buf, sizeof(buf))) {
                 term_putstr(0, i++, -1, TERM_WHITE, buf);
             }
@@ -242,16 +162,16 @@ void init_angband(PlayerType *player_ptr, bool no_term)
         term_flush();
     }
 
-    path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-    fd = fd_open(buf, O_RDONLY);
-    BIT_FLAGS file_permission = 0664;
+    const auto &path_score = path_build(ANGBAND_DIR_APEX, "scores.raw");
+    fd = fd_open(path_score, O_RDONLY);
     if (fd < 0) {
         safe_setuid_grab(player_ptr);
-        fd = fd_make(buf, file_permission);
+        fd = fd_make(path_score, true);
         safe_setuid_drop();
         if (fd < 0) {
+            const auto &filename_score = path_score.string();
             std::string why = _("'", "Cannot create the '");
-            why.append(buf);
+            why.append(filename_score);
             why.append(_("'ファイルを作成できません!", "' file!"));
             init_angband_aux(why);
         }
@@ -263,11 +183,6 @@ void init_angband(PlayerType *player_ptr, bool no_term)
     }
 
     void (*init_note)(concptr) = (no_term ? init_note_no_term : init_note_term);
-
-    init_note(_("[変数を初期化しています...(その他)", "[Initializing values... (misc)]"));
-    if (init_misc(player_ptr)) {
-        quit(_("その他の変数を初期化できません", "Cannot initialize misc. values"));
-    }
 
     init_note(_("[データの初期化中... (地形)]", "[Initializing arrays... (features)]"));
     if (init_terrains_info()) {
@@ -320,7 +235,7 @@ void init_angband(PlayerType *player_ptr, bool no_term)
     }
 
     init_note(_("[配列を初期化しています... (荒野)]", "[Initializing arrays... (wilderness)]"));
-    if (init_wilderness()) {
+    if (!init_wilderness()) {
         quit(_("荒野を初期化できません", "Cannot initialize wilderness"));
     }
 
@@ -338,8 +253,10 @@ void init_angband(PlayerType *player_ptr, bool no_term)
 
     init_note(_("[データの初期化中... (その他)]", "[Initializing arrays... (other)]"));
     init_other(player_ptr);
-    init_note(_("[データの初期化中... (アロケーション)]", "[Initializing arrays... (alloc)]"));
-    init_alloc();
+    init_note(_("[データの初期化中... (モンスターアロケーション)]", "[Initializing arrays... (monsters alloc)]"));
+    init_monsters_alloc();
+    init_note(_("[データの初期化中... (アイテムアロケーション)]", "[Initializing arrays... (items alloc)]"));
+    init_items_alloc();
     init_note(_("[ユーザー設定ファイルを初期化しています...]", "[Initializing user pref files...]"));
     process_pref_file(player_ptr, "pref.prf");
     process_pref_file(player_ptr, std::string("pref-").append(ANGBAND_SYS).append(".prf").data());

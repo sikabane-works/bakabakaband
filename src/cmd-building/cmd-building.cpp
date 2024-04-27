@@ -17,8 +17,6 @@
 #include "cmd-building/cmd-inn.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/scores.h"
 #include "core/show-file.h"
 #include "core/special-internal-keys.h"
@@ -64,6 +62,8 @@
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
@@ -107,13 +107,14 @@ static void bldg_process_command(PlayerType *player_ptr, building_type *bldg, in
     }
 
     /* action restrictions */
-    if (((bldg->action_restr[i] == 1) && !is_member(player_ptr, bldg)) || ((bldg->action_restr[i] == 2) && !is_owner(player_ptr, bldg))) {
+    const auto can_be_owner = is_owner(player_ptr, bldg);
+    if (((bldg->action_restr[i] == 1) && !is_member(player_ptr, bldg)) || ((bldg->action_restr[i] == 2) && !can_be_owner)) {
         msg_print(_("それを選択する権利はありません！", "You have no right to choose that!"));
         return;
     }
 
     auto bact = bldg->actions[i];
-    if ((bact != BACT_RECHARGE) && (((bldg->member_costs[i] > player_ptr->au) && is_owner(player_ptr, bldg)) || ((bldg->other_costs[i] > player_ptr->au) && !is_owner(player_ptr, bldg)))) {
+    if ((bact != BACT_RECHARGE) && (((bldg->member_costs[i] > player_ptr->au) && can_be_owner) || ((bldg->other_costs[i] > player_ptr->au) && !can_be_owner))) {
         msg_print(_("お金が足りません！", "You do not have the gold!"));
         return;
     }
@@ -256,24 +257,24 @@ static void bldg_process_command(PlayerType *player_ptr, building_type *bldg, in
 
     case BACT_HEIKOUKA:
         msg_print(_("平衡化の儀式を行なった。", "You received an equalization ritual."));
-        set_virtue(player_ptr, V_COMPASSION, 0);
-        set_virtue(player_ptr, V_HONOUR, 0);
-        set_virtue(player_ptr, V_JUSTICE, 0);
-        set_virtue(player_ptr, V_SACRIFICE, 0);
-        set_virtue(player_ptr, V_KNOWLEDGE, 0);
-        set_virtue(player_ptr, V_FAITH, 0);
-        set_virtue(player_ptr, V_ENLIGHTEN, 0);
-        set_virtue(player_ptr, V_ENCHANT, 0);
-        set_virtue(player_ptr, V_CHANCE, 0);
-        set_virtue(player_ptr, V_NATURE, 0);
-        set_virtue(player_ptr, V_HARMONY, 0);
-        set_virtue(player_ptr, V_VITALITY, 0);
-        set_virtue(player_ptr, V_UNLIFE, 0);
-        set_virtue(player_ptr, V_PATIENCE, 0);
-        set_virtue(player_ptr, V_TEMPERANCE, 0);
-        set_virtue(player_ptr, V_DILIGENCE, 0);
-        set_virtue(player_ptr, V_VALOUR, 0);
-        set_virtue(player_ptr, V_INDIVIDUALISM, 0);
+        set_virtue(player_ptr, Virtue::COMPASSION, 0);
+        set_virtue(player_ptr, Virtue::HONOUR, 0);
+        set_virtue(player_ptr, Virtue::JUSTICE, 0);
+        set_virtue(player_ptr, Virtue::SACRIFICE, 0);
+        set_virtue(player_ptr, Virtue::KNOWLEDGE, 0);
+        set_virtue(player_ptr, Virtue::FAITH, 0);
+        set_virtue(player_ptr, Virtue::ENLIGHTEN, 0);
+        set_virtue(player_ptr, Virtue::ENCHANT, 0);
+        set_virtue(player_ptr, Virtue::CHANCE, 0);
+        set_virtue(player_ptr, Virtue::NATURE, 0);
+        set_virtue(player_ptr, Virtue::HARMONY, 0);
+        set_virtue(player_ptr, Virtue::VITALITY, 0);
+        set_virtue(player_ptr, Virtue::UNLIFE, 0);
+        set_virtue(player_ptr, Virtue::PATIENCE, 0);
+        set_virtue(player_ptr, Virtue::TEMPERANCE, 0);
+        set_virtue(player_ptr, Virtue::DILIGENCE, 0);
+        set_virtue(player_ptr, Virtue::VALOUR, 0);
+        set_virtue(player_ptr, Virtue::INDIVIDUALISM, 0);
         initialize_virtues(player_ptr);
         paid = true;
         break;
@@ -323,7 +324,7 @@ void do_cmd_building(PlayerType *player_ptr)
     int which = terrains_info[player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].feat].subtype;
 
     building_type *bldg;
-    bldg = &building[which];
+    bldg = &buildings[which];
 
     reinit_wilderness = false;
 
@@ -407,7 +408,21 @@ void do_cmd_building(PlayerType *player_ptr)
     w_ptr->character_icky_depth--;
     term_clear();
 
-    player_ptr->update |= (PU_VIEW | PU_MONSTERS | PU_BONUS | PU_LITE | PU_MON_LITE);
-    player_ptr->redraw |= (PR_BASIC | PR_EXTRA | PR_EQUIPPY | PR_MAP);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::VIEW,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::LITE,
+        StatusRedrawingFlag::MONSTER_LITE,
+    };
+    rfu.set_flags(flags_srf);
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::BASIC,
+        MainWindowRedrawingFlag::EXTRA,
+        MainWindowRedrawingFlag::EQUIPPY,
+        MainWindowRedrawingFlag::MAP,
+    };
+    rfu.set_flags(flags_mwrf);
     player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 }

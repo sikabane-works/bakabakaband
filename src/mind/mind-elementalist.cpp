@@ -9,7 +9,6 @@
 #include "cmd-action/cmd-spell.h"
 #include "cmd-io/cmd-gameoption.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "effect/effect-characteristics.h"
@@ -63,6 +62,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
@@ -708,11 +708,11 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
     }
 
     if (only_browse) {
-        (void)strnfmt(out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0),
-            I2A(num - 1), p);
+        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
+        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num - 1), p);
     } else {
-        (void)strnfmt(
-            out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num - 1), p);
+        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
+        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num - 1), p);
     }
 
     if (use_menu && !only_browse) {
@@ -881,12 +881,14 @@ static bool try_cast_element_spell(PlayerType *player_ptr, SPELL_IDX spell_idx, 
     if (randint1(100) < chance / 2) {
         int plev = player_ptr->lev;
         msg_print(_("元素の力が制御できない氾流となって解放された！", "The elemental power surges from you in an uncontrollable torrent!"));
-        project(player_ptr, PROJECT_WHO_UNCTRL_POWER, 2 + plev / 10, player_ptr->y, player_ptr->x, plev * 2, get_element_types(player_ptr->element)[0],
-            PROJECT_JUMP | PROJECT_KILL | PROJECT_GRID | PROJECT_ITEM);
+        const auto element = get_element_types(player_ptr->element)[0];
+        constexpr auto flags = PROJECT_JUMP | PROJECT_KILL | PROJECT_GRID | PROJECT_ITEM;
+        project(player_ptr, PROJECT_WHO_UNCTRL_POWER, 2 + plev / 10, player_ptr->y, player_ptr->x, plev * 2, element, flags);
         player_ptr->csp = std::max(0, player_ptr->csp - player_ptr->msp * 10 / (20 + randint1(10)));
 
         PlayerEnergy(player_ptr).set_player_turn_energy(100);
-        set_bits(player_ptr->redraw, PR_MANA);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(MainWindowRedrawingFlag::MP);
         set_bits(player_ptr->window_flags, PW_PLAYER | PW_SPELL);
 
         return false;
@@ -926,7 +928,7 @@ void do_cmd_element(PlayerType *player_ptr)
         player_ptr->csp_frac = 0;
         msg_print(_("精神を集中しすぎて気を失ってしまった！", "You faint from the effort!"));
         (void)BadStatusSetter(player_ptr).mod_paralysis(randint1(5 * oops + 1));
-        chg_virtue(player_ptr, V_KNOWLEDGE, -10);
+        chg_virtue(player_ptr, Virtue::KNOWLEDGE, -10);
         if (randint0(100) < 50) {
             bool perm = (randint0(100) < 25);
             msg_print(_("体を悪くしてしまった！", "You have damaged your health!"));
@@ -935,7 +937,8 @@ void do_cmd_element(PlayerType *player_ptr)
     }
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
-    set_bits(player_ptr->redraw, PR_MANA);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::MP);
     set_bits(player_ptr->window_flags, PW_PLAYER | PW_SPELL);
 }
 
@@ -1056,7 +1059,7 @@ ProcessResult effect_monster_elemental_genocide(PlayerType *player_ptr, effect_m
             msg_format(_("%sは消滅した！", "%s^ disappeared!"), em_ptr->m_name);
         }
         em_ptr->dam = 0;
-        chg_virtue(player_ptr, V_VITALITY, -1);
+        chg_virtue(player_ptr, Virtue::VITALITY, -1);
         return ProcessResult::PROCESS_TRUE;
     }
 

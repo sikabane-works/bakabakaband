@@ -3,7 +3,6 @@
 #include "action/open-util.h"
 #include "cmd-action/cmd-attack.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
 #include "floor/geometry.h"
 #include "game-option/disturbance-options.h"
 #include "game-option/input-options.h"
@@ -25,6 +24,7 @@
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-blindness.h"
@@ -121,7 +121,7 @@ void do_cmd_open(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= PR_STATE;
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -174,7 +174,7 @@ void do_cmd_close(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -230,7 +230,7 @@ void do_cmd_disarm(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -290,7 +290,7 @@ void do_cmd_bash(PlayerType *player_ptr)
 
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -330,7 +330,7 @@ static bool get_spike(PlayerType *player_ptr, INVENTORY_IDX *ip)
 {
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        if (!o_ptr->bi_id) {
+        if (!o_ptr->is_valid()) {
             continue;
         }
 

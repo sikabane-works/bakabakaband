@@ -7,7 +7,6 @@
 #include "spell/spells-object.h"
 #include "artifact/fixed-art-types.h"
 #include "avatar/avatar.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -41,6 +40,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "util/probability-table.h"
@@ -96,20 +96,20 @@ static const std::array<AmuseDefinition, 13> amuse_info = { {
 
 static std::optional<FixedArtifactId> sweep_amusement_artifact(const bool insta_art, const short bi_id)
 {
-    for (const auto &[a_idx, a_ref] : artifacts_info) {
+    for (const auto &[a_idx, artifact] : artifacts_info) {
         if (a_idx == FixedArtifactId::NONE) {
             continue;
         }
 
-        if (insta_art && !a_ref.gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
+        if (insta_art && !artifact.gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
             continue;
         }
 
-        if (a_ref.bi_key != baseitems_info[bi_id].bi_key) {
+        if (artifact.bi_key != baseitems_info[bi_id].bi_key) {
             continue;
         }
 
-        if (a_ref.is_generated) {
+        if (artifact.is_generated) {
             continue;
         }
 
@@ -219,24 +219,23 @@ bool curse_armor(PlayerType *player_ptr)
 {
     /* Curse the body armor */
     auto *o_ptr = &player_ptr->inventory_list[INVEN_BODY];
-    if (o_ptr->bi_id == 0) {
+    if (!o_ptr->is_valid()) {
         return false;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX);
 
-    if (o_ptr->is_artifact() && one_in_(2)) {
+    if (o_ptr->is_fixed_or_random_artifact() && one_in_(2)) {
 #ifdef JP
-        msg_format("%sが%sを包み込もうとしたが、%sはそれを跳ね返した！", "恐怖の暗黒オーラ", "防具", o_name);
+        msg_format("%sが%sを包み込もうとしたが、%sはそれを跳ね返した！", "恐怖の暗黒オーラ", "防具", item_name.data());
 #else
-        msg_format("A %s tries to %s, but your %s resists the effects!", "terrible black aura", "surround your armor", o_name);
+        msg_format("A %s tries to %s, but your %s resists the effects!", "terrible black aura", "surround your armor", item_name.data());
 #endif
         return true;
     }
 
-    msg_format(_("恐怖の暗黒オーラがあなたの%sを包み込んだ！", "A terrible black aura blasts your %s!"), o_name);
-    chg_virtue(player_ptr, V_ENCHANT, -5);
+    msg_format(_("恐怖の暗黒オーラがあなたの%sを包み込んだ！", "A terrible black aura blasts your %s!"), item_name.data());
+    chg_virtue(player_ptr, Virtue::ENCHANT, -5);
     o_ptr->fixed_artifact_idx = FixedArtifactId::NONE;
     o_ptr->ego_idx = EgoType::BLASTED;
     o_ptr->to_a = 0 - randint1(5) - randint1(5);
@@ -248,8 +247,13 @@ bool curse_armor(PlayerType *player_ptr)
     o_ptr->art_flags.clear();
     o_ptr->curse_flags.set(CurseTraitType::CURSED);
     o_ptr->ident |= IDENT_BROKEN;
-    player_ptr->update |= PU_BONUS | PU_MANA;
-    player_ptr->window_flags |= PW_INVEN | PW_EQUIP | PW_PLAYER;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::MP,
+    };
+    rfu.set_flags(flags_srf);
+    player_ptr->window_flags |= PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER;
     return true;
 }
 
@@ -264,27 +268,25 @@ bool curse_armor(PlayerType *player_ptr)
  */
 bool curse_weapon_object(PlayerType *player_ptr, bool force, ItemEntity *o_ptr)
 {
-    if (o_ptr->bi_id == 0) {
+    if (!o_ptr->is_valid()) {
         return false;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX);
-
-    if (o_ptr->is_artifact() && one_in_(2) && !force) {
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX);
+    if (o_ptr->is_fixed_or_random_artifact() && one_in_(2) && !force) {
 #ifdef JP
-        msg_format("%sが%sを包み込もうとしたが、%sはそれを跳ね返した！", "恐怖の暗黒オーラ", "武器", o_name);
+        msg_format("%sが%sを包み込もうとしたが、%sはそれを跳ね返した！", "恐怖の暗黒オーラ", "武器", item_name.data());
 #else
-        msg_format("A %s tries to %s, but your %s resists the effects!", "terrible black aura", "surround your weapon", o_name);
+        msg_format("A %s tries to %s, but your %s resists the effects!", "terrible black aura", "surround your weapon", item_name.data());
 #endif
         return true;
     }
 
     if (!force) {
-        msg_format(_("恐怖の暗黒オーラがあなたの%sを包み込んだ！", "A terrible black aura blasts your %s!"), o_name);
+        msg_format(_("恐怖の暗黒オーラがあなたの%sを包み込んだ！", "A terrible black aura blasts your %s!"), item_name.data());
     }
 
-    chg_virtue(player_ptr, V_ENCHANT, -5);
+    chg_virtue(player_ptr, Virtue::ENCHANT, -5);
     o_ptr->fixed_artifact_idx = FixedArtifactId::NONE;
     o_ptr->ego_idx = EgoType::SHATTERED;
     o_ptr->to_h = 0 - randint1(5) - randint1(5);
@@ -296,8 +298,13 @@ bool curse_weapon_object(PlayerType *player_ptr, bool force, ItemEntity *o_ptr)
     o_ptr->art_flags.clear();
     o_ptr->curse_flags.set(CurseTraitType::CURSED);
     o_ptr->ident |= IDENT_BROKEN;
-    player_ptr->update |= PU_BONUS | PU_MANA;
-    player_ptr->window_flags |= PW_INVEN | PW_EQUIP | PW_PLAYER;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::MP,
+    };
+    rfu.set_flags(flags_srf);
+    player_ptr->window_flags |= PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER;
     return true;
 }
 
@@ -314,7 +321,7 @@ void brand_bolts(PlayerType *player_ptr)
             continue;
         }
 
-        if (o_ptr->is_artifact() || o_ptr->is_ego()) {
+        if (o_ptr->is_fixed_or_random_artifact() || o_ptr->is_ego()) {
             continue;
         }
 
@@ -375,7 +382,7 @@ bool enchant_equipment(PlayerType *player_ptr, ItemEntity *o_ptr, int n, int efl
 
     int chance;
     auto res = false;
-    auto a = o_ptr->is_artifact();
+    auto a = o_ptr->is_fixed_or_random_artifact();
     auto force = (eflag & ENCH_FORCE);
     for (int i = 0; i < n; i++) {
         if (!force && randint0(prob) >= 100) {
@@ -443,8 +450,14 @@ bool enchant_equipment(PlayerType *player_ptr, ItemEntity *o_ptr, int n, int efl
         return false;
     }
 
-    set_bits(player_ptr->update, PU_BONUS | PU_COMBINE | PU_REORDER);
-    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
+    };
+    rfu.set_flags(flags_srf);
+    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
     return true;
 }
 
@@ -472,12 +485,11 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
         return false;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
 #ifdef JP
-    msg_format("%s は明るく輝いた！", o_name);
+    msg_format("%s は明るく輝いた！", item_name.data());
 #else
-    msg_format("%s %s glow%s brightly!", ((item >= 0) ? "Your" : "The"), o_name, ((o_ptr->number > 1) ? "" : "s"));
+    msg_format("%s %s glow%s brightly!", ((item >= 0) ? "Your" : "The"), item_name.data(), ((o_ptr->number > 1) ? "" : "s"));
 #endif
 
     auto is_enchant_successful = false;
@@ -499,10 +511,10 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
         }
         msg_print(_("強化に失敗した。", "The enchantment failed."));
         if (one_in_(3)) {
-            chg_virtue(player_ptr, V_ENCHANT, -1);
+            chg_virtue(player_ptr, Virtue::ENCHANT, -1);
         }
     } else {
-        chg_virtue(player_ptr, V_ENCHANT, 1);
+        chg_virtue(player_ptr, Virtue::ENCHANT, 1);
     }
 
     calc_android_exp(player_ptr);
@@ -529,21 +541,19 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
     auto special_weapon = bi_key == BaseitemKey(ItemKindType::SWORD, SV_POISON_NEEDLE);
     special_weapon |= bi_key == BaseitemKey(ItemKindType::POLEARM, SV_DEATH_SCYTHE);
     special_weapon |= bi_key == BaseitemKey(ItemKindType::SWORD, SV_DIAMOND_EDGE);
-    const auto is_normal_item = (o_ptr->bi_id > 0) && !o_ptr->is_artifact() && !o_ptr->is_ego() && !o_ptr->is_cursed() && !special_weapon;
+    const auto is_normal_item = o_ptr->is_valid() && !o_ptr->is_fixed_or_random_artifact() && !o_ptr->is_ego() && !o_ptr->is_cursed() && !special_weapon;
     if (!is_normal_item) {
         if (flush_failure) {
             flush();
         }
 
         msg_print(_("属性付加に失敗した。", "The branding failed."));
-        chg_virtue(player_ptr, V_ENCHANT, -2);
+        chg_virtue(player_ptr, Virtue::ENCHANT, -2);
         calc_android_exp(player_ptr);
         return;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
     concptr act = nullptr;
     switch (brand_type) {
     case 17:
@@ -632,9 +642,9 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
         break;
     }
 
-    msg_format(_("あなたの%s%s", "Your %s %s"), o_name, act);
+    msg_format(_("あなたの%s%s", "Your %s %s"), item_name.data(), act);
     enchant_equipment(player_ptr, o_ptr, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
     o_ptr->discount = 99;
-    chg_virtue(player_ptr, V_ENCHANT, 2);
+    chg_virtue(player_ptr, Virtue::ENCHANT, 2);
     calc_android_exp(player_ptr);
 }

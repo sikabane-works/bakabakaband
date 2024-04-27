@@ -3,7 +3,6 @@
 #include "cmd-io/cmd-autopick.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
 #include "core/show-file.h"
 #include "core/window-redrawer.h"
 #include "floor/geometry.h"
@@ -17,6 +16,7 @@
 #include "main/sound-of-music.h"
 #include "system/game-option-types.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
@@ -634,7 +634,7 @@ void do_cmd_options(PlayerType *player_ptr)
     }
 
     screen_load();
-    player_ptr->redraw |= (PR_EQUIPPY);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::EQUIPPY);
 }
 
 /*!
@@ -647,11 +647,11 @@ void do_cmd_options_aux(PlayerType *player_ptr, game_option_types page, concptr 
 {
     char ch;
     int i, k = 0, n = 0, l;
-    int opt[24];
+    int opt[MAIN_TERM_MIN_ROWS];
     char buf[80];
     bool browse_only = (page == OPT_PAGE_BIRTH) && w_ptr->character_generated && (!w_ptr->wizard || !allow_debug_opts);
 
-    for (i = 0; i < 24; i++) {
+    for (i = 0; i < MAIN_TERM_MIN_ROWS; i++) {
         opt[i] = 0;
     }
 
@@ -664,12 +664,11 @@ void do_cmd_options_aux(PlayerType *player_ptr, game_option_types page, concptr 
     term_clear();
     while (true) {
         DIRECTION dir;
-        sprintf(buf, _("%s (リターン:次, %sESC:終了, ?:ヘルプ) ", "%s (RET:next, %s, ?:help) "), info,
-            browse_only ? _("", "ESC:exit") : _("y/n:変更, ", "y/n:change, ESC:accept"));
-        prt(buf, 0, 0);
+        constexpr auto command = _("%s (リターン:次, %sESC:終了, ?:ヘルプ) ", "%s (RET:next, %s, ?:help) ");
+        prt(format(command, info, browse_only ? _("", "ESC:exit") : _("y/n:変更, ", "y/n:change, ESC:accept")), 0, 0);
         if (page == OPT_PAGE_AUTODESTROY) {
-            c_prt(TERM_YELLOW, _("以下のオプションは、簡易自動破壊を使用するときのみ有効", "Following options will protect items from easy auto-destroyer."), 6,
-                _(6, 3));
+            constexpr auto mes = _("以下のオプションは、簡易自動破壊を使用するときのみ有効", "Following options will protect items from easy auto-destroyer.");
+            c_prt(TERM_YELLOW, mes, 6, _(6, 3));
         }
 
         for (i = 0; i < n; i++) {

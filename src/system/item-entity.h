@@ -22,6 +22,9 @@ enum class ItemKindType : short;
 enum class SmithEffectType : int16_t;
 enum class RandomArtActType : short;
 
+class ArtifactType;
+class EgoItemDefinition;
+class BaseitemInfo;
 class ItemEntity {
 public:
     ItemEntity();
@@ -94,7 +97,7 @@ public:
     bool is_rare() const;
     bool is_ego() const;
     bool is_smith() const;
-    bool is_artifact() const;
+    bool is_fixed_or_random_artifact() const;
     bool is_fixed_artifact() const;
     bool is_random_artifact() const;
     bool is_nameless() const;
@@ -133,6 +136,10 @@ public:
     bool is_armour() const;
     bool is_cross_bow() const;
     bool is_inscribed() const;
+
+    BaseitemInfo &get_baseitem() const;
+    EgoItemDefinition &get_ego() const;
+    ArtifactType &get_fixed_artifact() const;
 
 private:
     int get_baseitem_price() const;

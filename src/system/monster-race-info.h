@@ -148,4 +148,10 @@ public:
     REAL_TIME defeat_time{}; //!< 倒した時間(ユニーク用) / time at which defeated this race
     PERCENTAGE cur_hp_per{}; //!< 生成時現在HP率(%)
     AllianceType alliance_idx;
+
+    const std::string &decide_horror_message() const;
+    bool has_living_flag() const;
+    bool is_explodable() const;
+    std::string get_died_message() const;
+    bool no_suitable_questor_bounty() const;
 };

@@ -11,6 +11,10 @@
 #include "inventory/inventory-util.h"
 #include "locale/japanese.h"
 #include "main/sound-of-music.h"
+#include "mind/mind-explanations-table.h"
+#include "mind/mind-info.h"
+#include "mind/mind-sniper.h"
+#include "mind/mind-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster/monster-flag-types.h"
@@ -19,9 +23,15 @@
 #include "object/item-tester-hooker.h"
 #include "object/object-info.h"
 #include "object/object-mark-types.h"
+#include "player-base/player-class.h"
+#include "player-info/class-info.h"
 #include "player/player-status-flags.h"
+#include "player/player-status-table.h"
 #include "player/player-status.h"
+#include "realm/realm-names-table.h"
 #include "spell-kind/magic-item-recharger.h"
+#include "spell/spells-execution.h"
+#include "spell/technic-info-table.h"
 #include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -37,8 +47,10 @@
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "timed-effect/player-hallucination.h"
+#include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
+#include "util/int-char-converter.h"
 #include "view/display-lore.h"
 #include "view/display-map.h"
 #include "view/display-messages.h"
@@ -48,6 +60,7 @@
 #include "window/main-window-util.h"
 #include "world/world.h"
 #include <algorithm>
+#include <concepts>
 #include <mutex>
 #include <sstream>
 #include <string>
@@ -67,26 +80,46 @@ FixItemTesterSetter::~FixItemTesterSetter()
 }
 
 /*!
+ * @brief サブウィンドウの描画を行う
+ *
+ * pw_flag で指定したウィンドウフラグが設定されているサブウィンドウに対し描画を行う。
+ * 描画は display_func で指定したコールバック関数で行う。
+ *
+ * @param pw_flag 描画を行うフラグ
+ * @param display_func 描画を行う関数
+ */
+static void display_sub_windows(window_redraw_type pw_flag, std::invocable auto display_func)
+{
+    auto current_term = game_term;
+
+    for (auto i = 0U; i < angband_terms.size(); ++i) {
+        auto term = angband_terms[i];
+        if (term == nullptr) {
+            continue;
+        }
+
+        if (none_bits(window_flag[i], pw_flag)) {
+            continue;
+        }
+
+        term_activate(term);
+        display_func();
+        term_fresh();
+    }
+
+    term_activate(current_term);
+}
+
+/*!
  * @brief サブウィンドウに所持品一覧を表示する / Hack -- display inventory in sub-windows
  * @param player_ptr プレイヤーへの参照ポインタ
  */
 void fix_inventory(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-
-        if (!(window_flag[j] & (PW_INVEN))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        display_inventory(player_ptr, *fix_item_tester);
-        term_fresh();
-        term_activate(old);
-    }
+    display_sub_windows(PW_INVENTORY,
+        [player_ptr] {
+            display_inventory(player_ptr, *fix_item_tester);
+        });
 }
 
 /*!
@@ -208,26 +241,13 @@ void fix_monster_list(PlayerType *player_ptr)
     static std::vector<MONSTER_IDX> monster_list;
     std::once_flag once;
 
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-        if (!(window_flag[j] & PW_MONSTER_LIST)) {
-            continue;
-        }
-        if (angband_terms[j]->never_fresh) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        int w, h;
-        term_get_size(&w, &h);
-        std::call_once(once, target_sensing_monsters_prepare, player_ptr, monster_list);
-        print_monster_list(player_ptr->current_floor_ptr, monster_list, 0, 0, h);
-        term_fresh();
-        term_activate(old);
-    }
+    display_sub_windows(PW_SIGHT_MONSTERS,
+        [player_ptr, &once] {
+            int w, h;
+            term_get_size(&w, &h);
+            std::call_once(once, target_sensing_monsters_prepare, player_ptr, monster_list);
+            print_monster_list(player_ptr->current_floor_ptr, monster_list, 0, 0, h);
+        });
 
     if (use_music && has_monster_music) {
         std::call_once(once, target_sensing_monsters_prepare, player_ptr, monster_list);
@@ -247,10 +267,7 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
 
     TERM_LEN wid, hgt;
     term_get_size(&wid, &hgt);
-
-    TERM_COLOR attr = TERM_WHITE;
-    char tmp_val[80];
-    GAME_TEXT o_name[MAX_NLEN];
+    byte attr = TERM_WHITE;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         int cur_row = i - INVEN_MAIN_HAND;
         if (cur_row >= hgt) {
@@ -259,7 +276,7 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
 
         auto o_ptr = &player_ptr->inventory_list[i];
         auto do_disp = player_ptr->select_ring_slot ? is_ring_slot(i) : item_tester.okay(o_ptr);
-        strcpy(tmp_val, "   ");
+        std::string tmp_val = "   ";
 
         if (do_disp) {
             tmp_val[0] = index_to_label(i);
@@ -270,15 +287,18 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
         term_erase(cur_col, cur_row, 255);
         term_putstr(0, cur_row, cur_col, TERM_WHITE, tmp_val);
 
-        if ((((i == INVEN_MAIN_HAND) && can_attack_with_sub_hand(player_ptr)) || ((i == INVEN_SUB_HAND) && can_attack_with_main_hand(player_ptr))) && has_two_handed_weapons(player_ptr)) {
-            strcpy(o_name, _("(武器を両手持ち)", "(wielding with two-hands)"));
+        std::string item_name;
+        auto is_two_handed = (i == INVEN_MAIN_HAND) && can_attack_with_sub_hand(player_ptr);
+        is_two_handed |= (i == INVEN_SUB_HAND) && can_attack_with_main_hand(player_ptr);
+        if (is_two_handed && has_two_handed_weapons(player_ptr)) {
+            item_name = _("(武器を両手持ち)", "(wielding with two-hands)");
             attr = TERM_WHITE;
         } else {
-            describe_flavor(player_ptr, o_name, o_ptr, 0);
+            item_name = describe_flavor(player_ptr, o_ptr, 0);
             attr = tval_to_attr[enum2i(o_ptr->bi_key.tval()) % 128];
         }
 
-        int n = strlen(o_name);
+        int n = item_name.length();
         if (o_ptr->timeout) {
             attr = TERM_L_DARK;
         }
@@ -294,10 +314,10 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
             cur_col += 2;
         }
 
-        term_putstr(cur_col, cur_row, n, attr, o_name);
+        term_putstr(cur_col, cur_row, n, attr, item_name);
         if (show_weights) {
             int wgt = o_ptr->weight * o_ptr->number;
-            sprintf(tmp_val, _("%3d.%1d kg", "%3d.%1d lb"), _(lb_to_kg_integer(wgt), wgt / 10), _(lb_to_kg_fraction(wgt), wgt % 10));
+            tmp_val = format(_("%3d.%1d kg", "%3d.%1d lb"), _(lb_to_kg_integer(wgt), wgt / 10), _(lb_to_kg_fraction(wgt), wgt % 10));
             prt(tmp_val, cur_row, wid - (show_labels ? 28 : 9));
         }
 
@@ -319,20 +339,10 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
  */
 void fix_equip(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-        if (!(window_flag[j] & (PW_EQUIP))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        display_equipment(player_ptr, *fix_item_tester);
-        term_fresh();
-        term_activate(old);
-    }
+    display_sub_windows(PW_EQUIPMENT,
+        [player_ptr] {
+            display_equipment(player_ptr, *fix_item_tester);
+        });
 }
 
 /*!
@@ -342,22 +352,11 @@ void fix_equip(PlayerType *player_ptr)
  */
 void fix_player(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-
-        if (!(window_flag[j] & (PW_PLAYER))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        update_playtime();
-        (void)display_player(player_ptr, 0);
-        term_fresh();
-        term_activate(old);
-    }
+    update_playtime();
+    display_sub_windows(PW_PLAYER,
+        [player_ptr] {
+            display_player(player_ptr, 0);
+        });
 }
 
 /*!
@@ -367,29 +366,17 @@ void fix_player(PlayerType *player_ptr)
  */
 void fix_message(void)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-
-        if (!(window_flag[j] & (PW_MESSAGE))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        TERM_LEN w, h;
-        term_get_size(&w, &h);
-        for (int i = 0; i < h; i++) {
-            term_putstr(0, (h - 1) - i, -1, (byte)((i < now_message) ? TERM_WHITE : TERM_SLATE), message_str((int16_t)i));
-            TERM_LEN x, y;
-            term_locate(&x, &y);
-            term_erase(x, y, 255);
-        }
-
-        term_fresh();
-        term_activate(old);
-    }
+    display_sub_windows(PW_MESSAGE,
+        [] {
+            TERM_LEN w, h;
+            term_get_size(&w, &h);
+            for (int i = 0; i < h; i++) {
+                term_putstr(0, (h - 1) - i, -1, (byte)((i < now_message) ? TERM_WHITE : TERM_SLATE), message_str((int16_t)i));
+                TERM_LEN x, y;
+                term_locate(&x, &y);
+                term_erase(x, y, 255);
+            }
+        });
 }
 
 /*!
@@ -402,27 +389,15 @@ void fix_message(void)
  */
 void fix_overhead(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        TERM_LEN wid, hgt;
-        if (!angband_terms[j]) {
-            continue;
-        }
-
-        if (!(window_flag[j] & (PW_OVERHEAD))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        term_get_size(&wid, &hgt);
-        if (wid > COL_MAP + 2 && hgt > ROW_MAP + 2) {
-            int cy, cx;
-            display_map(player_ptr, &cy, &cx);
-            term_fresh();
-        }
-
-        term_activate(old);
-    }
+    display_sub_windows(PW_OVERHEAD,
+        [player_ptr] {
+            TERM_LEN wid, hgt;
+            term_get_size(&wid, &hgt);
+            if (wid > COL_MAP + 2 && hgt > ROW_MAP + 2) {
+                int cy, cx;
+                display_map(player_ptr, &cy, &cx);
+            }
+        });
 }
 
 /*!
@@ -469,21 +444,10 @@ static void display_dungeon(PlayerType *player_ptr)
  */
 void fix_dungeon(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-
-        if (!(window_flag[j] & (PW_DUNGEON))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        display_dungeon(player_ptr);
-        term_fresh();
-        term_activate(old);
-    }
+    display_sub_windows(PW_DUNGEON,
+        [player_ptr] {
+            display_dungeon(player_ptr);
+        });
 }
 
 /*!
@@ -493,24 +457,13 @@ void fix_dungeon(PlayerType *player_ptr)
  */
 void fix_monster(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        term_type *old = game_term;
-        if (!angband_terms[j]) {
-            continue;
-        }
-
-        if (!(window_flag[j] & (PW_MONSTER))) {
-            continue;
-        }
-
-        term_activate(angband_terms[j]);
-        if (MonsterRace(player_ptr->monster_race_idx).is_valid()) {
-            display_roff(player_ptr);
-        }
-
-        term_fresh();
-        term_activate(old);
+    if (!MonsterRace(player_ptr->monster_race_idx).is_valid()) {
+        return;
     }
+    display_sub_windows(PW_MONSTER_LORE,
+        [player_ptr] {
+            display_roff(player_ptr);
+        });
 }
 
 /*!
@@ -520,21 +473,10 @@ void fix_monster(PlayerType *player_ptr)
  */
 void fix_object(PlayerType *player_ptr)
 {
-    for (auto i = 0; i < 8; i++) {
-        auto *old = game_term;
-        if (angband_terms[i] == nullptr) {
-            continue;
-        }
-
-        if (none_bits(window_flag[i], PW_OBJECT)) {
-            continue;
-        }
-
-        term_activate(angband_terms[i]);
-        display_koff(player_ptr);
-        term_fresh();
-        term_activate(old);
-    }
+    display_sub_windows(PW_ITEM_KNOWLEDGTE,
+        [player_ptr] {
+            display_koff(player_ptr);
+        });
 }
 
 /*!
@@ -631,9 +573,9 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
         if (is_hallucinated) {
             term_addstr(-1, TERM_WHITE, _("何か奇妙な物", "something strange"));
         } else {
-            describe_flavor(player_ptr, line, o_ptr, 0);
+            const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
             TERM_COLOR attr = tval_to_attr[enum2i(tval) % 128];
-            term_addstr(-1, attr, line);
+            term_addstr(-1, attr, item_name);
         }
 
         ++term_y;
@@ -645,25 +587,10 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
  */
 void fix_floor_item_list(PlayerType *player_ptr, const int y, const int x)
 {
-    for (int j = 0; j < 8; j++) {
-        if (!angband_terms[j]) {
-            continue;
-        }
-        if (angband_terms[j]->never_fresh) {
-            continue;
-        }
-        if (!(window_flag[j] & PW_FLOOR_ITEM_LIST)) {
-            continue;
-        }
-
-        term_type *old = game_term;
-        term_activate(angband_terms[j]);
-
-        display_floor_item_list(player_ptr, y, x);
-        term_fresh();
-
-        term_activate(old);
-    }
+    display_sub_windows(PW_FLOOR_ITEMS,
+        [player_ptr, y, x] {
+            display_floor_item_list(player_ptr, y, x);
+        });
 }
 
 /*!
@@ -691,7 +618,7 @@ static void display_found_item_list(PlayerType *player_ptr)
     std::vector<ItemEntity *> found_item_list;
     for (auto &item : floor_ptr->o_list) {
         auto item_entity_ptr = &item;
-        if (item_entity_ptr->bi_id > 0 && item_entity_ptr->marked.has(OmType::FOUND) && item_entity_ptr->bi_key.tval() != ItemKindType::GOLD) {
+        if (item_entity_ptr->is_valid() && item_entity_ptr->marked.has(OmType::FOUND) && item_entity_ptr->bi_key.tval() != ItemKindType::GOLD) {
             found_item_list.push_back(item_entity_ptr);
         }
     }
@@ -724,12 +651,9 @@ static void display_found_item_list(PlayerType *player_ptr)
         const auto color_code_for_symbol = item->get_color();
         term_addstr(-1, color_code_for_symbol, symbol.data());
 
-        // アイテム名表示
-        char temp[512];
-        describe_flavor(player_ptr, temp, item, 0);
-        const std::string item_description(temp);
+        const auto item_name = describe_flavor(player_ptr, item, 0);
         const auto color_code_for_item = tval_to_attr[enum2i(item->bi_key.tval()) % 128];
-        term_addstr(-1, color_code_for_item, item_description.data());
+        term_addstr(-1, color_code_for_item, item_name);
 
         // アイテム座標表示
         const std::string item_location = format("(X:%3d Y:%3d)", item->ix, item->iy);
@@ -744,25 +668,171 @@ static void display_found_item_list(PlayerType *player_ptr)
  */
 void fix_found_item_list(PlayerType *player_ptr)
 {
-    for (int j = 0; j < 8; j++) {
-        if (!angband_terms[j]) {
-            continue;
-        }
-        if (angband_terms[j]->never_fresh) {
-            continue;
-        }
-        if (none_bits(window_flag[j], PW_FOUND_ITEM_LIST)) {
-            continue;
-        }
+    display_sub_windows(PW_FOUND_ITEMS,
+        [player_ptr] {
+            display_found_item_list(player_ptr);
+        });
+}
 
-        term_type *old = game_term;
-        term_activate(angband_terms[j]);
+/*!
+ * @brief プレイヤーの全既知呪文を表示する / Display all known spells in a window
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @details
+ * Need to analyze size of the window.
+ * Need more color coding.
+ */
+static void display_spell_list(PlayerType *player_ptr)
+{
+    TERM_LEN y, x;
+    int m[9];
+    const magic_type *s_ptr;
+    GAME_TEXT name[MAX_NLEN];
 
-        display_found_item_list(player_ptr);
-        term_fresh();
+    clear_from(0);
 
-        term_activate(old);
+    PlayerClass pc(player_ptr);
+    if (pc.is_every_magic()) {
+        return;
     }
+
+    if (pc.equals(PlayerClassType::SNIPER)) {
+        display_snipe_list(player_ptr);
+        return;
+    }
+
+    if (pc.has_listed_magics()) {
+        PERCENTAGE minfail = 0;
+        PLAYER_LEVEL plev = player_ptr->lev;
+        PERCENTAGE chance = 0;
+        mind_type spell;
+        MindKindType use_mind;
+        bool use_hp = false;
+
+        y = 1;
+        x = 1;
+
+        prt("", y, x);
+        put_str(_("名前", "Name"), y, x + 5);
+        put_str(_("Lv   MP 失率 効果", "Lv Mana Fail Info"), y, x + 35);
+
+        switch (player_ptr->pclass) {
+        case PlayerClassType::MINDCRAFTER:
+            use_mind = MindKindType::MINDCRAFTER;
+            break;
+        case PlayerClassType::FORCETRAINER:
+            use_mind = MindKindType::KI;
+            break;
+        case PlayerClassType::BERSERKER:
+            use_mind = MindKindType::BERSERKER;
+            use_hp = true;
+            break;
+        case PlayerClassType::MIRROR_MASTER:
+            use_mind = MindKindType::MIRROR_MASTER;
+            break;
+        case PlayerClassType::NINJA:
+            use_mind = MindKindType::NINJUTSU;
+            use_hp = true;
+            break;
+        case PlayerClassType::ELEMENTALIST:
+            use_mind = MindKindType::ELEMENTAL;
+            break;
+        default:
+            use_mind = MindKindType::MINDCRAFTER;
+            break;
+        }
+
+        for (int i = 0; i < MAX_MIND_POWERS; i++) {
+            byte a = TERM_WHITE;
+            spell = mind_powers[static_cast<int>(use_mind)].info[i];
+            if (spell.min_lev > plev) {
+                break;
+            }
+
+            chance = spell.fail;
+            chance -= 3 * (player_ptr->lev - spell.min_lev);
+            chance -= 3 * (adj_mag_stat[player_ptr->stat_index[mp_ptr->spell_stat]] - 1);
+            if (!use_hp) {
+                if (spell.mana_cost > player_ptr->csp) {
+                    chance += 5 * (spell.mana_cost - player_ptr->csp);
+                    a = TERM_ORANGE;
+                }
+            } else {
+                if (spell.mana_cost > player_ptr->chp) {
+                    chance += 100;
+                    a = TERM_RED;
+                }
+            }
+
+            minfail = adj_mag_fail[player_ptr->stat_index[mp_ptr->spell_stat]];
+            if (chance < minfail) {
+                chance = minfail;
+            }
+
+            auto player_stun = player_ptr->effects()->stun();
+            chance += player_stun->get_magic_chance_penalty();
+            if (chance > 95) {
+                chance = 95;
+            }
+
+            const auto comment = mindcraft_info(player_ptr, use_mind, i);
+            constexpr auto fmt = "  %c) %-30s%2d %4d %3d%%%s";
+            term_putstr(x, y + i + 1, -1, a, format(fmt, I2A(i), spell.name, spell.min_lev, spell.mana_cost, chance, comment.data()));
+        }
+
+        return;
+    }
+
+    if (REALM_NONE == player_ptr->realm1) {
+        return;
+    }
+
+    for (int j = 0; j < ((player_ptr->realm2 > REALM_NONE) ? 2 : 1); j++) {
+        m[j] = 0;
+        y = (j < 3) ? 0 : (m[j - 3] + 2);
+        x = 27 * (j % 3);
+        int n = 0;
+        for (int i = 0; i < 32; i++) {
+            byte a = TERM_WHITE;
+
+            if (!is_magic((j < 1) ? player_ptr->realm1 : player_ptr->realm2)) {
+                s_ptr = &technic_info[((j < 1) ? player_ptr->realm1 : player_ptr->realm2) - MIN_TECHNIC][i % 32];
+            } else {
+                s_ptr = &mp_ptr->info[((j < 1) ? player_ptr->realm1 : player_ptr->realm2) - 1][i % 32];
+            }
+
+            const auto realm = (j < 1) ? player_ptr->realm1 : player_ptr->realm2;
+            const auto spell_name = exe_spell(player_ptr, realm, i % 32, SpellProcessType::NAME);
+            strcpy(name, spell_name->data());
+
+            if (s_ptr->slevel >= 99) {
+                strcpy(name, _("(判読不能)", "(illegible)"));
+                a = TERM_L_DARK;
+            } else if ((j < 1) ? ((player_ptr->spell_forgotten1 & (1UL << i))) : ((player_ptr->spell_forgotten2 & (1UL << (i % 32))))) {
+                a = TERM_ORANGE;
+            } else if (!((j < 1) ? (player_ptr->spell_learned1 & (1UL << i)) : (player_ptr->spell_learned2 & (1UL << (i % 32))))) {
+                a = TERM_RED;
+            } else if (!((j < 1) ? (player_ptr->spell_worked1 & (1UL << i)) : (player_ptr->spell_worked2 & (1UL << (i % 32))))) {
+                a = TERM_YELLOW;
+            }
+
+            m[j] = y + n;
+            term_putstr(x, m[j], -1, a, format("%c/%c) %-20.20s", I2A(n / 8), I2A(n % 8), name));
+            n++;
+        }
+    }
+}
+
+/*!
+ * @brief 現在の習得済魔法をサブウィンドウに表示する /
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * Hack -- display spells in sub-windows
+ */
+void fix_spell(PlayerType *player_ptr)
+{
+    display_sub_windows(PW_SPELL,
+        [player_ptr] {
+            display_spell_list(player_ptr);
+        });
 }
 
 /*!
@@ -776,17 +846,17 @@ void toggle_inventory_equipment(PlayerType *player_ptr)
             continue;
         }
 
-        if (window_flag[i] & (PW_INVEN)) {
-            window_flag[i] &= ~(PW_INVEN);
-            window_flag[i] |= (PW_EQUIP);
-            player_ptr->window_flags |= (PW_EQUIP);
+        if (window_flag[i] & (PW_INVENTORY)) {
+            window_flag[i] &= ~(PW_INVENTORY);
+            window_flag[i] |= (PW_EQUIPMENT);
+            player_ptr->window_flags |= (PW_EQUIPMENT);
             continue;
         }
 
-        if (window_flag[i] & PW_EQUIP) {
-            window_flag[i] &= ~(PW_EQUIP);
-            window_flag[i] |= PW_INVEN;
-            player_ptr->window_flags |= PW_INVEN;
+        if (window_flag[i] & PW_EQUIPMENT) {
+            window_flag[i] &= ~(PW_EQUIPMENT);
+            window_flag[i] |= PW_INVENTORY;
+            player_ptr->window_flags |= PW_INVENTORY;
         }
     }
 }

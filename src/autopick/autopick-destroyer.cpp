@@ -8,7 +8,6 @@
 #include "autopick/autopick-methods-table.h"
 #include "autopick/autopick-util.h"
 #include "core/disturbance.h"
-#include "core/player-update-types.h"
 #include "flavor/flavor-describer.h"
 #include "game-option/auto-destruction-options.h"
 #include "game-option/input-options.h"
@@ -30,6 +29,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 
@@ -150,13 +150,12 @@ void auto_destroy_item(PlayerType *player_ptr, ItemEntity *o_ptr, int autopick_i
 
     disturb(player_ptr, false, false);
     if (!can_player_destroy_object(player_ptr, o_ptr)) {
-        GAME_TEXT o_name[MAX_NLEN];
-        describe_flavor(player_ptr, o_name, o_ptr, 0);
-        msg_format(_("%sは破壊不能だ。", "You cannot auto-destroy %s."), o_name);
+        const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
+        msg_format(_("%sは破壊不能だ。", "You cannot auto-destroy %s."), item_name.data());
         return;
     }
 
     autopick_last_destroyed_object = *o_ptr;
     o_ptr->marked.set(OmType::AUTODESTROY);
-    player_ptr->update |= PU_AUTODESTROY;
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::AUTO_DESTRUCTION);
 }

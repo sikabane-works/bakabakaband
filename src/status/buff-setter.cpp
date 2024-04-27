@@ -1,8 +1,6 @@
 ﻿#include "status/buff-setter.h"
 #include "avatar/avatar.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
@@ -19,6 +17,7 @@
 #include "status/buff-setter.h"
 #include "status/element-resistance.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-acceleration.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/player-confusion.h"
@@ -139,13 +138,17 @@ bool set_acceleration(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
         } else if (!is_fast(player_ptr) && !player_ptr->lightspeed) {
             msg_print(_("素早く動けるようになった！", "You feel yourself moving much faster!"));
             notice = true;
-            chg_virtue(player_ptr, V_PATIENCE, -1);
-            chg_virtue(player_ptr, V_DILIGENCE, 1);
+            chg_virtue(player_ptr, Virtue::PATIENCE, -1);
+            chg_virtue(player_ptr, Virtue::DILIGENCE, 1);
         }
     } else {
-        if (acceleration->is_fast() && !player_ptr->lightspeed && !music_singing(player_ptr, MUSIC_SPEED) && !music_singing(player_ptr, MUSIC_SHERO)) {
-            msg_print(_("動きの素早さがなくなったようだ。", "You feel yourself slow down."));
-            notice = true;
+        if (acceleration->is_fast() && !player_ptr->lightspeed) {
+            auto is_singing = music_singing(player_ptr, MUSIC_SPEED);
+            is_singing |= music_singing(player_ptr, MUSIC_SHERO);
+            if (!is_singing) {
+                msg_print(_("動きの素早さがなくなったようだ。", "You feel yourself slow down."));
+                notice = true;
+            }
         }
     }
 
@@ -157,7 +160,7 @@ bool set_acceleration(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     return true;
 }
@@ -200,8 +203,8 @@ bool set_shield(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->shield = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -209,7 +212,8 @@ bool set_shield(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
+
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     return true;
 }
@@ -247,8 +251,8 @@ bool set_magicdef(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->magicdef = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -256,7 +260,8 @@ bool set_magicdef(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
+
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     return true;
 }
@@ -294,8 +299,8 @@ bool set_blessed(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->blessed = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -303,7 +308,8 @@ bool set_blessed(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
+
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     return true;
 }
@@ -341,8 +347,8 @@ bool set_hero(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->hero = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -350,8 +356,12 @@ bool set_hero(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_HP);
+
+    const auto flags = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::HP,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags);
     handle_stuff(player_ptr);
     return true;
 }
@@ -406,9 +416,17 @@ bool set_mimic(PlayerType *player_ptr, TIME_EFFECT v, MimicKindType mimic_race_i
         disturb(player_ptr, false, true);
     }
 
-    player_ptr->redraw |= (PR_BASIC | PR_STATUS);
-    player_ptr->update |= (PU_BONUS | PU_HP);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::BASIC,
+        MainWindowRedrawingFlag::TIMED_EFFECT,
+    };
+    rfu.set_flags(flags_mwrf);
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::HP,
+    };
+    rfu.set_flags(flags_srf);
     handle_stuff(player_ptr);
     return true;
 }
@@ -451,8 +469,8 @@ bool set_shero(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->shero = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -460,8 +478,12 @@ bool set_shero(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_HP);
+
+    const auto flags = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::HP,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags);
     handle_stuff(player_ptr);
     return true;
 }
@@ -482,6 +504,7 @@ bool set_wraith_form(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
         return false;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (v) {
         if (player_ptr->wraith_form && !do_dec) {
             if (player_ptr->wraith_form > v) {
@@ -490,31 +513,26 @@ bool set_wraith_form(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
         } else if (!player_ptr->wraith_form) {
             msg_print(_("物質界を離れて幽鬼のような存在になった！", "You leave the physical world and turn into a wraith-being!"));
             notice = true;
-            chg_virtue(player_ptr, V_UNLIFE, 3);
-            chg_virtue(player_ptr, V_HONOUR, -2);
-            chg_virtue(player_ptr, V_SACRIFICE, -2);
-            chg_virtue(player_ptr, V_VALOUR, -5);
-
-            player_ptr->redraw |= (PR_MAP);
-            player_ptr->update |= (PU_MONSTERS);
-
+            chg_virtue(player_ptr, Virtue::UNLIFE, 3);
+            chg_virtue(player_ptr, Virtue::HONOUR, -2);
+            chg_virtue(player_ptr, Virtue::SACRIFICE, -2);
+            chg_virtue(player_ptr, Virtue::VALOUR, -5);
+            rfu.set_flag(MainWindowRedrawingFlag::MAP);
+            rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
             player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
         }
     } else {
         if (player_ptr->wraith_form) {
             msg_print(_("不透明になった感じがする。", "You feel opaque."));
             notice = true;
-
-            player_ptr->redraw |= (PR_MAP);
-            player_ptr->update |= (PU_MONSTERS);
-
+            rfu.set_flag(MainWindowRedrawingFlag::MAP);
+            rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
             player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
         }
     }
 
     player_ptr->wraith_form = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -522,7 +540,8 @@ bool set_wraith_form(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
+
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     return true;
 }
@@ -551,7 +570,7 @@ bool set_tsuyoshi(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
         } else if (!player_ptr->tsuyoshi) {
             msg_print(_("「オクレ兄さん！」", "Brother OKURE!"));
             notice = true;
-            chg_virtue(player_ptr, V_VITALITY, 2);
+            chg_virtue(player_ptr, Virtue::VITALITY, 2);
         }
     } else {
         if (player_ptr->tsuyoshi) {
@@ -561,13 +580,13 @@ bool set_tsuyoshi(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
             (void)dec_stat(player_ptr, A_STR, 20, true);
 
             notice = true;
-            chg_virtue(player_ptr, V_VITALITY, -3);
+            chg_virtue(player_ptr, Virtue::VITALITY, -3);
         }
     }
 
     player_ptr->tsuyoshi = v;
-    player_ptr->redraw |= (PR_STATUS);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     if (!notice) {
         return false;
     }
@@ -575,8 +594,12 @@ bool set_tsuyoshi(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_HP);
+
+    const auto flags = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::HP,
+    };
+    rfu.set_flags(flags);
     handle_stuff(player_ptr);
     return true;
 }

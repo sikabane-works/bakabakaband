@@ -6,8 +6,6 @@
 
 #include "monster/monster-update.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "floor/cave.h"
@@ -42,6 +40,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/player-hallucination.h"
@@ -105,14 +104,17 @@ bool update_riding_monster(PlayerType *player_ptr, turn_flags *turn_flags_ptr, M
  */
 void update_player_type(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MonsterRaceInfo *r_ptr)
 {
-    auto except_has_lite = EnumClassFlagGroup<MonsterBrightnessType>(self_ld_mask).set({ MonsterBrightnessType::HAS_DARK_1, MonsterBrightnessType::HAS_DARK_2 });
+    using Mbt = MonsterBrightnessType;
+    const auto except_has_lite = EnumClassFlagGroup<Mbt>(self_ld_mask).set({ Mbt::HAS_DARK_1, Mbt::HAS_DARK_2 });
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (turn_flags_ptr->do_view) {
-        player_ptr->update |= PU_FLOW;
+        rfu.set_flag(StatusRedrawingFlag::FLOW);
         player_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
     }
 
-    if (turn_flags_ptr->do_move && (r_ptr->brightness_flags.has_any_of(except_has_lite) || (r_ptr->brightness_flags.has_any_of({ MonsterBrightnessType::HAS_LITE_1, MonsterBrightnessType::HAS_LITE_2 }) && !player_ptr->phase_out))) {
-        player_ptr->update |= PU_MON_LITE;
+    const auto has_lite = r_ptr->brightness_flags.has_any_of({ Mbt::HAS_LITE_1, Mbt::HAS_LITE_2 });
+    if (turn_flags_ptr->do_move && (r_ptr->brightness_flags.has_any_of(except_has_lite) || (has_lite && !player_ptr->phase_out))) {
+        rfu.set_flag(StatusRedrawingFlag::MONSTER_LITE);
     }
 }
 
@@ -175,7 +177,7 @@ void update_player_window(PlayerType *player_ptr, old_race_flags *old_race_flags
         (old_race_flags_ptr->old_r_blows3 != r_ptr->r_blows[3]) || (old_race_flags_ptr->old_r_cast_spell != r_ptr->r_cast_spell) ||
         (old_race_flags_ptr->old_r_behavior_flags != r_ptr->r_behavior_flags) || (old_race_flags_ptr->old_r_kind_flags != r_ptr->r_kind_flags) ||
         (old_race_flags_ptr->old_r_drop_flags != r_ptr->r_drop_flags) || (old_race_flags_ptr->old_r_feature_flags != r_ptr->r_feature_flags)) {
-        player_ptr->window_flags |= PW_MONSTER;
+        player_ptr->window_flags |= PW_MONSTER_LORE;
     }
 }
 
@@ -384,7 +386,7 @@ static void update_specific_race_telepathy(PlayerType *player_ptr, um_type *um_p
         }
     }
 
-    if ((player_ptr->esp_nonliving) && (r_ptr->kind_flags.has(MonsterKindType::NONLIVING) && r_ptr->kind_flags.has_none_of({ MonsterKindType::DEMON, MonsterKindType::UNDEAD }))) {
+    if ((player_ptr->esp_nonliving) && r_ptr->kind_flags.has(MonsterKindType::NONLIVING) && r_ptr->kind_flags.has_none_of({ MonsterKindType::DEMON, MonsterKindType::UNDEAD })) {
         um_ptr->flag = true;
         m_ptr->mflag.set(MonsterTemporaryFlagType::ESP);
         if (m_ptr->is_original_ap() && !is_hallucinated) {
@@ -502,12 +504,13 @@ static void update_invisible_monster(PlayerType *player_ptr, um_type *um_ptr, MO
     m_ptr->ml = true;
     lite_spot(player_ptr, um_ptr->fy, um_ptr->fx);
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->health_who == m_idx) {
-        player_ptr->redraw |= PR_HEALTH;
+        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
     if (player_ptr->riding == m_idx) {
-        player_ptr->redraw |= PR_UHEALTH;
+        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     if (!player_ptr->effects()->hallucination()->is_hallucinated()) {
@@ -541,12 +544,13 @@ static void update_visible_monster(PlayerType *player_ptr, um_type *um_ptr, MONS
     um_ptr->m_ptr->ml = false;
     lite_spot(player_ptr, um_ptr->fy, um_ptr->fx);
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->health_who == m_idx) {
-        player_ptr->redraw |= PR_HEALTH;
+        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
     if (player_ptr->riding == m_idx) {
-        player_ptr->redraw |= PR_UHEALTH;
+        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     if (um_ptr->do_disturb && (disturb_pets || um_ptr->m_ptr->is_hostile())) {

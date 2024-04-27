@@ -78,9 +78,8 @@ static void object_mention(PlayerType *player_ptr, ItemEntity *o_ptr)
     object_known(o_ptr);
 
     o_ptr->ident |= (IDENT_FULL_KNOWN);
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
-    msg_format_wizard(player_ptr, CHEAT_OBJECT, _("%sを生成しました。", "%s was generated."), o_name);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
+    msg_format_wizard(player_ptr, CHEAT_OBJECT, _("%sを生成しました。", "%s was generated."), item_name.data());
 }
 
 static int get_base_floor(FloorType *floor_ptr, BIT_FLAGS mode, std::optional<int> rq_mon_level)
@@ -240,7 +239,7 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
     num -= o_ptr->number;
     o_ptr->number += num;
 
-    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
 }
 
 /*!
@@ -252,7 +251,7 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
 void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &player_ptr->current_floor_ptr->o_list[item];
-    if (!o_ptr->bi_id) {
+    if (!o_ptr->is_valid()) {
         return;
     }
     if (o_ptr->number) {
@@ -261,7 +260,7 @@ void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
 
     delete_object_idx(player_ptr, item);
 
-    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
 }
 
 /*!
@@ -288,7 +287,7 @@ void delete_object_idx(PlayerType *player_ptr, OBJECT_IDX o_idx)
     j_ptr->wipe();
     floor_ptr->o_cnt--;
 
-    set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
+    set_bits(player_ptr->window_flags, PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
 }
 
 /*!
@@ -349,19 +348,18 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
     POSITION ty, tx = 0;
     OBJECT_IDX o_idx = 0;
     grid_type *g_ptr;
-    GAME_TEXT o_name[MAX_NLEN];
     bool flag = false;
     bool done = false;
 #ifdef JP
 #else
     bool plural = (j_ptr->number != 1);
 #endif
-    describe_flavor(player_ptr, o_name, j_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-    if (!j_ptr->is_artifact() && (randint0(100) < chance)) {
+    const auto item_name = describe_flavor(player_ptr, j_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+    if (!j_ptr->is_fixed_or_random_artifact() && (randint0(100) < chance)) {
 #ifdef JP
-        msg_format("%sは消えた。", o_name);
+        msg_format("%sは消えた。", item_name.data());
 #else
-        msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
+        msg_format("The %s disappear%s.", item_name.data(), (plural ? "" : "s"));
 #endif
         if (w_ptr->wizard) {
             msg_print(_("(破損)", "(breakage)"));
@@ -437,11 +435,11 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
         }
     }
 
-    if (!flag && !j_ptr->is_artifact()) {
+    if (!flag && !j_ptr->is_fixed_or_random_artifact()) {
 #ifdef JP
-        msg_format("%sは消えた。", o_name);
+        msg_format("%sは消えた。", item_name.data());
 #else
-        msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
+        msg_format("The %s disappear%s.", item_name.data(), (plural ? "" : "s"));
 #endif
         if (w_ptr->wizard) {
             msg_print(_("(床スペースがない)", "(no floor space)"));
@@ -468,6 +466,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
         flag = true;
     }
 
+    auto &artifact = j_ptr->get_fixed_artifact();
     if (!flag) {
         int candidates = 0, pick;
         for (ty = 1; ty < floor_ptr->height - 1; ty++) {
@@ -480,9 +479,9 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
 
         if (!candidates) {
 #ifdef JP
-            msg_format("%sは消えた。", o_name);
+            msg_format("%sは消えた。", item_name.data());
 #else
-            msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
+            msg_format("The %s disappear%s.", item_name.data(), (plural ? "" : "s"));
 #endif
 
             if (w_ptr->wizard) {
@@ -491,7 +490,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
 
             if (preserve_mode) {
                 if (j_ptr->is_fixed_artifact() && !j_ptr->is_known()) {
-                    artifacts_info.at(j_ptr->fixed_artifact_idx).is_generated = false;
+                    artifact.is_generated = false;
                 }
             }
 
@@ -535,16 +534,16 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
 
     if (!done && !o_idx) {
 #ifdef JP
-        msg_format("%sは消えた。", o_name);
+        msg_format("%sは消えた。", item_name.data());
 #else
-        msg_format("The %s disappear%s.", o_name, (plural ? "" : "s"));
+        msg_format("The %s disappear%s.", item_name.data(), (plural ? "" : "s"));
 #endif
         if (w_ptr->wizard) {
             msg_print(_("(アイテムが多過ぎる)", "(too many objects)"));
         }
 
         if (j_ptr->is_fixed_artifact()) {
-            artifacts_info.at(j_ptr->fixed_artifact_idx).is_generated = false;
+            artifact.is_generated = false;
         }
 
         return 0;
@@ -560,12 +559,16 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
         done = true;
     }
 
+    if (j_ptr->is_fixed_artifact() && w_ptr->character_dungeon) {
+        artifact.floor_id = player_ptr->floor_id;
+    }
+
     note_spot(player_ptr, by, bx);
     lite_spot(player_ptr, by, bx);
     sound(SOUND_DROP);
 
     if (player_bold(player_ptr, by, bx)) {
-        set_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
+        set_bits(player_ptr->window_flags, PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
     }
 
     if (chance && player_bold(player_ptr, by, bx)) {
@@ -612,16 +615,15 @@ void floor_item_charges(FloorType *floor_ptr, INVENTORY_IDX inventory)
 void floor_item_describe(PlayerType *player_ptr, INVENTORY_IDX item)
 {
     auto *o_ptr = &player_ptr->current_floor_ptr->o_list[item];
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 #ifdef JP
     if (o_ptr->number <= 0) {
-        msg_format("床上には、もう%sはない。", o_name);
+        msg_format("床上には、もう%sはない。", item_name.data());
     } else {
-        msg_format("床上には、まだ %sがある。", o_name);
+        msg_format("床上には、まだ %sがある。", item_name.data());
     }
 #else
-    msg_format("You see %s.", o_name);
+    msg_format("You see %s.", item_name.data());
 #endif
 }
 

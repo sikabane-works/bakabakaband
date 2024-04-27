@@ -5,8 +5,6 @@
 #include "cmd-io/cmd-process-screen.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "dungeon/quest.h"
@@ -67,6 +65,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "timed-effect/player-hallucination.h"
@@ -93,52 +92,40 @@ using dam_func = int (*)(PlayerType *player_ptr, int dam, concptr kb_str, bool a
  */
 static bool acid_minus_ac(PlayerType *player_ptr)
 {
-    ItemEntity *o_ptr = nullptr;
-    switch (randint1(7)) {
-    case 1:
-        o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
-        break;
-    case 2:
-        o_ptr = &player_ptr->inventory_list[INVEN_SUB_HAND];
-        break;
-    case 3:
-        o_ptr = &player_ptr->inventory_list[INVEN_BODY];
-        break;
-    case 4:
-        o_ptr = &player_ptr->inventory_list[INVEN_OUTER];
-        break;
-    case 5:
-        o_ptr = &player_ptr->inventory_list[INVEN_ARMS];
-        break;
-    case 6:
-        o_ptr = &player_ptr->inventory_list[INVEN_HEAD];
-        break;
-    case 7:
-        o_ptr = &player_ptr->inventory_list[INVEN_FEET];
-        break;
-    }
+    constexpr static auto candidates = {
+        INVEN_MAIN_HAND,
+        INVEN_SUB_HAND,
+        INVEN_BODY,
+        INVEN_OUTER,
+        INVEN_ARMS,
+        INVEN_HEAD,
+        INVEN_FEET,
+    };
 
-    if ((o_ptr == nullptr) || (o_ptr->bi_id == 0) || !o_ptr->is_protector()) {
+    const auto slot = rand_choice(candidates);
+    auto *o_ptr = &player_ptr->inventory_list[slot];
+
+    if ((o_ptr == nullptr) || !o_ptr->is_valid() || !o_ptr->is_protector()) {
         return false;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
     auto flags = object_flags(o_ptr);
     if (o_ptr->ac + o_ptr->to_a <= 0) {
-        msg_format(_("%sは既にボロボロだ！", "Your %s is already fully corroded!"), o_name);
+        msg_format(_("%sは既にボロボロだ！", "Your %s is already fully corroded!"), item_name.data());
         return false;
     }
 
     if (flags.has(TR_IGNORE_ACID)) {
-        msg_format(_("しかし%sには効果がなかった！", "Your %s is unaffected!"), o_name);
+        msg_format(_("しかし%sには効果がなかった！", "Your %s is unaffected!"), item_name.data());
         return true;
     }
 
-    msg_format(_("%sが酸で腐食した！", "Your %s is corroded!"), o_name);
+    msg_format(_("%sが酸で腐食した！", "Your %s is corroded!"), item_name.data());
     o_ptr->to_a--;
-    player_ptr->update |= PU_BONUS;
-    player_ptr->window_flags |= PW_EQUIP | PW_PLAYER;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
+    player_ptr->window_flags |= PW_EQUIPMENT | PW_PLAYER;
     calc_android_exp(player_ptr);
     return true;
 }
@@ -367,12 +354,13 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
         player_ptr->chp = 0;
     }
 
-    player_ptr->redraw |= PR_HP;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::HP);
     player_ptr->window_flags |= PW_PLAYER;
 
     if (damage_type != DAMAGE_GENO && player_ptr->chp == 0) {
-        chg_virtue(player_ptr, V_SACRIFICE, 1);
-        chg_virtue(player_ptr, V_CHANCE, 2);
+        chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
+        chg_virtue(player_ptr, Virtue::CHANCE, 2);
     }
 
     if (player_ptr->chp < 0 && !cheat_immortal) {
@@ -384,7 +372,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
         }
 
         sound(SOUND_DEATH);
-        chg_virtue(player_ptr, V_SACRIFICE, 10);
+        chg_virtue(player_ptr, Virtue::SACRIFICE, 10);
         handle_stuff(player_ptr);
         player_ptr->leaving = true;
         if (!cheat_immortal) {
@@ -440,7 +428,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, concptr hit_fr
                     place = _("アリーナ", "in the Arena");
                 } else if (!floor_ref.is_in_dungeon()) {
                     place = _("地上", "on the surface");
-                } else if (inside_quest(q_idx) && (quest_type::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))) {
+                } else if (inside_quest(q_idx) && (QuestType::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))) {
                     place = _("クエスト", "in a quest");
                 } else {
                     place = format(_("%d階", "on level %d"), static_cast<int>(floor_ref.dun_level));

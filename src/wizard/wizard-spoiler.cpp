@@ -44,6 +44,7 @@
 #include <array>
 #include <iterator>
 #include <set>
+#include <sstream>
 #include <string>
 
 static constexpr std::array<std::string_view, 6> wiz_spell_stat = { {
@@ -97,17 +98,16 @@ static auto get_mon_evol_roots(void)
  */
 static SpoilerOutputResultType spoil_mon_evol(concptr fname)
 {
-    char buf[1024];
-    path_build(buf, sizeof buf, ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(buf, "w");
+    const auto &path = path_build(ANGBAND_DIR_USER, fname);
+    spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    spoil_out(std::string("Monster Spoilers for ").append(get_version()).append("\n"));
-
+    std::stringstream ss;
+    ss << "Monster Spoilers for " << get_version() << '\n';
+    spoil_out(ss.str());
     spoil_out("------------------------------------------\n\n");
-
     for (auto r_idx : get_mon_evol_roots()) {
         auto r_ptr = &monraces_info[r_idx];
         fprintf(spoiler_file, _("[%d]: %s (レベル%d, '%c')\n", "[%d]: %s (Level %d, '%c')\n"), enum2i(r_idx), r_ptr->name.data(), (int)r_ptr->level, r_ptr->d_char);
@@ -175,10 +175,8 @@ static SpoilerOutputResultType spoil_categorized_mon_desc()
 
 static SpoilerOutputResultType spoil_player_spell(concptr fname)
 {
-    char buf[1024];
-
-    path_build(buf, sizeof buf, ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(buf, "w");
+    const auto &path = path_build(ANGBAND_DIR_USER, fname);
+    spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
@@ -188,42 +186,37 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
 
     PlayerType dummy_p;
     dummy_p.lev = 1;
-
-    for (int c = 0; c < PLAYER_CLASS_TYPE_MAX; c++) {
+    for (auto c = 0; c < PLAYER_CLASS_TYPE_MAX; c++) {
         auto class_ptr = &class_info[c];
-        sprintf(buf, "[[Class: %s]]\n", class_ptr->title);
-        spoil_out(buf);
+        spoil_out(format("[[Class: %s]]\n", class_ptr->title));
 
         auto magic_ptr = &class_magics_info[c];
-        concptr book_name = "なし";
-        char name_buffer[200];
+        auto book_name = "なし";
         if (magic_ptr->spell_book != ItemKindType::NONE) {
             ItemEntity book;
             auto o_ptr = &book;
             o_ptr->prep(lookup_baseitem_id({ magic_ptr->spell_book, 0 }));
-            describe_flavor(&dummy_p, name_buffer, o_ptr, OD_NAME_ONLY);
-            book_name = name_buffer;
+            const auto item_name = describe_flavor(&dummy_p, o_ptr, OD_NAME_ONLY);
+            book_name = item_name.data();
             char *s = angband_strchr(book_name, '[');
             *s = '\0';
         }
 
-        sprintf(buf, "BookType:%s Stat:%s Xtra:%x Type:%d Weight:%d\n", book_name, wiz_spell_stat[magic_ptr->spell_stat].data(), magic_ptr->spell_xtra,
-            magic_ptr->spell_type, magic_ptr->spell_weight);
-        spoil_out(buf);
+        constexpr auto mes = "BookType:%s Stat:%s Xtra:%x Type:%d Weight:%d\n";
+        const auto &spell = wiz_spell_stat[magic_ptr->spell_stat];
+        spoil_out(format(mes, book_name, spell.data(), magic_ptr->spell_xtra, magic_ptr->spell_type, magic_ptr->spell_weight));
         if (magic_ptr->spell_book == ItemKindType::NONE) {
             spoil_out(_("呪文なし\n\n", "No spells.\n\n"));
             continue;
         }
 
         for (int16_t r = 1; r < MAX_MAGIC; r++) {
-            sprintf(buf, "[Realm: %s]\n", realm_names[r]);
-            spoil_out(buf);
+            spoil_out(format("[Realm: %s]\n", realm_names[r]));
             spoil_out("Name                     Lv Cst Dif Exp\n");
             for (SPELL_IDX i = 0; i < 32; i++) {
                 auto spell_ptr = &magic_ptr->info[r][i];
                 const auto spell_name = exe_spell(&dummy_p, r, i, SpellProcessType::NAME);
-                sprintf(buf, "%-24s %2d %3d %3d %3d\n", spell_name->data(), spell_ptr->slevel, spell_ptr->smana, spell_ptr->sfail, spell_ptr->sexp);
-                spoil_out(buf);
+                spoil_out(format("%-24s %2d %3d %3d %3d\n", spell_name->data(), spell_ptr->slevel, spell_ptr->smana, spell_ptr->sfail, spell_ptr->sexp));
             }
             spoil_out("\n");
         }

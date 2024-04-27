@@ -42,6 +42,7 @@ enum class PlayerSkillKindType;
 enum class MimicKindType;
 enum class MonsterAbilityType;
 enum class MonsterRaceId : int16_t;
+enum class Virtue : short;
 
 class FloorType;
 class ItemEntity;
@@ -111,9 +112,9 @@ public:
 
     int16_t max_plv{}; /* Max Player Level */
 
-    BASE_STATUS stat_max[A_MAX]{}; /* Current "maximal" stat values */
-    BASE_STATUS stat_max_max[A_MAX]{}; /* Maximal "maximal" stat values */
-    BASE_STATUS stat_cur[A_MAX]{}; /* Current "natural" stat values */
+    short stat_max[A_MAX]{}; /* Current "maximal" stat values */
+    short stat_max_max[A_MAX]{}; /* Maximal "maximal" stat values */
+    short stat_cur[A_MAX]{}; /* Current "natural" stat values */
 
     int16_t learned_spells{};
     int16_t add_spells{};
@@ -176,7 +177,7 @@ public:
     EnumClassFlagGroup<PlayerMutationType> trait{}; /*!< 後天特性 / permanent trait */
 
     int16_t virtues[8]{};
-    int16_t vir_types[8]{};
+    Virtue vir_types[8]{};
 
     TIME_EFFECT word_recall{}; /* Word of recall counter */
     TIME_EFFECT alter_reality{}; /* Alter reality counter */
@@ -308,8 +309,6 @@ public:
 
     POSITION cur_lite{}; /* Radius of lite (if any) */
 
-    BIT_FLAGS update{}; /* Pending Updates */
-    BIT_FLAGS redraw{}; /* Normal Redraws */
     BIT_FLAGS window_flags{}; /* Window Redraws */
     int16_t stat_use[A_MAX]{}; /* Current modified stats */
     int16_t stat_top[A_MAX]{}; /* Maximal modified stats */

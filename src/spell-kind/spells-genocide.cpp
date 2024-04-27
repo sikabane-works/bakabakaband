@@ -1,7 +1,6 @@
 ﻿#include "spell-kind/spells-genocide.h"
 #include "avatar/avatar.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "dungeon/quest.h"
@@ -28,9 +27,18 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world-collapsion.h"
+
+static bool is_in_special_floor(PlayerType *player_ptr)
+{
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto is_in_fixed_quest = inside_quest(floor_ptr->quest_number);
+    is_in_fixed_quest &= !inside_quest(random_quest_number(player_ptr, floor_ptr->dun_level));
+    return is_in_fixed_quest || floor_ptr->inside_arena || player_ptr->phase_out;
+}
 
 /*!
  * @brief モンスターへの単体抹殺処理サブルーチン / Delete a non-unique/non-quest monster
@@ -44,20 +52,21 @@
  */
 bool genocide_aux(PlayerType *player_ptr, MONSTER_IDX m_idx, int power, bool player_cast, int dam_side, concptr spell_name)
 {
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto *m_ptr = &floor_ptr->m_list[m_idx];
     auto *r_ptr = &monraces_info[m_ptr->r_idx];
     if (m_ptr->is_pet() && !player_cast) {
         return false;
     }
 
-    bool resist = false;
+    auto resist = false;
     if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(r_ptr->flags1, RF1_QUESTOR)) {
         resist = true;
     } else if (r_ptr->flags7 & RF7_UNIQUE2) {
         resist = true;
     } else if (m_idx == player_ptr->riding) {
         resist = true;
-    } else if ((inside_quest(player_ptr->current_floor_ptr->quest_number) && !inside_quest(random_quest_number(player_ptr, player_ptr->current_floor_ptr->dun_level))) || player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out) {
+    } else if (is_in_special_floor(player_ptr)) {
         resist = true;
     } else if (player_cast && (r_ptr->level > randint0(power))) {
         resist = true;
@@ -105,7 +114,8 @@ bool genocide_aux(PlayerType *player_ptr, MONSTER_IDX m_idx, int power, bool pla
     }
 
     move_cursor_relative(player_ptr->y, player_ptr->x);
-    player_ptr->redraw |= (PR_HP);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::HP);
     player_ptr->window_flags |= (PW_PLAYER);
     handle_stuff(player_ptr);
     term_fresh();
@@ -151,8 +161,8 @@ bool symbol_genocide(PlayerType *player_ptr, int power, bool player_cast)
     }
 
     if (result) {
-        chg_virtue(player_ptr, V_VITALITY, -2);
-        chg_virtue(player_ptr, V_CHANCE, -1);
+        chg_virtue(player_ptr, Virtue::VITALITY, -2);
+        chg_virtue(player_ptr, Virtue::CHANCE, -1);
     }
 
     return result;
@@ -188,8 +198,8 @@ bool mass_genocide(PlayerType *player_ptr, int power, bool player_cast)
     }
 
     if (result) {
-        chg_virtue(player_ptr, V_VITALITY, -2);
-        chg_virtue(player_ptr, V_CHANCE, -1);
+        chg_virtue(player_ptr, Virtue::VITALITY, -2);
+        chg_virtue(player_ptr, Virtue::CHANCE, -1);
     }
 
     return result;
@@ -229,8 +239,8 @@ bool mass_genocide_undead(PlayerType *player_ptr, int power, bool player_cast)
     }
 
     if (result) {
-        chg_virtue(player_ptr, V_UNLIFE, -2);
-        chg_virtue(player_ptr, V_CHANCE, -1);
+        chg_virtue(player_ptr, Virtue::UNLIFE, -2);
+        chg_virtue(player_ptr, Virtue::CHANCE, -1);
     }
 
     return result;

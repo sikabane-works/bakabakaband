@@ -38,6 +38,7 @@
 #include "store/store.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "term/gameterm.h"
 #include "term/z-form.h"
 #include "util/enum-converter.h"
 #include "view/display-messages.h"
@@ -91,6 +92,8 @@ static void write_birth_diary(PlayerType *player_ptr)
  */
 void player_birth(PlayerType *player_ptr)
 {
+    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
+
     w_ptr->play_time = 0;
     wipe_monsters_list(player_ptr);
     player_wipe_without_name(player_ptr);
@@ -106,7 +109,7 @@ void player_birth(PlayerType *player_ptr)
     }
 
     write_birth_diary(player_ptr);
-    for (int i = 1; i < max_towns; i++) {
+    for (size_t i = 1; i < towns_info.size(); i++) {
         for (auto sst : STORE_SALE_TYPE_LIST) {
             store_init(i, sst);
         }
@@ -124,6 +127,6 @@ void player_birth(PlayerType *player_ptr)
     }
 
     if (!window_flag[2]) {
-        window_flag[2] |= PW_INVEN;
+        window_flag[2] |= PW_INVENTORY;
     }
 }

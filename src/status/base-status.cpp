@@ -1,7 +1,5 @@
 ﻿#include "status/base-status.h"
 #include "avatar/avatar.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "game-option/birth-options.h"
 #include "inventory/inventory-slot-types.h"
@@ -12,14 +10,29 @@
 #include "spell-kind/spells-floor.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
 /* Array of stat "descriptions" */
-static concptr desc_stat_pos[] = { _("強く", "stronger"), _("知的に", "smarter"), _("賢く", "wiser"), _("器用に", "more dextrous"), _("健康に", "healthier"), _("美しく", "cuter") };
+static concptr desc_stat_pos[] = {
+    _("強く", "stronger"),
+    _("知的に", "smarter"),
+    _("賢く", "wiser"),
+    _("器用に", "more dextrous"),
+    _("健康に", "healthier"),
+    _("美しく", "cuter")
+};
 
 /* Array of stat "descriptions" */
-static concptr desc_stat_neg[] = { _("弱く", "weaker"), _("無知に", "stupider"), _("愚かに", "more naive"), _("不器用に", "clumsier"), _("不健康に", "more sickly"), _("醜く", "uglier") };
+static concptr desc_stat_neg[] = {
+    _("弱く", "weaker"),
+    _("無知に", "stupider"),
+    _("愚かに", "more naive"),
+    _("不器用に", "clumsier"),
+    _("不健康に", "more sickly"),
+    _("醜く", "uglier")
+};
 
 /*!
  * @brief プレイヤーの基本能力値を増加させる / Increases a stat by one randomized level -RAK-
@@ -31,17 +44,15 @@ static concptr desc_stat_neg[] = { _("弱く", "weaker"), _("無知に", "stupid
  */
 bool inc_stat(PlayerType *player_ptr, int stat)
 {
-    BASE_STATUS gain;
-    BASE_STATUS value = player_ptr->stat_cur[stat];
+    auto value = player_ptr->stat_cur[stat];
     if (value >= player_ptr->stat_max_max[stat]) {
         return false;
     }
 
     if (value < 18) {
-        gain = ((randint0(100) < 75) ? 1 : 2);
-        value += gain;
+        value += (randint0(100) < 75) ? 1 : 2;
     } else if (value < (player_ptr->stat_max_max[stat] - 2)) {
-        gain = (((player_ptr->stat_max_max[stat]) - value) / 2 + 3) / 2;
+        auto gain = (((player_ptr->stat_max_max[stat]) - value) / 2 + 3) / 2;
         if (gain < 1) {
             gain = 1;
         }
@@ -59,7 +70,7 @@ bool inc_stat(PlayerType *player_ptr, int stat)
         player_ptr->stat_max[stat] = value;
     }
 
-    player_ptr->update |= PU_BONUS;
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     return true;
 }
 
@@ -82,9 +93,9 @@ bool inc_stat(PlayerType *player_ptr, int stat)
  */
 bool dec_stat(PlayerType *player_ptr, int stat, int amount, int permanent)
 {
-    bool res = false;
-    BASE_STATUS cur = player_ptr->stat_cur[stat];
-    BASE_STATUS max = player_ptr->stat_max[stat];
+    auto res = false;
+    auto cur = player_ptr->stat_cur[stat];
+    auto max = player_ptr->stat_max[stat];
     int same = (cur == max);
     if (cur > 3) {
         if (cur <= 18) {
@@ -125,9 +136,9 @@ bool dec_stat(PlayerType *player_ptr, int stat, int amount, int permanent)
     }
 
     if (permanent && (max > 3)) {
-        chg_virtue(player_ptr, V_SACRIFICE, 1);
+        chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
         if (stat == A_WIS || stat == A_INT) {
-            chg_virtue(player_ptr, V_ENLIGHTEN, -2);
+            chg_virtue(player_ptr, Virtue::ENLIGHTEN, -2);
         }
 
         if (max <= 18) {
@@ -166,8 +177,9 @@ bool dec_stat(PlayerType *player_ptr, int stat, int amount, int permanent)
     if (res) {
         player_ptr->stat_cur[stat] = cur;
         player_ptr->stat_max[stat] = max;
-        player_ptr->redraw |= (PR_STATS);
-        player_ptr->update |= (PU_BONUS);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(MainWindowRedrawingFlag::ABILITY_SCORE);
+        rfu.set_flag(StatusRedrawingFlag::BONUS);
     }
 
     return res;
@@ -182,8 +194,9 @@ bool res_stat(PlayerType *player_ptr, int stat)
 {
     if (player_ptr->stat_cur[stat] != player_ptr->stat_max[stat]) {
         player_ptr->stat_cur[stat] = player_ptr->stat_max[stat];
-        player_ptr->update |= (PU_BONUS);
-        player_ptr->redraw |= (PR_STATS);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(StatusRedrawingFlag::BONUS);
+        rfu.set_flag(MainWindowRedrawingFlag::ABILITY_SCORE);
         return true;
     }
 
@@ -263,13 +276,13 @@ bool do_inc_stat(PlayerType *player_ptr, int stat)
     bool res = res_stat(player_ptr, stat);
     if (inc_stat(player_ptr, stat)) {
         if (stat == A_WIS) {
-            chg_virtue(player_ptr, V_ENLIGHTEN, 1);
-            chg_virtue(player_ptr, V_FAITH, 1);
+            chg_virtue(player_ptr, Virtue::ENLIGHTEN, 1);
+            chg_virtue(player_ptr, Virtue::FAITH, 1);
         } else if (stat == A_INT) {
-            chg_virtue(player_ptr, V_KNOWLEDGE, 1);
-            chg_virtue(player_ptr, V_ENLIGHTEN, 1);
+            chg_virtue(player_ptr, Virtue::KNOWLEDGE, 1);
+            chg_virtue(player_ptr, Virtue::ENLIGHTEN, 1);
         } else if (stat == A_CON) {
-            chg_virtue(player_ptr, V_VITALITY, 1);
+            chg_virtue(player_ptr, Virtue::VITALITY, 1);
         }
 
         msg_format(_("ワーオ！とても%sなった！", "Wow! You feel %s!"), desc_stat_pos[stat]);
@@ -289,11 +302,11 @@ bool do_inc_stat(PlayerType *player_ptr, int stat)
  */
 bool lose_all_info(PlayerType *player_ptr)
 {
-    chg_virtue(player_ptr, V_KNOWLEDGE, -5);
-    chg_virtue(player_ptr, V_ENLIGHTEN, -5);
+    chg_virtue(player_ptr, Virtue::KNOWLEDGE, -5);
+    chg_virtue(player_ptr, Virtue::ENLIGHTEN, -5);
     for (int i = 0; i < INVEN_TOTAL; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        if ((o_ptr->bi_id == 0) || o_ptr->is_fully_known()) {
+        if (!o_ptr->is_valid() || o_ptr->is_fully_known()) {
             continue;
         }
 
@@ -303,8 +316,14 @@ bool lose_all_info(PlayerType *player_ptr)
         o_ptr->ident &= ~(IDENT_SENSE);
     }
 
-    set_bits(player_ptr->update, PU_BONUS | PU_COMBINE | PU_REORDER);
-    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
+    };
+    rfu.set_flags(flags_srf);
+    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
     wiz_dark(player_ptr);
     return true;
 }

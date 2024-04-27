@@ -6,7 +6,6 @@
 
 #include "mspell/mspell-special.h"
 #include "core/disturbance.h"
-#include "core/player-update-types.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -35,6 +34,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -178,7 +178,7 @@ static MonsterSpellResult spell_RF6_SPECIAL_B(PlayerType *player_ptr, POSITION y
         simple_monspell_message(player_ptr, m_idx, t_idx, msg, target_type);
 
         teleport_away(player_ptr, m_idx, 10, TELEPORT_NONMAGICAL);
-        player_ptr->update |= (PU_MONSTERS);
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
         return MonsterSpellResult::make_valid();
     }
 
@@ -223,11 +223,11 @@ static MonsterSpellResult spell_RF6_SPECIAL_B(PlayerType *player_ptr, POSITION y
 
     if (monster_to_player && player_ptr->riding) {
         const auto &m_ref = floor_ptr->m_list[player_ptr->riding];
-        mon_take_hit_mon(player_ptr, player_ptr->riding, dam, &dead, &fear, extract_note_dies(m_ref.get_real_r_idx()), m_idx);
+        mon_take_hit_mon(player_ptr, player_ptr->riding, dam, &dead, &fear, m_ref.get_died_message(), m_idx);
     }
 
     if (monster_to_monster) {
-        mon_take_hit_mon(player_ptr, t_idx, dam, &dead, &fear, extract_note_dies(t_ptr->get_real_r_idx()), m_idx);
+        mon_take_hit_mon(player_ptr, t_idx, dam, &dead, &fear, t_ptr->get_died_message(), m_idx);
     }
 
     return MonsterSpellResult::make_valid();

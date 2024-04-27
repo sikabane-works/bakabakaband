@@ -25,28 +25,24 @@
 #include "view/display-messages.h"
 #include <algorithm>
 
-concptr ANGBAND_DIR; //!< Path name: The main "lib" directory This variable is not actually used anywhere in the code
-concptr ANGBAND_DIR_APEX; //!< High score files (binary) These files may be portable between platforms
-concptr ANGBAND_DIR_BONE; //!< Bone files for player ghosts (ascii) These files are portable between platforms
-concptr ANGBAND_DIR_DATA; //!< Binary image files for the "*_info" arrays (binary) These files are not portable between platforms
-concptr ANGBAND_DIR_EDIT; //!< Textual template files for the "*_info" arrays (ascii) These files are portable between platforms
-concptr ANGBAND_DIR_SCRIPT; //!< Script files These files are portable between platforms.
-concptr ANGBAND_DIR_FILE; //!< Various extra files (ascii) These files may be portable between platforms
-concptr ANGBAND_DIR_HELP; //!< Help files (normal) for the online help (ascii) These files are portable between platforms
-concptr ANGBAND_DIR_INFO; //!< Help files (spoilers) for the online help (ascii) These files are portable between platforms
-concptr ANGBAND_DIR_PREF; //!< Default user "preference" files (ascii) These files are rarely portable between platforms
-concptr ANGBAND_DIR_SAVE; //!< Savefiles for current characters (binary)
-concptr ANGBAND_DIR_DEBUG_SAVE; //*< Savefiles for debug data
-concptr ANGBAND_DIR_USER; //!< User "preference" files (ascii) These files are rarely portable between platforms
-concptr ANGBAND_DIR_XTRA; //!< Various extra files (binary) These files are rarely portable between platforms
+std::filesystem::path ANGBAND_DIR; //!< Path name: The main "lib" directory This variable is not actually used anywhere in the code
+std::filesystem::path ANGBAND_DIR_APEX; //!< High score files (binary) These files may be portable between platforms
+std::filesystem::path ANGBAND_DIR_BONE; //!< Bone files for player ghosts (ascii) These files are portable between platforms
+std::filesystem::path ANGBAND_DIR_DATA; //!< Binary image files for the "*_info" arrays (binary) These files are not portable between platforms
+std::filesystem::path ANGBAND_DIR_EDIT; //!< Textual template files for the "*_info" arrays (ascii) These files are portable between platforms
+std::filesystem::path ANGBAND_DIR_SCRIPT; //!< Script files These files are portable between platforms.
+std::filesystem::path ANGBAND_DIR_FILE; //!< Various extra files (ascii) These files may be portable between platforms
+std::filesystem::path ANGBAND_DIR_HELP; //!< Help files (normal) for the online help (ascii) These files are portable between platforms
+std::filesystem::path ANGBAND_DIR_INFO; //!< Help files (spoilers) for the online help (ascii) These files are portable between platforms
+std::filesystem::path ANGBAND_DIR_PREF; //!< Default user "preference" files (ascii) These files are rarely portable between platforms
+std::filesystem::path ANGBAND_DIR_SAVE; //!< Savefiles for current characters (binary)
+std::filesystem::path ANGBAND_DIR_DEBUG_SAVE; //*< Savefiles for debug data
+std::filesystem::path ANGBAND_DIR_USER; //!< User "preference" files (ascii) These files are rarely portable between platforms
+std::filesystem::path ANGBAND_DIR_XTRA; //!< Various extra files (binary) These files are rarely portable between platforms
 
-/*
- * Buffer to hold the current savefile name
- * 'savefile' holds full path name. 'savefile_base' holds only base name.
- */
-char savefile[1024];
-char savefile_base[40];
-char debug_savefile[1024];
+std::filesystem::path savefile;
+std::string savefile_base;
+std::filesystem::path debug_savefile;
 
 /*!
  * @brief プレイヤーステータスをファイルダンプ出力する
@@ -60,13 +56,14 @@ char debug_savefile[1024];
  */
 errr file_character(PlayerType *player_ptr, concptr name)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, name);
-    int fd = fd_open(buf, O_RDONLY);
+    std::string out_val;
+    const auto &path = path_build(ANGBAND_DIR_USER, name);
+    auto fd = fd_open(path, O_RDONLY);
     if (fd >= 0) {
-        char out_val[sizeof(buf) + 128];
+        const auto &filename = path.string();
+        std::string query = _("現存するファイル ", "Replace existing file ");
+        query.append(filename).append(_(" に上書きしますか? ", "? "));
         (void)fd_close(fd);
-        (void)sprintf(out_val, _("現存するファイル %s に上書きしますか? ", "Replace existing file %s? "), buf);
         if (get_check_strict(player_ptr, out_val, CHECK_NO_HISTORY)) {
             fd = -1;
         }
@@ -74,7 +71,7 @@ errr file_character(PlayerType *player_ptr, concptr name)
 
     FILE *fff = nullptr;
     if (fd < 0) {
-        fff = angband_fopen(buf, "w");
+        fff = angband_fopen(path, FileOpenMode::WRITE);
     }
 
     if (!fff) {
@@ -101,9 +98,8 @@ errr file_character(PlayerType *player_ptr, concptr name)
  */
 std::optional<std::string> get_random_line(concptr file_name, int entry)
 {
-    char filename[1024];
-    path_build(filename, sizeof(filename), ANGBAND_DIR_FILE, file_name);
-    auto *fp = angband_fopen(filename, "r");
+    const auto &path = path_build(ANGBAND_DIR_FILE, file_name);
+    auto *fp = angband_fopen(path, FileOpenMode::READ);
     if (!fp) {
         return std::nullopt;
     }
@@ -224,9 +220,9 @@ static errr counts_seek(PlayerType *player_ptr, int fd, uint32_t where, bool fla
     char temp1[128]{}, temp2[128]{};
     auto short_pclass = enum2i(player_ptr->pclass);
 #ifdef SAVEFILE_USE_UID
-    (void)sprintf(temp1, "%d.%s.%d%d%d", player_ptr->player_uid, savefile_base, short_pclass, player_ptr->ppersonality, player_ptr->age);
+    strnfmt(temp1, sizeof(temp1), "%d.%s.%d%d%d", player_ptr->player_uid, savefile_base.data(), short_pclass, player_ptr->ppersonality, player_ptr->age);
 #else
-    (void)sprintf(temp1, "%s.%d%d%d", savefile_base, short_pclass, player_ptr->ppersonality, player_ptr->age);
+    strnfmt(temp1, sizeof(temp1), "%s.%d%d%d", savefile_base.data(), short_pclass, player_ptr->ppersonality, player_ptr->age);
 #endif
     for (int i = 0; temp1[i]; i++) {
         temp1[i] ^= (i + 1) * 63;
@@ -268,17 +264,14 @@ static errr counts_seek(PlayerType *player_ptr, int fd, uint32_t where, bool fla
  */
 uint32_t counts_read(PlayerType *player_ptr, int where)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
-    int fd = fd_open(buf, O_RDONLY);
-
+    const auto &path = path_build(ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
+    auto fd = fd_open(path, O_RDONLY);
     uint32_t count = 0;
     if (counts_seek(player_ptr, fd, where, false) || fd_read(fd, (char *)(&count), sizeof(uint32_t))) {
         count = 0;
     }
 
     (void)fd_close(fd);
-
     return count;
 }
 
@@ -292,20 +285,18 @@ uint32_t counts_read(PlayerType *player_ptr, int where)
  */
 errr counts_write(PlayerType *player_ptr, int where, uint32_t count)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
-
+    const auto &path = path_build(ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
     safe_setuid_grab(player_ptr);
-    int fd = fd_open(buf, O_RDWR);
+    auto fd = fd_open(path, O_RDWR);
     safe_setuid_drop();
     if (fd < 0) {
         safe_setuid_grab(player_ptr);
-        fd = fd_make(buf, 0644);
+        fd = fd_make(path);
         safe_setuid_drop();
     }
 
     safe_setuid_grab(player_ptr);
-    errr err = fd_lock(fd, F_WRLCK);
+    auto err = fd_lock(fd, F_WRLCK);
     safe_setuid_drop();
     if (err) {
         return 1;
@@ -326,22 +317,19 @@ errr counts_write(PlayerType *player_ptr, int where, uint32_t count)
 }
 
 /*!
- * @brief 墓のアスキーアートテンプレを読み込む
- * @param buf テンプレへのバッファ
- * @param buf_size バッファの長さ
+ * @brief 墓のアスキーアートテンプレを読み込んで画面に表示する
  */
-void read_dead_file(char *buf, size_t buf_size, bool world_end)
+void read_dead_file(bool world_end)
 {
-    path_build(buf, buf_size, ANGBAND_DIR_FILE, world_end ? _("blownaway_j.txt", "blownaway.txt") : _("dead_j.txt", "dead.txt"));
-
-    FILE *fp;
-    fp = angband_fopen(buf, "r");
+    const auto &path = path_build(ANGBAND_DIR_FILE, world_end ? _("blownaway_j.txt", "blownaway.txt") : _("dead_j.txt", "dead.txt"));
+    auto *fp = angband_fopen(path, FileOpenMode::READ);
     if (!fp) {
         return;
     }
 
     int i = 0;
-    while (angband_fgets(fp, buf, buf_size) == 0) {
+    char buf[1024]{};
+    while (angband_fgets(fp, buf, sizeof(buf)) == 0) {
         put_str(buf, i++, 0);
     }
 

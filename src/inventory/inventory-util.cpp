@@ -18,6 +18,7 @@
 #include "util/int-char-converter.h"
 #include "util/quarks.h"
 #include "util/string-processor.h"
+#include <sstream>
 
 /*!
  * @brief プレイヤーの所持/装備オブジェクトIDが指輪枠かを返す /
@@ -124,7 +125,7 @@ bool get_tag(PlayerType *player_ptr, COMMAND_CODE *cp, char tag, BIT_FLAGS mode,
 
     for (COMMAND_CODE i = start; i <= end; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        if ((o_ptr->bi_id == 0) || !o_ptr->is_inscribed()) {
+        if (!o_ptr->is_valid() || !o_ptr->is_inscribed()) {
             continue;
         }
 
@@ -149,7 +150,7 @@ bool get_tag(PlayerType *player_ptr, COMMAND_CODE *cp, char tag, BIT_FLAGS mode,
 
     for (COMMAND_CODE i = start; i <= end; i++) {
         auto *o_ptr = &player_ptr->inventory_list[i];
-        if ((o_ptr->bi_id == 0) || !o_ptr->is_inscribed()) {
+        if (!o_ptr->is_valid() || !o_ptr->is_inscribed()) {
             continue;
         }
 
@@ -266,7 +267,7 @@ INVENTORY_IDX label_to_inventory(PlayerType *player_ptr, int c)
 {
     INVENTORY_IDX i = (INVENTORY_IDX)(islower(c) ? A2I(c) : -1);
 
-    if ((i < 0) || (i > INVEN_PACK) || (player_ptr->inventory_list[i].bi_id == 0)) {
+    if ((i < 0) || (i > INVEN_PACK) || !player_ptr->inventory_list[i].is_valid()) {
         return -1;
     }
 
@@ -284,8 +285,6 @@ INVENTORY_IDX label_to_inventory(PlayerType *player_ptr, int c)
  */
 bool verify(PlayerType *player_ptr, concptr prompt, INVENTORY_IDX item)
 {
-    GAME_TEXT o_name[MAX_NLEN];
-    char out_val[MAX_NLEN + 20];
     ItemEntity *o_ptr;
     if (item >= 0) {
         o_ptr = &player_ptr->inventory_list[item];
@@ -293,9 +292,14 @@ bool verify(PlayerType *player_ptr, concptr prompt, INVENTORY_IDX item)
         o_ptr = &player_ptr->current_floor_ptr->o_list[0 - item];
     }
 
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
-    (void)sprintf(out_val, _("%s%sですか? ", "%s %s? "), prompt, o_name);
-    return get_check(out_val);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
+    std::stringstream ss;
+    ss << prompt;
+#ifndef JP
+    ss << ' ';
+#endif
+    ss << item_name << _("ですか? ", "? ");
+    return get_check(ss.str());
 }
 
 /*!

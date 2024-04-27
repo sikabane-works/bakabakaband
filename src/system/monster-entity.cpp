@@ -96,6 +96,11 @@ short MonsterEntity::get_remaining_sleep() const
     return this->mtimed[MTIMED_CSLEEP];
 }
 
+bool MonsterEntity::is_dead() const
+{
+    return this->hp < 0;
+}
+
 bool MonsterEntity::is_asleep() const
 {
     return this->get_remaining_sleep() > 0;
@@ -180,4 +185,36 @@ byte MonsterEntity::get_temporary_speed() const
     }
 
     return speed;
+}
+
+/*!
+ * @brief モンスターが生命体かどうかを返す
+ * @param is_apperance たぬき、カメレオン、各種誤認ならtrue
+ * @return 生命体ならばtrue
+ * @todo kind_flags をMonsterEntityへコピーする (将来的なモンスター仕様の拡張)
+ */
+bool MonsterEntity::has_living_flag(bool is_apperance) const
+{
+    const auto &monrace = monraces_info[is_apperance ? this->ap_r_idx : this->r_idx];
+    return monrace.has_living_flag();
+}
+
+/*!
+ * @brief モンスターが自爆するかどうかを返す
+ * @return 自爆するならばならばtrue
+ */
+bool MonsterEntity::is_explodable() const
+{
+    const auto &monrace = monraces_info[this->r_idx];
+    return monrace.is_explodable();
+}
+
+/*!
+ * @brief モンスターを撃破した際の述語メッセージを返す
+ * @return 撃破されたモンスターの述語
+ */
+std::string MonsterEntity::get_died_message() const
+{
+    const auto &monrace = monraces_info[this->r_idx];
+    return monrace.get_died_message();
 }

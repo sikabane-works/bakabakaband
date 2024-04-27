@@ -1,6 +1,4 @@
 ﻿#include "spell-kind/spells-polymorph.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -24,6 +22,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-checker.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -197,8 +196,16 @@ bool trans_sex(PlayerType *player_ptr)
 
     screen_load();
     player_ptr->window_flags |= PW_PLAYER;
-    player_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
-    player_ptr->redraw |= PR_BASIC | PR_HP | PR_MANA | PR_STATS;
+    const auto flags = { StatusRedrawingFlag::BONUS, StatusRedrawingFlag::HP, StatusRedrawingFlag::MP, StatusRedrawingFlag::SPELLS };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags);
+    const auto flags2 = {
+        MainWindowRedrawingFlag::BASIC,
+        MainWindowRedrawingFlag::HP,
+        MainWindowRedrawingFlag::MP,
+        MainWindowRedrawingFlag::ABILITY_SCORE,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags2);
+
     sp_ptr = &sex_info[player_ptr->psex];
     handle_stuff(player_ptr);
     return true;

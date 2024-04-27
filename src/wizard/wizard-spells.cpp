@@ -7,8 +7,6 @@
 #include "wizard/wizard-spells.h"
 #include "blue-magic/blue-magic-checker.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -39,6 +37,7 @@
 #include "system/floor-type-definition.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
@@ -46,7 +45,6 @@
 #include "util/enum-converter.h"
 #include "util/flag-group.h"
 #include "view/display-messages.h"
-
 #include <string_view>
 #include <vector>
 
@@ -229,8 +227,15 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
         v_idx = static_cast<int>(val);
         vault_type *v_ptr = &vaults_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
-        player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
-        player_ptr->redraw |= (PR_MAP);
+
+        const auto flags = { StatusRedrawingFlag::MONSTER_LITE, StatusRedrawingFlag::UN_VIEW, StatusRedrawingFlag::UN_LITE, StatusRedrawingFlag::VIEW, StatusRedrawingFlag::LITE,
+            StatusRedrawingFlag::FLOW, StatusRedrawingFlag::MONSTER_LITE, StatusRedrawingFlag::MONSTER_STATUSES };
+        RedrawingFlagsUpdater::get_instance().set_flags(flags);
+
+        const auto flags2 = {
+            MainWindowRedrawingFlag::MAP,
+        };
+        RedrawingFlagsUpdater::get_instance().set_flags(flags2);
         player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
     }
 }
@@ -278,15 +283,19 @@ void wiz_kill_target(PlayerType *player_ptr, int dam, AttributeType effect_idx, 
         for (auto i = 1; i <= 23; i++) {
             prt("", i, 0);
         }
+
         for (auto i = 0U; i < std::size(gf_descriptions); ++i) {
-            auto name = std::string_view(gf_descriptions[i].name).substr(3); // 先頭の"GF_"を取り除く
-            auto num = enum2i(gf_descriptions[i].num);
-            put_str(format("%03d:%^-.10s", num, name.data()), 1 + i / 5, 1 + (i % 5) * 16);
+            const auto &gf_description = gf_descriptions[i];
+            auto name = std::string_view(gf_description.name).substr(3); // 先頭の"GF_"を取り除く
+            auto num = enum2i(gf_description.num);
+            put_str(format("%03d:%-.10s^", num, name.data()), 1 + i / 5, 1 + (i % 5) * 16);
         }
+
         if (!get_value("EffectID", 1, max - 1, &idx)) {
             screen_load();
             return;
         }
+
         screen_load();
     }
 

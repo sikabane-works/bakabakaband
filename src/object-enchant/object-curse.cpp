@@ -1,5 +1,4 @@
 ﻿#include "object-enchant/object-curse.h"
-#include "core/player-update-types.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "inventory/inventory-slot-types.h"
@@ -11,6 +10,7 @@
 #include "object/object-flags.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 #include "view/display-messages.h"
@@ -71,19 +71,19 @@ void curse_equipment(PlayerType *player_ptr, PERCENTAGE chance, PERCENTAGE heavy
     }
 
     auto *o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + randint0(12)];
-    if (!o_ptr->bi_id) {
+    if (!o_ptr->is_valid()) {
         return;
     }
-    auto oflgs = object_flags(o_ptr);
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+
+    auto oflags = object_flags(o_ptr);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
 
     /* Extra, biased saving throw for blessed items */
-    if (oflgs.has(TR_BLESSED)) {
+    if (oflags.has(TR_BLESSED)) {
 #ifdef JP
-        msg_format("祝福された%sは呪いを跳ね返した！", o_name);
+        msg_format("祝福された%sは呪いを跳ね返した！", item_name.data());
 #else
-        msg_format("Your blessed %s resist%s cursing!", o_name, ((o_ptr->number > 1) ? "" : "s"));
+        msg_format("Your blessed %s resist%s cursing!", item_name.data(), ((o_ptr->number > 1) ? "" : "s"));
 #endif
         /* Hmmm -- can we wear multiple items? If not, this is unnecessary */
         return;
@@ -91,7 +91,7 @@ void curse_equipment(PlayerType *player_ptr, PERCENTAGE chance, PERCENTAGE heavy
 
     bool changed = false;
     int curse_power = 0;
-    if ((randint1(100) <= heavy_chance) && (o_ptr->is_artifact() || o_ptr->is_ego())) {
+    if ((randint1(100) <= heavy_chance) && (o_ptr->is_fixed_or_random_artifact() || o_ptr->is_ego())) {
         if (o_ptr->curse_flags.has_not(CurseTraitType::HEAVY_CURSE)) {
             changed = true;
         }
@@ -116,9 +116,9 @@ void curse_equipment(PlayerType *player_ptr, PERCENTAGE chance, PERCENTAGE heavy
     }
 
     if (changed) {
-        msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding %s..."), o_name);
+        msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding %s..."), item_name.data());
         o_ptr->feeling = FEEL_NONE;
     }
 
-    player_ptr->update |= PU_BONUS;
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
 }

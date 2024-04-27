@@ -363,7 +363,7 @@ void display_monster_kind(lore_type *lore_ptr)
     if (lore_ptr->kind_flags.has_none_of({ MonsterKindType::DRAGON, MonsterKindType::DEMON,
             MonsterKindType::GIANT, MonsterKindType::TROLL, MonsterKindType::ORC, MonsterKindType::ANGEL,
             MonsterKindType::QUANTUM, MonsterKindType::HUMAN, MonsterKindType::ELDRAZI, MonsterKindType::QUYLTHLUG, MonsterKindType::ELF,
-            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER, MonsterKindType::TANK })) {
+            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER, MonsterKindType::TANK, MonsterKindType::ELEMENTAL, MonsterKindType::GOLEM })) {
         hooked_roff(_("モンスター", " creature"));
         return;
     }
@@ -426,6 +426,14 @@ void display_monster_kind(lore_type *lore_ptr)
 
     if (lore_ptr->kind_flags.has(MonsterKindType::TANK)) {
         hook_c_roff(TERM_SLATE, _("戦車", " tank"));
+    }
+
+    if (lore_ptr->kind_flags.has(MonsterKindType::ELEMENTAL)) {
+        hook_c_roff(TERM_ORANGE, _("エレメンタル", " elemental"));
+    }
+
+    if (lore_ptr->kind_flags.has(MonsterKindType::GOLEM)) {
+        hook_c_roff(TERM_ORANGE, _("ゴーレム", " golem"));
     }
 }
 
@@ -753,8 +761,8 @@ void display_monster_sometimes(lore_type *lore_ptr)
     for (int n = 0; n < lore_ptr->vn; n++) {
 #ifdef JP
         if (n != lore_ptr->vn - 1) {
-            jverb(lore_ptr->vp[n], lore_ptr->jverb_buf, JVERB_OR);
-            hook_c_roff(lore_ptr->color[n], lore_ptr->jverb_buf);
+            const auto verb = conjugate_jverb(lore_ptr->vp[n], JVerbConjugationType::OR);
+            hook_c_roff(lore_ptr->color[n], verb);
             hook_c_roff(lore_ptr->color[n], "り");
             hooked_roff("、");
         } else {

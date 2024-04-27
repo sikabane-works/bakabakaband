@@ -7,8 +7,6 @@
 #include "spell-kind/spells-floor.h"
 #include "action/travel-execution.h"
 #include "cmd-io/cmd-dump.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/quest.h"
@@ -52,6 +50,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world-collapsion.h"
@@ -121,9 +120,10 @@ void wiz_lite(PlayerType *player_ptr, bool ninja)
         }
     }
 
-    player_ptr->update |= (PU_MONSTERS);
-    player_ptr->redraw |= (PR_MAP);
-    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON | PW_FOUND_ITEM_LIST);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
+    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON | PW_FOUND_ITEMS);
 
     if (player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) {
         set_superstealth(player_ptr, false);
@@ -177,11 +177,18 @@ void wiz_dark(PlayerType *player_ptr)
     /* Forget travel route when we have forgotten map */
     forget_travel_flow(player_ptr->current_floor_ptr);
 
-    player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE);
-    player_ptr->update |= (PU_VIEW | PU_LITE | PU_MON_LITE);
-    player_ptr->update |= (PU_MONSTERS);
-    player_ptr->redraw |= (PR_MAP);
-    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON | PW_FOUND_ITEM_LIST);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::UN_VIEW,
+        StatusRedrawingFlag::UN_LITE,
+        StatusRedrawingFlag::VIEW,
+        StatusRedrawingFlag::LITE,
+        StatusRedrawingFlag::MONSTER_LITE,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+    };
+    rfu.set_flags(flags_srf);
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
+    player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON | PW_FOUND_ITEMS);
 }
 
 /*
@@ -234,7 +241,8 @@ void map_area(PlayerType *player_ptr, POSITION range)
         }
     }
 
-    player_ptr->redraw |= (PR_MAP);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
     player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 }
 
@@ -257,7 +265,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
 {
     /* Prevent destruction of quest levels and town */
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if ((inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number)) || !floor_ptr->dun_level) {
+    if ((inside_quest(floor_ptr->quest_number) && QuestType::is_fixed(floor_ptr->quest_number)) || !floor_ptr->dun_level) {
         if (!in_generate) {
             msg_print(_("破壊の力はかき消された…", "The power of destruction has been drowned out ..."));
         }
@@ -352,12 +360,11 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
 
                     /* Hack -- Preserve unknown artifacts */
                     if (o_ptr->is_fixed_artifact() && (!o_ptr->is_known() || in_generate)) {
-                        artifacts_info.at(o_ptr->fixed_artifact_idx).is_generated = false;
+                        o_ptr->get_fixed_artifact().is_generated = false;
 
                         if (in_generate && cheat_peek) {
-                            GAME_TEXT o_name[MAX_NLEN];
-                            describe_flavor(player_ptr, o_name, o_ptr, (OD_NAME_ONLY | OD_STORE));
-                            msg_format(_("伝説のアイテム (%s) は生成中に*破壊*された。", "Artifact (%s) was *destroyed* during generation."), o_name);
+                            const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_NAME_ONLY | OD_STORE));
+                            msg_format(_("伝説のアイテム (%s) は生成中に*破壊*された。", "Artifact (%s) was *destroyed* during generation."), item_name.data());
                         }
                     } else if (in_generate && cheat_peek && o_ptr->is_random_artifact()) {
                         msg_print(
@@ -389,7 +396,7 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
                     cave_set_feat(player_ptr, y, x, feat_magma_vein);
                 } else {
                     /* Create floor */
-                    cave_set_feat(player_ptr, y, x, feat_ground_type[randint0(100)]);
+                    cave_set_feat(player_ptr, y, x, rand_choice(feat_ground_type));
                 }
 
                 continue;
@@ -471,10 +478,18 @@ bool destroy_area(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION r, 
     }
 
     forget_flow(floor_ptr);
-
-    /* Mega-Hack -- Forget the view and lite */
-    player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE | PU_VIEW | PU_LITE | PU_FLOW | PU_MON_LITE | PU_MONSTERS);
-    player_ptr->redraw |= (PR_MAP);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::UN_VIEW,
+        StatusRedrawingFlag::UN_LITE,
+        StatusRedrawingFlag::VIEW,
+        StatusRedrawingFlag::LITE,
+        StatusRedrawingFlag::FLOW,
+        StatusRedrawingFlag::MONSTER_LITE,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+    };
+    rfu.set_flags(flags_srf);
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
     player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
 
     if (floor_ptr->grid_array[player_ptr->y][player_ptr->x].info & CAVE_GLOW) {

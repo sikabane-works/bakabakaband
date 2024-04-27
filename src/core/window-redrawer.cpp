@@ -4,7 +4,6 @@
  * @author Hourier
  */
 #include "core/window-redrawer.h"
-#include "core/player-redraw-types.h"
 #include "core/stuff-handler.h"
 #include "floor/floor-util.h"
 #include "game-option/option-flags.h"
@@ -12,13 +11,13 @@
 #include "player-base/player-class.h"
 #include "player-info/race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "view/display-player.h"
-#include "window/display-sub-window-spells.h"
 #include "window/display-sub-windows.h"
 #include "window/main-window-left-frame.h"
 #include "window/main-window-row-column.h"
@@ -50,14 +49,17 @@ void redraw_window(void)
  */
 static void print_dungeon(PlayerType *player_ptr)
 {
-    c_put_str(TERM_WHITE, "             ", ROW_DUNGEON, COL_DUNGEON);
-    concptr dungeon_name = map_name(player_ptr);
-    TERM_LEN col = COL_DUNGEON + 6 - strlen(dungeon_name) / 2;
+    TERM_LEN width, height;
+    term_get_size(&width, &height);
+
+    c_put_str(TERM_WHITE, "             ", height + ROW_DUNGEON, COL_DUNGEON);
+    const auto dungeon_name = map_name(player_ptr);
+    TERM_LEN col = COL_DUNGEON + 6 - dungeon_name.length() / 2;
     if (col < 0) {
         col = 0;
     }
 
-    c_put_str(TERM_L_UMBER, format("%s", dungeon_name), ROW_DUNGEON, col);
+    c_put_str(TERM_L_UMBER, dungeon_name, height + ROW_DUNGEON, col);
 }
 
 /*!
@@ -66,7 +68,8 @@ static void print_dungeon(PlayerType *player_ptr)
  */
 void redraw_stuff(PlayerType *player_ptr)
 {
-    if (!player_ptr->redraw) {
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    if (!rfu.any_main()) {
         return;
     }
 
@@ -78,23 +81,33 @@ void redraw_stuff(PlayerType *player_ptr)
         return;
     }
 
-    if (player_ptr->redraw & (PR_WIPE)) {
-        player_ptr->redraw &= ~(PR_WIPE);
+    if (rfu.has(MainWindowRedrawingFlag::WIPE)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::WIPE);
         msg_print(nullptr);
         term_clear();
     }
 
-    if (player_ptr->redraw & (PR_MAP)) {
-        player_ptr->redraw &= ~(PR_MAP);
+    if (rfu.has(MainWindowRedrawingFlag::MAP)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::MAP);
         print_map(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_BASIC)) {
-        player_ptr->redraw &= ~(PR_BASIC);
-        player_ptr->redraw &= ~(PR_MISC | PR_TITLE | PR_STATS);
-        player_ptr->redraw &= ~(PR_LEV | PR_EXP | PR_GOLD);
-        player_ptr->redraw &= ~(PR_ARMOR | PR_HP | PR_MANA);
-        player_ptr->redraw &= ~(PR_DEPTH | PR_HEALTH | PR_UHEALTH);
+    if (rfu.has(MainWindowRedrawingFlag::BASIC)) {
+        const auto flags = {
+            MainWindowRedrawingFlag::BASIC,
+            MainWindowRedrawingFlag::TITLE,
+            MainWindowRedrawingFlag::ABILITY_SCORE,
+            MainWindowRedrawingFlag::LEVEL,
+            MainWindowRedrawingFlag::EXP,
+            MainWindowRedrawingFlag::GOLD,
+            MainWindowRedrawingFlag::AC,
+            MainWindowRedrawingFlag::HP,
+            MainWindowRedrawingFlag::MP,
+            MainWindowRedrawingFlag::DEPTH,
+            MainWindowRedrawingFlag::HEALTH,
+            MainWindowRedrawingFlag::UHEALTH,
+        };
+        rfu.reset_flags(flags);
         print_frame_basic(player_ptr);
         WorldTurnProcessor(player_ptr).print_time();
         WorldTurnProcessor(player_ptr).print_world_collapse();
@@ -102,33 +115,28 @@ void redraw_stuff(PlayerType *player_ptr)
         print_dungeon(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_EQUIPPY)) {
-        player_ptr->redraw &= ~(PR_EQUIPPY);
+    if (rfu.has(MainWindowRedrawingFlag::EQUIPPY)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::EQUIPPY);
         display_player_equippy(player_ptr, ROW_EQUIPPY, COL_EQUIPPY, 0);
     }
 
-    if (player_ptr->redraw & (PR_MISC)) {
-        player_ptr->redraw &= ~(PR_MISC);
-        print_field(rp_ptr->title, ROW_RACE, COL_RACE);
-    }
-
-    if (player_ptr->redraw & (PR_TITLE)) {
-        player_ptr->redraw &= ~(PR_TITLE);
+    if (rfu.has(MainWindowRedrawingFlag::TITLE)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::TITLE);
         print_title(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_LEV)) {
-        player_ptr->redraw &= ~(PR_LEV);
+    if (rfu.has(MainWindowRedrawingFlag::LEVEL)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::LEVEL);
         print_level(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_EXP)) {
-        player_ptr->redraw &= ~(PR_EXP);
+    if (rfu.has(MainWindowRedrawingFlag::EXP)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::EXP);
         print_exp(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_STATS)) {
-        player_ptr->redraw &= ~(PR_STATS);
+    if (rfu.has(MainWindowRedrawingFlag::ABILITY_SCORE)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::ABILITY_SCORE);
         print_stat(player_ptr, A_STR);
         print_stat(player_ptr, A_INT);
         print_stat(player_ptr, A_WIS);
@@ -137,90 +145,98 @@ void redraw_stuff(PlayerType *player_ptr)
         print_stat(player_ptr, A_CHR);
     }
 
-    if (player_ptr->redraw & (PR_STATUS)) {
-        player_ptr->redraw &= ~(PR_STATUS);
+    if (rfu.has(MainWindowRedrawingFlag::TIMED_EFFECT)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
         print_status(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_ARMOR)) {
-        player_ptr->redraw &= ~(PR_ARMOR);
+    if (rfu.has(MainWindowRedrawingFlag::AC)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::AC);
         print_ac(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_HP)) {
-        player_ptr->redraw &= ~(PR_HP);
+    if (rfu.has(MainWindowRedrawingFlag::HP)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::HP);
         print_hp(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_MANA)) {
-        player_ptr->redraw &= ~(PR_MANA);
+    if (rfu.has(MainWindowRedrawingFlag::MP)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::MP);
         print_sp(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_GOLD)) {
-        player_ptr->redraw &= ~(PR_GOLD);
+    if (rfu.has(MainWindowRedrawingFlag::GOLD)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::GOLD);
         print_gold(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_DEPTH)) {
-        player_ptr->redraw &= ~(PR_DEPTH);
+    if (rfu.has(MainWindowRedrawingFlag::DEPTH)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::DEPTH);
         print_depth(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_HEALTH)) {
-        player_ptr->redraw &= ~(PR_HEALTH);
-        health_redraw(player_ptr, false);
+    if (rfu.has(MainWindowRedrawingFlag::UHEALTH)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::UHEALTH);
+        print_health(player_ptr, true);
     }
 
-    if (player_ptr->redraw & (PR_UHEALTH)) {
-        player_ptr->redraw &= ~(PR_UHEALTH);
-        health_redraw(player_ptr, true);
+    if (rfu.has(MainWindowRedrawingFlag::HEALTH)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::HEALTH);
+        print_health(player_ptr, false);
     }
 
-    if (player_ptr->redraw & (PR_EXTRA)) {
-        player_ptr->redraw &= ~(PR_EXTRA);
-        player_ptr->redraw &= ~(PR_CUT | PR_STUN);
-        player_ptr->redraw &= ~(PR_HUNGER);
-        player_ptr->redraw &= ~(PR_STATE | PR_SPEED | PR_STUDY | PR_IMITATION | PR_STATUS);
+    if (rfu.has(MainWindowRedrawingFlag::EXTRA)) {
+        const auto flags = {
+            MainWindowRedrawingFlag::EXTRA,
+            MainWindowRedrawingFlag::CUT,
+            MainWindowRedrawingFlag::STUN,
+            MainWindowRedrawingFlag::HUNGER,
+            MainWindowRedrawingFlag::ACTION,
+            MainWindowRedrawingFlag::SPEED,
+            MainWindowRedrawingFlag::STUDY,
+            MainWindowRedrawingFlag::IMITATION,
+            MainWindowRedrawingFlag::TIMED_EFFECT,
+        };
+        rfu.reset_flags(flags);
         print_frame_extra(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_CUT)) {
-        player_ptr->redraw &= ~(PR_CUT);
+    if (rfu.has(MainWindowRedrawingFlag::CUT)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::CUT);
         print_cut(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_STUN)) {
-        player_ptr->redraw &= ~(PR_STUN);
+    if (rfu.has(MainWindowRedrawingFlag::STUN)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::STUN);
         print_stun(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_HUNGER)) {
-        player_ptr->redraw &= ~(PR_HUNGER);
+    if (rfu.has(MainWindowRedrawingFlag::HUNGER)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::HUNGER);
         print_hunger(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_STATE)) {
-        player_ptr->redraw &= ~(PR_STATE);
+    if (rfu.has(MainWindowRedrawingFlag::ACTION)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::ACTION);
         print_state(player_ptr);
     }
 
-    if (player_ptr->redraw & (PR_SPEED)) {
-        player_ptr->redraw &= ~(PR_SPEED);
+    if (rfu.has(MainWindowRedrawingFlag::SPEED)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::SPEED);
         print_speed(player_ptr);
     }
 
     if (PlayerClass(player_ptr).equals(PlayerClassType::IMITATOR)) {
-        if (player_ptr->redraw & (PR_IMITATION)) {
-            player_ptr->redraw &= ~(PR_IMITATION);
+        if (rfu.has(MainWindowRedrawingFlag::IMITATION)) {
+            rfu.reset_flag(MainWindowRedrawingFlag::IMITATION);
             print_imitation(player_ptr);
         }
 
         return;
     }
 
-    if (player_ptr->redraw & (PR_STUDY)) {
-        player_ptr->redraw &= ~(PR_STUDY);
+    if (rfu.has(MainWindowRedrawingFlag::STUDY)) {
+        rfu.reset_flag(MainWindowRedrawingFlag::STUDY);
         print_study(player_ptr);
     }
 }
@@ -244,13 +260,13 @@ void window_stuff(PlayerType *player_ptr)
     }
     BIT_FLAGS window_flags = player_ptr->window_flags & mask;
 
-    if (window_flags & (PW_INVEN)) {
-        player_ptr->window_flags &= ~(PW_INVEN);
+    if (window_flags & (PW_INVENTORY)) {
+        player_ptr->window_flags &= ~(PW_INVENTORY);
         fix_inventory(player_ptr);
     }
 
-    if (window_flags & (PW_EQUIP)) {
-        player_ptr->window_flags &= ~(PW_EQUIP);
+    if (window_flags & (PW_EQUIPMENT)) {
+        player_ptr->window_flags &= ~(PW_EQUIPMENT);
         fix_equip(player_ptr);
     }
 
@@ -265,8 +281,8 @@ void window_stuff(PlayerType *player_ptr)
     }
 
     // モンスターBGM対応のため、視界内モンスター表示のサブウインドウなし時も処理を行う
-    if (player_ptr->window_flags & (PW_MONSTER_LIST)) {
-        player_ptr->window_flags &= ~(PW_MONSTER_LIST);
+    if (player_ptr->window_flags & (PW_SIGHT_MONSTERS)) {
+        player_ptr->window_flags &= ~(PW_SIGHT_MONSTERS);
         fix_monster_list(player_ptr);
     }
 
@@ -285,24 +301,24 @@ void window_stuff(PlayerType *player_ptr)
         fix_dungeon(player_ptr);
     }
 
-    if (window_flags & (PW_MONSTER)) {
-        player_ptr->window_flags &= ~(PW_MONSTER);
+    if (window_flags & (PW_MONSTER_LORE)) {
+        player_ptr->window_flags &= ~(PW_MONSTER_LORE);
         fix_monster(player_ptr);
     }
 
-    if (window_flags & (PW_OBJECT)) {
-        player_ptr->window_flags &= ~(PW_OBJECT);
+    if (window_flags & (PW_ITEM_KNOWLEDGTE)) {
+        player_ptr->window_flags &= ~(PW_ITEM_KNOWLEDGTE);
         fix_object(player_ptr);
     }
 
-    if (any_bits(window_flags, PW_FLOOR_ITEM_LIST)) {
-        reset_bits(player_ptr->window_flags, PW_FLOOR_ITEM_LIST);
+    if (any_bits(window_flags, PW_FLOOR_ITEMS)) {
+        reset_bits(player_ptr->window_flags, PW_FLOOR_ITEMS);
         // ウィンドウサイズ変更に対応できず。カーソル位置を取る必要がある。
         fix_floor_item_list(player_ptr, player_ptr->y, player_ptr->x);
     }
 
-    if (any_bits(window_flags, PW_FOUND_ITEM_LIST)) {
-        reset_bits(player_ptr->window_flags, PW_FOUND_ITEM_LIST);
+    if (any_bits(window_flags, PW_FOUND_ITEMS)) {
+        reset_bits(player_ptr->window_flags, PW_FOUND_ITEMS);
         fix_found_item_list(player_ptr);
     }
 }

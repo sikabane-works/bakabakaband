@@ -1,8 +1,6 @@
 ﻿#include "spell-realm/spells-craft.h"
 #include "avatar/avatar.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -21,6 +19,7 @@
 #include "sv-definition/sv-protector-types.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "view/display-messages.h"
@@ -88,8 +87,10 @@ bool set_ele_attack(PlayerType *player_ptr, uint32_t attack_type, TIME_EFFECT v)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->redraw |= (PR_STATUS);
-    player_ptr->update |= (PU_BONUS);
+
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
 
     return true;
@@ -149,8 +150,10 @@ bool set_ele_immune(PlayerType *player_ptr, uint32_t immune_type, TIME_EFFECT v)
     if (disturb_state) {
         disturb(player_ptr, false, false);
     }
-    player_ptr->redraw |= (PR_STATUS);
-    player_ptr->update |= (PU_BONUS);
+
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
 
     return true;
@@ -278,22 +281,20 @@ bool pulish_shield(PlayerType *player_ptr)
         return false;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
-
-    auto is_pulish_successful = (o_ptr->bi_id > 0) && !o_ptr->is_artifact() && !o_ptr->is_ego();
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
+    auto is_pulish_successful = o_ptr->is_valid() && !o_ptr->is_fixed_or_random_artifact() && !o_ptr->is_ego();
     is_pulish_successful &= !o_ptr->is_cursed();
     is_pulish_successful &= (o_ptr->bi_key.sval() != SV_MIRROR_SHIELD);
     if (is_pulish_successful) {
 #ifdef JP
-        msg_format("%sは輝いた！", o_name);
+        msg_format("%sは輝いた！", item_name.data());
 #else
-        msg_format("%s %s shine%s!", ((item >= 0) ? "Your" : "The"), o_name, ((o_ptr->number > 1) ? "" : "s"));
+        msg_format("%s %s shine%s!", ((item >= 0) ? "Your" : "The"), item_name.data(), ((o_ptr->number > 1) ? "" : "s"));
 #endif
         o_ptr->ego_idx = EgoType::REFLECTION;
         enchant_equipment(player_ptr, o_ptr, randint0(3) + 4, ENCH_TOAC);
         o_ptr->discount = 99;
-        chg_virtue(player_ptr, V_ENCHANT, 2);
+        chg_virtue(player_ptr, Virtue::ENCHANT, 2);
         return true;
     }
 
@@ -302,7 +303,7 @@ bool pulish_shield(PlayerType *player_ptr)
     }
 
     msg_print(_("失敗した。", "Failed."));
-    chg_virtue(player_ptr, V_ENCHANT, -2);
+    chg_virtue(player_ptr, Virtue::ENCHANT, -2);
     calc_android_exp(player_ptr);
     return false;
 }

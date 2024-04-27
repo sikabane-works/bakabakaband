@@ -3,8 +3,6 @@
 #include "cmd-action/cmd-attack.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "effect/spells-effect-util.h"
@@ -55,6 +53,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
 #include "target/target-setter.h"
@@ -102,6 +101,7 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
     ang_sort(player_ptr, who.data(), &dummy_why, who.size(), ang_sort_comp_pet_dismiss, ang_sort_swap_hook);
 
     /* Process the monsters (backwards) */
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     for (auto i = 0U; i < who.size(); i++) {
         auto pet_ctr = who[i];
         m_ptr = &player_ptr->current_floor_ptr->m_list[pet_ctr];
@@ -114,8 +114,8 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
             /* Hack -- health bar for this monster */
             health_track(player_ptr, pet_ctr);
             handle_stuff(player_ptr);
-
-            msg_format(_("%sを放しますか？ [Yes/No/Unnamed (%d体)]", "Dismiss %s? [Yes/No/Unnamed (%d remain)]"), friend_name.data(), who.size() - i);
+            constexpr auto mes = _("%sを放しますか？ [Yes/No/Unnamed (%lu体)]", "Dismiss %s? [Yes/No/Unnamed (%lu remain)]");
+            msg_format(mes, friend_name.data(), who.size() - i);
 
             if (m_ptr->ml) {
                 move_cursor_relative(m_ptr->fy, m_ptr->fx);
@@ -160,14 +160,16 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
                 msg_format(_("%sから降りた。", "You dismount from %s. "), friend_name.data());
 
                 player_ptr->riding = 0;
-
-                player_ptr->update |= (PU_MONSTERS);
-                player_ptr->redraw |= (PR_EXTRA | PR_UHEALTH);
+                rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+                const auto flags = {
+                    MainWindowRedrawingFlag::EXTRA,
+                    MainWindowRedrawingFlag::UHEALTH,
+                };
+                rfu.set_flags(flags);
             }
 
-            /* HACK : Add the line to message buffer */
             msg_format(_("%s を放した。", "Dismissed %s."), friend_name.data());
-            player_ptr->update |= (PU_BONUS);
+            rfu.set_flag(StatusRedrawingFlag::BONUS);
             player_ptr->window_flags |= (PW_MESSAGE);
 
             delete_monster_idx(player_ptr, pet_ctr);
@@ -262,12 +264,13 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
         if (!can_player_ride_pet(player_ptr, g_ptr, true)) {
             /* Feature code (applying "mimic" field) */
             auto *f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
+            using Tc = TerrainCharacteristics;
 #ifdef JP
             msg_format("そのモンスターは%sの%sにいる。", f_ptr->name.data(),
-                (f_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY }) || f_ptr->flags.has_none_of({ TerrainCharacteristics::LOS, TerrainCharacteristics::TREE })) ? "中" : "上");
+                (f_ptr->flags.has_none_of({ Tc::MOVE, Tc::CAN_FLY }) || f_ptr->flags.has_none_of({ Tc::LOS, Tc::TREE })) ? "中" : "上");
 #else
             msg_format("This monster is %s the %s.",
-                (f_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY }) || f_ptr->flags.has_none_of({ TerrainCharacteristics::LOS, TerrainCharacteristics::TREE })) ? "in" : "on", f_ptr->name.data());
+                (f_ptr->flags.has_none_of({ Tc::MOVE, Tc::CAN_FLY }) || f_ptr->flags.has_none_of({ Tc::LOS, Tc::TREE })) ? "in" : "on", f_ptr->name.data());
 #endif
 
             return false;
@@ -298,14 +301,20 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
 
-    /* Mega-Hack -- Forget the view and lite */
-    player_ptr->update |= (PU_UN_VIEW | PU_UN_LITE);
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->redraw |= (PR_MAP | PR_EXTRA);
-    player_ptr->redraw |= (PR_UHEALTH);
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::UN_VIEW,
+        StatusRedrawingFlag::UN_LITE,
+        StatusRedrawingFlag::BONUS,
+    };
+    rfu.set_flags(flags_srf);
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::MAP,
+        MainWindowRedrawingFlag::EXTRA,
+        MainWindowRedrawingFlag::UHEALTH,
+    };
+    rfu.set_flags(flags_mwrf);
     (void)move_player_effect(player_ptr, y, x, MPE_HANDLE_STUFF | MPE_ENERGY_USE | MPE_DONT_PICKUP | MPE_DONT_SWAP_MON);
-
     return true;
 }
 
@@ -503,7 +512,7 @@ void do_cmd_pet(PlayerType *player_ptr)
             switch (player_ptr->pclass) {
             case PlayerClassType::MONK:
             case PlayerClassType::FORCETRAINER:
-            case PlayerClassType::BERSERKER:
+            case PlayerClassType::BERSERKER: {
                 if (empty_hands(player_ptr, false) == (EMPTY_HAND_MAIN | EMPTY_HAND_SUB)) {
                     if (player_ptr->pet_extra_flags & PF_TWO_HANDS) {
                         power_desc[num] = _("片手で格闘する", "use one hand to control the pet you are riding");
@@ -512,7 +521,12 @@ void do_cmd_pet(PlayerType *player_ptr)
                     }
 
                     powers[num++] = PET_TWO_HANDS;
-                } else if ((empty_hands(player_ptr, false) != EMPTY_HAND_NONE) && !has_melee_weapon(player_ptr, INVEN_MAIN_HAND) && !has_melee_weapon(player_ptr, INVEN_SUB_HAND)) {
+                    break;
+                }
+
+                auto has_any_melee_weapon = has_melee_weapon(player_ptr, INVEN_MAIN_HAND);
+                has_any_melee_weapon |= has_melee_weapon(player_ptr, INVEN_SUB_HAND);
+                if ((empty_hands(player_ptr, false) != EMPTY_HAND_NONE) && !has_any_melee_weapon) {
                     if (player_ptr->pet_extra_flags & PF_TWO_HANDS) {
                         power_desc[num] = _("格闘を行わない", "use one hand to control the pet you are riding");
                     } else {
@@ -520,9 +534,11 @@ void do_cmd_pet(PlayerType *player_ptr)
                     }
 
                     powers[num++] = PET_TWO_HANDS;
+                    break;
                 }
-                break;
 
+                break;
+            }
             default:
                 break;
             }
@@ -803,7 +819,8 @@ void do_cmd_pet(PlayerType *player_ptr)
         } else {
             player_ptr->pet_extra_flags |= (PF_TWO_HANDS);
         }
-        player_ptr->update |= (PU_BONUS);
+
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
         handle_stuff(player_ptr);
         break;
     }

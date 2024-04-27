@@ -227,7 +227,7 @@ void wr_player(PlayerType *player_ptr)
     }
 
     for (int i = 0; i < 8; i++) {
-        wr_s16b(player_ptr->vir_types[i]);
+        wr_s16b(enum2i(player_ptr->vir_types[i]));
     }
 
     wr_s32b(int32_t(player_ptr->incident.size()));

@@ -199,12 +199,11 @@ parse_error_type parse_line_feature(FloorType *floor_ptr, char *buf)
             }
         } else if (zz[4][0] == '!') {
             if (inside_quest(floor_ptr->quest_number)) {
-                const auto &quest_list = QuestList::get_instance();
-                const auto a_idx = quest_list[floor_ptr->quest_number].reward_artifact_idx;
-                if (a_idx != FixedArtifactId::NONE) {
-                    const auto &a_ref = artifacts_info.at(a_idx);
-                    if (a_ref.gen_flags.has_not(ItemGenerationTraitType::INSTA_ART)) {
-                        letter[index].object = lookup_baseitem_id(a_ref.bi_key);
+                const auto &quest = QuestList::get_instance()[floor_ptr->quest_number];
+                if (quest.has_reward()) {
+                    const auto &artifact = quest.get_reward();
+                    if (artifact.gen_flags.has_not(ItemGenerationTraitType::INSTA_ART)) {
+                        letter[index].object = lookup_baseitem_id(artifact.bi_key);
                     }
                 }
             }
@@ -282,9 +281,9 @@ parse_error_type parse_line_building(char *buf)
     switch (s[0]) {
     case 'N': {
         if (tokenize(s + 2, 3, zz, 0) == 3) {
-            strcpy(building[index].name, zz[0]);
-            strcpy(building[index].owner_name, zz[1]);
-            strcpy(building[index].owner_race, zz[2]);
+            strcpy(buildings[index].name, zz[0]);
+            strcpy(buildings[index].owner_name, zz[1]);
+            strcpy(buildings[index].owner_race, zz[2]);
             break;
         }
 
@@ -293,12 +292,12 @@ parse_error_type parse_line_building(char *buf)
     case 'A': {
         if (tokenize(s + 2, 8, zz, 0) >= 7) {
             int action_index = atoi(zz[0]);
-            strcpy(building[index].act_names[action_index], zz[1]);
-            building[index].member_costs[action_index] = (PRICE)atoi(zz[2]);
-            building[index].other_costs[action_index] = (PRICE)atoi(zz[3]);
-            building[index].letters[action_index] = zz[4][0];
-            building[index].actions[action_index] = static_cast<int16_t>(atoi(zz[5]));
-            building[index].action_restr[action_index] = static_cast<int16_t>(atoi(zz[6]));
+            strcpy(buildings[index].act_names[action_index], zz[1]);
+            buildings[index].member_costs[action_index] = (PRICE)atoi(zz[2]);
+            buildings[index].other_costs[action_index] = (PRICE)atoi(zz[3]);
+            buildings[index].letters[action_index] = zz[4][0];
+            buildings[index].actions[action_index] = static_cast<int16_t>(atoi(zz[5]));
+            buildings[index].action_restr[action_index] = static_cast<int16_t>(atoi(zz[6]));
             break;
         }
 
@@ -308,7 +307,7 @@ parse_error_type parse_line_building(char *buf)
         auto pct_max = PLAYER_CLASS_TYPE_MAX;
         auto n = tokenize(s + 2, pct_max, zz, 0);
         for (auto i = 0; i < pct_max; i++) {
-            building[index].member_class[i] = (i < n) ? atoi(zz[i]) : 1;
+            buildings[index].member_class[i] = (i < n) ? atoi(zz[i]) : 1;
         }
 
         break;
@@ -316,7 +315,7 @@ parse_error_type parse_line_building(char *buf)
     case 'R': {
         auto n = tokenize(s + 2, MAX_RACES, zz, 0);
         for (int i = 0; i < MAX_RACES; i++) {
-            building[index].member_race[i] = (i < n) ? atoi(zz[i]) : 1;
+            buildings[index].member_race[i] = (i < n) ? atoi(zz[i]) : 1;
         }
 
         break;
@@ -325,7 +324,7 @@ parse_error_type parse_line_building(char *buf)
         int n;
         n = tokenize(s + 2, MAX_MAGIC, zz, 0);
         for (int i = 0; i < MAX_MAGIC; i++) {
-            building[index].member_realm[i + 1] = ((i < n) ? static_cast<int16_t>(atoi(zz[i])) : 1);
+            buildings[index].member_realm[i + 1] = ((i < n) ? static_cast<int16_t>(atoi(zz[i])) : 1);
         }
 
         break;

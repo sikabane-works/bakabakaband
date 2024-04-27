@@ -9,7 +9,6 @@
 #include "avatar/avatar.h"
 #include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -52,6 +51,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
@@ -136,8 +136,8 @@ bool activate_stone_mud(PlayerType *player_ptr)
 bool activate_judgement(PlayerType *player_ptr, concptr name)
 {
     msg_format(_("%sは赤く明るく光った！", "The %s flashes bright red!"), name);
-    chg_virtue(player_ptr, V_KNOWLEDGE, 1);
-    chg_virtue(player_ptr, V_ENLIGHTEN, 1);
+    chg_virtue(player_ptr, Virtue::KNOWLEDGE, 1);
+    chg_virtue(player_ptr, Virtue::ENLIGHTEN, 1);
     wiz_lite(player_ptr, false);
 
     msg_format(_("%sはあなたの体力を奪った...", "The %s drains your vitality..."), name);
@@ -187,7 +187,8 @@ bool activate_unique_detection(PlayerType *player_ptr)
         }
 
         if (m_ptr->r_idx == MonsterRaceId::SAURON) {
-            msg_print(_("あなたは一瞬、瞼なき御目に凝視される感覚に襲われた！", "For a moment, you had the horrible sensation of being stared at by the lidless eye!"));
+            msg_print(_("あなたは一瞬、瞼なき御目に凝視される感覚に襲われた！",
+                "For a moment, you had the horrible sensation of being stared at by the lidless eye!"));
         }
     }
 
@@ -212,7 +213,8 @@ bool activate_cure_lw(PlayerType *player_ptr)
 bool activate_grand_cross(PlayerType *player_ptr)
 {
     msg_print(_("「闇に還れ！」", "You say, 'Return to darkness!'"));
-    (void)project(player_ptr, 0, 8, player_ptr->y, player_ptr->x, (randint1(100) + 200) * 2, AttributeType::HOLY_FIRE, PROJECT_KILL | PROJECT_ITEM | PROJECT_GRID);
+    constexpr auto flags = PROJECT_KILL | PROJECT_ITEM | PROJECT_GRID;
+    (void)project(player_ptr, 0, 8, player_ptr->y, player_ptr->x, (randint1(100) + 200) * 2, AttributeType::HOLY_FIRE, flags);
     return true;
 }
 
@@ -388,7 +390,7 @@ bool activate_protection_elbereth(PlayerType *player_ptr)
     (void)bss.set_blindness(0);
     (void)bss.hallucination(0);
     set_blessed(player_ptr, randint0(25) + 25, true);
-    set_bits(player_ptr->redraw, PR_STATS);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ABILITY_SCORE);
     return true;
 }
 
@@ -442,7 +444,11 @@ bool activate_dispel_magic(PlayerType *player_ptr)
     }
 
     auto m_idx = player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx;
-    if ((m_idx == 0) || !player_has_los_bold(player_ptr, target_row, target_col) || !projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col)) {
+    if (m_idx == 0) {
+        return true;
+    }
+
+    if (!player_has_los_bold(player_ptr, target_row, target_col) || !projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col)) {
         return true;
     }
 

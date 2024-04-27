@@ -12,8 +12,6 @@
 #include "action/action-limited.h"
 #include "cmd-action/cmd-spell.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -38,6 +36,7 @@
 #include "status/action-setter.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
@@ -101,9 +100,8 @@ static int get_hissatsu_power(PlayerType *player_ptr, SPELL_IDX *sn)
         }
     }
 
-    /* Build a prompt (accept all spells) */
-    (void)strnfmt(out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0),
-        "abcdefghijklmnopqrstuvwxyz012345"[num - 1], p);
+    constexpr auto fmt = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
+    (void)strnfmt(out_val, 78, fmt, p, I2A(0), "abcdefghijklmnopqrstuvwxyz012345"[num - 1], p);
 
     if (use_menu) {
         screen_save();
@@ -350,15 +348,13 @@ void do_cmd_hissatsu(PlayerType *player_ptr)
     }
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
-
-    /* Use some mana */
     player_ptr->csp -= spell.smana;
-
-    /* Limit */
     if (player_ptr->csp < 0) {
         player_ptr->csp = 0;
     }
-    player_ptr->redraw |= (PR_MANA);
+
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::MP);
     player_ptr->window_flags |= (PW_PLAYER | PW_SPELL);
 }
 
@@ -383,10 +379,11 @@ void do_cmd_gain_hissatsu(PlayerType *player_ptr)
     msg_format("You can learn %d new special attack%s.", player_ptr->new_spells, (player_ptr->new_spells == 1 ? "" : "s"));
 #endif
 
-    const auto q = _("どの書から学びますか? ", "Study which book? ");
-    const auto s = _("読める書がない。", "You have no books that you can read.");
+    constexpr auto q = _("どの書から学びますか? ", "Study which book? ");
+    constexpr auto s = _("読める書がない。", "You have no books that you can read.");
+    constexpr auto options = USE_INVEN | USE_FLOOR;
     short item;
-    const auto *o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), TvalItemTester(ItemKindType::HISSATSU_BOOK));
+    const auto *o_ptr = choose_object(player_ptr, &item, q, s, options, TvalItemTester(ItemKindType::HISSATSU_BOOK));
     if (o_ptr == nullptr) {
         return;
     }
@@ -424,5 +421,5 @@ void do_cmd_gain_hissatsu(PlayerType *player_ptr)
         PlayerEnergy(player_ptr).set_player_turn_energy(100);
     }
 
-    player_ptr->update |= (PU_SPELLS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::SPELLS);
 }

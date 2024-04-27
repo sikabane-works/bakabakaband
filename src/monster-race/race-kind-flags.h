@@ -38,5 +38,7 @@ enum class MonsterKindType {
     HOMO_SEXUAL = 34,
     TANK = 35,
     HENTAI = 36,
+    ELEMENTAL = 37,
+    GOLEM = 38,
     MAX,
 };

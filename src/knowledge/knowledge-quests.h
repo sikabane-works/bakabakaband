@@ -2,6 +2,7 @@
 
 #include "dungeon/quest.h"
 #include "system/angband.h"
+#include <stdint.h>
 #include <vector>
 
 class PlayerType;

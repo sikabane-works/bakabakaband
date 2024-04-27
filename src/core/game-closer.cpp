@@ -25,6 +25,7 @@
 #include "save/save.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "util/angband-files.h"
 #include "util/int-char-converter.h"
@@ -97,34 +98,30 @@ static void kingly(PlayerType *player_ptr)
 
     player_ptr->exp = player_ptr->max_exp;
     player_ptr->lev = player_ptr->max_plv;
-    TERM_LEN wid, hgt;
-    term_get_size(&wid, &hgt);
-    auto cy = hgt / 2;
-    auto cx = wid / 2;
     player_ptr->au += 10000000L;
     term_clear();
 
-    put_str("#", cy - 11, cx - 1);
-    put_str("#####", cy - 10, cx - 3);
-    put_str("#", cy - 9, cx - 1);
-    put_str(",,,  $$$  ,,,", cy - 8, cx - 7);
-    put_str(",,=$   \"$$$$$\"   $=,,", cy - 7, cx - 11);
-    put_str(",$$        $$$        $$,", cy - 6, cx - 13);
-    put_str("*>         <*>         <*", cy - 5, cx - 13);
-    put_str("$$         $$$         $$", cy - 4, cx - 13);
-    put_str("\"$$        $$$        $$\"", cy - 3, cx - 13);
-    put_str("\"$$       $$$       $$\"", cy - 2, cx - 12);
-    put_str("*#########*#########*", cy - 1, cx - 11);
-    put_str("*#########*#########*", cy, cx - 11);
+    put_str("#", 1, 39);
+    put_str("#####", 2, 37);
+    put_str("#", 3, 39);
+    put_str(",,,  $$$  ,,,", 4, 33);
+    put_str(",,=$   \"$$$$$\"   $=,,", 5, 29);
+    put_str(",$$        $$$        $$,", 6, 27);
+    put_str("*>         <*>         <*", 7, 27);
+    put_str("$$         $$$         $$", 8, 27);
+    put_str("\"$$        $$$        $$\"", 9, 27);
+    put_str("\"$$       $$$       $$\"", 10, 28);
+    put_str("*#########*#########*", 11, 29);
+    put_str("*#########*#########*", 12, 29);
 
 #ifdef JP
-    put_str("Veni, Vidi, Vici!", cy + 3, cx - 9);
-    put_str("来た、見た、勝った！", cy + 4, cx - 10);
-    put_str(format("偉大なる%s万歳！", sp_ptr->winner), cy + 5, cx - 11);
+    put_str("Veni, Vidi, Vici!", 15, 31);
+    put_str("来た、見た、勝った！", 16, 30);
+    put_str(format("偉大なる%s万歳！", sp_ptr->winner), 17, 29);
 #else
-    put_str("Veni, Vidi, Vici!", cy + 3, cx - 9);
-    put_str("I came, I saw, I conquered!", cy + 4, cx - 14);
-    put_str(format("All Hail the Mighty %s!", sp_ptr->winner), cy + 5, cx - 13);
+    put_str("Veni, Vidi, Vici!", 15, 31);
+    put_str("I came, I saw, I conquered!", 16, 26);
+    put_str(format("All Hail the Mighty %s!", sp_ptr->winner), 17, 27);
 #endif
 
     if (!seppuku) {
@@ -134,7 +131,7 @@ static void kingly(PlayerType *player_ptr)
     }
 
     flush();
-    pause_line(hgt - 1);
+    pause_line(MAIN_TERM_MIN_ROWS - 1);
 }
 
 /*!
@@ -148,27 +145,27 @@ static void kingly(PlayerType *player_ptr)
  */
 void close_game(PlayerType *player_ptr)
 {
-    bool do_send = true;
     handle_stuff(player_ptr);
     msg_print(nullptr);
     flush();
     signals_ignore_tstp();
 
     w_ptr->character_icky_depth = 1;
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
+    const auto &path = path_build(ANGBAND_DIR_APEX, "scores.raw");
     safe_setuid_grab(player_ptr);
-    highscore_fd = fd_open(buf, O_RDWR);
+    highscore_fd = fd_open(path, O_RDWR);
     safe_setuid_drop();
 
     if (!check_death(player_ptr)) {
         return;
     }
 
+    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
     if (w_ptr->total_winner) {
         kingly(player_ptr);
     }
 
+    auto do_send = true;
     if (!cheat_save || get_check(_("死んだデータをセーブしますか？ ", "Save death? "))) {
         update_playtime();
         w_ptr->sf_play_time += w_ptr->play_time;

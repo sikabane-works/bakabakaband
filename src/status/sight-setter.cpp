@@ -1,14 +1,34 @@
 ﻿#include "status/sight-setter.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "game-option/disturbance-options.h"
 #include "player/player-status.h"
 #include "realm/realm-song-numbers.h"
 #include "spell-realm/spells-song.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "view/display-messages.h"
+
+static bool update_sight(PlayerType *player_ptr, const bool notice)
+{
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
+    if (!notice) {
+        return false;
+    }
+
+    if (disturb_state) {
+        disturb(player_ptr, false, false);
+    }
+
+    const auto flags = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+    };
+    rfu.set_flags(flags);
+    handle_stuff(player_ptr);
+    return true;
+}
 
 /*!
  * @brief 時限ESPの継続時間をセットする / Set "tim_esp", notice observable changes
@@ -43,19 +63,7 @@ bool set_tim_esp(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->tim_esp = v;
-    player_ptr->redraw |= (PR_STATUS);
-
-    if (!notice) {
-        return false;
-    }
-
-    if (disturb_state) {
-        disturb(player_ptr, false, false);
-    }
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_MONSTERS);
-    handle_stuff(player_ptr);
-    return true;
+    return update_sight(player_ptr, notice);
 }
 
 /*!
@@ -91,19 +99,7 @@ bool set_tim_invis(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->tim_invis = v;
-    player_ptr->redraw |= (PR_STATUS);
-
-    if (!notice) {
-        return false;
-    }
-
-    if (disturb_state) {
-        disturb(player_ptr, false, false);
-    }
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_MONSTERS);
-    handle_stuff(player_ptr);
-    return true;
+    return update_sight(player_ptr, notice);
 }
 
 /*!
@@ -139,17 +135,5 @@ bool set_tim_infra(PlayerType *player_ptr, TIME_EFFECT v, bool do_dec)
     }
 
     player_ptr->tim_infra = v;
-    player_ptr->redraw |= (PR_STATUS);
-
-    if (!notice) {
-        return false;
-    }
-
-    if (disturb_state) {
-        disturb(player_ptr, false, false);
-    }
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->update |= (PU_MONSTERS);
-    handle_stuff(player_ptr);
-    return true;
+    return update_sight(player_ptr, notice);
 }

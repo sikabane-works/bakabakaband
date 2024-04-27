@@ -49,21 +49,21 @@ static void effect_monster_charm_resist(PlayerType *player_ptr, effect_monster_t
         em_ptr->note = _("は突然友好的になったようだ！", " suddenly seems friendly!");
         set_pet(player_ptr, em_ptr->m_ptr);
 
-        chg_virtue(player_ptr, V_INDIVIDUALISM, -1);
+        chg_virtue(player_ptr, Virtue::INDIVIDUALISM, -1);
         if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::ANIMAL)) {
-            chg_virtue(player_ptr, V_NATURE, 1);
+            chg_virtue(player_ptr, Virtue::NATURE, 1);
         }
     }
 }
 
 ProcessResult effect_monster_charm(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    int vir = virtue_number(player_ptr, V_HARMONY);
+    int vir = virtue_number(player_ptr, Virtue::HARMONY);
     if (vir) {
         em_ptr->dam += player_ptr->virtues[vir - 1] / 10;
     }
 
-    vir = virtue_number(player_ptr, V_INDIVIDUALISM);
+    vir = virtue_number(player_ptr, Virtue::INDIVIDUALISM);
     if (vir) {
         em_ptr->dam -= player_ptr->virtues[vir - 1] / 20;
     }
@@ -83,12 +83,12 @@ ProcessResult effect_monster_control_undead(PlayerType *player_ptr, effect_monst
         em_ptr->obvious = true;
     }
 
-    int vir = virtue_number(player_ptr, V_UNLIFE);
+    int vir = virtue_number(player_ptr, Virtue::UNLIFE);
     if (vir) {
         em_ptr->dam += player_ptr->virtues[vir - 1] / 10;
     }
 
-    vir = virtue_number(player_ptr, V_INDIVIDUALISM);
+    vir = virtue_number(player_ptr, Virtue::INDIVIDUALISM);
     if (vir) {
         em_ptr->dam -= player_ptr->virtues[vir - 1] / 20;
     }
@@ -119,12 +119,12 @@ ProcessResult effect_monster_control_demon(PlayerType *player_ptr, effect_monste
         em_ptr->obvious = true;
     }
 
-    int vir = virtue_number(player_ptr, V_UNLIFE);
+    int vir = virtue_number(player_ptr, Virtue::UNLIFE);
     if (vir) {
         em_ptr->dam += player_ptr->virtues[vir - 1] / 10;
     }
 
-    vir = virtue_number(player_ptr, V_INDIVIDUALISM);
+    vir = virtue_number(player_ptr, Virtue::INDIVIDUALISM);
     if (vir) {
         em_ptr->dam -= player_ptr->virtues[vir - 1] / 20;
     }
@@ -155,12 +155,12 @@ ProcessResult effect_monster_control_animal(PlayerType *player_ptr, effect_monst
         em_ptr->obvious = true;
     }
 
-    int vir = virtue_number(player_ptr, V_NATURE);
+    int vir = virtue_number(player_ptr, Virtue::NATURE);
     if (vir) {
         em_ptr->dam += player_ptr->virtues[vir - 1] / 10;
     }
 
-    vir = virtue_number(player_ptr, V_INDIVIDUALISM);
+    vir = virtue_number(player_ptr, Virtue::INDIVIDUALISM);
     if (vir) {
         em_ptr->dam -= player_ptr->virtues[vir - 1] / 20;
     }
@@ -180,7 +180,7 @@ ProcessResult effect_monster_control_animal(PlayerType *player_ptr, effect_monst
         em_ptr->note = _("はなついた。", " is tamed!");
         set_pet(player_ptr, em_ptr->m_ptr);
         if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::ANIMAL)) {
-            chg_virtue(player_ptr, V_NATURE, 1);
+            chg_virtue(player_ptr, Virtue::NATURE, 1);
         }
     }
 
@@ -190,24 +190,24 @@ ProcessResult effect_monster_control_animal(PlayerType *player_ptr, effect_monst
 
 ProcessResult effect_monster_charm_living(PlayerType *player_ptr, effect_monster_type *em_ptr)
 {
-    int vir = virtue_number(player_ptr, V_UNLIFE);
+    int vir = virtue_number(player_ptr, Virtue::UNLIFE);
     if (em_ptr->seen) {
         em_ptr->obvious = true;
     }
 
-    vir = virtue_number(player_ptr, V_UNLIFE);
+    vir = virtue_number(player_ptr, Virtue::UNLIFE);
     if (vir) {
         em_ptr->dam -= player_ptr->virtues[vir - 1] / 10;
     }
 
-    vir = virtue_number(player_ptr, V_INDIVIDUALISM);
+    vir = virtue_number(player_ptr, Virtue::INDIVIDUALISM);
     if (vir) {
         em_ptr->dam -= player_ptr->virtues[vir - 1] / 20;
     }
 
     msg_format(_("%sを見つめた。", "You stare at %s."), em_ptr->m_name);
 
-    if (common_saving_throw_charm(player_ptr, em_ptr->dam, em_ptr->m_ptr) || !monster_living(em_ptr->m_ptr->r_idx)) {
+    if (common_saving_throw_charm(player_ptr, em_ptr->dam, em_ptr->m_ptr) || !em_ptr->m_ptr->has_living_flag()) {
         em_ptr->note = _("には効果がなかった。", " is unaffected.");
         em_ptr->obvious = false;
         if (one_in_(4)) {
@@ -222,7 +222,7 @@ ProcessResult effect_monster_charm_living(PlayerType *player_ptr, effect_monster
         em_ptr->note = _("を支配した。", " is tamed!");
         set_pet(player_ptr, em_ptr->m_ptr);
         if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::ANIMAL)) {
-            chg_virtue(player_ptr, V_NATURE, 1);
+            chg_virtue(player_ptr, Virtue::NATURE, 1);
         }
     }
 
@@ -261,7 +261,7 @@ static void effect_monster_domination_corrupted(PlayerType *player_ptr, effect_m
         return;
     }
 
-    em_ptr->note = nullptr;
+    em_ptr->note = "";
     msg_format(_("%s^の堕落した精神は攻撃を跳ね返した！",
                    (em_ptr->seen ? "%s^'s corrupted mind backlashes your attack!" : "%s^s corrupted mind backlashes your attack!")),
         em_ptr->m_name);
@@ -400,7 +400,7 @@ static int calcutate_capturable_hp(PlayerType *player_ptr, MonsterEntity *m_ptr,
         return hp * 4L;
     }
 
-    if (PlayerClass(player_ptr).equals(PlayerClassType::BEASTMASTER) && monster_living(m_ptr->r_idx)) {
+    if (PlayerClass(player_ptr).equals(PlayerClassType::BEASTMASTER) && m_ptr->has_living_flag()) {
         return hp * 3 / 10;
     }
 

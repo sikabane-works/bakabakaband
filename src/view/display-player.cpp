@@ -31,6 +31,7 @@
 #include "system/floor-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "view/display-characteristic.h"
@@ -68,8 +69,7 @@ static bool display_player_info(PlayerType *player_ptr, int mode)
     }
 
     if (mode == 5) {
-        constexpr auto display_width = 80;
-        TermCenteredOffsetSetter tcos(display_width, std::nullopt);
+        TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, std::nullopt);
         do_cmd_knowledge_mutations(player_ptr);
         return true;
     }
@@ -180,19 +180,20 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
     }
 
     if (w_ptr->total_winner) {
-        return std::string(format(_("…あなたは勝利の後%sした。", "...You %s after winning."),
-            streq(player_ptr->died_from, "Seppuku") ? _("切腹", "committed seppuku") : _("引退", "retired from the adventure")));
+        return format(_("…あなたは勝利の後%sした。", "...You %s after winning."),
+            streq(player_ptr->died_from, "Seppuku") ? _("切腹", "committed seppuku") : _("引退", "retired from the adventure"));
     }
 
     if (!floor_ptr->dun_level) {
+        constexpr auto killed_monster = _("…あなたは%sで%sに殺されて飽きた。", "...You were killed by %s in %s and got tired..");
 #ifdef JP
-        return std::string(format("…あなたは%sで%sに殺されて飽きた。", map_name(player_ptr), player_ptr->died_from.data()));
+        return format(killed_monster, map_name(player_ptr).data(), player_ptr->died_from.data());
 #else
-        return std::string(format("...You were killed by %s in %s and got tired..", player_ptr->died_from.data(), map_name(player_ptr)));
+        return format(killed_monster, player_ptr->died_from.data(), map_name(player_ptr).data());
 #endif
     }
 
-    if (inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number)) {
+    if (inside_quest(floor_ptr->quest_number) && QuestType::is_fixed(floor_ptr->quest_number)) {
         const auto &quest_list = QuestList::get_instance();
 
         /* Get the quest text */
@@ -201,17 +202,19 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
         parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
 
         const auto *q_ptr = &quest_list[floor_ptr->quest_number];
+        constexpr auto killed_quest = _("…あなたは、クエスト「%s」で%sに殺されて飽きた。", "...You were killed by %s in the quest '%s' and god tired..");
 #ifdef JP
-        return std::string(format("…あなたは、クエスト「%s」で%sに殺された飽きた。", q_ptr->name, player_ptr->died_from.data()));
+        return format(killed_quest, q_ptr->name.data(), player_ptr->died_from.data());
 #else
-        return std::string(format("...You were killed by %s in the quest '%s' and god tired..", player_ptr->died_from.data(), q_ptr->name));
+        return format(killed_quest, player_ptr->died_from.data(), q_ptr->name.data());
 #endif
     }
 
+    constexpr auto killed_floor = _("…あなたは、%sの%d階で%sに殺されて飽きた。", "...You were killed by %s on level %d of %s and got tired..");
 #ifdef JP
-    return std::string(format("…あなたは、%sの%d階で%sに殺されて飽きた。", map_name(player_ptr), (int)floor_ptr->dun_level, player_ptr->died_from.data()));
+    return format(killed_floor, map_name(player_ptr).data(), (int)floor_ptr->dun_level, player_ptr->died_from.data());
 #else
-    return std::string(format("...You were killed by %s on level %d of %s and got tired..", player_ptr->died_from.data(), floor_ptr->dun_level, map_name(player_ptr)));
+    return format(killed_floor, player_ptr->died_from.data(), floor_ptr->dun_level, map_name(player_ptr).data());
 #endif
 }
 
@@ -224,7 +227,7 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
 static std::optional<std::string> decide_death_in_quest(PlayerType *player_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (!inside_quest(floor_ptr->quest_number) || !quest_type::is_fixed(floor_ptr->quest_number)) {
+    if (!inside_quest(floor_ptr->quest_number) || !QuestType::is_fixed(floor_ptr->quest_number)) {
         return std::nullopt;
     }
 
@@ -236,7 +239,7 @@ static std::optional<std::string> decide_death_in_quest(PlayerType *player_ptr)
     quest_text_line = 0;
     init_flags = INIT_NAME_ONLY;
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
-    return std::string(format(_("…あなたは現在、 クエスト「%s」を遂行中だ。", "...Now, you are in the quest '%s'."), quest_list[floor_ptr->quest_number].name));
+    return std::string(format(_("…あなたは現在、 クエスト「%s」を遂行中だ。", "...Now, you are in the quest '%s'."), quest_list[floor_ptr->quest_number].name.data()));
 }
 
 /*!
@@ -253,17 +256,18 @@ static std::string decide_current_floor(PlayerType *player_ptr)
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (floor_ptr->dun_level == 0) {
-        return std::string(format(_("…あなたは現在、 %s にいる。", "...Now, you are in %s."), map_name(player_ptr)));
+        return format(_("…あなたは現在、 %s にいる。", "...Now, you are in %s."), map_name(player_ptr).data());
     }
 
     if (auto decision = decide_death_in_quest(player_ptr); decision.has_value()) {
         return decision.value();
     }
 
+    constexpr auto mes = _("…あなたは現在、 %s の %d 階で探索している。", "...Now, you are exploring level %d of %s.");
 #ifdef JP
-    return std::string(format("…あなたは現在、 %s の %d 階で探索している。", map_name(player_ptr), (int)floor_ptr->dun_level));
+    return format(mes, map_name(player_ptr).data(), (int)floor_ptr->dun_level);
 #else
-    return std::string(format("...Now, you are exploring level %d of %s.", (int)floor_ptr->dun_level, map_name(player_ptr)));
+    return format(mes, (int)floor_ptr->dun_level, map_name(player_ptr).data());
 #endif
 }
 
@@ -335,10 +339,10 @@ void display_player_equippy(PlayerType *player_ptr, TERM_LEN y, TERM_LEN x, BIT_
 {
     const auto max_i = (mode & DP_WP) ? INVEN_BOW + 1 : INVEN_TOTAL;
     for (int i = INVEN_MAIN_HAND; i < max_i; i++) {
-        const auto &o_ref = player_ptr->inventory_list[i];
-        auto a = o_ref.get_color();
-        auto c = o_ref.get_symbol();
-        if (!equippy_chars || (o_ref.bi_id == 0)) {
+        const auto &item = player_ptr->inventory_list[i];
+        auto a = item.get_color();
+        auto c = item.get_symbol();
+        if (!equippy_chars || !item.is_valid()) {
             c = ' ';
             a = TERM_DARK;
         }

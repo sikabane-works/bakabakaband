@@ -1,7 +1,6 @@
 ﻿#include "spell-kind/spells-world.h"
 #include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
 #include "dungeon/quest-completion-checker.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
@@ -31,6 +30,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-checker.h"
 #include "target/target-setter.h"
@@ -50,8 +50,10 @@
 bool is_teleport_level_ineffective(PlayerType *player_ptr, MONSTER_IDX idx)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    bool is_special_floor = floor_ptr->inside_arena || player_ptr->phase_out || (inside_quest(floor_ptr->quest_number) && !inside_quest(random_quest_number(player_ptr, floor_ptr->dun_level)));
-    bool is_invalid_floor = idx <= 0;
+    auto is_special_floor = floor_ptr->inside_arena;
+    is_special_floor |= player_ptr->phase_out;
+    is_special_floor |= inside_quest(floor_ptr->quest_number) && !inside_quest(random_quest_number(player_ptr, floor_ptr->dun_level));
+    auto is_invalid_floor = idx <= 0;
     is_invalid_floor &= inside_quest(quest_number(player_ptr, floor_ptr->dun_level)) || (floor_ptr->dun_level >= dungeons_info[player_ptr->dungeon_idx].maxdepth);
     is_invalid_floor &= player_ptr->current_floor_ptr->dun_level >= 1;
     is_invalid_floor &= ironman_downward;
@@ -296,16 +298,16 @@ bool tele_town(PlayerType *player_ptr)
     screen_save();
     clear_bldg(4, 10);
 
-    int i;
-    int num = 0;
-    for (i = 1; i < max_towns; i++) {
+    auto num = 0;
+    const int towns_size = towns_info.size();
+    for (auto i = 1; i < towns_size; i++) {
         char buf[80];
 
         if ((i == VALID_TOWNS) || (i == SECRET_TOWN) || (i == player_ptr->town_num) || !(player_ptr->visit & (1UL << (i - 1)))) {
             continue;
         }
 
-        strnfmt(buf, sizeof(buf), "%c) %-20s", I2A(i - 1), town_info[i].name);
+        strnfmt(buf, sizeof(buf), "%c) %-20s", I2A(i - 1), towns_info[i].name.data());
         prt(buf, 5 + i, 5);
         num++;
     }
@@ -318,25 +320,30 @@ bool tele_town(PlayerType *player_ptr)
     }
 
     prt(_("どこに行きますか:", "Where do you want to go: "), 0, 0);
+    char key;
     while (true) {
-        i = inkey();
+        key = inkey();
 
-        if (i == ESCAPE) {
+        if (key == ESCAPE) {
             screen_load();
             return false;
         }
 
-        else if ((i < 'a') || (i > ('a' + max_towns - 2))) {
-            continue;
-        } else if (((i - 'a' + 1) == player_ptr->town_num) || ((i - 'a' + 1) == VALID_TOWNS) || ((i - 'a' + 1) == SECRET_TOWN) || !(player_ptr->visit & (1UL << (i - 'a')))) {
+        if ((key < 'a') || (key > ('a' + towns_size - 2))) {
             continue;
         }
+
+        const auto town_num = key - 'a' + 1;
+        if ((town_num == player_ptr->town_num) || (town_num == VALID_TOWNS) || (town_num == SECRET_TOWN) || !(player_ptr->visit & (1UL << (key - 'a')))) {
+            continue;
+        }
+
         break;
     }
 
     for (POSITION y = 0; y < w_ptr->max_wild_y; y++) {
         for (POSITION x = 0; x < w_ptr->max_wild_x; x++) {
-            if (wilderness[y][x].town == (i - 'a' + 1)) {
+            if (wilderness[y][x].town == (key - 'a' + 1)) {
                 player_ptr->wilderness_y = y;
                 player_ptr->wilderness_x = x;
             }
@@ -361,16 +368,17 @@ void reserve_alter_reality(PlayerType *player_ptr, TIME_EFFECT turns)
         return;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->alter_reality || turns == 0) {
         player_ptr->alter_reality = 0;
         msg_print(_("景色が元に戻った...", "The view around you returns to normal..."));
-        player_ptr->redraw |= PR_STATUS;
+        rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
         return;
     }
 
     player_ptr->alter_reality = turns;
     msg_print(_("回りの景色が変わり始めた...", "The view around you begins to change..."));
-    player_ptr->redraw |= PR_STATUS;
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
 }
 
 /*!
@@ -414,7 +422,8 @@ static DUNGEON_IDX choose_dungeon(concptr note, POSITION y, POSITION x)
             seiha = true;
         }
 
-        strnfmt(buf, sizeof(buf), _("      %c) %c%-12s : 最大 %d 階", "      %c) %c%-16s : Max level %d"), static_cast<char>('a' + dun.size()), seiha ? '!' : ' ', d_ref.name.data(), (int)max_dlv[d_ref.idx]);
+        constexpr auto fmt = _("      %c) %c%-12s : 最大 %d 階", "      %c) %c%-16s : Max level %d");
+        strnfmt(buf, sizeof(buf), fmt, static_cast<char>('a' + dun.size()), seiha ? '!' : ' ', d_ref.name.data(), (int)max_dlv[d_ref.idx]);
         prt(buf, y + dun.size(), x);
         dun.push_back(d_ref.idx);
     }
@@ -471,10 +480,11 @@ bool recall_player(PlayerType *player_ptr, TIME_EFFECT turns)
         }
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->word_recall || turns == 0) {
         player_ptr->word_recall = 0;
         msg_print(_("張りつめた大気が流れ去った...", "A tension leaves the air around you..."));
-        player_ptr->redraw |= (PR_STATUS);
+        rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
         return true;
     }
 
@@ -495,7 +505,7 @@ bool recall_player(PlayerType *player_ptr, TIME_EFFECT turns)
 
     player_ptr->word_recall = turns;
     msg_print(_("回りの大気が張りつめてきた...", "The air about you becomes charged..."));
-    player_ptr->redraw |= (PR_STATUS);
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     return true;
 }
 
@@ -532,8 +542,7 @@ bool free_level_recall(PlayerType *player_ptr)
     }
 
     msg_print(_("回りの大気が張りつめてきた...", "The air about you becomes charged..."));
-
-    player_ptr->redraw |= PR_STATUS;
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
     return true;
 }
 
@@ -556,7 +565,8 @@ bool reset_recall(PlayerType *player_ptr)
         return false;
     }
     char ppp[80];
-    strnfmt(ppp, sizeof(ppp), _("何階にセットしますか (%d-%d):", "Reset to which level (%d-%d): "), (int)dungeons_info[select_dungeon].mindepth, (int)max_dlv[select_dungeon]);
+    constexpr auto mes = _("何階にセットしますか (%d-%d):", "Reset to which level (%d-%d): ");
+    strnfmt(ppp, sizeof(ppp), mes, (int)dungeons_info[select_dungeon].mindepth, (int)max_dlv[select_dungeon]);
     char tmp_val[160];
     strnfmt(tmp_val, sizeof(tmp_val), "%d", (int)std::max(player_ptr->current_floor_ptr->dun_level, 1));
 
@@ -578,7 +588,8 @@ bool reset_recall(PlayerType *player_ptr)
     max_dlv[select_dungeon] = dummy;
 
     if (record_maxdepth) {
-        exe_write_diary(player_ptr, DIARY_TRUMP, select_dungeon, _("フロア・リセットで", "using a scroll of reset recall"));
+        constexpr auto note = _("フロア・リセットで", "using a scroll of reset recall");
+        exe_write_diary(player_ptr, DIARY_TRUMP, select_dungeon, note);
     }
 #ifdef JP
     msg_format("%sの帰還レベルを %d 階にセット。", dungeons_info[select_dungeon].name.data(), dummy, dummy * 50);

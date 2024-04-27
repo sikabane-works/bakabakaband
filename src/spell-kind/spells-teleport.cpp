@@ -7,7 +7,6 @@
 #include "spell-kind/spells-teleport.h"
 #include "avatar/avatar.h"
 #include "core/asking-player.h"
-#include "core/player-update-types.h"
 #include "core/speed-table.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
@@ -40,6 +39,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/target-checker.h"
 #include "util/bit-flags-calculator.h"
@@ -134,7 +134,7 @@ bool teleport_away(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION dis, tele
     }
 
     if ((mode & TELEPORT_DEC_VALOUR) && (((player_ptr->chp * 10) / player_ptr->mhp) > 5) && (4 + randint1(5) < ((player_ptr->chp * 10) / player_ptr->mhp))) {
-        chg_virtue(player_ptr, V_VALOUR, -1);
+        chg_virtue(player_ptr, Virtue::VALOUR, -1);
     }
 
     POSITION oy = m_ptr->fy;
@@ -196,7 +196,7 @@ bool teleport_away(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION dis, tele
     lite_spot(player_ptr, ny, nx);
 
     if (monraces_info[m_ptr->r_idx].brightness_flags.has_any_of(ld_mask)) {
-        player_ptr->update |= (PU_MON_LITE);
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::MONSTER_LITE);
     }
 
     return true;
@@ -277,7 +277,7 @@ void teleport_monster_to(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION ty,
     lite_spot(player_ptr, ny, nx);
 
     if (monraces_info[m_ptr->r_idx].brightness_flags.has_any_of(ld_mask)) {
-        player_ptr->update |= (PU_MON_LITE);
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::MONSTER_LITE);
     }
 }
 
@@ -560,7 +560,7 @@ void teleport_away_followable(PlayerType *player_ptr, MONSTER_IDX m_idx)
 
         for (i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
             o_ptr = &player_ptr->inventory_list[i];
-            if (o_ptr->bi_id && !o_ptr->is_cursed()) {
+            if (o_ptr->is_valid() && !o_ptr->is_cursed()) {
                 auto flags = object_flags(o_ptr);
                 if (flags.has(TR_TELEPORT)) {
                     follow = true;
@@ -600,8 +600,10 @@ bool exe_dimension_door(PlayerType *player_ptr, POSITION x, POSITION y)
     PLAYER_LEVEL plev = player_ptr->lev;
 
     player_ptr->energy_need += (int16_t)((int32_t)(60 - plev) * ENERGY_NEED() / 100L);
-
-    if (!cave_player_teleportable_bold(player_ptr, y, x, TELEPORT_SPONTANEOUS) || (distance(y, x, player_ptr->y, player_ptr->x) > plev / 2 + 10) || (!randint0(plev / 10 + 10))) {
+    auto is_successful = cave_player_teleportable_bold(player_ptr, y, x, TELEPORT_SPONTANEOUS);
+    is_successful &= distance(y, x, player_ptr->y, player_ptr->x) <= plev / 2 + 10;
+    is_successful &= !one_in_(plev / 10 + 10);
+    if (!is_successful) {
         player_ptr->energy_need += (int16_t)((int32_t)(60 - plev) * ENERGY_NEED() / 100L);
         teleport_player(player_ptr, (plev + 2) * 2, TELEPORT_PASSIVE);
         return false;

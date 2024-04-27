@@ -5,8 +5,6 @@
  */
 
 #include "object-use/read/scroll-read-executor.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
 #include "player-base/player-class.h"
@@ -43,6 +41,7 @@
 #include "system/floor-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -61,6 +60,7 @@ bool ScrollReadExecutor::is_identified() const
 bool ScrollReadExecutor::read()
 {
     auto used_up = true;
+    auto *floor_ptr = this->player_ptr->current_floor_ptr;
     switch (this->o_ptr->bi_key.sval().value()) {
     case SV_SCROLL_DARKNESS:
         if (!has_resist_blind(this->player_ptr) && !has_resist_dark(this->player_ptr)) {
@@ -102,7 +102,7 @@ bool ScrollReadExecutor::read()
     }
     case SV_SCROLL_SUMMON_MONSTER:
         for (auto k = 0; k < randint1(3); k++) {
-            if (summon_specific(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, this->player_ptr->current_floor_ptr->dun_level, SUMMON_NONE,
+            if (summon_specific(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, floor_ptr->dun_level, SUMMON_NONE,
                     PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET)) {
                 this->ident = true;
             }
@@ -111,7 +111,7 @@ bool ScrollReadExecutor::read()
         break;
     case SV_SCROLL_SUMMON_UNDEAD:
         for (auto k = 0; k < randint1(3); k++) {
-            if (summon_specific(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, this->player_ptr->current_floor_ptr->dun_level, SUMMON_UNDEAD,
+            if (summon_specific(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, floor_ptr->dun_level, SUMMON_UNDEAD,
                     PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET)) {
                 this->ident = true;
             }
@@ -120,7 +120,7 @@ bool ScrollReadExecutor::read()
         break;
     case SV_SCROLL_SUMMON_PET:
         if (summon_specific(
-                this->player_ptr, -1, this->player_ptr->y, this->player_ptr->x, this->player_ptr->current_floor_ptr->dun_level, SUMMON_NONE, PM_ALLOW_GROUP | PM_FORCE_PET)) {
+                this->player_ptr, -1, this->player_ptr->y, this->player_ptr->x, floor_ptr->dun_level, SUMMON_NONE, PM_ALLOW_GROUP | PM_FORCE_PET)) {
             this->ident = true;
         }
 
@@ -304,7 +304,7 @@ bool ScrollReadExecutor::read()
 
         msg_print(_("手が輝き始めた。", "Your hands begin to glow."));
         this->player_ptr->special_attack |= ATTACK_CONFUSE;
-        this->player_ptr->redraw |= PR_STATUS;
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
         this->ident = true;
         break;
     case SV_SCROLL_PROTECTION_FROM_EVIL: {
@@ -345,7 +345,7 @@ bool ScrollReadExecutor::read()
         }
 
         this->player_ptr->add_spells++;
-        this->player_ptr->update |= PU_SPELLS;
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::SPELLS);
         this->ident = true;
         break;
     case SV_SCROLL_GENOCIDE:

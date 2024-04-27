@@ -5,8 +5,6 @@
 #include "cmd-item/cmd-throw.h"
 #include "combat/combat-options-type.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "effect/attribute-types.h"
@@ -49,6 +47,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-getter.h"
@@ -284,21 +283,22 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
             y = player_ptr->y + ddy[dir];
             x = player_ptr->x + ddx[dir];
 
-            if (!player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+            const auto *floor_ptr = player_ptr->current_floor_ptr;
+            const auto &grid = floor_ptr->grid_array[y][x];
+            if (!grid.m_idx) {
                 msg_print(_("その方向にはモンスターはいません。", "There is no monster."));
                 return std::nullopt;
             }
 
             do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
-
-            if (!player_can_enter(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat, 0) || is_trap(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat)) {
+            if (!player_can_enter(player_ptr, grid.feat, 0) || is_trap(player_ptr, grid.feat)) {
                 break;
             }
 
             y += ddy[dir];
             x += ddx[dir];
 
-            if (player_can_enter(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat, 0) && !is_trap(player_ptr, player_ptr->current_floor_ptr->grid_array[y][x].feat) && !player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+            if (player_can_enter(player_ptr, grid.feat, 0) && !is_trap(player_ptr, grid.feat) && !grid.m_idx) {
                 msg_print(nullptr);
                 (void)move_player_effect(player_ptr, y, x, MPE_FORGET_FLOW | MPE_HANDLE_STUFF | MPE_DONT_PICKUP);
             }
@@ -426,7 +426,7 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
                     lite_spot(player_ptr, ty, tx);
 
                     if (monraces_info[m_ptr->r_idx].brightness_flags.has_any_of(ld_mask)) {
-                        player_ptr->update |= (PU_MON_LITE);
+                        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::MONSTER_LITE);
                     }
                 }
             }
@@ -486,7 +486,7 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
 
             /* Destroy the feature */
             cave_alter_feat(player_ptr, y, x, TerrainCharacteristics::HURT_ROCK);
-            player_ptr->update |= (PU_FLOW);
+            RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::FLOW);
         }
         break;
 
@@ -683,7 +683,7 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
                     continue;
                 }
 
-                if (monster_living(m_ptr->r_idx)) {
+                if (m_ptr->has_living_flag()) {
                     do_cmd_attack(player_ptr, y, x, HISSATSU_SEKIRYUKA);
                     continue;
                 }
@@ -951,7 +951,7 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
                 }
                 command_dir = 0;
 
-                player_ptr->redraw |= PR_MANA;
+                RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
                 handle_stuff(player_ptr);
             } while (player_ptr->csp > mana_cost_per_monster);
 
@@ -980,7 +980,9 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
                 return std::nullopt;
             }
 
-            if (!cave_player_teleportable_bold(player_ptr, y, x, TELEPORT_SPONTANEOUS) || (distance(y, x, player_ptr->y, player_ptr->x) > MAX_PLAYER_SIGHT / 2) || !projectable(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
+            const auto is_teleportable = cave_player_teleportable_bold(player_ptr, y, x, TELEPORT_SPONTANEOUS);
+            const auto dist = distance(y, x, player_ptr->y, player_ptr->x);
+            if (!is_teleportable || (dist > MAX_PLAYER_SIGHT / 2) || !projectable(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
                 msg_print(_("失敗！", "You cannot move to that place!"));
                 break;
             }
@@ -1077,8 +1079,11 @@ std::optional<std::string> do_hissatsu_spell(PlayerType *player_ptr, SPELL_IDX s
                 damage *= player_ptr->num_blow[i];
                 total_damage += (damage / 100);
             }
-            project(player_ptr, 0, (cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT) ? 5 : 0), y, x, total_damage * 3 / 2, AttributeType::METEOR,
-                PROJECT_KILL | PROJECT_JUMP | PROJECT_ITEM);
+
+            auto *floor_ptr = player_ptr->current_floor_ptr;
+            const auto is_bold = cave_has_flag_bold(floor_ptr, y, x, TerrainCharacteristics::PROJECT);
+            constexpr auto flags = PROJECT_KILL | PROJECT_JUMP | PROJECT_ITEM;
+            project(player_ptr, 0, (is_bold ? 5 : 0), y, x, total_damage * 3 / 2, AttributeType::METEOR, flags);
         }
         break;
 

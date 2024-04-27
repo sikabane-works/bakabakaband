@@ -2,8 +2,6 @@
 #include "artifact/fixed-art-generator.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-building/cmd-building.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "dungeon/quest-completion-checker.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
@@ -47,6 +45,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "system/system-variables.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/timed-effects.h"
@@ -190,8 +189,8 @@ static void drop_artifact_from_unique(PlayerType *player_ptr, monster_death_type
  */
 bool drop_single_artifact(PlayerType *player_ptr, monster_death_type *md_ptr, FixedArtifactId a_idx)
 {
-    auto &a_ref = artifacts_info.at(a_idx);
-    if (a_ref.is_generated) {
+    auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
+    if (artifact.is_generated) {
         return false;
     }
 
@@ -200,7 +199,7 @@ bool drop_single_artifact(PlayerType *player_ptr, monster_death_type *md_ptr, Fi
     }
 
     if (w_ptr->character_dungeon) {
-        a_ref.floor_id = player_ptr->floor_id;
+        artifact.floor_id = player_ptr->floor_id;
     }
 
     return true;
@@ -216,14 +215,14 @@ static short drop_dungeon_final_artifact(PlayerType *player_ptr, monster_death_t
     }
 
     const auto a_idx = dungeon.final_artifact;
-    auto &a_ref = artifacts_info.at(a_idx);
-    if (a_ref.is_generated) {
+    auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
+    if (artifact.is_generated) {
         return bi_id;
     }
 
     if (create_named_art(player_ptr, a_idx, md_ptr->md_y, md_ptr->md_x)) {
         if (w_ptr->character_dungeon) {
-            a_ref.floor_id = player_ptr->floor_id;
+            artifact.floor_id = player_ptr->floor_id;
         }
     }
 
@@ -361,7 +360,7 @@ static void on_defeat_last_boss(PlayerType *player_ptr)
 {
     w_ptr->total_winner = true;
     add_winner_class(player_ptr->pclass);
-    player_ptr->redraw |= PR_TITLE;
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TITLE);
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_FINAL_QUEST_CLEAR);
     exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
     patron_list[player_ptr->chaos_patron].admire(player_ptr);
@@ -418,7 +417,7 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
     }
 
     if (md_ptr->r_ptr->brightness_flags.has_any_of(ld_mask)) {
-        player_ptr->update |= PU_MON_LITE;
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::MONSTER_LITE);
     }
 
     write_pet_death(player_ptr, md_ptr);
@@ -453,30 +452,4 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
     }
 
     on_defeat_last_boss(player_ptr);
-}
-
-/*!
- * @brief モンスターを撃破した際の述語メッセージを返す /
- * Return monster death string
- * @param r_ptr 撃破されたモンスターの種族情報を持つ構造体の参照ポインタ
- * @return 撃破されたモンスターの述語
- */
-concptr extract_note_dies(MonsterRaceId r_idx)
-{
-    const auto &r_ref = monraces_info[r_idx];
-    const auto explode = std::any_of(std::begin(r_ref.blow), std::end(r_ref.blow), [](const auto &blow) { return blow.method == RaceBlowMethodType::EXPLODE; });
-
-    if (monster_living(r_idx)) {
-        if (explode) {
-            return _("は爆発して死んだ。", " explodes and dies.");
-        }
-
-        return _("は死んだ。", " dies.");
-    }
-
-    if (explode) {
-        return _("は爆発して粉々になった。", " explodes into tiny shreds.");
-    }
-
-    return _("を倒した。", " is destroyed.");
 }

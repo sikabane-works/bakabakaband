@@ -1,6 +1,5 @@
 ﻿#include "spell-kind/spells-sight.h"
 #include "avatar/avatar.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "effect/attribute-types.h"
@@ -28,6 +27,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "term/screen-processor.h"
 #include "view/display-messages.h"
@@ -130,7 +130,7 @@ bool turn_undead(PlayerType *player_ptr)
 {
     bool tester = (project_all_los(player_ptr, AttributeType::TURN_UNDEAD, player_ptr->lev));
     if (tester) {
-        chg_virtue(player_ptr, V_UNLIFE, -1);
+        chg_virtue(player_ptr, Virtue::UNLIFE, -1);
     }
     return tester;
 }
@@ -144,7 +144,7 @@ bool dispel_undead(PlayerType *player_ptr, int dam)
 {
     bool tester = (project_all_los(player_ptr, AttributeType::DISP_UNDEAD, dam));
     if (tester) {
-        chg_virtue(player_ptr, V_UNLIFE, -2);
+        chg_virtue(player_ptr, Virtue::UNLIFE, -2);
     }
     return tester;
 }
@@ -251,8 +251,9 @@ void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
     } else if (sleep) {
         msg_print(_("何かが突如興奮したような騒々しい音が遠くに聞こえた！", "You hear a sudden stirring in the distance!"));
     }
+
     if (player_ptr->riding) {
-        player_ptr->update |= PU_BONUS;
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     }
 }
 
@@ -403,8 +404,8 @@ std::string probed_monster_info(PlayerType *player_ptr, MonsterEntity *m_ptr, Mo
     }
 
     const auto speed = m_ptr->get_temporary_speed() - STANDARD_SPEED;
-    std::string result = format(_("%s ... 属性:%s HP:%d/%d AC:%d 速度:%s%d 経験:", "%s ... align:%s HP:%d/%d AC:%d speed:%s%d exp:"), m_name.data(), align, (int)m_ptr->hp,
-        (int)m_ptr->maxhp, r_ptr->ac, (speed > 0) ? "+" : "", speed);
+    constexpr auto mes = _("%s ... 属性:%s HP:%d/%d AC:%d 速度:%s%d 経験:", "%s ... align:%s HP:%d/%d AC:%d speed:%s%d exp:");
+    auto result = format(mes, m_name.data(), align, (int)m_ptr->hp, (int)m_ptr->maxhp, r_ptr->ac, (speed > 0) ? "+" : "", speed);
 
     if (MonsterRace(r_ptr->next_r_idx).is_valid()) {
         result.append(format("%d/%d ", m_ptr->exp, r_ptr->next_exp));
@@ -490,7 +491,7 @@ bool probing(PlayerType *player_ptr)
     term_fresh();
 
     if (probe) {
-        chg_virtue(player_ptr, V_KNOWLEDGE, 1);
+        chg_virtue(player_ptr, Virtue::KNOWLEDGE, 1);
         msg_print(_("これで全部です。", "That's all."));
     }
 

@@ -11,11 +11,41 @@
 #include "player-base/player-class.h"
 #include "player/player-personality.h"
 #include "system/player-type-definition.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "util/angband-files.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
+#include <span>
+#include <sstream>
+#include <string>
+
+/*!
+ * @brief 日記のサブタイトルの候補一覧を取得する
+ *
+ * 候補一覧の先頭は「最高の肉体を求めて」、末尾は「最高の頭脳を求めて」で
+ * あるため、プレイヤーの職業に従い範囲を決定する。
+ *
+ * @return 候補一覧を参照するstd::spanオブジェクト
+ */
+static auto get_subtitle_candidates(PlayerType *player_ptr)
+{
+    std::span<const std::string> candidates(diary_subtitles);
+    const auto max = diary_subtitles.size();
+
+    PlayerClass pc(player_ptr);
+
+    if (pc.is_tough()) {
+        return candidates.subspan(0, max - 1);
+    }
+
+    if (pc.is_wizard()) {
+        return candidates.subspan(1);
+    }
+
+    return candidates.subspan(1, max - 2);
+}
 
 /*!
  * @brief 日記のタイトル表記と内容出力
@@ -23,29 +53,20 @@
  */
 static void display_diary(PlayerType *player_ptr)
 {
-    char diary_title[256];
-    GAME_TEXT file_name[MAX_NLEN];
-    char buf[1024];
-    char tmp[80];
-    sprintf(file_name, _("playrecord-%s.txt", "playrec-%s.txt"), savefile_base);
-    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, file_name);
-
-    PlayerClass pc(player_ptr);
-    if (pc.is_tough()) {
-        strcpy(tmp, subtitle[randint0(MAX_SUBTITLE - 1)]);
-    } else if (pc.is_wizard()) {
-        strcpy(tmp, subtitle[randint0(MAX_SUBTITLE - 1) + 1]);
-    } else {
-        strcpy(tmp, subtitle[randint0(MAX_SUBTITLE - 2) + 1]);
-    }
-
+    const auto subtitle_candidates = get_subtitle_candidates(player_ptr);
+    const auto choice = Rand_external(subtitle_candidates.size());
+    const auto &subtitle = subtitle_candidates[choice];
 #ifdef JP
-    sprintf(diary_title, "「%s%s%sの伝説 -%s-」", ap_ptr->title, ap_ptr->no ? "の" : "", player_ptr->name, tmp);
+    const auto diary_title = format("「%s%s%sの伝説 -%s-」", ap_ptr->title, ap_ptr->no ? "の" : "", player_ptr->name, subtitle.data());
 #else
-    sprintf(diary_title, "Legend of %s %s '%s'", ap_ptr->title, player_ptr->name, tmp);
+    const auto diary_title = format("Legend of %s %s '%s'", ap_ptr->title, player_ptr->name, subtitle.data());
 #endif
 
-    (void)show_file(player_ptr, false, buf, diary_title, -1, 0);
+    std::stringstream ss;
+    ss << _("playrecord-", "playrec-") << savefile_base << ".txt";
+    const auto &path = path_build(ANGBAND_DIR_USER, ss.str());
+    const auto &filename = path.string();
+    (void)show_file(player_ptr, false, filename.data(), diary_title.data(), -1, 0);
 }
 
 /*!
@@ -86,25 +107,24 @@ static void do_cmd_last_get(PlayerType *player_ptr)
 /*!
  * @brief ファイル中の全日記記録を消去する /
  */
-static void do_cmd_erase_diary(void)
+static void do_cmd_erase_diary()
 {
-    GAME_TEXT file_name[MAX_NLEN];
-    char buf[256];
-    FILE *fff = nullptr;
-
     if (!get_check(_("本当に記録を消去しますか？", "Do you really want to delete all your records? "))) {
         return;
     }
-    sprintf(file_name, _("playrecord-%s.txt", "playrec-%s.txt"), savefile_base);
-    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, file_name);
-    fd_kill(buf);
 
-    fff = angband_fopen(buf, "w");
+    std::stringstream ss;
+    ss << _("playrecord-", "playrec-") << savefile_base << ".txt";
+    const auto &path = path_build(ANGBAND_DIR_USER, ss.str());
+    fd_kill(path);
+
+    auto *fff = angband_fopen(path, FileOpenMode::WRITE);
     if (fff) {
         angband_fclose(fff);
         msg_format(_("記録を消去しました。", "deleted record."));
     } else {
-        msg_format(_("%s の消去に失敗しました。", "failed to delete %s."), buf);
+        const auto &filename = path.string();
+        msg_format(_("%s の消去に失敗しました。", "failed to delete %s."), filename.data());
     }
 
     msg_print(nullptr);
@@ -117,6 +137,8 @@ static void do_cmd_erase_diary(void)
 void do_cmd_diary(PlayerType *player_ptr)
 {
     screen_save();
+    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
+
     while (true) {
         term_clear();
         prt(_("[ 記録の設定 ]", "[ Play Record ]"), 2, 0);

@@ -18,8 +18,6 @@
 #include "cmd-io/cmd-save.h"
 #include "cmd-visual/cmd-draw.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "dungeon/quest.h"
@@ -87,6 +85,7 @@
 #include "system/item-entity.h"
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "term/screen-processor.h"
 #include "term/z-form.h"
@@ -239,8 +238,8 @@ void wiz_create_item(PlayerType *player_ptr)
 
     const auto &baseitem = baseitems_info[bi_id];
     if (baseitem.gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
-        for (const auto &[a_idx, a_ref] : artifacts_info) {
-            if ((a_idx == FixedArtifactId::NONE) || (a_ref.bi_key != baseitem.bi_key)) {
+        for (const auto &[a_idx, artifact] : artifacts_info) {
+            if ((a_idx == FixedArtifactId::NONE) || (artifact.bi_key != baseitem.bi_key)) {
                 continue;
             }
 
@@ -265,14 +264,12 @@ void wiz_create_item(PlayerType *player_ptr)
  */
 static std::string wiz_make_named_artifact_desc(PlayerType *player_ptr, FixedArtifactId a_idx)
 {
-    const auto &a_ref = artifacts_info.at(a_idx);
+    const auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
     ItemEntity item;
-    item.prep(lookup_baseitem_id(a_ref.bi_key));
+    item.prep(lookup_baseitem_id(artifact.bi_key));
     item.fixed_artifact_idx = a_idx;
     object_known(&item);
-    char buf[MAX_NLEN];
-    describe_flavor(player_ptr, buf, &item, OD_NAME_ONLY);
-    return buf;
+    return describe_flavor(player_ptr, &item, OD_NAME_ONLY);
 }
 
 /**
@@ -343,8 +340,8 @@ static std::vector<FixedArtifactId> wiz_collect_group_a_idx(const grouper &group
     const auto &[tval_list, name] = group_artifact;
     std::vector<FixedArtifactId> a_idx_list;
     for (auto tval : tval_list) {
-        for (const auto &[a_idx, a_ref] : artifacts_info) {
-            if (a_ref.bi_key.tval() == tval) {
+        for (const auto &[a_idx, artifact] : artifacts_info) {
+            if (artifact.bi_key.tval() == tval) {
                 a_idx_list.push_back(a_idx);
             }
         }
@@ -387,14 +384,8 @@ void wiz_create_named_art(PlayerType *player_ptr)
 
     screen_load();
     const auto a_idx = create_a_idx.value();
-    const auto it = artifacts_info.find(a_idx);
-    if (it == artifacts_info.end()) {
-        msg_print("The specified artifact is obsoleted for now.");
-        return;
-    }
-
-    auto &a_ref = it->second;
-    if (a_ref.is_generated) {
+    const auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
+    if (artifact.is_generated) {
         msg_print("It's already allocated.");
         return;
     }
@@ -409,7 +400,6 @@ void wiz_create_named_art(PlayerType *player_ptr)
  */
 void wiz_change_status(PlayerType *player_ptr)
 {
-    int tmp_int;
     char tmp_val[160];
     char ppp[80];
     for (int i = 0; i < A_MAX; i++) {
@@ -419,14 +409,9 @@ void wiz_change_status(PlayerType *player_ptr)
             return;
         }
 
-        tmp_int = atoi(tmp_val);
-        if (tmp_int > player_ptr->stat_max_max[i]) {
-            tmp_int = player_ptr->stat_max_max[i];
-        } else if (tmp_int < 3) {
-            tmp_int = 3;
-        }
-
-        player_ptr->stat_cur[i] = player_ptr->stat_max[i] = (BASE_STATUS)tmp_int;
+        auto stat = std::clamp<short>(static_cast<short>(atoi(tmp_val)), 3, player_ptr->stat_max_max[i]);
+        player_ptr->stat_cur[i] = stat;
+        player_ptr->stat_max[i] = stat;
     }
 
     strnfmt(tmp_val, sizeof(tmp_val), "%d", PlayerSkill::weapon_exp_at(PlayerSkillRank::MASTER));
@@ -532,7 +517,7 @@ void wiz_create_feature(PlayerType *player_ptr)
 
     note_spot(player_ptr, y, x);
     lite_spot(player_ptr, y, x);
-    player_ptr->update |= PU_FLOW;
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::FLOW);
 }
 
 /*!
@@ -658,6 +643,26 @@ void wiz_learn_items_all(PlayerType *player_ptr)
     }
 }
 
+static void change_birth_flags(PlayerType *player_ptr)
+{
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::HP,
+        StatusRedrawingFlag::MP,
+        StatusRedrawingFlag::SPELLS,
+    };
+    player_ptr->window_flags |= PW_PLAYER;
+    rfu.set_flags(flags_srf);
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::BASIC,
+        MainWindowRedrawingFlag::HP,
+        MainWindowRedrawingFlag::MP,
+        MainWindowRedrawingFlag::ABILITY_SCORE,
+    };
+    rfu.set_flags(flags_mwrf);
+}
+
 /*!
  * @brief プレイヤーの種族を変更する
  */
@@ -670,10 +675,7 @@ void wiz_reset_race(PlayerType *player_ptr)
 
     player_ptr->prace = i2enum<PlayerRaceType>(val);
     rp_ptr = &race_info[enum2i(player_ptr->prace)];
-
-    player_ptr->window_flags |= PW_PLAYER;
-    player_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
-    player_ptr->redraw |= PR_BASIC | PR_HP | PR_MANA | PR_STATS;
+    change_birth_flags(player_ptr);
     handle_stuff(player_ptr);
 }
 
@@ -692,9 +694,7 @@ void wiz_reset_class(PlayerType *player_ptr)
     cp_ptr = &class_info[val];
     mp_ptr = &class_magics_info[val];
     PlayerClass(player_ptr).init_specific_data();
-    player_ptr->window_flags |= PW_PLAYER;
-    player_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
-    player_ptr->redraw |= PR_BASIC | PR_HP | PR_MANA | PR_STATS;
+    change_birth_flags(player_ptr);
     handle_stuff(player_ptr);
 }
 
@@ -716,9 +716,7 @@ void wiz_reset_realms(PlayerType *player_ptr)
 
     player_ptr->realm1 = static_cast<int16_t>(val1);
     player_ptr->realm2 = static_cast<int16_t>(val2);
-    player_ptr->window_flags |= PW_PLAYER;
-    player_ptr->update |= PU_BONUS | PU_HP | PU_MANA | PU_SPELLS;
-    player_ptr->redraw |= PR_BASIC;
+    change_birth_flags(player_ptr);
     handle_stuff(player_ptr);
 }
 
@@ -729,12 +727,11 @@ void wiz_reset_realms(PlayerType *player_ptr)
  */
 void wiz_dump_options(void)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_USER, "opt_info.txt");
-    FILE *fff;
-    fff = angband_fopen(buf, "a");
+    const auto &path = path_build(ANGBAND_DIR_USER, "opt_info.txt");
+    const auto &filename = path.string();
+    auto *fff = angband_fopen(path, FileOpenMode::APPEND);
     if (fff == nullptr) {
-        msg_format(_("ファイル %s を開けませんでした。", "Failed to open file %s."), buf);
+        msg_format(_("ファイル %s を開けませんでした。", "Failed to open file %s."), filename.data());
         msg_print(nullptr);
         return;
     }
@@ -765,7 +762,7 @@ void wiz_dump_options(void)
     }
 
     angband_fclose(fff);
-    msg_format(_("オプションbit使用状況をファイル %s に書き出しました。", "Option bits usage dump saved to file %s."), buf);
+    msg_format(_("オプションbit使用状況をファイル %s に書き出しました。", "Option bits usage dump saved to file %s."), filename.data());
 }
 
 /*!
@@ -912,7 +909,7 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
 
     player_ptr->wild_mode = false;
     player_ptr->leaving = true;
-
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, _("                            しかし、生き返った。", "                            but revived."));
+    constexpr auto note = _("                            しかし、生き返った。", "                            but revived.");
+    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, note);
     leave_floor(player_ptr);
 }

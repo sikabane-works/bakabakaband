@@ -1,7 +1,5 @@
 ﻿#include "store/cmd-store.h"
 #include "cmd-io/macro-util.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
@@ -28,6 +26,8 @@
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -58,7 +58,7 @@ void do_cmd_store(PlayerType *player_ptr)
     TERM_LEN w, h;
     term_get_size(&w, &h);
 
-    xtra_stock = std::min(14 + 26, ((h > 24) ? (h - 24) : 0));
+    xtra_stock = std::min(14 + 26, ((h > MAIN_TERM_MIN_ROWS) ? (h - MAIN_TERM_MIN_ROWS) : 0));
     store_bottom = MIN_STOCK + xtra_stock;
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
@@ -86,20 +86,22 @@ void do_cmd_store(PlayerType *player_ptr)
     }
 
     inner_town_num = player_ptr->town_num;
-    if ((town_info[player_ptr->town_num].store[enum2i(store_num)].store_open >= w_ptr->game_turn) || ironman_shops) {
+    auto &town = towns_info[player_ptr->town_num];
+    auto &store = town.stores[store_num];
+    if ((store.store_open >= w_ptr->game_turn) || ironman_shops) {
         msg_print(_("ドアに鍵がかかっている。", "The doors are locked."));
         player_ptr->town_num = old_town_num;
         return;
     }
 
-    int maintain_num = (w_ptr->game_turn - town_info[player_ptr->town_num].store[enum2i(store_num)].last_visit) / (TURNS_PER_TICK * STORE_TICKS);
+    int maintain_num = (w_ptr->game_turn - store.last_visit) / (TURNS_PER_TICK * STORE_TICKS);
     if (maintain_num > 10) {
         maintain_num = 10;
     }
     if (maintain_num) {
         store_maintenance(player_ptr, player_ptr->town_num, store_num, maintain_num);
 
-        town_info[player_ptr->town_num].store[enum2i(store_num)].last_visit = w_ptr->game_turn;
+        store.last_visit = w_ptr->game_turn;
     }
 
     forget_lite(floor_ptr);
@@ -110,13 +112,13 @@ void do_cmd_store(PlayerType *player_ptr)
     command_new = 0;
     get_com_no_macros = true;
     cur_store_feat = g_ptr->feat;
-    st_ptr = &town_info[player_ptr->town_num].store[enum2i(store_num)];
+    st_ptr = &towns_info[player_ptr->town_num].stores[store_num];
     ot_ptr = &owners.at(store_num)[st_ptr->owner];
     store_top = 0;
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_BUILD);
     display_store(player_ptr, store_num);
     leave_store = false;
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     while (!leave_store) {
         prt("", 1, 0);
         clear_from(20 + xtra_stock);
@@ -150,8 +152,6 @@ void do_cmd_store(PlayerType *player_ptr)
         prt(_("コマンド:", "You may: "), 20 + xtra_stock, 0);
         InputKeyRequestor(player_ptr, true).request_command();
         store_process_command(player_ptr, store_num);
-
-        bool need_redraw_store_inv = any_bits(player_ptr->update, PU_BONUS);
         w_ptr->character_icky_depth = 1;
         handle_stuff(player_ptr);
         if (player_ptr->inventory_list[INVEN_PACK].bi_id) {
@@ -172,12 +172,11 @@ void do_cmd_store(PlayerType *player_ptr)
                 int item_pos;
                 ItemEntity forge;
                 ItemEntity *q_ptr;
-                GAME_TEXT o_name[MAX_NLEN];
                 msg_print(_("ザックからアイテムがあふれてしまった！", "Your pack overflows!"));
                 q_ptr = &forge;
                 q_ptr->copy_from(o_ptr);
-                describe_flavor(player_ptr, o_name, q_ptr, 0);
-                msg_format(_("%sが落ちた。(%c)", "You drop %s (%c)."), o_name, index_to_label(item));
+                const auto item_name = describe_flavor(player_ptr, q_ptr, 0);
+                msg_format(_("%sが落ちた。(%c)", "You drop %s (%c)."), item_name.data(), index_to_label(item));
                 vary_item(player_ptr, item, -255);
                 handle_stuff(player_ptr);
 
@@ -189,7 +188,7 @@ void do_cmd_store(PlayerType *player_ptr)
             }
         }
 
-        if (need_redraw_store_inv) {
+        if (rfu.has(StatusRedrawingFlag::BONUS)) {
             display_store_inventory(player_ptr, store_num);
         }
 
@@ -211,9 +210,19 @@ void do_cmd_store(PlayerType *player_ptr)
     msg_erase();
     term_clear();
 
-    player_ptr->update |= PU_VIEW | PU_LITE | PU_MON_LITE;
-    player_ptr->update |= PU_MONSTERS;
-    player_ptr->redraw |= PR_BASIC | PR_EXTRA | PR_EQUIPPY;
-    player_ptr->redraw |= PR_MAP;
+    const auto flags_srf = {
+        StatusRedrawingFlag::VIEW,
+        StatusRedrawingFlag::LITE,
+        StatusRedrawingFlag::MONSTER_LITE,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+    };
+    rfu.set_flags(flags_srf);
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::BASIC,
+        MainWindowRedrawingFlag::EXTRA,
+        MainWindowRedrawingFlag::EQUIPPY,
+        MainWindowRedrawingFlag::MAP,
+    };
+    rfu.set_flags(flags_mwrf);
     player_ptr->window_flags |= PW_OVERHEAD | PW_DUNGEON;
 }

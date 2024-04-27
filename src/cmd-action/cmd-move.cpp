@@ -6,8 +6,6 @@
 #include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
@@ -39,6 +37,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-getter.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-stun.h"
@@ -105,14 +104,14 @@ void do_cmd_go_up(PlayerType *player_ptr)
         leave_quest_check(player_ptr);
         floor_ptr->quest_number = i2enum<QuestId>(g_ptr->special);
         const auto quest_number = floor_ptr->quest_number;
-        auto &q_ref = quest_list[quest_number];
-        if (q_ref.status == QuestStatusType::UNTAKEN) {
-            if (q_ref.type != QuestKindType::RANDOM) {
+        auto &quest = quest_list[quest_number];
+        if (quest.status == QuestStatusType::UNTAKEN) {
+            if (quest.type != QuestKindType::RANDOM) {
                 init_flags = INIT_ASSIGN;
                 parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
             }
 
-            q_ref.status = QuestStatusType::TAKEN;
+            quest.status = QuestStatusType::TAKEN;
         }
 
         if (!inside_quest(quest_number)) {
@@ -144,14 +143,14 @@ void do_cmd_go_up(PlayerType *player_ptr)
     }
 
     const auto quest_number = player_ptr->current_floor_ptr->quest_number;
-    auto &q_ref = quest_list[quest_number];
+    auto &quest = quest_list[quest_number];
 
-    if (inside_quest(quest_number) && q_ref.type == QuestKindType::RANDOM) {
+    if (inside_quest(quest_number) && quest.type == QuestKindType::RANDOM) {
         leave_quest_check(player_ptr);
         player_ptr->current_floor_ptr->quest_number = QuestId::NONE;
     }
 
-    if (inside_quest(quest_number) && q_ref.type != QuestKindType::RANDOM) {
+    if (inside_quest(quest_number) && quest.type != QuestKindType::RANDOM) {
         leave_quest_check(player_ptr);
         player_ptr->current_floor_ptr->quest_number = i2enum<QuestId>(g_ptr->special);
         player_ptr->current_floor_ptr->dun_level = 0;
@@ -347,7 +346,7 @@ void do_cmd_walk(PlayerType *player_ptr, bool pickup)
 {
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= PR_STATE;
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -425,7 +424,7 @@ void do_cmd_stay(PlayerType *player_ptr, bool pickup)
     uint32_t mpe_mode = MPE_STAYING | MPE_ENERGY_USE;
     if (command_arg) {
         command_rep = command_arg - 1;
-        player_ptr->redraw |= (PR_STATE);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
         command_arg = 0;
     }
 
@@ -445,8 +444,12 @@ void do_cmd_stay(PlayerType *player_ptr, bool pickup)
 void do_cmd_rest(PlayerType *player_ptr)
 {
     set_action(player_ptr, ACTION_NONE);
-    if (PlayerClass(player_ptr).equals(PlayerClassType::BARD) && ((get_singing_song_effect(player_ptr) != 0) || (get_interrupting_song_effect(player_ptr) != 0))) {
-        stop_singing(player_ptr);
+    if (PlayerClass(player_ptr).equals(PlayerClassType::BARD)) {
+        auto is_singing = get_singing_song_effect(player_ptr) != 0;
+        is_singing |= get_interrupting_song_effect(player_ptr) != 0;
+        if (is_singing) {
+            stop_singing(player_ptr);
+        }
     }
 
     SpellHex spell_hex(player_ptr);
@@ -481,17 +484,18 @@ void do_cmd_rest(PlayerType *player_ptr)
     set_superstealth(player_ptr, false);
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
     if (command_arg > 100) {
-        chg_virtue(player_ptr, V_DILIGENCE, -1);
+        chg_virtue(player_ptr, Virtue::DILIGENCE, -1);
     }
 
     if (player_ptr->is_fully_healthy()) {
-        chg_virtue(player_ptr, V_DILIGENCE, -1);
+        chg_virtue(player_ptr, Virtue::DILIGENCE, -1);
     }
 
     player_ptr->resting = command_arg;
     player_ptr->action = ACTION_REST;
-    player_ptr->update |= PU_BONUS;
-    player_ptr->redraw |= (PR_STATE);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
+    rfu.set_flag(MainWindowRedrawingFlag::ACTION);
     handle_stuff(player_ptr);
     term_fresh();
 }

@@ -194,7 +194,7 @@ static void update_unique_artifact(FloorType *floor_ptr, int16_t cur_floor_id)
         }
 
         if (o_ref.is_fixed_artifact()) {
-            artifacts_info.at(o_ref.fixed_artifact_idx).floor_id = cur_floor_id;
+            o_ref.get_fixed_artifact().floor_id = cur_floor_id;
         }
     }
 }
@@ -216,7 +216,7 @@ static void check_visited_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr
     }
 
     if (player_ptr->change_floor_mode & (CFM_DOWN | CFM_UP)) {
-        g_ptr->feat = feat_ground_type[randint0(100)];
+        g_ptr->feat = rand_choice(feat_ground_type);
     }
 
     g_ptr->special = 0;
@@ -294,9 +294,9 @@ static void new_floor_allocation(PlayerType *player_ptr, saved_floor_type *sf_pt
             continue;
         }
 
-        auto &fixed_artifact = artifacts_info.at(o_ptr->fixed_artifact_idx);
-        if (fixed_artifact.floor_id == new_floor_id) {
-            fixed_artifact.is_generated = true;
+        auto &artifact = o_ptr->get_fixed_artifact();
+        if (artifact.floor_id == new_floor_id) {
+            artifact.is_generated = true;
         } else {
             delete_object_idx(player_ptr, i);
         }

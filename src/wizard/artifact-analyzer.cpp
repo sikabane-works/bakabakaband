@@ -13,6 +13,7 @@
 #include "util/enum-converter.h"
 #include "util/enum-range.h"
 #include "util/quarks.h"
+#include "util/string-processor.h"
 #include "wizard/spoiler-util.h"
 
 /*!
@@ -51,9 +52,9 @@ static concptr *spoiler_flag_aux(const TrFlags &art_flags, const flag_desc *flag
  * @param o_ptr 記述を得たいオブジェクトの参照ポインタ
  * @param desc_ptr 記述内容を返すための文字列参照ポインタ
  */
-static void analyze_general(PlayerType *player_ptr, ItemEntity *o_ptr, char *desc_ptr)
+static std::string analyze_general(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    describe_flavor(player_ptr, desc_ptr, o_ptr, OD_NAME_AND_ENCHANT | OD_STORE | OD_DEBUG);
+    return describe_flavor(player_ptr, o_ptr, OD_NAME_AND_ENCHANT | OD_STORE | OD_DEBUG);
 }
 
 /*!
@@ -257,32 +258,32 @@ static void analyze_misc_magic(ItemEntity *o_ptr, concptr *misc_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param addition 追加ランダム耐性構造体の参照ポインタ
  */
-static void analyze_addition(ItemEntity *o_ptr, char *addition)
+static void analyze_addition(ItemEntity *o_ptr, char *addition, size_t addition_sz)
 {
-    const auto &a_ref = artifacts_info.at(o_ptr->fixed_artifact_idx);
+    const auto &artifact = o_ptr->get_fixed_artifact();
     strcpy(addition, "");
 
-    if (a_ref.gen_flags.has_all_of({ ItemGenerationTraitType::XTRA_POWER, ItemGenerationTraitType::XTRA_H_RES })) {
-        strcat(addition, _("能力and耐性", "Ability and Resistance"));
-    } else if (a_ref.gen_flags.has(ItemGenerationTraitType::XTRA_POWER)) {
-        strcat(addition, _("能力", "Ability"));
-        if (a_ref.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
-            strcat(addition, _("(1/2でand耐性)", "(plus Resistance about 1/2)"));
+    if (artifact.gen_flags.has_all_of({ ItemGenerationTraitType::XTRA_POWER, ItemGenerationTraitType::XTRA_H_RES })) {
+        angband_strcat(addition, _("能力and耐性", "Ability and Resistance"), addition_sz);
+    } else if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_POWER)) {
+        angband_strcat(addition, _("能力", "Ability"), addition_sz);
+        if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
+            angband_strcat(addition, _("(1/2でand耐性)", "(plus Resistance about 1/2)"), addition_sz);
         }
-    } else if (a_ref.gen_flags.has(ItemGenerationTraitType::XTRA_H_RES)) {
-        strcat(addition, _("耐性", "Resistance"));
-        if (a_ref.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
-            strcat(addition, _("(1/2でand能力)", "(plus Ability about 1/2)"));
+    } else if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_H_RES)) {
+        angband_strcat(addition, _("耐性", "Resistance"), addition_sz);
+        if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
+            angband_strcat(addition, _("(1/2でand能力)", "(plus Ability about 1/2)"), addition_sz);
         }
-    } else if (a_ref.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
-        strcat(addition, _("能力or耐性", "Ability or Resistance"));
+    } else if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
+        angband_strcat(addition, _("能力or耐性", "Ability or Resistance"), addition_sz);
     }
 
-    if (a_ref.gen_flags.has(ItemGenerationTraitType::XTRA_DICE)) {
+    if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_DICE)) {
         if (strlen(addition) > 0) {
-            strcat(addition, _("、", ", "));
+            angband_strcat(addition, _("、", ", "), addition_sz);
         }
-        strcat(addition, _("ダイス数", "Dice number"));
+        angband_strcat(addition, _("ダイス数", "Dice number"), addition_sz);
     }
 }
 
@@ -293,11 +294,12 @@ static void analyze_addition(ItemEntity *o_ptr, char *addition)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param misc_desc 基本情報を収める文字列参照ポインタ
  */
-static void analyze_misc(ItemEntity *o_ptr, char *misc_desc)
+static void analyze_misc(ItemEntity *o_ptr, char *misc_desc, size_t misc_desc_sz)
 {
-    const auto &a_ref = artifacts_info.at(o_ptr->fixed_artifact_idx);
-    sprintf(misc_desc, _("レベル %d, 希少度 %u, %d.%d kg, ＄%ld", "Level %d, Rarity %u, %d.%d lbs, %ld Gold"), (int)a_ref.level, a_ref.rarity,
-        _(lb_to_kg_integer(a_ref.weight), a_ref.weight / 10), _(lb_to_kg_fraction(a_ref.weight), a_ref.weight % 10), (long int)a_ref.cost);
+    const auto &artifact = o_ptr->get_fixed_artifact();
+    const auto *mes = _("レベル %d, 希少度 %u, %d.%d kg, ＄%ld", "Level %d, Rarity %u, %d.%d lbs, %ld Gold");
+    strnfmt(misc_desc, misc_desc_sz, mes, (int)artifact.level, artifact.rarity,
+        _(lb_to_kg_integer(artifact.weight), artifact.weight / 10), _(lb_to_kg_fraction(artifact.weight), artifact.weight % 10), (long int)artifact.cost);
 }
 
 /*!
@@ -310,7 +312,7 @@ static void analyze_misc(ItemEntity *o_ptr, char *misc_desc)
  */
 void object_analyze(PlayerType *player_ptr, ItemEntity *o_ptr, obj_desc_list *desc_ptr)
 {
-    analyze_general(player_ptr, o_ptr, desc_ptr->description);
+    strcpy(desc_ptr->description, analyze_general(player_ptr, o_ptr).data());
     analyze_pval(o_ptr, &desc_ptr->pval_info);
     analyze_brand(o_ptr, desc_ptr->brands);
     analyze_slay(o_ptr, desc_ptr->slays);
@@ -319,8 +321,8 @@ void object_analyze(PlayerType *player_ptr, ItemEntity *o_ptr, obj_desc_list *de
     analyze_vulnerable(o_ptr, desc_ptr->vulnerables);
     analyze_sustains(o_ptr, desc_ptr->sustains);
     analyze_misc_magic(o_ptr, desc_ptr->misc_magic);
-    analyze_addition(o_ptr, desc_ptr->addition);
-    analyze_misc(o_ptr, desc_ptr->misc_desc);
+    analyze_addition(o_ptr, desc_ptr->addition, sizeof(desc_ptr->addition));
+    analyze_misc(o_ptr, desc_ptr->misc_desc, sizeof(desc_ptr->misc_desc));
     desc_ptr->activation = activation_explanation(o_ptr);
 }
 
@@ -333,7 +335,7 @@ void object_analyze(PlayerType *player_ptr, ItemEntity *o_ptr, obj_desc_list *de
  */
 void random_artifact_analyze(PlayerType *player_ptr, ItemEntity *o_ptr, obj_desc_list *desc_ptr)
 {
-    analyze_general(player_ptr, o_ptr, desc_ptr->description);
+    strcpy(desc_ptr->description, analyze_general(player_ptr, o_ptr).data());
     analyze_pval(o_ptr, &desc_ptr->pval_info);
     analyze_brand(o_ptr, desc_ptr->brands);
     analyze_slay(o_ptr, desc_ptr->slays);

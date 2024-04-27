@@ -1,6 +1,5 @@
 ﻿#include "object-hook/hook-expendable.h"
 #include "artifact/fixed-art-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "monster-race/monster-race.h"
 #include "object-enchant/item-feeling.h"
@@ -18,7 +17,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
-#include "util/bit-flags-calculator.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/string-processor.h"
 
 /*!
@@ -79,7 +78,7 @@ bool can_player_destroy_object(PlayerType *player_ptr, ItemEntity *o_ptr)
     }
 
     /* Artifacts cannot be destroyed */
-    if (!o_ptr->is_artifact()) {
+    if (!o_ptr->is_fixed_or_random_artifact()) {
         return true;
     }
 
@@ -91,8 +90,9 @@ bool can_player_destroy_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 
         o_ptr->feeling = feel;
         o_ptr->ident |= IDENT_SENSE;
-        player_ptr->update |= (PU_COMBINE);
-        player_ptr->window_flags |= (PW_INVEN | PW_EQUIP);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(StatusRedrawingFlag::COMBINATION);
+        player_ptr->window_flags |= (PW_INVENTORY | PW_EQUIPMENT);
         return false;
     }
 

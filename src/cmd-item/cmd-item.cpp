@@ -22,8 +22,6 @@
 #include "cmd-item/cmd-zapwand.h"
 #include "combat/shoot.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -62,6 +60,7 @@
 #include "status/action-setter.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
@@ -142,7 +141,7 @@ void do_cmd_drop(PlayerType *player_ptr)
         calc_android_exp(player_ptr);
     }
 
-    player_ptr->redraw |= (PR_EQUIPPY);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::EQUIPPY);
 }
 
 /*!
@@ -151,11 +150,9 @@ void do_cmd_drop(PlayerType *player_ptr)
 void do_cmd_observe(PlayerType *player_ptr)
 {
     OBJECT_IDX item;
-    ItemEntity *o_ptr;
-    GAME_TEXT o_name[MAX_NLEN];
-    concptr q = _("どのアイテムを調べますか? ", "Examine which item? ");
-    concptr s = _("調べられるアイテムがない。", "You have nothing to examine.");
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
+    const auto q = _("どのアイテムを調べますか? ", "Examine which item? ");
+    const auto s = _("調べられるアイテムがない。", "You have nothing to examine.");
+    auto *o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
     if (!o_ptr) {
         return;
     }
@@ -165,8 +162,8 @@ void do_cmd_observe(PlayerType *player_ptr)
         return;
     }
 
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
-    msg_format(_("%sを調べている...", "Examining %s..."), o_name);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
+    msg_format(_("%sを調べている...", "Examining %s..."), item_name.data());
     if (!screen_object(player_ptr, o_ptr, SCROBJ_FORCE_DETAIL)) {
         msg_print(_("特に変わったところはないようだ。", "You see nothing special."));
     }
@@ -194,9 +191,13 @@ void do_cmd_uninscribe(PlayerType *player_ptr)
 
     msg_print(_("銘を消した。", "Inscription removed."));
     o_ptr->inscription.reset();
-    set_bits(player_ptr->update, PU_COMBINE);
-    set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
-    set_bits(player_ptr->update, PU_BONUS);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::BONUS,
+    };
+    rfu.set_flags(flags_srf);
+    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
 }
 
 /*!
@@ -206,18 +207,16 @@ void do_cmd_uninscribe(PlayerType *player_ptr)
 void do_cmd_inscribe(PlayerType *player_ptr)
 {
     OBJECT_IDX item;
-    ItemEntity *o_ptr;
-    GAME_TEXT o_name[MAX_NLEN];
     char out_val[MAX_INSCRIPTION + 1] = "";
-    concptr q = _("どのアイテムに銘を刻みますか? ", "Inscribe which item? ");
-    concptr s = _("銘を刻めるアイテムがない。", "You have nothing to inscribe.");
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
+    const auto q = _("どのアイテムに銘を刻みますか? ", "Inscribe which item? ");
+    const auto s = _("銘を刻めるアイテムがない。", "You have nothing to inscribe.");
+    auto *o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
     if (!o_ptr) {
         return;
     }
 
-    describe_flavor(player_ptr, o_name, o_ptr, OD_OMIT_INSCRIPTION);
-    msg_format(_("%sに銘を刻む。", "Inscribing %s."), o_name);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_INSCRIPTION);
+    msg_format(_("%sに銘を刻む。", "Inscribing %s."), item_name.data());
     msg_print(nullptr);
     strcpy(out_val, "");
     if (o_ptr->is_inscribed()) {
@@ -226,9 +225,13 @@ void do_cmd_inscribe(PlayerType *player_ptr)
 
     if (get_string(_("銘: ", "Inscription: "), out_val, MAX_INSCRIPTION)) {
         o_ptr->inscription.emplace(out_val);
-        set_bits(player_ptr->update, PU_COMBINE);
-        set_bits(player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
-        set_bits(player_ptr->update, PU_BONUS);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        const auto flags_srf = {
+            StatusRedrawingFlag::COMBINATION,
+            StatusRedrawingFlag::BONUS,
+        };
+        rfu.set_flags(flags_srf);
+        set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
     }
 }
 

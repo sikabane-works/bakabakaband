@@ -43,7 +43,7 @@ ProcessResult effect_monster_hypodynamia(PlayerType *player_ptr, effect_monster_
         em_ptr->obvious = true;
     }
 
-    if (monster_living(em_ptr->m_ptr->r_idx)) {
+    if (em_ptr->m_ptr->has_living_flag()) {
         em_ptr->do_time = (em_ptr->dam + 7) / 8;
         return ProcessResult::PROCESS_CONTINUE;
     }
@@ -75,7 +75,7 @@ ProcessResult effect_monster_death_ray(PlayerType *player_ptr, effect_monster_ty
         em_ptr->obvious = true;
     }
 
-    if (!monster_living(em_ptr->m_ptr->r_idx)) {
+    if (!em_ptr->m_ptr->has_living_flag()) {
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
             if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::DEMON)) {
                 em_ptr->r_ptr->r_kind_flags.set(MonsterKindType::DEMON);
@@ -270,7 +270,7 @@ ProcessResult effect_monster_genocide(PlayerType *player_ptr, effect_monster_typ
         if (em_ptr->seen_msg) {
             msg_format(_("%sは消滅した！", "%s^ disappeared!"), em_ptr->m_name);
         }
-        chg_virtue(player_ptr, V_VITALITY, -1);
+        chg_virtue(player_ptr, Virtue::VITALITY, -1);
         return ProcessResult::PROCESS_TRUE;
     }
 

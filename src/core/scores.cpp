@@ -360,11 +360,8 @@ errr predict_score(PlayerType *player_ptr)
 void show_highclass(PlayerType *player_ptr)
 {
     screen_save();
-    char buf[1024], out_val[256];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-
-    highscore_fd = fd_open(buf, O_RDONLY);
-
+    const auto &path = path_build(ANGBAND_DIR_APEX, "scores.raw");
+    highscore_fd = fd_open(path, O_RDONLY);
     if (highscore_fd < 0) {
         msg_print(_("スコア・ファイルが使用できません。", "Score file unavailable."));
         msg_print(nullptr);
@@ -386,6 +383,7 @@ void show_highclass(PlayerType *player_ptr)
     int j = 0;
     PLAYER_LEVEL clev = 0;
     int pr;
+    char out_val[256];
     while ((m < 9) && (j < MAX_HISCORES)) {
         if (highscore_seek(j)) {
             break;
@@ -435,20 +433,14 @@ void show_highclass(PlayerType *player_ptr)
 void race_score(PlayerType *player_ptr, int race_num)
 {
     int i = 0, j, m = 0;
-    int pr, clev, lastlev;
+    int pr, clev;
     high_score the_score;
-    char buf[1024], out_val[256], tmp_str[80];
-
-    lastlev = 0;
+    auto lastlev = 0;
 
     /* rr9: TODO - pluralize the race */
-    sprintf(tmp_str, _("最高の%s", "The Greatest of all the %s"), race_info[race_num].title);
-
-    prt(tmp_str, 5, 15);
-    path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-
-    highscore_fd = fd_open(buf, O_RDONLY);
-
+    prt(std::string(_("最高の", "The Greatest of all the ")).append(race_info[race_num].title), 5, 15);
+    const auto &path = path_build(ANGBAND_DIR_APEX, "scores.raw");
+    highscore_fd = fd_open(path, O_RDONLY);
     if (highscore_fd < 0) {
         msg_print(_("スコア・ファイルが使用できません。", "Score file unavailable."));
         msg_print(nullptr);
@@ -479,6 +471,7 @@ void race_score(PlayerType *player_ptr, int race_num)
         clev = atoi(the_score.cur_lev);
 
         if (pr == race_num) {
+            char out_val[256];
 #ifdef JP
             sprintf(out_val, "   %3d) %sの%s (レベル %2d)", (m + 1), race_info[pr].title, the_score.who, clev);
 #else
@@ -494,6 +487,7 @@ void race_score(PlayerType *player_ptr, int race_num)
 
     /* add player if qualified */
     if ((enum2i(player_ptr->prace) == race_num) && (player_ptr->lev >= lastlev)) {
+        char out_val[256];
 #ifdef JP
         sprintf(out_val, "あなた) %sの%s (レベル %2d)", race_info[enum2i(player_ptr->prace)].title, player_ptr->name, player_ptr->lev);
 #else

@@ -1,6 +1,4 @@
 ﻿#include "target/grid-selector.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/cave.h"
@@ -14,6 +12,7 @@
 #include "io/screen-util.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-checker.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-hallucination.h"
@@ -45,21 +44,19 @@ static bool tgt_pt_accept(PlayerType *player_ptr, POSITION y, POSITION x)
         return false;
     }
 
-    grid_type *g_ptr;
-    g_ptr = &floor_ptr->grid_array[y][x];
-    if (!g_ptr->is_mark()) {
+    auto &grid = floor_ptr->grid_array[y][x];
+    if (!grid.is_mark()) {
         return false;
     }
 
-    if (g_ptr->cave_has_flag(TerrainCharacteristics::LESS) || g_ptr->cave_has_flag(TerrainCharacteristics::MORE) || g_ptr->cave_has_flag(TerrainCharacteristics::QUEST_ENTER) || g_ptr->cave_has_flag(TerrainCharacteristics::QUEST_EXIT)) {
-        return true;
-    }
-
-    if (g_ptr->cave_has_flag(TerrainCharacteristics::STORE) || g_ptr->cave_has_flag(TerrainCharacteristics::BLDG)) {
-        return true;
-    }
-
-    return false;
+    using Tc = TerrainCharacteristics;
+    auto is_acceptable = grid.cave_has_flag(Tc::LESS);
+    is_acceptable |= grid.cave_has_flag(Tc::MORE);
+    is_acceptable |= grid.cave_has_flag(Tc::QUEST_ENTER);
+    is_acceptable |= grid.cave_has_flag(Tc::QUEST_EXIT);
+    is_acceptable |= grid.cave_has_flag(Tc::STORE);
+    is_acceptable |= grid.cave_has_flag(Tc::BLDG);
+    return is_acceptable;
 }
 
 /*
@@ -161,8 +158,9 @@ void tgt_pt_info::move_to_symbol(PlayerType *player_ptr)
         this->y = player_ptr->y;
         this->x = player_ptr->x;
         verify_panel(player_ptr);
-        player_ptr->update |= PU_MONSTERS;
-        player_ptr->redraw |= PR_MAP;
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+        rfu.set_flag(MainWindowRedrawingFlag::MAP);
         player_ptr->window_flags |= PW_OVERHEAD;
         handle_stuff(player_ptr);
     } else {
@@ -304,8 +302,9 @@ bool tgt_pt(PlayerType *player_ptr, POSITION *x_ptr, POSITION *y_ptr)
 
     prt("", 0, 0);
     verify_panel(player_ptr);
-    player_ptr->update |= PU_MONSTERS;
-    player_ptr->redraw |= PR_MAP;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
     player_ptr->window_flags |= PW_OVERHEAD;
     handle_stuff(player_ptr);
     *x_ptr = info.x;

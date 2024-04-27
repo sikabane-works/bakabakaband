@@ -6,8 +6,6 @@
 
 #include "monster-attack/monster-eating.h"
 #include "avatar/avatar.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -29,6 +27,7 @@
 #include "system/item-entity.h"
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/player-paralysis.h"
 #include "timed-effect/timed-effects.h"
@@ -67,14 +66,15 @@ void process_eat_gold(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
     } else if (player_ptr->au > 0) {
         msg_print(_("財布が軽くなった気がする。", "Your purse feels lighter."));
         msg_format(_("$%ld のお金が盗まれた！", "%ld coins were stolen!"), (long)gold);
-        chg_virtue(player_ptr, V_SACRIFICE, 1);
+        chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
     } else {
         msg_print(_("財布が軽くなった気がする。", "Your purse feels lighter."));
         msg_print(_("お金が全部盗まれた！", "All of your coins were stolen!"));
-        chg_virtue(player_ptr, V_SACRIFICE, 2);
+        chg_virtue(player_ptr, Virtue::SACRIFICE, 2);
     }
 
-    player_ptr->redraw |= (PR_GOLD);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::GOLD);
     player_ptr->window_flags |= (PW_PLAYER);
     monap_ptr->blinked = true;
 }
@@ -142,21 +142,21 @@ void process_eat_item(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
         OBJECT_IDX o_idx;
         INVENTORY_IDX i_idx = (INVENTORY_IDX)randint0(INVEN_PACK);
         monap_ptr->o_ptr = &player_ptr->inventory_list[i_idx];
-        if (!monap_ptr->o_ptr->bi_id) {
+        if (!monap_ptr->o_ptr->is_valid()) {
             continue;
         }
 
-        if (monap_ptr->o_ptr->is_artifact()) {
+        if (monap_ptr->o_ptr->is_fixed_or_random_artifact()) {
             continue;
         }
 
-        describe_flavor(player_ptr, monap_ptr->o_name, monap_ptr->o_ptr, OD_OMIT_PREFIX);
+        const auto item_name = describe_flavor(player_ptr, monap_ptr->o_ptr, OD_OMIT_PREFIX);
 #ifdef JP
-        msg_format("%s(%c)を%s盗まれた！", monap_ptr->o_name, index_to_label(i_idx), ((monap_ptr->o_ptr->number > 1) ? "一つ" : ""));
+        msg_format("%s(%c)を%s盗まれた！", item_name.data(), index_to_label(i_idx), ((monap_ptr->o_ptr->number > 1) ? "一つ" : ""));
 #else
-        msg_format("%sour %s (%c) was stolen!", ((monap_ptr->o_ptr->number > 1) ? "One of y" : "Y"), monap_ptr->o_name, index_to_label(i_idx));
+        msg_format("%sour %s (%c) was stolen!", ((monap_ptr->o_ptr->number > 1) ? "One of y" : "Y"), item_name.data(), index_to_label(i_idx));
 #endif
-        chg_virtue(player_ptr, V_SACRIFICE, 1);
+        chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
         o_idx = o_pop(player_ptr->current_floor_ptr);
         move_item_to_monster(player_ptr, monap_ptr, o_idx);
         inven_item_increase(player_ptr, i_idx, -1);
@@ -172,7 +172,7 @@ void process_eat_food(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
     for (int i = 0; i < 10; i++) {
         INVENTORY_IDX i_idx = (INVENTORY_IDX)randint0(INVEN_PACK);
         monap_ptr->o_ptr = &player_ptr->inventory_list[i_idx];
-        if (!monap_ptr->o_ptr->bi_id) {
+        if (!monap_ptr->o_ptr->is_valid()) {
             continue;
         }
 
@@ -181,11 +181,11 @@ void process_eat_food(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
             continue;
         }
 
-        describe_flavor(player_ptr, monap_ptr->o_name, monap_ptr->o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+        const auto item_name = describe_flavor(player_ptr, monap_ptr->o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
 #ifdef JP
-        msg_format("%s(%c)を%s食べられてしまった！", monap_ptr->o_name, index_to_label(i_idx), ((monap_ptr->o_ptr->number > 1) ? "一つ" : ""));
+        msg_format("%s(%c)を%s食べられてしまった！", item_name.data(), index_to_label(i_idx), ((monap_ptr->o_ptr->number > 1) ? "一つ" : ""));
 #else
-        msg_format("%sour %s (%c) was eaten!", ((monap_ptr->o_ptr->number > 1) ? "One of y" : "Y"), monap_ptr->o_name, index_to_label(i_idx));
+        msg_format("%sour %s (%c) was eaten!", ((monap_ptr->o_ptr->number > 1) ? "One of y" : "Y"), item_name.data(), index_to_label(i_idx));
 #endif
         inven_item_increase(player_ptr, i_idx, -1);
         inven_item_optimize(player_ptr, i_idx);
@@ -210,7 +210,7 @@ void process_eat_lite(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
         monap_ptr->obvious = true;
     }
 
-    player_ptr->window_flags |= (PW_EQUIP);
+    player_ptr->window_flags |= (PW_EQUIPMENT);
 }
 
 /*!
@@ -228,7 +228,7 @@ bool process_un_power(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
     }
 
     const auto is_magic_mastery = has_magic_mastery(player_ptr) != 0;
-    const auto &baseitem = baseitems_info[monap_ptr->o_ptr->bi_id];
+    const auto &baseitem = monap_ptr->o_ptr->get_baseitem();
     const auto pval = baseitem.pval;
     const auto level = monap_ptr->rlev;
     auto drain = is_magic_mastery ? std::min<short>(pval, pval * level / 400 + pval * randint1(level) / 400) : pval;
@@ -252,17 +252,22 @@ bool process_un_power(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
     recovery = std::min(recovery, monap_ptr->m_ptr->maxhp - monap_ptr->m_ptr->hp);
     monap_ptr->m_ptr->hp += recovery;
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->health_who == monap_ptr->m_idx) {
-        player_ptr->redraw |= PR_HEALTH;
+        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
     if (player_ptr->riding == monap_ptr->m_idx) {
-        player_ptr->redraw |= PR_UHEALTH;
+        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     monap_ptr->o_ptr->pval = !is_magic_mastery || (monap_ptr->o_ptr->pval == 1) ? 0 : monap_ptr->o_ptr->pval - drain;
-    player_ptr->update |= PU_COMBINE | PU_REORDER;
-    player_ptr->window_flags |= PW_INVEN;
+    const auto flags = {
+        StatusRedrawingFlag::COMBINATION,
+        StatusRedrawingFlag::REORDER,
+    };
+    rfu.set_flags(flags);
+    player_ptr->window_flags |= PW_INVENTORY;
     return true;
 }
 
@@ -299,12 +304,13 @@ void process_drain_life(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr, 
         monap_ptr->m_ptr->hp = monap_ptr->m_ptr->maxhp;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->health_who == monap_ptr->m_idx) {
-        player_ptr->redraw |= (PR_HEALTH);
+        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
     if (player_ptr->riding == monap_ptr->m_idx) {
-        player_ptr->redraw |= (PR_UHEALTH);
+        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     if (monap_ptr->m_ptr->ml && did_heal) {
@@ -326,7 +332,7 @@ void process_drain_mana(PlayerType *player_ptr, MonsterAttackPlayer *monap_ptr)
         player_ptr->csp_frac = 0;
     }
 
-    player_ptr->redraw |= (PR_MANA);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
 }
 
 /*!

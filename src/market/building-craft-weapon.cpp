@@ -2,7 +2,6 @@
 #include "artifact/fixed-art-types.h"
 #include "combat/attack-accuracy.h"
 #include "combat/shoot.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -21,6 +20,7 @@
 #include "sv-definition/sv-weapon-types.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
@@ -311,32 +311,32 @@ static void compare_weapon_aux(PlayerType *player_ptr, ItemEntity *o_ptr, int co
  */
 static void list_weapon(PlayerType *player_ptr, ItemEntity *o_ptr, TERM_LEN row, TERM_LEN col)
 {
-    GAME_TEXT o_name[MAX_NLEN];
-    GAME_TEXT tmp_str[80];
+    const auto eff_dd = o_ptr->dd + player_ptr->to_dd[0];
+    const auto eff_ds = o_ptr->ds + player_ptr->to_ds[0];
+    const auto hit_reliability = player_ptr->skill_thn + (player_ptr->to_h[0] + o_ptr->to_h) * BTH_PLUS_ADJ;
+    const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY);
+    c_put_str(TERM_YELLOW, item_name, row, col);
+    put_str(format(_("攻撃回数: %d", "Number of Blows: %d"), player_ptr->num_blow[0]), row + 1, col);
 
-    DICE_NUMBER eff_dd = o_ptr->dd + player_ptr->to_dd[0];
-    DICE_SID eff_ds = o_ptr->ds + player_ptr->to_ds[0];
-    auto hit_reliability = player_ptr->skill_thn + (player_ptr->to_h[0] + o_ptr->to_h) * BTH_PLUS_ADJ;
-
-    describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
-    c_put_str(TERM_YELLOW, o_name, row, col);
-    sprintf(tmp_str, _("攻撃回数: %d", "Number of Blows: %d"), player_ptr->num_blow[0]);
-    put_str(tmp_str, row + 1, col);
-
-    sprintf(tmp_str, _("命中率:  0  50 100 150 200 (敵のAC)", "To Hit:  0  50 100 150 200 (AC)"));
-    put_str(tmp_str, row + 2, col);
-    sprintf(tmp_str, "        %2d  %2d  %2d  %2d  %2d (%%)", (int)hit_chance(player_ptr, hit_reliability, 0), (int)hit_chance(player_ptr, hit_reliability, 50),
-        (int)hit_chance(player_ptr, hit_reliability, 100), (int)hit_chance(player_ptr, hit_reliability, 150), (int)hit_chance(player_ptr, hit_reliability, 200));
-    put_str(tmp_str, row + 3, col);
+    put_str(_("命中率:  0  50 100 150 200 (敵のAC)", "To Hit:  0  50 100 150 200 (AC)"), row + 2, col);
+    put_str(format("        %2d  %2d  %2d  %2d  %2d (%%)",
+                (int)hit_chance(player_ptr, hit_reliability, 0),
+                (int)hit_chance(player_ptr, hit_reliability, 50),
+                (int)hit_chance(player_ptr, hit_reliability, 100),
+                (int)hit_chance(player_ptr, hit_reliability, 150),
+                (int)hit_chance(player_ptr, hit_reliability, 200)),
+        row + 3, col);
     c_put_str(TERM_YELLOW, _("可能なダメージ:", "Possible Damage:"), row + 5, col);
 
-    sprintf(tmp_str, _("攻撃一回につき %d-%d", "One Strike: %d-%d damage"), (int)(eff_dd + o_ptr->to_d + player_ptr->to_d[0]),
-        (int)(eff_ds * eff_dd + o_ptr->to_d + player_ptr->to_d[0]));
-    put_str(tmp_str, row + 6, col + 1);
+    put_str(format(_("攻撃一回につき %d-%d", "One Strike: %d-%d damage"),
+                (int)(eff_dd + o_ptr->to_d + player_ptr->to_d[0]),
+                (int)(eff_ds * eff_dd + o_ptr->to_d + player_ptr->to_d[0])),
+        row + 6, col + 1);
 
-    sprintf(tmp_str, _("１ターンにつき %d-%d", "One Attack: %d-%d damage"), (int)(player_ptr->num_blow[0] * (eff_dd + o_ptr->to_d + player_ptr->to_d[0])),
-        (int)(player_ptr->num_blow[0] * (eff_ds * eff_dd + o_ptr->to_d + player_ptr->to_d[0])));
-    put_str(tmp_str, row + 7, col + 1);
+    put_str(format(_("１ターンにつき %d-%d", "One Attack: %d-%d damage"),
+                (int)(player_ptr->num_blow[0] * (eff_dd + o_ptr->to_d + player_ptr->to_d[0])),
+                (int)(player_ptr->num_blow[0] * (eff_ds * eff_dd + o_ptr->to_d + player_ptr->to_d[0]))),
+        row + 7, col + 1);
 }
 
 /*!
@@ -350,9 +350,8 @@ static void list_weapon(PlayerType *player_ptr, ItemEntity *o_ptr, TERM_LEN row,
  */
 PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
 {
-    ItemEntity *o_ptr[2];
+    ItemEntity *o_ptr[2]{};
     ItemEntity orig_weapon;
-    ItemEntity *i_ptr;
     TERM_LEN row = 2;
     TERM_LEN wid = 38, mgn = 2;
     bool old_character_xtra = w_ptr->character_xtra;
@@ -362,14 +361,15 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
 
     screen_save();
     clear_bldg(0, 22);
-    i_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
+    auto *i_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
     (&orig_weapon)->copy_from(i_ptr);
 
     concptr q = _("第一の武器は？", "What is your first weapon? ");
     concptr s = _("比べるものがありません。", "You have nothing to compare.");
 
     OBJECT_IDX item;
-    o_ptr[0] = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
+    constexpr auto options = USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT;
+    o_ptr[0] = choose_object(player_ptr, &item, q, s, options, FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
     if (!o_ptr[0]) {
         screen_load();
         return 0;
@@ -377,7 +377,7 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
 
     int n = 1;
     total = bcost;
-
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     while (true) {
         clear_bldg(0, 22);
         w_ptr->character_xtra = true;
@@ -387,7 +387,7 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
                 i_ptr->copy_from(o_ptr[i]);
             }
 
-            player_ptr->update |= PU_BONUS;
+            rfu.set_flag(StatusRedrawingFlag::BONUS);
             handle_stuff(player_ptr);
 
             list_weapon(player_ptr, o_ptr[i], row, col);
@@ -395,7 +395,7 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
             i_ptr->copy_from(&orig_weapon);
         }
 
-        player_ptr->update |= PU_BONUS;
+        rfu.set_flag(StatusRedrawingFlag::BONUS);
         handle_stuff(player_ptr);
 
         w_ptr->character_xtra = old_character_xtra;

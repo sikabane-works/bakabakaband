@@ -1,7 +1,6 @@
 ﻿#include "hpmp/hp-mp-processor.h"
 #include "avatar/avatar.h"
 #include "cmd-action/cmd-pet.h"
-#include "core/player-redraw-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -43,6 +42,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-poison.h"
 #include "timed-effect/timed-effects.h"
@@ -50,6 +50,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <functional>
+#include <sstream>
 
 /*!
  * @brief 地形によるダメージを与える / Deal damage from feature.
@@ -94,8 +95,8 @@ static bool deal_damege_by_feat(PlayerType *player_ptr, grid_type *g_ptr, concpt
 
     if (resist_levitation) {
         msg_print(msg_levitation);
-
-        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(_("%sの上に浮遊したダメージ", "flying over %s"), terrains_info[g_ptr->get_feat_mimic()].name.data()).data());
+        constexpr auto mes = _("%sの上に浮遊したダメージ", "flying over %s");
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(mes, terrains_info[g_ptr->get_feat_mimic()].name.data()).data());
 
         if (additional_effect != nullptr) {
             additional_effect(player_ptr, damage);
@@ -160,55 +161,58 @@ void process_player_hp_mp(PlayerType *player_ptr)
         auto flags = object_flags(o_ptr);
 
         if ((player_ptr->inventory_list[INVEN_LITE].bi_key.tval() != ItemKindType::NONE) && flags.has_not(TR_DARK_SOURCE) && !has_resist_lite(player_ptr)) {
-            GAME_TEXT o_name[MAX_NLEN];
-            char ouch[MAX_NLEN + 40];
-            describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-            msg_format(_("%sがあなたのアンデッドの肉体を焼き焦がした！", "The %s scorches your undead flesh!"), o_name);
-
+            const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+            msg_format(_("%sがあなたのアンデッドの肉体を焼き焦がした！", "The %s scorches your undead flesh!"), item_name.data());
             cave_no_regen = true;
-            describe_flavor(player_ptr, o_name, o_ptr, OD_NAME_ONLY);
-            sprintf(ouch, _("%sを装備したダメージ", "wielding %s"), o_name);
-
             if (!is_invuln(player_ptr)) {
-                take_hit(player_ptr, DAMAGE_NOESCAPE, 1, ouch);
+                const auto wielding_item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY);
+                std::stringstream ss;
+                ss << _(wielding_item_name, "wielding ") << _("を装備したダメージ", wielding_item_name);
+                take_hit(player_ptr, DAMAGE_NOESCAPE, 1, ss.str().data());
             }
         }
     }
 
     if (f_ptr->flags.has(TerrainCharacteristics::LAVA) && !is_invuln(player_ptr) && !has_immune_fire(player_ptr)) {
-        if (deal_damege_by_feat(
-                player_ptr, g_ptr, _("熱で火傷した！", "The heat burns you!"), _("で火傷した！", "burns you!"), calc_fire_damage_rate, nullptr)) {
+        constexpr auto mes_leviation = _("熱で火傷した！", "The heat burns you!");
+        constexpr auto mes_normal = _("で火傷した！", "burns you!");
+        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_fire_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
     if (f_ptr->flags.has(TerrainCharacteristics::COLD_PUDDLE) && !is_invuln(player_ptr) && !has_immune_cold(player_ptr)) {
-        if (deal_damege_by_feat(
-                player_ptr, g_ptr, _("冷気に覆われた！", "The cold engulfs you!"), _("に凍えた！", "frostbites you!"), calc_cold_damage_rate, nullptr)) {
+        constexpr auto mes_leviation = _("冷気に覆われた！", "The cold engulfs you!");
+        constexpr auto mes_normal = _("に凍えた！", "frostbites you!");
+        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_cold_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
     if (f_ptr->flags.has(TerrainCharacteristics::ELEC_PUDDLE) && !is_invuln(player_ptr) && !has_immune_elec(player_ptr)) {
-        if (deal_damege_by_feat(
-                player_ptr, g_ptr, _("電撃を受けた！", "The electricity shocks you!"), _("に感電した！", "shocks you!"), calc_elec_damage_rate, nullptr)) {
+        constexpr auto mes_leviation = _("電撃を受けた！", "The electricity shocks you!");
+        constexpr auto mes_normal = _("に感電した！", "shocks you!");
+        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_elec_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
     if (f_ptr->flags.has(TerrainCharacteristics::ACID_PUDDLE) && !is_invuln(player_ptr) && !has_immune_acid(player_ptr)) {
-        if (deal_damege_by_feat(
-                player_ptr, g_ptr, _("酸が飛び散った！", "The acid melts you!"), _("に溶かされた！", "melts you!"), calc_acid_damage_rate, nullptr)) {
+        constexpr auto mes_leviation = _("酸が飛び散った！", "The acid melts you!");
+        constexpr auto mes_normal = _("に溶かされた！", "melts you!");
+        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_acid_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
     if (f_ptr->flags.has(TerrainCharacteristics::POISON_PUDDLE) && !is_invuln(player_ptr)) {
-        if (deal_damege_by_feat(player_ptr, g_ptr, _("毒気を吸い込んだ！", "The gas poisons you!"), _("に毒された！", "poisons you!"), calc_acid_damage_rate,
+        constexpr auto mes_leviation = _("毒気を吸い込んだ！", "The gas poisons you!");
+        constexpr auto mes_normal = _("に毒された！", "poisons you!");
+        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_acid_damage_rate,
                 [](PlayerType *player_ptr, int damage) {
                     if (!has_resist_pois(player_ptr)) {
                         (void)BadStatusSetter(player_ptr).mod_poison(static_cast<TIME_EFFECT>(damage));
@@ -228,7 +232,8 @@ void process_player_hp_mp(PlayerType *player_ptr)
             });
     }
 
-    if (f_ptr->flags.has_all_of({ TerrainCharacteristics::WATER, TerrainCharacteristics::DEEP }) && !player_ptr->levitation && !player_ptr->can_swim && !has_resist_water(player_ptr)) {
+    const auto can_drown = f_ptr->flags.has_all_of({ TerrainCharacteristics::WATER, TerrainCharacteristics::DEEP });
+    if (can_drown && !player_ptr->levitation && !player_ptr->can_swim && !has_resist_water(player_ptr)) {
         if (calc_inventory_weight(player_ptr) > calc_weight_limit(player_ptr)) {
             msg_print(_("溺れている！", "You are drowning!"));
             take_hit(player_ptr, DAMAGE_NOESCAPE, randint1(player_ptr->lev), _("溺れ", "drowning"));
@@ -381,7 +386,11 @@ void process_player_hp_mp(PlayerType *player_ptr)
      * WILL BE!
      */
     if (f_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY })) {
-        if (!is_invuln(player_ptr) && !player_ptr->wraith_form && !player_ptr->tim_pass_wall && ((player_ptr->chp > (player_ptr->lev / 5)) || !has_pass_wall(player_ptr))) {
+        auto should_damage = !is_invuln(player_ptr);
+        should_damage &= player_ptr->wraith_form == 0;
+        should_damage &= player_ptr->tim_pass_wall == 0;
+        should_damage &= (player_ptr->chp > (player_ptr->lev / 5)) || !has_pass_wall(player_ptr);
+        if (should_damage) {
             concptr dam_desc;
             cave_no_regen = true;
 
@@ -472,7 +481,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
 bool hp_player(PlayerType *player_ptr, int num)
 {
     int vir;
-    vir = virtue_number(player_ptr, V_VITALITY);
+    vir = virtue_number(player_ptr, Virtue::VITALITY);
 
     if (num <= 0) {
         return false;
@@ -484,7 +493,7 @@ bool hp_player(PlayerType *player_ptr, int num)
 
     if (player_ptr->chp < player_ptr->mhp) {
         if ((num > 0) && (player_ptr->chp < (player_ptr->mhp / 3))) {
-            chg_virtue(player_ptr, V_TEMPERANCE, 1);
+            chg_virtue(player_ptr, Virtue::TEMPERANCE, 1);
         }
 
         player_ptr->chp += num;
@@ -493,7 +502,8 @@ bool hp_player(PlayerType *player_ptr, int num)
             player_ptr->chp_frac = 0;
         }
 
-        player_ptr->redraw |= (PR_HP);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(MainWindowRedrawingFlag::HP);
         player_ptr->window_flags |= (PW_PLAYER);
         if (num < 5) {
             msg_print(_("少し気分が良くなった。", "You feel a little better."));

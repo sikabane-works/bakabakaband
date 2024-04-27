@@ -5,8 +5,7 @@
  * @details PlayerRaceからPlayerClassへの依存はあるが、逆は依存させないこと.
  */
 #include "player-base/player-class.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
+#include "cmd-io/diary-subtitle-table.h"
 #include "inventory/inventory-slot-types.h"
 #include "mind/mind-elementalist.h"
 #include "player-info/bard-data-type.h"
@@ -28,6 +27,7 @@
 #include "status/action-setter.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -100,9 +100,10 @@ TrFlags PlayerClass::tr_flags() const
         if (heavy_armor(this->player_ptr)) {
             flags.set(TR_SPEED);
         } else {
-            if ((!this->player_ptr->inventory_list[INVEN_MAIN_HAND].bi_id || can_attack_with_main_hand(this->player_ptr)) && (!this->player_ptr->inventory_list[INVEN_SUB_HAND].bi_id || can_attack_with_sub_hand(this->player_ptr))) {
+            if (this->has_ninja_speed()) {
                 flags.set(TR_SPEED);
             }
+
             if (plev > 24 && !this->player_ptr->is_icky_wield[0] && !this->player_ptr->is_icky_wield[1]) {
                 flags.set(TR_FREE_ACT);
             }
@@ -394,10 +395,17 @@ bool PlayerClass::lose_balance()
     }
 
     this->set_samurai_stance(SamuraiStanceType::NONE);
-    this->player_ptr->update |= PU_BONUS;
-    this->player_ptr->update |= PU_MONSTERS;
-    this->player_ptr->redraw |= PR_STATE;
-    this->player_ptr->redraw |= PR_STATUS;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_srf = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+    };
+    rfu.set_flags(flags_srf);
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::ACTION,
+        MainWindowRedrawingFlag::TIMED_EFFECT,
+    };
+    rfu.set_flags(flags_mwrf);
     this->player_ptr->action = ACTION_NONE;
     return true;
 }
@@ -521,4 +529,13 @@ void PlayerClass::init_specific_data()
         this->player_ptr->class_specific_data = no_class_specific_data();
         break;
     }
+}
+
+bool PlayerClass::has_ninja_speed() const
+{
+    auto has_ninja_speed_main = !this->player_ptr->inventory_list[INVEN_MAIN_HAND].is_valid();
+    has_ninja_speed_main |= can_attack_with_main_hand(this->player_ptr);
+    auto has_ninja_speed_sub = !this->player_ptr->inventory_list[INVEN_SUB_HAND].is_valid();
+    has_ninja_speed_sub |= can_attack_with_sub_hand(this->player_ptr);
+    return has_ninja_speed_main && has_ninja_speed_sub;
 }

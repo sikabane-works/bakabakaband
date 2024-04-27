@@ -76,7 +76,7 @@ void InputKeyRequestor::request_command()
 void InputKeyRequestor::input_command()
 {
     while (true) {
-        if (!macro_running() && !command_new && auto_debug_save && (!inkey_next || *inkey_next == '\0')) {
+        if (!this->shopping && !macro_running() && !command_new && auto_debug_save && (!inkey_next || *inkey_next == '\0')) {
             save_player(this->player_ptr, SaveType::DEBUG);
         }
 
@@ -319,12 +319,12 @@ void InputKeyRequestor::sweep_confirmation_equipments()
 {
     auto caret_command = this->get_caret_command();
     for (auto i = enum2i(INVEN_MAIN_HAND); i < INVEN_TOTAL; i++) {
-        auto &o_ref = this->player_ptr->inventory_list[i];
-        if ((o_ref.bi_id == 0) || !o_ref.is_inscribed()) {
+        auto &item = this->player_ptr->inventory_list[i];
+        if (!item.is_valid() || !item.is_inscribed()) {
             continue;
         }
 
-        this->confirm_command(o_ref, caret_command);
+        this->confirm_command(item, caret_command);
     }
 }
 

@@ -19,6 +19,7 @@
 #include "sv-definition/sv-lite-types.h"
 #include "sv-definition/sv-other-types.h"
 #include "sv-definition/sv-weapon-types.h"
+#include "system/artifact-type-definition.h"
 #include "system/baseitem-info.h"
 #include "system/monster-race-info.h"
 #include "term/term-color-types.h"
@@ -78,7 +79,7 @@ void ItemEntity::prep(short new_bi_id)
         this->activation_id = baseitem.act_idx;
     }
 
-    if (baseitems_info[this->bi_id].cost <= 0) {
+    if (this->get_baseitem().cost <= 0) {
         this->ident |= (IDENT_BROKEN);
     }
 
@@ -322,11 +323,11 @@ bool ItemEntity::is_smith() const
 }
 
 /*!
- * @brief アイテムがアーティファクトかを返す /
+ * @brief アイテムが固定アーティファクトもしくはランダムアーティファクトであるかを返す /
  * Check if an object is artifact
- * @return アーティファクトならばtrueを返す
+ * @return 固定アーティファクトもしくはランダムアーティファクトならばtrueを返す
  */
-bool ItemEntity::is_artifact() const
+bool ItemEntity::is_fixed_or_random_artifact() const
 {
     return this->is_fixed_artifact() || this->randart_name.has_value();
 }
@@ -348,7 +349,7 @@ bool ItemEntity::is_fixed_artifact() const
  */
 bool ItemEntity::is_random_artifact() const
 {
-    return this->is_artifact() && !this->is_fixed_artifact();
+    return this->is_fixed_or_random_artifact() && !this->is_fixed_artifact();
 }
 
 /*!
@@ -358,7 +359,7 @@ bool ItemEntity::is_random_artifact() const
  */
 bool ItemEntity::is_nameless() const
 {
-    return !this->is_artifact() && !this->is_ego() && !this->is_smith();
+    return !this->is_fixed_or_random_artifact() && !this->is_ego() && !this->is_smith();
 }
 
 bool ItemEntity::is_valid() const
@@ -388,7 +389,7 @@ bool ItemEntity::is_held_by_monster() const
  */
 bool ItemEntity::is_known() const
 {
-    const auto &baseitem = baseitems_info[this->bi_id];
+    const auto &baseitem = this->get_baseitem();
     return any_bits(this->ident, IDENT_KNOWN) || (baseitem.easy_know && baseitem.aware);
 }
 
@@ -403,7 +404,7 @@ bool ItemEntity::is_fully_known() const
  */
 bool ItemEntity::is_aware() const
 {
-    return baseitems_info[this->bi_id].aware;
+    return this->get_baseitem().aware;
 }
 
 /*
@@ -411,7 +412,7 @@ bool ItemEntity::is_aware() const
  */
 bool ItemEntity::is_tried() const
 {
-    return baseitems_info[this->bi_id].tried;
+    return this->get_baseitem().tried;
 }
 
 /*!
@@ -570,7 +571,7 @@ bool ItemEntity::can_pile(const ItemEntity *j_ptr) const
         return false;
     }
 
-    if (this->is_artifact() || j_ptr->is_artifact()) {
+    if (this->is_fixed_or_random_artifact() || j_ptr->is_fixed_or_random_artifact()) {
         return false;
     }
 
@@ -615,13 +616,13 @@ bool ItemEntity::can_pile(const ItemEntity *j_ptr) const
  */
 TERM_COLOR ItemEntity::get_color() const
 {
-    const auto &baseitem = baseitems_info[this->bi_id];
+    const auto &baseitem = this->get_baseitem();
     const auto flavor = baseitem.flavor;
     if (flavor != 0) {
         return baseitems_info[flavor].x_attr;
     }
 
-    auto has_attr = this->bi_id == 0;
+    auto has_attr = !this->is_valid();
     has_attr |= this->bi_key != BaseitemKey(ItemKindType::CORPSE, SV_CORPSE);
     has_attr |= baseitem.x_attr != TERM_DARK;
     if (has_attr) {
@@ -639,7 +640,7 @@ TERM_COLOR ItemEntity::get_color() const
  */
 char ItemEntity::get_symbol() const
 {
-    const auto &baseitem = baseitems_info[this->bi_id];
+    const auto &baseitem = this->get_baseitem();
     const auto flavor = baseitem.flavor;
     return flavor ? baseitems_info[flavor].x_char : baseitem.x_char;
 }
@@ -680,7 +681,7 @@ int ItemEntity::get_price() const
 int ItemEntity::get_baseitem_price() const
 {
     if (this->is_aware()) {
-        return baseitems_info[this->bi_id].cost;
+        return this->get_baseitem().cost;
     }
 
     switch (this->bi_key.tval()) {
@@ -803,4 +804,19 @@ bool ItemEntity::is_cross_bow() const
 bool ItemEntity::is_inscribed() const
 {
     return this->inscription != std::nullopt;
+}
+
+BaseitemInfo &ItemEntity::get_baseitem() const
+{
+    return baseitems_info[this->bi_id];
+}
+
+EgoItemDefinition &ItemEntity::get_ego() const
+{
+    return egos_info.at(this->ego_idx);
+}
+
+ArtifactType &ItemEntity::get_fixed_artifact() const
+{
+    return ArtifactsInfo::get_instance().get_artifact(this->fixed_artifact_idx);
 }

@@ -255,7 +255,7 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
 static errr rd_savefile(PlayerType *player_ptr)
 {
     safe_setuid_grab(player_ptr);
-    loading_savefile = angband_fopen(savefile, "rb");
+    loading_savefile = angband_fopen(savefile, FileOpenMode::READ, true);
     safe_setuid_drop();
     if (!loading_savefile) {
         return -1;
@@ -333,12 +333,13 @@ bool load_savedata(PlayerType *player_ptr, bool *new_game)
     auto what = "generic";
     w_ptr->game_turn = 0;
     player_ptr->is_dead = false;
-    if (!savefile[0]) {
+    if (savefile.empty()) {
         return true;
     }
 
+    const auto &savefile_str = savefile.string();
 #ifndef WINDOWS
-    if (access(savefile, 0) < 0) {
+    if (access(savefile_str.data(), 0) < 0) {
         msg_print(_("セーブファイルがありません。", "Savefile does not exist."));
         msg_print(nullptr);
         *new_game = true;
@@ -375,7 +376,7 @@ bool load_savedata(PlayerType *player_ptr, bool *new_game)
     }
 
     if (err) {
-        msg_format("%s: %s", what, savefile);
+        msg_format("%s: %s", what, savefile_str.data());
         msg_print(nullptr);
         return false;
     }

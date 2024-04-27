@@ -82,15 +82,15 @@ static bool check_item_tag_aux(PlayerType *player_ptr, item_selection_type *item
  */
 static bool check_item_tag_inventory(PlayerType *player_ptr, item_selection_type *item_selection_ptr, char *prev_tag, const ItemTester &item_tester)
 {
-    if ((!item_selection_ptr->inven || (*item_selection_ptr->cp < 0) || (*item_selection_ptr->cp >= INVEN_PACK)) && (!item_selection_ptr->equip || (*item_selection_ptr->cp < INVEN_MAIN_HAND) || (*item_selection_ptr->cp >= INVEN_TOTAL))) {
+    auto should_check = !item_selection_ptr->inven || (*item_selection_ptr->cp < 0) || (*item_selection_ptr->cp >= INVEN_PACK);
+    should_check &= !item_selection_ptr->equip || (*item_selection_ptr->cp < INVEN_MAIN_HAND) || (*item_selection_ptr->cp >= INVEN_TOTAL);
+    if (should_check) {
         return false;
     }
 
     if (*prev_tag && command_cmd) {
-
-        bool flag = false;
-        item_use_flag use_flag = (*item_selection_ptr->cp >= INVEN_MAIN_HAND) ? USE_EQUIP : USE_INVEN;
-
+        auto flag = false;
+        const auto use_flag = (*item_selection_ptr->cp >= INVEN_MAIN_HAND) ? USE_EQUIP : USE_INVEN;
         flag |= !get_tag(player_ptr, &item_selection_ptr->k, *prev_tag, use_flag, item_tester);
         flag |= !get_item_okay(player_ptr, item_selection_ptr->k, item_tester);
 
@@ -303,11 +303,11 @@ bool get_item(PlayerType *player_ptr, OBJECT_IDX *cp, concptr pmt, concptr str, 
                 continue;
             }
 
-            if (window_flag[i] & (PW_INVEN)) {
+            if (window_flag[i] & (PW_INVENTORY)) {
                 ni++;
             }
 
-            if (window_flag[i] & (PW_EQUIP)) {
+            if (window_flag[i] & (PW_EQUIPMENT)) {
                 ne++;
             }
         }
@@ -317,7 +317,7 @@ bool get_item(PlayerType *player_ptr, OBJECT_IDX *cp, concptr pmt, concptr str, 
             item_selection_ptr->toggle = !item_selection_ptr->toggle;
         }
 
-        player_ptr->window_flags |= (PW_INVEN | PW_EQUIP);
+        player_ptr->window_flags |= (PW_INVENTORY | PW_EQUIPMENT);
         handle_stuff(player_ptr);
 
         if (!command_wrk) {
@@ -640,7 +640,7 @@ bool get_item(PlayerType *player_ptr, OBJECT_IDX *cp, concptr pmt, concptr str, 
         toggle_inventory_equipment(player_ptr);
     }
 
-    player_ptr->window_flags |= (PW_INVEN | PW_EQUIP);
+    player_ptr->window_flags |= (PW_INVENTORY | PW_EQUIPMENT);
     handle_stuff(player_ptr);
     prt("", 0, 0);
     if (item_selection_ptr->oops && str) {

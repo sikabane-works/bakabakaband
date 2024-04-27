@@ -83,7 +83,6 @@ void do_cmd_visuals(PlayerType *player_ptr)
 {
     FILE *auto_dump_stream;
     char tmp[160];
-    char buf[1024];
     bool need_redraw = false;
     concptr empty_symbol = "<< ? >>";
     if (use_bigtile) {
@@ -113,7 +112,6 @@ void do_cmd_visuals(PlayerType *player_ptr)
             break;
         }
         case '1': {
-            static concptr mark = "Monster attr/chars";
             prt(_("コマンド: モンスターの[色/文字]をファイルに書き出します", "Command: Dump monster attr/chars"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
             strnfmt(tmp, sizeof(tmp), "%s.prf", player_ptr->base_name);
@@ -121,8 +119,9 @@ void do_cmd_visuals(PlayerType *player_ptr)
                 continue;
             }
 
-            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
-            if (!open_auto_dump(&auto_dump_stream, buf, mark)) {
+            const auto &path = path_build(ANGBAND_DIR_USER, tmp);
+            constexpr auto mark = "Monster attr/chars";
+            if (!open_auto_dump(&auto_dump_stream, path, mark)) {
                 continue;
             }
 
@@ -141,7 +140,6 @@ void do_cmd_visuals(PlayerType *player_ptr)
             break;
         }
         case '2': {
-            static concptr mark = "Object attr/chars";
             prt(_("コマンド: アイテムの[色/文字]をファイルに書き出します", "Command: Dump object attr/chars"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
             strnfmt(tmp, sizeof(tmp), "%s.prf", player_ptr->base_name);
@@ -149,8 +147,9 @@ void do_cmd_visuals(PlayerType *player_ptr)
                 continue;
             }
 
-            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
-            if (!open_auto_dump(&auto_dump_stream, buf, mark)) {
+            const auto &path = path_build(ANGBAND_DIR_USER, tmp);
+            constexpr auto mark = "Object attr/chars";
+            if (!open_auto_dump(&auto_dump_stream, path, mark)) {
                 continue;
             }
 
@@ -160,21 +159,16 @@ void do_cmd_visuals(PlayerType *player_ptr)
                     continue;
                 }
 
-                std::string o_name("");
-                GAME_TEXT char_o_name[MAX_NLEN]{};
+                std::string item_name;
                 if (baseitem.flavor == 0) {
-                    o_name = strip_name(baseitem.idx);
+                    item_name = strip_name(baseitem.idx);
                 } else {
                     ItemEntity dummy;
                     dummy.prep(baseitem.idx);
-                    describe_flavor(player_ptr, char_o_name, &dummy, OD_FORCE_FLAVOR);
+                    item_name = describe_flavor(player_ptr, &dummy, OD_FORCE_FLAVOR);
                 }
 
-                if (o_name == "") {
-                    o_name = char_o_name;
-                }
-
-                auto_dump_printf(auto_dump_stream, "# %s\n", o_name.data());
+                auto_dump_printf(auto_dump_stream, "# %s\n", item_name.data());
                 auto_dump_printf(auto_dump_stream, "K:%d:0x%02X/0x%02X\n\n", (int)baseitem.idx, (byte)(baseitem.x_attr), (byte)(baseitem.x_char));
             }
 
@@ -183,7 +177,6 @@ void do_cmd_visuals(PlayerType *player_ptr)
             break;
         }
         case '3': {
-            static concptr mark = "Feature attr/chars";
             prt(_("コマンド: 地形の[色/文字]をファイルに書き出します", "Command: Dump feature attr/chars"), 15, 0);
             prt(_("ファイル: ", "File: "), 17, 0);
             strnfmt(tmp, sizeof(tmp), "%s.prf", player_ptr->base_name);
@@ -191,8 +184,9 @@ void do_cmd_visuals(PlayerType *player_ptr)
                 continue;
             }
 
-            path_build(buf, sizeof(buf), ANGBAND_DIR_USER, tmp);
-            if (!open_auto_dump(&auto_dump_stream, buf, mark)) {
+            const auto &path = path_build(ANGBAND_DIR_USER, tmp);
+            constexpr auto mark = "Feature attr/chars";
+            if (!open_auto_dump(&auto_dump_stream, path, mark)) {
                 continue;
             }
 

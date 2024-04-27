@@ -6,7 +6,6 @@
  */
 
 #include "spell-class/spells-mirror-master.h"
-#include "core/player-redraw-types.h"
 #include "core/stuff-handler.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "effect/attribute-types.h"
@@ -32,6 +31,7 @@
 #include "system/grid-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/grid-selector.h"
 #include "target/projection-path-calculator.h"
 #include "target/target-checker.h"
@@ -169,7 +169,7 @@ bool SpellsMirrorMaster::mirror_concentration()
         this->player_ptr->csp_frac = 0;
     }
 
-    set_bits(this->player_ptr->redraw, PR_MANA);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
     return true;
 }
 
@@ -360,7 +360,8 @@ void SpellsMirrorMaster::project_seeker_ray(int target_x, int target_y, int dam)
     }
 }
 
-static void draw_super_ray_pict(PlayerType *player_ptr, const std::map<int, std::vector<projection_path::const_iterator>> &pos_list_map, const std::vector<projection_path> &second_path_g_list, const std::pair<int, int> &center)
+static void draw_super_ray_pict(PlayerType *player_ptr, const std::map<int, std::vector<projection_path::const_iterator>> &pos_list_map,
+    const std::vector<projection_path> &second_path_g_list, const std::pair<int, int> &center)
 {
     if (delay_factor <= 0) {
         return;

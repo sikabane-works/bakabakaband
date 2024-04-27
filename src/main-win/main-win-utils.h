@@ -4,12 +4,13 @@
  * @brief Windows版固有実装(ユーティリティー)ヘッダ
  */
 
-#include "term/z-virt.h"
-
-#include <windows.h>
-
+#include "system/angband.h"
+#include <filesystem>
 #include <optional>
+#include <string>
+#include <string_view>
 #include <vector>
+#include <windows.h>
 
 /*!
  * @brief マルチバイト文字列(CP932)をワイド文字列へ変換するクラス
@@ -83,5 +84,5 @@ protected:
 
 bool is_already_running(void);
 void save_screen_as_html(HWND hWnd);
-void open_dir_in_explorer(char *filename);
-bool get_open_filename(OPENFILENAMEW *ofn, concptr dirname, char *filename, DWORD max_name_size);
+void open_dir_in_explorer(std::string_view filename);
+std::optional<std::string> get_open_filename(OPENFILENAMEW *ofn, const std::filesystem::path &path_dir, const std::filesystem::path &path_file, DWORD max_name_size);

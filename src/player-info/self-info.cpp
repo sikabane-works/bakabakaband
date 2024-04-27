@@ -27,6 +27,7 @@
 #include "player/player-status-flags.h"
 #include "player/player-status.h"
 #include "system/player-type-definition.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "term/z-form.h"
 #include "timed-effect/player-blindness.h"
@@ -250,8 +251,8 @@ void self_knowledge(PlayerType *player_ptr)
     self_info_type tmp_si;
     self_info_type *self_ptr = initialize_self_info_type(&tmp_si);
     display_life_rating(player_ptr, self_ptr);
-    chg_virtue(player_ptr, V_KNOWLEDGE, 1);
-    chg_virtue(player_ptr, V_ENLIGHTEN, 1);
+    chg_virtue(player_ptr, Virtue::KNOWLEDGE, 1);
+    chg_virtue(player_ptr, Virtue::ENLIGHTEN, 1);
     display_max_base_status(player_ptr, self_ptr);
     display_virtue(player_ptr, self_ptr);
     self_ptr->info[self_ptr->line++] = "";
@@ -429,7 +430,7 @@ void report_magics(PlayerType *player_ptr)
     screen_save();
 
     /* Erase the screen */
-    for (int k = 1; k < 24; k++) {
+    for (int k = 1; k < MAIN_TERM_MIN_ROWS; k++) {
         prt("", k, 13);
     }
 

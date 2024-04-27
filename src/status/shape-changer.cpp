@@ -4,8 +4,6 @@
 #include "birth/birth-body-spec.h"
 #include "birth/birth-stat.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "game-option/disturbance-options.h"
 #include "grid/grid.h"
@@ -24,6 +22,7 @@
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/timed-effects.h"
 #include "util/enum-converter.h"
@@ -65,7 +64,7 @@ void change_race(PlayerType *player_ptr, PlayerRaceType new_race, concptr effect
     msg_format("You turn into %s %s%s!", (is_a_vowel((effect_msg[0]) ? effect_msg[0] : title[0]) ? "an" : "a"), effect_msg, title);
 #endif
 
-    chg_virtue(player_ptr, V_CHANCE, 2);
+    chg_virtue(player_ptr, Virtue::CHANCE, 2);
     if (enum2i(player_ptr->prace) < 32) {
         player_ptr->old_race1 |= 1UL << enum2i(player_ptr->prace);
     } else {
@@ -97,8 +96,9 @@ void change_race(PlayerType *player_ptr, PlayerRaceType new_race, concptr effect
 
     roll_hitdice(player_ptr, SPOP_NONE);
     check_experience(player_ptr);
-    player_ptr->redraw |= (PR_BASIC);
-    player_ptr->update |= (PU_BONUS);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::BASIC);
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
 
     if (old_race != player_ptr->prace) {
@@ -113,7 +113,7 @@ void do_poly_self(PlayerType *player_ptr)
     int power = player_ptr->lev;
 
     msg_print(_("あなたは変化の訪れを感じた...", "You feel a change coming over you..."));
-    chg_virtue(player_ptr, V_CHANCE, 1);
+    chg_virtue(player_ptr, Virtue::CHANCE, 1);
 
     PlayerRace pr(player_ptr);
     if ((power > randint0(20)) && one_in_(3) && !pr.equals(PlayerRaceType::ANDROID)) {

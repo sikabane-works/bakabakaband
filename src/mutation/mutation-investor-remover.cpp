@@ -1,6 +1,5 @@
 ﻿#include "mutation/mutation-investor-remover.h"
 #include "avatar/avatar.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "mutation/gain-mutation-switcher.h"
 #include "mutation/lose-mutation-switcher.h"
@@ -9,6 +8,7 @@
 #include "mutation/mutation-util.h"
 #include "player-base/player-race.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -232,7 +232,7 @@ bool gain_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
         return false;
     }
 
-    chg_virtue(player_ptr, V_CHANCE, 1);
+    chg_virtue(player_ptr, Virtue::CHANCE, 1);
     race_dependent_mutation(player_ptr, gm_ptr);
     msg_print(_("突然変異した！", "You mutate!"));
     msg_print(gm_ptr->muta_desc);
@@ -244,7 +244,7 @@ bool gain_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
     neutralize_other_status(player_ptr, gm_ptr);
 
     player_ptr->mutant_regenerate_mod = calc_mutant_regenerate_mod(player_ptr);
-    set_bits(player_ptr->update, PU_BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     return true;
 }
@@ -288,7 +288,7 @@ bool lose_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
         player_ptr->muta.reset(glm_ptr->muta_which);
     }
 
-    set_bits(player_ptr->update, PU_BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
     player_ptr->mutant_regenerate_mod = calc_mutant_regenerate_mod(player_ptr);
     return true;
@@ -297,10 +297,10 @@ bool lose_mutation(PlayerType *player_ptr, MUTATION_IDX choose_mut)
 void lose_all_mutations(PlayerType *player_ptr)
 {
     if (player_ptr->muta.any()) {
-        chg_virtue(player_ptr, V_CHANCE, -5);
+        chg_virtue(player_ptr, Virtue::CHANCE, -5);
         msg_print(_("全ての突然変異が治った。", "You are cured of all mutations."));
         player_ptr->muta.clear();
-        set_bits(player_ptr->update, PU_BONUS);
+        RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
         handle_stuff(player_ptr);
         player_ptr->mutant_regenerate_mod = calc_mutant_regenerate_mod(player_ptr);
     }

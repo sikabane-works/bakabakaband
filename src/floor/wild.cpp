@@ -52,7 +52,7 @@
 constexpr auto MAX_FEAT_IN_TERRAIN = 18;
 
 std::vector<std::vector<wilderness_type>> wilderness;
-bool generate_encounter;
+static bool generate_encounter;
 
 struct border_type {
     int16_t north[MAX_WID];
@@ -602,9 +602,9 @@ void wilderness_gen(PlayerType *player_ptr)
     generate_encounter = false;
     set_floor_and_wall(0);
     auto &quest_list = QuestList::get_instance();
-    for (auto &[q_idx, q_ref] : quest_list) {
-        if (q_ref.status == QuestStatusType::REWARDED) {
-            q_ref.status = QuestStatusType::FINISHED;
+    for (auto &[q_idx, quest] : quest_list) {
+        if (quest.status == QuestStatusType::REWARDED) {
+            quest.status = QuestStatusType::FINISHED;
         }
     }
 }
@@ -752,7 +752,7 @@ parse_error_type parse_line_wilderness(PlayerType *player_ptr, char *buf, int xm
             wilderness[*y][*x].level = w_letter[id].level;
             wilderness[*y][*x].town = w_letter[id].town;
             wilderness[*y][*x].road = w_letter[id].road;
-            strcpy(town_info[w_letter[id].town].name, w_letter[id].name);
+            towns_info[w_letter[id].town].name = w_letter[id].name;
         }
 
         (*y)++;
@@ -814,19 +814,6 @@ void seed_wilderness(void)
             wilderness[y][x].entrance = 0;
         }
     }
-}
-
-/*!
- * @brief ゲーム開始時の荒野初期化メインルーチン /
- * Initialize wilderness array
- * @return エラーコード
- */
-errr init_wilderness(void)
-{
-    wilderness.assign(w_ptr->max_wild_y, std::vector<wilderness_type>(w_ptr->max_wild_x));
-
-    generate_encounter = false;
-    return 0;
 }
 
 /*!
@@ -894,6 +881,11 @@ void init_wilderness_terrains(void)
         TERRAIN_DEEP_LAVA, feat_deep_lava, "abcd", feat_dirt, 3, feat_shallow_lava, 3, feat_deep_lava, 10, feat_mountain, MAX_FEAT_IN_TERRAIN - 16);
     init_terrain_table(TERRAIN_MOUNTAIN, feat_mountain, "abcdef", feat_floor, 1, feat_brake, 1, feat_grass, 2, feat_dirt, 2, feat_tree, 2, feat_mountain,
         MAX_FEAT_IN_TERRAIN - 8);
+}
+
+void init_wilderness_encounter()
+{
+    generate_encounter = false;
 }
 
 /*!

@@ -74,7 +74,7 @@ void stair_creation(PlayerType *player_ptr)
         down = false;
     }
 
-    if (!floor_ptr->dun_level || (!up && !down) || (inside_quest(floor_ptr->quest_number) && quest_type::is_fixed(floor_ptr->quest_number)) || floor_ptr->inside_arena || player_ptr->phase_out) {
+    if (!floor_ptr->dun_level || (!up && !down) || (inside_quest(floor_ptr->quest_number) && QuestType::is_fixed(floor_ptr->quest_number)) || floor_ptr->inside_arena || player_ptr->phase_out) {
         msg_print(_("効果がありません！", "There is no effect!"));
         return;
     }
@@ -127,7 +127,7 @@ void stair_creation(PlayerType *player_ptr)
 
                 /* Remove old stairs */
                 g_ptr->special = 0;
-                cave_set_feat(player_ptr, y, x, feat_ground_type[randint0(100)]);
+                cave_set_feat(player_ptr, y, x, rand_choice(feat_ground_type));
             }
         }
     } else {

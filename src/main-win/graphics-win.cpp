@@ -22,7 +22,7 @@ ULONG_PTR gdiplusToken;
 // interface object
 Graphics graphic{};
 
-concptr ANGBAND_DIR_XTRA_GRAF;
+std::filesystem::path ANGBAND_DIR_XTRA_GRAF;
 
 /*!
  * 現在使用中のタイルID(0ならば未使用)
@@ -57,7 +57,7 @@ static void finalize_gdi_plus()
     }
 }
 
-HBITMAP read_graphic(char *filename)
+HBITMAP read_graphic(const char *filename)
 {
     HBITMAP result = NULL;
     init_gdi_plus();
@@ -77,10 +77,9 @@ graphics_mode change_graphics(graphics_mode arg)
         return current_graphics_mode;
     }
 
-    char buf[MAIN_WIN_MAX_PATH];
     BYTE wid, hgt, twid, thgt, ox, oy;
-    concptr name;
-    concptr name_mask = nullptr;
+    std::string name;
+    std::string name_mask("");
 
     infGraph.delete_bitmap();
 
@@ -121,10 +120,11 @@ graphics_mode change_graphics(graphics_mode arg)
         return current_graphics_mode;
     }
 
-    path_build(buf, sizeof(buf), ANGBAND_DIR_XTRA_GRAF, name);
-    infGraph.hBitmap = read_graphic(buf);
+    const auto &path = path_build(ANGBAND_DIR_XTRA_GRAF, name);
+    const auto &filename = path.string();
+    infGraph.hBitmap = read_graphic(filename.data());
     if (!infGraph.hBitmap) {
-        plog_fmt(_("ビットマップ '%s' を読み込めません。", "Cannot read bitmap file '%s'"), name);
+        plog_fmt(_("ビットマップ '%s' を読み込めません。", "Cannot read bitmap file '%s'"), name.data());
         ANGBAND_GRAF = "ascii";
         current_graphics_mode = graphics_mode::GRAPHICS_NONE;
         return current_graphics_mode;
@@ -137,11 +137,12 @@ graphics_mode change_graphics(graphics_mode arg)
     infGraph.OffsetX = ox;
     infGraph.OffsetY = oy;
 
-    if (name_mask) {
-        path_build(buf, sizeof(buf), ANGBAND_DIR_XTRA_GRAF, name_mask);
-        infGraph.hBitmapMask = read_graphic(buf);
+    if (name_mask.empty()) {
+        const auto &path_mask = path_build(ANGBAND_DIR_XTRA_GRAF, name_mask);
+        const auto &filename_mask = path_mask.string();
+        infGraph.hBitmapMask = read_graphic(filename_mask.data());
         if (!infGraph.hBitmapMask) {
-            plog_fmt(_("ビットマップ '%s' を読み込めません。", "Cannot read bitmap file '%s'"), name_mask);
+            plog_fmt(_("ビットマップ '%s' を読み込めません。", "Cannot read bitmap file '%s'"), name_mask.data());
             ANGBAND_GRAF = "ascii";
             current_graphics_mode = graphics_mode::GRAPHICS_NONE;
             return current_graphics_mode;

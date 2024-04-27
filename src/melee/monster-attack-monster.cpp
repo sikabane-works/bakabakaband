@@ -8,7 +8,6 @@
 #include "combat/attack-accuracy.h"
 #include "combat/hallucination-attacks-table.h"
 #include "core/disturbance.h"
-#include "core/player-redraw-types.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
@@ -36,12 +35,13 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 
 static void heal_monster_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
 {
-    if (!monster_living(mam_ptr->t_ptr->r_idx) || (mam_ptr->damage <= 2)) {
+    if (!mam_ptr->t_ptr->has_living_flag() || (mam_ptr->damage <= 2)) {
         return;
     }
 
@@ -51,12 +51,13 @@ static void heal_monster_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
         mam_ptr->m_ptr->hp = mam_ptr->m_ptr->maxhp;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->health_who == mam_ptr->m_idx) {
-        player_ptr->redraw |= (PR_HEALTH);
+        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
     if (player_ptr->riding == mam_ptr->m_idx) {
-        player_ptr->redraw |= (PR_UHEALTH);
+        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     if (mam_ptr->see_m && did_heal) {
@@ -105,19 +106,21 @@ static void aura_fire_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
         tr_ptr->aura_flags.set(MonsterAuraType::FIRE);
     }
 
-    project(player_ptr, mam_ptr->t_idx, 0, mam_ptr->m_ptr->fy, mam_ptr->m_ptr->fx, damroll(1 + ((tr_ptr->level) / 26), 1 + ((tr_ptr->level) / 17)), AttributeType::FIRE,
-        PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
+    const auto dam = damroll(1 + ((tr_ptr->level) / 26), 1 + ((tr_ptr->level) / 17));
+    constexpr auto flags = PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED;
+    project(player_ptr, mam_ptr->t_idx, 0, mam_ptr->m_ptr->fy, mam_ptr->m_ptr->fx, dam, AttributeType::FIRE, flags);
 }
 
 static void aura_cold_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
 {
-    auto *r_ptr = &monraces_info[mam_ptr->m_ptr->r_idx];
+    const auto *m_ptr = mam_ptr->m_ptr;
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     MonsterRaceInfo *tr_ptr = &monraces_info[mam_ptr->t_ptr->r_idx];
-    if (tr_ptr->aura_flags.has_not(MonsterAuraType::COLD) || !MonsterRace(mam_ptr->m_ptr->r_idx).is_valid()) {
+    if (tr_ptr->aura_flags.has_not(MonsterAuraType::COLD) || !MonsterRace(m_ptr->r_idx).is_valid()) {
         return;
     }
 
-    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_COLD_MASK) && is_original_ap_and_seen(player_ptr, mam_ptr->m_ptr)) {
+    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_COLD_MASK) && is_original_ap_and_seen(player_ptr, m_ptr)) {
         r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_COLD_MASK);
         return;
     }
@@ -126,23 +129,25 @@ static void aura_cold_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
         msg_format(_("%s^は突然寒くなった！", "%s^ is suddenly very cold!"), mam_ptr->m_name);
     }
 
-    if (mam_ptr->m_ptr->ml && is_original_ap_and_seen(player_ptr, mam_ptr->t_ptr)) {
+    if (m_ptr->ml && is_original_ap_and_seen(player_ptr, mam_ptr->t_ptr)) {
         tr_ptr->aura_flags.set(MonsterAuraType::COLD);
     }
 
-    project(player_ptr, mam_ptr->t_idx, 0, mam_ptr->m_ptr->fy, mam_ptr->m_ptr->fx, damroll(1 + ((tr_ptr->level) / 26), 1 + ((tr_ptr->level) / 17)), AttributeType::COLD,
-        PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
+    const auto dam = damroll(1 + ((tr_ptr->level) / 26), 1 + ((tr_ptr->level) / 17));
+    constexpr auto flags = PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED;
+    project(player_ptr, mam_ptr->t_idx, 0, m_ptr->fy, m_ptr->fx, dam, AttributeType::COLD, flags);
 }
 
 static void aura_elec_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
 {
-    auto *r_ptr = &monraces_info[mam_ptr->m_ptr->r_idx];
+    const auto *m_ptr = mam_ptr->m_ptr;
+    auto *r_ptr = &monraces_info[m_ptr->r_idx];
     MonsterRaceInfo *tr_ptr = &monraces_info[mam_ptr->t_ptr->r_idx];
-    if (tr_ptr->aura_flags.has_not(MonsterAuraType::ELEC) || !MonsterRace(mam_ptr->m_ptr->r_idx).is_valid()) {
+    if (tr_ptr->aura_flags.has_not(MonsterAuraType::ELEC) || !MonsterRace(m_ptr->r_idx).is_valid()) {
         return;
     }
 
-    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_ELEC_MASK) && is_original_ap_and_seen(player_ptr, mam_ptr->m_ptr)) {
+    if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_ELEC_MASK) && is_original_ap_and_seen(player_ptr, m_ptr)) {
         r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_ELEC_MASK);
         return;
     }
@@ -151,12 +156,13 @@ static void aura_elec_by_melee(PlayerType *player_ptr, mam_type *mam_ptr)
         msg_format(_("%s^は電撃を食らった！", "%s^ gets zapped!"), mam_ptr->m_name);
     }
 
-    if (mam_ptr->m_ptr->ml && is_original_ap_and_seen(player_ptr, mam_ptr->t_ptr)) {
+    if (m_ptr->ml && is_original_ap_and_seen(player_ptr, mam_ptr->t_ptr)) {
         tr_ptr->aura_flags.set(MonsterAuraType::ELEC);
     }
 
-    project(player_ptr, mam_ptr->t_idx, 0, mam_ptr->m_ptr->fy, mam_ptr->m_ptr->fx, damroll(1 + ((tr_ptr->level) / 26), 1 + ((tr_ptr->level) / 17)), AttributeType::ELEC,
-        PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED);
+    const auto dam = damroll(1 + ((tr_ptr->level) / 26), 1 + ((tr_ptr->level) / 17));
+    constexpr auto flags = PROJECT_KILL | PROJECT_STOP | PROJECT_AIMED;
+    project(player_ptr, mam_ptr->t_idx, 0, m_ptr->fy, m_ptr->fx, dam, AttributeType::ELEC, flags);
 }
 
 static bool check_same_monster(PlayerType *player_ptr, mam_type *mam_ptr)
@@ -183,12 +189,13 @@ static void redraw_health_bar(PlayerType *player_ptr, mam_type *mam_ptr)
         return;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (player_ptr->health_who == mam_ptr->t_idx) {
-        player_ptr->redraw |= (PR_HEALTH);
+        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
     if (player_ptr->riding == mam_ptr->t_idx) {
-        player_ptr->redraw |= (PR_UHEALTH);
+        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 }
 
@@ -201,14 +208,14 @@ static void describe_silly_melee(mam_type *mam_ptr)
 
 #ifdef JP
     if (mam_ptr->do_silly_attack) {
-        mam_ptr->act = silly_attacks2[randint0(MAX_SILLY_ATTACK)];
+        mam_ptr->act = rand_choice(silly_attacks2);
     }
 
     strnfmt(temp, sizeof(temp), mam_ptr->act, mam_ptr->t_name);
     msg_format("%s^は%s", mam_ptr->m_name, temp);
 #else
     if (mam_ptr->do_silly_attack) {
-        mam_ptr->act = silly_attacks[randint0(MAX_SILLY_ATTACK)];
+        mam_ptr->act = rand_choice(silly_attacks);
         strnfmt(temp, sizeof(temp), "%s %s.", mam_ptr->act, mam_ptr->t_name);
     } else {
         strnfmt(temp, sizeof(temp), mam_ptr->act, mam_ptr->t_name);
@@ -241,7 +248,8 @@ static void process_monster_attack_effect(PlayerType *player_ptr, mam_type *mam_
 
 static void process_melee(PlayerType *player_ptr, mam_type *mam_ptr)
 {
-    if (mam_ptr->effect != RaceBlowEffectType::NONE && !check_hit_from_monster_to_monster(mam_ptr->power, mam_ptr->rlev, mam_ptr->ac, mam_ptr->m_ptr->get_remaining_stun())) {
+    const auto remaining_stun = mam_ptr->m_ptr->get_remaining_stun();
+    if (mam_ptr->effect != RaceBlowEffectType::NONE && !check_hit_from_monster_to_monster(mam_ptr->power, mam_ptr->rlev, mam_ptr->ac, remaining_stun)) {
         describe_monster_missed_monster(player_ptr, mam_ptr);
         return;
     }
@@ -305,7 +313,13 @@ void repeat_melee(PlayerType *player_ptr, mam_type *mam_ptr)
         mam_ptr->d_dice = r_ptr->blow[ap_cnt].d_dice;
         mam_ptr->d_side = r_ptr->blow[ap_cnt].d_side;
 
-        if (!m_ptr->is_valid() || (mam_ptr->t_ptr->fx != mam_ptr->x_saver) || (mam_ptr->t_ptr->fy != mam_ptr->y_saver) || mam_ptr->method == RaceBlowMethodType::NONE) {
+        if (!m_ptr->is_valid()) {
+            break;
+        }
+
+        const auto x_saver = mam_ptr->t_ptr->fx != mam_ptr->x_saver;
+        const auto y_saver = mam_ptr->t_ptr->fy != mam_ptr->y_saver;
+        if (x_saver || y_saver || mam_ptr->method == RaceBlowMethodType::NONE) {
             break;
         }
 

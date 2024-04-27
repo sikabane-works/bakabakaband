@@ -12,8 +12,6 @@
 #include "cmd-action/cmd-mind.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -62,6 +60,7 @@
 #include "system/floor-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/z-form.h"
 #include "timed-effect/player-blindness.h"
@@ -305,7 +304,7 @@ static bool spell_okay(PlayerType *player_ptr, int spell, bool learned, bool stu
  * The "known" should be TRUE for cast/pray, false for study
  * </pre>
  */
-static int get_spell(PlayerType *player_ptr, SPELL_IDX *sn, concptr prompt, OBJECT_SUBTYPE_VALUE sval, bool learned, int16_t use_realm)
+static int get_spell(PlayerType *player_ptr, SPELL_IDX *sn, concptr prompt, int sval, bool learned, int16_t use_realm)
 {
     int i;
     SPELL_IDX spell = -1;
@@ -316,9 +315,6 @@ static int get_spell(PlayerType *player_ptr, SPELL_IDX *sn, concptr prompt, OBJE
     char out_val[160];
     concptr p;
     COMMAND_CODE code;
-#ifdef JP
-    char jverb_buf[128];
-#endif
     int menu_line = (use_menu ? 1 : 0);
 
     /* Get the spell, if available */
@@ -384,8 +380,8 @@ static int get_spell(PlayerType *player_ptr, SPELL_IDX *sn, concptr prompt, OBJE
 
     /* Build a prompt (accept all spells) */
 #ifdef JP
-    jverb(prompt, jverb_buf, JVERB_AND);
-    (void)strnfmt(out_val, 78, "(%s^:%c-%c, '*'で一覧, ESCで中断) どの%sを%s^ますか? ", p, I2A(0), I2A(num - 1), p, jverb_buf);
+    const auto verb = conjugate_jverb(prompt, JVerbConjugationType::AND);
+    (void)strnfmt(out_val, 78, "(%s^:%c-%c, '*'で一覧, ESCで中断) どの%sを%s^ますか? ", p, I2A(0), I2A(num - 1), p, verb.data());
 #else
     (void)strnfmt(out_val, 78, "(%s^s %c-%c, *=List, ESC=exit) %s^ which %s? ", p, I2A(0), I2A(num - 1), prompt, p);
 #endif
@@ -604,9 +600,10 @@ void do_cmd_browse(PlayerType *player_ptr)
     /* Restrict choices to "useful" books */
     auto item_tester = get_learnable_spellbook_tester(player_ptr);
 
-    const auto q = _("どの本を読みますか? ", "Browse which book? ");
-    const auto s = _("読める本がない。", "You have no books that you can read.");
-    const auto *o_ptr = choose_object(player_ptr, &item, q, s, USE_INVEN | USE_FLOOR | (pc.equals(PlayerClassType::FORCETRAINER) ? USE_FORCE : 0), item_tester);
+    constexpr auto q = _("どの本を読みますか? ", "Browse which book? ");
+    constexpr auto s = _("読める本がない。", "You have no books that you can read.");
+    constexpr auto options = USE_INVEN | USE_FLOOR;
+    const auto *o_ptr = choose_object(player_ptr, &item, q, s, options | (pc.equals(PlayerClassType::FORCETRAINER) ? USE_FORCE : 0), item_tester);
     if (o_ptr == nullptr) {
         if (item == INVEN_FORCE) /* the_force */
         {
@@ -701,13 +698,17 @@ static void change_realm2(PlayerType *player_ptr, int16_t next_realm)
     player_ptr->spell_worked2 = 0L;
     player_ptr->spell_forgotten2 = 0L;
 
-    strnfmt(tmp, sizeof(tmp), _("魔法の領域を%sから%sに変更した。", "changed magic realm from %s to %s."), realm_names[player_ptr->realm2], realm_names[next_realm]);
+    constexpr auto mes = _("魔法の領域を%sから%sに変更した。", "changed magic realm from %s to %s.");
+    strnfmt(tmp, sizeof(tmp), mes, realm_names[player_ptr->realm2], realm_names[next_realm]);
     exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, tmp);
     player_ptr->old_realm |= 1U << (player_ptr->realm2 - 1);
     player_ptr->realm2 = next_realm;
 
-    player_ptr->update |= (PU_REORDER);
-    player_ptr->update |= (PU_SPELLS);
+    const auto flags = {
+        StatusRedrawingFlag::REORDER,
+        StatusRedrawingFlag::SPELLS,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags);
     handle_stuff(player_ptr);
 
     /* Load an autopick preference file */
@@ -848,8 +849,9 @@ void do_cmd_study(PlayerType *player_ptr)
 
     if (learned) {
         auto max_exp = PlayerSkill::spell_exp_at((spell < 32) ? PlayerSkillRank::MASTER : PlayerSkillRank::EXPERT);
-        int old_exp = player_ptr->spell_exp[spell];
-        const auto spell_name = exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SpellProcessType::NAME);
+        const auto old_exp = player_ptr->spell_exp[spell];
+        const auto realm = increment ? player_ptr->realm2 : player_ptr->realm1;
+        const auto spell_name = exe_spell(player_ptr, realm, spell % 32, SpellProcessType::NAME);
 
         if (old_exp >= max_exp) {
             msg_format(_("その%sは完全に使いこなせるので学ぶ必要はない。", "You don't need to study this %s anymore."), p);
@@ -880,9 +882,9 @@ void do_cmd_study(PlayerType *player_ptr)
         player_ptr->spell_order[i++] = spell;
 
         /* Mention the result */
-        const auto spell_name = exe_spell(player_ptr, increment ? player_ptr->realm2 : player_ptr->realm1, spell % 32, SpellProcessType::NAME);
+        const auto realm = increment ? player_ptr->realm2 : player_ptr->realm1;
+        const auto spell_name = exe_spell(player_ptr, realm, spell % 32, SpellProcessType::NAME);
 #ifdef JP
-        /* 英日切り替え機能に対応 */
         if (mp_ptr->spell_book == ItemKindType::MUSIC_BOOK) {
             msg_format("%sを学んだ。", spell_name->data());
         } else {
@@ -897,16 +899,16 @@ void do_cmd_study(PlayerType *player_ptr)
 
     switch (mp_ptr->spell_book) {
     case ItemKindType::LIFE_BOOK:
-        chg_virtue(player_ptr, V_FAITH, 1);
+        chg_virtue(player_ptr, Virtue::FAITH, 1);
         break;
     case ItemKindType::DEATH_BOOK:
-        chg_virtue(player_ptr, V_UNLIFE, 1);
+        chg_virtue(player_ptr, Virtue::UNLIFE, 1);
         break;
     case ItemKindType::NATURE_BOOK:
-        chg_virtue(player_ptr, V_NATURE, 1);
+        chg_virtue(player_ptr, Virtue::NATURE, 1);
         break;
     default:
-        chg_virtue(player_ptr, V_KNOWLEDGE, 1);
+        chg_virtue(player_ptr, Virtue::KNOWLEDGE, 1);
         break;
     }
 
@@ -915,12 +917,12 @@ void do_cmd_study(PlayerType *player_ptr)
     /* One less spell available */
     player_ptr->learned_spells++;
 
-    /* Update Study */
-    player_ptr->update |= (PU_SPELLS);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::SPELLS);
     update_creature(player_ptr);
 
     /* Redraw object recall */
-    player_ptr->window_flags |= (PW_OBJECT);
+    player_ptr->window_flags |= (PW_ITEM_KNOWLEDGTE);
 }
 
 /*!
@@ -1099,37 +1101,37 @@ bool do_cmd_cast(PlayerType *player_ptr)
         switch (realm) {
         case REALM_LIFE:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_VITALITY, -1);
+                chg_virtue(player_ptr, Virtue::VITALITY, -1);
             }
             break;
         case REALM_DEATH:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_UNLIFE, -1);
+                chg_virtue(player_ptr, Virtue::UNLIFE, -1);
             }
             break;
         case REALM_NATURE:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_NATURE, -1);
+                chg_virtue(player_ptr, Virtue::NATURE, -1);
             }
             break;
         case REALM_DAEMON:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_JUSTICE, 1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, 1);
             }
             break;
         case REALM_CRUSADE:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
             }
             break;
         case REALM_HEX:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_COMPASSION, -1);
+                chg_virtue(player_ptr, Virtue::COMPASSION, -1);
             }
             break;
         default:
             if (randint1(100) < chance) {
-                chg_virtue(player_ptr, V_KNOWLEDGE, -1);
+                chg_virtue(player_ptr, Virtue::KNOWLEDGE, -1);
             }
             break;
         }
@@ -1156,7 +1158,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
             aggravate_monsters(player_ptr, 0);
         }
         if (randint1(100) >= chance) {
-            chg_virtue(player_ptr, V_CHANCE, -1);
+            chg_virtue(player_ptr, Virtue::CHANCE, -1);
         }
     }
 
@@ -1168,7 +1170,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
         }
 
         if (randint1(100) < chance) {
-            chg_virtue(player_ptr, V_CHANCE, 1);
+            chg_virtue(player_ptr, Virtue::CHANCE, 1);
         }
 
         /* A spell was cast */
@@ -1183,125 +1185,125 @@ bool do_cmd_cast(PlayerType *player_ptr)
             }
 
             gain_exp(player_ptr, e * s_ptr->slevel);
-            player_ptr->window_flags |= (PW_OBJECT);
+            player_ptr->window_flags |= (PW_ITEM_KNOWLEDGTE);
 
             switch (realm) {
             case REALM_LIFE:
-                chg_virtue(player_ptr, V_TEMPERANCE, 1);
-                chg_virtue(player_ptr, V_COMPASSION, 1);
-                chg_virtue(player_ptr, V_VITALITY, 1);
-                chg_virtue(player_ptr, V_DILIGENCE, 1);
+                chg_virtue(player_ptr, Virtue::TEMPERANCE, 1);
+                chg_virtue(player_ptr, Virtue::COMPASSION, 1);
+                chg_virtue(player_ptr, Virtue::VITALITY, 1);
+                chg_virtue(player_ptr, Virtue::DILIGENCE, 1);
                 break;
             case REALM_DEATH:
-                chg_virtue(player_ptr, V_UNLIFE, 1);
-                chg_virtue(player_ptr, V_JUSTICE, -1);
-                chg_virtue(player_ptr, V_FAITH, -1);
-                chg_virtue(player_ptr, V_VITALITY, -1);
+                chg_virtue(player_ptr, Virtue::UNLIFE, 1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::FAITH, -1);
+                chg_virtue(player_ptr, Virtue::VITALITY, -1);
                 break;
             case REALM_DAEMON:
-                chg_virtue(player_ptr, V_JUSTICE, -1);
-                chg_virtue(player_ptr, V_FAITH, -1);
-                chg_virtue(player_ptr, V_HONOUR, -1);
-                chg_virtue(player_ptr, V_TEMPERANCE, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::FAITH, -1);
+                chg_virtue(player_ptr, Virtue::HONOUR, -1);
+                chg_virtue(player_ptr, Virtue::TEMPERANCE, -1);
                 break;
             case REALM_CRUSADE:
-                chg_virtue(player_ptr, V_FAITH, 1);
-                chg_virtue(player_ptr, V_JUSTICE, 1);
-                chg_virtue(player_ptr, V_SACRIFICE, 1);
-                chg_virtue(player_ptr, V_HONOUR, 1);
+                chg_virtue(player_ptr, Virtue::FAITH, 1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, 1);
+                chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
+                chg_virtue(player_ptr, Virtue::HONOUR, 1);
                 break;
             case REALM_NATURE:
-                chg_virtue(player_ptr, V_NATURE, 1);
-                chg_virtue(player_ptr, V_HARMONY, 1);
+                chg_virtue(player_ptr, Virtue::NATURE, 1);
+                chg_virtue(player_ptr, Virtue::HARMONY, 1);
                 break;
             case REALM_HEX:
-                chg_virtue(player_ptr, V_JUSTICE, -1);
-                chg_virtue(player_ptr, V_FAITH, -1);
-                chg_virtue(player_ptr, V_HONOUR, -1);
-                chg_virtue(player_ptr, V_COMPASSION, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::FAITH, -1);
+                chg_virtue(player_ptr, Virtue::HONOUR, -1);
+                chg_virtue(player_ptr, Virtue::COMPASSION, -1);
                 break;
             default:
-                chg_virtue(player_ptr, V_KNOWLEDGE, 1);
+                chg_virtue(player_ptr, Virtue::KNOWLEDGE, 1);
                 break;
             }
         }
         switch (realm) {
         case REALM_LIFE:
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_TEMPERANCE, 1);
+                chg_virtue(player_ptr, Virtue::TEMPERANCE, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_COMPASSION, 1);
+                chg_virtue(player_ptr, Virtue::COMPASSION, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_VITALITY, 1);
+                chg_virtue(player_ptr, Virtue::VITALITY, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_DILIGENCE, 1);
+                chg_virtue(player_ptr, Virtue::DILIGENCE, 1);
             }
             break;
         case REALM_DEATH:
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_UNLIFE, 1);
+                chg_virtue(player_ptr, Virtue::UNLIFE, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_FAITH, -1);
+                chg_virtue(player_ptr, Virtue::FAITH, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_VITALITY, -1);
+                chg_virtue(player_ptr, Virtue::VITALITY, -1);
             }
             break;
         case REALM_DAEMON:
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_FAITH, -1);
+                chg_virtue(player_ptr, Virtue::FAITH, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_HONOUR, -1);
+                chg_virtue(player_ptr, Virtue::HONOUR, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_TEMPERANCE, -1);
+                chg_virtue(player_ptr, Virtue::TEMPERANCE, -1);
             }
             break;
         case REALM_CRUSADE:
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_FAITH, 1);
+                chg_virtue(player_ptr, Virtue::FAITH, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_JUSTICE, 1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_SACRIFICE, 1);
+                chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_HONOUR, 1);
+                chg_virtue(player_ptr, Virtue::HONOUR, 1);
             }
             break;
         case REALM_NATURE:
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_NATURE, 1);
+                chg_virtue(player_ptr, Virtue::NATURE, 1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_HARMONY, 1);
+                chg_virtue(player_ptr, Virtue::HARMONY, 1);
             }
             break;
         case REALM_HEX:
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_JUSTICE, -1);
+                chg_virtue(player_ptr, Virtue::JUSTICE, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_FAITH, -1);
+                chg_virtue(player_ptr, Virtue::FAITH, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_HONOUR, -1);
+                chg_virtue(player_ptr, Virtue::HONOUR, -1);
             }
             if (randint1(100 + player_ptr->lev) < need_mana) {
-                chg_virtue(player_ptr, V_COMPASSION, -1);
+                chg_virtue(player_ptr, Virtue::COMPASSION, -1);
             }
             break;
         }
@@ -1319,7 +1321,8 @@ bool do_cmd_cast(PlayerType *player_ptr)
     } else {
         over_exerted = true;
     }
-    player_ptr->redraw |= (PR_MANA);
+
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::MP);
 
     /* Over-exert the player */
     if (over_exerted) {
@@ -1330,25 +1333,25 @@ bool do_cmd_cast(PlayerType *player_ptr)
         (void)BadStatusSetter(player_ptr).mod_paralysis(randint1(5 * oops + 1));
         switch (realm) {
         case REALM_LIFE:
-            chg_virtue(player_ptr, V_VITALITY, -10);
+            chg_virtue(player_ptr, Virtue::VITALITY, -10);
             break;
         case REALM_DEATH:
-            chg_virtue(player_ptr, V_UNLIFE, -10);
+            chg_virtue(player_ptr, Virtue::UNLIFE, -10);
             break;
         case REALM_DAEMON:
-            chg_virtue(player_ptr, V_JUSTICE, 10);
+            chg_virtue(player_ptr, Virtue::JUSTICE, 10);
             break;
         case REALM_NATURE:
-            chg_virtue(player_ptr, V_NATURE, -10);
+            chg_virtue(player_ptr, Virtue::NATURE, -10);
             break;
         case REALM_CRUSADE:
-            chg_virtue(player_ptr, V_JUSTICE, -10);
+            chg_virtue(player_ptr, Virtue::JUSTICE, -10);
             break;
         case REALM_HEX:
-            chg_virtue(player_ptr, V_COMPASSION, 10);
+            chg_virtue(player_ptr, Virtue::COMPASSION, 10);
             break;
         default:
-            chg_virtue(player_ptr, V_KNOWLEDGE, -10);
+            chg_virtue(player_ptr, Virtue::KNOWLEDGE, -10);
             break;
         }
 

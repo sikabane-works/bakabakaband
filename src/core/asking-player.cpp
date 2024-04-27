@@ -8,6 +8,7 @@
 #include "io/input-key-requester.h" //!< @todo 相互依存している、後で何とかする.
 #include "main/sound-of-music.h"
 #include "system/player-type-definition.h"
+#include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "term/z-form.h"
@@ -54,12 +55,12 @@ bool askfor(char *buf, int len, bool numpad_cursor)
         len = 1;
     }
 
-    if ((x < 0) || (x >= 80)) {
+    if ((x < 0) || (x >= MAIN_TERM_MIN_COLS)) {
         x = 0;
     }
 
-    if (x + len > 80) {
-        len = 80 - x;
+    if (x + len > MAIN_TERM_MIN_COLS) {
+        len = MAIN_TERM_MIN_COLS - x;
     }
 
     buf[len] = '\0';
@@ -352,7 +353,10 @@ bool get_com(std::string_view prompt, char *command, bool z_escape)
  */
 QUANTITY get_quantity(std::optional<std::string_view> prompt_opt, QUANTITY max)
 {
-    // FIXME : QUANTITY、COMMAND_CODE、その他の型サイズがまちまちな変数とのやり取りが多数ある。この処理での数の入力を0からSHRT_MAXに制限することで不整合の発生を回避する。
+    /*!
+     * @todo QUANTITY、COMMAND_CODE、その他の型サイズがまちまちな変数とのやり取りが多数ある.
+     * この処理での数の入力を0からSHRT_MAXに制限することで不整合の発生を回避する.
+     */
     max = std::clamp<QUANTITY>(max, 0, SHRT_MAX);
 
     bool res;

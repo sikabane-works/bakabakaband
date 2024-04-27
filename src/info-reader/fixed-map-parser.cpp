@@ -11,6 +11,7 @@
 #include "floor/fixed-map-generator.h"
 #include "game-option/birth-options.h"
 #include "game-option/runtime-arguments.h"
+#include "info-reader/parse-error-types.h"
 #include "io/files-util.h"
 #include "main/init-error-messages-table.h"
 #include "player-info/class-info.h"
@@ -251,11 +252,10 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
  * @param xmax 詳細不明
  * @return エラーコード
  */
-parse_error_type parse_fixed_map(PlayerType *player_ptr, concptr name, int ymin, int xmin, int ymax, int xmax)
+parse_error_type parse_fixed_map(PlayerType *player_ptr, std::string_view name, int ymin, int xmin, int ymax, int xmax)
 {
-    char buf[1024];
-    path_build(buf, sizeof(buf), ANGBAND_DIR_EDIT, name);
-    FILE *fp = angband_fopen(buf, "r");
+    const auto &path = path_build(ANGBAND_DIR_EDIT, name);
+    auto *fp = angband_fopen(path, FileOpenMode::READ);
     if (fp == nullptr) {
         return PARSE_ERROR_GENERIC;
     }
@@ -266,6 +266,7 @@ parse_error_type parse_fixed_map(PlayerType *player_ptr, concptr name, int ymin,
     int x = xmin;
     int y = ymin;
     qtwg_type tmp_qg;
+    char buf[1024]{};
     qtwg_type *qg_ptr = initialize_quest_generator_type(&tmp_qg, buf, ymin, xmin, ymax, xmax, &y, &x);
     while (angband_fgets(fp, buf, sizeof(buf)) == 0) {
         num++;
@@ -294,7 +295,7 @@ parse_error_type parse_fixed_map(PlayerType *player_ptr, concptr name, int ymin,
 
     if (err != 0) {
         concptr oops = (((err > 0) && (err < PARSE_ERROR_MAX)) ? err_str[err] : "unknown");
-        msg_format("Error %d (%s) at line %d of '%s'.", err, oops, num, name);
+        msg_format("Error %d (%s) at line %d of '%s'.", err, oops, num, name.data());
         msg_format(_("'%s'を解析中。", "Parsing '%s'."), buf);
         msg_print(nullptr);
     }
@@ -328,9 +329,8 @@ static QuestId parse_quest_number(const std::vector<std::string> &token)
  * @param file_name ファイル名
  * @param key_list キーになるQuestIdの配列
  */
-static void parse_quest_info_aux(const char *file_name, std::set<QuestId> &key_list_ref)
+static void parse_quest_info_aux(std::string_view file_name, std::set<QuestId> &key_list_ref)
 {
-
     auto push_set = [&key_list_ref, &file_name](auto q, auto line) {
         if (q == QuestId::NONE) {
             return;
@@ -345,9 +345,8 @@ static void parse_quest_info_aux(const char *file_name, std::set<QuestId> &key_l
         key_list_ref.insert(q);
     };
 
-    char file_buf[1024];
-    path_build(file_buf, sizeof(file_buf), ANGBAND_DIR_EDIT, file_name);
-    auto *fp = angband_fopen(file_buf, "r");
+    const auto &path = path_build(ANGBAND_DIR_EDIT, file_name);
+    auto *fp = angband_fopen(path, FileOpenMode::READ);
     if (fp == nullptr) {
         std::stringstream ss;
         ss << _("ファイルが見つかりません (", "File is not found (") << file_name << ')';
@@ -385,7 +384,7 @@ static void parse_quest_info_aux(const char *file_name, std::set<QuestId> &key_l
  * @param file_name ファイル名
  * @return クエスト番号の配列
  */
-std::set<QuestId> parse_quest_info(const char *file_name)
+std::set<QuestId> parse_quest_info(std::string_view file_name)
 {
     std::set<QuestId> key_list;
     parse_quest_info_aux(file_name, key_list);

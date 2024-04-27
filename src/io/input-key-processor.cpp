@@ -46,8 +46,6 @@
 #include "cmd-visual/cmd-map.h"
 #include "cmd-visual/cmd-visuals.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/special-internal-keys.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/quest.h" //!< @do_cmd_quest() がある。後で移設する.
@@ -90,6 +88,7 @@
 #include "system/floor-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
@@ -190,8 +189,9 @@ void process_command(PlayerType *player_ptr)
             msg_print(_("ウィザードモード突入。", "Wizard mode on."));
         }
 
-        player_ptr->update |= (PU_MONSTERS);
-        player_ptr->redraw |= (PR_TITLE);
+        auto &rfu = RedrawingFlagsUpdater::get_instance();
+        rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+        rfu.set_flag(MainWindowRedrawingFlag::TITLE);
         break;
     }
     case KTRL('A'): {
@@ -404,13 +404,16 @@ void process_command(PlayerType *player_ptr)
             break;
         }
 
-        if (floor_ptr->dun_level && dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::NO_MAGIC) && !pc.equals(PlayerClassType::BERSERKER) && !pc.equals(PlayerClassType::SMITH)) {
+        const auto &dungeon = dungeons_info[player_ptr->dungeon_idx];
+        auto non_magic_class = pc.equals(PlayerClassType::BERSERKER);
+        non_magic_class |= pc.equals(PlayerClassType::SMITH);
+        if (floor_ptr->dun_level && dungeon.flags.has(DungeonFeatureType::NO_MAGIC) && !non_magic_class) {
             msg_print(_("ダンジョンが魔法を吸収した！", "The dungeon absorbs all attempted magic!"));
             msg_print(nullptr);
             break;
         }
 
-        if (player_ptr->anti_magic && !pc.equals(PlayerClassType::BERSERKER) && !pc.equals(PlayerClassType::SMITH)) {
+        if (player_ptr->anti_magic && !non_magic_class) {
             concptr which_power = _("魔法", "magic");
             switch (player_ptr->pclass) {
             case PlayerClassType::MINDCRAFTER:

@@ -9,8 +9,6 @@
 #include "action/action-limited.h"
 #include "cmd-action/cmd-shoot.h"
 #include "core/asking-player.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/geometry.h"
@@ -33,6 +31,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "term/z-form.h"
@@ -128,6 +127,18 @@ static snipe_power const snipe_powers[MAX_SNIPE_POWERS] = {
 #endif
 };
 
+static void reset_concentration_flag(sniper_data_type *sniper_data)
+{
+    sniper_data->reset_concent = false;
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags = {
+        StatusRedrawingFlag::BONUS,
+        StatusRedrawingFlag::MONSTER_STATUSES,
+    };
+    rfu.set_flags(flags);
+    rfu.set_flag(MainWindowRedrawingFlag::TIMED_EFFECT);
+}
+
 /*!
  * @brief スナイパーの集中度加算
  * @return 集中度を加算した場合は true、そうでなければ false
@@ -144,10 +155,7 @@ static bool snipe_concentrate(PlayerType *player_ptr)
     }
 
     msg_format(_("集中した。(集中度 %d)", "You concentrate deeply. (lvl %d)"), sniper_data->concent);
-    sniper_data->reset_concent = false;
-
-    player_ptr->update |= (PU_BONUS | PU_MONSTERS);
-    player_ptr->redraw |= (PR_STATUS);
+    reset_concentration_flag(sniper_data.get());
     return true;
 }
 
@@ -168,10 +176,7 @@ void reset_concentration(PlayerType *player_ptr, bool msg)
     }
 
     sniper_data->concent = 0;
-    sniper_data->reset_concent = false;
-
-    player_ptr->update |= (PU_BONUS | PU_MONSTERS);
-    player_ptr->redraw |= (PR_STATUS);
+    reset_concentration_flag(sniper_data.get());
 }
 
 /*!
@@ -284,11 +289,11 @@ static int get_snipe_power(PlayerType *player_ptr, COMMAND_CODE *sn, bool only_b
 
     /* Build a prompt (accept all spells) */
     if (only_browse) {
-        (void)strnfmt(
-            out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num), p);
+        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
+        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num), p);
     } else {
-        (void)strnfmt(
-            out_val, 78, _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? "), p, I2A(0), I2A(num), p);
+        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
+        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num), p);
     }
 
     choice = always_show_list ? ESCAPE : 1;
@@ -611,29 +616,33 @@ static bool cast_sniper_spell(PlayerType *player_ptr, int spell)
  */
 void do_cmd_snipe(PlayerType *player_ptr)
 {
-    COMMAND_CODE n = 0;
-    bool cast;
-
     if (cmd_limit_confused(player_ptr)) {
         return;
     }
+
     if (cmd_limit_image(player_ptr)) {
         return;
     }
+
     if (cmd_limit_stun(player_ptr)) {
         return;
     }
 
+    COMMAND_CODE n = 0;
     if (!get_snipe_power(player_ptr, &n, false)) {
         return;
     }
 
-    cast = cast_sniper_spell(player_ptr, n);
-
-    if (!cast) {
+    if (!cast_sniper_spell(player_ptr, n)) {
         return;
     }
-    player_ptr->redraw |= (PR_HP | PR_MANA);
+
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    const auto flags_mwrf = {
+        MainWindowRedrawingFlag::HP,
+        MainWindowRedrawingFlag::MP,
+    };
+    rfu.set_flags(flags_mwrf);
     player_ptr->window_flags |= (PW_PLAYER);
     player_ptr->window_flags |= (PW_SPELL);
 }

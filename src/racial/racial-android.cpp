@@ -69,12 +69,12 @@ void calc_android_exp(PlayerType *player_ptr)
         ItemEntity forge;
         auto *q_ptr = &forge;
         uint32_t value, exp;
-        DEPTH level = std::max(baseitems_info[o_ptr->bi_id].level - 8, 1);
+        DEPTH level = std::max(o_ptr->get_baseitem().level - 8, 1);
 
         if ((i == INVEN_MAIN_RING) || (i == INVEN_SUB_RING) || (i == INVEN_NECK) || (i == INVEN_LITE)) {
             continue;
         }
-        if (!o_ptr->bi_id) {
+        if (!o_ptr->is_valid()) {
             continue;
         }
 
@@ -84,11 +84,11 @@ void calc_android_exp(PlayerType *player_ptr)
         q_ptr->curse_flags.clear();
 
         if (o_ptr->is_fixed_artifact()) {
-            const auto &fixed_artifact = artifacts_info.at(o_ptr->fixed_artifact_idx);
-            level = (level + std::max(fixed_artifact.level - 8, 5)) / 2;
-            level += std::min(20, fixed_artifact.rarity / (fixed_artifact.gen_flags.has(ItemGenerationTraitType::INSTA_ART) ? 10 : 3));
+            const auto &artifact = o_ptr->get_fixed_artifact();
+            level = (level + std::max(artifact.level - 8, 5)) / 2;
+            level += std::min(20, artifact.rarity / (artifact.gen_flags.has(ItemGenerationTraitType::INSTA_ART) ? 10 : 3));
         } else if (o_ptr->is_ego()) {
-            level += std::max(3, (egos_info[o_ptr->ego_idx].rating - 5) / 2);
+            level += std::max(3, (o_ptr->get_ego().rating - 5) / 2);
         } else if (o_ptr->is_random_artifact()) {
             int32_t total_flags = flag_cost(o_ptr, o_ptr->pval);
             int fake_level;
@@ -139,7 +139,7 @@ void calc_android_exp(PlayerType *player_ptr)
         is_dragon_protector |= bi_key == BaseitemKey(ItemKindType::GLOVES, SV_SET_OF_DRAGON_GLOVES);
         is_dragon_protector |= bi_key == BaseitemKey(ItemKindType::BOOTS, SV_PAIR_OF_DRAGON_GREAVE);
         const auto is_diamond_edge = bi_key == BaseitemKey(ItemKindType::SWORD, SV_DIAMOND_EDGE);
-        if (o_ptr->is_artifact() || o_ptr->is_ego() || is_dragon_protector || is_diamond_edge) {
+        if (o_ptr->is_fixed_or_random_artifact() || o_ptr->is_ego() || is_dragon_protector || is_diamond_edge) {
             if (level > 65) {
                 level = 35 + (level - 65) / 5;
             } else if (level > 35) {

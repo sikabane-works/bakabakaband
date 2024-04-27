@@ -246,14 +246,12 @@ static void describe_monster_person(eg_type *eg_ptr)
 static uint16_t describe_monster_item(PlayerType *player_ptr, eg_type *eg_ptr)
 {
     for (const auto this_o_idx : eg_ptr->m_ptr->hold_o_idx_list) {
-        GAME_TEXT o_name[MAX_NLEN];
-        ItemEntity *o_ptr;
-        o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
-        describe_flavor(player_ptr, o_name, o_ptr, 0);
+        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
+        const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 #ifdef JP
-        strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s[%s]", eg_ptr->s1, o_name, eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
+        strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s[%s]", eg_ptr->s1, item_name.data(), eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
 #else
-        strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s [%s]", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, o_name, eg_ptr->info);
+        strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s [%s]", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, item_name.data(), eg_ptr->info);
 #endif
         prt(eg_ptr->out_val, 0, 0);
         move_cursor_relative(eg_ptr->y, eg_ptr->x);
@@ -317,14 +315,12 @@ static int16_t describe_footing(PlayerType *player_ptr, eg_type *eg_ptr)
         return CONTINUOUS_DESCRIPTION;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    ItemEntity *o_ptr;
-    o_ptr = &player_ptr->current_floor_ptr->o_list[eg_ptr->floor_list[0]];
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
+    auto *o_ptr = &player_ptr->current_floor_ptr->o_list[eg_ptr->floor_list[0]];
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 #ifdef JP
-    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s[%s]", eg_ptr->s1, o_name, eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
+    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s[%s]", eg_ptr->s1, item_name.data(), eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
 #else
-    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s [%s]", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, o_name, eg_ptr->info);
+    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s [%s]", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, item_name.data(), eg_ptr->info);
 #endif
     prt(eg_ptr->out_val, 0, 0);
     move_cursor_relative(eg_ptr->y, eg_ptr->x);
@@ -411,13 +407,12 @@ static int16_t describe_footing_sight(PlayerType *player_ptr, eg_type *eg_ptr, I
         return CONTINUOUS_DESCRIPTION;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
     eg_ptr->boring = false;
-    describe_flavor(player_ptr, o_name, o_ptr, 0);
+    const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 #ifdef JP
-    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s[%s]", eg_ptr->s1, o_name, eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
+    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s[%s]", eg_ptr->s1, item_name.data(), eg_ptr->s2, eg_ptr->s3, eg_ptr->info);
 #else
-    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s [%s]", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, o_name, eg_ptr->info);
+    strnfmt(eg_ptr->out_val, sizeof(eg_ptr->out_val), "%s%s%s%s [%s]", eg_ptr->s1, eg_ptr->s2, eg_ptr->s3, item_name.data(), eg_ptr->info);
 #endif
     prt(eg_ptr->out_val, 0, 0);
     move_cursor_relative(eg_ptr->y, eg_ptr->x);
@@ -460,8 +455,9 @@ static int16_t sweep_footing_items(PlayerType *player_ptr, eg_type *eg_ptr)
 
 static std::string decide_target_floor(PlayerType *player_ptr, eg_type *eg_ptr)
 {
+    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (eg_ptr->f_ptr->flags.has(TerrainCharacteristics::QUEST_ENTER)) {
-        QuestId old_quest = player_ptr->current_floor_ptr->quest_number;
+        QuestId old_quest = floor_ptr->quest_number;
         const auto &quest_list = QuestList::get_instance();
         const QuestId number = i2enum<QuestId>(eg_ptr->g_ptr->special);
         const auto *q_ptr = &quest_list[number];
@@ -471,30 +467,31 @@ static std::string decide_target_floor(PlayerType *player_ptr, eg_type *eg_ptr)
         }
 
         quest_text_line = 0;
-        player_ptr->current_floor_ptr->quest_number = number;
+        floor_ptr->quest_number = number;
         init_flags = INIT_NAME_ONLY;
         parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
-        player_ptr->current_floor_ptr->quest_number = old_quest;
-        return format(msg.data(), q_ptr->name, q_ptr->level);
+        floor_ptr->quest_number = old_quest;
+        return format(msg.data(), q_ptr->name.data(), q_ptr->level);
     }
 
-    if (eg_ptr->f_ptr->flags.has(TerrainCharacteristics::BLDG) && !player_ptr->current_floor_ptr->inside_arena) {
-        return building[eg_ptr->f_ptr->subtype].name;
+    if (eg_ptr->f_ptr->flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena) {
+        return buildings[eg_ptr->f_ptr->subtype].name;
     }
 
     if (eg_ptr->f_ptr->flags.has(TerrainCharacteristics::ENTRANCE)) {
-        return format(_("%s(%d階相当)", "%s(level %d)"), dungeons_info[eg_ptr->g_ptr->special].text.data(), dungeons_info[eg_ptr->g_ptr->special].mindepth);
+        const auto &dungeon = dungeons_info[eg_ptr->g_ptr->special];
+        return format(_("%s(%d階相当)", "%s(level %d)"), dungeon.text.data(), dungeon.mindepth);
     }
 
     if (eg_ptr->f_ptr->flags.has(TerrainCharacteristics::TOWN)) {
-        return town_info[eg_ptr->g_ptr->special].name;
+        return towns_info[eg_ptr->g_ptr->special].name;
     }
 
     if (player_ptr->wild_mode && (eg_ptr->feat == feat_floor)) {
         return _("道", "road");
     }
 
-    return eg_ptr->f_ptr->name.data();
+    return eg_ptr->f_ptr->name;
 }
 
 static void describe_grid_monster_all(eg_type *eg_ptr)

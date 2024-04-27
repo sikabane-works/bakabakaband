@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "system/angband.h"
+#include <stdint.h>
 
 #define DIARY_DIALY 0
 #define DIARY_DESCRIPTION 1

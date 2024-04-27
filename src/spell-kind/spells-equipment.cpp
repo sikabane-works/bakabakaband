@@ -1,6 +1,5 @@
 ﻿#include "spell-kind/spells-equipment.h"
 #include "avatar/avatar.h"
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -10,6 +9,7 @@
 #include "racial/racial-android.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "view/display-messages.h"
 
 /*!
@@ -22,37 +22,20 @@
  */
 bool apply_disenchant(PlayerType *player_ptr, BIT_FLAGS mode)
 {
-    int t = 0;
-    switch (randint1(8)) {
-    case 1:
-        t = INVEN_MAIN_HAND;
-        break;
-    case 2:
-        t = INVEN_SUB_HAND;
-        break;
-    case 3:
-        t = INVEN_BOW;
-        break;
-    case 4:
-        t = INVEN_BODY;
-        break;
-    case 5:
-        t = INVEN_OUTER;
-        break;
-    case 6:
-        t = INVEN_HEAD;
-        break;
-    case 7:
-        t = INVEN_ARMS;
-        break;
-    case 8:
-        t = INVEN_FEET;
-        break;
-    }
+    constexpr static auto candidates = {
+        INVEN_MAIN_HAND,
+        INVEN_SUB_HAND,
+        INVEN_BOW,
+        INVEN_BODY,
+        INVEN_OUTER,
+        INVEN_HEAD,
+        INVEN_ARMS,
+        INVEN_FEET,
+    };
 
-    ItemEntity *o_ptr;
-    o_ptr = &player_ptr->inventory_list[t];
-    if (!o_ptr->bi_id) {
+    const auto t = rand_choice(candidates);
+    auto *o_ptr = &player_ptr->inventory_list[t];
+    if (!o_ptr->is_valid()) {
         return false;
     }
 
@@ -64,13 +47,12 @@ bool apply_disenchant(PlayerType *player_ptr, BIT_FLAGS mode)
         return false;
     }
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-    if (o_ptr->is_artifact() && (randint0(100) < 71)) {
+    const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+    if (o_ptr->is_fixed_or_random_artifact() && (randint0(100) < 71)) {
 #ifdef JP
-        msg_format("%s(%c)は劣化を跳ね返した！", o_name, index_to_label(t));
+        msg_format("%s(%c)は劣化を跳ね返した！", item_name.data(), index_to_label(t));
 #else
-        msg_format("Your %s (%c) resist%s disenchantment!", o_name, index_to_label(t), ((o_ptr->number != 1) ? "" : "s"));
+        msg_format("Your %s (%c) resist%s disenchantment!", item_name.data(), index_to_label(t), ((o_ptr->number != 1) ? "" : "s"));
 #endif
         return true;
     }
@@ -114,14 +96,15 @@ bool apply_disenchant(PlayerType *player_ptr, BIT_FLAGS mode)
     }
 
 #ifdef JP
-    msg_format("%s(%c)は劣化してしまった！", o_name, index_to_label(t));
+    msg_format("%s(%c)は劣化してしまった！", item_name.data(), index_to_label(t));
 #else
-    msg_format("Your %s (%c) %s disenchanted!", o_name, index_to_label(t), ((o_ptr->number != 1) ? "were" : "was"));
+    msg_format("Your %s (%c) %s disenchanted!", item_name.data(), index_to_label(t), ((o_ptr->number != 1) ? "were" : "was"));
 #endif
-    chg_virtue(player_ptr, V_HARMONY, 1);
-    chg_virtue(player_ptr, V_ENCHANT, -2);
-    player_ptr->update |= (PU_BONUS);
-    player_ptr->window_flags |= (PW_EQUIP | PW_PLAYER);
+    chg_virtue(player_ptr, Virtue::HARMONY, 1);
+    chg_virtue(player_ptr, Virtue::ENCHANT, -2);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::BONUS);
+    player_ptr->window_flags |= (PW_EQUIPMENT | PW_PLAYER);
 
     calc_android_exp(player_ptr);
     return true;

@@ -8,8 +8,6 @@
 #include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "cmd-item/cmd-magiceat.h"
-#include "core/player-redraw-types.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "effect/attribute-types.h"
@@ -50,6 +48,7 @@
 #include "system/item-entity.h"
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-getter.h"
 #include "timed-effect/player-acceleration.h"
 #include "timed-effect/player-cut.h"
@@ -171,7 +170,7 @@ bool poly_monster(PlayerType *player_ptr, DIRECTION dir, int power)
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_KILL | PROJECT_REFLECTABLE;
     bool tester = (project_hook(player_ptr, AttributeType::OLD_POLY, dir, power, flg));
     if (tester) {
-        chg_virtue(player_ptr, V_CHANCE, 1);
+        chg_virtue(player_ptr, Virtue::CHANCE, 1);
     }
     return tester;
 }
@@ -214,8 +213,9 @@ bool time_walk(PlayerType *player_ptr)
     msg_print(nullptr);
 
     player_ptr->energy_need -= 1000 + (100 + player_ptr->csp - 50) * TURNS_PER_TICK / 10;
-    player_ptr->redraw |= (PR_MAP);
-    player_ptr->update |= (PU_MONSTERS);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::MAP);
+    rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
     player_ptr->window_flags |= (PW_OVERHEAD | PW_DUNGEON);
     handle_stuff(player_ptr);
     return true;
@@ -253,11 +253,10 @@ void roll_hitdice(PlayerType *player_ptr, spell_operation options)
 
     player_ptr->knowledge &= ~(KNOW_HPRATE);
 
-    PERCENTAGE percent = (int)(((long)player_ptr->player_hp[PY_MAX_LEVEL - 1] * 200L) / (2 * player_ptr->hitdie + ((PY_MAX_LEVEL - 1 + 3) * (player_ptr->hitdie + 1))));
-
-    /* Update and redraw hitpoints */
-    player_ptr->update |= (PU_HP);
-    player_ptr->redraw |= (PR_HP);
+    auto percent = (player_ptr->player_hp[PY_MAX_LEVEL - 1] * 200) / (2 * player_ptr->hitdie + ((PY_MAX_LEVEL - 1 + 3) * (player_ptr->hitdie + 1)));
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(StatusRedrawingFlag::HP);
+    rfu.set_flag(MainWindowRedrawingFlag::HP);
     player_ptr->window_flags |= (PW_PLAYER);
 
     if (!(options & SPOP_NO_UPDATE)) {
@@ -280,8 +279,8 @@ void roll_hitdice(PlayerType *player_ptr, spell_operation options)
 bool life_stream(PlayerType *player_ptr, bool message, bool virtue_change)
 {
     if (virtue_change) {
-        chg_virtue(player_ptr, V_VITALITY, 1);
-        chg_virtue(player_ptr, V_UNLIFE, -5);
+        chg_virtue(player_ptr, Virtue::VITALITY, 1);
+        chg_virtue(player_ptr, Virtue::UNLIFE, -5);
     }
 
     if (message) {
@@ -495,7 +494,8 @@ bool restore_mana(PlayerType *player_ptr, bool magic_eater)
     player_ptr->csp = player_ptr->msp;
     player_ptr->csp_frac = 0;
     msg_print(_("頭がハッキリとした。", "You feel your head clear."));
-    player_ptr->redraw |= (PR_MANA);
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    rfu.set_flag(MainWindowRedrawingFlag::MP);
     player_ptr->window_flags |= (PW_PLAYER);
     player_ptr->window_flags |= (PW_SPELL);
     return true;
@@ -534,20 +534,21 @@ bool fishing(PlayerType *player_ptr)
     POSITION y = player_ptr->y + ddy[dir];
     POSITION x = player_ptr->x + ddx[dir];
     player_ptr->fishing_dir = dir;
-    if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::WATER)) {
+    auto *floor_ptr = player_ptr->current_floor_ptr;
+    if (!cave_has_flag_bold(floor_ptr, y, x, TerrainCharacteristics::WATER)) {
         msg_print(_("そこは水辺ではない。", "You can't fish here."));
         return false;
     }
 
-    if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
-        const auto m_name = monster_desc(player_ptr, &player_ptr->current_floor_ptr->m_list[player_ptr->current_floor_ptr->grid_array[y][x].m_idx], 0);
+    if (floor_ptr->grid_array[y][x].m_idx) {
+        const auto m_name = monster_desc(player_ptr, &floor_ptr->m_list[floor_ptr->grid_array[y][x].m_idx], 0);
         msg_format(_("%sが邪魔だ！", "%s^ is standing in your way."), m_name.data());
         PlayerEnergy(player_ptr).reset_player_turn();
         return false;
     }
 
     set_action(player_ptr, ACTION_FISH);
-    player_ptr->redraw |= (PR_STATE);
+    RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::ACTION);
     return true;
 }
 
@@ -583,9 +584,8 @@ bool cosmic_cast_off(PlayerType *player_ptr, ItemEntity **o_ptr_ptr)
     OBJECT_IDX old_o_idx = drop_near(player_ptr, &forge, 0, player_ptr->y, player_ptr->x);
     *o_ptr_ptr = &player_ptr->current_floor_ptr->o_list[old_o_idx];
 
-    GAME_TEXT o_name[MAX_NLEN];
-    describe_flavor(player_ptr, o_name, &forge, OD_NAME_ONLY);
-    msg_format(_("%sを脱ぎ捨てた。", "You cast off %s."), o_name);
+    const auto item_name = describe_flavor(player_ptr, &forge, OD_NAME_ONLY);
+    msg_format(_("%sを脱ぎ捨てた。", "You cast off %s."), item_name.data());
     sound(SOUND_TAKE_OFF);
 
     /* Get effects */
@@ -666,10 +666,10 @@ void status_shuffle(PlayerType *player_ptr)
         ;
     }
 
-    BASE_STATUS max1 = player_ptr->stat_max[i];
-    BASE_STATUS cur1 = player_ptr->stat_cur[i];
-    BASE_STATUS max2 = player_ptr->stat_max[j];
-    BASE_STATUS cur2 = player_ptr->stat_cur[j];
+    const auto max1 = player_ptr->stat_max[i];
+    const auto cur1 = player_ptr->stat_cur[i];
+    const auto max2 = player_ptr->stat_max[j];
+    const auto cur2 = player_ptr->stat_cur[j];
 
     player_ptr->stat_max[i] = max2;
     player_ptr->stat_cur[i] = cur2;
@@ -685,5 +685,5 @@ void status_shuffle(PlayerType *player_ptr)
         }
     }
 
-    player_ptr->update |= PU_BONUS;
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
 }

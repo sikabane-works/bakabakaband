@@ -1,5 +1,9 @@
 ﻿#pragma once
 
+#include "monster/monster-timed-effect-types.h"
+#include <map>
+#include <string>
+
 /*
  * Some screen locations for various display routines
  * Currently, row 8 and 15 are the only "blank" rows.
@@ -12,13 +16,7 @@
 #define ROW_TITLE 2
 #define COL_TITLE 0 /* <title> or <mode> */
 
-#define ROW_DAY 21
-#define COL_DAY 0 /* day */
-
-#define ROW_DUNGEON 22
-#define COL_DUNGEON 0 /* dungeon */
-
-#define ROW_COLLAPSE 24
+#define ROW_COLLAPSE 27
 #define COL_COLLAPSE 0 /* world collapse */
 
 #define ROW_NOW_POS 25
@@ -60,17 +58,23 @@
 #define ROW_INFO 17
 #define COL_INFO 0 /* "xxxxxxxxxxxx" */
 
-#define ROW_CUT 18
+#define ROW_CUT (-6)
 #define COL_CUT 0 /* <cut> */
 
-#define ROW_STUN 19
+#define ROW_STUN (-5)
 #define COL_STUN 0 /* <stun> */
 
-#define ROW_HUNGRY 20
+#define ROW_HUNGRY (-4)
 #define COL_HUNGRY 0 /* "Weak" / "Hungry" / "Full" / "Gorged" */
 
-#define ROW_STATE 20
+#define ROW_STATE (-4)
 #define COL_STATE 7 /* <state> */
+
+#define ROW_DAY (-3)
+#define COL_DAY 0 /* day */
+
+#define ROW_DUNGEON (-2)
+#define COL_DUNGEON 0 /* dungeon */
 
 #define ROW_SPEED (-1)
 #define COL_SPEED (-24) /* "Slow (-NN)" or "Fast (+NN)" */
@@ -84,3 +88,5 @@
 #define ROW_STATBAR (-1)
 #define COL_STATBAR 0
 #define MAX_COL_STATBAR (-26)
+
+extern const std::map<monster_timed_effect_type, std::string> effect_type_to_label;

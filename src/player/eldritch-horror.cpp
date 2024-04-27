@@ -5,7 +5,6 @@
  */
 
 #include "player/eldritch-horror.h"
-#include "core/player-update-types.h"
 #include "core/stuff-handler.h"
 #include "locale/english.h"
 #include "monster-race/monster-race-hook.h"
@@ -30,29 +29,13 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-
-/*!
- * @brief エルドリッチホラーの形容詞種別を決める
- * @param r_ptr モンスター情報への参照ポインタ
- * @return
- */
-static concptr decide_horror_message(MonsterRaceInfo *r_ptr)
-{
-    int horror_num = randint0(MAX_SAN_HORROR_SUM);
-    if (horror_num < MAX_SAN_HORROR_COMMON) {
-        return horror_desc_common[horror_num];
-    }
-
-    if (r_ptr->kind_flags.has(MonsterKindType::EVIL)) {
-        return horror_desc_evil[horror_num - MAX_SAN_HORROR_COMMON];
-    }
-
-    return horror_desc_neutral[horror_num - MAX_SAN_HORROR_COMMON];
-}
+#include <string>
+#include <string_view>
 
 /*!
  * @brief エルドリッチホラー持ちのモンスターを見た時の反応 (モンスター名版)
@@ -62,8 +45,8 @@ static concptr decide_horror_message(MonsterRaceInfo *r_ptr)
  */
 static void see_eldritch_horror(std::string_view m_name, MonsterRaceInfo *r_ptr)
 {
-    concptr horror_message = decide_horror_message(r_ptr);
-    msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message, m_name.data());
+    const auto &horror_message = r_ptr->decide_horror_message();
+    msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message.data(), m_name.data());
     r_ptr->r_flags2 |= RF2_ELDRITCH_HORROR;
 }
 
@@ -72,11 +55,26 @@ static void see_eldritch_horror(std::string_view m_name, MonsterRaceInfo *r_ptr)
  * @param desc モンスター名 (エルドリッチホラー持ちの全モンスターからランダム…のはず)
  * @param r_ptr モンスターへの参照ポインタ
  */
-static void feel_eldritch_horror(concptr desc, MonsterRaceInfo *r_ptr)
+static void feel_eldritch_horror(std::string_view desc, MonsterRaceInfo *r_ptr)
 {
-    concptr horror_message = decide_horror_message(r_ptr);
-    msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message, desc);
+    const auto &horror_message = r_ptr->decide_horror_message();
+    msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message.data(), desc.data());
     r_ptr->r_flags2 |= RF2_ELDRITCH_HORROR;
+}
+
+static bool process_mod_hallucination(PlayerType *player_ptr, std::string_view m_name, const MonsterRaceInfo &monrace)
+{
+    if (!player_ptr->effects()->hallucination()->is_hallucinated()) {
+        return false;
+    }
+
+    msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), rand_choice(funny_desc).data(), m_name.data());
+    if (one_in_(3)) {
+        msg_print(rand_choice(funny_comments));
+        BadStatusSetter(player_ptr).mod_hallucination(randint1(monrace.level));
+    }
+
+    return true;
 }
 
 /*!
@@ -127,13 +125,7 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
             return;
         }
 
-        if (player_ptr->effects()->hallucination()->is_hallucinated()) {
-            msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), funny_desc[randint0(MAX_SAN_FUNNY)], m_name.data());
-            if (one_in_(3)) {
-                msg_print(funny_comments[randint0(MAX_SAN_COMMENT)]);
-                BadStatusSetter(player_ptr).mod_hallucination(randint1(r_ptr->level));
-            }
-
+        if (process_mod_hallucination(player_ptr, m_name, *r_ptr)) {
             return;
         }
 
@@ -150,15 +142,12 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
             break;
         }
     } else if (!necro) {
-        MonsterRaceInfo *r_ptr;
-        std::string m_name;
-        concptr desc;
         get_mon_num_prep(player_ptr, get_nightmare, nullptr);
-        r_ptr = &monraces_info[get_mon_num(player_ptr, 0, MAX_DEPTH, 0)];
+        auto *r_ptr = &monraces_info[get_mon_num(player_ptr, 0, MAX_DEPTH, 0)];
         power = r_ptr->level + 10;
-        desc = r_ptr->name.data();
+        const auto &desc = r_ptr->name;
         get_mon_num_prep(player_ptr, nullptr, nullptr);
-
+        std::string m_name;
 #ifdef JP
 #else
 
@@ -181,13 +170,7 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
             return;
         }
 
-        if (player_ptr->effects()->hallucination()->is_hallucinated()) {
-            msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), funny_desc[randint0(MAX_SAN_FUNNY)], m_name.data());
-            if (one_in_(3)) {
-                msg_print(funny_comments[randint0(MAX_SAN_COMMENT)]);
-                BadStatusSetter(player_ptr).mod_hallucination(randint1(r_ptr->level));
-            }
-
+        if (process_mod_hallucination(player_ptr, m_name, *r_ptr)) {
             return;
         }
 
@@ -211,7 +194,12 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
     }
 
     /* 過去の効果無効率再現のため5回saving_throw 実行 */
-    if (saving_throw(player_ptr->skill_sav - power) && saving_throw(player_ptr->skill_sav - power) && saving_throw(player_ptr->skill_sav - power) && saving_throw(player_ptr->skill_sav - power) && saving_throw(player_ptr->skill_sav - power)) {
+    auto save = true;
+    for (auto i = 0; i < 5; i++) {
+        save &= saving_throw(player_ptr->skill_sav - power);
+    }
+
+    if (save) {
         return;
     }
 
@@ -328,6 +316,6 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
         break;
     }
 
-    player_ptr->update |= PU_BONUS;
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
     handle_stuff(player_ptr);
 }

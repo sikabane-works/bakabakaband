@@ -135,12 +135,13 @@
 #include <direct.h>
 #include <locale>
 #include <string>
+#include <string_view>
 #include <vector>
 
 /*
  * Window names
  */
-LPCWSTR win_term_name[] = { L"Hengband", L"Term-1", L"Term-2", L"Term-3", L"Term-4", L"Term-5", L"Term-6", L"Term-7" };
+LPCWSTR win_term_name[] = { L"Bakabakaband", L"Term-1", L"Term-2", L"Term-3", L"Term-4", L"Term-5", L"Term-6", L"Term-7" };
 
 #define MAX_TERM_DATA 8 //!< Maximum number of windows
 
@@ -190,7 +191,7 @@ static HICON hIcon;
 /* bg */
 bg_mode current_bg_mode = bg_mode::BG_NONE;
 #define DEFAULT_BG_FILENAME "bg.bmp"
-char wallpaper_file[MAIN_WIN_MAX_PATH] = ""; //!< 壁紙ファイル名。
+std::filesystem::path wallpaper_path = ""; //!< 壁紙ファイル名。
 
 /*
  * Show sub-windows even when Hengband is not in focus
@@ -256,28 +257,30 @@ static byte ignore_key_list[] = {
 /*!
  * @brief Validate a file
  */
-static void validate_file(concptr s)
+static void validate_file(const std::filesystem::path &s)
 {
-    if (check_file(s)) {
+    if (std::filesystem::is_regular_file(s)) {
         return;
     }
 
-    quit_fmt(_("必要なファイル[%s]が見あたりません。", "Cannot find required file:\n%s"), s);
+    const auto &file = s.string();
+    quit_fmt(_("必要なファイル[%s]が見あたりません。", "Cannot find required file:\n%s"), file.data());
 }
 
 /*!
  * @brief Validate a directory
  */
-static void validate_dir(concptr s, bool vital)
+static void validate_dir(const std::filesystem::path &s, bool vital)
 {
-    if (check_dir(s)) {
+    if (std::filesystem::is_directory(s)) {
         return;
     }
 
+    const auto &dir = s.string();
     if (vital) {
-        quit_fmt(_("必要なディレクトリ[%s]が見あたりません。", "Cannot find required directory:\n%s"), s);
-    } else if (mkdir(s)) {
-        quit_fmt("Unable to create directory:\n%s", s);
+        quit_fmt(_("必要なディレクトリ[%s]が見あたりません。", "Cannot find required directory:\n%s"), dir.data());
+    } else if (mkdir(dir.data())) {
+        quit_fmt("Unable to create directory:\n%s", dir.data());
     }
 }
 
@@ -416,19 +419,18 @@ static void save_prefs(void)
 
     wsprintfA(buf, "%d", current_bg_mode);
     WritePrivateProfileStringA("Angband", "BackGround", buf, ini_file);
-    WritePrivateProfileStringA("Angband", "BackGroundBitmap", wallpaper_file[0] != '\0' ? wallpaper_file : DEFAULT_BG_FILENAME, ini_file);
+    const auto &wallpaper_filename = wallpaper_path.string();
+    WritePrivateProfileStringA("Angband", "BackGroundBitmap", !wallpaper_path.empty() ? wallpaper_filename.data() : DEFAULT_BG_FILENAME, ini_file);
 
-    int path_length = strlen(ANGBAND_DIR) - 4; /* \libの4文字分を削除 */
-    char tmp[1024] = "";
-    strncat(tmp, ANGBAND_DIR, path_length);
-
-    int n = strncmp(tmp, savefile, path_length);
-    if (n == 0) {
-        char relative_path[1024] = "";
-        snprintf(relative_path, sizeof(relative_path), ".\\%s", (savefile + path_length));
-        WritePrivateProfileStringA("Angband", "SaveFile", relative_path, ini_file);
+    auto angband_dir_str = ANGBAND_DIR.string();
+    const auto path_length = angband_dir_str.length() - 4; // "\lib" を除く.
+    angband_dir_str = angband_dir_str.substr(0, path_length);
+    const auto savefile_str = savefile.string();
+    if (angband_dir_str == savefile_str) {
+        const auto relative_path = format(".\\%s", (savefile_str.data() + path_length));
+        WritePrivateProfileStringA("Angband", "SaveFile", relative_path.data(), ini_file);
     } else {
-        WritePrivateProfileStringA("Angband", "SaveFile", savefile, ini_file);
+        WritePrivateProfileStringA("Angband", "SaveFile", savefile_str.data(), ini_file);
     }
 
     strcpy(buf, keep_subwindows ? "1" : "0");
@@ -515,16 +517,21 @@ static void load_prefs(void)
     arg_music_volume_table_index = std::clamp<int>(GetPrivateProfileIntA("Angband", "MusicVolumeTableIndex", 0, ini_file), 0, main_win_music::VOLUME_TABLE.size() - 1);
     use_pause_music_inactive = (GetPrivateProfileIntA("Angband", "MusicPauseInactive", 0, ini_file) != 0);
     current_bg_mode = static_cast<bg_mode>(GetPrivateProfileIntA("Angband", "BackGround", 0, ini_file));
-    GetPrivateProfileStringA("Angband", "BackGroundBitmap", DEFAULT_BG_FILENAME, wallpaper_file, 1023, ini_file);
-    GetPrivateProfileStringA("Angband", "SaveFile", "", savefile, 1023, ini_file);
-
-    int n = strncmp(".\\", savefile, 2);
-    if (n == 0) {
-        int path_length = strlen(ANGBAND_DIR) - 4; /* \libの4文字分を削除 */
+    char wallpaper_buf[1024]{};
+    GetPrivateProfileStringA("Angband", "BackGroundBitmap", DEFAULT_BG_FILENAME, wallpaper_buf, 1023, ini_file);
+    wallpaper_path = wallpaper_buf;
+    char savefile_buf[1024]{};
+    GetPrivateProfileStringA("Angband", "SaveFile", "", savefile_buf, 1023, ini_file);
+    if (strncmp(".\\", savefile_buf, 2) == 0) {
+        std::string angband_dir_str(ANGBAND_DIR.string());
+        const auto path_length = angband_dir_str.length() - 4; // "\lib" を除く.
+        angband_dir_str = angband_dir_str.substr(0, path_length);
         char tmp[1024] = "";
-        strncat(tmp, ANGBAND_DIR, path_length);
-        strncat(tmp, savefile + 2, strlen(savefile) - 2 + path_length);
-        strncpy(savefile, tmp, strlen(tmp));
+        strncat(tmp, angband_dir_str.data(), path_length);
+        strncat(tmp, savefile_buf + 2, std::string_view(savefile_buf).length() - 2 + path_length);
+        savefile = tmp;
+    } else {
+        savefile = savefile_buf;
     }
 
     keep_subwindows = (GetPrivateProfileIntA("Angband", "KeepSubwindows", 0, ini_file) != 0);
@@ -601,10 +608,11 @@ static bool change_bg_mode(bg_mode new_mode, bool show_error = false, bool force
     current_bg_mode = new_mode;
     if (current_bg_mode != bg_mode::BG_NONE) {
         init_background();
-        if (!load_bg(wallpaper_file)) {
+        if (!load_bg(wallpaper_path)) {
             current_bg_mode = bg_mode::BG_NONE;
             if (show_error) {
-                plog_fmt(_("壁紙用ファイル '%s' を読み込めません。", "Can't load the image file '%s'."), wallpaper_file);
+                const auto &wallaper_filename = wallpaper_path.string();
+                plog_fmt(_("壁紙用ファイル '%s' を読み込めません。", "Can't load the image file '%s'."), wallaper_filename.data());
             }
         }
     } else {
@@ -1322,8 +1330,8 @@ static void init_windows(void)
     *td = {};
     td->name = win_term_name[0];
 
-    td->rows = 24;
-    td->cols = 80;
+    td->rows = MAIN_TERM_MIN_ROWS;
+    td->cols = MAIN_TERM_MIN_COLS;
     td->visible = true;
     td->size_ow1 = 2;
     td->size_ow2 = 2;
@@ -1337,8 +1345,8 @@ static void init_windows(void)
         td = &data[i];
         *td = {};
         td->name = win_term_name[i];
-        td->rows = 24;
-        td->cols = 80;
+        td->rows = TERM_DEFAULT_ROWS;
+        td->cols = TERM_DEFAULT_COLS;
         td->visible = false;
         td->size_ow1 = 1;
         td->size_ow2 = 1;
@@ -1422,7 +1430,8 @@ static void init_windows(void)
     td = &data[0];
     my_td = td;
     td->w = CreateWindowExW(
-        td->dwExStyle, AppName, _(L"馬鹿馬鹿蛮怒", td->name), td->dwStyle, td->pos_x, td->pos_y, td->size_wid, td->size_hgt, HWND_DESKTOP, NULL, hInstance, NULL);
+        td->dwExStyle, AppName, _(L"馬鹿馬鹿蛮怒", td->name), td->dwStyle,
+        td->pos_x, td->pos_y, td->size_wid, td->size_hgt, HWND_DESKTOP, NULL, hInstance, NULL);
     my_td = NULL;
 
     if (!td->w) {
@@ -1553,7 +1562,7 @@ static void check_for_save_file(const std::string &savefile_option)
         return;
     }
 
-    strcpy(savefile, savefile_option.data());
+    savefile = savefile_option;
     validate_file(savefile);
     game_in_progress = true;
 }
@@ -1576,7 +1585,7 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
             plog(_("プレイ中は新しいゲームを始めることができません！", "You can't start a new game while you're still playing!"));
         } else {
             game_in_progress = true;
-            savefile[0] = '\0';
+            savefile = "";
         }
 
         break;
@@ -1591,8 +1600,9 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
             ofn.lpstrFilter = L"Save Files (*.)\0*\0";
             ofn.nFilterIndex = 1;
             ofn.Flags = OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR | OFN_HIDEREADONLY;
-
-            if (get_open_filename(&ofn, ANGBAND_DIR_SAVE, savefile, MAIN_WIN_MAX_PATH)) {
+            const auto &filename = get_open_filename(&ofn, ANGBAND_DIR_SAVE, savefile, MAIN_WIN_MAX_PATH);
+            if (filename.has_value()) {
+                savefile = filename.value();
                 validate_file(savefile);
                 game_in_progress = true;
             }
@@ -1635,9 +1645,8 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         break;
     }
     case IDM_FILE_SCORE: {
-        char buf[1024];
-        path_build(buf, sizeof(buf), ANGBAND_DIR_APEX, "scores.raw");
-        highscore_fd = fd_open(buf, O_RDONLY);
+        const auto &path = path_build(ANGBAND_DIR_APEX, "scores.raw");
+        highscore_fd = fd_open(path, O_RDONLY);
         if (highscore_fd < 0) {
             msg_print("Score file unavailable.");
         } else {
@@ -1662,8 +1671,9 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
             ofn.lpstrFilter = L"Angband Movie Files (*.amv)\0*.amv\0";
             ofn.nFilterIndex = 1;
             ofn.Flags = OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR;
-
-            if (get_open_filename(&ofn, ANGBAND_DIR_USER, savefile, MAIN_WIN_MAX_PATH)) {
+            const auto &filename = get_open_filename(&ofn, ANGBAND_DIR_USER, savefile, MAIN_WIN_MAX_PATH);
+            if (filename.has_value()) {
+                savefile = filename.value();
                 prepare_browse_movie_without_path_build(savefile);
                 movie_in_progress = true;
             }
@@ -1899,9 +1909,8 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         break;
     }
     case IDM_OPTIONS_OPEN_MUSIC_DIR: {
-        std::vector<char> buf(MAIN_WIN_MAX_PATH);
-        path_build(&buf[0], MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_MUSIC, "music.cfg");
-        open_dir_in_explorer(&buf[0]);
+        const auto &path = path_build(ANGBAND_DIR_XTRA_MUSIC, "music.cfg");
+        open_dir_in_explorer(path.string());
         break;
     }
     case IDM_OPTIONS_SOUND: {
@@ -1923,9 +1932,8 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         break;
     }
     case IDM_OPTIONS_OPEN_SOUND_DIR: {
-        std::vector<char> buf(MAIN_WIN_MAX_PATH);
-        path_build(&buf[0], MAIN_WIN_MAX_PATH, ANGBAND_DIR_XTRA_SOUND, "sound.cfg");
-        open_dir_in_explorer(&buf[0]);
+        const auto &path = path_build(ANGBAND_DIR_XTRA_SOUND, "sound.cfg");
+        open_dir_in_explorer(path.string());
         break;
     }
     case IDM_OPTIONS_NO_BG: {
@@ -1951,8 +1959,9 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         ofn.nFilterIndex = 1;
         ofn.lpstrTitle = _(L"壁紙を選んでね。", L"Choose wall paper.");
         ofn.Flags = OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
-
-        if (get_open_filename(&ofn, nullptr, wallpaper_file, MAIN_WIN_MAX_PATH)) {
+        const auto &filename = get_open_filename(&ofn, "", wallpaper_path, MAIN_WIN_MAX_PATH);
+        if (filename.has_value()) {
+            wallpaper_path = filename.value();
             change_bg_mode(bg_mode::BG_ONE, true, true);
         }
         break;
@@ -2160,8 +2169,8 @@ static bool handle_window_resize(term_data *td, UINT uMsg, WPARAM wParam, LPARAM
     switch (uMsg) {
     case WM_GETMINMAXINFO: {
         const bool is_main = is_main_term(td);
-        const int min_cols = (is_main) ? 80 : 20;
-        const int min_rows = (is_main) ? 24 : 3;
+        const int min_cols = (is_main) ? MAIN_TERM_MIN_COLS : 20;
+        const int min_rows = (is_main) ? MAIN_TERM_MIN_ROWS : 3;
         const LONG w = min_cols * td->tile_wid + td->size_ow1 + td->size_ow2;
         const LONG h = min_rows * td->tile_hgt + td->size_oh1 + td->size_oh2 + 1;
         RECT rc{ 0, 0, w, h };
@@ -2612,7 +2621,7 @@ static void hook_quit(concptr str)
 /*!
  * @brief Init some stuff
  */
-static void init_stuff(void)
+static void init_stuff()
 {
     char path[MAIN_WIN_MAX_PATH];
     DWORD path_len = GetModuleFileNameA(hInstance, path, MAIN_WIN_MAX_PATH);
@@ -2628,7 +2637,7 @@ static void init_stuff(void)
 
     strcpy(path + i + 1, "lib\\");
     validate_dir(path, true);
-    init_file_paths(path, path);
+    init_file_paths(path);
     validate_dir(ANGBAND_DIR_APEX, false);
     validate_dir(ANGBAND_DIR_BONE, false);
     if (!check_dir(ANGBAND_DIR_EDIT)) {
@@ -2645,19 +2654,16 @@ static void init_stuff(void)
     validate_dir(ANGBAND_DIR_DEBUG_SAVE, false);
     validate_dir(ANGBAND_DIR_USER, true);
     validate_dir(ANGBAND_DIR_XTRA, true);
-    path_build(path, sizeof(path), ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
+    const auto &path_news = path_build(ANGBAND_DIR_FILE, _("news_j.txt", "news.txt"));
+    validate_file(path_news);
 
-    validate_file(path);
-    path_build(path, sizeof(path), ANGBAND_DIR_XTRA, "graf");
-    ANGBAND_DIR_XTRA_GRAF = string_make(path);
+    ANGBAND_DIR_XTRA_GRAF = path_build(ANGBAND_DIR_XTRA, "graf");
     validate_dir(ANGBAND_DIR_XTRA_GRAF, true);
 
-    path_build(path, sizeof(path), ANGBAND_DIR_XTRA, "sound");
-    ANGBAND_DIR_XTRA_SOUND = string_make(path);
+    ANGBAND_DIR_XTRA_SOUND = path_build(ANGBAND_DIR_XTRA, "sound");
     validate_dir(ANGBAND_DIR_XTRA_SOUND, false);
 
-    path_build(path, sizeof(path), ANGBAND_DIR_XTRA, "music");
-    ANGBAND_DIR_XTRA_MUSIC = string_make(path);
+    ANGBAND_DIR_XTRA_MUSIC = path_build(ANGBAND_DIR_XTRA, "music");
     validate_dir(ANGBAND_DIR_XTRA_MUSIC, false);
 
     for (i = 0; special_key_list[i]; ++i) {
@@ -2756,9 +2762,10 @@ int WINAPI WinMain(
     setlocale(LC_ALL, "ja_JP");
     hInstance = hInst;
     if (is_already_running()) {
-        MessageBoxW(
-            NULL, _(L"馬鹿馬鹿蛮怒はすでに起動しています。", L"Bakabakaband is already running."), _(L"エラー！", L"Error"), MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
-        return false;
+        constexpr auto mes = _(L"馬鹿馬鹿蛮怒はすでに起動しています。", L"Bakabakaband is already running.");
+        constexpr auto caption = _(L"エラー！", L"Error");
+        MessageBoxW(NULL, mes, caption, MB_ICONEXCLAMATION | MB_OK | MB_ICONSTOP);
+        return 0;
     }
 
     command_line.handle();
@@ -2785,13 +2792,6 @@ int WINAPI WinMain(
     core_aux = quit_aux;
 
     init_stuff();
-
-    HDC hdc = GetDC(NULL);
-    if (GetDeviceCaps(hdc, BITSPIXEL) <= 8) {
-        quit(_("画面を16ビット以上のカラーモードにして下さい。", "Please switch to High Color (16-bit) or higher color mode."));
-    }
-    ReleaseDC(NULL, hdc);
-
     refresh_color_table();
     init_windows();
     change_graphics_mode(static_cast<graphics_mode>(arg_graphics));
@@ -2804,12 +2804,16 @@ int WINAPI WinMain(
 
     signals_init();
     term_activate(term_screen);
-    init_angband(p_ptr, false);
-    initialized = true;
+    {
+        TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
 
-    check_for_save_file(command_line.get_savefile_option());
-    prt(_("[ファイル] メニューの [新規] または [開く] を選択してください。", "[Choose 'New' or 'Open' from the 'File' menu]"), 23, _(8, 17));
-    term_fresh();
+        init_angband(p_ptr, false);
+        initialized = true;
+
+        check_for_save_file(command_line.get_savefile_option());
+        prt(_("[ファイル] メニューの [新規] または [開く] を選択してください。", "[Choose 'New' or 'Open' from the 'File' menu]"), 23, _(8, 17));
+        term_fresh();
+    }
 
     change_sound_mode(arg_sound);
     use_music = arg_music;
@@ -2831,7 +2835,7 @@ int WINAPI WinMain(
     if (movie_in_progress) {
         // selected movie
         play_game(p_ptr, false, true);
-    } else if (savefile[0] == '\0') {
+    } else if (savefile.empty()) {
         // new game
         play_game(p_ptr, true, false);
     } else {

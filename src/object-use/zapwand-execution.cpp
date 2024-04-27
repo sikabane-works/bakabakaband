@@ -2,7 +2,6 @@
 #include "action/action-limited.h"
 #include "avatar/avatar.h"
 #include "cmd-item/cmd-zapwand.h" // 相互依存。暫定的措置、後で何とかする.
-#include "core/player-update-types.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
 #include "game-option/disturbance-options.h"
@@ -20,6 +19,7 @@
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "target/target-getter.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-confusion.h"
@@ -63,7 +63,7 @@ void ObjectZapWandEntity::execute(INVENTORY_IDX item)
         return;
     }
 
-    auto lev = baseitems_info[o_ptr->bi_id].level;
+    auto lev = o_ptr->get_baseitem().level;
     if (lev > 50) {
         lev = 50 + (lev - 50) / 2;
     }
@@ -88,6 +88,7 @@ void ObjectZapWandEntity::execute(INVENTORY_IDX item)
         return;
     }
 
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
     if (o_ptr->pval <= 0) {
         if (flush_failure) {
             flush();
@@ -95,25 +96,28 @@ void ObjectZapWandEntity::execute(INVENTORY_IDX item)
 
         msg_print(_("この魔法棒にはもう魔力が残っていない。", "The wand has no charges left."));
         o_ptr->ident |= IDENT_EMPTY;
-        this->player_ptr->update |= PU_COMBINE | PU_REORDER;
-        this->player_ptr->window_flags |= PW_INVEN;
+        const auto flags = {
+            StatusRedrawingFlag::COMBINATION,
+            StatusRedrawingFlag::REORDER,
+        };
+        rfu.set_flags(flags);
+        this->player_ptr->window_flags |= PW_INVENTORY;
         return;
     }
 
     sound(SOUND_ZAP);
     auto ident = wand_effect(this->player_ptr, sval.value(), dir, false, false);
+    using Srf = StatusRedrawingFlag;
+    EnumClassFlagGroup<Srf> flags_srf = { Srf::COMBINATION, Srf::REORDER };
+    if (rfu.has(Srf::AUTO_DESTRUCTION)) {
+        flags_srf.set(Srf::AUTO_DESTRUCTION);
+    }
 
-    /*
-     * Temporarily remove the flags for updating the inventory so
-     * gain_exp() does not reorder the inventory before the charge
-     * is deducted from the wand.
-     */
-    BIT_FLAGS inventory_flags = (PU_COMBINE | PU_REORDER | (this->player_ptr->update & PU_AUTODESTROY));
-    reset_bits(this->player_ptr->update, PU_COMBINE | PU_REORDER | PU_AUTODESTROY);
+    rfu.reset_flags(flags_srf);
     if (!(o_ptr->is_aware())) {
-        chg_virtue(this->player_ptr, V_PATIENCE, -1);
-        chg_virtue(this->player_ptr, V_CHANCE, 1);
-        chg_virtue(this->player_ptr, V_KNOWLEDGE, -1);
+        chg_virtue(this->player_ptr, Virtue::PATIENCE, -1);
+        chg_virtue(this->player_ptr, Virtue::CHANCE, 1);
+        chg_virtue(this->player_ptr, Virtue::KNOWLEDGE, -1);
     }
 
     object_tried(o_ptr);
@@ -122,8 +126,8 @@ void ObjectZapWandEntity::execute(INVENTORY_IDX item)
         gain_exp(this->player_ptr, (lev + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
     }
 
-    set_bits(this->player_ptr->window_flags, PW_INVEN | PW_EQUIP | PW_PLAYER | PW_FLOOR_ITEM_LIST | PW_FOUND_ITEM_LIST);
-    set_bits(this->player_ptr->update, inventory_flags);
+    set_bits(this->player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
+    rfu.set_flags(flags_srf);
     o_ptr->pval--;
     if (item >= 0) {
         inven_item_charges(this->player_ptr->inventory_list[item]);
