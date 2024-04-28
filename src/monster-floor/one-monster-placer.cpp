@@ -324,6 +324,10 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         }
     }
 
+    if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE) && one_in_(15)) {
+        m_ptr->mflag2.set(MonsterConstantFlagType::LARGE);
+    }
+
     if ((who > 0) && r_ptr->kind_flags.has_none_of(alignment_mask)) {
         m_ptr->sub_align = floor_ptr->m_list[who].sub_align;
     } else {
@@ -391,12 +395,16 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         (void)set_monster_csleep(player_ptr, g_ptr->m_idx, (val * 2) + randint1(val * 10));
     }
 
-    if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP)) {
+    if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || m_ptr->mflag2.has(MonsterConstantFlagType::LARGE)) {
         m_ptr->max_maxhp = maxroll(r_ptr->hdice, r_ptr->hside);
     } else {
         m_ptr->max_maxhp = damroll(r_ptr->hdice, r_ptr->hside);
     }
 
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::LARGE)) {
+        m_ptr->max_maxhp *= (randint1(5) + 10) / 8;
+        m_ptr->max_maxhp = std::min(MONSTER_MAXHP, m_ptr->max_maxhp);
+    }
     if (ironman_nightmare) {
         auto hp = m_ptr->max_maxhp * 2;
         m_ptr->max_maxhp = std::min(MONSTER_MAXHP, hp);

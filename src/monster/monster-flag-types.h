@@ -23,5 +23,6 @@ enum class MonsterConstantFlagType {
     PET = 8, /*!< ペットである / Pet */
     CLONED = 9, /*!< クローンである / Cloned */
     SANTA = 10, /*!< サンタと化した / Santa turned */
+    LARGE = 11, /*!< 大型 / Large */
     MAX,
 };
