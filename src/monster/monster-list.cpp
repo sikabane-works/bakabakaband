@@ -197,7 +197,7 @@ static bool monster_hook_chameleon_lord(PlayerType *player_ptr, MonsterRaceId r_
         return false;
     }
 
-    if ((r_ptr->blow[0].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[1].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[2].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[3].method == RaceBlowMethodType::EXPLODE)) {
+    if ((r_ptr->blows[0].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blows[1].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blows[2].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blows[3].method == RaceBlowMethodType::EXPLODE)) {
         return false;
     }
 
@@ -241,7 +241,7 @@ static bool monster_hook_chameleon(PlayerType *player_ptr, MonsterRaceId r_idx)
         return false;
     }
 
-    if ((r_ptr->blow[0].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[1].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[2].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blow[3].method == RaceBlowMethodType::EXPLODE)) {
+    if ((r_ptr->blows[0].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blows[1].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blows[2].method == RaceBlowMethodType::EXPLODE) || (r_ptr->blows[3].method == RaceBlowMethodType::EXPLODE)) {
         return false;
     }
 
