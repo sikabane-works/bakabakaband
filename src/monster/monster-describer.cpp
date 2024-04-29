@@ -264,6 +264,11 @@ std::string monster_desc(PlayerType *player_ptr, const MonsterEntity *m_ptr, BIT
         ss << "Santa turned";
     }
 #endif
+
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::LARGE)) {
+        ss << _("大型の", "large ");
+    }
+
     if (m_ptr->is_pet() && !m_ptr->is_original_ap()) {
         ss << _(replace_monster_name_undefined(name), format("%s?", name.data()));
     } else {

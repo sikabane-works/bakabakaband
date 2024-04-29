@@ -39023,6 +39023,31 @@ S:1_IN_3
 S:TELE_AWAY | TELE_TO | BLINK
 D:時空や物質的存在そのものを搔き乱すエルドラージの変種の一つだ。
 
+N:2139:ノレンモドキヒトクイクラゲ
+E:Man eater jellyfish faked noren
+G:':R
+I:130:7d7:20:40:0
+W:13:7:30:0:0
+B:HIT:PARALYZE:5d5
+B:HIT:TERRIFY:5d5
+F:NEVER_MOVE | NONLIVING | NO_FEAR |
+F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
+F:EVIL | IM_COLD | FORCE_MAXHP | IM_ELEC | IM_POIS
+D:$It resembles a normal noren until some poor fool visitor too close!
+D:哀れで愚かな来客が近づいて来るまでは普通の暖簾に似ている。
+
+N:2140:人面犬
+E:Jinmenken
+G:C:y
+I:110:10d10:15:20:40
+W:18:2:130:0:0
+B:BITE:HURT:3d4
+B:BITE:HURT:3d4
+B:CLAW:HURT:3d6
+F:RAND_25 | WILD_TOWN
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:HUMAN | ANIMAL | EVIL | FRIENDS
+D:人間の顔をした犬。日本でまれによく見かける珍獣だ。
 
 # N: serial number : monster name
 # G: symbol : color

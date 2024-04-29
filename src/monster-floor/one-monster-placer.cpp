@@ -69,20 +69,15 @@ static bool is_friendly_idx(PlayerType *player_ptr, MONSTER_IDX m_idx)
  */
 static bool monster_hook_tanuki(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
-    auto *r_ptr = &monraces_info[r_idx];
-    bool unselectable = r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    unselectable |= any_bits(r_ptr->flags2, RF2_MULTIPLY);
-    unselectable |= r_ptr->behavior_flags.has(MonsterBehaviorType::FRIENDLY);
-    unselectable |= r_ptr->feature_flags.has(MonsterFeatureType::AQUATIC);
-    unselectable |= any_bits(r_ptr->flags7, RF7_CHAMELEON);
+    const auto &monrace = monraces_info[r_idx];
+    bool unselectable = monrace.kind_flags.has(MonsterKindType::UNIQUE);
+    unselectable |= any_bits(monrace.flags2, RF2_MULTIPLY);
+    unselectable |= monrace.behavior_flags.has(MonsterBehaviorType::FRIENDLY);
+    unselectable |= monrace.feature_flags.has(MonsterFeatureType::AQUATIC);
+    unselectable |= any_bits(monrace.flags7, RF7_CHAMELEON);
+    unselectable |= monrace.is_explodable();
     if (unselectable) {
         return false;
-    }
-
-    for (int i = 0; i < 4; i++) {
-        if (r_ptr->blow[i].method == RaceBlowMethodType::EXPLODE) {
-            return false;
-        }
     }
 
     auto hook_pf = get_monster_hook(player_ptr);
@@ -324,6 +319,10 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         }
     }
 
+    if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE) && one_in_(15)) {
+        m_ptr->mflag2.set(MonsterConstantFlagType::LARGE);
+    }
+
     if ((who > 0) && r_ptr->kind_flags.has_none_of(alignment_mask)) {
         m_ptr->sub_align = floor_ptr->m_list[who].sub_align;
     } else {
@@ -391,12 +390,16 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         (void)set_monster_csleep(player_ptr, g_ptr->m_idx, (val * 2) + randint1(val * 10));
     }
 
-    if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP)) {
+    if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || m_ptr->mflag2.has(MonsterConstantFlagType::LARGE)) {
         m_ptr->max_maxhp = maxroll(r_ptr->hdice, r_ptr->hside);
     } else {
         m_ptr->max_maxhp = damroll(r_ptr->hdice, r_ptr->hside);
     }
 
+    if (m_ptr->mflag2.has(MonsterConstantFlagType::LARGE)) {
+        m_ptr->max_maxhp *= (randint1(5) + 10) / 8;
+        m_ptr->max_maxhp = std::min(MONSTER_MAXHP, m_ptr->max_maxhp);
+    }
     if (ironman_nightmare) {
         auto hp = m_ptr->max_maxhp * 2;
         m_ptr->max_maxhp = std::min(MONSTER_MAXHP, hp);
