@@ -96,7 +96,7 @@ static bool deal_damege_by_feat(PlayerType *player_ptr, grid_type *g_ptr, concpt
     if (resist_levitation) {
         msg_print(msg_levitation);
         constexpr auto mes = _("%sの上に浮遊したダメージ", "flying over %s");
-        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(mes, terrains_info[g_ptr->get_feat_mimic()].name.data()).data());
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(mes, terrains_info[g_ptr->get_feat_mimic()].name.data()));
 
         if (additional_effect != nullptr) {
             additional_effect(player_ptr, damage);
@@ -168,7 +168,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
                 const auto wielding_item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY);
                 std::stringstream ss;
                 ss << _(wielding_item_name, "wielding ") << _("を装備したダメージ", wielding_item_name);
-                take_hit(player_ptr, DAMAGE_NOESCAPE, 1, ss.str().data());
+                take_hit(player_ptr, DAMAGE_NOESCAPE, 1, ss.str());
             }
         }
     }
