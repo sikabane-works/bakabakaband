@@ -118,16 +118,6 @@ public:
     virtual ~AllianceUtumno() = default;
 };
 
-class AllianceJural : public Alliance {
-public:
-    using Alliance::Alliance;
-    AllianceJural() = delete;
-    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImpressionPoint(PlayerType *creature_ptr) const override;
-    bool isAnnihilated() override;
-    virtual ~AllianceJural() = default;
-};
-
 class AllianceChinChinTei : public Alliance {
 public:
     using Alliance::Alliance;

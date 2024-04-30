@@ -18,6 +18,7 @@ hengband_SOURCES = \
 	action/weapon-shield.cpp action/weapon-shield.h \
 	\
 	alliance/alliance.cpp alliance/alliance.h \
+	alliance/alliance-jural.cpp alliance/alliance-jural.h \
 	\
 	artifact/artifact-info.cpp artifact/artifact-info.h \
 	artifact/fixed-art-generator.cpp artifact/fixed-art-generator.h \

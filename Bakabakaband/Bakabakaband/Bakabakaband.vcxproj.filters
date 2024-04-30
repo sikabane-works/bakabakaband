@@ -2476,11 +2476,12 @@
     <ClCompile Include="..\..\src\monster\monster-pain-describer.cpp">
       <Filter>monster</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\item-info\flavor-initializer.cpp">
-      <Filter>item-info</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\system\monster-race-info.cpp">
       <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\redrawing-flags-updater.cpp" />
+    <ClCompile Include="..\..\src\alliance\alliance-jural.cpp">
+      <Filter>alliance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4182,9 +4183,6 @@
     <ClInclude Include="..\..\src\load\quest-loader.h">
       <Filter>load</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\core\player-update-types.h">
-      <Filter>core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\flavor\object-flavor-types.h">
       <Filter>flavor</Filter>
     </ClInclude>
@@ -5381,11 +5379,12 @@
     <ClInclude Include="..\..\src\monster\monster-pain-describer.h">
       <Filter>monster</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\item-info\flavor-initializer.h">
-      <Filter>item-info</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\system\redrawing-flags-updater.h">
       <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\load\angband-version-comparer.h" />
+    <ClInclude Include="..\..\src\alliance\alliance-jural.h">
+      <Filter>alliance</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
