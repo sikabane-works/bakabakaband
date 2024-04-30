@@ -19455,7 +19455,7 @@ I:120:3d1:15:20:50
 W:25:8:50:0:0
 B:EXPLODE:FIRE:10d2
 F:IM_ACID | IM_COLD | IM_ELEC | IM_POIS |
-F:NEVER_MOVE | MULTIPLY |
+F:NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 D:$A mysterious red jelly thing.  It looks ready to explode.
 D:赤くてぷよぷよした謎の生物だ。
@@ -19467,7 +19467,7 @@ I:120:3d1:15:20:50
 W:25:8:50:0:0
 B:EXPLODE:COLD:10d2
 F:IM_ACID | IM_FIRE | IM_ELEC | IM_POIS |
-F:NEVER_MOVE | MULTIPLY |
+F:NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 D:$A mysterious blue jelly thing.  It looks ready to explode.
 D:青くてぷよぷよした謎の生物だ。
@@ -19479,7 +19479,7 @@ I:120:3d1:15:20:50
 W:25:8:50:0:0
 B:EXPLODE:ELEC:10d2
 F:IM_ACID | IM_FIRE | IM_COLD | IM_POIS |
-F:NEVER_MOVE | MULTIPLY |
+F:NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 D:$A mysterious yellow jelly thing.  It looks ready to explode.
 D:黄色くてぷよぷよした謎の生物だ。
@@ -19491,7 +19491,7 @@ I:120:3d1:15:20:50
 W:25:8:50:0:0
 B:EXPLODE:ACID:10d2
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS |
-F:NEVER_MOVE | MULTIPLY |
+F:NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 D:$A mysterious green jelly thing.  It looks ready to explode.
 D:緑色でぷよぷよした謎の生物だ。
@@ -22100,7 +22100,7 @@ I:120:3d1:15:20:50
 W:25:10:50:0:0
 B:EXPLODE:POISON:12d2
 F:IM_FIRE | IM_COLD | IM_ELEC | IM_ACID |
-F:NEVER_MOVE | MULTIPLY |
+F:NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 D:$A mysterious purple jelly thing.  It looks ready to explode.
 D:紫でぷよぷよした謎の生物だ。
@@ -22144,7 +22144,7 @@ G:j:B
 I:108:30d6:15:60:50
 W:30:10:50:500:1571
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK | NEVER_BLOW
-F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY |
+F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 D:$A mysterious clear jelly thing.
 D:透明でぷよぷよした謎の生物だ。
@@ -30028,7 +30028,7 @@ G:#:B
 I:107:30d20:15:120:50
 W:35:10:0:50:0:0
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK | NEVER_BLOW
-F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY |
+F:ATTR_CLEAR | NEVER_MOVE | MULTIPLY | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 F:DEAD_SPAWN_1_IN_1_1104_1d1
 D:$A mysterious clear and hard cube thing.
@@ -38117,7 +38117,7 @@ I:107:30d19:15:70:50
 W:35:10:0:50:0:0
 B:EXPLODE:HURT:1d1
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK
-F:NEVER_MOVE
+F:NEVER_MOVE | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 F:DEAD_SPAWN_1_IN_1_1104_30d1
 D:$A mysterious like stone thing. It bursts open and creates hindrance puyos.
@@ -38130,7 +38130,7 @@ I:107:35d19:15:80:50
 W:40:10:0:50:0:0
 B:EXPLODE:HURT:1d1
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK
-F:NEVER_MOVE
+F:NEVER_MOVE | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 F:DEAD_SPAWN_1_IN_1_1104_180d1
 D:$A mysterious like star thing. It bursts open and creates many hindrance puyos.
@@ -38143,7 +38143,7 @@ I:107:40d19:15:90:50
 W:45:10:0:50:0:0
 B:EXPLODE:HURT:1d1
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK
-F:NEVER_MOVE
+F:NEVER_MOVE | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 F:DEAD_SPAWN_1_IN_1_1104_360d1
 D:$A mysterious like moon thing. It bursts open and creates many hindrance puyos.
@@ -38156,7 +38156,7 @@ I:107:45d19:15:96:50
 W:50:10:0:50:0:0
 B:EXPLODE:HURT:1d1
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK
-F:NEVER_MOVE
+F:NEVER_MOVE | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 F:DEAD_SPAWN_1_IN_1_1104_720d1
 D:$A mysterious like crown thing. It bursts open and creates many hindrance puyos.
@@ -38169,7 +38169,7 @@ I:107:50d19:15:104:50
 W:55:10:0:50:0:0
 B:EXPLODE:HURT:1d1
 F:HURT_FIRE | HURT_COLD | HURT_LITE | HURT_ROCK
-F:NEVER_MOVE
+F:NEVER_MOVE | PUYO
 F:EMPTY_MIND | NO_FEAR | NO_CONF | NO_SLEEP
 F:DEAD_SPAWN_1_IN_1_1104_1440d1
 D:$A mysterious like commet thing. It bursts open and creates many hindrance puyos.
