@@ -112,7 +112,7 @@ static void record_pet_diary(PlayerType *player_ptr)
             continue;
         }
 
-        exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_MOVED, monster_desc(player_ptr, m_ptr, MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE).data());
+        exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_MOVED, monster_desc(player_ptr, m_ptr, MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE));
     }
 }
 
@@ -480,7 +480,7 @@ void jump_floor(PlayerType *player_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
     player_ptr->wild_mode = false;
     leave_quest_check(player_ptr);
     if (record_stair) {
-        exe_write_diary(player_ptr, DIARY_WIZ_TELE, 0, nullptr);
+        exe_write_diary(player_ptr, DIARY_WIZ_TELE, 0, _("直接テレポートした", "teleport floor directly."));
     }
 
     floor_ref.quest_number = QuestId::NONE;
