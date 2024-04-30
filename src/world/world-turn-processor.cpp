@@ -151,13 +151,13 @@ void WorldTurnProcessor::print_cheat_position()
 void WorldTurnProcessor::process_downward()
 {
     /* 帰還無しモード時のレベルテレポバグ対策 / Fix for level teleport bugs on ironman_downward.*/
-    if (!ironman_downward || (this->player_ptr->dungeon_idx == DUNGEON_ANGBAND) || (this->player_ptr->dungeon_idx == 0)) {
+    auto *floor_ptr = this->player_ptr->current_floor_ptr;
+    if (!ironman_downward || (floor_ptr->dungeon_idx == DUNGEON_ANGBAND) || (floor_ptr->dungeon_idx == 0)) {
         return;
     }
 
-    auto *floor_ptr = this->player_ptr->current_floor_ptr;
     floor_ptr->dun_level = 0;
-    this->player_ptr->dungeon_idx = 0;
+    floor_ptr->dungeon_idx = 0;
     move_floor(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
     floor_ptr->inside_arena = false;
     this->player_ptr->wild_mode = false;
@@ -299,7 +299,7 @@ void WorldTurnProcessor::process_world_monsters()
 void WorldTurnProcessor::decide_alloc_monster()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto should_alloc = one_in_(dungeons_info[this->player_ptr->dungeon_idx].max_m_alloc_chance);
+    auto should_alloc = one_in_(dungeons_info[floor_ptr->dungeon_idx].max_m_alloc_chance);
     should_alloc &= !floor_ptr->inside_arena;
     should_alloc &= !inside_quest(floor_ptr->quest_number);
     should_alloc &= !this->player_ptr->phase_out;

@@ -533,7 +533,7 @@ static bool select_debugging_dungeon(PlayerType *player_ptr, DUNGEON_IDX *dungeo
 
     while (true) {
         char tmp_val[160];
-        strnfmt(tmp_val, sizeof(tmp_val), "%d", player_ptr->dungeon_idx);
+        strnfmt(tmp_val, sizeof(tmp_val), "%d", player_ptr->current_floor_ptr->dungeon_idx);
         if (!get_string("Jump which dungeon : ", tmp_val, 2)) {
             return false;
         }
@@ -886,10 +886,10 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
     player_ptr->phase_out = false;
     leaving_quest = QuestId::NONE;
     floor_ptr->quest_number = QuestId::NONE;
-    if (player_ptr->dungeon_idx) {
-        player_ptr->recall_dungeon = player_ptr->dungeon_idx;
+    if (floor_ptr->dungeon_idx) {
+        player_ptr->recall_dungeon = floor_ptr->dungeon_idx;
     }
-    player_ptr->dungeon_idx = 0;
+    floor_ptr->dungeon_idx = 0;
     if (lite_town || vanilla_town) {
         player_ptr->wilderness_y = 1;
         player_ptr->wilderness_x = 1;

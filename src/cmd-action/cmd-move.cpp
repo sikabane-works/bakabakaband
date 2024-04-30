@@ -164,7 +164,7 @@ void do_cmd_go_up(PlayerType *player_ptr)
             up_num = 1;
         }
 
-        if (player_ptr->current_floor_ptr->dun_level - up_num < dungeons_info[player_ptr->dungeon_idx].mindepth) {
+        if (player_ptr->current_floor_ptr->dun_level - up_num < dungeons_info[floor_ptr->dungeon_idx].mindepth) {
             up_num = player_ptr->current_floor_ptr->dun_level;
         }
     }
@@ -278,7 +278,7 @@ void do_cmd_go_down(PlayerType *player_ptr)
 
         player_ptr->oldpx = player_ptr->x;
         player_ptr->oldpy = player_ptr->y;
-        player_ptr->dungeon_idx = target_dungeon;
+        floor_ptr->dungeon_idx = target_dungeon;
         move_floor(player_ptr, CFM_FIRST_FLOOR);
     }
 
@@ -295,7 +295,7 @@ void do_cmd_go_down(PlayerType *player_ptr)
 
     if (!floor_ptr->is_in_dungeon()) {
         player_ptr->enter_dungeon = true;
-        down_num = dungeons_info[player_ptr->dungeon_idx].mindepth;
+        down_num = dungeons_info[floor_ptr->dungeon_idx].mindepth;
     }
 
     if (record_stair) {
@@ -310,7 +310,7 @@ void do_cmd_go_down(PlayerType *player_ptr)
         msg_print(_("わざと落とし戸に落ちた。", "You deliberately jump through the trap door."));
     } else {
         if (target_dungeon) {
-            msg_format(_("%sへ入った。", "You entered %s."), dungeons_info[player_ptr->dungeon_idx].text.data());
+            msg_format(_("%sへ入った。", "You entered %s."), dungeons_info[floor_ptr->dungeon_idx].text.data());
         } else {
             if (is_echizen(player_ptr)) {
                 msg_print(_("なんだこの階段は！", "What's this STAIRWAY!"));
