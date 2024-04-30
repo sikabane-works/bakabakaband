@@ -463,6 +463,7 @@ const std::unordered_map<std::string_view, MonsterKindType> r_info_kind_flags = 
     { "HENTAI", MonsterKindType::HENTAI },
     { "ELEMENTAL", MonsterKindType::ELEMENTAL },
     { "GOLEM", MonsterKindType::GOLEM },
+    { "PUYO", MonsterKindType::PUYO },
 };
 
 const std::unordered_map<std::string_view, MonsterDropType> r_info_drop_flags = {

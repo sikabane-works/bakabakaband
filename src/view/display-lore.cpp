@@ -363,7 +363,8 @@ void display_monster_kind(lore_type *lore_ptr)
     if (lore_ptr->kind_flags.has_none_of({ MonsterKindType::DRAGON, MonsterKindType::DEMON,
             MonsterKindType::GIANT, MonsterKindType::TROLL, MonsterKindType::ORC, MonsterKindType::ANGEL,
             MonsterKindType::QUANTUM, MonsterKindType::HUMAN, MonsterKindType::ELDRAZI, MonsterKindType::QUYLTHLUG, MonsterKindType::ELF,
-            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER, MonsterKindType::TANK, MonsterKindType::ELEMENTAL, MonsterKindType::GOLEM })) {
+            MonsterKindType::DWARF, MonsterKindType::HOBBIT, MonsterKindType::SPIDER, MonsterKindType::TANK, MonsterKindType::ELEMENTAL,
+            MonsterKindType::GOLEM, MonsterKindType::PUYO})) {
         hooked_roff(_("モンスター", " creature"));
         return;
     }
@@ -434,6 +435,10 @@ void display_monster_kind(lore_type *lore_ptr)
 
     if (lore_ptr->kind_flags.has(MonsterKindType::GOLEM)) {
         hook_c_roff(TERM_ORANGE, _("ゴーレム", " golem"));
+    }
+
+    if (lore_ptr->kind_flags.has(MonsterKindType::PUYO)) {
+        hook_c_roff(TERM_WHITE, _("ぷよ", " puyo"));
     }
 }
 
