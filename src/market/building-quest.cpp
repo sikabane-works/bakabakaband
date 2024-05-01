@@ -22,11 +22,7 @@
  */
 static void get_questinfo(PlayerType *player_ptr, QuestId questnum, bool do_init)
 {
-    for (int i = 0; i < 10; i++) {
-        quest_text[i][0] = '\0';
-    }
-
-    quest_text_line = 0;
+    quest_text_lines.clear();
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
     QuestId old_quest = floor_ptr->quest_number;
@@ -58,8 +54,8 @@ void print_questinfo(PlayerType *player_ptr, QuestId questnum, bool do_init)
     prt(tmp_str, 5, 0);
     prt(q_ptr->name, 7, 0);
 
-    for (int i = 0; i < 10; i++) {
-        c_put_str(TERM_YELLOW, quest_text[i], i + 8, 0);
+    for (auto i = 0; i < std::ssize(quest_text_lines); i++) {
+        c_put_str(TERM_YELLOW, quest_text_lines[i], i + 8, 0);
     }
 }
 
