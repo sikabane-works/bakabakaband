@@ -39074,6 +39074,17 @@ D:一説には黄帝の時代から、中華を揺るがしたと言われる伝
 D:その悪徳は、多くの美徳と表裏一体であり本質的に同じものと老荘は説く。
 D:彼が今もなお富裕と栄誉を保っていることは、まるで天の道を嘲笑うかのようだ。
 
+N:2142:燃えがらの壁
+E:Cinder wall
+G:#:r
+I:120:1d1:20:0:0
+W:24:1:10:0:0
+B:EXPLODE:FIRE:15d8
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | SELF_LITE_2 |
+F:EMPTY_MIND | NEVER_MOVE | NEVER_BLOW | HURT_COLD |
+F:IM_FIRE | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
+D:触れれば脆くも崩れるが、あなたを焼き尽くすだろう。
+
 
 # N: serial number : monster name
 # G: symbol : color
