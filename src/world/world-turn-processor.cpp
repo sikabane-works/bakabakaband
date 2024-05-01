@@ -157,7 +157,7 @@ void WorldTurnProcessor::process_downward()
     }
 
     floor_ptr->dun_level = 0;
-    floor_ptr->dungeon_idx = 0;
+    floor_ptr->reset_dungeon_index();
     move_floor(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
     floor_ptr->inside_arena = false;
     this->player_ptr->wild_mode = false;
@@ -299,7 +299,7 @@ void WorldTurnProcessor::process_world_monsters()
 void WorldTurnProcessor::decide_alloc_monster()
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto should_alloc = one_in_(dungeons_info[floor_ptr->dungeon_idx].max_m_alloc_chance);
+    auto should_alloc = one_in_(floor_ptr->get_dungeon_definition().max_m_alloc_chance);
     should_alloc &= !floor_ptr->inside_arena;
     should_alloc &= !inside_quest(floor_ptr->quest_number);
     should_alloc &= !this->player_ptr->phase_out;
