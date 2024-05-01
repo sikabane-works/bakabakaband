@@ -471,7 +471,7 @@ static void curse_megaton_coin(PlayerType *player_ptr)
         do_cmd_save_game(player_ptr, true);
     }
 
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
+    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
     move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
 }
 
