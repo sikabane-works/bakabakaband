@@ -39049,6 +39049,43 @@ F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:HUMAN | ANIMAL | EVIL | FRIENDS
 D:人間の顔をした犬。日本でまれによく見かける珍獣だ。
 
+N:2141:天下の大盗賊『盗跖』
+E:DaoZhi, the Greatest bandit
+G:p:v
+I:130:48d100:80:140:15
+W:56:1:30500:0:0
+B:SLASH:HURT:10d12
+B:SLASH:HURT:10d12
+B:HIT:LOSE_STR:10d12
+F:UNIQUE | MALE | SMART | RES_TELE | HAS_LITE_2
+F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON | ROGUE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NO_CONF | NO_SLEEP | HUMAN |
+F:DROP_4D2 | DROP_1D2 | DROP_GOOD | DROP_60 | DROP_90 | ONLY_ITEM |
+F:POWERFUL |
+F:EVIL | IM_FIRE | IM_POIS | IM_ACID | IM_COLD | REGENERATE
+R:2054:10d6
+S:1_IN_4 |
+S:SCARE | CONF | TPORT | S_MONSTER | DRAIN_MANA |
+S:CAUSE_3 | BO_ACID | BO_MANA | HOLD | BA_FIRE | BA_COLD |
+S:TRAPS | TELE_AWAY | BA_NETH | BA_DARK
+S:FORGET | BO_WATE | BO_NETH | CAUSE_4 | DARKNESS | S_MONSTERS |
+S:BO_PLAS | S_KIN
+D:一説には黄帝の時代から、中華を揺るがしたと言われる伝説の大盗賊だ。
+D:その悪徳は、多くの美徳と表裏一体であり本質的に同じものと老荘は説く。
+D:彼が今もなお富裕と栄誉を保っていることは、まるで天の道を嘲笑うかのようだ。
+
+N:2142:燃えがらの壁
+E:Cinder wall
+G:#:r
+I:120:1d1:20:0:0
+W:24:1:10:0:0
+B:EXPLODE:FIRE:15d8
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | SELF_LITE_2 |
+F:EMPTY_MIND | NEVER_MOVE | NEVER_BLOW | HURT_COLD |
+F:IM_FIRE | NO_FEAR | NO_CONF | NO_SLEEP | NONLIVING
+D:触れれば脆くも崩れるが、あなたを焼き尽くすだろう。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
