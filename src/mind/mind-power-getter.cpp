@@ -15,6 +15,7 @@
 #include "player-info/equipment-info.h"
 #include "player/player-status-table.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
@@ -77,7 +78,7 @@ bool MindPowerGetter::get_mind_power(SPELL_IDX *sn, bool only_browse)
         screen_load();
     }
 
-    this->player_ptr->window_flags |= PW_SPELL;
+    RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::SPELL);
     handle_stuff(this->player_ptr);
     if (!this->flag) {
         return false;

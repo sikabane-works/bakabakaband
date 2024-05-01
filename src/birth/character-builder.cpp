@@ -38,6 +38,7 @@
 #include "store/store.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "term/gameterm.h"
 #include "term/z-form.h"
 #include "util/enum-converter.h"
@@ -124,11 +125,11 @@ void player_birth(PlayerType *player_ptr)
         player_ptr->hack_mutation = false;
     }
 
-    if (!window_flag[1]) {
-        window_flag[1] |= PW_MESSAGE;
+    if (g_window_flags[1].none()) {
+        g_window_flags[1].set(SubWindowRedrawingFlag::MESSAGE);
     }
 
-    if (!window_flag[2]) {
-        window_flag[2] |= PW_INVENTORY;
+    if (g_window_flags[2].none()) {
+        g_window_flags[2].set(SubWindowRedrawingFlag::INVENTORY);
     }
 }
