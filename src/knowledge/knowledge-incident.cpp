@@ -71,6 +71,7 @@ void do_cmd_knowledge_incident(PlayerType *player_ptr)
         fprintf(fff, _("あなたはこれまで薬を%d回服用した。\n", "You have taken the drug %d times.\n"), player_ptr->incident[INCIDENT::QUAFF]);
     }
     angband_fclose(fff);
-    (void)show_file(player_ptr, true, file_name, _("これまでの出来事", "Incidents"), 0, 0);
+
+    (void)show_file(player_ptr, true, file_name, 0, 0, _("これまでの出来事", "Incidents"));
     fd_kill(file_name);
 }

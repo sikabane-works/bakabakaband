@@ -60,6 +60,6 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr)
     }
 
     angband_fclose(fff);
-    (void)show_file(player_ptr, true, file_name, _("各アライアンス情報", "Information of all alliances"), 0, 0);
+    (void)show_file(player_ptr, true, file_name, 0, 0, _("各アライアンス情報", "Information of all alliances"));
     fd_kill(file_name);
 }
