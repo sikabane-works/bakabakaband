@@ -195,7 +195,7 @@ bool trans_sex(PlayerType *player_ptr)
     player_ptr->psex = static_cast<player_sex>(i - 'a');
 
     screen_load();
-    const auto flags = { StatusRedrawingFlag::BONUS, StatusRedrawingFlag::HP, StatusRedrawingFlag::MP, StatusRedrawingFlag::SPELLS };
+    const auto flags = { StatusRecalculatingFlag::BONUS, StatusRecalculatingFlag::HP, StatusRecalculatingFlag::MP, StatusRecalculatingFlag::SPELLS };
     RedrawingFlagsUpdater::get_instance().set_flags(flags);
     const auto flags2 = {
         MainWindowRedrawingFlag::BASIC,

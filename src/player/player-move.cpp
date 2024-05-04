@@ -222,7 +222,7 @@ bool move_player_effect(PlayerType *player_ptr, POSITION ny, POSITION nx, BIT_FL
         }
 
         if (f_ptr->flags.has(TerrainCharacteristics::SLOW) ^ of_ptr->flags.has(TerrainCharacteristics::SLOW)) {
-            rfu.set_flag(StatusRedrawingFlag::BONUS);
+            rfu.set_flag(StatusRecalculatingFlag::BONUS);
             update_creature(player_ptr);
         }
     }
