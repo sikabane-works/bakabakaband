@@ -195,8 +195,7 @@ bool trans_sex(PlayerType *player_ptr)
     player_ptr->psex = static_cast<player_sex>(i - 'a');
 
     screen_load();
-    player_ptr->window_flags |= PW_PLAYER;
-    const auto flags = { StatusRedrawingFlag::BONUS, StatusRedrawingFlag::HP, StatusRedrawingFlag::MP, StatusRedrawingFlag::SPELLS };
+    const auto flags = { StatusRecalculatingFlag::BONUS, StatusRecalculatingFlag::HP, StatusRecalculatingFlag::MP, StatusRecalculatingFlag::SPELLS };
     RedrawingFlagsUpdater::get_instance().set_flags(flags);
     const auto flags2 = {
         MainWindowRedrawingFlag::BASIC,
@@ -205,6 +204,8 @@ bool trans_sex(PlayerType *player_ptr)
         MainWindowRedrawingFlag::ABILITY_SCORE,
     };
     RedrawingFlagsUpdater::get_instance().set_flags(flags2);
+    const auto flags3 = { SubWindowRedrawingFlag::PLAYER };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags3);
 
     sp_ptr = &sex_info[player_ptr->psex];
     handle_stuff(player_ptr);

@@ -96,6 +96,7 @@
 #include "view/display-messages.h"
 #include "wizard/spoiler-table.h"
 #include "wizard/tval-descriptions-table.h"
+#include "wizard/wizard-messages.h"
 #include "wizard/wizard-spells.h"
 #include "wizard/wizard-spoiler.h"
 #include "world/world.h"
@@ -297,7 +298,7 @@ static std::optional<FixedArtifactId> wiz_select_named_artifact(PlayerType *play
         for (auto i = 0U; i < page_item_count; ++i) {
             std::stringstream ss;
             ss << I2A(i) << ") " << wiz_make_named_artifact_desc(player_ptr, a_idx_list[page_base_idx + i]);
-            put_str(ss.str().data(), i + 1, 15);
+            put_str(ss.str(), i + 1, 15);
         }
         if (page_max > 1) {
             put_str(format("-- more (%d/%d) --", current_page + 1, page_max), page_item_count + 1, 15);
@@ -361,7 +362,7 @@ void wiz_create_named_art(PlayerType *player_ptr)
         std::stringstream ss;
         ss << I2A(i) << ") " << name;
         term_erase(14, i + 1, 255);
-        put_str(ss.str().data(), i + 1, 15);
+        put_str(ss.str(), i + 1, 15);
     }
 
     std::optional<FixedArtifactId> create_a_idx;
@@ -517,7 +518,7 @@ void wiz_create_feature(PlayerType *player_ptr)
 
     note_spot(player_ptr, y, x);
     lite_spot(player_ptr, y, x);
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::FLOW);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::FLOW);
 }
 
 /*!
@@ -533,7 +534,7 @@ static bool select_debugging_dungeon(PlayerType *player_ptr, DUNGEON_IDX *dungeo
 
     while (true) {
         char tmp_val[160];
-        strnfmt(tmp_val, sizeof(tmp_val), "%d", player_ptr->dungeon_idx);
+        strnfmt(tmp_val, sizeof(tmp_val), "%d", player_ptr->current_floor_ptr->dungeon_idx);
         if (!get_string("Jump which dungeon : ", tmp_val, 2)) {
             return false;
         }
@@ -626,8 +627,7 @@ void wiz_jump_to_dungeon(PlayerType *player_ptr)
 }
 
 /*!
- * @brief 全ベースアイテムを鑑定済みにする /
- * Become aware of a lot of objects
+ * @brief 全ベースアイテムを鑑定済みにする
  * @param player_ptr プレイヤーへの参照ポインタ
  */
 void wiz_learn_items_all(PlayerType *player_ptr)
@@ -643,18 +643,18 @@ void wiz_learn_items_all(PlayerType *player_ptr)
     }
 }
 
-static void change_birth_flags(PlayerType *player_ptr)
+static void change_birth_flags()
 {
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    const auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::HP,
-        StatusRedrawingFlag::MP,
-        StatusRedrawingFlag::SPELLS,
+    static constexpr auto flags_srf = {
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::HP,
+        StatusRecalculatingFlag::MP,
+        StatusRecalculatingFlag::SPELLS,
     };
-    player_ptr->window_flags |= PW_PLAYER;
+    rfu.set_flag(SubWindowRedrawingFlag::PLAYER);
     rfu.set_flags(flags_srf);
-    const auto flags_mwrf = {
+    static constexpr auto flags_mwrf = {
         MainWindowRedrawingFlag::BASIC,
         MainWindowRedrawingFlag::HP,
         MainWindowRedrawingFlag::MP,
@@ -675,7 +675,7 @@ void wiz_reset_race(PlayerType *player_ptr)
 
     player_ptr->prace = i2enum<PlayerRaceType>(val);
     rp_ptr = &race_info[enum2i(player_ptr->prace)];
-    change_birth_flags(player_ptr);
+    change_birth_flags();
     handle_stuff(player_ptr);
 }
 
@@ -694,7 +694,7 @@ void wiz_reset_class(PlayerType *player_ptr)
     cp_ptr = &class_info[val];
     mp_ptr = &class_magics_info[val];
     PlayerClass(player_ptr).init_specific_data();
-    change_birth_flags(player_ptr);
+    change_birth_flags();
     handle_stuff(player_ptr);
 }
 
@@ -716,7 +716,7 @@ void wiz_reset_realms(PlayerType *player_ptr)
 
     player_ptr->realm1 = static_cast<int16_t>(val1);
     player_ptr->realm2 = static_cast<int16_t>(val2);
-    change_birth_flags(player_ptr);
+    change_birth_flags();
     handle_stuff(player_ptr);
 }
 
@@ -792,7 +792,7 @@ void wiz_zap_surrounding_monsters(PlayerType *player_ptr)
 
         if (record_named_pet && m_ptr->is_named_pet()) {
             const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
-            exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name.data());
+            exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name);
         }
 
         delete_monster_idx(player_ptr, i);
@@ -813,7 +813,7 @@ void wiz_zap_floor_monsters(PlayerType *player_ptr)
 
         if (record_named_pet && m_ptr->is_named_pet()) {
             const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
-            exe_write_diary(player_ptr, DIARY_NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name.data());
+            exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_WIZ_ZAP, m_name);
         }
 
         delete_monster_idx(player_ptr, i);
@@ -886,10 +886,11 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
     player_ptr->phase_out = false;
     leaving_quest = QuestId::NONE;
     floor_ptr->quest_number = QuestId::NONE;
-    if (player_ptr->dungeon_idx) {
-        player_ptr->recall_dungeon = player_ptr->dungeon_idx;
+    if (floor_ptr->dungeon_idx) {
+        player_ptr->recall_dungeon = floor_ptr->dungeon_idx;
     }
-    player_ptr->dungeon_idx = 0;
+
+    floor_ptr->reset_dungeon_index();
     if (lite_town || vanilla_town) {
         player_ptr->wilderness_y = 1;
         player_ptr->wilderness_x = 1;
@@ -910,6 +911,6 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
     player_ptr->wild_mode = false;
     player_ptr->leaving = true;
     constexpr auto note = _("                            しかし、生き返った。", "                            but revived.");
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, note);
+    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, note);
     leave_floor(player_ptr);
 }

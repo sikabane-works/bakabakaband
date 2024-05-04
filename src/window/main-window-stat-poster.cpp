@@ -89,7 +89,7 @@ void print_cut(PlayerType *player_ptr)
     }
 
     auto [color, stat] = player_cut->get_expr();
-    c_put_str(color, stat.data(), height + ROW_CUT, COL_CUT);
+    c_put_str(color, stat, height + ROW_CUT, COL_CUT);
 }
 
 /*!
@@ -107,7 +107,7 @@ void print_stun(PlayerType *player_ptr)
     }
 
     auto [color, stat] = player_stun->get_expr();
-    c_put_str(color, stat.data(), height + ROW_STUN, COL_STUN);
+    c_put_str(color, stat, height + ROW_STUN, COL_STUN);
 }
 
 /*!
@@ -505,7 +505,7 @@ void print_status(PlayerType *player_ptr)
         ADD_BAR_FLAG(BAR_SENSEUNSEEN);
     }
 
-    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<SniperData>();
     if (sniper_data && (sniper_data->concent >= CONCENT_RADAR_THRESHOLD)) {
         ADD_BAR_FLAG(BAR_SENSEUNSEEN);
         ADD_BAR_FLAG(BAR_NIGHTSIGHT);

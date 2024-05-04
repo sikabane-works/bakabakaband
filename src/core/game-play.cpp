@@ -42,7 +42,6 @@
 #include "grid/grid.h"
 #include "info-reader/fixed-map-parser.h"
 #include "io/files-util.h"
-#include "io/inet.h"
 #include "io/input-key-acceptor.h"
 #include "io/input-key-processor.h"
 #include "io/read-pref-file.h"
@@ -125,11 +124,11 @@ static void send_waiting_record(PlayerType *player_ptr)
         quit(0);
     }
 
-    const auto flags = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::HP,
-        StatusRedrawingFlag::MP,
-        StatusRedrawingFlag::SPELLS,
+    static constexpr auto flags = {
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::HP,
+        StatusRecalculatingFlag::MP,
+        StatusRecalculatingFlag::SPELLS,
     };
     RedrawingFlagsUpdater::get_instance().set_flags(flags);
     update_creature(player_ptr);
@@ -186,6 +185,7 @@ static void init_world_floor_info(PlayerType *player_ptr)
     w_ptr->character_dungeon = false;
     wc_ptr->collapse_degree = 0;
     auto *floor_ptr = player_ptr->current_floor_ptr;
+    floor_ptr->reset_dungeon_index();
     floor_ptr->dun_level = 0;
     floor_ptr->quest_number = QuestId::NONE;
     floor_ptr->inside_arena = false;
@@ -212,7 +212,7 @@ static void restore_world_floor_info(PlayerType *player_ptr)
 {
     write_level = false;
     constexpr auto mes = _("                            ----ゲーム再開----", "                            --- Restarted Game ---");
-    exe_write_diary(player_ptr, DIARY_GAMESTART, 1, mes);
+    exe_write_diary(player_ptr, DiaryKind::GAMESTART, 1, mes);
 
     if (player_ptr->riding == -1) {
         player_ptr->riding = 0;
@@ -281,7 +281,7 @@ static void generate_world(PlayerType *player_ptr, bool new_game)
     panel_row_min = floor_ptr->height;
     panel_col_min = floor_ptr->width;
 
-    set_floor_and_wall(player_ptr->dungeon_idx);
+    set_floor_and_wall(floor_ptr->dungeon_idx);
     flavor_init();
     prt(_("お待ち下さい...", "Please wait..."), 0, 0);
     term_fresh();
@@ -293,15 +293,14 @@ static void generate_world(PlayerType *player_ptr, bool new_game)
         return;
     }
 
-    char buf[80];
-    strnfmt(buf, sizeof(buf), _("%sに降り立った。", "arrived in %s."), map_name(player_ptr).data());
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, buf);
+    const auto mes = format(_("%sに降り立った。", "arrived in %s."), map_name(player_ptr).data());
+    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, mes);
 }
 
 static void init_io(PlayerType *player_ptr)
 {
     term_xtra(TERM_XTRA_REACT, 0);
-    player_ptr->window_flags = PW_ALL;
+    RedrawingFlagsUpdater::get_instance().fill_up_sub_flags();
     handle_stuff(player_ptr);
     if (arg_force_original) {
         rogue_like_commands = false;

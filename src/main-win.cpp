@@ -115,6 +115,7 @@
 #include "save/save.h"
 #include "system/angband.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "system/system-variables.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
@@ -698,8 +699,7 @@ static errr term_force_font(term_data *td)
  */
 static void term_change_font(term_data *td)
 {
-    CHOOSEFONTW cf;
-    memset(&cf, 0, sizeof(cf));
+    CHOOSEFONTW cf{};
     cf.lStructSize = sizeof(cf);
     cf.Flags = CF_SCREENFONTS | CF_FIXEDPITCHONLY | CF_NOVERTFONTS | CF_INITTOLOGFONTSTRUCT;
     cf.lpLogFont = &(td->lf);
@@ -1578,7 +1578,7 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
     }
 
     term_data *td;
-    OPENFILENAMEW ofn;
+    OPENFILENAMEW ofn{};
     switch (wCmd) {
     case IDM_FILE_NEW: {
         if (game_in_progress || movie_in_progress) {
@@ -1594,7 +1594,6 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         if (game_in_progress || movie_in_progress) {
             plog(_("プレイ中はゲームをロードすることができません！", "You can't open a new game while you're still playing!"));
         } else {
-            memset(&ofn, 0, sizeof(ofn));
             ofn.lStructSize = sizeof(ofn);
             ofn.hwndOwner = data[0].w;
             ofn.lpstrFilter = L"Save Files (*.)\0*\0";
@@ -1665,7 +1664,6 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         if (game_in_progress || movie_in_progress) {
             plog(_("プレイ中はムービーをロードすることができません！", "You can't open a movie while you're playing!"));
         } else {
-            memset(&ofn, 0, sizeof(ofn));
             ofn.lStructSize = sizeof(ofn);
             ofn.hwndOwner = data[0].w;
             ofn.lpstrFilter = L"Angband Movie Files (*.amv)\0*.amv\0";
@@ -1952,7 +1950,6 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
     }
         [[fallthrough]];
     case IDM_OPTIONS_OPEN_BG: {
-        memset(&ofn, 0, sizeof(ofn));
         ofn.lStructSize = sizeof(ofn);
         ofn.hwndOwner = data[0].w;
         ofn.lpstrFilter = L"Image Files (*.bmp;*.png;*.jpg;*.jpeg;)\0*.bmp;*.png;*.jpg;*.jpeg;\0";
@@ -2146,7 +2143,7 @@ static void fit_term_size_to_window(term_data *td, bool recalc_window_size = fal
         rebuild_term(td, recalc_window_size);
 
         if (!is_main_term(td)) {
-            p_ptr->window_flags = PW_ALL;
+            RedrawingFlagsUpdater::get_instance().fill_up_sub_flags();
             handle_stuff(p_ptr);
         }
     }
@@ -2441,7 +2438,7 @@ LRESULT PASCAL angband_window_procedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
         if (p_ptr->chp < 0) {
             p_ptr->is_dead = false;
         }
-        exe_write_diary(p_ptr, DIARY_GAMESTART, 0, _("----ゲーム中断----", "---- Save and Exit Game ----"));
+        exe_write_diary(p_ptr, DiaryKind::GAMESTART, 0, _("----ゲーム中断----", "---- Save and Exit Game ----"));
 
         p_ptr->panic_save = 1;
         signals_ignore_tstp();

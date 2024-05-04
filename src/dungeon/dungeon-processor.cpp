@@ -48,8 +48,17 @@ static void redraw_character_xtra(PlayerType *player_ptr)
 {
     w_ptr->character_xtra = true;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_SPELL | PW_PLAYER | PW_MONSTER_LORE | PW_OVERHEAD | PW_DUNGEON);
-    const auto flags_mwrf = {
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::INVENTORY,
+        SubWindowRedrawingFlag::EQUIPMENT,
+        SubWindowRedrawingFlag::SPELL,
+        SubWindowRedrawingFlag::PLAYER,
+        SubWindowRedrawingFlag::MONSTER_LORE,
+        SubWindowRedrawingFlag::OVERHEAD,
+        SubWindowRedrawingFlag::DUNGEON,
+    };
+    rfu.set_flags(flags_swrf);
+    static constexpr auto flags_mwrf = {
         MainWindowRedrawingFlag::WIPE,
         MainWindowRedrawingFlag::BASIC,
         MainWindowRedrawingFlag::EXTRA,
@@ -58,17 +67,17 @@ static void redraw_character_xtra(PlayerType *player_ptr)
     };
     rfu.set_flags(flags_mwrf);
     auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::HP,
-        StatusRedrawingFlag::MP,
-        StatusRedrawingFlag::SPELLS,
-        StatusRedrawingFlag::VIEW,
-        StatusRedrawingFlag::LITE,
-        StatusRedrawingFlag::MONSTER_LITE,
-        StatusRedrawingFlag::TORCH,
-        StatusRedrawingFlag::MONSTER_STATUSES,
-        StatusRedrawingFlag::DISTANCE,
-        StatusRedrawingFlag::FLOW,
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::HP,
+        StatusRecalculatingFlag::MP,
+        StatusRecalculatingFlag::SPELLS,
+        StatusRecalculatingFlag::VIEW,
+        StatusRecalculatingFlag::LITE,
+        StatusRecalculatingFlag::MONSTER_LITE,
+        StatusRecalculatingFlag::TORCH,
+        StatusRecalculatingFlag::MONSTER_STATUSES,
+        StatusRecalculatingFlag::DISTANCE,
+        StatusRecalculatingFlag::FLOW,
     };
     rfu.set_flags(flags_srf);
     handle_stuff(player_ptr);
@@ -91,8 +100,8 @@ static void redraw_character_xtra(PlayerType *player_ptr)
  */
 void process_dungeon(PlayerType *player_ptr, bool load_game)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->base_level = floor_ptr->dun_level;
+    auto &floor = *player_ptr->current_floor_ptr;
+    floor.base_level = floor.dun_level;
     w_ptr->is_loading_now = false;
     player_ptr->leaving = false;
 
@@ -108,7 +117,7 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
     health_track(player_ptr, 0);
 
     disturb(player_ptr, true, true);
-    auto quest_num = quest_number(player_ptr, floor_ptr->dun_level);
+    auto quest_num = quest_number(floor, floor.dun_level);
     const auto &quest_list = QuestList::get_instance();
     auto *questor_ptr = &monraces_info[quest_list[quest_num].r_idx];
     if (inside_quest(quest_num)) {
@@ -119,10 +128,10 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
         player_ptr->max_plv = player_ptr->lev;
     }
 
-    if ((max_dlv[player_ptr->dungeon_idx] < floor_ptr->dun_level) && !inside_quest(floor_ptr->quest_number)) {
-        max_dlv[player_ptr->dungeon_idx] = floor_ptr->dun_level;
+    if ((max_dlv[floor.dungeon_idx] < floor.dun_level) && !inside_quest(floor.quest_number)) {
+        max_dlv[floor.dungeon_idx] = floor.dun_level;
         if (record_maxdepth) {
-            exe_write_diary(player_ptr, DIARY_MAXDEAPTH, floor_ptr->dun_level, nullptr);
+            exe_write_diary(player_ptr, DiaryKind::MAXDEAPTH, floor.dun_level);
         }
     }
 
@@ -133,12 +142,12 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
 
     redraw_character_xtra(player_ptr);
     auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::HP,
-        StatusRedrawingFlag::MP,
-        StatusRedrawingFlag::SPELLS,
-        StatusRedrawingFlag::COMBINATION,
-        StatusRedrawingFlag::REORDER,
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::HP,
+        StatusRecalculatingFlag::MP,
+        StatusRecalculatingFlag::SPELLS,
+        StatusRecalculatingFlag::COMBINATION,
+        StatusRecalculatingFlag::REORDER,
     };
     RedrawingFlagsUpdater::get_instance().set_flags(flags_srf);
     handle_stuff(player_ptr);
@@ -168,14 +177,14 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
         return;
     }
 
-    if (!inside_quest(floor_ptr->quest_number) && (player_ptr->dungeon_idx == DUNGEON_ANGBAND)) {
-        quest_discovery(random_quest_number(player_ptr, floor_ptr->dun_level));
-        floor_ptr->quest_number = random_quest_number(player_ptr, floor_ptr->dun_level);
+    if (!inside_quest(floor.quest_number) && (floor.dungeon_idx == DUNGEON_ANGBAND)) {
+        quest_discovery(random_quest_number(floor, floor.dun_level));
+        floor.quest_number = random_quest_number(floor, floor.dun_level);
     }
 
-    const auto &dungeon = dungeons_info[player_ptr->dungeon_idx];
+    const auto &dungeon = floor.get_dungeon_definition();
     const auto guardian = dungeon.final_guardian;
-    if ((floor_ptr->dun_level == dungeon.maxdepth) && MonsterRace(guardian).is_valid()) {
+    if ((floor.dun_level == dungeon.maxdepth) && MonsterRace(guardian).is_valid()) {
         const auto &guardian_ref = monraces_info[guardian];
         if (guardian_ref.mob_num) {
 #ifdef JP
@@ -190,30 +199,30 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
         set_superstealth(player_ptr, false);
     }
 
-    floor_ptr->monster_level = floor_ptr->base_level;
-    floor_ptr->object_level = floor_ptr->base_level;
+    floor.monster_level = floor.base_level;
+    floor.object_level = floor.base_level;
     w_ptr->is_loading_now = true;
-    if (player_ptr->energy_need > 0 && !player_ptr->phase_out && (floor_ptr->dun_level || player_ptr->leaving_dungeon || floor_ptr->inside_arena)) {
+    if (player_ptr->energy_need > 0 && !player_ptr->phase_out && (floor.dun_level || player_ptr->leaving_dungeon || floor.inside_arena)) {
         player_ptr->energy_need = 0;
     }
 
     player_ptr->leaving_dungeon = false;
-    mproc_init(floor_ptr);
+    mproc_init(&floor);
 
     while (true) {
-        if ((floor_ptr->m_cnt + 32 > w_ptr->max_m_idx) && !player_ptr->phase_out) {
+        if ((floor.m_cnt + 32 > w_ptr->max_m_idx) && !player_ptr->phase_out) {
             compact_monsters(player_ptr, 64);
         }
 
-        if ((floor_ptr->m_cnt + 32 < floor_ptr->m_max) && !player_ptr->phase_out) {
+        if ((floor.m_cnt + 32 < floor.m_max) && !player_ptr->phase_out) {
             compact_monsters(player_ptr, 0);
         }
 
-        if (floor_ptr->o_cnt + 32 > w_ptr->max_o_idx) {
+        if (floor.o_cnt + 32 > w_ptr->max_o_idx) {
             compact_objects(player_ptr, 64);
         }
 
-        if (floor_ptr->o_cnt + 32 < floor_ptr->o_max) {
+        if (floor.o_cnt + 32 < floor.o_max) {
             compact_objects(player_ptr, 0);
         }
 

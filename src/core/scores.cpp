@@ -29,8 +29,6 @@
 #include "player/player-status.h"
 #include "player/race-info-table.h"
 #include "system/angband-version.h"
-#include "system/dungeon-info.h"
-#include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
@@ -41,7 +39,6 @@
 #include "view/display-messages.h"
 #include "view/display-scores.h"
 #include "world/world.h"
-#include <ctime>
 
 /*!
  * @brief 所定ポインタへスコア情報を書き込む / Write one score to the highscore file
@@ -190,96 +187,52 @@ bool send_world_score(PlayerType *player_ptr, bool do_send)
 errr top_twenty(PlayerType *player_ptr)
 {
     high_score the_score = {};
-    char buf[32];
-
-    /* Save the version */
-    sprintf(the_score.what, "%u.%u.%u", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
-
-    /* Calculate and save the points */
-    sprintf(the_score.pts, "%9ld", (long)calc_score(player_ptr));
+    snprintf(the_score.what, sizeof(the_score.what), "%u.%u.%u", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
+    snprintf(the_score.pts, sizeof(the_score.pts), "%9ld", (long)calc_score(player_ptr));
     the_score.pts[9] = '\0';
 
-    /* Save the current gold */
-    sprintf(the_score.gold, "%9lu", (long)player_ptr->au);
+    snprintf(the_score.gold, sizeof(the_score.gold), "%9lu", (long)player_ptr->au);
     the_score.gold[9] = '\0';
 
-    /* Save the current turn */
-    sprintf(the_score.turns, "%9lu", (long)turn_real(player_ptr, w_ptr->game_turn));
+    snprintf(the_score.turns, sizeof(the_score.turns), "%9lu", (long)turn_real(player_ptr, w_ptr->game_turn));
     the_score.turns[9] = '\0';
 
-    time_t ct = time((time_t *)0);
+    auto ct = time((time_t *)0);
 
-    /* Save the date in standard encoded form (9 chars) */
     strftime(the_score.day, 10, "@%Y%m%d", localtime(&ct));
-
-    /* Save the player name (15 chars) */
-    sprintf(the_score.who, "%-.15s", player_ptr->name);
-
-    /* Save the player info */
-    sprintf(the_score.uid, "%7u", player_ptr->player_uid);
-    sprintf(the_score.sex, "%c", (player_ptr->psex ? 'm' : 'f'));
-    snprintf(buf, sizeof(buf), "%2d", std::min(enum2i(player_ptr->prace), MAX_RACES));
-    memcpy(the_score.p_r, buf, 3);
-    snprintf(buf, sizeof(buf), "%2d", enum2i(std::min(player_ptr->pclass, PlayerClassType::MAX)));
-    memcpy(the_score.p_c, buf, 3);
-    snprintf(buf, sizeof(buf), "%2d", std::min(player_ptr->ppersonality, MAX_PERSONALITIES));
-    memcpy(the_score.p_a, buf, 3);
-
-    /* Save the level and such */
-    sprintf(the_score.cur_lev, "%3d", std::min<ushort>(player_ptr->lev, 999));
-    sprintf(the_score.cur_dun, "%3d", (int)player_ptr->current_floor_ptr->dun_level);
-    sprintf(the_score.max_lev, "%3d", std::min<ushort>(player_ptr->max_plv, 999));
-    sprintf(the_score.max_dun, "%3d", (int)max_dlv[player_ptr->dungeon_idx]);
-
-    /* Save the cause of death (31 chars) */
+    the_score.copy_info(*player_ptr);
     if (player_ptr->died_from.size() >= sizeof(the_score.how)) {
 #ifdef JP
-        angband_strcpy(the_score.how, player_ptr->died_from.data(), sizeof(the_score.how) - 2);
-        strcat(the_score.how, "…");
+        angband_strcpy(the_score.how, player_ptr->died_from, sizeof(the_score.how) - 2);
+        angband_strcat(the_score.how, "…", sizeof(the_score.how));
 #else
-        angband_strcpy(the_score.how, player_ptr->died_from.data(), sizeof(the_score.how) - 3);
-        strcat(the_score.how, "...");
+        angband_strcpy(the_score.how, player_ptr->died_from, sizeof(the_score.how) - 3);
+        angband_strcat(the_score.how, "...", sizeof(the_score.how));
 #endif
     } else {
-        angband_strcpy(the_score.how, player_ptr->died_from.data(), sizeof(the_score.how));
+        angband_strcpy(the_score.how, player_ptr->died_from, sizeof(the_score.how));
     }
 
-    /* Grab permissions */
-    safe_setuid_grab(player_ptr);
-
-    /* Lock (for writing) the highscore file, or fail */
-    errr err = fd_lock(highscore_fd, F_WRLCK);
-
-    /* Drop permissions */
+    safe_setuid_grab();
+    auto err = fd_lock(highscore_fd, F_WRLCK);
     safe_setuid_drop();
-
     if (err) {
         return 1;
     }
 
-    /* Add a new entry to the score list, see where it went */
-    int j = highscore_add(&the_score);
-
-    /* Grab permissions */
-    safe_setuid_grab(player_ptr);
-
-    /* Unlock the highscore file, or fail */
+    auto j = highscore_add(&the_score);
+    safe_setuid_grab();
     err = fd_lock(highscore_fd, F_UNLCK);
-
-    /* Drop permissions */
     safe_setuid_drop();
-
     if (err) {
         return 1;
     }
 
-    /* Hack -- Display the top fifteen scores */
     if (j < 10) {
         display_scores(0, 15, j, nullptr);
         return 0;
     }
 
-    /* Display the scores surrounding the player */
     display_scores(0, 5, j, nullptr);
     display_scores(j - 2, j + 7, j, nullptr);
     return 0;
@@ -293,56 +246,20 @@ errr top_twenty(PlayerType *player_ptr)
 errr predict_score(PlayerType *player_ptr)
 {
     high_score the_score;
-    char buf[32];
-
-    /* No score file */
     if (highscore_fd < 0) {
         msg_print(_("スコア・ファイルが使用できません。", "Score file unavailable."));
         msg_print(nullptr);
         return 0;
     }
 
-    /* Save the version */
-    sprintf(the_score.what, "%u.%u.%u", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
-
-    /* Calculate and save the points */
-    sprintf(the_score.pts, "%9ld", (long)calc_score(player_ptr));
-
-    /* Save the current gold */
-    sprintf(the_score.gold, "%9lu", (long)player_ptr->au);
-
-    /* Save the current turn */
-    sprintf(the_score.turns, "%9lu", (long)turn_real(player_ptr, w_ptr->game_turn));
-
-    /* Hack -- no time needed */
-    strcpy(the_score.day, _("今日", "TODAY"));
-
-    /* Save the player name (15 chars) */
-    sprintf(the_score.who, "%-.15s", player_ptr->name);
-
-    /* Save the player info */
-    sprintf(the_score.uid, "%7u", player_ptr->player_uid);
-    sprintf(the_score.sex, "%c", (player_ptr->psex ? 'm' : 'f'));
-    snprintf(buf, sizeof(buf), "%2d", std::min(enum2i(player_ptr->prace), MAX_RACES));
-    memcpy(the_score.p_r, buf, 3);
-    snprintf(buf, sizeof(buf), "%2d", enum2i(std::min(player_ptr->pclass, PlayerClassType::MAX)));
-    memcpy(the_score.p_c, buf, 3);
-    snprintf(buf, sizeof(buf), "%2d", std::min(player_ptr->ppersonality, MAX_PERSONALITIES));
-    memcpy(the_score.p_a, buf, 3);
-
-    /* Save the level and such */
-    sprintf(the_score.cur_lev, "%3d", std::min<ushort>(player_ptr->lev, 999));
-    sprintf(the_score.cur_dun, "%3d", (int)player_ptr->current_floor_ptr->dun_level);
-    sprintf(the_score.max_lev, "%3d", std::min<ushort>(player_ptr->max_plv, 999));
-    sprintf(the_score.max_dun, "%3d", (int)max_dlv[player_ptr->dungeon_idx]);
-
-    /* まだ死んでいないときの識別文字 */
+    snprintf(the_score.what, sizeof(the_score.what), "%u.%u.%u", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
+    snprintf(the_score.pts, sizeof(the_score.pts), "%9ld", (long)calc_score(player_ptr));
+    snprintf(the_score.gold, sizeof(the_score.gold), "%9lu", (long)player_ptr->au);
+    snprintf(the_score.turns, sizeof(the_score.turns), "%9lu", (long)turn_real(player_ptr, w_ptr->game_turn));
+    angband_strcpy(the_score.day, _("今日", "TODAY"), sizeof(the_score.day));
+    the_score.copy_info(*player_ptr);
     strcpy(the_score.how, _("yet", "nobody (yet!)"));
-
-    /* See where the entry would be placed */
-    int j = highscore_where(&the_score);
-
-    /* Hack -- Display the top fifteen scores */
+    auto j = highscore_where(&the_score);
     if (j < 10) {
         display_scores(0, 15, j, &the_score);
         return 0;

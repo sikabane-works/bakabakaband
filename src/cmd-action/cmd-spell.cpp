@@ -375,7 +375,7 @@ static int get_spell(PlayerType *player_ptr, SPELL_IDX *sn, concptr prompt, int 
     flag = false;
     redraw = false;
 
-    player_ptr->window_flags |= (PW_SPELL);
+    RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::SPELL);
     handle_stuff(player_ptr);
 
     /* Build a prompt (accept all spells) */
@@ -492,7 +492,7 @@ static int get_spell(PlayerType *player_ptr, SPELL_IDX *sn, concptr prompt, int 
         screen_load();
     }
 
-    player_ptr->window_flags |= (PW_SPELL);
+    RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::SPELL);
     handle_stuff(player_ptr);
 
     /* Abort if needed */
@@ -679,8 +679,6 @@ void do_cmd_browse(PlayerType *player_ptr)
 static void change_realm2(PlayerType *player_ptr, int16_t next_realm)
 {
     int i, j = 0;
-    char tmp[80];
-
     for (i = 0; i < 64; i++) {
         player_ptr->spell_order[j] = player_ptr->spell_order[i];
         if (player_ptr->spell_order[i] < 32) {
@@ -698,15 +696,15 @@ static void change_realm2(PlayerType *player_ptr, int16_t next_realm)
     player_ptr->spell_worked2 = 0L;
     player_ptr->spell_forgotten2 = 0L;
 
-    constexpr auto mes = _("魔法の領域を%sから%sに変更した。", "changed magic realm from %s to %s.");
-    strnfmt(tmp, sizeof(tmp), mes, realm_names[player_ptr->realm2], realm_names[next_realm]);
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, tmp);
+    constexpr auto fmt_realm = _("魔法の領域を%sから%sに変更した。", "changed magic realm from %s to %s.");
+    const auto mes = format(fmt_realm, realm_names[player_ptr->realm2], realm_names[next_realm]);
+    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, mes);
     player_ptr->old_realm |= 1U << (player_ptr->realm2 - 1);
     player_ptr->realm2 = next_realm;
 
-    const auto flags = {
-        StatusRedrawingFlag::REORDER,
-        StatusRedrawingFlag::SPELLS,
+    static constexpr auto flags = {
+        StatusRecalculatingFlag::REORDER,
+        StatusRecalculatingFlag::SPELLS,
     };
     RedrawingFlagsUpdater::get_instance().set_flags(flags);
     handle_stuff(player_ptr);
@@ -918,11 +916,9 @@ void do_cmd_study(PlayerType *player_ptr)
     player_ptr->learned_spells++;
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    rfu.set_flag(StatusRedrawingFlag::SPELLS);
+    rfu.set_flag(StatusRecalculatingFlag::SPELLS);
     update_creature(player_ptr);
-
-    /* Redraw object recall */
-    player_ptr->window_flags |= (PW_ITEM_KNOWLEDGTE);
+    rfu.set_flag(SubWindowRedrawingFlag::ITEM_KNOWLEDGE);
 }
 
 /*!
@@ -1185,7 +1181,7 @@ bool do_cmd_cast(PlayerType *player_ptr)
             }
 
             gain_exp(player_ptr, e * s_ptr->slevel);
-            player_ptr->window_flags |= (PW_ITEM_KNOWLEDGTE);
+            RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::ITEM_KNOWLEDGE);
 
             switch (realm) {
             case REALM_LIFE:
@@ -1366,8 +1362,10 @@ bool do_cmd_cast(PlayerType *player_ptr)
         }
     }
 
-    player_ptr->window_flags |= (PW_PLAYER);
-    player_ptr->window_flags |= (PW_SPELL);
-
+    static constexpr auto flags = {
+        SubWindowRedrawingFlag::PLAYER,
+        SubWindowRedrawingFlag::SPELL,
+    };
+    RedrawingFlagsUpdater::get_instance().set_flags(flags);
     return true; //!< @note 詠唱した
 }

@@ -40,5 +40,6 @@ enum class MonsterKindType {
     HENTAI = 36,
     ELEMENTAL = 37,
     GOLEM = 38,
+    PUYO = 39,
     MAX,
 };

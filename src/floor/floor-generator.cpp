@@ -283,7 +283,7 @@ static void generate_fixed_floor(PlayerType *player_ptr)
     floor_ptr->object_level = floor_ptr->base_level;
     floor_ptr->monster_level = floor_ptr->base_level;
     if (record_stair) {
-        exe_write_diary_quest(player_ptr, DIARY_TO_QUEST, floor_ptr->quest_number);
+        exe_write_diary_quest(player_ptr, DiaryKind::TO_QUEST, floor_ptr->quest_number);
     }
     get_mon_num_prep(player_ptr, get_monster_hook(player_ptr), nullptr);
     init_flags = INIT_CREATE_DUNGEON;
@@ -399,8 +399,8 @@ void clear_cave(PlayerType *player_ptr)
             g_ptr->m_idx = 0;
             g_ptr->special = 0;
             g_ptr->mimic = 0;
-            memset(g_ptr->costs, 0, sizeof(g_ptr->costs));
-            memset(g_ptr->costs, 0, sizeof(g_ptr->dists));
+            g_ptr->reset_costs();
+            g_ptr->reset_dists();
             g_ptr->when = 0;
         }
     }
@@ -507,7 +507,6 @@ static bool floor_is_connected(const FloorType *const floor_ptr, const IsWallFun
 void generate_floor(PlayerType *player_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->dungeon_idx = player_ptr->dungeon_idx;
     floor_ptr->allianceID = dungeons_info[floor_ptr->dungeon_idx].alliance_idx;
     set_floor_and_wall(floor_ptr->dungeon_idx);
     for (int num = 0; true; num++) {

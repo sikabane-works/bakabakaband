@@ -26,6 +26,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/redrawing-flags-updater.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 
@@ -39,19 +40,20 @@
  */
 static bool detect_feat_flag(PlayerType *player_ptr, POSITION range, TerrainCharacteristics flag, bool known)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
-    grid_type *g_ptr;
     bool detect = false;
-    for (POSITION y = 1; y < player_ptr->current_floor_ptr->height - 1; y++) {
-        for (POSITION x = 1; x <= player_ptr->current_floor_ptr->width - 1; x++) {
+    for (POSITION y = 1; y < floor.height - 1; y++) {
+        for (POSITION x = 1; x <= floor.width - 1; x++) {
             int dist = distance(player_ptr->y, player_ptr->x, y, x);
             if (dist > range) {
                 continue;
             }
-            g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+
+            auto *g_ptr = &floor.grid_array[y][x];
             if (flag == TerrainCharacteristics::TRAP) {
                 /* Mark as detected */
                 if (dist <= range && known) {
@@ -175,16 +177,17 @@ bool detect_treasure(PlayerType *player_ptr, POSITION range)
  */
 bool detect_objects_gold(PlayerType *player_ptr, POSITION range)
 {
+    auto &floor = *player_ptr->current_floor_ptr;
     POSITION range2 = range;
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range2 /= 3;
     }
 
     /* Scan objects */
     bool detect = false;
     POSITION y, x;
-    for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
-        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
+    for (OBJECT_IDX i = 1; i < floor.o_max; i++) {
+        auto *o_ptr = &floor.o_list[i];
 
         if (!o_ptr->is_valid()) {
             continue;
@@ -228,14 +231,15 @@ bool detect_objects_gold(PlayerType *player_ptr, POSITION range)
  */
 bool detect_objects_normal(PlayerType *player_ptr, POSITION range)
 {
+    auto &floor = *player_ptr->current_floor_ptr;
     POSITION range2 = range;
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range2 /= 3;
     }
 
     bool detect = false;
-    for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
-        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
+    for (OBJECT_IDX i = 1; i < floor.o_max; i++) {
+        auto *o_ptr = &floor.o_list[i];
 
         if (!o_ptr->is_valid()) {
             continue;
@@ -262,7 +266,7 @@ bool detect_objects_normal(PlayerType *player_ptr, POSITION range)
         detect = false;
     }
     if (detect) {
-        player_ptr->window_flags |= PW_FOUND_ITEMS;
+        RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::FOUND_ITEMS);
         msg_print(_("アイテムの存在を感じとった！", "You sense the presence of objects!"));
     }
 
@@ -298,13 +302,14 @@ static bool is_object_magically(const ItemKindType tval)
  */
 bool detect_objects_magic(PlayerType *player_ptr, POSITION range)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
     auto detect = false;
-    for (OBJECT_IDX i = 1; i < player_ptr->current_floor_ptr->o_max; i++) {
-        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i];
+    for (OBJECT_IDX i = 1; i < floor.o_max; i++) {
+        auto *o_ptr = &floor.o_list[i];
         if (!o_ptr->is_valid() || o_ptr->is_held_by_monster()) {
             continue;
         }
@@ -325,7 +330,7 @@ bool detect_objects_magic(PlayerType *player_ptr, POSITION range)
     }
 
     if (detect) {
-        player_ptr->window_flags |= PW_FOUND_ITEMS;
+        RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::FOUND_ITEMS);
         msg_print(_("魔法のアイテムの存在を感じとった！", "You sense the presence of magic objects!"));
     }
 
@@ -340,13 +345,14 @@ bool detect_objects_magic(PlayerType *player_ptr, POSITION range)
  */
 bool detect_monsters_normal(PlayerType *player_ptr, POSITION range)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
     bool flag = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+    for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
+        auto *m_ptr = &floor.m_list[i];
         auto *r_ptr = &monraces_info[m_ptr->r_idx];
         if (!m_ptr->is_valid()) {
             continue;
@@ -383,13 +389,15 @@ bool detect_monsters_normal(PlayerType *player_ptr, POSITION range)
  */
 bool detect_monsters_invis(PlayerType *player_ptr, POSITION range)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
-    bool flag = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    auto flag = false;
+    for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
+        auto *m_ptr = &floor.m_list[i];
         auto *r_ptr = &monraces_info[m_ptr->r_idx];
 
         if (!m_ptr->is_valid()) {
@@ -405,7 +413,7 @@ bool detect_monsters_invis(PlayerType *player_ptr, POSITION range)
 
         if (r_ptr->flags2 & RF2_INVISIBLE) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER_LORE);
+                rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
@@ -432,13 +440,15 @@ bool detect_monsters_invis(PlayerType *player_ptr, POSITION range)
  */
 bool detect_monsters_evil(PlayerType *player_ptr, POSITION range)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
-    bool flag = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    auto flag = false;
+    for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
+        auto *m_ptr = &floor.m_list[i];
         auto *r_ptr = &monraces_info[m_ptr->r_idx];
         if (!m_ptr->is_valid()) {
             continue;
@@ -455,7 +465,7 @@ bool detect_monsters_evil(PlayerType *player_ptr, POSITION range)
             if (m_ptr->is_original_ap()) {
                 r_ptr->r_kind_flags.set(MonsterKindType::EVIL);
                 if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                    player_ptr->window_flags |= (PW_MONSTER_LORE);
+                    rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
                 }
             }
 
@@ -480,13 +490,15 @@ bool detect_monsters_evil(PlayerType *player_ptr, POSITION range)
  */
 bool detect_monsters_nonliving(PlayerType *player_ptr, POSITION range)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
-    bool flag = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    auto flag = false;
+    for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
+        auto *m_ptr = &floor.m_list[i];
         if (!m_ptr->is_valid()) {
             continue;
         }
@@ -499,7 +511,7 @@ bool detect_monsters_nonliving(PlayerType *player_ptr, POSITION range)
 
         if (!m_ptr->has_living_flag()) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER_LORE);
+                rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
@@ -523,13 +535,15 @@ bool detect_monsters_nonliving(PlayerType *player_ptr, POSITION range)
  */
 bool detect_monsters_mind(PlayerType *player_ptr, POSITION range)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
-    bool flag = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    auto flag = false;
+    for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
+        auto *m_ptr = &floor.m_list[i];
         auto *r_ptr = &monraces_info[m_ptr->r_idx];
         if (!m_ptr->is_valid()) {
             continue;
@@ -544,7 +558,7 @@ bool detect_monsters_mind(PlayerType *player_ptr, POSITION range)
 
         if (!(r_ptr->flags2 & RF2_EMPTY_MIND)) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER_LORE);
+                rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
@@ -569,13 +583,15 @@ bool detect_monsters_mind(PlayerType *player_ptr, POSITION range)
  */
 bool detect_monsters_string(PlayerType *player_ptr, POSITION range, concptr Match)
 {
-    if (dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         range /= 3;
     }
 
-    bool flag = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
+    auto &rfu = RedrawingFlagsUpdater::get_instance();
+    auto flag = false;
+    for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
+        auto *m_ptr = &floor.m_list[i];
         auto *r_ptr = &monraces_info[m_ptr->r_idx];
         if (!m_ptr->is_valid()) {
             continue;
@@ -590,7 +606,7 @@ bool detect_monsters_string(PlayerType *player_ptr, POSITION range, concptr Matc
 
         if (angband_strchr(Match, r_ptr->d_char)) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
-                player_ptr->window_flags |= (PW_MONSTER_LORE);
+                rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
             }
 
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });

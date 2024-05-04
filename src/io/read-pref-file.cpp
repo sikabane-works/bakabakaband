@@ -276,25 +276,17 @@ void close_auto_dump(FILE **fpp, std::string_view mark)
  */
 void load_all_pref_files(PlayerType *player_ptr)
 {
-    char buf[1024];
-    sprintf(buf, "user.prf");
-    process_pref_file(player_ptr, buf);
-    sprintf(buf, "user-%s.prf", ANGBAND_SYS);
-    process_pref_file(player_ptr, buf);
-    sprintf(buf, "%s.prf", rp_ptr->title);
-    process_pref_file(player_ptr, buf);
-    sprintf(buf, "%s.prf", cp_ptr->title);
-    process_pref_file(player_ptr, buf);
-    sprintf(buf, "%s.prf", player_ptr->base_name);
-    process_pref_file(player_ptr, buf);
+    process_pref_file(player_ptr, "user.prf");
+    process_pref_file(player_ptr, std::string("user-").append(ANGBAND_SYS).append(".prf"));
+    process_pref_file(player_ptr, std::string(rp_ptr->title).append(".prf"));
+    process_pref_file(player_ptr, std::string(cp_ptr->title).append(".prf"));
+    process_pref_file(player_ptr, std::string(player_ptr->base_name).append(".prf"));
     if (player_ptr->realm1 != REALM_NONE) {
-        sprintf(buf, "%s.prf", realm_names[player_ptr->realm1]);
-        process_pref_file(player_ptr, buf);
+        process_pref_file(player_ptr, std::string(realm_names[player_ptr->realm1]).append(".prf"));
     }
 
     if (player_ptr->realm2 != REALM_NONE) {
-        sprintf(buf, "%s.prf", realm_names[player_ptr->realm2]);
-        process_pref_file(player_ptr, buf);
+        process_pref_file(player_ptr, std::string(realm_names[player_ptr->realm2]).append(".prf"));
     }
 
     autopick_load_pref(player_ptr, false);
@@ -356,7 +348,7 @@ bool read_histpref(PlayerType *player_ptr)
     const auto history_lines = shape_buffer(s, max_line_len);
     const auto max_lines = std::min<int>(4, history_lines.size());
     for (auto l = 0; l < max_lines; ++l) {
-        angband_strcpy(player_ptr->history[l], history_lines[l].data(), max_line_len);
+        angband_strcpy(player_ptr->history[l], history_lines[l], max_line_len);
     }
 
     for (i = 0; i < 4; i++) {

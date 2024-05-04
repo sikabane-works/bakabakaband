@@ -48,6 +48,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <optional>
+#include <sstream>
 #include <string>
 
 /*
@@ -155,8 +156,9 @@ bool MonsterDamageProcessor::process_dead_exp_virtue(std::string_view note, Mons
     AvatarChanger ac(player_ptr, m_ptr);
     ac.change_virtue();
     if (r_ref.kind_flags.has(MonsterKindType::UNIQUE) && record_destroy_uniq) {
-        const auto clone_name = std::string(r_ref.name).append(m_ptr->mflag2.has(MonsterConstantFlagType::CLONED) ? _("(クローン)", "(Clone)") : "");
-        exe_write_diary(this->player_ptr, DIARY_UNIQUE, 0, clone_name.data());
+        std::stringstream ss;
+        ss << r_ref.name << (m_ptr->mflag2.has(MonsterConstantFlagType::CLONED) ? _("(クローン)", "(Clone)") : "");
+        exe_write_diary(this->player_ptr, DiaryKind::UNIQUE, 0, ss.str());
     }
 
     sound(SOUND_KILL);

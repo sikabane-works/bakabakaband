@@ -47,7 +47,7 @@ void print_title(PlayerType *player_ptr)
             p = _("***勝利者***", "***WINNER***");
         }
     } else {
-        angband_strcpy(str, player_titles[enum2i(player_ptr->pclass)][(player_ptr->lev - 1) / 5].data(), sizeof(str));
+        angband_strcpy(str, player_titles[enum2i(player_ptr->pclass)][(player_ptr->lev - 1) / 5], sizeof(str));
         p = str;
     }
 
@@ -205,9 +205,8 @@ void print_depth(PlayerType *player_ptr)
         return;
     }
 
-    if (inside_quest(floor_ptr->quest_number) && !player_ptr->dungeon_idx) {
-        strcpy(depths, _("地上", "Quest"));
-        c_prt(attr, format("%7s", depths), row_depth, col_depth);
+    if (inside_quest(floor_ptr->quest_number) && !floor_ptr->dungeon_idx) {
+        c_prt(attr, format("%7s", _("地上", "Quest")), row_depth, col_depth);
         return;
     }
 

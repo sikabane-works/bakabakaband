@@ -257,12 +257,12 @@ void complete_quest(PlayerType *player_ptr, QuestId quest_num)
     switch (q_ptr->type) {
     case QuestKindType::RANDOM:
         if (record_rand_quest) {
-            exe_write_diary_quest(player_ptr, DIARY_RAND_QUEST_C, quest_num);
+            exe_write_diary_quest(player_ptr, DiaryKind::RAND_QUEST_C, quest_num);
         }
         break;
     default:
         if (record_fix_quest) {
-            exe_write_diary_quest(player_ptr, DIARY_FIX_QUEST_C, quest_num);
+            exe_write_diary_quest(player_ptr, DiaryKind::FIX_QUEST_C, quest_num);
         }
         break;
     }
@@ -349,12 +349,11 @@ void quest_discovery(QuestId q_idx)
  * @param level 検索対象になる階
  * @return クエストIDを返す。該当がない場合0を返す。
  */
-QuestId quest_number(PlayerType *player_ptr, DEPTH level)
+QuestId quest_number(const FloorType &floor, DEPTH level)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
     const auto &quest_list = QuestList::get_instance();
-    if (inside_quest(floor_ptr->quest_number)) {
-        return floor_ptr->quest_number;
+    if (inside_quest(floor.quest_number)) {
+        return floor.quest_number;
     }
 
     for (const auto &[q_idx, quest] : quest_list) {
@@ -365,13 +364,13 @@ QuestId quest_number(PlayerType *player_ptr, DEPTH level)
         auto depth_quest = (quest.type == QuestKindType::KILL_LEVEL);
         depth_quest &= !(quest.flags & QUEST_FLAG_PRESET);
         depth_quest &= (quest.level == level);
-        depth_quest &= (quest.dungeon == player_ptr->dungeon_idx);
+        depth_quest &= (quest.dungeon == floor.dungeon_idx);
         if (depth_quest) {
             return q_idx;
         }
     }
 
-    return random_quest_number(player_ptr, level);
+    return random_quest_number(floor, level);
 }
 
 /*!
@@ -380,9 +379,9 @@ QuestId quest_number(PlayerType *player_ptr, DEPTH level)
  * @param level 検索対象になる階
  * @return クエストIDを返す。該当がない場合0を返す。
  */
-QuestId random_quest_number(PlayerType *player_ptr, DEPTH level)
+QuestId random_quest_number(const FloorType &floor, DEPTH level)
 {
-    if (player_ptr->dungeon_idx != DUNGEON_ANGBAND) {
+    if (floor.dungeon_idx != DUNGEON_ANGBAND) {
         return QuestId::NONE;
     }
 
@@ -441,13 +440,13 @@ void leave_quest_check(PlayerType *player_ptr)
     /* Record finishing a quest */
     if (q_ptr->type == QuestKindType::RANDOM) {
         if (record_rand_quest) {
-            exe_write_diary_quest(player_ptr, DIARY_RAND_QUEST_F, leaving_quest);
+            exe_write_diary_quest(player_ptr, DiaryKind::RAND_QUEST_F, leaving_quest);
         }
         return;
     }
 
     if (record_fix_quest) {
-        exe_write_diary_quest(player_ptr, DIARY_FIX_QUEST_F, leaving_quest);
+        exe_write_diary_quest(player_ptr, DiaryKind::FIX_QUEST_F, leaving_quest);
     }
 }
 

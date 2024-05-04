@@ -218,10 +218,11 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
     auto *f_ptr = &terrains_info[feat];
+    const auto &dungeon = floor_ptr->get_dungeon_definition();
     if (!w_ptr->character_dungeon) {
         g_ptr->mimic = 0;
         g_ptr->feat = feat;
-        if (f_ptr->flags.has(TerrainCharacteristics::GLOW) && dungeons_info[floor_ptr->dungeon_idx].flags.has_not(DungeonFeatureType::DARKNESS)) {
+        if (f_ptr->flags.has(TerrainCharacteristics::GLOW) && dungeon.flags.has_not(DungeonFeatureType::DARKNESS)) {
             for (DIRECTION i = 0; i < 9; i++) {
                 POSITION yy = y + ddy_ddd[i];
                 POSITION xx = x + ddx_ddd[i];
@@ -242,7 +243,7 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
     g_ptr->mimic = 0;
     g_ptr->feat = feat;
     g_ptr->info &= ~(CAVE_OBJECT);
-    if (old_mirror && dungeons_info[floor_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    if (old_mirror && dungeon.flags.has(DungeonFeatureType::DARKNESS)) {
         g_ptr->info &= ~(CAVE_GLOW);
         if (!view_torch_grids) {
             g_ptr->info &= ~(CAVE_MARK);
@@ -262,16 +263,16 @@ void cave_set_feat(PlayerType *player_ptr, POSITION y, POSITION x, FEAT_IDX feat
     note_spot(player_ptr, y, x);
     lite_spot(player_ptr, y, x);
     if (old_los ^ f_ptr->flags.has(TerrainCharacteristics::LOS)) {
-        const auto flags = {
-            StatusRedrawingFlag::VIEW,
-            StatusRedrawingFlag::LITE,
-            StatusRedrawingFlag::MONSTER_LITE,
-            StatusRedrawingFlag::MONSTER_STATUSES,
+        static constexpr auto flags = {
+            StatusRecalculatingFlag::VIEW,
+            StatusRecalculatingFlag::LITE,
+            StatusRecalculatingFlag::MONSTER_LITE,
+            StatusRecalculatingFlag::MONSTER_STATUSES,
         };
         RedrawingFlagsUpdater::get_instance().set_flags(flags);
     }
 
-    if (f_ptr->flags.has_not(TerrainCharacteristics::GLOW) || dungeons_info[player_ptr->dungeon_idx].flags.has(DungeonFeatureType::DARKNESS)) {
+    if (f_ptr->flags.has_not(TerrainCharacteristics::GLOW) || dungeon.flags.has(DungeonFeatureType::DARKNESS)) {
         return;
     }
 
@@ -308,6 +309,7 @@ FEAT_IDX conv_dungeon_feat(FloorType *floor_ptr, FEAT_IDX newfeat)
         return newfeat;
     }
 
+    const auto &dungeon = floor_ptr->get_dungeon_definition();
     switch (f_ptr->subtype) {
     case CONVERT_TYPE_FLOOR:
         return rand_choice(feat_ground_type);
@@ -320,9 +322,9 @@ FEAT_IDX conv_dungeon_feat(FloorType *floor_ptr, FEAT_IDX newfeat)
     case CONVERT_TYPE_SOLID:
         return feat_wall_solid;
     case CONVERT_TYPE_STREAM1:
-        return dungeons_info[floor_ptr->dungeon_idx].stream1;
+        return dungeon.stream1;
     case CONVERT_TYPE_STREAM2:
-        return dungeons_info[floor_ptr->dungeon_idx].stream2;
+        return dungeon.stream2;
     default:
         return newfeat;
     }

@@ -1,33 +1,37 @@
 ﻿#pragma once
 
-#include "system/angband.h"
-#include <stdint.h>
+#include <string_view>
+#ifdef JP
+#else
+#include <string>
+#endif
 
-#define DIARY_DIALY 0
-#define DIARY_DESCRIPTION 1
-#define DIARY_ART 2
-#define DIARY_UNIQUE 3
-#define DIARY_FIX_QUEST_C 4
-#define DIARY_FIX_QUEST_F 5
-#define DIARY_RAND_QUEST_C 6
-#define DIARY_RAND_QUEST_F 7
-#define DIARY_MAXDEAPTH 8
-#define DIARY_TRUMP 9
-#define DIARY_STAIR 10
-#define DIARY_RECALL 11
-#define DIARY_TO_QUEST 12
-#define DIARY_TELEPORT_LEVEL 13
-#define DIARY_BUY 14
-#define DIARY_SELL 15
-#define DIARY_ARENA 16
-#define DIARY_FOUND 17
-#define DIARY_LEVELUP 18
-#define DIARY_GAMESTART 19
-#define DIARY_WIZ_TELE 20
-#define DIARY_NAMED_PET 21
-#define DIARY_PAT_TELE 22
-#define DIARY_ART_SCROLL 23
-#define DIARY_WIZARD_LOG 24
+enum class DiaryKind {
+    DIALY,
+    DESCRIPTION,
+    ART,
+    UNIQUE,
+    FIX_QUEST_C,
+    FIX_QUEST_F,
+    RAND_QUEST_C,
+    RAND_QUEST_F,
+    MAXDEAPTH,
+    TRUMP,
+    STAIR,
+    RECALL,
+    TO_QUEST,
+    TELEPORT_LEVEL,
+    BUY,
+    SELL,
+    ARENA,
+    FOUND,
+    LEVELUP,
+    GAMESTART,
+    NAMED_PET,
+    PAT_TELE,
+    ART_SCROLL,
+    WIZARD_LOG,
+};
 
 #define RECORD_NAMED_PET_NAME 0
 #define RECORD_NAMED_PET_UNNAME 1
@@ -48,10 +52,10 @@
 extern bool write_level;
 
 class PlayerType;
-enum class QuestId : int16_t;
+enum class QuestId : short;
 #ifdef JP
 #else
-concptr get_ordinal_number_suffix(int num);
+std::string get_ordinal_number_suffix(int num);
 #endif
-int exe_write_diary_quest(PlayerType *player_ptr, int type, QuestId num);
-errr exe_write_diary(PlayerType *player_ptr, int type, int num, concptr note);
+int exe_write_diary_quest(PlayerType *player_ptr, DiaryKind dk, QuestId num);
+void exe_write_diary(PlayerType *player_ptr, DiaryKind dk, int num, std::string_view note = "");

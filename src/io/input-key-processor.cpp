@@ -119,8 +119,8 @@ bool enter_wizard_mode(PlayerType *player_ptr)
             return false;
         }
 
-        exe_write_diary(
-            player_ptr, DIARY_DESCRIPTION, 0, _("ウィザードモードに突入してスコアを残せなくなった。", "gave up recording score to enter wizard mode."));
+        constexpr auto mes = _("ウィザードモードに突入してスコアを残せなくなった。", "gave up recording score to enter wizard mode.");
+        exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, mes);
         w_ptr->noscore |= 0x0002;
     }
 
@@ -148,8 +148,8 @@ static bool enter_debug_mode(PlayerType *player_ptr)
             return false;
         }
 
-        exe_write_diary(
-            player_ptr, DIARY_DESCRIPTION, 0, _("デバッグモードに突入してスコアを残せなくなった。", "gave up sending score to use debug commands."));
+        constexpr auto mes = _("デバッグモードに突入してスコアを残せなくなった。", "gave up sending score to use debug commands.");
+        exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, mes);
         w_ptr->noscore |= 0x0008;
     }
 
@@ -166,7 +166,7 @@ void process_command(PlayerType *player_ptr)
     COMMAND_CODE old_now_message = now_message;
     repeat_check();
     now_message = 0;
-    auto sniper_data = PlayerClass(player_ptr).get_specific_data<sniper_data_type>();
+    auto sniper_data = PlayerClass(player_ptr).get_specific_data<SniperData>();
     if (sniper_data && sniper_data->concent > 0) {
         sniper_data->reset_concent = true;
     }
@@ -190,7 +190,7 @@ void process_command(PlayerType *player_ptr)
         }
 
         auto &rfu = RedrawingFlagsUpdater::get_instance();
-        rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+        rfu.set_flag(StatusRecalculatingFlag::MONSTER_STATUSES);
         rfu.set_flag(MainWindowRedrawingFlag::TITLE);
         break;
     }
@@ -240,7 +240,7 @@ void process_command(PlayerType *player_ptr)
     }
 
     case KTRL('I'): {
-        toggle_inventory_equipment(player_ptr);
+        toggle_inventory_equipment();
         break;
     }
     case '+': {
@@ -404,7 +404,7 @@ void process_command(PlayerType *player_ptr)
             break;
         }
 
-        const auto &dungeon = dungeons_info[player_ptr->dungeon_idx];
+        const auto &dungeon = floor_ptr->get_dungeon_definition();
         auto non_magic_class = pc.equals(PlayerClassType::BERSERKER);
         non_magic_class |= pc.equals(PlayerClassType::SMITH);
         if (floor_ptr->dun_level && dungeon.flags.has(DungeonFeatureType::NO_MAGIC) && !non_magic_class) {

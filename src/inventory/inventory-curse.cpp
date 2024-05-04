@@ -288,7 +288,7 @@ static void multiply_low_curse(PlayerType *player_ptr)
     o_ptr->curse_flags.set(new_curse);
     msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding your %s..."), item_name.data());
     o_ptr->feeling = FEEL_NONE;
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
 }
 
 static void multiply_high_curse(PlayerType *player_ptr)
@@ -308,7 +308,7 @@ static void multiply_high_curse(PlayerType *player_ptr)
     o_ptr->curse_flags.set(new_curse);
     msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding your %s..."), item_name.data());
     o_ptr->feeling = FEEL_NONE;
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
 }
 
 static void persist_curse(PlayerType *player_ptr)
@@ -327,7 +327,7 @@ static void persist_curse(PlayerType *player_ptr)
     o_ptr->curse_flags.set(CurseTraitType::HEAVY_CURSE);
     msg_format(_("悪意に満ちた黒いオーラが%sをとりまいた...", "There is a malignant black aura surrounding your %s..."), item_name.data());
     o_ptr->feeling = FEEL_NONE;
-    RedrawingFlagsUpdater::get_instance().set_flag(StatusRedrawingFlag::BONUS);
+    RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
 }
 
 static void curse_call_monster(PlayerType *player_ptr)
@@ -430,7 +430,7 @@ static void curse_drain_hp(PlayerType *player_ptr)
     const auto *item_ptr = choose_cursed_obj_name(player_ptr, CurseTraitType::DRAIN_HP);
     const auto item_name = describe_flavor(player_ptr, item_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
     msg_format(_("%sはあなたの体力を吸収した！", "Your %s drains HP from you!"), item_name.data());
-    take_hit(player_ptr, DAMAGE_LOSELIFE, std::min(player_ptr->lev * 2, 100), item_name.data());
+    take_hit(player_ptr, DAMAGE_LOSELIFE, std::min(player_ptr->lev * 2, 100), item_name);
 }
 
 static void curse_drain_mp(PlayerType *player_ptr)
@@ -471,7 +471,7 @@ static void curse_megaton_coin(PlayerType *player_ptr)
         do_cmd_save_game(player_ptr, true);
     }
 
-    exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
+    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
     move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
 }
 

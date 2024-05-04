@@ -159,9 +159,9 @@ void tgt_pt_info::move_to_symbol(PlayerType *player_ptr)
         this->x = player_ptr->x;
         verify_panel(player_ptr);
         auto &rfu = RedrawingFlagsUpdater::get_instance();
-        rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+        rfu.set_flag(StatusRecalculatingFlag::MONSTER_STATUSES);
         rfu.set_flag(MainWindowRedrawingFlag::MAP);
-        player_ptr->window_flags |= PW_OVERHEAD;
+        rfu.set_flag(SubWindowRedrawingFlag::OVERHEAD);
         handle_stuff(player_ptr);
     } else {
         this->y = this->ys[this->n];
@@ -303,9 +303,9 @@ bool tgt_pt(PlayerType *player_ptr, POSITION *x_ptr, POSITION *y_ptr)
     prt("", 0, 0);
     verify_panel(player_ptr);
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    rfu.set_flag(StatusRedrawingFlag::MONSTER_STATUSES);
+    rfu.set_flag(StatusRecalculatingFlag::MONSTER_STATUSES);
     rfu.set_flag(MainWindowRedrawingFlag::MAP);
-    player_ptr->window_flags |= PW_OVERHEAD;
+    rfu.set_flag(SubWindowRedrawingFlag::OVERHEAD);
     handle_stuff(player_ptr);
     *x_ptr = info.x;
     *y_ptr = info.y;

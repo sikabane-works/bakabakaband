@@ -84,7 +84,7 @@ void display_wizard_sub_menu()
     for (const auto &[symbol, desc] : wizard_sub_menu_table) {
         std::stringstream ss;
         ss << symbol << ") " << desc;
-        put_str(ss.str().data(), r++, c);
+        put_str(ss.str(), r++, c);
     }
 }
 }
@@ -233,12 +233,16 @@ void wiz_identify_full_inventory(PlayerType *player_ptr)
     }
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    const auto flags_srf = {
-        StatusRedrawingFlag::COMBINATION,
-        StatusRedrawingFlag::REORDER,
+    static constexpr auto flags_srf = {
+        StatusRecalculatingFlag::COMBINATION,
+        StatusRecalculatingFlag::REORDER,
     };
     rfu.set_flags(flags_srf);
-    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT);
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::INVENTORY,
+        SubWindowRedrawingFlag::EQUIPMENT,
+    };
+    rfu.set_flags(flags_swrf);
 }
 
 /*!
@@ -582,13 +586,21 @@ static void wiz_reroll_item(PlayerType *player_ptr, ItemEntity *o_ptr)
 
     o_ptr->copy_from(q_ptr);
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    const auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::COMBINATION,
-        StatusRedrawingFlag::REORDER,
+    static constexpr auto flags_srf = {
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::COMBINATION,
+        StatusRecalculatingFlag::REORDER,
     };
     rfu.set_flags(flags_srf);
-    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_SPELL | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::INVENTORY,
+        SubWindowRedrawingFlag::EQUIPMENT,
+        SubWindowRedrawingFlag::SPELL,
+        SubWindowRedrawingFlag::PLAYER,
+        SubWindowRedrawingFlag::FLOOR_ITEMS,
+        SubWindowRedrawingFlag::FOUND_ITEMS,
+    };
+    rfu.set_flags(flags_swrf);
 }
 
 /*!
@@ -732,13 +744,21 @@ void wiz_modify_item(PlayerType *player_ptr)
 
         o_ptr->copy_from(q_ptr);
         auto &rfu = RedrawingFlagsUpdater::get_instance();
-        const auto flags_srf = {
-            StatusRedrawingFlag::BONUS,
-            StatusRedrawingFlag::COMBINATION,
-            StatusRedrawingFlag::REORDER,
+        static constexpr auto flags_srf = {
+            StatusRecalculatingFlag::BONUS,
+            StatusRecalculatingFlag::COMBINATION,
+            StatusRecalculatingFlag::REORDER,
         };
         rfu.set_flags(flags_srf);
-        set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_SPELL | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
+        static constexpr auto flags_swrf = {
+            SubWindowRedrawingFlag::INVENTORY,
+            SubWindowRedrawingFlag::EQUIPMENT,
+            SubWindowRedrawingFlag::SPELL,
+            SubWindowRedrawingFlag::PLAYER,
+            SubWindowRedrawingFlag::FLOOR_ITEMS,
+            SubWindowRedrawingFlag::FOUND_ITEMS,
+        };
+        rfu.set_flags(flags_swrf);
     } else {
         msg_print("Changes ignored.");
     }

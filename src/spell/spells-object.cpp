@@ -248,12 +248,17 @@ bool curse_armor(PlayerType *player_ptr)
     o_ptr->curse_flags.set(CurseTraitType::CURSED);
     o_ptr->ident |= IDENT_BROKEN;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    const auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::MP,
+    static constexpr auto flags_srf = {
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::MP,
     };
     rfu.set_flags(flags_srf);
-    player_ptr->window_flags |= PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER;
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::INVENTORY,
+        SubWindowRedrawingFlag::EQUIPMENT,
+        SubWindowRedrawingFlag::PLAYER,
+    };
+    rfu.set_flags(flags_swrf);
     return true;
 }
 
@@ -299,12 +304,17 @@ bool curse_weapon_object(PlayerType *player_ptr, bool force, ItemEntity *o_ptr)
     o_ptr->curse_flags.set(CurseTraitType::CURSED);
     o_ptr->ident |= IDENT_BROKEN;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    const auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::MP,
+    static constexpr auto flags_srf = {
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::MP,
     };
     rfu.set_flags(flags_srf);
-    player_ptr->window_flags |= PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER;
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::INVENTORY,
+        SubWindowRedrawingFlag::EQUIPMENT,
+        SubWindowRedrawingFlag::PLAYER,
+    };
+    rfu.set_flags(flags_swrf);
     return true;
 }
 
@@ -335,7 +345,7 @@ void brand_bolts(PlayerType *player_ptr)
 
         msg_print(_("クロスボウの矢が炎のオーラに包まれた！", "Your bolts are covered in a fiery aura!"));
         o_ptr->ego_idx = EgoType::FLAME;
-        enchant_equipment(player_ptr, o_ptr, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
+        enchant_equipment(o_ptr, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
         return;
     }
 
@@ -367,13 +377,12 @@ static void break_curse(ItemEntity *o_ptr)
 
 /*!
  * @brief 装備修正強化処理
- * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr 強化するアイテムの参照ポインタ
  * @param n 強化基本量
  * @param eflag 強化オプション(命中/ダメージ/AC)
  * @return 強化に成功した場合TRUEを返す
  */
-bool enchant_equipment(PlayerType *player_ptr, ItemEntity *o_ptr, int n, int eflag)
+bool enchant_equipment(ItemEntity *o_ptr, int n, int eflag)
 {
     auto prob = o_ptr->number * 100;
     if (o_ptr->is_ammo()) {
@@ -451,13 +460,20 @@ bool enchant_equipment(PlayerType *player_ptr, ItemEntity *o_ptr, int n, int efl
     }
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    const auto flags_srf = {
-        StatusRedrawingFlag::BONUS,
-        StatusRedrawingFlag::COMBINATION,
-        StatusRedrawingFlag::REORDER,
+    static constexpr auto flags_srf = {
+        StatusRecalculatingFlag::BONUS,
+        StatusRecalculatingFlag::COMBINATION,
+        StatusRecalculatingFlag::REORDER,
     };
     rfu.set_flags(flags_srf);
-    set_bits(player_ptr->window_flags, PW_INVENTORY | PW_EQUIPMENT | PW_PLAYER | PW_FLOOR_ITEMS | PW_FOUND_ITEMS);
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::INVENTORY,
+        SubWindowRedrawingFlag::EQUIPMENT,
+        SubWindowRedrawingFlag::PLAYER,
+        SubWindowRedrawingFlag::FLOOR_ITEMS,
+        SubWindowRedrawingFlag::FOUND_ITEMS,
+    };
+    rfu.set_flags(flags_swrf);
     return true;
 }
 
@@ -493,15 +509,15 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
 #endif
 
     auto is_enchant_successful = false;
-    if (enchant_equipment(player_ptr, o_ptr, num_hit, ENCH_TOHIT)) {
+    if (enchant_equipment(o_ptr, num_hit, ENCH_TOHIT)) {
         is_enchant_successful = true;
     }
 
-    if (enchant_equipment(player_ptr, o_ptr, num_dam, ENCH_TODAM)) {
+    if (enchant_equipment(o_ptr, num_dam, ENCH_TODAM)) {
         is_enchant_successful = true;
     }
 
-    if (enchant_equipment(player_ptr, o_ptr, num_ac, ENCH_TOAC)) {
+    if (enchant_equipment(o_ptr, num_ac, ENCH_TOAC)) {
         is_enchant_successful = true;
     }
 
@@ -643,7 +659,7 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
     }
 
     msg_format(_("あなたの%s%s", "Your %s %s"), item_name.data(), act);
-    enchant_equipment(player_ptr, o_ptr, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
+    enchant_equipment(o_ptr, randint0(3) + 4, ENCH_TOHIT | ENCH_TODAM);
     o_ptr->discount = 99;
     chg_virtue(player_ptr, Virtue::ENCHANT, 2);
     calc_android_exp(player_ptr);

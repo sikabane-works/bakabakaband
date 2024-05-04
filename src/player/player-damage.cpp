@@ -110,13 +110,13 @@ static bool acid_minus_ac(PlayerType *player_ptr)
     }
 
     const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
-    auto flags = object_flags(o_ptr);
+    auto item_flags = object_flags(o_ptr);
     if (o_ptr->ac + o_ptr->to_a <= 0) {
         msg_format(_("%sは既にボロボロだ！", "Your %s is already fully corroded!"), item_name.data());
         return false;
     }
 
-    if (flags.has(TR_IGNORE_ACID)) {
+    if (item_flags.has(TR_IGNORE_ACID)) {
         msg_format(_("しかし%sには効果がなかった！", "Your %s is unaffected!"), item_name.data());
         return true;
     }
@@ -124,8 +124,12 @@ static bool acid_minus_ac(PlayerType *player_ptr)
     msg_format(_("%sが酸で腐食した！", "Your %s is corroded!"), item_name.data());
     o_ptr->to_a--;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    rfu.set_flag(StatusRedrawingFlag::BONUS);
-    player_ptr->window_flags |= PW_EQUIPMENT | PW_PLAYER;
+    rfu.set_flag(StatusRecalculatingFlag::BONUS);
+    static constexpr auto flags_swrf = {
+        SubWindowRedrawingFlag::EQUIPMENT,
+        SubWindowRedrawingFlag::PLAYER,
+    };
+    rfu.set_flags(flags_swrf);
     calc_android_exp(player_ptr);
     return true;
 }
@@ -356,7 +360,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     rfu.set_flag(MainWindowRedrawingFlag::HP);
-    player_ptr->window_flags |= PW_PLAYER;
+    rfu.set_flag(SubWindowRedrawingFlag::PLAYER);
 
     if (damage_type != DAMAGE_GENO && player_ptr->chp == 0) {
         chg_virtue(player_ptr, Virtue::SACRIFICE, 1);
@@ -379,16 +383,16 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             player_ptr->is_dead = true;
         }
 
-        const auto &floor_ref = *player_ptr->current_floor_ptr;
-        if (floor_ref.inside_arena) {
-            concptr m_name = monraces_info[arena_info[player_ptr->arena_number].r_idx].name.data();
-            msg_format(_("あなたは%sの前に敗れ去った。", "You are beaten by %s."), m_name);
+        const auto &floor = *player_ptr->current_floor_ptr;
+        if (floor.inside_arena) {
+            const auto &m_name = monraces_info[arena_info[player_ptr->arena_number].r_idx].name;
+            msg_format(_("あなたは%sの前に敗れ去った。", "You are beaten by %s."), m_name.data());
             msg_print(nullptr);
             if (record_arena) {
-                exe_write_diary(player_ptr, DIARY_ARENA, -1 - player_ptr->arena_number, m_name);
+                exe_write_diary(player_ptr, DiaryKind::ARENA, -1 - player_ptr->arena_number, m_name);
             }
         } else {
-            const auto q_idx = quest_number(player_ptr, floor_ref.dun_level);
+            const auto q_idx = quest_number(floor, floor.dun_level);
             const auto seppuku = hit_from == "Seppuku";
             const auto winning_seppuku = w_ptr->total_winner && seppuku;
 
@@ -420,32 +424,31 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
 
             if (winning_seppuku) {
                 add_retired_class(player_ptr->pclass);
-                exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
+                exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
             } else {
                 std::string place;
 
-                if (floor_ref.inside_arena) {
+                if (floor.inside_arena) {
                     place = _("アリーナ", "in the Arena");
-                } else if (!floor_ref.is_in_dungeon()) {
+                } else if (!floor.is_in_dungeon()) {
                     place = _("地上", "on the surface");
                 } else if (inside_quest(q_idx) && (QuestType::is_fixed(q_idx) && !(q_idx == QuestId::MELKO))) {
                     place = _("クエスト", "in a quest");
                 } else {
-                    place = format(_("%d階", "on level %d"), static_cast<int>(floor_ref.dun_level));
+                    place = format(_("%d階", "on level %d"), static_cast<int>(floor.dun_level));
                 }
 
 #ifdef JP
-                std::string note = format("%sで%sに殺された。", place.data(), player_ptr->died_from.data());
+                const auto note = format("%sで%sに殺された。", place.data(), player_ptr->died_from.data());
 #else
-                std::string note = format("killed by %s %s.", player_ptr->died_from.data(), place.data());
+                const auto note = format("killed by %s %s.", player_ptr->died_from.data(), place.data());
 #endif
-                exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, note.data());
+                exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, note);
             }
 
-            exe_write_diary(player_ptr, DIARY_GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
-            exe_write_diary(player_ptr, DIARY_DESCRIPTION, 1, "\n\n\n\n");
+            exe_write_diary(player_ptr, DiaryKind::GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
+            exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
             player_ptr->death_count++;
-
             flush();
             if (get_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), CHECK_NO_HISTORY)) {
                 do_cmd_save_screen(player_ptr);
@@ -476,7 +479,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
                 auto &death_message = opt_death_message.value();
                 constexpr auto max_last_words = 1024;
                 char player_last_words[max_last_words]{};
-                angband_strcpy(player_last_words, death_message.data(), max_last_words);
+                angband_strcpy(player_last_words, death_message, max_last_words);
                 do {
 #ifdef JP
                     while (!get_string(winning_seppuku ? "辞世の句: " : "断末魔の叫び: ", player_last_words, max_last_words)) {
@@ -577,7 +580,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             ss << _(hit_from, "was in a critical situation because of ");
             ss << _("によってピンチに陥った。", hit_from);
             ss << _("", ".");
-            exe_write_diary(player_ptr, DIARY_DESCRIPTION, 0, ss.str().data());
+            exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, ss.str());
         }
 
         if (auto_more) {
