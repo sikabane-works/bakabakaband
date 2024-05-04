@@ -387,7 +387,7 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
                 i_ptr->copy_from(o_ptr[i]);
             }
 
-            rfu.set_flag(StatusRedrawingFlag::BONUS);
+            rfu.set_flag(StatusRecalculatingFlag::BONUS);
             handle_stuff(player_ptr);
 
             list_weapon(player_ptr, o_ptr[i], row, col);
@@ -395,7 +395,7 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
             i_ptr->copy_from(&orig_weapon);
         }
 
-        rfu.set_flag(StatusRedrawingFlag::BONUS);
+        rfu.set_flag(StatusRecalculatingFlag::BONUS);
         handle_stuff(player_ptr);
 
         w_ptr->character_xtra = old_character_xtra;
