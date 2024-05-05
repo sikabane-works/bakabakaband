@@ -13,7 +13,6 @@
  */
 
 #include "monster/monster-processor.h"
-#include "monster/monster-util.h"
 #include "avatar/avatar.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/speed-table.h"
