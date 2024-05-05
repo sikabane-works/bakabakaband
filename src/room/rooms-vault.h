@@ -1,29 +1,29 @@
 ﻿#pragma once
 
-#include "system/angband.h"
 #include <map>
+#include <stdint.h>
 #include <string>
 #include <vector>
 
 enum class MonsterRaceId : int16_t;
 
 struct vault_type {
-    int16_t idx;
+    vault_type() = default;
+    short idx = 0;
 
-    std::string name; /* Name (offset) */
-    std::string text; /* Text (offset) */
+    std::string name = ""; /* Name (offset) */
+    std::string text = ""; /* Text (offset) */
 
-    byte typ{}; /* Vault type */
-    PROB rat{}; /* Vault rating (unused) */
-    POSITION hgt{}; /* Vault height */
-    POSITION wid{}; /* Vault width */
-    std::map<char, FEAT_IDX> feature_list;
-    std::map<char, FEAT_IDX> feature_ap_list;
-    std::map<char, MonsterRaceId> place_monster_list;
-
+    uint8_t typ = 0; /* Vault type */
+    int rat = 0; /* Vault rating (unused) */
+    int hgt = 0; /* Vault height */
+    int wid = 0; /* Vault width */
     int min_depth = 0;
     int max_depth = 999;
     int rarity = 1;
+    std::map<char, int> feature_list;
+    std::map<char, int> feature_ap_list;
+    std::map<char, MonsterRaceId> place_monster_list;
 };
 
 extern std::vector<vault_type> vaults_info;
@@ -32,4 +32,4 @@ struct dun_data_type;
 class PlayerType;
 bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr);
 bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space, int id);
-void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSITION xval, POSITION xoffset, POSITION yoffset, int transno);
+void build_vault(vault_type *v_ptr, PlayerType *player_ptr, int yval, int xval, int xoffset, int yoffset, int transno);
