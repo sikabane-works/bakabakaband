@@ -63,9 +63,7 @@ void rd_base_info(PlayerType *player_ptr)
     rd_string(player_ptr->died_from, 1024);
     char buf[1024];
     rd_string(buf, sizeof buf);
-    if (buf[0]) {
-        player_ptr->last_message = string_make(buf);
-    }
+    player_ptr->last_message = buf;
 
     load_quick_start();
     const int max_history_lines = 4;
