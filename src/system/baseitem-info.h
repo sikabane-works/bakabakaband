@@ -142,6 +142,7 @@ public:
 
     PERCENTAGE broken_rate; /*!< 発動破損率 */
     void mark_as_tried();
+    void mark_as_aware();
 };
 
 extern std::vector<BaseitemInfo> baseitems_info;

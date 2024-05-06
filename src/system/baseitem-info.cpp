@@ -620,14 +620,6 @@ bool BaseitemInfo::is_valid() const
 }
 
 /*!
- * @brief オブジェクトを試行済にする
- */
-void BaseitemInfo::mark_as_tried()
-{
-    this->tried = true;
-}
-
-/*!
  * @brief 最初から簡易な名称が明らかなベースアイテムにその旨のフラグを立てる
  */
 void BaseitemInfo::decide_easy_know()
@@ -664,6 +656,19 @@ void BaseitemInfo::decide_easy_know()
         this->easy_know = false;
         return;
     }
+}
+
+/*!
+ * @brief オブジェクトを試行済にする
+ */
+void BaseitemInfo::mark_as_tried()
+{
+    this->tried = true;
+}
+
+void BaseitemInfo::mark_as_aware()
+{
+    this->aware = true;
 }
 
 std::vector<BaseitemInfo> baseitems_info;
