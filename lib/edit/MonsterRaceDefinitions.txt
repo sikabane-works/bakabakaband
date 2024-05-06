@@ -39128,6 +39128,32 @@ D:鉄獄でもそれなりにやっていけるだろう。
 D:「我々は大患期を生き延びた！殺戮の天使も！月の彼方の怪物も！大きな人狼どもも！油ぎった機械人形共も！
 D:そいつらがまとめて徘徊するクソみてえな迷宮だろうと生き延びてやらあ！」
 
+N:2146:おゆき
+E:Oyuki
+G:p:w
+I:110:20d10:20:15:20
+W:21:4:200:0:0
+B:TOUCH:COLD:2d5
+B:TOUCH:COLD:2d5
+B:TOUCH:COLD:2d5
+F:FEMALE | IM_COLD | DROP_1D2 | NONLIVING | AURA_COLD | FRIENDS
+S:1_IN_5
+S:BO_COLD
+D:なまず太夫の妖怪軍団の下で使役されている下級の雪女たちだ。
+
+N:2147:クロベエ
+E:Kurobe
+G:u:s
+I:114:21d10:20:32:30
+W:23:4:220:0:0
+B:HIT:HURT:2d8
+B:HIT:HURT:2d8
+B:HIT:HURT:2d8
+F:OPEN_DOOR | BASH_DOOR | FRIENDS
+F:DEMON | RES_TELE | CAN_FLY
+S:1_IN_5 | 
+S:BLINK
+D:なまず太夫の妖怪軍団の下で使役されている下級の鴉天狗だ。
 
 # N: serial number : monster name
 # G: symbol : color
