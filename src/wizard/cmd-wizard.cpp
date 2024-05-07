@@ -166,12 +166,12 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         switch (player_ptr->pclass) {
         case PlayerClassType::BLUE_MAGE:
             wiz_learn_blue_magic_all(player_ptr);
-            break;
+            return true;
         case PlayerClassType::SMITH:
             wiz_fillup_all_smith_essences(player_ptr);
-            break;
+            return true;
         default:
-            break;
+            return false;
         }
 
         return true;
@@ -243,9 +243,8 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
                 player_ptr->current_floor_ptr->grid_array[y][x].info |= CAVE_GLOW | CAVE_MARK;
             }
         }
-
         wiz_lite(player_ptr, false);
-        break;
+        return true;
     case 'v':
         get_value("時空崩壊度(0.000001%単位)", 0, 100000000, &(wc_ptr->collapse_degree));
         return true;
