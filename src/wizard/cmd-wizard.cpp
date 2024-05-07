@@ -38,6 +38,7 @@
 #include "world/world-collapsion.h"
 #include "world/world.h"
 
+#include <algorithm>
 #include <sstream>
 #include <string>
 #include <tuple>
@@ -74,7 +75,8 @@ constexpr std::array debug_menu_table = {
     std::make_tuple('P', _("プレイヤー設定変更メニュー", "Modify player configurations")),
     std::make_tuple('r', _("カオスパトロンの報酬", "Get reward of chaos patron")),
     std::make_tuple('R', _("部屋生成", "Generate room")),
-    std::make_tuple('s', _("フロア相当のモンスター召喚", "Summon monster which be in target depth")),
+    std::make_tuple('s', _("フロア相当のモンスター生成", "Generate monster which be in target depth")),
+    std::make_tuple('S', _("フロア相当のモンスター召喚", "Summon monster which be in target depth")),
     std::make_tuple('t', _("テレポート", "Teleport self")),
     std::make_tuple('u', _("啓蒙(忍者以外)", "Wiz-lite all floor except Ninja")),
     std::make_tuple('v', _("時空崩壊度設定", "Set world collapsion degree")),
@@ -138,119 +140,120 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
     case ESCAPE:
     case '\n':
     case '\r':
-        break;
+        return true;
     case 'a':
         wiz_cure_all(player_ptr);
-        break;
+        return true;
     case 'b':
         wiz_teleport_back(player_ptr);
-        break;
+        return true;
     case 'c':
         wiz_create_item(player_ptr);
-        break;
+        return true;
     case 'C':
         wiz_create_named_art(player_ptr);
-        break;
+        return true;
     case 'd':
         detect_all(player_ptr, DETECT_RAD_ALL * 3);
-        break;
+        return true;
     case 'D':
         wiz_dimension_door(player_ptr);
-        break;
+        return true;
     case 'e':
         wiz_change_status(player_ptr);
-        break;
+        return true;
     case 'E':
         switch (player_ptr->pclass) {
         case PlayerClassType::BLUE_MAGE:
             wiz_learn_blue_magic_all(player_ptr);
-            break;
+            return true;
         case PlayerClassType::SMITH:
             wiz_fillup_all_smith_essences(player_ptr);
-            break;
+            return true;
         default:
-            break;
-        }
-        break;
-    case 'f':
-        identify_fully(player_ptr, false);
-        break;
-    case 'F':
-        wiz_create_feature(player_ptr);
-        break;
-    case 'G':
-        wizard_game_modifier(player_ptr);
-        break;
-    case 'H':
-        wiz_summon_horde(player_ptr);
-        break;
-    case 'i':
-        (void)ident_spell(player_ptr, false);
-        break;
-    case 'I':
-        wizard_item_modifier(player_ptr);
-        break;
-    case 'j':
-        wiz_jump_to_dungeon(player_ptr);
-        break;
-    case 'k':
-        wiz_kill_target(player_ptr, 0, (AttributeType)command_arg, true);
-        break;
-    case 'm':
-        map_area(player_ptr, DETECT_RAD_ALL * 3);
-        break;
-    case 'R':
-        wiz_generate_room(player_ptr, command_arg);
-        break;
-    case 'r':
-        patron_list[player_ptr->chaos_patron].gain_level_reward(player_ptr, command_arg);
-        break;
-    case 'N':
-        wiz_summon_pet(player_ptr, i2enum<MonsterRaceId>(command_arg));
-        break;
-    case 'n':
-        wiz_summon_specific_enemy(player_ptr, i2enum<MonsterRaceId>(command_arg));
-        break;
-    case 'O':
-        wiz_dump_options();
-        break;
-    case 'o':
-        wiz_modify_item(player_ptr);
-        break;
-    case 'p':
-        teleport_player(player_ptr, 10, TELEPORT_SPONTANEOUS);
-        break;
-    case 'P':
-        wizard_player_modifier(player_ptr);
-        break;
-    case 's':
-        if (command_arg <= 0) {
-            command_arg = 1;
+            return false;
         }
 
-        wiz_summon_random_enemy(player_ptr, command_arg);
-        break;
+        return true;
+    case 'f':
+        identify_fully(player_ptr, false);
+        return true;
+    case 'F':
+        wiz_create_feature(player_ptr);
+        return true;
+    case 'G':
+        wizard_game_modifier(player_ptr);
+        return true;
+    case 'H':
+        wiz_summon_horde(player_ptr);
+        return true;
+    case 'i':
+        (void)ident_spell(player_ptr, false);
+        return true;
+    case 'I':
+        wizard_item_modifier(player_ptr);
+        return true;
+    case 'j':
+        wiz_jump_to_dungeon(player_ptr);
+        return true;
+    case 'k':
+        wiz_kill_target(player_ptr, 0, (AttributeType)command_arg, true);
+        return true;
+    case 'm':
+        map_area(player_ptr, DETECT_RAD_ALL * 3);
+        return true;
+    case 'R':
+        wiz_generate_room(player_ptr, command_arg);
+        return true;
+    case 'r':
+        patron_list[player_ptr->chaos_patron].gain_level_reward(player_ptr, command_arg);
+        return true;
+    case 'n':
+        wiz_summon_specific_monster(player_ptr, i2enum<MonsterRaceId>(command_arg));
+        return true;
+    case 'N':
+        wiz_summon_pet(player_ptr, i2enum<MonsterRaceId>(command_arg));
+        return true;
+    case 'o':
+        wiz_modify_item(player_ptr);
+        return true;
+    case 'O':
+        wiz_dump_options();
+        return true;
+    case 'p':
+        teleport_player(player_ptr, 10, TELEPORT_SPONTANEOUS);
+        return true;
+    case 'P':
+        wizard_player_modifier(player_ptr);
+        return true;
+    case 's':
+        command_arg = std::clamp<short>(command_arg, 1, 999);
+        wiz_generate_random_monster(player_ptr, command_arg);
+        return true;
+    case 'S':
+        command_arg = std::clamp<short>(command_arg, 1, 999);
+        wiz_summon_random_monster(player_ptr, command_arg);
+        return true;
     case 't':
         teleport_player(player_ptr, 100, TELEPORT_SPONTANEOUS);
-        break;
+        return true;
     case 'u':
         for (int y = 0; y < player_ptr->current_floor_ptr->height; y++) {
             for (int x = 0; x < player_ptr->current_floor_ptr->width; x++) {
                 player_ptr->current_floor_ptr->grid_array[y][x].info |= CAVE_GLOW | CAVE_MARK;
             }
         }
-
         wiz_lite(player_ptr, false);
-        break;
+        return true;
     case 'v':
         get_value("時空崩壊度(0.000001%単位)", 0, 100000000, &(wc_ptr->collapse_degree));
-        break;
+        return true;
     case 'w':
         wiz_lite(player_ptr, PlayerClass(player_ptr).equals(PlayerClassType::NINJA));
-        break;
+        return true;
     case 'x':
         gain_exp(player_ptr, command_arg ? command_arg : (player_ptr->exp + 1));
-        break;
+        return true;
     case 'X':
         for (INVENTORY_IDX i = INVEN_TOTAL - 1; i >= 0; i--) {
             if (player_ptr->inventory_list[i].is_valid()) {
@@ -259,37 +262,35 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         }
 
         player_outfit(player_ptr);
-        break;
+        return true;
     case 'y':
         wiz_kill_target(player_ptr);
-        break;
+        return true;
     case 'Y':
         wiz_kill_target(player_ptr, 0, (AttributeType)command_arg);
-        break;
+        return true;
     case 'z':
         wiz_zap_surrounding_monsters(player_ptr);
-        break;
+        return true;
     case 'Z':
         wiz_zap_floor_monsters(player_ptr);
-        break;
+        return true;
     case '_':
         probing(player_ptr);
-        break;
+        return true;
     case '@':
         wiz_debug_spell(player_ptr);
-        break;
+        return true;
     case '"':
         exe_output_spoilers();
-        break;
+        return true;
     case '?':
         do_cmd_help(player_ptr);
-        break;
+        return true;
     default:
         msg_print("That is not a valid debug command.");
-        break;
+        return true;
     }
-
-    return true;
 }
 
 /*!
