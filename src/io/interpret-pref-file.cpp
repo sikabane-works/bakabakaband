@@ -19,7 +19,6 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/gameterm.h"
-#include "util/quarks.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
