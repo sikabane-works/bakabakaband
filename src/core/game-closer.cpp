@@ -165,6 +165,8 @@ void close_game(PlayerType *player_ptr)
         kingly(player_ptr);
     }
 
+    print_tomb(player_ptr);
+
     auto do_send = true;
     if (!cheat_save || get_check(_("死んだデータをセーブしますか？ ", "Save death? "))) {
         update_playtime();
@@ -177,7 +179,6 @@ void close_game(PlayerType *player_ptr)
         do_send = false;
     }
 
-    print_tomb(player_ptr);
     flush();
     show_death_info(player_ptr);
     term_clear();
