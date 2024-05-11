@@ -40,6 +40,7 @@
 #include "wizard/artifact-bias-table.h"
 #include "wizard/wizard-messages.h"
 #include "world/world.h"
+#include <sstream>
 
 static bool weakening_artifact(ItemEntity *o_ptr)
 {
@@ -401,8 +402,8 @@ static std::string name_unnatural_random_artifact(PlayerType *player_ptr, ItemEn
         return ss.str();
     };
     const auto new_name = input_string(prompt, 160);
-    if (new_name.has_value() && !new_name->empty()) {
-        return wrap_name(new_name.value());
+    if (new_name && !new_name->empty()) {
+        return wrap_name(*new_name);
     }
 
     if (one_in_(2)) {
