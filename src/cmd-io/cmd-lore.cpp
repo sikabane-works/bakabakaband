@@ -69,7 +69,7 @@ void do_cmd_query_symbol(PlayerType *player_ptr)
         buf = _("ユニーク・モンスターのリスト", "Unique monster list.");
     } else if (sym == KTRL('N')) {
         all = norm = true;
-        buf = ("ユニーク外モンスターのリスト", "Non-unique monster list.");
+        buf = _("ユニーク外モンスターのリスト", "Non-unique monster list.");
     } else if (sym == KTRL('R')) {
         all = ride = true;
         buf = _("乗馬可能モンスターのリスト", "Ridable monster list.");
