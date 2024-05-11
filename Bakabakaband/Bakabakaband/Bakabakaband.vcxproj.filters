@@ -2120,7 +2120,9 @@
     <ClCompile Include="..\..\src\main-win\main-win-file-utils.cpp">
       <Filter>main-win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\stdafx.cpp" />
+    <ClCompile Include="..\..\src\stdafx.cpp">
+      <Filter>main-win</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\main\scene-table.cpp">
       <Filter>main</Filter>
     </ClCompile>
@@ -5370,9 +5372,9 @@
     <ClInclude Include="..\..\src\system\redrawing-flags-updater.h">
       <Filter>system</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\load\angband-version-comparer.h" />
     <ClInclude Include="..\..\src\alliance\alliance-jural.h">
       <Filter>alliance</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\external-lib\httplib.h">
       <Filter>external-lib</Filter>
     </ClInclude>
