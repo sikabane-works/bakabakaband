@@ -2120,7 +2120,9 @@
     <ClCompile Include="..\..\src\main-win\main-win-file-utils.cpp">
       <Filter>main-win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\stdafx.cpp" />
+    <ClCompile Include="..\..\src\stdafx.cpp">
+      <Filter>main-win</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\main\scene-table.cpp">
       <Filter>main</Filter>
     </ClCompile>
@@ -2177,6 +2179,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\core\score-util.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\external-lib\httplib.cpp">
+      <Filter>external-lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\view\display-scores.cpp">
       <Filter>view</Filter>
@@ -5367,9 +5372,14 @@
     <ClInclude Include="..\..\src\system\redrawing-flags-updater.h">
       <Filter>system</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\load\angband-version-comparer.h" />
     <ClInclude Include="..\..\src\alliance\alliance-jural.h">
       <Filter>alliance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\external-lib\httplib.h">
+      <Filter>external-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\external-lib\include-httplib.h">
+      <Filter>external-lib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5626,8 +5636,14 @@
     <Filter Include="object-use\quaff">
       <UniqueIdentifier>{5eec2f75-7108-42ad-9aa4-85b1129354db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mspell\mspell-attack">
+    <Filter Include="mspells\mspell-attack">
       <UniqueIdentifier>{ab971e7b-4a9e-4f88-a557-eb89840abd61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item-info">
+      <UniqueIdentifier>{3aefd2e8-8dd8-41dd-bc6b-7dadd75dfd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external-lib">
+      <UniqueIdentifier>{b0f75b81-c15a-43de-a96e-139123aa2ebb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
