@@ -381,7 +381,7 @@ bool report_score(PlayerType *player_ptr)
         term_fresh();
         prt(_("スコア送信中...", "Sending the score..."), 0, 0);
         term_fresh();
-        if (http_post(SCORE_PATH, score)) {
+        if (http_post("", score)) {
             return true;
         }
 
