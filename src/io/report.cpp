@@ -99,7 +99,7 @@ size_t read_callback(char *buffer, size_t size, size_t nitems, void *userdata)
  * @param buf 伝送内容バッファ
  * @return 送信に成功した場合TRUE、失敗した場合FALSE
  */
-static bool http_post(concptr url, const std::vector<char> &buf)
+static bool http_post(concptr url, [[maybe_unused]] const std::vector<char> &buf)
 {
     bool succeeded = false;
     CURL *curl = curl_easy_init();
@@ -125,7 +125,7 @@ static bool http_post(concptr url, const std::vector<char> &buf)
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist);
 
     char user_agent[64];
-    snprintf(user_agent, sizeof(user_agent), "Hengband %d.%d.%d", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
+    snprintf(user_agent, sizeof(user_agent), "Bakabakaband %d.%d.%d", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
     curl_easy_setopt(curl, CURLOPT_USERAGENT, user_agent);
 
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
@@ -374,7 +374,7 @@ bool report_score(PlayerType *player_ptr)
 
         prt(_("スコア・サーバへの送信に失敗しました。", "Failed to send to the score server."), 0, 0);
         (void)inkey();
-        if (get_check_strict(player_ptr, _("もう一度接続を試みますか? ", "Try again? "), CHECK_NO_HISTORY)) {
+        if (input_check_strict(player_ptr, _("もう一度接続を試みますか? ", "Try again? "), UserCheck::NO_HISTORY)) {
             continue;
         }
 
