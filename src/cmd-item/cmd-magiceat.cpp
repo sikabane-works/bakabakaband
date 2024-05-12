@@ -138,8 +138,6 @@ static std::optional<BaseitemKey> select_magic_eater(PlayerType *player_ptr, boo
     bool flag, request_list;
     auto tval = ItemKindType::NONE;
     int menu_line = (use_menu ? 1 : 0);
-    char out_val[160];
-
     auto magic_eater_data = PlayerClass(player_ptr).get_specific_data<magic_eater_data_type>();
 
     if (auto result = check_magic_eater_spell_repeat(magic_eater_data.get());
