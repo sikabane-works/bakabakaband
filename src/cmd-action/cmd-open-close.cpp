@@ -178,7 +178,7 @@ void do_cmd_close(PlayerType *player_ptr)
         command_arg = 0;
     }
 
-    if (get_rep_dir(player_ptr, &dir, false)) {
+    if (get_rep_dir(player_ptr, &dir)) {
         grid_type *g_ptr;
         FEAT_IDX feat;
         y = player_ptr->y + ddy[dir];
@@ -294,7 +294,7 @@ void do_cmd_bash(PlayerType *player_ptr)
         command_arg = 0;
     }
 
-    if (get_rep_dir(player_ptr, &dir, false)) {
+    if (get_rep_dir(player_ptr, &dir)) {
         FEAT_IDX feat;
         y = player_ptr->y + ddy[dir];
         x = player_ptr->x + ddx[dir];
@@ -361,7 +361,7 @@ void do_cmd_spike(PlayerType *player_ptr)
 
     PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU });
 
-    if (!get_rep_dir(player_ptr, &dir, false)) {
+    if (!get_rep_dir(player_ptr, &dir)) {
         return;
     }
 
