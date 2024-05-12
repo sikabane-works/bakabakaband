@@ -52,6 +52,8 @@ public:
     int hygiene;
 
     bool is_permanent_wall() const;
+
+    void reset_lighting(bool is_config = true);
 };
 
 class TerrainList {
