@@ -450,7 +450,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
             player_ptr->death_count++;
             flush();
-            if (get_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), CHECK_NO_HISTORY)) {
+            if (input_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), UserCheck::NO_HISTORY)) {
                 do_cmd_save_screen(player_ptr);
             }
 
@@ -481,7 +481,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
                         continue;
                     }
 
-                    if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_NO_HISTORY)) {
+                    if (input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), UserCheck::NO_HISTORY)) {
                         death_message = input_last_words.value();
                         break;
                     }

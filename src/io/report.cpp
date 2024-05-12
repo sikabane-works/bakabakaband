@@ -94,73 +94,6 @@ size_t read_callback(char *buffer, size_t size, size_t nitems, void *userdata)
 }
 
 /*!
- * @brief HTTPによるダンプ内容伝送
- * @param url 伝送先URL
- * @param buf 伝送内容バッファ
- * @return 送信に成功した場合TRUE、失敗した場合FALSE
- */
-static bool http_post(concptr url, const std::vector<char> &buf)
-{
-    bool succeeded = false;
-    CURL *curl = curl_easy_init();
-    if (curl == nullptr) {
-        return false;
-    }
-
-    struct curl_slist *slist = nullptr;
-    slist = curl_slist_append(slist,
-#ifdef JP
-#ifdef SJIS
-        "Content-Type: text/plain; charset=SHIFT_JIS"
-#endif
-#ifdef EUC
-        "Content-Type: text/plain; charset=EUC-JP"
-#endif
-#else
-        "Content-Type: text/plain; charset=ASCII"
-#endif
-    );
-
-    curl_easy_setopt(curl, CURLOPT_URL, url);
-    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist);
-
-    char user_agent[64];
-    snprintf(user_agent, sizeof(user_agent), "Hengband %d.%d.%d", H_VER_MAJOR, H_VER_MINOR, H_VER_PATCH);
-    curl_easy_setopt(curl, CURLOPT_USERAGENT, user_agent);
-
-    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0);
-
-    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
-    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, HTTP_TIMEOUT);
-    curl_easy_setopt(curl, CURLOPT_TIMEOUT, HTTP_TIMEOUT);
-
-    curl_easy_setopt(curl, CURLOPT_POST, 1);
-
-    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
-    curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 10);
-    curl_easy_setopt(curl, CURLOPT_POSTREDIR, CURL_REDIR_POST_ALL);
-
-    std::span<const char> data(buf);
-    curl_easy_setopt(curl, CURLOPT_READDATA, &data);
-    curl_easy_setopt(curl, CURLOPT_READFUNCTION, read_callback);
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data.size());
-
-    if (curl_easy_perform(curl) == CURLE_OK) {
-        long response_code;
-        curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
-        if (response_code == 200) {
-            succeeded = true;
-        }
-    }
-
-    curl_slist_free_all(slist);
-    curl_easy_cleanup(curl);
-
-    return succeeded;
-}
-
-/*!
  * @brief キャラクタダンプを作って BUFに保存
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param dumpbuf 伝送内容バッファ
@@ -381,13 +314,10 @@ bool report_score(PlayerType *player_ptr)
         term_fresh();
         prt(_("スコア送信中...", "Sending the score..."), 0, 0);
         term_fresh();
-        if (http_post("", score)) {
-            return true;
-        }
 
         prt(_("スコア・サーバへの送信に失敗しました。", "Failed to send to the score server."), 0, 0);
         (void)inkey();
-        if (get_check_strict(player_ptr, _("もう一度接続を試みますか? ", "Try again? "), CHECK_NO_HISTORY)) {
+        if (input_check_strict(player_ptr, _("もう一度接続を試みますか? ", "Try again? "), UserCheck::NO_HISTORY)) {
             continue;
         }
 

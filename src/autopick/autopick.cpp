@@ -136,7 +136,7 @@ void autopick_pickup_items(PlayerType *player_ptr, grid_type *g_ptr)
 
         std::stringstream ss;
         ss << _(item_name, "Pick up ") << _("を拾いますか", item_name) << "? ";
-        if (!get_check(ss.str())) {
+        if (!input_check(ss.str())) {
             o_ptr->marked.set({ OmType::SUPRESS_MESSAGE, OmType::NO_QUERY });
             continue;
         }

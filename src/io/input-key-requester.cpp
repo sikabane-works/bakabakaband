@@ -333,7 +333,7 @@ void InputKeyRequestor::confirm_command(ItemEntity &o_ref, const int caret_comma
         (void)caret_command;
 #endif
         if (sure) {
-            if (!get_check(_("本当ですか? ", "Are you sure? "))) {
+            if (!input_check(_("本当ですか? ", "Are you sure? "))) {
                 command_cmd = ' ';
             }
         }
