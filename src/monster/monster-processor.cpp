@@ -655,6 +655,7 @@ bool cast_spell(PlayerType *player_ptr, MONSTER_IDX m_idx, bool aware)
  */
 bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MONSTER_IDX m_idx)
 {
+    const auto &baseitems = BaseitemList::get_instance();
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     auto m_name = monster_desc(player_ptr, m_ptr, 0);
 
@@ -662,7 +663,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         msg_format(_("%s^は恐怖のあまり脱糞した！", "%s^ was defecated because of fear!"), m_name.data());
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
-        q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_FECES }));
+        q_ptr->prep(baseitems.lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_FECES }));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 
@@ -670,7 +671,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
         msg_format(_("%s^は恐怖のあまり嘔吐した！", "%s^ vomited in fear!"), m_name.data());
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
-        q_ptr->prep(lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
+        q_ptr->prep(baseitems.lookup_baseitem_id({ ItemKindType::JUNK, SV_JUNK_VOMITTING }));
         (void)drop_near(player_ptr, q_ptr, -1, m_ptr->fy, m_ptr->fx);
     }
 

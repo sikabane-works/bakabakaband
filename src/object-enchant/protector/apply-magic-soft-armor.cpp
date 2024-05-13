@@ -101,7 +101,7 @@ void SoftArmorEnchanter::give_high_ego_index()
     }
 
     const BaseitemKey key(ItemKindType::SOFT_ARMOR, SV_TWILIGHT_ROBE);
-    this->o_ptr->bi_id = lookup_baseitem_id(key);
+    this->o_ptr->bi_id = BaseitemList::get_instance().lookup_baseitem_id(key);
     this->o_ptr->bi_key = key;
     this->o_ptr->ac = 0;
     this->o_ptr->to_a = 0;

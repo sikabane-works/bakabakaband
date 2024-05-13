@@ -170,9 +170,10 @@ public:
     void resize(size_t new_size);
 
     void reset_all_visuals();
-    void shuffle_flavors();
     void reset_identification_flags();
     void mark_common_items_as_aware();
+    short lookup_baseitem_id(const BaseitemKey &bi_key) const;
+    void shuffle_flavors();
 
 private:
     BaseitemList() = default;
@@ -180,5 +181,8 @@ private:
     static BaseitemList instance;
     std::vector<BaseitemInfo> baseitems{};
 
+    short exe_lookup(const BaseitemKey &bi_key) const;
+    const std::map<BaseitemKey, short> &create_baseitem_index_chache() const;
+    const std::map<ItemKindType, std::vector<int>> &create_baseitems_cache() const;
     void shuffle_flavors(ItemKindType tval);
 };
