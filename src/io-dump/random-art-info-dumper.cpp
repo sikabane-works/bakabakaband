@@ -12,6 +12,7 @@
 #include "wizard/fixed-artifacts-spoiler.h"
 #include "wizard/spoiler-util.h"
 #include <fstream>
+#include <sstream>
 
 /*!
  * @brief ランダムアーティファクト1件をスポイラー出力する /
@@ -22,15 +23,15 @@
  */
 static void spoiler_print_randart(ItemEntity *o_ptr, obj_desc_list *art_ptr)
 {
-    pval_info_type *pval_ptr = &art_ptr->pval_info;
-    char buf[80];
+    const auto *pval_ptr = &art_ptr->pval_info;
     fprintf(spoiler_file, "%s\n", art_ptr->description);
     if (!o_ptr->is_fully_known()) {
         fprintf(spoiler_file, _("%s不明\n", "%sUnknown\n"), spoiler_indent);
     } else {
-        if (pval_ptr->pval_desc[0]) {
-            sprintf(buf, _("%sの修正:", "%s to"), pval_ptr->pval_desc);
-            spoiler_outlist(buf, pval_ptr->pval_affects, item_separator);
+        if (!pval_ptr->pval_desc.empty()) {
+            std::stringstream ss;
+            ss << pval_ptr->pval_desc << _("の修正:", " to");
+            spoiler_outlist(ss.str(), pval_ptr->pval_affects, item_separator);
         }
 
         spoiler_outlist(_("対:", "Slay"), art_ptr->slays, item_separator);
