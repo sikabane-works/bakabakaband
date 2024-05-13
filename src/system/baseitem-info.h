@@ -170,6 +170,7 @@ public:
     void resize(size_t new_size);
 
     void reset_all_visuals();
+    void shuffle_flavors(ItemKindType tval);
 
 private:
     BaseitemList() = default;
