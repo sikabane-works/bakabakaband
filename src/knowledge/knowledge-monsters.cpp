@@ -267,7 +267,7 @@ static void display_monster_list(int col, int row, int per_page, const std::vect
             c_prt(attr, format("%d", r_idx), row + i, 62);
         }
 
-        term_erase(69, row + i, 255);
+        term_erase(69, row + i);
         term_queue_bigchar(use_bigtile ? 69 : 70, row + i, r_ptr->x_attr, r_ptr->x_char, 0, 0);
         if (!visual_only) {
             if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
@@ -285,7 +285,7 @@ static void display_monster_list(int col, int row, int per_page, const std::vect
     }
 
     for (; i < per_page; i++) {
-        term_erase(col, row + i, 255);
+        term_erase(col, row + i);
     }
 }
 
