@@ -57,62 +57,6 @@ void spoiler_outlist(std::string_view header, const std::vector<std::string> &de
 }
 
 /*!
- * @brief フラグ名称を出力する汎用関数
- * @param header ヘッダに出力するフラグ群の名前
- * @param list フラグ名リスト
- * @param separator フラグ表示の区切り記号
- * @todo 固定アーティファクトとランダムアーティファクトで共用、ここに置くべきかは要調整.
- * @todo いずれ上で定義したオーバーロードに吸収合併させてこれは消滅させる予定
- */
-void spoiler_outlist(concptr header, concptr *list, char separator)
-{
-    char line[MAX_LINE_LEN + 20], buf[80];
-    if (*list == nullptr) {
-        return;
-    }
-
-    strcpy(line, spoiler_indent);
-    if (header && (header[0])) {
-        strcat(line, header);
-        strcat(line, " ");
-    }
-
-    int buf_len;
-    int line_len = strlen(line);
-    while (true) {
-        strcpy(buf, *list);
-        buf_len = strlen(buf);
-        if (list[1]) {
-            sprintf(buf + buf_len, "%c ", separator);
-            buf_len += 2;
-        }
-
-        if (line_len + buf_len <= MAX_LINE_LEN) {
-            strcat(line, buf);
-            line_len += buf_len;
-        } else {
-            if (line_len > 1 && line[line_len - 1] == ' ' && line[line_len - 2] == list_separator) {
-                line[line_len - 2] = '\0';
-                fprintf(spoiler_file, "%s\n", line);
-                sprintf(line, "%s%s", spoiler_indent, buf);
-            } else {
-                fprintf(spoiler_file, "%s\n", line);
-                concptr ident2 = "      ";
-                sprintf(line, "%s%s", ident2, buf);
-            }
-
-            line_len = strlen(line);
-        }
-
-        if (!*++list) {
-            break;
-        }
-    }
-
-    fprintf(spoiler_file, "%s\n", line);
-}
-
-/*!
  * @brief アーティファクト情報を出力するためにダミー生成を行う /
  * Hack -- Create a "forged" artifact
  * @param o_ptr 一時生成先を保管するオブジェクト構造体
@@ -152,7 +96,7 @@ static bool make_fake_artifact(ItemEntity *o_ptr, FixedArtifactId fixed_artifact
 static void spoiler_print_art(obj_desc_list *art_ptr)
 {
     const auto *pval_ptr = &art_ptr->pval_info;
-    fprintf(spoiler_file, "%s\n", art_ptr->description);
+    fprintf(spoiler_file, "%s\n", art_ptr->description.data());
     if (!pval_ptr->pval_desc.empty()) {
         std::stringstream ss;
         ss << pval_ptr->pval_desc << _("の修正:", " to");
@@ -163,19 +107,19 @@ static void spoiler_print_art(obj_desc_list *art_ptr)
     spoiler_outlist(_("武器属性:", ""), art_ptr->brands, list_separator);
     spoiler_outlist(_("免疫:", "Immunity to"), art_ptr->immunities, item_separator);
     spoiler_outlist(_("耐性:", "Resist"), art_ptr->resistances, item_separator);
-    spoiler_outlist(_("弱点:", "Vulnerable"), art_ptr->vulnerables, item_separator);
-    spoiler_outlist(_("維持:", "Sustain"), art_ptr->sustains, item_separator);
+    spoiler_outlist(_("弱点:", "Vulnerable"), art_ptr->vulnerabilities, item_separator);
+    spoiler_outlist(_("維持:", "Sustain"), art_ptr->sustenances, item_separator);
     spoiler_outlist("", art_ptr->misc_magic, list_separator);
 
-    if (art_ptr->addition[0]) {
-        fprintf(spoiler_file, _("%s追加: %s\n", "%sAdditional %s\n"), spoiler_indent, art_ptr->addition);
+    if (!art_ptr->addition.empty()) {
+        fprintf(spoiler_file, _("%s追加: %s\n", "%sAdditional %s\n"), spoiler_indent, art_ptr->addition.data());
     }
 
-    if (art_ptr->activation) {
-        fprintf(spoiler_file, _("%s発動: %s\n", "%sActivates for %s\n"), spoiler_indent, art_ptr->activation);
+    if (!art_ptr->activation.empty()) {
+        fprintf(spoiler_file, _("%s発動: %s\n", "%sActivates for %s\n"), spoiler_indent, art_ptr->activation.data());
     }
 
-    fprintf(spoiler_file, "%s%s\n\n", spoiler_indent, art_ptr->misc_desc);
+    fprintf(spoiler_file, "%s%s\n\n", spoiler_indent, art_ptr->misc_desc.data());
 }
 
 /*!
