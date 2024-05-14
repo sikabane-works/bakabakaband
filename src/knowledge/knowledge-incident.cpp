@@ -72,6 +72,6 @@ void do_cmd_knowledge_incident(PlayerType *player_ptr)
     }
     angband_fclose(fff);
 
-    FileDisplayer().display(player_ptr->name, true, file_name, 0, 0, _("これまでの出来事", "Incidents"));
+    FileDisplayer(player_ptr->name).display(true, file_name, 0, 0, _("これまでの出来事", "Incidents"));
     fd_kill(file_name);
 }
