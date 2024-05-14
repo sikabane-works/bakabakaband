@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 /* The "sval" codes for ItemKindType::FOOD */
 enum sv_food_type {

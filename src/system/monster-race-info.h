@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "alliance/alliance.h"
 #include "monster-attack/monster-attack-effect.h"

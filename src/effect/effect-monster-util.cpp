@@ -1,5 +1,5 @@
-﻿/*!
- * @brief EffectMonster構造体の初期化処理
+/*!
+ * @brief effect_monster_type構造体の初期化処理
  * @date 2020/04/29
  * @author Hourier
  */

@@ -1,4 +1,4 @@
-﻿#include "load/item/item-loader-base.h"
+#include "load/item/item-loader-base.h"
 #include "artifact/fixed-art-types.h"
 #include "load/load-util.h"
 #include "system/artifact-type-definition.h"

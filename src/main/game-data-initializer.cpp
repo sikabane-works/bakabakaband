@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file game-data-initializer.cpp
  * @brief 馬鹿馬鹿蛮怒のゲームデータ初期化定義
  */

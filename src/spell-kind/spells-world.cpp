@@ -1,4 +1,10 @@
-﻿#include "spell-kind/spells-world.h"
+﻿/*
+ * @brief 帰還やテレポート・レベル等、フロアを跨ぐ魔法効果の処理
+ * @author Hourier
+ * @date 2022/10/10
+ */
+
+#include "spell-kind/spells-world.h"
 #include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
 #include "dungeon/quest-completion-checker.h"

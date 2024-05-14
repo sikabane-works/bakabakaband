@@ -1,4 +1,4 @@
-﻿#include "load/info-loader.h"
+#include "load/info-loader.h"
 #include "game-option/runtime-arguments.h"
 #include "load/load-util.h"
 #include "load/option-loader.h"
