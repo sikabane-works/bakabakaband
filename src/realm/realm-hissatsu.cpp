@@ -1,4 +1,4 @@
-#include "realm/realm-hissatsu.h"
+﻿#include "realm/realm-hissatsu.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-action/cmd-attack.h"
 #include "cmd-action/cmd-spell.h"

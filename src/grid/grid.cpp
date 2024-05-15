@@ -788,7 +788,7 @@ FEAT_IDX feat_state(FloorType *floor_ptr, FEAT_IDX feat, TerrainCharacteristics 
         return feat;
     }
 
-    return (feature_action_flags[enum2i(action)] & FAF_DESTROY) ? conv_dungeon_feat(floor_ptr, f_ptr->destroyed) : feat;
+    return (terrain_action_flags[enum2i(action)] & FAF_DESTROY) ? conv_dungeon_feat(floor_ptr, f_ptr->destroyed) : feat;
 }
 
 /*
@@ -812,7 +812,7 @@ void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, TerrainChar
     /* Set the new feature */
     cave_set_feat(player_ptr, y, x, newfeat);
 
-    if (!(feature_action_flags[enum2i(action)] & FAF_NO_DROP)) {
+    if (!(terrain_action_flags[enum2i(action)] & FAF_NO_DROP)) {
         TerrainType *old_f_ptr = &terrains_info[oldfeat];
         auto *f_ptr = &terrains_info[newfeat];
         bool found = false;
@@ -836,7 +836,7 @@ void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, TerrainChar
         }
     }
 
-    if (feature_action_flags[enum2i(action)] & FAF_CRASH_GLASS) {
+    if (terrain_action_flags[enum2i(action)] & FAF_CRASH_GLASS) {
         TerrainType *old_f_ptr = &terrains_info[oldfeat];
 
         if (old_f_ptr->flags.has(TerrainCharacteristics::GLASS) && w_ptr->character_dungeon) {
