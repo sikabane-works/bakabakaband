@@ -931,6 +931,7 @@ hengband_SOURCES = \
 	system/player-type-definition.cpp system/player-type-definition.h \
 	system/redrawing-flags-updater.cpp system/redrawing-flags-updater.h \
 	system/system-variables.cpp system/system-variables.h \
+	system/terrain-type-definition.cpp system/terrain-type-definition.h \
 	system/gamevalue.h \
 	\
 	target/grid-selector.cpp target/grid-selector.h \

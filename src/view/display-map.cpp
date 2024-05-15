@@ -20,6 +20,7 @@
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "term/term-color-types.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/player-hallucination.h"

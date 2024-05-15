@@ -123,6 +123,7 @@ struct dungeon_type {
 
     std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
     AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
+    bool has_river_flag() const;
 };
 
 extern std::vector<DEPTH> max_dlv;

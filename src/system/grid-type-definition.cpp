@@ -1,7 +1,8 @@
 #include "system/grid-type-definition.h"
-#include "grid/feature.h" // @todo 相互依存している. 後で何とかする.
+#include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags7.h"
 #include "system/monster-race-info.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
 /*!

@@ -15,6 +15,7 @@
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 

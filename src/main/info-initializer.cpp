@@ -5,7 +5,6 @@
 
 #include "main/info-initializer.h"
 #include "floor/wild.h"
-#include "grid/feature.h"
 #include "info-reader/artifact-reader.h"
 #include "info-reader/baseitem-reader.h"
 #include "info-reader/dungeon-reader.h"
@@ -33,6 +32,7 @@
 #include "system/dungeon-info.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "util/angband-files.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"

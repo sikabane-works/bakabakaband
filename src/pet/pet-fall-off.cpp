@@ -9,7 +9,6 @@
 #include "core/window-redrawer.h"
 #include "floor/cave.h"
 #include "floor/geometry.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "monster-attack/monster-attack-player.h"
 #include "monster-race/monster-race.h"
@@ -25,6 +24,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-checker.h"
 #include "view/display-messages.h"
 
