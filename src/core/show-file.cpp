@@ -1,4 +1,4 @@
-#include "core/show-file.h"
+﻿#include "core/show-file.h"
 #include "core/asking-player.h"
 #include "io/files-util.h"
 #include "io/input-key-acceptor.h"
@@ -138,8 +138,7 @@ bool show_file(PlayerType *player_ptr, bool show_version, std::string_view name_
 {
     TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, std::nullopt);
 
-    int wid, hgt;
-    term_get_size(&wid, &hgt);
+    const auto [wid, hgt] = term_get_size();
 
     char hook[68][32]{};
     auto stripped_names = str_split(name_with_tag, '#');

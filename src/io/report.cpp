@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @file report.c
  * @brief スコアサーバ転送機能の実装
  * @date 2014/07/14
@@ -134,27 +134,17 @@ static errr make_dump(PlayerType *player_ptr, std::vector<char> &dumpbuf)
     return 0;
 }
 
-/*!
- * @brief スクリーンダンプを作成する/ Make screen dump to buffer
- * @return 作成したスクリーンダンプの参照ポインタ
- */
 concptr make_screen_dump(PlayerType *player_ptr)
 {
-    static concptr html_head[] = {
-        "<html>\n<body text=\"#ffffff\" bgcolor=\"#000000\">\n",
-        "<pre>",
-        0,
-    };
-    static concptr html_foot[] = {
-        "</pre>\n",
-        "</body>\n</html>\n",
-        0,
-    };
+    constexpr auto html_head =
+        "<html>\n<body text=\"#ffffff\" bgcolor=\"#000000\">\n"
+        "<pre>\n";
+    constexpr auto html_foot =
+        "</pre>\n"
+        "</body>\n</html>\n";
 
-    int wid, hgt;
-    term_get_size(&wid, &hgt);
-
-    std::vector<char> screen_buf;
+    const auto &[wid, hgt] = term_get_size();
+    std::stringstream screen_ss;
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     bool old_use_graphics = use_graphics;
@@ -176,15 +166,13 @@ concptr make_screen_dump(PlayerType *player_ptr)
         handle_stuff(player_ptr);
     }
 
-    for (int i = 0; html_head[i]; i++) {
-        buf_sprintf(screen_buf, html_head[i]);
-    }
+    screen_ss << html_head;
 
     /* Dump the screen */
     for (int y = 0; y < hgt; y++) {
         /* Start the row */
         if (y != 0) {
-            buf_sprintf(screen_buf, "\n");
+            screen_ss << '\n';
         }
 
         /* Dump each row */
@@ -227,31 +215,28 @@ concptr make_screen_dump(PlayerType *player_ptr)
                 rv = angband_color_table[a][1];
                 gv = angband_color_table[a][2];
                 bv = angband_color_table[a][3];
-                buf_sprintf(screen_buf, "%s<font color=\"#%02x%02x%02x\">", ((y == 0 && x == 0) ? "" : "</font>"), rv, gv, bv);
+                screen_ss << format("%s<font color=\"#%02x%02x%02x\">", ((y == 0 && x == 0) ? "" : "</font>"), rv, gv, bv);
                 old_a = a;
             }
 
             if (cc) {
-                buf_sprintf(screen_buf, "%s", cc);
+                screen_ss << cc;
             } else {
-                buf_sprintf(screen_buf, "%c", c);
+                screen_ss << c;
             }
         }
     }
 
-    buf_sprintf(screen_buf, "</font>");
+    screen_ss << "</font>\n";
 
-    for (int i = 0; html_foot[i]; i++) {
-        buf_sprintf(screen_buf, html_foot[i]);
-    }
+    screen_ss << html_foot;
 
-    /* Screen dump size is too big ? */
     concptr ret;
-    if (screen_buf.size() + 1 > SCREEN_BUF_MAX_SIZE) {
-        ret = nullptr;
+    if (const auto screen_dump_size = screen_ss.tellp();
+        (0 <= screen_dump_size) && (screen_dump_size < SCREEN_BUF_MAX_SIZE)) {
+        ret = string_make(screen_ss.str().data());
     } else {
-        screen_buf.push_back('\0');
-        ret = string_make(screen_buf.data());
+        ret = nullptr;
     }
 
     if (!old_use_graphics) {
