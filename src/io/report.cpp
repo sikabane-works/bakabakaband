@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @file report.c
  * @brief スコアサーバ転送機能の実装
  * @date 2014/07/14
@@ -151,10 +151,8 @@ concptr make_screen_dump(PlayerType *player_ptr)
         0,
     };
 
-    int wid, hgt;
-    term_get_size(&wid, &hgt);
-
-    std::vector<char> screen_buf;
+    const auto [wid, hgt] = term_get_size();
+    std::stringstream screen_ss;
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     bool old_use_graphics = use_graphics;
