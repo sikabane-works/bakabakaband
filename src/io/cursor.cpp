@@ -103,9 +103,7 @@ void print_path(PlayerType *player_ptr, POSITION y, POSITION x)
  */
 bool change_panel(PlayerType *player_ptr, POSITION dy, POSITION dx)
 {
-    TERM_LEN wid, hgt;
-    get_screen_size(&wid, &hgt);
-
+    const auto [wid, hgt] = get_screen_size();
     POSITION y = panel_row_min + dy * hgt / 2;
     POSITION x = panel_col_min + dx * wid / 2;
 
@@ -144,8 +142,7 @@ bool change_panel(PlayerType *player_ptr, POSITION dy, POSITION dx)
  */
 void panel_bounds_center(void)
 {
-    TERM_LEN wid, hgt;
-    get_screen_size(&wid, &hgt);
+    const auto [wid, hgt] = get_screen_size();
     panel_row_max = panel_row_min + hgt - 1;
     panel_row_prt = panel_row_min - 1;
     panel_col_max = panel_col_min + wid - 1;
