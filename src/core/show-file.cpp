@@ -136,6 +136,8 @@ static void show_file_aux_line(std::string_view str, int cy, std::string_view sh
  */
 bool show_file(PlayerType *player_ptr, bool show_version, std::string_view name_with_tag, int initial_line, uint32_t mode, std::string_view what)
 {
+    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, std::nullopt);
+
     int wid, hgt;
     term_get_size(&wid, &hgt);
 

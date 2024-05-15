@@ -1,4 +1,4 @@
-#include "io-dump/character-dump.h"
+﻿#include "io-dump/character-dump.h"
 #include "artifact/fixed-art-types.h"
 #include "avatar/avatar.h"
 #include "cmd-building/cmd-building.h"
@@ -609,7 +609,7 @@ static std::string get_check_sum(void)
  */
 void make_character_dump(PlayerType *player_ptr, FILE *fff)
 {
-    TermCenteredOffsetSetter tos(MAIN_TERM_MIN_COLS, std::nullopt);
+    TermCenteredOffsetSetter tos(std::nullopt, std::nullopt);
 
     fprintf(fff, _("  [%s キャラクタ情報]\n\n", "  [%s Character Dump]\n\n"), get_version().data());
 
