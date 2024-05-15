@@ -134,22 +134,22 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
     const auto &baseitems = BaseitemList::get_instance();
     for (auto i = 0; i < num; i++) {
         auto am_ptr = pt.pick_one_at_random();
-        const auto bi_id = baseitems.lookup_baseitem_id(am_ptr->key);
-        const auto insta_art = baseitems.get_baseitem(bi_id).gen_flags.has(ItemGenerationTraitType::INSTA_ART);
+        const auto &baseitem = baseitems.lookup_baseitem(am_ptr->key);
+        const auto insta_art = baseitem.gen_flags.has(ItemGenerationTraitType::INSTA_ART);
         const auto flag = am_ptr->flag;
         const auto fixed_art = flag == AmusementFlagType::FIXED_ART;
         std::optional<FixedArtifactId> opt_a_idx;
         if (insta_art || fixed_art) {
-            opt_a_idx = sweep_amusement_artifact(insta_art, bi_id);
-            if (!opt_a_idx.has_value()) {
+            opt_a_idx = sweep_amusement_artifact(insta_art, baseitem.idx);
+            if (!opt_a_idx) {
                 continue;
             }
         }
 
         ItemEntity item;
-        item.prep(bi_id);
-        if (opt_a_idx.has_value()) {
-            item.fixed_artifact_idx = opt_a_idx.value();
+        item.prep(baseitem.idx);
+        if (opt_a_idx) {
+            item.fixed_artifact_idx = *opt_a_idx;
         }
 
         ItemMagicApplier(player_ptr, &item, 1, AM_NO_FIXED_ART).execute();
