@@ -815,6 +815,8 @@ ProcessResult effect_monster_stungun(PlayerType *player_ptr, EffectMonster *em_p
     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
         em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::IMMUNE_ELEC);
     }
+
+    return ProcessResult::PROCESS_CONTINUE;
 }
 
 ProcessResult effect_monster_meteor(PlayerType *player_ptr, EffectMonster *em_ptr)
