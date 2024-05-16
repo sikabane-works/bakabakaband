@@ -171,7 +171,7 @@ static void on_dead_drop_kind_item(PlayerType *player_ptr, MonsterDeath *md_ptr)
         int drop_nums = damroll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
-            q_ptr->prep(kind_idx);
+            q_ptr->generate(kind_idx);
             switch (grade) {
             /* Apply bad magic, but first clear object */
             case -2:
@@ -225,7 +225,7 @@ static void on_dead_drop_tval_item(PlayerType *player_ptr, MonsterDeath *md_ptr)
         int drop_nums = damroll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
-            q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ i2enum<ItemKindType>(tval), 0 }));
+            q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ i2enum<ItemKindType>(tval), 0 }));
             switch (grade) {
             /* Apply bad magic, but first clear object */
             case -2:
@@ -266,7 +266,7 @@ static void on_dead_bottle_gnome(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     ItemEntity forge;
     ItemEntity *q_ptr = &forge;
-    q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::POTION, SV_POTION_CURE_CRITICAL }));
+    q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::POTION, SV_POTION_CURE_CRITICAL }));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -286,7 +286,7 @@ static void on_dead_inariman1_2(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     ItemEntity forge;
     ItemEntity *q_ptr = &forge;
-    q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI2 }));
+    q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI2 }));
     ItemMagicApplier(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | md_ptr->mo_mode).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -295,7 +295,7 @@ static void on_dead_inariman3(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     ItemEntity forge;
     ItemEntity *q_ptr = &forge;
-    q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI3 }));
+    q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI3 }));
     ItemMagicApplier(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | md_ptr->mo_mode).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
