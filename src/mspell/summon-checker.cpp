@@ -159,6 +159,9 @@ bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, M
     case SUMMON_TURBAN_KID:
         return r_idx == MonsterRaceId::TURBAN_KID;
         break;
+    case SUMMON_DEAD_UNIQUE: {
+        return monrace.kind_flags.has(MonsterKindType::UNIQUE) && monrace.mob_num == 0;
+    }
 
     default:
         return false;

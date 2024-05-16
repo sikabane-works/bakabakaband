@@ -55,4 +55,5 @@ enum summon_type : int {
     SUMMON_ANTI_TIGERS = 71, /*!< 召喚タイプ: トラ以外 */
     SUMMON_POWERFUL_EYE_SENIOR = 72, /*!< 召喚タイプ: 目力先輩 */
     SUMMON_TURBAN_KID = 73, /*!< 召喚タイプ: ターバンのガキ */
+    SUMMON_DEAD_UNIQUE = 74, /*!< 召喚タイプ: 撃破済みユニーク */
 };
