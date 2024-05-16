@@ -80,7 +80,7 @@ static bool open_diary_file(FILE **fff, bool *disable_diary)
  */
 static std::pair<QuestId, std::string> write_floor(const FloorType &floor)
 {
-    auto q_idx = quest_number(floor, floor.dun_level);
+    auto q_idx = floor.get_quest_id();
     if (!write_level) {
         return make_pair(q_idx, std::string());
     }
@@ -271,7 +271,7 @@ void exe_write_diary(PlayerType *player_ptr, DiaryKind dk, int num, std::string_
     }
 
     const auto &floor = *player_ptr->current_floor_ptr;
-    const auto [q_idx, note_level] = write_floor(floor);
+    const auto &[q_idx, note_level] = write_floor(floor);
     auto do_level = true;
     switch (dk) {
     case DiaryKind::DIALY:
