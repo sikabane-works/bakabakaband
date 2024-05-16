@@ -73,10 +73,9 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
 {
     PlayerType dummy;
     uint16_t why = 2;
-    char nam[MAX_MONSTER_NAME + 10]; // ユニークには[U] が付くので少し伸ばす
-    const auto &path = path_build(ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
-    if (!spoiler_file) {
+    const auto path = path_build(ANGBAND_DIR_USER, fname);
+    std::ofstream ofs(path);
+    if (!ofs) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
@@ -108,13 +107,15 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
         }
 
         const auto name = str_separate(r_ptr->name, 40);
+        std::string nam;
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            sprintf(nam, "[U] %s", name.front().data());
+            nam = "[U] ";
         } else if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) {
-            sprintf(nam, "[N] %s", name.front().data());
+            nam = "[N] ";
         } else {
-            sprintf(nam, _("    %s", "The %s"), name.front().data());
+            nam = _("    ", "The ");
         }
+        nam.append(name.front());
 
         const auto lev = format("%d", r_ptr->level);
         const auto rar = format("%d", (int)r_ptr->rarity);
@@ -129,7 +130,7 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
 
         const auto symbol = format("%s '%c'", attr_to_text(r_ptr), r_ptr->d_char);
         fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n",
-            nam, lev.data(), rar.data(), spd.data(), hp.data(),
+            nam.data(), lev.data(), rar.data(), spd.data(), hp.data(),
             ac.data(), symbol.data());
 
         for (auto i = 1U; i < name.size(); ++i) {
@@ -159,10 +160,10 @@ static void roff_func(TERM_COLOR attr, std::string_view str)
  * Create a spoiler file for monsters (-SHAWN-)
  * @param fname ファイル名
  */
-SpoilerOutputResultType spoil_mon_info(concptr fname)
+SpoilerOutputResultType spoil_mon_info()
 {
     PlayerType dummy;
-    const auto &path = path_build(ANGBAND_DIR_USER, fname);
+    const auto path = path_build(ANGBAND_DIR_USER, "mon-info.txt");
     spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
