@@ -389,7 +389,7 @@ void print_health(PlayerType *player_ptr, bool riding)
     }
 
     const auto max_width = 12; // 表示幅
-    const auto [wid, hgt] = term_get_size();
+    const auto &[wid, hgt] = term_get_size();
     const auto extra_line_count = riding ? 0 : hgt - MAIN_TERM_MIN_ROWS;
     for (auto y = row; y < row + extra_line_count + 1; ++y) {
         term_erase(col, y, max_width);
@@ -406,8 +406,7 @@ void print_health(PlayerType *player_ptr, bool riding)
         return;
     }
 
-    const auto [hit_point_bar_color, len] = monster.get_hp_bar_data();
-
+    const auto &[hit_point_bar_color, len] = monster.get_hp_bar_data();
     term_putstr(col, row, max_width, TERM_WHITE, "[----------]");
     term_putstr(col + 1, row, len, hit_point_bar_color, "**********");
 
