@@ -116,8 +116,8 @@ graphics_mode change_graphics(graphics_mode arg)
         return current_graphics_mode;
     }
 
-    const auto &path = path_build(ANGBAND_DIR_XTRA_GRAF, name);
-    const auto &filename = path.string();
+    const auto path = path_build(ANGBAND_DIR_XTRA_GRAF, name);
+    const auto filename = path.string();
     infGraph.hBitmap = read_graphic(filename.data());
     if (!infGraph.hBitmap) {
         plog_fmt(_("ビットマップ '%s' を読み込めません。", "Cannot read bitmap file '%s'"), name.data());
