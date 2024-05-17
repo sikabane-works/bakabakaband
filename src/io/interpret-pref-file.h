@@ -1,8 +1,7 @@
 #pragma once
 
-#include "system/angband.h"
-
-#define HISTPREF_LIMIT 1024
+#include <optional>
+#include <string>
 
 extern std::optional<std::string> histpref_buf;
 

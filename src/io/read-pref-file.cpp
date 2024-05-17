@@ -19,6 +19,7 @@
 #include "util/angband-files.h"
 #include "util/finalizer.h"
 #include "util/buffer-shaper.h"
+#include "util/finalizer.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "world/world.h"
