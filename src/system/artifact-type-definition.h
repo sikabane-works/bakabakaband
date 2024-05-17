@@ -39,6 +39,8 @@ public:
     FLOOR_IDX floor_id{}; /*! アイテムを落としたフロアのID / Leaved on this location last time */
     RandomArtActType act_idx{}; /*! 発動能力ID / Activative ability index */
     PERCENTAGE broken_rate; /*!< 発動破損率 */
+
+    bool can_generate(const BaseitemKey &bi_key) const;
 };
 
 extern std::map<FixedArtifactId, ArtifactType> artifacts_info;
