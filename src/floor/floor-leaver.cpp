@@ -42,6 +42,7 @@
 #include "target/projection-path-calculator.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
+#include "wizard/wizard-messages.h"
 #include "world/world.h"
 
 static void check_riding_preservation(PlayerType *player_ptr)
