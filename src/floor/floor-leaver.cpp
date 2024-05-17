@@ -340,7 +340,7 @@ static void jump_floors(PlayerType *player_ptr)
     auto &floor = *player_ptr->current_floor_ptr;
     const auto &dungeon = floor.get_dungeon_definition();
     if (any_bits(mode, CFM_DOWN)) {
-        if (!floor.is_in_dungeon()) {
+        if (!floor.is_in_underground()) {
             move_num = dungeon.mindepth;
         }
     } else if (any_bits(mode, CFM_UP)) {
@@ -355,7 +355,7 @@ static void jump_floors(PlayerType *player_ptr)
 static void exit_to_wilderness(PlayerType *player_ptr)
 {
     auto &floor = *player_ptr->current_floor_ptr;
-    if (floor.is_in_dungeon() || (floor.dungeon_idx == 0)) {
+    if (floor.is_in_underground() || (floor.dungeon_idx == 0)) {
         return;
     }
 
@@ -470,23 +470,25 @@ void leave_floor(PlayerType *player_ptr)
  */
 void jump_floor(PlayerType *player_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
 {
-    player_ptr->current_floor_ptr->dungeon_idx = dun_idx;
-    auto &floor_ref = *player_ptr->current_floor_ptr;
-    floor_ref.dun_level = depth;
+    auto &floor = *player_ptr->current_floor_ptr;
+    floor.set_dungeon_index(dun_idx);
+    floor.dun_level = depth;
     prepare_change_floor_mode(player_ptr, CFM_RAND_PLACE);
-    if (!floor_ref.is_in_dungeon()) {
-        player_ptr->current_floor_ptr->dungeon_idx = 0;
+    if (!floor.is_in_underground()) {
+        floor.reset_dungeon_index();
     }
 
-    floor_ref.inside_arena = false;
+    floor.inside_arena = false;
     player_ptr->wild_mode = false;
     leave_quest_check(player_ptr);
-    if (record_stair) {
-        exe_write_diary(player_ptr, DiaryKind::PAT_TELE, 0, _("直接テレポートした", "teleport floor directly."));
-    }
-
-    floor_ref.quest_number = QuestId::NONE;
+    auto to = !floor.is_in_underground()
+                  ? _("地上", "the surface")
+                  : format(_("%d階(%s)", "level %d of %s"), floor.dun_level, floor.get_dungeon_definition().name.data());
+    constexpr auto mes = _("%sへとウィザード・テレポートで移動した。\n", "You wizard-teleported to %s.\n");
+    msg_print_wizard(player_ptr, 2, format(mes, to.data()));
+    floor.quest_number = QuestId::NONE;
     PlayerEnergy(player_ptr).reset_player_turn();
     player_ptr->energy_need = 0;
-    move_floor(player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
+    prepare_change_floor_mode(player_ptr, CFM_FIRST_FLOOR);
+    player_ptr->leaving = true;
 }

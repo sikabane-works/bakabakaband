@@ -105,7 +105,7 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
         }
 #endif
         if (m_idx <= 0) {
-            if (!floor.is_in_dungeon()) {
+            if (!floor.is_in_underground()) {
                 floor.set_dungeon_index(ironman_downward ? DUNGEON_ANGBAND : player_ptr->recall_dungeon);
                 player_ptr->oldpy = player_ptr->y;
                 player_ptr->oldpx = player_ptr->x;
@@ -119,7 +119,7 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
                 do_cmd_save_game(player_ptr, true);
             }
 
-            if (!floor.is_in_dungeon()) {
+            if (!floor.is_in_underground()) {
                 const auto &recall_dungeon = floor.get_dungeon_definition();
                 floor.dun_level = recall_dungeon.mindepth;
                 move_floor(player_ptr, CFM_RAND_PLACE);
@@ -438,7 +438,7 @@ bool recall_player(PlayerType *player_ptr, TIME_EFFECT turns)
         return true;
     }
 
-    bool is_special_floor = floor.is_in_dungeon();
+    bool is_special_floor = floor.is_in_underground();
     is_special_floor &= max_dlv[floor.dungeon_idx] > floor.dun_level;
     is_special_floor &= !floor.is_in_quest();
     is_special_floor &= !player_ptr->word_recall;
@@ -465,7 +465,7 @@ bool recall_player(PlayerType *player_ptr, TIME_EFFECT turns)
         turns *= 100;
     }
 
-    if (!floor.is_in_dungeon()) {
+    if (!floor.is_in_underground()) {
         DUNGEON_IDX select_dungeon;
         select_dungeon = choose_dungeon(_("に帰還", "recall"), 2, 14);
         if (!select_dungeon) {
