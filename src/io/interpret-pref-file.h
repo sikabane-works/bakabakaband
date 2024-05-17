@@ -7,4 +7,4 @@
 extern std::optional<std::string> histpref_buf;
 
 class PlayerType;
-errr interpret_pref_file(PlayerType *player_ptr, char *buf);
+int interpret_pref_file(PlayerType *player_ptr, char *buf);
