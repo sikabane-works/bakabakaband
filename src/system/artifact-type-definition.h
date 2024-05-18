@@ -64,6 +64,8 @@ public:
     std::map<FixedArtifactId, ArtifactType>::const_reverse_iterator rend() const;
     ArtifactType &get_artifact(const FixedArtifactId id) const;
 
+    void reset_generated_flags();
+
 private:
     ArtifactList() = default;
     static ArtifactList instance;
