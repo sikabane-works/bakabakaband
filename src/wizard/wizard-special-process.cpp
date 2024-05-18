@@ -322,19 +322,19 @@ void wiz_create_named_art(PlayerType *player_ptr)
     std::optional<FixedArtifactId> create_a_idx;
     while (!create_a_idx.has_value()) {
         const auto command = input_command("Kind of artifact: ");
-        const auto cmd = command.value_or(ESCAPE);
-        switch (cmd) {
-        case ESCAPE:
+        if (!command) {
             screen_load();
             return;
-        default:
-            if (auto idx = A2I(cmd); idx < group_artifact_list.size()) {
-                const auto &a_idx_list = wiz_collect_group_a_idx(group_artifact_list[idx]);
-                create_a_idx = wiz_select_named_artifact(player_ptr, a_idx_list);
-            }
-
-            break;
         }
+
+        const auto idx = A2I(*command);
+        if (idx >= group_artifact_list.size()) {
+            continue;
+        }
+
+        auto a_idx_list = wiz_collect_group_a_idx(group_artifact_list[idx]);
+        std::sort(a_idx_list.begin(), a_idx_list.end(), [](FixedArtifactId id1, FixedArtifactId id2) { return ArtifactList::get_instance().order(id1, id2); });
+        create_a_idx = wiz_select_named_artifact(player_ptr, a_idx_list);
     }
 
     screen_load();
