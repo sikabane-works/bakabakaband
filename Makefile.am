@@ -22,6 +22,7 @@ visual_studio_files = \
 	Bakabakaband/Bakabakaband/packages.config
 
 schema_files = \
+	schema/ArtifactDefinitions.schema.json
 	schema/MonraceDefinitions.schema.json
 
 EXTRA_DIST = \
