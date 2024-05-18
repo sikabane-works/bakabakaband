@@ -41,19 +41,19 @@ ObjectQuaffEntity::ObjectQuaffEntity(PlayerType *player_ptr)
 
 /*!
  * @brief 薬を飲む.
- * @param item 飲む薬オブジェクトの所持品ID
+ * @param i_idx 薬のインベントリID
  * @details
  * 効果発動のあと、食料タイプによって空腹度を少し充足する。
  * 但し骸骨は除く
  */
-void ObjectQuaffEntity::execute(INVENTORY_IDX item)
+void ObjectQuaffEntity::execute(INVENTORY_IDX i_idx)
 {
     if (!this->can_influence()) {
         return;
     }
 
-    const auto &o_ref = this->copy_object(item);
-    vary_item(this->player_ptr, item, -1);
+    const auto &o_ref = this->copy_object(i_idx);
+    vary_item(this->player_ptr, i_idx, -1);
     sound(SOUND_QUAFF);
 
     player_ptr->plus_incident(INCIDENT::QUAFF, 1);
@@ -124,9 +124,9 @@ bool ObjectQuaffEntity::can_quaff()
     return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて瓶の蓋を開けられなかった！", "You are too stunned to quaff it!"));
 }
 
-ItemEntity ObjectQuaffEntity::copy_object(const INVENTORY_IDX item)
+ItemEntity ObjectQuaffEntity::copy_object(const INVENTORY_IDX i_idx)
 {
-    auto *tmp_o_ptr = ref_item(this->player_ptr, item);
+    auto *tmp_o_ptr = ref_item(this->player_ptr, i_idx);
     auto o_val = *tmp_o_ptr;
     o_val.number = 1;
     return o_val;

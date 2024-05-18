@@ -483,17 +483,17 @@ static bool exe_eat_food_type_object(PlayerType *player_ptr, const BaseitemKey &
  * @brief 魔法道具のチャージをの食料として食べたときの効果を発動
  * @param player_ptr プレイヤー情報への参照ポインタ
  * @param o_ptr 食べるオブジェクト
- * @param inventory オブジェクトのインベントリ番号
+ * @param i_idx オブジェクトのインベントリ番号
  * @return 食べようとしたらTRUE、しなかったらFALSE
  */
-static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o_ptr, short inventory)
+static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o_ptr, short i_idx)
 {
     if (!o_ptr->is_wand_staff() || (PlayerRace(player_ptr).food() != PlayerRaceFoodType::MANA)) {
         return false;
     }
 
     const auto is_staff = o_ptr->bi_key.tval() == ItemKindType::STAFF;
-    if (is_staff && (inventory < 0) && (o_ptr->number > 1)) {
+    if (is_staff && (i_idx < 0) && (o_ptr->number > 1)) {
         msg_print(_("まずは杖を拾わなければ。", "You must first pick up the staffs."));
         return true;
     }
@@ -517,7 +517,7 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
     set_food(player_ptr, player_ptr->food + 5000);
 
     /* XXX Hack -- unstack if necessary */
-    if (is_staff && (inventory >= 0) && (o_ptr->number > 1)) {
+    if (is_staff && (i_idx >= 0) && (o_ptr->number > 1)) {
         auto item = *o_ptr;
 
         /* Modify quantity */
@@ -528,14 +528,14 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
 
         /* Unstack the used item */
         o_ptr->number--;
-        inventory = store_item_to_inventory(player_ptr, &item);
+        i_idx = store_item_to_inventory(player_ptr, &item);
         msg_format(_("杖をまとめなおした。", "You unstack your staff."));
     }
 
-    if (inventory >= 0) {
-        inven_item_charges(player_ptr->inventory_list[inventory]);
+    if (i_idx >= 0) {
+        inven_item_charges(player_ptr->inventory_list[i_idx]);
     } else {
-        floor_item_charges(player_ptr->current_floor_ptr, 0 - inventory);
+        floor_item_charges(player_ptr->current_floor_ptr, 0 - i_idx);
     }
 
     static constexpr auto flags = {
@@ -547,10 +547,10 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
 }
 
 /*!
- * @brief 実際にアイテムを食おうとするコマンドのサブルーチン
- * @param item 食べるオブジェクトの所持品ID
+ * @brief 食料を食べるコマンドのサブルーチン
+ * @param i_idx 食べるオブジェクトの所持品ID
  */
-void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
+void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 {
     if (music_singing_any(player_ptr)) {
         stop_singing(player_ptr);
@@ -561,7 +561,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         (void)spell_hex.stop_all_spells();
     }
 
-    auto *o_ptr = ref_item(player_ptr, item);
+    auto *o_ptr = ref_item(player_ptr, i_idx);
 
     sound(SOUND_EAT);
 
@@ -621,7 +621,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     rfu.set_flags(flags_swrf);
 
     /* Undeads drain recharge of magic device */
-    if (exe_eat_charge_of_magic_device(player_ptr, o_ptr, item)) {
+    if (exe_eat_charge_of_magic_device(player_ptr, o_ptr, i_idx)) {
         rfu.set_flags(flags_srf);
         return;
     }
@@ -637,7 +637,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         (void)set_food(player_ptr, PY_FOOD_MAX - 1);
 
         rfu.set_flags(flags_srf);
-        vary_item(player_ptr, item, -1);
+        vary_item(player_ptr, i_idx, -1);
         return;
     }
 
@@ -695,7 +695,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     player_ptr->plus_incident(INCIDENT::EAT, 1);
 
     rfu.set_flags(flags_srf);
-    vary_item(player_ptr, item, -1);
+    vary_item(player_ptr, i_idx, -1);
 }
 
 /*!

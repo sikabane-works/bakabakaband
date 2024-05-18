@@ -313,28 +313,20 @@ static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 }
 
 /*!
- * @brief 装備を発動するコマンドのサブルーチン /
- * Activate a wielded object.  Wielded objects never stack.
- * And even if they did, activatable objects never stack.
- * @param item 発動するオブジェクトの所持品ID
- * @details
- * <pre>
- * Currently, only (some) artifacts, and Dragon Scale Mail, can be activated.
- * But one could, for example, easily make an activatable "Ring of Plasma".
- * Note that it always takes a turn to activate an artifact, even if
- * the user hits "escape" at the "direction" prompt.
- * </pre>
+ * @brief 装備を発動するコマンドのサブルーチン
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param i_idx 発動するオブジェクトの所持品ID
  */
-void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
+void exe_activate(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 {
     bool activated = false;
-    if (item <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[item].bi_id].flags.has_not(TR_INVEN_ACTIVATE)) {
+    if (i_idx <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[i_idx].bi_id].flags.has_not(TR_INVEN_ACTIVATE)) {
         msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
         return;
     }
 
     ae_type tmp_ae;
-    ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, item);
+    ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, i_idx);
 
     if (ae_ptr->o_ptr->ego_idx == EgoType::SHATTERED || ae_ptr->o_ptr->ego_idx == EgoType::BLASTED) {
         msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
