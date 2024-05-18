@@ -216,14 +216,14 @@ void wiz_create_item(PlayerType *player_ptr)
 /*!
  * @brief 指定したIDの固定アーティファクトの名称を取得する
  *
- * @param a_idx 固定アーティファクトのID
+ * @param fa_id 固定アーティファクトのID
  * @return 固定アーティファクトの名称(Ex. ★ロング・ソード『リンギル』)を保持する std::string オブジェクト
  */
-static std::string wiz_make_named_artifact_desc(PlayerType *player_ptr, FixedArtifactId a_idx)
+static std::string wiz_make_named_artifact_desc(PlayerType *player_ptr, FixedArtifactId fa_id)
 {
-    const auto &artifact = ArtifactList::get_instance().get_artifact(a_idx);
+    const auto &artifact = ArtifactList::get_instance().get_artifact(fa_id);
     ItemEntity item(artifact.bi_key);
-    item.fixed_artifact_idx = a_idx;
+    item.fixed_artifact_idx = fa_id;
     item.mark_as_known();
     return describe_flavor(player_ptr, &item, OD_NAME_ONLY);
 }
@@ -231,58 +231,16 @@ static std::string wiz_make_named_artifact_desc(PlayerType *player_ptr, FixedArt
 /**
  * @brief 固定アーティファクトをリストから選択する
  *
- * @param a_idx_list 選択する候補となる固定アーティファクトのIDのリスト
+ * @param fa_ids 選択する候補となる固定アーティファクトのIDのリスト
  * @return 選択した固定アーティファクトのIDを返す。但しキャンセルした場合は std::nullopt を返す。
  */
-static std::optional<FixedArtifactId> wiz_select_named_artifact(PlayerType *player_ptr, const std::vector<FixedArtifactId> &a_idx_list)
+static std::optional<FixedArtifactId> wiz_select_named_artifact(PlayerType *player_ptr, const std::vector<FixedArtifactId> &fa_ids)
 {
-    constexpr auto MAX_PER_PAGE = 20UL;
-    const auto page_max = (a_idx_list.size() - 1) / MAX_PER_PAGE + 1;
-    auto current_page = 0UL;
+    CandidateSelector cs("Which artifact: ", 15);
 
-    screen_save();
-
-    std::optional<FixedArtifactId> selected_a_idx;
-
-    while (!selected_a_idx.has_value()) {
-        const auto page_base_idx = current_page * MAX_PER_PAGE;
-        for (auto i = 0U; i < MAX_PER_PAGE + 1; ++i) {
-            term_erase(14, i + 1, 255);
-        }
-        const auto page_item_count = std::min(MAX_PER_PAGE, a_idx_list.size() - page_base_idx);
-        for (auto i = 0U; i < page_item_count; ++i) {
-            std::stringstream ss;
-            ss << I2A(i) << ") " << wiz_make_named_artifact_desc(player_ptr, a_idx_list[page_base_idx + i]);
-            put_str(ss.str(), i + 1, 15);
-        }
-        if (page_max > 1) {
-            put_str(format("-- more (%d/%d) --", current_page + 1, page_max), page_item_count + 1, 15);
-        }
-
-        const auto command = input_command("Which artifact: ");
-        const auto cmd = command.value_or(ESCAPE);
-        switch (cmd) {
-        case ESCAPE:
-            screen_load();
-            return selected_a_idx;
-        case ' ':
-            current_page++;
-            if (current_page >= page_max) {
-                current_page = 0;
-            }
-            break;
-        default:
-            const auto select_idx = A2I(cmd) + page_base_idx;
-            if (select_idx < a_idx_list.size()) {
-                selected_a_idx = a_idx_list[select_idx];
-            }
-            break;
-        }
-    }
-
-    screen_load();
-
-    return selected_a_idx;
+    auto describe_artifact = [player_ptr](FixedArtifactId fa_id) { return wiz_make_named_artifact_desc(player_ptr, fa_id); };
+    const auto it = cs.select(fa_ids, describe_artifact);
+    return (it != fa_ids.end()) ? std::make_optional(*it) : std::nullopt;
 }
 
 /**
@@ -290,7 +248,7 @@ static std::optional<FixedArtifactId> wiz_select_named_artifact(PlayerType *play
  * @param group_artifact 固定アーティファクトのカテゴリ
  * @return 該当のカテゴリの固定アーティファクトのIDのリスト
  */
-static std::vector<FixedArtifactId> wiz_collect_group_a_idx(const grouper &group_artifact)
+static std::vector<FixedArtifactId> wiz_collect_group_fa_ids(const grouper &group_artifact)
 {
     const auto &[tvals, name] = group_artifact;
     std::vector<FixedArtifactId> fa_ids;
@@ -319,8 +277,8 @@ void wiz_create_named_art(PlayerType *player_ptr)
         put_str(ss.str(), i + 1, 15);
     }
 
-    std::optional<FixedArtifactId> create_a_idx;
-    while (!create_a_idx.has_value()) {
+    std::optional<FixedArtifactId> created_fa_id;
+    while (!created_fa_id) {
         const auto command = input_command("Kind of artifact: ");
         if (!command) {
             screen_load();
@@ -332,20 +290,19 @@ void wiz_create_named_art(PlayerType *player_ptr)
             continue;
         }
 
-        auto a_idx_list = wiz_collect_group_a_idx(group_artifact_list[idx]);
-        std::sort(a_idx_list.begin(), a_idx_list.end(), [](FixedArtifactId id1, FixedArtifactId id2) { return ArtifactList::get_instance().order(id1, id2); });
-        create_a_idx = wiz_select_named_artifact(player_ptr, a_idx_list);
+        auto fa_ids = wiz_collect_group_fa_ids(group_artifact_list[idx]);
+        std::sort(fa_ids.begin(), fa_ids.end(), [](FixedArtifactId id1, FixedArtifactId id2) { return ArtifactList::get_instance().order(id1, id2); });
+        created_fa_id = wiz_select_named_artifact(player_ptr, fa_ids);
     }
 
     screen_load();
-    const auto a_idx = *create_a_idx;
-    const auto &artifact = ArtifactList::get_instance().get_artifact(a_idx);
+    const auto &artifact = ArtifactList::get_instance().get_artifact(*created_fa_id);
     if (artifact.is_generated) {
         msg_print("It's already allocated.");
         return;
     }
 
-    (void)create_named_art(player_ptr, a_idx, player_ptr->y, player_ptr->x);
+    (void)create_named_art(player_ptr, *created_fa_id, player_ptr->y, player_ptr->x);
     msg_print("Allocated.");
 }
 
