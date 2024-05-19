@@ -20,6 +20,7 @@
 #include "monster-race/race-wilderness-flags.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
+#include "view/colored-char.h"
 #include <map>
 #include <set>
 #include <string>
@@ -63,12 +64,12 @@ public:
  */
 class MonsterRaceInfo {
 public:
-    MonsterRaceInfo() = default;
+    MonsterRaceInfo();
 
     MonsterRaceId idx{};
-    std::string name; //!< 名前データのオフセット(日本語) /  Name offset(Japanese)
+    std::string name = ""; //!< 名前データのオフセット(日本語) /  Name offset(Japanese)
 #ifdef JP
-    std::string E_name; //!< 名前データのオフセット(英語) /  Name offset(English)
+    std::string E_name = ""; //!< 名前データのオフセット(英語) /  Name offset(English)
 #endif
     std::string tag; //!< 定義用タグ
     std::string text; //!< 思い出テキストのオフセット / Lore text offset
@@ -117,8 +118,7 @@ public:
     EXP next_exp{}; //!< 進化に必要な経験値
     DEPTH level{}; //!< レベル / Level of creature
     RARITY rarity{}; //!< レアリティ / Rarity of creature
-    TERM_COLOR d_attr{}; //!< デフォルトの表示色 / Default monster attribute
-    char d_char{}; //!< デフォルトの表示文字 / Default monster character
+    ColoredChar cc_def{}; //!< 定義上のシンボル (色/文字).
     TERM_COLOR x_attr{}; //!< 設定した表示色(またはタイル位置Y) / Desired monster attribute
     char x_char{}; //!< 設定した表示文字(またはタイル位置X) / Desired monster character
     MONSTER_NUMBER max_num{}; //!< 動員基本最大数

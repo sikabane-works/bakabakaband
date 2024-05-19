@@ -137,7 +137,7 @@ void do_cmd_query_symbol(PlayerType *player_ptr)
                 monraces.push_back(monrace_id);
         }
 
-        else if (all || (monrace.d_char == sym)) {
+        else if (all || (monrace.cc_def.character == sym_opt)) {
             monraces.push_back(monrace_id);
         }
     }

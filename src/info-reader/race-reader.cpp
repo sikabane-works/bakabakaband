@@ -170,9 +170,8 @@ static errr set_mon_symbol(const nlohmann::json &symbol_data, MonsterRaceInfo &m
     if (color->second > 127) {
         return PARSE_ERROR_GENERIC;
     }
-    monrace.d_char = character_obj.get<std::string>().front();
-    monrace.d_attr = color->second;
 
+    monrace.cc_def = { color->second, character_obj.get<std::string>().front() };
     return PARSE_ERROR_NONE;
 }
 
