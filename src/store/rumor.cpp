@@ -116,9 +116,8 @@ void display_rumor(PlayerType *player_ptr, bool ex)
         const auto &artifact_name = tokens[1];
         const auto &[a_idx, a_ptr] = get_artifact_definition(artifact_name);
         const auto bi_id = BaseitemList::get_instance().lookup_baseitem_id(a_ptr->bi_key);
-        ItemEntity item;
-        item.generate(bi_id);
-        item.fixed_artifact_idx = a_idx;
+        ItemEntity item(bi_id);
+        item.fa_id = a_idx;
         item.ident = IDENT_STORE;
         fullname = describe_flavor(player_ptr, &item, OD_NAME_ONLY);
     } else if (category == "MONSTER") {

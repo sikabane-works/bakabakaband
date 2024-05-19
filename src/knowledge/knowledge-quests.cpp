@@ -104,10 +104,8 @@ static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
                     std::string item_name("");
                     if (quest.has_reward()) {
                         const auto &artifact = quest.get_reward();
-                        ItemEntity item;
-                        const auto bi_id = baseitems.lookup_baseitem_id(artifact.bi_key);
-                        item.generate(bi_id);
-                        item.fixed_artifact_idx = quest.reward_artifact_idx;
+                        ItemEntity item(artifact.bi_key);
+                        item.fa_id = quest.reward_fa_id;
                         item.ident = IDENT_STORE;
                         item_name = describe_flavor(player_ptr, &item, OD_NAME_ONLY);
                     }
