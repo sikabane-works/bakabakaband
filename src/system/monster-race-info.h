@@ -119,9 +119,8 @@ public:
     DEPTH level{}; //!< レベル / Level of creature
     RARITY rarity{}; //!< レアリティ / Rarity of creature
     ColoredChar cc_def{}; //!< 定義上のシンボル (色/文字).
-    TERM_COLOR x_attr{}; //!< 設定した表示色(またはタイル位置Y) / Desired monster attribute
-    char x_char{}; //!< 設定した表示文字(またはタイル位置X) / Desired monster character
-    MONSTER_NUMBER max_num{}; //!< 動員基本最大数
+    ColoredChar cc_config{}; //!< 設定したシンボル (色/文字).
+    MONSTER_NUMBER max_num{}; //!< 階に最大存在できる数 / Maximum population allowed per level
     MONSTER_NUMBER mob_num{}; //!< 動員可能数
     MONSTER_NUMBER cur_num{}; //!< 階に現在いる数 / Monster population on current level
     MONSTER_NUMBER father_r_idx{}; //!< 父親モンスター種族ID

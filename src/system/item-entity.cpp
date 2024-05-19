@@ -621,7 +621,7 @@ TERM_COLOR ItemEntity::get_color() const
         return cc_config.color;
     }
 
-    return monraces_info[i2enum<MonsterRaceId>(this->pval)].x_attr;
+    return monraces_info[i2enum<MonsterRaceId>(this->pval)].cc_config.color;
 }
 
 /*
