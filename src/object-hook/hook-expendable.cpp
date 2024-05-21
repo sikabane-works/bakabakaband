@@ -6,7 +6,6 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-enchant.h"
-#include "object/object-flags.h"
 #include "object/tval-types.h"
 #include "perception/object-perception.h"
 #include "player-base/player-race.h"
@@ -71,7 +70,7 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const ItemEntity *o_ptr)
  */
 bool can_player_destroy_object(ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
+    auto flags = o_ptr->get_flags();
     if (flags.has(TR_INDESTRUCTIBLE)) {
         return false;
     }
