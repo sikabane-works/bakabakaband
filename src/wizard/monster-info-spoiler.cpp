@@ -77,12 +77,6 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
     PlayerType dummy;
     uint16_t why = 2;
     char nam[MAX_MONSTER_NAME + 10]; // ユニークには[U] が付くので少し伸ばす
-    char lev[80];
-    char rar[80];
-    char spd[80];
-    char ac[80];
-    char hp[80];
-    char symbol[80];
     const auto &path = path_build(ANGBAND_DIR_USER, fname);
     spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
