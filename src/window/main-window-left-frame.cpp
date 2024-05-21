@@ -60,8 +60,7 @@ void print_title(PlayerType *player_ptr)
  */
 void print_level(PlayerType *player_ptr)
 {
-    char tmp[32];
-    sprintf(tmp, "%5d", player_ptr->lev);
+    const auto tmp = format("%5d", player_ptr->lev);
     if (player_ptr->lev >= player_ptr->max_plv) {
         put_str(_("レベル ", "LEVEL "), ROW_LEVEL, 0);
         c_put_str(TERM_L_GREEN, tmp, ROW_LEVEL, COL_LEVEL + 7);
