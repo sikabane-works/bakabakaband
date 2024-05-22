@@ -402,7 +402,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
                 if (randint0(100) < 75) {
                     place_object(player_ptr, y, x, 0L);
                 } else {
-                    place_trap(player_ptr, y, x);
+                    place_trap(floor_ptr, y, x);
                 }
                 break;
 
@@ -436,7 +436,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
 
                 /* Trap */
             case '^':
-                place_trap(player_ptr, y, x);
+                place_trap(floor_ptr, y, x);
                 break;
 
                 /* Black market in a dungeon */
