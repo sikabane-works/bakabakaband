@@ -16,6 +16,7 @@
 #include "monster/monster-status.h"
 #include "monster/monster-util.h"
 #include "player/player-sex.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
@@ -86,7 +87,7 @@ bool polymorph_monster(PlayerType *player_ptr, POSITION y, POSITION x)
     bool targeted = target_who == g_ptr->m_idx;
     bool health_tracked = player_ptr->health_who == g_ptr->m_idx;
 
-    if (floor_ptr->inside_arena || player_ptr->phase_out) {
+    if (floor_ptr->inside_arena || AngbandSystem::get_instance().is_phase_out()) {
         return false;
     }
     if ((player_ptr->riding == g_ptr->m_idx) || m_ptr->mflag2.has(MonsterConstantFlagType::KAGE)) {
