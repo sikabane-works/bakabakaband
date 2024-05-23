@@ -68,7 +68,7 @@ void OtherItemsEnchanter::apply_magic()
     case ItemKindType::CAPTURE:
         this->o_ptr->pval = 0;
         object_aware(this->player_ptr, this->o_ptr);
-        object_known(this->o_ptr);
+        this->o_ptr->mark_as_known();
         break;
     case ItemKindType::FIGURINE:
         this->generate_figurine();
@@ -170,7 +170,7 @@ void OtherItemsEnchanter::generate_corpse()
 
     this->o_ptr->pval = enum2i(r_idx);
     object_aware(this->player_ptr, this->o_ptr);
-    object_known(this->o_ptr);
+    this->o_ptr->mark_as_known();
 }
 
 /*
@@ -196,7 +196,7 @@ void OtherItemsEnchanter::generate_statue()
     }
 
     object_aware(this->player_ptr, this->o_ptr);
-    object_known(this->o_ptr);
+    this->o_ptr->mark_as_known();
 }
 
 /*

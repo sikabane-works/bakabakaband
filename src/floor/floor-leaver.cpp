@@ -300,7 +300,7 @@ static void preserve_info(PlayerType *player_ptr)
     }
 }
 
-static void set_grid_by_leaving_floor(PlayerType *player_ptr, grid_type **g_ptr)
+static void set_grid_by_leaving_floor(PlayerType *player_ptr, Grid **g_ptr)
 {
     if ((player_ptr->change_floor_mode & CFM_SAVE_FLOORS) == 0) {
         return;
@@ -385,7 +385,7 @@ static void kill_saved_floors(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     }
 }
 
-static void refresh_new_floor_id(PlayerType *player_ptr, grid_type *g_ptr)
+static void refresh_new_floor_id(PlayerType *player_ptr, Grid *g_ptr)
 {
     if (new_floor_id != 0) {
         return;
@@ -413,8 +413,7 @@ static void update_upper_lower_or_floor_id(PlayerType *player_ptr, saved_floor_t
 static void exe_leave_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
     player_ptr->plus_incident(INCIDENT::LEAVE_FLOOR, 1);
-
-    grid_type *g_ptr = NULL;
+    Grid *g_ptr = nullptr;
     set_grid_by_leaving_floor(player_ptr, &g_ptr);
     jump_floors(player_ptr);
     exit_to_wilderness(player_ptr);
