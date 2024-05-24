@@ -194,10 +194,10 @@ errr parse_terrains_info(std::string_view buf, angband_header *)
                     info_set_value(terrain_ptr->power, f_tokens[1]);
                     continue;
                 } else if (f_tokens[0] == "HYGIENE") {
-                    info_set_value(f_ptr->hygiene, f_tokens[1]);
+                    info_set_value(terrain_ptr->hygiene, f_tokens[1]);
                     continue;
                 } else if (f_tokens[0] == "C-PRIORITY") {
-                    info_set_value(f_ptr->change_priority, f_tokens[1]);
+                    info_set_value(terrain_ptr->change_priority, f_tokens[1]);
                     continue;
                 }
             }
