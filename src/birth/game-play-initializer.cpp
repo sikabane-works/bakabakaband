@@ -158,7 +158,7 @@ void init_dungeon_quests(PlayerType *player_ptr)
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
     floor.quest_number = QuestId::NONE;
     for (auto quest_id : EnumRange(QuestId::RANDOM_QUEST1, QuestId::RANDOM_QUEST10)) {
-        auto &quest = quests[quest_id];
+        auto &quest = quests.get_quest(quest_id);
         quest.status = QuestStatusType::TAKEN;
         determine_random_questor(player_ptr, quest);
         auto &quest_monrace = monraces_info[quest.r_idx];
@@ -169,7 +169,7 @@ void init_dungeon_quests(PlayerType *player_ptr)
     init_flags = INIT_ASSIGN;
     floor.quest_number = QuestId::MELKO;
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
-    quests[QuestId::OBERON].status = QuestStatusType::TAKEN;
+    quests.get_quest(QuestId::OBERON).status = QuestStatusType::TAKEN;
 
     floor.quest_number = QuestId::NONE;
 }
