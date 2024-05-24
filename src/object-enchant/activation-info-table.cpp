@@ -155,6 +155,8 @@ const std::vector<ActivationType> activation_info = {
     { "DISPEL_MAGIC", RandomArtActType::DISPEL_MAGIC, 10, 10000, 50, 50, _("魔力消去", "Dispel Magic") },
     { "DESTRUCTION", RandomArtActType::DESTRUCTION, 10, 30000, 50, 50, _("*破壊*", "*Destruction*") },
     { "HUGE_STINKING_STORM", RandomArtActType::HUGE_STINKING_STORM, 40, 25000, 200, 200, _("超巨大悪臭嵐", "huge stinking storm") },
+    { "WHISTLE", RandomArtActType::WHISTLE, 0, 0, 100, 100, _("ペット呼び寄せ", "call pet") },
+    { "CAPTURE_MONSTER", RandomArtActType::CAPTURE_MONSTER, 0, 0, 0, 0, _("モンスターを捕える、又は解放する。", "captures or releases a monster.") },
 };
 
 std::optional<std::string> ActivationType::build_timeout_description() const
