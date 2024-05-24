@@ -48,8 +48,8 @@ static void load_quest_details(PlayerType *player_ptr, QuestType *q_ptr, const Q
 
     q_ptr->r_idx = i2enum<MonsterRaceId>(rd_s16b());
     if ((q_ptr->type == QuestKindType::RANDOM) && !MonsterRace(q_ptr->r_idx).is_valid()) {
-        auto &quest_list = QuestList::get_instance();
-        determine_random_questor(player_ptr, quest_list[loading_quest_id]);
+        auto &quests = QuestList::get_instance();
+        determine_random_questor(player_ptr, quests[loading_quest_id]);
     }
     q_ptr->reward_fa_id = i2enum<FixedArtifactId>(rd_s16b());
     if (q_ptr->has_reward()) {
@@ -61,8 +61,8 @@ static void load_quest_details(PlayerType *player_ptr, QuestType *q_ptr, const Q
 
 static bool is_loadable_quest(const QuestId q_idx, const byte max_rquests_load)
 {
-    const auto &quest_list = QuestList::get_instance();
-    if (quest_list.find(q_idx) != quest_list.end()) {
+    const auto &quests = QuestList::get_instance();
+    if (quests.find(q_idx) != quests.end()) {
         return true;
     }
 
@@ -90,26 +90,26 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
 {
     auto &quest_list = QuestList::get_instance();
     for (auto i = 0; i < max_quests_load; i++) {
-        QuestId q_idx;
-        if (loading_savefile_version_is_older_than(19)) {
-            q_idx = i2enum<QuestId>(i);
+        QuestId quest_id;
+        if (loading_savefile_version_is_older_than(17)) {
+            quest_id = i2enum<QuestId>(i);
         } else {
-            q_idx = i2enum<QuestId>(rd_s16b());
+            quest_id = i2enum<QuestId>(rd_s16b());
         }
-        if (!is_loadable_quest(q_idx, max_rquests_load)) {
+        if (!is_loadable_quest(quest_id, max_rquests_load)) {
             continue;
         }
 
-        auto *const q_ptr = &quest_list[q_idx];
+        auto *const q_ptr = &quest_list[quest_id];
         load_quest_completion(q_ptr);
         auto is_quest_running = (q_ptr->status == QuestStatusType::TAKEN);
         is_quest_running |= (q_ptr->status == QuestStatusType::COMPLETED);
-        is_quest_running |= ((enum2i(q_idx) >= MIN_RANDOM_QUEST) && (enum2i(q_idx) <= (MIN_RANDOM_QUEST + max_rquests_load)));
+        is_quest_running |= ((enum2i(quest_id) >= MIN_RANDOM_QUEST) && (enum2i(quest_id) <= (MIN_RANDOM_QUEST + max_rquests_load)));
         if (!is_quest_running) {
             continue;
         }
 
-        load_quest_details(player_ptr, q_ptr, q_idx);
+        load_quest_details(player_ptr, q_ptr, quest_id);
         q_ptr->dungeon = rd_byte();
 
         if (q_ptr->status == QuestStatusType::TAKEN || q_ptr->status == QuestStatusType::UNTAKEN) {
