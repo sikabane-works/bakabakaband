@@ -12,7 +12,6 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
-#include "util/sort.h"
 #include "util/string-processor.h"
 
 struct unique_list_type {
