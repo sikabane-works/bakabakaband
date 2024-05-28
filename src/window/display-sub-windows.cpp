@@ -573,18 +573,17 @@ static void display_floor_item_list(PlayerType *player_ptr, const Pos2D &pos)
             line = format(_("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), pos.x, pos.y, r_ptr->name.data());
         }
     } else {
-        const TerrainType *const f_ptr = &terrains_info[g_ptr->feat];
-        concptr fn = f_ptr->name.data();
-        char buf[512];
-
-        if (f_ptr->flags.has(TerrainCharacteristics::STORE) || (f_ptr->flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena)) {
-            sprintf(buf, _("%sの入口", "on the entrance of %s"), fn);
-        } else if (f_ptr->flags.has(TerrainCharacteristics::WALL)) {
-            sprintf(buf, _("%sの中", "in %s"), fn);
+        const auto &terrain = g_ptr->get_terrain();
+        const auto fn = terrain.name.data();
+        std::string buf;
+        if (terrain.flags.has(TerrainCharacteristics::STORE) || (terrain.flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena)) {
+            buf = format(_("%sの入口", "on the entrance of %s"), fn);
+        } else if (terrain.flags.has(TerrainCharacteristics::WALL)) {
+            buf = format(_("%sの中", "in %s"), fn);
         } else {
-            sprintf(buf, _("%s", "on %s"), fn);
+            buf = format(_("%s", "on %s"), fn);
         }
-        line = format(_("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), pos.x, pos.y, buf);
+        line = format(_("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), pos.x, pos.y, buf.data());
     }
     term_addstr(-1, TERM_WHITE, line);
 

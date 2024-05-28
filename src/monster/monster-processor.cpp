@@ -788,8 +788,8 @@ void sweep_monster_process(PlayerType *player_ptr)
         }
 
         auto g_ptr = &player_ptr->current_floor_ptr->grid_array[m_ptr->fy][m_ptr->fx];
-        auto *f_ptr = &terrains_info[g_ptr->feat];
-        if (f_ptr->flags.has(TerrainCharacteristics::TENTACLE)) {
+        auto &f_ptr = TerrainList::get_instance()[g_ptr->feat];
+        if (f_ptr.flags.has(TerrainCharacteristics::TENTACLE)) {
             int pow = 30;
             auto r_ptr = monraces_info[m_ptr->r_idx];
             if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
@@ -804,7 +804,7 @@ void sweep_monster_process(PlayerType *player_ptr)
             if (r_ptr.level < randint0(pow)) {
                 auto m_name = monster_desc(player_ptr, m_ptr, 0);
                 if (m_ptr->ml) {
-                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name.data(), f_ptr->name.data());
+                    msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name.data(), f_ptr.name.data());
                 }
                 if (r_ptr.kind_flags.has(MonsterKindType::HENTAI)) {
                     switch (randint1(3)) {

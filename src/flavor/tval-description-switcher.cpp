@@ -87,8 +87,8 @@ static std::pair<std::string, std::string> describe_corpse(const ItemEntity &ite
 
 static std::pair<std::string, std::string> describe_trap(const ItemEntity &item)
 {
-    TerrainType *f_ptr = &terrains_info[item.pval];
-    const auto &modstr = f_ptr->name.c_str();
+    auto &terrain = TerrainList::get_instance()[item.pval];
+    const auto &modstr = terrain.name.c_str();
 #ifdef JP
     const auto basename = "#%";
 #else
