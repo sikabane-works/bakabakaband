@@ -146,8 +146,8 @@ int16_t PlayerRace::speed() const
 
     FloorType *floor_ptr = this->player_ptr->current_floor_ptr;
     if (player_ptr->x > 0 && player_ptr->y > 0 && player_ptr->x <= floor_ptr->width - 1 && player_ptr->y <= floor_ptr->height - 1) {
-        TerrainType *f_ptr = &terrains_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
-        if (f_ptr->flags.has(TerrainCharacteristics::SLOW)) {
+        TerrainType &f_ptr = TerrainList::get_instance()[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
+        if (f_ptr.flags.has(TerrainCharacteristics::SLOW)) {
             result -= 10;
         }
         if (this->equals(PlayerRaceType::KLACKON) || this->equals(PlayerRaceType::SPRITE)) {

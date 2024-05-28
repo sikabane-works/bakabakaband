@@ -583,7 +583,7 @@ static void display_floor_item_list(PlayerType *player_ptr, const Pos2D &pos)
         } else {
             buf = format(_("%s", "on %s"), fn);
         }
-        line = format(_("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), pos.x, pos.y, buf);
+        line = format(_("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), pos.x, pos.y, buf.data());
     }
     term_addstr(-1, TERM_WHITE, line);
 
