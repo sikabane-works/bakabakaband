@@ -26,7 +26,6 @@
 #include "timed-effect/player-acceleration.h"
 #include "timed-effect/player-deceleration.h"
 #include "timed-effect/player-poison.h"
-#include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
 
@@ -267,7 +266,7 @@ static void rd_status(PlayerType *player_ptr)
     effects->deceleration()->set(rd_s16b());
     effects->fear().set(rd_s16b());
     effects->cut().set(rd_s16b());
-    effects->stun()->set(rd_s16b());
+    effects->stun().set(rd_s16b());
     effects->poison()->set(rd_s16b());
     effects->hallucination().set(rd_s16b());
     player_ptr->protevil = rd_s16b();

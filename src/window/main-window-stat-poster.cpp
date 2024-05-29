@@ -25,7 +25,6 @@
 #include "term/z-form.h"
 #include "timed-effect/player-deceleration.h"
 #include "timed-effect/player-poison.h"
-#include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "view/status-bars-table.h"
 #include "window/main-window-row-column.h"
@@ -91,15 +90,14 @@ void print_cut(PlayerType *player_ptr)
  */
 void print_stun(PlayerType *player_ptr)
 {
-    const auto [width, height] = term_get_size();
-    auto player_stun = player_ptr->effects()->stun();
-    if (!player_stun->is_stunned()) {
-        put_str("            ", height + ROW_STUN, COL_STUN);
+    const auto &player_stun = player_ptr->effects()->stun();
+    if (!player_stun.is_stunned()) {
+        put_str("            ", ROW_STUN, COL_STUN);
         return;
     }
 
-    auto [color, stat] = player_stun->get_expr();
-    c_put_str(color, stat, height + ROW_STUN, COL_STUN);
+    const auto &[color, stat] = player_stun.get_expr();
+    c_put_str(color, stat, ROW_STUN, COL_STUN);
 }
 
 /*!
