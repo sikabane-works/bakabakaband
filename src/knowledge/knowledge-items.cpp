@@ -241,7 +241,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
     TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, std::nullopt);
 
     short object_old, object_top;
-    short grp_idx[100]{};
+    std::vector<short> grp_idx;
     int object_cnt;
 
     bool visual_list = false;
@@ -254,19 +254,16 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
     auto &baseitems = BaseitemList::get_instance();
     std::vector<short> object_idx(baseitems.size());
 
-    int len;
-    int max = 0;
-    int grp_cnt = 0;
+    const auto max_element = std::max_element(object_group_text.begin(), object_group_text.end(),
+        [](auto x, auto y) { return x.length() < y.length(); });
+    const int max_length = max_element->length();
+    const auto width = wid - (max_length + 3);
     if (direct_k_idx < 0) {
         mode = visual_only ? 0x03 : 0x01;
-        for (IDX i = 0; object_group_text[i] != nullptr; i++) {
-            len = strlen(object_group_text[i]);
-            if (len > max) {
-                max = len;
-            }
-
+        const auto size = static_cast<short>(object_group_text.size());
+        for (short i = 0; i < size; i++) {
             if (collect_objects(i, object_idx, mode)) {
-                grp_idx[grp_cnt++] = i;
+                grp_idx.push_back(i);
             }
         }
 
@@ -280,13 +277,11 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
         object_cnt = 1;
         object_idx[1] = -1;
         const auto height = browser_rows - 1;
-        const auto width = wid - (max + 3);
         auto &symbol_config = flavor_baseitem.symbol_config;
         (void)visual_mode_command(
             'v', &visual_list, height, width, &attr_top, &char_left, &symbol_config.color, &symbol_config.character, need_redraw);
     }
 
-    grp_idx[grp_cnt] = -1;
     mode = visual_only ? 0x02 : 0x00;
     IDX old_grp_cur = -1;
     IDX grp_cur = 0;
@@ -305,7 +300,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
             if (direct_k_idx < 0) {
                 prt("グループ", 4, 0);
             }
-            prt("名前", 4, max + 3);
+            prt("名前", 4, max_length + 3);
             if (w_ptr->wizard || visual_only) {
                 prt("Idx", 4, 70);
             }
@@ -315,7 +310,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
             if (direct_k_idx < 0) {
                 prt("Group", 4, 0);
             }
-            prt("Name", 4, max + 3);
+            prt("Name", 4, max_length + 3);
             if (w_ptr->wizard || visual_only) {
                 prt("Idx", 4, 70);
             }
@@ -328,7 +323,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
 
             if (direct_k_idx < 0) {
                 for (IDX i = 0; i < browser_rows; i++) {
-                    term_putch(max + 1, 6 + i, { TERM_WHITE, '|' });
+                    term_putch(max_length + 1, 6 + i, { TERM_WHITE, '|' });
                 }
             }
 
@@ -343,12 +338,8 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
                 grp_top = grp_cur - browser_rows + 1;
             }
 
-            std::vector<concptr> tmp_texts;
-            for (auto &text : object_group_text) {
-                tmp_texts.push_back(text);
-            }
-
-            display_group_list(0, 6, max, browser_rows, grp_idx, tmp_texts.data(), grp_cur, grp_top);
+            std::vector<std::string> tmp_texts = object_group_text;
+            display_group_list(max_length, browser_rows, grp_idx, tmp_texts, grp_cur, grp_top);
             if (old_grp_cur != grp_cur) {
                 old_grp_cur = grp_cur;
                 object_cnt = collect_objects(grp_idx[grp_cur], object_idx, mode);
@@ -364,11 +355,11 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
         }
 
         if (!visual_list) {
-            display_object_list(max + 3, 6, browser_rows, object_idx, object_cur, object_top, visual_only);
+            display_object_list(max_length + 3, 6, browser_rows, object_idx, object_cur, object_top, visual_only);
         } else {
             object_top = object_cur;
-            display_object_list(max + 3, 6, 1, object_idx, object_cur, object_top, visual_only);
-            display_visual_list(max + 3, 7, browser_rows - 1, wid - (max + 3), attr_top, char_left);
+            display_object_list(max_length + 3, 6, 1, object_idx, object_cur, object_top, visual_only);
+            display_visual_list(max_length + 3, 7, browser_rows - 1, wid - (max_length + 3), attr_top, char_left);
         }
 
         auto &baseitem = baseitems.get_baseitem(object_idx[object_cur]);
@@ -397,16 +388,15 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
 
         auto &symbol_config = flavor_baseitem.symbol_config;
         if (visual_list) {
-            place_visual_list_cursor(max + 3, 7, symbol_config.color, symbol_config.character, attr_top, char_left);
+            place_visual_list_cursor(max_length + 3, 7, symbol_config.color, symbol_config.character, attr_top, char_left);
         } else if (!column) {
             term_gotoxy(0, 6 + (grp_cur - grp_top));
         } else {
-            term_gotoxy(max + 3, 6 + (object_cur - object_top));
+            term_gotoxy(max_length + 3, 6 + (object_cur - object_top));
         }
 
         char ch = inkey();
         const auto height = browser_rows - 1;
-        const auto width = wid - (max + 3);
         if (visual_mode_command(
                 ch, &visual_list, height, width, &attr_top, &char_left, &symbol_config.color, &symbol_config.character, need_redraw)) {
             if (direct_k_idx >= 0) {
@@ -429,7 +419,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
 
         case 'R':
         case 'r': {
-            if (!visual_list && !visual_only && (grp_cnt > 0)) {
+            if (!visual_list && !visual_only && (grp_idx.size() > 0)) {
                 desc_obj_fake(player_ptr, object_idx[object_cur]);
                 redraw = true;
             }
@@ -438,7 +428,7 @@ void do_cmd_knowledge_objects(PlayerType *player_ptr, bool *need_redraw, bool vi
         }
 
         default: {
-            browser_cursor(ch, &column, &grp_cur, grp_cnt, &object_cur, object_cnt);
+            browser_cursor(ch, &column, &grp_cur, std::ssize(grp_idx), &object_cur, object_cnt);
             break;
         }
         }
