@@ -322,8 +322,6 @@ void do_cmd_building(PlayerType *player_ptr)
         return;
     }
 
-    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
-
     int which = player_ptr->current_floor_ptr->get_grid(p_pos).get_terrain().subtype;
 
     building_type *bldg;
@@ -348,6 +346,8 @@ void do_cmd_building(PlayerType *player_ptr)
 
         return;
     }
+
+    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
 
     auto &system = AngbandSystem::get_instance();
     if (system.is_phase_out()) {
