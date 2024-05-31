@@ -16,3 +16,9 @@ void move_floor(PlayerType *player_ptr, BIT_FLAGS mode)
     prepare_change_floor_mode(player_ptr, mode);
     player_ptr->leaving = true;
 }
+FloorChangeModesStore FloorChangeModesStore::instance{};
+
+FloorChangeModesStore &FloorChangeModesStore::get_instace()
+{
+    return instance;
+}
