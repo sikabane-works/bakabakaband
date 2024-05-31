@@ -154,7 +154,7 @@ std::pair<bool, std::optional<char>> SpellHex::select_spell_stopping(std::string
             return { false, std::nullopt };
         }
 
-        auto choice = choice_opt.value();
+        auto choice = *choice_opt;
         if (isupper(choice)) {
             choice = static_cast<char>(tolower(choice));
         }

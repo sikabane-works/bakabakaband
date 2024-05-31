@@ -136,8 +136,8 @@ bool symbol_genocide(PlayerType *player_ptr, int power, bool player_cast)
     char symbol;
     while (true) {
         const auto command = input_command(prompt);
-        if (command.has_value()) {
-            symbol = command.value();
+        if (command) {
+            symbol = *command;
             break;
         }
     }
