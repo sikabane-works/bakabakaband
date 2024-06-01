@@ -15,8 +15,6 @@ public:
     static MonsterRaceId empty_id();
     static MonsterRaceId pick_one_at_random();
 
-    bool is_valid() const;
-    int calc_eval() const;
     bool is_bounty(bool unachieved_only) const;
     int calc_power() const;
 
