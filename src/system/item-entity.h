@@ -150,7 +150,7 @@ public:
     std::string explain_activation() const;
 
     void mark_as_known();
-    void mark_as_tried();
+    void mark_as_tried() const;
     std::string build_activation_description() const;
 
 private:
