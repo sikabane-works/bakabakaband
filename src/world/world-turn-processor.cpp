@@ -157,7 +157,7 @@ void WorldTurnProcessor::process_downward()
 
     floor_ptr->dun_level = 0;
     floor_ptr->reset_dungeon_index();
-    move_floor(this->player_ptr, CFM_FIRST_FLOOR | CFM_RAND_PLACE);
+    FloorChangeModesStore::get_instace()->set({ FloorChangeMode::FIRST_FLOOR, FloorChangeMode::RANDOM_PLACE });
     floor_ptr->inside_arena = false;
     this->player_ptr->wild_mode = false;
 }

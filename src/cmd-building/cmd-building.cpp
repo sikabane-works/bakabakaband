@@ -344,11 +344,12 @@ void do_cmd_building(PlayerType *player_ptr)
         return;
     }
 
+    auto &fcms = FloorChangeModesStore::get_instace();
     if ((which == 2) && player_ptr->current_floor_ptr->inside_arena) {
         if (!w_ptr->get_arena() && player_ptr->current_floor_ptr->m_cnt > 0) {
             prt(_("ゲートは閉まっている。モンスターがあなたを待っている！", "The gates are closed.  The monster awaits!"), 0, 0);
         } else {
-            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
+            fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::NO_RETURN });
             player_ptr->current_floor_ptr->inside_arena = false;
             command_new = SPECIAL_KEY_BUILDING;
             energy.reset_player_turn();
@@ -361,7 +362,7 @@ void do_cmd_building(PlayerType *player_ptr)
 
     auto &system = AngbandSystem::get_instance();
     if (system.is_phase_out()) {
-        move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_NO_RETURN);
+        fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::NO_RETURN });
         player_ptr->leaving = true;
         system.set_phase_out(false);
         command_new = SPECIAL_KEY_BUILDING;
