@@ -471,7 +471,13 @@ static void curse_megaton_coin(PlayerType *player_ptr)
     }
 
     exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
-    move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+    auto &fcms = FloorChangeModesStore::get_instace();
+    fcms->set({ FloorChangeMode::SAVE_FLOORS,
+        FloorChangeMode::DOWN,
+        FloorChangeMode::RANDOM_PLACE,
+        FloorChangeMode::RANDOM_CONNECT });
+
+    player_ptr->leaving = true;
 }
 
 static void occur_curse_effects(PlayerType *player_ptr)

@@ -403,7 +403,7 @@ static void refresh_new_floor_id(PlayerType *player_ptr, Grid *g_ptr)
     }
 }
 
-static void update_upper_lower_or_floor_id(PlayerType *player_ptr, saved_floor_type *sf_ptr)
+static void update_upper_lower_or_floor_id(saved_floor_type *sf_ptr)
 {
     const auto &fcms = FloorChangeModesStore::get_instace();
     if (fcms->has_not(FloorChangeMode::RANDOM_CONNECT)) {
@@ -429,7 +429,7 @@ static void exe_leave_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     }
 
     refresh_new_floor_id(player_ptr, g_ptr);
-    update_upper_lower_or_floor_id(player_ptr, sf_ptr);
+    update_upper_lower_or_floor_id(sf_ptr);
     auto &fcms = FloorChangeModesStore::get_instace();
     if (fcms->has_not(FloorChangeMode::SAVE_FLOORS) || fcms->has(FloorChangeMode::NO_RETURN)) {
         return;
@@ -474,7 +474,12 @@ void leave_floor(PlayerType *player_ptr)
  * @brief 任意のダンジョン及び階層に飛ぶ
  * Go to any level
  */
-static void jump_floor(PlayerType *player_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
+
+/*!
+ * @brief 任意のダンジョン及び階層に飛ぶ
+ * Go to any level
+ */
+void jump_floor(PlayerType *player_ptr, DUNGEON_IDX dun_idx, DEPTH depth)
 {
     auto &floor = *player_ptr->current_floor_ptr;
     floor.set_dungeon_index(dun_idx);

@@ -1,4 +1,4 @@
-﻿#include "cmd-action/cmd-move.h"
+#include "cmd-action/cmd-move.h"
 #include "action/action-limited.h"
 #include "action/movement-execution.h"
 #include "action/run-execution.h"
@@ -172,7 +172,7 @@ void do_cmd_go_up(PlayerType *player_ptr)
         exe_write_diary(player_ptr, DiaryKind::STAIR, 0 - up_num, _("階段を上った", "climbed up the stairs to"));
     }
 
-    if (up_num == player_ptr->current_floor_ptr->dun_level) {
+    if (up_num == floor.dun_level) {
         if (is_echizen(player_ptr)) {
             msg_print(_("なんだこの階段は！", "What's this STAIRWAY!"));
         } else {
@@ -187,8 +187,9 @@ void do_cmd_go_up(PlayerType *player_ptr)
         }
     }
 
-    move_floor(player_ptr, 0);
     sound(SOUND_STAIRWAY);
+
+    player_ptr->leaving = true;
 }
 
 /*!
