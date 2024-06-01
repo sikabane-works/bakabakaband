@@ -16,6 +16,7 @@
 #include "system/system-variables.h"
 #include "util/flag-group.h"
 #include <optional>
+#include <string>
 #include <vector>
 
 enum class FixedArtifactId : short;
@@ -146,9 +147,11 @@ public:
     ArtifactType &get_fixed_artifact() const;
     TrFlags get_flags() const;
     TrFlags get_flags_known() const;
+    std::string explain_activation() const;
 
     void mark_as_known();
     void mark_as_tried();
+    std::string build_activation_description() const;
 
 private:
     int get_baseitem_price() const;
@@ -156,4 +159,7 @@ private:
     int calc_capture_value() const;
     void modify_ego_lite_flags(TrFlags &flags) const;
     RandomArtActType get_activation_index() const;
+    std::string build_timeout_description(const activation_type &act) const;
+    std::string build_activation_description(const activation_type &act) const;
+    std::string build_activation_description_dragon_breath() const;
 };
