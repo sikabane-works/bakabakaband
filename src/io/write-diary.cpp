@@ -12,6 +12,7 @@
 #include "player/player-status.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
+#include "system/inner-game-data.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/z-form.h"
@@ -151,7 +152,7 @@ static void write_diary_pet(FILE *fff, int num, std::string_view note)
 int exe_write_diary_quest(PlayerType *player_ptr, DiaryKind dk, QuestId quest_id)
 {
     static auto disable_diary = false;
-    const auto &[day, hour, min] = w_ptr->extract_date_time(player_ptr->start_race);
+    const auto &[day, hour, min] = w_ptr->extract_date_time(InnerGameData::get_instance().get_start_race());
     if (disable_diary) {
         return -1;
     }
@@ -232,7 +233,7 @@ int exe_write_diary_quest(PlayerType *player_ptr, DiaryKind dk, QuestId quest_id
 void exe_write_diary(PlayerType *player_ptr, DiaryKind dk, int num, std::string_view note)
 {
     static auto disable_diary = false;
-    const auto &[day, hour, min] = w_ptr->extract_date_time(player_ptr->start_race);
+    const auto &[day, hour, min] = w_ptr->extract_date_time(InnerGameData::get_instance().get_start_race());
     if (disable_diary) {
         return;
     }
