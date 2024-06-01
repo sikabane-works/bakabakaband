@@ -100,6 +100,7 @@ enum class QuestKindType : short {
 enum class FixedArtifactId : short;
 enum class MonsterRaceId : int16_t;
 class ArtifactType;
+class MonsterRaceInfo;
 class QuestType {
 public:
     QuestType() = default;
@@ -126,6 +127,7 @@ public:
     static bool is_fixed(QuestId quest_idx);
     bool has_reward() const;
     ArtifactType &get_reward() const;
+    const MonsterRaceInfo &get_bounty() const;
 };
 
 class QuestList final {
