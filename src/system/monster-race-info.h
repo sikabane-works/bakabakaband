@@ -154,6 +154,7 @@ public:
     PERCENTAGE cur_hp_per{}; //!< 生成時現在HP率(%)
     AllianceType alliance_idx;
 
+    bool is_valid() const;
     const std::string &decide_horror_message() const;
     bool has_living_flag() const;
     bool is_explodable() const;
