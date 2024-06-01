@@ -5,7 +5,6 @@
 
 #include "action/activation-execution.h"
 #include "action/action-limited.h"
-#include "artifact/artifact-info.h"
 #include "artifact/random-art-effects.h"
 #include "core/window-redrawer.h"
 #include "effect/attribute-types.h"
@@ -70,9 +69,9 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (ae_ptr->o_ptr->is_random_artifact()) {
-        auto act_ptr = find_activation_info(ae_ptr->o_ptr);
-        if (act_ptr.has_value()) {
-            ae_ptr->lev = act_ptr.value()->level;
+        const auto it_activation = ae_ptr->o_ptr->find_activation_info();
+        if (it_activation != activation_info.end()) {
+            ae_ptr->lev = it_activation->level;
         }
 
         return;
@@ -166,15 +165,14 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
  */
 static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    auto tmp_act_ptr = find_activation_info(o_ptr);
-    if (!tmp_act_ptr.has_value()) {
+    const auto act_ptr = o_ptr->find_activation_info();
+    if (act_ptr == activation_info.end()) {
         msg_print("Activation information is not found.");
         return false;
     }
 
-    auto *act_ptr = tmp_act_ptr.value();
     const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_BASE_NAME);
-    if (!switch_activation(player_ptr, &o_ptr, act_ptr, item_name.data())) {
+    if (!switch_activation(player_ptr, &o_ptr, act_ptr->index, item_name)) {
         return false;
     }
 
@@ -200,7 +198,7 @@ static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
     case RandomArtActType::MURAMASA:
         return true;
     default:
-        msg_format("Special timeout is not implemented: %d.", act_ptr->index);
+        msg_format("Special timeout is not implemented: %d.", enum2i(act_ptr->index));
         return false;
     }
 }
@@ -347,7 +345,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 
     msg_print(_("始動させた...", "You activate it..."));
     sound(SOUND_ZAP);
-    if (activation_index(ae_ptr->o_ptr) > RandomArtActType::NONE) {
+    if (ae_ptr->o_ptr->has_activation()) {
         (void)activate_artifact(player_ptr, ae_ptr->o_ptr);
         static constexpr auto flags = {
             SubWindowRedrawingFlag::INVENTORY,
