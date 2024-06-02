@@ -9,7 +9,6 @@
 #include "flavor/object-flavor-types.h"
 #include "grid/feature.h"
 #include "locale/english.h"
-#include "monster-race/monster-race.h"
 #include "object-enchant/trg-types.h"
 #include "object/tval-types.h"
 #include "system/baseitem-info.h"

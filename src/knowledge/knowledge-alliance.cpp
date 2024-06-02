@@ -7,7 +7,6 @@
 #include "alliance/alliance.h"
 #include "core/show-file.h"
 #include "io-dump/dump-util.h"
-#include "monster-race/monster-race.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
