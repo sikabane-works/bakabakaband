@@ -272,9 +272,7 @@ bool ItemEntity::is_convertible() const
 
 bool ItemEntity::is_lance() const
 {
-    auto is_lance = this->bi_key == BaseitemKey(ItemKindType::POLEARM, SV_LANCE);
-    is_lance |= this->bi_key == BaseitemKey(ItemKindType::POLEARM, SV_HEAVY_LANCE);
-    return is_lance;
+    return this->bi_key.is_lance();
 }
 
 /*!
@@ -426,8 +424,7 @@ bool ItemEntity::is_potion() const
  */
 bool ItemEntity::is_readable() const
 {
-    auto can_read = this->is(ItemKindType::SCROLL);
-    can_read |= this->is(ItemKindType::READING_MATTER);
+    auto can_read = this->bi_key.is_readable();
     can_read |= this->is_specific_artifact(FixedArtifactId::GHB);
     can_read |= this->is_specific_artifact(FixedArtifactId::POWER);
     return can_read;
