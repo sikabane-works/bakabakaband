@@ -513,7 +513,7 @@ bool BaseitemKey::is_cross_bow() const
     }
 }
 
-bool BaseitemKey::refuse_enchant_weapon() const
+bool BaseitemKey::should_refuse_enchant() const
 {
     return *this == BaseitemKey(ItemKindType::SWORD, SV_POISON_NEEDLE);
 }
@@ -561,6 +561,11 @@ bool BaseitemKey::is_readable() const
     auto can_read = this->is(ItemKindType::SCROLL);
     can_read |= this->is(ItemKindType::READING_MATTER);
     return can_read;
+}
+
+bool BaseitemKey::is_corpse() const
+{
+    return *this == BaseitemKey(ItemKindType::CORPSE, SV_CORPSE);
 }
 
 bool BaseitemKey::is_mushrooms() const

@@ -1,6 +1,7 @@
 #include "object-enchant/activation-info-table.h"
 #include "artifact/random-art-effects.h"
 #include "locale/language-switcher.h"
+#include <sstream>
 
 /*!
  * @brief アイテムの発動効果テーブル
@@ -155,3 +156,30 @@ const std::vector<ActivationType> activation_info = {
     { "DESTRUCTION", RandomArtActType::DESTRUCTION, 10, 30000, 50, 50, _("*破壊*", "*Destruction*") },
     { "HUGE_STINKING_STORM", RandomArtActType::HUGE_STINKING_STORM, 40, 25000, 200, 200, _("超巨大悪臭嵐", "huge stinking storm") },
 };
+
+std::optional<std::string> ActivationType::build_timeout_description() const
+{
+    if ((this->constant == 0) && (this->dice == 0)) {
+        return _("いつでも", "every turn");
+    }
+
+    if (!this->constant) {
+        return std::nullopt;
+    }
+
+    std::stringstream ss;
+    ss << _("", "every ");
+    if (this->constant > 0) {
+        ss << *this->constant;
+        if (this->dice > 0) {
+            ss << '+';
+        }
+    }
+
+    if (this->dice > 0) {
+        ss << 'd' << this->dice;
+    }
+
+    ss << _(" ターン毎", " turns");
+    return ss.str();
+}
