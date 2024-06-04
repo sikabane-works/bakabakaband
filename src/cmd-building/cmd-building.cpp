@@ -304,7 +304,9 @@ static bool bldg_process_command(PlayerType *player_ptr, building_type *bldg, in
         return false;
 
     case BACT_TRANS_SEX:
-        if (trans_sex(player_ptr)) player_ptr->au -= building_cost;
+        if (trans_sex(player_ptr)) {
+            player_ptr->au -= building_cost;
+        }
         return false;
 
     default:
