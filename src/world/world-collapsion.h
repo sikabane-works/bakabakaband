@@ -1,15 +1,15 @@
-﻿#pragma once
+#pragma once
 #include "system/h-type.h"
 #include <cstdint>
 
-struct world_type;
+class AngbandWorld;
 class PlayerType;
 
 class WorldCollapsion {
 public:
     const int32_t OVER_COLLAPSION_DEGREE = 100000000LL;
     WorldCollapsion();
-    void plus_timed_world_collapsion(world_type *w_ptr, PlayerType *player_ptr, int multi);
+    void plus_timed_world_collapsion(AngbandWorld *w_ptr, PlayerType *player_ptr, int multi);
     void plus_collapsion(int value);
     void plus_perm_collapsion(int permyriad);
     DEPTH plus_monster_level();

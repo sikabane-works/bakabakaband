@@ -1,4 +1,4 @@
-﻿#include "world/world-collapsion.h"
+#include "world/world-collapsion.h"
 #include "market/arena-info-table.h"
 #include "object-enchant/tr-flags.h"
 #include "player/player-status-flags.h"
@@ -23,7 +23,7 @@ bool WorldCollapsion::is_blown_away()
 /*!
  * @brief 時空崩壊度自然進行度計算
  */
-void WorldCollapsion::plus_timed_world_collapsion(world_type *w_ptr, PlayerType *player_ptr, int multi)
+void WorldCollapsion::plus_timed_world_collapsion(AngbandWorld *w_ptr, PlayerType *player_ptr, int multi)
 {
     if (w_ptr->total_winner && player_ptr->arena_number > MAX_ARENA_MONS + 2) {
         return;
