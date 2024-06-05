@@ -3,6 +3,7 @@
 #include "system/angband.h"
 
 #define MAX_NAZGUL_NUM 5
+#define MAX_MONSTER_NUM 100
 #define SCREEN_BUF_MAX_SIZE (1024 * 1024) /*!< Max size of screen dump buffer */
 #define PY_MAX_LEVEL 50 /*!< プレイヤーレベルの最大値 / Maximum level */
 #define PY_MAX_EXP 99999999L /*!< プレイヤー経験値の最大値 / Maximum exp */
