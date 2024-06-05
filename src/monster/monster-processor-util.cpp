@@ -12,6 +12,7 @@
 #include "monster/monster-status.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
+#include "system/redrawing-flags-updater.h"
 
 /*!
  * @brief ターン経過フラグ構造体の初期化
@@ -251,8 +252,7 @@ old_race_flags::old_race_flags(MonsterRaceId monrace_id)
         return;
     }
 
-    const auto &monrace = monraces_info[monrace_id];
-
+    const auto &monrace = MonraceList::get_instance().get_monrace(monrace_id);
     this->old_r_ability_flags = monrace.r_ability_flags;
     this->old_r_behavior_flags = monrace.r_behavior_flags;
     this->old_r_kind_flags = monrace.r_kind_flags;
@@ -270,23 +270,18 @@ old_race_flags::old_race_flags(MonsterRaceId monrace_id)
 }
 
 /*!
- * @brief モンスターの加速値を決定する
- * @param m_ptr モンスターへの参照ポインタ
- * return モンスターの加速値
+ * @brief モンスターフラグの更新に基づき、モンスター表示を更新する
+ * @param monrace 表示対象のモンスター種族定義
  */
-byte decide_monster_speed(MonsterEntity *m_ptr)
+void old_race_flags::update_player_window(const MonsterRaceInfo &monrace) const
 {
-    auto speed = m_ptr->mspeed;
-    if (ironman_nightmare) {
-        speed += 5;
+    if ((this->old_r_ability_flags != monrace.r_ability_flags) ||
+        (this->old_r_resistance_flags != monrace.r_resistance_flags) || (this->old_r_blows0 != monrace.r_blows[0]) ||
+        (this->old_r_blows1 != monrace.r_blows[1]) || (this->old_r_blows2 != monrace.r_blows[2]) ||
+        (this->old_r_blows3 != monrace.r_blows[3]) || (this->old_r_cast_spell != monrace.r_cast_spell) ||
+        (this->old_r_behavior_flags != monrace.r_behavior_flags) || (this->old_r_kind_flags != monrace.r_kind_flags) ||
+        (this->old_r_drop_flags != monrace.r_drop_flags) || (this->old_r_feature_flags != monrace.r_feature_flags) ||
+        (this->old_r_special_flags != monrace.r_special_flags)) {
+        RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
     }
-
-    if (m_ptr->is_accelerated()) {
-        speed += 10;
-    }
-    if (m_ptr->is_decelerated()) {
-        speed -= 10;
-    }
-
-    return speed;
 }

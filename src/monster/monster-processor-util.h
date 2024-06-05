@@ -38,6 +38,7 @@ struct turn_flags {
 };
 
 // @details ダミーIDが渡されるとオブジェクトが生焼けになるので、ヘッダ側で全て初期化しておく.
+class MonsterRaceInfo;
 struct old_race_flags {
     old_race_flags(MonsterRaceId monrace_id);
 
@@ -55,6 +56,8 @@ struct old_race_flags {
     byte old_r_blows3 = 0;
 
     byte old_r_cast_spell = 0;
+
+    void update_player_window(const MonsterRaceInfo &monrace) const;
 };
 
 struct coordinate_candidate {
@@ -68,4 +71,3 @@ turn_flags *init_turn_flags(MONSTER_IDX riding_idx, MONSTER_IDX m_idx, turn_flag
 
 void store_enemy_approch_direction(int *mm, POSITION y, POSITION x);
 void store_moves_val(int *mm, int y, int x);
-byte decide_monster_speed(MonsterEntity *m_ptr);

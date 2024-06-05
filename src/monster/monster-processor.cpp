@@ -724,8 +724,7 @@ bool process_monster_fear(PlayerType *player_ptr, turn_flags *turn_flags_ptr, MO
 void process_monsters(PlayerType *player_ptr)
 {
     const auto old_monrace_id = player_ptr->monster_race_idx;
-    old_race_flags tmp_flags(old_monrace_id);
-    old_race_flags *old_race_flags_ptr = &tmp_flags;
+    old_race_flags flags(old_monrace_id);
     player_ptr->current_floor_ptr->monster_noise = false;
     sweep_monster_process(player_ptr);
     hack_m_idx = 0;
@@ -733,7 +732,7 @@ void process_monsters(PlayerType *player_ptr)
         return;
     }
 
-    update_player_window(player_ptr, old_race_flags_ptr);
+    flags.update_player_window(player_ptr->get_tracking_monrace());
 }
 
 /*!
@@ -764,7 +763,7 @@ void sweep_monster_process(PlayerType *player_ptr)
             continue;
         }
 
-        byte speed = (player_ptr->riding == i) ? player_ptr->pspeed : decide_monster_speed(m_ptr);
+        byte speed = (player_ptr->riding == i) ? player_ptr->pspeed : m_ptr->get_temporary_speed();
         m_ptr->energy_need -= speed_to_energy(speed);
         if (m_ptr->energy_need > 0) {
             continue;
