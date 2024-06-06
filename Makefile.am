@@ -3,23 +3,23 @@
 AUTOMAKE_OPTIONS = foreign
 
 visual_studio_files = \
-	Hengband/Hengband.sln \
-	Hengband/Hengband/curl/include/curl/curl.h \
-	Hengband/Hengband/curl/include/curl/curlver.h \
-	Hengband/Hengband/curl/include/curl/easy.h \
-	Hengband/Hengband/curl/include/curl/header.h \
-	Hengband/Hengband/curl/include/curl/mprintf.h \
-	Hengband/Hengband/curl/include/curl/multi.h \
-	Hengband/Hengband/curl/include/curl/options.h \
-	Hengband/Hengband/curl/include/curl/stdcheaders.h \
-	Hengband/Hengband/curl/include/curl/system.h \
-	Hengband/Hengband/curl/include/curl/typecheck-gcc.h \
-	Hengband/Hengband/curl/include/curl/urlapi.h \
-	Hengband/Hengband/curl/include/curl/websockets.h \
-	Hengband/Hengband/curl/lib/libcurl_a.lib \
-	Hengband/Hengband/Hengband.vcxproj \
-	Hengband/Hengband/Hengband.vcxproj.filters \
-	Hengband/Hengband/packages.config
+	Bakabakaband/Bakabakaband.sln \
+	Bakabakaband/Bakabakaband/curl/include/curl/curl.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/curlver.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/easy.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/header.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/mprintf.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/multi.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/options.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/stdcheaders.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/system.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/typecheck-gcc.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/urlapi.h \
+	Bakabakaband/Bakabakaband/curl/include/curl/websockets.h \
+	Bakabakaband/Bakabakaband/curl/lib/libcurl_a.lib \
+	Bakabakaband/Bakabakaband/Bakabakaband.vcxproj \
+	Bakabakaband/Bakabakaband/Bakabakaband.vcxproj.filters \
+	Bakabakaband/Bakabakaband/packages.config
 
 EXTRA_DIST = \
 	autopick.txt \
