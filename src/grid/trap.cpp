@@ -12,7 +12,6 @@
 #include "game-option/special-options.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
-#include "info-reader/feature-reader.h"
 #include "io/files-util.h"
 #include "io/write-diary.h"
 #include "main/sound-definitions-table.h"
@@ -133,30 +132,36 @@ const std::vector<EnumClassFlagGroup<ChestTrapType>> chest_traps = {
  */
 void init_normal_traps(void)
 {
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TRAPDOOR"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_PIT"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_SPIKED_PIT"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_POISON_PIT"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TY_CURSE"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TELEPORT"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_FIRE"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_ACID"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_SLOW"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LOSE_STR"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LOSE_DEX"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LOSE_CON"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_BLIND"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_CONFUSE"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_POISON"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_SLEEP"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_TRAPS"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_ALARM"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_LAVA"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_DUNG_POOL"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_FIRE_STORM"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_ICE_STORM"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_CHAOS_STORM"));
-    normal_traps.push_back(f_tag_to_index_in_init("TRAP_JUMP_VOID"));
+    static constexpr auto normal_trap_tags = {
+        "TRAP_TRAPDOOR",
+        "TRAP_PIT",
+        "TRAP_SPIKED_PIT",
+        "TRAP_POISON_PIT",
+        "TRAP_TY_CURSE",
+        "TRAP_TELEPORT",
+        "TRAP_FIRE",
+        "TRAP_ACID",
+        "TRAP_SLOW",
+        "TRAP_LOSE_STR",
+        "TRAP_LOSE_DEX",
+        "TRAP_LOSE_CON",
+        "TRAP_BLIND",
+        "TRAP_CONFUSE",
+        "TRAP_POISON",
+        "TRAP_SLEEP",
+        "TRAP_TRAPS",
+        "TRAP_ALARM",
+        "TRAP_LAVA",
+        "TRAP_DUNG_POOL",
+        "TRAP_FIRE_STORM",
+        "TRAP_ICE_STORM",
+        "TRAP_CHAOS_STORM",
+        "TRAP_JUMP_VOID",
+    };
+
+    std::transform(normal_trap_tags.begin(), normal_trap_tags.end(), std::back_inserter(normal_traps), [](const auto &tag) {
+        return TerrainList::get_instance().get_terrain_id_by_tag(tag);
+    });
 }
 
 /*!
