@@ -1,4 +1,3 @@
-#include "save/monster-writer.h"
 #include "load/load-util.h"
 #include "load/old/monster-flag-types-savefile50.h"
 #include "save/save-util.h"
