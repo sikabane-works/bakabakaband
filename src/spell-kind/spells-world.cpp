@@ -124,7 +124,8 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
             }
 
             if (!floor.is_in_dungeon()) {
-                floor.dun_level = dungeon.mindepth;
+                const auto &recall_dungeon = floor.get_dungeon_definition();
+                floor.dun_level = recall_dungeon.mindepth;
                 move_floor(player_ptr, CFM_RAND_PLACE);
             } else {
                 move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
