@@ -78,7 +78,7 @@ static void rd_world_info(PlayerType *player_ptr)
     w_ptr->dungeon_turn = rd_s32b();
     w_ptr->arena_start_turn = rd_s32b();
     w_ptr->today_mon = i2enum<MonsterRaceId>(rd_s16b());
-    player_ptr->knows_daily_bounty = rd_s16b() != 0; // 現在bool型だが、かつてモンスター種族IDを保存していた仕様に合わせる
+    w_ptr->knows_daily_bounty = rd_s16b() != 0; // 現在bool型だが、かつてモンスター種族IDを保存していた仕様に合わせる
 }
 
 void rd_global_configurations(PlayerType *player_ptr)
