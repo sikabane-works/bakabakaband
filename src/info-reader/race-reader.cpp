@@ -89,7 +89,6 @@ static bool grab_one_basic_flag(MonsterRaceInfo *r_ptr, std::string_view what)
         return true;
     }
 
-    msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
     return false;
 }
 
@@ -473,9 +472,18 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
                 r_ptr->dead_spawns.push_back({ num, deno, r_idx, ds, dn });
                 continue;
             }
-            if (!grab_one_basic_flag(r_ptr, f)) {
+
+            if (grab_one_basic_flag(r_ptr, f)) {
+                continue;
+            }
+
+            uint32_t sex;
+            if (!info_grab_one_const(sex, r_info_sex, f)) {
                 return PARSE_ERROR_INVALID_FLAG;
             }
+
+            r_ptr->sex = static_cast<MonsterSex>(sex);
+
         }
 
     } else if (tokens[0] == "S") {
