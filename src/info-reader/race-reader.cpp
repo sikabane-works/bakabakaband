@@ -483,7 +483,6 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
             }
 
             r_ptr->sex = static_cast<MonsterSex>(sex);
-
         }
 
     } else if (tokens[0] == "S") {
@@ -536,7 +535,6 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
             return PARSE_ERROR_INVALID_FLAG;
         }
         r_ptr->sex = static_cast<MonsterSex>(sex);
-
     } else if (tokens[0] == "V") {
         // V:arena_odds
         if (tokens.size() < 2) {
