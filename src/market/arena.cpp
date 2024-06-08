@@ -17,7 +17,9 @@
 #include "system/floor-type-definition.h"
 #include "system/monster-race-info.h"
 #include "term/screen-processor.h"
+#include "term/z-form.h"
 #include "tracking/lore-tracker.h"
+#include "util/int-char-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <optional>
