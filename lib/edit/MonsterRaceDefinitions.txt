@@ -51,16 +51,8 @@
 # these monsters cannot be targetted, and when examined look like normal
 # floors, until the player "notices" them (perhaps check "awake").
 
-# CHAR_MULTI monsters use special symbols (!, ?, =) as given below,
-# and use those symbols for the recall window.  In theory, normally,
-# these monsters cannot be targetted, and when examined look like normal
-# objects, until the player "notices" them (perhaps check "awake").
-
 # Note that there are (a few) normal monsters who are "violet" but not
 # ATTR_MULTI, and a lot of monsters which are "white" but not ATTR_CLEAR.
-
-# Note that currently both CHAR_CLEAR and CHAR_MULTI monsters are treated
-# as normal monsters that are just a little hard to see.
 
 # Note that the monster list underwent several changes for Angband 2.7.9,
 # including some monster name changes, some symbol redistributions, and
@@ -28597,7 +28589,6 @@ B:GAZE:CONFUSE:4d3
 B:CLAW:POISON:5d4
 B:CLAW:POISON:5d4
 B:SPIT:BLIND:4d3
-F:CHAR_MULTI | 
 F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | ALLIANCE_DOKACHANS
 F:EMPTY_MIND | COLD_BLOOD | NASTY | MOB_100
 F:NO_CONF | NO_SLEEP | NO_FEAR
@@ -28619,7 +28610,6 @@ B:GAZE:CONFUSE:6d3
 B:CLAW:POISON:7d4
 B:CLAW:POISON:7d4
 B:SPIT:BLIND:6d3
-F:CHAR_MULTI | 
 F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
 F:EMPTY_MIND | COLD_BLOOD | NASTY
 F:NO_CONF | NO_SLEEP | NO_FEAR
@@ -28641,7 +28631,6 @@ B:SPIT:CONFUSE:8d3
 B:SPIT:PARALYZE:8d5
 B:SPIT:PARALYZE:8d5
 B:SPIT:PARALYZE:8d5
-F:CHAR_MULTI | 
 F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE | 
 F:EMPTY_MIND | COLD_BLOOD |
 F:NO_CONF | NO_SLEEP | NO_FEAR
@@ -28808,7 +28797,7 @@ W:0:10:0:50:0:0
 B:GAZE:BLIND:1d1
 B:TOUCH:EAT_ITEM
 F:ONLY_ITEM | DROP_90 | DROP_GREAT | DROP_CORPSE | UNIQUE
-F:CHAR_MULTI | CHAR_CLEAR | ATTR_CLEAR | INVISIBLE
+F:CHAR_CLEAR | ATTR_CLEAR | INVISIBLE
 F:RAND_25 | HUMAN | HOMO_SEXUAL
 F:TAKE_ITEM | OPEN_DOOR | DROP_CORPSE | DROP_SKELETON | NASTY
 S:1_IN_10
@@ -32289,7 +32278,7 @@ B:TOUCH:TERRIFY
 B:GAZE:EXP_40
 B:TOUCH:EAT_ITEM
 F:ONLY_ITEM | DROP_90 | DROP_1D2 | DROP_GREAT | DROP_CORPSE
-F:CHAR_MULTI | CHAR_CLEAR | ATTR_CLEAR | INVISIBLE | COLD_BLOOD
+F:CHAR_CLEAR | ATTR_CLEAR | INVISIBLE | COLD_BLOOD
 F:NO_CONF | UNIQUE | FORCE_MAXHP | NO_SLEEP | REFLECTING
 F:IM_FIRE | IM_ELEC | QUANTUM | NASTY | HOMO_SEXUAL | SMART | RES_TELE | CAN_FLY
 F:EAT_GIVE_INT | EAT_GIVE_WIS | EAT_BLIND | EAT_DRAIN_EXP
@@ -38943,7 +38932,7 @@ W:6:5:30:0:0
 B:HIT:INERTIA:5d5
 B:HIT:TERRIFY:5d5
 F:NONLIVING | NO_FEAR | NASTY
-F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
+F:STUPID | EMPTY_MIND | COLD_BLOOD | NO_CONF | NO_SLEEP |
 F:EVIL | IM_COLD | FORCE_MAXHP | IM_ELEC | IM_POIS
 D:悪趣味な魔導師が作り出したクッソ汚い疑似生命体だ。
 F:DROP_KIND_1_IN_1_702_0_1d1
@@ -38956,7 +38945,7 @@ W:11:10:30:0:0
 B:HIT:INERTIA:1d5
 B:HIT:TERRIFY:1d5
 F:NONLIVING | NO_FEAR | NASTY
-F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
+F:STUPID | EMPTY_MIND | COLD_BLOOD | NO_CONF | NO_SLEEP |
 F:IM_COLD | FORCE_MAXHP | IM_ELEC | IM_POIS
 D:ヨロシク仮面の舞い操るブリーフだ。
 F:DROP_KIND_1_IN_1_803_0_1d1
@@ -39030,7 +39019,7 @@ W:13:7:30:0:0
 B:HIT:PARALYZE:5d5
 B:HIT:TERRIFY:5d5
 F:NEVER_MOVE | NONLIVING | NO_FEAR |
-F:STUPID | EMPTY_MIND | COLD_BLOOD | CHAR_MULTI | NO_CONF | NO_SLEEP |
+F:STUPID | EMPTY_MIND | COLD_BLOOD | NO_CONF | NO_SLEEP |
 F:EVIL | IM_COLD | FORCE_MAXHP | IM_ELEC | IM_POIS
 D:$It resembles a normal noren until some poor fool visitor too close!
 D:哀れで愚かな来客が近づいて来るまでは普通の暖簾に似ている。

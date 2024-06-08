@@ -151,7 +151,6 @@ const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
  * Monster race flags
  */
 const std::unordered_map<std::string_view, race_flags2> r_info_flags2 = {
-    { "CHAR_MULTI", RF2_CHAR_MULTI },
     { "POWERFUL", RF2_POWERFUL },
     { "ELDRITCH_HORROR", RF2_ELDRITCH_HORROR },
     { "VOCIFEROUS", RF2_VOCIFEROUS },
