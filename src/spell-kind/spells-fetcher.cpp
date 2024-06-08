@@ -24,6 +24,7 @@
 #include "target/target-setter.h"
 #include "target/target-types.h"
 #include "timed-effect/timed-effects.h"
+#include "tracking/lore-tracker.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -170,7 +171,7 @@ bool fetch_monster(PlayerType *player_ptr)
 
     if (monster.ml) {
         if (!player_ptr->effects()->hallucination().is_hallucinated()) {
-            monster_race_track(player_ptr, monster.ap_r_idx);
+            LoreTracker::get_instance().set_trackee(monster.ap_r_idx);
         }
 
         health_track(player_ptr, m_idx);
