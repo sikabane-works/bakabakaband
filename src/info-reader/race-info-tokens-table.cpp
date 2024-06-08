@@ -8,6 +8,7 @@
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-population-flags.h"
 #include "monster-race/race-speak-flags.h"
+#include "monster-race/race-special-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "monster-race/race-wilderness-flags.h"
 
@@ -526,4 +527,8 @@ const std::unordered_map<std::string_view, MonsterBrightnessType> r_info_brightn
     { "SELF_DARK_1", MonsterBrightnessType::SELF_DARK_1 },
     { "HAS_DARK_2", MonsterBrightnessType::HAS_DARK_2 },
     { "SELF_DARK_2", MonsterBrightnessType::SELF_DARK_2 },
+};
+
+const std::unordered_map<std::string_view, MonsterSpecialType> r_info_special_flags = {
+    { "DIMINISH_MAX_DAMAGE", MonsterSpecialType::DIMINISH_MAX_DAMAGE },
 };
