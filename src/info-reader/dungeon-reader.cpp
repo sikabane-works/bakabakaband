@@ -100,6 +100,9 @@ static bool grab_one_basic_monster_flag(dungeon_type *d_ptr, std::string_view wh
     if (EnumClassFlagGroup<MonsterSpecialType>::grab_one_flag(d_ptr->mon_special_flags, r_info_special_flags, what)) {
         return true;
     }
+    if (EnumClassFlagGroup<MonsterMiscType>::grab_one_flag(d_ptr->mon_misc_flags, r_info_misc_flags, what)) {
+        return true;
+    }
 
     return false;
 }
