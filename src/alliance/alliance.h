@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "system/angband.h"
 #include "util/flag-group.h"
 #include <map>
@@ -45,6 +45,7 @@ enum class AllianceType : int {
     FEANOR_NOLDOR = 34, //!< フェアノール統ノルドール
     GAICHI = 35, //!< ガイチ帝国
     LEGEND_OF_SAVIOR = 36, //!< 世紀末救世主伝説
+    TOPHAMHATT = 37, //!< トップハムハット一族
     MAX,
 };
 
