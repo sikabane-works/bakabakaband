@@ -50,7 +50,7 @@ bool MonsterEntity::is_hostile() const
 }
 
 /*!
- * @brief モンスターの属性の基づいた敵対関係の有無を返す
+ * @brief モンスターの属性とアライアンスに基づいた敵対関係の有無を返す
  * @param other 比較対象モンスターへの参照
  * @return 敵対関係にあるか否か
  */
@@ -70,7 +70,9 @@ bool MonsterEntity::is_hostile_to_melee(const MonsterEntity &other) const
         }
     }
 
-    if (this->is_hostile_align(other.sub_align)) {
+    if (this->alliance_idx != other.alliance_idx) {
+        return true;
+    } else if (this->is_hostile_align(other.sub_align)) {
         if (this->mflag2.has_not(MonsterConstantFlagType::CHAMELEON) || other.mflag2.has_not(MonsterConstantFlagType::CHAMELEON)) {
             return true;
         }
@@ -80,7 +82,7 @@ bool MonsterEntity::is_hostile_to_melee(const MonsterEntity &other) const
 }
 
 /*!
- * @brief モンスターの属性の基づいた敵対関係の有無を返す
+ * @brief モンスターの属性に基づいた敵対関係の有無を返す
  * @param other 比較対象のサブフラグ
  * @return 敵対関係にあるか否か
  */
