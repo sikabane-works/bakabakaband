@@ -30,6 +30,7 @@
 
 enum class MonsterAbilityType;
 
+extern const std::unordered_map<std::string_view, race_flags9> r_info_flags9;
 extern const std::unordered_map<std::string_view, RaceBlowMethodType> r_info_blow_method;
 extern const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effect;
 extern const std::unordered_map<std::string_view, MonsterAbilityType> r_info_ability_flags;
