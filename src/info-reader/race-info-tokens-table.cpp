@@ -520,6 +520,7 @@ const std::unordered_map<std::string_view, MonsterMiscType> r_info_misc_flags = 
     { "QUESTOR", MonsterMiscType::QUESTOR },
     { "EMPTY_MIND", MonsterMiscType::EMPTY_MIND },
     { "WEIRD_MIND", MonsterMiscType::WEIRD_MIND },
+    { "VOCIFEROUS", MonsterMiscType::VOCIFEROUS },
 };
 
 const std::unordered_map<std::string_view, MonsterSpecialType> r_info_special_flags = {
