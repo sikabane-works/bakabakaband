@@ -89,7 +89,6 @@ public:
     PLAYER_LEVEL lev{}; /* Level */
 
     int16_t town_num{}; /* Current town number */
-    int16_t arena_number{}; /* monster number in on_defeat_arena_monster -KMW- */
 
     POSITION wilderness_x{}; /* Coordinates in the wilderness */
     POSITION wilderness_y{};
@@ -418,7 +417,6 @@ public:
 
     std::shared_ptr<TimedEffects> effects() const;
     bool is_fully_healthy() const;
-    bool is_vaild_position() const;
     std::string decrease_ability_random();
     std::string decrease_ability_all();
     Pos2D get_position() const;

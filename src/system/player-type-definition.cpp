@@ -2,8 +2,6 @@
 #include "floor/geometry.h"
 #include "market/arena-entry.h"
 #include "system/angband-exceptions.h"
-#include "system/floor-type-definition.h"
-#include "system/monster-race-info.h" // @todo 暫定、後で消す.
 #include "system/redrawing-flags-updater.h"
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
@@ -26,7 +24,7 @@ PlayerType::PlayerType()
 bool PlayerType::is_true_winner() const
 {
     const auto &entries = ArenaEntryList::get_instance();
-    return (w_ptr->total_winner > 0) && (this->arena_number > entries.get_max_entries() + 2);
+    return (w_ptr->total_winner > 0) && (entries.is_player_true_victor());
 }
 
 /*!
@@ -45,12 +43,6 @@ void PlayerType::plus_incident(INCIDENT incidentID, int num)
 std::shared_ptr<TimedEffects> PlayerType::effects() const
 {
     return this->timed_effects;
-}
-
-bool PlayerType::is_vaild_position() const
-{
-    FloorType *floor_ptr = this->current_floor_ptr;
-    return this->x > 0 && this->y > 0 && this->x <= floor_ptr->width - 1 && this->y <= floor_ptr->height - 1;
 }
 
 /*!

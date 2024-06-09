@@ -26,7 +26,7 @@ bool WorldCollapsion::is_blown_away()
 void WorldCollapsion::plus_timed_world_collapsion(AngbandWorld *w_ptr, PlayerType *player_ptr, int multi)
 {
     auto &entries = ArenaEntryList::get_instance();
-    if (w_ptr->total_winner && player_ptr->arena_number > entries.get_max_entries()) {
+    if (w_ptr->total_winner && entries.get_current_entry() >= entries.get_max_entries()) {
         return;
     }
     if (get_player_flags(player_ptr, TR_WORLD_END)) {
