@@ -342,8 +342,8 @@ static void decide_arena_death(PlayerType *player_ptr)
         return;
     }
 
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (!floor_ptr->inside_arena) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (!floor.inside_arena) {
 
         while (true) {
             char i;
@@ -365,8 +365,9 @@ static void decide_arena_death(PlayerType *player_ptr)
         }
     }
 
-    floor_ptr->inside_arena = false;
-    if (player_ptr->arena_number > MAX_ARENA_MONS) {
+    floor.inside_arena = false;
+    auto &entries = ArenaEntryList::get_instance();
+    if (player_ptr->arena_number > entries.get_max_entries()) {
         player_ptr->arena_number++;
     } else {
         player_ptr->arena_number = -1 - player_ptr->arena_number;
