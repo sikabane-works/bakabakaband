@@ -44,8 +44,8 @@ static void set_flags1(lore_type *lore_ptr)
         lore_ptr->kind_flags.set(MonsterKindType::UNIQUE);
     }
 
-    if (lore_ptr->r_ptr->flags1 & RF1_QUESTOR) {
-        lore_ptr->flags1 |= (RF1_QUESTOR);
+    if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::QUESTOR)) {
+        lore_ptr->misc_flags.set(MonsterMiscType::QUESTOR);
     }
 
     if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
@@ -285,7 +285,7 @@ void process_monster_lore(PlayerType *player_ptr, MonsterRaceId r_idx, monster_l
         hook_c_roff(TERM_RED, _("致命的な威力の攻撃に対して大きな耐性を持っている。", "has the strong resistance for a critical damage.  "));
     }
     display_monster_aura(lore_ptr);
-    if (lore_ptr->flags2 & RF2_REFLECTING) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::REFLECTING)) {
         hooked_roff(format(_("%s^は矢の呪文を跳ね返す。", "%s^ reflects bolt spells.  "), Who::who(lore_ptr->msex)));
     }
 

@@ -798,13 +798,13 @@ void display_monster_sometimes(lore_type *lore_ptr)
 
 void display_monster_guardian(lore_type *lore_ptr)
 {
-    bool is_kingpin = (lore_ptr->flags1 & RF1_QUESTOR) != 0;
+    bool is_kingpin = lore_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     is_kingpin &= lore_ptr->r_ptr->r_sights > 0;
     is_kingpin &= lore_ptr->r_ptr->mob_num > 0;
     is_kingpin &= (lore_ptr->r_idx == MonsterRaceId::MELKO);
     if (is_kingpin) {
         hook_c_roff(TERM_VIOLET, _("あなたはこのモンスターを殺したいという強い欲望を感じている...", "You feel an intense desire to kill this monster...  "));
-    } else if (lore_ptr->flags7 & RF7_GUARDIAN) {
+    } else if (lore_ptr->misc_flags.has(MonsterMiscType::GUARDIAN)) {
         hook_c_roff(TERM_L_RED, _("このモンスターはダンジョンの主である。", "This monster is the master of a dungeon."));
     }
 
