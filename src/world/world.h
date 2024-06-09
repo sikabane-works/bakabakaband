@@ -17,6 +17,7 @@ class MonsterRaceInfo;
 class AngbandWorld {
 public:
     AngbandWorld() = default;
+    static AngbandWorld &get_instance();
 
     POSITION max_wild_x{}; /*!< Maximum size of the wilderness */
     POSITION max_wild_y{}; /*!< Maximum size of the wilderness */

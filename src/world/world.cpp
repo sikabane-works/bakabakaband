@@ -10,6 +10,11 @@
 AngbandWorld world;
 AngbandWorld *w_ptr = &world;
 
+AngbandWorld &AngbandWorld::get_instance()
+{
+    return world;
+}
+
 /*!
  * @brief アリーナへの入場/退出状態を更新する
  * @param 入場ならばtrue、退出ならばfalse
