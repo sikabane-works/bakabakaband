@@ -292,7 +292,7 @@ static int decide_drop_numbers(PlayerType player, MonsterDeath *md_ptr, const bo
         drop_numbers = 0;
     }
 
-    if (!drop_item && (md_ptr->r_ptr->symbol_definition.character != '$')) {
+    if (!drop_item && !md_ptr->r_ptr->symbol_char_is_any_of("$")) {
         drop_numbers = 0;
     }
 
