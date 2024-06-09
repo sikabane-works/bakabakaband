@@ -48,16 +48,16 @@ static void set_flags1(lore_type *lore_ptr)
         lore_ptr->flags1 |= (RF1_QUESTOR);
     }
 
-    if (lore_ptr->r_ptr->flags1 & RF1_FRIENDS) {
-        lore_ptr->flags1 |= (RF1_FRIENDS);
+    if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
+        lore_ptr->misc_flags.set(MonsterMiscType::HAS_FRIENDS);
     }
 
-    if (lore_ptr->r_ptr->flags1 & RF1_ESCORT) {
-        lore_ptr->flags1 |= (RF1_ESCORT);
+    if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::ESCORT)) {
+        lore_ptr->misc_flags.set(MonsterMiscType::ESCORT);
     }
 
-    if (lore_ptr->r_ptr->flags1 & RF1_ESCORTS) {
-        lore_ptr->flags1 |= (RF1_ESCORTS);
+    if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::MORE_ESCORT)) {
+        lore_ptr->misc_flags.set(MonsterMiscType::MORE_ESCORT);
     }
 }
 
@@ -215,8 +215,8 @@ static void set_race_flags(lore_type *lore_ptr)
         lore_ptr->misc_flags.set(MonsterMiscType::FORCE_DEPTH);
     }
 
-    if (lore_ptr->r_ptr->flags1 & RF1_FORCE_MAXHP) {
-        lore_ptr->flags1 |= (RF1_FORCE_MAXHP);
+    if (lore_ptr->r_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP)) {
+        lore_ptr->misc_flags.set(MonsterMiscType::FORCE_MAXHP);
     }
 }
 

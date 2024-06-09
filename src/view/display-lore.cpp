@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @brief モンスターの思い出を表示する処理
  * @date 2020/06/09
  * @author Hourier
@@ -448,7 +448,7 @@ void display_monster_alignment(lore_type *lore_ptr)
         hook_c_roff(TERM_VIOLET, _("両性具有であり", " hermaphroditic"));
     }
 
-    if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::ELDRITCH_HORROR)) {
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
     }
 
@@ -654,7 +654,7 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
     }
 
     hooked_roff(_("護衛の構成は", "These escorts"));
-    if ((lore_ptr->flags1 & RF1_ESCORT) || (lore_ptr->flags1 & RF1_ESCORTS)) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::ESCORT) || lore_ptr->misc_flags.has(MonsterMiscType::MORE_ESCORT)) {
         hooked_roff(_("少なくとも", " at the least"));
     }
 
@@ -702,10 +702,10 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
 
 void display_monster_collective(lore_type *lore_ptr)
 {
-    if ((lore_ptr->flags1 & RF1_ESCORT) || (lore_ptr->flags1 & RF1_ESCORTS) || lore_ptr->reinforce) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::ESCORT) || lore_ptr->misc_flags.has(MonsterMiscType::MORE_ESCORT) || lore_ptr->reinforce) {
         hooked_roff(format(_("%s^は通常護衛を伴って現れる。", "%s^ usually appears with escorts.  "), Who::who(lore_ptr->msex)));
         display_monster_escort_contents(lore_ptr);
-    } else if (lore_ptr->flags1 & RF1_FRIENDS) {
+    } else if (lore_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
         hooked_roff(format(_("%s^は通常集団で現れる。", "%s^ usually appears in groups.  "), Who::who(lore_ptr->msex)));
     }
 }

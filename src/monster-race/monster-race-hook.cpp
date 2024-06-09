@@ -103,7 +103,7 @@ bool mon_hook_quest(PlayerType *player_ptr, MonsterRaceId r_idx)
         return false;
     }
 
-    if (any_bits(r_ptr->flags2, RF2_MULTIPLY)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::MULTIPLY)) {
         return false;
     }
 
@@ -752,7 +752,7 @@ bool vault_aux_cthulhu(PlayerType *player_ptr, MonsterRaceId r_idx)
         return false;
     }
 
-    if (!(r_ptr->flags2 & (RF2_ELDRITCH_HORROR))) {
+    if (r_ptr->misc_flags.has_not(MonsterMiscType::ELDRITCH_HORROR)) {
         return false;
     }
 
@@ -902,7 +902,7 @@ bool monster_hook_human(PlayerType *player_ptr, MonsterRaceId r_idx)
 bool get_nightmare(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     auto *r_ptr = &monraces_info[r_idx];
-    if (none_bits(r_ptr->flags2, RF2_ELDRITCH_HORROR)) {
+    if (r_ptr->misc_flags.has_not(MonsterMiscType::ELDRITCH_HORROR)) {
         return false;
     }
 
@@ -934,7 +934,7 @@ bool monster_is_fishing_target(PlayerType *player_ptr, MonsterRaceId r_idx)
 /*!
  * @brief モンスター闘技場に参加できるモンスターの判定
  * @param r_idx モンスターＩＤ
- * @details 基準はNEVER_MOVE MULTIPLY QUANTUM AQUATIC RF7_CHAMELEONのいずれも持たず、
+ * @details 基準はNEVER_MOVE MULTIPLY QUANTUM AQUATIC CHAMELEONのいずれも持たず、
  * 自爆以外のなんらかのHP攻撃手段を持っていること。
  * @return 参加できるか否か
  */
@@ -946,10 +946,10 @@ bool monster_can_entry_arena(PlayerType *player_ptr, MonsterRaceId r_idx)
     int dam = 0;
     const auto &monrace = monraces_info[r_idx];
     bool unselectable = monrace.behavior_flags.has(MonsterBehaviorType::NEVER_MOVE);
-    unselectable |= any_bits(monrace.flags2, RF2_MULTIPLY);
+    unselectable |= monrace.misc_flags.has(MonsterMiscType::MULTIPLY);
     unselectable |= monrace.kind_flags.has(MonsterKindType::QUANTUM) && monrace.kind_flags.has_not(MonsterKindType::UNIQUE);
     unselectable |= monrace.feature_flags.has(MonsterFeatureType::AQUATIC);
-    unselectable |= any_bits(monrace.flags7, RF7_CHAMELEON);
+    unselectable |= monrace.misc_flags.has(MonsterMiscType::CHAMELEON);
     unselectable |= monrace.is_explodable();
     if (unselectable) {
         return false;
@@ -983,7 +983,7 @@ bool item_monster_okay(PlayerType *player_ptr, MonsterRaceId r_idx)
         return false;
     }
 
-    if (any_bits(r_ptr->flags7, RF7_KAGE)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::KAGE)) {
         return false;
     }
 

@@ -315,7 +315,7 @@ static int decide_drop_numbers(PlayerType player, MonsterDeath *md_ptr, const bo
         drop_numbers = 0;
     }
 
-    if ((md_ptr->r_ptr->flags2 & (RF2_MULTIPLY)) && (md_ptr->r_ptr->r_akills > 1024)) {
+    if (md_ptr->r_ptr->misc_flags.has(MonsterMiscType::MULTIPLY) && (md_ptr->r_ptr->r_akills > 1024)) {
         drop_numbers = 0;
     }
 
