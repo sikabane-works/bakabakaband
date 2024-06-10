@@ -25,26 +25,9 @@
  * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
  * @return 食べることが可能ならばTRUEを返す
  */
-bool item_tester_hook_eatable(PlayerType *player_ptr, const ItemEntity *o_ptr)
+bool item_tester_hook_eatable([[maybe_unused]] PlayerType *player_ptr, [[maybe_unused]] const ItemEntity *o_ptr)
 {
-    const auto tval = o_ptr->bi_key.tval();
-    if (tval == ItemKindType::FOOD) {
-        return true;
-    }
-
-    auto food_type = PlayerRace(player_ptr).food();
-    if (food_type == PlayerRaceFoodType::MANA) {
-        if (o_ptr->is_wand_staff()) {
-            return true;
-        }
-    } else if (food_type == PlayerRaceFoodType::CORPSE) {
-        auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        if (o_ptr->is_corpse() && angband_strchr("pht", monraces_info[corpse_r_idx].d_char)) {
-            return true;
-        }
-    }
-
-    return false;
+    return true;
 }
 
 /*!

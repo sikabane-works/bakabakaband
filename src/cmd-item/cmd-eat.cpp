@@ -637,11 +637,8 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX i_idx)
         (void)set_food(player_ptr, PY_FOOD_MAX - 1);
 
         rfu.set_flags(flags_srf);
-        vary_item(player_ptr, i_idx, -1);
-        return;
-    }
-
-    if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
+        ate = true;
+    } else if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
         const auto sval = bi_key.sval();
         if ((sval != SV_FOOD_WAYBREAD) && (sval >= SV_FOOD_BISCUIT)) {
             ItemEntity forge;
@@ -681,11 +678,12 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX i_idx)
         if (bi_key == BaseitemKey(ItemKindType::FOOD, SV_FOOD_WAYBREAD)) {
             /* Waybread is always fully satisfying. */
             set_food(player_ptr, std::max<short>(player_ptr->food, PY_FOOD_MAX - 1));
-        } else {
+            ate = true;
+        } else if (bi_key.tval() == ItemKindType::FOOD) {
             /* Food can feed the player */
             (void)set_food(player_ptr, player_ptr->food + o_ptr->pval);
+            ate = true;
         }
-        ate = true;
     }
     if (!ate) {
         msg_print("流石に食べるのを躊躇した。");
