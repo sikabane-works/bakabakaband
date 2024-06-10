@@ -598,9 +598,8 @@ bool process_monster_spawn_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, PO
         if (randint1(deno) <= num) {
             if (multiply_monster(player_ptr, m_idx, idx, false, (m_ptr->is_pet() ? PM_FORCE_PET : 0))) {
                 if (player_ptr->current_floor_ptr->m_list[hack_m_idx_ii].ml && is_original_ap_and_seen(player_ptr, m_ptr)) {
-                    r_ptr->r_flags2 |= RF2_MULTIPLY;
+                    r_ptr->misc_flags.set(MonsterMiscType::MULTIPLY);
                 }
-
                 return true;
             }
         }
