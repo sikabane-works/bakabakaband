@@ -57,4 +57,5 @@ enum class MonsterFeedType {
     LOSE_CON = 28,
     LOSE_CHR = 29,
     DRAIN_MANA = 30,
+    MAX
 };

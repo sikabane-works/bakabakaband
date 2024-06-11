@@ -21,7 +21,7 @@
  */
 static bool grab_one_basic_flag(MonsterRaceInfo *r_ptr, std::string_view what)
 {
-    if (info_grab_one_flag(r_ptr->flags9, r_info_flags9, what)) {
+    if (EnumClassFlagGroup<MonsterFeedType>::grab_one_flag(r_ptr->meat_feed_flags, r_info_meat_feed, what)) {
         return true;
     }
 
