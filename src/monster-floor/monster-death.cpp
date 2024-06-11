@@ -1,4 +1,4 @@
-﻿#include "monster-floor/monster-death.h"
+#include "monster-floor/monster-death.h"
 #include "artifact/fixed-art-generator.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-building/cmd-building.h"
@@ -265,7 +265,7 @@ static void decide_drop_quality(MonsterDeath *md_ptr)
         md_ptr->mo_mode |= (AM_GOOD | AM_GREAT);
     }
 
-    if (md_ptr->r_ptr->flags1 & RF1_DROP_NASTY) {
+    if (md_ptr->r_ptr->drop_flags.has(MonsterDropType::DROP_NASTY)) {
         md_ptr->mo_mode |= AM_NASTY;
     }
 }

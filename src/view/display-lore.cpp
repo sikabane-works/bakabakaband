@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスターの思い出を表示する処理
  * @date 2020/06/09
  * @author Hourier
@@ -444,9 +444,11 @@ void display_monster_kind(lore_type *lore_ptr)
 
 void display_monster_alignment(lore_type *lore_ptr)
 {
-    if (lore_ptr->flags1 & RF1_MALE && lore_ptr->flags1 & RF1_FEMALE) {
+    /* TODO 再定義
+    if (lore_ptr->msex == monster_sex::MSEX_MALE && lore_ptr->msex == monster_sex::MSEX_FEMALE) {
         hook_c_roff(TERM_VIOLET, _("両性具有であり", " hermaphroditic"));
     }
+    */
 
     if (lore_ptr->misc_flags.has(MonsterMiscType::ELDRITCH_HORROR)) {
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));

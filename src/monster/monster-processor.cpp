@@ -524,7 +524,7 @@ void process_monster_spawn_zanki(PlayerType *player_ptr, MONSTER_IDX m_idx)
 {
     MonsterEntity *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
     MonsterRaceInfo *r_ptr = &monraces_info[m_ptr->r_idx];
-    if (r_ptr->level < 30 || !(r_ptr->flags1 & RF1_UNIQUE) || r_ptr->flags2 & RF2_EMPTY_MIND) {
+    if (r_ptr->level < 30 || !r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->r_misc_flags.has(MonsterMiscType::EMPTY_MIND)) {
         return;
     }
 

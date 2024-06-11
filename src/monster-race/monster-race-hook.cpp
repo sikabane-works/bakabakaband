@@ -799,7 +799,7 @@ bool vault_aux_gay(PlayerType *player_ptr, MonsterRaceId r_idx)
         return false;
     }
 
-    if (!(r_ptr->flags1 & (RF1_MALE))) {
+    if (!is_male(*r_ptr)) {
         return false;
     }
 
@@ -822,7 +822,7 @@ bool vault_aux_les(PlayerType *player_ptr, MonsterRaceId r_idx)
         return false;
     }
 
-    if (!(r_ptr->flags1 & (RF1_FEMALE))) {
+    if (!is_female(*r_ptr)) {
         return false;
     }
 
