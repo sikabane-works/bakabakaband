@@ -14,7 +14,6 @@
 #include "monster-race/race-flags3.h"
 #include "monster-race/race-flags7.h"
 #include "monster-race/race-flags8.h"
-#include "monster-race/race-flags9.h"
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-misc-flags.h"
 #include "monster-race/race-population-flags.h"
@@ -30,7 +29,7 @@
 
 enum class MonsterAbilityType;
 
-extern const std::unordered_map<std::string_view, race_flags9> r_info_flags9;
+extern const std::unordered_map<std::string_view, MonsterFeedType> r_info_meat_feed;
 extern const std::unordered_map<std::string_view, RaceBlowMethodType> r_info_blow_method;
 extern const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effect;
 extern const std::unordered_map<std::string_view, MonsterAbilityType> r_info_ability_flags;

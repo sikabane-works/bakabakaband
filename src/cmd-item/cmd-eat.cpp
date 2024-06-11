@@ -15,7 +15,6 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags9.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-hook/hook-expendable.h"
 #include "object/item-tester-hooker.h"
@@ -140,121 +139,121 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr
 
     MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
 
-    if (r_ptr->flags9 & RF9_EAT_BLIND) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::BLIND)) {
         BadStatusSetter(player_ptr).mod_blindness(200 + randint1(200));
     }
 
-    if (r_ptr->flags9 & RF9_EAT_CONF) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::CONF)) {
         BadStatusSetter(player_ptr).mod_confusion(200 + randint1(200));
     }
 
-    if (r_ptr->flags9 & RF9_EAT_MANA) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::MANA)) {
         restore_mana(player_ptr, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_NEXUS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::NEXUS)) {
         do_poly_self(player_ptr);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_SLEEP) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::SLEEP)) {
         if (!player_ptr->free_act) {
             BadStatusSetter(player_ptr).set_paralysis(10 + randint1(10));
         }
     }
 
-    if (r_ptr->flags9 & RF9_EAT_BERSERKER) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::BERSERKER)) {
         set_shero(player_ptr, player_ptr->shero + randint1(10) + 10, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_ACIDIC) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::ACIDIC)) {
     }
 
-    if (r_ptr->flags9 & RF9_EAT_SPEED) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::SPEED)) {
         (void)set_acceleration(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_CURE) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::CURE)) {
         true_healing(player_ptr, 50);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_FIRE_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::FIRE_RES)) {
         set_oppose_fire(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_COLD_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::COLD_RES)) {
         set_oppose_cold(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_ELEC_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::ELEC_RES)) {
         set_oppose_elec(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_POIS_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::POIS_RES)) {
         set_oppose_pois(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_INSANITY) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::INSANITY)) {
         sanity_blast(player_ptr, NULL, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_DRAIN_EXP) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::DRAIN_EXP)) {
     }
 
-    if (r_ptr->flags9 & RF9_EAT_POISONOUS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::POISONOUS)) {
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
             (void)BadStatusSetter(player_ptr).mod_poison(10 + randint1(15));
         }
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_STR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_STR)) {
         do_inc_stat(player_ptr, A_STR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_INT) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_INT)) {
         do_inc_stat(player_ptr, A_INT);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_WIS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_WIS)) {
         do_inc_stat(player_ptr, A_WIS);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_DEX) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_DEX)) {
         do_inc_stat(player_ptr, A_DEX);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_CON) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_CON)) {
         do_inc_stat(player_ptr, A_CON);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_CHR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_CHR)) {
         do_inc_stat(player_ptr, A_CHR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_STR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_STR)) {
         do_dec_stat(player_ptr, A_STR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_INT) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_INT)) {
         do_dec_stat(player_ptr, A_INT);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_WIS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_WIS)) {
         do_dec_stat(player_ptr, A_WIS);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_DEX) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_DEX)) {
         do_dec_stat(player_ptr, A_DEX);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_CON) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_CON)) {
         do_dec_stat(player_ptr, A_CON);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_CHR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_CHR)) {
         do_dec_stat(player_ptr, A_CHR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_DRAIN_MANA) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::DRAIN_MANA)) {
         player_ptr->csp -= 30;
         if (player_ptr->csp < 0) {
             player_ptr->csp = 0;
