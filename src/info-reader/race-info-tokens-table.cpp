@@ -1,4 +1,4 @@
-﻿#include "info-reader/race-info-tokens-table.h"
+#include "info-reader/race-info-tokens-table.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/race-ability-flags.h"
@@ -133,28 +133,6 @@ const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effec
     { "CHAOS", RaceBlowEffectType::CHAOS },
     { "FLAVOR", RaceBlowEffectType::FLAVOR },
     { "DEFECATE", RaceBlowEffectType::DEFECATE },
-};
-
-/*!
- * モンスター特性トークンの定義1 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
-    { "QUESTOR", RF1_QUESTOR },
-    { "FORCE_DEPTH", RF1_FORCE_DEPTH },
-    { "FORCE_MAXHP", RF1_FORCE_MAXHP },
-    { "FORCE_EXTRA", RF1_FORCE_EXTRA },
-};
-
-/*!
- * モンスター特性トークンの定義2 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags2> r_info_flags2 = {
-    { "POWERFUL", RF2_POWERFUL },
-    { "ELDRITCH_HORROR", RF2_ELDRITCH_HORROR },
-    { "VOCIFEROUS", RF2_VOCIFEROUS },
-    { "FLAGS2_XX15", RF2_XX15 },
 };
 
 /*!

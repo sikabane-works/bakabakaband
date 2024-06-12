@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * @brief モンスターの思い出を表示する処理
  * @date 2020/06/09
  * @author Hourier
@@ -16,11 +16,6 @@
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
