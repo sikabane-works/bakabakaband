@@ -5,8 +5,6 @@
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "object-enchant/trg-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"

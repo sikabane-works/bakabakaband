@@ -5,8 +5,6 @@
 #include "info-reader/fixed-map-parser.h"
 #include "market/building-util.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-indice-types.h"
 #include "monster/monster-list.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -128,10 +126,6 @@ void castle_quest(PlayerType *player_ptr)
     if (q_ptr->type != QuestKindType::KILL_ANY_LEVEL) {
         print_questinfo(player_ptr, q_index, true);
         return;
-    }
-
-    if (q_ptr->r_idx == MonsterRaceId::PLAYER) {
-        q_ptr->r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 4 + randint1(6), 0);
     }
 
     MonsterRaceInfo *r_ptr;

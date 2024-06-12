@@ -1,4 +1,4 @@
-#include "monster-floor/monster-death.h"
+﻿#include "monster-floor/monster-death.h"
 #include "artifact/fixed-art-generator.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-building/cmd-building.h"
@@ -19,10 +19,6 @@
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-mask.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
@@ -153,7 +149,7 @@ static void drop_corpse(PlayerType *player_ptr, MonsterDeath *md_ptr)
     q_ptr->pval = enum2i(md_ptr->m_ptr->r_idx);
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 
-    if (one_in_(RF1_UNIQUE ? 1 : 4)) {
+    if (one_in_(md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? 1 : 4)) {
 
         q_ptr->prep(lookup_baseitem_id({ ItemKindType::CORPSE, SV_SOUL }));
         q_ptr->pval = enum2i(md_ptr->m_ptr->r_idx);
