@@ -8,6 +8,7 @@
 #include "object/tval-types.h"
 #include "system/angband-system.h"
 #include "system/baseitem-info.h"
+#include "world/world.h"
 
 /*!
  * @brief ベースアイテムの未確定名を共通tval間でシャッフルする / Shuffle flavor indices of a group of objects with given tval

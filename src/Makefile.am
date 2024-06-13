@@ -324,6 +324,8 @@ hengband_SOURCES = \
 	io-dump/special-class-dump.cpp io-dump/special-class-dump.h \
 	\
 	knowledge/knowledge-alliance.cpp knowledge/knowledge-alliance.h \
+	item-info/flavor-initializer.cpp item-info/flavor-initializer.h \
+	\
 	knowledge/knowledge-autopick.cpp knowledge/knowledge-autopick.h \
 	knowledge/knowledge-experiences.cpp knowledge/knowledge-experiences.h \
 	knowledge/knowledge-features.cpp knowledge/knowledge-features.h \
