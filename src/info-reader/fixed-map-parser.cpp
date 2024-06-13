@@ -18,12 +18,12 @@
 #include "player-info/race-info.h"
 #include "realm/realm-names-table.h"
 #include "system/angband-exceptions.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include <algorithm>
 #include <sstream>
 
@@ -220,8 +220,9 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
         sprintf(tmp, "%d", enum2i(quest_list[i2enum<QuestId>(atoi(b + 6))].status));
         v = tmp;
     } else if (prefix(b + 1, "RANDOM")) {
-        sprintf(tmp, "%d", (int)(w_ptr->seed_town % atoi(b + 7)));
-        v = tmp;
+        const auto &system = AngbandSystem::get_instance();
+        auto tmp2 = std::to_string((int)(system.seed_town % std::stoi(b + 7)));
+        v = tmp2.data();
     } else if (streq(b + 1, "VARIANT")) {
         v = variant;
     } else if (streq(b + 1, "WILDERNESS")) {

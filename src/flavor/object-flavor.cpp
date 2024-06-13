@@ -34,6 +34,7 @@
 #include "player/player-status.h"
 #include "sv-definition/sv-food-types.h"
 #include "sv-definition/sv-lite-types.h"
+#include "system/angband-system.h"
 #include "system/baseitem-info.h"
 #include "util/bit-flags-calculator.h"
 #include "util/string-processor.h"
@@ -198,8 +199,8 @@ static void shuffle_flavors(ItemKindType tval)
  */
 void flavor_init(void)
 {
-    const auto state_backup = w_ptr->rng.get_state();
-    w_ptr->rng.set_state(w_ptr->seed_flavor);
+    const auto state_backup = AngbandSystem::get_instance().rng.get_state();
+    AngbandSystem::get_instance().rng.set_state(AngbandSystem::get_instance().seed_flavor);
     for (auto &baseitem : baseitems_info) {
         if (baseitem.flavor_name.empty()) {
             continue;
@@ -216,7 +217,7 @@ void flavor_init(void)
     shuffle_flavors(ItemKindType::FOOD);
     shuffle_flavors(ItemKindType::POTION);
     shuffle_flavors(ItemKindType::SCROLL);
-    w_ptr->rng.set_state(state_backup);
+    AngbandSystem::get_instance().rng.set_state(state_backup);
     for (auto &baseitem : baseitems_info) {
         if (baseitem.idx == 0 || baseitem.name.empty()) {
             continue;
