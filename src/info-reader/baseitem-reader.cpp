@@ -258,7 +258,8 @@ errr parse_baseitems_info(std::string_view buf, angband_header *head)
         if (tokens.size() < 2 || tokens[1].size() == 0) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
-        info_set_value(bii_ptr->broken_rate, tokens[1]);
+        auto &baseitem = *baseitems_info.rbegin();
+        info_set_value(baseitem.broken_rate, tokens[1]);
     } else {
         return PARSE_ERROR_UNDEFINED_DIRECTIVE;
     }
