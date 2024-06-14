@@ -279,8 +279,8 @@ bool MonsterEntity::has_living_flag(bool is_apperance) const
 }
 
 /*!
- * @brief モンスターが自爆するかどうかを返す
- * @return 自爆するならばならばtrue
+ * @brief モンスターが自爆するか否か
+ * @return 自爆するならtrue
  */
 bool MonsterEntity::is_explodable() const
 {
