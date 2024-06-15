@@ -1,5 +1,6 @@
 #pragma once
 
+#include "system/angband-system.h"
 #include "system/angband-version.h"
 #include <concepts>
 #include <filesystem>
@@ -19,7 +20,7 @@ template <std::derived_from<std::exception> T>
 [[noreturn]] void throw_exception(std::string_view msg, std::filesystem::path path, int line)
 {
     std::stringstream ss;
-    ss << get_version() << ": " << path.filename().string() << ':' << line << ": " << msg;
+    ss << AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL) << ": " << path.filename().string() << ':' << line << ": " << msg;
     throw T(ss.str());
 }
 

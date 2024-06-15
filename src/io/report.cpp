@@ -20,7 +20,7 @@
 #include "player/player-personality.h"
 #include "player/player-status.h"
 #include "realm/realm-names-table.h"
-#include "system/angband-version.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/player-type-definition.h"
@@ -269,23 +269,24 @@ bool report_score(PlayerType *player_ptr)
     personality_desc.append(_(ap_ptr->no ? "の" : "", " "));
 
     auto realm1_name = PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST) ? get_element_title(player_ptr->element) : realm_names[player_ptr->realm1];
-    buf_sprintf(score, "name: %s\n", player_ptr->name);
-    buf_sprintf(score, "version: %s\n", get_version().data());
-    buf_sprintf(score, "score: %d\n", calc_score(player_ptr));
-    buf_sprintf(score, "level: %d\n", player_ptr->lev);
-    buf_sprintf(score, "depth: %d\n", player_ptr->current_floor_ptr->dun_level);
-    buf_sprintf(score, "maxlv: %d\n", player_ptr->max_plv);
-    buf_sprintf(score, "maxdp: %d\n", max_dlv[DUNGEON_ANGBAND]);
-    buf_sprintf(score, "au: %d\n", player_ptr->au);
-    buf_sprintf(score, "turns: %d\n", turn_real(player_ptr, w_ptr->game_turn));
-    buf_sprintf(score, "sex: %d\n", player_ptr->psex);
-    buf_sprintf(score, "race: %s\n", rp_ptr->title);
-    buf_sprintf(score, "class: %s\n", cp_ptr->title);
-    buf_sprintf(score, "seikaku: %s\n", personality_desc.data());
-    buf_sprintf(score, "realm1: %s\n", realm1_name);
-    buf_sprintf(score, "realm2: %s\n", realm_names[player_ptr->realm2]);
-    buf_sprintf(score, "killer: %s\n", player_ptr->died_from.data());
-    buf_sprintf(score, "-----charcter dump-----\n");
+sscore_ss << format("name: %s\n", player_ptr->name)
+             << format("version: %s\n", AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL).data())
+             << format("score: %ld\n", calc_score(player_ptr))
+             << format("level: %d\n", player_ptr->lev)
+             << format("depth: %d\n", player_ptr->current_floor_ptr->dun_level)
+             << format("maxlv: %d\n", player_ptr->max_plv)
+             << format("maxdp: %d\n", max_dlv[DUNGEON_ANGBAND])
+             << format("au: %d\n", player_ptr->au);
+    const auto &igd = InnerGameData::get_instance();
+    score_ss << format("turns: %d\n", igd.get_real_turns(w_ptr->game_turn))
+             << format("sex: %d\n", player_ptr->psex)
+             << format("race: %s\n", rp_ptr->title)
+             << format("class: %s\n", cp_ptr->title)
+             << format("seikaku: %s\n", personality_desc.data())
+             << format("realm1: %s\n", realm1_name)
+             << format("realm2: %s\n", realm_names[player_ptr->realm2])
+             << format("killer: %s\n", player_ptr->died_from.data())
+             << "-----charcter dump-----\n";
 
     make_dump(player_ptr, score);
     if (screen_dump) {
