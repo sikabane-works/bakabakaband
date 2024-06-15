@@ -158,7 +158,7 @@ void effect_player_plasma(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
     ep_ptr->get_damage = take_hit(player_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
 
     if (!has_resist_sound(player_ptr) && !check_multishadow(player_ptr)) {
-        TIME_EFFECT plus_stun = (randint1((ep_ptr->dam > 40) ? 35 : (ep_ptr->dam * 3 / 4 + 5)));
+        const auto plus_stun = randnum1<short>((ep_ptr->dam > 40) ? 35 : (ep_ptr->dam * 3 / 4 + 5));
         (void)BadStatusSetter(player_ptr).mod_stun(plus_stun);
     }
 
@@ -224,7 +224,7 @@ void effect_player_water(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
     BadStatusSetter bss(player_ptr);
     if (!check_multishadow(player_ptr)) {
         if (!has_resist_sound(player_ptr) && !has_res_water) {
-            (void)bss.mod_stun(randint1(40));
+            (void)bss.mod_stun(randnum1<short>(40));
         }
 
         if (!has_resist_conf(player_ptr) && !has_res_water) {
@@ -257,7 +257,7 @@ void effect_player_chaos(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
     }
 
     if (!has_resist_chaos(player_ptr)) {
-        (void)bss.mod_hallucination(randint1(10));
+        (void)bss.mod_hallucination(randnum1<short>(10));
         if (one_in_(3)) {
             msg_print(_("あなたの身体はカオスの力で捻じ曲げられた！", "Your body is twisted by chaos!"));
             (void)gain_mutation(player_ptr, 0);
@@ -303,7 +303,7 @@ void effect_player_sound(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
     ep_ptr->dam = ep_ptr->dam * calc_sound_damage_rate(player_ptr, CALC_RAND) / 100;
 
     if (!has_resist_sound(player_ptr) && !check_multishadow(player_ptr)) {
-        TIME_EFFECT plus_stun = (randint1((ep_ptr->dam > 90) ? 35 : (ep_ptr->dam / 3 + 5)));
+        const auto plus_stun = randnum1<short>((ep_ptr->dam > 90) ? 35 : (ep_ptr->dam / 3 + 5));
         (void)BadStatusSetter(player_ptr).mod_stun(plus_stun);
     }
 
@@ -365,7 +365,7 @@ void effect_player_force(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
         msg_print(_("運動エネルギーで攻撃された！", "You are hit by kinetic force!"));
     }
     if (!has_resist_sound(player_ptr) && !check_multishadow(player_ptr)) {
-        (void)BadStatusSetter(player_ptr).mod_stun(randint1(20));
+        (void)BadStatusSetter(player_ptr).mod_stun(randnum1<short>(20));
     }
 
     ep_ptr->get_damage = take_hit(player_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
@@ -379,7 +379,7 @@ void effect_player_rocket(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
 
     BadStatusSetter bss(player_ptr);
     if (!has_resist_sound(player_ptr) && !check_multishadow(player_ptr)) {
-        (void)bss.mod_stun(randint1(20));
+        (void)bss.mod_stun(randnum1<short>(20));
     }
 
     ep_ptr->dam = ep_ptr->dam * calc_rocket_damage_rate(player_ptr, CALC_RAND) / 100;
@@ -541,7 +541,7 @@ void effect_player_gravity(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
         }
 
         if (!(has_resist_sound(player_ptr) || player_ptr->levitation)) {
-            TIME_EFFECT plus_stun = (randint1((ep_ptr->dam > 90) ? 35 : (ep_ptr->dam / 3 + 5)));
+            const auto plus_stun = randnum1<short>((ep_ptr->dam > 90) ? 35 : (ep_ptr->dam / 3 + 5));
             (void)bss.mod_stun(plus_stun);
         }
     }
@@ -623,7 +623,7 @@ void effect_player_icee(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
     }
 
     if (!has_resist_sound(player_ptr)) {
-        (void)bss.mod_stun(randint1(15));
+        (void)bss.mod_stun(randnum1<short>(15));
     }
 
     if ((!(has_resist_cold(player_ptr) || is_oppose_cold(player_ptr))) || one_in_(12)) {
@@ -689,15 +689,15 @@ void effect_player_abyss(PlayerType *player_ptr, EffectPlayerType *ep_ptr)
 
     msg_print(_("深淵から何かがあなたを覗き込んでいる！", "Something gazes at you from the abyss!"));
     if (!has_resist_chaos(player_ptr)) {
-        (void)bss.mod_hallucination(randint1(10));
+        (void)bss.mod_hallucination(randnum1<short>(10));
     }
 
     if (!has_resist_conf(player_ptr)) {
-        (void)bss.mod_confusion(randint1(10));
+        (void)bss.mod_confusion(randnum1<short>(10));
     }
 
     if (!has_resist_fear(player_ptr)) {
-        (void)bss.mod_fear(randint1(10));
+        (void)bss.mod_fear(randnum1<short>(10));
     }
     ep_ptr->get_damage = take_hit(player_ptr, DAMAGE_ATTACK, ep_ptr->dam, ep_ptr->killer);
 }
