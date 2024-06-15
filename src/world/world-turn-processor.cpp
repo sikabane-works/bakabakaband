@@ -60,7 +60,7 @@ WorldTurnProcessor::WorldTurnProcessor(PlayerType *player_ptr)
 void WorldTurnProcessor::process_world()
 {
     const int a_day = TURNS_PER_TICK * TOWN_DAWN;
-    const auto &world = AngbandWorld::get_instance();
+    auto &world = AngbandWorld::get_instance();
     const int prev_turn_in_today = ((world.game_turn - TURNS_PER_TICK) % a_day + a_day / 4) % a_day;
     const int prev_min = (1440 * prev_turn_in_today / a_day) % 60;
     std::tie(std::ignore, this->hour, this->min) = world.extract_date_time(InnerGameData::get_instance().get_start_race());
@@ -99,7 +99,7 @@ void WorldTurnProcessor::process_world()
     sense_inventory2(this->player_ptr);
     execute_recall(this->player_ptr);
     execute_floor_reset(this->player_ptr);
-    wc_ptr->plus_timed_world_collapsion(w_ptr, this->player_ptr, 1);
+    wc_ptr->plus_timed_world_collapsion(&world, this->player_ptr, 1);
 }
 
 /*!

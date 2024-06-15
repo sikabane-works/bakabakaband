@@ -18,11 +18,12 @@
  */
 void rd_extra(PlayerType *player_ptr)
 {
+    auto &world = AngbandWorld::get_instance();
     player_ptr->riding = rd_s16b();
     player_ptr->floor_id = rd_s16b();
 
     rd_dummy_monsters();
-    w_ptr->play_time = rd_u32b();
+    world.play_time = rd_u32b();
 
     player_ptr->visit = rd_u32b();
     player_ptr->count = rd_u32b();

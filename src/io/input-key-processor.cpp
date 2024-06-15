@@ -106,7 +106,8 @@
  */
 bool enter_wizard_mode(const FloorType &floor)
 {
-    if (!w_ptr->noscore) {
+    auto &world = AngbandWorld::get_instance();
+    if (!world.noscore) {
         if (!allow_debug_opts) {
             msg_print(_("ウィザードモードは許可されていません。 ", "Wizard mode is not permitted."));
             return false;
@@ -121,7 +122,7 @@ bool enter_wizard_mode(const FloorType &floor)
 
         constexpr auto mes = _("ウィザードモードに突入してスコアを残せなくなった。", "gave up recording score to enter wizard mode.");
         exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, mes);
-        w_ptr->noscore |= 0x0002;
+        world.noscore |= 0x0002;
     }
 
     return true;
@@ -135,7 +136,8 @@ bool enter_wizard_mode(const FloorType &floor)
  */
 static bool enter_debug_mode(const FloorType &floor)
 {
-    if (!w_ptr->noscore) {
+    auto &world = AngbandWorld::get_instance();
+    if (!world.noscore) {
         if (!allow_debug_opts) {
             msg_print(_("デバッグコマンドは許可されていません。 ", "Use of debug command is not permitted."));
             return false;
@@ -150,7 +152,7 @@ static bool enter_debug_mode(const FloorType &floor)
 
         constexpr auto mes = _("デバッグモードに突入してスコアを残せなくなった。", "gave up sending score to use debug commands.");
         exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, mes);
-        w_ptr->noscore |= 0x0008;
+        world.noscore |= 0x0008;
     }
 
     return true;
@@ -183,11 +185,11 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case KTRL('W'): {
-        if (w_ptr->wizard) {
-            w_ptr->wizard = false;
+        if (world.wizard) {
+            world.wizard = false;
             msg_print(_("ウィザードモード解除。", "Wizard mode off."));
         } else if (enter_wizard_mode(floor)) {
-            w_ptr->wizard = true;
+            world.wizard = true;
             msg_print(_("ウィザードモード突入。", "Wizard mode on."));
         }
 

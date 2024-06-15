@@ -762,7 +762,7 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
     }
 
     auto &world = AngbandWorld::get_instance();
-    world.noscore |= 0x0001;
+    AngbandWorld::get_instance().noscore |= 0x0001;
 
     player_ptr->is_dead = false;
     (void)life_stream(player_ptr, false, false);

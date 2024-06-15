@@ -9,12 +9,11 @@
 #include "util/bit-flags-calculator.h"
 #include <ctime>
 
-AngbandWorld world;
-AngbandWorld *w_ptr = &world;
+AngbandWorld AngbandWorld::instance{};
 
 AngbandWorld &AngbandWorld::get_instance()
 {
-    return world;
+    return instance;
 }
 
 bool AngbandWorld::is_wild_mode() const

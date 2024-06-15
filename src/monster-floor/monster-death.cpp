@@ -111,9 +111,9 @@ static void on_defeat_arena_monster(PlayerType *player_ptr, MonsterDeath *md_ptr
 static void drop_corpse(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    bool is_drop_corpse = one_in_(md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? 1 : 4);
+    auto is_drop_corpse = one_in_(md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? 1 : 4);
     is_drop_corpse &= md_ptr->r_ptr->drop_flags.has_any_of({ MonsterDropType::DROP_CORPSE, MonsterDropType::DROP_SKELETON });
-    is_drop_corpse &= !(floor_ptr->inside_arena || AngbandSystem::get_instance().is_phase_out() || md_ptr->cloned || ((md_ptr->m_ptr->r_idx == w_ptr->today_mon) && md_ptr->m_ptr->is_pet()));
+    is_drop_corpse &= !(floor_ptr->inside_arena || AngbandSystem::get_instance().is_phase_out() || md_ptr->cloned || ((md_ptr->m_ptr->r_idx == AngbandWorld::get_instance().today_mon) && md_ptr->m_ptr->is_pet()));
     if (!is_drop_corpse) {
         return;
     }
@@ -155,8 +155,9 @@ static void drop_corpse(PlayerType *player_ptr, MonsterDeath *md_ptr)
  */
 static void drop_artifact_from_unique(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
+    const auto is_wizard = AngbandWorld::get_instance().wizard;
     for (const auto &[a_idx, chance] : md_ptr->r_ptr->drop_artifacts) {
-        if (!w_ptr->wizard && (randint0(100) >= chance)) {
+        if (!is_wizard && (randint0(100) >= chance)) {
             continue;
         }
 
@@ -175,6 +176,7 @@ static void drop_artifact_from_unique(PlayerType *player_ptr, MonsterDeath *md_p
  */
 bool drop_single_artifact(PlayerType *player_ptr, MonsterDeath *md_ptr, FixedArtifactId a_idx)
 {
+    const auto &world = AngbandWorld::get_instance();
     auto &artifact = ArtifactList::get_instance().get_artifact(a_idx);
     if (artifact.is_generated) {
         return false;
@@ -184,7 +186,7 @@ bool drop_single_artifact(PlayerType *player_ptr, MonsterDeath *md_ptr, FixedArt
         return false;
     }
 
-    if (w_ptr->character_dungeon) {
+    if (world.character_dungeon) {
         artifact.floor_id = player_ptr->floor_id;
     }
 
@@ -341,8 +343,9 @@ static void drop_items_golds(PlayerType *player_ptr, MonsterDeath *md_ptr, int d
  */
 static void on_defeat_last_boss(PlayerType *player_ptr)
 {
-    w_ptr->total_winner = true;
-    w_ptr->add_winner_class(player_ptr->pclass);
+    auto &world = AngbandWorld::get_instance();
+    world.total_winner = true;
+    world.add_winner_class(player_ptr->pclass);
     RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::TITLE);
     play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_FINAL_QUEST_CLEAR);
     exe_write_diary(*player_ptr->current_floor_ptr, DiaryKind::DESCRIPTION, 0, _("見事に馬鹿馬鹿蛮怒の勝利者となった！", "finally became *WINNER* of Bakabakaband!"));
@@ -389,14 +392,15 @@ void monster_death(PlayerType *player_ptr, MONSTER_IDX m_idx, bool drop_item, At
     auto &floor = *player_ptr->current_floor_ptr;
     MonsterDeath tmp_md(floor, m_idx, drop_item);
     MonsterDeath *md_ptr = &tmp_md;
-    if (w_ptr->timewalk_m_idx && w_ptr->timewalk_m_idx == m_idx) {
-        w_ptr->timewalk_m_idx = 0;
+    auto &world = AngbandWorld::get_instance();
+    if ((world.timewalk_m_idx > 0) && world.timewalk_m_idx == m_idx) {
+        world.timewalk_m_idx = 0;
     }
 
     // プレイヤーしかユニークを倒せないのでここで時間を記録
     if (md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && md_ptr->m_ptr->mflag2.has_not(MonsterConstantFlagType::CLONED)) {
-        w_ptr->update_playtime();
-        md_ptr->r_ptr->defeat_time = w_ptr->play_time;
+        world.update_playtime();
+        md_ptr->r_ptr->defeat_time = world.play_time;
         md_ptr->r_ptr->defeat_level = player_ptr->lev;
     }
 
