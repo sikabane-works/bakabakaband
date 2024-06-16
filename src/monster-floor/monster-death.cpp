@@ -137,14 +137,13 @@ static void drop_corpse(PlayerType *player_ptr, MonsterDeath *md_ptr)
         }
     }
 
-    ItemEntity item;
-    item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CORPSE, (corpse ? SV_CORPSE : SV_SKELETON) }));
+    ItemEntity item({ ItemKindType::MONSTER_REMAINS, (corpse ? SV_CORPSE : SV_SKELETON) });
     ItemMagicApplier(player_ptr, &item, floor_ptr->object_level, AM_NO_FIXED_ART).execute();
     item.pval = enum2i(md_ptr->m_ptr->r_idx);
     (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
 
     if (one_in_(md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? 1 : 4)) {
-        item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CORPSE, SV_SOUL }));
+        item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::MONSTER_REMAINS, SV_SOUL }));
         item.pval = enum2i(md_ptr->m_ptr->r_idx);
         (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
     }

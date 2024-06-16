@@ -41,7 +41,7 @@ enum class PlayerRaceFoodType {
     OIL = 2, //!< 油
     BLOOD = 3, //!< 血
     MANA = 4, //!< 魔力
-    CORPSE = 5, //!< 死体(捧げる)
+    MONSTER_REMAINS = 5, //!< 死体(捧げる)
     MAX
 };
 
