@@ -816,7 +816,7 @@ void sweep_monster_process(PlayerType *player_ptr)
                     case 3: {
                         bool fear = false;
                         msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name.data());
-                        MonsterDamageProcessor mdp(player_ptr, i, damroll(1, 4), &fear, AttributeType::ATTACK);
+                        MonsterDamageProcessor mdp(player_ptr, i, Dice::roll(1, 4), &fear, AttributeType::ATTACK);
                         if (fear) {
                             msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name.data());
                         }

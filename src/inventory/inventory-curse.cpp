@@ -463,7 +463,7 @@ static void curse_megaton_coin(PlayerType *player_ptr)
 
     msg_print(_("メガトンコインで床が抜けた！ンアアアアアアァァァ！", "The floor came off with the Megaton Coin!AAAAaaaaaa!"));
 
-    auto dam = damroll(2, 8);
+    auto dam = Dice::roll(2, 8);
     take_hit(player_ptr, DAMAGE_NOESCAPE, dam, _("メガトンコイン", "the Megaton Coin"));
 
     if (autosave_l && (player_ptr->chp >= 0)) {

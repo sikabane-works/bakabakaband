@@ -99,7 +99,7 @@ bool generate_rooms(PlayerType *player_ptr, dun_data_type *dd_ptr)
     int level_index = std::min(10, div_round(floor_ptr->dun_level, 10));
     std::map<RoomType, int> room_num;
 
-    int dun_rooms = DUN_ROOMS_MAX * area_size * damroll(10, 20) / 12000;
+    int dun_rooms = DUN_ROOMS_MAX * area_size * Dice::roll(10, 20) / 12000;
     if (one_in_(5)) {
         dun_rooms /= randint1(4);
 
