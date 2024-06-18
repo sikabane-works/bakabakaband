@@ -1,5 +1,4 @@
 #include "load/world-loader.h"
-#include "cmd-building/cmd-building.h"
 #include "floor/wild.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
