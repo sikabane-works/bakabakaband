@@ -183,7 +183,7 @@ static SpoilerOutputResultType spoil_player_spell()
     const auto &baseitems = BaseitemList::get_instance();
     for (auto c = 0; c < PLAYER_CLASS_TYPE_MAX; c++) {
         auto class_ptr = &class_info.at(i2enum<PlayerClassType>(c));
-        spoil_out(format("[[Class: %s]]\n", class_ptr->title));
+        spoil_out(format("[[Class: %s]]\n", class_ptr->title.data()));
 
         auto magic_ptr = &class_magics_info[c];
         std::string book_name = _("なし", "None");
