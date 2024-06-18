@@ -101,7 +101,9 @@ void load_wilderness_info(PlayerType *player_ptr)
 {
     player_ptr->wilderness_x = rd_s32b();
     player_ptr->wilderness_y = rd_s32b();
-    player_ptr->wild_mode = rd_bool();
+
+    auto &world = AngbandWorld::get_instance();
+    world.set_wild_mode(rd_bool());
     player_ptr->ambush_flag = rd_bool();
 }
 

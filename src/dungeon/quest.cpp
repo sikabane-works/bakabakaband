@@ -457,7 +457,7 @@ void exe_enter_quest(PlayerType *player_ptr, QuestId quest_id)
  */
 void do_cmd_quest(PlayerType *player_ptr)
 {
-    if (player_ptr->wild_mode) {
+    if (AngbandWorld::get_instance().is_wild_mode()) {
         return;
     }
 

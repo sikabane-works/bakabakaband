@@ -171,7 +171,9 @@ void process_command(PlayerType *player_ptr)
         sniper_data->reset_concent = true;
     }
 
-    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto &world = AngbandWorld::get_instance();
+    const auto is_wild_mode = world.is_wild_mode();
+    const auto &floor = *player_ptr->current_floor_ptr;
     switch (command_cmd) {
     case ESCAPE:
     case ' ':
@@ -202,21 +204,21 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case 'w': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_wield(player_ptr);
         }
 
         break;
     }
     case 't': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_takeoff(player_ptr);
         }
 
         break;
     }
     case 'd': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_drop(player_ptr);
         }
 
@@ -244,14 +246,14 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case '+': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_alter(player_ptr);
         }
 
         break;
     }
     case 'T': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_tunnel(player_ptr);
         }
 
@@ -266,7 +268,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case '.': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_run(player_ptr);
         }
 
@@ -310,7 +312,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case '<': {
-        if (!player_ptr->wild_mode && !floor_ptr->dun_level && !floor_ptr->inside_arena && !floor_ptr->is_in_quest()) {
+        if (!is_wild_mode && !floor.dun_level && !floor.inside_arena && !floor.is_in_quest()) {
             if (vanilla_town) {
                 break;
             }
@@ -333,7 +335,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case '>': {
-        if (player_ptr->wild_mode) {
+        if (is_wild_mode) {
             change_wild_mode(player_ptr, false);
         } else {
             do_cmd_go_down(player_ptr);
@@ -394,7 +396,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case 'm': {
-        if (player_ptr->wild_mode) {
+        if (is_wild_mode) {
             break;
         }
 
@@ -404,10 +406,10 @@ void process_command(PlayerType *player_ptr)
             break;
         }
 
-        const auto &dungeon = floor_ptr->get_dungeon_definition();
+        const auto &dungeon = player_ptr->current_floor_ptr->get_dungeon_definition();
         auto non_magic_class = pc.equals(PlayerClassType::BERSERKER);
         non_magic_class |= pc.equals(PlayerClassType::SMITH);
-        if (floor_ptr->dun_level && dungeon.flags.has(DungeonFeatureType::NO_MAGIC) && !non_magic_class) {
+        if (player_ptr->current_floor_ptr->dun_level && dungeon.flags.has(DungeonFeatureType::NO_MAGIC) && !non_magic_class) {
             msg_print(_("ダンジョンが魔法を吸収した！", "The dungeon absorbs all attempted magic!"));
             msg_print(nullptr);
             break;
@@ -675,7 +677,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case '`': {
-        if (!player_ptr->wild_mode) {
+        if (!is_wild_mode) {
             do_cmd_travel(player_ptr);
         }
         PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU });

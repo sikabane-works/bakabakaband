@@ -58,9 +58,6 @@ void starve_player(PlayerType *player_ptr)
             digestion = 100;
         }
 
-        if (player_ptr->wild_mode) {
-            digestion = digestion * 2 / 3;
-        }
         (void)set_food(player_ptr, player_ptr->food - digestion);
     }
 
@@ -201,7 +198,7 @@ bool set_food(PlayerType *player_ptr, TIME_EFFECT v)
             break;
         }
 
-        if (player_ptr->wild_mode && (new_aux < 2)) {
+        if (AngbandWorld::get_instance().is_wild_mode() && (new_aux < 2)) {
             change_wild_mode(player_ptr, false);
         }
 
