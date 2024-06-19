@@ -1,4 +1,4 @@
-﻿#include "dungeon/quest-completion-checker.h"
+#include "dungeon/quest-completion-checker.h"
 #include "dungeon/quest.h"
 #include "effect/effect-characteristics.h"
 #include "floor/cave.h"
@@ -25,6 +25,7 @@
 QuestCompletionChecker::QuestCompletionChecker(PlayerType *player_ptr, MonsterEntity *m_ptr)
     : player_ptr(player_ptr)
     , m_ptr(m_ptr)
+    , quest_idx(QuestId::NONE)
 {
 }
 
@@ -263,8 +264,8 @@ void QuestCompletionChecker::make_reward(const Pos2D pos)
         ItemEntity item;
         while (true) {
             item.wipe();
-            auto &r_ref = monraces_info[this->m_ptr->r_idx];
-            (void)make_object(this->player_ptr, &item, AM_GOOD | AM_GREAT, r_ref.level);
+            const auto &monrace = this->m_ptr->get_monrace();
+            (void)make_object(this->player_ptr, &item, AM_GOOD | AM_GREAT, monrace.level);
             if (!this->check_quality(item)) {
                 continue;
             }

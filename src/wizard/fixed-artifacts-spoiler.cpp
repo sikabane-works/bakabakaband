@@ -1,4 +1,4 @@
-﻿#include "wizard/fixed-artifacts-spoiler.h"
+#include "wizard/fixed-artifacts-spoiler.h"
 #include "io/files-util.h"
 #include "object/object-kind-hook.h"
 #include "system/angband-version.h"
@@ -10,92 +10,82 @@
 #include "view/display-messages.h"
 #include "wizard/artifact-analyzer.h"
 #include "wizard/spoiler-util.h"
+#include <sstream>
 
 /*!
  * @brief フラグ名称を出力する汎用関数
  * @param header ヘッダに出力するフラグ群の名前
- * @param list フラグ名リスト
+ * @param descriptions フラグ名リスト
  * @param separator フラグ表示の区切り記号
- * @todo 固定アーティファクトとランダムアーティファクトで共用、ここに置くべきかは要調整.
  */
-void spoiler_outlist(concptr header, concptr *list, char separator)
+void spoiler_outlist(std::string_view header, const std::vector<std::string> &descriptions, char separator, std::ofstream &ofs)
 {
-    char line[MAX_LINE_LEN + 20], buf[80];
-    if (*list == nullptr) {
+    if (descriptions.empty()) {
         return;
     }
 
-    strcpy(line, spoiler_indent);
-    if (header && (header[0])) {
-        strcat(line, header);
-        strcat(line, " ");
+    std::stringstream line;
+    line << spoiler_indent;
+    if (!header.empty()) {
+        line << header << " ";
     }
 
-    int buf_len;
-    int line_len = strlen(line);
-    while (true) {
-        strcpy(buf, *list);
-        buf_len = strlen(buf);
-        if (list[1]) {
-            sprintf(buf + buf_len, "%c ", separator);
-            buf_len += 2;
+    std::stringstream ss;
+    ss << list_separator << ' ';
+    const auto last_separator = ss.str();
+    for (size_t i = 0; i < descriptions.size(); i++) {
+        std::stringstream element;
+        element << descriptions[i];
+        if (i < descriptions.size() - 1) {
+            element << separator << ' ';
         }
 
-        if (line_len + buf_len <= MAX_LINE_LEN) {
-            strcat(line, buf);
-            line_len += buf_len;
+        const auto element_str = element.str();
+        const int line_length = line.tellp();
+        constexpr auto max_line_length = 75;
+        if (line_length + element_str.length() <= max_line_length) {
+            line << element_str;
+            continue;
+        }
+
+        const auto line_str = line.str();
+        if (line_str.ends_with(last_separator)) {
+            ofs << std::string_view(line_str).substr(0, line_str.length() - 2) << '\n';
+            line.str("");
+            line.clear(std::stringstream::goodbit);
+            line << spoiler_indent << element_str;
         } else {
-            if (line_len > 1 && line[line_len - 1] == ' ' && line[line_len - 2] == list_separator) {
-                line[line_len - 2] = '\0';
-                fprintf(spoiler_file, "%s\n", line);
-                sprintf(line, "%s%s", spoiler_indent, buf);
-            } else {
-                fprintf(spoiler_file, "%s\n", line);
-                concptr ident2 = "      ";
-                sprintf(line, "%s%s", ident2, buf);
-            }
-
-            line_len = strlen(line);
-        }
-
-        if (!*++list) {
-            break;
+            ofs << line_str << '\n';
+            line.str("");
+            line.clear(std::stringstream::goodbit);
+            line << "      " << element_str;
         }
     }
 
-    fprintf(spoiler_file, "%s\n", line);
+    ofs << line.str() << '\n';
 }
 
 /*!
- * @brief アーティファクト情報を出力するためにダミー生成を行う /
- * Hack -- Create a "forged" artifact
- * @param o_ptr 一時生成先を保管するオブジェクト構造体
+ * @brief アーティファクト情報を出力するためにダミー生成を行う
  * @param fixed_artifact_idx 生成するアーティファクトID
- * @return 生成が成功した場合TRUEを返す
+ * @return 生成したアーティファクト (連番で埋まっているので不存在例外は吐かない)
  */
-static bool make_fake_artifact(ItemEntity *o_ptr, FixedArtifactId fixed_artifact_idx)
+static ItemEntity make_fake_artifact(FixedArtifactId fixed_artifact_idx)
 {
     const auto &artifact = ArtifactsInfo::get_instance().get_artifact(fixed_artifact_idx);
-    if (artifact.name.empty()) {
-        return false;
-    }
-
     const auto bi_id = lookup_baseitem_id(artifact.bi_key);
-    if (bi_id == 0) {
-        return false;
-    }
-
-    o_ptr->prep(bi_id);
-    o_ptr->fixed_artifact_idx = fixed_artifact_idx;
-    o_ptr->pval = artifact.pval;
-    o_ptr->ac = artifact.ac;
-    o_ptr->dd = artifact.dd;
-    o_ptr->ds = artifact.ds;
-    o_ptr->to_a = artifact.to_a;
-    o_ptr->to_h = artifact.to_h;
-    o_ptr->to_d = artifact.to_d;
-    o_ptr->weight = artifact.weight;
-    return true;
+    ItemEntity item;
+    item.prep(bi_id);
+    item.fixed_artifact_idx = fixed_artifact_idx;
+    item.pval = artifact.pval;
+    item.ac = artifact.ac;
+    item.dd = artifact.dd;
+    item.ds = artifact.ds;
+    item.to_a = artifact.to_a;
+    item.to_h = artifact.to_h;
+    item.to_d = artifact.to_d;
+    item.weight = artifact.weight;
+    return item;
 }
 
 /*!
@@ -103,53 +93,54 @@ static bool make_fake_artifact(ItemEntity *o_ptr, FixedArtifactId fixed_artifact
  * Create a spoiler file entry for an artifact
  * @param art_ptr アーティファクト情報をまとめた構造体の参照ポインタ
  */
-static void spoiler_print_art(obj_desc_list *art_ptr)
+static void spoiler_print_art(const ArtifactsDumpInfo *art_ptr, std::ofstream &ofs)
 {
-    pval_info_type *pval_ptr = &art_ptr->pval_info;
-    char buf[80];
-    fprintf(spoiler_file, "%s\n", art_ptr->description);
-    if (pval_ptr->pval_desc[0]) {
-        sprintf(buf, _("%sの修正:", "%s to"), pval_ptr->pval_desc);
-        spoiler_outlist(buf, pval_ptr->pval_affects, item_separator);
+    const auto *pval_ptr = &art_ptr->pval_info;
+    ofs << art_ptr->description << '\n';
+    if (!pval_ptr->pval_desc.empty()) {
+        std::stringstream ss;
+        ss << pval_ptr->pval_desc << _("の修正:", " to");
+        spoiler_outlist(ss.str(), pval_ptr->pval_affects, item_separator, ofs);
     }
 
-    spoiler_outlist(_("対:", "Slay"), art_ptr->slays, item_separator);
-    spoiler_outlist(_("武器属性:", ""), art_ptr->brands, list_separator);
-    spoiler_outlist(_("免疫:", "Immunity to"), art_ptr->immunities, item_separator);
-    spoiler_outlist(_("耐性:", "Resist"), art_ptr->resistances, item_separator);
-    spoiler_outlist(_("弱点:", "Vulnerable"), art_ptr->vulnerables, item_separator);
-    spoiler_outlist(_("維持:", "Sustain"), art_ptr->sustains, item_separator);
-    spoiler_outlist("", art_ptr->misc_magic, list_separator);
+    spoiler_outlist(_("対:", "Slay"), art_ptr->slays, item_separator, ofs);
+    spoiler_outlist(_("武器属性:", ""), art_ptr->brands, list_separator, ofs);
+    spoiler_outlist(_("免疫:", "Immunity to"), art_ptr->immunities, item_separator, ofs);
+    spoiler_outlist(_("耐性:", "Resist"), art_ptr->resistances, item_separator, ofs);
+    spoiler_outlist(_("弱点:", "Vulnerable"), art_ptr->vulnerabilities, item_separator, ofs);
+    spoiler_outlist(_("維持:", "Sustain"), art_ptr->sustenances, item_separator, ofs);
+    spoiler_outlist("", art_ptr->misc_magic, list_separator, ofs);
 
-    if (art_ptr->addition[0]) {
-        fprintf(spoiler_file, _("%s追加: %s\n", "%sAdditional %s\n"), spoiler_indent, art_ptr->addition);
+    if (!art_ptr->addition.empty()) {
+        ofs << format(_("%s追加: %s\n", "%sAdditional %s\n"), spoiler_indent.data(), art_ptr->addition.data());
     }
 
-    if (art_ptr->activation) {
-        fprintf(spoiler_file, _("%s発動: %s\n", "%sActivates for %s\n"), spoiler_indent, art_ptr->activation);
+    if (!art_ptr->activation.empty()) {
+        ofs << format(_("%s発動: %s\n", "%sActivates for %s\n"), spoiler_indent.data(), art_ptr->activation.data());
     }
 
-    fprintf(spoiler_file, "%s%s\n\n", spoiler_indent, art_ptr->misc_desc);
+    ofs << format("%s%s\n\n", spoiler_indent.data(), art_ptr->misc_desc.data());
 }
 
 /*!
- * @brief アーティファクト情報のスポイラー出力を行うメインルーチン /
- * Create a spoiler file for artifacts
- * @param fname 生成ファイル名
+ * @brief アーティファクト情報のスポイラー出力を行うメインルーチン
+ * @details エラーコードと実際のエラー処理が不一致だが、後でまとめて修正する.
  */
-SpoilerOutputResultType spoil_fixed_artifact(concptr fname)
+SpoilerOutputResultType spoil_fixed_artifact()
 {
-    const auto &path = path_build(ANGBAND_DIR_USER, fname);
-    spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
-    if (!spoiler_file) {
+    const auto &path = path_build(ANGBAND_DIR_USER, "artifact.txt");
+    std::ofstream ofs(path);
+    if (!ofs) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
     }
 
-    spoiler_underline(std::string("Artifact Spoilers for Hengband Version ").append(get_version()).data());
+    std::stringstream ss;
+    ss << "Artifact Spoilers for Hengband Version " << get_version();
+    spoiler_underline(ss.str(), ofs);
     for (const auto &[tval_list, name] : group_artifact_list) {
-        spoiler_blanklines(2);
-        spoiler_underline(name);
-        spoiler_blanklines(1);
+        spoiler_blanklines(2, ofs);
+        spoiler_underline(name, ofs);
+        spoiler_blanklines(1, ofs);
 
         for (auto tval : tval_list) {
             for (const auto &[a_idx, artifact] : artifacts_info) {
@@ -157,19 +148,13 @@ SpoilerOutputResultType spoil_fixed_artifact(concptr fname)
                     continue;
                 }
 
-                ItemEntity item;
-                if (!make_fake_artifact(&item, a_idx)) {
-                    continue;
-                }
-
+                const auto item = make_fake_artifact(a_idx);
                 PlayerType dummy;
-                obj_desc_list artifact_descriptions;
-                object_analyze(&dummy, &item, &artifact_descriptions);
-                spoiler_print_art(&artifact_descriptions);
+                const auto artifacts_list = object_analyze(&dummy, &item);
+                spoiler_print_art(&artifacts_list, ofs);
             }
         }
     }
 
-    return ferror(spoiler_file) || angband_fclose(spoiler_file) ? SpoilerOutputResultType::FILE_CLOSE_FAILED
-                                                                : SpoilerOutputResultType::SUCCESSFUL;
+    return ofs.good() ? SpoilerOutputResultType::SUCCESSFUL : SpoilerOutputResultType::FILE_CLOSE_FAILED;
 }

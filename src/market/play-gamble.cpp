@@ -1,4 +1,4 @@
-﻿#include "market/play-gamble.h"
+#include "market/play-gamble.h"
 #include "avatar/avatar.h"
 #include "core/asking-player.h"
 #include "core/show-file.h"
@@ -16,167 +16,127 @@
  * @brief カジノ1プレイごとのメインルーチン / gamble_comm
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param cmd プレイするゲームID
- * @return プレイ成立やルール説明のみ等ならTRUE、賭け金不足で不成立ならFALSE
  */
-bool gamble_comm(PlayerType *player_ptr, int cmd)
+void gamble_comm(PlayerType *player_ptr, int cmd)
 {
-    int i;
-    int roll1, roll2, roll3, choice, odds, win;
-    int32_t wager;
-    int32_t maxbet;
-    int32_t oldgold;
-
-    char out_val[160], tmp_str[80], again;
-    concptr p;
-
     screen_save();
-
     if (cmd == BACT_GAMBLE_RULES) {
         (void)show_file(player_ptr, true, _("jgambling.txt", "gambling.txt"), 0, 0);
         screen_load();
-        return true;
+        return;
     }
 
     if (player_ptr->au < 1) {
         msg_print(_("おい！おまえ一文なしじゃないか！こっから出ていけ！", "Hey! You don't have gold - get out of here!"));
         msg_print(nullptr);
         screen_load();
-        return false;
+        return;
     }
 
     clear_bldg(5, 23);
-    maxbet = player_ptr->lev * 200;
+    auto maxbet = player_ptr->lev * 200;
     maxbet = std::min(maxbet, player_ptr->au);
-
-    strcpy(out_val, "");
-    sprintf(tmp_str, _("賭け金 (1-%ld)？", "Your wager (1-%ld) ? "), (long int)maxbet);
-
-    /*
-     * Use get_string() because we may need more than
-     * the int16_t value returned by get_quantity().
-     */
-    if (!get_string(tmp_str, out_val, 32)) {
+    constexpr auto prompt = _("賭け金？", "Your wager ?");
+    const auto wager = input_integer(prompt, 1, maxbet, 1);
+    if (!wager) {
         msg_print(nullptr);
         screen_load();
-        return true;
+        return;
     }
 
-    for (p = out_val; *p == ' '; p++) {
-        ;
-    }
-
-    wager = atol(p);
     if (wager > player_ptr->au) {
         msg_print(_("おい！金が足りないじゃないか！出ていけ！", "Hey! You don't have the gold - get out of here!"));
         msg_print(nullptr);
         screen_load();
-        return false;
-    } else if (wager > maxbet) {
-        msg_format(_("%ldゴールドだけ受けよう。残りは取っときな。", "I'll take %ld gold of that. Keep the rest."), (long int)maxbet);
-        wager = maxbet;
-    } else if (wager < 1) {
-        msg_print(_("ＯＫ、１ゴールドからはじめよう。", "Ok, we'll start with 1 gold."));
-        wager = 1;
+        return;
     }
+
     msg_print(nullptr);
-    win = 0;
-    odds = 0;
-    oldgold = player_ptr->au;
-
-    sprintf(tmp_str, _("ゲーム前の所持金: %9ld", "Gold before game: %9ld"), (long int)oldgold);
-    prt(tmp_str, 20, 2);
-    sprintf(tmp_str, _("現在の掛け金:     %9ld", "Current Wager:    %9ld"), (long int)wager);
-    prt(tmp_str, 21, 2);
-
-    do {
-        player_ptr->au -= wager;
+    auto win = 0;
+    auto odds = 0;
+    auto oldgold = player_ptr->au;
+    prt(format(_("ゲーム前の所持金: %9d", "Gold before game: %9d"), oldgold), 20, 2);
+    prt(format(_("現在の掛け金:     %9d", "Current Wager:    %9d"), *wager), 21, 2);
+    while (true) {
+        player_ptr->au -= *wager;
         switch (cmd) {
-        case BACT_IN_BETWEEN: /* Game of In-Between */
+        case BACT_IN_BETWEEN: {
             c_put_str(TERM_GREEN, _("イン・ビトイーン", "In Between"), 5, 2);
-
             odds = 4;
             win = 0;
-            roll1 = randint1(10);
-            roll2 = randint1(10);
-            choice = randint1(10);
-            sprintf(tmp_str, _("黒ダイス: %d        黒ダイス: %d", "Black die: %d       Black Die: %d"), roll1, roll2);
-
-            prt(tmp_str, 8, 3);
-            sprintf(tmp_str, _("赤ダイス: %d", "Red die: %d"), choice);
-
-            prt(tmp_str, 11, 14);
+            auto roll1 = randint1(10);
+            auto roll2 = randint1(10);
+            auto choice = randint1(10);
+            prt(format(_("黒ダイス: %d        黒ダイス: %d", "Black die: %d       Black Die: %d"), roll1, roll2), 8, 3);
+            prt(format(_("赤ダイス: %d", "Red die: %d"), choice), 11, 14);
             if (((choice > roll1) && (choice < roll2)) || ((choice < roll1) && (choice > roll2))) {
                 win = 1;
             }
-            break;
-        case BACT_CRAPS: /* Game of Craps */
-            c_put_str(TERM_GREEN, _("クラップス", "Craps"), 5, 2);
 
+            break;
+        }
+        case BACT_CRAPS: {
+            c_put_str(TERM_GREEN, _("クラップス", "Craps"), 5, 2);
             win = 3;
             odds = 2;
-            roll1 = randint1(6);
-            roll2 = randint1(6);
-            roll3 = roll1 + roll2;
-            choice = roll3;
-            sprintf(tmp_str, _("１振りめ: %d %d      Total: %d", "First roll: %d %d    Total: %d"), roll1, roll2, roll3);
-            prt(tmp_str, 7, 5);
+            auto roll1 = randint1(6);
+            auto roll2 = randint1(6);
+            auto roll3 = roll1 + roll2;
+            auto choice = roll3;
+            prt(format(_("１振りめ: %d %d      Total: %d", "First roll: %d %d    Total: %d"), roll1, roll2, roll3), 7, 5);
             if ((roll3 == 7) || (roll3 == 11)) {
                 win = 1;
-            } else if ((roll3 == 2) || (roll3 == 3) || (roll3 == 12)) {
-                win = 0;
-            } else {
-                do {
-                    msg_print(_("なにかキーを押すともう一回振ります。", "Hit any key to roll again"));
-
-                    msg_print(nullptr);
-                    roll1 = randint1(6);
-                    roll2 = randint1(6);
-                    roll3 = roll1 + roll2;
-                    sprintf(tmp_str, _("出目: %d %d          合計:      %d", "Roll result: %d %d   Total:     %d"), roll1, roll2, roll3);
-                    prt(tmp_str, 8, 5);
-                    if (roll3 == choice) {
-                        win = 1;
-                    } else if (roll3 == 7) {
-                        win = 0;
-                    }
-                } while ((win != 1) && (win != 0));
+                break;
             }
 
-            break;
+            if ((roll3 == 2) || (roll3 == 3) || (roll3 == 12)) {
+                win = 0;
+                break;
+            }
 
-        case BACT_SPIN_WHEEL: /* Spin the Wheel Game */
+            do {
+                msg_print(_("なにかキーを押すともう一回振ります。", "Hit any key to roll again"));
+
+                msg_print(nullptr);
+                roll1 = randint1(6);
+                roll2 = randint1(6);
+                roll3 = roll1 + roll2;
+                prt(format(_("出目: %d %d          合計:      %d", "Roll result: %d %d   Total:     %d"), roll1, roll2, roll3), 8, 5);
+                if (roll3 == choice) {
+                    win = 1;
+                } else if (roll3 == 7) {
+                    win = 0;
+                }
+            } while ((win != 1) && (win != 0));
+            break;
+        }
+        case BACT_SPIN_WHEEL: {
             win = 0;
             odds = 9;
             c_put_str(TERM_GREEN, _("ルーレット", "Wheel"), 5, 2);
-
             prt("0  1  2  3  4  5  6  7  8  9", 7, 5);
             prt("--------------------------------", 8, 3);
-            strcpy(out_val, "");
-            get_string(_("何番？ (0-9): ", "Pick a number (0-9): "), out_val, 32);
+            while (true) {
+                const auto choice = input_integer(_("何番？", "Pick a number"), 0, 9);
+                if (!choice) {
+                    continue;
+                }
 
-            for (p = out_val; iswspace(*p); p++) {
-                ;
+                msg_print(nullptr);
+                auto roll1 = randint0(10);
+                prt(format(_("ルーレットは回り、止まった。勝者は %d番だ。", "The wheel spins to a stop and the winner is %d"), roll1), 13, 3);
+                prt("", 9, 0);
+                prt("*", 9, (3 * roll1 + 5));
+                if (roll1 == choice) {
+                    win = 1;
+                }
+
+                break;
             }
-            choice = atol(p);
-            if (choice < 0) {
-                msg_print(_("0番にしとくぜ。", "I'll put you down for 0."));
-                choice = 0;
-            } else if (choice > 9) {
-                msg_print(_("ＯＫ、9番にしとくぜ。", "Ok, I'll put you down for 9."));
-                choice = 9;
-            }
-            msg_print(nullptr);
-            roll1 = randint0(10);
-            sprintf(tmp_str, _("ルーレットは回り、止まった。勝者は %d番だ。", "The wheel spins to a stop and the winner is %d"), roll1);
-            prt(tmp_str, 13, 3);
-            prt("", 9, 0);
-            prt("*", 9, (3 * roll1 + 5));
-            if (roll1 == choice) {
-                win = 1;
-            }
+
             break;
-
-        case BACT_DICE_SLOTS: /* The Dice Slots */
+        }
+        case BACT_DICE_SLOTS: {
             c_put_str(TERM_GREEN, _("ダイス・スロット", "Dice Slots"), 5, 2);
             c_put_str(TERM_YELLOW, _("レモン   レモン            2", "Lemon    Lemon             2"), 6, 37);
             c_put_str(TERM_YELLOW, _("レモン   レモン   レモン   5", "Lemon    Lemon    Lemon    5"), 7, 37);
@@ -187,30 +147,33 @@ bool gamble_comm(PlayerType *player_ptr, int cmd)
             c_put_str(TERM_RED, _("チェリー チェリー チェリー 1000", "Cherry   Cherry   Cherry   1000"), 12, 37);
 
             win = 0;
-            roll1 = randint1(21);
-            for (i = 6; i > 0; i--) {
+            auto roll1 = randint1(21);
+            for (auto i = 6; i > 0; i--) {
                 if ((roll1 - i) < 1) {
                     roll1 = 7 - i;
                     break;
                 }
                 roll1 -= i;
             }
-            roll2 = randint1(21);
-            for (i = 6; i > 0; i--) {
+
+            auto roll2 = randint1(21);
+            for (auto i = 6; i > 0; i--) {
                 if ((roll2 - i) < 1) {
                     roll2 = 7 - i;
                     break;
                 }
                 roll2 -= i;
             }
-            choice = randint1(21);
-            for (i = 6; i > 0; i--) {
+
+            auto choice = randint1(21);
+            for (auto i = 6; i > 0; i--) {
                 if ((choice - i) < 1) {
                     choice = 7 - i;
                     break;
                 }
                 choice -= i;
             }
+
             put_str("/--------------------------\\", 7, 2);
             prt("\\--------------------------/", 17, 2);
             display_fruit(8, 3, roll1 - 1);
@@ -238,50 +201,55 @@ bool gamble_comm(PlayerType *player_ptr, int cmd)
                     odds = 1000;
                     break;
                 }
-            } else if ((roll1 == 1) && (roll2 == 1)) {
+
+                break;
+            }
+
+            if ((roll1 == 1) && (roll2 == 1)) {
                 win = 1;
                 odds = 2;
             }
+
             break;
+        }
         case BACT_POKER:
             win = 0;
             odds = do_poker();
             if (odds) {
                 win = 1;
             }
+
             break;
         }
 
         if (win) {
             prt(_("あなたの勝ち", "YOU WON"), 16, 37);
-
-            player_ptr->au += odds * wager;
-            sprintf(tmp_str, _("倍率: %d", "Payoff: %d"), odds);
-
-            prt(tmp_str, 17, 37);
+            player_ptr->au += odds * *wager;
+            prt(format(_("倍率: %d", "Payoff: %d"), odds), 17, 37);
         } else {
             prt(_("あなたの負け", "You Lost"), 16, 37);
             prt("", 17, 37);
         }
 
-        sprintf(tmp_str, _("現在の所持金:     %9ld", "Current Gold:     %9ld"), (long int)player_ptr->au);
-
-        prt(tmp_str, 22, 2);
+        prt(format(_("現在の所持金:     %9d", "Current Gold:     %9d"), player_ptr->au), 22, 2);
         prt(_("もう一度(Y/N)？", "Again(Y/N)?"), 18, 37);
-
         move_cursor(18, 52);
-        again = inkey();
+        auto again = inkey();
         prt("", 16, 37);
         prt("", 17, 37);
         prt("", 18, 37);
         if (wager > player_ptr->au) {
             msg_print(_("おい！金が足りないじゃないか！ここから出て行け！", "Hey! You don't have the gold - get out of here!"));
             msg_print(nullptr);
-
-            /* Get out here */
             break;
         }
-    } while ((again == 'y') || (again == 'Y'));
+
+        if ((again == 'y') || (again == 'Y')) {
+            continue;
+        }
+
+        break;
+    }
 
     prt("", 18, 37);
     if (player_ptr->au >= oldgold) {
@@ -294,5 +262,4 @@ bool gamble_comm(PlayerType *player_ptr, int cmd)
 
     msg_print(nullptr);
     screen_load();
-    return true;
 }

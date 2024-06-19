@@ -1,7 +1,6 @@
-﻿#include "monster/monster-status.h"
+#include "monster/monster-status.h"
 #include "autopick/autopick-pref-processor.h"
 #include "core/speed-table.h"
-#include "floor/cave.h"
 #include "floor/geometry.h"
 #include "game-option/birth-options.h"
 #include "game-option/text-display-options.h"
@@ -9,14 +8,13 @@
 #include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
+#include "monster-race/race-special-flags.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
 #include "monster/monster-status-setter.h" //!< @todo 相互依存. 後で何とかする.
 #include "monster/monster-update.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
@@ -27,8 +25,6 @@
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
-#include "world/world.h"
-
 #if JP
 #else
 #include "monster/monster-description-types.h"
@@ -45,8 +41,8 @@ static uint32_t csleep_noise;
 bool monster_is_powerful(FloorType *floor_ptr, MONSTER_IDX m_idx)
 {
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
-    return any_bits(r_ptr->flags2, RF2_POWERFUL);
+    auto *r_ptr = &m_ptr->get_monrace();
+    return r_ptr->misc_flags.has(MonsterMiscType::POWERFUL);
 }
 
 /*!
@@ -57,7 +53,7 @@ bool monster_is_powerful(FloorType *floor_ptr, MONSTER_IDX m_idx)
 DEPTH monster_level_idx(FloorType *floor_ptr, MONSTER_IDX m_idx)
 {
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     return (r_ptr->level >= 1) ? r_ptr->level : 1;
 }
 
@@ -73,11 +69,21 @@ DEPTH monster_level_idx(FloorType *floor_ptr, MONSTER_IDX m_idx)
  */
 int mon_damage_mod(PlayerType *player_ptr, MonsterEntity *m_ptr, int dam, bool is_psy_spear)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL) && dam > 0) {
         dam /= 100;
         if ((dam == 0) && one_in_(3)) {
             dam = 1;
+        }
+    }
+
+    auto &race_info = m_ptr->get_monrace();
+
+    if (race_info.special_flags.has(MonsterSpecialType::DIMINISH_MAX_DAMAGE)) {
+        race_info.r_special_flags.set(MonsterSpecialType::DIMINISH_MAX_DAMAGE);
+        if (dam > m_ptr->hp / 10) {
+            dam = std::max(m_ptr->hp / 10, m_ptr->maxhp * 7 / 500);
+            msg_format(_("%s^は致命的なダメージを抑えた！", "%s^ resisted a critical damage!"), monster_desc(player_ptr, m_ptr, 0).data());
         }
     }
 
@@ -123,7 +129,7 @@ int get_mproc_idx(FloorType *floor_ptr, MONSTER_IDX m_idx, int mproc_type)
  */
 void mproc_add(FloorType *floor_ptr, MONSTER_IDX m_idx, int mproc_type)
 {
-    if (floor_ptr->mproc_max[mproc_type] < w_ptr->max_m_idx) {
+    if (floor_ptr->mproc_max[mproc_type] < MAX_FLOOR_MONSTERS) {
         floor_ptr->mproc_list[mproc_type][floor_ptr->mproc_max[mproc_type]++] = (int16_t)m_idx;
     }
 }
@@ -164,10 +170,11 @@ void mproc_init(FloorType *floor_ptr)
  */
 static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_idx, int mtimed_idx)
 {
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto &floor = *player_ptr->current_floor_ptr;
+    auto *m_ptr = &floor.m_list[m_idx];
     switch (mtimed_idx) {
     case MTIMED_CSLEEP: {
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
         auto is_wakeup = false;
         if (m_ptr->cdis < MAX_MONSTER_SENSING) {
             /* Handle "sensing radius" */
@@ -176,7 +183,7 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
             }
 
             /* Handle "sight" and "aggravation" */
-            else if ((m_ptr->cdis <= MAX_PLAYER_SIGHT) && (player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx))) {
+            else if ((m_ptr->cdis <= MAX_PLAYER_SIGHT) && floor.has_los({ m_ptr->fy, m_ptr->fx })) {
                 is_wakeup = true;
             }
         }
@@ -261,7 +268,7 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
         break;
 
     case MTIMED_STUNNED: {
-        int rlev = monraces_info[m_ptr->r_idx].level;
+        int rlev = m_ptr->get_monrace().level;
 
         /* Recover from stun */
         if (set_monster_stunned(player_ptr, m_idx, (randint0(10000) <= rlev * rlev) ? 0 : (m_ptr->get_remaining_stun() - 1))) {
@@ -277,7 +284,7 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
 
     case MTIMED_CONFUSED: {
         /* Reduce the confusion */
-        if (!set_monster_confused(player_ptr, m_idx, m_ptr->get_remaining_confusion() - randint1(monraces_info[m_ptr->r_idx].level / 20 + 1))) {
+        if (!set_monster_confused(player_ptr, m_idx, m_ptr->get_remaining_confusion() - randint1(m_ptr->get_monrace().level / 20 + 1))) {
             break;
         }
 
@@ -292,7 +299,7 @@ static void process_monsters_mtimed_aux(PlayerType *player_ptr, MONSTER_IDX m_id
 
     case MTIMED_MONFEAR: {
         /* Reduce the fear */
-        if (!set_monster_monfear(player_ptr, m_idx, m_ptr->get_remaining_fear() - randint1(monraces_info[m_ptr->r_idx].level / 20 + 1))) {
+        if (!set_monster_monfear(player_ptr, m_idx, m_ptr->get_remaining_fear() - randint1(m_ptr->get_monrace().level / 20 + 1))) {
             break;
         }
 
@@ -401,10 +408,10 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId s
         return;
     }
 
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     auto *s_ptr = &monraces_info[s_idx];
 
-    if (player_ptr->phase_out || (r_ptr->next_exp == 0)) {
+    if (AngbandSystem::get_instance().is_phase_out() || (r_ptr->next_exp == 0)) {
         return;
     }
 
@@ -437,18 +444,18 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId s
     auto old_sub_align = m_ptr->sub_align;
 
     /* Hack -- Reduce the racial counter of previous monster */
-    m_ptr->get_real_r_ref().cur_num--;
+    m_ptr->get_real_monrace().cur_num--;
 
     const auto m_name = monster_desc(player_ptr, m_ptr, 0);
     m_ptr->r_idx = r_ptr->next_r_idx;
 
     /* Count the monsters on the level */
-    m_ptr->get_real_r_ref().cur_num++;
+    m_ptr->get_real_monrace().cur_num++;
 
     m_ptr->ap_r_idx = m_ptr->r_idx;
-    r_ptr = &monraces_info[m_ptr->r_idx];
+    r_ptr = &m_ptr->get_monrace();
 
-    m_ptr->max_maxhp = any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) ? maxroll(r_ptr->hdice, r_ptr->hside) : damroll(r_ptr->hdice, r_ptr->hside);
+    m_ptr->max_maxhp = r_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP) ? maxroll(r_ptr->hdice, r_ptr->hside) : damroll(r_ptr->hdice, r_ptr->hside);
     if (ironman_nightmare) {
         auto hp = m_ptr->max_maxhp * 2;
         m_ptr->max_maxhp = std::min(MONSTER_MAXHP, hp);
@@ -486,7 +493,7 @@ void monster_gain_exp(PlayerType *player_ptr, MONSTER_IDX m_idx, MonsterRaceId s
                 do {
                     auto r_idx = MonsterRace::pick_one_at_random();
                     hallucinated_race = &monraces_info[r_idx];
-                } while (hallucinated_race->name.empty() || hallucinated_race->kind_flags.has(MonsterKindType::UNIQUE));
+                } while (hallucinated_race->kind_flags.has(MonsterKindType::UNIQUE));
                 auto mes_evolution = _("%sは%sに進化した。", "%s^ evolved into %s.");
                 auto mes_degeneration = _("%sは%sに退化した。", "%s^ degenerated into %s.");
                 auto mes = randint0(2) == 0 ? mes_evolution : mes_degeneration;

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file game-data-initializer.cpp
  * @brief 馬鹿馬鹿蛮怒のゲームデータ初期化定義
  */
@@ -23,9 +23,7 @@
 #include "term/gameterm.h"
 #include "util/angband-files.h"
 #include "util/bit-flags-calculator.h"
-#include "util/quarks.h"
 #include "view/display-messages.h"
-#include "world/world.h"
 #include <algorithm>
 
 /*!
@@ -36,9 +34,8 @@ constexpr int MACRO_MAX = 256;
 
 static void init_gf_colors()
 {
-    constexpr ushort default_gf_color = 0;
     for (auto i = 0; i < enum2i(AttributeType::MAX); i++) {
-        gf_colors.emplace(i2enum<AttributeType>(i), default_gf_color);
+        gf_colors.emplace(i2enum<AttributeType>(i), "");
     }
 }
 
@@ -51,21 +48,19 @@ void init_other(PlayerType *player_ptr)
 {
     player_ptr->current_floor_ptr = &floor_info; // TODO:本当はこんなところで初期化したくない
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->o_list.assign(w_ptr->max_o_idx, {});
-    floor_ptr->m_list.assign(w_ptr->max_m_idx, {});
+    floor_ptr->o_list.assign(MAX_FLOOR_ITEMS, {});
+    floor_ptr->m_list.assign(MAX_FLOOR_MONSTERS, {});
     for (auto &list : floor_ptr->mproc_list) {
-        list.assign(w_ptr->max_m_idx, {});
+        list.assign(MAX_FLOOR_MONSTERS, {});
     }
 
     max_dlv.assign(dungeons_info.size(), {});
-    floor_ptr->grid_array.assign(MAX_HGT, std::vector<grid_type>(MAX_WID));
+    floor_ptr->grid_array.assign(MAX_HGT, std::vector<Grid>(MAX_WID));
     init_gf_colors();
 
-    macro__pat.assign(MACRO_MAX, {});
-    macro__act.assign(MACRO_MAX, {});
-    macro__buf.assign(FILE_READ_BUFF_SIZE, {});
-    quark_init();
-
+    macro_patterns.assign(MACRO_MAX, {});
+    macro_actions.assign(MACRO_MAX, {});
+    macro_buffers.assign(FILE_READ_BUFF_SIZE, {});
     for (auto i = 0; option_info[i].o_desc; i++) {
         int os = option_info[i].o_set;
         int ob = option_info[i].o_bit;

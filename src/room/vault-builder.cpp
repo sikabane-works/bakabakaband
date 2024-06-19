@@ -1,4 +1,4 @@
-﻿#include "room/vault-builder.h"
+#include "room/vault-builder.h"
 #include "floor/cave.h"
 #include "floor/floor-generator-util.h"
 #include "floor/floor-util.h"
@@ -16,7 +16,7 @@
 /*
  * Grid based version of "creature_bold()"
  */
-static bool player_grid(PlayerType *player_ptr, grid_type *g_ptr)
+static bool player_grid(PlayerType *player_ptr, Grid *g_ptr)
 {
     return g_ptr == &player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x];
 }
@@ -24,10 +24,10 @@ static bool player_grid(PlayerType *player_ptr, grid_type *g_ptr)
 /*
  * Grid based version of "cave_empty_bold()"
  */
-static bool is_cave_empty_grid(PlayerType *player_ptr, grid_type *g_ptr)
+static bool is_cave_empty_grid(PlayerType *player_ptr, Grid *g_ptr)
 {
     bool is_empty_grid = g_ptr->cave_has_flag(TerrainCharacteristics::PLACE);
-    is_empty_grid &= g_ptr->m_idx == 0;
+    is_empty_grid &= !g_ptr->has_monster();
     is_empty_grid &= !player_grid(player_ptr, g_ptr);
     return is_empty_grid;
 }
@@ -49,14 +49,14 @@ void vault_monsters(PlayerType *player_ptr, POSITION y1, POSITION x1, int num)
             int d = 1;
             POSITION y, x;
             scatter(player_ptr, &y, &x, y1, x1, d, 0);
-            grid_type *g_ptr;
+            Grid *g_ptr;
             g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
             if (!is_cave_empty_grid(player_ptr, g_ptr)) {
                 continue;
             }
 
             floor_ptr->monster_level = floor_ptr->base_level + 2;
-            (void)place_monster(player_ptr, y, x, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
+            (void)place_random_monster(player_ptr, y, x, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
             floor_ptr->monster_level = floor_ptr->base_level;
         }
     }
@@ -92,7 +92,7 @@ void vault_objects(PlayerType *player_ptr, POSITION y, POSITION x, int num)
                 msg_print(_("警告！地下室のアイテムを配置できません！", "Warning! Could not place vault object!"));
             }
 
-            grid_type *g_ptr;
+            Grid *g_ptr;
             g_ptr = &floor_ptr->grid_array[j][k];
             if (!g_ptr->is_floor() || !g_ptr->o_idx_list.empty()) {
                 continue;
@@ -118,10 +118,9 @@ void vault_objects(PlayerType *player_ptr, POSITION y, POSITION x, int num)
  * @details
  * Only really called by some of the "vault" routines.
  */
-static void vault_trap_aux(PlayerType *player_ptr, POSITION y, POSITION x, POSITION yd, POSITION xd)
+static void vault_trap_aux(FloorType *floor_ptr, POSITION y, POSITION x, POSITION yd, POSITION xd)
 {
-    grid_type *g_ptr;
-    auto *floor_ptr = player_ptr->current_floor_ptr;
+    Grid *g_ptr;
     int y1 = y, x1 = x;
     int dummy = 0;
     for (int count = 0; count <= 5; count++) {
@@ -140,11 +139,11 @@ static void vault_trap_aux(PlayerType *player_ptr, POSITION y, POSITION x, POSIT
         }
 
         g_ptr = &floor_ptr->grid_array[y1][x1];
-        if (!g_ptr->is_floor() || !g_ptr->o_idx_list.empty() || g_ptr->m_idx) {
+        if (!g_ptr->is_floor() || !g_ptr->o_idx_list.empty() || g_ptr->has_monster()) {
             continue;
         }
 
-        place_trap(player_ptr, y1, x1);
+        place_trap(floor_ptr, y1, x1);
         break;
     }
 }
@@ -161,9 +160,9 @@ static void vault_trap_aux(PlayerType *player_ptr, POSITION y, POSITION x, POSIT
  * Only really called by some of the "vault" routines.
  * @todo rooms-normal からしか呼ばれていない、要調整
  */
-void vault_traps(PlayerType *player_ptr, POSITION y, POSITION x, POSITION yd, POSITION xd, int num)
+void vault_traps(FloorType *floor_ptr, POSITION y, POSITION x, POSITION yd, POSITION xd, int num)
 {
     for (int i = 0; i < num; i++) {
-        vault_trap_aux(player_ptr, y, x, yd, xd);
+        vault_trap_aux(floor_ptr, y, x, yd, xd);
     }
 }

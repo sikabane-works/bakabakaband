@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスターから直接攻撃を受けた時に、プレイヤーのオーラダメージで反撃する処理
  * @date 2020/05/31
  * @author Hourier
@@ -13,7 +13,6 @@
 #include "monster-attack/monster-attack-player.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags3.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster/monster-damage.h"
 #include "monster/monster-info.h"
@@ -37,7 +36,7 @@ static void aura_fire_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
     }
 
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_FIRE_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr)) {
             r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_FIRE_MASK);
@@ -62,7 +61,7 @@ static void aura_elec_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
     }
 
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_ELEC_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr)) {
             r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_ELEC_MASK);
@@ -87,7 +86,7 @@ static void aura_cold_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
     }
 
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     if (r_ptr->resistance_flags.has_any_of(RFR_EFF_IM_COLD_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr)) {
             r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_IM_COLD_MASK);
@@ -112,7 +111,7 @@ static void aura_shards_by_monster_attack(PlayerType *player_ptr, MonsterAttackP
         return;
     }
 
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     if (r_ptr->resistance_flags.has_any_of(RFR_EFF_RESIST_SHARDS_MASK)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr)) {
             r_ptr->r_resistance_flags.set(r_ptr->resistance_flags & RFR_EFF_RESIST_SHARDS_MASK);
@@ -139,7 +138,7 @@ static void aura_holy_by_monster_attack(PlayerType *player_ptr, MonsterAttackPla
         return;
     }
 
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     if (r_ptr->kind_flags.has_not(MonsterKindType::EVIL)) {
         return;
     }
@@ -172,7 +171,7 @@ static void aura_force_by_monster_attack(PlayerType *player_ptr, MonsterAttackPl
         return;
     }
 
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     if (r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
         if (is_original_ap_and_seen(player_ptr, monap_ptr->m_ptr)) {
             r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_ALL);
@@ -198,7 +197,7 @@ static void aura_shadow_by_monster_attack(PlayerType *player_ptr, MonsterAttackP
 
     int dam = 1;
     ItemEntity *o_armed_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
-    auto *r_ptr = &monraces_info[monap_ptr->m_ptr->r_idx];
+    auto *r_ptr = &monap_ptr->m_ptr->get_monrace();
     const EnumClassFlagGroup<MonsterResistanceType> resist_flags = { MonsterResistanceType::RESIST_ALL, MonsterResistanceType::RESIST_DARK };
 
     if (r_ptr->resistance_flags.has_any_of(resist_flags)) {

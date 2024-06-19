@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief アイテムに影響のある魔法の処理
  * @date 2019/01/22
  * @author deskull
@@ -14,7 +14,6 @@
 #include "game-option/disturbance-options.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object-enchant/item-feeling.h"
 #include "object-enchant/item-magic-applier.h"
@@ -142,7 +141,7 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
         const auto insta_art = baseitems_info[bi_id].gen_flags.has(ItemGenerationTraitType::INSTA_ART);
         const auto flag = am_ptr->flag;
         const auto fixed_art = flag == AmusementFlagType::FIXED_ART;
-        std::optional<FixedArtifactId> opt_a_idx(std::nullopt);
+        std::optional<FixedArtifactId> opt_a_idx;
         if (insta_art || fixed_art) {
             opt_a_idx = sweep_amusement_artifact(insta_art, bi_id);
             if (!opt_a_idx.has_value()) {
@@ -173,7 +172,7 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
 
         if (known) {
             object_aware(player_ptr, &item);
-            object_known(&item);
+            item.mark_as_known();
         }
 
         (void)drop_near(player_ptr, &item, -1, player_ptr->y, player_ptr->x);
@@ -188,21 +187,14 @@ void generate_amusement(PlayerType *player_ptr, int num, bool known)
  * @param x1 配置したいフロアのX座標
  * @param num 獲得の処理回数
  * @param great TRUEならば必ず高級品以上を落とす
- * @param special TRUEならば必ず特別品を落とす
- * @param known TRUEならばオブジェクトが必ず＊鑑定＊済になる
  */
-void acquirement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool great, bool special, bool known)
+void acquirement(PlayerType *player_ptr, POSITION y1, POSITION x1, int num, bool great)
 {
-    auto mode = AM_GOOD | (great || special ? AM_GREAT : AM_NONE) | (special ? AM_SPECIAL : AM_NONE);
+    auto mode = AM_GOOD | (great ? AM_GREAT : AM_NONE);
     for (auto i = 0; i < num; i++) {
         ItemEntity item;
         if (!make_object(player_ptr, &item, mode)) {
             continue;
-        }
-
-        if (known) {
-            object_aware(player_ptr, &item);
-            object_known(&item);
         }
 
         (void)drop_near(player_ptr, &item, -1, y1, x1);
@@ -492,11 +484,11 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
         item_tester = FuncItemTester(&ItemEntity::is_protector);
     }
 
-    const auto q = _("どのアイテムを強化しますか? ", "Enchant which item? ");
-    const auto s = _("強化できるアイテムがない。", "You have nothing to enchant.");
-    short item;
+    constexpr auto q = _("どのアイテムを強化しますか? ", "Enchant which item? ");
+    constexpr auto s = _("強化できるアイテムがない。", "You have nothing to enchant.");
+    short i_idx;
     const auto options = USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT;
-    auto *o_ptr = choose_object(player_ptr, &item, q, s, options, item_tester);
+    auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, options, item_tester);
     if (!o_ptr) {
         return false;
     }
@@ -505,7 +497,7 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
 #ifdef JP
     msg_format("%s は明るく輝いた！", item_name.data());
 #else
-    msg_format("%s %s glow%s brightly!", ((item >= 0) ? "Your" : "The"), item_name.data(), ((o_ptr->number > 1) ? "" : "s"));
+    msg_format("%s %s glow%s brightly!", ((i_idx >= 0) ? "Your" : "The"), item_name.data(), ((o_ptr->number > 1) ? "" : "s"));
 #endif
 
     auto is_enchant_successful = false;
@@ -544,11 +536,11 @@ bool enchant_spell(PlayerType *player_ptr, HIT_PROB num_hit, int num_dam, ARMOUR
  */
 void brand_weapon(PlayerType *player_ptr, int brand_type)
 {
-    const auto q = _("どの武器を強化しますか? ", "Enchant which weapon? ");
-    const auto s = _("強化できる武器がない。", "You have nothing to enchant.");
-    short item;
+    constexpr auto q = _("どの武器を強化しますか? ", "Enchant which weapon? ");
+    constexpr auto s = _("強化できる武器がない。", "You have nothing to enchant.");
+    short i_idx;
     const auto options = USE_EQUIP | IGNORE_BOTHHAND_SLOT;
-    auto *o_ptr = choose_object(player_ptr, &item, q, s, options, FuncItemTester(&ItemEntity::allow_enchant_melee_weapon));
+    auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, options, FuncItemTester(&ItemEntity::allow_enchant_melee_weapon));
     if (o_ptr == nullptr) {
         return;
     }
@@ -634,7 +626,7 @@ void brand_weapon(PlayerType *player_ptr, int brand_type)
     case 5:
         act = _("は非常に不安定になったようだ。", "seems very unstable now.");
         o_ptr->ego_idx = EgoType::TRUMP;
-        o_ptr->pval = randint1(2);
+        o_ptr->pval = randnum1<short>(2);
         break;
     case 4:
         act = _("は血を求めている！", "thirsts for blood!");

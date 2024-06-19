@@ -1,4 +1,4 @@
-﻿#include "specific-object/monster-ball.h"
+#include "specific-object/monster-ball.h"
 #include "effect/spells-effect-util.h"
 #include "floor/geometry.h"
 #include "game-option/input-options.h"
@@ -95,12 +95,13 @@ static void restore_monster_nickname(MonsterEntity &monster, ItemEntity &item)
 
 static bool release_monster(PlayerType *player_ptr, ItemEntity &item, DIRECTION dir)
 {
-    auto r_idx = i2enum<MonsterRaceId>(item.pval);
-    if (!monster_can_enter(player_ptr, player_ptr->y + ddy[dir], player_ptr->x + ddx[dir], &monraces_info[r_idx], 0)) {
+    const auto r_idx = i2enum<MonsterRaceId>(item.pval);
+    const auto pos = player_ptr->get_neighbor(dir);
+    if (!monster_can_enter(player_ptr, pos.y, pos.x, &monraces_info[r_idx], 0)) {
         return false;
     }
 
-    if (!place_monster_aux(player_ptr, 0, player_ptr->y + ddy[dir], player_ptr->x + ddx[dir], r_idx, PM_FORCE_PET | PM_NO_KAGE)) {
+    if (!place_specific_monster(player_ptr, 0, pos.y, pos.x, r_idx, PM_FORCE_PET | PM_NO_KAGE)) {
         return false;
     }
 
@@ -141,12 +142,12 @@ bool exe_monster_capture(PlayerType *player_ptr, ItemEntity &item)
         return true;
     }
 
-    DIRECTION dir;
-    if (!get_direction(player_ptr, &dir, false, false)) {
+    const auto dir = get_direction(player_ptr);
+    if (!dir) {
         return true;
     }
 
-    if (!release_monster(player_ptr, item, dir)) {
+    if (!release_monster(player_ptr, item, *dir)) {
         msg_print(_("おっと、解放に失敗した。", "Oops.  You failed to release your pet."));
     }
 

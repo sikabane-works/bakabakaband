@@ -1,4 +1,4 @@
-﻿#include "realm/realm-chaos.h"
+#include "realm/realm-chaos.h"
 #include "cmd-action/cmd-spell.h"
 #include "core/asking-player.h"
 #include "effect/attribute-types.h"
@@ -713,7 +713,7 @@ std::optional<std::string> do_chaos_spell(PlayerType *player_ptr, SPELL_IDX spel
 
         {
             if (cast) {
-                if (!get_check(_("変身します。よろしいですか？", "You will polymorph yourself. Are you sure? "))) {
+                if (!input_check(_("変身します。よろしいですか？", "You will polymorph yourself. Are you sure? "))) {
                     return std::nullopt;
                 }
                 do_poly_self(player_ptr);

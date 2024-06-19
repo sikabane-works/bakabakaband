@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 /*!
  * @file blue-magic-ball-bolt.h
  * @brief 青魔法のボール/ボルト系呪文ヘッダ
@@ -20,6 +20,7 @@ bool cast_blue_ball_dark_storm(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_ball_mana_storm(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_ball_void(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_ball_abyss(PlayerType *player_ptr, bmc_type *bmc_ptr);
+bool cast_blue_ball_meteor(PlayerType *player_ptr, bmc_type *bmc_ptr);
 
 bool cast_blue_bolt_acid(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_bolt_elec(PlayerType *player_ptr, bmc_type *bmc_ptr);
@@ -32,4 +33,6 @@ bool cast_blue_bolt_plasma(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_bolt_icee(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_bolt_void(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_bolt_abyss(PlayerType *player_ptr, bmc_type *bmc_ptr);
+bool cast_blue_bolt_meteor(PlayerType *player_ptr, bmc_type *bmc_ptr);
+bool cast_blue_bolt_lite(PlayerType *player_ptr, bmc_type *bmc_ptr);
 bool cast_blue_bolt_missile(PlayerType *player_ptr, bmc_type *bmc_ptr);

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 自動拾いエディタを表示させる
  * @date 2020/04/26
  * @author Hourier
@@ -14,6 +14,7 @@
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "view/display-util.h"
+#include <tuple>
 
 #define DESCRIPT_HGT 3
 
@@ -25,7 +26,7 @@ static void process_dirty_expression(PlayerType *player_ptr, text_body_type *tb)
 
     byte state = 0;
     for (int y = 0; tb->lines_list[y]; y++) {
-        concptr s = tb->lines_list[y];
+        auto s = tb->lines_list[y];
         tb->states[y] = state;
 
         if (*s++ != '?') {
@@ -66,7 +67,7 @@ void draw_text_editor(PlayerType *player_ptr, text_body_type *tb)
 {
     int by1 = 0, by2 = 0;
 
-    term_get_size(&tb->wid, &tb->hgt);
+    std::tie(tb->wid, tb->hgt) = term_get_size();
 
     /*
      * Top line (-1), description line (-3), separator (-1)
@@ -119,7 +120,7 @@ void draw_text_editor(PlayerType *player_ptr, text_body_type *tb)
     }
 
     if (tb->dirty_flags & DIRTY_MODE) {
-        char buf[MAX_LINELEN];
+        char buf[MAX_LINELEN]{};
         int sepa_length = tb->wid;
         int j = 0;
         for (; j < sepa_length; j++) {

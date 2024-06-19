@@ -1,4 +1,4 @@
-﻿#include "info-reader/general-parser.h"
+#include "info-reader/general-parser.h"
 #include "artifact/fixed-art-types.h"
 #include "dungeon/quest.h"
 #include "grid/feature.h"
@@ -30,42 +30,44 @@ dungeon_grid letter[255];
  * @param buf 読み取りに使うバッファ領域
  * @param head ヘッダ構造体
  * @param parse_info_txt_line パース関数
- * @return エラーコード
+ * @return エラーコード, エラー行番号
  */
-errr init_info_txt(FILE *fp, char *buf, angband_header *head, Parser parse_info_txt_line)
+std::tuple<errr, int> init_info_txt(FILE *fp, char *buf, angband_header *head, Parser parse_info_txt_line)
 {
     error_idx = -1;
-    error_line = 0;
+    auto error_line = 0;
 
-    errr err;
+    util::SHA256 sha256;
+
     while (angband_fgets(fp, buf, 1024) == 0) {
         error_line++;
-        if (!buf[0] || (buf[0] == '#')) {
+        const std::string_view line = buf;
+        if (line.empty() || line.starts_with('#')) {
             continue;
         }
 
-        if (buf[1] != ':') {
-            return PARSE_ERROR_GENERIC;
+        if (!line.substr(1).starts_with(':')) {
+            return { PARSE_ERROR_GENERIC, error_line };
         }
 
-        if (buf[0] == 'V') {
+        if (line.starts_with('V')) {
             continue;
         }
 
-        if (buf[0] != 'N' && buf[0] != 'D') {
-            int i;
-            for (i = 0; buf[i]; i++) {
-                head->checksum += (byte)buf[i];
-                head->checksum ^= (1U << (i % 8));
-            }
+        // 文字コードの差異を吸収するため、日本語が含まれる可能性のある
+        // 「N:」「D:」「J:」はハッシュ計算から除外する
+        if (!line.starts_with('N') && !line.starts_with('D') && !line.starts_with('J')) {
+            sha256.update(line);
         }
 
-        if ((err = parse_info_txt_line(buf, head)) != 0) {
-            return err;
+        if (auto err = parse_info_txt_line(line, head); err != 0) {
+            return { err, error_line };
         }
     }
 
-    return 0;
+    head->digest = sha256.digest();
+
+    return { PARSE_ERROR_NONE, error_line };
 }
 
 /*!
@@ -173,7 +175,7 @@ parse_error_type parse_line_feature(FloorType *floor_ptr, char *buf)
                 letter[index].artifact = i2enum<FixedArtifactId>(atoi(zz[6] + 1));
             }
         } else if (zz[6][0] == '!') {
-            if (inside_quest(floor_ptr->quest_number)) {
+            if (floor_ptr->is_in_quest()) {
                 const auto &quest_list = QuestList::get_instance();
                 letter[index].artifact = quest_list[floor_ptr->quest_number].reward_artifact_idx;
             }
@@ -198,7 +200,7 @@ parse_error_type parse_line_feature(FloorType *floor_ptr, char *buf)
                 letter[index].object = (OBJECT_IDX)atoi(zz[4] + 1);
             }
         } else if (zz[4][0] == '!') {
-            if (inside_quest(floor_ptr->quest_number)) {
+            if (floor_ptr->is_in_quest()) {
                 const auto &quest = QuestList::get_instance()[floor_ptr->quest_number];
                 if (quest.has_reward()) {
                     const auto &artifact = quest.get_reward();

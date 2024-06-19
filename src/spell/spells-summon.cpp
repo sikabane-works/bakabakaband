@@ -1,4 +1,4 @@
-﻿#include "spell/spells-summon.h"
+#include "spell/spells-summon.h"
 #include "avatar/avatar.h"
 #include "effect/spells-effect-util.h"
 #include "floor/floor-object.h"
@@ -12,6 +12,7 @@
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
+#include "monster/monster-util.h"
 #include "monster/smart-learn-types.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
@@ -55,7 +56,7 @@ bool trump_summoning(PlayerType *player_ptr, int num, bool pet, POSITION y, POSI
         lev = plev * 2 / 3 + randint1(plev / 2);
     }
 
-    MONSTER_IDX who;
+    MONSTER_IDX src_idx;
     if (pet) {
         /* Become pet */
         mode |= PM_FORCE_PET;
@@ -69,18 +70,18 @@ bool trump_summoning(PlayerType *player_ptr, int num, bool pet, POSITION y, POSI
         }
 
         /* Player is who summons */
-        who = -1;
+        src_idx = -1;
     } else {
         /* Prevent taming, allow unique monster */
         mode |= PM_NO_PET;
 
         /* Behave as if they appear by themselfs */
-        who = 0;
+        src_idx = 0;
     }
 
     bool success = false;
     for (int i = 0; i < num; i++) {
-        if (summon_specific(player_ptr, who, y, x, lev, type, mode)) {
+        if (summon_specific(player_ptr, src_idx, y, x, lev, type, mode)) {
             success = true;
         }
     }
@@ -216,11 +217,10 @@ bool cast_summon_octopus(PlayerType *player_ptr)
  */
 bool cast_summon_greater_demon(PlayerType *player_ptr)
 {
-    concptr q = _("どの死体を捧げますか? ", "Sacrifice which corpse? ");
-    concptr s = _("捧げられる死体を持っていない。", "You have nothing to sacrifice.");
-    OBJECT_IDX item;
-    ItemEntity *o_ptr;
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_offerable));
+    constexpr auto q = _("どの死体を捧げますか? ", "Sacrifice which corpse? ");
+    constexpr auto s = _("捧げられる死体を持っていない。", "You have nothing to sacrifice.");
+    short i_idx;
+    const auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(&ItemEntity::is_offerable));
     if (!o_ptr) {
         return false;
     }
@@ -232,7 +232,7 @@ bool cast_summon_greater_demon(PlayerType *player_ptr)
     if (summon_specific(player_ptr, -1, player_ptr->y, player_ptr->x, summon_lev, SUMMON_HI_DEMON, (PM_ALLOW_GROUP | PM_FORCE_PET))) {
         msg_print(_("硫黄の悪臭が充満した。", "The area fills with a stench of sulphur and brimstone."));
         msg_print(_("「ご用でございますか、ご主人様」", "'What is thy bidding... Master?'"));
-        vary_item(player_ptr, item, -1);
+        vary_item(player_ptr, i_idx, -1);
     } else {
         msg_print(_("悪魔は現れなかった。", "No Greater Demon arrives."));
     }
@@ -261,18 +261,18 @@ bool summon_kin_player(PlayerType *player_ptr, DEPTH level, POSITION y, POSITION
 /*!
  * @brief サイバーデーモンの召喚
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who 召喚主のモンスターID(0ならばプレイヤー)
+ * @param src_idx 召喚主のモンスターID(0ならばプレイヤー)
  * @param y 召喚位置Y座標
  * @param x 召喚位置X座標
  * @return 作用が実際にあった場合TRUEを返す
  */
-int summon_cyber(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x)
+int summon_cyber(PlayerType *player_ptr, MONSTER_IDX src_idx, POSITION y, POSITION x)
 {
     /* Summoned by a monster */
     BIT_FLAGS mode = PM_ALLOW_GROUP;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (who > 0) {
-        auto *m_ptr = &floor_ptr->m_list[who];
+    if (is_monster(src_idx)) {
+        auto *m_ptr = &floor_ptr->m_list[src_idx];
         if (m_ptr->is_pet()) {
             mode |= PM_FORCE_PET;
         }
@@ -285,7 +285,7 @@ int summon_cyber(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x
 
     int count = 0;
     for (int i = 0; i < max_cyber; i++) {
-        count += summon_specific(player_ptr, who, y, x, 100, SUMMON_CYBER, mode);
+        count += summon_specific(player_ptr, src_idx, y, x, 100, SUMMON_CYBER, mode);
     }
 
     return count;

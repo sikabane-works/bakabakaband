@@ -1,10 +1,8 @@
-﻿#include "object/object-value-calc.h"
-#include "artifact/artifact-info.h"
+#include "object/object-value-calc.h"
 #include "object-enchant/activation-info-table.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
-#include "object/object-flags.h"
 #include "system/artifact-type-definition.h"
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
@@ -21,7 +19,7 @@
 PRICE flag_cost(const ItemEntity *o_ptr, int plusses)
 {
     PRICE total = 0;
-    auto flags = object_flags(o_ptr);
+    auto flags = o_ptr->get_flags();
     const auto &baseitem = o_ptr->get_baseitem();
     flags.reset(baseitem.flags);
 
@@ -541,9 +539,9 @@ PRICE flag_cost(const ItemEntity *o_ptr, int plusses)
 
     /* Also, give some extra for activatable powers... */
     if (o_ptr->is_random_artifact() && o_ptr->art_flags.has(TR_ACTIVATE)) {
-        auto act_ptr = find_activation_info(o_ptr);
-        if (act_ptr.has_value()) {
-            total += act_ptr.value()->value;
+        const auto act_ptr = o_ptr->find_activation_info();
+        if (act_ptr != activation_info.end()) {
+            total += act_ptr->value;
         }
     }
 

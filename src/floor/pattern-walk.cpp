@@ -1,4 +1,4 @@
-﻿#include "floor/pattern-walk.h"
+#include "floor/pattern-walk.h"
 #include "cmd-io/cmd-save.h"
 #include "core/asking-player.h"
 #include "dungeon/quest.h"
@@ -23,6 +23,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "term/z-form.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-cut.h"
@@ -33,6 +34,7 @@
 #include "view/display-messages.h"
 #include "world/world-movement-processor.h"
 #include "world/world.h"
+#include <algorithm>
 
 /*!
  * @brief パターン終点到達時のテレポート処理を行う
@@ -40,22 +42,19 @@
  */
 void pattern_teleport(PlayerType *player_ptr)
 {
-    DEPTH min_level = 0;
-    DEPTH max_level = 99;
-
-    if (get_check(_("他の階にテレポートしますか？", "Teleport level? "))) {
-        char ppp[80];
-        char tmp_val[160];
-
+    auto min_level = 0;
+    auto max_level = 99;
+    auto current_level = static_cast<short>(player_ptr->current_floor_ptr->dun_level);
+    if (input_check(_("他の階にテレポートしますか？", "Teleport level? "))) {
         if (ironman_downward) {
-            min_level = player_ptr->current_floor_ptr->dun_level;
+            min_level = current_level;
         }
 
         const auto &floor = *player_ptr->current_floor_ptr;
         if (floor.dungeon_idx == DUNGEON_ANGBAND) {
             if (floor.dun_level > 100) {
                 max_level = MAX_DEPTH - 1;
-            } else if (player_ptr->current_floor_ptr->dun_level == 100) {
+            } else if (current_level == 100) {
                 max_level = 100;
             }
         } else {
@@ -64,25 +63,18 @@ void pattern_teleport(PlayerType *player_ptr)
             min_level = dungeon.mindepth;
         }
 
-        strnfmt(ppp, sizeof(ppp), _("テレポート先:(%d-%d)", "Teleport to level (%d-%d): "), (int)min_level, (int)max_level);
-        strnfmt(tmp_val, sizeof(tmp_val), "%d", (int)player_ptr->current_floor_ptr->dun_level);
-        if (!get_string(ppp, tmp_val, 10)) {
+        constexpr auto prompt = _("テレポート先", "Teleport to level");
+        const auto input_level = input_numerics(prompt, min_level, max_level, current_level);
+        if (!input_level.has_value()) {
             return;
         }
 
-        command_arg = (COMMAND_ARG)atoi(tmp_val);
-    } else if (get_check(_("通常テレポート？", "Normal teleport? "))) {
+        command_arg = *input_level;
+    } else if (input_check(_("通常テレポート？", "Normal teleport? "))) {
         teleport_player(player_ptr, 200, TELEPORT_SPONTANEOUS);
         return;
     } else {
         return;
-    }
-
-    if (command_arg < min_level) {
-        command_arg = (COMMAND_ARG)min_level;
-    }
-    if (command_arg > max_level) {
-        command_arg = (COMMAND_ARG)max_level;
     }
 
     msg_format(_("%d 階にテレポートしました。", "You teleport to dungeon level %d."), command_arg);
@@ -113,7 +105,8 @@ void pattern_teleport(PlayerType *player_ptr)
 bool pattern_effect(PlayerType *player_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (!pattern_tile(floor_ptr, player_ptr->y, player_ptr->x)) {
+    const auto p_pos = player_ptr->get_position();
+    if (!pattern_tile(floor_ptr, p_pos.y, p_pos.x)) {
         return false;
     }
 
@@ -122,7 +115,7 @@ bool pattern_effect(PlayerType *player_ptr)
         wreck_the_pattern(player_ptr);
     }
 
-    int pattern_type = terrains_info[floor_ptr->grid_array[player_ptr->y][player_ptr->x].feat].subtype;
+    int pattern_type = floor_ptr->get_grid(p_pos).get_terrain().subtype;
     switch (pattern_type) {
     case PATTERN_TILE_END:
         (void)BadStatusSetter(player_ptr).hallucination(0);
@@ -170,48 +163,44 @@ bool pattern_effect(PlayerType *player_ptr)
 /*!
  * @brief パターンによる移動制限処理
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param c_y プレイヤーの移動元Y座標
- * @param c_x プレイヤーの移動元X座標
- * @param n_y プレイヤーの移動先Y座標
- * @param n_x プレイヤーの移動先X座標
+ * @param pos プレイヤーの移動先座標
  * @return 移動処理が可能である場合（可能な場合に選択した場合）TRUEを返す。
  */
-bool pattern_seq(PlayerType *player_ptr, POSITION c_y, POSITION c_x, POSITION n_y, POSITION n_x)
+bool pattern_seq(PlayerType *player_ptr, const Pos2D &pos)
 {
-    TerrainType *cur_f_ptr = &terrains_info[player_ptr->current_floor_ptr->grid_array[c_y][c_x].feat];
-    TerrainType *new_f_ptr = &terrains_info[player_ptr->current_floor_ptr->grid_array[n_y][n_x].feat];
-    bool is_pattern_tile_cur = cur_f_ptr->flags.has(TerrainCharacteristics::PATTERN);
-    bool is_pattern_tile_new = new_f_ptr->flags.has(TerrainCharacteristics::PATTERN);
+    const auto &floor = *player_ptr->current_floor_ptr;
+    const auto &grid_current = floor.get_grid(player_ptr->get_position());
+    const auto &grid_new = floor.get_grid(pos);
+    const auto &terrain_current = grid_current.get_terrain();
+    const auto &terrain_new = grid_new.get_terrain();
+    const auto is_pattern_tile_cur = terrain_current.flags.has(TerrainCharacteristics::PATTERN);
+    const auto is_pattern_tile_new = terrain_new.flags.has(TerrainCharacteristics::PATTERN);
     if (!is_pattern_tile_cur && !is_pattern_tile_new) {
         return true;
     }
 
-    int pattern_type_cur = is_pattern_tile_cur ? cur_f_ptr->subtype : NOT_PATTERN_TILE;
-    int pattern_type_new = is_pattern_tile_new ? new_f_ptr->subtype : NOT_PATTERN_TILE;
+    int pattern_type_cur = is_pattern_tile_cur ? terrain_current.subtype : NOT_PATTERN_TILE;
+    int pattern_type_new = is_pattern_tile_new ? terrain_new.subtype : NOT_PATTERN_TILE;
     if (pattern_type_new == PATTERN_TILE_START) {
-        auto effects = player_ptr->effects();
-        auto is_stunned = effects->stun()->is_stunned();
-        auto is_confused = effects->confusion()->is_confused();
-        auto is_hallucinated = effects->hallucination()->is_hallucinated();
-        if (!is_pattern_tile_cur && !is_confused && !is_stunned && !is_hallucinated) {
-            if (get_check(_("パターンの上を歩き始めると、全てを歩かなければなりません。いいですか？",
-                    "If you start walking the Pattern, you must walk the whole way. Ok? "))) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
+        const auto effects = player_ptr->effects();
+        const auto is_stunned = effects->stun()->is_stunned();
+        const auto is_confused = effects->confusion()->is_confused();
+        const auto is_hallucinated = effects->hallucination()->is_hallucinated();
+        if (is_pattern_tile_cur || is_confused || is_stunned || is_hallucinated) {
             return true;
         }
+
+        return input_check(_("パターンの上を歩き始めると、全てを歩かなければなりません。いいですか？",
+            "If you start walking the Pattern, you must walk the whole way. Ok? "));
     }
 
     if ((pattern_type_new == PATTERN_TILE_OLD) || (pattern_type_new == PATTERN_TILE_END) || (pattern_type_new == PATTERN_TILE_WRECKED)) {
         if (is_pattern_tile_cur) {
             return true;
-        } else {
-            msg_print(_("パターンの上を歩くにはスタート地点から歩き始めなくてはなりません。", "You must start walking the Pattern from the startpoint."));
-            return false;
         }
+
+        msg_print(_("パターンの上を歩くにはスタート地点から歩き始めなくてはなりません。", "You must start walking the Pattern from the startpoint."));
+        return false;
     }
 
     if ((pattern_type_new == PATTERN_TILE_TELEPORT) || (pattern_type_cur == PATTERN_TILE_TELEPORT)) {
@@ -221,24 +210,23 @@ bool pattern_seq(PlayerType *player_ptr, POSITION c_y, POSITION c_x, POSITION n_
     if (pattern_type_cur == PATTERN_TILE_START) {
         if (is_pattern_tile_new) {
             return true;
-        } else {
-            msg_print(_("パターンの上は正しい順序で歩かねばなりません。", "You must walk the Pattern in correct order."));
-            return false;
         }
+
+        msg_print(_("パターンの上は正しい順序で歩かねばなりません。", "You must walk the Pattern in correct order."));
+        return false;
     }
 
     if ((pattern_type_cur == PATTERN_TILE_OLD) || (pattern_type_cur == PATTERN_TILE_END) || (pattern_type_cur == PATTERN_TILE_WRECKED)) {
-        if (!is_pattern_tile_new) {
-            msg_print(_("パターンを踏み外してはいけません。", "You may not step off from the Pattern."));
-            return false;
-        } else {
+        if (is_pattern_tile_new) {
             return true;
         }
+
+        msg_print(_("パターンを踏み外してはいけません。", "You may not step off from the Pattern."));
+        return false;
     }
 
     if (!is_pattern_tile_cur) {
         msg_print(_("パターンの上を歩くにはスタート地点から歩き始めなくてはなりません。", "You must start walking the Pattern from the startpoint."));
-
         return false;
     }
 

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief グリッドの実装 / low level dungeon routines -BEN-
  * @date 2013/12/30
  * @author
@@ -34,8 +34,6 @@
 #include "io/screen-util.h"
 #include "monster-floor/monster-remover.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
 #include "monster/monster-update.h"
@@ -53,6 +51,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "term/gameterm.h"
 #include "term/term-color-types.h"
 #include "timed-effect/player-blindness.h"
@@ -73,56 +72,53 @@
  */
 bool new_player_spot(PlayerType *player_ptr)
 {
-    POSITION y = 0, x = 0;
-    int max_attempts = 10000;
-
-    grid_type *g_ptr;
-    TerrainType *f_ptr;
-
-    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto max_attempts = 10000;
+    auto y = 0;
+    auto x = 0;
+    auto &floor = *player_ptr->current_floor_ptr;
     while (max_attempts--) {
         /* Pick a legal spot */
-        y = (POSITION)rand_range(1, floor_ptr->height - 2);
-        x = (POSITION)rand_range(1, floor_ptr->width - 2);
+        y = (POSITION)rand_range(1, floor.height - 2);
+        x = (POSITION)rand_range(1, floor.width - 2);
 
-        g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+        const auto &grid = player_ptr->current_floor_ptr->get_grid({ y, x });
 
         /* Must be a "naked" floor grid */
-        if (g_ptr->m_idx) {
+        if (grid.has_monster()) {
             continue;
         }
-        if (floor_ptr->is_in_dungeon()) {
-            f_ptr = &terrains_info[g_ptr->feat];
+        if (floor.is_in_dungeon()) {
+            const auto &terrain = grid.get_terrain();
 
-            if (max_attempts > 5000) {
-                /* Rule 1 */
-                if (f_ptr->flags.has_not(TerrainCharacteristics::FLOOR)) {
+            if (max_attempts > 5000) /* Rule 1 */
+            {
+                if (terrain.flags.has_not(TerrainCharacteristics::FLOOR)) {
                     continue;
                 }
-            } else {
-                /* Rule 2 */
-                if (f_ptr->flags.has_not(TerrainCharacteristics::MOVE)) {
+            } else /* Rule 2 */
+            {
+                if (terrain.flags.has_not(TerrainCharacteristics::MOVE)) {
                     continue;
                 }
-                if (f_ptr->flags.has(TerrainCharacteristics::HIT_TRAP)) {
+                if (terrain.flags.has(TerrainCharacteristics::HIT_TRAP)) {
                     continue;
                 }
             }
 
             /* Refuse to start on anti-teleport grids in dungeon */
-            if (f_ptr->flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
+            if (terrain.flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
                 continue;
             }
         }
-        if (!player_can_enter(player_ptr, g_ptr->feat, 0)) {
+        if (!player_can_enter(player_ptr, grid.feat, 0)) {
             continue;
         }
-        if (!in_bounds(floor_ptr, y, x)) {
+        if (!in_bounds(&floor, y, x)) {
             continue;
         }
 
         /* Refuse to start on anti-teleport grids */
-        if (g_ptr->is_icky()) {
+        if (grid.is_icky()) {
             continue;
         }
 
@@ -143,16 +139,12 @@ bool new_player_spot(PlayerType *player_ptr)
 /*!
  * @brief マスに隠されたドアがあるかの判定を行う。 / Return TRUE if the given grid is a hidden closed door
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param g_ptr マス構造体の参照ポインタ
+ * @param grid マス構造体の参照ポインタ
  * @return 隠されたドアがあるならTRUEを返す。
  */
-bool is_hidden_door(PlayerType *player_ptr, grid_type *g_ptr)
+bool is_hidden_door(PlayerType *player_ptr, const Grid &grid)
 {
-    if ((g_ptr->mimic || g_ptr->cave_has_flag(TerrainCharacteristics::SECRET)) && is_closed_door(player_ptr, g_ptr->feat)) {
-        return true;
-    } else {
-        return false;
-    }
+    return (grid.mimic || grid.cave_has_flag(TerrainCharacteristics::SECRET)) && is_closed_door(player_ptr, grid.feat);
 }
 
 /*!
@@ -185,12 +177,14 @@ bool check_local_illumination(PlayerType *player_ptr, POSITION y, POSITION x)
  */
 static void update_local_illumination_aux(PlayerType *player_ptr, int y, int x)
 {
-    if (!player_has_los_bold(player_ptr, y, x)) {
+    const auto &floor = *player_ptr->current_floor_ptr;
+    const Pos2D pos(y, x);
+    const auto &grid = floor.get_grid(pos);
+    if (!grid.has_los()) {
         return;
     }
 
-    const auto &grid = player_ptr->current_floor_ptr->grid_array[y][x];
-    if (grid.m_idx > 0) {
+    if (grid.has_monster()) {
         update_monster(player_ptr, grid.m_idx, false);
     }
 
@@ -241,11 +235,10 @@ void update_local_illumination(PlayerType *player_ptr, POSITION y, POSITION x)
         update_local_illumination_aux(player_ptr, y, xx);
         xx = x + 1;
         update_local_illumination_aux(player_ptr, y, xx);
-    } else { /* Player's grid */
-        for (i = 0; i < 8; i++) {
-            yy = y + ddy_cdd[i];
-            xx = x + ddx_cdd[i];
-            update_local_illumination_aux(player_ptr, yy, xx);
+    } else /* Player's grid */
+    {
+        for (const auto &dd : CCW_DD) {
+            update_local_illumination_aux(player_ptr, y + dd.y, x + dd.x);
         }
     }
 }
@@ -285,7 +278,7 @@ void print_rel(PlayerType *player_ptr, char c, TERM_COLOR a, POSITION y, POSITIO
 
 void print_bolt_pict(PlayerType *player_ptr, POSITION y, POSITION x, POSITION ny, POSITION nx, AttributeType typ)
 {
-    const auto [a, c] = bolt_pict(y, x, ny, nx, typ);
+    const auto &[a, c] = bolt_pict(y, x, ny, nx, typ);
     print_rel(player_ptr, c, a, ny, nx);
 }
 
@@ -330,7 +323,9 @@ void print_bolt_pict(PlayerType *player_ptr, POSITION y, POSITION x, POSITION ny
  */
 void note_spot(PlayerType *player_ptr, POSITION y, POSITION x)
 {
-    auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+    const Pos2D pos(y, x);
+    auto &floor = *player_ptr->current_floor_ptr;
+    auto &grid = floor.get_grid(pos);
 
     /* Blind players see nothing */
     if (player_ptr->effects()->blindness()->is_blind()) {
@@ -338,14 +333,14 @@ void note_spot(PlayerType *player_ptr, POSITION y, POSITION x)
     }
 
     /* Analyze non-torch-lit grids */
-    if (!(g_ptr->info & (CAVE_LITE | CAVE_MNLT))) {
+    if (!(grid.info & (CAVE_LITE | CAVE_MNLT))) {
         /* Require line of sight to the grid */
-        if (!(g_ptr->info & (CAVE_VIEW))) {
+        if (!(grid.info & (CAVE_VIEW))) {
             return;
         }
 
         /* Require "perma-lite" of the grid */
-        if ((g_ptr->info & (CAVE_GLOW | CAVE_MNDK)) != CAVE_GLOW) {
+        if ((grid.info & (CAVE_GLOW | CAVE_MNDK)) != CAVE_GLOW) {
             /* Not Ninja */
             if (!player_ptr->see_nocto) {
                 return;
@@ -354,55 +349,53 @@ void note_spot(PlayerType *player_ptr, POSITION y, POSITION x)
     }
 
     /* Hack -- memorize objects */
-    for (const auto this_o_idx : g_ptr->o_idx_list) {
-        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[this_o_idx];
-
-        /* Memorize objects */
-        o_ptr->marked.set(OmType::FOUND);
+    for (const auto this_o_idx : grid.o_idx_list) {
+        auto &item = floor.o_list[this_o_idx];
+        item.marked.set(OmType::FOUND);
         RedrawingFlagsUpdater::get_instance().set_flag(SubWindowRedrawingFlag::FOUND_ITEMS);
     }
 
     /* Hack -- memorize grids */
-    if (!g_ptr->is_mark()) {
+    if (!grid.is_mark()) {
         /* Feature code (applying "mimic" field) */
-        auto *f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
+        const auto &terrain = grid.get_terrain_mimic();
 
         /* Memorize some "boring" grids */
-        if (f_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
+        if (terrain.flags.has_not(TerrainCharacteristics::REMEMBER)) {
             /* Option -- memorize all torch-lit floors */
-            if (view_torch_grids && ((g_ptr->info & (CAVE_LITE | CAVE_MNLT)) || player_ptr->see_nocto)) {
-                g_ptr->info |= (CAVE_MARK);
+            if (view_torch_grids && ((grid.info & (CAVE_LITE | CAVE_MNLT)) || player_ptr->see_nocto)) {
+                grid.info |= (CAVE_MARK);
             }
 
             /* Option -- memorize all perma-lit floors */
-            else if (view_perma_grids && ((g_ptr->info & (CAVE_GLOW | CAVE_MNDK)) == CAVE_GLOW)) {
-                g_ptr->info |= (CAVE_MARK);
+            else if (view_perma_grids && ((grid.info & (CAVE_GLOW | CAVE_MNDK)) == CAVE_GLOW)) {
+                grid.info |= (CAVE_MARK);
             }
         }
 
         /* Memorize normal grids */
-        else if (f_ptr->flags.has(TerrainCharacteristics::LOS)) {
-            g_ptr->info |= (CAVE_MARK);
+        else if (terrain.flags.has(TerrainCharacteristics::LOS)) {
+            grid.info |= (CAVE_MARK);
         }
 
         /* Memorize torch-lit walls */
-        else if (g_ptr->info & (CAVE_LITE | CAVE_MNLT)) {
-            g_ptr->info |= (CAVE_MARK);
+        else if (grid.info & (CAVE_LITE | CAVE_MNLT)) {
+            grid.info |= (CAVE_MARK);
         }
 
         /* Memorize walls seen by noctovision of Ninja */
         else if (player_ptr->see_nocto) {
-            g_ptr->info |= (CAVE_MARK);
+            grid.info |= (CAVE_MARK);
         }
 
         /* Memorize certain non-torch-lit wall grids */
         else if (check_local_illumination(player_ptr, y, x)) {
-            g_ptr->info |= (CAVE_MARK);
+            grid.info |= (CAVE_MARK);
         }
     }
 
     /* Memorize terrain of the grid */
-    g_ptr->info |= (CAVE_KNOWN);
+    grid.info |= (CAVE_KNOWN);
 }
 
 /*
@@ -667,12 +660,6 @@ static POSITION flow_y = 0;
  */
 void update_flow(PlayerType *player_ptr)
 {
-    if (!player_ptr->is_vaild_position()) {
-        return;
-    }
-
-    POSITION x, y;
-    DIRECTION d;
     auto &floor = *player_ptr->current_floor_ptr;
 
     /* The last way-point is on the map */
@@ -684,8 +671,8 @@ void update_flow(PlayerType *player_ptr)
     }
 
     /* Erase all of the current flow information */
-    for (y = 0; y < floor.height; y++) {
-        for (x = 0; x < floor.width; x++) {
+    for (auto y = 0; y < floor.height; y++) {
+        for (auto x = 0; x < floor.width; x++) {
             auto &grid = floor.grid_array[y][x];
             grid.reset_costs();
             grid.reset_dists();
@@ -696,63 +683,59 @@ void update_flow(PlayerType *player_ptr)
     flow_y = player_ptr->y;
     flow_x = player_ptr->x;
 
-    for (int i = 0; i < FLOW_MAX; i++) {
+    for (auto i = 0; i < FLOW_MAX; i++) {
         // 幅優先探索用のキュー。
         std::queue<Pos2D> que;
         que.emplace(player_ptr->y, player_ptr->x);
 
         /* Now process the queue */
         while (!que.empty()) {
-            // 参照で受けるとダングリング状態になるのでコピーする.
-            const auto [ty, tx] = que.front();
+            const Pos2D pos = std::move(que.front());
             que.pop();
+            const auto &grid = floor.get_grid(pos);
 
             /* Add the "children" */
-            for (d = 0; d < 8; d++) {
-                byte m = player_ptr->current_floor_ptr->grid_array[ty][tx].costs[i] + 1;
-                byte n = player_ptr->current_floor_ptr->grid_array[ty][tx].dists[i] + 1;
-
-                /* Child location */
-                y = ty + ddy_ddd[d];
-                x = tx + ddx_ddd[d];
+            for (auto d = 0; d < 8; d++) {
+                byte m = grid.costs[i] + 1;
+                byte n = grid.dists[i] + 1;
+                const Pos2D pos_neighbor(pos.y + ddy_ddd[d], pos.x + ddx_ddd[d]);
 
                 /* Ignore player's grid */
-                if (player_bold(player_ptr, y, x)) {
+                if (player_ptr->is_located_at(pos_neighbor)) {
                     continue;
                 }
 
-                auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-
-                if (is_closed_door(player_ptr, g_ptr->feat)) {
+                auto &grid_neighbor = floor.get_grid(pos_neighbor);
+                if (is_closed_door(player_ptr, grid_neighbor.feat)) {
                     m += 3;
                 }
 
                 /* Ignore "pre-stamped" entries */
-                if (g_ptr->dists[i] != 0 && g_ptr->dists[i] <= n && g_ptr->costs[i] <= m) {
+                if ((grid_neighbor.dists[i] != 0) && (grid_neighbor.dists[i] <= n) && (grid_neighbor.costs[i] <= m)) {
                     continue;
                 }
 
                 /* Ignore "walls", "holes" and "rubble" */
-                bool can_move = false;
+                auto can_move = false;
                 switch (i) {
                 case FLOW_CAN_FLY:
-                    can_move = g_ptr->cave_has_flag(TerrainCharacteristics::MOVE) || g_ptr->cave_has_flag(TerrainCharacteristics::CAN_FLY);
+                    can_move = grid_neighbor.cave_has_flag(TerrainCharacteristics::MOVE) || grid_neighbor.cave_has_flag(TerrainCharacteristics::CAN_FLY);
                     break;
                 default:
-                    can_move = g_ptr->cave_has_flag(TerrainCharacteristics::MOVE);
+                    can_move = grid_neighbor.cave_has_flag(TerrainCharacteristics::MOVE);
                     break;
                 }
 
-                if (!can_move && !is_closed_door(player_ptr, g_ptr->feat)) {
+                if (!can_move && !is_closed_door(player_ptr, grid_neighbor.feat)) {
                     continue;
                 }
 
                 /* Save the flow cost */
-                if (g_ptr->costs[i] == 0 || g_ptr->costs[i] > m) {
-                    g_ptr->costs[i] = m;
+                if (grid_neighbor.costs[i] == 0 || (grid_neighbor.costs[i] > m)) {
+                    grid_neighbor.costs[i] = m;
                 }
-                if (g_ptr->dists[i] == 0 || g_ptr->dists[i] > n) {
-                    g_ptr->dists[i] = n;
+                if (grid_neighbor.dists[i] == 0 || (grid_neighbor.dists[i] > n)) {
+                    grid_neighbor.dists[i] = n;
                 }
 
                 // 敵のプレイヤーに対する移動道のりの最大値(この値以上は処理を打ち切る).
@@ -761,8 +744,7 @@ void update_flow(PlayerType *player_ptr)
                     continue;
                 }
 
-                /* Enqueue that entry */
-                que.emplace(y, x);
+                que.emplace(pos_neighbor);
             }
         }
     }
@@ -772,23 +754,22 @@ void update_flow(PlayerType *player_ptr)
  * Take a feature, determine what that feature becomes
  * through applying the given action.
  */
-FEAT_IDX feat_state(FloorType *floor_ptr, FEAT_IDX feat, TerrainCharacteristics action)
+FEAT_IDX feat_state(const FloorType *floor_ptr, FEAT_IDX feat, TerrainCharacteristics action)
 {
-    auto *f_ptr = &terrains_info[feat];
-    int i;
+    const auto &terrain = TerrainList::get_instance()[feat];
 
     /* Get the new feature */
-    for (i = 0; i < MAX_FEAT_STATES; i++) {
-        if (f_ptr->state[i].action == action) {
-            return conv_dungeon_feat(floor_ptr, f_ptr->state[i].result);
+    for (auto i = 0; i < MAX_FEAT_STATES; i++) {
+        if (terrain.state[i].action == action) {
+            return conv_dungeon_feat(floor_ptr, terrain.state[i].result);
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::PERMANENT)) {
+    if (terrain.flags.has(TerrainCharacteristics::PERMANENT)) {
         return feat;
     }
 
-    return (feature_action_flags[enum2i(action)] & FAF_DESTROY) ? conv_dungeon_feat(floor_ptr, f_ptr->destroyed) : feat;
+    return (terrain_action_flags[enum2i(action)] & FAF_DESTROY) ? conv_dungeon_feat(floor_ptr, terrain.destroyed) : feat;
 }
 
 /*
@@ -811,21 +792,21 @@ void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, TerrainChar
 
     /* Set the new feature */
     cave_set_feat(player_ptr, y, x, newfeat);
-
-    if (!(feature_action_flags[enum2i(action)] & FAF_NO_DROP)) {
-        TerrainType *old_f_ptr = &terrains_info[oldfeat];
-        auto *f_ptr = &terrains_info[newfeat];
+    const auto &terrains = TerrainList::get_instance();
+    if (!(terrain_action_flags[enum2i(action)] & FAF_NO_DROP)) {
+        const auto &old_terrain = terrains[oldfeat];
+        const auto &new_terrain = terrains[newfeat];
         bool found = false;
 
         /* Handle gold */
-        if (old_f_ptr->flags.has(TerrainCharacteristics::HAS_GOLD) && f_ptr->flags.has_not(TerrainCharacteristics::HAS_GOLD)) {
+        if (old_terrain.flags.has(TerrainCharacteristics::HAS_GOLD) && new_terrain.flags.has_not(TerrainCharacteristics::HAS_GOLD)) {
             /* Place some gold */
             place_gold(player_ptr, y, x);
             found = true;
         }
 
         /* Handle item */
-        if (old_f_ptr->flags.has(TerrainCharacteristics::HAS_ITEM) && f_ptr->flags.has_not(TerrainCharacteristics::HAS_ITEM) && (randint0(100) < (15 - floor_ptr->dun_level / 2))) {
+        if (old_terrain.flags.has(TerrainCharacteristics::HAS_ITEM) && new_terrain.flags.has_not(TerrainCharacteristics::HAS_ITEM) && (randint0(100) < (15 - floor_ptr->dun_level / 2))) {
             /* Place object */
             place_object(player_ptr, y, x, 0L);
             found = true;
@@ -836,10 +817,9 @@ void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, TerrainChar
         }
     }
 
-    if (feature_action_flags[enum2i(action)] & FAF_CRASH_GLASS) {
-        TerrainType *old_f_ptr = &terrains_info[oldfeat];
-
-        if (old_f_ptr->flags.has(TerrainCharacteristics::GLASS) && w_ptr->character_dungeon) {
+    if (terrain_action_flags[enum2i(action)] & FAF_CRASH_GLASS) {
+        const auto &old_terrain = terrains[oldfeat];
+        if (old_terrain.flags.has(TerrainCharacteristics::GLASS) && w_ptr->character_dungeon) {
             project(player_ptr, PROJECT_WHO_GLASS_SHARDS, 1, y, x, std::min(floor_ptr->dun_level, 100) / 4, AttributeType::SHARDS,
                 (PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL | PROJECT_HIDE | PROJECT_JUMP | PROJECT_NO_HANGEKI));
         }
@@ -857,37 +837,37 @@ void cave_alter_feat(PlayerType *player_ptr, POSITION y, POSITION x, TerrainChar
  */
 bool cave_monster_teleportable_bold(PlayerType *player_ptr, MONSTER_IDX m_idx, POSITION y, POSITION x, teleport_flags mode)
 {
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-    auto *f_ptr = &terrains_info[g_ptr->feat];
+    const Pos2D pos(y, x);
+    const auto &floor = *player_ptr->current_floor_ptr;
+    const auto &grid = floor.get_grid(pos);
+    const auto &terrain = grid.get_terrain();
 
     /* Require "teleportable" space */
-    if (f_ptr->flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
+    if (terrain.flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
         return false;
     }
 
-    if (g_ptr->m_idx && (g_ptr->m_idx != m_idx)) {
+    if (grid.has_monster() && (grid.m_idx != m_idx)) {
         return false;
     }
-    if (player_bold(player_ptr, y, x)) {
+    if (player_ptr->is_located_at(pos)) {
         return false;
     }
 
     /* Hack -- no teleport onto rune of protection */
-    if (g_ptr->is_rune_protection()) {
+    if (grid.is_rune_protection()) {
         return false;
     }
-    if (g_ptr->is_rune_explosion()) {
+    if (grid.is_rune_explosion()) {
         return false;
     }
 
-    if (!(mode & TELEPORT_PASSIVE)) {
-        if (!monster_can_cross_terrain(player_ptr, g_ptr->feat, &monraces_info[m_ptr->r_idx], 0)) {
-            return false;
-        }
+    if (any_bits(mode, TELEPORT_PASSIVE)) {
+        return true;
     }
 
-    return true;
+    const auto &monster = floor.m_list[m_idx];
+    return monster_can_cross_terrain(player_ptr, grid.feat, &monster.get_monrace(), 0);
 }
 
 /*!
@@ -900,53 +880,54 @@ bool cave_monster_teleportable_bold(PlayerType *player_ptr, MONSTER_IDX m_idx, P
  */
 bool cave_player_teleportable_bold(PlayerType *player_ptr, POSITION y, POSITION x, teleport_flags mode)
 {
-    auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-    auto *f_ptr = &terrains_info[g_ptr->feat];
+    const Pos2D pos(y, x);
+    const auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
+    const auto &terrain = grid.get_terrain();
 
     /* Require "teleportable" space */
-    if (f_ptr->flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
+    if (terrain.flags.has_not(TerrainCharacteristics::TELEPORTABLE)) {
         return false;
     }
 
     /* No magical teleporting into vaults and such */
-    if (!(mode & TELEPORT_NONMAGICAL) && g_ptr->is_icky()) {
+    if (!(mode & TELEPORT_NONMAGICAL) && grid.is_icky()) {
         return false;
     }
 
-    if (g_ptr->m_idx && (g_ptr->m_idx != player_ptr->riding)) {
+    if (grid.has_monster() && (grid.m_idx != player_ptr->riding)) {
         return false;
     }
 
     /* don't teleport on a trap. */
-    if (f_ptr->flags.has(TerrainCharacteristics::HIT_TRAP)) {
+    if (terrain.flags.has(TerrainCharacteristics::HIT_TRAP)) {
         return false;
     }
 
-    if (!(mode & TELEPORT_PASSIVE)) {
-        if (!player_can_enter(player_ptr, g_ptr->feat, 0)) {
+    if (any_bits(mode, TELEPORT_PASSIVE)) {
+        return true;
+    }
+
+    if (!player_can_enter(player_ptr, grid.feat, 0)) {
+        return false;
+    }
+
+    if (terrain.flags.has_all_of({ TerrainCharacteristics::WATER, TerrainCharacteristics::DEEP })) {
+        if (!player_ptr->levitation && !player_ptr->can_swim) {
             return false;
-        }
-
-        if (f_ptr->flags.has_all_of({ TerrainCharacteristics::WATER, TerrainCharacteristics::DEEP })) {
-            if (!player_ptr->levitation && !player_ptr->can_swim) {
-                return false;
-            }
-        }
-
-        if (f_ptr->flags.has(TerrainCharacteristics::LAVA) && !has_immune_fire(player_ptr) && !is_invuln(player_ptr)) {
-            /* Always forbid deep lava */
-            if (f_ptr->flags.has(TerrainCharacteristics::DEEP)) {
-                return false;
-            }
-
-            /* Forbid shallow lava when the player don't have levitation */
-            if (!player_ptr->levitation) {
-                return false;
-            }
         }
     }
 
-    return true;
+    if (terrain.flags.has_not(TerrainCharacteristics::LAVA) || has_immune_fire(player_ptr) || is_invuln(player_ptr)) {
+        return true;
+    }
+
+    /* Always forbid deep lava */
+    if (terrain.flags.has(TerrainCharacteristics::DEEP)) {
+        return false;
+    }
+
+    /* Forbid shallow lava when the player don't have levitation */
+    return player_ptr->levitation != 0;
 }
 
 /*!
@@ -957,7 +938,8 @@ bool cave_player_teleportable_bold(PlayerType *player_ptr, POSITION y, POSITION 
  */
 bool is_open(PlayerType *player_ptr, FEAT_IDX feat)
 {
-    return terrains_info[feat].flags.has(TerrainCharacteristics::CLOSE) && (feat != feat_state(player_ptr->current_floor_ptr, feat, TerrainCharacteristics::CLOSE));
+    const auto &terrain = TerrainList::get_instance()[feat];
+    return terrain.flags.has(TerrainCharacteristics::CLOSE) && (feat != feat_state(player_ptr->current_floor_ptr, feat, TerrainCharacteristics::CLOSE));
 }
 
 /*!
@@ -968,37 +950,36 @@ bool is_open(PlayerType *player_ptr, FEAT_IDX feat)
  */
 bool player_can_enter(PlayerType *player_ptr, FEAT_IDX feature, BIT_FLAGS16 mode)
 {
-    auto *f_ptr = &terrains_info[feature];
-
+    const auto &terrain = TerrainList::get_instance()[feature];
     if (player_ptr->riding) {
         return monster_can_cross_terrain(
             player_ptr, feature, &monraces_info[player_ptr->current_floor_ptr->m_list[player_ptr->riding].r_idx], mode | CEM_RIDING);
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::PATTERN)) {
+    if (terrain.flags.has(TerrainCharacteristics::PATTERN)) {
         if (!(mode & CEM_P_CAN_ENTER_PATTERN)) {
             return false;
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::CAN_FLY) && player_ptr->levitation) {
+    if (terrain.flags.has(TerrainCharacteristics::CAN_FLY) && player_ptr->levitation) {
         return true;
     }
-    if (f_ptr->flags.has(TerrainCharacteristics::CAN_SWIM) && player_ptr->can_swim) {
+    if (terrain.flags.has(TerrainCharacteristics::CAN_SWIM) && player_ptr->can_swim) {
         return true;
     }
-    if (f_ptr->flags.has(TerrainCharacteristics::CAN_PASS) && has_pass_wall(player_ptr)) {
+    if (terrain.flags.has(TerrainCharacteristics::CAN_PASS) && has_pass_wall(player_ptr)) {
         return true;
     }
 
-    if (f_ptr->flags.has_not(TerrainCharacteristics::MOVE)) {
+    if (terrain.flags.has_not(TerrainCharacteristics::MOVE)) {
         return false;
     }
 
     return true;
 }
 
-void place_grid(PlayerType *player_ptr, grid_type *g_ptr, grid_bold_type gb_type)
+void place_grid(PlayerType *player_ptr, Grid *g_ptr, grid_bold_type gb_type)
 {
     switch (gb_type) {
     case GB_FLOOR: {
@@ -1038,8 +1019,8 @@ void place_grid(PlayerType *player_ptr, grid_type *g_ptr, grid_bold_type gb_type
         break;
     }
     case GB_OUTER_NOPERM: {
-        auto *f_ptr = &terrains_info[feat_wall_outer];
-        if (permanent_wall(f_ptr)) {
+        const auto &terrain = TerrainList::get_instance()[feat_wall_outer];
+        if (terrain.is_permanent_wall()) {
             g_ptr->feat = (int16_t)feat_state(player_ptr->current_floor_ptr, feat_wall_outer, TerrainCharacteristics::UNPERM);
         } else {
             g_ptr->feat = feat_wall_outer;
@@ -1062,8 +1043,8 @@ void place_grid(PlayerType *player_ptr, grid_type *g_ptr, grid_bold_type gb_type
         break;
     }
     case GB_SOLID_NOPERM: {
-        auto *f_ptr = &terrains_info[feat_wall_solid];
-        if ((g_ptr->info & CAVE_VAULT) && permanent_wall(f_ptr)) {
+        const auto &terrain = TerrainList::get_instance()[feat_wall_solid];
+        if ((g_ptr->info & CAVE_VAULT) && terrain.is_permanent_wall()) {
             g_ptr->feat = (int16_t)feat_state(player_ptr->current_floor_ptr, feat_wall_solid, TerrainCharacteristics::UNPERM);
         } else {
             g_ptr->feat = feat_wall_solid;
@@ -1077,7 +1058,7 @@ void place_grid(PlayerType *player_ptr, grid_type *g_ptr, grid_bold_type gb_type
         return;
     }
 
-    if (g_ptr->m_idx > 0) {
+    if (g_ptr->has_monster()) {
         delete_monster_idx(player_ptr, g_ptr->m_idx);
     }
 }
@@ -1085,17 +1066,17 @@ void place_grid(PlayerType *player_ptr, grid_type *g_ptr, grid_bold_type gb_type
 /*!
  * モンスターにより照明が消されている地形か否かを判定する。 / Is this grid "darkened" by monster?
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param g_ptr グリッドへの参照ポインタ
+ * @param grid グリッドへの参照ポインタ
  * @return 照明が消されている地形ならばTRUE
  */
-bool darkened_grid(PlayerType *player_ptr, grid_type *g_ptr)
+bool darkened_grid(PlayerType *player_ptr, Grid *g_ptr)
 {
     return ((g_ptr->info & (CAVE_VIEW | CAVE_LITE | CAVE_MNLT | CAVE_MNDK)) == (CAVE_VIEW | CAVE_MNDK)) && !player_ptr->see_nocto;
 }
 
 void place_bold(PlayerType *player_ptr, POSITION y, POSITION x, grid_bold_type gb_type)
 {
-    grid_type *const g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+    Grid *const g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
     place_grid(player_ptr, g_ptr, gb_type);
 }
 
@@ -1110,44 +1091,37 @@ void set_cave_feat_mimic(FloorType *floor_ptr, POSITION y, POSITION x, FEAT_IDX 
 }
 
 /*!
- * @brief プレイヤーの周辺9マスに該当する地形がいくつあるかを返す /
- * Attempt to open the given chest at the given location
- * @param y 該当する地形の中から1つのY座標を返す参照ポインタ
- * @param x 該当する地形の中から1つのX座標を返す参照ポインタ
+ * @brief プレイヤーの周辺9マスに該当する地形がいくつあるかを返す
+ * @param player_ptr プレイヤーへの参照ポインタ
  * @param test 地形条件を判定するための関数ポインタ
  * @param under TRUEならばプレイヤーの直下の座標も走査対象にする
- * @return 該当する地形の数
- * @details Return the number of features around (or under) the character.
- * Usually look for doors and floor traps.
+ * @return 該当する地形の数と、該当する地形の中から1つの座標
  */
-int count_dt(PlayerType *player_ptr, POSITION *y, POSITION *x, bool (*test)(PlayerType *, FEAT_IDX), bool under)
+std::pair<int, Pos2D> count_dt(PlayerType *player_ptr, bool (*test)(PlayerType *, short), bool under)
 {
-    int count = 0;
-    for (DIRECTION d = 0; d < 9; d++) {
-        grid_type *g_ptr;
-        FEAT_IDX feat;
+    auto count = 0;
+    Pos2D pos(0, 0);
+    for (auto d = 0; d < 9; d++) {
         if ((d == 8) && !under) {
             continue;
         }
 
-        POSITION yy = player_ptr->y + ddy_ddd[d];
-        POSITION xx = player_ptr->x + ddx_ddd[d];
-        g_ptr = &player_ptr->current_floor_ptr->grid_array[yy][xx];
-        if (!g_ptr->is_mark()) {
+        Pos2D pos_neighbor(player_ptr->y + ddy_ddd[d], player_ptr->x + ddx_ddd[d]);
+        const auto &grid = player_ptr->current_floor_ptr->get_grid(pos_neighbor);
+        if (!grid.is_mark()) {
             continue;
         }
 
-        feat = g_ptr->get_feat_mimic();
+        const auto feat = grid.get_feat_mimic();
         if (!((*test)(player_ptr, feat))) {
             continue;
         }
 
         ++count;
-        *y = yy;
-        *x = xx;
+        pos = pos_neighbor;
     }
 
-    return count;
+    return { count, pos };
 }
 
 /*!
@@ -1155,7 +1129,7 @@ int count_dt(PlayerType *player_ptr, POSITION *y, POSITION *x, bool (*test)(Play
  */
 bool feat_uses_special(FEAT_IDX f_idx)
 {
-    return terrains_info[(f_idx)].flags.has(TerrainCharacteristics::SPECIAL);
+    return TerrainList::get_instance()[(f_idx)].flags.has(TerrainCharacteristics::SPECIAL);
 }
 
 /*

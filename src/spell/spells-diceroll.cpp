@@ -1,10 +1,7 @@
-﻿#include "spell/spells-diceroll.h"
+#include "spell/spells-diceroll.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "player-base/player-class.h"
@@ -24,7 +21,7 @@
  */
 bool common_saving_throw_charm(PlayerType *player_ptr, int pow, MonsterEntity *m_ptr)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
 
     if (player_ptr->current_floor_ptr->inside_arena) {
         return true;
@@ -38,14 +35,14 @@ bool common_saving_throw_charm(PlayerType *player_ptr, int pow, MonsterEntity *m
         return true;
     }
 
-    if (r_ptr->flags3 & RF3_NO_CONF) {
+    if (r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
         if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-            r_ptr->r_flags3 |= (RF3_NO_CONF);
+            r_ptr->resistance_flags.set(MonsterResistanceType::NO_CONF);
         }
         return true;
     }
 
-    if (r_ptr->flags1 & RF1_QUESTOR || m_ptr->mflag2.has(MonsterConstantFlagType::NOPET)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::QUESTOR) || m_ptr->mflag2.has(MonsterConstantFlagType::NOPET)) {
         return true;
     }
 
@@ -64,7 +61,7 @@ bool common_saving_throw_charm(PlayerType *player_ptr, int pow, MonsterEntity *m
  */
 bool common_saving_throw_control(PlayerType *player_ptr, int pow, MonsterEntity *m_ptr)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
 
     if (player_ptr->current_floor_ptr->inside_arena) {
         return true;
@@ -78,7 +75,7 @@ bool common_saving_throw_control(PlayerType *player_ptr, int pow, MonsterEntity 
         return true;
     }
 
-    if (r_ptr->flags1 & RF1_QUESTOR || m_ptr->mflag2.has(MonsterConstantFlagType::NOPET)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::QUESTOR) || m_ptr->mflag2.has(MonsterConstantFlagType::NOPET)) {
         return true;
     }
 

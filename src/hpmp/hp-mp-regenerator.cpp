@@ -1,9 +1,8 @@
-﻿#include "hpmp/hp-mp-regenerator.h"
+#include "hpmp/hp-mp-regenerator.h"
 #include "cmd-item/cmd-magiceat.h"
 #include "core/window-redrawer.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
 #include "monster/monster-status.h"
 #include "player-base/player-class.h"
 #include "player-info/magic-eater-data-type.h"
@@ -174,7 +173,7 @@ void regenerate_monsters(PlayerType *player_ptr)
 {
     for (int i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
 
         if (!m_ptr->is_valid()) {
             continue;
@@ -188,7 +187,7 @@ void regenerate_monsters(PlayerType *player_ptr)
                 }
             }
 
-            if (r_ptr->flags2 & RF2_REGENERATE) {
+            if (r_ptr->misc_flags.has(MonsterMiscType::REGENERATE)) {
                 frac *= 2;
             }
 
@@ -239,7 +238,7 @@ void regenerate_captured_monsters(PlayerType *player_ptr)
                 }
             }
 
-            if (r_ptr->flags2 & RF2_REGENERATE) {
+            if (r_ptr->misc_flags.has(MonsterMiscType::REGENERATE)) {
                 frac *= 2;
             }
 

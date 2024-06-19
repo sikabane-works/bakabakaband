@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 武器でも防具でもアクセサリでもない、その他のアイテム群を生成・強化する処理
  * @date 2022/02/23
  * @author Hourier
@@ -10,9 +10,9 @@
 #include "game-option/cheat-options.h"
 #include "grid/trap.h"
 #include "inventory/inventory-slot-types.h"
+#include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags9.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-list.h"
 #include "monster/monster-util.h"
@@ -67,7 +67,7 @@ void OtherItemsEnchanter::apply_magic()
     case ItemKindType::CAPTURE:
         this->o_ptr->pval = 0;
         object_aware(this->player_ptr, this->o_ptr);
-        object_known(this->o_ptr);
+        this->o_ptr->mark_as_known();
         break;
     case ItemKindType::FIGURINE:
         this->generate_figurine();
@@ -152,7 +152,7 @@ void OtherItemsEnchanter::generate_corpse()
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     MonsterRaceId r_idx;
     while (true) {
-        r_idx = get_mon_num(this->player_ptr, 0, floor_ptr->dun_level, 0);
+        r_idx = get_mon_num(this->player_ptr, 0, floor_ptr->dun_level, PM_NONE);
         auto &r_ref = monraces_info[r_idx];
         auto check = (floor_ptr->dun_level < r_ref.level) ? (r_ref.level - floor_ptr->dun_level) : 0;
         const auto sval = this->o_ptr->bi_key.sval();
@@ -169,7 +169,7 @@ void OtherItemsEnchanter::generate_corpse()
 
     this->o_ptr->pval = enum2i(r_idx);
     object_aware(this->player_ptr, this->o_ptr);
-    object_known(this->o_ptr);
+    this->o_ptr->mark_as_known();
 }
 
 /*
@@ -195,7 +195,7 @@ void OtherItemsEnchanter::generate_statue()
     }
 
     object_aware(this->player_ptr, this->o_ptr);
-    object_known(this->o_ptr);
+    this->o_ptr->mark_as_known();
 }
 
 /*
@@ -209,7 +209,7 @@ void OtherItemsEnchanter::generate_chest()
         return;
     }
 
-    this->o_ptr->pval = randint1(obj_level);
+    this->o_ptr->pval = randnum1<short>(obj_level);
     if (this->o_ptr->bi_key.sval() == SV_CHEST_KANDUME) {
         this->o_ptr->pval = 6;
     }
@@ -222,5 +222,5 @@ void OtherItemsEnchanter::generate_chest()
 
 void OtherItemsEnchanter::generate_disarmed_trap()
 {
-    this->o_ptr->pval = choose_random_trap(this->player_ptr);
+    this->o_ptr->pval = choose_random_trap(this->player_ptr->current_floor_ptr);
 }

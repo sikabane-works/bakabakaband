@@ -1,11 +1,10 @@
-﻿/*!
+/*!
  * @file info-initializer.cpp
  * @brief 馬鹿馬鹿蛮怒のゲームデータ解析処理定義
  */
 
 #include "main/info-initializer.h"
 #include "floor/wild.h"
-#include "grid/feature.h"
 #include "info-reader/artifact-reader.h"
 #include "info-reader/baseitem-reader.h"
 #include "info-reader/dungeon-reader.h"
@@ -33,6 +32,7 @@
 #include "system/dungeon-info.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "util/angband-files.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
@@ -79,7 +79,7 @@ constexpr bool is_vector_v = is_vector<T>::value;
  */
 static void init_header(angband_header *head, IDX num = 0)
 {
-    head->checksum = 0;
+    head->digest = {};
     head->info_num = (IDX)num;
 }
 
@@ -110,14 +110,14 @@ static errr init_info(std::string_view filename, angband_header &head, InfoType 
     }
 
     char buf[1024]{};
-    const auto err = init_info_txt(fp, buf, &head, parser);
+    const auto &[error_code, error_line] = init_info_txt(fp, buf, &head, parser);
     angband_fclose(fp);
-    if (err) {
-        const auto oops = (((err > 0) && (err < PARSE_ERROR_MAX)) ? err_str[err] : _("未知の", "unknown"));
+    if (error_code != PARSE_ERROR_NONE) {
+        const auto oops = (((error_code > 0) && (error_code < PARSE_ERROR_MAX)) ? err_str[error_code] : _("未知の", "unknown"));
 #ifdef JP
         msg_format("'%s'ファイルの %d 行目にエラー。", filename, error_line);
 #else
-        msg_format("Error %d at line %d of '%s'.", err, error_line, filename);
+        msg_format("Error %d at line %d of '%s'.", error_code, error_line, filename.data());
 #endif
         msg_format(_("レコード %d は '%s' エラーがあります。", "Record %d contains a '%s' error."), error_idx, oops);
         msg_format(_("構文 '%s'。", "Parsing '%s'."), buf);
@@ -206,7 +206,8 @@ errr init_terrains_info()
     init_header(&terrains_header);
     auto *parser = parse_terrains_info;
     auto *retoucher = retouch_terrains_info;
-    return init_info("TerrainDefinitions.txt", terrains_header, terrains_info, parser, retoucher);
+    auto &terrains = TerrainList::get_instance();
+    return init_info("TerrainDefinitions.txt", terrains_header, terrains.get_raw_vector(), parser, retoucher);
 }
 
 /*!

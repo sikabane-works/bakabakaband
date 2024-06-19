@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief プレイヤーのステータス表示メインルーチン群
  * @date 2020/02/25
  * @author Hourier
@@ -13,6 +13,7 @@
 #include "info-reader/fixed-map-parser.h"
 #include "inventory/inventory-slot-types.h"
 #include "knowledge/knowledge-mutations.h"
+#include "locale/japanese.h"
 #include "mind/mind-elementalist.h"
 #include "mutation/mutation-flag-types.h"
 #include "object/object-info.h"
@@ -83,14 +84,7 @@ static bool display_player_info(PlayerType *player_ptr, int mode)
  */
 static void display_player_basic_info(PlayerType *player_ptr)
 {
-    char tmp[64];
-#ifdef JP
-    sprintf(tmp, "%s%s%s", ap_ptr->title, ap_ptr->no == 1 ? "の" : "", player_ptr->name);
-#else
-    sprintf(tmp, "%s %s", ap_ptr->title, player_ptr->name);
-#endif
-
-    display_player_one_line(ENTRY_NAME, tmp, TERM_L_BLUE);
+    display_player_name(player_ptr);
     display_player_one_line(ENTRY_SEX, sp_ptr->title, TERM_L_BLUE);
     display_player_one_line(ENTRY_RACE, (player_ptr->mimic_form != MimicKindType::NONE ? mimic_info.at(player_ptr->mimic_form).title : rp_ptr->title), TERM_L_BLUE);
     display_player_one_line(ENTRY_CLASS, cp_ptr->title, TERM_L_BLUE);
@@ -128,8 +122,8 @@ static void display_phisique(PlayerType *player_ptr)
 {
 #ifdef JP
     display_player_one_line(ENTRY_AGE, format("%d才", (int)player_ptr->age), TERM_L_BLUE);
-    display_player_one_line(ENTRY_HEIGHT, format("%dcm", (int)((player_ptr->ht * 254) / 100)), TERM_L_BLUE);
-    display_player_one_line(ENTRY_WEIGHT, format("%dkg", (int)((player_ptr->wt * 4536) / 10000)), TERM_L_BLUE);
+    display_player_one_line(ENTRY_HEIGHT, format("%dcm", inch_to_cm(player_ptr->ht)), TERM_L_BLUE);
+    display_player_one_line(ENTRY_WEIGHT, format("%dkg", lb_to_kg(player_ptr->wt)), TERM_L_BLUE);
     display_player_one_line(ENTRY_SOCIAL, format("%d  ", (int)player_ptr->prestige), TERM_L_BLUE);
 #else
     display_player_one_line(ENTRY_AGE, format("%d", (int)player_ptr->age), TERM_L_BLUE);
@@ -193,7 +187,7 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
 #endif
     }
 
-    if (inside_quest(floor_ptr->quest_number) && QuestType::is_fixed(floor_ptr->quest_number)) {
+    if (floor_ptr->is_in_quest() && QuestType::is_fixed(floor_ptr->quest_number)) {
         const auto &quest_list = QuestList::get_instance();
 
         /* Get the quest text */
@@ -227,16 +221,13 @@ static std::optional<std::string> search_death_cause(PlayerType *player_ptr)
 static std::optional<std::string> decide_death_in_quest(PlayerType *player_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (!inside_quest(floor_ptr->quest_number) || !QuestType::is_fixed(floor_ptr->quest_number)) {
+    if (!floor_ptr->is_in_quest() || !QuestType::is_fixed(floor_ptr->quest_number)) {
         return std::nullopt;
     }
 
-    for (int i = 0; i < 10; i++) {
-        quest_text[i][0] = '\0';
-    }
+    quest_text_lines.clear();
 
     const auto &quest_list = QuestList::get_instance();
-    quest_text_line = 0;
     init_flags = INIT_NAME_ONLY;
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
     return std::string(format(_("…あなたは現在、 クエスト「%s」を遂行中だ。", "...Now, you are in the quest '%s'."), quest_list[floor_ptr->quest_number].name.data()));

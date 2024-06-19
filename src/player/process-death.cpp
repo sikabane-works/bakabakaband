@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 死亡・引退・切腹時の画面表示
  * @date 2020/02/24
  * @author Hourier
@@ -110,12 +110,10 @@ static int show_killing_monster(PlayerType *player_ptr)
         return 1;
     }
 
-    if (const auto start_ptr = angband_strstr(lines[0].data(), "『");
-        (start_ptr != nullptr) && suffix(lines[1], "』")) {
-        const auto start_pos = start_ptr - lines[0].data();
-
+    if (const auto start_pos = lines[0].find("『");
+        (start_pos != std::string::npos) && suffix(lines[1], "』")) {
         if (lines[0].length() + lines[1].length() - start_pos <= GRAVE_LINE_WIDTH) {
-            const auto name = lines[0].substr(start_pos).append(lines[1]);
+            const auto name = lines[0].substr(start_pos) + lines[1];
             std::string_view title(lines[0].data(), start_pos);
             show_tomb_line(title, GRAVE_KILLER_NAME_ROW);
             show_tomb_line(name, GRAVE_KILLER_NAME_ROW + 1);
@@ -257,7 +255,7 @@ static void inventory_aware(PlayerType *player_ptr)
         }
 
         object_aware(player_ptr, o_ptr);
-        object_known(o_ptr);
+        o_ptr->mark_as_known();
     }
 }
 
@@ -276,7 +274,7 @@ static void home_aware(PlayerType *player_ptr)
             }
 
             object_aware(player_ptr, o_ptr);
-            object_known(o_ptr);
+            o_ptr->mark_as_known();
         }
     }
 }
@@ -349,17 +347,14 @@ static void export_player_info(PlayerType *player_ptr)
     prt(_("キャラクターの記録をファイルに書き出すことができます。", "You may now dump a character record to one or more files."), 21, 0);
     prt(_("リターンキーでキャラクターを見ます。ESCで中断します。", "Then, hit RETURN to see the character, or ESC to abort."), 22, 0);
     while (true) {
-        char out_val[160] = "";
         put_str(_("ファイルネーム: ", "Filename: "), 23, 0);
-        if (!askfor(out_val, 60)) {
+        const auto ask_result = askfor(60);
+        if (!ask_result || ask_result->empty()) {
             return;
-        }
-        if (!out_val[0]) {
-            break;
         }
 
         screen_save();
-        (void)file_character(player_ptr, out_val);
+        file_character(player_ptr, *ask_result);
         screen_load();
     }
 }
@@ -373,13 +368,10 @@ static void file_character_auto(PlayerType *player_ptr)
     struct tm *now_tm = localtime(&now_t);
 
     char datetime[32];
-    char filename[128];
-
     strftime(datetime, sizeof(datetime), "%Y-%m-%d_%H%M%S", now_tm);
-    strnfmt(filename, sizeof(filename), "%s_Autodump_%s.txt", p_ptr->name, datetime);
-
     screen_save();
-    (void)file_character(player_ptr, filename);
+    const auto filename = format("%s_Autodump_%s.txt", player_ptr->name, datetime);
+    file_character(player_ptr, filename);
     screen_load();
 }
 

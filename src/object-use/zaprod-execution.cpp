@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief ロッドを振る処理
  * @date 2021/09/25
  * @author Hourier
@@ -43,12 +43,12 @@ ObjectZapRodEntity::ObjectZapRodEntity(PlayerType *player_ptr)
 /*!
  * @brief ロッドを使う
  */
-void ObjectZapRodEntity::execute(INVENTORY_IDX item)
+void ObjectZapRodEntity::execute(INVENTORY_IDX i_idx)
 {
     DIRECTION dir = 0;
     auto use_charge = true;
-    auto *o_ptr = ref_item(this->player_ptr, item);
-    if ((item < 0) && (o_ptr->number > 1)) {
+    auto *o_ptr = ref_item(this->player_ptr, i_idx);
+    if ((i_idx < 0) && (o_ptr->number > 1)) {
         msg_print(_("まずはロッドを拾わなければ。", "You must first pick up the rods."));
         return;
     }
@@ -122,7 +122,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
     }
 
     sound(SOUND_ZAP);
-    auto ident = rod_effect(this->player_ptr, o_ptr->bi_key.sval().value(), dir, &use_charge, false);
+    auto ident = rod_effect(this->player_ptr, *o_ptr->bi_key.sval(), dir, &use_charge, false);
     if (use_charge) {
         o_ptr->timeout += baseitem.pval;
     }
@@ -139,7 +139,7 @@ void ObjectZapRodEntity::execute(INVENTORY_IDX item)
         chg_virtue(this->player_ptr, Virtue::KNOWLEDGE, -1);
     }
 
-    object_tried(o_ptr);
+    o_ptr->mark_as_tried();
     if ((ident != 0) && !o_ptr->is_aware()) {
         object_aware(this->player_ptr, o_ptr);
         gain_exp(this->player_ptr, (lev + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);

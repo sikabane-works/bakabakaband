@@ -1,7 +1,8 @@
-﻿#include "io-dump/dump-util.h"
+#include "io-dump/dump-util.h"
 #include "floor/geometry.h"
 #include "game-option/keymap-directory-getter.h"
 #include "game-option/special-options.h"
+#include "system/terrain-type-definition.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/angband-files.h"
@@ -276,8 +277,7 @@ void browser_cursor(char ch, int *column, IDX *grp_cur, int grp_cnt, IDX *list_c
 
     if ((ddx[d] > 0) && ddy[d]) {
         int browser_rows;
-        int wid, hgt;
-        term_get_size(&wid, &hgt);
+        const auto &[wid, hgt] = term_get_size();
         browser_rows = hgt - 8;
         if (!col) {
             int old_grp = grp;

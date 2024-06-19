@@ -1,11 +1,9 @@
-﻿#include "monster-floor/quantum-effect.h"
+#include "monster-floor/quantum-effect.h"
 #include "effect/attribute-types.h"
 #include "floor/line-of-sight.h"
 #include "monster-floor/monster-death.h"
 #include "monster-floor/monster-remover.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-info.h"
@@ -85,7 +83,7 @@ static void produce_quantum_effect(PlayerType *player_ptr, MONSTER_IDX m_idx, bo
 bool process_quantum_effect(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_m)
 {
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     if (r_ptr->kind_flags.has_not(MonsterKindType::QUANTUM)) {
         return false;
     }
@@ -97,7 +95,7 @@ bool process_quantum_effect(PlayerType *player_ptr, MONSTER_IDX m_idx, bool see_
     }
 
     bool can_disappear = r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE);
-    can_disappear &= (r_ptr->flags1 & RF1_QUESTOR) == 0;
+    can_disappear &= r_ptr->misc_flags.has_not(MonsterMiscType::QUESTOR);
     if (can_disappear) {
         vanish_nonunique(player_ptr, m_idx, see_m);
         return true;

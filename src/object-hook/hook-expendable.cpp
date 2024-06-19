@@ -1,4 +1,4 @@
-﻿#include "object-hook/hook-expendable.h"
+#include "object-hook/hook-expendable.h"
 #include "artifact/fixed-art-types.h"
 #include "core/window-redrawer.h"
 #include "monster-race/monster-race.h"
@@ -6,7 +6,6 @@
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-enchant.h"
-#include "object/object-flags.h"
 #include "object/tval-types.h"
 #include "perception/object-perception.h"
 #include "player-base/player-race.h"
@@ -26,26 +25,9 @@
  * @param o_ptr 判定したいオブジェクトの構造体参照ポインタ
  * @return 食べることが可能ならばTRUEを返す
  */
-bool item_tester_hook_eatable(PlayerType *player_ptr, const ItemEntity *o_ptr)
+bool item_tester_hook_eatable([[maybe_unused]] PlayerType *player_ptr, [[maybe_unused]] const ItemEntity *o_ptr)
 {
-    const auto tval = o_ptr->bi_key.tval();
-    if (tval == ItemKindType::FOOD) {
-        return true;
-    }
-
-    auto food_type = PlayerRace(player_ptr).food();
-    if (food_type == PlayerRaceFoodType::MANA) {
-        if (o_ptr->is_wand_staff()) {
-            return true;
-        }
-    } else if (food_type == PlayerRaceFoodType::CORPSE) {
-        auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
-        if ((o_ptr->bi_key == BaseitemKey(ItemKindType::CORPSE, SV_CORPSE)) && angband_strchr("pht", monraces_info[corpse_r_idx].d_char)) {
-            return true;
-        }
-    }
-
-    return false;
+    return true;
 }
 
 /*!
@@ -71,7 +53,7 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const ItemEntity *o_ptr)
  */
 bool can_player_destroy_object(ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
+    auto flags = o_ptr->get_flags();
     if (flags.has(TR_INDESTRUCTIBLE)) {
         return false;
     }

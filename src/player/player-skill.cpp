@@ -1,9 +1,10 @@
-﻿#include "player/player-skill.h"
+#include "player/player-skill.h"
 #include "monster-race/monster-race.h"
 #include "player-base/player-class.h"
 #include "player-base/player-race.h"
 #include "player-info/class-info.h"
 #include "player/player-realm.h"
+#include "realm/realm-names-table.h"
 #include "sv-definition/sv-weapon-types.h"
 #include "system/floor-type-definition.h"
 #include "system/item-entity.h"
@@ -328,7 +329,7 @@ void PlayerSkill::gain_riding_skill_exp_on_range_attack()
 
     const auto *floor_ptr = this->player_ptr->current_floor_ptr;
     const auto &monster = floor_ptr->m_list[this->player_ptr->riding];
-    const auto &monrace = monraces_info[monster.r_idx];
+    const auto &monrace = monster.get_monrace();
     if (((this->player_ptr->skill_exp[PlayerSkillKindType::RIDING] - (RIDING_EXP_BEGINNER * 2)) / 200 < monrace.level) && one_in_(2)) {
         this->player_ptr->skill_exp[PlayerSkillKindType::RIDING] += 1;
         RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::BONUS);
@@ -362,12 +363,12 @@ void PlayerSkill::gain_riding_skill_exp_on_fall_off_check(int dam)
 
 void PlayerSkill::gain_spell_skill_exp(int realm, int spell_idx)
 {
-    if ((realm < 1) || ((static_cast<int>(std::size(mp_ptr->info)) < realm) && (realm != REALM_MUSIC) && (realm != REALM_HEX))) {
-        return;
-    }
+    auto is_valid_realm = is_magic(realm) ||
+                          (realm == REALM_MUSIC) || (realm == REALM_HEX);
+    is_valid_realm &= (realm == this->player_ptr->realm1) || (realm == this->player_ptr->realm2);
+    const auto is_valid_spell_idx = (0 <= spell_idx) && (spell_idx < 32);
 
-    if (((spell_idx < 0) || (32 <= spell_idx)) ||
-        ((realm != this->player_ptr->realm1) && (realm != this->player_ptr->realm2))) {
+    if (!is_valid_realm || !is_valid_spell_idx) {
         return;
     }
 
@@ -375,7 +376,7 @@ void PlayerSkill::gain_spell_skill_exp(int realm, int spell_idx)
     constexpr GainAmountList gain_amount_list_second{ { 60, 8, 2, 0 } };
 
     const auto is_first_realm = (realm == this->player_ptr->realm1);
-    const auto *s_ptr = &mp_ptr->info[realm - 1][spell_idx];
+    const auto *s_ptr = is_magic(realm) ? &mp_ptr->info[realm - 1][spell_idx] : &technic_info[realm - MIN_TECHNIC][spell_idx];
 
     gain_spell_skill_exp_aux(this->player_ptr, this->player_ptr->spell_exp[spell_idx + (is_first_realm ? 0 : 32)],
         (is_first_realm ? gain_amount_list_first : gain_amount_list_second), s_ptr->slevel);

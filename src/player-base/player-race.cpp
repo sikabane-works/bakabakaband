@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief プレイヤーの種族に基づく耐性・能力の判定処理等を行うクラス
  * @date 2021/09/08
  * @author Hourier
@@ -6,7 +6,6 @@
  */
 #include "player-base/player-race.h"
 #include "grid/feature-flag-types.h"
-#include "grid/feature.h"
 #include "player-base/player-class.h"
 #include "player-info/mimic-info-table.h"
 #include "player/race-info-table.h"
@@ -14,6 +13,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 
 /*!
@@ -45,8 +45,8 @@ TrFlags PlayerRace::tr_flags() const
         if (this->player_ptr->lev < cond.level) {
             continue;
         }
-        if (cond.pclass.has_value()) {
-            auto is_class_equal = PlayerClass(this->player_ptr).equals(cond.pclass.value());
+        if (cond.pclass) {
+            auto is_class_equal = PlayerClass(this->player_ptr).equals(*cond.pclass);
             if (cond.not_class && is_class_equal) {
                 continue;
             }
@@ -146,20 +146,22 @@ int16_t PlayerRace::speed() const
 
     FloorType *floor_ptr = this->player_ptr->current_floor_ptr;
     if (player_ptr->x > 0 && player_ptr->y > 0 && player_ptr->x <= floor_ptr->width - 1 && player_ptr->y <= floor_ptr->height - 1) {
-        TerrainType *f_ptr = &terrains_info[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
-        if (f_ptr->flags.has(TerrainCharacteristics::SLOW)) {
+        TerrainType &f_ptr = TerrainList::get_instance()[floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].feat];
+        if (f_ptr.flags.has(TerrainCharacteristics::SLOW)) {
             result -= 10;
         }
         if (this->equals(PlayerRaceType::KLACKON) || this->equals(PlayerRaceType::SPRITE)) {
             result += (this->player_ptr->lev) / 10;
         }
+    }
 
-        if (this->equals(PlayerRaceType::MERFOLK)) {
-            if (f_ptr->flags.has(TerrainCharacteristics::WATER)) {
-                result += (2 + this->player_ptr->lev / 10);
-            } else if (!this->player_ptr->levitation) {
-                result -= 2;
-            }
+    if (this->equals(PlayerRaceType::MERFOLK)) {
+        const auto &floor = *this->player_ptr->current_floor_ptr;
+        const auto &terrain = floor.get_grid(this->player_ptr->get_position()).get_terrain();
+        if (terrain.flags.has(TerrainCharacteristics::WATER)) {
+            result += (2 + this->player_ptr->lev / 10);
+        } else if (!this->player_ptr->levitation) {
+            result -= 2;
         }
     }
 

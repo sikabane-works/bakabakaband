@@ -1,4 +1,4 @@
-﻿#include "birth/game-play-initializer.h"
+#include "birth/game-play-initializer.h"
 #include "dungeon/quest.h"
 #include "floor/floor-util.h"
 #include "game-option/birth-options.h"
@@ -7,8 +7,6 @@
 #include "inventory/inventory-slot-types.h"
 #include "market/arena.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "pet/pet-util.h"
 #include "player-base/player-class.h"
 #include "player-base/player-race.h"
@@ -49,10 +47,6 @@ static void reset_baseitem_idenditication_flags()
 void player_wipe_without_name(PlayerType *player_ptr)
 {
     const std::string backup_name = player_ptr->name;
-    if (player_ptr->last_message) {
-        string_free(player_ptr->last_message);
-    }
-
     *player_ptr = {};
 
     // TODO: キャラ作成からゲーム開始までに  current_floor_ptr を参照しなければならない処理は今後整理して外す。
@@ -60,7 +54,7 @@ void player_wipe_without_name(PlayerType *player_ptr)
     //! @todo std::make_shared の配列対応版は C++20 から
     player_ptr->inventory_list = std::shared_ptr<ItemEntity[]>{ new ItemEntity[INVEN_TOTAL] };
     for (int i = 0; i < 4; i++) {
-        strcpy(player_ptr->history[i], "");
+        player_ptr->history[i][0] = '\0';
     }
 
     auto &quest_list = QuestList::get_instance();
@@ -149,7 +143,7 @@ void player_wipe_without_name(PlayerType *player_ptr)
 
     player_ptr->max_plv = player_ptr->lev = 1;
     player_ptr->arena_number = 0;
-    player_ptr->exit_bldg = true;
+    w_ptr->set_arena(true);
     player_ptr->knows_daily_bounty = false;
     update_gambling_monsters(player_ptr);
     player_ptr->muta.clear();
@@ -185,7 +179,7 @@ void init_dungeon_quests(PlayerType *player_ptr)
         q_ptr->status = QuestStatusType::TAKEN;
         determine_random_questor(player_ptr, q_ptr);
         quest_r_ptr = &monraces_info[q_ptr->r_idx];
-        quest_r_ptr->flags1 |= RF1_QUESTOR;
+        quest_r_ptr->misc_flags.set(MonsterMiscType::QUESTOR);
         q_ptr->max_num = 1;
     }
 

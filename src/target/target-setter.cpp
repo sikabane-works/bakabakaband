@@ -1,4 +1,4 @@
-﻿#include "target/target-setter.h"
+#include "target/target-setter.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/geometry.h"
@@ -26,6 +26,7 @@
 #include "util/string-processor.h"
 #include "window/display-sub-windows.h"
 #include "window/main-window-util.h"
+#include <tuple>
 #include <vector>
 
 // "interesting" な座標たちを記録する配列。
@@ -44,7 +45,7 @@ struct ts_type {
     bool flag; // 移動コマンド入力時、"interesting" な座標へ飛ぶかどうか
     char query;
     char info[80];
-    grid_type *g_ptr;
+    Grid *g_ptr;
     TERM_LEN wid, hgt;
     int m; // "interesting" な座標たちのうち現在ターゲットしているもののインデックス
     int distance; // カーソルの移動方向 (1,2,3,4,6,7,8,9)
@@ -59,7 +60,7 @@ static ts_type *initialize_target_set_type(PlayerType *player_ptr, ts_type *ts_p
     ts_ptr->x = player_ptr->x;
     ts_ptr->done = false;
     ts_ptr->flag = true;
-    get_screen_size(&ts_ptr->wid, &ts_ptr->hgt);
+    std::tie(ts_ptr->wid, ts_ptr->hgt) = get_screen_size();
     ts_ptr->m = 0;
     return ts_ptr;
 }
@@ -77,9 +78,9 @@ static ts_type *initialize_target_set_type(PlayerType *player_ptr, ts_type *ts_p
  */
 static bool change_panel_xy(PlayerType *player_ptr, POSITION y, POSITION x)
 {
-    POSITION dy = 0, dx = 0;
-    TERM_LEN wid, hgt;
-    get_screen_size(&wid, &hgt);
+    auto dy = 0;
+    auto dx = 0;
+    [[maybe_unused]] const auto &[wid, hgt] = get_screen_size();
     if (y < panel_row_min) {
         dy = -1;
     }
@@ -393,7 +394,7 @@ static bool set_target_grid(PlayerType *player_ptr, ts_type *ts_ptr)
     }
 
     describe_projectablity(player_ptr, ts_ptr);
-    fix_floor_item_list(player_ptr, ts_ptr->y, ts_ptr->x);
+    fix_floor_item_list(player_ptr, { ts_ptr->y, ts_ptr->x });
 
     while (true) {
         ts_ptr->query = examine_grid(player_ptr, ts_ptr->y, ts_ptr->x, ts_ptr->mode, ts_ptr->info);
@@ -566,7 +567,7 @@ static void sweep_target_grids(PlayerType *player_ptr, ts_type *ts_ptr)
         ts_ptr->g_ptr = &player_ptr->current_floor_ptr->grid_array[ts_ptr->y][ts_ptr->x];
         strcpy(ts_ptr->info, _("q止 t決 p自 m近 +次 -前", "q,t,p,m,+,-,<dir>"));
         describe_grid_wizard(player_ptr, ts_ptr);
-        fix_floor_item_list(player_ptr, ts_ptr->y, ts_ptr->x);
+        fix_floor_item_list(player_ptr, { ts_ptr->y, ts_ptr->x });
 
         /* Describe and Prompt (enable "TARGET_LOOK") */
         const auto target = i2enum<target_type>(ts_ptr->mode | TARGET_LOOK);

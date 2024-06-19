@@ -1,16 +1,5 @@
-﻿#include "system/dungeon-info.h"
-#include "game-option/birth-options.h"
-#include "grid/feature.h"
-#include "io/input-key-acceptor.h"
-#include "main/sound-of-music.h"
-#include "monster-race/monster-race.h"
-#include "system/floor-type-definition.h"
-#include "system/monster-race-info.h"
-#include "system/player-type-definition.h"
-#include "term/screen-processor.h"
-#include "util/int-char-converter.h"
-#include "view/display-messages.h"
-#include "world/world.h"
+#include "system/dungeon-info.h"
+#include "dungeon/dungeon-flag-mask.h"
 
 /*
  * The dungeon arrays
@@ -21,3 +10,8 @@ std::vector<dungeon_type> dungeons_info;
  * Maximum number of dungeon in DungeonDefinitions.txt
  */
 std::vector<DEPTH> max_dlv;
+
+bool dungeon_type::has_river_flag() const
+{
+    return this->flags.has_any_of(DF_RIVER_MASK);
+}

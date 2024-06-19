@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief ファイル入出力管理 / Purpose: code dealing with files (and death)
  * @date 2014/01/28
  * @author
@@ -17,7 +17,7 @@
 #include "io/input-key-acceptor.h"
 #include "io/uid-checker.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
+#include "system/angband-exceptions.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h"
@@ -57,18 +57,19 @@ std::filesystem::path debug_savefile;
  * Allow the "full" flag to dump additional info,
  * and trigger its usage from various places in the code.
  */
-errr file_character(PlayerType *player_ptr, concptr name)
+void file_character(PlayerType *player_ptr, std::string_view filename)
 {
-    std::string out_val;
-    const auto &path = path_build(ANGBAND_DIR_USER, name);
+    const auto &path = path_build(ANGBAND_DIR_USER, filename);
     auto fd = fd_open(path, O_RDONLY);
     if (fd >= 0) {
-        const auto &filename = path.string();
-        std::string query = _("現存するファイル ", "Replace existing file ");
-        query.append(filename).append(_(" に上書きしますか? ", "? "));
+        const auto &path_str = path.string();
+        std::stringstream ss;
+        ss << _("現存するファイル ", "Replace existing file ") << path_str << _(" に上書きしますか? ", "? ");
         (void)fd_close(fd);
-        if (get_check_strict(player_ptr, out_val, CHECK_NO_HISTORY)) {
+        if (input_check_strict(player_ptr, ss.str(), UserCheck::NO_HISTORY)) {
             fd = -1;
+        } else {
+            return;
         }
     }
 
@@ -78,9 +79,7 @@ errr file_character(PlayerType *player_ptr, concptr name)
     }
 
     if (!fff) {
-        prt(_("キャラクタ情報のファイルへの書き出しに失敗しました！", "Character dump failed!"), 0, 0);
-        (void)inkey();
-        return -1;
+        THROW_EXCEPTION(std::runtime_error, _("キャラクタ情報のファイルへの書き出しに失敗しました！", "Character dump failed!"));
     }
 
     screen_save();
@@ -90,7 +89,6 @@ errr file_character(PlayerType *player_ptr, concptr name)
     angband_fclose(fff);
     msg_print(_("キャラクタ情報のファイルへの書き出しに成功しました。", "Character dump successful."));
     msg_print(nullptr);
-    return 0;
 }
 
 /*!
@@ -126,11 +124,11 @@ std::optional<std::string> get_random_line(concptr file_name, int entry)
         }
 
         if (buf[2] == 'M') {
-            if (monraces_info[i2enum<MonsterRaceId>(entry)].flags1 & RF1_MALE) {
+            if (is_male(monraces_info[i2enum<MonsterRaceId>(entry)])) {
                 break;
             }
         } else if (buf[2] == 'F') {
-            if (monraces_info[i2enum<MonsterRaceId>(entry)].flags1 & RF1_FEMALE) {
+            if (is_female(monraces_info[i2enum<MonsterRaceId>(entry)])) {
                 break;
             }
         } else if (sscanf(&(buf[2]), "%d", &test) != EOF) {

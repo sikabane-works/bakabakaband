@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 保存された階の管理 / management of the saved floor
  * @date 2014/01/04
  * @author
@@ -48,7 +48,7 @@ static void check_saved_tmp_files(const int fd, bool *force)
     msg_print(_("馬鹿馬鹿蛮怒を二重に起動していないか確認してください。", "Make sure you are not running two game processes simultaneously."));
     msg_print(_("過去に馬鹿馬鹿蛮怒がクラッシュした場合は一時ファイルを", "If the temporary files are garbage from an old crashed process, "));
     msg_print(_("強制的に削除して実行を続けられます。", "you can delete them safely."));
-    if (!get_check(_("強制的に削除してもよろしいですか？", "Do you delete the old temporary files? "))) {
+    if (!input_check(_("強制的に削除してもよろしいですか？", "Do you delete the old temporary files? "))) {
         quit(_("実行中止", "Aborted."));
     }
 
@@ -93,7 +93,7 @@ void clear_saved_floor_files(PlayerType *player_ptr)
 {
     for (int i = 0; i < MAX_SAVED_FLOORS; i++) {
         saved_floor_type *sf_ptr = &saved_floors[i];
-        if ((sf_ptr->floor_id == 0) || (sf_ptr->floor_id == player_ptr->floor_id)) {
+        if (!is_saved_floor(sf_ptr) || (sf_ptr->floor_id == player_ptr->floor_id)) {
             continue;
         }
 
@@ -131,7 +131,7 @@ saved_floor_type *get_sf_ptr(FLOOR_IDX floor_id)
  */
 void kill_saved_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
-    if (!sf_ptr || (sf_ptr->floor_id == 0)) {
+    if (!sf_ptr || !is_saved_floor(sf_ptr)) {
         return;
     }
 
@@ -166,19 +166,19 @@ static FLOOR_IDX find_oldest_floor_idx(PlayerType *player_ptr)
 }
 
 /*!
- * @brief 新規に利用可能な保存フロアを返す / Initialize new saved floor and get its floor id.
+ * @brief 新規に利用可能なフロアIDを返す / Initialize new floor and get its floor id.
  * @param player_ptr プレイヤーへの参照ポインタ
- * @return 利用可能な保存フロアID
+ * @return 利用可能なフロアID
  * @details
  * If number of saved floors are already MAX_SAVED_FLOORS, kill the oldest one.
  */
-FLOOR_IDX get_new_floor_id(PlayerType *player_ptr)
+FLOOR_IDX get_unused_floor_id(PlayerType *player_ptr)
 {
     saved_floor_type *sf_ptr = nullptr;
     FLOOR_IDX fl_idx;
     for (fl_idx = 0; fl_idx < MAX_SAVED_FLOORS; fl_idx++) {
         sf_ptr = &saved_floors[fl_idx];
-        if (!sf_ptr->floor_id) {
+        if (!is_saved_floor(sf_ptr)) {
             break;
         }
     }
@@ -221,6 +221,6 @@ void precalc_cur_num_of_pet(PlayerType *player_ptr)
             continue;
         }
 
-        m_ptr->get_real_r_ref().cur_num++;
+        m_ptr->get_real_monrace().cur_num++;
     }
 }

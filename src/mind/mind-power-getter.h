@@ -1,7 +1,8 @@
-﻿#pragma once
+#pragma once
 
 #include "mind/mind-types.h"
 #include "system/angband.h"
+#include <string_view>
 
 struct mind_power;
 struct mind_type;
@@ -13,7 +14,6 @@ public:
     bool get_mind_power(SPELL_IDX *sn, bool only_browse);
 
 private:
-    PlayerType *player_ptr;
     SPELL_IDX index = 0;
     int num = 0;
     TERM_LEN y = 1;
@@ -24,15 +24,17 @@ private:
     const mind_type *spell = nullptr;
     bool flag = false;
     bool redraw = false;
-    MindKindType use_mind;
-    int menu_line;
     const mind_power *mind_ptr = nullptr;
     PERCENTAGE chance = 0;
     int mana_cost = 0;
 
+    PlayerType *player_ptr;
+    MindKindType use_mind;
+    int menu_line;
+
     void select_mind_description();
     bool select_spell_index(SPELL_IDX *sn);
-    bool decide_mind_choice(char *out_val, const bool only_browse);
+    bool decide_mind_choice(std::string_view prompt, const bool only_browse);
     bool interpret_mind_key_input(const bool only_browse);
     bool display_minds_chance(const bool only_browse);
     void display_each_mind_chance();

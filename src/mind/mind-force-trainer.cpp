@@ -1,4 +1,4 @@
-﻿#include "mind/mind-force-trainer.h"
+#include "mind/mind-force-trainer.h"
 #include "avatar/avatar.h"
 #include "core/disturbance.h"
 #include "core/stuff-handler.h"
@@ -14,7 +14,6 @@
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-mask.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-status.h"
 #include "monster/monster-update.h"
@@ -207,55 +206,52 @@ bool shock_power(PlayerType *player_ptr)
         return false;
     }
 
-    POSITION y = player_ptr->y + ddy[dir];
-    POSITION x = player_ptr->x + ddx[dir];
+    auto pos = player_ptr->get_neighbor(dir);
     PLAYER_LEVEL plev = player_ptr->lev;
     int dam = damroll(8 + ((plev - 5) / 4) + boost / 12, 8);
     fire_beam(player_ptr, AttributeType::MISSILE, dir, dam);
-    if (!player_ptr->current_floor_ptr->grid_array[y][x].m_idx) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    const auto &grid = floor.get_grid(pos);
+    if (!grid.has_monster()) {
         return true;
     }
 
-    POSITION ty = y, tx = x;
-    POSITION oy = y, ox = x;
-    MONSTER_IDX m_idx = player_ptr->current_floor_ptr->grid_array[y][x].m_idx;
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
-    const auto m_name = monster_desc(player_ptr, m_ptr, 0);
+    auto pos_target = pos;
+    const auto pos_origin = pos;
+    const auto m_idx = grid.m_idx;
+    auto &monster = floor.m_list[m_idx];
+    const auto &monrace = monster.get_monrace();
+    const auto m_name = monster_desc(player_ptr, &monster, 0);
 
-    if (randint1(r_ptr->level * 3 / 2) > randint0(dam / 2) + dam / 2) {
+    if (randint1(monrace.level * 3 / 2) > randint0(dam / 2) + dam / 2) {
         msg_format(_("%sは飛ばされなかった。", "%s^ was not blown away."), m_name.data());
         return true;
     }
 
     for (int i = 0; i < 5; i++) {
-        y += ddy[dir];
-        x += ddx[dir];
-        if (is_cave_empty_bold(player_ptr, y, x)) {
-            ty = y;
-            tx = x;
+        pos = Pos2D(pos.y + ddy[dir], pos.x + ddx[dir]);
+        if (is_cave_empty_bold(player_ptr, pos.y, pos.x)) {
+            pos_target = pos;
         } else {
             break;
         }
     }
 
-    bool is_shock_successful = ty != oy;
-    is_shock_successful |= tx != ox;
-    if (is_shock_successful) {
+    if (pos_target == pos_origin) {
         return true;
     }
 
     msg_format(_("%sを吹き飛ばした！", "You blow %s away!"), m_name.data());
-    player_ptr->current_floor_ptr->grid_array[oy][ox].m_idx = 0;
-    player_ptr->current_floor_ptr->grid_array[ty][tx].m_idx = m_idx;
-    m_ptr->fy = ty;
-    m_ptr->fx = tx;
+    floor.get_grid(pos_origin).m_idx = 0;
+    floor.get_grid(pos_target).m_idx = m_idx;
+    monster.fy = pos_target.y;
+    monster.fx = pos_target.x;
 
     update_monster(player_ptr, m_idx, true);
-    lite_spot(player_ptr, oy, ox);
-    lite_spot(player_ptr, ty, tx);
+    lite_spot(player_ptr, pos_origin.y, pos_origin.x);
+    lite_spot(player_ptr, pos_target.y, pos_target.x);
 
-    if (r_ptr->brightness_flags.has_any_of(ld_mask)) {
+    if (monrace.brightness_flags.has_any_of(ld_mask)) {
         RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::MONSTER_LITE);
     }
 
@@ -335,9 +331,11 @@ bool cast_force_spell(PlayerType *player_ptr, MindForceTrainerType spell)
             return false;
         }
 
-        MONSTER_IDX m_idx = player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx;
+        const Pos2D pos(target_row, target_col);
+        const auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
+        const auto m_idx = grid.m_idx;
         const auto is_projectable = projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col);
-        if ((m_idx == 0) || !player_has_los_bold(player_ptr, target_row, target_col) || !is_projectable) {
+        if ((m_idx == 0) || !grid.has_los() || !is_projectable) {
             break;
         }
 

@@ -1,4 +1,4 @@
-﻿#include "cmd-action/cmd-pet.h"
+#include "cmd-action/cmd-pet.h"
 #include "action/action-limited.h"
 #include "cmd-action/cmd-attack.h"
 #include "cmd-io/cmd-dump.h"
@@ -12,7 +12,6 @@
 #include "game-option/map-screen-options.h"
 #include "game-option/play-record-options.h"
 #include "game-option/text-display-options.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/command-repeater.h"
@@ -24,8 +23,6 @@
 #include "monster-floor/monster-object.h"
 #include "monster-floor/monster-remover.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-info.h"
@@ -54,6 +51,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-checker.h"
 #include "target/target-getter.h"
 #include "target/target-setter.h"
@@ -63,7 +61,6 @@
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
-#include "util/quarks.h"
 #include "util/sort.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
@@ -75,19 +72,10 @@
  */
 void do_cmd_pet_dismiss(PlayerType *player_ptr)
 {
-    MonsterEntity *m_ptr;
-    bool all_pets = false;
-    int Dismissed = 0;
-
-    uint16_t dummy_why;
-    bool cu, cv;
-
-    cu = game_term->scr->cu;
-    cv = game_term->scr->cv;
-    game_term->scr->cu = 0;
-    game_term->scr->cv = 1;
-
-    /* Allocate the "who" array */
+    auto cu = game_term->scr->cu;
+    auto cv = game_term->scr->cv;
+    game_term->scr->cu = false;
+    game_term->scr->cv = true;
     std::vector<MONSTER_IDX> who;
 
     /* Process the monsters (backwards) */
@@ -98,35 +86,32 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
         }
     }
 
+    uint16_t dummy_why = 0;
     ang_sort(player_ptr, who.data(), &dummy_why, who.size(), ang_sort_comp_pet_dismiss, ang_sort_swap_hook);
 
     /* Process the monsters (backwards) */
+    auto all_pets = false;
+    auto num_dismissed = 0;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     for (auto i = 0U; i < who.size(); i++) {
-        auto pet_ctr = who[i];
-        m_ptr = &player_ptr->current_floor_ptr->m_list[pet_ctr];
-
+        const auto pet_ctr = who[i];
+        const auto &monster = player_ptr->current_floor_ptr->m_list[pet_ctr];
         auto delete_this = false;
-        auto should_ask = (pet_ctr == player_ptr->riding) || m_ptr->is_named();
-        const auto friend_name = monster_desc(player_ptr, m_ptr, MD_ASSUME_VISIBLE);
-
+        const auto should_ask = (pet_ctr == player_ptr->riding) || monster.is_named();
+        const auto friend_name = monster_desc(player_ptr, &monster, MD_ASSUME_VISIBLE);
         if (!all_pets) {
-            /* Hack -- health bar for this monster */
             health_track(player_ptr, pet_ctr);
             handle_stuff(player_ptr);
             constexpr auto mes = _("%sを放しますか？ [Yes/No/Unnamed (%lu体)]", "Dismiss %s? [Yes/No/Unnamed (%lu remain)]");
             msg_format(mes, friend_name.data(), who.size() - i);
-
-            if (m_ptr->ml) {
-                move_cursor_relative(m_ptr->fy, m_ptr->fx);
+            if (monster.ml) {
+                move_cursor_relative(monster.fy, monster.fx);
             }
 
             while (true) {
-                char ch = inkey();
-
+                auto ch = inkey();
                 if (ch == 'Y' || ch == 'y') {
                     delete_this = true;
-
                     if (should_ask) {
                         msg_format(_("本当によろしいですか？ (%s) ", "Are you sure? (%s) "), friend_name.data());
                         ch = inkey();
@@ -134,6 +119,7 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
                             delete_this = false;
                         }
                     }
+
                     break;
                 }
 
@@ -151,14 +137,13 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
         }
 
         if ((all_pets && !should_ask) || (!all_pets && delete_this)) {
-            if (record_named_pet && m_ptr->is_named()) {
-                const auto m_name = monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE);
+            if (record_named_pet && monster.is_named()) {
+                const auto m_name = monster_desc(player_ptr, &monster, MD_INDEF_VISIBLE);
                 exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_DISMISS, m_name);
             }
 
             if (pet_ctr == player_ptr->riding) {
                 msg_format(_("%sから降りた。", "You dismount from %s. "), friend_name.data());
-
                 player_ptr->riding = 0;
                 rfu.set_flag(StatusRecalculatingFlag::MONSTER_STATUSES);
                 static constexpr auto flags = {
@@ -171,9 +156,8 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
             msg_format(_("%s を放した。", "Dismissed %s."), friend_name.data());
             rfu.set_flag(StatusRecalculatingFlag::BONUS);
             rfu.set_flag(SubWindowRedrawingFlag::MESSAGE);
-
             delete_monster_idx(player_ptr, pet_ctr);
-            Dismissed++;
+            num_dismissed++;
         }
     }
 
@@ -182,11 +166,11 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
     term_fresh();
 
 #ifdef JP
-    msg_format("%d 体のペットを放しました。", Dismissed);
+    msg_format("%d 体のペットを放しました。", num_dismissed);
 #else
-    msg_format("You have dismissed %d pet%s.", Dismissed, (Dismissed == 1 ? "" : "s"));
+    msg_format("You have dismissed %d pet%s.", num_dismissed, (num_dismissed == 1 ? "" : "s"));
 #endif
-    if (Dismissed == 0 && all_pets) {
+    if ((num_dismissed == 0) && all_pets) {
         msg_print(_("'U'nnamed は、乗馬以外の名前のないペットだけを全て解放します。", "'U'nnamed means all your pets except named pets and your mount."));
     }
 
@@ -200,37 +184,33 @@ void do_cmd_pet_dismiss(PlayerType *player_ptr)
  */
 bool do_cmd_riding(PlayerType *player_ptr, bool force)
 {
-    POSITION x, y;
-    DIRECTION dir = 0;
-    grid_type *g_ptr;
-    MonsterEntity *m_ptr;
-
-    if (!get_direction(player_ptr, &dir, false, false)) {
+    const auto dir = get_direction(player_ptr);
+    if (!dir) {
         return false;
     }
-    y = player_ptr->y + ddy[dir];
-    x = player_ptr->x + ddx[dir];
-    g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+
+    const auto pos = player_ptr->get_neighbor(*dir);
+    auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
 
     PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU });
 
     if (player_ptr->riding) {
         /* Skip non-empty grids */
-        if (!can_player_ride_pet(player_ptr, g_ptr, false)) {
+        if (!can_player_ride_pet(player_ptr, &grid, false)) {
             msg_print(_("そちらには降りられません。", "You cannot go that direction."));
             return false;
         }
 
-        if (!pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
+        if (!pattern_seq(player_ptr, pos)) {
             return false;
         }
 
-        if (g_ptr->m_idx) {
+        if (grid.has_monster()) {
             PlayerEnergy(player_ptr).set_player_turn_energy(100);
 
             msg_print(_("モンスターが立ちふさがっている！", "There is a monster in the way!"));
 
-            do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
+            do_cmd_attack(player_ptr, pos.y, pos.x, HISSATSU_NONE);
             return false;
         }
 
@@ -242,9 +222,9 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
             return false;
         }
 
-        m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
+        const auto *m_ptr = &player_ptr->current_floor_ptr->m_list[grid.m_idx];
 
-        if (!g_ptr->m_idx || !m_ptr->ml) {
+        if (!grid.has_monster() || !m_ptr->ml) {
             msg_print(_("その場所にはモンスターはいません。", "There is no monster here."));
             return false;
         }
@@ -252,30 +232,30 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
             msg_print(_("そのモンスターはペットではありません。", "That monster is not a pet."));
             return false;
         }
-        if (!(monraces_info[m_ptr->r_idx].flags7 & RF7_RIDING)) {
+        if (m_ptr->get_monrace().misc_flags.has_not(MonsterMiscType::RIDING)) {
             msg_print(_("そのモンスターには乗れなさそうだ。", "This monster doesn't seem suitable for riding."));
             return false;
         }
 
-        if (!pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
+        if (!pattern_seq(player_ptr, pos)) {
             return false;
         }
 
-        if (!can_player_ride_pet(player_ptr, g_ptr, true)) {
+        if (!can_player_ride_pet(player_ptr, &grid, true)) {
             /* Feature code (applying "mimic" field) */
-            auto *f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
+            const auto &terrain = grid.get_terrain_mimic();
             using Tc = TerrainCharacteristics;
 #ifdef JP
-            msg_format("そのモンスターは%sの%sにいる。", f_ptr->name.data(),
-                (f_ptr->flags.has_none_of({ Tc::MOVE, Tc::CAN_FLY }) || f_ptr->flags.has_none_of({ Tc::LOS, Tc::TREE })) ? "中" : "上");
+            msg_format("そのモンスターは%sの%sにいる。", terrain.name.data(),
+                (terrain.flags.has_none_of({ Tc::MOVE, Tc::CAN_FLY }) || terrain.flags.has_none_of({ Tc::LOS, Tc::TREE })) ? "中" : "上");
 #else
             msg_format("This monster is %s the %s.",
-                (f_ptr->flags.has_none_of({ Tc::MOVE, Tc::CAN_FLY }) || f_ptr->flags.has_none_of({ Tc::LOS, Tc::TREE })) ? "in" : "on", f_ptr->name.data());
+                (terrain.flags.has_none_of({ Tc::MOVE, Tc::CAN_FLY }) || terrain.flags.has_none_of({ Tc::LOS, Tc::TREE })) ? "in" : "on", terrain.name.data());
 #endif
 
             return false;
         }
-        if (monraces_info[m_ptr->r_idx].level > randint1((player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 50 + player_ptr->lev / 2 + 20))) {
+        if (m_ptr->get_monrace().level > randint1((player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 50 + player_ptr->lev / 2 + 20))) {
             msg_print(_("うまく乗れなかった。", "You failed to ride."));
             PlayerEnergy(player_ptr).set_player_turn_energy(100);
             return false;
@@ -283,7 +263,7 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
 
         if (m_ptr->is_asleep()) {
             const auto m_name = monster_desc(player_ptr, m_ptr, 0);
-            (void)set_monster_csleep(player_ptr, g_ptr->m_idx, 0);
+            (void)set_monster_csleep(player_ptr, grid.m_idx, 0);
             msg_format(_("%sを起こした。", "You have woken %s up."), m_name.data());
         }
 
@@ -291,7 +271,7 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
             set_action(player_ptr, ACTION_NONE);
         }
 
-        player_ptr->riding = g_ptr->m_idx;
+        player_ptr->riding = grid.m_idx;
 
         /* Hack -- remove tracked monster */
         if (player_ptr->riding == player_ptr->health_who) {
@@ -314,7 +294,7 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
         MainWindowRedrawingFlag::UHEALTH,
     };
     rfu.set_flags(flags_mwrf);
-    (void)move_player_effect(player_ptr, y, x, MPE_HANDLE_STUFF | MPE_ENERGY_USE | MPE_DONT_PICKUP | MPE_DONT_SWAP_MON);
+    (void)move_player_effect(player_ptr, pos.y, pos.x, MPE_HANDLE_STUFF | MPE_ENERGY_USE | MPE_DONT_PICKUP | MPE_DONT_SWAP_MON);
     return true;
 }
 
@@ -323,10 +303,7 @@ bool do_cmd_riding(PlayerType *player_ptr, bool force)
  */
 static void do_name_pet(PlayerType *player_ptr)
 {
-    MonsterEntity *m_ptr;
-    bool old_name = false;
-    bool old_target_pet = target_pet;
-
+    auto old_target_pet = target_pet;
     target_pet = true;
     if (!target_set(player_ptr, TARGET_KILL)) {
         target_pet = old_target_pet;
@@ -334,48 +311,52 @@ static void do_name_pet(PlayerType *player_ptr)
     }
 
     target_pet = old_target_pet;
-
-    if (player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx) {
-        m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx];
-
-        if (!m_ptr->is_pet()) {
-            msg_print(_("そのモンスターはペットではない。", "This monster is not a pet."));
-            return;
-        }
-        if (monraces_info[m_ptr->r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
-            msg_print(_("そのモンスターの名前は変えられない！", "You cannot change the name of this monster!"));
-            return;
-        }
-
-        msg_format(_("%sに名前をつける。", "Name %s."), monster_desc(player_ptr, m_ptr, 0).data());
-        msg_print(nullptr);
-
-        /* Start with nothing */
-        char out_val[20]{};
-
-        /* Use old inscription */
-        if (m_ptr->is_named()) {
-            /* Start with the old inscription */
-            angband_strcpy(out_val, m_ptr->nickname, sizeof(out_val));
-            old_name = true;
-        }
-
-        /* Get a new inscription (possibly empty) */
-        if (get_string(_("名前: ", "Name: "), out_val, 15)) {
-            if (out_val[0]) {
-                /* Save the inscription */
-                m_ptr->nickname = out_val;
-                if (record_named_pet) {
-                    exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_NAME, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE));
-                }
-            } else {
-                if (record_named_pet && old_name) {
-                    exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_UNNAME, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE));
-                }
-                m_ptr->nickname.clear();
-            }
-        }
+    auto &floor = *player_ptr->current_floor_ptr;
+    const auto &grid = floor.grid_array[target_row][target_col];
+    if (!grid.has_monster()) {
+        return;
     }
+
+    auto *m_ptr = &floor.m_list[grid.m_idx];
+    if (!m_ptr->is_pet()) {
+        msg_print(_("そのモンスターはペットではない。", "This monster is not a pet."));
+        return;
+    }
+
+    if (m_ptr->get_monrace().kind_flags.has(MonsterKindType::UNIQUE)) {
+        msg_print(_("そのモンスターの名前は変えられない！", "You cannot change the name of this monster!"));
+        return;
+    }
+
+    msg_format(_("%sに名前をつける。", "Name %s."), monster_desc(player_ptr, m_ptr, 0).data());
+    msg_print(nullptr);
+
+    auto old_name = false;
+    std::string initial_name("");
+    if (m_ptr->is_named()) {
+        initial_name = m_ptr->nickname;
+        old_name = true;
+    }
+
+    const auto new_name = input_string(_("名前: ", "Name: "), 15, initial_name);
+    if (!new_name.has_value()) {
+        return;
+    }
+
+    if (!new_name->empty()) {
+        m_ptr->nickname = new_name.value();
+        if (record_named_pet) {
+            exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_NAME, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE));
+        }
+
+        return;
+    }
+
+    if (record_named_pet && old_name) {
+        exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_UNNAME, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE));
+    }
+
+    m_ptr->nickname.clear();
 }
 
 /*!
@@ -554,8 +535,9 @@ void do_cmd_pet(PlayerType *player_ptr)
             screen_save();
             prompt = _("(コマンド、ESC=終了) コマンドを選んでください:", "(Command, ESC=exit) Choose command from menu.");
         } else {
-            prompt = format(_("(コマンド %c-%c、'*'=一覧、ESC=終了) コマンドを選んでください:", "(Command %c-%c, *=List, ESC=exit) Select a command: "),
-                I2A(0), I2A(num - 1));
+            constexpr auto fmt = _("(コマンド %c-%c、'*'=一覧、ESC=終了) コマンドを選んでください:",
+                "(Command %c-%c, *=List, ESC=exit) Select a command: ");
+            prompt = format(fmt, I2A(0), I2A(num - 1));
         }
 
         choice = (always_show_list || use_menu) ? ESCAPE : 1;
@@ -564,8 +546,13 @@ void do_cmd_pet(PlayerType *player_ptr)
         while (!flag) {
             if (choice == ESCAPE) {
                 choice = ' ';
-            } else if (!get_com(prompt.data(), &choice, true)) {
-                break;
+            } else {
+                const auto new_choice = input_command(prompt, true);
+                if (!new_choice.has_value()) {
+                    break;
+                }
+
+                choice = new_choice.value();
             }
 
             auto should_redraw_cursor = true;
@@ -703,7 +690,7 @@ void do_cmd_pet(PlayerType *player_ptr)
             player_ptr->pet_t_m_idx = 0;
         } else {
             auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[target_row][target_col];
-            if (g_ptr->m_idx && (player_ptr->current_floor_ptr->m_list[g_ptr->m_idx].ml)) {
+            if (g_ptr->has_monster() && (player_ptr->current_floor_ptr->m_list[g_ptr->m_idx].ml)) {
                 player_ptr->pet_t_m_idx = player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx;
                 player_ptr->pet_follow_distance = PET_DESTROY_DIST;
             } else {

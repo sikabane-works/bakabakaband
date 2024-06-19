@@ -1,4 +1,4 @@
-﻿#include "floor/floor-leaver.h"
+#include "floor/floor-leaver.h"
 #include "cmd-building/cmd-building.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
@@ -10,7 +10,6 @@
 #include "floor/line-of-sight.h"
 #include "game-option/birth-options.h"
 #include "game-option/play-record-options.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/write-diary.h"
@@ -31,6 +30,7 @@
 #include "player/special-defense-types.h"
 #include "save/floor-writer.h"
 #include "spell-class/spells-mirror-master.h"
+#include "system/angband-system.h"
 #include "system/artifact-type-definition.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
@@ -38,6 +38,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -66,25 +67,26 @@ static bool check_pet_preservation_conditions(PlayerType *player_ptr, MonsterEnt
         return false;
     }
 
-    POSITION dis = distance(player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx);
+    auto dis = distance(player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx);
     if (m_ptr->is_confused() || m_ptr->is_stunned() || m_ptr->is_asleep() || (m_ptr->parent_m_idx != 0)) {
         return true;
     }
 
-    if (m_ptr->is_named() && ((player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx) && projectable(player_ptr, player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx)) || (los(player_ptr, m_ptr->fy, m_ptr->fx, player_ptr->y, player_ptr->x) && projectable(player_ptr, m_ptr->fy, m_ptr->fx, player_ptr->y, player_ptr->x)))) {
-        if (dis > 3) {
-            return true;
-        }
-    } else if (dis > 1) {
-        return true;
+    const auto should_preserve = m_ptr->is_named();
+    auto sight_from_player = player_ptr->current_floor_ptr->has_los({ m_ptr->fy, m_ptr->fx });
+    sight_from_player &= projectable(player_ptr, player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx);
+    auto sight_from_monster = los(player_ptr, m_ptr->fy, m_ptr->fx, player_ptr->y, player_ptr->x);
+    sight_from_monster &= projectable(player_ptr, m_ptr->fy, m_ptr->fx, player_ptr->y, player_ptr->x);
+    if (should_preserve && (sight_from_player || sight_from_monster)) {
+        return dis > 3;
     }
 
-    return false;
+    return dis > 1;
 }
 
 static void sweep_preserving_pet(PlayerType *player_ptr)
 {
-    if (player_ptr->wild_mode || player_ptr->current_floor_ptr->inside_arena || player_ptr->phase_out) {
+    if (player_ptr->wild_mode || player_ptr->current_floor_ptr->inside_arena || AngbandSystem::get_instance().is_phase_out()) {
         return;
     }
 
@@ -151,34 +153,34 @@ static void preserve_pet(PlayerType *player_ptr)
  */
 static void locate_connected_stairs(PlayerType *player_ptr, FloorType *floor_ptr, saved_floor_type *sf_ptr, BIT_FLAGS floor_mode)
 {
-    POSITION sx = 0;
-    POSITION sy = 0;
-    POSITION x_table[20];
-    POSITION y_table[20];
-    int num = 0;
+    auto sx = 0;
+    auto sy = 0;
+    int x_table[20]{};
+    int y_table[20]{};
+    auto num = 0;
     for (POSITION y = 0; y < floor_ptr->height; y++) {
         for (POSITION x = 0; x < floor_ptr->width; x++) {
-            auto *g_ptr = &floor_ptr->grid_array[y][x];
-            auto *f_ptr = &terrains_info[g_ptr->feat];
-            bool ok = false;
+            const auto &grid = floor_ptr->get_grid({ y, x });
+            const auto &terrain = grid.get_terrain();
+            auto ok = false;
             if (floor_mode & CFM_UP) {
-                if (f_ptr->flags.has_all_of({ TerrainCharacteristics::LESS, TerrainCharacteristics::STAIRS }) && f_ptr->flags.has_not(TerrainCharacteristics::SPECIAL)) {
+                if (terrain.flags.has_all_of({ TerrainCharacteristics::LESS, TerrainCharacteristics::STAIRS }) && terrain.flags.has_not(TerrainCharacteristics::SPECIAL)) {
                     ok = true;
-                    if (g_ptr->special && g_ptr->special == sf_ptr->upper_floor_id) {
+                    if (grid.special && grid.special == sf_ptr->upper_floor_id) {
                         sx = x;
                         sy = y;
                     }
                 }
             } else if (floor_mode & CFM_DOWN) {
-                if (f_ptr->flags.has_all_of({ TerrainCharacteristics::MORE, TerrainCharacteristics::STAIRS }) && f_ptr->flags.has_not(TerrainCharacteristics::SPECIAL)) {
+                if (terrain.flags.has_all_of({ TerrainCharacteristics::MORE, TerrainCharacteristics::STAIRS }) && terrain.flags.has_not(TerrainCharacteristics::SPECIAL)) {
                     ok = true;
-                    if (g_ptr->special && g_ptr->special == sf_ptr->lower_floor_id) {
+                    if (grid.special && grid.special == sf_ptr->lower_floor_id) {
                         sx = x;
                         sy = y;
                     }
                 }
             } else {
-                if (f_ptr->flags.has(TerrainCharacteristics::BLDG)) {
+                if (terrain.flags.has(TerrainCharacteristics::BLDG)) {
                     ok = true;
                 }
             }
@@ -278,7 +280,7 @@ static void preserve_info(PlayerType *player_ptr)
             continue;
         }
 
-        const auto &r_ref = m_ptr->get_real_r_ref();
+        const auto &r_ref = m_ptr->get_real_monrace();
         if (r_ref.kind_flags.has(MonsterKindType::UNIQUE) || (r_ref.population_flags.has(MonsterPopulationType::NAZGUL))) {
             continue;
         }
@@ -298,21 +300,23 @@ static void preserve_info(PlayerType *player_ptr)
     }
 }
 
-static void set_grid_by_leaving_floor(PlayerType *player_ptr, grid_type **g_ptr)
+static Grid *set_grid_by_leaving_floor(PlayerType *player_ptr)
 {
     if ((player_ptr->change_floor_mode & CFM_SAVE_FLOORS) == 0) {
-        return;
+        return nullptr;
     }
 
-    *g_ptr = &player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x];
-    auto *f_ptr = &terrains_info[(*g_ptr)->feat];
-    if ((*g_ptr)->special && f_ptr->flags.has_not(TerrainCharacteristics::SPECIAL) && get_sf_ptr((*g_ptr)->special)) {
-        new_floor_id = (*g_ptr)->special;
+    auto *g_ptr = &player_ptr->current_floor_ptr->get_grid(player_ptr->get_position());
+    const auto &terrain = g_ptr->get_terrain();
+    if (g_ptr->special && terrain.flags.has_not(TerrainCharacteristics::SPECIAL) && get_sf_ptr(g_ptr->special)) {
+        new_floor_id = g_ptr->special;
     }
 
-    if (f_ptr->flags.has_all_of({ TerrainCharacteristics::STAIRS, TerrainCharacteristics::SHAFT })) {
+    if (terrain.flags.has_all_of({ TerrainCharacteristics::STAIRS, TerrainCharacteristics::SHAFT })) {
         prepare_change_floor_mode(player_ptr, CFM_SHAFT);
     }
+
+    return g_ptr;
 }
 
 static void jump_floors(PlayerType *player_ptr)
@@ -383,13 +387,13 @@ static void kill_saved_floors(PlayerType *player_ptr, saved_floor_type *sf_ptr)
     }
 }
 
-static void refresh_new_floor_id(PlayerType *player_ptr, grid_type *g_ptr)
+static void refresh_new_floor_id(PlayerType *player_ptr, Grid *g_ptr)
 {
     if (new_floor_id != 0) {
         return;
     }
 
-    new_floor_id = get_new_floor_id(player_ptr);
+    new_floor_id = get_unused_floor_id(player_ptr);
     if ((g_ptr != nullptr) && !feat_uses_special(g_ptr->feat)) {
         g_ptr->special = new_floor_id;
     }
@@ -411,13 +415,11 @@ static void update_upper_lower_or_floor_id(PlayerType *player_ptr, saved_floor_t
 static void exe_leave_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
     player_ptr->plus_incident(INCIDENT::LEAVE_FLOOR, 1);
-
-    grid_type *g_ptr = NULL;
-    set_grid_by_leaving_floor(player_ptr, &g_ptr);
+    auto g_ptr = set_grid_by_leaving_floor(player_ptr);
     jump_floors(player_ptr);
     exit_to_wilderness(player_ptr);
     kill_saved_floors(player_ptr, sf_ptr);
-    if (player_ptr->floor_id == 0) {
+    if (!player_ptr->in_saved_floor()) {
         return;
     }
 

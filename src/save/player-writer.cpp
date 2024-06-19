@@ -1,4 +1,4 @@
-﻿#include "save/player-writer.h"
+#include "save/player-writer.h"
 #include "cmd-building/cmd-building.h"
 #include "game-option/birth-options.h"
 #include "player-base/player-class.h"
@@ -6,6 +6,7 @@
 #include "save/info-writer.h"
 #include "save/player-class-specific-data-writer.h"
 #include "save/save-util.h"
+#include "system/angband-system.h"
 #include "system/building-type-definition.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
@@ -46,7 +47,7 @@ void wr_player(PlayerType *player_ptr)
 {
     wr_string(player_ptr->name);
     wr_string(player_ptr->died_from);
-    wr_string(player_ptr->last_message ? player_ptr->last_message : "");
+    wr_string(player_ptr->last_message);
 
     save_quick_start();
     for (int i = 0; i < 4; i++) {
@@ -131,8 +132,8 @@ void wr_player(PlayerType *player_ptr)
     wr_s16b(player_ptr->arena_number);
     wr_s16b(player_ptr->current_floor_ptr->inside_arena);
     wr_s16b(enum2i(player_ptr->current_floor_ptr->quest_number));
-    wr_s16b(player_ptr->phase_out);
-    wr_byte(player_ptr->exit_bldg);
+    wr_s16b(AngbandSystem::get_instance().is_phase_out());
+    wr_byte(w_ptr->get_arena());
     wr_byte(0); /* Unused */
 
     wr_s16b((int16_t)player_ptr->oldpx);
@@ -258,8 +259,9 @@ void wr_player(PlayerType *player_ptr)
     wr_u32b(0L);
     wr_u32b(0L);
 
-    wr_u32b(w_ptr->seed_flavor);
-    wr_u32b(w_ptr->seed_town);
+    const auto &system = AngbandSystem::get_instance();
+    wr_u32b(system.get_seed_flavor());
+    wr_u32b(system.get_seed_town());
     wr_u16b(player_ptr->panic_save);
     wr_u16b(w_ptr->total_winner);
     wr_u16b(w_ptr->noscore);

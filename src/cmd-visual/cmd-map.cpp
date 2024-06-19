@@ -1,4 +1,4 @@
-﻿#include "cmd-visual/cmd-map.h"
+#include "cmd-visual/cmd-map.h"
 #include "autopick/autopick-methods-table.h"
 #include "autopick/autopick-util.h"
 #include "io/input-key-acceptor.h"
@@ -6,6 +6,7 @@
 #include "term/screen-processor.h"
 #include "view/display-map.h"
 #include "window/main-window-util.h"
+#include <string_view>
 
 /*
  * Display a "small-scale" map of the dungeon for the player
@@ -23,7 +24,10 @@ void do_cmd_view_map(PlayerType *player_ptr)
     int cy, cx;
     display_map(player_ptr, &cy, &cx);
     if (autopick_list.empty() || player_ptr->wild_mode) {
-        put_str(_("何かキーを押すとゲームに戻ります", "Hit any key to continue"), 23, 30);
+        const auto &[wid, hgt] = term_get_size();
+        constexpr auto msg = _("何かキーを押すとゲームに戻ります", "Hit any key to continue");
+        const auto center_x = (wid - std::string_view(msg).length()) / 2;
+        put_str(msg, hgt - 1, center_x);
         move_cursor(cy, cx);
         inkey(true);
         screen_load();
@@ -32,8 +36,7 @@ void do_cmd_view_map(PlayerType *player_ptr)
 
     display_autopick = ITEM_DISPLAY;
     while (true) {
-        int wid, hgt;
-        term_get_size(&wid, &hgt);
+        const auto &[wid, hgt] = term_get_size();
         int row_message = hgt - 1;
         put_str(_("何かキーを押してください('M':拾う 'N':放置 'D':M+N 'K':壊すアイテムを表示)",
                     " Hit M, N(for ~), K(for !), or D(same as M+N) to display auto-picker items."),

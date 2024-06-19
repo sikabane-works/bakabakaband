@@ -1,4 +1,4 @@
-﻿#include "market/building-craft-weapon.h"
+#include "market/building-craft-weapon.h"
 #include "artifact/fixed-art-types.h"
 #include "combat/attack-accuracy.h"
 #include "combat/shoot.h"
@@ -13,7 +13,6 @@
 #include "object-hook/hook-weapon.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "object/object-flags.h"
 #include "player-base/player-class.h"
 #include "realm/realm-hex-numbers.h"
 #include "spell-realm/spells-hex.h"
@@ -26,58 +25,6 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
-
-/*!
- * @brief 攻撃時スレイによるダメージ期待値修正計算 / critical happens at i / 10000
- * @param dam 基本ダメージ
- * @param mult スレイ倍率（掛け算部分）
- * @param div スレイ倍率（割り算部分）
- * @param force 理力特別計算フラグ
- * @return ダメージ期待値
- */
-static int calc_slaydam(int dam, int mult, int div, bool force)
-{
-    int tmp;
-    if (force) {
-        tmp = dam * 60;
-        tmp *= mult * 3;
-        tmp /= div * 2;
-        tmp += dam * 60 * 2;
-        tmp /= 60;
-        return tmp;
-    }
-
-    tmp = dam * 60;
-    tmp *= mult;
-    tmp /= div;
-    tmp /= 60;
-    return tmp;
-}
-
-/*!
- * @brief 攻撃時の期待値計算（スレイ→重量クリティカル→切れ味効果）
- * @param player_ptr プレイヤーへの参照ポインタ
- * @param dam 基本ダメージ
- * @param mult スレイ倍率（掛け算部分）
- * @param div スレイ倍率（割り算部分）
- * @param force 理力特別計算フラグ
- * @param weight 重量
- * @param plus 武器ダメージ修正
- * @param meichuu 命中値
- * @param dokubari 毒針処理か否か
- * @param impact 強撃か否か
- * @param vorpal_mult 切れ味倍率（掛け算部分）
- * @param vorpal_div 切れ味倍率（割り算部分）
- * @return ダメージ期待値
- */
-static uint32_t calc_expect_dice(
-    PlayerType *player_ptr, uint32_t dam, int mult, int div, bool force, WEIGHT weight, int plus, int16_t meichuu, bool dokubari, bool impact, int vorpal_mult, int vorpal_div)
-{
-    dam = calc_slaydam(dam, mult, div, force);
-    dam = calc_expect_crit(player_ptr, weight, plus, dam, meichuu, dokubari, impact);
-    dam = calc_slaydam(dam, vorpal_mult, vorpal_div, false);
-    return dam;
-}
 
 /*!
  * @brief 武器の各条件毎のダメージ期待値を表示する。
@@ -134,7 +81,7 @@ static void compare_weapon_aux(PlayerType *player_ptr, ItemEntity *o_ptr, int co
     int vorpal_div = 1;
     int dmg_bonus = o_ptr->to_d + player_ptr->to_d[0];
 
-    auto flags = object_flags(o_ptr);
+    const auto flags = o_ptr->get_flags();
     if (o_ptr->bi_key == BaseitemKey(ItemKindType::SWORD, SV_POISON_NEEDLE)) {
         dokubari = true;
     }
@@ -364,12 +311,12 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
     auto *i_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND];
     (&orig_weapon)->copy_from(i_ptr);
 
-    concptr q = _("第一の武器は？", "What is your first weapon? ");
-    concptr s = _("比べるものがありません。", "You have nothing to compare.");
+    constexpr auto first_q = _("第一の武器は？", "What is your first weapon? ");
+    constexpr auto first_s = _("比べるものがありません。", "You have nothing to compare.");
 
-    OBJECT_IDX item;
+    short i_idx_first;
     constexpr auto options = USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT;
-    o_ptr[0] = choose_object(player_ptr, &item, q, s, options, FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
+    o_ptr[0] = choose_object(player_ptr, &i_idx_first, first_q, first_s, options, FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
     if (!o_ptr[0]) {
         screen_load();
         return 0;
@@ -421,10 +368,10 @@ PRICE compare_weapons(PlayerType *player_ptr, PRICE bcost)
             continue;
         }
 
-        q = _("第二の武器は？", "What is your second weapon? ");
-        s = _("比べるものがありません。", "You have nothing to compare.");
-        OBJECT_IDX item2;
-        ItemEntity *i2_ptr = choose_object(player_ptr, &item2, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
+        constexpr auto q = _("第二の武器は？", "What is your second weapon? ");
+        constexpr auto s = _("比べるものがありません。", "You have nothing to compare.");
+        short i_idx_second;
+        auto *i2_ptr = choose_object(player_ptr, &i_idx_second, q, s, (USE_EQUIP | USE_INVEN | IGNORE_BOTHHAND_SLOT), FuncItemTester(&ItemEntity::is_orthodox_melee_weapons));
         if (!i2_ptr) {
             continue;
         }

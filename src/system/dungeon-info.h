@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <map>
 #include <string>
@@ -13,9 +13,11 @@
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-flags-resistance.h"
 #include "monster-race/race-kind-flags.h"
+#include "monster-race/race-misc-flags.h"
 #include "monster-race/race-population-flags.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster-race/race-speak-flags.h"
+#include "monster-race/race-special-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "monster-race/race-wilderness-flags.h"
 #include "room/room-types.h"
@@ -47,11 +49,13 @@ constexpr auto DUNGEON_FEAT_PROB_NUM = 3;
 #define DUNGEON_NO_MELEE 17
 #define DUNGEON_CHAMELEON 18
 #define DUNGEON_DARKNESS 19
+#define DUNGEON_GLASS 20
 #define DUNGEON_VOID_TERRITORY 23
 #define DUNGEON_MAX 31
 
 enum class FixedArtifactId : short;
 enum class MonsterRaceId : int16_t;
+enum class MonsterSex;
 
 struct feat_prob {
     FEAT_IDX feat{}; /* Feature tile */
@@ -87,13 +91,7 @@ struct dungeon_type {
 
     EnumClassFlagGroup<DungeonFeatureType> flags{}; /* Dungeon Flags */
 
-    BIT_FLAGS mflags1{}; /* The monster flags that are allowed */
-    BIT_FLAGS mflags2{};
-    BIT_FLAGS mflags3{};
-    BIT_FLAGS mflags7{};
-    BIT_FLAGS mflags8{};
-    BIT_FLAGS mflags9{};
-
+    EnumClassFlagGroup<MonsterFeedType> mon_meat_feed_flags;
     EnumClassFlagGroup<MonsterAbilityType> mon_ability_flags;
     EnumClassFlagGroup<MonsterBehaviorType> mon_behavior_flags;
     EnumClassFlagGroup<MonsterVisualType> mon_visual_flags;
@@ -105,6 +103,9 @@ struct dungeon_type {
     EnumClassFlagGroup<MonsterPopulationType> mon_population_flags;
     EnumClassFlagGroup<MonsterSpeakType> mon_speak_flags;
     EnumClassFlagGroup<MonsterBrightnessType> mon_brightness_flags;
+    EnumClassFlagGroup<MonsterSpecialType> mon_special_flags;
+    EnumClassFlagGroup<MonsterMiscType> mon_misc_flags;
+    MonsterSex mon_sex{};
 
     std::vector<char> r_chars; /* Monster symbols allowed */
     short final_object{}; /* The object you'll find at the bottom */
@@ -123,9 +124,10 @@ struct dungeon_type {
 
     std::map<RoomType, int> room_rate; /* ダンジョン独自の部屋生成率 */
     AllianceType alliance_idx = AllianceType::NONE; /*!< 支配アライアンス */
+    bool has_river_flag() const;
 };
 
-extern std::vector<DEPTH> max_dlv;
+extern std::vector<int> max_dlv;
 extern std::vector<dungeon_type> dungeons_info;
 
 class PlayerType;

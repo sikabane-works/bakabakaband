@@ -1,50 +1,19 @@
-﻿#include "wizard/artifact-analyzer.h"
+#include "wizard/artifact-analyzer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "locale/japanese.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/trc-types.h"
 #include "object-enchant/trg-types.h"
-#include "object/object-flags.h"
 #include "object/object-info.h"
 #include "system/artifact-type-definition.h"
 #include "system/item-entity.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 #include "util/enum-range.h"
-#include "util/quarks.h"
 #include "util/string-processor.h"
 #include "wizard/spoiler-util.h"
-
-/*!
- * @brief アーティファクトの特性一覧を出力する /
- * Write a line to the spoiler file and then "underline" it with hypens
- * @param art_flags アーティファクトのフラグ群
- * @param flag_ptr フラグ記述情報の参照ポインタ
- * @param desc_ptr 記述内容を返すための文字列参照ポインタ
- * @param n_elmnts フラグの要素数
- * @return desc_ptrと同じアドレス
- * @details
- * <pre>
- * This function does most of the actual "analysis". Given a set of bit flags
- * (which will be from one of the flags fields from the object in question),
- * a "flag description structure", a "description list", and the number of
- * elements in the "flag description structure", this function sets the
- * "description list" members to the appropriate descriptions contained in
- * the "flag description structure".
- * The possibly updated description pointer is returned.
- * </pre>
- */
-static concptr *spoiler_flag_aux(const TrFlags &art_flags, const flag_desc *flag_ptr, concptr *desc_ptr, const int n_elmnts)
-{
-    for (int i = 0; i < n_elmnts; ++i) {
-        if (art_flags.has(flag_ptr[i].flag)) {
-            *desc_ptr++ = flag_ptr[i].desc;
-        }
-    }
-
-    return desc_ptr;
-}
+#include <sstream>
 
 /*!
  * @brief アイテムの特定記述内容を返す /
@@ -52,37 +21,9 @@ static concptr *spoiler_flag_aux(const TrFlags &art_flags, const flag_desc *flag
  * @param o_ptr 記述を得たいオブジェクトの参照ポインタ
  * @param desc_ptr 記述内容を返すための文字列参照ポインタ
  */
-static std::string analyze_general(PlayerType *player_ptr, ItemEntity *o_ptr)
+static std::string analyze_general(PlayerType *player_ptr, const ItemEntity *o_ptr)
 {
     return describe_flavor(player_ptr, o_ptr, OD_NAME_AND_ENCHANT | OD_STORE | OD_DEBUG);
-}
-
-/*!
- * @brief アーティファクトがプレイヤーに与えるpval修正を構造体に収める /
- * List "player traits" altered by an artifact's pval. These include stats,
- * speed, infravision, tunneling, stealth, searching, and extra attacks.
- * @param o_ptr オブジェクト構造体の参照ポインタ
- * @param pi_ptr pval修正構造体の参照ポインタ
- */
-static void analyze_pval(ItemEntity *o_ptr, pval_info_type *pi_ptr)
-{
-    concptr *affects_list;
-    if (!o_ptr->pval) {
-        pi_ptr->pval_desc[0] = '\0';
-        return;
-    }
-
-    auto flags = object_flags(o_ptr);
-    affects_list = pi_ptr->pval_affects;
-    sprintf(pi_ptr->pval_desc, "%s%d", o_ptr->pval >= 0 ? "+" : "", o_ptr->pval);
-    if (flags.has_all_of(EnumRange(TR_STR, TR_CHR))) {
-        *affects_list++ = _("全能力", "All stats");
-    } else if (flags.has_any_of(EnumRange(TR_STR, TR_CHR))) {
-        affects_list = spoiler_flag_aux(flags, stat_flags_desc, affects_list, N_ELEMENTS(stat_flags_desc));
-    }
-
-    affects_list = spoiler_flag_aux(flags, pval_flags1_desc, affects_list, N_ELEMENTS(pval_flags1_desc));
-    *affects_list = nullptr;
 }
 
 /*!
@@ -91,11 +32,10 @@ static void analyze_pval(ItemEntity *o_ptr, pval_info_type *pi_ptr)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param slay_list 種族スレイ構造体の参照ポインタ
  */
-static void analyze_slay(ItemEntity *o_ptr, concptr *slay_list)
+static std::vector<std::string> analyze_slay(const ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
-    slay_list = spoiler_flag_aux(flags, slay_flags_desc, slay_list, N_ELEMENTS(slay_flags_desc));
-    *slay_list = nullptr;
+    const auto flags = o_ptr->get_flags();
+    return extract_spoiler_flags(flags, slay_flags_desc);
 }
 
 /*!
@@ -104,11 +44,10 @@ static void analyze_slay(ItemEntity *o_ptr, concptr *slay_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param brand_list 属性ブランド構造体の参照ポインタ
  */
-static void analyze_brand(ItemEntity *o_ptr, concptr *brand_list)
+static std::vector<std::string> analyze_brand(const ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
-    brand_list = spoiler_flag_aux(flags, brand_flags_desc, brand_list, N_ELEMENTS(brand_flags_desc));
-    *brand_list = nullptr;
+    const auto flags = o_ptr->get_flags();
+    return extract_spoiler_flags(flags, brand_flags_desc);
 }
 
 /*!
@@ -117,11 +56,10 @@ static void analyze_brand(ItemEntity *o_ptr, concptr *brand_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param resist_list 通常耐性構造体の参照ポインタ
  */
-static void analyze_resist(ItemEntity *o_ptr, concptr *resist_list)
+static std::vector<std::string> analyze_resist(const ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
-    resist_list = spoiler_flag_aux(flags, resist_flags_desc, resist_list, N_ELEMENTS(resist_flags_desc));
-    *resist_list = nullptr;
+    const auto flags = o_ptr->get_flags();
+    return extract_spoiler_flags(flags, resist_flags_desc);
 }
 
 /*!
@@ -130,11 +68,10 @@ static void analyze_resist(ItemEntity *o_ptr, concptr *resist_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param immune_list 免疫構造体の参照ポインタ
  */
-static void analyze_immune(ItemEntity *o_ptr, concptr *immune_list)
+static std::vector<std::string> analyze_immune(const ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
-    immune_list = spoiler_flag_aux(flags, immune_flags_desc, immune_list, N_ELEMENTS(immune_flags_desc));
-    *immune_list = nullptr;
+    const auto flags = o_ptr->get_flags();
+    return extract_spoiler_flags(flags, immune_flags_desc);
 }
 
 /*!
@@ -143,11 +80,10 @@ static void analyze_immune(ItemEntity *o_ptr, concptr *immune_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param immune_list 弱点構造体の参照ポインタ
  */
-static void analyze_vulnerable(ItemEntity *o_ptr, concptr *vulnerable_list)
+static std::vector<std::string> analyze_vulnerable(const ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
-    vulnerable_list = spoiler_flag_aux(flags, vulnerable_flags_desc, vulnerable_list, N_ELEMENTS(vulnerable_flags_desc));
-    *vulnerable_list = nullptr;
+    const auto flags = o_ptr->get_flags();
+    return extract_spoiler_flags(flags, vulnerable_flags_desc);
 }
 
 /*!
@@ -156,16 +92,18 @@ static void analyze_vulnerable(ItemEntity *o_ptr, concptr *vulnerable_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param sustain_list 維持特性構造体の参照ポインタ
  */
-static void analyze_sustains(ItemEntity *o_ptr, concptr *sustain_list)
+static std::vector<std::string> analyze_sustains(const ItemEntity *o_ptr)
 {
-    auto flags = object_flags(o_ptr);
+    const auto flags = o_ptr->get_flags();
     if (flags.has_all_of(EnumRange(TR_SUST_STR, TR_SUST_CHR))) {
-        *sustain_list++ = _("全能力", "All stats");
-    } else if (flags.has_any_of(EnumRange(TR_SUST_STR, TR_SUST_CHR))) {
-        sustain_list = spoiler_flag_aux(flags, sustain_flags_desc, sustain_list, N_ELEMENTS(sustain_flags_desc));
+        return { _("全能力", "All stats") };
     }
 
-    *sustain_list = nullptr;
+    if (flags.has_any_of(EnumRange(TR_SUST_STR, TR_SUST_CHR))) {
+        return extract_spoiler_flags(flags, sustain_flags_desc);
+    }
+
+    return {};
 }
 
 /*!
@@ -175,13 +113,14 @@ static void analyze_sustains(ItemEntity *o_ptr, concptr *sustain_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param misc_list その他の特性構造体の参照ポインタ
  */
-static void analyze_misc_magic(ItemEntity *o_ptr, concptr *misc_list)
+static std::vector<std::string> analyze_misc_magic(const ItemEntity *o_ptr)
 {
-    char desc[256];
-
-    auto flags = object_flags(o_ptr);
-    misc_list = spoiler_flag_aux(flags, misc_flags2_desc, misc_list, N_ELEMENTS(misc_flags2_desc));
-    misc_list = spoiler_flag_aux(flags, misc_flags3_desc, misc_list, N_ELEMENTS(misc_flags3_desc));
+    std::vector<std::string> descriptions{};
+    const auto flags = o_ptr->get_flags();
+    const auto &flags2_descriptions = extract_spoiler_flags(flags, misc_flags2_desc);
+    descriptions.insert(descriptions.end(), flags2_descriptions.begin(), flags2_descriptions.end());
+    const auto &flags3_descriptions = extract_spoiler_flags(flags, misc_flags3_desc);
+    descriptions.insert(descriptions.end(), flags3_descriptions.begin(), flags3_descriptions.end());
     POSITION rad = 0;
     if (flags.has(TR_LITE_1)) {
         rad += 1;
@@ -211,45 +150,44 @@ static void analyze_misc_magic(ItemEntity *o_ptr, concptr *misc_list)
         rad++;
     }
 
+    std::string desc;
     if (flags.has(TR_LITE_FUEL)) {
         if (rad > 0) {
-            sprintf(desc, _("それは燃料補給によって明かり(半径 %d)を授ける。", "It provides light (radius %d) when fueled."), (int)rad);
+            desc = format(_("それは燃料補給によって明かり(半径 %d)を授ける。", "It provides light (radius %d) when fueled."), (int)rad);
         }
     } else {
         if (rad > 0) {
-            sprintf(desc, _("永久光源(半径 %d)", "Permanent Light(radius %d)"), (int)rad);
-        }
-
-        if (rad < 0) {
-            sprintf(desc, _("永久光源(半径-%d)。", "Permanent Light(radius -%d)"), (int)-rad);
+            desc = format(_("永久光源(半径 %d)", "Permanent Light(radius %d)"), (int)rad);
+        } else if (rad < 0) {
+            desc = format(_("永久光源(半径-%d)。", "Permanent Light(radius -%d)"), (int)-rad);
         }
     }
 
     if (rad != 0) {
-        *misc_list++ = quark_str(quark_add(desc));
+        descriptions.push_back(std::move(desc));
     }
 
     if (flags.has(TR_TY_CURSE)) {
-        *misc_list++ = _("太古の怨念", "Ancient Curse");
+        descriptions.emplace_back(_("太古の怨念", "Ancient Curse"));
     }
 
     if (o_ptr->curse_flags.has(CurseTraitType::PERMA_CURSE)) {
-        *misc_list++ = _("永遠の呪い", "Permanently Cursed");
+        descriptions.emplace_back(_("永遠の呪い", "Permanently Cursed"));
     } else if (o_ptr->curse_flags.has(CurseTraitType::HEAVY_CURSE)) {
-        *misc_list++ = _("強力な呪い", "Heavily Cursed");
+        descriptions.emplace_back(_("強力な呪い", "Heavily Cursed"));
     } else if (o_ptr->curse_flags.has(CurseTraitType::CURSED)) {
-        *misc_list++ = _("呪い", "Cursed");
+        descriptions.emplace_back(_("呪い", "Cursed"));
     }
 
     if (flags.has(TR_ADD_L_CURSE)) {
-        *misc_list++ = _("呪いを増やす", "Cursing");
+        descriptions.emplace_back(_("呪いを増やす", "Cursing"));
     }
 
     if (flags.has(TR_ADD_H_CURSE)) {
-        *misc_list++ = _("強力な呪いを増やす", "Heavily Cursing");
+        descriptions.emplace_back(_("強力な呪いを増やす", "Heavily Cursing"));
     }
 
-    *misc_list = nullptr;
+    return descriptions;
 }
 
 /*!
@@ -258,33 +196,36 @@ static void analyze_misc_magic(ItemEntity *o_ptr, concptr *misc_list)
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param addition 追加ランダム耐性構造体の参照ポインタ
  */
-static void analyze_addition(ItemEntity *o_ptr, char *addition, size_t addition_sz)
+static std::string analyze_addition(const ItemEntity *o_ptr)
 {
     const auto &artifact = o_ptr->get_fixed_artifact();
-    strcpy(addition, "");
-
+    std::stringstream ss;
     if (artifact.gen_flags.has_all_of({ ItemGenerationTraitType::XTRA_POWER, ItemGenerationTraitType::XTRA_H_RES })) {
-        angband_strcat(addition, _("能力and耐性", "Ability and Resistance"), addition_sz);
+        ss << _("能力and耐性", "Ability and Resistance");
     } else if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_POWER)) {
-        angband_strcat(addition, _("能力", "Ability"), addition_sz);
+        ss << _("能力", "Ability");
         if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
-            angband_strcat(addition, _("(1/2でand耐性)", "(plus Resistance about 1/2)"), addition_sz);
+            ss << _("(1/2でand耐性)", "(plus Resistance about 1/2)");
         }
     } else if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_H_RES)) {
-        angband_strcat(addition, _("耐性", "Resistance"), addition_sz);
+        ss << _("耐性", "Resistance");
         if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
-            angband_strcat(addition, _("(1/2でand能力)", "(plus Ability about 1/2)"), addition_sz);
+            ss << _("(1/2でand能力)", "(plus Ability about 1/2)");
         }
     } else if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_RES_OR_POWER)) {
-        angband_strcat(addition, _("能力or耐性", "Ability or Resistance"), addition_sz);
+        ss << _("能力or耐性", "Ability or Resistance");
     }
 
-    if (artifact.gen_flags.has(ItemGenerationTraitType::XTRA_DICE)) {
-        if (strlen(addition) > 0) {
-            angband_strcat(addition, _("、", ", "), addition_sz);
-        }
-        angband_strcat(addition, _("ダイス数", "Dice number"), addition_sz);
+    if (artifact.gen_flags.has_not(ItemGenerationTraitType::XTRA_DICE)) {
+        return ss.str();
     }
+
+    if (ss.tellp() > 0) {
+        ss << _("、", ", ");
+    }
+
+    ss << _("ダイス数", "Dice number");
+    return ss.str();
 }
 
 /*!
@@ -294,57 +235,60 @@ static void analyze_addition(ItemEntity *o_ptr, char *addition, size_t addition_
  * @param o_ptr オブジェクト構造体の参照ポインタ
  * @param misc_desc 基本情報を収める文字列参照ポインタ
  */
-static void analyze_misc(ItemEntity *o_ptr, char *misc_desc, size_t misc_desc_sz)
+static std::string analyze_misc(const ItemEntity *o_ptr)
 {
     const auto &artifact = o_ptr->get_fixed_artifact();
-    const auto *mes = _("レベル %d, 希少度 %u, %d.%d kg, ＄%ld", "Level %d, Rarity %u, %d.%d lbs, %ld Gold");
-    strnfmt(misc_desc, misc_desc_sz, mes, (int)artifact.level, artifact.rarity,
-        _(lb_to_kg_integer(artifact.weight), artifact.weight / 10), _(lb_to_kg_fraction(artifact.weight), artifact.weight % 10), (long int)artifact.cost);
+    constexpr auto fmt = _("レベル %d, 希少度 %u, %d.%d kg, ＄%d", "Level %d, Rarity %u, %d.%d lbs, %d Gold");
+    const auto weight_integer = _(lb_to_kg_integer(artifact.weight), artifact.weight / 10);
+    const auto weight_fraction = _(lb_to_kg_fraction(artifact.weight), artifact.weight % 10);
+    return format(fmt, artifact.level, artifact.rarity, weight_integer, weight_fraction, artifact.cost);
 }
 
 /*!
- * @brief アーティファクトの情報全体を構造体に収める /
- * Fill in an object description structure for a given object
- * and its value in gold pieces
+ * @brief アーティファクトの情報全体を構造体に収める
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr オブジェクト構造体の参照ポインタ
- * @param desc_ptr 全アーティファクト情報を収める文字列参照ポインタ
  */
-void object_analyze(PlayerType *player_ptr, ItemEntity *o_ptr, obj_desc_list *desc_ptr)
+ArtifactsDumpInfo object_analyze(PlayerType *player_ptr, const ItemEntity *o_ptr)
 {
-    angband_strcpy(desc_ptr->description, analyze_general(player_ptr, o_ptr), MAX_NLEN);
-    analyze_pval(o_ptr, &desc_ptr->pval_info);
-    analyze_brand(o_ptr, desc_ptr->brands);
-    analyze_slay(o_ptr, desc_ptr->slays);
-    analyze_immune(o_ptr, desc_ptr->immunities);
-    analyze_resist(o_ptr, desc_ptr->resistances);
-    analyze_vulnerable(o_ptr, desc_ptr->vulnerables);
-    analyze_sustains(o_ptr, desc_ptr->sustains);
-    analyze_misc_magic(o_ptr, desc_ptr->misc_magic);
-    analyze_addition(o_ptr, desc_ptr->addition, sizeof(desc_ptr->addition));
-    analyze_misc(o_ptr, desc_ptr->misc_desc, sizeof(desc_ptr->misc_desc));
-    desc_ptr->activation = activation_explanation(o_ptr);
+    ArtifactsDumpInfo info{};
+    info.description = analyze_general(player_ptr, o_ptr);
+    info.pval_info.analyze(*o_ptr);
+    info.brands = analyze_brand(o_ptr);
+    info.slays = analyze_slay(o_ptr);
+    info.immunities = analyze_immune(o_ptr);
+    info.resistances = analyze_resist(o_ptr);
+    info.vulnerabilities = analyze_vulnerable(o_ptr);
+    info.sustenances = analyze_sustains(o_ptr);
+    info.misc_magic = analyze_misc_magic(o_ptr);
+    info.addition = analyze_addition(o_ptr);
+    info.misc_desc = analyze_misc(o_ptr);
+    info.activation = activation_explanation(o_ptr);
+    return info;
 }
 
 /*!
- * @brief ランダムアーティファクト１件を解析する /
- * Fill in an object description structure for a given object
+ * @brief ランダムアーティファクト1件を解析する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param o_ptr ランダムアーティファクトのオブジェクト構造体参照ポインタ
  * @param desc_ptr 記述内容を収める構造体参照ポインタ
  */
-void random_artifact_analyze(PlayerType *player_ptr, ItemEntity *o_ptr, obj_desc_list *desc_ptr)
+ArtifactsDumpInfo random_artifact_analyze(PlayerType *player_ptr, const ItemEntity *o_ptr)
 {
-    angband_strcpy(desc_ptr->description, analyze_general(player_ptr, o_ptr), MAX_NLEN);
-    analyze_pval(o_ptr, &desc_ptr->pval_info);
-    analyze_brand(o_ptr, desc_ptr->brands);
-    analyze_slay(o_ptr, desc_ptr->slays);
-    analyze_immune(o_ptr, desc_ptr->immunities);
-    analyze_resist(o_ptr, desc_ptr->resistances);
-    analyze_vulnerable(o_ptr, desc_ptr->vulnerables);
-    analyze_sustains(o_ptr, desc_ptr->sustains);
-    analyze_misc_magic(o_ptr, desc_ptr->misc_magic);
-    desc_ptr->activation = activation_explanation(o_ptr);
-    sprintf(desc_ptr->misc_desc, _("重さ %d.%d kg", "Weight %d.%d lbs"), _(lb_to_kg_integer(o_ptr->weight), o_ptr->weight / 10),
-        _(lb_to_kg_fraction(o_ptr->weight), o_ptr->weight % 10));
+    ArtifactsDumpInfo info{};
+    info.description = analyze_general(player_ptr, o_ptr);
+    info.pval_info.analyze(*o_ptr);
+    info.brands = analyze_brand(o_ptr);
+    info.slays = analyze_slay(o_ptr);
+    info.immunities = analyze_immune(o_ptr);
+    info.resistances = analyze_resist(o_ptr);
+    info.vulnerabilities = analyze_vulnerable(o_ptr);
+    info.sustenances = analyze_sustains(o_ptr);
+    info.misc_magic = analyze_misc_magic(o_ptr);
+    info.activation = activation_explanation(o_ptr);
+    constexpr auto weight_mes = _("重さ %d.%d kg", "Weight %d.%d lbs");
+    const auto weight_integer = _(lb_to_kg_integer(o_ptr->weight), o_ptr->weight / 10);
+    const auto weight_fraction = _(lb_to_kg_fraction(o_ptr->weight), o_ptr->weight % 10);
+    info.misc_desc = format(weight_mes, weight_integer, weight_fraction);
+    return info;
 }

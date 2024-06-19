@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "system/angband.h"
 
@@ -8,7 +8,7 @@ public:
     ObjectZapWandEntity(PlayerType *player_ptr);
     virtual ~ObjectZapWandEntity() = default;
 
-    void execute(INVENTORY_IDX item);
+    void execute(INVENTORY_IDX i_idx);
 
 private:
     PlayerType *player_ptr;

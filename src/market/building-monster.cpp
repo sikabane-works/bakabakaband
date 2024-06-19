@@ -1,4 +1,4 @@
-﻿#include "market/building-monster.h"
+#include "market/building-monster.h"
 #include "core/asking-player.h"
 #include "core/stuff-handler.h"
 #include "game-option/game-play-options.h"
@@ -6,7 +6,6 @@
 #include "lore/lore-store.h"
 #include "lore/lore-util.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "system/monster-race-info.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
@@ -24,7 +23,6 @@
  */
 bool research_mon(PlayerType *player_ptr)
 {
-    char buf[256];
     bool notpicked;
     bool recall = false;
     uint16_t why = 0;
@@ -32,20 +30,16 @@ bool research_mon(PlayerType *player_ptr)
     bool all = false;
     bool uniq = false;
     bool norm = false;
-    char temp[MAX_MONSTER_NAME] = "";
-
     screen_save();
-
-    char sym;
-    if (!get_com(
-            _("モンスターの文字を入力して下さい(記号 or ^A全,^Uユ,^N非ユ,^M名前):", "Enter character to be identified(^A:All,^U:Uniqs,^N:Non uniqs,^M:Name): "),
-            &sym, false))
-
-    {
+    constexpr auto prompt = _("モンスターの文字を入力して下さい(記号 or ^A全,^Uユ,^N非ユ,^M名前):",
+        "Enter character to be identified(^A:All,^U:Uniqs,^N:Non uniqs,^M:Name): ");
+    const auto sym_opt = input_command(prompt, false);
+    if (!sym_opt.has_value()) {
         screen_load();
         return false;
     }
 
+    const auto sym = sym_opt.value();
     IDX ident_i;
     for (ident_i = 0; ident_info[ident_i]; ++ident_i) {
         if (sym == ident_info[ident_i][0]) {
@@ -53,94 +47,83 @@ bool research_mon(PlayerType *player_ptr)
         }
     }
 
-    /* XTRA HACK WHATSEARCH */
+    std::string buf;
+    std::string monster_name("");
     if (sym == KTRL('A')) {
         all = true;
-        strcpy(buf, _("全モンスターのリスト", "Full monster list."));
+        buf = _("全モンスターのリスト", "Full monster list.");
     } else if (sym == KTRL('U')) {
         all = uniq = true;
-        strcpy(buf, _("ユニーク・モンスターのリスト", "Unique monster list."));
+        buf = _("ユニーク・モンスターのリスト", "Unique monster list.");
     } else if (sym == KTRL('N')) {
         all = norm = true;
-        strcpy(buf, _("ユニーク外モンスターのリスト", "Non-unique monster list."));
+        buf = _("ユニーク外モンスターのリスト", "Non-unique monster list.");
     } else if (sym == KTRL('M')) {
         all = true;
-        if (!get_string(_("名前(英語の場合小文字で可)", "Enter name:"), temp, 70)) {
-            temp[0] = 0;
+        const auto monster_name_opt = input_string(_("名前(英語の場合小文字で可)", "Enter name:"), MAX_MONSTER_NAME);
+        if (!monster_name_opt.has_value()) {
             screen_load();
-
             return false;
         }
 
-        sprintf(buf, _("名前:%sにマッチ", "Monsters' names with \"%s\""), temp);
+        monster_name = monster_name_opt.value();
+        buf = format(_("名前:%sにマッチ", "Monsters' names with \"%s\""), monster_name.data());
     } else if (ident_info[ident_i]) {
-        sprintf(buf, "%c - %s.", sym, ident_info[ident_i] + 2);
+        buf = format("%c - %s.", sym, ident_info[ident_i] + 2);
     } else {
-        sprintf(buf, "%c - %s", sym, _("無効な文字", "Unknown Symbol"));
+        buf = format("%c - %s", sym, _("無効な文字", "Unknown Symbol"));
     }
 
-    /* Display the result */
     prt(buf, 16, 10);
-
-    /* Allocate the "who" array */
-    std::vector<MonsterRaceId> who;
-
-    /* Collect matching monsters */
-    for (const auto &[r_idx, r_ref] : monraces_info) {
-        /* Empty monster */
-        if (!MonsterRace(r_ref.idx).is_valid() || r_ref.name.empty()) {
+    std::vector<MonsterRaceId> monraces;
+    for (const auto &[monrace_id, monrace] : monraces_info) {
+        if (!MonsterRace(monrace_id).is_valid()) {
             continue;
         }
 
-        /* XTRA HACK WHATSEARCH */
         /* Require non-unique monsters if needed */
-        if (norm && r_ref.kind_flags.has(MonsterKindType::UNIQUE)) {
+        if (norm && monrace.kind_flags.has(MonsterKindType::UNIQUE)) {
             continue;
         }
 
         /* Require unique monsters if needed */
-        if (uniq && r_ref.kind_flags.has_not(MonsterKindType::UNIQUE)) {
+        if (uniq && monrace.kind_flags.has_not(MonsterKindType::UNIQUE)) {
             continue;
         }
 
         /* 名前検索 */
-        if (temp[0]) {
-            for (int xx = 0; temp[xx] && xx < 80; xx++) {
+        if (!monster_name.empty()) {
+            for (size_t xx = 0; (xx < monster_name.length()); xx++) {
 #ifdef JP
-                if (iskanji(temp[xx])) {
+                if (iskanji(monster_name[xx])) {
                     xx++;
                     continue;
                 }
 #endif
-                if (isupper(temp[xx])) {
-                    temp[xx] = (char)tolower(temp[xx]);
+                if (isupper(monster_name[xx])) {
+                    monster_name[xx] = (char)tolower(monster_name[xx]);
                 }
             }
 
-            char temp2[MAX_MONSTER_NAME];
-#ifdef JP
-            strcpy(temp2, r_ref.E_name.data());
-#else
-            strcpy(temp2, r_ref.name.data());
-#endif
-            for (int xx = 0; temp2[xx] && xx < 80; xx++) {
-                if (isupper(temp2[xx])) {
-                    temp2[xx] = (char)tolower(temp2[xx]);
+            std::string temp2 = _(monrace.E_name, monrace.name);
+            for (auto &ch : temp2) {
+                if (isupper(ch)) {
+                    ch = static_cast<char>(tolower(ch));
                 }
             }
 
 #ifdef JP
-            if (angband_strstr(temp2, temp) || angband_strstr(r_ref.name.data(), temp))
+            if (str_find(temp2, monster_name) || str_find(monrace.name, monster_name))
 #else
-            if (angband_strstr(temp2, temp))
+            if (str_find(temp2, monster_name))
 #endif
-                who.push_back(r_ref.idx);
-        } else if (all || (r_ref.d_char == sym)) {
-            who.push_back(r_ref.idx);
+                monraces.push_back(monrace_id);
+        } else if (all || (monrace.d_char == sym)) {
+            monraces.push_back(monrace_id);
         }
     }
 
-    if (who.empty()) {
+    if (monraces.empty()) {
         screen_load();
 
         return false;
@@ -150,21 +133,21 @@ bool research_mon(PlayerType *player_ptr)
     char query = 'y';
 
     if (why) {
-        ang_sort(player_ptr, who.data(), &why, who.size(), ang_sort_comp_hook, ang_sort_swap_hook);
+        ang_sort(player_ptr, monraces.data(), &why, monraces.size(), ang_sort_comp_hook, ang_sort_swap_hook);
     }
 
     uint i;
     static int old_sym = '\0';
     static uint old_i = 0;
-    if (old_sym == sym && old_i < who.size()) {
+    if (old_sym == sym && old_i < monraces.size()) {
         i = old_i;
     } else {
-        i = who.size() - 1;
+        i = monraces.size() - 1;
     }
 
     notpicked = true;
     while (notpicked) {
-        auto r_idx = who[i];
+        auto r_idx = monraces[i];
         roff_top(r_idx);
         term_addstr(-1, TERM_WHITE, _(" ['r'思い出, ' 'で続行, ESC]", " [(r)ecall, ESC, space to continue]"));
         while (true) {
@@ -191,7 +174,7 @@ bool research_mon(PlayerType *player_ptr)
         }
 
         if (query == '-') {
-            if (++i == who.size()) {
+            if (++i == monraces.size()) {
                 i = 0;
                 if (!expand_list) {
                     break;
@@ -202,7 +185,7 @@ bool research_mon(PlayerType *player_ptr)
         }
 
         if (i-- == 0) {
-            i = who.size() - 1;
+            i = monraces.size() - 1;
             if (!expand_list) {
                 break;
             }

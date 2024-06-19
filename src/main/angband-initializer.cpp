@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file angband-initializer.cpp
  * @brief 馬鹿馬鹿蛮怒のシステム初期化
  * @date 2014/01/28
@@ -23,7 +23,6 @@
 #include "main/info-initializer.h"
 #include "market/building-initializer.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags7.h"
 #include "system/angband-version.h"
 #include "system/dungeon-info.h"
 #include "system/monster-race-info.h"
@@ -81,7 +80,7 @@ void init_file_paths(const std::filesystem::path &libpath)
  */
 static void init_note_term(concptr str)
 {
-    term_erase(0, 23, 255);
+    term_erase(0, 23);
     term_putstr(20, 23, -1, TERM_WHITE, str);
     term_fresh();
 }
@@ -220,7 +219,7 @@ void init_angband(PlayerType *player_ptr, bool no_term)
 
     for (const auto &d_ref : dungeons_info) {
         if (d_ref.idx > 0 && MonsterRace(d_ref.final_guardian).is_valid()) {
-            monraces_info[d_ref.final_guardian].flags7 |= RF7_GUARDIAN;
+            monraces_info[d_ref.final_guardian].misc_flags.set(MonsterMiscType::GUARDIAN);
         }
     }
 

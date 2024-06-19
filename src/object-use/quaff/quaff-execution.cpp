@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 薬を飲んだ時の各種効果処理
  * @date 2022/03/10
  * @author Hourier
@@ -41,27 +41,27 @@ ObjectQuaffEntity::ObjectQuaffEntity(PlayerType *player_ptr)
 
 /*!
  * @brief 薬を飲む.
- * @param item 飲む薬オブジェクトの所持品ID
+ * @param i_idx 薬のインベントリID
  * @details
  * 効果発動のあと、食料タイプによって空腹度を少し充足する。
  * 但し骸骨は除く
  */
-void ObjectQuaffEntity::execute(INVENTORY_IDX item)
+void ObjectQuaffEntity::execute(INVENTORY_IDX i_idx)
 {
     if (!this->can_influence()) {
         return;
     }
 
-    const auto &o_ref = this->copy_object(item);
-    vary_item(this->player_ptr, item, -1);
+    auto item = this->copy_object(i_idx);
+    vary_item(this->player_ptr, i_idx, -1);
     sound(SOUND_QUAFF);
 
     player_ptr->plus_incident(INCIDENT::QUAFF, 1);
 
-    auto ident = QuaffEffects(this->player_ptr).influence(o_ref);
+    auto ident = QuaffEffects(this->player_ptr).influence(item);
     if (PlayerRace(this->player_ptr).equals(PlayerRaceType::SKELETON)) {
         msg_print(_("液体の一部はあなたのアゴを素通りして落ちた！", "Some of the fluid falls through your jaws!"));
-        (void)potion_smash_effect(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, o_ref.bi_id);
+        (void)potion_smash_effect(this->player_ptr, 0, this->player_ptr->y, this->player_ptr->x, item.bi_id);
     }
 
     static constexpr auto flags_srf = {
@@ -70,11 +70,11 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
     };
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     rfu.set_flags(flags_srf);
-    this->change_virtue_as_quaff(o_ref);
-    object_tried(&o_ref);
-    if (ident && !o_ref.is_aware()) {
-        object_aware(this->player_ptr, &o_ref);
-        gain_exp(this->player_ptr, (o_ref.get_baseitem().level + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
+    this->change_virtue_as_quaff(item);
+    item.mark_as_tried();
+    if (ident && !item.is_aware()) {
+        object_aware(this->player_ptr, &item);
+        gain_exp(this->player_ptr, (item.get_baseitem().level + (this->player_ptr->lev >> 1)) / this->player_ptr->lev);
     }
 
     static constexpr auto flags = {
@@ -87,7 +87,7 @@ void ObjectQuaffEntity::execute(INVENTORY_IDX item)
         return;
     }
 
-    this->moisten(o_ref);
+    this->moisten(item);
 }
 
 bool ObjectQuaffEntity::can_influence()
@@ -124,9 +124,9 @@ bool ObjectQuaffEntity::can_quaff()
     return ItemUseChecker(this->player_ptr).check_stun(_("朦朧としていて瓶の蓋を開けられなかった！", "You are too stunned to quaff it!"));
 }
 
-ItemEntity ObjectQuaffEntity::copy_object(const INVENTORY_IDX item)
+ItemEntity ObjectQuaffEntity::copy_object(const INVENTORY_IDX i_idx)
 {
-    auto *tmp_o_ptr = ref_item(this->player_ptr, item);
+    auto *tmp_o_ptr = ref_item(this->player_ptr, i_idx);
     auto o_val = *tmp_o_ptr;
     o_val.number = 1;
     return o_val;

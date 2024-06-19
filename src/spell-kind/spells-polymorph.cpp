@@ -1,4 +1,4 @@
-﻿#include "spell-kind/spells-polymorph.h"
+#include "spell-kind/spells-polymorph.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "floor/floor-object.h"
@@ -9,13 +9,13 @@
 #include "monster-floor/monster-remover.h"
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
 #include "monster/monster-status.h"
 #include "monster/monster-util.h"
 #include "player/player-sex.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
@@ -40,7 +40,7 @@
 static MonsterRaceId poly_r_idx(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     auto *r_ptr = &monraces_info[r_idx];
-    if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(r_ptr->flags1, RF1_QUESTOR)) {
+    if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->misc_flags.has(MonsterMiscType::QUESTOR)) {
         return r_idx;
     }
 
@@ -48,7 +48,7 @@ static MonsterRaceId poly_r_idx(PlayerType *player_ptr, MonsterRaceId r_idx)
     DEPTH lev2 = r_ptr->level + ((randint1(20) / randint1(9)) + 1);
     MonsterRaceId r;
     for (int i = 0; i < 1000; i++) {
-        r = get_mon_num(player_ptr, 0, (player_ptr->current_floor_ptr->dun_level + r_ptr->level) / 2 + 5, 0);
+        r = get_mon_num(player_ptr, 0, (player_ptr->current_floor_ptr->dun_level + r_ptr->level) / 2 + 5, PM_NONE);
         if (!MonsterRace(r).is_valid()) {
             break;
         }
@@ -86,7 +86,7 @@ bool polymorph_monster(PlayerType *player_ptr, POSITION y, POSITION x)
     bool targeted = target_who == g_ptr->m_idx;
     bool health_tracked = player_ptr->health_who == g_ptr->m_idx;
 
-    if (floor_ptr->inside_arena || player_ptr->phase_out) {
+    if (floor_ptr->inside_arena || AngbandSystem::get_instance().is_phase_out()) {
         return false;
     }
     if ((player_ptr->riding == g_ptr->m_idx) || m_ptr->mflag2.has(MonsterConstantFlagType::KAGE)) {
@@ -115,13 +115,13 @@ bool polymorph_monster(PlayerType *player_ptr, POSITION y, POSITION x)
     m_ptr->hold_o_idx_list.clear();
     delete_monster_idx(player_ptr, g_ptr->m_idx);
     bool polymorphed = false;
-    if (place_monster_aux(player_ptr, 0, y, x, new_r_idx, mode)) {
+    if (place_specific_monster(player_ptr, 0, y, x, new_r_idx, mode)) {
         floor_ptr->m_list[hack_m_idx_ii].nickname = back_m.nickname;
         floor_ptr->m_list[hack_m_idx_ii].parent_m_idx = back_m.parent_m_idx;
         floor_ptr->m_list[hack_m_idx_ii].hold_o_idx_list = back_m.hold_o_idx_list;
         polymorphed = true;
     } else {
-        if (place_monster_aux(player_ptr, 0, y, x, old_r_idx, (mode | PM_NO_KAGE | PM_IGNORE_TERRAIN))) {
+        if (place_specific_monster(player_ptr, 0, y, x, old_r_idx, (mode | PM_NO_KAGE | PM_IGNORE_TERRAIN))) {
             floor_ptr->m_list[hack_m_idx_ii] = back_m;
             mproc_init(floor_ptr);
         } else {

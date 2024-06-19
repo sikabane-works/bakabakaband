@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file random-art-generator.cpp
  * @brief ランダムアーティファクトの生成メイン定義 / Artifact code
  * @date 2020/07/14
@@ -24,7 +24,6 @@
 #include "object-enchant/tr-types.h"
 #include "object-hook/hook-armor.h"
 #include "object-hook/hook-weapon.h"
-#include "object/object-flags.h"
 #include "object/object-kind-hook.h"
 #include "object/object-value-calc.h"
 #include "object/tval-types.h"
@@ -36,18 +35,16 @@
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
 #include "util/bit-flags-calculator.h"
-#include "util/quarks.h"
 #include "view/display-messages.h"
 #include "wizard/artifact-bias-table.h"
 #include "wizard/wizard-messages.h"
 #include "world/world.h"
+#include <sstream>
 
 static bool weakening_artifact(ItemEntity *o_ptr)
 {
     const auto &baseitem = o_ptr->get_baseitem();
-    auto flags = object_flags(o_ptr);
-
-    if (flags.has(TR_KILL_EVIL)) {
+    if (o_ptr->get_flags().has(TR_KILL_EVIL)) {
         o_ptr->art_flags.reset(TR_KILL_EVIL);
         o_ptr->art_flags.set(TR_SLAY_EVIL);
         return true;
@@ -254,7 +251,7 @@ static void invest_powers(PlayerType *player_ptr, ItemEntity *o_ptr, int *powers
 static void strengthen_pval(ItemEntity *o_ptr)
 {
     if (o_ptr->art_flags.has(TR_BLOWS)) {
-        o_ptr->pval = randint1(2);
+        o_ptr->pval = randnum1<short>(2);
         if (o_ptr->bi_key == BaseitemKey(ItemKindType::SWORD, SV_HAYABUSA)) {
             o_ptr->pval++;
         }
@@ -277,7 +274,7 @@ static void strengthen_pval(ItemEntity *o_ptr)
 static void invest_positive_modified_value(ItemEntity *o_ptr)
 {
     if (o_ptr->is_protector()) {
-        o_ptr->to_a += randint1(o_ptr->to_a > 19 ? 1 : 20 - o_ptr->to_a);
+        o_ptr->to_a += randnum1<short>(o_ptr->to_a > 19 ? 1 : 20 - o_ptr->to_a);
         return;
     }
 
@@ -285,8 +282,8 @@ static void invest_positive_modified_value(ItemEntity *o_ptr)
         return;
     }
 
-    o_ptr->to_h += randint1(o_ptr->to_h > 19 ? 1 : 20 - o_ptr->to_h);
-    o_ptr->to_d += randint1(o_ptr->to_d > 19 ? 1 : 20 - o_ptr->to_d);
+    o_ptr->to_h += randnum1<short>(o_ptr->to_h > 19 ? 1 : 20 - o_ptr->to_h);
+    o_ptr->to_d += randnum1<short>(o_ptr->to_d > 19 ? 1 : 20 - o_ptr->to_d);
     if ((o_ptr->art_flags.has(TR_WIS)) && (o_ptr->pval > 0)) {
         o_ptr->art_flags.set(TR_BLESSED);
     }
@@ -389,22 +386,28 @@ static std::string name_unnatural_random_artifact(PlayerType *player_ptr, ItemEn
         return get_random_name(*o_ptr, o_ptr->is_protector(), power_level);
     }
 
-    concptr ask_msg = _("このアーティファクトを何と名付けますか？", "What do you want to call the artifact? ");
+    constexpr auto prompt = _("このアーティファクトを何と名付けますか？", "What do you want to call the artifact? ");
     object_aware(player_ptr, o_ptr);
-    object_known(o_ptr);
+    o_ptr->mark_as_known();
     o_ptr->ident |= IDENT_FULL_KNOWN;
     o_ptr->randart_name.reset();
     (void)screen_object(player_ptr, o_ptr, 0L);
-    char new_name[160] = "";
-    if (!get_string(ask_msg, new_name, sizeof new_name) || !new_name[0]) {
-        if (one_in_(2)) {
-            return get_table_sindarin_aux();
-        } else {
-            return get_table_name_aux();
-        }
+
+    auto wrap_name = [](const auto &name) {
+        std::stringstream ss;
+        ss << _("《", "'") << name << _("》", "'");
+        return ss.str();
+    };
+    const auto new_name = input_string(prompt, 160);
+    if (new_name && !new_name->empty()) {
+        return wrap_name(*new_name);
     }
 
-    return std::string(_("《", "'")).append(new_name).append(_("》", "'"));
+    if (one_in_(2)) {
+        return wrap_name(get_table_sindarin_aux());
+    }
+
+    return wrap_name(get_table_name_aux());
 }
 
 static void generate_unnatural_random_artifact(

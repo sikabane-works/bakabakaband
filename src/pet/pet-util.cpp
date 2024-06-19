@@ -1,9 +1,7 @@
-﻿#include "pet/pet-util.h"
+#include "pet/pet-util.h"
 #include "core/stuff-handler.h"
 #include "grid/grid.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
 #include "player-info/class-info.h"
@@ -24,7 +22,7 @@ int total_friends = 0;
  * @param now_riding trueなら下馬処理、falseならば騎乗処理
  * @return 可能ならばtrueを返す
  */
-bool can_player_ride_pet(PlayerType *player_ptr, grid_type *g_ptr, bool now_riding)
+bool can_player_ride_pet(PlayerType *player_ptr, const Grid *g_ptr, bool now_riding)
 {
     bool old_character_xtra = w_ptr->character_xtra;
     MONSTER_IDX old_riding = player_ptr->riding;
@@ -76,7 +74,7 @@ PERCENTAGE calculate_upkeep(PlayerType *player_ptr)
         if (!m_ptr->is_valid()) {
             continue;
         }
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
 
         if (!m_ptr->is_pet()) {
             continue;
@@ -95,7 +93,7 @@ PERCENTAGE calculate_upkeep(PlayerType *player_ptr)
 
         if (player_ptr->riding == m_idx) {
             total_friend_levels += (r_ptr->level + 5) * 2;
-        } else if (!has_a_unique && any_bits(monraces_info[m_ptr->r_idx].flags7, RF7_RIDING)) {
+        } else if (!has_a_unique && m_ptr->get_monrace().misc_flags.has(MonsterMiscType::RIDING)) {
             total_friend_levels += (r_ptr->level + 5) * 7 / 2;
         } else {
             total_friend_levels += (r_ptr->level + 5) * 10;

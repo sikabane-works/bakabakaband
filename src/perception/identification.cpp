@@ -1,17 +1,15 @@
-﻿#include "perception/identification.h"
+#include "perception/identification.h"
 #include "artifact/fixed-art-types.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "game-option/special-options.h"
 #include "io/input-key-acceptor.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
 #include "monster-race/race-indice-types.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
 #include "object-hook/hook-weapon.h"
-#include "object/object-flags.h"
 #include "object/object-info.h"
 #include "sv-definition/sv-amulet-types.h"
 #include "sv-definition/sv-other-types.h"
@@ -26,6 +24,8 @@
 #include "util/buffer-shaper.h"
 #include "util/enum-converter.h"
 #include <algorithm>
+#include <array>
+#include <string>
 
 /*!
  * @brief オブジェクトの*鑑定*内容を詳述して表示する /
@@ -37,9 +37,9 @@
  */
 bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
 {
-    concptr info[128];
+    std::array<std::string, 128> info{};
     int trivial_info = 0;
-    auto flags = object_flags(o_ptr);
+    const auto flags = o_ptr->get_flags();
 
     const auto item_text = o_ptr->is_fixed_artifact() ? o_ptr->get_fixed_artifact().text.data() : o_ptr->get_baseitem().text.data();
     const auto item_text_lines = shape_buffer(item_text, 77 - 15);
@@ -99,10 +99,6 @@ bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
         info[i++] = _("それは魔法の難易度を下げる。", "It affects your ability to cast spells.");
     }
 
-    if (flags.has(TR_HEAVY_SPELL)) {
-        info[i++] = _("それは魔法の難易度を上げる。", "It interferes with casting spells.");
-    }
-
     if (flags.has(TR_MIGHTY_THROW)) {
         info[i++] = _("それは物を強く投げることを可能にする。", "It provides great strength when you throw an item.");
     }
@@ -112,7 +108,7 @@ bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
         auto *r_ptr = &monraces_info[statue_r_idx];
         if (statue_r_idx == MonsterRaceId::STOLENMAN) {
             info[i++] = _("それは部屋に飾ると恥ずかしい。", "It is shameful.");
-        } else if (r_ptr->flags2 & (RF2_ELDRITCH_HORROR)) {
+        } else if (r_ptr->misc_flags.has(MonsterMiscType::ELDRITCH_HORROR)) {
             info[i++] = _("それは部屋に飾ると恐い。", "It is fearful.");
         } else {
             info[i++] = _("それは部屋に飾ると楽しい。", "It is cheerful.");
@@ -815,9 +811,7 @@ bool screen_object(PlayerType *player_ptr, ItemEntity *o_ptr, BIT_FLAGS mode)
     }
 
     screen_save();
-    int wid, hgt;
-    term_get_size(&wid, &hgt);
-
+    const auto &[wid, hgt] = term_get_size();
     std::string item_name;
     if (!(mode & SCROBJ_FAKE_OBJECT)) {
         item_name = describe_flavor(player_ptr, o_ptr, 0);

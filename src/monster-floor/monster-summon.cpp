@@ -1,4 +1,4 @@
-﻿#include "monster-floor/monster-summon.h"
+#include "monster-floor/monster-summon.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "floor/geometry.h"
 #include "floor/wild.h"
@@ -8,8 +8,6 @@
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
@@ -23,25 +21,14 @@
 #include "system/player-type-definition.h"
 
 /*!
- * @var summon_specific_who
- * @brief 召喚を行ったプレイヤーあるいはモンスターのIDを示すグローバル変数 / Hack -- the index of the summoning monster
- * @todo summon_specific_who グローバル変数の除去と関数引数への代替を行う
- */
-int summon_specific_who = -1;
-
-/*!
- * @var summon_unique_okay
- * @brief 召喚対象にユニークを含めるかを示すグローバル変数 / summoning unique enable
- * @todo summon_unique_okay グローバル変数の除去と関数引数への代替を行う
- */
-bool summon_unique_okay = false;
-
-/*!
  * @brief モンスターが召喚の基本条件に合っているかをチェックする / Hack -- help decide if a monster race is "okay" to summon
  * @param r_idx チェックするモンスター種族ID
+ * @param summon_who 召喚主のモンスター情報ID
+ * @param type 召喚種別
+ * @param is_unique_allowed ユニークモンスターを召喚対象に含めるかどうか
  * @return 召喚対象にできるならばTRUE
  */
-static bool summon_specific_okay(PlayerType *player_ptr, MonsterRaceId r_idx)
+static bool summon_specific_okay(PlayerType *player_ptr, MonsterRaceId r_idx, MONSTER_IDX summon_who, summon_type type, bool is_unique_allowed)
 {
     auto *r_ptr = &monraces_info[r_idx];
     if (!mon_hook_dungeon(player_ptr, r_idx)) {
@@ -49,39 +36,39 @@ static bool summon_specific_okay(PlayerType *player_ptr, MonsterRaceId r_idx)
     }
 
     auto &floor = *player_ptr->current_floor_ptr;
-    if (summon_specific_who > 0) {
-        auto *m_ptr = &floor.m_list[summon_specific_who];
+    if (summon_who > 0) {
+        auto *m_ptr = &floor.m_list[summon_who];
         if (monster_has_hostile_align(player_ptr, m_ptr, 0, 0, r_ptr)) {
             return false;
         }
-    } else if (summon_specific_who < 0) {
+    } else if (summon_who < 0) {
         if (monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr) && !one_in_(std::abs(player_ptr->alignment) / 2 + 1)) {
             return false;
         }
     }
 
-    if (!summon_unique_okay && (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)))) {
+    if (!is_unique_allowed && (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)))) {
         return false;
     }
 
-    if (!summon_specific_type) {
+    if (type == SUMMON_NONE) {
         return true;
     }
 
     const auto is_like_unique = r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL));
-    if ((summon_specific_who < 0) && is_like_unique && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) {
+    if ((summon_who < 0) && is_like_unique && monster_has_hostile_align(player_ptr, nullptr, 10, -10, r_ptr)) {
         return false;
     }
 
-    if ((r_ptr->flags7 & RF7_CHAMELEON) && floor.get_dungeon_definition().flags.has(DungeonFeatureType::CHAMELEON)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::CHAMELEON) && floor.get_dungeon_definition().flags.has(DungeonFeatureType::CHAMELEON)) {
         return true;
     }
 
-    if (summon_specific_who > 0) {
-        auto *m_ptr = &floor.m_list[summon_specific_who];
-        return check_summon_specific(player_ptr, m_ptr->r_idx, r_idx);
+    if (summon_who > 0) {
+        auto *m_ptr = &floor.m_list[summon_who];
+        return check_summon_specific(player_ptr, m_ptr->r_idx, r_idx, type);
     } else {
-        return check_summon_specific(player_ptr, MonsterRaceId::PLAYER, r_idx);
+        return check_summon_specific(player_ptr, MonsterRaceId::PLAYER, r_idx, type);
     }
 }
 
@@ -119,7 +106,7 @@ DEPTH get_dungeon_or_wilderness_level(PlayerType *player_ptr)
 /*!
  * @brief モンスターを召喚により配置する / Place a monster (of the specified "type") near the given location. Return TRUE if a monster was actually summoned.
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who 召喚主のモンスター情報ID
+ * @param src_idx 召喚主のモンスター情報ID
  * @param y1 目標地点y座標
  * @param x1 目標地点x座標
  * @param lev 相当生成階
@@ -127,7 +114,7 @@ DEPTH get_dungeon_or_wilderness_level(PlayerType *player_ptr)
  * @param mode 生成オプション
  * @return 召喚できたらtrueを返す
  */
-bool summon_specific(PlayerType *player_ptr, MONSTER_IDX who, POSITION y1, POSITION x1, DEPTH lev, summon_type type, BIT_FLAGS mode)
+bool summon_specific(PlayerType *player_ptr, MONSTER_IDX src_idx, POSITION y1, POSITION x1, DEPTH lev, summon_type type, BIT_FLAGS mode)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (floor_ptr->inside_arena) {
@@ -139,15 +126,14 @@ bool summon_specific(PlayerType *player_ptr, MONSTER_IDX who, POSITION y1, POSIT
         return false;
     }
 
-    summon_specific_who = who;
-    summon_specific_type = type;
-    summon_unique_okay = (mode & PM_ALLOW_UNIQUE) != 0;
-    get_mon_num_prep(player_ptr, summon_specific_okay, get_monster_hook2(player_ptr, y, x));
+    auto summon_specific_hook = [src_idx, type, is_unique_allowed = (mode & PM_ALLOW_UNIQUE) != 0](PlayerType *player_ptr, MonsterRaceId r_idx) {
+        return summon_specific_okay(player_ptr, r_idx, src_idx, type, is_unique_allowed);
+    };
+    get_mon_num_prep(player_ptr, std::move(summon_specific_hook), get_monster_hook2(player_ptr, y, x), type);
 
     DEPTH dlev = get_dungeon_or_wilderness_level(player_ptr);
-    MonsterRaceId r_idx = get_mon_num(player_ptr, 0, (dlev + lev) / 2 + 5, 0);
+    MonsterRaceId r_idx = get_mon_num(player_ptr, 0, (dlev + lev) / 2 + 5, mode);
     if (!MonsterRace(r_idx).is_valid()) {
-        summon_specific_type = SUMMON_NONE;
         return false;
     }
 
@@ -155,18 +141,16 @@ bool summon_specific(PlayerType *player_ptr, MONSTER_IDX who, POSITION y1, POSIT
         mode |= PM_NO_KAGE;
     }
 
-    if (!place_monster_aux(player_ptr, who, y, x, r_idx, mode)) {
-        summon_specific_type = SUMMON_NONE;
+    const auto summon_who = is_monster(src_idx) ? std::make_optional(src_idx) : std::nullopt;
+    if (!place_specific_monster(player_ptr, src_idx, y, x, r_idx, mode, summon_who)) {
         return false;
     }
 
-    summon_specific_type = SUMMON_NONE;
-
     bool notice = false;
-    if (who <= 0) {
+    if (!is_monster(src_idx)) {
         notice = true;
     } else {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[who];
+        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[src_idx];
         if (m_ptr->is_pet()) {
             notice = true;
         } else if (is_seen(player_ptr, m_ptr)) {
@@ -186,14 +170,14 @@ bool summon_specific(PlayerType *player_ptr, MONSTER_IDX who, POSITION y1, POSIT
 /*!
  * @brief 特定モンスター種族を召喚により生成する / A "dangerous" function, creates a pet of the specified type
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who 召喚主のモンスター情報ID
+ * @param src_idx 召喚主のモンスター情報ID
  * @param oy 目標地点y座標
  * @param ox 目標地点x座標
  * @param r_idx 生成するモンスター種族ID
  * @param mode 生成オプション
  * @return 召喚できたらtrueを返す
  */
-bool summon_named_creature(PlayerType *player_ptr, MONSTER_IDX who, POSITION oy, POSITION ox, MonsterRaceId r_idx, BIT_FLAGS mode)
+bool summon_named_creature(PlayerType *player_ptr, MONSTER_IDX src_idx, POSITION oy, POSITION ox, MonsterRaceId r_idx, BIT_FLAGS mode)
 {
     if (!MonsterRace(r_idx).is_valid() || (r_idx >= static_cast<MonsterRaceId>(monraces_info.size()))) {
         return false;
@@ -204,5 +188,5 @@ bool summon_named_creature(PlayerType *player_ptr, MONSTER_IDX who, POSITION oy,
         return false;
     }
 
-    return place_monster_aux(player_ptr, who, y, x, r_idx, (mode | PM_NO_KAGE));
+    return place_specific_monster(player_ptr, src_idx, y, x, r_idx, (mode | PM_NO_KAGE));
 }

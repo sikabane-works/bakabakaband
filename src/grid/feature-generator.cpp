@@ -1,4 +1,4 @@
-﻿#include "grid/feature-generator.h"
+#include "grid/feature-generator.h"
 #include "dungeon/dungeon-flag-mask.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "dungeon/quest.h"
@@ -128,14 +128,9 @@ void gen_caverns_and_lakes(PlayerType *player_ptr, dungeon_type *dungeon_ptr, du
         build_cavern(player_ptr);
     }
 
-    if (inside_quest(quest_number(floor, floor.dun_level))) {
+    if (inside_quest(floor.get_quest_id())) {
         dd_ptr->destroyed = false;
     }
-}
-
-bool has_river_flag(dungeon_type *dungeon_ptr)
-{
-    return dungeon_ptr->flags.has_any_of(DF_RIVER_MASK);
 }
 
 /*!
@@ -155,7 +150,7 @@ static int next_to_corr(FloorType *floor_ptr, POSITION y1, POSITION x1)
     for (int i = 0; i < 4; i++) {
         POSITION y = y1 + ddy_ddd[i];
         POSITION x = x1 + ddx_ddd[i];
-        grid_type *g_ptr;
+        Grid *g_ptr;
         g_ptr = &floor_ptr->grid_array[y][x];
         if (g_ptr->cave_has_flag(TerrainCharacteristics::WALL) || !g_ptr->is_floor() || g_ptr->is_room()) {
             continue;

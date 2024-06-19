@@ -1,9 +1,10 @@
-﻿#include "load/world-loader.h"
+#include "load/world-loader.h"
 #include "cmd-building/cmd-building.h"
 #include "floor/wild.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "market/bounty.h"
+#include "system/angband-system.h"
 #include "system/building-type-definition.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
@@ -82,8 +83,9 @@ static void rd_world_info(PlayerType *player_ptr)
 
 void rd_global_configurations(PlayerType *player_ptr)
 {
-    w_ptr->seed_flavor = rd_u32b();
-    w_ptr->seed_town = rd_u32b();
+    auto &system = AngbandSystem::get_instance();
+    system.set_seed_flavor(rd_u32b());
+    system.set_seed_town(rd_u32b());
 
     player_ptr->panic_save = rd_u16b();
     w_ptr->total_winner = rd_u16b();

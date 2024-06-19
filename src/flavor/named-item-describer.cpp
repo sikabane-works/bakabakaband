@@ -1,4 +1,4 @@
-﻿#include "flavor/named-item-describer.h"
+#include "flavor/named-item-describer.h"
 #include "artifact/fixed-art-types.h"
 #include "flavor/flavor-util.h"
 #include "flavor/object-flavor-types.h"
@@ -9,18 +9,15 @@
 #include "object-enchant/object-ego.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-flags.h"
 #include "perception/object-perception.h"
 #include "system/artifact-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
-#include "util/quarks.h"
 #include "util/string-processor.h"
 #ifdef JP
 #else
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "object/tval-types.h"
 #include "system/monster-race-info.h"
 #endif
@@ -28,7 +25,7 @@
 
 static std::string get_fullname_if_set(const ItemEntity &item, const describe_option_type &opt)
 {
-    if (!opt.aware || object_flags(&item).has_not(TR_FULL_NAME)) {
+    if (!opt.aware || item.get_flags().has_not(TR_FULL_NAME)) {
         return "";
     }
 
@@ -95,7 +92,7 @@ static std::string describe_unique_name_before_body_ja(const ItemEntity &item, c
     }
 
     if (item.is_random_artifact()) {
-        const std::string_view name_sv = item.randart_name.value();
+        const std::string_view name_sv = *item.randart_name;
 
         /* '『' から始まらない伝説のアイテムの名前は最初に付加する */
         /* 英語版のセーブファイルから来た 'of XXX' は,「XXXの」と表示する */
@@ -104,11 +101,11 @@ static std::string describe_unique_name_before_body_ja(const ItemEntity &item, c
             ss << name_sv.substr(3) << "の";
             return ss.str();
         } else if (!name_sv.starts_with("『") && !name_sv.starts_with("《") && !name_sv.starts_with('\'')) {
-            return item.randart_name.value();
+            return *item.randart_name;
         }
     }
 
-    if (item.is_fixed_artifact() && object_flags(&item).has_not(TR_FULL_NAME)) {
+    if (item.is_fixed_artifact() && item.get_flags().has_not(TR_FULL_NAME)) {
         const auto &artifact = item.get_fixed_artifact();
         /* '『' から始まらない伝説のアイテムの名前は最初に付加する */
         if (artifact.name.find("『", 0, 2) != 0) {
@@ -131,7 +128,7 @@ static std::optional<std::string> describe_random_artifact_name_after_body_ja(co
         return std::nullopt;
     }
 
-    const std::string_view name_sv = item.randart_name.value();
+    const std::string_view name_sv = *item.randart_name;
     if (name_sv.starts_with("『") || name_sv.starts_with("《")) {
         return item.randart_name;
     }
@@ -281,14 +278,14 @@ static std::string describe_item_count_or_definite_article_en(const ItemEntity &
 
 static std::string describe_unique_name_after_body_en(const ItemEntity &item, const describe_option_type &opt)
 {
-    if (!opt.known || object_flags(&item).has(TR_FULL_NAME) || any_bits(opt.mode, OD_BASE_NAME)) {
+    if (!opt.known || item.get_flags().has(TR_FULL_NAME) || any_bits(opt.mode, OD_BASE_NAME)) {
         return "";
     }
 
     std::stringstream ss;
 
     if (item.is_random_artifact()) {
-        ss << ' ' << item.randart_name.value();
+        ss << ' ' << *item.randart_name;
         return ss.str();
     }
 

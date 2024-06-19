@@ -1,4 +1,4 @@
-﻿#include "effect/effect-monster-charm.h"
+#include "effect/effect-monster-charm.h"
 #include "avatar/avatar.h"
 #include "dungeon/quest.h"
 #include "effect/effect-monster-util.h"
@@ -7,9 +7,6 @@
 #include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
@@ -241,7 +238,7 @@ static void effect_monster_domination_corrupted_addition(PlayerType *player_ptr,
         (void)bss.mod_confusion(em_ptr->dam / 2);
         return;
     default:
-        if (any_bits(em_ptr->r_ptr->flags3, RF3_NO_FEAR)) {
+        if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_FEAR)) {
             em_ptr->note = _("には効果がなかった。", " is unaffected.");
         } else {
             (void)bss.mod_fear(static_cast<TIME_EFFECT>(em_ptr->dam));
@@ -298,11 +295,11 @@ ProcessResult effect_monster_domination(PlayerType *player_ptr, EffectMonster *e
     }
 
     const auto is_unique = em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    const auto is_questor = any_bits(em_ptr->r_ptr->flags1, RF1_QUESTOR);
-    const auto is_no_confusion = any_bits(em_ptr->r_ptr->flags3, RF3_NO_CONF);
+    const auto is_questor = em_ptr->r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
+    const auto is_no_confusion = em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF);
     if (is_unique || is_questor || is_no_confusion || (em_ptr->r_ptr->level > randint1((em_ptr->dam - 10) < 1 ? 1 : (em_ptr->dam - 10)) + 10)) {
-        if (((em_ptr->r_ptr->flags3 & RF3_NO_CONF) != 0) && is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-            em_ptr->r_ptr->r_flags3 |= (RF3_NO_CONF);
+        if ((em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) && is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
+            em_ptr->r_ptr->resistance_flags.set(MonsterResistanceType::NO_CONF);
         }
 
         em_ptr->do_conf = 0;
@@ -329,7 +326,7 @@ static bool effect_monster_crusade_domination(PlayerType *player_ptr, EffectMons
         return false;
     }
 
-    if (em_ptr->r_ptr->flags3 & RF3_NO_CONF) {
+    if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
         em_ptr->dam -= 50;
     }
     if (em_ptr->dam < 1) {
@@ -342,7 +339,7 @@ static bool effect_monster_crusade_domination(PlayerType *player_ptr, EffectMons
         return true;
     }
 
-    bool failed = any_bits(em_ptr->r_ptr->flags1, RF1_QUESTOR);
+    bool failed = em_ptr->r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     failed |= em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
     failed |= em_ptr->m_ptr->mflag2.has(MonsterConstantFlagType::NOPET);
     failed |= has_aggravate(player_ptr);
@@ -377,10 +374,10 @@ ProcessResult effect_monster_crusade(PlayerType *player_ptr, EffectMonster *em_p
         return ProcessResult::PROCESS_CONTINUE;
     }
 
-    if ((em_ptr->r_ptr->flags3 & RF3_NO_FEAR) == 0) {
+    if (em_ptr->r_ptr->resistance_flags.has_not(MonsterResistanceType::NO_FEAR)) {
         em_ptr->do_fear = randint1(90) + 10;
     } else if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-        em_ptr->r_ptr->r_flags3 |= RF3_NO_FEAR;
+        em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::NO_FEAR);
     }
 
     em_ptr->dam = 0;
@@ -444,15 +441,15 @@ ProcessResult effect_monster_capture(PlayerType *player_ptr, EffectMonster *em_p
     const auto &quest_list = QuestList::get_instance();
     auto *floor_ptr = player_ptr->current_floor_ptr;
 
-    auto quest_monster = inside_quest(floor_ptr->quest_number);
+    auto quest_monster = floor_ptr->is_in_quest();
     quest_monster &= (quest_list[floor_ptr->quest_number].type == QuestKindType::KILL_ALL);
     quest_monster &= !em_ptr->m_ptr->is_pet();
 
     auto cannot_capture = quest_monster;
     cannot_capture |= em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    cannot_capture |= any_bits(em_ptr->r_ptr->flags1, RF1_QUESTOR);
+    cannot_capture |= em_ptr->r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     cannot_capture |= em_ptr->r_ptr->population_flags.has(MonsterPopulationType::NAZGUL);
-    cannot_capture |= any_bits(em_ptr->r_ptr->flags7, RF7_UNIQUE2);
+    cannot_capture |= em_ptr->r_ptr->population_flags.has(MonsterPopulationType::ONLY_ONE);
     cannot_capture |= (em_ptr->m_ptr->parent_m_idx != 0);
     if (cannot_capture) {
         msg_format(_("%sには効果がなかった。", "%s is unaffected."), em_ptr->m_name);

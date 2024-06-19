@@ -1,9 +1,8 @@
-﻿#include "smith/object-smith.h"
+#include "smith/object-smith.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-enchant/tr-flags.h"
 #include "object-enchant/tr-types.h"
 #include "object/item-tester-hooker.h"
-#include "object/object-flags.h"
 #include "perception/object-perception.h"
 #include "player-base/player-class.h"
 #include "player-info/smith-data-type.h"
@@ -303,7 +302,7 @@ int Smith::get_essence_num_of_posessions(SmithEssenceType essence) const
 Smith::DrainEssenceResult Smith::drain_essence(ItemEntity *o_ptr)
 {
     // 抽出量を揃えるためKILLフラグのみ付いている場合はSLAYフラグも付ける
-    auto old_flags = object_flags(o_ptr);
+    auto old_flags = o_ptr->get_flags();
     if (old_flags.has(TR_KILL_DRAGON)) {
         old_flags.set(TR_SLAY_DRAGON);
     }
@@ -363,9 +362,9 @@ Smith::DrainEssenceResult Smith::drain_essence(ItemEntity *o_ptr)
 
     o_ptr->ident |= (IDENT_FULL_KNOWN);
     object_aware(player_ptr, o_ptr);
-    object_known(o_ptr);
+    o_ptr->mark_as_known();
 
-    auto new_flags = object_flags(o_ptr);
+    const auto new_flags = o_ptr->get_flags();
 
     std::unordered_map<SmithEssenceType, int> drain_values;
 

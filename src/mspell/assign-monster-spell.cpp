@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスターのスペル振り分け処理 / Spell launch by a monster
  * @date 2014/07/14
  * @author Habu
@@ -120,6 +120,7 @@ static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, Monste
     case MonsterAbilityType::BA_DARK:
     case MonsterAbilityType::BA_VOID:
     case MonsterAbilityType::BA_ABYSS:
+    case MonsterAbilityType::BA_METEOR:
          return MSpellBall(player_ptr, m_idx, ms_type, 4, MONSTER_TO_PLAYER).shoot(y, x);
 
     case MonsterAbilityType::DRAIN_MANA: return spell_RF5_DRAIN_MANA(player_ptr, y, x, m_idx, 0, MONSTER_TO_PLAYER);  /* RF5_DRAIN_MANA */
@@ -144,6 +145,8 @@ static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, Monste
     case MonsterAbilityType::BO_ICEE:
     case MonsterAbilityType::BO_VOID:
     case MonsterAbilityType::BO_ABYSS:
+    case MonsterAbilityType::BO_METEOR:
+    case MonsterAbilityType::BO_LITE:
     case MonsterAbilityType::MISSILE: 
         return MSpellBolt(player_ptr, m_idx, ms_type, MONSTER_TO_PLAYER).shoot(y,x);
 
@@ -184,6 +187,7 @@ static MonsterSpellResult monspell_to_player_impl(PlayerType *player_ptr, Monste
     case MonsterAbilityType::S_HI_DRAGON: return spell_RF6_S_HI_DRAGON(player_ptr, y, x, m_idx, 0, MONSTER_TO_PLAYER); /* RF6_S_HI_DRAGON */
     case MonsterAbilityType::S_AMBERITES: return spell_RF6_S_AMBERITES(player_ptr, y, x, m_idx, 0, MONSTER_TO_PLAYER); /* RF6_S_AMBERITES */
     case MonsterAbilityType::S_UNIQUE: return spell_RF6_S_UNIQUE(player_ptr, y, x, m_idx, 0, MONSTER_TO_PLAYER); /* RF6_S_UNIQUE */
+    case MonsterAbilityType::S_DEAD_UNIQUE: return spell_RF6_S_DEAD_UNIQUE(player_ptr, y, x, m_idx, 0, MONSTER_TO_PLAYER); /* RF6_S_DEAD_UNIQUE */
     default: break;
     }
     // clang-format on
@@ -282,6 +286,7 @@ static MonsterSpellResult monspell_to_monster_impl(
     case MonsterAbilityType::BA_DARK:
     case MonsterAbilityType::BA_VOID:
     case MonsterAbilityType::BA_ABYSS:
+    case MonsterAbilityType::BA_METEOR:
          return MSpellBall(player_ptr, m_idx, t_idx, ms_type, 4, MONSTER_TO_MONSTER).shoot(y, x);
 
     case MonsterAbilityType::DRAIN_MANA: return spell_RF5_DRAIN_MANA(player_ptr, y, x, m_idx, t_idx, MONSTER_TO_MONSTER); /* RF5_DRAIN_MANA */
@@ -306,6 +311,8 @@ static MonsterSpellResult monspell_to_monster_impl(
     case MonsterAbilityType::BO_ICEE:
     case MonsterAbilityType::BO_VOID:
     case MonsterAbilityType::BO_ABYSS:
+    case MonsterAbilityType::BO_METEOR:
+    case MonsterAbilityType::BO_LITE:
     case MonsterAbilityType::MISSILE: 
          return MSpellBolt(player_ptr, m_idx, t_idx, ms_type, MONSTER_TO_MONSTER).shoot(y, x);
 
@@ -346,6 +353,7 @@ static MonsterSpellResult monspell_to_monster_impl(
     case MonsterAbilityType::S_HI_DRAGON: return spell_RF6_S_HI_DRAGON(player_ptr, y, x, m_idx, t_idx, MONSTER_TO_MONSTER); /* RF6_S_HI_DRAGON */
     case MonsterAbilityType::S_AMBERITES: return spell_RF6_S_AMBERITES(player_ptr, y, x, m_idx, t_idx, MONSTER_TO_MONSTER); /* RF6_S_AMBERITES */
     case MonsterAbilityType::S_UNIQUE: return spell_RF6_S_UNIQUE(player_ptr, y, x, m_idx, t_idx, MONSTER_TO_MONSTER); /* RF6_S_UNIQUE */
+    case MonsterAbilityType::S_DEAD_UNIQUE: return spell_RF6_S_DEAD_UNIQUE(player_ptr, y, x, m_idx, t_idx, MONSTER_TO_MONSTER); /* RF6_S_DEAD_UNIQUE */
     default: break;
     }
     // clang-format on

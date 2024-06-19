@@ -1,4 +1,4 @@
-﻿#include "lore/combat-types-setter.h"
+#include "lore/combat-types-setter.h"
 #include "lore/lore-util.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-table.h"
@@ -280,6 +280,10 @@ void set_monster_blow_effect(lore_type *lore_ptr, int m)
     case RaceBlowEffectType::DEFECATE:
         lore_ptr->q = _("脱糞させる", "makes defecates");
         lore_ptr->qc = TERM_UMBER;
+        break;
+    case RaceBlowEffectType::CHAOS:
+        lore_ptr->q = _("カオスを呼び起こす", "call chaotic.");
+        lore_ptr->qc = TERM_VIOLET;
         break;
     case RaceBlowEffectType::FLAVOR:
         // フレーバー打撃には何の効果もないので付加説明もない。

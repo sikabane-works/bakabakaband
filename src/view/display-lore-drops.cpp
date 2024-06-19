@@ -1,6 +1,5 @@
-﻿#include "view/display-lore-drops.h"
+#include "view/display-lore-drops.h"
 #include "lore/lore-util.h"
-#include "monster-race/race-flags1.h"
 #include "util/bit-flags-calculator.h"
 
 void display_monster_drop_quantity(lore_type *lore_ptr)
@@ -21,11 +20,9 @@ void display_monster_drop_quantity(lore_type *lore_ptr)
 
 void display_monster_drop_quality(lore_type *lore_ptr)
 {
-    if (lore_ptr->flags1 & RF1_DROP_NASTY) {
+    if (lore_ptr->drop_flags.has(MonsterDropType::DROP_NASTY)) {
         lore_ptr->drop_quality = _("例のアレな", " nasty");
-    }
-
-    if (lore_ptr->drop_flags.has(MonsterDropType::DROP_GREAT)) {
+    } else if (lore_ptr->drop_flags.has(MonsterDropType::DROP_GREAT)) {
         lore_ptr->drop_quality = _("特別な", " exceptional");
     } else if (lore_ptr->drop_flags.has(MonsterDropType::DROP_GOOD)) {
         lore_ptr->drop_quality = _("上質な", " good");

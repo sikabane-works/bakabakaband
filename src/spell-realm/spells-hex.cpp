@@ -1,4 +1,4 @@
-﻿#include "spell-realm/spells-hex.h"
+#include "spell-realm/spells-hex.h"
 #include "core/asking-player.h"
 #include "core/window-redrawer.h"
 #include "effect/effect-characteristics.h"
@@ -27,14 +27,11 @@
 #include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
 #include "view/display-messages.h"
-
 #ifdef JP
 #else
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #endif
-
-#include <iterator>
 
 /*!< 呪術の最大詠唱数 */
 constexpr int MAX_KEEP = 4;
@@ -107,18 +104,18 @@ bool SpellHex::stop_spells_with_selection()
         return true;
     }
 
-    char out_val[160];
-    strnfmt(out_val, 78, _("どの呪文の詠唱を中断しますか？(呪文 %c-%c, 'l'全て, ESC)", "Which spell do you stop casting? (Spell %c-%c, 'l' to all, ESC)"),
-        I2A(0), I2A(casting_num - 1));
+    constexpr auto fmt = _("どの呪文の詠唱を中断しますか？(呪文 %c-%c, 'l'全て, ESC)", "Which spell do you stop casting? (Spell %c-%c, 'l' to all, ESC)");
+    const auto prompt = format(fmt, I2A(0), I2A(casting_num - 1));
     screen_save();
-    auto [is_all, is_selected, choice] = select_spell_stopping(out_val);
+    const auto &[is_all, choice] = select_spell_stopping(prompt);
     if (is_all) {
         return true;
     }
 
     screen_load();
+    const auto is_selected = choice.has_value();
     if (is_selected) {
-        auto n = this->casting_spells[A2I(choice)];
+        auto n = this->casting_spells[A2I(choice.value())];
         exe_spell(this->player_ptr, REALM_HEX, n, SpellProcessType::STOP);
         this->reset_casting_flag(i2enum<spell_hex_type>(n));
     }
@@ -148,15 +145,16 @@ bool SpellHex::stop_spells_with_selection()
  * Item2: 選択が完了したらtrue、キャンセルならばfalse
  * Item3: 選択した呪文番号 (a～d、lの5択)
  */
-std::tuple<bool, bool, char> SpellHex::select_spell_stopping(char *out_val)
+std::pair<bool, std::optional<char>> SpellHex::select_spell_stopping(std::string_view prompt)
 {
     while (true) {
-        char choice = 0;
         this->display_casting_spells_list();
-        if (!get_com(out_val, &choice, true)) {
-            return std::make_tuple(false, false, choice);
+        const auto choice_opt = input_command(prompt, true);
+        if (!choice_opt.has_value()) {
+            return { false, std::nullopt };
         }
 
+        auto choice = *choice_opt;
         if (isupper(choice)) {
             choice = static_cast<char>(tolower(choice));
         }
@@ -164,14 +162,14 @@ std::tuple<bool, bool, char> SpellHex::select_spell_stopping(char *out_val)
         if (choice == 'l') {
             screen_load();
             this->stop_all_spells();
-            return std::make_tuple(true, true, choice);
+            return { true, choice };
         }
 
         if ((choice < I2A(0)) || (choice > I2A(this->get_casting_num() - 1))) {
             continue;
         }
 
-        return std::make_tuple(false, true, choice);
+        return { false, choice };
     }
 }
 
@@ -180,10 +178,10 @@ void SpellHex::display_casting_spells_list()
     constexpr auto y = 1;
     constexpr auto x = 20;
     auto n = 0;
-    term_erase(x, y, 255);
+    term_erase(x, y);
     prt(_("     名前", "     Name"), y, x + 5);
     for (auto spell : this->casting_spells) {
-        term_erase(x, y + n + 1, 255);
+        term_erase(x, y + n + 1);
         const auto spell_name = exe_spell(this->player_ptr, REALM_HEX, spell, SpellProcessType::NAME);
         put_str(format("%c)  %s", I2A(n), spell_name->data()), y + n + 1, x + 2);
         n++;
@@ -355,7 +353,7 @@ void SpellHex::store_vengeful_damage(int dam)
 bool SpellHex::check_hex_barrier(MONSTER_IDX m_idx, spell_hex_type type) const
 {
     const auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[m_idx];
-    const auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    const auto *r_ptr = &m_ptr->get_monrace();
     return this->is_spelling_specific(type) && ((this->player_ptr->lev * 3 / 2) >= randint1(r_ptr->level));
 }
 

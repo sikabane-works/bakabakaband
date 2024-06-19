@@ -1,4 +1,4 @@
-﻿#include "mind/mind-mindcrafter.h"
+#include "mind/mind-mindcrafter.h"
 #include "autopick/autopick.h"
 #include "avatar/avatar.h"
 #include "core/window-redrawer.h"
@@ -53,11 +53,10 @@
  */
 bool psychometry(PlayerType *player_ptr)
 {
-    concptr q = _("どのアイテムを調べますか？", "Meditate on which item? ");
-    concptr s = _("調べるアイテムがありません。", "You have nothing appropriate.");
-    ItemEntity *o_ptr;
-    OBJECT_IDX item;
-    o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
+    constexpr auto q = _("どのアイテムを調べますか？", "Meditate on which item? ");
+    constexpr auto s = _("調べるアイテムがありません。", "You have nothing appropriate.");
+    short i_idx;
+    auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, (USE_EQUIP | USE_INVEN | USE_FLOOR | IGNORE_BOTHHAND_SLOT));
     if (!o_ptr) {
         return false;
     }
@@ -130,7 +129,7 @@ bool psychometry(PlayerType *player_ptr)
         break;
     }
 
-    autopick_alter_item(player_ptr, item, (bool)(okay && destroy_feeling));
+    autopick_alter_item(player_ptr, i_idx, (bool)(okay && destroy_feeling));
     return true;
 }
 
@@ -276,7 +275,7 @@ bool cast_mindcrafter_spell(PlayerType *player_ptr, MindMindcrafterType spell)
 
         dam = damroll(plev / 2, 6);
         if (fire_ball(player_ptr, AttributeType::PSI_DRAIN, dir, dam, 0)) {
-            player_ptr->energy_need += randint1(150);
+            player_ptr->energy_need += randnum1<short>(150);
         }
 
         break;

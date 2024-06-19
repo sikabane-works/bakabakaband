@@ -1,4 +1,4 @@
-﻿#include "load/player-info-loader.h"
+#include "load/player-info-loader.h"
 #include "cmd-building/cmd-building.h"
 #include "load/birth-loader.h"
 #include "load/dummy-loader.h"
@@ -18,6 +18,7 @@
 #include "player/player-skill.h"
 #include "spell-realm/spells-song.h"
 #include "system/angband-exceptions.h"
+#include "system/angband-system.h"
 #include "system/angband-version.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
@@ -63,9 +64,7 @@ void rd_base_info(PlayerType *player_ptr)
     rd_string(player_ptr->died_from, 1024);
     char buf[1024];
     rd_string(buf, sizeof buf);
-    if (buf[0]) {
-        player_ptr->last_message = string_make(buf);
-    }
+    player_ptr->last_message = buf;
 
     load_quick_start();
     const int max_history_lines = 4;
@@ -197,9 +196,10 @@ static void set_imitation(PlayerType *player_ptr)
 
 static void rd_phase_out(PlayerType *player_ptr)
 {
+    auto &system = AngbandSystem::get_instance();
     player_ptr->current_floor_ptr->inside_arena = rd_s16b() != 0;
     player_ptr->current_floor_ptr->quest_number = i2enum<QuestId>(rd_s16b());
-    player_ptr->phase_out = rd_s16b() != 0;
+    system.set_phase_out(rd_s16b() != 0);
 }
 
 static void rd_arena(PlayerType *player_ptr)
@@ -209,7 +209,7 @@ static void rd_arena(PlayerType *player_ptr)
     player_ptr->town_num = rd_s16b();
     player_ptr->arena_number = rd_s16b();
     rd_phase_out(player_ptr);
-    player_ptr->exit_bldg = rd_byte();
+    w_ptr->set_arena(rd_bool());
     strip_bytes(1);
 
     player_ptr->oldpx = rd_s16b();

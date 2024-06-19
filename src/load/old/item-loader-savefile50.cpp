@@ -1,4 +1,4 @@
-﻿#include "load/old/item-loader-savefile50.h"
+#include "load/old/item-loader-savefile50.h"
 #include "artifact/fixed-art-types.h"
 #include "game-option/runtime-arguments.h"
 #include "load/load-util.h"
@@ -7,7 +7,6 @@
 #include "load/savedata-old-flag-types.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-flags.h"
 #include "object/tval-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "system/angband.h"
@@ -16,7 +15,6 @@
 #include "system/player-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
-#include "util/quarks.h"
 
 /*!
  * @brief アイテムオブジェクトを読み込む(v3.0.0 Savefile ver50まで)

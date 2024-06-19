@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief ウィザードモード専用のスペル処理
  * @date 2020/06/27
  * @author Hourier
@@ -20,6 +20,7 @@
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
+#include "monster-race/race-indice-types.h"
 #include "mutation/mutation-processor.h"
 #include "object-activation/activation-others.h"
 #include "player-base/player-class.h"
@@ -45,6 +46,7 @@
 #include "util/enum-converter.h"
 #include "util/flag-group.h"
 #include "view/display-messages.h"
+#include "wizard/wizard-messages.h"
 #include <string_view>
 #include <vector>
 
@@ -58,53 +60,56 @@ static const std::vector<debug_spell_command> debug_spell_commands_list = {
     { 5, "pattern teleport", { .spell5 = { pattern_teleport } } },
 };
 
+static std::optional<MonsterRaceId> input_monster_race_id(const MonsterRaceId r_idx)
+{
+    if (MonsterRace(r_idx).is_valid()) {
+        return r_idx;
+    }
+    return input_numerics("MonsterID", 1, monraces_info.size() - 1, MonsterRaceId::FILTHY_URCHIN);
+}
+
 /*!
  * @brief コマンド入力により任意にスペル効果を起こす / Wizard spells
- * @return 実際にテレポートを行ったらTRUEを返す
+ * @param player_ptr プレイヤーへの参照ポインタ
  */
-bool wiz_debug_spell(PlayerType *player_ptr)
+void wiz_debug_spell(PlayerType *player_ptr)
 {
-    char tmp_val[50] = "\0";
-    int tmp_int;
-
-    if (!get_string("SPELL: ", tmp_val, 32)) {
-        return false;
+    const auto spell = input_string("SPELL: ", 50);
+    if (!spell.has_value()) {
+        return;
     }
 
     for (const auto &d : debug_spell_commands_list) {
-        if (strcmp(tmp_val, d.command_name) != 0) {
+        if (*spell != d.command_name) {
             continue;
         }
 
         switch (d.type) {
         case 2:
             (d.command_function.spell2.spell_function)(player_ptr);
-            return true;
-            break;
-        case 3:
-            tmp_val[0] = '\0';
-            if (!get_string("POWER:", tmp_val, 32)) {
-                return false;
+            return;
+        case 3: {
+            const auto power = input_integer("POWER", -MAX_INT, MAX_INT);
+            if (!power.has_value()) {
+                return;
             }
-            tmp_int = atoi(tmp_val);
-            (d.command_function.spell3.spell_function)(player_ptr, tmp_int);
-            return true;
-            break;
-        case 4:
-            (d.command_function.spell4.spell_function)(player_ptr, true, &tmp_int);
-            return true;
-            break;
+
+            (d.command_function.spell3.spell_function)(player_ptr, *power);
+            return;
+        }
+        case 4: {
+            auto count = 0;
+            (d.command_function.spell4.spell_function)(player_ptr, true, &count);
+            return;
+        }
         case 5:
             (d.command_function.spell5.spell_function)(player_ptr);
-            return true;
-            break;
+            return;
         default:
-            break;
+            msg_format("Command not found.");
+            return;
         }
     }
-
-    msg_format("Command not found.");
-    return false;
 }
 
 /*!
@@ -186,15 +191,39 @@ void wiz_fillup_all_smith_essences(PlayerType *player_ptr)
 }
 
 /*!
- * @brief 現在のフロアに合ったモンスターをランダムに召喚する /
- * Summon some creatures
+ * @brief 現在のフロアに合ったモンスターをランダムに生成する
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param num 生成処理回数
+ * @details 半径5マス以内に生成する。生成場所がなかったらキャンセル。
  */
-void wiz_summon_random_enemy(PlayerType *player_ptr, int num)
+void wiz_generate_random_monster(PlayerType *player_ptr, int num)
 {
-    for (int i = 0; i < num; i++) {
-        (void)summon_specific(player_ptr, 0, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_NONE, PM_ALLOW_GROUP | PM_ALLOW_UNIQUE);
+    constexpr auto flags = PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_QUEST;
+    for (auto i = 0; i < num; i++) {
+        if (!alloc_monster(player_ptr, 0, flags, summon_specific, 5)) {
+            msg_print_wizard(player_ptr, 1, "Monster isn't generated correctly...");
+            return;
+        }
+    }
+}
+
+/*!
+ * @brief 現在のフロアに合ったモンスターをランダムに召喚する
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param num 生成処理回数
+ * @details 現在のレベル+5F からランダムに選定する。生成場所がなかったらキャンセル。
+ */
+void wiz_summon_random_monster(PlayerType *player_ptr, int num)
+{
+    const auto level = player_ptr->current_floor_ptr->dun_level;
+    constexpr auto flags = PM_ALLOW_GROUP | PM_ALLOW_UNIQUE;
+    const auto y = player_ptr->y;
+    const auto x = player_ptr->x;
+    for (auto i = 0; i < num; i++) {
+        if (!summon_specific(player_ptr, 0, y, x, level, SUMMON_NONE, flags)) {
+            msg_print_wizard(player_ptr, 1, "Monster isn't summoned correctly...");
+            return;
+        }
     }
 }
 
@@ -205,26 +234,25 @@ void wiz_summon_random_enemy(PlayerType *player_ptr, int num)
  * @details
  * This function is rather dangerous
  */
-void wiz_summon_specific_enemy(PlayerType *player_ptr, MonsterRaceId r_idx)
+void wiz_summon_specific_monster(PlayerType *player_ptr, const MonsterRaceId r_idx)
 {
-    if (!MonsterRace(r_idx).is_valid()) {
-        int val = 1;
-        if (!get_value("MonsterID", 1, monraces_info.size() - 1, &val)) {
-            return;
-        }
-        r_idx = static_cast<MonsterRaceId>(val);
+    const auto new_monrace_id = input_monster_race_id(r_idx);
+    if (!new_monrace_id) {
+        return;
     }
-    (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
+
+    (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, *new_monrace_id, PM_ALLOW_SLEEP | PM_ALLOW_GROUP);
 }
 
 void wiz_generate_room(PlayerType *player_ptr, int v_idx)
 {
     if (v_idx <= 0) {
-        int val = 1;
-        if (!get_value("VaultID", 1, vaults_info.size() - 1, &val)) {
+        const auto val = input_integer("VaultID", 1, vaults_info.size() - 1, 1);
+        if (!val.has_value()) {
             return;
         }
-        v_idx = static_cast<int>(val);
+
+        v_idx = val.value();
         vault_type *v_ptr = &vaults_info[v_idx];
         build_vault(v_ptr, player_ptr, player_ptr->y, player_ptr->x, 0, 0, 0);
 
@@ -249,18 +277,30 @@ void wiz_generate_room(PlayerType *player_ptr, int v_idx)
  * @details
  * This function is rather dangerous
  */
-void wiz_summon_pet(PlayerType *player_ptr, MonsterRaceId r_idx)
+void wiz_summon_pet(PlayerType *player_ptr, const MonsterRaceId r_idx)
 {
-    if (!MonsterRace(r_idx).is_valid()) {
-        int val = 1;
-        if (!get_value("MonsterID", 1, monraces_info.size() - 1, &val)) {
-            return;
-        }
-        r_idx = static_cast<MonsterRaceId>(val);
+    const auto new_monrace_id = input_monster_race_id(r_idx);
+    if (!new_monrace_id) {
+        return;
     }
-    (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, r_idx, PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_FORCE_PET);
+
+    (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, *new_monrace_id, PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_FORCE_PET);
 }
 
+/*!
+ * @brief モンスターを種族IDを指定してクローン召喚（口寄せ）する /
+ * Summon a creature of the specified type
+ * @param r_idx モンスター種族ID（回数指定コマンド'0'で指定した回数がIDになる）
+ */
+void wiz_summon_clone(PlayerType *player_ptr, const MonsterRaceId r_idx)
+{
+    const auto new_monrace_id = input_monster_race_id(r_idx);
+    if (!new_monrace_id) {
+        return;
+    }
+
+    (void)summon_named_creature(player_ptr, 0, player_ptr->y, player_ptr->x, *new_monrace_id, PM_ALLOW_SLEEP | PM_ALLOW_GROUP | PM_CLONE);
+}
 /*!
  * @brief ターゲットを指定して指定ダメージ・指定属性・半径0のボールを放つ
  * @param dam ダメージ量
@@ -268,19 +308,21 @@ void wiz_summon_pet(PlayerType *player_ptr, MonsterRaceId r_idx)
  * @param self 自分に与えるか否か
  * @details デフォルトは100万・GF_ARROW(射撃)。RES_ALL持ちも一撃で殺せる。
  */
-void wiz_kill_target(PlayerType *player_ptr, int dam, AttributeType effect_idx, const bool self)
+void wiz_kill_target(PlayerType *player_ptr, int initial_dam, AttributeType effect_idx, const bool self)
 {
+    auto dam = initial_dam;
     if (dam <= 0) {
-        dam = 1000000;
-        if (!get_value("Damage", 1, 1000000, &dam)) {
+        const auto input_dam = input_integer("Damage", 1, 1000000, 1000000);
+        if (!input_dam.has_value()) {
             return;
         }
+
+        dam = *input_dam;
     }
 
     constexpr auto max = enum2i(AttributeType::MAX);
-    auto idx = enum2i(effect_idx);
-
-    if (idx <= 0) {
+    auto idx = effect_idx;
+    if (effect_idx == AttributeType::NONE) {
         screen_save();
         for (auto i = 1; i <= 23; i++) {
             prt("", i, 0);
@@ -293,23 +335,24 @@ void wiz_kill_target(PlayerType *player_ptr, int dam, AttributeType effect_idx, 
             put_str(format("%03d:%-.10s^", num, name.data()), 1 + i / 5, 1 + (i % 5) * 16);
         }
 
-        if (!get_value("EffectID", 1, max - 1, &idx)) {
+        const auto input_effect_id = input_numerics("EffectID", 1, max - 1, idx);
+        if (!input_effect_id.has_value()) {
             screen_load();
             return;
         }
 
+        idx = *input_effect_id;
         screen_load();
     }
 
     if (self) {
-        project(player_ptr, -1, 0, player_ptr->y, player_ptr->x, dam, i2enum<AttributeType>(idx), PROJECT_KILL | PROJECT_PLAYER);
+        project(player_ptr, -1, 0, player_ptr->y, player_ptr->x, dam, idx, PROJECT_KILL | PROJECT_PLAYER);
         return;
     }
 
-    effect_idx = i2enum<AttributeType>(idx);
     DIRECTION dir;
     if (!get_aim_dir(player_ptr, &dir)) {
         return;
     }
-    fire_ball(player_ptr, effect_idx, dir, dam, 0);
+    fire_ball(player_ptr, idx, dir, dam, 0);
 }

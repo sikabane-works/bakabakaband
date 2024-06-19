@@ -1,5 +1,4 @@
-﻿#include "view/display-monster-status.h"
-#include "alliance/alliance.h"
+#include "view/display-monster-status.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster/monster-flag-types.h"
@@ -17,7 +16,9 @@ std::string look_mon_desc(MonsterEntity *m_ptr, BIT_FLAGS mode)
     auto perc = m_ptr->maxhp > 0 ? 100L * m_ptr->hp / m_ptr->maxhp : 0;
 
     concptr desc;
-    if (m_ptr->hp >= m_ptr->maxhp) {
+    if (!m_ptr->ml) {
+        desc = _("損傷具合不明", "damage unknown");
+    } else if (m_ptr->hp >= m_ptr->maxhp) {
         desc = living ? _("無傷", "unhurt") : _("無ダメージ", "undamaged");
     } else if (perc >= 60) {
         desc = living ? _("軽傷", "somewhat wounded") : _("小ダメージ", "somewhat damaged");
@@ -43,7 +44,7 @@ std::string look_mon_desc(MonsterEntity *m_ptr, BIT_FLAGS mode)
     concptr ally = alliance_list.find(m_ptr->alliance_idx)->second.get()->name.c_str();
 
     concptr clone = m_ptr->mflag2.has(MonsterConstantFlagType::CLONED) ? ", clone" : "";
-    MonsterRaceInfo *ap_r_ptr = &monraces_info[m_ptr->ap_r_idx];
+    MonsterRaceInfo *ap_r_ptr = &m_ptr->get_appearance_monrace();
     if (ap_r_ptr->r_tkills && m_ptr->mflag2.has_not(MonsterConstantFlagType::KAGE)) {
         return format(_("レベル%d, %s %s%s%s", "Level %d, %s %s%s%s"), ap_r_ptr->level, ally, desc, attitude, clone);
     }

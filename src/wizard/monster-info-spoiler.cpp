@@ -1,9 +1,6 @@
-﻿#include "wizard/monster-info-spoiler.h"
+#include "wizard/monster-info-spoiler.h"
 #include "io/files-util.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "system/angband-version.h"
 #include "system/monster-race-info.h"
 #include "term/term-color-types.h"
@@ -77,12 +74,6 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
     PlayerType dummy;
     uint16_t why = 2;
     char nam[MAX_MONSTER_NAME + 10]; // ユニークには[U] が付くので少し伸ばす
-    char lev[80];
-    char rar[80];
-    char spd[80];
-    char ac[80];
-    char hp[80];
-    char symbol[80];
     const auto &path = path_build(ANGBAND_DIR_USER, fname);
     spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
@@ -99,9 +90,9 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
         "---", "---", "---", "-----", "-----", "-------------------");
 
     std::vector<MonsterRaceId> who;
-    for (const auto &[r_idx, r_ref] : monraces_info) {
-        if (MonsterRace(r_ref.idx).is_valid() && !r_ref.name.empty()) {
-            who.push_back(r_ref.idx);
+    for (const auto &[monrace_id, monrace] : monraces_info) {
+        if (MonsterRace(monrace_id).is_valid()) {
+            who.push_back(monrace_id);
         }
     }
 
@@ -112,7 +103,7 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
             continue;
         }
 
-        if (any_bits(r_ptr->flags7, RF7_KAGE)) {
+        if (r_ptr->misc_flags.has(MonsterMiscType::KAGE)) {
             continue;
         }
 
@@ -125,24 +116,21 @@ SpoilerOutputResultType spoil_mon_desc(concptr fname, std::function<bool(const M
             sprintf(nam, _("    %s", "The %s"), name.front().data());
         }
 
-        sprintf(lev, "%d", (int)r_ptr->level);
-        sprintf(rar, "%d", (int)r_ptr->rarity);
-        if (r_ptr->speed >= 110) {
-            sprintf(spd, "+%d", (r_ptr->speed - 110));
+        const auto lev = format("%d", r_ptr->level);
+        const auto rar = format("%d", (int)r_ptr->rarity);
+        const auto spd = format("%+d", r_ptr->speed - STANDARD_SPEED);
+        const auto ac = format("%d", r_ptr->ac);
+        std::string hp;
+        if (r_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP) || (r_ptr->hside == 1)) {
+            hp = format("%d", r_ptr->hdice * r_ptr->hside);
         } else {
-            sprintf(spd, "-%d", (110 - r_ptr->speed));
+            hp = format("%dd%d", r_ptr->hdice, r_ptr->hside);
         }
 
-        sprintf(ac, "%d", r_ptr->ac);
-        if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || (r_ptr->hside == 1)) {
-            sprintf(hp, "%d", r_ptr->hdice * r_ptr->hside);
-        } else {
-            sprintf(hp, "%dd%d", r_ptr->hdice, r_ptr->hside);
-        }
-
-        sprintf(symbol, "%ld", (long)(r_ptr->mexp));
-        sprintf(symbol, "%s '%c'", attr_to_text(r_ptr), r_ptr->d_char);
-        fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n", nam, lev, rar, spd, hp, ac, symbol);
+        const auto symbol = format("%s '%c'", attr_to_text(r_ptr), r_ptr->d_char);
+        fprintf(spoiler_file, "%-45.45s%4s %4s %4s %7s %7s  %19.19s\n",
+            nam, lev.data(), rar.data(), spd.data(), hp.data(),
+            ac.data(), symbol.data());
 
         for (auto i = 1U; i < name.size(); ++i) {
             fprintf(spoiler_file, "    %s\n", name[i].data());
@@ -184,9 +172,9 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
     spoil_out("------------------------------------------\n\n");
 
     std::vector<MonsterRaceId> who;
-    for (const auto &[r_idx, r_ref] : monraces_info) {
-        if (MonsterRace(r_ref.idx).is_valid() && !r_ref.name.empty()) {
-            who.push_back(r_ref.idx);
+    for (const auto &[monrace_id, monrace] : monraces_info) {
+        if (MonsterRace(monrace_id).is_valid()) {
+            who.push_back(monrace_id);
         }
     }
 
@@ -208,7 +196,7 @@ SpoilerOutputResultType spoil_mon_info(concptr fname)
         spoil_out(format("Lev:%d  ", (int)r_ptr->level));
         spoil_out(format("Rar:%d  ", r_ptr->rarity));
         spoil_out(format("Spd:%+d  ", r_ptr->speed - STANDARD_SPEED));
-        if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || (r_ptr->hside == 1)) {
+        if (r_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP) || (r_ptr->hside == 1)) {
             spoil_out(format("Hp:%d  ", r_ptr->hdice * r_ptr->hside));
         } else {
             spoil_out(format("Hp:%dd%d  ", r_ptr->hdice, r_ptr->hside));

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief プレイヤーからモンスターへの打撃処理
  * @date 2020/05/22
  * @author Hourier
@@ -24,19 +24,17 @@
 #include "mind/monk-attack.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-damage.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
+#include "monster/monster-util.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/vorpal-weapon.h"
 #include "object-hook/hook-weapon.h"
-#include "object/object-flags.h"
 #include "object/tval-types.h"
 #include "player-attack/attack-chaos-effect.h"
 #include "player-attack/blood-sucking-processor.h"
-#include "player-attack/player-attack-util.h"
 #include "player-base/player-class.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
@@ -68,25 +66,21 @@ constexpr auto MAX_VAMPIRIC_DRAIN = 50;
 /*!
  * @brief プレイヤーの攻撃情報を初期化する(コンストラクタ以外の分)
  */
-static player_attack_type *initialize_player_attack_type(
-    player_attack_type *pa_ptr, PlayerType *player_ptr, POSITION y, POSITION x, int16_t hand, combat_options mode, bool *fear, bool *mdeath)
+player_attack_type::player_attack_type(FloorType &floor, POSITION y, POSITION x, int16_t hand, combat_options mode, bool *fear, bool *mdeath)
+    : hand(hand)
+    , mode(mode)
+    , fear(fear)
+    , mdeath(mdeath)
+    , drain_left(MAX_VAMPIRIC_DRAIN)
+    , g_ptr(&floor.grid_array[y][x])
+    , chaos_effect(CE_NONE)
+    , magical_effect(MagicalBrandEffectType::NONE)
 {
-    auto floor_ptr = player_ptr->current_floor_ptr;
-    auto g_ptr = &floor_ptr->grid_array[y][x];
-    auto m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
-
-    pa_ptr->hand = hand;
-    pa_ptr->mode = mode;
-    pa_ptr->m_idx = g_ptr->m_idx;
-    pa_ptr->m_ptr = m_ptr;
-    pa_ptr->r_idx = m_ptr->r_idx;
-    pa_ptr->r_ptr = &monraces_info[m_ptr->r_idx];
-    pa_ptr->ma_ptr = &ma_blows[0];
-    pa_ptr->g_ptr = g_ptr;
-    pa_ptr->fear = fear;
-    pa_ptr->mdeath = mdeath;
-    pa_ptr->drain_left = MAX_VAMPIRIC_DRAIN;
-    return pa_ptr;
+    this->m_idx = this->g_ptr->m_idx;
+    this->m_ptr = &floor.m_list[this->g_ptr->m_idx];
+    this->r_idx = this->m_ptr->r_idx;
+    this->r_ptr = &this->m_ptr->get_monrace();
+    this->ma_ptr = &ma_blows[0];
 }
 
 /*!
@@ -120,7 +114,7 @@ static void attack_classify(PlayerType *player_ptr, player_attack_type *pa_ptr)
  */
 static void get_bare_knuckle_exp(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
-    auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
+    auto *r_ptr = &pa_ptr->m_ptr->get_monrace();
     if ((r_ptr->level + 10) <= player_ptr->lev) {
         return;
     }
@@ -147,7 +141,7 @@ static void get_weapon_exp(PlayerType *player_ptr, player_attack_type *pa_ptr)
  */
 static void get_attack_exp(PlayerType *player_ptr, player_attack_type *pa_ptr)
 {
-    auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
+    auto *r_ptr = &pa_ptr->m_ptr->get_monrace();
     auto *o_ptr = &player_ptr->inventory_list[enum2i(INVEN_MAIN_HAND) + pa_ptr->hand];
     if (!o_ptr->is_valid()) {
         get_bare_knuckle_exp(player_ptr, pa_ptr);
@@ -419,7 +413,7 @@ static void apply_damage_negative_effect(player_attack_type *pa_ptr, bool is_zan
         pa_ptr->attack_damage = 0;
     }
 
-    auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
+    auto *r_ptr = &pa_ptr->m_ptr->get_monrace();
     if ((pa_ptr->mode == HISSATSU_ZANMA) && !(!pa_ptr->m_ptr->has_living_flag() && r_ptr->kind_flags.has(MonsterKindType::EVIL))) {
         pa_ptr->attack_damage = 0;
     }
@@ -491,7 +485,7 @@ static void apply_actual_attack(
     sound(SOUND_HIT);
     print_surprise_attack(pa_ptr);
 
-    pa_ptr->flags = object_flags(o_ptr);
+    pa_ptr->flags = o_ptr->get_flags();
     pa_ptr->chaos_effect = select_chaotic_effect(player_ptr, pa_ptr);
     pa_ptr->magical_effect = select_magical_brand_effect(player_ptr, pa_ptr);
     decide_blood_sucking(player_ptr, pa_ptr);
@@ -525,7 +519,7 @@ static void cause_earthquake(PlayerType *player_ptr, player_attack_type *pa_ptr,
     }
 
     earthquake(player_ptr, player_ptr->y, player_ptr->x, 10, 0);
-    if (player_ptr->current_floor_ptr->grid_array[y][x].m_idx == 0) {
+    if (!player_ptr->current_floor_ptr->grid_array[y][x].has_monster()) {
         *(pa_ptr->mdeath) = true;
     }
 }
@@ -547,8 +541,8 @@ void exe_player_attack_to_monster(PlayerType *player_ptr, POSITION y, POSITION x
     bool do_quake = false;
     bool drain_msg = true;
 
-    player_attack_type tmp_attack;
-    auto pa_ptr = initialize_player_attack_type(&tmp_attack, player_ptr, y, x, hand, mode, fear, mdeath);
+    player_attack_type tmp_attack(*player_ptr->current_floor_ptr, y, x, hand, mode, fear, mdeath);
+    auto pa_ptr = &tmp_attack;
 
     bool is_human = (pa_ptr->r_ptr->d_char == 'p');
     bool is_lowlevel = (pa_ptr->r_ptr->level < (player_ptr->lev - 15));
@@ -614,14 +608,14 @@ void exe_player_attack_to_monster(PlayerType *player_ptr, POSITION y, POSITION x
  */
 void massacre(PlayerType *player_ptr)
 {
-    grid_type *g_ptr;
+    Grid *g_ptr;
     MonsterEntity *m_ptr;
     for (DIRECTION dir = 0; dir < 8; dir++) {
         POSITION y = player_ptr->y + ddy_ddd[dir];
         POSITION x = player_ptr->x + ddx_ddd[dir];
         g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
         m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
-        if (g_ptr->m_idx && (m_ptr->ml || cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT))) {
+        if (g_ptr->has_monster() && (m_ptr->ml || cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT))) {
             do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
         }
     }

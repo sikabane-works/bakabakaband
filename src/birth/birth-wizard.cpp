@@ -1,4 +1,4 @@
-﻿#include "birth/birth-wizard.h"
+#include "birth/birth-wizard.h"
 #include "avatar/avatar.h"
 #include "birth/auto-roller.h"
 #include "birth/birth-body-spec.h"
@@ -18,6 +18,7 @@
 #include "core/asking-player.h"
 #include "game-option/birth-options.h"
 #include "io/input-key-acceptor.h"
+#include "locale/japanese.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "player-base/player-class.h"
@@ -39,6 +40,7 @@
 #include "util/int-char-converter.h"
 #include "util/string-processor.h"
 #include "view/display-birth.h" // 暫定。後で消す予定。
+#include "view/display-player-misc-info.h"
 #include "view/display-player.h" // 暫定。後で消す.
 #include "view/display-util.h"
 #include "world/world.h"
@@ -57,11 +59,10 @@
 static void display_initial_birth_message(PlayerType *player_ptr)
 {
     term_clear();
-    put_str(_("名前  :", "Name  :"), 1, 26);
+    display_player_name(player_ptr, true);
     put_str(_("性別        :", "Sex         :"), 3, 1);
     put_str(_("種族        :", "Race        :"), 4, 1);
     put_str(_("職業        :", "Class       :"), 5, 1);
-    c_put_str(TERM_L_BLUE, player_ptr->name, 1, 34);
     put_str(_("キャラクターを作成します。('S'やり直す, 'Q'終了, '?'ヘルプ)", "Make your character. ('S' Restart, 'Q' Quit, '?' Help)"), 8, 10);
     put_str(_("注意：《性別》の違いはゲーム上ほとんど影響を及ぼしません。", "Note: Your 'sex' does not have any significant gameplay effects."), 23, 5);
 }
@@ -188,7 +189,7 @@ static bool let_player_select_race(PlayerType *player_ptr)
 
         clear_from(10);
         display_wrap_around(race_explanations[enum2i(player_ptr->prace)], 74, 12, 3);
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
+        if (input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), UserCheck::DEFAULT_Y)) {
             break;
         }
 
@@ -211,7 +212,7 @@ static bool let_player_select_class(PlayerType *player_ptr)
         clear_from(10);
         display_wrap_around(class_explanations[enum2i(player_ptr->pclass)], 74, 12, 3);
 
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
+        if (input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), UserCheck::DEFAULT_Y)) {
             break;
         }
 
@@ -232,12 +233,11 @@ static bool let_player_select_personality(PlayerType *player_ptr)
         clear_from(10);
         display_wrap_around(personality_explanations[player_ptr->ppersonality], 74, 12, 3);
 
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
+        if (input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), UserCheck::DEFAULT_Y)) {
             break;
         }
 
-        c_put_str(TERM_L_BLUE, player_ptr->name, 1, 34);
-        prt("", 1, 34 + strlen(player_ptr->name));
+        display_player_name(player_ptr, true);
     }
 
     return true;
@@ -272,7 +272,7 @@ static bool let_player_build_character(PlayerType *player_ptr)
 
 static void display_initial_options(PlayerType *player_ptr)
 {
-    uint16_t expfact = get_expfact(player_ptr) - 100;
+    const auto expfact_mod = static_cast<int>(get_expfact(player_ptr)) - 100;
     int16_t adj[A_MAX];
     for (int i = 0; i < A_MAX; i++) {
         adj[i] = rp_ptr->r_adj[i] + cp_ptr->c_adj[i] + ap_ptr->a_adj[i];
@@ -282,7 +282,7 @@ static void display_initial_options(PlayerType *player_ptr)
     put_str("                                   ", 3, 40);
     put_str(_("修正の合計値", "Your total modification"), 3, 40);
     put_str(_("腕力 知能 賢さ 器用 耐久 魅力 経験 ", "Str  Int  Wis  Dex  Con  Chr   EXP "), 4, 40);
-    strnfmt(buf, sizeof(buf), "%+3d  %+3d  %+3d  %+3d  %+3d  %+3d %+4d%% ", adj[0], adj[1], adj[2], adj[3], adj[4], adj[5], expfact);
+    strnfmt(buf, sizeof(buf), "%+3d  %+3d  %+3d  %+3d  %+3d  %+3d %+4d%% ", adj[0], adj[1], adj[2], adj[3], adj[4], adj[5], expfact_mod);
     c_put_str(TERM_L_BLUE, buf, 5, 40);
 
     put_str("HD ", 6, 40);
@@ -381,10 +381,12 @@ static bool decide_body_spec(PlayerType *player_ptr, chara_limit_type chara_limi
         if ((player_ptr->age < chara_limit.agemin) || (player_ptr->age > chara_limit.agemax)) {
             *accept = false;
         }
-        if ((player_ptr->ht < chara_limit.htmin) || (player_ptr->ht > chara_limit.htmax)) {
+        const auto ht = _(inch_to_cm(player_ptr->ht), player_ptr->ht);
+        if ((ht < chara_limit.htmin) || (ht > chara_limit.htmax)) {
             *accept = false;
         }
-        if ((player_ptr->wt < chara_limit.wtmin) || (player_ptr->wt > chara_limit.wtmax)) {
+        const auto wt = _(lb_to_kg(player_ptr->wt), player_ptr->wt);
+        if ((wt < chara_limit.wtmin) || (wt > chara_limit.wtmax)) {
             *accept = false;
             if ((player_ptr->prestige < chara_limit.scmin) || (player_ptr->prestige > chara_limit.scmax)) {
                 *accept = false;

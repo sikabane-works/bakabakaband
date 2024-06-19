@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief キー入力に応じてゲーム内コマンドを実行する
  * @date 2022/02/20
  * @author Hourier
@@ -115,7 +115,7 @@ bool enter_wizard_mode(PlayerType *player_ptr)
         msg_print(_("ウィザードモードはデバッグと実験のためのモードです。 ", "Wizard mode is for debugging and experimenting."));
         msg_print(_("一度ウィザードモードに入るとスコアは記録されません。", "The game will not be scored if you enter wizard mode."));
         msg_print(nullptr);
-        if (!get_check(_("本当にウィザードモードに入りたいのですか? ", "Are you sure you want to enter wizard mode? "))) {
+        if (!input_check(_("本当にウィザードモードに入りたいのですか? ", "Are you sure you want to enter wizard mode? "))) {
             return false;
         }
 
@@ -144,7 +144,7 @@ static bool enter_debug_mode(PlayerType *player_ptr)
         msg_print(_("デバッグ・コマンドはデバッグと実験のためのコマンドです。 ", "The debug commands are for debugging and experimenting."));
         msg_print(_("デバッグ・コマンドを使うとスコアは記録されません。", "The game will not be scored if you use debug commands."));
         msg_print(nullptr);
-        if (!get_check(_("本当にデバッグ・コマンドを使いますか? ", "Are you sure you want to use debug commands? "))) {
+        if (!input_check(_("本当にデバッグ・コマンドを使いますか? ", "Are you sure you want to use debug commands? "))) {
             return false;
         }
 
@@ -310,7 +310,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case '<': {
-        if (!player_ptr->wild_mode && !floor_ptr->dun_level && !floor_ptr->inside_arena && !inside_quest(floor_ptr->quest_number)) {
+        if (!player_ptr->wild_mode && !floor_ptr->dun_level && !floor_ptr->inside_arena && !floor_ptr->is_in_quest()) {
             if (vanilla_town) {
                 break;
             }
@@ -671,7 +671,7 @@ void process_command(PlayerType *player_ptr)
         break;
     }
     case KTRL('V'): {
-        spoil_random_artifact(player_ptr, "randifact.txt");
+        spoil_random_artifact(player_ptr);
         break;
     }
     case '`': {

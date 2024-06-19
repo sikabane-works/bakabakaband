@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
-  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" />
-  <Import Project="..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.props')" />
-  <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.props')" />
-  <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.props')" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -113,15 +109,16 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\..\src;curl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <ExceptionHandling>SyncCThrow</ExceptionHandling>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <AdditionalOptions>/source-charset:utf-8 /execution-charset:shift-jis %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\x86 Debug\libcurl_a_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\lib\libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>LinkVerbose</ShowProgress>
       <SubSystem>Windows</SubSystem>
     </Link>
@@ -149,12 +146,13 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TargetMachine>MachineX86</TargetMachine>
       <ShowProgress>LinkVerbose</ShowProgress>
-      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\x86 Debug\libcurl_a_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\lib\libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -171,13 +169,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>SyncCThrow</ExceptionHandling>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <AdditionalOptions>/source-charset:utf-8 /execution-charset:shift-jis %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\x86 Release\libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\lib\libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
@@ -204,13 +203,14 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\..\src;curl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>SyncCThrow</ExceptionHandling>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <CompileAs>CompileAsCpp</CompileAs>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\x86 Release\libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;gdiplus.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;Normaliz.lib;curl\lib\libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -228,6 +228,7 @@
     <ClCompile Include="..\..\src\action\tunnel-execution.cpp" />
     <ClCompile Include="..\..\src\action\weapon-shield.cpp" />
     <ClCompile Include="..\..\src\alliance\alliance-jural.cpp" />
+    <ClCompile Include="..\..\src\alliance\alliance-tophamhatt.cpp" />
     <ClCompile Include="..\..\src\alliance\alliance.cpp" />
     <ClCompile Include="..\..\src\artifact\artifact-info.cpp" />
     <ClCompile Include="..\..\src\artifact\fixed-art-generator.cpp" />
@@ -273,12 +274,13 @@
     <ClCompile Include="..\..\src\core\score-util.cpp" />
     <ClCompile Include="..\..\src\knowledge\knowledge-alliance.cpp" />
     <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp" />
+    <ClCompile Include="..\..\src\item-info\flavor-initializer.cpp" />
     <ClCompile Include="..\..\src\load\item\item-loader-base.cpp" />
     <ClCompile Include="..\..\src\load\item\item-loader-factory.cpp" />
     <ClCompile Include="..\..\src\load\monster\monster-loader-factory.cpp" />
     <ClCompile Include="..\..\src\load\player-class-specific-data-loader.cpp" />
     <ClCompile Include="..\..\src\monster-race\race-brightness-mask.cpp" />
-    <ClCompile Include="..\..\src\monster-race\race-feature-mask.cpp" />
+    <ClCompile Include="..\..\src\monster-race\race-sex-const.cpp" />
     <ClCompile Include="..\..\src\monster\monster-pain-describer.cpp" />
     <ClCompile Include="..\..\src\object-enchant\enchanter-factory.cpp" />
     <ClCompile Include="..\..\src\mspell\mspell-attack\abstract-mspell.cpp" />
@@ -302,6 +304,8 @@
     <ClCompile Include="..\..\src\object-use\read\read-executor-factory.cpp" />
     <ClCompile Include="..\..\src\object-use\read\ring-power-read-executor.cpp" />
     <ClCompile Include="..\..\src\object-use\read\scroll-read-executor.cpp" />
+    <ClCompile Include="..\..\src\room\rooms-nest.cpp" />
+    <ClCompile Include="..\..\src\room\rooms-pit.cpp" />
     <ClCompile Include="..\..\src\smith\object-smith.cpp" />
     <ClCompile Include="..\..\src\smith\smith-info.cpp" />
     <ClCompile Include="..\..\src\smith\smith-tables.cpp" />
@@ -315,6 +319,7 @@
     <ClCompile Include="..\..\src\save\player-class-specific-data-writer.cpp" />
     <ClCompile Include="..\..\src\specific-object\stone-of-lore.cpp" />
     <ClCompile Include="..\..\src\spell-class\spells-mirror-master.cpp" />
+    <ClCompile Include="..\..\src\system\angband-system.cpp" />
     <ClCompile Include="..\..\src\system\redrawing-flags-updater.cpp" />
     <ClCompile Include="..\..\src\system\floor-type-definition.cpp" />
     <ClCompile Include="..\..\src\system\grid-type-definition.cpp" />
@@ -603,6 +608,7 @@
     <ClCompile Include="..\..\src\system\item-entity.cpp" />
     <ClCompile Include="..\..\src\system\monster-race-info.cpp" />
     <ClCompile Include="..\..\src\system\player-type-definition.cpp" />
+    <ClCompile Include="..\..\src\system\terrain-type-definition.cpp" />
     <ClCompile Include="..\..\src\target\grid-selector.cpp" />
     <ClCompile Include="..\..\src\target\projection-path-calculator.cpp" />
     <ClCompile Include="..\..\src\target\target-describer.cpp" />
@@ -620,7 +626,9 @@
     <ClCompile Include="..\..\src\timed-effect\player-poison.cpp" />
     <ClCompile Include="..\..\src\timed-effect\player-stun.cpp" />
     <ClCompile Include="..\..\src\timed-effect\timed-effects.cpp" />
+    <ClCompile Include="..\..\src\util\candidate-selector.cpp" />
     <ClCompile Include="..\..\src\util\rng-xoshiro.cpp" />
+    <ClCompile Include="..\..\src\util\sha256.cpp" />
     <ClCompile Include="..\..\src\view\display-inventory.cpp" />
     <ClCompile Include="..\..\src\view\display-map.cpp" />
     <ClCompile Include="..\..\src\view\display-self-info.cpp" />
@@ -634,7 +642,6 @@
     <ClCompile Include="..\..\src\system\alloc-entries.cpp" />
     <ClCompile Include="..\..\src\term\screen-processor.cpp" />
     <ClCompile Include="..\..\src\util\buffer-shaper.cpp" />
-    <ClCompile Include="..\..\src\util\quarks.cpp" />
     <ClCompile Include="..\..\src\lore\combat-types-setter.cpp" />
     <ClCompile Include="..\..\src\lore\magic-types-setter.cpp" />
     <ClCompile Include="..\..\src\lore\lore-calculator.cpp" />
@@ -653,7 +660,6 @@
     <ClCompile Include="..\..\src\mspell\summon-checker.cpp" />
     <ClCompile Include="..\..\src\object-enchant\activation-info-table.cpp" />
     <ClCompile Include="..\..\src\object-enchant\dragon-breaths-table.cpp" />
-    <ClCompile Include="..\..\src\object\object-flags.cpp" />
     <ClCompile Include="..\..\src\perception\identification.cpp" />
     <ClCompile Include="..\..\src\player-attack\attack-chaos-effect.cpp" />
     <ClCompile Include="..\..\src\combat\attack-criticality.cpp" />
@@ -964,7 +970,11 @@
     <ClInclude Include="..\..\src\action\open-util.h" />
     <ClInclude Include="..\..\src\action\run-execution.h" />
     <ClInclude Include="..\..\src\alliance\alliance-jural.h" />
+    <ClInclude Include="..\..\src\alliance\alliance-tophamhatt.h" />
     <ClInclude Include="..\..\src\knowledge\knowledge-alliance.h" />
+    <ClInclude Include="..\..\src\external-lib\include-json.h" />
+    <ClInclude Include="..\..\src\external-lib\json.hpp" />
+    <ClInclude Include="..\..\src\item-info\flavor-initializer.h" />
     <ClInclude Include="..\..\src\load\item\item-loader-version-types.h" />
     <ClInclude Include="..\..\src\load\item\item-loader-base.h" />
     <ClInclude Include="..\..\src\load\item\item-loader-factory.h" />
@@ -982,11 +992,12 @@
     <ClInclude Include="..\..\src\monster-race\race-brightness-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-drop-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-feature-flags.h" />
-    <ClInclude Include="..\..\src\monster-race\race-feature-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-kind-flags.h" />
+    <ClInclude Include="..\..\src\monster-race\race-misc-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-population-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-resistance-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-speak-flags.h" />
+    <ClInclude Include="..\..\src\monster-race\race-special-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-visual-flags.h" />
     <ClInclude Include="..\..\src\monster-race\race-wilderness-flags.h" />
     <ClInclude Include="..\..\src\monster\monster-pain-describer.h" />
@@ -1012,6 +1023,8 @@
     <ClInclude Include="..\..\src\object-use\read\read-executor-factory.h" />
     <ClInclude Include="..\..\src\object-use\read\ring-power-read-executor.h" />
     <ClInclude Include="..\..\src\object-use\read\scroll-read-executor.h" />
+    <ClInclude Include="..\..\src\room\rooms-nest.h" />
+    <ClInclude Include="..\..\src\room\rooms-pit.h" />
     <ClInclude Include="..\..\src\smith\object-smith.h" />
     <ClInclude Include="..\..\src\smith\smith-info.h" />
     <ClInclude Include="..\..\src\smith\smith-tables.h" />
@@ -1025,7 +1038,6 @@
     <ClInclude Include="..\..\src\alliance\alliance.h" />
     <ClInclude Include="..\..\src\artifact\fixed-art-types.h" />
     <ClInclude Include="..\..\src\artifact\random-art-effects.h" />
-    <ClInclude Include="..\..\src\artifact\artifact-info.h" />
     <ClInclude Include="..\..\src\artifact\fixed-art-generator.h" />
     <ClInclude Include="..\..\src\artifact\random-art-activation.h" />
     <ClInclude Include="..\..\src\artifact\random-art-generator.h" />
@@ -1398,11 +1410,13 @@
     <ClInclude Include="..\..\src\sv-definition\sv-junk-types.h" />
     <ClInclude Include="..\..\src\system\alloc-entries.h" />
     <ClInclude Include="..\..\src\system\angband-exceptions.h" />
+    <ClInclude Include="..\..\src\system\angband-system.h" />
     <ClInclude Include="..\..\src\system\redrawing-flags-updater.h" />
     <ClInclude Include="..\..\src\system\dungeon-data-definition.h" />
     <ClInclude Include="..\..\src\system\floor-type-definition.h" />
     <ClInclude Include="..\..\src\system\grid-type-definition.h" />
     <ClInclude Include="..\..\src\system\player-type-definition.h" />
+    <ClInclude Include="..\..\src\system\terrain-type-definition.h" />
     <ClInclude Include="..\..\src\target\grid-selector.h" />
     <ClInclude Include="..\..\src\target\projection-path-calculator.h" />
     <ClInclude Include="..\..\src\target\target-describer.h" />
@@ -1424,12 +1438,13 @@
     <ClInclude Include="..\..\src\timed-effect\timed-effects.h" />
     <ClInclude Include="..\..\src\util\bit-flags-calculator.h" />
     <ClInclude Include="..\..\src\util\buffer-shaper.h" />
+    <ClInclude Include="..\..\src\util\candidate-selector.h" />
     <ClInclude Include="..\..\src\util\enum-converter.h" />
     <ClInclude Include="..\..\src\util\enum-range.h" />
+    <ClInclude Include="..\..\src\util\finalizer.h" />
     <ClInclude Include="..\..\src\util\flag-group.h" />
     <ClInclude Include="..\..\src\util\int-char-converter.h" />
     <ClInclude Include="..\..\src\util\point-2d.h" />
-    <ClInclude Include="..\..\src\util\quarks.h" />
     <ClInclude Include="..\..\src\lore\combat-types-setter.h" />
     <ClInclude Include="..\..\src\lore\magic-types-setter.h" />
     <ClInclude Include="..\..\src\lore\lore-calculator.h" />
@@ -1449,7 +1464,6 @@
     <ClInclude Include="..\..\src\monster-race\race-flags2.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags3.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags7.h" />
-    <ClInclude Include="..\..\src\monster-race\race-flags9.h" />
     <ClInclude Include="..\..\src\monster-race\race-indice-types.h" />
     <ClInclude Include="..\..\src\monster\monster-describer.h" />
     <ClInclude Include="..\..\src\monster\monster-description-types.h" />
@@ -1467,7 +1481,6 @@
     <ClInclude Include="..\..\src\object-enchant\dragon-breaths-table.h" />
     <ClInclude Include="..\..\src\artifact\random-art-bias-types.h" />
     <ClInclude Include="..\..\src\object-enchant\trg-types.h" />
-    <ClInclude Include="..\..\src\object\object-flags.h" />
     <ClInclude Include="..\..\src\perception\identification.h" />
     <ClInclude Include="..\..\src\player-attack\attack-chaos-effect.h" />
     <ClInclude Include="..\..\src\combat\attack-criticality.h" />
@@ -1488,7 +1501,6 @@
     <ClInclude Include="..\..\src\monster-attack\monster-attack-table.h" />
     <ClInclude Include="..\..\src\combat\attack-accuracy.h" />
     <ClInclude Include="..\..\src\monster-attack\monster-eating.h" />
-    <ClInclude Include="..\..\src\player-attack\player-attack-util.h" />
     <ClInclude Include="..\..\src\player-attack\player-attack.h" />
     <ClInclude Include="..\..\src\combat\slaying.h" />
     <ClInclude Include="..\..\src\object-enchant\vorpal-weapon.h" />
@@ -1713,7 +1725,7 @@
     <ClCompile Include="..\..\src\room\rooms-city.cpp" />
     <ClCompile Include="..\..\src\room\rooms-fractal.cpp" />
     <ClCompile Include="..\..\src\room\rooms-normal.cpp" />
-    <ClCompile Include="..\..\src\room\rooms-pit-nest.cpp" />
+    <ClCompile Include="..\..\src\room\pit-nest-util.cpp" />
     <ClCompile Include="..\..\src\room\rooms-special.cpp" />
     <ClCompile Include="..\..\src\room\rooms-trap.cpp" />
     <ClCompile Include="..\..\src\room\rooms-vault.cpp" />
@@ -1817,7 +1829,9 @@
     <ClInclude Include="..\..\src\util\angband-files.h" />
     <ClInclude Include="..\..\src\util\object-sort.h" />
     <ClInclude Include="..\..\src\util\rng-xoshiro.h" />
+    <ClInclude Include="..\..\src\util\sha256.h" />
     <ClInclude Include="..\..\src\util\string-processor.h" />
+    <ClInclude Include="..\..\src\view\colored-char.h" />
     <ClInclude Include="..\..\src\view\display-birth.h" />
     <ClInclude Include="..\..\src\view\display-inventory.h" />
     <ClInclude Include="..\..\src\view\display-lore-attacks.h" />
@@ -1922,6 +1936,7 @@
     <ClInclude Include="..\..\src\wizard\tval-descriptions-table.h" />
     <ClInclude Include="..\..\src\load\quest-loader.h" />
     <ClInclude Include="..\..\src\view\display-store.h" />
+    <ClInclude Include="..\..\src\monster-race\race-sex-const.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\system\angband.h" />
@@ -1990,7 +2005,7 @@
     <ClInclude Include="..\..\src\room\rooms-city.h" />
     <ClInclude Include="..\..\src\room\rooms-fractal.h" />
     <ClInclude Include="..\..\src\room\rooms-normal.h" />
-    <ClInclude Include="..\..\src\room\rooms-pit-nest.h" />
+    <ClInclude Include="..\..\src\room\pit-nest-util.h" />
     <ClInclude Include="..\..\src\room\rooms-special.h" />
     <ClInclude Include="..\..\src\room\rooms-trap.h" />
     <ClInclude Include="..\..\src\room\rooms-vault.h" />
@@ -2031,25 +2046,13 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.targets')" />
-    <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.targets" Condition="Exists('..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.targets')" />
-    <Import Project="..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.targets" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.targets')" />
-    <Import Project="..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" />
-    <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.targets')" />
+    <Import Project="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.2\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.3.3.2\build\Microsoft.CodeQuality.Analyzers.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.3.3.2\build\Microsoft.NetCore.Analyzers.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.3.3.2\build\Microsoft.NetFramework.Analyzers.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.FxCopAnalyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.NetAnalyzers.7.0.4\build\Microsoft.CodeAnalysis.NetAnalyzers.targets'))" />
   </Target>
 </Project>

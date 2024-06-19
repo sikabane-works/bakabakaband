@@ -1,4 +1,4 @@
-﻿#include "core/player-processor.h"
+#include "core/player-processor.h"
 #include "action/run-execution.h"
 #include "action/travel-execution.h"
 #include "core/disturbance.h"
@@ -25,7 +25,6 @@
 #include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-list.h"
@@ -48,6 +47,7 @@
 #include "spell-realm/spells-hex.h"
 #include "spell-realm/spells-song.h"
 #include "status/action-setter.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -79,15 +79,13 @@ static void process_fishing(PlayerType *player_ptr)
         auto *floor_ptr = player_ptr->current_floor_ptr;
         const auto wild_level = wilderness[player_ptr->wilderness_y][player_ptr->wilderness_x].level;
         const auto level = floor_ptr->is_in_dungeon() ? floor_ptr->dun_level : wild_level;
-        const auto r_idx = get_mon_num(player_ptr, 0, level, 0);
+        const auto r_idx = get_mon_num(player_ptr, 0, level, PM_NONE);
         msg_print(nullptr);
         if (MonsterRace(r_idx).is_valid() && one_in_(2)) {
-            POSITION y, x;
-            y = player_ptr->y + ddy[player_ptr->fishing_dir];
-            x = player_ptr->x + ddx[player_ptr->fishing_dir];
-            if (place_monster_aux(player_ptr, 0, y, x, r_idx, PM_NO_KAGE)) {
-                const auto m_name = monster_desc(player_ptr, &floor_ptr->m_list[floor_ptr->grid_array[y][x].m_idx], 0);
-                msg_format(_("%sが釣れた！", "You have a good catch!"), m_name.data());
+            const auto pos = player_ptr->get_neighbor(player_ptr->fishing_dir);
+            if (place_specific_monster(player_ptr, 0, pos.y, pos.x, r_idx, PM_NO_KAGE)) {
+                const auto m_name = monster_desc(player_ptr, &floor_ptr->m_list[floor_ptr->get_grid(pos).m_idx], 0);
+                msg_print(_(format("%sが釣れた！", m_name.data()), "You have a good catch!"));
                 success = true;
             }
         }
@@ -126,7 +124,8 @@ void process_player(PlayerType *player_ptr)
         player_ptr->invoking_midnight_curse = false;
     }
 
-    if (player_ptr->phase_out) {
+    const auto &system = AngbandSystem::get_instance();
+    if (system.is_phase_out()) {
         for (MONSTER_IDX m_idx = 1; m_idx < player_ptr->current_floor_ptr->m_max; m_idx++) {
             auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
             if (!m_ptr->is_valid()) {
@@ -188,7 +187,7 @@ void process_player(PlayerType *player_ptr)
     const auto effects = player_ptr->effects();
     if (player_ptr->riding && !effects->confusion()->is_confused() && !effects->blindness()->is_blind()) {
         auto *m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
         if (m_ptr->is_asleep()) {
             const auto m_name = monster_desc(player_ptr, m_ptr, 0);
             (void)set_monster_csleep(player_ptr, player_ptr->riding, 0);
@@ -284,7 +283,7 @@ void process_player(PlayerType *player_ptr)
         energy.reset_player_turn();
         auto is_knocked_out = effects->stun()->is_knocked_out();
         auto is_paralyzed = effects->paralysis()->is_paralyzed();
-        if (player_ptr->phase_out) {
+        if (system.is_phase_out()) {
             move_cursor_relative(player_ptr->y, player_ptr->x);
             command_cmd = SPECIAL_KEY_BUILDING;
             process_command(player_ptr);
@@ -317,7 +316,11 @@ void process_player(PlayerType *player_ptr)
         } else {
             move_cursor_relative(player_ptr->y, player_ptr->x);
 
-            rfu.set_flag(SubWindowRedrawingFlag::SIGHT_MONSTERS);
+            static constexpr auto flags = {
+                SubWindowRedrawingFlag::SIGHT_MONSTERS,
+                SubWindowRedrawingFlag::PETS,
+            };
+            rfu.set_flags(flags);
             window_stuff(player_ptr);
 
             can_save = true;
@@ -346,7 +349,7 @@ void process_player(PlayerType *player_ptr)
                     continue;
                 }
 
-                r_ptr = &monraces_info[m_ptr->ap_r_idx];
+                r_ptr = &m_ptr->get_appearance_monrace();
 
                 // モンスターのシンボル/カラーの更新
                 if (m_ptr->ml && r_ptr->visual_flags.has_any_of({ MonsterVisualType::MULTI_COLOR, MonsterVisualType::SHAPECHANGER })) {

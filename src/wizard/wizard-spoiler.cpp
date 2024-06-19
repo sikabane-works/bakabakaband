@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief スポイラー出力処理 (行数の都合でモンスター進化ツリーもここに入っている)
  * @date 2014/02/17
  * @author
@@ -17,8 +17,6 @@
 #include "io/input-key-acceptor.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "object/object-kind-hook.h"
 #include "player-info/class-info.h"
 #include "realm/realm-names-table.h"
@@ -46,6 +44,7 @@
 #include <set>
 #include <sstream>
 #include <string>
+#include <string_view>
 
 static constexpr std::array<std::string_view, 6> wiz_spell_stat = { {
     _("腕力", "STR"),
@@ -61,7 +60,7 @@ static constexpr std::array<std::string_view, 6> wiz_spell_stat = { {
  *
  * @return 進化ツリーの一番根元となるモンスターのIDのリスト(std::setで、evol_root_sortによりソートされている)
  */
-static auto get_mon_evol_roots(void)
+static auto get_mon_evol_roots()
 {
     std::set<MonsterRaceId> evol_parents;
     std::set<MonsterRaceId> evol_children;
@@ -92,13 +91,12 @@ static auto get_mon_evol_roots(void)
 }
 
 /*!
- * @brief 進化ツリーをスポイラー出力するメインルーチン /
- * Print monsters' evolution information to file
- * @param fname 出力ファイル名
+ * @brief 進化ツリーをスポイラー出力するメインルーチン
+ * @param filename 出力ファイル名
  */
-static SpoilerOutputResultType spoil_mon_evol(concptr fname)
+static SpoilerOutputResultType spoil_mon_evol(std::string_view filename)
 {
-    const auto &path = path_build(ANGBAND_DIR_USER, fname);
+    const auto &path = path_build(ANGBAND_DIR_USER, filename);
     spoiler_file = angband_fopen(path, FileOpenMode::WRITE);
     if (!spoiler_file) {
         return SpoilerOutputResultType::FILE_OPEN_FAILED;
@@ -129,7 +127,7 @@ static SpoilerOutputResultType spoil_mon_evol(concptr fname)
 
 static SpoilerOutputResultType spoil_categorized_mon_desc()
 {
-    auto status = spoil_mon_desc("mon-desc-ridable.txt", [](const MonsterRaceInfo *r_ptr) { return any_bits(r_ptr->flags7, RF7_RIDING); });
+    auto status = spoil_mon_desc("mon-desc-ridable.txt", [](const MonsterRaceInfo *r_ptr) { return r_ptr->misc_flags.has(MonsterMiscType::RIDING); });
     if (status == SpoilerOutputResultType::SUCCESSFUL) {
         status = spoil_mon_desc("mon-desc-wildonly.txt", [](const MonsterRaceInfo *r_ptr) { return r_ptr->wilderness_flags.has(MonsterWildernessType::WILD_ONLY); });
     }
@@ -191,20 +189,21 @@ static SpoilerOutputResultType spoil_player_spell(concptr fname)
         spoil_out(format("[[Class: %s]]\n", class_ptr->title));
 
         auto magic_ptr = &class_magics_info[c];
-        auto book_name = "なし";
+        std::string book_name = _("なし", "None");
         if (magic_ptr->spell_book != ItemKindType::NONE) {
             ItemEntity book;
             auto o_ptr = &book;
             o_ptr->prep(lookup_baseitem_id({ magic_ptr->spell_book, 0 }));
-            const auto item_name = describe_flavor(&dummy_p, o_ptr, OD_NAME_ONLY);
-            book_name = item_name.data();
-            char *s = angband_strchr(book_name, '[');
-            *s = '\0';
+            book_name = describe_flavor(&dummy_p, o_ptr, OD_NAME_ONLY);
+            auto *s = angband_strchr(book_name.data(), '[');
+            if (s != nullptr) {
+                book_name.erase(s - book_name.data());
+            }
         }
 
         constexpr auto mes = "BookType:%s Stat:%s Xtra:%x Type:%d Weight:%d\n";
         const auto &spell = wiz_spell_stat[magic_ptr->spell_stat];
-        spoil_out(format(mes, book_name, spell.data(), magic_ptr->spell_xtra, magic_ptr->spell_type, magic_ptr->spell_weight));
+        spoil_out(format(mes, book_name.data(), spell.data(), magic_ptr->spell_xtra, magic_ptr->spell_type, magic_ptr->spell_weight));
         if (magic_ptr->spell_book == ItemKindType::NONE) {
             spoil_out(_("呪文なし\n\n", "No spells.\n\n"));
             continue;
@@ -250,10 +249,10 @@ void exe_output_spoilers(void)
             screen_load();
             return;
         case '1':
-            status = spoil_obj_desc("obj-desc.txt");
+            status = spoil_obj_desc();
             break;
         case '2':
-            status = spoil_fixed_artifact("artifact.txt");
+            status = spoil_fixed_artifact();
             break;
         case '3':
             status = spoil_mon_desc("mon-desc.txt");
@@ -297,14 +296,14 @@ void exe_output_spoilers(void)
  * Create Spoiler files -BEN-
  * @return 成功時SPOILER_OUTPUT_SUCCESS / 失敗時エラー状態
  */
-SpoilerOutputResultType output_all_spoilers(void)
+SpoilerOutputResultType output_all_spoilers()
 {
-    auto status = spoil_obj_desc("obj-desc.txt");
+    auto status = spoil_obj_desc();
     if (status != SpoilerOutputResultType::SUCCESSFUL) {
         return status;
     }
 
-    status = spoil_fixed_artifact("artifact.txt");
+    status = spoil_fixed_artifact();
     if (status != SpoilerOutputResultType::SUCCESSFUL) {
         return status;
     }

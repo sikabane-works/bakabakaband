@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file main-win.cpp
  * @brief Windows版固有実装(メインエントリポイント含む)
  * @date 2018/03/16
@@ -358,7 +358,7 @@ static void save_prefs_aux(int i)
     wsprintfA(buf, "%d", td->tile_hgt);
     WritePrivateProfileStringA(sec_name, "TileHgt", buf, ini_file);
 
-    WINDOWPLACEMENT lpwndpl;
+    WINDOWPLACEMENT lpwndpl{};
     lpwndpl.length = sizeof(WINDOWPLACEMENT);
     GetWindowPlacement(td->w, &lpwndpl);
 
@@ -427,7 +427,8 @@ static void save_prefs(void)
     const auto path_length = angband_dir_str.length() - 4; // "\lib" を除く.
     angband_dir_str = angband_dir_str.substr(0, path_length);
     const auto savefile_str = savefile.string();
-    if (angband_dir_str == savefile_str) {
+    const auto savefile_dir_str = savefile_str.substr(0, path_length);
+    if (angband_dir_str == savefile_dir_str) {
         const auto relative_path = format(".\\%s", (savefile_str.data() + path_length));
         WritePrivateProfileStringA("Angband", "SaveFile", relative_path.data(), ini_file);
     } else {
@@ -1021,7 +1022,7 @@ static errr term_curs_win(int x, int y)
     tile_wid = td->tile_wid;
     tile_hgt = td->tile_hgt;
 
-    RECT rc;
+    RECT rc{};
     rc.left = x * tile_wid + td->size_ow1;
     rc.right = rc.left + tile_wid;
     rc.top = y * tile_hgt + td->size_oh1;
@@ -1045,7 +1046,7 @@ static errr term_bigcurs_win(int x, int y)
     tile_wid = td->tile_wid;
     tile_hgt = td->tile_hgt;
 
-    RECT rc;
+    RECT rc{};
     rc.left = x * tile_wid + td->size_ow1;
     rc.right = rc.left + 2 * tile_wid;
     rc.top = y * tile_hgt + td->size_oh1;
@@ -1065,7 +1066,7 @@ static errr term_bigcurs_win(int x, int y)
 static errr term_wipe_win(int x, int y, int n)
 {
     term_data *td = (term_data *)(game_term->data);
-    RECT rc;
+    RECT rc{};
     rc.left = x * td->tile_wid + td->size_ow1;
     rc.right = rc.left + n * td->tile_wid;
     rc.top = y * td->tile_hgt + td->size_oh1;
@@ -1398,8 +1399,9 @@ static void init_windows(void)
             td->dwExStyle, AngList, td->name, td->dwStyle, td->pos_x, td->pos_y, td->size_wid, td->size_hgt, HWND_DESKTOP, NULL, hInstance, NULL);
         my_td = NULL;
 
-        if (!td->w) {
+        if (td->w == NULL) {
             quit(_("サブウィンドウに作成に失敗しました", "Failed to create sub-window"));
+            return; // 静的解析対応.
         }
 
         td->size_hack = true;
@@ -1434,8 +1436,9 @@ static void init_windows(void)
         td->pos_x, td->pos_y, td->size_wid, td->size_hgt, HWND_DESKTOP, NULL, hInstance, NULL);
     my_td = NULL;
 
-    if (!td->w) {
+    if (td->w == NULL) {
         quit(_("メインウィンドウの作成に失敗しました", "Failed to create main window"));
+        return; // 静的解析対応.
     }
 
     /* Resize */
@@ -1600,8 +1603,8 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
             ofn.nFilterIndex = 1;
             ofn.Flags = OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR | OFN_HIDEREADONLY;
             const auto &filename = get_open_filename(&ofn, ANGBAND_DIR_SAVE, savefile, MAIN_WIN_MAX_PATH);
-            if (filename.has_value()) {
-                savefile = filename.value();
+            if (filename) {
+                savefile = *filename;
                 validate_file(savefile);
                 game_in_progress = true;
             }
@@ -1670,8 +1673,8 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
             ofn.nFilterIndex = 1;
             ofn.Flags = OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR;
             const auto &filename = get_open_filename(&ofn, ANGBAND_DIR_USER, savefile, MAIN_WIN_MAX_PATH);
-            if (filename.has_value()) {
-                savefile = filename.value();
+            if (filename) {
+                savefile = *filename;
                 prepare_browse_movie_without_path_build(savefile);
                 movie_in_progress = true;
             }
@@ -1957,8 +1960,8 @@ static void process_menus(PlayerType *player_ptr, WORD wCmd)
         ofn.lpstrTitle = _(L"壁紙を選んでね。", L"Choose wall paper.");
         ofn.Flags = OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
         const auto &filename = get_open_filename(&ofn, "", wallpaper_path, MAIN_WIN_MAX_PATH);
-        if (filename.has_value()) {
-            wallpaper_path = filename.value();
+        if (filename) {
+            wallpaper_path = *filename;
             change_bg_mode(bg_mode::BG_ONE, true, true);
         }
         break;
@@ -2296,8 +2299,8 @@ LRESULT PASCAL angband_window_procedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
         if (macro_running()) {
             return 0;
         }
-        mousex = std::min(LOWORD(lParam) / td->tile_wid, td->cols - 1);
-        mousey = std::min(HIWORD(lParam) / td->tile_hgt, td->rows - 1);
+        mousex = std::min<int>(LOWORD(lParam) / td->tile_wid, td->cols - 1);
+        mousey = std::min<int>(HIWORD(lParam) / td->tile_hgt, td->rows - 1);
         mouse_down = true;
         oldx = mousex;
         oldy = mousey;
@@ -2307,8 +2310,6 @@ LRESULT PASCAL angband_window_procedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
         if (!mouse_down) {
             return 0;
         }
-        HGLOBAL hGlobal;
-        LPSTR lpStr;
         TERM_LEN dx = abs(oldx - mousex) + 1;
         TERM_LEN dy = abs(oldy - mousey) + 1;
         TERM_LEN ox = (oldx > mousex) ? mousex : oldx;
@@ -2322,13 +2323,13 @@ LRESULT PASCAL angband_window_procedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 #else
         int sz = (dx + 2) * dy;
 #endif
-        hGlobal = GlobalAlloc(GHND, sz + 1);
-        if (hGlobal == NULL) {
+        const auto window_size = GlobalAlloc(GHND, sz + 1);
+        if (window_size == NULL) {
             return 0;
         }
-        lpStr = (LPSTR)GlobalLock(hGlobal);
 
-        for (int i = 0; i < dy; i++) {
+        auto global_lock = static_cast<LPSTR>(GlobalLock(window_size));
+        for (auto i = 0; (i < dy) && (global_lock != NULL); i++) {
 #ifdef JP
             const auto &scr = data[0].t.scr->c;
 
@@ -2351,27 +2352,32 @@ LRESULT PASCAL angband_window_procedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
                 if (s[j] == 127) {
                     s[j] = '#';
                 }
-                *lpStr++ = s[j];
+                *global_lock++ = s[j];
             }
 #else
             for (int j = 0; j < dx; j++) {
-                *lpStr++ = data[0].t.scr->c[oy + i][ox + j];
+                *global_lock++ = data[0].t.scr->c[oy + i][ox + j];
             }
 #endif
             if (dy > 1) {
-                *lpStr++ = '\r';
-                *lpStr++ = '\n';
+                *global_lock++ = '\r';
+                *global_lock++ = '\n';
             }
         }
 
-        GlobalUnlock(hGlobal);
-        if (OpenClipboard(hWnd) == 0) {
-            GlobalFree(hGlobal);
+        GlobalUnlock(window_size);
+        if (!OpenClipboard(hWnd)) {
+            GlobalFree(window_size);
             return 0;
         }
 
         EmptyClipboard();
-        SetClipboardData(CF_TEXT, hGlobal);
+        if (SetClipboardData(CF_TEXT, window_size) == NULL) {
+            CloseClipboard();
+            GlobalFree(window_size);
+            return 0;
+        }
+
         CloseClipboard();
         term_redraw();
         return 0;
@@ -2382,8 +2388,8 @@ LRESULT PASCAL angband_window_procedure(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
         }
 
         int dx, dy;
-        int cx = std::min(LOWORD(lParam) / td->tile_wid, td->cols - 1);
-        int cy = std::min(HIWORD(lParam) / td->tile_hgt, td->rows - 1);
+        auto cx = std::min<int>(LOWORD(lParam) / td->tile_wid, td->cols - 1);
+        auto cy = std::min<int>(HIWORD(lParam) / td->tile_hgt, td->rows - 1);
         int ox, oy;
 
         if (paint_rect) {

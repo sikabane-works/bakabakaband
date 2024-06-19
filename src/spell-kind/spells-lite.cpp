@@ -1,4 +1,4 @@
-﻿#include "spell-kind/spells-lite.h"
+#include "spell-kind/spells-lite.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
@@ -7,23 +7,23 @@
 #include "floor/floor-util.h"
 #include "floor/geometry.h"
 #include "game-option/map-screen-options.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "mind/mind-ninja.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
 #include "monster/monster-update.h"
 #include "player/special-defense-types.h"
 #include "spell-kind/spells-launcher.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "target/projection-path-calculator.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/timed-effects.h"
@@ -33,7 +33,7 @@
 #include "world/world.h"
 #include <vector>
 
-using PassBoldFunc = bool (*)(FloorType *, POSITION, POSITION);
+using PassBoldFunc = bool (*)(const FloorType *, POSITION, POSITION);
 
 /*!
  * @brief 指定した座標全てを照らす。
@@ -62,10 +62,10 @@ static void cave_temp_room_lite(PlayerType *player_ptr, const std::vector<Pos2D>
         auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
         g_ptr->info &= ~(CAVE_TEMP);
         g_ptr->info |= (CAVE_GLOW);
-        if (g_ptr->m_idx) {
+        if (g_ptr->has_monster()) {
             PERCENTAGE chance = 25;
             auto *m_ptr = &player_ptr->current_floor_ptr->m_list[g_ptr->m_idx];
-            auto *r_ptr = &monraces_info[m_ptr->r_idx];
+            auto *r_ptr = &m_ptr->get_monrace();
             update_monster(player_ptr, g_ptr->m_idx, false);
             if (r_ptr->behavior_flags.has(MonsterBehaviorType::STUPID)) {
                 chance = 10;
@@ -92,42 +92,30 @@ static void cave_temp_room_lite(PlayerType *player_ptr, const std::vector<Pos2D>
 /*!
  * @brief 指定した座標全てを暗くする。
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param points 暗くすべき座標たち
- * @details
- * <pre>
- * This routine clears the entire "temp" set.
- * This routine will "darken" all "temp" grids.
- * In addition, some of these grids will be "unmarked".
- * This routine is used (only) by "unlite_room()"
- * Also, process all affected monsters
- * </pre>
- * @todo この辺、xとyが引数になっているが、player_ptr->xとplayer_ptr->yで全て置き換えが効くはず……
+ * @param points 暗くすべき座標群
  */
 static void cave_temp_room_unlite(PlayerType *player_ptr, const std::vector<Pos2D> &points)
 {
+    auto &floor = *player_ptr->current_floor_ptr;
     for (const auto &point : points) {
-        const POSITION y = point.y;
-        const POSITION x = point.x;
-
-        auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
-        bool do_dark = !g_ptr->is_mirror();
-        g_ptr->info &= ~(CAVE_TEMP);
+        auto &grid = floor.get_grid(point);
+        auto do_dark = !grid.is_mirror();
+        grid.info &= ~(CAVE_TEMP);
         if (!do_dark) {
             continue;
         }
 
-        if (player_ptr->current_floor_ptr->dun_level || !is_daytime()) {
+        if (floor.dun_level || !w_ptr->is_daytime()) {
             for (int j = 0; j < 9; j++) {
-                POSITION by = y + ddy_ddd[j];
-                POSITION bx = x + ddx_ddd[j];
+                const Pos2D pos_neighbor(point.y + ddy_ddd[j], point.x + ddx_ddd[j]);
+                if (!in_bounds2(&floor, pos_neighbor.y, pos_neighbor.x)) {
+                    continue;
+                }
 
-                if (in_bounds2(player_ptr->current_floor_ptr, by, bx)) {
-                    grid_type *cc_ptr = &player_ptr->current_floor_ptr->grid_array[by][bx];
-
-                    if (terrains_info[cc_ptr->get_feat_mimic()].flags.has(TerrainCharacteristics::GLOW)) {
-                        do_dark = false;
-                        break;
-                    }
+                const auto &grid_neighbor = floor.get_grid(pos_neighbor);
+                if (grid_neighbor.get_terrain_mimic().flags.has(TerrainCharacteristics::GLOW)) {
+                    do_dark = false;
+                    break;
                 }
             }
 
@@ -136,20 +124,20 @@ static void cave_temp_room_unlite(PlayerType *player_ptr, const std::vector<Pos2
             }
         }
 
-        g_ptr->info &= ~(CAVE_GLOW);
-        if (terrains_info[g_ptr->get_feat_mimic()].flags.has_not(TerrainCharacteristics::REMEMBER)) {
+        grid.info &= ~(CAVE_GLOW);
+        if (grid.get_terrain_mimic().flags.has_not(TerrainCharacteristics::REMEMBER)) {
             if (!view_torch_grids) {
-                g_ptr->info &= ~(CAVE_MARK);
+                grid.info &= ~(CAVE_MARK);
             }
-            note_spot(player_ptr, y, x);
+            note_spot(player_ptr, point.y, point.x);
         }
 
-        if (g_ptr->m_idx) {
-            update_monster(player_ptr, g_ptr->m_idx, false);
+        if (grid.has_monster()) {
+            update_monster(player_ptr, grid.m_idx, false);
         }
 
-        lite_spot(player_ptr, y, x);
-        update_local_illumination(player_ptr, y, x);
+        lite_spot(player_ptr, point.y, point.x);
+        update_local_illumination(player_ptr, point.y, point.x);
     }
 }
 
@@ -165,10 +153,10 @@ static int next_to_open(FloorType *floor_ptr, const POSITION cy, const POSITION 
 {
     int len = 0;
     int blen = 0;
+    const Pos2D pos_center(cy, cx);
     for (int i = 0; i < 16; i++) {
-        POSITION y = cy + ddy_cdd[i % 8];
-        POSITION x = cx + ddx_cdd[i % 8];
-        if (!pass_bold(floor_ptr, y, x)) {
+        const auto pos = pos_center + CCW_DD[i % 8];
+        if (!pass_bold(floor_ptr, pos.y, pos.x)) {
             if (len > blen) {
                 blen = len;
             }
@@ -233,7 +221,7 @@ static void cave_temp_room_aux(
         if (!in_bounds2(floor_ptr, y, x)) {
             return;
         }
-        if (distance(player_ptr->y, player_ptr->x, y, x) > get_max_range(player_ptr)) {
+        if (distance(player_ptr->y, player_ptr->x, y, x) > AngbandSystem::get_instance().get_max_range()) {
             return;
         }
 
@@ -275,7 +263,7 @@ static void cave_temp_lite_room_aux(PlayerType *player_ptr, std::vector<Pos2D> &
  * @param x 指定X座標
  * @return 射線を通すならばtrueを返す。
  */
-static bool cave_pass_dark_bold(FloorType *floor_ptr, POSITION y, POSITION x)
+static bool cave_pass_dark_bold(const FloorType *floor_ptr, POSITION y, POSITION x)
 {
     return cave_has_flag_bold(floor_ptr, y, x, TerrainCharacteristics::PROJECT);
 }
@@ -391,23 +379,24 @@ bool starlight(PlayerType *player_ptr, bool magic)
     }
 
     int num = damroll(5, 3);
-    int attempts;
-    POSITION y = 0, x = 0;
+    auto y = 0;
+    auto x = 0;
     for (int k = 0; k < num; k++) {
-        attempts = 1000;
-
+        auto attempts = 1000;
         while (attempts--) {
             scatter(player_ptr, &y, &x, player_ptr->y, player_ptr->x, 4, PROJECT_LOS);
-            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
+            const Pos2D pos(y, x);
+            if (!cave_has_flag_bold(player_ptr->current_floor_ptr, pos.y, pos.x, TerrainCharacteristics::PROJECT)) {
                 continue;
             }
-            if (!player_bold(player_ptr, y, x)) {
+
+            if (!player_ptr->is_located_at(pos)) {
                 break;
             }
         }
 
-        project(player_ptr, 0, 0, y, x, damroll(6 + player_ptr->lev / 8, 10), AttributeType::LITE_WEAK,
-            (PROJECT_BEAM | PROJECT_THRU | PROJECT_GRID | PROJECT_KILL | PROJECT_LOS));
+        constexpr uint flags = PROJECT_BEAM | PROJECT_THRU | PROJECT_GRID | PROJECT_KILL | PROJECT_LOS;
+        project(player_ptr, 0, 0, y, x, damroll(6 + player_ptr->lev / 8, 10), AttributeType::LITE_WEAK, flags);
     }
 
     return true;

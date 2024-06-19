@@ -1,4 +1,4 @@
-﻿#include "birth/history-generator.h"
+#include "birth/history-generator.h"
 #include "birth/history.h"
 #include "player-info/race-types.h"
 #include "system/player-type-definition.h"
@@ -95,7 +95,7 @@ static int get_history_chart(PlayerType *player_ptr)
  */
 static std::string decide_social_class(PlayerType *player_ptr)
 {
-    short social_class = randint1(4);
+    auto social_class = randnum1<short>(4);
     auto chart = get_history_chart(player_ptr);
     std::stringstream ss;
     while (chart != 0) {

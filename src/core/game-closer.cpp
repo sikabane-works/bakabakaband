@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @file game-closer.cpp
  * @brief ゲーム終了処理
  * @author Hourier
@@ -49,8 +49,8 @@ static void send_world_score_on_closing(PlayerType *player_ptr, bool do_send)
         return;
     }
 
-    if (!get_check_strict(
-            player_ptr, _("後でスコアを登録するために待機しますか？", "Stand by for later score registration? "), (CHECK_NO_ESCAPE | CHECK_NO_HISTORY))) {
+    if (!input_check_strict(
+            player_ptr, _("後でスコアを登録するために待機しますか？", "Stand by for later score registration? "), { UserCheck::NO_ESCAPE, UserCheck::NO_HISTORY })) {
         return;
     }
 
@@ -165,9 +165,11 @@ void close_game(PlayerType *player_ptr)
         kingly(player_ptr);
     }
 
+    print_tomb(player_ptr);
+
     auto do_send = true;
-    if (!cheat_save || get_check(_("死んだデータをセーブしますか？ ", "Save death? "))) {
-        update_playtime();
+    if (!cheat_save || input_check(_("死んだデータをセーブしますか？ ", "Save death? "))) {
+        w_ptr->update_playtime();
         w_ptr->sf_play_time += w_ptr->play_time;
 
         if (!save_player(player_ptr, SaveType::CLOSE_GAME)) {
@@ -177,7 +179,6 @@ void close_game(PlayerType *player_ptr)
         do_send = false;
     }
 
-    print_tomb(player_ptr);
     flush();
     show_death_info(player_ptr);
     term_clear();

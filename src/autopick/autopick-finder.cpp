@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 自動拾いの検索
  * @date 2020/04/26
  * @author Hourier
@@ -56,8 +56,8 @@ int find_autopick_list(PlayerType *player_ptr, ItemEntity *o_ptr)
  */
 bool get_object_for_search(PlayerType *player_ptr, ItemEntity **o_handle, concptr *search_strp)
 {
-    concptr q = _("どのアイテムを検索しますか? ", "Enter which item? ");
-    concptr s = _("アイテムを持っていない。", "You have nothing to enter.");
+    constexpr auto q = _("どのアイテムを検索しますか? ", "Enter which item? ");
+    constexpr auto s = _("アイテムを持っていない。", "You have nothing to enter.");
     ItemEntity *o_ptr;
     o_ptr = choose_object(player_ptr, nullptr, q, s, USE_INVEN | USE_FLOOR | USE_EQUIP);
     if (!o_ptr) {
@@ -115,7 +115,7 @@ byte get_string_for_search(PlayerType *player_ptr, ItemEntity **o_handle, concpt
     int pos = 0;
     while (true) {
         bool back = false;
-        term_erase(col, 0, 255);
+        term_erase(col, 0);
         term_putstr(col, 0, -1, color, buf);
         term_gotoxy(col + pos, 0);
 

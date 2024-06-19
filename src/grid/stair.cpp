@@ -1,4 +1,4 @@
-﻿#include "grid/stair.h"
+#include "grid/stair.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
 #include "game-option/birth-options.h"
@@ -9,6 +9,7 @@
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 
 /*!
  * @brief 所定の位置に上り階段か下り階段を配置する / Place an up/down staircase at given location
@@ -38,7 +39,7 @@ void place_random_stairs(PlayerType *player_ptr, POSITION y, POSITION x)
         down_stairs = false;
     }
 
-    if (inside_quest(quest_number(floor, floor.dun_level)) && (floor.dun_level > 1)) {
+    if (inside_quest(floor.get_quest_id()) && (floor.dun_level > 1)) {
         down_stairs = false;
     }
 

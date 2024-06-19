@@ -1,4 +1,4 @@
-﻿#include "cmd-visual/cmd-draw.h"
+#include "cmd-visual/cmd-draw.h"
 #include "core/asking-player.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
@@ -20,6 +20,7 @@
 #include "view/display-messages.h"
 #include "view/display-player.h"
 #include "world/world.h"
+#include <optional>
 
 /*!
  * @brief 画面を再描画するコマンドのメインルーチン
@@ -77,7 +78,7 @@ void do_cmd_redraw(PlayerType *player_ptr)
         SubWindowRedrawingFlag::ITEM_KNOWLEDGE,
     };
     rfu.set_flags(flags_swrf);
-    update_playtime();
+    w_ptr->update_playtime();
     handle_stuff(player_ptr);
     if (PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
         calc_android_exp(player_ptr);
@@ -96,49 +97,64 @@ void do_cmd_redraw(PlayerType *player_ptr)
     }
 }
 
+static std::optional<int> input_status_command(PlayerType *player_ptr, int page)
+{
+    auto c = inkey();
+    switch (c) {
+    case 'c':
+        get_name(player_ptr);
+        process_player_name(player_ptr);
+        return page;
+    case 'f': {
+        const auto initial_filename = format("%s.txt", player_ptr->base_name);
+        const auto input_filename = input_string(_("ファイル名: ", "File name: "), 80, initial_filename);
+        if (!input_filename.has_value()) {
+            return page;
+        }
+
+        const auto &filename = str_ltrim(input_filename.value());
+        if (!filename.empty()) {
+            w_ptr->update_playtime();
+            file_character(player_ptr, filename);
+        }
+
+        return page;
+    }
+    case 'h':
+        return page + 1;
+    case ESCAPE:
+        return std::nullopt;
+    default:
+        bell();
+        return page;
+    }
+}
+
 /*!
  * @brief プレイヤーのステータス表示
  */
 void do_cmd_player_status(PlayerType *player_ptr)
 {
-    int mode = 0;
-    char tmp[160];
+    auto page = 0;
     screen_save();
+    constexpr auto prompt = _("['c'で名前変更, 'f'でファイルへ書出, 'h'でモード変更, ESCで終了]", "['c' to change name, 'f' to file, 'h' to change mode, or ESC]");
     while (true) {
         TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, MAIN_TERM_MIN_ROWS);
 
-        update_playtime();
-        (void)display_player(player_ptr, mode);
-
-        if (mode == 5) {
-            mode = 0;
-            (void)display_player(player_ptr, mode);
+        w_ptr->update_playtime();
+        (void)display_player(player_ptr, page);
+        if (page == 5) {
+            page = 0;
+            (void)display_player(player_ptr, page);
         }
 
-        term_putstr(2, 23, -1, TERM_WHITE,
-            _("['c'で名前変更, 'f'でファイルへ書出, 'h'でモード変更, ESCで終了]", "['c' to change name, 'f' to file, 'h' to change mode, or ESC]"));
-        char c = inkey();
-        if (c == ESCAPE) {
+        term_putstr(2, 23, -1, TERM_WHITE, prompt);
+        auto next_page = input_status_command(player_ptr, page);
+        if (!next_page.has_value()) {
             break;
         }
 
-        if (c == 'c') {
-            get_name(player_ptr);
-            process_player_name(player_ptr);
-        } else if (c == 'f') {
-            strnfmt(tmp, sizeof(tmp), "%s.txt", player_ptr->base_name);
-            if (get_string(_("ファイル名: ", "File name: "), tmp, 80)) {
-                if (tmp[0] && (tmp[0] != ' ')) {
-                    update_playtime();
-                    file_character(player_ptr, tmp);
-                }
-            }
-        } else if (c == 'h') {
-            mode++;
-        } else {
-            bell();
-        }
-
+        page = next_page.value();
         msg_erase();
     }
 
@@ -161,7 +177,7 @@ void do_cmd_player_status(PlayerType *player_ptr)
  */
 void do_cmd_message_one(void)
 {
-    prt(format("> %s", message_str(0)), 0, 0);
+    prt(format("> %s", message_str(0)->data()), 0, 0);
 }
 
 /*!
@@ -186,39 +202,42 @@ void do_cmd_message_one(void)
  */
 void do_cmd_messages(int num_now)
 {
-    char shower_str[81];
-    char finder_str[81];
-    char back_str[81];
-    concptr shower = nullptr;
-    int wid, hgt;
-    term_get_size(&wid, &hgt);
-    int num_lines = hgt - 4;
-    strcpy(finder_str, "");
-    strcpy(shower_str, "");
-    int n = message_num();
-    int i = 0;
+    std::string shower_str("");
+    std::string finder_str("");
+    std::string shower("");
+    const auto &[wid, hgt] = term_get_size();
+    auto num_lines = hgt - 4;
+    auto n = message_num();
+    auto i = 0;
     screen_save();
     term_clear();
     while (true) {
         int j;
         int skey;
         for (j = 0; (j < num_lines) && (i + j < n); j++) {
-            concptr msg = message_str(i + j);
+            const auto msg_str = message_str(i + j);
+            const auto *msg = msg_str->data();
             c_prt((i + j < num_now ? TERM_WHITE : TERM_SLATE), msg, num_lines + 1 - j, 0);
-            if (!shower || !shower[0]) {
+            if (shower.empty()) {
                 continue;
             }
 
-            concptr str = msg;
-            while ((str = angband_strstr(str, shower)) != nullptr) {
-                int len = strlen(shower);
+            // @details ダメ文字対策でstringを使わない.
+            const auto *str = msg;
+            while (true) {
+                str = angband_strstr(str, shower);
+                if (str == nullptr) {
+                    break;
+                }
+
+                const auto len = shower.length();
                 term_putstr(str - msg, num_lines + 1 - j, len, TERM_YELLOW, shower);
                 str += len;
             }
         }
 
         for (; j < num_lines; j++) {
-            term_erase(0, num_lines + 1 - j, 255);
+            term_erase(0, num_lines + 1 - j);
         }
 
         prt(format(_("以前のメッセージ %d-%d 全部で(%d)", "Message Recall (%d-%d of %d)"), i, i + j - 1, n), 0, 0);
@@ -230,40 +249,42 @@ void do_cmd_messages(int num_now)
 
         j = i;
         switch (skey) {
-        case '=':
+        case '=': {
             prt(_("強調: ", "Show: "), hgt - 1, 0);
-            strcpy(back_str, shower_str);
-            if (askfor(shower_str, 80)) {
-                shower = shower_str[0] ? shower_str : nullptr;
-            } else {
-                strcpy(shower_str, back_str);
+            const auto ask_result = askfor(80, shower_str);
+            if (ask_result) {
+                shower = *ask_result;
+                shower_str = *ask_result;
             }
 
             continue;
+        }
         case '/':
         case KTRL('s'): {
             prt(_("検索: ", "Find: "), hgt - 1, 0);
-            strcpy(back_str, finder_str);
-            if (!askfor(finder_str, 80)) {
-                strcpy(finder_str, back_str);
+            const auto ask_result = askfor(80, finder_str);
+            if (!ask_result) {
                 continue;
-            } else if (!finder_str[0]) {
-                shower = nullptr;
+            }
+
+            finder_str = *ask_result;
+            if (finder_str.empty()) {
+                shower = "";
                 continue;
             }
 
             shower = finder_str;
             for (int z = i + 1; z < n; z++) {
-                concptr msg = message_str(z);
-                if (angband_strstr(msg, finder_str)) {
+                // @details ダメ文字対策でstringを使わない.
+                const auto msg = message_str(z);
+                if (str_find(*msg, finder_str)) {
                     i = z;
                     break;
                 }
             }
+
+            break;
         }
-
-        break;
-
         case SKEY_TOP:
             i = n - num_lines;
             break;

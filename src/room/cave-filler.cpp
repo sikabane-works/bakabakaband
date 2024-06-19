@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief fill_data_type構造体を使ってダンジョンを生成/構成する処理
  * @date 2020/07/24
  * @author Hourier
@@ -15,6 +15,7 @@
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "util/point-2d.h"
 #include <queue>
 
@@ -127,7 +128,7 @@ void generate_hmap(FloorType *floor_ptr, POSITION y0, POSITION x0, POSITION xsiz
                 }
 
                 if (xhstep2 > grd) {
-                    store_height(floor_ptr, ii, jj, randint1(maxsize));
+                    store_height(floor_ptr, ii, jj, randnum1<short>(maxsize));
                     continue;
                 }
 
@@ -145,7 +146,7 @@ void generate_hmap(FloorType *floor_ptr, POSITION y0, POSITION x0, POSITION xsiz
                 }
 
                 if (xhstep2 > grd) {
-                    store_height(floor_ptr, ii, jj, randint1(maxsize));
+                    store_height(floor_ptr, ii, jj, randnum1<short>(maxsize));
                     continue;
                 }
 
@@ -163,7 +164,7 @@ void generate_hmap(FloorType *floor_ptr, POSITION y0, POSITION x0, POSITION xsiz
                 }
 
                 if (xhstep2 > grd) {
-                    store_height(floor_ptr, ii, jj, randint1(maxsize));
+                    store_height(floor_ptr, ii, jj, randnum1<short>(maxsize));
                     continue;
                 }
 
@@ -230,39 +231,38 @@ static bool hack_isnt_wall(PlayerType *player_ptr, POSITION y, POSITION x, int c
  * Quick and nasty fill routine used to find the connected region
  * of floor in the middle of the grids
  */
-static void cave_fill(PlayerType *player_ptr, const POSITION y, const POSITION x)
+static void cave_fill(PlayerType *player_ptr, const Pos2D &initial_pos)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
+    auto &floor = *player_ptr->current_floor_ptr;
 
     // 幅優先探索用のキュー。
     std::queue<Pos2D> que;
-    que.emplace(y, x);
+    que.push(initial_pos);
 
     while (!que.empty()) {
-        const auto [y_cur, x_cur] = que.front();
+        // 参照で受けるとダングリング状態になるのでコピーする.
+        const Pos2D pos = que.front();
         que.pop();
-
         for (int d = 0; d < 8; d++) {
-            int y_to = y_cur + ddy_ddd[d];
-            int x_to = x_cur + ddx_ddd[d];
-            if (!in_bounds(floor_ptr, y_to, x_to)) {
-                floor_ptr->grid_array[y_to][x_to].info |= CAVE_ICKY;
+            const Pos2D pos_to(pos.y + ddy_ddd[d], pos.x + ddx_ddd[d]);
+            auto &grid = floor.get_grid(pos_to);
+            if (!in_bounds(&floor, pos_to.y, pos_to.x)) {
+                grid.info |= CAVE_ICKY;
                 continue;
             }
 
-            if ((x_to <= fill_data.xmin) || (x_to >= fill_data.xmax) || (y_to <= fill_data.ymin) || (y_to >= fill_data.ymax)) {
-                floor_ptr->grid_array[y_to][x_to].info |= CAVE_ICKY;
+            if ((pos_to.x <= fill_data.xmin) || (pos_to.x >= fill_data.xmax) || (pos_to.y <= fill_data.ymin) || (pos_to.y >= fill_data.ymax)) {
+                grid.info |= CAVE_ICKY;
                 continue;
             }
 
-            if (!hack_isnt_wall(player_ptr, y_to, x_to, fill_data.c1, fill_data.c2, fill_data.c3, fill_data.feat1, fill_data.feat2, fill_data.feat3,
+            if (!hack_isnt_wall(player_ptr, pos_to.y, pos_to.x, fill_data.c1, fill_data.c2, fill_data.c3, fill_data.feat1, fill_data.feat2, fill_data.feat3,
                     fill_data.info1, fill_data.info2, fill_data.info3)) {
                 continue;
             }
 
-            que.emplace(y_to, x_to);
-
-            (fill_data.amount)++;
+            que.push(pos_to);
+            fill_data.amount++;
         }
     }
 }
@@ -282,7 +282,7 @@ bool generate_fracave(PlayerType *player_ptr, POSITION y0, POSITION x0, POSITION
     fill_data.info3 = CAVE_FLOOR;
     fill_data.amount = 0;
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    cave_fill(player_ptr, (byte)y0, (byte)x0);
+    cave_fill(player_ptr, { y0, x0 });
     if (fill_data.amount < 10) {
         for (POSITION x = 0; x <= xsize; ++x) {
             for (POSITION y = 0; y <= ysize; ++y) {
@@ -454,7 +454,7 @@ bool generate_lake(PlayerType *player_ptr, POSITION y0, POSITION x0, POSITION xs
     fill_data.amount = 0;
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    cave_fill(player_ptr, (byte)y0, (byte)x0);
+    cave_fill(player_ptr, { y0, x0 });
     if (fill_data.amount < 10) {
         for (POSITION x = 0; x <= xsize; ++x) {
             for (POSITION y = 0; y <= ysize; ++y) {

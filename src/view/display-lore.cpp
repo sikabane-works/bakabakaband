@@ -16,11 +16,6 @@
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
@@ -51,7 +46,7 @@ void roff_top(MonsterRaceId r_idx)
     TERM_COLOR a1 = r_ptr->d_attr;
     TERM_COLOR a2 = r_ptr->x_attr;
 
-    term_erase(0, 0, 255);
+    term_erase(0, 0);
     term_gotoxy(0, 0);
 
 #ifdef JP
@@ -87,7 +82,7 @@ void roff_top(MonsterRaceId r_idx)
 void screen_roff(PlayerType *player_ptr, MonsterRaceId r_idx, monster_lore_mode mode)
 {
     msg_erase();
-    term_erase(0, 1, 255);
+    term_erase(0, 1);
     hook_c_roff = c_roff;
     process_monster_lore(player_ptr, r_idx, mode);
     roff_top(r_idx);
@@ -101,7 +96,7 @@ void screen_roff(PlayerType *player_ptr, MonsterRaceId r_idx, monster_lore_mode 
 void display_roff(PlayerType *player_ptr)
 {
     for (int y = 0; y < game_term->hgt; y++) {
-        term_erase(0, y, 255);
+        term_erase(0, y);
     }
 
     term_gotoxy(0, 1);
@@ -444,11 +439,13 @@ void display_monster_kind(lore_type *lore_ptr)
 
 void display_monster_alignment(lore_type *lore_ptr)
 {
-    if (lore_ptr->flags1 & RF1_MALE && lore_ptr->flags1 & RF1_FEMALE) {
+    /* TODO 再定義
+    if (lore_ptr->msex == monster_sex::MSEX_MALE && lore_ptr->msex == monster_sex::MSEX_FEMALE) {
         hook_c_roff(TERM_VIOLET, _("両性具有であり", " hermaphroditic"));
     }
+    */
 
-    if (lore_ptr->flags2 & RF2_ELDRITCH_HORROR) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::ELDRITCH_HORROR)) {
         hook_c_roff(TERM_VIOLET, _("狂気を誘う", " sanity-blasting"));
     }
 
@@ -654,17 +651,24 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
     }
 
     hooked_roff(_("護衛の構成は", "These escorts"));
-    if ((lore_ptr->flags1 & RF1_ESCORT) || (lore_ptr->flags1 & RF1_ESCORTS)) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::ESCORT) || lore_ptr->misc_flags.has(MonsterMiscType::MORE_ESCORT)) {
         hooked_roff(_("少なくとも", " at the least"));
     }
 
 #ifdef JP
 #else
-    hooked_roff(" contain ");
+    hooked_roff(" contain");
+    auto max_idx = lore_ptr->r_ptr->reinforces.size() - 1;
+    auto idx = 0 * max_idx;
 #endif
 
     for (auto [r_idx, dd, ds] : lore_ptr->r_ptr->reinforces) {
         auto is_reinforced = MonsterRace(r_idx).is_valid();
+#ifndef JP
+        const char *prefix = (idx == 0) ? " " : (idx == max_idx) ? " and "
+                                                                 : ", ";
+        ++idx;
+#endif
         is_reinforced &= dd > 0;
         is_reinforced &= ds > 0;
         if (!is_reinforced) {
@@ -673,32 +677,28 @@ static void display_monster_escort_contents(lore_type *lore_ptr)
 
         const auto *rf_ptr = &monraces_info[r_idx];
         if (rf_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
-            hooked_roff(format(_("、%s", ", %s"), rf_ptr->name.data()));
+            hooked_roff(format("%s%s", _("、", prefix), rf_ptr->name.data()));
             continue;
         }
 
 #ifdef JP
         hooked_roff(format("、 %dd%d 体の%s", dd, ds, rf_ptr->name.data()));
 #else
-        auto plural = (dd * ds > 1);
-        GAME_TEXT name[MAX_NLEN];
-        strcpy(name, rf_ptr->name.data());
-        if (plural) {
-            plural_aux(name);
-        }
-        hooked_roff(format(",%dd%d %s", dd, ds, name));
+        const auto plural = (dd * ds > 1);
+        const auto &name = plural ? pluralize(rf_ptr->name) : rf_ptr->name;
+        hooked_roff(format("%s%dd%d %s", prefix, dd, ds, name.data()));
 #endif
     }
 
-    hooked_roff(_("で成り立っている。", "."));
+    hooked_roff(_("で成り立っている。", ".  "));
 }
 
 void display_monster_collective(lore_type *lore_ptr)
 {
-    if ((lore_ptr->flags1 & RF1_ESCORT) || (lore_ptr->flags1 & RF1_ESCORTS) || lore_ptr->reinforce) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::ESCORT) || lore_ptr->misc_flags.has(MonsterMiscType::MORE_ESCORT) || lore_ptr->reinforce) {
         hooked_roff(format(_("%s^は通常護衛を伴って現れる。", "%s^ usually appears with escorts.  "), Who::who(lore_ptr->msex)));
         display_monster_escort_contents(lore_ptr);
-    } else if (lore_ptr->flags1 & RF1_FRIENDS) {
+    } else if (lore_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
         hooked_roff(format(_("%s^は通常集団で現れる。", "%s^ usually appears in groups.  "), Who::who(lore_ptr->msex)));
     }
 }
@@ -791,13 +791,13 @@ void display_monster_sometimes(lore_type *lore_ptr)
 
 void display_monster_guardian(lore_type *lore_ptr)
 {
-    bool is_kingpin = (lore_ptr->flags1 & RF1_QUESTOR) != 0;
+    bool is_kingpin = lore_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     is_kingpin &= lore_ptr->r_ptr->r_sights > 0;
     is_kingpin &= lore_ptr->r_ptr->mob_num > 0;
     is_kingpin &= (lore_ptr->r_idx == MonsterRaceId::MELKO);
     if (is_kingpin) {
         hook_c_roff(TERM_VIOLET, _("あなたはこのモンスターを殺したいという強い欲望を感じている...", "You feel an intense desire to kill this monster...  "));
-    } else if (lore_ptr->flags7 & RF7_GUARDIAN) {
+    } else if (lore_ptr->misc_flags.has(MonsterMiscType::GUARDIAN)) {
         hook_c_roff(TERM_L_RED, _("このモンスターはダンジョンの主である。", "This monster is the master of a dungeon."));
     }
 

@@ -1,4 +1,4 @@
-﻿#include "floor/floor-changer.h"
+#include "floor/floor-changer.h"
 #include "action/travel-execution.h"
 #include "dungeon/quest-monster-placer.h"
 #include "dungeon/quest.h"
@@ -21,9 +21,6 @@
 #include "monster-floor/monster-remover.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-flag-types.h"
@@ -41,6 +38,7 @@
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
@@ -53,8 +51,9 @@
 /*!
  * @brief 階段移動先のフロアが生成できない時に簡単な行き止まりマップを作成する / Builds the dead end
  */
-static void build_dead_end(PlayerType *player_ptr)
+static void build_dead_end(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
+    msg_print(_("階段は行き止まりだった。", "The staircases come to a dead end..."));
     clear_cave(player_ptr);
     player_ptr->x = player_ptr->y = 0;
     set_floor_and_wall(0);
@@ -70,6 +69,12 @@ static void build_dead_end(PlayerType *player_ptr)
     player_ptr->x = player_ptr->current_floor_ptr->width / 2;
     place_bold(player_ptr, player_ptr->y, player_ptr->x, GB_FLOOR);
     wipe_generate_random_floor_flags(player_ptr->current_floor_ptr);
+
+    if (player_ptr->change_floor_mode & CFM_UP) {
+        sf_ptr->upper_floor_id = 0;
+    } else if (player_ptr->change_floor_mode & CFM_DOWN) {
+        sf_ptr->lower_floor_id = 0;
+    }
 }
 
 static MONSTER_IDX decide_pet_index(PlayerType *player_ptr, const int current_monster, POSITION *cy, POSITION *cx)
@@ -117,7 +122,7 @@ static MonsterRaceInfo &set_pet_params(PlayerType *player_ptr, const int current
     m_ptr->mtimed[MTIMED_CSLEEP] = 0;
     m_ptr->hold_o_idx_list.clear();
     m_ptr->target_y = 0;
-    auto &r_ref = m_ptr->get_real_r_ref();
+    auto &r_ref = m_ptr->get_real_monrace();
     if (r_ref.behavior_flags.has(MonsterBehaviorType::PREVENT_SUDDEN_MAGIC) && !ironman_nightmare) {
         m_ptr->mflag.set(MonsterTemporaryFlagType::PREVENT_MAGIC);
     }
@@ -144,12 +149,12 @@ static void place_pet(PlayerType *player_ptr)
             auto &r_ref = set_pet_params(player_ptr, current_monster, m_idx, cy, cx);
             update_monster(player_ptr, m_idx, true);
             lite_spot(player_ptr, cy, cx);
-            if (any_bits(r_ref.flags2, RF2_MULTIPLY)) {
+            if (r_ref.misc_flags.has(MonsterMiscType::MULTIPLY)) {
                 player_ptr->current_floor_ptr->num_repro++;
             }
         } else {
             auto *m_ptr = &party_mon[current_monster];
-            auto &r_ref = m_ptr->get_real_r_ref();
+            auto &r_ref = m_ptr->get_real_monrace();
             msg_format(_("%sとはぐれてしまった。", "You have lost sight of %s."), monster_desc(player_ptr, m_ptr, 0).data());
             if (record_named_pet && m_ptr->is_named()) {
                 exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_LOST_SIGHT, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE));
@@ -181,7 +186,7 @@ static void update_unique_artifact(FloorType *floor_ptr, int16_t cur_floor_id)
             continue;
         }
 
-        auto &r_ref = m_ref.get_real_r_ref();
+        auto &r_ref = m_ref.get_real_monrace();
         if (r_ref.kind_flags.has(MonsterKindType::UNIQUE) || (r_ref.population_flags.has(MonsterPopulationType::NAZGUL))) {
             r_ref.floor_id = cur_floor_id;
         }
@@ -199,9 +204,14 @@ static void update_unique_artifact(FloorType *floor_ptr, int16_t cur_floor_id)
     }
 }
 
+static bool is_visited_floor(saved_floor_type *sf_ptr)
+{
+    return sf_ptr->last_visit != 0;
+}
+
 static void check_visited_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr, bool *loaded)
 {
-    if ((sf_ptr->last_visit == 0) || !load_floor(player_ptr, sf_ptr, 0)) {
+    if (!is_visited_floor(sf_ptr) || !load_floor(player_ptr, sf_ptr, 0)) {
         return;
     }
 
@@ -224,7 +234,7 @@ static void check_visited_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr
 
 static void update_floor_id(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
-    if (player_ptr->floor_id == 0) {
+    if (!player_ptr->in_saved_floor()) {
         if (player_ptr->change_floor_mode & CFM_UP) {
             sf_ptr->lower_floor_id = 0;
         } else if (player_ptr->change_floor_mode & CFM_DOWN) {
@@ -267,7 +277,7 @@ static void reset_unique_by_floor_change(PlayerType *player_ptr)
             (void)set_monster_invulner(player_ptr, i, 0, false);
         }
 
-        const auto &r_ref = m_ptr->get_real_r_ref();
+        const auto &r_ref = m_ptr->get_real_monrace();
         if (r_ref.kind_flags.has_not(MonsterKindType::UNIQUE) && r_ref.population_flags.has_not(MonsterPopulationType::NAZGUL)) {
             continue;
         }
@@ -314,20 +324,22 @@ static void new_floor_allocation(PlayerType *player_ptr, saved_floor_type *sf_pt
     }
 }
 
-static void check_dead_end(PlayerType *player_ptr, saved_floor_type *sf_ptr)
+/*!
+ * @brief プレイヤー足元に階段を設置する
+ * @param player_ptr プレイヤーへの参照ポインタ
+ */
+static void set_stairs(PlayerType *player_ptr)
 {
-    if (sf_ptr->last_visit == 0) {
-        generate_floor(player_ptr);
-        return;
+    auto &floor = *player_ptr->current_floor_ptr;
+    auto *g_ptr = &floor.grid_array[player_ptr->y][player_ptr->x];
+    if ((player_ptr->change_floor_mode & CFM_UP) && !inside_quest(floor.get_quest_id())) {
+        g_ptr->feat = (player_ptr->change_floor_mode & CFM_SHAFT) ? feat_state(&floor, feat_down_stair, TerrainCharacteristics::SHAFT) : feat_down_stair;
+    } else if ((player_ptr->change_floor_mode & CFM_DOWN) && !ironman_downward) {
+        g_ptr->feat = (player_ptr->change_floor_mode & CFM_SHAFT) ? feat_state(&floor, feat_up_stair, TerrainCharacteristics::SHAFT) : feat_up_stair;
     }
 
-    msg_print(_("階段は行き止まりだった。", "The staircases come to a dead end..."));
-    build_dead_end(player_ptr);
-    if (player_ptr->change_floor_mode & CFM_UP) {
-        sf_ptr->upper_floor_id = 0;
-    } else if (player_ptr->change_floor_mode & CFM_DOWN) {
-        sf_ptr->lower_floor_id = 0;
-    }
+    g_ptr->mimic = 0;
+    g_ptr->special = player_ptr->floor_id;
 }
 
 static void update_new_floor_feature(PlayerType *player_ptr, saved_floor_type *sf_ptr, const bool loaded)
@@ -337,7 +349,12 @@ static void update_new_floor_feature(PlayerType *player_ptr, saved_floor_type *s
         return;
     }
 
-    check_dead_end(player_ptr, sf_ptr);
+    if (!is_visited_floor(sf_ptr)) {
+        generate_floor(player_ptr);
+    } else {
+        build_dead_end(player_ptr, sf_ptr);
+    }
+
     sf_ptr->last_visit = w_ptr->game_turn;
     auto &floor = *player_ptr->current_floor_ptr;
     sf_ptr->dun_level = floor.dun_level;
@@ -345,15 +362,7 @@ static void update_new_floor_feature(PlayerType *player_ptr, saved_floor_type *s
         return;
     }
 
-    auto *g_ptr = &floor.grid_array[player_ptr->y][player_ptr->x];
-    if ((player_ptr->change_floor_mode & CFM_UP) && !inside_quest(quest_number(floor, floor.dun_level))) {
-        g_ptr->feat = (player_ptr->change_floor_mode & CFM_SHAFT) ? feat_state(&floor, feat_down_stair, TerrainCharacteristics::SHAFT) : feat_down_stair;
-    } else if ((player_ptr->change_floor_mode & CFM_DOWN) && !ironman_downward) {
-        g_ptr->feat = (player_ptr->change_floor_mode & CFM_SHAFT) ? feat_state(&floor, feat_up_stair, TerrainCharacteristics::SHAFT) : feat_up_stair;
-    }
-
-    g_ptr->mimic = 0;
-    g_ptr->special = player_ptr->floor_id;
+    set_stairs(player_ptr);
 }
 
 static void cut_off_the_upstair(PlayerType *player_ptr)
@@ -383,7 +392,7 @@ static void update_floor(PlayerType *player_ptr)
     }
 
     if (new_floor_id == 0) {
-        new_floor_id = get_new_floor_id(player_ptr);
+        new_floor_id = get_unused_floor_id(player_ptr);
     }
 
     saved_floor_type *sf_ptr;

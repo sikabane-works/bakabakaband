@@ -1,8 +1,9 @@
-﻿#include "floor/geometry.h"
+#include "floor/geometry.h"
 #include "floor/cave.h"
 #include "game-option/text-display-options.h"
 #include "grid/feature.h"
 #include "grid/grid.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-entity.h"
@@ -11,46 +12,6 @@
 #include "timed-effect/player-blindness.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
-
-/*!
- * キーパッドの方向を南から反時計回り順に列挙 / Global array for looping through the "keypad directions"
- */
-const POSITION ddd[9] = { 2, 8, 6, 4, 3, 1, 9, 7, 5 };
-
-/*!
- * dddで定義した順にベクトルのX軸成分を定義 / Global arrays for converting "keypad direction" into offsets
- */
-const POSITION ddx[10] = { 0, -1, 0, 1, -1, 0, 1, -1, 0, 1 };
-
-/*!
- * dddで定義した順にベクトルのY軸成分を定義 / Global arrays for converting "keypad direction" into offsets
- */
-const POSITION ddy[10] = { 0, 1, 1, 1, 0, 0, 0, -1, -1, -1 };
-
-/*!
- * ddd越しにベクトルのX軸成分を定義 / Global arrays for optimizing "ddx[ddd[i]]" and "ddy[ddd[i]]"
- */
-const POSITION ddx_ddd[9] = { 0, 0, 1, -1, 1, -1, 1, -1, 0 };
-
-/*!
- * ddd越しにベクトルのY軸成分を定義 / Global arrays for optimizing "ddx[ddd[i]]" and "ddy[ddd[i]]"
- */
-const POSITION ddy_ddd[9] = { 1, -1, 0, 0, 1, 1, -1, -1, 0 };
-
-/*!
- * キーパッドの円環状方向配列 / Circular keypad direction array
- */
-const POSITION cdd[8] = { 2, 3, 6, 9, 8, 7, 4, 1 };
-
-/*!
- * cdd越しにベクトルのX軸成分を定義 / Global arrays for optimizing "ddx[cdd[i]]" and "ddy[cdd[i]]"
- */
-const POSITION ddx_cdd[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
-
-/*!
- * cdd越しにベクトルのY軸成分を定義 / Global arrays for optimizing "ddx[cdd[i]]" and "ddy[cdd[i]]"
- */
-const POSITION ddy_cdd[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 
 /*!
  * @brief 2点間の距離をニュートン・ラプソン法で算出する / Distance between two points via Newton-Raphson technique
@@ -152,22 +113,21 @@ DIRECTION coords_to_dir(PlayerType *player_ptr, POSITION y, POSITION x)
  */
 bool player_can_see_bold(PlayerType *player_ptr, POSITION y, POSITION x)
 {
-    grid_type *g_ptr;
-
     /* Blind players see nothing */
     if (player_ptr->effects()->blindness()->is_blind()) {
         return false;
     }
 
-    g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
+    const Pos2D pos(y, x);
+    const auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
 
     /* Note that "torch-lite" yields "illumination" */
-    if (g_ptr->info & (CAVE_LITE | CAVE_MNLT)) {
+    if (grid.info & (CAVE_LITE | CAVE_MNLT)) {
         return true;
     }
 
     /* Require line of sight to the grid */
-    if (!player_has_los_bold(player_ptr, y, x)) {
+    if (!grid.has_los()) {
         return false;
     }
 
@@ -177,13 +137,13 @@ bool player_can_see_bold(PlayerType *player_ptr, POSITION y, POSITION x)
     }
 
     /* Require "perma-lite" of the grid */
-    if ((g_ptr->info & (CAVE_GLOW | CAVE_MNDK)) != CAVE_GLOW) {
+    if ((grid.info & (CAVE_GLOW | CAVE_MNDK)) != CAVE_GLOW) {
         return false;
     }
 
     /* Feature code (applying "mimic" field) */
     /* Floors are simple */
-    if (feat_supports_los(g_ptr->get_feat_mimic())) {
+    if (feat_supports_los(grid.get_feat_mimic())) {
         return true;
     }
 
@@ -195,52 +155,43 @@ bool player_can_see_bold(PlayerType *player_ptr, POSITION y, POSITION x)
  * Calculate "incremental motion". Used by project() and shoot().
  * Assumes that (*y,*x) lies on the path from (y1,x1) to (y2,x2).
  */
-void mmove2(POSITION *y, POSITION *x, POSITION y1, POSITION x1, POSITION y2, POSITION x2)
+Pos2D mmove2(const Pos2D &pos_orig, const Pos2D &pos1, const Pos2D &pos2)
 {
-    POSITION dy, dx, dist, shift;
-
     /* Extract the distance travelled */
-    dy = (*y < y1) ? y1 - *y : *y - y1;
-    dx = (*x < x1) ? x1 - *x : *x - x1;
+    auto dy = (pos_orig.y < pos1.y) ? pos1.y - pos_orig.y : pos_orig.y - pos1.y;
+    auto dx = (pos_orig.x < pos1.x) ? pos1.x - pos_orig.x : pos_orig.x - pos1.x;
 
     /* Number of steps */
-    dist = (dy > dx) ? dy : dx;
+    auto dist = (dy > dx) ? dy : dx;
 
     /* We are calculating the next location */
     dist++;
 
     /* Calculate the total distance along each axis */
-    dy = (y2 < y1) ? (y1 - y2) : (y2 - y1);
-    dx = (x2 < x1) ? (x1 - x2) : (x2 - x1);
+    dy = (pos2.y < pos1.y) ? (pos1.y - pos2.y) : (pos2.y - pos1.y);
+    dx = (pos2.x < pos1.x) ? (pos1.x - pos2.x) : (pos2.x - pos1.x);
 
     /* Paranoia -- Hack -- no motion */
     if (!dy && !dx) {
-        return;
+        return pos_orig;
     }
 
     /* Move mostly vertically */
     if (dy > dx) {
         /* Extract a shift factor */
-        shift = (dist * dx + (dy - 1) / 2) / dy;
+        auto shift = (dist * dx + (dy - 1) / 2) / dy;
 
-        /* Sometimes move along the minor axis */
-        (*x) = (x2 < x1) ? (x1 - shift) : (x1 + shift);
-
-        /* Always move along major axis */
-        (*y) = (y2 < y1) ? (y1 - dist) : (y1 + dist);
+        /* Sometimes move along the minor axis, Always move along major axis */
+        const auto y = (pos2.y < pos1.y) ? (pos1.y - dist) : (pos1.y + dist);
+        const auto x = (pos2.x < pos1.x) ? (pos1.x - shift) : (pos1.x + shift);
+        return { y, x };
     }
 
     /* Move mostly horizontally */
-    else {
-        /* Extract a shift factor */
-        shift = (dist * dy + (dx - 1) / 2) / dx;
-
-        /* Sometimes move along the minor axis */
-        (*y) = (y2 < y1) ? (y1 - shift) : (y1 + shift);
-
-        /* Always move along major axis */
-        (*x) = (x2 < x1) ? (x1 - dist) : (x1 + dist);
-    }
+    auto shift = (dist * dy + (dx - 1) / 2) / dx;
+    const auto y = (pos2.y < pos1.y) ? (pos1.y - shift) : (pos1.y + shift);
+    const auto x = (pos2.x < pos1.x) ? (pos1.x - dist) : (pos1.x + dist);
+    return { y, x };
 }
 
 /*!
@@ -253,7 +204,7 @@ void mmove2(POSITION *y, POSITION *x, POSITION y1, POSITION x1, POSITION y2, POS
 bool is_seen(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
     bool is_inside_view = !ignore_unview;
-    is_inside_view |= player_ptr->phase_out;
+    is_inside_view |= AngbandSystem::get_instance().is_phase_out();
     is_inside_view |= player_can_see_bold(player_ptr, m_ptr->fy, m_ptr->fx) && projectable(player_ptr, player_ptr->y, player_ptr->x, m_ptr->fy, m_ptr->fx);
     return m_ptr->ml && is_inside_view;
 }

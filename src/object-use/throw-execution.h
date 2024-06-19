@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 /*!
  * @file throw-util.h
  * @brief 投擲処理関連ヘッダ
@@ -10,7 +10,7 @@
 #include "util/flag-group.h"
 #include <string>
 
-struct grid_type;
+class Grid;
 class MonsterEntity;
 class ItemEntity;
 class PlayerType;
@@ -22,7 +22,7 @@ public:
     virtual ~ObjectThrowEntity() = default;
 
     ItemEntity *q_ptr;
-    OBJECT_IDX item{};
+    OBJECT_IDX i_idx{};
     POSITION y{};
     POSITION x{};
     POSITION prev_y{};
@@ -66,7 +66,7 @@ private:
     TrFlags obj_flags{};
     bool come_back = false;
     bool do_drop = true;
-    grid_type *g_ptr{};
+    Grid *g_ptr{};
     MonsterEntity *m_ptr{};
     std::string m_name{};
     int back_chance{};

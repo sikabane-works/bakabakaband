@@ -1,14 +1,10 @@
-﻿#include "view/display-lore-status.h"
+#include "view/display-lore-status.h"
 #include "locale/japanese.h"
 #include "lore/lore-calculator.h"
 #include "lore/lore-util.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-flags.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
 #include "term/term-color-types.h"
@@ -20,7 +16,7 @@ void display_monster_hp_ac(lore_type *lore_ptr)
     }
 
     hooked_roff(format(_("%s^は AC%d の防御力と", "%s^ has an armor rating of %d"), Who::who(lore_ptr->msex), lore_ptr->r_ptr->ac));
-    if ((lore_ptr->flags1 & RF1_FORCE_MAXHP) || (lore_ptr->r_ptr->hside == 1)) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP) || (lore_ptr->r_ptr->hside == 1)) {
         auto hp = lore_ptr->r_ptr->hdice * (lore_ptr->nightmare ? 2 : 1) * lore_ptr->r_ptr->hside;
         hooked_roff(format(_(" %d の体力がある。", " and a life rating of %d.  "), std::min(MONSTER_MAXHP, hp)));
     } else {
@@ -138,29 +134,29 @@ void display_monster_constitutions(lore_type *lore_ptr)
         hook_c_roff(TERM_L_DARK, format(_("%s^は暗黒に包まれている。", "%s^ is surrounded by darkness.  "), Who::who(lore_ptr->msex)));
     }
 
-    if (lore_ptr->flags2 & RF2_INVISIBLE) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::INVISIBLE)) {
         hooked_roff(format(_("%s^は透明で目に見えない。", "%s^ is invisible.  "), Who::who(lore_ptr->msex)));
     }
 
-    if (lore_ptr->flags2 & RF2_COLD_BLOOD) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::COLD_BLOOD)) {
         hooked_roff(format(_("%s^は冷血動物である。", "%s^ is cold blooded.  "), Who::who(lore_ptr->msex)));
     }
 
-    if (lore_ptr->flags2 & RF2_EMPTY_MIND) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::EMPTY_MIND)) {
         hooked_roff(format(_("%s^はテレパシーでは感知できない。", "%s^ is not detected by telepathy.  "), Who::who(lore_ptr->msex)));
-    } else if (lore_ptr->flags2 & RF2_WEIRD_MIND) {
+    } else if (lore_ptr->misc_flags.has(MonsterMiscType::WEIRD_MIND)) {
         hooked_roff(format(_("%s^はまれにテレパシーで感知できる。", "%s^ is rarely detected by telepathy.  "), Who::who(lore_ptr->msex)));
     }
 
-    if (lore_ptr->flags2 & RF2_MULTIPLY) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::MULTIPLY)) {
         hook_c_roff(TERM_L_UMBER, format(_("%s^は爆発的に増殖する。", "%s^ breeds explosively.  "), Who::who(lore_ptr->msex)));
     }
 
-    if (lore_ptr->flags2 & RF2_REGENERATE) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::REGENERATE)) {
         hook_c_roff(TERM_L_WHITE, format(_("%s^は素早く体力を回復する。", "%s^ regenerates quickly.  "), Who::who(lore_ptr->msex)));
     }
 
-    if (lore_ptr->flags7 & RF7_RIDING) {
+    if (lore_ptr->misc_flags.has(MonsterMiscType::RIDING)) {
         hook_c_roff(TERM_SLATE, format(_("%s^に乗ることができる。", "%s^ is suitable for riding.  "), Who::who(lore_ptr->msex)));
     }
 }
@@ -312,6 +308,11 @@ void display_monster_concrete_resistances(lore_type *lore_ptr)
         lore_ptr->color[lore_ptr->vn++] = TERM_SLATE;
     }
 
+    if (lore_ptr->resistance_flags.has(MonsterResistanceType::RESIST_METEOR)) {
+        lore_ptr->vp[lore_ptr->vn] = _("隕石", "meteor");
+        lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
+    }
+
     if (lore_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
         lore_ptr->vp[lore_ptr->vn] = _("あらゆる攻撃", "all");
         lore_ptr->color[lore_ptr->vn++] = TERM_YELLOW;
@@ -368,22 +369,22 @@ void display_monster_evolution(lore_type *lore_ptr)
 
 void display_monster_concrete_immunities(lore_type *lore_ptr)
 {
-    if (lore_ptr->flags3 & RF3_NO_STUN) {
+    if (lore_ptr->resistance_flags.has(MonsterResistanceType::NO_STUN)) {
         lore_ptr->vp[lore_ptr->vn] = _("朦朧としない", "stunned");
         lore_ptr->color[lore_ptr->vn++] = TERM_ORANGE;
     }
 
-    if (lore_ptr->flags3 & RF3_NO_FEAR) {
+    if (lore_ptr->resistance_flags.has(MonsterResistanceType::NO_FEAR)) {
         lore_ptr->vp[lore_ptr->vn] = _("恐怖を感じない", "frightened");
         lore_ptr->color[lore_ptr->vn++] = TERM_SLATE;
     }
 
-    if (lore_ptr->flags3 & RF3_NO_CONF) {
+    if (lore_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
         lore_ptr->vp[lore_ptr->vn] = _("混乱しない", "confused");
         lore_ptr->color[lore_ptr->vn++] = TERM_L_UMBER;
     }
 
-    if (lore_ptr->flags3 & RF3_NO_SLEEP) {
+    if (lore_ptr->resistance_flags.has(MonsterResistanceType::NO_SLEEP)) {
         lore_ptr->vp[lore_ptr->vn] = _("眠らされない", "slept");
         lore_ptr->color[lore_ptr->vn++] = TERM_BLUE;
     }
@@ -391,6 +392,11 @@ void display_monster_concrete_immunities(lore_type *lore_ptr)
     if (lore_ptr->resistance_flags.has(MonsterResistanceType::RESIST_TELEPORT) && lore_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
         lore_ptr->vp[lore_ptr->vn] = _("テレポートされない", "teleported");
         lore_ptr->color[lore_ptr->vn++] = TERM_ORANGE;
+    }
+
+    if (lore_ptr->resistance_flags.has(MonsterResistanceType::NO_INSTANTLY_DEATH) || lore_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+        lore_ptr->vp[lore_ptr->vn] = _("即死しない", "instantly killed");
+        lore_ptr->color[lore_ptr->vn++] = TERM_L_DARK;
     }
 }
 

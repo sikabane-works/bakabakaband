@@ -1,15 +1,13 @@
-﻿#include "effect/effect-monster-oldies.h"
+#include "effect/effect-monster-oldies.h"
 #include "avatar/avatar.h"
 #include "effect/effect-monster-util.h"
 #include "monster-floor/monster-generator.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
+#include "monster/monster-util.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-entity.h"
@@ -28,7 +26,7 @@ ProcessResult effect_monster_old_poly(EffectMonster *em_ptr)
     em_ptr->do_polymorph = true;
 
     bool has_resistance = em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    has_resistance |= any_bits(em_ptr->r_ptr->flags1, RF1_QUESTOR);
+    has_resistance |= em_ptr->r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     has_resistance |= (em_ptr->r_ptr->level > randint1(std::max(1, em_ptr->dam - 10)) + 10);
 
     if (has_resistance) {
@@ -47,12 +45,11 @@ ProcessResult effect_monster_old_clone(PlayerType *player_ptr, EffectMonster *em
         em_ptr->obvious = true;
     }
 
-    bool has_resistance = (player_ptr->current_floor_ptr->inside_arena);
+    auto has_resistance = (player_ptr->current_floor_ptr->inside_arena);
     has_resistance |= em_ptr->m_ptr->is_pet();
     has_resistance |= em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    has_resistance |= any_bits(em_ptr->r_ptr->flags1, RF1_QUESTOR);
-    has_resistance |= em_ptr->r_ptr->population_flags.has(MonsterPopulationType::NAZGUL);
-    has_resistance |= any_bits(em_ptr->r_ptr->flags7, RF7_UNIQUE2);
+    has_resistance |= em_ptr->r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
+    has_resistance |= em_ptr->r_ptr->population_flags.has_any_of({ MonsterPopulationType::NAZGUL, MonsterPopulationType::ONLY_ONE });
 
     if (has_resistance) {
         em_ptr->note = _("には効果がなかった。", " is unaffected.");
@@ -104,7 +101,7 @@ ProcessResult effect_monster_star_heal(PlayerType *player_ptr, EffectMonster *em
 // who == 0ならばプレイヤーなので、それの判定.
 static void effect_monster_old_heal_check_player(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if (em_ptr->who != 0) {
+    if (is_monster(em_ptr->src_idx)) {
         return;
     }
 
@@ -174,7 +171,7 @@ ProcessResult effect_monster_old_heal(PlayerType *player_ptr, EffectMonster *em_
     effect_monster_old_heal_check_player(player_ptr, em_ptr);
     if (em_ptr->m_ptr->r_idx == MonsterRaceId::LEPER) {
         em_ptr->heal_leper = true;
-        if (!em_ptr->who) {
+        if (is_player(em_ptr->src_idx)) {
             chg_virtue(player_ptr, Virtue::COMPASSION, 5);
         }
     }
@@ -203,7 +200,7 @@ ProcessResult effect_monster_old_speed(PlayerType *player_ptr, EffectMonster *em
         em_ptr->note = _("の動きが速くなった。", " starts moving faster.");
     }
 
-    if (!em_ptr->who) {
+    if (is_player(em_ptr->src_idx)) {
         if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             chg_virtue(player_ptr, Virtue::INDIVIDUALISM, 1);
         }
@@ -252,13 +249,13 @@ ProcessResult effect_monster_old_sleep(PlayerType *player_ptr, EffectMonster *em
     }
 
     bool has_resistance = em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    has_resistance |= any_bits(em_ptr->r_ptr->flags3, RF3_NO_SLEEP);
+    has_resistance |= em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_SLEEP);
     has_resistance |= (em_ptr->r_ptr->level > randint1(std::max(1, em_ptr->dam - 10)) + 10);
 
     if (has_resistance) {
-        if (em_ptr->r_ptr->flags3 & RF3_NO_SLEEP) {
+        if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_SLEEP)) {
             if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-                em_ptr->r_ptr->r_flags3 |= (RF3_NO_SLEEP);
+                em_ptr->r_ptr->resistance_flags.set(MonsterResistanceType::NO_SLEEP);
             }
         }
 
@@ -286,12 +283,12 @@ ProcessResult effect_monster_old_conf(PlayerType *player_ptr, EffectMonster *em_
     em_ptr->do_conf = damroll(3, (em_ptr->dam / 2)) + 1;
 
     bool has_resistance = em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    has_resistance |= any_bits(em_ptr->r_ptr->flags3, RF3_NO_CONF);
+    has_resistance |= em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF);
     has_resistance |= (em_ptr->r_ptr->level > randint1(std::max(1, em_ptr->dam - 10)) + 10);
     if (has_resistance) {
-        if (em_ptr->r_ptr->flags3 & (RF3_NO_CONF)) {
+        if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
             if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-                em_ptr->r_ptr->r_flags3 |= (RF3_NO_CONF);
+                em_ptr->r_ptr->resistance_flags.set(MonsterResistanceType::NO_CONF);
             }
         }
 

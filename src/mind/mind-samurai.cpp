@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 剣術家のレイシャルパワー処理
  * @date 2020/05/16
  * @author Hourier
@@ -15,7 +15,6 @@
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags3.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
@@ -23,7 +22,7 @@
 #include "monster/monster-status.h"
 #include "object-enchant/tr-types.h"
 #include "pet/pet-util.h"
-#include "player-attack/player-attack-util.h"
+#include "player-attack/player-attack.h"
 #include "player-base/player-class.h"
 #include "player-info/samurai-data-type.h"
 #include "player/attack-defense-types.h"
@@ -45,6 +44,7 @@
 #include "view/display-messages.h"
 
 struct samurai_slaying_type {
+    samurai_slaying_type(MULTIPLY mult, const TrFlags &flags, MonsterEntity *m_ptr, combat_options mode, MonsterRaceInfo *r_ptr);
     MULTIPLY mult;
     TrFlags flags;
     MonsterEntity *m_ptr;
@@ -52,15 +52,13 @@ struct samurai_slaying_type {
     MonsterRaceInfo *r_ptr;
 };
 
-static samurai_slaying_type *initialize_samurai_slaying_type(
-    samurai_slaying_type *samurai_slaying_ptr, MULTIPLY mult, const TrFlags &flags, MonsterEntity *m_ptr, combat_options mode, MonsterRaceInfo *r_ptr)
+samurai_slaying_type::samurai_slaying_type(MULTIPLY mult, const TrFlags &flags, MonsterEntity *m_ptr, combat_options mode, MonsterRaceInfo *r_ptr)
+    : mult(mult)
+    , flags(flags)
+    , m_ptr(m_ptr)
+    , mode(mode)
+    , r_ptr(r_ptr)
 {
-    samurai_slaying_ptr->mult = mult;
-    samurai_slaying_ptr->flags = flags;
-    samurai_slaying_ptr->m_ptr = m_ptr;
-    samurai_slaying_ptr->mode = mode;
-    samurai_slaying_ptr->r_ptr = r_ptr;
-    return samurai_slaying_ptr;
 }
 
 /*!
@@ -178,9 +176,9 @@ static void hissatsu_rock_smash(PlayerType *player_ptr, samurai_slaying_type *sa
         return;
     }
 
-    if (samurai_slaying_ptr->r_ptr->flags3 & RF3_HURT_ROCK) {
+    if (samurai_slaying_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::HURT_ROCK)) {
         if (is_original_ap_and_seen(player_ptr, samurai_slaying_ptr->m_ptr)) {
-            samurai_slaying_ptr->r_ptr->r_flags3 |= RF3_HURT_ROCK;
+            samurai_slaying_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::HURT_ROCK);
         }
 
         if (samurai_slaying_ptr->mult == 10) {
@@ -328,9 +326,9 @@ static void hissatsu_keiun_kininken(PlayerType *player_ptr, samurai_slaying_type
  */
 MULTIPLY mult_hissatsu(PlayerType *player_ptr, MULTIPLY mult, const TrFlags &flags, MonsterEntity *m_ptr, combat_options mode)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
-    samurai_slaying_type tmp_slaying;
-    samurai_slaying_type *samurai_slaying_ptr = initialize_samurai_slaying_type(&tmp_slaying, mult, flags, m_ptr, mode, r_ptr);
+    auto *r_ptr = &m_ptr->get_monrace();
+    samurai_slaying_type tmp_slaying(mult, flags, m_ptr, mode, r_ptr);
+    samurai_slaying_type *samurai_slaying_ptr = &tmp_slaying;
     hissatsu_burning_strike(player_ptr, samurai_slaying_ptr);
     hissatsu_serpent_tongue(player_ptr, samurai_slaying_ptr);
     hissatsu_zanma_ken(samurai_slaying_ptr);
@@ -506,8 +504,8 @@ void mineuchi(PlayerType *player_ptr, player_attack_type *pa_ptr)
     pa_ptr->attack_damage = 0;
     anger_monster(player_ptr, pa_ptr->m_ptr);
 
-    auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
-    if ((r_ptr->flags3 & (RF3_NO_STUN))) {
+    auto *r_ptr = &pa_ptr->m_ptr->get_monrace();
+    if (r_ptr->resistance_flags.has(MonsterResistanceType::NO_STUN)) {
         msg_format(_("%s には効果がなかった。", "%s is not effected."), pa_ptr->m_name);
         return;
     }

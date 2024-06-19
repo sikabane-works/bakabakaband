@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 巻物を読んだ際の効果処理
  * @date 2022/02/26
  * @author Hourier
@@ -30,11 +30,11 @@
 /*!
  * @brief コンストラクタ
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param item 読むオブジェクトの所持品ID
+ * @param i_idx 読むアイテムのインベントリID
  */
-ObjectReadEntity::ObjectReadEntity(PlayerType *player_ptr, INVENTORY_IDX item)
+ObjectReadEntity::ObjectReadEntity(PlayerType *player_ptr, INVENTORY_IDX i_idx)
     : player_ptr(player_ptr)
-    , item(item)
+    , i_idx(i_idx)
 {
 }
 
@@ -44,7 +44,7 @@ ObjectReadEntity::ObjectReadEntity(PlayerType *player_ptr, INVENTORY_IDX item)
  */
 void ObjectReadEntity::execute(bool known)
 {
-    auto *o_ptr = ref_item(this->player_ptr, this->item);
+    auto *o_ptr = ref_item(this->player_ptr, this->i_idx);
     PlayerEnergy(this->player_ptr).set_player_turn_energy(100);
     if (!this->can_read()) {
         return;
@@ -70,7 +70,7 @@ void ObjectReadEntity::execute(bool known)
 
     rfu.reset_flags(flags_srf);
     this->change_virtue_as_read(*o_ptr);
-    object_tried(o_ptr);
+    o_ptr->mark_as_tried();
     this->gain_exp_from_item_use(o_ptr, executor->is_identified());
     static constexpr auto flags_swrf = {
         SubWindowRedrawingFlag::INVENTORY,
@@ -84,7 +84,7 @@ void ObjectReadEntity::execute(bool known)
     }
 
     sound(SOUND_SCROLL);
-    vary_item(this->player_ptr, this->item, -1);
+    vary_item(this->player_ptr, this->i_idx, -1);
 }
 
 bool ObjectReadEntity::can_read() const

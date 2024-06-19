@@ -1,4 +1,4 @@
-﻿#include "floor/floor-events.h"
+#include "floor/floor-events.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/disturbance.h"
 #include "core/window-redrawer.h"
@@ -11,12 +11,10 @@
 #include "game-option/disturbance-options.h"
 #include "game-option/map-screen-options.h"
 #include "grid/feature-flag-types.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "main/sound-of-music.h"
 #include "mind/mind-ninja.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
 #include "monster/monster-status.h"
@@ -31,6 +29,7 @@
 #include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-protector-types.h"
 #include "sv-definition/sv-ring-types.h"
+#include "system/angband-system.h"
 #include "system/baseitem-info.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
@@ -40,6 +39,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -90,24 +90,25 @@ void day_break(PlayerType *player_ptr)
 void night_falls(PlayerType *player_ptr)
 {
     msg_print(_("日が沈んだ。", "The sun has fallen."));
-    auto *floor_ptr = player_ptr->current_floor_ptr;
     if (player_ptr->wild_mode) {
         update_sun_light(player_ptr);
         return;
     }
 
-    for (auto y = 0; y < floor_ptr->height; y++) {
-        for (auto x = 0; x < floor_ptr->width; x++) {
-            auto *g_ptr = &floor_ptr->grid_array[y][x];
-            auto *f_ptr = &terrains_info[g_ptr->get_feat_mimic()];
+    auto &floor = *player_ptr->current_floor_ptr;
+    for (auto y = 0; y < floor.height; y++) {
+        for (auto x = 0; x < floor.width; x++) {
+            const Pos2D pos(y, x);
+            auto &grid = floor.get_grid(pos);
+            const auto &terrain = grid.get_terrain_mimic();
             using Tc = TerrainCharacteristics;
-            if (g_ptr->is_mirror() || f_ptr->flags.has(Tc::QUEST_ENTER) || f_ptr->flags.has(Tc::ENTRANCE)) {
+            if (grid.is_mirror() || terrain.flags.has(Tc::QUEST_ENTER) || terrain.flags.has(Tc::ENTRANCE)) {
                 continue;
             }
 
-            g_ptr->info &= ~(CAVE_GLOW);
-            if (f_ptr->flags.has_not(Tc::REMEMBER)) {
-                g_ptr->info &= ~(CAVE_MARK);
+            grid.info &= ~(CAVE_GLOW);
+            if (terrain.flags.has_not(Tc::REMEMBER)) {
+                grid.info &= ~(CAVE_MARK);
                 note_spot(player_ptr, y, x);
             }
         }
@@ -148,7 +149,7 @@ static byte get_dungeon_feeling(PlayerType *player_ptr)
             continue;
         }
 
-        r_ptr = &monraces_info[m_ptr->r_idx];
+        r_ptr = &m_ptr->get_monrace();
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             if (r_ptr->level + 10 > floor_ptr->dun_level) {
                 delta += (r_ptr->level + 10 - floor_ptr->dun_level) * 2 * base;
@@ -157,7 +158,7 @@ static byte get_dungeon_feeling(PlayerType *player_ptr)
             delta += (r_ptr->level - floor_ptr->dun_level) * base;
         }
 
-        if (r_ptr->flags1 & RF1_FRIENDS) {
+        if (r_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
             if (5 <= get_monster_crowd_number(floor_ptr, i)) {
                 delta += 1;
             }
@@ -290,7 +291,7 @@ void update_dungeon_feeling(PlayerType *player_ptr)
         return;
     }
 
-    if (player_ptr->phase_out) {
+    if (AngbandSystem::get_instance().is_phase_out()) {
         return;
     }
 
@@ -299,7 +300,7 @@ void update_dungeon_feeling(PlayerType *player_ptr)
         return;
     }
 
-    auto quest_num = quest_number(floor, floor.dun_level);
+    auto quest_num = floor.get_quest_id();
     const auto &quest_list = QuestList::get_instance();
 
     auto dungeon_quest = (quest_num == QuestId::OBERON);
@@ -332,27 +333,25 @@ void update_dungeon_feeling(PlayerType *player_ptr)
  */
 void glow_deep_lava_and_bldg(PlayerType *player_ptr)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (floor_ptr->get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    if (floor.get_dungeon_definition().flags.has(DungeonFeatureType::DARKNESS)) {
         return;
     }
 
-    for (POSITION y = 0; y < floor_ptr->height; y++) {
-        for (POSITION x = 0; x < floor_ptr->width; x++) {
-            grid_type *g_ptr;
-            g_ptr = &floor_ptr->grid_array[y][x];
-            if (terrains_info[g_ptr->get_feat_mimic()].flags.has_not(TerrainCharacteristics::GLOW)) {
+    for (auto y = 0; y < floor.height; y++) {
+        for (auto x = 0; x < floor.width; x++) {
+            const auto &grid = floor.get_grid({ y, x });
+            if (grid.get_terrain_mimic().flags.has_not(TerrainCharacteristics::GLOW)) {
                 continue;
             }
 
-            for (DIRECTION i = 0; i < 9; i++) {
-                POSITION yy = y + ddy_ddd[i];
-                POSITION xx = x + ddx_ddd[i];
-                if (!in_bounds2(floor_ptr, yy, xx)) {
+            for (auto i = 0; i < 9; i++) {
+                const Pos2D pos(y + ddy_ddd[i], x + ddx_ddd[i]);
+                if (!in_bounds2(&floor, pos.y, pos.x)) {
                     continue;
                 }
 
-                floor_ptr->grid_array[yy][xx].info |= CAVE_GLOW;
+                floor.get_grid(pos).info |= CAVE_GLOW;
             }
         }
     }
@@ -397,7 +396,7 @@ void forget_view(FloorType *floor_ptr)
     for (int i = 0; i < floor_ptr->view_n; i++) {
         POSITION y = floor_ptr->view_y[i];
         POSITION x = floor_ptr->view_x[i];
-        grid_type *g_ptr;
+        Grid *g_ptr;
         g_ptr = &floor_ptr->grid_array[y][x];
         g_ptr->info &= ~(CAVE_VIEW);
     }

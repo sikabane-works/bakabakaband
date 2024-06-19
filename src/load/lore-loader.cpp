@@ -1,20 +1,69 @@
-﻿#include "load/lore-loader.h"
+#include "load/lore-loader.h"
 #include "game-option/runtime-arguments.h"
 #include "load/load-util.h"
 #include "load/old/load-v1-5-0.h"
 #include "load/savedata-old-flag-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "system/angband.h"
 #include "system/monster-race-info.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
+static void migrate_old_misc_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags1, BIT_FLAGS old_flags2)
+{
+    if (!loading_savefile_version_is_older_than(20)) {
+        rd_FlagGroup(r_ptr->r_misc_flags, rd_byte);
+        return;
+    }
+
+    constexpr auto SIZE_OF_RF1 = 6;
+    struct flag_list_ver20 {
+        SavedataLoreOlderThan20FlagType old_flag;
+        MonsterMiscType flag;
+    };
+    const std::vector<flag_list_ver20> flag_list = {
+        { SavedataLoreOlderThan20FlagType::RF1_QUESTOR, MonsterMiscType::QUESTOR },
+        { SavedataLoreOlderThan20FlagType::RF1_FORCE_DEPTH, MonsterMiscType::FORCE_DEPTH },
+        { SavedataLoreOlderThan20FlagType::RF1_FORCE_MAXHP, MonsterMiscType::FORCE_MAXHP },
+        { SavedataLoreOlderThan20FlagType::RF1_FRIENDS, MonsterMiscType::HAS_FRIENDS },
+        { SavedataLoreOlderThan20FlagType::RF1_ESCORT, MonsterMiscType::ESCORT },
+        { SavedataLoreOlderThan20FlagType::RF1_ESCORTS, MonsterMiscType::MORE_ESCORT },
+        { SavedataLoreOlderThan20FlagType::RF2_REFLECTING, MonsterMiscType::REFLECTING },
+        { SavedataLoreOlderThan20FlagType::RF2_INVISIBLE, MonsterMiscType::INVISIBLE },
+        { SavedataLoreOlderThan20FlagType::RF2_COLD_BLOOD, MonsterMiscType::COLD_BLOOD },
+        { SavedataLoreOlderThan20FlagType::RF2_EMPTY_MIND, MonsterMiscType::EMPTY_MIND },
+        { SavedataLoreOlderThan20FlagType::RF2_WEIRD_MIND, MonsterMiscType::WEIRD_MIND },
+        { SavedataLoreOlderThan20FlagType::RF2_MULTIPLY, MonsterMiscType::MULTIPLY },
+        { SavedataLoreOlderThan20FlagType::RF2_REGENERATE, MonsterMiscType::REGENERATE },
+        { SavedataLoreOlderThan20FlagType::RF2_POWERFUL, MonsterMiscType::POWERFUL },
+        { SavedataLoreOlderThan20FlagType::RF2_ELDRITCH_HORROR, MonsterMiscType::ELDRITCH_HORROR },
+    };
+
+    if (old_flags1 == 0 && old_flags2 == 0) {
+        return;
+    }
+
+    for (uint16_t i = 0; i < flag_list.size(); i++) {
+        const auto &f = flag_list[i];
+        if (i < SIZE_OF_RF1) {
+            if (any_bits(old_flags1, f.old_flag)) {
+                r_ptr->r_misc_flags.set(f.flag);
+            }
+        } else {
+            if (any_bits(old_flags2, f.old_flag)) {
+                r_ptr->r_misc_flags.set(f.flag);
+            }
+        }
+    }
+}
+
 static void migrate_old_feature_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags)
 {
+    if (!loading_savefile_version_is_older_than(19)) {
+        rd_FlagGroup(r_ptr->r_feature_flags, rd_byte);
+        return;
+    }
+
     if (any_bits(old_flags, enum2i(SavedataLoreOlderThan19FlagType::RF2_PASS_WALL))) {
         r_ptr->r_feature_flags.set(MonsterFeatureType::PASS_WALL);
     }
@@ -23,25 +72,32 @@ static void migrate_old_feature_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flag
     }
 }
 
-static void migrate_old_aura_flags(MonsterRaceInfo *r_ptr)
+static void migrate_old_aura_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags2, BIT_FLAGS old_flags3)
 {
-    if (loading_savefile_version_is_older_than(14)) {
-        if (any_bits(r_ptr->r_flags2, SavedataLoreOlderThan10FlagType::AURA_FIRE_OLD)) {
-            r_ptr->r_aura_flags.set(MonsterAuraType::FIRE);
-        }
+    if (!loading_savefile_version_is_older_than(14)) {
+        rd_FlagGroup(r_ptr->r_aura_flags, rd_byte);
+        return;
+    }
 
-        if (any_bits(r_ptr->r_flags3, SavedataLoreOlderThan10FlagType::AURA_COLD_OLD)) {
-            r_ptr->r_aura_flags.set(MonsterAuraType::COLD);
-        }
+    if (any_bits(old_flags2, SavedataLoreOlderThan10FlagType::AURA_FIRE_OLD)) {
+        r_ptr->r_aura_flags.set(MonsterAuraType::FIRE);
+    }
 
-        if (any_bits(r_ptr->r_flags2, SavedataLoreOlderThan10FlagType::AURA_ELEC_OLD)) {
-            r_ptr->r_aura_flags.set(MonsterAuraType::ELEC);
-        }
+    if (any_bits(old_flags3, SavedataLoreOlderThan10FlagType::AURA_COLD_OLD)) {
+        r_ptr->r_aura_flags.set(MonsterAuraType::COLD);
+    }
+
+    if (any_bits(old_flags2, SavedataLoreOlderThan10FlagType::AURA_ELEC_OLD)) {
+        r_ptr->r_aura_flags.set(MonsterAuraType::ELEC);
     }
 }
 
 static void migrate_old_resistance_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags)
 {
+    if (!loading_savefile_version_is_older_than(14)) {
+        return;
+    }
+
     struct flag_list_ver14 {
         SavedataLoreOlderThan14FlagType old_flag;
         MonsterResistanceType flag;
@@ -83,6 +139,11 @@ static void migrate_old_resistance_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_f
 
 static void migrate_old_drop_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags1)
 {
+    if (!loading_savefile_version_is_older_than(18)) {
+        rd_FlagGroup(r_ptr->r_drop_flags, rd_byte);
+        return;
+    }
+
     struct flag_list_ver18 {
         SavedataLoreOlderThan18FlagType old_flag;
         MonsterDropType flag;
@@ -108,17 +169,32 @@ static void migrate_old_drop_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags1)
     }
 }
 
-static void rd_r_drop_flags(MonsterRaceInfo *r_ptr)
+static void migrate_old_no_debuff_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags3)
 {
-    if (loading_savefile_version_is_older_than(18)) {
-        migrate_old_drop_flags(r_ptr, r_ptr->r_flags1);
+    if (!loading_savefile_version_is_older_than(19)) {
         return;
     }
 
-    rd_FlagGroup(r_ptr->r_drop_flags, rd_byte);
+    struct flag_list_ver19 {
+        SavedataLoreOlderThan19FlagType_No_Debuff old_flag;
+        MonsterResistanceType flag;
+    };
+
+    const std::vector<flag_list_ver19> flag_list = {
+        { SavedataLoreOlderThan19FlagType_No_Debuff::RF3_NO_FEAR, MonsterResistanceType::NO_FEAR },
+        { SavedataLoreOlderThan19FlagType_No_Debuff::RF3_NO_STUN, MonsterResistanceType::NO_STUN },
+        { SavedataLoreOlderThan19FlagType_No_Debuff::RF3_NO_CONF, MonsterResistanceType::NO_CONF },
+        { SavedataLoreOlderThan19FlagType_No_Debuff::RF3_NO_SLEEP, MonsterResistanceType::NO_SLEEP },
+    };
+
+    for (const auto &l : flag_list) {
+        if (any_bits(old_flags3, l.old_flag)) {
+            r_ptr->r_resistance_flags.set(l.flag);
+        }
+    }
 }
 
-static void rd_r_ability_flags(MonsterRaceInfo *r_ptr)
+static void migrate_old_resistance_and_ability_flags(MonsterRaceInfo *r_ptr)
 {
     if (loading_savefile_version_is_older_than(3)) {
         BIT_FLAGS r_flagsr = 0;
@@ -143,123 +219,103 @@ static void rd_r_ability_flags(MonsterRaceInfo *r_ptr)
     }
 }
 
-static void rd_r_aura_flags(MonsterRaceInfo *r_ptr)
+static void migrate_old_kind_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags1, BIT_FLAGS old_flags2, BIT_FLAGS old_flags3)
 {
-    if (loading_savefile_version_is_older_than(14)) {
+    if (!loading_savefile_version_is_older_than(14)) {
+        rd_FlagGroup(r_ptr->r_kind_flags, rd_byte);
         return;
     }
 
-    rd_FlagGroup(r_ptr->r_aura_flags, rd_byte);
+    struct flag_list_ver12 {
+        SavedataLoreOlderThan12FlagType check_flag;
+        MonsterKindType flag;
+    };
+
+    const std::vector<flag_list_ver12> flag1 = {
+        { SavedataLoreOlderThan12FlagType::RF1_UNIQUE, MonsterKindType::UNIQUE },
+    };
+
+    const std::vector<flag_list_ver12> flag2 = {
+        { SavedataLoreOlderThan12FlagType::RF2_HUMAN, MonsterKindType::HUMAN },
+        { SavedataLoreOlderThan12FlagType::RF2_QUANTUM, MonsterKindType::QUANTUM },
+    };
+
+    const std::vector<flag_list_ver12> flag3 = {
+        { SavedataLoreOlderThan12FlagType::RF3_ORC, MonsterKindType::ORC },
+        { SavedataLoreOlderThan12FlagType::RF3_TROLL, MonsterKindType::TROLL },
+        { SavedataLoreOlderThan12FlagType::RF3_GIANT, MonsterKindType::GIANT },
+        { SavedataLoreOlderThan12FlagType::RF3_DRAGON, MonsterKindType::DRAGON },
+        { SavedataLoreOlderThan12FlagType::RF3_DEMON, MonsterKindType::DEMON },
+        { SavedataLoreOlderThan12FlagType::RF3_AMBERITE, MonsterKindType::AMBERITE },
+        { SavedataLoreOlderThan12FlagType::RF3_ANGEL, MonsterKindType::ANGEL },
+        { SavedataLoreOlderThan12FlagType::RF3_DRAGON, MonsterKindType::DRAGON },
+        { SavedataLoreOlderThan12FlagType::RF3_EVIL, MonsterKindType::EVIL },
+        { SavedataLoreOlderThan12FlagType::RF3_GOOD, MonsterKindType::GOOD },
+        { SavedataLoreOlderThan12FlagType::RF3_ANIMAL, MonsterKindType::ANIMAL },
+        { SavedataLoreOlderThan12FlagType::RF3_UNDEAD, MonsterKindType::UNDEAD },
+
+    };
+
+    for (const auto &f : flag1) {
+        if (any_bits(old_flags1, f.check_flag)) {
+            r_ptr->r_kind_flags.set(f.flag);
+        }
+    }
+
+    for (const auto &f : flag2) {
+        if (any_bits(old_flags2, f.check_flag)) {
+            r_ptr->r_kind_flags.set(f.flag);
+        }
+    }
+
+    for (const auto &f : flag3) {
+        if (any_bits(old_flags3, f.check_flag)) {
+            r_ptr->r_kind_flags.set(f.flag);
+        }
+    }
 }
 
-static void rd_r_kind_flags(MonsterRaceInfo *r_ptr)
+static void migrate_old_behavior_flags(MonsterRaceInfo *r_ptr, BIT_FLAGS old_flags1, BIT_FLAGS old_flags2)
 {
-    if (loading_savefile_version_is_older_than(12)) {
-        struct flag_list_ver12 {
-            BIT_FLAGS check_flag;
-            MonsterKindType flag;
-        };
-
-        const std::vector<flag_list_ver12> flag1 = {
-            { RF1_UNIQUE, MonsterKindType::UNIQUE },
-        };
-
-        const std::vector<flag_list_ver12> flag2 = {
-            { static_cast<BIT_FLAGS>(RF2_HUMAN), MonsterKindType::HUMAN },
-            { static_cast<BIT_FLAGS>(RF2_QUANTUM), MonsterKindType::QUANTUM },
-        };
-
-        const std::vector<flag_list_ver12> flag3 = {
-            { RF3_ORC, MonsterKindType::ORC },
-            { RF3_TROLL, MonsterKindType::TROLL },
-            { RF3_GIANT, MonsterKindType::GIANT },
-            { RF3_DRAGON, MonsterKindType::DRAGON },
-            { RF3_DEMON, MonsterKindType::DEMON },
-            { RF3_AMBERITE, MonsterKindType::AMBERITE },
-            { RF3_ANGEL, MonsterKindType::ANGEL },
-            { RF3_DRAGON, MonsterKindType::DRAGON },
-            { RF3_EVIL, MonsterKindType::EVIL },
-            { RF3_GOOD, MonsterKindType::GOOD },
-            { RF3_ANIMAL, MonsterKindType::ANIMAL },
-            { RF3_UNDEAD, MonsterKindType::UNDEAD },
-
-        };
-
-        for (const auto &f : flag1) {
-            if (any_bits(r_ptr->r_flags1, f.check_flag)) {
-                r_ptr->r_kind_flags.set(f.flag);
-            }
-        }
-
-        for (const auto &f : flag2) {
-            if (any_bits(r_ptr->r_flags2, f.check_flag)) {
-                r_ptr->r_kind_flags.set(f.flag);
-            }
-        }
-
-        for (const auto &f : flag3) {
-            if (any_bits(r_ptr->r_flags3, f.check_flag)) {
-                r_ptr->r_kind_flags.set(f.flag);
-            }
-        }
-
+    if (!loading_savefile_version_is_older_than(21)) {
+        rd_FlagGroup(r_ptr->r_behavior_flags, rd_byte);
         return;
     }
 
-    rd_FlagGroup(r_ptr->r_kind_flags, rd_byte);
-}
+    struct flag_list_ver11 {
+        SavedataLoreOlderThan11FlagType check_flag;
+        MonsterBehaviorType flag;
+    };
 
-static void rd_r_behavior_flags(MonsterRaceInfo *r_ptr)
-{
-    if (loading_savefile_version_is_older_than(11)) {
-        struct flag_list_ver11 {
-            BIT_FLAGS check_flag;
-            MonsterBehaviorType flag;
-        };
+    const std::vector<flag_list_ver11> flag1 = {
+        { SavedataLoreOlderThan11FlagType::RF1_NEVER_BLOW, MonsterBehaviorType::NEVER_BLOW },
+        { SavedataLoreOlderThan11FlagType::RF1_NEVER_MOVE, MonsterBehaviorType::NEVER_MOVE },
+        { SavedataLoreOlderThan11FlagType::RF1_RAND_25, MonsterBehaviorType::RAND_MOVE_25 },
+        { SavedataLoreOlderThan11FlagType::RF1_RAND_50, MonsterBehaviorType::RAND_MOVE_50 },
+    };
 
-        const std::vector<flag_list_ver11> flag1 = {
-            { RF1_NEVER_BLOW, MonsterBehaviorType::NEVER_BLOW },
-            { RF1_NEVER_MOVE, MonsterBehaviorType::NEVER_MOVE },
-            { RF1_RAND_25, MonsterBehaviorType::RAND_MOVE_25 },
-            { RF1_RAND_50, MonsterBehaviorType::RAND_MOVE_50 },
-        };
+    const std::vector<flag_list_ver11> flag2 = {
+        { SavedataLoreOlderThan11FlagType::RF2_OPEN_DOOR, MonsterBehaviorType::OPEN_DOOR },
+        { SavedataLoreOlderThan11FlagType::RF2_BASH_DOOR, MonsterBehaviorType::BASH_DOOR },
+        { SavedataLoreOlderThan11FlagType::RF2_MOVE_BODY, MonsterBehaviorType::MOVE_BODY },
+        { SavedataLoreOlderThan11FlagType::RF2_KILL_BODY, MonsterBehaviorType::KILL_BODY },
+        { SavedataLoreOlderThan11FlagType::RF2_TAKE_ITEM, MonsterBehaviorType::TAKE_ITEM },
+        { SavedataLoreOlderThan11FlagType::RF2_KILL_ITEM, MonsterBehaviorType::KILL_ITEM },
+        { SavedataLoreOlderThan11FlagType::RF2_STUPID, MonsterBehaviorType::STUPID },
+        { SavedataLoreOlderThan11FlagType::RF2_SMART, MonsterBehaviorType::SMART },
+    };
 
-        const std::vector<flag_list_ver11> flag2 = {
-            { RF2_OPEN_DOOR, MonsterBehaviorType::OPEN_DOOR },
-            { RF2_BASH_DOOR, MonsterBehaviorType::BASH_DOOR },
-            { RF2_MOVE_BODY, MonsterBehaviorType::MOVE_BODY },
-            { RF2_KILL_BODY, MonsterBehaviorType::KILL_BODY },
-            { RF2_TAKE_ITEM, MonsterBehaviorType::TAKE_ITEM },
-            { RF2_KILL_ITEM, MonsterBehaviorType::KILL_ITEM },
-            { RF2_STUPID, MonsterBehaviorType::STUPID },
-            { RF2_SMART, MonsterBehaviorType::SMART },
-        };
-
-        for (const auto &f : flag1) {
-            if (any_bits(r_ptr->r_flags1, f.check_flag)) {
-                r_ptr->r_behavior_flags.set(f.flag);
-            }
+    for (const auto &f : flag1) {
+        if (any_bits(old_flags1, f.check_flag)) {
+            r_ptr->r_behavior_flags.set(f.flag);
         }
-
-        for (const auto &f : flag2) {
-            if (any_bits(r_ptr->r_flags2, f.check_flag)) {
-                r_ptr->r_behavior_flags.set(f.flag);
-            }
-        }
-
-        return;
     }
 
-    rd_FlagGroup(r_ptr->r_behavior_flags, rd_byte);
-}
-
-static void rd_r_feature_flags(MonsterRaceInfo *r_ptr)
-{
-    if (loading_savefile_version_is_older_than(21)) {
-        migrate_old_feature_flags(r_ptr, r_ptr->r_flags2);
-        return;
+    for (const auto &f : flag2) {
+        if (any_bits(old_flags2, f.check_flag)) {
+            r_ptr->r_behavior_flags.set(f.flag);
+        }
     }
-    rd_FlagGroup(r_ptr->r_feature_flags, rd_byte);
 }
 
 /*!
@@ -295,18 +351,34 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
     r_ptr->r_blows[2] = rd_byte();
     r_ptr->r_blows[3] = rd_byte();
 
-    r_ptr->r_flags1 = rd_u32b();
-    r_ptr->r_flags2 = rd_u32b();
-    r_ptr->r_flags3 = rd_u32b();
-    migrate_old_aura_flags(r_ptr);
-    rd_r_ability_flags(r_ptr);
-    rd_r_aura_flags(r_ptr);
-    if (!loading_savefile_version_is_older_than(20)) {
-        rd_r_behavior_flags(r_ptr);
-        rd_r_kind_flags(r_ptr);
+    if (loading_savefile_version_is_older_than(21)) {
+        auto r_flags1 = rd_u32b();
+        auto r_flags2 = rd_u32b();
+        auto r_flags3 = rd_u32b();
+
+        migrate_old_no_debuff_flags(r_ptr, r_flags3);
+        migrate_old_resistance_and_ability_flags(r_ptr);
+        migrate_old_aura_flags(r_ptr, r_flags2, r_flags3);
+        migrate_old_behavior_flags(r_ptr, r_flags1, r_flags2);
+        migrate_old_kind_flags(r_ptr, r_flags1, r_flags2, r_flags3);
+        migrate_old_drop_flags(r_ptr, r_flags1);
+        migrate_old_feature_flags(r_ptr, r_flags2);
+        if (!loading_savefile_version_is_older_than(20)) {
+            rd_FlagGroup(r_ptr->r_special_flags, rd_byte);
+        }
+        migrate_old_misc_flags(r_ptr, r_flags1, r_flags2);
+    } else {
+        rd_FlagGroup(r_ptr->r_resistance_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_ability_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_aura_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_behavior_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_kind_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_drop_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_feature_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_special_flags, rd_byte);
+        rd_FlagGroup(r_ptr->r_misc_flags, rd_byte);
     }
-    rd_r_drop_flags(r_ptr);
-    rd_r_feature_flags(r_ptr);
+
     r_ptr->max_num = rd_byte();
     r_ptr->floor_id = rd_s16b();
 
@@ -317,10 +389,7 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
 
     strip_bytes(1);
 
-    r_ptr->r_flags1 &= r_ptr->flags1;
-    r_ptr->r_flags2 &= r_ptr->flags2;
-    r_ptr->r_flags3 &= r_ptr->flags3;
-    r_ptr->r_resistance_flags &= r_ptr->r_resistance_flags;
+    r_ptr->r_resistance_flags &= r_ptr->resistance_flags;
     r_ptr->r_ability_flags &= r_ptr->ability_flags;
     r_ptr->r_aura_flags &= r_ptr->aura_flags;
     r_ptr->r_behavior_flags &= r_ptr->behavior_flags;
@@ -329,6 +398,8 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
     }
     r_ptr->r_kind_flags &= r_ptr->kind_flags;
     r_ptr->r_feature_flags &= r_ptr->feature_flags;
+    r_ptr->r_special_flags &= r_ptr->special_flags;
+    r_ptr->r_misc_flags &= r_ptr->misc_flags;
 }
 
 void load_lore(void)
@@ -339,6 +410,19 @@ void load_lore(void)
         auto r_idx = static_cast<MonsterRaceId>(i);
         auto *r_ptr = i < monraces_info.size() ? &monraces_info[r_idx] : &dummy;
         rd_lore(r_ptr);
+    }
+
+    for (size_t i = loading_max_r_idx; i < monraces_info.size(); i++) {
+        auto monrace_id = i2enum<MonsterRaceId>(i);
+        auto &monrace = monraces_info[monrace_id];
+        auto max_num = 100;
+        if (monrace.kind_flags.has(MonsterKindType::UNIQUE) || monrace.population_flags.has(MonsterPopulationType::ONLY_ONE)) {
+            max_num = 1;
+        } else if (monrace.population_flags.has(MonsterPopulationType::NAZGUL)) {
+            max_num = 5;
+        }
+
+        monrace.max_num = max_num;
     }
 
     load_note(_("モンスターの思い出をロードしました", "Loaded Monster Memory"));

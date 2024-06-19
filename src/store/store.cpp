@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 店の処理 / Store commands
  * @date 2022/03/26
  * @author Hourier
@@ -20,7 +20,6 @@
 #include "object/object-value.h"
 #include "object/tval-types.h"
 #include "perception/identification.h"
-#include "perception/object-perception.h"
 #include "store/black-market.h"
 #include "store/service-checker.h"
 #include "store/store-owners.h"
@@ -33,7 +32,6 @@
 #include "term/screen-processor.h"
 #include "term/z-form.h"
 #include "util/int-char-converter.h"
-#include "util/quarks.h"
 #include "view/display-messages.h"
 #include "world/world-object.h"
 
@@ -45,7 +43,7 @@ int16_t old_town_num = 0;
 int16_t inner_town_num = 0;
 
 /* We store the current "store feat" here so everyone can access it */
-int cur_store_feat;
+short cur_store_feat;
 
 /* Enable "increments" */
 bool allow_inc = false;
@@ -146,48 +144,46 @@ int store_check_num(ItemEntity *o_ptr, StoreSaleType store_num)
 }
 
 /*!
- * @brief 店舗からアイテムを選択する /
- * Get the ID of a store item and return its value	-RAK-
- * @param com_val 選択IDを返す参照ポインタ
+ * @brief 店舗からアイテムを選択する
  * @param pmt メッセージキャプション
- * @param i 選択範囲の最小値
- * @param j 選択範囲の最大値
- * @return 実際に選択したらTRUE、キャンセルしたらFALSE
+ * @param min 選択範囲の最小値
+ * @param max 選択範囲の最大値
+ * @return アイテムを選択したらそのインデックス ('a'等)、キャンセルしたらnullopt
+ * 繰り返しコマンドの時は前回の前回のインデックス
  */
-int get_stock(COMMAND_CODE *com_val, concptr pmt, int i, int j, [[maybe_unused]] StoreSaleType store_num)
+std::optional<short> input_stock(std::string_view fmt, int min, int max, [[maybe_unused]] StoreSaleType store_num)
 {
-    if (repeat_pull(com_val) && (*com_val >= i) && (*com_val <= j)) {
-        return true;
+    short repeat_command;
+    if (repeat_pull(&repeat_command) && (repeat_command >= min) && (repeat_command <= max)) {
+        return repeat_command;
     }
 
     msg_print(nullptr);
-    *com_val = (-1);
-    char lo = I2A(i);
-    char hi = (j > 25) ? toupper(I2A(j - 26)) : I2A(j);
-    char out_val[160];
+    const auto lo = I2A(min);
+    const auto hi = (max > 25) ? toupper(I2A(max - 26)) : I2A(max);
 #ifdef JP
-    strnfmt(out_val, sizeof(out_val), "(%s:%c-%c, ESCで中断) %s", (((store_num == StoreSaleType::HOME) || (store_num == StoreSaleType::MUSEUM)) ? "アイテム" : "商品"), lo, hi, pmt);
+    const auto title = (store_num == StoreSaleType::HOME) || (store_num == StoreSaleType::MUSEUM) ? "アイテム" : "商品";
+    const auto prompt = format("(%s:%c-%c, ESCで中断) %s", title, lo, hi, fmt.data());
 #else
-    strnfmt(out_val, sizeof(out_val), "(Items %c-%c, ESC to exit) %s", lo, hi, pmt);
+    const auto prompt = format("(Items %c-%c, ESC to exit) %s", lo, hi, fmt.data());
 #endif
 
-    char command;
+    std::optional<char> command;
     while (true) {
-        if (!get_com(out_val, &command, false)) {
+        const auto command_alpha = input_command(prompt);
+        if (!command_alpha) {
             break;
         }
 
-        COMMAND_CODE k;
-        if (islower(command)) {
-            k = A2I(command);
-        } else if (isupper(command)) {
-            k = A2I(tolower(command)) + 26;
-        } else {
-            k = -1;
+        std::optional<int> command_num;
+        if (islower(*command_alpha)) {
+            command_num = A2I(*command_alpha);
+        } else if (isupper(*command_alpha)) {
+            command_num = A2I(tolower(*command_alpha)) + 26;
         }
 
-        if ((k >= i) && (k <= j)) {
-            *com_val = k;
+        if (command_num && (*command_num >= min) && (*command_num <= max)) {
+            command = static_cast<short>(*command_num);
             break;
         }
 
@@ -195,12 +191,12 @@ int get_stock(COMMAND_CODE *com_val, concptr pmt, int i, int j, [[maybe_unused]]
     }
 
     prt("", 0, 0);
-    if (command == ESCAPE) {
-        return false;
+    if (!command) {
+        return std::nullopt;
     }
 
-    repeat_push(*com_val);
-    return true;
+    repeat_push(*command);
+    return command;
 }
 
 /*!
@@ -225,13 +221,14 @@ void store_examine(PlayerType *player_ptr, StoreSaleType store_num)
         i = store_bottom;
     }
 
-    COMMAND_CODE item;
-    if (!get_stock(&item, _("どれを調べますか？", "Which item do you want to examine? "), 0, i - 1, store_num)) {
+    constexpr auto mes = _("どれを調べますか？", "Which item do you want to examine? ");
+    auto item_num_opt = input_stock(mes, 0, i - 1, store_num);
+    if (!item_num_opt) {
         return;
     }
-    item = item + store_top;
-    ItemEntity *o_ptr;
-    o_ptr = &st_ptr->stock[item];
+
+    const auto item_num = *item_num_opt + store_top;
+    auto *o_ptr = &st_ptr->stock[item_num];
     if (!o_ptr->is_fully_known()) {
         msg_print(_("このアイテムについて特に知っていることはない。", "You have no special knowledge about that item."));
         return;
@@ -310,7 +307,7 @@ static void store_create(PlayerType *player_ptr, short fix_k_idx, StoreSaleType 
             }
         }
 
-        object_known(q_ptr);
+        q_ptr->mark_as_known();
         q_ptr->ident |= IDENT_STORE;
         if (tval == ItemKindType::CHEST) {
             continue;

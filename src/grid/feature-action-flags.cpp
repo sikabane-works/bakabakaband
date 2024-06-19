@@ -1,10 +1,10 @@
-﻿#include "grid/feature-action-flags.h"
+#include "grid/feature-action-flags.h"
 
 /*!
  * @brief 地形状態フラグテーブル /
  * The table of features' actions
  */
-const byte feature_action_flags[FF_FLAG_MAX] = {
+const byte terrain_action_flags[FF_FLAG_MAX] = {
     0, /* LOS */
     0, /* PROJECT */
     0, /* MOVE */

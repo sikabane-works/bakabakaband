@@ -1,4 +1,4 @@
-﻿#include "save/item-writer.h"
+#include "save/item-writer.h"
 #include "artifact/random-art-effects.h"
 #include "load/old/item-flag-types-savefile50.h"
 #include "save/save-util.h"
@@ -6,7 +6,6 @@
 #include "system/item-entity.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
-#include "util/quarks.h"
 
 static void write_item_flags(ItemEntity *o_ptr, BIT_FLAGS *flags)
 {

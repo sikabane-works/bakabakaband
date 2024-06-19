@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @brief 読むことができるアイテム群の内、巻物を読んだ時の効果や処理を記述する.
  * @date 2022/02/26
  * @author Hourier
@@ -61,7 +61,7 @@ bool ScrollReadExecutor::read()
 {
     auto used_up = true;
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    switch (this->o_ptr->bi_key.sval().value()) {
+    switch (*this->o_ptr->bi_key.sval()) {
     case SV_SCROLL_DARKNESS:
         if (!has_resist_blind(this->player_ptr) && !has_resist_dark(this->player_ptr)) {
             (void)BadStatusSetter(this->player_ptr).mod_blindness(3 + randint1(5));
@@ -212,7 +212,7 @@ bool ScrollReadExecutor::read()
         this->ident = true;
         break;
     case SV_SCROLL_STAR_ENCHANT_WEAPON:
-        if (!enchant_spell(this->player_ptr, randint1(3), randint1(3), 0)) {
+        if (!enchant_spell(this->player_ptr, randnum1<short>(3), randint1(3), 0)) {
             used_up = false;
         }
 
@@ -357,11 +357,11 @@ bool ScrollReadExecutor::read()
         this->ident = true;
         break;
     case SV_SCROLL_ACQUIREMENT:
-        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, this->player_ptr->lev / 12 + 1, true, false, false);
+        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, this->player_ptr->lev / 12 + 1, true);
         this->ident = true;
         break;
     case SV_SCROLL_STAR_ACQUIREMENT:
-        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, this->player_ptr->lev / 6 + 3, true, false, false);
+        acquirement(this->player_ptr, this->player_ptr->y, this->player_ptr->x, this->player_ptr->lev / 6 + 3, true);
         this->ident = true;
         break;
     case SV_SCROLL_FIRE:

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 攻撃コマンド処理
  * @date 2020/05/23
  * @author Hourier
@@ -20,9 +20,6 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-damage.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
@@ -71,7 +68,7 @@ static void natural_attack(PlayerType *player_ptr, MONSTER_IDX m_idx, PlayerMuta
 {
     WEIGHT n_weight = 0;
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
 
     int dice_num, dice_side;
     concptr atk_desc;
@@ -175,7 +172,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
     auto &floor = *player_ptr->current_floor_ptr;
     auto *g_ptr = &floor.grid_array[y][x];
     auto *m_ptr = &floor.m_list[g_ptr->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
 
     const auto mutation_attack_methods = {
         PlayerMutationType::HORNS,
@@ -207,7 +204,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
 
     auto is_confused = effects->confusion()->is_confused();
     auto is_stunned = effects->stun()->is_stunned();
-    if (any_bits(r_ptr->flags1, RF1_FEMALE) && !(is_stunned || is_confused || is_hallucinated || !m_ptr->ml)) {
+    if (is_female(*r_ptr) && !(is_stunned || is_confused || is_hallucinated || !m_ptr->ml)) {
         // @todo 「特定の武器を装備している」旨のメソッドを別途作る
         constexpr auto zantetsu = FixedArtifactId::ZANTETSU;
         const auto is_main_hand_zantetsu = player_ptr->inventory_list[INVEN_MAIN_HAND].is_specific_artifact(zantetsu);
@@ -241,7 +238,7 @@ bool do_cmd_attack(PlayerType *player_ptr, POSITION y, POSITION x, combat_option
             chg_virtue(player_ptr, Virtue::JUSTICE, -1);
             chg_virtue(player_ptr, Virtue::COMPASSION, -1);
         } else if (!PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
-            if (get_check(_("本当に攻撃しますか？", "Really hit it? "))) {
+            if (input_check(_("本当に攻撃しますか？", "Really hit it? "))) {
                 chg_virtue(player_ptr, Virtue::INDIVIDUALISM, 1);
                 chg_virtue(player_ptr, Virtue::HONOUR, -1);
                 chg_virtue(player_ptr, Virtue::JUSTICE, -1);

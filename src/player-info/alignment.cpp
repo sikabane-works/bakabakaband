@@ -1,10 +1,9 @@
-﻿#include "player-info/alignment.h"
+#include "player-info/alignment.h"
 #include "artifact/fixed-art-types.h"
 #include "avatar/avatar.h"
 #include "game-option/text-display-options.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
 #include "player-info/equipment-info.h"
@@ -50,7 +49,7 @@ void PlayerAlignment::update_alignment()
         if (!m_ptr->is_valid()) {
             continue;
         }
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
 
         if (!m_ptr->is_pet()) {
             continue;

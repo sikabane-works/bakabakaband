@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "system/angband.h"
 #include <string>
@@ -10,12 +10,12 @@ enum class MonsterRaceId : int16_t;
 
 class CapturedMonsterType {
 public:
-    CapturedMonsterType() = default;
+    CapturedMonsterType();
     MonsterRaceId r_idx;
-    byte speed;
-    short current_hp;
-    short max_hp;
-    std::string nickname;
+    byte speed = STANDARD_SPEED;
+    short current_hp = 0;
+    short max_hp = 0;
+    std::string nickname = "";
 };
 
 extern bool sukekaku;

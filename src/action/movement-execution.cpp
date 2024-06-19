@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file movement-execution.cpp
  * @brief プレイヤーの歩行勝利実行定義
  */
@@ -21,10 +21,6 @@
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster/monster-describer.h"
@@ -45,6 +41,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/player-stun.h"
@@ -54,19 +51,19 @@
 
 /*!
  * Determine if a "boundary" grid is "floor mimic"
- * @param grid_type *g_ptr
- * @param TerrainType *f_ptr
- * @param TerrainType  *mimic_f_ptr
+ * @param grid グリッドへの参照
+ * @param terrain 地形特性への参照
+ * @param terrain_mimic ミミック地形特性への参照
  * @return 移動不能であればTRUE
  * @todo 負論理なので反転させたい
  */
-static bool boundary_floor(grid_type *g_ptr, TerrainType *f_ptr, TerrainType *mimic_f_ptr)
+static bool boundary_floor(const Grid &grid, const TerrainType &terrain, const TerrainType &terrain_mimic)
 {
-    bool is_boundary_floor = g_ptr->mimic > 0;
-    is_boundary_floor &= permanent_wall(f_ptr);
-    is_boundary_floor &= mimic_f_ptr->flags.has_any_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY });
-    is_boundary_floor &= mimic_f_ptr->flags.has(TerrainCharacteristics::PROJECT);
-    is_boundary_floor &= mimic_f_ptr->flags.has_not(TerrainCharacteristics::OPEN);
+    auto is_boundary_floor = grid.mimic > 0;
+    is_boundary_floor &= terrain.is_permanent_wall();
+    is_boundary_floor &= terrain_mimic.flags.has_any_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY });
+    is_boundary_floor &= terrain_mimic.flags.has(TerrainCharacteristics::PROJECT);
+    is_boundary_floor &= terrain_mimic.flags.has_not(TerrainCharacteristics::OPEN);
     return is_boundary_floor;
 }
 
@@ -87,56 +84,55 @@ static bool boundary_floor(grid_type *g_ptr, TerrainType *f_ptr, TerrainType *mi
  */
 void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool break_trap)
 {
-    POSITION y = player_ptr->y + ddy[dir];
-    POSITION x = player_ptr->x + ddx[dir];
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    auto *g_ptr = &floor_ptr->grid_array[y][x];
-    bool p_can_enter = player_can_enter(player_ptr, g_ptr->feat, CEM_P_CAN_ENTER_PATTERN);
-    if (!floor_ptr->dun_level && !player_ptr->wild_mode && ((x == 0) || (x == MAX_WID - 1) || (y == 0) || (y == MAX_HGT - 1))) {
-        if (g_ptr->mimic && player_can_enter(player_ptr, g_ptr->mimic, 0)) {
-            if ((y == 0) && (x == 0)) {
+    const auto pos = player_ptr->get_neighbor(dir);
+    auto &floor = *player_ptr->current_floor_ptr;
+    auto &grid = floor.get_grid(pos);
+    bool p_can_enter = player_can_enter(player_ptr, grid.feat, CEM_P_CAN_ENTER_PATTERN);
+    if (!floor.dun_level && !player_ptr->wild_mode && ((pos.x == 0) || (pos.x == MAX_WID - 1) || (pos.y == 0) || (pos.y == MAX_HGT - 1))) {
+        if (grid.mimic && player_can_enter(player_ptr, grid.mimic, 0)) {
+            if ((pos.y == 0) && (pos.x == 0)) {
                 player_ptr->wilderness_y--;
                 player_ptr->wilderness_x--;
-                player_ptr->oldpy = floor_ptr->height - 2;
-                player_ptr->oldpx = floor_ptr->width - 2;
+                player_ptr->oldpy = floor.height - 2;
+                player_ptr->oldpx = floor.width - 2;
                 player_ptr->ambush_flag = false;
-            } else if ((y == 0) && (x == MAX_WID - 1)) {
+            } else if ((pos.y == 0) && (pos.x == MAX_WID - 1)) {
                 player_ptr->wilderness_y--;
                 player_ptr->wilderness_x++;
-                player_ptr->oldpy = floor_ptr->height - 2;
+                player_ptr->oldpy = floor.height - 2;
                 player_ptr->oldpx = 1;
                 player_ptr->ambush_flag = false;
-            } else if ((y == MAX_HGT - 1) && (x == 0)) {
+            } else if ((pos.y == MAX_HGT - 1) && (pos.x == 0)) {
                 player_ptr->wilderness_y++;
                 player_ptr->wilderness_x--;
                 player_ptr->oldpy = 1;
-                player_ptr->oldpx = floor_ptr->width - 2;
+                player_ptr->oldpx = floor.width - 2;
                 player_ptr->ambush_flag = false;
-            } else if ((y == MAX_HGT - 1) && (x == MAX_WID - 1)) {
+            } else if ((pos.y == MAX_HGT - 1) && (pos.x == MAX_WID - 1)) {
                 player_ptr->wilderness_y++;
                 player_ptr->wilderness_x++;
                 player_ptr->oldpy = 1;
                 player_ptr->oldpx = 1;
                 player_ptr->ambush_flag = false;
-            } else if (y == 0) {
+            } else if (pos.y == 0) {
                 player_ptr->wilderness_y--;
-                player_ptr->oldpy = floor_ptr->height - 2;
-                player_ptr->oldpx = x;
+                player_ptr->oldpy = floor.height - 2;
+                player_ptr->oldpx = pos.x;
                 player_ptr->ambush_flag = false;
-            } else if (y == MAX_HGT - 1) {
+            } else if (pos.y == MAX_HGT - 1) {
                 player_ptr->wilderness_y++;
                 player_ptr->oldpy = 1;
-                player_ptr->oldpx = x;
+                player_ptr->oldpx = pos.x;
                 player_ptr->ambush_flag = false;
-            } else if (x == 0) {
+            } else if (pos.x == 0) {
                 player_ptr->wilderness_x--;
-                player_ptr->oldpx = floor_ptr->width - 2;
-                player_ptr->oldpy = y;
+                player_ptr->oldpx = floor.width - 2;
+                player_ptr->oldpy = pos.y;
                 player_ptr->ambush_flag = false;
-            } else if (x == MAX_WID - 1) {
+            } else if (pos.x == MAX_WID - 1) {
                 player_ptr->wilderness_x++;
                 player_ptr->oldpx = 1;
-                player_ptr->oldpy = y;
+                player_ptr->oldpy = pos.y;
                 player_ptr->ambush_flag = false;
             }
 
@@ -148,7 +144,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         p_can_enter = false;
     }
 
-    auto *m_ptr = &floor_ptr->m_list[g_ptr->m_idx];
+    auto *m_ptr = &floor.m_list[grid.m_idx];
 
     // @todo 「特定の武器を装備している」旨のメソッドを別途作る
     constexpr auto stormbringer = FixedArtifactId::STORMBRINGER;
@@ -161,16 +157,16 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         is_stormbringer = true;
     }
 
-    auto *f_ptr = &terrains_info[g_ptr->feat];
+    auto &terrain = grid.get_terrain();
     auto p_can_kill_walls = has_kill_wall(player_ptr);
-    p_can_kill_walls &= f_ptr->flags.has(TerrainCharacteristics::HURT_DISI);
-    p_can_kill_walls &= !p_can_enter || f_ptr->flags.has_not(TerrainCharacteristics::LOS);
-    p_can_kill_walls &= f_ptr->flags.has_not(TerrainCharacteristics::PERMANENT);
+    p_can_kill_walls &= terrain.flags.has(TerrainCharacteristics::HURT_DISI);
+    p_can_kill_walls &= !p_can_enter || terrain.flags.has_not(TerrainCharacteristics::LOS);
+    p_can_kill_walls &= terrain.flags.has_not(TerrainCharacteristics::PERMANENT);
     std::string m_name;
     bool can_move = true;
     bool do_past = false;
-    if (g_ptr->m_idx && (m_ptr->ml || p_can_enter || p_can_kill_walls)) {
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    if (grid.has_monster() && (m_ptr->ml || p_can_enter || p_can_kill_walls)) {
+        auto *r_ptr = &m_ptr->get_monrace();
         auto effects = player_ptr->effects();
         auto is_stunned = effects->stun()->is_stunned();
         auto can_cast = !effects->confusion()->is_confused();
@@ -179,21 +175,21 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         can_cast &= m_ptr->ml;
         can_cast &= !is_stunned;
         can_cast &= player_ptr->muta.has_not(PlayerMutationType::BERS_RAGE) || !is_shero(player_ptr);
-        if (!m_ptr->is_hostile() && can_cast && pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x) && (p_can_enter || p_can_kill_walls)) {
-            (void)set_monster_csleep(player_ptr, g_ptr->m_idx, 0);
+        if (!m_ptr->is_hostile() && can_cast && pattern_seq(player_ptr, pos) && (p_can_enter || p_can_kill_walls)) {
+            (void)set_monster_csleep(player_ptr, grid.m_idx, 0);
             m_name = monster_desc(player_ptr, m_ptr, 0);
             if (m_ptr->ml) {
                 if (!is_hallucinated) {
                     monster_race_track(player_ptr, m_ptr->ap_r_idx);
                 }
 
-                health_track(player_ptr, g_ptr->m_idx);
+                health_track(player_ptr, grid.m_idx);
             }
 
             if ((is_stormbringer && (randint1(1000) > 666)) || PlayerClass(player_ptr).equals(PlayerClassType::BERSERKER)) {
-                do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
+                do_cmd_attack(player_ptr, pos.y, pos.x, HISSATSU_NONE);
                 can_move = false;
-            } else if (monster_can_cross_terrain(player_ptr, floor_ptr->grid_array[player_ptr->y][player_ptr->x].feat, r_ptr, 0)) {
+            } else if (monster_can_cross_terrain(player_ptr, floor.get_grid(player_ptr->get_position()).feat, r_ptr, 0)) {
                 do_past = true;
             } else {
                 msg_format(_("%s^が邪魔だ！", "%s^ is in your way!"), m_name.data());
@@ -201,51 +197,53 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
                 can_move = false;
             }
         } else {
-            do_cmd_attack(player_ptr, y, x, HISSATSU_NONE);
+            do_cmd_attack(player_ptr, pos.y, pos.x, HISSATSU_NONE);
             can_move = false;
         }
     }
 
-    MonsterEntity *riding_m_ptr = &floor_ptr->m_list[player_ptr->riding];
+    const auto &riding_monster = floor.m_list[player_ptr->riding];
+    const auto &riding_monrace = riding_monster.get_monrace();
     PlayerEnergy energy(player_ptr);
     if (can_move && player_ptr->riding) {
-        const auto *riding_r_ptr = &monraces_info[riding_m_ptr->r_idx];
-        if (riding_r_ptr->behavior_flags.has(MonsterBehaviorType::NEVER_MOVE)) {
+        if (riding_monrace.behavior_flags.has(MonsterBehaviorType::NEVER_MOVE)) {
             msg_print(_("動けない！", "Can't move!"));
             energy.reset_player_turn();
             can_move = false;
             disturb(player_ptr, false, true);
-        } else if (riding_m_ptr->is_fearful()) {
-            const auto steed_name = monster_desc(player_ptr, riding_m_ptr, 0);
+        } else if (riding_monster.is_fearful()) {
+            const auto steed_name = monster_desc(player_ptr, &riding_monster, 0);
             msg_format(_("%sが恐怖していて制御できない。", "%s^ is too scared to control."), steed_name.data());
             can_move = false;
             disturb(player_ptr, false, true);
         } else if (player_ptr->riding_ryoute) {
             can_move = false;
             disturb(player_ptr, false, true);
-        } else if (f_ptr->flags.has(TerrainCharacteristics::CAN_FLY) && (riding_r_ptr->feature_flags.has(MonsterFeatureType::CAN_FLY))) {
+        } else if (terrain.flags.has(TerrainCharacteristics::CAN_FLY) && (riding_monrace.feature_flags.has(MonsterFeatureType::CAN_FLY))) {
             /* Allow moving */
-        } else if (f_ptr->flags.has(TerrainCharacteristics::CAN_SWIM) && (riding_r_ptr->feature_flags.has(MonsterFeatureType::CAN_SWIM))) {
+        } else if (terrain.flags.has(TerrainCharacteristics::CAN_SWIM) && (riding_monrace.feature_flags.has(MonsterFeatureType::CAN_SWIM))) {
             /* Allow moving */
-        } else if (f_ptr->flags.has(TerrainCharacteristics::WATER) && riding_r_ptr->feature_flags.has_not(MonsterFeatureType::AQUATIC) && (f_ptr->flags.has(TerrainCharacteristics::DEEP) || riding_r_ptr->aura_flags.has(MonsterAuraType::FIRE))) {
-            msg_format(_("%sの上に行けない。", "Can't swim."), terrains_info[g_ptr->get_feat_mimic()].name.data());
+        } else if (terrain.flags.has(TerrainCharacteristics::WATER) && riding_monrace.feature_flags.has_not(MonsterFeatureType::AQUATIC) && (terrain.flags.has(TerrainCharacteristics::DEEP) || riding_monrace.aura_flags.has(MonsterAuraType::FIRE))) {
+            msg_print(_(format("%sの上に行けない。", grid.get_terrain_mimic().name.data()), "Can't swim."));
             energy.reset_player_turn();
             can_move = false;
             disturb(player_ptr, false, true);
-        } else if (f_ptr->flags.has_not(TerrainCharacteristics::WATER) && riding_r_ptr->feature_flags.has(MonsterFeatureType::AQUATIC)) {
-            msg_format(_("%sから上がれない。", "Can't land."), terrains_info[floor_ptr->grid_array[player_ptr->y][player_ptr->x].get_feat_mimic()].name.data());
+        } else if (terrain.flags.has_not(TerrainCharacteristics::WATER) && riding_monrace.feature_flags.has(MonsterFeatureType::AQUATIC)) {
+            constexpr auto fmt = _("%sから上がれない。", "Can't land from %s.");
+            const auto p_pos = player_ptr->get_position();
+            msg_format(fmt, floor.get_grid(p_pos).get_terrain_mimic().name.data());
             energy.reset_player_turn();
             can_move = false;
             disturb(player_ptr, false, true);
-        } else if (f_ptr->flags.has(TerrainCharacteristics::LAVA) && riding_r_ptr->resistance_flags.has_none_of(RFR_EFF_IM_FIRE_MASK)) {
-            msg_format(_("%sの上に行けない。", "Too hot to go through."), terrains_info[g_ptr->get_feat_mimic()].name.data());
+        } else if (terrain.flags.has(TerrainCharacteristics::LAVA) && riding_monrace.resistance_flags.has_none_of(RFR_EFF_IM_FIRE_MASK)) {
+            msg_print(_(format("%sの上に行けない。", grid.get_terrain_mimic().name.data()), "Too hot to go through."));
             energy.reset_player_turn();
             can_move = false;
             disturb(player_ptr, false, true);
         }
 
-        if (can_move && riding_m_ptr->is_stunned() && one_in_(2)) {
-            const auto steed_name = monster_desc(player_ptr, riding_m_ptr, 0);
+        if (can_move && riding_monster.is_stunned() && one_in_(2)) {
+            const auto steed_name = monster_desc(player_ptr, &riding_monster, 0);
             msg_format(_("%sが朦朧としていてうまく動けない！", "You cannot control stunned %s!"), steed_name.data());
             can_move = false;
             disturb(player_ptr, false, true);
@@ -253,57 +251,56 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     }
 
     if (!can_move) {
-    } else if (f_ptr->flags.has_not(TerrainCharacteristics::MOVE) && f_ptr->flags.has(TerrainCharacteristics::CAN_FLY) && !player_ptr->levitation) {
-        msg_format(_("空を飛ばないと%sの上には行けない。", "You need to fly to go through the %s."), terrains_info[g_ptr->get_feat_mimic()].name.data());
+    } else if (terrain.flags.has_not(TerrainCharacteristics::MOVE) && terrain.flags.has(TerrainCharacteristics::CAN_FLY) && !player_ptr->levitation) {
+        msg_format(_("空を飛ばないと%sの上には行けない。", "You need to fly to go through the %s."), grid.get_terrain_mimic().name.data());
         energy.reset_player_turn();
         player_ptr->running = 0;
         can_move = false;
-    } else if (f_ptr->flags.has(TerrainCharacteristics::TREE) && !p_can_kill_walls) {
-        auto riding_wild_wood = player_ptr->riding && monraces_info[riding_m_ptr->r_idx].wilderness_flags.has(MonsterWildernessType::WILD_WOOD);
+    } else if (terrain.flags.has(TerrainCharacteristics::TREE) && !p_can_kill_walls) {
+        const auto riding_wild_wood = player_ptr->riding && riding_monrace.wilderness_flags.has(MonsterWildernessType::WILD_WOOD);
         if (!PlayerClass(player_ptr).equals(PlayerClassType::RANGER) && !player_ptr->levitation && !riding_wild_wood) {
             energy.mul_player_turn_energy(2);
         }
-    } else if ((do_pickup != easy_disarm) && f_ptr->flags.has(TerrainCharacteristics::DISARM) && !g_ptr->mimic) {
-        if (!trap_can_be_ignored(player_ptr, g_ptr->feat)) {
-            (void)exe_disarm(player_ptr, y, x, dir);
+    } else if ((do_pickup != easy_disarm) && terrain.flags.has(TerrainCharacteristics::DISARM) && !grid.mimic) {
+        if (!trap_can_be_ignored(player_ptr, grid.feat)) {
+            (void)exe_disarm(player_ptr, pos.y, pos.x, dir);
             return;
         }
     } else if (!p_can_enter && !p_can_kill_walls) {
-        FEAT_IDX feat = g_ptr->get_feat_mimic();
-        TerrainType *mimic_f_ptr = &terrains_info[feat];
-        concptr name = mimic_f_ptr->name.data();
+        const auto &terrain_mimic = grid.get_terrain_mimic();
+        const auto &name = terrain_mimic.name;
         can_move = false;
-        if (!g_ptr->is_mark() && !player_can_see_bold(player_ptr, y, x)) {
-            if (boundary_floor(g_ptr, f_ptr, mimic_f_ptr)) {
+        if (!grid.is_mark() && !player_can_see_bold(player_ptr, pos.y, pos.x)) {
+            if (boundary_floor(grid, terrain, terrain_mimic)) {
                 msg_print(_("それ以上先には進めないようだ。", "You feel you cannot go any more."));
             } else {
 #ifdef JP
-                msg_format("%sが行く手をはばんでいるようだ。", name);
+                msg_format("%sが行く手をはばんでいるようだ。", name.data());
 #else
-                msg_format("You feel %s %s blocking your way.", is_a_vowel(name[0]) ? "an" : "a", name);
+                msg_format("You feel %s %s blocking your way.", is_a_vowel(name[0]) ? "an" : "a", name.data());
 #endif
-                g_ptr->info |= (CAVE_MARK);
-                lite_spot(player_ptr, y, x);
+                grid.info |= (CAVE_MARK);
+                lite_spot(player_ptr, pos.y, pos.x);
             }
         } else {
             auto effects = player_ptr->effects();
             auto is_confused = effects->confusion()->is_confused();
             auto is_stunned = effects->stun()->is_stunned();
             auto is_hallucinated = effects->hallucination()->is_hallucinated();
-            if (boundary_floor(g_ptr, f_ptr, mimic_f_ptr)) {
+            if (boundary_floor(grid, terrain, terrain_mimic)) {
                 msg_print(_("それ以上先には進めない。", "You cannot go any more."));
                 if (!(is_confused || is_stunned || is_hallucinated)) {
                     energy.reset_player_turn();
                 }
             } else {
-                if (easy_open && is_closed_door(player_ptr, feat) && easy_open_door(player_ptr, y, x)) {
+                if (easy_open && is_closed_door(player_ptr, grid.get_feat_mimic()) && easy_open_door(player_ptr, pos.y, pos.x)) {
                     return;
                 }
 
 #ifdef JP
-                msg_format("%sが行く手をはばんでいる。", name);
+                msg_format("%sが行く手をはばんでいる。", name.data());
 #else
-                msg_format("There is %s %s blocking your way.", is_a_vowel(name[0]) ? "an" : "a", name);
+                msg_format("There is %s %s blocking your way.", is_a_vowel(name[0]) ? "an" : "a", name.data());
 #endif
                 if (!(is_confused || is_stunned || is_hallucinated)) {
                     energy.reset_player_turn();
@@ -312,12 +309,12 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         }
 
         disturb(player_ptr, false, true);
-        if (!boundary_floor(g_ptr, f_ptr, mimic_f_ptr)) {
+        if (!boundary_floor(grid, terrain, terrain_mimic)) {
             sound(SOUND_HITWALL);
         }
     }
 
-    if (can_move && !pattern_seq(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
+    if (can_move && !pattern_seq(player_ptr, pos)) {
         auto effects = player_ptr->effects();
         auto is_confused = effects->confusion()->is_confused();
         auto is_stunned = effects->stun()->is_stunned();
@@ -334,7 +331,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         return;
     }
 
-    if (player_ptr->warning && (!process_warning(player_ptr, x, y))) {
+    if (player_ptr->warning && (!process_warning(player_ptr, pos.x, pos.y))) {
         energy.set_player_turn_energy(25);
         return;
     }
@@ -370,7 +367,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     }
 
     if (p_can_kill_walls) {
-        cave_alter_feat(player_ptr, y, x, TerrainCharacteristics::HURT_DISI);
+        cave_alter_feat(player_ptr, pos.y, pos.x, TerrainCharacteristics::HURT_DISI);
         RedrawingFlagsUpdater::get_instance().set_flag(StatusRecalculatingFlag::FLOW);
     }
 
@@ -384,6 +381,5 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     }
 
     player_ptr->plus_incident(INCIDENT::WALK, 1);
-
-    (void)move_player_effect(player_ptr, y, x, mpe_mode);
+    (void)move_player_effect(player_ptr, pos.y, pos.x, mpe_mode);
 }

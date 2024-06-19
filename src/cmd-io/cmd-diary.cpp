@@ -1,4 +1,4 @@
-﻿#include "cmd-io/cmd-diary.h"
+#include "cmd-io/cmd-diary.h"
 #include "core/asking-player.h"
 #include "core/show-file.h"
 #include "game-option/play-record-options.h"
@@ -45,9 +45,9 @@ static void display_diary(PlayerType *player_ptr)
  */
 static void add_diary_note(PlayerType *player_ptr)
 {
-    char tmp[80]{};
-    if (get_string(_("内容: ", "diary note: "), tmp, 79)) {
-        exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, tmp);
+    const auto input_str = input_string(_("内容: ", "diary note: "), 1000);
+    if (input_str.has_value()) {
+        exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, input_str.value());
     }
 }
 
@@ -61,7 +61,7 @@ static void do_cmd_last_get(PlayerType *player_ptr)
     }
 
     const auto record = format(_("%sの入手を記録します。", "Do you really want to record getting %s? "), record_o_name);
-    if (!get_check(record)) {
+    if (!input_check(record)) {
         return;
     }
 
@@ -77,7 +77,7 @@ static void do_cmd_last_get(PlayerType *player_ptr)
  */
 static void do_cmd_erase_diary()
 {
-    if (!get_check(_("本当に記録を消去しますか？", "Do you really want to delete all your records? "))) {
+    if (!input_check(_("本当に記録を消去しますか？", "Do you really want to delete all your records? "))) {
         return;
     }
 

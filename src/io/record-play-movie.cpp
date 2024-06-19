@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 録画・再生機能
  * @date 2014/01/02
  * @author 2014 Deskull rearranged comment for Doxygen.
@@ -18,6 +18,7 @@
 #include "view/display-messages.h"
 #include <algorithm>
 #include <sstream>
+#include <vector>
 
 #ifdef WINDOWS
 #include <windows.h>
@@ -51,10 +52,10 @@ static struct {
 
 /* リングバッファ構造体 */
 static struct {
-    char *buf;
-    int wptr;
-    int rptr;
-    int inlen;
+    std::vector<char> buf{};
+    int wptr = 0;
+    int rptr = 0;
+    int inlen = 0;
 } ring;
 
 /*
@@ -77,17 +78,12 @@ static void disable_chuukei_server(void)
 }
 
 /* ANSI Cによればstatic変数は0で初期化されるが一応初期化する */
-static errr init_buffer(void)
+static void init_buffer(void)
 {
     fresh_queue.next = fresh_queue.tail = 0;
     ring.wptr = ring.rptr = ring.inlen = 0;
     fresh_queue.time[0] = 0;
-    ring.buf = static_cast<char *>(malloc(RINGBUF_SIZE));
-    if (ring.buf == nullptr) {
-        return -1;
-    }
-
-    return 0;
+    ring.buf.resize(RINGBUF_SIZE);
 }
 
 /* 現在の時間を100ms単位で取得する */
@@ -128,11 +124,11 @@ static errr insert_ringbuf(std::string_view header, std::string_view payload = "
 
     /* バッファの終端までに収まる */
     if (ring.wptr + all_length + 1 < RINGBUF_SIZE) {
-        std::copy_n(header.begin(), header.length(), ring.buf + ring.wptr);
+        std::copy_n(header.begin(), header.length(), ring.buf.begin() + ring.wptr);
         if (!payload.empty()) {
-            std::copy_n(payload.begin(), payload.length(), ring.buf + ring.wptr + header.length());
+            std::copy_n(payload.begin(), payload.length(), ring.buf.begin() + ring.wptr + header.length());
         }
-        *(ring.buf + ring.wptr + all_length) = '\0';
+        ring.buf[ring.wptr + all_length] = '\0';
         ring.wptr += all_length + 1;
     }
     /* バッファの終端までに収まらない(ピッタリ収まる場合も含む) */
@@ -141,21 +137,21 @@ static errr insert_ringbuf(std::string_view header, std::string_view payload = "
         int tail = all_length - head; /* 後半 */
 
         if ((int)header.length() <= head) {
-            std::copy_n(header.begin(), header.length(), ring.buf + ring.wptr);
+            std::copy_n(header.begin(), header.length(), ring.buf.begin() + ring.wptr);
             head -= header.length();
             if (head > 0) {
-                std::copy_n(payload.begin(), head, ring.buf + ring.wptr + header.length());
+                std::copy_n(payload.begin(), head, ring.buf.begin() + ring.wptr + header.length());
             }
-            std::copy_n(payload.data() + head, tail, ring.buf);
+            std::copy_n(payload.data() + head, tail, ring.buf.begin());
         } else {
-            std::copy_n(header.begin(), head, ring.buf + ring.wptr);
+            std::copy_n(header.begin(), head, ring.buf.begin() + ring.wptr);
             int part = header.length() - head;
-            std::copy_n(header.data() + head, part, ring.buf);
+            std::copy_n(header.data() + head, part, ring.buf.begin());
             if (tail > part) {
-                std::copy_n(payload.begin(), tail - part, ring.buf + part);
+                std::copy_n(payload.begin(), tail - part, ring.buf.begin() + part);
             }
         }
-        *(ring.buf + tail) = '\0';
+        ring.buf[tail] = '\0';
         ring.wptr = tail + 1;
     }
 
@@ -346,20 +342,22 @@ void prepare_movie_hooks(PlayerType *player_ptr)
 
     std::stringstream ss;
     ss << player_ptr->base_name << ".amv";
-    auto movie_filename = ss.str();
-    if (!get_string(_("ムービー記録ファイル: ", "Movie file name: "), movie_filename.data(), 80)) {
+    auto initial_movie_filename = ss.str();
+    constexpr auto prompt = _("ムービー記録ファイル: ", "Movie file name: ");
+    const auto movie_filename = input_string(prompt, 80, initial_movie_filename.data());
+    if (!movie_filename.has_value()) {
         return;
     }
 
-    const auto &path = path_build(ANGBAND_DIR_USER, movie_filename);
+    const auto &path = path_build(ANGBAND_DIR_USER, *movie_filename);
     auto fd = fd_open(path, O_RDONLY);
     if (fd >= 0) {
         const auto &filename = path.string();
         (void)fd_close(fd);
-        std::string query = _("現存するファイルに上>書きしますか? (", "Replace existing file ");
+        std::string query = _("現存するファイルに上書きしますか? (", "Replace existing file ");
         query.append(filename);
         query.append(_(")", "? "));
-        if (!get_check(query)) {
+        if (!input_check(query)) {
             return;
         }
 
@@ -501,11 +499,9 @@ static bool get_nextbuf(char *buf)
 /* プレイホストのマップが大きいときクライアントのマップもリサイズする */
 static void update_term_size(int x, int y, int len)
 {
-    int ox, oy;
-    int nx, ny;
-    term_get_size(&ox, &oy);
-    nx = ox;
-    ny = oy;
+    const auto &[ox, oy] = term_get_size();
+    auto nx = ox;
+    auto ny = oy;
 
     /* 横方向のチェック */
     if (x + len > ox) {
@@ -523,8 +519,6 @@ static void update_term_size(int x, int y, int len)
 
 static bool flush_ringbuf_client()
 {
-    char buf[1024];
-
     /* 書くデータなし */
     if (fresh_queue.next == fresh_queue.tail) {
         return false;
@@ -536,21 +530,16 @@ static bool flush_ringbuf_client()
     }
 
     /* 時間情報(区切り)が得られるまで書く */
+    char buf[1024]{};
     while (get_nextbuf(buf)) {
-        char id;
-        int x, y, len;
-        TERM_COLOR col;
-        int i;
-        unsigned char tmp1, tmp2, tmp3, tmp4;
+        auto id = buf[0];
+        auto x = static_cast<uint8_t>(buf[1]) - 1;
+        auto y = static_cast<uint8_t>(buf[2]) - 1;
+        int len = static_cast<uint8_t>(buf[3]);
+        uint8_t col = buf[4];
         char *mesg;
-
-        sscanf(buf, "%c%c%c%c%c", &id, &tmp1, &tmp2, &tmp3, &tmp4);
-        x = tmp1 - 1;
-        y = tmp2 - 1;
-        len = tmp3;
-        col = tmp4;
         if (id == 's') {
-            col = tmp3;
+            col = buf[3];
             mesg = &buf[4];
         } else {
             mesg = &buf[5];
@@ -567,43 +556,46 @@ static bool flush_ringbuf_client()
             update_term_size(x, y, len);
             (void)((*angband_terms[0]->text_hook)(x, y, len, (byte)col, mesg));
             std::copy_n(mesg, len, &game_term->scr->c[y][x]);
-            for (i = x; i < x + len; i++) {
+            for (auto i = x; i < x + len; i++) {
                 game_term->scr->a[y][i] = col;
             }
-            break;
 
+            break;
         case 'n': /* 繰り返し */
-            for (i = 1; i < len; i++) {
+            for (auto i = 1; i < len + 1; i++) {
+                if (i == len) {
+                    mesg[i] = '\0';
+                    break;
+                }
+
                 mesg[i] = mesg[0];
             }
-            mesg[i] = '\0';
+
             update_term_size(x, y, len);
             (void)((*angband_terms[0]->text_hook)(x, y, len, (byte)col, mesg));
             std::copy_n(mesg, len, &game_term->scr->c[y][x]);
-            for (i = x; i < x + len; i++) {
+            for (auto i = x; i < x + len; i++) {
                 game_term->scr->a[y][i] = col;
             }
-            break;
 
+            break;
         case 's': /* 一文字 */
             update_term_size(x, y, 1);
             (void)((*angband_terms[0]->text_hook)(x, y, 1, (byte)col, mesg));
             std::copy_n(&game_term->scr->c[y][x], 1, mesg);
             game_term->scr->a[y][x] = col;
             break;
-
         case 'w':
             update_term_size(x, y, len);
             (void)((*angband_terms[0]->wipe_hook)(x, y, len));
             break;
-
         case 'x':
             if (x == TERM_XTRA_CLEAR) {
                 term_clear();
             }
+
             (void)((*angband_terms[0]->xtra_hook)(x, 0));
             break;
-
         case 'c':
             update_term_size(x, y, 1);
             (void)((*angband_terms[0]->curs_hook)(x, y));

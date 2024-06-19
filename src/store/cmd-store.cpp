@@ -1,4 +1,4 @@
-﻿#include "store/cmd-store.h"
+#include "store/cmd-store.h"
 #include "cmd-io/macro-util.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
@@ -8,7 +8,6 @@
 #include "floor/floor-town.h"
 #include "game-option/birth-options.h"
 #include "game-option/input-options.h"
-#include "grid/feature.h"
 #include "inventory/inventory-object.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/input-key-requester.h"
@@ -27,6 +26,7 @@
 #include "system/item-entity.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
 #include "util/bit-flags-calculator.h"
@@ -55,15 +55,14 @@ void do_cmd_store(PlayerType *player_ptr)
     if (player_ptr->wild_mode) {
         return;
     }
-    TERM_LEN w, h;
-    term_get_size(&w, &h);
-
-    xtra_stock = std::min(14 + 26, ((h > MAIN_TERM_MIN_ROWS) ? (h - MAIN_TERM_MIN_ROWS) : 0));
+    TermCenteredOffsetSetter tcos(MAIN_TERM_MIN_COLS, std::nullopt);
+    const auto &[wid, hgt] = term_get_size();
+    xtra_stock = std::min(14 + 26, ((hgt > MAIN_TERM_MIN_ROWS) ? (hgt - MAIN_TERM_MIN_ROWS) : 0));
     store_bottom = MIN_STOCK + xtra_stock;
 
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    const auto *g_ptr = &floor_ptr->grid_array[player_ptr->y][player_ptr->x];
-    if (!g_ptr->cave_has_flag(TerrainCharacteristics::STORE)) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    const auto &grid = floor.get_grid(player_ptr->get_position());
+    if (!grid.cave_has_flag(TerrainCharacteristics::STORE)) {
         msg_print(_("ここには店がありません。", "You see no store here."));
         return;
     }
@@ -75,13 +74,13 @@ void do_cmd_store(PlayerType *player_ptr)
     //   inner_town_num は、施設内で C コマンドなどを使ったときにそのままでは現在地の偽装がバレる
     //   ため、それを糊塗するためのグローバル変数。
     //   この辺はリファクタしたい。
-    StoreSaleType store_num = i2enum<StoreSaleType>(terrains_info[g_ptr->feat].subtype);
+    const auto store_num = i2enum<StoreSaleType>(grid.get_terrain().subtype);
     old_town_num = player_ptr->town_num;
     if ((store_num == StoreSaleType::HOME) || (store_num == StoreSaleType::MUSEUM)) {
         player_ptr->town_num = 1;
     }
 
-    if (floor_ptr->is_in_dungeon()) {
+    if (floor.is_in_dungeon()) {
         player_ptr->town_num = VALID_TOWNS;
     }
 
@@ -104,14 +103,14 @@ void do_cmd_store(PlayerType *player_ptr)
         store.last_visit = w_ptr->game_turn;
     }
 
-    forget_lite(floor_ptr);
-    forget_view(floor_ptr);
+    forget_lite(&floor);
+    forget_view(&floor);
     w_ptr->character_icky_depth = 1;
     command_arg = 0;
     command_rep = 0;
     command_new = 0;
     get_com_no_macros = true;
-    cur_store_feat = g_ptr->feat;
+    cur_store_feat = grid.feat;
     st_ptr = &towns_info[player_ptr->town_num].stores[store_num];
     ot_ptr = &owners.at(store_num)[st_ptr->owner];
     store_top = 0;
@@ -152,11 +151,13 @@ void do_cmd_store(PlayerType *player_ptr)
         prt(_("コマンド:", "You may: "), 20 + xtra_stock, 0);
         InputKeyRequestor(player_ptr, true).request_command();
         store_process_command(player_ptr, store_num);
+
+        const auto should_redraw_store_inventory = rfu.has(StatusRecalculatingFlag::BONUS);
         w_ptr->character_icky_depth = 1;
         handle_stuff(player_ptr);
         if (player_ptr->inventory_list[INVEN_PACK].bi_id) {
-            INVENTORY_IDX item = INVEN_PACK;
-            auto *o_ptr = &player_ptr->inventory_list[item];
+            INVENTORY_IDX i_idx = INVEN_PACK;
+            auto *o_ptr = &player_ptr->inventory_list[i_idx];
             if (store_num != StoreSaleType::HOME) {
                 if (store_num == StoreSaleType::MUSEUM) {
                     msg_print(_("ザックからアイテムがあふれそうなので、あわてて博物館から出た...", "Your pack is so full that you flee the Museum..."));
@@ -176,8 +177,8 @@ void do_cmd_store(PlayerType *player_ptr)
                 q_ptr = &forge;
                 q_ptr->copy_from(o_ptr);
                 const auto item_name = describe_flavor(player_ptr, q_ptr, 0);
-                msg_format(_("%sが落ちた。(%c)", "You drop %s (%c)."), item_name.data(), index_to_label(item));
-                vary_item(player_ptr, item, -255);
+                msg_format(_("%sが落ちた。(%c)", "You drop %s (%c)."), item_name.data(), index_to_label(i_idx));
+                vary_item(player_ptr, i_idx, -255);
                 handle_stuff(player_ptr);
 
                 item_pos = home_carry(player_ptr, q_ptr, store_num);
@@ -188,7 +189,7 @@ void do_cmd_store(PlayerType *player_ptr)
             }
         }
 
-        if (rfu.has(StatusRecalculatingFlag::BONUS)) {
+        if (should_redraw_store_inventory) {
             display_store_inventory(player_ptr, store_num);
         }
 

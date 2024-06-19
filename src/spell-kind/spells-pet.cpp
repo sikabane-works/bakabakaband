@@ -1,4 +1,4 @@
-﻿#include "spell-kind/spells-pet.h"
+#include "spell-kind/spells-pet.h"
 #include "core/asking-player.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
@@ -7,7 +7,6 @@
 #include "io/write-diary.h"
 #include "monster-floor/monster-remover.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-info.h"
@@ -35,7 +34,7 @@ void discharge_minion(PlayerType *player_ptr)
     }
 
     if (!okay || player_ptr->riding) {
-        if (!get_check(_("本当に全ペットを爆破しますか？", "You will blast all pets. Are you sure? "))) {
+        if (!input_check(_("本当に全ペットを爆破しますか？", "You will blast all pets. Are you sure? "))) {
             return;
         }
     }
@@ -47,7 +46,7 @@ void discharge_minion(PlayerType *player_ptr)
         }
 
         MonsterRaceInfo *r_ptr;
-        r_ptr = &monraces_info[m_ptr->r_idx];
+        r_ptr = &m_ptr->get_monrace();
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             const auto m_name = monster_desc(player_ptr, m_ptr, 0x00);
             msg_format(_("%sは爆破されるのを嫌がり、勝手に自分の世界へと帰った。", "%s^ resists being blasted and runs away."), m_name.data());

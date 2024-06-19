@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 class PlayerType;
 void process_world_aux_sudden_attack(PlayerType *player_ptr);

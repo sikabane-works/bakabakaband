@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "object/tval-types.h"
 #include <functional>
@@ -13,7 +13,12 @@ class PlayerType;
  */
 class ItemTester {
 public:
+    ItemTester(const ItemTester &) = default;
+    ItemTester(ItemTester &&) = default;
+    ItemTester &operator=(const ItemTester &) = default;
+    ItemTester &operator=(ItemTester &&) = default;
     virtual ~ItemTester() = default;
+
     bool okay(const ItemEntity *o_ptr) const;
     virtual std::unique_ptr<ItemTester> clone() const = 0;
 
@@ -80,5 +85,5 @@ private:
     virtual bool okay_impl(const ItemEntity *o_ptr) const;
 
     std::function<bool(PlayerType *, const ItemEntity *)> test_func;
-    PlayerType *player_ptr;
+    PlayerType *player_ptr = nullptr;
 };

@@ -1,4 +1,4 @@
-﻿#include "spell-kind/spells-launcher.h"
+#include "spell-kind/spells-launcher.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
 #include "floor/geometry.h"
@@ -131,7 +131,7 @@ bool fire_ball_hide(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, in
 /*!
  * @brief メテオ系スペルの発動 / Cast a meteor spell
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who スぺル詠唱者のモンスターID(0=プレイヤー)
+ * @param src_idx スぺル詠唱者のモンスターID(0=プレイヤー)
  * @param typ 効果属性
  * @param dam 威力
  * @param rad 半径
@@ -147,10 +147,10 @@ bool fire_ball_hide(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, in
  * Option to hurt the player.
  * </pre>
  */
-bool fire_meteor(PlayerType *player_ptr, MONSTER_IDX who, AttributeType typ, POSITION y, POSITION x, int dam, POSITION rad)
+bool fire_meteor(PlayerType *player_ptr, MONSTER_IDX src_idx, AttributeType typ, POSITION y, POSITION x, int dam, POSITION rad)
 {
     BIT_FLAGS flg = PROJECT_STOP | PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL;
-    return project(player_ptr, who, rad, y, x, dam, typ, flg).notice;
+    return project(player_ptr, src_idx, rad, y, x, dam, typ, flg).notice;
 }
 
 /*!
@@ -279,12 +279,6 @@ bool fire_bolt_or_beam(PlayerType *player_ptr, PERCENTAGE prob, AttributeType ty
 bool project_hook(PlayerType *player_ptr, AttributeType typ, DIRECTION dir, int dam, BIT_FLAGS flg)
 {
     flg |= (PROJECT_THRU);
-    POSITION tx = player_ptr->x + ddx[dir];
-    POSITION ty = player_ptr->y + ddy[dir];
-    if ((dir == 5) && target_okay(player_ptr)) {
-        tx = target_col;
-        ty = target_row;
-    }
-
-    return project(player_ptr, 0, 0, ty, tx, dam, typ, flg).notice;
+    const auto pos = ((dir == 5) && target_okay(player_ptr)) ? Pos2D(target_row, target_col) : player_ptr->get_neighbor(dir);
+    return project(player_ptr, 0, 0, pos.y, pos.x, dam, typ, flg).notice;
 }

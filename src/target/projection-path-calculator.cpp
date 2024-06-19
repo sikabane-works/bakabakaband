@@ -1,9 +1,10 @@
-﻿#include "target/projection-path-calculator.h"
+#include "target/projection-path-calculator.h"
 #include "effect/effect-characteristics.h"
 #include "effect/spells-effect-util.h"
 #include "floor/cave.h"
 #include "grid/feature-flag-types.h"
 #include "spell-class/spells-mirror-master.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
@@ -95,36 +96,38 @@ static void set_asxy(projection_path_type *pp_ptr)
 static bool project_stop(PlayerType *player_ptr, projection_path_type *pp_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-
-    if (none_bits(pp_ptr->flag, PROJECT_THRU) && (pp_ptr->x == pp_ptr->x2) && (pp_ptr->y == pp_ptr->y2)) {
+    const Pos2D pos(pp_ptr->y, pp_ptr->x);
+    const Pos2D pos2(pp_ptr->y2, pp_ptr->x2);
+    if (none_bits(pp_ptr->flag, PROJECT_THRU) && (pos == pos2)) {
         return true;
     }
 
     if (any_bits(pp_ptr->flag, PROJECT_DISI)) {
-        if (!pp_ptr->position->empty() && cave_stop_disintegration(floor_ptr, pp_ptr->y, pp_ptr->x)) {
+        if (!pp_ptr->position->empty() && cave_stop_disintegration(floor_ptr, pos.y, pos.x)) {
             return true;
         }
     } else if (any_bits(pp_ptr->flag, PROJECT_LOS)) {
-        if (!pp_ptr->position->empty() && !cave_los_bold(floor_ptr, pp_ptr->y, pp_ptr->x)) {
+        if (!pp_ptr->position->empty() && !cave_los_bold(floor_ptr, pos.y, pos.x)) {
             return true;
         }
     } else if (none_bits(pp_ptr->flag, PROJECT_PATH)) {
-        if (!pp_ptr->position->empty() && !cave_has_flag_bold(floor_ptr, pp_ptr->y, pp_ptr->x, TerrainCharacteristics::PROJECT)) {
+        if (!pp_ptr->position->empty() && !cave_has_flag_bold(floor_ptr, pos.y, pos.x, TerrainCharacteristics::PROJECT)) {
             return true;
         }
     }
 
+    const auto &grid = floor_ptr->get_grid(pos);
     if (any_bits(pp_ptr->flag, PROJECT_MIRROR)) {
-        if (!pp_ptr->position->empty() && floor_ptr->grid_array[pp_ptr->y][pp_ptr->x].is_mirror()) {
+        if (!pp_ptr->position->empty() && grid.is_mirror()) {
             return true;
         }
     }
 
-    if (any_bits(pp_ptr->flag, PROJECT_STOP) && !pp_ptr->position->empty() && (player_bold(player_ptr, pp_ptr->y, pp_ptr->x) || floor_ptr->grid_array[pp_ptr->y][pp_ptr->x].m_idx != 0)) {
+    if (any_bits(pp_ptr->flag, PROJECT_STOP) && !pp_ptr->position->empty() && (player_ptr->is_located_at(pos) || grid.has_monster())) {
         return true;
     }
 
-    if (!in_bounds(floor_ptr, pp_ptr->y, pp_ptr->x)) {
+    if (!in_bounds(floor_ptr, pos.y, pos.x)) {
         return true;
     }
 
@@ -277,27 +280,17 @@ projection_path::projection_path(PlayerType *player_ptr, POSITION range, POSITIO
  */
 bool projectable(PlayerType *player_ptr, POSITION y1, POSITION x1, POSITION y2, POSITION x2)
 {
-    projection_path grid_g(player_ptr, (project_length ? project_length : get_max_range(player_ptr)), y1, x1, y2, x2, 0);
+    projection_path grid_g(player_ptr, (project_length ? project_length : AngbandSystem::get_instance().get_max_range()), y1, x1, y2, x2, 0);
     if (grid_g.path_num() == 0) {
         return true;
     }
 
-    const auto [y, x] = grid_g.back();
+    const auto &[y, x] = grid_g.back();
     if ((y != y2) || (x != x2)) {
         return false;
     }
 
     return true;
-}
-
-/*!
- * @briefプレイヤーの攻撃射程(マス) / Maximum range (spells, etc)
- * @param player_ptr プレイヤーへの参照ポインタ
- * @return 射程
- */
-int get_max_range(PlayerType *player_ptr)
-{
-    return player_ptr->phase_out ? 36 : 18;
 }
 
 /*

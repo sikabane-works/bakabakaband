@@ -380,7 +380,7 @@
     <ClCompile Include="..\..\src\room\rooms-vault.cpp">
       <Filter>room</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\room\rooms-pit-nest.cpp">
+    <ClCompile Include="..\..\src\room\pit-nest-util.cpp">
       <Filter>room</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\player-info\class-info.cpp">
@@ -1001,9 +1001,6 @@
     <ClCompile Include="..\..\src\core\visuals-reseter.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\object\object-flags.cpp">
-      <Filter>object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\object\object-info.cpp">
       <Filter>object</Filter>
     </ClCompile>
@@ -1189,9 +1186,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\io\input-key-acceptor.cpp">
       <Filter>io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\util\quarks.cpp">
-      <Filter>util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\view\display-messages.cpp">
       <Filter>view</Filter>
@@ -1560,9 +1554,6 @@
       <Filter>artifact</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\artifact\fixed-art-generator.cpp">
-      <Filter>artifact</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\artifact\artifact-info.cpp">
       <Filter>artifact</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\system\artifact-type-definition.cpp">
@@ -2123,7 +2114,9 @@
     <ClCompile Include="..\..\src\main-win\main-win-file-utils.cpp">
       <Filter>main-win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\stdafx.cpp" />
+    <ClCompile Include="..\..\src\stdafx.cpp">
+      <Filter>main-win</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\main\scene-table.cpp">
       <Filter>main</Filter>
     </ClCompile>
@@ -2418,28 +2411,7 @@
     <ClCompile Include="..\..\src\mspell\mspell-data.cpp">
       <Filter>mspell</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-attack\abstract-mspell.cpp">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-ball.cpp">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-bolt.cpp">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-breath.cpp">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-curse.cpp">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-particularity.cpp">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\knowledge\knowledge-incident.cpp" />
-    <ClCompile Include="..\..\src\monster-race\race-feature-mask.cpp">
-      <Filter>monster-race</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\timed-effect\player-acceleration.cpp">
       <Filter>timed-effect</Filter>
     </ClCompile>
@@ -2480,6 +2452,41 @@
     <ClCompile Include="..\..\src\alliance\alliance-jural.cpp">
       <Filter>alliance</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\alliance\alliance-tophamhatt.cpp">
+      <Filter>alliance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\util\sha256.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\terrain-type-definition.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\angband-system.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\artifact\artifact-info.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\abstract-mspell.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-particularity.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-bolt.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-breath.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-curse.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-ball.cpp" />
+    <ClCompile Include="..\..\src\monster-race\race-sex-const.cpp">
+      <Filter>monster-race</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\room\rooms-pit.cpp">
+      <Filter>room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\room\rooms-nest.cpp">
+      <Filter>room</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\item-info\flavor-initializer.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\abstract-mspell.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-particularity.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-bolt.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-breath.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-curse.cpp" />
+    <ClCompile Include="..\..\src\mspell\mspell-attack\mspell-ball.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -3514,9 +3521,6 @@
     <ClInclude Include="..\..\src\player-attack\player-attack.h">
       <Filter>player-attack</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\player-attack\player-attack-util.h">
-      <Filter>player-attack</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\monster-attack\insults-moans.h">
       <Filter>monster-attack</Filter>
     </ClInclude>
@@ -3625,9 +3629,6 @@
     <ClInclude Include="..\..\src\object-enchant\trg-types.h">
       <Filter>object-enchant</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\object\object-flags.h">
-      <Filter>object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\object\object-info.h">
       <Filter>object</Filter>
     </ClInclude>
@@ -3658,7 +3659,7 @@
     <ClInclude Include="..\..\src\monster\smart-learn-types.h">
       <Filter>monster</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\room\rooms-pit-nest.h">
+    <ClInclude Include="..\..\src\room\pit-nest-util.h">
       <Filter>room</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\monster\monster-description-types.h">
@@ -3688,25 +3689,7 @@
     <ClInclude Include="..\..\src\monster\monster-util.h">
       <Filter>monster</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-flags1.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-flags2.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-flags3.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-flags7.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-flags9.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\monster-race\race-flags-resistance.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-flags8.h">
       <Filter>monster-race</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\mspell\summon-checker.h">
@@ -3714,6 +3697,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\cmd-io\cmd-lore.h">
       <Filter>cmd-io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\view\colored-char.h">
+      <Filter>view</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\view\display-monster-status.h">
       <Filter>view</Filter>
@@ -3879,9 +3865,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\io\input-key-acceptor.h">
       <Filter>io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\util\quarks.h">
-      <Filter>util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\view\display-messages.h">
       <Filter>view</Filter>
@@ -4295,9 +4278,6 @@
       <Filter>artifact</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\artifact\fixed-art-generator.h">
-      <Filter>artifact</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\artifact\artifact-info.h">
       <Filter>artifact</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\system\artifact-type-definition.h">
@@ -5315,29 +5295,8 @@
     <ClInclude Include="..\..\src\mspell\mspell-data.h">
       <Filter>mspell</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-attack\abstract-mspell.h">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-ball.h">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-bolt.h">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-breath.h">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-curse.h">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-particularity.h">
-      <Filter>mspell\mspell-attack</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\knowledge\knowledge-incident.h" />
     <ClInclude Include="..\..\src\monster-race\race-feature-flags.h">
-      <Filter>monster-race</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\monster-race\race-feature-mask.h">
       <Filter>monster-race</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\timed-effect\player-acceleration.h">
@@ -5376,9 +5335,58 @@
     <ClInclude Include="..\..\src\system\redrawing-flags-updater.h">
       <Filter>system</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\load\angband-version-comparer.h" />
     <ClInclude Include="..\..\src\alliance\alliance-jural.h">
       <Filter>alliance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\alliance\alliance-tophamhatt.h">
+      <Filter>alliance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\util\finalizer.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\util\sha256.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\external-lib\json.hpp">
+      <Filter>external-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\external-lib\include-json.h">
+      <Filter>external-lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\system\terrain-type-definition.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\system\angband-system.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\item-info\flavor-initializer.h" />
+    <ClInclude Include="..\..\src\mspell\mspell-attack\abstract-mspell.h" />
+    <ClInclude Include="..\..\src\load\angband-version-comparer.h" />
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-particularity.h" />
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-bolt.h" />
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-breath.h" />
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-curse.h" />
+    <ClInclude Include="..\..\src\mspell\mspell-attack\mspell-ball.h" />
+    <ClInclude Include="..\..\src\monster-race\race-sex-const.h" />
+    <ClInclude Include="..\..\src\monster-race\race-misc-flags.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\monster-race\race-special-flags.h">
+      <Filter>monster-race</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\room\rooms-pit.h">
+      <Filter>room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\room\rooms-nest.h">
+      <Filter>room</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\monster-race\race-flags8.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags1.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags2.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags3.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags7.h" />
+    <ClInclude Include="..\..\src\util\candidate-selector.h">
+      <Filter>util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5635,8 +5643,17 @@
     <Filter Include="object-use\quaff">
       <UniqueIdentifier>{5eec2f75-7108-42ad-9aa4-85b1129354db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mspell\mspell-attack">
-      <UniqueIdentifier>{ab971e7b-4a9e-4f88-a557-eb89840abd61}</UniqueIdentifier>
+    <Filter Include="item-info">
+      <UniqueIdentifier>{3aefd2e8-8dd8-41dd-bc6b-7dadd75dfd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{6f311bdc-4407-49b7-96ab-bc2ed187b61c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external-lib">
+      <UniqueIdentifier>{7a77d993-afa0-4750-97c6-d52b440fafa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="item-info">
+      <UniqueIdentifier>{3aefd2e8-8dd8-41dd-bc6b-7dadd75dfd6b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

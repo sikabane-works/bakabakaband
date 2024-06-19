@@ -25,11 +25,8 @@
 #include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-mask.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
+#include "monster-race/race-misc-flags.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
@@ -40,6 +37,7 @@
 #include "monster/monster-util.h"
 #include "object/warning.h"
 #include "player/player-status.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-race-info.h"
@@ -71,17 +69,17 @@ static bool monster_hook_tanuki(PlayerType *player_ptr, MonsterRaceId r_idx)
 {
     const auto &monrace = monraces_info[r_idx];
     bool unselectable = monrace.kind_flags.has(MonsterKindType::UNIQUE);
-    unselectable |= any_bits(monrace.flags2, RF2_MULTIPLY);
+    unselectable |= monrace.misc_flags.has(MonsterMiscType::MULTIPLY);
     unselectable |= monrace.behavior_flags.has(MonsterBehaviorType::FRIENDLY);
     unselectable |= monrace.feature_flags.has(MonsterFeatureType::AQUATIC);
-    unselectable |= any_bits(monrace.flags7, RF7_CHAMELEON);
+    unselectable |= monrace.misc_flags.has(MonsterMiscType::CHAMELEON);
     unselectable |= monrace.is_explodable();
     if (unselectable) {
         return false;
     }
 
     auto hook_pf = get_monster_hook(player_ptr);
-    return (*hook_pf)(player_ptr, r_idx);
+    return hook_pf(player_ptr, r_idx);
 }
 
 /*!
@@ -97,7 +95,7 @@ static MonsterRaceId initial_r_appearance(PlayerType *player_ptr, MonsterRaceId 
         return MonsterRaceId::ALIEN_JURAL;
     }
 
-    if (none_bits(monraces_info[r_idx].flags7, RF7_TANUKI)) {
+    if (monraces_info[r_idx].misc_flags.has_not(MonsterMiscType::TANUKI)) {
         return r_idx;
     }
 
@@ -105,7 +103,7 @@ static MonsterRaceId initial_r_appearance(PlayerType *player_ptr, MonsterRaceId 
     int attempts = 1000;
     DEPTH min = std::min(floor_ptr->base_level - 5, 50);
     while (--attempts) {
-        auto ap_r_idx = get_mon_num(player_ptr, 0, floor_ptr->base_level + 10, 0);
+        auto ap_r_idx = get_mon_num(player_ptr, 0, floor_ptr->base_level + 10, PM_NONE);
         if (monraces_info[ap_r_idx].level >= min) {
             return ap_r_idx;
         }
@@ -120,35 +118,34 @@ static MonsterRaceId initial_r_appearance(PlayerType *player_ptr, MonsterRaceId 
  * @param r_idx 生成モンスター種族
  * @return ユニークの生成が不可能な条件ならFALSE、それ以外はTRUE
  */
-static bool check_unique_placeable(PlayerType *player_ptr, MonsterRaceId r_idx)
+static bool check_unique_placeable(const FloorType &floor, MonsterRaceId r_idx, BIT_FLAGS mode)
 {
-    if (player_ptr->phase_out) {
+    if (AngbandSystem::get_instance().is_phase_out()) {
+        return true;
+    }
+
+    if (any_bits(mode, PM_CLONE)) {
         return true;
     }
 
     auto *r_ptr = &monraces_info[r_idx];
-    if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) && (r_ptr->cur_num >= r_ptr->mob_num)) {
+    auto is_unique = r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL);
+    is_unique &= r_ptr->cur_num >= r_ptr->mob_num;
+    if (is_unique) {
         return false;
     }
 
-    if (any_bits(r_ptr->flags7, RF7_UNIQUE2) && (r_ptr->cur_num >= 1)) {
+    if (r_ptr->population_flags.has(MonsterPopulationType::ONLY_ONE) && (r_ptr->cur_num >= 1)) {
         return false;
     }
 
-    if (r_idx == MonsterRaceId::BANORLUPART) {
-        if (monraces_info[MonsterRaceId::BANOR].cur_num > 0) {
-            return false;
-        }
-        if (monraces_info[MonsterRaceId::LUPART].cur_num > 0) {
-            return false;
-        }
-    }
-
-    if (any_bits(r_ptr->flags1, RF1_FORCE_DEPTH) && (player_ptr->current_floor_ptr->dun_level < r_ptr->level) && (!ironman_nightmare || any_bits(r_ptr->flags1, RF1_QUESTOR))) {
+    if (!MonraceList::get_instance().is_selectable(r_idx)) {
         return false;
     }
 
-    return true;
+    const auto is_deep = r_ptr->misc_flags.has(MonsterMiscType::FORCE_DEPTH) && (floor.dun_level < r_ptr->level);
+    const auto is_questor = !ironman_nightmare || r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
+    return !is_deep || !is_questor;
 }
 
 /*!
@@ -159,12 +156,12 @@ static bool check_unique_placeable(PlayerType *player_ptr, MonsterRaceId r_idx)
  */
 static bool check_quest_placeable(const FloorType &floor, MonsterRaceId r_idx)
 {
-    if (!inside_quest(quest_number(floor, floor.dun_level))) {
+    if (!inside_quest(floor.get_quest_id())) {
         return true;
     }
 
     const auto &quest_list = QuestList::get_instance();
-    QuestId number = quest_number(floor, floor.dun_level);
+    QuestId number = floor.get_quest_id();
     const auto *q_ptr = &quest_list[number];
     if ((q_ptr->type != QuestKindType::KILL_LEVEL) && (q_ptr->type != QuestKindType::RANDOM)) {
         return true;
@@ -175,7 +172,7 @@ static bool check_quest_placeable(const FloorType &floor, MonsterRaceId r_idx)
     int number_mon = 0;
     for (int i2 = 0; i2 < floor.width; ++i2) {
         for (int j2 = 0; j2 < floor.height; j2++) {
-            auto quest_monster = (floor.grid_array[j2][i2].m_idx > 0);
+            auto quest_monster = floor.grid_array[j2][i2].has_monster();
             quest_monster &= (floor.m_list[floor.grid_array[j2][i2].m_idx].r_idx == q_ptr->r_idx);
             if (quest_monster) {
                 number_mon++;
@@ -258,21 +255,22 @@ static void warn_unique_generation(PlayerType *player_ptr, MonsterRaceId r_idx)
 /*!
  * @brief モンスターを一体生成する / Attempt to place a monster of the given race at the given location.
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who 召喚を行ったモンスターID
+ * @param src_idx 召喚を行ったモンスターID
  * @param y 生成位置y座標
  * @param x 生成位置x座標
  * @param r_idx 生成モンスター種族
  * @param mode 生成オプション
+ * @param summoner_m_idx モンスターの召喚による場合、召喚主のモンスターID
  * @return 成功したらtrue
  */
-bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSITION x, MonsterRaceId r_idx, BIT_FLAGS mode)
+bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX src_idx, POSITION y, POSITION x, MonsterRaceId r_idx, BIT_FLAGS mode, std::optional<MONSTER_IDX> summoner_m_idx)
 {
     auto &floor = *player_ptr->current_floor_ptr;
     auto *g_ptr = &floor.grid_array[y][x];
     auto *r_ptr = &monraces_info[r_idx];
     concptr name = r_ptr->name.data();
 
-    if (player_ptr->wild_mode || !in_bounds(&floor, y, x) || !MonsterRace(r_idx).is_valid() || r_ptr->name.empty()) {
+    if (player_ptr->wild_mode || !in_bounds(&floor, y, x) || !MonsterRace(r_idx).is_valid()) {
         return false;
     }
 
@@ -280,7 +278,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         return false;
     }
 
-    if (!check_unique_placeable(player_ptr, r_idx) || !check_quest_placeable(floor, r_idx) || !check_procection_rune(player_ptr, r_idx, y, x)) {
+    if (!check_unique_placeable(floor, r_idx, mode) || !check_quest_placeable(floor, r_idx) || !check_procection_rune(player_ptr, r_idx, y, x)) {
         return false;
     }
 
@@ -291,7 +289,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 
     g_ptr->m_idx = m_pop(&floor);
     hack_m_idx_ii = g_ptr->m_idx;
-    if (!g_ptr->m_idx) {
+    if (!g_ptr->has_monster()) {
         return false;
     }
 
@@ -303,9 +301,9 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 
     m_ptr->mflag.clear();
     m_ptr->mflag2.clear();
-    if (any_bits(mode, PM_MULTIPLY) && (who > 0) && !floor.m_list[who].is_original_ap()) {
-        m_ptr->ap_r_idx = floor.m_list[who].ap_r_idx;
-        if (floor.m_list[who].mflag2.has(MonsterConstantFlagType::KAGE)) {
+    if (any_bits(mode, PM_MULTIPLY) && is_monster(src_idx) && !floor.m_list[src_idx].is_original_ap()) {
+        m_ptr->ap_r_idx = floor.m_list[src_idx].ap_r_idx;
+        if (floor.m_list[src_idx].mflag2.has(MonsterConstantFlagType::KAGE)) {
             m_ptr->mflag2.set(MonsterConstantFlagType::KAGE);
         }
     }
@@ -322,8 +320,8 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         m_ptr->mflag2.set(MonsterConstantFlagType::LARGE);
     }
 
-    if ((who > 0) && r_ptr->kind_flags.has_none_of(alignment_mask)) {
-        m_ptr->sub_align = floor.m_list[who].sub_align;
+    if (is_monster(src_idx) && r_ptr->kind_flags.has_none_of(alignment_mask)) {
+        m_ptr->sub_align = floor.m_list[src_idx].sub_align;
     } else {
         m_ptr->sub_align = SUB_ALIGN_NEUTRAL;
         if (r_ptr->kind_flags.has(MonsterKindType::EVIL)) {
@@ -347,18 +345,18 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     m_ptr->nickname.clear();
     m_ptr->exp = 0;
 
-    if (who > 0 && floor.m_list[who].is_pet()) {
+    if (is_monster(src_idx) && floor.m_list[src_idx].is_pet()) {
         set_bits(mode, PM_FORCE_PET);
-        m_ptr->parent_m_idx = who;
+        m_ptr->parent_m_idx = src_idx;
     } else {
         m_ptr->parent_m_idx = 0;
     }
 
-    if (any_bits(r_ptr->flags7, RF7_CHAMELEON)) {
-        choose_new_monster(player_ptr, g_ptr->m_idx, true, MonsterRace::empty_id());
-        r_ptr = &monraces_info[m_ptr->r_idx];
+    if (r_ptr->misc_flags.has(MonsterMiscType::CHAMELEON)) {
+        choose_new_monster(player_ptr, g_ptr->m_idx, true, MonsterRace::empty_id(), summoner_m_idx);
+        r_ptr = &m_ptr->get_monrace();
         m_ptr->mflag2.set(MonsterConstantFlagType::CHAMELEON);
-        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && (who <= 0)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && (!is_monster(src_idx))) {
             m_ptr->sub_align = SUB_ALIGN_NEUTRAL;
         }
     } else if (any_bits(mode, PM_KAGE) && none_bits(mode, PM_FORCE_PET)) {
@@ -377,7 +375,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
     m_ptr->ml = false;
     if (any_bits(mode, PM_FORCE_PET)) {
         set_pet(player_ptr, m_ptr);
-    } else if (((who == 0) && r_ptr->behavior_flags.has(MonsterBehaviorType::FRIENDLY)) || is_friendly_idx(player_ptr, who) || any_bits(mode, PM_FORCE_FRIENDLY)) {
+    } else if ((is_player(src_idx) && r_ptr->behavior_flags.has(MonsterBehaviorType::FRIENDLY)) || is_friendly_idx(player_ptr, src_idx) || any_bits(mode, PM_FORCE_FRIENDLY)) {
         if (!monster_has_hostile_align(player_ptr, nullptr, 0, -1, r_ptr) && !player_ptr->current_floor_ptr->inside_arena) {
             set_friendly(m_ptr);
         }
@@ -389,7 +387,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
         (void)set_monster_csleep(player_ptr, g_ptr->m_idx, (val * 2) + randint1(val * 10));
     }
 
-    if (any_bits(r_ptr->flags1, RF1_FORCE_MAXHP) || m_ptr->mflag2.has(MonsterConstantFlagType::LARGE)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP)) {
         m_ptr->max_maxhp = maxroll(r_ptr->hdice, r_ptr->hside);
     } else {
         m_ptr->max_maxhp = damroll(r_ptr->hdice, r_ptr->hside);
@@ -444,7 +442,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
 
     update_monster(player_ptr, g_ptr->m_idx, true);
 
-    m_ptr->get_real_r_ref().cur_num++;
+    m_ptr->get_real_monrace().cur_num++;
 
     if (any_bits(mode, PM_AMBUSH)) {
         auto m_name = monster_desc(player_ptr, m_ptr, 0);
@@ -458,10 +456,10 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX who, POSITION y, POSI
      * A unique monster move from old saved floor.
      */
     if (w_ptr->character_dungeon && (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL))) {
-        m_ptr->get_real_r_ref().floor_id = player_ptr->floor_id;
+        m_ptr->get_real_monrace().floor_id = player_ptr->floor_id;
     }
 
-    if (any_bits(r_ptr->flags2, RF2_MULTIPLY)) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::MULTIPLY)) {
         floor.num_repro++;
     }
 

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file graphics-win.cpp
  * @brief Windows版固有実装(タイル、イメージファイルの読み込み)
  */
@@ -8,11 +8,7 @@
 #include "main-win/main-win-utils.h"
 #include "system/system-variables.h"
 #include "util/angband-files.h"
-
-#pragma warning(push)
-#pragma warning(disable : 4458)
 #include <gdiplus.h>
-#pragma warning(pop)
 
 // Flag set once "GDI+" has been initialized
 bool gdi_plus_started = false;

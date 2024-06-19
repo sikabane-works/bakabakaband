@@ -1,5 +1,3 @@
-﻿
-
 /*!
  * @file main-win-music.cpp
  * @brief Windows版固有実装(BGM)

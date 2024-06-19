@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "system/angband.h"
+#include "system/h-type.h"
 
 class PlayerType;
 void leave_floor(PlayerType *player_ptr);

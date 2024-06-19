@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 魔法によるモンスターへの効果まとめ
  * @date 2020/04/29
  * @author Hourier
@@ -14,7 +14,6 @@
 #include "effect/effect-monster-switcher.h"
 #include "effect/effect-monster-util.h"
 #include "effect/spells-effect-util.h"
-#include "floor/cave.h"
 #include "floor/floor-object.h"
 #include "game-option/play-record-options.h"
 #include "grid/grid.h"
@@ -26,9 +25,6 @@
 #include "monster-floor/monster-remover.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster/monster-damage.h"
@@ -39,12 +35,14 @@
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
 #include "monster/monster-update.h"
+#include "monster/monster-util.h"
 #include "object-enchant/special-object-flags.h"
 #include "object/object-kind-hook.h"
 #include "spell-kind/blood-curse.h"
 #include "spell-kind/spells-polymorph.h"
 #include "spell-kind/spells-teleport.h"
 #include "sv-definition/sv-other-types.h"
+#include "system/angband-system.h"
 #include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -66,10 +64,10 @@
  */
 static ProcessResult is_affective(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if (!em_ptr->g_ptr->m_idx) {
+    if (!em_ptr->g_ptr->has_monster()) {
         return ProcessResult::PROCESS_FALSE;
     }
-    if (em_ptr->who && (em_ptr->g_ptr->m_idx == em_ptr->who)) {
+    if (is_monster(em_ptr->src_idx) && (em_ptr->g_ptr->m_idx == em_ptr->src_idx)) {
         return ProcessResult::PROCESS_FALSE;
     }
     if (sukekaku && ((em_ptr->m_ptr->r_idx == MonsterRaceId::SUKE) || (em_ptr->m_ptr->r_idx == MonsterRaceId::KAKU))) {
@@ -78,7 +76,7 @@ static ProcessResult is_affective(PlayerType *player_ptr, EffectMonster *em_ptr)
     if (em_ptr->m_ptr->hp < 0) {
         return ProcessResult::PROCESS_FALSE;
     }
-    if (em_ptr->who || em_ptr->g_ptr->m_idx != player_ptr->riding) {
+    if (is_monster(em_ptr->src_idx) || em_ptr->g_ptr->m_idx != player_ptr->riding) {
         return ProcessResult::PROCESS_TRUE;
     }
 
@@ -191,8 +189,8 @@ static void effect_damage_killed_pet(PlayerType *player_ptr, EffectMonster *em_p
         }
     }
 
-    if (em_ptr->who > 0) {
-        monster_gain_exp(player_ptr, em_ptr->who, em_ptr->m_ptr->r_idx);
+    if (is_monster(em_ptr->src_idx)) {
+        monster_gain_exp(player_ptr, em_ptr->src_idx, em_ptr->m_ptr->r_idx);
     }
 
     monster_death(player_ptr, em_ptr->g_ptr->m_idx, false, em_ptr->attribute);
@@ -212,9 +210,9 @@ static void effect_damage_makes_sleep(PlayerType *player_ptr, EffectMonster *em_
     if (!em_ptr->note.empty() && em_ptr->seen_msg) {
         msg_format("%s^%s", em_ptr->m_name, em_ptr->note.data());
     } else if (em_ptr->see_s_msg) {
-        const auto pain_message = MonsterPainDescriber(player_ptr, em_ptr->g_ptr->m_idx).describe(em_ptr->dam);
-        if (!pain_message.empty()) {
-            msg_print(pain_message);
+        const auto pain_message = MonsterPainDescriber(player_ptr, em_ptr->m_ptr).describe(em_ptr->dam);
+        if (pain_message) {
+            msg_print(*pain_message);
         }
     } else {
         player_ptr->current_floor_ptr->monster_noise = true;
@@ -235,7 +233,7 @@ static void effect_damage_makes_sleep(PlayerType *player_ptr, EffectMonster *em_
  */
 static bool deal_effect_damage_from_monster(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if (em_ptr->who <= 0) {
+    if (!is_monster(em_ptr->src_idx)) {
         return false;
     }
 
@@ -307,9 +305,9 @@ static bool deal_effect_damage_from_player(PlayerType *player_ptr, EffectMonster
     if (!em_ptr->note.empty() && em_ptr->seen) {
         msg_format(_("%s%s", "%s^%s"), em_ptr->m_name, em_ptr->note.data());
     } else if (em_ptr->known && (em_ptr->dam || !em_ptr->do_fear)) {
-        const auto pain_message = MonsterPainDescriber(player_ptr, em_ptr->g_ptr->m_idx).describe(em_ptr->dam);
-        if (!pain_message.empty()) {
-            msg_print(pain_message);
+        const auto pain_message = MonsterPainDescriber(player_ptr, em_ptr->m_ptr).describe(em_ptr->dam);
+        if (pain_message) {
+            msg_print(*pain_message);
         }
     }
 
@@ -367,7 +365,7 @@ static void deal_effect_damage_to_monster(PlayerType *player_ptr, EffectMonster 
  */
 static void effect_makes_change_virtues(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if ((em_ptr->who > 0) || !em_ptr->slept) {
+    if (is_monster(em_ptr->src_idx) || !em_ptr->slept) {
         return;
     }
 
@@ -388,16 +386,16 @@ static void affected_monster_prevents_bad_status(PlayerType *player_ptr, EffectM
 {
     const auto *r_ptr = em_ptr->r_ptr;
     auto can_avoid_polymorph = r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    can_avoid_polymorph |= any_bits(r_ptr->flags1, RF1_QUESTOR);
+    can_avoid_polymorph |= r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     can_avoid_polymorph |= (player_ptr->riding != 0) && (em_ptr->g_ptr->m_idx == player_ptr->riding);
     if (can_avoid_polymorph) {
         em_ptr->do_polymorph = false;
     }
 
     auto should_alive = r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    should_alive |= any_bits(r_ptr->flags1, RF1_QUESTOR);
+    should_alive |= r_ptr->misc_flags.has(MonsterMiscType::QUESTOR);
     should_alive |= r_ptr->population_flags.has(MonsterPopulationType::NAZGUL);
-    if (should_alive && !player_ptr->phase_out && (em_ptr->who > 0) && (em_ptr->dam > em_ptr->m_ptr->hp)) {
+    if (should_alive && !AngbandSystem::get_instance().is_phase_out() && is_monster(em_ptr->src_idx) && (em_ptr->dam > em_ptr->m_ptr->hp)) {
         em_ptr->dam = em_ptr->m_ptr->hp;
     }
 }
@@ -413,7 +411,7 @@ static void effect_damage_piles_stun(PlayerType *player_ptr, EffectMonster *em_p
     const auto *r_ptr = em_ptr->r_ptr;
     auto can_avoid_stun = em_ptr->do_stun == 0;
     can_avoid_stun |= r_ptr->resistance_flags.has_any_of({ MonsterResistanceType::RESIST_SOUND, MonsterResistanceType::RESIST_FORCE });
-    can_avoid_stun |= any_bits(r_ptr->flags3, RF3_NO_STUN);
+    can_avoid_stun |= r_ptr->resistance_flags.has(MonsterResistanceType::NO_STUN);
     if (can_avoid_stun) {
         return;
     }
@@ -443,7 +441,7 @@ static void effect_damage_piles_stun(PlayerType *player_ptr, EffectMonster *em_p
  */
 static void effect_damage_piles_confusion(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if ((em_ptr->do_conf == 0) || (em_ptr->r_ptr->flags3 & RF3_NO_CONF) || em_ptr->r_ptr->resistance_flags.has_any_of(RFR_EFF_RESIST_CHAOS_MASK)) {
+    if ((em_ptr->do_conf == 0) || (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) || em_ptr->r_ptr->resistance_flags.has_any_of(RFR_EFF_RESIST_CHAOS_MASK)) {
         return;
     }
 
@@ -474,7 +472,7 @@ static void effect_damage_piles_confusion(PlayerType *player_ptr, EffectMonster 
  */
 static void effect_damage_piles_fear(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if (em_ptr->do_fear == 0 || any_bits(em_ptr->r_ptr->flags3, RF3_NO_FEAR)) {
+    if (em_ptr->do_fear == 0 || em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_FEAR)) {
         return;
     }
 
@@ -532,7 +530,7 @@ static void effect_damage_makes_polymorph(PlayerType *player_ptr, EffectMonster 
     }
 
     em_ptr->m_ptr = &player_ptr->current_floor_ptr->m_list[em_ptr->g_ptr->m_idx];
-    em_ptr->r_ptr = &monraces_info[em_ptr->m_ptr->r_idx];
+    em_ptr->r_ptr = &em_ptr->m_ptr->get_monrace();
 }
 
 /*!
@@ -552,11 +550,11 @@ static void effect_damage_makes_teleport(PlayerType *player_ptr, EffectMonster *
 
     em_ptr->note = _("が消え去った！", " disappears!");
 
-    if (!em_ptr->who) {
+    if (is_monster(em_ptr->src_idx)) {
         chg_virtue(player_ptr, Virtue::VALOUR, -1);
     }
 
-    teleport_flags tflag = i2enum<teleport_flags>((!em_ptr->who ? TELEPORT_DEC_VALOUR : TELEPORT_SPONTANEOUS) | TELEPORT_PASSIVE);
+    teleport_flags tflag = i2enum<teleport_flags>((is_monster(em_ptr->src_idx) ? TELEPORT_DEC_VALOUR : TELEPORT_SPONTANEOUS) | TELEPORT_PASSIVE);
     teleport_away(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->do_dist, tflag);
 
     em_ptr->y = em_ptr->m_ptr->fy;
@@ -613,7 +611,7 @@ static void exe_affect_monster_by_damage(PlayerType *player_ptr, EffectMonster *
     effect_damage_gives_bad_status(player_ptr, em_ptr);
     deal_effect_damage_to_monster(player_ptr, em_ptr);
     if ((em_ptr->attribute == AttributeType::BLOOD_CURSE) && one_in_(4)) {
-        blood_curse_to_enemy(player_ptr, em_ptr->who);
+        blood_curse_to_enemy(player_ptr, em_ptr->g_ptr->m_idx);
     }
 }
 
@@ -624,7 +622,7 @@ static void exe_affect_monster_by_damage(PlayerType *player_ptr, EffectMonster *
  */
 static void update_phase_out_stat(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if (!player_ptr->phase_out) {
+    if (!AngbandSystem::get_instance().is_phase_out()) {
         return;
     }
 
@@ -645,7 +643,7 @@ static void postprocess_by_effected_pet(PlayerType *player_ptr, EffectMonster *e
         return;
     }
 
-    if (em_ptr->who == 0) {
+    if (is_player(em_ptr->src_idx)) {
         if (!(em_ptr->flag & PROJECT_NO_HANGEKI)) {
             set_target(m_ptr, monster_target_y, monster_target_x);
         }
@@ -654,7 +652,7 @@ static void postprocess_by_effected_pet(PlayerType *player_ptr, EffectMonster *e
     }
 
     const auto &m_caster_ref = *em_ptr->m_caster_ptr;
-    if ((em_ptr->who > 0) && m_caster_ref.is_pet() && !player_bold(player_ptr, m_ptr->target_y, m_ptr->target_x)) {
+    if (is_monster(em_ptr->src_idx) && m_caster_ref.is_pet() && !player_ptr->is_located_at({ m_ptr->target_y, m_ptr->target_x })) {
         set_target(m_ptr, m_caster_ref.fy, m_caster_ref.fx);
     }
 }
@@ -716,7 +714,7 @@ static void exe_affect_monster_postprocess(PlayerType *player_ptr, EffectMonster
 /*!
  * @brief 汎用的なビーム/ボルト/ボール系によるモンスターへの効果処理 / Handle a beam/bolt/ball causing damage to a monster.
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who 魔法を発動したモンスター(0ならばプレイヤー) / Index of "source" monster (zero for "player")
+ * @param src_idx 魔法を発動したモンスター(0ならばプレイヤー) / Index of "source" monster (zero for "player")
  * @param r 効果半径(ビーム/ボルト = 0 / ボール = 1以上) / Radius of explosion (0 = beam/bolt, 1 to 9 = ball)
  * @param y 目標y座標 / Target y location (or location to travel "towards")
  * @param x 目標x座標 / Target x location (or location to travel "towards")
@@ -732,15 +730,16 @@ static void exe_affect_monster_postprocess(PlayerType *player_ptr, EffectMonster
  * 3.ペット及び撮影による事後効果
  */
 bool affect_monster(
-    PlayerType *player_ptr, MONSTER_IDX who, POSITION r, POSITION y, POSITION x, int dam, AttributeType attribute, BIT_FLAGS flag, bool see_s_msg,
+    PlayerType *player_ptr, MONSTER_IDX src_idx, POSITION r, POSITION y, POSITION x, int dam, AttributeType attribute, BIT_FLAGS flag, bool see_s_msg,
     std::optional<CapturedMonsterType *> cap_mon_ptr)
 {
-    EffectMonster tmp_effect(player_ptr, who, r, y, x, dam, attribute, flag, see_s_msg);
+    EffectMonster tmp_effect(player_ptr, src_idx, r, y, x, dam, attribute, flag, see_s_msg);
     auto *em_ptr = &tmp_effect;
+    auto target_m_idx = em_ptr->g_ptr->m_idx;
 
     make_description_of_affecred_monster(player_ptr, em_ptr);
 
-    if (player_ptr->riding && (em_ptr->g_ptr->m_idx == player_ptr->riding)) {
+    if (player_ptr->riding && (target_m_idx == player_ptr->riding)) {
         disturb(player_ptr, true, true);
     }
 
@@ -758,7 +757,7 @@ bool affect_monster(
     update_phase_out_stat(player_ptr, em_ptr);
     const auto monster_is_valid = MonsterRace(em_ptr->m_ptr->r_idx).is_valid();
     if (monster_is_valid) {
-        update_monster(player_ptr, em_ptr->g_ptr->m_idx, false);
+        update_monster(player_ptr, target_m_idx, false);
     }
 
     lite_spot(player_ptr, em_ptr->y, em_ptr->x);

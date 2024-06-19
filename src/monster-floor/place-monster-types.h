@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 /*
  * Bit flags for the place_monster_???() (etc)
@@ -20,4 +20,6 @@ enum place_monster_type {
     PM_NO_QUEST = 0x00001000, /*!< モンスター生成フラグ: クエスト除外モンスターを生成しない */
     PM_AMBUSH = 0x00002000, /*!< モンスター生成フラグ: 1回の白兵攻撃を行ってくる */
     PM_CLONE = 0x00004000, /*!< モンスター生成フラグ: クローンとして生成する */
+    PM_ARENA = 0x00008000, /*!< モンスター生成フラグ: アリーナ用の生成 */
+
 };

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief アイテムが特定種別のものであるかどうかの判定関数群
  * @date 2018/12/15
  * @author deskull
@@ -197,13 +197,13 @@ static const std::map<ItemKindType, std::vector<int>> &create_baseitems_cache()
 {
     static std::map<ItemKindType, std::vector<int>> cache;
     for (const auto &baseitem : baseitems_info) {
-        const auto &bi_key = baseitem.bi_key;
-        const auto tval = bi_key.tval();
-        if (tval == ItemKindType::NONE) {
+        if (!baseitem.is_valid()) {
             continue;
         }
 
-        cache[tval].push_back(bi_key.sval().value());
+        const auto &bi_key = baseitem.bi_key;
+        const auto tval = bi_key.tval();
+        cache[tval].push_back(*bi_key.sval());
     }
 
     return cache;
@@ -217,11 +217,11 @@ static const std::map<BaseitemKey, short> &create_baseitem_index_chache()
 {
     static std::map<BaseitemKey, short> cache;
     for (const auto &baseitem : baseitems_info) {
-        const auto &bi_key = baseitem.bi_key;
-        if (bi_key.tval() == ItemKindType::NONE) {
+        if (!baseitem.is_valid()) {
             continue;
         }
 
+        const auto &bi_key = baseitem.bi_key;
         cache[bi_key] = baseitem.idx;
     }
 

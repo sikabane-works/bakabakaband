@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file blue-magic-caster.cpp
  * @brief 青魔法のその他系統の呪文定義と詠唱時分岐処理
  */
@@ -11,12 +11,10 @@
 #include "blue-magic/blue-magic-summon.h"
 #include "blue-magic/blue-magic-util.h"
 #include "blue-magic/learnt-info.h"
-#include "floor/cave.h"
 #include "hpmp/hp-mp-processor.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
@@ -49,8 +47,10 @@ static bool cast_blue_dispel(PlayerType *player_ptr)
         return false;
     }
 
-    MONSTER_IDX m_idx = player_ptr->current_floor_ptr->grid_array[target_row][target_col].m_idx;
-    if ((m_idx == 0) || !player_has_los_bold(player_ptr, target_row, target_col) || !projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col)) {
+    const Pos2D pos(target_row, target_col);
+    const auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
+    const auto m_idx = grid.m_idx;
+    if ((m_idx == 0) || !grid.has_los() || !projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col)) {
         return true;
     }
 
@@ -96,35 +96,35 @@ static bool cast_blue_hand_doom(PlayerType *player_ptr, bmc_type *bmc_ptr)
 /* 効果が抵抗された場合、返される std::optional には値がありません。*/
 static std::optional<std::string> exe_blue_teleport_back(PlayerType *player_ptr)
 {
-    MonsterEntity *m_ptr;
-    MonsterRaceInfo *r_ptr;
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    if ((floor_ptr->grid_array[target_row][target_col].m_idx == 0) || !player_has_los_bold(player_ptr, target_row, target_col) || !projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col)) {
+    const auto &floor = *player_ptr->current_floor_ptr;
+    const Pos2D pos(target_row, target_col);
+    const auto &grid = floor.get_grid(pos);
+    if (!grid.has_monster() || !grid.has_los() || !projectable(player_ptr, player_ptr->y, player_ptr->x, target_row, target_col)) {
         return std::nullopt;
     }
 
-    m_ptr = &floor_ptr->m_list[floor_ptr->grid_array[target_row][target_col].m_idx];
-    r_ptr = &monraces_info[m_ptr->r_idx];
+    const auto *m_ptr = &floor.m_list[grid.m_idx];
+    auto &monrace = m_ptr->get_monrace();
     auto m_name = monster_desc(player_ptr, m_ptr, 0);
-    if (r_ptr->resistance_flags.has_not(MonsterResistanceType::RESIST_TELEPORT)) {
+    if (monrace.resistance_flags.has_not(MonsterResistanceType::RESIST_TELEPORT)) {
         return m_name;
     }
 
-    if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
+    if (monrace.kind_flags.has(MonsterKindType::UNIQUE) || monrace.resistance_flags.has(MonsterResistanceType::RESIST_ALL)) {
         if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-            r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_TELEPORT);
+            monrace.r_resistance_flags.set(MonsterResistanceType::RESIST_TELEPORT);
         }
 
         msg_format(_("%sには効果がなかった！", "%s is unaffected!"), m_name.data());
         return std::nullopt;
     }
 
-    if (r_ptr->level <= randint1(100)) {
+    if (monrace.level <= randint1(100)) {
         return m_name;
     }
 
     if (is_original_ap_and_seen(player_ptr, m_ptr)) {
-        r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_TELEPORT);
+        monrace.r_resistance_flags.set(MonsterResistanceType::RESIST_TELEPORT);
     }
 
     msg_format(_("%sには耐性がある！", "%s resists!"), m_name.data());
@@ -275,6 +275,8 @@ static bool switch_cast_blue_magic(PlayerType *player_ptr, bmc_type *bmc_ptr, Mo
         return cast_blue_ball_void(player_ptr, bmc_ptr);
     case MonsterAbilityType::BA_ABYSS:
         return cast_blue_ball_abyss(player_ptr, bmc_ptr);
+    case MonsterAbilityType::BA_METEOR:
+        return cast_blue_ball_meteor(player_ptr, bmc_ptr);
     case MonsterAbilityType::DRAIN_MANA:
         return cast_blue_drain_mana(player_ptr, bmc_ptr);
     case MonsterAbilityType::MIND_BLAST:
@@ -311,6 +313,10 @@ static bool switch_cast_blue_magic(PlayerType *player_ptr, bmc_type *bmc_ptr, Mo
         return cast_blue_bolt_abyss(player_ptr, bmc_ptr);
     case MonsterAbilityType::BO_VOID:
         return cast_blue_bolt_void(player_ptr, bmc_ptr);
+    case MonsterAbilityType::BO_METEOR:
+        return cast_blue_bolt_meteor(player_ptr, bmc_ptr);
+    case MonsterAbilityType::BO_LITE:
+        return cast_blue_bolt_lite(player_ptr, bmc_ptr);
     case MonsterAbilityType::MISSILE:
         return cast_blue_bolt_missile(player_ptr, bmc_ptr);
     case MonsterAbilityType::SCARE:
@@ -404,6 +410,8 @@ static bool switch_cast_blue_magic(PlayerType *player_ptr, bmc_type *bmc_ptr, Mo
         return cast_blue_summon_amberite(player_ptr, bmc_ptr);
     case MonsterAbilityType::S_UNIQUE:
         return cast_blue_summon_unique(player_ptr, bmc_ptr);
+    case MonsterAbilityType::S_DEAD_UNIQUE:
+        return cast_blue_summon_dead_unique(player_ptr, bmc_ptr);
     default:
         msg_print("hoge?");
         return true;

@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 騎兵のレイシャルパワー処理
  * @date 2020/05/16
  * @author Hourier
@@ -7,14 +7,13 @@
 #include "mind/mind-cavalry.h"
 #include "cmd-action/cmd-pet.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/smart-learn-types.h"
 #include "pet/pet-fall-off.h"
 #include "player/player-skill.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
@@ -38,7 +37,7 @@ bool rodeo(PlayerType *player_ptr)
     }
 
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     const auto m_name = monster_desc(player_ptr, m_ptr, 0);
     msg_format(_("%sに乗った。", "You ride on %s."), m_name.data());
 
@@ -55,7 +54,7 @@ bool rodeo(PlayerType *player_ptr)
         rlev = 60 + (rlev - 60) / 2;
     }
     if ((randint1(player_ptr->skill_exp[PlayerSkillKindType::RIDING] / 120 + player_ptr->lev * 2 / 3) > rlev) && one_in_(2) &&
-        !player_ptr->current_floor_ptr->inside_arena && !player_ptr->phase_out && !(r_ptr->flags7 & (RF7_GUARDIAN)) && !(r_ptr->flags1 & (RF1_QUESTOR)) &&
+        !player_ptr->current_floor_ptr->inside_arena && !AngbandSystem::get_instance().is_phase_out() && r_ptr->misc_flags.has_not(MonsterMiscType::GUARDIAN) && r_ptr->misc_flags.has_not(MonsterMiscType::QUESTOR) &&
         (rlev < player_ptr->lev * 3 / 2 + randint0(player_ptr->lev / 5))) {
         msg_format(_("%sを手なずけた。", "You tame %s."), m_name.data());
         set_pet(player_ptr, m_ptr);

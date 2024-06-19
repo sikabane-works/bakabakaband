@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 元素使いの魔法系統
  */
 
@@ -34,9 +34,8 @@
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-flags.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster/monster-describer.h"
+#include "monster/monster-util.h"
 #include "player-base/player-class.h"
 #include "player-info/equipment-info.h"
 #include "player-status/player-energy.h"
@@ -199,7 +198,7 @@ static element_type_list element_types = {
 /*!
  * @brief 元素魔法呪文定義
  */
-static element_power_list element_powers = {
+static const element_power_list element_powers = {
     { ElementSpells::BOLT_1ST,   { 0, {  1,  1,  15, _("%sの矢", "%s Bolt") }}},
     { ElementSpells::MON_DETECT, { 0, {  2,  2,  20, _("モンスター感知", "Detect Monsters") }}},
     { ElementSpells::PERCEPT,    { 0, {  5,  5,  50, _("擬似鑑定", "Psychometry") }}},
@@ -332,8 +331,8 @@ AttributeType get_element_type(int realm_idx, int n)
  */
 static AttributeType get_element_spells_type(PlayerType *player_ptr, int n)
 {
-    auto realm = element_types.at(i2enum<ElementRealmType>(player_ptr->element));
-    auto t = realm.type.at(n);
+    const auto &realm = element_types.at(i2enum<ElementRealmType>(player_ptr->element));
+    const auto t = realm.type.at(n);
     if (realm.extra.find(t) != realm.extra.end()) {
         if (randint0(100) < player_ptr->lev * 2) {
             return realm.extra.at(t);
@@ -460,7 +459,7 @@ static std::string get_element_effect_info(PlayerType *player_ptr, int spell_idx
 static bool cast_element_spell(PlayerType *player_ptr, SPELL_IDX spell_idx)
 {
     auto spell = i2enum<ElementSpells>(spell_idx);
-    auto power = element_powers.at(spell);
+    auto &power = element_powers.at(spell);
     AttributeType typ;
     DIRECTION dir;
     PLAYER_LEVEL plev = player_ptr->lev;
@@ -575,7 +574,7 @@ static bool cast_element_spell(PlayerType *player_ptr, SPELL_IDX spell_idx)
                 if (!cave_has_flag_bold(player_ptr->current_floor_ptr, y, x, TerrainCharacteristics::PROJECT)) {
                     continue;
                 }
-                if (!player_bold(player_ptr, y, x)) {
+                if (!player_ptr->is_located_at({ y, x })) {
                     break;
                 }
             }
@@ -683,8 +682,6 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
     TERM_LEN y = 1;
     TERM_LEN x = 10;
     PLAYER_LEVEL plev = player_ptr->lev;
-    char choice;
-    char out_val[160];
     COMMAND_CODE code;
     bool flag, redraw;
     int menu_line = (use_menu ? 1 : 0);
@@ -707,26 +704,31 @@ bool get_element_power(PlayerType *player_ptr, SPELL_IDX *sn, bool only_browse)
         }
     }
 
+    std::string fmt;
     if (only_browse) {
-        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
-        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num - 1), p);
+        fmt = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
     } else {
-        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
-        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num - 1), p);
+        fmt = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
     }
 
+    const auto prompt = format(fmt.data(), p, I2A(0), I2A(num - 1), p);
     if (use_menu && !only_browse) {
         screen_save();
     }
 
     int elem;
     mind_type spell;
-    choice = (always_show_list || use_menu) ? ESCAPE : 1;
+    auto choice = (always_show_list || use_menu) ? ESCAPE : 1;
     while (!flag) {
         if (choice == ESCAPE) {
             choice = ' ';
-        } else if (!get_com(out_val, &choice, true)) {
-            break;
+        } else {
+            const auto new_choice = input_command(prompt, true);
+            if (!new_choice.has_value()) {
+                break;
+            }
+
+            choice = *new_choice;
         }
 
         auto should_redraw_cursor = true;
@@ -854,7 +856,7 @@ static bool check_element_mp_sufficiency(PlayerType *player_ptr, int mana_cost)
         return false;
     }
 
-    return get_check(_("それでも挑戦しますか? ", "Attempt it anyway? "));
+    return input_check(_("それでも挑戦しますか? ", "Attempt it anyway? "));
 }
 
 /*!
@@ -930,7 +932,7 @@ void do_cmd_element(PlayerType *player_ptr)
         player_ptr->csp = 0;
         player_ptr->csp_frac = 0;
         msg_print(_("精神を集中しすぎて気を失ってしまった！", "You faint from the effort!"));
-        (void)BadStatusSetter(player_ptr).mod_paralysis(randint1(5 * oops + 1));
+        (void)BadStatusSetter(player_ptr).mod_paralysis(randnum1<short>(5 * oops + 1));
         chg_virtue(player_ptr, Virtue::KNOWLEDGE, -10);
         if (randint0(100) < 50) {
             bool perm = (randint0(100) < 25);
@@ -964,12 +966,12 @@ void do_cmd_element_browse(PlayerType *player_ptr)
             return;
         }
 
-        term_erase(12, 21, 255);
-        term_erase(12, 20, 255);
-        term_erase(12, 19, 255);
-        term_erase(12, 18, 255);
-        term_erase(12, 17, 255);
-        term_erase(12, 16, 255);
+        term_erase(12, 21);
+        term_erase(12, 20);
+        term_erase(12, 19);
+        term_erase(12, 18);
+        term_erase(12, 17);
+        term_erase(12, 16);
         display_wrap_around(get_element_tip(player_ptr, n), 62, 17, 15);
 
         prt(_("何かキーを押して下さい。", "Hit any key."), 0, 0);
@@ -1012,7 +1014,7 @@ bool is_elemental_genocide_effective(MonsterRaceInfo *r_ptr, AttributeType type)
         }
         break;
     case AttributeType::CONFUSION:
-        if (any_bits(r_ptr->flags3, RF3_NO_CONF)) {
+        if (r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
             return false;
         }
         break;
@@ -1061,7 +1063,7 @@ ProcessResult effect_monster_elemental_genocide(PlayerType *player_ptr, EffectMo
         return ProcessResult::PROCESS_TRUE;
     }
 
-    if (genocide_aux(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, !em_ptr->who, (em_ptr->r_ptr->level + 1) / 2, _("モンスター消滅", "Genocide One"))) {
+    if (genocide_aux(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, is_player(em_ptr->src_idx), (em_ptr->r_ptr->level + 1) / 2, _("モンスター消滅", "Genocide One"))) {
         if (em_ptr->seen_msg) {
             msg_format(_("%sは消滅した！", "%s^ disappeared!"), em_ptr->m_name);
         }
@@ -1168,8 +1170,7 @@ static int get_element_realm(PlayerType *player_ptr, int is, int n)
     int os = cs;
     int k;
 
-    char buf[80];
-    sprintf(buf, _("領域を選んで下さい(%c-%c) ('='初期オプション設定): ", "Choose a realm (%c-%c) ('=' for options): "), I2A(0), I2A(n - 1));
+    const auto buf = format(_("領域を選んで下さい(%c-%c) ('='初期オプション設定): ", "Choose a realm (%c-%c) ('=' for options): "), I2A(0), I2A(n - 1));
 
     while (true) {
         display_realm_cursor(os, n, TERM_WHITE);
@@ -1234,7 +1235,7 @@ byte select_element_realm(PlayerType *player_ptr)
 {
     clear_from(10);
 
-    int realm_max = enum2i(ElementRealmType::MAX);
+    constexpr auto realm_max = enum2i(ElementRealmType::MAX);
     int realm_idx = 1;
     int row = 16;
     while (1) {
@@ -1254,7 +1255,7 @@ byte select_element_realm(PlayerType *player_ptr)
         auto realm = i2enum<ElementRealmType>(realm_idx);
         display_wrap_around(element_texts.at(realm), 74, row, 3);
 
-        if (get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_DEFAULT_Y)) {
+        if (input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), UserCheck::DEFAULT_Y)) {
             break;
         }
 

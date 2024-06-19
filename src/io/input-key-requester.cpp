@@ -1,10 +1,11 @@
-﻿#include "io/input-key-requester.h"
+#include "io/input-key-requester.h"
 #include "cmd-io/cmd-menu-content-table.h"
 #include "cmd-io/macro-util.h"
 #include "core/asking-player.h" //!< @todo 相互依存している、後で何とかする.
 #include "core/player-processor.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
+#include "dungeon/quest.h"
 #include "game-option/game-play-options.h"
 #include "game-option/input-options.h"
 #include "game-option/map-screen-options.h"
@@ -19,7 +20,6 @@
 #include "system/player-type-definition.h"
 #include "term/screen-processor.h" //!< @todo 相互依存している、後で何とかする.
 #include "util/int-char-converter.h"
-#include "util/quarks.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 #include "window/display-sub-windows.h"
@@ -61,7 +61,7 @@ void InputKeyRequestor::request_command()
     command_arg = 0;
     command_dir = 0;
     use_menu = false;
-    this->input_command();
+    this->process_input_command();
     if (always_repeat && (command_arg <= 0)) {
         if (angband_strchr("TBDoc+", (char)command_cmd)) {
             command_arg = 99;
@@ -73,7 +73,7 @@ void InputKeyRequestor::request_command()
     prt("", 0, 0);
 }
 
-void InputKeyRequestor::input_command()
+void InputKeyRequestor::process_input_command()
 {
     while (true) {
         if (!this->shopping && !macro_running() && !command_new && auto_debug_save && (!inkey_next || *inkey_next == '\0')) {
@@ -226,13 +226,8 @@ bool InputKeyRequestor::process_repeat_num(short &cmd)
         return false;
     }
 
-    char tmp_cmd;
-    auto ret_cmd = get_com(_("コマンド: ", "Command: "), &tmp_cmd, false);
-    cmd = tmp_cmd;
-    if (ret_cmd) {
-        return false;
-    }
-
+    const auto ret_cmd = input_command(_("コマンド: ", "Command: "));
+    cmd = ret_cmd.value_or(ESCAPE);
     command_arg = 0;
     return true;
 }
@@ -248,9 +243,8 @@ void InputKeyRequestor::process_command_command(short &cmd)
         return;
     }
 
-    char tmp_cmd;
-    (void)get_com(_("コマンド: ", "Command: "), &tmp_cmd, false);
-    cmd = tmp_cmd;
+    const auto new_command = input_command(_("コマンド: ", "Command: "));
+    cmd = new_command.value_or(ESCAPE);
     if (inkey_next == nullptr) {
         inkey_next = "";
     }
@@ -262,10 +256,10 @@ void InputKeyRequestor::process_control_command(short &cmd)
         return;
     }
 
-    char tmp_cmd;
-    auto ret_cmd = get_com(_("CTRL: ", "Control: "), &tmp_cmd, false);
-    cmd = tmp_cmd;
-    if (ret_cmd) {
+    const auto new_command = input_command(_("CTRL: ", "Control: "));
+    const auto is_input = new_command.has_value();
+    cmd = new_command.value_or(ESCAPE);
+    if (is_input) {
         cmd = KTRL(cmd);
     }
 }
@@ -340,7 +334,7 @@ void InputKeyRequestor::confirm_command(ItemEntity &o_ref, const int caret_comma
         (void)caret_command;
 #endif
         if (sure) {
-            if (!get_check(_("本当ですか? ", "Are you sure? "))) {
+            if (!input_check(_("本当ですか? ", "Are you sure? "))) {
                 command_cmd = ' ';
             }
         }
@@ -374,7 +368,7 @@ std::string InputKeyRequestor::switch_special_menu_condition(const SpecialMenuCo
         return "";
     case SpecialMenuType::WILD: {
         auto floor_ptr = this->player_ptr->current_floor_ptr;
-        if ((floor_ptr->dun_level > 0) || floor_ptr->inside_arena || inside_quest(floor_ptr->quest_number)) {
+        if ((floor_ptr->dun_level > 0) || floor_ptr->inside_arena || floor_ptr->is_in_quest()) {
             return "";
         }
 

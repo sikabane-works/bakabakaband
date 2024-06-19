@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @brief 軽鎧に耐性等の追加効果を付与する処理
  * @date 2022/03/12
  * @author Hourier
@@ -55,7 +55,7 @@ void SoftArmorEnchanter::sval_enchant()
 
     switch (sval.value()) {
     case SV_KUROSHOUZOKU:
-        this->o_ptr->pval = randint1(4);
+        this->o_ptr->pval = randnum1<short>(4);
         return;
     case SV_ABUNAI_MIZUGI:
         if (this->player_ptr->ppersonality != PERSONALITY_SEXY) {

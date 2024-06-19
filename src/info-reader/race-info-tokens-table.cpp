@@ -1,4 +1,4 @@
-﻿#include "info-reader/race-info-tokens-table.h"
+#include "info-reader/race-info-tokens-table.h"
 #include "monster-attack/monster-attack-effect.h"
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/race-ability-flags.h"
@@ -6,10 +6,51 @@
 #include "monster-race/race-drop-flags.h"
 #include "monster-race/race-feature-flags.h"
 #include "monster-race/race-kind-flags.h"
+#include "monster-race/race-misc-flags.h"
 #include "monster-race/race-population-flags.h"
+#include "monster-race/race-sex-const.h"
 #include "monster-race/race-speak-flags.h"
+#include "monster-race/race-special-flags.h"
 #include "monster-race/race-visual-flags.h"
 #include "monster-race/race-wilderness-flags.h"
+
+/*!
+ * モンスター特性トークンの定義9 /
+ * Monster race flags
+ */
+const std::unordered_map<std::string_view, MonsterFeedType> r_info_meat_feed = {
+    { "EAT_BLIND", MonsterFeedType::BLIND },
+    { "EAT_CONF", MonsterFeedType::CONF },
+    { "EAT_MANA", MonsterFeedType::MANA },
+    { "EAT_NEXUS", MonsterFeedType::NEXUS },
+    // { "EAT_BLINK", MonsterFeedType::BLINK }, //<! @note フラグ未定義
+    { "EAT_SLEEP", MonsterFeedType::SLEEP },
+    { "EAT_BERSERKER", MonsterFeedType::BERSERKER },
+    { "EAT_ACIDIC", MonsterFeedType::ACIDIC },
+    { "EAT_SPEED", MonsterFeedType::SPEED },
+    { "EAT_CURE", MonsterFeedType::CURE },
+    { "EAT_FIRE_RES", MonsterFeedType::FIRE_RES },
+    { "EAT_COLD_RES", MonsterFeedType::COLD_RES },
+    { "EAT_ACID_RES", MonsterFeedType::ACID_RES },
+    { "EAT_ELEC_RES", MonsterFeedType::ELEC_RES },
+    { "EAT_POIS_RES", MonsterFeedType::POIS_RES },
+    { "EAT_INSANITY", MonsterFeedType::INSANITY },
+    { "EAT_DRAIN_EXP", MonsterFeedType::DRAIN_EXP },
+    { "EAT_POISONOUS", MonsterFeedType::POISONOUS },
+    { "EAT_GIVE_STR", MonsterFeedType::GIVE_STR },
+    { "EAT_GIVE_INT", MonsterFeedType::GIVE_INT },
+    { "EAT_GIVE_WIS", MonsterFeedType::GIVE_WIS },
+    { "EAT_GIVE_DEX", MonsterFeedType::GIVE_DEX },
+    { "EAT_GIVE_CON", MonsterFeedType::GIVE_CON },
+    { "EAT_GIVE_CHR", MonsterFeedType::GIVE_CHR },
+    { "EAT_LOSE_STR", MonsterFeedType::LOSE_STR },
+    { "EAT_LOSE_INT", MonsterFeedType::LOSE_INT },
+    { "EAT_LOSE_WIS", MonsterFeedType::LOSE_WIS },
+    { "EAT_LOSE_DEX", MonsterFeedType::LOSE_DEX },
+    { "EAT_LOSE_CON", MonsterFeedType::LOSE_CON },
+    { "EAT_LOSE_CHR", MonsterFeedType::LOSE_CHR },
+    { "EAT_DRAIN_MANA", MonsterFeedType::DRAIN_MANA },
+};
 
 /*!
  * モンスターの打撃手段トークンの定義 /
@@ -89,55 +130,9 @@ const std::unordered_map<std::string_view, RaceBlowEffectType> r_info_blow_effec
     { "INERTIA", RaceBlowEffectType::INERTIA },
     { "STUN", RaceBlowEffectType::STUN },
     { "HUNGRY", RaceBlowEffectType::HUNGRY },
+    { "CHAOS", RaceBlowEffectType::CHAOS },
     { "FLAVOR", RaceBlowEffectType::FLAVOR },
     { "DEFECATE", RaceBlowEffectType::DEFECATE },
-};
-
-/*!
- * モンスター特性トークンの定義1 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags1> r_info_flags1 = {
-    { "QUESTOR", RF1_QUESTOR },
-    { "MALE", RF1_MALE },
-    { "FEMALE", RF1_FEMALE },
-    { "FORCE_DEPTH", RF1_FORCE_DEPTH },
-    { "FORCE_MAXHP", RF1_FORCE_MAXHP },
-    { "FORCE_EXTRA", RF1_FORCE_EXTRA },
-    { "FRIENDS", RF1_FRIENDS },
-    { "ESCORT", RF1_ESCORT },
-    { "ESCORTS", RF1_ESCORTS },
-};
-
-/*!
- * モンスター特性トークンの定義2 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags2> r_info_flags2 = {
-    { "REFLECTING", RF2_REFLECTING },
-    { "INVISIBLE", RF2_INVISIBLE },
-    { "COLD_BLOOD", RF2_COLD_BLOOD },
-    { "EMPTY_MIND", RF2_EMPTY_MIND },
-    { "WEIRD_MIND", RF2_WEIRD_MIND },
-    { "MULTIPLY", RF2_MULTIPLY },
-    { "REGENERATE", RF2_REGENERATE },
-    { "CHAR_MULTI", RF2_CHAR_MULTI },
-    { "POWERFUL", RF2_POWERFUL },
-    { "ELDRITCH_HORROR", RF2_ELDRITCH_HORROR },
-    { "VOCIFEROUS", RF2_VOCIFEROUS },
-    { "FLAGS2_XX15", RF2_XX15 },
-};
-
-/*!
- * モンスター特性トークンの定義3 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags3> r_info_flags3 = {
-    { "FLAGS3_XX10", RF3_XX10 },
-    { "NO_FEAR", RF3_NO_FEAR },
-    { "NO_STUN", RF3_NO_STUN },
-    { "NO_CONF", RF3_NO_CONF },
-    { "NO_SLEEP", RF3_NO_SLEEP }
 };
 
 /*!
@@ -192,6 +187,7 @@ const std::unordered_map<std::string_view, MonsterAbilityType> r_info_ability_fl
 	{"BA_DARK", MonsterAbilityType::BA_DARK },
 	{"BA_VOID", MonsterAbilityType::BA_VOID },
 	{"BA_ABYSS", MonsterAbilityType::BA_ABYSS },
+	{"BA_METEOR", MonsterAbilityType::BA_METEOR },
 	{"DRAIN_MANA", MonsterAbilityType::DRAIN_MANA },
 	{"MIND_BLAST", MonsterAbilityType::MIND_BLAST },
 	{"BRAIN_SMASH", MonsterAbilityType::BRAIN_SMASH },
@@ -211,6 +207,8 @@ const std::unordered_map<std::string_view, MonsterAbilityType> r_info_ability_fl
 	{"BO_ICEE", MonsterAbilityType::BO_ICEE },
 	{"BO_VOID", MonsterAbilityType::BO_VOID },
 	{"BO_ABYSS", MonsterAbilityType::BO_ABYSS },
+	{"BO_METEOR", MonsterAbilityType::BO_METEOR },
+	{"BO_LITE", MonsterAbilityType::BO_LITE },
 	{"MISSILE", MonsterAbilityType::MISSILE },
 	{"SCARE", MonsterAbilityType::SCARE },
 	{"BLIND", MonsterAbilityType::BLIND },
@@ -250,67 +248,9 @@ const std::unordered_map<std::string_view, MonsterAbilityType> r_info_ability_fl
 	{"S_HI_DRAGON", MonsterAbilityType::S_HI_DRAGON },
 	{"S_AMBERITES", MonsterAbilityType::S_AMBERITES },
 	{"S_UNIQUE", MonsterAbilityType::S_UNIQUE },
+	{"S_DEAD_UNIQUE", MonsterAbilityType::S_DEAD_UNIQUE },
 };
 /* clang-format on */
-
-/*!
- * @brief モンスター特性トークンの定義7
- * @details ダンジョンの主は、DungeonDefinitions の FINAL_GUARDIAN_HOGE にて自動指定
- * HOGE は、MonsterRaceDefinitions で定義したモンスター種族ID
- */
-const std::unordered_map<std::string_view, race_flags7> r_info_flags7 = {
-    { "UNIQUE2", RF7_UNIQUE2 },
-    { "RIDING", RF7_RIDING },
-    { "KAGE", RF7_KAGE },
-    { "CHAMELEON", RF7_CHAMELEON },
-    { "TANUKI", RF7_TANUKI },
-};
-
-/*!
- * モンスター特性トークンの定義8 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags8> r_info_flags8 = {
-    { "NO_QUEST", RF8_NO_QUEST },
-};
-
-/*!
- * モンスター特性トークンの定義9 /
- * Monster race flags
- */
-const std::unordered_map<std::string_view, race_flags9> r_info_flags9 = {
-    { "EAT_BLIND", RF9_EAT_BLIND },
-    { "EAT_CONF", RF9_EAT_CONF },
-    { "EAT_MANA", RF9_EAT_MANA },
-    { "EAT_NEXUS", RF9_EAT_NEXUS },
-    // { "EAT_BLINK", RF9_EAT_BLINK }, //<! @note フラグ未定義
-    { "EAT_SLEEP", RF9_EAT_SLEEP },
-    { "EAT_BERSERKER", RF9_EAT_BERSERKER },
-    { "EAT_ACIDIC", RF9_EAT_ACIDIC },
-    { "EAT_SPEED", RF9_EAT_SPEED },
-    { "EAT_CURE", RF9_EAT_CURE },
-    { "EAT_FIRE_RES", RF9_EAT_FIRE_RES },
-    { "EAT_COLD_RES", RF9_EAT_COLD_RES },
-    { "EAT_ACID_RES", RF9_EAT_ACID_RES },
-    { "EAT_ELEC_RES", RF9_EAT_ELEC_RES },
-    { "EAT_POIS_RES", RF9_EAT_POIS_RES },
-    { "EAT_INSANITY", RF9_EAT_INSANITY },
-    { "EAT_DRAIN_EXP", RF9_EAT_DRAIN_EXP },
-    { "EAT_POISONOUS", RF9_EAT_POISONOUS },
-    { "EAT_GIVE_STR", RF9_EAT_GIVE_STR },
-    { "EAT_GIVE_INT", RF9_EAT_GIVE_INT },
-    { "EAT_GIVE_WIS", RF9_EAT_GIVE_WIS },
-    { "EAT_GIVE_DEX", RF9_EAT_GIVE_DEX },
-    { "EAT_GIVE_CON", RF9_EAT_GIVE_CON },
-    { "EAT_GIVE_CHR", RF9_EAT_GIVE_CHR },
-    { "EAT_LOSE_STR", RF9_EAT_LOSE_STR },
-    { "EAT_LOSE_INT", RF9_EAT_LOSE_INT },
-    { "EAT_LOSE_WIS", RF9_EAT_LOSE_WIS },
-    { "EAT_LOSE_DEX", RF9_EAT_LOSE_DEX },
-    { "EAT_LOSE_CON", RF9_EAT_LOSE_CON },
-    { "EAT_LOSE_CHR", RF9_EAT_LOSE_CHR },
-    { "EAT_DRAIN_MANA", RF9_EAT_DRAIN_MANA },
-};
 
 /*!
  * モンスター特性トークンの定義R(耐性) /
@@ -368,6 +308,13 @@ const std::unordered_map<std::string_view, MonsterResistanceType> r_info_flagsr 
     { "RES_ABYSS", MonsterResistanceType::RESIST_ABYSS },
     { "HURT_VOID", MonsterResistanceType::HURT_VOID_MAGIC },
     { "RES_VOID", MonsterResistanceType::RESIST_VOID_MAGIC },
+    { "HURT_METEOR", MonsterResistanceType::HURT_METEOR },
+    { "RES_METEOR", MonsterResistanceType::RESIST_METEOR },
+    { "NO_FEAR", MonsterResistanceType::NO_FEAR },
+    { "NO_STUN", MonsterResistanceType::NO_STUN },
+    { "NO_CONF", MonsterResistanceType::NO_CONF },
+    { "NO_SLEEP", MonsterResistanceType::NO_SLEEP },
+    { "NO_INSTANTLY_DEATH", MonsterResistanceType::NO_INSTANTLY_DEATH }
 };
 
 const std::unordered_map<std::string_view, MonsterAuraType> r_info_aura_flags = {
@@ -506,6 +453,7 @@ const std::unordered_map<std::string_view, MonsterFeatureType> r_info_feature_fl
 
 const std::unordered_map<std::string_view, MonsterPopulationType> r_info_population_flags = {
     { "NAZGUL", MonsterPopulationType::NAZGUL },
+    { "ONLY_ONE", MonsterPopulationType::ONLY_ONE },
 };
 
 const std::unordered_map<std::string_view, MonsterSpeakType> r_info_speak_flags = {
@@ -526,4 +474,38 @@ const std::unordered_map<std::string_view, MonsterBrightnessType> r_info_brightn
     { "SELF_DARK_1", MonsterBrightnessType::SELF_DARK_1 },
     { "HAS_DARK_2", MonsterBrightnessType::HAS_DARK_2 },
     { "SELF_DARK_2", MonsterBrightnessType::SELF_DARK_2 },
+};
+
+const std::unordered_map<std::string_view, MonsterMiscType> r_info_misc_flags = {
+    { "FORCE_DEPTH", MonsterMiscType::FORCE_DEPTH },
+    { "FORCE_MAXHP", MonsterMiscType::FORCE_MAXHP },
+    { "FRIENDS", MonsterMiscType::HAS_FRIENDS },
+    { "ESCORT", MonsterMiscType::ESCORT },
+    { "ESCORTS", MonsterMiscType::MORE_ESCORT },
+    { "RIDING", MonsterMiscType::RIDING },
+    { "INVISIBLE", MonsterMiscType::INVISIBLE },
+    { "COLD_BLOOD", MonsterMiscType::COLD_BLOOD },
+    { "KAGE", MonsterMiscType::KAGE },
+    { "CHAMELEON", MonsterMiscType::CHAMELEON },
+    { "TANUKI", MonsterMiscType::TANUKI },
+    { "NO_QUEST", MonsterMiscType::NO_QUEST },
+    { "ELDRITCH_HORROR", MonsterMiscType::ELDRITCH_HORROR },
+    { "MULTIPLY", MonsterMiscType::MULTIPLY },
+    { "REGENERATE", MonsterMiscType::REGENERATE },
+    { "POWERFUL", MonsterMiscType::POWERFUL },
+    { "REFLECTING", MonsterMiscType::REFLECTING },
+    { "QUESTOR", MonsterMiscType::QUESTOR },
+    { "EMPTY_MIND", MonsterMiscType::EMPTY_MIND },
+    { "WEIRD_MIND", MonsterMiscType::WEIRD_MIND },
+    { "VOCIFEROUS", MonsterMiscType::VOCIFEROUS },
+};
+
+const std::unordered_map<std::string_view, MonsterSpecialType> r_info_special_flags = {
+    { "DIMINISH_MAX_DAMAGE", MonsterSpecialType::DIMINISH_MAX_DAMAGE },
+};
+
+const std::unordered_map<std::string_view, MonsterSex> r_info_sex = {
+    { "NONE", MonsterSex::NONE },
+    { "MALE", MonsterSex::MALE },
+    { "FEMALE", MonsterSex::FEMALE },
 };

@@ -1,4 +1,4 @@
-﻿#include "object-hook/hook-quest.h"
+#include "object-hook/hook-quest.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-building/cmd-building.h"
 #include "dungeon/quest.h"
@@ -53,7 +53,7 @@ bool object_is_quest_target(QuestId quest_idx, const ItemEntity *o_ptr)
     }
 
     const auto &quest = QuestList::get_instance()[quest_idx];
-    if (quest.has_reward()) {
+    if (!quest.has_reward()) {
         return false;
     }
 

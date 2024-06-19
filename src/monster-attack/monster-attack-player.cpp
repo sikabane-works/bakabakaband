@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスターからプレイヤーへの直接攻撃処理
  * @date 2020/05/23
  * @author Hourier
@@ -25,8 +25,6 @@
 #include "monster-attack/monster-attack-switcher.h"
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-damage.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
@@ -85,7 +83,7 @@ void MonsterAttackPlayer::make_attack_normal()
         return;
     }
 
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     this->rlev = ((r_ptr->level >= 1) ? r_ptr->level : 1);
     angband_strcpy(this->m_name, monster_desc(this->player_ptr, this->m_ptr, 0), sizeof(this->m_name));
     angband_strcpy(this->ddesc, monster_desc(this->player_ptr, this->m_ptr, MD_WRONGDOER_NAME), sizeof(this->ddesc));
@@ -126,7 +124,7 @@ int MonsterAttackPlayer::stat_value(const int raw)
 
 bool MonsterAttackPlayer::check_no_blow()
 {
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     if (r_ptr->behavior_flags.has(MonsterBehaviorType::NEVER_BLOW)) {
         return false;
     }
@@ -144,7 +142,7 @@ bool MonsterAttackPlayer::check_no_blow()
  */
 bool MonsterAttackPlayer::process_monster_blows()
 {
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     for (auto ap_cnt = 0; ap_cnt < MAX_NUM_BLOWS; ap_cnt++) {
         this->obvious = false;
         this->damage = 0;
@@ -219,7 +217,7 @@ bool MonsterAttackPlayer::check_monster_continuous_attack()
         return false;
     }
 
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     if (this->m_ptr->is_pet() && r_ptr->kind_flags.has(MonsterKindType::UNIQUE) && (this->method == RaceBlowMethodType::EXPLODE)) {
         this->method = RaceBlowMethodType::HIT;
         this->d_dice /= 10;
@@ -268,7 +266,7 @@ bool MonsterAttackPlayer::process_monster_attack_hit()
  */
 bool MonsterAttackPlayer::effect_protecion_from_evil()
 {
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     if ((this->player_ptr->protevil <= 0) || r_ptr->kind_flags.has_not(MonsterKindType::EVIL) || (randint0(100) + this->player_ptr->lev - this->rlev) <= 50) {
         return false;
     }
@@ -465,7 +463,7 @@ void MonsterAttackPlayer::gain_armor_exp()
         return;
     }
 
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     auto target_level = r_ptr->level;
     short increment = 0;
     if ((cur / 100) < target_level) {
@@ -490,7 +488,7 @@ void MonsterAttackPlayer::increase_blow_type_seen(const int ap_cnt)
         return;
     }
 
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     if (!this->obvious && (this->damage == 0) && (r_ptr->r_blows[ap_cnt] <= 10)) {
         return;
     }
@@ -507,7 +505,7 @@ void MonsterAttackPlayer::postprocess_monster_blows()
     spell_hex.eyes_on_eyes();
     musou_counterattack(this->player_ptr, this);
     spell_hex.thief_teleport();
-    auto *r_ptr = &monraces_info[this->m_ptr->r_idx];
+    auto *r_ptr = &this->m_ptr->get_monrace();
     if (this->player_ptr->is_dead && (r_ptr->r_deaths < MAX_SHORT) && !this->player_ptr->current_floor_ptr->inside_arena) {
         r_ptr->r_deaths++;
     }

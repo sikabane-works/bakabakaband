@@ -1,12 +1,10 @@
-﻿#include "load/quest-loader.h"
+#include "load/quest-loader.h"
 #include "artifact/fixed-art-types.h"
 #include "dungeon/quest.h"
 #include "floor/floor-town.h"
 #include "load/load-util.h"
 #include "load/load-zangband.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
 #include "object-enchant/trg-types.h"
 #include "system/artifact-type-definition.h"
 #include "system/floor-type-definition.h"
@@ -116,7 +114,7 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
 
         if (q_ptr->status == QuestStatusType::TAKEN || q_ptr->status == QuestStatusType::UNTAKEN) {
             if (monraces_info[q_ptr->r_idx].kind_flags.has(MonsterKindType::UNIQUE)) {
-                monraces_info[q_ptr->r_idx].flags1 |= RF1_QUESTOR;
+                monraces_info[q_ptr->r_idx].misc_flags.set(MonsterMiscType::QUESTOR);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿#include "window/main-window-util.h"
+#include "window/main-window-util.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/cave.h"
@@ -18,6 +18,7 @@
 #include "term/term-color-types.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/timed-effects.h"
+#include "view/colored-char.h"
 #include "view/display-map.h"
 #include "world/world.h"
 #include <string>
@@ -71,9 +72,7 @@ void print_field(concptr info, TERM_LEN row, TERM_LEN col)
  */
 void print_map(PlayerType *player_ptr)
 {
-    TERM_LEN wid, hgt;
-    term_get_size(&wid, &hgt);
-
+    auto [wid, hgt] = term_get_size();
     wid -= COL_MAP + 2;
     hgt -= ROW_MAP + 2;
 
@@ -180,9 +179,8 @@ void display_map(PlayerType *player_ptr, int *cy, int *cx)
     bool old_view_special_lite = view_special_lite;
     bool old_view_granite_lite = view_granite_lite;
 
-    TERM_LEN border_width = use_bigtile ? 2 : 1; //!< @note 枠線幅
-    TERM_LEN hgt, wid, yrat, xrat;
-    term_get_size(&wid, &hgt);
+    auto border_width = use_bigtile ? 2 : 1; //!< @note 枠線幅
+    auto [wid, hgt] = term_get_size();
     hgt -= 2;
     wid -= 12 + border_width * 2; //!< @note 描画桁数(枠線抜)
     if (use_bigtile) {
@@ -190,8 +188,8 @@ void display_map(PlayerType *player_ptr, int *cy, int *cx)
     }
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    yrat = (floor_ptr->height + hgt - 1) / hgt;
-    xrat = (floor_ptr->width + wid - 1) / wid;
+    const auto yrat = (floor_ptr->height + hgt - 1) / hgt;
+    const auto xrat = (floor_ptr->width + wid - 1) / wid;
     view_special_lite = false;
     view_granite_lite = false;
 
@@ -237,11 +235,10 @@ void display_map(PlayerType *player_ptr, int *cy, int *cx)
             ta = bigma[j + 1][i + 1];
             tp = bigmp[j + 1][i + 1];
             if (mp[y][x] == tp) {
-                int t;
                 int cnt = 0;
 
-                for (t = 0; t < 8; t++) {
-                    if (tc == bigmc[j + 1 + ddy_cdd[t]][i + 1 + ddx_cdd[t]] && ta == bigma[j + 1 + ddy_cdd[t]][i + 1 + ddx_cdd[t]]) {
+                for (const auto &dd : CCW_DD) {
+                    if (tc == bigmc[j + 1 + dd.y][i + 1 + dd.x] && ta == bigma[j + 1 + dd.y][i + 1 + dd.x]) {
                         cnt++;
                     }
                 }
@@ -315,16 +312,15 @@ void display_map(PlayerType *player_ptr, int *cy, int *cx)
     view_granite_lite = old_view_granite_lite;
 }
 
-void set_term_color(PlayerType *player_ptr, POSITION y, POSITION x, TERM_COLOR *ap, char *cp)
+ColoredChar set_term_color(PlayerType *player_ptr, const Pos2D &pos, const ColoredChar &cc_orig)
 {
-    if (!player_bold(player_ptr, y, x)) {
-        return;
+    if (!player_ptr->is_located_at(pos)) {
+        return cc_orig;
     }
 
-    auto *r_ptr = &monraces_info[MonsterRaceId::PLAYER];
-    *ap = r_ptr->x_attr;
-    *cp = r_ptr->x_char;
     feat_priority = 31;
+    const auto &monrace = monraces_info[MonsterRaceId::PLAYER];
+    return { monrace.x_attr, monrace.x_char };
 }
 
 /*

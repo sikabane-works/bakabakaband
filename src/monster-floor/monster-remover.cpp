@@ -1,12 +1,10 @@
-﻿#include "monster-floor/monster-remover.h"
+#include "monster-floor/monster-remover.h"
 #include "core/stuff-handler.h"
 #include "floor/cave.h"
 #include "floor/floor-object.h"
 #include "grid/grid.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-mask.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
@@ -31,13 +29,13 @@ void delete_monster_idx(PlayerType *player_ptr, MONSTER_IDX i)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[i];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
 
     POSITION y = m_ptr->fy;
     POSITION x = m_ptr->fx;
 
-    m_ptr->get_real_r_ref().cur_num--;
-    if (r_ptr->flags2 & (RF2_MULTIPLY)) {
+    m_ptr->get_real_monrace().cur_num--;
+    if (r_ptr->misc_flags.has(MonsterMiscType::MULTIPLY)) {
         floor_ptr->num_repro--;
     }
 
@@ -105,34 +103,13 @@ void delete_monster_idx(PlayerType *player_ptr, MONSTER_IDX i)
 }
 
 /*!
- * @brief プレイヤーのフロア離脱に伴う全モンスター配列の消去 / Delete/Remove all the monsters when the player leaves the level
+ * @brief プレイヤーのフロア離脱に伴う全モンスター配列の消去
  * @param player_ptr プレイヤーへの参照ポインタ
- * @details
- * This is an efficient method of simulating multiple calls to the
- * "delete_monster()" function, with no visual effects.
+ * @details 視覚効果なしでdelete_monster() をフロア全体に対して呼び出す.
  */
 void wipe_monsters_list(PlayerType *player_ptr)
 {
-    if (!monraces_info[MonsterRaceId::BANORLUPART].mob_num) {
-        if (monraces_info[MonsterRaceId::BANOR].mob_num) {
-            monraces_info[MonsterRaceId::BANOR].mob_num = 0;
-            monraces_info[MonsterRaceId::BANOR].r_pkills++;
-            monraces_info[MonsterRaceId::BANOR].r_akills++;
-            if (monraces_info[MonsterRaceId::BANOR].r_tkills < MAX_SHORT) {
-                monraces_info[MonsterRaceId::BANOR].r_tkills++;
-            }
-        }
-
-        if (monraces_info[MonsterRaceId::LUPART].mob_num) {
-            monraces_info[MonsterRaceId::LUPART].mob_num = 0;
-            monraces_info[MonsterRaceId::LUPART].r_pkills++;
-            monraces_info[MonsterRaceId::LUPART].r_akills++;
-            if (monraces_info[MonsterRaceId::LUPART].r_tkills < MAX_SHORT) {
-                monraces_info[MonsterRaceId::LUPART].r_tkills++;
-            }
-        }
-    }
-
+    MonraceList::get_instance().defeat_separated_uniques();
     auto *floor_ptr = player_ptr->current_floor_ptr;
     for (int i = floor_ptr->m_max - 1; i >= 1; i--) {
         auto *m_ptr = &floor_ptr->m_list[i];
@@ -174,14 +151,14 @@ void wipe_monsters_list(PlayerType *player_ptr)
  */
 void delete_monster(PlayerType *player_ptr, POSITION y, POSITION x)
 {
-    grid_type *g_ptr;
+    Grid *g_ptr;
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!in_bounds(floor_ptr, y, x)) {
         return;
     }
 
     g_ptr = &floor_ptr->grid_array[y][x];
-    if (g_ptr->m_idx) {
+    if (g_ptr->has_monster()) {
         delete_monster_idx(player_ptr, g_ptr->m_idx);
     }
 }

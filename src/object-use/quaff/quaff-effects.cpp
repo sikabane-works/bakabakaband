@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @brief 薬を飲んだ時の効果処理
  * @date 2022/03/10
  * @author Hourier
@@ -48,13 +48,13 @@ QuaffEffects::QuaffEffects(PlayerType *player_ptr)
 {
 }
 
-bool QuaffEffects::influence(const ItemEntity &o_ref)
+bool QuaffEffects::influence(const ItemEntity &item)
 {
-    if (o_ref.bi_key.tval() != ItemKindType::POTION) {
+    if (item.bi_key.tval() != ItemKindType::POTION) {
         return false;
     }
 
-    switch (o_ref.bi_key.sval().value()) {
+    switch (*item.bi_key.sval()) {
     case SV_POTION_WATER:
         msg_print(_("口の中がさっぱりした。", "That was refreshing."));
         msg_print(_("のどの渇きが少しおさまった。", "You feel less thirsty."));
@@ -303,7 +303,7 @@ bool QuaffEffects::booze()
         ident = true;
     }
 
-    if (!is_monk || !one_in_(13)) {
+    if (is_monk || !one_in_(13)) {
         return ident;
     }
 

@@ -1,4 +1,4 @@
-﻿#include "dungeon/quest.h"
+#include "dungeon/quest.h"
 #include "artifact/fixed-art-types.h"
 #include "cmd-io/cmd-dump.h"
 #include "core/asking-player.h"
@@ -7,17 +7,14 @@
 #include "floor/floor-mode-changer.h"
 #include "floor/floor-object.h"
 #include "game-option/play-record-options.h"
-#include "grid/feature.h"
 #include "info-reader/fixed-map-parser.h"
 #include "io/write-diary.h"
 #include "locale/english.h"
 #include "main/music-definitions-table.h"
 #include "main/sound-of-music.h"
+#include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "monster/monster-info.h"
 #include "monster/monster-list.h"
 #include "monster/monster-util.h"
@@ -29,19 +26,19 @@
 #include "player/player-status.h"
 #include "system/artifact-type-definition.h"
 #include "system/dungeon-info.h"
-#include "system/floor-type-definition.h"
+#include "system/floor-type-definition.h" // @todo 相互参照、将来的に削除する.
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <sstream>
 #include <stdexcept>
 
-char quest_text[10][80]; /*!< Quest text */
-int quest_text_line; /*!< Current line of the quest text */
+std::vector<std::string> quest_text_lines; /*!< Quest text */
 QuestId leaving_quest = QuestId::NONE;
 
 /*!
@@ -184,17 +181,17 @@ void determine_random_questor(PlayerType *player_ptr, QuestType *q_ptr)
     get_mon_num_prep(player_ptr, mon_hook_quest, nullptr);
     MonsterRaceId r_idx;
     while (true) {
-        r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 5 + randint1(q_ptr->level / 10), GMN_ARENA);
+        r_idx = get_mon_num(player_ptr, 0, q_ptr->level + 5 + randint1(q_ptr->level / 10), PM_ARENA);
         const auto &monrace = monraces_info[r_idx];
         if (monrace.kind_flags.has_not(MonsterKindType::UNIQUE)) {
             continue;
         }
 
-        if (monrace.flags8 & RF8_NO_QUEST) {
+        if (monrace.misc_flags.has(MonsterMiscType::NO_QUEST)) {
             continue;
         }
 
-        if (monrace.flags1 & RF1_QUESTOR) {
+        if (monrace.misc_flags.has(MonsterMiscType::QUESTOR)) {
             continue;
         }
 
@@ -214,7 +211,7 @@ void determine_random_questor(PlayerType *player_ptr, QuestType *q_ptr)
             continue;
         }
 
-        if (monrace.no_suitable_questor_bounty()) {
+        if (MonraceList::get_instance().can_unify_separate(r_idx)) {
             continue;
         }
 
@@ -240,7 +237,7 @@ void record_quest_final_status(QuestType *q_ptr, PLAYER_LEVEL lev, QuestStatusTy
 {
     q_ptr->status = stat;
     q_ptr->complev = lev;
-    update_playtime();
+    w_ptr->update_playtime();
     q_ptr->comptime = w_ptr->play_time;
 }
 
@@ -316,88 +313,29 @@ void quest_discovery(QuestId q_idx)
         return;
     }
 
-    GAME_TEXT name[MAX_NLEN];
-    strcpy(name, (r_ptr->name.data()));
+#ifdef JP
+    const auto &name = r_ptr->name;
+#else
+    const auto &name = (q_num != 1) ? pluralize(r_ptr->name) : r_ptr->name;
+#endif
 
     msg_print(find_quest_list[rand_range(0, 4)]);
     msg_print(nullptr);
 
     if (q_num != 1) {
-#ifdef JP
-#else
-        plural_aux(name);
-#endif
-        msg_format(_("注意しろ！この階は%d体の%sによって守られている！", "Be warned, this level is guarded by %d %s!"), q_num, name);
+        msg_format(_("注意しろ！この階は%d体の%sによって守られている！", "Be warned, this level is guarded by %d %s!"), q_num, name.data());
         return;
     }
 
     bool is_random_quest_skipped = r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
     is_random_quest_skipped &= r_ptr->mob_num == 0;
     if (!is_random_quest_skipped) {
-        msg_format(_("注意せよ！この階は%sによって守られている！", "Beware, this level is protected by %s!"), name);
+        msg_format(_("注意せよ！この階は%sによって守られている！", "Beware, this level is protected by %s!"), name.data());
         return;
     }
 
     msg_print(_("この階は以前は誰かによって守られていたようだ…。", "It seems that this level was protected by someone before..."));
     record_quest_final_status(q_ptr, 0, QuestStatusType::FINISHED);
-}
-
-/*!
- * @brief 新しく入ったダンジョンの階層に固定されている一般のクエストを探し出しIDを返す。
- * / Hack -- Check if a level is a "quest" level
- * @param player_ptr プレイヤーへの参照ポインタ
- * @param level 検索対象になる階
- * @return クエストIDを返す。該当がない場合0を返す。
- */
-QuestId quest_number(const FloorType &floor, DEPTH level)
-{
-    const auto &quest_list = QuestList::get_instance();
-    if (inside_quest(floor.quest_number)) {
-        return floor.quest_number;
-    }
-
-    for (const auto &[q_idx, quest] : quest_list) {
-        if (quest.status != QuestStatusType::TAKEN) {
-            continue;
-        }
-
-        auto depth_quest = (quest.type == QuestKindType::KILL_LEVEL);
-        depth_quest &= !(quest.flags & QUEST_FLAG_PRESET);
-        depth_quest &= (quest.level == level);
-        depth_quest &= (quest.dungeon == floor.dungeon_idx);
-        if (depth_quest) {
-            return q_idx;
-        }
-    }
-
-    return random_quest_number(floor, level);
-}
-
-/*!
- * @brief 新しく入ったダンジョンの階層に固定されているランダムクエストを探し出しIDを返す。
- * @param player_ptr プレイヤーへの参照ポインタ
- * @param level 検索対象になる階
- * @return クエストIDを返す。該当がない場合0を返す。
- */
-QuestId random_quest_number(const FloorType &floor, DEPTH level)
-{
-    if (floor.dungeon_idx != DUNGEON_ANGBAND) {
-        return QuestId::NONE;
-    }
-
-    const auto &quest_list = QuestList::get_instance();
-    for (auto q_idx : EnumRange(QuestId::RANDOM_QUEST1, QuestId::RANDOM_QUEST10)) {
-        const auto &quest = quest_list[q_idx];
-        auto is_random_quest = (quest.type == QuestKindType::RANDOM);
-        is_random_quest &= (quest.status == QuestStatusType::TAKEN);
-        is_random_quest &= (quest.level == level);
-        is_random_quest &= (quest.dungeon == DUNGEON_ANGBAND);
-        if (is_random_quest) {
-            return q_idx;
-        }
-    }
-
-    return QuestId::NONE;
 }
 
 /*!
@@ -430,7 +368,7 @@ void leave_quest_check(PlayerType *player_ptr)
         q_ptr->get_reward().gen_flags.reset(ItemGenerationTraitType::QUESTITEM);
         break;
     case QuestKindType::RANDOM:
-        monraces_info[q_ptr->r_idx].flags1 &= ~(RF1_QUESTOR);
+        monraces_info[q_ptr->r_idx].misc_flags.reset(MonsterMiscType::QUESTOR);
         prepare_change_floor_mode(player_ptr, CFM_NO_RETURN);
         break;
     default:
@@ -470,7 +408,7 @@ void leave_tower_check(PlayerType *player_ptr)
     }
     tower1.status = QuestStatusType::FAILED;
     tower1.complev = player_ptr->lev;
-    update_playtime();
+    w_ptr->update_playtime();
     tower1.comptime = w_ptr->play_time;
 }
 
@@ -506,7 +444,7 @@ void do_cmd_quest(PlayerType *player_ptr)
     }
 
     msg_print(_("ここにはクエストへの入口があります。", "There is an entry of a quest."));
-    if (!get_check(_("クエストに入りますか？", "Do you enter? "))) {
+    if (!input_check(_("クエストに入りますか？", "Do you enter? "))) {
         return;
     }
     if (is_echizen(player_ptr)) {

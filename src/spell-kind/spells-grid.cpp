@@ -1,4 +1,4 @@
-﻿#include "spell-kind/spells-grid.h"
+#include "spell-kind/spells-grid.h"
 #include "dungeon/quest.h"
 #include "floor/cave.h"
 #include "floor/floor-object.h"
@@ -8,10 +8,12 @@
 #include "grid/feature.h"
 #include "grid/grid.h"
 #include "grid/stair.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 
@@ -70,11 +72,11 @@ void stair_creation(PlayerType *player_ptr)
 
     bool down = true;
     auto &floor = *player_ptr->current_floor_ptr;
-    if (inside_quest(quest_number(floor, floor.dun_level)) || (floor.dun_level >= floor.get_dungeon_definition().maxdepth)) {
+    if (inside_quest(floor.get_quest_id()) || (floor.dun_level >= floor.get_dungeon_definition().maxdepth)) {
         down = false;
     }
 
-    if (!floor.dun_level || (!up && !down) || (inside_quest(floor.quest_number) && QuestType::is_fixed(floor.quest_number)) || floor.inside_arena || player_ptr->phase_out) {
+    if (!floor.dun_level || (!up && !down) || (floor.is_in_quest() && QuestType::is_fixed(floor.quest_number)) || floor.inside_arena || AngbandSystem::get_instance().is_phase_out()) {
         msg_print(_("効果がありません！", "There is no effect!"));
         return;
     }
@@ -88,7 +90,7 @@ void stair_creation(PlayerType *player_ptr)
     saved_floor_type *sf_ptr;
     sf_ptr = get_sf_ptr(player_ptr->floor_id);
     if (!sf_ptr) {
-        player_ptr->floor_id = get_new_floor_id(player_ptr);
+        player_ptr->floor_id = get_unused_floor_id(player_ptr);
         sf_ptr = get_sf_ptr(player_ptr->floor_id);
     }
 
@@ -131,7 +133,7 @@ void stair_creation(PlayerType *player_ptr)
             }
         }
     } else {
-        dest_floor_id = get_new_floor_id(player_ptr);
+        dest_floor_id = get_unused_floor_id(player_ptr);
         if (up) {
             sf_ptr->upper_floor_id = dest_floor_id;
         } else {

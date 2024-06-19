@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 呪術の処理実装 / Hex code
  * @date 2014/01/14
  * @author
@@ -26,7 +26,6 @@
 #include "object-hook/hook-armor.h"
 #include "object/item-tester-hooker.h"
 #include "object/item-use-flags.h"
-#include "object/object-flags.h"
 #include "player/attack-defense-types.h"
 #include "player/player-skill.h"
 #include "player/player-status.h"
@@ -164,22 +163,20 @@ std::optional<std::string> do_hex_spell(PlayerType *player_ptr, spell_hex_type s
         }
 
         if (cast) {
-            const auto q = _("どれを呪いますか？", "Which weapon do you curse?");
-            const auto s = _("武器を装備していない。", "You're not wielding a weapon.");
-            short item;
-            auto *o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP), FuncItemTester(&ItemEntity::is_melee_weapon));
+            constexpr auto q = _("どれを呪いますか？", "Which weapon do you curse?");
+            constexpr auto s = _("武器を装備していない。", "You're not wielding a weapon.");
+            short i_idx;
+            auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, (USE_EQUIP), FuncItemTester(&ItemEntity::is_melee_weapon));
             if (o_ptr == nullptr) {
                 return "";
             }
 
             const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY);
-            auto f = object_flags(o_ptr);
-
-            if (!get_check(format(_("本当に %s を呪いますか？", "Do you curse %s, really？"), item_name.data()))) {
+            if (!input_check(format(_("本当に %s を呪いますか？", "Do you curse %s, really?"), item_name.data()))) {
                 return "";
             }
 
-            if (!one_in_(3) && (o_ptr->is_fixed_or_random_artifact() || f.has(TR_BLESSED))) {
+            if (!one_in_(3) && (o_ptr->is_fixed_or_random_artifact() || o_ptr->get_flags().has(TR_BLESSED))) {
                 msg_format(_("%s は呪いを跳ね返した。", "%s resists the effect."), item_name.data());
                 if (one_in_(3)) {
                     if (o_ptr->to_d > 0) {
@@ -518,23 +515,21 @@ std::optional<std::string> do_hex_spell(PlayerType *player_ptr, spell_hex_type s
             return _("装備している防具に呪いをかける。", "Curse a piece of armour that you are wielding.");
         }
         if (cast) {
-            const auto q = _("どれを呪いますか？", "Which piece of armour do you curse?");
-            const auto s = _("防具を装備していない。", "You're not wearing any armor.");
-            OBJECT_IDX item;
-            auto *o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP), FuncItemTester(&ItemEntity::is_protector));
+            constexpr auto q = _("どれを呪いますか？", "Which piece of armour do you curse?");
+            constexpr auto s = _("防具を装備していない。", "You're not wearing any armor.");
+            short i_idx;
+            auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, (USE_EQUIP), FuncItemTester(&ItemEntity::is_protector));
             if (!o_ptr) {
                 return "";
             }
 
-            o_ptr = &player_ptr->inventory_list[item];
+            o_ptr = &player_ptr->inventory_list[i_idx];
             const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY);
-            auto f = object_flags(o_ptr);
-
-            if (!get_check(format(_("本当に %s を呪いますか？", "Do you curse %s, really？"), item_name.data()))) {
+            if (!input_check(format(_("本当に %s を呪いますか？", "Do you curse %s, really?"), item_name.data()))) {
                 return "";
             }
 
-            if (!one_in_(3) && (o_ptr->is_fixed_or_random_artifact() || f.has(TR_BLESSED))) {
+            if (!one_in_(3) && (o_ptr->is_fixed_or_random_artifact() || o_ptr->get_flags().has(TR_BLESSED))) {
                 msg_format(_("%s は呪いを跳ね返した。", "%s resists the effect."), item_name.data());
                 if (one_in_(3)) {
                     if (o_ptr->to_d > 0) {
@@ -745,22 +740,16 @@ std::optional<std::string> do_hex_spell(PlayerType *player_ptr, spell_hex_type s
             return _("呪われた装備品の呪いを吸収して魔力を回復する。", "Drains curse on your equipment and heals SP a little.");
         }
         if (cast) {
-            OBJECT_IDX item;
-            concptr s, q;
-            ItemEntity *o_ptr;
-
-            q = _("どの装備品から吸収しますか？", "Which cursed equipment do you drain mana from?");
-            s = _("呪われたアイテムを装備していない。", "You have no cursed equipment.");
-
-            o_ptr = choose_object(player_ptr, &item, q, s, (USE_EQUIP), FuncItemTester(&ItemEntity::is_cursed));
+            constexpr auto q = _("どの装備品から吸収しますか？", "Which cursed equipment do you drain mana from?");
+            constexpr auto s = _("呪われたアイテムを装備していない。", "You have no cursed equipment.");
+            short i_idx;
+            auto *o_ptr = choose_object(player_ptr, &i_idx, q, s, (USE_EQUIP), FuncItemTester(&ItemEntity::is_cursed));
             if (!o_ptr) {
                 return "";
             }
 
-            auto f = object_flags(o_ptr);
-
             player_ptr->csp += (player_ptr->lev / 5) + randint1(player_ptr->lev / 5);
-            if (f.has(TR_TY_CURSE) || o_ptr->curse_flags.has(CurseTraitType::TY_CURSE)) {
+            if (o_ptr->get_flags().has(TR_TY_CURSE) || o_ptr->curse_flags.has(CurseTraitType::TY_CURSE)) {
                 player_ptr->csp += randint1(5);
             }
             if (player_ptr->csp > player_ptr->msp) {
@@ -852,7 +841,7 @@ std::optional<std::string> do_hex_spell(PlayerType *player_ptr, spell_hex_type s
                     if (dir == 5) {
                         continue;
                     }
-                    if (floor_ptr->grid_array[dy][dx].m_idx) {
+                    if (floor_ptr->grid_array[dy][dx].has_monster()) {
                         flag = true;
                     }
                 }

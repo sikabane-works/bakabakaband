@@ -1,4 +1,4 @@
-﻿#include "load/dungeon-loader.h"
+#include "load/dungeon-loader.h"
 #include "dungeon/quest.h"
 #include "floor/floor-save-util.h"
 #include "floor/floor-save.h"
@@ -7,7 +7,6 @@
 #include "load/load-util.h"
 #include "load/old/load-v1-5-0.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "save/floor-writer.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-info.h"
@@ -52,7 +51,7 @@ static errr rd_dungeon(PlayerType *player_ptr)
 
         for (int i = 0; i < num; i++) {
             saved_floor_type *sf_ptr = &saved_floors[i];
-            if (!sf_ptr->floor_id) {
+            if (!is_saved_floor(sf_ptr)) {
                 continue;
             }
             if (rd_byte() != 0) {
@@ -128,7 +127,7 @@ errr restore_dungeon(PlayerType *player_ptr)
     if (player_ptr->is_dead) {
         const auto &quest_list = QuestList::get_instance();
         for (auto q_idx : EnumRange(QuestId::RANDOM_QUEST1, QuestId::RANDOM_QUEST10)) {
-            reset_bits(monraces_info[quest_list[q_idx].r_idx].flags1, RF1_QUESTOR);
+            monraces_info[quest_list[q_idx].r_idx].misc_flags.reset(MonsterMiscType::QUESTOR);
         }
 
         return 0;

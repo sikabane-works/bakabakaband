@@ -1,4 +1,4 @@
-﻿#include "world/world-object.h"
+#include "world/world-object.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "object-enchant/item-apply-magic.h"
 #include "object/tval-types.h"
@@ -24,14 +24,14 @@
  */
 OBJECT_IDX o_pop(FloorType *floor_ptr)
 {
-    if (floor_ptr->o_max < w_ptr->max_o_idx) {
-        OBJECT_IDX i = floor_ptr->o_max;
+    if (floor_ptr->o_max < MAX_FLOOR_ITEMS) {
+        const auto i = floor_ptr->o_max;
         floor_ptr->o_max++;
         floor_ptr->o_cnt++;
         return i;
     }
 
-    for (OBJECT_IDX i = 1; i < floor_ptr->o_max; i++) {
+    for (short i = 1; i < floor_ptr->o_max; i++) {
         if (floor_ptr->o_list[i].is_valid()) {
             continue;
         }

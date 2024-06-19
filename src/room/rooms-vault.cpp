@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief Vaultの生成処理
  * @date 2018/09/11
  * @author deskull
@@ -319,7 +319,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
 {
     POSITION dx, dy, x, y, i, j;
     concptr t;
-    grid_type *g_ptr;
+    Grid *g_ptr;
     POSITION ymax = v_ptr->hgt;
     POSITION xmax = v_ptr->wid;
     concptr data = v_ptr->text.c_str();
@@ -402,7 +402,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
                 if (randint0(100) < 75) {
                     place_object(player_ptr, y, x, 0L);
                 } else {
-                    place_trap(player_ptr, y, x);
+                    place_trap(floor_ptr, y, x);
                 }
                 break;
 
@@ -436,7 +436,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
 
                 /* Trap */
             case '^':
-                place_trap(player_ptr, y, x);
+                place_trap(floor_ptr, y, x);
                 break;
 
                 /* Black market in a dungeon */
@@ -561,7 +561,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
             switch (*t) {
             case '&': {
                 floor_ptr->monster_level = floor_ptr->base_level + 5;
-                place_monster(player_ptr, y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
+                place_random_monster(player_ptr, y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
                 floor_ptr->monster_level = floor_ptr->base_level;
                 break;
             }
@@ -569,7 +569,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
             /* Meaner monster */
             case '@': {
                 floor_ptr->monster_level = floor_ptr->base_level + 11;
-                place_monster(player_ptr, y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
+                place_random_monster(player_ptr, y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
                 floor_ptr->monster_level = floor_ptr->base_level;
                 break;
             }
@@ -577,7 +577,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
             /* Meaner monster, plus treasure */
             case '9': {
                 floor_ptr->monster_level = floor_ptr->base_level + 9;
-                place_monster(player_ptr, y, x, PM_ALLOW_SLEEP);
+                place_random_monster(player_ptr, y, x, PM_ALLOW_SLEEP);
                 floor_ptr->monster_level = floor_ptr->base_level;
                 floor_ptr->object_level = floor_ptr->base_level + 7;
                 place_object(player_ptr, y, x, AM_GOOD);
@@ -588,7 +588,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
             /* Nasty monster and treasure */
             case '8': {
                 floor_ptr->monster_level = floor_ptr->base_level + 40;
-                place_monster(player_ptr, y, x, PM_ALLOW_SLEEP);
+                place_random_monster(player_ptr, y, x, PM_ALLOW_SLEEP);
                 floor_ptr->monster_level = floor_ptr->base_level;
                 floor_ptr->object_level = floor_ptr->base_level + 20;
                 place_object(player_ptr, y, x, AM_GOOD | AM_GREAT);
@@ -600,7 +600,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
             case ',': {
                 if (randint0(100) < 50) {
                     floor_ptr->monster_level = floor_ptr->base_level + 3;
-                    place_monster(player_ptr, y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
+                    place_random_monster(player_ptr, y, x, (PM_ALLOW_SLEEP | PM_ALLOW_GROUP));
                     floor_ptr->monster_level = floor_ptr->base_level;
                 }
                 if (randint0(100) < 50) {

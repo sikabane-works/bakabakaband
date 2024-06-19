@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 落馬処理
  * @date 2020/05/31
  * @author Hourier
@@ -9,7 +9,6 @@
 #include "core/window-redrawer.h"
 #include "floor/cave.h"
 #include "floor/geometry.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "monster-attack/monster-attack-player.h"
 #include "monster-race/monster-race.h"
@@ -25,6 +24,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-checker.h"
 #include "view/display-messages.h"
 
@@ -92,7 +92,7 @@ bool process_fall_off_horse(PlayerType *player_ptr, int dam, bool force)
     POSITION sx = 0;
     int sn = 0;
     auto *m_ptr = &player_ptr->current_floor_ptr->m_list[player_ptr->riding];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
 
     if (!player_ptr->riding || player_ptr->wild_mode) {
         return false;
@@ -108,10 +108,10 @@ bool process_fall_off_horse(PlayerType *player_ptr, int dam, bool force)
             POSITION y = player_ptr->y + ddy_ddd[i];
             POSITION x = player_ptr->x + ddx_ddd[i];
 
-            grid_type *g_ptr;
+            Grid *g_ptr;
             g_ptr = &player_ptr->current_floor_ptr->grid_array[y][x];
 
-            if (g_ptr->m_idx) {
+            if (g_ptr->has_monster()) {
                 continue;
             }
 

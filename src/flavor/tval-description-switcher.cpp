@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 個々のアイテム種別について、未鑑定名/鑑定後の正式な名前を取得する処理
  * @date 2020/07/07
  * @author Hourier
@@ -15,12 +15,12 @@
 #include "system/baseitem-info.h"
 #include "system/item-entity.h"
 #include "system/monster-race-info.h"
+#include "system/terrain-type-definition.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
 
 #ifdef JP
 #else
-#include "monster-race/race-flags1.h"
 #include "player-info/class-info.h"
 #endif
 
@@ -38,7 +38,7 @@ static std::pair<std::string, std::string> describe_monster_ball(const ItemEntit
     }
 
 #ifdef JP
-    std::string modstr = format(" (%s)", r_ptr->name.data());
+    const auto modstr = format(" (%s)", r_ptr->name.data());
 #else
     std::string modstr;
     if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
@@ -86,8 +86,8 @@ static std::pair<std::string, std::string> describe_corpse(const ItemEntity &ite
 
 static std::pair<std::string, std::string> describe_trap(const ItemEntity &item)
 {
-    TerrainType *f_ptr = &terrains_info[item.pval];
-    const auto &modstr = f_ptr->name.c_str();
+    auto &terrain = TerrainList::get_instance()[item.pval];
+    const auto &modstr = terrain.name.c_str();
 #ifdef JP
     const auto basename = "#%";
 #else

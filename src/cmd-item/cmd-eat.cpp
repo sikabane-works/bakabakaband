@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief プレイヤーの食べるコマンド実装
  * @date 2018/09/07
  * @author deskull
@@ -15,7 +15,6 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags9.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-hook/hook-expendable.h"
 #include "object/item-tester-hooker.h"
@@ -140,121 +139,121 @@ static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr
 
     MonsterRaceInfo *r_ptr = &monraces_info[i2enum<MonsterRaceId, int>(o_ptr->pval)];
 
-    if (r_ptr->flags9 & RF9_EAT_BLIND) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::BLIND)) {
         BadStatusSetter(player_ptr).mod_blindness(200 + randint1(200));
     }
 
-    if (r_ptr->flags9 & RF9_EAT_CONF) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::CONF)) {
         BadStatusSetter(player_ptr).mod_confusion(200 + randint1(200));
     }
 
-    if (r_ptr->flags9 & RF9_EAT_MANA) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::MANA)) {
         restore_mana(player_ptr, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_NEXUS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::NEXUS)) {
         do_poly_self(player_ptr);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_SLEEP) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::SLEEP)) {
         if (!player_ptr->free_act) {
             BadStatusSetter(player_ptr).set_paralysis(10 + randint1(10));
         }
     }
 
-    if (r_ptr->flags9 & RF9_EAT_BERSERKER) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::BERSERKER)) {
         set_shero(player_ptr, player_ptr->shero + randint1(10) + 10, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_ACIDIC) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::ACIDIC)) {
     }
 
-    if (r_ptr->flags9 & RF9_EAT_SPEED) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::SPEED)) {
         (void)set_acceleration(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_CURE) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::CURE)) {
         true_healing(player_ptr, 50);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_FIRE_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::FIRE_RES)) {
         set_oppose_fire(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_COLD_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::COLD_RES)) {
         set_oppose_cold(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_ELEC_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::ELEC_RES)) {
         set_oppose_elec(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_POIS_RES) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::POIS_RES)) {
         set_oppose_pois(player_ptr, randint1(20) + 20, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_INSANITY) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::INSANITY)) {
         sanity_blast(player_ptr, NULL, false);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_DRAIN_EXP) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::DRAIN_EXP)) {
     }
 
-    if (r_ptr->flags9 & RF9_EAT_POISONOUS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::POISONOUS)) {
         if (!(has_resist_pois(player_ptr) || is_oppose_pois(player_ptr))) {
             (void)BadStatusSetter(player_ptr).mod_poison(10 + randint1(15));
         }
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_STR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_STR)) {
         do_inc_stat(player_ptr, A_STR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_INT) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_INT)) {
         do_inc_stat(player_ptr, A_INT);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_WIS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_WIS)) {
         do_inc_stat(player_ptr, A_WIS);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_DEX) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_DEX)) {
         do_inc_stat(player_ptr, A_DEX);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_CON) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_CON)) {
         do_inc_stat(player_ptr, A_CON);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_GIVE_CHR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::GIVE_CHR)) {
         do_inc_stat(player_ptr, A_CHR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_STR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_STR)) {
         do_dec_stat(player_ptr, A_STR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_INT) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_INT)) {
         do_dec_stat(player_ptr, A_INT);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_WIS) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_WIS)) {
         do_dec_stat(player_ptr, A_WIS);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_DEX) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_DEX)) {
         do_dec_stat(player_ptr, A_DEX);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_CON) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_CON)) {
         do_dec_stat(player_ptr, A_CON);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_LOSE_CHR) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::LOSE_CHR)) {
         do_dec_stat(player_ptr, A_CHR);
     }
 
-    if (r_ptr->flags9 & RF9_EAT_DRAIN_MANA) {
+    if (r_ptr->meat_feed_flags.has(MonsterFeedType::DRAIN_MANA)) {
         player_ptr->csp -= 30;
         if (player_ptr->csp < 0) {
             player_ptr->csp = 0;
@@ -483,17 +482,17 @@ static bool exe_eat_food_type_object(PlayerType *player_ptr, const BaseitemKey &
  * @brief 魔法道具のチャージをの食料として食べたときの効果を発動
  * @param player_ptr プレイヤー情報への参照ポインタ
  * @param o_ptr 食べるオブジェクト
- * @param inventory オブジェクトのインベントリ番号
+ * @param i_idx オブジェクトのインベントリ番号
  * @return 食べようとしたらTRUE、しなかったらFALSE
  */
-static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o_ptr, short inventory)
+static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o_ptr, short i_idx)
 {
     if (!o_ptr->is_wand_staff() || (PlayerRace(player_ptr).food() != PlayerRaceFoodType::MANA)) {
         return false;
     }
 
     const auto is_staff = o_ptr->bi_key.tval() == ItemKindType::STAFF;
-    if (is_staff && (inventory < 0) && (o_ptr->number > 1)) {
+    if (is_staff && (i_idx < 0) && (o_ptr->number > 1)) {
         msg_print(_("まずは杖を拾わなければ。", "You must first pick up the staffs."));
         return true;
     }
@@ -517,7 +516,7 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
     set_food(player_ptr, player_ptr->food + 5000);
 
     /* XXX Hack -- unstack if necessary */
-    if (is_staff && (inventory >= 0) && (o_ptr->number > 1)) {
+    if (is_staff && (i_idx >= 0) && (o_ptr->number > 1)) {
         auto item = *o_ptr;
 
         /* Modify quantity */
@@ -528,14 +527,14 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
 
         /* Unstack the used item */
         o_ptr->number--;
-        inventory = store_item_to_inventory(player_ptr, &item);
+        i_idx = store_item_to_inventory(player_ptr, &item);
         msg_format(_("杖をまとめなおした。", "You unstack your staff."));
     }
 
-    if (inventory >= 0) {
-        inven_item_charges(player_ptr->inventory_list[inventory]);
+    if (i_idx >= 0) {
+        inven_item_charges(player_ptr->inventory_list[i_idx]);
     } else {
-        floor_item_charges(player_ptr->current_floor_ptr, 0 - inventory);
+        floor_item_charges(player_ptr->current_floor_ptr, 0 - i_idx);
     }
 
     static constexpr auto flags = {
@@ -547,10 +546,10 @@ static bool exe_eat_charge_of_magic_device(PlayerType *player_ptr, ItemEntity *o
 }
 
 /*!
- * @brief 実際にアイテムを食おうとするコマンドのサブルーチン
- * @param item 食べるオブジェクトの所持品ID
+ * @brief 食料を食べるコマンドのサブルーチン
+ * @param i_idx 食べるオブジェクトの所持品ID
  */
-void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
+void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 {
     if (music_singing_any(player_ptr)) {
         stop_singing(player_ptr);
@@ -561,7 +560,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         (void)spell_hex.stop_all_spells();
     }
 
-    auto *o_ptr = ref_item(player_ptr, item);
+    auto *o_ptr = ref_item(player_ptr, i_idx);
 
     sound(SOUND_EAT);
 
@@ -604,7 +603,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     /* We have tried it */
     const auto tval = bi_key.tval();
     if (tval == ItemKindType::FOOD) {
-        object_tried(o_ptr);
+        o_ptr->mark_as_tried();
     }
 
     /* The player is now aware of the object */
@@ -621,7 +620,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     rfu.set_flags(flags_swrf);
 
     /* Undeads drain recharge of magic device */
-    if (exe_eat_charge_of_magic_device(player_ptr, o_ptr, item)) {
+    if (exe_eat_charge_of_magic_device(player_ptr, o_ptr, i_idx)) {
         rfu.set_flags(flags_srf);
         return;
     }
@@ -631,17 +630,14 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     /* Balrogs change humanoid corpses to energy */
     const auto corpse_r_idx = i2enum<MonsterRaceId>(o_ptr->pval);
     const auto search = angband_strchr("pht", monraces_info[corpse_r_idx].d_char);
-    if (food_type == PlayerRaceFoodType::CORPSE && (bi_key == BaseitemKey(ItemKindType::CORPSE, SV_CORPSE)) && (search != nullptr)) {
+    if (food_type == PlayerRaceFoodType::CORPSE && o_ptr->is_corpse() && (search != nullptr)) {
         const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
         msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%s^ is burnt to ashes.  You absorb its vitality!"), item_name.data());
         (void)set_food(player_ptr, PY_FOOD_MAX - 1);
 
         rfu.set_flags(flags_srf);
-        vary_item(player_ptr, item, -1);
-        return;
-    }
-
-    if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
+        ate = true;
+    } else if (PlayerRace(player_ptr).equals(PlayerRaceType::SKELETON)) {
         const auto sval = bi_key.sval();
         if ((sval != SV_FOOD_WAYBREAD) && (sval >= SV_FOOD_BISCUIT)) {
             ItemEntity forge;
@@ -681,11 +677,12 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
         if (bi_key == BaseitemKey(ItemKindType::FOOD, SV_FOOD_WAYBREAD)) {
             /* Waybread is always fully satisfying. */
             set_food(player_ptr, std::max<short>(player_ptr->food, PY_FOOD_MAX - 1));
-        } else {
+            ate = true;
+        } else if (bi_key.tval() == ItemKindType::FOOD) {
             /* Food can feed the player */
             (void)set_food(player_ptr, player_ptr->food + o_ptr->pval);
+            ate = true;
         }
-        ate = true;
     }
     if (!ate) {
         msg_print("流石に食べるのを躊躇した。");
@@ -695,7 +692,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
     player_ptr->plus_incident(INCIDENT::EAT, 1);
 
     rfu.set_flags(flags_srf);
-    vary_item(player_ptr, item, -1);
+    vary_item(player_ptr, i_idx, -1);
 }
 
 /*!
@@ -704,17 +701,13 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX item)
  */
 void do_cmd_eat_food(PlayerType *player_ptr)
 {
-    OBJECT_IDX item;
-    concptr q, s;
-
     PlayerClass(player_ptr).break_samurai_stance({ SamuraiStanceType::MUSOU, SamuraiStanceType::KOUKIJIN });
-
-    q = _("どれを食べますか? ", "Eat which item? ");
-    s = _("食べ物がない。", "You have nothing to eat.");
-
-    if (!choose_object(player_ptr, &item, q, s, (USE_INVEN | USE_FLOOR))) {
+    constexpr auto q = _("どれを食べますか? ", "Eat which item? ");
+    constexpr auto s = _("食べ物がない。", "You have nothing to eat.");
+    short i_idx;
+    if (!choose_object(player_ptr, &i_idx, q, s, (USE_INVEN | USE_FLOOR), FuncItemTester(item_tester_hook_eatable, player_ptr))) {
         return;
     }
 
-    exe_eat_food(player_ptr, item);
+    exe_eat_food(player_ptr, i_idx);
 }

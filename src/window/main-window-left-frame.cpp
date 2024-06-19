@@ -1,4 +1,5 @@
-﻿#include "window/main-window-left-frame.h"
+#include "window/main-window-left-frame.h"
+#include "dungeon/quest.h"
 #include "game-option/special-options.h"
 #include "game-option/text-display-options.h"
 #include "market/arena-info-table.h"
@@ -8,6 +9,7 @@
 #include "player-info/class-info.h"
 #include "player-info/mimic-info-table.h"
 #include "player/player-status-table.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
@@ -59,8 +61,7 @@ void print_title(PlayerType *player_ptr)
  */
 void print_level(PlayerType *player_ptr)
 {
-    char tmp[32];
-    sprintf(tmp, "%5d", player_ptr->lev);
+    const auto tmp = format("%5d", player_ptr->lev);
     if (player_ptr->lev >= player_ptr->max_plv) {
         put_str(_("レベル ", "LEVEL "), ROW_LEVEL, 0);
         c_put_str(TERM_L_GREEN, tmp, ROW_LEVEL, COL_LEVEL + 7);
@@ -192,9 +193,7 @@ void print_depth(PlayerType *player_ptr)
 {
     char depths[32];
     TERM_COLOR attr = TERM_WHITE;
-
-    TERM_LEN wid, hgt;
-    term_get_size(&wid, &hgt);
+    const auto &[wid, hgt] = term_get_size();
     TERM_LEN col_depth = wid + COL_DEPTH;
     TERM_LEN row_depth = hgt + ROW_DEPTH;
 
@@ -205,7 +204,7 @@ void print_depth(PlayerType *player_ptr)
         return;
     }
 
-    if (inside_quest(floor_ptr->quest_number) && !floor_ptr->dungeon_idx) {
+    if (floor_ptr->is_in_quest() && !floor_ptr->dungeon_idx) {
         c_prt(attr, format("%7s", _("地上", "Quest")), row_depth, col_depth);
         return;
     }
@@ -304,8 +303,9 @@ static void print_health_monster_in_arena_for_wizard(PlayerType *player_ptr)
 
         auto &monster = player_ptr->current_floor_ptr->m_list[monster_list_index];
         if (MonsterRace(monster.r_idx).is_valid()) {
-            term_putstr(col - 2, row + row_offset, 2, monraces_info[monster.r_idx].x_attr,
-                format("%c", monraces_info[monster.r_idx].x_char));
+            const auto &monrace = monster.get_monrace();
+            term_putstr(col - 2, row + row_offset, 2, monrace.x_attr,
+                format("%c", monrace.x_char));
             term_putstr(col - 1, row + row_offset, 5, TERM_WHITE, format("%5d", monster.hp));
             term_putstr(col + 5, row + row_offset, 6, TERM_WHITE, format("%5d", monster.max_maxhp));
         }
@@ -347,36 +347,6 @@ static std::vector<condition_layout_info> get_condition_layout_info(const Monste
 }
 
 /*!
- * @brief 対象のモンスターの状態（無敵、起きているか、HPの割合）に応じてHPバーの色を算出する
- * @param monster 対象のモンスター
- * @return HPバーの色
- */
-static TERM_COLOR get_monster_hp_point_bar_color(const MonsterEntity &monster)
-{
-    auto pct = monster.maxhp > 0 ? 100 * monster.hp / monster.maxhp : 0;
-
-    if (monster.is_invulnerable()) {
-        return TERM_WHITE;
-    }
-    if (monster.is_asleep()) {
-        return TERM_BLUE;
-    }
-    if (pct >= 100) {
-        return TERM_L_GREEN;
-    }
-    if (pct >= 60) {
-        return TERM_YELLOW;
-    }
-    if (pct >= 25) {
-        return TERM_ORANGE;
-    }
-    if (pct >= 10) {
-        return TERM_L_RED;
-    }
-    return TERM_RED;
-}
-
-/*!
  * @brief モンスターの体力ゲージを表示する
  * @param riding TRUEならば騎乗中のモンスターの体力、FALSEならターゲットモンスターの体力を表示する。表示位置は固定。
  * @details
@@ -408,7 +378,7 @@ void print_health(PlayerType *player_ptr, bool riding)
         col = COL_RIDING_INFO;
     } else {
         // ウィザードモードで闘技場観戦時の表示
-        if (w_ptr->wizard && player_ptr->phase_out) {
+        if (w_ptr->wizard && AngbandSystem::get_instance().is_phase_out()) {
             print_health_monster_in_arena_for_wizard(player_ptr);
             return;
         }
@@ -419,11 +389,10 @@ void print_health(PlayerType *player_ptr, bool riding)
         col = COL_INFO;
     }
 
-    const auto max_width = 12; // 表示幅]
-    TERM_LEN wid, hgt;
-    term_get_size(&wid, &hgt);
+    const auto max_width = 12; // 表示幅
+    const auto &[wid, hgt] = term_get_size();
     const auto extra_line_count = riding ? 0 : hgt - MAIN_TERM_MIN_ROWS;
-    for (auto y = row; y < row + extra_line_count - 2; ++y) {
+    for (auto y = row; y < row + extra_line_count + 1; ++y) {
         term_erase(col, y, max_width);
     }
 
@@ -438,12 +407,7 @@ void print_health(PlayerType *player_ptr, bool riding)
         return;
     }
 
-    // HPの割合計算
-    int pct2 = monster.maxhp > 0 ? 100L * monster.hp / monster.max_maxhp : 0;
-    int len = (pct2 < 10) ? 1 : (pct2 < 90) ? (pct2 / 10 + 1)
-                                            : 10;
-    auto hit_point_bar_color = get_monster_hp_point_bar_color(monster);
-
+    const auto &[hit_point_bar_color, len] = monster.get_hp_bar_data();
     term_putstr(col, row, max_width, TERM_WHITE, "[----------]");
     term_putstr(col + 1, row, len, hit_point_bar_color, "**********");
 
@@ -461,7 +425,7 @@ void print_health(PlayerType *player_ptr, bool riding)
         if (row_offset > extra_line_count) {
             break;
         }
-        if (col_offset + info.label.length() - 1 > max_width) { // 改行が必要かどうかチェック。length() - 1してるのは\0の分を文字数から取り除くため
+        if (col_offset + info.label.length() > max_width) { // 改行が必要かどうかチェック
             col_offset = 0;
             row_offset++;
         }

@@ -1,4 +1,4 @@
-﻿#include "info-reader/race-reader.h"
+#include "info-reader/race-reader.h"
 #include "alliance/alliance.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/parse-error-types.h"
@@ -21,27 +21,7 @@
  */
 static bool grab_one_basic_flag(MonsterRaceInfo *r_ptr, std::string_view what)
 {
-    if (info_grab_one_flag(r_ptr->flags1, r_info_flags1, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(r_ptr->flags2, r_info_flags2, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(r_ptr->flags3, r_info_flags3, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(r_ptr->flags7, r_info_flags7, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(r_ptr->flags8, r_info_flags8, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(r_ptr->flags9, r_info_flags9, what)) {
+    if (EnumClassFlagGroup<MonsterFeedType>::grab_one_flag(r_ptr->meat_feed_flags, r_info_meat_feed, what)) {
         return true;
     }
 
@@ -89,7 +69,13 @@ static bool grab_one_basic_flag(MonsterRaceInfo *r_ptr, std::string_view what)
         return true;
     }
 
-    msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
+    if (EnumClassFlagGroup<MonsterSpecialType>::grab_one_flag(r_ptr->special_flags, r_info_special_flags, what)) {
+        return true;
+    }
+    if (EnumClassFlagGroup<MonsterMiscType>::grab_one_flag(r_ptr->misc_flags, r_info_misc_flags, what)) {
+        return true;
+    }
+
     return false;
 }
 
@@ -158,17 +144,20 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
     } else if (tokens[0] == "D") {
         // D:text_ja
         // D:$text_en
-        if (tokens.size() < 2 || tokens[1].size() == 0) {
+        if (tokens.size() < 2 || buf.length() < 3) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
 #ifdef JP
-        if (tokens[1][0] == '$') {
+        if (buf[2] == '$') {
             return PARSE_ERROR_NONE;
         }
         r_ptr->text.append(buf.substr(2));
 #else
-        if (tokens[1][0] != '$') {
+        if (buf[2] != '$') {
             return PARSE_ERROR_NONE;
+        }
+        if (buf.length() == 3) {
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
         append_english_text(r_ptr->text, buf.substr(3));
 #endif
@@ -470,9 +459,17 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
                 r_ptr->dead_spawns.push_back({ num, deno, r_idx, ds, dn });
                 continue;
             }
-            if (!grab_one_basic_flag(r_ptr, f)) {
+
+            if (grab_one_basic_flag(r_ptr, f)) {
+                continue;
+            }
+
+            uint32_t sex;
+            if (!info_grab_one_const(sex, r_info_sex, f)) {
                 return PARSE_ERROR_INVALID_FLAG;
             }
+
+            r_ptr->sex = static_cast<MonsterSex>(sex);
         }
 
     } else if (tokens[0] == "S") {
@@ -516,6 +513,15 @@ errr parse_monraces_info(std::string_view buf, angband_header *)
         info_set_value(a_idx, tokens[1]);
         info_set_value(chance, tokens[2]);
         r_ptr->drop_artifacts.emplace_back(a_idx, chance);
+    } else if (tokens[0] == "X") {
+        if (tokens.size() < 2) {
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        }
+        uint32_t sex;
+        if (!info_grab_one_const(sex, r_info_sex, tokens[1])) {
+            return PARSE_ERROR_INVALID_FLAG;
+        }
+        r_ptr->sex = static_cast<MonsterSex>(sex);
     } else if (tokens[0] == "V") {
         // V:arena_odds
         if (tokens.size() < 2) {

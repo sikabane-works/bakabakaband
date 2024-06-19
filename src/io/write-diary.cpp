@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 日記へのメッセージ追加処理
  * @date 2020/03/08
  * @author Hourier
@@ -80,27 +80,30 @@ static bool open_diary_file(FILE **fff, bool *disable_diary)
  */
 static std::pair<QuestId, std::string> write_floor(const FloorType &floor)
 {
-    auto q_idx = quest_number(floor, floor.dun_level);
+    auto q_idx = floor.get_quest_id();
     if (!write_level) {
-        return make_pair(q_idx, std::string());
+        return std::make_pair(q_idx, std::string());
     }
 
     if (floor.inside_arena) {
-        return make_pair(q_idx, std::string(_("アリーナ:", "Arena:")));
-    } else if (!floor.dun_level) {
-        return make_pair(q_idx, std::string(_("地上:", "Surface:")));
-    } else if (inside_quest(q_idx) && QuestType::is_fixed(q_idx) && !(q_idx == QuestId::MELKO)) {
-        return make_pair(q_idx, std::string(_("クエスト:", "Quest:")));
-    } else {
-        char desc[40];
-        const auto &dungeon = floor.get_dungeon_definition();
-#ifdef JP
-        strnfmt(desc, sizeof(desc), "%d階(%s):", (int)floor.dun_level, dungeon.name.data());
-#else
-        strnfmt(desc, sizeof(desc), "%s L%d:", dungeon.name.data(), (int)floor.dun_level);
-#endif
-        return make_pair(q_idx, std::string(desc));
+        return std::make_pair(q_idx, std::string(_("アリーナ:", "Arena:")));
     }
+
+    if (!floor.dun_level) {
+        return std::make_pair(q_idx, std::string(_("地上:", "Surface:")));
+    }
+
+    if (inside_quest(q_idx) && QuestType::is_fixed(q_idx) && !(q_idx == QuestId::MELKO)) {
+        return std::make_pair(q_idx, std::string(_("クエスト:", "Quest:")));
+    }
+
+    const auto &dungeon = floor.get_dungeon_definition();
+#ifdef JP
+    const auto desc = format("%d階(%s):", floor.dun_level, dungeon.name.data());
+#else
+    const auto desc = format("%s L%d:", dungeon.name.data(), floor.dun_level);
+#endif
+    return std::make_pair(q_idx, desc);
 }
 
 /*!
@@ -171,11 +174,8 @@ static void write_diary_pet(FILE *fff, int num, std::string_view note)
  */
 int exe_write_diary_quest(PlayerType *player_ptr, DiaryKind dk, QuestId num)
 {
-    static bool disable_diary = false;
-
-    int day, hour, min;
-    extract_day_hour_min(player_ptr, &day, &hour, &min);
-
+    static auto disable_diary = false;
+    const auto &[day, hour, min] = w_ptr->extract_date_time(player_ptr->start_race);
     if (disable_diary) {
         return -1;
     }
@@ -189,15 +189,14 @@ int exe_write_diary_quest(PlayerType *player_ptr, DiaryKind dk, QuestId num)
     parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
     floor.quest_number = old_quest;
 
-    const auto [q_idx, note_level] = write_floor(floor);
+    const auto &[q_idx, note_level] = write_floor(floor);
 
     FILE *fff = nullptr;
     if (!open_diary_file(&fff, &disable_diary)) {
         return -1;
     }
 
-    bool do_level = true;
-
+    auto do_level = true;
     switch (dk) {
     case DiaryKind::FIX_QUEST_C: {
         if (any_bits(quest.flags, QUEST_FLAG_SILENT)) {
@@ -256,11 +255,8 @@ int exe_write_diary_quest(PlayerType *player_ptr, DiaryKind dk, QuestId num)
  */
 void exe_write_diary(PlayerType *player_ptr, DiaryKind dk, int num, std::string_view note)
 {
-    static bool disable_diary = false;
-
-    int day, hour, min;
-    extract_day_hour_min(player_ptr, &day, &hour, &min);
-
+    static auto disable_diary = false;
+    const auto &[day, hour, min] = w_ptr->extract_date_time(player_ptr->start_race);
     if (disable_diary) {
         return;
     }
@@ -271,7 +267,7 @@ void exe_write_diary(PlayerType *player_ptr, DiaryKind dk, int num, std::string_
     }
 
     const auto &floor = *player_ptr->current_floor_ptr;
-    const auto [q_idx, note_level] = write_floor(floor);
+    const auto &[q_idx, note_level] = write_floor(floor);
     auto do_level = true;
     switch (dk) {
     case DiaryKind::DIALY:

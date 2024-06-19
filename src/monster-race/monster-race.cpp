@@ -1,6 +1,5 @@
-﻿#include "monster-race/monster-race.h"
+#include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
 #include "monster-race/race-indice-types.h"
 #include "monster-race/race-resistance-mask.h"
 #include "system/monster-race-info.h"
@@ -102,7 +101,7 @@ int MonsterRace::calc_power() const
     const auto *r_ptr = &monraces_info[this->r_idx];
     auto num_resistances = EnumClassFlagGroup<MonsterResistanceType>(r_ptr->resistance_flags & RFR_EFF_IMMUNE_ELEMENT_MASK).count();
 
-    if (r_ptr->flags1 & RF1_FORCE_MAXHP) {
+    if (r_ptr->misc_flags.has(MonsterMiscType::FORCE_MAXHP)) {
         ret = r_ptr->hdice * r_ptr->hside * 2;
     } else {
         ret = r_ptr->hdice * (r_ptr->hside + 1);

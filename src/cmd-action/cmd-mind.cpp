@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 各職業の特殊技能実装 / Special magics
  * @date 2014/01/15
  * @author
@@ -168,7 +168,7 @@ static bool check_mind_hp_mp_sufficiency(PlayerType *player_ptr, cm_type *cm_ptr
         return false;
     }
 
-    return get_check(_("それでも挑戦しますか? ", "Attempt it anyway? "));
+    return input_check(_("それでも挑戦しますか? ", "Attempt it anyway? "));
 }
 
 static void decide_mind_chance(PlayerType *player_ptr, cm_type *cm_ptr)
@@ -230,12 +230,12 @@ static void check_mind_mindcrafter(PlayerType *player_ptr, cm_type *cm_ptr)
 
     if (cm_ptr->b < 45) {
         msg_print(_("あなたの頭は混乱した！", "Your brain is addled!"));
-        (void)bss.mod_confusion(randint1(8));
+        (void)bss.mod_confusion(randnum1<short>(8));
         return;
     }
 
     if (cm_ptr->b < 90) {
-        (void)bss.mod_stun(randint1(8));
+        (void)bss.mod_stun(randnum1<short>(8));
         return;
     }
 
@@ -359,8 +359,8 @@ static void mind_reflection(PlayerType *player_ptr, cm_type *cm_ptr)
     }
 
     player_ptr->csp = std::max(0, player_ptr->csp - cm_ptr->mana_cost);
-    msg_format(_("%sを集中しすぎて気を失ってしまった！", "You faint from the effort!"), cm_ptr->mind_explanation);
-    (void)BadStatusSetter(player_ptr).mod_paralysis(randint1(5 * oops + 1));
+    msg_print(_(format("%sを集中しすぎて気を失ってしまった！", cm_ptr->mind_explanation), "You faint from the effort!"));
+    (void)BadStatusSetter(player_ptr).mod_paralysis(randnum1<short>(5 * oops + 1));
     if (randint0(100) >= 50) {
         return;
     }
@@ -466,12 +466,12 @@ void do_cmd_mind_browse(PlayerType *player_ptr)
             return;
         }
 
-        term_erase(12, 21, 255);
-        term_erase(12, 20, 255);
-        term_erase(12, 19, 255);
-        term_erase(12, 18, 255);
-        term_erase(12, 17, 255);
-        term_erase(12, 16, 255);
+        term_erase(12, 21);
+        term_erase(12, 20);
+        term_erase(12, 19);
+        term_erase(12, 18);
+        term_erase(12, 17);
+        term_erase(12, 16);
         display_wrap_around(mind_tips[enum2i(use_mind)][n], 62, 17, 15);
 
         switch (use_mind) {

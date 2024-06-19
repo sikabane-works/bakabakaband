@@ -1,4 +1,4 @@
-﻿#include "object-enchant/others/apply-magic-lite.h"
+#include "object-enchant/others/apply-magic-lite.h"
 #include "artifact/random-art-generator.h"
 #include "inventory/inventory-slot-types.h"
 #include "object-enchant/object-ego.h"
@@ -18,10 +18,10 @@ LiteEnchanter::LiteEnchanter(PlayerType *player_ptr, ItemEntity *o_ptr, int powe
 
     switch (sval.value()) {
     case SV_LITE_TORCH:
-        o_ptr->fuel = randint1(FUEL_TORCH / 2);
+        o_ptr->fuel = randnum1<short>(FUEL_TORCH / 2);
         return;
     case SV_LITE_LANTERN:
-        o_ptr->fuel = randint1(FUEL_LAMP / 2);
+        o_ptr->fuel = randnum1<short>(FUEL_LAMP / 2);
         return;
     default:
         return;

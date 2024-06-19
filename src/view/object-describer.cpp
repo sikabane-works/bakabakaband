@@ -1,4 +1,4 @@
-﻿#include "view/object-describer.h"
+#include "view/object-describer.h"
 #include "cmd-action/cmd-spell.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
@@ -44,9 +44,9 @@ void inven_item_charges(const ItemEntity &item)
  * @param player_ptr プレイヤーへの参照ポインタ
  * @param item 残量を表示したいプレイヤーのアイテム所持スロット
  */
-void inven_item_describe(PlayerType *player_ptr, short item)
+void inven_item_describe(PlayerType *player_ptr, short i_idx)
 {
-    auto *o_ptr = &player_ptr->inventory_list[item];
+    auto *o_ptr = &player_ptr->inventory_list[i_idx];
     const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 #ifdef JP
     if (o_ptr->number <= 0) {
@@ -71,14 +71,14 @@ void display_koff(PlayerType *player_ptr)
     }
 
     for (auto y = 0; y < game_term->hgt; y++) {
-        term_erase(0, y, 255);
+        term_erase(0, y);
     }
 
     ItemEntity item;
     item.prep(player_ptr->tracking_bi_id);
     const auto item_name = describe_flavor(player_ptr, &item, (OD_OMIT_PREFIX | OD_NAME_ONLY | OD_STORE));
     term_putstr(0, 0, -1, TERM_WHITE, item_name);
-    const auto sval = item.bi_key.sval().value();
+    const auto sval = *item.bi_key.sval();
     const short use_realm = tval2realm(item.bi_key.tval());
 
     if (player_ptr->realm1 || player_ptr->realm2) {

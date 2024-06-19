@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 床のアイテムが自動拾いに一致するかどうかを調べる関数だけを格納したファイル
  * @date 2020/04/25
  * @author Hourier
@@ -11,7 +11,6 @@
 #include "autopick/autopick-util.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "object-enchant/item-feeling.h"
 #include "object-enchant/special-object-flags.h"
 #include "object-hook/hook-armor.h"
@@ -347,7 +346,7 @@ bool is_autopick_match(PlayerType *player_ptr, ItemEntity *o_ptr, const autopick
             return false;
         }
     } else {
-        if (angband_strstr(item_name.data(), entry.name.data()) == nullptr) {
+        if (!str_find(std::string(item_name), entry.name)) {
             return false;
         }
     }

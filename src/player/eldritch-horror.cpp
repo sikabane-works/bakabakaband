@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief エルドリッチホラー処理
  * @date 2020/06/07
  * @author Hourier
@@ -7,11 +7,9 @@
 #include "player/eldritch-horror.h"
 #include "core/stuff-handler.h"
 #include "locale/english.h"
+#include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/horror-descriptions.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
@@ -25,6 +23,7 @@
 #include "player/player-status.h"
 #include "status/bad-status-setter.h"
 #include "status/base-status.h"
+#include "system/angband-system.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
@@ -47,7 +46,7 @@ static void see_eldritch_horror(std::string_view m_name, MonsterRaceInfo *r_ptr)
 {
     const auto &horror_message = r_ptr->decide_horror_message();
     msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message.data(), m_name.data());
-    r_ptr->r_flags2 |= RF2_ELDRITCH_HORROR;
+    r_ptr->r_misc_flags.set(MonsterMiscType::ELDRITCH_HORROR);
 }
 
 /*!
@@ -59,7 +58,7 @@ static void feel_eldritch_horror(std::string_view desc, MonsterRaceInfo *r_ptr)
 {
     const auto &horror_message = r_ptr->decide_horror_message();
     msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), horror_message.data(), desc.data());
-    r_ptr->r_flags2 |= RF2_ELDRITCH_HORROR;
+    r_ptr->r_misc_flags.set(MonsterMiscType::ELDRITCH_HORROR);
 }
 
 static bool process_mod_hallucination(PlayerType *player_ptr, std::string_view m_name, const MonsterRaceInfo &monrace)
@@ -71,7 +70,7 @@ static bool process_mod_hallucination(PlayerType *player_ptr, std::string_view m
     msg_format(_("%s%sの顔を見てしまった！", "You behold the %s visage of %s!"), rand_choice(funny_desc).data(), m_name.data());
     if (one_in_(3)) {
         msg_print(rand_choice(funny_comments));
-        BadStatusSetter(player_ptr).mod_hallucination(randint1(monrace.level));
+        BadStatusSetter(player_ptr).mod_hallucination(randnum1<short>(monrace.level));
     }
 
     return true;
@@ -84,17 +83,17 @@ static bool process_mod_hallucination(PlayerType *player_ptr, std::string_view m
  */
 void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
 {
-    if (player_ptr->phase_out || !w_ptr->character_dungeon) {
+    if (AngbandSystem::get_instance().is_phase_out() || !w_ptr->character_dungeon) {
         return;
     }
 
     int power = 100;
     if (!necro && m_ptr) {
-        auto *r_ptr = &monraces_info[m_ptr->ap_r_idx];
+        auto *r_ptr = &m_ptr->get_appearance_monrace();
         const auto m_name = monster_desc(player_ptr, m_ptr, 0);
         power = r_ptr->level / 2;
         if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
-            if (r_ptr->flags1 & RF1_FRIENDS) {
+            if (r_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
                 power /= 2;
             }
         } else {
@@ -109,7 +108,7 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
             return;
         }
 
-        if (!(r_ptr->flags2 & RF2_ELDRITCH_HORROR)) {
+        if (r_ptr->misc_flags.has_not(MonsterMiscType::ELDRITCH_HORROR)) {
             return;
         }
 
@@ -143,7 +142,7 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
         }
     } else if (!necro) {
         get_mon_num_prep(player_ptr, get_nightmare, nullptr);
-        auto *r_ptr = &monraces_info[get_mon_num(player_ptr, 0, MAX_DEPTH, 0)];
+        auto *r_ptr = &monraces_info[get_mon_num(player_ptr, 0, MAX_DEPTH, PM_NONE)];
         power = r_ptr->level + 10;
         const auto &desc = r_ptr->name;
         get_mon_num_prep(player_ptr, nullptr, nullptr);
@@ -158,7 +157,7 @@ void sanity_blast(PlayerType *player_ptr, MonsterEntity *m_ptr, bool necro)
         m_name.append(desc);
 
         if (r_ptr->kind_flags.has_not(MonsterKindType::UNIQUE)) {
-            if (r_ptr->flags1 & RF1_FRIENDS) {
+            if (r_ptr->misc_flags.has(MonsterMiscType::HAS_FRIENDS)) {
                 power /= 2;
             }
         } else {

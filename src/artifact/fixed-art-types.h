@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 /*!
  * @file fixed-art-types.h
  * @brief 固定アーティファクトのハードコード処理用ID定義
@@ -6,6 +6,7 @@
 
 enum class FixedArtifactId : short {
     NONE = 0,
+    GALADRIEL_PHIAL = 1,
     JUDGE = 3,
     POWER = 13,
     CRIMSON = 16,

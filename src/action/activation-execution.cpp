@@ -1,11 +1,10 @@
-﻿/*!
+/*!
  * @file activation-execution.cpp
  * @brief アイテムの発動実行定義
  */
 
 #include "action/activation-execution.h"
 #include "action/action-limited.h"
-#include "artifact/artifact-info.h"
 #include "artifact/random-art-effects.h"
 #include "core/window-redrawer.h"
 #include "effect/attribute-types.h"
@@ -54,7 +53,6 @@
 #include "term/screen-processor.h"
 #include "timed-effect/player-confusion.h"
 #include "timed-effect/timed-effects.h"
-#include "util/quarks.h"
 #include "util/sort.h"
 #include "view/display-messages.h"
 #include "world/world.h"
@@ -71,9 +69,9 @@ static void decide_activation_level(ae_type *ae_ptr)
     }
 
     if (ae_ptr->o_ptr->is_random_artifact()) {
-        auto act_ptr = find_activation_info(ae_ptr->o_ptr);
-        if (act_ptr.has_value()) {
-            ae_ptr->lev = act_ptr.value()->level;
+        const auto it_activation = ae_ptr->o_ptr->find_activation_info();
+        if (it_activation != activation_info.end()) {
+            ae_ptr->lev = it_activation->level;
         }
 
         return;
@@ -167,28 +165,27 @@ static bool check_activation_conditions(PlayerType *player_ptr, ae_type *ae_ptr)
  */
 static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    auto tmp_act_ptr = find_activation_info(o_ptr);
-    if (!tmp_act_ptr.has_value()) {
+    const auto it_activation = o_ptr->find_activation_info();
+    if (it_activation == activation_info.end()) {
         msg_print("Activation information is not found.");
         return false;
     }
 
-    auto *act_ptr = tmp_act_ptr.value();
     const auto item_name = describe_flavor(player_ptr, o_ptr, OD_NAME_ONLY | OD_OMIT_PREFIX | OD_BASE_NAME);
-    if (!switch_activation(player_ptr, &o_ptr, act_ptr, item_name.data())) {
+    if (!switch_activation(player_ptr, &o_ptr, it_activation->index, item_name)) {
         return false;
     }
 
-    if (act_ptr->timeout.constant >= 0) {
-        o_ptr->timeout = (int16_t)act_ptr->timeout.constant;
-        if (act_ptr->timeout.dice > 0) {
-            o_ptr->timeout += randint1(act_ptr->timeout.dice);
+    if (it_activation->constant) {
+        o_ptr->timeout = static_cast<short>(*it_activation->constant);
+        if (it_activation->dice > 0) {
+            o_ptr->timeout += static_cast<short>(randint1(it_activation->dice));
         }
 
         return true;
     }
 
-    switch (act_ptr->index) {
+    switch (it_activation->index) {
     case RandomArtActType::BR_FIRE:
         o_ptr->timeout = o_ptr->bi_key == BaseitemKey(ItemKindType::RING, SV_RING_FLAMES) ? 200 : 250;
         return true;
@@ -201,7 +198,7 @@ static bool activate_artifact(PlayerType *player_ptr, ItemEntity *o_ptr)
     case RandomArtActType::MURAMASA:
         return true;
     default:
-        msg_format("Special timeout is not implemented: %d.", act_ptr->index);
+        msg_format("Special timeout is not implemented: %d.", enum2i(it_activation->index));
         return false;
     }
 }
@@ -228,7 +225,7 @@ static bool activate_whistle(PlayerType *player_ptr, ae_type *ae_ptr)
         }
     }
 
-    uint16_t dummy_why;
+    short dummy_why = 0;
     ang_sort(player_ptr, who.data(), &dummy_why, who.size(), ang_sort_comp_pet, ang_sort_swap_hook);
     for (auto pet_ctr : who) {
         teleport_monster_to(player_ptr, pet_ctr, player_ptr->y, player_ptr->x, 100, TELEPORT_PASSIVE);
@@ -314,28 +311,20 @@ static bool activate_raygun(PlayerType *player_ptr, ae_type *ae_ptr)
 }
 
 /*!
- * @brief 装備を発動するコマンドのサブルーチン /
- * Activate a wielded object.  Wielded objects never stack.
- * And even if they did, activatable objects never stack.
- * @param item 発動するオブジェクトの所持品ID
- * @details
- * <pre>
- * Currently, only (some) artifacts, and Dragon Scale Mail, can be activated.
- * But one could, for example, easily make an activatable "Ring of Plasma".
- * Note that it always takes a turn to activate an artifact, even if
- * the user hits "escape" at the "direction" prompt.
- * </pre>
+ * @brief 装備を発動するコマンドのサブルーチン
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @param i_idx 発動するオブジェクトの所持品ID
  */
-void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
+void exe_activate(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 {
     bool activated = false;
-    if (item <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[item].bi_id].flags.has_not(TR_INVEN_ACTIVATE)) {
+    if (i_idx <= INVEN_PACK && baseitems_info[player_ptr->inventory_list[i_idx].bi_id].flags.has_not(TR_INVEN_ACTIVATE)) {
         msg_print(_("このアイテムは装備しないと始動できない。", "That object must be activated by equipment."));
         return;
     }
 
     ae_type tmp_ae;
-    ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, item);
+    ae_type *ae_ptr = initialize_ae_type(player_ptr, &tmp_ae, i_idx);
 
     if (ae_ptr->o_ptr->ego_idx == EgoType::SHATTERED || ae_ptr->o_ptr->ego_idx == EgoType::BLASTED) {
         msg_print(_("このアイテムはもう壊れていて始動できない。", "That broken object can't be activated."));
@@ -356,7 +345,7 @@ void exe_activate(PlayerType *player_ptr, INVENTORY_IDX item)
 
     msg_print(_("始動させた...", "You activate it..."));
     sound(SOUND_ZAP);
-    if (activation_index(ae_ptr->o_ptr) > RandomArtActType::NONE) {
+    if (ae_ptr->o_ptr->has_activation()) {
         (void)activate_artifact(player_ptr, ae_ptr->o_ptr);
         static constexpr auto flags = {
             SubWindowRedrawingFlag::INVENTORY,

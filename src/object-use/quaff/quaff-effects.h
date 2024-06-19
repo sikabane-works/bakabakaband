@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 class ItemEntity;
 class PlayerType;
@@ -6,7 +6,7 @@ class QuaffEffects {
 public:
     QuaffEffects(PlayerType *player_ptr);
 
-    bool influence(const ItemEntity &o_ref);
+    bool influence(const ItemEntity &item);
 
 private:
     PlayerType *player_ptr;

@@ -19,6 +19,7 @@ hengband_SOURCES = \
 	\
 	alliance/alliance.cpp alliance/alliance.h \
 	alliance/alliance-jural.cpp alliance/alliance-jural.h \
+	alliance/alliance-tophamhatt.cpp alliance/alliance-tophamhatt.h \
 	\
 	artifact/artifact-info.cpp artifact/artifact-info.h \
 	artifact/fixed-art-generator.cpp artifact/fixed-art-generator.h \
@@ -196,6 +197,9 @@ hengband_SOURCES = \
 	effect/effect-processor.cpp effect/effect-processor.h \
 	effect/effect-characteristics.h \
 	\
+	external-lib/include-json.h \
+	external-lib/json.hpp \
+	\
 	flavor/flag-inscriptions-table.cpp flavor/flag-inscriptions-table.h \
 	flavor/flavor-describer.cpp flavor/flavor-describer.h \
 	flavor/flavor-util.cpp flavor/flavor-util.h \
@@ -320,6 +324,8 @@ hengband_SOURCES = \
 	io-dump/special-class-dump.cpp io-dump/special-class-dump.h \
 	\
 	knowledge/knowledge-alliance.cpp knowledge/knowledge-alliance.h \
+	item-info/flavor-initializer.cpp item-info/flavor-initializer.h \
+	\
 	knowledge/knowledge-autopick.cpp knowledge/knowledge-autopick.h \
 	knowledge/knowledge-experiences.cpp knowledge/knowledge-experiences.h \
 	knowledge/knowledge-features.cpp knowledge/knowledge-features.h \
@@ -518,17 +524,18 @@ hengband_SOURCES = \
 	monster-race/race-brightness-mask.h monster-race/race-brightness-mask.cpp \
 	monster-race/race-drop-flags.h \
 	monster-race/race-feature-flags.h \
-	monster-race/race-feature-mask.cpp monster-race/race-feature-mask.h \
 	monster-race/race-flags-resistance.h \
 	monster-race/race-flags1.h monster-race/race-flags2.h \
 	monster-race/race-flags3.h \
 	monster-race/race-flags7.h monster-race/race-flags8.h \
-	monster-race/race-flags9.h \
 	monster-race/race-indice-types.h \
 	monster-race/race-kind-flags.h \
+	monster-race/race-misc-flags.h \
 	monster-race/race-population-flags.h \
 	monster-race/race-resistance-mask.cpp monster-race/race-resistance-mask.h \
+	monster-race/race-sex-const.cpp monster-race/race-sex-const.h \
 	monster-race/race-speak-flags.h \
+	monster-race/race-special-flags.h \
 	monster-race/race-visual-flags.h \
 	monster-race/race-wilderness-flags.h \
 	\
@@ -575,7 +582,6 @@ hengband_SOURCES = \
 	\
 	object/item-tester-hooker.cpp object/item-tester-hooker.h \
 	object/object-broken.cpp object/object-broken.h \
-	object/object-flags.cpp object/object-flags.h \
 	object/object-index-list.cpp object/object-index-list.h \
 	object/object-info.cpp object/object-info.h \
 	object/object-kind-hook.cpp object/object-kind-hook.h \
@@ -702,7 +708,6 @@ hengband_SOURCES = \
 	player-ability/player-strength.cpp player-ability/player-strength.h \
 	player-ability/player-wisdom.cpp player-ability/player-wisdom.h \
 	\
-	player-attack/player-attack-util.h \
 	player-attack/attack-chaos-effect.cpp player-attack/attack-chaos-effect.h \
 	player-attack/blood-sucking-processor.cpp player-attack/blood-sucking-processor.h \
 	player-attack/player-attack.cpp player-attack/player-attack.h \
@@ -779,14 +784,16 @@ hengband_SOURCES = \
 	room/cave-filler.cpp room/cave-filler.h \
 	room/door-definition.cpp room/door-definition.h \
 	room/lake-types.h room/room-types.h \
+	room/pit-nest-util.cpp room/pit-nest-util.h \
 	room/room-generator.cpp room/room-generator.h \
 	room/room-info-table.cpp room/room-info-table.h \
 	room/rooms-builder.cpp room/rooms-builder.h \
 	room/rooms-city.cpp room/rooms-city.h \
 	room/rooms-fractal.cpp room/rooms-fractal.h \
 	room/rooms-maze-vault.cpp room/rooms-maze-vault.h \
+	room/rooms-nest.cpp room/rooms-nest.h \
 	room/rooms-normal.cpp room/rooms-normal.h \
-	room/rooms-pit-nest.cpp room/rooms-pit-nest.h \
+	room/rooms-pit.cpp room/rooms-pit.h\
 	room/rooms-special.cpp room/rooms-special.h \
 	room/rooms-trap.cpp room/rooms-trap.h \
 	room/rooms-vault.cpp room/rooms-vault.h \
@@ -912,6 +919,7 @@ hengband_SOURCES = \
 	system/alloc-entries.cpp system/alloc-entries.h \
 	system/angband.h \
 	system/angband-exceptions.h \
+	system/angband-system.h system/angband-system.cpp \
 	system/angband-version.cpp system/angband-version.h \
 	system/artifact-type-definition.cpp system/artifact-type-definition.h \
 	system/baseitem-info.cpp system/baseitem-info.h \
@@ -929,6 +937,7 @@ hengband_SOURCES = \
 	system/player-type-definition.cpp system/player-type-definition.h \
 	system/redrawing-flags-updater.cpp system/redrawing-flags-updater.h \
 	system/system-variables.cpp system/system-variables.h \
+	system/terrain-type-definition.cpp system/terrain-type-definition.h \
 	system/gamevalue.h \
 	\
 	target/grid-selector.cpp target/grid-selector.h \
@@ -962,18 +971,21 @@ hengband_SOURCES = \
 	util/angband-files.cpp util/angband-files.h \
 	util/buffer-shaper.cpp util/buffer-shaper.h \
 	util/bit-flags-calculator.h \
+	util/candidate-selector.cpp util/candidate-selector.h \
 	util/enum-converter.h \
 	util/enum-range.h \
+	util/finalizer.h \
 	util/flag-group.h \
 	util/int-char-converter.h \
 	util/object-sort.cpp util/object-sort.h \
 	util/point-2d.h \
 	util/probability-table.h \
-	util/quarks.cpp util/quarks.h \
 	util/rng-xoshiro.cpp util/rng-xoshiro.h \
+	util/sha256.cpp util/sha256.h \
 	util/sort.cpp util/sort.h \
 	util/string-processor.cpp util/string-processor.h \
 	\
+	view/colored-char.h \
 	view/display-birth.cpp view/display-birth.h \
 	view/display-characteristic.cpp view/display-characteristic.h \
 	view/display-fruit.cpp view/display-fruit.h \
@@ -1045,6 +1057,7 @@ EXTRA_hengband_SOURCES = \
 	main-win/main-win-tokenizer.cpp main-win/main-win-tokenizer.h \
 	main-win/main-win-utils.cpp main-win/main-win-utils.h \
 	main-win/wav-reader.cpp main-win/wav-reader.h \
+	test/test-sha256.cpp \
 	wall.bmp \
 	stdafx.cpp stdafx.h
 

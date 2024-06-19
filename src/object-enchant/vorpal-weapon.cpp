@@ -1,4 +1,4 @@
-﻿#include "object-enchant/vorpal-weapon.h"
+#include "object-enchant/vorpal-weapon.h"
 #include "artifact/fixed-art-types.h"
 #include "inventory/inventory-slot-types.h"
 #include "io/files-util.h"
@@ -6,7 +6,7 @@
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "player-attack/player-attack-util.h"
+#include "player-attack/player-attack.h"
 #include "system/item-entity.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
@@ -63,8 +63,8 @@ static void print_chainsword_noise(ItemEntity *o_ptr)
     }
 
     const auto chainsword_noise = get_random_line(_("chainswd_j.txt", "chainswd.txt"), 0);
-    if (chainsword_noise.has_value()) {
-        msg_print(chainsword_noise.value());
+    if (chainsword_noise) {
+        msg_print(*chainsword_noise);
     }
 }
 
@@ -95,7 +95,7 @@ void process_vorpal_attack(PlayerType *player_ptr, player_attack_type *pa_ptr, c
     }
 
     pa_ptr->attack_damage *= (int)vorpal_magnification;
-    auto *r_ptr = &monraces_info[pa_ptr->m_ptr->r_idx];
+    auto *r_ptr = &pa_ptr->m_ptr->get_monrace();
     if ((r_ptr->resistance_flags.has(MonsterResistanceType::RESIST_ALL) ? pa_ptr->attack_damage / 100 : pa_ptr->attack_damage) > pa_ptr->m_ptr->hp) {
         msg_format(_("%sを真っ二つにした！", "You cut %s in half!"), pa_ptr->m_name);
     } else {

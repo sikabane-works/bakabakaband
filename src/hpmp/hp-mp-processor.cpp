@@ -1,23 +1,19 @@
-﻿#include "hpmp/hp-mp-processor.h"
+#include "hpmp/hp-mp-processor.h"
 #include "avatar/avatar.h"
 #include "cmd-action/cmd-pet.h"
 #include "core/window-redrawer.h"
 #include "flavor/flavor-describer.h"
 #include "flavor/object-flavor-types.h"
 #include "floor/pattern-walk.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "hpmp/hp-mp-regenerator.h"
 #include "inventory/inventory-slot-types.h"
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "object-enchant/object-ego.h"
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
-#include "object/object-flags.h"
 #include "object/tval-types.h"
 #include "pet/pet-util.h"
 #include "player-base/player-class.h"
@@ -43,6 +39,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "timed-effect/player-cut.h"
 #include "timed-effect/player-poison.h"
 #include "timed-effect/timed-effects.h"
@@ -55,7 +52,7 @@
 /*!
  * @brief 地形によるダメージを与える / Deal damage from feature.
  * @param player_ptr プレイヤー情報への参照ポインタ
- * @param g_ptr 現在の床の情報への参照ポインタ
+ * @param grid 現在の床の情報への参照
  * @param msg_levitation 浮遊時にダメージを受けた場合に表示するメッセージ
  * @param msg_normal 通常時にダメージを受けた場合に表示するメッセージの述部
  * @param 耐性等によるダメージレートを計算する関数
@@ -64,18 +61,16 @@
  * @details
  * ダメージを受けた場合、自然回復できない。
  */
-static bool deal_damege_by_feat(PlayerType *player_ptr, grid_type *g_ptr, concptr msg_levitation, concptr msg_normal,
+static bool deal_damege_by_feat(PlayerType *player_ptr, const Grid &grid, concptr msg_levitation, concptr msg_normal,
     std::function<PERCENTAGE(PlayerType *)> damage_rate, std::function<void(PlayerType *, int)> additional_effect)
 {
-    auto *f_ptr = &terrains_info[g_ptr->feat];
-    int damage = 0;
-    bool resist_levitation = (player_ptr->levitation && !f_ptr->flags.has(TerrainCharacteristics::CHAOS_TAINTED) && !f_ptr->flags.has(TerrainCharacteristics::VOID));
-
-    if (f_ptr->flags.has(TerrainCharacteristics::CHAOS_TAINTED) || f_ptr->flags.has(TerrainCharacteristics::PLASMA)) {
+    const auto &terrain = grid.get_terrain();
+    auto damage = 0;
+    if (terrain.flags.has(TerrainCharacteristics::CHAOS_TAINTED) || terrain.flags.has(TerrainCharacteristics::PLASMA)) {
         damage = 12000 + randint0(8000);
-    } else if (f_ptr->flags.has(TerrainCharacteristics::VOID)) {
+    } else if (terrain.flags.has(TerrainCharacteristics::VOID)) {
         damage = 18000 + randint0(12000);
-    } else if (f_ptr->flags.has(TerrainCharacteristics::DEEP)) {
+    } else if (terrain.flags.has(TerrainCharacteristics::DEEP)) {
         damage = 6000 + randint0(4000);
     } else if (!player_ptr->levitation) {
         damage = 3000 + randint0(2000);
@@ -93,17 +88,18 @@ static bool deal_damege_by_feat(PlayerType *player_ptr, grid_type *g_ptr, concpt
         return false;
     }
 
-    if (resist_levitation) {
+    if (player_ptr->levitation) {
         msg_print(msg_levitation);
         constexpr auto mes = _("%sの上に浮遊したダメージ", "flying over %s");
-        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(mes, terrains_info[g_ptr->get_feat_mimic()].name.data()));
+        take_hit(player_ptr, DAMAGE_NOESCAPE, damage, format(mes, grid.get_terrain_mimic().name.data()));
 
         if (additional_effect != nullptr) {
             additional_effect(player_ptr, damage);
         }
     } else {
-        concptr name = terrains_info[player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x].get_feat_mimic()].name.data();
-        msg_format(_("%s%s！", "The %s %s!"), name, msg_normal);
+        const auto p_pos = player_ptr->get_position();
+        const auto &name = player_ptr->current_floor_ptr->get_grid(p_pos).get_terrain_mimic().name;
+        msg_format(_("%s%s！", "The %s %s!"), name.data(), msg_normal);
         take_hit(player_ptr, DAMAGE_NOESCAPE, damage, name);
 
         if (additional_effect != nullptr) {
@@ -120,15 +116,15 @@ static bool deal_damege_by_feat(PlayerType *player_ptr, grid_type *g_ptr, concpt
  */
 void process_player_hp_mp(PlayerType *player_ptr)
 {
-    auto &floor_ref = *player_ptr->current_floor_ptr;
-    auto *g_ptr = &floor_ref.grid_array[player_ptr->y][player_ptr->x];
-    auto *f_ptr = &terrains_info[g_ptr->feat];
+    const auto &floor = *player_ptr->current_floor_ptr;
+    const auto &grid = floor.get_grid(player_ptr->get_position());
+    const auto &terrain = grid.get_terrain();
     bool cave_no_regen = false;
     int upkeep_factor = 0;
     int regen_amount = PY_REGEN_NORMAL;
     const auto effects = player_ptr->effects();
     const auto player_poison = effects->poison();
-    if (f_ptr->flags.has(TerrainCharacteristics::RUNE_HEALING)) {
+    if (terrain.flags.has(TerrainCharacteristics::RUNE_HEALING)) {
         hp_player(player_ptr, 2 + player_ptr->lev / 6);
     }
 
@@ -148,17 +144,16 @@ void process_player_hp_mp(PlayerType *player_ptr)
 
     const PlayerRace race(player_ptr);
     if (race.life() == PlayerRaceLifeType::UNDEAD && race.tr_flags().has(TR_VUL_LITE)) {
-        if (!floor_ref.is_in_dungeon() && !has_resist_lite(player_ptr) && !is_invuln(player_ptr) && is_daytime()) {
-            if ((floor_ref.grid_array[player_ptr->y][player_ptr->x].info & (CAVE_GLOW | CAVE_MNDK)) == CAVE_GLOW) {
+        if (!floor.is_in_dungeon() && !has_resist_lite(player_ptr) && !is_invuln(player_ptr) && w_ptr->is_daytime()) {
+            if ((floor.grid_array[player_ptr->y][player_ptr->x].info & (CAVE_GLOW | CAVE_MNDK)) == CAVE_GLOW) {
                 msg_print(_("日光があなたのアンデッドの肉体を焼き焦がした！", "The sun's rays scorch your undead flesh!"));
                 take_hit(player_ptr, DAMAGE_NOESCAPE, 1, _("日光", "sunlight"));
                 cave_no_regen = true;
             }
         }
 
-        ItemEntity *o_ptr;
-        o_ptr = &player_ptr->inventory_list[INVEN_LITE];
-        auto flags = object_flags(o_ptr);
+        const auto *o_ptr = &player_ptr->inventory_list[INVEN_LITE];
+        const auto flags = o_ptr->get_flags();
 
         if ((player_ptr->inventory_list[INVEN_LITE].bi_key.tval() != ItemKindType::NONE) && flags.has_not(TR_DARK_SOURCE) && !has_resist_lite(player_ptr)) {
             const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
@@ -173,46 +168,46 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::LAVA) && !is_invuln(player_ptr) && !has_immune_fire(player_ptr)) {
+    if (terrain.flags.has(TerrainCharacteristics::LAVA) && !is_invuln(player_ptr) && !has_immune_fire(player_ptr)) {
         constexpr auto mes_leviation = _("熱で火傷した！", "The heat burns you!");
         constexpr auto mes_normal = _("で火傷した！", "burns you!");
-        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_fire_damage_rate, nullptr)) {
+        if (deal_damege_by_feat(player_ptr, grid, mes_leviation, mes_normal, calc_fire_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::COLD_PUDDLE) && !is_invuln(player_ptr) && !has_immune_cold(player_ptr)) {
+    if (terrain.flags.has(TerrainCharacteristics::COLD_PUDDLE) && !is_invuln(player_ptr) && !has_immune_cold(player_ptr)) {
         constexpr auto mes_leviation = _("冷気に覆われた！", "The cold engulfs you!");
         constexpr auto mes_normal = _("に凍えた！", "frostbites you!");
-        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_cold_damage_rate, nullptr)) {
+        if (deal_damege_by_feat(player_ptr, grid, mes_leviation, mes_normal, calc_cold_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::ELEC_PUDDLE) && !is_invuln(player_ptr) && !has_immune_elec(player_ptr)) {
+    if (terrain.flags.has(TerrainCharacteristics::ELEC_PUDDLE) && !is_invuln(player_ptr) && !has_immune_elec(player_ptr)) {
         constexpr auto mes_leviation = _("電撃を受けた！", "The electricity shocks you!");
         constexpr auto mes_normal = _("に感電した！", "shocks you!");
-        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_elec_damage_rate, nullptr)) {
+        if (deal_damege_by_feat(player_ptr, grid, mes_leviation, mes_normal, calc_elec_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::ACID_PUDDLE) && !is_invuln(player_ptr) && !has_immune_acid(player_ptr)) {
+    if (terrain.flags.has(TerrainCharacteristics::ACID_PUDDLE) && !is_invuln(player_ptr) && !has_immune_acid(player_ptr)) {
         constexpr auto mes_leviation = _("酸が飛び散った！", "The acid melts you!");
         constexpr auto mes_normal = _("に溶かされた！", "melts you!");
-        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_acid_damage_rate, nullptr)) {
+        if (deal_damege_by_feat(player_ptr, grid, mes_leviation, mes_normal, calc_acid_damage_rate, nullptr)) {
             cave_no_regen = true;
             sound(SOUND_TERRAIN_DAMAGE);
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::POISON_PUDDLE) && !is_invuln(player_ptr)) {
+    if (terrain.flags.has(TerrainCharacteristics::POISON_PUDDLE) && !is_invuln(player_ptr)) {
         constexpr auto mes_leviation = _("毒気を吸い込んだ！", "The gas poisons you!");
         constexpr auto mes_normal = _("に毒された！", "poisons you!");
-        if (deal_damege_by_feat(player_ptr, g_ptr, mes_leviation, mes_normal, calc_acid_damage_rate,
+        if (deal_damege_by_feat(player_ptr, grid, mes_leviation, mes_normal, calc_acid_damage_rate,
                 [](PlayerType *player_ptr, int damage) {
                     if (!has_resist_pois(player_ptr)) {
                         (void)BadStatusSetter(player_ptr).mod_poison(static_cast<TIME_EFFECT>(damage));
@@ -223,8 +218,8 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::DUNG_POOL) && !is_invuln(player_ptr)) {
-        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
+    if (terrain.flags.has(TerrainCharacteristics::DUNG_POOL) && !is_invuln(player_ptr)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, grid, _("糞が飛び散った！", "The feced scatter to you!"), _("に浸かった！", "tainted you!"),
             calc_acid_damage_rate, [](PlayerType *player_ptr, int damage) {
                 if (!has_resist_pois(player_ptr)) {
                     (void)BadStatusSetter(player_ptr).mod_poison(damage);
@@ -232,7 +227,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
             });
     }
 
-    const auto can_drown = f_ptr->flags.has_all_of({ TerrainCharacteristics::WATER, TerrainCharacteristics::DEEP });
+    const auto can_drown = terrain.flags.has_all_of({ TerrainCharacteristics::WATER, TerrainCharacteristics::DEEP });
     if (can_drown && !player_ptr->levitation && !player_ptr->can_swim && !has_resist_water(player_ptr)) {
         if (calc_inventory_weight(player_ptr) > calc_weight_limit(player_ptr)) {
             msg_print(_("溺れている！", "You are drowning!"));
@@ -242,7 +237,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::THORN) && !player_ptr->levitation) {
+    if (terrain.flags.has(TerrainCharacteristics::THORN) && !player_ptr->levitation) {
         int damage;
         msg_print(_("棘に体が突き刺さっている！", "Your body is stuck in a thorn!"));
         if (calc_inventory_weight(player_ptr) > calc_weight_limit(player_ptr)) {
@@ -255,17 +250,17 @@ void process_player_hp_mp(PlayerType *player_ptr)
         sound(SOUND_TERRAIN_DAMAGE);
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::PLASMA)) {
-        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);
+    if (terrain.flags.has(TerrainCharacteristics::PLASMA)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, grid, _("に包まれた!", "engulfs you!"), _("に包まれた!", "engulfs you"), calc_plasma_damage_rate, NULL);
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::CHAOS_TAINTED)) {
-        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に汚染された!", "taints you!"),
+    if (terrain.flags.has(TerrainCharacteristics::CHAOS_TAINTED)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, grid, _("に汚染された!", "taints you!"),
             _("に汚染された!", "taints you"), calc_chaos_damage_rate_rand, NULL);
     }
 
-    if (f_ptr->flags.has(TerrainCharacteristics::VOID)) {
-        cave_no_regen = deal_damege_by_feat(player_ptr, g_ptr, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
+    if (terrain.flags.has(TerrainCharacteristics::VOID)) {
+        cave_no_regen = deal_damege_by_feat(player_ptr, grid, _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"),
             _("に巻き込まれて己の存在が薄れていく!", "erases your existence!"), calc_void_damage_rate_rand, NULL);
     }
 
@@ -325,9 +320,9 @@ void process_player_hp_mp(PlayerType *player_ptr)
 
     if (player_ptr->riding) {
         int damage;
-        auto auras = monraces_info[floor_ref.m_list[player_ptr->riding].r_idx].aura_flags;
+        auto auras = monraces_info[floor.m_list[player_ptr->riding].r_idx].aura_flags;
         if (auras.has(MonsterAuraType::FIRE) && !has_immune_fire(player_ptr)) {
-            damage = monraces_info[floor_ref.m_list[player_ptr->riding].r_idx].level / 2;
+            damage = monraces_info[floor.m_list[player_ptr->riding].r_idx].level / 2;
             if (race.tr_flags().has(TR_VUL_FIRE)) {
                 damage += damage / 3;
             }
@@ -344,7 +339,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
 
         if (auras.has(MonsterAuraType::ELEC) && !has_immune_elec(player_ptr)) {
-            damage = monraces_info[floor_ref.m_list[player_ptr->riding].r_idx].level / 2;
+            damage = monraces_info[floor.m_list[player_ptr->riding].r_idx].level / 2;
             if (race.tr_flags().has(TR_VUL_ELEC)) {
                 damage += damage / 3;
             }
@@ -361,7 +356,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
         }
 
         if (auras.has(MonsterAuraType::COLD) && !has_immune_cold(player_ptr)) {
-            damage = monraces_info[floor_ref.m_list[player_ptr->riding].r_idx].level / 2;
+            damage = monraces_info[floor.m_list[player_ptr->riding].r_idx].level / 2;
             if (race.tr_flags().has(TR_VUL_COLD)) {
                 damage += damage / 3;
             }
@@ -385,7 +380,7 @@ void process_player_hp_mp(PlayerType *player_ptr)
      * reduced below 0 hp by being inside a stone wall; others
      * WILL BE!
      */
-    if (f_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY })) {
+    if (terrain.flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY })) {
         auto should_damage = !is_invuln(player_ptr);
         should_damage &= player_ptr->wraith_form == 0;
         should_damage &= player_ptr->tim_pass_wall == 0;

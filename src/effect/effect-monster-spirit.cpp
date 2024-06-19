@@ -1,15 +1,13 @@
-﻿#include "effect/effect-monster-spirit.h"
+#include "effect/effect-monster-spirit.h"
 #include "effect/effect-monster-util.h"
 #include "hpmp/hp-mp-processor.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-mask.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
+#include "monster/monster-util.h"
 #include "system/grid-type-definition.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
@@ -35,7 +33,7 @@ ProcessResult effect_monster_drain_mana(PlayerType *player_ptr, EffectMonster *e
         return ProcessResult::PROCESS_CONTINUE;
     }
 
-    if (em_ptr->who <= 0) {
+    if (!is_monster(em_ptr->src_idx)) {
         msg_format(_("%sから精神エネルギーを吸いとった。", "You draw psychic energy from %s."), em_ptr->m_name);
         (void)hp_player(player_ptr, em_ptr->dam);
         em_ptr->dam = 0;
@@ -53,11 +51,11 @@ ProcessResult effect_monster_drain_mana(PlayerType *player_ptr, EffectMonster *e
     }
 
     auto &rfu = RedrawingFlagsUpdater::get_instance();
-    if (player_ptr->health_who == em_ptr->who) {
+    if (player_ptr->health_who == em_ptr->src_idx) {
         rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
     }
 
-    if (player_ptr->riding == em_ptr->who) {
+    if (player_ptr->riding == em_ptr->src_idx) {
         rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
@@ -75,32 +73,32 @@ ProcessResult effect_monster_mind_blast(PlayerType *player_ptr, EffectMonster *e
     if (em_ptr->seen) {
         em_ptr->obvious = true;
     }
-    if (!em_ptr->who) {
+    if (is_player(em_ptr->src_idx)) {
         msg_format(_("%sをじっと睨んだ。", "You gaze intently at %s."), em_ptr->m_name);
     }
 
     bool has_immute = em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    has_immute |= any_bits(em_ptr->r_ptr->flags3, RF3_NO_CONF);
+    has_immute |= em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF);
     has_immute |= (em_ptr->r_ptr->level > randint1(std::max(1, em_ptr->caster_lev - 10)) + 10);
 
     if (has_immute) {
-        if (em_ptr->r_ptr->flags3 & (RF3_NO_CONF)) {
+        if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
             if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-                em_ptr->r_ptr->r_flags3 |= (RF3_NO_CONF);
+                em_ptr->r_ptr->resistance_flags.set(MonsterResistanceType::NO_CONF);
             }
         }
 
         em_ptr->note = _("には効果がなかった。", " is unaffected.");
         em_ptr->dam = 0;
-    } else if (em_ptr->r_ptr->flags2 & RF2_EMPTY_MIND) {
+    } else if (em_ptr->r_ptr->misc_flags.has(MonsterMiscType::EMPTY_MIND)) {
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-            em_ptr->r_ptr->r_flags2 |= (RF2_EMPTY_MIND);
+            em_ptr->r_ptr->r_misc_flags.set(MonsterMiscType::EMPTY_MIND);
         }
         em_ptr->note = _("には完全な耐性がある！", " is immune.");
         em_ptr->dam = 0;
-    } else if (em_ptr->r_ptr->flags2 & RF2_WEIRD_MIND) {
+    } else if (em_ptr->r_ptr->misc_flags.has(MonsterMiscType::WEIRD_MIND)) {
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-            em_ptr->r_ptr->r_flags2 |= (RF2_WEIRD_MIND);
+            em_ptr->r_ptr->r_misc_flags.set(MonsterMiscType::WEIRD_MIND);
         }
         em_ptr->note = _("には耐性がある。", " resists.");
         em_ptr->dam /= 3;
@@ -108,7 +106,7 @@ ProcessResult effect_monster_mind_blast(PlayerType *player_ptr, EffectMonster *e
         em_ptr->note = _("は精神攻撃を食らった。", " is blasted by psionic energy.");
         em_ptr->note_dies = _("の精神は崩壊し、肉体は抜け殻となった。", " collapses, a mindless husk.");
 
-        if (em_ptr->who > 0) {
+        if (is_monster(em_ptr->src_idx)) {
             em_ptr->do_conf = randint0(4) + 4;
         } else {
             em_ptr->do_conf = randint0(8) + 8;
@@ -123,33 +121,33 @@ ProcessResult effect_monster_brain_smash(PlayerType *player_ptr, EffectMonster *
     if (em_ptr->seen) {
         em_ptr->obvious = true;
     }
-    if (!em_ptr->who) {
+    if (is_player(em_ptr->src_idx)) {
         msg_format(_("%sをじっと睨んだ。", "You gaze intently at %s."), em_ptr->m_name);
     }
 
     bool has_immute = em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE);
-    has_immute |= any_bits(em_ptr->r_ptr->flags3, RF3_NO_CONF);
+    has_immute |= em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF);
     has_immute |= (em_ptr->r_ptr->level > randint1(std::max(1, em_ptr->caster_lev - 10)) + 10);
 
     if (has_immute) {
-        if (em_ptr->r_ptr->flags3 & (RF3_NO_CONF)) {
+        if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
             if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-                em_ptr->r_ptr->r_flags3 |= (RF3_NO_CONF);
+                em_ptr->r_ptr->resistance_flags.set(MonsterResistanceType::NO_CONF);
             }
         }
 
         em_ptr->note = _("には効果がなかった。", " is unaffected.");
         em_ptr->dam = 0;
-    } else if (em_ptr->r_ptr->flags2 & RF2_EMPTY_MIND) {
+    } else if (em_ptr->r_ptr->misc_flags.has(MonsterMiscType::EMPTY_MIND)) {
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-            em_ptr->r_ptr->r_flags2 |= (RF2_EMPTY_MIND);
+            em_ptr->r_ptr->r_misc_flags.set(MonsterMiscType::EMPTY_MIND);
         }
 
         em_ptr->note = _("には完全な耐性がある！", " is immune.");
         em_ptr->dam = 0;
-    } else if (em_ptr->r_ptr->flags2 & RF2_WEIRD_MIND) {
+    } else if (em_ptr->r_ptr->misc_flags.has(MonsterMiscType::WEIRD_MIND)) {
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-            em_ptr->r_ptr->r_flags2 |= (RF2_WEIRD_MIND);
+            em_ptr->r_ptr->r_misc_flags.set(MonsterMiscType::WEIRD_MIND);
         }
 
         em_ptr->note = _("には耐性がある！", " resists!");
@@ -157,7 +155,7 @@ ProcessResult effect_monster_brain_smash(PlayerType *player_ptr, EffectMonster *
     } else {
         em_ptr->note = _("は精神攻撃を食らった。", " is blasted by psionic energy.");
         em_ptr->note_dies = _("の精神は崩壊し、肉体は抜け殻となった。", " collapses, a mindless husk.");
-        if (em_ptr->who > 0) {
+        if (is_monster(em_ptr->src_idx)) {
             em_ptr->do_conf = randint0(4) + 4;
             em_ptr->do_stun = randint0(4) + 4;
         } else {

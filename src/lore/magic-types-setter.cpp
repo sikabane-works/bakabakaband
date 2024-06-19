@@ -1,9 +1,7 @@
-﻿#include "lore/magic-types-setter.h"
+#include "lore/magic-types-setter.h"
 #include "lore/lore-calculator.h"
 #include "lore/lore-util.h"
 #include "monster-race/race-brightness-mask.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "player-base/player-class.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
@@ -243,6 +241,12 @@ void set_ball_types(PlayerType *player_ptr, lore_type *lore_ptr)
         lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
         lore_ptr->color[lore_ptr->vn++] = TERM_L_DARK;
     }
+
+    if (lore_ptr->ability_flags.has(MonsterAbilityType::BA_METEOR)) {
+        set_damage(player_ptr, lore_ptr, MonsterAbilityType::BA_METEOR, _("メテオスウォーム%s", "invoke meteor swarm%s"));
+        lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
+        lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
+    }
 }
 
 void set_particular_types(PlayerType *player_ptr, lore_type *lore_ptr)
@@ -367,6 +371,18 @@ void set_bolt_types(PlayerType *player_ptr, lore_type *lore_ptr)
         set_damage(player_ptr, lore_ptr, MonsterAbilityType::BO_ABYSS, _("アビス・ボルト%s", "produce abyss bolts%s"));
         lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
         lore_ptr->color[lore_ptr->vn++] = TERM_L_DARK;
+    }
+
+    if (lore_ptr->ability_flags.has(MonsterAbilityType::BO_METEOR)) {
+        set_damage(player_ptr, lore_ptr, MonsterAbilityType::BO_METEOR, _("メテオストライク%s", "produce meteor strikes%s"));
+        lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
+        lore_ptr->color[lore_ptr->vn++] = TERM_UMBER;
+    }
+
+    if (lore_ptr->ability_flags.has(MonsterAbilityType::BO_LITE)) {
+        set_damage(player_ptr, lore_ptr, MonsterAbilityType::BO_LITE, _("スターライトアロー%s", "produce starlight arrow%s"));
+        lore_ptr->vp[lore_ptr->vn] = lore_ptr->tmp_msg[lore_ptr->vn];
+        lore_ptr->color[lore_ptr->vn++] = TERM_YELLOW;
     }
 
     if (lore_ptr->ability_flags.has(MonsterAbilityType::MISSILE)) {
@@ -567,6 +583,11 @@ void set_summon_types(lore_type *lore_ptr)
 
     if (lore_ptr->ability_flags.has(MonsterAbilityType::S_UNIQUE)) {
         lore_ptr->vp[lore_ptr->vn] = _("ユニーク・モンスター召喚", "summon Unique Monsters");
+        lore_ptr->color[lore_ptr->vn++] = TERM_VIOLET;
+    }
+
+    if (lore_ptr->ability_flags.has(MonsterAbilityType::S_DEAD_UNIQUE)) {
+        lore_ptr->vp[lore_ptr->vn] = _("ユニーク・モンスター口寄せ", "animate Unique Monsters");
         lore_ptr->color[lore_ptr->vn++] = TERM_VIOLET;
     }
 }

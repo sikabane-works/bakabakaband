@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief スナイパー技能の実装 / Sniping
  * @date 2014/01/18
  * @author
@@ -22,7 +22,6 @@
 #include "mind/snipe-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags3.h"
 #include "object/tval-types.h"
 #include "player-base/player-class.h"
 #include "player-info/sniper-data-type.h"
@@ -255,8 +254,6 @@ static int get_snipe_power(PlayerType *player_ptr, COMMAND_CODE *sn, bool only_b
     TERM_LEN y = 1;
     TERM_LEN x = 20;
     PLAYER_LEVEL plev = player_ptr->lev;
-    char choice;
-    char out_val[160];
     concptr p = _("射撃術", "power");
     snipe_power spell;
     bool flag, redraw;
@@ -287,21 +284,25 @@ static int get_snipe_power(PlayerType *player_ptr, COMMAND_CODE *sn, bool only_b
         }
     }
 
-    /* Build a prompt (accept all spells) */
+    std::string fmt;
     if (only_browse) {
-        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
-        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num), p);
+        fmt = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sについて知りますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
     } else {
-        constexpr auto mes = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
-        (void)strnfmt(out_val, 78, mes, p, I2A(0), I2A(num), p);
+        fmt = _("(%s^ %c-%c, '*'で一覧, ESC) どの%sを使いますか？", "(%s^s %c-%c, *=List, ESC=exit) Use which %s? ");
     }
 
-    choice = always_show_list ? ESCAPE : 1;
+    const auto prompt = format(fmt.data(), p, I2A(0), I2A(num), p);
+    auto choice = always_show_list ? ESCAPE : '\1';
     while (!flag) {
         if (choice == ESCAPE) {
             choice = ' ';
-        } else if (!get_com(out_val, &choice, false)) {
-            break;
+        } else {
+            const auto new_choice = input_command(prompt);
+            if (!new_choice.has_value()) {
+                break;
+            }
+
+            choice = *new_choice;
         }
 
         /* Request redraw */
@@ -323,7 +324,7 @@ static int get_snipe_power(PlayerType *player_ptr, COMMAND_CODE *sn, bool only_b
                 /* Dump the spells */
                 for (i = 0; i < MAX_SNIPE_POWERS; i++) {
                     term_color_type tcol = TERM_WHITE;
-                    term_erase(x, y + i + 1, 255);
+                    term_erase(x, y + i + 1);
 
                     /* Access the spell */
                     spell = snipe_powers[i];
@@ -408,7 +409,7 @@ static int get_snipe_power(PlayerType *player_ptr, COMMAND_CODE *sn, bool only_b
  */
 MULTIPLY calc_snipe_damage_with_slay(PlayerType *player_ptr, MULTIPLY mult, MonsterEntity *m_ptr, SPELL_IDX snipe_type)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     bool seen = is_seen(player_ptr, m_ptr);
 
     auto sniper_data = PlayerClass(player_ptr).get_specific_data<SniperData>();
@@ -666,11 +667,11 @@ void do_cmd_snipe_browse(PlayerType *player_ptr)
         }
 
         /* Clear lines, position cursor  (really should use strlen here) */
-        term_erase(12, 22, 255);
-        term_erase(12, 21, 255);
-        term_erase(12, 20, 255);
-        term_erase(12, 19, 255);
-        term_erase(12, 18, 255);
+        term_erase(12, 22);
+        term_erase(12, 21);
+        term_erase(12, 20);
+        term_erase(12, 19);
+        term_erase(12, 18);
 
         display_wrap_around(snipe_tips[n], 62, 19, 15);
     }

@@ -1,4 +1,4 @@
-﻿#include "racial/mutation-racial-selector.h"
+#include "racial/mutation-racial-selector.h"
 #include "cmd-action/cmd-spell.h"
 #include "locale/japanese.h"
 #include "mutation/mutation-flag-types.h"
@@ -22,7 +22,7 @@ void select_mutation_racial(PlayerType *player_ptr, rc_type *rc_ptr)
 
     if (player_ptr->muta.has(PlayerMutationType::BR_FIRE)) {
         rpi = rpi_type(_("炎のブレス", "Fire Breath"));
-        rpi.info = format("%s%d", KWD_DAM, rc_ptr->lvl);
+        rpi.info = format("%s%d", KWD_DAM, rc_ptr->lvl * 2);
         rpi.text = _("火炎のブレスを放つ", "Fires a breath of fire.");
         rpi.min_level = 20;
         rpi.cost = rc_ptr->lvl;

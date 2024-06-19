@@ -1,4 +1,4 @@
-﻿#include "save/monster-writer.h"
+#include "save/monster-writer.h"
 #include "load/load-util.h"
 #include "load/old/monster-flag-types-savefile50.h"
 #include "monster-race/monster-race.h"
@@ -9,7 +9,6 @@
 #include "system/monster-race-info.h"
 #include "util/bit-flags-calculator.h"
 #include "util/enum-converter.h"
-#include "util/quarks.h"
 
 static void write_monster_flags(MonsterEntity *m_ptr, BIT_FLAGS *flags)
 {
@@ -208,9 +207,6 @@ void wr_lore(MonsterRaceId r_idx)
     wr_byte(r_ptr->r_blows[2]);
     wr_byte(r_ptr->r_blows[3]);
 
-    wr_u32b(r_ptr->r_flags1);
-    wr_u32b(r_ptr->r_flags2);
-    wr_u32b(r_ptr->r_flags3);
     wr_FlagGroup(r_ptr->r_resistance_flags, wr_byte);
     wr_FlagGroup(r_ptr->r_ability_flags, wr_byte);
     wr_FlagGroup(r_ptr->r_aura_flags, wr_byte);
@@ -218,6 +214,8 @@ void wr_lore(MonsterRaceId r_idx)
     wr_FlagGroup(r_ptr->r_kind_flags, wr_byte);
     wr_FlagGroup(r_ptr->r_drop_flags, wr_byte);
     wr_FlagGroup(r_ptr->r_feature_flags, wr_byte);
+    wr_FlagGroup(r_ptr->r_special_flags, wr_byte);
+    wr_FlagGroup(r_ptr->r_misc_flags, wr_byte);
 
     wr_byte((byte)r_ptr->mob_num);
     wr_s16b(r_ptr->floor_id);

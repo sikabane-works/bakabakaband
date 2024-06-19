@@ -11,12 +11,9 @@
 #include "io/input-key-acceptor.h"
 #include "market/bounty-prize-table.h"
 #include "market/building-util.h"
+#include "monster-floor/place-monster-types.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags9.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-list.h"
 #include "monster/monster-util.h"
@@ -58,7 +55,7 @@ bool exchange_cash(PlayerType *player_ptr)
 
         change = true;
         const auto item_name = describe_flavor(player_ptr, item_ptr, 0);
-        if (!get_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
+        if (!input_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
             continue;
         }
 
@@ -71,13 +68,13 @@ bool exchange_cash(PlayerType *player_ptr)
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
         const auto item_ptr = &player_ptr->inventory_list[i];
         const auto r_idx_of_item = static_cast<MonsterRaceId>(item_ptr->pval);
-        if ((item_ptr->bi_key != BaseitemKey(ItemKindType::CORPSE, SV_CORPSE)) || (r_idx_of_item != MonsterRaceId::TSUCHINOKO)) {
+        if (!item_ptr->is_corpse() || (r_idx_of_item != MonsterRaceId::TSUCHINOKO)) {
             continue;
         }
 
         change = true;
         const auto item_name = describe_flavor(player_ptr, item_ptr, 0);
-        if (!get_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
+        if (!input_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
             continue;
         }
 
@@ -96,7 +93,7 @@ bool exchange_cash(PlayerType *player_ptr)
 
         change = true;
         const auto item_name = describe_flavor(player_ptr, item_ptr, 0);
-        if (!get_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
+        if (!input_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
             continue;
         }
 
@@ -109,13 +106,13 @@ bool exchange_cash(PlayerType *player_ptr)
     for (INVENTORY_IDX i = 0; i < INVEN_PACK; i++) {
         const auto item_ptr = &player_ptr->inventory_list[i];
         const auto r_idx_of_item = static_cast<MonsterRaceId>(item_ptr->pval);
-        if ((item_ptr->bi_key != BaseitemKey(ItemKindType::CORPSE, SV_CORPSE)) || (monraces_info[r_idx_of_item].name != monraces_info[w_ptr->today_mon].name)) {
+        if (!item_ptr->is_corpse() || (monraces_info[r_idx_of_item].name != monraces_info[w_ptr->today_mon].name)) {
             continue;
         }
 
         change = true;
         const auto item_name = describe_flavor(player_ptr, item_ptr, 0);
-        if (!get_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
+        if (!input_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
             continue;
         }
 
@@ -135,7 +132,7 @@ bool exchange_cash(PlayerType *player_ptr)
 
         change = true;
         const auto item_name = describe_flavor(player_ptr, item_ptr, 0);
-        if (!get_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
+        if (!input_check(format(_("%s を換金しますか？", "Convert %s into money? "), item_name.data()))) {
             continue;
         }
 
@@ -162,11 +159,11 @@ bool exchange_cash(PlayerType *player_ptr)
                 continue;
             }
 
-            INVENTORY_IDX item_new;
+            INVENTORY_IDX inventory_new;
             ItemEntity forge;
 
             const auto item_name = describe_flavor(player_ptr, item_ptr, 0);
-            if (!get_check(format(_("%sを渡しますか？", "Hand %s over? "), item_name.data()))) {
+            if (!input_check(format(_("%sを渡しますか？", "Hand %s over? "), item_name.data()))) {
                 continue;
             }
 
@@ -183,18 +180,18 @@ bool exchange_cash(PlayerType *player_ptr)
             ItemMagicApplier(player_ptr, &forge, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART).execute();
 
             object_aware(player_ptr, &forge);
-            object_known(&forge);
+            forge.mark_as_known();
 
             /*
              * Hand it --- Assume there is an empty slot.
              * Since a corpse is handed at first,
              * there is at least one empty slot.
              */
-            item_new = store_item_to_inventory(player_ptr, &forge);
+            inventory_new = store_item_to_inventory(player_ptr, &forge);
             const auto got_item_name = describe_flavor(player_ptr, &forge, 0);
-            msg_format(_("%s(%c)を貰った。", "You get %s (%c). "), got_item_name.data(), index_to_label(item_new));
+            msg_format(_("%s(%c)を貰った。", "You get %s (%c). "), got_item_name.data(), index_to_label(inventory_new));
 
-            autopick_alter_item(player_ptr, item_new, false);
+            autopick_alter_item(player_ptr, inventory_new, false);
             handle_stuff(player_ptr);
             change = true;
         }
@@ -296,21 +293,21 @@ void determine_daily_bounty(PlayerType *player_ptr, bool conv_old)
     get_mon_num_prep_bounty(player_ptr);
 
     while (true) {
-        w_ptr->today_mon = get_mon_num(player_ptr, std::min(max_dl / 2, 40), max_dl, GMN_ARENA);
+        w_ptr->today_mon = get_mon_num(player_ptr, std::min(max_dl / 2, 40), max_dl, PM_ARENA);
         MonsterRaceInfo *r_ptr;
         r_ptr = &monraces_info[w_ptr->today_mon];
 
         if (cheat_hear) {
-            msg_format("日替わり候補: %s ", r_ptr->name.data());
+            msg_format(_("日替わり候補: %s ", "Today's candidate: %s "), r_ptr->name.data());
         }
 
         if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             continue;
         }
-        if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL) || any_bits(r_ptr->flags7, RF7_UNIQUE2)) {
+        if (r_ptr->population_flags.has(MonsterPopulationType::NAZGUL) || r_ptr->population_flags.has(MonsterPopulationType::ONLY_ONE)) {
             continue;
         }
-        if (r_ptr->flags2 & RF2_MULTIPLY) {
+        if (r_ptr->misc_flags.has(MonsterMiscType::MULTIPLY)) {
             continue;
         }
         if (!r_ptr->drop_flags.has_all_of({ MonsterDropType::DROP_CORPSE, MonsterDropType::DROP_SKELETON })) {
@@ -332,20 +329,20 @@ void determine_daily_bounty(PlayerType *player_ptr, bool conv_old)
 void determine_bounty_uniques(PlayerType *player_ptr)
 {
     get_mon_num_prep_bounty(player_ptr);
-
-    auto is_suitable_for_bounty = [](MonsterRaceId r_idx) {
-        const auto &monrace = monraces_info[r_idx];
-        bool is_suitable = monrace.kind_flags.has(MonsterKindType::UNIQUE);
+    const auto &monraces = MonraceList::get_instance();
+    auto is_suitable_for_bounty = [&monraces](MonsterRaceId r_idx) {
+        const auto &monrace = monraces[r_idx];
+        auto is_suitable = monrace.kind_flags.has(MonsterKindType::UNIQUE);
         is_suitable &= monrace.drop_flags.has_any_of({ MonsterDropType::DROP_CORPSE, MonsterDropType::DROP_SKELETON });
         is_suitable &= monrace.rarity <= 100;
-        is_suitable &= !monrace.no_suitable_questor_bounty();
+        is_suitable &= !monraces.can_unify_separate(r_idx);
         return is_suitable;
     };
 
     // 賞金首とするモンスターの種族IDのリストを生成
     std::vector<MonsterRaceId> bounty_r_idx_list;
     while (bounty_r_idx_list.size() < std::size(w_ptr->bounties)) {
-        auto r_idx = get_mon_num(player_ptr, 0, MAX_DEPTH - 1, GMN_ARENA);
+        auto r_idx = get_mon_num(player_ptr, 0, MAX_DEPTH - 1, PM_ARENA);
         if (!is_suitable_for_bounty(r_idx)) {
             continue;
         }

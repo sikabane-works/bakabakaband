@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスターの移動方向を走査する処理
  * @date 2020/03/08
  * @author Hourier
@@ -13,9 +13,6 @@
 #include "monster-floor/monster-safety-hiding.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-mask.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-processor-util.h"
@@ -50,25 +47,27 @@ MonsterSweepGrid::MonsterSweepGrid(PlayerType *player_ptr, MONSTER_IDX m_idx, DI
  */
 bool MonsterSweepGrid::get_movable_grid()
 {
-    auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto *m_ptr = &floor_ptr->m_list[this->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
-    POSITION y = 0;
-    POSITION x = 0;
+    auto &floor = *this->player_ptr->current_floor_ptr;
+    const auto &monster_from = floor.m_list[this->m_idx];
+    auto &monrace = monster_from.get_monrace();
+    auto y = 0;
+    auto x = 0;
     auto y2 = this->player_ptr->y;
     auto x2 = this->player_ptr->x;
     this->will_run = this->mon_will_run();
-    const auto no_flow = m_ptr->mflag2.has(MonsterConstantFlagType::NOFLOW) && (floor_ptr->grid_array[m_ptr->fy][m_ptr->fx].get_cost(r_ptr) > 2);
-    this->can_pass_wall = r_ptr->feature_flags.has(MonsterFeatureType::PASS_WALL) && ((this->m_idx != this->player_ptr->riding) || has_pass_wall(this->player_ptr));
-    if (!this->will_run && m_ptr->target_y) {
-        int t_m_idx = floor_ptr->grid_array[m_ptr->target_y][m_ptr->target_x].m_idx;
+    Pos2D pos_monster_from(monster_from.fy, monster_from.fx);
+    const auto no_flow = monster_from.mflag2.has(MonsterConstantFlagType::NOFLOW) && (floor.get_grid(pos_monster_from).get_cost(&monrace) > 2);
+    this->can_pass_wall = monrace.feature_flags.has(MonsterFeatureType::PASS_WALL) && ((this->m_idx != this->player_ptr->riding) || has_pass_wall(this->player_ptr));
+    if (!this->will_run && monster_from.target_y) {
+        Pos2D pos_target(monster_from.target_y, monster_from.target_x);
+        int t_m_idx = floor.get_grid(pos_target).m_idx;
         if (t_m_idx > 0) {
-            const auto is_enemies = are_enemies(this->player_ptr, *m_ptr, floor_ptr->m_list[t_m_idx]);
-            const auto is_los = los(this->player_ptr, m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x);
-            const auto is_projectable = projectable(this->player_ptr, m_ptr->fy, m_ptr->fx, m_ptr->target_y, m_ptr->target_x);
+            const auto is_enemies = monster_from.is_hostile_to_melee(floor.m_list[t_m_idx]);
+            const auto is_los = los(this->player_ptr, monster_from.fy, monster_from.fx, monster_from.target_y, monster_from.target_x);
+            const auto is_projectable = projectable(this->player_ptr, monster_from.fy, monster_from.fx, monster_from.target_y, monster_from.target_x);
             if (is_enemies && is_los && is_projectable) {
-                y = m_ptr->fy - m_ptr->target_y;
-                x = m_ptr->fx - m_ptr->target_x;
+                y = monster_from.fy - monster_from.target_y;
+                x = monster_from.fx - monster_from.target_x;
                 this->done = true;
             }
         }
@@ -77,8 +76,8 @@ bool MonsterSweepGrid::get_movable_grid()
     this->check_hiding_grid(&y, &x, &y2, &x2);
     if (!this->done) {
         this->sweep_movable_grid(&y2, &x2, no_flow);
-        y = m_ptr->fy - y2;
-        x = m_ptr->fx - x2;
+        y = monster_from.fy - y2;
+        x = monster_from.fx - x2;
     }
 
     this->search_pet_runnable_grid(&y, &x, no_flow);
@@ -98,7 +97,7 @@ bool MonsterSweepGrid::get_movable_grid()
 bool MonsterSweepGrid::mon_will_run()
 {
     auto *m_ptr = &this->player_ptr->current_floor_ptr->m_list[this->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     if (m_ptr->is_pet()) {
         return (this->player_ptr->pet_follow_distance < 0) && (m_ptr->cdis <= (0 - this->player_ptr->pet_follow_distance));
     }
@@ -138,8 +137,8 @@ void MonsterSweepGrid::check_hiding_grid(POSITION *y, POSITION *x, POSITION *y2,
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[this->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
-    if (this->done || this->will_run || !m_ptr->is_hostile() || none_bits(r_ptr->flags1, RF1_FRIENDS)) {
+    auto *r_ptr = &m_ptr->get_monrace();
+    if (this->done || this->will_run || !m_ptr->is_hostile() || r_ptr->misc_flags.has_not(MonsterMiscType::HAS_FRIENDS)) {
         return;
     }
 
@@ -251,27 +250,29 @@ void MonsterSweepGrid::search_pet_runnable_grid(POSITION *y, POSITION *x, bool n
  */
 void MonsterSweepGrid::sweep_movable_grid(POSITION *yp, POSITION *xp, bool no_flow)
 {
-    auto *floor_ptr = this->player_ptr->current_floor_ptr;
-    auto *m_ptr = &floor_ptr->m_list[this->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto &floor = *this->player_ptr->current_floor_ptr;
+    auto &monster = floor.m_list[this->m_idx];
+    auto &monrace = monster.get_monrace();
     if (!this->check_movable_grid(yp, xp, no_flow)) {
         return;
     }
 
-    auto y1 = m_ptr->fy;
-    auto x1 = m_ptr->fx;
-    auto *g_ptr = &floor_ptr->grid_array[y1][x1];
-    if (player_has_los_bold(this->player_ptr, y1, x1) && projectable(this->player_ptr, this->player_ptr->y, this->player_ptr->x, y1, x1)) {
-        if ((distance(y1, x1, this->player_ptr->y, this->player_ptr->x) == 1) || (r_ptr->freq_spell > 0) || (g_ptr->get_cost(r_ptr) > 5)) {
+    auto y1 = monster.fy;
+    auto x1 = monster.fx;
+    const Pos2D pos(y1, x1);
+    const auto &grid = floor.get_grid(pos);
+    if (grid.has_los() && projectable(this->player_ptr, this->player_ptr->y, this->player_ptr->x, y1, x1)) {
+        if ((distance(y1, x1, this->player_ptr->y, this->player_ptr->x) == 1) || (monrace.freq_spell > 0) || (grid.get_cost(&monrace) > 5)) {
             return;
         }
     }
 
     auto use_scent = false;
-    if (g_ptr->get_cost(r_ptr)) {
+    if (grid.get_cost(&monrace)) {
         this->best = 999;
-    } else if (g_ptr->when) {
-        if (floor_ptr->grid_array[this->player_ptr->y][this->player_ptr->x].when - g_ptr->when > 127) {
+    } else if (grid.when) {
+        const auto p_pos = this->player_ptr->get_position();
+        if (floor.get_grid(p_pos).when - grid.when > 127) {
             return;
         }
 
@@ -317,7 +318,7 @@ bool MonsterSweepGrid::sweep_ranged_attack_grid(POSITION *yp, POSITION *xp)
 {
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[this->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     auto y1 = m_ptr->fy;
     auto x1 = m_ptr->fx;
     if (projectable(this->player_ptr, y1, x1, this->player_ptr->y, this->player_ptr->x)) {
@@ -334,19 +335,18 @@ bool MonsterSweepGrid::sweep_ranged_attack_grid(POSITION *yp, POSITION *xp)
     }
 
     for (auto i = 7; i >= 0; i--) {
-        auto y = y1 + ddy_ddd[i];
-        auto x = x1 + ddx_ddd[i];
-        if (!in_bounds2(floor_ptr, y, x)) {
+        const Pos2D pos(y1 + ddy_ddd[i], x1 + ddx_ddd[i]);
+        if (!in_bounds2(floor_ptr, pos.y, pos.x)) {
             continue;
         }
 
-        if (player_bold(this->player_ptr, y, x)) {
+        if (this->player_ptr->is_located_at(pos)) {
             return false;
         }
 
-        auto *g_ptr = &floor_ptr->grid_array[y][x];
-        this->cost = (int)g_ptr->get_cost(r_ptr);
-        if (!this->is_best_cost(y, x, now_cost)) {
+        const auto &grid = floor_ptr->get_grid(pos);
+        this->cost = grid.get_cost(r_ptr);
+        if (!this->is_best_cost(pos.y, pos.x, now_cost)) {
             continue;
         }
 
@@ -406,7 +406,7 @@ bool MonsterSweepGrid::sweep_runnable_away_grid(POSITION *yp, POSITION *xp)
     auto gx = 0;
     auto *floor_ptr = this->player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[this->m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     auto fy = m_ptr->fy;
     auto fx = m_ptr->fx;
     auto y1 = fy - *yp;

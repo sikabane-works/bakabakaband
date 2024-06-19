@@ -1,4 +1,4 @@
-﻿#include "target/target-describer.h"
+#include "target/target-describer.h"
 #include "action/travel-execution.h"
 #include "core/stuff-handler.h"
 #include "dungeon/quest.h"
@@ -17,7 +17,6 @@
 #include "locale/english.h"
 #include "lore/lore-util.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-flag-types.h"
@@ -34,6 +33,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/system-variables.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-types.h"
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
@@ -66,11 +66,11 @@ public:
     char out_val[MAX_NLEN + 80]{};
     OBJECT_IDX floor_list[23]{};
     ITEM_NUMBER floor_num = 0;
-    grid_type *g_ptr;
+    Grid *g_ptr;
     MonsterEntity *m_ptr;
     OBJECT_IDX next_o_idx = 0;
     FEAT_IDX feat = 0;
-    TerrainType *f_ptr = nullptr;
+    TerrainType *terrain_ptr = nullptr;
     std::string name = "";
 };
 
@@ -93,7 +93,7 @@ bool show_gold_on_floor = false;
  */
 static std::string evaluate_monster_exp(PlayerType *player_ptr, MonsterEntity *m_ptr)
 {
-    MonsterRaceInfo *ap_r_ptr = &monraces_info[m_ptr->ap_r_idx];
+    MonsterRaceInfo *ap_r_ptr = &m_ptr->get_appearance_monrace();
     if ((player_ptr->lev >= PY_MAX_LEVEL) || PlayerRace(player_ptr).equals(PlayerRaceType::ANDROID)) {
         return "**";
     }
@@ -137,7 +137,7 @@ static void describe_scan_result(PlayerType *player_ptr, GridExamination *ge_ptr
 
 static void describe_target(PlayerType *player_ptr, GridExamination *ge_ptr)
 {
-    if (!player_bold(player_ptr, ge_ptr->y, ge_ptr->x)) {
+    if (!player_ptr->is_located_at({ ge_ptr->y, ge_ptr->x })) {
         ge_ptr->s1 = _("ターゲット:", "Target:");
         return;
     }
@@ -220,11 +220,11 @@ static void describe_grid_monster(PlayerType *player_ptr, GridExamination *ge_pt
 
 static void describe_monster_person(GridExamination *ge_ptr)
 {
-    MonsterRaceInfo *ap_r_ptr = &monraces_info[ge_ptr->m_ptr->ap_r_idx];
+    const auto &monrace = ge_ptr->m_ptr->get_appearance_monrace();
     ge_ptr->s1 = _("それは", "It is ");
-    if (ap_r_ptr->flags1 & RF1_FEMALE) {
+    if (monrace.sex == MonsterSex::FEMALE) {
         ge_ptr->s1 = _("彼女は", "She is ");
-    } else if (ap_r_ptr->flags1 & RF1_MALE) {
+    } else if (monrace.sex == MonsterSex::MALE) {
         ge_ptr->s1 = _("彼は", "He is ");
     }
 
@@ -270,7 +270,7 @@ static bool within_char_util(const short input)
 
 static short describe_grid(PlayerType *player_ptr, GridExamination *ge_ptr)
 {
-    if ((ge_ptr->g_ptr->m_idx == 0) || !player_ptr->current_floor_ptr->m_list[ge_ptr->g_ptr->m_idx].ml) {
+    if (!ge_ptr->g_ptr->has_monster() || !player_ptr->current_floor_ptr->m_list[ge_ptr->g_ptr->m_idx].ml) {
         return CONTINUOUS_DESCRIPTION;
     }
 
@@ -368,7 +368,7 @@ static char describe_footing_many_items(PlayerType *player_ptr, GridExamination 
         ge_ptr->g_ptr->o_idx_list.rotate(player_ptr->current_floor_ptr);
 
         // ターゲットしている床の座標を渡す必要があるので、window_stuff経由ではなく直接呼び出す
-        fix_floor_item_list(player_ptr, ge_ptr->y, ge_ptr->x);
+        fix_floor_item_list(player_ptr, { ge_ptr->y, ge_ptr->x });
     }
 }
 
@@ -448,17 +448,15 @@ static int16_t sweep_footing_items(PlayerType *player_ptr, GridExamination *ge_p
 static std::string decide_target_floor(PlayerType *player_ptr, GridExamination *ge_ptr)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (ge_ptr->f_ptr->flags.has(TerrainCharacteristics::QUEST_ENTER)) {
+    if (ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::QUEST_ENTER)) {
         QuestId old_quest = floor_ptr->quest_number;
         const auto &quest_list = QuestList::get_instance();
         const QuestId number = i2enum<QuestId>(ge_ptr->g_ptr->special);
         const auto *q_ptr = &quest_list[number];
         std::string_view msg(_("クエスト「%s」(%d階相当)", "the entrance to the quest '%s'(level %d)"));
-        for (int j = 0; j < 10; j++) {
-            quest_text[j][0] = '\0';
-        }
 
-        quest_text_line = 0;
+        quest_text_lines.clear();
+
         floor_ptr->quest_number = number;
         init_flags = INIT_NAME_ONLY;
         parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
@@ -466,16 +464,16 @@ static std::string decide_target_floor(PlayerType *player_ptr, GridExamination *
         return format(msg.data(), q_ptr->name.data(), q_ptr->level);
     }
 
-    if (ge_ptr->f_ptr->flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena) {
-        return buildings[ge_ptr->f_ptr->subtype].name;
+    if (ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena) {
+        return buildings[ge_ptr->terrain_ptr->subtype].name;
     }
 
-    if (ge_ptr->f_ptr->flags.has(TerrainCharacteristics::ENTRANCE)) {
+    if (ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::ENTRANCE)) {
         const auto &dungeon = dungeons_info[ge_ptr->g_ptr->special];
         return format(_("%s(%d階相当)", "%s(level %d)"), dungeon.text.data(), dungeon.mindepth);
     }
 
-    if (ge_ptr->f_ptr->flags.has(TerrainCharacteristics::TOWN)) {
+    if (ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::TOWN)) {
         return towns_info[ge_ptr->g_ptr->special].name;
     }
 
@@ -483,7 +481,7 @@ static std::string decide_target_floor(PlayerType *player_ptr, GridExamination *
         return _("道", "road");
     }
 
-    return ge_ptr->f_ptr->name;
+    return ge_ptr->terrain_ptr->name;
 }
 
 static void describe_grid_monster_all(GridExamination *ge_ptr)
@@ -560,8 +558,8 @@ char examine_grid(PlayerType *player_ptr, const POSITION y, const POSITION x, ta
         ge_ptr->feat = feat_none;
     }
 
-    ge_ptr->f_ptr = &terrains_info[ge_ptr->feat];
-    if (!ge_ptr->boring && ge_ptr->f_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
+    ge_ptr->terrain_ptr = &TerrainList::get_instance()[ge_ptr->feat];
+    if (!ge_ptr->boring && ge_ptr->terrain_ptr->flags.has_not(TerrainCharacteristics::REMEMBER)) {
         return (ge_ptr->query != '\r') && (ge_ptr->query != '\n') ? ge_ptr->query : 0;
     }
 
@@ -570,27 +568,27 @@ char examine_grid(PlayerType *player_ptr, const POSITION y, const POSITION x, ta
      * 安全を確保できたら構造体から外すことも検討する
      */
     ge_ptr->name = decide_target_floor(player_ptr, ge_ptr);
-    auto is_in = ge_ptr->f_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY });
-    is_in |= ge_ptr->f_ptr->flags.has_none_of({ TerrainCharacteristics::LOS, TerrainCharacteristics::TREE });
-    is_in |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::TOWN);
+    auto is_in = ge_ptr->terrain_ptr->flags.has_none_of({ TerrainCharacteristics::MOVE, TerrainCharacteristics::CAN_FLY });
+    is_in |= ge_ptr->terrain_ptr->flags.has_none_of({ TerrainCharacteristics::LOS, TerrainCharacteristics::TREE });
+    is_in |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::TOWN);
     if (*ge_ptr->s2 && is_in) {
         ge_ptr->s2 = _("の中", "in ");
     }
 
-    auto is_entrance = ge_ptr->f_ptr->flags.has(TerrainCharacteristics::STORE);
-    is_entrance |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::QUEST_ENTER);
-    is_entrance |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::BLDG) && !player_ptr->current_floor_ptr->inside_arena;
-    is_entrance |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::ENTRANCE);
+    auto is_entrance = ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::STORE);
+    is_entrance |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::QUEST_ENTER);
+    is_entrance |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::BLDG) && !player_ptr->current_floor_ptr->inside_arena;
+    is_entrance |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::ENTRANCE);
     if (is_entrance) {
         ge_ptr->s2 = _("の入口", "");
     }
 #ifdef JP
 #else
     else {
-        auto is_normal_terrain = ge_ptr->f_ptr->flags.has(TerrainCharacteristics::FLOOR);
-        is_normal_terrain |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::TOWN);
-        is_normal_terrain |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::SHALLOW);
-        is_normal_terrain |= ge_ptr->f_ptr->flags.has(TerrainCharacteristics::DEEP);
+        auto is_normal_terrain = ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::FLOOR);
+        is_normal_terrain |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::TOWN);
+        is_normal_terrain |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::SHALLOW);
+        is_normal_terrain |= ge_ptr->terrain_ptr->flags.has(TerrainCharacteristics::DEEP);
         if (is_normal_terrain) {
             ge_ptr->s3 = "";
         } else {

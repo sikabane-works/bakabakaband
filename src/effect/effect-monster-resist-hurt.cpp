@@ -1,12 +1,8 @@
-﻿#include "effect/effect-monster-resist-hurt.h"
+#include "effect/effect-monster-resist-hurt.h"
 #include "effect/effect-monster-util.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-brightness-flags.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
@@ -404,7 +400,7 @@ ProcessResult effect_monster_confusion(PlayerType *player_ptr, EffectMonster *em
         em_ptr->obvious = true;
     }
 
-    if ((em_ptr->r_ptr->flags3 & RF3_NO_CONF) == 0) {
+    if (em_ptr->r_ptr->resistance_flags.has_not(MonsterResistanceType::NO_CONF)) {
         em_ptr->do_conf = (10 + randint1(15) + em_ptr->r) / (em_ptr->r + 1);
         return ProcessResult::PROCESS_CONTINUE;
     }
@@ -413,7 +409,7 @@ ProcessResult effect_monster_confusion(PlayerType *player_ptr, EffectMonster *em
     em_ptr->dam *= 3;
     em_ptr->dam /= randint1(6) + 6;
     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-        em_ptr->r_ptr->r_flags3 |= (RF3_NO_CONF);
+        em_ptr->r_ptr->resistance_flags.set(MonsterResistanceType::NO_CONF);
     }
 
     return ProcessResult::PROCESS_CONTINUE;
@@ -758,7 +754,7 @@ ProcessResult effect_monster_abyss(PlayerType *player_ptr, EffectMonster *em_ptr
         }
     }
 
-    if (any_bits(em_ptr->r_ptr->flags2, RF2_ELDRITCH_HORROR) || any_bits(em_ptr->r_ptr->flags2, RF2_EMPTY_MIND)) {
+    if (em_ptr->r_ptr->misc_flags.has(MonsterMiscType::ELDRITCH_HORROR) || em_ptr->r_ptr->misc_flags.has(MonsterMiscType::EMPTY_MIND)) {
         return ProcessResult::PROCESS_CONTINUE;
     }
 
@@ -814,6 +810,22 @@ ProcessResult effect_monster_stungun(PlayerType *player_ptr, EffectMonster *em_p
     em_ptr->dam /= 9;
     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
         em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::IMMUNE_ELEC);
+    }
+
+    return ProcessResult::PROCESS_CONTINUE;
+}
+
+ProcessResult effect_monster_meteor(PlayerType *player_ptr, EffectMonster *em_ptr)
+{
+    if (em_ptr->r_ptr->resistance_flags.has_not(MonsterResistanceType::RESIST_METEOR)) {
+        return ProcessResult::PROCESS_CONTINUE;
+    }
+
+    em_ptr->note = _("には耐性がある！", " resists!");
+    em_ptr->dam *= 3;
+    em_ptr->dam /= randint1(6) + 6;
+    if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
+        em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::RESIST_METEOR);
     }
 
     return ProcessResult::PROCESS_CONTINUE;

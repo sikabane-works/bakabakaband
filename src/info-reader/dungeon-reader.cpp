@@ -1,4 +1,4 @@
-﻿#include "info-reader/dungeon-reader.h"
+#include "info-reader/dungeon-reader.h"
 #include "grid/feature.h"
 #include "info-reader/dungeon-info-tokens-table.h"
 #include "info-reader/feature-reader.h"
@@ -37,27 +37,7 @@ static bool grab_one_dungeon_flag(dungeon_type *d_ptr, std::string_view what)
  */
 static bool grab_one_basic_monster_flag(dungeon_type *d_ptr, std::string_view what)
 {
-    if (info_grab_one_flag(d_ptr->mflags1, r_info_flags1, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(d_ptr->mflags2, r_info_flags2, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(d_ptr->mflags3, r_info_flags3, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(d_ptr->mflags7, r_info_flags7, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(d_ptr->mflags8, r_info_flags8, what)) {
-        return true;
-    }
-
-    if (info_grab_one_flag(d_ptr->mflags9, r_info_flags9, what)) {
+    if (EnumClassFlagGroup<MonsterFeedType>::grab_one_flag(d_ptr->mon_meat_feed_flags, r_info_meat_feed, what)) {
         return true;
     }
 
@@ -101,7 +81,13 @@ static bool grab_one_basic_monster_flag(dungeon_type *d_ptr, std::string_view wh
         return true;
     }
 
-    msg_format(_("未知のモンスター・フラグ '%s'。", "Unknown monster flag '%s'."), what.data());
+    if (EnumClassFlagGroup<MonsterSpecialType>::grab_one_flag(d_ptr->mon_special_flags, r_info_special_flags, what)) {
+        return true;
+    }
+    if (EnumClassFlagGroup<MonsterMiscType>::grab_one_flag(d_ptr->mon_misc_flags, r_info_misc_flags, what)) {
+        return true;
+    }
+
     return false;
 }
 
@@ -166,17 +152,20 @@ errr parse_dungeons_info(std::string_view buf, angband_header *)
     } else if (tokens[0] == "D") {
         // D:text_ja
         // D:$text_en
-        if (tokens.size() < 2 || tokens[1].size() == 0) {
+        if (tokens.size() < 2 || buf.length() < 3) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
 #ifdef JP
-        if (tokens[1][0] == '$') {
+        if (buf[2] == '$') {
             return PARSE_ERROR_NONE;
         }
         d_ptr->text.append(buf.substr(2));
 #else
-        if (tokens[1][0] != '$') {
+        if (buf[2] != '$') {
             return PARSE_ERROR_NONE;
+        }
+        if (buf.length() == 3) {
+            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
         append_english_text(d_ptr->text, buf.substr(3));
 #endif
@@ -329,6 +318,17 @@ errr parse_dungeons_info(std::string_view buf, angband_header *)
         }
     } else if (tokens[0] == "M") {
         // M:monsterflags
+        if (tokens[1] == "X") {
+            if (tokens.size() < 3) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+            uint32_t sex;
+            if (!info_grab_one_const(sex, r_info_sex, tokens[2])) {
+                return PARSE_ERROR_INVALID_FLAG;
+            }
+            d_ptr->mon_sex = static_cast<MonsterSex>(sex);
+            return 0;
+        }
         if (tokens.size() < 2) {
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
@@ -345,7 +345,12 @@ errr parse_dungeons_info(std::string_view buf, angband_header *)
                 continue;
             }
 
-            if (!grab_one_basic_monster_flag(d_ptr, f)) {
+            if (grab_one_basic_monster_flag(d_ptr, f)) {
+                continue;
+            }
+
+            uint32_t sex;
+            if (!info_grab_one_const(sex, r_info_sex, f)) {
                 return PARSE_ERROR_INVALID_FLAG;
             }
         }

@@ -1,4 +1,4 @@
-﻿#include "player/player-damage.h"
+#include "player/player-damage.h"
 #include "autopick/autopick-pref-processor.h"
 #include "avatar/avatar.h"
 #include "blue-magic/blue-magic-checker.h"
@@ -30,8 +30,6 @@
 #include "market/arena-info-table.h"
 #include "mind/mind-mirror-master.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-info.h"
@@ -40,7 +38,6 @@
 #include "object-hook/hook-armor.h"
 #include "object/item-tester-hooker.h"
 #include "object/object-broken.h"
-#include "object/object-flags.h"
 #include "object/object-kind-hook.h"
 #include "player-base/player-class.h"
 #include "player-base/player-race.h"
@@ -110,7 +107,7 @@ static bool acid_minus_ac(PlayerType *player_ptr)
     }
 
     const auto item_name = describe_flavor(player_ptr, o_ptr, OD_OMIT_PREFIX | OD_NAME_ONLY);
-    auto item_flags = object_flags(o_ptr);
+    const auto item_flags = o_ptr->get_flags();
     if (o_ptr->ac + o_ptr->to_a <= 0) {
         msg_format(_("%sは既にボロボロだ！", "Your %s is already fully corroded!"), item_name.data());
         return false;
@@ -392,7 +389,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
                 exe_write_diary(player_ptr, DiaryKind::ARENA, -1 - player_ptr->arena_number, m_name);
             }
         } else {
-            const auto q_idx = quest_number(floor, floor.dun_level);
+            const auto q_idx = floor.get_quest_id();
             const auto seppuku = hit_from == "Seppuku";
             const auto winning_seppuku = w_ptr->total_winner && seppuku;
 
@@ -423,7 +420,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             }
 
             if (winning_seppuku) {
-                add_retired_class(player_ptr->pclass);
+                w_ptr->add_retired_class(player_ptr->pclass);
                 exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
             } else {
                 std::string place;
@@ -450,16 +447,12 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
             player_ptr->death_count++;
             flush();
-            if (get_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), CHECK_NO_HISTORY)) {
+            if (input_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), UserCheck::NO_HISTORY)) {
                 do_cmd_save_screen(player_ptr);
             }
 
             flush();
-            if (player_ptr->last_message) {
-                string_free(player_ptr->last_message);
-            }
-
-            player_ptr->last_message = nullptr;
+            player_ptr->last_message = "";
             if (!last_words) {
 #ifdef JP
                 msg_format("あなたは%sました。", android ? "壊れ" : "死に");
@@ -469,30 +462,28 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
 
                 msg_print(nullptr);
             } else {
-                std::optional<std::string> opt_death_message;
+                std::optional<std::string> death_message_opt;
                 if (winning_seppuku) {
-                    opt_death_message = get_random_line(_("seppuku_j.txt", "seppuku.txt"), 0);
+                    death_message_opt = get_random_line(_("seppuku_j.txt", "seppuku.txt"), 0);
                 } else {
-                    opt_death_message = get_random_line(_("death_j.txt", "death.txt"), 0);
+                    death_message_opt = get_random_line(_("death_j.txt", "death.txt"), 0);
                 }
 
-                auto &death_message = opt_death_message.value();
+                auto &death_message = death_message_opt.value();
                 constexpr auto max_last_words = 1024;
-                char player_last_words[max_last_words]{};
-                angband_strcpy(player_last_words, death_message, max_last_words);
-                do {
-#ifdef JP
-                    while (!get_string(winning_seppuku ? "辞世の句: " : "断末魔の叫び: ", player_last_words, max_last_words)) {
-                        ;
+                const auto prompt = winning_seppuku ? _("辞世の句: ", "Haiku: ") : _("断末魔の叫び: ", "Last words: ");
+                while (true) {
+                    const auto input_last_words = input_string(prompt, max_last_words, death_message);
+                    if (!input_last_words.has_value()) {
+                        continue;
                     }
-#else
-                    while (!get_string("Last words: ", player_last_words, max_last_words)) {
-                        ;
-                    }
-#endif
-                } while (winning_seppuku && !get_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), CHECK_NO_HISTORY));
 
-                death_message = player_last_words;
+                    if (input_check_strict(player_ptr, _("よろしいですか？", "Are you sure? "), UserCheck::NO_HISTORY)) {
+                        death_message = input_last_words.value();
+                        break;
+                    }
+                }
+
                 if (death_message.empty()) {
 #ifdef JP
                     death_message = format("あなたは%sました。", android ? "壊れ" : "死に");
@@ -500,7 +491,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
                     death_message = android ? "You are broken." : "You die.";
 #endif
                 } else {
-                    player_ptr->last_message = string_make(death_message.data());
+                    player_ptr->last_message = death_message;
                 }
 
 #ifdef JP
@@ -611,7 +602,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
  */
 static void process_aura_damage(MonsterEntity *m_ptr, PlayerType *player_ptr, bool immune, MonsterAuraType aura_flag, dam_func dam_func, concptr message)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     if (r_ptr->aura_flags.has_not(aura_flag) || immune) {
         return;
     }

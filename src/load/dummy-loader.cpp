@@ -1,4 +1,4 @@
-﻿#include "load/dummy-loader.h"
+#include "load/dummy-loader.h"
 #include "load/load-util.h"
 #include "load/monster/monster-loader-factory.h"
 #include "load/old/monster-loader-savefile50.h"

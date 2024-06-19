@@ -59,8 +59,6 @@ AC_ARG_ENABLE([xft],
 	AS_HELP_STRING([--enable-xft], [Enable xft support]))
 AC_ARG_ENABLE(worldscore,
 [  --disable-worldscore    disable worldscore support], worldscore=no)
-AC_ARG_ENABLE(chuukei,
-[  --enable-chuukei        enable internet chuukei support], AC_DEFINE(CHUUKEI, 1, [Chuukei mode]))
 AC_ARG_ENABLE([pch],
 [  --disable-pch           disable use of precompiled headers],
 enable_pch=no, enable_pch=yes)
@@ -149,7 +147,6 @@ AC_TYPE_SIZE_T
 AC_STRUCT_TM
 
 dnl Checks for library functions.
-AC_PROG_GCC_TRADITIONAL
 AC_FUNC_MEMCMP
 AC_FUNC_STRFTIME
 AC_FUNC_VPRINTF

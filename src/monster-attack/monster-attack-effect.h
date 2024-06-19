@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 /*!
  * @note モンスターの攻撃効果 / New monster blow effects
@@ -46,6 +46,7 @@ enum class RaceBlowEffectType : int {
     FLAVOR = 36, /*!< モンスターの攻撃効果: フレーバー(メッセージ表示のみ) */
     HUNGRY = 37, /*!< モンスターの攻撃効果: 空腹を進行させる*/
     DEFECATE = 38, /*!< モンスターの攻撃効果: 浣腸*/
+    CHAOS = 39, /*!< モンスターの攻撃効果: カオスを呼び起こす*/
 
     MAX, /*!< 最大値 */
 };

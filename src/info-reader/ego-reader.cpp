@@ -1,4 +1,4 @@
-﻿#include "info-reader/ego-reader.h"
+#include "info-reader/ego-reader.h"
 #include "artifact/random-art-effects.h"
 #include "info-reader/baseitem-tokens-table.h"
 #include "info-reader/info-reader-util.h"
@@ -139,7 +139,7 @@ errr parse_egos_info(std::string_view buf, angband_header *)
             return PARSE_ERROR_TOO_FEW_ARGUMENTS;
         }
 
-        auto n = grab_one_activation_flag(tokens[1].data());
+        auto n = grab_one_activation_flag(tokens[1]);
         if (n <= RandomArtActType::NONE) {
             return PARSE_ERROR_INVALID_FLAG;
         }

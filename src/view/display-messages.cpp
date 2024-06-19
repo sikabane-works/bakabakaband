@@ -1,4 +1,4 @@
-﻿#include "view/display-messages.h"
+#include "view/display-messages.h"
 #include "core/window-redrawer.h"
 #include "game-option/cheat-options.h"
 #include "game-option/input-options.h"
@@ -80,13 +80,13 @@ int32_t message_num(void)
  * @param age メッセージの世代
  * @return メッセージの文字列ポインタ
  */
-concptr message_str(int age)
+std::shared_ptr<const std::string> message_str(int age)
 {
     if ((age < 0) || (age >= message_num())) {
-        return "";
+        return std::make_shared<const std::string>("");
     }
 
-    return message_history[age]->data();
+    return message_history[age];
 }
 
 static void message_add_aux(std::string str)
@@ -253,7 +253,7 @@ static void msg_flush(PlayerType *player_ptr, int x)
         }
     }
 
-    term_erase(0, 0, 255);
+    term_erase(0, 0);
 }
 
 void msg_erase(void)
@@ -331,7 +331,7 @@ void msg_print(std::string_view msg)
     }
 
     if (!msg_flag) {
-        term_erase(0, 0, 255);
+        term_erase(0, 0);
         msg_head_pos = 0;
     }
 
@@ -340,7 +340,10 @@ void msg_print(std::string_view msg)
         msg = msg_includes_turn = format("T:%d - %s", w_ptr->game_turn, msg.data());
     }
 
-    if ((msg_head_pos > 0) && ((msg_head_pos + msg.size()) > 72)) {
+    const auto &[wid, hgt] = term_get_size();
+    const auto split_width = wid - 8;
+
+    if ((msg_head_pos > 0) && ((msg_head_pos + std::ssize(msg)) > split_width)) {
         msg_flush(p_ptr, msg_head_pos);
         msg_flag = false;
         msg_head_pos = 0;
@@ -354,8 +357,8 @@ void msg_print(std::string_view msg)
         message_add(msg);
     }
 
-    while (msg.size() > 72) {
-        auto split = split_length(msg, 72);
+    while (std::ssize(msg) > split_width) {
+        auto split = split_length(msg, split_width);
         term_putstr(0, 0, split, TERM_WHITE, msg.data());
         msg_flush(p_ptr, split + 1);
         msg.remove_prefix(split);
@@ -380,7 +383,7 @@ void msg_print(std::nullptr_t)
     }
 
     if (!msg_flag) {
-        term_erase(0, 0, 255);
+        term_erase(0, 0);
         msg_head_pos = 0;
     }
 
@@ -391,15 +394,12 @@ void msg_print(std::nullptr_t)
     }
 }
 
-/*
- * Display a formatted message, using "vstrnfmt()" and "msg_print()".
- */
-void msg_format(std::string_view fmt, ...)
+void msg_format(const char *fmt, ...)
 {
     va_list vp;
     char buf[1024];
     va_start(vp, fmt);
-    (void)vstrnfmt(buf, sizeof(buf), fmt.data(), vp);
+    (void)vstrnfmt(buf, sizeof(buf), fmt, vp);
     va_end(vp);
     msg_print(buf);
 }

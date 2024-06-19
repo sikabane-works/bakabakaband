@@ -1,5 +1,4 @@
-﻿#include "window/display-sub-windows.h"
-#include "core/window-redrawer.h"
+#include "window/display-sub-windows.h"
 #include "flavor/flavor-describer.h"
 #include "floor/cave.h"
 #include "game-option/option-flags.h"
@@ -7,7 +6,6 @@
 #include "game-option/text-display-options.h"
 #include "grid/feature.h"
 #include "inventory/inventory-describer.h"
-#include "inventory/inventory-slot-types.h"
 #include "inventory/inventory-util.h"
 #include "locale/japanese.h"
 #include "main/sound-of-music.h"
@@ -16,41 +14,29 @@
 #include "mind/mind-sniper.h"
 #include "mind/mind-types.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster/monster-flag-types.h"
-#include "monster/monster-info.h"
-#include "monster/monster-status.h"
+#include "monster/monster-describer.h"
+#include "monster/monster-description-types.h"
 #include "object/item-tester-hooker.h"
 #include "object/object-info.h"
-#include "object/object-mark-types.h"
 #include "player-base/player-class.h"
 #include "player-info/class-info.h"
 #include "player/player-status-flags.h"
 #include "player/player-status-table.h"
 #include "player/player-status.h"
 #include "realm/realm-names-table.h"
-#include "spell-kind/magic-item-recharger.h"
 #include "spell/spells-execution.h"
-#include "spell/technic-info-table.h"
-#include "system/baseitem-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
 #include "system/item-entity.h"
 #include "system/monster-entity.h"
 #include "system/monster-race-info.h"
-#include "system/player-type-definition.h"
-#include "system/redrawing-flags-updater.h"
-#include "target/target-describer.h"
+#include "system/terrain-type-definition.h"
 #include "target/target-preparation.h"
-#include "target/target-setter.h"
-#include "target/target-types.h"
 #include "term/gameterm.h"
 #include "term/screen-processor.h"
-#include "term/term-color-types.h"
 #include "timed-effect/player-hallucination.h"
 #include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
-#include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
 #include "view/display-lore.h"
 #include "view/display-map.h"
@@ -145,7 +131,7 @@ static void print_monster_line(TERM_LEN x, TERM_LEN y, MonsterEntity *m_ptr, int
     MonsterRaceId r_idx = m_ptr->ap_r_idx;
     auto *r_ptr = &monraces_info[r_idx];
 
-    term_erase(0, y, 255);
+    term_erase(0, y);
     term_gotoxy(x, y);
     if (!r_ptr) {
         return;
@@ -229,7 +215,51 @@ void print_monster_list(FloorType *floor_ptr, const std::vector<MONSTER_IDX> &mo
     }
 
     for (; line < max_lines; line++) {
-        term_erase(0, line, 255);
+        term_erase(0, line);
+    }
+}
+
+static void print_pet_list_oneline(PlayerType *player_ptr, const MonsterEntity &monster, TERM_LEN x, TERM_LEN y, TERM_LEN width)
+{
+    const auto &monrace = monster.get_appearance_monrace();
+    const auto name = monster_desc(player_ptr, &monster, MD_ASSUME_VISIBLE | MD_INDEF_VISIBLE | MD_NO_OWNER);
+    const auto &[bar_color, bar_len] = monster.get_hp_bar_data();
+    const auto is_visible = monster.ml && !player_ptr->effects()->hallucination()->is_hallucinated();
+
+    term_erase(0, y);
+    if (is_visible) {
+        term_putstr(x, y, -1, TERM_WHITE, "[----------]");
+        term_putstr(x + 1, y, bar_len, bar_color, "**********");
+    }
+
+    term_gotoxy(x + 13, y);
+    term_add_bigch(monrace.x_attr, monrace.x_char);
+    term_addstr(-1, TERM_WHITE, " ");
+    term_addstr(-1, TERM_WHITE, name);
+
+    if (width >= 50) {
+        const auto location = format(" (X:%3d Y:%3d)", monster.fx, monster.fy);
+        prt(is_visible ? location : "", y, width - location.length());
+    }
+}
+
+static void print_pet_list(PlayerType *player_ptr, const std::vector<MONSTER_IDX> &pets, TERM_LEN x, TERM_LEN y, TERM_LEN width, TERM_LEN height)
+{
+    for (auto n = 0U; n < pets.size(); ++n) {
+        const auto &monster = player_ptr->current_floor_ptr->m_list[pets[n]];
+        const int line = y + n;
+
+        print_pet_list_oneline(player_ptr, monster, x, line, width);
+
+        if ((line == height - 2) && (n < pets.size() - 2)) {
+            term_erase(0, line + 1);
+            term_putstr(x, line + 1, -1, TERM_WHITE, "-- and more --");
+            break;
+        }
+    }
+
+    for (int n = pets.size(); n < height; ++n) {
+        term_erase(0, y + n);
     }
 }
 
@@ -244,16 +274,28 @@ void fix_monster_list(PlayerType *player_ptr)
 
     display_sub_windows(SubWindowRedrawingFlag::SIGHT_MONSTERS,
         [player_ptr, &once] {
-            int w, h;
-            term_get_size(&w, &h);
+            const auto &[wid, hgt] = term_get_size();
             std::call_once(once, target_sensing_monsters_prepare, player_ptr, monster_list);
-            print_monster_list(player_ptr->current_floor_ptr, monster_list, 0, 0, h);
+            print_monster_list(player_ptr->current_floor_ptr, monster_list, 0, 0, hgt);
         });
 
     if (use_music && has_monster_music) {
         std::call_once(once, target_sensing_monsters_prepare, player_ptr, monster_list);
         select_monster_music(player_ptr, monster_list);
     }
+}
+
+/*!
+ * @brief 視界内のペットのリストをサブウィンドウに表示する
+ */
+void fix_pet_list(PlayerType *player_ptr)
+{
+    display_sub_windows(SubWindowRedrawingFlag::PETS,
+        [player_ptr] {
+            const auto &[wid, hgt] = term_get_size();
+            const auto pets = target_pets_prepare(player_ptr);
+            print_pet_list(player_ptr, pets, 0, 0, wid, hgt);
+        });
 }
 
 /*!
@@ -266,8 +308,7 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
         return;
     }
 
-    TERM_LEN wid, hgt;
-    term_get_size(&wid, &hgt);
+    const auto &[wid, hgt] = term_get_size();
     byte attr = TERM_WHITE;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
         int cur_row = i - INVEN_MAIN_HAND;
@@ -285,7 +326,7 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
         }
 
         int cur_col = 3;
-        term_erase(cur_col, cur_row, 255);
+        term_erase(cur_col, cur_row);
         term_putstr(0, cur_row, cur_col, TERM_WHITE, tmp_val);
 
         std::string item_name;
@@ -329,7 +370,7 @@ static void display_equipment(PlayerType *player_ptr, const ItemTester &item_tes
     }
 
     for (int i = INVEN_TOTAL - INVEN_MAIN_HAND; i < hgt; i++) {
-        term_erase(0, i, 255);
+        term_erase(0, i);
     }
 }
 
@@ -353,7 +394,7 @@ void fix_equip(PlayerType *player_ptr)
  */
 void fix_player(PlayerType *player_ptr)
 {
-    update_playtime();
+    w_ptr->update_playtime();
     display_sub_windows(SubWindowRedrawingFlag::PLAYER,
         [player_ptr] {
             display_player(player_ptr, 0);
@@ -369,13 +410,12 @@ void fix_message(void)
 {
     display_sub_windows(SubWindowRedrawingFlag::MESSAGE,
         [] {
-            TERM_LEN w, h;
-            term_get_size(&w, &h);
-            for (int i = 0; i < h; i++) {
-                term_putstr(0, (h - 1) - i, -1, (byte)((i < now_message) ? TERM_WHITE : TERM_SLATE), message_str((int16_t)i));
+            const auto &[wid, hgt] = term_get_size();
+            for (short i = 0; i < hgt; i++) {
+                term_putstr(0, (hgt - 1) - i, -1, (byte)((i < now_message) ? TERM_WHITE : TERM_SLATE), *message_str(i));
                 TERM_LEN x, y;
                 term_locate(&x, &y);
-                term_erase(x, y, 255);
+                term_erase(x, y);
             }
         });
 }
@@ -392,8 +432,7 @@ void fix_overhead(PlayerType *player_ptr)
 {
     display_sub_windows(SubWindowRedrawingFlag::OVERHEAD,
         [player_ptr] {
-            TERM_LEN wid, hgt;
-            term_get_size(&wid, &hgt);
+            const auto &[wid, hgt] = term_get_size();
             if (wid > COL_MAP + 2 && hgt > ROW_MAP + 2) {
                 int cy, cx;
                 display_map(player_ptr, &cy, &cx);
@@ -415,9 +454,9 @@ static void display_dungeon(PlayerType *player_ptr)
             TERM_COLOR a;
             char c;
             if (!in_bounds2(player_ptr->current_floor_ptr, y, x)) {
-                auto *f_ptr = &terrains_info[feat_none];
-                a = f_ptr->x_attr[F_LIT_STANDARD];
-                c = f_ptr->x_char[F_LIT_STANDARD];
+                const auto &terrain = TerrainList::get_instance()[feat_none];
+                a = terrain.x_attr[F_LIT_STANDARD];
+                c = terrain.x_char[F_LIT_STANDARD];
                 term_queue_char(x - player_ptr->x + game_term->wid / 2 - 1, y - player_ptr->y + game_term->hgt / 2 - 1, a, c, ta, tc);
                 continue;
             }
@@ -488,9 +527,9 @@ void fix_object(PlayerType *player_ptr)
  * @details
  * Lookコマンドでカーソルを合わせた場合に合わせてミミックは考慮しない。
  */
-static const MonsterEntity *monster_on_floor_items(FloorType *floor_ptr, const grid_type *g_ptr)
+static const MonsterEntity *monster_on_floor_items(FloorType *floor_ptr, const Grid *g_ptr)
 {
-    if (g_ptr->m_idx == 0) {
+    if (!g_ptr->has_monster()) {
         return nullptr;
     }
 
@@ -508,15 +547,10 @@ static const MonsterEntity *monster_on_floor_items(FloorType *floor_ptr, const g
  * @param y 参照する座標グリッドのy座標
  * @param x 参照する座標グリッドのx座標
  */
-static void display_floor_item_list(PlayerType *player_ptr, const int y, const int x)
+static void display_floor_item_list(PlayerType *player_ptr, const Pos2D &pos)
 {
-    // Term の行数を取得。
-    TERM_LEN term_h;
-    {
-        TERM_LEN term_w;
-        term_get_size(&term_w, &term_h);
-    }
-    if (term_h <= 0) {
+    const auto &[wid, hgt] = term_get_size();
+    if (hgt <= 0) {
         return;
     }
 
@@ -524,33 +558,32 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
     term_gotoxy(0, 0);
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    const auto *g_ptr = &floor_ptr->grid_array[y][x];
-    char line[1024];
+    const auto *g_ptr = &floor_ptr->get_grid(pos);
+    std::string line;
 
     // 先頭行を書く。
     auto is_hallucinated = player_ptr->effects()->hallucination()->is_hallucinated();
-    if (player_bold(player_ptr, y, x)) {
-        sprintf(line, _("(X:%03d Y:%03d) あなたの足元のアイテム一覧", "Items at (%03d,%03d) under you"), x, y);
+    if (player_ptr->is_located_at(pos)) {
+        line = format(_("(X:%03d Y:%03d) あなたの足元のアイテム一覧", "Items at (%03d,%03d) under you"), pos.x, pos.y);
     } else if (const auto *m_ptr = monster_on_floor_items(floor_ptr, g_ptr); m_ptr != nullptr) {
         if (is_hallucinated) {
-            sprintf(line, _("(X:%03d Y:%03d) 何か奇妙な物の足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under something strange"), x, y);
+            line = format(_("(X:%03d Y:%03d) 何か奇妙な物の足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under something strange"), pos.x, pos.y);
         } else {
-            const MonsterRaceInfo *const r_ptr = &monraces_info[m_ptr->ap_r_idx];
-            sprintf(line, _("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), x, y, r_ptr->name.data());
+            const MonsterRaceInfo *const r_ptr = &m_ptr->get_appearance_monrace();
+            line = format(_("(X:%03d Y:%03d) %sの足元の発見済みアイテム一覧", "Found items at (%03d,%03d) under %s"), pos.x, pos.y, r_ptr->name.data());
         }
     } else {
-        const TerrainType *const f_ptr = &terrains_info[g_ptr->feat];
-        concptr fn = f_ptr->name.data();
-        char buf[512];
-
-        if (f_ptr->flags.has(TerrainCharacteristics::STORE) || (f_ptr->flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena)) {
-            sprintf(buf, _("%sの入口", "on the entrance of %s"), fn);
-        } else if (f_ptr->flags.has(TerrainCharacteristics::WALL)) {
-            sprintf(buf, _("%sの中", "in %s"), fn);
+        const auto &terrain = g_ptr->get_terrain();
+        const auto fn = terrain.name.data();
+        std::string buf;
+        if (terrain.flags.has(TerrainCharacteristics::STORE) || (terrain.flags.has(TerrainCharacteristics::BLDG) && !floor_ptr->inside_arena)) {
+            buf = format(_("%sの入口", "on the entrance of %s"), fn);
+        } else if (terrain.flags.has(TerrainCharacteristics::WALL)) {
+            buf = format(_("%sの中", "in %s"), fn);
         } else {
-            sprintf(buf, _("%s", "on %s"), fn);
+            buf = format(_("%s", "on %s"), fn);
         }
-        sprintf(line, _("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), x, y, buf);
+        line = format(_("(X:%03d Y:%03d) %sの上の発見済みアイテム一覧", "Found items at (X:%03d Y:%03d) %s"), pos.x, pos.y, buf.data());
     }
     term_addstr(-1, TERM_WHITE, line);
 
@@ -564,7 +597,7 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
         }
 
         // 途中で行数が足りなくなったら最終行にその旨追記して終了。
-        if (term_y >= term_h) {
+        if (term_y >= hgt) {
             term_addstr(-1, TERM_WHITE, "-- more --");
             break;
         }
@@ -586,11 +619,11 @@ static void display_floor_item_list(PlayerType *player_ptr, const int y, const i
 /*!
  * @brief (y,x) のアイテム一覧をサブウィンドウに表示する / display item at (y,x) in sub-windows
  */
-void fix_floor_item_list(PlayerType *player_ptr, const int y, const int x)
+void fix_floor_item_list(PlayerType *player_ptr, const Pos2D &pos)
 {
     display_sub_windows(SubWindowRedrawingFlag::FLOOR_ITEMS,
-        [player_ptr, y, x] {
-            display_floor_item_list(player_ptr, y, x);
+        [player_ptr, pos] {
+            display_floor_item_list(player_ptr, pos);
         });
 }
 
@@ -600,12 +633,8 @@ void fix_floor_item_list(PlayerType *player_ptr, const int y, const int x)
  */
 static void display_found_item_list(PlayerType *player_ptr)
 {
-    // Term の行数を取得。
-    TERM_LEN term_h;
-    TERM_LEN term_w;
-    term_get_size(&term_w, &term_h);
-
-    if (term_h <= 0) {
+    const auto &[wid, hgt] = term_get_size();
+    if (hgt <= 0) {
         return;
     }
 
@@ -643,7 +672,7 @@ static void display_found_item_list(PlayerType *player_ptr)
     TERM_LEN term_y = 1;
     for (auto item : found_item_list) {
         // 途中で行数が足りなくなったら終了。
-        if (term_y >= term_h) {
+        if (term_y >= hgt) {
             break;
         }
 
@@ -661,7 +690,7 @@ static void display_found_item_list(PlayerType *player_ptr)
 
         // アイテム座標表示
         const auto item_location = format("(X:%3d Y:%3d)", item->ix, item->iy);
-        prt(item_location, term_y, term_w - item_location.length() - 1);
+        prt(item_location, term_y, wid - item_location.length() - 1);
 
         ++term_y;
     }
@@ -690,7 +719,6 @@ static void display_spell_list(PlayerType *player_ptr)
     TERM_LEN y, x;
     int m[9];
     const magic_type *s_ptr;
-    GAME_TEXT name[MAX_NLEN];
 
     clear_from(0);
 
@@ -806,10 +834,10 @@ static void display_spell_list(PlayerType *player_ptr)
 
             const auto realm = (j < 1) ? player_ptr->realm1 : player_ptr->realm2;
             const auto spell_name = exe_spell(player_ptr, realm, i % 32, SpellProcessType::NAME);
-            strcpy(name, spell_name->data());
+            auto name = spell_name->data();
 
             if (s_ptr->slevel >= 99) {
-                strcpy(name, _("(判読不能)", "(illegible)"));
+                name = _("(判読不能)", "(illegible)");
                 a = TERM_L_DARK;
             } else if ((j < 1) ? ((player_ptr->spell_forgotten1 & (1UL << i))) : ((player_ptr->spell_forgotten2 & (1UL << (i % 32))))) {
                 a = TERM_ORANGE;

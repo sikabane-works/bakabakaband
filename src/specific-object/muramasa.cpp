@@ -1,4 +1,4 @@
-﻿#include "specific-object/muramasa.h"
+#include "specific-object/muramasa.h"
 #include "artifact/fixed-art-types.h"
 #include "core/asking-player.h"
 #include "spell/spells-object.h"
@@ -13,7 +13,7 @@ bool activate_muramasa(PlayerType *player_ptr, ItemEntity *o_ptr)
         return false;
     }
 
-    if (!get_check(_("本当に使いますか？", "Are you sure?! "))) {
+    if (!input_check(_("本当に使いますか？", "Are you sure?! "))) {
         return true;
     }
 

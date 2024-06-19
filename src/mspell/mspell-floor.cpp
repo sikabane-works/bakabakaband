@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief フロアの一定範囲に効果を及ぼす (悲鳴、テレポート等)スペルの効果
  * @date 2020/05/16
  * @author Hourier
@@ -15,9 +15,6 @@
 #include "monster-race/race-ability-flags.h"
 #include "monster-race/race-brightness-mask.h"
 #include "monster-race/race-flags-resistance.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
 #include "monster-race/race-indice-types.h"
 #include "monster-race/race-resistance-mask.h"
 #include "monster/monster-info.h"
@@ -181,8 +178,8 @@ MonsterSpellResult spell_RF6_TELE_TO(PlayerType *player_ptr, MONSTER_IDX m_idx, 
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    MonsterEntity *t_ptr = &floor_ptr->m_list[t_idx];
-    MonsterRaceInfo *tr_ptr = &monraces_info[t_ptr->r_idx];
+    auto *t_ptr = &floor_ptr->m_list[t_idx];
+    auto *tr_ptr = &t_ptr->get_monrace();
 
     mspell_cast_msg_simple msg(_("%s^があなたを引き戻した。", "%s^ commands you to return."),
         _("%s^が%sを引き戻した。", "%s^ commands %s to return."));
@@ -252,7 +249,7 @@ MonsterSpellResult spell_RF6_TELE_AWAY(PlayerType *player_ptr, MONSTER_IDX m_idx
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
     MonsterEntity *t_ptr = &floor_ptr->m_list[t_idx];
-    MonsterRaceInfo *tr_ptr = &monraces_info[t_ptr->r_idx];
+    MonsterRaceInfo *tr_ptr = &t_ptr->get_monrace();
 
     mspell_cast_msg_simple msg(_("%s^にテレポートさせられた。", "%s^ teleports you away."),
         _("%s^は%sをテレポートさせた。", "%s^ teleports %s away."));
@@ -333,7 +330,7 @@ MonsterSpellResult spell_RF6_TELE_LEVEL(PlayerType *player_ptr, MONSTER_IDX m_id
 
     auto *floor_ptr = player_ptr->current_floor_ptr;
     MonsterEntity *t_ptr = &floor_ptr->m_list[t_idx];
-    MonsterRaceInfo *tr_ptr = &monraces_info[t_ptr->r_idx];
+    MonsterRaceInfo *tr_ptr = &t_ptr->get_monrace();
     DEPTH rlev = monster_level_idx(floor_ptr, m_idx);
     bool resist, saving_throw;
 
@@ -360,7 +357,7 @@ MonsterSpellResult spell_RF6_TELE_LEVEL(PlayerType *player_ptr, MONSTER_IDX m_id
     }
 
     resist = tr_ptr->resistance_flags.has_any_of(RFR_EFF_RESIST_NEXUS_MASK) || tr_ptr->resistance_flags.has(MonsterResistanceType::RESIST_TELEPORT);
-    saving_throw = (tr_ptr->flags1 & RF1_QUESTOR) || (tr_ptr->level > randint1((rlev - 10) < 1 ? 1 : (rlev - 10)) + 10);
+    saving_throw = (tr_ptr->misc_flags.has(MonsterMiscType::QUESTOR)) || (tr_ptr->level > randint1((rlev - 10) < 1 ? 1 : (rlev - 10)) + 10);
 
     mspell_cast_msg_bad_status_to_monster msg(_("%s^が%sの足を指さした。", "%s^ gestures at %s's feet."),
         _("%s^には効果がなかった。", "%s^ is unaffected!"), _("%s^は効力を跳ね返した！", "%s^ resist the effects!"), "");
@@ -391,7 +388,7 @@ MonsterSpellResult spell_RF6_DARKNESS(PlayerType *player_ptr, POSITION y, POSITI
     concptr msg_done;
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     bool can_use_lite_area = false;
     bool monster_to_monster = target_type == MONSTER_TO_MONSTER;
     bool monster_to_player = target_type == MONSTER_TO_PLAYER;

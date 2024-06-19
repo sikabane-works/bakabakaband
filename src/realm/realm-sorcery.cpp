@@ -1,4 +1,4 @@
-﻿#include "realm/realm-sorcery.h"
+#include "realm/realm-sorcery.h"
 #include "avatar/avatar.h"
 #include "cmd-action/cmd-spell.h"
 #include "core/asking-player.h"
@@ -508,7 +508,7 @@ std::optional<std::string> do_sorcery_spell(PlayerType *player_ptr, SPELL_IDX sp
 
         {
             if (cast) {
-                if (!get_check(_("本当に他の階にテレポートしますか？", "Are you sure? (Teleport Level)"))) {
+                if (!input_check(_("本当に他の階にテレポートしますか？", "Are you sure? (Teleport Level)"))) {
                     return std::nullopt;
                 }
                 teleport_level(player_ptr, 0);

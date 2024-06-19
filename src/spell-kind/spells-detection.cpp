@@ -1,16 +1,13 @@
-﻿#include "spell-kind/spells-detection.h"
+#include "spell-kind/spells-detection.h"
 #include "core/window-redrawer.h"
 #include "dungeon/dungeon-flag-types.h"
 #include "floor/cave.h"
 #include "floor/floor-save-util.h"
 #include "floor/geometry.h"
-#include "grid/feature.h"
 #include "grid/grid.h"
 #include "grid/trap.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
@@ -27,6 +24,7 @@
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
+#include "system/terrain-type-definition.h"
 #include "util/string-processor.h"
 #include "view/display-messages.h"
 
@@ -353,7 +351,7 @@ bool detect_monsters_normal(PlayerType *player_ptr, POSITION range)
     bool flag = false;
     for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
         auto *m_ptr = &floor.m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
         if (!m_ptr->is_valid()) {
             continue;
         }
@@ -364,7 +362,7 @@ bool detect_monsters_normal(PlayerType *player_ptr, POSITION range)
             continue;
         }
 
-        if (!(r_ptr->flags2 & RF2_INVISIBLE) || player_ptr->see_inv) {
+        if (r_ptr->misc_flags.has_not(MonsterMiscType::INVISIBLE) || player_ptr->see_inv) {
             m_ptr->mflag2.set({ MonsterConstantFlagType::MARK, MonsterConstantFlagType::SHOW });
             update_monster(player_ptr, i, false);
             flag = true;
@@ -398,7 +396,7 @@ bool detect_monsters_invis(PlayerType *player_ptr, POSITION range)
     auto flag = false;
     for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
         auto *m_ptr = &floor.m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
 
         if (!m_ptr->is_valid()) {
             continue;
@@ -411,7 +409,7 @@ bool detect_monsters_invis(PlayerType *player_ptr, POSITION range)
             continue;
         }
 
-        if (r_ptr->flags2 & RF2_INVISIBLE) {
+        if (r_ptr->misc_flags.has(MonsterMiscType::INVISIBLE)) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
                 rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
             }
@@ -449,7 +447,7 @@ bool detect_monsters_evil(PlayerType *player_ptr, POSITION range)
     auto flag = false;
     for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
         auto *m_ptr = &floor.m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
         if (!m_ptr->is_valid()) {
             continue;
         }
@@ -544,7 +542,7 @@ bool detect_monsters_mind(PlayerType *player_ptr, POSITION range)
     auto flag = false;
     for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
         auto *m_ptr = &floor.m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
         if (!m_ptr->is_valid()) {
             continue;
         }
@@ -556,7 +554,7 @@ bool detect_monsters_mind(PlayerType *player_ptr, POSITION range)
             continue;
         }
 
-        if (!(r_ptr->flags2 & RF2_EMPTY_MIND)) {
+        if (r_ptr->misc_flags.has_not(MonsterMiscType::EMPTY_MIND)) {
             if (player_ptr->monster_race_idx == m_ptr->r_idx) {
                 rfu.set_flag(SubWindowRedrawingFlag::MONSTER_LORE);
             }
@@ -592,7 +590,7 @@ bool detect_monsters_string(PlayerType *player_ptr, POSITION range, concptr Matc
     auto flag = false;
     for (MONSTER_IDX i = 1; i < floor.m_max; i++) {
         auto *m_ptr = &floor.m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
+        auto *r_ptr = &m_ptr->get_monrace();
         if (!m_ptr->is_valid()) {
             continue;
         }

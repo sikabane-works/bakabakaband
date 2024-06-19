@@ -1,4 +1,4 @@
-﻿#include "inventory/player-inventory.h"
+#include "inventory/player-inventory.h"
 #include "autopick/autopick.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
@@ -65,12 +65,12 @@ bool can_get_item(PlayerType *player_ptr, const ItemTester &item_tester)
  */
 static bool py_pickup_floor_aux(PlayerType *player_ptr)
 {
-    OBJECT_IDX this_o_idx;
-    OBJECT_IDX item;
-    concptr q = _("どれを拾いますか？", "Get which item? ");
-    concptr s = _("もうザックには床にあるどのアイテムも入らない。", "You no longer have any room for the objects on the floor.");
-    if (choose_object(player_ptr, &item, q, s, (USE_FLOOR), FuncItemTester(check_store_item_to_inventory, player_ptr))) {
-        this_o_idx = 0 - item;
+    short this_o_idx;
+    short i_idx;
+    constexpr auto q = _("どれを拾いますか？", "Get which item? ");
+    constexpr auto s = _("もうザックには床にあるどのアイテムも入らない。", "You no longer have any room for the objects on the floor.");
+    if (choose_object(player_ptr, &i_idx, q, s, (USE_FLOOR), FuncItemTester(check_store_item_to_inventory, player_ptr))) {
+        this_o_idx = 0 - i_idx;
     } else {
         return false;
     }
@@ -166,7 +166,7 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
     auto *o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
     const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
     strnfmt(out_val, sizeof(out_val), _("%sを拾いますか? ", "Pick up %s? "), item_name.data());
-    if (!get_check(out_val)) {
+    if (!input_check(out_val)) {
         return;
     }
 
@@ -295,7 +295,7 @@ void carry(PlayerType *player_ptr, bool pickup)
         if (carry_query_flag) {
             char out_val[MAX_NLEN + 20];
             strnfmt(out_val, sizeof(out_val), _("%sを拾いますか? ", "Pick up %s? "), item_name.data());
-            is_pickup_successful = get_check(out_val);
+            is_pickup_successful = input_check(out_val);
         }
 
         if (is_pickup_successful) {

@@ -1,17 +1,21 @@
-﻿#pragma once
+#pragma once
 
 #include "market/bounty-type-definition.h"
 #include "player-info/class-types.h"
 #include "system/angband.h"
 #include "util/flag-group.h"
-#include "util/rng-xoshiro.h"
+#include <tuple>
 
 constexpr auto MAX_BOUNTY = 20;
 
 /*!
  * @brief 世界情報構造体
  */
-struct world_type {
+enum term_color_type : unsigned char;
+enum class PlayerRaceType;
+class AngbandWorld {
+public:
+    AngbandWorld() = default;
 
     POSITION max_wild_x{}; /*!< Maximum size of the wilderness */
     POSITION max_wild_y{}; /*!< Maximum size of the wilderness */
@@ -31,19 +35,7 @@ struct world_type {
 
     uint32_t play_time{}; /*!< 実プレイ時間 */
 
-    Xoshiro128StarStar rng; //!< Uniform random bit generator for <random>
-
-    uint32_t seed_flavor{}; /* Hack -- consistent object colors */
-    uint32_t seed_town{}; /* Hack -- consistent town layout */
-
     bool is_loading_now{}; /*!< ロード処理中フラグ...ロード直後にcalc_bonus()時の徳変化、及びsanity_blast()による異常を抑止する */
-
-    byte h_ver_major{}; //!< 馬鹿馬鹿蛮怒バージョン(メジャー番号) / Hengband version (major ver.)
-    byte h_ver_minor{}; //!< 馬鹿馬鹿蛮怒バージョン(マイナー番号) / Hengband version (minor ver.)
-    byte h_ver_patch{}; //!< 馬鹿馬鹿蛮怒バージョン(パッチ番号) / Hengband version (patch ver.)
-    byte h_ver_extra{}; //!< 馬鹿馬鹿蛮怒バージョン(エクストラ番号) / Hengband version (extra ver.)
-
-    byte sf_extra{}; //!< セーブファイルエンコードキー(XOR)
 
     uint32_t sf_system{}; //!< OS情報 / OS information
     uint32_t sf_when{}; //!< 作成日時 / Created Date
@@ -65,17 +57,20 @@ struct world_type {
 
     bool wizard{}; /* This world under wizard mode */
 
-    OBJECT_IDX max_o_idx = 1024; /*!< 1フロアに存在可能な最大アイテム数 */
-    MONSTER_IDX max_m_idx = 1024; /*!< 1フロアに存在可能な最大モンスター数 */
+    void set_arena(const bool new_status);
+    bool get_arena() const;
+    std::tuple<int, int, int> extract_date_time(PlayerRaceType start_race) const;
+    bool is_daytime() const;
+    void update_playtime();
+    void add_winner_class(PlayerClassType c);
+    void add_retired_class(PlayerClassType c);
+    term_color_type get_birth_class_color(PlayerClassType c) const;
+
+private:
+    bool is_out_arena = false; // アリーナ外部にいる時だけtrue.
+
+    bool is_winner_class(PlayerClassType c) const;
+    bool is_retired_class(PlayerClassType c) const;
 };
 
-extern world_type *w_ptr;
-
-class PlayerType;
-bool is_daytime(void);
-void extract_day_hour_min(PlayerType *player_ptr, int *day, int *hour, int *min);
-void update_playtime(void);
-void add_winner_class(PlayerClassType c);
-void add_retired_class(PlayerClassType c);
-bool is_winner_class(PlayerClassType c);
-bool is_retired_class(PlayerClassType c);
+extern AngbandWorld *w_ptr;

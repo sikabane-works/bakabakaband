@@ -1,4 +1,4 @@
-﻿#include "object/warning.h"
+#include "object/warning.h"
 #include "artifact/fixed-art-types.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
@@ -14,14 +14,12 @@
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
-#include "monster-race/race-flags1.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status.h"
 #include "mspell/mspell-damage-calculator.h"
 #include "mutation/mutation-flag-types.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-flags.h"
 #include "player-base/player-race.h"
 #include "player/player-status-flags.h"
 #include "player/player-status-resist.h"
@@ -57,10 +55,8 @@ ItemEntity *choose_warning_item(PlayerType *player_ptr)
     /* Search Inventory */
     std::vector<int> candidates;
     for (int i = INVEN_MAIN_HAND; i < INVEN_TOTAL; i++) {
-        auto *o_ptr = &player_ptr->inventory_list[i];
-
-        auto flags = object_flags(o_ptr);
-        if (flags.has(TR_WARNING)) {
+        const auto *o_ptr = &player_ptr->inventory_list[i];
+        if (o_ptr->get_flags().has(TR_WARNING)) {
             candidates.push_back(i);
         }
     }
@@ -79,7 +75,7 @@ ItemEntity *choose_warning_item(PlayerType *player_ptr)
  */
 static void spell_damcalc(PlayerType *player_ptr, MonsterEntity *m_ptr, AttributeType typ, int dam, int *max)
 {
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     int rlev = r_ptr->level;
     bool ignore_wraith_form = false;
 
@@ -371,7 +367,7 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
 
             const auto *g_ptr = &floor.grid_array[my][mx];
 
-            if (!g_ptr->m_idx) {
+            if (!g_ptr->has_monster()) {
                 continue;
             }
 
@@ -384,7 +380,7 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
                 continue;
             }
 
-            auto *r_ptr = &monraces_info[m_ptr->r_idx];
+            auto *r_ptr = &m_ptr->get_monrace();
 
             /* Monster spells (only powerful ones)*/
             if (projectable(player_ptr, my, mx, yy, xx)) {
@@ -541,7 +537,7 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
             msg_format(_("%sが鋭く震えた！", "Your %s pulsates sharply!"), item_name.data());
 
             disturb(player_ptr, false, true);
-            return get_check(_("本当にこのまま進むか？", "Really want to go ahead? "));
+            return input_check(_("本当にこのまま進むか？", "Really want to go ahead? "));
         }
     } else {
         old_damage = old_damage / 2;
@@ -564,5 +560,5 @@ bool process_warning(PlayerType *player_ptr, POSITION xx, POSITION yy)
 
     msg_format(_("%sが鋭く震えた！", "Your %s pulsates sharply!"), item_name.data());
     disturb(player_ptr, false, true);
-    return get_check(_("本当にこのまま進むか？", "Really want to go ahead? "));
+    return input_check(_("本当にこのまま進むか？", "Really want to go ahead? "));
 }

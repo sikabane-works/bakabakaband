@@ -1,16 +1,17 @@
-﻿#pragma once
+#pragma once
 /*!
  * @file angband-headers.h
  * @brief ゲームデータのグローバルヘッダ情報ヘッダ
  */
 
 #include "system/angband.h"
+#include "util/sha256.h"
 
 /*!
  * @brief 各初期データ用ヘッダ構造体 / Template file header information (see "init.c").
  */
 struct angband_header {
-    byte checksum; //!< Checksum of "info" records
+    util::SHA256::Digest digest; //!< Checksum of "info" records
     uint16_t info_num; //!< このinfoのデータ数
 };
 

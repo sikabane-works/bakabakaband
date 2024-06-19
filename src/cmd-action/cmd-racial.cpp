@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @brief クラス、種族、突然変異に関するコマンド処理
  * @author Hourier
  * @date 2022/02/24
@@ -298,19 +298,19 @@ static bool ask_invoke_racial_power(rc_type *rc_ptr)
 
     char tmp_val[160];
     (void)strnfmt(tmp_val, 78, _("%sを使いますか？ ", "Use %s? "), rc_ptr->power_desc[rc_ptr->command_code].racial_name.data());
-    return get_check(tmp_val);
+    return input_check(tmp_val);
 }
 
 static void racial_power_display_explanation(PlayerType *player_ptr, rc_type *rc_ptr)
 {
     auto &rpi = rc_ptr->power_desc[rc_ptr->command_code];
 
-    term_erase(12, 21, 255);
-    term_erase(12, 20, 255);
-    term_erase(12, 19, 255);
-    term_erase(12, 18, 255);
-    term_erase(12, 17, 255);
-    term_erase(12, 16, 255);
+    term_erase(12, 21);
+    term_erase(12, 20);
+    term_erase(12, 19);
+    term_erase(12, 18);
+    term_erase(12, 17);
+    term_erase(12, 16);
     display_wrap_around(rpi.text, 62, 17, 15);
 
     prt(_("何かキーを押して下さい。", "Hit any key."), 0, 0);
@@ -335,8 +335,13 @@ static bool racial_power_process_input(PlayerType *player_ptr, rc_type *rc_ptr)
     while (true) {
         if (rc_ptr->choice == ESCAPE) {
             rc_ptr->choice = ' ';
-        } else if (!get_com(rc_ptr->out_val, &rc_ptr->choice, false)) {
-            return RC_CANCEL;
+        } else {
+            const auto choice = input_command(rc_ptr->out_val);
+            if (!choice.has_value()) {
+                return true;
+            }
+
+            rc_ptr->choice = choice.value();
         }
 
         if (racial_power_select_by_menu(player_ptr, rc_ptr) == RC_CANCEL) {

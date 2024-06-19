@@ -1,4 +1,4 @@
-﻿#include "mutation/mutation-processor.h"
+#include "mutation/mutation-processor.h"
 #include "core/asking-player.h"
 #include "core/disturbance.h"
 #include "effect/attribute-types.h"
@@ -40,6 +40,7 @@
 #include "store/store-owners.h"
 #include "store/store-util.h"
 #include "store/store.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/grid-type-definition.h"
@@ -58,19 +59,19 @@
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
 
-static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
+static int get_hack_dir(PlayerType *player_ptr)
 {
-    *dp = 0;
-    char command;
-    DIRECTION dir = 0;
-    while (!dir) {
-        concptr p = target_okay(player_ptr)
-                        ? _("方向 ('5'でターゲットへ, '*'でターゲット再選択, ESCで中断)? ", "Direction ('5' for target, '*' to re-target, Escape to cancel)? ")
-                        : _("方向 ('*'でターゲット選択, ESCで中断)? ", "Direction ('*' to choose a target, Escape to cancel)? ");
-        if (!get_com(p, &command, true)) {
+    auto dir = 0;
+    while (dir == 0) {
+        const auto p = target_okay(player_ptr)
+                           ? _("方向 ('5'でターゲットへ, '*'でターゲット再選択, ESCで中断)? ", "Direction ('5' for target, '*' to re-target, Escape to cancel)? ")
+                           : _("方向 ('*'でターゲット選択, ESCで中断)? ", "Direction ('*' to choose a target, Escape to cancel)? ");
+        const auto command_opt = input_command(p, true);
+        if (!command_opt.has_value()) {
             break;
         }
 
+        auto command = *command_opt;
         if (use_menu && (command == '\r')) {
             command = 't';
         }
@@ -100,13 +101,13 @@ static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
             dir = 0;
         }
 
-        if (!dir) {
+        if (dir == 0) {
             bell();
         }
     }
 
-    if (!dir) {
-        return false;
+    if (dir == 0) {
+        return 0;
     }
 
     command_dir = dir;
@@ -118,8 +119,7 @@ static bool get_hack_dir(PlayerType *player_ptr, DIRECTION *dp)
         msg_print(_("あなたは混乱している。", "You are confused."));
     }
 
-    *dp = dir;
-    return true;
+    return dir;
 }
 
 /*!
@@ -144,7 +144,7 @@ void process_world_aux_sudden_attack(PlayerType *player_ptr)
  */
 void process_world_aux_mutation(PlayerType *player_ptr)
 {
-    if (player_ptr->muta.none() || player_ptr->phase_out || player_ptr->wild_mode) {
+    if (player_ptr->muta.none() || AngbandSystem::get_instance().is_phase_out() || player_ptr->wild_mode) {
         return;
     }
 
@@ -240,15 +240,14 @@ void process_world_aux_mutation(PlayerType *player_ptr)
     }
 
     if (player_ptr->muta.has(PlayerMutationType::PROD_MANA) && !player_ptr->anti_magic && one_in_(9000)) {
-        int dire = 0;
         disturb(player_ptr, false, true);
         msg_print(_("魔法のエネルギーが突然あなたの中に流れ込んできた！エネルギーを解放しなければならない！",
             "Magical energy flows through you! You must release it!"));
 
         flush();
         msg_print(nullptr);
-        (void)get_hack_dir(player_ptr, &dire);
-        fire_ball(player_ptr, AttributeType::MANA, dire, player_ptr->lev * 2, 3);
+        const auto dir = get_hack_dir(player_ptr);
+        fire_ball(player_ptr, AttributeType::MANA, dir, player_ptr->lev * 2, 3);
     }
 
     if (player_ptr->muta.has(PlayerMutationType::ATT_DEMON) && !player_ptr->anti_magic && (randint1(6666) == 666)) {
@@ -457,7 +456,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
         int danger_amount = 0;
         for (MONSTER_IDX monster = 0; monster < player_ptr->current_floor_ptr->m_max; monster++) {
             auto *m_ptr = &player_ptr->current_floor_ptr->m_list[monster];
-            auto *r_ptr = &monraces_info[m_ptr->r_idx];
+            auto *r_ptr = &m_ptr->get_monrace();
             if (!m_ptr->is_valid()) {
                 continue;
             }

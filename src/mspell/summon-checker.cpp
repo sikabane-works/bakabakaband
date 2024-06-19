@@ -1,12 +1,7 @@
-﻿#include "mspell/summon-checker.h"
+#include "mspell/summon-checker.h"
 #include "monster-attack/monster-attack-table.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
-#include "monster-race/race-flags7.h"
-#include "monster-race/race-flags8.h"
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-util.h"
 #include "player-base/player-race.h"
@@ -22,10 +17,10 @@
  * @return 召喚条件が一致するならtrue
  * @details
  */
-bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, MonsterRaceId r_idx)
+bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, MonsterRaceId r_idx, summon_type type)
 {
     const auto &monrace = monraces_info[r_idx];
-    switch (summon_specific_type) {
+    switch (type) {
     case SUMMON_ANT:
         return monrace.d_char == 'a';
     case SUMMON_SPIDER:
@@ -81,7 +76,7 @@ bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, M
         is_match &= monrace.kind_flags.has_not(MonsterKindType::EVIL);
         is_match &= monrace.kind_flags.has_not(MonsterKindType::UNDEAD);
         is_match &= monrace.kind_flags.has_not(MonsterKindType::DEMON);
-        is_match &= none_bits(monrace.flags2, RF2_MULTIPLY);
+        is_match &= monrace.misc_flags.has_not(MonsterMiscType::MULTIPLY);
         is_match &= monrace.ability_flags.none();
         return is_match;
     }
@@ -116,7 +111,7 @@ bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, M
     case SUMMON_LOUSE:
         return r_idx == MonsterRaceId::LOUSE;
     case SUMMON_GUARDIANS:
-        return any_bits(monrace.flags7, RF7_GUARDIAN);
+        return monrace.misc_flags.has(MonsterMiscType::GUARDIAN);
     case SUMMON_KNIGHTS: {
         auto is_match = r_idx == MonsterRaceId::NOV_PALADIN;
         is_match |= r_idx == MonsterRaceId::NOV_PALADIN_G;
@@ -159,6 +154,9 @@ bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, M
     case SUMMON_TURBAN_KID:
         return r_idx == MonsterRaceId::TURBAN_KID;
         break;
+    case SUMMON_DEAD_UNIQUE: {
+        return monrace.kind_flags.has(MonsterKindType::UNIQUE) && monrace.mob_num == 0;
+    }
 
     default:
         return false;

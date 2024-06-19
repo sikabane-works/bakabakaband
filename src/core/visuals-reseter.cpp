@@ -1,11 +1,11 @@
-﻿#include "core/visuals-reseter.h"
+#include "core/visuals-reseter.h"
 #include "game-option/special-options.h"
-#include "grid/feature.h"
 #include "io/read-pref-file.h"
 #include "monster-race/monster-race.h"
 #include "system/baseitem-info.h"
 #include "system/monster-race-info.h"
 #include "system/player-type-definition.h"
+#include "system/terrain-type-definition.h"
 
 /*!
  * @brief オブジェクト、地形の表示シンボルなど初期化する / Reset the "visual" lists
@@ -13,21 +13,20 @@
  */
 void reset_visuals(PlayerType *player_ptr)
 {
-    for (auto &f_ref : terrains_info) {
+    for (auto &terrain : TerrainList::get_instance()) {
         for (int j = 0; j < F_LIT_MAX; j++) {
-            f_ref.x_attr[j] = f_ref.d_attr[j];
-            f_ref.x_char[j] = f_ref.d_char[j];
+            terrain.x_attr[j] = terrain.d_attr[j];
+            terrain.x_char[j] = terrain.d_char[j];
         }
     }
 
     for (auto &baseitem : baseitems_info) {
-        baseitem.x_attr = baseitem.d_attr;
-        baseitem.x_char = baseitem.d_char;
+        baseitem.cc_config = baseitem.cc_def;
     }
 
-    for (auto &[r_idx, r_ref] : monraces_info) {
-        r_ref.x_attr = r_ref.d_attr;
-        r_ref.x_char = r_ref.d_char;
+    for (auto &[monrace_id, monrace] : monraces_info) {
+        monrace.x_attr = monrace.d_attr;
+        monrace.x_char = monrace.d_char;
     }
 
     concptr pref_file = use_graphics ? "graf.prf" : "font.prf";

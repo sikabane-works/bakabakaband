@@ -1,4 +1,4 @@
-﻿#include "monster-race/race-ability-mask.h"
+#include "monster-race/race-ability-mask.h"
 
 // clang-format off
 /* "summon" spells currently "summon" spells are included in "intelligent" and "indirect" */
@@ -7,6 +7,7 @@ const EnumClassFlagGroup<MonsterAbilityType> RF_ABILITY_SUMMON_MASK = {
     MonsterAbilityType::S_ANT, MonsterAbilityType::S_SPIDER, MonsterAbilityType::S_HOUND, MonsterAbilityType::S_HYDRA,
     MonsterAbilityType::S_ANGEL, MonsterAbilityType::S_DEMON, MonsterAbilityType::S_UNDEAD, MonsterAbilityType::S_DRAGON,
     MonsterAbilityType::S_HI_UNDEAD, MonsterAbilityType::S_HI_DRAGON, MonsterAbilityType::S_AMBERITES, MonsterAbilityType::S_UNIQUE,
+    MonsterAbilityType::S_DEAD_UNIQUE,
 };
 
 /* Choose "intelligent" spells when desperate Including "summon" spells */
@@ -30,9 +31,9 @@ const EnumClassFlagGroup<MonsterAbilityType> RF_ABILITY_RIDING_MASK = {
  */
 const EnumClassFlagGroup<MonsterAbilityType> RF_ABILITY_BOLT_MASK = {
     MonsterAbilityType::ROCKET, MonsterAbilityType::SHOOT, MonsterAbilityType::BO_ACID, MonsterAbilityType::BO_ELEC,
-    MonsterAbilityType::BO_FIRE, MonsterAbilityType::BO_COLD, MonsterAbilityType::BO_NETH, MonsterAbilityType::BO_WATE,
-    MonsterAbilityType::BO_MANA, MonsterAbilityType::BO_PLAS, MonsterAbilityType::BO_ICEE, MonsterAbilityType::BO_VOID,
-    MonsterAbilityType::BO_ABYSS, MonsterAbilityType::MISSILE,
+    MonsterAbilityType::BO_FIRE, MonsterAbilityType::BO_COLD, MonsterAbilityType::BO_NETH, MonsterAbilityType::BO_LITE,
+    MonsterAbilityType::BO_WATE, MonsterAbilityType::BO_MANA, MonsterAbilityType::BO_PLAS, MonsterAbilityType::BO_ICEE,
+    MonsterAbilityType::BO_VOID, MonsterAbilityType::BO_ABYSS, MonsterAbilityType::BO_METEOR, MonsterAbilityType::MISSILE,
 };
 
 /*
@@ -49,7 +50,7 @@ const EnumClassFlagGroup<MonsterAbilityType> RF_ABILITY_BEAM_MASK = {
  */
 const EnumClassFlagGroup<MonsterAbilityType> RF_ABILITY_BIG_BALL_MASK = {
     MonsterAbilityType::BA_CHAO, MonsterAbilityType::BA_LITE, MonsterAbilityType::BA_DARK, MonsterAbilityType::BA_WATE,
-    MonsterAbilityType::BA_MANA, MonsterAbilityType::BA_VOID, MonsterAbilityType::BA_ABYSS,
+    MonsterAbilityType::BA_MANA, MonsterAbilityType::BA_VOID, MonsterAbilityType::BA_ABYSS,MonsterAbilityType::BA_METEOR,
 };
 
 /*

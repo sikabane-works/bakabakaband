@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief フロア生成時にアイテムを配置する
  * @date 2020/06/01
  * @author Hourier
@@ -76,7 +76,7 @@ static errr get_obj_index_prep(void)
 static void object_mention(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
     object_aware(player_ptr, o_ptr);
-    object_known(o_ptr);
+    o_ptr->mark_as_known();
 
     o_ptr->ident |= (IDENT_FULL_KNOWN);
     const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
@@ -158,36 +158,30 @@ bool make_object(PlayerType *player_ptr, ItemEntity *j_ptr, BIT_FLAGS mode, std:
 
 /*!
  * @brief 生成階に応じた財宝オブジェクトの生成を行う。
- * Make a treasure object
- * @param floor_ptr 現在フロアへの参照ポインタ
- * @param j_ptr 生成結果を収めたいオブジェクト構造体の参照ポインタ
+ * @param floor 現在フロアへの参照
+ * @param j_ptr 生成結果を収めたいアイテムの参照ポインタ
  * @return 生成に成功したらTRUEを返す。
- * @details
- * The location must be a legal, clean, floor grid.
  */
 bool make_gold(PlayerType *player_ptr, ItemEntity *j_ptr)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    int i = ((randint1(floor_ptr->object_level + 2) + 2) / 2) - 1;
+    const auto &floor = *player_ptr->current_floor_ptr;
+    auto i = ((randint1(floor.object_level + 2) + 2) / 2) - 1;
     if (one_in_(CHANCE_BASEITEM_LEVEL_BOOST)) {
-        i += randint1(floor_ptr->object_level + 1);
+        i += randint1(floor.object_level + 1);
     }
 
     if (coin_type) {
         i = coin_type;
     }
+
     if (i >= MAX_GOLD) {
         i = MAX_GOLD - 1;
     }
-    j_ptr->prep(OBJ_GOLD_LIST + i);
 
-    int boost = floor_ptr->object_level > 20 ? ((floor_ptr->object_level - 10) * (floor_ptr->object_level - 10) / 100) : 1;
-    int32_t base = baseitems_info[OBJ_GOLD_LIST + i].cost;
-    int price = (base + (8L * randint1(base)) + randint1(8)) * boost;
-    if (price > 30000) {
-        price = 30000;
-    }
-    j_ptr->pval = price;
+    j_ptr->prep(OBJ_GOLD_LIST + i);
+    int boost = floor.object_level > 20 ? ((floor.object_level - 10) * (floor.object_level - 10) / 100) : 1;
+    const auto base = baseitems_info[OBJ_GOLD_LIST + i].cost;
+    j_ptr->pval = (base + (8L * randint1(base)) + randint1(8)) * boost;
     return true;
 }
 
@@ -200,7 +194,7 @@ bool make_gold(PlayerType *player_ptr, ItemEntity *j_ptr)
  */
 void delete_all_items_from_floor(PlayerType *player_ptr, POSITION y, POSITION x)
 {
-    grid_type *g_ptr;
+    Grid *g_ptr;
     auto *floor_ptr = player_ptr->current_floor_ptr;
     if (!in_bounds(floor_ptr, y, x)) {
         return;
@@ -222,14 +216,14 @@ void delete_all_items_from_floor(PlayerType *player_ptr, POSITION y, POSITION x)
  * @brief 床上のアイテムの数を増やす /
  * Increase the "number" of an item on the floor
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param item 増やしたいアイテムの所持スロット
+ * @param i_idx 増やしたいアイテムの所持スロット
  * @param num 増やしたいアイテムの数
  */
-void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER num)
+void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX i_idx, ITEM_NUMBER num)
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
 
-    auto *o_ptr = &floor_ptr->o_list[item];
+    auto *o_ptr = &floor_ptr->o_list[i_idx];
     num += o_ptr->number;
     if (num > 255) {
         num = 255;
@@ -250,11 +244,11 @@ void floor_item_increase(PlayerType *player_ptr, INVENTORY_IDX item, ITEM_NUMBER
  * @brief 床上の数の無くなったアイテムスロットを消去する /
  * Optimize an item on the floor (destroy "empty" items)
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param item 消去したいアイテムの所持スロット
+ * @param i_idx 消去したいアイテムの所持スロット
  */
-void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
+void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 {
-    auto *o_ptr = &player_ptr->current_floor_ptr->o_list[item];
+    auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i_idx];
     if (!o_ptr->is_valid()) {
         return;
     }
@@ -262,7 +256,7 @@ void floor_item_optimize(PlayerType *player_ptr, INVENTORY_IDX item)
         return;
     }
 
-    delete_object_idx(player_ptr, item);
+    delete_object_idx(player_ptr, i_idx);
     static constexpr auto flags = {
         SubWindowRedrawingFlag::FLOOR_ITEMS,
         SubWindowRedrawingFlag::FOUND_ITEMS,
@@ -338,7 +332,7 @@ ObjectIndexList &get_o_idx_list_contains(FloorType *floor_ptr, OBJECT_IDX o_idx)
  * @param x 配置したいフロアのX座標
  * @return 生成に成功したらオブジェクトのIDを返す。
  * @details
- * The initial location is assumed to be "in_bounds(floor_ptr, )".\n
+ * The initial location is assumed to be "in_bounds(floor, )".\n
  *\n
  * This function takes a parameter "chance".  This is the percentage\n
  * chance that the item will "disappear" instead of drop.  If the object\n
@@ -357,7 +351,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
     POSITION dy, dx;
     POSITION ty, tx = 0;
     OBJECT_IDX o_idx = 0;
-    grid_type *g_ptr;
+    Grid *g_ptr;
     bool flag = false;
     bool done = false;
 #ifdef JP
@@ -577,7 +571,8 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
     lite_spot(player_ptr, by, bx);
     sound(SOUND_DROP);
 
-    if (player_bold(player_ptr, by, bx)) {
+    const auto is_located = player_ptr->is_located_at({ by, bx });
+    if (is_located) {
         static constexpr auto flags = {
             SubWindowRedrawingFlag::FLOOR_ITEMS,
             SubWindowRedrawingFlag::FOUND_ITEMS,
@@ -585,7 +580,7 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
         RedrawingFlagsUpdater::get_instance().set_flags(flags);
     }
 
-    if (chance && player_bold(player_ptr, by, bx)) {
+    if (chance && is_located) {
         msg_print(_("何かが足下に転がってきた。", "You feel something roll beneath your feet."));
     }
 
@@ -593,14 +588,13 @@ OBJECT_IDX drop_near(PlayerType *player_ptr, ItemEntity *j_ptr, PERCENTAGE chanc
 }
 
 /*!
- * @brief 床上の魔道具の残り残量メッセージを表示する /
- * Describe the charges on an item on the floor.
+ * @brief 床上の魔道具の残り残量メッセージを表示する
  * @param floo_ptr 現在フロアへの参照ポインタ
- * @param item メッセージの対象にしたいアイテム所持スロット
+ * @param i_idx メッセージの対象にしたいアイテム所持スロット
  */
-void floor_item_charges(FloorType *floor_ptr, INVENTORY_IDX inventory)
+void floor_item_charges(FloorType *floor_ptr, INVENTORY_IDX i_idx)
 {
-    const auto &item = floor_ptr->o_list[inventory];
+    const auto &item = floor_ptr->o_list[i_idx];
     if (!item.is_wand_staff() || !item.is_known()) {
         return;
     }
@@ -624,11 +618,11 @@ void floor_item_charges(FloorType *floor_ptr, INVENTORY_IDX inventory)
  * @brief 床上のアイテムの残り数メッセージを表示する /
  * Describe the charges on an item on the floor.
  * @param floo_ptr 現在フロアへの参照ポインタ
- * @param item メッセージの対象にしたいアイテム所持スロット
+ * @param i_idx メッセージの対象にしたいアイテム所持スロット
  */
-void floor_item_describe(PlayerType *player_ptr, INVENTORY_IDX item)
+void floor_item_describe(PlayerType *player_ptr, INVENTORY_IDX i_idx)
 {
-    auto *o_ptr = &player_ptr->current_floor_ptr->o_list[item];
+    auto *o_ptr = &player_ptr->current_floor_ptr->o_list[i_idx];
     const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
 #ifdef JP
     if (o_ptr->number <= 0) {
@@ -642,29 +636,28 @@ void floor_item_describe(PlayerType *player_ptr, INVENTORY_IDX item)
 }
 
 /*
- * Choose an item and get auto-picker entry from it.
+ * @brief Choose an item and get auto-picker entry from it.
+ * @todo initial_i_idx をポインタではなく値に変え、戻り値をstd::pairに変える
  */
-ItemEntity *choose_object(PlayerType *player_ptr, OBJECT_IDX *idx, concptr q, concptr s, BIT_FLAGS option, const ItemTester &item_tester)
+ItemEntity *choose_object(PlayerType *player_ptr, short *initial_i_idx, concptr q, concptr s, BIT_FLAGS option, const ItemTester &item_tester)
 {
-    OBJECT_IDX item;
-
-    if (idx) {
-        *idx = INVEN_NONE;
+    if (initial_i_idx) {
+        *initial_i_idx = INVEN_NONE;
     }
 
     FixItemTesterSetter setter(item_tester);
-
-    if (!get_item(player_ptr, &item, q, s, option, item_tester)) {
+    short i_idx;
+    if (!get_item(player_ptr, &i_idx, q, s, option, item_tester)) {
         return nullptr;
     }
 
-    if (idx) {
-        *idx = item;
+    if (initial_i_idx) {
+        *initial_i_idx = i_idx;
     }
 
-    if (item == INVEN_FORCE) {
+    if (i_idx == INVEN_FORCE) {
         return nullptr;
     }
 
-    return ref_item(player_ptr, item);
+    return ref_item(player_ptr, i_idx);
 }

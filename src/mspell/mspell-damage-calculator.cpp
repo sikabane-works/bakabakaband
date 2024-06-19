@@ -1,9 +1,8 @@
-﻿#include "mspell/mspell-damage-calculator.h"
+#include "mspell/mspell-damage-calculator.h"
 #include "game-option/birth-options.h"
 #include "inventory/inventory-slot-types.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
-#include "monster-race/race-flags2.h"
 #include "monster/monster-status.h"
 #include "player-info/equipment-info.h"
 #include "system/floor-type-definition.h"
@@ -243,6 +242,11 @@ static int monspell_damage_base(
         dice_num = 10;
         dice_side = 10;
         break;
+    case MonsterAbilityType::BA_METEOR:
+        dam = 50 + rlev * 5 / 2;
+        dice_num = 3;
+        dice_side = rlev;
+        break;
     case MonsterAbilityType::DRAIN_MANA:
         dam = rlev;
         div = 1;
@@ -337,6 +341,16 @@ static int monspell_damage_base(
         dice_num = 13;
         dice_side = 14;
         break;
+    case MonsterAbilityType::BO_METEOR:
+        dam = 30 + rlev * 2;
+        dice_num = 1;
+        dice_side = rlev;
+        break;
+    case MonsterAbilityType::BO_LITE:
+        dam = powerful ? 60 : 40;
+        dice_num = 1;
+        dice_side = powerful ? rlev * 4 : rlev * 2;
+        break;
     case MonsterAbilityType::MISSILE:
         dam = (rlev / 3);
         dice_num = 2;
@@ -428,6 +442,8 @@ static int monspell_damage_base(
         return -1;
     case MonsterAbilityType::S_UNIQUE:
         return -1;
+    case MonsterAbilityType::S_DEAD_UNIQUE:
+        return -1;
     case MonsterAbilityType::MAX:
         return -1;
     }
@@ -483,7 +499,7 @@ int monspell_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, MONSTER_
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *m_ptr = &floor_ptr->m_list[m_idx];
-    auto *r_ptr = &monraces_info[m_ptr->r_idx];
+    auto *r_ptr = &m_ptr->get_monrace();
     DEPTH rlev = monster_level_idx(floor_ptr, m_idx);
     int hp = (TYPE == DAM_ROLL) ? m_ptr->hp : m_ptr->max_maxhp;
     int shoot_dd, shoot_ds;
@@ -504,7 +520,7 @@ int monspell_race_damage(PlayerType *player_ptr, MonsterAbilityType ms_type, Mon
 {
     auto *r_ptr = &monraces_info[r_idx];
     DEPTH rlev = ((r_ptr->level >= 1) ? r_ptr->level : 1);
-    bool powerful = any_bits(r_ptr->flags2, RF2_POWERFUL);
+    bool powerful = r_ptr->misc_flags.has(MonsterMiscType::POWERFUL);
     int hp = r_ptr->hdice * (ironman_nightmare ? 2 : 1) * r_ptr->hside;
     int shoot_dd, shoot_ds;
 

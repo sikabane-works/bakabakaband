@@ -1,4 +1,4 @@
-﻿#include <cstdlib>
+#include <cstdlib>
 
 #include "autopick/autopick-dirty-flags.h"
 #include "autopick/autopick-editor-util.h"
@@ -216,50 +216,16 @@ bool add_empty_line(text_body_type *tb)
     return true;
 }
 
-static chain_str_type *new_chain_str(concptr str)
-{
-    size_t len = strlen(str);
-    auto *chain = static_cast<chain_str_type *>(std::malloc(sizeof(chain_str_type) + len * sizeof(char)));
-    strcpy(chain->s, str);
-    chain->next = nullptr;
-    return chain;
-}
-
 void kill_yank_chain(text_body_type *tb)
 {
-    chain_str_type *chain = tb->yank;
-    tb->yank = nullptr;
+    tb->yank.clear();
     tb->yank_eol = true;
-
-    while (chain) {
-        chain_str_type *next = chain->next;
-
-        std::free(chain);
-
-        chain = next;
-    }
 }
 
-void add_str_to_yank(text_body_type *tb, concptr str)
+void add_str_to_yank(text_body_type *tb, std::string_view str)
 {
     tb->yank_eol = false;
-    if (tb->yank == nullptr) {
-        tb->yank = new_chain_str(str);
-        return;
-    }
-
-    chain_str_type *chain;
-    chain = tb->yank;
-
-    while (true) {
-        if (!chain->next) {
-            chain->next = new_chain_str(str);
-            return;
-        }
-
-        /* Go to next */
-        chain = chain->next;
-    }
+    tb->yank.emplace_back(str);
 }
 
 /*!
@@ -293,24 +259,18 @@ void copy_text_to_yank(text_body_type *tb)
         return;
     }
 
-    char buf[MAX_LINELEN];
-    int bx1 = std::min(tb->mx, tb->cx);
-    int bx2 = std::max(tb->mx, tb->cx);
+    const auto bx1 = std::min(tb->mx, tb->cx);
+    auto bx2 = std::max(tb->mx, tb->cx);
     if (bx2 > len) {
         bx2 = len;
     }
 
-    if (bx1 == 0 && bx2 == len) {
+    if ((bx1 == 0) && (bx2 == len)) {
         add_str_to_yank(tb, tb->lines_list[tb->cy]);
         add_str_to_yank(tb, "");
     } else {
-        int end = bx2 - bx1;
-        for (int i = 0; i < bx2 - bx1; i++) {
-            buf[i] = tb->lines_list[tb->cy][bx1 + i];
-        }
-
-        buf[end] = '\0';
-        add_str_to_yank(tb, buf);
+        const std::string_view buf(tb->lines_list[tb->cy]);
+        add_str_to_yank(tb, buf.substr(bx1, bx2 - bx1));
     }
 
     tb->mark = 0;

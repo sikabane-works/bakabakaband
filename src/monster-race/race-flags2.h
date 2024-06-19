@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 enum race_flags2 {
     RF2_STUPID = 0x00000001, /*!< モンスター特性: 愚かな行動を取る / Monster is stupid */
@@ -11,7 +11,6 @@ enum race_flags2 {
     RF2_WEIRD_MIND = 0x00000080, /*!< モンスター特性: 異質な知性(テレパシーで感知づらい) / Monster avoids telepathy? */
     RF2_MULTIPLY = 0x00000100, /*!< モンスター特性: 増殖する / Monster reproduces */
     RF2_REGENERATE = 0x00000200, /*!< モンスター特性: 急激に回復する / Monster regenerates */
-    RF2_CHAR_MULTI = 0x00000400, /*!< モンスター特性: 未使用 / (Not implemented) */
     RF2_ATTR_ANY = 0x00000800, /*!< モンスター特性: ATTR_MULTIの色数が増える / TY: Attr_any */
     RF2_POWERFUL = 0x00001000, /*!< モンスター特性: 強力に魔法をあやつる / Monster has strong breath */
     RF2_ELDRITCH_HORROR = 0x00002000, /*!< モンスター特性: 狂気を呼び起こす / Sanity-blasting horror    */

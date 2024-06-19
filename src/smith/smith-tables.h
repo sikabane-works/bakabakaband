@@ -1,11 +1,11 @@
-﻿#pragma once
+#pragma once
 
 #include "system/angband.h"
 
 #include <vector>
 
 enum class SmithEssenceType : int16_t;
-enum tr_type : int32_t;
+enum tr_type : int;
 
 /*!
  * @brief エッセンス抽出情報構造体

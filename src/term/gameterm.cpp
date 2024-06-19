@@ -1,8 +1,7 @@
-﻿#include "term/gameterm.h"
+#include "term/gameterm.h"
 #include "effect/attribute-types.h"
 #include "system/system-variables.h"
 #include "term/term-color-types.h"
-#include "util/quarks.h"
 #include "util/string-processor.h"
 #include <span>
 
@@ -112,7 +111,7 @@ const concptr window_flag_desc[32] = {
     _("呪文一覧", "Display spell list"),
     _("キャラクタ情報", "Display character"),
     _("視界内のモンスター表示", "Display monsters in sight"),
-    nullptr,
+    _("ペット一覧", "Display pets"),
     _("メッセージ", "Display messages"),
     _("ダンジョン全体図", "Display overhead view"),
     _("モンスターの思い出", "Display monster recall"),
@@ -368,9 +367,9 @@ char misc_to_char[256];
 TERM_COLOR tval_to_attr[128];
 
 /*
- * Default spell color table (quark index)
+ * Default spell color table
  */
-std::map<AttributeType, ushort> gf_colors;
+std::map<AttributeType, std::string> gf_colors;
 
 /*!
  * @brief 万色表現用にランダムな色を選択する関数 /
@@ -519,14 +518,14 @@ static TERM_COLOR spell_color(AttributeType type)
     else {
         TERM_COLOR a;
         /* Lookup the default colors for this type */
-        concptr s = quark_str(gf_colors[type]);
+        const auto &color = gf_colors[type];
 
-        if (!s) {
+        if (color.empty()) {
             return TERM_WHITE;
         }
 
         /* Pick a random color */
-        auto c = s[randint0(strlen(s))];
+        auto c = color[randint0(color.size())];
 
         /* Lookup this color */
         a = angband_strchr(color_char, c) - color_char;

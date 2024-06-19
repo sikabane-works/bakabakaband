@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * 本ファイル内の行数はまともなレベルに落ち着いているので、一旦ここに留め置くこととする
  * @brief 魔法種別による各種処理切り替え
  * @date 2020/04/29
@@ -23,12 +23,10 @@
 #include "monster-floor/monster-death.h"
 #include "monster-race/monster-race-hook.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
-#include "monster-race/race-flags2.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-info.h"
 #include "monster/monster-status-setter.h"
 #include "monster/monster-status.h"
+#include "monster/monster-util.h"
 #include "player/player-damage.h"
 #include "spell-kind/spells-genocide.h"
 #include "system/grid-type-definition.h"
@@ -139,8 +137,8 @@ ProcessResult effect_monster_hand_doom(EffectMonster *em_ptr)
         return ProcessResult::PROCESS_CONTINUE;
     }
 
-    if ((em_ptr->who > 0) ? ((em_ptr->caster_lev + randint1(em_ptr->dam)) > (em_ptr->r_ptr->level + 10 + randint1(20)))
-                          : (((em_ptr->caster_lev / 2) + randint1(em_ptr->dam)) > (em_ptr->r_ptr->level + randint1(200)))) {
+    if (is_monster(em_ptr->src_idx) ? ((em_ptr->caster_lev + randint1(em_ptr->dam)) > (em_ptr->r_ptr->level + 10 + randint1(20)))
+                                    : (((em_ptr->caster_lev / 2) + randint1(em_ptr->dam)) > (em_ptr->r_ptr->level + randint1(200)))) {
         em_ptr->dam = ((40 + randint1(20)) * em_ptr->m_ptr->hp) / 100;
         if (em_ptr->m_ptr->hp < em_ptr->dam) {
             em_ptr->dam = em_ptr->m_ptr->hp - 1;
@@ -169,12 +167,12 @@ ProcessResult effect_monster_engetsu(PlayerType *player_ptr, EffectMonster *em_p
         em_ptr->obvious = true;
     }
 
-    if (any_bits(em_ptr->r_ptr->flags2, RF2_EMPTY_MIND)) {
+    if (em_ptr->r_ptr->misc_flags.has(MonsterMiscType::EMPTY_MIND)) {
         em_ptr->note = _("には効果がなかった。", " is unaffected.");
         em_ptr->dam = 0;
         em_ptr->skipped = true;
         if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-            set_bits(em_ptr->r_ptr->r_flags2, RF2_EMPTY_MIND);
+            em_ptr->r_ptr->r_misc_flags.set(MonsterMiscType::EMPTY_MIND);
         }
         return ProcessResult::PROCESS_CONTINUE;
     }
@@ -215,10 +213,10 @@ ProcessResult effect_monster_engetsu(PlayerType *player_ptr, EffectMonster *em_p
             }
             break;
         case 2:
-            if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(em_ptr->r_ptr->flags3, RF3_NO_CONF)) {
-                if (any_bits(em_ptr->r_ptr->flags3, RF3_NO_CONF)) {
+            if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
+                if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_CONF)) {
                     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-                        set_bits(em_ptr->r_ptr->r_flags3, RF3_NO_CONF);
+                        em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::NO_CONF);
                     }
                 }
                 em_ptr->do_conf = 0;
@@ -230,10 +228,10 @@ ProcessResult effect_monster_engetsu(PlayerType *player_ptr, EffectMonster *em_p
             }
             break;
         default:
-            if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || any_bits(em_ptr->r_ptr->flags3, RF3_NO_SLEEP)) {
-                if (any_bits(em_ptr->r_ptr->flags3, RF3_NO_SLEEP)) {
+            if (em_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_SLEEP)) {
+                if (em_ptr->r_ptr->resistance_flags.has(MonsterResistanceType::NO_SLEEP)) {
                     if (is_original_ap_and_seen(player_ptr, em_ptr->m_ptr)) {
-                        set_bits(em_ptr->r_ptr->r_flags3, RF3_NO_SLEEP);
+                        em_ptr->r_ptr->r_resistance_flags.set(MonsterResistanceType::NO_SLEEP);
                     }
                 }
                 em_ptr->do_sleep = 0;
@@ -267,7 +265,7 @@ ProcessResult effect_monster_genocide(PlayerType *player_ptr, EffectMonster *em_
     }
 
     std::string_view spell_name(_("モンスター消滅", "Genocide One"));
-    if (genocide_aux(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, !em_ptr->who, (em_ptr->r_ptr->level + 1) / 2, spell_name.data())) {
+    if (genocide_aux(player_ptr, em_ptr->g_ptr->m_idx, em_ptr->dam, is_player(em_ptr->src_idx), (em_ptr->r_ptr->level + 1) / 2, spell_name.data())) {
         if (em_ptr->seen_msg) {
             msg_format(_("%sは消滅した！", "%s^ disappeared!"), em_ptr->m_name);
         }
@@ -281,7 +279,7 @@ ProcessResult effect_monster_genocide(PlayerType *player_ptr, EffectMonster *em_
 
 ProcessResult effect_monster_photo(PlayerType *player_ptr, EffectMonster *em_ptr)
 {
-    if (!em_ptr->who) {
+    if (is_player(em_ptr->src_idx)) {
         msg_format(_("%sを写真に撮った。", "You take a photograph of %s."), em_ptr->m_name);
     }
 
@@ -330,7 +328,6 @@ ProcessResult switch_effects_monster(PlayerType *player_ptr, EffectMonster *em_p
     case AttributeType::MISSILE:
     case AttributeType::DEBUG:
     case AttributeType::MANA:
-    case AttributeType::METEOR:
     case AttributeType::BLOOD_CURSE:
     case AttributeType::SEEKER:
     case AttributeType::SUPER_RAY:
@@ -501,6 +498,8 @@ ProcessResult switch_effects_monster(PlayerType *player_ptr, EffectMonster *em_p
         return effect_monster_abyss(player_ptr, em_ptr);
     case AttributeType::STUNGUN:
         return effect_monster_stungun(player_ptr, em_ptr);
+    case AttributeType::METEOR:
+        return effect_monster_meteor(player_ptr, em_ptr);
     default: {
         em_ptr->skipped = true;
         em_ptr->dam = 0;

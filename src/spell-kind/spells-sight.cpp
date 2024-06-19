@@ -1,11 +1,10 @@
-﻿#include "spell-kind/spells-sight.h"
+#include "spell-kind/spells-sight.h"
 #include "avatar/avatar.h"
 #include "core/stuff-handler.h"
 #include "core/window-redrawer.h"
 #include "effect/attribute-types.h"
 #include "effect/effect-characteristics.h"
 #include "effect/effect-processor.h"
-#include "floor/cave.h"
 #include "game-option/birth-options.h"
 #include "game-option/map-screen-options.h"
 #include "grid/grid.h"
@@ -15,7 +14,6 @@
 #include "lore/lore-store.h"
 #include "monster-race/monster-kind-mask.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags3.h"
 #include "monster/monster-describer.h"
 #include "monster/monster-description-types.h"
 #include "monster/monster-flag-types.h"
@@ -47,32 +45,33 @@
  */
 bool project_all_los(PlayerType *player_ptr, AttributeType typ, int dam)
 {
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!m_ptr->is_valid()) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    for (short i = 1; i < floor.m_max; i++) {
+        auto &monster = floor.m_list[i];
+        if (!monster.is_valid()) {
             continue;
         }
 
-        POSITION y = m_ptr->fy;
-        POSITION x = m_ptr->fx;
-        if (!player_has_los_bold(player_ptr, y, x) || !projectable(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
+        auto y = monster.fy;
+        auto x = monster.fx;
+        if (!floor.has_los({ y, x }) || !projectable(player_ptr, player_ptr->y, player_ptr->x, y, x)) {
             continue;
         }
 
-        m_ptr->mflag.set(MonsterTemporaryFlagType::LOS);
+        monster.mflag.set(MonsterTemporaryFlagType::LOS);
     }
 
     BIT_FLAGS flg = PROJECT_JUMP | PROJECT_KILL | PROJECT_HIDE;
-    bool obvious = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (m_ptr->mflag.has_not(MonsterTemporaryFlagType::LOS)) {
+    auto obvious = false;
+    for (short i = 1; i < floor.m_max; i++) {
+        auto &monster = floor.m_list[i];
+        if (monster.mflag.has_not(MonsterTemporaryFlagType::LOS)) {
             continue;
         }
 
-        m_ptr->mflag.reset(MonsterTemporaryFlagType::LOS);
-        POSITION y = m_ptr->fy;
-        POSITION x = m_ptr->fx;
+        monster.mflag.reset(MonsterTemporaryFlagType::LOS);
+        auto y = monster.fy;
+        auto x = monster.fx;
 
         if (project(player_ptr, 0, 0, y, x, dam, typ, flg).notice) {
             obvious = true;
@@ -212,37 +211,36 @@ bool crusade(PlayerType *player_ptr)
 /*!
  * @brief 視界内モンスターを怒らせる処理 / Wake up all monsters, and speed up "los" monsters.
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param who 怒らせる原因を起こしたモンスター(0ならばプレイヤー)
+ * @param src_idx 怒らせる原因を起こしたモンスター(0ならばプレイヤー)
  */
-void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX who)
+void aggravate_monsters(PlayerType *player_ptr, MONSTER_IDX src_idx)
 {
-    bool sleep = false;
-    bool speed = false;
-    for (MONSTER_IDX i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        if (!m_ptr->is_valid()) {
+    auto sleep = false;
+    auto speed = false;
+    auto &floor = *player_ptr->current_floor_ptr;
+    for (short i = 1; i < floor.m_max; i++) {
+        auto &monster = floor.m_list[i];
+        if (!monster.is_valid()) {
             continue;
         }
-        if (i == who) {
+        if (i == src_idx) {
             continue;
         }
 
-        if (m_ptr->cdis < MAX_PLAYER_SIGHT * 2) {
-            if (m_ptr->is_asleep()) {
+        if (monster.cdis < MAX_PLAYER_SIGHT * 2) {
+            if (monster.is_asleep()) {
                 (void)set_monster_csleep(player_ptr, i, 0);
                 sleep = true;
             }
 
-            if (!m_ptr->is_pet()) {
-                m_ptr->mflag2.set(MonsterConstantFlagType::NOPET);
+            if (!monster.is_pet()) {
+                monster.mflag2.set(MonsterConstantFlagType::NOPET);
             }
         }
 
-        if (player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx)) {
-            if (!m_ptr->is_pet()) {
-                (void)set_monster_fast(player_ptr, i, m_ptr->get_remaining_acceleration() + 100);
-                speed = true;
-            }
+        if (floor.has_los({ monster.fy, monster.fx }) && !monster.is_pet()) {
+            (void)set_monster_fast(player_ptr, i, monster.get_remaining_acceleration() + 100);
+            speed = true;
         }
     }
 
@@ -442,18 +440,19 @@ bool probing(PlayerType *player_ptr)
     game_term->scr->cu = 0;
     game_term->scr->cv = 1;
 
+    auto &floor = *player_ptr->current_floor_ptr;
     auto &rfu = RedrawingFlagsUpdater::get_instance();
     auto probe = false;
-    for (int i = 1; i < player_ptr->current_floor_ptr->m_max; i++) {
-        auto *m_ptr = &player_ptr->current_floor_ptr->m_list[i];
-        auto *r_ptr = &monraces_info[m_ptr->r_idx];
-        if (!m_ptr->is_valid()) {
+    for (short i = 1; i < floor.m_max; i++) {
+        auto &monster = floor.m_list[i];
+        auto &monrace = monster.get_monrace();
+        if (!monster.is_valid()) {
             continue;
         }
-        if (!player_has_los_bold(player_ptr, m_ptr->fy, m_ptr->fx)) {
+        if (!floor.has_los({ monster.fy, monster.fx })) {
             continue;
         }
-        if (!m_ptr->ml) {
+        if (!monster.ml) {
             continue;
         }
 
@@ -462,23 +461,20 @@ bool probing(PlayerType *player_ptr)
         }
         msg_print(nullptr);
 
-        const auto probe_result = probed_monster_info(player_ptr, m_ptr, r_ptr);
+        const auto probe_result = probed_monster_info(player_ptr, &monster, &monrace);
         prt(probe_result, 0, 0);
 
         message_add(probe_result);
         rfu.set_flag(SubWindowRedrawingFlag::MESSAGE);
         handle_stuff(player_ptr);
-        move_cursor_relative(m_ptr->fy, m_ptr->fx);
+        move_cursor_relative(monster.fy, monster.fx);
         inkey();
-        term_erase(0, 0, 255);
-        if (lore_do_probe(player_ptr, m_ptr->r_idx)) {
+        term_erase(0, 0);
+        if (lore_do_probe(player_ptr, monster.r_idx)) {
 #ifdef JP
-            msg_format("%sについてさらに詳しくなった気がする。", r_ptr->name.data());
+            msg_format("%sについてさらに詳しくなった気がする。", monrace.name.data());
 #else
-            std::string nm = r_ptr->name;
-            /* Leave room for making it plural. */
-            nm.resize(r_ptr->name.length() + 16);
-            plural_aux(nm.data());
+            const auto nm = pluralize(monrace.name);
             msg_format("You now know more about %s.", nm.data());
 #endif
             msg_print(nullptr);

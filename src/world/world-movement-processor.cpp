@@ -1,4 +1,4 @@
-﻿#include "world/world-movement-processor.h"
+#include "world/world-movement-processor.h"
 #include "cmd-io/cmd-save.h"
 #include "core/disturbance.h"
 #include "dungeon/quest.h"
@@ -10,7 +10,7 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "monster-race/monster-race.h"
-#include "monster-race/race-flags1.h"
+#include "system/angband-system.h"
 #include "system/dungeon-info.h"
 #include "system/floor-type-definition.h"
 #include "system/monster-race-info.h"
@@ -43,9 +43,9 @@ void check_random_quest_auto_failure(PlayerType *player_ptr)
 
         quest.status = QuestStatusType::FAILED;
         quest.complev = (byte)player_ptr->lev;
-        update_playtime();
+        w_ptr->update_playtime();
         quest.comptime = w_ptr->play_time;
-        monraces_info[quest.r_idx].flags1 &= ~(RF1_QUESTOR);
+        monraces_info[quest.r_idx].misc_flags.reset(MonsterMiscType::QUESTOR);
     }
 }
 
@@ -63,7 +63,7 @@ void execute_recall(PlayerType *player_ptr)
         return;
     }
 
-    if (autosave_l && (player_ptr->word_recall == 1) && !player_ptr->phase_out) {
+    if (autosave_l && (player_ptr->word_recall == 1) && !AngbandSystem::get_instance().is_phase_out()) {
         do_cmd_save_game(player_ptr, true);
     }
 
@@ -75,7 +75,7 @@ void execute_recall(PlayerType *player_ptr)
 
     disturb(player_ptr, false, true);
     auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (floor_ptr->dun_level || inside_quest(floor_ptr->quest_number) || player_ptr->enter_dungeon) {
+    if (floor_ptr->dun_level || floor_ptr->is_in_quest() || player_ptr->enter_dungeon) {
         msg_print(_("上に引っ張りあげられる感じがする！", "You feel yourself yanked upwards!"));
         if (floor_ptr->dungeon_idx) {
             player_ptr->recall_dungeon = floor_ptr->dungeon_idx;
@@ -146,7 +146,7 @@ void execute_floor_reset(PlayerType *player_ptr)
         return;
     }
 
-    if (autosave_l && (player_ptr->alter_reality == 1) && !player_ptr->phase_out) {
+    if (autosave_l && (player_ptr->alter_reality == 1) && !AngbandSystem::get_instance().is_phase_out()) {
         do_cmd_save_game(player_ptr, true);
     }
 
@@ -157,7 +157,7 @@ void execute_floor_reset(PlayerType *player_ptr)
     }
 
     disturb(player_ptr, false, true);
-    if (!inside_quest(quest_number(floor, floor.dun_level)) && floor.dun_level) {
+    if (!inside_quest(floor.get_quest_id()) && floor.dun_level) {
         msg_print(_("世界が変わった！", "The world changes!"));
 
         /* 時空崩壊度進行 */

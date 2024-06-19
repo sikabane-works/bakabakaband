@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief 死の大鎌に特有の処理
  * @date 2020/05/23
  * @author Hourier
@@ -12,8 +12,7 @@
 #include "main/sound-definitions-table.h"
 #include "main/sound-of-music.h"
 #include "object-enchant/tr-types.h"
-#include "object/object-flags.h"
-#include "player-attack/player-attack-util.h"
+#include "player-attack/player-attack.h"
 #include "player-base/player-class.h"
 #include "player-info/race-info.h"
 #include "player/player-damage.h"
@@ -149,7 +148,7 @@ void process_death_scythe_reflection(PlayerType *player_ptr, player_attack_type 
     msg_print(_("振り回した大鎌が自分自身に返ってきた！", "Your scythe returns to you!"));
 
     auto *o_ptr = &player_ptr->inventory_list[INVEN_MAIN_HAND + pa_ptr->hand];
-    auto death_scythe_flags = object_flags(o_ptr);
+    const auto death_scythe_flags = o_ptr->get_flags();
     pa_ptr->attack_damage = damroll(o_ptr->dd + player_ptr->to_dd[pa_ptr->hand], o_ptr->ds + player_ptr->to_ds[pa_ptr->hand]);
     int magnification = calc_death_scythe_reflection_magnification(player_ptr);
     compensate_death_scythe_reflection_magnification(player_ptr, &magnification, death_scythe_flags);

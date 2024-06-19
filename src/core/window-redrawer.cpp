@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief ウィンドウの再描画処理
  * @date 2020/06/27
  * @author Hourier
@@ -48,17 +48,16 @@ void redraw_window()
  */
 static void print_dungeon(PlayerType *player_ptr)
 {
-    TERM_LEN width, height;
-    term_get_size(&width, &height);
+    const auto &[wid, hgt] = term_get_size();
 
-    c_put_str(TERM_WHITE, "             ", height + ROW_DUNGEON, COL_DUNGEON);
+    c_put_str(TERM_WHITE, "             ", hgt + ROW_DUNGEON, COL_DUNGEON);
     const auto dungeon_name = map_name(player_ptr);
     TERM_LEN col = COL_DUNGEON + 6 - dungeon_name.length() / 2;
     if (col < 0) {
         col = 0;
     }
 
-    c_put_str(TERM_L_UMBER, dungeon_name, height + ROW_DUNGEON, col);
+    c_put_str(TERM_L_UMBER, dungeon_name, hgt + ROW_DUNGEON, col);
 }
 
 /*!
@@ -288,6 +287,11 @@ void window_stuff(PlayerType *player_ptr)
         fix_monster_list(player_ptr);
     }
 
+    if (window_flags.has(SubWindowRedrawingFlag::PETS)) {
+        rfu.reset_flag(SubWindowRedrawingFlag::PETS);
+        fix_pet_list(player_ptr);
+    }
+
     if (window_flags.has(SubWindowRedrawingFlag::MESSAGE)) {
         rfu.reset_flag(SubWindowRedrawingFlag::MESSAGE);
         fix_message();
@@ -316,7 +320,7 @@ void window_stuff(PlayerType *player_ptr)
     if (window_flags.has(SubWindowRedrawingFlag::FLOOR_ITEMS)) {
         rfu.reset_flag(SubWindowRedrawingFlag::FLOOR_ITEMS);
         // ウィンドウサイズ変更に対応できず。カーソル位置を取る必要がある。
-        fix_floor_item_list(player_ptr, player_ptr->y, player_ptr->x);
+        fix_floor_item_list(player_ptr, player_ptr->get_position());
     }
 
     if (window_flags.has(SubWindowRedrawingFlag::FOUND_ITEMS)) {
