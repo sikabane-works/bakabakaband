@@ -39315,6 +39315,22 @@ S:1_IN_6 | HEAL | BO_MANA
 D:帝国復興を企むガイチ軍が火星で開発したバイオ兵器の一つだ。
 D:初期の状態では四脚の細い虫のような姿をしている。
 
+N:2157:BT-92 ブレナー第一形態
+E:BT-92 Blenar (first form)
+G:B:g
+I:125:30d52:80:90:12
+W:41:1:3200:0:0
+B:CRUSH:HURT:3d12
+B:CRUSH:HURT:3d12
+B:CRUSH:HURT:3d12
+B:CRUSH:HURT:3d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | CAN_FLY | ALLIANCE_GAICHI
+F:BASH_DOOR |
+S:1_IN_8 | HEAL | BO_MANA
+D:帝国復興を企むガイチ軍が火星で開発したバイオ兵器の一つだ。
+D:初期の状態では大型の航空機の形をしている。
+
 
 # N: serial number : monster name
 # G: symbol : color
