@@ -25,12 +25,12 @@ function BuildPackage ($package_name, $package_unique_files, $build_conf) {
     New-Item $bakabakabandDir -ItemType Directory
 
     # 必要なファイルをコピーして、その中で不要になりえるものを削除
-    Copy-Item -Verbose -Path .\Bakabakaband.exe, .\readme_angband, .\THIRD-PARTY-NOTICES.txt -Destination $hengbandDir
-    Copy-Item -Verbose -Path $package_unique_files -Destination $hengbandDir
-    Copy-Item -Verbose -Recurse -Path .\lib -Destination $hengbandDir -Exclude Makefile.am, *.raw, .gitattributes
-    Copy-Item -Verbose -Path .\lib\apex\h_scores.raw -Destination $hengbandDir\lib\apex
-    Remove-Item -Verbose -Exclude delete.me -Recurse -Path $hengbandDir\lib\save\*, $hengbandDir\lib\user\*
-    Remove-Item -Verbose -Exclude music.cfg, readme.txt, *.mp3 -Path $hengbandDir\lib\xtra\music\*
+    Copy-Item -Verbose -Path .\Bakabakaband.exe, .\readme_angband, .\THIRD-PARTY-NOTICES.txt -Destination $bakabakabandDir
+    Copy-Item -Verbose -Path $package_unique_files -Destination $bakabakabandDir
+    Copy-Item -Verbose -Recurse -Path .\lib -Destination $bakabakabandDir -Exclude Makefile.am, *.raw, .gitattributes
+    Copy-Item -Verbose -Path .\lib\apex\h_scores.raw -Destination $bakabakabandDir\lib\apex
+    Remove-Item -Verbose -Exclude delete.me -Recurse -Path $bakabakabandDir\lib\save\*, $bakabakabandDir\lib\user\*
+    Remove-Item -Verbose -Exclude music.cfg, readme.txt, *.mp3 -Path $bakabakabandDir\lib\xtra\music\*
 
     # zipアーカイブ作成
     $package_path = Join-Path $(Get-Location) "${package_name}.zip"
