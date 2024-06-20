@@ -18,6 +18,7 @@
 #include "sv-definition/sv-rod-types.h"
 #include "sv-definition/sv-weapon-types.h"
 #include "system/angband-exceptions.h"
+#include "util/string-processor.h"
 #include <set>
 #include <unordered_map>
 
@@ -604,6 +605,8 @@ bool BaseitemKey::is_mushrooms() const
 
 BaseitemInfo::BaseitemInfo()
     : bi_key(ItemKindType::NONE)
+    , cc_def(ColoredChar(0, '\0'))
+    , cc_config(ColoredChar(0, '\0'))
 {
 }
 
@@ -620,11 +623,39 @@ bool BaseitemInfo::is_valid() const
 }
 
 /*!
- * @brief オブジェクトを試行済にする
+ * @brief ベースアイテム名を返す
+ * @return ベースアイテム名
  */
-void BaseitemInfo::mark_as_tried()
+std::string BaseitemInfo::stripped_name() const
 {
-    this->tried = true;
+    const auto tokens = str_split(this->name, ' ');
+    std::stringstream ss;
+    for (const auto &token : tokens) {
+        if (token == "" || token == "~" || token == "&" || token == "#") {
+            continue;
+        }
+
+        auto offset = 0;
+        auto endpos = token.size();
+        auto is_kanji = false;
+        if (token[0] == '~' || token[0] == '#') {
+            offset++;
+        }
+#ifdef JP
+        if (token.size() > 2) {
+            is_kanji = iskanji(token[endpos - 2]);
+        }
+
+#endif
+        if (!is_kanji && (token[endpos - 1] == '~' || token[endpos - 1] == '#')) {
+            endpos--;
+        }
+
+        ss << token.substr(offset, endpos);
+    }
+
+    ss << " ";
+    return ss.str();
 }
 
 /*!
