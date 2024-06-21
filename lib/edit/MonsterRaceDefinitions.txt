@@ -39331,6 +39331,21 @@ S:1_IN_8 | HEAL | BO_MANA
 D:帝国復興を企むガイチ軍が火星で開発したバイオ兵器の一つだ。
 D:初期の状態では大型の航空機の形をしている。
 
+N:2158:忍者『じゃじゃ丸』
+E:Ninja Jajamaru
+G:p:D
+I:125:20d12:20:60:10
+W:28:3:0:900:0:0
+B:KICK:HURT:10d4
+B:KICK:HURT:10d4
+B:SLASH:HURT:4d6
+B:SHOOT:HURT:5d10
+F:MALE | HUMAN | FORCE_MAXHP | UNIQUE
+F:DROP_1D2 | IM_POIS | IM_FIRE | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | NINJA
+F:GOOD | NO_CONF | NO_SLEEP | EAT_GIVE_DEX
+S:1_IN_4 | SHOOT | BO_FIRE | HASTE
+D:なまず太夫に攫われたさくら姫を助けるために、終わりなき戦いを繰り返す忍者だ。
 
 # N: serial number : monster name
 # G: symbol : color
