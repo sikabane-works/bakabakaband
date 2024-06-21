@@ -164,7 +164,8 @@ void process_dungeon(PlayerType *player_ptr, bool load_game)
     const auto is_watching = AngbandSystem::get_instance().is_phase_out();
     if (is_watching) {
         if (load_game) {
-            update_gambling_monsters(player_ptr);
+            player_ptr->energy_need = 0;
+            update_melee_gladiators(player_ptr);
         } else {
             msg_print(_("試合開始！", "Ready..Fight!"));
             msg_print(nullptr);
