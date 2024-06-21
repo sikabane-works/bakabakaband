@@ -392,7 +392,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
 
                 /* Treasure/trap */
             case '*':
-                if (magik(75)) {
+                if (evaluate_percent(75)) {
                     place_object(player_ptr, y, x, 0L);
                 } else {
                     place_trap(floor_ptr, y, x);
