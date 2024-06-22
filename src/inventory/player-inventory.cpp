@@ -135,6 +135,14 @@ void py_pickup_floor(PlayerType *player_ptr, bool pickup)
         return;
     }
 
+    if (!check_get_item(&player_ptr->current_floor_ptr->o_list[floor_o_idx])) {
+        auto *o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
+        const auto item_name = describe_flavor(player_ptr, o_ptr, 0);
+        msg_format(_("%sを持ち運ぶことはできない。", "You can't carry %s."), item_name.data());
+        o_ptr->marked.set(OmType::SUPRESS_MESSAGE);
+        return;
+    }
+
     if (!can_pickup) {
         if (floor_num == 1) {
             auto *o_ptr = &player_ptr->current_floor_ptr->o_list[floor_o_idx];
