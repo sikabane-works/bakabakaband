@@ -103,7 +103,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;SJIS;WIN32;HAVE_STDINT_H;JP;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;_CRT_SECURE_NO_WARNINGS;SJIS;WIN32;HAVE_STDINT_H;JP;DISABLE_NET;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>EnableAllWarnings</WarningLevel>
@@ -286,6 +286,8 @@
     <ClCompile Include="..\..\src\load\item\item-loader-factory.cpp" />
     <ClCompile Include="..\..\src\load\monster\monster-loader-factory.cpp" />
     <ClCompile Include="..\..\src\load\player-class-specific-data-loader.cpp" />
+    <ClCompile Include="..\..\src\main-win\main-win-exception.cpp" />
+    <ClCompile Include="..\..\src\market\melee-arena.cpp" />
     <ClCompile Include="..\..\src\monster-race\race-brightness-mask.cpp" />
     <ClCompile Include="..\..\src\monster-race\race-sex-const.cpp" />
     <ClCompile Include="..\..\src\monster\monster-pain-describer.cpp" />
@@ -1001,6 +1003,7 @@
     <ClInclude Include="..\..\src\load\player-class-specific-data-loader.h" />
     <ClInclude Include="..\..\src\load\savedata-old-flag-types.h" />
     <ClInclude Include="..\..\src\market\bounty-type-definition.h" />
+    <ClInclude Include="..\..\src\market\melee-arena.h" />
     <ClInclude Include="..\..\src\monster-race\monster-aura-types.h" />
     <ClInclude Include="..\..\src\monster-race\monster-kind-mask.h" />
     <ClInclude Include="..\..\src\monster-race\race-behavior-flags.h" />
