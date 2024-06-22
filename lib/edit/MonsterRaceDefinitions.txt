@@ -39347,6 +39347,25 @@ F:GOOD | NO_CONF | NO_SLEEP | EAT_GIVE_DEX
 S:1_IN_4 | SHOOT | BO_FIRE | HASTE
 D:なまず太夫に攫われたさくら姫を助けるために、終わりなき戦いを繰り返す忍者だ。
 
+N:2159:臆病者の禍『デスプロフェット』
+E:Death Prophet, the Bane of Coward
+G:f:D
+I:118:14d100:100:120:0
+W:44:3:10500:0:0
+B:CLAW:HURT:6d12
+B:CLAW:HURT:6d12
+B:CLAW:HURT:6d12
+F:UNIQUE | MALE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | 
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | 
+F:INVISIBLE | OPEN_DOOR | BASH_DOOR | 
+F:IM_FIRE | IM_COLD | IM_ACID | NO_CONF | NO_SLEEP
+S:1_IN_5 | 
+S:TELE_TO | BA_DARK | HOLD | SLOW 
+D:血に塗れたルクレチアの地で、倒すべき敵から逃れようとする臆病者を咎める
+D:「死の予兆」そのものだ。尻尾の弱点は克服済だそうだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
