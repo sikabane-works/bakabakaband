@@ -25,7 +25,8 @@ schema_files = \
 	schema/ArtifactDefinitions.schema.json \
 	schema/BaseitemDefinitions.schema.json \
 	schema/ClassMagicDefinitions.schema.json \
-	schema/MonraceDefinitions.schema.json
+	schema/MonraceDefinitions.schema.json \
+	schema/SpellDefinitions.schema.json
 
 EXTRA_DIST = \
 	autopick.txt \
