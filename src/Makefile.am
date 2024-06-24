@@ -20,6 +20,7 @@ hengband_SOURCES = \
 	alliance/alliance.cpp alliance/alliance.h \
 	alliance/alliance-jural.cpp alliance/alliance-jural.h \
 	alliance/alliance-tophamhatt.cpp alliance/alliance-tophamhatt.h \
+	alliance/alliance-triothepunch.cpp alliance/alliance-triothepunch.h \
 	\
 	artifact/artifact-info.cpp artifact/artifact-info.h \
 	artifact/fixed-art-generator.cpp artifact/fixed-art-generator.h \

@@ -46,6 +46,7 @@ enum class AllianceType : int {
     GAICHI = 35, //!< ガイチ帝国
     LEGEND_OF_SAVIOR = 36, //!< 世紀末救世主伝説
     TOPHAMHATT = 37, //!< トップハムハット一族
+    TRIOTHEPANCH = 38, //!< トリオ・ザ・パンチ
     MAX,
 };
 
