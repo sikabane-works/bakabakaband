@@ -379,7 +379,16 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
         rd_FlagGroup(r_ptr->r_misc_flags, rd_byte);
     }
 
-    r_ptr->max_num = rd_byte();
+    if (loading_savefile_version_is_older_than(26)) {
+        (void)rd_byte();
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+            r_ptr->mob_num = 1;
+        } else {
+            r_ptr->mob_num = r_ptr->max_num;
+        }
+    } else {
+        r_ptr->mob_num = rd_s16b();
+    }
     r_ptr->floor_id = rd_s16b();
 
     if (!loading_savefile_version_is_older_than(4)) {

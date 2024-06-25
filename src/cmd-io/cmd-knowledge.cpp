@@ -61,7 +61,8 @@ void do_cmd_knowledge(PlayerType *player_ptr)
             prt(_("(k) 現在の自動拾い/破壊設定              の一覧", "(k) Display auto pick/destroy"), 15, 5);
         } else {
             prt(_("(l) これまで行った行為                   の一覧", "(l) Display incident counter"), 6, 5);
-            prt(_("(m) アライアンス                         の一覧", "(m) Display alliance information"), 7, 5);
+            prt(_("(m) アライアンス詳細                     の一覧", "(m) Display alliance detail information"), 7, 5);
+            prt(_("(n) アライアンス概要                     の一覧", "(m) Display alliance information"), 7, 5);
         }
 
         prt(_("-続く-", "-more-"), 17, 8);
@@ -148,7 +149,10 @@ void do_cmd_knowledge(PlayerType *player_ptr)
             do_cmd_knowledge_incident(player_ptr);
             break;
         case 'm': /* Alliance */
-            do_cmd_knowledge_alliance(player_ptr);
+            do_cmd_knowledge_alliance(player_ptr, true);
+            break;
+        case 'n': /* Alliance */
+            do_cmd_knowledge_alliance(player_ptr, false);
             break;
         default: /* Unknown option */
             bell();

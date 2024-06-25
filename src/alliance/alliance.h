@@ -46,6 +46,7 @@ enum class AllianceType : int {
     GAICHI = 35, //!< ガイチ帝国
     LEGEND_OF_SAVIOR = 36, //!< 世紀末救世主伝説
     TOPHAMHATT = 37, //!< トップハムハット一族
+    TRIOTHEPANCH = 38, //!< トリオ・ザ・パンチ
     MAX,
 };
 
@@ -237,15 +238,6 @@ public:
     EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
     int calcImpressionPoint(PlayerType *creature_ptr) const override;
     virtual ~AllianceGO() = default;
-};
-
-class AllianceTheShire : public Alliance {
-public:
-    using Alliance::Alliance;
-    AllianceTheShire() = delete;
-    EnumClassFlagGroup<alliance_flags> alliFlags; //!< 陣営特性フラグ
-    int calcImpressionPoint(PlayerType *creature_ptr) const override;
-    virtual ~AllianceTheShire() = default;
 };
 
 class AllianceHakushinKarate : public Alliance {

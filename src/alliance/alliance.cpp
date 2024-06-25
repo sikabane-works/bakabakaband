@@ -1,6 +1,8 @@
 #include "alliance/alliance.h"
 #include "alliance/alliance-jural.h"
+#include "alliance/alliance-shire.h"
 #include "alliance/alliance-tophamhatt.h"
+#include "alliance/alliance-triothepunch.h"
 #include "effect/effect-characteristics.h"
 #include "floor/floor-util.h"
 #include "monster-floor/monster-summon.h"
@@ -51,6 +53,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::GAICHI, std::make_unique<AllianceGaichi>(AllianceType::GAICHI, "GAICHI", _("ガイチ帝国", "Gaichi Empire"), 1100000L) },
     { AllianceType::LEGEND_OF_SAVIOR, std::make_unique<AllianceLegendOfSavior>(AllianceType::LEGEND_OF_SAVIOR, "LEGEND-OF-SAVIOR", _("世紀末救世主伝説", "Legend of the Latter-day Savior"), 0L) },
     { AllianceType::TOPHAMHATT, std::make_unique<AllianceTophamHatt>(AllianceType::TOPHAMHATT, "TOPHAMHATT", _("トップハムハット一族", "Topham Hatt Family"), 1400000L) },
+    { AllianceType::TRIOTHEPANCH, std::make_unique<AllianceTrioThePunch>(AllianceType::TRIOTHEPANCH, "TRIOTHEPANCH", _("トリオ・ザ・パンチ", "Trio The Panch"), 50000L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_impression = {
@@ -234,13 +237,6 @@ int AllianceNumenor::calcImpressionPoint([[maybe_unused]] PlayerType *creature_p
 int AllianceGO::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
-}
-
-int AllianceTheShire::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
-{
-    int impression = 0;
-    impression += Alliance::calcPlayerPower(*creature_ptr, -10, 1);
-    return impression;
 }
 
 int AllianceDokachans::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
