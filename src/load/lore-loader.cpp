@@ -381,14 +381,12 @@ static void rd_lore(MonsterRaceInfo *r_ptr)
 
     if (loading_savefile_version_is_older_than(26)) {
         (void)rd_byte();
-        if(r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
+        if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE)) {
             r_ptr->mob_num = 1;
-        }
-        else {
+        } else {
             r_ptr->mob_num = r_ptr->max_num;
         }
-    }
-    else {
+    } else {
         r_ptr->mob_num = rd_s16b();
     }
     r_ptr->floor_id = rd_s16b();

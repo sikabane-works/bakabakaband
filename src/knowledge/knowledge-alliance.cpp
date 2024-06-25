@@ -53,8 +53,7 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr, bool detail)
                         } else {
                             if (r_ref.max_num > 0) {
                                 fprintf(fff, _(" 全滅\n", " Wiped\n"));
-                            }
-                            else {
+                            } else {
                                 fprintf(fff, _(" ----\n", " ----\n"));
                             }
                         }
