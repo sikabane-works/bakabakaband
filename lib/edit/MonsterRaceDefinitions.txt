@@ -39455,6 +39455,22 @@ F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR
 D:ストームヴィルの王ゴドリックに使える正規兵だ。
 
+N:2166:傲慢な新生子
+E:Insolent Neonate
+G:V:o
+I:110:10d12:20:35:10
+W:15:1:100:200:432
+B:HIT:HURT:1d6
+B:BITE:EXP_VAMP:1d4
+F:PREVENT_SUDDEN_MAGIC |
+F:COLD_BLOOD | DROP_60 | DROP_1D2 |
+F:OPEN_DOOR | BASH_DOOR | REGENERATE | CAN_FLY | RES_NETH |
+F:EVIL | UNDEAD | IM_COLD | IM_POIS | RES_DARK | HURT_LITE | NO_CONF | NO_SLEEP
+S:1_IN_9 |
+S:SCARE | CAUSE_1
+D:吸血鬼という長寿にして高貴な捕食者に成り上がりながら、
+D:種にあるべき礼儀作法と社会性に欠如した未熟者だ。あるいは罰せられて初めて一人前になれるのだろうか。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
