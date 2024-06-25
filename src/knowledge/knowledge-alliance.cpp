@@ -46,7 +46,7 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr, bool detail)
 
             for (auto &[r_idx, r_ref] : monraces_info) {
                 if (r_ref.alliance_idx == a.second->id) {
-                    fprintf(fff, _("%s  %-40s レベル %3d 評価値 %9d", "  %-40s LEVEL %3d POW %9d"), r_ref.kind_flags.has(MonsterKindType::UNIQUE) ? "[U]" : "---", r_ref.name.c_str(), r_ref.level, MonsterRace(r_idx).calc_eval());
+                    fprintf(fff, _("%s  %-40s レベル %3d 評価値 %9d", "%s  %-40s LEVEL %3d POW %9d"), r_ref.kind_flags.has(MonsterKindType::UNIQUE) ? "[U]" : "---", r_ref.name.c_str(), r_ref.level, MonsterRace(r_idx).calc_eval());
                     if (r_ref.kind_flags.has_not(MonsterKindType::UNIQUE)) {
                         if (r_ref.mob_num > 0) {
                             fprintf(fff, "x %d\n", r_ref.mob_num);
