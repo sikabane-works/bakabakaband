@@ -1,5 +1,6 @@
 #include "alliance/alliance.h"
 #include "alliance/alliance-jural.h"
+#include "alliance/alliance-shire.h"
 #include "alliance/alliance-tophamhatt.h"
 #include "alliance/alliance-triothepunch.h"
 #include "effect/effect-characteristics.h"
@@ -236,13 +237,6 @@ int AllianceNumenor::calcImpressionPoint([[maybe_unused]] PlayerType *creature_p
 int AllianceGO::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
 {
     return 0;
-}
-
-int AllianceTheShire::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
-{
-    int impression = 0;
-    impression += Alliance::calcPlayerPower(*creature_ptr, -10, 1);
-    return impression;
 }
 
 int AllianceDokachans::calcImpressionPoint([[maybe_unused]] PlayerType *creature_ptr) const
