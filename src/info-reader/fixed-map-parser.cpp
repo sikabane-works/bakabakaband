@@ -64,7 +64,7 @@ static std::string parse_fixed_map_expression(PlayerType *player_ptr, char **sp,
             v = "0";
             while (*s && (f != b2)) {
                 t = parse_fixed_map_expression(player_ptr, &s, &f);
-                if (t != "0") {
+                if (!t.empty() && t != "0") {
                     v = "1";
                 }
             }
@@ -72,7 +72,7 @@ static std::string parse_fixed_map_expression(PlayerType *player_ptr, char **sp,
             v = "1";
             while (*s && (f != b2)) {
                 t = parse_fixed_map_expression(player_ptr, &s, &f);
-                if (t == "0") {
+                if (!t.empty() && t == "0") {
                     v = "0";
                 }
             }
@@ -80,7 +80,7 @@ static std::string parse_fixed_map_expression(PlayerType *player_ptr, char **sp,
             v = "1";
             while (*s && (f != b2)) {
                 t = parse_fixed_map_expression(player_ptr, &s, &f);
-                if (t == "1") {
+                if (!t.empty() && t == "1") {
                     v = "0";
                 }
             }
