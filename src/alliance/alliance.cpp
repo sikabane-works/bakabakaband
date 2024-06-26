@@ -3,6 +3,7 @@
 #include "alliance/alliance-shire.h"
 #include "alliance/alliance-tophamhatt.h"
 #include "alliance/alliance-triothepunch.h"
+#include "alliance/alliance-megadeth.h"
 #include "effect/effect-characteristics.h"
 #include "floor/floor-util.h"
 #include "monster-floor/monster-summon.h"
@@ -54,6 +55,7 @@ const std::map<AllianceType, std::shared_ptr<Alliance>> alliance_list = {
     { AllianceType::LEGEND_OF_SAVIOR, std::make_unique<AllianceLegendOfSavior>(AllianceType::LEGEND_OF_SAVIOR, "LEGEND-OF-SAVIOR", _("世紀末救世主伝説", "Legend of the Latter-day Savior"), 0L) },
     { AllianceType::TOPHAMHATT, std::make_unique<AllianceTophamHatt>(AllianceType::TOPHAMHATT, "TOPHAMHATT", _("トップハムハット一族", "Topham Hatt Family"), 1400000L) },
     { AllianceType::TRIOTHEPANCH, std::make_unique<AllianceTrioThePunch>(AllianceType::TRIOTHEPANCH, "TRIOTHEPANCH", _("トリオ・ザ・パンチ", "Trio The Panch"), 50000L) },
+    { AllianceType::MEGADETH, std::make_unique<AllianceMegadeth>(AllianceType::MEGADETH, "MEGADETH", _("秘密結社メガデス", "Secret Society Megadeth"), 50000L) },
 };
 
 const std::map<std::tuple<AllianceType, AllianceType>, int> each_alliance_impression = {
