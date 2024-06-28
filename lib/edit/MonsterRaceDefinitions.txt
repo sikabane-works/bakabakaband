@@ -39516,6 +39516,24 @@ S:1_IN_6
 S:BR_FIRE | BA_FIRE | SHOOT
 D:星を喰らう獣、ラヴォスの幼体だ。
 
+N:2170:女郎蜘蛛『比良坂初音』
+E:Hatsune Hirasaka, Nephila Clavata Deamon
+G:S:D
+I:119:20d100:50:100:20
+W:42:3:9000:0:0
+B:BITE:HURT:9d10
+B:STING:HURT:9d5
+B:STING:HURT:9d5
+B:STING:HURT:9d5
+F:UNIQUE | FEMALE |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:DROP_CORPSE
+F:DROP_1D2 | DROP_2D2 | DROP_GOOD | SMART | BASH_DOOR |
+F:ANIMAL | EVIL | HURT_LITE | NO_CONF | NO_SLEEP | RES_DARK | SPIDER | HUMAN
+S:1_IN_2 | HEAL | BLIND | SLOW | CONF | SCARE | CAUSE_2 | CAUSE_3
+S:BR_DARK | BA_DARK
+D:遠き昔、蜘蛛の大妖怪に捧げられた少女が愛でられて、同じ生を与えられた成れ果てだ。
+D:長い時を重ねて、今は宿敵となった同族と争う事だけが生き甲斐となっている。
 
 # N: serial number : monster name
 # G: symbol : color
