@@ -39500,6 +39500,23 @@ S:1_IN_4 | SHOOT
 D:外道高校球児たちに殺戮野球を教える恐るべき監督だ。
 D:「てめーにはおしえてやんねー！くそして寝な！」
 
+N:2169:プチラヴォス
+E:Petit lavos
+G:H:b
+I:110:10d160:40:110:30
+W:39:4:4000:0:0
+B:BITE:FIRE:6d12
+B:BITE:FIRE:6d12
+B:CRUSH:HURT:4d15
+B:SHOOT:HURT:10d10
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | EVIL |
+F:IM_FIRE | IM_ACID | IM_POIS
+F:NO_CONF | NO_SLEEP | NO_FEAR | DROP_CORPSE
+S:1_IN_6
+S:BR_FIRE | BA_FIRE | SHOOT
+D:星を喰らう獣、ラヴォスの幼体だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
