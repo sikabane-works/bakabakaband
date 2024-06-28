@@ -2,6 +2,7 @@
 #include "io/input-key-requester.h"
 #include "player-base/player-class.h"
 #include "player-info/class-info.h"
+#include "player/player-realm.h"
 #include "player/player-skill.h"
 #include "player/player-status-table.h"
 #include "player/player-status.h"
@@ -123,12 +124,7 @@ PERCENTAGE spell_chance(PlayerType *player_ptr, SPELL_IDX spell, int16_t use_rea
         return 0;
     }
 
-    const magic_type *s_ptr;
-    if (!is_magic(use_realm)) {
-        s_ptr = &technic_info[use_realm - MIN_TECHNIC][spell];
-    } else {
-        s_ptr = &mp_ptr->info[use_realm - 1][spell];
-    }
+    const auto *s_ptr = PlayerRealm::get_spell_info(use_realm, spell);
 
     PERCENTAGE chance = s_ptr->sfail;
     chance -= 3 * (player_ptr->lev - s_ptr->slevel);
@@ -221,7 +217,7 @@ PERCENTAGE spell_chance(PlayerType *player_ptr, SPELL_IDX spell, int16_t use_rea
  * @param x 表示メッセージ左上X座標
  * @param use_realm 魔法領域ID
  */
-void print_spells(PlayerType *player_ptr, SPELL_IDX target_spell, SPELL_IDX *spells, int num, TERM_LEN y, TERM_LEN x, int16_t use_realm)
+void print_spells(PlayerType *player_ptr, SPELL_IDX target_spell_id, SPELL_IDX *spells, int num, TERM_LEN y, TERM_LEN x, int16_t use_realm)
 {
     if (((use_realm <= REALM_NONE) || (use_realm > MAX_REALM)) && AngbandWorld::get_instance().wizard) {
         msg_print(_("警告！ print_spell が領域なしに呼ばれた", "Warning! print_spells called with null realm"));
@@ -249,19 +245,11 @@ void print_spells(PlayerType *player_ptr, SPELL_IDX target_spell, SPELL_IDX *spe
     }
 
     int i;
-    const magic_type *s_ptr;
-    char info[80];
-    char out_val[160];
     char ryakuji[5];
     bool max = false;
     for (i = 0; i < num; i++) {
         SPELL_IDX spell = spells[i];
-
-        if (!is_magic(use_realm)) {
-            s_ptr = &technic_info[use_realm - MIN_TECHNIC][spell];
-        } else {
-            s_ptr = &mp_ptr->info[use_realm - 1][spell];
-        }
+        const auto *s_ptr = PlayerRealm::get_spell_info(use_realm, spell);
 
         MANA_POINT need_mana;
         if (use_realm == REALM_HISSATSU) {
@@ -292,25 +280,25 @@ void print_spells(PlayerType *player_ptr, SPELL_IDX target_spell, SPELL_IDX *spe
             ryakuji[4] = '\0';
         }
 
-        if (use_menu && target_spell) {
-            if (i == (target_spell - 1)) {
-                strcpy(out_val, _("  》 ", "  >  "));
+        std::string out_val;
+        if (use_menu && target_spell_id) {
+            if (i == (target_spell_id - 1)) {
+                out_val = _("  》 ", "  >  ");
             } else {
-                strcpy(out_val, "     ");
+                out_val = "     ";
             }
         } else {
-            sprintf(out_val, "  %c) ", I2A(i));
+            out_val = format("  %c) ", I2A(i));
         }
 
         if (s_ptr->slevel >= 99) {
-            strcat(out_val, format("%-30s", _("(判読不能)", "(illegible)")).c_str());
+            out_val.append(format("%-30s", _("(判読不能)", "(illegible)")));
             c_prt(TERM_L_DARK, out_val, y + i + 1, x);
             continue;
         }
 
         const auto spell_info = exe_spell(player_ptr, use_realm, spell, SpellProcessType::INFO);
-        strcpy(info, spell_info->data());
-        concptr comment = info;
+        concptr comment = spell_info->data();
         byte line_attr = TERM_WHITE;
         if (pc.is_every_magic()) {
             if (s_ptr->slevel > player_ptr->max_plv) {
@@ -336,12 +324,12 @@ void print_spells(PlayerType *player_ptr, SPELL_IDX target_spell, SPELL_IDX *spe
 
         const auto spell_name = exe_spell(player_ptr, use_realm, spell, SpellProcessType::NAME);
         if (use_realm == REALM_HISSATSU) {
-            strcat(out_val, format("%-25s %2d %4d", spell_name->data(), s_ptr->slevel, need_mana).c_str());
+            out_val = format("%-25s %2d %4d", spell_name->data(), s_ptr->slevel, need_mana).c_str();
         } else {
-            strcat(out_val,
+            out_val =
                 format("%-25s%c%-4s %2d %4d %3d%% %s", spell_name->data(), (max ? '!' : ' '), ryakuji, s_ptr->slevel,
                     need_mana, spell_chance(player_ptr, spell, use_realm), comment)
-                    .c_str());
+                    .c_str();
         }
 
         c_prt(line_attr, out_val, y + i + 1, x);
