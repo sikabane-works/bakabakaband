@@ -39561,6 +39561,19 @@ F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
 D:胴体を持たず、大きな頭から手脚が映えた奇妙な生き物だ。一説には不死であると言われている。
 D:極めて温和だが、怒らせると大変なことになるかもしれない。
 
+N:2173:太歳
+E:TaiSui
+G:j:o
+I:110:15d15:70:60:5
+W:40:2:12000:0:0
+B:ENGULF:LOSE_ALL:1d6
+B:ENGULF:UN_BONUS:2d10
+B:ENGULF:UN_POWER:2d10
+B:ENGULF:DR_MANA:2d10
+F:WEIRD_MIND | NO_CONF | NO_SLEEP | IM_ELEC | IM_ACID | IM_POIS | IM_COLD | NO_FEAR |
+F:RES_NETH | NEVER_MOVE | MULTIPLY
+D:太歳星君の化身にして一部の顕現、無限に増殖し続ける奇妙な肉の塊だ。
+D:討てば貴方に力を与えるかも知れないが、逆に貪られてしまうかもしれない。
 
 # N: serial number : monster name
 # G: symbol : color
