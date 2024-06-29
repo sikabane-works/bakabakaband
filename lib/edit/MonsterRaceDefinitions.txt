@@ -39380,7 +39380,7 @@ F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
 F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
 F:OPEN_DOOR | BASH_DOOR | SAMURAI | GOOD | FRIENDLY
 F:IM_ACID | IM_POIS
-D:剣術軍学に長じるも、太平の世で無為の日々を過ごし日々退屈ぼやく男だ。
+D:剣術軍学に長じるも、太平の世で無為の日々を過ごし退屈とぼやく男だ。
 D:しかし時に見かける巨悪を前に、その腕前は真価を発揮するという。
 
 N:2161:『柊さん家のお父さん』
@@ -39543,10 +39543,54 @@ W:13:1:40:0:0
 B:HIT:HURT:3d6
 B:HIT:HURT:3d6
 F:MALE | HUMAN | WILD_ALL | HAS_LITE_2 | NASTY | HOMO_SEXUAL | MOB_2100
-F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | WARRIOR
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | WARRIOR | ALLIANCE_GO
 F:OPEN_DOOR | BASH_DOOR
 S:1_IN_10 | CAUSE_1
-D:太陽神GOの教えたる金、暴力、SEXの道を躊躇なく進む侵攻の戦士たちだ。
+D:太陽神GOの教えたる金、暴力、SEXの道を躊躇なく進む信仰戦士たちだ。
+
+N:2172:ヌゥ
+E:Nu
+G:H:B
+I:110:30d30:30:100:255
+W:0:10:0:0:0
+B:CRUSH:HURT:50d6
+F:MALE | WILD_WOOD | HUMAN | WILD_TOWN
+F:RAND_25 | DROP_SKELETON | DROP_CORPSE |
+F:ONLY_GOLD | DROP_60 | FRIENDLY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR
+D:胴体を持たず、大きな頭から手脚が映えた奇妙な生き物だ。一説には不死であると言われている。
+D:極めて温和だが、怒らせると大変なことになるかもしれない。
+
+N:2173:太歳
+E:TaiSui
+G:j:o
+I:110:15d15:70:60:5
+W:40:2:12000:0:0
+B:ENGULF:LOSE_ALL:1d6
+B:ENGULF:UN_BONUS:2d10
+B:ENGULF:UN_POWER:2d10
+B:ENGULF:DR_MANA:2d10
+F:WEIRD_MIND | NO_CONF | NO_SLEEP | IM_ELEC | IM_ACID | IM_POIS | IM_COLD | NO_FEAR |
+F:RES_NETH | NEVER_MOVE | MULTIPLY
+D:太歳星君の化身にして一部の顕現、無限に増殖し続ける奇妙な肉の塊だ。
+D:討てば貴方に力を与えるかも知れないが、逆に貪られてしまうかもしれない。
+
+N:2174:R-66Y
+E:R-66Y
+G:g:s
+I:110:9d30:30:60:0
+W:31:2:0:800:0:0
+B:PUNCH:HURT:2d8
+B:PUNCH:HURT:2d8
+B:KICK:HURT:2d8
+B:KICK:HURT:2d8
+F:DROP_CORPSE
+F:NONLIVING | NO_FEAR | PREVENT_SUDDEN_MAGIC |
+F:IM_FIRE | IM_COLD | IM_POIS | FRIENDS | MOB_500
+F:NO_STUN | REGENERATE | NO_CONF | NO_SLEEP | CAN_SWIM |
+F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
+D:ラヴォスによって荒廃した世界に存在するロボットの一機種だ。
+D:生き残った人類を駆逐しようとする機械の長、マザーブレーンに従属している。
 
 
 # N: serial number : monster name
