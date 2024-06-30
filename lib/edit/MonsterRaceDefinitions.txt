@@ -39592,6 +39592,21 @@ F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
 D:ラヴォスによって荒廃した世界に存在するロボットの一機種だ。
 D:生き残った人類を駆逐しようとする機械の長、マザーブレーンに従属している。
 
+N:2175:ラターキン
+E:Rutterkin
+G:H:r
+I:110:9d8:20:35:20
+W:17:2:55:0:0
+B:SLASH:HURT:5d4
+B:SLASH:HURT:5d4
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY |
+F:ONLY_ITEM | DROP_1D2 |
+F:SMART | COLD_BLOOD | BASH_DOOR |
+F:EVIL | DEMON | IM_FIRE | RES_TELE
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | DARKNESS
+D:ねじ曲がった人型をしたデーモンだ。暴力的で長柄武器で他者を好んでいたぶろうとする。
+
 
 # N: serial number : monster name
 # G: symbol : color
