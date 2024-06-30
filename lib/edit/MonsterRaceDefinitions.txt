@@ -39635,6 +39635,20 @@ F:GOOD | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:ゾンビとは違い、聖なる使命のために生まれた善良なアンデッドだ。
 
+N:2178:赤備えの足軽
+E:Red Guard ashigaru
+G:p:r
+I:110:15d8:15:50:20
+W:13:2:0:50:0:0
+B:SLASH:HURT:4d5
+B:SLASH:HURT:4d5
+B:HIT:HURT:2d5
+F:MALE | HUMAN | WILD_ALL | HAS_LITE_2 |
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SAMURAI
+F:OPEN_DOOR | BASH_DOOR | FRIENDS 
+D:葦名への侵攻を行う内府の精鋭、赤備えの一員だ。
+D:日ノ本をほぼ天下に収めたその戦力は、同じく精兵で知られる葦名兵を質量共に凌駕している。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
