@@ -34439,13 +34439,14 @@ D:怨念と呪いが渦巻くかの地に迷い込んでいた理由は定かで
 
 N:1842:赤備えの『重吉』
 E:Shigekichi of the Red Guard
-G:p:r
+G:p:R
 I:109:85d15:20:120:25
 W:30:2:0:2500:0:0
 B:HIT:SUPERHURT:8d6
 B:HIT:SUPERHURT:8d6
 B:SLASH:SUPERHURT:10d6
 B:SLASH:SUPERHURT:10d6
+R:2178:5d5
 F:UNIQUE | MALE | DROP_SKELETON | DROP_CORPSE
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HUMAN | WARRIOR | SUMOU_WRESTLER
 F:DROP_90 | DROP_1D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR
@@ -39592,6 +39593,62 @@ F:COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
 D:ラヴォスによって荒廃した世界に存在するロボットの一機種だ。
 D:生き残った人類を駆逐しようとする機械の長、マザーブレーンに従属している。
 
+N:2175:ラターキン
+E:Rutterkin
+G:H:r
+I:110:9d8:20:35:20
+W:17:2:55:0:0
+B:SLASH:HURT:5d4
+B:SLASH:HURT:5d4
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY |
+F:ONLY_ITEM | DROP_1D2 |
+F:SMART | COLD_BLOOD | BASH_DOOR |
+F:EVIL | DEMON | IM_FIRE | RES_TELE
+S:1_IN_5 | 
+S:BLIND | CONF | SCARE | DARKNESS
+D:ねじ曲がった人型をしたデーモンだ。暴力的で長柄武器で他者を好んでいたぶろうとする。
+
+N:2176:マッドギアのSAMURAI『ソドム』
+E:Sodom, the SAMURAI of Madgear
+G:p:o
+I:117:16d113:20:90:50
+W:36:4:2000:0:0
+B:SLASH:HURT:8d3
+B:SLASH:HURT:8d3
+B:CRUSH:HURT:20d1
+B:CRUSH:HURT:20d1
+F:UNIQUE | MALE | HUMAN |
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | ROGUE | SAMURAI
+F:IM_FIRE | IM_COLD | IM_POIS
+D:アメリカメトロシティの犯罪組織マッドギアに所属する、屈強な肉体に兜をかぶった二刀流のSAMURAIだ。
+
+N:2177:デスレス
+E:Deathless human
+G:z:w
+I:110:12d8:20:24:20
+W:12:1:34:0:0
+B:HIT:HURT:1d4
+B:HIT:HURT:1d4
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:GOOD | UNDEAD | IM_COLD | IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:ゾンビとは違い、聖なる使命のために生まれた善良なアンデッドだ。
+
+N:2178:赤備えの足軽
+E:Red Guard ashigaru
+G:p:r
+I:110:15d8:15:50:20
+W:13:2:0:50:0:0
+B:SLASH:HURT:4d5
+B:SLASH:HURT:4d5
+B:HIT:HURT:2d5
+F:MALE | HUMAN | WILD_ALL | HAS_LITE_2 |
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SAMURAI
+F:OPEN_DOOR | BASH_DOOR | FRIENDS 
+D:葦名への侵攻を行う内府の精鋭、赤備えの一員だ。
+D:日ノ本をほぼ天下に収めたその戦力は、同じく精兵で知られる葦名兵を質量共に凌駕している。
 
 # N: serial number : monster name
 # G: symbol : color
