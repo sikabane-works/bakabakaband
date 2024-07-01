@@ -47,6 +47,7 @@ enum class AllianceType : int {
     LEGEND_OF_SAVIOR = 36, //!< 世紀末救世主伝説
     TOPHAMHATT = 37, //!< トップハムハット一族
     TRIOTHEPANCH = 38, //!< トリオ・ザ・パンチ
+    MEGADETH = 39, //!< 秘密結社メガデス
     MAX,
 };
 
