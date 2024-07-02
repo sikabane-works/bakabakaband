@@ -39650,6 +39650,19 @@ F:OPEN_DOOR | BASH_DOOR | FRIENDS
 D:葦名への侵攻を行う内府の精鋭、赤備えの一員だ。
 D:日ノ本をほぼ天下に収めたその戦力は、同じく精兵で知られる葦名兵を質量共に凌駕している。
 
+N:2179:死の吹奏楽団
+E:Deadly brass band
+G:G:o
+I:108:10d10:16:10:20
+W:28:3:400:0:0
+B:HIT:HURT:4d5
+F:UNDEAD | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HAS_LITE_2 |
+F:DROP_90 | ONLY_ITEM | FRIENDS
+F:OPEN_DOOR | BASH_DOOR | TAKE_ITEM | MOVE_BODY | RES_SOUN
+S:1_IN_5 | BR_SOUN
+D:かの大いなる大物YouTubeｒが命からがら逃げだした概念だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
