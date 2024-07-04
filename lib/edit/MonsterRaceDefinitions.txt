@@ -39662,6 +39662,22 @@ F:OPEN_DOOR | BASH_DOOR | TAKE_ITEM | MOVE_BODY | RES_SOUN
 S:1_IN_5 | BR_SOUN
 D:かの大いなる大物YouTubeｒが命からがら逃げだした概念だ。
 
+N:2180:トゥルカスのマイア
+E:Maia of Tulkas
+G:P:R
+I:122:70d50:30:115:15
+W:54:1:18000:0:0
+B:PUNCH:HURT:13d12
+B:KICK:HURT:12d12
+B:PUNCH:HURT:13d12
+B:KICK:HURT:12d12
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD | MOVE_BODY | ALLIANCE_VALINOR
+F:SMART | TAKE_ITEM | OPEN_DOOR | BASH_DOOR | KILL_WALL
+F:GOOD | GIANT | MALE | MOB_40
+S:1_IN_5 | HEAL | TELE_TO | HASTE
+D:ヴァラールの中でも武勇に長けたトゥルカスに従う下級の神霊たちだ。
+D:その思考は主に違わず、膂力で邪悪を叩き潰すことに満ちている。
 
 # N: serial number : monster name
 # G: symbol : color
