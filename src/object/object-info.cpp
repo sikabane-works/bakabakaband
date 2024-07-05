@@ -14,7 +14,6 @@
 #include "inventory/inventory-slot-types.h"
 #include "player-base/player-class.h"
 #include "player/player-realm.h"
-#include "realm/realm-names-table.h"
 #include "sv-definition/sv-bow-types.h"
 #include "sv-definition/sv-junk-types.h"
 #include "sv-definition/sv-other-types.h"
