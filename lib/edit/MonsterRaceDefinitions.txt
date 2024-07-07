@@ -39714,6 +39714,29 @@ S:1_IN_4 | SHOOT
 D:世紀末のさらなる地獄、カサンドラの牢獄で囚人を仕切っている。
 D:しかし彼らもまた獄長ウイグルの存在に怯えているようだ。
 
+N:2183:ひょうたん
+E:Calabash
+G:!:W
+I:110:20d14:30:40:0
+W:21:3:70:0:0
+F:SPAWN_CREATURE_3_IN_16_2184
+F:PREVENT_SUDDEN_MAGIC | NEVER_MOVE |
+F:EMPTY_MIND | COLD_BLOOD | NEVER_BLOW
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+D:ウリ科植物の種子を容器に加工したものだ。それ自体は何もしない。
+
+N:2184:独楽
+E:Spinning top
+G:{:W
+I:119:5d5:30:40:0
+W:21:3:64:0:0
+B:CRUSH:HURT:5d4
+F:PREVENT_SUDDEN_MAGIC
+F:EMPTY_MIND | COLD_BLOOD | RAND_25 | RAND_50
+F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
+D:何故かひょうたんから無数に現れる巨大な回転体だ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
