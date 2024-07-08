@@ -11999,13 +11999,13 @@ B:HIT:UN_BONUS:6d8
 B:HIT:UN_BONUS:6d8
 F:UNIQUE | MALE | SPEAK_ALL | AMBERITE | DROP_SKELETON | DROP_CORPSE
 F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HAS_LITE_2 | HUMAN |
-F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ALLIANCE_COCHAOS
 F:SMART | OPEN_DOOR | BASH_DOOR |
 F:IM_ACID | IM_COLD | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP | RES_TELE
-S:1_IN_2 | 
+S:1_IN_2 |
 S:CAUSE_3 | BO_WATE | BO_MANA | BA_CHAO
 V:150
-D:$The madman's son is a Logrus Master, almost as great a 
+D:$The madman's son is a Logrus Master, almost as great a
 D:$menace as his father.
 D:かの狂人の息子はログルス使いで、父親と同じくらい危険だ。
 
@@ -39736,6 +39736,58 @@ F:EMPTY_MIND | COLD_BLOOD | RAND_25 | RAND_50
 F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
 D:何故かひょうたんから無数に現れる巨大な回転体だ。
 
+N:2185:のたうつウンパス
+E:Thrashing Wumpus
+G:H:s
+I:110:25d17:30:50:50
+W:21:1:200:0:0
+B:CLAW:DISEASE:1d8
+B:CLAW:DISEASE:1d8
+F:DROP_60 | OPEN_DOOR | BASH_DOOR |
+F:WILD_MOUNTAIN | WILD_WASTE | DROP_SKELETON | DROP_CORPSE
+F:EVIL 
+S:1_IN_6
+S:SCARE | BR_POIS
+D:黒死病のような災いを振りまく悍ましい獣だ。
+
+N:2186:黄金のたてがみの『アジャニ』
+E:Ajani Goldmane
+G:H:v
+I:120:19d100:30:110:10
+W:39:2:3200:0:0
+B:HIT:HURT:8d6
+B:HIT:HURT:8d6
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+F:UNIQUE | MALE | HUMAN | ANIMAL
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR
+F:GOOD | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | RES_CHAO
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_6
+S:TELE_TO | S_KIN | BLINK | S_MONSTER
+D:獅子の顔を持った種族、レオニンのプレインズウォーカーだ。
+D:仲間への絆と敵への復讐を共に忘れぬ硬骨漢だが、かつてはファイレクシアの支配に落ちたこともあるという。
+
+N:2187:魂の仲介人『ダブリエル』
+E:Davriel, Soul Broker
+G:p:v
+I:115:15d100:20:120:40
+W:41:4:6000:0:0
+B:HIT:UN_BONUS:6d8
+B:HIT:UN_BONUS:6d8
+B:HIT:UN_BONUS:6d8
+F:UNIQUE | MALE | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HAS_LITE_2 | HUMAN |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
+F:SMART | OPEN_DOOR | BASH_DOOR | EVIL | FRIENDLY
+F:IM_ACID | IM_COLD | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP | RES_TELE
+S:1_IN_3 |
+S:CAUSE_3 | S_DEMON | MIND_BLAST | BLINK
+D:ダブリエル・ケインは極めて洗練された狡猾なプレインズウォーカーだ。
+D:他者の精神を操りその能力を奪い取る影魔法に加えて、
+D:悪魔が泣きわめきたくなるほどの悪辣かつ巧みな契約で彼らを支配している。
 
 # N: serial number : monster name
 # G: symbol : color
