@@ -39736,6 +39736,20 @@ F:EMPTY_MIND | COLD_BLOOD | RAND_25 | RAND_50
 F:NO_CONF | NO_SLEEP | NO_FEAR | NO_STUN
 D:何故かひょうたんから無数に現れる巨大な回転体だ。
 
+N:2185:のたうつウンパス
+E:Thrashing Wumpus
+G:H:s
+I:110:25d17:30:50:50
+W:21:1:200:0:0
+B:CLAW:DISEASE:1d8
+B:CLAW:DISEASE:1d8
+F:DROP_60 | OPEN_DOOR | BASH_DOOR |
+F:WILD_MOUNTAIN | WILD_WASTE | DROP_SKELETON | DROP_CORPSE
+F:EVIL 
+S:1_IN_6
+S:SCARE | BR_POIS
+D:黒死病のような災いを振りまく悍ましい獣だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
