@@ -39770,6 +39770,24 @@ S:TELE_TO | S_KIN | BLINK | S_MONSTER
 D:獅子の顔を持った種族、レオニンのプレインズウォーカーだ。
 D:仲間への絆と敵への復讐を共に忘れぬ硬骨漢だが、かつてはファイレクシアの支配に落ちたこともあるという。
 
+N:2187:魂の仲介人『ダブリエル』
+E:Davriel, Soul Broker
+G:p:v
+I:115:15d100:20:120:40
+W:41:4:6000:0:0
+B:HIT:UN_BONUS:6d8
+B:HIT:UN_BONUS:6d8
+B:HIT:UN_BONUS:6d8
+F:UNIQUE | MALE | DROP_SKELETON | DROP_CORPSE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | HAS_LITE_2 | HUMAN |
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
+F:SMART | OPEN_DOOR | BASH_DOOR | EVIL | FRIENDLY
+F:IM_ACID | IM_COLD | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP | RES_TELE
+S:1_IN_3 |
+S:CAUSE_3 | S_DEMON | MIND_BLAST | BLINK
+D:ダブリエル・ケインは極めて洗練された狡猾なプレインズウォーカーだ。
+D:他者の精神を操りその能力を奪い取る影魔法に加えて、
+D:悪魔が泣きわめきたくなるほどの悪辣かつ巧みな契約で彼らを支配している。
 
 # N: serial number : monster name
 # G: symbol : color
