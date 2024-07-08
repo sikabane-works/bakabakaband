@@ -39750,6 +39750,26 @@ S:1_IN_6
 S:SCARE | BR_POIS
 D:黒死病のような災いを振りまく悍ましい獣だ。
 
+N:2186:黄金のたてがみの『アジャニ』
+E:Ajani Goldmane
+G:H:v
+I:120:19d100:30:110:10
+W:39:2:3200:0:0
+B:HIT:HURT:8d6
+B:HIT:HURT:8d6
+B:HIT:HURT:3d8
+B:HIT:HURT:3d8
+F:UNIQUE | MALE | HUMAN | ANIMAL
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | 
+F:OPEN_DOOR | BASH_DOOR
+F:GOOD | IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | RES_CHAO
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_6
+S:TELE_TO | S_KIN | BLINK | S_MONSTER
+D:獅子の顔を持った種族、レオニンのプレインズウォーカーだ。
+D:仲間への絆と敵への復讐を共に忘れぬ硬骨漢だが、かつてはファイレクシアの支配に落ちたこともあるという。
+
 
 # N: serial number : monster name
 # G: symbol : color
