@@ -39840,6 +39840,19 @@ F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY |
 F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
 D:SCP財団が初期より収容を試みるも、なお失敗し続けている恐るべき生命体だ。
 
+N:2191:マッドギア構成員
+E:Hoodlum of Madgear
+G:p:s
+I:110:2d11:20:10:40
+W:8:1:0:30:0:0
+B:PUNCH:HURT:1d4
+B:KICK:HURT:1d4
+F:MALE | HAS_LITE_2 | HUMAN |
+F:DROP_90 | FRIENDS
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | ROGUE
+F:EVIL
+D:超犯罪都市メトロシティの裏の支配者、犯罪組織『マッドギア』に所属するありふれた小悪党たちだ。
+D:群れて殴る蹴るしか能がないが、生まれ育ちゆえの場慣れは侮れない。
 
 # N: serial number : monster name
 # G: symbol : color
