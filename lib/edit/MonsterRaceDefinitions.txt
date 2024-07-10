@@ -39810,6 +39810,59 @@ D:空想の存在──されど鉄獄にあっては確かに実在する多く
 D:できるようになっている。今の彼は、己の産物が争い合い、
 D:世界のより多くを壊われていくことに、熱い高揚感を抱く危険人物だ。
 
+N:2189:『カンフーマン』
+E:Gongfuman
+G:p:o
+I:112:20d30:25:70:7
+W:24:1:0:1200:0:0
+B:KICK:SUPERHURT:5d3
+B:HIT:SUPERHURT:6d3
+B:KICK:SUPERHURT:6d4
+B:HIT:SUPERHURT:6d3
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | FORCE_MAXHP | KARATEKA
+F:DROP_60 | DROP_2D2 | DROP_GOOD | OPEN_DOOR | BASH_DOOR | UNIQUE | GOOD | EVIL
+D:無限に広がる格闘世界の始祖と呼ばれる男だ。
+
+#[DSKL]クソトカゲ
+N:2190:SCP-682『不死身の爬虫類』
+E:SCP-682, The Indestructible Reptile
+G:R:r
+I:133:65d100:50:125:20
+W:70:4:60000:0:0
+B:BITE:HURT:10d10
+B:BITE:HURT:10d10
+B:CRUSH:HURT:10d10
+B:CRUSH:HURT:10d10
+F:UNIQUE | RIDING |
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GREAT |
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY |
+F:IM_FIRE | IM_COLD | IM_ACID | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
+D:SCP財団が初期より収容を試みるも、なお失敗し続けている恐るべき生命体だ。
+
+N:2191:マッドギア構成員
+E:Hoodlum of Madgear
+G:p:s
+I:110:2d11:20:10:40
+W:8:1:0:30:0:0
+B:PUNCH:HURT:1d4
+B:KICK:HURT:1d4
+F:MALE | HAS_LITE_2 | HUMAN |
+F:DROP_90 | FRIENDS
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE | ROGUE
+F:EVIL
+D:超犯罪都市メトロシティの裏の支配者、犯罪組織『マッドギア』に所属するありふれた小悪党たちだ。
+D:群れて殴る蹴るしか能がないが、生まれ育ちゆえの場慣れは侮れない。
+
+N:2192:サボロー
+E:Saboro
+G:h:s
+I:110:3d4:20:1:10
+W:0:10:0:0:0
+B:TOUCH:FLAVOR
+F:WILD_TOWN | WILD_ONLY | FRIENDLY | MALE
+D:このクッソ汚い世界で使命のある貴方に休む暇はないかもしれないが、彼の存在はかけがえないのも確かだろう。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
