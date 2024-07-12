@@ -39939,6 +39939,24 @@ F:ANIMAL | FRIENDLY
 D:LK-クラス: ”捲くられたバナナの皮”シナリオを発現させて、地球人類全てをゴリラに換えてしまったゴリラたちだ。
 D:あなたには何らかの抵抗力があるようだが、鳴き声を聞き続ければ同じ結果に陥るかもしれない。
 
+N:2198:指輪の嘲児『スメアゴル』
+E:Smeagol, Ridiculed by The Ring
+G:h:s
+I:130:20d100:70:130:4
+W:45:3:12000:0:0
+B:SLASH:HURT:7d10
+B:SLASH:HURT:7d10
+B:TOUCH:EXP_VAMP:2d10
+B:TOUCH:EXP_VAMP:2d10
+F:UNIQUE | MALE | FORCE_MAXHP | HOBBIT | DROP_SKELETON | DROP_CORPSE
+F:REGENERATE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | RES_TELE | EVIL
+F:ONLY_ITEM | DROP_1D2 | DROP_GREAT | ROGUE | INVISIBLE
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
+S:1_IN_3 | HEAL | TRAPS | HASTE | CONF | BO_NETH | BA_FIRE | BO_ICEE | BO_ABYSS | ANIM_DEAD
+D:指輪の力に心奪われ、数百年に渡り命を囚われた哀れな存在。彼は西の伝承でそう言われてきた。
+D:では、この死人のような肌をした禿頭の、されど恐るべき動きで敵を切り刻み、
+D:数々の忌まわしい呪術を操る同名の小人は一体何者なのだろうか？
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
