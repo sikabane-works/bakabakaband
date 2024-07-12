@@ -39907,6 +39907,55 @@ S:1_IN_8
 S:SHOOT
 D:アンバーの王子の一人ケインが従える海軍の構成員だ。
 
+N:2196:SCP-597『全ての母』
+E:SCP-597 'The Mother of Them All'
+G:Q:r
+I:109:20d100:30:1:0
+W:51:3:6000:0:0
+B:ENGULF:LOSE_ALL
+F:UNIQUE | DROP_CORPSE | RES_TELE | QUYLTHLUG
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | NEVER_MOVE
+F:ONLY_ITEM | DROP_4D2 | ELDRITCH_HORROR
+F:STUPID
+F:ANIMAL | EVIL | 
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_2 | 
+S:BRAIN_SMASH | S_MONSTERS
+D:SCP財団に収容されている、クイルスルグの亜種と言われているが定かではない。
+D:あらゆる哺乳類の乳房をまとった肉塊でそこから滴る乳の味と匂いは、
+D:多くの生き物を隷属させてしまう。
+
+N:2197:SCP-5555-JP-J『全てはゴリラ』
+E:SCP-5555-JP-J 'All is Gorilla'
+G:H:u
+I:112:10d18:30:24:20
+W:40:10:0:170:0:0
+B:BITE:HURT:2d8
+B:PUNCH:HURT:2d8
+B:PUNCH:HURT:2d8
+F:DROP_60 | OPEN_DOOR | BASH_DOOR | MULTIPLY
+F:WILD_MOUNTAIN | WILD_WASTE | DROP_SKELETON | DROP_CORPSE
+F:ANIMAL | FRIENDLY
+D:LK-クラス: ”捲くられたバナナの皮”シナリオを発現させて、地球人類全てをゴリラに換えてしまったゴリラたちだ。
+D:あなたには何らかの抵抗力があるようだが、鳴き声を聞き続ければ同じ結果に陥るかもしれない。
+
+N:2198:指輪の嘲児『スメアゴル』
+E:Smeagol, Ridiculed by The Ring
+G:h:s
+I:130:20d100:70:130:4
+W:45:3:12000:0:0
+B:SLASH:HURT:7d10
+B:SLASH:HURT:7d10
+B:TOUCH:EXP_VAMP:2d10
+B:TOUCH:EXP_VAMP:2d10
+F:UNIQUE | MALE | FORCE_MAXHP | HOBBIT | DROP_SKELETON | DROP_CORPSE
+F:REGENERATE | NO_CONF | NO_SLEEP | NO_STUN | NO_FEAR | RES_TELE | EVIL
+F:ONLY_ITEM | DROP_1D2 | DROP_GREAT | ROGUE | INVISIBLE
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | SMART | POWERFUL |
+S:1_IN_3 | HEAL | TRAPS | HASTE | CONF | BO_NETH | BA_FIRE | BO_ICEE | BO_ABYSS | ANIM_DEAD
+D:指輪の力に心奪われ、数百年に渡り命を囚われた哀れな存在。彼は西の伝承でそう言われてきた。
+D:では、この死人のような肌をした禿頭の、されど恐るべき動きで敵を切り刻み、
+D:数々の忌まわしい呪術を操る同名の小人は一体何者なのだろうか？
 
 # N: serial number : monster name
 # G: symbol : color
