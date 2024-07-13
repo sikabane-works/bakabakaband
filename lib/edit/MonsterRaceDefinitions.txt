@@ -28535,7 +28535,7 @@ B:SLASH:HURT:3d5
 B:SLASH:HURT:3d5
 B:HIT:HURT:1d5
 F:MALE | HUMAN | WILD_ALL | HAS_LITE_2 |
-F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SAMURAI
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE | SAMURAI | MOB_900
 F:OPEN_DOOR | BASH_DOOR | FRIENDS | ALLIANCE_ASHINA-CLAN
 D:葦名の水に培われ生まれ育った者は、
 D:天性の兵士としての素質を持ち、近隣にも精強と謡われる。
@@ -28721,7 +28721,7 @@ B:HIT:HURT:9d8
 B:HIT:HURT:9d8
 F:DROP_1D2
 F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON | ALLIANCE_ASHINA-CLAN
-F:GIANT | HUMAN
+F:GIANT | HUMAN | MOB_150
 D:葦名の民の中にしばしば見られる、独特の顔つきをした
 D:巨漢の男が軍役についたものだ。頭の回らぬうすのろと小馬鹿にされているが、
 D:ひとたび暴れ出した彼らは、雑兵が束になったところで抑えられないだろう。
@@ -28737,7 +28737,7 @@ B:HIT:HURT:8d8
 B:KICK:HURT:12d12
 F:DROP_2D2
 F:OPEN_DOOR | BASH_DOOR | DROP_CORPSE | DROP_SKELETON | ALLIANCE_ASHINA-CLAN
-F:GIANT | HUMAN | HURT_FIRE | NO_STUN | NO_SLEEP | NO_FEAR
+F:GIANT | HUMAN | HURT_FIRE | NO_STUN | NO_SLEEP | NO_FEAR | MOB_10
 D:葦名の暗部で行われている研究の成果「変若の淀み」と呼ばれる
 D:力の産物で生まれたといわれる、鬼にも例えられる巨人だ。
 
@@ -39956,6 +39956,45 @@ S:1_IN_3 | HEAL | TRAPS | HASTE | CONF | BO_NETH | BA_FIRE | BO_ICEE | BO_ABYSS 
 D:指輪の力に心奪われ、数百年に渡り命を囚われた哀れな存在。彼は西の伝承でそう言われてきた。
 D:では、この死人のような肌をした禿頭の、されど恐るべき動きで敵を切り刻み、
 D:数々の忌まわしい呪術を操る同名の小人は一体何者なのだろうか？
+
+N:2199:便乗仏教修行僧
+E:Binzyou Buddhism monk
+G:p:G
+I:115:30d12:30:46:10
+W:23:2:600:0:0
+B:KICK:SUPERHURT:4d2
+B:HIT:SUPERHURT:4d1
+B:KICK:SUPERHURT:4d3
+B:HIT:SUPERHURT:4d1
+F:HUMAN | MALE | DROP_CORPSE | DROP_SKELETON | HOMO_SEXUAL | NASTY
+F:DROP_60 | DROP_1D2 | OPEN_DOOR | BASH_DOOR | IM_ELEC | HAS_LITE_2
+F:IM_FIRE | IM_ELEC | IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP | MOB_200 | ALLIANCE_BINJO-BUDDHISM
+D:縦割れアナル紋を施した僧衣をまとう、性の裏技と拳法に熟練した修行僧だ。
+
+N:2200:ヴァリノールの森王『オロメ』
+E:Orome, the Lord of Valinor Forest
+G:P:G
+I:124:50d100:60:150:10
+W:80:3:85000:0:0
+B:HIT:HURT:15d10
+B:HIT:HURT:15d10
+B:HIT:HURT:15d10
+B:SHOOT:HURT:20d40
+F:UNIQUE | MALE | FORCE_MAXHP | SPEAK_ALL | NO_FEAR | GOOD |
+F:PREVENT_SUDDEN_MAGIC | SMART | AURA_ELEC | REFLECTING | RES_TELE |
+F:CAN_FLY | POWERFUL | SELF_LITE_1 | SELF_LITE_2
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GREAT | GOOD | ALLIANCE_VALINOR
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE |
+F:NO_CONF | NO_SLEEP |
+S:1_IN_3 |
+S:TELE_TO | BLIND | DISPEL | PSY_SPEAR
+S:BR_MANA | BR_LITE | BR_ELEC | BA_MANA | S_KIN | S_MONSTERS | HEAL
+D:ヴァリノールの神統の中でも強大なヴァラールの一柱、森の王オロメは同じ神性を備えた馬ナハールにまたがり、
+D:ヴァラローマの角笛を鳴らして堂々と姿と現す。そしてウトゥムノの神統に祀ろうありとあらゆる生者を
+D:獲物に狩らんとするその有様は、まさに死神そのものに他ならない。
+D:故にその存在は闇の子らにも荒神として奉られている。
+
 
 # N: serial number : monster name
 # G: symbol : color
