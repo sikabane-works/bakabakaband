@@ -120,7 +120,7 @@ static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
 
             floor_ptr->monster_level = floor_ptr->base_level;
         } else if (monster_index) {
-            int old_cur_num, old_mob_num;
+            int old_cur_num, old_mob_num, old_max_num;
             bool clone = false;
 
             if (monster_index < 0) {
@@ -133,14 +133,17 @@ static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
 
             old_cur_num = r_ref.cur_num;
             old_mob_num = r_ref.mob_num;
+            old_max_num = r_ref.max_num;
 
             if (r_ref.kind_flags.has(MonsterKindType::UNIQUE)) {
                 r_ref.cur_num = 0;
                 r_ref.mob_num = 1;
+                r_ref.max_num = 1;
             } else if (r_ref.population_flags.has(MonsterPopulationType::NAZGUL)) {
                 if (r_ref.cur_num == r_ref.mob_num) {
                     r_ref.mob_num++;
                 }
+                r_ref.max_num = r_ref.mob_num;
             }
 
             place_specific_monster(player_ptr, 0, *qtwg_ptr->y, *qtwg_ptr->x, r_idx, (PM_ALLOW_SLEEP | PM_NO_KAGE));
@@ -148,6 +151,7 @@ static void parse_qtw_D(PlayerType *player_ptr, qtwg_type *qtwg_ptr, char *s)
                 floor_ptr->m_list[hack_m_idx_ii].mflag2.set(MonsterConstantFlagType::CLONED);
                 r_ref.cur_num = old_cur_num;
                 r_ref.mob_num = old_mob_num;
+                r_ref.max_num = old_max_num;
             }
         }
 
