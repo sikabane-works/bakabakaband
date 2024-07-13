@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスター処理 / misc code for monsters
  * @date 2014/07/08
  * @author
@@ -126,7 +126,7 @@ MonsterRaceId get_mon_num(PlayerType *player_ptr, DEPTH min_level, DEPTH max_lev
         auto r_idx = i2enum<MonsterRaceId>(entry.index);
         auto r_ptr = &monraces_info[r_idx];
         if (none_bits(mode, PM_ARENA) && !chameleon_change_m_idx) {
-            if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) && (r_ptr->cur_num >= r_ptr->max_num) && none_bits(mode, PM_CLONE)) {
+            if ((r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL)) && (r_ptr->cur_num >= r_ptr->mob_num) && none_bits(mode, PM_CLONE)) {
                 continue;
             }
 
