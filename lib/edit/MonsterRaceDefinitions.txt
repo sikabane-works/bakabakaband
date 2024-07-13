@@ -39971,6 +39971,30 @@ F:DROP_60 | DROP_1D2 | OPEN_DOOR | BASH_DOOR | IM_ELEC | HAS_LITE_2
 F:IM_FIRE | IM_ELEC | IM_POIS | NO_FEAR | NO_CONF | NO_SLEEP | MOB_200 | ALLIANCE_BINJO-BUDDHISM
 D:縦割れアナル紋を施した僧衣をまとう、性の裏技と拳法に熟練した修行僧だ。
 
+N:2200:ヴァリノールの森王『オロメ』
+E:Orome, the Lord of Valinor Forest
+G:P:G
+I:124:50d100:60:150:10
+W:80:3:85000:0:0
+B:HIT:HURT:15d10
+B:HIT:HURT:15d10
+B:HIT:HURT:15d10
+B:SHOOT:HURT:20d40
+F:UNIQUE | MALE | FORCE_MAXHP | SPEAK_ALL | NO_FEAR | GOOD |
+F:PREVENT_SUDDEN_MAGIC | SMART | AURA_ELEC | REFLECTING | RES_TELE |
+F:CAN_FLY | POWERFUL | SELF_LITE_1 | SELF_LITE_2
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GREAT | GOOD | ALLIANCE_VALINOR
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY |
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_LITE |
+F:NO_CONF | NO_SLEEP |
+S:1_IN_3 |
+S:TELE_TO | BLIND | DISPEL | PSY_SPEAR
+S:BR_MANA | BR_LITE | BR_ELEC | BA_MANA | S_KIN | S_MONSTERS | HEAL
+D:ヴァリノールの神統の中でも強大なヴァラールの一柱、森の王オロメは同じ神性を備えた馬ナハールにまたがり、
+D:ヴァラローマの角笛を鳴らして堂々と姿と現す。そしてウトゥムノの神統に祀ろうありとあらゆる生者を
+D:獲物に狩らんとするその有様は、まさに死神そのものに他ならない。
+D:故にその存在は闇の子らにも荒神として奉られている。
+
 
 # N: serial number : monster name
 # G: symbol : color
