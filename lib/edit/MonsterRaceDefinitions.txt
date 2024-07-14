@@ -6206,7 +6206,7 @@ W:23:1:60:2500:532
 B:SLASH:HURT:3d5
 B:SLASH:SUPERHURT:3d5
 F:MALE | HAS_LITE_2 | HUMAN |
-F:DROP_1D2 | 
+F:DROP_1D2 | WARRIOR
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 F:EVIL
 D:$A scarred warrior who moves with confidence.
@@ -39995,6 +39995,63 @@ D:ヴァラローマの角笛を鳴らして堂々と姿と現す。そしてウ
 D:獲物に狩らんとするその有様は、まさに死神そのものに他ならない。
 D:故にその存在は闇の子らにも荒神として奉られている。
 
+N:2201:ミラディンの抵抗者
+E:Mirrodin's revel
+G:p:u
+I:110:12d10:20:35:40
+W:18:1:60:0:0
+B:SLASH:HURT:3d4
+B:SLASH:HURT:3d4
+B:SLASH:HURT:3d4
+F:MALE | HAS_LITE_2 | HUMAN | MOB_2000
+F:DROP_1D2 | WARRIOR | ALLIANCE_PURE-MIRRODIN | WARRIOR
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+D:新ファイレクシアの油による支配になお抵抗しようとする、原住民たちだ。
+
+N:2202:ドラゴン・エンジン『レイモス』
+E:Ramos, Dragon Engine
+G:D:v
+I:120:50d100:30:145:30
+W:60:4:40000:0:0
+B:CLAW:HURT:6d12
+B:CLAW:HURT:6d12
+B:CLAW:HURT:6d12
+B:BITE:HURT:5d14
+F:ATTR_MULTI | 
+F:UNIQUE | MALE | CAN_FLY | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:RIDING | COLD_BLOOD | NONLIVING
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY
+F:GOOD | DRAGON | SELF_LITE_2
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
+S:1_IN_4
+S:BR_ACID | BR_FIRE | BR_COLD | BR_ELEC | BR_POIS
+D:ファイレクシアに通じる技術で創られた、ミシュラのドラゴン・エンジンに
+D:プレインズウォーカーと化したウルザが新たな人格を込めた機械のドラゴンだ。
+D:ドミナリアの定命の者を援ける彼はやがて崇拝の対象にまでなった。
+
+N:2203:太陽の光の王『グウィン』
+E:Gwyn, Lord of Sunlight
+G:p:v
+I:130:80d111:100:125:0
+W:83:2:110000:0:0
+B:SLASH:ELEC:40d12
+B:SLASH:ELEC:40d12
+B:TOUCH:ELEC:80d8
+F:UNIQUE | MALE | HAS_LITE_2 |
+F:RES_TELE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT |
+F:REFLECTING | AURA_FIRE | AURA_ELEC
+F:SMART | OPEN_DOOR | BASH_DOOR | MOVE_BODY | REGENERATE | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_CHAO | POWERFUL |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_2 | 
+S:SCARE | BLIND
+S:TELE_TO | CONF | BO_MANA | BA_ELEC | BRAIN_SMASH | HASTE
+S:CAUSE_4 | BO_PLAS | S_KIN | DISPEL | BA_LITE | PSY_SPEAR
+D:原初の火より王のソウルを見いだし、火の時代を興した神話の偉大なる王だ。
+D:その力をいまだ失わぬ姿のままの彼が、今あなたの前にいる！
 
 # N: serial number : monster name
 # G: symbol : color
