@@ -40008,6 +40008,27 @@ F:DROP_1D2 | WARRIOR | ALLIANCE_PURE-MIRRODIN | WARRIOR
 F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
 D:新ファイレクシアの油による支配になお抵抗しようとする、原住民たちだ。
 
+N:2202:ドラゴン・エンジン『レイモス』
+E:Ramos, Dragon Engine
+G:D:v
+I:120:50d100:30:145:30
+W:60:4:40000:0:0
+B:CLAW:HURT:6d12
+B:CLAW:HURT:6d12
+B:CLAW:HURT:6d12
+B:BITE:HURT:5d14
+F:ATTR_MULTI | 
+F:UNIQUE | MALE | CAN_FLY | DROP_CORPSE | PREVENT_SUDDEN_MAGIC | FORCE_MAXHP
+F:RIDING | COLD_BLOOD | NONLIVING
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | POWERFUL | MOVE_BODY
+F:GOOD | DRAGON | SELF_LITE_2
+F:IM_ACID | IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | NO_CONF | NO_SLEEP
+S:1_IN_4
+S:BR_ACID | BR_FIRE | BR_COLD | BR_ELEC | BR_POIS
+D:ファイレクシアに通じる技術で創られた、ミシュラのドラゴン・エンジンに
+D:プレインズウォーカーと化したウルザが新たな人格を込めた機械のドラゴンだ。
+D:ドミナリアの定命の者を援ける彼はやがて崇拝の対象にまでなった。
 
 # N: serial number : monster name
 # G: symbol : color
