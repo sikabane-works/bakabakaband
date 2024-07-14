@@ -125,7 +125,7 @@ static int get_hack_dir(PlayerType *player_ptr)
 void process_world_aux_sudden_attack(PlayerType *player_ptr)
 {
     if (randint1(10000) == 1919) {
-        summon_specific(player_ptr, 0, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_TURBAN_KID, PM_AMBUSH);
+        summon_specific(player_ptr, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_TURBAN_KID, PM_AMBUSH);
     }
 
     if (randint1(100) == 36) {
@@ -257,7 +257,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
             mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
         }
 
-        if (summon_specific(player_ptr, (pet ? -1 : 0), player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_DEMON, mode)) {
+        if (summon_specific(player_ptr, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_DEMON, mode)) {
             msg_print(_("あなたはデーモンを引き寄せた！", "You have attracted a demon!"));
             disturb(player_ptr, false, true);
         }
@@ -327,7 +327,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
             mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
         }
 
-        if (summon_specific(player_ptr, (pet ? -1 : 0), player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_ANIMAL, mode)) {
+        if (summon_specific(player_ptr, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_ANIMAL, mode)) {
             msg_print(_("動物を引き寄せた！", "You have attracted an animal!"));
             disturb(player_ptr, false, true);
         }
@@ -414,7 +414,7 @@ void process_world_aux_mutation(PlayerType *player_ptr)
             mode |= (PM_ALLOW_UNIQUE | PM_NO_PET);
         }
 
-        if (summon_specific(player_ptr, (pet ? -1 : 0), player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_DRAGON, mode)) {
+        if (summon_specific(player_ptr, player_ptr->y, player_ptr->x, player_ptr->current_floor_ptr->dun_level, SUMMON_DRAGON, mode)) {
             msg_print(_("ドラゴンを引き寄せた！", "You have attracted a dragon!"));
             disturb(player_ptr, false, true);
         }
