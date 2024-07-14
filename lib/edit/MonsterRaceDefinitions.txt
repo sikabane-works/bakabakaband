@@ -40030,6 +40030,29 @@ D:ファイレクシアに通じる技術で創られた、ミシュラのドラ
 D:プレインズウォーカーと化したウルザが新たな人格を込めた機械のドラゴンだ。
 D:ドミナリアの定命の者を援ける彼はやがて崇拝の対象にまでなった。
 
+N:2203:太陽の光の王『グウィン』
+E:Gwyn, Lord of Sunlight
+G:p:v
+I:130:80d111:100:125:0
+W:83:2:110000:0:0
+B:SLASH:ELEC:40d12
+B:SLASH:ELEC:40d12
+B:TOUCH:ELEC:80d8
+F:UNIQUE | MALE | HAS_LITE_2 |
+F:RES_TELE
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GREAT |
+F:REFLECTING | AURA_FIRE | AURA_ELEC
+F:SMART | OPEN_DOOR | BASH_DOOR | MOVE_BODY | REGENERATE | 
+F:IM_FIRE | IM_COLD | IM_ELEC | IM_POIS | RES_CHAO | POWERFUL |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_2 | 
+S:SCARE | BLIND
+S:TELE_TO | CONF | BO_MANA | BA_ELEC | BRAIN_SMASH | HASTE
+S:CAUSE_4 | BO_PLAS | S_KIN | DISPEL | BA_LITE | PSY_SPEAR
+D:原初の火より王のソウルを見いだし、火の時代を興した神話の偉大なる王だ。
+D:その力をいまだ失わぬ姿のままの彼が、今あなたの前にいる！
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
