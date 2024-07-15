@@ -40053,6 +40053,61 @@ S:CAUSE_4 | BO_PLAS | S_KIN | DISPEL | BA_LITE | PSY_SPEAR
 D:原初の火より王のソウルを見いだし、火の時代を興した神話の偉大なる王だ。
 D:その力をいまだ失わぬ姿のままの彼が、今あなたの前にいる！
 
+N:2204:結晶亡者
+E:Undead crystal soldier
+G:z:w
+I:109:15d24:20:120:40
+W:25:1:140:0:0
+B:SLASH:HURT:6d5
+B:SLASH:SUPERHURT:6d5
+F:MALE | HAS_LITE_2 | HUMAN |
+F:DROP_1D2 | WARRIOR
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:UNDEAD
+D:火の陰る時代に亡者となった挙句、白竜シースの悍ましい実験を施された哀れな不死者だ。
+D:死人の肉体の随所から貫くように結晶が生えた姿をしている。
+
+N:2205:腐れ谷のナメクジ
+E:Phosphorescent Slug
+G:w:w
+I:100:12d10:10:35:25
+W:19:1:25:0:0
+B:BITE:ACID:3d5
+B:BITE:ACID:3d7
+F:ANIMAL | EMPTY_MIND | KILL_ITEM | KILL_BODY | CAN_SWIM | WILD_ALL |
+F:DROP_CORPSE | EAT_ACIDIC | SELF_LITE_1 | FRIENDS
+S:1_IN_10
+S:BR_ACID
+D:汚物と腐臭に満ちた腐れ谷の中、光り輝き、奇妙な艶めかしい姿で生息する大きなナメクジだ。
+
+N:2206:腐れ谷の腐敗術師
+E:Depraved Shaman in Valley of Defilement
+G:p:r
+I:110:10d6:80:1:50
+W:12:2:0:90:0:0
+B:SLASH:DISEASE:1d6
+F:MALE | DROP_CORPSE | DROP_SKELETON | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | EAT_LOSE_CON | EAT_POISONOUS
+F:DROP_KIND_1_IN_5_102_0_1d1
+S:1_IN_4 | BA_POIS | SLOW
+D:腐れ谷の腐敗人の中でも、いくらかの魔術に長けた者だ。
+
+N:2207:『童貞ちんぽこ先生』
+E:The Virgin Dick Teacher
+G:t:w
+I:110:28d10:40:10:3
+W:0:4:0:0:0
+B:HIT:HURT:1d5
+F:UNIQUE | MALE | DROP_CORPSE
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | HUMAN | NASTY
+D:「忘れもの、忘れもの。あれ、童貞ちんぽこ先生。まだ居たんだ？ん？なんだこの匂いは？ううん、これは、精子、精液、
+D:ザーメン、ザー汁、キンタマ汁、赤ちゃん製造ミルク。さては、ちんぽこしこってたな？
+D:ひとりでオナニーかわいそう。ちんぽこかわいそう。私がおまんこしてやろうか？おまんこだよ！おまんこ中出しOKだし、本当だよ。
+D:コンドームなんか、しなくていいんだよ。生ちんぽこ、おちんこにぶっさせるんだよ！からかってないよ。本当に本当。じゃ今から服脱ぎまーす」
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
