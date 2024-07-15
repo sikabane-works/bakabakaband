@@ -40067,6 +40067,20 @@ F:UNDEAD
 D:火の陰る時代に亡者となった挙句、白竜シースの悍ましい実験を施された哀れな不死者だ。
 D:死人の肉体の随所から貫くように結晶が生えた姿をしている。
 
+N:2205:腐れ谷のナメクジ
+E:Phosphorescent Slug
+G:w:w
+I:100:12d10:10:35:25
+W:19:1:25:0:0
+B:BITE:ACID:3d5
+B:BITE:ACID:3d7
+F:ANIMAL | EMPTY_MIND | KILL_ITEM | KILL_BODY | CAN_SWIM | WILD_ALL |
+F:DROP_CORPSE | EAT_ACIDIC | SELF_LITE_1 | FRIENDS
+S:1_IN_10
+S:BR_ACID
+D:汚物と腐臭に満ちた腐れ谷の中、光り輝き、奇妙な艶めかしい姿で生息する大きなナメクジだ。
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
