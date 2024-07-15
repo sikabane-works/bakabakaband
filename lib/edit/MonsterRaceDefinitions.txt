@@ -40053,6 +40053,20 @@ S:CAUSE_4 | BO_PLAS | S_KIN | DISPEL | BA_LITE | PSY_SPEAR
 D:原初の火より王のソウルを見いだし、火の時代を興した神話の偉大なる王だ。
 D:その力をいまだ失わぬ姿のままの彼が、今あなたの前にいる！
 
+N:2204:結晶亡者
+E:Undead crystal soldier
+G:z:w
+I:109:15d24:20:120:40
+W:25:1:140:0:0
+B:SLASH:HURT:6d5
+B:SLASH:SUPERHURT:6d5
+F:MALE | HAS_LITE_2 | HUMAN |
+F:DROP_1D2 | WARRIOR
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:UNDEAD
+D:火の陰る時代に亡者となった挙句、白竜シースの悍ましい実験を施された哀れな不死者だ。
+D:死人の肉体の随所から貫くように結晶が生えた姿をしている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
