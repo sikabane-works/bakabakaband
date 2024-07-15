@@ -40080,6 +40080,19 @@ S:1_IN_10
 S:BR_ACID
 D:汚物と腐臭に満ちた腐れ谷の中、光り輝き、奇妙な艶めかしい姿で生息する大きなナメクジだ。
 
+N:2206:腐れ谷の腐敗術師
+E:Depraved Shaman in Valley of Defilement
+G:p:r
+I:110:10d6:80:1:50
+W:12:2:0:90:0:0
+B:SLASH:DISEASE:1d6
+F:MALE | DROP_CORPSE | DROP_SKELETON | HUMAN |
+F:RAND_25 | WILD_TOWN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | EAT_LOSE_CON | EAT_POISONOUS
+F:DROP_KIND_1_IN_5_102_0_1d1
+S:1_IN_4 | BA_POIS | SLOW
+D:腐れ谷の腐敗人の中でも、いくらかの魔術に長けた者だ。
+
 
 # N: serial number : monster name
 # G: symbol : color
