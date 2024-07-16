@@ -40107,6 +40107,22 @@ D:ザーメン、ザー汁、キンタマ汁、赤ちゃん製造ミルク。さ
 D:ひとりでオナニーかわいそう。ちんぽこかわいそう。私がおまんこしてやろうか？おまんこだよ！おまんこ中出しOKだし、本当だよ。
 D:コンドームなんか、しなくていいんだよ。生ちんぽこ、おちんこにぶっさせるんだよ！からかってないよ。本当に本当。じゃ今から服脱ぎまーす」
 
+N:2208:ゲッター・ゴースト
+E:Getter ghost
+G:G:G
+I:120:14d20:20:30:10
+W:35:3:550:0:0
+B:WAIL:TERRIFY
+B:ENGULF:CONFUSE:1d10
+F:PREVENT_SUDDEN_MAGIC | RAND_25 | 
+F:ONLY_ITEM | DROP_90 | DROP_2D2 | ALLIANCE_GETTER
+F:INVISIBLE | COLD_BLOOD | TAKE_ITEM | PASS_WALL | MOB_4400
+F:UNDEAD | IM_FIRE | IM_COLD | IM_POIS | IM_ACID | IM_ACID | CAN_FLY |
+F:NO_CONF | NO_SLEEP
+S:1_IN_15 |
+S:HOLD
+D:ほとんど生き物のようだが、実は「ゲッター」により導かれた過去の存在に過ぎない。
+
 
 # N: serial number : monster name
 # G: symbol : color
