@@ -32165,13 +32165,13 @@ D:この髪のない全裸の巨大な女性を象った
 D:「敵」の母体は光と闇の声をただ周囲に振りまき続けている。
 
 N:1700:拒む事を知らない種壺野郎『ドラゴン田中』
-G:p:u
 E:Dragon Tanaka, The Seed Pot Gay That Must Not Refuse
+G:p:u
 I:110:20d16:20:45:25
 W:11:1:0:250:0:0
 B:PUNCH:HURT:4d5
 B:KICK:HURT:6d5
-F:UNIQUE | FORCE_MAXHP | MALE | ALLIANCE_HAKUSIN-KARATE
+F:UNIQUE | FORCE_MAXHP | MALE
 F:DROP_60 | DROP_90 | DROP_GOOD | NASTY | HOMO_SEXUAL | HUMAN | DRAGON
 S:1_IN_5 | BR_FIRE
 D:ドラゴンの末裔といわれるホモだ。その尻穴は何もかもを拒まない。
@@ -40134,7 +40134,52 @@ F:FRIENDS | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR | RES_NETH
 F:BASH_DOOR | OPEN_DOOR | HAS_LITE_2 | HUMAN | DEMON | MOB_10000
 D:とある世界の支配階級たる種族、デアボリカの一員だが、その中にあっては最下級に位置する者たちだ。
 D:人間と比べればはるかに膂力に優れているが、人間と変わらず子を成し、寿命を持っている。
-D:人間の文明が進歩した頃には、逆に人間からの迫害や虐殺の対象となることもあったという。
+D:人間の文明が進歩し火砲を持った軍隊を組織するようになった時代には、逆に人間からの迫害や虐殺の対象となることもあったという。
+
+N:2210:糞尿レストランのエージェント
+E:Agents of fecal restaurants
+G:t:D
+I:110:2d6:10:8:99
+W:0:3:0:10:44
+B:ENEMA:DEFECATE:1d6
+B:ENEMA:DEFECATE:1d6
+F:MALE | DROP_CORPSE | DROP_SKELETON | ROGUE
+F:DROP_60 | WILD_TOWN | HUMAN | NASTY | HOMO_SEXUAL
+F:WILD_SWAMP | WILD_WOOD | WILD_GRASS | WILD_MOUNTAIN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:EVIL
+D:$He 'finds' new foodstuffs for the Fecal Restaurants. From unwary adventurers... 
+D:彼は糞尿レストランの食材を「拾って」来る。油断した冒険者から...
+
+#[DSKL]例のタコ看守
+N:2211:ラトリアのマインド・フレイヤー
+E:Mind flayer of the Tower of Latria.
+G:h:v
+I:113:15d14:30:90:10
+W:34:3:900:0:0
+B:TOUCH:LOSE_INT:3d6
+B:STING:LOSE_INT:9d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | EAT_GIVE_INT | EAT_GIVE_WIS |
+F:ONLY_ITEM | DROP_90 | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL
+F:EVIL | NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_3 |
+S:BO_ELEC | HOLD
+D:巨大な監獄塔そのものとなったラトリアの牢の看守たちだ。電撃で身動きが取れなくなった敵を刺し貫く。
+
+N:2212:セントール
+E:Centaur
+G:H:u
+I:120:13d8:12:15:10
+W:29:1:100:0:0
+B:HIT:HURT:1d10
+B:HIT:HURT:1d10
+B:SHOOT:HURT:3d10
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | DROP_CORPSE |
+F:BASH_DOOR | ANIMAL | HUMAN | RIDING
+S:1_IN_4 |
+S:SHOOT
+D:一部の世界では極なじみ深い半人半馬の種族だ。弓と槍に長けている。
 
 # N: serial number : monster name
 # G: symbol : color
