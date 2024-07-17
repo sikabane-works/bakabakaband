@@ -40167,6 +40167,20 @@ S:1_IN_3 |
 S:BO_ELEC | HOLD
 D:巨大な監獄塔そのものとなったラトリアの牢の看守たちだ。電撃で身動きが取れなくなった敵を刺し貫く。
 
+N:2212:セントール
+E:Centaur
+G:H:u
+I:120:13d8:12:15:10
+W:29:1:100:0:0
+B:HIT:HURT:1d10
+B:HIT:HURT:1d10
+B:SHOOT:HURT:3d10
+F:PREVENT_SUDDEN_MAGIC | CAN_FLY | DROP_CORPSE |
+F:BASH_DOOR | ANIMAL | HUMAN | RIDING
+S:1_IN_4 |
+S:SHOOT
+D:一部の世界では極なじみ深い半人半馬の種族だ。弓と槍に長けている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
