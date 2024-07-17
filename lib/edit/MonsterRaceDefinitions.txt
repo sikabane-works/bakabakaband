@@ -40151,6 +40151,21 @@ F:EVIL
 D:$He 'finds' new foodstuffs for the Fecal Restaurants. From unwary adventurers... 
 D:彼は糞尿レストランの食材を「拾って」来る。油断した冒険者から...
 
+#[DSKL]例のタコ看守
+N:2211:ラトリアのマインド・フレイヤー
+E:Mind flayer of the Tower of Latria.
+G:h:v
+I:113:15d14:30:90:10
+W:34:3:900:0:0
+B:TOUCH:LOSE_INT:3d6
+B:STING:LOSE_INT:9d6
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_CORPSE | EAT_GIVE_INT | EAT_GIVE_WIS |
+F:ONLY_ITEM | DROP_90 | DROP_1D2 | 
+F:OPEN_DOOR | BASH_DOOR | POWERFUL
+F:EVIL | NO_CONF | NO_SLEEP | NO_FEAR
+S:1_IN_3 |
+S:BO_ELEC | HOLD
+D:巨大な監獄塔そのものとなったラトリアの牢の看守たちだ。電撃で身動きが取れなくなった敵を刺し貫く。
 
 # N: serial number : monster name
 # G: symbol : color
