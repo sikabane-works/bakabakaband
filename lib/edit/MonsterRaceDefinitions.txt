@@ -40136,6 +40136,22 @@ D:とある世界の支配階級たる種族、デアボリカの一員だが、
 D:人間と比べればはるかに膂力に優れているが、人間と変わらず子を成し、寿命を持っている。
 D:人間の文明が進歩し火砲を持った軍隊を組織するようになった時代には、逆に人間からの迫害や虐殺の対象となることもあったという。
 
+N:2210:糞尿レストランのエージェント
+E:Agents of fecal restaurants
+G:t:D
+I:110:2d6:10:8:99
+W:0:3:0:10:44
+B:ENEMA:DEFECATE:1d6
+B:ENEMA:DEFECATE:1d6
+F:MALE | DROP_CORPSE | DROP_SKELETON | ROGUE
+F:DROP_60 | WILD_TOWN | HUMAN | NASTY | HOMO_SEXUAL
+F:WILD_SWAMP | WILD_WOOD | WILD_GRASS | WILD_MOUNTAIN | WILD_ONLY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR |
+F:EVIL
+D:$He 'finds' new foodstuffs for the Fecal Restaurants. From unwary adventurers... 
+D:彼は糞尿レストランの食材を「拾って」来る。油断した冒険者から...
+
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
