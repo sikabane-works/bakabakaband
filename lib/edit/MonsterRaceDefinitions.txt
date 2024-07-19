@@ -1464,7 +1464,7 @@ D:それは非常に凶暴な齧歯類の生物だ。
 
 #JZ#
 #JZ#(コメント)訳は 紫月閑丸さん
-N:87:小汚いスナガ
+N:87:スノットリング
 E:Snotling
 G:o:G
 I:110:5d5:20:32:30
@@ -40180,6 +40180,42 @@ F:BASH_DOOR | ANIMAL | HUMAN | RIDING
 S:1_IN_4 |
 S:SHOOT
 D:一部の世界では極なじみ深い半人半馬の種族だ。弓と槍に長けている。
+
+N:2213:『ギトラグの怪物』
+E:The Gitrog Monster
+G:R:g
+I:110:55d36:30:95:20
+W:42:5:0:7000:0:0
+B:BITE:HURT:8d7
+B:BITE:HURT:8d7
+B:BITE:EXP_VAMP:6d7
+B:BITE:EXP_VAMP:6d7
+F:UNIQUE
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ANIMAL | EVIL
+F:IM_FIRE | IM_COLD | IM_ACID | IM_POIS | RES_NETH | RES_CHAO
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR
+S:1_IN_5 | BR_POIS
+D:ネファリアの湖に住まる大蛙の怪物だ。大地の肥沃さすら貪欲に喰らうと言われている。
+
+N:2214:グール呼びN:2214:グール呼びの『ギサ』
+E:Ghoulcaller Gisa
+G:p:s
+I:119:88d11:30:80:30
+W:36:5:2000:0:0
+B:HIT:HURT:7d5
+B:HIT:HURT:7d5
+B:HIT:HURT:7d5
+F:UNIQUE | FEMALE | HAS_LITE_2 | HUMAN
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | DROP_SKELETON | DROP_CORPSE
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD |
+F:SMART | OPEN_DOOR | TAKE_ITEM | BASH_DOOR |
+F:EVIL
+S:1_IN_5 |
+S:ANIM_DEAD | S_UNDEAD |
+D:密かに一族が邪悪な術に手を染めているイニストラードの名跡、セカーニ家の令嬢だ。
+D:死者を大量、速やか、かつぞんざいに操るグール呼びの術に類稀なる才能を持っている。
+D:弟ゲラルフとは今日も愉快に抗争中だ。
 
 # N: serial number : monster name
 # G: symbol : color
