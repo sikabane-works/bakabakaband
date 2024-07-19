@@ -40181,6 +40181,23 @@ S:1_IN_4 |
 S:SHOOT
 D:一部の世界では極なじみ深い半人半馬の種族だ。弓と槍に長けている。
 
+N:2213:『ギトラグの怪物』
+E:The Gitrog Monster
+G:R:g
+I:110:55d36:30:95:20
+W:42:5:0:7000:0:0
+B:BITE:HURT:8d7
+B:BITE:HURT:8d7
+B:BITE:EXP_VAMP:6d7
+B:BITE:EXP_VAMP:6d7
+F:UNIQUE
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | ANIMAL | EVIL
+F:IM_FIRE | IM_COLD | IM_ACID | IM_POIS | RES_NETH | RES_CHAO
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR
+S:1_IN_5 | BR_POIS
+D:ネファリアの湖に住まる大蛙の怪物だ。大地の肥沃さすら貪欲に喰らうと言われている。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
