@@ -40228,6 +40228,17 @@ F:BASH_DOOR | WILD_ALL | DROP_SKELETON | DROP_CORPSE
 F:ANIMAL
 D:鯨偶蹄目イノシシ科の動物だ。大柄なものは体重200kgを超え、時に人を襲い傷つけることもある。
 
+#[DSKL] 初代リスペクト
+N:2216:チョウゲンボウ
+E:Kestrel
+G:B:U
+I:112:1d1:30:1:10
+W:1:3:0:0:0
+B:BITE:HURT:1d4
+F:RAND_25 | CAN_FLY | WILD_TOWN | WILD_ONLY
+F:ANIMAL | DROP_SKELETON
+D:ありふれた鳥類だが、最初の冒険者を滅ぼすことは造作でないそうだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
