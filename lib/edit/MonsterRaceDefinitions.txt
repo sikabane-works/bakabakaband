@@ -37868,7 +37868,7 @@ N:2061:シルバー・イーク
 E:Sliver yeek
 G:y:w
 I:123:10d90:18:80:10
-W:42:4:0:4900:0:0
+W:42:4:0:4900:2218:30000
 B:PUNCH:SUPERHURT:4d7
 B:PUNCH:SUPERHURT:4d7
 B:KICK:SUPERHURT:6d6
@@ -40257,6 +40257,21 @@ S:1_IN_6 |
 S:BO_MANA | BO_PLAS
 D:古代の王国であった天空のラピュタ島の内部に無数に眠っていたロボット兵だ。
 D:何者かの命を受けてか鉄獄で動き出したようだ。
+
+N:2218:ゴールド・イーク
+E:Gold yeek
+G:y:y
+I:130:10d190:12:110:10
+W:56:4:0:15000:0:0
+B:PUNCH:SUPERHURT:7d7
+B:PUNCH:SUPERHURT:7d7
+B:KICK:SUPERHURT:8d6
+B:KICK:SUPERHURT:8d6
+F:DROP_GOOD | ONLY_ITEM | DROP_2D2 | DROP_CORPSE | HAS_LITE_2
+F:OPEN_DOOR | BASH_DOOR | FORCE_MAXHP | SMART
+F:ANIMAL | IM_ACID | NO_FEAR | NO_CONF | NO_SLEEP | RES_TELE | RES_NETH | 
+S:1_IN_3 | S_MONSTER | BLINK | CAUSE_3 | CAUSE_4 | BRAIN_SMASH | BA_ACID | TPORT | PSY_SPEAR
+D:神域の域に達し半ば幽体と化した光り輝くイークだ。その精神もまた定命には名状しがたき何かに達している。
 
 # N: serial number : monster name
 # G: symbol : color
