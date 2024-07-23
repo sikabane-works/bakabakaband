@@ -40239,6 +40239,25 @@ F:RAND_25 | CAN_FLY | WILD_TOWN | WILD_ONLY
 F:ANIMAL | DROP_SKELETON
 D:ありふれた鳥類だが、最初の冒険者を滅ぼすことは造作でないそうだ。
 
+N:2217:ラピュタのロボット兵
+E:Robot soldier of Laputa
+G:g:s
+I:120:20d80:25:100:30
+W:40:4:9000:0:0
+B:PUNCH:HURT:5d8
+B:PUNCH:HURT:5d8
+B:PUNCH:HURT:5d8
+B:PUNCH:HURT:5d8
+F:PREVENT_SUDDEN_MAGIC | FORCE_MAXHP | RES_TELE |
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
+F:IM_FIRE | IM_COLD | GOLEM
+F:IM_ELEC | IM_POIS | CAN_SWIM | POWERFUL
+F:NO_CONF | NO_SLEEP | NO_FEAR | NONLIVING
+S:1_IN_6 |
+S:BO_MANA | BO_PLAS
+D:古代の王国であった天空のラピュタ島の内部に無数に眠っていたロボット兵だ。
+D:何者かの命を受けてか鉄獄で動き出したようだ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
