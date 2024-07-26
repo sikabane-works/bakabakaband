@@ -40332,6 +40332,58 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:ロードランの森や木々に住まう、不思議なキノコ人間だ。
 D:とてとてと歩く姿は愛らしい。
 
+N:2223:のみ男
+E:Fleaman
+G:H:G
+I:110:4d8:20:32:30
+W:5:1:10:0:0
+B:HIT:HURT:1d9
+F:MALE | 
+F:FRIENDS | DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
+F:OPEN_DOOR | BASH_DOOR | RAND_50 | HUMAN
+F:EVIL | RES_DARK
+D:悪魔城の小柄な使用人たちだ。常に背を丸めながら物騒な獲物を振り回して来る。
+
+N:2224:スナガの暗殺者
+E:Snaga assassin
+G:o:G
+I:115:15d8:20:32:30
+W:13:2:15:0:0
+B:SLASH:HURT:4d9
+B:SHOOT:HURT:2d6
+R:118:3d6
+F:MALE |
+F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
+F:OPEN_DOOR | BASH_DOOR | ROGUE
+F:EVIL | ORC | HURT_LITE | RES_DARK
+S:1_IN_5 | SHOOT | BA_POIS
+D:彼は自らがいかに弱々しく情けない存在であるかを、巧みに見せつける。
+
+N:2225:屁祭りの女王『西川先生』
+E:Ms.Nishikawa, Queen of Fart Festival
+G:p:o
+I:109:14d10:20:25:20
+W:14:3:120:0:0
+F:UNIQUE | FEMALE | HAS_LITE_2 | HUMAN | NASTY | NEVER_BLOW
+F:FORCE_MAXHP | WILD_ALL | DROP_SKELETON | DROP_CORPSE
+F:DROP_1D2 | DROP_GOOD | EAT_POISONOUS | OPEN_DOOR | BASH_DOOR
+S:1_IN_1 | BA_POIS
+D:「止まんないわよ！GO！GO！」
+D:実際に彼女の放屁は止まることを知らない！
+
+N:2226:南蛮兵
+E:Southerners
+G:p:o
+I:110:6d8:20:14:20
+W:9:1:20:0:0
+B:SLASH:HURT:2d4
+B:SLASH:HURT:2d4
+B:SHOOT:HURT:1d5
+F:MALE | HUMAN | WILD_ALL | HAS_LITE_2 | IM_POIS
+F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | WARRIOR | FRIENDS
+S:1_IN_5 | SHOOT
+D:孟獲ら南蛮の王や諸侯に仕える兵卒たちだ。
 
 # N: serial number : monster name
 # G: symbol : color
