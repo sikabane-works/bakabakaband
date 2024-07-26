@@ -40344,6 +40344,20 @@ F:OPEN_DOOR | BASH_DOOR | RAND_50 | HUMAN
 F:EVIL | RES_DARK
 D:悪魔城の小柄な使用人たちだ。常に背を丸めながら物騒な獲物を振り回して来る。
 
+N:2224:スナガの暗殺者
+E:Snaga assassin
+G:o:G
+I:115:15d8:20:32:30
+W:13:2:15:0:0
+B:SLASH:HURT:4d9
+B:SHOOT:HURT:2d6
+R:118:3d6
+F:MALE |
+F:DROP_60 | WILD_ALL | DROP_SKELETON | DROP_CORPSE |
+F:OPEN_DOOR | BASH_DOOR | ROGUE
+F:EVIL | ORC | HURT_LITE | RES_DARK
+S:1_IN_5 | SHOOT | BA_POIS
+D:彼は自らがいかに弱々しく情けない存在であるかを、巧みに見せつける。
 
 
 # N: serial number : monster name
