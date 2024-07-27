@@ -40127,7 +40127,7 @@ N:2209:モノ・デアボリカ
 E:Mono diabolique
 G:u:s
 I:110:14d10:14:54:20
-W:19:3:100:0:0
+W:19:3:100:3000:2227
 B:HIT:HURT:3d6
 B:HIT:HURT:3d6
 F:FRIENDS | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR | RES_NETH
@@ -40372,7 +40372,7 @@ D:「止まんないわよ！GO！GO！」
 D:実際に彼女の放屁は止まることを知らない！
 
 N:2226:南蛮兵
-E:Southerners
+E:Southerner soldier
 G:p:o
 I:110:6d8:20:14:20
 W:9:1:20:0:0
@@ -40384,6 +40384,62 @@ F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR | WARRIOR | FRIENDS
 S:1_IN_5 | SHOOT
 D:孟獲ら南蛮の王や諸侯に仕える兵卒たちだ。
+
+N:2227:デミ・デアボリカ
+E:Demi diabolique
+G:u:w
+I:117:14d30:14:83:20
+W:34:3:100:0:0
+B:HIT:HURT:5d7
+B:HIT:HURT:5d7
+B:HIT:HURT:5d7
+F:FRIENDS | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR | RES_NETH
+F:BASH_DOOR | OPEN_DOOR | HAS_LITE_2 | HUMAN | DEMON | MOB_7000
+S:1_IN_5 | S_MONSTER | MISSILE | BO_FIRE | BO_COLD
+D:とある世界の支配階級たる種族、デアボリカの一員でありその中堅に属する種族だ。
+D:不老性と異能の能力、特に異種族に己の体液を注いで凶(まがき)と呼ばれる下僕を生み出すことができる。
+
+N:2228:メスブタを超えたメスブタ『宮沢熹恵』
+E:Kie Miyazawa, Bitch beyond Bitchs
+G:t:w
+I:110:20d10:40:5:3
+W:0:5:0:0:0
+B:HIT:HURT:1d3
+F:UNIQUE | FEMALE | DROP_CORPSE | FRIENDLY
+F:FORCE_MAXHP | WILD_TOWN | WILD_ONLY | ONLY_ITEM | DROP_90 | DROP_GREAT
+F:OPEN_DOOR | BASH_DOOR | HAS_LITE_1 | NO_CONF | NO_SLEEP | HUMAN | QUANTUM
+D:「ナチュラル・ボーン・ファイター」を生み出した母親だが、
+D:その実態は「愛する男」を引っかえに引っかえまくった挙句に赤子を最後の男に托して
+D:残してくたばったメスブタだ。やっぱ怖いスね、猿空間は。
+
+N:2229:剣豪レイプ！『柳生と化した先輩』
+E:Swordsman Rape! Senior Who Turned Into Yagyu Blade Arts
+G:p:b
+I:119:80d11:18:60:5
+W:38:4:9100:0:0
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:10d4
+B:SLASH:SUPERHURT:10d4
+F:UNIQUE | MALE | HUMAN
+F:FORCE_MAXHP | WILD_ALL | DROP_CORPSE | KILL_BODY
+F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | HOMO_SEXUAL | NASTY
+F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | SAMURAI
+D:柳生新陰流と性の裏技を合わせた全く新しい剣術、迫真一刀流を身に着けた野獣先輩だ。
+
+N:2230:食人花
+E:Cannibalistic flower
+G:;:R
+I:109:10d10:10:30:20
+W:14:1:50:0:0
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+F:DROP_CORPSE |
+F:DROP_60 | NO_SLEEP | NO_CONF | ANIMAL | WEIRD_MIND | EVIL
+F:RES_WATE | IM_COLD | HURT_FIRE | NEVER_MOVE | WILD_ONLY | WILD_WOOD |
+D:その名の通り、人肉を好み茎を発達させた歯で噛みついて来る巨大な花だ。
 
 # N: serial number : monster name
 # G: symbol : color
