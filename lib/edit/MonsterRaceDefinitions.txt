@@ -40427,6 +40427,20 @@ F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | HOMO_SEXUAL | NASTY
 F:OPEN_DOOR | BASH_DOOR | NO_CONF | NO_FEAR | SAMURAI
 D:柳生新陰流と性の裏技を合わせた全く新しい剣術、迫真一刀流を身に着けた野獣先輩だ。
 
+N:2230:食人花
+E:Cannibalistic flower
+G:;:R
+I:109:10d10:10:30:20
+W:14:1:50:0:0
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+B:BITE:HURT:2d6
+F:DROP_CORPSE |
+F:DROP_60 | NO_SLEEP | NO_CONF | ANIMAL | WEIRD_MIND | EVIL
+F:RES_WATE | IM_COLD | HURT_FIRE | NEVER_MOVE | WILD_ONLY | WILD_WOOD |
+D:その名の通り、人肉を好み茎を発達させた歯で噛みついて来る巨大な花だ。
+
 # N: serial number : monster name
 # G: symbol : color
 # I: speed : hit points : vision : armor class : alertness
