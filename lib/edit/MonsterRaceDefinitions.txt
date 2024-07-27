@@ -40127,7 +40127,7 @@ N:2209:モノ・デアボリカ
 E:Mono diabolique
 G:u:s
 I:110:14d10:14:54:20
-W:19:3:100:0:0
+W:19:3:100:3000:2227
 B:HIT:HURT:3d6
 B:HIT:HURT:3d6
 F:FRIENDS | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR | RES_NETH
@@ -40372,7 +40372,7 @@ D:「止まんないわよ！GO！GO！」
 D:実際に彼女の放屁は止まることを知らない！
 
 N:2226:南蛮兵
-E:Southerners
+E:Southerner soldier
 G:p:o
 I:110:6d8:20:14:20
 W:9:1:20:0:0
@@ -40384,6 +40384,21 @@ F:DROP_1D2 | DROP_SKELETON | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR | WARRIOR | FRIENDS
 S:1_IN_5 | SHOOT
 D:孟獲ら南蛮の王や諸侯に仕える兵卒たちだ。
+
+N:2227:デミ・デアボリカ
+E:Demi diabolique
+G:u:w
+I:117:14d30:14:83:20
+W:34:3:100:0:0
+B:HIT:HURT:5d7
+B:HIT:HURT:5d7
+B:HIT:HURT:5d7
+F:FRIENDS | MALE | DROP_SKELETON | DROP_CORPSE | WARRIOR | RES_NETH
+F:BASH_DOOR | OPEN_DOOR | HAS_LITE_2 | HUMAN | DEMON | MOB_7000
+S:1_IN_5 | S_MONSTER | MISSILE | BO_FIRE | BO_COLD
+D:とある世界の支配階級たる種族、デアボリカの一員でありその中堅に属する種族だ。
+D:不老性と異能の能力、特に異種族に己の体液を注いで凶(まがき)と呼ばれる下僕を生み出すことができる。
+
 
 # N: serial number : monster name
 # G: symbol : color
