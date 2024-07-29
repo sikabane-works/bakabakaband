@@ -3765,7 +3765,7 @@ I:110:10d8:20:30:30
 W:12:1:38:0:0
 B:HIT:HURT:1d8
 F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
-F:EVIL | UNDEAD | IM_COLD | 
+F:EVIL | UNDEAD | IM_COLD | HUMAN
 F:IM_POIS | RES_NETH |
 F:NO_CONF | NO_SLEEP | NO_FEAR
 D:$It is an animated human skeleton.
@@ -9908,7 +9908,7 @@ W:36:2:315:0:0
 B:HIT:POISON:3d4
 B:HIT:POISON:3d4
 B:HIT:LOSE_CON:3d4
-F:MALE | 
+F:MALE | ELF | ROGUE
 F:DROP_1D2 | FRIENDS | INVISIBLE | DROP_SKELETON | DROP_CORPSE
 F:OPEN_DOOR | BASH_DOOR | HURT_LITE |
 F:EVIL | RES_DARK | NO_CONF | NO_SLEEP
@@ -39042,7 +39042,7 @@ F:HUMAN | ANIMAL | EVIL | FRIENDS
 D:人間の顔をした犬。日本でまれによく見かける珍獣だ。
 
 N:2141:天下の大盗賊『盗跖』
-E:DaoZhi, the Greatest bandit
+E:DaoZhi, the Greatest Bandit
 G:p:v
 I:130:48d100:80:140:15
 W:56:1:30500:0:0
@@ -40440,6 +40440,47 @@ F:DROP_CORPSE |
 F:DROP_60 | NO_SLEEP | NO_CONF | ANIMAL | WEIRD_MIND | EVIL
 F:RES_WATE | IM_COLD | HURT_FIRE | NEVER_MOVE | WILD_ONLY | WILD_WOOD |
 D:その名の通り、人肉を好み茎を発達させた歯で噛みついて来る巨大な花だ。
+
+N:2231:須弥陰群
+E:Syuminngun
+G:p:D
+I:117:19d15:20:80:10
+W:37:2:339:0:0
+B:SLASH:HURT:5d4
+B:SLASH:HURT:5d4
+B:SLASH:HURT:5d4
+F:MALE |
+F:DROP_1D2 | FRIENDS | DROP_SKELETON | DROP_CORPSE
+F:OPEN_DOOR | BASH_DOOR | HURT_LITE | HUMAN | ROGUE
+F:EVIL | RES_DARK | NO_CONF | NO_SLEEP
+D:白い道化の仮面に漆黒の装いをしている、金剛国の支配者ミロク帝が裏に操る暗殺者たちだ。
+D:彼らの一部は洗脳された金剛国の敵対者であるという。
+
+N:2232:スケルトン・ホビット
+E:Skeleton hobbit
+G:s:w
+I:111:7d8:20:30:30
+W:10:1:38:0:0
+B:HIT:HURT:1d5
+F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR | 
+F:EVIL | UNDEAD | IM_COLD | HOBBIT
+F:IM_POIS | RES_NETH |
+F:NO_CONF | NO_SLEEP | NO_FEAR
+D:善良にして純朴なるホビットだろうと、
+D:屍霊術を嗜むものには単なる手頃な素材に過ぎない。
+
+N:2233:ホビットの男娼
+E:Hobbit male prostitute
+G:h:g
+I:110:1d5:16:8:10
+W:0:2:0:0:0
+B:HIT:HURT:1d3
+B:TOUCH:EAT_GOLD
+F:MALE | HAS_LITE_1 |
+F:DROP_60 | HOBBIT | WILD_TOWN | WILD_ONLY | HOMO_SEXUAL | NASTY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL
+D:実際容貌と振る舞いと化粧とで色々誤魔化してはいるが、年は人間以上に重ねている上、心根のクッソ汚さはひでたるとと同類だ。
 
 # N: serial number : monster name
 # G: symbol : color
