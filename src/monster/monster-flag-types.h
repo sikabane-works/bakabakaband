@@ -23,5 +23,6 @@ enum class MonsterConstantFlagType {
     CLONED = 9, /*!< クローンである / Cloned */
     SANTA = 10, /*!< サンタと化した / Santa turned */
     LARGE = 11, /*!< 大型 / Large */
+    RIDING = 12, /*!< 乗馬中である / riding */
     MAX,
 };
