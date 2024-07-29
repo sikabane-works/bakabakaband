@@ -40469,6 +40469,18 @@ F:NO_CONF | NO_SLEEP | NO_FEAR
 D:善良にして純朴なるホビットだろうと、
 D:屍霊術を嗜むものには単なる手頃な素材に過ぎない。
 
+N:2233:ホビットの男娼
+E:Hobbit male prostitute
+G:h:g
+I:110:1d5:16:8:10
+W:0:2:0:0:0
+B:HIT:HURT:1d3
+B:TOUCH:EAT_GOLD
+F:MALE | HAS_LITE_1 |
+F:DROP_60 | HOBBIT | WILD_TOWN | WILD_ONLY | HOMO_SEXUAL | NASTY
+F:TAKE_ITEM | OPEN_DOOR | BASH_DOOR | DROP_SKELETON | DROP_CORPSE
+F:EVIL
+D:実際容貌と振る舞いと化粧とで色々誤魔化してはいるが、年は人間以上に重ねている上、心根のクッソ汚さはひでたるとと同類だ。
 
 # N: serial number : monster name
 # G: symbol : color
