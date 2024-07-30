@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief アライアンス情報の表示を行う。
  * @date 2021/06/21
  * @author Deskull
@@ -73,6 +73,6 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr, bool detail)
     }
 
     angband_fclose(fff);
-    (void)show_file(player_ptr, true, file_name, 0, 0, _("各アライアンス情報", "Information of all alliances"));
+    FileDisplayer().display(player_ptr->name, true, file_name, 0, 0, _("各アライアンス情報", "Information of all alliances"));
     fd_kill(file_name);
 }
