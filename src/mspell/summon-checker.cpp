@@ -20,6 +20,7 @@
 bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, MonsterRaceId r_idx, summon_type type)
 {
     const auto &monrace = monraces_info[r_idx];
+    const auto &smonrace = monraces_info[summoner_idx];
     switch (type) {
     case SUMMON_ANT:
         return monrace.d_char == 'a';
@@ -156,6 +157,9 @@ bool check_summon_specific(PlayerType *player_ptr, MonsterRaceId summoner_idx, M
         break;
     case SUMMON_DEAD_UNIQUE: {
         return monrace.kind_flags.has(MonsterKindType::UNIQUE) && monrace.mob_num == 0;
+    }
+    case SUMMON_ALLIANCE: {
+        return (monrace.alliance_idx == smonrace.alliance_idx);
     }
 
     default:
