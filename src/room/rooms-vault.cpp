@@ -357,7 +357,7 @@ void build_vault(vault_type *v_ptr, PlayerType *player_ptr, POSITION yval, POSIT
                 set_cave_feat(floor_ptr, y, x, v_ptr->feature_list[*t]);
                 set_cave_feat_mimic(floor_ptr, y, x, v_ptr->feature_ap_list[*t]);
                 if (v_ptr->place_monster_list.count(*t) != 0) {
-                    place_monster_one(player_ptr, 0, y, x, v_ptr->place_monster_list[*t], 0);
+                    place_monster_one(player_ptr, y, x, v_ptr->place_monster_list[*t], 0);
                 }
                 continue;
             }
