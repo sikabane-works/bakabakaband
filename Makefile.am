@@ -21,6 +21,9 @@ visual_studio_files = \
 	Bakabakaband/Bakabakaband/Bakabakaband.vcxproj.filters \
 	Bakabakaband/Bakabakaband/packages.config
 
+schema_files = \
+	schema/MonraceDefinitions.schema.json
+
 EXTRA_DIST = \
 	autopick.txt \
 	autopick_eng.txt \
@@ -30,6 +33,7 @@ EXTRA_DIST = \
 	readme-eng.md \
 	THIRD-PARTY-NOTICES.txt \
 	hengband.spec \
-	$(visual_studio_files)
+	$(visual_studio_files) \
+	$(schema_files)
 
 SUBDIRS = src lib
