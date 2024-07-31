@@ -179,8 +179,9 @@ bool make_gold(PlayerType *player_ptr, ItemEntity *j_ptr)
     }
 
     j_ptr->prep(OBJ_GOLD_LIST + i);
+    const auto &baseitems = BaseitemList::get_instance();
     int boost = floor.object_level > 20 ? ((floor.object_level - 10) * (floor.object_level - 10) / 100) : 1;
-    const auto base = baseitems_info[OBJ_GOLD_LIST + i].cost;
+    const auto base = baseitems.get_baseitem(OBJ_GOLD_LIST + i).cost;
     j_ptr->pval = (base + (8L * randint1(base)) + randint1(8)) * boost;
     return true;
 }

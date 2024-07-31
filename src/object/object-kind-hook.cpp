@@ -25,7 +25,7 @@ static const int SV_BOOK_MIN_GOOD = 2;
  */
 bool kind_is_cloak(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::CLOAK;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::CLOAK;
 }
 
 /*!
@@ -35,7 +35,7 @@ bool kind_is_cloak(short bi_id)
  */
 bool kind_is_polearm(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::POLEARM;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::POLEARM;
 }
 
 /*!
@@ -45,7 +45,7 @@ bool kind_is_polearm(short bi_id)
  */
 bool kind_is_sword(short bi_id)
 {
-    const auto &baseitem = baseitems_info[bi_id];
+    const auto &baseitem = BaseitemList::get_instance().get_baseitem(bi_id);
     return (baseitem.bi_key.tval() == ItemKindType::SWORD) && (baseitem.bi_key.sval() > 2);
 }
 
@@ -56,7 +56,7 @@ bool kind_is_sword(short bi_id)
  */
 bool kind_is_book(short bi_id)
 {
-    const auto &baseitem = baseitems_info[bi_id];
+    const auto &baseitem = BaseitemList::get_instance().get_baseitem(bi_id);
     return baseitem.bi_key.is_spell_book();
 }
 
@@ -67,7 +67,7 @@ bool kind_is_book(short bi_id)
  */
 bool kind_is_good_book(short bi_id)
 {
-    const auto &baseitem = baseitems_info[bi_id];
+    const auto &baseitem = BaseitemList::get_instance().get_baseitem(bi_id);
     return baseitem.bi_key.is_high_level_book();
 }
 
@@ -78,7 +78,7 @@ bool kind_is_good_book(short bi_id)
  */
 bool kind_is_armor(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::HARD_ARMOR;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::HARD_ARMOR;
 }
 
 /*!
@@ -88,7 +88,7 @@ bool kind_is_armor(short bi_id)
  */
 bool kind_is_hafted(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::HAFTED;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::HAFTED;
 }
 
 /*!
@@ -98,7 +98,7 @@ bool kind_is_hafted(short bi_id)
  */
 bool kind_is_potion(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::POTION;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::POTION;
 }
 
 /*!
@@ -108,7 +108,7 @@ bool kind_is_potion(short bi_id)
  */
 bool kind_is_boots(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::BOOTS;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::BOOTS;
 }
 
 /*!
@@ -118,13 +118,12 @@ bool kind_is_boots(short bi_id)
  */
 bool kind_is_amulet(short bi_id)
 {
-    return baseitems_info[bi_id].bi_key.tval() == ItemKindType::AMULET;
+    return BaseitemList::get_instance().get_baseitem(bi_id).bi_key.tval() == ItemKindType::AMULET;
 }
 
 bool kind_is_nasty(short bi_id)
 {
-    BaseitemInfo *k_ptr = &baseitems_info[bi_id];
-    return k_ptr->flags.has(TR_NASTY);
+    return BaseitemList::get_instance().get_baseitem(bi_id).flags.has(TR_NASTY);
 }
 
 /*!
@@ -135,7 +134,7 @@ bool kind_is_nasty(short bi_id)
  */
 bool kind_is_good(short bi_id)
 {
-    const auto &baseitem = baseitems_info[bi_id];
+    const auto &baseitem = BaseitemList::get_instance().get_baseitem(bi_id);
     switch (baseitem.bi_key.tval()) {
         /* Armor -- Good unless damaged */
     case ItemKindType::HARD_ARMOR:
@@ -196,7 +195,7 @@ bool kind_is_good(short bi_id)
 static const std::map<ItemKindType, std::vector<int>> &create_baseitems_cache()
 {
     static std::map<ItemKindType, std::vector<int>> cache;
-    for (const auto &baseitem : baseitems_info) {
+    for (const auto &baseitem : BaseitemList::get_instance()) {
         if (!baseitem.is_valid()) {
             continue;
         }
@@ -216,7 +215,7 @@ static const std::map<ItemKindType, std::vector<int>> &create_baseitems_cache()
 static const std::map<BaseitemKey, short> &create_baseitem_index_chache()
 {
     static std::map<BaseitemKey, short> cache;
-    for (const auto &baseitem : baseitems_info) {
+    for (const auto &baseitem : BaseitemList::get_instance()) {
         if (!baseitem.is_valid()) {
             continue;
         }

@@ -197,10 +197,10 @@ errr init_artifacts_info()
  * @brief ベースアイテム情報読み込みのメインルーチン
  * @return エラーコード
  */
-errr init_baseitems_info()
+errr init_baseitems()
 {
     init_header(&baseitems_header);
-    return init_info("BaseitemDefinitions.txt", baseitems_header, baseitems_info, parse_baseitems_info);
+    return init_info("BaseitemDefinitions.txt", baseitems_header, BaseitemList::get_instance().get_raw_vector(), parse_baseitems);
 }
 
 /*!

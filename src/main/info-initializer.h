@@ -8,7 +8,7 @@
 
 class PlayerType;
 errr init_artifacts_info();
-errr init_baseitems_info();
+errr init_baseitems();
 errr init_class_magics_info();
 errr init_class_skills_info();
 errr init_dungeons_info();
