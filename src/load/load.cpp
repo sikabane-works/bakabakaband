@@ -230,7 +230,8 @@ static errr exe_reading_savefile(PlayerType *player_ptr)
     player_ptr->pet_extra_flags = rd_u16b();
 
     std::vector<char> buf(SCREEN_BUF_MAX_SIZE);
-    rd_string(buf.data(), SCREEN_BUF_MAX_SIZE);
+    const auto dump_str = rd_string();
+    dump_str.copy(buf.data(), SCREEN_BUF_MAX_SIZE - 1);
     if (buf[0]) {
         screen_dump = string_make(buf.data());
     }
