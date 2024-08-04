@@ -59,7 +59,7 @@ std::filesystem::path debug_savefile;
  */
 void file_character(PlayerType *player_ptr, std::string_view filename)
 {
-    const auto &path = path_build(ANGBAND_DIR_USER, filename);
+    const auto path = path_build(ANGBAND_DIR_USER, filename);
     auto fd = fd_open(path, O_RDONLY);
     if (fd >= 0) {
         const auto &path_str = path.string();
@@ -99,7 +99,7 @@ void file_character(PlayerType *player_ptr, std::string_view filename)
  */
 std::optional<std::string> get_random_line(concptr file_name, int entry)
 {
-    const auto &path = path_build(ANGBAND_DIR_FILE, file_name);
+    const auto path = path_build(ANGBAND_DIR_FILE, file_name);
     auto *fp = angband_fopen(path, FileOpenMode::READ);
     if (!fp) {
         return std::nullopt;
@@ -266,7 +266,7 @@ static errr counts_seek(PlayerType *player_ptr, int fd, uint32_t where, bool fla
  */
 uint32_t counts_read(PlayerType *player_ptr, int where)
 {
-    const auto &path = path_build(ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
+    const auto path = path_build(ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
     auto fd = fd_open(path, O_RDONLY);
     uint32_t count = 0;
     if (counts_seek(player_ptr, fd, where, false) || fd_read(fd, (char *)(&count), sizeof(uint32_t))) {
@@ -287,7 +287,7 @@ uint32_t counts_read(PlayerType *player_ptr, int where)
  */
 errr counts_write(PlayerType *player_ptr, int where, uint32_t count)
 {
-    const auto &path = path_build(ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
+    const auto path = path_build(ANGBAND_DIR_DATA, _("z_info_j.raw", "z_info.raw"));
     safe_setuid_grab();
     auto fd = fd_open(path, O_RDWR);
     safe_setuid_drop();
@@ -323,7 +323,7 @@ errr counts_write(PlayerType *player_ptr, int where, uint32_t count)
  */
 void read_dead_file(bool world_end)
 {
-    const auto &path = path_build(ANGBAND_DIR_FILE, world_end ? _("blownaway_j.txt", "blownaway.txt") : _("dead_j.txt", "dead.txt"));
+    const auto path = path_build(ANGBAND_DIR_FILE, world_end ? _("blownaway_j.txt", "blownaway.txt") : _("dead_j.txt", "dead.txt"));
     auto *fp = angband_fopen(path, FileOpenMode::READ);
     if (!fp) {
         return;
