@@ -73,6 +73,6 @@ void do_cmd_knowledge_alliance(PlayerType *player_ptr, bool detail)
     }
 
     angband_fclose(fff);
-    FileDisplayer().display(player_ptr->name, true, file_name, 0, 0, _("各アライアンス情報", "Information of all alliances"));
+    FileDisplayer(player_ptr->name).display(true, file_name, 0, 0, _("各アライアンス情報", "Information of all alliances"));
     fd_kill(file_name);
 }
