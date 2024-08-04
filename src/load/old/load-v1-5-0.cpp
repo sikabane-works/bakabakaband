@@ -23,7 +23,6 @@
 #include "monster-floor/monster-move.h"
 #include "monster-race/monster-race.h"
 #include "monster-race/race-flags-resistance.h"
-
 #include "monster-race/race-indice-types.h"
 #include "monster/monster-flag-types.h"
 #include "monster/monster-info.h"
@@ -33,7 +32,6 @@
 #include "object-enchant/tr-types.h"
 #include "object-enchant/trc-types.h"
 #include "object-enchant/trg-types.h"
-#include "object/object-kind-hook.h"
 #include "sv-definition/sv-armor-types.h"
 #include "sv-definition/sv-lite-types.h"
 #include "system/angband-exceptions.h"

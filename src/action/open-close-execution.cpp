@@ -278,6 +278,7 @@ bool exe_disarm_chest(PlayerType *player_ptr, POSITION y, POSITION x, OBJECT_IDX
 
 bool exe_disarm(PlayerType *player_ptr, POSITION y, POSITION x, DIRECTION dir)
 {
+    const auto &baseitems = BaseitemList::get_instance();
     const Pos2D pos(y, x);
     const auto &grid = player_ptr->current_floor_ptr->get_grid(pos);
     const auto &terrain = grid.get_terrain();
@@ -303,7 +304,7 @@ bool exe_disarm(PlayerType *player_ptr, POSITION y, POSITION x, DIRECTION dir)
     if (randint0(100) < j) {
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
-        q_ptr->prep(lookup_baseitem_id({ ItemKindType::TRAP, 0 }));
+        q_ptr->prep(baseitems.lookup_baseitem_id({ ItemKindType::TRAP, 0 }));
         q_ptr->pval = grid.feat;
 
         msg_format(_("%sを解除した。", "You have disarmed the %s."), name.data());
