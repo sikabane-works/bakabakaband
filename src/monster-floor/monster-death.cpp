@@ -95,7 +95,7 @@ static void on_defeat_arena_monster(PlayerType *player_ptr, MonsterDeath *md_ptr
     const auto tval = arena.key.tval();
     if (tval > ItemKindType::NONE) {
         ItemEntity item;
-        item.prep(BaseitemList::get_instance().lookup_baseitem_id(arena.key));
+        item.generate(BaseitemList::get_instance().lookup_baseitem_id(arena.key));
         ItemMagicApplier(player_ptr, &item, floor_ptr->object_level, AM_NO_FIXED_ART).execute();
         (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
     }
@@ -141,13 +141,13 @@ static void drop_corpse(PlayerType *player_ptr, MonsterDeath *md_ptr)
     }
 
     ItemEntity item;
-    item.prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CORPSE, (corpse ? SV_CORPSE : SV_SKELETON) }));
+    item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CORPSE, (corpse ? SV_CORPSE : SV_SKELETON) }));
     ItemMagicApplier(player_ptr, &item, floor_ptr->object_level, AM_NO_FIXED_ART).execute();
     item.pval = enum2i(md_ptr->m_ptr->r_idx);
     (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
 
     if (one_in_(md_ptr->r_ptr->kind_flags.has(MonsterKindType::UNIQUE) ? 1 : 4)) {
-        item.prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CORPSE, SV_SOUL }));
+        item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CORPSE, SV_SOUL }));
         item.pval = enum2i(md_ptr->m_ptr->r_idx);
         (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
     }
@@ -197,7 +197,7 @@ bool drop_single_artifact(PlayerType *player_ptr, MonsterDeath *md_ptr, FixedArt
     return true;
 }
 
-static short drop_dungeon_final_artifact(PlayerType *player_ptr, MonsterDeath *md_ptr)
+static std::optional<short> drop_dungeon_final_artifact(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     const auto &dungeon = player_ptr->current_floor_ptr->get_dungeon_definition();
     const auto has_reward = dungeon.final_object > 0;
@@ -212,13 +212,8 @@ static short drop_dungeon_final_artifact(PlayerType *player_ptr, MonsterDeath *m
         return bi_id;
     }
 
-    if (create_named_art(player_ptr, a_idx, md_ptr->md_y, md_ptr->md_x)) {
-        if (w_ptr->character_dungeon) {
-            artifact.floor_id = player_ptr->floor_id;
-        }
-    }
-
-    return dungeon.final_object ? bi_id : 0;
+    create_named_art(player_ptr, a_idx, md_ptr->md_y, md_ptr->md_x);
+    return dungeon.final_object ? std::make_optional<short>(bi_id) : std::nullopt;
 }
 
 static void drop_artifacts(PlayerType *player_ptr, MonsterDeath *md_ptr)
@@ -234,13 +229,11 @@ static void drop_artifacts(PlayerType *player_ptr, MonsterDeath *md_ptr)
         return;
     }
 
-    short bi_id = drop_dungeon_final_artifact(player_ptr, md_ptr);
-    if (bi_id != 0) {
-        ItemEntity forge;
-        auto *q_ptr = &forge;
-        q_ptr->prep(bi_id);
-        ItemMagicApplier(player_ptr, q_ptr, floor_ptr->object_level, AM_NO_FIXED_ART | AM_GOOD).execute();
-        (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
+    const auto bi_id = drop_dungeon_final_artifact(player_ptr, md_ptr);
+    if (bi_id) {
+        ItemEntity item(*bi_id);
+        ItemMagicApplier(player_ptr, &item, floor_ptr->object_level, AM_NO_FIXED_ART | AM_GOOD).execute();
+        (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
     }
 
     msg_format(_("あなたは%sを制覇した！", "You have conquered %s!"), dungeon.name.data());

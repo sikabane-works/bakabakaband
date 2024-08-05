@@ -171,7 +171,7 @@ static void on_dead_drop_kind_item(PlayerType *player_ptr, MonsterDeath *md_ptr)
         int drop_nums = damroll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
-            q_ptr->prep(kind_idx);
+            q_ptr->generate(kind_idx);
             switch (grade) {
             /* Apply bad magic, but first clear object */
             case -2:
@@ -225,7 +225,7 @@ static void on_dead_drop_tval_item(PlayerType *player_ptr, MonsterDeath *md_ptr)
         int drop_nums = damroll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
-            q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ i2enum<ItemKindType>(tval), 0 }));
+            q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ i2enum<ItemKindType>(tval), 0 }));
             switch (grade) {
             /* Apply bad magic, but first clear object */
             case -2:
@@ -266,7 +266,7 @@ static void on_dead_bottle_gnome(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     ItemEntity forge;
     ItemEntity *q_ptr = &forge;
-    q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::POTION, SV_POTION_CURE_CRITICAL }));
+    q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::POTION, SV_POTION_CURE_CRITICAL }));
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -277,7 +277,7 @@ static void on_dead_bloodletter(PlayerType *player_ptr, MonsterDeath *md_ptr)
     }
 
     ItemEntity item;
-    item.prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::SWORD, SV_BLADE_OF_CHAOS }));
+    item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::SWORD, SV_BLADE_OF_CHAOS }));
     ItemMagicApplier(player_ptr, &item, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART | md_ptr->mo_mode).execute();
     (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -286,7 +286,7 @@ static void on_dead_inariman1_2(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     ItemEntity forge;
     ItemEntity *q_ptr = &forge;
-    q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI2 }));
+    q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI2 }));
     ItemMagicApplier(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | md_ptr->mo_mode).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -295,7 +295,7 @@ static void on_dead_inariman3(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
     ItemEntity forge;
     ItemEntity *q_ptr = &forge;
-    q_ptr->prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI3 }));
+    q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::FOOD, SV_FOOD_SUSHI3 }));
     ItemMagicApplier(player_ptr, q_ptr, player_ptr->current_floor_ptr->dun_level, AM_NO_FIXED_ART | md_ptr->mo_mode).execute();
     (void)drop_near(player_ptr, q_ptr, -1, md_ptr->md_y, md_ptr->md_x);
 }
@@ -382,13 +382,13 @@ static void on_dead_serpent(PlayerType *player_ptr, MonsterDeath *md_ptr)
 
     const auto &baseitems = BaseitemList::get_instance();
     ItemEntity item_grond;
-    item_grond.prep(baseitems.lookup_baseitem_id({ ItemKindType::HAFTED, SV_GROND }));
+    item_grond.generate(baseitems.lookup_baseitem_id({ ItemKindType::HAFTED, SV_GROND }));
     item_grond.fixed_artifact_idx = FixedArtifactId::GROND;
     ItemMagicApplier(player_ptr, &item_grond, -1, AM_GOOD | AM_GREAT).execute();
     (void)drop_near(player_ptr, &item_grond, -1, md_ptr->md_y, md_ptr->md_x);
 
     ItemEntity item_chaos;
-    item_chaos.prep(baseitems.lookup_baseitem_id({ ItemKindType::CROWN, SV_CHAOS }));
+    item_chaos.generate(baseitems.lookup_baseitem_id({ ItemKindType::CROWN, SV_CHAOS }));
     item_chaos.fixed_artifact_idx = FixedArtifactId::CHAOS;
     ItemMagicApplier(player_ptr, &item_chaos, -1, AM_GOOD | AM_GREAT).execute();
     (void)drop_near(player_ptr, &item_chaos, -1, md_ptr->md_y, md_ptr->md_x);
@@ -401,7 +401,7 @@ static void on_dead_death_sword(PlayerType *player_ptr, MonsterDeath *md_ptr)
     }
 
     ItemEntity item;
-    item.prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::SWORD, randint1(2) }));
+    item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::SWORD, randint1(2) }));
     (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
 }
 
@@ -416,7 +416,7 @@ static void on_dead_can_angel(PlayerType *player_ptr, MonsterDeath *md_ptr)
     }
 
     ItemEntity item;
-    item.prep(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CHEST, SV_CHEST_KANDUME }));
+    item.generate(BaseitemList::get_instance().lookup_baseitem_id({ ItemKindType::CHEST, SV_CHEST_KANDUME }));
     ItemMagicApplier(player_ptr, &item, player_ptr->current_floor_ptr->object_level, AM_NO_FIXED_ART).execute();
     (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
 }

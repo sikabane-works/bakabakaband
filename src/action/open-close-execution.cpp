@@ -304,7 +304,7 @@ bool exe_disarm(PlayerType *player_ptr, POSITION y, POSITION x, DIRECTION dir)
     if (randint0(100) < j) {
         ItemEntity forge;
         ItemEntity *q_ptr = &forge;
-        q_ptr->prep(baseitems.lookup_baseitem_id({ ItemKindType::TRAP, 0 }));
+        q_ptr->generate(baseitems.lookup_baseitem_id({ ItemKindType::TRAP, 0 }));
         q_ptr->pval = grid.feat;
 
         msg_format(_("%sを解除した。", "You have disarmed the %s."), name.data());
