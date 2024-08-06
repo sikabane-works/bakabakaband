@@ -17,7 +17,6 @@
 #include "realm/realm-names-table.h"
 #include "system/player-type-definition.h"
 #include "util/angband-files.h"
-#include "util/finalizer.h"
 #include "util/buffer-shaper.h"
 #include "util/finalizer.h"
 #include "util/string-processor.h"
