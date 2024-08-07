@@ -195,12 +195,12 @@ void wiz_create_item(PlayerType *player_ptr)
 
     const auto &baseitem = BaseitemList::get_instance().get_baseitem(*bi_id);
     if (baseitem.gen_flags.has(ItemGenerationTraitType::INSTA_ART)) {
-        for (const auto &[a_idx, artifact] : artifacts_info) {
-            if ((a_idx == FixedArtifactId::NONE) || (artifact.bi_key != baseitem.bi_key)) {
+        for (const auto &[fa_id, artifact] : ArtifactList::get_instance()) {
+            if (artifact.bi_key != baseitem.bi_key) {
                 continue;
             }
 
-            (void)create_named_art(player_ptr, a_idx, player_ptr->y, player_ptr->x);
+            (void)create_named_art(player_ptr, fa_id, player_ptr->y, player_ptr->x);
             msg_print("Allocated(INSTA_ART).");
             return;
         }
@@ -221,9 +221,8 @@ void wiz_create_item(PlayerType *player_ptr)
  */
 static std::string wiz_make_named_artifact_desc(PlayerType *player_ptr, FixedArtifactId a_idx)
 {
-    const auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
-    ItemEntity item;
-    item.generate(BaseitemList::get_instance().lookup_baseitem_id(artifact.bi_key));
+    const auto &artifact = ArtifactList::get_instance().get_artifact(a_idx);
+    ItemEntity item(artifact.bi_key);
     item.fixed_artifact_idx = a_idx;
     item.mark_as_known();
     return describe_flavor(player_ptr, &item, OD_NAME_ONLY);
@@ -288,23 +287,22 @@ static std::optional<FixedArtifactId> wiz_select_named_artifact(PlayerType *play
 
 /**
  * @brief 指定したカテゴリの固定アーティファクトのIDのリストを得る
- *
  * @param group_artifact 固定アーティファクトのカテゴリ
  * @return 該当のカテゴリの固定アーティファクトのIDのリスト
  */
 static std::vector<FixedArtifactId> wiz_collect_group_a_idx(const grouper &group_artifact)
 {
-    const auto &[tval_list, name] = group_artifact;
-    std::vector<FixedArtifactId> a_idx_list;
-    for (auto tval : tval_list) {
-        for (const auto &[a_idx, artifact] : artifacts_info) {
+    const auto &[tvals, name] = group_artifact;
+    std::vector<FixedArtifactId> fa_ids;
+    for (const auto tval : tvals) {
+        for (const auto &[fa_id, artifact] : ArtifactList::get_instance()) {
             if (artifact.bi_key.tval() == tval) {
-                a_idx_list.push_back(a_idx);
+                fa_ids.push_back(fa_id);
             }
         }
     }
 
-    return a_idx_list;
+    return fa_ids;
 }
 
 /*!
@@ -340,8 +338,8 @@ void wiz_create_named_art(PlayerType *player_ptr)
     }
 
     screen_load();
-    const auto a_idx = create_a_idx.value();
-    const auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
+    const auto a_idx = *create_a_idx;
+    const auto &artifact = ArtifactList::get_instance().get_artifact(a_idx);
     if (artifact.is_generated) {
         msg_print("It's already allocated.");
         return;
@@ -548,7 +546,7 @@ static std::optional<int> select_debugging_floor(const FloorType &floor, int dun
 void wiz_jump_to_dungeon(PlayerType *player_ptr)
 {
     const auto &floor = *player_ptr->current_floor_ptr;
-    const auto is_in_dungeon = floor.is_in_dungeon();
+    const auto is_in_dungeon = floor.is_in_underground();
     const auto dungeon_idx = is_in_dungeon ? floor.dungeon_idx : static_cast<short>(DUNGEON_ANGBAND);
     const auto dungeon_id = select_debugging_dungeon(dungeon_idx);
     if (!dungeon_id) {

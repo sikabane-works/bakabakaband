@@ -157,6 +157,8 @@ public:
     void mark_as_tried() const;
     std::string build_activation_description() const;
 
+    bool try_become_artifact(int dungeon_level);
+
 private:
     int get_baseitem_price() const;
     int calc_figurine_value() const;

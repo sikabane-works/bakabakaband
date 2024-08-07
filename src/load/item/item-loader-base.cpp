@@ -32,7 +32,7 @@ void ItemLoaderBase::load_artifact()
     auto loading_max_a_idx = rd_u16b();
     for (auto i = 0U; i < loading_max_a_idx; i++) {
         const auto a_idx = i2enum<FixedArtifactId>(i);
-        auto &artifact = ArtifactsInfo::get_instance().get_artifact(a_idx);
+        auto &artifact = ArtifactList::get_instance().get_artifact(a_idx);
         artifact.is_generated = rd_bool();
         artifact.floor_id = rd_s16b();
     }

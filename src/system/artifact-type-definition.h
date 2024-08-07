@@ -39,23 +39,35 @@ public:
     FLOOR_IDX floor_id{}; /*! アイテムを落としたフロアのID / Leaved on this location last time */
     RandomArtActType act_idx{}; /*! 発動能力ID / Activative ability index */
     PERCENTAGE broken_rate; /*!< 発動破損率 */
+
+    bool can_generate(const BaseitemKey &bi_key) const;
 };
 
 extern std::map<FixedArtifactId, ArtifactType> artifacts_info;
 
-class ArtifactsInfo {
+class ArtifactList {
 public:
-    ArtifactsInfo(const ArtifactsInfo &) = delete;
-    ArtifactsInfo(ArtifactsInfo &&) = delete;
-    ArtifactsInfo &operator=(const ArtifactsInfo &) = delete;
-    ArtifactsInfo &operator=(ArtifactsInfo &&) = delete;
-    ~ArtifactsInfo() = default;
+    ArtifactList(const ArtifactList &) = delete;
+    ArtifactList(ArtifactList &&) = delete;
+    ArtifactList &operator=(const ArtifactList &) = delete;
+    ArtifactList &operator=(ArtifactList &&) = delete;
+    ~ArtifactList() = default;
 
-    static ArtifactsInfo &get_instance();
+    static ArtifactList &get_instance();
+    std::map<FixedArtifactId, ArtifactType>::iterator begin();
+    std::map<FixedArtifactId, ArtifactType>::iterator end();
+    std::map<FixedArtifactId, ArtifactType>::const_iterator begin() const;
+    std::map<FixedArtifactId, ArtifactType>::const_iterator end() const;
+    std::map<FixedArtifactId, ArtifactType>::reverse_iterator rbegin();
+    std::map<FixedArtifactId, ArtifactType>::reverse_iterator rend();
+    std::map<FixedArtifactId, ArtifactType>::const_reverse_iterator rbegin() const;
+    std::map<FixedArtifactId, ArtifactType>::const_reverse_iterator rend() const;
     ArtifactType &get_artifact(const FixedArtifactId id) const;
 
+    void reset_generated_flags();
+
 private:
-    ArtifactsInfo() = default;
-    static ArtifactsInfo instance;
+    ArtifactList() = default;
+    static ArtifactList instance;
     static ArtifactType dummy;
 };
