@@ -495,137 +495,137 @@ errr parse_artifacts_info(nlohmann::json &art_data, angband_header *)
         msg_format(_("アーティファクトのフレーバーテキスト読込失敗。ID: '%d'。", "Failed to load flavor text of artifact. ID: '%d'."), error_idx);
         return err;
     }
-/*
-    if (tokens[0] == "D") {
-        // D:JapaneseText
-        // D:$EnglishText
-        if (tokens.size() < 2 || buf.length() < 3) {
-            return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        }
-#ifdef JP
-        if (buf[2] == '$') {
-            return PARSE_ERROR_NONE;
-        }
-
-        const auto it = artifacts_info.rbegin();
-        auto &artifact = it->second;
-        artifact.text.append(buf.substr(2));
-#else
-        if (buf[2] != '$') {
-            return PARSE_ERROR_NONE;
-        }
-        if (buf.length() == 3) {
-            return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        }
-
-        const auto it = artifacts_info.rbegin();
-        auto &artifact = it->second;
-        append_english_text(artifact.text, buf.substr(3));
-#endif
-        return PARSE_ERROR_NONE;
-    }
-
-    if (tokens[0] == "I") {
-        // I:tval:sval:pval
-        if (tokens.size() < 4) {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-        }
-
-        const auto it = artifacts_info.rbegin();
-        auto &artifact = it->second;
-        constexpr auto base = 10;
-        const auto tval = i2enum<ItemKindType>(std::stoi(tokens[1], nullptr, base));
-        const auto sval = std::stoi(tokens[2], nullptr, base);
-        artifact.bi_key = { tval, sval };
-        info_set_value(artifact.pval, tokens[3]);
-        return PARSE_ERROR_NONE;
-    }
-
-    if (tokens[0] == "W") {
-        // W:level:ratiry:weight:cost
-        if (tokens.size() < 5) {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-        }
-
-        const auto it = artifacts_info.rbegin();
-        auto &artifact = it->second;
-        info_set_value(artifact.level, tokens[1]);
-        info_set_value(artifact.rarity, tokens[2]);
-        info_set_value(artifact.weight, tokens[3]);
-        info_set_value(artifact.cost, tokens[4]);
-        return PARSE_ERROR_NONE;
-    }
-
-    if (tokens[0] == "P") {
-        // P:ac:dd:ds:to_h:to_d:to_a
-        if (tokens.size() < 6) {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-        }
-
-        const auto &dice = str_split(tokens[2], 'd', false, 2);
-        if (dice.size() != 2) {
-            return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
-        }
-
-        const auto it = artifacts_info.rbegin();
-        auto &artifact = it->second;
-        info_set_value(artifact.ac, tokens[1]);
-        info_set_value(artifact.dd, dice[0]);
-        info_set_value(artifact.ds, dice[1]);
-        info_set_value(artifact.to_h, tokens[3]);
-        info_set_value(artifact.to_d, tokens[4]);
-        info_set_value(artifact.to_a, tokens[5]);
-        return PARSE_ERROR_NONE;
-    }
-
-    if (tokens[0] == "U") {
-        // U:activation_flag
-        if (tokens.size() < 2 || tokens[1].size() == 0) {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-        }
-
-        auto n = grab_one_activation_flag(tokens[1]);
-        if (n <= RandomArtActType::NONE) {
-            return PARSE_ERROR_INVALID_FLAG;
-        }
-
-        const auto it = artifacts_info.rbegin();
-        auto &artifact = it->second;
-        artifact.act_idx = n;
-        return PARSE_ERROR_NONE;
-    }
-
-    if (tokens[0] == "F") {
-        // F:flags
-        if (tokens.size() < 2 || tokens[1].size() == 0) {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
-        }
-
-        const auto &flags = str_split(tokens[1], '|', true, 10);
-        for (const auto &f : flags) {
-            if (f.size() == 0) {
-                continue;
+    /*
+        if (tokens[0] == "D") {
+            // D:JapaneseText
+            // D:$EnglishText
+            if (tokens.size() < 2 || buf.length() < 3) {
+                return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
+            }
+    #ifdef JP
+            if (buf[2] == '$') {
+                return PARSE_ERROR_NONE;
             }
 
             const auto it = artifacts_info.rbegin();
-            auto *a_ptr = &it->second;
-            if (!grab_one_artifact_flag(a_ptr, f)) {
-                return PARSE_ERROR_INVALID_FLAG;
+            auto &artifact = it->second;
+            artifact.text.append(buf.substr(2));
+    #else
+            if (buf[2] != '$') {
+                return PARSE_ERROR_NONE;
             }
+            if (buf.length() == 3) {
+                return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
+            }
+
+            const auto it = artifacts_info.rbegin();
+            auto &artifact = it->second;
+            append_english_text(artifact.text, buf.substr(3));
+    #endif
+            return PARSE_ERROR_NONE;
         }
 
-    } else if (tokens[0] == "B") {
-        // B:activate broken rate
-        if (tokens.size() < 2 || tokens[1].size() == 0) {
-            return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+        if (tokens[0] == "I") {
+            // I:tval:sval:pval
+            if (tokens.size() < 4) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+
+            const auto it = artifacts_info.rbegin();
+            auto &artifact = it->second;
+            constexpr auto base = 10;
+            const auto tval = i2enum<ItemKindType>(std::stoi(tokens[1], nullptr, base));
+            const auto sval = std::stoi(tokens[2], nullptr, base);
+            artifact.bi_key = { tval, sval };
+            info_set_value(artifact.pval, tokens[3]);
+            return PARSE_ERROR_NONE;
         }
-        const auto it = artifacts_info.rbegin();
-        auto *a_ptr = &it->second;
-        info_set_value(a_ptr->broken_rate, tokens[1]);
-    } else {
-        return PARSE_ERROR_UNDEFINED_DIRECTIVE;
-    }
-*/
+
+        if (tokens[0] == "W") {
+            // W:level:ratiry:weight:cost
+            if (tokens.size() < 5) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+
+            const auto it = artifacts_info.rbegin();
+            auto &artifact = it->second;
+            info_set_value(artifact.level, tokens[1]);
+            info_set_value(artifact.rarity, tokens[2]);
+            info_set_value(artifact.weight, tokens[3]);
+            info_set_value(artifact.cost, tokens[4]);
+            return PARSE_ERROR_NONE;
+        }
+
+        if (tokens[0] == "P") {
+            // P:ac:dd:ds:to_h:to_d:to_a
+            if (tokens.size() < 6) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+
+            const auto &dice = str_split(tokens[2], 'd', false, 2);
+            if (dice.size() != 2) {
+                return PARSE_ERROR_NON_SEQUENTIAL_RECORDS;
+            }
+
+            const auto it = artifacts_info.rbegin();
+            auto &artifact = it->second;
+            info_set_value(artifact.ac, tokens[1]);
+            info_set_value(artifact.dd, dice[0]);
+            info_set_value(artifact.ds, dice[1]);
+            info_set_value(artifact.to_h, tokens[3]);
+            info_set_value(artifact.to_d, tokens[4]);
+            info_set_value(artifact.to_a, tokens[5]);
+            return PARSE_ERROR_NONE;
+        }
+
+        if (tokens[0] == "U") {
+            // U:activation_flag
+            if (tokens.size() < 2 || tokens[1].size() == 0) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+
+            auto n = grab_one_activation_flag(tokens[1]);
+            if (n <= RandomArtActType::NONE) {
+                return PARSE_ERROR_INVALID_FLAG;
+            }
+
+            const auto it = artifacts_info.rbegin();
+            auto &artifact = it->second;
+            artifact.act_idx = n;
+            return PARSE_ERROR_NONE;
+        }
+
+        if (tokens[0] == "F") {
+            // F:flags
+            if (tokens.size() < 2 || tokens[1].size() == 0) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+
+            const auto &flags = str_split(tokens[1], '|', true, 10);
+            for (const auto &f : flags) {
+                if (f.size() == 0) {
+                    continue;
+                }
+
+                const auto it = artifacts_info.rbegin();
+                auto *a_ptr = &it->second;
+                if (!grab_one_artifact_flag(a_ptr, f)) {
+                    return PARSE_ERROR_INVALID_FLAG;
+                }
+            }
+
+        } else if (tokens[0] == "B") {
+            // B:activate broken rate
+            if (tokens.size() < 2 || tokens[1].size() == 0) {
+                return PARSE_ERROR_TOO_FEW_ARGUMENTS;
+            }
+            const auto it = artifacts_info.rbegin();
+            auto *a_ptr = &it->second;
+            info_set_value(a_ptr->broken_rate, tokens[1]);
+        } else {
+            return PARSE_ERROR_UNDEFINED_DIRECTIVE;
+        }
+    */
     artifacts_info.emplace(artifact_id, artifact);
     return PARSE_ERROR_NONE;
 }
