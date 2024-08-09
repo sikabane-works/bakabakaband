@@ -380,16 +380,13 @@ static void on_dead_serpent(PlayerType *player_ptr, MonsterDeath *md_ptr)
         return;
     }
 
-    const auto &baseitems = BaseitemList::get_instance();
-    ItemEntity item_grond;
-    item_grond.generate(baseitems.lookup_baseitem_id({ ItemKindType::HAFTED, SV_GROND }));
-    item_grond.fixed_artifact_idx = FixedArtifactId::GROND;
+    ItemEntity item_grond({ ItemKindType::HAFTED, SV_GROND });
+    item_grond.fa_id = FixedArtifactId::GROND;
     ItemMagicApplier(player_ptr, &item_grond, -1, AM_GOOD | AM_GREAT).execute();
     (void)drop_near(player_ptr, &item_grond, -1, md_ptr->md_y, md_ptr->md_x);
 
-    ItemEntity item_chaos;
-    item_chaos.generate(baseitems.lookup_baseitem_id({ ItemKindType::CROWN, SV_CHAOS }));
-    item_chaos.fixed_artifact_idx = FixedArtifactId::CHAOS;
+    ItemEntity item_chaos({ ItemKindType::CROWN, SV_CHAOS });
+    item_chaos.fa_id = FixedArtifactId::CHAOS;
     ItemMagicApplier(player_ptr, &item_chaos, -1, AM_GOOD | AM_GREAT).execute();
     (void)drop_near(player_ptr, &item_chaos, -1, md_ptr->md_y, md_ptr->md_x);
 }

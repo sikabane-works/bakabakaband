@@ -626,6 +626,6 @@ errr parse_artifacts_info(nlohmann::json &art_data, angband_header *)
             return PARSE_ERROR_UNDEFINED_DIRECTIVE;
         }
     */
-    artifacts_info.emplace(artifact_id, artifact);
+    ArtifactList::get_instance().emplace(artifact_id, artifact);
     return PARSE_ERROR_NONE;
 }
