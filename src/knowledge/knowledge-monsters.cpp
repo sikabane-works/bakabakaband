@@ -186,7 +186,6 @@ void do_cmd_knowledge_kill_count(PlayerType *player_ptr)
     }
 
     uint16_t why = 2;
-    char buf[80];
     ang_sort(player_ptr, who.data(), &why, who.size(), ang_sort_comp_hook, ang_sort_swap_hook);
     for (auto r_idx : who) {
         const auto &monrace = monraces_info[r_idx];
@@ -266,7 +265,7 @@ static void display_monster_list(int col, int row, int per_page, const std::vect
         if (!visual_only) {
             if (monrace.kind_flags.has(MonsterKindType::UNIQUE)) {
                 c_put_str((monrace.mob_num == 0 ? TERM_L_DARK : TERM_WHITE), (monrace.mob_num == 0 ? _("死亡", "  dead") : monrace.r_pkills > 0 ? _("復活", "revive")
-                                                                                                                                             : _("生存", " alive")),
+                                                                                                                                                : _("生存", " alive")),
                     row + i, 74);
                 c_put_str(TERM_WHITE, _("撃破回数:", "Kill Count:"), row + i, 80);
                 c_put_str(TERM_WHITE, format("%4d", monrace.r_pkills), row + i, 90);
