@@ -49,7 +49,6 @@ void do_cmd_checkquest(PlayerType *player_ptr)
 static void do_cmd_knowledge_quests_current(PlayerType *player_ptr, FILE *fff)
 {
     const auto &quest_list = QuestList::get_instance();
-    const auto &baseitems = BaseitemList::get_instance();
     std::string rand_tmp_str;
     int rand_level = 100;
     int total = 0;
