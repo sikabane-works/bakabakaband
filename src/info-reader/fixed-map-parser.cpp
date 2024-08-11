@@ -212,12 +212,10 @@ static concptr parse_fixed_map_expression(PlayerType *player_ptr, char **sp, cha
         sprintf(tmp, "%d", enum2i(leaving_quest));
         v = tmp;
     } else if (prefix(b + 1, "QUEST_TYPE")) {
-        const auto &quest_list = QuestList::get_instance();
-        sprintf(tmp, "%d", enum2i(quest_list[i2enum<QuestId>(atoi(b + 11))].type));
+        sprintf(tmp, "%d", atoi(b + 11));
         v = tmp;
     } else if (prefix(b + 1, "QUEST")) {
-        const auto &quest_list = QuestList::get_instance();
-        sprintf(tmp, "%d", enum2i(quest_list[i2enum<QuestId>(atoi(b + 6))].status));
+        sprintf(tmp, "%d", atoi(b + 6));
         v = tmp;
     } else if (prefix(b + 1, "RANDOM")) {
         const auto &system = AngbandSystem::get_instance();
