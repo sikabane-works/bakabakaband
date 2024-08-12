@@ -33,13 +33,6 @@
 #include "time.h"
 #include "util/angband-files.h"
 #include "world/world.h"
-#ifndef WINDOWS
-#include "util/string-processor.h"
-#include <dirent.h>
-#endif
-#ifdef PRIVATE_USER_PATH
-#include <string>
-#endif
 
 /*!
  * @brief 各データファイルを読み取るためのパスを取得する.
@@ -58,20 +51,12 @@ void init_file_paths(const std::filesystem::path &libpath)
     ANGBAND_DIR_INFO = std::filesystem::path(libpath).append("info");
     ANGBAND_DIR_PREF = std::filesystem::path(libpath).append("pref");
     ANGBAND_DIR_SAVE = std::filesystem::path(libpath).append("save");
-    ANGBAND_DIR_DEBUG_SAVE = std::filesystem::path(ANGBAND_DIR_SAVE).append("log");
 #ifdef PRIVATE_USER_PATH
     ANGBAND_DIR_USER = std::filesystem::path(PRIVATE_USER_PATH).append(VARIANT_NAME);
 #else
     ANGBAND_DIR_USER = std::filesystem::path(libpath).append("user");
 #endif
     ANGBAND_DIR_XTRA = std::filesystem::path(libpath).append("xtra");
-
-    time_t now = time(nullptr);
-    struct tm *t = localtime(&now);
-    char tmp[128];
-    strftime(tmp, sizeof(tmp), "%Y-%m-%d-%H-%M-%S", t);
-    debug_savefile = path_build(ANGBAND_DIR_DEBUG_SAVE, tmp);
-    //    remove_old_debug_savefiles();
 }
 
 /*!
