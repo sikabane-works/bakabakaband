@@ -54,7 +54,6 @@
 #include "target/target-types.h"
 #include "term/screen-processor.h"
 #include "timed-effect/player-acceleration.h"
-#include "timed-effect/player-confusion.h"
 #include "timed-effect/player-deceleration.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-messages.h"
@@ -111,7 +110,7 @@ static int get_hack_dir(PlayerType *player_ptr)
     }
 
     command_dir = dir;
-    if (player_ptr->effects()->confusion()->is_confused()) {
+    if (player_ptr->effects()->confusion().is_confused()) {
         dir = ddd[randint0(8)];
     }
 
