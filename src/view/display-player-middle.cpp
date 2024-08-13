@@ -25,7 +25,7 @@
 #include "system/monster-entity.h"
 #include "system/player-type-definition.h"
 #include "term/term-color-types.h"
-#include "timed-effect/player-deceleration.h"
+#include "term/z-form.h"
 #include "timed-effect/timed-effects.h"
 #include "view/display-util.h"
 #include "view/status-first-page.h"
@@ -189,7 +189,7 @@ static int calc_temporary_speed(PlayerType *player_ptr)
             tmp_speed += 10;
         }
 
-        if (player_ptr->effects()->deceleration()->is_slow()) {
+        if (player_ptr->effects()->deceleration().is_slow()) {
             tmp_speed -= 10;
         }
 

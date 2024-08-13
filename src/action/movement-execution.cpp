@@ -42,7 +42,6 @@
 #include "system/player-type-definition.h"
 #include "system/redrawing-flags-updater.h"
 #include "system/terrain-type-definition.h"
-#include "timed-effect/player-stun.h"
 #include "timed-effect/timed-effects.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
@@ -166,7 +165,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     if (grid.has_monster() && (m_ptr->ml || p_can_enter || p_can_kill_walls)) {
         auto *r_ptr = &m_ptr->get_monrace();
         const auto effects = player_ptr->effects();
-        const auto is_stunned = effects->stun()->is_stunned();
+        const auto is_stunned = effects->stun().is_stunned();
         auto can_cast = !effects->confusion().is_confused();
         const auto is_hallucinated = effects->hallucination().is_hallucinated();
         can_cast &= !is_hallucinated;
@@ -283,7 +282,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
         } else {
             const auto effects = player_ptr->effects();
             const auto is_confused = effects->confusion().is_confused();
-            const auto is_stunned = effects->stun()->is_stunned();
+            const auto is_stunned = effects->stun().is_stunned();
             const auto is_hallucinated = effects->hallucination().is_hallucinated();
             if (boundary_floor(grid, terrain, terrain_mimic)) {
                 msg_print(_("それ以上先には進めない。", "You cannot go any more."));
@@ -315,7 +314,7 @@ void exe_movement(PlayerType *player_ptr, DIRECTION dir, bool do_pickup, bool br
     if (can_move && !pattern_seq(player_ptr, pos)) {
         const auto effects = player_ptr->effects();
         const auto is_confused = effects->confusion().is_confused();
-        const auto is_stunned = effects->stun()->is_stunned();
+        const auto is_stunned = effects->stun().is_stunned();
         const auto is_hallucinated = effects->hallucination().is_hallucinated();
         if (!(is_confused || is_stunned || is_hallucinated)) {
             energy.reset_player_turn();
