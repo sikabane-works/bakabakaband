@@ -87,8 +87,12 @@ void rd_randomizer(void)
  */
 void rd_messages(void)
 {
-    auto num = rd_u32b();
-    int message_max = (int)num;
+    if (!loading_savefile_version_is_older_than(27)) {
+        rd_message_history();
+        return;
+    }
+
+    const auto message_max = static_cast<int>(rd_u32b());
     for (int i = 0; i < message_max; i++) {
         message_add(rd_string());
     }
