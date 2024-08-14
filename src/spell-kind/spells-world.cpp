@@ -94,6 +94,7 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
     }
 
     const auto &dungeon = floor.get_dungeon_definition();
+    auto &fcms = FloorChangeModesStore::get_instace();
     if ((ironman_downward && (m_idx <= 0)) || (floor.dun_level <= dungeon.mindepth)) {
 #ifdef JP
         if (see_m) {
@@ -119,12 +120,12 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
                 do_cmd_save_game(player_ptr, true);
             }
 
+            fcms->set(FloorChangeMode::RANDOM_PLACE);
             if (!floor.is_in_underground()) {
                 const auto &recall_dungeon = floor.get_dungeon_definition();
                 floor.dun_level = recall_dungeon.mindepth;
-                move_floor(player_ptr, CFM_RAND_PLACE);
             } else {
-                move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+                fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::DOWN, FloorChangeMode::RANDOM_CONNECT });
             }
         }
     } else if (inside_quest(floor.get_quest_id()) || (floor.dun_level >= dungeon.maxdepth)) {
@@ -147,8 +148,7 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
                 do_cmd_save_game(player_ptr, true);
             }
 
-            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
-
+            fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::UP, FloorChangeMode::RANDOM_PLACE, FloorChangeMode::RANDOM_CONNECT });
             leave_quest_check(player_ptr);
             floor.quest_number = QuestId::NONE;
             player_ptr->leaving = true;
@@ -173,7 +173,8 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
                 do_cmd_save_game(player_ptr, true);
             }
 
-            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+            fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::UP, FloorChangeMode::RANDOM_PLACE, FloorChangeMode::RANDOM_CONNECT });
+            player_ptr->leaving = true;
         }
     } else {
 #ifdef JP
@@ -194,7 +195,8 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
                 do_cmd_save_game(player_ptr, true);
             }
 
-            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+            fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::DOWN, FloorChangeMode::RANDOM_PLACE, FloorChangeMode::RANDOM_CONNECT });
+            player_ptr->leaving = true;
         }
     }
 

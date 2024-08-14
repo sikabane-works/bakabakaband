@@ -1,4 +1,4 @@
-﻿#include "cmd-action/cmd-move.h"
+#include "cmd-action/cmd-move.h"
 #include "action/action-limited.h"
 #include "action/movement-execution.h"
 #include "action/run-execution.h"
@@ -155,12 +155,12 @@ void do_cmd_go_up(PlayerType *player_ptr)
         player_ptr->current_floor_ptr->dun_level = 0;
         up_num = 0;
     } else {
+        auto &fcms = FloorChangeModesStore::get_instace();
+        fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::UP });
+        up_num = 1;
         if (terrain.flags.has(TerrainCharacteristics::SHAFT)) {
-            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_UP | CFM_SHAFT);
-            up_num = 2;
-        } else {
-            move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_UP);
-            up_num = 1;
+            fcms->set(FloorChangeMode::SHAFT);
+            up_num *= 2;
         }
 
         if (player_ptr->current_floor_ptr->dun_level - up_num < floor.get_dungeon_definition().mindepth) {
@@ -172,7 +172,7 @@ void do_cmd_go_up(PlayerType *player_ptr)
         exe_write_diary(player_ptr, DiaryKind::STAIR, 0 - up_num, _("階段を上った", "climbed up the stairs to"));
     }
 
-    if (up_num == player_ptr->current_floor_ptr->dun_level) {
+    if (up_num == floor.dun_level) {
         if (is_echizen(player_ptr)) {
             msg_print(_("なんだこの階段は！", "What's this STAIRWAY!"));
         } else {
@@ -187,8 +187,9 @@ void do_cmd_go_up(PlayerType *player_ptr)
         }
     }
 
-    move_floor(player_ptr, 0);
     sound(SOUND_STAIRWAY);
+
+    player_ptr->leaving = true;
 }
 
 /*!
@@ -259,6 +260,7 @@ void do_cmd_go_down(PlayerType *player_ptr)
     }
 
     short target_dungeon = 0;
+    auto &fcms = FloorChangeModesStore::get_instace();
     if (!floor.is_in_underground()) {
         target_dungeon = terrain.flags.has(TerrainCharacteristics::ENTRANCE) ? grid.special : DUNGEON_ANGBAND;
         if (ironman_downward && (target_dungeon != DUNGEON_ANGBAND)) {
@@ -278,7 +280,7 @@ void do_cmd_go_down(PlayerType *player_ptr)
         player_ptr->oldpx = player_ptr->x;
         player_ptr->oldpy = player_ptr->y;
         floor.set_dungeon_index(target_dungeon);
-        move_floor(player_ptr, CFM_FIRST_FLOOR);
+        fcms->set(FloorChangeMode::FIRST_FLOOR);
     }
 
     PlayerEnergy(player_ptr).set_player_turn_energy(100);
@@ -325,14 +327,13 @@ void do_cmd_go_down(PlayerType *player_ptr)
     player_ptr->leaving = true;
 
     if (fall_trap) {
-        move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_RAND_PLACE | CFM_RAND_CONNECT);
+        fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::DOWN, FloorChangeMode::RANDOM_PLACE, FloorChangeMode::RANDOM_CONNECT });
         return;
     }
 
+    fcms->set({ FloorChangeMode::SAVE_FLOORS, FloorChangeMode::DOWN });
     if (terrain.flags.has(TerrainCharacteristics::SHAFT)) {
-        move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN | CFM_SHAFT);
-    } else {
-        move_floor(player_ptr, CFM_SAVE_FLOORS | CFM_DOWN);
+        fcms->set(FloorChangeMode::SHAFT);
     }
 }
 
