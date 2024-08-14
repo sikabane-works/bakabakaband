@@ -207,25 +207,6 @@ static bool is_visited_floor(saved_floor_type *sf_ptr)
     return sf_ptr->last_visit != 0;
 }
 
-static void check_visited_floor(PlayerType *player_ptr, saved_floor_type *sf_ptr, bool *loaded)
-{
-    const auto &fcms = FloorChangeModesStore::get_instace();
-    if (fcms->has_not(FloorChangeMode::NO_RETURN)) {
-        return;
-    }
-
-    auto *g_ptr = &player_ptr->current_floor_ptr->grid_array[player_ptr->y][player_ptr->x];
-    if (feat_uses_special(g_ptr->feat)) {
-        return;
-    }
-
-    if (fcms->has_any_of({ FloorChangeMode::DOWN, FloorChangeMode::UP })) {
-        g_ptr->feat = rand_choice(feat_ground_type);
-    }
-
-    g_ptr->special = 0;
-}
-
 static void update_floor_id(PlayerType *player_ptr, saved_floor_type *sf_ptr)
 {
     const auto &fcms = FloorChangeModesStore::get_instace();
@@ -396,9 +377,8 @@ static void update_floor(PlayerType *player_ptr)
     }
 
     saved_floor_type *sf_ptr;
-    bool loaded = false;
     sf_ptr = get_sf_ptr(new_floor_id);
-    check_visited_floor(player_ptr, sf_ptr, &loaded);
+    const bool loaded = is_visited_floor(sf_ptr) && load_floor(player_ptr, sf_ptr, 0);
     update_floor_id(player_ptr, sf_ptr);
     update_new_floor_feature(player_ptr, sf_ptr, loaded);
     cut_off_the_upstair(player_ptr);
