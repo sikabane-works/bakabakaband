@@ -71,15 +71,13 @@ bool melee_arena_comm(PlayerType *player_ptr)
             return false;
         }
 
-        if (i >= '1' && i <= '4') {
+        if ((i >= '1') && (i <= '4')) {
             melee_arena.set_bet_number(i - '1');
             melee_arena.update_odds();
             break;
         }
 
-        else {
-            bell();
-        }
+        bell();
     }
 
     clear_bldg(4, 4);
@@ -106,7 +104,7 @@ bool melee_arena_comm(PlayerType *player_ptr)
     }
 
     msg_print(nullptr);
-    melee_arena.set_odds(*wager);
+    melee_arena.set_payback(*wager);
     melee_arena.set_wager(*wager);
     player_ptr->au -= *wager;
     reset_tim_flags(player_ptr);
