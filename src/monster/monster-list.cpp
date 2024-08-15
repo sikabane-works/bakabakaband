@@ -69,7 +69,7 @@ MONSTER_IDX m_pop(FloorType *floor_ptr)
     /* Recycle dead monsters */
     for (short i = 1; i < floor_ptr->m_max; i++) {
         const auto &monster = floor_ptr->m_list[i];
-        if (MonsterRace(monster.r_idx).is_valid()) {
+        if (monster.is_valid()) {
             continue;
         }
 
@@ -289,7 +289,7 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, Mo
 
     const auto old_m_name = monster_desc(player_ptr, m_ptr, 0);
 
-    if (!MonsterRace(r_idx).is_valid()) {
+    if (!MonraceList::is_valid(r_idx)) {
         DEPTH level;
 
         chameleon_change_m_idx = m_idx;
@@ -317,7 +317,7 @@ void choose_new_monster(PlayerType *player_ptr, MONSTER_IDX m_idx, bool born, Mo
         r_ptr = &monraces_info[r_idx];
 
         chameleon_change_m_idx = 0;
-        if (!MonsterRace(r_idx).is_valid()) {
+        if (!MonraceList::is_valid(r_idx)) {
             return;
         }
     }

@@ -64,18 +64,20 @@ void player_wipe_without_name(PlayerType *player_ptr)
 
     ArtifactList::get_instance().reset_generated_flags();
     BaseitemList::get_instance().reset_identification_flags();
-    for (auto &[r_idx, r_ref] : monraces_info) {
-        if (!MonsterRace(r_ref.idx).is_valid()) {
+    for (auto &[_, monrace] : monraces_info) {
+        if (!monrace.is_valid()) {
             continue;
         }
-        r_ref.cur_num = 0;
-        if (r_ref.kind_flags.has(MonsterKindType::UNIQUE)) {
-            r_ref.mob_num = r_ref.max_num = 1;
-        } else if (r_ref.population_flags.has(MonsterPopulationType::NAZGUL)) {
-            r_ref.mob_num = r_ref.max_num = MAX_NAZGUL_NUM;
+        monrace.cur_num = 0;
+        monrace.max_num = MAX_MONSTER_NUM;
+        if (monrace.kind_flags.has(MonsterKindType::UNIQUE)) {
+            monrace.mob_num = monrace.max_num = 1;
+        } else if (monrace.population_flags.has(MonsterPopulationType::NAZGUL)) {
+            monrace.mob_num = monrace.max_num = MAX_NAZGUL_NUM;
         }
-        r_ref.r_pkills = 0;
-        r_ref.r_akills = 0;
+
+        monrace.r_pkills = 0;
+        monrace.r_akills = 0;
     }
 
     player_ptr->food = PY_FOOD_FULL - 1;
