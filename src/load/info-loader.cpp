@@ -2,9 +2,11 @@
 #include "game-option/runtime-arguments.h"
 #include "load/load-util.h"
 #include "load/option-loader.h"
+#include "locale/character-encoding.h"
 #include "system/angband-system.h"
 #include "system/angband-version.h"
 #include "system/angband.h"
+#include "util/enum-converter.h"
 #include "view/display-messages.h"
 #include "world/world.h"
 
@@ -100,7 +102,7 @@ void rd_messages(void)
 
 void rd_system_info(void)
 {
-    kanji_code = rd_byte();
+    loading_character_encoding = i2enum<CharacterEncoding>(rd_byte());
     rd_randomizer();
     load_note(_("乱数情報をロードしました", "Loaded Randomizer Info"));
     rd_options();
