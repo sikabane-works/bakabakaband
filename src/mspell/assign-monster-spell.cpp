@@ -7,7 +7,6 @@
 #include "mspell/assign-monster-spell.h"
 #include "blue-magic/blue-magic-checker.h"
 #include "effect/attribute-types.h"
-#include "monster-race/monster-race.h"
 #include "monster-race/race-ability-flags.h"
 #include "monster/monster-status.h"
 #include "mspell/mspell-attack/mspell-ball.h"
