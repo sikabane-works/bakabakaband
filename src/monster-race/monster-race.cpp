@@ -3,7 +3,6 @@
 #include "monster-race/race-indice-types.h"
 #include "monster-race/race-resistance-mask.h"
 #include "system/monster-race-info.h"
-#include "util/probability-table.h"
 #include "world/world.h"
 #include <algorithm>
 #include <vector>
@@ -14,63 +13,6 @@ std::map<MonsterRaceId, MonsterRaceInfo> monraces_info;
 MonsterRace::MonsterRace(MonsterRaceId r_idx)
     : r_idx(r_idx)
 {
-}
-
-/*!
- * @brief どのモンスター種族でもない事を意味する MonsterRaceId を返す
- * @details 実態は MonsterRaceId::PLAYER だが、この値は実際にプレイヤーとしての意味として使われる場合
- * （召喚主がプレイヤーの場合やマップ上の表示属性情報等）とどのモンスターでもない意味として使われる場合があるので、
- * 後者ではこれを使用することでコード上の意図をわかりやすくする。
- *
- * @return (どのモンスター種族でもないという意味での) MonsterRaceId::PLAYER を返す
- */
-MonsterRaceId MonsterRace::empty_id()
-{
-    return MonsterRaceId::PLAYER;
-}
-
-/*!
- * @brief (MonsterRaceId::PLAYERを除く)実在するすべてのモンスター種族IDから等確率で1つ選択する
- *
- * @return 選択したモンスター種族ID
- */
-MonsterRaceId MonsterRace::pick_one_at_random()
-{
-    static ProbabilityTable<MonsterRaceId> table;
-
-    if (table.empty()) {
-        for (const auto &[monrace_id, monrace] : monraces_info) {
-            if (monrace.is_valid()) {
-                table.entry_item(monrace_id, 1);
-            }
-        }
-    }
-
-    return table.pick_one_at_random();
-}
-
-/*!
- * @brief モンスター種族が賞金首の対象かどうかを調べる。日替わり賞金首は対象外。
- *
- * @param unachieved_only true の場合未達成の賞金首のみを対象とする。false の場合達成未達成に関わらずすべての賞金首を対象とする。
- * @return モンスター種族が賞金首の対象ならば true、そうでなければ false
- */
-bool MonsterRace::is_bounty(bool unachieved_only) const
-{
-    auto it = std::find_if(std::begin(w_ptr->bounties), std::end(w_ptr->bounties),
-        [r_idx = this->r_idx](const auto &b_ref) {
-            return b_ref.r_idx == r_idx;
-        });
-
-    if (it == std::end(w_ptr->bounties)) {
-        return false;
-    }
-
-    if (unachieved_only && (*it).is_achieved) {
-        return false;
-    }
-
-    return true;
 }
 
 /*!
