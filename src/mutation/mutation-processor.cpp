@@ -12,7 +12,6 @@
 #include "monster-attack/monster-attack-player.h"
 #include "monster-floor/monster-summon.h"
 #include "monster-floor/place-monster-types.h"
-#include "monster-race/monster-race.h"
 #include "monster/monster-status.h"
 #include "mutation/mutation-flag-types.h"
 #include "mutation/mutation-investor-remover.h"

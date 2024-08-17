@@ -3,7 +3,6 @@
 #include "load/load-util.h"
 #include "load/old/load-v1-5-0.h"
 #include "load/savedata-old-flag-types.h"
-#include "monster-race/monster-race.h"
 #include "system/angband.h"
 #include "system/monster-race-info.h"
 #include "util/bit-flags-calculator.h"

@@ -7,7 +7,6 @@
 #include "effect/effect-characteristics.h"
 #include "floor/floor-util.h"
 #include "monster-floor/monster-summon.h"
-#include "monster-race/monster-race.h"
 #include "monster-race/race-flags1.h"
 #include "monster-race/race-indice-types.h"
 #include "system/monster-race-info.h"
@@ -92,11 +91,12 @@ void Alliance::panishment([[maybe_unused]] PlayerType &player_ptr)
 
 int64_t Alliance::calcCurrentPower()
 {
+    const auto &monraces = MonraceList::get_instance();
     int64_t res = this->base_power;
     for (auto &[r_idx, r_ref] : monraces_info) {
         if (r_ref.alliance_idx == this->id) {
             if (r_ref.mob_num > 0) {
-                res += MonsterRace(r_idx).calc_power() * r_ref.mob_num;
+                res += monraces.get_monrace(r_idx).calc_power() * r_ref.mob_num;
             }
         }
     }
