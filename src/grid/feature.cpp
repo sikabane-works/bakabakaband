@@ -168,7 +168,7 @@ void cave_set_feat_priority(PlayerType *player_ptr, POSITION y, POSITION x, FEAT
 {
     auto *floor_ptr = player_ptr->current_floor_ptr;
     auto *g_ptr = &floor_ptr->grid_array[y][x];
-    if (TerrainList::get_instance()[g_ptr->feat].change_priority <= TerrainList::get_instance()[feat].change_priority) {
+    if (TerrainList::get_instance().get_terrain(g_ptr->feat).change_priority <= TerrainList::get_instance().get_terrain(feat).change_priority) {
         cave_set_feat(player_ptr, y, x, feat);
     }
 }
