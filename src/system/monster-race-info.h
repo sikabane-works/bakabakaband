@@ -64,6 +64,7 @@ public:
  * monster recall (no knowledge of spells, etc).  All of the "recall"
  * fields have a special prefix to aid in searching for them.
  */
+class Reinforce;
 class MonsterRaceInfo {
 public:
     MonsterRaceInfo();
@@ -97,14 +98,15 @@ public:
     MonsterBlow blows[MAX_NUM_BLOWS]{}; //!< 打撃能力定義 / Up to four blows per round
     Dice shoot_damage_dice; //!< 射撃ダメージダイス / shoot damage dice
 
-    //! 指定護衛リスト <モンスター種族ID,護衛数ダイス数,護衛数ダイス面>
-    std::vector<std::tuple<MonsterRaceId, Dice>> reinforces;
+    //! 指定護衛リスト <モンスター種族ID,護衛数ダイス>
+    std::vector<Reinforce> reinforces;
     std::vector<std::tuple<int, int, MonsterRaceId>> spawn_monsters; //!< 落とし子生成率
     std::vector<std::tuple<int, int, FEAT_IDX>> change_feats; //!< 地形変化率
     std::vector<std::tuple<int, int, short>> spawn_items; //!< アイテム自然生成率
     std::vector<std::tuple<int, int, short, int, int, int>> drop_kinds; //!< アイテム特定ドロップ指定
     std::vector<std::tuple<int, int, short, int, int, int>> drop_tvals; //!< アイテム種別ドロップ指定
     std::vector<std::tuple<int, int, MonsterRaceId, int, int>> dead_spawns; //!< 死亡時モンスター生成
+
     //! 特定アーティファクトドロップリスト <アーティファクトID,ドロップ率>
     std::vector<std::tuple<FixedArtifactId, PERCENTAGE>> drop_artifacts;
     int suicide_dice_num{}; //!< 自滅ターンダイス数
@@ -170,6 +172,21 @@ public:
 
 private:
     const std::string &decide_horror_message() const;
+};
+
+class Reinforce {
+public:
+    Reinforce(MonsterRaceId monrace_id, Dice dice);
+    MonsterRaceId get_monrace_id() const;
+    bool is_valid() const;
+    const MonsterRaceInfo &get_monrace() const;
+    std::string get_dice_as_string() const;
+    int roll_dice() const;
+    int roll_max_dice() const;
+
+private:
+    MonsterRaceId monrace_id;
+    Dice dice;
 };
 
 extern std::map<MonsterRaceId, MonsterRaceInfo> monraces_info;
