@@ -85,7 +85,7 @@ errr parse_terrains_info(std::string_view buf, angband_header *)
 
         error_idx = i;
         const auto s = static_cast<short>(i);
-        auto &terrain = terrains[s];
+        auto &terrain = terrains.get_terrain(s);
         terrain.idx = s;
         terrain.tag = tokens[2];
         terrain.mimic = s;
@@ -463,7 +463,7 @@ FEAT_IDX f_tag_to_index(std::string_view str)
 {
     const auto &terrains = TerrainList::get_instance();
     for (short i = 0; i < terrains_header.info_num; i++) {
-        if (terrains[i].tag == str) {
+        if (terrains.get_terrain(i).tag == str) {
             return (FEAT_IDX)i;
         }
     }
@@ -501,7 +501,7 @@ static FEAT_IDX search_real_feat(std::string feat)
 
     const auto &terrains = TerrainList::get_instance();
     for (short i = 0; i < terrains_header.info_num; i++) {
-        if (feat == terrains[i].tag) {
+        if (feat == terrains.get_terrain(i).tag) {
             return i;
         }
     }
@@ -518,7 +518,7 @@ void retouch_terrains_info(angband_header *head)
 {
     auto &terrains = TerrainList::get_instance();
     for (short i = 0; i < head->info_num; i++) {
-        auto &terrain = terrains[i];
+        auto &terrain = terrains.get_terrain(i);
         FEAT_IDX k = search_real_feat(terrain.mimic_tag);
         terrain.mimic = k < 0 ? terrain.mimic : k;
         k = search_real_feat(terrain.destroyed_tag);
