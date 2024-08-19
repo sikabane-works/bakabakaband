@@ -161,7 +161,6 @@ public:
     BaseitemInfo &get_baseitem(const short bi_id);
     const BaseitemInfo &get_baseitem(const short bi_id) const;
 
-    std::vector<BaseitemInfo> &get_raw_vector(); // @todo init_baseitems() 専用、将来的に廃止する.
     std::vector<BaseitemInfo>::iterator begin();
     std::vector<BaseitemInfo>::const_iterator begin() const;
     std::vector<BaseitemInfo>::iterator end();
@@ -173,6 +172,7 @@ public:
     size_t size() const;
     bool empty() const;
     void resize(size_t new_size);
+    void shrink_to_fit();
 
     void reset_all_visuals();
     void reset_identification_flags();
