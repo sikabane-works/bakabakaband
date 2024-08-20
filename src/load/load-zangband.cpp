@@ -23,6 +23,142 @@
 #include "system/system-variables.h"
 #include "world/world.h"
 
+void load_zangband_options(void)
+{
+    if (g_option_flags[5] & (0x00000001U << 4)) {
+        g_option_flags[5] &= ~(0x00000001U << 4);
+    } else {
+        g_option_flags[5] |= (0x00000001U << 4);
+    }
+
+    if (g_option_flags[2] & (0x00000001U << 5)) {
+        g_option_flags[2] &= ~(0x00000001U << 5);
+    } else {
+        g_option_flags[2] |= (0x00000001U << 5);
+    }
+
+    if (g_option_flags[4] & (0x00000001U << 5)) {
+        g_option_flags[4] &= ~(0x00000001U << 5);
+    } else {
+        g_option_flags[4] |= (0x00000001U << 5);
+    }
+
+    if (g_option_flags[5] & (0x00000001U << 0)) {
+        g_option_flags[5] &= ~(0x00000001U << 0);
+    } else {
+        g_option_flags[5] |= (0x00000001U << 0);
+    }
+
+    if (g_option_flags[5] & (0x00000001U << 12)) {
+        g_option_flags[5] &= ~(0x00000001U << 12);
+    } else {
+        g_option_flags[5] |= (0x00000001U << 12);
+    }
+
+    if (g_option_flags[1] & (0x00000001U << 0)) {
+        g_option_flags[1] &= ~(0x00000001U << 0);
+    } else {
+        g_option_flags[1] |= (0x00000001U << 0);
+    }
+
+    if (g_option_flags[1] & (0x00000001U << 18)) {
+        g_option_flags[1] &= ~(0x00000001U << 18);
+    } else {
+        g_option_flags[1] |= (0x00000001U << 18);
+    }
+
+    if (g_option_flags[1] & (0x00000001U << 19)) {
+        g_option_flags[1] &= ~(0x00000001U << 19);
+    } else {
+        g_option_flags[1] |= (0x00000001U << 19);
+    }
+
+    if (g_option_flags[5] & (0x00000001U << 3)) {
+        g_option_flags[1] &= ~(0x00000001U << 3);
+    } else {
+        g_option_flags[5] |= (0x00000001U << 3);
+    }
+}
+
+void set_zangband_realm(PlayerType *player_ptr)
+{
+    if (player_ptr->realm1 == 9) {
+        player_ptr->realm1 = REALM_MUSIC;
+    }
+
+    if (player_ptr->realm2 == 9) {
+        player_ptr->realm2 = REALM_MUSIC;
+    }
+
+    if (player_ptr->realm1 == 10) {
+        player_ptr->realm1 = REALM_HISSATSU;
+    }
+
+    if (player_ptr->realm2 == 10) {
+        player_ptr->realm2 = REALM_HISSATSU;
+    }
+}
+
+void set_zangband_skill(PlayerType *player_ptr)
+{
+    if (!PlayerClass(player_ptr).equals(PlayerClassType::BEASTMASTER)) {
+        player_ptr->skill_exp[PlayerSkillKindType::RIDING] /= 2;
+    }
+
+    player_ptr->skill_exp[PlayerSkillKindType::RIDING] = std::min(player_ptr->skill_exp[PlayerSkillKindType::RIDING], class_skills_info[enum2i(player_ptr->pclass)].s_max[PlayerSkillKindType::RIDING]);
+}
+
+void set_zangband_bounty_uniques(PlayerType *player_ptr)
+{
+    determine_bounty_uniques(player_ptr);
+    const auto &monraces = MonraceList::get_instance();
+    for (auto &[monrace_id, is_achieved] : w_ptr->bounties) {
+        /* Is this bounty unique already dead? */
+        if (monraces.get_monrace(monrace_id).max_num == 0) {
+            is_achieved = true;
+        }
+    }
+}
+
+void set_zangband_mimic(PlayerType *player_ptr)
+{
+    player_ptr->tim_res_time = 0;
+    player_ptr->mimic_form = MimicKindType::NONE;
+    player_ptr->tim_mimic = 0;
+    player_ptr->tim_sh_fire = 0;
+}
+
+void set_zangband_holy_aura(PlayerType *player_ptr)
+{
+    player_ptr->tim_sh_holy = 0;
+    player_ptr->tim_eyeeye = 0;
+}
+
+void set_zangband_reflection(PlayerType *player_ptr)
+{
+    player_ptr->tim_reflect = 0;
+    player_ptr->multishadow = 0;
+    player_ptr->dustrobe = 0;
+}
+
+void rd_zangband_dungeon()
+{
+    max_dlv[DUNGEON_ANGBAND] = rd_s16b();
+}
+
+void set_zangband_game_turns(PlayerType *player_ptr)
+{
+    player_ptr->current_floor_ptr->generated_turn /= 2;
+    player_ptr->feeling_turn /= 2;
+    w_ptr->game_turn /= 2;
+    w_ptr->dungeon_turn /= 2;
+}
+
+void set_zangband_gambling_monsters(int i)
+{
+    mon_odds[i] = rd_s16b();
+}
+
 void set_zangband_special_attack(PlayerType *player_ptr)
 {
     if (rd_byte() != 0) {
