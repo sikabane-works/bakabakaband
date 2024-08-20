@@ -128,7 +128,7 @@ static void set_race(PlayerType *player_ptr)
     player_ptr->old_realm = rd_s16b();
 }
 
-void rd_bounty_uniques(PlayerType *player_ptr)
+void rd_bounty_uniques()
 {
     for (auto &[bounty_monrace_id, is_achieved] : w_ptr->bounties) {
         auto monrace_id = rd_s16b();
