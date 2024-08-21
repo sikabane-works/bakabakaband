@@ -114,7 +114,7 @@ void analyze_quests(PlayerType *player_ptr, const uint16_t max_quests_load, cons
         quest.dungeon = rd_byte();
 
         if (quest.status == QuestStatusType::TAKEN || quest.status == QuestStatusType::UNTAKEN) {
-            auto &monrace = monraces_info[quest.r_idx];
+            auto &monrace = quest.get_bounty();
             if (monrace.kind_flags.has(MonsterKindType::UNIQUE)) {
                 monrace.misc_flags.set(MonsterMiscType::QUESTOR);
             }
