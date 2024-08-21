@@ -24,6 +24,7 @@
 #include "system/redrawing-flags-updater.h"
 #include "target/target-checker.h"
 #include "term/screen-processor.h"
+#include "tracking/health-bar-tracker.h"
 #include "util/bit-flags-calculator.h"
 #include "util/int-char-converter.h"
 
@@ -83,7 +84,7 @@ bool polymorph_monster(PlayerType *player_ptr, POSITION y, POSITION x)
     MonsterRaceId new_r_idx;
     MonsterRaceId old_r_idx = m_ptr->r_idx;
     bool targeted = target_who == g_ptr->m_idx;
-    bool health_tracked = player_ptr->health_who == g_ptr->m_idx;
+    auto health_tracked = HealthBarTracker::get_instance().is_tracking(g_ptr->m_idx);
 
     if (floor_ptr->inside_arena || AngbandSystem::get_instance().is_phase_out()) {
         return false;

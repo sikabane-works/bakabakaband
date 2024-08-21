@@ -38,6 +38,7 @@
 #include "system/redrawing-flags-updater.h"
 #include "target/projection-path-calculator.h"
 #include "timed-effect/timed-effects.h"
+#include "tracking/health-bar-tracker.h"
 #include "util/bit-flags-calculator.h"
 #include "world/world.h"
 
@@ -490,13 +491,9 @@ static void update_invisible_monster(PlayerType *player_ptr, um_type *um_ptr, MO
     m_ptr->ml = true;
     lite_spot(player_ptr, um_ptr->fy, um_ptr->fx);
 
-    auto &rfu = RedrawingFlagsUpdater::get_instance();
-    if (player_ptr->health_who == m_idx) {
-        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
-    }
-
+    HealthBarTracker::get_instance().set_flag_if_tracking(m_idx);
     if (player_ptr->riding == m_idx) {
-        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     if (!player_ptr->effects()->hallucination().is_hallucinated()) {
@@ -530,13 +527,9 @@ static void update_visible_monster(PlayerType *player_ptr, um_type *um_ptr, MONS
     um_ptr->m_ptr->ml = false;
     lite_spot(player_ptr, um_ptr->fy, um_ptr->fx);
 
-    auto &rfu = RedrawingFlagsUpdater::get_instance();
-    if (player_ptr->health_who == m_idx) {
-        rfu.set_flag(MainWindowRedrawingFlag::HEALTH);
-    }
-
+    HealthBarTracker::get_instance().set_flag_if_tracking(m_idx);
     if (player_ptr->riding == m_idx) {
-        rfu.set_flag(MainWindowRedrawingFlag::UHEALTH);
+        RedrawingFlagsUpdater::get_instance().set_flag(MainWindowRedrawingFlag::UHEALTH);
     }
 
     if (um_ptr->do_disturb && (disturb_pets || um_ptr->m_ptr->is_hostile())) {
