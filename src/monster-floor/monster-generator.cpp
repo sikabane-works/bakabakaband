@@ -292,7 +292,7 @@ std::optional<MONSTER_IDX> place_specific_monster(PlayerType *player_ptr, POSITI
     }
 
     /* Reinforcement */
-    for (const auto &reinforce : monrace.reinforces) {
+    for (const auto &reinforce : monrace.get_reinforces()) {
         if (!reinforce.is_valid()) {
             continue;
         }
