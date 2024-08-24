@@ -124,34 +124,36 @@ static void build_arena(PlayerType *player_ptr, POSITION *start_y, POSITION *sta
 }
 
 /*!
- * @brief 挑戦時闘技場への入場処理 / Town logic flow for generation of on_defeat_arena_monster -KMW-
+ * @brief 挑戦時闘技場への入場処理
+ * @param player_ptr プレイヤーへの参照ポインタ
+ * @details 互換性のため、『森トロル』など地上と闘技場の両方に出現するユニークを撃破した際の不戦勝処理を残している
+ * @todo v3.0正式版リリース以降に上記を削除する
  */
 static void generate_challenge_arena(PlayerType *player_ptr)
 {
-    POSITION qy = 0;
-    POSITION qx = 0;
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    floor_ptr->height = ARENA_WID;
-    floor_ptr->width = ARENA_HGT;
-
-    POSITION y, x;
-    for (y = 0; y < floor_ptr->height; y++) {
-        for (x = 0; x < floor_ptr->width; x++) {
+    auto &floor = *player_ptr->current_floor_ptr;
+    floor.height = SCREEN_HGT;
+    floor.width = SCREEN_WID;
+    for (auto y = 0; y < MAX_HGT; y++) {
+        for (auto x = 0; x < MAX_WID; x++) {
             place_bold(player_ptr, y, x, GB_SOLID_PERM);
-            floor_ptr->grid_array[y][x].info |= (CAVE_GLOW | CAVE_MARK);
+            floor.get_grid({ y, x }).add_info(CAVE_GLOW | CAVE_MARK);
         }
     }
 
-    for (y = qy + 1; y < qy + floor_ptr->height - 1; y++) {
-        for (x = qx + 1; x < qx + floor_ptr->width - 1; x++) {
-            floor_ptr->grid_array[y][x].feat = feat_floor;
+    int y;
+    int x;
+    for (y = 1; y < SCREEN_HGT - 1; y++) {
+        for (x = 1; x < SCREEN_WID - 1; x++) {
+            floor.get_grid({ y, x }).feat = feat_floor;
         }
     }
 
     build_arena(player_ptr, &y, &x);
     player_place(player_ptr, y, x);
     auto &entries = ArenaEntryList::get_instance();
-    if (place_specific_monster(player_ptr, 0, player_ptr->y + 5, player_ptr->x, arena_info[entries.get_current_entry()].r_idx, PM_NO_KAGE | PM_NO_PET)) {
+    const auto &monrace = entries.get_monrace();
+    if (place_specific_monster(player_ptr, 0, player_ptr->y + 5, player_ptr->x, monrace.idx, PM_NO_KAGE | PM_NO_PET)) {
         return;
     }
 

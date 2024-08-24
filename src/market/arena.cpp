@@ -35,14 +35,6 @@
 #include <numeric>
 #include <optional>
 
-namespace {
-enum class ArenaRecord {
-    FENGFUANG,
-    POWER_WYRM,
-    METAL_BABBLE,
-};
-}
-
 /*!
  * @brief 優勝時のメッセージを表示し、賞金を与える
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -68,36 +60,16 @@ static std::optional<int> process_ostensible_arena_victory()
     return 1000000;
 }
 
-/*!
- * @brief 対戦相手の確認
- * @param player_ptr プレイヤーへの参照ポインタ
- * @return 最後に倒した対戦相手 (鳳凰以下は一律で鳳凰)
- */
-static ArenaRecord check_arena_record()
-{
-    const auto &entries = ArenaEntryList::get_instance();
-    const auto max_entries = entries.get_max_entries();
-    if (entries.get_current_entry() <= max_entries) {
-        return ArenaRecord::FENGFUANG;
-    }
-
-    if (entries.get_current_entry() < max_entries + 2) {
-        return ArenaRecord::POWER_WYRM;
-    }
-
-    return ArenaRecord::METAL_BABBLE;
-}
-
 static bool check_battle_metal_babble(PlayerType *player_ptr)
 {
-    msg_print(_("君のために最強の挑戦者を用意しておいた。", "The strongest challenger is waiting for you."));
+    msg_print(_("最強の挑戦者が君に決闘を申し込んできた。", "The strongest challenger throws down the gauntlet to your feet."));
     msg_print(nullptr);
-    if (!input_check(_("挑戦するかね？", "Do you fight? "))) {
-        msg_print(_("残念だ。", "We are disappointed."));
+    if (!input_check(_("受けて立つかね？", "Do you take up the gauntlet? "))) {
+        msg_print(_("失望したよ。", "We are disappointed."));
         return false;
     }
 
-    msg_print(_("死ぬがよい。", "Die, maggots."));
+    msg_print(_("挑戦者「死ぬがよい。」", "The challenger says, 'Die, maggots.'"));
     msg_print(nullptr);
 
     w_ptr->set_arena(false);
@@ -121,7 +93,7 @@ static bool go_to_arena(PlayerType *player_ptr)
         return false;
     }
 
-    const auto arena_record = check_arena_record();
+    const auto arena_record = ArenaEntryList::get_instance().check_arena_record();
     if (arena_record == ArenaRecord::METAL_BABBLE) {
         msg_print(_("あなたはアリーナに入り、しばらくの間栄光にひたった。", "You enter the arena briefly and bask in your glory."));
         msg_print(nullptr);
@@ -146,26 +118,6 @@ static bool go_to_arena(PlayerType *player_ptr)
     return true;
 }
 
-static void see_arena_poster(PlayerType *player_ptr)
-{
-    const auto &entries = ArenaEntryList::get_instance();
-    if (entries.is_player_victor()) {
-        msg_print(_("あなたは勝利者だ。 アリーナでのセレモニーに参加しなさい。", "You are victorious. Enter the arena for the ceremony."));
-        return;
-    }
-
-    if (entries.is_player_true_victor()) {
-        msg_print(_("あなたはすべての敵に勝利した。", "You have won against all foes."));
-        return;
-    }
-
-    const auto current_entry = entries.get_current_entry();
-    const auto &monrace = MonraceList::get_instance().get_monrace(arena_info[current_entry].r_idx);
-    msg_format(_("%s に挑戦するものはいないか？", "Do I hear any challenges against: %s"), monrace.name.data());
-    LoreTracker::get_instance().set_trackee(monrace.idx);
-    handle_stuff(player_ptr);
-}
-
 /*!
  * @brief 闘技場に入るコマンドの処理 / on_defeat_arena_monster commands
  * @param player_ptr プレイヤーへの参照ポインタ
@@ -176,9 +128,18 @@ bool arena_comm(PlayerType *player_ptr, int cmd)
     switch (cmd) {
     case BACT_ARENA:
         return go_to_arena(player_ptr);
-    case BACT_POSTER:
-        see_arena_poster(player_ptr);
+    case BACT_POSTER: {
+        const auto &entries = ArenaEntryList::get_instance();
+        msg_print(entries.get_poster_message());
+        if (entries.is_player_victor() || entries.is_player_true_victor()) {
+            return false;
+        }
+
+        const auto &monrace = entries.get_monrace();
+        LoreTracker::get_instance().set_trackee(monrace.idx);
+        handle_stuff(player_ptr);
         return false;
+    }
     case BACT_ARENA_RULES:
         screen_save();
         FileDisplayer(player_ptr->name).display(true, _("arena_j.txt", "arena.txt"), 0, 0);

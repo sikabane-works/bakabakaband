@@ -76,12 +76,12 @@ static void on_dead_explosion(PlayerType *player_ptr, MonsterDeath *md_ptr)
 
 static void on_defeat_arena_monster(PlayerType *player_ptr, MonsterDeath *md_ptr)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    if (!floor_ptr->inside_arena || md_ptr->m_ptr->is_pet()) {
+    const auto &floor = *player_ptr->current_floor_ptr;
+    if (!floor.inside_arena || md_ptr->m_ptr->is_pet()) {
         return;
     }
 
-    w_ptr->set_arena(true);
+    AngbandWorld::get_instance().set_arena(true);
     auto &entries = ArenaEntryList::get_instance();
     const auto is_true_victor = entries.is_player_true_victor();
     if (is_true_victor) {
@@ -90,12 +90,10 @@ static void on_defeat_arena_monster(PlayerType *player_ptr, MonsterDeath *md_ptr
         msg_print(_("勝利！チャンピオンへの道を進んでいる。", "Victorious! You're on your way to becoming Champion."));
     }
 
-    const auto &arena = arena_info[entries.get_current_entry()];
-    const auto tval = arena.key.tval();
-    if (tval > ItemKindType::NONE) {
-        ItemEntity item;
-        item.generate(BaseitemList::get_instance().lookup_baseitem_id(arena.key));
-        ItemMagicApplier(player_ptr, &item, floor_ptr->object_level, AM_NO_FIXED_ART).execute();
+    const auto &bi_key = entries.get_bi_key();
+    if (bi_key.is_valid()) {
+        ItemEntity item(bi_key);
+        ItemMagicApplier(player_ptr, &item, floor.object_level, AM_NO_FIXED_ART).execute();
         (void)drop_near(player_ptr, &item, -1, md_ptr->md_y, md_ptr->md_x);
     }
 

@@ -9,79 +9,32 @@
 #include "sv-definition/sv-scroll-types.h"
 #include "sv-definition/sv-staff-types.h"
 #include "sv-definition/sv-wand-types.h"
-#include "system/building-type-definition.h"
+#include "system/baseitem-info.h"
 #include "system/monster-race-info.h"
+#ifndef JP
+#include <sstream>
+#endif
 
-ArenaEntryList ArenaEntryList::instance{};
-
-ArenaEntryList &ArenaEntryList::get_instance()
-{
-    return instance;
-}
-
-/*
- * @brief 表彰式までの最大数を返す.
+namespace {
+/*!
+ * @brief 闘技場のモンスターエントリー構造体
  */
-int ArenaEntryList::get_max_entries() const
-{
-    return std::ssize(arena_info) - 2;
-}
-
-int ArenaEntryList::get_current_entry() const
-{
-    return this->current_entry;
-}
-
-std::optional<int> ArenaEntryList::get_defeated_entry() const
-{
-    return this->defeated_entry;
-}
-
-bool ArenaEntryList::is_player_victor() const
-{
-    return this->current_entry == this->get_max_entries();
-}
-
-bool ArenaEntryList::is_player_true_victor() const
-{
-    return this->current_entry > this->get_max_entries();
-}
-
-void ArenaEntryList::increment_entry()
-{
-    this->current_entry++;
-}
-
-void ArenaEntryList::reset_entry()
-{
-    this->current_entry = 0;
-    this->defeated_entry = std::nullopt;
-}
-
-void ArenaEntryList::set_defeated_entry()
-{
-    this->defeated_entry = this->current_entry;
-}
-
-void ArenaEntryList::load_current_entry(int entry)
-{
-    this->current_entry = entry;
-}
-
-void ArenaEntryList::load_defeated_entry(int entry)
-{
-    if (entry < 0) {
-        this->defeated_entry = std::nullopt;
-        return;
+class ArenaMonsterEntry {
+public:
+    ArenaMonsterEntry(MonsterRaceId r_idx, const BaseitemKey &key)
+        : monrace_id(r_idx)
+        , key(key)
+    {
     }
 
-    this->defeated_entry = entry;
-}
+    MonsterRaceId monrace_id; /*!< 闘技場のモンスター種族ID(0ならば表彰式) / Monster (0 means victory prizing) */
+    BaseitemKey key;
+};
 
 /*!
  * @brief 闘技場のモンスターID及び報酬アイテムテーブル
  */
-const std::vector<ArenaMonsterEntry> arena_info = {
+const std::vector<ArenaMonsterEntry> ARENA_ENTRIES = {
     { MonsterRaceId::NOBORTA, { ItemKindType::AMULET, SV_AMULET_ADORNMENT } },
     { MonsterRaceId::MORI_TROLL, { ItemKindType::FOOD, SV_FOOD_PINT_OF_WINE } },
     { MonsterRaceId::IMP, { ItemKindType::POTION, SV_POTION_SPEED } },
@@ -126,3 +79,152 @@ const std::vector<ArenaMonsterEntry> arena_info = {
     { MonraceList::empty_id(), { ItemKindType::NONE, 0 } }, /* Victory prizing */
     { MonsterRaceId::HAGURE, { ItemKindType::SCROLL, SV_SCROLL_ARTIFACT } },
 };
+}
+
+ArenaEntryList ArenaEntryList::instance{};
+
+ArenaEntryList &ArenaEntryList::get_instance()
+{
+    return instance;
+}
+
+/*
+ * @brief 表彰式までの最大数を返す.
+ */
+int ArenaEntryList::get_max_entries() const
+{
+    return std::ssize(ARENA_ENTRIES) - 2;
+}
+
+int ArenaEntryList::get_true_max_entries() const
+{
+    return std::ssize(ARENA_ENTRIES);
+}
+
+int ArenaEntryList::get_current_entry() const
+{
+    return this->current_entry;
+}
+
+std::optional<int> ArenaEntryList::get_defeated_entry() const
+{
+    return this->defeated_entry;
+}
+
+bool ArenaEntryList::is_player_victor() const
+{
+    return this->current_entry == this->get_max_entries();
+}
+
+bool ArenaEntryList::is_player_true_victor() const
+{
+    return this->current_entry > this->get_max_entries();
+}
+
+const BaseitemKey &ArenaEntryList::get_bi_key() const
+{
+    return ARENA_ENTRIES.at(this->current_entry).key;
+}
+
+MonsterRaceInfo &ArenaEntryList::get_monrace()
+{
+    return MonraceList::get_instance().get_monrace(ARENA_ENTRIES.at(this->current_entry).monrace_id);
+}
+
+const MonsterRaceInfo &ArenaEntryList::get_monrace() const
+{
+    return MonraceList::get_instance().get_monrace(ARENA_ENTRIES.at(this->current_entry).monrace_id);
+}
+
+/*!
+ * @brief 対戦相手の確認
+ * @return 最後に倒した対戦相手 (鳳凰以下は一律で鳳凰)
+ */
+ArenaRecord ArenaEntryList::check_arena_record() const
+{
+    if (this->current_entry <= this->get_max_entries()) {
+        return ArenaRecord::FENGFUANG;
+    }
+
+    if (this->current_entry < this->get_true_max_entries()) {
+        return ArenaRecord::POWER_WYRM;
+    }
+
+    return ArenaRecord::METAL_BABBLE;
+}
+
+std::string ArenaEntryList::get_poster_message() const
+{
+    if (this->is_player_victor()) {
+        return _("あなたは勝利者だ。 アリーナでのセレモニーに参加しなさい。", "You are victorious. Enter the arena for the ceremony.");
+    }
+
+    if (this->is_player_true_victor()) {
+        return _("あなたはすべての敵に勝利した。", "You have won against all foes.");
+    }
+
+    return format(_("%s に挑戦するものはいないか？", "Do I hear any challenges against: %s"), this->get_monrace().name.data());
+}
+
+std::string ArenaEntryList::get_fight_number(bool is_current) const
+{
+    if (!is_current && !this->defeated_entry) {
+        THROW_EXCEPTION(std::logic_error, "No defeated!");
+    }
+
+    const auto num = is_current ? this->current_entry : *this->defeated_entry + 1;
+#ifdef JP
+    return format("%d回戦", num);
+#else
+    std::stringstream ss;
+    std::string particle;
+    switch (num % 10) {
+    case 1:
+        particle = (num == 11) ? "th" : "st";
+        break;
+    case 2:
+        particle = (num == 12) ? "th" : "nd";
+        break;
+    case 3:
+        particle = (num == 13) ? "th" : "rd";
+        break;
+    default:
+        particle = "th";
+        break;
+    }
+
+    ss << "the " << num << particle << " fight";
+    return ss.str();
+#endif
+}
+
+void ArenaEntryList::increment_entry()
+{
+    this->current_entry++;
+}
+
+void ArenaEntryList::reset_entry()
+{
+    this->current_entry = 0;
+    this->defeated_entry = std::nullopt;
+}
+
+void ArenaEntryList::set_defeated_entry()
+{
+    this->defeated_entry = this->current_entry;
+}
+
+void ArenaEntryList::load_current_entry(int entry)
+{
+    this->current_entry = entry;
+}
+
+void ArenaEntryList::load_defeated_entry(int entry)
+{
+    if (entry < 0) {
+        this->defeated_entry = std::nullopt;
+        return;
+    }
+
+    this->defeated_entry = entry;
+}
