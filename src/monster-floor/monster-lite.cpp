@@ -147,10 +147,6 @@ static void update_monster_dark(
  */
 void update_mon_lite(PlayerType *player_ptr)
 {
-    if (!player_ptr->is_vaild_position()) {
-        return;
-    }
-
     // 座標たちを記録する配列。
     std::vector<Pos2D> points;
 

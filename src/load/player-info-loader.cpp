@@ -1,5 +1,5 @@
 #include "load/player-info-loader.h"
-#include "cmd-building/cmd-building.h"
+#include "load/angband-version-comparer.h"
 #include "load/birth-loader.h"
 #include "load/dummy-loader.h"
 #include "load/load-util.h"
@@ -8,6 +8,7 @@
 #include "load/player-attack-loader.h"
 #include "load/player-class-specific-data-loader.h"
 #include "load/world-loader.h"
+#include "market/arena-entry.h"
 #include "market/arena.h"
 #include "monster-race/race-ability-flags.h"
 #include "mutation/mutation-calculator.h"
@@ -198,7 +199,18 @@ static void rd_arena(PlayerType *player_ptr)
     set_gambling_monsters();
 
     player_ptr->town_num = rd_s16b();
-    player_ptr->arena_number = rd_s16b();
+    auto &entries = ArenaEntryList::get_instance();
+    entries.load_current_entry(rd_s16b());
+    if (loading_savefile_version < 28) {
+        const auto currrent_entry = entries.get_current_entry();
+        if (currrent_entry < 0) {
+            entries.load_current_entry(-currrent_entry);
+            entries.set_defeated_entry();
+        }
+    } else {
+        entries.load_defeated_entry(rd_s16b());
+    }
+
     rd_phase_out(player_ptr);
     w_ptr->set_arena(rd_bool());
     strip_bytes(1);

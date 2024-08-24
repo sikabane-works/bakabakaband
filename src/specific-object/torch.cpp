@@ -199,10 +199,6 @@ void update_lite_radius(PlayerType *player_ptr)
  */
 void update_lite(PlayerType *player_ptr)
 {
-    if (!player_ptr->is_vaild_position()) {
-        return;
-    }
-
     // 前回照らされていた座標たちを格納する配列。
     std::vector<Pos2D> points;
 

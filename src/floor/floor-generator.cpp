@@ -27,7 +27,7 @@
 #include "grid/grid.h"
 #include "info-reader/fixed-map-parser.h"
 #include "io/write-diary.h"
-#include "market/arena-info-table.h"
+#include "market/arena-entry.h"
 #include "monster-floor/monster-generator.h"
 #include "monster-floor/monster-remover.h"
 #include "monster-floor/place-monster-types.h"
@@ -150,12 +150,13 @@ static void generate_challenge_arena(PlayerType *player_ptr)
 
     build_arena(player_ptr, &y, &x);
     player_place(player_ptr, y, x);
-    if (place_specific_monster(player_ptr, 0, floor_ptr->height - 10, player_ptr->x, arena_info[player_ptr->arena_number].r_idx, PM_NO_KAGE | PM_NO_PET)) {
+    auto &entries = ArenaEntryList::get_instance();
+    if (place_specific_monster(player_ptr, 0, player_ptr->y + 5, player_ptr->x, arena_info[entries.get_current_entry()].r_idx, PM_NO_KAGE | PM_NO_PET)) {
         return;
     }
 
     w_ptr->set_arena(true);
-    player_ptr->arena_number++;
+    entries.increment_entry();
     msg_print(_("相手は欠場した。あなたの不戦勝だ。", "The enemy is unable to appear. You won by default."));
 }
 

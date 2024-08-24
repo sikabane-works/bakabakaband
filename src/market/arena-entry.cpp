@@ -1,4 +1,4 @@
-#include "market/arena-info-table.h"
+#include "market/arena-entry.h"
 #include "monster-race/race-indice-types.h"
 #include "object/tval-types.h"
 #include "sv-definition/sv-amulet-types.h"
@@ -11,6 +11,72 @@
 #include "sv-definition/sv-wand-types.h"
 #include "system/building-type-definition.h"
 #include "system/monster-race-info.h"
+
+ArenaEntryList ArenaEntryList::instance{};
+
+ArenaEntryList &ArenaEntryList::get_instance()
+{
+    return instance;
+}
+
+/*
+ * @brief 表彰式までの最大数を返す.
+ */
+int ArenaEntryList::get_max_entries() const
+{
+    return std::ssize(arena_info) - 2;
+}
+
+int ArenaEntryList::get_current_entry() const
+{
+    return this->current_entry;
+}
+
+std::optional<int> ArenaEntryList::get_defeated_entry() const
+{
+    return this->defeated_entry;
+}
+
+bool ArenaEntryList::is_player_victor() const
+{
+    return this->current_entry == this->get_max_entries();
+}
+
+bool ArenaEntryList::is_player_true_victor() const
+{
+    return this->current_entry > this->get_max_entries();
+}
+
+void ArenaEntryList::increment_entry()
+{
+    this->current_entry++;
+}
+
+void ArenaEntryList::reset_entry()
+{
+    this->current_entry = 0;
+    this->defeated_entry = std::nullopt;
+}
+
+void ArenaEntryList::set_defeated_entry()
+{
+    this->defeated_entry = this->current_entry;
+}
+
+void ArenaEntryList::load_current_entry(int entry)
+{
+    this->current_entry = entry;
+}
+
+void ArenaEntryList::load_defeated_entry(int entry)
+{
+    if (entry < 0) {
+        this->defeated_entry = std::nullopt;
+        return;
+    }
+
+    this->defeated_entry = entry;
+}
 
 /*!
  * @brief 闘技場のモンスターID及び報酬アイテムテーブル
@@ -60,5 +126,3 @@ const std::vector<ArenaMonsterEntry> arena_info = {
     { MonraceList::empty_id(), { ItemKindType::NONE, 0 } }, /* Victory prizing */
     { MonsterRaceId::HAGURE, { ItemKindType::SCROLL, SV_SCROLL_ARTIFACT } },
 };
-
-const int MAX_ARENA_MONS = arena_info.size() - 2;

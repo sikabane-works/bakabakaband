@@ -100,10 +100,6 @@ static bool update_view_aux(PlayerType *player_ptr, POSITION y, POSITION x, POSI
  */
 void update_view(PlayerType *player_ptr)
 {
-    if (!player_ptr->is_vaild_position()) {
-        return;
-    }
-
     // 前回プレイヤーから見えていた座標たちを格納する配列。
     std::vector<Pos2D> points;
 
