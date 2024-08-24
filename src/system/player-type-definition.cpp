@@ -6,7 +6,6 @@
 #include "timed-effect/timed-effects.h"
 #include "world/world.h"
 
-
 /*!
  * @brief プレイヤー構造体実体 / Static player info record
  */
