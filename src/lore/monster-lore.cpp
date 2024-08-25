@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @brief モンスターの思い出表示に必要なフラグ類の処理
  * @date 2020/06/09
  * @author Hourier
@@ -11,7 +11,6 @@
 #include "lore/magic-types-setter.h"
 #include "monster-race/race-indice-types.h"
 #include "monster-race/race-misc-flags.h"
-#include "monster-race/race-sex-const.h"
 #include "player-ability/player-ability-types.h"
 #include "system/angband.h"
 #include "system/monster-race-info.h"
@@ -25,12 +24,12 @@
 
 static void set_msex_flags(lore_type *lore_ptr)
 {
-    lore_ptr->msex = MSEX_NONE;
-    if (is_male(*(lore_ptr->r_ptr))) {
-        lore_ptr->msex = MSEX_MALE;
+    lore_ptr->msex = MonsterSex::NONE;
+    if (lore_ptr->r_ptr->is_male()) {
+        lore_ptr->msex = MonsterSex::MALE;
     }
-    if (is_female(*(lore_ptr->r_ptr))) {
-        lore_ptr->msex = MSEX_FEMALE;
+    if (lore_ptr->r_ptr->is_female()) {
+        lore_ptr->msex = MonsterSex::FEMALE;
     }
 }
 
