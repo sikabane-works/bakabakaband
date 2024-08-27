@@ -269,14 +269,14 @@ bool report_score(PlayerType *player_ptr)
     personality_desc.append(_(ap_ptr->no ? "の" : "", " "));
 
     auto realm1_name = PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST) ? get_element_title(player_ptr->element) : realm_names[player_ptr->realm1];
-sscore_ss << format("name: %s\n", player_ptr->name)
-             << format("version: %s\n", AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL).data())
-             << format("score: %ld\n", calc_score(player_ptr))
-             << format("level: %d\n", player_ptr->lev)
-             << format("depth: %d\n", player_ptr->current_floor_ptr->dun_level)
-             << format("maxlv: %d\n", player_ptr->max_plv)
-             << format("maxdp: %d\n", max_dlv[DUNGEON_ANGBAND])
-             << format("au: %d\n", player_ptr->au);
+    sscore_ss << format("name: %s\n", player_ptr->name)
+              << format("version: %s\n", AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL).data())
+              << format("score: %ld\n", calc_score(player_ptr))
+              << format("level: %d\n", player_ptr->lev)
+              << format("depth: %d\n", player_ptr->current_floor_ptr->dun_level)
+              << format("maxlv: %d\n", player_ptr->max_plv)
+              << format("maxdp: %d\n", max_dlv[DUNGEON_ANGBAND])
+              << format("au: %d\n", player_ptr->au);
     const auto &igd = InnerGameData::get_instance();
     score_ss << format("turns: %d\n", igd.get_real_turns(w_ptr->game_turn))
              << format("sex: %d\n", player_ptr->psex)
