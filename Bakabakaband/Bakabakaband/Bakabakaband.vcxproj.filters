@@ -2498,6 +2498,8 @@
     <ClCompile Include="..\..\src\tracking\health-bar-tracker.cpp">
       <Filter>tracking</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\item-info\flavor-initializer.cpp" />
+    <ClCompile Include="..\..\src\util\candidate-selector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\combat\shoot.h">
@@ -5412,6 +5414,12 @@
     <ClInclude Include="..\..\src\tracking\health-bar-tracker.h">
       <Filter>tracking</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\util\candidate-selector.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags8.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags1.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags2.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags3.h" />
+    <ClInclude Include="..\..\src\monster-race\race-flags7.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />
