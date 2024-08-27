@@ -152,7 +152,7 @@ void ObjectQuaffEntity::moisten(const ItemEntity &o_ref)
         (void)set_food(this->player_ptr, this->player_ptr->food + (o_ref.pval / 10));
         return;
     case PlayerRaceFoodType::MANA:
-    case PlayerRaceFoodType::CORPSE:
+    case PlayerRaceFoodType::MONSTER_REMAINS:
         set_food(this->player_ptr, this->player_ptr->food + ((o_ref.pval) / 20));
         return;
     default:

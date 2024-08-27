@@ -41,7 +41,7 @@ const std::map<MimicKindType, player_race_info> mimic_info =
         5,
         0x000003,
         PlayerRaceLifeType::DEMON,
-        PlayerRaceFoodType::CORPSE,
+        PlayerRaceFoodType::MONSTER_REMAINS,
         {
             { TR_RES_FIRE },
             { TR_RES_NETHER },
@@ -64,7 +64,7 @@ const std::map<MimicKindType, player_race_info> mimic_info =
         20,
         0x000003,
         PlayerRaceLifeType::DEMON,
-        PlayerRaceFoodType::CORPSE,
+        PlayerRaceFoodType::MONSTER_REMAINS,
         {
             { TR_IM_FIRE },
             { TR_RES_COLD },

@@ -596,7 +596,7 @@ const player_race_info race_info[MAX_RACES] =
 		5,
 		0x07EDC4DB,
 		PlayerRaceLifeType::DEMON,
-		PlayerRaceFoodType::CORPSE,
+		PlayerRaceFoodType::MONSTER_REMAINS,
         {
 			{ TR_RES_FIRE },
 			{ TR_RES_NETHER },

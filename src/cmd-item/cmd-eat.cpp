@@ -99,7 +99,7 @@ static bool exe_eat_junk_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
  */
 static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if (!(o_ptr->bi_key.tval() == ItemKindType::CORPSE && o_ptr->bi_key.sval() == SV_SOUL)) {
+    if (!(o_ptr->bi_key.tval() == ItemKindType::MONSTER_REMAINS && o_ptr->bi_key.sval() == SV_SOUL)) {
         return false;
     }
 
@@ -130,7 +130,7 @@ static bool exe_eat_soul(PlayerType *player_ptr, ItemEntity *o_ptr)
  */
 static bool exe_eat_corpse_type_object(PlayerType *player_ptr, ItemEntity *o_ptr)
 {
-    if (!(o_ptr->bi_key.tval() == ItemKindType::CORPSE && o_ptr->bi_key.sval() == SV_CORPSE)) {
+    if (!(o_ptr->bi_key.tval() == ItemKindType::MONSTER_REMAINS && o_ptr->bi_key.sval() == SV_CORPSE)) {
         return false;
     }
 
@@ -623,7 +623,7 @@ void exe_eat_food(PlayerType *player_ptr, INVENTORY_IDX i_idx)
     auto food_type = PlayerRace(player_ptr).food();
 
     /* Balrogs change humanoid corpses to energy */
-    if (food_type == PlayerRaceFoodType::CORPSE) {
+    if (food_type == PlayerRaceFoodType::MONSTER_REMAINS) {
         if (o_ptr->is_corpse() && o_ptr->get_monrace().symbol_char_is_any_of("pht")) {
             const auto item_name = describe_flavor(player_ptr, o_ptr, (OD_OMIT_PREFIX | OD_NAME_ONLY));
             msg_format(_("%sは燃え上り灰になった。精力を吸収した気がする。", "%s^ is burnt to ashes.  You absorb its vitality!"), item_name.data());
