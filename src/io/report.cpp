@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file report.c
  * @brief スコアサーバ転送機能の実装
  * @date 2014/07/14
@@ -264,51 +264,38 @@ concptr make_screen_dump(PlayerType *player_ptr)
  */
 bool report_score(PlayerType *player_ptr)
 {
-    std::vector<char> score;
-    std::string personality_desc = ap_ptr->title;
+    std::stringstream score_ss;
+    std::string personality_desc = ap_ptr->title.string();
     personality_desc.append(_(ap_ptr->no ? "の" : "", " "));
 
-    auto realm1_name = PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST) ? get_element_title(player_ptr->element) : realm_names[player_ptr->realm1];
-    sscore_ss << format("name: %s\n", player_ptr->name)
-              << format("version: %s\n", AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL).data())
-              << format("score: %ld\n", calc_score(player_ptr))
-              << format("level: %d\n", player_ptr->lev)
-              << format("depth: %d\n", player_ptr->current_floor_ptr->dun_level)
-              << format("maxlv: %d\n", player_ptr->max_plv)
-              << format("maxdp: %d\n", max_dlv[DUNGEON_ANGBAND])
-              << format("au: %d\n", player_ptr->au);
+    PlayerRealm pr(player_ptr);
+    auto realm1_name = PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST) ? get_element_title(player_ptr->element) : pr.realm1().get_name().data();
+    score_ss << format("name: %s\n", player_ptr->name)
+             << format("version: %s\n", AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL).data())
+             << format("score: %ld\n", calc_score(player_ptr))
+             << format("level: %d\n", player_ptr->lev)
+             << format("depth: %d\n", player_ptr->current_floor_ptr->dun_level)
+             << format("maxlv: %d\n", player_ptr->max_plv)
+             << format("maxdp: %d\n", max_dlv[DUNGEON_ANGBAND])
+             << format("au: %d\n", player_ptr->au);
     const auto &igd = InnerGameData::get_instance();
-    score_ss << format("turns: %d\n", igd.get_real_turns(w_ptr->game_turn))
+    score_ss << format("turns: %d\n", igd.get_real_turns(AngbandWorld::get_instance().game_turn))
              << format("sex: %d\n", player_ptr->psex)
-             << format("race: %s\n", rp_ptr->title)
-             << format("class: %s\n", cp_ptr->title)
+             << format("race: %s\n", rp_ptr->title.data())
+             << format("class: %s\n", cp_ptr->title.data())
              << format("seikaku: %s\n", personality_desc.data())
              << format("realm1: %s\n", realm1_name)
-             << format("realm2: %s\n", realm_names[player_ptr->realm2])
+             << format("realm2: %s\n", pr.realm2().get_name().data())
              << format("killer: %s\n", player_ptr->died_from.data())
              << "-----charcter dump-----\n";
 
-    make_dump(player_ptr, score);
+    make_dump(player_ptr, score_ss);
     if (screen_dump) {
-        buf_sprintf(score, "-----screen shot-----\n");
-        const std::string_view sv(screen_dump);
-        score.insert(score.end(), sv.begin(), sv.end());
+        score_ss << "-----screen shot-----\n"
+                 << screen_dump;
     }
 
-    term_clear();
-    while (true) {
-        term_fresh();
-        prt(_("スコア送信中...", "Sending the score..."), 0, 0);
-        term_fresh();
-
-        prt(_("スコア・サーバへの送信に失敗しました。", "Failed to send to the score server."), 0, 0);
-        (void)inkey();
-        if (input_check_strict(player_ptr, _("もう一度接続を試みますか? ", "Try again? "), UserCheck::NO_HISTORY)) {
-            continue;
-        }
-
-        return false;
-    }
+    return post_score_to_score_server(player_ptr, score_ss.str());
 }
 #else
 concptr screen_dump = nullptr;
