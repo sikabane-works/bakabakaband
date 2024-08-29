@@ -123,52 +123,53 @@ void display_scores(int from, int to, int note, high_score *score)
                 when = tmp_val;
             }
 
-            GAME_TEXT out_val[256];
+            std::string out_val;
+            const auto pclass = i2enum<PlayerClassType>(pc);
 #ifdef JP
-            /*sprintf(out_val, "%3d.%9s  %s%s%sという名の%sの%s (レベル %d)", */
-            sprintf(out_val, "%3d.%9s  %s%s%s - %s%s (レベル %d)", place, the_score.pts, personality_info[pa].title, (personality_info[pa].no ? "の" : ""),
-                the_score.who, race_info[pr].title, class_info[pc].title, clev);
+            /* out_val = format("%3d.%9s  %s%s%sという名の%sの%s (レベル %d)", */
+            out_val = format("%3d.%9s  %s%s%s - %s%s (レベル %d)", place, the_score.pts, personality_info[pa].title, (personality_info[pa].no ? "の" : ""),
+                the_score.who, race_info[pr].title, class_info.at(pclass).title, clev);
 
 #else
-            sprintf(out_val, "%3d.%9s  %s %s the %s %s, Level %d", place, the_score.pts, personality_info[pa].title, the_score.who, race_info[pr].title,
-                class_info[pc].title, clev);
+            out_val = format("%3d.%9s  %s %s the %s %s, Level %d", place, the_score.pts, personality_info[pa].title, the_score.who, race_info[pr].title,
+                class_info.at(pclass).title, clev);
 #endif
             if (mlev > clev) {
-                strcat(out_val, format(_(" (最高%d)", " (Max %d)"), mlev).c_str());
+                out_val.append(format(_(" (最高%d)", " (Max %d)"), mlev));
             }
 
             c_put_str(attr, out_val, n * 4 + 2, 0);
 #ifdef JP
             if (mdun != 0) {
-                sprintf(out_val, "    最高%3d階", mdun);
+                out_val = format("    最高%3d階", mdun);
             } else {
-                sprintf(out_val, "             ");
+                out_val = "             ";
             }
 
             /* 死亡原因をオリジナルより細かく表示 */
             if (streq(the_score.how, "yet")) {
-                sprintf(out_val + 13, "  まだ生きている (%d%s)", cdun, "階");
+                out_val.append(format("  まだ生きている (%d%s)", cdun, "階"));
             } else if (streq(the_score.how, "ripe")) {
-                sprintf(out_val + 13, "  勝利の後に引退 (%d%s)", cdun, "階");
+                out_val.append(format("  勝利の後に引退 (%d%s)", cdun, "階"));
             } else if (streq(the_score.how, "Seppuku")) {
-                sprintf(out_val + 13, "  勝利の後に切腹 (%d%s)", cdun, "階");
+                out_val.append(format("  勝利の後に切腹 (%d%s)", cdun, "階"));
             } else {
                 codeconv(the_score.how);
                 if (!cdun) {
-                    sprintf(out_val + 13, "  地上で%sに殺された", the_score.how);
+                    out_val.append(format("  地上で%sに殺された", the_score.how));
                 } else {
-                    sprintf(out_val + 13, "  %d階で%sに殺された", cdun, the_score.how);
+                    out_val.append(format("  %d階で%sに殺された", cdun, the_score.how));
                 }
             }
 #else
             if (!cdun) {
-                sprintf(out_val, "               Killed by %s on the surface", the_score.how);
+                out_val = format("               Killed by %s on the surface", the_score.how);
             } else {
-                sprintf(out_val, "               Killed by %s on %s %d", the_score.how, "Dungeon Level", cdun);
+                out_val = format("               Killed by %s on %s %d", the_score.how, "Dungeon Level", cdun);
             }
 
             if (mdun > cdun) {
-                strcat(out_val, format(" (Max %d)", mdun).c_str());
+                out_val.append(format(" (Max %d)", mdun));
             }
 #endif
             c_put_str(attr, out_val, n * 4 + 3, 0);
@@ -181,9 +182,9 @@ void display_scores(int from, int to, int note, high_score *score)
                 when = buf;
             }
 
-            sprintf(out_val, "        (ユーザー:%s, 日付:%s, 所持金:%s, ターン:%s)", user, when, gold, aged);
+            out_val = format("        (ユーザー:%s, 日付:%s, 所持金:%s, ターン:%s)", user, when, gold, aged);
 #else
-            sprintf(out_val, "               (User %s, Date %s, Gold %s, Turn %s).", user, when, gold, aged);
+            out_val = format("               (User %s, Date %s, Gold %s, Turn %s).", user, when, gold, aged);
 #endif
 
             c_put_str(attr, out_val, n * 4 + 4, 0);
