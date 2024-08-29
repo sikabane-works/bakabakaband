@@ -181,6 +181,25 @@ void set_zangband_action(PlayerType *player_ptr)
     }
 }
 
+void set_zangband_visited_towns(PlayerType *player_ptr)
+{
+    strip_bytes(4);
+    player_ptr->visit = 1L;
+}
+
+void set_zangband_quest(PlayerType *player_ptr, QuestType *const q_ptr, const QuestId loading_quest_index, const QuestId old_inside_quest)
+{
+    if (q_ptr->flags & QUEST_FLAG_PRESET) {
+        q_ptr->dungeon = 0;
+        return;
+    }
+
+    init_flags = INIT_ASSIGN;
+    player_ptr->current_floor_ptr->quest_number = loading_quest_index;
+    parse_fixed_map(player_ptr, QUEST_DEFINITION_LIST, 0, 0, 0, 0);
+    player_ptr->current_floor_ptr->quest_number = old_inside_quest;
+}
+
 void set_zangband_learnt_spells(PlayerType *player_ptr)
 {
     player_ptr->learned_spells = 0;
