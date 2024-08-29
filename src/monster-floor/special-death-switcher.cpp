@@ -135,7 +135,7 @@ static void on_dead_spawn_monsters(PlayerType *player_ptr, MonsterDeath *md_ptr)
         auto r_idx = std::get<2>(race);
         int dn = std::get<3>(race);
         int ds = std::get<4>(race);
-        int spawn_nums = damroll(dn, ds);
+        int spawn_nums = Dice::roll(dn, ds);
         POSITION wy = md_ptr->md_y;
         POSITION wx = md_ptr->md_x;
         bool pet = md_ptr->m_ptr->is_pet();
@@ -166,7 +166,7 @@ static void on_dead_drop_kind_item(PlayerType *player_ptr, MonsterDeath *md_ptr)
         int grade = std::get<3>(kind);
         int dn = std::get<4>(kind);
         int ds = std::get<5>(kind);
-        int drop_nums = damroll(dn, ds);
+        int drop_nums = Dice::roll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
             q_ptr->generate(kind_idx);
@@ -220,7 +220,7 @@ static void on_dead_drop_tval_item(PlayerType *player_ptr, MonsterDeath *md_ptr)
         int grade = std::get<3>(kind);
         int dn = std::get<4>(kind);
         int ds = std::get<5>(kind);
-        int drop_nums = damroll(dn, ds);
+        int drop_nums = Dice::roll(dn, ds);
 
         for (int i = 0; i < drop_nums; i++) {
             q_ptr->generate(BaseitemList::get_instance().lookup_baseitem_id({ i2enum<ItemKindType>(tval), 0 }));
@@ -720,7 +720,7 @@ void switch_special_death(PlayerType *player_ptr, MonsterDeath *md_ptr, Attribut
         on_dead_can_angel(player_ptr, md_ptr);
         return;
     case MonsterRaceId::ROLENTO:
-        (void)project(player_ptr, md_ptr->m_idx, 3, md_ptr->md_y, md_ptr->md_x, damroll(20, 10), AttributeType::FIRE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
+        (void)project(player_ptr, md_ptr->m_idx, 3, md_ptr->md_y, md_ptr->md_x, Dice::roll(20, 10), AttributeType::FIRE, PROJECT_GRID | PROJECT_ITEM | PROJECT_KILL);
         return;
     case MonsterRaceId::MIDDLE_AQUA_FIRST:
     case MonsterRaceId::LARGE_AQUA_FIRST:

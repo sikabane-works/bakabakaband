@@ -261,23 +261,23 @@ static int decide_drop_numbers(PlayerType player, MonsterDeath *md_ptr, const bo
     }
 
     if (md_ptr->r_ptr->drop_flags.has(MonsterDropType::DROP_1D2)) {
-        drop_numbers += damroll(1, 2);
+        drop_numbers += Dice::roll(1, 2);
     }
 
     if (md_ptr->r_ptr->drop_flags.has(MonsterDropType::DROP_2D2)) {
-        drop_numbers += damroll(2, 2);
+        drop_numbers += Dice::roll(2, 2);
     }
 
     if (md_ptr->r_ptr->drop_flags.has(MonsterDropType::DROP_3D2)) {
-        drop_numbers += damroll(3, 2);
+        drop_numbers += Dice::roll(3, 2);
     }
 
     if (md_ptr->r_ptr->drop_flags.has(MonsterDropType::DROP_4D2)) {
-        drop_numbers += damroll(4, 2);
+        drop_numbers += Dice::roll(4, 2);
     }
 
     if (md_ptr->m_ptr->mflag2.has(MonsterConstantFlagType::SANTA)) {
-        drop_numbers += damroll(3, 3);
+        drop_numbers += Dice::roll(3, 3);
     }
 
     // クローンは、クローン地獄内のユニークモンスター以外はドロップしない

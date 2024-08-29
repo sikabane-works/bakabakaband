@@ -720,7 +720,7 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
         switch (randint0(4)) {
 
         case 0:
-            blank_years = damroll(8, 10);
+            blank_years = Dice::roll(8, 10);
             player_ptr->prestige /= 2;
             player_ptr->age += blank_years;
 
@@ -736,7 +736,7 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
             break;
 
         case 1:
-            blank_years = damroll(2, 10);
+            blank_years = Dice::roll(2, 10);
             player_ptr->prestige /= 2;
             player_ptr->age += blank_years;
             msg_print(_("『猿先生何も考えてないと思うよ』", "\"I think that Mr.Sawatari thinks nothing.\""));
