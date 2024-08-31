@@ -148,7 +148,7 @@ static void place_pet(PlayerType *player_ptr)
             update_monster(player_ptr, m_idx, true);
             lite_spot(player_ptr, cy, cx);
             if (r_ref.misc_flags.has(MonsterMiscType::MULTIPLY)) {
-                player_ptr->current_floor_ptr->num_repro++;
+                floor.num_repro++;
             }
         } else {
             auto *m_ptr = &party_mon[current_monster];
