@@ -759,8 +759,8 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
         }
     }
 
-    w_ptr->noscore |= 0x0001;
-    msg_print(NULL);
+    auto &world = AngbandWorld::get_instance();
+    world.noscore |= 0x0001;
 
     player_ptr->is_dead = false;
     (void)life_stream(player_ptr, false, false);
@@ -799,7 +799,7 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
         player_ptr->oldpx = 131;
     }
 
-    player_ptr->wild_mode = false;
+    world.set_wild_mode(false);
     player_ptr->leaving = true;
     constexpr auto note = _("                            しかし、生き返った。", "                            but revived.");
     exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, note);

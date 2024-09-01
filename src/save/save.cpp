@@ -61,9 +61,10 @@ static bool wr_savefile_new(PlayerType *player_ptr)
     compact_monsters(player_ptr, 0);
 
     uint32_t now = (uint32_t)time((time_t *)0);
-    w_ptr->sf_system = 0L;
-    w_ptr->sf_when = now;
-    w_ptr->sf_saves++;
+    auto &world = AngbandWorld::get_instance();
+    world.sf_system = 0L;
+    world.sf_when = now;
+    world.sf_saves++;
 
     save_xor_byte = 0;
     auto variant_length = VARIANT_NAME.length();
@@ -155,7 +156,7 @@ static bool wr_savefile_new(PlayerType *player_ptr)
 
     wr_s32b(player_ptr->wilderness_x);
     wr_s32b(player_ptr->wilderness_y);
-    wr_bool(player_ptr->wild_mode);
+    wr_bool(world.is_wild_mode());
     wr_bool(player_ptr->ambush_flag);
     wr_s32b(w_ptr->max_wild_x);
     wr_s32b(w_ptr->max_wild_y);

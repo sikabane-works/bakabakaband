@@ -34,6 +34,7 @@
 void player_wipe_without_name(PlayerType *player_ptr)
 {
     const std::string backup_name = player_ptr->name;
+    auto &world = AngbandWorld::get_instance();
     *player_ptr = {};
 
     // TODO: キャラ作成からゲーム開始までに  current_floor_ptr を参照しなければならない処理は今後整理して外す。
@@ -125,7 +126,7 @@ void player_wipe_without_name(PlayerType *player_ptr)
     }
 
     player_ptr->visit = 1;
-    player_ptr->wild_mode = false;
+    world.set_wild_mode(false);
 
     player_ptr->max_plv = player_ptr->lev = 1;
     ArenaEntryList::get_instance().reset_entry();

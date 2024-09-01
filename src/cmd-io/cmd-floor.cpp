@@ -15,6 +15,7 @@
 #include "util/bit-flags-calculator.h"
 #include "view/display-messages.h"
 #include "window/main-window-util.h"
+#include "world/world.h"
 
 /*!
  * @brief ターゲットを設定するコマンドのメインルーチン
@@ -22,7 +23,7 @@
  */
 void do_cmd_target(PlayerType *player_ptr)
 {
-    if (player_ptr->wild_mode) {
+    if (AngbandWorld::get_instance().is_wild_mode()) {
         return;
     }
 

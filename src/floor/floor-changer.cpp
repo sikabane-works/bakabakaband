@@ -133,7 +133,8 @@ static MonsterRaceInfo &set_pet_params(PlayerType *player_ptr, const int current
  */
 static void place_pet(PlayerType *player_ptr)
 {
-    int max_num = player_ptr->wild_mode ? 1 : MAX_PARTY_MON;
+    const auto max_num = AngbandWorld::get_instance().is_wild_mode() ? 1 : MAX_PARTY_MON;
+    auto &floor = *player_ptr->current_floor_ptr;
     for (int current_monster = 0; current_monster < max_num; current_monster++) {
         POSITION cy = 0;
         POSITION cx = 0;
@@ -147,7 +148,7 @@ static void place_pet(PlayerType *player_ptr)
             update_monster(player_ptr, m_idx, true);
             lite_spot(player_ptr, cy, cx);
             if (r_ref.misc_flags.has(MonsterMiscType::MULTIPLY)) {
-                player_ptr->current_floor_ptr->num_repro++;
+                floor.num_repro++;
             }
         } else {
             auto *m_ptr = &party_mon[current_monster];
