@@ -386,7 +386,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             msg_format(_("あなたは%sの前に敗れ去った。", "You are beaten by %s."), m_name.data());
             msg_print(nullptr);
             if (record_arena) {
-                exe_write_diary(player_ptr, DiaryKind::ARENA, 0, m_name);
+                exe_write_diary(floor, DiaryKind::ARENA, 0, m_name);
             }
         } else {
             const auto q_idx = floor.get_quest_id();
@@ -421,7 +421,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
 
             if (winning_seppuku) {
                 w_ptr->add_retired_class(player_ptr->pclass);
-                exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
+                exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
             } else {
                 std::string place;
 
@@ -440,11 +440,11 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
 #else
                 const auto note = format("killed by %s %s.", player_ptr->died_from.data(), place.data());
 #endif
-                exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, note);
+                exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, note);
             }
 
-            exe_write_diary(player_ptr, DiaryKind::GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
-            exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
+            exe_write_diary(floor, DiaryKind::GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
+            exe_write_diary(floor, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
             player_ptr->death_count++;
             flush();
             if (input_check_strict(player_ptr, _("画面を保存しますか？", "Dump the screen? "), UserCheck::NO_HISTORY)) {
@@ -571,7 +571,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             ss << _(hit_from, "was in a critical situation because of ");
             ss << _("によってピンチに陥った。", hit_from);
             ss << _("", ".");
-            exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, ss.str());
+            exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, ss.str());
         }
 
         if (auto_more) {

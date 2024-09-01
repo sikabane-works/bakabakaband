@@ -151,15 +151,15 @@ static void place_pet(PlayerType *player_ptr)
                 floor.num_repro++;
             }
         } else {
-            auto *m_ptr = &party_mon[current_monster];
-            auto &r_ref = m_ptr->get_real_monrace();
-            msg_format(_("%sとはぐれてしまった。", "You have lost sight of %s."), monster_desc(player_ptr, m_ptr, 0).data());
-            if (record_named_pet && m_ptr->is_named()) {
-                exe_write_diary(player_ptr, DiaryKind::NAMED_PET, RECORD_NAMED_PET_LOST_SIGHT, monster_desc(player_ptr, m_ptr, MD_INDEF_VISIBLE));
+            const auto &monster = party_mon[current_monster];
+            auto &monrace = monster.get_real_monrace();
+            msg_format(_("%sとはぐれてしまった。", "You have lost sight of %s."), monster_desc(player_ptr, &monster, 0).data());
+            if (record_named_pet && monster.is_named()) {
+                exe_write_diary(floor, DiaryKind::NAMED_PET, RECORD_NAMED_PET_LOST_SIGHT, monster_desc(player_ptr, &monster, MD_INDEF_VISIBLE));
             }
 
-            if (r_ref.cur_num) {
-                r_ref.cur_num--;
+            if (monrace.cur_num) {
+                monrace.cur_num--;
             }
         }
     }

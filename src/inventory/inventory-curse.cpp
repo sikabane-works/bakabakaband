@@ -471,7 +471,7 @@ static void curse_megaton_coin(PlayerType *player_ptr)
         do_cmd_save_game(player_ptr, true);
     }
 
-    exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
+    exe_write_diary(*(player_ptr->current_floor_ptr), DiaryKind::DESCRIPTION, 0, _("メガトンコインで落ちた!", "fell through the Megaton Coin"));
     auto &fcms = FloorChangeModesStore::get_instace();
     fcms->set({ FloorChangeMode::SAVE_FLOORS,
         FloorChangeMode::DOWN,

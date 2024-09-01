@@ -204,9 +204,10 @@ void do_cmd_suicide(PlayerType *player_ptr)
         w_ptr->add_retired_class(player_ptr->pclass);
     } else {
         play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_GAMEOVER);
-        exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 0, _("ダンジョンの探索に飽きて自殺した。", "got tired to commit suicide."));
-        exe_write_diary(player_ptr, DiaryKind::GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
-        exe_write_diary(player_ptr, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
+        const auto &floor = *player_ptr->current_floor_ptr;
+        exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, _("ダンジョンの探索に飽きて自殺した。", "got tired to commit suicide."));
+        exe_write_diary(floor, DiaryKind::GAMESTART, 1, _("-------- ゲームオーバー --------", "--------   Game  Over   --------"));
+        exe_write_diary(floor, DiaryKind::DESCRIPTION, 1, "\n\n\n\n");
     }
 
     player_ptr->died_from = _("途中終了", "Quitting");
