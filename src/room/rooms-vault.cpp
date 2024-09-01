@@ -1009,14 +1009,20 @@ bool build_type10(PlayerType *player_ptr, dun_data_type *dd_ptr)
  */
 bool build_fixed_room(PlayerType *player_ptr, dun_data_type *dd_ptr, int typ, bool more_space, int id = -1)
 {
+    int result;
+
     ProbabilityTable<int> prob_table;
-    for (const auto &vault : vaults_info) {
-        if (vault.typ == typ) {
-            prob_table.entry_item(vault.idx, 1);
+    if (id != -1) {
+        result = id;
+    } else {
+        for (const auto &vault : vaults_info) {
+            if (vault.typ == typ) {
+                prob_table.entry_item(vault.idx, 1);
+            }
         }
+        result = prob_table.pick_one_at_random();
     }
 
-    const auto result = prob_table.pick_one_at_random();
     auto &vault = vaults_info[result];
 
     auto num_transformation = randint0(8);
