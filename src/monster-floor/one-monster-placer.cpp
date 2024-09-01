@@ -280,7 +280,7 @@ bool place_monster_one(PlayerType *player_ptr, MONSTER_IDX src_idx, POSITION y, 
         return false;
     }
 
-    msg_format_wizard(player_ptr, CHEAT_MONSTER, _("%s(Lv%d)を生成しました。", "%s(Lv%d) was generated."), r_ptr->name, r_ptr->level);
+    msg_format_wizard(player_ptr, CHEAT_MONSTER, _("%s(Lv%d)を生成しました。", "%s(Lv%d) was generated."), r_ptr->name.data(), r_ptr->level);
     if (r_ptr->kind_flags.has(MonsterKindType::UNIQUE) || r_ptr->population_flags.has(MonsterPopulationType::NAZGUL) || (r_ptr->level < 10)) {
         reset_bits(mode, PM_KAGE);
     }
