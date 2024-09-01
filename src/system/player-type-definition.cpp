@@ -23,8 +23,9 @@ PlayerType::PlayerType()
 
 bool PlayerType::is_true_winner() const
 {
+    const auto &world = AngbandWorld::get_instance();
     const auto &entries = ArenaEntryList::get_instance();
-    return (w_ptr->total_winner > 0) && (entries.is_player_true_victor());
+    return (world.total_winner > 0) && (entries.is_player_true_victor());
 }
 
 /*!

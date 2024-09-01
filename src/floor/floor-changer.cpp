@@ -271,11 +271,12 @@ static void new_floor_allocation(PlayerType *player_ptr, saved_floor_type *sf_pt
     GAME_TURN tmp_last_visit = sf_ptr->last_visit;
     const auto &floor = *player_ptr->current_floor_ptr;
     auto alloc_chance = floor.get_dungeon_definition().max_m_alloc_chance;
-    while (tmp_last_visit > w_ptr->game_turn) {
+    const auto &world = AngbandWorld::get_instance();
+    while (tmp_last_visit > world.game_turn) {
         tmp_last_visit -= TURNS_PER_TICK * TOWN_DAWN;
     }
 
-    GAME_TURN absence_ticks = (w_ptr->game_turn - tmp_last_visit) / TURNS_PER_TICK;
+    GAME_TURN absence_ticks = (world.game_turn - tmp_last_visit) / TURNS_PER_TICK;
     reset_unique_by_floor_change(player_ptr);
     for (MONSTER_IDX i = 1; i < floor.o_max; i++) {
         const auto *o_ptr = &floor.o_list[i];
@@ -334,7 +335,7 @@ static void update_new_floor_feature(PlayerType *player_ptr, saved_floor_type *s
         build_dead_end(player_ptr, sf_ptr);
     }
 
-    sf_ptr->last_visit = w_ptr->game_turn;
+    sf_ptr->last_visit = AngbandWorld::get_instance().game_turn;
     auto &floor = *player_ptr->current_floor_ptr;
     sf_ptr->dun_level = floor.dun_level;
     if (FloorChangeModesStore::get_instace()->has(FloorChangeMode::NO_RETURN)) {
@@ -395,7 +396,8 @@ static void update_floor(PlayerType *player_ptr)
  */
 void change_floor(PlayerType *player_ptr)
 {
-    w_ptr->character_dungeon = false;
+    auto &world = AngbandWorld::get_instance();
+    world.character_dungeon = false;
     player_ptr->dtrap = false;
     panel_row_min = 0;
     panel_row_max = 0;
@@ -407,12 +409,12 @@ void change_floor(PlayerType *player_ptr)
     forget_travel_flow(player_ptr->current_floor_ptr);
     update_unique_artifact(player_ptr->current_floor_ptr, new_floor_id);
     player_ptr->floor_id = new_floor_id;
-    w_ptr->character_dungeon = true;
+    world.character_dungeon = true;
     if (player_ptr->ppersonality == PERSONALITY_MUNCHKIN) {
         wiz_lite(player_ptr, PlayerClass(player_ptr).equals(PlayerClassType::NINJA));
     }
 
-    player_ptr->current_floor_ptr->generated_turn = w_ptr->game_turn;
+    player_ptr->current_floor_ptr->generated_turn = world.game_turn;
     player_ptr->feeling_turn = player_ptr->current_floor_ptr->generated_turn;
     player_ptr->feeling = 0;
     auto &fcms = FloorChangeModesStore::get_instace();

@@ -133,7 +133,7 @@ static void set_race(PlayerType *player_ptr)
 
 void rd_bounty_uniques()
 {
-    for (auto &[bounty_monrace_id, is_achieved] : w_ptr->bounties) {
+    for (auto &[bounty_monrace_id, is_achieved] : AngbandWorld::get_instance().bounties) {
         auto monrace_id = rd_s16b();
         if (loading_savefile_version_is_older_than(16)) {
             constexpr auto old_achieved_flag = 10000; // かつて賞金首達成フラグとしてモンスター種族番号を10000増やしていた
@@ -214,7 +214,7 @@ static void rd_arena(PlayerType *player_ptr)
     }
 
     rd_phase_out(player_ptr);
-    w_ptr->set_arena(rd_bool());
+    AngbandWorld::get_instance().set_arena(rd_bool());
     strip_bytes(1);
 
     player_ptr->oldpx = rd_s16b();

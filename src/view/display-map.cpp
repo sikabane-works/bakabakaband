@@ -358,7 +358,7 @@ std::optional<uint8_t> get_monochrome_display_color(PlayerType *player_ptr)
         return std::nullopt;
     }
 
-    if (w_ptr->timewalk_m_idx) {
+    if (AngbandWorld::get_instance().timewalk_m_idx) {
         return TERM_DARK;
     }
     if (is_invuln(player_ptr) || player_ptr->timewalk) {

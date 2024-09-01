@@ -379,6 +379,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             player_ptr->is_dead = true;
         }
 
+        auto &world = AngbandWorld::get_instance();
         if (floor.inside_arena) {
             auto &entries = ArenaEntryList::get_instance();
             entries.set_defeated_entry();
@@ -391,7 +392,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
         } else {
             const auto q_idx = floor.get_quest_id();
             const auto seppuku = hit_from == "Seppuku";
-            const auto winning_seppuku = w_ptr->total_winner && seppuku;
+            const auto winning_seppuku = world.total_winner && seppuku;
 
             play_music(TERM_XTRA_MUSIC_BASIC, MUSIC_BASIC_GAMEOVER);
 
@@ -420,7 +421,7 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             }
 
             if (winning_seppuku) {
-                w_ptr->add_retired_class(player_ptr->pclass);
+                world.add_retired_class(player_ptr->pclass);
                 exe_write_diary(floor, DiaryKind::DESCRIPTION, 0, _("勝利の後切腹した。", "committed seppuku after the winning."));
             } else {
                 std::string place;
