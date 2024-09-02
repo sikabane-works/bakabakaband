@@ -106,7 +106,7 @@ static void display_magic_realms(PlayerType *player_ptr)
     } else if (player_ptr->realm2) {
         sprintf(tmp, "%s, %s", realm_names[player_ptr->realm1], realm_names[player_ptr->realm2]);
     } else {
-        strcpy(tmp, realm_names[player_ptr->realm1]);
+        strcpy(tmp, realm_names[player_ptr->realm1].data());
     }
 
     display_player_one_line(ENTRY_REALM, tmp, TERM_L_BLUE);
