@@ -33,6 +33,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <algorithm>
+#include <fstream>
 #include <span>
 #include <string>
 #include <string_view>
@@ -95,14 +96,13 @@ size_t read_callback(char *buffer, size_t size, size_t nitems, void *userdata)
 }
 
 /*!
- * @brief キャラクタダンプを作って BUFに保存
+ * @brief キャラクタダンプを引数で指定した出力ストリームに書き込む
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param dumpbuf 伝送内容バッファ
+ * @param stream 書き込む出力ストリーム
  * @return エラーコード
  */
-static errr make_dump(PlayerType *player_ptr, std::vector<char> &dumpbuf)
+static errr make_dump(PlayerType *player_ptr, std::ostream &stream)
 {
-    char buf[1024];
     FILE *fff;
     GAME_TEXT file_name[1024];
 
@@ -122,13 +122,12 @@ static errr make_dump(PlayerType *player_ptr, std::vector<char> &dumpbuf)
     make_character_dump(player_ptr, fff);
     angband_fclose(fff);
 
-    /* Open for read */
-    fff = angband_fopen(file_name, FileOpenMode::READ);
-
-    while (fgets(buf, 1024, fff)) {
-        (void)buf_sprintf(dumpbuf, "%s", buf);
+    // 一時ファイルを削除する前に閉じるためブロックにする
+    {
+        std::ifstream ifs(file_name);
+        stream << ifs.rdbuf();
     }
-    angband_fclose(fff);
+
     fd_kill(file_name);
 
     /* Success */
@@ -291,9 +290,8 @@ bool report_score(PlayerType *player_ptr)
 
     make_dump(player_ptr, score_ss);
     if (screen_dump) {
-        buf_sprintf(score, "-----screen shot-----\n");
-        const std::string_view sv(screen_dump);
-        score.insert(score.end(), sv.begin(), sv.end());
+        score_ss << "-----screen shot-----\n"
+                 << screen_dump;
     }
 
     term_clear();
