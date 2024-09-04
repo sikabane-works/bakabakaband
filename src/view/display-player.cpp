@@ -104,7 +104,7 @@ static void display_magic_realms(PlayerType *player_ptr)
     if (PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST)) {
         sprintf(tmp, "%s", get_element_title(player_ptr->element));
     } else if (player_ptr->realm2) {
-        sprintf(tmp, "%s, %s", realm_names[player_ptr->realm1], realm_names[player_ptr->realm2]);
+        sprintf(tmp, "%s, %s", realm_names[player_ptr->realm1].data(), realm_names[player_ptr->realm2].data());
     } else {
         strcpy(tmp, realm_names[player_ptr->realm1].data());
     }
