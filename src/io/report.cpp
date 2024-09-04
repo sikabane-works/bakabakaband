@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file report.c
  * @brief スコアサーバ転送機能の実装
  * @date 2014/07/14
@@ -289,7 +289,7 @@ bool report_score(PlayerType *player_ptr)
              << format("killer: %s\n", player_ptr->died_from.data())
              << "-----charcter dump-----\n";
 
-    make_dump(player_ptr, score);
+    make_dump(player_ptr, score_ss);
     if (screen_dump) {
         buf_sprintf(score, "-----screen shot-----\n");
         const std::string_view sv(screen_dump);
