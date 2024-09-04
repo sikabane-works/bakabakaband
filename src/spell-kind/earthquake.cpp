@@ -85,7 +85,7 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
                 continue;
             }
 
-            if (randint0(100) < 85) {
+            if (magik(85)) {
                 continue;
             }
 
