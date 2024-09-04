@@ -169,7 +169,7 @@ bool trans_sex(PlayerType *player_ptr)
             continue;
         }
 
-        sprintf(buf, "%c) %-20s", I2A(i), sex_info[i].title);
+        sprintf(buf, "%c) %-20s", I2A(i), sex_info[i].title.data());
         prt(buf, 5 + i, 5);
         num++;
     }
