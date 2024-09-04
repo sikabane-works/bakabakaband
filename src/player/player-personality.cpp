@@ -72,7 +72,7 @@ const player_personality personality_info[MAX_PERSONALITIES] = {
         -7, 7, -5, -1, -2, -4, 15, 20,
         -1, 0, 0 },
 
-    { { "タフな", "The Tough" } ,
+    { { "タフな", "The Tough" },
         { 1, -2, -2, 2, 3, -1 },
         -5, -5, -3, -1, -2, -3, 15, 0,
         1, 0, 0 },
