@@ -57,33 +57,6 @@ constexpr auto SCORE_SERVER_SCHEME_HOST = ""; /*!< スコアサーバホスト *
 constexpr auto SCORE_SERVER_PATH = ""; /*< スコアサーバパス */
 #endif
 
-/*!
- * @brief 転送用バッファにフォーマット指定した文字列データを追加する
- * @param buf 追加先バッファの参照ポインタ
- * @param fmt 文字列フォーマット
- * @return 追加後のバッファ容量
- */
-static void buf_sprintf(std::vector<char> &buf, concptr fmt, ...)
-{
-    int ret;
-    char tmpbuf[8192];
-    va_list ap;
-
-    va_start(ap, fmt);
-#if defined(HAVE_VSNPRINTF)
-    ret = vsnprintf(tmpbuf, sizeof(tmpbuf), fmt, ap);
-#else
-    ret = vsprintf(tmpbuf, fmt, ap);
-#endif
-    va_end(ap);
-
-    if (ret < 0) {
-        return;
-    }
-
-    buf.insert(buf.end(), tmpbuf, tmpbuf + ret);
-}
-
 size_t read_callback(char *buffer, size_t size, size_t nitems, void *userdata)
 {
     auto &data = *static_cast<std::span<const char> *>(userdata);
