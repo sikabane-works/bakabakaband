@@ -136,7 +136,7 @@ void castle_quest(PlayerType *player_ptr)
     }
 
     quest.cur_num = 0;
-    concptr name = r_ptr->name.c_str();
+    concptr name = r_ptr->name.data();
 #ifdef JP
     msg_format("クエスト: %sを %d体倒す", name, quest.max_num);
 #else

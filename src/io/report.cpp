@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * @file report.c
  * @brief スコアサーバ転送機能の実装
  * @date 2014/07/14
@@ -33,6 +33,7 @@
 #include "view/display-messages.h"
 #include "world/world.h"
 #include <algorithm>
+#include <fstream>
 #include <span>
 #include <string>
 #include <string_view>
@@ -56,33 +57,6 @@ constexpr auto SCORE_SERVER_SCHEME_HOST = ""; /*!< スコアサーバホスト *
 constexpr auto SCORE_SERVER_PATH = ""; /*< スコアサーバパス */
 #endif
 
-/*!
- * @brief 転送用バッファにフォーマット指定した文字列データを追加する
- * @param buf 追加先バッファの参照ポインタ
- * @param fmt 文字列フォーマット
- * @return 追加後のバッファ容量
- */
-static void buf_sprintf(std::vector<char> &buf, concptr fmt, ...)
-{
-    int ret;
-    char tmpbuf[8192];
-    va_list ap;
-
-    va_start(ap, fmt);
-#if defined(HAVE_VSNPRINTF)
-    ret = vsnprintf(tmpbuf, sizeof(tmpbuf), fmt, ap);
-#else
-    ret = vsprintf(tmpbuf, fmt, ap);
-#endif
-    va_end(ap);
-
-    if (ret < 0) {
-        return;
-    }
-
-    buf.insert(buf.end(), tmpbuf, tmpbuf + ret);
-}
-
 size_t read_callback(char *buffer, size_t size, size_t nitems, void *userdata)
 {
     auto &data = *static_cast<std::span<const char> *>(userdata);
@@ -95,14 +69,13 @@ size_t read_callback(char *buffer, size_t size, size_t nitems, void *userdata)
 }
 
 /*!
- * @brief キャラクタダンプを作って BUFに保存
+ * @brief キャラクタダンプを引数で指定した出力ストリームに書き込む
  * @param player_ptr プレイヤーへの参照ポインタ
- * @param dumpbuf 伝送内容バッファ
+ * @param stream 書き込む出力ストリーム
  * @return エラーコード
  */
-static errr make_dump(PlayerType *player_ptr, std::vector<char> &dumpbuf)
+static errr make_dump(PlayerType *player_ptr, std::ostream &stream)
 {
-    char buf[1024];
     FILE *fff;
     GAME_TEXT file_name[1024];
 
@@ -122,13 +95,12 @@ static errr make_dump(PlayerType *player_ptr, std::vector<char> &dumpbuf)
     make_character_dump(player_ptr, fff);
     angband_fclose(fff);
 
-    /* Open for read */
-    fff = angband_fopen(file_name, FileOpenMode::READ);
-
-    while (fgets(buf, 1024, fff)) {
-        (void)buf_sprintf(dumpbuf, "%s", buf);
+    // 一時ファイルを削除する前に閉じるためブロックにする
+    {
+        std::ifstream ifs(file_name);
+        stream << ifs.rdbuf();
     }
-    angband_fclose(fff);
+
     fd_kill(file_name);
 
     /* Success */
@@ -265,9 +237,8 @@ concptr make_screen_dump(PlayerType *player_ptr)
  */
 bool report_score(PlayerType *player_ptr)
 {
-    std::vector<char> score;
-    std::stringstream score_ss, sscore_ss;
-    std::string personality_desc = ap_ptr->title;
+    std::stringstream score_ss;
+    std::string personality_desc = ap_ptr->title.string();
     personality_desc.append(_(ap_ptr->no ? "の" : "", " "));
 
     auto realm1_name = PlayerClass(player_ptr).equals(PlayerClassType::ELEMENTALIST) ? get_element_title(player_ptr->element) : realm_names[player_ptr->realm1].data();
@@ -290,11 +261,10 @@ bool report_score(PlayerType *player_ptr)
              << format("killer: %s\n", player_ptr->died_from.data())
              << "-----charcter dump-----\n";
 
-    make_dump(player_ptr, score);
+    make_dump(player_ptr, score_ss);
     if (screen_dump) {
-        buf_sprintf(score, "-----screen shot-----\n");
-        const std::string_view sv(screen_dump);
-        score.insert(score.end(), sv.begin(), sv.end());
+        score_ss << "-----screen shot-----\n"
+                 << screen_dump;
     }
 
     term_clear();
