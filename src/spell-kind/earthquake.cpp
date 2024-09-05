@@ -85,7 +85,7 @@ bool earthquake(PlayerType *player_ptr, POSITION cy, POSITION cx, POSITION r, MO
                 continue;
             }
 
-            if (magik(85)) {
+            if (evaluate_percent(85)) {
                 continue;
             }
 
