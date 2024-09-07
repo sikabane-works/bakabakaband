@@ -95,7 +95,9 @@ static MONSTER_NUMBER summon_Alliance(PlayerType *player_ptr, POSITION y, POSITI
 {
     int count = 0;
     for (int k = 0; k < 4; k++) {
-        count += summon_specific(player_ptr, m_idx, y, x, rlev, SUMMON_ALLIANCE, PM_ALLOW_GROUP);
+        if (summon_specific(player_ptr, m_idx, y, x, rlev, SUMMON_ALLIANCE, PM_ALLOW_GROUP)) {
+            count++;
+        };
     }
 
     return count;
