@@ -768,10 +768,11 @@ void do_cmd_study(PlayerType *player_ptr)
     }
 
     const auto tval = o_ptr->bi_key.tval();
-    const auto sval = o_ptr->bi_key.sval().value();
-    if (tval == get_realm2_book(player_ptr)) {
+    const auto sval = *o_ptr->bi_key.sval();
+    PlayerRealm pr(player_ptr);
+    if (tval == pr.get_realm2_book()) {
         increment = 32;
-    } else if (tval != get_realm1_book(player_ptr)) {
+    } else if (tval != pr.get_realm1_book()) {
         if (!input_check(_("本当に魔法の領域を変更しますか？", "Really, change magic realm? "))) {
             return;
         }
@@ -1000,8 +1001,8 @@ bool do_cmd_cast(PlayerType *player_ptr)
     }
 
     const auto tval = o_ptr->bi_key.tval();
-    const auto sval = o_ptr->bi_key.sval().value();
-    if (!is_every_magic && (tval == get_realm2_book(player_ptr))) {
+    const auto sval = *o_ptr->bi_key.sval();
+    if (!is_every_magic && (tval == PlayerRealm(player_ptr).get_realm2_book())) {
         increment = 32;
     }
 
