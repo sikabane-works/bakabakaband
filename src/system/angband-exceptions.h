@@ -1,7 +1,6 @@
 #pragma once
 
-#include "system/angband-system.h"
-#include "system/angband-version.h"
+#include "util/stack-trace.h"
 #include <concepts>
 #include <filesystem>
 #include <sstream>
@@ -19,8 +18,11 @@ namespace angband::exception::detail {
 template <std::derived_from<std::exception> T>
 [[noreturn]] void throw_exception(std::string_view msg, std::filesystem::path path, int line)
 {
+    util::StackTrace stack_trace;
     std::stringstream ss;
-    ss << AngbandSystem::get_instance().build_version_expression(VersionExpression::FULL) << ": " << path.filename().string() << ':' << line << ": " << msg;
+    ss << path.filename().string() << ':' << line << ": " << msg << '\n'
+       << "Stack trace:\n"
+       << stack_trace.dump();
     throw T(ss.str());
 }
 

@@ -25,7 +25,7 @@ function BuildPackage ($package_name, $package_unique_files, $build_conf) {
     New-Item $bakabakabandDir -ItemType Directory
 
     # 必要なファイルをコピーして、その中で不要になりえるものを削除
-    Copy-Item -Verbose -Path .\Bakabakaband.exe, .\readme_angband, .\THIRD-PARTY-NOTICES.txt -Destination $bakabakabandDir
+    Copy-Item -Verbose -Path .\Bakabakaband.exe, .\Bakabakaband.pdb, .\readme_angband, .\THIRD-PARTY-NOTICES.txt -Destination $bakabakabandDir
     Copy-Item -Verbose -Path $package_unique_files -Destination $bakabakabandDir
     Copy-Item -Verbose -Recurse -Path .\lib -Destination $bakabakabandDir -Exclude Makefile.am, *.raw, .gitattributes
     Copy-Item -Verbose -Path .\lib\apex\h_scores.raw -Destination $bakabakabandDir\lib\apex
