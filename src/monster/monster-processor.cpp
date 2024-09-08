@@ -765,7 +765,6 @@ void process_monsters(PlayerType *player_ptr)
     OldRaceFlags flags(old_monrace_id);
     player_ptr->current_floor_ptr->monster_noise = false;
     sweep_monster_process(player_ptr);
-    hack_m_idx = 0;
     if (!tracker.is_tracking() || !tracker.is_tracking(old_monrace_id)) {
         return;
     }
@@ -779,10 +778,19 @@ void process_monsters(PlayerType *player_ptr)
  */
 void sweep_monster_process(PlayerType *player_ptr)
 {
-    auto *floor_ptr = player_ptr->current_floor_ptr;
-    for (MONSTER_IDX i = floor_ptr->m_max - 1; i >= 1; i--) {
-        MonsterEntity *m_ptr;
-        m_ptr = &floor_ptr->m_list[i];
+    auto &floor = *player_ptr->current_floor_ptr;
+
+    // 処理中の召喚などで生成されたモンスターが即座に行動しないようにするため、
+    // 先に現在存在するモンスターをリストアップしておく
+    std::vector<MONSTER_IDX> valid_m_idx_list;
+    for (MONSTER_IDX m_idx = floor.m_max - 1; m_idx >= 1; m_idx--) {
+        if (floor.m_list[m_idx].is_valid()) {
+            valid_m_idx_list.push_back(m_idx);
+        }
+    }
+
+    for (const auto m_idx : valid_m_idx_list) {
+        auto *m_ptr = &floor.m_list[m_idx];
 
         if (player_ptr->leaving) {
             return;
@@ -792,30 +800,25 @@ void sweep_monster_process(PlayerType *player_ptr)
             continue;
         }
 
-        if (m_ptr->mflag.has(MonsterTemporaryFlagType::BORN)) {
-            m_ptr->mflag.reset(MonsterTemporaryFlagType::BORN);
-            continue;
-        }
-
         if ((m_ptr->cdis >= MAX_MONSTER_SENSING) || !decide_process_continue(player_ptr, m_ptr)) {
             continue;
         }
 
-        byte speed = (player_ptr->riding == i) ? player_ptr->pspeed : m_ptr->get_temporary_speed();
+        byte speed = (player_ptr->riding == m_idx) ? player_ptr->pspeed : m_ptr->get_temporary_speed();
         m_ptr->energy_need -= speed_to_energy(speed);
         if (m_ptr->energy_need > 0) {
             continue;
         }
 
         m_ptr->energy_need += ENERGY_NEED();
-        hack_m_idx = i;
+        auto m_name = monster_desc(player_ptr, m_ptr, 0);
 
         if (m_ptr->death_count > 0) {
             m_ptr->death_count--;
             if (m_ptr->death_count == 0) {
                 bool fear;
                 m_ptr->max_maxhp = m_ptr->maxhp = m_ptr->hp = -1;
-                MonsterDamageProcessor mdp(player_ptr, i, 0, &fear, AttributeType::ATTACK);
+                MonsterDamageProcessor mdp(player_ptr, m_idx, 0, &fear, AttributeType::ATTACK);
                 mdp.mon_take_hit(_("は爆発した。", " explodes."));
             }
         }
@@ -835,7 +838,6 @@ void sweep_monster_process(PlayerType *player_ptr)
                 pow *= 3;
             }
             if (r_ptr.level < randint0(pow)) {
-                auto m_name = monster_desc(player_ptr, m_ptr, 0);
                 if (m_ptr->ml) {
                     msg_format(_("%sは%sに絡めとられて動けなかった！", "%s wes entangled in the %s and could not move!"), m_name.data(), f_ptr.name.data());
                 }
@@ -852,7 +854,8 @@ void sweep_monster_process(PlayerType *player_ptr)
                     case 3: {
                         bool fear = false;
                         msg_format(_("%s「イグゥ！」", "%s 'Igur!'"), m_name.data());
-                        MonsterDamageProcessor mdp(player_ptr, i, Dice::roll(1, 4), &fear, AttributeType::ATTACK);
+                        MonsterDamageProcessor mdp(player_ptr, m_idx, Dice::roll(1, 4), &fear, AttributeType::ATTACK);
+
                         if (fear) {
                             msg_format(_("%s「イッジャイましゅうう！」", "%s'I’m commingrrr!'"), m_name.data());
                         }
@@ -865,7 +868,7 @@ void sweep_monster_process(PlayerType *player_ptr)
             }
         }
 
-        process_monster(player_ptr, i);
+        process_monster(player_ptr, m_idx);
         reset_target(m_ptr);
         if (player_ptr->no_flowed && one_in_(3)) {
             m_ptr->mflag2.set(MonsterConstantFlagType::NOFLOW);
