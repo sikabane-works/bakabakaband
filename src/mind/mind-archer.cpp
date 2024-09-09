@@ -150,19 +150,16 @@ bool create_ammo(PlayerType *player_ptr)
         if (!q_ptr) {
             return false;
         }
-
-        ItemEntity forge;
-        q_ptr = &forge;
-        q_ptr->generate(baseitems.lookup_baseitem_id({ ItemKindType::ARROW, m_bonus(1, player_ptr->lev) + 1 }));
-        q_ptr->number = (byte)rand_range(5, 10);
-        object_aware(player_ptr, q_ptr);
-        q_ptr->mark_as_known();
-        ItemMagicApplier(player_ptr, q_ptr, player_ptr->lev, AM_NO_FIXED_ART).execute();
-        q_ptr->discount = 99;
-        const auto item_name = describe_flavor(player_ptr, q_ptr, 0);
+        ItemEntity ammo({ ItemKindType::ARROW, m_bonus(1, player_ptr->lev) + 1 });
+        ammo.number = (byte)rand_range(5, 10);
+        object_aware(player_ptr, &ammo);
+        ammo.mark_as_known();
+        ItemMagicApplier(player_ptr, &ammo, player_ptr->lev, AM_NO_FIXED_ART).execute();
+        ammo.discount = 99;
+        const auto item_name = describe_flavor(player_ptr, &ammo, 0);
         msg_print(_(format("%sを作った。", item_name.data()), "You make some ammo."));
         vary_item(player_ptr, i_idx, -1);
-        int16_t slot = store_item_to_inventory(player_ptr, q_ptr);
+        int16_t slot = store_item_to_inventory(player_ptr, &ammo);
         if (slot >= 0) {
             autopick_alter_item(player_ptr, slot, false);
         }
@@ -178,18 +175,16 @@ bool create_ammo(PlayerType *player_ptr)
             return false;
         }
 
-        ItemEntity forge;
-        q_ptr = &forge;
-        q_ptr->generate(baseitems.lookup_baseitem_id({ ItemKindType::BOLT, m_bonus(1, player_ptr->lev) + 1 }));
-        q_ptr->number = (byte)rand_range(4, 8);
-        object_aware(player_ptr, q_ptr);
-        q_ptr->mark_as_known();
-        ItemMagicApplier(player_ptr, q_ptr, player_ptr->lev, AM_NO_FIXED_ART).execute();
-        q_ptr->discount = 99;
-        const auto item_name = describe_flavor(player_ptr, q_ptr, 0);
+        ItemEntity ammo({ ItemKindType::BOLT, m_bonus(1, player_ptr->lev) + 1 });
+        ammo.number = (byte)rand_range(4, 8);
+        object_aware(player_ptr, &ammo);
+        ammo.mark_as_known();
+        ItemMagicApplier(player_ptr, &ammo, player_ptr->lev, AM_NO_FIXED_ART).execute();
+        ammo.discount = 99;
+        const auto item_name = describe_flavor(player_ptr, &ammo, 0);
         msg_print(_(format("%sを作った。", item_name.data()), "You make some ammo."));
         vary_item(player_ptr, i_idx, -1);
-        int16_t slot = store_item_to_inventory(player_ptr, q_ptr);
+        int16_t slot = store_item_to_inventory(player_ptr, &ammo);
         if (slot >= 0) {
             autopick_alter_item(player_ptr, slot, false);
         }
