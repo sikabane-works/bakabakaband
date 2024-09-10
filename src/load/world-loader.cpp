@@ -35,10 +35,19 @@ void rd_dungeons(PlayerType *player_ptr)
     }
 }
 
-void set_gambling_monsters(void)
+/*!
+ * @brief 現実変容処理の有無及びその残りターン数を読み込む
+ * @param player_ptr プレイヤーへの参照ポインタ
+ */
+void rd_alter_reality(PlayerType *player_ptr)
 {
-    const int max_gambling_monsters = 4;
-    for (int i = 0; i < max_gambling_monsters; i++) {
+    player_ptr->recall_dungeon = rd_s16b();
+    player_ptr->alter_reality = rd_s16b();
+}
+
+void set_gambling_monsters()
+{
+    for (auto i = 0; i < NUM_GLADIATORS; i++) {
         battle_mon_list[i] = i2enum<MonsterRaceId>(rd_s16b());
         mon_odds[i] = rd_u32b();
     }

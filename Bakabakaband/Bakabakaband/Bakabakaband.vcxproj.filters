@@ -2505,7 +2505,11 @@
     <ClCompile Include="..\..\src\tracking\health-bar-tracker.cpp">
       <Filter>tracking</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\market\melee-arena.cpp">
+      <Filter>market</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\item-info\flavor-initializer.cpp" />
+    <ClCompile Include="..\..\src\main-win\main-win-exception.cpp" />
     <ClCompile Include="..\..\src\util\candidate-selector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -5382,9 +5386,6 @@
     <ClInclude Include="..\..\src\util\sha256.h">
       <Filter>util</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\src\util\stack-trace.h">
-      <Filter>util</Filter>
-    </ClCompile>
     <ClInclude Include="..\..\src\external-lib\json.hpp">
       <Filter>external-lib</Filter>
     </ClInclude>
@@ -5430,12 +5431,16 @@
     <ClInclude Include="..\..\src\tracking\health-bar-tracker.h">
       <Filter>tracking</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\market\melee-arena.h">
+      <Filter>market</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\util\candidate-selector.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags8.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags1.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags2.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags3.h" />
     <ClInclude Include="..\..\src\monster-race\race-flags7.h" />
+    <ClInclude Include="..\..\src\util\stack-trace.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\wall.bmp" />
