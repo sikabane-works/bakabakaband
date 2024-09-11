@@ -151,6 +151,8 @@ public:
     AllianceType alliance_idx;
 
     bool is_valid() const;
+    bool is_male() const;
+    bool is_female() const;
     bool has_living_flag() const;
     bool is_explodable() const;
     bool symbol_char_is_any_of(std::string_view symbol_characters) const;
