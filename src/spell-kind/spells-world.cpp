@@ -1,4 +1,4 @@
-﻿/*
+/*
  * @brief 帰還やテレポート・レベル等、フロアを跨ぐ魔法効果の処理
  * @author Hourier
  * @date 2022/10/10
@@ -56,11 +56,10 @@ void teleport_level(PlayerType *player_ptr, MONSTER_IDX m_idx)
     std::string m_name;
     auto see_m = true;
     auto &floor = *player_ptr->current_floor_ptr;
-    auto *m_ptr = &player_ptr->current_floor_ptr->m_list[m_idx];
+    auto *m_ptr = &floor.m_list[m_idx];
     if (m_idx <= 0) {
         m_name = _("あなた", "you");
     } else {
-        auto *m_ptr = &floor.m_list[m_idx];
         m_name = monster_desc(player_ptr, m_ptr, 0);
         see_m = is_seen(player_ptr, m_ptr);
     }

@@ -379,7 +379,6 @@ int take_hit(PlayerType *player_ptr, int damage_type, int damage, std::string_vi
             player_ptr->is_dead = true;
         }
 
-        auto &world = AngbandWorld::get_instance();
         if (floor.inside_arena) {
             auto &entries = ArenaEntryList::get_instance();
             entries.set_defeated_entry();
