@@ -780,15 +780,14 @@ void wiz_zap_floor_monsters(PlayerType *player_ptr)
 /* @brief 死を欺く仕様(馬鹿馬鹿蛮怒独自実装) */
 void cheat_death(PlayerType *player_ptr, bool no_penalty)
 {
-    int16_t blank_years;
     if (!no_penalty) {
 
         switch (randint0(4)) {
 
-        case 0:
-            blank_years = Dice::roll(8, 10);
+        case 0: {
+            auto blank_years = Dice::roll(8, 10);
             player_ptr->prestige /= 2;
-            player_ptr->age += blank_years;
+            player_ptr->age += static_cast<int16_t>(blank_years);
 
             player_ptr->max_max_exp = (player_ptr->max_max_exp * 6 / (randint1(3) + 6));
             player_ptr->max_exp = player_ptr->max_max_exp;
@@ -800,16 +799,18 @@ void cheat_death(PlayerType *player_ptr, bool no_penalty)
                            "As a death penalry, you were forced to work like a slave by the wizards of Yendor at the '@' Stigmatic Graveyard for %d years!"),
                 blank_years);
             break;
+        }
 
-        case 1:
-            blank_years = Dice::roll(2, 10);
+        case 1: {
+            auto blank_years = Dice::roll(2, 10);
             player_ptr->prestige /= 2;
-            player_ptr->age += blank_years;
+            player_ptr->age += static_cast<int16_t>(blank_years);
             msg_print(_("『猿先生何も考えてないと思うよ』", "\"I think that Mr.Sawatari thinks nothing.\""));
             msg_format(_("あなたは連載%d年の間猿空間に迷い込んでいた！ついでに死んだ設定も忘れ去られていた！",
                            "You have been lost in the *S*A*R*U* space for %d years! By the way, the dead setting was also forgotten!"),
                 blank_years);
             break;
+        }
 
         case 2:
             msg_print(_("『ああ＾～生き返るわぁ＾～』", "\"Ahh~ I'm reviving~.\""));

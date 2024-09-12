@@ -50,10 +50,11 @@ bool item_tester_hook_quaff(PlayerType *player_ptr, const ItemEntity *o_ptr)
  * @param o_ptr 破壊可能かを確認したいオブジェクトの構造体参照ポインタ
  * @return オブジェクトが破壊可能ならばTRUEを返す
  */
+
 bool can_player_destroy_object(ItemEntity *o_ptr)
 {
-    auto flags = o_ptr->get_flags();
-    if (flags.has(TR_INDESTRUCTIBLE)) {
+    auto o_flags = o_ptr->get_flags();
+    if (o_flags.has(TR_INDESTRUCTIBLE)) {
         return false;
     }
 
