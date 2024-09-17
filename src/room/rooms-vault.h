@@ -1,5 +1,6 @@
 #pragma once
 
+#include "system/h-type.h"
 #include <cstdint>
 #include <map>
 #include <string>
@@ -21,8 +22,8 @@ struct vault_type {
     int min_depth = 0;
     int max_depth = 999;
     int rarity = 1;
-    std::map<char, int> feature_list;
-    std::map<char, int> feature_ap_list;
+    std::map<char, FEAT_IDX> feature_list;
+    std::map<char, FEAT_IDX> feature_ap_list;
     std::map<char, MonsterRaceId> place_monster_list;
 };
 

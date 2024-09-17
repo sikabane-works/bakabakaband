@@ -44,7 +44,7 @@ void wr_lore(MonsterRaceId r_idx)
     wr_FlagGroup(r_ptr->r_special_flags, wr_byte);
     wr_FlagGroup(r_ptr->r_misc_flags, wr_byte);
 
-    wr_s16b(r_ptr->mob_num);
+    wr_s16b(static_cast<int16_t>(r_ptr->mob_num));
     wr_s16b(r_ptr->floor_id);
 
     wr_s16b(r_ptr->defeat_level);
