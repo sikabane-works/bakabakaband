@@ -18,7 +18,7 @@ public:
     bool is_blown_away();
 
     int32_t collapse_degree{}; /*!< 時空崩壊度 */
-
+    WorldCollapsion &operator=(const WorldCollapsion &) = delete;
 };
 
 extern WorldCollapsion world_collapsion;
