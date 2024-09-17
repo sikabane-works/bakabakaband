@@ -678,6 +678,27 @@ static errr set_mon_skills(const nlohmann::json &skill_data, MonsterRaceInfo &mo
 }
 
 /*!
+ * @brief JSON Objectからモンスターのアライアンス情報をセットする
+ * @param skill_data 発動能力情報の格納されたJSON Object
+ * @param monrace 保管先のモンスター種族構造体
+ * @return エラーコード
+ */
+static errr set_mon_alliance(const nlohmann::json &alliance_data, MonsterRaceInfo &monrace)
+{
+    if (alliance_data.is_null()) {
+        return PARSE_ERROR_NONE;
+    }
+
+    for (auto a : alliance_list) {
+        if (a.second->tag == alliance_data.get<std::string>()) {
+            monrace.alliance_idx = static_cast<AllianceType>(a.second->id);
+            return PARSE_ERROR_NONE;
+        }
+    }
+    return PARSE_ERROR_INVALID_FLAG;
+}
+
+/*!
  * @brief モンスター種族情報(JSON Object)のパース関数
  * @param mon_data モンスターデータの格納されたJSON Object
  * @param head ヘッダ構造体
@@ -796,6 +817,11 @@ errr parse_monraces_info(nlohmann::json &mon_data, angband_header *)
     err = info_set_string(mon_data["flavor"], monrace.text, false);
     if (err) {
         msg_format(_("モンスター説明文読込失敗。ID: '%d'。", "Failed to load monster flavor text. ID: '%d'."), error_idx);
+        return err;
+    }
+    err = set_mon_alliance(mon_data["alliance"], monrace);
+    if (err) {
+        msg_format(_("モンスターアライアンス情報読込失敗。ID: '%d'。", "Failed to load monster alliance: '%d'."), error_idx);
         return err;
     }
 
