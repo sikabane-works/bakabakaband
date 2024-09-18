@@ -180,8 +180,6 @@ bool exe_cmd_debug(PlayerType *player_ptr, char cmd)
         default:
             return false;
         }
-
-        return true;
     case 'f':
         identify_fully(player_ptr, false);
         return true;
