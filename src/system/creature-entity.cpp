@@ -809,6 +809,22 @@ BodyStructureType CreatureEntity::get_body_structure() const
     return this->get_monrace().body_structure;
 }
 
+bool CreatureEntity::should_display_equipment_slot(int slot) const
+{
+    if (this->can_equip_to(slot)) {
+        return true;
+    }
+
+    // 体構造的に装備できない部位でも、実際にアイテムが入っているなら表示する
+    // (一覧から消すと外す手段が無くなるため)。
+    if ((slot < 0) || (static_cast<size_t>(slot) >= this->inventory.size())) {
+        return false;
+    }
+
+    const auto &item = this->inventory[slot];
+    return item && item->is_valid();
+}
+
 bool CreatureEntity::can_equip_to(int slot) const
 {
     if (slot < INVEN_MAIN_HAND || slot >= INVEN_TOTAL) {

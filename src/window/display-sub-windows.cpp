@@ -312,8 +312,14 @@ static void display_equipment(CreatureEntity &creature, const ItemTester &item_t
     const auto &[wid, hgt] = term_get_size();
     const auto &empty_symbol = BaseitemService::get_dummy_symbol();
     byte attr = TERM_WHITE;
+    // 体構造的に存在しない部位は一覧から消すため、行番号はスロット番号ではなく
+    // 実際に表示した数で数える (消した分だけ後続の行が詰まる)。
+    int cur_row = 0;
     for (const auto i_idx : INVEN_WIELDING_SLOTS) {
-        int cur_row = i_idx - INVEN_MAIN_HAND;
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         if (cur_row >= hgt) {
             break;
         }
@@ -368,9 +374,11 @@ static void display_equipment(CreatureEntity &creature, const ItemTester &item_t
             term_putstr(wid - 20, cur_row, -1, TERM_WHITE, " <-- ");
             prt(mention_use(creature, i_idx), cur_row, wid - 15);
         }
+
+        cur_row++;
     }
 
-    for (int i = INVEN_TOTAL - INVEN_MAIN_HAND; i < hgt; i++) {
+    for (int i = cur_row; i < hgt; i++) {
         term_erase(0, i);
     }
 }

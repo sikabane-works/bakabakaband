@@ -1545,6 +1545,19 @@ public:
     virtual BodyStructureType get_body_structure() const;
 
     /*!
+     * @brief 装備一覧の表示にこの部位を出すべきか判定する
+     * @param slot inventory_slot_type (INVEN_MAIN_HAND..INVEN_TOTAL-1)
+     * @return 表示すべきなら true
+     * @details 体構造的に装備できない部位は一覧から消す (四足獣に「利き腕」、
+     *          不定形に「頭」などの存在しない部位が並ぶのを防ぐ)。
+     *          ただし装備できない部位に何らかの理由で実際にアイテムが入っている
+     *          場合は、一覧から消すと外せなくなるため表示する。
+     *          装備一覧を描画する全ての箇所 (e コマンド / 装備サブウィンドウ /
+     *          c コマンドの装備ページ / キャラクタダンプ) で共用すること。
+     */
+    bool should_display_equipment_slot(int slot) const;
+
+    /*!
      * @brief 拡張装備スロット数を取得する (Phase 2)
      * @return body_structure に依存する拡張スロット数。プレイヤーは 0。
      */
