@@ -201,6 +201,12 @@ static void test_equipment_floor(CreatureEntity &creature, FloorItemSelection *f
     }
 
     for (const auto i_idx : INVEN_WIELDING_SLOTS) {
+        // show_equipment() が体構造的に存在しない部位を一覧から消すため、
+        // メニュー選択の候補数も同じ条件で数える (消した行とカーソルがずれないように)。
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         if (creature.is_select_ring_slot() ? is_ring_slot(i_idx)
                                            : item_tester.okay(creature.inventory[i_idx].get()) || (fis_ptr->mode & USE_FULL)) {
             fis_ptr->max_equip++;

@@ -43,6 +43,11 @@ COMMAND_CODE show_equipment(CreatureEntity &creature, int target_item, BIT_FLAGS
     auto len = wid - col - 1;
     k = 0;
     for (const auto i_idx : INVEN_WIELDING_SLOTS) {
+        // 体構造的に存在しない部位は一覧から消す (アイテムが入っている場合は残す)
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         const auto &item = *creature.inventory[i_idx];
         auto only_slot = !(creature.is_select_ring_slot() ? is_ring_slot(i_idx) : (item_tester.okay(&item) || any_bits(mode, USE_FULL)));
         auto is_any_hand = (i_idx == INVEN_MAIN_HAND) && can_attack_with_sub_hand(creature);

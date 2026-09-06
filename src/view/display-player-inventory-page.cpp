@@ -36,7 +36,7 @@ void display_equipment_section(CreatureEntity &creature)
 
     // 通常装備スロット: 体構造的に装備可能な部位のみ表示する (該当なしは消去)
     for (auto slot = static_cast<int>(INVEN_MAIN_HAND); slot < INVEN_TOTAL; ++slot) {
-        if (!creature.can_equip_to(slot)) {
+        if (!creature.should_display_equipment_slot(slot)) {
             continue;
         }
         const auto &item = *creature.inventory[slot];
