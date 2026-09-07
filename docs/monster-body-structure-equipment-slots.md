@@ -20,6 +20,7 @@
 | Phase 2.7 | extended_equipment_slots の JSON 個別上書き | ✅ |
 | 表示 | r recall に体構造タグ表示、装備時メッセージ | ✅ |
 | 表示 | c ステータス 1 ページ目に自分の体構造を表示 (2026-09-01) | ✅ |
+| 表示 | 装備一覧から体構造的に存在しない部位を消去 (2026-09-01) | ✅ |
 | 分類調整 | D → DRACONIC、n → HUMANOID リファインメント | ✅ |
 
 **現状分類分布**:
@@ -45,6 +46,7 @@
 - `src/view/display-player-inventory-page.{h,cpp}` (拡張部位セクション)
 - `src/view/display-lore.cpp` (体構造タグ)
 - `src/view/display-player.cpp` + `src/view/display-util.cpp` + `src/view/status-first-page.h` (c ステータスの体構造行)
+- `src/view/display-player-inventory-page.cpp` (c コマンド装備ページの `display_equipment_section()`) + `src/window/main-window-equipments.cpp` + `src/window/display-sub-windows.cpp` + `src/io-dump/character-dump.cpp` + `src/inventory/floor-item-getter.cpp` (装備一覧から非該当部位を消去)
 - `src/test/system/monrace/test-body-structure-policy.cpp` (ポリシー・表示名のユニットテスト)
 - `src/monster-floor/monster-object.cpp` (装備時メッセージ)
 - `lib/edit/MonraceDefinitions.jsonc` (全モンスターの body_structure 設定)
@@ -504,6 +506,46 @@ ExtendedSlot 参照は `creature.get_extended_inventory(slot_id)`
 
 ---
 
+## 装備一覧表示からの非該当部位の消去 (2026-09-01)
+
+体構造的に装備できない部位は、装備一覧に「(なし)」として並べても意味が無い
+(四足獣に「利き腕」、不定形に「頭」が並ぶ) ため、**一覧から消去**する。
+
+判定は `CreatureEntity::should_display_equipment_slot(slot)` に集約する。
+
+```cpp
+// 装備できる部位は当然表示する。
+// 装備できない部位でも、実際にアイテムが入っているなら表示する
+// (消すと外す手段が無くなるため)。
+bool should_display_equipment_slot(int slot) const;
+```
+
+**適用箇所 (空きスロットを並べる表示すべて):**
+
+| 箇所 | 関数 |
+|---|---|
+| `e` コマンド / アイテム選択の装備一覧 | `show_equipment()` (`window/main-window-equipments.cpp`) |
+| 装備サブウィンドウ | `display_equipment()` (`window/display-sub-windows.cpp`) |
+| c コマンド「装備＆所持品」ページ | `display_equipment_section()` (`view/display-player-inventory-page.cpp`) |
+| キャラクタダンプ | `dump_aux_equipment_inventory()` (`io-dump/character-dump.cpp`) |
+| メニュー選択の候補数 | `test_equipment_floor()` (`inventory/floor-item-getter.cpp`) |
+
+**注意点:**
+
+- **装備サブウィンドウは行番号がスロット番号由来だった**ため、実際に表示した数を
+  数える running counter へ変更した (消した分だけ後続行が詰まる)。末尾の消去範囲も
+  固定値 `INVEN_TOTAL - INVEN_MAIN_HAND` から実際の表示行数に変更。人型では
+  従来と同じ 13 行になるため挙動は不変。
+- **メニュー選択 (`use_menu`) の候補数を同じ条件で数える必要がある。**
+  `test_equipment_floor()` が `show_equipment()` と別に候補数を数えており、
+  条件がずれるとカーソル位置と表示行がずれる。
+- ラベル (`prepare_label_string()` / `index_to_label()`) は**スロット番号由来**なので、
+  行を消してもラベルは変わらない (詰めても `a) b) c)` が振り直されることはない)。
+- 実際に持っているアイテムを隠さない方針のため、`equippy` のシンボル行
+  (`display_player_equippy()`) は変更不要 (空きスロットは元々空白で描画される)。
+
+---
+
 ## 未決事項 / 検討項目
 
 1. **AMORPHOUS のリング装備可否**: スライムは「擬足にリングをはめる」
@@ -543,3 +585,4 @@ ExtendedSlot 参照は `creature.get_extended_inventory(slot_id)`
 |---|---|---|
 | 2026-05-14 | 初版設計提案 | Claude Code (claude/monster-stealth-perception-e6cuk) |
 | 2026-09-01 | c ステータス 1 ページ目に体構造を表示。表示名/表示色を `body_structure_name()` / `body_structure_color()` に集約し r recall と共用。`CreatureEntity::get_body_structure()` を新設 | Claude Code (claude/creature-entity-integration-zzgibe) |
+| 2026-09-01 | 装備一覧 (e コマンド / 装備サブウィンドウ / キャラクタダンプ / c 装備ページ) から体構造的に存在しない部位を消去。判定を `CreatureEntity::should_display_equipment_slot()` に集約 | Claude Code (claude/creature-entity-integration-zzgibe) |

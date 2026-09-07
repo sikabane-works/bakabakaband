@@ -498,6 +498,11 @@ static void dump_aux_equipment_inventory(CreatureEntity &creature, FILE *fff)
     if (creature.get_equip_cnt()) {
         fmt::println(fff, _("  [キャラクタの装備]\n", "  [Character Equipment]\n"));
         for (const auto i_idx : INVEN_WIELDING_SLOTS) {
+            // 体構造的に存在しない部位は出力しない (アイテムが入っている場合は残す)
+            if (!creature.should_display_equipment_slot(i_idx)) {
+                continue;
+            }
+
             auto item_name = describe_flavor(creature, *creature.inventory[i_idx], 0);
             auto is_two_handed = ((i_idx == INVEN_MAIN_HAND) && can_attack_with_sub_hand(creature));
             is_two_handed |= ((i_idx == INVEN_SUB_HAND) && can_attack_with_main_hand(creature));
