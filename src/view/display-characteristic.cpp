@@ -21,6 +21,7 @@
 #include "term/screen-processor.h"
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
+#include "view/display-util.h"
 #include <array>
 #include <string>
 #include <unordered_map>
@@ -109,6 +110,11 @@ static void process_cursed_equipment_characteristics(CreatureEntity &creature, u
 {
     const auto range = (mode & DP_WP) ? INVEN_WEAPON_SLOTS : INVEN_WIELDING_SLOTS;
     for (const auto i_idx : range) {
+        // 体構造的に存在しない部位は列ごと消す (列見出しと同条件)
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         auto *o_ptr = creature.inventory[i_idx].get();
         auto is_known = o_ptr->is_known();
         auto is_sensed = is_known || o_ptr->ident.has(IdentificationFlag::SENSE);
@@ -158,6 +164,11 @@ static void process_light_equipment_characteristics(CreatureEntity &creature, al
 {
     const auto range = (mode & DP_WP) ? INVEN_WEAPON_SLOTS : INVEN_WIELDING_SLOTS;
     for (const auto i_idx : range) {
+        // 体構造的に存在しない部位は列ごと消す (列見出しと同条件)
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         auto *o_ptr = creature.inventory[i_idx].get();
         auto flags = o_ptr->get_flags_known();
 
@@ -213,6 +224,11 @@ static void process_inventory_characteristic(CreatureEntity &creature, tr_type f
 {
     const auto range = (mode & DP_WP) ? INVEN_WEAPON_SLOTS : INVEN_WIELDING_SLOTS;
     for (const auto i_idx : range) {
+        // 体構造的に存在しない部位は列ごと消す (列見出しと同条件)
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         auto *o_ptr = creature.inventory[i_idx].get();
         auto flags = o_ptr->get_flags_known();
 
@@ -340,7 +356,7 @@ static void display_basic_resistance_info(
     TERM_LEN row = 12;
     TERM_LEN col = 1;
     (*display_player_equippy)(creature, row - 2, col + 8, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 8);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 8);
 
     process_one_characteristic(creature, row++, col, _("耐酸  :", "Acid  :"), TR_RES_ACID, f, 0);
     process_one_characteristic(creature, row++, col, _("耐電撃:", "Elec  :"), TR_RES_ELEC, f, 0);
@@ -366,7 +382,7 @@ static void display_advanced_resistance_info(
     TERM_LEN row = 12;
     TERM_LEN col = 26;
     (*display_player_equippy)(creature, row - 2, col + 8, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 8);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 8);
 
     process_one_characteristic(creature, row++, col, _("耐轟音:", "Sound :"), TR_RES_SOUND, f, 0);
     process_one_characteristic(creature, row++, col, _("耐地獄:", "Nether:"), TR_RES_NETHER, f, 0);
@@ -391,7 +407,7 @@ static void display_other_resistance_info(
     TERM_LEN row = 12;
     TERM_LEN col = 51;
     (*display_player_equippy)(creature, row - 2, col + 12, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 12);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 12);
 
     process_one_characteristic(creature, row++, col, _("加速      :", "Speed     :"), TR_SPEED, f, 0);
     process_one_characteristic(creature, row++, col, _("耐麻痺    :", "FreeAction:"), TR_FREE_ACT, f, 0);
@@ -449,7 +465,7 @@ static void display_slay_info(CreatureEntity &creature, void (*display_player_eq
     TERM_LEN row = 3;
     TERM_LEN col = 1;
     (*display_player_equippy)(creature, row - 2, col + 14, DP_WP);
-    c_put_str(TERM_WHITE, "abc@", row - 1, col + 14);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature, true), row - 1, col + 14);
 
     process_one_characteristic(creature, row++, col, _("邪悪    倍打:", "Slay Evil   :"), TR_SLAY_EVIL, f, DP_WP);
     process_one_characteristic(creature, row++, col, _("善良    倍打:", "Slay Good   :"), TR_SLAY_GOOD, f, DP_WP);
@@ -476,7 +492,7 @@ static void display_brand_info(CreatureEntity &creature, void (*display_player_e
     TERM_LEN row = 3;
     TERM_LEN col = 1;
     (*display_player_equippy)(creature, row - 2, col + 14, DP_WP);
-    c_put_str(TERM_WHITE, "abc@", row - 1, col + 14);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature, true), row - 1, col + 14);
     process_one_characteristic(creature, row++, col, _("溶解        :", "Acid Brand  :"), TR_BRAND_ACID, f, DP_WP);
     process_one_characteristic(creature, row++, col, _("電撃        :", "Elec Brand  :"), TR_BRAND_ELEC, f, DP_WP);
     process_one_characteristic(creature, row++, col, _("焼棄        :", "Fire Brand  :"), TR_BRAND_FIRE, f, DP_WP);
@@ -505,7 +521,7 @@ static void display_tval_misc_info(
     TERM_LEN row = 3;
     TERM_LEN col = 49;
     (*display_player_equippy)(creature, row - 2, col + 14, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 14);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 14);
 
     process_one_characteristic(creature, row++, col, _("追加攻撃    :", "Add Blows   :"), TR_BLOWS, f, 0);
     process_one_characteristic(creature, row++, col, _("採掘        :", "Add Tunnel  :"), TR_TUNNEL, f, 0);
@@ -535,7 +551,7 @@ static void display_esc_info(CreatureEntity &creature, void (*display_player_equ
     TERM_LEN row = 3;
     TERM_LEN col = 21;
     (*display_player_equippy)(creature, row - 2, col + 13, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 13);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 13);
     process_one_characteristic(creature, row++, col, _("テレパシー :", "Telepathy  :"), TR_TELEPATHY, f, 0);
     process_one_characteristic(creature, row++, col, _("邪悪    ESP:", "ESP Evil   :"), TR_ESP_EVIL, f, 0);
     process_one_characteristic(creature, row++, col, _("無生物  ESP:", "ESP Noliv. :"), TR_ESP_NONLIVING, f, 0);
@@ -563,7 +579,7 @@ static void display_stustain_aura_info(
     TERM_LEN row = 3;
     TERM_LEN col = 21;
     (*display_player_equippy)(creature, row - 2, col + 12, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 12);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 12);
 
     process_one_characteristic(creature, row++, col, _("腕力  維持:", "Sust Str  :"), TR_SUST_STR, f, 0);
     process_one_characteristic(creature, row++, col, _("知力  維持:", "Sust Int  :"), TR_SUST_INT, f, 0);
@@ -594,7 +610,7 @@ static void display_curse_info(CreatureEntity &creature, void (*display_player_e
     TERM_LEN row = 3;
     TERM_LEN col = 49;
     (*display_player_equippy)(creature, row - 2, col + 14, 0);
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row - 1, col + 14);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row - 1, col + 14);
 
     process_one_characteristic(creature, row++, col, _("太古の怨念  :", "TY Curse    :"), TR_TY_CURSE, f, 0);
     process_one_characteristic(creature, row++, col, _("反感        :", "Aggravate   :"), TR_AGGRAVATE, f, 0);

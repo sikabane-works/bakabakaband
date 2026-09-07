@@ -415,7 +415,17 @@ tl::optional<int> display_player(CreatureEntity &creature, const int tmp_mode)
 void display_player_equippy(CreatureEntity &creature, TERM_LEN y, TERM_LEN x, BIT_FLAGS16 mode)
 {
     const auto range = (mode & DP_WP) ? INVEN_WEAPON_SLOTS : INVEN_WIELDING_SLOTS;
+    TERM_LEN offset = 0;
+    TERM_LEN slot_count = 0;
     for (const auto i_idx : range) {
+        slot_count++;
+
+        // 体構造的に存在しない部位は列ごと詰める。特性フラグ一覧のラベル行
+        // (build_equipment_column_labels) と同じ規則で並べる必要がある。
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         const auto &item = *creature.inventory[i_idx];
         auto symbol = item.get_symbol();
         if (!equippy_chars || !item.is_valid()) {
@@ -423,6 +433,13 @@ void display_player_equippy(CreatureEntity &creature, TERM_LEN y, TERM_LEN x, BI
             symbol.character = ' ';
         }
 
-        term_putch(x + i_idx - INVEN_MAIN_HAND, y, symbol);
+        term_putch(x + offset, y, symbol);
+        offset++;
+    }
+
+    // 消した部位の分だけ右側に列が余る。メインウィンドウのサイドバーは描画前に
+    // 画面クリアされないため、古いシンボルが残らないよう空白で埋めておく。
+    for (auto i = offset; i < slot_count; i++) {
+        term_putch(x + i, y, { TERM_DARK, ' ' });
     }
 }
