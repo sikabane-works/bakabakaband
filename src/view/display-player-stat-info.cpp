@@ -23,6 +23,7 @@
 #include "term/term-color-types.h"
 #include "util/bit-flags-calculator.h"
 #include "view/display-symbol.h"
+#include "view/display-util.h"
 
 /*!
  * @brief プレイヤーのパラメータ基礎値 (腕力等)を18以下になるようにして返す
@@ -203,6 +204,11 @@ static DisplaySymbol compensate_stat_by_weapon(uint8_t color, ItemEntity *o_ptr,
 static void display_equipments_compensation(CreatureEntity &creature, int row, int *col)
 {
     for (const auto i_idx : INVEN_WIELDING_SLOTS) {
+        // 体構造的に存在しない部位は列ごと消す (列見出しと同条件)
+        if (!creature.should_display_equipment_slot(i_idx)) {
+            continue;
+        }
+
         ItemEntity *o_ptr;
         o_ptr = creature.inventory[i_idx].get();
         auto flags = o_ptr->get_flags_known();
@@ -389,7 +395,7 @@ void display_player_stat_info(CreatureEntity &creature)
     process_stats(creature, row, stat_col);
 
     int col = stat_col + 41;
-    c_put_str(TERM_WHITE, "abcdefghijkl@", row, col);
+    c_put_str(TERM_WHITE, build_equipment_column_labels(creature), row, col);
     c_put_str(TERM_L_GREEN, _("能力修正", "Modification"), row - 1, col);
 
     display_equipments_compensation(creature, row, &col);

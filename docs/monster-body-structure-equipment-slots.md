@@ -21,6 +21,7 @@
 | 表示 | r recall に体構造タグ表示、装備時メッセージ | ✅ |
 | 表示 | c ステータス 1 ページ目に自分の体構造を表示 (2026-09-01) | ✅ |
 | 表示 | 装備一覧から体構造的に存在しない部位を消去 (2026-09-01) | ✅ |
+| 表示 | 特性フラグ一覧・能力修正表の装備列から非該当部位を消去 (2026-09-01) | ✅ |
 | 分類調整 | D → DRACONIC、n → HUMANOID リファインメント | ✅ |
 
 **現状分類分布**:
@@ -47,6 +48,7 @@
 - `src/view/display-lore.cpp` (体構造タグ)
 - `src/view/display-player.cpp` + `src/view/display-util.cpp` + `src/view/status-first-page.h` (c ステータスの体構造行)
 - `src/view/display-player-inventory-page.cpp` (c コマンド装備ページの `display_equipment_section()`) + `src/window/main-window-equipments.cpp` + `src/window/display-sub-windows.cpp` + `src/io-dump/character-dump.cpp` + `src/inventory/floor-item-getter.cpp` (装備一覧から非該当部位を消去)
+- `src/view/display-characteristic.cpp` + `src/view/display-player-stat-info.cpp` + `src/view/display-util.{h,cpp}` + `src/view/display-player.cpp` (特性フラグ表・能力修正表の装備列を消去、列見出しの動的生成)
 - `src/test/system/monrace/test-body-structure-policy.cpp` (ポリシー・表示名のユニットテスト)
 - `src/monster-floor/monster-object.cpp` (装備時メッセージ)
 - `lib/edit/MonraceDefinitions.jsonc` (全モンスターの body_structure 設定)
@@ -546,6 +548,47 @@ bool should_display_equipment_slot(int slot) const;
 
 ---
 
+## 装備部位ごとに列を並べる表からの非該当部位の消去 (2026-09-01)
+
+c コマンドの能力詳細ページには、**装備部位ごとに 1 列**を並べる表が複数ある。
+これらも装備一覧と同じく、体構造的に存在しない部位は**列ごと消す**。
+
+**対象の表:**
+
+| ページ | 表 | 描画 |
+|---|---|---|
+| 2 | 能力修正 (STR/INT/… × 装備) | `display_equipments_compensation()` (`view/display-player-stat-info.cpp`) |
+| 2 | 基本耐性 / 上位耐性 / その他耐性 | `display_*_resistance_info()` (`view/display-characteristic.cpp`) |
+| 3 | 倍打 / 属性ブランド (武器スロットのみ) | `display_slay_info()` / `display_brand_info()` |
+| 3-4 | その他特性 / ESP / オーラ 等 | `display_*_info()` |
+
+**列見出しの動的生成:** 見出しはハードコードの `"abcdefghijkl@"` / `"abc@"` だったが、
+消した部位に合わせる必要があるため `build_equipment_column_labels()`
+(`view/display-util.{h,cpp}`) で生成する。文字は装備一覧と同じくスロット由来
+(`INVEN_MAIN_HAND` が `'a'`) なので、**部位を消しても残った列の文字は変わらない**
+(四足獣なら `fhj@`)。
+
+**列を並べる 3 者は必ず同じ条件で詰めること:**
+
+1. 症状文字を組み立てる `process_*_characteristics()` (`display-characteristic.cpp`)
+2. 装備シンボル行 `display_player_equippy()` (`display-player.cpp`)
+3. 列見出し `build_equipment_column_labels()` (`display-util.cpp`)
+
+**あわせて修正した既存の列ズレ:** 装備スロットは
+`INVEN_MAIN_HAND`(24)〜`INVEN_ASSHOLE`(36) の **13 個**だが、従来の見出しは
+`abcdefghijkl` の **12 文字** ＋ `@` だった。このため 13 列目 (尻の穴) に見出しが無く、
+`@` (クリーチャー自身の欄) が 13 列目の上にずれていた。動的生成により
+`abcdefghijklm@` の 14 文字となり解消する (人型の表示が 1 列分変わる)。
+`INVEN_ASSHOLE` 追加時の取りこぼしと思われる。武器スロット限定の表の見出し
+`"abc@"` は 3 スロット ＋ `@` で元々正しかった。
+
+**`display_player_equippy()` の余白埋め:** メインウィンドウのサイドバー
+(`ROW_EQUIPPY`) は描画前に画面クリアされないため、列が減ったときに古いシンボルが
+残らないよう、消した分を空白で埋めている (c コマンドの各表は `clear_from(0)` 後に
+描画されるので本来は不要だが、共通の描画関数なので一律で行う)。
+
+---
+
 ## 未決事項 / 検討項目
 
 1. **AMORPHOUS のリング装備可否**: スライムは「擬足にリングをはめる」
@@ -586,3 +629,4 @@ bool should_display_equipment_slot(int slot) const;
 | 2026-05-14 | 初版設計提案 | Claude Code (claude/monster-stealth-perception-e6cuk) |
 | 2026-09-01 | c ステータス 1 ページ目に体構造を表示。表示名/表示色を `body_structure_name()` / `body_structure_color()` に集約し r recall と共用。`CreatureEntity::get_body_structure()` を新設 | Claude Code (claude/creature-entity-integration-zzgibe) |
 | 2026-09-01 | 装備一覧 (e コマンド / 装備サブウィンドウ / キャラクタダンプ / c 装備ページ) から体構造的に存在しない部位を消去。判定を `CreatureEntity::should_display_equipment_slot()` に集約 | Claude Code (claude/creature-entity-integration-zzgibe) |
+| 2026-09-01 | 特性フラグ一覧・能力修正表の装備列からも非該当部位を消去。列見出しを `build_equipment_column_labels()` で動的生成し、`INVEN_ASSHOLE` 分の列ズレも解消 | Claude Code (claude/creature-entity-integration-zzgibe) |
