@@ -123,6 +123,12 @@
                         "minimum": 0,
                         "maximum": 128
                     },
+                    "max_level": {
+                        "type": "integer",
+                        "description": "生成上限階層。この階層より深い階では通常生成されない (召喚・変身等の一般生成ルーチンも含む)。level 以上を指定すること。省略時は無制限",
+                        "minimum": 0,
+                        "maximum": 127
+                    },
                     "rarity": {
                         "type": "integer",
                         "description": "出現頻度。高いほど出にくい",

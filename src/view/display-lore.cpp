@@ -226,11 +226,19 @@ void display_where_to_appear_summary(lore_type *lore_ptr)
         hooked_roff(_("出現:町 ", "live:town "));
         lore_ptr->old = true;
     } else if (lore_ptr->monrace->r_tkills || lore_ptr->know_everything) {
+        const auto &max_level = lore_ptr->monrace->max_level;
         if (depth_in_feet) {
-            hooked_roff(format(
-                _("出現:%d フィート ", "depth:%d ft "), lore_ptr->monrace->level * 50));
+            if (max_level) {
+                hooked_roff(format(_("出現:%d-%d フィート ", "depth:%d-%d ft "), lore_ptr->monrace->level * 50, *max_level * 50));
+            } else {
+                hooked_roff(format(_("出現:%d フィート ", "depth:%d ft "), lore_ptr->monrace->level * 50));
+            }
         } else {
-            hooked_roff(format(_("出現:%d階 ", "depth:%d F "), lore_ptr->monrace->level));
+            if (max_level) {
+                hooked_roff(format(_("出現:%d-%d階 ", "depth:%d-%d F "), lore_ptr->monrace->level, *max_level));
+            } else {
+                hooked_roff(format(_("出現:%d階 ", "depth:%d F "), lore_ptr->monrace->level));
+            }
         }
     }
 }
@@ -247,11 +255,20 @@ bool display_where_to_appear(lore_type *lore_ptr)
         hooked_roff(format(_("%s^は町に住み", "%s^ lives in the town"), Who::who(lore_ptr->msex).data()));
         lore_ptr->old = true;
     } else if (lore_ptr->monrace->r_tkills || lore_ptr->know_everything) {
+        const auto &max_level = lore_ptr->monrace->max_level;
+        const auto who = Who::who(lore_ptr->msex);
         if (depth_in_feet) {
-            hooked_roff(format(
-                _("%s^は通常地下 %d フィートで出現し", "%s^ is normally found at depths of %d feet"), Who::who(lore_ptr->msex).data(), lore_ptr->monrace->level * 50));
+            if (max_level) {
+                hooked_roff(format(_("%s^は通常地下 %d フィートから %d フィートの間で出現し", "%s^ is normally found at depths of %d to %d feet"), who.data(), lore_ptr->monrace->level * 50, *max_level * 50));
+            } else {
+                hooked_roff(format(_("%s^は通常地下 %d フィートで出現し", "%s^ is normally found at depths of %d feet"), who.data(), lore_ptr->monrace->level * 50));
+            }
         } else {
-            hooked_roff(format(_("%s^は通常地下 %d 階で出現し", "%s^ is normally found on dungeon level %d"), Who::who(lore_ptr->msex).data(), lore_ptr->monrace->level));
+            if (max_level) {
+                hooked_roff(format(_("%s^は通常地下 %d 階から %d 階の間で出現し", "%s^ is normally found on dungeon levels %d to %d"), who.data(), lore_ptr->monrace->level, *max_level));
+            } else {
+                hooked_roff(format(_("%s^は通常地下 %d 階で出現し", "%s^ is normally found on dungeon level %d"), who.data(), lore_ptr->monrace->level));
+            }
         }
 
         lore_ptr->old = true;
