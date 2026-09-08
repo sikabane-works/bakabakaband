@@ -1,6 +1,7 @@
 #include "info-reader/race-reader.h"
 #include "alliance/alliance.h"
 #include "artifact/fixed-art-types.h"
+#include "floor/floor-base-definitions.h"
 #include "info-reader/info-reader-util.h"
 #include "info-reader/json-reader-util.h"
 #include "info-reader/parse-error-types.h"
@@ -1533,6 +1534,19 @@ errr RaceReader::read()
     if (err) {
         msg_format(_("モンスターレベル読込失敗。ID: '%d'。", "Failed to load monster level. ID: '%d'."), error_idx);
         return err;
+    }
+    DEPTH max_level = 0;
+    err = info_set_integer(mon_data["max_level"], max_level, false, Range(0, MAX_DEPTH - 1));
+    if (err) {
+        msg_format(_("モンスター生成上限階層読込失敗。ID: '%d'。", "Failed to load monster max level. ID: '%d'."), error_idx);
+        return err;
+    }
+    if (!mon_data["max_level"].is_null()) {
+        if (max_level < monrace.level) {
+            msg_format(_("モンスター生成上限階層が出現階層未満。ID: '%d'。", "Monster max level is lower than its level. ID: '%d'."), error_idx);
+            return PARSE_ERROR_INVALID_FLAG;
+        }
+        monrace.max_level = max_level;
     }
     err = info_set_integer(mon_data["rarity"], monrace.rarity, true, Range(0, 255));
     if (err) {

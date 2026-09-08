@@ -184,6 +184,7 @@ public:
     MonraceId transform_r_idx{}; //!< 変身先モンスター種族ID
     PERCENTAGE transform_hp_threshold{}; //!< 変身するHP閾値(最大HPの%)
     DEPTH level{}; //!< レベル / Level of creature
+    tl::optional<DEPTH> max_level{}; //!< 生成上限階層 (この階層より深い階では通常生成されない。未指定なら無制限)
     RARITY rarity{}; //!< レアリティ / Rarity of creature
     DisplaySymbol symbol_definition{}; //!< 定義上のシンボル (色/文字).
     DisplaySymbol symbol_config{}; //!< 設定したシンボル (色/文字).
@@ -287,6 +288,7 @@ public:
     bool is_suitable_for_figurine() const;
     bool can_entry_arena() const;
     bool is_suitable_for_nightmare(int min_level) const;
+    bool is_too_deep_to_generate(int floor_level) const;
     bool is_human() const;
     bool is_eatable_human() const;
     bool is_catchable_for_fishing() const;

@@ -565,6 +565,17 @@ bool MonraceDefinition::is_suitable_for_nightmare(int min_level) const
     return this->misc_flags.has(MonsterMiscType::ELDRITCH_HORROR) && (this->level > min_level);
 }
 
+/*!
+ * @brief 生成上限階層を超えた階か否かを判定する
+ * @param floor_level 生成階層
+ * @return 上限階層 (max_level) が指定されており、かつ floor_level がそれより深ければ true
+ * @details 未指定 (tl::nullopt) の場合は常に false (上限なし)
+ */
+bool MonraceDefinition::is_too_deep_to_generate(int floor_level) const
+{
+    return this->max_level.has_value() && (floor_level > *this->max_level);
+}
+
 bool MonraceDefinition::is_human() const
 {
     return this->symbol_char_is_any_of("pht");

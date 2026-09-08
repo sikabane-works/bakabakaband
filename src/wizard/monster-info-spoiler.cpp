@@ -184,6 +184,9 @@ SpoilerOutputResultType spoil_mon_info()
         spoil_out("=== ");
         spoil_out(fmt::format("Num:{}  ", enum2i(monrace_id)));
         spoil_out(fmt::format("Lev:{}  ", monrace.level));
+        if (monrace.max_level) {
+            spoil_out(fmt::format("MaxLev:{}  ", *monrace.max_level));
+        }
         spoil_out(fmt::format("Rar:{}  ", monrace.rarity));
         spoil_out(format("Spd:%+d  ", monrace.speed - STANDARD_SPEED));
         if (monrace.misc_flags.has(MonsterMiscType::FORCE_MAXHP) || (monrace.hit_dice.sides == 1)) {

@@ -1127,6 +1127,40 @@ per-turn で発火しない（切り傷・毒の inflict 経路が無い）」�
   ではHPが膨張する** (約 152 体が 1.5 倍超)。バランス調整が必要な個体に
   `hit_point_per_level` を明示指定して上書きする。
 
+### モンスターの生成上限階層 (`max_level`) — Issue #1019
+
+`MonraceDefinition` に `tl::optional<DEPTH> max_level`
+(`src/system/monrace/monrace-definition.h`) を持ち、JSON
+`lib/edit/MonraceDefinitions.jsonc` で「この階層より深い階では通常生成されない」
+上限階層を任意指定できる。既存の `level` (出現最低階層) と対になる指定で、
+**未指定 (キー省略 = `tl::nullopt`) なら上限なし＝従来通り**。
+
+```jsonc
+"level": 5,       // 出現最低階層 (必須・従来通り)
+"max_level": 20   // 生成上限階層 (任意)。地下 21 階以深では通常生成されない
+```
+
+- **意味:** `max_level` は**生成可能な最深階 (inclusive)**。`level <= 現在階 <= max_level`
+  の範囲で生成される。reader は `max_level < level` をエラー (`PARSE_ERROR_INVALID_FLAG`)
+  として弾く。値域は `0..MAX_DEPTH-1`。
+- **判定:** `MonraceDefinition::is_too_deep_to_generate(floor_level)`
+  (`max_level && floor_level > *max_level`) を、一般生成フィルタ
+  `MonraceAllocationEntry::is_permitted(threshold_level)`
+  (`src/system/monrace/monrace-allocation.cpp`) に `FORCE_DEPTH` の最低階判定と同列で
+  組み込んである。`is_permitted` は `get_mon_num_prep_enum` / `_escort` / `_summon` / `_bounty`
+  等の一般生成テーブル構築 (通常フロア生成・召喚・polymorph・pit/nest 等の共通経路) が
+  `floor.dun_level` を渡して呼ぶため、**「一般に生成されない」の範囲は FORCE_DEPTH と
+  同じ**。闘技場 (phase-out) 中は `is_permitted` 自体が呼ばれないため対象外。
+  カメレオンの擬態 (`get_mon_num_prep_chameleon`) も FORCE_DEPTH 同様 `is_permitted` を
+  通らないため対象外。ウィザードコマンド等による直接指定生成・固定クエスト配置・
+  `dead_spawns` 等の個別 ID 指定生成も制限しない。
+- **表示:** 思い出 (`display-lore.cpp`) は上限指定時に「通常地下 X 階から Y 階の間で
+  出現し」/ サマリ「出現:X-Y階」の範囲表記になる。スポイラー
+  (`monster-info-spoiler.cpp`) には `MaxLev:` を追記。
+- スキーマ `schema/MonraceDefinitions.schema.json` に `max_level` を登録済
+  (`level` と同じ整数、`maximum` 127)。実データはこの機能追加時点では未指定
+  (バランス不変)。
+
 ### セーブ/ロードの統合 (CreatureEntity 共通シリアライズ) — フェーズ 1〜4
 
 旧 PlayerType / 旧 MonsterEntity に分かれていたセーブ/ロード処理を、
