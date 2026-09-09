@@ -19,3 +19,18 @@ class CreatureEntity;
  *          引き続き死亡時に行う。
  */
 void generate_monster_drop_items(CreatureEntity &player, CreatureEntity &monster);
+
+/*!
+ * @brief SOLDIER フラグを持つモンスターに初期装備の近接武器を持たせる。
+ * @param monster 対象モンスター
+ * @details 兵士は得物を携えているのが自然なため、生成時に種族レベル相応の
+ *          近接武器を 1 本与えて利き手に装備させる。体構造的に武器を持てない
+ *          個体 (四足・不定形・非実体等) と、既に利き手が埋まっている個体は対象外。
+ *          **モンスターの装備武器は近接ダメージに加算される**
+ *          (`calc_weapon_melee_damage`) ため、これは SOLDIER 持ちモンスターへの
+ *          バランス変更を伴う。武器の格は `decide_soldier_weapon()` の
+ *          レベル帯テーブルで調整すること。
+ *          一般ドロップ (`generate_monster_drop_items`) より先に呼び、
+ *          利き手を初期武器が確保できるようにする。
+ */
+void equip_soldier_initial_weapon(CreatureEntity &monster);

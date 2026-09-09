@@ -5,20 +5,27 @@
 
 #include "monster-floor/monster-drop-generator.h"
 #include "floor/floor-object.h"
+#include "inventory/inventory-slot-types.h"
 #include "monster-race/race-drop-flags.h"
 #include "monster-race/race-kind-flags.h"
 #include "monster-race/race-misc-flags.h"
 #include "object-enchant/item-apply-magic.h"
+#include "object/tval-types.h"
+#include "sv-definition/sv-weapon-types.h"
 #include "system/angband-system.h"
+#include "system/baseitem/baseitem-key.h"
 #include "system/creature-entity.h"
 #include "system/floor/floor-info.h"
+#include "system/item-entity.h"
 #include "system/monrace/monrace-definition.h"
 #include "system/services/baseitem-monrace-service.h"
+#include "term/z-rand.h"
 #include "util/dice.h"
 #include "util/enum-converter.h"
 #include "util/probability-table.h"
 #include <algorithm>
 #include <limits>
+#include <vector>
 
 namespace {
 /*!
@@ -78,6 +85,52 @@ int decide_drop_numbers(const CreatureEntity &monster, const MonraceDefinition &
     }
     return drop_numbers;
 }
+
+/*!
+ * @brief 兵士モンスターのレベル帯ごとの近接武器候補
+ * @details 先頭から順に `monrace.level >= min_level` で最初に一致した段を使い、
+ *          その候補から 1 つを等確率で選ぶ。階級が上がるほど上等な得物になる。
+ *          **装備武器の打撃ダイスはモンスターの近接ダメージへ加算される**ため、
+ *          この表がそのまま SOLDIER 持ちモンスターの強化量になる。バランス調整は
+ *          ここで行うこと。
+ */
+struct SoldierWeaponTier {
+    int min_level; //!< この段が適用される最低種族レベル
+    std::vector<BaseitemKey> candidates; //!< 等確率で選ぶ武器候補
+};
+
+const std::vector<SoldierWeaponTier> &get_soldier_weapon_tiers()
+{
+    static const std::vector<SoldierWeaponTier> tiers = {
+        { 40, { { ItemKindType::SWORD, SV_TWO_HANDED_SWORD }, { ItemKindType::POLEARM, SV_LOCHABER_AXE }, { ItemKindType::POLEARM, SV_GREAT_AXE } } },
+        { 30, { { ItemKindType::SWORD, SV_KATANA }, { ItemKindType::POLEARM, SV_HALBERD }, { ItemKindType::POLEARM, SV_BATTLE_AXE } } },
+        { 20, { { ItemKindType::SWORD, SV_LONG_SWORD }, { ItemKindType::POLEARM, SV_BROAD_SPEAR }, { ItemKindType::POLEARM, SV_BROAD_AXE } } },
+        { 10, { { ItemKindType::SWORD, SV_TULWAR }, { ItemKindType::POLEARM, SV_AWL_PIKE }, { ItemKindType::HAFTED, SV_MACE } } },
+        { 5, { { ItemKindType::SWORD, SV_SHORT_SWORD }, { ItemKindType::POLEARM, SV_SPEAR }, { ItemKindType::HAFTED, SV_WHIP } } },
+        { 0, { { ItemKindType::SWORD, SV_DAGGER }, { ItemKindType::HAFTED, SV_CLUB }, { ItemKindType::POLEARM, SV_SICKLE } } },
+    };
+
+    return tiers;
+}
+
+/*!
+ * @brief 種族レベルに応じた兵士の初期武器を 1 つ選ぶ
+ * @param level モンスター種族のレベル
+ * @return 選ばれた武器のベースアイテムキー
+ */
+BaseitemKey decide_soldier_weapon(int level)
+{
+    for (const auto &tier : get_soldier_weapon_tiers()) {
+        if (level < tier.min_level) {
+            continue;
+        }
+
+        return rand_choice(tier.candidates);
+    }
+
+    // 最下段の min_level が 0 のため通常ここには来ないが、防御的に短剣を返す。
+    return { ItemKindType::SWORD, SV_DAGGER };
+}
 }
 
 void generate_monster_drop_items(CreatureEntity &player, CreatureEntity &monster)
@@ -126,4 +179,29 @@ void generate_monster_drop_items(CreatureEntity &player, CreatureEntity &monster
     }
 
     floor.object_level = backup_object_level;
+}
+
+void equip_soldier_initial_weapon(CreatureEntity &monster)
+{
+    const auto &monrace = monster.get_monrace();
+    if (monrace.kind_flags.has_not(MonsterKindType::SOLDIER)) {
+        return;
+    }
+
+    // 体構造的に武器を持てない個体 (四足・不定形・非実体等) には持たせない。
+    if (!monster.can_equip_to(INVEN_MAIN_HAND)) {
+        return;
+    }
+
+    // 既に利き手が埋まっているなら何もしない (生成直後は通常空)。
+    if (monster.inventory[INVEN_MAIN_HAND]->is_valid()) {
+        return;
+    }
+
+    ItemEntity weapon(decide_soldier_weapon(monrace.level));
+    weapon.number = 1;
+
+    // エゴ・アーティファクト化や強化値は付けない。素の打撃ダイスのみを加える
+    // ことで、強化量をレベル帯テーブルの範囲に収める。
+    (void)monster.acquire_item(weapon);
 }
