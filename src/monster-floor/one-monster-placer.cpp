@@ -834,9 +834,9 @@ tl::optional<MONSTER_IDX> place_monster_one(CreatureEntity &player, POSITION y, 
     update_monster(const_cast<CreatureEntity &>(player), g_ptr->m_idx, true);
     m_ptr->get_real_monrace().increment_current_numbers();
 
-    // SOLDIER 持ちのモンスターに初期装備の近接武器を持たせる。
+    // SOLDIER / WARRIOR 持ちのモンスターに初期装備の近接武器を持たせる。
     // 一般ドロップより先に呼び、利き手を初期武器が確保できるようにする。
-    equip_soldier_initial_weapon(*m_ptr);
+    equip_armed_monster_initial_weapon(*m_ptr);
 
     // [ドロップ品移行] 一般ドロップ品を生成時に所持品として前生成する。
     // 死亡時は drop_all_inventory() でまとめて床へ放出される。

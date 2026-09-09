@@ -87,21 +87,22 @@ int decide_drop_numbers(const CreatureEntity &monster, const MonraceDefinition &
 }
 
 /*!
- * @brief 兵士モンスターのレベル帯ごとの近接武器候補
+ * @brief 武装モンスターのレベル帯ごとの近接武器候補
  * @details 先頭から順に `monrace.level >= min_level` で最初に一致した段を使い、
- *          その候補から 1 つを等確率で選ぶ。階級が上がるほど上等な得物になる。
+ *          その候補から 1 つを等確率で選ぶ。格が上がるほど上等な得物になる。
  *          **装備武器の打撃ダイスはモンスターの近接ダメージへ加算される**ため、
- *          この表がそのまま SOLDIER 持ちモンスターの強化量になる。バランス調整は
- *          ここで行うこと。
+ *          この表がそのまま SOLDIER / WARRIOR 持ちモンスターの強化量になる。
+ *          バランス調整はここで行うこと。
  */
-struct SoldierWeaponTier {
+struct InitialWeaponTier {
     int min_level; //!< この段が適用される最低種族レベル
     std::vector<BaseitemKey> candidates; //!< 等確率で選ぶ武器候補
 };
 
-const std::vector<SoldierWeaponTier> &get_soldier_weapon_tiers()
+const std::vector<InitialWeaponTier> &get_initial_weapon_tiers()
 {
-    static const std::vector<SoldierWeaponTier> tiers = {
+    static const std::vector<InitialWeaponTier> tiers = {
+        { 60, { { ItemKindType::SWORD, SV_EXECUTIONERS_SWORD }, { ItemKindType::POLEARM, SV_HEAVY_LANCE }, { ItemKindType::HAFTED, SV_GREAT_HAMMER } } },
         { 40, { { ItemKindType::SWORD, SV_TWO_HANDED_SWORD }, { ItemKindType::POLEARM, SV_LOCHABER_AXE }, { ItemKindType::POLEARM, SV_GREAT_AXE } } },
         { 30, { { ItemKindType::SWORD, SV_KATANA }, { ItemKindType::POLEARM, SV_HALBERD }, { ItemKindType::POLEARM, SV_BATTLE_AXE } } },
         { 20, { { ItemKindType::SWORD, SV_LONG_SWORD }, { ItemKindType::POLEARM, SV_BROAD_SPEAR }, { ItemKindType::POLEARM, SV_BROAD_AXE } } },
@@ -114,13 +115,13 @@ const std::vector<SoldierWeaponTier> &get_soldier_weapon_tiers()
 }
 
 /*!
- * @brief 種族レベルに応じた兵士の初期武器を 1 つ選ぶ
+ * @brief 種族レベルに応じた初期武器を 1 つ選ぶ
  * @param level モンスター種族のレベル
  * @return 選ばれた武器のベースアイテムキー
  */
-BaseitemKey decide_soldier_weapon(int level)
+BaseitemKey decide_initial_weapon(int level)
 {
-    for (const auto &tier : get_soldier_weapon_tiers()) {
+    for (const auto &tier : get_initial_weapon_tiers()) {
         if (level < tier.min_level) {
             continue;
         }
@@ -181,10 +182,10 @@ void generate_monster_drop_items(CreatureEntity &player, CreatureEntity &monster
     floor.object_level = backup_object_level;
 }
 
-void equip_soldier_initial_weapon(CreatureEntity &monster)
+void equip_armed_monster_initial_weapon(CreatureEntity &monster)
 {
     const auto &monrace = monster.get_monrace();
-    if (monrace.kind_flags.has_not(MonsterKindType::SOLDIER)) {
+    if (monrace.kind_flags.has_none_of({ MonsterKindType::SOLDIER, MonsterKindType::WARRIOR })) {
         return;
     }
 
@@ -198,7 +199,7 @@ void equip_soldier_initial_weapon(CreatureEntity &monster)
         return;
     }
 
-    ItemEntity weapon(decide_soldier_weapon(monrace.level));
+    ItemEntity weapon(decide_initial_weapon(monrace.level));
     weapon.number = 1;
 
     // エゴ・アーティファクト化や強化値は付けない。素の打撃ダイスのみを加える
