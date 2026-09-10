@@ -7022,6 +7022,7 @@
         "DROP_CORPSE",
         "OPEN_DOOR",
         "BASH_DOOR",
+        "RANGER",
       ],
     },
     {
@@ -21111,6 +21112,7 @@
         "HURT_LITE",
         "NO_CONF",
         "NO_SLEEP",
+        "PRIEST",
       ],
       "skill": {
         "list": ["BLINK", "SCARE", "CAUSE_1", "MISSILE", "DARKNESS"],
@@ -26809,6 +26811,7 @@
         "NO_SLEEP",
         "DROP_SKELETON",
         "DROP_CORPSE",
+        "PALADIN",
       ],
       "skill": {
         "list": ["HOLD", "SCARE", "BLIND", "CAUSE_3", "TRAPS", "DARKNESS", "FORGET", "HASTE"],
@@ -35920,6 +35923,7 @@
         "EVIL",
         "NO_CONF",
         "NO_SLEEP",
+        "PRIEST",
       ],
       "skill": {
         "list": ["HEAL", "BLIND", "HOLD", "CONF", "CAUSE_3", "ANIM_DEAD", "S_MONSTER", "S_UNDEAD"],
@@ -40422,6 +40426,7 @@
         "OPEN_DOOR",
         "BASH_DOOR",
         "FORCE_MAXHP",
+        "PALADIN",
       ],
       "skill": {
         "list": ["HEAL"],
@@ -47649,6 +47654,7 @@
         "REGENERATE",
         "OPEN_DOOR",
         "BASH_DOOR",
+        "MAGE",
       ],
       "skill": {
         "list": [
@@ -50008,6 +50014,7 @@
         "IM_ELEC",
         "NO_CONF",
         "NO_SLEEP",
+        "MAGE",
       ],
       "skill": {
         "list": [
@@ -63528,6 +63535,7 @@
         "NO_CONF",
         "NO_SLEEP",
         "EVIL",
+        "MAGE",
       ],
       "skill": {
         "list": [
@@ -65571,7 +65579,7 @@
         "en": "A warrior for a holy cause. Unfortunately, his god is not yours, and there is rivalry even between the various gods of Good, so he is your enemy.",
       },
       "sex": "MALE",
-      "flags": ["GOOD", "HUMAN", "DROP_1D2", "TAKE_ITEM", "OPEN_DOOR", "BASH_DOOR"],
+      "flags": ["GOOD", "HUMAN", "DROP_1D2", "TAKE_ITEM", "OPEN_DOOR", "BASH_DOOR", "PALADIN"],
       "skill": {
         "list": ["HEAL", "CAUSE_1", "CAUSE_2", "SLOW", "SCARE", "BLIND"],
         "probability": "1_IN_4",
@@ -65621,7 +65629,7 @@
         "en": "A warrior who is at one with nature. A master of both bow and sword, with minor spellcasting skills and animals that come to do his bidding.",
       },
       "sex": "MALE",
-      "flags": ["HUMAN", "DROP_1D2", "TAKE_ITEM", "OPEN_DOOR", "BASH_DOOR"],
+      "flags": ["HUMAN", "DROP_1D2", "TAKE_ITEM", "OPEN_DOOR", "BASH_DOOR", "RANGER"],
     },
     {
       "id": 1040,
@@ -89578,6 +89586,7 @@
         "IM_COLD",
         "IM_ELEC",
         "RES_LITE",
+        "BERSERK",
       ],
       "skill": {
         "list": ["DISPEL"],
@@ -99164,6 +99173,7 @@
         "IM_COLD",
         "RES_WATE",
         "RES_NETH",
+        "RANGER",
       ],
     },
     {
