@@ -1609,6 +1609,8 @@ hengband_test_SOURCES = \
 	test/timed-effect/test-player-cut.cpp \
 	test/timed-effect/test-player-stun.cpp \
 	\
+	test/util/test-dice.cpp \
+	test/util/test-flag-group.cpp \
 	test/util/test-probability-table.cpp \
 	test/util/test-sha256.cpp
 
