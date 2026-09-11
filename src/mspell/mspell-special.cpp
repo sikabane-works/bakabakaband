@@ -154,7 +154,9 @@ static MonsterSpellResult spell_RF6_SPECIAL_ROLENTO(CreatureEntity &creature, PO
     }
 
     for (k = 0; k < num; k++) {
-        count += summon_named_creature(creature, m_idx, y, x, MonraceId::GRENADE, mode) ? 1 : 0;
+        if (summon_named_creature(creature, m_idx, y, x, MonraceId::GRENADE, mode)) {
+            count++;
+        }
     }
     if (creature.is_blind() && count) {
         msg_print(_("多くのものが間近にばらまかれる音がする。", "You hear many things scattered nearby."));
